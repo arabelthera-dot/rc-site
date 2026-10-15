@@ -1,0 +1,28 @@
+---
+// Календарь 1:1 со старым (muzei/ne-sdayutsya/calendar.html): тот же движок assets/museum-calendar-page.js,
+// данные собираются из карточек дней; у каждого дня — ссылка на его страницу.
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+export async function getStaticPaths() {
+  const days = await getCollection('days');
+  return (await getCollection('museums'))
+    .filter((m) => days.some((d) => d.data.museum === m.data.slug))
+    .map((m) => ({ params: { slug: m.data.slug }, props: { m: m.data, days: days.filter((d) => d.data.museum === m.data.slug) } }));
+}
+const { m, days } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const meta = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8'));
+const cal: Record<string, unknown> = { ...meta };
+for (const d of days) {
+  cal[d.data.key] = { t: d.data.title, y: d.data.year, d: d.data.hook, mech: d.data.mechanic, src: d.data.source,
+    href: `${base}muzei/${m.slug}/den/${d.data.key}/` };
+}
+---
+<Base title={`Календарь музея · ${m.title_ru}`} museum={m.slug} crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { label: 'Календарь' }]} back={{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }}>
+  <header slot="header"><div class="b1">{m.title_ru}</div><h1>Календарь музея</h1><p>Каждый заполненный день — готовый повод для ролика, поста и урока.</p></header>
+  <div id="calcard"></div>
+  <div id="calyear"></div>
+  <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
+  <script is:inline src={`${base}assets/museum-calendar-page.js`}></script>
+</Base>

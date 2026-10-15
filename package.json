@@ -1,0 +1,14 @@
+{
+  "name": "rc-site",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "import": "node scripts/import-legacy.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.4.0"
+  }
+}

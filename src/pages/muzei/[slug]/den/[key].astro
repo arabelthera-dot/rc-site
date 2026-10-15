@@ -1,0 +1,39 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+export async function getStaticPaths() {
+  const museums = await getCollection('museums');
+  const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
+  return days.map((d) => {
+    const own = days.filter((x) => x.data.museum === d.data.museum);
+    const i = own.indexOf(d);
+    return { params: { slug: d.data.museum, key: d.data.key },
+      props: { d: d.data, m: museums.find((x) => x.id === d.data.museum)!.data, prev: own[i - 1]?.data.key, next: own[i + 1]?.data.key } };
+  });
+}
+const { d, m, prev, next } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const fs = await import('node:fs');
+const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
+const mm = parseInt(d.key.slice(0, 2)), dd = parseInt(d.key.slice(3));
+const when = dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`;
+const cal = `${base}muzei/${m.slug}/calendar/`;
+---
+<Base title={`${d.title} · ${m.title_ru}`} description={d.hook} museum={m.slug}
+  crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: d.title }]}
+  back={{ href: cal, label: 'Календарь' }}>
+  <header slot="header"><div class="b1">{m.title_ru}</div></header>
+  <article class="day">
+    <div class="cdate">{when}</div>
+    <h2>{d.title}{d.year && <span class="caly"> {d.year}</span>}</h2>
+    <p class="hook">{d.hook}</p>
+    {d.mechanic && <p class="row"><b>Механика.</b> {d.mechanic}</p>}
+    {d.source && <p class="row"><b>Источник.</b> {d.source}</p>}
+  </article>
+  <nav class="daynav">
+    {prev ? <a href={`${base}muzei/${m.slug}/den/${prev}/`}>← предыдущий</a> : <span></span>}
+    {next ? <a href={`${base}muzei/${m.slug}/den/${next}/`}>следующий →</a> : <span></span>}
+  </nav>
+</Base>

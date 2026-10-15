@@ -1,0 +1,18 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const days = await getCollection('days');
+  return (await getCollection('museums')).map((m) => ({
+    params: { slug: m.data.slug },
+    props: { m: m.data, hasCalendar: days.some((d) => d.data.museum === m.data.slug) },
+  }));
+}
+const { m, hasCalendar } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<Base title={m.title_ru} description={m.promise_ru} museum={m.slug} crumbs={[{ label: m.title_ru }]} back={{ href: base, label: 'Город-музей' }}>
+  <header slot="header"><div class="b1">Музей № {m.number}</div><h1>{m.title_ru}</h1>{m.slogan_ru && <p>{m.slogan_ru}</p>}</header>
+  {m.promise_ru && <div class="council">{m.promise_ru}</div>}
+  {hasCalendar && <p style="margin-top:16px"><a href={`${base}muzei/${m.slug}/calendar/`}>Календарь музея →</a></p>}
+</Base>
