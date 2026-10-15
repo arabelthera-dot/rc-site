@@ -29,6 +29,7 @@ const cal = `${base}muzei/${m.slug}/calendar/`;
     <div class="cdate">{when}</div>
     <h2>{d.title}{d.year && <span class="caly"> {d.year}</span>}</h2>
     <p class="hook">{d.hook}</p>
+    {d.gist && <p class="row">{d.gist}</p>}
     {d.mechanic && <p class="row"><b>Механика.</b> {d.mechanic}</p>}
     {d.source && <p class="row"><b>Источник.</b> {d.source}</p>}
   </article>
