@@ -29,15 +29,17 @@
   нельзя ни отправить в `site`, ни сменить источник Pages: откат упирается в разархивацию. Только
   чтение для `main` даёт ruleset (правило «update» на `refs/heads/main`).
 
-### Подготовка до 23.10 (отдельной заявкой, не в этом документе)
+### Подготовка до 23.10
 
-1. Ключ развёртывания с записью в `rc-museum-preview` (`ssh-keygen -t ed25519`; открытый — Settings →
-   Deploy keys, закрытый — секрет `RC_MUSEUM_PREVIEW_DEPLOY_KEY` в rc-site).
+1. Ключ развёртывания с записью в `rc-museum-preview` (ed25519; открытый — Settings →
+   Deploy keys «rc-site deploy (ветка site)», закрытый — секрет `RC_MUSEUM_PREVIEW_DEPLOY_KEY` в rc-site). **Сделано 16.10.**
 2. В `.github/workflows/deploy.yml` — вторая задача после сборки превью:
    `actions/setup-node` → `npm ci` → `npx astro build --base /rc-museum-preview` →
    `peaceiris/actions-gh-pages@v4` с `external_repository: arabelthera-dot/rc-museum-preview`,
    `publish_branch: site`, `publish_dir: ./dist`, `deploy_key: ${{ secrets.RC_MUSEUM_PREVIEW_DEPLOY_KEY }}`
-   (`.nojekyll` действие кладёт само). Превью на `/rc-site/` остаётся как есть.
+   (`.nojekyll` действие кладёт само). Превью на `/rc-site/` остаётся как есть. **Сделано 16.10:** задача
+   `vykladka-site`, `force_orphan` (в ветке один коммит — место на диске не копится), выключатель —
+   переменная репозитория `RC_SITE_TO_PREVIEW` (`1` — включено; иначе задача пропускается).
 3. Ветка `site` в старом репозитории собрана и заполнена до дня переключения. Её **не удалять**:
    без неё нет повторного переключения.
 

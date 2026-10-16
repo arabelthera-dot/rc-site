@@ -22,11 +22,70 @@ for (const d of days) {
     ...(card.includes('mech') && { mech: d.data.mechanic }), ...(card.includes('src') && { src: d.data.source }),
     href: `${base}muzei/${m.slug}/den/${d.data.key}/`, link: 'Открыть страницу →' };
 }
+// Сетка года и карточка дня — уже в вёрстке, той же разметкой, что строит движок (museum-calendar-page.js, стр. 36–185):
+// движок по DOMContentLoaded заменяет её такой же, и страница не перескакивает после первого кадра (CLS, O1 16.10).
+// Отличие только в «сегодня»: его движок считает по дате посетителя; здесь — дата сборки по Москве.
+type Day = { t: string; y?: number; d: string; mech?: string; src?: string; href: string; link: string };
+const MON = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const DAYS = [31,29,31,30,31,30,31,31,30,31,30,31];
+const YEAR = [31,28,31,30,31,30,31,31,30,31,30,31];
+const pad = (n: number) => (n < 10 ? '0' : '') + n;
+const plural = (n: number, one: string, few: string, many: string) => {
+  const n10 = n % 10, n100 = n % 100;
+  return n10 === 1 && n100 !== 11 ? one : n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20) ? few : many;
+};
+const data: Record<string, Day> = Object.fromEntries(Object.entries(cal).filter(([k]) => /^\d{2}-\d{2}$/.test(k))) as Record<string, Day>;
+const dated = conf.dated !== false;
+const mLen: number[] = dated ? (conf.months?.length === 12 ? conf.months : DAYS) : YEAR;
+const total = dated ? (conf.total || 365) : 365;
+const [ty, tm, td] = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Moscow' }).format(new Date()).split('-').map(Number);
+const tk = pad(tm) + '-' + pad(td);
+const allKeys = Object.keys(data).sort();
+const beyond = dated ? [] : allKeys.filter((k) => +k.slice(3) > YEAR[+k.slice(0, 2) - 1]);
+const filled = allKeys.length - beyond.length;
+const months = MON.map((name, i) => {
+  const cells = Array.from({ length: mLen[i] }, (_, j) => {
+    const k = pad(i + 1) + '-' + pad(j + 1), it = data[k];
+    let lbl = it ? it.t : 'запись готовится';
+    if (!dated) lbl = 'День ' + (j + 1) + (it ? ' — ' + it.t : '');
+    return { d: j + 1, k: it ? k : undefined, today: dated && k === tk, title: lbl.replace(/"/g, '') };
+  });
+  const cnt = cells.filter((c) => c.k).length;
+  return { name, cnt: cnt ? cnt + ' ' + plural(cnt, 'запись', 'записи', 'записей') : '—', cells };
+});
+const extra = beyond.map((k) => ({ k, dd: +k.slice(3), mon: MON[+k.slice(0, 2) - 1], t: data[k].t }));
+// какой день движок откроет первым: сегодняшний, иначе ближайший вперёд по кругу года; у недатированного — первый
+const ahead = (k: string) => {
+  const t = Date.UTC(ty, tm - 1, td); let d = Date.UTC(ty, +k.slice(0, 2) - 1, +k.slice(3));
+  if (d < t) d = Date.UTC(ty + 1, +k.slice(0, 2) - 1, +k.slice(3));
+  return Math.round((d - t) / 86400000);
+};
+let open: string | undefined, note = '';
+if (!dated) open = allKeys[0];
+else if (data[tk]) open = tk;
+else if (allKeys.length) {
+  open = allKeys.reduce((a, k) => (ahead(k) < ahead(a) ? k : a), allKeys[0]);
+  note = 'Ближайшая запись · через ' + ahead(open) + ' ' + plural(ahead(open), 'день', 'дня', 'дней');
+}
+const it = open ? data[open] : undefined;
+const when = open && (dated ? +open.slice(3) + ' ' + MONR[+open.slice(0, 2) - 1] + (open === tk ? ' · <b>сегодня</b>' : '')
+  : 'День ' + +open.slice(3) + ' · ' + MON[+open.slice(0, 2) - 1]);
+const row = (label: string, v?: string) => (v ? `<div class="crow"><span>${label}</span>${v}</div>` : '');
+const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when + '</div>' +
+  '<h3>' + it.t + (it.y ? ' <span class="caly">' + it.y + '</span>' : '') + '</h3>' +
+  '<p>' + it.d + '</p>' + row('Механика', it.mech) + row('Источник', it.src) +
+  (it.href ? '<a href="' + it.href + '">' + (it.link || 'Открыть →') + '</a>' : '') : '';
 ---
 <Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { label: 'Календарь' }]} back={{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }}>
   <header slot="header"><div class="b1">{m.title_ru}</div><h1>Календарь музея</h1><p>Каждый заполненный день — готовый повод для ролика, поста и урока.</p></header>
-  <div id="calcard"></div>
-  <div id="calyear"></div>
+  <div class="cal-supslot" data-support-slot></div>
+  <div id="calcard" set:html={cardHtml}></div>
+  <div id="calyear"><div class="calstat">Заполнено дней: <b>{filled}</b> из {total} · {dated ? 'каждый заполненный день' : 'каждый день года'} — готовый повод для ролика и поста{beyond.length > 0 && ` · сверх года ещё ${beyond.length} ${plural(beyond.length, 'запись', 'записи', 'записей')} — они остаются в музее`}</div>{months.map((mo) => (
+    <section class="cmon"><h2>{mo.name}<span class="cnt">{mo.cnt}</span></h2><div class="cgrid">{mo.cells.map((c) => (
+      <button class:list={['cday', { full: c.k, today: c.today, on: c.k && c.k === open }]} data-k={c.k} disabled={!c.k} title={c.title}>{c.d}</button>))}</div></section>))}{extra.length > 0 && (
+    <section class="cmon beyond"><h2>Сверх года<span class="cnt">{extra.length} {plural(extra.length, 'запись', 'записи', 'записей')}</span></h2><div class="cgrid cgrid-wide">{extra.map((x) => (
+      <button class="cday full cextra" data-k={x.k} title={`День ${x.dd} · ${x.mon} — ${x.t}`.replace(/"/g, '')}>{x.dd} · {x.mon}</button>))}</div></section>)}</div>
   <div class="council"><b style="color:var(--gold-l)">Календарь наполняется.</b> Состав года утверждён целиком — 365 дней; страницы открываются по одной, по образцу эталонного дня. Золотом отмечены дни, у которых уже есть разбор, аудиогид и интерактив.</div>
   <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/`}>← в музей</a> · <a href={base}>в город-музей →</a></Fragment>
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
