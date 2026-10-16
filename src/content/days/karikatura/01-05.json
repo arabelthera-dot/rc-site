@@ -7,6 +7,16 @@
   "legacy_page": "muzei/karikatura/day-05jan-krokodil-first-issue.html",
   "images": [
     {
+      "src": "muzei/karikatura/img/media/krokodil-1922-no1.jpg",
+      "caption": "1922 «Крокодил» № 1 (13) Красный крокодил прорывает газету.",
+      "credit": "Иван Андреевич Малютин; обложка «Крокодила» № 1, 27 августа 1922. Цифровой файл: Wikimedia Commons, «Cover of Krokodil magazine No 1 by I Malyutin.jpg» (общественное достояние)."
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-1922-i-nomer.jpg",
+      "caption": "1922 «Крокодил» № 1 Первый номер под новым названием.",
+      "credit": "Ivan Malyutin, Public domain, Wikimedia Commons"
+    },
+    {
       "src": "muzei/karikatura/img/media/krokodil-1923-no43.jpg",
       "caption": "1923 «Крокодил» № 43 Обложка журнала за 1923 год.",
       "credit": "Иван Андреевич Малютин, по данным страницы файла; 18 ноября 1923. Цифровой файл: Wikimedia Commons, «Карикатура «„Переходное“ время» (журнал «Крокодил», № 43 (73) от 18 ноября 1923).jpg» (общественное достояние)."
@@ -57,9 +67,44 @@
       "credit": "Иван Андреевич Малютин, по данным страницы файла; 1927. Цифровой файл: Wikimedia Commons, «Обложка журнала Крокодил 1927 года №9.jpg» (общественное достояние)."
     },
     {
+      "src": "muzei/karikatura/img/media/krokodil-malyutin-blagodetel.jpg",
+      "caption": "Иван Малютин · 1926 «Благодетель» Сатира на показную благотворительность.",
+      "credit": "Ivan Malyutin, Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-malyutin-sueverny-narod.jpg",
+      "caption": "Иван Малютин · 1926 «Суеверный народ» Сатира на народные суеверия.",
+      "credit": "Ivan Malyutin, Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-malyutin-verny-priznak.jpg",
+      "caption": "Иван Малютин · 1926 «Верный признак» Ирония над «верной приметой».",
+      "credit": "Ivan Malyutin, Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-malyutin-ptitsa.jpg",
+      "caption": "Иван Малютин · 1926 «Птица — а понимает» Сценка из городского быта.",
+      "credit": "Ivan Malyutin, Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-malyutin-revizor-1926.jpg",
+      "caption": "Иван Малютин · 1926 «Ревизор в провинции» Сатира на приезд ревизора.",
+      "credit": "Ivan Malyutin, Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-malyutin-khor-kalinych-1925.jpg",
+      "caption": "Иван Малютин · 1925 «Хорь и Калиныч» Современная версия героев Тургенева.",
+      "credit": "Ivan Malyutin, Public domain, Wikimedia Commons"
+    },
+    {
       "src": "muzei/karikatura/img/media/krokodil-1929-redakciya.jpg",
       "caption": "Редакция «Крокодила» фотография · 1929 Пётр Белянин · публичное достояние",
       "credit": "Пётр Петрович Белянин (1901–1936); 1929. Цифровой файл: Wikimedia Commons, «The Editorial Staff of Krokodil by P Belyanin 1929.jpg» (общественное достояние)."
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-1922-moor-pereregistraciya.jpg",
+      "caption": "Дмитрий Моор · 1922 «Перерегистрация святых» Сатира на бюрократическую кампанию перерегистрации.",
+      "credit": "Dmitry Moor, Public domain, Wikimedia Commons"
     },
     {
       "src": "muzei/karikatura/img/media/krokodil-1924-esli-apparat.jpg",
@@ -75,6 +120,16 @@
       "src": "muzei/karikatura/img/media/krokodil-1926-provody.jpg",
       "caption": "«Крокодил» · 1926 «Трогательные проводы» Сатира на чинопочитание вокруг начальника.",
       "credit": "Алексей Александрович Радаков (1879–1942); 1926. Цифровой файл: Wikimedia Commons, «1926. Трогательные и подражания достойные проводы председателя (журнал «Крокодил» № 21 за 1926 год, стр. 9).jpg» (общественное достояние)."
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-vecher-afisha.jpg",
+      "caption": "1920-е Афиша «Вечер Крокодила» Афиша эстрадной программы журнала.",
+      "credit": "Неизвестный художник (не указан в выходных данных плаката; отсутствует авторская монограмма или подпись), Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/krokodil-1934-strashny-son.jpg",
+      "caption": "«Страшный сон москвича» Алексей Радаков · 1934 Быт — можно было рисовать свободно.",
+      "credit": "Алексей Александрович Радаков; «Страшный сон москвича», публикация 1934. Цифровой файл: Wikimedia Commons, «Алексей Радаков Страшный сон москвича.jpg» (общественное достояние)."
     }
   ]
 }

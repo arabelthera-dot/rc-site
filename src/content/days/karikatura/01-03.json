@@ -8,14 +8,29 @@
   "legacy_page": "muzei/karikatura/day-03jan-radakov-tri-linii.html",
   "images": [
     {
+      "src": "muzei/karikatura/img/media/radakov-strashny-son-moskvicha.jpg",
+      "caption": "А. Радаков · нач. XX в. «Страшный сон москвича» Москвичу снится кошмар про город.",
+      "credit": "Алексей Александрович Радаков; «Страшный сон москвича», публикация 1934. Цифровой файл: Wikimedia Commons, «Алексей Радаков Страшный сон москвича.jpg» (общественное достояние)."
+    },
+    {
       "src": "muzei/karikatura/img/media/radakov-provody-akvarel.jpg",
       "caption": "А. Радаков · 1926 «Проводы председателя» Председателя торжественно выпроваживают.",
       "credit": "Алексей Александрович Радаков (1879–1942); 1926. Цифровой файл: Wikimedia Commons, «1926. Трогательные и подражания достойные проводы председателя (акварель).jpg» (общественное достояние)."
     },
     {
+      "src": "muzei/karikatura/img/media/radakov-provody-krokodil.jpg",
+      "caption": "А. Радаков · 1926 «Проводы председателя», «Крокодил» Та же сцена в журнальном выпуске.",
+      "credit": "Aleksei Aleksandrovich Radakov, Public domain, Wikimedia Commons"
+    },
+    {
       "src": "muzei/karikatura/img/media/radakov-satirikon-1918-oblozhka.jpg",
       "caption": "А. Радаков · 1918 Обложка «Нового Сатирикона» №2 Линия сатирического журнала.",
       "credit": "Алексей Александрович Радаков (1879–1942); 1918. Цифровой файл: Wikimedia Commons, «Обложка Нового Сатирикона. №2 за 1918 год.jpg» (общественное достояние)."
+    },
+    {
+      "src": "muzei/karikatura/img/media/radakov-satirikon-1917-p4.jpg",
+      "caption": "А. Радаков · 1917 «Новый Сатирикон», 1917, стр. 4 Страница с карикатурами.",
+      "credit": "Aleksei Aleksandrovich Radakov, Public domain, Wikimedia Commons"
     },
     {
       "src": "muzei/karikatura/img/media/radakov-sbornik.jpg",
@@ -41,6 +56,21 @@
       "src": "muzei/karikatura/img/media/radakov-puritane-2.jpg",
       "caption": "А. Радаков · нач. XX в. «Пуритане и барабанщики», вариант Второй вариант сценки.",
       "credit": "Алексей Александрович Радаков (1879–1942); до 1942. Цифровой файл: Wikimedia Commons, «Алексей Радаков Пуритане и барабанщики 2.jpg» (общественное достояние)."
+    },
+    {
+      "src": "muzei/karikatura/img/media/radakov-likbez-slepoy.jpg",
+      "caption": "А. Радаков · 1920 «Неграмотный — тот же слепой» Без грамоты человек идёт на ощупь, как слепой.",
+      "credit": "Aleksei Aleksandrovich Radakov, Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/radakov-likbez-znanie.jpg",
+      "caption": "А. Радаков · 1920 «Знание разорвёт цепи рабства» Учёба снимает кандалы с человека.",
+      "credit": "Aleksei Aleksandrovich Radakov, Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/karikatura/img/media/radakov-likbez-zhizn.jpg",
+      "caption": "А. Радаков · 1920 «Жизнь безграмотного. Жизнь грамотного» Два жизненных пути: без грамоты и с ней.",
+      "credit": "Aleksei Aleksandrovich Radakov, Public domain, Wikimedia Commons"
     },
     {
       "src": "muzei/karikatura/img/media/radakov-plakat-okno-tass.jpg",
