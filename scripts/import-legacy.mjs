@@ -261,6 +261,10 @@ function parseMonth(file) {
   return units;
 }
 
+// Слова названия без «первый/мире»: основа 5 букв, «Ту-104» — одно слово.
+const words = (t) => new Set((t.toLowerCase().match(/[а-яёa-z0-9]+(?:-[а-яёa-z0-9]+)*/g) ?? [])
+  .filter((w) => w.length >= 4 && !/^перв|^мире$/.test(w)).map((w) => w.slice(0, 5)));
+const replaced = (a, b) => { const w = words(b); return ![...words(a)].some((x) => w.has(x)); };
 const MON3 = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 const cells = (line) => line.trim().replace(/^\||\|$/g, '').split('|').map((c) => squash(c.replace(/\*\*/g, '')));
 function parseTable(file, month) {
@@ -331,7 +335,11 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   else if (TABLES[museum]) TABLES[museum].files.forEach((f, i) => {
     for (const u of parseTable(path.join(PROJECT, TABLES[museum].dir, f), i)) {
       const key = `${String(i + 1).padStart(2, '0')}-${String(u.day).padStart(2, '0')}`, it = cal[key] ?? {};
-      write(key, { title: it.t || u.title, year: it.y, hook: u.hook ?? it.d, mechanic: u.mechanic ?? it.mech ?? it.m,
+      // Экспонат в таблице заменён (у названий нет общего слова) — весь день из таблицы, старое не подмешивается.
+      if (it.t && replaced(it.t, u.title)) {
+        notes.push(`${key}: экспонат заменён «${it.t}» → «${u.title}»`);
+        write(key, { title: u.title, hook: u.hook, mechanic: u.mechanic, source: u.source });
+      } else write(key, { title: it.t || u.title, year: it.y, hook: u.hook ?? it.d, mechanic: u.mechanic ?? it.mech ?? it.m,
         source: u.source ?? it.src });
     }
   });
