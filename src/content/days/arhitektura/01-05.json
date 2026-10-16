@@ -5,5 +5,11 @@
   "hook": "Почему Невьянская башня наклонена, но продолжает стоять?",
   "source": "официальной карточке Культура.РФ (culture.ru)",
   "legacy_page": "muzei/arhitektura/nevjanskaya-bashnya.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/arhitektura/img/media/nevjanskaya-bashnya/hero.webp",
+      "caption": "Невьянская башня, современный вид. Фото: Вячеслав Бухаров, CC BY-SA 4.0.",
+      "credit": "Vyacheslav Bukharov, CC BY-SA 4.0; редакционное уменьшение WebP, Wikimedia Commons"
+    }
+  ]
 }

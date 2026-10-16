@@ -5,5 +5,21 @@
   "hook": "Костович собрал бензиновый мотор раньше, чем Даймлер и Бенц поставили такие на свои повозки.",
   "source": "Центральный музей Военно-воздушных сил · «Двигатель Костовича» (cmvvs.ru)",
   "legacy_page": "muzei/izobreteniya/day-11jan-kostovich.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/day-11jan-kostovich-dvigatel.jpg",
+      "caption": "Музейный экспонат: восемь бронзовых цилиндров лежат двумя рядами на чугунной станине, над ними стальные тяги и большое колесо-маховик со спицами",
+      "credit": "Фото: Dmitry Ivanov, 2014, Wikimedia Commons, CC BY-SA 3.0 (кадрировано), Wikimedia Commons"
+    },
+    {
+      "src": "muzei/izobreteniya/img/day-11jan-kostovich-portret.jpg",
+      "caption": "О. С. Костович. Фотография конца XIX века, автор неизвестен. Общественное достояние.",
+      "credit": "Автор неизвестен. Общественное достояние, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/izobreteniya/img/day-11jan-kostovich-dvigatel-full.jpg",
+      "caption": "Двигатель Костовича целиком, Центральный музей ВВС. Фото: Dmitry Ivanov, 2014, Викисклад, CC BY-SA 3.0.",
+      "credit": "Фото: Dmitry Ivanov, 2014, Wikimedia Commons, CC BY-SA 3.0 (уменьшено), Wikimedia Commons"
+    }
+  ]
 }

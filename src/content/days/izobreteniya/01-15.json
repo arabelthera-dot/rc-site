@@ -5,5 +5,16 @@
   "hook": "Ковалевской пришлось выйти замуж фиктивно, чтобы попасть в университет, — а кафедру она получила первой женщиной в мире.",
   "source": "Энциклопедия «Знание» · «Ковалевская Софья Васильевна» (knowledge.su)",
   "legacy_page": "muzei/izobreteniya/day-15jan-kovalevskaya.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/day-15jan-kovalevskaya-portret.jpg",
+      "caption": "Старая фотография-визитка на жёлтом картоне: молодая женщина с короткими вьющимися волосами, в тёмном платье с кружевным воротником, смотрит вправо; внизу тиснёная подпись ателье Waldemar Dahllöf & Co",
+      "credit": "Ателье Вальдемара Дальлёфа; Музей фотографии, Государственные музеи Берлина; общественное достояние, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/izobreteniya/img/day-15jan-kovalevskaya-iln1884.jpg",
+      "caption": "Портрет Ковалевской в лондонском еженедельнике The Illustrated London News, 1884 год, том 85, с. 121. Гравёр «R. T.». Библиотека Конгресса США, общественное достояние.",
+      "credit": "The Illustrated London News, 1884; Библиотека Конгресса США; общественное достояние, Wikimedia Commons"
+    }
+  ]
 }

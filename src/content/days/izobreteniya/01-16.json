@@ -5,5 +5,16 @@
   "hook": "Корабли состыковались, а перебраться из одного в другой можно было только снаружи — в скафандре, по обшивке, в пустоте.",
   "source": "Музей Первого полёта (Центр подготовки космонавтов им. Ю. А. Гагарина) · «Январь 1969 года. Первая в мире стыковка двух пилотируемых космических кораблей» (museumgagarin.ru)",
   "legacy_page": "muzei/izobreteniya/day-16jan-soyuz45.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/day-16jan-soyuz45-portret.jpg",
+      "caption": "Фрагмент советского почтового блока 1969 года с портретами четырёх космонавтов: Владимира Шаталова, Бориса Волынова, Алексея Елисеева и Евгения Хрунова",
+      "credit": "Public domain, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/izobreteniya/img/day-16jan-soyuz45-stykovka.jpg",
+      "caption": "Схема состыкованных кораблей: переход экипажа шёл через стыковочный и орбитальный отсеки, минуя спускаемый аппарат. Wikimedia Commons, CC BY-SA 3.0 (Lunokhod 2).",
+      "credit": "CC BY-SA 3.0, Wikimedia Commons"
+    }
+  ]
 }

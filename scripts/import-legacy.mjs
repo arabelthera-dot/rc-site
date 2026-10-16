@@ -46,13 +46,52 @@ const squash = (t) => t.replace(/\s+/g, ' ').trim();
 // Рабочие пометки авторов («(Детали — факт-чек.)») посетителю не показываются; в таблицах остаются.
 const NOTE = /\s*\([^()]*факт-чек[^()]*\)/g;
 
-// Картинки дня — кадры готовой страницы старого сайта, но только записанные в ведомости прав музея
-// (muzei/<музей>/rights.json: автор, лицензия, источник). Кадра нет в ведомости — в карточку не идёт:
-// источник не выдумывается. Подпись — figcaption страницы, иначе описание из ведомости.
+// Картинки дня — кадры готовой страницы старого сайта, но только с записью о правах. Записи три, как их вели
+// музеи: паспорт выпуска (rc-museum-production/<музей>/<выпуск>/passport/issue.json, images[]: путь, источник,
+// подпись автора, rights.status), ведомость rights.json в папке кадра или музея, атрибуты data-source и
+// data-license на самом кадре. Тот же кадр в другом формате (pogost-1280.jpg при записи pogost-1280.webp)
+// берёт запись своего кадра. Записи нет или права не подтверждены — кадр не идёт, причина в журнале импорта:
+// источник не выдумывается. Подпись — figcaption страницы, иначе описание из записи, иначе alt кадра.
 const decode = (t) => t.replace(/&quot;/g, '"').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
   .replace(/&mdash;/g, '—').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
 const strip = (t) => squash(decode(t.replace(/<[^>]+>/g, ' ')));
-function pageImages(museum, legacyPage, rights, skipped) {
+const PRODUCTION = path.join(PROJECT, 'rc-museum-production');
+const stem = (p) => p.replace(/\.(jpe?g|png|webp|avif)$/i, '');
+const PASSPORT = {};
+for (const museum of fs.existsSync(PRODUCTION) ? fs.readdirSync(PRODUCTION) : []) {
+  const dir = path.join(PRODUCTION, museum);
+  if (!fs.statSync(dir).isDirectory()) continue;
+  for (const issue of fs.readdirSync(dir)) {
+    const f = path.join(dir, issue, 'passport/issue.json');
+    if (!fs.existsSync(f)) continue;
+    for (const im of JSON.parse(fs.readFileSync(f, 'utf8')).images ?? [])
+      if (im.local_path) PASSPORT[stem(path.normalize(im.local_path))] = im;
+  }
+}
+const RIGHTS = {};
+const walk = (dir) => { for (const e of fs.readdirSync(path.join(LEGACY, dir), { withFileTypes: true })) {
+  if (e.isDirectory()) walk(path.join(dir, e.name));
+  else if (e.name === 'rights.json') {
+    const j = JSON.parse(fs.readFileSync(path.join(LEGACY, dir, e.name), 'utf8'));
+    for (const r of Array.isArray(j) ? j : []) if (r.file) RIGHTS[stem(path.normalize(path.join(dir, r.file)))] = r;
+  }
+} };
+walk('muzei');
+const commons = (url) => (/commons\.wikimedia\.org/.test(url ?? '') ? 'Wikimedia Commons' : '');
+const attr = (tag, name) => decode(tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1] ?? '');
+function rightsOf(rel, tag) {
+  const p = PASSPORT[stem(rel)];
+  if (p) return p.rights?.status === 'cleared'
+    ? { credit: [p.credit_ru, commons(p.source_url)].filter(Boolean).join(', '), about: p.alt_ru }
+    : { why: `права в паспорте «${p.rights?.status ?? 'нет статуса'}»` };
+  const r = RIGHTS[stem(rel)];
+  if (r) return { credit: [r.artist, r.license, commons(r.source ?? r.url) || r.source].filter(Boolean).join(', '),
+    about: r.description?.replace(/\s*—\s*замена кадра[\s\S]*$/, '') };
+  const lic = attr(tag, 'data-license'), src = attr(tag, 'data-source');
+  if (lic && src) return { credit: [lic, commons(src) || src].join(', ') };
+  return { why: 'нет записи о правах' };
+}
+function pageImages(museum, legacyPage, skipped) {
   const html = fs.readFileSync(path.join(LEGACY, legacyPage), 'utf8');
   const caps = {};
   for (const f of html.matchAll(/<figure[\s\S]*?<\/figure>/g)) {
@@ -62,16 +101,17 @@ function pageImages(museum, legacyPage, rights, skipped) {
   }
   const seen = new Set();
   const images = [];
-  for (const m of html.matchAll(/<img[^>]*\ssrc="([^"]+)"/g)) {
-    const file = m[1];
-    if (seen.has(file) || file.includes('/')) continue;
+  for (const m of html.matchAll(/<img[^>]*>/g)) {
+    const file = m[0].match(/\ssrc="([^"]+)"/)?.[1];
+    if (!file || seen.has(file) || /^(https?:|data:)/.test(file)) continue;
     seen.add(file);
-    const r = rights.find((x) => x.file === file);
-    if (!r) { skipped.push(`${legacyPage}: ${file}`); continue; }
-    fs.mkdirSync(path.join('public/muzei', museum, 'img'), { recursive: true });
-    fs.copyFileSync(path.join(LEGACY, path.dirname(legacyPage), file), path.join('public/muzei', museum, 'img', file));
-    images.push({ src: `muzei/${museum}/img/${file}`, caption: caps[file] || squash(r.description.replace(/\s*—\s*замена кадра[\s\S]*$/, '')),
-      credit: `${r.artist}, ${r.license}, Wikimedia Commons: ${r.source}` });
+    const rel = path.normalize(path.join(path.dirname(legacyPage), file));
+    const r = rightsOf(rel, m[0]);
+    if (!r.credit) { skipped.push(`${legacyPage}: ${file} — ${r.why}`); continue; }
+    const out = path.join('muzei', museum, 'img', path.relative(path.join('muzei', museum), rel));
+    fs.mkdirSync(path.join('public', path.dirname(out)), { recursive: true });
+    fs.copyFileSync(path.join(LEGACY, rel), path.join('public', out));
+    images.push({ src: out, caption: caps[file] || squash(r.about || attr(m[0], 'alt')), credit: r.credit });
   }
   return images;
 }
@@ -142,15 +182,13 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   const card = ['mech', 'src'].filter((f) => keys.some((k) => cal[k][f]));
   const meta = { total: cal.total ?? 365, dated: cal.dated !== false, ...(card.length && { card }) };
   fs.mkdirSync(out, { recursive: true });
-  const rightsFile = path.join(LEGACY, path.dirname(rel), 'rights.json');
-  const rights = fs.existsSync(rightsFile) ? JSON.parse(fs.readFileSync(rightsFile, 'utf8')) : [];
   const skipped = [];
   fs.rmSync(path.join('public/muzei', museum, 'img'), { recursive: true, force: true });
   let n = 0;
   const write = (key, card) => {
     const href = cal[key]?.href;
     card.legacy_page = href ? `${path.dirname(rel)}/${href}` : undefined;
-    if (card.legacy_page) card.images = pageImages(museum, card.legacy_page, rights, skipped);
+    if (card.legacy_page) card.images = pageImages(museum, card.legacy_page, skipped);
     if (card.legacy_page && !card.source) card.source = pageSource(card.legacy_page);
     fs.writeFileSync(path.join(out, `${key}.json`), JSON.stringify({ museum, key, ...card }, null, 2) + '\n');
     n++;
@@ -169,5 +207,5 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   }
   fs.writeFileSync(path.join('src/data', `calendar-meta-${museum}.json`), JSON.stringify(meta) + '\n');
   console.log(`${museum}: ${n} карточек`);
-  if (skipped.length) console.log(`  без записи в ведомости прав, не перенесено (${skipped.length}): ${skipped.join('; ')}`);
+  if (skipped.length) console.log(`  кадры без подтверждённых прав, не перенесены (${skipped.length}): ${skipped.join('; ')}`);
 }
