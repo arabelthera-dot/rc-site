@@ -77,12 +77,12 @@ const walk = (dir) => { for (const e of fs.readdirSync(path.join(LEGACY, dir), {
   }
 } };
 walk('muzei');
-const commons = (url) => (/commons\.wikimedia\.org/.test(url ?? '') ? 'Wikimedia Commons' : '');
+const commons = (url, credit = '') => (/commons\.wikimedia\.org/.test(url ?? '') && !/commons/i.test(credit) ? 'Wikimedia Commons' : '');
 const attr = (tag, name) => decode(tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1] ?? '');
 function rightsOf(rel, tag) {
   const p = PASSPORT[stem(rel)];
   if (p) return p.rights?.status === 'cleared'
-    ? { credit: [p.credit_ru, commons(p.source_url)].filter(Boolean).join(', '), about: p.alt_ru }
+    ? { credit: [p.credit_ru, commons(p.source_url, p.credit_ru)].filter(Boolean).join(', '), about: p.alt_ru }
     : { why: `права в паспорте «${p.rights?.status ?? 'нет статуса'}»` };
   const r = RIGHTS[stem(rel)];
   if (r) return { credit: [r.artist, r.license, commons(r.source ?? r.url) || r.source].filter(Boolean).join(', '),
