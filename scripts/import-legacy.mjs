@@ -268,7 +268,9 @@ function parseTable(file, month) {
   const src = {};
   for (const l of lines) {
     const m = l.match(/^-\s+\**(\d+) ([а-я]{3})\**\s+—\s+(https?:\S+)/);
-    if (m && MON3.indexOf(m[2].slice(0, 3)) === month) src[Number(m[1])] ??= m[3];
+    // Таблица даёт голую ссылку, паспорт требует источник по-русски: «Источник: сайт — ссылка», как у прежних карточек.
+    if (m && MON3.indexOf(m[2].slice(0, 3)) === month)
+      src[Number(m[1])] ??= `Источник: ${new URL(m[3]).hostname.replace(/^www\./, '')} — ${m[3]}`;
   }
   const units = {};
   let col = null;
