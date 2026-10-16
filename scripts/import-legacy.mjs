@@ -54,7 +54,7 @@ const NOTE = /\s*\([^()]*факт-чек[^()]*\)/g;
 // источник не выдумывается. Подпись — figcaption страницы, иначе описание из записи, иначе alt кадра.
 const decode = (t) => t.replace(/&quot;/g, '"').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
   .replace(/&mdash;/g, '—').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
-const strip = (t) => squash(decode(t.replace(/<[^>]+>/g, ' ')));
+const strip = (t) => squash(decode(t.replace(/<[^>]+>/g, ' '))).replace(/\s+([.,;:!?»)])/g, '$1');
 const PRODUCTION = path.join(PROJECT, 'rc-museum-production');
 const stem = (p) => p.replace(/\.(jpe?g|png|webp|avif)$/i, '');
 const PASSPORT = {};
@@ -72,11 +72,13 @@ const RIGHTS = {};
 const walk = (dir) => { for (const e of fs.readdirSync(path.join(LEGACY, dir), { withFileTypes: true })) {
   if (e.isDirectory()) walk(path.join(dir, e.name));
   else if (e.name === 'rights.json') {
+    // Ведомость двух видов: массив строк (музеи) или {"files": […]} (zum искусства: author, source_url, object).
     const j = JSON.parse(fs.readFileSync(path.join(LEGACY, dir, e.name), 'utf8'));
-    for (const r of Array.isArray(j) ? j : []) if (r.file) RIGHTS[stem(path.normalize(path.join(dir, r.file)))] = r;
+    for (const r of Array.isArray(j) ? j : j.files ?? []) if (r.file) RIGHTS[stem(path.normalize(path.join(dir, r.file)))] = r;
   }
 } };
 walk('muzei');
+const UNKNOWN = /^\s*(unknown|pending|нет данных|неизвестн)/i;
 const commons = (url, credit = '') => (/commons\.wikimedia\.org/.test(url ?? '') && !/commons/i.test(credit) ? 'Wikimedia Commons' : '');
 const attr = (tag, name) => decode(tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1] ?? '');
 function rightsOf(rel, tag) {
@@ -85,9 +87,18 @@ function rightsOf(rel, tag) {
     ? { credit: [p.credit_ru, commons(p.source_url, p.credit_ru)].filter(Boolean).join(', '), about: p.alt_ru }
     : { why: `права в паспорте «${p.rights?.status ?? 'нет статуса'}»` };
   const r = RIGHTS[stem(rel)];
-  if (r) return { credit: [r.artist, r.license, commons(r.source ?? r.url) || r.source].filter(Boolean).join(', '),
-    about: r.description?.replace(/\s*—\s*замена кадра[\s\S]*$/, '') };
+  if (r) {
+    // Строка ведомости — подтверждение, только если в ней есть лицензия и источник и права не помечены
+    // неизвестными; иначе кадр в журнал с причиной (строки «unknown» ведутся как список недоделок).
+    const src = r.source ?? r.source_url ?? r.url, lic = r.license;
+    const why = UNKNOWN.test(r.status ?? r.rights?.status ?? '') || UNKNOWN.test(lic ?? '') ? 'права «unknown»'
+      : !lic ? 'нет лицензии' : !src ? 'нет источника' : '';
+    if (why) return { why: `rights.json: ${why}` };
+    return { credit: [r.artist ?? r.author, lic, commons(src) || src].filter(Boolean).join(', '),
+      about: (r.description ?? r.object)?.replace(/\s*—\s*замена кадра[\s\S]*$/, '') };
+  }
   const lic = attr(tag, 'data-license'), src = attr(tag, 'data-source');
+  if (UNKNOWN.test(lic)) return { why: 'права «unknown» в атрибутах кадра' };
   if (lic && src) return { credit: [lic, commons(src) || src].join(', ') };
   return { why: 'нет записи о правах' };
 }
@@ -96,7 +107,9 @@ function pageImages(museum, legacyPage, skipped) {
   const caps = {};
   for (const f of html.matchAll(/<figure[\s\S]*?<\/figure>/g)) {
     const src = f[0].match(/<img[^>]*\ssrc="([^"]+)"/)?.[1];
-    const cap = f[0].match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/)?.[1];
+    // Ссылка подписи на ведомость старого сайта («Паспорт кадра») не переносится: права — в credit кадра.
+    const cap = f[0].match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/)?.[1]
+      ?.replace(/<a[^>]*\shref="[^"]*rights\.json"[^>]*>[\s\S]*?<\/a>\.?/g, '');
     if (src && cap && !caps[src]) caps[src] = strip(cap);
   }
   const seen = new Set();
