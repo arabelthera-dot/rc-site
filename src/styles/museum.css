@@ -30,12 +30,17 @@ main{max-width:720px;margin:0 auto;padding:10px 16px 40px}
 .cmon.beyond h2{color:var(--gold-l)}
 .cgrid-wide{grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
 .cgrid-wide .cday{aspect-ratio:auto;padding:9px 11px;font-size:12.5px}
-#calcard{display:none;position:sticky;bottom:12px;background:linear-gradient(160deg,#0d1a2b,#0b1624);border:1px solid var(--gold);border-radius:16px;padding:17px;margin:18px 0 8px;box-shadow:0 10px 34px rgba(0,0,0,.6);z-index:20}
+#calcard{position:sticky;bottom:12px;background:linear-gradient(160deg,#0d1a2b,#0b1624);border:1px solid var(--gold);border-radius:16px;padding:17px;margin:18px 0 8px;box-shadow:0 10px 34px rgba(0,0,0,.6);z-index:20}
 #calcard .cdate{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:6px}
 #calcard h3{font-family:Georgia,serif;font-size:18px;font-weight:normal;color:var(--gold-l);margin-bottom:8px}
 #calcard .caly{opacity:.55;font-size:14px;color:var(--txt)}
 #calcard p{font-size:14px;line-height:1.6}
 #calcard a{display:inline-block;margin-top:11px;font-size:13.5px}
+/* карточка дня размечена в шаблоне (calendar.astro) — пустой не показываем; строки «Механика»/«Источник» —
+   тот же вид, что движок задаёт им строкой style (museum-calendar-page.js, row()) */
+#calcard:empty{display:none}
+#calcard .crow{margin-top:8px;font-size:13px;line-height:1.5}
+#calcard .crow span{color:var(--gold,#c9a24a);opacity:.85;letter-spacing:1px;text-transform:uppercase;font-size:10.5px;margin-right:6px}
 
 .council{background:var(--panel);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:15px;font-size:13.5px;margin-top:14px}
 footer{padding:22px 16px 60px;border-top:1px solid rgba(201,168,76,.2);text-align:center;font-size:12.5px;opacity:.85;margin-top:30px}
@@ -110,7 +115,8 @@ header.top + .crumbs a{color:var(--gold-l)}
 /* главная музея */
 .mh-cover{padding:0 0 6px;text-align:center}
 .mh-scene{margin:0 auto;max-width:960px}
-.mh-scene img{display:block;width:100%;max-height:62vh;object-fit:cover}
+/* размеры кадра стоят в разметке (width/height из файла, Cover.astro): место под картинку занято до её загрузки */
+.mh-scene img{display:block;width:100%;height:auto;max-height:62vh;object-fit:cover}
 .mh-scene figcaption{font-size:12px;opacity:.6;padding:6px 16px 0;font-style:italic}
 .mh-noframe{display:flex;align-items:center;justify-content:center;min-height:clamp(150px,30vw,260px);padding:60px 24px 24px;
   border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0d1a2b,#081120);font-size:13px;opacity:.7;font-style:italic}
@@ -121,7 +127,16 @@ header.top + .crumbs a{color:var(--gold-l)}
 .mh-h{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:normal;margin:0 0 12px}
 .mh-today h3{font-size:22px;font-weight:normal;color:var(--gold-l);margin-bottom:10px}
 .mh-more{display:inline-block;margin-top:14px;font-size:14px}
-.mh-supslot{min-height:220px;margin:0 0 30px}
+/* слот блока «Поддержать проект»: блок вставляет museum-support.js уже после первого кадра — место под него держим
+   заранее, иначе всё ниже съезжает (CLS). Высота блока зависит только от ширины (переносятся кнопки): замер 16.10 —
+   ≥768 → 217, 480–767 → 256–282, 412–479 → 355, 375–411 → 380, ≤374 → 406; резерв — по верхней границе ступени */
+.mh-supslot,.cal-supslot{min-height:220px}
+.mh-supslot{margin:0 0 30px}
+.cal-supslot{margin:0 0 22px}
+@media(max-width:767px){.mh-supslot,.cal-supslot{min-height:285px}}
+@media(max-width:479px){.mh-supslot,.cal-supslot{min-height:355px}}
+@media(max-width:411px){.mh-supslot,.cal-supslot{min-height:380px}}
+@media(max-width:374px){.mh-supslot,.cal-supslot{min-height:406px}}
 .mh-year{font-size:13.5px;margin-top:12px}
 .mh-note{font-size:13px;opacity:.75;margin:0 0 10px}
 .mh-empty{font-size:14px;opacity:.7;font-style:italic;padding:14px 15px;background:var(--panel);border:1px dashed rgba(201,168,76,.25);border-radius:12px}
