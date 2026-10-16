@@ -50,5 +50,6 @@ const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
     <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
     <slot name="footer"><a href={base}>в город-музей →</a></slot>
   </footer>
+  <script is:inline defer src={`${base}assets/analytics.js`}></script>
 </body>
 </html>
