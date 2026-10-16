@@ -7,5 +7,11 @@
   "mechanic": "Судьба объекта",
   "source": "Картина в Третьяковской галерее, 1881; Дату смерти (19.04.1900 ст.) сверить",
   "legacy_page": "muzei/iskusstvo/pic-aivazovsky-chernoe-more.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/iskusstvo/img/media/zum/chernoe-more/preview.jpg",
+      "caption": "Иван Айвазовский, «Чёрное море», 1881. Государственная Третьяковская галерея, Москва. Скан 4000 × 2870 — Wikimedia Commons (Google Arts & Culture), общественное достояние: автор умер в 1900 году.",
+      "credit": "Иван Константинович Айвазовский (1817–1900), общественное достояние, Wikimedia Commons"
+    }
+  ]
 }
