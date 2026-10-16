@@ -1,0 +1,28 @@
+# Единственная проверка заявки (план переезда, шаг 5): сборка + битые внутренние ссылки, порог 0.
+# Внешние ссылки здесь не проверяются: чужие сайты (особенно российские из-за рубежа) отвечают
+# нестабильно, и заявка краснела бы не по своей вине.
+name: proverka
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sborka-i-ssylki:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx astro build
+      # Сайт живёт под /rc-site/ — раскладываем сборку так же, как на сервере.
+      - run: mkdir -p /tmp/root && ln -s "$PWD/dist" /tmp/root/rc-site
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --include-fragments --index-files index.html --root-dir /tmp/root '/tmp/root/rc-site/**/*.html'
+          fail: true
+          jobSummary: true
