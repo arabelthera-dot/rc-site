@@ -1,3 +1,8 @@
+/* Inter — шрифт шапки дня, крошек, кнопок и блока «Поддержать»: объявлен здесь, а не поздней вставкой fonts.css движком
+   поддержки, иначе шрифт приходит после первого кадра и страница перескакивает (приёмка M1 16.10).
+   Файлы те же, что в assets/fonts.css (переменный шрифт: один файл на все начертания 400–700). */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{--gold:#c9a84c;--gold-l:#e2c878;--ink:#060d18;--panel:#0b1624;--line:rgba(201,168,76,.35);--txt:#c6d8e8}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--ink);color:var(--txt);font-family:Georgia,'Times New Roman',serif;line-height:1.6;
