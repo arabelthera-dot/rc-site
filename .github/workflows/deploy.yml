@@ -26,3 +26,29 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+  # Запасная выкладка на старый адрес: та же сборка с base /rc-museum-preview — в ветку site
+  # старого репозитория (docs/otkat-pereklyucheniya.md, п. 1–2). Живой адрес она не трогает:
+  # Pages старого репо смотрит на main, пока его не переключат. Выключатель — переменная
+  # репозитория RC_SITE_TO_PREVIEW (не '1' — задача пропускается).
+  vykladka-site:
+    needs: build
+    if: vars.RC_SITE_TO_PREVIEW == '1'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx astro build --base /rc-museum-preview
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.RC_MUSEUM_PREVIEW_DEPLOY_KEY }}
+          external_repository: arabelthera-dot/rc-museum-preview
+          publish_branch: site
+          publish_dir: ./dist
+          force_orphan: true
+          commit_message: 'rc-site → site'
