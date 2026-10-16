@@ -28,7 +28,8 @@ const when = dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}
 const museumUrl = `${base}muzei/${m.slug}/`;
 const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
-const [cover, ...rest] = d.images;
+const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
+const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
 // Поле mechanic — описание задачи для разработки (след черновика, 04-build «Заголовок и подписи»);
 // посетителю его не показываем, интерактив придёт движком при переносе (шаг 4 плана).
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
