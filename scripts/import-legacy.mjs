@@ -14,6 +14,12 @@ const CATALOG = process.env.CATALOG ||
   path.join(os.homedir(), 'projects/russian-civilization/platform/catalog/museums.json');
 const PROJECT = process.env.PROJECT || path.join(os.homedir(), 'projects/russian-civilization');
 const APPROVED = { 'ne-sdayutsya': 'pilot-nesdayutsya' };
+// Утверждённые таблицы месяца «| Дата | Экспонат | Хук | Механика | Первенство |» (Сергей 16.10: хуки авг–дек приняты).
+// В файле месяца таблиц бывает несколько (состав, потом хуки, потом правки дней) — день берётся из последней, где он есть;
+// название, год и ссылка — из calendar-*.js (состав тот же, на сайте короткое название).
+const TABLES = { izobreteniya: { dir: 'pilot-izobreteniya', files: ['january-31', 'february-28', 'march-31', 'april-30',
+  'may-31', 'june-30', 'july-31', 'august-31', 'september-30', 'october-31', 'november-30', 'december-31']
+  .map((f) => `${f}-na-utverzhdenie.md`) } };
 // Музей не переносится, пока у него недоделка переноса; старый календарь работает (план переезда 15.10).
 // Текст, который паспорту дня не отвечает, переносится как есть (Сергей 16.10) — исключение в passport-waivers.json.
 const HOLD = {};
@@ -255,6 +261,35 @@ function parseMonth(file) {
   return units;
 }
 
+const MON3 = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+const cells = (line) => line.trim().replace(/^\||\|$/g, '').split('|').map((c) => squash(c.replace(/\*\*/g, '')));
+function parseTable(file, month) {
+  const lines = fs.readFileSync(file, 'utf8').split('\n');
+  const src = {};
+  for (const l of lines) {
+    const m = l.match(/^-\s+\**(\d+) ([а-я]{3})\**\s+—\s+(https?:\S+)/);
+    // Таблица даёт голую ссылку, паспорт требует источник по-русски: «Источник: сайт — ссылка», как у прежних карточек.
+    if (m && MON3.indexOf(m[2].slice(0, 3)) === month)
+      src[Number(m[1])] ??= `Источник: ${new URL(m[3]).hostname.replace(/^www\./, '')} — ${m[3]}`;
+  }
+  const units = {};
+  let col = null;
+  for (const [i, l] of lines.entries()) {
+    if (/^\|\s*Дата\s*\|/.test(l)) {
+      col = /Хук/.test(l) && /Механика/.test(l) ? Object.fromEntries(cells(l).map((c, j) => [c.split(/\s/)[0], j])) : null;
+      continue;
+    }
+    if (!l.startsWith('|')) { col = null; continue; }
+    if (!col) continue;
+    const c = cells(l), day = Number(c[col['Дата']]?.match(/^(\d+)/)?.[1]);
+    if (!day) continue;
+    const hook = c[col['Хук']], m = (c[col['Механика']] ?? '').replace(/^M-\d+\s+[^:]*:\s*/, '').trim();
+    units[day] = { day, title: c[col['Экспонат']], hook: hook && hook !== '—' ? hook : undefined,
+      mechanic: m && m !== '—' && !/разделы выше/i.test(m) ? m[0].toUpperCase() + m.slice(1) : undefined, source: src[day] };
+  }
+  return Object.values(units);
+}
+
 fs.copyFileSync(CATALOG, 'src/data/museums.json');
 
 for (const [museum, rel] of Object.entries(CALENDARS)) {
@@ -291,6 +326,13 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
       write(`${String(i + 1).padStart(2, '0')}-${String(u.day).padStart(2, '0')}`, { title: u.title,
         year: u.year ? Number(u.year) : undefined, hook: u.hook, mechanic: u.mechanic, source: u.source,
         gist: u.gist?.replace(NOTE, '').trim() });
+    }
+  });
+  else if (TABLES[museum]) TABLES[museum].files.forEach((f, i) => {
+    for (const u of parseTable(path.join(PROJECT, TABLES[museum].dir, f), i)) {
+      const key = `${String(i + 1).padStart(2, '0')}-${String(u.day).padStart(2, '0')}`, it = cal[key] ?? {};
+      write(key, { title: it.t || u.title, year: it.y, hook: u.hook ?? it.d, mechanic: u.mechanic ?? it.mech ?? it.m,
+        source: u.source ?? it.src });
     }
   });
   else for (const key of keys) {

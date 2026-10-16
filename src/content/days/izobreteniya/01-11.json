@@ -3,23 +3,24 @@
   "key": "01-11",
   "title": "Первый в мире бензиновый двигатель (для дирижабля)",
   "hook": "Костович собрал бензиновый мотор раньше, чем Даймлер и Бенц поставили такие на свои повозки.",
+  "mechanic": "Собираешь мотор по узлам: цилиндры, зажигание, карбюратор — и запускаешь ✅",
   "source": "Центральный музей Военно-воздушных сил · «Двигатель Костовича» (cmvvs.ru)",
   "legacy_page": "muzei/izobreteniya/day-11jan-kostovich.html",
   "images": [
     {
       "src": "muzei/izobreteniya/img/day-11jan-kostovich-dvigatel.jpg",
       "caption": "Музейный экспонат: восемь бронзовых цилиндров лежат двумя рядами на чугунной станине, над ними стальные тяги и большое колесо-маховик со спицами",
-      "credit": "Фото: Dmitry Ivanov, 2014, Wikimedia Commons, CC BY-SA 3.0 (кадрировано)"
+      "credit": "CC BY-SA 3.0, Wikimedia Commons"
     },
     {
       "src": "muzei/izobreteniya/img/day-11jan-kostovich-portret.jpg",
       "caption": "О. С. Костович. Фотография конца XIX века, автор неизвестен. Общественное достояние.",
-      "credit": "Автор неизвестен. Общественное достояние, Wikimedia Commons"
+      "credit": "Public domain, Wikimedia Commons"
     },
     {
       "src": "muzei/izobreteniya/img/day-11jan-kostovich-dvigatel-full.jpg",
       "caption": "Двигатель Костовича целиком, Центральный музей ВВС. Фото: Dmitry Ivanov, 2014, Викисклад, CC BY-SA 3.0.",
-      "credit": "Фото: Dmitry Ivanov, 2014, Wikimedia Commons, CC BY-SA 3.0 (уменьшено)"
+      "credit": "CC BY-SA 3.0, Wikimedia Commons"
     }
   ]
 }
