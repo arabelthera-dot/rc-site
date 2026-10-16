@@ -11,6 +11,13 @@ const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
   ? fs.readdirSync(`public/muzei/${museum}`).find((f: string) => f.endsWith('-style.css')) : undefined;
 // Паспорт для поиска и пересылки (Open Graph, «да» Сергея 16.10): картинка превью — своя у страницы,
 // иначе обложка музея со старого сайта (public/og/<музей>_index.jpg), иначе общая og-default.jpg.
+// Шрифт заголовков из своего стиля музея (--font-h) набирает название музея в шапке и h1 дня: его файлы
+// (кириллица + латиница, 700) — заранее, иначе Georgia до загрузки переносит название иначе и страница
+// прыгает (CLS 0,19 у «Не сдаются», P1 16.10). Файлы — из fonts.css, руками не перечисляются.
+const headFont = own && /--font-h:\s*'([^']+)'/.exec(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8'))?.[1];
+const headFiles = headFont ? [...fs.readFileSync('public/assets/fonts.css', 'utf8').matchAll(
+  /\/\* (?:cyrillic|latin) \*\/\s*@font-face \{[^}]*font-family: '([^']+)';[^}]*font-style: normal;[^}]*font-weight: 700;[^}]*url\(fonts\/([^)]+)\)/g)]
+  .filter((m) => m[1] === headFont).map((m) => m[2]) : [];
 const url = new URL(Astro.url.pathname, Astro.site).href;
 const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `og/${museum}_index.jpg` : 'og/og-default.jpg';
 const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
@@ -42,6 +49,7 @@ const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
     <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2`} as="font" type="font/woff2" crossorigin />
   </>}
+  {headFiles.map((f) => <link rel="preload" href={`${base}assets/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
   <slot name="head" />
 </head>

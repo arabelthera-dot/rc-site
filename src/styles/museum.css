@@ -78,7 +78,7 @@ footer .slog{font-style:italic;color:var(--gold);margin-bottom:6px}
 /* страница дня — src/pages/muzei/[slug]/den/[key].astro (вид эталона ne-sdayutsya/podvig-*.html) */
 header.top{position:relative;padding:58px 16px 12px;text-align:center;font-family:'Inter',sans-serif}
 header.top .b1{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700}
-header.top .b2{font-size:13.5px;margin:7px auto 0;color:#c8d4e0;max-width:64ch;font-style:normal}
+header.top .b2{font-size:11px;line-height:1.45;opacity:.62;margin:7px auto 0;padding:2px 16px 7px;color:#c8d4e0;max-width:760px;max-height:64px;overflow:hidden;font-style:normal}
 header.top .top-sep{width:56px;height:1px;margin:16px auto 0;background:linear-gradient(90deg,transparent,rgba(201,168,76,.6),transparent)}
 header.top .museum{font-family:var(--font-h,Georgia,serif);font-size:30px;font-weight:700;color:#fff;margin-top:14px;line-height:1.1}
 header.top .museum-slog{font-family:var(--font-h,Georgia,serif);font-style:italic;font-size:15px;color:var(--gold-l);margin-top:6px}
@@ -94,7 +94,7 @@ header.top + .crumbs a{color:var(--gold-l)}
 .dp .date-chip{display:inline-block;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:5px 13px;margin-bottom:14px}
 .dp .hero-lead h1{font-family:var(--font-h,Georgia,serif);color:#fff;font-size:clamp(30px,6vw,52px);font-weight:700;line-height:1.08;margin:0 0 16px;overflow-wrap:anywhere}
 .dp .hero-lead .hook{font-style:normal;color:#d7e4f0;font-size:clamp(17px,2.3vw,21px);max-width:62ch;margin:0 auto 22px;line-height:1.6}
-.dp .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.dp .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px}
 .dp .btn,#kuda-dalshe .dp-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:24px;font-family:'Inter',sans-serif;font-size:14.5px;border:1px solid var(--gold);color:var(--gold-l)}
 .dp .btn.gold{background:var(--gold);color:#1a1508;font-weight:600}
 .dp .btn.ghost:hover,#kuda-dalshe .dp-links a:hover{background:rgba(201,168,76,.15)}
@@ -109,8 +109,35 @@ header.top + .crumbs a{color:var(--gold-l)}
 #kuda-dalshe .dp-links{display:flex;flex-wrap:wrap;gap:10px}
 .dp-foot{margin-bottom:6px}
 .dp-err{font-size:12px;opacity:.75}
-@media(max-width:520px){header.top{padding-top:56px}header.top + .crumbs{white-space:nowrap;overflow-x:auto;text-align:left;padding:4px 14px 8px}header.top .b1{font-size:11px;letter-spacing:2.4px}header.top .museum{font-size:24px}
+@media(max-width:520px){header.top + .crumbs{text-align:left}header.top .b1{font-size:11px;letter-spacing:2.4px}header.top .museum{font-size:24px}
  .dp .hero-scene img{height:26vh;min-height:200px;max-height:260px}.dp .hero-lead{padding:20px 0 18px}}
+/* Первый кадр страницы дня = итоговый вид (CLS, P1 16.10). museum-chrome.js и museum-support.js стоят в конце
+   страницы и срабатывают уже после первого кадра: вставляют свой CSS (кнопка «Календарь» встаёт в поток, слоган,
+   крошки и подводка на телефоне плотнее), строку «Поделиться» под крошками и блок «Поддержать» в .dp-sup —
+   страница прыгала на 0,3–0,7. Здесь те же значения заранее (движки общие со старым сайтом, их не меняем). */
+.backbtn:has(+ header.top){position:static;display:inline-flex;margin:12px 0 0 12px}
+/* место под строку «Поделиться» (.sharerow, движок ставит её сразу за крошками); встала — резерв снимается сам */
+header.top + .crumbs + main{margin-top:44px}
+/* блок «Поддержать»: поля — как у самого блока (его поля схлопываются с полями слота), высота — замер блока
+   по ширинам 320–1440 (текст один, набор зависит от шрифта страницы — берём меньшую из двух), чтобы не было
+   ни прыжка, ни пустого зазора */
+.dp .dp-sup{margin:26px 0 22px;min-height:217px}
+@media(max-width:709px){.dp .dp-sup{min-height:265px}}
+@media(max-width:600px){
+ header.top{padding-top:30px}
+ header.top .b2{line-height:1.35;max-width:94%;padding-bottom:5px}
+ header.top + .crumbs{font-size:11px;line-height:1.3;padding:2px 10px 4px;white-space:nowrap;overflow-x:auto}
+ header.top + .crumbs + main{margin-top:31px}
+ .dp .scene-caption{padding:4px 0 6px}
+ .dp .hero-lead{padding-top:8px}
+ .dp .date-chip{margin-bottom:8px}
+ .dp .hero-lead h1{font-size:25px;margin-bottom:6px}
+ .dp .hero-lead .hook{margin:8px 0 12px}
+ .dp .hero-btns{gap:8px}
+ .dp .hero-btns>a{padding:11px 15px;font-size:13.5px}
+ .dp .dp-sup{min-height:256px}}
+@media(max-width:469px){.dp .dp-sup{min-height:337px}}
+@media(max-width:399px){.dp .dp-sup{min-height:380px}}
 
 /* главная музея */
 .mh-cover{padding:0 0 6px;text-align:center}
