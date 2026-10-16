@@ -19,7 +19,7 @@ for (const d of days) {
     href: `${base}muzei/${m.slug}/den/${d.data.key}/` };
 }
 ---
-<Base title={`Календарь музея · ${m.title_ru}`} museum={m.slug} crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { label: 'Календарь' }]} back={{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }}>
+<Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { label: 'Календарь' }]} back={{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }}>
   <header slot="header"><div class="b1">{m.title_ru}</div><h1>Календарь музея</h1><p>Каждый заполненный день — готовый повод для ролика, поста и урока.</p></header>
   <div id="calcard"></div>
   <div id="calyear"></div>

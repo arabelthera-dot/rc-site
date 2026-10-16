@@ -6,7 +6,7 @@ const museums = (await getCollection('museums')).sort((a, b) => a.data.number - 
 const days = await getCollection('days');
 const count = (slug: string) => days.filter((d) => d.data.museum === slug).length;
 ---
-<Base title="Русская цивилизация — город-музей" description="Виртуальный город-музей достижений России: музеи на каждый день года.">
+<Base title="Русская цивилизация — город-музей" image={`${import.meta.env.BASE_URL}og/index.jpg`} description="Виртуальный город-музей достижений России: музеи на каждый день года.">
   <header slot="header"><div class="b1">Русская цивилизация</div><h1>Город-музей</h1><p>{museums.length} музеев · каркас нового сайта</p></header>
   <div class="mlist">
     {museums.map((m) => (

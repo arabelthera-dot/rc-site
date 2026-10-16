@@ -48,6 +48,7 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${d.title}»`})};`;
 ---
 <Base title={`${d.title} — ${m.title_ru} — Русская цивилизация`} description={d.hook} museum={m.slug}
+  image={cover?.src} imageAlt={cover?.caption} type="article"
   crumbs={[{ href: museumUrl, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: `${when} · ${d.title}` }]}
   back={{ href: cal, label: 'Календарь' }}>
   <Fragment slot="head">
