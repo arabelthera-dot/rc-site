@@ -25,11 +25,17 @@ const SRC = /^\*\*Источник:\*\*\s*(.+?)\s*$/;
 const GIST = /^Суть:\s*(.+?)\s*$/;
 const YEAR = /\b(1[0-9]{3}|20[0-2][0-9])\b/;
 const squash = (t) => t.replace(/\s+/g, ' ').trim();
+// Рабочие пометки авторов («(Детали — факт-чек.)») посетителю не показываются; в таблицах остаются.
+const NOTE = /\s*\([^()]*факт-чек[^()]*\)/g;
 
 function parseMonth(file) {
   const units = [];
   let u = null;
+  let inGist = false;
   for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
+    // «Суть» в утверждённых таблицах бывает в несколько строк — до пустой строки или нового поля.
+    if (inGist && line.trim() && !/^(\*\*|##)/.test(line)) { u.gist = squash(`${u.gist} ${line}`); continue; }
+    inGist = false;
     const h = line.match(HEAD);
     if (h) {
       u = { day: Number(h[1]), title: h[2].replace(/\s*\([^()]*\)\s*$/, '').trim(),
@@ -44,7 +50,7 @@ function parseMonth(file) {
       const t = m[1].replace(/\s*\([^()]*\bM-\d+[^()]*\)/g, '').trim();
       u.mechanic = t[0].toUpperCase() + t.slice(1);
     } else if (!u.source && (m = line.match(SRC))) u.source = squash(m[1]);
-    else if (!u.gist && (m = line.match(GIST))) u.gist = squash(m[1]);
+    else if (!u.gist && (m = line.match(GIST))) { u.gist = squash(m[1]); inGist = true; }
   }
   return units;
 }
@@ -66,7 +72,7 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
       const key = `${String(i + 1).padStart(2, '0')}-${String(u.day).padStart(2, '0')}`;
       const href = cal[key]?.href;
       const card = { museum, key, title: u.title, year: u.year ? Number(u.year) : undefined,
-        hook: u.hook, mechanic: u.mechanic, source: u.source, gist: u.gist,
+        hook: u.hook, mechanic: u.mechanic, source: u.source, gist: u.gist?.replace(NOTE, '').trim(),
         legacy_page: href ? `${path.dirname(rel)}/${href}` : undefined };
       fs.writeFileSync(path.join(out, `${key}.json`), JSON.stringify(card, null, 2) + '\n');
       n++;

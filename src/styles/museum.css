@@ -64,3 +64,72 @@ footer .slog{font-style:italic;color:var(--gold);margin-bottom:6px}
 .karta h2{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:normal;margin:22px 0 8px}
 .karta p,.karta li{font-size:14.5px;margin-bottom:8px}
 .karta ul{padding-left:20px}
+
+/* страница дня — src/pages/muzei/[slug]/den/[key].astro (вид эталона ne-sdayutsya/podvig-*.html) */
+header.top{position:relative;padding:58px 16px 12px;text-align:center;font-family:'Inter',sans-serif}
+header.top .b1{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700}
+header.top .b2{font-size:13.5px;margin:7px auto 0;color:#c8d4e0;max-width:64ch;font-style:normal}
+header.top .top-sep{width:56px;height:1px;margin:16px auto 0;background:linear-gradient(90deg,transparent,rgba(201,168,76,.6),transparent)}
+header.top .museum{font-family:var(--font-h,Georgia,serif);font-size:30px;font-weight:700;color:#fff;margin-top:14px;line-height:1.1}
+header.top .museum-slog{font-family:var(--font-h,Georgia,serif);font-style:italic;font-size:15px;color:var(--gold-l);margin-top:6px}
+header.top + .crumbs{font-family:'Inter',sans-serif;opacity:.9}
+header.top + .crumbs a{color:var(--gold-l)}
+.dp{max-width:860px;margin:0 auto}
+.dp .hero-scene{margin:0 0 4px}
+.dp .hero-scene a{display:block;cursor:zoom-in}
+.dp .hero-scene img{display:block;width:100%;height:38vh;min-height:250px;max-height:400px;object-fit:cover;border-radius:14px;border:1px solid rgba(201,168,76,.25)}
+.dp .scene-caption{font-family:'Inter',sans-serif;font-size:12px;line-height:1.45;opacity:.7;margin-top:7px;text-align:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dp .credit{opacity:.75;font-style:italic}
+.dp .hero-lead{text-align:center;padding:26px 0 22px}
+.dp .date-chip{display:inline-block;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:5px 13px;margin-bottom:14px}
+.dp .hero-lead h1{font-family:var(--font-h,Georgia,serif);color:#fff;font-size:clamp(30px,6vw,52px);font-weight:700;line-height:1.08;margin:0 0 16px;overflow-wrap:anywhere}
+.dp .hero-lead .hook{font-style:normal;color:#d7e4f0;font-size:clamp(17px,2.3vw,21px);max-width:62ch;margin:0 auto 22px;line-height:1.6}
+.dp .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.dp .btn,#kuda-dalshe .dp-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:24px;font-family:'Inter',sans-serif;font-size:14.5px;border:1px solid var(--gold);color:var(--gold-l)}
+.dp .btn.gold{background:var(--gold);color:#1a1508;font-weight:600}
+.dp .btn.ghost:hover,#kuda-dalshe .dp-links a:hover{background:rgba(201,168,76,.15)}
+.dp section.block,#kuda-dalshe{background:var(--panel);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:18px 18px 16px;margin:16px 0}
+.dp section.block h2,#kuda-dalshe h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:normal;margin-bottom:8px}
+.dp section.block p{font-family:var(--font-b,Georgia,serif);font-size:16px;line-height:1.65}
+.dp .fig{margin:14px 0 0}
+.dp .fig img{display:block;width:100%;border-radius:10px}
+.dp .fig figcaption{font-size:12.5px;opacity:.75;margin-top:6px}
+.dp-nav{display:flex;justify-content:space-between;gap:10px;margin:18px 0;font-size:14px;font-family:'Inter',sans-serif}
+[data-support-slot]{margin:4px 0 8px}
+#kuda-dalshe .dp-links{display:flex;flex-wrap:wrap;gap:10px}
+.dp-foot{margin-bottom:6px}
+.dp-err{font-size:12px;opacity:.75}
+@media(max-width:520px){header.top{padding-top:56px}header.top + .crumbs{white-space:nowrap;overflow-x:auto;text-align:left;padding:4px 14px 8px}header.top .b1{font-size:11px;letter-spacing:2.4px}header.top .museum{font-size:24px}
+ .dp .hero-scene img{height:26vh;min-height:200px;max-height:260px}.dp .hero-lead{padding:20px 0 18px}}
+
+/* главная музея */
+.mh-cover{padding:0 0 6px;text-align:center}
+.mh-scene{margin:0 auto;max-width:960px}
+.mh-scene img{display:block;width:100%;max-height:62vh;object-fit:cover}
+.mh-scene figcaption{font-size:12px;opacity:.6;padding:6px 16px 0;font-style:italic}
+.mh-noframe{display:flex;align-items:center;justify-content:center;min-height:clamp(150px,30vw,260px);padding:60px 24px 24px;
+  border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0d1a2b,#081120);font-size:13px;opacity:.7;font-style:italic}
+.mh-title{padding:22px 18px 6px;max-width:760px;margin:0 auto;background:var(--ink)}
+.mh-title .mh-slogan{font-size:15px;opacity:.85;font-style:italic;margin-top:8px}
+.mh-title .mh-promise{font-size:14px;opacity:.75;margin-top:8px;font-style:normal}
+.mh-sec{margin:0 0 30px}
+.mh-h{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:normal;margin:0 0 12px}
+.mh-today h3{font-size:22px;font-weight:normal;color:var(--gold-l);margin-bottom:10px}
+.mh-more{display:inline-block;margin-top:14px;font-size:14px}
+.mh-supslot{min-height:220px;margin:0 0 30px}
+.mh-year{font-size:13.5px;margin-top:12px}
+.mh-note{font-size:13px;opacity:.75;margin:0 0 10px}
+.mh-empty{font-size:14px;opacity:.7;font-style:italic;padding:14px 15px;background:var(--panel);border:1px dashed rgba(201,168,76,.25);border-radius:12px}
+.mh-themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.mh-theme{background:var(--panel);border:1px solid rgba(201,168,76,.22);border-radius:12px;padding:10px 12px}
+.mh-theme[open]{grid-column:1/-1}
+.mh-theme summary{cursor:pointer;color:var(--gold-l);font-size:14.5px;display:flex;justify-content:space-between}
+.mh-theme summary .cnt{font-size:12px;opacity:.55;color:var(--txt)}
+.mh-theme ul{list-style:none;columns:2 220px;margin-top:10px;font-size:13.5px}
+.mh-theme li{break-inside:avoid;margin-bottom:5px}
+.mh-open{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.mh-open a{display:block;background:var(--panel);border:1px solid rgba(201,168,76,.22);border-radius:12px;padding:10px 12px;color:var(--gold-l);font-size:14.5px;height:100%}
+.mh-open a:hover{border-color:var(--gold)}
+.mh-open .w{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt);opacity:.55;margin-bottom:3px}
+.mh-council{background:var(--panel);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:15px}
+.mh-council p{font-size:14px}

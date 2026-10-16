@@ -1,0 +1,17 @@
+---
+// Обложка: сцена (документальный кадр) → под ней заголовок на своём фоне. Текст поверх картинки запрещён.
+// Кадр — первая картинка из карточек дней музея (поле images); нет ни одной — сцена не выводится (служебный текст посетителю не показываем).
+interface Props { m: { title_ru: string; slogan_ru?: string; promise_ru?: string; number: number }; img?: { src: string; caption: string; credit: string } }
+const { m, img } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const src = img && (/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`);
+---
+<header class="mh-cover">
+  {img && (<figure class="mh-scene"><img src={src} alt={img.caption} loading="eager" /><figcaption>{img.caption} · {img.credit}</figcaption></figure>)}
+  <div class="mh-title">
+    <div class="b1">Музей № {m.number}</div>
+    <h1>{m.title_ru}</h1>
+    {m.slogan_ru && <p class="mh-slogan">{m.slogan_ru}</p>}
+    {m.promise_ru && <p class="mh-promise">{m.promise_ru}</p>}
+  </div>
+</header>

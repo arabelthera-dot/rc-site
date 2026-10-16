@@ -1,0 +1,39 @@
+---
+// «Сегодня в музее»: день выбирается на клиенте по сегодняшней дате (ключ ММ-ДД),
+// запасной — ближайший следующий заполненный день. Без JS виден первый день календаря.
+interface Props { first?: { key: string; title: string; hook: string; href: string; when: string }; dated: boolean }
+const { first, dated } = Astro.props;
+---
+<section class="mh-sec" id="segodnya">
+  <h2 class="mh-h">Сегодня в музее</h2>
+  {first ? (
+    <article class="day mh-today" data-dated={dated ? '1' : '0'}>
+      <div class="cdate" data-today-when>{first.when}</div>
+      <h3 data-today-title>{first.title}</h3>
+      <p class="hook" data-today-hook>{first.hook}</p>
+      <a class="mh-more" data-today-href href={first.href}>Открыть экспонат дня →</a>
+    </article>
+  ) : (
+    <p class="mh-empty">Экспонаты дня готовятся: у музея ещё нет ни одного заполненного дня.</p>
+  )}
+</section>
+{first && (
+<script is:inline>
+(function(){
+  var C = window.MUSEUM_CALENDAR || {}, keys = Object.keys(C).filter(function(k){ return /^\d\d-\d\d$/.test(k); }).sort();
+  if (!keys.length) return;
+  var MON=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+  var MONR=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var t = new Date(), p = function(n){ return (n < 10 ? '0' : '') + n; };
+  var tk = p(t.getMonth() + 1) + '-' + p(t.getDate());
+  var k = C[tk] ? tk : (keys.filter(function(x){ return x >= tk; })[0] || keys[0]);
+  var it = C[k], box = document.querySelector('.mh-today'); if (!box || !it) return;
+  var mm = +k.slice(0, 2), dd = +k.slice(3), dated = box.getAttribute('data-dated') === '1';
+  var when = dated ? dd + ' ' + MONR[mm - 1] : 'День ' + dd + ' · ' + MON[mm - 1];
+  box.querySelector('[data-today-when]').textContent = (k === tk ? 'Сегодня · ' : 'Ближайший день · ') + when;
+  box.querySelector('[data-today-title]').textContent = it.t;
+  box.querySelector('[data-today-hook]').textContent = it.d;
+  box.querySelector('[data-today-href]').setAttribute('href', it.href);
+})();
+</script>
+)}

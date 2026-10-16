@@ -1,18 +1,52 @@
 ---
+// Главная музея — минимум 05-main-page.md §6-quinquies (8 блоков) для ЛЮБОГО музея из museums.json.
+// У музея без дней — честные пустые состояния, ссылок на несуществующие страницы нет.
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+import Cover from '../../../components/home/Cover.astro';
+import Today from '../../../components/home/Today.astro';
+import Calendar from '../../../components/home/Calendar.astro';
+import Themes from '../../../components/home/Themes.astro';
+import OpenDays from '../../../components/home/OpenDays.astro';
+import Council from '../../../components/home/Council.astro';
+import Support from '../../../components/home/Support.astro';
+import KudaDalshe from '../../../components/home/KudaDalshe.astro';
 export async function getStaticPaths() {
   const days = await getCollection('days');
   return (await getCollection('museums')).map((m) => ({
     params: { slug: m.data.slug },
-    props: { m: m.data, hasCalendar: days.some((d) => d.data.museum === m.data.slug) },
+    props: { m: m.data, days: days.filter((d) => d.data.museum === m.data.slug).map((d) => d.data).sort((a, b) => a.key.localeCompare(b.key)) },
   }));
 }
-const { m, hasCalendar } = Astro.props;
+const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const metaPath = `src/data/calendar-meta-${m.slug}.json`;
+const dated = fs.existsSync(metaPath) ? JSON.parse(fs.readFileSync(metaPath, 'utf8')).dated !== false : true;
+const href = (k: string) => `${base}muzei/${m.slug}/den/${k}/`;
+const when = (k: string) => { const mm = +k.slice(0, 2), dd = +k.slice(3); return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
+// данные окошка месяца — только ключи дней (движок считает «заполнено» по числу ключей)
+const cal: Record<string, unknown> = {};
+for (const d of days) cal[d.key] = { t: d.title, y: d.year, d: d.hook, href: href(d.key), link: 'Открыть экспонат дня →' };
+const img = days.flatMap((d) => d.images).find((i) => !i.generated);
+const first = days[0] && { key: days[0].key, title: days[0].title, hook: days[0].hook, href: href(days[0].key), when: when(days[0].key) };
+const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(1),
+  days: days.filter((d) => +d.key.slice(0, 2) === i + 1).map((d) => ({ title: d.title, href: href(d.key) })) })).filter((g) => g.days.length);
+const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...days.filter((d) => !(d.legacy_page || d.images.length))].slice(0, 12)
+  .map((d) => ({ title: d.title, href: href(d.key), when: when(d.key) }));
 ---
 <Base title={m.title_ru} description={m.promise_ru} museum={m.slug} crumbs={[{ label: m.title_ru }]} back={{ href: base, label: 'Город-музей' }}>
-  <header slot="header"><div class="b1">Музей № {m.number}</div><h1>{m.title_ru}</h1>{m.slogan_ru && <p>{m.slogan_ru}</p>}</header>
-  {m.promise_ru && <div class="council">{m.promise_ru}</div>}
-  {hasCalendar && <p style="margin-top:16px"><a href={`${base}muzei/${m.slug}/calendar/`}>Календарь музея →</a></p>}
+  <Cover slot="header" m={m} img={img} />
+  <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
+  <Today first={first} dated={dated} />
+  <div class="mh-supslot" data-support-slot></div>
+  <Calendar slug={m.slug} total={days.length} />
+  <Themes groups={groups} />
+  <OpenDays days={featured} total={days.length} calHref={days.length ? `${base}muzei/${m.slug}/calendar/` : undefined} />
+  <Council />
+  <KudaDalshe />
+  <Support museum={m.title_ru} />
+  <a slot="footer" href={base}>Выйти в город-музей «Русская цивилизация» →</a>
 </Base>

@@ -1,0 +1,18 @@
+---
+// Второй вход «по темам»: тем и залов в данных музея нет — честная группировка открытых дней по месяцам.
+interface Props { groups: { name: string; days: { title: string; href: string }[] }[] }
+const { groups } = Astro.props;
+---
+<section class="mh-sec" id="temy">
+  <h2 class="mh-h">По темам</h2>
+  {groups.length ? (<>
+    <p class="mh-note">Залы музея ещё не размечены — пока вход по месяцам года.</p>
+    <div class="mh-themes">
+      {groups.map((g) => (
+        <details class="mh-theme"><summary>{g.name} <span class="cnt">{g.days.length}</span></summary>
+          <ul>{g.days.map((d) => <li><a href={d.href}>{d.title}</a></li>)}</ul>
+        </details>
+      ))}
+    </div>
+  </>) : <p class="mh-empty">Залы и темы появятся вместе с первыми экспонатами.</p>}
+</section>

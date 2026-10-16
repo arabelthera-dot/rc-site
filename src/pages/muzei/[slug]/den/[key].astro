@@ -1,4 +1,9 @@
 ---
+// Страница дня (экспоната дня) — порядок блоков по 04-build.md §6/§6-бис:
+// шапка top (4 строки) → крошки → обложка-сцена + этикетка (если есть картинка) → подводка hero-lead
+// (дата, h1, хук как есть, кнопки) → «Поддержать проект» (museum-support.js, первая треть) →
+// суть + прочие картинки → механика → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
+// Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
@@ -19,25 +24,95 @@ const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
 const mm = parseInt(d.key.slice(0, 2)), dd = parseInt(d.key.slice(3));
 const when = dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`;
-const cal = `${base}muzei/${m.slug}/calendar/`;
+const museumUrl = `${base}muzei/${m.slug}/`;
+const cal = `${museumUrl}calendar/`;
+const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
+const [cover, ...rest] = d.images;
+const legacy = d.legacy_page ? `https://arabelthera-dot.github.io/rc-museum-preview/${d.legacy_page}` : undefined;
+const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${d.title}»`})};`;
 ---
-<Base title={`${d.title} · ${m.title_ru}`} description={d.hook} museum={m.slug}
-  crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: d.title }]}
+<Base title={`${d.title} — ${m.title_ru} — Русская цивилизация`} description={d.hook} museum={m.slug}
+  crumbs={[{ href: museumUrl, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: `${when} · ${d.title}` }]}
   back={{ href: cal, label: 'Календарь' }}>
-  <header slot="header"><div class="b1">{m.title_ru}</div></header>
-  <article class="day">
-    <div class="cdate">{when}</div>
-    <h2>{d.title}{d.year && <span class="caly"> {d.year}</span>}</h2>
-    <p class="hook">{d.hook}</p>
-    {d.images.map((im) => (
-      <figure class="dimg"><img src={im.src} alt={im.caption} loading="lazy" />
-        <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
-    {d.gist && <p class="row">{d.gist}</p>}
-    {d.mechanic && <p class="row"><b>Механика.</b> {d.mechanic}</p>}
-    {d.source && <p class="row"><b>Источник.</b> {d.source}</p>}
+  <Fragment slot="head">
+    <link rel="stylesheet" href={`${base}assets/fonts.css`} />
+    <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />
+  </Fragment>
+
+  <header slot="header" class="top">
+    <div class="b1">Русская цивилизация</div>
+    <div class="b2">Первый цифровой музей достижений России · Цивилизация первенств — что Россия дала миру раньше всех</div>
+    <div class="top-sep"></div>
+    <div class="museum">{m.title_ru}</div>
+    {m.slogan_ru && <div class="museum-slog">{m.slogan_ru}</div>}
+  </header>
+
+  <article class="dp">
+    {cover && (
+      <figure class="hero-scene">
+        <a href={cover.src} target="_blank" rel="noopener" aria-label="Открыть картинку целиком"><img src={cover.src} alt={cover.caption} /></a>
+        <figcaption class="scene-caption">{cover.caption} <span class="credit">{cover.credit}</span></figcaption>
+      </figure>
+    )}
+
+    <header class="hero-lead">
+      <div class="date-chip">{when}{d.year && ` · ${d.year}`}</div>
+      <h1>{d.title}</h1>
+      <p class="hook">{d.hook}</p>
+      <div class="hero-btns">
+        {d.gist && <a class="btn gold" href="#sut">Читать историю ↓</a>}
+        {legacy && <a class="btn ghost" href={legacy}>Полная страница экспоната</a>}
+        {!d.gist && !legacy && <a class="btn ghost" href={cal}>Календарь музея</a>}
+      </div>
+    </header>
+
+    <div class="dp-sup" data-support-slot></div>
+
+    {(d.gist || rest.length > 0) && (
+      <section class="block" id="sut">
+        <h2>Суть</h2>
+        {d.gist && <p>{d.gist}</p>}
+        {rest.map((im) => (
+          <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
+            <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
+      </section>
+    )}
+    {d.mechanic && (
+      <section class="block" id="mehanika">
+        <h2>Механика</h2>
+        <p>{d.mechanic}</p>
+      </section>
+    )}
+    {d.source && (
+      <section class="block" id="istochnik">
+        <h2>Источник</h2>
+        <p>{d.source}</p>
+      </section>
+    )}
   </article>
-  <nav class="daynav">
-    {prev ? <a href={`${base}muzei/${m.slug}/den/${prev}/`}>← предыдущий</a> : <span></span>}
-    {next ? <a href={`${base}muzei/${m.slug}/den/${next}/`}>следующий →</a> : <span></span>}
+
+  <nav class="dp-nav" aria-label="Соседние дни">
+    {prev ? <a href={dayUrl(prev)}>← предыдущий</a> : <span></span>}
+    <a href={cal}>все дни</a>
+    {next ? <a href={dayUrl(next)}>следующий →</a> : <span></span>}
   </nav>
+
+  <section class="block" id="kuda-dalshe">
+    <h2>Музей продолжается</h2>
+    <div class="dp-links">
+      <a href={museumUrl}>В музей «{m.title_ru}»</a>
+      <a href={cal}>Календарь музея</a>
+      <a href={base}>В город-музей</a>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <div class="dp-foot">
+      <a href={museumUrl}>← в музей «{m.title_ru}»</a> · <a href={base}>в город-музей →</a>
+    </div>
+    <div class="dp-err">Нашли неточность? <a href={`mailto:arabelthera@gmail.com?subject=${encodeURIComponent(`Ошибка: ${m.title_ru}, ${d.key}`)}`}>Сообщите нам</a> — проверим по источникам.</div>
+  </Fragment>
+
+  <script is:inline set:html={support}></script>
+  <script is:inline src={`${base}assets/museum-support.js`}></script>
 </Base>

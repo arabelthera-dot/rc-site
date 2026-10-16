@@ -1,0 +1,11 @@
+---
+interface Props { days: { title: string; href: string; when: string }[]; total: number; calHref?: string }
+const { days, total, calHref } = Astro.props;
+---
+<section class="mh-sec" id="otkryto">
+  <h2 class="mh-h">Открытые дни</h2>
+  {days.length ? (<>
+    <ul class="mh-open">{days.map((d) => <li><a href={d.href}><span class="w">{d.when}</span>{d.title}</a></li>)}</ul>
+    {calHref && total > days.length && <p class="mh-note"><a href={calHref}>Все {total} открытых дней — в календаре →</a></p>}
+  </>) : <p class="mh-empty">Открытых дней пока нет.</p>}
+</section>

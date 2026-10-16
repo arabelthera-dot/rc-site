@@ -1,0 +1,10 @@
+---
+// Поддержка — движком museum-support.js: главный блок встаёт в размеченный слот (первая треть),
+// дубль движок сам ставит в «Куда дальше» (#kuda-dalshe) у подвала, сердечко — тоже движок.
+interface Props { museum: string }
+const { museum } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const cfg = { museum, lang: 'ru' };
+---
+<script is:inline define:vars={{ cfg }}>window.MUSEUM_SUPPORT = cfg;</script>
+<script is:inline src={`${base}assets/museum-support.js`} defer></script>
