@@ -189,6 +189,44 @@ function pageSource(legacyPage) {
   const line = strip(html).match(/Источники?:\s*([^А-ЯЁ]*?[a-z0-9-]+\.[a-z]{2,}(?:\s*·\s*[a-z0-9.-]+\.[a-z]{2,})*)/);
   return line ? `Источники: ${line[1].trim()}` : undefined;
 }
+// Блок «Документ» изобретений (museum-proof.js) хранит источник в <script type="application/json" data-proof>:
+// найден (status found) — источник «документ — хранитель (сайт)», как его видит посетитель; не найден — нет.
+function proofSource(legacyPage) {
+  const raw = fs.readFileSync(path.join(LEGACY, legacyPage), 'utf8')
+    .match(/<script\b[^>]*\bdata-proof\b[^>]*>([\s\S]*?)<\/script>/)?.[1];
+  let p;
+  try { p = raw && JSON.parse(raw); } catch { return undefined; }
+  const o = p?.status === 'found' ? p.ours : undefined;
+  if (!o?.title || !/^https?:/.test(o.source_url ?? '') || NOT_SRC.test(o.source_url)) return undefined;
+  return `${[o.title, o.holder].filter(Boolean).join(' — ')} (${new URL(o.source_url).hostname.replace(/^www\./, '')})`;
+}
+
+// Заглушка вместо дня (название с 🔎 в начале, «Слот пуст — …») — рабочая пометка, не экспонат: карточки нет,
+// строка в журнале. Пометка 🔎 в хвосте настоящего названия (сказки 01-18) — не заглушка, текст как есть.
+// Сайт показывает такой день, как любой незаполненный: клетка «запись готовится» без ссылки.
+const isStub = (title) => /^\s*🔎|Слот пуст/.test(title ?? '');
+
+// Страница дня принимается, если она про этот день: в её title/h1 есть дата дня (у датированного музея)
+// или значимое слово названия календаря (от 4 букв, совпадение по основе — падеж не мешает). Название-этикетка
+// «Произведение» — автор сверяется по произведению: автор общий у многих страниц и пару не подтверждает.
+// Не подтвердилась — ссылки нет, оба названия в журнале импорта (старый календарь ведёт не на ту страницу).
+const MONR = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября',
+  'ноября', 'декабря'];
+const lowWords = (t) => t.toLowerCase().replace(/ё/g, 'е').match(/[a-zа-я0-9]+/g) ?? [];
+const sameStem = (a, b) => { const n = Math.max(4, Math.min(a.length, b.length) - 2);
+  return a.length >= n && b.length >= n && a.slice(0, n) === b.slice(0, n); };
+function pageHead(legacyPage) {
+  const html = fs.readFileSync(path.join(LEGACY, legacyPage), 'utf8');
+  return [/<title[^>]*>([\s\S]*?)<\/title>/, /<h1[^>]*>([\s\S]*?)<\/h1>/]
+    .map((re) => html.match(re)?.[1]).filter(Boolean).map(strip).join(' · ');
+}
+function pageMatches(legacyPage, key, title, dated) {
+  const head = pageHead(legacyPage), words = lowWords(head);
+  const date = `${parseInt(key.slice(3))} ${MONR[parseInt(key.slice(0, 2)) - 1]}`;
+  if (dated && new RegExp(`(^|[^0-9])${date}`).test(head.toLowerCase())) return { ok: true, head };
+  const name = (title ?? '').match(/^«([^»]+)»\s+—\s/)?.[1] ?? title ?? '';
+  return { ok: lowWords(name).some((w) => w.length >= 4 && words.some((x) => sameStem(x, w))), head };
+}
 
 function parseMonth(file) {
   const units = [];
@@ -230,13 +268,20 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   const meta = { total: cal.total ?? 365, dated: cal.dated !== false, ...(card.length && { card }) };
   fs.mkdirSync(out, { recursive: true });
   const skipped = [];
+  const notes = [];
   fs.rmSync(path.join('public/muzei', museum, 'img'), { recursive: true, force: true });
   let n = 0;
   const write = (key, card) => {
+    if (isStub(card.title)) { notes.push(`${key}: заглушка «${card.title}» — карточки нет`); return; }
     const href = cal[key]?.href;
     card.legacy_page = href ? `${path.dirname(rel)}/${href}` : undefined;
+    const page = card.legacy_page && pageMatches(card.legacy_page, key, card.title, meta.dated);
+    if (page && !page.ok) {
+      notes.push(`${key}: страница ${card.legacy_page} «${page.head}» не про день «${card.title}» — ссылки нет`);
+      card.legacy_page = undefined;
+    }
     if (card.legacy_page) card.images = pageImages(museum, card.legacy_page, skipped);
-    if (card.legacy_page && !card.source) card.source = pageSource(card.legacy_page);
+    if (card.legacy_page && !card.source) card.source = pageSource(card.legacy_page) ?? proofSource(card.legacy_page);
     fs.writeFileSync(path.join(out, `${key}.json`), JSON.stringify({ museum, key, ...card }, null, 2) + '\n');
     n++;
   };
@@ -254,6 +299,7 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   }
   fs.writeFileSync(path.join('src/data', `calendar-meta-${museum}.json`), JSON.stringify(meta) + '\n');
   console.log(`${museum}: ${n} карточек`);
+  if (notes.length) console.log(`  журнал импорта (${notes.length}): ${notes.join('; ')}`);
   if (skipped.length) console.log(`  кадры без подтверждённых прав, не перенесены (${skipped.length}): ${skipped.join('; ')}`);
   const conflicts = CONFLICTS.filter((c) => c.startsWith(`muzei/${museum}/`));
   if (conflicts.length) console.log(`  ведомость rights.json и media-manifest.json расходятся, взята ведомость (${conflicts.length}): ${conflicts.join('; ')}`);

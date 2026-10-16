@@ -23,8 +23,11 @@ const { d, m, prev, next, keys } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
-const mm = parseInt(d.key.slice(0, 2)), dd = parseInt(d.key.slice(3));
-const when = dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`;
+// Подпись дня: у датированного музея — дата, у недатированного — номер записи «День N · месяц»
+// (ключ там не дата: у первопроходцев есть 12-32, 12-33); одно правило для шапки дня и стрелок соседей.
+const whenOf = (key: string) => { const mm = parseInt(key.slice(0, 2)), dd = parseInt(key.slice(3));
+  return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
+const when = whenOf(d.key);
 const museumUrl = `${base}muzei/${m.slug}/`;
 const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
@@ -36,7 +39,7 @@ const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const legacy = d.legacy_page ? `https://arabelthera-dot.github.io/rc-museum-preview/${d.legacy_page}` : undefined;
 // museum-chrome.js (движок старого сайта, как есть): «Поделиться», липкие стрелки, строка «Случайное».
 // Случайный день — адресом с index.html: движок сравнивает последний кусок адреса, а у нас он пустой.
-const dayName = (x: { key: string; title: string }) => `${parseInt(x.key.slice(3))} ${MONR[parseInt(x.key.slice(0, 2)) - 1]} · ${x.title}`;
+const dayName = (x: { key: string; title: string }) => `${whenOf(x.key)} · ${x.title}`;
 const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
   museum: { title: m.title_ru, href: museumUrl },
   share: { title: `${d.title} — ${m.title_ru}`, text: d.hook ?? d.title },
