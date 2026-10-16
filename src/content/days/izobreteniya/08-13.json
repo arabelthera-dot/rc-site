@@ -1,5 +1,8 @@
 {
   "museum": "izobreteniya",
   "key": "08-13",
-  "title": "Рефлексы головного мозга, основы физиологии"
+  "title": "Рефлексы головного мозга, основы физиологии",
+  "hook": "Сеченов положил кристаллик соли на мозг лягушки и увидел, что мозг умеет тормозить рефлексы — так в 1862 году открыли центральное торможение.",
+  "mechanic": "Повторяешь опыт на модели и засекаешь, насколько позже лапка отдёргивается после кристаллика соли",
+  "source": "https://www.sechenov.ru/pressroom/publications/tsentralnoe-tormozhenie-vydayushcheesya-otkrytie-russkogo-fiziologa-im-sechenova1/"
 }

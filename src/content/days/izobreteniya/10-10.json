@@ -1,5 +1,8 @@
 {
   "museum": "izobreteniya",
   "key": "10-10",
-  "title": "Геология Сибири и Азии"
+  "title": "Геология Сибири и Азии",
+  "hook": "Геолог Обручев в 1939 году возглавил Институт мерзлотоведения Академии наук, и институт получил его имя ещё при жизни учёного.",
+  "mechanic": "Посетитель снимает слои сибирского грунта, пока не дойдёт до вечной мерзлоты",
+  "source": "https://scientificrussia.ru/articles/pervyj-geolog-sibiri-160-let-so-dna-rozdenia-vladimira-afanasevica-obruceva"
 }
