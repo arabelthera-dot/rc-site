@@ -77,7 +77,7 @@ const days = defineCollection({
     });
     if (d.legacy_page && !d.hook)
       ctx.addIssue({ code: 'custom', path: ['hook'], message: 'у дня со страницей нет хука' });
-    if (d.legacy_page && !d.source)
+    if (!waived && d.legacy_page && !d.source)
       ctx.addIssue({ code: 'custom', path: ['source'], message: 'у дня со страницей нет источника' });
   // Дня без названия в старом календаре (Календарь побед, 5 дней) — на месте названия его хук: другого текста нет.
   }).transform((d) => ({ ...d, title: d.title || d.hook || '' })),

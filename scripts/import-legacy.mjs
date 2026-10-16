@@ -16,14 +16,7 @@ const PROJECT = process.env.PROJECT || path.join(os.homedir(), 'projects/russian
 const APPROVED = { 'ne-sdayutsya': 'pilot-nesdayutsya' };
 // Музей не переносится, пока у него недоделка переноса; старый календарь работает (план переезда 15.10).
 // Текст, который паспорту дня не отвечает, переносится как есть (Сергей 16.10) — исключение в passport-waivers.json.
-const HOLD = {
-  // Не решение Сергея — недоделка переноса: источник дня в старом календаре не записан, он внутри страницы.
-  arhitektura: 'у 7 дней со страницей источник только внутри страницы — извлечение следующим куском',
-  izobreteniya: 'у 25 дней со страницей источник только внутри страницы — извлечение следующим куском',
-  karikatura: 'у 6 дней со страницей источник только внутри страницы — извлечение следующим куском',
-  literatura: 'у 1 дня со страницей источник только внутри страницы — извлечение следующим куском',
-  pervoprohodcy: 'у 5 дней со страницей источник только внутри страницы — извлечение следующим куском',
-};
+const HOLD = {};
 const loadCalendar = (rel) => {
   const ctx = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(LEGACY, rel), 'utf8'), ctx);
@@ -83,6 +76,33 @@ function pageImages(museum, legacyPage, rights, skipped) {
   return images;
 }
 
+// Источник дня, у которого в старом календаре его нет, — со старой страницы, как на ней записан:
+// первая ссылка блока «Источники» (без Википедии и лицензий) — «название (сайт)»; ссылки нет —
+// строка «Источники: …». Нет и её — источник не выдумывается, день идёт с исключением паспорта.
+const NOT_SRC = /wikipedia|wikimedia|wikisource|creativecommons|youtube|googleapis|github|t\.me|telegram|boosty|yoomoney|netlify/;
+const cyr = (t) => /[А-Яа-яЁё]/.test(t);
+function pageSource(legacyPage) {
+  const html = fs.readFileSync(path.join(LEGACY, legacyPage), 'utf8').replace(/<(script|style)[\s\S]*?<\/\1>/g, '');
+  const start = html.search(/id="sources"|class="[^"]*\b(sources|source-list|rights-sources|dossier|source)\b/);
+  for (const scope of start >= 0 ? [html.slice(start), html] : [html]) {
+    for (const a of scope.matchAll(/<a[^>]*\shref="(https?:\/\/[^"]+)"[^>]*>([\s\S]*?)<\/a\s*>/g)) {
+      if (NOT_SRC.test(a[1])) continue;
+      let t = strip(a[2]).replace(/\s*[→↗]+$/, '');
+      if (!cyr(t) || t.length < 6 || /^Источник/.test(t)) {
+        const before = scope.slice(0, a.index);
+        const open = Math.max(before.lastIndexOf('<li'), before.lastIndexOf('<p'));
+        const close = scope.slice(a.index).search(/<\/(li|p)>/);
+        if (open >= 0 && close >= 0) t = strip(scope.slice(open, a.index + close));
+        if (t.length > 200) continue;
+      }
+      if (cyr(t)) return `${t} (${new URL(a[1]).hostname.replace(/^www\./, '')})`;
+    }
+    if (start >= 0 && scope !== html) continue;
+  }
+  const line = strip(html).match(/Источники?:\s*([^А-ЯЁ]*?[a-z0-9-]+\.[a-z]{2,}(?:\s*·\s*[a-z0-9.-]+\.[a-z]{2,})*)/);
+  return line ? `Источники: ${line[1].trim()}` : undefined;
+}
+
 function parseMonth(file) {
   const units = [];
   let u = null;
@@ -131,6 +151,7 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
     const href = cal[key]?.href;
     card.legacy_page = href ? `${path.dirname(rel)}/${href}` : undefined;
     if (card.legacy_page) card.images = pageImages(museum, card.legacy_page, rights, skipped);
+    if (card.legacy_page && !card.source) card.source = pageSource(card.legacy_page);
     fs.writeFileSync(path.join(out, `${key}.json`), JSON.stringify({ museum, key, ...card }, null, 2) + '\n');
     n++;
   };
