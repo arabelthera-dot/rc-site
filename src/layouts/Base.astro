@@ -34,6 +34,14 @@ const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
   <link rel="sitemap" href={`${base}sitemap-index.xml`} />
   <meta name="theme-color" content="#060d18" />
   <link rel="canonical" href={url} />
+  <link rel="icon" href={`${base}favicon.ico`} sizes="any" />
+  <!-- Inter (объявлен в museum.css) набирает на страницах музеев шапку дня, крошки и блок «Поддержать»: файлы
+       (кириллица + латиница с цифрами) — заранее, иначе после их загрузки страница перескакивает (CLS, приёмка
+       M1 16.10). На главной портала Inter нет — там не качаем. -->
+  {museum && <>
+    <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2`} as="font" type="font/woff2" crossorigin />
+  </>}
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
   <slot name="head" />
 </head>
