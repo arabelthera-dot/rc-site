@@ -24,8 +24,11 @@ for (const m of withDays) for (const f of fs.readdirSync(path.join(DAYS, m))) {
 
 const walk = (dir) => fs.readdirSync(path.join(LEGACY, dir), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? walk(path.join(dir, e.name)) : e.name.endsWith('.html') ? [path.join(dir, e.name)] : []);
-const old = ['muzei', 'izobreteniya', 'iskusstvo', 'pervoprohodcy']
-  .filter((d) => fs.existsSync(path.join(LEGACY, d))).flatMap(walk).sort();
+// Служебные календари месяца review/<музей>-calendar-*.html — на них ссылаются полные страницы дней.
+const REVIEW_CAL = /^review\/([a-z-]+?)-calendar-[^/]+\.html$/;
+const old = ['muzei', 'izobreteniya', 'iskusstvo', 'pervoprohodcy', 'review']
+  .filter((d) => fs.existsSync(path.join(LEGACY, d))).flatMap(walk)
+  .filter((rel) => !rel.startsWith('review/') || withDays.has((rel.match(REVIEW_CAL) || [])[1])).sort();
 
 // Старая страница «переехала» — куда ведёт её meta refresh (путь от корня старого сайта).
 const refresh = (rel) => {
@@ -37,6 +40,8 @@ const refresh = (rel) => {
 };
 
 const resolve = (rel, seen = new Set()) => {
+  const cal = rel.match(REVIEW_CAL);
+  if (cal) return [`/muzei/${cal[1]}/calendar/`, 'календарь'];
   const q = rel.startsWith('muzei/') ? rel : `muzei/${rel}`;
   const [, m, file] = q.match(/^muzei\/([^/]+)\/(.+)$/) || [];
   if (byLegacy.has(q)) return [byLegacy.get(q), 'день'];
