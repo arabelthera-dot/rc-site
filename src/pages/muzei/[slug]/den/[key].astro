@@ -2,7 +2,7 @@
 // Страница дня (экспоната дня) — порядок блоков по 04-build.md §6/§6-бис:
 // шапка top (4 строки) → крошки → обложка-сцена + этикетка (если есть картинка) → подводка hero-lead
 // (дата, h1, хук как есть, кнопки) → «Поддержать проект» (museum-support.js, первая треть) →
-// суть + прочие картинки → механика → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
+// суть + прочие картинки → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
 // Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
@@ -28,6 +28,9 @@ const museumUrl = `${base}muzei/${m.slug}/`;
 const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
 const [cover, ...rest] = d.images;
+// Поле mechanic — описание задачи для разработки (след черновика, 04-build «Заголовок и подписи»);
+// посетителю его не показываем, интерактив придёт движком при переносе (шаг 4 плана).
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const legacy = d.legacy_page ? `https://arabelthera-dot.github.io/rc-museum-preview/${d.legacy_page}` : undefined;
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${d.title}»`})};`;
 ---
@@ -71,16 +74,10 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     {(d.gist || rest.length > 0) && (
       <section class="block" id="sut">
         <h2>Суть</h2>
-        {d.gist && <p>{d.gist}</p>}
+        {d.gist && <p>{cap(d.gist)}</p>}
         {rest.map((im) => (
           <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
             <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
-      </section>
-    )}
-    {d.mechanic && (
-      <section class="block" id="mehanika">
-        <h2>Механика</h2>
-        <p>{d.mechanic}</p>
       </section>
     )}
     {d.source && (
@@ -100,7 +97,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
   <section class="block" id="kuda-dalshe">
     <h2>Музей продолжается</h2>
     <div class="dp-links">
-      <a href={museumUrl}>В музей «{m.title_ru}»</a>
+      <a href={museumUrl}>{m.title_ru}</a>
       <a href={cal}>Календарь музея</a>
       <a href={base}>В город-музей</a>
     </div>
@@ -108,7 +105,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 
   <Fragment slot="footer">
     <div class="dp-foot">
-      <a href={museumUrl}>← в музей «{m.title_ru}»</a> · <a href={base}>в город-музей →</a>
+      <a href={museumUrl}>← {m.title_ru}</a> · <a href={base}>в город-музей →</a>
     </div>
     <div class="dp-err">Нашли неточность? <a href={`mailto:arabelthera@gmail.com?subject=${encodeURIComponent(`Ошибка: ${m.title_ru}, ${d.key}`)}`}>Сообщите нам</a> — проверим по источникам.</div>
   </Fragment>
