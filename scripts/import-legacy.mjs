@@ -46,12 +46,14 @@ const squash = (t) => t.replace(/\s+/g, ' ').trim();
 // Рабочие пометки авторов («(Детали — факт-чек.)») посетителю не показываются; в таблицах остаются.
 const NOTE = /\s*\([^()]*факт-чек[^()]*\)/g;
 
-// Картинки дня — кадры готовой страницы старого сайта, но только с записью о правах. Записи три, как их вели
+// Картинки дня — кадры готовой страницы старого сайта, но только с записью о правах. Записи четыре, как их вели
 // музеи: паспорт выпуска (rc-museum-production/<музей>/<выпуск>/passport/issue.json, images[]: путь, источник,
-// подпись автора, rights.status), ведомость rights.json в папке кадра или музея, атрибуты data-source и
-// data-license на самом кадре. Тот же кадр в другом формате (pogost-1280.jpg при записи pogost-1280.webp)
-// берёт запись своего кадра. Записи нет или права не подтверждены — кадр не идёт, причина в журнале импорта:
-// источник не выдумывается. Подпись — figcaption страницы, иначе описание из записи, иначе alt кадра.
+// подпись автора, rights.status), ведомость rights.json в папке кадра или музея (её ведёт tools/audit-prava.py),
+// манифест выпуска media-manifest.json (источник, автор, лицензия — берётся, только если строки ведомости нет;
+// расходятся — побеждает ведомость, расхождение в журнале импорта), атрибуты data-source и data-license на кадре.
+// Тот же кадр в другом формате (pogost-1280.jpg при записи pogost-1280.webp) берёт запись своего кадра.
+// Записи нет или права не подтверждены — кадр не идёт, причина в журнале импорта: источник не выдумывается.
+// Подпись — figcaption страницы, иначе описание из записи, иначе alt кадра.
 const decode = (t) => t.replace(/&quot;/g, '"').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
   .replace(/&mdash;/g, '—').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
 const strip = (t) => squash(decode(t.replace(/<[^>]+>/g, ' '))).replace(/\s+([.,;:!?»)])/g, '$1');
@@ -69,15 +71,40 @@ for (const museum of fs.existsSync(PRODUCTION) ? fs.readdirSync(PRODUCTION) : []
   }
 }
 const RIGHTS = {};
+const MANIFEST = {};
+// Манифест выпуска в трёх схемах архитектуры: images[] {file, source}, items[] {file, source_url},
+// items[] {path, source_url}. Приводится к строкам {file, source, author, license}; производный кадр
+// (derived_from: hero-480 от hero) без своих полей берёт их у оригинала.
+const manifestRows = (j) => {
+  const rows = (j.images ?? j.items ?? []).map((r) => ({ file: r.file ?? r.path, source: r.source ?? r.source_url,
+    author: r.author, license: r.license, from: r.derived_from }));
+  const byFile = Object.fromEntries(rows.map((r) => [r.file, r]));
+  return rows.filter((r) => r.file).map(({ from, ...r }) => ({ ...r, source: r.source ?? byFile[from]?.source,
+    author: r.author ?? byFile[from]?.author, license: r.license ?? byFile[from]?.license }));
+};
 const walk = (dir) => { for (const e of fs.readdirSync(path.join(LEGACY, dir), { withFileTypes: true })) {
   if (e.isDirectory()) walk(path.join(dir, e.name));
   else if (e.name === 'rights.json') {
     // Ведомость двух видов: массив строк (музеи) или {"files": […]} (zum искусства: author, source_url, object).
     const j = JSON.parse(fs.readFileSync(path.join(LEGACY, dir, e.name), 'utf8'));
     for (const r of Array.isArray(j) ? j : j.files ?? []) if (r.file) RIGHTS[stem(path.normalize(path.join(dir, r.file)))] = r;
+  } else if (e.name === 'media-manifest.json') {
+    const j = JSON.parse(fs.readFileSync(path.join(LEGACY, dir, e.name), 'utf8'));
+    for (const r of manifestRows(j)) MANIFEST[stem(path.normalize(path.join(dir, r.file)))] = r;
   }
 } };
 walk('muzei');
+// Расхождения ведомости и манифеста по одному кадру: ссылка — по имени файла Commons, лицензия и автор —
+// без регистра, пробелов и знаков. В журнал импорта музея; на сайт идёт ведомость.
+const norm = (t) => (t ?? '').toLowerCase().replace(/public domain|^pd\b.*/, 'pd').replace(/[^\p{L}\p{N}.]+/gu, '');
+const fileOf = (u) => { try { u = decodeURI(u ?? ''); } catch {} return u.replace(/^.*[/:](File|Файл):/i, '').replace(/ /g, '_'); };
+const CONFLICTS = Object.entries(MANIFEST).filter(([k]) => RIGHTS[k]).flatMap(([k, m]) => {
+  const r = RIGHTS[k];
+  const diff = [['лицензия', r.license, m.license, norm], ['источник', r.source ?? r.source_url ?? r.url, m.source, fileOf],
+    ['автор', r.artist ?? r.author, m.author, norm]].filter(([, a, b, f]) => a && b && f(a) !== f(b))
+    .map(([what, a, b]) => `${what} «${a}» ≠ «${b}»`);
+  return diff.length ? [`${k}: ${diff.join(', ')}`] : [];
+});
 const UNKNOWN = /^\s*(unknown|pending|нет данных|неизвестн)/i;
 const commons = (url, credit = '') => (/commons\.wikimedia\.org/.test(url ?? '') && !/commons/i.test(credit) ? 'Wikimedia Commons' : '');
 const attr = (tag, name) => decode(tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1] ?? '');
@@ -96,6 +123,13 @@ function rightsOf(rel, tag) {
     if (why) return { why: `rights.json: ${why}` };
     return { credit: [r.artist ?? r.author, lic, commons(src) || src].filter(Boolean).join(', '),
       about: (r.description ?? r.object)?.replace(/\s*—\s*замена кадра[\s\S]*$/, '') };
+  }
+  const m = MANIFEST[stem(rel)];
+  if (m) {
+    const why = UNKNOWN.test(m.license ?? '') ? 'права «unknown»' : !m.license ? 'нет лицензии'
+      : !/^https?:/.test(m.source ?? '') ? 'нет источника' : '';
+    if (why) return { why: `media-manifest.json: ${why}` };
+    return { credit: [m.author, m.license, commons(m.source) || m.source].filter(Boolean).join(', ') };
   }
   const lic = attr(tag, 'data-license'), src = attr(tag, 'data-source');
   if (UNKNOWN.test(lic)) return { why: 'права «unknown» в атрибутах кадра' };
@@ -221,4 +255,6 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   fs.writeFileSync(path.join('src/data', `calendar-meta-${museum}.json`), JSON.stringify(meta) + '\n');
   console.log(`${museum}: ${n} карточек`);
   if (skipped.length) console.log(`  кадры без подтверждённых прав, не перенесены (${skipped.length}): ${skipped.join('; ')}`);
+  const conflicts = CONFLICTS.filter((c) => c.startsWith(`muzei/${museum}/`));
+  if (conflicts.length) console.log(`  ведомость rights.json и media-manifest.json расходятся, взята ведомость (${conflicts.length}): ${conflicts.join('; ')}`);
 }
