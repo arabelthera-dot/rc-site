@@ -13,10 +13,14 @@ export async function getStaticPaths() {
 const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const meta = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8'));
-const cal: Record<string, unknown> = { ...meta };
+// Состав карточки — как у старого календаря этого музея: механика и источник только там, где они
+// были (поле card в calendar-meta); иначе они на странице дня, а прилипшая карточка не закрывает «Поддержать проект».
+const { card = [], ...conf } = meta;
+const cal: Record<string, unknown> = { ...conf };
 for (const d of days) {
-  cal[d.data.key] = { t: d.data.title, y: d.data.year, d: d.data.hook, mech: d.data.mechanic, src: d.data.source,
-    href: `${base}muzei/${m.slug}/den/${d.data.key}/` };
+  cal[d.data.key] = { t: d.data.title, y: d.data.year, d: d.data.hook,
+    ...(card.includes('mech') && { mech: d.data.mechanic }), ...(card.includes('src') && { src: d.data.source }),
+    href: `${base}muzei/${m.slug}/den/${d.data.key}/`, link: 'Открыть страницу →' };
 }
 ---
 <Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { label: 'Календарь' }]} back={{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }}>

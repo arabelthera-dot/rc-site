@@ -1,12 +1,13 @@
 ---
-interface Props { title: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; back?: { href: string; label: string } }
-const { title, description, image, imageAlt, type = 'website', museum, crumbs = [], back } = Astro.props;
+interface Props { title: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; back?: { href: string; label: string }; ownStyle?: boolean }
+const { title, description, image, imageAlt, type = 'website', museum, crumbs = [], back, ownStyle = false } = Astro.props;
 import "../styles/museum.css";
 const base = import.meta.env.BASE_URL;
 // Свой стиль музея переносится из старого сайта как есть (public/muzei/<slug>/*-style.css, план шаг 4);
-// нет файла — страница на общем museum.css.
+// нет файла — страница на общем museum.css. Как на старом сайте — только у страниц дня (ownStyle):
+// календарь и главная музея там на своём общем стиле.
 const fs = await import('node:fs');
-const own = museum && fs.existsSync(`public/muzei/${museum}`)
+const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
   ? fs.readdirSync(`public/muzei/${museum}`).find((f: string) => f.endsWith('-style.css')) : undefined;
 // Паспорт для поиска и пересылки (Open Graph, «да» Сергея 16.10): картинка превью — своя у страницы,
 // иначе обложка музея со старого сайта (public/og/<музей>_index.jpg), иначе общая og-default.jpg.
