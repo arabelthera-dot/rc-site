@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "import": "node scripts/import-legacy.mjs"
+    "import": "node scripts/import-legacy.mjs && node scripts/redirects.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
