@@ -39,7 +39,7 @@ const legacy = d.legacy_page ? `https://arabelthera-dot.github.io/rc-museum-prev
 const dayName = (x: { key: string; title: string }) => `${parseInt(x.key.slice(3))} ${MONR[parseInt(x.key.slice(0, 2)) - 1]} · ${x.title}`;
 const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
   museum: { title: m.title_ru, href: museumUrl },
-  share: { title: `${d.title} — ${m.title_ru}`, text: d.hook },
+  share: { title: `${d.title} — ${m.title_ru}`, text: d.hook ?? d.title },
   prev: prev && { href: dayUrl(prev.key), title: dayName(prev) },
   next: next && { href: dayUrl(next.key), title: dayName(next) },
   all: { href: cal, label: 'Все дни календаря' },
@@ -48,7 +48,7 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
 })};`;
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${d.title}»`})};`;
 ---
-<Base ownStyle title={`${d.title} — ${m.title_ru} — Русская цивилизация`} description={d.hook} museum={m.slug}
+<Base ownStyle title={`${d.title} — ${m.title_ru} — Русская цивилизация`} description={d.hook ?? `${d.title} — ${m.title_ru}`} museum={m.slug}
   image={cover?.src} imageAlt={cover?.caption} type="article"
   crumbs={[{ href: museumUrl, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: `${when} · ${d.title}` }]}
   back={{ href: cal, label: 'Календарь' }}>
@@ -76,7 +76,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     <header class="hero-lead">
       <div class="date-chip">{when}{d.year && ` · ${d.year}`}</div>
       <h1>{d.title}</h1>
-      <p class="hook">{d.hook}</p>
+      {d.hook && <p class="hook">{d.hook}</p>}
       <div class="hero-btns">
         {d.gist && <a class="btn gold" href="#sut">Читать историю ↓</a>}
         {legacy && <a class="btn ghost" href={legacy}>Полная страница экспоната</a>}

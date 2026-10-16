@@ -1,7 +1,8 @@
 // Перенос данных в карточки нового сайта.
-// Каталог музеев копируется как есть. Карточка дня — из утверждённых месячных файлов музея
-// (название, год, хук, механика, источник, суть); из старого calendar-*.js — только ссылка
-// на готовую страницу дня и конфиг года.
+// Каталог музеев копируется как есть. Календари — все muzei/<музей>/calendar-*.js старого сайта.
+// Есть утверждённые месячные файлы музея (APPROVED) — карточка из них (название, год, хук, механика,
+// источник, суть), из calendar-*.js только ссылка на готовую страницу дня и конфиг года.
+// Нет — карточка 1:1 из calendar-*.js: t → название, y → год, d → хук, mech/m → механика, src → источник.
 // Запуск: npm run import  (LEGACY — путь к rc-museum-preview, по умолчанию ~/rc-museum-preview)
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,8 +13,33 @@ const LEGACY = process.env.LEGACY || path.join(os.homedir(), 'rc-museum-preview'
 const CATALOG = process.env.CATALOG ||
   path.join(os.homedir(), 'projects/russian-civilization/platform/catalog/museums.json');
 const PROJECT = process.env.PROJECT || path.join(os.homedir(), 'projects/russian-civilization');
-const CALENDARS = { 'ne-sdayutsya': 'muzei/ne-sdayutsya/calendar-nesdayutsya.js' };
 const APPROVED = { 'ne-sdayutsya': 'pilot-nesdayutsya' };
+// Утверждённый текст, который паспорту дня не отвечает, машина не правит: музей ждёт решения Сергея
+// и не переносится, старый календарь работает (план переезда 15.10: старое работает до переключения).
+const HOLD = {
+  arhitektura: 'все 365 подписей — вопросы, правило хука: без вопроса в хвосте (вопрос Сергею 16.10)',
+  pervoprohodcy: '6 записей сверх года 12-32…12-37 длиннее 200 знаков и в несколько предложений',
+  'kalendar-pobed': '5 дней без названия в старом календаре (01-16, 01-21, 01-23, 01-26, 01-29) — название не выдумывается',
+  // Не решение Сергея — недоделка переноса: источник дня в старом календаре не записан, он внутри страницы.
+  izobreteniya: 'у 25 дней со страницей источник только внутри страницы — извлечение следующим куском',
+  karikatura: 'у 6 дней со страницей источник только внутри страницы — извлечение следующим куском',
+  literatura: 'у 1 дня со страницей источник только внутри страницы — извлечение следующим куском',
+};
+const loadCalendar = (rel) => {
+  const ctx = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(LEGACY, rel), 'utf8'), ctx);
+  return ctx.window.MUSEUM_CALENDAR;
+};
+// Календарь музея — тот calendar-*.js, где лежит MUSEUM_CALENDAR (у изобретений calendar-data.js пустой).
+const CALENDARS = {};
+for (const museum of fs.readdirSync(path.join(LEGACY, 'muzei')).sort()) {
+  const dir = path.join(LEGACY, 'muzei', museum);
+  if (!fs.statSync(dir).isDirectory()) continue;
+  for (const f of fs.readdirSync(dir).filter((x) => /^calendar-.*\.js$/.test(x)).sort()) {
+    if (loadCalendar(`muzei/${museum}/${f}`)) { CALENDARS[museum] = `muzei/${museum}/${f}`; break; }
+  }
+}
+const isKey = (k) => /^\d\d-\d\d$/.test(k);
 const MONTHS = ['01-yanvar', '02-fevral', '03-mart', '04-aprel', '05-may', '06-iyun',
   '07-iyul', '08-avgust', '09-sentyabr', '10-oktyabr', '11-noyabr', '12-dekabr'];
 
@@ -88,31 +114,39 @@ function parseMonth(file) {
 fs.copyFileSync(CATALOG, 'src/data/museums.json');
 
 for (const [museum, rel] of Object.entries(CALENDARS)) {
-  const ctx = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(LEGACY, rel), 'utf8'), ctx);
-  const cal = ctx.window.MUSEUM_CALENDAR;
-  const meta = { total: cal.total ?? 365, dated: cal.dated !== false };
   const out = path.join('src/content/days', museum);
   fs.rmSync(out, { recursive: true, force: true });
+  if (HOLD[museum]) { fs.rmSync(path.join('src/data', `calendar-meta-${museum}.json`), { force: true }); console.log(`${museum}: не перенесён — ${HOLD[museum]}`); continue; }
+  const cal = loadCalendar(rel);
+  const keys = Object.keys(cal).filter(isKey);
+  // Состав карточки календаря — как у старого: механика и источник только там, где они были.
+  const card = ['mech', 'src'].filter((f) => keys.some((k) => cal[k][f]));
+  const meta = { total: cal.total ?? 365, dated: cal.dated !== false, ...(card.length && { card }) };
   fs.mkdirSync(out, { recursive: true });
   const rightsFile = path.join(LEGACY, path.dirname(rel), 'rights.json');
   const rights = fs.existsSync(rightsFile) ? JSON.parse(fs.readFileSync(rightsFile, 'utf8')) : [];
   const skipped = [];
   fs.rmSync(path.join('public/muzei', museum, 'img'), { recursive: true, force: true });
   let n = 0;
-  MONTHS.forEach((name, i) => {
+  const write = (key, card) => {
+    const href = cal[key]?.href;
+    card.legacy_page = href ? `${path.dirname(rel)}/${href}` : undefined;
+    if (card.legacy_page) card.images = pageImages(museum, card.legacy_page, rights, skipped);
+    fs.writeFileSync(path.join(out, `${key}.json`), JSON.stringify({ museum, key, ...card }, null, 2) + '\n');
+    n++;
+  };
+  if (APPROVED[museum]) MONTHS.forEach((name, i) => {
     const file = path.join(PROJECT, APPROVED[museum], `calendar-${name}.md`);
     for (const u of parseMonth(file)) {
-      const key = `${String(i + 1).padStart(2, '0')}-${String(u.day).padStart(2, '0')}`;
-      const href = cal[key]?.href;
-      const card = { museum, key, title: u.title, year: u.year ? Number(u.year) : undefined,
-        hook: u.hook, mechanic: u.mechanic, source: u.source, gist: u.gist?.replace(NOTE, '').trim(),
-        legacy_page: href ? `${path.dirname(rel)}/${href}` : undefined };
-      if (card.legacy_page) card.images = pageImages(museum, card.legacy_page, rights, skipped);
-      fs.writeFileSync(path.join(out, `${key}.json`), JSON.stringify(card, null, 2) + '\n');
-      n++;
+      write(`${String(i + 1).padStart(2, '0')}-${String(u.day).padStart(2, '0')}`, { title: u.title,
+        year: u.year ? Number(u.year) : undefined, hook: u.hook, mechanic: u.mechanic, source: u.source,
+        gist: u.gist?.replace(NOTE, '').trim() });
     }
   });
+  else for (const key of keys) {
+    const it = cal[key];
+    write(key, { title: it.t, year: it.y, hook: it.d, mechanic: it.mech ?? it.m, source: it.src });
+  }
   fs.writeFileSync(path.join('src/data', `calendar-meta-${museum}.json`), JSON.stringify(meta) + '\n');
   console.log(`${museum}: ${n} карточек`);
   if (skipped.length) console.log(`  без записи в ведомости прав, не перенесено (${skipped.length}): ${skipped.join('; ')}`);

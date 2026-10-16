@@ -35,7 +35,7 @@ const beyond = (k: string) => !dated && +k.slice(3) > YEAR[+k.slice(0, 2) - 1];
 const yearDays = days.filter((d) => !beyond(d.key));
 const extra = days.filter((d) => beyond(d.key));
 const cal: Record<string, unknown> = {};
-for (const d of yearDays) cal[d.key] = { t: d.title, y: d.year, d: d.hook, href: href(d.key), link: 'Открыть экспонат дня →' };
+for (const d of yearDays) cal[d.key] = { t: d.title, y: d.year, d: d.hook ?? '', href: href(d.key), link: 'Открыть экспонат дня →' };
 const img = days.flatMap((d) => d.images).find((i) => !i.generated);
 const first = days[0] && { key: days[0].key, title: days[0].title, hook: days[0].hook, href: href(days[0].key), when: when(days[0].key) };
 const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(1),

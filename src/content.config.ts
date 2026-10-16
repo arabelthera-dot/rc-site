@@ -46,7 +46,8 @@ const days = defineCollection({
     key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД'),
     title: z.string().min(1),
     year: z.union([z.string(), z.number()]).optional(),
-    hook: z.string().min(1).max(200, 'хук длиннее 200 знаков'),
+    // Хука нет только там, где его не было в старом календаре (изобретения: 146 дней без подписи, 16.10).
+    hook: z.string().min(1).max(200, 'хук длиннее 200 знаков').optional(),
     mechanic: z.string().optional(),
     source: z.string().optional(),
     gist: z.string().optional(),
@@ -54,7 +55,7 @@ const days = defineCollection({
     images: z.array(image).default([]),
   }).superRefine((d, ctx) => {
     const waived = `${d.museum}/${d.key}` in waivers;
-    const hook = outsideQuotes(d.hook);
+    const hook = outsideQuotes(d.hook ?? '');
     if (!waived && secondSentence.test(hook))
       ctx.addIssue({ code: 'custom', path: ['hook'], message: 'хук — одно предложение' });
     if (!waived && /\?\s*$/.test(hook))
@@ -69,6 +70,8 @@ const days = defineCollection({
       if (im.generated && !/сгенерир|реконструкц/i.test(im.caption))
         ctx.addIssue({ code: 'custom', path: ['images', i, 'caption'], message: 'сгенерированная картинка без пометки в подписи' });
     });
+    if (d.legacy_page && !d.hook)
+      ctx.addIssue({ code: 'custom', path: ['hook'], message: 'у дня со страницей нет хука' });
     if (d.legacy_page && !d.source)
       ctx.addIssue({ code: 'custom', path: ['source'], message: 'у дня со страницей нет источника' });
   }),

@@ -18,7 +18,7 @@ const meta = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`,
 const { card = [], ...conf } = meta;
 const cal: Record<string, unknown> = { ...conf };
 for (const d of days) {
-  cal[d.data.key] = { t: d.data.title, y: d.data.year, d: d.data.hook,
+  cal[d.data.key] = { t: d.data.title, y: d.data.year, d: d.data.hook ?? '',
     ...(card.includes('mech') && { mech: d.data.mechanic }), ...(card.includes('src') && { src: d.data.source }),
     href: `${base}muzei/${m.slug}/den/${d.data.key}/`, link: 'Открыть страницу →' };
 }
