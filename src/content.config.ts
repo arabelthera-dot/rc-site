@@ -23,8 +23,9 @@ const museums = defineCollection({
 // Источник: русский (описан по-русски), без Википедии в тексте (12.08); обязателен, как только у дня есть страница.
 // Картинки: у каждой подпись и источник; текста на картинке нет; сгенерированное помечено и в подписи
 // не выдаётся за архивный кадр (CLAUDE.md, Genosai 30.08); реальное есть — генерацию не ставить.
-// Утверждённый хук, который правилу не отвечает, не правится машиной — ждёт ответа Сергея
-// в src/data/passport-waivers.json («музей/ключ»: «вопрос и дата»); ответ получен — строку удалить.
+// Утверждённый текст, который правилу не отвечает, не правится машиной: исключение — строкой в
+// src/data/passport-waivers.json («музей» на весь музей или «музей/ключ»: «слово Сергея и дата»).
+// 16.10 Сергей: «переноси как есть, дальше будем менять, улучшать» — переписанный день строку снимает.
 import waivers from './data/passport-waivers.json';
 
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
@@ -44,17 +45,21 @@ const days = defineCollection({
   schema: z.object({
     museum: z.string(),
     key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД'),
-    title: z.string().min(1),
+    title: z.string(),
     year: z.union([z.string(), z.number()]).optional(),
     // Хука нет только там, где его не было в старом календаре (изобретения: 146 дней без подписи, 16.10).
-    hook: z.string().min(1).max(200, 'хук длиннее 200 знаков').optional(),
+    hook: z.string().min(1).optional(),
     mechanic: z.string().optional(),
     source: z.string().optional(),
     gist: z.string().optional(),
     legacy_page: z.string().optional(),
     images: z.array(image).default([]),
   }).superRefine((d, ctx) => {
-    const waived = `${d.museum}/${d.key}` in waivers;
+    const waived = d.museum in waivers || `${d.museum}/${d.key}` in waivers;
+    if (!waived && !d.title)
+      ctx.addIssue({ code: 'custom', path: ['title'], message: 'у дня нет названия' });
+    if (!waived && (d.hook ?? '').length > 200)
+      ctx.addIssue({ code: 'custom', path: ['hook'], message: 'хук длиннее 200 знаков' });
     const hook = outsideQuotes(d.hook ?? '');
     if (!waived && secondSentence.test(hook))
       ctx.addIssue({ code: 'custom', path: ['hook'], message: 'хук — одно предложение' });
@@ -74,7 +79,8 @@ const days = defineCollection({
       ctx.addIssue({ code: 'custom', path: ['hook'], message: 'у дня со страницей нет хука' });
     if (d.legacy_page && !d.source)
       ctx.addIssue({ code: 'custom', path: ['source'], message: 'у дня со страницей нет источника' });
-  }),
+  // Дня без названия в старом календаре (Календарь побед, 5 дней) — на месте названия его хук: другого текста нет.
+  }).transform((d) => ({ ...d, title: d.title || d.hook || '' })),
 });
 
 export const collections = { museums, days };
