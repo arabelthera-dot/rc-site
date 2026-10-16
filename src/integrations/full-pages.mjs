@@ -2,11 +2,20 @@
 // muzei/<музей>/den/<ключ>/index.html — эта страница 1:1 вместо карточки. <base> на папку музея — относительные
 // пути (картинки, ../../assets/, соседние day-*.html → переадресации) работают при любом base.
 // Якоря href="#…" при <base> вели бы на папку музея — переписываются на собственный адрес страницы.
+// Относительные href/src/poster/srcset/url() — в абсолютные от папки музея: <base> видит браузер, но не проверка
+// ссылок (lychee резолвит от адреса файла — 757 ложных «нет файла», rc-site#16); <base> остаётся для скриптов.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const SRC = 'src/data/full-pages';
+const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/|#|\$|\{)/i; // схема, корень, якорь, шаблон
+
+function absolute(url, dirUrl) {
+  const u = url.trim();
+  if (!u || SKIP.test(u)) return url;
+  return new URL(u, `http://x${dirUrl}`).href.slice('http://x'.length);
+}
 
 export default function fullPages() {
   let base = '/';
@@ -29,7 +38,14 @@ export default function fullPages() {
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
             html = html
               .replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}muzei/${museum}/">`)
-              .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`);
+              .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`)
+              .replace(/(\s(?:href|src|poster)\s*=\s*)(["'])([^"']*)\2/gi,
+                (m, a, q, u) => `${a}${q}${absolute(u, `${base}muzei/${museum}/`)}${q}`)
+              .replace(/(\ssrcset\s*=\s*)(["'])([^"']*)\2/gi, (m, a, q, v) => `${a}${q}${v.split(',')
+                .map((part) => part.replace(/^(\s*)(\S+)/, (x, sp, u) => sp + absolute(u, `${base}muzei/${museum}/`)))
+                .join(',')}${q}`)
+              .replace(/(\burl\(\s*)(['"]?)([^'")]+)\2(\s*\))/gi,
+                (m, a, q, u, z) => `${a}${q}${absolute(u, `${base}muzei/${museum}/`)}${q}${z}`);
             fs.writeFileSync(out, html);
             n++;
           }
