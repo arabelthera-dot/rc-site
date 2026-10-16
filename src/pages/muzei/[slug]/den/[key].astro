@@ -15,10 +15,11 @@ export async function getStaticPaths() {
     const own = days.filter((x) => x.data.museum === d.data.museum);
     const i = own.indexOf(d);
     return { params: { slug: d.data.museum, key: d.data.key },
-      props: { d: d.data, m: museums.find((x) => x.id === d.data.museum)!.data, prev: own[i - 1]?.data.key, next: own[i + 1]?.data.key } };
+      props: { d: d.data, m: museums.find((x) => x.id === d.data.museum)!.data, prev: own[i - 1]?.data, next: own[i + 1]?.data,
+        keys: own.map((x) => x.data.key) } };
   });
 }
-const { d, m, prev, next } = Astro.props;
+const { d, m, prev, next, keys } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
@@ -32,6 +33,18 @@ const [cover, ...rest] = d.images;
 // посетителю его не показываем, интерактив придёт движком при переносе (шаг 4 плана).
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const legacy = d.legacy_page ? `https://arabelthera-dot.github.io/rc-museum-preview/${d.legacy_page}` : undefined;
+// museum-chrome.js (движок старого сайта, как есть): «Поделиться», липкие стрелки, строка «Случайное».
+// Случайный день — адресом с index.html: движок сравнивает последний кусок адреса, а у нас он пустой.
+const dayName = (x: { key: string; title: string }) => `${parseInt(x.key.slice(3))} ${MONR[parseInt(x.key.slice(0, 2)) - 1]} · ${x.title}`;
+const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
+  museum: { title: m.title_ru, href: museumUrl },
+  share: { title: `${d.title} — ${m.title_ru}`, text: d.hook },
+  prev: prev && { href: dayUrl(prev.key), title: dayName(prev) },
+  next: next && { href: dayUrl(next.key), title: dayName(next) },
+  all: { href: cal, label: 'Все дни календаря' },
+  city: base,
+  random: keys.filter((k: string) => k !== d.key).map((k: string) => `${dayUrl(k)}index.html`),
+})};`;
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${d.title}»`})};`;
 ---
 <Base title={`${d.title} — ${m.title_ru} — Русская цивилизация`} description={d.hook} museum={m.slug}
@@ -89,17 +102,15 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
   </article>
 
   <nav class="dp-nav" aria-label="Соседние дни">
-    {prev ? <a href={dayUrl(prev)}>← предыдущий</a> : <span></span>}
+    {prev ? <a href={dayUrl(prev.key)}>← предыдущий</a> : <span></span>}
     <a href={cal}>все дни</a>
-    {next ? <a href={dayUrl(next)}>следующий →</a> : <span></span>}
+    {next ? <a href={dayUrl(next.key)}>следующий →</a> : <span></span>}
   </nav>
 
   <section class="block" id="kuda-dalshe">
     <h2>Музей продолжается</h2>
     <div class="dp-links">
       <a href={museumUrl}>{m.title_ru}</a>
-      <a href={cal}>Календарь музея</a>
-      <a href={base}>В город-музей</a>
     </div>
   </section>
 
@@ -110,6 +121,8 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     <div class="dp-err">Нашли неточность? <a href={`mailto:arabelthera@gmail.com?subject=${encodeURIComponent(`Ошибка: ${m.title_ru}, ${d.key}`)}`}>Сообщите нам</a> — проверим по источникам.</div>
   </Fragment>
 
+  <script is:inline set:html={chrome}></script>
+  <script is:inline src={`${base}assets/museum-chrome.js`}></script>
   <script is:inline set:html={support}></script>
   <script is:inline src={`${base}assets/museum-support.js`}></script>
 </Base>
