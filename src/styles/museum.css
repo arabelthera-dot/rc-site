@@ -166,6 +166,8 @@ header.top + .crumbs + main{margin-top:44px}
 @media(max-width:374px){.mh-supslot,.cal-supslot{min-height:406px}}
 .mh-year{font-size:13.5px;margin-top:12px}
 .mh-note{font-size:13px;opacity:.75;margin:0 0 10px}
+/* Ссылка-строка — цель нажатия не ниже 24px (Lighthouse target-size, замер 16.10.2026). */
+.mh-year a,.mh-note a{display:inline-block;padding:5px 0}
 .mh-empty{font-size:14px;opacity:.7;font-style:italic;padding:14px 15px;background:var(--panel);border:1px dashed rgba(201,168,76,.25);border-radius:12px}
 .mh-themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
 .mh-theme{background:var(--panel);border:1px solid rgba(201,168,76,.22);border-radius:12px;padding:10px 12px}
