@@ -1,0 +1,54 @@
+# Ветки заявок — свежие (17.10.2026). В main включена строгая проверка (strict): заявка вливается, только
+# если собрана поверх текущего main — так закрыта гонка храповика (#58 замерил старый main, влился позже).
+# Цена strict: после каждого слияния остальные заявки отстают и автослияние встаёт. Очередь слияния
+# GitHub (merge queue) — мировой стандарт ровно для этого, но у репозитория личного аккаунта её нет;
+# второй стандарт — автообновление веток (как chinthakagodawita/autoupdate): после пуша в main машина
+# делает «Update branch» всем открытым заявкам с автослиянием, которые отстали.
+# Пуш ключом конвейера даёт проверке статус «ждёт одобрения» (замер храповика, #52) — одобряем сами.
+# Пять вопросов: задевает — только ветки заявок с автослиянием; нужно — github.token, права ниже;
+# без нужного — спит, соседей не роняет; проверка — ручной пуск на живой заявке; откат — удалить файл
+# или переменную. Выключатель — переменная VETKI_SVEZHIE (≠ '1' — спит).
+name: vetki-svezhie
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: vetki-svezhie
+  cancel-in-progress: false
+jobs:
+  obnovit:
+    if: vars.VETKI_SVEZHIE == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: обновить отставшие заявки с автослиянием
+        run: |
+          nomera=$(gh pr list --state open --limit 50 --json number,autoMergeRequest,mergeStateStatus \
+            -q '.[] | select(.autoMergeRequest != null and .mergeStateStatus == "BEHIND") | .number')
+          [ -n "$nomera" ] || { echo "Отставших заявок с автослиянием нет."; exit 0; }
+          for n in $nomera; do
+            gh pr update-branch "$n" && echo "#$n обновлена" || echo "::warning::#$n не обновилась (конфликт?)"
+          done
+          # Одобрить проверки, которые встали в «ждёт одобрения» после пуша ключом конвейера.
+          for i in $(seq 1 12); do
+            ostalos=0
+            for n in $nomera; do
+              sha=$(gh pr view "$n" --json headRefOid -q .headRefOid)
+              zapros="repos/$GH_REPO/actions/runs?head_sha=$sha&event=pull_request"
+              vsego=$(gh api "$zapros" -q '.total_count')
+              zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
+              for id in $zhdut; do gh api -X POST "repos/$GH_REPO/actions/runs/$id/approve" || true; done
+              { [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ]; } || ostalos=1
+            done
+            [ $ostalos -eq 0 ] && { echo "Проверки всех обновлённых заявок идут."; exit 0; }
+            sleep 10
+          done
+          echo "::warning::не у всех обновлённых заявок запустилась проверка за 2 мин"
