@@ -2,7 +2,7 @@
 // Страница дня (экспоната дня) — порядок блоков по 04-build.md §6/§6-бис:
 // шапка top (4 строки) → крошки → обложка-сцена + этикетка (если есть картинка) → подводка hero-lead
 // (дата, h1, хук как есть, кнопки) → «Поддержать проект» (museum-support.js, первая треть) →
-// суть + прочие картинки → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
+// суть + прочие картинки → «Ещё в этот день» (3–5 карточек, museum-core §5-кватер п.5) → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
 // Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
@@ -38,6 +38,10 @@ const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
 const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
 const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
+const more = (d.more ?? []).map((e) => ({ ...e, images: e.images.map((i) => ({ ...i, src: url(i.src) })),
+  detail_images: e.detail_images.map((i) => ({ ...i, src: url(i.src) })) }));
+// У недатированного музея ключ — номер записи, не дата: «в этот день» там было бы неправдой.
+const moreTitle = dated ? 'Ещё в этот день' : 'Ещё по теме дня';
 // Поле mechanic — описание задачи для разработки (след черновика, 04-build «Заголовок и подписи»);
 // посетителю его не показываем, интерактив придёт движком при переносе (шаг 4 плана).
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
@@ -105,6 +109,31 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
       </section>
     )}
     <DenMedia video={d.video} audio={d.audio} where={`${m.slug}/${d.key}`} />
+    {more.length > 0 && (
+      <section class="block" id="eshchyo">
+        <h2>{moreTitle}</h2>
+        <div class="more-grid">
+          {more.map((e) => (
+            <article class="more-card">
+              <figure class="more-pic">
+                {e.images.map((im) => (
+                  <a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>))}
+                <figcaption title={`${e.images[0].caption} ${e.images[0].credit}`}>{e.images[0].caption} <span class="credit">{e.images[0].credit}</span></figcaption>
+              </figure>
+              <h3>{e.title}{e.year && <span class="more-year"> · {e.year}</span>}</h3>
+              <p class="more-short">{e.short}</p>
+              <details class="more-open">
+                <summary>Узнать подробнее</summary>
+                {e.detail.map((t) => <p>{t}</p>)}
+                {e.detail_images.map((im) => (
+                  <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
+                    <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
+                <p class="more-src">Источник: {e.source}</p>
+              </details>
+            </article>))}
+        </div>
+      </section>
+    )}
     {d.source && (
       <section class="block" id="istochnik">
         <h2>Источник</h2>
