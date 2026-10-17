@@ -3,6 +3,7 @@ interface Props { title: string; rss?: { href: string; title: string }; ogTitle?
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
+import { fontFiles } from '../lib/shrifty.mjs';
 import "../styles/museum.css";
 const base = import.meta.env.BASE_URL;
 // Свой стиль музея переносится из старого сайта как есть (public/muzei/<slug>/*-style.css, план шаг 4);
@@ -17,9 +18,7 @@ const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
 // (кириллица + латиница, 700) — заранее, иначе Georgia до загрузки переносит название иначе и страница
 // прыгает (CLS 0,19 у «Не сдаются», P1 16.10). Файлы — из fonts.css, руками не перечисляются.
 const headFont = own && /--font-h:\s*'([^']+)'/.exec(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8'))?.[1];
-const headFiles = headFont ? [...fs.readFileSync('public/assets/fonts.css', 'utf8').matchAll(
-  /\/\* (?:cyrillic|latin) \*\/\s*@font-face \{[^}]*font-family: '([^']+)';[^}]*font-style: normal;[^}]*font-weight: 700;[^}]*url\(fonts\/([^)]+)\)/g)]
-  .filter((m) => m[1] === headFont).map((m) => m[2]) : [];
+const headFiles = headFont ? fontFiles([headFont], ['700']) : [];
 const url = new URL(Astro.url.pathname, Astro.site).href;
 const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `og/${museum}_index.jpg` : 'og/og-default.jpg';
 // Превью-сборка не для поисковиков: PUBLIC_NOINDEX=1 (deploy.yml, задача build) → noindex; по умолчанию индексируем.

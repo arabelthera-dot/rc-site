@@ -9,6 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { sitebarHtml, sitebarAssets, whenOfKey } from '../lib/sitebar.mjs';
+import { fontFiles, pageFamilies, preloadTag } from '../lib/shrifty.mjs';
 
 const SRC = 'src/data/full-pages';
 const MUSEUMS = Object.fromEntries(JSON.parse(fs.readFileSync('src/data/museums.json', 'utf8')).museums
@@ -165,6 +166,18 @@ export default function fullPages() {
             // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
             if (process.env.PUBLIC_NOINDEX === '1') html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '')
               .replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">');
+            // Шрифты (CLS 0,16–0,29 у дней, #2004): полная страница идёт мимо Base.astro и не получала ни одного
+            // preload — Playfair/Inter приходили после первой отрисовки и сдвигали шапку дня. Теперь файлы тех
+            // семейств, которыми набрана сама страница, — заранее, сразу после <head>. Google-шрифты старой
+            // страницы (чужой CDN, приходят ещё позже) — на свой assets/fonts.css, preconnect к ним — долой.
+            html = html
+              .replace(/<link\b[^>]*\brel=["']?(?:preconnect|dns-prefetch)["']?[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>\s*/gi, '')
+              .replace(/<link\b[^>]*fonts\.googleapis\.com\/css[^>]*>/gi, `<link rel="stylesheet" href="${base}assets/fonts.css">`)
+              .replace(/@import\s+url\(\s*['"]?https?:\/\/fonts\.googleapis\.com\/css[^)]*\)\s*;?/gi, `@import url('${base}assets/fonts.css');`);
+            // Сразу за <meta charset>: кодировка должна остаться в первых 1024 байтах.
+            const preloads = fontFiles(pageFamilies(html)).map((f) => preloadTag(base, f)).join('\n');
+            if (preloads) html = /<meta\s+charset[^>]*>/i.test(html) ? html.replace(/<meta\s+charset[^>]*>/i, (m) => `${m}\n${preloads}`)
+              : html.replace(/<head([^>]*)>/i, `<head$1>\n${preloads}`);
             html = html
               .replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}muzei/${museum}/">`)
               .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`)
