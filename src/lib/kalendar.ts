@@ -33,3 +33,7 @@ export const nearestReady = <T extends { key: string; hook?: string; gist?: stri
   const ready = days.filter(isReady).sort((a, b) => a.key.localeCompare(b.key));
   return ready.find((d) => d.key > key) ?? ready.find((d) => d.key !== key);
 };
+// Подпись «Источник» уже стоит в разметке (заголовок блока, строка карточки) — префикс «Источник(и):» из данных
+// не дублируем (17.10, круг 1 приёмки: «Источник: Источники:»). Одно правило для календаря и страницы дня.
+export const SRC_PREFIX = /^\s*(?:<(?:b|strong|i|em)>\s*)?(?:Источник|Источники|ИСТОЧНИК|ИСТОЧНИКИ)\s*:\s*(?:<\/(?:b|strong|i|em)>\s*)?/i;
+export const stripSrcPrefix = (v?: string) => (v ? String(v).replace(SRC_PREFIX, '') : '');
