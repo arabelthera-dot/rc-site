@@ -1,0 +1,31 @@
+{
+  "museum": "literatura",
+  "key": "01-23",
+  "title": "Обломов",
+  "year": 1859,
+  "hook": "Иван Гончаров уложил барина на диван на всю жизнь, и фамилия Обломова стала именем русской болезни.",
+  "source": "Источник эпизода · Иван Гончаров. «Обломов». (Культура.РФ, https://www.culture.ru/materials/185869/ivan-goncharov-oblomov)",
+  "legacy_page": "muzei/literatura/lit-goncharov-oblomov.html",
+  "images": [
+    {
+      "src": "muzei/literatura/img/media-oblomov/chichagov-hero.jpg",
+      "caption": "Рисунок: барин лежит в постели под одеялом, рядом стоит старый лысый слуга с длинной бородой",
+      "credit": "К. Н. Чичагов. «Обломов и Захар», 1885 (кадр для шапки), Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-oblomov/chichagov-oblomov-zahar-1885.jpg",
+      "caption": "К. Н. Чичагов. «Обломов и Захар», 1885. Иллюстрация к роману.",
+      "credit": "К. Н. Чичагов. «Обломов и Захар», 1885, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-oblomov/oblomov-titul-1859.jpg",
+      "caption": "Первое отдельное издание, 1859. Санкт-Петербург, издание Д. Е. Кожанчикова.",
+      "credit": "Титульный лист «Обломова», 1859, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-oblomov/kramskoy-goncharov-1874.jpg",
+      "caption": "И. Н. Крамской. Портрет И. А. Гончарова, 1874. Холст, масло.",
+      "credit": "И. Н. Крамской. Портрет И. А. Гончарова, 1874, Wikimedia Commons"
+    }
+  ]
+}

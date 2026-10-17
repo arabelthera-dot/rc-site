@@ -1,0 +1,26 @@
+{
+  "museum": "literatura",
+  "key": "01-18",
+  "title": "Гроза",
+  "year": 1859,
+  "hook": "Катерина держала в руке ключ от калитки, решала бросить его в реку — и спрятала в карман.",
+  "source": "Источник эпизода · Как читать пьесу Александра Островского «Гроза». (Культура.РФ, https://www.culture.ru/materials/257622/kak-chitat-grozu-ostrovskogo)",
+  "legacy_page": "muzei/literatura/lit-ostrovskiy-groza.html",
+  "images": [
+    {
+      "src": "muzei/literatura/img/media-groza/groza-hero.jpg",
+      "caption": "Рыжебородый человек в тёмном халате с меховым воротником",
+      "credit": "В. Г. Перов. Портрет А. Н. Островского, 1871 (кадр для шапки страницы), Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-groza/kositskaya-1850.jpg",
+      "caption": "Любовь Павловна Косицкая. Литография, около 1850 года. Первая Катерина: роль на премьере в Малом театре 17 (29) ноября 1859 года.",
+      "credit": "Портрет Л. П. Косицкой, литография около 1850 года, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-groza/perov-ostrovskiy-1871.jpg",
+      "caption": "Василий Перов. Портрет А. Н. Островского, 1871. Драматург в домашнем халате с меховым воротником.",
+      "credit": "В. Г. Перов. Портрет А. Н. Островского, 1871, Wikimedia Commons"
+    }
+  ]
+}
