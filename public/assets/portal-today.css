@@ -45,3 +45,5 @@
 /* шрифты шапки портала: заголовки — Playfair Display, текст — Inter (как portal.css) */
 .p-today { font-family: 'Inter', 'Segoe UI', sans-serif; }
 .p-today__h, .p-today__title { font-family: 'Playfair Display', Georgia, serif; letter-spacing: 0; }
+/* подмена списка по московской дате (Segodnya.astro): до подмены блок невидим, место держится — без сдвига (#2004) */
+.p-today--swap .p-today__head, .p-today--swap .p-today__list { visibility: hidden; }
