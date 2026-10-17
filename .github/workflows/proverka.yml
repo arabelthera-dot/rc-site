@@ -26,3 +26,20 @@ jobs:
           args: --offline --no-progress --include-fragments --index-files index.html --root-dir /tmp/root '/tmp/root/rc-site/**/*.html'
           fail: true
           jobSummary: true
+      # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
+      # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).
+      # Строгость включается переменной репозитория GLAZAMI_STROGO=1; без неё — только предупреждение.
+      - name: glazami — браузер
+        continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
+        timeout-minutes: 4
+        run: npm i --no-save --no-audit --no-fund playwright@1.48.0 && npx playwright install --with-deps chromium
+      - name: glazami — замер против эталона
+        continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
+        timeout-minutes: 5
+        run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glazami
+          path: /tmp/glazami
+          if-no-files-found: ignore
