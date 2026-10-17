@@ -95,7 +95,7 @@ header.top + .crumbs{font-family:'Inter',sans-serif;opacity:.9}
 header.top + .crumbs a{color:var(--gold-l)}
 .dp{max-width:860px;margin:0 auto}
 .dp .hero-scene{margin:0 0 4px}
-.dp .hero-scene a{display:block;cursor:zoom-in}
+.dp .hero-scene > a{display:block;cursor:zoom-in}
 /* Кадр дня — рамка по картинке, текст под ней (п.2 очереди 1, 17.10). museum-chrome.js (движок старого сайта) ставит
    .hero-scene max-height:var(--hero-fit) — там высоту держит сама рамка. Здесь рамка — figure с картинкой И подписью,
    а высота стояла у img: figure урезалась до 200 px, картинка 342 px вылезала, дата и h1 ложились на кадр.
@@ -104,7 +104,7 @@ header.top + .crumbs a{color:var(--gold-l)}
 .dp .hero-scene{max-height:none!important}
 .dp .hero-scene img{display:block;width:100%;height:clamp(200px,min(38vh,var(--hero-fit,38vh)),400px);object-fit:contain;background:rgba(0,0,0,.28);border-radius:14px;border:1px solid rgba(201,168,76,.25)}
 .dp .scene-caption{font-family:'Inter',sans-serif;font-size:12px;line-height:1.45;opacity:.7;margin-top:7px;text-align:center}
-.dp .scene-caption .cap{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dp .scene-caption .cap{display:block}
 .dp .scene-caption .credit{display:block}
 .dp .credit{opacity:.75;font-style:italic}
 .dp .hero-lead{text-align:center;padding:26px 0 22px}
@@ -188,7 +188,7 @@ header.top + .crumbs + main{margin-top:44px}
 .mh-cover{padding:0 0 6px;text-align:center}
 .mh-scene{margin:0 auto;max-width:960px}
 /* размеры кадра стоят в разметке (width/height из файла, Cover.astro): место под картинку занято до её загрузки */
-.mh-scene img{display:block;width:100%;height:auto;max-height:62vh;object-fit:cover}
+.mh-scene img{display:block;width:100%;height:auto;max-height:min(62vh,66.7vw);object-fit:cover;object-position:50% 30%}
 .mh-scene figcaption{font-size:12px;opacity:.6;padding:6px 16px 0;font-style:italic}
 .mh-noframe{display:flex;align-items:center;justify-content:center;min-height:clamp(150px,30vw,260px);padding:60px 24px 24px;
   border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0d1a2b,#081120);font-size:13px;opacity:.7;font-style:italic}
