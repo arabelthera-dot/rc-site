@@ -51,3 +51,11 @@ body:has(> nav.rc-sitebar) .backbtn{display:none!important}
   background:#229ED9;color:#fff!important;font-size:17px;font-weight:600;text-decoration:none}
 .rc-sub a:hover{background:#1b8cc2}
 .rc-sub a:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
+/* Размеры картинок старых страниц дней (full-pages.mjs): атрибут height не растягивает кадр при img{width:100%} */
+:where(img[data-rc-razmer]){height:auto}
+/* Соседние дни внизу полной страницы дня (full-pages.mjs) */
+.rc-sosedi{box-sizing:border-box;max-width:720px;margin:24px auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;
+  font-family:'Inter',system-ui,sans-serif;font-size:16px}
+.rc-sosedi a{display:inline-flex;align-items:center;min-height:48px;padding:0 4px;color:inherit;text-decoration:underline;text-underline-offset:3px}
+.rc-sosedi .rc-sosed-next{margin-left:auto;text-align:right}
+.rc-sosedi a:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
