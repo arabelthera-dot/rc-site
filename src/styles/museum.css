@@ -72,7 +72,7 @@ footer .slog{font-style:italic;color:var(--gold);margin-bottom:6px}
 .karta td,.karta th{border:1px solid rgba(201,168,76,.2);padding:8px 9px;text-align:left;vertical-align:top}
 .karta th{color:var(--gold-l);font-weight:normal}
 .karta h2{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:normal;margin:22px 0 8px}
-.karta p,.karta li{font-size:14.5px;margin-bottom:8px}
+.karta p,.karta li{font-size:var(--fs-body,17px);margin-bottom:8px}
 .karta ul{padding-left:20px}
 
 /* страница дня — src/pages/muzei/[slug]/den/[key].astro (вид эталона ne-sdayutsya/podvig-*.html) */
@@ -218,3 +218,11 @@ header.top + .crumbs + main{margin-top:44px}
 .mh-open .w{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt);opacity:.55;margin-bottom:3px}
 .mh-council{background:var(--panel);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:15px}
 .mh-council p{font-size:14px}
+/* Мобильный стандарт (Apple HIG / Material): основной текст ≥17px, цели касания ≥44px.
+   Токены общие; правила — для ссылок и кнопок шаблонов, не для ссылок внутри абзацев. */
+:root{--fs-body:17px;--tap:44px}
+html body .support p{font-size:var(--fs-body)}
+html body .support .sup-btns button,html body .support .sup-btns .sup-action{min-height:var(--tap)}
+.mh-more,#calcard a,.calcard>a,footer a,nav.crumbs a,.dp-foot a,.dp-err a,.wayrow a,.p-today__go{
+  display:inline-flex;align-items:center;min-height:var(--tap);min-width:var(--tap);box-sizing:border-box}
+main li>a{display:inline-block;min-height:var(--tap);padding-block:12px;box-sizing:border-box}

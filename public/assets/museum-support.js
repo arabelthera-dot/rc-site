@@ -98,8 +98,8 @@
   var FONT = PAGE_SERIF
     ? "'Inter',system-ui,-apple-system,'Segoe UI',sans-serif"   /* страница серифом → блок гротеском */
     : "'Playfair Display',Georgia,serif";                        /* страница гротеском → блок серифом */
-  var FSIZE = PAGE_SERIF ? '16.5px' : '17px';
-  var MSIZE = PAGE_SERIF ? '16px' : '16.5px';   /* мобильный: у серифа кегль крупнее по рисунку */
+  var FSIZE = '17px';   /* стандарт основного текста ≥17px (glazami, HIG/Material) */
+  var MSIZE = '17px';   /* мобильный: тот же порог 17px */
   var FTRACK = PAGE_SERIF ? '.1px' : '0';
   var FLINE = PAGE_SERIF ? '1.58' : '1.62';
 
