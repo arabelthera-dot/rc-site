@@ -67,7 +67,7 @@ else if (allKeys.length) {
 const it = open ? data[open] : undefined;
 const when = open && (dated ? +open.slice(3) + ' ' + MONR[+open.slice(0, 2) - 1] + (open === tk ? ' · <b>сегодня</b>' : '')
   : 'День ' + +open.slice(3) + ' · ' + MON[+open.slice(0, 2) - 1]);
-const row = (label: string, v?: string) => (v ? `<div class="crow"><span>${label}</span>${v}</div>` : '');
+const row = (label: string, v?: string) => (v ? `<div class="crow"><span class="crow-l">${label}</span>${v}</div>` : '');
 const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when + '</div>' +
   '<h3>' + it.t + (it.y ? ' <span class="caly">' + it.y + '</span>' : '') + '</h3>' +
   '<p>' + it.d + '</p>' + row('Механика', it.mech) + row('Источник', it.src) +
