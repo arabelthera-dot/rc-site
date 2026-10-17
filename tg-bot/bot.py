@@ -11,6 +11,8 @@ import json
 import logging
 import os
 import sqlite3
+import threading
+from contextlib import contextmanager
 import urllib.request
 from datetime import datetime, time
 from urllib.parse import urljoin
@@ -94,6 +96,17 @@ def db() -> sqlite3.Connection:
     return con
 
 
+@contextmanager
+def conn():
+    """Соединение с подписками: коммит и закрытие на выходе."""
+    con = db()
+    try:
+        with con:
+            yield con
+    finally:
+        con.close()
+
+
 def chosen(con, chat: int) -> set[str]:
     return {r[0] for r in con.execute("SELECT museum FROM subs WHERE chat=?", (chat,))}
 
@@ -120,17 +133,17 @@ HELLO = ("Это «Русская цивилизация» — виртуаль�
 
 
 async def start(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    with db() as con:
+    with conn() as con:
         await update.message.reply_text(HELLO.format(ch=CHANNEL), reply_markup=keyboard(con, update.effective_chat.id))
 
 
 async def muzei(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    with db() as con:
+    with conn() as con:
         await update.message.reply_text("Твои музеи:", reply_markup=keyboard(con, update.effective_chat.id))
 
 
 async def stop(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    with db() as con:
+    with conn() as con:
         con.execute("DELETE FROM subs WHERE chat=?", (update.effective_chat.id,))
     await update.message.reply_text("Подписка снята. Вернуться — /start.")
 
@@ -138,7 +151,7 @@ async def stop(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def button(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     q = update.callback_query
     chat = q.message.chat.id
-    with db() as con:
+    with conn() as con:
         if q.data == "done":
             n = len(chosen(con, chat))
             await q.answer()
@@ -158,7 +171,11 @@ async def morning(ctx: ContextTypes.DEFAULT_TYPE):
     if not d:
         log.info("%s: карточек нет, рассылки нет", key)
         return
-    con = db()
+    with conn() as con:
+        await _morning(ctx, key, d, con)
+
+
+async def _morning(ctx, key: str, d: dict, con: sqlite3.Connection):
     done = dict(con.execute("SELECT what, key FROM sent"))
     if POST_CHANNEL and done.get("channel") != key:
         text, img = render(d, d["cards"], "Сегодня в Русской цивилизации")
@@ -184,14 +201,15 @@ async def morning(ctx: ContextTypes.DEFAULT_TYPE):
         con.execute("INSERT OR REPLACE INTO sent VALUES ('subs', ?)", (key,))
         con.commit()
         log.info("%s: подписчикам %d", key, ok)
-    con.close()
 
 
 def main():
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    logging.getLogger("httpx").setLevel(logging.WARNING)
     if os.environ.get("RC_TG_OFF") == "1" or not TOKEN:
-        log.warning("бот выключен (RC_TG_OFF=1 или нет RC_TG_BOT_TOKEN)")
-        return
+        # Спим, а не выходим: при restart: unless-stopped выход = цикл перезапусков (Михаил, #1932).
+        log.warning("бот выключен (RC_TG_OFF=1 или нет RC_TG_BOT_TOKEN), сплю")
+        threading.Event().wait()
     db().close()
     app = Application.builder().token(TOKEN).rate_limiter(AIORateLimiter()).build()
     app.add_handler(CommandHandler("start", start))
