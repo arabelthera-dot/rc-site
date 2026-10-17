@@ -46,8 +46,13 @@ body:has(> nav.rc-sitebar) .backbtn{display:none!important}
 @media (max-width:760px){
   /* п.1 — цели касания ≥44×44 (WCAG 2.5.8, Apple HIG); строчные ссылки внутри текста min-* не затрагивает */
   body:has(> nav.rc-sitebar) :is(button,[role="button"],summary,select,input[type="button"],input[type="submit"],
-    .sharebtn,.chip,.chips a,.daynav a,.cal2-nav a,.car-nav button,.car-nav a,nav a){min-height:44px;min-width:44px;box-sizing:border-box}
-  body:has(> nav.rc-sitebar) :is(.daynav,.cal2-nav,.car-nav,.chips) a{display:inline-flex;align-items:center;justify-content:center}
+    .sharebtn,.chip,.chips a,.daynav a,.cal2-nav a,.car-nav button,.car-nav a,nav a,
+    .calcard a,.wayrow a,.partner a,.ncard a,.source-list a,.sources a,.rights-table a,
+    .film-meta a,.next a,a.civic-title,footer a){min-height:44px;min-width:44px;box-sizing:border-box}
+  body:has(> nav.rc-sitebar) :is(.daynav,.cal2-nav,.car-nav,.chips,.calcard,.wayrow,.partner,.ncard,.source-list,.sources,
+    .rights-table,.film-meta,.next,footer) a,body:has(> nav.rc-sitebar) a.civic-title{display:inline-flex;align-items:center}
+  /* фишки «Вы смотрели» движка museum-return.js: свой min-height 32px под #id — поднимаем до 44 */
+  body:has(> nav.rc-sitebar) #return .rt-days a{min-height:44px;line-height:44px}
   /* п.2 — основной текст ≥17 px */
   body:has(> nav.rc-sitebar) :is(main,article,section,.wrap) :is(p,li,dd,blockquote){font-size:max(17px,1em);line-height:1.55}
 }
