@@ -48,6 +48,10 @@ main{max-width:720px;margin:0 auto;padding:10px 16px 40px}
 /* карточка дня размечена в шаблоне (calendar.astro) — пустой не показываем; строки «Механика»/«Источник» —
    вид только здесь, движок (museum-calendar-page.js, row()) выдаёт разметку без style */
 #calcard:empty{display:none}
+/* карточка дня после нажатия встаёт под месяцем: прокрутка не уводит её под закреплённую шапку;
+   низ календаря не закрыт плавающим сердцем (#heart: bottom 82px + 46px) — 17.10 */
+#calcard{scroll-margin-top:72px;scroll-margin-bottom:140px}
+#calyear{padding-bottom:140px}
 #calcard .crow{margin-top:8px;font-size:13px;line-height:1.5}
 #calcard .crow span{color:var(--gold,#c9a24a);opacity:.85;letter-spacing:1px;text-transform:uppercase;font-size:10.5px;margin-right:6px}
 

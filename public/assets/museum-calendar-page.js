@@ -66,8 +66,6 @@
 
     /* счётчик всегда про год: 365. Записи сверх года посчитаны отдельно и не молчат */
     var h = '<div class="calstat">' + 'Заполнено дней: <b>' + filled + '</b> из ' + total +
-      ' · ' + (dated ? 'каждый заполненный день' : 'каждый день года') +
-      ' — готовый повод для ролика и поста' +
       (beyond.length
         ? ' · сверх года ещё ' + beyond.length + ' ' +
           plural(beyond.length, 'запись', 'записи', 'записей') + ' — они остаются в музее'
@@ -140,7 +138,9 @@
         v + '</div>';
     }
 
-    function show(k, note) {
+    /* fromClick: карточка встаёт сразу под месяцем нажатого дня (не над январём)
+       и прокручивается к нему с отступом под закреплённую шапку (scroll-margin-top в museum.css) */
+    function show(k, note, fromClick) {
       var it = data[k];
       if (!it || !card) return;
       var mm = parseInt(k.slice(0, 2), 10), dd = parseInt(k.slice(3), 10);
@@ -159,12 +159,16 @@
         host.querySelectorAll('.cday').forEach(function (b) { b.classList.remove('on'); });
         var b = host.querySelector('.cday[data-k="' + k + '"]');
         if (b) b.classList.add('on');
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (fromClick && b) {
+          var sec = b.closest('.cmon');
+          if (sec && sec.nextSibling !== card) sec.parentNode.insertBefore(card, sec.nextSibling);
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       }
     }
 
     if (host) host.querySelectorAll('.cday[data-k]').forEach(function (b) {
-      b.addEventListener('click', function () { show(b.dataset.k); });
+      b.addEventListener('click', function () { show(b.dataset.k, '', true); });
     });
 
     /* при открытии — сегодняшний день; если на сегодня записи нет, честно
