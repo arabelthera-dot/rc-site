@@ -1,0 +1,26 @@
+{
+  "museum": "literatura",
+  "key": "01-25",
+  "title": "Левша",
+  "year": 1881,
+  "hook": "Тульский Левша подковал английскую стальную блоху, и его имя стало словом для русской смекалки.",
+  "source": "Н. С. Лесков. «О русском левше (Литературное объяснение)» (rvb.ru)",
+  "legacy_page": "muzei/literatura/lit-leskov-levsha.html",
+  "images": [
+    {
+      "src": "muzei/literatura/img/media-levsha/afisha-hero.jpg",
+      "caption": "Красно-чёрная афиша 1925 года: казак с саблей и пистолетом, огромная чёрная блоха, англичанин в цилиндре и надпись «Блоха»",
+      "credit": "Б. М. Кустодиев. Афиша «Блохи», 1925 (кадр для шапки), Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-levsha/serov-leskov-1894.jpg",
+      "caption": "В. А. Серов. Портрет Н. С. Лескова, 1894. Холст, масло.",
+      "credit": "В. А. Серов. Портрет Н. С. Лескова, 1894, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-levsha/kustodiev-blokha-afisha-1925.jpg",
+      "caption": "Б. М. Кустодиев. Афиша спектакля «Блоха», МХАТ 2-й, 1925. Пять мест на афише — пять строк сказа.",
+      "credit": "Б. М. Кустодиев. Афиша спектакля «Блоха», 1925, Wikimedia Commons"
+    }
+  ]
+}
