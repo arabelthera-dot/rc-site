@@ -14,6 +14,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Это превью на /rc-site/ — поисковикам закрыто (meta noindex + robots.txt). Основной адрес после
+    # переключения собирает задача vykladka-site ниже — без этой переменной, он индексируется.
+    env:
+      PUBLIC_NOINDEX: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v5

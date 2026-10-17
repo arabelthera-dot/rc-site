@@ -36,6 +36,9 @@ export default function fullPages() {
             if (!fs.existsSync(out)) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
             let html = fs.readFileSync(path.join(SRC, museum, f), 'utf8');
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
+            // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
+            if (process.env.PUBLIC_NOINDEX === '1') html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '')
+              .replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">');
             html = html
               .replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}muzei/${museum}/">`)
               .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`)
