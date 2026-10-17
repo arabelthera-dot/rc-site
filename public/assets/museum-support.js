@@ -183,7 +183,8 @@
     var d = doc.createElement('div'); d.className = 'support';
     d.innerHTML = '<div class="sup-l">' + T.label + '</div><p>' + T.peak + '</p>'
       + '<div class="sup-btns">'
-      + '<button class="gold" data-sup-share>' + T.share + '</button>'
+      /* «Поделиться» на странице один (glazami п.16): есть строка движка или своя — кнопку не дублируем */
+      + (doc.querySelector('.sharerow, .wrap.share, div.share, #sharefinal') ? '' : '<button class="gold" data-sup-share>' + T.share + '</button>')
       + '<a class="sup-action" href="' + MAILTO + '">' + T.correct + '</a>'
       + '<button data-sup-more>' + T.more + '</button></div>';
     return d;

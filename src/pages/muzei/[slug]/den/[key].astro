@@ -79,6 +79,7 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
   next: next && { href: dayUrl(next.key), title: dayName(next) },
   all: { href: cal, label: 'Все дни календаря' },
   city: base,
+  shareRow: false, // «Поделиться» даёт блок поддержки (data-support-slot) — одна строка на страницу, glazami п.16
   random: keys.filter((k: string) => k !== d.key).map((k: string) => `${dayUrl(k)}index.html`),
 })};`;
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;

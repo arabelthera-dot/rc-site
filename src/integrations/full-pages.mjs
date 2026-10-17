@@ -111,6 +111,11 @@ export default function fullPages() {
               if (!/property=["']og:description["']/i.test(html) && d.hook) add.push(`<meta property="og:description" content="${esc(d.hook)}" />`);
               html = html.replace(/<\/head>/i, `${add.join('\n')}\n</head>`);
             }
+            // «Поделиться» — один раз (glazami п.16): у страницы свой блок — строку museum-chrome не ставим,
+            // а museum-support.js не добавляет кнопку, если на странице уже есть блок «Поделиться».
+            if (/class=["'](?:sharerow|wrap share|share)\b|id=["']sharefinal["']/i.test(html))
+              html = html.replace(/(<script[^>]*src=["'][^"']*museum-chrome\.js)/i,
+                '<script>window.MUSEUM_CHROME=Object.assign(window.MUSEUM_CHROME||{},{shareRow:false})</script>\n$1');
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);

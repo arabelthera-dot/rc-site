@@ -326,7 +326,9 @@
   /* ── 2. строка «Поделиться» — сразу под обложкой ── */
   var anchor = doc.querySelector('.hero') || doc.querySelector('nav.crumbs') || doc.querySelector('header');
   var madeShare = false;
-  if(!doc.querySelector('.sharerow') && anchor && anchor.parentNode){
+  /* C.shareRow === false — строку не ставим: на странице уже есть свой блок «Поделиться» (сборка, full-pages.mjs)
+     или его даёт блок поддержки (страница дня Astro). Одна строка «Поделиться» на страницу — замер glazami п.16. */
+  if(C.shareRow !== false && !doc.querySelector('.sharerow') && anchor && anchor.parentNode){
     madeShare = true;
     var srow = el('div','sharerow',
       '<button class="sharebtn" type="button" id="sharebtn"><span>⤴</span>'+(T.share||'Поделиться страницей')+'</button>'
