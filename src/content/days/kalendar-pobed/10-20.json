@@ -2,5 +2,12 @@
   "museum": "kalendar-pobed",
   "key": "10-20",
   "title": "«Белград» — освобождение Белграда, 1944",
-  "hook": "Русские вместе с югославами освободили Белград — столица поднялась из руин за неделю боёв"
+  "hook": "Русские вместе с югославами освободили Белград — столица поднялась из руин за неделю боёв",
+  "images": [
+    {
+      "src": "muzei/kalendar-pobed/img/10-20-beogra-anka-nudi-hranu-sovjetskom-vojniku-beogra.jpg",
+      "caption": "Жительница Белграда угощает советских танкистов, октябрь 1944 года",
+      "credit": "Риста Марьянович, 1944. Цифровой файл: Wikimedia Commons, «Beograđanka nudi hranu sovjetskom vojniku, Beograd 1944.jpg» (Public domain)."
+    }
+  ]
 }

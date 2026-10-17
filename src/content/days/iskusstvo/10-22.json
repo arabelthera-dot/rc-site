@@ -5,5 +5,12 @@
   "year": 1869,
   "hook": "Красный вихрь сарафанов — от этой картины Париж 1906 года так и не смог отвести глаз",
   "mechanic": "Собери свою выставку",
-  "source": "Третьяковская галерея, 1906; дату (10.10.1869 ст.) сверить"
+  "source": "Третьяковская галерея, 1906; дату (10.10.1869 ст.) сверить",
+  "images": [
+    {
+      "src": "muzei/iskusstvo/img/10-22-filipp-malyavin-vihr-google-art-project.jpg",
+      "caption": "Филипп Малявин. «Вихрь»",
+      "credit": "Филипп Малявин, 1906. Цифровой файл: Wikimedia Commons, «Filipp Malyavin - Вихрь - Google Art Project.jpg» (Public domain)."
+    }
+  ]
 }
