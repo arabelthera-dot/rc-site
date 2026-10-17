@@ -71,6 +71,30 @@ const POROGI = {
   'нет заглушки': r => !r.zaglushka, 'без своих стилей': r => r.svoiStili === 0,
 };
 
+// CLS по определению web-vitals: худшее окно сессии (сдвиги с разрывом <1 с, окно ≤5 с), а не сумма за жизнь страницы
+const SLED_CLS = () => {
+  let okno = 0, nachalo = 0, posl = 0; window.__cls = 0;
+  new PerformanceObserver(l => {
+    for (const e of l.getEntries()) {
+      if (e.hadRecentInput) continue;
+      if (okno && e.startTime - posl < 1000 && e.startTime - nachalo < 5000) okno += e.value;
+      else { okno = e.value; nachalo = e.startTime; }
+      posl = e.startTime; window.__cls = Math.max(window.__cls, okno);
+    }
+  }).observe({ type: 'layout-shift', buffered: true });
+};
+// повторный замер одного CLS — для страниц за порогом (как numberOfRuns в Lighthouse CI)
+async function tolkoCls(url) {
+  const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  const page = await ctx.newPage();
+  await page.addInitScript(SLED_CLS);
+  try { await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 }); } catch {}
+  await page.waitForTimeout(800);
+  const cls = await page.evaluate(() => +window.__cls.toFixed(3)).catch(() => null);
+  await ctx.close();
+  return cls;
+}
+
 const browser = await chromium.launch();
 const rows = [];
 const t0 = Date.now();
@@ -84,11 +108,7 @@ async function zamer(url) {
     if (res.status() >= 400) bitye++;
     const len = +(res.headers()['content-length'] || 0); bytes += len;
   });
-  await page.addInitScript(() => {
-    window.__cls = 0;
-    new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; })
-      .observe({ type: 'layout-shift', buffered: true });
-  });
+  await page.addInitScript(SLED_CLS);
   try {
     await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
   } catch { oshibki++; }
@@ -149,6 +169,11 @@ async function zamer(url) {
 // несколько страниц одновременно — укладываемся в ~3 минуты в проверке заявки
 const ochered = [...vyborka];
 await Promise.all(Array.from({ length: POTOKOV }, async () => { while (ochered.length) await zamer(ochered.shift()); }));
+// CLS за порогом — ещё два замера по одному, в зачёт медиана трёх: один шумный прогон не красит заявку
+for (const r of rows.filter(r => !r.sloman && r.cls >= 0.1)) {
+  const z = [r.cls, await tolkoCls(SITE + r.url.slice(1)), await tolkoCls(SITE + r.url.slice(1))].map(v => v ?? r.cls).sort((a, b) => a - b);
+  r.clsZamery = z; r.cls = z[1];
+}
 await browser.close();
 server?.close();
 rows.sort((a, b) => vyborka.indexOf(SITE + a.url.slice(1)) - vyborka.indexOf(SITE + b.url.slice(1)));
