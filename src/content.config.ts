@@ -40,6 +40,20 @@ const image = z.object({
   text_on_image: z.literal(false, { message: 'текст на картинке запрещён' }).default(false),
 });
 
+// «Ещё в этот день» (Сергей 17.10, museum-core §5-кватер п.5): внутри каждого дня 3–5 дополнительных событий,
+// открытий, необычных фактов этой даты — карточкой §5-тер «картинка → 1–3 строки → Узнать подробнее».
+// Карточки против портянки, не вместо дня: день из одной короткой карточки — брак.
+// Поля нет — блока нет (перенос старых дней идёт как есть, 16.10); есть — от 3 до 5, у каждой картинка и источник.
+const more = z.object({
+  title: z.string().min(1, 'у доп. события нет названия'),
+  year: z.union([z.string(), z.number()]).optional(),
+  short: z.string().min(1).max(240, 'коротко — 1–3 строки, до 240 знаков'),
+  images: z.array(image).min(1, 'у доп. события нет картинки (§5-тер: основа карточки — изображение)'),
+  detail: z.array(z.string().min(1)).min(1, 'у доп. события нет раскрытия «Узнать подробнее»'),
+  detail_images: z.array(image).default([]),
+  source: z.string().min(1, 'у доп. события нет источника'),
+});
+
 const days = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/days' }),
   schema: z.object({
@@ -59,6 +73,7 @@ const days = defineCollection({
     video: z.string().optional(),
     audio: z.object({ src: z.string().min(1), heading: z.string().optional(), lead: z.string().optional(),
       note: z.string().optional() }).optional(),
+    more: z.array(more).optional(),
   }).superRefine((d, ctx) => {
     const waived = d.museum in waivers || `${d.museum}/${d.key}` in waivers;
     if (!waived && !d.title)
@@ -79,6 +94,20 @@ const days = defineCollection({
         ctx.addIssue({ code: 'custom', path: ['images', i, 'credit'], message: 'Википедия как источник картинки — только Викисклад с автором' });
       if (im.generated && !/сгенерир|реконструкц/i.test(im.caption))
         ctx.addIssue({ code: 'custom', path: ['images', i, 'caption'], message: 'сгенерированная картинка без пометки в подписи' });
+    });
+    if (d.more && (d.more.length < 3 || d.more.length > 5))
+      ctx.addIssue({ code: 'custom', path: ['more'], message: `«Ещё в этот день» — 3–5 карточек, а не ${d.more.length}` });
+    d.more?.forEach((e, i) => {
+      if (wiki.test(e.source))
+        ctx.addIssue({ code: 'custom', path: ['more', i, 'source'], message: 'Википедия как источник текста запрещена' });
+      if (!/[А-Яа-яЁё]/.test(e.source))
+        ctx.addIssue({ code: 'custom', path: ['more', i, 'source'], message: 'источник описывается по-русски' });
+      [...e.images, ...e.detail_images].forEach((im, j) => {
+        if (im.credit && wiki.test(im.credit) && !/commons/i.test(im.credit))
+          ctx.addIssue({ code: 'custom', path: ['more', i, 'images', j, 'credit'], message: 'Википедия как источник картинки — только Викисклад с автором' });
+        if (im.generated && !/сгенерир|реконструкц/i.test(im.caption))
+          ctx.addIssue({ code: 'custom', path: ['more', i, 'images', j, 'caption'], message: 'сгенерированная картинка без пометки в подписи' });
+      });
     });
     if (d.legacy_page && !d.hook)
       ctx.addIssue({ code: 'custom', path: ['hook'], message: 'у дня со страницей нет хука' });
