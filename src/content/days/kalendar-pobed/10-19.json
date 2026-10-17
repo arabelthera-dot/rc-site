@@ -2,5 +2,12 @@
   "museum": "kalendar-pobed",
   "key": "10-19",
   "title": "«Чашники» — победа Витгенштейна, 1812",
-  "hook": "Русские под Чашниками разбили корпус Виктора — у Наполеона начал рушиться тыл, дорога на запад оголена"
+  "hook": "Русские под Чашниками разбили корпус Виктора — у Наполеона начал рушиться тыл, дорога на запад оголена",
+  "images": [
+    {
+      "src": "muzei/kalendar-pobed/img/10-19-pjotr-christianowitsch-wittgenstein.jpg",
+      "caption": "Генерал Пётр Витгенштейн, командовавший русскими войсками под Чашниками",
+      "credit": "Джордж Доу. Цифровой файл: Wikimedia Commons, «Pjotr-christianowitsch-wittgenstein.jpg» (Public domain)."
+    }
+  ]
 }
