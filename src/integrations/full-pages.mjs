@@ -47,6 +47,27 @@ function checkSitebars(root, base) {
   return bad.length;
 }
 
+// Шрифты только свои (AI_Projects#175): fonts.googleapis / fonts.gstatic в src/ и public/ — сайт не собирается.
+// Комментарии (/* */, <!-- -->, //) не считаются; node_modules и scripts/import-legacy.mjs вне проверки.
+const TEXT = /\.(?:html?|css|js|mjs|cjs|ts|astro|json|md|svg|xml|txt)$/i;
+function checkNoGoogleFonts() {
+  const bad = [];
+  const walk = (d) => {
+    for (const e of fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }) : []) {
+      const f = path.join(d, e.name);
+      if (e.name === 'node_modules' || f === path.join('scripts', 'import-legacy.mjs')) continue;
+      if (e.isDirectory()) { walk(f); continue; }
+      if (!TEXT.test(e.name)) continue;
+      const code = fs.readFileSync(f, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/(^|[^:'"`\\])\/\/.*$/gm, '$1');
+      if (/fonts\.(?:googleapis|gstatic)\.com/.test(code)) bad.push(f);
+    }
+  };
+  walk('src');
+  walk('public');
+  if (bad.length) throw new Error(`Google-шрифты вместо /assets/fonts.css (${bad.length}):\n${bad.join('\n')}`);
+}
+
 const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/|#|\$|\{)/i; // схема, корень, якорь, шаблон
 
 // Мировой стандарт против сдвига вёрстки (замер glazami «картинки с размерами», 17.10): у каждого <img> старой
@@ -105,7 +126,7 @@ export default function fullPages() {
       'astro:config:done': ({ config }) => { base = config.base.replace(/\/?$/, '/'); site = config.site ?? ''; },
       'astro:build:done': async ({ dir }) => {
         const root = fileURLToPath(dir);
-        if (!fs.existsSync(SRC)) { checkSitebars(root, base); return; }
+        if (!fs.existsSync(SRC)) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
         const bad = [];
         let n = 0;
         for (const museum of fs.readdirSync(SRC).sort()) {
@@ -181,7 +202,8 @@ export default function fullPages() {
         }
         if (bad.length) throw new Error(`полные страницы дней:\n${bad.join('\n')}`);
         checkSitebars(root, base);
-        console.log(`full-pages: ${n} дней — полная страница; верхняя полоса проверена у всех страниц музеев`);
+        checkNoGoogleFonts();
+        console.log(`full-pages: ${n} дней — полная страница; верхняя полоса проверена у всех страниц музеев; Google-шрифтов нет`);
       },
     },
   };
