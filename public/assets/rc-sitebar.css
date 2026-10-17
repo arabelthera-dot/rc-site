@@ -26,6 +26,12 @@ nav.rc-sitebar .rc-sb-museum,nav.rc-sitebar .rc-sb-here .rc-sb-link{display:bloc
 @media (max-width:600px){
   nav.rc-sitebar{padding:0 6px;font-size:15px}
   nav.rc-sitebar li.rc-sb-here{display:none}
+  /* Имя музея на телефоне читается целиком (17.10): корневой пункт «Русская цивилизация ›» убран,
+     шрифт меньше, строка одна — полоса не растёт выше 52 px (замер glazami «шапка ≤56, одна») */
+  nav.rc-sitebar li:first-child:not(:last-child){display:none}
+  nav.rc-sitebar li:first-child + li::before{display:none}
+  nav.rc-sitebar{font-size:14px}
+  nav.rc-sitebar li.rc-sb-m{flex:1 1 auto}
 }
 @media (prefers-reduced-motion:reduce){
   html{transition:none}
