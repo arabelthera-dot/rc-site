@@ -26,6 +26,12 @@ nav.rc-sitebar .rc-sb-museum,nav.rc-sitebar .rc-sb-here .rc-sb-link{display:bloc
 @media (max-width:600px){
   nav.rc-sitebar{padding:0 6px;font-size:15px}
   nav.rc-sitebar li.rc-sb-here{display:none}
+  /* Имя музея на телефоне читается целиком (17.10): перенос строки вместо многоточия, полоса растёт по высоте */
+  nav.rc-sitebar{height:auto;min-height:52px}
+  nav.rc-sitebar ol{white-space:normal}
+  nav.rc-sitebar li.rc-sb-m{flex:1 1 auto}
+  nav.rc-sitebar .rc-sb-link,nav.rc-sitebar .rc-sb-museum{white-space:normal;text-overflow:clip;overflow:visible;overflow-wrap:anywhere}
+  nav.rc-sitebar .rc-sb-museum{line-height:1.25;padding-top:12px;padding-bottom:12px}
 }
 @media (prefers-reduced-motion:reduce){
   html{transition:none}
