@@ -2,7 +2,7 @@
 // Страница дня (экспоната дня) — порядок блоков по 04-build.md §6/§6-бис:
 // шапка top (4 строки) → крошки → обложка-сцена + этикетка (если есть картинка) → подводка hero-lead
 // (дата, h1, хук как есть, кнопки) → «Поддержать проект» (museum-support.js, первая треть) →
-// суть + прочие картинки → «Ещё в этот день» (3–5 карточек, museum-core §5-кватер п.5) → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
+// суть + прочие картинки → доп. карточки героя дня (3–5, museum-core §5-кватер п.5) → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
 // Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
@@ -40,8 +40,8 @@ const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace
 const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
 const more = (d.more ?? []).map((e) => ({ ...e, images: e.images.map((i) => ({ ...i, src: url(i.src) })),
   detail_images: e.detail_images.map((i) => ({ ...i, src: url(i.src) })) }));
-// У недатированного музея ключ — номер записи, не дата: «в этот день» там было бы неправдой.
-const moreTitle = dated ? 'Ещё в этот день' : 'Ещё по теме дня';
+// Заголовок — из карточки дня, с именем героя («Что ещё изобрёл Шухов»): карточки про героя, не про дату.
+const moreTitle = d.more_title;
 // Поле mechanic — описание задачи для разработки (след черновика, 04-build «Заголовок и подписи»);
 // посетителю его не показываем, интерактив придёт движком при переносе (шаг 4 плана).
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
@@ -110,7 +110,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     )}
     <DenMedia video={d.video} audio={d.audio} where={`${m.slug}/${d.key}`} />
     {more.length > 0 && (
-      <section class="block" id="eshchyo">
+      <section class="block" id="eshchyo-geroy">
         <h2>{moreTitle}</h2>
         <div class="more-grid">
           {more.map((e) => (

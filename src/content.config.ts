@@ -40,8 +40,10 @@ const image = z.object({
   text_on_image: z.literal(false, { message: 'текст на картинке запрещён' }).default(false),
 });
 
-// «Ещё в этот день» (Сергей 17.10, museum-core §5-кватер п.5): внутри каждого дня 3–5 дополнительных событий,
-// открытий, необычных фактов этой даты — карточкой §5-тер «картинка → 1–3 строки → Узнать подробнее».
+// Доп. карточки дня (Сергей 17.10, museum-core §5-кватер п.5): внутри каждого дня 3–5 других открытий, дел,
+// фактов ТОГО ЖЕ героя или темы дня — карточкой §5-тер «картинка → 1–3 строки → Узнать подробнее».
+// Не другие события той же даты: день нефтепровода Шухова → крекинг, башня, перекрытия Шухова.
+// Заголовок блока (more_title) называет героя — «Что ещё изобрёл Шухов»; «Ещё в этот день» — брак.
 // Карточки против портянки, не вместо дня: день из одной короткой карточки — брак.
 // Поля нет — блока нет (перенос старых дней идёт как есть, 16.10); есть — от 3 до 5, у каждой картинка и источник.
 const more = z.object({
@@ -74,6 +76,7 @@ const days = defineCollection({
     audio: z.object({ src: z.string().min(1), heading: z.string().optional(), lead: z.string().optional(),
       note: z.string().optional() }).optional(),
     more: z.array(more).optional(),
+    more_title: z.string().optional(),
   }).superRefine((d, ctx) => {
     const waived = d.museum in waivers || `${d.museum}/${d.key}` in waivers;
     if (!waived && !d.title)
@@ -96,7 +99,11 @@ const days = defineCollection({
         ctx.addIssue({ code: 'custom', path: ['images', i, 'caption'], message: 'сгенерированная картинка без пометки в подписи' });
     });
     if (d.more && (d.more.length < 3 || d.more.length > 5))
-      ctx.addIssue({ code: 'custom', path: ['more'], message: `«Ещё в этот день» — 3–5 карточек, а не ${d.more.length}` });
+      ctx.addIssue({ code: 'custom', path: ['more'], message: `доп. карточек героя дня — 3–5, а не ${d.more.length}` });
+    if (d.more && !d.more_title)
+      ctx.addIssue({ code: 'custom', path: ['more_title'], message: 'у доп. карточек нет заголовка с героем дня («Что ещё изобрёл Шухов»)' });
+    if (d.more_title && /в этот день|этой даты/i.test(d.more_title))
+      ctx.addIssue({ code: 'custom', path: ['more_title'], message: 'доп. карточки — про героя дня, не про дату (Сергей 17.10)' });
     d.more?.forEach((e, i) => {
       if (wiki.test(e.source))
         ctx.addIssue({ code: 'custom', path: ['more', i, 'source'], message: 'Википедия как источник текста запрещена' });
