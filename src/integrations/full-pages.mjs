@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
 import { sitebarHtml, sitebarAssets, whenOfKey } from '../lib/sitebar.mjs';
 
 const SRC = 'src/data/full-pages';
@@ -48,6 +49,47 @@ function checkSitebars(root, base) {
 
 const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/|#|\$|\{)/i; // схема, корень, якорь, шаблон
 
+// Мировой стандарт против сдвига вёрстки (замер glazami «картинки с размерами», 17.10): у каждого <img> старой
+// страницы — width/height по самому файлу из сборки; есть одно из двух — второе по пропорции файла.
+// Внешний адрес или файла нет — картинка остаётся как была. Метка data-rc-razmer: в старых стилях бывает
+// img{width:100%} без height:auto — rc-sitebar.css даёт таким height:auto с нулевой силой (:where), свой height автора выигрывает.
+const sizes = new Map();
+async function sizeOf(file) {
+  if (!sizes.has(file)) sizes.set(file, await sharp(file).metadata().then((m) => m.width && m.height ? m : null).catch(() => null));
+  return sizes.get(file);
+}
+async function imgSizes(html, root, base) {
+  const tags = [...new Set(html.match(/<img\b[^>]*>/gi) || [])];
+  let n = 0;
+  for (const tag of tags) {
+    const w = /\swidth\s*=/i.test(tag), h = /\sheight\s*=/i.test(tag);
+    if (w && h) continue;
+    const src = /\ssrc\s*=\s*["']([^"']+)["']/i.exec(tag)?.[1];
+    if (!src || !src.startsWith(base) || src.startsWith('//')) continue;
+    const file = path.join(root, decodeURIComponent(src.slice(base.length).split(/[?#]/)[0]));
+    const m = fs.existsSync(file) && await sizeOf(file);
+    if (!m) continue;
+    let add = '';
+    if (!w && !h) add = ` width="${m.width}" height="${m.height}"`;
+    else if (!w) { const hv = parseFloat(/\sheight\s*=\s*["']?([\d.]+)/i.exec(tag)?.[1]); if (hv) add = ` width="${Math.round(hv * m.width / m.height)}"`; }
+    else { const wv = parseFloat(/\swidth\s*=\s*["']?([\d.]+)/i.exec(tag)?.[1]); if (wv) add = ` height="${Math.round(wv * m.height / m.width)}"`; }
+    if (!add) continue;
+    html = html.split(tag).join(tag.replace(/^<img\b/i, `<img${add} data-rc-razmer`));
+    n++;
+  }
+  return html;
+}
+
+// Соседние дни (замер glazami «вчера/завтра», 17.10): старая страница дня заменяет карточку целиком, и ссылки
+// «← предыдущий / следующий →» карточки (den/[key].astro) пропадали. Соседи — ближайшие дни музея в сборке.
+function sosediHtml(base, museum, keys, key) {
+  const i = keys.indexOf(key);
+  if (!keys[i - 1] && !keys[i + 1]) return ''; // единственный день музея — соседей нет
+  const link = (k, rel, text) => k ? `<a class="rc-sosed rc-sosed-${rel}" rel="${rel}" href="${base}muzei/${museum}/den/${k}/">${text}</a>` : '<span></span>';
+  return `<nav class="rc-sosedi" aria-label="Соседние дни">${link(keys[i - 1], 'prev', `← предыдущий день, ${whenOfKey(keys[i - 1] || '01-01')}`)}`
+    + `${link(keys[i + 1], 'next', `следующий день, ${whenOfKey(keys[i + 1] || '01-01')} →`)}</nav>`;
+}
+
 function absolute(url, dirUrl) {
   const u = url.trim();
   if (!u || SKIP.test(u)) return url;
@@ -61,12 +103,14 @@ export default function fullPages() {
     name: 'full-pages',
     hooks: {
       'astro:config:done': ({ config }) => { base = config.base.replace(/\/?$/, '/'); site = config.site ?? ''; },
-      'astro:build:done': ({ dir }) => {
+      'astro:build:done': async ({ dir }) => {
         const root = fileURLToPath(dir);
         if (!fs.existsSync(SRC)) { checkSitebars(root, base); return; }
         const bad = [];
         let n = 0;
         for (const museum of fs.readdirSync(SRC).sort()) {
+          const denDir = path.join(root, 'muzei', museum, 'den');
+          const keys = fs.existsSync(denDir) ? fs.readdirSync(denDir).filter((k) => fs.existsSync(path.join(denDir, k, 'index.html'))).sort() : [];
           for (const f of fs.readdirSync(path.join(SRC, museum)).sort()) {
             const key = f.replace(/\.html$/, '');
             const self = `${base}muzei/${museum}/den/${key}/`;
@@ -119,6 +163,8 @@ export default function fullPages() {
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
+            if (!/\srel=["'](?:prev|next)["']/i.test(html)) html = html.replace(/<\/body>/i, `${sosediHtml(base, museum, keys, key)}\n</body>`);
+            html = await imgSizes(html, root, base);
             if (!MUSEUMS[museum]) { bad.push(`${museum}/${key} — музея нет в museums.json`); continue; }
             fs.writeFileSync(out, html);
             n++;

@@ -3,7 +3,8 @@
 // Сайт статический, пересборки по расписанию нет: при сборке рисуются карточки даты сборки (по Москве),
 // встроенный скрипт сверяет московскую дату в браузере и при расхождении берёт segodnya/<ММ-ДД>.json.
 // Карточка: картинка → полное имя музея (title_ru) → событие → хук → «Открыть день». Текст не поверх картинки.
-// Стили — только public/assets/portal-today.css.
+// Стили — только public/assets/portal-today.css. width/height картинки = рамка 16:10 (.p-today__pic, object-fit: cover):
+// место держится до загрузки, замер glazami «картинки с размерами» (17.10).
 import { today } from '../../lib/segodnya';
 const base = import.meta.env.BASE_URL;
 const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
@@ -19,7 +20,7 @@ const t = await today(`${parts.month}-${parts.day}`);
   <div class="p-today__list" data-t="list">
     {t.cards.map((c, i) => (
       <article class={`p-today__card${i === 0 ? ' p-today__card--lead' : ''}${c.img ? '' : ' p-today__card--noimg'}`}>
-        {c.img && <div class="p-today__pic"><img src={c.img} alt={c.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>}
+        {c.img && <div class="p-today__pic"><img src={c.img} alt={c.alt} width="1600" height="1000" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>}
         <div class="p-today__body">
           <p class="p-today__museum">{c.museumTitle}</p>
           <h3 class="p-today__title">{c.title}</h3>
@@ -47,7 +48,7 @@ const t = await today(`${parts.month}-${parts.day}`);
     list.textContent = '';
     t.cards.forEach(function (c, i) {
       var a = el('article', 'p-today__card' + (i === 0 ? ' p-today__card--lead' : '') + (c.img ? '' : ' p-today__card--noimg'));
-      if (c.img) { var pic = el('div', 'p-today__pic'), img = el('img'); img.src = c.img; img.alt = c.alt || ''; img.decoding = 'async'; if (i) img.loading = 'lazy'; pic.appendChild(img); a.appendChild(pic); }
+      if (c.img) { var pic = el('div', 'p-today__pic'), img = el('img'); img.src = c.img; img.alt = c.alt || ''; img.width = 1600; img.height = 1000; img.decoding = 'async'; if (i) img.loading = 'lazy'; pic.appendChild(img); a.appendChild(pic); }
       var b = el('div', 'p-today__body');
       b.appendChild(el('p', 'p-today__museum', c.museumTitle));
       b.appendChild(el('h3', 'p-today__title', c.title));
