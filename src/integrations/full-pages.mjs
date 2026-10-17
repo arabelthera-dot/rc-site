@@ -7,8 +7,45 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sitebarHtml, sitebarAssets, whenOfKey } from '../lib/sitebar.mjs';
 
 const SRC = 'src/data/full-pages';
+const MUSEUMS = Object.fromEntries(JSON.parse(fs.readFileSync('src/data/museums.json', 'utf8')).museums
+  .map((m) => [m.slug, m.title_ru]));
+const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(+n)).replace(/&amp;/g, '&');
+
+// Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
+// и на главную своего музея с подписью ровно title_ru (у главной музея — само название, без ссылки).
+// Нарушил — сайт не собирается.
+function checkSitebars(root, base) {
+  const bad = [];
+  const dir = path.join(root, 'muzei');
+  for (const slug of fs.existsSync(dir) ? fs.readdirSync(dir).sort() : []) {
+    const title = MUSEUMS[slug];
+    if (!title) continue;
+    const pages = [['', false], ['calendar', true]];
+    const den = path.join(dir, slug, 'den');
+    for (const k of fs.existsSync(den) ? fs.readdirSync(den).sort() : []) pages.push([`den/${k}`, true]);
+    for (const [rel, linked] of pages) {
+      const f = path.join(dir, slug, rel, 'index.html');
+      if (!fs.existsSync(f)) continue;
+      const bar = /<nav class="rc-sitebar"[^>]*>([\s\S]*?)<\/nav>/.exec(fs.readFileSync(f, 'utf8'))?.[1];
+      const name = `muzei/${slug}/${rel ? rel + '/' : ''}`;
+      if (!bar) { bad.push(`${name} — нет верхней полосы`); continue; }
+      if (!new RegExp(`<a class="rc-sb-link rc-sb-home" href="${base}">Русская цивилизация</a>`).test(bar))
+        bad.push(`${name} — нет ссылки на главную сайта`);
+      const m = linked
+        ? new RegExp(`<a class="rc-sb-link rc-sb-museum" href="${base}muzei/${slug}/"[^>]*>([^<]*)</a>`).exec(bar)
+        : /<span class="rc-sb-link rc-sb-museum"[^>]*>([^<]*)<\/span>/.exec(bar);
+      if (!m) bad.push(`${name} — нет ${linked ? 'ссылки на главную музея' : 'названия музея'}`);
+      else if (decode(m[1]) !== title) bad.push(`${name} — название музея «${decode(m[1])}» вместо «${title}»`);
+    }
+  }
+  if (bad.length) throw new Error(`верхняя полоса навигации (${bad.length}):\n${bad.join('\n')}`);
+  return bad.length;
+}
+
 const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/|#|\$|\{)/i; // схема, корень, якорь, шаблон
 
 function absolute(url, dirUrl) {
@@ -25,8 +62,8 @@ export default function fullPages() {
     hooks: {
       'astro:config:done': ({ config }) => { base = config.base.replace(/\/?$/, '/'); site = config.site ?? ''; },
       'astro:build:done': ({ dir }) => {
-        if (!fs.existsSync(SRC)) return;
         const root = fileURLToPath(dir);
+        if (!fs.existsSync(SRC)) { checkSitebars(root, base); return; }
         const bad = [];
         let n = 0;
         for (const museum of fs.readdirSync(SRC).sort()) {
@@ -74,12 +111,17 @@ export default function fullPages() {
               if (!/property=["']og:description["']/i.test(html) && d.hook) add.push(`<meta property="og:description" content="${esc(d.hook)}" />`);
               html = html.replace(/<\/head>/i, `${add.join('\n')}\n</head>`);
             }
+            // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
+            html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
+              .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
+            if (!MUSEUMS[museum]) { bad.push(`${museum}/${key} — музея нет в museums.json`); continue; }
             fs.writeFileSync(out, html);
             n++;
           }
         }
         if (bad.length) throw new Error(`полные страницы дней:\n${bad.join('\n')}`);
-        console.log(`full-pages: ${n} дней — полная страница`);
+        checkSitebars(root, base);
+        console.log(`full-pages: ${n} дней — полная страница; верхняя полоса проверена у всех страниц музеев`);
       },
     },
   };

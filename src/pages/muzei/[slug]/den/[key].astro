@@ -86,8 +86,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={cover?.src} imageAlt={cover?.caption} type="article"
-  crumbs={[{ href: museumUrl, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: `${when} · ${title}` }]}
-  back={{ href: cal, label: 'Календарь' }} noindex={soon}>
+  museumTitle={m.title_ru} here={when} noindex={soon}>
   <Fragment slot="head">
     <link rel="stylesheet" href={`${base}assets/fonts.css`} />
     <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />
