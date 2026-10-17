@@ -1,6 +1,7 @@
 ---
-interface Props { title: string; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean }
-const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], back, ownStyle = false } = Astro.props;
+interface Props { title: string; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean }
+const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false } = Astro.props;
+import SiteBar from '../components/SiteBar.astro';
 import "../styles/museum.css";
 const base = import.meta.env.BASE_URL;
 // Свой стиль музея переносится из старого сайта как есть (public/muzei/<slug>/*-style.css, план шаг 4);
@@ -58,12 +59,18 @@ const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
   </>}
   {headFiles.map((f) => <link rel="preload" href={`${base}assets/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
+  {museum && museumTitle && <>
+    <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
+    <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
+  </>}
   <slot name="head" />
 </head>
 <body>
-  {back && <a class="backbtn" href={back.href}><span class="ar">←</span>{back.label}</a>}
+  {/* Страницы музеев — единая верхняя полоса (Сергей 17.10) вместо крошек и кнопки «назад» */}
+  {museum && museumTitle && <SiteBar slug={museum} title={museumTitle} here={here} />}
+  {!(museum && museumTitle) && back && <a class="backbtn" href={back.href}><span class="ar">←</span>{back.label}</a>}
   <slot name="header" />
-  {crumbs.length > 0 && (
+  {!(museum && museumTitle) && crumbs.length > 0 && (
     <nav class="crumbs">
       <a href={base}>Русская цивилизация</a>
       {crumbs.map((c) => (<> › {c.href ? <a href={c.href}>{c.label}</a> : <span>{c.label}</span>}</>))}

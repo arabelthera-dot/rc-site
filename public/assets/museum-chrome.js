@@ -310,7 +310,8 @@
   /* ── 1. кнопка возврата в музей ──
      Крошки ведут в тот же музей тем же текстом, поэтому кнопка при них — третий повтор
      названия в шапке и лишние 55 px до заголовка (разбор Шухова, 04.08). */
-  var crumbHome = doc.querySelector('nav.crumbs a[href="' + (M.href || '') + '"]');
+  /* единая верхняя полоса сайта (rc-sitebar, 17.10) уже ведёт в музей полным названием — кнопка не нужна */
+  var crumbHome = doc.querySelector('nav.rc-sitebar a.rc-sb-museum') || doc.querySelector('nav.crumbs a[href="' + (M.href || '') + '"]');
   var oldBack = doc.querySelector('.backbtn');
   if(oldBack && crumbHome && oldBack.getAttribute('href') === M.href && oldBack.parentNode){
     oldBack.parentNode.removeChild(oldBack);   /* кнопка, вшитая в HTML до появления крошек */

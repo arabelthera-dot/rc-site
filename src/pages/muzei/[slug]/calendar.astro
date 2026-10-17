@@ -73,7 +73,7 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   '<p>' + it.d + '</p>' + row('Механика', it.mech) + row('Источник', it.src) +
   (it.href ? '<a href="' + it.href + '">' + (it.link || 'Открыть →') + '</a>' : '') : '';
 ---
-<Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} crumbs={[{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }, { label: 'Календарь' }]} back={{ href: `${base}muzei/${m.slug}/`, label: m.title_ru }}>
+<Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} museumTitle={m.title_ru} here="Календарь">
   <header slot="header"><div class="b1">{m.title_ru}</div><h1>Календарь музея</h1><p>Каждый заполненный день — готовый повод для ролика, поста и урока.</p></header>
   <div class="cal-supslot" data-support-slot></div>
   <div id="calcard" set:html={cardHtml}></div>
