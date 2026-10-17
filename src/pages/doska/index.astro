@@ -1,0 +1,94 @@
+---
+// Доска музеев — собирается ТОЛЬКО из данных сайта при сборке (museums.json, карточки дней, full-pages).
+// Слово Сергея 08.10: «галочка ни о чем не говорит… во всех графах должны стоять ссылки» — галочек нет:
+// в ячейке число и ссылка на сам результат, нет результата — «—». Ниже — по музею список ссылок на каждый готовый день.
+// noindex, вне карты сайта (astro.config.mjs), в меню не включена.
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+import { YEAR_KEYS, beyondYear, isDated, isReady } from '../../lib/kalendar';
+const base = import.meta.env.BASE_URL;
+const museums = (await getCollection('museums')).sort((a, b) => a.data.number - b.data.number);
+const days = (await getCollection('days')).map((d) => d.data).sort((a, b) => a.key.localeCompare(b.key));
+const FULL = 'src/data/full-pages';
+const rows = museums.map(({ data: m }) => {
+  const dated = isDated(m.slug);
+  const own = days.filter((d) => d.museum === m.slug);
+  const full = new Set(fs.existsSync(`${FULL}/${m.slug}`) ? fs.readdirSync(`${FULL}/${m.slug}`).map((f) => f.replace(/\.html$/, '')) : []);
+  const ready = own.filter(isReady).map((d) => ({ ...d, full: full.has(d.key) }));
+  return { m, dated, ready,
+    cal: own.filter((d) => !beyondYear(d.key, dated)).length,
+    full: own.filter((d) => full.has(d.key)).length,
+    img: own.filter((d) => d.images.length > 0).length,
+    src: own.filter((d) => d.source).length };
+})
+  // порядок как в витрине главной: музеи с календарём выше, внутри — по номеру
+  .sort((a, b) => (b.cal > 0 ? 1 : 0) - (a.cal > 0 ? 1 : 0) || a.m.number - b.m.number);
+const museumUrl = (slug: string) => `${base}muzei/${slug}/`;
+const label = (k: string, dated: boolean) => dated ? `${k.slice(3)}.${k.slice(0, 2)}` : `№${+k.slice(3)} · ${k.slice(0, 2)}`;
+const total = (f: (r: (typeof rows)[number]) => number) => rows.reduce((s, r) => s + f(r), 0);
+const built = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow', dateStyle: 'long', timeStyle: 'short' });
+---
+<Base title="Доска музеев — Русская цивилизация" description="Что готово в каждом музее: числа и ссылки на сами страницы." noindex>
+  <Fragment slot="head">
+    <link rel="stylesheet" href={`${base}assets/fonts.css`} />
+    <link rel="stylesheet" href={`${base}assets/portal.css`} />
+  </Fragment>
+  <header slot="header" class="p-hero">
+    <h1>Доска музеев</h1>
+    <p class="p-lead">Каждое число — ссылка на то, что сделано</p>
+  </header>
+  <div class="p-wrap dk">
+    <div class="dk-scroll">
+      <table class="dk-t">
+        <thead><tr><th>Музей</th><th>Календарь<br /><small>дней из {YEAR_KEYS.length}</small></th><th>Готовые дни</th><th>Полные страницы</th><th>С картинкой</th><th>С источником</th></tr></thead>
+        <tbody>
+          {rows.map((r) => {
+            const a = `#${r.m.slug}`;
+            const cell = (n: number, href: string) => n > 0 ? <a href={href}>{n}</a> : '—';
+            return (
+              <tr>
+                <td><a href={museumUrl(r.m.slug)}>{r.m.title_ru}</a></td>
+                <td>{cell(r.cal, `${museumUrl(r.m.slug)}calendar/`)}</td>
+                <td>{cell(r.ready.length, a)}</td>
+                <td>{cell(r.full, a)}</td>
+                <td>{cell(r.img, a)}</td>
+                <td>{cell(r.src, a)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+        <tfoot><tr><th>Всего: {rows.length} музеев</th><th>{total((r) => r.cal)}</th><th>{total((r) => r.ready.length)}</th><th>{total((r) => r.full)}</th><th>{total((r) => r.img)}</th><th>{total((r) => r.src)}</th></tr></tfoot>
+      </table>
+    </div>
+
+    {rows.filter((r) => r.ready.length > 0).map((r) => (
+      <section class="dk-m" id={r.m.slug}>
+        <h2><a href={museumUrl(r.m.slug)}>{r.m.title_ru}</a> — {r.ready.length}</h2>
+        <ol>
+          {r.ready.map((d) => (
+            <li><a href={`${museumUrl(r.m.slug)}den/${d.key}/`}>{label(d.key, r.dated)} — {d.title || d.hook}</a>
+              {d.full && <span class="dk-f">полная страница</span>}
+              {d.images.length > 0 && <span class="dk-x">картинка</span>}
+              {d.source && <span class="dk-x">источник</span>}</li>
+          ))}
+        </ol>
+      </section>
+    ))}
+    <p class="dk-built">Собрано из карточек при сборке {built} (МСК)</p>
+  </div>
+</Base>
+<style>
+  .dk{color:#c3d3e3;padding-bottom:40px}
+  .dk a{color:var(--p-gold-l)}
+  .dk-scroll{overflow-x:auto;margin:24px 0 40px}
+  .dk-t{border-collapse:collapse;width:100%;font-size:15px}
+  .dk-t th,.dk-t td{border-bottom:1px solid rgba(201,168,76,.18);padding:8px 10px;text-align:right;white-space:nowrap}
+  .dk-t th:first-child,.dk-t td:first-child{text-align:left;white-space:normal}
+  .dk-t thead th,.dk-t tfoot th{color:var(--p-gold);font-weight:600}
+  .dk-m h2{font-family:'Playfair Display',Georgia,serif;color:#fff;font-size:24px;margin:36px 0 12px}
+  .dk-m ol{columns:2 320px;padding-left:1.4em;font-size:14px;line-height:1.6}
+  .dk-f{color:var(--p-gold);margin-left:6px;font-size:12px}
+  .dk-x{color:var(--p-muted);margin-left:6px;font-size:12px}
+  .dk-built{margin-top:40px;font-size:13px;color:var(--p-muted)}
+</style>
