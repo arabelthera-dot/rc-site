@@ -113,6 +113,7 @@
     img.loading = 'lazy';
     img.decoding = 'async';
     img.draggable = false;
+    if (state.w && state.h) { img.setAttribute('width', state.w); img.setAttribute('height', state.h); }
     if (role) img.setAttribute('data-role', role);
     return img;
   }

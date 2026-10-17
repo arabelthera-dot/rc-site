@@ -66,6 +66,7 @@
   + '.sg-detail .sg-meta b{color:#a2551f;font-weight:700}'
   + '.sg-detail audio{margin-top:18px;width:100%;border-radius:8px}'
   + '@media(max-width:600px){.sg-detail{padding:20px 18px}.sg-detail .sg-t{font-size:17px}}';
+  css += '.sg-hint{font-size:12px;color:var(--muted);margin:12px 0 0}.sg-note{font-size:12px;color:var(--muted);opacity:.75;margin:8px 0 0}';
   var styleEl = document.createElement('style');
   styleEl.textContent = css;
   document.head.appendChild(styleEl);
@@ -88,8 +89,8 @@
     + (CFG.lead ? '<p style="color:var(--muted);margin-top:0;max-width:62ch">' + esc(CFG.lead) + '</p>' : '')
     + '<div class="sg-wall">' + scratches + '</div>'
     + '<div class="sg-detail" id="sgDetail"></div>'
-    + (CFG.hint ? '<p style="font-size:12px;color:var(--muted);margin:12px 0 0">' + esc(CFG.hint) + '</p>' : '')
-    + (CFG.note ? '<p style="font-size:12px;color:var(--muted);opacity:.75;margin:8px 0 0">' + esc(CFG.note) + '</p>' : '')
+    + (CFG.hint ? '<p class="sg-hint">' + esc(CFG.hint) + '</p>' : '')
+    + (CFG.note ? '<p class="sg-note">' + esc(CFG.note) + '</p>' : '')
     + '</div>';
 
   var detail = document.getElementById('sgDetail');
