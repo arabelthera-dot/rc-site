@@ -1,18 +1,53 @@
 // Замер «глазами посетителя» по списку из 21 пункта (knowledge/glazami-posetitelya.md, Сергей 17.10.2026).
 // Телефон 390×844. Выборка: главная, карта, все музеи, все календари и по 3 дня на музей
 // (первый, середина, последний по карте сайта). Итог — таблица TSV и сводка «сколько страниц не проходят».
-// Запуск: node scripts/glazami.mjs [адрес сайта] [папка отчёта]
+// Запуск: node scripts/glazami.mjs [адрес сайта] [папка отчёта] [--dist dist] [--porog scripts/glazami-porog.json] [--zapisat]
+//   --dist <папка>  — мерить локальную сборку: свой статический сервер, сайт под /rc-site/ (как на Pages).
+//   --porog <файл>  — сторож от отката: код 1, если хоть по одному пункту провалов больше эталона.
+//   --zapisat       — записать эталон в файл --porog (только вниз: число может уменьшиться, но не вырасти).
 // Пункты 10 (контраст) и 21 (счётчик, после М26) здесь не мерятся: контраст — в axe, счётчика ещё нет.
 import fs from 'node:fs';
-const { chromium } = await import(process.env.PW || 'playwright');
+import http from 'node:http';
+import path from 'node:path';
+const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
 
-const SITE = (process.argv[2] || 'https://arabelthera-dot.github.io/rc-site/').replace(/\/?$/, '/');
-const OUT = process.argv[3] || '/tmp/glazami';
-const W = 390, H = 844;
+const argv = process.argv.slice(2), opt = {}, pos = [];
+for (let i = 0; i < argv.length; i++) {
+  if (argv[i] === '--zapisat') opt.zapisat = true;
+  else if (argv[i].startsWith('--')) opt[argv[i].slice(2)] = argv[++i];
+  else pos.push(argv[i]);
+}
+const ZHIVOY = 'https://arabelthera-dot.github.io/rc-site/';
+let SITE = (pos[0] || ZHIVOY).replace(/\/?$/, '/');
+const OUT = pos[1] || '/tmp/glazami';
+const W = 390, H = 844, POTOKOV = +(opt.potokov || 4);
 fs.mkdirSync(OUT, { recursive: true });
 
-const sm = await (await fetch(SITE + 'sitemap-0.xml')).text();
-const all = [...sm.matchAll(/<loc>([^<]*)/g)].map(m => m[1]);
+let server = null;
+if (opt.dist) {
+  const ROOT = path.resolve(opt.dist), BASE = '/rc-site/';
+  const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
+    '.json': 'application/json', '.xml': 'application/xml', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
+    '.woff2': 'font/woff2', '.woff': 'font/woff', '.mp4': 'video/mp4', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.txt': 'text/plain' };
+  server = http.createServer((req, res) => {
+    let u = decodeURIComponent(req.url.split('?')[0]);
+    if (!u.startsWith(BASE)) { res.writeHead(404); return res.end(); }
+    let f = path.join(ROOT, u.slice(BASE.length));
+    if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
+    try { if (fs.statSync(f).isDirectory()) f = path.join(f, 'index.html'); } catch {}
+    fs.readFile(f, (err, buf) => {
+      if (err) { res.writeHead(404); return res.end('404'); }
+      res.writeHead(200, { 'content-type': MIME[path.extname(f).toLowerCase()] || 'application/octet-stream', 'content-length': buf.length });
+      res.end(buf);
+    });
+  });
+  await new Promise(r => server.listen(0, '127.0.0.1', r));
+  SITE = `http://127.0.0.1:${server.address().port}${BASE}`;
+}
+
+const sm = opt.dist ? fs.readFileSync(path.join(opt.dist, 'sitemap-0.xml'), 'utf8') : await (await fetch(SITE + 'sitemap-0.xml')).text();
+const all = [...sm.matchAll(/<loc>([^<]*)/g)].map(m => m[1].replace(ZHIVOY, SITE));
 const dni = {};
 for (const u of all) { const m = u.match(/muzei\/([^/]+)\/den\//); if (m) (dni[m[1]] ||= []).push(u); }
 const vyborka = all.filter(u => !/\/den\//.test(u));
@@ -38,7 +73,8 @@ const POROGI = {
 
 const browser = await chromium.launch();
 const rows = [];
-for (const url of vyborka) {
+const t0 = Date.now();
+async function zamer(url) {
   const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   const page = await ctx.newPage();
   let oshibki = 0, bitye = 0, bytes = 0;
@@ -103,12 +139,17 @@ for (const url of vyborka) {
     };
   }, { W, H }).catch(() => null);
   await ctx.close();
-  if (!r) { rows.push({ url, sloman: 1 }); continue; }
+  if (!r) { rows.push({ url: url.replace(SITE, '/'), sloman: 1 }); return; }
   r.url = url.replace(SITE, '/'); r.kb = Math.round(bytes / 1024); r.oshibki = oshibki; r.bitye = bitye;
   rows.push(r);
   process.stdout.write('.');
 }
+// несколько страниц одновременно — укладываемся в ~3 минуты в проверке заявки
+const ochered = [...vyborka];
+await Promise.all(Array.from({ length: POTOKOV }, async () => { while (ochered.length) await zamer(ochered.shift()); }));
 await browser.close();
+server?.close();
+rows.sort((a, b) => vyborka.indexOf(SITE + a.url.slice(1)) - vyborka.indexOf(SITE + b.url.slice(1)));
 
 // дубли title между страницами (пункт 2)
 const t = {}; for (const r of rows) if (r.title) t[r.title] = (t[r.title] || 0) + 1;
@@ -125,8 +166,39 @@ for (const r of rows) {
 fs.writeFileSync(`${OUT}/tablica.tsv`, lines.join('\n') + '\n');
 fs.writeFileSync(`${OUT}/syroe.json`, JSON.stringify(rows, null, 1));
 const vidy = {}; for (const r of rows) vidy[tip(r.url)] = (vidy[tip(r.url)] || 0) + 1;
-let s = `Замер ${new Date().toISOString().slice(0, 16)} UTC, ${SITE}, 390×844, страниц ${rows.length} (${Object.entries(vidy).map(([k, v]) => k + ' ' + v).join(', ')})\n`;
+let s = `Замер ${new Date().toISOString().slice(0, 16)} UTC, ${opt.dist ? 'сборка ' + opt.dist : SITE}, 390×844, страниц ${rows.length}, ${Math.round((Date.now() - t0) / 1000)} с (${Object.entries(vidy).map(([k, v]) => k + ' ' + v).join(', ')})\n`;
 s += `дубли title: ${Object.values(t).filter(v => v > 1).reduce((a, b) => a + b, 0)}\n`;
 for (const n of names) { const f = svod[n]; const sum = Object.values(f).reduce((a, b) => a + b, 0); s += `${sum ? '✗' : '✓'} ${n}: ${sum}${sum ? ' (' + Object.entries(f).map(([k, v]) => k + ' ' + v).join(', ') + ')' : ''}\n`; }
 fs.writeFileSync(`${OUT}/svodka.txt`, s);
 console.log('\n' + s);
+
+// Сторож от отката: мерка — «не хуже вчерашнего», а не идеал.
+if (opt.porog) {
+  const itog = { 'не открылась': rows.filter(r => r.sloman).length, 'дубли title': Object.values(t).filter(v => v > 1).reduce((a, b) => a + b, 0) };
+  for (const n of names) itog[n] = Object.values(svod[n]).reduce((a, b) => a + b, 0);
+  fs.writeFileSync(`${OUT}/porog-zamer.json`, JSON.stringify(itog, null, 2) + '\n');
+  const staryy = fs.existsSync(opt.porog) ? JSON.parse(fs.readFileSync(opt.porog, 'utf8')) : null;
+  if (opt.zapisat) {
+    const punkty = {};
+    for (const [n, v] of Object.entries(itog)) punkty[n] = staryy?.punkty?.[n] !== undefined ? Math.min(staryy.punkty[n], v) : v;
+    fs.writeFileSync(opt.porog, JSON.stringify({
+      'что это': 'Эталон замера «глазами посетителя»: сколько страниц выборки проваливают пункт. Заявка, где провалов больше, — красная. Понижать можно, повышать нельзя.',
+      'снят': new Date().toISOString().slice(0, 10), 'страниц': rows.length, punkty }, null, 2) + '\n');
+    console.log(`Эталон записан: ${opt.porog}`);
+  } else {
+    if (!staryy) { console.log(`Нет эталона ${opt.porog}`); process.exit(1); }
+    const huzhe = [], luchshe = [];
+    for (const [n, v] of Object.entries(itog)) {
+      const p = staryy.punkty[n] ?? 0;
+      if (v > p) huzhe.push(`  ✗ ${n}: было ${p}, стало ${v} (+${v - p})`);
+      else if (v < p) luchshe.push(`  ↓ ${n}: было ${p}, стало ${v}`);
+    }
+    let o = `\nСторож «не хуже вчерашнего» (эталон ${opt.porog} от ${staryy['снят']}):\n`;
+    o += huzhe.length ? `ХУЖЕ эталона — ${huzhe.length} п.:\n${huzhe.join('\n')}\nПодробно по страницам — tablica.tsv в отчёте замера.\n` : 'Ни один пункт не стал хуже. ✓\n';
+    if (luchshe.length) o += `Стало лучше — эталон можно понизить (node scripts/glazami.mjs … --porog ${opt.porog} --zapisat):\n${luchshe.join('\n')}\n`;
+    console.log(o);
+    fs.appendFileSync(`${OUT}/svodka.txt`, o);
+    if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '```\n' + s + o + '```\n');
+    if (huzhe.length) process.exit(1);
+  }
+}
