@@ -188,8 +188,8 @@ header.top + .crumbs + main{margin-top:44px}
 .mh-cover{padding:0 0 6px;text-align:center}
 .mh-scene{margin:0 auto;max-width:960px}
 /* размеры кадра стоят в разметке (width/height из файла, Cover.astro): место под картинку занято до её загрузки */
-.mh-scene img{display:block;width:100%;height:auto;max-height:min(62vh,66.7vw);object-fit:cover;object-position:50% 30%}
-.mh-scene figcaption{font-size:12px;opacity:.6;padding:6px 16px 0;font-style:italic}
+.mh-scene img{display:block;width:100%;height:auto;max-height:min(62vh,max(66.7vw,46vh));object-fit:cover;object-position:50% 30%}
+.mh-scene figcaption{font-size:12px;opacity:.6;padding:6px 10px 0;font-style:italic}
 .mh-noframe{display:flex;align-items:center;justify-content:center;min-height:clamp(150px,30vw,260px);padding:60px 24px 24px;
   border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0d1a2b,#081120);font-size:13px;opacity:.7;font-style:italic}
 .mh-title{padding:22px 18px 6px;max-width:760px;margin:0 auto;background:var(--ink)}
