@@ -9,20 +9,32 @@ import { getCollection } from 'astro:content';
 import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
+import { YEAR_KEYS, isDated, isReady, nearestReady } from '../../../../lib/kalendar';
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
   const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
-  return days.map((d) => {
+  const full = days.map((d) => {
     const own = days.filter((x) => x.data.museum === d.data.museum);
     const i = own.indexOf(d);
     return { params: { slug: d.data.museum, key: d.data.key },
       props: { d: d.data, m: museums.find((x) => x.id === d.data.museum)!.data, prev: own[i - 1]?.data, next: own[i + 1]?.data,
         keys: own.map((x) => x.data.key), own: own.map((x) => x.data) } };
   });
+  // Дата года без карточки у датированного музея — страница «День готовится» (не 404): шапка и крошки дня,
+  // ниже — ближайший готовый день этого музея. Только для музеев, у которых уже есть дни.
+  const empty = museums.filter((m) => isDated(m.id) && days.some((x) => x.data.museum === m.id)).flatMap((m) => {
+    const own = days.filter((x) => x.data.museum === m.id);
+    return YEAR_KEYS.filter((k) => !own.some((x) => x.data.key === k)).map((key) => ({
+      params: { slug: m.id, key },
+      props: { d: { museum: m.id, key, title: '', images: [] }, m: m.data, empty: true,
+        prev: own.filter((x) => x.data.key < key).at(-1)?.data, next: own.find((x) => x.data.key > key)?.data,
+        keys: own.map((x) => x.data.key), own: own.map((x) => x.data) } }));
+  });
+  return [...full, ...empty];
 }
-const { d, m, prev, next, keys, own } = Astro.props;
+const { d, m, prev, next, keys, own, empty = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
@@ -31,6 +43,11 @@ const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`
 const whenOf = (key: string) => { const mm = parseInt(key.slice(0, 2)), dd = parseInt(key.slice(3));
   return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
 const when = whenOf(d.key);
+// «День готовится» (Сергей 17.10): даты без карточки и карточки с одним названием (без хука и текста) —
+// строка-заглушка и ближайший готовый день музея вперёд по году; такие страницы не для поисковиков (noindex).
+const soon = empty || !isReady(d);
+const near = soon ? nearestReady(own, d.key) : undefined;
+const title = empty ? 'День готовится' : d.title;
 // Дата в <title> и карточке пересылки: «17 октября 1944: …» (п.2 очереди 1, 17.10).
 const dateTitle = d.year ? (dated ? `${when} ${d.year}` : `${when} · ${d.year}`) : when;
 const museumUrl = `${base}muzei/${m.slug}/`;
@@ -57,20 +74,20 @@ const legacy = d.legacy_page ? `https://arabelthera-dot.github.io/rc-museum-prev
 const dayName = (x: { key: string; title: string }) => `${whenOf(x.key)} · ${x.title}`;
 const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
   museum: { title: m.title_ru, href: museumUrl },
-  share: { title: `${d.title} — ${m.title_ru}`, text: d.hook ?? d.title },
+  share: { title: `${title} — ${m.title_ru}`, text: d.hook ?? title },
   prev: prev && { href: dayUrl(prev.key), title: dayName(prev) },
   next: next && { href: dayUrl(next.key), title: dayName(next) },
   all: { href: cal, label: 'Все дни календаря' },
   city: base,
   random: keys.filter((k: string) => k !== d.key).map((k: string) => `${dayUrl(k)}index.html`),
 })};`;
-const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${d.title}»`})};`;
+const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
 ---
-<Base ownStyle title={`${dateTitle}: ${d.title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${d.title}`}
-  description={d.hook ?? `${d.title} — ${m.title_ru}`} museum={m.slug}
+<Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
+  description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={cover?.src} imageAlt={cover?.caption} type="article"
-  crumbs={[{ href: museumUrl, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: `${when} · ${d.title}` }]}
-  back={{ href: cal, label: 'Календарь' }}>
+  crumbs={[{ href: museumUrl, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: `${when} · ${title}` }]}
+  back={{ href: cal, label: 'Календарь' }} noindex={soon}>
   <Fragment slot="head">
     <link rel="stylesheet" href={`${base}assets/fonts.css`} />
     <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />
@@ -94,12 +111,25 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 
     <header class="hero-lead">
       <div class="date-chip">{when}{d.year && ` · ${d.year}`}</div>
-      <h1>{d.title}</h1>
+      <h1>{title}</h1>
       {d.hook && <p class="hook">{d.hook}</p>}
+      {soon && (
+        <div class="den-soon">
+          {!empty && <p class="den-soon-line">День готовится</p>}
+          {near && (
+            <a class="den-soon-card" href={dayUrl(near.key)}>
+              <span class="den-soon-lbl">Ближайший готовый день</span>
+              <span class="den-soon-t">{whenOf(near.key)} · {near.title}</span>
+              {near.hook && <span class="den-soon-hook">{near.hook}</span>}
+            </a>
+          )}
+          <a class="den-soon-all" href={cal}>Весь календарь →</a>
+        </div>
+      )}
       <div class="hero-btns">
         {d.gist && <a class="btn gold" href="#sut">Читать историю ↓</a>}
         {legacy && <a class="btn ghost" href={legacy}>Полная страница экспоната</a>}
-        {!d.gist && !legacy && <a class="btn ghost" href={cal}>Календарь музея</a>}
+        {!d.gist && !legacy && !soon && <a class="btn ghost" href={cal}>Календарь музея</a>}
       </div>
     </header>
 
@@ -155,7 +185,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     {next ? <a href={dayUrl(next.key)}>следующий →</a> : <span></span>}
   </nav>
 
-  <DenZavtra museum={m.slug} day={d.key} dated={dated} days={own} when={whenOf} />
+  <DenZavtra museum={m.slug} day={d.key} dated={dated} days={own} when={whenOf} mark={!empty} />
 
   <section class="block" id="kuda-dalshe">
     <h2>Музей продолжается</h2>

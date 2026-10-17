@@ -18,3 +18,18 @@ export const isDated = (slug: string) => {
 // номер записи больше длины месяца — запись «сверх года» (то же правило, что beyondYear
 // в museum-calendar-page.js): в счётчик года не идёт, показывается отдельной группой
 export const beyondYear = (key: string, dated: boolean) => !dated && +key.slice(3) > YEAR[+key.slice(0, 2) - 1];
+
+// Все ключи ММ-ДД года с 29 февраля (366): у датированного музея на каждый ключ без карточки —
+// страница «День готовится» (den/[key].astro), а не 404.
+const pad2 = (n: number) => (n < 10 ? '0' : '') + n;
+export const YEAR_KEYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  .flatMap((len, m) => Array.from({ length: len }, (_, d) => `${pad2(m + 1)}-${pad2(d + 1)}`));
+
+// День «готов», если у него есть хук или основной текст (gist); одно название — день ещё готовится.
+export const isReady = (d: { hook?: string; gist?: string }) => !!(d.hook || d.gist);
+
+// Ближайший готовый день музея вперёд по году от ключа (сам ключ не в счёт), с переходом через 31.12.
+export const nearestReady = <T extends { key: string; hook?: string; gist?: string }>(days: T[], key: string): T | undefined => {
+  const ready = days.filter(isReady).sort((a, b) => a.key.localeCompare(b.key));
+  return ready.find((d) => d.key > key) ?? ready.find((d) => d.key !== key);
+};

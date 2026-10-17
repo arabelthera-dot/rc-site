@@ -321,7 +321,10 @@
   var tail = pick(['#kuda-dalshe','#kuda','.kuda-dalshe']);
   var sups1 = [].slice.call(doc.querySelectorAll('.support'));
   var haveLate = sups1.some(function(e){ return topOf(e) > DOCH * 0.62; });
-  if(!haveLate){
+  /* короткая страница (день из названия и хука): дубль в «Куда дальше» встал бы меньше чем через экран
+     после главного блока — два «Поддержать проект» подряд (izobreteniya/den/10-16, 17.10). Тогда блок один. */
+  var tooClose = !!(peakEl && tail && topOf(tail) - (topOf(peakEl) + peakEl.offsetHeight) < (window.innerHeight || 800));
+  if(!haveLate && !tooClose){
     if(tail && !hasSupport(tail)){
       (tail.querySelector('.wrap') || tail).appendChild(finalBlock());
     } else if(!tail){
