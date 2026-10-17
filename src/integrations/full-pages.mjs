@@ -68,6 +68,28 @@ function checkNoGoogleFonts() {
   if (bad.length) throw new Error(`Google-шрифты вместо /assets/fonts.css (${bad.length}):\n${bad.join('\n')}`);
 }
 
+// Имя музея в шапке — ровно title_ru (AGENTS.md §6, 17.10): блок шапки (<header class="top">, .museum, .museum-label)
+// с обрезком своего title_ru (например, «Что изобрели русские первыми в мире» без «Музей») и в любом месте страницы
+// «Музей …», обрывающийся раньше полного title_ru любого музея, — сайт не собирается.
+const ALL_TITLES = Object.values(MUSEUMS);
+function checkMuseumName(html, museum) {
+  const bad = [];
+  const title = MUSEUMS[museum];
+  if (!title) return bad;
+  const norm = (x) => decode(x).replace(/\s+/g, ' ').trim();
+  const head = /<header class="top"[^>]*>([\s\S]*?)<\/header>/i.exec(html)?.[1] || '';
+  const blocks = [...head.matchAll(/<div class="b\d"[^>]*>([^<]*)<\/div>/g), ...head.matchAll(/<div class="museum"[^>]*>([^<]*)<\/div>/g),
+    ...html.matchAll(/<div class="museum-label"[^>]*>([^<]*)<\/div>/g)].map((m) => norm(m[1]));
+  const core = title.replace(/^.*?«(.*)»[^»]*$/, '$1');
+  for (const b of blocks) if (b && b !== title && (title.includes(b) && b.length > 8 || b === core)) bad.push(`шапка «${b}» вместо «${title}»`);
+  for (const m of decode(html).matchAll(/[Мм]узей[ \u00a0][^<>"'\n·|—,.:;(){}\[\]]{3,80}/g)) {
+    const s = m[0].replace(/\s+/g, ' ').trim();
+    const t = ALL_TITLES.find((x) => x !== s && s.length > 8 && x.toLowerCase().startsWith(s.toLowerCase()));
+    if (t && !ALL_TITLES.includes(s)) bad.push(`обрезанное имя «${s}» вместо «${t}»`);
+  }
+  return [...new Set(bad)];
+}
+
 const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/|#|\$|\{)/i; // схема, корень, якорь, шаблон
 
 // Мировой стандарт против сдвига вёрстки (замер glazami «картинки с размерами», 17.10): у каждого <img> старой
@@ -139,6 +161,7 @@ export default function fullPages() {
             if (!fs.existsSync(out)) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
             let html = fs.readFileSync(path.join(SRC, museum, f), 'utf8');
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
+            for (const e of checkMuseumName(html, museum)) bad.push(`${museum}/${key} — ${e}`);
             // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
             if (process.env.PUBLIC_NOINDEX === '1') html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '')
               .replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">');
@@ -203,7 +226,7 @@ export default function fullPages() {
         if (bad.length) throw new Error(`полные страницы дней:\n${bad.join('\n')}`);
         checkSitebars(root, base);
         checkNoGoogleFonts();
-        console.log(`full-pages: ${n} дней — полная страница; верхняя полоса проверена у всех страниц музеев; Google-шрифтов нет`);
+        console.log(`full-pages: ${n} дней — полная страница; верхняя полоса и имя музея в шапке проверены; Google-шрифтов нет`);
       },
     },
   };
