@@ -9,6 +9,12 @@ import path from 'node:path';
 import vm from 'node:vm';
 import os from 'node:os';
 
+// После переключения адреса (17.10.2026 21:00 МСК) правда — карточки здесь; импорт затёр бы ручные правки.
+if (Date.now() >= Date.parse('2026-10-17T18:00:00Z') && process.env.IMPORT_POSLE_PEREKLYUCHENIYA !== '1') {
+  console.error('import: адрес переключён 17.10.2026, правда — карточки rc-site; импорт закрыт (AGENTS.md §2).');
+  process.exit(1);
+}
+
 const LEGACY = process.env.LEGACY || path.join(os.homedir(), 'rc-museum-preview');
 const CATALOG = process.env.CATALOG ||
   path.join(os.homedir(), 'projects/russian-civilization/platform/catalog/museums.json');
