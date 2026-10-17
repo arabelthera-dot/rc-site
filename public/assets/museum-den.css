@@ -46,3 +46,12 @@
 
 @media(max-width:1000px){.moments.wide{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.hero.hero-day{padding:0}.hero.hero-day>img{max-height:52vh}.moments.wide{grid-template-columns:1fr}.mom .thumbs img{height:96px}}
+/* glazami 17.10: единая полоса сайта rc-sitebar заменяет старую шапку и крошки страницы */
+header.civic,nav.crumbs{display:none}
+.fl-rail{min-height:44px}
+main a[href]:not(p a):not(li a):not(figcaption a){min-height:44px}
+@media(max-width:700px){
+.museum-head{display:none}
+.hero.hero-day>img{width:100%;height:46vh;max-height:none;object-fit:contain}
+.hero-copy{padding:14px 0 18px}
+}
