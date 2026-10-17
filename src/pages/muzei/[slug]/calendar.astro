@@ -74,10 +74,10 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   (it.href ? '<a href="' + it.href + '">' + (it.link || 'Открыть →') + '</a>' : '') : '';
 ---
 <Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} museumTitle={m.title_ru} here="Календарь">
-  <header slot="header"><div class="b1">{m.title_ru}</div><h1>Календарь музея</h1><p>Каждый заполненный день — готовый повод для ролика, поста и урока.</p></header>
+  <header slot="header"><div class="b1">{m.title_ru}</div><h1>Календарь музея</h1></header>
   <div class="cal-supslot" data-support-slot></div>
   <div id="calcard" set:html={cardHtml}></div>
-  <div id="calyear"><div class="calstat">Заполнено дней: <b>{filled}</b> из {total} · {dated ? 'каждый заполненный день' : 'каждый день года'} — готовый повод для ролика и поста{beyond.length > 0 && ` · сверх года ещё ${beyond.length} ${plural(beyond.length, 'запись', 'записи', 'записей')} — они остаются в музее`}</div>{months.map((mo) => (
+  <div id="calyear"><div class="calstat">Заполнено дней: <b>{filled}</b> из {total} {beyond.length > 0 && ` · сверх года ещё ${beyond.length} ${plural(beyond.length, 'запись', 'записи', 'записей')} — они остаются в музее`}</div>{months.map((mo) => (
     <section class="cmon"><h2>{mo.name}<span class="cnt">{mo.cnt}</span></h2><div class="cgrid">{mo.cells.map((c) => (
       <button class:list={['cday', { full: c.k, today: c.today, on: c.k && c.k === open }]} data-k={c.k} disabled={!c.k} title={c.title}>{c.d}</button>))}</div></section>))}{extra.length > 0 && (
     <section class="cmon beyond"><h2>Сверх года<span class="cnt">{extra.length} {plural(extra.length, 'запись', 'записи', 'записей')}</span></h2><div class="cgrid cgrid-wide">{extra.map((x) => (
