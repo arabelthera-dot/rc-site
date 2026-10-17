@@ -2,6 +2,7 @@
 interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
+import { podpiskaHtml } from '../lib/sitebar.mjs';
 import "../styles/museum.css";
 const base = import.meta.env.BASE_URL;
 // Свой стиль музея переносится из старого сайта как есть (public/muzei/<slug>/*-style.css, план шаг 4);
@@ -61,6 +62,7 @@ const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
   </>}
   {headFiles.map((f) => <link rel="preload" href={`${base}assets/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
+  <link rel="stylesheet" href={`${base}assets/rc-podpiska.css`} />
   {museum && museumTitle && <>
     <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
@@ -79,6 +81,7 @@ const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
     </nav>
   )}
   <main><slot /></main>
+  <Fragment set:html={podpiskaHtml()} />
   <footer>
     <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
     <slot name="footer"><a href={base}>в город-музей →</a></slot>
