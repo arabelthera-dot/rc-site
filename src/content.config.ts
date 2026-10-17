@@ -54,6 +54,11 @@ const days = defineCollection({
     gist: z.string().optional(),
     legacy_page: z.string().optional(),
     images: z.array(image).default([]),
+    // Ролик дня — ключ выпуска в public/video/registry.json (движок museum-video.js); озвучка — mp3 в public/
+    // (движок museum-audioguide.js). Нет ключа в реестре или файла — сборка падает (src/components/DenMedia.astro).
+    video: z.string().optional(),
+    audio: z.object({ src: z.string().min(1), heading: z.string().optional(), lead: z.string().optional(),
+      note: z.string().optional() }).optional(),
   }).superRefine((d, ctx) => {
     const waived = d.museum in waivers || `${d.museum}/${d.key}` in waivers;
     if (!waived && !d.title)

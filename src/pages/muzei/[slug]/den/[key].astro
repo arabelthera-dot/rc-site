@@ -6,6 +6,9 @@
 // Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import DenMedia from '../../../../components/den/DenMedia.astro';
+import DenZavtra from '../../../../components/den/DenZavtra.astro';
+import Credit from '../../../../components/den/Credit.astro';
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 export async function getStaticPaths() {
@@ -16,10 +19,10 @@ export async function getStaticPaths() {
     const i = own.indexOf(d);
     return { params: { slug: d.data.museum, key: d.data.key },
       props: { d: d.data, m: museums.find((x) => x.id === d.data.museum)!.data, prev: own[i - 1]?.data, next: own[i + 1]?.data,
-        keys: own.map((x) => x.data.key) } };
+        keys: own.map((x) => x.data.key), own: own.map((x) => x.data) } };
   });
 }
-const { d, m, prev, next, keys } = Astro.props;
+const { d, m, prev, next, keys, own } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
@@ -72,7 +75,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     {cover && (
       <figure class="hero-scene">
         <a href={cover.src} target="_blank" rel="noopener" aria-label="Открыть картинку целиком"><img src={cover.src} alt={cover.caption} /></a>
-        <figcaption class="scene-caption">{cover.caption} <span class="credit">{cover.credit}</span></figcaption>
+        <figcaption class="scene-caption">{cover.caption} <Credit text={cover.credit} /></figcaption>
       </figure>
     )}
 
@@ -95,9 +98,10 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
         {d.gist && <p>{cap(d.gist)}</p>}
         {rest.map((im) => (
           <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
-            <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
+            <figcaption>{im.caption} <Credit text={im.credit} /></figcaption></figure>))}
       </section>
     )}
+    <DenMedia video={d.video} audio={d.audio} where={`${m.slug}/${d.key}`} />
     {d.source && (
       <section class="block" id="istochnik">
         <h2>Источник</h2>
@@ -111,6 +115,8 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     <a href={cal}>все дни</a>
     {next ? <a href={dayUrl(next.key)}>следующий →</a> : <span></span>}
   </nav>
+
+  <DenZavtra museum={m.slug} day={d.key} dated={dated} days={own} when={whenOf} />
 
   <section class="block" id="kuda-dalshe">
     <h2>Музей продолжается</h2>

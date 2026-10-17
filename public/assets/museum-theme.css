@@ -390,3 +390,16 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none}
   line-height:1.55;color:var(--muted,#7d7468)}
 [data-museum] footer .slog{font-family:var(--font-h,Georgia,serif);font-size:15px;
   color:var(--acc,#c9a84c);margin-bottom:8px;letter-spacing:.2px}
+
+/* Страница дня: ролик, озвучка, «Вернись завтра», ссылки лицензий (п.3–4 очереди 1, 17.10).
+   #return до работы museum-return.js — тот же вид, что рисует движок. */
+.dp-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0d0c0a;border-radius:10px}
+.dp-media-note{font-size:13px;color:var(--muted,#a99f8c);margin-top:8px}
+#return .rt-box{background:rgba(233,227,211,.05);border:1px solid rgba(212,175,55,.3);border-radius:14px;padding:16px 18px}
+#return h2{font-weight:400;font-size:20px;margin:0 0 12px;color:var(--gold)}
+#return .rt-part{padding:12px 0;border-top:1px solid rgba(233,227,211,.12)}
+#return .rt-lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+#return .rt-part a{color:inherit;text-decoration-color:var(--gold)}
+#return .rt-hook{margin-top:6px;opacity:.85}
+#return:empty{display:none}
+.credit a{color:inherit;text-decoration:underline;text-decoration-color:rgba(212,175,55,.6)}

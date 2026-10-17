@@ -135,10 +135,13 @@
       '<ul class="rt-days">' + chips + '</ul></div>');
 
     /* 2. Намёк на завтра — только из календаря. Поле tease (если задано) — короткий намёк
-       без раскрытия; иначе заголовок дня. Хук d не повторяем: он для самой страницы дня. */
+       без раскрытия; иначе заголовок дня ссылкой и его хук d (Сергей 17.10). */
     var nk = after(day), nx = nk && cal[nk];
     if (nx && nx.t) {
-      var tease = nx.tease ? esc(nx.tease) : '«' + esc(nx.t) + '»' + (nx.y ? ' <span>(' + esc(nx.y) + ')</span>' : '');
+      /* Сергей 17.10: в намёке — название ссылкой на завтрашний день и его хук (если есть в календаре) */
+      var name = '«' + esc(nx.t) + '»';
+      var tease = nx.tease ? esc(nx.tease) : (nx.href ? '<a href="' + esc(nx.href) + '">' + name + '</a>' : name) +
+        (nx.y ? ' <span>(' + esc(nx.y) + ')</span>' : '') + (nx.d ? '</p><p class="rt-hook">' + esc(nx.d) : '');
       parts.push('<div class="rt-part"><div class="rt-lbl">' +
         (dated ? 'Завтра, ' + esc(human(nk)) : 'Завтра — ' + esc(label(nk).replace('День', 'день'))) + '</div>' +
         '<p>' + tease + '</p></div>');
