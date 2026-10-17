@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import "../styles/museum.css";
@@ -25,6 +25,22 @@ const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `og/${
 // Своя страница может попросить noindex (заглушка «День готовится»).
 const noindex = Astro.props.noindex || import.meta.env.PUBLIC_NOINDEX === '1';
 const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
+// Разметка schema.org (JSON-LD, пункт «schema» замера glazami): тип — из пропса schema, иначе по пропсам:
+// главная — WebSite + Organization, главная музея — Museum, календарь — CollectionPage, день — Article, прочее — WebPage.
+const home = new URL(base, Astro.site).href;
+const org = { '@type': 'Organization', name: 'Русская цивилизация', url: home };
+const museumLd = museum && museumTitle ? { '@type': 'Museum', name: museumTitle, url: new URL(`${base}muzei/${museum}/`, Astro.site).href } : undefined;
+const kind = Astro.props.schema ?? (Astro.url.pathname.replace(/\/?$/, '/') === base.replace(/\/?$/, '/') ? 'home' : type === 'article' && museumLd ? 'article'
+  : museumLd && here ? 'calendar' : museumLd ? 'museum' : 'page');
+const ldName = ogTitle ?? title;
+const ld = kind === 'home'
+  ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Русская цивилизация', url: home, inLanguage: 'ru', description, publisher: org },
+     { '@context': 'https://schema.org', ...org, logo: new URL(`${base}og/index.jpg`, Astro.site).href }]
+  : kind === 'museum' ? { '@context': 'https://schema.org', ...museumLd, description, image: ogImage, parentOrganization: org }
+  : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: 'ru', description, isPartOf: museumLd }
+  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: 'ru', description, image: ogImage, isPartOf: museumLd, publisher: org }
+  : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: 'ru', description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home } };
+const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
 ---
 <!doctype html>
 <html lang="ru" data-museum={museum}>
@@ -65,6 +81,7 @@ const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
     <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
   </>}
+  <script type="application/ld+json" set:html={ldJson} />
   <slot name="head" />
 </head>
 <body>

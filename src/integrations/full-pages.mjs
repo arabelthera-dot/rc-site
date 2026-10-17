@@ -109,6 +109,15 @@ export default function fullPages() {
               if (!/property=["']og:title["']/i.test(html) && d.title) add.push(`<meta property="og:title" content="${esc(d.title)}" />`);
               if (!/name=["']description["']/i.test(html) && d.hook) add.push(`<meta name="description" content="${esc(d.hook)}" />`);
               if (!/property=["']og:description["']/i.test(html) && d.hook) add.push(`<meta property="og:description" content="${esc(d.hook)}" />`);
+              // Разметка schema.org (пункт «schema» замера glazami): своей ld+json нет — Article дня внутри музея.
+              if (!/type=["']application\/ld\+json["']/i.test(html) && MUSEUMS[museum]) {
+                const h1 = /<h1[^>]*>([\s\S]*?)<\/h1>/i.exec(html)?.[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+                const ld = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title ?? (h1 && decode(h1)) ?? key,
+                  url, inLanguage: 'ru', ...(d.hook ? { description: d.hook } : {}),
+                  isPartOf: { '@type': 'Museum', name: MUSEUMS[museum], url: new URL(`${base}muzei/${museum}/`, site).href },
+                  publisher: { '@type': 'Organization', name: 'Русская цивилизация', url: new URL(base, site).href } };
+                add.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
+              }
               html = html.replace(/<\/head>/i, `${add.join('\n')}\n</head>`);
             }
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
