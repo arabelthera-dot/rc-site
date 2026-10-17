@@ -130,7 +130,11 @@
        руками и откуда факт. Поля дня mech и src переносит генератор музея из
        утверждённой месячной таблицы; нет поля — строки нет, ничего не выдумываем.
        Вид строк — только в CSS (src/styles/museum.css, #calcard .crow), разметка без style. */
+    var SRC_PREFIX = /^\s*(?:<(?:b|strong|i|em)>\s*)?(?:Источник|Источники|ИСТОЧНИК|ИСТОЧНИКИ)\s*:\s*(?:<\/(?:b|strong|i|em)>\s*)?/i;
     function row(label, v) {
+      if (!v) return '';
+      /* подпись строки уже есть — префикс «Источник(и):» из данных не дублируем (17.10) */
+      v = String(v).replace(SRC_PREFIX, '');
       if (!v) return '';
       return '<div class="crow"><span class="crow-l">' + label + '</span>' +
         v + '</div>';
