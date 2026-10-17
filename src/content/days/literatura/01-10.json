@@ -1,0 +1,30 @@
+{
+  "museum": "literatura",
+  "key": "01-10",
+  "title": "Пётр Первый",
+  "hook": "Алексей Толстой снял Петра Первого с мраморного пьедестала и вернул его живым, гневным и строящим державу.",
+  "source": "Русские писатели о языке: А. Н. Толстой (web.archive.org)",
+  "legacy_page": "muzei/literatura/lit-tolstoy-petr-pervyy.html",
+  "images": [
+    {
+      "src": "muzei/literatura/img/media-petr/hero-serov-1907.jpg",
+      "caption": "Пётр шагает по берегу против ветра, за ним придворные",
+      "credit": "В. А. Серов. «Пётр I», кадр для шапки страницы, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-petr/serov-petr-1907.jpg",
+      "caption": "В. А. Серов. «Пётр I». 1907. Государственная Третьяковская галерея. Серов написал Петра на ходу: царь идёт против ветра так быстро, что свита едва поспевает.",
+      "credit": "В. А. Серов. «Пётр I», 1907. Третьяковская галерея, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-petr/shoonebek-vzyatie-azova.jpg",
+      "caption": "А. Схонебек. «Взятие Азова». Гравюра, 1699. Голландский гравёр при дворе Петра изобразил победу 1696 года: на реке — корабли нового флота. Во второй книге романа Пётр идёт под Азов.",
+      "credit": "А. Схонебек. «Взятие Азова», гравюра, 1699, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-petr/serov-petr-na-rabotah.jpg",
+      "caption": "В. А. Серов. «Пётр I на работах». 1910–1911. Пётр объезжает стройку на двуколке — каким его видел Толстой в «Дне Петра».",
+      "credit": "В. А. Серов. «Пётр I на работах», 1910–1911, Wikimedia Commons"
+    }
+  ]
+}
