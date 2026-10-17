@@ -18,9 +18,12 @@ const SRCSET = /\bsrcset\s*=\s*["']([^"']+)["']/gi;
 const URL_CSS = /url\(\s*["']?([^"')]+)["']?\s*\)/gi;
 const QUOTED = new RegExp(`["'\`]([^"'\`\\s<>()]+\\.(?:${EXT}))(?:[?#][^"'\`]*)?["'\`]`, 'gi');
 
-const local = (ref) => !/^(?:[a-z][a-z0-9+.-]*:|\/\/|#|\$\{)/i.test(ref);
+// Полный адрес старого сайта (og:image, значок) — тоже свой файл: после переключения по этому адресу встаёт
+// новая сборка, и файл должен быть в ней — иначе превью «поделиться» 404 (сверка 17.10).
+const OLD_SITE = /^https?:\/\/arabelthera-dot\.github\.io\/rc-museum-preview\//i;
+const local = (ref) => OLD_SITE.test(ref) || !/^(?:[a-z][a-z0-9+.-]*:|\/\/|#|\$\{)/i.test(ref);
 const fileOf = (pageDir, ref) => {
-  const clean = decodeURI(ref.split(/[?#]/)[0]).replace(/^\/rc-museum-preview\//, '/');
+  const clean = decodeURI(ref.split(/[?#]/)[0]).replace(OLD_SITE, '/').replace(/^\/rc-museum-preview\//, '/');
   if (!clean || clean.endsWith('/')) return;
   const rel = clean.startsWith('/') ? clean.slice(1) : path.posix.normalize(path.posix.join(pageDir, clean));
   if (rel.startsWith('..')) return;
