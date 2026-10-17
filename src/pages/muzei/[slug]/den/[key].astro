@@ -31,6 +31,8 @@ const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`
 const whenOf = (key: string) => { const mm = parseInt(key.slice(0, 2)), dd = parseInt(key.slice(3));
   return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
 const when = whenOf(d.key);
+// Дата в <title> и карточке пересылки: «17 октября 1944: …» (п.2 очереди 1, 17.10).
+const dateTitle = d.year ? (dated ? `${when} ${d.year}` : `${when} · ${d.year}`) : when;
 const museumUrl = `${base}muzei/${m.slug}/`;
 const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
@@ -54,7 +56,8 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
 })};`;
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${d.title}»`})};`;
 ---
-<Base ownStyle title={`${d.title} — ${m.title_ru} — Русская цивилизация`} description={d.hook ?? `${d.title} — ${m.title_ru}`} museum={m.slug}
+<Base ownStyle title={`${dateTitle}: ${d.title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${d.title}`}
+  description={d.hook ?? `${d.title} — ${m.title_ru}`} museum={m.slug}
   image={cover?.src} imageAlt={cover?.caption} type="article"
   crumbs={[{ href: museumUrl, label: m.title_ru }, { href: cal, label: 'Календарь' }, { label: `${when} · ${d.title}` }]}
   back={{ href: cal, label: 'Календарь' }}>
@@ -75,7 +78,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     {cover && (
       <figure class="hero-scene">
         <a href={cover.src} target="_blank" rel="noopener" aria-label="Открыть картинку целиком"><img src={cover.src} alt={cover.caption} /></a>
-        <figcaption class="scene-caption">{cover.caption} <Credit text={cover.credit} /></figcaption>
+        <figcaption class="scene-caption"><span class="cap">{cover.caption}</span> <Credit text={cover.credit} /></figcaption>
       </figure>
     )}
 

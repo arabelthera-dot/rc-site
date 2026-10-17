@@ -87,8 +87,16 @@ header.top + .crumbs a{color:var(--gold-l)}
 .dp{max-width:860px;margin:0 auto}
 .dp .hero-scene{margin:0 0 4px}
 .dp .hero-scene a{display:block;cursor:zoom-in}
-.dp .hero-scene img{display:block;width:100%;height:38vh;min-height:250px;max-height:400px;object-fit:cover;border-radius:14px;border:1px solid rgba(201,168,76,.25)}
-.dp .scene-caption{font-family:'Inter',sans-serif;font-size:12px;line-height:1.45;opacity:.7;margin-top:7px;text-align:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+/* Кадр дня — рамка по картинке, текст под ней (п.2 очереди 1, 17.10). museum-chrome.js (движок старого сайта) ставит
+   .hero-scene max-height:var(--hero-fit) — там высоту держит сама рамка. Здесь рамка — figure с картинкой И подписью,
+   а высота стояла у img: figure урезалась до 200 px, картинка 342 px вылезала, дата и h1 ложились на кадр.
+   Корень: потолок движка переносится с figure на саму картинку, figure растёт по содержимому. Кадр целиком (contain),
+   портрет не режется. */
+.dp .hero-scene{max-height:none!important}
+.dp .hero-scene img{display:block;width:100%;height:clamp(200px,min(38vh,var(--hero-fit,38vh)),400px);object-fit:contain;background:rgba(0,0,0,.28);border-radius:14px;border:1px solid rgba(201,168,76,.25)}
+.dp .scene-caption{font-family:'Inter',sans-serif;font-size:12px;line-height:1.45;opacity:.7;margin-top:7px;text-align:center}
+.dp .scene-caption .cap{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dp .scene-caption .credit{display:block}
 .dp .credit{opacity:.75;font-style:italic}
 .dp .hero-lead{text-align:center;padding:26px 0 22px}
 .dp .date-chip{display:inline-block;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:5px 13px;margin-bottom:14px}
@@ -110,7 +118,7 @@ header.top + .crumbs a{color:var(--gold-l)}
 .dp-foot{margin-bottom:6px}
 .dp-err{font-size:12px;opacity:.75}
 @media(max-width:520px){header.top + .crumbs{text-align:left}header.top .b1{font-size:11px;letter-spacing:2.4px}header.top .museum{font-size:24px}
- .dp .hero-scene img{height:26vh;min-height:200px;max-height:260px}.dp .hero-lead{padding:20px 0 18px}}
+ .dp .hero-scene img{height:clamp(200px,min(26vh,var(--hero-fit,26vh)),260px)}.dp .hero-lead{padding:20px 0 18px}}
 /* Первый кадр страницы дня = итоговый вид (CLS, P1 16.10). museum-chrome.js и museum-support.js стоят в конце
    страницы и срабатывают уже после первого кадра: вставляют свой CSS (кнопка «Календарь» встаёт в поток, слоган,
    крошки и подводка на телефоне плотнее), строку «Поделиться» под крошками и блок «Поддержать» в .dp-sup —
