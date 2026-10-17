@@ -45,12 +45,6 @@ body:has(> nav.rc-sitebar) .backbtn{display:none!important}
   /* п.2 — основной текст ≥17 px */
   body:has(> nav.rc-sitebar) :is(main,article,section,.wrap) :is(p,li,dd,blockquote){font-size:max(17px,1em);line-height:1.55}
 }
-/* п.6 — подписка на канал (rc-sitebar.js вставляет на страницах дней) */
-.rc-sub{box-sizing:border-box;max-width:720px;margin:18px auto;padding:0 16px;text-align:center;font-family:'Inter',system-ui,sans-serif}
-.rc-sub a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:24px;
-  background:#229ED9;color:#fff!important;font-size:17px;font-weight:600;text-decoration:none}
-.rc-sub a:hover{background:#1b8cc2}
-.rc-sub a:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
 /* Размеры картинок старых страниц дней (full-pages.mjs): атрибут height не растягивает кадр при img{width:100%} */
 :where(img[data-rc-razmer]){height:auto}
 /* Соседние дни внизу полной страницы дня (full-pages.mjs) */
