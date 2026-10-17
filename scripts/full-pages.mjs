@@ -38,6 +38,7 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
 fs.rmSync(OUT, { recursive: true, force: true });
 const files = new Map(); // путь → кто ссылается
 const missing = [];
+const videoKeys = new Map(); // «выпуск|формат» реестра видео → кто ссылается
 for (const p of pages) {
   const html = fs.readFileSync(path.join(LEGACY, p.rel), 'utf8');
   fs.mkdirSync(path.join(OUT, p.museum), { recursive: true });
@@ -48,6 +49,12 @@ for (const p of pages) {
   for (const m of html.matchAll(SRCSET)) refs.push(...m[1].split(',').map((s) => s.trim().split(/\s+/)[0]));
   for (const m of html.matchAll(URL_CSS)) refs.push(m[1]);
   for (const m of html.matchAll(QUOTED)) refs.push(m[1]);
+  // museum-video.js сам грузит video/registry.json от корня сайта — в коде страницы этого пути нет.
+  for (const [tag] of html.matchAll(/<[^>]*\bdata-rc-video\s*=[^>]*>/gi)) {
+    const key = tag.match(/data-rc-video\s*=\s*["']([^"']+)/i)[1];
+    const fmt = tag.match(/data-rc-format\s*=\s*["']([^"']+)/i)?.[1] || 'horizontal';
+    videoKeys.set(`${key}|${fmt}`, `${p.museum}/${p.key}`);
+  }
   for (const ref of refs.filter(local)) {
     const rel = fileOf(dir, ref);
     if (!rel || /\.html?$/.test(rel)) continue;
@@ -58,6 +65,23 @@ for (const p of pages) {
       continue;
     }
     if (!files.has(rel)) files.set(rel, `${p.museum}/${p.key}`);
+  }
+}
+
+if (videoKeys.size) {
+  const REG = 'video/registry.json';
+  const reg = JSON.parse(fs.readFileSync(path.join(LEGACY, REG), 'utf8'));
+  files.set(REG, [...videoKeys.values()][0]);
+  for (const [kf, who] of videoKeys) {
+    const [key, fmt] = kf.split('|');
+    const rel = reg.releases?.[key];
+    if (!rel) { missing.push(`${who}: выпуск ${key} нет в ${REG}`); continue; }
+    // Только формат, который ставит страница, и обложка к нему — как отдаёт движок.
+    for (const m of [rel[fmt], rel[fmt === 'vertical' ? 'poster_vertical' : 'poster']]) {
+      if (!m?.local) continue;
+      if (fs.existsSync(path.join(LEGACY, m.local))) { if (!files.has(m.local)) files.set(m.local, who); }
+      else missing.push(`${who}: ${m.local} (из ${REG})`);
+    }
   }
 }
 
