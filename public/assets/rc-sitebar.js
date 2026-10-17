@@ -47,7 +47,9 @@
     }
     return seen;
   }
-  /* п.6 — подписка в Telegram на каждой странице дня, под строкой «Поделиться» (или в конце статьи) */
+  /* п.6 — подписка в Telegram на полной странице дня, под строкой «Поделиться» (или в конце статьи).
+     Шаблонные страницы получают её из Base.astro — тогда .rc-sub уже есть и здесь ничего не делается.
+     Разметка должна совпадать с src/lib/sitebar.mjs podpiskaHtml. */
   function subscribe(after){
     if(!bar.querySelector('.rc-sb-here') || document.querySelector('.rc-sub')) return;
     var box = document.createElement('div');
