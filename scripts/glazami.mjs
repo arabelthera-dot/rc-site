@@ -109,7 +109,9 @@ async function zamer(url) {
     }
     // шапки: липкие/фиксированные полосы у верха
     const sticky = qa('body *').filter(e => { const p = getComputedStyle(e).position; if (p !== 'sticky' && p !== 'fixed') return false; const b = e.getBoundingClientRect(); return vis(e) && b.top < 60 && b.width > W * 0.8; });
-    const navs = qa('header,nav,.crumbs,a.back').filter(e => vis(e) && e.getBoundingClientRect().top + scrollY < 400 && !e.parentElement.closest('header,nav'));
+    // шапка — навигационная полоса; <header> с h1 — это обложка (header.mh-cover, header.hero-lead), не шапка
+    const navs = qa('header,nav,.crumbs,a.back').filter(e => vis(e) && e.getBoundingClientRect().top + scrollY < 400
+      && !e.parentElement.closest('header,nav') && !(e.tagName === 'HEADER' && e.querySelector('h1')));
     const p = qa('main p, article p, p').find(e => vis(e) && e.textContent.trim().length > 120);
     const cs = p ? getComputedStyle(p) : null;
     const fig = qa('figcaption').find(vis);
