@@ -17,7 +17,8 @@ const count = (slug: string) => { const dated = isDated(slug); return days.filte
 const built = new Set(museums.map((m) => m.data.slug));
 const cards = museums
   .map((m) => ({ ...m.data, n: count(m.data.slug),
-    cover: fs.existsSync(`public/og/${m.data.slug}_index.jpg`) ? `${base}og/${m.data.slug}_index.jpg` : null,
+    // обложки старого сайта (og/<slug>_index.jpg) несут зашитую надпись — текст на картинке запрещён (03.08), в витрине не берём
+    cover: null as string | null,
     href: built.has(m.data.slug) ? `${base}muzei/${m.data.slug}/` : null }))
   // музеи с календарём — выше, внутри групп — по номеру
   .sort((a, b) => (b.n > 0 ? 1 : 0) - (a.n > 0 ? 1 : 0) || a.number - b.number);

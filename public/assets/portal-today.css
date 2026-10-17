@@ -42,3 +42,6 @@
 @media (max-width: 560px) {
   .p-today__list { grid-template-columns: 1fr; min-height: 720px; gap: 14px; }
 }
+/* шрифты шапки портала: заголовки — Playfair Display, текст — Inter (как portal.css) */
+.p-today { font-family: 'Inter', 'Segoe UI', sans-serif; }
+.p-today__h, .p-today__title { font-family: 'Playfair Display', Georgia, serif; letter-spacing: 0; }
