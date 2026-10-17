@@ -19,10 +19,11 @@ function absolute(url, dirUrl) {
 
 export default function fullPages() {
   let base = '/';
+  let site = '';
   return {
     name: 'full-pages',
     hooks: {
-      'astro:config:done': ({ config }) => { base = config.base.replace(/\/?$/, '/'); },
+      'astro:config:done': ({ config }) => { base = config.base.replace(/\/?$/, '/'); site = config.site ?? ''; },
       'astro:build:done': ({ dir }) => {
         if (!fs.existsSync(SRC)) return;
         const root = fileURLToPath(dir);
@@ -49,6 +50,13 @@ export default function fullPages() {
                 .join(',')}${q}`)
               .replace(/(\burl\(\s*)(['"]?)([^'")]+)\2(\s*\))/gi,
                 (m, a, q, u, z) => `${a}${q}${absolute(u, `${base}muzei/${museum}/`)}${q}${z}`);
+            // Нет своей карточки пересылки у старой страницы — кадр дня из карточки (images[0]), п.2 очереди 1, 17.10.
+            const card = path.join('src/content/days', museum, `${key}.json`);
+            const img = fs.existsSync(card) && JSON.parse(fs.readFileSync(card, 'utf8')).images?.[0];
+            if (img && site && !/property=["']og:image["']/i.test(html)) {
+              const abs = new URL(/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`, site).href;
+              html = html.replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
+            }
             fs.writeFileSync(out, html);
             n++;
           }
