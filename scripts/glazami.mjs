@@ -1,0 +1,132 @@
+// Замер «глазами посетителя» по списку из 21 пункта (knowledge/glazami-posetitelya.md, Сергей 17.10.2026).
+// Телефон 390×844. Выборка: главная, карта, все музеи, все календари и по 3 дня на музей
+// (первый, середина, последний по карте сайта). Итог — таблица TSV и сводка «сколько страниц не проходят».
+// Запуск: node scripts/glazami.mjs [адрес сайта] [папка отчёта]
+// Пункты 10 (контраст) и 21 (счётчик, после М26) здесь не мерятся: контраст — в axe, счётчика ещё нет.
+import fs from 'node:fs';
+const { chromium } = await import(process.env.PW || 'playwright');
+
+const SITE = (process.argv[2] || 'https://arabelthera-dot.github.io/rc-site/').replace(/\/?$/, '/');
+const OUT = process.argv[3] || '/tmp/glazami';
+const W = 390, H = 844;
+fs.mkdirSync(OUT, { recursive: true });
+
+const sm = await (await fetch(SITE + 'sitemap-0.xml')).text();
+const all = [...sm.matchAll(/<loc>([^<]*)/g)].map(m => m[1]);
+const dni = {};
+for (const u of all) { const m = u.match(/muzei\/([^/]+)\/den\//); if (m) (dni[m[1]] ||= []).push(u); }
+const vyborka = all.filter(u => !/\/den\//.test(u));
+for (const list of Object.values(dni)) {
+  const pick = [list[0], list[list.length >> 1], list[list.length - 1]];
+  vyborka.push(...new Set(pick));
+}
+
+const POROGI = {
+  'og': r => r.og === 3, 'title≤60': r => r.titleLen > 0 && r.titleLen <= 60,
+  'desc70–160': r => r.descLen >= 70 && r.descLen <= 160, 'schema': r => r.schema > 0,
+  'h1 на экране': r => r.h1Bottom > 0 && r.h1Bottom <= H, 'хук на экране': r => r.hookBottom === null || r.hookBottom <= H,
+  'кадр 45–60%': r => r.kadr === null || (r.kadr >= 45 && r.kadr <= 60),
+  'шапка ≤56, одна': r => r.shapka <= 56 && r.shapok <= 1, 'нет вылезания': r => r.shire <= W,
+  'текст ≥17': r => r.font === null || r.font >= 17, 'межстрочный 1.5–1.65': r => r.lh === null || (r.lh >= 1.5 && r.lh <= 1.65),
+  'подпись ≤2 строк': r => r.podpis === null || r.podpis <= 2,
+  'вчера/завтра': r => !r.den || r.sosedi > 0, 'поделиться 1': r => !r.den || r.share === 1,
+  'цели ≥44': r => r.melkie === 0, 'поддержать в 1/3': r => r.podderzhat !== null && r.podderzhat <= 33,
+  'подписка': r => r.podpiska > 0, 'вес ≤1 МБ': r => r.kb <= 1024, 'картинки с размерами': r => r.bezRazmera === 0,
+  'CLS<0.1': r => r.cls < 0.1, 'нет ошибок': r => r.oshibki === 0 && r.bitye === 0,
+  'нет заглушки': r => !r.zaglushka, 'без своих стилей': r => r.svoiStili === 0,
+};
+
+const browser = await chromium.launch();
+const rows = [];
+for (const url of vyborka) {
+  const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  const page = await ctx.newPage();
+  let oshibki = 0, bitye = 0, bytes = 0;
+  page.on('pageerror', () => oshibki++);
+  page.on('console', m => { if (m.type() === 'error') oshibki++; });
+  page.on('response', async res => {
+    if (res.status() >= 400) bitye++;
+    const len = +(res.headers()['content-length'] || 0); bytes += len;
+  });
+  await page.addInitScript(() => {
+    window.__cls = 0;
+    new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; })
+      .observe({ type: 'layout-shift', buffered: true });
+  });
+  try {
+    await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
+  } catch { oshibki++; }
+  await page.waitForTimeout(800);
+  const r = await page.evaluate(({ W, H }) => {
+    const q = s => document.querySelector(s), qa = s => [...document.querySelectorAll(s)];
+    const vis = e => { const b = e.getBoundingClientRect(); const cs = getComputedStyle(e); return b.width > 0 && b.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
+    const absBottom = e => e ? e.getBoundingClientRect().bottom + scrollY : null;
+    const meta = n => q(`meta[property="${n}"],meta[name="${n}"]`)?.content || '';
+    const h1 = q('h1');
+    const hook = q('.hook') || null;
+    // кадр — самая большая картинка/видео на первом экране, доля площади экрана
+    let kadr = null;
+    for (const e of qa('img,video,picture,canvas')) {
+      const b = e.getBoundingClientRect(); if (b.top >= H || b.bottom <= 0 || !vis(e)) continue;
+      const a = Math.max(0, Math.min(b.bottom, H) - Math.max(b.top, 0)) * Math.max(0, Math.min(b.right, W) - Math.max(b.left, 0));
+      kadr = Math.max(kadr || 0, Math.round(a / (W * H) * 100));
+    }
+    // шапки: липкие/фиксированные полосы у верха
+    const sticky = qa('body *').filter(e => { const p = getComputedStyle(e).position; if (p !== 'sticky' && p !== 'fixed') return false; const b = e.getBoundingClientRect(); return vis(e) && b.top < 60 && b.width > W * 0.8; });
+    const navs = qa('header,nav,.crumbs,a.back').filter(e => vis(e) && e.getBoundingClientRect().top + scrollY < 400 && !e.parentElement.closest('header,nav'));
+    const p = qa('main p, article p, p').find(e => vis(e) && e.textContent.trim().length > 120);
+    const cs = p ? getComputedStyle(p) : null;
+    const fig = qa('figcaption').find(vis);
+    const fcs = fig ? getComputedStyle(fig) : null;
+    const podpis = fig ? Math.round(fig.getBoundingClientRect().height / (parseFloat(fcs.lineHeight) || parseFloat(fcs.fontSize) * 1.3)) : null;
+    const links = qa('a,button,[role=button],input,select').filter(vis);
+    const melkie = links.filter(e => { const b = e.getBoundingClientRect(); return (b.height < 44 || b.width < 44) && !e.closest('p,li p,figcaption'); }).length;
+    const total = document.documentElement.scrollHeight;
+    const sup = qa('a,button').filter(vis).find(e => /поддерж/i.test(e.textContent));
+    const txt = document.body.innerText;
+    return {
+      og: ['og:title', 'og:description', 'og:image'].filter(n => meta(n)).length,
+      title: document.title, titleLen: document.title.length, descLen: meta('description').length,
+      schema: qa('script[type="application/ld+json"]').length,
+      h1Bottom: h1 ? Math.round(absBottom(h1)) : -1, hookBottom: hook ? Math.round(absBottom(hook)) : null,
+      kadr, shapka: sticky.length ? Math.round(Math.max(...sticky.map(e => e.getBoundingClientRect().height))) : 0,
+      shapok: navs.length, shire: document.documentElement.scrollWidth,
+      font: cs ? parseFloat(cs.fontSize) : null, lh: cs ? +(parseFloat(cs.lineHeight) / parseFloat(cs.fontSize)).toFixed(2) || null : null,
+      podpis, melkie, celey: links.length,
+      sosedi: qa('a[rel=prev],a[rel=next]').length + qa('a').filter(a => /вчера|завтра|предыдущ|следующ/i.test(a.textContent)).length,
+      share: qa('a,button').filter(e => vis(e) && /поделит/i.test(e.textContent)).length,
+      podderzhat: sup ? Math.round(absBottom(sup) / total * 100) : null,
+      podpiska: qa('a[href*="t.me"],a[href*="vk.com"],a[href*="dzen"]').length,
+      bezRazmera: qa('img').filter(i => !i.getAttribute('width') || !i.getAttribute('height')).length,
+      zaglushka: /День готовится/.test(txt), svoiStili: qa('body style, [style]').filter(e => e.tagName === 'STYLE' || e.getAttribute('style').length > 60).length,
+      den: /\/den\//.test(location.pathname), cls: +window.__cls.toFixed(3),
+    };
+  }, { W, H }).catch(() => null);
+  await ctx.close();
+  if (!r) { rows.push({ url, sloman: 1 }); continue; }
+  r.url = url.replace(SITE, '/'); r.kb = Math.round(bytes / 1024); r.oshibki = oshibki; r.bitye = bitye;
+  rows.push(r);
+  process.stdout.write('.');
+}
+await browser.close();
+
+// дубли title между страницами (пункт 2)
+const t = {}; for (const r of rows) if (r.title) t[r.title] = (t[r.title] || 0) + 1;
+const tip = u => u === '/' ? 'главная' : /\/den\//.test(u) ? 'день' : /calendar/.test(u) ? 'календарь' : /^\/muzei\/[^/]+\/$/.test(u) ? 'музей' : 'прочее';
+const names = Object.keys(POROGI);
+const lines = [['адрес', 'вид', ...names, 'дубль title'].join('\t')];
+const svod = Object.fromEntries(names.map(n => [n, {}]));
+for (const r of rows) {
+  if (r.sloman) { lines.push(r.url + '\tне открылась'); continue; }
+  const k = tip(r.url);
+  const cells = names.map(n => { const ok = POROGI[n](r); if (!ok) svod[n][k] = (svod[n][k] || 0) + 1; return ok ? '+' : '−'; });
+  lines.push([r.url, k, ...cells, t[r.title] > 1 ? '−' : '+'].join('\t'));
+}
+fs.writeFileSync(`${OUT}/tablica.tsv`, lines.join('\n') + '\n');
+fs.writeFileSync(`${OUT}/syroe.json`, JSON.stringify(rows, null, 1));
+const vidy = {}; for (const r of rows) vidy[tip(r.url)] = (vidy[tip(r.url)] || 0) + 1;
+let s = `Замер ${new Date().toISOString().slice(0, 16)} UTC, ${SITE}, 390×844, страниц ${rows.length} (${Object.entries(vidy).map(([k, v]) => k + ' ' + v).join(', ')})\n`;
+s += `дубли title: ${Object.values(t).filter(v => v > 1).reduce((a, b) => a + b, 0)}\n`;
+for (const n of names) { const f = svod[n]; const sum = Object.values(f).reduce((a, b) => a + b, 0); s += `${sum ? '✗' : '✓'} ${n}: ${sum}${sum ? ' (' + Object.entries(f).map(([k, v]) => k + ' ' + v).join(', ') + ')' : ''}\n`; }
+fs.writeFileSync(`${OUT}/svodka.txt`, s);
+console.log('\n' + s);
