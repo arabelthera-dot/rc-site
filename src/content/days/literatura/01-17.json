@@ -1,0 +1,26 @@
+{
+  "museum": "literatura",
+  "key": "01-17",
+  "title": "Отцы и дети",
+  "year": 1862,
+  "hook": "Аркадий назвал друга нигилистом за завтраком, а через несколько месяцев этим словом на Невском встречали пожары Петербурга.",
+  "source": "Источник эпизода · «Отцы и дети»: главное о романе. (Культура.РФ, https://www.culture.ru/materials/258142/otcy-i-deti-glavnoe-o-romane)",
+  "legacy_page": "muzei/literatura/lit-turgenev-otcy-i-deti.html",
+  "images": [
+    {
+      "src": "muzei/literatura/img/media-turgenev/turgenev-hero.jpg",
+      "caption": "Седой человек с белой бородой в тёмном сюртуке сидит в кресле",
+      "credit": "В. Г. Перов. Портрет И. С. Тургенева, 1872 (кадр для шапки страницы), Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-turgenev/perov-portret-1872.jpg",
+      "caption": "Василий Перов. Портрет И. С. Тургенева, 1872. Написан через десять лет после выхода романа.",
+      "credit": "В. Г. Перов. Портрет И. С. Тургенева, 1872, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-turgenev/otcy-i-deti-titul-1880.jpg",
+      "caption": "Титульный лист издания «Отцов и детей», Лейпциг, 1880. Роман печатали и за границей — по-русски, для читателей в Европе.",
+      "credit": "Титульный лист «Отцов и детей», Лейпциг, 1880, Wikimedia Commons"
+    }
+  ]
+}

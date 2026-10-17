@@ -1,0 +1,26 @@
+{
+  "museum": "literatura",
+  "key": "01-21",
+  "title": "Преступление и наказание",
+  "year": 1866,
+  "hook": "Раскольников убил ради идеи, а через тринадцать дней встал на колени посреди Сенной и поцеловал грязную землю.",
+  "source": "Источник эпизода · Как читать «Преступление и наказание» Достоевского. (Культура.РФ, https://www.culture.ru/materials/256441/kak-chitat-prestuplenie-i-nakazanie-dostoevskogo)",
+  "legacy_page": "muzei/literatura/lit-dostoevskiy-prestuplenie.html",
+  "images": [
+    {
+      "src": "muzei/literatura/img/media-prestuplenie/sennaya-hero.jpg",
+      "caption": "Сенная площадь в Петербурге, 1880-е годы. Достоевский хорошо знал этот район и провёл по нему маршрут героя «весьма скрупулёзно».",
+      "credit": "Сенная площадь в Петербурге, 1880-е (кадр для шапки), Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-prestuplenie/boklevsky-raskolnikov.jpg",
+      "caption": "Пётр Боклевский. Раскольников, 1880-е годы. Один из первых рисунков к роману — художник умер в 1897 году.",
+      "credit": "П. М. Боклевский. «Раскольников», 1880-е, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/literatura/img/media-prestuplenie/tetrad-1865.jpg",
+      "caption": "Страница из тетради Достоевского, 1865. Запись с изложением идеи романа.",
+      "credit": "Страница из тетради Ф. М. Достоевского, 1865, Wikimedia Commons"
+    }
+  ]
+}
