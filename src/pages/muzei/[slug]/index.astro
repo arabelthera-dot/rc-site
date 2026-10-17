@@ -3,7 +3,7 @@
 // У музея без дней — честные пустые состояния, ссылок на несуществующие страницы нет.
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import fs from 'node:fs';
+import { beyondYear, isDated } from '../../../lib/kalendar';
 import Cover from '../../../components/home/Cover.astro';
 import Today from '../../../components/home/Today.astro';
 import Calendar from '../../../components/home/Calendar.astro';
@@ -23,15 +23,12 @@ const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-const metaPath = `src/data/calendar-meta-${m.slug}.json`;
-const dated = fs.existsSync(metaPath) ? JSON.parse(fs.readFileSync(metaPath, 'utf8')).dated !== false : true;
+const dated = isDated(m.slug);
 const href = (k: string) => `${base}muzei/${m.slug}/den/${k}/`;
 const when = (k: string) => { const mm = +k.slice(0, 2), dd = +k.slice(3); return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
 // данные окошка месяца — только ключи дней (движок считает «заполнено» по числу ключей)
-// у недатированного музея номер записи бывает больше длины месяца — такие в год не входят
-// (то же правило, что beyondYear в museum-calendar-page.js): в окошко и счётчик года не идут, на главной — группой «Сверх года»
-const YEAR = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-const beyond = (k: string) => !dated && +k.slice(3) > YEAR[+k.slice(0, 2) - 1];
+// записи сверх года (src/lib/kalendar.ts) в окошко и счётчик года не идут, на главной — группой «Сверх года»
+const beyond = (k: string) => beyondYear(k, dated);
 const yearDays = days.filter((d) => !beyond(d.key));
 const extra = days.filter((d) => beyond(d.key));
 const cal: Record<string, unknown> = {};
