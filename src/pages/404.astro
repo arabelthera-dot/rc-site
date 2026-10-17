@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+// Рабочие страницы (доска-документы, опись, контроль, составы на утверждение) живут вне витрины —
+// на rc-rabochee (переключение 18.10, мировой стандарт: внутреннее не на публичном сайте, noindex).
+// Старые ссылки на них приходят сюда и уходят туда по тому же пути. Список — служебные пути старого main.
+const RABOCHEE = 'https://arabelthera-dot.github.io/rc-rabochee/';
+const PREFIXES = ['doska/docs/', 'control/', 'review/', 'lab/', 'pult/', 'glazami/', 'opis-tools/', 'versions/',
+  'prototypes/', 'portal-next/', 'portal-atlas/', 'razbor-telefon/', 'plan/', 'dengi/', 'drafts/', 'tablo/', 'tests/',
+  'video/index.html', 'calendar/arhitektura-yanvar.html', 'karikatura/prototypes/', 'karikatura/day-0',
+  'arhitektura-v2', 'competitors.html', 'control.html', 'daily-report.html', 'film.html', 'game-3d-jump.html',
+  'glavnaya-proto-0810.html', 'handkerchief.html', 'map.html'];
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Base title="Страница не найдена · Русская цивилизация" description="Такой страницы нет." noindex crumbs={[{ label: 'Страница не найдена' }]}>
+  <script is:inline slot="head" define:vars={{ RABOCHEE, PREFIXES, base }}>
+    var rest = location.pathname.slice(base.length);
+    if (PREFIXES.some(function (p) { return rest === p.replace(/\/$/, '') || rest.indexOf(p) === 0; }))
+      location.replace(RABOCHEE + rest + location.search + location.hash);
+  </script>
+  <header slot="header"><h1>Такой страницы нет</h1><p>Возможно, адрес устарел или в нём опечатка.</p></header>
+  <p><a href={base}>На главную «Русской цивилизации» →</a></p>
+</Base>
