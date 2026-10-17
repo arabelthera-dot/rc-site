@@ -1,23 +1,75 @@
 ---
+// Главная портала: шапка (текст Сергея дословно) → «Сегодня» → «Поддержать проект» → витрина музеев → подвал.
+// Вид — только public/assets/portal.css. Поддержка — движок museum-support.js: главный блок встаёт
+// в размеченный слот [data-support-slot], дубль движок сам ставит перед подвалом, сердечко — тоже он.
 import Base from '../layouts/Base.astro';
+import Segodnya from '../components/portal/Segodnya.astro';
 import { getCollection } from 'astro:content';
+import fs from 'node:fs';
 import { beyondYear, isDated, plural } from '../lib/kalendar';
 const base = import.meta.env.BASE_URL;
 const museums = (await getCollection('museums')).sort((a, b) => a.data.number - b.data.number);
 const days = await getCollection('days');
 // в счётчик — только дни года, записи «сверх года» не считаются (как на странице календаря)
 const count = (slug: string) => { const dated = isDated(slug); return days.filter((d) => d.data.museum === slug && !beyondYear(d.data.key, dated)).length; };
+// ссылка — только на страницы, которые реально собираются: src/pages/muzei/[slug]/index.astro
+// строит адрес для каждого музея из коллекции museums (getStaticPaths), других страниц музея нет
+const built = new Set(museums.map((m) => m.data.slug));
+const cards = museums
+  .map((m) => ({ ...m.data, n: count(m.data.slug),
+    cover: fs.existsSync(`public/og/${m.data.slug}_index.jpg`) ? `${base}og/${m.data.slug}_index.jpg` : null,
+    href: built.has(m.data.slug) ? `${base}muzei/${m.data.slug}/` : null }))
+  // музеи с календарём — выше, внутри групп — по номеру
+  .sort((a, b) => (b.n > 0 ? 1 : 0) - (a.n > 0 ? 1 : 0) || a.number - b.number);
+let eager = 2; // первые обложки — без ленивой загрузки
+const support = { museum: 'Русская цивилизация', lang: 'ru' };
 ---
-<Base title="Русская цивилизация — город-музей" image={`${import.meta.env.BASE_URL}og/index.jpg`} description="Виртуальный город-музей достижений России: музеи на каждый день года.">
-  <header slot="header"><div class="b1">Русская цивилизация</div><h1>Город-музей</h1><p>{museums.length} музеев · каркас нового сайта</p></header>
-  <div class="mlist">
-    {museums.map((m) => (
-      <a class="mcard" href={`${base}muzei/${m.data.slug}/`}>
-        <div class="num">№ {m.data.number}</div>
-        <h2>{m.data.title_ru}</h2>
-        {m.data.promise_ru && <p>{m.data.promise_ru}</p>}
-        {count(m.data.slug) > 0 && <div class="st">в календаре: {count(m.data.slug)} {plural(count(m.data.slug), 'день', 'дня', 'дней')}</div>}
-      </a>
-    ))}
+<Base title="Русская цивилизация — летопись русских открытий, побед, творчества и характера" ogTitle="Русская цивилизация" image={`${base}og/index.jpg`} description="Летопись русских открытий, побед, творчества и характера. Первый цифровой музей достижений России.">
+  <Fragment slot="head">
+    <link rel="stylesheet" href={`${base}assets/fonts.css`} />
+    <link rel="stylesheet" href={`${base}assets/portal.css`} />
+  </Fragment>
+  <header slot="header" class="p-hero">
+    <div class="p-orn" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+    <h1>Русская цивилизация</h1>
+    <p class="p-lead">Летопись русских открытий, побед, творчества и характера</p>
+    <p class="p-sub">Первый цифровой музей достижений России</p>
+    <div class="p-orn p-orn-b" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+  </header>
+
+  <div class="p-wrap">
+    <Segodnya />
+
+    <div class="p-supslot" data-support-slot></div>
+
+    <section class="p-vitrina" aria-labelledby="p-vit-h">
+      <h2 id="p-vit-h" class="p-sec">Музеи</h2>
+      <ul class="p-grid">
+        {cards.map((c) => {
+          const Tag = c.href ? 'a' : 'div';
+          const lazy = c.cover ? (eager-- > 0 ? 'eager' : 'lazy') : undefined;
+          return (
+            <li class:list={['p-card', c.cover ? 'has-cover' : 'is-type', c.n > 0 && 'has-cal']}>
+              <Tag class="p-in" {...(c.href ? { href: c.href } : {})}>
+                {c.cover
+                  ? <img class="p-cover" src={c.cover} alt="" width="1200" height="630" loading={lazy} decoding="async" />
+                  : <div class="p-plate" aria-hidden="true"><span class="p-no">№&nbsp;{c.number}</span></div>}
+                <div class="p-body">
+                  <h3>{c.title_ru}</h3>
+                  {c.promise_ru && <p>{c.promise_ru}</p>}
+                  {c.n > 0 && <div class="p-st">в календаре: {c.n} {plural(c.n, 'день', 'дня', 'дней')}</div>}
+                  {c.href && <span class="p-go" aria-hidden="true">Войти в музей →</span>}
+                </div>
+              </Tag>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   </div>
+
+  <script is:inline define:vars={{ support }}>window.MUSEUM_SUPPORT = support;</script>
+  <script is:inline src={`${base}assets/museum-support.js`} defer></script>
+
+  <Fragment slot="footer"><p class="p-park">Продолжение музея «Русский парк» (Переславль-Залесский, 2014)</p></Fragment>
 </Base>
