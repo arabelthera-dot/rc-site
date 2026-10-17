@@ -52,6 +52,7 @@
   + '.agtext[open] summary{margin-bottom:10px;opacity:.7}'
   + '.agtext p{font-size:14.5px;color:var(--muted);margin:9px 0}'
   + '@media(max-width:600px){.agbox{padding:18px 16px}.agttl{font-size:19px}.agbtn{width:50px;height:50px;font-size:17px}}';
+  css += '.ag-note{font-size:12px;color:var(--muted);opacity:.75;margin:14px 0 0}';
   var styleEl = document.createElement('style');
   styleEl.textContent = css;
   document.head.appendChild(styleEl);
@@ -78,7 +79,7 @@
       + '<audio id="agaudio" data-src="'+esc(CFG.audioSrc)+'" preload="none" controls style="width:100%;margin:14px 0 0;border-radius:10px;display:none"></audio>'
       + '<div class="agnav"><span class="lbl">Перейти к остановке:</span>'+stopsHtml+'</div>'
       + (CFG.transcript && CFG.transcript.length ? '<details class="agtext"><summary>Текст экскурсии — читать глазами</summary>'+CFG.transcript.join('')+'</details>' : '')
-      + (CFG.note ? '<p style="font-size:12px;color:var(--muted);opacity:.75;margin:14px 0 0">'+esc(CFG.note)+'</p>' : '')
+      + (CFG.note ? '<p class="ag-note">'+esc(CFG.note)+'</p>' : '')
     + '</div>'
     + '</div>';
 
