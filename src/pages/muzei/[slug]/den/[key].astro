@@ -38,8 +38,14 @@ const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
 const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
 const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
-const more = (d.more ?? []).map((e) => ({ ...e, images: e.images.map((i) => ({ ...i, src: url(i.src) })),
-  detail_images: e.detail_images.map((i) => ({ ...i, src: url(i.src) })) }));
+const more = (d.more ?? []).map((e) => {
+  // Ссылка на свой день, где тема разобрана подробно; дня нет в календаре музея — сборка падает.
+  const target = e.day ? own.find((x: { key: string }) => x.key === e.day) : undefined;
+  if (e.day && !target) throw new Error(`${m.slug}/${d.key}: доп. карточка «${e.title}» ссылается на день ${e.day}, его нет в календаре`);
+  return { ...e, images: e.images.map((i) => ({ ...i, src: url(i.src) })),
+    detail_images: e.detail_images.map((i) => ({ ...i, src: url(i.src) })),
+    link: target && { href: dayUrl(target.key), label: `${whenOf(target.key)} · ${target.title}` } };
+});
 // Заголовок — из карточки дня, с именем героя («Что ещё изобрёл Шухов»): карточки про героя, не про дату.
 const moreTitle = d.more_title;
 // Поле mechanic — описание задачи для разработки (след черновика, 04-build «Заголовок и подписи»);
@@ -128,6 +134,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
                 {e.detail_images.map((im) => (
                   <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
                     <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
+                {e.link && <p class="more-den">Подробно — в нашем календаре: <a href={e.link.href}>{e.link.label}</a></p>}
                 <p class="more-src">Источник: {e.source}</p>
               </details>
             </article>))}
