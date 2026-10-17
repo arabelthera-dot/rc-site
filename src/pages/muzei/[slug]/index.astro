@@ -41,7 +41,7 @@ const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(
 const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...days.filter((d) => !(d.legacy_page || d.images.length))].slice(0, 12)
   .map((d) => ({ title: d.title, href: href(d.key), when: when(d.key) }));
 ---
-<Base title={m.title_ru} description={m.promise_ru} museum={m.slug} museumTitle={m.title_ru}>
+<Base title={m.title_ru} description={m.promise_ru} museum={m.slug} museumTitle={m.title_ru} rss={{ href: `${base}muzei/${m.slug}/rss.xml`, title: `${m.title_ru} — новые дни` }}>
   <Cover slot="header" m={m} img={img} />
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
   <Today first={first} dated={dated} />
