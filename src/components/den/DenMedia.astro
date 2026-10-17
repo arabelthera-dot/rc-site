@@ -1,0 +1,38 @@
+---
+// Ролик и озвучка дня (п.3–4 очереди 1, «да» Сергея 17.10): то, что было у старых страниц дня.
+// Ролик — ключом выпуска из public/video/registry.json: адрес подставляет движок museum-video.js,
+// в разметке — запасной путь без JS (как на полных страницах). Озвучка — движок museum-audioguide.js.
+// Ключа нет в реестре или файла нет в public/ — сборка падает: битый плеер не выкладывается.
+import fs from 'node:fs';
+interface Props { video?: string; audio?: { src: string; heading?: string; lead?: string; note?: string }; where: string }
+const { video, audio, where } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const pub = (p: string) => `public/${p.replace(/^\//, '')}`;
+let rel: any;
+if (video) {
+  rel = JSON.parse(fs.readFileSync('public/video/registry.json', 'utf8')).releases?.[video];
+  if (!rel?.horizontal) throw new Error(`${where}: ролика «${video}» нет в public/video/registry.json`);
+  if (!fs.existsSync(pub(rel.horizontal.local))) throw new Error(`${where}: нет файла ролика ${rel.horizontal.local}`);
+}
+if (audio && !fs.existsSync(pub(audio.src))) throw new Error(`${where}: нет файла озвучки ${audio.src}`);
+const ver = (e: { local: string; v?: number }) => `${base}${e.local}${e.v ? `?v=${e.v}` : ''}`;
+const ag = audio && `window.MUSEUM_AUDIOGUIDE=${JSON.stringify({ heading: 'Послушать историю', ...audio, audioSrc: `${base}${audio.src.replace(/^\//, '')}`, src: undefined })};`;
+---
+{rel && (
+  <section class="block dp-video" id="rolik">
+    <h2>{rel.title || 'Ролик дня'}</h2>
+    <video controls playsinline preload="none" data-rc-video={video} data-rc-format="horizontal"
+      poster={rel.poster && ver(rel.poster)} width={rel.horizontal.w} height={rel.horizontal.h}>
+      <source src={ver(rel.horizontal)} type="video/mp4" />
+    </video>
+    {rel.note && <p class="dp-media-note">{rel.note}</p>}
+    <script is:inline src={`${base}assets/museum-video.js`}></script>
+  </section>
+)}
+{audio && (
+  <Fragment>
+    <section class="block" id="audioguide"></section>
+    <script is:inline set:html={ag}></script>
+    <script is:inline src={`${base}assets/museum-audioguide.js`}></script>
+  </Fragment>
+)}
