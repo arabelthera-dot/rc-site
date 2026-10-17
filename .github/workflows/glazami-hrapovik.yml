@@ -1,0 +1,53 @@
+# Храповик эталона «глазами посетителя» (Сергей 17.10.2026: «не заплатками, ручками — системно, автоматически»).
+# После каждого слияния в main машина мерит сборку; если хоть один пункт стал лучше эталона —
+# сама открывает заявку с понижённым scripts/glazami-porog.json и ставит автослияние.
+# Повышать эталон нельзя: --zapisat берёт минимум из старого и нового (ratchet, как betterer/eslint-baseline).
+# Заявка от GITHUB_TOKEN не запускает pull_request-проверки, поэтому proverka зовётся ручным пуском
+# по ветке — так её «sborka-i-ssylki» встаёт на коммит заявки и ruleset main-proverka её видит.
+# Выключатель — переменная GLAZAMI_HRAPOVIK (≠ '1' — спит). Откат — удалить этот файл.
+name: glazami-hrapovik
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['scripts/glazami-porog.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: glazami-hrapovik
+  cancel-in-progress: true
+jobs:
+  hrapovik:
+    if: vars.GLAZAMI_HRAPOVIK == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VETKA: avto/glazami-porog
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx astro build
+      - run: npm i --no-save --no-audit --no-fund playwright@1.48.0 && npx playwright install --with-deps chromium
+      - run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json --zapisat
+      - name: заявка с понижённым эталоном
+        run: |
+          git diff --quiet -- scripts/glazami-porog.json && { echo "Эталон не изменился — заявки нет."; exit 0; }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -C "$VETKA"
+          git commit -m "[avto] glazami: эталон понижен по замеру ${GITHUB_SHA::7}" -- scripts/glazami-porog.json
+          git push -f origin "$VETKA"
+          telo="Машина замерила main ${GITHUB_SHA::7}: часть пунктов стала лучше — эталон понижен (повысить его нельзя).
+          $(git diff HEAD~1 -U0 -- scripts/glazami-porog.json | grep '^[-+] ' || true)"
+          nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
+          [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main \
+            --title "[avto] glazami: эталон понижен" --body "$telo" | grep -o '[0-9]*$')
+          gh pr merge "$nomer" --auto --squash
+          gh workflow run proverka.yml --ref "$VETKA"

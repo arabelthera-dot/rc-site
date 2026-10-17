@@ -208,10 +208,12 @@ if (opt.porog) {
   if (opt.zapisat) {
     const punkty = {};
     for (const [n, v] of Object.entries(itog)) punkty[n] = staryy?.punkty?.[n] !== undefined ? Math.min(staryy.punkty[n], v) : v;
-    fs.writeFileSync(opt.porog, JSON.stringify({
+    // Ни одно число не снизилось — файл не трогаем, чтобы храповик не плодил пустых заявок.
+    if (staryy && JSON.stringify(punkty) === JSON.stringify(staryy.punkty)) console.log('Эталон не изменился.');
+    else fs.writeFileSync(opt.porog, JSON.stringify({
       'что это': 'Эталон замера «глазами посетителя»: сколько страниц выборки проваливают пункт. Заявка, где провалов больше, — красная. Понижать можно, повышать нельзя.',
       'снят': new Date().toISOString().slice(0, 10), 'страниц': rows.length, punkty }, null, 2) + '\n');
-    console.log(`Эталон записан: ${opt.porog}`);
+    if (!staryy || JSON.stringify(punkty) !== JSON.stringify(staryy.punkty)) console.log(`Эталон записан: ${opt.porog}`);
   } else {
     if (!staryy) { console.log(`Нет эталона ${opt.porog}`); process.exit(1); }
     const huzhe = [], luchshe = [];
