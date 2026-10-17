@@ -57,6 +57,23 @@ export default function fullPages() {
               const abs = new URL(/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`, site).href;
               html = html.replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
             }
+            // Паспорт пересылки и поиска (17.10, scripts/check-og.mjs): чего нет у старой страницы — доливается
+            // по карточке дня; карточка в Telegram/ВК — всегда крупная (summary_large_image), адрес — новый.
+            if (site) {
+              const url = new URL(self, site).href;
+              const d = fs.existsSync(card) ? JSON.parse(fs.readFileSync(card, 'utf8')) : {};
+              const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+              const add = [];
+              html = html.replace(/<meta\s+name=["']twitter:card["'][^>]*>\s*/gi, '');
+              add.push('<meta name="twitter:card" content="summary_large_image" />');
+              html = html.replace(/<meta\s+property=["']og:url["'][^>]*>\s*/gi, '').replace(/<link\s+rel=["']canonical["'][^>]*>\s*/gi, '');
+              add.push(`<meta property="og:url" content="${url}" />`, `<link rel="canonical" href="${url}" />`);
+              if (!/property=["']og:type["']/i.test(html)) add.push('<meta property="og:type" content="article" />');
+              if (!/property=["']og:title["']/i.test(html) && d.title) add.push(`<meta property="og:title" content="${esc(d.title)}" />`);
+              if (!/name=["']description["']/i.test(html) && d.hook) add.push(`<meta name="description" content="${esc(d.hook)}" />`);
+              if (!/property=["']og:description["']/i.test(html) && d.hook) add.push(`<meta property="og:description" content="${esc(d.hook)}" />`);
+              html = html.replace(/<\/head>/i, `${add.join('\n')}\n</head>`);
+            }
             fs.writeFileSync(out, html);
             n++;
           }
