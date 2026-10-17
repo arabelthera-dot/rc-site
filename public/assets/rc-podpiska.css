@@ -5,3 +5,13 @@
   background:#229ED9;color:#fff!important;font-size:17px;font-weight:600;text-decoration:none}
 .rc-sub a:hover{background:#1b8cc2}
 .rc-sub a:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
+
+/* Строка «Поделиться» полной страницы дня — её ставит сборка (full-pages.mjs, data-chrome-share), стили museum-chrome.js
+   повторены здесь, в <head>: иначе строка меняла высоту, когда museum-chrome.js доходил до конца страницы (CLS). */
+.sharerow[data-chrome-share]{text-align:center;padding:10px 16px 0}
+.sharerow[data-chrome-share] .sharebtn{background:rgba(18,21,28,.9);border:1px solid var(--line,rgba(255,255,255,.14));
+  color:var(--gold,#c8a24a);border-radius:22px;padding:8px 18px;font-family:inherit;font-size:13.5px;cursor:pointer}
+.sharerow[data-chrome-share] .sharebtn span{margin-right:7px}
+.sharerow[data-chrome-share] .sharehint{font-size:12.5px;opacity:.85;margin-left:10px;display:none}
+@media (max-width:600px){.sharerow[data-chrome-share]{padding:2px 0}
+  .sharerow[data-chrome-share] .sharebtn{padding:5px 11px;font-size:11.5px}}
