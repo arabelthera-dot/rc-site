@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; back?: { href: string; label: string }; ownStyle?: boolean }
+interface Props { title: string; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], back, ownStyle = false } = Astro.props;
 import "../styles/museum.css";
 const base = import.meta.env.BASE_URL;
@@ -21,7 +21,8 @@ const headFiles = headFont ? [...fs.readFileSync('public/assets/fonts.css', 'utf
 const url = new URL(Astro.url.pathname, Astro.site).href;
 const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `og/${museum}_index.jpg` : 'og/og-default.jpg';
 // Превью-сборка не для поисковиков: PUBLIC_NOINDEX=1 (deploy.yml, задача build) → noindex; по умолчанию индексируем.
-const noindex = import.meta.env.PUBLIC_NOINDEX === '1';
+// Своя страница может попросить noindex (заглушка «День готовится»).
+const noindex = Astro.props.noindex || import.meta.env.PUBLIC_NOINDEX === '1';
 const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
 ---
 <!doctype html>

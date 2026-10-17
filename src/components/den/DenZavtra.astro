@@ -5,8 +5,9 @@
 // движок заменяет блок своим (с «открытыми днями»). Завтра у датированного музея — календарный +1
 // (как в движке: нет карточки на эту дату — намёка нет), у недатированного — следующая запись.
 interface Day { key: string; title: string; year?: string | number; hook?: string }
-interface Props { museum: string; day: string; dated: boolean; days: Day[]; when: (key: string) => string }
-const { museum, day, dated, days, when } = Astro.props;
+// mark=false — дата без карточки («День готовится»): движок не отмечает её открытым днём, намёк на завтра — из вёрстки.
+interface Props { museum: string; day: string; dated: boolean; days: Day[]; when: (key: string) => string; mark?: boolean }
+const { museum, day, dated, days, when, mark = true } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const DIM = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const pad = (n: number) => (n < 10 ? '0' : '') + n;
@@ -28,5 +29,7 @@ const href = nx && `${base}muzei/${museum}/den/${nx.key}/`;
     </div>
   )}
 </section>
+{mark && <>
 <script is:inline src={`${base}muzei/${museum}/kalendar-dney.js`}></script>
 <script is:inline src={`${base}assets/museum-return.js`} data-museum={museum} data-day={day}></script>
+</>}
