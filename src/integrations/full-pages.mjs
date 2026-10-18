@@ -175,6 +175,10 @@ export default function fullPages() {
                 .join(',')}${q}`)
               .replace(/(\burl\(\s*)(['"]?)([^'")]+)\2(\s*\))/gi,
                 (m, a, q, u, z) => `${a}${q}${absolute(u, `${base}muzei/${museum}/`)}${q}${z}`);
+            // Карточка пересылки старой страницы смотрит на старый сайт (rc-museum-preview) — тот же файл есть у нас
+            // в public/ → адрес на свой сайт (17.10, круг 1 приёмки, п.«в»): старый сайт переадресуется и уйдёт.
+            if (site) html = html.replace(/(<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\s+content=["'])https:\/\/arabelthera-dot\.github\.io\/rc-museum-preview\/([^"'?#]+)/gi,
+              (m, a, rel) => fs.existsSync(path.join('public', decodeURIComponent(rel))) ? a + new URL(`${base}${rel}`, site).href : m);
             // Нет своей карточки пересылки у старой страницы — кадр дня из карточки (images[0]), п.2 очереди 1, 17.10.
             const card = path.join('src/content/days', museum, `${key}.json`);
             const img = fs.existsSync(card) && JSON.parse(fs.readFileSync(card, 'utf8')).images?.[0];
