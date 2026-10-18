@@ -3,6 +3,7 @@ interface Props { title: string; rss?: { href: string; title: string }; ogTitle?
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
+import Metrika from '../components/Metrika.astro';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles } from '../lib/shrifty.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
@@ -44,6 +45,8 @@ const ld = kind === 'home'
   : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: 'ru', description, image: ogImage, isPartOf: museumLd, publisher: org }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: 'ru', description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home } };
 const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
+// Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
+const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
 ---
 <!doctype html>
 <html lang="ru" data-museum={museum}>
@@ -90,6 +93,7 @@ const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
   </>}
   <script type="application/ld+json" set:html={ldJson} />
+  {metrika && <Metrika />}
   <slot name="head" />
   {!portal && <link rel="stylesheet" href={museumCss} />}
 </head>
