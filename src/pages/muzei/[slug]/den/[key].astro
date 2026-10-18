@@ -7,6 +7,7 @@
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { queueOgDen } from '../../../../lib/og-den.mjs';
+import { denFamilies, faceCss } from '../../../../lib/shrifty.mjs';
 import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
@@ -85,6 +86,9 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
   shareRow: false, // «Поделиться» даёт блок поддержки (data-support-slot) — одна строка на страницу, glazami п.16
   random: keys.filter((k: string) => k !== d.key).map((k: string) => `${dayUrl(k)}index.html`),
 })};`;
+// Шрифты — только семейства темы и своего стиля музея, вписанные в <head> (вместо всего fonts.css, замер 18.10).
+const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`public/muzei/${m.slug}`).find((f: string) => f.endsWith('-style.css')) : undefined;
+const fontCss = faceCss(denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), base);
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
 ---
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
@@ -92,7 +96,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
   image={cover?.src ?? ogCard} imageAlt={cover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
   museumTitle={m.title_ru} here={when} noindex={soon}>
   <Fragment slot="head">
-    <link rel="stylesheet" href={`${base}assets/fonts.css`} />
+    {fontCss && <style data-rc-fonts set:html={fontCss} />}
     <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />
   </Fragment>
 
