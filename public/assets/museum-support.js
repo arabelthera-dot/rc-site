@@ -252,9 +252,15 @@
        прямо над самим календарем»). Слот без разметки создаётся, размеченный не там — переносится. */
     var calCard = doc.getElementById('calcard'), calYear = doc.getElementById('calyear');
     if(calCard && calYear){
-      if(calCard.nextElementSibling !== calYear) calYear.parentNode.insertBefore(calCard, calYear);
+      /* после тапа по дню museum-calendar-page.js ставит карточку ВНУТРЬ #calyear, под месяц нажатого дня
+         (#65), и ставит фокус на её заголовок (#92). Повторный placePeak (load+900 мс, 1400 мс) вытаскивал
+         карточку обратно над сеткой — перенос узла снимал фокус и уводил экран (18.10). Карточку,
+         поставленную под месяц, не трогаем; блок поддержки всё равно стоит над сеткой. */
+      var userPlaced = calYear.contains(calCard);
+      if(!userPlaced && calCard.nextElementSibling !== calYear) calYear.parentNode.insertBefore(calCard, calYear);
+      var over = userPlaced ? calYear : calCard;
       if(!slot){ slot = doc.createElement('div'); slot.setAttribute('data-support-slot', ''); slot.style.margin = '0 0 22px'; }
-      if(slot.nextElementSibling !== calCard) calCard.parentNode.insertBefore(slot, calCard);
+      if(slot.nextElementSibling !== over) over.parentNode.insertBefore(slot, over);
     }
     if(slot){
       if(!peakEl){
