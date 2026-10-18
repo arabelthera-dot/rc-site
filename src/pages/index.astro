@@ -3,6 +3,7 @@
 // Вид — только public/assets/portal.css. Поддержка — движок museum-support.js: главный блок встаёт
 // в размеченный слот [data-support-slot], дубль движок сам ставит перед подвалом, сердечко — тоже он.
 import Base from '../layouts/Base.astro';
+import '../styles/portal-base.css';
 import Segodnya from '../components/portal/Segodnya.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';
@@ -25,9 +26,12 @@ const cards = museums
 let eager = 2; // первые обложки — без ленивой загрузки
 const support = { museum: 'Русская цивилизация', lang: 'ru' };
 ---
-<Base schema="home" title="Русская цивилизация — летопись русских открытий, побед, творчества и характера" ogTitle="Русская цивилизация" image={`${base}og/index.jpg`} description="Летопись русских открытий, побед, творчества и характера. Первый цифровой музей достижений России.">
+<Base portal schema="home" title="Русская цивилизация — летопись русских открытий, побед, творчества и характера" ogTitle="Русская цивилизация" image={`${base}og/index.jpg`} description="Летопись русских открытий, побед, творчества и характера. Первый цифровой музей достижений России.">
   <Fragment slot="head">
-    <link rel="stylesheet" href={`${base}assets/fonts.css`} />
+    {/* только шрифты главной (#2004 п.6); кириллица Inter и Playfair — заранее: ими набран первый экран */}
+    <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/playfairdisplay-nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href={`${base}assets/fonts-portal.css`} />
     <link rel="stylesheet" href={`${base}assets/portal.css`} />
   </Fragment>
   <header slot="header" class="p-hero">
