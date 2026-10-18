@@ -29,14 +29,17 @@ for (const d of days) {
 type Day = { t: string; y?: number; d: string; mech?: string; src?: string; href: string; link: string };
 const MON = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-const DAYS = [31,29,31,30,31,30,31,31,30,31,30,31];
 const pad = (n: number) => (n < 10 ? '0' : '') + n;
 const data: Record<string, Day> = Object.fromEntries(Object.entries(cal).filter(([k]) => /^\d{2}-\d{2}$/.test(k))) as Record<string, Day>;
 const dated = conf.dated !== false;
-const mLen: number[] = dated ? (conf.months?.length === 12 ? conf.months : DAYS) : YEAR;
 const total = dated ? (conf.total || 365) : 365;
 const [ty, tm, td] = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Moscow' }).format(new Date()).split('-').map(Number);
 const tk = pad(tm) + '-' + pad(td);
+// февраль — по ближайшему февралю вперёд (2027 не високосный — 28), запись 02-29 есть — 29; как в museum-calendar-page.js
+const febYear = ty + (tm > 2 ? 1 : 0);
+const leap = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+const DAYS = [31, leap(febYear) || data['02-29'] ? 29 : 28, 31,30,31,30,31,31,30,31,30,31];
+const mLen: number[] = dated ? (conf.months?.length === 12 ? conf.months : DAYS) : YEAR;
 const allKeys = Object.keys(data).sort();
 const beyond = allKeys.filter((k) => beyondYear(k, dated));
 const filled = allKeys.length - beyond.length;

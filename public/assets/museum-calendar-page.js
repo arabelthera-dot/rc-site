@@ -23,7 +23,8 @@
              'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
   var MONR = ['января','февраля','марта','апреля','мая','июня',
               'июля','августа','сентября','октября','ноября','декабря'];
-  var DAYS = [31,29,31,30,31,30,31,31,30,31,30,31];
+  var DAYS = [31,28,31,30,31,30,31,31,30,31,30,31];
+  function isLeap(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0; }
   var YEAR = [31,28,31,30,31,30,31,31,30,31,30,31];   /* год как в году — 365 дней */
   var KEY = /^\d{2}-\d{2}$/;
 
@@ -48,6 +49,10 @@
     var dated = meta.dated !== false;
     /* датированный музей живёт по своим данным; недатированный — по обычному году:
        365 дней, как и должно быть в году */
+    /* февраль датированного музея — по ближайшему февралю вперёд: 2027 не високосный, 28 клеток (18.10);
+       запись 02-29 в данных есть — клетка 29 остаётся. Та же формула в calendar.astro (вёрстка без скачка). */
+    var nowD = new Date(), febYear = nowD.getFullYear() + (nowD.getMonth() > 1 ? 1 : 0);
+    DAYS[1] = (isLeap(febYear) || data['02-29']) ? 29 : 28;
     var mLen = dated
       ? ((meta.months && meta.months.length === 12) ? meta.months : DAYS)
       : YEAR;
@@ -162,7 +167,10 @@
         if (fromClick && b) {
           var sec = b.closest('.cmon');
           if (sec && sec.nextSibling !== card) sec.parentNode.insertBefore(card, sec.nextSibling);
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          var h3 = card.querySelector('h3');
+          if (h3) { h3.setAttribute('tabindex', '-1'); try { h3.focus({ preventScroll: true }); } catch (e) { h3.focus(); } }
         }
       }
     }

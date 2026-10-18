@@ -19,7 +19,12 @@
               'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
   var MONR = ['января','февраля','марта','апреля','мая','июня',
               'июля','августа','сентября','октября','ноября','декабря'];
-  var DIM  = [31,29,31,30,31,30,31,31,30,31,30,31];
+  var DIM  = [31,28,31,30,31,30,31,31,30,31,30,31];
+  /* Февраль — по ближайшему февралю вперёд от сегодня: 2027 не високосный — 28 клеток (18.10).
+     Запись 02-29 в данных есть — клетку 29 оставляем, чтобы день не пропал. */
+  function isLeap(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0; }
+  /* узкий экран: после тапа по числу карточка дня уходит за край — докручиваем к ней (18.10) */
+  var NARROW = '(max-width: 760px)';
 
   var CSS = '' +
     '#calbox .calhead{display:flex;align-items:center;justify-content:space-between;gap:10px;' +
@@ -80,6 +85,8 @@
     var today = new Date(), tm = today.getMonth(), td = today.getDate();
     var tk = pad(tm + 1) + '-' + pad(td);
     var total = Object.keys(data).length;
+    var febYear = today.getFullYear() + (tm > 1 ? 1 : 0);
+    DIM[1] = (isLeap(febYear) || data['02-29']) ? 29 : 28;
 
     var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
@@ -126,6 +133,17 @@
         '</div>';
     }
 
+    /* после тапа на телефоне — карточку в экран, фокус на её заголовок (для читалки экрана);
+       prefers-reduced-motion — без плавной анимации */
+    function reveal() {
+      var c = box.querySelector('.calcard');
+      if (!c || !window.matchMedia || !window.matchMedia(NARROW).matches) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      c.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      var h = c.querySelector('h3');
+      if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+    }
+
     function render() {
       var cnt = 0, cells = '';
       for (var d = 1; d <= DIM[view]; d++) {
@@ -156,13 +174,14 @@
         });
       });
       box.querySelectorAll('.cday').forEach(function (b) {
-        b.addEventListener('click', function () { sel = b.dataset.k; render(); });
+        b.addEventListener('click', function () { sel = b.dataset.k; render(); reveal(); });
       });
       var jump = box.querySelector('.caljump');
       if (jump) jump.addEventListener('click', function () {
         sel = jump.dataset.k;
         view = parseInt(sel.slice(0, 2), 10) - 1;
         render();
+        reveal();
       });
     }
 
