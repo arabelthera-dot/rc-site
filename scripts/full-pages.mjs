@@ -3,7 +3,9 @@
 // её файлы (картинки, видео, звук, движки) — в public/ по старым путям. Ссылаться на старый сайт нельзя:
 // после переключения по его адресу встаёт новая сборка. Ставит страницу на место карточки
 // src/integrations/full-pages.mjs. Файл, который в public/ уже есть и отличается, — ошибка.
-// Запуск: npm run full-pages  (LEGACY — путь к rc-museum-preview, по умолчанию ~/rc-museum-preview)
+// Запуск: npm run full-pages  (LEGACY — путь к rc-museum-preview, по умолчанию ~/rc-museum-preview;
+// ONLY=музей/ключ,музей/ключ — перенести только эти дни). Папку src/data/full-pages целиком не стирает:
+// страницы, сделанные прямо в rc-site (день без legacy_page), остаются (18.10).
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -30,15 +32,17 @@ const fileOf = (pageDir, ref) => {
   return rel;
 };
 
+const ONLY = process.env.ONLY ? new Set(process.env.ONLY.split(',').map((s) => s.trim()).filter(Boolean)) : null;
 const pages = [];
 for (const museum of fs.readdirSync(DAYS).sort()) {
   for (const f of fs.readdirSync(path.join(DAYS, museum)).sort()) {
     const d = JSON.parse(fs.readFileSync(path.join(DAYS, museum, f), 'utf8'));
+    const key = `${museum}/${f.replace(/\.json$/, '')}`;
+    if (ONLY && !ONLY.has(key)) continue;
     if (d.legacy_page) pages.push({ museum, key: f.replace(/\.json$/, ''), rel: d.legacy_page });
   }
 }
 
-fs.rmSync(OUT, { recursive: true, force: true });
 const files = new Map(); // путь → кто ссылается
 const missing = [];
 const videoKeys = new Map(); // «выпуск|формат» реестра видео → кто ссылается
