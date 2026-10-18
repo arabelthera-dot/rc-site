@@ -138,8 +138,24 @@
     /* локальный fonts.css вместо fonts.googleapis.com (03.08): путь считаем от src самого движка,
        страницы лежат в подпапках музеев */
     var me = doc.currentScript || doc.querySelector('script[src*="museum-support"]');
-    fl.href = (me ? me.src.replace(/museum-support\.js.*$/, '') : '../assets/') + 'fonts.css';
-    doc.head.appendChild(fl);
+    var fbase = (me ? me.src.replace(/museum-support\.js.*$/, '') : '../assets/');
+    fl.href = fbase + 'fonts.css';
+    /* весь fonts.css заново объявляет Inter, Old Standard TT, Lora… — семейства, которые страница уже
+       загрузила своими @font-face; браузер берёт последнее объявление, пока оно качается, текст встаёт
+       запасным шрифтом и раскладка качается туда-обратно (CLS 0,076 на ПК, arhitektura 01-03, 18.10).
+       Поэтому из fonts.css берём только @font-face нужного семейства; без fetch — старый путь, ссылкой. */
+    if(window.fetch){
+      fetch(fl.href).then(function(r){ return r.ok ? r.text() : ''; }).then(function(txt){
+        var rules = (txt.match(/@font-face\s*\{[^}]*\}/g) || []).filter(function(r){
+          return new RegExp('font-family:\\s*[\'"]?' + NEED + '[\'"]?\\s*;', 'i').test(r);
+        });
+        if(!rules.length){ doc.head.appendChild(fl); return; }
+        var st = doc.createElement('style');
+        st.setAttribute('data-rc-fonts', NEED);
+        st.textContent = rules.join('\n').replace(/url\((['"]?)(?!https?:|\/|data:)/g, 'url($1' + fbase);
+        doc.head.appendChild(st);
+      })['catch'](function(){ doc.head.appendChild(fl); });
+    } else doc.head.appendChild(fl);
   }
 
   /* ── CSS: !important, иначе ручной CSS страницы перекрашивает блок в фон ── */
