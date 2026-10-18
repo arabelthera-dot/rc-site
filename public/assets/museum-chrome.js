@@ -358,7 +358,7 @@
   })();
 
   /* ── 3. липкие чипсы разделов ── */
-  var nav = doc.getElementById('secnav');
+  var nav = doc.getElementById('secnav'), madeNav = false;
   if(!nav){
     var secs = [].slice.call(doc.querySelectorAll('section[id],div[id="routewrap"],div[id="zoomwrap"]'));
     var chips = [];
@@ -372,7 +372,7 @@
       chips.push({id:id, lab:lab});
     });
     if(chips.length > 2){
-      nav = el('nav'); nav.id = 'secnav'; nav.setAttribute('aria-label','Разделы страницы');
+      madeNav = true; nav = el('nav'); nav.id = 'secnav'; nav.setAttribute('aria-label','Разделы страницы');
       var row = el('div','row');
       if(M.href && C.showMuseumHome !== false){var hm = el('a','home', M.homeLabel || '← Музей'); hm.href = M.href; row.appendChild(hm);}
       chips.forEach(function(c){var a = el('a', null, c.lab); a.href = '#'+c.id; row.appendChild(a);});
@@ -389,19 +389,22 @@
         if(host && host.parentNode) host.parentNode.insertBefore(nav, host.nextSibling);
         else body.insertBefore(nav, body.firstChild);
       }
-      /* если шапка сама липкая — встаём под неё, а не поверх */
-      var top = 0;
-      [].slice.call(doc.querySelectorAll('header')).forEach(function(hd){
-        var cs = getComputedStyle(hd);
-        if(cs.position === 'sticky' && parseInt(cs.top || '0', 10) === 0) top = Math.max(top, hd.offsetHeight);
-      });
-      if(top){
-        nav.style.top = top + 'px';
-        nav.style.zIndex = '25';
-        var sm = doc.createElement('style');
-        sm.textContent = 'section[id]{scroll-margin-top:' + (top + 52) + 'px}';
-        doc.head.appendChild(sm);
-      }
+    }
+  }
+  /* #secnav из сборки (full-pages.mjs, data-chrome-nav) — разметка готова, не создаём заново, только поведение */
+  if(nav && (madeNav || nav.hasAttribute('data-chrome-nav'))){
+    /* если шапка сама липкая — встаём под неё, а не поверх */
+    var top = 0;
+    [].slice.call(doc.querySelectorAll('header')).forEach(function(hd){
+      var cs = getComputedStyle(hd);
+      if(cs.position === 'sticky' && parseInt(cs.top || '0', 10) === 0) top = Math.max(top, hd.offsetHeight);
+    });
+    if(top){
+      nav.style.top = top + 'px';
+      nav.style.zIndex = '25';
+      var sm = doc.createElement('style');
+      sm.textContent = 'section[id]{scroll-margin-top:' + (top + 52) + 'px}';
+      doc.head.appendChild(sm);
     }
   }
   if(nav){

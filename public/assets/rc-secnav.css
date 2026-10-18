@@ -1,0 +1,13 @@
+/* Липкие чипсы разделов #secnav. Разметку кладёт сборка (src/integrations/full-pages.mjs, staticSecnav),
+   стиль — здесь, в <head>: панель встаёт на место с первой отрисовки, без сдвига (CLS) от museum-chrome.js
+   в конце страницы (18.10). Правила те же, что в museum-chrome.js — скрипт дублирует их для старых страниц. */
+#secnav{position:sticky;top:0;z-index:55;background:rgba(11,13,17,.94);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);border-bottom:1px solid var(--line,rgba(255,255,255,.14))}
+#secnav .row{display:flex;gap:6px;overflow-x:auto;padding:9px 12px;scrollbar-width:none;-ms-overflow-style:none}
+#secnav .row::-webkit-scrollbar{display:none}
+#secnav a{flex:none;font-size:12.5px;padding:6px 12px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:16px;color:var(--txt,#e8e6e1);opacity:.7;text-decoration:none;white-space:nowrap;transition:opacity .2s,border-color .2s,background .2s}
+#secnav a:hover{opacity:1;border-color:var(--gold,#c8a24a)}
+#secnav a.on{opacity:1;color:var(--gold,#c8a24a);border-color:var(--gold,#c8a24a);background:rgba(200,162,74,.13)}
+#secnav a.home{color:var(--gold,#c8a24a);opacity:.85;border-color:rgba(200,162,74,.45)}
+#secnav .prog{height:2px;width:0;background:var(--gold,#c8a24a);box-shadow:0 0 8px rgba(200,162,74,.6)}
+@media (max-width:520px){#secnav a{font-size:12px;padding:5px 10px}#secnav .row{padding:8px 10px}}
+@media (prefers-reduced-motion:reduce){#secnav a{transition:none}}
