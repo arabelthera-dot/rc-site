@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { sitebarHtml, sitebarAssets, whenOfKey } from '../lib/sitebar.mjs';
+import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles, pageFamilies, preloadTag } from '../lib/shrifty.mjs';
 
 const SRC = 'src/data/full-pages';
@@ -124,6 +124,88 @@ async function imgSizes(html, root, base) {
   return html;
 }
 
+// Сдвиг вёрстки от вставок скриптами над обложкой (CLS 01-03 = 0,112 после шрифтов, виновник div#hero, 17.10):
+// museum-chrome.js ставил строку «Поделиться» после .hero / nav.crumbs / header, rc-sitebar.js по load — подписку
+// .rc-sub под первым блоком «Поделиться»; обе сдвигали обложку вниз на 48 + 66 px. Теперь обе — в HTML при сборке,
+// в тех же местах: museum-chrome вешает обработчик на строку с data-chrome-share, rc-sitebar видит .rc-sub и молчит.
+// Стили строки — в rc-podpiska.css (в <head>), чтобы не было второго сдвига до museum-chrome.js в конце страницы.
+function elementEnd(html, start) {
+  const tag = /^<([a-z][a-z0-9]*)/i.exec(html.slice(start))?.[1];
+  if (!tag) return -1;
+  const re = new RegExp(`<(/?)${tag}\\b[^>]*>`, 'gi');
+  re.lastIndex = start;
+  let depth = 0, m;
+  while ((m = re.exec(html))) {
+    if (m[1]) depth--; else if (!/\/>$/.test(m[0])) depth++;
+    if (depth === 0) return m.index + m[0].length;
+  }
+  return -1;
+}
+const cls = (c) => `class=["'](?:[^"']*\\s)?${c}(?:\\s[^"']*)?["']`;
+function firstEl(html, from, re) {
+  const m = new RegExp(re, 'i').exec(html.slice(from));
+  if (!m) return -1;
+  const at = from + m.index;
+  return html.lastIndexOf('<', at);
+}
+// Свои стили страницы (inline <style> + локальные .css из public/assets) прячут «Поделиться»? Тогда скрипты видят
+// строку невидимой (offsetParent === null) и ставят подписку в конец статьи — угадать при сборке нельзя, оставляем им.
+// Так было на arhitektura/01-04 (vyatskoe-page.css) и 01-01: статичная подписка уезжала под обложку (17.10).
+const cssCache = new Map();
+function pageCss(html) {
+  let css = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map((m) => m[1]).join('\n');
+  for (const m of html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/gi)) {
+    const href = /href=["']([^"'?#]+)/i.exec(m[0])?.[1];
+    if (!href || /^(?:https?:)?\/\//i.test(href)) continue;
+    const f = path.join('public/assets', path.basename(href));
+    if (!cssCache.has(f)) cssCache.set(f, fs.existsSync(f) ? fs.readFileSync(f, 'utf8') : '');
+    css += '\n' + cssCache.get(f);
+  }
+  return css;
+}
+function staticChrome(html) {
+  const body = html.search(/<body\b/i);
+  if (body < 0) return html;
+  if (/\.sharerow\b|\.share\b|#sharefinal\b/.test(pageCss(html))) return html;
+  const scripts = html.indexOf('<script', body);
+  // те же блоки, что у rc-sitebar.js oneShare(): .sharerow, .wrap.share, div.share, #sharefinal — первый видимый
+  const shareRe = new RegExp(`<[a-z][a-z0-9]*\\b[^>]*${cls('sharerow')}[^>]*>|<div\\b[^>]*${cls('share')}[^>]*>|<[a-z][a-z0-9]*\\b[^>]*id=["']sharefinal["'][^>]*>`, 'gi');
+  const shares = [...html.slice(body).matchAll(shareRe)].map((m) => ({ at: body + m.index, tag: m[0] }));
+  const insertAt = (at, piece) => html.slice(0, at) + piece + html.slice(at);
+  let after = -1;
+  const chrome = /museum-chrome\.js/i.test(html) && !/shareRow\s*:\s*false/.test(html);
+  if (!shares.length && chrome) {
+    // тот же якорь, что у museum-chrome.js: .hero → nav.crumbs → первый header
+    let el = firstEl(html, body, cls('hero'));
+    if (el < 0) el = firstEl(html, body, `<nav\\b[^>]*${cls('crumbs')}`);
+    if (el < 0) { const h = html.slice(body).search(/<header\b/i); el = h < 0 ? -1 : body + h; }
+    const end = el < 0 || (scripts > 0 && el > scripts) ? -1 : elementEnd(html, el);
+    if (end > 0) {
+      const row = '\n<div class="sharerow" data-chrome-share><button class="sharebtn" type="button" id="sharebtn"><span>⤴</span>Поделиться страницей</button>'
+        + '<span class="sharehint" id="sharehint"></span></div>';
+      html = insertAt(end, row);
+      after = end + row.length;
+    }
+  } else if (shares.length) {
+    // скрытый атрибутом блок скрипт пропускает; первый видимый — под ним подписка. Все скрыты — подписка у footer.
+    const vis = shares.find((s) => !/\shidden\b|aria-hidden=["']true["']/i.test(s.tag));
+    if (vis) {
+      // вложенность в скрытого предка при сборке не видна — тогда не угадываем, оставляем скрипту
+      const before = html.slice(body, vis.at);
+      if (/<[a-z][a-z0-9]*\b[^>]*\shidden\b/i.test(before)) return html;
+      after = elementEnd(html, vis.at);
+    }
+  }
+  if (!/class=["']rc-sub\b/.test(html)) {
+    if (after > 0) html = insertAt(after, `\n${podpiskaHtml()}`);
+    else {
+      const f = html.search(/<footer\b/i);
+      html = f > 0 ? insertAt(f, `${podpiskaHtml()}\n`) : html.replace(/<\/body>/i, `${podpiskaHtml()}\n</body>`);
+    }
+  }
+  return html;
+}
+
 // Соседние дни (замер glazami «вчера/завтра», 17.10): старая страница дня заменяет карточку целиком, и ссылки
 // «← предыдущий / следующий →» карточки (den/[key].astro) пропадали. Соседи — ближайшие дни музея в сборке.
 function sosediHtml(base, museum, keys, key) {
@@ -230,6 +312,7 @@ export default function fullPages() {
             if (/class=["'](?:sharerow|wrap share|share)\b|id=["']sharefinal["']/i.test(html))
               html = html.replace(/(<script[^>]*src=["'][^"']*museum-chrome\.js)/i,
                 '<script>window.MUSEUM_CHROME=Object.assign(window.MUSEUM_CHROME||{},{shareRow:false})</script>\n$1');
+            html = staticChrome(html);
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
