@@ -13,7 +13,8 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
-const WIDTHS = [480, 960, 1600];
+// 720 — телефон 390–412 px при плотности 1,75–2 (карточки «Сегодня» главной, наряд #2004, 17.10)
+const WIDTHS = [480, 720, 960, 1600];
 const RASTER = /\.(jpe?g|png|webp)$/i;
 const CACHE = 'node_modules/.cache/rc-kartinki';
 const MIN_BYTES = 150 * 1024; // меньше и не шире 480 — копии не нужны
@@ -68,6 +69,14 @@ export default function kartinki() {
             if (src?.startsWith(base)) plan(decodeURI(src.slice(base.length).split(/[?#]/)[0]));
           }
         }
+        // 1б) данные «Сегодня» (segodnya/<ММ-ДД>.json): картинки, которые скрипт главной ставит при смене даты,
+        // получают поле srcset — иначе браузер качал бы оригинал (#2004, 17.10)
+        const segDir = path.join(root, 'segodnya');
+        const segFiles = fs.existsSync(segDir) ? fs.readdirSync(segDir).filter((n) => n.endsWith('.json')).map((n) => path.join(segDir, n)) : [];
+        const relOf = (src) => (src?.startsWith(base) ? decodeURI(src.slice(base.length).split(/[?#]/)[0]) : null);
+        for (const f of segFiles) {
+          for (const c of JSON.parse(fs.readFileSync(f, 'utf8')).cards ?? []) { const r = relOf(c.img); if (r) plan(r); }
+        }
         // 2) размеры и копии (параллельно, с кэшем)
         const items = [...info.values()].filter(Boolean);
         for (let i = 0; i < items.length; i += 8) {
@@ -112,7 +121,8 @@ export default function kartinki() {
             const it = src?.startsWith(base) && info.get(decodeURI(src.slice(base.length).split(/[?#]/)[0]));
             if (it && it.srcset && !it.skip && !scripted && !has('srcset')) {
               const wa = Number(/\swidth\s*=\s*["']?(\d+)/i.exec(t)?.[1]);
-              add(`srcset="${it.srcset}" sizes="${wa ? `(max-width: ${wa}px) 100vw, ${wa}px` : '100vw'}"`);
+              // свой sizes у тега (вёрстка карточек знает ширину лучше) — сохраняем
+              add(has('sizes') ? `srcset="${it.srcset}"` : `srcset="${it.srcset}" sizes="${wa ? `(max-width: ${wa}px) 100vw, ${wa}px` : '100vw'}"`);
               withSrcset++;
             }
             if (isFirst && !hasPriority && !/loading\s*=\s*["']lazy/i.test(t)) {
@@ -126,6 +136,17 @@ export default function kartinki() {
           const fixed = out.replace(/<picture\b[\s\S]*?<\/picture>/gi, (m) => m.replace(/\ssrcset="[^"]*\/_k\/[^"]*" sizes="[^"]*"/g, ''));
           if (fixed !== html) { fs.writeFileSync(f, fixed); changed++; }
         }
+        let segChanged = 0;
+        for (const f of segFiles) {
+          const data = JSON.parse(fs.readFileSync(f, 'utf8'));
+          let dirty = false;
+          for (const c of data.cards ?? []) {
+            const r = relOf(c.img); const it = r && info.get(r);
+            if (it && it.srcset && !it.skip && c.srcset !== it.srcset) { c.srcset = it.srcset; dirty = true; }
+          }
+          if (dirty) { fs.writeFileSync(f, JSON.stringify(data)); segChanged++; }
+        }
+        console.log(`kartinki: segodnya/*.json со srcset — ${segChanged}`);
         console.log(`kartinki: ${items.length} файлов, копий ${jobs.size} (новых ${made}), srcset у ${withSrcset} <img> на ${changed} стр., ${((Date.now() - t0) / 1000).toFixed(1)} с`);
       },
     },
