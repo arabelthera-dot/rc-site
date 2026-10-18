@@ -26,6 +26,11 @@ jobs:
           args: --offline --no-progress --include-fragments --index-files index.html --root-dir /tmp/root '/tmp/root/rc-site/**/*.html'
           fail: true
           jobSummary: true
+      # Подгрузки из движков (18.10.2026): lychee не видит import()/from в js — пропавший файл
+      # 3D или библиотеки ловит scripts/js-import.mjs. Строгость — JSIMPORT_STROGO=1 (новое — выключенным).
+      - name: js-import — подгрузки движков
+        continue-on-error: ${{ vars.JSIMPORT_STROGO != '1' }}
+        run: node scripts/js-import.mjs dist
       # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгость — переменной
       # репозитория VES_STROGO=1; без неё — только предупреждение (новое ставится выключенным).
       - name: ves — вес сборки
