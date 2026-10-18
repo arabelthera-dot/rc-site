@@ -35,10 +35,11 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-  # Запасная выкладка на старый адрес: та же сборка с base /rc-museum-preview — в ветку site
-  # старого репозитория (docs/otkat-pereklyucheniya.md, п. 1–2). Живой адрес она не трогает:
-  # Pages старого репо смотрит на main, пока его не переключат. Выключатель — переменная
-  # репозитория RC_SITE_TO_PREVIEW (не '1' — задача пропускается).
+  # Выкладка на основной адрес: та же сборка с base /rc-museum-preview — в ветку site
+  # старого репозитория. С переключения 17.10.2026 Pages старого репо смотрит на site, так что
+  # эта задача и есть живой сайт; откат — Pages обратно на main (docs/otkat-pereklyucheniya.md,
+  # п. 2–6). Выключатель — переменная репозитория RC_SITE_TO_PREVIEW (не '1' — задача
+  # пропускается и живой сайт застывает на последней сборке).
   vykladka-site:
     needs: build
     if: vars.RC_SITE_TO_PREVIEW == '1'
