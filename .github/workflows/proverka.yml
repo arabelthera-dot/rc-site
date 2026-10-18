@@ -42,9 +42,27 @@ jobs:
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 5
         run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
+      # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам
+      # (главная, музей izobreteniya, его календарь, день 01-05). ТОЛЬКО ОТЧЁТ — заявку роняют лишь
+      # сборка и битые ссылки (Сергей 17.10): continue-on-error, в lighthouserc только "warn".
+      - name: skorost — Lighthouse CI
+        continue-on-error: true
+        timeout-minutes: 4
+        run: npx -y @lhci/cli@0.14.0 autorun --config=lighthouserc.json
+      - name: skorost — axe и сводка
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 3
+        run: npm i --no-save --no-audit --no-fund playwright@1.48.0 @axe-core/playwright@4.10.1 && node scripts/otchet-skorost.mjs --dist dist --lhci /tmp/lhci
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: glazami
           path: /tmp/glazami
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse
+          path: /tmp/lhci
           if-no-files-found: ignore
