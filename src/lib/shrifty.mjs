@@ -48,3 +48,12 @@ export function faceCss(families, base) {
   return blocks.filter((b) => want.has(/font-family: '([^']+)'/.exec(b)?.[1]))
     .map((b) => b.replace(/url\(fonts\//g, `url(${base}assets/fonts/`).replace(/\s+/g, ' ')).join('\n');
 }
+
+// Шрифты дня из карточки (den/[key]): те же 48 КБ fonts.css блокировали отрисовку, а нужно 0–3 семейства —
+// из темы своего музея (museum-theme.css, :root[data-museum="<slug>"]) и своего стиля (--font-h). Inter и
+// PT Serif уже объявлены в museum.css — повторно не вписываются.
+export function denFamilies(slug, ownCss = '') {
+  const theme = fs.readFileSync('public/assets/museum-theme.css', 'utf8');
+  const blocksOf = [...theme.matchAll(/:root\[data-museum="([^"]+)"\][^{]*\{([^}]*)\}/g)].filter((m) => m[1] === slug).map((m) => m[2]);
+  return usedFamilies([...blocksOf, ownCss].join('\n')).filter((f) => f !== 'Inter' && f !== 'PT Serif');
+}
