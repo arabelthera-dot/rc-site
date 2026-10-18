@@ -10,9 +10,14 @@ const base = import.meta.env.BASE_URL;
 const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
   .formatToParts(new Date()).map((x) => [x.type, x.value]));
 const t = await today(`${parts.month}-${parts.day}`);
+// sizes по сетке portal-today.css: список ≤1200 px, поля clamp(16px,4vw,48px), колонки minmax(260px,1fr), зазор 18.
+// Ведущая: ≥820 px картинка — 55% карточки (≤660 px), уже — во всю ширину. Остальные: ≥1250 — 4 колонки по ~290,
+// 1100–1250 — 3 колонки, 561–1100 — 2, телефон — одна колонка. srcset дописывает kartinki.mjs (#2004, 17.10).
+const SIZES_LEAD = '(min-width: 1250px) 660px, (min-width: 820px) 55vw, calc(100vw - 32px)';
+const SIZES_CARD = '(min-width: 1250px) 290px, (min-width: 1100px) 33vw, (min-width: 561px) 50vw, calc(100vw - 32px)';
 ---
 <link rel="stylesheet" href={`${base}assets/portal-today.css`} />
-<section id="segodnya" class="p-today" data-key={t.key} data-base={base} aria-labelledby="p-today-h">
+<section id="segodnya" class="p-today" data-key={t.key} data-base={base} data-sizes-lead={SIZES_LEAD} data-sizes-card={SIZES_CARD} aria-labelledby="p-today-h">
   <div class="p-today__head">
     <h2 class="p-today__h" id="p-today-h" data-t="heading">{t.heading}</h2>
     <p class="p-today__date" data-t="when">{t.when}</p>
@@ -20,7 +25,7 @@ const t = await today(`${parts.month}-${parts.day}`);
   <div class="p-today__list" data-t="list">
     {t.cards.map((c, i) => (
       <article class={`p-today__card${i === 0 ? ' p-today__card--lead' : ''}${c.img ? '' : ' p-today__card--noimg'}`}>
-        {c.img && <div class="p-today__pic"><img src={c.img} alt={c.alt} width="1600" height="1000" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>}
+        {c.img && <div class="p-today__pic"><img src={c.img} alt={c.alt} width="1600" height="1000" sizes={i === 0 ? SIZES_LEAD : SIZES_CARD} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>}
         <div class="p-today__body">
           <p class="p-today__museum">{c.museumTitle}</p>
           <h3 class="p-today__title">{c.title}</h3>
@@ -38,17 +43,21 @@ const t = await today(`${parts.month}-${parts.day}`);
     .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
   var key = p.month + '-' + p.day;
   if (key === box.getAttribute('data-key')) return;
+  // без сдвига: до подмены блок скрыт (visibility — место остаётся), высота старого списка держится
+  var list = box.querySelector('[data-t="list"]');
+  list.style.minHeight = list.offsetHeight + 'px';
+  box.classList.add('p-today--swap');
+  var done = function () { box.classList.remove('p-today--swap'); };
   fetch(box.getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
-    if (!t || !t.cards) return;
+    if (!t || !t.cards) return done();
     var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
-    var list = box.querySelector('[data-t="list"]');
     box.querySelector('[data-t="heading"]').textContent = t.heading;
     box.querySelector('[data-t="when"]').textContent = t.when;
     box.setAttribute('data-key', t.key);
     list.textContent = '';
     t.cards.forEach(function (c, i) {
       var a = el('article', 'p-today__card' + (i === 0 ? ' p-today__card--lead' : '') + (c.img ? '' : ' p-today__card--noimg'));
-      if (c.img) { var pic = el('div', 'p-today__pic'), img = el('img'); img.src = c.img; img.alt = c.alt || ''; img.width = 1600; img.height = 1000; img.decoding = 'async'; if (i) img.loading = 'lazy'; pic.appendChild(img); a.appendChild(pic); }
+      if (c.img) { var pic = el('div', 'p-today__pic'), img = el('img'); if (c.srcset) { img.sizes = box.getAttribute(i ? 'data-sizes-card' : 'data-sizes-lead'); img.srcset = c.srcset; } img.src = c.img; img.alt = c.alt || ''; img.width = 1600; img.height = 1000; img.decoding = 'async'; if (i) img.loading = 'lazy'; pic.appendChild(img); a.appendChild(pic); }
       var b = el('div', 'p-today__body');
       b.appendChild(el('p', 'p-today__museum', c.museumTitle));
       b.appendChild(el('h3', 'p-today__title', c.title));
@@ -56,6 +65,7 @@ const t = await today(`${parts.month}-${parts.day}`);
       var go = el('a', 'p-today__go', 'Открыть день →'); go.href = c.href; b.appendChild(go);
       a.appendChild(b); list.appendChild(a);
     });
-  }).catch(function () {});
+    done();
+  }).catch(done);
 })();
 </script>
