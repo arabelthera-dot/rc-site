@@ -1,0 +1,68 @@
+# Каналы (вариант А, Сергей 18.10.2026): каждый день в 9:00 МСК — пост дня в Telegram-канал и сообщество VK.
+# Скрипт — scripts/kanaly/post.py, описание — docs/kanaly.md. Новое выключено: нет секрета — площадка
+# пропускается, работа зелёная. Откат — выключить этот workflow (Actions → kanaly → Disable workflow).
+name: kanaly
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Пробный запуск — собрать пост и напечатать, ничего не отправлять'
+        type: boolean
+        default: true
+      date:
+        description: 'ММ-ДД для пробного запуска (пусто — сегодня)'
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: kanaly
+  cancel-in-progress: false
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pillow
+      - id: d
+        run: echo "today=$(TZ=Europe/Moscow date +%F)" >> "$GITHUB_OUTPUT"
+      # Отметки «уже отправлено» — по площадке на дату: повторный запуск в тот же день не дублирует пост.
+      - id: tg
+        uses: actions/cache/restore@v4
+        with:
+          path: .kanaly/tg
+          key: kanaly-tg-${{ steps.d.outputs.today }}
+      - id: vk
+        uses: actions/cache/restore@v4
+        with:
+          path: .kanaly/vk
+          key: kanaly-vk-${{ steps.d.outputs.today }}
+      - name: Пост дня
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHANNEL: ${{ secrets.TG_CHANNEL }}
+          VK_TOKEN: ${{ secrets.VK_TOKEN }}
+          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+          DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          DATE: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && inputs.date || '' }}
+        run: |
+          args=(--state .kanaly)
+          [ "$DRY" = "true" ] && args+=(--dry-run)
+          [ -n "$DATE" ] && args+=(--date "$DATE")
+          python scripts/kanaly/post.py "${args[@]}"
+      - if: always() && steps.tg.outputs.cache-hit != 'true' && hashFiles('.kanaly/tg/sent') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .kanaly/tg
+          key: kanaly-tg-${{ steps.d.outputs.today }}
+      - if: always() && steps.vk.outputs.cache-hit != 'true' && hashFiles('.kanaly/vk/sent') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .kanaly/vk
+          key: kanaly-vk-${{ steps.d.outputs.today }}
