@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400 800;
   font-display: swap;
-  src: url("https://arabelthera-dot.github.io/rc-museum-preview/assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2")
+  src: url("fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2")
     format("woff2");
 }
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("https://arabelthera-dot.github.io/rc-museum-preview/assets/fonts/oldstandardtt-MwQubh3o1vLImiwAVvYawgcf2eVerlq4dHc.woff2")
+  src: url("fonts/oldstandardtt-MwQubh3o1vLImiwAVvYawgcf2eVerlq4dHc.woff2")
     format("woff2");
 }
 :root {

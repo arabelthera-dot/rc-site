@@ -442,6 +442,9 @@ export default function fullPages() {
             // в public/ → адрес на свой сайт (17.10, круг 1 приёмки, п.«в»): старый сайт переадресуется и уйдёт.
             if (site) html = html.replace(/(<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\s+content=["'])https:\/\/arabelthera-dot\.github\.io\/rc-museum-preview\/([^"'?#]+)/gi,
               (m, a, rel) => fs.existsSync(path.join('public', decodeURIComponent(rel))) ? a + new URL(`${base}${rel}`, site).href : m);
+            // Прочие абсолютные адреса старого сайта (JSON-LD url/logo/image, ссылки, feed.xml) — на свой адрес
+            // (18.10, домен russian-civilization.ru): старые страницы на новом сайте есть по тем же путям (legacyRedirects).
+            if (site) html = html.replace(/https?:\/\/arabelthera-dot\.github\.io\/rc-museum-preview\//gi, new URL(base, site).href);
             // Нет своей карточки пересылки у старой страницы — кадр дня из карточки (images[0]), п.2 очереди 1, 17.10.
             const card = path.join('src/content/days', museum, `${key}.json`);
             const img = fs.existsSync(card) && JSON.parse(fs.readFileSync(card, 'utf8')).images?.[0];
