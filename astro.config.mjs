@@ -24,6 +24,9 @@ export default defineConfig({
   site: 'https://arabelthera-dot.github.io',
   base: '/rc-site',
   trailingSlash: 'always',
+  // Свои стили страниц (бандлы _astro/*.css) — внутрь <head>, а не отдельным блокирующим запросом
+  // (render-blocking на главной ~750 мс, Lighthouse 18.10). museum.css подключён ссылкой (?url) и не затронут.
+  build: { inlineStylesheets: 'always' },
   // legacyRedirects — старые адреса rc-museum-preview → новые (scripts/redirects.mjs, план шаг 4).
   // fullPages — у дня с готовой страницей старого сайта адрес дня отдаёт её целиком (scripts/full-pages.mjs).
   // ogDen — своя карточка пересылки 1200×630 у готового дня без своей картинки (src/integrations/og-den.mjs).

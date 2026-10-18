@@ -3,6 +3,7 @@
 // Вид — только public/assets/portal.css. Поддержка — движок museum-support.js: главный блок встаёт
 // в размеченный слот [data-support-slot], дубль движок сам ставит перед подвалом, сердечко — тоже он.
 import Base from '../layouts/Base.astro';
+import InlineCss from '../components/InlineCss.astro';
 import '../styles/portal-base.css';
 import Segodnya from '../components/portal/Segodnya.astro';
 import DenPoDate from '../components/portal/DenPoDate.astro';
@@ -33,8 +34,9 @@ const support = { museum: 'Русская цивилизация', lang: 'ru' };
     {/* только шрифты главной (#2004 п.6); кириллица Inter и Playfair — заранее: ими набран первый экран */}
     <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={`${base}assets/fonts/playfairdisplay-nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2`} as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href={`${base}assets/fonts-portal.css`} />
-    <link rel="stylesheet" href={`${base}assets/portal.css`} />
+    {/* стили первого экрана — внутрь <head>, без блокирующих запросов (render-blocking, 18.10) */}
+    <InlineCss file="fonts-portal.css" />
+    <InlineCss file="portal.css" />
   </Fragment>
   <header slot="header" class="p-hero">
     <div class="p-orn" aria-hidden="true"><span></span><i>✦</i><span></span></div>

@@ -2,6 +2,7 @@
 interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
+import InlineCss from '../components/InlineCss.astro';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles } from '../lib/shrifty.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
@@ -82,7 +83,8 @@ const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
   </>}
   {headFiles.map((f) => <link rel="preload" href={`${base}assets/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
-  <link rel="stylesheet" href={`${base}assets/rc-podpiska.css`} />
+  {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
+  <InlineCss file="rc-podpiska.css" />
   {museum && museumTitle && <>
     <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
