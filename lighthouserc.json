@@ -1,0 +1,30 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "/tmp/root",
+      "url": [
+        "http://localhost/rc-site/",
+        "http://localhost/rc-site/muzei/izobreteniya/",
+        "http://localhost/rc-site/muzei/izobreteniya/calendar/",
+        "http://localhost/rc-site/muzei/izobreteniya/den/01-05/"
+      ],
+      "numberOfRuns": 1,
+      "settings": {
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+        "chromeFlags": "--no-sandbox --headless=new --disable-dev-shm-usage"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.8 }],
+        "categories:accessibility": ["warn", { "minScore": 0.9 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.9 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "/tmp/lhci"
+    }
+  }
+}
