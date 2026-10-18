@@ -316,7 +316,8 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   fs.mkdirSync(out, { recursive: true });
   const skipped = [];
   const notes = [];
-  fs.rmSync(path.join('public/muzei', museum, 'img'), { recursive: true, force: true });
+  // public/muzei/<музей>/img/ не чистится: после #85 там лежат оригиналы по путям старого сайта — единственные
+  // копии кадров карточек и файлов полных страниц (scripts/full-pages.mjs). Повторный импорт их перезаписывает.
   let n = 0;
   const write = (key, card) => {
     if (isStub(card.title)) { notes.push(`${key}: заглушка «${card.title}» — карточки нет`); return; }
