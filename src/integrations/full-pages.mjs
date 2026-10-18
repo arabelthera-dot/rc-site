@@ -163,10 +163,21 @@ function pageCss(html) {
   }
   return css;
 }
+// Не всякое правило про «Поделиться» мешает: arhitektura 01-05…01-09 (nevjanskaya-page.css — max-width/overflow),
+// izobreteniya 01-05 (padding !important), iskusstvo 05-02 (свой .sharerow, стили как у museum-chrome) — вид и место
+// те же, что у скрипта (18.10). Оставляем скриптам только там, где правило прячет, выносит из потока или двигает блок.
+function hidesShare(css) {
+  const rules = css.replace(/\/\*[\s\S]*?\*\//g, '').match(/[^{}]*\{[^{}]*\}/g) || [];
+  return rules.some((r) => {
+    const [sel, decl] = r.split('{');
+    return /\.sharerow(?![\w-])|\.share(?![\w-])|#sharefinal(?![\w-])/.test(sel)
+      && /\b(?:display\s*:\s*none|visibility\s*:\s*hidden|position\s*:|float\s*:|order\s*:|transform\s*:|content-visibility)/i.test(decl);
+  });
+}
 function staticChrome(html) {
   const body = html.search(/<body\b/i);
   if (body < 0) return html;
-  if (/\.sharerow\b|\.share\b|#sharefinal\b/.test(pageCss(html))) return html;
+  if (hidesShare(pageCss(html))) return html;
   const scripts = html.indexOf('<script', body);
   // те же блоки, что у rc-sitebar.js oneShare(): .sharerow, .wrap.share, div.share, #sharefinal — первый видимый
   const shareRe = new RegExp(`<[a-z][a-z0-9]*\\b[^>]*${cls('sharerow')}[^>]*>|<div\\b[^>]*${cls('share')}[^>]*>|<[a-z][a-z0-9]*\\b[^>]*id=["']sharefinal["'][^>]*>`, 'gi');
@@ -194,7 +205,7 @@ function staticChrome(html) {
       const before = html.slice(body, vis.at);
       if (/<[a-z][a-z0-9]*\b[^>]*\shidden\b/i.test(before)) return html;
       after = elementEnd(html, vis.at);
-    }
+    } else return html; // все скрыты (arhitektura 01-01) — куда поставит скрипт, при сборке не видно
   }
   if (!/class=["']rc-sub\b/.test(html)) {
     if (after > 0) html = insertAt(after, `\n${podpiskaHtml()}`);
