@@ -1,0 +1,66 @@
+---
+// «День по дате» — первый экран главной (сценарий 1 приёмки, круг 2, 18.10): поле даты → дни всех музеев
+// на эту дату ссылками на адреса дней (muzei/<музей>/den/<ММ-ДД>/). Данные — те же segodnya/<ММ-ДД>.json,
+// что у блока «Сегодня» (src/lib/segodnya.ts): нет дней на дату — ближайшая следующая дата с днями.
+// «Сегодня» — к блоку «Сегодня», «Все музеи» — к витрине. Тексты дней не правятся, выводятся как есть.
+const base = import.meta.env.BASE_URL;
+---
+<section class="p-dpd" id="po-date" data-base={base} aria-labelledby="p-dpd-h">
+  <h2 class="p-dpd__h" id="p-dpd-h">Найти день по дате</h2>
+  <form class="p-dpd__row" action="#po-date">
+    <label class="p-dpd__lab" for="p-dpd-in">Дата</label>
+    <input class="p-dpd__in" id="p-dpd-in" type="date" required />
+    <button class="p-dpd__btn p-dpd__btn--go" type="submit">Показать дни</button>
+    <a class="p-dpd__btn" href="#segodnya">Сегодня</a>
+    <a class="p-dpd__btn" href="#p-vit-h">Все музеи ↓</a>
+  </form>
+  <div class="p-dpd__out" aria-live="polite"></div>
+</section>
+<style is:global>
+.p-dpd { max-width: 860px; margin: 0 auto 18px; padding: 18px clamp(16px, 4vw, 28px); background: #0c1826;
+  border: 1px solid rgba(201,168,76,.28); border-radius: 14px; font-family: 'Inter', 'Segoe UI', sans-serif; }
+.p-dpd__h { margin: 0 0 12px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.15rem, 2.6vw, 1.45rem); color: #fff; }
+.p-dpd__row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; }
+.p-dpd__lab { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.p-dpd__in { min-height: 44px; padding: 0 12px; font: inherit; font-size: 16px; color: #e8eef5; background: #111f33;
+  border: 1px solid rgba(201,168,76,.45); border-radius: 10px; color-scheme: dark; }
+.p-dpd__btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; font: inherit; font-size: 15px;
+  font-weight: 600; color: #e4c97a; background: transparent; border: 1px solid rgba(201,168,76,.45); border-radius: 10px;
+  text-decoration: none; cursor: pointer; }
+.p-dpd__btn--go { background: #c9a84c; color: #060c17; border-color: #c9a84c; }
+.p-dpd__btn:hover, .p-dpd__btn:focus-visible { border-color: #e4c97a; }
+.p-dpd__out:empty { display: none; }
+.p-dpd__out { margin-top: 14px; }
+.p-dpd__note { margin: 0 0 8px; color: #8fadc9; font-size: 14px; }
+.p-dpd__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.p-dpd__list a { display: block; padding: 8px 0; color: #e8eef5; text-decoration: none; border-bottom: 1px solid rgba(201,168,76,.18); }
+.p-dpd__list a:hover, .p-dpd__list a:focus-visible { color: #e4c97a; }
+.p-dpd__list b { display: block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #c9a84c; font-weight: 600; }
+@media (max-width: 560px) { .p-dpd__in { flex: 1 1 100%; } .p-dpd__btn { flex: 1 1 auto; justify-content: center; } }
+</style>
+<script is:inline>
+(function () {
+  var box = document.getElementById('po-date'); if (!box) return;
+  var MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var whenOf = function (k) { return +k.slice(3) + ' ' + MONR[+k.slice(0, 2) - 1]; };
+  var inp = box.querySelector('input'), out = box.querySelector('.p-dpd__out');
+  var p = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' })
+    .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+  inp.value = p.year + '-' + p.month + '-' + p.day;
+  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+  var show = function () {
+    var v = inp.value; if (!/^\d{4}-\d\d-\d\d$/.test(v)) return;
+    var key = v.slice(5);
+    out.textContent = '';
+    fetch(box.getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
+      if (!t || !t.cards || !t.cards.length) { out.appendChild(el('p', 'p-dpd__note', 'На ' + whenOf(key) + ' дней пока нет.')); return; }
+      out.appendChild(el('p', 'p-dpd__note', t.shown === key ? whenOf(key) + ' — дни музеев:' : 'На ' + whenOf(key) + ' дней пока нет — ближайшая дата: ' + whenOf(t.shown)));
+      var ul = el('ul', 'p-dpd__list');
+      t.cards.forEach(function (c) { var li = el('li'), a = el('a'); a.href = c.href; a.appendChild(el('b', '', c.museumTitle)); a.appendChild(document.createTextNode(c.title + ' →')); li.appendChild(a); ul.appendChild(li); });
+      out.appendChild(ul);
+    }).catch(function () { out.appendChild(el('p', 'p-dpd__note', 'Не удалось загрузить дни — проверьте связь.')); });
+  };
+  box.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); show(); });
+  inp.addEventListener('change', show);
+})();
+</script>
