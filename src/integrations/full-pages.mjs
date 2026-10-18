@@ -370,12 +370,26 @@ export default function fullPages() {
         for (const museum of fs.readdirSync(SRC).sort()) {
           const denDir = path.join(root, 'muzei', museum, 'den');
           const keys = fs.existsSync(denDir) ? fs.readdirSync(denDir).filter((k) => fs.existsSync(path.join(denDir, k, 'index.html'))).sort() : [];
-          for (const f of fs.readdirSync(path.join(SRC, museum)).sort()) {
-            const key = f.replace(/\.html$/, '');
-            const self = `${base}muzei/${museum}/den/${key}/`;
-            const out = path.join(root, 'muzei', museum, 'den', key, 'index.html');
-            if (!fs.existsSync(out)) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
-            let html = fs.readFileSync(path.join(SRC, museum, f), 'utf8');
+          // Анкета (ADR docs/adr/0001-anketa-dnya.md): у дня есть body — страницу уже собрал шаблон DenAnketa.astro,
+          // конвейер ниже ведёт её так же, как старый HTML; старый HTML того же дня (пока лежит) — на den/<ключ>/staraya/
+          // с noindex, для сверки 1:1 и отката. Нет body — как раньше, старый HTML 1:1.
+          const cardsDir = path.join('src/content/days', museum);
+          const anketa = new Set((fs.existsSync(cardsDir) ? fs.readdirSync(cardsDir) : []).filter((f) => f.endsWith('.json'))
+            .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)));
+          const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
+          const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {
+            const dayOut = path.join(root, 'muzei', museum, 'den', key, 'index.html');
+            const day = `${base}muzei/${museum}/den/${key}/`;
+            const old = { key, self: day, out: dayOut, from: path.join(SRC, museum, `${key}.html`) };
+            if (!anketa.has(key)) return [old];
+            const jobsKey = [{ key, self: day, out: dayOut, from: dayOut }];
+            if (htmlKeys.includes(key)) jobsKey.push({ ...old, self: `${day}staraya/`, out: path.join(root, 'muzei', museum, 'den', key, 'staraya', 'index.html'), staraya: true });
+            return jobsKey;
+          });
+          for (const { key, self, out, from, staraya } of jobs) {
+            if (!fs.existsSync(path.join(root, 'muzei', museum, 'den', key, 'index.html'))) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
+            let html = fs.readFileSync(from, 'utf8');
+            if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
             for (const e of checkMuseumName(html, museum)) bad.push(`${museum}/${key} — ${e}`);
             // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
