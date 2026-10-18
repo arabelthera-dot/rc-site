@@ -438,6 +438,12 @@ export default function fullPages() {
             if (/class=["'](?:sharerow|wrap share|share)\b|id=["']sharefinal["']/i.test(html))
               html = html.replace(/(<script[^>]*src=["'][^"']*museum-chrome\.js)/i,
                 '<script>window.MUSEUM_CHROME=Object.assign(window.MUSEUM_CHROME||{},{shareRow:false})</script>\n$1');
+            // Lighthouse 18.10 (knowledge/priemka-lighthouse-1710.md): museum-support.js без defer держал отрисовку (до 900 мс).
+            // Движок — IIFE без глобалов, исполняется сразу и сам ждёт load; после него ни одна полная страница на него не
+            // опирается (проверено grep 18.10) — defer безопасен, 4 страницы уже шли с ним.
+            html = html.replace(/<script\b(?![^>]*\bdefer\b)([^>]*\bsrc=["'][^"']*museum-support\.js["'][^>]*)>/gi, '<script defer$1>');
+            // Значок: полная страница идёт мимо Base.astro — без <link rel=icon> браузер просил /favicon.ico в корне домена (404).
+            if (!/<link\b[^>]*\brel=["'](?:shortcut )?icon["']/i.test(html)) html = html.replace(/<\/head>/i, `<link rel="icon" href="${base}favicon.ico" sizes="any" />\n</head>`);
             html = staticChrome(html);
             html = staticSecnav(html, base, `${base}muzei/${museum}/`, self);
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
