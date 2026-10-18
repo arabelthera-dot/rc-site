@@ -56,7 +56,7 @@ try {
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
   const site = `http://127.0.0.1:${server.address().port}`;
   const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const page = await (await browser.newContext({ viewport: { width: 390, height: 844 } })).newPage();
   p('### axe-core (WCAG 2.1 AA): нарушения по серьёзности');
   p();
   p('| Страница | critical | serious | moderate | minor | правила |');
