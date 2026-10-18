@@ -6,6 +6,7 @@
 // ссылок (lychee резолвит от адреса файла — 757 ложных «нет файла», rc-site#16); <base> остаётся для скриптов.
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
@@ -219,6 +220,60 @@ function staticChrome(html) {
   return html;
 }
 
+// Липкие чипсы разделов (CLS +63 px на arhitektura 01-05/01-07, 18.10): museum-chrome.js собирал #secnav в конце
+// страницы и вставлял после «Поделиться» — обложка уезжала вниз. Теперь панель — в HTML при сборке, тем же правилом
+// (подписи LABEL/SKIP из museum-chrome.js, navIds/labels/showMuseumHome из window.MUSEUM_CHROME страницы, data-nav),
+// стиль — rc-secnav.css в <head>; скрипт видит готовый #secnav и только навешивает подсветку и прогресс.
+const chromeSrc = fs.readFileSync('public/assets/museum-chrome.js', 'utf8');
+const chromeMap = (name) => vm.runInNewContext(`(${new RegExp(`var\\s+${name}\\s*=\\s*(\\{[\\s\\S]*?\\});`).exec(chromeSrc)[1]})`);
+const NAV_LABEL = chromeMap('LABEL');
+const NAV_SKIP = chromeMap('SKIP');
+const escHtml = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+function chromeConfig(html) {
+  const win = {};
+  for (const m of html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)) {
+    if (!/MUSEUM_CHROME/.test(m[1])) continue;
+    try { vm.runInNewContext(m[1], { window: win }, { timeout: 200 }); } catch { return null; }
+  }
+  return win.MUSEUM_CHROME || {};
+}
+// Меню вставляется после перевода ссылок в абсолютные (выше): «← Музей» — от папки музея, якоря — на адрес
+// самой страницы, иначе при <base> чипсы уводят в папку музея, а lychee видит битый файл (rc-site#91, 34 ошибки).
+function staticSecnav(html, base, dir, self) {
+  if (!/museum-chrome\.js/i.test(html) || /\bid=["']secnav["']/i.test(html)) return html;
+  const body = html.search(/<body\b/i);
+  if (body < 0) return html;
+  const C = chromeConfig(html);
+  if (!C) return html;
+  const M = C.museum || {};
+  const chips = [];
+  const re = /<section\b[^>]*\bid=["']([^"']*)["'][^>]*>|<div\b[^>]*\bid=["'](routewrap|zoomwrap)["'][^>]*>/gi;
+  for (const m of html.slice(body).matchAll(re)) {
+    const id = m[1] ?? m[2];
+    if (!id || NAV_SKIP[id]) continue;
+    if (Array.isArray(C.navIds) && !C.navIds.includes(id)) continue;
+    const dn = /\sdata-nav=["']([^"']*)["']/i.exec(m[0])?.[1];
+    const lab = (dn && decode(dn)) || (C.labels && C.labels[id]) || NAV_LABEL[id];
+    if (!lab || chips.some((c) => c.lab === lab)) continue;
+    chips.push({ id, lab });
+  }
+  if (chips.length <= 2) return html;
+  const home = M.href && C.showMuseumHome !== false ? `<a class="home" href="${escHtml(absolute(M.href, dir))}">${escHtml(M.homeLabel || '← Музей')}</a>` : '';
+  const nav = `<nav id="secnav" aria-label="Разделы страницы" data-chrome-nav><div class="row">${home}`
+    + chips.map((c) => `<a href="${self}#${escHtml(c.id)}">${escHtml(c.lab)}</a>`).join('') + '</div><div class="prog" id="secprog"></div></nav>';
+  const insertAt = (at, piece) => html.slice(0, at) + piece + html.slice(at);
+  // как у скрипта: место .daynav, иначе после первой .sharerow, иначе после .hero → nav.crumbs → header, иначе начало body
+  const dn = firstEl(html, body, cls('daynav'));
+  if (dn > 0) { const e = elementEnd(html, dn); if (e > 0) return html.slice(0, dn) + nav + html.slice(e); }
+  let el = firstEl(html, body, cls('sharerow'));
+  if (el < 0) el = firstEl(html, body, cls('hero'));
+  if (el < 0) el = firstEl(html, body, `<nav\\b[^>]*${cls('crumbs')}`);
+  if (el < 0) { const h = html.slice(body).search(/<header\b/i); el = h < 0 ? -1 : body + h; }
+  const end = el < 0 ? -1 : elementEnd(html, el);
+  html = end > 0 ? insertAt(end, `\n${nav}`) : html.replace(/<body([^>]*)>/i, (b) => `${b}\n${nav}`);
+  return html.replace(/<\/head>/i, `<link rel="stylesheet" href="${base}assets/rc-secnav.css" />\n</head>`);
+}
+
 // Соседние дни (замер glazami «вчера/завтра», 17.10): старая страница дня заменяет карточку целиком, и ссылки
 // «← предыдущий / следующий →» карточки (den/[key].astro) пропадали. Соседи — ближайшие дни музея в сборке.
 function sosediHtml(base, museum, keys, key) {
@@ -347,6 +402,7 @@ export default function fullPages() {
               html = html.replace(/(<script[^>]*src=["'][^"']*museum-chrome\.js)/i,
                 '<script>window.MUSEUM_CHROME=Object.assign(window.MUSEUM_CHROME||{},{shareRow:false})</script>\n$1');
             html = staticChrome(html);
+            html = staticSecnav(html, base, `${base}muzei/${museum}/`, self);
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
