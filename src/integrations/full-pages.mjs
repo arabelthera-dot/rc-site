@@ -170,18 +170,45 @@ function pageCss(html) {
 // Не всякое правило про «Поделиться» мешает: arhitektura 01-05…01-09 (nevjanskaya-page.css — max-width/overflow),
 // izobreteniya 01-05 (padding !important), iskusstvo 05-02 (свой .sharerow, стили как у museum-chrome) — вид и место
 // те же, что у скрипта (18.10). Оставляем скриптам только там, где правило прячет, выносит из потока или двигает блок.
-function hidesShare(css) {
-  const rules = css.replace(/\/\*[\s\S]*?\*\//g, '').match(/[^{}]*\{[^{}]*\}/g) || [];
+// Правило только для узких экранов (@media max-width) — не «прячет всегда»: arhitektura 01-04 (vyatskoe-page.css
+// прячет .hero-scene>.sharerow лишь при ≤820 px), а скрипт на ПК дописывал строку под обложку после отрисовки — CLS 0,076
+// (18.10). Тогда строку ставит сборка (на телефоне её спрячет тот же CSS), а подписку — скрипт: её место на ПК и телефоне разное.
+function cssBlocks(css) {
+  css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  let base = '', narrow = '';
+  for (let i = 0; i < css.length;) {
+    const at = css.indexOf('@media', i);
+    if (at < 0) { base += css.slice(i); break; }
+    base += css.slice(i, at);
+    const open = css.indexOf('{', at);
+    if (open < 0) break;
+    let depth = 1, j = open + 1;
+    while (j < css.length && depth) { if (css[j] === '{') depth++; else if (css[j] === '}') depth--; j++; }
+    const query = css.slice(at, open);
+    if (/max-width/i.test(query) && !/min-width/i.test(query)) narrow += css.slice(open + 1, j - 1);
+    else base += css.slice(open + 1, j - 1);
+    i = j;
+  }
+  return { base, narrow };
+}
+function shareRule(css) {
+  const rules = css.match(/[^{}]*\{[^{}]*\}/g) || [];
   return rules.some((r) => {
     const [sel, decl] = r.split('{');
     return /\.sharerow(?![\w-])|\.share(?![\w-])|#sharefinal(?![\w-])/.test(sel)
       && /\b(?:display\s*:\s*none|visibility\s*:\s*hidden|position\s*:|float\s*:|order\s*:|transform\s*:|content-visibility)/i.test(decl);
   });
 }
+// 'always' — прячет/двигает на любом экране; 'narrow' — только на узких; false — не мешает
+function hidesShare(css) {
+  const { base, narrow } = cssBlocks(css);
+  return shareRule(base) ? 'always' : shareRule(narrow) ? 'narrow' : false;
+}
 function staticChrome(html) {
   const body = html.search(/<body\b/i);
   if (body < 0) return html;
-  if (hidesShare(pageCss(html))) return html;
+  const hides = hidesShare(pageCss(html));
+  if (hides === 'always') return html;
   const scripts = html.indexOf('<script', body);
   // те же блоки, что у rc-sitebar.js oneShare(): .sharerow, .wrap.share, div.share, #sharefinal — первый видимый
   const shareRe = new RegExp(`<[a-z][a-z0-9]*\\b[^>]*${cls('sharerow')}[^>]*>|<div\\b[^>]*${cls('share')}[^>]*>|<[a-z][a-z0-9]*\\b[^>]*id=["']sharefinal["'][^>]*>`, 'gi');
@@ -211,6 +238,7 @@ function staticChrome(html) {
       after = elementEnd(html, vis.at);
     } else return html; // все скрыты (arhitektura 01-01) — куда поставит скрипт, при сборке не видно
   }
+  if (hides === 'narrow') return html; // подписку ставит скрипт: на телефоне строка скрыта — конец статьи
   if (!/class=["']rc-sub\b/.test(html)) {
     if (after > 0) html = insertAt(after, `\n${podpiskaHtml()}`);
     else {
