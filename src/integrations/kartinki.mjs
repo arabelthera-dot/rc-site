@@ -17,7 +17,10 @@ import sharp from 'sharp';
 const WIDTHS = [480, 720, 960, 1600];
 const RASTER = /\.(jpe?g|png|webp)$/i;
 const CACHE = 'node_modules/.cache/rc-kartinki';
-const MIN_BYTES = 150 * 1024; // меньше и не шире 480 — копии не нужны
+// Не шире 480 и меньше 24 КиБ — копии не нужны (значки). Порог был 150 КиБ: квадрат 472×472 JPEG 98 КиБ
+// (10-18-lodygin-1874.jpg, ведущая карточка «Сегодня») уходил на главную оригиналом — Lighthouse 18.10.
+// Теперь такой кадр получает одну WebP-копию в свою ширину.
+const MIN_BYTES = 24 * 1024;
 // Параллельных перекодировок: на сборщике GitHub (CI) — 4; на общем сервере агентов потолок памяти 2 ГБ — по одной.
 const PAR = process.env.CI ? 4 : 1;
 sharp.cache(false);
@@ -112,7 +115,12 @@ export default function kartinki() {
           const hasPriority = /<img\b[^>]*fetchpriority\s*=\s*["']high/i.test(html);
           let first = true;
           const out = html.replace(IMG, (tag) => {
-            const isFirst = first; first = false;
+            // «первый кадр» — первая своя картинка: пиксель Метрики (<noscript>, внешний адрес) им не считается,
+            // иначе fetchpriority="high" уходил ему, а не ведущей картинке «Сегодня» (18.10)
+            const src0 = /\ssrc\s*=\s*["']([^"']+)["']/i.exec(tag)?.[1] ?? '';
+            if (src0.includes('mc.yandex.ru/watch/')) return tag; // пиксель счётчика: ни lazy, ни приоритета
+            const own = src0.startsWith(base);
+            const isFirst = first && own; if (own) first = false;
             let t = tag;
             const has = (a) => new RegExp(`\\s${a}\\s*=`, 'i').test(t);
             const add = (s) => { t = t.replace(/\s*\/?>$/, (end) => ` ${s}${end}`); };
