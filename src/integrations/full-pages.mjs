@@ -265,15 +265,23 @@ export default function fullPages() {
             // preload — Playfair/Inter приходили после первой отрисовки и сдвигали шапку дня. Теперь файлы тех
             // семейств, которыми набрана сама страница, — заранее, сразу после <head>. Google-шрифты старой
             // страницы (чужой CDN, приходят ещё позже) — на свой assets/fonts.css, preconnect к ним — долой.
-            const fams = usedFamilies(html); // до замены Google-ссылки: в её адресе — имена семейств
+            // до замены Google-ссылки: в её адресе — имена семейств. Плюс свои подключённые CSS страницы (sport:
+            // имена шрифтов только в museum-den.css — без них инлайн пуст и шрифты падали в системные, 18.10).
+            const ownCss = [...html.matchAll(/<link\b[^>]*\brel=["']?stylesheet["']?[^>]*>/gi)]
+              .map((l) => /\bhref=["']([^"'?#]+\.css)/i.exec(l[0])?.[1]).filter((h) => h && !/^(?:https?:)?\/\//.test(h) && !/fonts\.css$/.test(h))
+              .map((h) => path.join('public', h.startsWith('/') ? h.replace(/^\/(?:rc-site\/)?/, '') : path.posix.join('muzei', museum, h)))
+              .filter((fp) => fp.startsWith('public' + path.sep) && fs.existsSync(fp)).map((fp) => fs.readFileSync(fp, 'utf8')).join('\n');
+            // Шрифт блока «Поддержать» (museum-support.js: Inter или Playfair Display) — тоже инлайном, иначе
+            // движок докачивает весь fonts.css (48 КБ) после загрузки.
+            const fams = [...new Set([...usedFamilies(html + '\n' + ownCss), ...(/museum-support\.js/.test(html) ? ['Inter', 'Playfair Display'] : [])])];
             html = html
               .replace(/<link\b[^>]*\brel=["']?(?:preconnect|dns-prefetch)["']?[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>\s*/gi, '')
               .replace(/<link\b[^>]*fonts\.googleapis\.com\/css[^>]*>/gi, `<link rel="stylesheet" href="${base}assets/fonts.css">`)
               .replace(/@import\s+url\(\s*['"]?https?:\/\/fonts\.googleapis\.com\/css[^)]*\)\s*;?/gi, `@import url('${base}assets/fonts.css');`);
             // Весь fonts.css (48 КБ, 113 @font-face) блокировал отрисовку (FCP −600…750 мс, замер 18.10) → инлайн
             // только семейств страницы (src/lib/shrifty.mjs faceCss). Ссылка и @import на fonts.css — долой.
-            const FONTS_LINK = /<link\b[^>]*\bhref=["'][^"']*assets\/fonts\.css["'][^>]*>\s*/gi;
-            const FONTS_IMPORT = /@import\s+url\(\s*['"]?[^'")]*assets\/fonts\.css['"]?\s*\)\s*;?/gi;
+            const FONTS_LINK = /<link\b[^>]*\bhref=["'][^"']*assets\/fonts\.css(?:\?[^"']*)?["'][^>]*>\s*/gi;
+            const FONTS_IMPORT = /@import\s+url\(\s*['"]?[^'")]*assets\/fonts\.css(?:\?[^'")]*)?['"]?\s*\)\s*;?/gi;
             if (FONTS_LINK.test(html) || FONTS_IMPORT.test(html)) {
               html = html.replace(FONTS_LINK, '').replace(FONTS_IMPORT, '');
               const css = faceCss(fams, base);
