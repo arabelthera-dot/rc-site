@@ -1,10 +1,12 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
-const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss } = Astro.props;
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles } from '../lib/shrifty.mjs';
-import "../styles/museum.css";
+// museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
+// src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
+import museumCss from '../styles/museum.css?url';
 const base = import.meta.env.BASE_URL;
 // Свой стиль музея переносится из старого сайта как есть (public/muzei/<slug>/*-style.css, план шаг 4);
 // нет файла — страница на общем museum.css. Как на старом сайте — только у страниц дня (ownStyle):
@@ -87,6 +89,7 @@ const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
   </>}
   <script type="application/ld+json" set:html={ldJson} />
   <slot name="head" />
+  {!portal && <link rel="stylesheet" href={museumCss} />}
 </head>
 <body>
   {/* Страницы музеев — единая верхняя полоса (Сергей 17.10) вместо крошек и кнопки «назад» */}

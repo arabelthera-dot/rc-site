@@ -67,7 +67,7 @@ a.p-in:focus-visible{outline:2px solid var(--p-gold-l);outline-offset:2px}
 .p-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
 .p-body h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:#fff;font-size:21px;line-height:1.2;margin:0 0 10px}
 .p-body p{font-size:15px;line-height:1.6;color:#c3d3e3;margin:0 0 14px}
-.p-st{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.5px;color:var(--p-gold);letter-spacing:.3px;margin-top:auto}
+.p-st{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:12.5px;color:var(--p-gold);letter-spacing:.3px;margin-top:auto}
 .p-go{font-size:14px;color:var(--p-gold-l);margin-top:12px}
 .p-card:not(.has-cal) .p-go{margin-top:auto}
 /* музеи с календарём на широком экране — первые две карточки крупнее */
