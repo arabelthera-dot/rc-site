@@ -275,6 +275,42 @@ function staticSecnav(html, base, dir, self) {
   return html.replace(/<\/head>/i, `<link rel="stylesheet" href="${base}assets/rc-secnav.css" />\n</head>`);
 }
 
+// Первый экран = итоговый вид (CLS izobreteniya 01-05: тел 0,089 / ПК 0,036, 18.10). museum-chrome.js стоит в конце
+// страницы и только там (1) вставлял свой CSS: max-height:var(--hero-fit) у обложки, мобильные кегли h1/подводки/кнопок,
+// (2) давал класс .hero-btns безымянному блоку кнопок (15 страниц), (3) считал --hero-fit (fitHero). Всё это — после
+// первого кадра: обложка сжималась на 19–92 px, подводка с кнопками ехала вверх. Теперь при сборке: тот же CSS в <head>
+// (последним, как его ставит движок), тот же класс в разметке и тот же fitHero сразу за подводкой — до первой
+// отрисовки. Код и CSS берутся из самого museum-chrome.js: правка движка доезжает сюда сама; его повторный проход
+// ничего не меняет (стиль тот же, .hero-btns уже есть, --hero-fit то же). Шрифты (museum-support.js, #99) не трогаем.
+const CHROME_CSS = vm.runInNewContext(`(${/var\s+css\s*=\s*([\s\S]*?);\s*\n\s*var\s+st\s*=/.exec(chromeSrc)[1]})`);
+const FIT_HERO = /function fitHero\(\)\{[\s\S]*?\n {2}\}\n/.exec(chromeSrc)[0];
+function staticHero(html) {
+  if (!/museum-chrome\.js/i.test(html)) return html;
+  html = html.replace(/<\/head>/i, `<style data-chrome-css>${CHROME_CSS}</style>\n</head>`);
+  const body = html.search(/<body\b/i);
+  const lead = body < 0 ? -1 : firstEl(html, body, cls('hero-(?:lead|text)'));
+  if (lead < 0) return html;
+  let end = elementEnd(html, lead);
+  if (end < 0) return html;
+  // усыновление, как в движке (раздел 0-тер): первый div/p подводки с двумя и более кнопками прямо внутри
+  if (!new RegExp(cls('hero-btns'), 'i').test(html)) {
+    const re = /<(div|p)\b([^>]*)>/gi;
+    re.lastIndex = lead + 1;
+    let m;
+    while ((m = re.exec(html)) && m.index < end) {
+      const e = elementEnd(html, m.index);
+      const inner = e > 0 ? html.slice(m.index + m[0].length, e) : '';
+      if (/<(?:div|p)\b/i.test(inner) || (inner.match(/<button\b|<a\b[^>]*\bclass=["'][^"']*\bbtn\b/gi) || []).length < 2) continue;
+      const tag = /\sclass=(["'])/i.test(m[0]) ? m[0].replace(/\sclass=(["'])/i, ' class=$1hero-btns ') : m[0].replace(/^<(div|p)\b/i, '<$1 class="hero-btns"');
+      html = html.slice(0, m.index) + tag + html.slice(m.index + m[0].length);
+      end += tag.length - m[0].length;
+      break;
+    }
+  }
+  const fit = `\n<script data-chrome-fit>(function(){var doc=document;${FIT_HERO}fitHero();})();</script>`;
+  return html.slice(0, end) + fit + html.slice(end);
+}
+
 // Соседние дни (замер glazami «вчера/завтра», 17.10): старая страница дня заменяет карточку целиком, и ссылки
 // «← предыдущий / следующий →» карточки (den/[key].astro) пропадали. Соседи — ближайшие дни музея в сборке.
 function sosediHtml(base, museum, keys, key) {
@@ -409,6 +445,7 @@ export default function fullPages() {
             if (!/mc\.yandex\.ru\/metrika\/tag\.js/.test(html)) html = html.replace(/<\/head>/i, `${metrikaHtml}\n</head>`);
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
+            html = staticHero(html);
             if (!/\srel=["'](?:prev|next)["']/i.test(html)) html = html.replace(/<\/body>/i, `${sosediHtml(base, museum, keys, key)}\n</body>`);
             html = await imgSizes(html, root, base);
             if (!MUSEUMS[museum]) { bad.push(`${museum}/${key} — музея нет в museums.json`); continue; }
