@@ -113,9 +113,26 @@
   var BTNB = LIGHT ? 'rgba(255,253,247,.92)' : 'rgba(18,21,28,.9)';
   var GLOW = LIGHT ? '0 2px 20px rgba(120,92,20,.14)' : '0 2px 22px rgba(0,0,0,.34),0 0 34px -14px rgba(201,168,76,.55)';
 
-  /* ── шрифт качаем только тот, которым будет набран блок, и только если его нет ── */
-  var NEED = PAGE_SERIF ? 'Inter' : 'Playfair';
-  if(doc.documentElement.innerHTML.indexOf(NEED) < 0){
+  /* ── шрифт качаем только тот, которым будет набран блок, и только если его нет ──
+     Проверка — по объявленным @font-face (document.fonts: и инлайн <style data-rc-fonts>, и museum.css, и
+     подключённый fonts.css), а не по имени в тексте разметки: дни после #88/#89 несут шрифты инлайном или во
+     внешнем CSS, имени в innerHTML нет — и движок зря докачивал весь fonts.css (48 КБ, 18.10).
+     Старая страница без объявления семейства — докачка остаётся. */
+  var NEED = PAGE_SERIF ? 'Inter' : 'Playfair Display';
+  function hasFace(fam){
+    try {
+      if(doc.fonts && doc.fonts.forEach){
+        var found = false;
+        doc.fonts.forEach(function(f){ if(String(f.family).replace(/['"]/g, '').trim() === fam) found = true; });
+        if(found) return true;
+      }
+    } catch(e){}
+    var re = new RegExp('@font-face\\s*\\{[^}]*font-family:\\s*[\'"]?' + fam, 'i');
+    var st = doc.querySelectorAll('style');
+    for(var i = 0; i < st.length; i++) if(re.test(st[i].textContent)) return true;
+    return false;
+  }
+  if(!hasFace(NEED)){
     var fl = doc.createElement('link');
     fl.rel = 'stylesheet';
     /* локальный fonts.css вместо fonts.googleapis.com (03.08): путь считаем от src самого движка,

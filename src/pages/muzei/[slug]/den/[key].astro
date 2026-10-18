@@ -88,7 +88,9 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
 })};`;
 // Шрифты — только семейства темы и своего стиля музея, вписанные в <head> (вместо всего fonts.css, замер 18.10).
 const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`public/muzei/${m.slug}`).find((f: string) => f.endsWith('-style.css')) : undefined;
-const fontCss = faceCss(denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), base);
+// + Playfair Display: им museum-support.js набирает блок «Поддержать» на гротескных днях (Inter — в museum.css);
+// без объявления движок докачивал весь fonts.css после загрузки (18.10).
+const fontCss = faceCss([...new Set([...denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), 'Playfair Display'])], base);
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
 ---
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
