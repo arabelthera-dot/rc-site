@@ -1,9 +1,11 @@
 ---
-// Главная портала: шапка (текст Сергея дословно) → «Сегодня» → «Поддержать проект» → витрина музеев → подвал.
+// Главная портала: шапка (текст Сергея дословно) → «Найти день по дате» → «Сегодня» (3 карточки, остальные по кнопке) → «Поддержать проект» → витрина музеев → подвал.
 // Вид — только public/assets/portal.css. Поддержка — движок museum-support.js: главный блок встаёт
 // в размеченный слот [data-support-slot], дубль движок сам ставит перед подвалом, сердечко — тоже он.
 import Base from '../layouts/Base.astro';
 import Segodnya from '../components/portal/Segodnya.astro';
+import DenPoDate from '../components/portal/DenPoDate.astro';
+import SegodnyaVse from '../components/portal/SegodnyaVse.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import { beyondYear, isDated, plural } from '../lib/kalendar';
@@ -39,7 +41,9 @@ const support = { museum: 'Русская цивилизация', lang: 'ru' };
   </header>
 
   <div class="p-wrap">
+    <DenPoDate />
     <Segodnya />
+    <SegodnyaVse />
 
     <div class="p-supslot" data-support-slot></div>
 
