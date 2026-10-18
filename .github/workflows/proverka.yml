@@ -26,6 +26,11 @@ jobs:
           args: --offline --no-progress --include-fragments --index-files index.html --root-dir /tmp/root '/tmp/root/rc-site/**/*.html'
           fail: true
           jobSummary: true
+      # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгость — переменной
+      # репозитория VES_STROGO=1; без неё — только предупреждение (новое ставится выключенным).
+      - name: ves — вес сборки
+        continue-on-error: ${{ vars.VES_STROGO != '1' }}
+        run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12
       # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
       # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).
       # Строгость включается переменной репозитория GLAZAMI_STROGO=1; без неё — только предупреждение.
