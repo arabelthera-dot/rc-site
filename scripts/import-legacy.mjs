@@ -167,7 +167,9 @@ function pageImages(museum, legacyPage, skipped) {
     const rel = path.normalize(path.join(path.dirname(legacyPage), file));
     const r = rightsOf(rel, m[0]);
     if (!r.credit) { skipped.push(`${legacyPage}: ${file} — ${r.why}`); continue; }
-    const out = path.join('muzei', museum, 'img', path.relative(path.join('muzei', museum), rel));
+    // Кадр лежит по пути старого сайта — там же, куда scripts/full-pages.mjs кладёт файлы полной страницы:
+    // отдельная копия в img/ дублировала каждый кадр (78 МБ дублей, замер 18.10, заявка #85).
+    const out = rel;
     fs.mkdirSync(path.join('public', path.dirname(out)), { recursive: true });
     fs.copyFileSync(path.join(LEGACY, rel), path.join('public', out));
     images.push({ src: out, caption: caps[file] || squash(r.about || attr(m[0], 'alt')), credit: r.credit });
@@ -314,7 +316,8 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   fs.mkdirSync(out, { recursive: true });
   const skipped = [];
   const notes = [];
-  fs.rmSync(path.join('public/muzei', museum, 'img'), { recursive: true, force: true });
+  // public/muzei/<музей>/img/ не чистится: после #85 там лежат оригиналы по путям старого сайта — единственные
+  // копии кадров карточек и файлов полных страниц (scripts/full-pages.mjs). Повторный импорт их перезаписывает.
   let n = 0;
   const write = (key, card) => {
     if (isStub(card.title)) { notes.push(`${key}: заглушка «${card.title}» — карточки нет`); return; }
