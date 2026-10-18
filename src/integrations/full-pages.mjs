@@ -425,7 +425,10 @@ export default function fullPages() {
             const preloads = fontFiles(pageFamilies(html)).map((f) => preloadTag(base, f)).join('\n');
             if (preloads) html = /<meta\s+charset[^>]*>/i.test(html) ? html.replace(/<meta\s+charset[^>]*>/i, (m) => `${m}\n${preloads}`)
               : html.replace(/<head([^>]*)>/i, `<head$1>\n${preloads}`);
+            // Адреса, вписанные в страницу от корня превью (/rc-site/…) или старого сайта (/rc-museum-preview/…), —
+            // в атрибутах и в строках скриптов, — на свой base: на домене russian-civilization.ru (18.10) приставки нет.
             html = html
+              .replace(/(["'])\/(?:rc-site|rc-museum-preview)\//gi, `$1${base}`)
               .replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}muzei/${museum}/">`)
               .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`)
               .replace(/(\s(?:href|src|poster)\s*=\s*)(["'])([^"']*)\2/gi,

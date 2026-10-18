@@ -35,8 +35,12 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-  # Выкладка на основной адрес: та же сборка с base /rc-museum-preview — в ветку site
-  # старого репозитория. С переключения 17.10.2026 Pages старого репо смотрит на site, так что
+  # Выкладка на основной адрес https://russian-civilization.ru/ (свой домен с 18.10.2026): та же сборка
+  # под корень домена — в ветку site старого репозитория; cname кладёт CNAME в каждую выкладку
+  # (force_orphan иначе стёр бы его и домен слетел). Старые github.io/rc-museum-preview/* GitHub
+  # переадресует на домен сам. Откат домена — убрать --site/--base / и cname, вернуть
+  # --base /rc-museum-preview, затем gh api -X PUT repos/arabelthera-dot/rc-museum-preview/pages -F cname=.
+  # С переключения 17.10.2026 Pages старого репо смотрит на site, так что
   # эта задача и есть живой сайт; откат — Pages обратно на main (docs/otkat-pereklyucheniya.md,
   # п. 2–6). Выключатель — переменная репозитория RC_SITE_TO_PREVIEW (не '1' — задача
   # пропускается и живой сайт застывает на последней сборке).
@@ -53,7 +57,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx astro build --base /rc-museum-preview
+      - run: npx astro build --site https://russian-civilization.ru --base /
       - uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.RC_MUSEUM_PREVIEW_DEPLOY_KEY }}
@@ -61,4 +65,5 @@ jobs:
           publish_branch: site
           publish_dir: ./dist
           force_orphan: true
+          cname: russian-civilization.ru
           commit_message: 'rc-site → site'
