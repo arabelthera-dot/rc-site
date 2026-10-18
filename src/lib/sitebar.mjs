@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 // Единая верхняя полоса навигации (Сергей 17.10): «Русская цивилизация» › полное название музея › где ты.
 // Одна разметка на всех внутренних страницах: шаблоны (src/components/SiteBar.astro) и полные страницы дней
 // (src/integrations/full-pages.mjs вставляет её при сборке). Вид — public/assets/rc-sitebar.css,
@@ -26,5 +27,14 @@ export const TG_CHANNEL = 'https://t.me/russian_civilization_ru';
 export const podpiskaHtml = () =>
   `<div class="rc-sub"><a href="${TG_CHANNEL}" target="_blank" rel="noopener"><span aria-hidden="true">✈</span>Подписаться в Telegram</a></div>`;
 
+// Полоса — первый экран, подписка — 1,7 КБ: оба стиля внутрь <head> (18.10), без блокирующих запросов —
+// media=print+onload дал бы прыжок полосы (CLS). В файлах нет url(...), переписывать пути не нужно; появятся —
+// падаем, чтобы не потерять ресурс молча. Файлы в public/assets/ остаются для старых ссылок.
+const inlineAsset = (file) => {
+  const css = fs.readFileSync(`public/assets/${file}`, 'utf8');
+  if (/url\(/i.test(css)) throw new Error(`sitebar.mjs: в ${file} появился url(...) — переписать пути от base перед встраиванием`);
+  return `<style data-rc-inline="${file}">${css}</style>`;
+};
+
 export const sitebarAssets = (base) =>
-  `<link rel="stylesheet" href="${base}assets/rc-sitebar.css" />\n<link rel="stylesheet" href="${base}assets/rc-podpiska.css" />\n<script defer src="${base}assets/rc-sitebar.js"></script>`;
+  `${inlineAsset('rc-sitebar.css')}\n${inlineAsset('rc-podpiska.css')}\n<script defer src="${base}assets/rc-sitebar.js"></script>`;

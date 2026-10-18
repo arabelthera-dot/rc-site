@@ -89,7 +89,8 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
   {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
   <InlineCss file="rc-podpiska.css" />
   {museum && museumTitle && <>
-    <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
+    {/* верхняя полоса на первом экране — 5 КБ внутрь <head>, без блокирующего запроса (18.10) */}
+    <InlineCss file="rc-sitebar.css" />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
   </>}
   <script type="application/ld+json" set:html={ldJson} />
