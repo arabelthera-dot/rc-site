@@ -30,3 +30,21 @@ export function pageFamilies(html) {
 }
 
 export const preloadTag = (base, file) => `<link rel="preload" href="${base}assets/fonts/${file}" as="font" type="font/woff2" crossorigin>`;
+
+// Шрифты полной страницы дня (замер 18.10: assets/fonts.css — 48 КБ, 113 @font-face, блокирует отрисовку,
+// потеря 600–750 мс FCP у дней): вместо ссылки на весь файл — инлайн в <head> только семейств, названных в самой
+// странице (имя где угодно в разметке/стилях или в адресе Google Fonts через «+»). Все начертания и подмножества
+// семейства сохраняются (unicode-range: лишнее браузер не качает), font-display — как в fonts.css.
+const BLOCK = /(?:\/\* [\w-]+ \*\/\s*)?@font-face \{[^}]*\}/g;
+let blocks;
+export function usedFamilies(html) {
+  const text = html.replace(/\+/g, ' ');
+  const known = [...new Set(allFaces().map((f) => f.family))];
+  return known.filter((f) => text.includes(f));
+}
+export function faceCss(families, base) {
+  blocks ??= fs.readFileSync('public/assets/fonts.css', 'utf8').match(BLOCK) ?? [];
+  const want = new Set(families);
+  return blocks.filter((b) => want.has(/font-family: '([^']+)'/.exec(b)?.[1]))
+    .map((b) => b.replace(/url\(fonts\//g, `url(${base}assets/fonts/`).replace(/\s+/g, ' ')).join('\n');
+}

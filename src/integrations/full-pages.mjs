@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
-import { fontFiles, pageFamilies, preloadTag } from '../lib/shrifty.mjs';
+import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 
 const SRC = 'src/data/full-pages';
 const MUSEUMS = Object.fromEntries(JSON.parse(fs.readFileSync('src/data/museums.json', 'utf8')).museums
@@ -265,10 +265,20 @@ export default function fullPages() {
             // preload — Playfair/Inter приходили после первой отрисовки и сдвигали шапку дня. Теперь файлы тех
             // семейств, которыми набрана сама страница, — заранее, сразу после <head>. Google-шрифты старой
             // страницы (чужой CDN, приходят ещё позже) — на свой assets/fonts.css, preconnect к ним — долой.
+            const fams = usedFamilies(html); // до замены Google-ссылки: в её адресе — имена семейств
             html = html
               .replace(/<link\b[^>]*\brel=["']?(?:preconnect|dns-prefetch)["']?[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>\s*/gi, '')
               .replace(/<link\b[^>]*fonts\.googleapis\.com\/css[^>]*>/gi, `<link rel="stylesheet" href="${base}assets/fonts.css">`)
               .replace(/@import\s+url\(\s*['"]?https?:\/\/fonts\.googleapis\.com\/css[^)]*\)\s*;?/gi, `@import url('${base}assets/fonts.css');`);
+            // Весь fonts.css (48 КБ, 113 @font-face) блокировал отрисовку (FCP −600…750 мс, замер 18.10) → инлайн
+            // только семейств страницы (src/lib/shrifty.mjs faceCss). Ссылка и @import на fonts.css — долой.
+            const FONTS_LINK = /<link\b[^>]*\bhref=["'][^"']*assets\/fonts\.css["'][^>]*>\s*/gi;
+            const FONTS_IMPORT = /@import\s+url\(\s*['"]?[^'")]*assets\/fonts\.css['"]?\s*\)\s*;?/gi;
+            if (FONTS_LINK.test(html) || FONTS_IMPORT.test(html)) {
+              html = html.replace(FONTS_LINK, '').replace(FONTS_IMPORT, '');
+              const css = faceCss(fams, base);
+              if (css) html = html.replace(/<\/head>/i, `<style data-rc-fonts>${css}</style>\n</head>`);
+            }
             // Сразу за <meta charset>: кодировка должна остаться в первых 1024 байтах.
             const preloads = fontFiles(pageFamilies(html)).map((f) => preloadTag(base, f)).join('\n');
             if (preloads) html = /<meta\s+charset[^>]*>/i.test(html) ? html.replace(/<meta\s+charset[^>]*>/i, (m) => `${m}\n${preloads}`)
