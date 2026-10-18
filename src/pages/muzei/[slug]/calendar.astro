@@ -87,7 +87,7 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   <div class="council"><b style="color:var(--gold-l)">Календарь наполняется.</b> Состав года утверждён целиком — 365 дней; страницы открываются по одной, по образцу эталонного дня. Золотом отмечены дни, у которых уже есть разбор, аудиогид и интерактив.</div>
   <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/`}>← в музей</a> · <a href={base}>в город-музей →</a></Fragment>
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
-  <script is:inline src={`${base}assets/museum-calendar-page.js`}></script>
+  <script is:inline defer src={`${base}assets/museum-calendar-page.js`}></script>
   <script is:inline define:vars={{ support: { museum: m.title_ru } }}>window.MUSEUM_SUPPORT = support;</script>
-  <script is:inline src={`${base}assets/museum-support.js`}></script>
+  <script is:inline defer src={`${base}assets/museum-support.js`}></script>
 </Base>

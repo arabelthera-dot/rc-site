@@ -81,7 +81,9 @@ const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
   </>}
   {headFiles.map((f) => <link rel="preload" href={`${base}assets/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
-  <link rel="stylesheet" href={`${base}assets/rc-podpiska.css`} />
+  {/* Подписка — в подвале, ниже первого экрана: стиль без блокировки отрисовки (Lighthouse 18.10) */}
+  <link rel="stylesheet" href={`${base}assets/rc-podpiska.css`} media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href={`${base}assets/rc-podpiska.css`} /></noscript>
   {museum && museumTitle && <>
     <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>

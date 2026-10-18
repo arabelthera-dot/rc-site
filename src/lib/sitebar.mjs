@@ -27,4 +27,4 @@ export const podpiskaHtml = () =>
   `<div class="rc-sub"><a href="${TG_CHANNEL}" target="_blank" rel="noopener"><span aria-hidden="true">✈</span>Подписаться в Telegram</a></div>`;
 
 export const sitebarAssets = (base) =>
-  `<link rel="stylesheet" href="${base}assets/rc-sitebar.css" />\n<link rel="stylesheet" href="${base}assets/rc-podpiska.css" />\n<script defer src="${base}assets/rc-sitebar.js"></script>`;
+  `<link rel="stylesheet" href="${base}assets/rc-sitebar.css" />\n<link rel="stylesheet" href="${base}assets/rc-podpiska.css" media="print" onload="this.media='all'" />\n<noscript><link rel="stylesheet" href="${base}assets/rc-podpiska.css" /></noscript>\n<script defer src="${base}assets/rc-sitebar.js"></script>`;
