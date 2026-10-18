@@ -1,0 +1,6 @@
+---
+// Яндекс Метрика 113664375 — код один на весь сайт (src/lib/metrika.mjs), выводится как есть (без обработки Astro,
+// равносильно <script is:inline>): tag.js грузится async. Доска (/doska/) — служебная, счётчика нет.
+import { metrikaHtml } from '../lib/metrika.mjs';
+---
+<Fragment set:html={metrikaHtml} />
