@@ -237,7 +237,9 @@ function chromeConfig(html) {
   }
   return win.MUSEUM_CHROME || {};
 }
-function staticSecnav(html, base) {
+// Меню вставляется после перевода ссылок в абсолютные (выше): «← Музей» — от папки музея, якоря — на адрес
+// самой страницы, иначе при <base> чипсы уводят в папку музея, а lychee видит битый файл (rc-site#91, 34 ошибки).
+function staticSecnav(html, base, dir, self) {
   if (!/museum-chrome\.js/i.test(html) || /\bid=["']secnav["']/i.test(html)) return html;
   const body = html.search(/<body\b/i);
   if (body < 0) return html;
@@ -256,9 +258,9 @@ function staticSecnav(html, base) {
     chips.push({ id, lab });
   }
   if (chips.length <= 2) return html;
-  const home = M.href && C.showMuseumHome !== false ? `<a class="home" href="${escHtml(M.href)}">${escHtml(M.homeLabel || '← Музей')}</a>` : '';
+  const home = M.href && C.showMuseumHome !== false ? `<a class="home" href="${escHtml(absolute(M.href, dir))}">${escHtml(M.homeLabel || '← Музей')}</a>` : '';
   const nav = `<nav id="secnav" aria-label="Разделы страницы" data-chrome-nav><div class="row">${home}`
-    + chips.map((c) => `<a href="#${escHtml(c.id)}">${escHtml(c.lab)}</a>`).join('') + '</div><div class="prog" id="secprog"></div></nav>';
+    + chips.map((c) => `<a href="${self}#${escHtml(c.id)}">${escHtml(c.lab)}</a>`).join('') + '</div><div class="prog" id="secprog"></div></nav>';
   const insertAt = (at, piece) => html.slice(0, at) + piece + html.slice(at);
   // как у скрипта: место .daynav, иначе после первой .sharerow, иначе после .hero → nav.crumbs → header, иначе начало body
   const dn = firstEl(html, body, cls('daynav'));
@@ -400,7 +402,7 @@ export default function fullPages() {
               html = html.replace(/(<script[^>]*src=["'][^"']*museum-chrome\.js)/i,
                 '<script>window.MUSEUM_CHROME=Object.assign(window.MUSEUM_CHROME||{},{shareRow:false})</script>\n$1');
             html = staticChrome(html);
-            html = staticSecnav(html, base);
+            html = staticSecnav(html, base, `${base}muzei/${museum}/`, self);
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);

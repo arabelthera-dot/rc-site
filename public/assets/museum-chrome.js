@@ -375,7 +375,7 @@
       madeNav = true; nav = el('nav'); nav.id = 'secnav'; nav.setAttribute('aria-label','Разделы страницы');
       var row = el('div','row');
       if(M.href && C.showMuseumHome !== false){var hm = el('a','home', M.homeLabel || '← Музей'); hm.href = M.href; row.appendChild(hm);}
-      chips.forEach(function(c){var a = el('a', null, c.lab); a.href = '#'+c.id; row.appendChild(a);});
+      chips.forEach(function(c){var a = el('a', null, c.lab); a.href = location.href.split('#')[0] + '#' + c.id; row.appendChild(a);});
       nav.appendChild(row);
       var prog = el('div','prog'); prog.id = 'secprog'; nav.appendChild(prog);
       /* страницы дней носят урезанную .daynav (6 ссылок, без «← Музей», подсветки и прогресса) —
@@ -409,8 +409,9 @@
   }
   if(nav){
     var nrow = nav.querySelector('.row'), nprog = doc.getElementById('secprog');
-    var links = [].slice.call(nav.querySelectorAll('a[href^="#"]'));
-    var targets = links.map(function(a){return doc.getElementById(a.getAttribute('href').slice(1));});
+    /* якорь бывает и «адрес-страницы#id» (сборка ставит адрес: при <base> голый # уводит в папку музея) */
+    var links = [].slice.call(nav.querySelectorAll('a[href*="#"]:not(.home)'));
+    var targets = links.map(function(a){return doc.getElementById(a.getAttribute('href').split('#')[1]);});
     var navH = nav.offsetHeight, tick = 0;
     var upd = function(){
       var y = window.scrollY || doc.documentElement.scrollTop;
