@@ -9,7 +9,7 @@ import { getCollection } from 'astro:content';
 import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
-import { YEAR_KEYS, isDated, isReady, nearestReady } from '../../../../lib/kalendar';
+import { YEAR_KEYS, isDated, isReady, nearestReady, stripSrcPrefix } from '../../../../lib/kalendar';
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 export async function getStaticPaths() {
@@ -165,7 +165,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
                   <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
                     <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
                 {e.link && <p class="more-den">Подробно — в нашем календаре: <a href={e.link.href}>{e.link.label}</a></p>}
-                <p class="more-src">Источник: {e.source}</p>
+                <p class="more-src">Источник: {stripSrcPrefix(e.source)}</p>
               </details>
             </article>))}
         </div>
@@ -174,7 +174,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     {d.source && (
       <section class="block" id="istochnik">
         <h2>Источник</h2>
-        <p>{d.source}</p>
+        <p>{stripSrcPrefix(d.source)}</p>
       </section>
     )}
   </article>
