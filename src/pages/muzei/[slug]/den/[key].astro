@@ -93,7 +93,7 @@ const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`pub
 const fontCss = faceCss([...new Set([...denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), 'Playfair Display'])], base);
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
 ---
-<Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
+<Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={cover?.src ?? ogCard} imageAlt={cover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
   museumTitle={m.title_ru} here={when} noindex={soon}>

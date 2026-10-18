@@ -435,6 +435,26 @@ export default function fullPages() {
             // Значок аудиогида (сценарий 5 приёмки, круг 2, 18.10): «🎧» в кнопках старых страниц на машинах без
             // цветного эмодзи-шрифта рисуется квадратом — при сборке заменяется встроенным SVG, текст кнопки как есть.
             html = html.replace(/(>\s*)🎧️?\s*/g, `$1${AUDIO_ICON} `);
+            // og:title = title (18.10): у старых страниц вшитые сокращения имени музея («Русские первые в мире»,
+            // «Календарь побед») и чужие имена — <title>, og:title, twitter:title переписываются по карточке дня
+            // тем же текстом, что у шаблона дня: «дата[ · год]: название — полное имя музея — Русская цивилизация».
+            {
+              const dc = fs.existsSync(card) ? JSON.parse(fs.readFileSync(card, 'utf8')) : {};
+              if (dc.title && MUSEUMS[museum]) {
+                const metaF = `src/data/calendar-meta-${museum}.json`;
+                const dated = fs.existsSync(metaF) ? JSON.parse(fs.readFileSync(metaF, 'utf8')).dated : true;
+                const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+                const when = dated ? whenOfKey(key) : `День ${parseInt(key.slice(3), 10)} · ${MON[parseInt(key.slice(0, 2), 10) - 1]}`;
+                const dateTitle = dc.year ? (dated ? `${when} ${dc.year}` : `${when} · ${dc.year}`) : when;
+                const full = `${dateTitle}: ${dc.title} — ${MUSEUMS[museum]} — Русская цивилизация`;
+                const e = String(full).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+                html = html
+                  .replace(/<title>[\s\S]*?<\/title>/i, `<title>${e}</title>`)
+                  .replace(/<meta\s+(?:property|name)=["'](?:og:title|twitter:title)["'][^>]*>\s*/gi, '');
+                if (!/<title>/i.test(html)) html = html.replace(/<\/head>/i, `<title>${e}</title>\n</head>`);
+                html = html.replace(/<\/head>/i, `<meta property="og:title" content="${e}" />\n<meta name="twitter:title" content="${e}" />\n</head>`);
+              }
+            }
             // Паспорт пересылки и поиска (17.10, scripts/check-og.mjs): чего нет у старой страницы — доливается
             // по карточке дня; карточка в Telegram/ВК — всегда крупная (summary_large_image), адрес — новый.
             if (site) {
