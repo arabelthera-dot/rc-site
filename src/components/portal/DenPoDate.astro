@@ -48,17 +48,20 @@ const base = import.meta.env.BASE_URL;
     .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
   inp.value = p.year + '-' + p.month + '-' + p.day;
   var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+  // Один список при любом числе вызовов (брак 18.10: change от выбора даты + submit кнопкой давали два
+  // fetch, оба дописывали в .p-dpd__out — 24 пункта вместо 12). Отрисовывает только последний запрос,
+  // и содержимое заменяется целиком, а не дописывается.
+  var seq = 0;
+  var put = function (my, nodes) { if (my !== seq) return; out.textContent = ''; nodes.forEach(function (n) { out.appendChild(n); }); };
   var show = function () {
     var v = inp.value; if (!/^\d{4}-\d\d-\d\d$/.test(v)) return;
-    var key = v.slice(5);
-    out.textContent = '';
+    var key = v.slice(5), my = ++seq;
     fetch(box.getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
-      if (!t || !t.cards || !t.cards.length) { out.appendChild(el('p', 'p-dpd__note', 'На ' + whenOf(key) + ' дней пока нет.')); return; }
-      out.appendChild(el('p', 'p-dpd__note', t.shown === key ? whenOf(key) + ' — дни музеев:' : 'На ' + whenOf(key) + ' дней пока нет — ближайшая дата: ' + whenOf(t.shown)));
+      if (!t || !t.cards || !t.cards.length) { put(my, [el('p', 'p-dpd__note', 'На ' + whenOf(key) + ' дней пока нет.')]); return; }
       var ul = el('ul', 'p-dpd__list');
       t.cards.forEach(function (c) { var li = el('li'), a = el('a'); a.href = c.href; a.appendChild(el('b', '', c.museumTitle)); a.appendChild(document.createTextNode(c.title + ' →')); li.appendChild(a); ul.appendChild(li); });
-      out.appendChild(ul);
-    }).catch(function () { out.appendChild(el('p', 'p-dpd__note', 'Не удалось загрузить дни — проверьте связь.')); });
+      put(my, [el('p', 'p-dpd__note', t.shown === key ? whenOf(key) + ' — дни музеев:' : 'На ' + whenOf(key) + ' дней пока нет — ближайшая дата: ' + whenOf(t.shown)), ul]);
+    }).catch(function () { put(my, [el('p', 'p-dpd__note', 'Не удалось загрузить дни — проверьте связь.')]); });
   };
   box.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); show(); });
   inp.addEventListener('change', show);
