@@ -19,13 +19,24 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Это превью на /rc-site/ — поисковикам закрыто (meta noindex + robots.txt). Основной адрес после
-    # переключения собирает задача vykladka-site ниже — без этой переменной, он индексируется.
+    # Pages самого rc-site (https://arabelthera-dot.github.io/rc-site/) с 18.10.2026 — не копия сайта, а
+    # переадресация каждой страницы на тот же путь https://russian-civilization.ru/ (scripts/pereadresaciya.mjs):
+    # дубль для поисковиков и путаница для людей убраны. Сборка нужна только ради списка страниц.
+    # Основной адрес собирает задача vykladka-site ниже. Откат — вернуть шаги checkout + withastro/action@v5.
     env:
       PUBLIC_NOINDEX: '1'
     steps:
       - uses: actions/checkout@v4
-      - uses: withastro/action@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx astro build
+      - run: node scripts/pereadresaciya.mjs dist
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
