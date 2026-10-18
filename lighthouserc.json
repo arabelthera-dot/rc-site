@@ -26,7 +26,7 @@
           }
         },
         {
-          "matchingUrlPattern": "^http://localhost/rc-site/$",
+          "matchingUrlPattern": "^https?://[^/]+/rc-site/$",
           "assertions": {
             "total-byte-weight": ["warn", { "maxNumericValue": 500000 }]
           }
