@@ -7,6 +7,8 @@
 
 /* Обложка дня: одна картина целиком, без обрезки; подпись — отдельной строкой под кадром */
 .hero.hero-day{display:flex;justify-content:center;align-items:center;padding:12px 0}
+/* обложку дня высотой держит сама картинка (64vh); --hero-fit museum-chrome.js её не режет — иначе на ПК сжатие 600→238 px после загрузки (CLS 0,20, sport 01-01, 18.10) */
+.hero.hero-day.mc-cover{max-height:none!important;height:auto}
 .hero.hero-day>img{width:auto;max-width:min(1160px,100%);height:auto;max-height:min(64vh,640px);object-fit:contain}
 .scene-cap{font-size:13px;line-height:1.5}
 .hero-copy .hero-btns{margin-top:6px}
