@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { existsSync } from 'node:fs';
 
 // Музеи — каталог platform/catalog/museums.json как есть; title_ru — единственное имя музея.
 const museums = defineCollection({
@@ -60,6 +61,37 @@ const more = z.object({
   source: z.string().min(1, 'у доп. события нет источника'),
 }).refine((e) => e.detail.length > 0 || e.day, { message: 'у доп. события нет раскрытия «Узнать подробнее» (detail или day)' });
 
+// Анкета большой страницы дня (ADR docs/adr/0001-anketa-dnya.md, вариант А Сергея 18.10.2026): содержимое — поля,
+// вёрстка — один шаблон src/components/den/DenAnketa.astro. Есть body — страницу собирает шаблон, нет — старый HTML
+// src/data/full-pages. Типы блоков выведены по частоте во всех больших страницах (scripts/full-page-to-anketa.mjs --stats).
+// Интерактив — имя движка из public/assets/*.js и его настройки JSON полями; движка нет в public/assets — сборка красная.
+export const BLOCK_TYPES = ['shapka', 'kroshki', 'oblozhka', 'navigaciya', 'dokument', 'video', 'audiogid', 'istoriya',
+  'istochniki', 'citata', 'more', 'podderzhat', 'interaktiv', 'kalendar', 'kuda-dalshe', 'podval', 'dvizhok', 'nastroyki',
+  'kod', 'stil', 'sluzhebnoe', 'razdel'] as const;
+const blok = z.object({
+  type: z.enum(BLOCK_TYPES),
+  id: z.string().optional(),
+  nav: z.string().optional(),
+  html: z.string().optional(),
+  lead: z.string().optional(),
+  engine: z.string().regex(/^[\w-]+$/).optional(),
+  src: z.string().optional(),
+  attrs: z.string().optional(),
+  config: z.unknown().optional(),
+  raw: z.string().optional(),
+}).superRefine((b, ctx) => {
+  if (b.type === 'dvizhok' && (!b.engine || !b.src))
+    ctx.addIssue({ code: 'custom', path: ['engine'], message: 'у движка нет имени или адреса' });
+  if (b.engine && !existsSync(`public/assets/${b.engine}.js`))
+    ctx.addIssue({ code: 'custom', path: ['engine'], message: `движка public/assets/${b.engine}.js нет` });
+  if (b.type === 'nastroyki' && b.config === undefined && b.html === undefined)
+    ctx.addIssue({ code: 'custom', path: ['config'], message: 'у настроек движка нет JSON' });
+  if (!['dvizhok', 'nastroyki'].includes(b.type) && b.html === undefined)
+    ctx.addIssue({ code: 'custom', path: ['html'], message: `у блока ${b.type} нет содержимого` });
+});
+const doc = z.object({ prolog: z.string(), head_attrs: z.string(), head: z.string(), between: z.string(),
+  body_attrs: z.string(), epilog: z.string() });
+
 const days = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/days' }),
   schema: z.object({
@@ -81,7 +113,11 @@ const days = defineCollection({
       note: z.string().optional() }).optional(),
     more: z.array(more).optional(),
     more_title: z.string().optional(),
+    doc: doc.optional(),
+    body: z.array(blok).min(1).optional(),
   }).superRefine((d, ctx) => {
+    if (!!d.body !== !!d.doc)
+      ctx.addIssue({ code: 'custom', path: ['body'], message: 'анкета страницы — body и doc вместе' });
     const waived = d.museum in waivers || `${d.museum}/${d.key}` in waivers;
     if (!waived && !d.title)
       ctx.addIssue({ code: 'custom', path: ['title'], message: 'у дня нет названия' });

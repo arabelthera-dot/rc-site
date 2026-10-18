@@ -1,0 +1,7 @@
+---
+// Блок анкеты дня по типу (ADR docs/adr/0001-anketa-dnya.md). Движок и его настройки — из полей (engine/src/config),
+// остальные типы — содержимое блока как есть. Новый тип с собственной вёрсткой — ветка здесь, не в странице.
+import { blockHtml } from '../../lib/anketa.mjs';
+const { b } = Astro.props;
+---
+<Fragment set:html={blockHtml(b)} />
