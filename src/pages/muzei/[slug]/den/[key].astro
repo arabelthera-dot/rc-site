@@ -6,6 +6,7 @@
 // Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { queueOgDen } from '../../../../lib/og-den.mjs';
 import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
@@ -55,6 +56,8 @@ const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
 const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
 const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
+// Своего кадра нет у готового дня — своя карточка пересылки 1200×630 (дата, название, музей; og-den, 18.10).
+const ogCard = !cover && !soon ? `${base}${queueOgDen({ museum: m.slug, key: d.key, date: dateTitle, title, museumTitle: m.title_ru })}` : undefined;
 const more = (d.more ?? []).map((e) => {
   // Ссылка на свой день, где тема разобрана подробно; дня нет в календаре музея — сборка падает.
   const target = e.day ? own.find((x: { key: string }) => x.key === e.day) : undefined;
@@ -86,7 +89,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 ---
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
-  image={cover?.src} imageAlt={cover?.caption} type="article"
+  image={cover?.src ?? ogCard} imageAlt={cover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
   museumTitle={m.title_ru} here={when} noindex={soon}>
   <Fragment slot="head">
     <link rel="stylesheet" href={`${base}assets/fonts.css`} />
