@@ -47,6 +47,10 @@ const base = import.meta.env.BASE_URL;
   var p = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' })
     .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
   inp.value = p.year + '-' + p.month + '-' + p.day;
+  // Дата — в адресе (?d=ММ-ДД, 19.10.2026): найденным можно поделиться ссылкой.
+  var askD = null; try { askD = new URLSearchParams(location.search).get('d'); } catch (e) {}
+  if (askD && /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(askD)) inp.value = (askD === '02-29' ? '2028' : p.year) + '-' + askD; else askD = null;
+  var setD = function (k) { try { var u = new URL(location.href); u.searchParams.set('d', k); history.replaceState(history.state, '', u); } catch (e) {} };
   var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
   // Один список при любом числе вызовов (брак 18.10: change от выбора даты + submit кнопкой давали два
   // fetch, оба дописывали в .p-dpd__out — 24 пункта вместо 12). Отрисовывает только последний запрос,
@@ -55,7 +59,7 @@ const base = import.meta.env.BASE_URL;
   var put = function (my, nodes) { if (my !== seq) return; out.textContent = ''; nodes.forEach(function (n) { out.appendChild(n); }); };
   var show = function () {
     var v = inp.value; if (!/^\d{4}-\d\d-\d\d$/.test(v)) return;
-    var key = v.slice(5), my = ++seq;
+    var key = v.slice(5), my = ++seq; setD(key);
     fetch(box.getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
       if (!t || !t.cards || !t.cards.length) { put(my, [el('p', 'p-dpd__note', 'На ' + whenOf(key) + ' дней пока нет.')]); return; }
       var ul = el('ul', 'p-dpd__list');
@@ -65,5 +69,6 @@ const base = import.meta.env.BASE_URL;
   };
   box.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); show(); });
   inp.addEventListener('change', show);
+  if (askD) { show(); try { box.scrollIntoView({ block: 'start' }); } catch (e) {} }
 })();
 </script>

@@ -44,6 +44,22 @@ for (const w of [390, 1280]) {
   const ok = r.lists <= 1 && r.items === r.unique && r.notes === 1;
   if (!ok) brak++;
   console.log(`${w}: списков ${r.lists}, пунктов ${r.items}, разных ${r.unique}, подписей ${r.notes} — ${ok ? 'ок' : 'БРАК: список задвоен'}`);
+  // Дата в адресе (19.10.2026): выбор пишет ?d=ММ-ДД, а заход по ссылке с ?d= сразу показывает эту дату.
+  const url = new URL(p.url()).searchParams.get('d');
+  await p.goto(SITE + '?d=01-29', { waitUntil: 'load' }); await p.waitForTimeout(1200);
+  const d = await p.evaluate(() => ({ v: document.getElementById('p-dpd-in').value, note: (document.querySelector('#po-date .p-dpd__note') || {}).textContent || '' }));
+  const okD = url === '10-18' && d.v.endsWith('-01-29') && /29 января/.test(d.note);
+  if (!okD) brak++;
+  console.log(`${w}: адрес после выбора ?d=${url}, по ссылке ?d=01-29 — поле ${d.v}, «${d.note}» — ${okD ? 'ок' : 'БРАК: дата не в адресе'}`);
+  // Календарь музея: ?d= открывает выбранный день, клик по дню пишет его в адрес.
+  await p.goto(SITE + 'muzei/izobreteniya/calendar/?d=01-16', { waitUntil: 'load' });
+  const c = await p.evaluate(() => { const on = document.querySelector('#calyear .cday.on'); return on ? on.dataset.k : null; });
+  const other = await p.locator('#calyear .cday.full:not(.on)').first();
+  const ok2k = await other.getAttribute('data-k'); await other.click();
+  const cu = new URL(p.url()).searchParams.get('d');
+  const okC = c === '01-16' && cu === ok2k;
+  if (!okC) brak++;
+  console.log(`${w}: календарь ?d=01-16 → выбран ${c}; клик ${ok2k} → ?d=${cu} — ${okC ? 'ок' : 'БРАК: день календаря не в адресе'}`);
   await ctx.close();
 }
 await browser.close(); server.close();
