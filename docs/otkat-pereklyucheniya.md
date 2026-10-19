@@ -151,3 +151,21 @@ done
   ещё снять домен (`gh api -X PUT …/pages -F cname=`, см. комментарий в `deploy.yml`).
 - Проверка п. 4: адрес `github.io/rc-museum-preview/*` теперь отвечает переадресацией на домен —
   `S` ставить `https://russian-civilization.ru` или добавлять к `curl` ключ `-L`.
+
+### Проверка 19.10.2026: старый `main` в корне домена
+
+- Пути старого сайта относительные (`assets/…`, `muzei/…`, `../../`): ссылок вида `"/rc-museum-preview/…"`
+  в html/js/css `main` (c376d8e) — **0**. Полный адрес `arabelthera-dot.github.io/rc-museum-preview/…`
+  есть в 732 из 986 файлов (ссылки, `og:`, schema.org, шрифты в `assets/astashovo-page.css`,
+  `assets/vyatskoe-page.css`); github.io отвечает на них 301 на `russian-civilization.ru/<тот же путь>`,
+  то есть после отката они ведут в старый же сайт.
+- Раздача клона `main` из корня (`python3 -m http.server`, Playwright): главная, `day-01jan-cabletv.html`,
+  `calendar.html`, `podvig-brest.html` — 60 запросов, битых **0**. Пути откату не мешают.
+- **Настоящий риск — домен.** В ветке `site` лежит `CNAME` (`russian-civilization.ru`), в `main` его нет.
+  Pages в режиме `legacy` берёт домен из `CNAME` ветки-источника, поэтому сборка `main` может снять
+  домен: russian-civilization.ru перестанет отвечать, старый сайт откроется только на github.io.
+  Поэтому в откат п. 3 после `"built"` добавить сверку и при нужде вернуть домен:
+  `gh api $R --jq .cname` → если пусто: `gh api -X PUT $R -f cname=russian-civilization.ru` и
+  `gh api -X POST $R/builds`; проверка п. 4 — с `S=https://russian-civilization.ru`.
+  `main` защищён ruleset — `CNAME` в него не кладём. Не отрепетировано: репетиция на `rc-otkat-test`
+  с тестовым поддоменом (нужна DNS-запись CNAME → `arabelthera-dot.github.io`) — около 20 минут.
