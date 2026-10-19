@@ -21,11 +21,11 @@ jobs:
       - run: npm run build
         env:
           RC_POISK: ${{ vars.RC_POISK }}
-      # Сайт живёт под /rc-site/ — раскладываем сборку так же, как на сервере.
-      - run: mkdir -p /tmp/root && ln -s "$PWD/dist" /tmp/root/rc-site
+      # Сайт живёт от корня домена — корень проверки и есть сборка.
+      - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@v2
         with:
-          args: --offline --no-progress --include-fragments --index-files index.html --root-dir /tmp/root '/tmp/root/rc-site/**/*.html'
+          args: --offline --no-progress --include-fragments --index-files index.html --root-dir /tmp/root '/tmp/root/**/*.html'
           fail: true
           jobSummary: true
       # Подгрузки из движков (18.10.2026): lychee не видит import()/from в js — пропавший файл

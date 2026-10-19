@@ -15,7 +15,7 @@ from pathlib import Path
 
 NA = None
 DIST = Path(sys.argv[sys.argv.index('--dist') + 1] if '--dist' in sys.argv else 'dist').resolve()
-BASE = '/rc-site/'
+BASE = '/'
 
 
 def engine_sources(s, path, engine):

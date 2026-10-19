@@ -20,11 +20,11 @@ const soonDay = (page) => {
   return !(d.hook || d.gist);
 };
 
-// Превью на GitHub Pages: https://arabelthera-dot.github.io/rc-site/
-// К запуску адрес меняется на свой домен в РФ-хостинге (план, шаг 9) — правится только site/base.
+// Свой домен https://russian-civilization.ru/ — Pages этого репо (19.10.2026, перенос с rc-museum-preview).
+// Старые github.io/rc-site/* GitHub переадресует на домен сам. Смена адреса — правится только site/base.
 export default defineConfig({
-  site: 'https://arabelthera-dot.github.io',
-  base: '/rc-site',
+  site: 'https://russian-civilization.ru',
+  base: '/',
   trailingSlash: 'always',
   // Свои стили страниц (бандлы _astro/*.css) — внутрь <head>, а не отдельным блокирующим запросом
   // (render-blocking на главной ~750 мс, Lighthouse 18.10). museum.css подключён ссылкой (?url) и не затронут.

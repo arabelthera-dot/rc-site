@@ -3,10 +3,10 @@
     "collect": {
       "staticDistDir": "/tmp/root",
       "url": [
-        "http://localhost/rc-site/",
-        "http://localhost/rc-site/muzei/izobreteniya/",
-        "http://localhost/rc-site/muzei/izobreteniya/calendar/",
-        "http://localhost/rc-site/muzei/izobreteniya/den/01-05/"
+        "http://localhost/",
+        "http://localhost/muzei/izobreteniya/",
+        "http://localhost/muzei/izobreteniya/calendar/",
+        "http://localhost/muzei/izobreteniya/den/01-05/"
       ],
       "numberOfRuns": 1,
       "settings": {
@@ -26,7 +26,7 @@
           }
         },
         {
-          "matchingUrlPattern": "^https?://[^/]+/rc-site/$",
+          "matchingUrlPattern": "^https?://[^/]+/$",
           "assertions": {
             "total-byte-weight": ["warn", { "maxNumericValue": 500000 }]
           }
