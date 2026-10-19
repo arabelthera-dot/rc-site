@@ -3,7 +3,7 @@
 // данные собираются из карточек дней; у каждого дня — ссылка на его страницу.
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import fs from 'node:fs';
+import { kalendarMuzeya } from '../../../lib/kalendar-dannye.mjs';
 import { YEAR, beyondYear, plural, stripSrcPrefix } from '../../../lib/kalendar';
 export async function getStaticPaths() {
   const days = await getCollection('days');
@@ -16,16 +16,9 @@ const { m, days } = Astro.props;
 const ogFallback = [...days].sort((a, b) => a.data.key.localeCompare(b.data.key)).flatMap((d) => d.data.images ?? [])
   .find((i) => !i.generated && /\.(?:jpe?g|png|webp|gif)$/i.test(i.src))?.src;
 const base = import.meta.env.BASE_URL;
-const meta = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8'));
 // Состав карточки — как у старого календаря этого музея: механика и источник только там, где они
-// были (поле card в calendar-meta); иначе они на странице дня, а прилипшая карточка не закрывает «Поддержать проект».
-const { card = [], ...conf } = meta;
-const cal: Record<string, unknown> = { ...conf };
-for (const d of days) {
-  cal[d.data.key] = { t: d.data.title, y: d.data.year, d: d.data.hook ?? '',
-    ...(card.includes('mech') && { mech: d.data.mechanic }), ...(card.includes('src') && { src: d.data.source }),
-    href: `${base}muzei/${m.slug}/den/${d.data.key}/`, link: 'Открыть страницу →' };
-}
+// были (поле card в calendar-meta); отображение «запись → календарь» — src/lib/kalendar-dannye.mjs (и для полных страниц).
+const { cal, conf } = kalendarMuzeya(m.slug, days.map((d) => d.data), base);
 // Сетка года и карточка дня — уже в вёрстке, той же разметкой, что строит движок (museum-calendar-page.js, стр. 36–185):
 // движок по DOMContentLoaded заменяет её такой же, и страница не перескакивает после первого кадра (CLS, O1 16.10).
 // Отличие только в «сегодня»: его движок считает по дате посетителя; здесь — дата сборки по Москве.
