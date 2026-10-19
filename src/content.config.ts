@@ -30,7 +30,8 @@ const museums = defineCollection({
 import waivers from './data/passport-waivers.json';
 
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
-const secondSentence = /[.!?…]\s+[А-ЯЁA-Z]/;
+// Инициалы («А. К. Толстой») — не конец предложения: точка после одиночной заглавной буквы не считается.
+const secondSentence = /(?<!(?:^|[^А-Яа-яЁёA-Za-z])[А-ЯЁA-Z])[.!?…]\s+[А-ЯЁA-Z]/;
 const wiki = /wiki|википеди|викитек/i;
 
 const image = z.object({
