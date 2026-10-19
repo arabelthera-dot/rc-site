@@ -1,0 +1,37 @@
+# Vale — живой язык страниц (вместо самоделки text-metrics.py, 19.10.2026).
+# РЕЖИМ ОТЧЁТА: заявку не краснит, находки — в сводке прогона. Правила — .vale/styles/RC.
+name: vale
+on:
+  pull_request:
+    paths: ['src/content/**', '.vale/**', '.vale.ini']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  vale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Vale (отчёт)
+        run: |
+          gh release download v3.9.1 --repo errata-ai/vale --pattern 'vale_3.9.1_Linux_64-bit.tar.gz' -O vale.tgz
+          tar xzf vale.tgz vale
+          ./vale --no-exit --output=line $(find dist/muzei -name index.html) > vale.txt || true
+          {
+            echo "### Vale: $(wc -l < vale.txt) находок"
+            echo '```'
+            cut -d: -f4 vale.txt | sort | uniq -c | sort -rn
+            echo '```'
+            echo '<details><summary>Первые 200</summary>'; echo; echo '```'
+            head -200 vale.txt
+            echo '```'; echo '</details>'
+          } >> "$GITHUB_STEP_SUMMARY"
+        env:
+          GH_TOKEN: ${{ github.token }}
