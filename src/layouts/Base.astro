@@ -6,6 +6,7 @@ import InlineCss from '../components/InlineCss.astro';
 import Metrika from '../components/Metrika.astro';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles } from '../lib/shrifty.mjs';
+import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
 // src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
 import museumCss from '../styles/museum.css?url';
@@ -57,6 +58,8 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {/* версия для слабовидящих (Д7) — класс на <html> до первой отрисовки, без мигания */}
+  <script is:inline set:html={slabovidHeadJs} />
   <title>{title}</title>
   {noindex && <meta name="robots" content="noindex" />}
   {description && <meta name="description" content={description} />}
@@ -92,6 +95,7 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
   {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
   <InlineCss file="rc-podpiska.css" />
+  <InlineCss file="rc-slabovid.css" />
   {museum && museumTitle && <>
     <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
@@ -102,6 +106,7 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
   {!portal && <link rel="stylesheet" href={museumCss} />}
 </head>
 <body>
+  <Fragment set:html={slabovidButtonHtml()} />
   {/* Страницы музеев — единая верхняя полоса (Сергей 17.10) вместо крошек и кнопки «назад» */}
   {museum && museumTitle && <SiteBar slug={museum} title={museumTitle} here={here} />}
   {!(museum && museumTitle) && back && <a class="backbtn" href={back.href}><span class="ar">←</span>{back.label}</a>}
