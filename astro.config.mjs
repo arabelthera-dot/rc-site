@@ -35,5 +35,5 @@ export default defineConfig({
   // kartinki — WebP-копии 480/960/1600 и srcset/lazy у картинок готовых страниц (после fullPages).
   // poisk — после minify: индекс pagefind (dist/pagefind/) по страницам музеев и дней; ВЫКЛЮЧЕН, включает RC_POISK=1.
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) }), legacyRedirects(), fullPages(), ogDen(), kartinki(), minify(), poisk()],
+  integrations: [sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) && !/\/ar\/$/.test(page) }), legacyRedirects(), fullPages(), ogDen(), kartinki(), minify(), poisk()],
 });
