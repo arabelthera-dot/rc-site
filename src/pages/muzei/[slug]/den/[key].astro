@@ -59,7 +59,9 @@ const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
 const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
 const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
 // Своего кадра нет у готового дня — своя карточка пересылки 1200×630 (дата, название, музей; og-den, 18.10).
-const ogCard = !cover && !soon ? `${base}${queueOgDen({ museum: m.slug, key: d.key, date: dateTitle, title, museumTitle: m.title_ru })}` : undefined;
+// SVG-кадр Telegram/ВК в превью не показывают — у такого дня тоже карточка (19.10).
+const ogCover = cover && /\.(?:jpe?g|png|webp|gif)$/i.test(cover.src) ? cover : undefined;
+const ogCard = !ogCover && !soon ? `${base}${queueOgDen({ museum: m.slug, key: d.key, date: dateTitle, title, museumTitle: m.title_ru })}` : undefined;
 const more = (d.more ?? []).map((e) => {
   // Ссылка на свой день, где тема разобрана подробно; дня нет в календаре музея — сборка падает.
   const target = e.day ? own.find((x: { key: string }) => x.key === e.day) : undefined;
@@ -97,7 +99,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 {d.body ? <DenAnketa d={d} /> : (
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
-  image={cover?.src ?? ogCard} imageAlt={cover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
+  image={ogCover?.src ?? ogCard} imageAlt={ogCover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
   museumTitle={m.title_ru} here={when} noindex={soon}>
   <Fragment slot="head">
     {fontCss && <style data-rc-fonts set:html={fontCss} />}
