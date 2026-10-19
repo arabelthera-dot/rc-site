@@ -401,10 +401,11 @@ export default function fullPages() {
             // страницы (чужой CDN, приходят ещё позже) — на свой assets/fonts.css, preconnect к ним — долой.
             // до замены Google-ссылки: в её адресе — имена семейств. Плюс свои подключённые CSS страницы (sport:
             // имена шрифтов только в museum-den.css — без них инлайн пуст и шрифты падали в системные, 18.10).
-            const ownCss = [...html.matchAll(/<link\b[^>]*\brel=["']?stylesheet["']?[^>]*>/gi)]
+            const ownCssFiles = [...html.matchAll(/<link\b[^>]*\brel=["']?stylesheet["']?[^>]*>/gi)]
               .map((l) => /\bhref=["']([^"'?#]+\.css)/i.exec(l[0])?.[1]).filter((h) => h && !/^(?:https?:)?\/\//.test(h) && !/fonts\.css$/.test(h))
               .map((h) => path.join('public', h.startsWith('/') ? h.replace(/^\/(?:rc-site\/)?/, '') : path.posix.join('muzei', museum, h)))
-              .filter((fp) => fp.startsWith('public' + path.sep) && fs.existsSync(fp)).map((fp) => fs.readFileSync(fp, 'utf8')).join('\n');
+              .filter((fp) => fp.startsWith('public' + path.sep) && fs.existsSync(fp)).map((fp) => [fp, fs.readFileSync(fp, 'utf8')]);
+            const ownCss = ownCssFiles.map(([, css]) => css).join('\n');
             // Шрифт блока «Поддержать» (museum-support.js: Inter или Playfair Display) — тоже инлайном, иначе
             // движок докачивает весь fonts.css (48 КБ) после загрузки.
             const fams = [...new Set([...usedFamilies(html + '\n' + ownCss), ...(/museum-support\.js/.test(html) ? ['Inter', 'Playfair Display'] : [])])];
@@ -414,6 +415,11 @@ export default function fullPages() {
               .replace(/@import\s+url\(\s*['"]?https?:\/\/fonts\.googleapis\.com\/css[^)]*\)\s*;?/gi, `@import url('${base}assets/fonts.css');`);
             // Весь fonts.css (48 КБ, 113 @font-face) блокировал отрисовку (FCP −600…750 мс, замер 18.10) → инлайн
             // только семейств страницы (src/lib/shrifty.mjs faceCss). Ссылка и @import на fonts.css — долой.
+            // Семейства для preload — из самой страницы ДО инлайна @font-face: иначе pageFamilies видел вписанные
+            // блоки всех музеев (museum-theme.css в ownCss) и ставил 16 preload (~400 КБ) вместо 4; они забирали канал у
+            // блокирующего museum-theme.css, и LCP (h1 дня) ждал CSS до 2,3 с (трасса 19.10, день 01-09).
+            // museum-theme.css (темы всех музеев) — не в счёт; свой CSS музея и адрес Google Fonts (имена через «+») — в счёт.
+            const preloadFams = usedFamilies(html + '\n' + ownCssFiles.filter(([fp]) => !/museum-theme\.css$/.test(fp)).map(([, css]) => css).join('\n'));
             const FONTS_LINK = /<link\b[^>]*\bhref=["'][^"']*assets\/fonts\.css(?:\?[^"']*)?["'][^>]*>\s*/gi;
             const FONTS_IMPORT = /@import\s+url\(\s*['"]?[^'")]*assets\/fonts\.css(?:\?[^'")]*)?['"]?\s*\)\s*;?/gi;
             if (FONTS_LINK.test(html) || FONTS_IMPORT.test(html)) {
@@ -422,7 +428,7 @@ export default function fullPages() {
               if (css) html = html.replace(/<\/head>/i, `<style data-rc-fonts>${css}</style>\n</head>`);
             }
             // Сразу за <meta charset>: кодировка должна остаться в первых 1024 байтах.
-            const preloads = fontFiles(pageFamilies(html)).map((f) => preloadTag(base, f)).join('\n');
+            const preloads = fontFiles(preloadFams).map((f) => preloadTag(base, f)).join('\n');
             if (preloads) html = /<meta\s+charset[^>]*>/i.test(html) ? html.replace(/<meta\s+charset[^>]*>/i, (m) => `${m}\n${preloads}`)
               : html.replace(/<head([^>]*)>/i, `<head$1>\n${preloads}`);
             // Адреса, вписанные в страницу от корня превью (/rc-site/…) или старого сайта (/rc-museum-preview/…), —
