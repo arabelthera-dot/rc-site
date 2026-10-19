@@ -1,0 +1,46 @@
+# Smoke-тест живого сайта (19.10.2026) — мировой стандарт (Playwright) вместо самодельного
+# tools/skvoznoy-probnik.py. Ходит браузером на главную, /poisk/ и страницу музея; чужой сертификат,
+# код ≠ 200, ошибка JS или битый ресурс своего домена — красный.
+# Пять вопросов: задевает — ничего, только читает сайт; нужно — github.token (чтение); без нужного —
+# спит; проверка — ручной пуск (workflow_dispatch работает и при выключенном расписании); откат —
+# удалить файл или переменную. Выключатель расписания — переменная SMOKE_TEST (≠ '1' — спит).
+name: smoke
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_run:
+    workflows: [deploy]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: smoke
+  cancel-in-progress: true
+jobs:
+  sait:
+    if: github.event_name == 'workflow_dispatch' || vars.SMOKE_TEST == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tests/smoke
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Playwright
+        working-directory: tests/smoke
+        run: |
+          npm init -y >/dev/null
+          npm install --no-save @playwright/test@1
+          npx playwright install --with-deps chromium
+      - name: smoke
+        working-directory: tests/smoke
+        run: npx playwright test -c playwright.config.mjs
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: smoke-otchet
+          path: tests/smoke/otchet
+          retention-days: 7
