@@ -1,18 +1,30 @@
 #!/usr/bin/env python3
-"""Кадр дня с Викисклада: поиск со свободной лицензией, скачивание, запись в карточку дня.
+"""Кадр дня: сначала российские фонды, Викисклад (Commons) — последним запасным (#2193).
+
+Порядок find: ГИМ (shm_catalog) → Госкаталог (goskatalog) → Русский музей (rusmuseum) →
+PastVu (только с --geo lat,lon) → Commons. К фондам ходит не kadr.py, а реестровый access.py
+(навык museum-source-access): путь — переменная RC_ACCESS, по умолчанию
+~/projects/russian-civilization/docs/registries/access.py, рядом с ним sources.json. Нет файла,
+фонд недоступен, 403, таймаут — строка в stderr и следующий фонд, не падение. Для фонда без
+способа поиска в access.py/sources.json печатается «поиск не поддержан» и план поиска (--discover).
 
 Картинки с Викисклада можно (Сергей 12.08.2026), текст оттуда — нельзя: подпись к кадру пишет человек
 по русскому источнику дня. Инструмент только находит файл, тянет автора и лицензию и кладёт кадр в
 public/muzei/<музей>/img/ — так же, как кадры, перенесённые со старого превью.
 
-  kadr.py find "Gherman Titov Vostok 2" [-n 10]      кандидаты: файл, размер, лицензия, автор
+  kadr.py find "Gherman Titov Vostok 2" [-n 10] [--geo 55.75,37.62]
+                                                      кандидаты по фондам: файл, размер, лицензия, автор
   kadr.py put izobreteniya 10-17 "File:Titov.jpg" "Герман Титов перед полётом, 1961"
                                                       скачать, ужать до 1600 px, дописать images[] дня
   kadr.py put … "подпись" "Фото: ТАСС, 1961"        шестым — строка автора по-русски вместо данных Викисклада
+  kadr.py put arhitektura 03-05 "pastvu:760729:i/e/n/ien36rd3zgbt83806t.jpg" "подпись" "Автор, 1961"
+  kadr.py put … "rusmuseum:https://…/img.jpg" "подпись" "Автор" --card https://…/card
+                                                      кадр из российского фонда: автор (шестой) обязателен,
+                                                      credit — фонд, название и ссылка на карточку из sources.json
 Кадр после put — открыть и посмотреть: в поиске попадаются письма, автографы, плакаты с надписями.
 Лицензии — только общественное достояние, CC0, CC BY, CC BY-SA; прочее put отклоняет.
 """
-import html, io, json, re, sys, urllib.parse, urllib.request
+import html, io, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
 from pathlib import Path
 
 from PIL import Image
@@ -20,6 +32,9 @@ from PIL import Image
 API = 'https://commons.wikimedia.org/w/api.php'
 UA = {'User-Agent': 'rc-site-kadr/1.0 (arabelthera@gmail.com)'}
 ROOT = Path(__file__).resolve().parent.parent
+ACCESS = Path(os.environ.get('RC_ACCESS') or
+              Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
+FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'pastvu', 'commons']  # порядок поиска
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
 
 
@@ -49,12 +64,97 @@ def info(titles):
     return out
 
 
-def find(query, n=10):
+def warn(msg):
+    print(msg, file=sys.stderr)
+
+
+def sources():
+    f = ACCESS.parent / 'sources.json'
+    return {x['id']: x for x in json.loads(f.read_text())['sources']}
+
+
+def access(*args, timeout=90):
+    """Вызов реестрового access.py подпроцессом; ответ — его report.json."""
+    if not ACCESS.is_file():
+        raise RuntimeError(f'нет access.py ({ACCESS}); задай RC_ACCESS')
+    with tempfile.TemporaryDirectory(prefix='kadr-') as tmp:
+        r = subprocess.run([sys.executable, str(ACCESS), *args, '--out-dir', tmp],
+                           capture_output=True, text=True, timeout=timeout)
+        rep = Path(tmp) / 'report.json'
+        if not rep.is_file():
+            raise RuntimeError(f'access.py код {r.returncode}: {(r.stderr or r.stdout).strip()[-200:]}')
+        report = json.loads(rep.read_text())
+        for a in report.get('artifacts', []):  # тело забрать до удаления папки
+            pth = Path(a.get('path', ''))
+            if pth.is_file():
+                a['body'] = pth.read_bytes()
+        return report
+
+
+def fetch(url):
+    """Тело ровно по этому адресу через access.py, иначе ошибка (подмена другим фондом — не кадр)."""
+    rep = access('--url', url)
+    for a in rep.get('artifacts', []):
+        if a.get('relation') == 'original' and 'body' in a:
+            return a['body']
+    tries = '; '.join(f"{t.get('state')} {t.get('http') or ''} {t.get('error') or ''}".strip()
+                      for t in rep.get('attempts', []))
+    raise RuntimeError(f'не получено: {tries or rep.get("status")}')
+
+
+def find_unsupported(fond, query, n, geo):
+    """В access.py/sources.json нет поискового способа: только план поиска, без сети."""
+    plan = access('--source', fond, '--discover', '--query', query, timeout=30)
+    qs = plan.get('discovery', {}).get('queries', [])
+    warn(f'  поиск не поддержан (в access.py/sources.json нет поиска); план: ' + ' | '.join(qs))
+    return 0
+
+
+def find_pastvu(fond, query, n, geo):
+    if not geo:
+        warn('  пропущен: нужен --geo lat,lon (PastVu ищет по точке)')
+        return 0
+    lat, lon = (float(x) for x in geo.split(','))
+    base = sources()[fond]['url'].split('?')[0]  # https://pastvu.com/api2 — из sources.json
+    params = json.dumps({'geo': [lat, lon], 'limit': n}, separators=(',', ':'))
+    url = base + '?' + urllib.parse.urlencode({'method': 'photo.giveNearestPhotos', 'params': params})
+    photos = json.loads(fetch(url)).get('result', {}).get('photos', [])
+    for p in photos:
+        print(f"? pastvu:{p['cid']}:{p['file']} | {p.get('year', '')} | {p.get('title', '')}\n"
+              f"    https://pastvu.com/p/{p['cid']} — автора и права сверить по карточке")
+    return len(photos)
+
+
+def find_commons(fond, query, n, geo):
     r = api(action='query', list='search', srsearch=query, srnamespace=6, srlimit=n)
     titles = [x['title'] for x in r['query']['search']]
     for c in info(titles) if titles else []:
         ok = '✓' if FREE.search(c['license']) and c['mime'] in ('image/jpeg', 'image/png') else '✗'
         print(f"{ok} {c['title']} | {c['w']}×{c['h']} | {c['license']} | {c['author'][:60]} | {c['date']}\n    {c['desc']}")
+    return len(titles)
+
+
+SEARCH = {'shm_catalog': find_unsupported, 'goskatalog': find_unsupported, 'rusmuseum': find_unsupported,
+          'pastvu': find_pastvu, 'commons': find_commons}
+
+
+def find(query, n=10, geo=None):
+    try:
+        names = sources()
+    except Exception as e:
+        names = {}
+        warn(f'sources.json не прочитан ({e}) — российские фонды будут пропущены')
+    got = []
+    for fond in FONDY:
+        name = names.get(fond, {}).get('name', fond)
+        print(f'== {fond} — {name}', flush=True)
+        try:
+            k = SEARCH[fond](fond, query, n, geo)
+            if k:
+                got.append(f'{fond}: {k}')
+        except Exception as e:
+            warn(f'  {fond} недоступен: {type(e).__name__}: {str(e)[:200]} — дальше')
+    print('итог: ' + (', '.join(got) if got else 'ни один фонд не дал кандидатов'))
 
 
 def slug(s):
@@ -63,10 +163,13 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:48]
 
 
-def put(museum, key, title, caption, avtor=None):
+def put(museum, key, title, caption, avtor=None, card=None):
     day = ROOT / 'src/content/days' / museum / f'{key}.json'
     if not day.is_file():
         sys.exit(f'нет дня {day}')
+    fond = title.split(':', 1)[0]
+    if fond in FONDY and fond != 'commons':
+        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card)
     if not title.startswith('File:'):
         title = 'File:' + title
     c = info([title])
@@ -76,17 +179,29 @@ def put(museum, key, title, caption, avtor=None):
     if not FREE.search(c['license']):
         sys.exit(f'лицензия «{c["license"]}» не свободная — не беру')
     raw = urllib.request.urlopen(urllib.request.Request(c['url'], headers=UA), timeout=60).read()
-    im = Image.open(io.BytesIO(raw)).convert('RGB')
-    im.thumbnail((1600, 1600))
-    if min(im.size) < 400:
-        sys.exit(f'кадр мелкий ({im.size[0]}×{im.size[1]}) — ищи крупнее')
-    rel = f'muzei/{museum}/img/{key}-{slug(title)}.jpg'
-    (ROOT / 'public' / rel).parent.mkdir(parents=True, exist_ok=True)
-    im.save(ROOT / 'public' / rel, 'JPEG', quality=84, optimize=True, progressive=True)
+    rel, im = save(raw, museum, key, slug(title))
     year = f'; {c["date"]}' if c['date'] else ''
     if avtor:  # подпись автора по-русски вручную, если Викисклад даёт сканировщика или латиницу
         c['author'], year = avtor, ''
     credit = f'{c["author"]}{year}. Цифровой файл: Wikimedia Commons, «{title[5:]}» ({c["license"]}).'
+    write_day(day, rel, caption, credit)
+    print(f'{rel} {im.size[0]}×{im.size[1]} {c["license"]}\n  {credit}')
+
+
+def save(raw, museum, key, name):
+    im = Image.open(io.BytesIO(raw)).convert('RGB')
+    im.thumbnail((1600, 1600))
+    if min(im.size) < 400:
+        sys.exit(f'кадр мелкий ({im.size[0]}×{im.size[1]}) — ищи крупнее')
+    rel = f'muzei/{museum}/img/{key}-{name}.jpg'
+    if (ROOT / 'public' / rel).exists():
+        sys.exit(f'файл уже есть: {rel}')
+    (ROOT / 'public' / rel).parent.mkdir(parents=True, exist_ok=True)
+    im.save(ROOT / 'public' / rel, 'JPEG', quality=84, optimize=True, progressive=True)
+    return rel, im
+
+
+def write_day(day, rel, caption, credit):
     d = json.loads(day.read_text())
     imgs = d.get('images', [])
     if any(x['src'] == rel for x in imgs):
@@ -95,14 +210,38 @@ def put(museum, key, title, caption, avtor=None):
     # images — сразу после ключевых полей дня, как у перенесённых дней (порядок полей zod не важен)
     d['images'] = imgs
     day.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
-    print(f'{rel} {im.size[0]}×{im.size[1]} {c["license"]}\n  {credit}')
+
+
+def put_fond(day, museum, key, fond, ref, caption, avtor, card):
+    """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json."""
+    if not avtor:
+        sys.exit(f'{fond}: шестым аргументом — автор и год по-русски (фонд не отдаёт паспорт машинно)')
+    src = sources()[fond]
+    if fond == 'pastvu':  # ref = <cid>:<файл> из find --geo
+        cid, file = ref.split(':', 1)
+        url, card = f'https://pastvu.com/_p/a/{file}', card or f'https://pastvu.com/p/{cid}'
+    else:  # ref = прямой адрес изображения, --card — карточка предмета
+        url, card = ref, card or ref
+    try:
+        raw = fetch(url)
+    except Exception as e:
+        sys.exit(f'{fond}: файл не получен ({e})')
+    rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.urlsplit(url).path).stem}'))
+    pravo = src.get('rights') or src.get('license') or 'в sources.json не указаны — сверить по карточке'
+    credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
+    write_day(day, rel, caption, credit)
+    print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
 
 
 if __name__ == '__main__':
     a = sys.argv[1:]
+    opt = lambda k: a[a.index(k) + 1] if k in a and a.index(k) + 1 < len(a) else None
+    card = opt('--card')
+    if card:
+        i = a.index('--card'); del a[i:i + 2]
     if a[:1] == ['find'] and len(a) >= 2:
-        find(a[1], int(a[a.index('-n') + 1]) if '-n' in a else 10)
+        find(a[1], int(opt('-n') or 10), opt('--geo'))
     elif a[:1] == ['put'] and len(a) in (5, 6):
-        put(*a[1:])
+        put(*a[1:], card=card) if len(a) == 6 else put(*a[1:], None, card)
     else:
         sys.exit(__doc__)
