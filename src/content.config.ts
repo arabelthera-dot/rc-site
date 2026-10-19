@@ -96,7 +96,9 @@ const days = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/days' }),
   schema: z.object({
     museum: z.string(),
-    key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД'),
+    key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД')
+      // Ключ — существующий день года (365, без 29.02): 12-32…12-37 пришли из старого календаря первопроходцев (19.10).
+      .refine((k) => { const [m, d] = k.split('-').map(Number); return m >= 1 && m <= 12 && d >= 1 && d <= [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]; }, 'ключ дня — несуществующая дата'),
     title: z.string(),
     year: z.union([z.string(), z.number()]).optional(),
     // Хука нет только там, где его не было в старом календаре (изобретения: 146 дней без подписи, 16.10).

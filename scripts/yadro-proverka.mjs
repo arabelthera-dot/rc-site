@@ -19,6 +19,17 @@ for (const [museum, keys] of Object.entries(pilot)) {
     if (!imgs.length) bad.push(`${museum}/${k}: день пилота без картины`);
   }
 }
+// Ключ каждой записи — существующий день года (365, без 29.02), во всех музеях (19.10: 12-32…12-37 у первопроходцев).
+const DNEY = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+for (const museum of fs.readdirSync('src/content/days')) {
+  const dir = path.join('src/content/days', museum);
+  if (!fs.statSync(dir).isDirectory()) continue;
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json'))) {
+    const m = /^(\d{2})-(\d{2})\.json$/.exec(f);
+    const ok = m && +m[1] >= 1 && +m[1] <= 12 && +m[2] >= 1 && +m[2] <= DNEY[+m[1] - 1];
+    if (!ok) bad.push(`${museum}/${f}: ключ не существующий день года`);
+  }
+}
 for (const b of bad) console.log(`${strogo ? 'КРАСНО' : 'внимание'}: ${b}`);
 if (bad.length && strogo) process.exit(1);
 console.log(bad.length ? `замечаний ${bad.length}${strogo ? '' : ' (флаг YADRO_STROGO выключен — exit 0)'}` : 'ядро пилота в порядке');
