@@ -12,6 +12,9 @@ export async function getStaticPaths() {
     .map((m) => ({ params: { slug: m.data.slug }, props: { m: m.data, days: days.filter((d) => d.data.museum === m.data.slug) } }));
 }
 const { m, days } = Astro.props;
+// Картинка пересылки без обложки музея — первая настоящая растровая картинка дней (Base.astro, ogFallback).
+const ogFallback = [...days].sort((a, b) => a.data.key.localeCompare(b.data.key)).flatMap((d) => d.data.images ?? [])
+  .find((i) => !i.generated && /\.(?:jpe?g|png|webp|gif)$/i.test(i.src))?.src;
 const base = import.meta.env.BASE_URL;
 const meta = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8'));
 // Состав карточки — как у старого календаря этого музея: механика и источник только там, где они
@@ -77,7 +80,7 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   '<p>' + it.d + '</p>' + row('Механика', it.mech) + row('Источник', it.src) +
   (it.href ? '<a href="' + it.href + '">' + (it.link || 'Открыть →') + '</a>' : '') : '';
 ---
-<Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} museumTitle={m.title_ru} here="Календарь">
+<Base title={`Календарь музея · ${m.title_ru}`} description={`${m.title_ru}: все дни года — дата, событие и короткий рассказ.`} museum={m.slug} museumTitle={m.title_ru} here="Календарь" ogFallback={ogFallback}>
   <header slot="header"><div class="b1">{m.title_ru}</div><h1>Календарь музея</h1></header>
   <div class="cal-supslot" data-support-slot></div>
   <div id="calcard" set:html={cardHtml}></div>

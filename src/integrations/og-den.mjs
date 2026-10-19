@@ -121,6 +121,23 @@ export default function ogDen() {
         plate = undefined; // плашка не держится после хука
         sharp.cache(vips.cache.memory ? { memory: vips.cache.memory.max, files: vips.cache.files.max, items: vips.cache.items.max } : true);
         sharp.concurrency(vips.threads); // kartinki идёт следом со своими настройками
+        // Предупреждение (не роняет сборку, 19.10): страницы музеев, у которых пересылка всё ещё общей
+        // картинкой (og-default / og/index) или SVG — Telegram/ВК покажут одно и то же или ничего. По музеям.
+        const common = {};
+        const muz = path.join(root, 'muzei');
+        (function walk(d) {
+          for (const e of fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }) : []) {
+            const p = path.join(d, e.name);
+            if (e.isDirectory()) { walk(p); continue; }
+            if (e.name !== 'index.html') continue;
+            const h = fs.readFileSync(p, 'utf8');
+            if (/http-equiv=["']refresh|name=["']robots["'][^>]*noindex/i.test(h)) continue;
+            const og = /<meta\b[^>]*property=["']og:image["'][^>]*>/i.exec(h)?.[0] ?? '';
+            if (/\/og\/(?:og-default|index)\.jpg|\.svg["']/i.test(og)) { const m = path.relative(muz, p).split(path.sep)[0]; common[m] = (common[m] || 0) + 1; }
+          }
+        })(muz);
+        const nCommon = Object.values(common).reduce((a, b) => a + b, 0);
+        if (nCommon) logger.warn(`og:image общая или SVG у ${nCommon} стр. музеев: ${Object.entries(common).map(([m, n]) => `${m} ${n}`).join(', ')}`);
         logger.info(`карточки пересылки дня: ${jobs.length} (нарисовано заново ${drawn}, из кэша ${jobs.length - drawn}), своя картинка у старой страницы — ${own}; ${(bytes / 1048576).toFixed(1)} МБ за ${((Date.now() - t0) / 1000).toFixed(1)} с`);
       },
     },

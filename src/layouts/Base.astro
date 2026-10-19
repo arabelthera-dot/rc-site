@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
@@ -24,11 +24,15 @@ const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
 const headFont = own && /--font-h:\s*'([^']+)'/.exec(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8'))?.[1];
 const headFiles = headFont ? fontFiles([headFont], ['700']) : [];
 const url = new URL(Astro.url.pathname, Astro.site).href;
-const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `og/${museum}_index.jpg` : 'og/og-default.jpg';
+// Нет обложки музея — первая настоящая растровая картинка его дней (ogFallback, главная и календарь музея, 19.10):
+// иначе у 30 из 33 музеев пересылка главной и календаря шла общей og-default.jpg. SVG Telegram/ВК не показывают.
+const raster = (s?: string) => !!s && /\.(?:jpe?g|png|webp|gif)(?:[?#].*)?$/i.test(s);
+const fallback = raster(Astro.props.ogFallback) ? Astro.props.ogFallback!.replace(/^(?!https?:)\/?/, base) : undefined;
+const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `${base}og/${museum}_index.jpg` : fallback ?? `${base}og/og-default.jpg`;
 // Превью-сборка не для поисковиков: PUBLIC_NOINDEX=1 (deploy.yml, задача build) → noindex; по умолчанию индексируем.
 // Своя страница может попросить noindex (заглушка «День готовится»).
 const noindex = Astro.props.noindex || import.meta.env.PUBLIC_NOINDEX === '1';
-const ogImage = new URL(image ?? `${base}${ogFile}`, Astro.site).href;
+const ogImage = new URL(image ?? ogFile, Astro.site).href;
 // Разметка schema.org (JSON-LD, пункт «schema» замера glazami): тип — из пропса schema, иначе по пропсам:
 // главная — WebSite + Organization, главная музея — Museum, календарь — CollectionPage, день — Article, прочее — WebPage.
 const home = new URL(base, Astro.site).href;
