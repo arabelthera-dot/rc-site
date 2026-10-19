@@ -1,0 +1,51 @@
+# Д3 плана сайта (19.10.2026): внешний сторож доступности — сбой и восстановление → Telegram.
+# Лёгкий (curl, без браузера), поэтому отдельно от smoke.yml (Playwright, раз в 3 ч).
+# Пять вопросов: задевает — ничего, только читает сайт снаружи и пишет в один чат; нужно — секреты
+# TG_BOT_TOKEN (бот, тот же, что у kanaly.yml) и TG_STOROZH_CHAT (чат тревог, не публичный канал) — даёт Михаил;
+# без нужного — проверка идёт, отправка пишет «спит: нет секрета», работа зелёная; проверка — ручной пуск
+# с proba=true шлёт пробное «сбой»; откат — переменная STOROZH_VKL ≠ '1' или удалить файл.
+# Выключатель расписания — переменная STOROZH_VKL (≠ '1' — спит). Адрес — переменная STOROZH_ADRES
+# (по умолчанию http://russian-civilization.ru; появится сертификат — поставить https://…).
+name: storozh
+on:
+  schedule:
+    - cron: '7,27,47 * * * *'
+  workflow_dispatch:
+    inputs:
+      proba:
+        description: 'Проба падения — отправить пробное сообщение «сбой» (сайт не трогается)'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  actions: write   # отметка «сайт лежит» между запусками хранится в кэше
+concurrency:
+  group: storozh
+  cancel-in-progress: false
+jobs:
+  storozh:
+    if: github.event_name == 'workflow_dispatch' || vars.STOROZH_VKL == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/storozh
+      # Отметка прошлого состояния: файл .storozh/lezhit есть — в прошлый раз сайт лежал.
+      - uses: actions/cache/restore@v4
+        with:
+          path: .storozh
+          key: storozh-${{ github.run_id }}
+          restore-keys: storozh-
+      - name: Проверка
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_STOROZH_CHAT: ${{ secrets.TG_STOROZH_CHAT }}
+          ADRES: ${{ vars.STOROZH_ADRES || 'http://russian-civilization.ru' }}
+          PROBA: ${{ github.event_name == 'workflow_dispatch' && inputs.proba }}
+        run: bash scripts/storozh/storozh.sh
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .storozh
+          key: storozh-${{ github.run_id }}
