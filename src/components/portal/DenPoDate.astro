@@ -48,17 +48,20 @@ const base = import.meta.env.BASE_URL;
     .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
   inp.value = p.year + '-' + p.month + '-' + p.day;
   var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+  // Задвоение (19.10): очистка шла до fetch, отрисовка — после; два вызова подряд (change + submit, двойное
+  // нажатие) оба дописывали в один контейнер → 24 строки вместо 12. Теперь отрисовывает только последний
+  // запрос (номер req), и контейнер заменяется целиком в момент отрисовки. Сторож — scripts/po-date-dubl.mjs.
+  var req = 0;
+  var render = function (n, nodes) { if (n !== req) return; out.replaceChildren.apply(out, nodes); };
   var show = function () {
     var v = inp.value; if (!/^\d{4}-\d\d-\d\d$/.test(v)) return;
-    var key = v.slice(5);
-    out.textContent = '';
+    var key = v.slice(5), n = ++req;
     fetch(box.getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
-      if (!t || !t.cards || !t.cards.length) { out.appendChild(el('p', 'p-dpd__note', 'На ' + whenOf(key) + ' дней пока нет.')); return; }
-      out.appendChild(el('p', 'p-dpd__note', t.shown === key ? whenOf(key) + ' — дни музеев:' : 'На ' + whenOf(key) + ' дней пока нет — ближайшая дата: ' + whenOf(t.shown)));
+      if (!t || !t.cards || !t.cards.length) { render(n, [el('p', 'p-dpd__note', 'На ' + whenOf(key) + ' дней пока нет.')]); return; }
       var ul = el('ul', 'p-dpd__list');
       t.cards.forEach(function (c) { var li = el('li'), a = el('a'); a.href = c.href; a.appendChild(el('b', '', c.museumTitle)); a.appendChild(document.createTextNode(c.title + ' →')); li.appendChild(a); ul.appendChild(li); });
-      out.appendChild(ul);
-    }).catch(function () { out.appendChild(el('p', 'p-dpd__note', 'Не удалось загрузить дни — проверьте связь.')); });
+      render(n, [el('p', 'p-dpd__note', t.shown === key ? whenOf(key) + ' — дни музеев:' : 'На ' + whenOf(key) + ' дней пока нет — ближайшая дата: ' + whenOf(t.shown)), ul]);
+    }).catch(function () { render(n, [el('p', 'p-dpd__note', 'Не удалось загрузить дни — проверьте связь.')]); });
   };
   box.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); show(); });
   inp.addEventListener('change', show);

@@ -38,6 +38,12 @@ jobs:
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 4
         run: npm i --no-save --no-audit --no-fund playwright@1.48.0 && npx playwright install --with-deps chromium
+      # Сторож «День по дате» (19.10.2026): повторное нажатие не должно задваивать список дней.
+      # Строгость — та же переменная, что у браузерного шага (без браузера проверка не идёт).
+      - name: po-date — задвоение списка
+        continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
+        timeout-minutes: 2
+        run: node scripts/po-date-dubl.mjs --dist dist
       - name: glazami — замер против эталона
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 5
