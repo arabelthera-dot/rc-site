@@ -5,7 +5,8 @@
 // с legacy_page → её день; index/calendar → музей/календарь; иначе главная музея,
 // а музея на новом сайте нет — главная города. Адрес, совпадающий с новым
 // (muzei/<м>/index.html = /muzei/<м>/), в опись не идёт — переадресовывать нечего.
-// Запуск: node scripts/redirects.mjs  (LEGACY — путь к rc-museum-preview)
+// Запуск: node scripts/redirects.mjs  (LEGACY — путь к rc-museum-preview); --check — сверка без записи.
+// src/data/redirects.json руками не править: правка — в генератор (PEREEZD/ROOT_EXTRA) и перезапуск.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -66,6 +67,20 @@ const refresh = (rel) => {
   return to.endsWith('/') || !to.endsWith('.html') ? path.join(to, 'index.html') : to;
 };
 
+// Старый адрес → день, когда legacy_page у дня нет (19.10): день пересобран прямо в rc-site
+// (full-pages не трогает день без legacy_page, а legacy_page ему ставить нельзя — перезапишет
+// новую страницу) или старая страница жила только в ветке. Ручной выбор, сильнее общего правила;
+// цель обязана быть днём сборки — иначе генератор падает.
+const PEREEZD = {
+  'muzei/ne-sdayutsya/podvig-gastello.html': '/muzei/ne-sdayutsya/den/01-07/', // большая страница #110
+  'muzei/kalendar-pobed/day-06jan-belev.html': '/muzei/kalendar-pobed/den/01-06/', // Белёв
+  'muzei/iskusstvo/day-01jan-yolochnyj-torg.html': '/muzei/iskusstvo/den/01-01/', // Кустодиев, «Ёлочный торг»
+};
+for (const to of Object.values(PEREEZD)) {
+  const [, m, k] = to.match(/^\/muzei\/([^/]+)\/den\/([^/]+)\/$/) || [];
+  if (!m || !fs.existsSync(path.join(DAYS, m, `${k}.json`))) throw new Error(`PEREEZD: нет дня ${to}`);
+}
+
 const resolve = (rel, seen = new Set()) => {
   const cal = rel.match(REVIEW_CAL);
   if (cal && withDays.has(slugOf(cal[1]))) return [`/muzei/${slugOf(cal[1])}/calendar/`, 'календарь'];
@@ -83,6 +98,10 @@ const resolve = (rel, seen = new Set()) => {
   const m = slugOf(m0);
   const q = `muzei/${m}/${file}`;
   if (byLegacy.has(q)) return [byLegacy.get(q), 'день'];
+  if (PEREEZD[q]) return [PEREEZD[q], 'день'];
+  // Версии дня нового сайта (den/<ключ>/staraya/ и т. п., ветка site старого домена) → сам день.
+  const sub = file && file.match(/^den\/([^/]+)\/.+\.html$/);
+  if (sub && fs.existsSync(path.join(DAYS, m, `${sub[1]}.json`))) return [`/muzei/${m}/den/${sub[1]}/`, 'день'];
   if (museums.has(m) && file === 'index.html') return [`/muzei/${m}/`, 'музей'];
   if (withDays.has(m) && file === 'calendar.html') return [`/muzei/${m}/calendar/`, 'календарь'];
   const next = fs.existsSync(path.join(LEGACY, rel)) && refresh(rel);
@@ -121,5 +140,15 @@ const ROOT_EXTRA = {
 };
 // ROOT_EXTRA — ручной выбор, он сильнее общего правила (корневые файлы теперь идут и из описи).
 for (const [k, v] of Object.entries(ROOT_EXTRA)) out[k] = v;
-fs.writeFileSync('src/data/redirects.json', JSON.stringify(out, null, 2) + '\n');
+// --check: json обязан совпадать с выводом генератора (находка 19.10: 67 целей разошлись,
+// потому что json правили руками и не перегенерировали после переноса дней).
+const json = JSON.stringify(out, null, 2) + '\n';
+if (process.argv.includes('--check')) {
+  const cur = JSON.parse(fs.readFileSync('src/data/redirects.json', 'utf8'));
+  const diff = [...new Set([...Object.keys(cur), ...Object.keys(out)])].filter((k) => cur[k] !== out[k]);
+  for (const k of diff) console.log(`  ${k}: в json ${cur[k] ?? '—'}, генератор ${out[k] ?? '—'}`);
+  console.log(`redirects --check: расхождений ${diff.length}`);
+  process.exit(diff.length ? 1 : 0);
+}
+fs.writeFileSync('src/data/redirects.json', json);
 console.log(`старых адресов ${old.length}:`, why);

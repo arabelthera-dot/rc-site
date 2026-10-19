@@ -1,6 +1,7 @@
 # Публичные html старого сайта rc-museum-preview (main c376d8e7b), без служебных папок:
 # control/ doska/ lab/ drafts/ zayavki/ tests/ tablo/ pult/ opis-tools/
 # Пересборка: node scripts/polnota.mjs --opis. Проверка: node scripts/polnota.mjs --dist dist
+# + ветка site старого домена (GitHub Pages, 18.10): версии дней izobreteniya den/*/staraya (19.10)
 arhitektura-v2.1.html
 arhitektura-v2.2.html
 arhitektura-v2.3.html
@@ -97,6 +98,8 @@ muzei/izobreteniya/day-18mar-leonov.html
 muzei/izobreteniya/day-25nov-pirogov.html
 muzei/izobreteniya/day-26sep-pavlov.html
 muzei/izobreteniya/day-30jan-kotelnikov.html
+muzei/izobreteniya/den/01-01/staraya/index.html
+muzei/izobreteniya/den/01-05/staraya/index.html
 muzei/izobreteniya/index.html
 muzei/kalendar-pobed/calendar.html
 muzei/kalendar-pobed/index.html
