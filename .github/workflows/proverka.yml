@@ -18,6 +18,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # «Сегодня» — по Москве во всех блоках (B11, 19.10.2026): home/Today.astro и portal/Segodnya.astro
+      # дают один день под TZ Лос-Анджелеса/Москвы/Владивостока. Без сборки, секунды.
+      # Новое — выключенным: строгость переменной репозитория SEGODNYA_MSK_STROGO=1.
+      - name: segodnya-msk — один день по Москве
+        continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO != '1' }}
+        timeout-minutes: 1
+        run: node scripts/segodnya-msk.mjs
       - run: npm run build
         env:
           RC_POISK: ${{ vars.RC_POISK }}

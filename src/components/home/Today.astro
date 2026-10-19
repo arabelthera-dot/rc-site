@@ -1,5 +1,5 @@
 ---
-// «Сегодня в музее»: день выбирается на клиенте по сегодняшней дате (ключ ММ-ДД),
+// «Сегодня в музее»: день выбирается на клиенте по сегодняшней московской дате (ключ ММ-ДД),
 // запасной — ближайший следующий заполненный день. Без JS виден первый день календаря.
 interface Props { first?: { key: string; title: string; hook: string; href: string; when: string }; dated: boolean }
 const { first, dated } = Astro.props;
@@ -24,8 +24,11 @@ const { first, dated } = Astro.props;
   if (!keys.length) return;
   var MON=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
   var MONR=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-  var t = new Date(), p = function(n){ return (n < 10 ? '0' : '') + n; };
-  var tk = p(t.getMonth() + 1) + '-' + p(t.getDate());
+  // «Сегодня» — по Москве, как в portal/Segodnya.astro и DenPoDate.astro (B11, 19.10.2026):
+  // местное время браузера давало посетителю в другом поясе не тот день, что остальной сайт.
+  var q = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
+    .formatToParts(new Date()).forEach(function (x) { q[x.type] = x.value; });
+  var tk = q.month + '-' + q.day;
   var k = C[tk] ? tk : (keys.filter(function(x){ return x >= tk; })[0] || keys[0]);
   var it = C[k], box = document.querySelector('.mh-today'); if (!box || !it) return;
   var mm = +k.slice(0, 2), dd = +k.slice(3), dated = box.getAttribute('data-dated') === '1';
