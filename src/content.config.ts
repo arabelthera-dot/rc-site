@@ -1,3 +1,7 @@
+// Схема ядра заморожена 19.10.2026 — менять только по слову Сергея (метка skhema:da-sergeya).
+// Файлы схемы записи дня (src/content/days/<музей>/ММ-ДД.json — поля, правила хука, картинки):
+//   src/content.config.ts
+// Замок — .github/workflows/skhema-yadra.yml (список SKHEMA там же). Идея «улучшить ядро» — в open-questions, не сюда.
 import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
