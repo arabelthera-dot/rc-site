@@ -48,9 +48,10 @@ jobs:
         timeout-minutes: 5
         run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
       # Сторож «Найти день по дате» (18.10.2026): список дней на главной не задваивается при медленной сети.
-      # Новое — выключенным: строгость переменной репозитория PODATE_STROGO=1, без неё — предупреждение.
+      # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.
+      # Выключатель — переменная репозитория PODATE_STROGO=0 (вернуть мягкость без отката кода).
       - name: po-date — список дней не задвоен
-        continue-on-error: ${{ vars.PODATE_STROGO != '1' }}
+        continue-on-error: ${{ vars.PODATE_STROGO == '0' }}
         timeout-minutes: 3
         run: node scripts/po-date.mjs --dist dist
       # Три правила старого сайта, потерянные при переезде (Сергей 19.10.2026: вернуть, стандарт №4):
