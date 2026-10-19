@@ -40,9 +40,10 @@ jobs:
   # (force_orphan иначе стёр бы его и домен слетел). Старые github.io/rc-museum-preview/* GitHub
   # переадресует на домен сам. Откат домена — убрать --site/--base / и cname, вернуть
   # --base /rc-museum-preview, затем gh api -X PUT repos/arabelthera-dot/rc-museum-preview/pages -F cname=.
-  # С переключения 17.10.2026 Pages старого репо смотрит на site, так что
-  # эта задача и есть живой сайт; откат — Pages обратно на main (docs/otkat-pereklyucheniya.md,
-  # п. 2–6). Выключатель — переменная репозитория RC_SITE_TO_PREVIEW (не '1' — задача
+  # Pages rc-museum-preview смотрит на ветку site (проверено 19.10.2026: source site /, cname
+  # russian-civilization.ru); site пишет только эта задача — она и есть живой сайт. Старый сайт —
+  # main того же репо; откат — источник Pages на main по docs/otkat-pereklyucheniya.md, п. 3 и 7
+  # (откат после переключения 17.10 ещё не репетировался). Выключатель — переменная репозитория RC_SITE_TO_PREVIEW (не '1' — задача
   # пропускается и живой сайт застывает на последней сборке).
   vykladka-site:
     needs: build
