@@ -95,5 +95,18 @@ for (const rel of old) {
   why[reason.replace(/ \(.*/, '')] = (why[reason.replace(/ \(.*/, '')] || 0) + 1;
   if (!/^(день|музей|календарь)$/.test(reason)) console.log(`${rel} → ${to} — ${reason}`);
 }
+// Корневые страницы старого сайта вне музейных папок (опись 19.10: 18 адресов отдавали 404 на новом домене).
+// Прототип/рабочая страница без нового двойника → ближайший музей или главная города.
+const ROOT_EXTRA = {
+  '/arhitektura-v2.html': '/muzei/arhitektura/', '/arhitektura-v2.1.html': '/muzei/arhitektura/',
+  '/arhitektura-v2.2.html': '/muzei/arhitektura/', '/arhitektura-v2.3.html': '/muzei/arhitektura/',
+  '/arhitektura-v2.4.html': '/muzei/arhitektura/', '/arhitektura-v2.5.html': '/muzei/arhitektura/',
+  '/calendar/arhitektura-yanvar.html': '/muzei/arhitektura/calendar/',
+  '/film.html': '/muzei/izobreteniya/den/01-30/', '/game-3d-jump.html': '/muzei/izobreteniya/den/01-30/',
+  '/map.html': '/', '/video/index.html': '/', '/glazami/index.html': '/', '/razbor-telefon/index.html': '/',
+  '/handkerchief.html': '/', '/competitors.html': '/', '/control.html': '/', '/daily-report.html': '/',
+  '/glavnaya-proto-0810.html': '/',
+};
+for (const [k, v] of Object.entries(ROOT_EXTRA)) if (!(k in out)) out[k] = v;
 fs.writeFileSync('src/data/redirects.json', JSON.stringify(out, null, 2) + '\n');
 console.log(`старых адресов ${old.length}:`, why);
