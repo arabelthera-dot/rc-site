@@ -115,3 +115,43 @@ jobs:
           name: lighthouse
           path: /tmp/lhci
           if-no-files-found: ignore
+  # Таблица = запись (план ядра, шаг 2; 19.10.2026): утверждённые таблицы года лежат в закрытом AI_Projects.
+  # Разборщик переписывает хуки записей по старшей версии таблицы; если src/content/days после этого
+  # изменился — заявка правит запись мимо таблицы (или таблица ушла вперёд), список дней в отчёте.
+  # Нужно: секрет TABLICY_TOKEN — ключ «только чтение содержимого» AI_Projects (М-пункт Михаилу).
+  # Без секрета шаг спит (строка в отчёте, код 0). Новое — выключенным: роняет заявку только
+  # при переменной репозитория TABLICY_STROGO=1. Откат — удалить это задание.
+  tablicy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: ${{ vars.TABLICY_STROGO != '1' }}
+    env:
+      TOKEN: ${{ secrets.TABLICY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: таблицы года из AI_Projects (только *.md из pilot-*, без картинок)
+        if: env.TOKEN != ''
+        uses: actions/checkout@v4
+        with:
+          repository: arabelthera-dot/AI_Projects
+          token: ${{ secrets.TABLICY_TOKEN }}
+          path: _projects
+          sparse-checkout: /russian-civilization/pilot-*/**/*.md
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+      - uses: actions/setup-node@v4
+        if: env.TOKEN != ''
+        with:
+          node-version: 22
+      - name: таблица = запись
+        run: |
+          if [ -z "$TOKEN" ]; then echo "::notice::нет секрета TABLICY_TOKEN — сверка таблиц спит"; exit 0; fi
+          # адаптеры ищут таблицы в ~/projects — кладём туда выгрузку
+          ln -sfn "$PWD/_projects" "$HOME/projects"
+          node scripts/tablicy/razbor.mjs --zapis
+          if ! git diff --quiet -- src/content/days; then
+            echo "::error::записи расходятся с утверждёнными таблицами — правка записи мимо таблицы:"
+            git diff --stat -- src/content/days | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          node scripts/tablicy/razbor.mjs --sverka | tee -a "$GITHUB_STEP_SUMMARY"

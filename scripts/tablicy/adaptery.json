@@ -197,5 +197,20 @@
    "hook": "Хук",
    "mehanika": "Механика"
   }
+ },
+ "narodnyy-kostyum": {
+  "tip": "tablica",
+  "papka": "~/projects/russian-civilization/pilot-kostyum-russkiy/kalendar",
+  "fayly": [
+   [
+    "god-*.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук"
+  },
+  "_prim": "god-ММ утверждён Сергеем 15.10; korotkiy-god и russkiy-yanvar-* — черновики"
  }
 }
