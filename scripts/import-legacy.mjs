@@ -302,10 +302,15 @@ function parseTable(file, month) {
   return Object.values(units);
 }
 
+const YADRO_PILOT = JSON.parse(fs.readFileSync('src/data/yadro-pilot.json', 'utf8'));
+
 fs.copyFileSync(CATALOG, 'src/data/museums.json');
 
 for (const [museum, rel] of Object.entries(CALENDARS)) {
   const out = path.join('src/content/days', museum);
+  // Ядро данных (#179): записи дней пилота — единственный источник, импорт их не перезаписывает (src/data/yadro-pilot.json).
+  const pilot = new Map((YADRO_PILOT[museum] ?? []).map((k) => [k, path.join(out, `${k}.json`)])
+    .filter(([, f]) => fs.existsSync(f)).map(([k, f]) => [k, fs.readFileSync(f, 'utf8')]));
   fs.rmSync(out, { recursive: true, force: true });
   if (HOLD[museum]) { fs.rmSync(path.join('src/data', `calendar-meta-${museum}.json`), { force: true }); console.log(`${museum}: не перенесён — ${HOLD[museum]}`); continue; }
   const cal = loadCalendar(rel);
@@ -314,12 +319,15 @@ for (const [museum, rel] of Object.entries(CALENDARS)) {
   const card = ['mech', 'src'].filter((f) => keys.some((k) => cal[k][f]));
   const meta = { total: cal.total ?? 365, dated: cal.dated !== false, ...(card.length && { card }) };
   fs.mkdirSync(out, { recursive: true });
+  for (const [k, text] of pilot) fs.writeFileSync(path.join(out, `${k}.json`), text);
+  if (pilot.size) console.log(`${museum}: дни пилота ядра не тронуты — ${[...pilot.keys()].join(', ')}`);
   const skipped = [];
   const notes = [];
   // public/muzei/<музей>/img/ не чистится: после #85 там лежат оригиналы по путям старого сайта — единственные
   // копии кадров карточек и файлов полных страниц (scripts/full-pages.mjs). Повторный импорт их перезаписывает.
   let n = 0;
   const write = (key, card) => {
+    if (pilot.has(key)) return;
     if (isStub(card.title)) { notes.push(`${key}: заглушка «${card.title}» — карточки нет`); return; }
     const href = cal[key]?.href;
     card.legacy_page = href ? `${path.dirname(rel)}/${href}` : undefined;
