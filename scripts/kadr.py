@@ -37,6 +37,11 @@ ROOT = Path(__file__).resolve().parent.parent
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
 RU_PROXY = os.environ.get('RC_RU_PROXY', 'http://127.0.0.1:8899')  # выход rf-proxy:1080 забанен Госкаталогом (403)
+# Права фондов, которых нет в sources.json (рецепты — knowledge/kadr-recepty-fondov.md, 19.10.2026)
+PRAVA = {'goskatalog': 'Госкаталог прав не даёт — автор и год смерти по карточке',
+         'rusmuseum': '© Русский музей, открытой лицензии нет',
+         'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
+         'ar_culture': 'у музея-держателя — по карточке Артефакта'}
 FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'commons']  # порядок поиска
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
 
@@ -339,8 +344,8 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card):
         raw = fetch(url)
     except Exception as e:
         sys.exit(f'{fond}: файл не получен ({e})')
-    rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.urlsplit(url).path).stem}'))
-    pravo = src.get('rights') or src.get('license') or 'в sources.json не указаны — сверить по карточке'
+    rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'))
+    pravo = src.get('rights') or src.get('license') or PRAVA.get(fond) or 'в sources.json не указаны — сверить по карточке'
     credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
     write_day(day, rel, caption, credit)
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
