@@ -56,7 +56,7 @@ export function pageFrames(html) {
     }
     if (close && t === 'figure' && fig) { for (const im of fig.imgs) { im.cap = strip(fig.cap); im.creditEl = fig.credit; } fig = null; inCap = false; }
   }
-  return imgs.filter((im) => !im.deco).map((im, i, all) => {
+  const frames = imgs.filter((im) => !im.deco).map((im, i, all) => {
     const txt = [im.cap || '', im.data, im.title].join(' ');
     let lic = LIC.test(txt); const src = SRC.test(txt);
     if (/licen/.test(im.data)) lic = true;
@@ -68,6 +68,11 @@ export function pageFrames(html) {
       : pageRights ? 'rights' : 'none';
     return { src: im.src, alt: im.alt || '', cap: im.cap || '', sign: (im.cap || im.title || im.data || '').trim(), lic: state === 'ok' || (state === 'near'), state };
   });
+  // Тот же кадр дважды (обложка + блок ниже): подпись у одного экземпляра покрывает оба (Д2, 20.10:
+  // в замере d2-zamer.py окно «рядом» бралось по адресу картинки — 28 вместо 25, из них 3 — обложки сказок).
+  const signed = new Map(frames.filter((f) => f.state === 'ok' || f.state === 'near').map((f) => [f.src, f.state]));
+  for (const f of frames) if (f.state === 'none' && signed.has(f.src)) { f.state = signed.get(f.src); f.lic = true; }
+  return frames;
 }
 
 /** Кадры всех полных страниц: { museum, key, ...pageFrames } */
