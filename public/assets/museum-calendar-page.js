@@ -176,15 +176,24 @@
     }
 
     if (host) host.querySelectorAll('.cday[data-k]').forEach(function (b) {
-      b.addEventListener('click', function () { show(b.dataset.k, '', true); });
+      b.addEventListener('click', function () { show(b.dataset.k, '', true); setD(b.dataset.k); });
     });
+
+    /* выбранный день — в адресе (?d=ММ-ДД, 19.10.2026): ссылкой «вот 29 января» можно поделиться */
+    function setD(k) {
+      try { var u = new URL(location.href); u.searchParams.set('d', k); history.replaceState(history.state, '', u); } catch (e) {}
+    }
+    var askD = null;
+    try { askD = new URLSearchParams(location.search).get('d'); } catch (e) {}
 
     /* при открытии — сегодняшний день; если на сегодня записи нет, честно
        показываем БЛИЖАЙШУЮ будущую (по кругу года) и пишем, через сколько дней.
        У недатированного музея «сегодня» и «через N дней» смысла не имеют —
        открываем первую единицу состава. */
     var keys = Object.keys(data).sort();
-    if (!dated) {
+    if (askD && KEY.test(askD) && data[askD]) {
+      show(askD, '', true);
+    } else if (!dated) {
       if (keys.length) show(keys[0]);
     } else if (data[tk]) {
       show(tk);
