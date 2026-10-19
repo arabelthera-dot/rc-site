@@ -9,7 +9,7 @@ import path from 'node:path';
 
 const argv = process.argv.slice(2), opt = {};
 for (let i = 0; i < argv.length; i++) if (argv[i].startsWith('--')) opt[argv[i].slice(2)] = argv[++i];
-const DIST = path.resolve(opt.dist || 'dist'), LHCI = opt.lhci || '/tmp/lhci', BASE = '/rc-site/';
+const DIST = path.resolve(opt.dist || 'dist'), LHCI = opt.lhci || '/tmp/lhci', BASE = '/';
 const rc = JSON.parse(fs.readFileSync('lighthouserc.json', 'utf8'));
 const PUTI = rc.ci.collect.url.map((u) => new URL(u).pathname);
 const out = [];

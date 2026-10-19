@@ -10,7 +10,7 @@ import http from 'node:http';
 import path from 'node:path';
 const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
 
-const i = process.argv.indexOf('--dist'), ROOT = path.resolve(i > 0 ? process.argv[i + 1] : 'dist'), BASE = '/rc-site/';
+const i = process.argv.indexOf('--dist'), ROOT = path.resolve(i > 0 ? process.argv[i + 1] : 'dist'), BASE = '/';
 const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml' };
 const server = http.createServer((req, res) => {
   let u = decodeURIComponent(req.url.split('?')[0]);

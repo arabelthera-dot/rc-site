@@ -2,7 +2,7 @@
 // Телефон 390×844. Выборка: главная, карта, все музеи, все календари и по 3 дня на музей
 // (первый, середина, последний по карте сайта). Итог — таблица TSV и сводка «сколько страниц не проходят».
 // Запуск: node scripts/glazami.mjs [адрес сайта] [папка отчёта] [--dist dist] [--porog scripts/glazami-porog.json] [--zapisat]
-//   --dist <папка>  — мерить локальную сборку: свой статический сервер, сайт под /rc-site/ (как на Pages).
+//   --dist <папка>  — мерить локальную сборку: свой статический сервер, сайт от корня (как на домене).
 //   --porog <файл>  — сторож от отката: код 1, если хоть по одному пункту провалов больше эталона.
 //   --zapisat       — записать эталон в файл --porog (только вниз: число может уменьшиться, но не вырасти).
 // Пункты 10 (контраст) и 21 (счётчик, после М26) здесь не мерятся: контраст — в axe, счётчика ещё нет.
@@ -17,7 +17,7 @@ for (let i = 0; i < argv.length; i++) {
   else if (argv[i].startsWith('--')) opt[argv[i].slice(2)] = argv[++i];
   else pos.push(argv[i]);
 }
-const ZHIVOY = 'https://arabelthera-dot.github.io/rc-site/';
+const ZHIVOY = 'https://russian-civilization.ru/';
 let SITE = (pos[0] || ZHIVOY).replace(/\/?$/, '/');
 const OUT = pos[1] || '/tmp/glazami';
 const W = 390, H = 844, POTOKOV = +(opt.potokov || 4);
@@ -25,7 +25,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
 let server = null;
 if (opt.dist) {
-  const ROOT = path.resolve(opt.dist), BASE = '/rc-site/';
+  const ROOT = path.resolve(opt.dist), BASE = '/';
   const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
     '.json': 'application/json', '.xml': 'application/xml', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
     '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
