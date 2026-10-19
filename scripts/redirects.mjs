@@ -50,9 +50,12 @@ const pilotFiles = pilots.flatMap((d) => {
 const roots = [...TOP, ...pilots, 'nesdayutsya'].map((d) => `${d}/index.html`);
 const oldDirs = new Set(gitOld.filter((f) => f.startsWith('muzei/')).map((f) => f.split('/')[1]));
 for (const d of [...oldDirs, 'nesdayutsya']) roots.push(`muzei/${d}/index.html`);
-const old = [...new Set([...['muzei', ...TOP, 'review']
-  .filter((d) => fs.existsSync(path.join(LEGACY, d))).flatMap(walk), ...gitOld, ...pilotFiles, ...roots])]
-  .filter((rel) => !rel.startsWith('review/') || withDays.has((rel.match(REVIEW_CAL) || [])[1])).sort();
+// Опись публичных html старого main (scripts/legacy-paths.txt, 19.10): review/*, прототипы, версии —
+// всё, на что могли разослать ссылку; scripts/polnota.mjs проверяет, что каждый путь есть в сборке.
+const opis = fs.readFileSync('scripts/legacy-paths.txt', 'utf8').split('\n').map((s) => s.trim())
+  .filter((s) => s && !s.startsWith('#') && s !== 'index.html');
+const old = [...new Set([...['muzei', ...TOP]
+  .filter((d) => fs.existsSync(path.join(LEGACY, d))).flatMap(walk), ...gitOld, ...pilotFiles, ...roots, ...opis])].sort();
 
 // Старая страница «переехала» — куда ведёт её meta refresh (путь от корня старого сайта).
 const refresh = (rel) => {
@@ -65,7 +68,16 @@ const refresh = (rel) => {
 
 const resolve = (rel, seen = new Set()) => {
   const cal = rel.match(REVIEW_CAL);
-  if (cal) return [`/muzei/${cal[1]}/calendar/`, 'календарь'];
+  if (cal && withDays.has(slugOf(cal[1]))) return [`/muzei/${slugOf(cal[1])}/calendar/`, 'календарь'];
+  // Рабочие страницы review/ (19.10): review/calendar-<месяц> — месячные календари Музея архитектуры
+  // (в заголовке «Музей русской архитектуры»; якоря месяца у нового календаря нет → календарь целиком);
+  // review/<музей>/… и review/<музей>-… → главная музея; прочее (etnografiya, museum-launch-map) → главная города.
+  if (rel.startsWith('review/')) {
+    if (/^review\/calendar-[a-z]+\.html$/.test(rel)) return ['/muzei/arhitektura/calendar/', 'review: календарь архитектуры'];
+    const r = slugOf(rel.slice(7).split(/[/.]|-calendar-|-mehaniki-/)[0]);
+    if (museums.has(r)) return [`/muzei/${r}/`, 'review → главная музея'];
+    return ['/', 'review: музея на новом сайте нет → главная города'];
+  }
   const q0 = rel.startsWith('muzei/') ? rel : `muzei/${rel.replace(/^pilot-/, '')}`;
   const [, m0, file] = q0.match(/^muzei\/([^/]+)\/(.+)$/) || [];
   const m = slugOf(m0);
@@ -107,6 +119,7 @@ const ROOT_EXTRA = {
   '/handkerchief.html': '/', '/competitors.html': '/', '/control.html': '/', '/daily-report.html': '/',
   '/glavnaya-proto-0810.html': '/',
 };
-for (const [k, v] of Object.entries(ROOT_EXTRA)) if (!(k in out)) out[k] = v;
+// ROOT_EXTRA — ручной выбор, он сильнее общего правила (корневые файлы теперь идут и из описи).
+for (const [k, v] of Object.entries(ROOT_EXTRA)) out[k] = v;
 fs.writeFileSync('src/data/redirects.json', JSON.stringify(out, null, 2) + '\n');
 console.log(`старых адресов ${old.length}:`, why);
