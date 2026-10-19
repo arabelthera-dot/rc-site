@@ -54,8 +54,12 @@ function files(a) {
 
 // md-таблица: строка заголовка начинается с колонки data; колонки ищутся по началу заголовка.
 // Таблица кончается непустой строкой не-таблицы; пустая строка таблицу не обрывает.
-export function parseTable(file, kolonki) {
+// mesyac — карта «начало имени файла → месяц»: тогда в колонке даты номер дня (pervoprohodcy, «| 1 |»).
+export function parseTable(file, kolonki, mesyac) {
   const out = [];
+  const base = path.basename(file);
+  const mo = mesyac ? Object.entries(mesyac).find(([k]) => base.startsWith(k))?.[1] : null;
+  if (mesyac && !mo) return out;
   let col = null;
   for (const ln of fs.readFileSync(file, 'utf8').split('\n')) {
     if (!ln.startsWith('|')) { if (ln.trim() !== '') col = null; continue; }
@@ -66,7 +70,8 @@ export function parseTable(file, kolonki) {
       continue;
     }
     if (!col || col.hook >= cells.length) continue;
-    const key = parseDate(cells[0]);
+    const nd = mo && cells[0].replace(/\*\*/g, '').trim().match(/^(\d{1,2})$/);
+    const key = mo ? (nd ? `${pad(mo)}-${pad(Number(nd[1]))}` : null) : parseDate(cells[0]);
     if (!key) continue;
     const u = { key };
     for (const [k, i] of Object.entries(col)) if (k !== 'data' && i >= 0) u[k] = cells[i];
@@ -89,6 +94,23 @@ function parseBloki(file) {
     hook: raw[i + 1] ?? u.hook, mehanika: u.mechanic }));
 }
 
+// Заголовки «## 1 января · …» / «### Название» / «**Крючок:** «…»» в несколько строк (karikatura, january-31-days.md).
+const ROD = { 'января': 1, 'февраля': 2, 'марта': 3, 'апреля': 4, 'мая': 5, 'июня': 6, 'июля': 7, 'августа': 8,
+  'сентября': 9, 'октября': 10, 'ноября': 11, 'декабря': 12 };
+function parseZagolovki(file) {
+  const out = []; let u = null, inHook = false;
+  for (const ln of fs.readFileSync(file, 'utf8').split('\n')) {
+    const h = ln.match(/^##\s+(\d{1,2})\s+([а-я]+)/);
+    if (h && ROD[h[2]]) { u = { key: `${pad(ROD[h[2]])}-${pad(Number(h[1]))}` }; out.push(u); inHook = false; continue; }
+    if (!u) continue;
+    if (inHook) { if (ln.trim() && !ln.startsWith('**')) { u.hook += ' ' + ln.trim(); continue; } inHook = false; }
+    const t = ln.match(/^###\s+(.+)/); if (t && !u.nazvanie) { u.nazvanie = t[1].trim(); continue; }
+    const k = ln.match(/^\*\*Крючок:\*\*\s*(.*)/); if (k && u.hook === undefined) { u.hook = k[1].trim(); inHook = true; }
+  }
+  for (const x of out) x.hook = String(x.hook ?? '').replace(/\s+/g, ' ').trim();
+  return out;
+}
+
 // Утверждённое по музею: ключ → [{file, …поля}] по возрастанию старшинства; null — таблиц нет на диске.
 export function approved(slug) {
   const a = ADAPTERY[slug];
@@ -97,7 +119,8 @@ export function approved(slug) {
   if (!fs_ || !fs_.length) return null;
   const c = {};
   for (const f of fs_) {
-    const units = a.tip === 'bloki' ? parseBloki(f) : parseTable(f, a.kolonki);
+    const units = a.tip === 'bloki' ? parseBloki(f) : /\.md$/.test(f) && (a.zagolovki ?? []).includes(path.basename(f)) ? parseZagolovki(f)
+      : parseTable(f, a.kolonki, a.mesyac_iz_imeni);
     for (const u of units) (c[u.key] ??= []).push({ file: path.basename(f), ...u });
   }
   return c;
