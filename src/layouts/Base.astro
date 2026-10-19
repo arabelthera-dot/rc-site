@@ -6,6 +6,7 @@ import InlineCss from '../components/InlineCss.astro';
 import Metrika from '../components/Metrika.astro';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles } from '../lib/shrifty.mjs';
+import nastroyki from '../data/nastroyki.json';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
 // src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
 import museumCss from '../styles/museum.css?url';
@@ -51,6 +52,13 @@ const ld = kind === 'home'
 const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
 const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
+// «Нашли ошибку?» (Д6) — только на страницах музея/дня и только при флаге knopkaOshibka (src/data/nastroyki.json, по умолчанию выкл.).
+// Ссылка на новую карточку доски AI_Projects с предзаполненными заголовком, текстом и меткой; без токенов и сервера.
+const oshibkaUrl = nastroyki.knopkaOshibka && museum ? 'https://github.com/arabelthera-dot/AI_Projects/issues/new?' + new URLSearchParams({
+  title: `Ошибка на сайте: ${Astro.url.pathname}`,
+  body: `Страница: ${url}\n\nЧто не так:\n\n`,
+  labels: 'oshibka-s-sayta',
+}).toString() : undefined;
 ---
 <!doctype html>
 <html lang="ru" data-museum={museum}>
@@ -117,6 +125,7 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
   <footer>
     <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
     <slot name="footer"><a href={base}>в город-музей →</a></slot>
+    <div class="foot-links"><a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">Нашли ошибку?</a></>}</div>
   </footer>
   <script is:inline defer src={`${base}assets/analytics.js`}></script>
 </body>
