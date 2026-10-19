@@ -1,0 +1,33 @@
+# Замок схемы ядра (план ядра, шаг 5; 19.10.2026, «да» Сергея на план ядра): схема записи дня
+# (src/content/days/<музей>/ММ-ДД.json — поля, правила хука, картинки) заморожена. Заявка, которая меняет
+# файл схемы без метки skhema:da-sergeya, красная. Метка = слово Сергея. Отдельный файл, а не задание
+# в proverka.yml: замку нужны события labeled/unlabeled, а тяжёлая сборка на каждую метку не нужна.
+# Файлы схемы — список SKHEMA ниже (он же — шапкой в src/content.config.ts). Откат — удалить этот файл.
+name: skhema-yadra
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  skhema-yadra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: схема ядра заморожена
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          DA_SERGEYA: ${{ contains(github.event.pull_request.labels.*.name, 'skhema:da-sergeya') }}
+          SKHEMA: |
+            src/content.config.ts
+        run: |
+          gh api "repos/$REPO/pulls/$PR/files" --paginate --jq '.[] | .filename, (.previous_filename // empty)' > /tmp/izmeneno.txt
+          zadeto=$(grep -Fxf <(printf '%s\n' $SKHEMA) /tmp/izmeneno.txt | sort -u || true)
+          if [ -z "$zadeto" ]; then echo "схема ядра не задета"; exit 0; fi
+          echo "задеты файлы схемы: $zadeto" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$DA_SERGEYA" = "true" ]; then echo "метка skhema:da-sergeya есть — слово Сергея, пропускаю" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; fi
+          echo "::error::схема ядра заморожена 19.10.2026 (Сергей) — менять только по слову Сергея, метка skhema:da-sergeya"
+          exit 1
