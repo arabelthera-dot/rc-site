@@ -3,6 +3,7 @@
 // change от выбора даты + submit кнопкой давали два fetch, и оба дописывали список.
 // Проверка: медленная сеть (задержка 400 мс на segodnya/*.json), выбор даты + «Показать дни» —
 // в блоке ровно один список и ни одной повторной ссылки. Ширины 390 и 1280. Код 1 при браке.
+// Пропажа блока с главной — тоже брак (19.10.2026: раньше «пропуск» с кодом 0 прятал потерю сценария).
 // Запуск: node scripts/po-date.mjs [--dist dist]
 import fs from 'node:fs';
 import http from 'node:http';
@@ -32,7 +33,7 @@ for (const w of [390, 1280]) {
   const p = await ctx.newPage();
   await p.route('**/segodnya/*.json', async rt => { await new Promise(s => setTimeout(s, 400)); await rt.continue(); });
   await p.goto(SITE, { waitUntil: 'load' });
-  if (!(await p.locator('#po-date').count())) { console.log(`${w}: блока #po-date нет — пропуск`); await ctx.close(); continue; }
+  if (!(await p.locator('#po-date').count())) { brak++; console.log(`${w}: БРАК: блока #po-date на главной нет`); await ctx.close(); continue; }
   await p.fill('#p-dpd-in', '2026-10-18');                       // change
   await p.locator('#po-date button[type=submit]').click();       // submit — второй вызов, пока первый в пути
   await p.waitForTimeout(1500);
