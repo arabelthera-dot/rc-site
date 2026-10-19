@@ -1,0 +1,18 @@
+# pre-commit в CI (шаг 8, 19.10.2026): check-json/yaml, конфликты слияния, каталог музеев по JSON Schema.
+name: pre-commit
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: pre-commit/action@v3.0.1

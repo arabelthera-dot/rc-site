@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arabelthera-dot/rc-site/schemas/museums.schema.json",
+  "title": "Каталог музеев «Русской цивилизации» (src/data/museums.json)",
+  "description": "Замена самоделки check-catalog.py (шаг 8, 19.10.2026). НАЗВАНИЕ МУЗЕЯ — ТОЛЬКО ПОЛНОЕ, одно поле title_ru (Сергей 09.10.2026: «Никогда не сокращай названия музеев… все музеи должны звучать полноценно»): обязательно, содержит слово «музей», короткого поля нет. Путь к музею в источнике не хранится (собирается по slug).",
+  "type": "object",
+  "required": ["schema_version", "museums"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "museums": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/museum"}
+    }
+  },
+  "$defs": {
+    "museum": {
+      "type": "object",
+      "required": ["museum_id", "number", "slug", "title_ru", "promise_ru", "category_id", "status"],
+      "properties": {
+        "museum_id": {"type": "string", "pattern": "^rc:museum:[a-z0-9]+(-[a-z0-9]+)*$"},
+        "number": {"type": "integer", "minimum": 1},
+        "slug": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+        "title_ru": {"type": "string", "minLength": 12, "pattern": "[Мм]узей "},
+        "promise_ru": {"type": "string", "minLength": 20},
+        "category_id": {"enum": ["nauka", "istoriya", "iskusstvo", "kultura", "promysly", "byt", "detyam"]},
+        "status": {"enum": ["open", "planned"]},
+        "search_terms_ru": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "project_path": {"type": "string"},
+        "slogan_ru": {"type": "string", "minLength": 1},
+        "slogan_status": {"type": "string"},
+        "availability_ru": {"type": "string"},
+        "stub": {"type": "boolean"}
+      },
+      "not": {"anyOf": [
+        {"required": ["href"]}, {"required": ["path"]}, {"required": ["public_path"]}, {"required": ["url"]},
+        {"required": ["title_short"]}, {"required": ["short_title"]}, {"required": ["title_short_ru"]}
+      ]}
+    }
+  }
+}
