@@ -117,6 +117,7 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
   <footer>
     <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
     <slot name="footer"><a href={base}>в город-музей →</a></slot>
+    <div class="politika"><a href={`${base}politika-konfidencialnosti/`}>Политика конфиденциальности</a></div>
   </footer>
   <script is:inline defer src={`${base}assets/analytics.js`}></script>
 </body>
