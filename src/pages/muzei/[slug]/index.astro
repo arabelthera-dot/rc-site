@@ -2,6 +2,7 @@
 // Главная музея — минимум 05-main-page.md §6-quinquies (8 блоков) для ЛЮБОГО музея из museums.json.
 // У музея без дней — честные пустые состояния, ссылок на несуществующие страницы нет.
 import Base from '../../../layouts/Base.astro';
+import { ogRaster } from '../../../lib/og-den.mjs';
 import { getCollection } from 'astro:content';
 import { beyondYear, isDated } from '../../../lib/kalendar';
 import Cover from '../../../components/home/Cover.astro';
@@ -35,7 +36,8 @@ const cal: Record<string, unknown> = {};
 for (const d of yearDays) cal[d.key] = { t: d.title, y: d.year, d: d.hook ?? '', href: href(d.key), link: 'Открыть экспонат дня →' };
 const img = days.flatMap((d) => d.images).find((i) => !i.generated);
 // Картинка пересылки без обложки музея — первая настоящая растровая картинка дней (Base.astro, ogFallback).
-const ogFallback = days.flatMap((d) => d.images).find((i) => !i.generated && /\.(?:jpe?g|png|webp|gif)$/i.test(i.src))?.src;
+// WebP — JPG/PNG-двойником (ogRaster, Б9 19.10).
+const ogFallback = days.flatMap((d) => d.images).filter((i) => !i.generated).map((i) => ogRaster(i.src)).find(Boolean);
 const first = days[0] && { key: days[0].key, title: days[0].title, hook: days[0].hook, href: href(days[0].key), when: when(days[0].key) };
 const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(1),
   days: yearDays.filter((d) => +d.key.slice(0, 2) === i + 1).map((d) => ({ title: d.title, href: href(d.key) })) }))

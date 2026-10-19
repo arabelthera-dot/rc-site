@@ -1,6 +1,7 @@
 ---
 // Календарь 1:1 со старым (muzei/ne-sdayutsya/calendar.html): тот же движок assets/museum-calendar-page.js,
 // данные собираются из карточек дней; у каждого дня — ссылка на его страницу.
+import { ogRaster } from '../../../lib/og-den.mjs';
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { kalendarMuzeya } from '../../../lib/kalendar-dannye.mjs';
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
 const { m, days } = Astro.props;
 // Картинка пересылки без обложки музея — первая настоящая растровая картинка дней (Base.astro, ogFallback).
 const ogFallback = [...days].sort((a, b) => a.data.key.localeCompare(b.data.key)).flatMap((d) => d.data.images ?? [])
-  .find((i) => !i.generated && /\.(?:jpe?g|png|webp|gif)$/i.test(i.src))?.src;
+  .filter((i) => !i.generated).map((i) => ogRaster(i.src)).find(Boolean); // WebP — JPG/PNG-двойником (Б9 19.10)
 const base = import.meta.env.BASE_URL;
 // Состав карточки — как у старого календаря этого музея: механика и источник только там, где они
 // были (поле card в calendar-meta); отображение «запись → календарь» — src/lib/kalendar-dannye.mjs (и для полных страниц).

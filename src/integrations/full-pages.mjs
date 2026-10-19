@@ -473,6 +473,18 @@ export default function fullPages() {
               const abs = new URL(/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`, site).href;
               html = html.replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
             }
+            // Карточка пересылки в WebP (9 старых страниц: 7 своих и 2 из кадра карточки, Б9 19.10): ВК WebP в превью не показывает — рядом в dist
+            // кладётся JPG-копия (sharp, качество 85) и og:image/twitter:image смотрят на неё. Текст страницы не трогается.
+            if (site) {
+              const own = new URL(base, site).href;
+              for (const [tag, a, u] of [...html.matchAll(/(<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\s+content=["'])([^"'?#]+\.webp)/gi)]) {
+                if (!u.startsWith(own)) continue;
+                const rel = decodeURIComponent(u.slice(own.length));
+                const src = path.join(root, rel), jpg = src.replace(/\.webp$/i, '.jpg');
+                if (!fs.existsSync(jpg) && fs.existsSync(src)) await sharp(src).flatten({ background: '#ffffff' }).jpeg({ quality: 85 }).toFile(jpg);
+                if (fs.existsSync(jpg)) html = html.split(tag).join(a + u.replace(/\.webp$/i, '.jpg'));
+              }
+            }
             // Значок аудиогида (сценарий 5 приёмки, круг 2, 18.10): «🎧» в кнопках старых страниц на машинах без
             // цветного эмодзи-шрифта рисуется квадратом — при сборке заменяется встроенным SVG, текст кнопки как есть.
             html = html.replace(/(>\s*)🎧️?\s*/g, `$1${AUDIO_ICON} `);
