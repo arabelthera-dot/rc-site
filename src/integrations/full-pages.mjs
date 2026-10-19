@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
+import { failKalendarya } from '../lib/kalendar-dannye.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 
 const SRC = 'src/data/full-pages';
@@ -355,6 +356,9 @@ function absolute(url, dirUrl) {
   return new URL(u, `http://x${dirUrl}`).href.slice('http://x'.length);
 }
 
+// Тег старого файла данных календаря музея: <script src="[…/]calendar-<x>.js">; museum-calendar-*.js и nikitin/calendar.js не задевает.
+const OLD_KAL = /(<script\b[^>]*?\ssrc\s*=\s*)(["'])(?:[^"']*\/)?calendar-[\w-]+\.js(?:\?[^"']*)?\2/gi;
+
 export default function fullPages() {
   let base = '/';
   let site = '';
@@ -367,7 +371,16 @@ export default function fullPages() {
         if (!fs.existsSync(SRC)) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
         const bad = [];
         let n = 0;
+        let nKal = 0;
+        const kalFaily = [];
         for (const museum of fs.readdirSync(SRC).sort()) {
+          // Календарь страницы (museum-calendar-month.js) — из записей дней (шаг 4Б ядра, 19.10): один файл на музей
+          // dist/muzei/<музей>/kalendar-dney.<хеш>.js вместо старого public/muzei/<музей>/calendar-<x>.js.
+          // Нет записей — тег не трогаем (старый файл остаётся). nikitin/calendar.js (путь Никитина) — не календарь музея.
+          const kal = failKalendarya(museum, base);
+          let kalSrc = null;
+          if (kal) kalSrc = `${base}muzei/${museum}/${kal.name}`;
+          const kalDo = nKal;
           const denDir = path.join(root, 'muzei', museum, 'den');
           const keys = fs.existsSync(denDir) ? fs.readdirSync(denDir).filter((k) => fs.existsSync(path.join(denDir, k, 'index.html'))).sort() : [];
           // Анкета (ADR docs/adr/0001-anketa-dnya.md): у дня есть body — страницу уже собрал шаблон DenAnketa.astro,
@@ -389,6 +402,7 @@ export default function fullPages() {
           for (const { key, self, out, from, staraya } of jobs) {
             if (!fs.existsSync(path.join(root, 'muzei', museum, 'den', key, 'index.html'))) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
             let html = fs.readFileSync(from, 'utf8');
+            if (kalSrc) html = html.replace(OLD_KAL, (m, a, q) => { nKal++; return `${a}${q}${kalSrc}${q}`; });
             if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
             for (const e of checkMuseumName(html, museum)) bad.push(`${museum}/${key} — ${e}`);
@@ -506,10 +520,16 @@ export default function fullPages() {
             fs.writeFileSync(out, html);
             n++;
           }
+          // файл пишется, только если его кто-то грузит (у arhitektura, skazki календарь внутри страницы или нет)
+          if (kal && nKal > kalDo) {
+            fs.writeFileSync(path.join(root, 'muzei', museum, kal.name), kal.js);
+            kalFaily.push(`${museum}/${kal.name} (${kal.keys} дн., ${nKal - kalDo} стр.)`);
+          }
         }
         if (bad.length) throw new Error(`полные страницы дней:\n${bad.join('\n')}`);
         checkSitebars(root, base);
         checkNoGoogleFonts();
+        console.log(`full-pages: календарь из записей дней — ${kalFaily.join(', ')}; подменено тегов: ${nKal}`);
         console.log(`full-pages: ${n} дней — полная страница; верхняя полоса и имя музея в шапке проверены; Google-шрифтов нет`);
       },
     },
