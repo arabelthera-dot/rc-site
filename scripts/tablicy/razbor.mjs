@@ -34,7 +34,8 @@ export function norm(s) {
   return t.replace(/\s+/g, ' ').trim().replace(/\.+$/, '').trim();
 }
 
-const home = (p) => p.replace(/^~(?=\/|$)/, os.homedir());
+// papka — путь от корня сайта (таблицы лежат в data/tablicy/, ядро шаг 2); ~ — домашняя папка.
+const home = (p) => /^~(?=\/|$)/.test(p) ? p.replace(/^~/, os.homedir()) : path.resolve(HERE, '../..', p);
 const maskRe = (m) => new RegExp('^' + m.replace(/[.+^${}()|\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.') + '$');
 
 // Файлы адаптера в порядке старшинства: группы fayly по очереди, внутри — по rang, затем по имени.
