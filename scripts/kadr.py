@@ -34,6 +34,7 @@ UA = {'User-Agent': 'rc-site-kadr/1.0 (arabelthera@gmail.com)'}
 ROOT = Path(__file__).resolve().parent.parent
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
+RU_PROXY = os.environ.get('RC_RU_PROXY', 'http://127.0.0.1:8899')  # выход rf-proxy:1080 забанен Госкаталогом (403)
 FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'pastvu', 'commons']  # порядок поиска
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
 
@@ -78,8 +79,11 @@ def access(*args, timeout=90):
     if not ACCESS.is_file():
         raise RuntimeError(f'нет access.py ({ACCESS}); задай RC_ACCESS')
     with tempfile.TemporaryDirectory(prefix='kadr-') as tmp:
+        env = dict(os.environ)
+        if any('goskatalog.ru' in x for x in args):  # Госкаталог — только через туннель RU_PROXY
+            env.update(HTTPS_PROXY=RU_PROXY, https_proxy=RU_PROXY)
         r = subprocess.run([sys.executable, str(ACCESS), *args, '--out-dir', tmp],
-                           capture_output=True, text=True, timeout=timeout)
+                           capture_output=True, text=True, timeout=timeout, env=env)
         rep = Path(tmp) / 'report.json'
         if not rep.is_file():
             raise RuntimeError(f'access.py код {r.returncode}: {(r.stderr or r.stdout).strip()[-200:]}')
@@ -110,6 +114,25 @@ def find_unsupported(fond, query, n, geo):
     return 0
 
 
+def find_goskatalog(fond, query, n, geo):
+    """Поиск — POST к API Госкаталога через туннель; сам файл потом берёт access.py (put)."""
+    gk = 'https://goskatalog.ru'
+    q = urllib.parse.urlencode(dict(statusIds=6, publicationLimit='false', limit=n, offset=0, q=query, calcCountsType=1))
+    req = urllib.request.Request(f'{gk}/muzfo-rest/rest/exhibits/ext?{q}', data=b'[]', method='POST', headers={
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0', 'Content-Type': 'application/json',
+        'Accept': 'application/json', 'Origin': gk, 'Referer': gk + '/portal/'})
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': RU_PROXY, 'http': RU_PROXY}))
+    objs = json.loads(opener.open(req, timeout=40).read()).get('objects', [])
+    for o in objs:
+        img = (o.get('mainImage') or {}).get('id')
+        if not img:
+            continue
+        avt = ', '.join(a.get('name', '') for a in o.get('authors') or [] if isinstance(a, dict)) or 'автор не указан'
+        print(f"? goskatalog:{gk}/muzfo-imaginator/rest/images/original/{img} | {o.get('name', '')[:90]} | {avt}\n"
+              f"    --card {gk}/portal/#/collections?id={o['id']} — права Госкаталог не даёт: автор и год смерти по карточке")
+    return len(objs)
+
+
 def find_pastvu(fond, query, n, geo):
     if not geo:
         warn('  пропущен: нужен --geo lat,lon (PastVu ищет по точке)')
@@ -134,7 +157,7 @@ def find_commons(fond, query, n, geo):
     return len(titles)
 
 
-SEARCH = {'shm_catalog': find_unsupported, 'goskatalog': find_unsupported, 'rusmuseum': find_unsupported,
+SEARCH = {'shm_catalog': find_unsupported, 'goskatalog': find_goskatalog, 'rusmuseum': find_unsupported,
           'pastvu': find_pastvu, 'commons': find_commons}
 
 
