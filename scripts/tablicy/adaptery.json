@@ -140,9 +140,6 @@
   "fayly": [
    [
     "god-2027-*.md"
-   ],
-   [
-    "korotkiy-god-*.md"
    ]
   ],
   "kolonki": {
@@ -150,7 +147,7 @@
    "nazvanie": "Народ",
    "hook": "Хук"
   },
-  "_prim": "две схемы: god-2027 (полный год) и korotkiy-god (позже — сильнее); какая утверждена — вопрос Джарвису"
+  "_prim": "god-2027 утверждён Сергеем 15.10; korotkiy-god — черновик"
  },
  "pervoprohodcy": {
   "tip": "tablica",

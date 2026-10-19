@@ -1,7 +1,9 @@
 // Единый разборщик утверждённых таблиц календаря (вместо 8 gen-calendar.py, опись 19.10).
 // Адаптер музея — только конфиг в adaptery.json: файлы, колонки по заголовку; особый — ne-sdayutsya (блоки).
 // Режим: node scripts/tablicy/razbor.mjs --sverka — таблица против записей src/content/days; только отчёт,
-// записи не пишет, выход всегда 0 (заявку роняют только сборка и битые ссылки). Флага записи пока нет.
+// записи не пишет, выход всегда 0 (заявку роняют только сборка и битые ссылки).
+// --zapis [slug] — в существующих записях меняет только hook на старшую версию таблицы (norm расходится);
+// хук таблицы «—»/пусто не трогает, новых файлов не создаёт, остальные поля и формат (indent 2 + \n) — как были.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -157,8 +159,28 @@ function sverka() {
   }
 }
 
+function zapis(only) {
+  for (const slug of Object.keys(ADAPTERY).filter((k) => !k.startsWith('_') && (!only || k === only))) {
+    const ap = ADAPTERY[slug] === 'todo' ? null : approved(slug);
+    if (!ap) { console.log(`${slug}: таблиц нет или todo, пропуск`); continue; }
+    const dir = path.join(DAYS, slug); let n = 0;
+    for (const k of ALL) {
+      const f = path.join(dir, `${k}.json`), v = ap[k];
+      if (!v || !fs.existsSync(f)) continue;
+      const h = String(v[v.length - 1].hook ?? '').replace(/\*\*|<[^>]+>/g, '').trim();
+      if (!h || /^[—–-]+$/.test(h)) continue;
+      const rec = JSON.parse(fs.readFileSync(f, 'utf8'));
+      if (norm(rec.hook) === norm(h)) continue;
+      rec.hook = h; fs.writeFileSync(f, JSON.stringify(rec, null, 2) + '\n'); n++;
+    }
+    console.log(`${slug}: изменено ${n}`);
+  }
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const zi = process.argv.indexOf('--zapis');
   if (process.argv.includes('--sverka')) sverka();
-  else console.log('Запуск: node scripts/tablicy/razbor.mjs --sverka   (отчёт «таблица против записи», записи не пишет)');
+  else if (zi > 0) zapis(process.argv[zi + 1]?.startsWith('--') ? undefined : process.argv[zi + 1]);
+  else console.log('Запуск: node scripts/tablicy/razbor.mjs --sverka | --zapis [slug]   (отчёт / хуки записей по старшей версии)');
   process.exitCode = 0;
 }
