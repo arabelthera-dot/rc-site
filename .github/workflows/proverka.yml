@@ -18,7 +18,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx astro build
+      - run: npm run build
       # Сайт живёт под /rc-site/ — раскладываем сборку так же, как на сервере.
       - run: mkdir -p /tmp/root && ln -s "$PWD/dist" /tmp/root/rc-site
       - uses: lycheeverse/lychee-action@v2

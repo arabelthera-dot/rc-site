@@ -58,7 +58,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx astro build --site https://russian-civilization.ru --base /
+      - run: npm run build -- --site https://russian-civilization.ru --base /
       - uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.RC_MUSEUM_PREVIEW_DEPLOY_KEY }}

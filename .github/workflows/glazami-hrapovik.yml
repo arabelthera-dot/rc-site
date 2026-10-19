@@ -33,7 +33,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx astro build
+      - run: npm run build
       - run: npm i --no-save --no-audit --no-fund playwright@1.48.0 && npx playwright install --with-deps chromium
       - run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json --zapisat
       - name: заявка с понижённым эталоном
