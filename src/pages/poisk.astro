@@ -1,0 +1,23 @@
+---
+// Поиск по музеям и дням (pagefind, 19.10). ВЫКЛЮЧЕН по умолчанию: без RC_POISK=1 индекса нет —
+// страница честно говорит «поиск готовится» и закрыта от поисковиков. Индекс — src/integrations/poisk.mjs.
+import Base from '../layouts/Base.astro';
+import { poiskOn } from '../integrations/poisk.mjs';
+const base = import.meta.env.BASE_URL;
+const on = poiskOn();
+---
+<Base title="Поиск — Русская цивилизация" description="Поиск по дням и экспонатам музеев «Русской цивилизации»" noindex={!on} schema="page">
+  {on && <link slot="head" rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />}
+  <section class="rc-poisk" style="max-width:860px;margin:0 auto;padding:24px 16px 48px">
+    <h1>Поиск по музеям</h1>
+    {on ? <>
+      <p>Слово, имя или изобретение — например, «Шухов» или «Сусанин».</p>
+      <div id="poisk"></div>
+      <script is:inline src={`${base}pagefind/pagefind-ui.js`}></script>
+      <script is:inline>
+        new PagefindUI({ element: '#poisk', showSubResults: true, showImages: false,
+          translations: { placeholder: 'Что ищем?', zero_results: 'По запросу «[SEARCH_TERM]» ничего не нашлось' } });
+      </script>
+    </> : <p>Поиск готовится.</p>}
+  </section>
+</Base>

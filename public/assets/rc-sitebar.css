@@ -21,6 +21,7 @@ nav.rc-sitebar a.rc-sb-link:focus-visible{outline:2px solid #d9b95c;outline-offs
 nav.rc-sitebar li:first-child{flex:none}
 nav.rc-sitebar li.rc-sb-m{flex:0 1 auto}
 nav.rc-sitebar li.rc-sb-here{flex:0 100 auto;opacity:.75}
+nav.rc-sitebar li.rc-sb-poisk{margin-left:auto;flex:0 0 auto}
 /* .rc-sb-link — inline-flex: многоточие нужно у текстового узла, поэтому блок-обёртка */
 nav.rc-sitebar .rc-sb-museum,nav.rc-sitebar .rc-sb-here .rc-sb-link{display:block;line-height:44px}
 @media (max-width:600px){

@@ -7,6 +7,10 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 
 export const whenOfKey = (key) => `${parseInt(key.slice(3), 10)} ${MONTHS[parseInt(key.slice(0, 2), 10) - 1]}`;
 
+// Ссылка «Поиск» — только при RC_POISK=1 (выключатель поиска, src/integrations/poisk.mjs); иначе пусто.
+const poiskLink = (base) => (globalThis.process?.env?.RC_POISK === '1'
+  ? `<li class="rc-sb-poisk"><a class="rc-sb-link" href="${base}poisk/">Поиск</a></li>` : '');
+
 // here — «где ты» (дата, «Календарь»); нет here — страница музея: второй уровень без ссылки.
 export function sitebarHtml({ base, slug, title, here }) {
   const t = esc(title);
@@ -17,7 +21,7 @@ export function sitebarHtml({ base, slug, title, here }) {
     + `<li><a class="rc-sb-link rc-sb-home" href="${base}">Русская цивилизация</a></li>`
     + `<li class="rc-sb-m">${museum}</li>`
     + (here ? `<li class="rc-sb-here" aria-current="page"><span class="rc-sb-link">${esc(here)}</span></li>` : '')
-    + `</ol></nav>`;
+    + `${poiskLink(base)}</ol></nav>`;
 }
 
 export const TG_CHANNEL = 'https://t.me/russian_civilization_ru';

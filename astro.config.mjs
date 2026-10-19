@@ -6,6 +6,7 @@ import fullPages from './src/integrations/full-pages.mjs';
 import kartinki from './src/integrations/kartinki.mjs';
 import ogDen from './src/integrations/og-den.mjs';
 import minify from './src/integrations/minify.mjs';
+import poisk from './src/integrations/poisk.mjs';
 import fs from 'node:fs';
 
 // Доска музеев (/doska/) — служебная, noindex, в карту сайта не идёт.
@@ -32,6 +33,7 @@ export default defineConfig({
   // fullPages — у дня с готовой страницей старого сайта адрес дня отдаёт её целиком (scripts/full-pages.mjs).
   // ogDen — своя карточка пересылки 1200×630 у готового дня без своей картинки (src/integrations/og-den.mjs).
   // kartinki — WebP-копии 480/960/1600 и srcset/lazy у картинок готовых страниц (после fullPages).
-  // minify — последней: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [sitemap({ filter: (page) => !soonDay(page) && !/\/doska\/$/.test(page) }), legacyRedirects(), fullPages(), ogDen(), kartinki(), minify()],
+  // poisk — после minify: индекс pagefind (dist/pagefind/) по страницам музеев и дней; ВЫКЛЮЧЕН, включает RC_POISK=1.
+  // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
+  integrations: [sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) }), legacyRedirects(), fullPages(), ogDen(), kartinki(), minify(), poisk()],
 });
