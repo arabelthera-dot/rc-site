@@ -59,9 +59,10 @@ jobs:
       # Новое — выключенным: строгость переменной репозитория SVERKA_STROGO=1.
       - name: sverka-teksta — текст старого и нового сайта 1:1
         continue-on-error: ${{ vars.SVERKA_STROGO != '1' }}
-        timeout-minutes: 3
+        timeout-minutes: 6
         run: |
-          git clone -q --depth 1 https://github.com/arabelthera-dot/rc-museum-preview /tmp/stary
+          # без --depth: нужна история всех веток (git log --all), blob:none — без содержимого старых версий
+          git clone -q --filter=blob:none https://github.com/arabelthera-dot/rc-museum-preview /tmp/stary
           node scripts/sverka-teksta.mjs --dist dist --legacy /tmp/stary --vse
       # Три правила старого сайта, потерянные при переезде (Сергей 19.10.2026: вернуть, стандарт №4):
       # «Консультанты музея» без слова «научный», метка ЖДУ ОТВЕТА, счёт из 100. Логика — из старого
