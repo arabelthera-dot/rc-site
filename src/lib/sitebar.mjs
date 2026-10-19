@@ -27,8 +27,9 @@ export function sitebarHtml({ base, slug, title, here }) {
 export const TG_CHANNEL = 'https://t.me/russian_civilization_ru';
 
 // Подписка на канал — одна разметка: подвал всех шаблонных страниц (Base.astro) и полные страницы дней (rc-sitebar.js).
-export const podpiskaHtml = () =>
-  `<div class="rc-sub"><a href="${TG_CHANNEL}" target="_blank" rel="noopener"><span aria-hidden="true">✈</span>Подписаться в Telegram</a></div>`;
+// label — подпись кнопки на языке страницы (Base.astro, src/data/stroki.json); по умолчанию русская.
+export const podpiskaHtml = (label = 'Подписаться в Telegram') =>
+  `<div class="rc-sub"><a href="${TG_CHANNEL}" target="_blank" rel="noopener"><span aria-hidden="true">✈</span>${esc(label)}</a></div>`;
 
 export const sitebarAssets = (base) =>
   `<link rel="stylesheet" href="${base}assets/rc-sitebar.css" />\n<link rel="stylesheet" href="${base}assets/rc-podpiska.css" />\n<script defer src="${base}assets/rc-sitebar.js"></script>`;

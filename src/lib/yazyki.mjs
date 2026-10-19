@@ -36,3 +36,15 @@ export function hreflangi(pathname, base, site) {
   links.push({ hreflang: 'x-default', href: new URL(putNaYazyke(rest, poUmolchaniyu, base), site).href });
   return links;
 }
+
+/** og:locale языка: поле locale из yazyki.json, иначе code_COUNTRY (ru → ru_RU). */
+export const ogLocale = (y) => y.locale ?? `${y.code}_${y.country}`;
+
+// Строки общего шаблона по языку (src/data/stroki.json); нет строки — русская (язык по умолчанию).
+import stroki from '../data/stroki.json' with { type: 'json' };
+export function stroka(code, key) {
+  return stroki[code]?.[key] ?? stroki[poUmolchaniyu][key];
+}
+
+/** Стрелка «вперёд» по ходу строки: в письме справа налево смотрит влево. */
+export const strelkaVpered = (dir) => (dir === 'rtl' ? '←' : '→');
