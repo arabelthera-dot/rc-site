@@ -403,14 +403,50 @@
     var last = all[all.length-1];
     if(last) last.scrollIntoView({behavior:'smooth', block:'center'});
   }
+  /* «Ссылка скопирована» (19.10): видимая плашка на 2 с + aria-live для экранных чтецов; кнопка на 2 с
+     меняет подпись и возвращает прежнюю. Нет clipboard API или отказ — запасной путь через execCommand */
+  var toastT = 0;
+  function sayCopied(btn, ok){
+    var msg = ok ? (EN ? 'Link copied' : 'Ссылка скопирована') : (EN ? 'Copy failed — copy the address bar' : 'Не скопировалось — скопируйте адрес из строки браузера');
+    var t = doc.getElementById('rc-copied');
+    if(!t){
+      t = doc.createElement('div'); t.id = 'rc-copied';
+      t.setAttribute('role','status'); t.setAttribute('aria-live','polite');
+      t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;max-width:calc(100% - 32px);' +
+        'padding:11px 18px;border-radius:22px;background:#c9a84c;color:#1a1508;font:600 15px/1.3 Inter,system-ui,sans-serif;' +
+        'box-shadow:0 6px 24px rgba(0,0,0,.45);transition:opacity .2s;opacity:0;pointer-events:none';
+      body.appendChild(t);
+    }
+    t.textContent = ''; t.offsetWidth; t.textContent = (ok ? '✓ ' : '') + msg; t.style.opacity = '1';
+    if(btn && ok){
+      if(!btn.hasAttribute('data-sup-label')) btn.setAttribute('data-sup-label', btn.textContent);
+      btn.textContent = (EN ? 'Link copied' : 'Ссылка скопирована') + ' ✓';
+    }
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){
+      t.style.opacity = '0';
+      if(btn && btn.hasAttribute('data-sup-label')) btn.textContent = btn.getAttribute('data-sup-label');
+    }, 2000);
+  }
+  function copyLink(btn){
+    var url = location.href;
+    function legacy(){
+      var ta = doc.createElement('textarea'); ta.value = url; ta.setAttribute('readonly','');
+      ta.style.cssText = 'position:fixed;top:-1000px;opacity:0'; body.appendChild(ta); ta.select();
+      var ok = false; try { ok = doc.execCommand('copy'); } catch(e) {}
+      body.removeChild(ta); sayCopied(btn, ok);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText)
+      navigator.clipboard.writeText(url).then(function(){ sayCopied(btn, true); }, legacy);
+    else legacy();
+  }
   /* делегирование: блок может появиться позже (повторный placePeak на календарях) */
   body.addEventListener('click', function(ev){
     var t = ev.target;
     var share = t.closest && t.closest('[data-sup-share]');
     if(share){
       if(navigator.share) navigator.share({title:doc.title, url:location.href}).catch(function(){});
-      else if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(function(){
-        share.textContent = EN ? 'Link copied ✓' : 'Ссылка скопирована ✓'; });
+      else copyLink(share);
       if(typeof window.award === 'function') window.award('share', 5);
       return;
     }

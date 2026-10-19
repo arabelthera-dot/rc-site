@@ -339,8 +339,11 @@
   /* обработчик вешаем только на свою кнопку: где .sharerow был в HTML, там уже есть свой скрипт */
   if(madeShare) (function(){
     var h = doc.getElementById('sharehint');
+    /* отклик «скопировано» — 2 с, с aria-live (19.10) */
+    if(h){h.setAttribute('role','status'); h.setAttribute('aria-live','polite');}
+    var hintT = 0;
     function hint(t){if(!h)return; h.textContent=t; h.style.display='inline';
-      setTimeout(function(){h.style.display='none';}, 2800);}
+      clearTimeout(hintT); hintT = setTimeout(function(){h.style.display='none';}, 2000);}
     function share(){
       var url = location.href.split('#')[0];
       var s = C.share || {};
