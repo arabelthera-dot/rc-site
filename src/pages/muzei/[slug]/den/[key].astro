@@ -11,6 +11,7 @@ import { denFamilies, faceCss } from '../../../../lib/shrifty.mjs';
 import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
+import DenAnketa from '../../../../components/den/DenAnketa.astro';
 import { YEAR_KEYS, isDated, isReady, nearestReady, stripSrcPrefix } from '../../../../lib/kalendar';
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
@@ -93,6 +94,7 @@ const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`pub
 const fontCss = faceCss([...new Set([...denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), 'Playfair Display'])], base);
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
 ---
+{d.body ? <DenAnketa d={d} /> : (
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={cover?.src ?? ogCard} imageAlt={cover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
@@ -215,3 +217,4 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
   <script is:inline set:html={support}></script>
   <script is:inline src={`${base}assets/museum-support.js`}></script>
 </Base>
+)}

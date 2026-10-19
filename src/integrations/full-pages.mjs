@@ -170,18 +170,45 @@ function pageCss(html) {
 // Не всякое правило про «Поделиться» мешает: arhitektura 01-05…01-09 (nevjanskaya-page.css — max-width/overflow),
 // izobreteniya 01-05 (padding !important), iskusstvo 05-02 (свой .sharerow, стили как у museum-chrome) — вид и место
 // те же, что у скрипта (18.10). Оставляем скриптам только там, где правило прячет, выносит из потока или двигает блок.
-function hidesShare(css) {
-  const rules = css.replace(/\/\*[\s\S]*?\*\//g, '').match(/[^{}]*\{[^{}]*\}/g) || [];
+// Правило только для узких экранов (@media max-width) — не «прячет всегда»: arhitektura 01-04 (vyatskoe-page.css
+// прячет .hero-scene>.sharerow лишь при ≤820 px), а скрипт на ПК дописывал строку под обложку после отрисовки — CLS 0,076
+// (18.10). Тогда строку ставит сборка (на телефоне её спрячет тот же CSS), а подписку — скрипт: её место на ПК и телефоне разное.
+function cssBlocks(css) {
+  css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  let base = '', narrow = '';
+  for (let i = 0; i < css.length;) {
+    const at = css.indexOf('@media', i);
+    if (at < 0) { base += css.slice(i); break; }
+    base += css.slice(i, at);
+    const open = css.indexOf('{', at);
+    if (open < 0) break;
+    let depth = 1, j = open + 1;
+    while (j < css.length && depth) { if (css[j] === '{') depth++; else if (css[j] === '}') depth--; j++; }
+    const query = css.slice(at, open);
+    if (/max-width/i.test(query) && !/min-width/i.test(query)) narrow += css.slice(open + 1, j - 1);
+    else base += css.slice(open + 1, j - 1);
+    i = j;
+  }
+  return { base, narrow };
+}
+function shareRule(css) {
+  const rules = css.match(/[^{}]*\{[^{}]*\}/g) || [];
   return rules.some((r) => {
     const [sel, decl] = r.split('{');
     return /\.sharerow(?![\w-])|\.share(?![\w-])|#sharefinal(?![\w-])/.test(sel)
       && /\b(?:display\s*:\s*none|visibility\s*:\s*hidden|position\s*:|float\s*:|order\s*:|transform\s*:|content-visibility)/i.test(decl);
   });
 }
+// 'always' — прячет/двигает на любом экране; 'narrow' — только на узких; false — не мешает
+function hidesShare(css) {
+  const { base, narrow } = cssBlocks(css);
+  return shareRule(base) ? 'always' : shareRule(narrow) ? 'narrow' : false;
+}
 function staticChrome(html) {
   const body = html.search(/<body\b/i);
   if (body < 0) return html;
-  if (hidesShare(pageCss(html))) return html;
+  const hides = hidesShare(pageCss(html));
+  if (hides === 'always') return html;
   const scripts = html.indexOf('<script', body);
   // те же блоки, что у rc-sitebar.js oneShare(): .sharerow, .wrap.share, div.share, #sharefinal — первый видимый
   const shareRe = new RegExp(`<[a-z][a-z0-9]*\\b[^>]*${cls('sharerow')}[^>]*>|<div\\b[^>]*${cls('share')}[^>]*>|<[a-z][a-z0-9]*\\b[^>]*id=["']sharefinal["'][^>]*>`, 'gi');
@@ -211,6 +238,7 @@ function staticChrome(html) {
       after = elementEnd(html, vis.at);
     } else return html; // все скрыты (arhitektura 01-01) — куда поставит скрипт, при сборке не видно
   }
+  if (hides === 'narrow') return html; // подписку ставит скрипт: на телефоне строка скрыта — конец статьи
   if (!/class=["']rc-sub\b/.test(html)) {
     if (after > 0) html = insertAt(after, `\n${podpiskaHtml()}`);
     else {
@@ -342,12 +370,26 @@ export default function fullPages() {
         for (const museum of fs.readdirSync(SRC).sort()) {
           const denDir = path.join(root, 'muzei', museum, 'den');
           const keys = fs.existsSync(denDir) ? fs.readdirSync(denDir).filter((k) => fs.existsSync(path.join(denDir, k, 'index.html'))).sort() : [];
-          for (const f of fs.readdirSync(path.join(SRC, museum)).sort()) {
-            const key = f.replace(/\.html$/, '');
-            const self = `${base}muzei/${museum}/den/${key}/`;
-            const out = path.join(root, 'muzei', museum, 'den', key, 'index.html');
-            if (!fs.existsSync(out)) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
-            let html = fs.readFileSync(path.join(SRC, museum, f), 'utf8');
+          // Анкета (ADR docs/adr/0001-anketa-dnya.md): у дня есть body — страницу уже собрал шаблон DenAnketa.astro,
+          // конвейер ниже ведёт её так же, как старый HTML; старый HTML того же дня (пока лежит) — на den/<ключ>/staraya/
+          // с noindex, для сверки 1:1 и отката. Нет body — как раньше, старый HTML 1:1.
+          const cardsDir = path.join('src/content/days', museum);
+          const anketa = new Set((fs.existsSync(cardsDir) ? fs.readdirSync(cardsDir) : []).filter((f) => f.endsWith('.json'))
+            .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)));
+          const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
+          const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {
+            const dayOut = path.join(root, 'muzei', museum, 'den', key, 'index.html');
+            const day = `${base}muzei/${museum}/den/${key}/`;
+            const old = { key, self: day, out: dayOut, from: path.join(SRC, museum, `${key}.html`) };
+            if (!anketa.has(key)) return [old];
+            const jobsKey = [{ key, self: day, out: dayOut, from: dayOut }];
+            if (htmlKeys.includes(key)) jobsKey.push({ ...old, self: `${day}staraya/`, out: path.join(root, 'muzei', museum, 'den', key, 'staraya', 'index.html'), staraya: true });
+            return jobsKey;
+          });
+          for (const { key, self, out, from, staraya } of jobs) {
+            if (!fs.existsSync(path.join(root, 'muzei', museum, 'den', key, 'index.html'))) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
+            let html = fs.readFileSync(from, 'utf8');
+            if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
             for (const e of checkMuseumName(html, museum)) bad.push(`${museum}/${key} — ${e}`);
             // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
@@ -383,7 +425,10 @@ export default function fullPages() {
             const preloads = fontFiles(pageFamilies(html)).map((f) => preloadTag(base, f)).join('\n');
             if (preloads) html = /<meta\s+charset[^>]*>/i.test(html) ? html.replace(/<meta\s+charset[^>]*>/i, (m) => `${m}\n${preloads}`)
               : html.replace(/<head([^>]*)>/i, `<head$1>\n${preloads}`);
+            // Адреса, вписанные в страницу от корня превью (/rc-site/…) или старого сайта (/rc-museum-preview/…), —
+            // в атрибутах и в строках скриптов, — на свой base: на домене russian-civilization.ru (18.10) приставки нет.
             html = html
+              .replace(/(["'])\/(?:rc-site|rc-museum-preview)\//gi, `$1${base}`)
               .replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}muzei/${museum}/">`)
               .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`)
               .replace(/(\s(?:href|src|poster)\s*=\s*)(["'])([^"']*)\2/gi,

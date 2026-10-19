@@ -1,0 +1,8 @@
+---
+// Большая страница дня из анкеты: doc (оболочка документа) + body (блоки по порядку). Дальше страницу ведёт тот же
+// конвейер, что и старый HTML (src/integrations/full-pages.mjs): полоса, шрифты, метрика, размеры картинок, проверки.
+import DenBlok from './DenBlok.astro';
+const { d } = Astro.props;
+const { doc } = d;
+---
+<Fragment set:html={`${doc.prolog}<head${doc.head_attrs}>${doc.head}</head>${doc.between}<body${doc.body_attrs}>`} />{d.body.map((b) => <DenBlok b={b} />)}<Fragment set:html={doc.epilog} />
