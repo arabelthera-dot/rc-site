@@ -376,7 +376,7 @@ export default function fullPages() {
         for (const museum of fs.readdirSync(SRC).sort()) {
           // Календарь страницы (museum-calendar-month.js) — из записей дней (шаг 4Б ядра, 19.10): один файл на музей
           // dist/muzei/<музей>/kalendar-dney.<хеш>.js вместо старого public/muzei/<музей>/calendar-<x>.js.
-          // Нет записей — тег не трогаем (старый файл остаётся). nikitin/calendar.js (путь Никитина) — не календарь музея.
+          // Старые calendar-<x>.js удалены (19.10): нет записей, а тег остался — ошибка сборки. nikitin/calendar.js (путь Никитина) — не календарь музея.
           const kal = failKalendarya(museum, base);
           let kalSrc = null;
           if (kal) kalSrc = `${base}muzei/${museum}/${kal.name}`;
@@ -403,6 +403,7 @@ export default function fullPages() {
             if (!fs.existsSync(path.join(root, 'muzei', museum, 'den', key, 'index.html'))) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
             let html = fs.readFileSync(from, 'utf8');
             if (kalSrc) html = html.replace(OLD_KAL, (m, a, q) => { nKal++; return `${a}${q}${kalSrc}${q}`; });
+            else if (OLD_KAL.test(html)) { OLD_KAL.lastIndex = 0; bad.push(`${museum}/${key} — тег старого calendar-*.js, а записей дней нет`); continue; }
             if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
             for (const e of checkMuseumName(html, museum)) bad.push(`${museum}/${key} — ${e}`);
