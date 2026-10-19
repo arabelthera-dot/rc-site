@@ -6,12 +6,20 @@
 //   хук      — первое предложение хука карточки есть в тексте старой страницы и в тексте новой;
 //   источник — каждый домен из source карточки (или вся строка, если доменов нет) есть в старой и в новой.
 // Текст сравнивается после чистки: без тегов, скриптов, стилей; ё=е, кавычки, тире и пробелы приведены.
-// Любое расхождение — красное: код 1. Старый сайт — клон arabelthera-dot/rc-museum-preview (main).
+// Что красное (правило 19.10.2026, разбор 65 дней без старой страницы и 49 расхождений карточки):
+//   красное — нет новой страницы; старой страницы нет нигде в истории старого сайта (git log --all,
+//             кроме ветки site — там выкладка нового сайта с переадресациями);
+//             расходятся 2+ поля из дата/название/хук/источник;
+//   жёлтое  — старая страница лежит только в неслитой ветке; расходится 1 поле;
+//   не считается — <title> отличается только добавкой названия музея (одна строка входит в другую).
+//   Название карточки сверяется с <title> старой страницы (не с <h1>).
+// Красное — код 1, жёлтое печатается и код не меняет. Старый сайт — клон arabelthera-dot/rc-museum-preview.
 // Запуск: node scripts/sverka-teksta.mjs [--dist dist] [--legacy путь] [--polya data,nazvanie,hook,istochnik]
 //         (LEGACY — путь к старому сайту, по умолчанию ~/rc-museum-preview; --vse — печатать все расхождения)
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { execFileSync } from 'node:child_process';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const DIST = path.resolve(arg('--dist', 'dist'));
@@ -39,8 +47,12 @@ const sourceParts = (s) => {
   return d && d.length ? [...new Set(d.map((x) => x.toLowerCase()))] : [norm((s || '').replace(/^\s*источники?\s*:\s*/i, ''))].filter(Boolean);
 };
 
-let dney = 0, krasnyh = 0;
-const brak = [], poPolyu = { data: 0, nazvanie: 0, hook: 0, istochnik: 0, net_stranicy: 0, net_staroy: 0 };
+const vIstorii = (p) => { try {
+  return execFileSync('git', ['-C', LEGACY, 'log', '--exclude=*/site', '--exclude=site', '--all', '-1', '--format=%h %D', '--', p], { encoding: 'utf8' }).trim();
+} catch { return ''; } };
+
+let dney = 0, krasnyh = 0, zheltyh = 0;
+const brak = [], zhelt = [], poPolyu = { data: 0, nazvanie: 0, hook: 0, istochnik: 0, net_stranicy: 0, net_staroy: 0 };
 for (const museum of fs.readdirSync(DAYS).sort()) {
   for (const f of fs.readdirSync(path.join(DAYS, museum)).sort()) {
     const d = JSON.parse(fs.readFileSync(path.join(DAYS, museum, f), 'utf8'));
@@ -49,7 +61,11 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
     const oldF = path.join(LEGACY, d.legacy_page), newF = path.join(DIST, 'muzei', museum, 'den', key, 'index.html');
     dney++;
     const errs = [];
-    if (!fs.existsSync(oldF)) errs.push(['net_staroy', `нет старой страницы ${d.legacy_page}`]);
+    let vetka = '';
+    if (!fs.existsSync(oldF)) {
+      vetka = vIstorii(d.legacy_page);
+      errs.push(['net_staroy', vetka ? `старая страница только в неслитой ветке (${vetka})` : `нет старой страницы ${d.legacy_page} нигде в истории`]);
+    }
     if (!fs.existsSync(newF)) errs.push(['net_stranicy', `нет новой страницы muzei/${museum}/den/${key}/`]);
     if (!errs.length) {
       const oh = fs.readFileSync(oldF, 'utf8'), nh = fs.readFileSync(newF, 'utf8');
@@ -62,11 +78,12 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
       if (POLYA.has('nazvanie')) {
         for (const t of ['h1', 'title']) {
           const a = tag(oh, t), b = tag(nh, t);
-          if (a !== b) errs.push(['nazvanie', `<${t}> старый «${a}» ≠ новый «${b}»`]);
+          if (a === b || (t === 'title' && a && b && (a.includes(b) || b.includes(a)))) continue;
+          errs.push(['nazvanie', `<${t}> старый «${a}» ≠ новый «${b}»`]);
         }
         const nz = norm(d.title || '');
-        if (nz && !tag(oh, 'h1').includes(nz) && !tag(oh, 'title').includes(nz))
-          errs.push(['nazvanie', `название карточки «${d.title}» не входит в <h1>/<title> старой («${tag(oh, 'h1')}»)`]);
+        if (nz && !tag(oh, 'title').includes(nz))
+          errs.push(['nazvanie', `название карточки «${d.title}» не входит в <title> старой («${tag(oh, 'title')}»)`]);
       }
       if (POLYA.has('hook') && d.hook) {
         const h = norm(firstSentence(d.hook));
@@ -81,14 +98,17 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
       }
     }
     if (errs.length) {
-      krasnyh++;
-      for (const k of new Set(errs.map((e) => e[0]))) poPolyu[k]++;
-      brak.push(`✗ ${id} (${d.legacy_page})\n  ${errs.map((e) => e[1]).join('\n  ')}`);
+      const vidy = new Set(errs.map((e) => e[0]));
+      for (const k of vidy) poPolyu[k]++;
+      const polya = [...vidy].filter((k) => k in { data: 1, nazvanie: 1, hook: 1, istochnik: 1 }).length;
+      const red = vidy.has('net_stranicy') || (vidy.has('net_staroy') && !vetka) || polya >= 2;
+      const zapis = `${red ? '✗' : '△'} ${id} (${d.legacy_page})\n  ${errs.map((e) => e[1]).join('\n  ')}`;
+      if (red) { krasnyh++; brak.push(zapis); } else { zheltyh++; zhelt.push(zapis); }
     }
   }
 }
-for (const b of VSE ? brak : brak.slice(0, 30)) console.log(b);
-if (!VSE && brak.length > 30) console.log(`… ещё ${brak.length - 30} (полный список — --vse)`);
-console.log(`\nsverka-teksta: дней с legacy_page ${dney}, сверено чисто ${dney - krasnyh}, с расхождениями ${krasnyh}`);
+for (const b of VSE ? [...brak, ...zhelt] : brak.slice(0, 30)) console.log(b);
+if (!VSE && brak.length > 30) console.log(`… ещё ${brak.length - 30} красных (полный список с жёлтыми — --vse)`);
+console.log(`\nsverka-teksta: дней с legacy_page ${dney}, чисто ${dney - krasnyh - zheltyh}, красных ${krasnyh}, жёлтых ${zheltyh}`);
 console.log(`  по полям (дней): дата ${poPolyu.data}, название ${poPolyu.nazvanie}, хук ${poPolyu.hook}, источник ${poPolyu.istochnik}, нет новой страницы ${poPolyu.net_stranicy}, legacy_page нет на main старого сайта ${poPolyu.net_staroy}`);
 process.exit(krasnyh ? 1 : 0);
