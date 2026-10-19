@@ -27,7 +27,7 @@ const SIZES_CARD = '(min-width: 1250px) 290px, (min-width: 1100px) 33vw, (min-wi
   <div class="p-today__list" data-t="list">
     {t.cards.map((c, i) => (
       <article class={`p-today__card${i === 0 ? ' p-today__card--lead' : ''}${c.img ? '' : ' p-today__card--noimg'}`}>
-        {c.img && <div class="p-today__pic"><img src={c.img} alt={c.alt} width="1600" height="1000" sizes={i === 0 ? SIZES_LEAD : SIZES_CARD} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>}
+        {c.img && <div class="p-today__pic"><img src={c.img} alt={c.alt} width="1600" height="1000" sizes={i === 0 ? SIZES_LEAD : SIZES_CARD} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" /></div>}
         <div class="p-today__body">
           <p class="p-today__museum">{c.museumTitle}</p>
           <h3 class="p-today__title">{c.title}</h3>
@@ -59,7 +59,7 @@ const SIZES_CARD = '(min-width: 1250px) 290px, (min-width: 1100px) 33vw, (min-wi
     list.textContent = '';
     t.cards.forEach(function (c, i) {
       var a = el('article', 'p-today__card' + (i === 0 ? ' p-today__card--lead' : '') + (c.img ? '' : ' p-today__card--noimg'));
-      if (c.img) { var pic = el('div', 'p-today__pic'), img = el('img'); if (c.srcset) { img.sizes = box.getAttribute(i ? 'data-sizes-card' : 'data-sizes-lead'); img.srcset = c.srcset; } img.src = c.img; img.alt = c.alt || ''; img.width = 1600; img.height = 1000; img.decoding = 'async'; if (i) img.loading = 'lazy'; pic.appendChild(img); a.appendChild(pic); }
+      if (c.img) { var pic = el('div', 'p-today__pic'), img = el('img'); if (c.srcset) { img.sizes = box.getAttribute(i ? 'data-sizes-card' : 'data-sizes-lead'); img.srcset = c.srcset; } img.src = c.img; img.alt = c.alt || ''; img.width = 1600; img.height = 1000; img.decoding = 'async'; if (i) img.loading = 'lazy'; else img.fetchPriority = 'high'; pic.appendChild(img); a.appendChild(pic); }
       var b = el('div', 'p-today__body');
       b.appendChild(el('p', 'p-today__museum', c.museumTitle));
       b.appendChild(el('h3', 'p-today__title', c.title));
