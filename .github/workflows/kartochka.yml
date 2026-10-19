@@ -1,0 +1,46 @@
+# Пять вопросов до изменения (Сергей, 28.09.2026): у карточки доски не пуст ни один раздел
+# «Готово значит», «Что задевает», «Что нужно», «Что будет без нужного», «Проверка до слияния», «Как откатить».
+# Форма kartochka.yml требует их сама; эта проверка ловит карточки из консоли (gh issue create --body-file).
+# Пусто → метка net-pyati-otvetov и комментарий; заполнили → метка снимается. Карточки,
+# перенесённые из AI_Projects 19.10.2026 («Перенесено из arabelthera-dot/AI_Projects#»), не проверяются.
+# Откат: удалить этот файл.
+name: kartochka
+on:
+  issues:
+    types: [opened, edited, reopened]
+permissions:
+  issues: write
+jobs:
+  pyat-voprosov:
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            if (body.includes('Перенесено из arabelthera-dot/AI_Projects#')) return;
+            const nado = ['Готово значит', 'Что задевает', 'Что нужно', 'Что будет без нужного',
+                          'Проверка до слияния', 'Как откатить'];
+            const razdel = {};
+            let tek = null;
+            for (const s of body.split(/\r?\n/)) {
+              const m = s.match(/^###\s+(.+?)\s*$/);
+              if (m) { tek = m[1]; razdel[tek] = ''; continue; }
+              if (tek) razdel[tek] += s.trim();
+            }
+            const pusto = nado.filter(h => !razdel[h] || razdel[h] === '_No response_');
+            const metka = 'net-pyati-otvetov';
+            const nomer = context.payload.issue.number;
+            const est = context.payload.issue.labels.some(l => l.name === metka);
+            if (pusto.length) {
+              if (!est) {
+                await github.rest.issues.addLabels({...context.repo, issue_number: nomer, labels: [metka]});
+                await github.rest.issues.createComment({...context.repo, issue_number: nomer,
+                  body: 'Нет ответа в разделах: ' + pusto.map(h => '«' + h + '»').join(', ') +
+                        '. Пять вопросов до изменения обязательны (Сергей, 28.09.2026): нет пяти ответов — наряда нет.'});
+              }
+              core.setFailed('Пустые разделы: ' + pusto.join(', '));
+            } else if (est) {
+              await github.rest.issues.removeLabel({...context.repo, issue_number: nomer, name: metka});
+            }

@@ -1,0 +1,81 @@
+# Владельцы кода по зонам агентов — docs/agents/zones.json (AI_Projects), сверено 19.10.2026.
+# Аккаунт GitHub у всех агентов один — @arabelthera-dot; зона (подпись агента) — комментарием над строками.
+# Обязательное ревью владельца в ruleset main НЕ включено: при одном аккаунте автор не может одобрить
+# свою заявку, и автослияние встало бы. Появится отдельный логин агента — заменить владельца в его зоне
+# и включить require_code_owner_review.
+# Зона меняется только командой Сергея «меняю зону такого-то» — тогда правятся zones.json и этот файл.
+
+* @arabelthera-dot
+
+# museum:arhitektura — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/arhitektura/ @arabelthera-dot
+/public/muzei/arhitektura/ @arabelthera-dot
+/src/data/calendar-meta-arhitektura.json @arabelthera-dot
+/src/data/full-pages/arhitektura/ @arabelthera-dot
+
+# museum:iskusstvo — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/iskusstvo/ @arabelthera-dot
+/public/muzei/iskusstvo/ @arabelthera-dot
+/src/data/calendar-meta-iskusstvo.json @arabelthera-dot
+/src/data/full-pages/iskusstvo/ @arabelthera-dot
+
+# museum:izobreteniya — claude2 (Джарвис 2)
+/src/content/days/izobreteniya/ @arabelthera-dot
+/public/muzei/izobreteniya/ @arabelthera-dot
+/src/data/calendar-meta-izobreteniya.json @arabelthera-dot
+/src/data/full-pages/izobreteniya/ @arabelthera-dot
+
+# museum:kalendar-pobed — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/kalendar-pobed/ @arabelthera-dot
+/public/muzei/kalendar-pobed/ @arabelthera-dot
+/src/data/calendar-meta-kalendar-pobed.json @arabelthera-dot
+/src/data/full-pages/kalendar-pobed/ @arabelthera-dot
+
+# museum:karikatura — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/karikatura/ @arabelthera-dot
+/public/muzei/karikatura/ @arabelthera-dot
+/src/data/calendar-meta-karikatura.json @arabelthera-dot
+/src/data/full-pages/karikatura/ @arabelthera-dot
+
+# museum:kostyum-narodov — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/kostyum-narodov/ @arabelthera-dot
+/public/muzei/kostyum-narodov/ @arabelthera-dot
+/src/data/calendar-meta-kostyum-narodov.json @arabelthera-dot
+
+# museum:literatura — claude4 (Джарвис 4) — подписка не продлена 13.10.2026 (Михаил): будильник не звонит, музей без хозяина, ветки сохранены
+/src/content/days/literatura/ @arabelthera-dot
+/public/muzei/literatura/ @arabelthera-dot
+/src/data/calendar-meta-literatura.json @arabelthera-dot
+/src/data/full-pages/literatura/ @arabelthera-dot
+
+# museum:narodnyy-kostyum — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/narodnyy-kostyum/ @arabelthera-dot
+/public/muzei/narodnyy-kostyum/ @arabelthera-dot
+/src/data/calendar-meta-narodnyy-kostyum.json @arabelthera-dot
+
+# museum:ne-sdayutsya — claude3 (Джарвис 3) — подписка не продлена 13.10.2026 (Михаил): будильник не звонит, музей без хозяина, ветки сохранены
+/src/content/days/ne-sdayutsya/ @arabelthera-dot
+/public/muzei/ne-sdayutsya/ @arabelthera-dot
+/src/data/calendar-meta-ne-sdayutsya.json @arabelthera-dot
+/src/data/full-pages/ne-sdayutsya/ @arabelthera-dot
+
+# museum:pervoprohodcy — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/pervoprohodcy/ @arabelthera-dot
+/public/muzei/pervoprohodcy/ @arabelthera-dot
+/src/data/calendar-meta-pervoprohodcy.json @arabelthera-dot
+/src/data/full-pages/pervoprohodcy/ @arabelthera-dot
+
+# museum:skazki — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/skazki/ @arabelthera-dot
+/public/muzei/skazki/ @arabelthera-dot
+/src/data/calendar-meta-skazki.json @arabelthera-dot
+/src/data/full-pages/skazki/ @arabelthera-dot
+
+# museum:sport — arabelthera-dot (хозяина нет, ведёт Джарвис-оркестратор)
+/src/content/days/sport/ @arabelthera-dot
+/public/muzei/sport/ @arabelthera-dot
+/src/data/calendar-meta-sport.json @arabelthera-dot
+/src/data/full-pages/sport/ @arabelthera-dot
+
+# Доска и проверки — оркестратор (arabelthera-dot)
+/.github/ @arabelthera-dot
