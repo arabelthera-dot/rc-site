@@ -23,6 +23,8 @@ jobs:
     # переключения собирает задача vykladka-site ниже — без этой переменной, он индексируется.
     env:
       PUBLIC_NOINDEX: '1'
+      # Поиск по сайту (pagefind) — переменная репозитория RC_POISK ('1' — включён; src/integrations/poisk.mjs).
+      RC_POISK: ${{ vars.RC_POISK }}
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v5
@@ -59,6 +61,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build -- --site https://russian-civilization.ru --base /
+        env:
+          RC_POISK: ${{ vars.RC_POISK }}
       - uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.RC_MUSEUM_PREVIEW_DEPLOY_KEY }}
