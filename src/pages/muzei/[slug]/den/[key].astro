@@ -100,7 +100,8 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={ogCover?.src ?? ogCard} imageAlt={ogCover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
-  museumTitle={m.title_ru} here={when} noindex={soon}>
+  museumTitle={m.title_ru} here={when} noindex={soon}
+  about={soon ? undefined : d.title} temporal={!soon && d.year != null && d.year !== '' ? String(d.year) : undefined}>
   <Fragment slot="head">
     {fontCss && <style data-rc-fonts set:html={fontCss} />}
     <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />

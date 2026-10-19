@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
@@ -35,6 +35,8 @@ const noindex = Astro.props.noindex || import.meta.env.PUBLIC_NOINDEX === '1';
 const ogImage = new URL(image ?? ogFile, Astro.site).href;
 // Разметка schema.org (JSON-LD, пункт «schema» замера glazami): тип — из пропса schema, иначе по пропсам:
 // главная — WebSite + Organization, главная музея — Museum, календарь — CollectionPage, день — Article, прочее — WebPage.
+// У дня about — предмет дня (его title), temporalCoverage — год события (поле year); нет поля — ключа нет (JSON.stringify
+// выбрасывает undefined). SearchAction у WebSite нет: поиск (интеграция poisk) по умолчанию выключен (Д5 плана сайта, 19.10).
 const home = new URL(base, Astro.site).href;
 const org = { '@type': 'Organization', name: 'Русская цивилизация', url: home };
 const museumLd = museum && museumTitle ? { '@type': 'Museum', name: museumTitle, url: new URL(`${base}muzei/${museum}/`, Astro.site).href } : undefined;
@@ -46,7 +48,8 @@ const ld = kind === 'home'
      { '@context': 'https://schema.org', ...org, logo: new URL(`${base}og/index.jpg`, Astro.site).href }]
   : kind === 'museum' ? { '@context': 'https://schema.org', ...museumLd, description, image: ogImage, parentOrganization: org }
   : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: 'ru', description, isPartOf: museumLd }
-  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: 'ru', description, image: ogImage, isPartOf: museumLd, publisher: org }
+  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: 'ru', description, image: ogImage, isPartOf: museumLd, publisher: org,
+      about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: 'ru', description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home } };
 const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
