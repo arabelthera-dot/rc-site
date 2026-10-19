@@ -64,9 +64,6 @@
   "papka": "~/projects/russian-civilization/pilot-karikatura",
   "fayly": [
    [
-    "january-31-days.md"
-   ],
-   [
     "*-na-utverzhdenie.md"
    ]
   ],
@@ -77,9 +74,9 @@
    "mehanika": "Механика"
   },
   "zagolovki": [
-   "january-31-days.md"
+   "january-31-na-utverzhdenie.md"
   ],
-  "_prim": "january-31-days.md — не таблица, а заголовки «## 1 января · …» + **Крючок:** (zagolovki); позже — сильнее"
+  "_prim": "январь — не таблица, а заголовки «## 1 января · …» + **Хук.** (zagolovki); january-31-days.md — черновик, не утверждён"
  },
  "ne-sdayutsya": {
   "tip": "bloki",

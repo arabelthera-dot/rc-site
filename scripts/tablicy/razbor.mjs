@@ -94,18 +94,20 @@ function parseBloki(file) {
     hook: raw[i + 1] ?? u.hook, mehanika: u.mechanic }));
 }
 
-// Заголовки «## 1 января · …» / «### Название» / «**Крючок:** «…»» в несколько строк (karikatura, january-31-days.md).
+// Заголовки «## 1 января · Название» / «### Название» / «**Крючок:** …» или «**Хук.** …» в несколько строк
+// (karikatura: january-31-na-utverzhdenie.md — утверждён, «да» Сергея 04.09: «по карикатуре утверждаю все 12»).
 const ROD = { 'января': 1, 'февраля': 2, 'марта': 3, 'апреля': 4, 'мая': 5, 'июня': 6, 'июля': 7, 'августа': 8,
   'сентября': 9, 'октября': 10, 'ноября': 11, 'декабря': 12 };
 function parseZagolovki(file) {
   const out = []; let u = null, inHook = false;
   for (const ln of fs.readFileSync(file, 'utf8').split('\n')) {
     const h = ln.match(/^##\s+(\d{1,2})\s+([а-я]+)/);
-    if (h && ROD[h[2]]) { u = { key: `${pad(ROD[h[2]])}-${pad(Number(h[1]))}` }; out.push(u); inHook = false; continue; }
+    if (h && ROD[h[2]]) { u = { key: `${pad(ROD[h[2]])}-${pad(Number(h[1]))}` }; out.push(u); inHook = false;
+      const z = ln.match(/·\s*(.+)$/); if (z) u.nazvanie = z[1].trim(); continue; }
     if (!u) continue;
     if (inHook) { if (ln.trim() && !ln.startsWith('**')) { u.hook += ' ' + ln.trim(); continue; } inHook = false; }
-    const t = ln.match(/^###\s+(.+)/); if (t && !u.nazvanie) { u.nazvanie = t[1].trim(); continue; }
-    const k = ln.match(/^\*\*Крючок:\*\*\s*(.*)/); if (k && u.hook === undefined) { u.hook = k[1].trim(); inHook = true; }
+    const t = ln.match(/^###\s+(.+)/); if (t) { u.nazvanie = t[1].trim(); continue; }
+    const k = ln.match(/^\*\*(?:Крючок:|Хук[.:])\*\*\s*(.*)/); if (k && u.hook === undefined) { u.hook = k[1].trim(); inHook = true; }
   }
   for (const x of out) x.hook = String(x.hook ?? '').replace(/\s+/g, ' ').trim();
   return out;
@@ -136,11 +138,13 @@ function sverka() {
     const recs = {};
     if (fs.existsSync(dir)) for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json')))
       recs[f.slice(0, -5)] = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
-    let ok = 0, old = 0; const diff = [], noRec = [], noTab = [];
+    let ok = 0, old = 0; const diff = [], noRec = [], noTab = [], pusto = [];
     for (const k of ALL) {
       if (!ap[k]) { if (recs[k]) noTab.push(k); continue; }
       if (!recs[k]) { noRec.push(k); continue; }
       const rh = norm(recs[k].hook), v = ap[k], top = v[v.length - 1];
+      // «—» в колонке хука — день оставлен пустым по утверждённой таблице (kalendar-pobed 22 июня): запись свободна.
+      if (/^[—–-]?$/.test(norm(top.hook))) { ok++; pusto.push(k); continue; }
       if (rh === norm(top.hook)) { ok++; continue; }
       if (v.some((x) => norm(x.hook) === rh)) { ok++; old++; continue; }
       diff.push({ k, file: top.file, tab: top.hook, rec: recs[k].hook });
@@ -149,6 +153,7 @@ function sverka() {
     for (const d of diff) console.log(`  ≠ ${d.k} [${d.file}]\n    табл: ${d.tab}\n    запись: ${d.rec}`);
     if (noRec.length) console.log(`  нет записи: ${noRec.join(', ')}`);
     if (noTab.length) console.log(`  нет в таблице: ${noTab.join(', ')}`);
+    if (pusto.length) console.log(`  пустой день по таблице (совпало): ${pusto.join(', ')}`);
   }
 }
 
