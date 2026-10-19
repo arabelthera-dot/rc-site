@@ -16,7 +16,8 @@ const LEGACY = process.env.LEGACY || path.join(os.homedir(), 'rc-museum-preview'
 // Пилоты pilot-<музей>/ публиковались из рабочего проекта — ссылки на них разосланы (17.10).
 const RC = process.env.RC || path.join(os.homedir(), 'projects', 'russian-civilization');
 // Старое имя папки → slug нового сайта (нет в списке и нет музея — главная города).
-const ALIAS = { nesdayutsya: 'ne-sdayutsya', 'kostyum-russkiy': 'narodnyy-kostyum', kostyum: 'narodnyy-kostyum' };
+const ALIAS = { nesdayutsya: 'ne-sdayutsya', 'kostyum-russkiy': 'narodnyy-kostyum', kostyum: 'narodnyy-kostyum',
+  'russkiy-kostyum': 'narodnyy-kostyum' };
 const slugOf = (d) => ALIAS[d] || d;
 const DAYS = 'src/content/days';
 
@@ -42,6 +43,16 @@ const gitOld = (() => {
       { encoding: 'utf8', maxBuffer: 1 << 28 }).split('\n').filter((f) => f.endsWith('.html'));
   } catch { return []; }
 })();
+// А5 (20.10): обход показал 404 у корневых day-*.html, calendar.html и control/pilot-*/… — их не было
+// в описи (gitOld смотрит только muzei/ и TOP). Добираем из всей истории: корень старого сайта
+// (это был Музей изобретений), calendar/*, control/pilot-*/*, review/*.
+const gitExtra = (() => {
+  try {
+    return execFileSync('git', ['-C', LEGACY, 'log', '--all', '--name-only', '--format='],
+      { encoding: 'utf8', maxBuffer: 1 << 28 }).split('\n')
+      .filter((f) => /^([^/]+|calendar\/[^/]+|control\/pilot-[^/]+\/.+|review\/.+)\.html$/.test(f));
+  } catch { return []; }
+})();
 const pilots = fs.existsSync(RC) ? fs.readdirSync(RC).filter((d) => /^pilot-/.test(d)) : [];
 const pilotFiles = pilots.flatMap((d) => {
   const w = (dir) => fs.readdirSync(path.join(RC, dir), { withFileTypes: true }).flatMap((e) =>
@@ -56,7 +67,8 @@ for (const d of [...oldDirs, 'nesdayutsya']) roots.push(`muzei/${d}/index.html`)
 const opis = fs.readFileSync('scripts/legacy-paths.txt', 'utf8').split('\n').map((s) => s.trim())
   .filter((s) => s && !s.startsWith('#') && s !== 'index.html');
 const old = [...new Set([...['muzei', ...TOP]
-  .filter((d) => fs.existsSync(path.join(LEGACY, d))).flatMap(walk), ...gitOld, ...pilotFiles, ...roots, ...opis])].sort();
+  .filter((d) => fs.existsSync(path.join(LEGACY, d))).flatMap(walk), ...gitOld, ...gitExtra, ...pilotFiles, ...roots, ...opis])]
+  .filter((f) => !['index.html', '404.html', 'yandex_c1516645b4f9cca5.html'].includes(f)).sort();
 
 // Старая страница «переехала» — куда ведёт её meta refresh (путь от корня старого сайта).
 const refresh = (rel) => {
@@ -81,7 +93,44 @@ for (const to of Object.values(PEREEZD)) {
   if (!m || !fs.existsSync(path.join(DAYS, m, `${k}.json`))) throw new Error(`PEREEZD: нет дня ${to}`);
 }
 
+// А5: корневые страницы старого сайта — Музей изобретений. Ручные двойники дней без даты в имени.
+const ROOT_DAY = { kotelnikov: '01-30', 'day-kotelnikov': '01-30', luna1: '01-02', luna9: '01-03',
+  lobachevsky: '12-01', jan01: '01-01', cabletv: '01-01' };
+const MON = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+const izoDay = (k) => fs.existsSync(path.join(DAYS, 'izobreteniya', `${k}.json`)) && `/muzei/izobreteniya/den/${k}/`;
+const resolveRoot = (rel) => {
+  const base = rel.replace(/\.html$/, '');
+  if (base === 'calendar') return ['/muzei/izobreteniya/calendar/', 'корень: календарь изобретений'];
+  if (base === 'izobreteniya') return ['/muzei/izobreteniya/', 'корень: главная изобретений'];
+  // day-08-25nov-pirogov (номер волны) и …-v2 → имя страницы дня Музея изобретений.
+  const name = base.replace(/^day-\d{2}-/, 'day-').replace(/-(v\d+|final)$/, '');
+  const viaLegacy = byLegacy.get(`muzei/izobreteniya/${name}.html`);
+  if (viaLegacy) return [viaLegacy, 'корень: день изобретений'];
+  const d = name.match(/^day-(\d{2})([a-z]{3})-/);
+  const byDate = d && MON[d[2]] && izoDay(`${String(MON[d[2]]).padStart(2, '0')}-${d[1]}`);
+  if (byDate) return [byDate, 'корень: день изобретений по дате'];
+  const manual = ROOT_DAY[name] && izoDay(ROOT_DAY[name]);
+  if (manual) return [manual, 'корень: день изобретений (ручной двойник)'];
+  return null;
+};
+
 const resolve = (rel, seen = new Set()) => {
+  if (!rel.includes('/')) { const r = resolveRoot(rel); if (r) return r; }
+  // calendar/yanvar-1-10-<музей>(-v2).html — черновые календари месяца → календарь музея.
+  const calDir = rel.match(/^calendar\/[a-z]+-\d+-\d+-([a-z-]+?)(-v\d+)?\.html$/);
+  if (calDir) {
+    const m = slugOf(calDir[1]);
+    if (withDays.has(m)) return [`/muzei/${m}/calendar/`, 'calendar/: календарь музея'];
+    if (museums.has(m)) return [`/muzei/${m}/`, 'calendar/ → главная музея'];
+  }
+  // control/pilot-<музей>/… — рабочие страницы пилотов: calendar-* → календарь, прочее → главная музея.
+  const ctl = rel.match(/^control\/pilot-([^/]+)\/(.+)$/);
+  if (ctl) {
+    const m = slugOf(ctl[1]);
+    if (/^calendar/.test(ctl[2]) && withDays.has(m)) return [`/muzei/${m}/calendar/`, 'control: календарь музея'];
+    if (museums.has(m)) return [`/muzei/${m}/`, 'control → главная музея'];
+    return ['/', 'control: музея на новом сайте нет → главная города'];
+  }
   const cal = rel.match(REVIEW_CAL);
   if (cal && withDays.has(slugOf(cal[1]))) return [`/muzei/${slugOf(cal[1])}/calendar/`, 'календарь'];
   // Рабочие страницы review/ (19.10): review/calendar-<месяц> — месячные календари Музея архитектуры
@@ -117,7 +166,7 @@ const resolve = (rel, seen = new Set()) => {
 const out = {};
 const why = {};
 // Путь, совпадающий со схемой нового сайта (den/MM-DD/, calendar/), — страница нового сайта, не переадресация.
-const NEW_SHAPE = /^muzei\/[^/]+\/(den\/[^/]+|calendar)\/index\.html$/;
+const NEW_SHAPE = /^muzei\/[^/]+\/(den\/[^/]+|calendar|tablica)\/index\.html$/;
 for (const rel of old) {
   if (NEW_SHAPE.test(rel)) { why['адрес тот же'] = (why['адрес тот же'] || 0) + 1; continue; }
   const [to, reason] = resolve(rel);
