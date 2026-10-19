@@ -1,0 +1,23 @@
+{
+  "_kak": "Музей → адаптер утверждённых таблиц. fayly — маски имён в папке papka (порядок = старшинство: позже — сильнее); rang — доп. ключи сортировки (подстрока → вес, первая совпавшая); kolonki — начало заголовка колонки; tip: tablica | bloki. ~ = домашняя папка. todo — адаптер ещё не описан, музей пропускается.",
+  "izobreteniya": { "tip": "tablica", "papka": "~/projects/russian-civilization/pilot-izobreteniya",
+    "fayly": [["*-na-utverzhdenie.md"]], "kolonki": { "data": "Дата", "nazvanie": "Экспонат", "hook": "Хук", "mehanika": "Механика" } },
+  "sport": { "tip": "tablica", "papka": "~/projects/russian-civilization/pilot-sport",
+    "fayly": [["*-na-utverzhdenie.md", "korotkiy-god-*.md"]],
+    "rang": [{ "korotkiy": 2 }, { "-v3-": 3, "-v2-": 2, "": 1 }],
+    "kolonki": { "data": "Дата", "nazvanie": "Экспонат", "hook": "Хук", "mehanika": "Механика" } },
+  "literatura": { "tip": "tablica", "papka": "~/projects/russian-civilization/pilot-literatura",
+    "fayly": [["*-peresborka-5050.md"], ["*-na-utverzhdenie.md"]],
+    "kolonki": { "data": "Дата", "nazvanie": "Экспонат", "hook": "Хук", "mehanika": "Механика" } },
+  "karikatura": { "tip": "tablica", "papka": "~/projects/russian-civilization/pilot-karikatura",
+    "fayly": [["january-31-days.md"], ["*-na-utverzhdenie.md"]],
+    "kolonki": { "data": "Дата", "nazvanie": "Экспонат", "hook": "Хук", "mehanika": "Механика" } },
+  "ne-sdayutsya": { "tip": "bloki", "papka": "~/projects/russian-civilization/pilot-nesdayutsya",
+    "fayly": [["calendar-[01][0-9]-*.md"]], "_prim": "дни — блоки «## День N — …», месяц — из имени файла calendar-ММ-*.md" },
+  "arhitektura": "todo",
+  "iskusstvo": "todo",
+  "kalendar-pobed": "todo",
+  "kostyum-narodov": "todo",
+  "pervoprohodcy": "todo",
+  "skazki": "todo"
+}
