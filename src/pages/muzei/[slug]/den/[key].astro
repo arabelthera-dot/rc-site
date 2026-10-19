@@ -73,7 +73,7 @@ const moreTitle = d.more_title;
 // Поле mechanic — описание задачи для разработки (след черновика, 04-build «Заголовок и подписи»);
 // посетителю его не показываем, интерактив придёт движком при переносе (шаг 4 плана).
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
-const legacy = d.legacy_page ? `https://arabelthera-dot.github.io/rc-museum-preview/${d.legacy_page}` : undefined;
+const legacy = d.legacy_page ? `${base}${d.legacy_page}` : undefined;
 // museum-chrome.js (движок старого сайта, как есть): «Поделиться», липкие стрелки, строка «Случайное».
 // Случайный день — адресом с index.html: движок сравнивает последний кусок адреса, а у нас он пустой.
 const dayName = (x: { key: string; title: string }) => `${whenOf(x.key)} · ${x.title}`;
