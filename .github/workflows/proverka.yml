@@ -19,6 +19,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          RC_POISK: ${{ vars.RC_POISK }}
       # Сайт живёт под /rc-site/ — раскладываем сборку так же, как на сервере.
       - run: mkdir -p /tmp/root && ln -s "$PWD/dist" /tmp/root/rc-site
       - uses: lycheeverse/lychee-action@v2
