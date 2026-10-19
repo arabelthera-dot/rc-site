@@ -71,6 +71,13 @@ jobs:
         continue-on-error: ${{ vars.STAROE_STROGO != '1' }}
         timeout-minutes: 3
         run: python3 scripts/staroe-pravilo.py --dist dist
+      # Полнота переадресаций (план переезда, шаг 4; 19.10.2026): каждый публичный адрес старого сайта
+      # из scripts/legacy-paths.txt есть в сборке — страницей или переадресацией; иначе список и код 1.
+      # Новое — выключенным: строгость переменной репозитория REDIR_STROGO=1.
+      - name: polnota — старые адреса не умирают
+        continue-on-error: ${{ vars.REDIR_STROGO != '1' }}
+        timeout-minutes: 2
+        run: node scripts/polnota.mjs --dist dist
       # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам
       # (главная, музей izobreteniya, его календарь, день 01-05). ТОЛЬКО ОТЧЁТ — заявку роняют лишь
       # сборка и битые ссылки (Сергей 17.10): continue-on-error, в lighthouserc только "warn".
