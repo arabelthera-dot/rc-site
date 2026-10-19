@@ -78,6 +78,16 @@ jobs:
         continue-on-error: ${{ vars.REDIR_STROGO != '1' }}
         timeout-minutes: 2
         run: node scripts/polnota.mjs --dist dist
+      # Сверка карточки дня и полной страницы (19.10.2026): title карточки против <title>/<h1> страницы
+      # src/data/full-pages — общее значимое слово или дата дня (логика pageMatches импорта). Коммит 81b9dff
+      # сдвинул страницы «Не сдаются» на соседний день, и никто не поймал. Новое — выключенным:
+      # шаг роняет заявку только при переменной репозитория SVERKA_H1_STROGO=1.
+      - name: sverka-h1 — страница дня про этот день
+        continue-on-error: ${{ vars.SVERKA_H1_STROGO != '1' }}
+        timeout-minutes: 1
+        env:
+          SVERKA_H1_STROGO: '1'
+        run: node scripts/sverka-h1.mjs
       # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам
       # (главная, музей izobreteniya, его календарь, день 01-05). ТОЛЬКО ОТЧЁТ — заявку роняют лишь
       # сборка и битые ссылки (Сергей 17.10): continue-on-error, в lighthouserc только "warn".
