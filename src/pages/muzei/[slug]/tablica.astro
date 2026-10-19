@@ -1,13 +1,12 @@
 ---
 // Таблица года музея (ядро данных, #179): дата → название → хук → картинка. Собирается из той же коллекции days,
-// что календарь и страница дня, — данных вручную не дублирует. Пока только музеи пилота (src/data/yadro-pilot.json).
+// что календарь и страница дня, — данных вручную не дублирует. Все музеи с записями дней (план ядра, шаг 3).
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import pilot from '../../../data/yadro-pilot.json';
 export async function getStaticPaths() {
   const days = await getCollection('days');
   return (await getCollection('museums'))
-    .filter((m) => m.data.slug in pilot && days.some((d) => d.data.museum === m.data.slug))
+    .filter((m) => days.some((d) => d.data.museum === m.data.slug))
     .map((m) => ({ params: { slug: m.data.slug }, props: { m: m.data,
       days: days.filter((d) => d.data.museum === m.data.slug).sort((a, b) => a.data.key.localeCompare(b.data.key)) } }));
 }
