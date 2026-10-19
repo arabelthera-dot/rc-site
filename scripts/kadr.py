@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Кадр дня: сначала российские фонды, Викисклад (Commons) — последним запасным (#2193).
 
-Порядок find: ГИМ (shm_catalog) → Госкаталог (goskatalog) → Русский музей (rusmuseum) →
-PastVu (только с --geo lat,lon) → Commons. К фондам ходит не kadr.py, а реестровый access.py
+Порядок find: ГИМ (shm_catalog, не поддержан: robots.txt запрещает /api/, не обходим) → Госкаталог
+(goskatalog) → Русский музей (rusmuseum) → Третьяковка (tretyakov) → Артефакт (ar_culture) →
+PastVu (только с --geo lat,lon) → Commons. Русский музей, Третьяковка и Артефакт ищутся прямыми
+открытыми API сайтов (рецепты — knowledge/kadr-recepty-fondov.md, 19.10.2026). К фондам ходит не kadr.py, а реестровый access.py
 (навык museum-source-access): путь — переменная RC_ACCESS, по умолчанию
 ~/projects/russian-civilization/docs/registries/access.py, рядом с ним sources.json. Нет файла,
 фонд недоступен, 403, таймаут — строка в stderr и следующий фонд, не падение. Для фонда без
@@ -35,7 +37,7 @@ ROOT = Path(__file__).resolve().parent.parent
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
 RU_PROXY = os.environ.get('RC_RU_PROXY', 'http://127.0.0.1:8899')  # выход rf-proxy:1080 забанен Госкаталогом (403)
-FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'pastvu', 'commons']  # порядок поиска
+FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'commons']  # порядок поиска
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
 
 
@@ -133,6 +135,94 @@ def find_goskatalog(fond, query, n, geo):
     return len(objs)
 
 
+BROWSER = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0', 'Accept': 'application/json, text/html'}
+
+
+def get(url, as_json=True):
+    """Прямой GET с кодированием кириллицы и пробелов в адресе."""
+    u = urllib.parse.urlsplit(url)
+    url = urllib.parse.urlunsplit(u._replace(path=urllib.parse.quote(urllib.parse.unquote(u.path))))
+    body = urllib.request.urlopen(urllib.request.Request(url, headers=BROWSER), timeout=30).read()
+    return json.loads(body) if as_json else body.decode('utf-8', 'replace')
+
+
+def words(query):
+    """Слова запроса, длинные первыми; для сверки — первые 5 букв (падежи: «Айвазовского»)."""
+    w = [x for x in re.findall(r'\w+', query.lower().replace('ё', 'е')) if len(x) >= 3]
+    return sorted(set(w), key=len, reverse=True)
+
+
+def rank(items, query, text, n):
+    """Локальный фильтр: оставить совпавшие хотя бы одним словом, больше совпадений — выше."""
+    stems = [x[:5] for x in words(query)]
+    scored = [(sum(st in text(i).lower().replace('ё', 'е') for st in stems), k, i) for k, i in enumerate(items)]
+    return [i for sc, k, i in sorted(scored, key=lambda t: (-t[0], t[1])) if sc][:n]
+
+
+def by_words(search, query):
+    """Весь запрос; пусто — по одному слову, начиная с самого длинного (сайты не ищут фразу «автор + название»)."""
+    items = search(query)
+    for w in words(query) if not items else []:
+        items = search(w)
+        if items:
+            warn(f'  целиком не нашлось — искал по слову «{w}», остальное отфильтровано локально')
+            break
+    return items
+
+
+def find_rusmuseum(fond, query, n, geo):
+    rm = 'https://rusmuseum.ru'
+    search = lambda q: [i for i in get(f'{rm}/api/search/?q=' + urllib.parse.quote(q))['data']['items']
+                        if (i.get('detailUrl') or '').startswith('/collections/')]
+    items = rank(by_words(search, query), query, lambda i: plain(i.get('name')) + ' ' + plain(i.get('previewText')), n)
+    for i in items:
+        card = rm + i['detailUrl']
+        try:
+            h = get(card, as_json=False)
+        except Exception as e:
+            warn(f'  карточка {card} не открылась: {e}')
+            continue
+        avt = re.findall(r'class="detail-info__name"[^>]*>([^<]+)<', h)
+        avt = next((plain(x).split(':', 1)[-1].strip() for x in avt if plain(x).startswith(('Художник', 'Автор'))),
+                   'автор не указан')
+        img = re.search(r'class="hero-image"[^>]*>\s*<img src="([^"]+)"', h)
+        img = urllib.parse.urljoin(rm, html.unescape(img.group(1))) if img else rm + ((i.get('previewPicture') or {}).get('src') or '')
+        print(f"? rusmuseum:{img} | {plain(i.get('name'))[:90]} | {avt}\n"
+              f"    --card {card} — права: © Русский музей, открытой лицензии нет")
+    return len(items)
+
+
+def find_tretyakov(fond, query, n, geo):
+    tr = 'https://my.tretyakov.ru'
+    search = lambda q: (get(f'{tr}/api/v1/gallery/get/?' + urllib.parse.urlencode(
+        {'search[q]': q, 'pageNum': 1, 'pageSize': 20, 'lang': 'ru'})).get('data') or {}).get('items') or []
+    avt = lambda i: ', '.join(a.get('nameRaw', '') for a in i.get('author') or [] if isinstance(a, dict))
+    items = rank(by_words(search, query), query, lambda i: f"{i.get('name', '')} {avt(i)}", n)
+    for i in items:
+        img = (i.get('pictureBig') or [''])[0]
+        print(f"? tretyakov:{img} | {i.get('name', '')[:90]} | {avt(i) or 'автор не указан'}\n"
+              f"    --card {tr}/app/masterpiece/{i['id']} — права: некоммерч., подпись «Из собрания Третьяковской галереи»")
+    return len(items)
+
+
+def find_ar_culture(fond, query, n, geo):
+    ar = 'https://ar.culture.ru'
+    search = lambda q: get(f'{ar}/ru/search?q=' + urllib.parse.quote(q)).get('results', {}).get('subjects') or []
+    ru = lambda x: (x or {}).get('ru', '') if isinstance(x, dict) else str(x or '')
+    avt = lambda i: ', '.join(a.get('info') or ru(a.get('title')) for a in i.get('authors') or [] if isinstance(a, dict))
+    # Артефакт ищет только по одному слову — сразу самое длинное, остальное локально
+    w = words(query)
+    items = rank(search(w[0]) if w else [], query, lambda i: f"{ru(i.get('title'))} {avt(i)}", n)
+    for i in items:
+        path = (((i.get('topImage') or {}).get('attachment') or {}).get('original') or {}).get('path')
+        if not path:
+            continue
+        org = ru((i.get('organization') or {}).get('title')) or 'музей не указан'
+        print(f"? ar_culture:{ar}/attachments/{path} | {ru(i.get('title'))[:90]} | {avt(i) or 'автор не указан'}\n"
+              f"    --card {ar}/ru/subject/{i.get('slug')} — права у держателя: {org}")
+    return len(items)
+
+
 def find_pastvu(fond, query, n, geo):
     if not geo:
         warn('  пропущен: нужен --geo lat,lon (PastVu ищет по точке)')
@@ -157,8 +247,8 @@ def find_commons(fond, query, n, geo):
     return len(titles)
 
 
-SEARCH = {'shm_catalog': find_unsupported, 'goskatalog': find_goskatalog, 'rusmuseum': find_unsupported,
-          'pastvu': find_pastvu, 'commons': find_commons}
+SEARCH = {'shm_catalog': find_unsupported, 'goskatalog': find_goskatalog, 'rusmuseum': find_rusmuseum,
+          'tretyakov': find_tretyakov, 'ar_culture': find_ar_culture, 'pastvu': find_pastvu, 'commons': find_commons}
 
 
 def find(query, n=10, geo=None):
