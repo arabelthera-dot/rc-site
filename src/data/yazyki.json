@@ -1,0 +1,15 @@
+{
+  "_": "Языки сайта (план сайта, раздел Г, «да» Сергея 19.10.2026). Русский — без приставки адреса, прочие — /<code>/. Язык добавляется строкой; ready:true включает его пометки hreflang и флаг в переключателе.",
+  "poUmolchaniyu": "ru",
+  "yazyki": [
+    { "code": "ru", "name": "Русский", "flag": "🇷🇺", "country": "RU", "dir": "ltr", "ready": true },
+    { "code": "en", "name": "English", "flag": "🇬🇧", "country": "GB", "dir": "ltr", "ready": false },
+    { "code": "zh", "name": "中文", "flag": "🇨🇳", "country": "CN", "dir": "ltr", "ready": false },
+    { "code": "es", "name": "Español", "flag": "🇪🇸", "country": "ES", "dir": "ltr", "ready": false },
+    { "code": "ar", "name": "العربية", "flag": "🇸🇦", "country": "SA", "dir": "rtl", "ready": false },
+    { "code": "fr", "name": "Français", "flag": "🇫🇷", "country": "FR", "dir": "ltr", "ready": false },
+    { "code": "de", "name": "Deutsch", "flag": "🇩🇪", "country": "DE", "dir": "ltr", "ready": false },
+    { "code": "pt", "name": "Português", "flag": "🇧🇷", "country": "BR", "dir": "ltr", "ready": false },
+    { "code": "hi", "name": "हिन्दी", "flag": "🇮🇳", "country": "IN", "dir": "ltr", "ready": false }
+  ]
+}
