@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import os from 'node:os';
+import { parseMonth, squash } from './tablicy/bloki.mjs';
 
 // После переключения адреса (17.10.2026 21:00 МСК) правда — карточки здесь; импорт затёр бы ручные правки.
 if (Date.now() >= Date.parse('2026-10-17T18:00:00Z') && process.env.IMPORT_POSLE_PEREKLYUCHENIYA !== '1') {
@@ -47,14 +48,6 @@ const isKey = (k) => /^\d\d-\d\d$/.test(k);
 const MONTHS = ['01-yanvar', '02-fevral', '03-mart', '04-aprel', '05-may', '06-iyun',
   '07-iyul', '08-avgust', '09-sentyabr', '10-oktyabr', '11-noyabr', '12-dekabr'];
 
-// Разбор утверждённого месяца — те же правила, что у pilot-nesdayutsya/gen-calendar.py.
-const HEAD = /^##\s+День\s+(\d+)\s+—\s+(.+?)\s*$/;
-const HOOK = /^\*\*Хук:\*\*\s*«(.+)»/;
-const MECH = /^\*\*Механика:\*\*\s*M-\d+\s*·\s*«[^»]+»\s*—\s*(.+?)\s*$/;
-const SRC = /^\*\*Источник:\*\*\s*(.+?)\s*$/;
-const GIST = /^Суть:\s*(.+?)\s*$/;
-const YEAR = /\b(1[0-9]{3}|20[0-2][0-9])\b/;
-const squash = (t) => t.replace(/\s+/g, ' ').trim();
 // Рабочие пометки авторов («(Детали — факт-чек.)») посетителю не показываются; в таблицах остаются.
 const NOTE = /\s*\([^()]*факт-чек[^()]*\)/g;
 
@@ -242,32 +235,6 @@ function pageMatches(legacyPage, key, title, dated) {
   return { ok: lowWords(name).some((w) => w.length >= 4 && words.some((x) => sameStem(x, w))), head };
 }
 
-function parseMonth(file) {
-  const units = [];
-  let u = null;
-  let inGist = false;
-  for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
-    // «Суть» в утверждённых таблицах бывает в несколько строк — до пустой строки или нового поля.
-    if (inGist && line.trim() && !/^(\*\*|##)/.test(line)) { u.gist = squash(`${u.gist} ${line}`); continue; }
-    inGist = false;
-    const h = line.match(HEAD);
-    if (h) {
-      u = { day: Number(h[1]), title: h[2].replace(/\s*\([^()]*\)\s*$/, '').trim(),
-        year: h[2].match(YEAR)?.[1] };
-      units.push(u);
-      continue;
-    }
-    if (!u) continue;
-    let m;
-    if (!u.hook && (m = line.match(HOOK))) u.hook = squash(m[1]).replace(/„([^„“"«»]*)["“]/g, '«$1»');
-    else if (!u.mechanic && (m = line.match(MECH))) {
-      const t = m[1].replace(/\s*\([^()]*\bM-\d+[^()]*\)/g, '').trim();
-      u.mechanic = t[0].toUpperCase() + t.slice(1);
-    } else if (!u.source && (m = line.match(SRC))) u.source = squash(m[1]);
-    else if (!u.gist && (m = line.match(GIST))) { u.gist = squash(m[1]); inGist = true; }
-  }
-  return units;
-}
 
 // Слова названия без «первый/мире»: основа 5 букв, «Ту-104» — одно слово.
 const words = (t) => new Set((t.toLowerCase().match(/[а-яёa-z0-9]+(?:-[а-яёa-z0-9]+)*/g) ?? [])
