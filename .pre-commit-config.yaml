@@ -1,0 +1,19 @@
+# Мировой стандарт вместо самоделок install-hooks.sh / check-catalog.py (шаг 8, 19.10.2026).
+# Локально: pre-commit install; в CI — .github/workflows/pre-commit.yml.
+exclude: ^(node_modules|dist|\.astro|public)/
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-json
+      - id: check-yaml
+      - id: check-merge-conflict
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.38.2
+    hooks:
+      - id: check-jsonschema
+        name: каталог музеев по схеме (полные названия title_ru)
+        files: ^src/data/museums\.json$
+        args: ["--schemafile", "schemas/museums.schema.json"]
+      - id: check-metaschema
+        files: ^schemas/.*\.schema\.json$
