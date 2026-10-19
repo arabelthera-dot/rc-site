@@ -54,6 +54,15 @@ jobs:
         continue-on-error: ${{ vars.PODATE_STROGO == '0' }}
         timeout-minutes: 3
         run: node scripts/po-date.mjs --dist dist
+      # Сверка текста старый/новый сайт (план переезда, шаг 4; 19.10.2026): по дням с legacy_page —
+      # дата, название, хук, источник 1:1. Старый сайт клонируется с main rc-museum-preview (публичный).
+      # Новое — выключенным: строгость переменной репозитория SVERKA_STROGO=1.
+      - name: sverka-teksta — текст старого и нового сайта 1:1
+        continue-on-error: ${{ vars.SVERKA_STROGO != '1' }}
+        timeout-minutes: 3
+        run: |
+          git clone -q --depth 1 https://github.com/arabelthera-dot/rc-museum-preview /tmp/stary
+          node scripts/sverka-teksta.mjs --dist dist --legacy /tmp/stary --vse
       # Три правила старого сайта, потерянные при переезде (Сергей 19.10.2026: вернуть, стандарт №4):
       # «Консультанты музея» без слова «научный», метка ЖДУ ОТВЕТА, счёт из 100. Логика — из старого
       # аудитора как есть. Новое — выключенным: строгость переменной репозитория STAROE_STROGO=1.
