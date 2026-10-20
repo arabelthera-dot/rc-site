@@ -14,10 +14,10 @@ jobs:
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
       # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
@@ -47,7 +47,7 @@ jobs:
           RC_PROBA_RTL: '1'
       # Г20: страница-проба с её стилями — артефактом заявки (≈5 МБ, 3 дня), чтобы смотреть письмо справа налево
       # глазами без полной локальной сборки: gh run download <run> -n proba-rtl.
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: proba-rtl
           path: |
@@ -76,7 +76,7 @@ jobs:
         run: node scripts/vneshnie-hosty.mjs --dist dist
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
-      - uses: lycheeverse/lychee-action@v2
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         with:
           args: --offline --no-progress --include-fragments --index-files index.html --root-dir /tmp/root '/tmp/root/**/*.html'
           fail: true
@@ -178,13 +178,13 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: npm i --no-save --no-audit --no-fund playwright@1.48.0 @axe-core/playwright@4.10.1 && node scripts/otchet-skorost.mjs --dist dist --lhci /tmp/lhci
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
           name: glazami
           path: /tmp/glazami
           if-no-files-found: ignore
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
           name: lighthouse
@@ -198,8 +198,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
       - name: таблица = запись

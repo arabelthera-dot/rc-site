@@ -26,14 +26,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       # Проверка поста (Е8) — на Node теми же модулями, что у сборки: схема дня грузится через Vite из node_modules.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
       - run: pip install --quiet pillow
@@ -41,12 +41,12 @@ jobs:
         run: echo "today=$(TZ=Europe/Moscow date +%F)" >> "$GITHUB_OUTPUT"
       # Отметки «уже отправлено» — по площадке на дату: повторный запуск в тот же день не дублирует пост.
       - id: tg
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .kanaly/tg
           key: kanaly-tg-${{ steps.d.outputs.today }}
       - id: vk
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .kanaly/vk
           key: kanaly-vk-${{ steps.d.outputs.today }}
@@ -64,12 +64,12 @@ jobs:
           [ -n "$DATE" ] && args+=(--date "$DATE")
           python scripts/kanaly/post.py "${args[@]}"
       - if: always() && steps.tg.outputs.cache-hit != 'true' && hashFiles('.kanaly/tg/sent') != ''
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .kanaly/tg
           key: kanaly-tg-${{ steps.d.outputs.today }}
       - if: always() && steps.vk.outputs.cache-hit != 'true' && hashFiles('.kanaly/vk/sent') != ''
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .kanaly/vk
           key: kanaly-vk-${{ steps.d.outputs.today }}
