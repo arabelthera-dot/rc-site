@@ -130,3 +130,21 @@ html.rc-slabovid body :is(#rc-sv-x,.mq-opt,.fm-opt,.fw-pick,.opt,.fork-opt,[data
   html.rc-slabovid body pre{white-space:pre-wrap!important}
   html.rc-slabovid body :is(.crumbs,.crumbs *,.breadcrumbs,.breadcrumbs *,p a,li a){white-space:normal!important}
 }
+/* Подсказки (Д7, 20.10): в обычном виде — мелкий серый или цветной текст 12–15 px, у зума картины — полупрозрачная
+   плашка поверх кадра. В режиме — чёрное на белом (21:1), рамка 2 px, кегль не меньше 18 px, перенос строк, без обрезки.
+   Виды: #sharehint («скопировано», museum-chrome.js), .hint (ответы игр литературы), .cover-hint (обложка),
+   .sg-hint («Слова героя»), .dz-hint (глубокий зум, museum-deep-zoom.js), span/div.scene-hint (подпись кадра);
+   #zhint — выше. Видимость и гашение по-прежнему решает движок (display/opacity не трогаем, кроме #zhint). */
+html.rc-slabovid body :is(#zhint,#sharehint,.sharehint,.hint,.cover-hint,.sg-hint,.dz-hint,span.scene-hint,div.scene-hint){
+  background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:2px solid #000!important;
+  border-radius:4px!important;padding:6px 10px!important;font-size:max(18px,1em)!important;line-height:1.45!important;
+  font-weight:600!important;text-shadow:none!important;box-shadow:none!important;white-space:normal!important;
+  overflow-wrap:break-word!important;overflow:visible!important;text-overflow:clip!important;max-width:100%!important;
+  box-sizing:border-box!important;height:auto!important;letter-spacing:normal!important;backdrop-filter:none!important}
+html.rc-slabovid body :is(#zhint,#sharehint,.sharehint,.hint,.cover-hint,.sg-hint,.dz-hint,span.scene-hint,div.scene-hint) *{color:#000!important;-webkit-text-fill-color:#000!important}
+/* пустая подсказка игры (ждёт ответа) — без пустой рамки */
+html.rc-slabovid body :is(.hint,.sg-hint,.cover-hint):empty{border:0!important;padding:0!important}
+/* плашка зума остаётся поверх кадра (иначе ломается сцена), но не шире кадра */
+html.rc-slabovid body .dz-hint{max-width:calc(100% - 24px)!important;right:auto!important}
+/* «скопировано» рядом с кнопкой: на узком экране — отдельной строкой, а не за краем */
+@media (max-width:480px){html.rc-slabovid body :is(#sharehint,.sharehint){margin:8px 0 0!important}}
