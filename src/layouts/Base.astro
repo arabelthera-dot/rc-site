@@ -174,10 +174,10 @@ const oshibkaUrl = oshibkaMailto
   <footer>
     <div class="slog">{s('slogan')}</div>
     <slot name="footer"><a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></slot>
-    <div class="foot-links"><a href={`${base}detyam/`}>Детям</a> · <a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kak-sdelan-muzey/`}>Как сделан музей</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · {oshibkaMailto
-      ? <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">Нашли ошибку?</a>
-      : <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">Нашли ошибку?</a>}</>}</div>
-    <Fragment set:html={licenziyaHtml(base)} />
+    <div class="foot-links"><a href={`${base}detyam/`}>{s('podvalDetyam')}</a> · <a href={`${base}o-proekte/`}>{s('podvalOProekte')}</a> · <a href={`${base}kak-sdelan-muzey/`}>{s('podvalKakSdelan')}</a> · <a href={`${base}kontakty/`}>{s('podvalKontakty')}</a>{oshibkaUrl && <> · {oshibkaMailto
+      ? <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">{s('podvalOshibka')}</a>
+      : <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">{s('podvalOshibka')}</a>}</>}</div>
+    <Fragment set:html={licenziyaHtml(base, { code: lang.code })} />
     {oshibkaMailto && <script is:inline>(function(){var a=document.querySelector('a.oshibka[data-pochta]');if(!a)return;var v='';function z(){v=String(window.getSelection?window.getSelection():'').trim().slice(0,1500)}a.addEventListener('pointerdown',z,true);a.addEventListener('click',function(){if(!v)z();var u=a.dataset.stranica,b='Страница: '+u+'\n\n'+(v?'Выделенный текст:\n«'+v+'»\n\n':'')+'Что не так:\n\n';a.href='mailto:'+a.dataset.pochta+'?subject='+encodeURIComponent('Ошибка на странице '+u)+'&body='+encodeURIComponent(b);v=''})})();</script>}
   </footer>
   <script is:inline defer src={`${base}assets/analytics.js`}></script>
