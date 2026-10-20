@@ -1,8 +1,11 @@
 ---
 // Единая верхняя полоса — разметка общая с полными страницами дней (src/lib/sitebar.mjs).
+// Подписи полосы — на языке страницы (по приставке адреса, Г20).
 import { sitebarHtml } from '../lib/sitebar.mjs';
+import { razobratPut } from '../lib/yazyki.mjs';
 interface Props { slug: string; title: string; here?: string; vozrast?: string }
 const { slug, title, here, vozrast } = Astro.props;
-const html = sitebarHtml({ base: import.meta.env.BASE_URL, slug, title, here, vozrast });
+const base = import.meta.env.BASE_URL;
+const html = sitebarHtml({ base, slug, title, here, vozrast, code: razobratPut(Astro.url.pathname, base).code });
 ---
 <Fragment set:html={html} />

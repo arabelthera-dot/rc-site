@@ -165,7 +165,7 @@ const oshibkaUrl = oshibkaMailto
   <slot name="header" />
   {!(museum && museumTitle) && crumbs.length > 0 && (
     <nav class="crumbs">
-      <a href={base}>Русская цивилизация</a>
+      <a href={base}>{s('portalImya')}</a>
       {crumbs.map((c) => (<> › {c.href ? <a href={c.href}>{c.label}</a> : <span>{c.label}</span>}</>))}
     </nav>
   )}

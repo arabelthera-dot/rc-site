@@ -15,7 +15,8 @@ export const redakciyaLd = (home) => ({ '@type': 'Organization', name: REDAKCIYA
 export function licenziyaHtml(base, { links = false, code = 'ru' } = {}) {
   const s = (k) => stroka(code, k); // строки — из словаря языка (Г20, src/data/stroki.json)
   return `<div class="rc-lic">${s('licTeksty')} <a href="${LICENZIYA}" rel="license noopener" target="_blank">CC BY 4.0</a>`
-    + `${s('licMozhno')} (<a href="${base}avtory-izobrazheniy/">${s('licAvtory')}</a>).`
+    // «(авторы изображений).» — одной неразрывной связкой: иначе «(» остаётся висеть в конце строки (Г20, 1280 px)
+    + `${s('licMozhno')} <span class="rc-lic-n">(<a href="${base}avtory-izobrazheniy/">${s('licAvtory')}</a>).</span>`
     + (links ? `<br><a href="${base}o-proekte/">${s('podvalOProekte')}</a> · <a href="${base}kak-sdelan-muzey/">${s('podvalKakSdelan')}</a> · <a href="${base}politika-konfidencialnosti/">${s('podvalPolitika')}</a>` : '')
     + `</div>`;
 }
