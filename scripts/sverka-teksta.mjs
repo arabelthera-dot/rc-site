@@ -17,6 +17,11 @@
 //   «Храм на рукотворном холме — Покрова на Нерли» / «покрова на нерли: храм на рукотворном холме»).
 //   <h1> и <title> старой и новой сравниваются тоже по набору слов; в <title> слово «музей» не считается —
 //   шаблон нового сайта пишет полное имя «Музей «Что изобрели…»», старый — без слова «музей» (9 дней izobreteniya).
+//   С 17.10.2026 правда — карточка и новый сайт, старый — архив (AGENTS.md §2), поэтому (20.10.2026, Р49, 33 красных):
+//   название, хук и источник карточки сверяются с НОВОЙ страницей (её видит посетитель), а старая → новая — только
+//   на потерю при переезде (дата, <h1>, <title>, хук и источник, что были на старой). Источник ищется и в тексте,
+//   и в адресах ссылок (href/src): «site.kizhi.karelia.ru» стоит ссылкой, а не текстом (30 ложных «нет источника»).
+//   <title> новой может отличаться от старого, если в нём название карточки (страницу привели к карточке).
 // Красное — код 1, жёлтое печатается и код не меняет. Старый сайт — клон arabelthera-dot/rc-museum-preview.
 // Запуск: node scripts/sverka-teksta.mjs [--dist dist] [--legacy путь] [--polya data,nazvanie,hook,istochnik]
 //         (LEGACY — путь к старому сайту, по умолчанию ~/rc-museum-preview; --vse — печатать все расхождения)
@@ -44,6 +49,8 @@ const norm = (s) => decode(s).toLowerCase().replace(/ё/g, 'е').replace(/[«»�
   .replace(/[‑–—−-]/g, '-').replace(/­/g, '').replace(/\s+/g, ' ').trim();
 const text = (html) => norm(html.replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
   .replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' '));
+// Адреса ссылок и файлов страницы — источник часто стоит ссылкой, а не текстом.
+const ssylki = (html) => norm([...html.matchAll(/\b(?:href|src)\s*=\s*["']([^"']+)["']/gi)].map((m) => m[1]).join(' '));
 const tag = (html, t) => { const m = html.match(new RegExp(`<${t}\\b[^>]*>([\\s\\S]*?)<\\/${t}>`, 'i')); return m ? text(m[1]) : ''; };
 // Набор слов: буквы и цифры, всё прочее (пробел, тире, дефис, двоеточие, скобки, точка) — разделитель.
 const slova = (s, bezMuzeya) => new Set((norm(s).match(/[a-zа-я0-9]+/g) ?? []).filter((w) => !(bezMuzeya && w === 'музей')));
@@ -77,7 +84,9 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
     if (!fs.existsSync(newF)) errs.push(['net_stranicy', `нет новой страницы muzei/${museum}/den/${key}/`]);
     if (!errs.length) {
       const oh = fs.readFileSync(oldF, 'utf8'), nh = fs.readFileSync(newF, 'utf8');
-      const ot = text(oh), nt = text(nh);
+      const ot = text(oh), nt = text(nh), ol = `${ot} ${ssylki(oh)}`, nl = `${nt} ${ssylki(nh)}`;
+      const nz = norm(d.title || ''), nTitle = tag(nh, 'title'), nH1 = tag(nh, 'h1');
+      const vNovoy = nz && (nTitle.includes(nz) || vhodit(slova(nz), new Set([...slova(nTitle), ...slova(nH1)])));
       if (POLYA.has('data')) {
         const [mm, dd] = key.split('-').map(Number);
         const data = mm && dd ? `${dd} ${MES[mm - 1]}` : '';
@@ -87,22 +96,21 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
         for (const t of ['h1', 'title']) {
           const a = tag(oh, t), b = tag(nh, t);
           if (a === b || ravny(slova(a, t === 'title'), slova(b, t === 'title'))
-            || (t === 'title' && a && b && (a.includes(b) || b.includes(a)))) continue;
+            || (t === 'title' && a && b && (a.includes(b) || b.includes(a)))
+            || (t === 'title' && vNovoy && vhodit(slova(nz), slova(b)))) continue;
           errs.push(['nazvanie', `<${t}> старый «${a}» ≠ новый «${b}»`]);
         }
-        const nz = norm(d.title || '');
-        if (nz && !tag(oh, 'title').includes(nz) && !vhodit(slova(nz), slova(tag(oh, 'title'))))
-          errs.push(['nazvanie', `название карточки «${d.title}» не входит в <title> старой («${tag(oh, 'title')}»)`]);
+        if (nz && !vNovoy) errs.push(['nazvanie', `название карточки «${d.title}» нет в <title>/<h1> страницы («${nTitle}»)`]);
       }
       if (POLYA.has('hook') && d.hook) {
         const h = norm(firstSentence(d.hook));
-        if (!ot.includes(h)) errs.push(['hook', `хук карточки «${firstSentence(d.hook)}» не найден на старой`]);
-        if (!nt.includes(h) && ot.includes(h)) errs.push(['hook', `хук есть на старой, нет на новой`]);
+        if (!nt.includes(h)) errs.push(['hook', ot.includes(h) ? 'хук карточки есть на старой, нет на новой'
+          : `хук карточки «${firstSentence(d.hook)}» не совпадает с текстом страницы`]);
       }
       if (POLYA.has('istochnik') && d.source) {
         for (const p of sourceParts(d.source)) {
-          if (!ot.includes(p)) errs.push(['istochnik', `источник «${p}» не найден на старой`]);
-          else if (!nt.includes(p)) errs.push(['istochnik', `источник «${p}» есть на старой, нет на новой`]);
+          if (nl.includes(p)) continue;
+          errs.push(['istochnik', ol.includes(p) ? `источник «${p}» есть на старой, нет на новой` : `источника карточки «${p}» нет на странице`]);
         }
       }
     }
