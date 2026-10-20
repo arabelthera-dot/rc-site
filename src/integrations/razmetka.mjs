@@ -24,8 +24,8 @@ export default function razmetka() {
         let vsego = 0, plohih = 0;
         for (const f of stranicy(root)) {
           const html = fs.readFileSync(f, 'utf8');
-          // переадресации старых адресов (meta refresh) — не страницы
-          if (/http-equiv=["']?refresh/i.test(html)) continue;
+          // переадресации старых адресов (meta refresh) и файлы подтверждения прав Вебмастера/Search Console — не страницы
+          if (/http-equiv=["']?refresh/i.test(html) || /^(?:yandex_[0-9a-f]+|google[0-9a-f]+)\.html$/.test(path.basename(f))) continue;
           vsego++;
           const bedy = proverkaRazmetki(html, canonicalIz(html));
           if (bedy.length) plohih++;

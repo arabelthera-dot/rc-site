@@ -12,7 +12,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
-import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
+import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
@@ -535,9 +535,20 @@ export default function fullPages() {
             // Нет своей карточки пересылки у старой страницы — кадр дня из карточки (images[0]), п.2 очереди 1, 17.10.
             const card = path.join('src/content/days', museum, `${key}.json`);
             const img = fs.existsSync(card) && JSON.parse(fs.readFileSync(card, 'utf8')).images?.[0];
-            if (img && site && !/property=["']og:image["']/i.test(html)) {
-              const abs = new URL(/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`, site).href;
-              html = html.replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
+            // Нет и кадра в карточке — главный кадр самой страницы (hero, иначе первый растровый <img>), Д5 20.10:
+            // literatura/02-01 была под noindex, check-og её пропускал, и страница вышла без og:image и без image в Article.
+            const heroSrc = () => {
+              const imgs = [...html.matchAll(/<img\b[^>]*>/gi)].map(([t]) => t)
+                .filter((t) => /\ssrc=["'][^"']+\.(?:jpe?g|png|webp)["']/i.test(t));
+              const t = imgs.find((x) => /class=["'][^"']*\bhero/i.test(x)) ?? imgs[0];
+              return t && /\ssrc=["']([^"']+)["']/i.exec(t)[1];
+            };
+            if (site && !/property=["']og:image["']/i.test(html)) {
+              const src = img ? (/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`) : heroSrc();
+              if (src) {
+                const abs = new URL(src, site).href;
+                html = html.replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
+              }
             }
             // Карточка пересылки в WebP (9 старых страниц: 7 своих и 2 из кадра карточки, Б9 19.10): ВК WebP в превью не показывает — рядом в dist
             // кладётся JPG-копия (sharp, качество 85) и og:image/twitter:image смотрят на неё. Текст страницы не трогается.
@@ -574,7 +585,9 @@ export default function fullPages() {
                 const h1 = /<h1[^>]*>([\s\S]*?)<\/h1>/i.exec(html)?.[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
                 const ld = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title ?? (h1 && decode(h1)) ?? key,
                   url, inLanguage: 'ru', ...(d.hook ? { description: d.hook } : {}),
-                  isPartOf: { '@type': 'Museum', name: MUSEUMS[museum], url: new URL(`${base}muzei/${museum}/`, site).href },
+                  // isPartOf — страница музея (CreativeWork), музей — её about: Museum в isPartOf schema.org не допускает (как Base.astro).
+                  isPartOf: { '@type': 'WebPage', name: MUSEUMS[museum], url: new URL(`${base}muzei/${museum}/`, site).href,
+                    about: { '@type': 'Museum', name: MUSEUMS[museum], url: new URL(`${base}muzei/${museum}/`, site).href } },
                   typicalAgeRange: typicalAgeRange(znak(museum, key)),
                   author: redakciyaLd(new URL(base, site).href), publisher: redakciyaLd(new URL(base, site).href), license: LICENZIYA };
                 add.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
@@ -612,6 +625,11 @@ export default function fullPages() {
             const vz = znak(museum, key);
             const bez = bezOchkov(vz);
             html = html.replace(/<html\b/i, `<html data-rc-vozrast="${vz}"${bez ? ' data-rc-bez-ochkov' : ''}`);
+            // Направление письма (Г19, 20.10) — как у шаблонов (Base.astro: dir={lang.dir}): из src/data/yazyki.json по lang страницы.
+            {
+              const lang = /<html\b[^>]*\slang=["']?([\w-]+)/i.exec(html)?.[1]?.split('-')[0] ?? poUmolchaniyu;
+              html = html.replace(/<html\b([^>]*?)\s+dir=["']?[^"'\s>]*["']?/i, '<html$1').replace(/<html\b/i, `<html dir="${yazyk(lang).dir}"`);
+            }
             if (bez) html = html.replace(/\s*За (?:каждый )?верный ответ — \d+ очк[а-яё]* из 100\./g, '') // \w без флага u кириллицу не ловит
               .replace(/Для викторины и счёта нужен JavaScript; без него очки не начисляются\./g, 'Для викторины нужен JavaScript.');
             html = html.replace(/<\/head>/i, `<style data-rc-vozrast>${VOZRAST_CSS}</style>\n${sitebarAssets(base)}\n</head>`)

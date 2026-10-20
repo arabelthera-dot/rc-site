@@ -1,7 +1,10 @@
 // Проверка разметки schema.org (Д5 плана сайта, 20.10.2026): офлайн, по спецификации, без кабинетов Google и Яндекса.
 // Синтаксис JSON-LD + обязательные и рекомендуемые поля по типам: schema.org (типы и их свойства) и правила
-// расширенных результатов Google (Article: headline ≤110 знаков, image, author.name, datePublished/dateModified в ISO 8601;
-// Organization: name, url, logo). Адрес url разметки страницы должен совпадать с canonical — иначе поисковик
+// расширенных результатов Google (Article: headline, image, author.name, datePublished/dateModified в ISO 8601;
+// Organization: name, url, logo). Длину headline не проверяем: прежнего предела 110 знаков у Google больше нет —
+// «Consider using a concise title, as long titles may be truncated» (https://developers.google.com/search/docs/appearance/structured-data/article,
+// сверено 20.10.2026, ред. 08.09.2026); Яндекс тип Article для сниппетов не поддерживает и длину не задаёт
+// (https://yandex.ru/support/webmaster/ru/schema-org/what-is-schema-org). Адрес url разметки страницы должен совпадать с canonical — иначе поисковик
 // приписывает разметку чужой странице. Сборка только предупреждает (src/integrations/zakon.mjs).
 
 const ISO = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?)?$/;
@@ -34,7 +37,6 @@ export function proverkaRazmetki(html, canonical) {
       if (!tip) { bedy.push('узел без @type'); continue; }
       if (!/^https?:\/\/schema\.org\/?$/.test(u['@context'] ?? '')) bedy.push(`${tip}: @context не https://schema.org`);
       for (const [svoystvo, ok, chto] of PRAVILA[tip] ?? []) if (!ok(u[svoystvo])) bedy.push(`${tip}: ${chto ?? `нет ${svoystvo}`}`);
-      if (tip === 'Article' && typeof u.headline === 'string' && u.headline.length > 110) bedy.push(`Article: headline длиннее 110 знаков (${u.headline.length})`);
       for (const k of ['datePublished', 'dateModified']) if (est(u[k]) && !ISO.test(u[k])) bedy.push(`${tip}: ${k} не ISO 8601 («${u[k]}»)`);
       for (const k of ['url', 'image', 'logo', 'license']) for (const v of [u[k]].flat()) {
         const s = typeof v === 'object' && v ? v.url : v;
