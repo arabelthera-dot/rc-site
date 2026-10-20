@@ -2,10 +2,11 @@
 // Одна разметка на всех внутренних страницах: шаблоны (src/components/SiteBar.astro) и полные страницы дней
 // (src/integrations/full-pages.mjs вставляет её при сборке). Вид — public/assets/rc-sitebar.css,
 // прячется/появляется — public/assets/rc-sitebar.js. Проверку в сборке делает full-pages.mjs (checkSitebars).
-const MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+import { stroka, poUmolchaniyu } from './yazyki.mjs';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-export const whenOfKey = (key) => `${parseInt(key.slice(3), 10)} ${MONTHS[parseInt(key.slice(0, 2), 10) - 1]}`;
+// Дата «17 октября» по языку: месяцы в родительном падеже — из словаря (Г20, src/data/stroki.json).
+export const whenOfKey = (key, code = poUmolchaniyu) => `${parseInt(key.slice(3), 10)} ${stroka(code, 'mesyacyR')[parseInt(key.slice(0, 2), 10) - 1]}`;
 
 // Ссылка «Поиск» — только при RC_POISK=1 (выключатель поиска, src/integrations/poisk.mjs); иначе пусто.
 const poiskLink = (base) => (globalThis.process?.env?.RC_POISK === '1'

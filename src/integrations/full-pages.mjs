@@ -10,7 +10,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
-import { hreflangi } from '../lib/yazyki.mjs';
+import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
@@ -343,12 +343,13 @@ function staticHero(html) {
 
 // Соседние дни (замер glazami «вчера/завтра», 17.10): старая страница дня заменяет карточку целиком, и ссылки
 // «← предыдущий / следующий →» карточки (den/[key].astro) пропадали. Соседи — ближайшие дни музея в сборке.
-function sosediHtml(base, museum, keys, key) {
+function sosediHtml(base, museum, keys, key, code = poUmolchaniyu) {
   const i = keys.indexOf(key);
   if (!keys[i - 1] && !keys[i + 1]) return ''; // единственный день музея — соседей нет
+  const s = (k) => stroka(code, k); // подписи — из словаря языка (Г20, src/data/stroki.json)
   const link = (k, rel, text) => k ? `<a class="rc-sosed rc-sosed-${rel}" rel="${rel}" href="${base}muzei/${museum}/den/${k}/">${text}</a>` : '<span></span>';
-  return `<nav class="rc-sosedi" aria-label="Соседние дни">${link(keys[i - 1], 'prev', `← предыдущий день, ${whenOfKey(keys[i - 1] || '01-01')}`)}`
-    + `${link(keys[i + 1], 'next', `следующий день, ${whenOfKey(keys[i + 1] || '01-01')} →`)}</nav>`;
+  return `<nav class="rc-sosedi" aria-label="${s('sosediDni')}">${link(keys[i - 1], 'prev', `← ${s('predDen')}, ${whenOfKey(keys[i - 1] || '01-01', code)}`)}`
+    + `${link(keys[i + 1], 'next', `${s('sledDen')}, ${whenOfKey(keys[i + 1] || '01-01', code)} →`)}</nav>`;
 }
 
 function absolute(url, dirUrl) {

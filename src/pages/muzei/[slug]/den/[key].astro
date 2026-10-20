@@ -14,8 +14,6 @@ import Credit from '../../../../components/den/Credit.astro';
 import DenAnketa from '../../../../components/den/DenAnketa.astro';
 import { YEAR_KEYS, isDated, isReady, nearestReady, stripSrcPrefix } from '../../../../lib/kalendar';
 import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../../lib/yazyki.mjs';
-const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
-const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
   const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
@@ -47,8 +45,9 @@ const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
 // Подпись дня: у датированного музея — дата, у недатированного — номер записи «День N · месяц»
 // (ключ там не дата: у первопроходцев есть 12-32, 12-33); одно правило для шапки дня и стрелок соседей.
+// Месяцы и «День N · месяц» — из словаря языка (Г20, src/data/stroki.json).
 const whenOf = (key: string) => { const mm = parseInt(key.slice(0, 2)), dd = parseInt(key.slice(3));
-  return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
+  return dated ? `${dd} ${s('mesyacyR')[mm - 1]}` : s('denMesyac').replace('{d}', String(dd)).replace('{m}', s('mesyacy')[mm - 1]); };
 const when = whenOf(d.key);
 // «День готовится» (Сергей 17.10): даты без карточки и карточки с одним названием (без хука и текста) —
 // строка-заглушка и ближайший готовый день музея вперёд по году; такие страницы не для поисковиков (noindex).
