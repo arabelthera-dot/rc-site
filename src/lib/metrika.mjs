@@ -1,7 +1,13 @@
 // Яндекс Метрика, счётчик 113664375 (заказ Михаила, 18.10.2026) — стандартный код с официальной страницы Яндекса.
 // Один источник: Metrika.astro (в <head> Base.astro) и integrations/full-pages.mjs (полные страницы дней идут мимо Base).
 // public/assets/analytics.js с пустым COUNTER_ID не трогаем: вписать туда номер — второй init того же счётчика.
-// Вариант без #205 (политика и плашка cookie откатаны): код счётчика — как до 19.10, механика «файлом» — из #224.
+//
+// Согласие на cookie (152-ФЗ, ст. 9 и 18.1; Д1, Р51 Сергея 20.10.2026: «вставляй сразу»): tag.js НЕ грузится, пока
+// посетитель не нажал «Принять» на плашке. Выбор — localStorage['rc-cookie'] = 'da' | 'net'. «Отказаться» — счётчик и цели
+// не грузятся вовсе; выбора нет — плашка. Пиксель <noscript> убран: без JS согласия не спросить, значит и не считаем.
+// Отозвать: любой элемент с data-rc-cookie-reset (страница политики) — стирает выбор и cookie _ym_*, выключает счётчик,
+// снова показывает плашку. Вид плашки — public/assets/rc-cookie.css (скрипт подключает его сам, только когда плашка нужна:
+// полные страницы дней идут мимо Base.astro); режим слабовидящих — rc-slabovid.css (#226, белый фон).
 import { createHash } from 'node:crypto';
 export const METRIKA_ID = 113664375;
 // Вебвизор (запись действий посетителя) выключен везде — сайт смотрят дети (Р41, Е3, Сергей 20.10.2026).
@@ -12,7 +18,8 @@ export const METRIKA_ID = 113664375;
 // Цели (Е9, «да» Сергея 20.10.2026) — JavaScript-события; в кабинете Метрики их заводит Михаил (М26) с этими
 // идентификаторами, буква в букву. Пока цели в кабинете нет, reachGoal просто не засчитывается — страница не ломается.
 // Только у страниц со счётчиком: код живёт в этом же файле, а где счётчика нет (/doska/), нет и целей.
-// Без своих идентификаторов и персональных данных: ни cookie, ни localStorage сайт не пишет; «вернулся» читает
+// Цели запускаются только вместе со счётчиком, то есть после «Принять».
+// Без своих идентификаторов и персональных данных: cookie сайт не пишет, в localStorage — только выбор на плашке; «вернулся» читает
 // стандартную метку Метрики _ym_d (дата первого визита, её ставит сам tag.js); в sessionStorage — только флаг
 // «уже отправлено в этой вкладке». Признаки источников и интерактивов — те же, что в анкете дня (src/lib/anketa.mjs).
 export const CELI = {
@@ -53,9 +60,17 @@ const celiJs = `
     w.addEventListener("scroll",sc,{passive:true});
     })(window,document);
 `;
-export const metrikaJs = `    // Отложенная загрузка (19.10, Lighthouse BP 79 из-за cookies mc.yandex): очередь ym и init ставятся сразу,
-    // tag.js грузится по первому действию (scroll/pointerdown/keydown/touchstart) или через 3,5 с после load
-    // в простое браузера. Визит не теряется: init уже в очереди с отметкой времени m[i].l, tag.js её разберёт.
+export const POLITIKA_URL = '/politika-konfidencialnosti/';
+export const metrikaJs = `(function(w,d){
+  var KEY="rc-cookie",ID=${METRIKA_ID},started=0;
+  function get(){try{return w.localStorage.getItem(KEY)}catch(e){return null}}
+  function set(v){try{w.localStorage.setItem(KEY,v)}catch(e){}}
+  // Код Метрики — стандартный, вызывается только при согласии. now=false (повторный визит с согласием) — отложенная
+  // загрузка (19.10, Lighthouse BP): tag.js по первому действию (scroll/pointerdown/keydown/touchstart) или через 3,5 с
+  // после load в простое браузера; визит не теряется — init уже в очереди с отметкой m[i].l. now=true — сразу после «Принять».
+  function metrika(now){
+    w["disableYaCounter"+ID]=false;
+    if(started)return;started=1;
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
     m[i].l=1*new Date();
     var done=0,ev=["scroll","pointerdown","keydown","touchstart"];
@@ -63,24 +78,52 @@ export const metrikaJs = `    // Отложенная загрузка (19.10, L
       for(var n=0;n<ev.length;n++)m.removeEventListener(ev[n],go,{passive:true});
       for (var j = 0; j < e.scripts.length; j++) {if (e.scripts[j].src === r) { return; }}
       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}
+    if(now){go();return}
     for(var n=0;n<ev.length;n++)m.addEventListener(ev[n],go,{passive:true,once:true});
     function idle(){setTimeout(function(){m.requestIdleCallback?m.requestIdleCallback(go,{timeout:2000}):go()},3500)}
     if(e.readyState==="complete")idle();else m.addEventListener("load",idle,{once:true});
     })
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    (w, d, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(${METRIKA_ID}, "init", {
+    w.ym(ID, "init", {
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
         webvisor:false
     });
-${celiJs}`;
-const metrikaTail = `<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->`;
+${celiJs}  }
+  function plashka(){
+    if(d.querySelector(".rc-cookie"))return;
+    var b=d.createElement("div");b.className="rc-cookie";b.setAttribute("role","region");b.setAttribute("aria-label","Согласие на cookie");
+    b.innerHTML='<p>Мы используем cookie и Яндекс Метрику, чтобы понимать, какие залы музея интересны посетителям. '
+      +'Нажимая «Принять», вы даёте согласие на обработку этих данных. Подробнее — в <a href="${POLITIKA_URL}">Политике конфиденциальности</a>.</p>'
+      +'<div class="rc-cookie-b"><button type="button" class="da">Принять</button><button type="button" class="net">Отказаться</button></div>';
+    b.querySelector(".da").onclick=function(){set("da");b.remove();metrika(true)};
+    b.querySelector(".net").onclick=function(){set("net");b.remove()};
+    // вид — файлом (rc-cookie.css), плашка показывается, когда стиль готов: без мигания голого текста
+    var css="/assets/rc-cookie.css",l=d.querySelector('link[href="'+css+'"]');
+    function show(){d.body.appendChild(b)}
+    if(l){show();return}
+    l=d.createElement("link");l.rel="stylesheet";l.href=css;l.onload=show;l.onerror=show;d.head.appendChild(l);
+  }
+  function ready(f){d.readyState==="loading"?d.addEventListener("DOMContentLoaded",f,{once:true}):f()}
+  // Отзыв согласия (страница политики): стереть выбор и cookie Метрики, выключить счётчик, снова спросить.
+  ready(function(){
+    var r=d.querySelectorAll("[data-rc-cookie-reset]");
+    for(var i=0;i<r.length;i++)r[i].addEventListener("click",function(ev){ev.preventDefault();
+      try{w.localStorage.removeItem(KEY)}catch(e){}
+      d.cookie.split(";").forEach(function(c){var n=c.split("=")[0].trim();if(n.indexOf("_ym")===0){
+        var h=location.hostname;d.cookie=n+"=;path=/;max-age=0";d.cookie=n+"=;path=/;max-age=0;domain=."+h.replace(/^www\\./,"")}});
+      w["disableYaCounter"+ID]=true;plashka()});
+  });
+  var v=get();
+  if(v==="da")metrika(false);else if(v!=="net")ready(plashka);
+})(window,document);
+`;
+const metrikaTail = `<!-- /Yandex.Metrika counter -->`;
 export const metrikaFile = `rc-metrika-${createHash('md5').update(metrikaJs).digest('hex').slice(0, 10)}.js`;
 export const metrikaInlayn = process.env.RC_METRIKA_INLAYN === '1';
 // defer: файл выполняется после разбора страницы; tag.js и так грузится по первому действию / через 3,5 с после load.
 export const metrikaHtml = metrikaInlayn
-  ? `<!-- Yandex.Metrika counter -->\n<script type="text/javascript">\n${metrikaJs}</script>\n${metrikaTail}`
-  : `<!-- Yandex.Metrika counter -->\n<script defer src="/assets/${metrikaFile}"></script>\n${metrikaTail}`;
+  ? `<!-- Yandex.Metrika counter: только после согласия на cookie -->\n<script type="text/javascript">\n${metrikaJs}</script>\n${metrikaTail}`
+  : `<!-- Yandex.Metrika counter: только после согласия на cookie -->\n<script defer src="/assets/${metrikaFile}"></script>\n${metrikaTail}`;
