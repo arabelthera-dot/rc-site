@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 // Единая верхняя полоса навигации (Сергей 17.10): «Русская цивилизация» › полное название музея › где ты.
 // Одна разметка на всех внутренних страницах: шаблоны (src/components/SiteBar.astro) и полные страницы дней
 // (src/integrations/full-pages.mjs вставляет её при сборке). Вид — public/assets/rc-sitebar.css,
@@ -35,5 +36,8 @@ export const TG_CHANNEL = 'https://t.me/russian_civilization_ru';
 export const podpiskaHtml = (label = 'Подписаться в Telegram') =>
   `<div class="rc-sub"><a href="${TG_CHANNEL}" target="_blank" rel="noopener"><span aria-hidden="true">✈</span>${esc(label)}</a></div>`;
 
+// Полоса и подписка — первый экран, 5 + 2 КБ: внутрь <head>, а не блокирующими запросами (Б10, скорость, 20.10).
+// В файлах нет url(…) — переписывать адреса не нужно; файлы остаются в public/assets/ для старых ссылок.
+const SITEBAR_CSS = ['rc-sitebar.css', 'rc-podpiska.css'].map((f) => fs.readFileSync(`public/assets/${f}`, 'utf8')).join('\n');
 export const sitebarAssets = (base) =>
-  `<link rel="stylesheet" href="${base}assets/rc-sitebar.css" />\n<link rel="stylesheet" href="${base}assets/rc-podpiska.css" />\n<script defer src="${base}assets/rc-sitebar.js"></script>`;
+  `<style data-rc-sitebar>${SITEBAR_CSS}</style>\n<script defer src="${base}assets/rc-sitebar.js"></script>`;

@@ -14,7 +14,7 @@ import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
 import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
-import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
+import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
 import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
 import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
@@ -61,6 +61,9 @@ function ldRedakciya(html, red, { modified, published, url } = {}) {
 
 const SRC = 'src/data/full-pages';
 const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
+// Подвал и кнопка «глаз» — по 1–1,5 КБ, внутрь <head> вместо блокирующих запросов (Б10, скорость, 20.10).
+const PODVAL_CSS = fs.readFileSync('public/assets/rc-podval.css', 'utf8');
+const SLABOVID_KNOPKA_CSS = fs.readFileSync('public/assets/rc-slabovid-knopka.css', 'utf8');
 // Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
@@ -590,7 +593,7 @@ export default function fullPages() {
             const zhKartochki = zhurnal(museum, key), zh = staraya ? undefined : zhKartochki;
             if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), { modified: zhKartochki?.modified, published: zhKartochki?.published, url: new URL(self, site).href });
             html = html.replace(/<meta\s+name=["']author["'][^>]*>\s*/gi, '').replace(/<link\s+rel=["']license["'][^>]*>\s*/gi, '')
-              .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<link rel="stylesheet" href="${base}assets/rc-podval.css" />\n</head>`);
+              .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<style data-rc-podval>${PODVAL_CSS}</style>\n</head>`);
             {
               const lic = licenziyaHtml(base, { links: true });
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
@@ -617,8 +620,8 @@ export default function fullPages() {
             html = html.replace(/<\/head>/i, `<style data-rc-vozrast>${VOZRAST_CSS}</style>\n${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key), vozrast: znakHtml(vz) })}${roditelyuHtml(roditelyu(museum, key))}`);
             // Версия для слабовидящих (Д7): класс — первым скриптом <head> (до стилей, без мигания), кнопка — в начале <body>.
-            html = html.replace(/<head(?:\s[^>]*)?>/i, (h) => `${h}\n<script>${slabovidHeadJs}</script>`)
-              .replace(/<\/head>/i, `<link rel="stylesheet" href="${base}assets/rc-slabovid.css" />\n</head>`)
+            html = html.replace(/<head(?:\s[^>]*)?>/i, (h) => `${h}\n<script>${slabovidHeadJs(base)}</script>`)
+              .replace(/<\/head>/i, `<style data-rc-slabovid>${SLABOVID_KNOPKA_CSS}</style>\n${slabovidCssHtml(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${slabovidButtonHtml()}`);
             html = staticHero(html);
             if (!/\srel=["'](?:prev|next)["']/i.test(html)) html = html.replace(/<\/body>/i, `${sosediHtml(base, museum, keys, key)}\n</body>`);

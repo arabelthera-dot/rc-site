@@ -5,8 +5,17 @@
 // Состояние — localStorage 'rc-slabovid'; применяется в <head> до отрисовки (headScript), без мигания.
 export const SLABOVID_KEY = 'rc-slabovid';
 
-export const slabovidHeadJs =
-  `try{if(localStorage.getItem('${SLABOVID_KEY}')==='1')document.documentElement.classList.add('rc-slabovid')}catch(e){}`;
+// Режим включён — rc-slabovid.css пишется в <head> обычной (блокирующей) ссылкой: первая отрисовка уже в режиме.
+export const slabovidHeadJs = (base = '/') =>
+  `try{if(localStorage.getItem('${SLABOVID_KEY}')==='1'){document.documentElement.classList.add('rc-slabovid');`
+  + `document.write('<link rel="stylesheet" href="${base}assets/rc-slabovid.css">')}}catch(e){}`;
+
+// Скорость (Б10, 20.10): режим — 21 КБ, все правила под html.rc-slabovid; обычному посетителю он не нужен до нажатия
+// кнопки — файл грузится без блокировки отрисовки (media=print → all, web.dev «Defer non-critical CSS»).
+// Вид кнопки (1 КБ) — внутрь <head>: Base.astro — <InlineCss file="rc-slabovid-knopka.css">, полные страницы — knopkaCss.
+export const slabovidCssHtml = (base = '/') =>
+  `<link rel="stylesheet" href="${base}assets/rc-slabovid.css" media="print" onload="this.media='all'">`
+  + `<noscript><link rel="stylesheet" href="${base}assets/rc-slabovid.css"></noscript>`;
 
 const EYE = '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>';
 
