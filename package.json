@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.1",
-    "@lhci/cli": "0.14.0",
+    "@lhci/cli": "0.15.1",
     "@playwright/test": "1.48.0",
     "pagefind": "^1.5.2",
     "playwright": "1.48.0"
