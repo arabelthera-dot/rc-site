@@ -12,6 +12,7 @@ import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
 import { hreflangi } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
+import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 
@@ -519,6 +520,10 @@ export default function fullPages() {
             if (!/mc\.yandex\.ru\/metrika\/tag\.js/.test(html)) html = html.replace(/<\/head>/i, `${metrikaHtml}\n</head>`);
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
+            // Версия для слабовидящих (Д7): класс — первым скриптом <head> (до стилей, без мигания), кнопка — в начале <body>.
+            html = html.replace(/<head(?:\s[^>]*)?>/i, (h) => `${h}\n<script>${slabovidHeadJs}</script>`)
+              .replace(/<\/head>/i, `<link rel="stylesheet" href="${base}assets/rc-slabovid.css" />\n</head>`)
+              .replace(/<body([^>]*)>/i, (b) => `${b}\n${slabovidButtonHtml()}`);
             html = staticHero(html);
             if (!/\srel=["'](?:prev|next)["']/i.test(html)) html = html.replace(/<\/body>/i, `${sosediHtml(base, museum, keys, key)}\n</body>`);
             html = await imgSizes(html, root, base);
