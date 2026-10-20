@@ -2,6 +2,7 @@
    Разметка — src/lib/redakciya.mjs; на шаблонах файл вписан в <head>, на полных страницах дней — ссылкой. */
 .rc-lic{max-width:720px;margin:12px auto 0;padding:0 16px;font:12.5px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;opacity:.85;text-align:center}
 .rc-lic a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.rc-lic-n{white-space:nowrap}
 .rc-zhurnal{max-width:760px;margin:28px auto;padding:14px 18px;border-top:1px solid rgba(201,168,76,.35);font:14px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif}
 .rc-zh-prov{margin:0 0 6px;opacity:.9}
 .rc-zh-log summary{cursor:pointer;font-weight:600;text-decoration:underline;text-underline-offset:3px}

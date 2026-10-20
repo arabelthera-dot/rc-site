@@ -9,21 +9,23 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 export const whenOfKey = (key, code = poUmolchaniyu) => `${parseInt(key.slice(3), 10)} ${stroka(code, 'mesyacyR')[parseInt(key.slice(0, 2), 10) - 1]}`;
 
 // Ссылка «Поиск» — только при RC_POISK=1 (выключатель поиска, src/integrations/poisk.mjs); иначе пусто.
-const poiskLink = (base) => (globalThis.process?.env?.RC_POISK === '1'
-  ? `<li class="rc-sb-poisk"><a class="rc-sb-link" href="${base}poisk/">Поиск</a></li>` : '');
+const poiskLink = (base, code) => (globalThis.process?.env?.RC_POISK === '1'
+  ? `<li class="rc-sb-poisk"><a class="rc-sb-link" href="${base}poisk/">${esc(stroka(code, 'poisk'))}</a></li>` : '');
 
 // here — «где ты» (дата, «Календарь»); нет here — страница музея: второй уровень без ссылки.
 // vozrast — готовый знак 436-ФЗ (src/lib/vozrast.mjs znakHtml), последним пунктом справа.
-export function sitebarHtml({ base, slug, title, here, vozrast = '' }) {
+// code — язык страницы: подписи полосы из словаря (Г20, src/data/stroki.json); по умолчанию русский.
+export function sitebarHtml({ base, slug, title, here, vozrast = '', code = poUmolchaniyu }) {
   const t = esc(title);
+  const s = (k) => esc(stroka(code, k));
   const museum = here
     ? `<a class="rc-sb-link rc-sb-museum" href="${base}muzei/${slug}/" title="${t}">${t}</a>`
     : `<span class="rc-sb-link rc-sb-museum" aria-current="page" title="${t}">${t}</span>`;
-  return `<nav class="rc-sitebar" aria-label="Где вы на сайте"><ol>`
-    + `<li><a class="rc-sb-link rc-sb-home" href="${base}">Русская цивилизация</a></li>`
+  return `<nav class="rc-sitebar" aria-label="${s('gdeVy')}"><ol>`
+    + `<li><a class="rc-sb-link rc-sb-home" href="${base}">${s('portalImya')}</a></li>`
     + `<li class="rc-sb-m">${museum}</li>`
     + (here ? `<li class="rc-sb-here" aria-current="page"><span class="rc-sb-link">${esc(here)}</span></li>` : '')
-    + `${poiskLink(base)}${vozrast ? `<li class="rc-sb-vozrast">${vozrast}</li>` : ''}</ol></nav>`;
+    + `${poiskLink(base, code)}${vozrast ? `<li class="rc-sb-vozrast">${vozrast}</li>` : ''}</ol></nav>`;
 }
 
 export const TG_CHANNEL = 'https://t.me/russian_civilization_ru';

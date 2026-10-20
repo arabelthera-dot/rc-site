@@ -211,16 +211,16 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 
   <Fragment set:html={zhurnalHtml(zh)} />
 
-  <nav class="dp-nav" aria-label="Соседние дни">
-    {prev ? <a href={dayUrl(prev.key)}>← предыдущий</a> : <span></span>}
-    <a href={cal}>все дни</a>
-    {next ? <a href={dayUrl(next.key)}>следующий →</a> : <span></span>}
+  <nav class="dp-nav" aria-label={s('sosediDni')}>
+    {prev ? <a href={dayUrl(prev.key)}>{`${strelkaNazad(lang.dir)} ${s('predKr')}`}</a> : <span></span>}
+    <a href={cal}>{s('vseDni')}</a>
+    {next ? <a href={dayUrl(next.key)}>{`${s('sledKr')} ${strelkaVpered(lang.dir)}`}</a> : <span></span>}
   </nav>
 
   <DenZavtra museum={m.slug} day={d.key} dated={dated} days={own} when={whenOf} mark={!empty} />
 
   <section class="block" id="kuda-dalshe">
-    <h2>Музей продолжается</h2>
+    <h2>{s('muzeyProdolzhaetsya')}</h2>
     <div class="dp-links">
       <a href={museumUrl}>{m.title_ru}</a>
     </div>
