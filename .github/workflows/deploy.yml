@@ -68,6 +68,10 @@ jobs:
       RC_POISK: ${{ vars.RC_POISK }}
       # «Поддержать проект» (Р31, 20.10.2026): пусто — выключен до работающего приёма денег, '1' — включён.
       PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+      # Почта (Р32, М48): форма подписки рядом с Telegram — только при PUBLIC_POCHTA=1 и адресе формы сервиса.
+      PUBLIC_POCHTA: ${{ vars.PUBLIC_POCHTA }}
+      PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}
+      PUBLIC_POCHTA_SPISOK: ${{ vars.PUBLIC_POCHTA_SPISOK }}
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
       # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.
