@@ -1,22 +1,15 @@
 ---
-// Под блоком «Сегодня»: видны первые три карточки, остальные — по кнопке (сценарий 2 приёмки, круг 2, 18.10:
+// Под «Ещё сегодня в музеях»: видны первые три карточки, остальные — по кнопке (сценарий 2 приёмки, круг 2, 18.10:
 // витрина «Музеи» была на 4,7 экрана вниз на ПК и 6,9 на телефоне). Карточки не удаляются — они в разметке,
 // скрыты стилем, кнопка раскрывает все. Без скрипта скрытия нет: класс ставит встроенный скрипт сразу за блоком.
+// Вещь дня стоит отдельно (portal/Segodnya.astro, Е7) и в счёт не входит. Стили — public/assets/portal-today.css.
 import { yazyk, razobratPut, stroka } from '../../lib/yazyki.mjs';
 const pokazatVse = stroka(yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code).code, 'pokazatVse');
 ---
 <div class="p-today-all" data-stroka={pokazatVse} hidden><button type="button" class="p-today-all__btn"></button></div>
-<style is:global>
-#segodnya.p-today--cut .p-today__card:nth-child(n+4) { display: none; }
-#segodnya.p-today--cut .p-today__list { min-height: 0; }
-.p-today-all { max-width: 860px; margin: -6px auto 18px; text-align: center; }
-.p-today-all__btn { min-height: 44px; padding: 0 20px; font: 600 15px 'Inter', 'Segoe UI', sans-serif; color: #e4c97a;
-  background: transparent; border: 1px solid rgba(201,168,76,.45); border-radius: 10px; cursor: pointer; }
-.p-today-all__btn:hover, .p-today-all__btn:focus-visible { border-color: #e4c97a; }
-</style>
 <script is:inline>
 (function () {
-  var box = document.getElementById('segodnya'), wrap = document.querySelector('.p-today-all'); if (!box || !wrap) return;
+  var box = document.getElementById('segodnya-vse'), wrap = document.querySelector('.p-today-all'); if (!box || !wrap) return;
   var list = box.querySelector('[data-t="list"]'), btn = wrap.querySelector('button'), open = false;
   var sync = function () {
     var n = list ? list.children.length : 0;
