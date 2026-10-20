@@ -26,7 +26,7 @@ const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100
 ---
 {/* инлайн на прежнем месте — порядок каскада после стиля главной (portal-base) тот же; без запроса (18.10) */}
 <InlineCss file="portal-today.css" />
-<section id="segodnya" class="p-today p-today--vesch" data-go={otkrytDen} data-vesch={s('veschDnya')} data-key={t.key} data-base={base} data-sizes-lead={SIZES_LEAD} data-sizes-card={SIZES_CARD} aria-labelledby="p-today-h">
+<section id="segodnya" class="p-today p-today--vesch" data-go={otkrytDen} data-takzhe={s('eschyoVMuzee')} data-vesch={s('veschDnya')} data-key={t.key} data-base={base} data-sizes-lead={SIZES_LEAD} data-sizes-card={SIZES_CARD} aria-labelledby="p-today-h">
   <div class="p-today__head">
     <h2 class="p-today__h" id="p-today-h" data-t="heading">{t.heading}</h2>
     <p class="p-today__date" data-t="when">{t.when}</p>
@@ -46,6 +46,7 @@ const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100
           <h3 class="p-vesch__title">{v.title}</h3>
           {v.hook && <p class="p-vesch__hook">{v.hook}</p>}
           <a class="p-vesch__go" href={v.href}>{otkrytDen}</a>
+          {v.takzhe && <p class="p-today__takzhe">{s('eschyoVMuzee')} {v.takzhe.map((x, i) => <>{i > 0 && ', '}<a href={x.href}>{x.museumTitle}</a></>)}</p>}
         </div>
       </article>
     )}
@@ -63,6 +64,7 @@ const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100
           <h3 class="p-today__title">{c.title}</h3>
           {c.hook && <p class="p-today__hook">{c.hook}</p>}
           <a class="p-today__go" href={c.href}>{otkrytDen}</a>
+          {c.takzhe && <p class="p-today__takzhe">{s('eschyoVMuzee')} {c.takzhe.map((x, i) => <>{i > 0 && ', '}<a href={x.href}>{x.museumTitle}</a></>)}</p>}
         </div>
       </article>
     ))}
@@ -94,6 +96,12 @@ const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100
       w.appendChild(img); return w;
     };
     var link = function (cls, href) { var a = el('a', cls, go); a.href = href; return a; };
+    // двойники (src/lib/segodnya.ts): «Ещё в музее …» со ссылками на те же истории в других музеях
+    var takzhe = function (c) {
+      var p = el('p', 'p-today__takzhe', box.getAttribute('data-takzhe') + ' ');
+      c.takzhe.forEach(function (x, i) { if (i) p.appendChild(document.createTextNode(', ')); var a = el('a', '', x.museumTitle); a.href = x.href; p.appendChild(a); });
+      return p;
+    };
     box.querySelector('[data-t="heading"]').textContent = t.heading;
     box.querySelector('[data-t="when"]').textContent = t.when;
     box.setAttribute('data-key', t.key);
@@ -110,6 +118,7 @@ const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100
     ld.appendChild(el('h3', 'p-vesch__title', v.title));
     if (v.hook) ld.appendChild(el('p', 'p-vesch__hook', v.hook));
     ld.appendChild(link('p-vesch__go', v.href));
+    if (v.takzhe && v.takzhe.length) ld.appendChild(takzhe(v));
     art.appendChild(ld);
     vesch.textContent = ''; vesch.appendChild(art);
     // остальные музеи этой даты
@@ -122,6 +131,7 @@ const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100
       b.appendChild(el('h3', 'p-today__title', c.title));
       if (c.hook) b.appendChild(el('p', 'p-today__hook', c.hook));
       b.appendChild(link('p-today__go', c.href));
+      if (c.takzhe && c.takzhe.length) b.appendChild(takzhe(c));
       a.appendChild(b); list.appendChild(a);
     });
     restBox.hidden = t.cards.length < 2;
