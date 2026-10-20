@@ -1,0 +1,12 @@
+/* Плашка согласия на cookie (Д1, Р51). Разметку ставит код Метрики (src/lib/metrika.mjs), он же подключает этот файл —
+   только когда плашка нужна. Режим слабовидящих: белый фон — rc-slabovid.css (#226). */
+.rc-cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;box-sizing:border-box;max-width:720px;margin:0 auto;
+  padding:14px 16px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;background:var(--panel,#12151c);
+  color:var(--txt,#e8e2d4);font:15px/1.45 'Inter',system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.45)}
+.rc-cookie p{margin:0 0 10px}
+.rc-cookie a{color:var(--gold,#c8a24a)}
+.rc-cookie .rc-cookie-b{display:flex;gap:10px;flex-wrap:wrap}
+.rc-cookie button{min-height:44px;padding:0 20px;border-radius:22px;font:inherit;font-weight:600;cursor:pointer}
+.rc-cookie .da{background:var(--gold,#c8a24a);color:#111;border:0}
+.rc-cookie .net{background:transparent;color:var(--txt,#e8e2d4);border:1px solid var(--line,rgba(255,255,255,.3))}
+.rc-cookie button:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}

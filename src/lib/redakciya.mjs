@@ -11,12 +11,12 @@ export const LICENZIYA = 'https://creativecommons.org/licenses/by/4.0/deed.ru';
 
 export const redakciyaLd = (home) => ({ '@type': 'Organization', name: REDAKCIYA, url: home });
 
-// Строка подвала всех страниц: лицензия + ссылки «О проекте», «Как сделан музей» (у шаблонов они в .foot-links).
+// Строка подвала всех страниц: лицензия + ссылки «О проекте», «Как сделан музей», «Политика конфиденциальности» (у шаблонов они в .foot-links).
 export function licenziyaHtml(base, { links = false, code = 'ru' } = {}) {
   const s = (k) => stroka(code, k); // строки — из словаря языка (Г20, src/data/stroki.json)
   return `<div class="rc-lic">${s('licTeksty')} <a href="${LICENZIYA}" rel="license noopener" target="_blank">CC BY 4.0</a>`
     + `${s('licMozhno')} (<a href="${base}avtory-izobrazheniy/">${s('licAvtory')}</a>).`
-    + (links ? `<br><a href="${base}o-proekte/">${s('podvalOProekte')}</a> · <a href="${base}kak-sdelan-muzey/">${s('podvalKakSdelan')}</a>` : '')
+    + (links ? `<br><a href="${base}o-proekte/">${s('podvalOProekte')}</a> · <a href="${base}kak-sdelan-muzey/">${s('podvalKakSdelan')}</a> · <a href="${base}politika-konfidencialnosti/">${s('podvalPolitika')}</a>` : '')
     + `</div>`;
 }
 
