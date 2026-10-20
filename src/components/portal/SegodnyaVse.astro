@@ -2,8 +2,10 @@
 // Под блоком «Сегодня»: видны первые три карточки, остальные — по кнопке (сценарий 2 приёмки, круг 2, 18.10:
 // витрина «Музеи» была на 4,7 экрана вниз на ПК и 6,9 на телефоне). Карточки не удаляются — они в разметке,
 // скрыты стилем, кнопка раскрывает все. Без скрипта скрытия нет: класс ставит встроенный скрипт сразу за блоком.
+import { yazyk, razobratPut, stroka } from '../../lib/yazyki.mjs';
+const pokazatVse = stroka(yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code).code, 'pokazatVse');
 ---
-<div class="p-today-all" hidden><button type="button" class="p-today-all__btn"></button></div>
+<div class="p-today-all" data-stroka={pokazatVse} hidden><button type="button" class="p-today-all__btn"></button></div>
 <style is:global>
 #segodnya.p-today--cut .p-today__card:nth-child(n+4) { display: none; }
 #segodnya.p-today--cut .p-today__list { min-height: 0; }
@@ -20,7 +22,7 @@
     var n = list ? list.children.length : 0;
     box.classList.toggle('p-today--cut', !open && n > 3);
     wrap.hidden = open || n <= 3;
-    btn.textContent = 'Показать все дни этой даты (ещё ' + (n - 3) + ')';
+    btn.textContent = wrap.getAttribute('data-stroka').replace('{n}', n - 3);
   };
   btn.addEventListener('click', function () { open = true; sync(); });
   sync();

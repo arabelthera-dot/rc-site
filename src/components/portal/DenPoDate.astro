@@ -4,15 +4,20 @@
 // что у блока «Сегодня» (src/lib/segodnya.ts): нет дней на дату — ближайшая следующая дата с днями.
 // «Сегодня» — к блоку «Сегодня», «Все музеи» — к витрине. Тексты дней не правятся, выводятся как есть.
 const base = import.meta.env.BASE_URL;
+import { yazyk, razobratPut, stroka, strelkaVpered } from '../../lib/yazyki.mjs';
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key: string): any => stroka(lang.code, key);
+// строки скрипта — из словаря языка (Г20)
+const strokiSkripta = JSON.stringify({ monR: s('mesyacyR'), net: s('naDatuNet'), dni: s('naDatuDni'), bliz: s('naDatuBlizh'), oshibka: s('neZagruzilos') });
 ---
-<section class="p-dpd" id="po-date" data-base={base} aria-labelledby="p-dpd-h">
-  <h2 class="p-dpd__h" id="p-dpd-h">Найти день по дате</h2>
+<section class="p-dpd" id="po-date" data-base={base} data-stroki={strokiSkripta} aria-labelledby="p-dpd-h">
+  <h2 class="p-dpd__h" id="p-dpd-h">{s('naytiDen')}</h2>
   <form class="p-dpd__row" action="#po-date">
-    <label class="p-dpd__lab" for="p-dpd-in">Дата</label>
+    <label class="p-dpd__lab" for="p-dpd-in">{s('data')}</label>
     <input class="p-dpd__in" id="p-dpd-in" type="date" required />
-    <button class="p-dpd__btn p-dpd__btn--go" type="submit">Показать дни</button>
-    <a class="p-dpd__btn" href="#segodnya">Сегодня</a>
-    <a class="p-dpd__btn" href="#p-vit-h">Все музеи ↓</a>
+    <button class="p-dpd__btn p-dpd__btn--go" type="submit">{s('pokazatDni')}</button>
+    <a class="p-dpd__btn" href="#segodnya">{s('segodnya')}</a>
+    <a class="p-dpd__btn" href="#p-vit-h">{`${s('vseMuzei')} ↓`}</a>
   </form>
   <div class="p-dpd__out" aria-live="polite"></div>
 </section>
@@ -41,7 +46,7 @@ const base = import.meta.env.BASE_URL;
 <script is:inline>
 (function () {
   var box = document.getElementById('po-date'); if (!box) return;
-  var MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var S = JSON.parse(box.getAttribute('data-stroki') || '{}'), MONR = S.monR;
   var whenOf = function (k) { return +k.slice(3) + ' ' + MONR[+k.slice(0, 2) - 1]; };
   var inp = box.querySelector('input'), out = box.querySelector('.p-dpd__out');
   var p = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' })
@@ -61,11 +66,11 @@ const base = import.meta.env.BASE_URL;
     var v = inp.value; if (!/^\d{4}-\d\d-\d\d$/.test(v)) return;
     var key = v.slice(5), my = ++seq; setD(key);
     fetch(box.getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
-      if (!t || !t.cards || !t.cards.length) { put(my, [el('p', 'p-dpd__note', 'На ' + whenOf(key) + ' дней пока нет.')]); return; }
+      if (!t || !t.cards || !t.cards.length) { put(my, [el('p', 'p-dpd__note', S.net.replace('{d}', whenOf(key)))]); return; }
       var ul = el('ul', 'p-dpd__list');
       t.cards.forEach(function (c) { var li = el('li'), a = el('a'); a.href = c.href; a.appendChild(el('b', '', c.museumTitle)); a.appendChild(document.createTextNode(c.title + ' →')); li.appendChild(a); ul.appendChild(li); });
-      put(my, [el('p', 'p-dpd__note', t.shown === key ? whenOf(key) + ' — дни музеев:' : 'На ' + whenOf(key) + ' дней пока нет — ближайшая дата: ' + whenOf(t.shown)), ul]);
-    }).catch(function () { put(my, [el('p', 'p-dpd__note', 'Не удалось загрузить дни — проверьте связь.')]); });
+      put(my, [el('p', 'p-dpd__note', t.shown === key ? S.dni.replace('{d}', whenOf(key)) : S.bliz.replace('{d}', whenOf(key)).replace('{b}', whenOf(t.shown))), ul]);
+    }).catch(function () { put(my, [el('p', 'p-dpd__note', S.oshibka)]); });
   };
   box.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); show(); });
   inp.addEventListener('change', show);
