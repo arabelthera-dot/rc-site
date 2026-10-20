@@ -7,6 +7,9 @@ import InlineCss from '../InlineCss.astro';
 // Стили — только public/assets/portal-today.css. width/height картинки = рамка 16:10 (.p-today__pic, object-fit: cover):
 // место держится до загрузки, замер glazami «картинки с размерами» (17.10).
 import { today } from '../../lib/segodnya';
+import { yazyk, razobratPut, stroka, strelkaVpered } from '../../lib/yazyki.mjs';
+const langS = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
+const otkrytDen = `${stroka(langS.code, 'otkrytDenKr')} ${strelkaVpered(langS.dir)}`;
 const base = import.meta.env.BASE_URL;
 const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
   .formatToParts(new Date()).map((x) => [x.type, x.value]));
@@ -19,7 +22,7 @@ const SIZES_CARD = '(min-width: 1250px) 290px, (min-width: 1100px) 33vw, (min-wi
 ---
 {/* инлайн на прежнем месте — порядок каскада после стиля главной (portal-base) тот же; без запроса (18.10) */}
 <InlineCss file="portal-today.css" />
-<section id="segodnya" class="p-today" data-key={t.key} data-base={base} data-sizes-lead={SIZES_LEAD} data-sizes-card={SIZES_CARD} aria-labelledby="p-today-h">
+<section id="segodnya" class="p-today" data-go={otkrytDen} data-key={t.key} data-base={base} data-sizes-lead={SIZES_LEAD} data-sizes-card={SIZES_CARD} aria-labelledby="p-today-h">
   <div class="p-today__head">
     <h2 class="p-today__h" id="p-today-h" data-t="heading">{t.heading}</h2>
     <p class="p-today__date" data-t="when">{t.when}</p>
@@ -32,7 +35,7 @@ const SIZES_CARD = '(min-width: 1250px) 290px, (min-width: 1100px) 33vw, (min-wi
           <p class="p-today__museum">{c.museumTitle}</p>
           <h3 class="p-today__title">{c.title}</h3>
           {c.hook && <p class="p-today__hook">{c.hook}</p>}
-          <a class="p-today__go" href={c.href}>Открыть день →</a>
+          <a class="p-today__go" href={c.href}>{otkrytDen}</a>
         </div>
       </article>
     ))}
@@ -64,7 +67,7 @@ const SIZES_CARD = '(min-width: 1250px) 290px, (min-width: 1100px) 33vw, (min-wi
       b.appendChild(el('p', 'p-today__museum', c.museumTitle));
       b.appendChild(el('h3', 'p-today__title', c.title));
       if (c.hook) b.appendChild(el('p', 'p-today__hook', c.hook));
-      var go = el('a', 'p-today__go', 'Открыть день →'); go.href = c.href; b.appendChild(go);
+      var go = el('a', 'p-today__go', box.getAttribute('data-go')); go.href = c.href; b.appendChild(go);
       a.appendChild(b); list.appendChild(a);
     });
     done();

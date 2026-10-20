@@ -10,8 +10,12 @@ import DenPoDate from '../components/portal/DenPoDate.astro';
 import SegodnyaVse from '../components/portal/SegodnyaVse.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';
-import { beyondYear, isDated, plural } from '../lib/kalendar';
+import { beyondYear, isDated } from '../lib/kalendar';
+import { yazyk, razobratPut, stroka, chislo, strelkaVpered } from '../lib/yazyki.mjs';
 const base = import.meta.env.BASE_URL;
+// строки главной — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key: string): any => stroka(lang.code, key);
 const museums = (await getCollection('museums')).sort((a, b) => a.data.number - b.data.number);
 const days = await getCollection('days');
 // в счётчик — только дни года, записи «сверх года» не считаются (как на странице календаря)
@@ -27,9 +31,9 @@ const cards = museums
   // музеи с календарём — выше, внутри групп — по номеру
   .sort((a, b) => (b.n > 0 ? 1 : 0) - (a.n > 0 ? 1 : 0) || a.number - b.number);
 let eager = 2; // первые обложки — без ленивой загрузки
-const support = { museum: 'Русская цивилизация', lang: 'ru' };
+const support = { museum: s('portalImya'), lang: lang.code };
 ---
-<Base portal schema="home" title="Русская цивилизация — летопись русских открытий, побед, творчества и характера" ogTitle="Русская цивилизация" image={`${base}og/index.jpg`} description="Летопись русских открытий, побед, творчества и характера. Первый цифровой музей достижений России.">
+<Base portal schema="home" title={s('portalTitle')} ogTitle={s('portalImya')} image={`${base}og/index.jpg`} description={s('portalOpisanie')}>
   <Fragment slot="head">
     {/* только шрифты главной (#2004 п.6); кириллица Inter и Playfair — заранее: ими набран первый экран */}
     <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />
@@ -40,9 +44,9 @@ const support = { museum: 'Русская цивилизация', lang: 'ru' };
   </Fragment>
   <header slot="header" class="p-hero">
     <div class="p-orn" aria-hidden="true"><span></span><i>✦</i><span></span></div>
-    <h1>Русская цивилизация</h1>
-    <p class="p-lead">Летопись русских открытий, побед, творчества и характера</p>
-    <p class="p-sub">Первый цифровой музей достижений России</p>
+    <h1>{s('portalImya')}</h1>
+    <p class="p-lead">{s('portalLead')}</p>
+    <p class="p-sub">{s('portalSub')}</p>
     <div class="p-orn p-orn-b" aria-hidden="true"><span></span><i>✦</i><span></span></div>
   </header>
 
@@ -54,7 +58,7 @@ const support = { museum: 'Русская цивилизация', lang: 'ru' };
     <div class="p-supslot" data-support-slot></div>
 
     <section class="p-vitrina" aria-labelledby="p-vit-h">
-      <h2 id="p-vit-h" class="p-sec">Музеи</h2>
+      <h2 id="p-vit-h" class="p-sec">{s('muzei')}</h2>
       <ul class="p-grid">
         {cards.map((c) => {
           const Tag = c.href ? 'a' : 'div';
@@ -68,8 +72,8 @@ const support = { museum: 'Русская цивилизация', lang: 'ru' };
                 <div class="p-body">
                   <h3>{c.title_ru}</h3>
                   {c.promise_ru && <p>{c.promise_ru}</p>}
-                  {c.n > 0 && <div class="p-st">в календаре: {c.n} {plural(c.n, 'день', 'дня', 'дней')}</div>}
-                  {c.href && <span class="p-go" aria-hidden="true">Войти в музей →</span>}
+                  {c.n > 0 && <div class="p-st">{s('vKalendare').replace('{n}', String(c.n)).replace('{dney}', chislo(lang.code, c.n, 'dneyFormy'))}</div>}
+                  {c.href && <span class="p-go" aria-hidden="true">{`${s('voytiVMuzey')} ${strelkaVpered(lang.dir)}`}</span>}
                 </div>
               </Tag>
             </li>
@@ -82,5 +86,5 @@ const support = { museum: 'Русская цивилизация', lang: 'ru' };
   <script is:inline define:vars={{ support }}>window.MUSEUM_SUPPORT = support;</script>
   <script is:inline src={`${base}assets/museum-support.js`} defer></script>
 
-  <Fragment slot="footer"><p class="p-park">Продолжение музея «Русский парк» (Переславль-Залесский, 2014)</p></Fragment>
+  <Fragment slot="footer"><p class="p-park">{s('portalPark')}</p></Fragment>
 </Base>
