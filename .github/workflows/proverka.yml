@@ -28,6 +28,13 @@ jobs:
       - run: npm run build
         env:
           RC_POISK: ${{ vars.RC_POISK }}
+          PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+      # «Поддержать проект» выключен до работающего приёма денег (Р31, 20.10.2026): в сборке не должно быть
+      # ни текста «Поддержать проект», ни движка museum-support.js. Включение — переменная PUBLIC_PODDERZHKA=1.
+      - name: podderzhka — блок поддержки выключен
+        env:
+          PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+        run: node scripts/podderzhka.test.mjs && node scripts/podderzhka.mjs dist
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@v2
@@ -64,6 +71,8 @@ jobs:
       - name: glazami — замер против эталона
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 5
+        env:
+          PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
         run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
       # Сторож «Найти день по дате» (18.10.2026): список дней на главной не задваивается при медленной сети.
       # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.
