@@ -4,6 +4,8 @@
 interface Props { m: { title_ru: string; slogan_ru?: string; promise_ru?: string; number: number }; img?: { src: string; caption: string; credit: string } }
 const { m, img } = Astro.props;
 const base = import.meta.env.BASE_URL;
+import { yazyk, razobratPut, stroka } from '../../lib/yazyki.mjs';
+const muzeyN = stroka(yazyk(razobratPut(Astro.url.pathname, base).code).code, 'muzeyN').replace('{n}', String(m.number));
 const src = img && (/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`);
 // width/height кадра — из самого файла: браузер держит место под картинку до её загрузки, заголовок под ней
 // не перескакивает (CLS 0,36 на витрине искусства, O1 16.10)
@@ -15,7 +17,7 @@ const size = img && (/^https?:/.test(img.src) ? await inferRemoteSize(img.src)
 <header class="mh-cover">
   {img && (<figure class="mh-scene"><img src={src} alt={img.caption} width={size?.width} height={size?.height} loading="eager" /><figcaption>{img.caption} · {img.credit}</figcaption></figure>)}
   <div class="mh-title">
-    <div class="b1">Музей № {m.number}</div>
+    <div class="b1">{muzeyN}</div>
     <h1>{m.title_ru}</h1>
     {m.slogan_ru && <p class="mh-slogan">{m.slogan_ru}</p>}
     {m.promise_ru && <p class="mh-promise">{m.promise_ru}</p>}
