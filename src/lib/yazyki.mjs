@@ -48,3 +48,6 @@ export function stroka(code, key) {
 
 /** Стрелка «вперёд» по ходу строки: в письме справа налево смотрит влево. */
 export const strelkaVpered = (dir) => (dir === 'rtl' ? '←' : '→');
+
+/** Стрелка «назад» по ходу строки: в письме справа налево смотрит вправо. */
+export const strelkaNazad = (dir) => (dir === 'rtl' ? '→' : '←');
