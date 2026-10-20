@@ -5,13 +5,19 @@
 //     названия) и старый снимок (> 14 дней) — предупреждением. Ложное — строкой в data/reestry/isklyucheniya.json.
 // Е2: кадр XX века без основания — красная при PRAVA_XX_STROGO=1; без переменной — отчёт числом (пока кадров
 //     без основания больше 0, сайт не роняем — Сергей 20.10). Список — node scripts/prava.mjs --xx.
-import { sverkaReestrov, kadryXX } from '../lib/zakon.mjs';
+import { sverkaReestrov, probaReestrov, kadryXX } from '../lib/zakon.mjs';
 
 export default function zakon() {
   return {
     name: 'rc-zakon',
     hooks: {
       'astro:build:start': ({ logger }) => {
+        // проба: сверка обязана поймать настоящую запись каждого реестра — иначе «0 совпадений» ничего не значит
+        const sboi = probaReestrov();
+        if (sboi.length) {
+          for (const s of sboi) logger.error(s);
+          throw new Error(`закон о содержании: проба сверки не прошла (${sboi.length}) — сверка с реестрами сломана или снимки пусты`);
+        }
         const r = sverkaReestrov();
         for (const s of r.starye) logger.warn(s);
         if (r.vozmozhnye.length) logger.warn(`реестры: возможных совпадений ${r.vozmozhnye.length} (однофамильцы, короткие названия) — список: node scripts/prava.mjs --zakon --vse`);

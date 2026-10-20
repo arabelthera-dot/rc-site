@@ -32,8 +32,12 @@ export const norm = (s) => String(s || '').toLowerCase().replace(/ё/g, 'е').re
 
 // Слово с окончанием: «Елизаров» ловит «Елизарова», «Елизаровым»; «Раиса» — «Раисы», «Раисой».
 const stem = (w) => (w.length > 4 ? w.replace(/[аяоеыиуюйь]$/, '') : w);
+// Беглая гласная: «Павел» — «Павла», «Лев» — «Льва»; вторая основа без «е» перед последней согласной
+// (в односложном — «ь»), иначе родительный и творительный падежи имени проходили мимо сверки.
+const beglaya = (w) => { const m = /^(.*[^аеиоуыэюя])е([вклмнр])$/.exec(w); return m ? m[1] + (m[1].length === 1 ? 'ь' : '') + m[2] : null; };
+const osnovy = (w) => [stem(w), beglaya(w)].filter(Boolean);
 // Слова варианта уже нормализованы (только буквы и цифры) — экранировать нечего.
-const wordRe = (w, flex) => (flex && w.length > 1 ? `${stem(w)}\\p{L}{0,3}` : w);
+const wordRe = (w, flex) => (flex && w.length > 1 ? `(?:${osnovy(w).join('|')})\\p{L}{0,3}` : w);
 
 /** Сверщик одной записи реестра: вариант → RegExp по нормализованному тексту (или по сырому — для кавычек). */
 function matcher(v) {
@@ -101,7 +105,7 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
   for (const t of tx) { t.slova = [...new Set(t.norm.split(' '))].sort(); t.niz = t.syroy.toLowerCase(); }
   const slovar = [...new Set(tx.flatMap((t) => t.slova))].sort();
   const estPrefiks = (p) => prefiks(slovar, p);
-  const vTekste = (t, w, flex) => prefiks(t.slova, flex ? stem(w) : w) && (flex || t.slova.includes(w));
+  const vTekste = (t, w, flex) => (flex ? osnovy(w).some((o) => prefiks(t.slova, o)) : prefiks(t.slova, w) && t.slova.includes(w));
   for (const s of sn) {
     const dney = s.data_snimka ? Math.floor((segodnya - new Date(s.data_snimka)) / 864e5) : Infinity;
     if (dney > 14) starye.push(`${s.fayl}: снимок ${s.data_snimka || 'без даты'} — старше 14 дней`);
@@ -110,7 +114,7 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
       for (const v of z.varianty || []) {
         const words = v.adres ? [] : v.tekst.split(' ');
         const flex = (w) => v.slovoforma && w.length > 1;
-        if (!words.every((w) => (flex(w) ? estPrefiks(stem(w)) : estPrefiks(w)))) continue;
+        if (!words.every((w) => (flex(w) ? osnovy(w).some(estPrefiks) : estPrefiks(w)))) continue;
         const { re, syroy } = matcher(v);
         for (const t of tx) {
           if (v.adres ? !t.niz.includes(v.tekst) : !words.every((w) => vTekste(t, w, flex(w)))) continue;
@@ -122,6 +126,24 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
     }
   }
   return { snimkov: sn.length, zapisey, sovpadeniya, vozmozhnye, starye };
+}
+
+/**
+ * Проба Е1 («имя из реестра роняет сборку»): из каждого снимка берётся первая запись с сильным вариантом
+ * и вставляется в пробный текст; сверка обязана её поймать. Возвращает список сбоев —
+ * снимков, где сильная запись есть, а сверка её не нашла, или где сильных записей нет вовсе.
+ */
+export function probaReestrov(root = '.') {
+  const sboi = [];
+  for (const s of snimki(root)) {
+    const z = (s.zapisi || []).find((x) => (x.varianty || []).some((v) => silnoe(v, s)));
+    if (!z) { if (s.vid !== 'materialy') sboi.push(`${s.fayl}: нет ни одной записи, которую сверка считает сильной`); continue; }
+    const v = z.varianty.find((x) => silnoe(x, s));
+    const r = sverkaTekstov([tekst(`проба ${s.fayl}`, `Пробный текст сборки: упомянуто ${v.kavychki ? `«${v.tekst}»` : v.tekst}.`)], root,
+      { segodnya: new Date(s.data_snimka || Date.now()) });
+    if (!r.sovpadeniya.some((x) => x.imya === z.imya)) sboi.push(`${s.fayl}: «${z.imya}» в пробном тексте не пойман`);
+  }
+  return sboi;
 }
 
 // --- Е2 ---------------------------------------------------------------------------------------------
