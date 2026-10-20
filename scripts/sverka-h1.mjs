@@ -6,8 +6,8 @@
 // у дня без legacy_page — так её и показывает src/integrations/full-pages.mjs) сверяется так же.
 // Ошибки также: файл full-pages без карточки дня; legacy_page без файла full-pages.
 // Запуск: node scripts/sverka-h1.mjs. Расхождения печатаются всегда; код выхода 1 — только при SVERKA_H1_STROGO=1;
-// в .github/workflows/proverka.yml шаг ставит её сам, а роняет заявку лишь при переменной репозитория SVERKA_H1_STROGO=1
-// (новое — выключенным, правило 28.09).
+// в .github/workflows/proverka.yml шаг ставит её сам; выключатель всего шага — переменная репозитория SVERKA_H1_STROGO=0
+// (строгая с 20.10.2026, Р52).
 import fs from 'node:fs';
 import path from 'node:path';
 
