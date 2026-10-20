@@ -2,7 +2,7 @@
 // Доска музеев — собирается ТОЛЬКО из данных сайта при сборке (museums.json, карточки дней, full-pages).
 // Слово Сергея 08.10: «галочка ни о чем не говорит… во всех графах должны стоять ссылки» — галочек нет:
 // в ячейке число и ссылка на сам результат, нет результата — «—». Ниже — по музею список ссылок на каждый готовый день.
-// noindex, вне карты сайта (astro.config.mjs), в меню не включена.
+// noindex, вне карты сайта (src/integrations/karta-volnami.mjs), в меню не включена.
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';

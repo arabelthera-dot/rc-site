@@ -42,3 +42,24 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+  # IndexNow (Е6, Р47; «да» Сергея 20.10.2026): после выкладки — адреса волны 1 карты сайта и изменившиеся за сутки
+  # Яндексу и Bing (scripts/indexnow.mjs; ночью — только изменившиеся). Без сети или с ошибкой — предупреждение,
+  # выкладка уже прошла и не роняется. Откат — убрать эту задачу.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/indexnow.mjs
+            src/data/karta-sayta.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/indexnow.mjs ${{ github.event_name == 'schedule' && '--tolko-svezhie' || '' }}

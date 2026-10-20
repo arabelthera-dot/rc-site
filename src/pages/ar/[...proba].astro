@@ -1,9 +1,9 @@
 ---
 // Г20 (план сайта): проба письма справа налево — одна арабская страница-заглушка /ar/ на общем шаблоне Base.astro.
 // ВЫКЛЮЧЕНА по умолчанию: собирается только при RC_PROBA_RTL=1 (обычная сборка её не создаёт вовсе).
-// noindex, в карту сайта не идёт (фильтр в astro.config.mjs); арабский в yazyki.json — ready:false, поэтому
+// noindex, в карту сайта не идёт (noindex — src/integrations/karta-volnami.mjs); арабский в yazyki.json — ready:false, поэтому
 // в hreflang и переключателе языков его нет. lang="ar" dir="rtl" Base.astro берёт из приставки адреса /ar/.
-// Откат — удалить этот файл и строку фильтра /ar/ в astro.config.mjs.
+// Откат — удалить этот файл.
 import Base from '../../layouts/Base.astro';
 export function getStaticPaths() {
   return process.env.RC_PROBA_RTL === '1' ? [{ params: { proba: undefined } }] : [];

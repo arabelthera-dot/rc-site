@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 
-import sitemap from '@astrojs/sitemap';
 import legacyRedirects from './src/integrations/legacy-redirects.mjs';
 import fullPages from './src/integrations/full-pages.mjs';
 import kartinki from './src/integrations/kartinki.mjs';
@@ -11,28 +10,7 @@ import metrikaFajlom from './src/integrations/metrika-fajlom.mjs';
 import poisk from './src/integrations/poisk.mjs';
 import podderzhka from './src/integrations/podderzhka.mjs';
 import zakon from './src/integrations/zakon.mjs';
-import fs from 'node:fs';
-
-// Доска музеев (/doska/) — служебная, noindex, в карту сайта не идёт. Так же /proverka/ — задание проверяющим (Р46).
-// «День готовится» (дата без карточки или карточка без хука и текста) — noindex, в карту сайта не идёт.
-const soonDay = (page) => {
-  const m = /\/muzei\/([^/]+)\/den\/(\d\d-\d\d)\/$/.exec(page);
-  if (!m) return false;
-  const f = `src/content/days/${m[1]}/${m[2]}.json`;
-  if (!fs.existsSync(f)) return true;
-  const d = JSON.parse(fs.readFileSync(f, 'utf8'));
-  return !(d.hook || d.gist);
-};
-
-// /sitemap.xml — привычный адрес карты сайта (поисковики и сторожа идут сюда первым): копия sitemap-index.xml
-// после сборки, иначе 404 (обход 20.10, план сайта А5). Стоит сразу после sitemap — файл уже есть.
-const sitemapXml = () => ({
-  name: 'sitemap-xml',
-  hooks: { 'astro:build:done': ({ dir }) => {
-    const src = new URL('sitemap-index.xml', dir);
-    if (fs.existsSync(src)) fs.copyFileSync(src, new URL('sitemap.xml', dir));
-  } },
-});
+import kartaVolnami from './src/integrations/karta-volnami.mjs';
 
 // Свой домен https://russian-civilization.ru/ — Pages этого репо (19.10.2026, перенос с rc-museum-preview).
 // Старые github.io/rc-site/* GitHub переадресует на домен сам. Смена адреса — правится только site/base.
@@ -52,6 +30,8 @@ export default defineConfig({
   // poisk — после minify: индекс pagefind (dist/pagefind/) по страницам музеев и дней; ВЫКЛЮЧЕН, включает RC_POISK=1.
   // podderzhka — «Поддержать проект» выключен до приёма денег (Р31): вырезает блоки из полных страниц; PUBLIC_PODDERZHKA=1 — не трогает.
   // zakon — до сборки: сверка текстов с реестрами Минюста (красная) и основания кадров XX века (Е1/Е2, src/lib/zakon.mjs).
+  // kartaVolnami — после всех правок HTML: карта сайта волнами sitemap-index.xml (+ /sitemap.xml), открытые волны —
+  //   src/data/karta-sayta.json; noindex и служебные (/doska/, /karta/, /poisk/, /proverka/) — вне карт (Е6, Р47).
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [zakon(), sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) && !/\/proverka\//.test(page) && !/\/ar\/$/.test(page) }), sitemapXml(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), poisk()],
+  integrations: [zakon(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), kartaVolnami(), poisk()],
 });

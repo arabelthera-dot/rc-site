@@ -46,8 +46,10 @@ if (opt.dist) {
   SITE = `http://127.0.0.1:${server.address().port}${BASE}`;
 }
 
-const sm = opt.dist ? fs.readFileSync(path.join(opt.dist, 'sitemap-0.xml'), 'utf8') : await (await fetch(SITE + 'sitemap-0.xml')).text();
-const all = [...sm.matchAll(/<loc>([^<]*)/g)].map(m => m[1].replace(ZHIVOY, SITE));
+// Весь сайт — обе волны карты сайта (Е6, src/integrations/karta-volnami.mjs): файлы волн пишутся и закрытыми.
+const VOLNY = ['sitemap-volna-1.xml', 'sitemap-volna-2.xml'];
+const sm = (await Promise.all(VOLNY.map(async f => opt.dist ? fs.readFileSync(path.join(opt.dist, f), 'utf8') : (await fetch(SITE + f)).text()))).join('');
+const all = [...sm.matchAll(/<loc>([^<]*)/g)].map(m => m[1].replace(ZHIVOY, SITE)).sort();
 const dni = {};
 for (const u of all) { const m = u.match(/muzei\/([^/]+)\/den\//); if (m) (dni[m[1]] ||= []).push(u); }
 const vyborka = all.filter(u => !/\/den\//.test(u));
