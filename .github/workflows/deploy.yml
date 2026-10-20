@@ -89,15 +89,12 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
   # Российская площадка msk-new (Р6; решение Михаила 20.10.2026: сайт на своём сервере nginx + Let's Encrypt, Облако
-  # не делаем — задача yandex снята, infra/yandex пока лежит): та же сборка, что ушла на Pages (артефакт github-pages),
-  # уходит rsync по ssh (https://rsync.samba.org/, ключ развёртывания — https://docs.github.com/actions/security-guides/
-  # using-secrets-in-github-actions). Ключ хоста закреплён переменной RU_DEPLOY_KNOWN_HOSTS, ssh-keyscan в CI не
-  # делается: подменённый сервер не получит сайт. --delay-updates + --delete-after: новые файлы ложатся рядом и
-  # подменяются разом в конце, старые удаляются после, так что посетитель не застаёт полусайт.
-  # Нужно (Михаил): секрет RU_DEPLOY_KEY (закрытый ключ ed25519, открытая часть на сервере, лучше с rrsync -wo <путь>),
-  # переменные RU_DEPLOY_HOST, RU_DEPLOY_USER, RU_DEPLOY_PATH (корень nginx), RU_DEPLOY_KNOWN_HOSTS (строка
-  # `ssh-keyscan -t ed25519 <хост>`, снятая на самом сервере), по желанию RU_DEPLOY_PORT и RU_DEPLOY_URL (адрес
-  # проверки после выкладки). Хоть одного нет — задача спит строкой в журнале. Ошибка — предупреждение, Pages и
+  # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages), уходит rsync по ssh на
+  # rcdeploy@185.149.145.227. На сервере ключ ограничен rrsync -wo с корнем /srv/rc-site/www — путь в команде не пишется.
+  # Ключ хоста — строкой ниже (не секрет, данные Михаила 20.10), StrictHostKeyChecking=yes: подменённый сервер сайт не
+  # получит. --delay-updates + --delete-after: новые файлы подменяются разом в конце, старые удаляются после — посетитель
+  # не застаёт полусайт. nginx (Михаил): try_files $uri $uri/ $uri.html, error_page 404 /404.html.
+  # Нужно: секрет RU_DEPLOY_KEY (кладёт Михаил); нет — задача спит строкой в журнале. Ошибка — предупреждение, Pages и
   # IndexNow не роняются (continue-on-error). Откат — убрать эту задачу.
   msk:
     needs: build
@@ -108,19 +105,14 @@ jobs:
       contents: read
     env:
       KLYUCH: ${{ secrets.RU_DEPLOY_KEY }}
-      HOST: ${{ vars.RU_DEPLOY_HOST }}
-      POLZ: ${{ vars.RU_DEPLOY_USER }}
-      PUT: ${{ vars.RU_DEPLOY_PATH }}
-      IZVESTNYE: ${{ vars.RU_DEPLOY_KNOWN_HOSTS }}
-      PORT: ${{ vars.RU_DEPLOY_PORT || '22' }}
+      KUDA: rcdeploy@185.149.145.227
+      IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
       ADRES: ${{ vars.RU_DEPLOY_URL }}
     steps:
       - id: est
         run: |
-          net=""
-          for v in KLYUCH HOST POLZ PUT IZVESTNYE; do [ -n "${!v}" ] || net="$net $v"; done
-          if [ -n "$net" ]; then
-            echo "::notice::msk-new: не заданы RU_DEPLOY_KEY / RU_DEPLOY_HOST / RU_DEPLOY_USER / RU_DEPLOY_PATH / RU_DEPLOY_KNOWN_HOSTS (нет:$net; Михаил) — выкладка в Россию пропущена, сайт выложен на GitHub Pages"
+          if [ -z "$KLYUCH" ]; then
+            echo "::notice::msk-new: нет секрета RU_DEPLOY_KEY (Михаил) — выкладка в Россию пропущена, сайт выложен на GitHub Pages"
             echo "est=false" >> "$GITHUB_OUTPUT"
           else
             echo "est=true" >> "$GITHUB_OUTPUT"
@@ -139,10 +131,10 @@ jobs:
           umask 077; mkdir -p ~/.ssh
           printf '%s\n' "$KLYUCH" > ~/.ssh/klyuch
           printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
-          SSH="ssh -i $HOME/.ssh/klyuch -p $PORT -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes"
-          rsync -rlptz --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$POLZ@$HOST:${PUT%/}/" | tail -n 15
+          SSH="ssh -i $HOME/.ssh/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes"
+          rsync -rlptz --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$KUDA:" | tail -n 15
           rm -f ~/.ssh/klyuch
-          echo "msk-new: выложено в $HOST:$PUT — $(find dist -type f | wc -l) файлов"
+          echo "msk-new: выложено в $KUDA — $(find dist -type f | wc -l) файлов"
           if [ -n "$ADRES" ]; then
             kod=$(curl -s -o /dev/null -w '%{http_code}' "$ADRES") || kod=нет
             echo "проверка $ADRES — код $kod"
