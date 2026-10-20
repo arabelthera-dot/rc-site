@@ -18,7 +18,7 @@ html.rc-slabovid body,html.rc-slabovid body *,html.rc-slabovid body *::before,ht
 html.rc-slabovid body{background:#fff!important}
 html.rc-slabovid body :is(p,li,dd,dt,blockquote,figcaption,td,th){line-height:1.5!important;letter-spacing:.01em}
 /* липкие и всплывающие слои без фона просвечивали бы — им белый */
-html.rc-slabovid body :is(nav,header,footer,dialog,[role=dialog],.rc-sitebar,.rc-sub){background-color:#fff!important}
+html.rc-slabovid body :is(nav,header,footer,dialog,[role=dialog],.rc-sitebar,.rc-sub,.rc-cookie){background-color:#fff!important}
 html.rc-slabovid body a,html.rc-slabovid body a *{color:#0000c8!important}
 html.rc-slabovid body a{text-decoration:underline!important;text-underline-offset:.15em}
 html.rc-slabovid body :focus-visible{outline:3px solid #000!important;outline-offset:2px!important}
