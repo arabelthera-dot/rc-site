@@ -24,7 +24,7 @@ jobs:
       - name: segodnya-msk — один день по Москве
         continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO != '1' }}
         timeout-minutes: 1
-        run: node scripts/segodnya-msk.mjs
+        run: node scripts/segodnya-msk.test.mjs && node scripts/segodnya-msk.mjs
       - run: npm run build
         env:
           RC_POISK: ${{ vars.RC_POISK }}
