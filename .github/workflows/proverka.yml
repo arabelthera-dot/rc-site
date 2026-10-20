@@ -121,7 +121,7 @@ jobs:
       - name: glazami — браузер
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 4
-        run: npm i --no-save --no-audit --no-fund playwright@1.48.0 && npx playwright install --with-deps chromium
+        run: npx --no-install playwright install --with-deps chromium
       - name: glazami — замер против эталона
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 5
@@ -184,12 +184,12 @@ jobs:
       - name: skorost — Lighthouse CI
         continue-on-error: true
         timeout-minutes: 4
-        run: npx -y @lhci/cli@0.14.0 autorun --config=lighthouserc.json
+        run: npx --no-install lhci autorun --config=lighthouserc.json
       - name: skorost — axe и сводка
         if: always()
         continue-on-error: true
         timeout-minutes: 3
-        run: npm i --no-save --no-audit --no-fund playwright@1.48.0 @axe-core/playwright@4.10.1 && node scripts/otchet-skorost.mjs --dist dist --lhci /tmp/lhci
+        run: node scripts/otchet-skorost.mjs --dist dist --lhci /tmp/lhci
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
