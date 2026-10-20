@@ -1,0 +1,16 @@
+---
+// Строка связей дня (Р37): люди, места, народы, темы из поля slovar — ссылками на страницы словаря /slovar/.
+// Поля нет — строки нет.
+import InlineCss from '../InlineCss.astro';
+import { TIPY, zapis, adres } from '../../lib/slovar.mjs';
+const { ids = [] } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const svyazi = TIPY.flatMap((t) => ids.filter((id) => id.startsWith(`${t.tip}:`))).map((id) => ({ href: adres(base, id), ...zapis(id) }));
+---
+{svyazi.length > 0 && <>
+  <InlineCss file="rc-slovar.css" />
+  <nav class="slovar-stroka" aria-label="Связи дня">
+    <span class="slovar-lbl">Связи:</span>
+    {svyazi.map((z) => <a href={z.href} title={z.kratko}>{z.nazvanie}</a>)}
+  </nav>
+</>}

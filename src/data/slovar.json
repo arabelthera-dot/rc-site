@@ -1,0 +1,852 @@
+{
+  "lyudi:aleksandr-benua": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Бенуа",
+    "kratko": "Художник, историк искусства, один из основателей «Мира искусства»."
+  },
+  "lyudi:aleksandr-deyneka": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Дейнека",
+    "kratko": "Советский живописец и график, автор «Обороны Севастополя»."
+  },
+  "lyudi:aleksandr-grinberg": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Гринберг",
+    "kratko": "Архитектор, строил в 1920-е."
+  },
+  "lyudi:aleksandr-ivanov": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Иванов",
+    "kratko": "Живописец, двадцать лет писал «Явление Христа народу»."
+  },
+  "lyudi:aleksandr-karpinskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Карпинский",
+    "kratko": "Геолог, первый выборный президент Академии наук."
+  },
+  "lyudi:aleksandr-laktionov": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Лактионов",
+    "kratko": "Советский живописец, автор «Письма с фронта»."
+  },
+  "lyudi:aleksandr-pushkin": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Пушкин",
+    "kratko": "Поэт, создатель современного русского литературного языка."
+  },
+  "lyudi:aleksandr-suvorov": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Суворов",
+    "kratko": "Полководец, генералиссимус, не проиграл ни одного сражения."
+  },
+  "lyudi:aleksandr-turchevich": {
+    "tip": "lyudi",
+    "nazvanie": "Александр Турчевич",
+    "kratko": "Пермский архитектор XIX века."
+  },
+  "lyudi:aleksey-savrasov": {
+    "tip": "lyudi",
+    "nazvanie": "Алексей Саврасов",
+    "kratko": "Пейзажист, автор «Грачи прилетели»."
+  },
+  "lyudi:aleksey-shchusev": {
+    "tip": "lyudi",
+    "nazvanie": "Алексей Щусев",
+    "kratko": "Архитектор, автор Казанского вокзала в Москве."
+  },
+  "lyudi:aleksey-urmanov": {
+    "tip": "lyudi",
+    "nazvanie": "Алексей Урманов",
+    "kratko": "Фигурист, олимпийский чемпион."
+  },
+  "lyudi:aleksey-venecianov": {
+    "tip": "lyudi",
+    "nazvanie": "Алексей Венецианов",
+    "kratko": "Живописец, первым сделал крестьянскую жизнь главным сюжетом картины."
+  },
+  "lyudi:anatoliy-karpov": {
+    "tip": "lyudi",
+    "nazvanie": "Анатолий Карпов",
+    "kratko": "Шахматист, чемпион мира."
+  },
+  "lyudi:andrey-bogolyubskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Андрей Боголюбский",
+    "kratko": "Князь владимирский XII века."
+  },
+  "lyudi:andrey-rublev": {
+    "tip": "lyudi",
+    "nazvanie": "Андрей Рублёв",
+    "kratko": "Иконописец, автор «Троицы»."
+  },
+  "lyudi:arhip-kuindzhi": {
+    "tip": "lyudi",
+    "nazvanie": "Архип Куинджи",
+    "kratko": "Пейзажист, мастер света в живописи."
+  },
+  "lyudi:boris-kustodiev": {
+    "tip": "lyudi",
+    "nazvanie": "Борис Кустодиев",
+    "kratko": "Живописец и график, певец купеческой и ярмарочной России."
+  },
+  "lyudi:daniil-zabolotnyy": {
+    "tip": "lyudi",
+    "nazvanie": "Даниил Заболотный",
+    "kratko": "Эпидемиолог, исследователь чумы."
+  },
+  "lyudi:elena-vyalbe": {
+    "tip": "lyudi",
+    "nazvanie": "Елена Вяльбе",
+    "kratko": "Лыжница, чемпионка мира."
+  },
+  "lyudi:elizaveta-bykova": {
+    "tip": "lyudi",
+    "nazvanie": "Елизавета Быкова",
+    "kratko": "Шахматистка, чемпионка мира."
+  },
+  "lyudi:erofey-habarov": {
+    "tip": "lyudi",
+    "nazvanie": "Ерофей Хабаров",
+    "kratko": "Землепроходец, прошёл по Амуру в XVII веке."
+  },
+  "lyudi:faddey-bellinsgauzen": {
+    "tip": "lyudi",
+    "nazvanie": "Фаддей Беллинсгаузен",
+    "kratko": "Мореплаватель, начальник экспедиции, открывшей Антарктиду."
+  },
+  "lyudi:fedor-konyuhov": {
+    "tip": "lyudi",
+    "nazvanie": "Фёдор Конюхов",
+    "kratko": "Путешественник, прошёл вокруг света в одиночку."
+  },
+  "lyudi:fedor-reshetnikov": {
+    "tip": "lyudi",
+    "nazvanie": "Фёдор Решетников",
+    "kratko": "Советский живописец, автор «Опять двойка»."
+  },
+  "lyudi:fedor-ushakov": {
+    "tip": "lyudi",
+    "nazvanie": "Фёдор Ушаков",
+    "kratko": "Флотоводец, адмирал Черноморского флота."
+  },
+  "lyudi:fedor-vasilev": {
+    "tip": "lyudi",
+    "nazvanie": "Фёдор Васильев",
+    "kratko": "Пейзажист, автор «Оттепели» и «Мокрого луга»."
+  },
+  "lyudi:filipp-malyavin": {
+    "tip": "lyudi",
+    "nazvanie": "Филипп Малявин",
+    "kratko": "Живописец, автор «Вихря»."
+  },
+  "lyudi:georgiy-sedov": {
+    "tip": "lyudi",
+    "nazvanie": "Георгий Седов",
+    "kratko": "Полярный исследователь, шёл к Северному полюсу."
+  },
+  "lyudi:german-titov": {
+    "tip": "lyudi",
+    "nazvanie": "Герман Титов",
+    "kratko": "Лётчик-космонавт, первым провёл в космосе больше суток."
+  },
+  "lyudi:grigoriy-myasoedov": {
+    "tip": "lyudi",
+    "nazvanie": "Григорий Мясоедов",
+    "kratko": "Художник-передвижник, автор «Косцов»."
+  },
+  "lyudi:ilya-golosov": {
+    "tip": "lyudi",
+    "nazvanie": "Илья Голосов",
+    "kratko": "Архитектор-конструктивист."
+  },
+  "lyudi:ilya-repin": {
+    "tip": "lyudi",
+    "nazvanie": "Илья Репин",
+    "kratko": "Живописец, автор «Бурлаков на Волге» и «Запорожцев»."
+  },
+  "lyudi:isaak-levitan": {
+    "tip": "lyudi",
+    "nazvanie": "Исаак Левитан",
+    "kratko": "Пейзажист, автор «Над вечным покоем»."
+  },
+  "lyudi:ivan-ayvazovskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Иван Айвазовский",
+    "kratko": "Художник-маринист, автор «Девятого вала»."
+  },
+  "lyudi:ivan-bilibin": {
+    "tip": "lyudi",
+    "nazvanie": "Иван Билибин",
+    "kratko": "Художник-иллюстратор русских сказок и былин."
+  },
+  "lyudi:ivan-hrutskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Иван Хруцкий",
+    "kratko": "Живописец, мастер натюрморта."
+  },
+  "lyudi:ivan-kramskoy": {
+    "tip": "lyudi",
+    "nazvanie": "Иван Крамской",
+    "kratko": "Живописец, один из основателей передвижников."
+  },
+  "lyudi:ivan-papanin": {
+    "tip": "lyudi",
+    "nazvanie": "Иван Папанин",
+    "kratko": "Полярник, начальник станции «Северный полюс-1»."
+  },
+  "lyudi:ivan-shishkin": {
+    "tip": "lyudi",
+    "nazvanie": "Иван Шишкин",
+    "kratko": "Пейзажист, певец русского леса."
+  },
+  "lyudi:karl-bryullov": {
+    "tip": "lyudi",
+    "nazvanie": "Карл Брюллов",
+    "kratko": "Живописец, автор «Последнего дня Помпеи»."
+  },
+  "lyudi:karl-kebah": {
+    "tip": "lyudi",
+    "nazvanie": "Карл Кебах",
+    "kratko": "Садовый мастер, создатель крымских парков."
+  },
+  "lyudi:kazimir-malevich": {
+    "tip": "lyudi",
+    "nazvanie": "Казимир Малевич",
+    "kratko": "Художник, создатель супрематизма и «Чёрного квадрата»."
+  },
+  "lyudi:konstantin-flavickiy": {
+    "tip": "lyudi",
+    "nazvanie": "Константин Флавицкий",
+    "kratko": "Живописец, автор «Княжны Таракановой»."
+  },
+  "lyudi:konstantin-korovin": {
+    "tip": "lyudi",
+    "nazvanie": "Константин Коровин",
+    "kratko": "Живописец и театральный художник, русский импрессионист."
+  },
+  "lyudi:konstantin-makovskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Константин Маковский",
+    "kratko": "Живописец, автор «Боярской свадьбы»."
+  },
+  "lyudi:konstantin-melnikov": {
+    "tip": "lyudi",
+    "nazvanie": "Константин Мельников",
+    "kratko": "Архитектор русского авангарда."
+  },
+  "lyudi:konstantin-yuon": {
+    "tip": "lyudi",
+    "nazvanie": "Константин Юон",
+    "kratko": "Живописец, пейзажист русской провинции."
+  },
+  "lyudi:kuzma-petrov-vodkin": {
+    "tip": "lyudi",
+    "nazvanie": "Кузьма Петров-Водкин",
+    "kratko": "Живописец, автор «Купания красного коня»."
+  },
+  "lyudi:mark-shagal": {
+    "tip": "lyudi",
+    "nazvanie": "Марк Шагал",
+    "kratko": "Живописец родом из Витебска."
+  },
+  "lyudi:mihail-larionov": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Ларионов",
+    "kratko": "Живописец русского авангарда, создатель лучизма."
+  },
+  "lyudi:mihail-lazarev": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Лазарев",
+    "kratko": "Мореплаватель, участник открытия Антарктиды."
+  },
+  "lyudi:mihail-lermontov": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Лермонтов",
+    "kratko": "Поэт и прозаик, автор «Героя нашего времени»."
+  },
+  "lyudi:mihail-nesterov": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Нестеров",
+    "kratko": "Живописец, автор «Видения отроку Варфоломею»."
+  },
+  "lyudi:mihail-somov": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Сомов",
+    "kratko": "Океанолог, начальник первой советской антарктической экспедиции."
+  },
+  "lyudi:mihail-vodopyanov": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Водопьянов",
+    "kratko": "Полярный лётчик, первым посадил самолёт на Северном полюсе."
+  },
+  "lyudi:mihail-vrubel": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Врубель",
+    "kratko": "Живописец, автор «Демона сидящего»."
+  },
+  "lyudi:nikolay-belelyubskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Николай Белелюбский",
+    "kratko": "Инженер-мостостроитель."
+  },
+  "lyudi:nikolay-bogdanov-belskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Николай Богданов-Бельский",
+    "kratko": "Живописец, писал крестьянских детей и сельскую школу."
+  },
+  "lyudi:nikolay-ge": {
+    "tip": "lyudi",
+    "nazvanie": "Николай Ге",
+    "kratko": "Живописец, автор «Тайной вечери» и «Что есть истина?»."
+  },
+  "lyudi:nikolay-gogol": {
+    "tip": "lyudi",
+    "nazvanie": "Николай Гоголь",
+    "kratko": "Писатель, автор «Мёртвых душ»."
+  },
+  "lyudi:nikolay-rerih": {
+    "tip": "lyudi",
+    "nazvanie": "Николай Рерих",
+    "kratko": "Живописец, путешественник, исследователь Азии."
+  },
+  "lyudi:nikolay-vavilov": {
+    "tip": "lyudi",
+    "nazvanie": "Николай Вавилов",
+    "kratko": "Генетик и ботаник, собрал мировую коллекцию семян."
+  },
+  "lyudi:nikolay-yaroshenko": {
+    "tip": "lyudi",
+    "nazvanie": "Николай Ярошенко",
+    "kratko": "Художник-передвижник, автор «Всюду жизнь»."
+  },
+  "lyudi:orest-kiprenskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Орест Кипренский",
+    "kratko": "Портретист, автор портрета Пушкина."
+  },
+  "lyudi:pavel-fedotov": {
+    "tip": "lyudi",
+    "nazvanie": "Павел Федотов",
+    "kratko": "Живописец, автор «Сватовства майора»."
+  },
+  "lyudi:pavel-filonov": {
+    "tip": "lyudi",
+    "nazvanie": "Павел Филонов",
+    "kratko": "Живописец русского авангарда."
+  },
+  "lyudi:pavel-nahimov": {
+    "tip": "lyudi",
+    "nazvanie": "Павел Нахимов",
+    "kratko": "Адмирал, герой Синопа и обороны Севастополя."
+  },
+  "lyudi:petr-i": {
+    "tip": "lyudi",
+    "nazvanie": "Пётр I",
+    "kratko": "Первый российский император."
+  },
+  "lyudi:semen-remezov": {
+    "tip": "lyudi",
+    "nazvanie": "Семён Ремезов",
+    "kratko": "Тобольский картограф и зодчий, автор «Чертёжной книги Сибири»."
+  },
+  "lyudi:sergey-gerasimov": {
+    "tip": "lyudi",
+    "nazvanie": "Сергей Герасимов",
+    "kratko": "Советский живописец, автор «Матери партизана»."
+  },
+  "lyudi:sergey-prokudin-gorskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Сергей Прокудин-Горский",
+    "kratko": "Фотограф, снимал Россию в цвете в начале XX века."
+  },
+  "lyudi:sergey-vinogradov": {
+    "tip": "lyudi",
+    "nazvanie": "Сергей Виноградов",
+    "kratko": "Живописец, пейзажист Союза русских художников."
+  },
+  "lyudi:silvestr-shchedrin": {
+    "tip": "lyudi",
+    "nazvanie": "Сильвестр Щедрин",
+    "kratko": "Пейзажист, писал Италию с натуры."
+  },
+  "lyudi:stanislav-zhukovskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Станислав Жуковский",
+    "kratko": "Пейзажист, мастер усадебного пейзажа."
+  },
+  "lyudi:stepan-makarov": {
+    "tip": "lyudi",
+    "nazvanie": "Степан Макаров",
+    "kratko": "Адмирал, океанограф, создатель ледокола «Ермак»."
+  },
+  "lyudi:tatyana-yablonskaya": {
+    "tip": "lyudi",
+    "nazvanie": "Татьяна Яблонская",
+    "kratko": "Советская живописица, автор «Хлеба»."
+  },
+  "lyudi:valentin-serov": {
+    "tip": "lyudi",
+    "nazvanie": "Валентин Серов",
+    "kratko": "Живописец, портретист, автор «Девочки с персиками»."
+  },
+  "lyudi:valentin-voyno-yasenetskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Валентин Войно-Ясенецкий (святитель Лука)",
+    "kratko": "Хирург и архиепископ, автор «Очерков гнойной хирургии»."
+  },
+  "lyudi:vasilisa-kozhina": {
+    "tip": "lyudi",
+    "nazvanie": "Василиса Кожина",
+    "kratko": "Смоленская крестьянка, партизанка 1812 года."
+  },
+  "lyudi:vasiliy-kandinskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Кандинский",
+    "kratko": "Живописец, один из создателей беспредметного искусства."
+  },
+  "lyudi:vasiliy-maksimov": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Максимов",
+    "kratko": "Художник-передвижник, писал деревенскую жизнь."
+  },
+  "lyudi:vasiliy-perov": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Перов",
+    "kratko": "Художник-передвижник, мастер жанровой картины и портрета."
+  },
+  "lyudi:vasiliy-polenov": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Поленов",
+    "kratko": "Живописец, автор «Московского дворика»."
+  },
+  "lyudi:vasiliy-pukirev": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Пукирев",
+    "kratko": "Живописец, автор «Неравного брака»."
+  },
+  "lyudi:vasiliy-smyslov": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Смыслов",
+    "kratko": "Шахматист, чемпион мира."
+  },
+  "lyudi:vasiliy-surikov": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Суриков",
+    "kratko": "Исторический живописец, автор «Боярыни Морозовой»."
+  },
+  "lyudi:vasiliy-tropinin": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Тропинин",
+    "kratko": "Портретист, автор прижизненного портрета Пушкина."
+  },
+  "lyudi:vasiliy-vereshchagin": {
+    "tip": "lyudi",
+    "nazvanie": "Василий Верещагин",
+    "kratko": "Художник-баталист, писал войну без парадности."
+  },
+  "lyudi:viktor-borisov-musatov": {
+    "tip": "lyudi",
+    "nazvanie": "Виктор Борисов-Мусатов",
+    "kratko": "Живописец, автор «Водоёма»."
+  },
+  "lyudi:viktor-vasnecov": {
+    "tip": "lyudi",
+    "nazvanie": "Виктор Васнецов",
+    "kratko": "Живописец, автор «Богатырей» и «Алёнушки»."
+  },
+  "lyudi:vitus-bering": {
+    "tip": "lyudi",
+    "nazvanie": "Витус Беринг",
+    "kratko": "Мореплаватель, начальник Камчатских экспедиций."
+  },
+  "lyudi:vladimir-borovikovskiy": {
+    "tip": "lyudi",
+    "nazvanie": "Владимир Боровиковский",
+    "kratko": "Портретист XVIII века, автор портрета Лопухиной."
+  },
+  "lyudi:vladimir-shuhov": {
+    "tip": "lyudi",
+    "nazvanie": "Владимир Шухов",
+    "kratko": "Инженер, создатель сетчатых гиперболоидных башен."
+  },
+  "lyudi:yuriy-dolgorukiy": {
+    "tip": "lyudi",
+    "nazvanie": "Юрий Долгорукий",
+    "kratko": "Князь XII века, основатель Москвы."
+  },
+  "lyudi:yuriy-gagarin": {
+    "tip": "lyudi",
+    "nazvanie": "Юрий Гагарин",
+    "kratko": "Лётчик-космонавт, первый человек в космосе."
+  },
+  "lyudi:yuriy-pimenov": {
+    "tip": "lyudi",
+    "nazvanie": "Юрий Пименов",
+    "kratko": "Советский живописец, автор «Новой Москвы»."
+  },
+  "mesto:alyaska": {
+    "tip": "mesto",
+    "nazvanie": "Аляска",
+    "kratko": "Полуостров в Северной Америке, до 1867 года — Русская Америка."
+  },
+  "mesto:amur": {
+    "tip": "mesto",
+    "nazvanie": "Амур",
+    "kratko": "Великая река Дальнего Востока."
+  },
+  "mesto:antarktida": {
+    "tip": "mesto",
+    "nazvanie": "Антарктида",
+    "kratko": "Южный материк, открытый русской экспедицией в 1820 году."
+  },
+  "mesto:baykal": {
+    "tip": "mesto",
+    "nazvanie": "Байкал",
+    "kratko": "Самое глубокое озеро мира."
+  },
+  "mesto:chukotka": {
+    "tip": "mesto",
+    "nazvanie": "Чукотка",
+    "kratko": "Северо-восточный край России."
+  },
+  "mesto:enisey": {
+    "tip": "mesto",
+    "nazvanie": "Енисей",
+    "kratko": "Великая река Сибири."
+  },
+  "mesto:irkutsk": {
+    "tip": "mesto",
+    "nazvanie": "Иркутск",
+    "kratko": "Город на Ангаре."
+  },
+  "mesto:kamchatka": {
+    "tip": "mesto",
+    "nazvanie": "Камчатка",
+    "kratko": "Полуостров на северо-востоке России."
+  },
+  "mesto:kazan": {
+    "tip": "mesto",
+    "nazvanie": "Казань",
+    "kratko": "Столица Татарстана."
+  },
+  "mesto:kizhi": {
+    "tip": "mesto",
+    "nazvanie": "Кижи",
+    "kratko": "Остров на Онежском озере с деревянным ансамблем."
+  },
+  "mesto:krym": {
+    "tip": "mesto",
+    "nazvanie": "Крым",
+    "kratko": "Полуостров на Чёрном море."
+  },
+  "mesto:kurily": {
+    "tip": "mesto",
+    "nazvanie": "Курильские острова",
+    "kratko": "Цепь островов между Камчаткой и Хоккайдо."
+  },
+  "mesto:moskva": {
+    "tip": "mesto",
+    "nazvanie": "Москва",
+    "kratko": "Столица России."
+  },
+  "mesto:nizhniy-novgorod": {
+    "tip": "mesto",
+    "nazvanie": "Нижний Новгород",
+    "kratko": "Город на слиянии Оки и Волги."
+  },
+  "mesto:novaya-zemlya": {
+    "tip": "mesto",
+    "nazvanie": "Новая Земля",
+    "kratko": "Архипелаг в Северном Ледовитом океане."
+  },
+  "mesto:sahalin": {
+    "tip": "mesto",
+    "nazvanie": "Сахалин",
+    "kratko": "Остров на Дальнем Востоке."
+  },
+  "mesto:sankt-peterburg": {
+    "tip": "mesto",
+    "nazvanie": "Санкт-Петербург",
+    "kratko": "Город на Неве, в 1924–1991 годах — Ленинград."
+  },
+  "mesto:sevastopol": {
+    "tip": "mesto",
+    "nazvanie": "Севастополь",
+    "kratko": "Город-крепость Черноморского флота."
+  },
+  "mesto:severnaya-zemlya": {
+    "tip": "mesto",
+    "nazvanie": "Северная Земля",
+    "kratko": "Архипелаг, открытый в 1913 году."
+  },
+  "mesto:severnyy-polyus": {
+    "tip": "mesto",
+    "nazvanie": "Северный полюс",
+    "kratko": "Северная точка Земли."
+  },
+  "mesto:taymyr": {
+    "tip": "mesto",
+    "nazvanie": "Таймыр",
+    "kratko": "Самый северный полуостров Евразии."
+  },
+  "mesto:tobolsk": {
+    "tip": "mesto",
+    "nazvanie": "Тобольск",
+    "kratko": "Первая столица Сибири."
+  },
+  "mesto:velikiy-novgorod": {
+    "tip": "mesto",
+    "nazvanie": "Великий Новгород",
+    "kratko": "Древний город на Волхове."
+  },
+  "mesto:vladivostok": {
+    "tip": "mesto",
+    "nazvanie": "Владивосток",
+    "kratko": "Город на Тихом океане."
+  },
+  "mesto:volga": {
+    "tip": "mesto",
+    "nazvanie": "Волга",
+    "kratko": "Главная река европейской России."
+  },
+  "mesto:yakutsk": {
+    "tip": "mesto",
+    "nazvanie": "Якутск",
+    "kratko": "Город на Лене, столица Якутии."
+  },
+  "narod:adygeycy": {
+    "tip": "narod",
+    "nazvanie": "Адыгейцы",
+    "kratko": "Адыгский народ Адыгеи."
+  },
+  "narod:aleuty": {
+    "tip": "narod",
+    "nazvanie": "Алеуты",
+    "kratko": "Коренной народ Алеутских и Командорских островов."
+  },
+  "narod:avarcy": {
+    "tip": "narod",
+    "nazvanie": "Аварцы",
+    "kratko": "Самый многочисленный народ Дагестана."
+  },
+  "narod:balkarcy": {
+    "tip": "narod",
+    "nazvanie": "Балкарцы",
+    "kratko": "Тюркский народ Кабардино-Балкарии."
+  },
+  "narod:bashkiry": {
+    "tip": "narod",
+    "nazvanie": "Башкиры",
+    "kratko": "Тюркский народ Башкортостана."
+  },
+  "narod:buryaty": {
+    "tip": "narod",
+    "nazvanie": "Буряты",
+    "kratko": "Монгольский народ Бурятии."
+  },
+  "narod:chechency": {
+    "tip": "narod",
+    "nazvanie": "Чеченцы",
+    "kratko": "Народ Чечни."
+  },
+  "narod:chukchi": {
+    "tip": "narod",
+    "nazvanie": "Чукчи",
+    "kratko": "Коренной народ Чукотки."
+  },
+  "narod:chuvancy": {
+    "tip": "narod",
+    "nazvanie": "Чуванцы",
+    "kratko": "Малый народ Чукотки."
+  },
+  "narod:chuvashi": {
+    "tip": "narod",
+    "nazvanie": "Чуваши",
+    "kratko": "Тюркский народ Чувашии."
+  },
+  "narod:darginy": {
+    "tip": "narod",
+    "nazvanie": "Даргинцы",
+    "kratko": "Народ Дагестана."
+  },
+  "narod:eskimosy": {
+    "tip": "narod",
+    "nazvanie": "Эскимосы",
+    "kratko": "Коренной народ побережья Чукотки."
+  },
+  "narod:evenki": {
+    "tip": "narod",
+    "nazvanie": "Эвенки",
+    "kratko": "Тунгусо-маньчжурский народ Сибири и Дальнего Востока."
+  },
+  "narod:eveny": {
+    "tip": "narod",
+    "nazvanie": "Эвены",
+    "kratko": "Тунгусо-маньчжурский народ северо-востока Сибири."
+  },
+  "narod:gorskie-evrei": {
+    "tip": "narod",
+    "nazvanie": "Горские евреи",
+    "kratko": "Народ Дагестана и Северного Кавказа."
+  },
+  "narod:hanty": {
+    "tip": "narod",
+    "nazvanie": "Ханты",
+    "kratko": "Финно-угорский народ Западной Сибири."
+  },
+  "narod:kalmyki": {
+    "tip": "narod",
+    "nazvanie": "Калмыки",
+    "kratko": "Монгольский народ Калмыкии."
+  },
+  "narod:kareli": {
+    "tip": "narod",
+    "nazvanie": "Карелы",
+    "kratko": "Финно-угорский народ Карелии."
+  },
+  "narod:kety": {
+    "tip": "narod",
+    "nazvanie": "Кеты",
+    "kratko": "Малый народ Енисея."
+  },
+  "narod:komi": {
+    "tip": "narod",
+    "nazvanie": "Коми",
+    "kratko": "Финно-угорский народ Республики Коми."
+  },
+  "narod:koryaki": {
+    "tip": "narod",
+    "nazvanie": "Коряки",
+    "kratko": "Коренной народ севера Камчатки."
+  },
+  "narod:krymskie-tatary": {
+    "tip": "narod",
+    "nazvanie": "Крымские татары",
+    "kratko": "Тюркский народ Крыма."
+  },
+  "narod:kumyki": {
+    "tip": "narod",
+    "nazvanie": "Кумыки",
+    "kratko": "Тюркский народ Дагестана."
+  },
+  "narod:lezginy": {
+    "tip": "narod",
+    "nazvanie": "Лезгины",
+    "kratko": "Народ Южного Дагестана."
+  },
+  "narod:mansi": {
+    "tip": "narod",
+    "nazvanie": "Манси",
+    "kratko": "Финно-угорский народ Западной Сибири и Урала."
+  },
+  "narod:mariycy": {
+    "tip": "narod",
+    "nazvanie": "Марийцы",
+    "kratko": "Финно-угорский народ Поволжья."
+  },
+  "narod:nanaycy": {
+    "tip": "narod",
+    "nazvanie": "Нанайцы",
+    "kratko": "Тунгусо-маньчжурский народ Амура."
+  },
+  "narod:nency": {
+    "tip": "narod",
+    "nazvanie": "Ненцы",
+    "kratko": "Самодийский народ тундры Европейского Севера и Западной Сибири."
+  },
+  "narod:nivhi": {
+    "tip": "narod",
+    "nazvanie": "Нивхи",
+    "kratko": "Коренной народ Нижнего Амура и Сахалина."
+  },
+  "narod:nogaycy": {
+    "tip": "narod",
+    "nazvanie": "Ногайцы",
+    "kratko": "Тюркский народ Северного Кавказа."
+  },
+  "narod:osetiny": {
+    "tip": "narod",
+    "nazvanie": "Осетины",
+    "kratko": "Ираноязычный народ Северной Осетии."
+  },
+  "narod:saamy": {
+    "tip": "narod",
+    "nazvanie": "Саамы",
+    "kratko": "Финно-угорский народ Кольского полуострова."
+  },
+  "narod:selkupy": {
+    "tip": "narod",
+    "nazvanie": "Селькупы",
+    "kratko": "Самодийский народ Западной Сибири."
+  },
+  "narod:sibirskie-tatary": {
+    "tip": "narod",
+    "nazvanie": "Сибирские татары",
+    "kratko": "Тюркский народ Тобола и Иртыша."
+  },
+  "narod:tabasarany": {
+    "tip": "narod",
+    "nazvanie": "Табасараны",
+    "kratko": "Народ Южного Дагестана."
+  },
+  "narod:taty": {
+    "tip": "narod",
+    "nazvanie": "Таты",
+    "kratko": "Ираноязычный народ Дагестана."
+  },
+  "narod:tuvincy": {
+    "tip": "narod",
+    "nazvanie": "Тувинцы",
+    "kratko": "Тюркский народ Тувы."
+  },
+  "narod:udegeycy": {
+    "tip": "narod",
+    "nazvanie": "Удэгейцы",
+    "kratko": "Коренной народ Приморья и Приамурья."
+  },
+  "narod:vepsy": {
+    "tip": "narod",
+    "nazvanie": "Вепсы",
+    "kratko": "Финно-угорский народ Прионежья."
+  },
+  "narod:yakuty": {
+    "tip": "narod",
+    "nazvanie": "Якуты (саха)",
+    "kratko": "Тюркский народ Якутии."
+  },
+  "narod:yukagiry": {
+    "tip": "narod",
+    "nazvanie": "Юкагиры",
+    "kratko": "Коренной народ северо-востока Якутии и Колымы."
+  },
+  "tema:ikona": {
+    "tip": "tema",
+    "nazvanie": "Икона",
+    "kratko": "Древнерусская иконопись."
+  },
+  "tema:kosmos": {
+    "tip": "tema",
+    "nazvanie": "Космос",
+    "kratko": "Полёты человека и аппаратов за пределы Земли."
+  },
+  "tema:ledokoly": {
+    "tip": "tema",
+    "nazvanie": "Ледоколы",
+    "kratko": "Суда, ломающие лёд."
+  },
+  "tema:lubok": {
+    "tip": "tema",
+    "nazvanie": "Лубок",
+    "kratko": "Народная картинка."
+  },
+  "tema:olimpiady": {
+    "tip": "tema",
+    "nazvanie": "Олимпийские игры",
+    "kratko": "Выступления на Олимпиадах."
+  },
+  "tema:shahmaty": {
+    "tip": "tema",
+    "nazvanie": "Шахматы",
+    "kratko": "Шахматная школа России."
+  }
+}

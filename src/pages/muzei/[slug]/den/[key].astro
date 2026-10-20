@@ -2,7 +2,7 @@
 // Страница дня (экспоната дня) — порядок блоков по 04-build.md §6/§6-бис:
 // шапка top (4 строки) → крошки → обложка-сцена + этикетка (если есть картинка) → подводка hero-lead
 // (дата, h1, хук как есть, кнопки) → «Поддержать проект» (museum-support.js, первая треть) →
-// суть + прочие картинки → доп. карточки героя дня (3–5, museum-core §5-кватер п.5) → источник → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
+// суть + прочие картинки → доп. карточки героя дня (3–5, museum-core §5-кватер п.5) → источник → связи со словарём (Р37) → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
 // Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
@@ -12,6 +12,7 @@ import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
 import DenAnketa from '../../../../components/den/DenAnketa.astro';
+import DenSlovar from '../../../../components/den/DenSlovar.astro';
 import { YEAR_KEYS, isDated, isReady, nearestReady, stripSrcPrefix } from '../../../../lib/kalendar';
 import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../../lib/yazyki.mjs';
 import { zhurnal, zhurnalHtml } from '../../../../lib/redakciya.mjs';
@@ -205,6 +206,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
         <p>{stripSrcPrefix(d.source)}</p>
       </section>
     )}
+    <DenSlovar ids={d.slovar} />
   </article>
 
   <Fragment set:html={zhurnalHtml(zh)} />
