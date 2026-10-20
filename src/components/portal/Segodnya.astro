@@ -13,7 +13,7 @@ const otkrytDen = `${stroka(langS.code, 'otkrytDenKr')} ${strelkaVpered(langS.di
 const base = import.meta.env.BASE_URL;
 const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
   .formatToParts(new Date()).map((x) => [x.type, x.value]));
-const t = await today(`${parts.month}-${parts.day}`);
+const t = await today(`${parts.month}-${parts.day}`, langS.code);
 // sizes по сетке portal-today.css: список ≤1200 px, поля clamp(16px,4vw,48px), колонки minmax(260px,1fr), зазор 18.
 // Ведущая: ≥820 px картинка — 55% карточки (≤660 px), уже — во всю ширину. Остальные: ≥1250 — 4 колонки по ~290,
 // 1100–1250 — 3 колонки, 561–1100 — 2, телефон — одна колонка. srcset дописывает kartinki.mjs (#2004, 17.10).
