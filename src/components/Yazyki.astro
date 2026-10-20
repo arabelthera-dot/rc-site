@@ -1,0 +1,25 @@
+---
+// Переключатель языков — только флаги, правый верхний угол (решение Сергея 19.10.2026, не пересматривать).
+// Пока ни один язык, кроме русского, не ready:true (src/data/yazyki.json) — не рендерится вообще: ни разметки, ни стиля.
+// Подпись языка — title (подсказка) и aria-label (экранное чтение).
+import { gotovye, poUmolchaniyu, razobratPut, putNaYazyke } from '../lib/yazyki.mjs';
+const base = import.meta.env.BASE_URL;
+const vklyuchen = gotovye.some((y) => y.code !== poUmolchaniyu);
+const { code: tek, rest } = razobratPut(Astro.url.pathname, base);
+---
+{vklyuchen && (
+  <nav class="rc-yazyki" aria-label="Язык / Language">
+    {gotovye.map((y) => (
+      <a href={putNaYazyke(rest, y.code, base)} hreflang={y.code} lang={y.code} title={y.name} aria-label={y.name}
+         aria-current={y.code === tek ? 'true' : undefined}>{y.flag}</a>
+    ))}
+  </nav>
+)}
+{vklyuchen && (
+  <style is:inline>{`
+    .rc-yazyki{position:fixed;top:.5rem;inset-inline-end:.5rem;z-index:1000;display:flex;gap:.25rem;
+      background:rgba(6,13,24,.72);border-radius:.5rem;padding:.2rem .35rem}
+    .rc-yazyki a{font-size:1.25rem;line-height:1;text-decoration:none;opacity:.6;padding:.15rem}
+    .rc-yazyki a:hover,.rc-yazyki a:focus-visible,.rc-yazyki a[aria-current]{opacity:1}
+  `}</style>
+)}

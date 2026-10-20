@@ -10,6 +10,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
+import { hreflangi } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
@@ -410,6 +411,10 @@ export default function fullPages() {
             // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
             if (process.env.PUBLIC_NOINDEX === '1') html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '')
               .replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">');
+            // Пометки языков (hreflang, как в Base.astro; план сайта Г19): только готовые языки + x-default.
+            // Старые пометки страницы — долой; у копии «staraya» (noindex) их нет.
+            html = html.replace(/<link\b[^>]*\bhreflang=[^>]*>\s*/gi, '');
+            if (!staraya) html = html.replace(/<head([^>]*)>/i, (h) => `${h}\n${hreflangi(self, base, site).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}">`).join('\n')}`);
             // Шрифты (CLS 0,16–0,29 у дней, #2004): полная страница идёт мимо Base.astro и не получала ни одного
             // preload — Playfair/Inter приходили после первой отрисовки и сдвигали шапку дня. Теперь файлы тех
             // семейств, которыми набрана сама страница, — заранее, сразу после <head>. Google-шрифты старой

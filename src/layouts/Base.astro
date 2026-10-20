@@ -4,6 +4,8 @@ const { title, ogTitle, description, image, imageAlt, type = 'website', museum, 
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
 import Metrika from '../components/Metrika.astro';
+import Yazyki from '../components/Yazyki.astro';
+import { yazyk, razobratPut, hreflangi } from '../lib/yazyki.mjs';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles } from '../lib/shrifty.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
@@ -53,10 +55,14 @@ const ld = kind === 'home'
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: 'ru', description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home } };
 const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
+// Язык страницы — по приставке адреса (/en/… и т.п., src/data/yazyki.json); русский — без приставки.
+// hreflang — только готовые языки (ready:true) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const alternates = hreflangi(Astro.url.pathname, base, Astro.site);
 const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
 ---
 <!doctype html>
-<html lang="ru" data-museum={museum}>
+<html lang={lang.code} dir={lang.dir} data-museum={museum}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -80,6 +86,7 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
   {rss && <link rel="alternate" type="application/rss+xml" title={rss.title} href={rss.href} />}
   <meta name="theme-color" content="#060d18" />
   <link rel="canonical" href={url} />
+  {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
   <link rel="icon" href={`${base}favicon.ico`} sizes="any" />
   <!-- Inter (шапка дня, крошки, блок «Поддержать») и PT Serif (основной текст вместо системного Georgia, 17.10) —
        оба объявлены в museum.css; файлы
@@ -105,6 +112,7 @@ const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
   {!portal && <link rel="stylesheet" href={museumCss} />}
 </head>
 <body>
+  <Yazyki />
   {/* Страницы музеев — единая верхняя полоса (Сергей 17.10) вместо крошек и кнопки «назад» */}
   {museum && museumTitle && <SiteBar slug={museum} title={museumTitle} here={here} />}
   {!(museum && museumTitle) && back && <a class="backbtn" href={back.href}><span class="ar">←</span>{back.label}</a>}
