@@ -30,7 +30,9 @@
         "slogan_ru": {"type": "string", "minLength": 1},
         "slogan_status": {"type": "string"},
         "availability_ru": {"type": "string"},
-        "stub": {"type": "boolean"}
+        "stub": {"type": "boolean"},
+        "poisk_hvost_ru": {"type": "string", "minLength": 3, "description": "Поисковый хвост <title> витрины после «title_ru — » (подсказки Яндекса, 20.10.2026); title_ru не трогается"},
+        "poisk_opisanie_ru": {"type": "string", "minLength": 120, "maxLength": 160, "description": "meta description витрины под реальный спрос; нет поля — promise_ru"}
       },
       "not": {"anyOf": [
         {"required": ["href"]}, {"required": ["path"]}, {"required": ["public_path"]}, {"required": ["url"]},

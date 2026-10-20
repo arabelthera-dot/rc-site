@@ -18,6 +18,9 @@ const museums = defineCollection({
     title_ru: z.string().min(1),
     promise_ru: z.string().optional(),
     slogan_ru: z.string().optional(),
+    // Поисковый хвост title и meta description витрины (подсказки Яндекса, 20.10.2026); полное имя title_ru не меняется.
+    poisk_hvost_ru: z.string().min(3).optional(),
+    poisk_opisanie_ru: z.string().min(120).max(160).optional(),
     status: z.string(),
     category_id: z.string().optional(),
   }),
