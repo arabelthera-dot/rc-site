@@ -50,6 +50,9 @@ const org = { '@type': 'Organization', name: 'Русская цивилизац�
 // Подпись текстов — «Редакция „Русской цивилизации“» (Р34), лицензия текстов — CC BY 4.0 (Р35): у всех страниц-произведений.
 const red = redakciyaLd(home);
 const museumLd = museum && museumTitle ? { '@type': 'Museum', name: museumTitle, url: new URL(`${base}muzei/${museum}/`, Astro.site).href } : undefined;
+// isPartOf у schema.org — только CreativeWork или URL; Museum — место (CivicStructure), validator.schema.org: INVALID_OBJECT.
+// Поэтому день и календарь входят в страницу музея (WebPage), а сам музей — её about (Д5, 20.10).
+const museumPageLd = museumLd ? { '@type': 'WebPage', name: museumLd.name, url: museumLd.url, about: museumLd } : undefined;
 // Язык страницы — по приставке адреса (/en/… и т.п., src/data/yazyki.json); русский — без приставки.
 // og:locale, inLanguage, строки подвала и «Подписаться» — от него (Г20; русский вывод не меняется).
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
@@ -61,10 +64,11 @@ const ld = kind === 'home'
   ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Русская цивилизация', url: home, inLanguage: lang.code, description, publisher: red, license: LICENZIYA },
      { '@context': 'https://schema.org', ...org, logo: new URL(`${base}og/index.jpg`, Astro.site).href }]
   // Museum — не произведение (license у него не бывает): лицензия и подпись — у его страницы WebPage.
-  : kind === 'museum' ? [{ '@context': 'https://schema.org', ...museumLd, description, image: ogImage, parentOrganization: org },
+  // parentOrganization есть у Organization, не у Museum-места: узел — сразу Museum и Organization (мультитип schema.org).
+  : kind === 'museum' ? [{ '@context': 'https://schema.org', ...museumLd, '@type': ['Museum', 'Organization'], description, image: ogImage, parentOrganization: org },
       { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, about: museumLd, author: red, publisher: red, license: LICENZIYA }]
-  : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumLd, author: red, publisher: red, license: LICENZIYA }
-  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumLd, author: red, publisher: red, license: LICENZIYA,
+  : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA }
+  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA,
       about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal, datePublished: Astro.props.published, dateModified: Astro.props.modified }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
 // Знак 436-ФЗ (Р41, Е3, 20.10): музей и день — из адреса, данные — src/data/vozrast.json. В JSON-LD — typicalAgeRange
