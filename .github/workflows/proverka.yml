@@ -34,9 +34,8 @@ jobs:
         continue-on-error: ${{ vars.JSIMPORT_STROGO != '1' }}
         run: node scripts/js-import.mjs dist
       # Ленивые адреса data-src/data-poster (20.10.2026): lychee их не видит — 18 «битых» аудио/видео/картинок
-      # на полных страницах дней ловит scripts/data-src.mjs. Новое — выключенным: строгость DATASRC_STROGO=1.
+      # на полных страницах дней ловит scripts/data-src.mjs. Строгий с 20.10.2026: прогон показал 0 битых из 18.
       - name: data-src — ленивые аудио, видео, картинки
-        continue-on-error: ${{ vars.DATASRC_STROGO != '1' }}
         run: node scripts/data-src.mjs --dist dist
       # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгость — переменной
       # репозитория VES_STROGO=1; без неё — только предупреждение (новое ставится выключенным).
