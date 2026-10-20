@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# + сигнал «сертификат https не выдан больше суток» (идея разбора А1, 20.10; порог — SERT_SUTKI).
 # Сторож доступности (Д3). Три точки: главная, музей, день. Провал → повтор через минуту → всё ещё провал
 # → «сбой» в Telegram (один раз, пока не поднимется). Поднялся → «снова работает». Работа всегда зелёная:
 # итог — в сводке запуска и в Telegram, а не красным крестом каждые 20 минут.
@@ -61,6 +62,27 @@ else
   if [ -f .storozh/lezhit ]; then
     shli "🟢 Снова работает: $ADRES (лежал с $(cat .storozh/lezhit) UTC)."
     rm -f .storozh/lezhit
+  fi
+fi
+# Сертификат (А1 плана сайта): https с проверкой подлинности. Не открывается дольше суток — одно сообщение
+# «сертификат не выдан», открылся — «сертификат в порядке». Отметка первого провала — .storozh/sert-s.
+DOMEN="${ADRES#*://}"; DOMEN="${DOMEN%%/*}"
+SUTKI="${SERT_SUTKI:-86400}"
+sert_kod=$(curl -sS -o /dev/null -m 25 -w '%{http_code}' "https://$DOMEN/" 2>/dev/null || true)
+if [ "$sert_kod" = "200" ]; then
+  echo "сертификат: https://$DOMEN/ → 200"
+  if [ -f .storozh/sert-skazal ]; then
+    shli "🟢 Сертификат в порядке: https://$DOMEN/ открывается без предупреждения."
+  fi
+  rm -f .storozh/sert-s .storozh/sert-skazal
+else
+  [ -f .storozh/sert-s ] || date -u +%s > .storozh/sert-s
+  proshlo=$(( $(date -u +%s) - $(cat .storozh/sert-s) ))
+  echo "::warning::сертификат: https://$DOMEN/ не открывается (код ${sert_kod:-000}), уже $((proshlo/3600)) ч"
+  echo "### 🟡 https://$DOMEN/ не открывается уже $((proshlo/3600)) ч" >> "$SVODKA"
+  if [ "$proshlo" -ge "$SUTKI" ] && [ ! -f .storozh/sert-skazal ]; then
+    shli "🟡 Сертификат: https://$DOMEN/ не открывается больше суток ($((proshlo/3600)) ч). Сайт по http работает; нужен выпуск сертификата в настройках Pages. Запуск: $ZAPUSK"
+    date -u +%FT%TZ > .storozh/sert-skazal
   fi
 fi
 date -u +%FT%TZ > .storozh/posledniy   # каталог не пустой — кэш сохранится
