@@ -23,9 +23,10 @@ import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml 
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
 // («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
-// У произведений (есть headline или тип *Page/Article/CreativeWork) — license и, если нет, author; дата правки — из git.
+// У произведений (есть headline или тип *Page/Article/CreativeWork) — license и, если нет, author; даты выхода и правки — из git.
+// Д5 (20.10.2026): url страницы-произведения — её адрес на сайте (canonical), а не файл старого сайта day-….html.
 const WORK = /(?:Article|Page|CreativeWork|LearningResource|Course)$/;
-function ldRedakciya(html, red, modified) {
+function ldRedakciya(html, red, { modified, published, url } = {}) {
   const OUR_NAMES = new Set(['Русская цивилизация', ...Object.values(MUSEUMS)]);
   return html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (m, a, json, z) => {
     let data;
@@ -44,7 +45,8 @@ function ldRedakciya(html, red, modified) {
       if (!n || !(n.headline || t.some((x) => WORK.test(x)))) continue;
       n.author ??= red;
       n.license ??= LICENZIYA;
-      if (modified && /Article/.test(t.join())) n.dateModified ??= modified;
+      if (/Article/.test(t.join())) { if (modified) n.dateModified ??= modified; if (published) n.datePublished ??= published; }
+      if (url && typeof n.url === 'string' && /\.html?$/.test(n.url)) n.url = url;
     }
     return a + JSON.stringify(data).replace(/</g, '\\u003c') + z;
   });
@@ -543,7 +545,7 @@ export default function fullPages() {
             // Подпись «Редакция», лицензия CC BY 4.0 (Р34, Р35), «Проверено» и журнал исправлений (Е5) — как у шаблонов
             // (Base.astro, страница дня): журнал — перед подвалом страницы, строка лицензии — в конце подвала.
             const zh = staraya ? undefined : zhurnal(museum, key);
-            if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), zh?.modified);
+            if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), { modified: zh?.modified, published: zh?.published, url: new URL(self, site).href });
             html = html.replace(/<meta\s+name=["']author["'][^>]*>\s*/gi, '').replace(/<link\s+rel=["']license["'][^>]*>\s*/gi, '')
               .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<link rel="stylesheet" href="${base}assets/rc-podval.css" />\n</head>`);
             {

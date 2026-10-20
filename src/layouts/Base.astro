@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
@@ -65,7 +65,7 @@ const ld = kind === 'home'
       { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, about: museumLd, author: red, publisher: red, license: LICENZIYA }]
   : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumLd, author: red, publisher: red, license: LICENZIYA }
   : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumLd, author: red, publisher: red, license: LICENZIYA,
-      about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal, dateModified: Astro.props.modified }
+      about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal, datePublished: Astro.props.published, dateModified: Astro.props.modified }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
 // Знак 436-ФЗ (Р41, Е3, 20.10): музей и день — из адреса, данные — src/data/vozrast.json. В JSON-LD — typicalAgeRange
 // (свойство CreativeWork: у главной — WebSite, у музея — его WebPage). 12+ и старше — data-rc-bez-ochkov на <html>:
