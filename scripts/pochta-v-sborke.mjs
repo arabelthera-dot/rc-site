@@ -6,12 +6,14 @@ import path from 'node:path';
 
 const root = process.argv[2] || 'dist';
 const LICHNAYA = /[A-Za-z0-9._%+-]+@(?:gmail\.com|googlemail\.com|yandex\.(?:ru|com)|ya\.ru|mail\.ru|bk\.ru|inbox\.ru|list\.ru|rambler\.ru)\b/gi;
+// Сторонние сборки (pagefind кладёт в свой код почту своих авторов) — не наш контент.
+const CHUZHOE = new Set(['pagefind']);
 const EXT = /\.(html|js|mjs|css|json|xml|txt|webmanifest)$/i;
 const brak = [];
 const obhod = (d) => {
   for (const f of fs.readdirSync(d, { withFileTypes: true })) {
     const p = path.join(d, f.name);
-    if (f.isDirectory()) obhod(p);
+    if (f.isDirectory()) { if (!(d === root && CHUZHOE.has(f.name))) obhod(p); }
     else if (EXT.test(f.name)) for (const m of fs.readFileSync(p, 'utf8').matchAll(LICHNAYA)) brak.push(`${path.relative(root, p)}: ${m[0]}`);
   }
 };
