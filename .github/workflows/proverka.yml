@@ -47,7 +47,7 @@ jobs:
           RC_PROBA_RTL: '1'
       # Г20: страница-проба с её стилями — артефактом заявки (≈5 МБ, 3 дня), чтобы смотреть письмо справа налево
       # глазами без полной локальной сборки: gh run download <run> -n proba-rtl.
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: proba-rtl
           path: |
@@ -178,13 +178,13 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: npm i --no-save --no-audit --no-fund playwright@1.48.0 @axe-core/playwright@4.10.1 && node scripts/otchet-skorost.mjs --dist dist --lhci /tmp/lhci
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: glazami
           path: /tmp/glazami
           if-no-files-found: ignore
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: lighthouse
