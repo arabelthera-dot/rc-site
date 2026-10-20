@@ -25,7 +25,7 @@ body > header.p-hero{padding:72px 20px 40px;text-align:center;max-width:980px;ma
 /* museum.css грузится позже и держит main в 720px — перебиваем специфичностью */
 body > main{max-width:none;padding:0 0 40px}
 .p-wrap{max-width:1180px;margin:0 auto;padding:0 18px}
-.p-wrap > #segodnya{max-width:860px;margin:0 auto 10px}
+.p-wrap > .p-today{max-width:860px;margin:0 auto 10px}
 
 /* слот «Поддержать проект»: резерв высоты под блок движка — без прыжка вёрстки */
 .p-supslot{max-width:860px;margin:18px auto 56px;min-height:220px}
