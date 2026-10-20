@@ -16,6 +16,7 @@ import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
+import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
 import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
@@ -374,8 +375,41 @@ function absolute(url, dirUrl) {
   return new URL(u, `http://x${dirUrl}`).href.slice('http://x'.length);
 }
 
-// Тег старого файла данных календаря музея: <script src="[…/]calendar-<x>.js">; museum-calendar-*.js и nikitin/calendar.js не задевает.
-const OLD_KAL = /(<script\b[^>]*?\ssrc\s*=\s*)(["'])(?:[^"']*\/)?calendar-[\w-]+\.js(?:\?[^"']*)?\2/gi;
+// Тег старого файла данных календаря музея: <script src="[…/]calendar-<x>.js"> или «[…/]calendar.js» (nikitin/calendar.js —
+// копия января первопроходцев со старого сайта, А4 20.10); движки museum-calendar-*.js и kalendar-dney.<хеш>.js не задевает.
+const OLD_KAL = /(<script\b[^>]*?\ssrc\s*=\s*)(["'])(?:[^"']*\/)?calendar(?:-[\w-]+)?\.js(?:\?[^"']*)?\2/gi;
+
+// Д2 (план сайта, 20.10): у каждого кадра — автор/источник и лицензия. Разбор — src/lib/podpisi.mjs (тот же, что у
+// /avtory-izobrazheniy/ и npm run proverka-podpisey). В сборке — предупреждение со счётом; строгий режим
+// RC_PODPISI_STROGO=1 (выключен до починки кадров хозяевами страниц) — кадр без подписи или лицензии роняет сборку.
+function checkPodpisi() {
+  const cards = cardFrames(), pages = fullFrames();
+  const red = [...cards.filter((f) => !f.credit), ...pages.filter((f) => f.state === 'none')];
+  const yellow = [...cards.filter((f) => f.credit && !f.lic), ...pages.filter((f) => f.state === 'partial')];
+  if (!red.length && !yellow.length) return console.log(`podpisi: ${cards.length + pages.length} кадров — у всех подпись и лицензия`);
+  const msg = `podpisi: из ${cards.length + pages.length} кадров без подписи ${red.length}, без лицензии ${yellow.length} — список: npm run proverka-podpisey -- --spisok`;
+  if (process.env.RC_PODPISI_STROGO === '1') throw new Error(`${msg}\n${red.map((f) => `${f.museum}/${f.key} ${f.src}`).join('\n')}`);
+  console.warn(`⚠ ${msg}`);
+}
+
+// Замок на второй путь к календарю (план сайта А4, 20.10; как AI_Projects #2284): данные календаря — только из записей
+// src/content/days (src/lib/kalendar-dannye.mjs). Файл в public/, который сам задаёт window.MUSEUM_CALENDAR = {…},
+// — второй источник дат мимо src/: сайт не собирается.
+function checkNetStaryhKalendarey() {
+  const bad = [];
+  const walk = (d) => {
+    for (const e of fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }) : []) {
+      const f = path.join(d, e.name);
+      if (e.isDirectory()) { walk(f); continue; }
+      if (!/\.(?:js|html?)$/i.test(e.name)) continue;
+      const code = fs.readFileSync(f, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/(^|[^:'"`\\])\/\/.*$/gm, '$1');
+      if (/window\.MUSEUM_CALENDAR\s*=\s*\{/.test(code)) bad.push(f);
+    }
+  };
+  walk('public');
+  if (bad.length) throw new Error(`второй путь к календарю — данные дней мимо src/content/days (${bad.length}):\n${bad.join('\n')}`);
+}
 
 export default function fullPages() {
   let base = '/';
@@ -386,6 +420,8 @@ export default function fullPages() {
       'astro:config:done': ({ config }) => { base = config.base.replace(/\/?$/, '/'); site = config.site ?? ''; },
       'astro:build:done': async ({ dir }) => {
         const root = fileURLToPath(dir);
+        checkNetStaryhKalendarey();
+        checkPodpisi();
         if (!fs.existsSync(SRC)) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
         const bad = [];
         let n = 0;
@@ -394,7 +430,7 @@ export default function fullPages() {
         for (const museum of fs.readdirSync(SRC).sort()) {
           // Календарь страницы (museum-calendar-month.js) — из записей дней (шаг 4Б ядра, 19.10): один файл на музей
           // dist/muzei/<музей>/kalendar-dney.<хеш>.js вместо старого public/muzei/<музей>/calendar-<x>.js.
-          // Старые calendar-<x>.js удалены (19.10): нет записей, а тег остался — ошибка сборки. nikitin/calendar.js (путь Никитина) — не календарь музея.
+          // Старые calendar-<x>.js удалены (19.10), nikitin/calendar.js — 20.10 (А4): нет записей, а тег остался — ошибка сборки.
           const kal = failKalendarya(museum, base);
           let kalSrc = null;
           if (kal) kalSrc = `${base}muzei/${museum}/${kal.name}`;
