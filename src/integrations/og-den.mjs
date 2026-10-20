@@ -1,7 +1,7 @@
 // Карточка пересылки дня (план переезда п.7, приёмка круга 2, сценарий 4, 18.10): у дня без своей картинки
 // og:image был общий (<музей>_index.jpg или og-default.jpg) — в Telegram/ВК все дни музея выглядели одинаково.
 // Теперь при сборке рисуется своя карточка 1200×630: знак и «Русская цивилизация», дата, название дня,
-// полное имя музея — в палитре сайта (--ink, --gold, --gold-l, --txt из museum.css; фон ровный — PNG в 32 цвета ≈23 КБ), шрифт PT Serif
+// полное имя музея — в палитре сайта (--ink, --gold, --gold-l, --txt из museum.css; фон ровный — PNG в 16 цветов ≈13 КБ; было 32 цвета ≈21 КБ, SSIM 16 к 32 не ниже 0,9993 на 40 карточках — задача T, Р49, 20.10), шрифт PT Serif
 // (src/assets/og-fonts, OFL). Бесплатно: sharp (уже стоит с Astro), текст — Pango по своему файлу шрифта.
 // Заявки ставит страница дня (src/lib/og-den.mjs): только готовый день без своего кадра (images[0]).
 // После fullPages: у полной старой страницы своя og:image остаётся; общая (обложка музея, og-default) —
@@ -19,7 +19,7 @@ const C = { ink: '#060d18', gold: '#c9a84c', goldL: '#e2c878', txt: '#c6d8e8' };
 const FONTS = 'src/assets/og-fonts';
 const REG = `${FONTS}/PTSerif-Regular.ttf`, BOLD = `${FONTS}/PTSerif-Bold.ttf`;
 const CACHE = 'node_modules/.cache/rc-og-den';
-const VERSION = '1';
+const VERSION = '2'; // 2 — 16 цветов (вес сборки, задача T, 20.10)
 // Общие картинки пересылки — их карточка дня заменяет; всё прочее в og:image — своя картинка страницы.
 const GENERIC = /\/og\/(?:[a-z0-9-]+_(?:index|calendar)|og-default|index)\.(?:jpe?g|png)(?:[?#][^"']*)?$/i;
 // Память (18.10): пробную сборку всех заявок дважды убил лимит 2 ГБ песочницы во время rc-og-den. Сам рендер
@@ -67,7 +67,7 @@ async function render({ date, title, museumTitle }) {
     { input: when.input, left: PAD, top: whenY },
     { input: name.input, left: PAD, top: whenY + when.h + 22 },
     { input: mus.input, left: PAD, top: H - 140 },
-  ]).removeAlpha().png({ palette: true, colours: 32, effort: 1, dither: 0 }).toBuffer();
+  ]).removeAlpha().png({ palette: true, colours: 16, effort: 10, compressionLevel: 9, dither: 0 }).toBuffer();
 }
 
 async function pool(items, n, fn) {
