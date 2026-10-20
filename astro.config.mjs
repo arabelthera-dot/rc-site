@@ -13,7 +13,7 @@ import podderzhka from './src/integrations/podderzhka.mjs';
 import zakon from './src/integrations/zakon.mjs';
 import fs from 'node:fs';
 
-// Доска музеев (/doska/) — служебная, noindex, в карту сайта не идёт.
+// Доска музеев (/doska/) — служебная, noindex, в карту сайта не идёт. Так же /proverka/ — задание проверяющим (Р46).
 // «День готовится» (дата без карточки или карточка без хука и текста) — noindex, в карту сайта не идёт.
 const soonDay = (page) => {
   const m = /\/muzei\/([^/]+)\/den\/(\d\d-\d\d)\/$/.exec(page);
@@ -53,5 +53,5 @@ export default defineConfig({
   // podderzhka — «Поддержать проект» выключен до приёма денег (Р31): вырезает блоки из полных страниц; PUBLIC_PODDERZHKA=1 — не трогает.
   // zakon — до сборки: сверка текстов с реестрами Минюста (красная) и основания кадров XX века (Е1/Е2, src/lib/zakon.mjs).
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [zakon(), sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) && !/\/ar\/$/.test(page) }), sitemapXml(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), poisk()],
+  integrations: [zakon(), sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) && !/\/proverka\//.test(page) && !/\/ar\/$/.test(page) }), sitemapXml(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), poisk()],
 });
