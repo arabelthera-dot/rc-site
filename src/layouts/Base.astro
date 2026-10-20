@@ -54,7 +54,11 @@ const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
 const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
 // «Нашли ошибку?» (Д6) — только на страницах музея/дня и только при флаге knopkaOshibka (src/data/nastroyki.json, по умолчанию выкл.).
 // Ссылка на новую карточку доски AI_Projects с предзаполненными заголовком, текстом и меткой; без токенов и сервера.
-const oshibkaUrl = nastroyki.knopkaOshibka && museum ? 'https://github.com/arabelthera-dot/AI_Projects/issues/new?' + new URLSearchParams({
+// Замена без GitHub (#212): PUBLIC_OSHIBKA_FORMA=mailto → письмо на nastroyki.pochtaOshibka; без флага — прежнее поведение.
+const oshibkaMailto = import.meta.env.PUBLIC_OSHIBKA_FORMA === 'mailto' && museum && nastroyki.pochtaOshibka;
+const oshibkaUrl = oshibkaMailto
+  ? `mailto:${nastroyki.pochtaOshibka}?subject=${encodeURIComponent(`Ошибка на странице ${url}`)}&body=${encodeURIComponent(`Страница: ${url}\n\nЧто не так:\n\n`)}`
+  : nastroyki.knopkaOshibka && museum ? 'https://github.com/arabelthera-dot/AI_Projects/issues/new?' + new URLSearchParams({
   title: `Ошибка на сайте: ${Astro.url.pathname}`,
   body: `Страница: ${url}\n\nЧто не так:\n\n`,
   labels: 'oshibka-s-sayta',
@@ -125,7 +129,10 @@ const oshibkaUrl = nastroyki.knopkaOshibka && museum ? 'https://github.com/arabe
   <footer>
     <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
     <slot name="footer"><a href={base}>в город-музей →</a></slot>
-    <div class="foot-links"><a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">Нашли ошибку?</a></>}</div>
+    <div class="foot-links"><a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · {oshibkaMailto
+      ? <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">Нашли ошибку?</a>
+      : <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">Нашли ошибку?</a>}</>}</div>
+    {oshibkaMailto && <script is:inline>(function(){var a=document.querySelector('a.oshibka[data-pochta]');if(!a)return;var v='';function z(){v=String(window.getSelection?window.getSelection():'').trim().slice(0,1500)}a.addEventListener('pointerdown',z,true);a.addEventListener('click',function(){if(!v)z();var u=a.dataset.stranica,b='Страница: '+u+'\n\n'+(v?'Выделенный текст:\n«'+v+'»\n\n':'')+'Что не так:\n\n';a.href='mailto:'+a.dataset.pochta+'?subject='+encodeURIComponent('Ошибка на странице '+u)+'&body='+encodeURIComponent(b);v=''})})();</script>}
   </footer>
   <script is:inline defer src={`${base}assets/analytics.js`}></script>
 </body>
