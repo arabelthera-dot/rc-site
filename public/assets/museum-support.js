@@ -404,7 +404,7 @@
     if(last) last.scrollIntoView({behavior:'smooth', block:'center'});
   }
   /* «Ссылка скопирована» (19.10): видимая плашка на 2 с + aria-live для экранных чтецов; кнопка на 2 с
-     меняет подпись и возвращает прежнюю. Нет clipboard API или отказ — запасной путь через execCommand */
+     меняет подпись и возвращает прежнюю; в режиме слабовидящих (html.rc-slabovid) — 6 с (20.10). Нет clipboard API или отказ — запасной путь через execCommand */
   var toastT = 0;
   function sayCopied(btn, ok){
     var msg = ok ? (EN ? 'Link copied' : 'Ссылка скопирована') : (EN ? 'Copy failed — copy the address bar' : 'Не скопировалось — скопируйте адрес из строки браузера');
@@ -426,7 +426,7 @@
     toastT = setTimeout(function(){
       t.style.opacity = '0';
       if(btn && btn.hasAttribute('data-sup-label')) btn.textContent = btn.getAttribute('data-sup-label');
-    }, 2000);
+    }, doc.documentElement.classList.contains('rc-slabovid') ? 6000 : 2000);
   }
   function copyLink(btn){
     var url = location.href;
