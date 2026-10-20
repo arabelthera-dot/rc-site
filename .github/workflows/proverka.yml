@@ -42,6 +42,12 @@ jobs:
       - name: storozh-ssylok — разрешённые домены и опасный JS
         timeout-minutes: 2
         run: node scripts/storozh-ssylok.mjs
+      # Опись HTML-вставок (OWASP DOM XSS, 20.10.2026): innerHTML/outerHTML/insertAdjacentHTML/document.write
+      # с данными из адреса, localStorage, fetch или ввода (класс «в») — только сверх базы
+      # scripts/innerhtml-isklyucheniya.txt. На main 0 таких мест. Откат — удалить этот шаг.
+      - name: innerhtml-opis — новые небезопасные вставки HTML
+        timeout-minutes: 1
+        run: node scripts/innerhtml-opis.mjs
       # Г20: проверочная сборка включает арабскую пробу /ar/ (RC_PROBA_RTL=1) — её ссылки, разметка и вид проверяются
       # в каждой заявке. На живой сайт проба не попадает: deploy.yml собирает без этой переменной.
       - run: npm run build
