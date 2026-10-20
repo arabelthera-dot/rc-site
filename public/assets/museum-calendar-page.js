@@ -86,10 +86,13 @@
         if (it) cnt++;
         var lbl = it ? it.t : 'запись готовится';
         if (!dated) lbl = 'День ' + d + (it ? ' — ' + it.t : '');
-        cells += '<button class="cday' + (it ? ' full' : '') +
+        /* день с записью — ссылка на свою страницу (20.10): средняя кнопка и «открыть в новой вкладке» работают,
+           обычный клик ниже перехватывается и открывает карточку, как было */
+        var tag = it && it.href ? 'a' : 'button';
+        cells += '<' + tag + ' class="cday' + (it ? ' full' : '') +
                  (dated && k === tk ? ' today' : '') + '"' +
-                 (it ? ' data-k="' + k + '"' : ' disabled') +
-                 ' title="' + lbl.replace(/"/g, '') + '">' + d + '</button>';
+                 (it ? (it.href ? ' href="' + it.href + '"' : '') + ' data-k="' + k + '"' : ' disabled') +
+                 ' title="' + lbl.replace(/"/g, '') + '">' + d + '</' + tag + '>';
       }
       h += '<section class="cmon"><h2>' + MON[m] +
            '<span class="cnt">' + (cnt ? cnt + ' ' + plural(cnt, 'запись', 'записи', 'записей') : '—') + '</span></h2>' +
@@ -101,9 +104,11 @@
       beyond.forEach(function (k) {
         var it = data[k];
         var mm = parseInt(k.slice(0, 2), 10), dd = parseInt(k.slice(3), 10);
-        chips += '<button class="cday full cextra" data-k="' + k + '" title="' +
+        var ctag = it.href ? 'a' : 'button';
+        chips += '<' + ctag + ' class="cday full cextra"' + (it.href ? ' href="' + it.href + '"' : '') +
+                 ' data-k="' + k + '" title="' +
                  ('День ' + dd + ' · ' + MON[mm - 1] + ' — ' + it.t).replace(/"/g, '') + '">' +
-                 dd + ' · ' + MON[mm - 1] + '</button>';
+                 dd + ' · ' + MON[mm - 1] + '</' + ctag + '>';
       });
       h += '<section class="cmon beyond"><h2>Сверх года<span class="cnt">' + beyond.length +
            ' ' + plural(beyond.length, 'запись', 'записи', 'записей') +
@@ -176,7 +181,12 @@
     }
 
     if (host) host.querySelectorAll('.cday[data-k]').forEach(function (b) {
-      b.addEventListener('click', function () { show(b.dataset.k, '', true); setD(b.dataset.k); });
+      b.addEventListener('click', function (e) {
+        /* Ctrl/Cmd/Shift/Alt-клик и средняя кнопка — браузеру (новая вкладка/окно); обычный клик — карточка */
+        if (e.button > 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        show(b.dataset.k, '', true); setD(b.dataset.k);
+      });
     });
 
     /* выбранный день — в адресе (?d=ММ-ДД, 19.10.2026): ссылкой «вот 29 января» можно поделиться */

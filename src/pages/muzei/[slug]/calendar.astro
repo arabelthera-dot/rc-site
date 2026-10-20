@@ -2,6 +2,8 @@
 // Календарь 1:1 со старым (muzei/ne-sdayutsya/calendar.html): тот же движок assets/museum-calendar-page.js,
 // данные собираются из карточек дней; у каждого дня — ссылка на его страницу.
 import { ogRaster } from '../../../lib/og-den.mjs';
+// День с записью — ссылка <a href> на свою страницу (приёмка 20.10: кнопку не открыть в новой вкладке, поиск её не видит);
+// обычный клик движок перехватывает и открывает карточку, как раньше; пустой день — по-прежнему disabled-кнопка.
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { kalendarMuzeya } from '../../../lib/kalendar-dannye.mjs';
@@ -86,9 +88,13 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   <div id="calcard" set:html={cardHtml}></div>
   <div id="calyear"><div class="calstat">{s('zapolnenoDney')} <b>{filled}</b> {s('iz')} {total} {beyond.length > 0 && ` · ${s('sverhGodaEshche').replace('{n}', String(beyond.length)).replace('{zapisey}', zapisey(beyond.length))}`}</div>{months.map((mo) => (
     <section class="cmon"><h2>{mo.name}<span class="cnt">{mo.cnt}</span></h2><div class="cgrid">{mo.cells.map((c) => (
-      <button class:list={['cday', { full: c.k, today: c.today, on: c.k && c.k === open }]} data-k={c.k} disabled={!c.k} title={c.title}>{c.d}</button>))}</div></section>))}{extra.length > 0 && (
+      c.k && data[c.k].href
+        ? <a class:list={['cday', { full: true, today: c.today, on: c.k === open }]} href={data[c.k].href} data-k={c.k} title={c.title}>{c.d}</a>
+        : <button class:list={['cday', { full: c.k, today: c.today, on: c.k && c.k === open }]} data-k={c.k} disabled={!c.k} title={c.title}>{c.d}</button>))}</div></section>))}{extra.length > 0 && (
     <section class="cmon beyond"><h2>{s('sverhGoda')}<span class="cnt">{extra.length} {zapisey(extra.length)}</span></h2><div class="cgrid cgrid-wide">{extra.map((x) => (
-      <button class="cday full cextra" data-k={x.k} title={`${s('denMesyac').replace('{d}', String(x.dd)).replace('{m}', x.mon)} — ${x.t}`.replace(/"/g, '')}>{x.dd} · {x.mon}</button>))}</div></section>)}</div>
+      data[x.k].href
+        ? <a class="cday full cextra" href={data[x.k].href} data-k={x.k} title={`${s('denMesyac').replace('{d}', String(x.dd)).replace('{m}', x.mon)} — ${x.t}`.replace(/"/g, '')}>{x.dd} · {x.mon}</a>
+        : <button class="cday full cextra" data-k={x.k} title={`${s('denMesyac').replace('{d}', String(x.dd)).replace('{m}', x.mon)} — ${x.t}`.replace(/"/g, '')}>{x.dd} · {x.mon}</button>))}</div></section>)}</div>
   <div class="council"><b style="color:var(--gold-l)">{s('kalNapolnyaetsya')}</b> {s('kalSostav')}</div>
   <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/`}>{`${strelkaNazad(lang.dir)} ${s('vMuzey')}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></Fragment>
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
