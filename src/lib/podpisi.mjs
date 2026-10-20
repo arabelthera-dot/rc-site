@@ -6,7 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const LIC = /\bCC[ -]?(BY|0)|обществен\S* достоян|public domain|PD-|свободн\S* лиценз|©|все права/i;
+export const LIC = /\bCC[ -]?(BY|0)|Free Art License|обществен\S* достоян|public domain|PD-|свободн\S* лиценз|©|все права/i;
 export const SRC = /фото\s*:|автор|викисклад|commons|музе|архив|библиотек|собрани|коллекци|ГИМ|ГТГ|РГБ|НЭБ|ГМИИ|Эрмитаж|источник|из книги|журнал|газет|генерац|Genosai|реконструкц|https?:\/\/|рисун\S+ [А-ЯЁ]|гравюр|издани/i;
 
 const DAYS = 'src/content/days';
