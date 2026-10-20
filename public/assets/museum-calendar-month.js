@@ -44,6 +44,8 @@
     '#calbox .cday.full{opacity:1;cursor:pointer;color:var(--gold);' +
       'background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.45)}' +
     '#calbox .cday.full:hover{background:rgba(212,175,55,.22)}' +
+    /* день-ссылка (20.10) выглядит как кнопка: центр, без подчёркивания, те же размеры */
+    '#calbox a.cday{display:flex;align-items:center;justify-content:center;text-decoration:none;box-sizing:border-box}' +
     '#calbox .cday.full::after{content:"";position:absolute;left:50%;bottom:5px;width:4px;height:4px;' +
       'margin-left:-2px;border-radius:50%;background:var(--gold)}' +
     /* выбранный и сегодняшний день читаются всегда, даже если запись ещё не заведена */
@@ -149,9 +151,13 @@
       for (var d = 1; d <= DIM[view]; d++) {
         var k = pad(view + 1) + '-' + pad(d), it = data[k];
         if (it) cnt++;
-        cells += '<button class="cday' + (it ? ' full' : '') + (k === tk ? ' today' : '') +
-          (k === sel ? ' on' : '') + '" data-k="' + k + '"' +
-          ' title="' + (it ? esc(it.t) : 'запись готовится') + '">' + d + '</button>';
+        /* день с записью и адресом — ссылка (20.10, как в большом календаре): средняя кнопка и
+           «открыть в новой вкладке» ведут на страницу дня, обычный клик ниже открывает карточку */
+        var tag = it && it.href ? 'a' : 'button';
+        cells += '<' + tag + ' class="cday' + (it ? ' full' : '') + (k === tk ? ' today' : '') +
+          (k === sel ? ' on' : '') + '"' + (tag === 'a' ? ' href="' + esc(it.href) + '"' : '') +
+          ' data-k="' + k + '"' +
+          ' title="' + (it ? esc(it.t) : 'запись готовится') + '">' + d + '</' + tag + '>';
       }
       box.innerHTML =
         '<div class="calhead">' +
@@ -174,7 +180,12 @@
         });
       });
       box.querySelectorAll('.cday').forEach(function (b) {
-        b.addEventListener('click', function () { sel = b.dataset.k; render(); reveal(); });
+        b.addEventListener('click', function (e) {
+          /* Ctrl/Cmd/Shift/Alt-клик и средняя кнопка — браузеру (новая вкладка); обычный клик — карточка */
+          if (e.button > 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          sel = b.dataset.k; render(); reveal();
+        });
       });
       var jump = box.querySelector('.caljump');
       if (jump) jump.addEventListener('click', function () {
