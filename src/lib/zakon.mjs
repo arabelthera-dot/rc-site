@@ -15,8 +15,12 @@
 //
 // Е2 — основание у кадров XX века (год дня ≥ 1900 или год ≥ 1900 в подписи): общественное достояние
 // (ст. 1281–1282 ГК), свободная лицензия, цитирование (ст. 1274 ГК) со ссылкой, разрешение, своя генерация.
-// Основание берётся из credit/подписи, если оно там названо однозначно; иначе — из ведомости
-// data/reestry/osnovaniya.json («<адрес кадра>»: { "osnovanie": "…", "ssylka": "…" }).
+// Основание — из ведомости data/reestry/osnovaniya.json, если кадр там есть (Е2, 20.10: проверенное решение
+// по ГК важнее пометки в подписи); иначе — из credit/подписи или data-license кадра полной страницы, если оно
+// названо однозначно. Ключ ведомости — путь кадра от public/ («muzei/<музей>/…»), запись:
+// { "osnovanie", "avtor", "gody", "pravilo", "ssylka" }; запись без основания или без ссылки на источник
+// (страница файла, музейная карточка) основанием не считается. Сборка строгая: кадр XX века без основания —
+// красная (src/integrations/zakon.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
 import { cardFrames, fullFrames } from './podpisi.mjs';
@@ -136,6 +140,12 @@ const godIz = (s) => [...String(s ?? '').matchAll(/(?<!\d)(1[0-9]\d\d|20\d\d)(?!
 export const vekXX = (godDnya, podpis) => (godIz(godDnya)[0] ?? 0) >= 1900 || godIz(podpis).some((g) => g >= 1900);
 
 /** Е2: кадры XX века и их основания. { vsego, bez: [...], kadry: [{ museum, key, src, podpis, osnovanie, otkuda, gde }] } */
+/** Путь кадра от public/: «../../muzei/x/a.jpg», «media/a.jpg» на странице музея x → «muzei/x/…». */
+export const putKadra = (museum, src) => {
+  const p = String(src || '').split(/[?#]/)[0].replace(/^(\.\.\/|\.\/|\/)+/, '');
+  return p.startsWith('muzei/') ? p : `muzei/${museum}/${p}`;
+};
+
 export function kadryXX(root = '.') {
   const vedomost = readJson(path.join(root, REESTRY, 'osnovaniya.json'), {});
   const gody = {};
@@ -145,14 +155,15 @@ export function kadryXX(root = '.') {
   const kadry = [];
   const one = (fr, gde, podpis, txt, gotovo) => {
     if (!vekXX(gody[`${fr.museum}/${fr.key}`], podpis)) return;
-    const ved = vedomost[fr.src];
-    const iz = gotovo || osnovanieIz(txt);
-    kadry.push({ museum: fr.museum, key: fr.key, src: fr.src, podpis: String(podpis || '').slice(0, 160), gde,
-      osnovanie: iz || ved?.osnovanie || '', otkuda: iz ? 'подпись' : ved?.osnovanie ? 'ведомость' : '', ssylka: ved?.ssylka || '' });
+    const put = putKadra(fr.museum, fr.src);
+    const ved = vedomost[put]?.osnovanie && vedomost[put]?.ssylka ? vedomost[put] : null;
+    const iz = ved ? '' : gotovo || osnovanieIz(txt);
+    kadry.push({ museum: fr.museum, key: fr.key, src: fr.src, put, podpis: String(podpis || '').slice(0, 160), gde,
+      osnovanie: ved?.osnovanie || iz, otkuda: ved ? 'ведомость' : iz ? 'подпись' : '', ssylka: ved?.ssylka || '' });
   };
   for (const fr of cardFrames(root)) one(fr, 'карточка', fr.caption, `${fr.credit} ${fr.caption}`, fr.generated ? 'своя генерация проекта' : '');
-  // Полная страница: подпись у кадра или таблица прав страницы (state rights — основание в списке прав страницы).
-  for (const fr of fullFrames(root)) one(fr, 'полная страница', fr.sign || fr.alt, `${fr.sign} ${fr.alt}`, fr.state === 'rights' ? 'в таблице прав страницы' : '');
+  // Полная страница: подпись или data-license у кадра, либо таблица прав страницы (state rights — основание в списке прав).
+  for (const fr of fullFrames(root)) one(fr, 'полная страница', fr.sign || fr.alt, `${fr.sign} ${fr.alt} ${fr.data || ''}`, fr.state === 'rights' ? 'в таблице прав страницы' : '');
   const bez = kadry.filter((k) => !k.osnovanie);
   return { vsego: kadry.length, bez, kadry };
 }

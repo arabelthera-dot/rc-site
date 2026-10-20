@@ -34,7 +34,7 @@ export function cardFrames(root = '.') {
 const strip = (s) => s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 const attr = (tag, name) => tag.match(new RegExp(`\\b${name}\\s*=\\s*("([^"]*)"|'([^']*)')`, 'i'))?.slice(2).find((x) => x !== undefined);
 
-/** Кадры одной полной страницы: { src, alt, cap, sign, lic, state } — state: ok | partial | near | rights | none */
+/** Кадры одной полной страницы: { src, alt, cap, data, sign, lic, state } — state: ok | partial | near | rights | none */
 export function pageFrames(html) {
   const raw = html.replace(/<(script|style|template)\b[\s\S]*?<\/\1>/gi, '');
   const pageRights = /rights-table|rights-sources|class="[^"]*sources/.test(html);
@@ -66,7 +66,7 @@ export function pageFrames(html) {
       : lic || src || im.creditEl ? 'partial'
       : im.cap === undefined && LIC.test(near) && SRC.test(near) ? 'near'
       : pageRights ? 'rights' : 'none';
-    return { src: im.src, alt: im.alt || '', cap: im.cap || '', sign: (im.cap || im.title || im.data || '').trim(), lic: state === 'ok' || (state === 'near'), state };
+    return { src: im.src, alt: im.alt || '', cap: im.cap || '', data: im.data, sign: (im.cap || im.title || im.data || '').trim(), lic: state === 'ok' || (state === 'near'), state };
   });
   // Тот же кадр дважды (обложка + блок ниже): подпись у одного экземпляра покрывает оба (Д2, 20.10:
   // в замере d2-zamer.py окно «рядом» бралось по адресу картинки — 28 вместо 25, из них 3 — обложки сказок).
