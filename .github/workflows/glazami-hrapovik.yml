@@ -21,17 +21,20 @@ on:
   schedule:
     - cron: '20 3 * * 1'
   workflow_dispatch:
+# Права — на уровне задания (Р63): верх — только чтение; запись — задаче hrapovik и только на main.
 permissions:
-  contents: write
-  pull-requests: write
-  actions: write
+  contents: read
 concurrency:
   group: glazami-hrapovik-${{ github.event_name }}
   cancel-in-progress: true
 jobs:
   hrapovik:
-    if: github.event_name != 'schedule' && vars.GLAZAMI_HRAPOVIK == '1'
+    if: github.event_name != 'schedule' && vars.GLAZAMI_HRAPOVIK == '1' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
     timeout-minutes: 15
     env:
       VETKA: avto/glazami-porog
@@ -44,7 +47,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: npm i --no-save --no-audit --no-fund playwright@1.48.0 && npx playwright install --with-deps chromium
+      - run: npx --no-install playwright install --with-deps chromium
       - run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json --zapisat
       - name: заявка с понижённым эталоном
         run: |
@@ -71,9 +74,13 @@ jobs:
           done
           echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"
   reestry:
-    if: github.event_name != 'push'
+    if: github.event_name != 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
     env:
       VETKA: avto/reestry
       GH_TOKEN: ${{ github.token }}

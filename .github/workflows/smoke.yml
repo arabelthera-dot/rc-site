@@ -23,21 +23,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      # sparse-checkout в режиме cone берёт и файлы корня — package.json и package-lock.json:
+      # @playwright/test ставится точной версией из lock-файла (npm ci), не плавающей «@1» (Р63, цепочка поставок).
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           sparse-checkout: tests/smoke
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
+          cache: npm
       - name: Playwright
-        working-directory: tests/smoke
         run: |
-          npm init -y >/dev/null
-          npm install --no-save @playwright/test@1
-          npx playwright install --with-deps chromium
+          npm ci --no-audit --no-fund
+          npx --no-install playwright install --with-deps chromium
       - name: smoke
         working-directory: tests/smoke
-        run: npx playwright test -c playwright.config.mjs
+        run: npx --no-install playwright test -c playwright.config.mjs
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:

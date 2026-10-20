@@ -13,17 +13,20 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+# Права — на уровне задания (Р63): верх — только чтение; запись — задаче obnovit и только на main.
 permissions:
-  contents: write
-  pull-requests: write
-  actions: write
+  contents: read
 concurrency:
   group: vetki-svezhie
   cancel-in-progress: false
 jobs:
   obnovit:
-    if: vars.VETKI_SVEZHIE == '1'
+    if: vars.VETKI_SVEZHIE == '1' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
     timeout-minutes: 10
     env:
       GH_TOKEN: ${{ github.token }}

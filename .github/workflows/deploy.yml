@@ -108,6 +108,7 @@ jobs:
       KUDA: rcdeploy@185.149.145.227
       IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
       ADRES: ${{ vars.RU_DEPLOY_URL }}
+      RU_DEPLOY_MAX_MB: ${{ vars.RU_DEPLOY_MAX_MB }}
     steps:
       - id: est
         run: |
@@ -127,7 +128,18 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
-          test -f dist/index.html && test -f dist/404.html
+          # Проверка содержимого до выкладки (Р63): обязательные файлы есть, секретов и ключей нет, размер разумный.
+          for f in index.html 404.html robots.txt; do
+            test -f "dist/$f" || { echo "::error::msk-new: в сборке нет $f — выкладка остановлена"; exit 1; }
+          done
+          lishnie=$(find dist \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '*.pfx' \
+            -o -name 'id_rsa*' -o -name 'id_ed25519*' -o -name 'id_ecdsa*' -o -name 'id_dsa*' -o -name '.git' -o -name '.npmrc' \) -print)
+          if [ -n "$lishnie" ]; then echo "::error::msk-new: в сборке файлы, похожие на секреты:"; echo "$lishnie"; exit 1; fi
+          if grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist >/dev/null; then
+            echo "::error::msk-new: в сборке закрытый ключ"; grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist; exit 1
+          fi
+          mb=$(du -sm dist | cut -f1); echo "msk-new: размер сборки $mb МБ"
+          [ "$mb" -le "${RU_DEPLOY_MAX_MB:-1500}" ] || { echo "::error::msk-new: сборка $mb МБ больше порога ${RU_DEPLOY_MAX_MB:-1500} МБ"; exit 1; }
           umask 077; mkdir -p ~/.ssh
           printf '%s\n' "$KLYUCH" > ~/.ssh/klyuch
           printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts

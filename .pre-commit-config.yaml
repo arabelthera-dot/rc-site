@@ -3,13 +3,13 @@
 exclude: ^(node_modules|dist|\.astro|public)/
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
     hooks:
       - id: check-json
       - id: check-yaml
       - id: check-merge-conflict
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.38.2
+    rev: 0494aa7fa1314e98913a41227d8f0a515b2c1049  # frozen: 0.38.2
     hooks:
       - id: check-jsonschema
         name: каталог музеев по схеме (полные названия title_ru)
