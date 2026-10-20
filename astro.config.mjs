@@ -31,7 +31,7 @@ export default defineConfig({
   // podderzhka — «Поддержать проект» выключен до приёма денег (Р31): вырезает блоки из полных страниц; PUBLIC_PODDERZHKA=1 — не трогает.
   // zakon — до сборки: сверка текстов с реестрами Минюста (красная) и основания кадров XX века (Е1/Е2, src/lib/zakon.mjs).
   // kartaVolnami — после всех правок HTML: карта сайта волнами sitemap-index.xml (+ /sitemap.xml), открытые волны —
-  //   src/data/karta-sayta.json; noindex и служебные (/doska/, /karta/, /poisk/) — вне карт (Е6, Р47).
+  //   src/data/karta-sayta.json; noindex и служебные (/doska/, /karta/, /poisk/, /proverka/) — вне карт (Е6, Р47).
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
   integrations: [zakon(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), kartaVolnami(), poisk()],
 });

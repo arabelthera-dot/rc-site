@@ -5,7 +5,7 @@
 //   sitemap-volna-2.xml        — остальные страницы для поиска;
 //   sitemap-<код языка>.xml    — страницы /<код>/…; в индексе, только если код в otkryty и ready:true в yazyki.json.
 // Файлы всех волн пишутся всегда (scripts/glazami.mjs меряет по ним весь сайт), в индекс идут только открытые.
-// Вне карт: страница с <meta name="robots" content="noindex"> в готовом HTML («День готовится», /doska/, /karta/,
+// Вне карт: страница с <meta name="robots" content="noindex"> в готовом HTML («День готовится», /doska/, /karta/, /proverka/,
 // /poisk/ без поиска, пробы языков) и служебные адреса SLUZHEBNYE. Стоит после fullPages — смотрит итоговый HTML.
 // lastmod — правда, а не дата сборки: у дня — последняя правка карточки по журналу исправлений (Е5, src/lib/redakciya.mjs),
 // у музея, его календаря и таблицы — самая свежая правка его дней, у главной — всех дней, у прочих — git log шаблона.
@@ -20,7 +20,7 @@ import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
 
 const read = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 const DAYS = 'src/content/days';
-const SLUZHEBNYE = /^\/(?:doska|karta|poisk)\//;
+const SLUZHEBNYE = /^\/(?:doska|karta|poisk|proverka)\//;
 const FLAGMANY = new Set(['/', '/o-proekte/', '/kak-sdelan-muzey/']);
 const LIMIT = 50000; // протокол: не больше 50 000 адресов в файле
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

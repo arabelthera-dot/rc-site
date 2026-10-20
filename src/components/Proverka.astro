@@ -1,0 +1,49 @@
+---
+// Проверка живыми людьми до запуска (Р46, «да» Сергея 20.10.2026): задание проверяющему на 10 минут.
+// Два варианта — /proverka/ (взрослый) и /proverka/semya/ (семья с ребёнком); здесь только разметка, текст — в страницах.
+// Закрытая: noindex и вне карты сайта (src/integrations/karta-volnami.mjs). Ответ — письмом на nastroyki.pochtaProverka с готовыми
+// вопросами в теле; своего сервера нет. Как свести отчёты — docs/proverka-lyudmi.md. Вид — public/assets/rc-proverka.css.
+import Base from '../layouts/Base.astro';
+import nastroyki from '../data/nastroyki.json';
+interface Shag { min: number; h: string; href: string; link: string; delat: string[] }
+interface Props { title: string; lead: string; drugoy: { href: string; label: string }; shagi: Shag[]; zamechat: string[]; voprosy: string[]; tema: string; pro: string }
+const { title, lead, drugoy, shagi, zamechat, voprosy, tema, pro } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const telo = `${pro}\n\n${voprosy.map((v, i) => `${i + 1}. ${v}\n— \n`).join('\n')}\nЧто ещё заметили (можно приложить снимок экрана):\n\n`;
+const pismo = `mailto:${nastroyki.pochtaProverka}?subject=${encodeURIComponent(tema)}&body=${encodeURIComponent(telo)}`;
+---
+<Base title={`${title} · Русская цивилизация`} description="Задание проверяющему сайт до запуска: 10 минут." schema="page" noindex>
+  <Fragment slot="head"><link rel="stylesheet" href={`${base}assets/rc-proverka.css`} /></Fragment>
+  <header slot="header" class="pv-head">
+    <h1>{title}</h1>
+    <p class="pv-lead">{lead}</p>
+    <p class="pv-drugoy"><a href={drugoy.href}>{drugoy.label}</a></p>
+  </header>
+  <section class="pv-blok" aria-labelledby="pv-shagi">
+    <h2 id="pv-shagi">Что открыть — четыре шага</h2>
+    <ol class="pv-shagi">
+      {shagi.map((s) => (
+        <li>
+          <h3>{s.h} <span class="pv-min">{s.min} мин</span></h3>
+          <p><a class="pv-link" href={s.href} target="_blank" rel="noopener">{s.link}</a></p>
+          <ul>{s.delat.map((d) => <li>{d}</li>)}</ul>
+        </li>
+      ))}
+    </ol>
+  </section>
+  <section class="pv-blok" aria-labelledby="pv-zamechat">
+    <h2 id="pv-zamechat">Что замечать по дороге</h2>
+    <ul class="pv-zamechat">{zamechat.map((z) => <li>{z}</li>)}</ul>
+  </section>
+  <section class="pv-blok" aria-labelledby="pv-voprosy">
+    <h2 id="pv-voprosy">Пять вопросов</h2>
+    <ol class="pv-voprosy">{voprosy.map((v) => <li>{v}</li>)}</ol>
+  </section>
+  <section class="pv-blok pv-otvet" aria-labelledby="pv-otvet">
+    <h2 id="pv-otvet">Как ответить</h2>
+    <p>Нажмите кнопку — откроется письмо, в нём уже стоят вопросы. Впишите ответы под ними, как получится: коротко, своими словами. Можно приложить снимки экрана.</p>
+    <p><a class="pv-knopka" href={pismo}>Написать ответы письмом</a></p>
+    <p class="pv-melko">Письмо не открылось — напишите на <a href={`mailto:${nastroyki.pochtaProverka}`}>{nastroyki.pochtaProverka}</a>, тема «{tema}». Ошибку прямо на странице дня можно прислать и по строке внизу дня «Нашли неточность? Сообщите нам».</p>
+    <p class="pv-melko">Имя, фамилию и школу ребёнка не пишите — достаточно возраста. Письмо читает только редакция, оно нужно, чтобы исправить сайт до запуска.</p>
+  </section>
+</Base>

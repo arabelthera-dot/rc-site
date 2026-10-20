@@ -1,0 +1,22 @@
+/* Задание проверяющему /proverka/ и /proverka/semya/ (Р46, 20.10.2026): одна колонка, крупный шрифт, большая кнопка ответа. */
+.pv-head{max-width:760px;margin:0 auto;padding:40px 20px 8px}
+.pv-head h1{font-size:clamp(32px,5vw,48px);margin:0 0 12px}
+.pv-lead{font-size:20px;line-height:1.5;margin:0 0 12px}
+.pv-drugoy{font-size:17px;margin:0}
+.pv-blok{max-width:760px;margin:28px auto;padding:0 20px}
+.pv-blok h2{font-size:28px;margin:0 0 14px}
+.pv-shagi{margin:0;padding:0 0 0 1.4em}
+.pv-shagi > li{margin:0 0 22px;font-size:18px;line-height:1.5}
+.pv-shagi h3{font-size:22px;margin:0 0 6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pv-min{font-size:15px;font-weight:400;opacity:.75;white-space:nowrap}
+.pv-shagi p{margin:0 0 6px}
+.pv-link{font-weight:700}
+.pv-shagi ul,.pv-zamechat{margin:0;padding:0 0 0 1.2em}
+.pv-zamechat li,.pv-voprosy li{font-size:18px;line-height:1.5;margin:0 0 8px}
+.pv-voprosy{margin:0;padding:0 0 0 1.4em}
+.pv-otvet p{font-size:18px;line-height:1.5}
+.pv-knopka{display:inline-block;padding:16px 28px;border-radius:12px;font-size:20px;font-weight:700;text-decoration:none;
+  background:#c9a84c;color:#060d18;border:2px solid #c9a84c}
+.pv-knopka:hover,.pv-knopka:focus-visible{background:#d9b95c}
+.pv-knopka:focus-visible{outline:3px solid #d9b95c;outline-offset:3px}
+.pv-melko{font-size:16px !important;opacity:.85}
