@@ -18,10 +18,10 @@ on:
     - cron: '7 21 * * *'
     - cron: '37 21 * * *'
     - cron: '7 22 * * *'
+# Права по умолчанию — только чтение (20.10.2026, цепочка «ошибка помощника → сайт»): pages и id-token — лишь у задачи
+# deploy, сборка (npm-пакеты, скрипты заявки) выложить сайт сама не может. Откат — вернуть три строки сюда.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -82,6 +82,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

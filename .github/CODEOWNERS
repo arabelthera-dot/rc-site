@@ -79,3 +79,12 @@
 
 # Доска и проверки — оркестратор (arabelthera-dot)
 /.github/ @arabelthera-dot
+
+# Сборка, выкладка и скрипты — оркестратор (arabelthera-dot), 20.10.2026: цепочка «ошибка помощника → сайт».
+/scripts/ @arabelthera-dot
+/infra/ @arabelthera-dot
+/tests/ @arabelthera-dot
+/schemas/ @arabelthera-dot
+/astro.config.mjs @arabelthera-dot
+/package.json @arabelthera-dot
+/package-lock.json @arabelthera-dot
