@@ -16,6 +16,7 @@ import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
+import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
@@ -51,10 +52,7 @@ function ldRedakciya(html, red, modified) {
 
 const SRC = 'src/data/full-pages';
 const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
-const MUSEUMS = Object.fromEntries(JSON.parse(fs.readFileSync('src/data/museums.json', 'utf8')).museums
-  .map((m) => [m.slug, m.title_ru]));
-const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-  .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(+n)).replace(/&amp;/g, '&');
+// Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
 // и на главную своего музея с подписью ровно title_ru (у главной музея — само название, без ссылки).
@@ -111,24 +109,7 @@ function checkNoGoogleFonts() {
 // Имя музея в шапке — ровно title_ru (AGENTS.md §6, 17.10): блок шапки (<header class="top">, .museum, .museum-label)
 // с обрезком своего title_ru (например, «Что изобрели русские первыми в мире» без «Музей») и в любом месте страницы
 // «Музей …», обрывающийся раньше полного title_ru любого музея, — сайт не собирается.
-const ALL_TITLES = Object.values(MUSEUMS);
-function checkMuseumName(html, museum) {
-  const bad = [];
-  const title = MUSEUMS[museum];
-  if (!title) return bad;
-  const norm = (x) => decode(x).replace(/\s+/g, ' ').trim();
-  const head = /<header class="top"[^>]*>([\s\S]*?)<\/header>/i.exec(html)?.[1] || '';
-  const blocks = [...head.matchAll(/<div class="b\d"[^>]*>([^<]*)<\/div>/g), ...head.matchAll(/<div class="museum"[^>]*>([^<]*)<\/div>/g),
-    ...html.matchAll(/<div class="museum-label"[^>]*>([^<]*)<\/div>/g)].map((m) => norm(m[1]));
-  const core = title.replace(/^.*?«(.*)»[^»]*$/, '$1');
-  for (const b of blocks) if (b && b !== title && (title.includes(b) && b.length > 8 || b === core)) bad.push(`шапка «${b}» вместо «${title}»`);
-  for (const m of decode(html).matchAll(/[Мм]узей[ \u00a0][^<>"'\n·|—,.:;(){}\[\]]{3,80}/g)) {
-    const s = m[0].replace(/\s+/g, ' ').trim();
-    const t = ALL_TITLES.find((x) => x !== s && s.length > 8 && x.toLowerCase().startsWith(s.toLowerCase()));
-    if (t && !ALL_TITLES.includes(s)) bad.push(`обрезанное имя «${s}» вместо «${t}»`);
-  }
-  return [...new Set(bad)];
-}
+// Проверка — checkMuseumName из src/lib/imya-muzeya.mjs (та же функция проверяет пост в каналы).
 
 const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/|#|\$|\{)/i; // схема, корень, якорь, шаблон
 // Наушники аудиогида — встроенный SVG цветом текста кнопки (вместо «🎧»: на ПК/Linux без эмодзи-шрифта — квадрат).
