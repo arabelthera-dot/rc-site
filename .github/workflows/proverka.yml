@@ -35,6 +35,13 @@ jobs:
       - name: kanaly — пробы проверки поста
         timeout-minutes: 2
         run: node scripts/kanaly/proverka.test.mjs
+      # Сторож ссылок и опасного JS (разбор безопасности 20.10.2026, п. 1-2): каждый внешний домен в днях, полных
+      # страницах, шаблонах и движках — из data/razreshennye-domeny.txt (206 с main); eval/new Function/atob/
+      # document.write/location= на чужой адрес/склейка 'ht'+'tps' — запрещены. На main 0 нарушений — строгий сразу.
+      # Откат — удалить этот шаг.
+      - name: storozh-ssylok — разрешённые домены и опасный JS
+        timeout-minutes: 2
+        run: node scripts/storozh-ssylok.mjs
       # Г20: проверочная сборка включает арабскую пробу /ar/ (RC_PROBA_RTL=1) — её ссылки, разметка и вид проверяются
       # в каждой заявке. На живой сайт проба не попадает: deploy.yml собирает без этой переменной.
       - run: npm run build
