@@ -1,4 +1,60 @@
 {
+  "muzei/arhitektura/media/terem-astashovo/ruin-2011.webp": {
+    "osnovanie": "CC BY-SA 3.0",
+    "avtor": "IvanShkaev",
+    "gody": "снимок 2011",
+    "pravilo": "открытая лицензия правообладателя (ст. 1286.1 ГК РФ)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:AstAsevO_tereM_2011.JPG"
+  },
+  "muzei/karikatura/media/bear-1900-muscovite-caution.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Удо Кепплер",
+    "gody": "1872–1956; опубл. в США 1900",
+    "pravilo": "п. 4 ст. 1256 ГК РФ: срок охраны не больше, чем в стране происхождения (США, публикация до 1930 — общественное достояние)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Muscovite_caution_-_Keppler._LCCN2010651233.jpg"
+  },
+  "muzei/karikatura/media/bear-1904-bluffing.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Э. А. Бушнелл",
+    "gody": "1876–1939",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Bushnell_cartoon_about_Russia_and_Japan_bluffing_each_other.jpg"
+  },
+  "muzei/karikatura/media/bear-1904-house-of-cards.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Удо Кепплер",
+    "gody": "1872–1956; опубл. в США 1904",
+    "pravilo": "п. 4 ст. 1256 ГК РФ: срок охраны не больше, чем в стране происхождения (США, публикация до 1930 — общественное достояние)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:A_house_of_cards_-_Keppler._LCCN2010652338.jpg"
+  },
+  "muzei/karikatura/media/bear-1914-hunter-hunted.png": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не указан, журнал Punch",
+    "gody": "опубл. 1914",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Punch_147_-_1914.09.16_-_233_-_The_Hunter_Hunted.png"
+  },
+  "muzei/karikatura/media/bear-1914-power-behind.png": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не указан, журнал Punch",
+    "gody": "опубл. 1914",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Punch_147_-_1914.07.29_-_103_-_The_Power_Behind.png"
+  },
+  "muzei/karikatura/media/bear-1918-awake.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "автор не указан, Управление куратора Сената США",
+    "gody": "опубл. 1918",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Awake_the_Russian_Bear_-_DPLA_-_73b6dc4694a80999735f66fafac65ab1.jpg"
+  },
+  "muzei/karikatura/media/bear-1918-regretting.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Э. А. Бушнелл",
+    "gody": "1876–1939",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Bushnell_cartoon_of_Russia_regretting_its_participation_in_WW1_(May_1918).jpg"
+  },
   "muzei/karikatura/media/krokodil-1923-no43.jpg": {
     "osnovanie": "общественное достояние",
     "avtor": "И. А. Малютин",
@@ -69,6 +125,13 @@
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://search.rsl.ru/ru/record/01003381749"
   },
+  "muzei/karikatura/media/radakov-satirikon-1918-oblozhka.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1877–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Обложка_Нового_Сатирикона._№2_за_1918_год.jpg"
+  },
   "muzei/literatura/media-amfibiya/posleslovie-1928-zarodysh.jpg": {
     "osnovanie": "общественное достояние",
     "avtor": "художник не указан",
@@ -120,6 +183,13 @@
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%84%D0%B8%D1%88%D0%B0_%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D0%B0%D0%BA%D0%BB%D1%8F_%C2%AB%D0%91%D0%BB%D0%BE%D1%85%D0%B0%C2%BB_(1925).jpg"
   },
+  "muzei/literatura/media-mandelshtam/mandelshtam-1930-rgali.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "фотограф не установлен (РГАЛИ)",
+    "gody": "снимок 1930; впервые опубл. 2018",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; как ОД не проходит (п. 2 ст. 1281 — 70 лет от обнародования 2018)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Mandelshtam17.jpg"
+  },
   "muzei/literatura/media-neznakomka/blok-avtograf-1906.jpg": {
     "osnovanie": "общественное достояние",
     "avtor": "А. А. Блок",
@@ -155,6 +225,13 @@
     "gody": "1869–1939",
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://commons.wikimedia.org/wiki/File:Konstantin_Somov,_Alexander_Blok,_1907,_Tretyakov_Gallery_9641.png"
+  },
+  "muzei/literatura/media-pamyatnik/repin-pushkin-ekzamen-1911.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. Е. Репин",
+    "gody": "1844–1930",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Pushkin_derzhavin.jpg"
   },
   "muzei/literatura/media-parus/kataev-1916.jpg": {
     "osnovanie": "общественное достояние",
@@ -313,5 +390,12 @@
     "gody": "1906–1944",
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора + 4 года участнику войны (ст. 6 ФЗ № 231-ФЗ)",
     "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%B0%D0%BD%D1%84%D0%B8%D0%BB%D0%BE%D0%B2,_%D0%A1%D1%80%D0%B5%D0%B1%D1%80%D1%8F%D0%BA%D0%BE%D0%B2,_%D0%95%D0%B3%D0%BE%D1%80%D0%BE%D0%B2.jpg"
+  },
+  "muzei/skazki/img/bilibin-morozko-1932.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. Я. Билибин",
+    "gody": "1876–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:1932._Билибин._Морозко.jpg"
   }
 }
