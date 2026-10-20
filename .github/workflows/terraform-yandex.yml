@@ -16,6 +16,10 @@ on:
         description: 'Ждать выпуска сертификата Let''s Encrypt и привязать его к бакетам (первый проход — false)'
         type: boolean
         default: true
+      dop_https:
+        description: 'Дополнительные адреса (М36): ждать сертификат и привязать (после смены NS у регистратора)'
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -40,6 +44,9 @@ jobs:
       # Бакет состояния terraform (не в git); переменная репозитория YC_TFSTATE_BUCKET — если имя занято.
       TFSTATE_BUCKET: ${{ vars.YC_TFSTATE_BUCKET || 'russian-civilization-tfstate' }}
       TF_VAR_https: ${{ inputs.https }}
+      # Дополнительные адреса с 301 (М36): переменная репозитория YC_DOP_DOMENY — JSON-список punycode; нет — пусто.
+      TF_VAR_dop_domeny: ${{ vars.YC_DOP_DOMENY || '[]' }}
+      TF_VAR_dop_https: ${{ inputs.dop_https }}
       TF_IN_AUTOMATION: '1'
     steps:
       - id: est

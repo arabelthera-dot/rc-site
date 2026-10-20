@@ -24,3 +24,14 @@ output "bakety_http" {
     www  = "http://${yandex_storage_bucket.www.bucket}.website.yandexcloud.net/"
   }
 }
+
+output "dop_domeny" {
+  description = "Дополнительные адреса: NS для регистратора и проверка переадресации до смены NS"
+  value = {
+    for d in var.dop_domeny : d => {
+      ns          = ["ns1.yandexcloud.net.", "ns2.yandexcloud.net."]
+      bakety_http = ["http://${d}.website.yandexcloud.net/", "http://www.${d}.website.yandexcloud.net/"]
+      sertifikat  = yandex_cm_certificate.dop[d].status
+    }
+  }
+}
