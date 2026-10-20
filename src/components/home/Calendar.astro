@@ -1,8 +1,7 @@
 ---
 // Календарь на главной (02-calendar.md §1-бис-6): окошко месяца #calbox + museum-calendar-month.js
 // и строка «Весь год целиком» на страницу календаря. Страницы календаря нет (нет дней) — строка без ссылки.
-import { plural } from '../../lib/kalendar';
-import { yazyk, razobratPut, stroka, strelkaVpered } from '../../lib/yazyki.mjs';
+import { yazyk, razobratPut, stroka, strelkaVpered, chislo } from '../../lib/yazyki.mjs';
 const lang = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
 const s = (key: string): any => stroka(lang.code, key);
 interface Props { slug: string; total: number }
@@ -13,7 +12,7 @@ const base = import.meta.env.BASE_URL;
   <h2 class="mh-h">{s('kalendarGoda')}</h2>
   <div id="calbox"></div>
   {total > 0
-    ? <p class="mh-year"><a href={`${base}muzei/${slug}/calendar/`}>{`${s('vesGod').replace('{n}', String(total)).replace('{dney}', plural(total, ...(s('dneyFormy') as [string, string, string])))} ${strelkaVpered(lang.dir)}`}</a></p>
+    ? <p class="mh-year"><a href={`${base}muzei/${slug}/calendar/`}>{`${s('vesGod').replace('{n}', String(total)).replace('{dney}', chislo(lang.code, total, 'dneyFormy'))} ${strelkaVpered(lang.dir)}`}</a></p>
     : <p class="mh-year mh-empty">{s('vesGodPusto')}</p>}
 </section>
 <script is:inline src={`${base}assets/museum-calendar-month.js`}></script>
