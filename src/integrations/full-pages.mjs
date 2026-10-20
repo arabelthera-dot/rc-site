@@ -28,6 +28,8 @@ import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml 
 // Д5 (20.10.2026): url страницы-произведения — её адрес на сайте (canonical), а не файл старого сайта day-….html.
 const WORK = /(?:Article|Page|CreativeWork|LearningResource|Course)$/;
 function ldRedakciya(html, red, { modified, published, url } = {}) {
+  // Картинка статьи — og:image самой страницы (Google Article: image), если своей в ld+json нет.
+  const image = /<meta\b[^>]*\bproperty=["']og:image["'][^>]*\bcontent=["']([^"']+)["']/i.exec(html)?.[1];
   const OUR_NAMES = new Set(['Русская цивилизация', ...Object.values(MUSEUMS)]);
   return html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (m, a, json, z) => {
     let data;
@@ -45,8 +47,12 @@ function ldRedakciya(html, red, { modified, published, url } = {}) {
       const t = [].concat(n?.['@type'] ?? []);
       if (!n || !(n.headline || t.some((x) => WORK.test(x)))) continue;
       n.author ??= red;
+      n.publisher ??= red;
       n.license ??= LICENZIYA;
-      if (/Article/.test(t.join())) { if (modified) n.dateModified ??= modified; if (published) n.datePublished ??= published; }
+      if (/Article/.test(t.join())) {
+        if (modified) n.dateModified ??= modified; if (published) n.datePublished ??= published;
+        if (image && /^https?:\/\//.test(image)) n.image ??= image;
+      }
       if (url && typeof n.url === 'string' && /\.html?$/.test(n.url)) n.url = url;
     }
     return a + JSON.stringify(data).replace(/</g, '\\u003c') + z;
@@ -580,8 +586,9 @@ export default function fullPages() {
             }
             // Подпись «Редакция», лицензия CC BY 4.0 (Р34, Р35), «Проверено» и журнал исправлений (Е5) — как у шаблонов
             // (Base.astro, страница дня): журнал — перед подвалом страницы, строка лицензии — в конце подвала.
-            const zh = staraya ? undefined : zhurnal(museum, key);
-            if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), { modified: zh?.modified, published: zh?.published, url: new URL(self, site).href });
+            // Журнал на странице — только у основной; даты статьи в разметке — у обеих (копия «staraya» — та же статья).
+            const zhKartochki = zhurnal(museum, key), zh = staraya ? undefined : zhKartochki;
+            if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), { modified: zhKartochki?.modified, published: zhKartochki?.published, url: new URL(self, site).href });
             html = html.replace(/<meta\s+name=["']author["'][^>]*>\s*/gi, '').replace(/<link\s+rel=["']license["'][^>]*>\s*/gi, '')
               .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<link rel="stylesheet" href="${base}assets/rc-podval.css" />\n</head>`);
             {
