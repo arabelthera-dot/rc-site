@@ -75,7 +75,7 @@ jobs:
           [ -n "$DATE" ] && args+=(--date "$DATE")
           python scripts/kanaly/pochta.py "${args[@]}"
       - if: always() && steps.vkl.outputs.da == '1' && steps.sent.outputs.cache-hit != 'true' && hashFiles('.kanaly/pochta/sent') != ''
-        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .kanaly/pochta
           key: kanaly-pochta-${{ steps.d.outputs.today }}

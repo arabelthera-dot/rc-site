@@ -64,12 +64,12 @@ jobs:
           [ -n "$DATE" ] && args+=(--date "$DATE")
           python scripts/kanaly/post.py "${args[@]}"
       - if: always() && steps.tg.outputs.cache-hit != 'true' && hashFiles('.kanaly/tg/sent') != ''
-        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .kanaly/tg
           key: kanaly-tg-${{ steps.d.outputs.today }}
       - if: always() && steps.vk.outputs.cache-hit != 'true' && hashFiles('.kanaly/vk/sent') != ''
-        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .kanaly/vk
           key: kanaly-vk-${{ steps.d.outputs.today }}
