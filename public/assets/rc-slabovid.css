@@ -91,12 +91,31 @@ html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-wrong,.fw-pick.is-miss,.opt.wrong,
 html.rc-slabovid body :is(#rc-sv-x,.crun-echo.bad){font-weight:700!important;opacity:1!important}
 html.rc-slabovid body :is(#rc-sv-x,.crun-echo.bad)::before{content:"⚠ ";content:"⚠ " / "потеря: "}
 /* выбранный вариант без оценки — инверсия, как текущий пункт навигации */
-html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"]),
-html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"]) *{
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on),
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on) *{
   background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border-color:#000!important;opacity:1!important;outline:none}
-html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"]){border:2px solid #000!important}
-html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"])::before{
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on){border:2px solid #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on)::before{
   content:"● ";content:"● " / "выбрано: ";color:#fff!important;-webkit-text-fill-color:#fff!important}
+/* Хвост Д7 (20.10): выбранная надпись «Слова героя» (museum-slovo-geroya.js, .sg-scratch.on) — в группе «выбрано» выше
+   (инверсия 21:1 и «●»). Точки «Живого интерьера» (museum-zhivoy-interer.js): открытая сейчас — инверсия белое на чёрном
+   (21:1), осмотренная — двойная рамка 4 px (в обычном виде это различал только цвет). */
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot){background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:2px solid #000!important;opacity:1!important}
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot.seen){border:4px double #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot[aria-pressed="true"]){background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border:2px solid #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot):focus-visible{outline:3px solid #000!important;outline-offset:3px!important;box-shadow:0 0 0 6px #fff!important}
+/* Подсказка зума («Щипок — приблизить…», #zhint полных дней искусства) лежала поверх кадра одной строкой (nowrap)
+   и на ×1,3 уходила за край; через 6 с гасла. В режиме — в потоке над кадром, переносится, не гаснет. */
+html.rc-slabovid body #zhint{position:static!important;display:block!important;white-space:normal!important;
+  box-sizing:border-box!important;width:auto!important;max-width:calc(100% - 24px)!important;margin:8px 12px!important;opacity:1!important;background:#fff!important;border:2px solid #000!important}
+/* Плашка цифр под обложкой (.hero-under .stamp, литература): в обычном виде на телефоне 4 узкие колонки, а правило темы
+   «.stamp div» даёт отступы и рамку и вложенным .v/.k — на ×1,3 «1185» рвалось по буквам, «ПЕРВОЕ ИЗДАНИЕ» обрезалось.
+   В режиме — 2 колонки на узком экране, у .v/.k без отступов и рамки, слова целиком. */
+html.rc-slabovid body .stamp :is(.v,.k){padding:0!important;border:0!important;min-width:0!important}
+html.rc-slabovid body .stamp .v{overflow-wrap:normal!important;word-break:normal!important}
+html.rc-slabovid body .stamp .k{letter-spacing:.04em!important;overflow-wrap:normal!important;word-break:normal!important}
+@media (max-width:720px){html.rc-slabovid body .stamp{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html.rc-slabovid body .stamp > div:nth-child(odd){border-left:0!important}}
 /* отключённые после ответа варианты не бледнеют — серое на белом ниже 7:1 */
 html.rc-slabovid body :is(#rc-sv-x,.mq-opt,.fm-opt,.fw-pick,.opt,.fork-opt,[data-game-choice]):disabled{opacity:1!important;color:#000!important}
 /* телефон ×1,3: на узком экране крупный шрифт не выталкивает раскладку вбок */
