@@ -1,0 +1,10 @@
+/* Кнопка «Версия для слабовидящих» (Д7) — вид кнопки в обычном режиме. Мелкий стиль первого экрана: внутрь <head>
+   (Base.astro — InlineCss, полные страницы дней — src/lib/slabovid.mjs), сам режим — rc-slabovid.css без блокировки (Б10, 20.10). */
+#rc-slabovid-btn{position:fixed;top:4px;right:8px;z-index:9999;box-sizing:border-box;width:44px;height:44px;margin:0;padding:0;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(201,168,76,.55);
+  background:#060d18;color:#d9b95c;cursor:pointer;line-height:1}
+#rc-slabovid-btn:hover{background:#13213a}
+#rc-slabovid-btn:focus-visible{outline:3px solid #d9b95c;outline-offset:2px}
+#rc-slabovid-btn .rc-sv-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+nav.rc-sitebar{padding-right:60px}
+@media print{#rc-slabovid-btn{display:none}}

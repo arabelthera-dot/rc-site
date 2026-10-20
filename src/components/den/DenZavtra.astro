@@ -30,6 +30,6 @@ const href = nx && `${base}muzei/${museum}/den/${nx.key}/`;
   )}
 </section>
 {mark && <>
-<script is:inline src={`${base}muzei/${museum}/kalendar-dney.js`}></script>
-<script is:inline src={`${base}assets/museum-return.js`} data-museum={museum} data-day={day}></script>
+<script is:inline defer src={`${base}muzei/${museum}/kalendar-dney.js`}></script>
+<script is:inline defer src={`${base}assets/museum-return.js`} data-museum={museum} data-day={day}></script>
 </>}
