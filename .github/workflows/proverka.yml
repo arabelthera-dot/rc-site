@@ -24,9 +24,9 @@ jobs:
       - run: npm ci
       # «Сегодня» — по Москве во всех блоках (B11, 19.10.2026): home/Today.astro и portal/Segodnya.astro
       # дают один день под TZ Лос-Анджелеса/Москвы/Владивостока. Без сборки, секунды.
-      # Новое — выключенным: строгость переменной репозитория SEGODNYA_MSK_STROGO=1.
+      # Строгая с 20.10.2026 (Р52: на main 0 расхождений). Выключатель — переменная SEGODNYA_MSK_STROGO=0.
       - name: segodnya-msk — один день по Москве
-        continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO != '1' }}
+        continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO == '0' }}
         timeout-minutes: 1
         run: node scripts/segodnya-msk.test.mjs && node scripts/segodnya-msk.mjs
       # Пост 9:00 в каналы (Е8, Р47, 20.10.2026): заведомый брак (имя из реестра Минюста, второе предложение в хуке,
@@ -71,18 +71,19 @@ jobs:
           fail: true
           jobSummary: true
       # Подгрузки из движков (18.10.2026): lychee не видит import()/from в js — пропавший файл
-      # 3D или библиотеки ловит scripts/js-import.mjs. Строгость — JSIMPORT_STROGO=1 (новое — выключенным).
+      # 3D или библиотеки ловит scripts/js-import.mjs. Строгая с 20.10.2026 (Р52: на main пропавших 0).
+      # Выключатель — переменная JSIMPORT_STROGO=0.
       - name: js-import — подгрузки движков
-        continue-on-error: ${{ vars.JSIMPORT_STROGO != '1' }}
+        continue-on-error: ${{ vars.JSIMPORT_STROGO == '0' }}
         run: node scripts/js-import.mjs dist
       # Ленивые адреса data-src/data-poster (20.10.2026): lychee их не видит — 18 «битых» аудио/видео/картинок
       # на полных страницах дней ловит scripts/data-src.mjs. Строгий с 20.10.2026: прогон показал 0 битых из 18.
       - name: data-src — ленивые аудио, видео, картинки
         run: node scripts/data-src.mjs --dist dist
-      # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгость — переменной
-      # репозитория VES_STROGO=1; без неё — только предупреждение (новое ставится выключенным).
+      # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгий с 20.10.2026 (Р52: на main
+      # 932.4 МБ — запас 17.6 МБ). Выключатель — переменная VES_STROGO=0.
       - name: ves — вес сборки
-        continue-on-error: ${{ vars.VES_STROGO != '1' }}
+        continue-on-error: ${{ vars.VES_STROGO == '0' }}
         run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12
       # Карточка пересылки (Б9/Б10, 20.10.2026): og:image меньше 600×315 Telegram/ВК показывают крошкой —
       # сборка ставит запасную (og-den), проверка считает остаток (должно быть 0); у каждой страницы дня
@@ -130,26 +131,26 @@ jobs:
         run: python3 scripts/staroe-pravilo.py --dist dist
       # Полнота переадресаций (план переезда, шаг 4; 19.10.2026): каждый публичный адрес старого сайта
       # из scripts/legacy-paths.txt есть в сборке — страницей или переадресацией; иначе список и код 1.
-      # Новое — выключенным: строгость переменной репозитория REDIR_STROGO=1.
+      # Строгая с 20.10.2026 (Р52: на main 221 из 221). Выключатель — переменная REDIR_STROGO=0.
       - name: polnota — старые адреса не умирают
-        continue-on-error: ${{ vars.REDIR_STROGO != '1' }}
+        continue-on-error: ${{ vars.REDIR_STROGO == '0' }}
         timeout-minutes: 2
         run: node scripts/polnota.mjs --dist dist
       # Сверка карточки дня и полной страницы (19.10.2026): title карточки против <title>/<h1> страницы
       # src/data/full-pages — общее значимое слово или дата дня (логика pageMatches импорта). Коммит 81b9dff
-      # сдвинул страницы «Не сдаются» на соседний день, и никто не поймал. Новое — выключенным:
-      # шаг роняет заявку только при переменной репозитория SVERKA_H1_STROGO=1.
+      # сдвинул страницы «Не сдаются» на соседний день, и никто не поймал. Строгая с 20.10.2026
+      # (Р52: на main расхождений 0). Выключатель — переменная SVERKA_H1_STROGO=0.
       - name: sverka-h1 — страница дня про этот день
-        continue-on-error: ${{ vars.SVERKA_H1_STROGO != '1' }}
+        continue-on-error: ${{ vars.SVERKA_H1_STROGO == '0' }}
         timeout-minutes: 1
         env:
           SVERKA_H1_STROGO: '1'
         run: node scripts/sverka-h1.mjs
       # Подписи кадров (план сайта Д2, 20.10.2026): красное — кадр карточки дня без подписи. Полные
-      # страницы — только отчёт (чинят хозяева страниц). Новое — выключенным: заявку роняет лишь при
-      # переменной репозитория PODPISI_STROGO=1; включить, когда красных в карточках 0 на main.
+      # страницы и жёлтое «подпись неполная» — только отчёт (чинят хозяева страниц). Строгая с 20.10.2026
+      # (Р52: красных в карточках 0 на main). Выключатель — переменная PODPISI_STROGO=0.
       - name: podpisi — у каждого кадра есть подпись
-        continue-on-error: ${{ vars.PODPISI_STROGO != '1' }}
+        continue-on-error: ${{ vars.PODPISI_STROGO == '0' }}
         timeout-minutes: 1
         run: npm run proverka-podpisey
       # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам
