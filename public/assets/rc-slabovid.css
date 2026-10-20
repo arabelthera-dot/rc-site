@@ -70,3 +70,44 @@ html.rc-slabovid body :is(#rc-sv-x,.gc-btn.on,.progress-acts a.on,.progress-acts
 html.rc-slabovid body :is(#rc-sv-x,.gc-btn.on,.progress-acts a.on,.progress-acts a[aria-current="step"],.sd-path button[aria-current="step"],.quick-progress a.is-current,nav[aria-label="Разделы страницы"] a[aria-current="location"]) *{background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border:2px solid #000!important}
 html.rc-slabovid body :is(#rc-sv-x,.nv-mobile-cta,.tower-cta,.car-btn,.gc-btn,.retry-button,.result-replay,.tent-replay,.film-play,.result-actions a,.result-actions button,.route-choice a,.museum-follow-actions a,.museum-follow-actions button,.lab-result-actions button,.observe-result button,.guide-controls button,.film-controls button,.sort-acts button,.quick-next a,.continuation-shelf a,.next-grid a,.story-bridge a,.explore-map a,.wayrow a,.calendar-neighbours a,.visit-bridge nav a,.museum-voice a,.motif-card>a,button.scene-hint,.gc-btn.on,.progress-acts a.on,.progress-acts a[aria-current="step"],.sd-path button[aria-current="step"],.quick-progress a.is-current,nav[aria-label="Разделы страницы"] a[aria-current="location"]):focus-visible{
   outline:3px solid #000!important;outline-offset:3px!important;box-shadow:0 0 0 6px #fff!important}
+/* Кнопки ответов в играх и интерактивах (Д7, 20.10): в обычном виде «верно/неверно/выбрано» передаёт только цвет
+   (зелёный/красный/золотой), а режим перекрашивает всё в чёрное — смысл пропадал. Здесь смысл несут форма и значок:
+   верно — рамка 4 px сплошная, жирный, «✓»; неверно — рамка 3 px пунктир, «✗»; выбрано (без оценки) — инверсия
+   белое на чёрном (21:1) и «●». Значки — ::before (у этих кнопок своих ::before нет). Движки и CSS музеев не тронуты.
+   Источники классов: museum-quiz.js (.mq-opt.is-right/.is-wrong), museum-find-word.js (.fw-pick.is-hit/.is-miss),
+   museum-fact-or-myth.js (.fm-picked), полные дни и музеи (.opt.correct/.wrong, .fork-opt.chosen, .seg[aria-pressed]),
+   nevjanskaya-page.js ([data-game-choice] + aria-invalid), kizhi (.origin-card.is-wrong), ermak (.crun-item.on, .crun-echo.bad),
+   georgievskiy (.stone[aria-pressed]), literatura (.syuzhet-step.bad). */
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-right,.fw-pick.is-hit,.opt.correct,[data-game-choice][aria-pressed="true"]:not([aria-invalid="true"])){
+  background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:4px solid #000!important;
+  font-weight:700!important;opacity:1!important}
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-wrong,.fw-pick.is-miss,.opt.wrong,[data-game-choice][aria-invalid="true"],.origin-card.is-wrong,.syuzhet-step.bad){
+  background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:3px dashed #000!important;
+  opacity:1!important;text-decoration:none!important}
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-right,.fw-pick.is-hit,.opt.correct,[data-game-choice][aria-pressed="true"]:not([aria-invalid="true"]))::before{
+  content:"✓ ";content:"✓ " / "верно: ";font-weight:700;color:#000!important}
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-wrong,.fw-pick.is-miss,.opt.wrong,[data-game-choice][aria-invalid="true"],.syuzhet-step.bad)::before{
+  content:"✗ ";content:"✗ " / "неверно: ";font-weight:700;color:#000!important}
+html.rc-slabovid body :is(#rc-sv-x,.crun-echo.bad){font-weight:700!important;opacity:1!important}
+html.rc-slabovid body :is(#rc-sv-x,.crun-echo.bad)::before{content:"⚠ ";content:"⚠ " / "потеря: "}
+/* выбранный вариант без оценки — инверсия, как текущий пункт навигации */
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"]),
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"]) *{
+  background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border-color:#000!important;opacity:1!important;outline:none}
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"]){border:2px solid #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"])::before{
+  content:"● ";content:"● " / "выбрано: ";color:#fff!important;-webkit-text-fill-color:#fff!important}
+/* отключённые после ответа варианты не бледнеют — серое на белом ниже 7:1 */
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt,.fm-opt,.fw-pick,.opt,.fork-opt,[data-game-choice]):disabled{opacity:1!important;color:#000!important}
+/* телефон ×1,3: на узком экране крупный шрифт не выталкивает раскладку вбок */
+@media (max-width:480px){
+  html.rc-slabovid body :is(main,section,article,figure,table,pre,img,video,audio,iframe,svg,canvas,input,select,textarea){max-width:100%!important;min-width:0!important}
+  html.rc-slabovid body :is(.progress-acts,:has(> .btn),:has(> .gbtn),:has(> .stamp)){flex-wrap:wrap!important}
+  html.rc-slabovid body :is([class*="hint"],.stamp,.stamp *){white-space:normal!important;max-width:100%!important}
+  html.rc-slabovid body .stamp{position:static!important}
+  /* страховка: бегущие строки и лишнее не дают прокрутки вбок (внутренние ленты с overflow:auto работают как раньше) */
+  html.rc-slabovid,html.rc-slabovid body{overflow-x:clip!important}
+  html.rc-slabovid body :is(p,li,a,button,td,th,figcaption,blockquote,h4,h5,h6){overflow-wrap:anywhere}
+  html.rc-slabovid body pre{white-space:pre-wrap!important}
+  html.rc-slabovid body :is(.crumbs,.crumbs *,.breadcrumbs,.breadcrumbs *,p a,li a){white-space:normal!important}
+}
