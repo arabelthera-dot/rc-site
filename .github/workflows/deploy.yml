@@ -84,6 +84,105 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+  # Яндекс Облако (Р6, задача Y, 20.10.2026; docs/yandex-oblako.md): та же сборка, что ушла на Pages (артефакт
+  # github-pages), — в бакет Object Storage russian-civilization.ru через aws s3 sync с endpoint Яндекса
+  # (https://yandex.cloud/ru/docs/storage/tools/aws-cli). Content-Type и Cache-Control задаются явно по типам файлов:
+  # _astro/* (имена с хэшем) — год, immutable; картинки, звук, видео, шрифты — неделя; css/js/json — час; HTML — 10 минут, как на Pages.
+  # Тяжёлые файлы сверяются по размеру (--size-only), текстовые выкладываются каждый раз; --delete убирает удалённое.
+  # Нет секретов YC_ACCESS_KEY_ID/YC_SECRET_ACCESS_KEY — задача спит со строкой в журнале. Ошибка — предупреждение,
+  # Pages и IndexNow не роняются (continue-on-error). Откат — убрать эту задачу.
+  yandex:
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ru-central1
+      YC_S3: https://storage.yandexcloud.net
+      BAKET: ${{ vars.YC_BUCKET || 'russian-civilization.ru' }}
+    steps:
+      - id: est
+        run: |
+          if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+            echo "::notice::Яндекс Облако: нет секретов YC_ACCESS_KEY_ID / YC_SECRET_ACCESS_KEY (М47, Михаил) — выкладка в бакет пропущена, сайт выложен на GitHub Pages"
+            echo "est=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "est=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.est.outputs.est == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: artefakt
+      - name: выкладка в бакет
+        if: steps.est.outputs.est == 'true'
+        run: |
+          set -euo pipefail
+          mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
+          test -f dist/index.html && test -f dist/404.html
+          s3() { aws s3 sync dist "s3://$BAKET" --endpoint-url "$YC_S3" --only-show-errors --no-progress --delete "$@"; }
+          GOD='public, max-age=31536000, immutable'; NEDELYA='public, max-age=604800'; CHAS='public, max-age=3600'; HTML='public, max-age=600'
+          # 1. _astro/ — имена с хэшем содержимого, по типам.
+          while read -r ras tip; do
+            s3 --size-only --exclude '*' --include "_astro/*.$ras" --content-type "$tip" --cache-control "$GOD"
+          done <<'TIPY'
+          js text/javascript; charset=utf-8
+          css text/css; charset=utf-8
+          jpg image/jpeg
+          png image/png
+          webp image/webp
+          avif image/avif
+          svg image/svg+xml
+          woff2 font/woff2
+          TIPY
+          ASTRO=(); for r in js css jpg png webp avif svg woff2; do ASTRO+=(--exclude "_astro/*.$r"); done
+          s3 --size-only --exclude '*' --include '_astro/*' "${ASTRO[@]}" --cache-control "$GOD"
+          # 2. Тяжёлые файлы — по размеру.
+          while read -r ras tip; do
+            s3 --size-only --exclude '*' --include "*.$ras" --exclude '_astro/*' --content-type "$tip" --cache-control "$NEDELYA"
+          done <<'TIPY'
+          jpg image/jpeg
+          jpeg image/jpeg
+          png image/png
+          webp image/webp
+          avif image/avif
+          gif image/gif
+          ico image/x-icon
+          mp3 audio/mpeg
+          mp4 video/mp4
+          webm video/webm
+          woff2 font/woff2
+          woff font/woff
+          pdf application/pdf
+          TIPY
+          # 3. Текстовые — каждый раз (размер у правки может совпасть).
+          while read -r ras tip; do
+            s3 --exclude '*' --include "*.$ras" --exclude '_astro/*' --content-type "$tip" --cache-control "$CHAS"
+          done <<'TIPY'
+          css text/css; charset=utf-8
+          js text/javascript; charset=utf-8
+          mjs text/javascript; charset=utf-8
+          json application/json
+          webmanifest application/manifest+json
+          svg image/svg+xml
+          vtt text/vtt; charset=utf-8
+          txt text/plain; charset=utf-8
+          xml application/xml
+          wasm application/wasm
+          TIPY
+          # 4. Всё прочее (индекс поиска pagefind и т. п.) — тип по расширению от самого aws-cli.
+          ISKL=(); for r in html jpg jpeg png webp avif gif ico mp3 mp4 webm woff2 woff pdf css js mjs json webmanifest svg vtt txt xml wasm; do ISKL+=(--exclude "*.$r"); done
+          s3 "${ISKL[@]}" --exclude '_astro/*' --cache-control "$CHAS"
+          # 5. HTML последним — страницы ссылаются уже на выложенные файлы.
+          s3 --exclude '*' --include '*.html' --content-type 'text/html; charset=utf-8' --cache-control "$HTML"
+          echo "Яндекс Облако: выложено в бакет $BAKET — $(find dist -type f | wc -l) файлов"
+          kod=$(curl -s -o /dev/null -w '%{http_code}' "http://$BAKET.website.yandexcloud.net/") || kod=нет
+          echo "проверка http://$BAKET.website.yandexcloud.net/ — код $kod"
+          [ "$kod" = 200 ] || echo "::warning::Яндекс Облако: сайт бакета ответил $kod (хостинг включает terraform-yandex.yml)"
   # IndexNow (Е6, Р47; «да» Сергея 20.10.2026): после выкладки — адреса волны 1 карты сайта и изменившиеся за сутки
   # Яндексу и Bing (scripts/indexnow.mjs; ночью — только изменившиеся). Без сети или с ошибкой — предупреждение,
   # выкладка уже прошла и не роняется. Откат — убрать эту задачу.

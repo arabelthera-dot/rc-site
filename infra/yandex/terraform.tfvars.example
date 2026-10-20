@@ -1,0 +1,5 @@
+# Пример: прочие записи домена из reg.ru (перенести ДО смены NS). Файл terraform.tfvars в git не кладётся.
+# dop_zapisi = {
+#   mx   = { name = "@", type = "MX", data = ["10 mx.yandex.net."] }
+#   spf  = { name = "@", type = "TXT", data = ["v=spf1 redirect=_spf.yandex.net"] }
+# }
