@@ -27,3 +27,14 @@ html.rc-slabovid body :is(h1,h2,h3){overflow-wrap:anywhere;hyphens:auto}
 @media (max-width:600px){html.rc-slabovid body h1{font-size:2rem!important;line-height:1.15!important}}
 html.rc-slabovid #rc-slabovid-btn{zoom:calc(1/1.3);background:#000!important;color:#fff!important;border:2px solid #000!important}
 html.rc-slabovid #rc-slabovid-btn *{color:#fff!important}
+/* Обложки (hero) общих шаблонов и полных страниц дней (Д7, 20.10): текст обложки — на сплошной белой подложке,
+   чёрным (21:1), без полупрозрачности; блок текста, лежавший поверх кадра (position:absolute), встаёт в поток
+   под кадр — поверх фото в режиме не остаётся ничего. Градиенты-«скримы» уже сняты общим background-image:none. */
+html.rc-slabovid body :is(.hero,.hero-lead,.hero-copy,.hero-under,.mh-cover,.mh-title,.p-hero,.scene-caption) :is(h1,h2,h3,p,figcaption,blockquote,small,.inner,.museum,.who,.eyebrow,.chip,.hook,.down,.b1,.scene-cap,.scene-hint){
+  background-color:#fff!important;color:#000!important;opacity:1!important}
+html.rc-slabovid body .hero:has(> .inner){height:auto!important;min-height:0!important;overflow:visible!important}
+html.rc-slabovid body .hero > :is(.inner,.hero-text,.hero-copy,.caption){position:static!important;inset:auto!important;padding-top:16px!important;padding-bottom:16px!important}
+html.rc-slabovid body .hero > :is(.bg,.scrim){display:none!important}
+html.rc-slabovid body .hero .down{white-space:normal!important}
+/* подзаголовки главной (.p-lead «Летопись…», .p-sub) и музея были серыми через opacity — чёрные */
+html.rc-slabovid body :is(.p-lead,.p-sub,.mh-slogan,.mh-promise,.mh-scene figcaption,.cdate,.rc-sb-link,.rt-lbl){opacity:1!important;color:#000!important}
