@@ -121,7 +121,9 @@ const oshibkaUrl = oshibkaMailto
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
   {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
   <InlineCss file="rc-podpiska.css" />
-  <InlineCss file="rc-slabovid.css" />
+  {/* режим слабовидящих — 22,6 КБ: файлом, не инлайном (инлайн × ~3600 страниц = +80 МБ сборки, 20.10).
+       Класс ставит скрипт в начале <head>, а <link> в <head> блокирует отрисовку — мигания нет; файл кэшируется. */}
+  <link rel="stylesheet" href={`${base}assets/rc-slabovid.css`} />
   {museum && museumTitle && <>
     <link rel="stylesheet" href={`${base}assets/rc-sitebar.css`} />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
