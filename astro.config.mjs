@@ -20,6 +20,16 @@ const soonDay = (page) => {
   return !(d.hook || d.gist);
 };
 
+// /sitemap.xml — привычный адрес карты сайта (поисковики и сторожа идут сюда первым): копия sitemap-index.xml
+// после сборки, иначе 404 (обход 20.10, план сайта А5). Стоит сразу после sitemap — файл уже есть.
+const sitemapXml = () => ({
+  name: 'sitemap-xml',
+  hooks: { 'astro:build:done': ({ dir }) => {
+    const src = new URL('sitemap-index.xml', dir);
+    if (fs.existsSync(src)) fs.copyFileSync(src, new URL('sitemap.xml', dir));
+  } },
+});
+
 // Свой домен https://russian-civilization.ru/ — Pages этого репо (19.10.2026, перенос с rc-museum-preview).
 // Старые github.io/rc-site/* GitHub переадресует на домен сам. Смена адреса — правится только site/base.
 export default defineConfig({
@@ -35,5 +45,5 @@ export default defineConfig({
   // kartinki — WebP-копии 480/960/1600 и srcset/lazy у картинок готовых страниц (после fullPages).
   // poisk — после minify: индекс pagefind (dist/pagefind/) по страницам музеев и дней; ВЫКЛЮЧЕН, включает RC_POISK=1.
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) }), legacyRedirects(), fullPages(), ogDen(), kartinki(), minify(), poisk()],
+  integrations: [sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) }), sitemapXml(), legacyRedirects(), fullPages(), ogDen(), kartinki(), minify(), poisk()],
 });
