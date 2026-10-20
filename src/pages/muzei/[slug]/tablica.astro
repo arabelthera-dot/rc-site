@@ -3,6 +3,7 @@
 // что календарь и страница дня, — данных вручную не дублирует. Все музеи с записями дней (план ядра, шаг 3).
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { yazyk, razobratPut, stroka, strelkaNazad } from '../../../lib/yazyki.mjs';
 export async function getStaticPaths() {
   const days = await getCollection('days');
   return (await getCollection('museums'))
@@ -12,6 +13,9 @@ export async function getStaticPaths() {
 }
 const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
+// Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key: string) => stroka(lang.code, key);
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 const date = (k: string) => +k.slice(3) + ' ' + MONR[+k.slice(0, 2) - 1];
 const withImg = days.filter((d) => (d.data.images ?? []).length > 0).length;
@@ -25,5 +29,5 @@ const withImg = days.filter((d) => (d.data.images ?? []).length > 0).length;
       <tr data-k={d.data.key}><td>{date(d.data.key)}</td><td><a href={`${base}muzei/${m.slug}/den/${d.data.key}/`}>{d.data.title}</a></td>
         <td>{d.data.hook ?? '—'}</td><td>{(d.data.images ?? []).length > 0 ? 'есть' : 'нет'}</td></tr>))}</tbody>
   </table>
-  <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/calendar/`}>← календарь музея</a> · <a href={`${base}muzei/${m.slug}/`}>в музей</a></Fragment>
+  <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/calendar/`}>{`${strelkaNazad(lang.dir)} ${s('kalendarMuzeya')}`}</a> · <a href={`${base}muzei/${m.slug}/`}>{s('vMuzey')}</a></Fragment>
 </Base>

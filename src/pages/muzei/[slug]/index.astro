@@ -4,6 +4,7 @@
 import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { beyondYear, isDated } from '../../../lib/kalendar';
+import { yazyk, razobratPut, stroka, strelkaVpered } from '../../../lib/yazyki.mjs';
 import Cover from '../../../components/home/Cover.astro';
 import Today from '../../../components/home/Today.astro';
 import Calendar from '../../../components/home/Calendar.astro';
@@ -21,6 +22,9 @@ export async function getStaticPaths() {
 }
 const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
+// Служебные строки шаблона — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key: string) => stroka(lang.code, key);
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 const dated = isDated(m.slug);
@@ -32,7 +36,7 @@ const beyond = (k: string) => beyondYear(k, dated);
 const yearDays = days.filter((d) => !beyond(d.key));
 const extra = days.filter((d) => beyond(d.key));
 const cal: Record<string, unknown> = {};
-for (const d of yearDays) cal[d.key] = { t: d.title, y: d.year, d: d.hook ?? '', href: href(d.key), link: 'Открыть экспонат дня →' };
+for (const d of yearDays) cal[d.key] = { t: d.title, y: d.year, d: d.hook ?? '', href: href(d.key), link: `${s('otkrytDen')} ${strelkaVpered(lang.dir)}` };
 const img = days.flatMap((d) => d.images).find((i) => !i.generated);
 // Картинка пересылки без обложки музея — первая настоящая растровая картинка дней (Base.astro, ogFallback).
 const ogFallback = days.flatMap((d) => d.images).find((i) => !i.generated && /\.(?:jpe?g|png|webp|gif)$/i.test(i.src))?.src;
@@ -54,5 +58,5 @@ const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...da
   <Council />
   <KudaDalshe />
   <Support museum={m.title_ru} />
-  <a slot="footer" href={base}>Выйти в город-музей «Русская цивилизация» →</a>
+  <a slot="footer" href={base}>{`${s('vyytiVGorod')} ${strelkaVpered(lang.dir)}`}</a>
 </Base>
