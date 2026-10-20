@@ -2,6 +2,7 @@
 // страница дня ставит заявку сюда при сборке, интеграция og-den рисует PNG 1200×630 после сборки
 // (src/integrations/og-den.mjs). Адрес карточки — один на обе стороны: og/den/<музей>/<ключ>.png.
 import fs from 'node:fs';
+import sharp from 'sharp';
 const q = (globalThis.__rcOgDen ??= new Map());
 export const ogDenPath = (museum, key) => `og/den/${museum}/${key}.png`;
 export function queueOgDen(card) {
@@ -24,4 +25,17 @@ export function ogRaster(src) {
     if (fs.existsSync(`public/${decodeURIComponent(alt.replace(/^\/(?:rc-site\/)?/, ''))}`)) return alt + tail;
   }
   return undefined;
+}
+
+// Мелкая картинка пересылки (20.10, Б9): Telegram и ВК кадр меньше 600×315 показывают крошечной миниатюрой
+// или не показывают. Размер — по файлу в public/ (sharp читает только заголовок); файла нет — false,
+// остаток ловит проход og-den после сборки (запасная картинка музея или сайта, src/integrations/og-den.mjs).
+export const OG_MIN_W = 600, OG_MIN_H = 315;
+const dimsCache = new Map();
+export async function ogSmall(src) {
+  if (!src || /^https?:/i.test(src)) return false;
+  const file = `public/${decodeURIComponent(src.split(/[?#]/)[0].replace(/^\/(?:rc-site\/)?/, ''))}`;
+  if (!dimsCache.has(file)) dimsCache.set(file, fs.existsSync(file) ? sharp(file).metadata().then((m) => [m.width, m.height], () => null) : Promise.resolve(null));
+  const d = await dimsCache.get(file);
+  return !!d && (d[0] < OG_MIN_W || d[1] < OG_MIN_H);
 }
