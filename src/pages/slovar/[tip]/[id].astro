@@ -1,0 +1,39 @@
+---
+// Запись словаря (Р37): все дни всех музеев с этой связью — дата, название дня, музей полным title_ru, ссылка.
+import Base from '../../../layouts/Base.astro';
+import InlineCss from '../../../components/InlineCss.astro';
+import { getCollection } from 'astro:content';
+import { TIPY, zapisi } from '../../../lib/slovar.mjs';
+import { stroka } from '../../../lib/yazyki.mjs';
+import fs from 'node:fs';
+export async function getStaticPaths() {
+  return zapisi.map((z) => ({ params: { tip: z.tip, id: z.slug }, props: { z } }));
+}
+const { z } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const museums = await getCollection('museums');
+const mesyacyR = stroka('ru', 'mesyacyR');
+const dated = (slug: string) => JSON.parse(fs.readFileSync(`src/data/calendar-meta-${slug}.json`, 'utf8')).dated;
+// Порядок — по году дня (без года — в конце), затем по музею и дате.
+const god = (y: unknown) => { const m = /\d{3,4}/.exec(String(y ?? '')); return m ? +m[0] : Infinity; };
+const dni = (await getCollection('days')).filter((d) => d.data.slovar?.includes(z.id)).map((d) => {
+  const m = museums.find((x) => x.id === d.data.museum)!.data;
+  const [mm, dd] = d.data.key.split('-').map(Number);
+  return { title: d.data.title, year: d.data.year, museum: m.title_ru, slug: m.slug, key: d.data.key,
+    when: dated(m.slug) ? `${dd} ${mesyacyR[mm - 1]}` : undefined, href: `${base}muzei/${m.slug}/den/${d.data.key}/` };
+}).sort((a, b) => god(a.year) - god(b.year) || a.slug.localeCompare(b.slug) || a.key.localeCompare(b.key));
+const razdel = TIPY.find((t) => t.tip === z.tip)!.nazvanie;
+---
+<Base title={`${z.nazvanie} — словарь · Русская цивилизация`} description={`${z.kratko} Дни музеев «Русской цивилизации», связанные с записью «${z.nazvanie}».`} schema="page"
+  crumbs={[{ href: `${base}slovar/`, label: 'Словарь' }, { href: `${base}slovar/#${z.tip}`, label: razdel }, { label: z.nazvanie }]}>
+  <Fragment slot="head"><InlineCss file="rc-slovar.css" /></Fragment>
+  <header slot="header"><h1>{z.nazvanie}</h1><p>{z.kratko}</p></header>
+  <div class="slovar">
+    <h2>Дни музеев</h2>
+    <ul class="slovar-dni">
+      {dni.map((d) => (
+        <li><a href={d.href}>{d.title}</a>
+          <span class="slovar-muzey">{[d.when, d.year, d.museum].filter(Boolean).join(' · ')}</span></li>))}
+    </ul>
+  </div>
+</Base>

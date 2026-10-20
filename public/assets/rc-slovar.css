@@ -1,0 +1,15 @@
+/* Словарь связей (Р37): строка связей на странице дня и страницы /slovar/. Инлайном через InlineCss. */
+.slovar-stroka{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 10px;margin:22px 0 4px;font-family:'Inter',sans-serif;font-size:14px}
+.slovar-stroka .slovar-lbl{opacity:.7;letter-spacing:.5px}
+.slovar-stroka a{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border:1px solid rgba(201,168,76,.45);border-radius:16px;color:inherit;text-decoration:none}
+.slovar-stroka a:hover,.slovar-stroka a:focus-visible{background:rgba(201,168,76,.15)}
+.slovar{max-width:860px;margin:0 auto;padding:0 16px 32px}
+.slovar h2{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold,#c9a84c);font-weight:normal;margin:26px 0 10px}
+.slovar .slovar-lead{font-size:var(--fs-body,17px);margin-bottom:14px}
+.slovar ul{list-style:none;padding:0;margin:0}
+.slovar-razdel{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px 18px}
+.slovar-razdel li a{color:var(--gold-l,#e2c675)}
+.slovar-razdel .slovar-n{opacity:.6;font-size:13px}
+.slovar-dni li{padding:10px 0;border-bottom:1px solid rgba(201,168,76,.18)}
+.slovar-dni a{color:var(--gold-l,#e2c675);font-size:var(--fs-body,17px)}
+.slovar-dni .slovar-muzey{display:block;font-family:'Inter',sans-serif;font-size:13.5px;opacity:.75;margin-top:2px}

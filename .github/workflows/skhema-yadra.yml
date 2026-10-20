@@ -2,6 +2,7 @@
 # (src/content/days/<музей>/ММ-ДД.json — поля, правила хука, картинки) заморожена. Заявка, которая меняет
 # файл схемы без метки skhema:da-sergeya, красная. Метка = слово Сергея. Отдельный файл, а не задание
 # в proverka.yml: замку нужны события labeled/unlabeled, а тяжёлая сборка на каждую метку не нужна.
+# Исключение Р37 (Сергей 20.10): правка одного поля slovar проходит без метки — см. шаг ниже.
 # Файлы схемы — список SKHEMA ниже (он же — шапкой в src/content.config.ts). Откат — удалить этот файл.
 name: skhema-yadra
 on:
@@ -29,5 +30,15 @@ jobs:
           if [ -z "$zadeto" ]; then echo "схема ядра не задета"; exit 0; fi
           echo "задеты файлы схемы: $zadeto" | tee -a "$GITHUB_STEP_SUMMARY"
           if [ "$DA_SERGEYA" = "true" ]; then echo "метка skhema:da-sergeya есть — слово Сергея, пропускаю" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; fi
+          # Р37, Сергей 20.10: «одно поле-ссылка на словарь в записи дня … снимает заморозку Р30 только для этого поля».
+          # Без метки пропускается только правка поля slovar: файл схемы изменён на месте (не переименован, не удалён),
+          # и каждая добавленная или убранная строка — про slovar. Любая другая строка — красно, как раньше.
+          gh api "repos/$REPO/pulls/$PR/files" --paginate --jq '.[] | select(.filename as $f | env.SKHEMA | split("\n") | index($f)) | "\(.status)\t\(.patch // "")"' > /tmp/skhema.patch
+          ne_tolko_slovar=$(grep -vP '^modified\t' /tmp/skhema.patch | grep -P '^(added|removed|renamed|copied|changed)\t' || true)
+          chuzhie=$(sed 's/^[a-z]*\t//' /tmp/skhema.patch | grep -E '^[+-]' | grep -v 'slovar' || true)
+          if [ -z "$ne_tolko_slovar" ] && [ -z "$chuzhie" ] && grep -q 'slovar' /tmp/skhema.patch; then
+            echo "задето только поле slovar (Р37, Сергей 20.10) — пропускаю" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0
+          fi
+          [ -n "$chuzhie" ] && printf 'строки схемы не про slovar:\n%s\n' "$chuzhie" | tee -a "$GITHUB_STEP_SUMMARY"
           echo "::error::схема ядра заморожена 19.10.2026 (Сергей) — менять только по слову Сергея, метка skhema:da-sergeya"
           exit 1

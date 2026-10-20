@@ -32,6 +32,7 @@ const museums = defineCollection({
 // src/data/passport-waivers.json («музей» на весь музей или «музей/ключ»: «слово Сергея и дата»).
 // 16.10 Сергей: «переноси как есть, дальше будем менять, улучшать» — переписанный день строку снимает.
 import waivers from './data/passport-waivers.json';
+import slovar from './data/slovar.json'; // slovar — словарь связей дня (Р37, Сергей 20.10)
 
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
 // Инициалы («А. К. Толстой») — не конец предложения: точка после одиночной заглавной буквы не считается.
@@ -122,6 +123,10 @@ const days = defineCollection({
     more_title: z.string().optional(),
     doc: doc.optional(),
     body: z.array(blok).min(1).optional(),
+    // slovar — связи дня со словарём src/data/slovar.json (Р37, Сергей 20.10: одно поле-ссылка, снимает заморозку только для него):
+    // slovar — «tip:id», tip — lyudi | mesto | narod | tema; id нет в словаре — сборка красная (страницы /slovar/)
+    slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
+      .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
   }).superRefine((d, ctx) => {
     if (!!d.body !== !!d.doc)
       ctx.addIssue({ code: 'custom', path: ['body'], message: 'анкета страницы — body и doc вместе' });
