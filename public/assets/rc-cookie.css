@@ -10,3 +10,12 @@
 .rc-cookie .da{background:var(--gold,#c8a24a);color:#111;border:0}
 .rc-cookie .net{background:transparent;color:var(--txt,#e8e2d4);border:1px solid var(--line,rgba(255,255,255,.3))}
 .rc-cookie button:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
+/* Пока плашка видна, под ней место: последний экран страницы (подвал, ссылка на политику) не уходит под плашку. */
+html.rc-cookie-on body{padding-bottom:calc(var(--rc-cookie-h,0px) + 24px)}
+/* Телефон: плашка компактнее (была ~¼ экрана на 390px), кнопки в ряд на всю ширину. */
+@media (max-width:480px){
+  .rc-cookie{left:8px;right:8px;bottom:8px;padding:12px 14px;font-size:14px;line-height:1.4}
+  .rc-cookie p{margin-bottom:8px}
+  .rc-cookie .rc-cookie-b{flex-wrap:nowrap;gap:8px}
+  .rc-cookie button{flex:1 1 0;padding:0 12px}
+}
