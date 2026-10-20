@@ -102,8 +102,11 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
   // «Поделиться» даёт блок поддержки (data-support-slot) — одна строка на страницу, glazami п.16;
   // поддержка выключена (Р31) — строку «Поделиться» ставит museum-chrome.js
   shareRow: !podderzhka,
-  random: keys.filter((k: string) => k !== d.key).map((k: string) => `${dayUrl(k)}index.html`),
-})};`;
+})};` +
+// Список «Случайное» — ключами дат, адреса собирает эта же строка: 364 полных адреса в каждой из ~4300 страниц
+// весили 69 МБ сборки (задача T, Р49, 20.10); движок получает тот же массив random, что и раньше.
+`window.MUSEUM_CHROME.random=${JSON.stringify(keys.filter((k: string) => k !== d.key).join(' '))}.split(' ').filter(Boolean)` +
+`.map(function(k){return ${JSON.stringify(`${museumUrl}den/`)}+k+'/index.html'});`;
 // Шрифты — только семейства темы и своего стиля музея, вписанные в <head> (вместо всего fonts.css, замер 18.10).
 const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`public/muzei/${m.slug}`).find((f: string) => f.endsWith('-style.css')) : undefined;
 // + Playfair Display: им museum-support.js набирает блок «Поддержать» на гротескных днях (Inter — в museum.css);
