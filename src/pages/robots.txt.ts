@@ -1,4 +1,5 @@
-// robots.txt для поисковиков: всё открыто, адрес карты сайта (@astrojs/sitemap). Адрес берётся из site/base.
+// robots.txt для поисковиков: всё открыто, адрес индекса карт сайта (волны — src/data/karta-sayta.json, Е6). Адрес — из site/base.
+// Служебные страницы не закрываются здесь: им нужен noindex на странице, а Disallow спрятал бы его от поисковика.
 // Превью-сборка (PUBLIC_NOINDEX=1, .github/workflows/deploy.yml, задача build) — всё закрыто; по умолчанию открыто.
 import type { APIRoute } from 'astro';
 const noindex = import.meta.env.PUBLIC_NOINDEX === '1';

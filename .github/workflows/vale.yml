@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      # Вся история git: сборка берёт журнал исправлений дня из git log и на мелком клоне падает (как в proverka).
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22

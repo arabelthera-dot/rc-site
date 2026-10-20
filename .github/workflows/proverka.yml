@@ -29,16 +29,40 @@ jobs:
         continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO != '1' }}
         timeout-minutes: 1
         run: node scripts/segodnya-msk.test.mjs && node scripts/segodnya-msk.mjs
+      # Пост 9:00 в каналы (Е8, Р47, 20.10.2026): заведомый брак (имя из реестра Минюста, второе предложение в хуке,
+      # обрезанное имя музея, битая ссылка, ссылка не на сайт, день 16+, картинка не с сайта) отклонён, нормальный пост
+      # проходит — теми же функциями, что у сборки (src/lib/proverka-posta.mjs). Без сети и без отправки, секунды.
+      - name: kanaly — пробы проверки поста
+        timeout-minutes: 2
+        run: node scripts/kanaly/proverka.test.mjs
+      # Г20: проверочная сборка включает арабскую пробу /ar/ (RC_PROBA_RTL=1) — её ссылки, разметка и вид проверяются
+      # в каждой заявке. На живой сайт проба не попадает: deploy.yml собирает без этой переменной.
       - run: npm run build
         env:
           RC_POISK: ${{ vars.RC_POISK }}
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+          RC_PROBA_RTL: '1'
+      # Г20: страница-проба с её стилями — артефактом заявки (≈5 МБ, 3 дня), чтобы смотреть письмо справа налево
+      # глазами без полной локальной сборки: gh run download <run> -n proba-rtl.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: proba-rtl
+          path: |
+            dist/ar
+            dist/assets
+            dist/_astro
+          retention-days: 3
       # «Поддержать проект» выключен до работающего приёма денег (Р31, 20.10.2026): в сборке не должно быть
       # ни текста «Поддержать проект», ни движка museum-support.js. Включение — переменная PUBLIC_PODDERZHKA=1.
       - name: podderzhka — блок поддержки выключен
         env:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
         run: node scripts/podderzhka.test.mjs && node scripts/podderzhka.mjs dist
+      # Внешние хосты (Е4, Р38, 20.10.2026): всё, что браузер посетителя грузит сам (скрипты, стили, шрифты,
+      # картинки, iframe, fetch), — со своего домена, Яндекса, VK Видео или Rutube. Новый чужой хост — заявка
+      # красная, список в отчёте. Строгая сразу (решение Сергея Р49); откат — удалить этот шаг.
+      - name: vneshnie-hosty — ни одного запроса за рубеж
+        run: node scripts/vneshnie-hosty.mjs --dist dist
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@v2
@@ -60,10 +84,12 @@ jobs:
       - name: ves — вес сборки
         continue-on-error: ${{ vars.VES_STROGO != '1' }}
         run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12
-      # Размер картинки пересылки (Б9, 20.10.2026): og:image меньше 600×315 Telegram/ВК показывают крошкой —
-      # сборка ставит запасную (og-den), проверка считает остаток (должно быть 0). Строгость — OGRAZMER_STROGO=1.
-      - name: og-razmer — картинка пересылки не меньше 600×315
-        continue-on-error: ${{ vars.OGRAZMER_STROGO != '1' }}
+      # Карточка пересылки (Б9/Б10, 20.10.2026): og:image меньше 600×315 Telegram/ВК показывают крошкой —
+      # сборка ставит запасную (og-den), проверка считает остаток (должно быть 0); у каждой страницы дня
+      # есть og:image (файл в dist) и twitter:card. Строгая с 20.10.2026 (задача E: обход живого сайта —
+      # 4331 из 4332 дней в порядке, последний — временный 503). Выключатель — OGRAZMER_STROGO=0.
+      - name: og-razmer — карточка пересылки у каждого дня
+        continue-on-error: ${{ vars.OGRAZMER_STROGO == '0' }}
         run: node scripts/og-razmer.mjs dist
       # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
       # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).

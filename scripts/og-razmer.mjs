@@ -1,6 +1,8 @@
 // Размер картинки пересылки (Б9, 20.10.2026): Telegram и ВК картинку меньше 600×315 показывают крошечной
 // миниатюрой или не показывают совсем. Считает страницы dist, у которых og:image (файл своего сайта)
 // меньше 600×315, и страницы, где og:image:width/height не совпадают с настоящим размером файла.
+// Страница дня (/muzei/<музей>/den/ММ-ДД/) без og:image или без twitter:card summary_large_image — тоже ошибка
+// (задача E, 20.10.2026: у каждой страницы дня рабочая карточка пересылки).
 // Переадресации и noindex не считаются. Выход 1, если есть хоть одна такая страница.
 // Запуск: node scripts/og-razmer.mjs [dist]   (npm run og-razmer)
 import fs from 'node:fs';
@@ -21,11 +23,14 @@ async function dims(file) {
   if (!size.has(file)) size.set(file, fs.existsSync(file) ? sharp(file).metadata().then((m) => [m.width, m.height], () => null) : Promise.resolve(null));
   return size.get(file);
 }
-let total = 0, foreign = 0; const small = [], wrong = [], missing = [];
+let total = 0, foreign = 0; const small = [], wrong = [], missing = [], noOg = [];
 for (const f of files) {
   const h = fs.readFileSync(f, 'utf8');
   if (/http-equiv=["']refresh/i.test(h) || /name=["']robots["']\s+content=["'][^"']*noindex/i.test(h)) continue;
   const og = meta(h, 'og:image');
+  const rel0 = path.relative(DIST, f);
+  if (/(^|\/)den\/\d\d-\d\d\/index\.html$/.test(rel0.split(path.sep).join('/'))
+    && (!og || !/^summary_large_image$/.test(meta(h, 'twitter:card') ?? ''))) noOg.push(`${rel0}: ${og ? 'нет twitter:card' : 'нет og:image'}`);
   if (!og) continue;
   total++;
   let u; try { u = new URL(og); } catch { continue; }
@@ -41,7 +46,8 @@ for (const f of files) {
   if ((mw && +mw !== w) || (mh && +mh !== hh)) wrong.push(`${rel}: в теге ${mw}×${mh}, файл ${w}×${hh}`);
 }
 console.log(`og-razmer: страниц с og:image ${total}, картинка меньше ${MIN_W}×${MIN_H} — ${small.length}, `
-  + `неверные og:image:width/height — ${wrong.length}, файла нет в dist — ${missing.length}, чужой адрес — ${foreign}`);
-for (const [name, list] of [['мелкие', small], ['размер в теге', wrong], ['нет файла', missing]])
+  + `неверные og:image:width/height — ${wrong.length}, файла нет в dist — ${missing.length}, чужой адрес — ${foreign}, `
+  + `день без карточки пересылки — ${noOg.length}`);
+for (const [name, list] of [['мелкие', small], ['размер в теге', wrong], ['нет файла', missing], ['день без карточки', noOg]])
   if (list.length) console.log(`${name}:\n  ${list.slice(0, 30).join('\n  ')}`);
-if (small.length || wrong.length || missing.length) process.exit(1);
+if (small.length || wrong.length || missing.length || noOg.length) process.exit(1);

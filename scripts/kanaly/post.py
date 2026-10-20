@@ -9,6 +9,12 @@
 Картинка — первая из images дня (jpg/png/webp, без text_on_image); у дня без такой — первая <img> большой
 страницы (локальный файл сайта). Карточки-превью og/ с надписью не берутся: день без картинки идёт только
 в «Сегодня также». WebP перед отправкой переводится в JPEG (Pillow) — VK его не принимает.
+Возраст (Р41, src/data/vozrast.json): день 16+ — тихий трагический день, в пост не идёт; на 12+ в строке даты знак.
+Каждый пропущенный музей — строкой в журнале, замена главного дня не бывает молчаливой.
+
+Проверка (Е8, Р47): перед отправкой пост проходит scripts/kanaly/proverka.mjs — те же функции, что у сборки
+(схема дня, title_ru полностью, реестры Минюста, возраст, картинка с основанием прав, ссылки отвечают 200).
+Брак — пост не уходит ни на одну площадку, строки брака — в журнал (::error::) и сводку, работа красная.
 
 Секреты (переменные окружения): TG_BOT_TOKEN, TG_CHANNEL, VK_TOKEN, VK_GROUP_ID. Нет секрета — площадка
 пропускается. Отметка «уже отправлено» — файл <state>/<площадка>/sent (в Actions его хранит кэш на дату);
@@ -16,6 +22,7 @@
 
   python scripts/kanaly/post.py --dry-run [--date ММ-ДД]   собрать и напечатать, ничего не отправлять
   python scripts/kanaly/post.py --state .kanaly             отправить на сегодня
+  python scripts/kanaly/post.py --json [--date ММ-ДД]       напечатать пост JSON без проверки (для проб)
 """
 import argparse
 import datetime as dt
@@ -24,6 +31,7 @@ import json
 import mimetypes
 import os
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -45,8 +53,11 @@ MONTHS = ['января', 'февраля', 'марта', 'апреля', 'ма�
 IMG_EXT = ('.jpg', '.jpeg', '.png', '.webp')
 
 
+LOG = sys.stdout  # --json: журнал в stderr, в stdout только JSON поста
+
+
 def log(msg):
-    print(msg, flush=True)
+    print(msg, file=LOG, flush=True)
 
 
 def site_base():
@@ -78,9 +89,16 @@ def first_image(slug, key, day):
     return None
 
 
-def collect(key):
-    """Музеи с хуком и большой страницей на день key — по номеру в каталоге."""
+def znak(slug, key, vozrast):
+    """Знак 436-ФЗ дня: день-исключение → музей → сайт (тот же порядок, что src/lib/vozrast.mjs znak)."""
+    return ((vozrast['dni'].get(slug) or {}).get(key) or {}).get('znak') or vozrast['muzei'].get(slug) or vozrast['sajt']
+
+
+def collect(key, skipped=None):
+    """Музеи с хуком и большой страницей на день key — по номеру в каталоге. 16+ — в skipped с причиной."""
     museums = json.loads((ROOT / 'src/data/museums.json').read_text(encoding='utf-8'))['museums']
+    vozrast = json.loads((ROOT / 'src/data/vozrast.json').read_text(encoding='utf-8'))
+    skipped = [] if skipped is None else skipped
     out = []
     for m in sorted(museums, key=lambda m: m['number']):
         card = DAYS / m['slug'] / f'{key}.json'
@@ -89,8 +107,12 @@ def collect(key):
         day = json.loads(card.read_text(encoding='utf-8'))
         if not (day.get('hook') or '').strip():
             continue
+        z = znak(m['slug'], key, vozrast)
+        if int(z.rstrip('+')) >= 16:
+            skipped.append(f"{m['title_ru']} — день {z}, тихий трагический день, в пост не идёт")
+            continue
         out.append({'slug': m['slug'], 'number': m['number'], 'title': m['title_ru'], 'hook': day['hook'].strip(),
-                    'image': first_image(m['slug'], key, day)})
+                    'image': first_image(m['slug'], key, day), 'znak': z})
     return out
 
 
@@ -98,7 +120,10 @@ def build(date):
     key = date.strftime('%m-%d')
     base = site_base()
     url = lambda m: f"{base}muzei/{m['slug']}/den/{key}/"
-    found = collect(key)
+    skipped = []
+    found = collect(key, skipped)
+    for s in skipped:
+        log(f'Пропуск: {s}.')
     if not found:
         return None, key
     # Главный — по кругу: шаг — номер дня в году; у кого нет картинки, главным не идёт.
@@ -107,8 +132,12 @@ def build(date):
     main = next((m for m in ring if m['image']), None)
     if not main:
         return None, key
+    for m in ring[:ring.index(main)]:
+        log(f"Пропуск главным: {m['title']} — нет картинки без надписи, идёт в «Сегодня также».")
     also = [m for m in ring if m is not main][:ALSO_MAX]
     when = f'{date.day} {MONTHS[date.month - 1]}'
+    if int(main['znak'].rstrip('+')) >= 12:
+        when += f" · {main['znak']}"
 
     def tg(also):
         e = html.escape
@@ -136,6 +165,36 @@ def build(date):
 
 
 # --- отправка -------------------------------------------------------------------------------------------------
+
+def check(post, offline=False):
+    """Проверка поста (scripts/kanaly/proverka.mjs) — те же функции, что у сборки. (код, строки вывода)."""
+    cmd = ['node', 'scripts/kanaly/proverka.mjs'] + (['--bez-seti'] if offline else [])
+    try:
+        r = subprocess.run(cmd, cwd=ROOT, input=json.dumps(as_json(post), ensure_ascii=False), capture_output=True,
+                           text=True, timeout=300)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return 2, [f'брак: проверка поста не выполнена — {e}']
+    lines = [s for s in (r.stdout + r.stderr).splitlines() if s.strip()]
+    return r.returncode, lines or [f'брак: проверка поста молча вернула код {r.returncode}']
+
+
+def as_json(post):
+    p = dict(post)
+    p['image'] = str(post['image'].relative_to(ROOT))
+    p['main'] = {k: v for k, v in post['main'].items() if k != 'image'}
+    p['also'] = [{k: v for k, v in m.items() if k != 'image'} for m in post['also']]
+    return p
+
+
+def alarm(lines):
+    """Брак — в журнал строкой ::error:: (тревога Actions) и в сводку работы."""
+    for s in lines:
+        log(f'::error::{s}' if s.startswith('брак') else s)
+    summary = os.environ.get('GITHUB_STEP_SUMMARY')
+    if summary:
+        with open(summary, 'a', encoding='utf-8') as f:
+            f.write('### Пост дня не отправлен — брак\n\n' + ''.join(f'- {s}\n' for s in lines) + '\n')
+
 
 def photo_bytes(path):
     """Файл картинки для отправки. WebP VK не принимает — переводится в JPEG (Pillow)."""
@@ -210,10 +269,18 @@ def main():
     ap.add_argument('--dry-run', action='store_true', help='собрать пост и напечатать, ничего не отправлять')
     ap.add_argument('--date', help='ММ-ДД вместо сегодняшней даты (год — текущий)')
     ap.add_argument('--state', default='.kanaly', help='папка отметок «уже отправлено»')
+    ap.add_argument('--json', action='store_true', help='напечатать пост JSON без проверки и отправки (пробы)')
+    ap.add_argument('--bez-seti', action='store_true', help='в --dry-run не открывать ссылки')
     a = ap.parse_args()
 
     today = dt.datetime.now(MSK).date()
     date = dt.date(today.year, *map(int, a.date.split('-'))) if a.date else today
+    if a.json:
+        global LOG
+        LOG = sys.stderr
+        post, key = build(date)
+        print(json.dumps(as_json(post) if post else None, ensure_ascii=False))
+        return 0
     post, key = build(date)
     log(f'Каналы: день {key} ({date.isoformat()}), адрес сайта {site_base()}')
     if not post:
@@ -224,11 +291,27 @@ def main():
         f"({post['image'].stat().st_size // 1024} КБ)")
     log(f"Сегодня также: {', '.join(m['title'] for m in post['also']) or '—'}")
     log('\n--- Telegram (caption, HTML) ---\n' + post['tg'] + '\n--- VK (message) ---\n' + post['vk'] + '\n---')
-    if a.dry_run:
-        log('Пробный запуск (--dry-run): ничего не отправлено.')
-        return 0
 
     env = os.environ.get
+    platforms = [n for n, keys in (('Telegram', ('TG_BOT_TOKEN', 'TG_CHANNEL')), ('VK', ('VK_TOKEN', 'VK_GROUP_ID')))
+                 if all(env(k) for k in keys)]
+    code, lines = check(post, offline=a.dry_run and a.bez_seti)
+    if a.dry_run:
+        (alarm if code else lambda ls: [log(s) for s in ls])(lines)
+        log('Пробный запуск (--dry-run): ничего не отправлено.')
+        return 1 if code else 0
+    if not platforms:
+        # Каналов ещё нет (М33): проверка — только в журнал, работа зелёная, отправлять некуда.
+        for s in lines:
+            log(s)
+        log('Площадок нет (нет секретов TG_*/VK_*): ничего не отправлено, работа зелёная.')
+        return 0
+    if code:
+        alarm(lines + [f'брак: пост {key} не отправлен ни на одну площадку; день-замена не подставляется'])
+        return 1
+    for s in lines:
+        log(s)
+
     targets = [
         ('tg', 'Telegram', ('TG_BOT_TOKEN', 'TG_CHANNEL'), lambda: send_tg(post, env('TG_BOT_TOKEN'), env('TG_CHANNEL'))),
         ('vk', 'VK', ('VK_TOKEN', 'VK_GROUP_ID'),

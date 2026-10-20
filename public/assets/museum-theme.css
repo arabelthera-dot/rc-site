@@ -372,7 +372,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none}
 [data-museum] .kd-card{position:relative;padding:16px 18px 16px 20px;border-radius:var(--radius,14px);
   background:var(--panel,rgba(255,255,255,.04));border:1px solid var(--line,rgba(0,0,0,.12));
   transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-[data-museum] .kd-card::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;
+[data-museum] .kd-card::before{content:"";position:absolute;inset-inline-start:0;top:14px;bottom:14px;width:3px;
   border-radius:3px;background:var(--acc,#c9a84c);opacity:.35;transition:opacity .18s ease}
 [data-museum] .kd-card.main::before{opacity:1}
 [data-museum] .kd-card:hover{transform:translateY(-2px);border-color:var(--acc,#c9a84c);
@@ -386,6 +386,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none}
 [data-museum] .kd-card a:hover{color:var(--acc,#c9a84c);border-bottom-color:var(--acc,#c9a84c)}
 [data-museum] .kd-card a .kd-arr{display:inline-block;transition:transform .18s ease}
 [data-museum] .kd-card:hover a .kd-arr{transform:translateX(4px)}
+[dir=rtl][data-museum] .kd-card:hover a .kd-arr{transform:translateX(-4px)}
 [data-museum] .kd-card p{margin:8px 0 0;font-family:var(--font-b,Georgia,serif);font-size:14px;
   line-height:1.55;color:var(--muted,#7d7468)}
 [data-museum] footer .slog{font-family:var(--font-h,Georgia,serif);font-size:15px;

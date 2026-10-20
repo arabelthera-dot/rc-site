@@ -817,7 +817,7 @@ if(themeBtn)themeBtn.onclick=function(){
 </script>
 
 <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import * as THREE from '../../assets/vendor/three.module.min.js';
 const cv=document.getElementById('hero3d');
 if(cv){ try{
   const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});

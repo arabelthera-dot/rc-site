@@ -36,8 +36,12 @@ export const norm = (s) => String(s || '').toLowerCase().replace(/ё/g, 'е').re
 
 // Слово с окончанием: «Елизаров» ловит «Елизарова», «Елизаровым»; «Раиса» — «Раисы», «Раисой».
 const stem = (w) => (w.length > 4 ? w.replace(/[аяоеыиуюйь]$/, '') : w);
+// Беглая гласная: «Павел» — «Павла», «Лев» — «Льва»; вторая основа без «е» перед последней согласной
+// (в односложном — «ь»), иначе родительный и творительный падежи имени проходили мимо сверки.
+const beglaya = (w) => { const m = /^(.*[^аеиоуыэюя])е([вклмнр])$/.exec(w); return m ? m[1] + (m[1].length === 1 ? 'ь' : '') + m[2] : null; };
+const osnovy = (w) => [stem(w), beglaya(w)].filter(Boolean);
 // Слова варианта уже нормализованы (только буквы и цифры) — экранировать нечего.
-const wordRe = (w, flex) => (flex && w.length > 1 ? `${stem(w)}\\p{L}{0,3}` : w);
+const wordRe = (w, flex) => (flex && w.length > 1 ? `(?:${osnovy(w).join('|')})\\p{L}{0,3}` : w);
 
 /** Сверщик одной записи реестра: вариант → RegExp по нормализованному тексту (или по сырому — для кавычек). */
 function matcher(v) {
@@ -57,7 +61,7 @@ export function snimki(root = '.') {
 /** Тексты для сверки: { gde, syroy, norm } — по полям карточек и полным страницам. */
 export function teksty(root = '.') {
   const out = [];
-  const add = (gde, raw) => { if (raw) out.push({ gde, syroy: raw, norm: norm(raw.replace(/<[^>]+>/g, ' ')) }); };
+  const add = (gde, raw) => { if (raw) out.push(tekst(gde, raw)); };
   for (const museum of ls(path.join(root, DAYS))) {
     for (const f of ls(path.join(root, DAYS, museum)).filter((x) => x.endsWith('.json'))) {
       const d = readJson(path.join(root, DAYS, museum, f), {});
@@ -84,11 +88,18 @@ export function teksty(root = '.') {
 
 const silnoe = (v, s) => v.adres || (s.vid !== 'materialy' && v.tekst.split(' ').filter((w) => w.length > 1).length >= 3);
 
+/** Текст для сверки: { gde, syroy, norm }. gde начинается с «<музей>/<ключ>» — по нему снимаются исключения. */
+export const tekst = (gde, raw) => ({ gde, syroy: raw, norm: norm(String(raw).replace(/<[^>]+>/g, ' ')) });
+
 /** Е1: совпадения с реестрами. { snimkov, zapisey, sovpadeniya, vozmozhnye: [{ gde, reestr, imya, variant }], starye } */
-export function sverkaReestrov(root = '.', { segodnya = new Date() } = {}) {
+export function sverkaReestrov(root = '.', opts = {}) {
+  return sverkaTekstov(teksty(root), root, opts);
+}
+
+/** Е1 по любым текстам (сборка — все карточки и страницы, пост в каналы — его хуки): тот же разбор и те же исключения. */
+export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
   const isk = readJson(path.join(root, REESTRY, 'isklyucheniya.json'), {});
   const sn = snimki(root);
-  const tx = teksty(root);
   const sovpadeniya = [];
   const vozmozhnye = [];
   const starye = [];
@@ -98,7 +109,7 @@ export function sverkaReestrov(root = '.', { segodnya = new Date() } = {}) {
   for (const t of tx) { t.slova = [...new Set(t.norm.split(' '))].sort(); t.niz = t.syroy.toLowerCase(); }
   const slovar = [...new Set(tx.flatMap((t) => t.slova))].sort();
   const estPrefiks = (p) => prefiks(slovar, p);
-  const vTekste = (t, w, flex) => prefiks(t.slova, flex ? stem(w) : w) && (flex || t.slova.includes(w));
+  const vTekste = (t, w, flex) => (flex ? osnovy(w).some((o) => prefiks(t.slova, o)) : prefiks(t.slova, w) && t.slova.includes(w));
   for (const s of sn) {
     const dney = s.data_snimka ? Math.floor((segodnya - new Date(s.data_snimka)) / 864e5) : Infinity;
     if (dney > 14) starye.push(`${s.fayl}: снимок ${s.data_snimka || 'без даты'} — старше 14 дней`);
@@ -107,7 +118,7 @@ export function sverkaReestrov(root = '.', { segodnya = new Date() } = {}) {
       for (const v of z.varianty || []) {
         const words = v.adres ? [] : v.tekst.split(' ');
         const flex = (w) => v.slovoforma && w.length > 1;
-        if (!words.every((w) => (flex(w) ? estPrefiks(stem(w)) : estPrefiks(w)))) continue;
+        if (!words.every((w) => (flex(w) ? osnovy(w).some(estPrefiks) : estPrefiks(w)))) continue;
         const { re, syroy } = matcher(v);
         for (const t of tx) {
           if (v.adres ? !t.niz.includes(v.tekst) : !words.every((w) => vTekste(t, w, flex(w)))) continue;
@@ -119,6 +130,24 @@ export function sverkaReestrov(root = '.', { segodnya = new Date() } = {}) {
     }
   }
   return { snimkov: sn.length, zapisey, sovpadeniya, vozmozhnye, starye };
+}
+
+/**
+ * Проба Е1 («имя из реестра роняет сборку»): из каждого снимка берётся первая запись с сильным вариантом
+ * и вставляется в пробный текст; сверка обязана её поймать. Возвращает список сбоев —
+ * снимков, где сильная запись есть, а сверка её не нашла, или где сильных записей нет вовсе.
+ */
+export function probaReestrov(root = '.') {
+  const sboi = [];
+  for (const s of snimki(root)) {
+    const z = (s.zapisi || []).find((x) => (x.varianty || []).some((v) => silnoe(v, s)));
+    if (!z) { if (s.vid !== 'materialy') sboi.push(`${s.fayl}: нет ни одной записи, которую сверка считает сильной`); continue; }
+    const v = z.varianty.find((x) => silnoe(x, s));
+    const r = sverkaTekstov([tekst(`проба ${s.fayl}`, `Пробный текст сборки: упомянуто ${v.kavychki ? `«${v.tekst}»` : v.tekst}.`)], root,
+      { segodnya: new Date(s.data_snimka || Date.now()) });
+    if (!r.sovpadeniya.some((x) => x.imya === z.imya)) sboi.push(`${s.fayl}: «${z.imya}» в пробном тексте не пойман`);
+  }
+  return sboi;
 }
 
 // --- Е2 ---------------------------------------------------------------------------------------------
@@ -139,6 +168,27 @@ const godIz = (s) => [...String(s ?? '').matchAll(/(?<!\d)(1[0-9]\d\d|20\d\d)(?!
 /** Кадр XX века: год дня ≥ 1900 (первый год в поле year) или год ≥ 1900 в подписи. */
 export const vekXX = (godDnya, podpis) => (godIz(godDnya)[0] ?? 0) >= 1900 || godIz(podpis).some((g) => g >= 1900);
 
+export const vedomostOsnovaniy = (root = '.') => readJson(path.join(root, REESTRY, 'osnovaniya.json'), {});
+
+/**
+ * Е2 для одного кадра (сборка — все кадры, пост в каналы — его картинка). fr — кадр карточки (cardFrames: caption,
+ * credit, generated) или полной страницы (pageFrames: sign, alt, state). Не XX век — null; иначе
+ * { museum, key, src, podpis, gde, osnovanie, otkuda, ssylka } — osnovanie пусто, если основания нет.
+ */
+export function kadrXX(fr, gde, godDnya, vedomost) {
+  const karta = gde === 'карточка';
+  const podpis = karta ? fr.caption : fr.sign || fr.alt;
+  if (!vekXX(godDnya, podpis)) return null;
+  // Полная страница: подпись у кадра или таблица прав страницы (state rights — основание в списке прав страницы).
+  const gotovo = karta ? (fr.generated ? 'своя генерация проекта' : '') : fr.state === 'rights' ? 'в таблице прав страницы' : '';
+  const put = putKadra(fr.museum, fr.src);
+  // Строка ведомости засчитывается только с основанием и ссылкой на страницу файла.
+  const ved = vedomost[put]?.osnovanie && vedomost[put]?.ssylka ? vedomost[put] : null;
+  const iz = ved ? '' : gotovo || osnovanieIz(karta ? `${fr.credit} ${fr.caption}` : `${fr.sign} ${fr.alt} ${fr.data || ''}`);
+  return { museum: fr.museum, key: fr.key, src: fr.src, put, podpis: String(podpis || '').slice(0, 160), gde,
+    osnovanie: ved?.osnovanie || iz, otkuda: ved ? 'ведомость' : iz ? 'подпись' : '', ssylka: ved?.ssylka || '' };
+}
+
 /** Е2: кадры XX века и их основания. { vsego, bez: [...], kadry: [{ museum, key, src, podpis, osnovanie, otkuda, gde }] } */
 /** Путь кадра от public/: «../../muzei/x/a.jpg», «media/a.jpg» на странице музея x → «muzei/x/…». */
 export const putKadra = (museum, src) => {
@@ -147,23 +197,15 @@ export const putKadra = (museum, src) => {
 };
 
 export function kadryXX(root = '.') {
-  const vedomost = readJson(path.join(root, REESTRY, 'osnovaniya.json'), {});
+  const vedomost = vedomostOsnovaniy(root);
   const gody = {};
   for (const museum of ls(path.join(root, DAYS)))
     for (const f of ls(path.join(root, DAYS, museum)).filter((x) => x.endsWith('.json')))
       gody[`${museum}/${f.slice(0, -5)}`] = readJson(path.join(root, DAYS, museum, f), {}).year;
   const kadry = [];
-  const one = (fr, gde, podpis, txt, gotovo) => {
-    if (!vekXX(gody[`${fr.museum}/${fr.key}`], podpis)) return;
-    const put = putKadra(fr.museum, fr.src);
-    const ved = vedomost[put]?.osnovanie && vedomost[put]?.ssylka ? vedomost[put] : null;
-    const iz = ved ? '' : gotovo || osnovanieIz(txt);
-    kadry.push({ museum: fr.museum, key: fr.key, src: fr.src, put, podpis: String(podpis || '').slice(0, 160), gde,
-      osnovanie: ved?.osnovanie || iz, otkuda: ved ? 'ведомость' : iz ? 'подпись' : '', ssylka: ved?.ssylka || '' });
-  };
-  for (const fr of cardFrames(root)) one(fr, 'карточка', fr.caption, `${fr.credit} ${fr.caption}`, fr.generated ? 'своя генерация проекта' : '');
-  // Полная страница: подпись или data-license у кадра, либо таблица прав страницы (state rights — основание в списке прав).
-  for (const fr of fullFrames(root)) one(fr, 'полная страница', fr.sign || fr.alt, `${fr.sign} ${fr.alt} ${fr.data || ''}`, fr.state === 'rights' ? 'в таблице прав страницы' : '');
+  const add = (k) => { if (k) kadry.push(k); };
+  for (const fr of cardFrames(root)) add(kadrXX(fr, 'карточка', gody[`${fr.museum}/${fr.key}`], vedomost));
+  for (const fr of fullFrames(root)) add(kadrXX(fr, 'полная страница', gody[`${fr.museum}/${fr.key}`], vedomost));
   const bez = kadry.filter((k) => !k.osnovanie);
   return { vsego: kadry.length, bez, kadry };
 }

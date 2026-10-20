@@ -2,6 +2,7 @@
 // шаблоны (Base.astro, страница дня) и полные страницы дней (src/integrations/full-pages.mjs) берут отсюда.
 // Вид — public/assets/rc-podval.css.
 import { execFileSync } from 'node:child_process';
+import { stroka } from './yazyki.mjs';
 
 // Кто подписывает тексты сайта — Редакция (Р34): JSON-LD author/publisher, <meta name="author">.
 export const REDAKCIYA = 'Редакция «Русской цивилизации»';
@@ -11,11 +12,11 @@ export const LICENZIYA = 'https://creativecommons.org/licenses/by/4.0/deed.ru';
 export const redakciyaLd = (home) => ({ '@type': 'Organization', name: REDAKCIYA, url: home });
 
 // Строка подвала всех страниц: лицензия + ссылки «О проекте», «Как сделан музей» (у шаблонов они в .foot-links).
-export function licenziyaHtml(base, { links = false } = {}) {
-  return `<div class="rc-lic">Тексты и уроки — <a href="${LICENZIYA}" rel="license noopener" target="_blank">CC BY 4.0</a>: `
-    + `можно свободно использовать с указанием источника. Изображения — по лицензиям, указанным в подписях `
-    + `(<a href="${base}avtory-izobrazheniy/">авторы изображений</a>).`
-    + (links ? `<br><a href="${base}o-proekte/">О проекте</a> · <a href="${base}kak-sdelan-muzey/">Как сделан музей</a>` : '')
+export function licenziyaHtml(base, { links = false, code = 'ru' } = {}) {
+  const s = (k) => stroka(code, k); // строки — из словаря языка (Г20, src/data/stroki.json)
+  return `<div class="rc-lic">${s('licTeksty')} <a href="${LICENZIYA}" rel="license noopener" target="_blank">CC BY 4.0</a>`
+    + `${s('licMozhno')} (<a href="${base}avtory-izobrazheniy/">${s('licAvtory')}</a>).`
+    + (links ? `<br><a href="${base}o-proekte/">${s('podvalOProekte')}</a> · <a href="${base}kak-sdelan-muzey/">${s('podvalKakSdelan')}</a>` : '')
     + `</div>`;
 }
 
@@ -77,7 +78,7 @@ const DATA = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', y
 const den = (iso) => DATA.format(new Date(iso)).replace(/\s*г\.$/, '');
 const dIso = (iso) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Moscow' }).format(new Date(iso));
 
-/** Журнал дня: { provereno, proverenoIso, zapisi: [{ data, iso, chto }] } (новые сверху) или undefined. */
+/** Журнал дня: { provereno, proverenoIso, modified, published (первая запись карточки — дата выхода дня), zapisi: [{ data, iso, chto }] } (новые сверху) или undefined. */
 export function zhurnal(museum, key) {
   const raw = istoriya().get(`src/content/days/${museum}/${key}.json`);
   if (!raw?.length) return undefined;
@@ -87,7 +88,7 @@ export function zhurnal(museum, key) {
     // в один день одно и то же — одной строкой
     if (!zapisi.some((x) => x.iso === z.iso && x.chto === z.chto)) zapisi.push(z);
   }
-  return { provereno: zapisi[0].data, proverenoIso: zapisi[0].iso, modified: raw[0].date, zapisi };
+  return { provereno: zapisi[0].data, proverenoIso: zapisi[0].iso, modified: raw[0].date, published: raw.at(-1).date, zapisi };
 }
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

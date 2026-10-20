@@ -16,15 +16,18 @@ import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
+import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
+import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
 // («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
-// У произведений (есть headline или тип *Page/Article/CreativeWork) — license и, если нет, author; дата правки — из git.
+// У произведений (есть headline или тип *Page/Article/CreativeWork) — license и, если нет, author; даты выхода и правки — из git.
+// Д5 (20.10.2026): url страницы-произведения — её адрес на сайте (canonical), а не файл старого сайта day-….html.
 const WORK = /(?:Article|Page|CreativeWork|LearningResource|Course)$/;
-function ldRedakciya(html, red, modified) {
+function ldRedakciya(html, red, { modified, published, url } = {}) {
   const OUR_NAMES = new Set(['Русская цивилизация', ...Object.values(MUSEUMS)]);
   return html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (m, a, json, z) => {
     let data;
@@ -43,7 +46,8 @@ function ldRedakciya(html, red, modified) {
       if (!n || !(n.headline || t.some((x) => WORK.test(x)))) continue;
       n.author ??= red;
       n.license ??= LICENZIYA;
-      if (modified && /Article/.test(t.join())) n.dateModified ??= modified;
+      if (/Article/.test(t.join())) { if (modified) n.dateModified ??= modified; if (published) n.datePublished ??= published; }
+      if (url && typeof n.url === 'string' && /\.html?$/.test(n.url)) n.url = url;
     }
     return a + JSON.stringify(data).replace(/</g, '\\u003c') + z;
   });
@@ -51,10 +55,7 @@ function ldRedakciya(html, red, modified) {
 
 const SRC = 'src/data/full-pages';
 const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
-const MUSEUMS = Object.fromEntries(JSON.parse(fs.readFileSync('src/data/museums.json', 'utf8')).museums
-  .map((m) => [m.slug, m.title_ru]));
-const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-  .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(+n)).replace(/&amp;/g, '&');
+// Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
 // и на главную своего музея с подписью ровно title_ru (у главной музея — само название, без ссылки).
@@ -111,24 +112,7 @@ function checkNoGoogleFonts() {
 // Имя музея в шапке — ровно title_ru (AGENTS.md §6, 17.10): блок шапки (<header class="top">, .museum, .museum-label)
 // с обрезком своего title_ru (например, «Что изобрели русские первыми в мире» без «Музей») и в любом месте страницы
 // «Музей …», обрывающийся раньше полного title_ru любого музея, — сайт не собирается.
-const ALL_TITLES = Object.values(MUSEUMS);
-function checkMuseumName(html, museum) {
-  const bad = [];
-  const title = MUSEUMS[museum];
-  if (!title) return bad;
-  const norm = (x) => decode(x).replace(/\s+/g, ' ').trim();
-  const head = /<header class="top"[^>]*>([\s\S]*?)<\/header>/i.exec(html)?.[1] || '';
-  const blocks = [...head.matchAll(/<div class="b\d"[^>]*>([^<]*)<\/div>/g), ...head.matchAll(/<div class="museum"[^>]*>([^<]*)<\/div>/g),
-    ...html.matchAll(/<div class="museum-label"[^>]*>([^<]*)<\/div>/g)].map((m) => norm(m[1]));
-  const core = title.replace(/^.*?«(.*)»[^»]*$/, '$1');
-  for (const b of blocks) if (b && b !== title && (title.includes(b) && b.length > 8 || b === core)) bad.push(`шапка «${b}» вместо «${title}»`);
-  for (const m of decode(html).matchAll(/[Мм]узей[ \u00a0][^<>"'\n·|—,.:;(){}\[\]]{3,80}/g)) {
-    const s = m[0].replace(/\s+/g, ' ').trim();
-    const t = ALL_TITLES.find((x) => x !== s && s.length > 8 && x.toLowerCase().startsWith(s.toLowerCase()));
-    if (t && !ALL_TITLES.includes(s)) bad.push(`обрезанное имя «${s}» вместо «${t}»`);
-  }
-  return [...new Set(bad)];
-}
+// Проверка — checkMuseumName из src/lib/imya-muzeya.mjs (та же функция проверяет пост в каналы).
 
 const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/|#|\$|\{)/i; // схема, корень, якорь, шаблон
 // Наушники аудиогида — встроенный SVG цветом текста кнопки (вместо «🎧»: на ПК/Linux без эмодзи-шрифта — квадрат).
@@ -393,8 +377,41 @@ function absolute(url, dirUrl) {
   return new URL(u, `http://x${dirUrl}`).href.slice('http://x'.length);
 }
 
-// Тег старого файла данных календаря музея: <script src="[…/]calendar-<x>.js">; museum-calendar-*.js и nikitin/calendar.js не задевает.
-const OLD_KAL = /(<script\b[^>]*?\ssrc\s*=\s*)(["'])(?:[^"']*\/)?calendar-[\w-]+\.js(?:\?[^"']*)?\2/gi;
+// Тег старого файла данных календаря музея: <script src="[…/]calendar-<x>.js"> или «[…/]calendar.js» (nikitin/calendar.js —
+// копия января первопроходцев со старого сайта, А4 20.10); движки museum-calendar-*.js и kalendar-dney.<хеш>.js не задевает.
+const OLD_KAL = /(<script\b[^>]*?\ssrc\s*=\s*)(["'])(?:[^"']*\/)?calendar(?:-[\w-]+)?\.js(?:\?[^"']*)?\2/gi;
+
+// Д2 (план сайта, 20.10): у каждого кадра — автор/источник и лицензия. Разбор — src/lib/podpisi.mjs (тот же, что у
+// /avtory-izobrazheniy/ и npm run proverka-podpisey). В сборке — предупреждение со счётом; строгий режим
+// RC_PODPISI_STROGO=1 (выключен до починки кадров хозяевами страниц) — кадр без подписи или лицензии роняет сборку.
+function checkPodpisi() {
+  const cards = cardFrames(), pages = fullFrames();
+  const red = [...cards.filter((f) => !f.credit), ...pages.filter((f) => f.state === 'none')];
+  const yellow = [...cards.filter((f) => f.credit && !f.lic), ...pages.filter((f) => f.state === 'partial')];
+  if (!red.length && !yellow.length) return console.log(`podpisi: ${cards.length + pages.length} кадров — у всех подпись и лицензия`);
+  const msg = `podpisi: из ${cards.length + pages.length} кадров без подписи ${red.length}, без лицензии ${yellow.length} — список: npm run proverka-podpisey -- --spisok`;
+  if (process.env.RC_PODPISI_STROGO === '1') throw new Error(`${msg}\n${red.map((f) => `${f.museum}/${f.key} ${f.src}`).join('\n')}`);
+  console.warn(`⚠ ${msg}`);
+}
+
+// Замок на второй путь к календарю (план сайта А4, 20.10; как AI_Projects #2284): данные календаря — только из записей
+// src/content/days (src/lib/kalendar-dannye.mjs). Файл в public/, который сам задаёт window.MUSEUM_CALENDAR = {…},
+// — второй источник дат мимо src/: сайт не собирается.
+function checkNetStaryhKalendarey() {
+  const bad = [];
+  const walk = (d) => {
+    for (const e of fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }) : []) {
+      const f = path.join(d, e.name);
+      if (e.isDirectory()) { walk(f); continue; }
+      if (!/\.(?:js|html?)$/i.test(e.name)) continue;
+      const code = fs.readFileSync(f, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/(^|[^:'"`\\])\/\/.*$/gm, '$1');
+      if (/window\.MUSEUM_CALENDAR\s*=\s*\{/.test(code)) bad.push(f);
+    }
+  };
+  walk('public');
+  if (bad.length) throw new Error(`второй путь к календарю — данные дней мимо src/content/days (${bad.length}):\n${bad.join('\n')}`);
+}
 
 export default function fullPages() {
   let base = '/';
@@ -405,6 +422,8 @@ export default function fullPages() {
       'astro:config:done': ({ config }) => { base = config.base.replace(/\/?$/, '/'); site = config.site ?? ''; },
       'astro:build:done': async ({ dir }) => {
         const root = fileURLToPath(dir);
+        checkNetStaryhKalendarey();
+        checkPodpisi();
         if (!fs.existsSync(SRC)) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
         const bad = [];
         let n = 0;
@@ -413,7 +432,7 @@ export default function fullPages() {
         for (const museum of fs.readdirSync(SRC).sort()) {
           // Календарь страницы (museum-calendar-month.js) — из записей дней (шаг 4Б ядра, 19.10): один файл на музей
           // dist/muzei/<музей>/kalendar-dney.<хеш>.js вместо старого public/muzei/<музей>/calendar-<x>.js.
-          // Старые calendar-<x>.js удалены (19.10): нет записей, а тег остался — ошибка сборки. nikitin/calendar.js (путь Никитина) — не календарь музея.
+          // Старые calendar-<x>.js удалены (19.10), nikitin/calendar.js — 20.10 (А4): нет записей, а тег остался — ошибка сборки.
           const kal = failKalendarya(museum, base);
           let kalSrc = null;
           if (kal) kalSrc = `${base}muzei/${museum}/${kal.name}`;
@@ -562,7 +581,7 @@ export default function fullPages() {
             // Подпись «Редакция», лицензия CC BY 4.0 (Р34, Р35), «Проверено» и журнал исправлений (Е5) — как у шаблонов
             // (Base.astro, страница дня): журнал — перед подвалом страницы, строка лицензии — в конце подвала.
             const zh = staraya ? undefined : zhurnal(museum, key);
-            if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), zh?.modified);
+            if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), { modified: zh?.modified, published: zh?.published, url: new URL(self, site).href });
             html = html.replace(/<meta\s+name=["']author["'][^>]*>\s*/gi, '').replace(/<link\s+rel=["']license["'][^>]*>\s*/gi, '')
               .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<link rel="stylesheet" href="${base}assets/rc-podval.css" />\n</head>`);
             {

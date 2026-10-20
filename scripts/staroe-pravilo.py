@@ -158,7 +158,9 @@ def score_ok(s, path):
     высшее звание за треть дня. Страница с такими наградами обязана объявить реестр
     awards — тогда максимум считает движок, и расходиться становится не с чем.
     """
-    if 'scoreBox' not in s:
+    # Селектор #scoreBox во встроенном CSS (rc-vozrast.css прячет «Итог дня» на 12+/16+, #229) — не счёт на
+    # странице: без снятия <style> правило «срабатывало» на всех 4536 страницах сайта (20.10.2026).
+    if 'scoreBox' not in re.sub(r'<style\b[^>]*>.*?</style>', '', s, flags=re.S | re.I):
         return NA                           # счёта на странице нет — правило не про неё
     if not any('MUSEUM_SCORE' in src for src in engine_sources(s, path, 'museum-score.js')):
         return False                        # страница считает счёт сама — шкала не гарантирована

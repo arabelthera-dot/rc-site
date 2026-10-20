@@ -1,6 +1,7 @@
 # Каналы (вариант А, Сергей 18.10.2026): каждый день в 9:00 МСК — пост дня в Telegram-канал и сообщество VK.
 # Скрипт — scripts/kanaly/post.py, описание — docs/kanaly.md. Новое выключено: нет секрета — площадка
-# пропускается, работа зелёная. Откат — выключить этот workflow (Actions → kanaly → Disable workflow).
+# пропускается, работа зелёная. Перед отправкой пост проходит scripts/kanaly/proverka.mjs (Е8): брак — пост
+# не уходит, работа красная, причины — в журнале и сводке. Откат — выключить этот workflow (Actions → kanaly → Disable workflow).
 name: kanaly
 on:
   schedule:
@@ -26,6 +27,12 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      # Проверка поста (Е8) — на Node теми же модулями, что у сборки: схема дня грузится через Vite из node_modules.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

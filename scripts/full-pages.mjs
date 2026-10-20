@@ -10,6 +10,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 
+// Замок (план сайта А4, 20.10; как import-legacy и AI_Projects #2284): старый сайт — архив, правда — rc-site;
+// перенос оттуда — вторая дорога к календарю и дням (так пришёл nikitin/calendar.js). Разово — по заданию оркестратора.
+if (process.env.IMPORT_POSLE_PEREKLYUCHENIYA !== '1') {
+  console.error('full-pages: адрес переключён 17.10.2026, правда — карточки rc-site; перенос со старого сайта закрыт (AGENTS.md §2).');
+  process.exit(1);
+}
+
 const LEGACY = process.env.LEGACY || path.join(os.homedir(), 'rc-museum-preview');
 const DAYS = 'src/content/days';
 const OUT = 'src/data/full-pages';
