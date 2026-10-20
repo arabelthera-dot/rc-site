@@ -10,6 +10,7 @@ import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles } from '../lib/shrifty.mjs';
 import nastroyki from '../data/nastroyki.json';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
+import { ogRaster } from '../lib/og-den.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
 // src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
 import museumCss from '../styles/museum.css?url';
@@ -30,13 +31,14 @@ const headFiles = headFont ? fontFiles([headFont], ['700']) : [];
 const url = new URL(Astro.url.pathname, Astro.site).href;
 // Нет обложки музея — первая настоящая растровая картинка его дней (ogFallback, главная и календарь музея, 19.10):
 // иначе у 30 из 33 музеев пересылка главной и календаря шла общей og-default.jpg. SVG Telegram/ВК не показывают.
-const raster = (s?: string) => !!s && /\.(?:jpe?g|png|webp|gif)(?:[?#].*)?$/i.test(s);
-const fallback = raster(Astro.props.ogFallback) ? Astro.props.ogFallback!.replace(/^(?!https?:)\/?/, base) : undefined;
+// WebP ВК в превью не показывает — только JPG/PNG/GIF, WebP меняется на двойник .jpg/.png (ogRaster, Б9 19.10).
+const fb = ogRaster(Astro.props.ogFallback);
+const fallback = fb ? fb.replace(/^(?!https?:)\/?/, base) : undefined;
 const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `${base}og/${museum}_index.jpg` : fallback ?? `${base}og/og-default.jpg`;
 // Превью-сборка не для поисковиков: PUBLIC_NOINDEX=1 (deploy.yml, задача build) → noindex; по умолчанию индексируем.
 // Своя страница может попросить noindex (заглушка «День готовится»).
 const noindex = Astro.props.noindex || import.meta.env.PUBLIC_NOINDEX === '1';
-const ogImage = new URL(image ?? ogFile, Astro.site).href;
+const ogImage = new URL(ogRaster(image) ?? ogFile, Astro.site).href;
 // Разметка schema.org (JSON-LD, пункт «schema» замера glazami): тип — из пропса schema, иначе по пропсам:
 // главная — WebSite + Organization, главная музея — Museum, календарь — CollectionPage, день — Article, прочее — WebPage.
 // У дня about — предмет дня (его title), temporalCoverage — год события (поле year); нет поля — ключа нет (JSON.stringify
