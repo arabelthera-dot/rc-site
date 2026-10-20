@@ -1,4 +1,5 @@
 ---
+import poiskVitrin from '../../../data/poisk-vitrin.json';
 // Главная музея — минимум 05-main-page.md §6-quinquies (8 блоков) для ЛЮБОГО музея из museums.json.
 // У музея без дней — честные пустые состояния, ссылок на несуществующие страницы нет.
 import Base from '../../../layouts/Base.astro';
@@ -50,8 +51,9 @@ const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(
   .concat(extra.length ? [{ name: s('sverhGoda'), days: extra.map((d) => ({ title: d.title, href: href(d.key) })) }] : []).filter((g) => g.days.length);
 const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...days.filter((d) => !(d.legacy_page || d.images.length))].slice(0, 12)
   .map((d) => ({ title: d.title, href: href(d.key), when: when(d.key) }));
+const poisk = (poiskVitrin.vitriny as Record<string, { hvost: string; opisanie: string }>)[m.slug];
 ---
-<Base title={m.title_ru} description={m.promise_ru} museum={m.slug} museumTitle={m.title_ru} ogFallback={ogFallback} rss={{ href: `${base}muzei/${m.slug}/rss.xml`, title: `${m.title_ru} — ${s('novyeDni')}` }}>
+<Base title={poisk?.hvost ? `${m.title_ru} — ${poisk.hvost}` : m.title_ru} ogTitle={m.title_ru} description={poisk?.opisanie ?? m.promise_ru} ogDescription={m.promise_ru} museum={m.slug} museumTitle={m.title_ru} ogFallback={ogFallback} rss={{ href: `${base}muzei/${m.slug}/rss.xml`, title: `${m.title_ru} — ${s('novyeDni')}` }}>
   <Cover slot="header" m={m} img={img} />
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
   <Today first={first} dated={dated} />
