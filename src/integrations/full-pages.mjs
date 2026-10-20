@@ -4,13 +4,17 @@
 // Якоря href="#…" при <base> вели бы на папку музея — переписываются на собственный адрес страницы.
 // Относительные href/src/poster/srcset/url() — в абсолютные от папки музея: <base> видит браузер, но не проверка
 // ссылок (lychee резолвит от адреса файла — 757 ложных «нет файла», rc-site#16); <base> остаётся для скриптов.
+// data-src/data-poster (ленивые аудио, видео, картинки) — так же (20.10): обход сайта резолвил их от адреса
+// /den/MM-DD/ и нашёл 18 «битых» файлов; проверка — scripts/data-src.mjs в proverka.
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
+import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
+import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 
@@ -342,12 +346,13 @@ function staticHero(html) {
 
 // Соседние дни (замер glazami «вчера/завтра», 17.10): старая страница дня заменяет карточку целиком, и ссылки
 // «← предыдущий / следующий →» карточки (den/[key].astro) пропадали. Соседи — ближайшие дни музея в сборке.
-function sosediHtml(base, museum, keys, key) {
+function sosediHtml(base, museum, keys, key, code = poUmolchaniyu) {
   const i = keys.indexOf(key);
   if (!keys[i - 1] && !keys[i + 1]) return ''; // единственный день музея — соседей нет
+  const s = (k) => stroka(code, k); // подписи — из словаря языка (Г20, src/data/stroki.json)
   const link = (k, rel, text) => k ? `<a class="rc-sosed rc-sosed-${rel}" rel="${rel}" href="${base}muzei/${museum}/den/${k}/">${text}</a>` : '<span></span>';
-  return `<nav class="rc-sosedi" aria-label="Соседние дни">${link(keys[i - 1], 'prev', `← предыдущий день, ${whenOfKey(keys[i - 1] || '01-01')}`)}`
-    + `${link(keys[i + 1], 'next', `следующий день, ${whenOfKey(keys[i + 1] || '01-01')} →`)}</nav>`;
+  return `<nav class="rc-sosedi" aria-label="${s('sosediDni')}">${link(keys[i - 1], 'prev', `← ${s('predDen')}, ${whenOfKey(keys[i - 1] || '01-01', code)}`)}`
+    + `${link(keys[i + 1], 'next', `${s('sledDen')}, ${whenOfKey(keys[i + 1] || '01-01', code)} →`)}</nav>`;
 }
 
 function absolute(url, dirUrl) {
@@ -410,6 +415,10 @@ export default function fullPages() {
             // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
             if (process.env.PUBLIC_NOINDEX === '1') html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '')
               .replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">');
+            // Пометки языков (hreflang, как в Base.astro; план сайта Г19): только готовые языки + x-default.
+            // Старые пометки страницы — долой; у копии «staraya» (noindex) их нет.
+            html = html.replace(/<link\b[^>]*\bhreflang=[^>]*>\s*/gi, '');
+            if (!staraya) html = html.replace(/<head([^>]*)>/i, (h) => `${h}\n${hreflangi(self, base, site).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}">`).join('\n')}`);
             // Шрифты (CLS 0,16–0,29 у дней, #2004): полная страница идёт мимо Base.astro и не получала ни одного
             // preload — Playfair/Inter приходили после первой отрисовки и сдвигали шапку дня. Теперь файлы тех
             // семейств, которыми набрана сама страница, — заранее, сразу после <head>. Google-шрифты старой
@@ -452,7 +461,7 @@ export default function fullPages() {
               .replace(/(["'])\/(?:rc-site|rc-museum-preview)\//gi, `$1${base}`)
               .replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}muzei/${museum}/">`)
               .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`)
-              .replace(/(\s(?:href|src|poster)\s*=\s*)(["'])([^"']*)\2/gi,
+              .replace(/(\s(?:href|src|poster|data-src|data-poster)\s*=\s*)(["'])([^"']*)\2/gi,
                 (m, a, q, u) => `${a}${q}${absolute(u, `${base}muzei/${museum}/`)}${q}`)
               .replace(/(\ssrcset\s*=\s*)(["'])([^"']*)\2/gi, (m, a, q, v) => `${a}${q}${v.split(',')
                 .map((part) => part.replace(/^(\s*)(\S+)/, (x, sp, u) => sp + absolute(u, `${base}muzei/${museum}/`)))
@@ -472,6 +481,18 @@ export default function fullPages() {
             if (img && site && !/property=["']og:image["']/i.test(html)) {
               const abs = new URL(/^https?:/.test(img.src) ? img.src : `${base}${img.src.replace(/^\//, '')}`, site).href;
               html = html.replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
+            }
+            // Карточка пересылки в WebP (9 старых страниц: 7 своих и 2 из кадра карточки, Б9 19.10): ВК WebP в превью не показывает — рядом в dist
+            // кладётся JPG-копия (sharp, качество 85) и og:image/twitter:image смотрят на неё. Текст страницы не трогается.
+            if (site) {
+              const own = new URL(base, site).href;
+              for (const [tag, a, u] of [...html.matchAll(/(<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\s+content=["'])([^"'?#]+\.webp)/gi)]) {
+                if (!u.startsWith(own)) continue;
+                const rel = decodeURIComponent(u.slice(own.length));
+                const src = path.join(root, rel), jpg = src.replace(/\.webp$/i, '.jpg');
+                if (!fs.existsSync(jpg) && fs.existsSync(src)) await sharp(src).flatten({ background: '#ffffff' }).jpeg({ quality: 85 }).toFile(jpg);
+                if (fs.existsSync(jpg)) html = html.split(tag).join(a + u.replace(/\.webp$/i, '.jpg'));
+              }
             }
             // Значок аудиогида (сценарий 5 приёмки, круг 2, 18.10): «🎧» в кнопках старых страниц на машинах без
             // цветного эмодзи-шрифта рисуется квадратом — при сборке заменяется встроенным SVG, текст кнопки как есть.
@@ -514,6 +535,10 @@ export default function fullPages() {
             if (!/mc\.yandex\.ru\/metrika\/tag\.js/.test(html)) html = html.replace(/<\/head>/i, `${metrikaHtml}\n</head>`);
             html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
+            // Версия для слабовидящих (Д7): класс — первым скриптом <head> (до стилей, без мигания), кнопка — в начале <body>.
+            html = html.replace(/<head(?:\s[^>]*)?>/i, (h) => `${h}\n<script>${slabovidHeadJs}</script>`)
+              .replace(/<\/head>/i, `<link rel="stylesheet" href="${base}assets/rc-slabovid.css" />\n</head>`)
+              .replace(/<body([^>]*)>/i, (b) => `${b}\n${slabovidButtonHtml()}`);
             html = staticHero(html);
             if (!/\srel=["'](?:prev|next)["']/i.test(html)) html = html.replace(/<\/body>/i, `${sosediHtml(base, museum, keys, key)}\n</body>`);
             html = await imgSizes(html, root, base);

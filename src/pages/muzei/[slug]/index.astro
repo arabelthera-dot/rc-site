@@ -2,8 +2,10 @@
 // Главная музея — минимум 05-main-page.md §6-quinquies (8 блоков) для ЛЮБОГО музея из museums.json.
 // У музея без дней — честные пустые состояния, ссылок на несуществующие страницы нет.
 import Base from '../../../layouts/Base.astro';
+import { ogRaster } from '../../../lib/og-den.mjs';
 import { getCollection } from 'astro:content';
 import { beyondYear, isDated } from '../../../lib/kalendar';
+import { yazyk, razobratPut, stroka, strelkaVpered } from '../../../lib/yazyki.mjs';
 import Cover from '../../../components/home/Cover.astro';
 import Today from '../../../components/home/Today.astro';
 import Calendar from '../../../components/home/Calendar.astro';
@@ -21,29 +23,33 @@ export async function getStaticPaths() {
 }
 const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
-const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+// Служебные строки шаблона — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key: string): any => stroka(lang.code, key);
+const MON: string[] = s('mesyacy');
+const MONR: string[] = s('mesyacyR');
 const dated = isDated(m.slug);
 const href = (k: string) => `${base}muzei/${m.slug}/den/${k}/`;
-const when = (k: string) => { const mm = +k.slice(0, 2), dd = +k.slice(3); return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
+const when = (k: string) => { const mm = +k.slice(0, 2), dd = +k.slice(3); return dated ? `${dd} ${MONR[mm - 1]}` : s('denMesyac').replace('{d}', String(dd)).replace('{m}', MON[mm - 1]); };
 // данные окошка месяца — только ключи дней (движок считает «заполнено» по числу ключей)
 // записи сверх года (src/lib/kalendar.ts) в окошко и счётчик года не идут, на главной — группой «Сверх года»
 const beyond = (k: string) => beyondYear(k, dated);
 const yearDays = days.filter((d) => !beyond(d.key));
 const extra = days.filter((d) => beyond(d.key));
 const cal: Record<string, unknown> = {};
-for (const d of yearDays) cal[d.key] = { t: d.title, y: d.year, d: d.hook ?? '', href: href(d.key), link: 'Открыть экспонат дня →' };
+for (const d of yearDays) cal[d.key] = { t: d.title, y: d.year, d: d.hook ?? '', href: href(d.key), link: `${s('otkrytDen')} ${strelkaVpered(lang.dir)}` };
 const img = days.flatMap((d) => d.images).find((i) => !i.generated);
 // Картинка пересылки без обложки музея — первая настоящая растровая картинка дней (Base.astro, ogFallback).
-const ogFallback = days.flatMap((d) => d.images).find((i) => !i.generated && /\.(?:jpe?g|png|webp|gif)$/i.test(i.src))?.src;
+// WebP — JPG/PNG-двойником (ogRaster, Б9 19.10).
+const ogFallback = days.flatMap((d) => d.images).filter((i) => !i.generated).map((i) => ogRaster(i.src)).find(Boolean);
 const first = days[0] && { key: days[0].key, title: days[0].title, hook: days[0].hook, href: href(days[0].key), when: when(days[0].key) };
 const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(1),
   days: yearDays.filter((d) => +d.key.slice(0, 2) === i + 1).map((d) => ({ title: d.title, href: href(d.key) })) }))
-  .concat(extra.length ? [{ name: 'Сверх года', days: extra.map((d) => ({ title: d.title, href: href(d.key) })) }] : []).filter((g) => g.days.length);
+  .concat(extra.length ? [{ name: s('sverhGoda'), days: extra.map((d) => ({ title: d.title, href: href(d.key) })) }] : []).filter((g) => g.days.length);
 const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...days.filter((d) => !(d.legacy_page || d.images.length))].slice(0, 12)
   .map((d) => ({ title: d.title, href: href(d.key), when: when(d.key) }));
 ---
-<Base title={m.title_ru} description={m.promise_ru} museum={m.slug} museumTitle={m.title_ru} ogFallback={ogFallback} rss={{ href: `${base}muzei/${m.slug}/rss.xml`, title: `${m.title_ru} — новые дни` }}>
+<Base title={m.title_ru} description={m.promise_ru} museum={m.slug} museumTitle={m.title_ru} ogFallback={ogFallback} rss={{ href: `${base}muzei/${m.slug}/rss.xml`, title: `${m.title_ru} — ${s('novyeDni')}` }}>
   <Cover slot="header" m={m} img={img} />
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
   <Today first={first} dated={dated} />
@@ -54,5 +60,5 @@ const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...da
   <Council />
   <KudaDalshe />
   <Support museum={m.title_ru} />
-  <a slot="footer" href={base}>Выйти в город-музей «Русская цивилизация» →</a>
+  <a slot="footer" href={base}>{`${s('vyytiVGorod')} ${strelkaVpered(lang.dir)}`}</a>
 </Base>

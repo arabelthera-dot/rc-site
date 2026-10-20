@@ -12,7 +12,11 @@
 //             расходятся 2+ поля из дата/название/хук/источник;
 //   жёлтое  — старая страница лежит только в неслитой ветке; расходится 1 поле;
 //   не считается — <title> отличается только добавкой названия музея (одна строка входит в другую).
-//   Название карточки сверяется с <title> старой страницы (не с <h1>).
+//   Название карточки сверяется с <title> старой страницы (не с <h1>) по набору слов (20.10.2026): все слова
+//   карточки есть в <title> — порядок, регистр, пунктуация, дефисы и ё/е не важны (22 ложных красных
+//   «Храм на рукотворном холме — Покрова на Нерли» / «покрова на нерли: храм на рукотворном холме»).
+//   <h1> и <title> старой и новой сравниваются тоже по набору слов; в <title> слово «музей» не считается —
+//   шаблон нового сайта пишет полное имя «Музей «Что изобрели…»», старый — без слова «музей» (9 дней izobreteniya).
 // Красное — код 1, жёлтое печатается и код не меняет. Старый сайт — клон arabelthera-dot/rc-museum-preview.
 // Запуск: node scripts/sverka-teksta.mjs [--dist dist] [--legacy путь] [--polya data,nazvanie,hook,istochnik]
 //         (LEGACY — путь к старому сайту, по умолчанию ~/rc-museum-preview; --vse — печатать все расхождения)
@@ -41,6 +45,10 @@ const norm = (s) => decode(s).toLowerCase().replace(/ё/g, 'е').replace(/[«»�
 const text = (html) => norm(html.replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
   .replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' '));
 const tag = (html, t) => { const m = html.match(new RegExp(`<${t}\\b[^>]*>([\\s\\S]*?)<\\/${t}>`, 'i')); return m ? text(m[1]) : ''; };
+// Набор слов: буквы и цифры, всё прочее (пробел, тире, дефис, двоеточие, скобки, точка) — разделитель.
+const slova = (s, bezMuzeya) => new Set((norm(s).match(/[a-zа-я0-9]+/g) ?? []).filter((w) => !(bezMuzeya && w === 'музей')));
+const vhodit = (a, b) => [...a].every((w) => b.has(w));
+const ravny = (a, b) => a.size === b.size && vhodit(a, b);
 const firstSentence = (s) => { const m = s.match(/^[\s\S]*?[.!?…](?=\s|$)/); return (m ? m[0] : s).trim(); };
 const sourceParts = (s) => {
   const d = (s || '').match(/[a-zа-я0-9-]+(?:\.[a-zа-я0-9-]+)*\.(?:ru|рф|su|com|org|net|info|edu|gov|int|io|de|fr|uk)\b/gi);
@@ -78,11 +86,12 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
       if (POLYA.has('nazvanie')) {
         for (const t of ['h1', 'title']) {
           const a = tag(oh, t), b = tag(nh, t);
-          if (a === b || (t === 'title' && a && b && (a.includes(b) || b.includes(a)))) continue;
+          if (a === b || ravny(slova(a, t === 'title'), slova(b, t === 'title'))
+            || (t === 'title' && a && b && (a.includes(b) || b.includes(a)))) continue;
           errs.push(['nazvanie', `<${t}> старый «${a}» ≠ новый «${b}»`]);
         }
         const nz = norm(d.title || '');
-        if (nz && !tag(oh, 'title').includes(nz))
+        if (nz && !tag(oh, 'title').includes(nz) && !vhodit(slova(nz), slova(tag(oh, 'title'))))
           errs.push(['nazvanie', `название карточки «${d.title}» не входит в <title> старой («${tag(oh, 'title')}»)`]);
       }
       if (POLYA.has('hook') && d.hook) {

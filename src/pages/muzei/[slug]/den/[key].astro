@@ -6,15 +6,14 @@
 // Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
 import Base from '../../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import { queueOgDen } from '../../../../lib/og-den.mjs';
+import { queueOgDen, ogRaster, ogSmall } from '../../../../lib/og-den.mjs';
 import { denFamilies, faceCss } from '../../../../lib/shrifty.mjs';
 import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
 import DenAnketa from '../../../../components/den/DenAnketa.astro';
 import { YEAR_KEYS, isDated, isReady, nearestReady, stripSrcPrefix } from '../../../../lib/kalendar';
-const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
-const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../../lib/yazyki.mjs';
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
   const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
@@ -39,12 +38,16 @@ export async function getStaticPaths() {
 }
 const { d, m, prev, next, keys, own, empty = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
+// Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key) => stroka(lang.code, key);
 const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
 // Подпись дня: у датированного музея — дата, у недатированного — номер записи «День N · месяц»
 // (ключ там не дата: у первопроходцев есть 12-32, 12-33); одно правило для шапки дня и стрелок соседей.
+// Месяцы и «День N · месяц» — из словаря языка (Г20, src/data/stroki.json).
 const whenOf = (key: string) => { const mm = parseInt(key.slice(0, 2)), dd = parseInt(key.slice(3));
-  return dated ? `${dd} ${MONR[mm - 1]}` : `День ${dd} · ${MON[mm - 1]}`; };
+  return dated ? `${dd} ${s('mesyacyR')[mm - 1]}` : s('denMesyac').replace('{d}', String(dd)).replace('{m}', s('mesyacy')[mm - 1]); };
 const when = whenOf(d.key);
 // «День готовится» (Сергей 17.10): даты без карточки и карточки с одним названием (без хука и текста) —
 // строка-заглушка и ближайший готовый день музея вперёд по году; такие страницы не для поисковиков (noindex).
@@ -60,7 +63,11 @@ const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace
 const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
 // Своего кадра нет у готового дня — своя карточка пересылки 1200×630 (дата, название, музей; og-den, 18.10).
 // SVG-кадр Telegram/ВК в превью не показывают — у такого дня тоже карточка (19.10).
-const ogCover = cover && /\.(?:jpe?g|png|webp|gif)$/i.test(cover.src) ? cover : undefined;
+// WebP ВК в превью не берёт — JPG/PNG-двойник, нет его — карточка (ogRaster, 19.10, Б9).
+// Кадр меньше 600×315 Telegram/ВК показывают крошечным — у такого дня тоже своя карточка 1200×630 (ogSmall, 20.10, Б9).
+const ogRasterSrc = cover && ogRaster(cover.src);
+const ogCoverSrc = ogRasterSrc && !(await ogSmall(ogRasterSrc)) ? ogRasterSrc : undefined;
+const ogCover = ogCoverSrc ? { ...cover, src: ogCoverSrc } : undefined;
 const ogCard = !ogCover && !soon ? `${base}${queueOgDen({ museum: m.slug, key: d.key, date: dateTitle, title, museumTitle: m.title_ru })}` : undefined;
 const more = (d.more ?? []).map((e) => {
   // Ссылка на свой день, где тема разобрана подробно; дня нет в календаре музея — сборка падает.
@@ -100,7 +107,8 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={ogCover?.src ?? ogCard} imageAlt={ogCover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
-  museumTitle={m.title_ru} here={when} noindex={soon}>
+  museumTitle={m.title_ru} here={when} noindex={soon}
+  about={soon ? undefined : d.title} temporal={!soon && d.year != null && d.year !== '' ? String(d.year) : undefined}>
   <Fragment slot="head">
     {fontCss && <style data-rc-fonts set:html={fontCss} />}
     <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />
@@ -209,9 +217,9 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 
   <Fragment slot="footer">
     <div class="dp-foot">
-      <a href={museumUrl}>← {m.title_ru}</a> · <a href={base}>в город-музей →</a>
+      <a href={museumUrl}>{`${strelkaNazad(lang.dir)} ${m.title_ru}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a>
     </div>
-    <div class="dp-err">Нашли неточность? <a href={`mailto:arabelthera@gmail.com?subject=${encodeURIComponent(`Ошибка: ${m.title_ru}, ${d.key}`)}`}>Сообщите нам</a> — проверим по источникам.</div>
+    <div class="dp-err">{s('oshibkaVopros')} <a href={`mailto:arabelthera@gmail.com?subject=${encodeURIComponent(`${s('oshibkaTema')}: ${m.title_ru}, ${d.key}`)}`}>{s('oshibkaSsylka')}</a> {s('oshibkaKonec')}</div>
   </Fragment>
 
   <script is:inline set:html={chrome}></script>

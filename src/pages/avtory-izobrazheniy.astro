@@ -1,0 +1,68 @@
+---
+// Д2 (план сайта): авторы и источники всех кадров музеев — собирается при сборке из карточек дней и полных страниц
+// (разбор — src/lib/podpisi.mjs, тот же, что у проверки scripts/proverka-podpisey.mjs).
+import Base from '../layouts/Base.astro';
+import Credit from '../components/den/Credit.astro';
+import { getCollection } from 'astro:content';
+import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
+
+const base = import.meta.env.BASE_URL;
+const museums = (await getCollection('museums')).map((m) => m.data).sort((a, b) => a.number - b.number);
+const cards = cardFrames();
+const pages = fullFrames();
+const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
+const dayUrl = (m: string, k: string) => `${base}muzei/${m}/den/${k}/`;
+const groups = museums.map((m) => ({ m, cards: cards.filter((f) => f.museum === m.slug), pages: pages.filter((f) => f.museum === m.slug) }))
+  .filter((g) => g.cards.length || g.pages.length);
+const STATE: Record<string, string> = { ok: 'указана', partial: 'неполная подпись', near: 'указана рядом с кадром', rights: 'в списке прав страницы', none: 'нет подписи' };
+const noLic = cards.filter((f) => !f.lic).length;
+---
+<Base title="Авторы изображений · Русская цивилизация" description="Кто снял, нарисовал и сохранил кадры музеев «Русской цивилизации»: автор, источник и лицензия каждого изображения." crumbs={[{ label: 'Авторы изображений' }]} schema="page">
+  <header slot="header"><h1>Авторы изображений</h1><p>Кто снял, нарисовал и сохранил каждый кадр наших музеев</p></header>
+  <div class="avtory">
+    <p>Здесь собраны все изображения со страниц дней: автор или источник, лицензия и ссылка на день, где кадр показан.
+      Список собирается сам при каждом обновлении сайта. Всего в карточках дней — {cards.length} кадров, на полных страницах дней — {pages.length}.
+      {noLic > 0 && <Fragment> У {noLic} кадров карточек источник указан, а лицензия — нет: уточняем.</Fragment>}</p>
+    <p>Нашли неточность или вы автор кадра — напишите нам, исправим подпись.</p>
+    <nav class="avtory-oglavlenie"><ul>{groups.map((g) => <li><a href={`#${g.m.slug}`}>{g.m.title_ru}</a></li>)}</ul></nav>
+    {groups.map((g) => (
+      <section id={g.m.slug}>
+        <h2>{g.m.title_ru}</h2>
+        {g.cards.length > 0 && (
+          <table class="avtory-tablica">
+            <thead><tr><th>Кадр</th><th>Автор и источник</th><th>Лицензия</th><th>День</th></tr></thead>
+            <tbody>{g.cards.map((f) => (
+              <tr>
+                <td><img src={url(f.src)} alt={f.caption} loading="lazy" decoding="async" width="96" /><span class="podpis">{f.caption}</span></td>
+                <td><Credit text={f.credit} /></td>
+                <td>{f.lic ? 'указана' : 'уточняется'}</td>
+                <td><a href={dayUrl(f.museum, f.key)}>{f.title || f.key}</a></td>
+              </tr>))}</tbody>
+          </table>)}
+        {g.pages.length > 0 && (
+          <details>
+            <summary>Кадры полных страниц дней: {g.pages.length}</summary>
+            <table class="avtory-tablica">
+              <thead><tr><th>Кадр</th><th>Подпись на странице</th><th>Лицензия</th><th>День</th></tr></thead>
+              <tbody>{g.pages.map((f) => (
+                <tr>
+                  <td>{f.alt || f.src.split('/').at(-1)}</td>
+                  <td>{f.sign || '—'}</td>
+                  <td>{STATE[f.state]}</td>
+                  <td><a href={dayUrl(f.museum, f.key)}>{f.key}</a></td>
+                </tr>))}</tbody>
+            </table>
+          </details>)}
+      </section>))}
+  </div>
+</Base>
+<style>
+  .avtory { max-width: 72rem; margin: 0 auto; padding: 0 1rem 3rem; }
+  .avtory-oglavlenie ul { columns: 2; padding-left: 1.2rem; }
+  .avtory-tablica { width: 100%; border-collapse: collapse; margin: .5rem 0 1.5rem; font-size: .92rem; }
+  .avtory-tablica th, .avtory-tablica td { border-bottom: 1px solid rgba(0,0,0,.12); padding: .45rem .5rem; text-align: left; vertical-align: top; }
+  .avtory-tablica img { display: block; width: 96px; height: auto; max-height: 96px; object-fit: cover; margin-bottom: .25rem; }
+  .avtory-tablica .podpis { display: block; max-width: 16rem; font-size: .85rem; opacity: .8; }
+  details summary { cursor: pointer; margin: .5rem 0; }
+  @media (max-width: 40rem) { .avtory-oglavlenie ul { columns: 1; } .avtory-tablica .podpis { display: none; } }
+</style>

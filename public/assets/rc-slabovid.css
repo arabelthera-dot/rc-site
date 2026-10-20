@@ -1,0 +1,150 @@
+/* Версия для слабовидящих (Д7, 19.10) — кнопка и режим html.rc-slabovid. Разметка и логика — src/lib/slabovid.mjs.
+   Режим по сути ГОСТ Р 52872-2019: шрифт крупнее (×1,3), чёрное на белом (контраст 21:1), межстрочный 1,5,
+   без фоновых картинок под текстом, ссылки подчёркнуты, фокус виден. */
+#rc-slabovid-btn{position:fixed;top:4px;right:8px;z-index:9999;box-sizing:border-box;width:44px;height:44px;margin:0;padding:0;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(201,168,76,.55);
+  background:#060d18;color:#d9b95c;cursor:pointer;line-height:1}
+#rc-slabovid-btn:hover{background:#13213a}
+#rc-slabovid-btn:focus-visible{outline:3px solid #d9b95c;outline-offset:2px}
+#rc-slabovid-btn .rc-sv-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+nav.rc-sitebar{padding-right:60px}
+@media print{#rc-slabovid-btn{display:none}}
+
+html.rc-slabovid{zoom:1.3;background:#fff!important}
+html.rc-slabovid body,html.rc-slabovid body *,html.rc-slabovid body *::before,html.rc-slabovid body *::after{
+  background-color:transparent!important;background-image:none!important;color:#000!important;
+  text-shadow:none!important;box-shadow:none!important;border-color:#000!important;filter:none!important;
+  -webkit-text-fill-color:currentColor!important;mix-blend-mode:normal!important;animation:none!important;transition:none!important}
+html.rc-slabovid body{background:#fff!important}
+html.rc-slabovid body :is(p,li,dd,dt,blockquote,figcaption,td,th){line-height:1.5!important;letter-spacing:.01em}
+/* липкие и всплывающие слои без фона просвечивали бы — им белый */
+html.rc-slabovid body :is(nav,header,footer,dialog,[role=dialog],.rc-sitebar,.rc-sub,.rc-cookie){background-color:#fff!important}
+html.rc-slabovid body a,html.rc-slabovid body a *{color:#0000c8!important}
+html.rc-slabovid body a{text-decoration:underline!important;text-underline-offset:.15em}
+html.rc-slabovid body :focus-visible{outline:3px solid #000!important;outline-offset:2px!important}
+/* крупные заголовки с кеглем от ширины экрана не должны вылезать за край на телефоне */
+html.rc-slabovid body :is(h1,h2,h3){overflow-wrap:anywhere;hyphens:auto}
+@media (max-width:600px){html.rc-slabovid body h1{font-size:2rem!important;line-height:1.15!important}}
+html.rc-slabovid #rc-slabovid-btn{zoom:calc(1/1.3);background:#000!important;color:#fff!important;border:2px solid #000!important}
+html.rc-slabovid #rc-slabovid-btn *{color:#fff!important}
+/* Обложки (hero) общих шаблонов и полных страниц дней (Д7, 20.10): текст обложки — на сплошной белой подложке,
+   чёрным (21:1), без полупрозрачности; блок текста, лежавший поверх кадра (position:absolute), встаёт в поток
+   под кадр — поверх фото в режиме не остаётся ничего. Градиенты-«скримы» уже сняты общим background-image:none. */
+html.rc-slabovid body :is(.hero,.hero-lead,.hero-copy,.hero-under,.mh-cover,.mh-title,.p-hero,.scene-caption) :is(h1,h2,h3,p,figcaption,blockquote,small,.inner,.museum,.who,.eyebrow,.chip,.hook,.down,.b1,.scene-cap,.scene-hint){
+  background-color:#fff!important;color:#000!important;opacity:1!important}
+html.rc-slabovid body .hero:has(> .inner){height:auto!important;min-height:0!important;overflow:visible!important}
+html.rc-slabovid body .hero > :is(.inner,.hero-text,.hero-copy,.caption){position:static!important;inset:auto!important;padding-top:16px!important;padding-bottom:16px!important}
+html.rc-slabovid body .hero > :is(.bg,.scrim){display:none!important}
+html.rc-slabovid body .hero .down{white-space:normal!important}
+/* подзаголовки главной (.p-lead «Летопись…», .p-sub) и музея были серыми через opacity — чёрные */
+html.rc-slabovid body :is(.p-lead,.p-sub,.mh-slogan,.mh-promise,.mh-scene figcaption,.cdate,.rc-sb-link,.rt-lbl){opacity:1!important;color:#000!important}
+/* Золотые и акцентные кнопки общего шаблона (Д7, 20.10). Движок museum-support.js вставляет свой CSS с !important
+   и селекторами весом (0,2,1)–(0,4,0) — тяжелее общего правила «body *» (0,1,2), поэтому «Поддержать»,
+   «Поделиться», «Сообщить об ошибке», «Ещё» и подпись блока оставались золотыми (контраст ~5:1).
+   Здесь — тот же вид для всех кнопок шаблона: чёрное на белом (21:1), рамка 2 px, фокус — общий контур 3 px.
+   Вес начинается с #-селектора внутри :is() — заведомо тяжелее любого правила движка и темы. */
+html.rc-slabovid body .support :is(#rc-sv-x,.sup-l,p,b,a){color:#000!important;background:#fff!important;background-image:none!important}
+html.rc-slabovid body .support .sup-l::after{background:#000!important;height:2px!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart,#rc-copied),
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart,#rc-copied):is(:hover,:active,.gold){
+  background:#fff!important;background-image:none!important;color:#000!important;-webkit-text-fill-color:#000!important;
+  border:2px solid #000!important;opacity:1!important;transition:none!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,#heart) :is(a,span,b,i,svg){color:#000!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart):hover{text-decoration:underline!important}
+/* выбранная вкладка/пункт был отмечен золотой заливкой — теперь инверсия: белое на чёрном (21:1) */
+html.rc-slabovid body :is(#rc-sv-x,#secnav a.on,.agnav button.on,.zb.on),
+html.rc-slabovid body :is(#rc-sv-x,#secnav a.on,.agnav button.on,.zb.on) *{background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart,#secnav a.on,.agnav button.on,.zb.on):focus-visible{
+  outline:3px solid #000!important;outline-offset:3px!important;box-shadow:0 0 0 6px #fff!important}
+/* Кнопки и ссылки-кнопки из CSS отдельных музеев (Д7, 20.10): public/assets/*-page.css, palace-dossier.css,
+   public/muzei/**.css и <style> полных страниц дней. Золотые/цветные заливки (.nv-mobile-cta, .tower-cta, «дальше»,
+   «повторить», переходы между днями) — тот же вид, что у кнопок шаблона: чёрное на белом, рамка 2 px, фокус 3 px.
+   Кнопки ответов в играх (верно/неверно, выбранный вариант) здесь НЕ тронуты — у них цвет несёт смысл, это хвост интерактивов. */
+html.rc-slabovid body :is(#rc-sv-x,.nv-mobile-cta,.tower-cta,.car-btn,.gc-btn,.retry-button,.result-replay,.tent-replay,.film-play,.result-actions a,.result-actions button,.route-choice a,.museum-follow-actions a,.museum-follow-actions button,.lab-result-actions button,.observe-result button,.guide-controls button,.film-controls button,.sort-acts button,.quick-next a,.continuation-shelf a,.next-grid a,.story-bridge a,.explore-map a,.wayrow a,.calendar-neighbours a,.visit-bridge nav a,.museum-voice a,.motif-card>a,button.scene-hint),
+html.rc-slabovid body :is(#rc-sv-x,.nv-mobile-cta,.tower-cta,.car-btn,.gc-btn,.retry-button,.result-replay,.tent-replay,.film-play,.result-actions a,.result-actions button,.route-choice a,.museum-follow-actions a,.museum-follow-actions button,.lab-result-actions button,.observe-result button,.guide-controls button,.film-controls button,.sort-acts button,.quick-next a,.continuation-shelf a,.next-grid a,.story-bridge a,.explore-map a,.wayrow a,.calendar-neighbours a,.visit-bridge nav a,.museum-voice a,.motif-card>a,button.scene-hint):is(:hover,:active){
+  background:#fff!important;background-image:none!important;color:#000!important;-webkit-text-fill-color:#000!important;
+  border:2px solid #000!important;opacity:1!important;transition:none!important;animation:none!important;text-decoration:underline!important}
+html.rc-slabovid body :is(#rc-sv-x,.nv-mobile-cta,.tower-cta,.car-btn,.gc-btn,.retry-button,.result-replay,.tent-replay,.film-play,.result-actions a,.result-actions button,.route-choice a,.museum-follow-actions a,.museum-follow-actions button,.lab-result-actions button,.observe-result button,.guide-controls button,.film-controls button,.sort-acts button,.quick-next a,.continuation-shelf a,.next-grid a,.story-bridge a,.explore-map a,.wayrow a,.calendar-neighbours a,.visit-bridge nav a,.museum-voice a,.motif-card>a,button.scene-hint) :is(span,b,i,em,strong,svg){color:#000!important;-webkit-text-fill-color:#000!important}
+/* текущий шаг/пункт навигации музея — инверсия, как #secnav a.on */
+html.rc-slabovid body :is(#rc-sv-x,.gc-btn.on,.progress-acts a.on,.progress-acts a[aria-current="step"],.sd-path button[aria-current="step"],.quick-progress a.is-current,nav[aria-label="Разделы страницы"] a[aria-current="location"]),
+html.rc-slabovid body :is(#rc-sv-x,.gc-btn.on,.progress-acts a.on,.progress-acts a[aria-current="step"],.sd-path button[aria-current="step"],.quick-progress a.is-current,nav[aria-label="Разделы страницы"] a[aria-current="location"]) *{background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border:2px solid #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.nv-mobile-cta,.tower-cta,.car-btn,.gc-btn,.retry-button,.result-replay,.tent-replay,.film-play,.result-actions a,.result-actions button,.route-choice a,.museum-follow-actions a,.museum-follow-actions button,.lab-result-actions button,.observe-result button,.guide-controls button,.film-controls button,.sort-acts button,.quick-next a,.continuation-shelf a,.next-grid a,.story-bridge a,.explore-map a,.wayrow a,.calendar-neighbours a,.visit-bridge nav a,.museum-voice a,.motif-card>a,button.scene-hint,.gc-btn.on,.progress-acts a.on,.progress-acts a[aria-current="step"],.sd-path button[aria-current="step"],.quick-progress a.is-current,nav[aria-label="Разделы страницы"] a[aria-current="location"]):focus-visible{
+  outline:3px solid #000!important;outline-offset:3px!important;box-shadow:0 0 0 6px #fff!important}
+/* Кнопки ответов в играх и интерактивах (Д7, 20.10): в обычном виде «верно/неверно/выбрано» передаёт только цвет
+   (зелёный/красный/золотой), а режим перекрашивает всё в чёрное — смысл пропадал. Здесь смысл несут форма и значок:
+   верно — рамка 4 px сплошная, жирный, «✓»; неверно — рамка 3 px пунктир, «✗»; выбрано (без оценки) — инверсия
+   белое на чёрном (21:1) и «●». Значки — ::before (у этих кнопок своих ::before нет). Движки и CSS музеев не тронуты.
+   Источники классов: museum-quiz.js (.mq-opt.is-right/.is-wrong), museum-find-word.js (.fw-pick.is-hit/.is-miss),
+   museum-fact-or-myth.js (.fm-picked), полные дни и музеи (.opt.correct/.wrong, .fork-opt.chosen, .seg[aria-pressed]),
+   nevjanskaya-page.js ([data-game-choice] + aria-invalid), kizhi (.origin-card.is-wrong), ermak (.crun-item.on, .crun-echo.bad),
+   georgievskiy (.stone[aria-pressed]), literatura (.syuzhet-step.bad). */
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-right,.fw-pick.is-hit,.opt.correct,[data-game-choice][aria-pressed="true"]:not([aria-invalid="true"])){
+  background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:4px solid #000!important;
+  font-weight:700!important;opacity:1!important}
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-wrong,.fw-pick.is-miss,.opt.wrong,[data-game-choice][aria-invalid="true"],.origin-card.is-wrong,.syuzhet-step.bad){
+  background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:3px dashed #000!important;
+  opacity:1!important;text-decoration:none!important}
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-right,.fw-pick.is-hit,.opt.correct,[data-game-choice][aria-pressed="true"]:not([aria-invalid="true"]))::before{
+  content:"✓ ";content:"✓ " / "верно: ";font-weight:700;color:#000!important}
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt.is-wrong,.fw-pick.is-miss,.opt.wrong,[data-game-choice][aria-invalid="true"],.syuzhet-step.bad)::before{
+  content:"✗ ";content:"✗ " / "неверно: ";font-weight:700;color:#000!important}
+html.rc-slabovid body :is(#rc-sv-x,.crun-echo.bad){font-weight:700!important;opacity:1!important}
+html.rc-slabovid body :is(#rc-sv-x,.crun-echo.bad)::before{content:"⚠ ";content:"⚠ " / "потеря: "}
+/* выбранный вариант без оценки — инверсия, как текущий пункт навигации */
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on),
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on) *{
+  background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border-color:#000!important;opacity:1!important;outline:none}
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on){border:2px solid #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.fm-opt.fm-picked,.fork-opt.chosen,.crun-item.on,.seg[aria-pressed="true"],.stone[aria-pressed="true"],.si-name[aria-pressed="true"],.zp-chip[aria-pressed="true"],.fl-era[aria-pressed="true"],.sg-scratch.on)::before{
+  content:"● ";content:"● " / "выбрано: ";color:#fff!important;-webkit-text-fill-color:#fff!important}
+/* Хвост Д7 (20.10): выбранная надпись «Слова героя» (museum-slovo-geroya.js, .sg-scratch.on) — в группе «выбрано» выше
+   (инверсия 21:1 и «●»). Точки «Живого интерьера» (museum-zhivoy-interer.js): открытая сейчас — инверсия белое на чёрном
+   (21:1), осмотренная — двойная рамка 4 px (в обычном виде это различал только цвет). */
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot){background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:2px solid #000!important;opacity:1!important}
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot.seen){border:4px double #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot[aria-pressed="true"]){background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border:2px solid #000!important}
+html.rc-slabovid body :is(#rc-sv-x,.zi-dot):focus-visible{outline:3px solid #000!important;outline-offset:3px!important;box-shadow:0 0 0 6px #fff!important}
+/* Подсказка зума («Щипок — приблизить…», #zhint полных дней искусства) лежала поверх кадра одной строкой (nowrap)
+   и на ×1,3 уходила за край; через 6 с гасла. В режиме — в потоке над кадром, переносится, не гаснет. */
+html.rc-slabovid body #zhint{position:static!important;display:block!important;white-space:normal!important;
+  box-sizing:border-box!important;width:auto!important;max-width:calc(100% - 24px)!important;margin:8px 12px!important;opacity:1!important;background:#fff!important;border:2px solid #000!important}
+/* Плашка цифр под обложкой (.hero-under .stamp, литература): в обычном виде на телефоне 4 узкие колонки, а правило темы
+   «.stamp div» даёт отступы и рамку и вложенным .v/.k — на ×1,3 «1185» рвалось по буквам, «ПЕРВОЕ ИЗДАНИЕ» обрезалось.
+   В режиме — 2 колонки на узком экране, у .v/.k без отступов и рамки, слова целиком. */
+html.rc-slabovid body .stamp :is(.v,.k){padding:0!important;border:0!important;min-width:0!important}
+html.rc-slabovid body .stamp .v{overflow-wrap:normal!important;word-break:normal!important}
+html.rc-slabovid body .stamp .k{letter-spacing:.04em!important;overflow-wrap:normal!important;word-break:normal!important}
+@media (max-width:720px){html.rc-slabovid body .stamp{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html.rc-slabovid body .stamp > div:nth-child(odd){border-left:0!important}}
+/* отключённые после ответа варианты не бледнеют — серое на белом ниже 7:1 */
+html.rc-slabovid body :is(#rc-sv-x,.mq-opt,.fm-opt,.fw-pick,.opt,.fork-opt,[data-game-choice]):disabled{opacity:1!important;color:#000!important}
+/* телефон ×1,3: на узком экране крупный шрифт не выталкивает раскладку вбок */
+@media (max-width:480px){
+  html.rc-slabovid body :is(main,section,article,figure,table,pre,img,video,audio,iframe,svg,canvas,input,select,textarea){max-width:100%!important;min-width:0!important}
+  html.rc-slabovid body :is(.progress-acts,:has(> .btn),:has(> .gbtn),:has(> .stamp)){flex-wrap:wrap!important}
+  html.rc-slabovid body :is([class*="hint"],.stamp,.stamp *){white-space:normal!important;max-width:100%!important}
+  html.rc-slabovid body .stamp{position:static!important}
+  /* страховка: бегущие строки и лишнее не дают прокрутки вбок (внутренние ленты с overflow:auto работают как раньше) */
+  html.rc-slabovid,html.rc-slabovid body{overflow-x:clip!important}
+  html.rc-slabovid body :is(p,li,a,button,td,th,figcaption,blockquote,h4,h5,h6){overflow-wrap:anywhere}
+  html.rc-slabovid body pre{white-space:pre-wrap!important}
+  html.rc-slabovid body :is(.crumbs,.crumbs *,.breadcrumbs,.breadcrumbs *,p a,li a){white-space:normal!important}
+}
+/* Подсказки (Д7, 20.10): в обычном виде — мелкий серый или цветной текст 12–15 px, у зума картины — полупрозрачная
+   плашка поверх кадра. В режиме — чёрное на белом (21:1), рамка 2 px, кегль не меньше 18 px, перенос строк, без обрезки.
+   Виды: #sharehint («скопировано», museum-chrome.js), .hint (ответы игр литературы), .cover-hint (обложка),
+   .sg-hint («Слова героя»), .dz-hint (глубокий зум, museum-deep-zoom.js), span/div.scene-hint (подпись кадра);
+   #zhint — выше. Видимость и гашение по-прежнему решает движок (display/opacity не трогаем, кроме #zhint). */
+html.rc-slabovid body :is(#zhint,#sharehint,.sharehint,.hint,.cover-hint,.sg-hint,.dz-hint,span.scene-hint,div.scene-hint){
+  background:#fff!important;color:#000!important;-webkit-text-fill-color:#000!important;border:2px solid #000!important;
+  border-radius:4px!important;padding:6px 10px!important;font-size:max(18px,1em)!important;line-height:1.45!important;
+  font-weight:600!important;text-shadow:none!important;box-shadow:none!important;white-space:normal!important;
+  overflow-wrap:break-word!important;overflow:visible!important;text-overflow:clip!important;max-width:100%!important;
+  box-sizing:border-box!important;height:auto!important;letter-spacing:normal!important;backdrop-filter:none!important}
+html.rc-slabovid body :is(#zhint,#sharehint,.sharehint,.hint,.cover-hint,.sg-hint,.dz-hint,span.scene-hint,div.scene-hint) *{color:#000!important;-webkit-text-fill-color:#000!important}
+/* пустая подсказка игры (ждёт ответа) — без пустой рамки */
+html.rc-slabovid body :is(.hint,.sg-hint,.cover-hint):empty{border:0!important;padding:0!important}
+/* плашка зума остаётся поверх кадра (иначе ломается сцена), но не шире кадра */
+html.rc-slabovid body .dz-hint{max-width:calc(100% - 24px)!important;right:auto!important}
+/* «скопировано» рядом с кнопкой: на узком экране — отдельной строкой, а не за краем */
+@media (max-width:480px){html.rc-slabovid body :is(#sharehint,.sharehint){margin:8px 0 0!important}}

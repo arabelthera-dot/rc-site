@@ -18,6 +18,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # «Сегодня» — по Москве во всех блоках (B11, 19.10.2026): home/Today.astro и portal/Segodnya.astro
+      # дают один день под TZ Лос-Анджелеса/Москвы/Владивостока. Без сборки, секунды.
+      # Новое — выключенным: строгость переменной репозитория SEGODNYA_MSK_STROGO=1.
+      - name: segodnya-msk — один день по Москве
+        continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO != '1' }}
+        timeout-minutes: 1
+        run: node scripts/segodnya-msk.test.mjs && node scripts/segodnya-msk.mjs
       - run: npm run build
         env:
           RC_POISK: ${{ vars.RC_POISK }}
@@ -33,11 +40,20 @@ jobs:
       - name: js-import — подгрузки движков
         continue-on-error: ${{ vars.JSIMPORT_STROGO != '1' }}
         run: node scripts/js-import.mjs dist
+      # Ленивые адреса data-src/data-poster (20.10.2026): lychee их не видит — 18 «битых» аудио/видео/картинок
+      # на полных страницах дней ловит scripts/data-src.mjs. Строгий с 20.10.2026: прогон показал 0 битых из 18.
+      - name: data-src — ленивые аудио, видео, картинки
+        run: node scripts/data-src.mjs --dist dist
       # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгость — переменной
       # репозитория VES_STROGO=1; без неё — только предупреждение (новое ставится выключенным).
       - name: ves — вес сборки
         continue-on-error: ${{ vars.VES_STROGO != '1' }}
         run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12
+      # Размер картинки пересылки (Б9, 20.10.2026): og:image меньше 600×315 Telegram/ВК показывают крошкой —
+      # сборка ставит запасную (og-den), проверка считает остаток (должно быть 0). Строгость — OGRAZMER_STROGO=1.
+      - name: og-razmer — картинка пересылки не меньше 600×315
+        continue-on-error: ${{ vars.OGRAZMER_STROGO != '1' }}
+        run: node scripts/og-razmer.mjs dist
       # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
       # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).
       # Строгость включается переменной репозитория GLAZAMI_STROGO=1; без неё — только предупреждение.
@@ -90,6 +106,13 @@ jobs:
         env:
           SVERKA_H1_STROGO: '1'
         run: node scripts/sverka-h1.mjs
+      # Подписи кадров (план сайта Д2, 20.10.2026): красное — кадр карточки дня без подписи. Полные
+      # страницы — только отчёт (чинят хозяева страниц). Новое — выключенным: заявку роняет лишь при
+      # переменной репозитория PODPISI_STROGO=1; включить, когда красных в карточках 0 на main.
+      - name: podpisi — у каждого кадра есть подпись
+        continue-on-error: ${{ vars.PODPISI_STROGO != '1' }}
+        timeout-minutes: 1
+        run: npm run proverka-podpisey
       # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам
       # (главная, музей izobreteniya, его календарь, день 01-05). ТОЛЬКО ОТЧЁТ — заявку роняют лишь
       # сборка и битые ссылки (Сергей 17.10): continue-on-error, в lighthouserc только "warn".

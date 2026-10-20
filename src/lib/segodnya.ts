@@ -4,14 +4,15 @@
 import fs from 'node:fs';
 import { getCollection } from 'astro:content';
 import { isDated, beyondYear } from './kalendar';
+import { stroka, poUmolchaniyu } from './yazyki.mjs';
 
-const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 const LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const p2 = (n: number) => String(n).padStart(2, '0');
 
 // 366 ключей по порядку года, с 02-29
 export const KEYS = LEAP.flatMap((len, m) => Array.from({ length: len }, (_, d) => `${p2(m + 1)}-${p2(d + 1)}`));
-export const whenOf = (key: string) => `${+key.slice(3)} ${MONR[+key.slice(0, 2) - 1]}`;
+// месяцы и заголовки — из словаря языка (Г20), по умолчанию русский
+export const whenOf = (key: string, code: string = poUmolchaniyu) => `${+key.slice(3)} ${stroka(code, 'mesyacyR')[+key.slice(0, 2) - 1]}`;
 
 export interface Card { museum: string; museumTitle: string; title: string; hook?: string; img?: string; alt?: string; href: string; full: boolean }
 export interface Today { key: string; when: string; heading: string; shown: string; cards: Card[] }
@@ -52,15 +53,15 @@ async function byKey() {
 }
 
 // Карточки даты; нет ни одной — ближайшая следующая дата с карточками («Завтра в …» / «20 октября в …»).
-export async function today(key: string): Promise<Today> {
+export async function today(key: string, code: string = poUmolchaniyu): Promise<Today> {
   const all = await byKey();
   const i = KEYS.indexOf(key);
   for (let s = 0; s < KEYS.length; s++) {
     const k = KEYS[(i + s) % KEYS.length];
     const cards = all.get(k);
     if (!cards?.length) continue;
-    const heading = s === 0 ? 'Сегодня в Русской цивилизации' : s === 1 ? 'Завтра в Русской цивилизации' : `${whenOf(k)} в Русской цивилизации`;
-    return { key, when: whenOf(key), heading, shown: k, cards };
+    const heading = s === 0 ? stroka(code, 'segodnyaVRC') : s === 1 ? stroka(code, 'zavtraVRC') : stroka(code, 'dataVRC').replace('{d}', whenOf(k, code));
+    return { key, when: whenOf(key, code), heading, shown: k, cards };
   }
-  return { key, when: whenOf(key), heading: 'Сегодня в Русской цивилизации', shown: key, cards: [] };
+  return { key, when: whenOf(key, code), heading: stroka(code, 'segodnyaVRC'), shown: key, cards: [] };
 }

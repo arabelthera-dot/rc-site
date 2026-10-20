@@ -1,10 +1,13 @@
 // Яндекс Метрика, счётчик 113664375 (заказ Михаила, 18.10.2026) — стандартный код с официальной страницы Яндекса.
 // Один источник: Metrika.astro (в <head> Base.astro) и integrations/full-pages.mjs (полные страницы дней идут мимо Base).
 // public/assets/analytics.js с пустым COUNTER_ID не трогаем: вписать туда номер — второй init того же счётчика.
+// Вариант без #205 (политика и плашка cookie откатаны): код счётчика — как до 19.10, механика «файлом» — из #224.
+import { createHash } from 'node:crypto';
 export const METRIKA_ID = 113664375;
-export const metrikaHtml = `<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    // Отложенная загрузка (19.10, Lighthouse BP 79 из-за cookies mc.yandex): очередь ym и init ставятся сразу,
+// Код скрипта — отдельной строкой: по умолчанию он идёт файлом assets/rc-metrika-<md5>.js (вес сборки, 20.10:
+// инлайн ×~4400 страниц ≈ 7 МБ), файл пишет integrations/metrika-fajlom.mjs. Код тот же, буква в букву.
+// Откат без правки кода: RC_METRIKA_INLAYN=1 — скрипт снова инлайном, как до 20.10.
+export const metrikaJs = `    // Отложенная загрузка (19.10, Lighthouse BP 79 из-за cookies mc.yandex): очередь ym и init ставятся сразу,
     // tag.js грузится по первому действию (scroll/pointerdown/keydown/touchstart) или через 3,5 с после load
     // в простое браузера. Визит не теряется: init уже в очереди с отметкой времени m[i].l, tag.js её разберёт.
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -26,6 +29,12 @@ export const metrikaHtml = `<!-- Yandex.Metrika counter -->
         accurateTrackBounce:true,
         webvisor:true
     });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+`;
+const metrikaTail = `<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->`;
+export const metrikaFile = `rc-metrika-${createHash('md5').update(metrikaJs).digest('hex').slice(0, 10)}.js`;
+export const metrikaInlayn = process.env.RC_METRIKA_INLAYN === '1';
+// defer: файл выполняется после разбора страницы; tag.js и так грузится по первому действию / через 3,5 с после load.
+export const metrikaHtml = metrikaInlayn
+  ? `<!-- Yandex.Metrika counter -->\n<script type="text/javascript">\n${metrikaJs}</script>\n${metrikaTail}`
+  : `<!-- Yandex.Metrika counter -->\n<script defer src="/assets/${metrikaFile}"></script>\n${metrikaTail}`;

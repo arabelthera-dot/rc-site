@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Base title="Контакты · Русская цивилизация" description="Как связаться с проектом «Русская цивилизация»." schema="page" crumbs={[{ label: 'Контакты' }]}>
+  <header slot="header"><h1>Контакты</h1></header>
+  <!-- ЖДУ ОТВЕТА: реквизиты АНО и почта проекта -->
+  <p>Почта проекта появится здесь в ближайшее время.</p>
+  <p><a href={`${base}o-proekte/`}>О проекте →</a></p>
+</Base>

@@ -6,12 +6,14 @@ html{transition:--rc-bar-vis .3s ease}
 nav.rc-sitebar{position:sticky;top:0;z-index:80;box-sizing:border-box;height:52px;margin:0;padding:0 12px;
   background:#060d18;border-bottom:1px solid rgba(201,168,76,.28);display:flex;align-items:center;
   transform:translateY(0);transition:transform .3s ease;
-  font:400 15px/1.2 'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;letter-spacing:0;text-align:left}
+  font:400 15px/1.2 'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;letter-spacing:0;text-align:start}
 nav.rc-sitebar.rc-sb-hidden{transform:translateY(-100%)}
 nav.rc-sitebar ol{display:flex;align-items:center;gap:8px;min-width:0;width:100%;max-width:1200px;margin:0 auto;padding:0;list-style:none;white-space:nowrap}
 nav.rc-sitebar li{display:flex;align-items:center;min-width:0;margin:0;padding:0;list-style:none;color:#e8dcc0}
 nav.rc-sitebar li::marker{content:none}
-nav.rc-sitebar li + li::before{content:'›';flex:none;margin-right:8px;color:rgba(201,168,76,.7);font-size:16px}
+nav.rc-sitebar li + li::before{content:'›';flex:none;margin-inline-end:8px;color:rgba(201,168,76,.7);font-size:16px}
+/* Письмо справа налево (Г20): разделитель смотрит по ходу строки */
+[dir=rtl] nav.rc-sitebar li + li::before{content:'‹'}
 nav.rc-sitebar .rc-sb-link{display:inline-flex;align-items:center;box-sizing:border-box;min-height:44px;padding:0 6px;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;border-radius:8px;
   color:#e8dcc0;text-decoration:none;font:inherit;background:none;border:0}
@@ -21,7 +23,7 @@ nav.rc-sitebar a.rc-sb-link:focus-visible{outline:2px solid #d9b95c;outline-offs
 nav.rc-sitebar li:first-child{flex:none}
 nav.rc-sitebar li.rc-sb-m{flex:0 1 auto}
 nav.rc-sitebar li.rc-sb-here{flex:0 100 auto;opacity:.75}
-nav.rc-sitebar li.rc-sb-poisk{margin-left:auto;flex:0 0 auto}
+nav.rc-sitebar li.rc-sb-poisk{margin-inline-start:auto;flex:0 0 auto}
 /* .rc-sb-link — inline-flex: многоточие нужно у текстового узла, поэтому блок-обёртка */
 nav.rc-sitebar .rc-sb-museum,nav.rc-sitebar .rc-sb-here .rc-sb-link{display:block;line-height:44px}
 @media (max-width:600px){
@@ -58,5 +60,5 @@ body:has(> nav.rc-sitebar) .backbtn{display:none!important}
 .rc-sosedi{box-sizing:border-box;max-width:720px;margin:24px auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;
   font-family:'Inter',system-ui,sans-serif;font-size:16px}
 .rc-sosedi a{display:inline-flex;align-items:center;min-height:48px;padding:0 4px;color:inherit;text-decoration:underline;text-underline-offset:3px}
-.rc-sosedi .rc-sosed-next{margin-left:auto;text-align:right}
+.rc-sosedi .rc-sosed-next{margin-inline-start:auto;text-align:end}
 .rc-sosedi a:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}

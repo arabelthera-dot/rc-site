@@ -12,7 +12,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { ogDenQueue } from '../lib/og-den.mjs';
+import { ogDenQueue, OG_MIN_W, OG_MIN_H } from '../lib/og-den.mjs';
 
 const W = 1200, H = 630, PAD = 80, TW = W - 2 * PAD;
 const C = { ink: '#060d18', gold: '#c9a84c', goldL: '#e2c878', txt: '#c6d8e8' };
@@ -75,6 +75,49 @@ async function pool(items, n, fn) {
   await Promise.all(Array.from({ length: Math.min(n, items.length) }, async () => { while (i < items.length) await fn(items[i++]); }));
 }
 
+// Запасная картинка пересылки (20.10, Б9): у страницы dist, чья og:image — файл сайта меньше 600×315
+// (портрет, марка — Telegram/ВК покажут крошкой или ничего), og:image меняется на обложку музея
+// og/<музей>_index.jpg, если она не меньше 600×315, иначе на общую картинку сайта og/index.jpg (1200×630).
+// og:image:width/height ставятся по настоящему размеру файла. Текст страницы не трогается.
+// Проверка — scripts/og-razmer.mjs (npm run og-razmer): мелких должно быть 0.
+async function fallbackSmall(root, base, site, logger) {
+  const dims = new Map();
+  const size = (file) => {
+    if (!dims.has(file)) dims.set(file, fs.existsSync(file) ? sharp(file).metadata().then((m) => [m.width, m.height], () => null) : Promise.resolve(null));
+    return dims.get(file);
+  };
+  const ok = (d) => d && d[0] >= OG_MIN_W && d[1] >= OG_MIN_H;
+  const host = new URL(site).host;
+  const metaRe = (n) => new RegExp(`<meta\\b[^>]*\\b(?:property|name)=["']${n}["'][^>]*>\\s*`, 'gi');
+  const fromUrl = (u) => path.join(root, decodeURIComponent(u.pathname.slice(new URL(base, site).pathname.length)));
+  const files = [];
+  (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+    const p = path.join(d, e.name);
+    if (e.isDirectory()) walk(p); else if (e.name.endsWith('.html')) files.push(p);
+  } })(root);
+  let n = 0; const by = {};
+  for (const f of files) {
+    const h = fs.readFileSync(f, 'utf8');
+    const og = /content=["']([^"']*)["']/i.exec(h.match(metaRe('og:image'))?.[0] ?? '')?.[1];
+    if (!og) continue;
+    let u; try { u = new URL(og); } catch { continue; }
+    if (u.host !== host) continue;
+    const d = await size(fromUrl(u));
+    if (!d || ok(d)) continue;
+    const museum = /(?:^|[\\/])muzei[\\/]([^\\/]+)/.exec(path.relative(root, f))?.[1];
+    let rel = museum && `og/${museum}_index.jpg`, fd = rel && await size(path.join(root, rel));
+    if (!ok(fd)) { rel = 'og/index.jpg'; fd = await size(path.join(root, rel)); }
+    if (!ok(fd)) continue; // запасной нет — оставляем, проверка покажет
+    const abs = new URL(`${base}${rel}`, site).href;
+    const out = ['og:image', 'twitter:image', 'og:image:width', 'og:image:height', 'og:image:type']
+      .reduce((x, k) => x.replace(metaRe(k), ''), h)
+      .replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta property="og:image:width" content="${fd[0]}" />\n`
+        + `<meta property="og:image:height" content="${fd[1]}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
+    if (out !== h) { fs.writeFileSync(f, out); n++; by[rel] = (by[rel] || 0) + 1; }
+  }
+  logger.info(`og:image меньше ${OG_MIN_W}×${OG_MIN_H} заменена запасной у ${n} стр.${n ? `: ${Object.entries(by).map(([k, v]) => `${k} ${v}`).join(', ')}` : ''}`);
+}
+
 export default function ogDen() {
   let site, base;
   return {
@@ -121,6 +164,7 @@ export default function ogDen() {
         plate = undefined; // плашка не держится после хука
         sharp.cache(vips.cache.memory ? { memory: vips.cache.memory.max, files: vips.cache.files.max, items: vips.cache.items.max } : true);
         sharp.concurrency(vips.threads); // kartinki идёт следом со своими настройками
+        await fallbackSmall(root, base, site, logger);
         // Предупреждение (не роняет сборку, 19.10): страницы музеев, у которых пересылка всё ещё общей
         // картинкой (og-default / og/index) или SVG — Telegram/ВК покажут одно и то же или ничего. По музеям.
         const common = {};
