@@ -10,6 +10,7 @@ import shriftyFajlom from './src/integrations/shrifty-fajlom.mjs';
 import metrikaFajlom from './src/integrations/metrika-fajlom.mjs';
 import poisk from './src/integrations/poisk.mjs';
 import podderzhka from './src/integrations/podderzhka.mjs';
+import zakon from './src/integrations/zakon.mjs';
 import fs from 'node:fs';
 
 // Доска музеев (/doska/) — служебная, noindex, в карту сайта не идёт.
@@ -50,6 +51,7 @@ export default defineConfig({
   // metrikaFajlom — код Метрики файлом assets/rc-metrika-<md5>.js вместо инлайна (вес, 20.10; откат RC_METRIKA_INLAYN=1).
   // poisk — после minify: индекс pagefind (dist/pagefind/) по страницам музеев и дней; ВЫКЛЮЧЕН, включает RC_POISK=1.
   // podderzhka — «Поддержать проект» выключен до приёма денег (Р31): вырезает блоки из полных страниц; PUBLIC_PODDERZHKA=1 — не трогает.
+  // zakon — до сборки: сверка текстов с реестрами Минюста (красная) и основания кадров XX века (Е1/Е2, src/lib/zakon.mjs).
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) && !/\/ar\/$/.test(page) }), sitemapXml(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), poisk()],
+  integrations: [zakon(), sitemap({ filter: (page) => !soonDay(page) && !/\/(?:doska|poisk)\/$/.test(page) && !/\/ar\/$/.test(page) }), sitemapXml(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), poisk()],
 });

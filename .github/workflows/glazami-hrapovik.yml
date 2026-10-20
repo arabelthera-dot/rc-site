@@ -5,22 +5,32 @@
 # Заявка бота получает pull_request-проверку «ждёт одобрения» (политика first_time_contributors), а ручной
 # пуск proverka к заявке не прикрепляется (замер 17.10, #52) — храповик сам одобряет свою ждущую проверку.
 # Выключатель — переменная GLAZAMI_HRAPOVIK (≠ '1' — спит). Откат — удалить этот файл.
+#
+# Задание reestry (Е1, Сергей 20.10.2026, Р47) — тот же храповик-заявка для снимков реестров Минюста: по понедельникам
+# в 6:20 МСК `node scripts/prava.mjs --reestry` обновляет data/reestry/*.json, есть разница — заявка с автослиянием;
+# её сборка сверяет сайт с новым снимком (src/integrations/zakon.mjs) — новое имя из реестра в тексте роняет заявку.
+# Пять вопросов: задевает — только data/reestry/ (кроме isklyucheniya/osnovaniya); нужно — secrets.RF_PROXY
+# (socks5h://…, российский выход: minjust.gov.ru из-за рубежа отвечает нестабильно) — даёт Михаил; без нужного —
+# пробует напрямую, не вышло — предупреждение, работа зелёная, снимок прежний (сборка предупреждает, если он старше
+# 14 дней); проверка — ручной пуск; откат — убрать задание reestry.
 name: glazami-hrapovik
 on:
   push:
     branches: [main]
     paths-ignore: ['scripts/glazami-porog.json']
+  schedule:
+    - cron: '20 3 * * 1'
   workflow_dispatch:
 permissions:
   contents: write
   pull-requests: write
   actions: write
 concurrency:
-  group: glazami-hrapovik
+  group: glazami-hrapovik-${{ github.event_name }}
   cancel-in-progress: true
 jobs:
   hrapovik:
-    if: vars.GLAZAMI_HRAPOVIK == '1'
+    if: github.event_name != 'schedule' && vars.GLAZAMI_HRAPOVIK == '1'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -57,6 +67,44 @@ jobs:
             zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
             for id in $zhdut; do gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/approve"; done
             [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ] && { echo "Проверка заявки #$nomer идёт."; exit 0; }
+            sleep 10
+          done
+          echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"
+  reestry:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VETKA: avto/reestry
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: снимки реестров Минюста
+        env:
+          RF_PROXY: ${{ secrets.RF_PROXY }}
+        run: node scripts/prava.mjs --reestry || echo "::warning::реестры Минюста обновились не все — снимок прежний (нужен секрет RF_PROXY?)"
+      - name: заявка с новым снимком
+        run: |
+          git diff --quiet -- data/reestry && { echo "Снимки не изменились — заявки нет."; exit 0; }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -C "$VETKA"
+          git commit -m "[avto] reestry: снимок реестров Минюста $(date -u +%F)" -- data/reestry
+          git push -f origin "$VETKA"
+          nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
+          [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main \
+            --title "[avto] reestry: снимок реестров Минюста" \
+            --body "Еженедельное обновление data/reestry (Е1). Сборка заявки сверяет сайт с новым снимком: красная — в тексте имя из реестра, строка в логе сборки." | grep -o '[0-9]*$')
+          gh pr merge "$nomer" --auto --squash
+          sha=$(git rev-parse HEAD)
+          zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
+          for i in $(seq 1 12); do
+            zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
+            for id in $zhdut; do gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/approve"; done
+            [ "$(gh api "$zapros" -q '.total_count')" -gt 0 ] && [ -z "$zhdut" ] && exit 0
             sleep 10
           done
           echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"

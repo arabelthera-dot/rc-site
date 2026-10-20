@@ -1,0 +1,30 @@
+// Е1/Е2 (Сергей 20.10.2026, Р47) — закон о содержании и права на кадры XX века внутри сборки, а не отдельным сторожем.
+// Разбор — src/lib/zakon.mjs, снимки реестров и ведомости — data/reestry/, обновление — scripts/prava.mjs --reestry.
+// Е1: сильное совпадение с реестром Минюста (иноагенты, нежелательные и экстремистские организации, экстремистские
+//     материалы) — сборка красная со строкой «где — кто — какой реестр». Возможные (однофамильцы, короткие
+//     названия) и старый снимок (> 14 дней) — предупреждением. Ложное — строкой в data/reestry/isklyucheniya.json.
+// Е2: кадр XX века без основания — красная при PRAVA_XX_STROGO=1; без переменной — отчёт числом (пока кадров
+//     без основания больше 0, сайт не роняем — Сергей 20.10). Список — node scripts/prava.mjs --xx.
+import { sverkaReestrov, kadryXX } from '../lib/zakon.mjs';
+
+export default function zakon() {
+  return {
+    name: 'rc-zakon',
+    hooks: {
+      'astro:build:start': ({ logger }) => {
+        const r = sverkaReestrov();
+        for (const s of r.starye) logger.warn(s);
+        if (r.vozmozhnye.length) logger.warn(`реестры: возможных совпадений ${r.vozmozhnye.length} (однофамильцы, короткие названия) — список: node scripts/prava.mjs --zakon --vse`);
+        if (r.sovpadeniya.length) {
+          for (const s of r.sovpadeniya) logger.error(`${s.gde}: «${s.imya}» — ${s.reestr} (найдено «${s.variant}»)`);
+          throw new Error(`закон о содержании: ${r.sovpadeniya.length} совпадений с реестрами Минюста — убрать из текста или, если это тёзка, строкой в data/reestry/isklyucheniya.json`);
+        }
+        logger.info(`реестры: снимков ${r.snimkov}, записей ${r.zapisey}, совпадений 0`);
+        const xx = kadryXX();
+        const msg = `кадры XX века: ${xx.vsego}, без основания ${xx.bez.length} — список: node scripts/prava.mjs --xx`;
+        if (xx.bez.length && process.env.PRAVA_XX_STROGO === '1') throw new Error(msg);
+        (xx.bez.length ? logger.warn : logger.info).call(logger, msg);
+      },
+    },
+  };
+}
