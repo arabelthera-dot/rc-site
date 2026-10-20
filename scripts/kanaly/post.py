@@ -69,11 +69,15 @@ def site_base():
     return f'{site}/{base}/' if base else f'{site}/'
 
 
+# Символика врага (ст. 20.3 КоАП, 20.10.2026): кадр из data/simvolika-vraga.json в пост не идёт.
+SIMVOLIKA = {k['fail'].lower() for k in json.loads((ROOT / 'data' / 'simvolika-vraga.json').read_text(encoding='utf-8'))['kadry']}
+
+
 def first_image(slug, key, day):
     """Первая картинка дня — локальный файл в public/. У дня без images — первая <img> большой страницы."""
     for im in day.get('images') or []:
         f = PUBLIC / im['src'].lstrip('/')
-        if im.get('text_on_image') or not f.name.lower().endswith(IMG_EXT):
+        if im.get('text_on_image') or not f.name.lower().endswith(IMG_EXT) or f.name.lower() in SIMVOLIKA:
             continue
         if f.is_file():
             return f
@@ -84,7 +88,7 @@ def first_image(slug, key, day):
             continue
         f = (PUBLIC / src.lstrip('/')) if src.startswith('/') else (PUBLIC / 'muzei' / slug / src)
         f = f.resolve()
-        if f.is_file() and PUBLIC.resolve() in f.parents:
+        if f.is_file() and PUBLIC.resolve() in f.parents and f.name.lower() not in SIMVOLIKA:
             return f
     return None
 

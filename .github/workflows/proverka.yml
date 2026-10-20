@@ -110,6 +110,11 @@ jobs:
       - name: og-razmer — карточка пересылки у каждого дня
         continue-on-error: ${{ vars.OGRAZMER_STROGO == '0' }}
         run: node scripts/og-razmer.mjs dist
+      # Закон РФ (Сергей «да» 20.10.2026): символика врага — не превью (ст. 20.3 КоАП), чужие подложки карт — нет.
+      - name: simvolika-vraga — кадр из списка не og:image и не превью
+        run: node scripts/simvolika-vraga.mjs --dist dist
+      - name: karty-podlozhki — внешний сервер тайлов только из разрешённых
+        run: node scripts/karty-podlozhki.mjs
       # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
       # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).
       # Строгость включается переменной репозитория GLAZAMI_STROGO=1; без неё — только предупреждение.
