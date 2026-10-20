@@ -19,6 +19,9 @@
 Секреты (переменные окружения): TG_BOT_TOKEN, TG_CHANNEL, VK_TOKEN, VK_GROUP_ID. Нет секрета — площадка
 пропускается. Отметка «уже отправлено» — файл <state>/<площадка>/sent (в Actions его хранит кэш на дату);
 у VK дополнительно смотрится стена: пост со ссылкой на этот день уже есть — второй не ставится.
+Комментарии VK (20.10.2026): пост уходит с close_comments=1 — модерации нет, правила комментариев сайта —
+/pravila-kommentariev/. Открыть комментарии — переменная окружения VK_KOMMENTARII=1. Уже опубликованные
+посты закрывает разовый scripts/kanaly/vk_zakryt_kommentarii.py (по умолчанию dry-run).
 
   python scripts/kanaly/post.py --dry-run [--date ММ-ДД]   собрать и напечатать, ничего не отправлять
   python scripts/kanaly/post.py --state .kanaly             отправить на сегодня
@@ -264,6 +267,11 @@ def vk_already(post, token, gid):
     return any(post['url'] in (it.get('text') or '') for it in wall.get('items', []))
 
 
+def vk_close_comments():
+    """1 — комментарии под постом закрыты (по умолчанию); VK_KOMMENTARII=1 — открыты."""
+    return 0 if os.environ.get('VK_KOMMENTARII', '').strip() == '1' else 1
+
+
 def send_vk(post, token, gid):
     if vk_already(post, token, gid):
         return 'пост на этот день уже на стене — второй не ставлю'
@@ -274,7 +282,7 @@ def send_vk(post, token, gid):
         raise RuntimeError(f'VK загрузка картинки: {up}')
     ph = vk('photos.saveWallPhoto', token, group_id=gid, photo=up['photo'], server=up['server'], hash=up['hash'])[0]
     r = vk('wall.post', token, owner_id=f'-{gid}', from_group=1, message=post['vk'],
-           attachments=f"photo{ph['owner_id']}_{ph['id']}")
+           attachments=f"photo{ph['owner_id']}_{ph['id']}", close_comments=vk_close_comments())
     return f"пост {r['post_id']}"
 
 
