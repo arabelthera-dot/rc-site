@@ -32,7 +32,7 @@ from pathlib import Path
 from PIL import Image
 
 API = 'https://commons.wikimedia.org/w/api.php'
-UA = {'User-Agent': 'rc-site-kadr/1.0 (arabelthera@gmail.com)'}
+UA = {'User-Agent': 'rc-site-kadr/1.0 (info@russian-civilization.ru)'}
 ROOT = Path(__file__).resolve().parent.parent
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()

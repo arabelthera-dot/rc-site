@@ -120,10 +120,17 @@ def collect(key, skipped=None):
     return out
 
 
+def utm(u, source, key):
+    """Метка перехода для Метрики: откуда пришёл посетитель (telegram|vk|email), пост, день ММ-ДД."""
+    return f"{u}{'&' if '?' in u else '?'}utm_source={source}&utm_medium=post&utm_campaign=den-{key}"
+
+
 def build(date):
     key = date.strftime('%m-%d')
     base = site_base()
     url = lambda m: f"{base}muzei/{m['slug']}/den/{key}/"
+    tgu = lambda m: utm(url(m), 'telegram', key)
+    vku = lambda m: utm(url(m), 'vk', key)
     skipped = []
     found = collect(key, skipped)
     for s in skipped:
@@ -145,9 +152,9 @@ def build(date):
 
     def tg(also):
         e = html.escape
-        s = f"<b>{e(when)} · {e(main['title'])}</b>\n\n{e(main['hook'])}\n\n<a href=\"{e(url(main))}\">Открыть день в музее</a>"
+        s = f"<b>{e(when)} · {e(main['title'])}</b>\n\n{e(main['hook'])}\n\n<a href=\"{e(tgu(main))}\">Открыть день в музее</a>"
         if also:
-            s += '\n\nСегодня также:\n' + '\n'.join(f"• <a href=\"{e(url(m))}\">{e(m['title'])}</a>" for m in also)
+            s += '\n\nСегодня также:\n' + '\n'.join(f"• <a href=\"{e(tgu(m))}\">{e(m['title'])}</a>" for m in also)
         return s
 
     def visible(s):
@@ -161,11 +168,14 @@ def build(date):
     if visible(caption) > TG_CAPTION:
         raise SystemExit(f'подпись Telegram длиннее {TG_CAPTION} знаков даже без «Сегодня также»')
 
-    vk = f"{when} · {main['title']}\n\n{main['hook']}\n\nОткрыть день в музее: {url(main)}"
+    vk = f"{when} · {main['title']}\n\n{main['hook']}\n\nОткрыть день в музее: {vku(main)}"
     if also:
-        vk += '\n\nСегодня также:\n' + '\n'.join(f"• {m['title']} — {url(m)}" for m in also)
+        vk += '\n\nСегодня также:\n' + '\n'.join(f"• {m['title']} — {vku(m)}" for m in also)
+    # Р40: на трагических днях (16+ хотя бы у одного музея дня, Р41) комментарии закрыты заранее.
+    tragichno = any('тихий трагический день' in s for s in skipped) or any(int(m['znak'].rstrip('+')) >= 16 for m in found)
     return {'key': key, 'url': url(main), 'image': main['image'], 'tg': caption, 'vk': vk,
-            'main': main, 'also': also, 'urls': [url(main)] + [url(m) for m in also]}, key
+            'main': main, 'also': also, 'urls': [url(main)] + [url(m) for m in also],
+            'kommentarii_zakryty': tragichno}, key
 
 
 # --- отправка -------------------------------------------------------------------------------------------------

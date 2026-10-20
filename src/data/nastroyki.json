@@ -3,6 +3,6 @@
   "knopkaOshibka": false,
   "pochtaOshibka": "info@russian-civilization.ru",
   "_pochtaOshibka": "Почта проекта: сюда шлёт строка «Нашли ошибку? Сообщите нам» на страницах дней (Сергей 20.10.2026). Письма дойдут после настройки почты домена (М45).",
-  "pochtaProverka": "arabelthera@gmail.com",
+  "pochtaProverka": "info@russian-civilization.ru",
   "_pochtaProverka": "Куда приходят ответы проверяющих со страницы /proverka/ (Р46). Строка «Нашли ошибку? Сообщите нам» на страницах дней с 20.10.2026 (решение Сергея) шлёт уже на pochtaOshibka. У домена russian-civilization.ru на 20.10.2026 нет почтового сервера (MX), письмо на pochtaOshibka вернётся. Появится почта проекта — заменить здесь."
 }
