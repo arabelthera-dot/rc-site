@@ -1,8 +1,8 @@
 ---
 // Единая верхняя полоса — разметка общая с полными страницами дней (src/lib/sitebar.mjs).
 import { sitebarHtml } from '../lib/sitebar.mjs';
-interface Props { slug: string; title: string; here?: string }
-const { slug, title, here } = Astro.props;
-const html = sitebarHtml({ base: import.meta.env.BASE_URL, slug, title, here });
+interface Props { slug: string; title: string; here?: string; vozrast?: string }
+const { slug, title, here, vozrast } = Astro.props;
+const html = sitebarHtml({ base: import.meta.env.BASE_URL, slug, title, here, vozrast });
 ---
 <Fragment set:html={html} />

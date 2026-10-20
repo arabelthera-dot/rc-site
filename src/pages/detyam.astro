@@ -1,0 +1,52 @@
+---
+// Детский вход (Р41, Е3, Сергей 20.10.2026): музеи и дни 0+ и 6+ — крупно и просто. Знаки — src/data/vozrast.json
+// (src/lib/vozrast.mjs); в отбор идут только готовые дни (хук или суть) музеев со знаком не старше 6+.
+// Дни — ближайшие к дате сборки вперёд по году, по шесть сказок и по три дня остальных музеев. Вид — public/assets/rc-detyam.css.
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { isReady } from '../lib/kalendar';
+import { znak, znakMuzeya } from '../lib/vozrast.mjs';
+import { whenOfKey } from '../lib/sitebar.mjs';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const museums = (await getCollection('museums')).map((m) => m.data);
+const days = (await getCollection('days')).map((d) => d.data);
+const now = new Date(Date.now() + 3 * 3600e3); // МСК
+const today = `${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`;
+const img = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
+const blizhajshie = (slug: string, n: number) => {
+  const own = days.filter((d) => d.museum === slug && isReady(d) && parseInt(znak(slug, d.key), 10) <= 6)
+    .sort((a, b) => a.key.localeCompare(b.key));
+  return [...own.filter((d) => d.key >= today), ...own.filter((d) => d.key < today)].slice(0, n);
+};
+const gruppa = (z: string, n: number) => museums.filter((m) => znakMuzeya(m.slug) === z)
+  .map((m) => ({ m, dni: blizhajshie(m.slug, n) })).filter((x) => x.dni.length);
+const skazki = gruppa('0+', 6);
+const shkola = gruppa('6+', 3);
+---
+<Base title="Детям — Русская цивилизация" description="Сказки и дни музеев «Русской цивилизации» для детей: 0+ — для самых маленьких, 6+ — для школьников.">
+  <Fragment slot="head"><link rel="stylesheet" href={`${base}assets/rc-detyam.css`} /></Fragment>
+  <header slot="header" class="dt-head">
+    <h1>Детям</h1>
+    <p class="dt-lead">Сказки и истории, которые можно смотреть детям. Знак у музея — с какого возраста: <b>0+</b> — для самых маленьких, <b>6+</b> — для школьников.</p>
+  </header>
+  {[{ id: 'skazki', h: 'Сказки', z: '0+', list: skazki }, { id: 'shkola', h: 'Для школьников', z: '6+', list: shkola }].map((g) => g.list.length > 0 && (
+    <section class="dt-gruppa" aria-labelledby={`dt-${g.id}`}>
+      <h2 id={`dt-${g.id}`}>{g.h} <span class="rc-vozrast">{g.z}</span></h2>
+      {g.list.map(({ m, dni }) => (
+        <div class="dt-muzej">
+          <h3><a href={`${base}muzei/${m.slug}/`}>{m.title_ru}</a></h3>
+          <ul class="dt-dni">
+            {dni.map((d) => (
+              <li><a class="dt-den" href={`${base}muzei/${m.slug}/den/${d.key}/`}>
+                {d.images[0] && <img src={img(d.images[0].src)} alt={d.images[0].caption} loading="lazy" decoding="async" />}
+                <span class="dt-data">{whenOfKey(d.key)}</span>
+                <span class="dt-t">{d.title}</span>
+                {d.hook && <span class="dt-hook">{d.hook}</span>}
+              </a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+  ))}
+</Base>

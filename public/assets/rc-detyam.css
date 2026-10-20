@@ -1,0 +1,20 @@
+/* Детский вход /detyam/ (Р41, Е3, 20.10.2026): крупно и просто — большие плитки, крупный шрифт, касание во всю плитку. */
+.dt-head{max-width:980px;margin:0 auto;padding:40px 20px 8px;text-align:center}
+.dt-head h1{font-size:clamp(36px,6vw,56px);margin:0 0 12px}
+.dt-lead{font-size:20px;line-height:1.5;max-width:40em;margin:0 auto}
+.dt-gruppa{max-width:1100px;margin:32px auto;padding:0 16px}
+.dt-gruppa h2{display:flex;align-items:center;gap:12px;font-size:32px;margin:0 0 16px}
+.dt-muzej{margin:0 0 28px}
+.dt-muzej h3{font-size:24px;margin:0 0 12px}
+.dt-muzej h3 a{color:inherit}
+.dt-dni{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.dt-dni li{margin:0;padding:0}
+.dt-den{display:flex;flex-direction:column;gap:6px;height:100%;box-sizing:border-box;padding:0 0 16px;border-radius:16px;overflow:hidden;
+  background:rgba(201,168,76,.1);border:2px solid rgba(201,168,76,.35);color:inherit;text-decoration:none}
+.dt-den:hover,.dt-den:focus-visible{border-color:#d9b95c;background:rgba(201,168,76,.18)}
+.dt-den:focus-visible{outline:3px solid #d9b95c;outline-offset:2px}
+.dt-den img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;margin:0 0 6px;background:rgba(0,0,0,.2)}
+.dt-den > span{padding:0 16px}
+.dt-data{font-size:15px;opacity:.8}
+.dt-t{font-size:22px;font-weight:700;line-height:1.25}
+.dt-hook{font-size:18px;line-height:1.45}

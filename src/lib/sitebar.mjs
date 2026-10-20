@@ -13,7 +13,8 @@ const poiskLink = (base) => (globalThis.process?.env?.RC_POISK === '1'
   ? `<li class="rc-sb-poisk"><a class="rc-sb-link" href="${base}poisk/">Поиск</a></li>` : '');
 
 // here — «где ты» (дата, «Календарь»); нет here — страница музея: второй уровень без ссылки.
-export function sitebarHtml({ base, slug, title, here }) {
+// vozrast — готовый знак 436-ФЗ (src/lib/vozrast.mjs znakHtml), последним пунктом справа.
+export function sitebarHtml({ base, slug, title, here, vozrast = '' }) {
   const t = esc(title);
   const museum = here
     ? `<a class="rc-sb-link rc-sb-museum" href="${base}muzei/${slug}/" title="${t}">${t}</a>`
@@ -22,7 +23,7 @@ export function sitebarHtml({ base, slug, title, here }) {
     + `<li><a class="rc-sb-link rc-sb-home" href="${base}">Русская цивилизация</a></li>`
     + `<li class="rc-sb-m">${museum}</li>`
     + (here ? `<li class="rc-sb-here" aria-current="page"><span class="rc-sb-link">${esc(here)}</span></li>` : '')
-    + `${poiskLink(base)}</ol></nav>`;
+    + `${poiskLink(base)}${vozrast ? `<li class="rc-sb-vozrast">${vozrast}</li>` : ''}</ol></nav>`;
 }
 
 export const TG_CHANNEL = 'https://t.me/russian_civilization_ru';

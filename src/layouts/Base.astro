@@ -12,6 +12,7 @@ import nastroyki from '../data/nastroyki.json';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { ogRaster } from '../lib/og-den.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml } from '../lib/redakciya.mjs';
+import { znak, poPuti, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
 // src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
 import museumCss from '../styles/museum.css?url';
@@ -66,7 +67,16 @@ const ld = kind === 'home'
   : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumLd, author: red, publisher: red, license: LICENZIYA,
       about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal, dateModified: Astro.props.modified }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
-const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
+// Знак 436-ФЗ (Р41, Е3, 20.10): музей и день — из адреса, данные — src/data/vozrast.json. В JSON-LD — typicalAgeRange
+// (свойство CreativeWork: у главной — WebSite, у музея — его WebPage). 12+ и старше — data-rc-bez-ochkov на <html>:
+// движки счёта (museum-score.js, museum-quiz.js) и rc-vozrast.css прячут очки, баллы и звания, интерактив работает.
+const pv = poPuti(Astro.url.pathname, base);
+const vz = znak(museum ?? pv.museum, pv.key);
+const rod = roditelyu(museum ?? pv.museum, pv.key);
+const age = typicalAgeRange(vz);
+const ldAge = Array.isArray(ld) ? ld.map((o) => (o['@type'] === 'WebSite' || o['@type'] === 'WebPage' ? { ...o, typicalAgeRange: age } : o))
+  : { ...ld, typicalAgeRange: age };
+const ldJson = JSON.stringify(ldAge).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
 // hreflang — только готовые языки (ready:true) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
 const alternates = hreflangi(Astro.url.pathname, base, Astro.site);
@@ -84,7 +94,7 @@ const oshibkaUrl = oshibkaMailto
 }).toString() : undefined;
 ---
 <!doctype html>
-<html lang={lang.code} dir={lang.dir} data-museum={museum}>
+<html lang={lang.code} dir={lang.dir} data-museum={museum} data-rc-vozrast={vz} data-rc-bez-ochkov={bezOchkov(vz) ? '' : undefined}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -129,6 +139,8 @@ const oshibkaUrl = oshibkaMailto
   {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
   <InlineCss file="rc-podpiska.css" />
   <InlineCss file="rc-podval.css" />
+  {/* знак возраста и строка «Родителю» — 1 КБ, внутрь <head>, как подписка */}
+  <InlineCss file="rc-vozrast.css" />
   {/* режим слабовидящих — 22,6 КБ: файлом, не инлайном (инлайн × ~3600 страниц = +80 МБ сборки, 20.10).
        Класс ставит скрипт в начале <head>, а <link> в <head> блокирует отрисовку — мигания нет; файл кэшируется. */}
   <link rel="stylesheet" href={`${base}assets/rc-slabovid.css`} />
@@ -145,7 +157,10 @@ const oshibkaUrl = oshibkaMailto
   <Yazyki />
   <Fragment set:html={slabovidButtonHtml()} />
   {/* Страницы музеев — единая верхняя полоса (Сергей 17.10) вместо крошек и кнопки «назад» */}
-  {museum && museumTitle && <SiteBar slug={museum} title={museumTitle} here={here} />}
+  {museum && museumTitle && <SiteBar slug={museum} title={museumTitle} here={here} vozrast={znakHtml(vz)} />}
+  {/* Знак 436-ФЗ: на страницах музеев — в полосе, на прочих — в верхнем углу (absolute, без сдвига вёрстки) */}
+  {!(museum && museumTitle) && <div class="rc-vozrast-ugol"><Fragment set:html={znakHtml(vz)} /></div>}
+  {rod && <Fragment set:html={roditelyuHtml(rod)} />}
   {!(museum && museumTitle) && back && <a class="backbtn" href={back.href}><span class="ar">←</span>{back.label}</a>}
   <slot name="header" />
   {!(museum && museumTitle) && crumbs.length > 0 && (
@@ -159,7 +174,7 @@ const oshibkaUrl = oshibkaMailto
   <footer>
     <div class="slog">{s('slogan')}</div>
     <slot name="footer"><a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></slot>
-    <div class="foot-links"><a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kak-sdelan-muzey/`}>Как сделан музей</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · {oshibkaMailto
+    <div class="foot-links"><a href={`${base}detyam/`}>Детям</a> · <a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kak-sdelan-muzey/`}>Как сделан музей</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · {oshibkaMailto
       ? <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">Нашли ошибку?</a>
       : <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">Нашли ошибку?</a>}</>}</div>
     <Fragment set:html={licenziyaHtml(base)} />

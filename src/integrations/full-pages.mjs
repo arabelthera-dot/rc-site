@@ -16,6 +16,7 @@ import { hreflangi, stroka, poUmolchaniyu } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
+import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 
@@ -49,6 +50,7 @@ function ldRedakciya(html, red, modified) {
 }
 
 const SRC = 'src/data/full-pages';
+const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
 const MUSEUMS = Object.fromEntries(JSON.parse(fs.readFileSync('src/data/museums.json', 'utf8')).museums
   .map((m) => [m.slug, m.title_ru]));
 const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
@@ -548,9 +550,13 @@ export default function fullPages() {
                 const ld = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title ?? (h1 && decode(h1)) ?? key,
                   url, inLanguage: 'ru', ...(d.hook ? { description: d.hook } : {}),
                   isPartOf: { '@type': 'Museum', name: MUSEUMS[museum], url: new URL(`${base}muzei/${museum}/`, site).href },
+                  typicalAgeRange: typicalAgeRange(znak(museum, key)),
                   author: redakciyaLd(new URL(base, site).href), publisher: redakciyaLd(new URL(base, site).href), license: LICENZIYA };
                 add.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
               }
+              // Своя ld+json у старой страницы — возраст (436-ФЗ, Р41) отдельной WebPage этого адреса.
+              if (!add.some((x) => x.includes('typicalAgeRange'))) add.push(`<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org',
+                '@type': 'WebPage', url, inLanguage: 'ru', typicalAgeRange: typicalAgeRange(znak(museum, key)) })}</script>`);
               html = html.replace(/<\/head>/i, `${add.join('\n')}\n</head>`);
             }
             // Подпись «Редакция», лицензия CC BY 4.0 (Р34, Р35), «Проверено» и журнал исправлений (Е5) — как у шаблонов
@@ -575,8 +581,15 @@ export default function fullPages() {
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             // Яндекс Метрика (тот же код, что Metrika.astro в Base.astro) — один раз; уже есть в исходнике — не дублируем.
             if (!/mc\.yandex\.ru\/metrika\/tag\.js/.test(html)) html = html.replace(/<\/head>/i, `${metrikaHtml}\n</head>`);
-            html = html.replace(/<\/head>/i, `${sitebarAssets(base)}\n</head>`)
-              .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key) })}`);
+            // Знак 436-ФЗ (Р41, Е3, 20.10) — в полосе; на 12+/16+ под ней строка «Родителю», на <html> — data-rc-bez-ochkov:
+            // museum-score.js / museum-quiz.js и rc-vozrast.css не показывают очки и звания; фраза про очки в тексте — долой.
+            const vz = znak(museum, key);
+            const bez = bezOchkov(vz);
+            html = html.replace(/<html\b/i, `<html data-rc-vozrast="${vz}"${bez ? ' data-rc-bez-ochkov' : ''}`);
+            if (bez) html = html.replace(/\s*За (?:каждый )?верный ответ — \d+ очк\w* из 100\./g, '')
+              .replace(/Для викторины и счёта нужен JavaScript; без него очки не начисляются\./g, 'Для викторины нужен JavaScript.');
+            html = html.replace(/<\/head>/i, `<style data-rc-vozrast>${VOZRAST_CSS}</style>\n${sitebarAssets(base)}\n</head>`)
+              .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key), vozrast: znakHtml(vz) })}${roditelyuHtml(roditelyu(museum, key))}`);
             // Версия для слабовидящих (Д7): класс — первым скриптом <head> (до стилей, без мигания), кнопка — в начале <body>.
             html = html.replace(/<head(?:\s[^>]*)?>/i, (h) => `${h}\n<script>${slabovidHeadJs}</script>`)
               .replace(/<\/head>/i, `<link rel="stylesheet" href="${base}assets/rc-slabovid.css" />\n</head>`)
