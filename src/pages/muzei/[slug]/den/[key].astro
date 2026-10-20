@@ -38,6 +38,8 @@ export async function getStaticPaths() {
 }
 const { d, m, prev, next, keys, own, empty = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
+// «Поддержать проект» — выключено до работающего приёма денег (Р31, 20.10.2026); включение — PUBLIC_PODDERZHKA=1.
+const podderzhka = import.meta.env.PUBLIC_PODDERZHKA === '1';
 // Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key) => stroka(lang.code, key);
@@ -93,7 +95,9 @@ const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
   next: next && { href: dayUrl(next.key), title: dayName(next) },
   all: { href: cal, label: 'Все дни календаря' },
   city: base,
-  shareRow: false, // «Поделиться» даёт блок поддержки (data-support-slot) — одна строка на страницу, glazami п.16
+  // «Поделиться» даёт блок поддержки (data-support-slot) — одна строка на страницу, glazami п.16;
+  // поддержка выключена (Р31) — строку «Поделиться» ставит museum-chrome.js
+  shareRow: !podderzhka,
   random: keys.filter((k: string) => k !== d.key).map((k: string) => `${dayUrl(k)}index.html`),
 })};`;
 // Шрифты — только семейства темы и своего стиля музея, вписанные в <head> (вместо всего fonts.css, замер 18.10).
@@ -154,7 +158,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
       </div>
     </header>
 
-    <div class="dp-sup" data-support-slot></div>
+    {podderzhka && <div class="dp-sup" data-support-slot></div>}
 
     {(d.gist || rest.length > 0) && (
       <section class="block" id="sut">
@@ -224,7 +228,9 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 
   <script is:inline set:html={chrome}></script>
   <script is:inline src={`${base}assets/museum-chrome.js`}></script>
+  {podderzhka && <>
   <script is:inline set:html={support}></script>
   <script is:inline src={`${base}assets/museum-support.js`}></script>
+  </>}
 </Base>
 )}

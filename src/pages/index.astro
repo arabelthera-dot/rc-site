@@ -13,6 +13,8 @@ import fs from 'node:fs';
 import { beyondYear, isDated } from '../lib/kalendar';
 import { yazyk, razobratPut, stroka, chislo, strelkaVpered } from '../lib/yazyki.mjs';
 const base = import.meta.env.BASE_URL;
+// «Поддержать проект» — выключено до работающего приёма денег (Р31, 20.10.2026); включение — PUBLIC_PODDERZHKA=1.
+const podderzhka = import.meta.env.PUBLIC_PODDERZHKA === '1';
 // строки главной — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key: string): any => stroka(lang.code, key);
@@ -55,7 +57,7 @@ const support = { museum: s('portalImya'), lang: lang.code };
     <Segodnya />
     <SegodnyaVse />
 
-    <div class="p-supslot" data-support-slot></div>
+    {podderzhka && <div class="p-supslot" data-support-slot></div>}
 
     <section class="p-vitrina" aria-labelledby="p-vit-h">
       <h2 id="p-vit-h" class="p-sec">{s('muzei')}</h2>
@@ -83,8 +85,10 @@ const support = { museum: s('portalImya'), lang: lang.code };
     </section>
   </div>
 
+  {podderzhka && <>
   <script is:inline define:vars={{ support }}>window.MUSEUM_SUPPORT = support;</script>
   <script is:inline src={`${base}assets/museum-support.js`} defer></script>
+  </>}
 
   <Fragment slot="footer"><p class="p-park">{s('portalPark')}</p></Fragment>
 </Base>

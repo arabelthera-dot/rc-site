@@ -20,6 +20,8 @@ const { m, days } = Astro.props;
 const ogFallback = [...days].sort((a, b) => a.data.key.localeCompare(b.data.key)).flatMap((d) => d.data.images ?? [])
   .filter((i) => !i.generated).map((i) => ogRaster(i.src)).find(Boolean); // WebP — JPG/PNG-двойником (Б9 19.10)
 const base = import.meta.env.BASE_URL;
+// «Поддержать проект» — выключено до работающего приёма денег (Р31, 20.10.2026); включение — PUBLIC_PODDERZHKA=1.
+const podderzhka = import.meta.env.PUBLIC_PODDERZHKA === '1';
 // Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key: string): any => stroka(lang.code, key);
@@ -84,7 +86,7 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
 ---
 <Base title={s('kalTitle').replace('{t}', m.title_ru)} description={s('kalOpisanie').replace('{t}', m.title_ru)} museum={m.slug} museumTitle={m.title_ru} here={s('kalZdes')} ogFallback={ogFallback}>
   <header slot="header"><div class="b1">{m.title_ru}</div><h1>{s('kalH1')}</h1></header>
-  <div class="cal-supslot" data-support-slot></div>
+  {podderzhka && <div class="cal-supslot" data-support-slot></div>}
   <div id="calcard" set:html={cardHtml}></div>
   <div id="calyear"><div class="calstat">{s('zapolnenoDney')} <b>{filled}</b> {s('iz')} {total} {beyond.length > 0 && ` · ${s('sverhGodaEshche').replace('{n}', String(beyond.length)).replace('{zapisey}', zapisey(beyond.length))}`}</div>{months.map((mo) => (
     <section class="cmon"><h2>{mo.name}<span class="cnt">{mo.cnt}</span></h2><div class="cgrid">{mo.cells.map((c) => (
@@ -99,6 +101,8 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/`}>{`${strelkaNazad(lang.dir)} ${s('vMuzey')}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></Fragment>
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
   <script is:inline src={`${base}assets/museum-calendar-page.js`}></script>
+  {podderzhka && <>
   <script is:inline define:vars={{ support: { museum: m.title_ru } }}>window.MUSEUM_SUPPORT = support;</script>
   <script is:inline src={`${base}assets/museum-support.js`}></script>
+  </>}
 </Base>

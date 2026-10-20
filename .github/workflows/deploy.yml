@@ -24,6 +24,8 @@ jobs:
     env:
       # Поиск по сайту (pagefind) — переменная репозитория RC_POISK ('1' — включён; src/integrations/poisk.mjs).
       RC_POISK: ${{ vars.RC_POISK }}
+      # «Поддержать проект» (Р31, 20.10.2026): пусто — выключен до работающего приёма денег, '1' — включён.
+      PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v5

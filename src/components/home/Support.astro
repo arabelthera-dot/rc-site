@@ -4,7 +4,11 @@
 interface Props { museum: string }
 const { museum } = Astro.props;
 const base = import.meta.env.BASE_URL;
+// Р31 (20.10.2026): выключено, пока нет работающего приёма денег; включение — PUBLIC_PODDERZHKA=1.
+const vkl = import.meta.env.PUBLIC_PODDERZHKA === '1';
 const cfg = { museum, lang: 'ru' };
 ---
+{vkl && <>
 <script is:inline define:vars={{ cfg }}>window.MUSEUM_SUPPORT = cfg;</script>
 <script is:inline src={`${base}assets/museum-support.js`} defer></script>
+</>}

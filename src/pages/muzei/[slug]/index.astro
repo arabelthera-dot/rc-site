@@ -23,6 +23,8 @@ export async function getStaticPaths() {
 }
 const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
+// «Поддержать проект» — выключено до работающего приёма денег (Р31, 20.10.2026); включение — PUBLIC_PODDERZHKA=1.
+const podderzhka = import.meta.env.PUBLIC_PODDERZHKA === '1';
 // Служебные строки шаблона — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key: string): any => stroka(lang.code, key);
@@ -53,7 +55,7 @@ const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...da
   <Cover slot="header" m={m} img={img} />
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
   <Today first={first} dated={dated} />
-  <div class="mh-supslot" data-support-slot></div>
+  {podderzhka && <div class="mh-supslot" data-support-slot></div>}
   <Calendar slug={m.slug} total={yearDays.length} />
   <Themes groups={groups} />
   <OpenDays days={featured} total={yearDays.length} calHref={days.length ? `${base}muzei/${m.slug}/calendar/` : undefined} />
