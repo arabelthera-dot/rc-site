@@ -6,6 +6,7 @@ import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { kalendarMuzeya } from '../../../lib/kalendar-dannye.mjs';
 import { YEAR, beyondYear, plural, stripSrcPrefix } from '../../../lib/kalendar';
+import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../lib/yazyki.mjs';
 export async function getStaticPaths() {
   const days = await getCollection('days');
   return (await getCollection('museums'))
@@ -17,6 +18,9 @@ const { m, days } = Astro.props;
 const ogFallback = [...days].sort((a, b) => a.data.key.localeCompare(b.data.key)).flatMap((d) => d.data.images ?? [])
   .filter((i) => !i.generated).map((i) => ogRaster(i.src)).find(Boolean); // WebP — JPG/PNG-двойником (Б9 19.10)
 const base = import.meta.env.BASE_URL;
+// Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key) => stroka(lang.code, key);
 // Состав карточки — как у старого календаря этого музея: механика и источник только там, где они
 // были (поле card в calendar-meta); отображение «запись → календарь» — src/lib/kalendar-dannye.mjs (и для полных страниц).
 const { cal, conf } = kalendarMuzeya(m.slug, days.map((d) => d.data), base);
@@ -84,7 +88,7 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
     <section class="cmon beyond"><h2>Сверх года<span class="cnt">{extra.length} {plural(extra.length, 'запись', 'записи', 'записей')}</span></h2><div class="cgrid cgrid-wide">{extra.map((x) => (
       <button class="cday full cextra" data-k={x.k} title={`День ${x.dd} · ${x.mon} — ${x.t}`.replace(/"/g, '')}>{x.dd} · {x.mon}</button>))}</div></section>)}</div>
   <div class="council"><b style="color:var(--gold-l)">Календарь наполняется.</b> Состав года утверждён целиком — 365 дней; страницы открываются по одной, по образцу эталонного дня. Золотом отмечены дни, у которых уже есть разбор, аудиогид и интерактив.</div>
-  <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/`}>← в музей</a> · <a href={base}>в город-музей →</a></Fragment>
+  <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/`}>{`${strelkaNazad(lang.dir)} ${s('vMuzey')}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></Fragment>
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
   <script is:inline src={`${base}assets/museum-calendar-page.js`}></script>
   <script is:inline define:vars={{ support: { museum: m.title_ru } }}>window.MUSEUM_SUPPORT = support;</script>

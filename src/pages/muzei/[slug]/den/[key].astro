@@ -13,6 +13,7 @@ import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
 import DenAnketa from '../../../../components/den/DenAnketa.astro';
 import { YEAR_KEYS, isDated, isReady, nearestReady, stripSrcPrefix } from '../../../../lib/kalendar';
+import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../../lib/yazyki.mjs';
 const MON = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 export async function getStaticPaths() {
@@ -39,6 +40,9 @@ export async function getStaticPaths() {
 }
 const { d, m, prev, next, keys, own, empty = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
+// Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key) => stroka(lang.code, key);
 const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
 // Подпись дня: у датированного музея — дата, у недатированного — номер записи «День N · месяц»
@@ -214,9 +218,9 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
 
   <Fragment slot="footer">
     <div class="dp-foot">
-      <a href={museumUrl}>← {m.title_ru}</a> · <a href={base}>в город-музей →</a>
+      <a href={museumUrl}>{`${strelkaNazad(lang.dir)} ${m.title_ru}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a>
     </div>
-    <div class="dp-err">Нашли неточность? <a href={`mailto:arabelthera@gmail.com?subject=${encodeURIComponent(`Ошибка: ${m.title_ru}, ${d.key}`)}`}>Сообщите нам</a> — проверим по источникам.</div>
+    <div class="dp-err">{s('oshibkaVopros')} <a href={`mailto:arabelthera@gmail.com?subject=${encodeURIComponent(`${s('oshibkaTema')}: ${m.title_ru}, ${d.key}`)}`}>{s('oshibkaSsylka')}</a> {s('oshibkaKonec')}</div>
   </Fragment>
 
   <script is:inline set:html={chrome}></script>

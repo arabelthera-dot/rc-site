@@ -36,3 +36,26 @@ export function hreflangi(pathname, base, site) {
   links.push({ hreflang: 'x-default', href: new URL(putNaYazyke(rest, poUmolchaniyu, base), site).href });
   return links;
 }
+
+/** og:locale языка: поле locale из yazyki.json, иначе code_COUNTRY (ru → ru_RU). */
+export const ogLocale = (y) => y.locale ?? `${y.code}_${y.country}`;
+
+// Строки общего шаблона по языку (src/data/stroki.json); нет строки — русская (язык по умолчанию).
+import stroki from '../data/stroki.json' with { type: 'json' };
+export function stroka(code, key) {
+  return stroki[code]?.[key] ?? stroki[poUmolchaniyu][key];
+}
+
+/** Стрелка «вперёд» по ходу строки: в письме справа налево смотрит влево. */
+export const strelkaVpered = (dir) => (dir === 'rtl' ? '←' : '→');
+
+/** Стрелка «назад» по ходу строки: в письме справа налево смотрит вправо. */
+export const strelkaNazad = (dir) => (dir === 'rtl' ? '→' : '←');
+
+/** Форма слова при числе n по правилам языка (Intl.PluralRules): формы — объект категорий
+ *  { one, few, many, other, … } строки key словаря; нет категории — other. «21 день», «3 дня», «5 дней». */
+export function chislo(code, n, key) {
+  const formy = stroka(code, key);
+  const kat = new Intl.PluralRules(code).select(n);
+  return formy[kat] ?? formy.other;
+}
