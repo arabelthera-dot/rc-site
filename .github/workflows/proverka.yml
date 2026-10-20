@@ -90,6 +90,13 @@ jobs:
         env:
           SVERKA_H1_STROGO: '1'
         run: node scripts/sverka-h1.mjs
+      # Подписи кадров (план сайта Д2, 20.10.2026): красное — кадр карточки дня без подписи. Полные
+      # страницы — только отчёт (чинят хозяева страниц). Новое — выключенным: заявку роняет лишь при
+      # переменной репозитория PODPISI_STROGO=1; включить, когда красных в карточках 0 на main.
+      - name: podpisi — у каждого кадра есть подпись
+        continue-on-error: ${{ vars.PODPISI_STROGO != '1' }}
+        timeout-minutes: 1
+        run: npm run proverka-podpisey
       # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам
       # (главная, музей izobreteniya, его календарь, день 01-05). ТОЛЬКО ОТЧЁТ — заявку роняют лишь
       # сборка и битые ссылки (Сергей 17.10): continue-on-error, в lighthouserc только "warn".
