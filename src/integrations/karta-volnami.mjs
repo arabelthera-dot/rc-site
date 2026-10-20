@@ -1,7 +1,7 @@
 // Карта сайта волнами (Е6, Р47; «да» Сергея 20.10.2026) — вместо @astrojs/sitemap. Поисковик сначала получает
 // флагманские страницы, потом остальное, языки — по одному. Открытые волны — строка otkryty в src/data/karta-sayta.json.
 //   sitemap-index.xml          — индекс только открытых волн (его называет robots.txt; /sitemap.xml — копия);
-//   sitemap-volna-1.xml        — главная, «О проекте», «Как сделан музей», музеи с готовыми днями, лучшие дни;
+//   sitemap-volna-1.xml        — главная, витрина музеев /muzei/, «О проекте», «Как сделан музей», музеи с готовыми днями, лучшие дни;
 //   sitemap-volna-2.xml        — остальные страницы для поиска;
 //   sitemap-<код языка>.xml    — страницы /<код>/…; в индексе, только если код в otkryty и ready:true в yazyki.json.
 // Файлы всех волн пишутся всегда (scripts/glazami.mjs меряет по ним весь сайт), в индекс идут только открытые.
@@ -21,7 +21,7 @@ import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
 const read = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 const DAYS = 'src/content/days';
 const SLUZHEBNYE = /^\/(?:doska|karta|poisk|proverka)\//;
-const FLAGMANY = new Set(['/', '/o-proekte/', '/kak-sdelan-muzey/']);
+const FLAGMANY = new Set(['/', '/muzei/', '/o-proekte/', '/kak-sdelan-muzey/']);
 const LIMIT = 50000; // протокол: не больше 50 000 адресов в файле
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const pozzhe = (a, b) => (!a || (b && new Date(b) > new Date(a)) ? b : a);

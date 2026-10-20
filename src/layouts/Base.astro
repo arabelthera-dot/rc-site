@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
@@ -31,6 +31,9 @@ const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
 const headFont = own && /--font-h:\s*'([^']+)'/.exec(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8'))?.[1];
 const headFiles = headFont ? fontFiles([headFont], ['700']) : [];
 const url = new URL(Astro.url.pathname, Astro.site).href;
+// У страницы без своего адреса (404 — её отдают на любой несуществующий путь) нет canonical, og:url и hreflang:
+// иначе они ведут на /404/, которого нет, и спорят с noindex (обход сайта 20.10, задача OB).
+const bezAdresa = Astro.props.bezAdresa === true;
 // Нет обложки музея — первая настоящая растровая картинка его дней (ogFallback, главная и календарь музея, 19.10):
 // иначе у 30 из 33 музеев пересылка главной и календаря шла общей og-default.jpg. SVG Telegram/ВК не показывают.
 // WebP ВК в превью не показывает — только JPG/PNG/GIF, WebP меняется на двойник .jpg/.png (ogRaster, Б9 19.10).
@@ -83,7 +86,7 @@ const ldAge = Array.isArray(ld) ? ld.map((o) => (o['@type'] === 'WebSite' || o['
 const ldJson = JSON.stringify(ldAge).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
 // hreflang — только готовые языки (ready:true) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
-const alternates = hreflangi(Astro.url.pathname, base, Astro.site);
+const alternates = bezAdresa ? [] : hreflangi(Astro.url.pathname, base, Astro.site);
 const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
 // «Нашли ошибку?» (Д6) — только на страницах музея/дня и только при флаге knopkaOshibka (src/data/nastroyki.json, по умолчанию выкл.).
 // Ссылка на новую карточку доски AI_Projects с предзаполненными заголовком, текстом и меткой; без токенов и сервера.
@@ -114,7 +117,7 @@ const oshibkaUrl = oshibkaMailto
   <meta property="og:type" content={type} />
   <meta property="og:title" content={ogTitle ?? title} />
   {description && <meta property="og:description" content={description} />}
-  <meta property="og:url" content={url} />
+  {!bezAdresa && <meta property="og:url" content={url} />}
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:alt" content={imageAlt ?? title} />
   <meta name="twitter:card" content="summary_large_image" />
@@ -125,7 +128,7 @@ const oshibkaUrl = oshibkaMailto
   <link rel="alternate" type="application/rss+xml" title="Русская цивилизация — новые дни музеев" href={`${base}rss.xml`} />
   {rss && <link rel="alternate" type="application/rss+xml" title={rss.title} href={rss.href} />}
   <meta name="theme-color" content="#060d18" />
-  <link rel="canonical" href={url} />
+  {!bezAdresa && <link rel="canonical" href={url} />}
   {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
   <link rel="icon" href={`${base}favicon.ico`} sizes="any" />
   <!-- Inter (шапка дня, крошки, блок «Поддержать») и PT Serif (основной текст вместо системного Georgia, 17.10) —
