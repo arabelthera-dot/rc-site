@@ -7,23 +7,13 @@
 // «Отказаться» — счётчик не грузится вовсе; выбора нет — показывается плашка. Вебвизор выключен (webvisor:false).
 // Пиксель <noscript> убран: без JS согласия не спросить, значит и не считаем.
 // Отозвать согласие: ссылка с data-rc-cookie-reset (на странице политики) — стирает выбор и снова показывает плашку.
+import { createHash } from 'node:crypto';
 export const METRIKA_ID = 113664375;
 export const POLITIKA_URL = '/politika-konfidencialnosti/';
-export const metrikaHtml = `<!-- Yandex.Metrika counter: только после согласия на cookie -->
-<style>
-.rc-cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;box-sizing:border-box;max-width:720px;margin:0 auto;
-  padding:14px 16px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;background:var(--panel,#12151c);
-  color:var(--txt,#e8e2d4);font:15px/1.45 'Inter',system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.45)}
-.rc-cookie p{margin:0 0 10px}
-.rc-cookie a{color:var(--gold,#c8a24a)}
-.rc-cookie .rc-cookie-b{display:flex;gap:10px;flex-wrap:wrap}
-.rc-cookie button{min-height:44px;padding:0 20px;border-radius:22px;font:inherit;font-weight:600;cursor:pointer}
-.rc-cookie .da{background:var(--gold,#c8a24a);color:#111;border:0}
-.rc-cookie .net{background:transparent;color:var(--txt,#e8e2d4);border:1px solid var(--line,rgba(255,255,255,.3))}
-.rc-cookie button:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
-</style>
-<script type="text/javascript">
-(function(w,d){
+// Код скрипта — отдельной строкой: по умолчанию он идёт файлом assets/rc-metrika-<md5>.js (вес сборки, 20.10:
+// инлайн ×~4400 страниц ≈ 7 МБ), файл пишет integrations/metrika-fajlom.mjs. Код тот же, буква в букву.
+// Откат без правки кода: RC_METRIKA_INLAYN=1 — скрипт снова инлайном, как до 20.10.
+export const metrikaJs = `(function(w,d){
   var KEY="rc-cookie",ID=${METRIKA_ID},R="https://mc.yandex.ru/metrika/tag.js";
   function get(){try{return w.localStorage.getItem(KEY)}catch(e){return null}}
   function set(v){try{w.localStorage.setItem(KEY,v)}catch(e){}}
@@ -73,5 +63,26 @@ export const metrikaHtml = `<!-- Yandex.Metrika counter: только после
   var v=get();
   if(v==="da")metrika(false);else if(v!=="net")ready(plashka);
 })(window,document);
-</script>
-<!-- /Yandex.Metrika counter -->`;
+`;
+const metrikaHead = `<!-- Yandex.Metrika counter: только после согласия на cookie -->
+<style>
+.rc-cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;box-sizing:border-box;max-width:720px;margin:0 auto;
+  padding:14px 16px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;background:var(--panel,#12151c);
+  color:var(--txt,#e8e2d4);font:15px/1.45 'Inter',system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.45)}
+.rc-cookie p{margin:0 0 10px}
+.rc-cookie a{color:var(--gold,#c8a24a)}
+.rc-cookie .rc-cookie-b{display:flex;gap:10px;flex-wrap:wrap}
+.rc-cookie button{min-height:44px;padding:0 20px;border-radius:22px;font:inherit;font-weight:600;cursor:pointer}
+.rc-cookie .da{background:var(--gold,#c8a24a);color:#111;border:0}
+.rc-cookie .net{background:transparent;color:var(--txt,#e8e2d4);border:1px solid var(--line,rgba(255,255,255,.3))}
+.rc-cookie button:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
+</style>
+`;
+export const metrikaFile = `rc-metrika-${createHash('md5').update(metrikaJs).digest('hex').slice(0, 10)}.js`;
+export const metrikaInlayn = process.env.RC_METRIKA_INLAYN === '1';
+// defer: скрипт выполняется после разбора страницы, до DOMContentLoaded. Плашка и так ждала DOMContentLoaded,
+// tag.js и так грузится по первому действию / через 3,5 с после load — порядок для посетителя тот же,
+// а запрос файла не блокирует отрисовку (файл кэшируется между страницами).
+export const metrikaHtml = metrikaInlayn
+  ? `${metrikaHead}<script type="text/javascript">\n${metrikaJs}</script>\n<!-- /Yandex.Metrika counter -->`
+  : `${metrikaHead}<script defer src="/assets/${metrikaFile}"></script>\n<!-- /Yandex.Metrika counter -->`;
