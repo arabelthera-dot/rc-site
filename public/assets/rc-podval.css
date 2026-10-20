@@ -9,3 +9,7 @@
 .rc-zh-log ul{margin:8px 0 0;padding-left:20px}
 .rc-zh-log li{margin:2px 0}
 .rc-zh-log time{font-variant-numeric:tabular-nums}
+/* Редакционные страницы («О проекте», «Как сделан музей»): основной текст ≥17 px, строка 1,6 (замер glazami). */
+.rc-tekst{max-width:720px;margin:0 auto;padding:0 16px}
+.rc-tekst p{font-size:17px;line-height:1.6}
+.rc-tekst h2{margin-top:1.6em}

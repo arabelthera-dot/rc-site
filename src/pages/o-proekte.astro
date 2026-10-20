@@ -4,6 +4,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <Base title="О проекте · Русская цивилизация" description="«Русская цивилизация» — сеть цифровых музеев: каждый день календаря — история о том, что Россия дала миру." schema="page" crumbs={[{ label: 'О проекте' }]}>
   <header slot="header"><h1>О проекте</h1></header>
+  <div class="rc-tekst">
   <p>«Русская цивилизация» — сеть цифровых музеев. У каждого музея своя тема и свой календарь: каждый день года — отдельная страница о событии, человеке или вещи этого дня.</p>
   <section class="o-osnovatel" id="osnovatel">
     <h2>Кто начал</h2>
@@ -17,4 +18,5 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   <p>Начать можно с <a href={base}>главной</a>, <a href={`${base}karta/`}>карты</a> или с <a href={`${base}poisk/`}>поиска</a>.</p>
   <!-- ЖДУ ОТВЕТА: реквизиты АНО -->
   <p><a href={`${base}kontakty/`}>Контакты →</a></p>
+  </div>
 </Base>
