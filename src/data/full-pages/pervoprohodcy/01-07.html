@@ -170,7 +170,7 @@
 <nav class="crumbs"><div class="wrap">
   <a href="../../index.html">Русская цивилизация</a>
   <span class="sep">›</span>
-  <a href="../izobreteniya/index.html">Что изобрели русские первыми в мире</a>
+  <a href="index.html">Музей русских первопроходцев и путешественников</a>
   <span class="sep">›</span>
   <span class="here">6 января · Беринг</span>
 </div></nav>
@@ -191,7 +191,7 @@
 <header class="hero-lead">
 <div class="wrap">
   <div class="date-chip">6 января · 1728</div>
-  <div class="museum">Музей «Что изобрели русские первыми в мире»</div>
+  <div class="museum">Музей русских первопроходцев и путешественников</div>
   <h1>Открытие Берингова пролива</h1>
   <p class="hook">Умирающий Пётр I написал приказ из трёх пунктов — и Россия открыла пролив между Евразией и Северной Америкой.</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap">
@@ -501,16 +501,11 @@ cv.addEventListener('click',function(e){if(answered)return;
 </section>
 
 <footer><div class="wrap">
-  <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
-  Русская цивилизация · «Что изобрели русские первыми в мире» · 2026</div></footer>
+  Русская цивилизация · Музей русских первопроходцев и путешественников · 2026</div></footer>
 
+<script>window.MUSEUM_SCORE={awards:{read:5,q:[2,10],fork:10,chat:5,tm:5,vb:5,char:10,gm_bering:15,gm_quiz2:15},ranks:[[100,"Покоритель пролива"],[70,"Знаток"],[40,"Экскурсант"],[0,"Гость музея"]]};</script>
+<script src="../../assets/museum-score.js"></script>
 <script>
-// ── СЧЁТ ──────────────────────────────────────────────────────────────────────
-let score=0; const earned={};
-function award(k,n){if(earned[k])return;earned[k]=true;score+=n;document.getElementById('score').textContent=score;updateResult();}
-function rank(v){return v>=100?'Покоритель пролива':v>=70?'Знаток':v>=40?'Экскурсант':'Гость музея';}
-function updateResult(){const b=document.getElementById('dayBar'),x=document.getElementById('dayTxt');if(!b)return;b.style.width=Math.min(100,score)+'%';x.textContent=score+' / 100 · звание: '+rank(score);}
-
 // ── СТАТЬЯ ────────────────────────────────────────────────────────────────────
 document.getElementById('moreBtn').onclick=function(){
   document.getElementById('article').classList.remove('collapsed');
