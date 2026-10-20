@@ -86,6 +86,39 @@ HTML `text/html; charset=utf-8`, css, js, webp, woff2 и прочие. Кэш:
   revert этой заявки.
 - **Убрать инфраструктуру:** `terraform destroy` в `infra/yandex` с теми же ключами (бакет перед этим очистить).
 
+## Дополнительные адреса (М36, решение Сергея 19.10.2026)
+
+`rusciv.ru` и `музей-русской-цивилизации.рф` (в punycode — `xn-----8kchmlegbacadbovg5bybua1bf2fh.xn--p1ai`)
+отвечают кодом 301 на `https://russian-civilization.ru` **с тем же путём**: `https://rusciv.ru/muzei/` →
+`https://russian-civilization.ru/muzei/`. Код — `infra/yandex/dop-domeny.tf`. На каждый домен terraform заводит:
+своя публичная зона Cloud DNS (`dop-<домен с дефисами вместо точек>`), два бакета (домен и `www.`) с
+`redirect_all_requests_to = https://russian-civilization.ru`, сертификат Let's Encrypt на домен и `www.`
+(проверка DNS_CNAME в той же зоне), записи ANAME (корень) и CNAME (`www`).
+
+**Выключено:** переменная `dop_domeny` по умолчанию пуста — не создаётся ничего, основной сайт не задет.
+
+### Как включить (после покупки доменов Михаилом)
+
+1. Переменная репозитория (Settings → Secrets and variables → Actions → Variables) `YC_DOP_DOMENY` =
+   `["rusciv.ru","xn-----8kchmlegbacadbovg5bybua1bf2fh.xn--p1ai"]` — кириллицу только punycode, без `www`.
+2. Run workflow terraform-yandex: `deystvie = plan`, `dop_https = false` → посмотреть план → `apply`.
+   Появятся зоны, бакеты, записи и заявки на сертификаты; в выводе `dop_domeny` — NS и адреса бакетов.
+   Проверка без DNS: `curl -sI http://rusciv.ru.website.yandexcloud.net/muzei/` → `301`,
+   `Location: https://russian-civilization.ru/muzei/`.
+3. У регистратора обоих доменов поставить DNS-серверы `ns1.yandexcloud.net`, `ns2.yandexcloud.net`.
+   Расходится до суток; по http переадресация работает сразу после этого.
+4. Второй проход: `apply` с `dop_https = true` — terraform дождётся выпуска сертификатов (Let's Encrypt проверяет
+   `_acme-challenge` в зоне Яндекса, поэтому только после шага 3) и привяжет их к бакетам.
+
+Проверка: `curl -sI https://rusciv.ru/muzei/` и `curl -sI https://www.rusciv.ru/` → `301`, `Location` на
+`https://russian-civilization.ru/…`; то же для `https://xn-----8kchmlegbacadbovg5bybua1bf2fh.xn--p1ai/`.
+
+### Откат
+
+- Убрать один адрес или все: удалить его из `YC_DOP_DOMENY` (или удалить переменную) → `apply` — terraform снимет
+  его бакеты, зону и сертификат (основной сайт не трогается). У регистратора вернуть NS, которые были.
+- Убрать сам код: revert заявки; перед этим — шаг выше, иначе ресурсы останутся в состоянии без описания.
+
 ## Цены
 
 Только со страниц тарифов Яндекса, смотреть там же перед решением:

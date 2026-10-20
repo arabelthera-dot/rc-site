@@ -26,3 +26,20 @@ variable "dop_zapisi" {
   }))
   default = {}
 }
+
+variable "dop_domeny" {
+  description = "Дополнительные домены с 301 на основной (М36): только ASCII/punycode. Пусто — ничего не создаётся"
+  type        = list(string)
+  default     = []
+
+  validation {
+    condition     = alltrue([for d in var.dop_domeny : can(regex("^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)+$", d)) && !startswith(d, "www.")])
+    error_message = "Домен — строчными латинскими буквами, кириллический — в punycode (xn--…), без www."
+  }
+}
+
+variable "dop_https" {
+  description = "Дополнительные домены: ждать выпуска сертификата и привязать к бакетам. Первый проход — false, второй (после смены NS у регистратора) — true"
+  type        = bool
+  default     = false
+}
