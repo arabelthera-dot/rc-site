@@ -15,19 +15,19 @@ const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
 // Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
-const s = (key: string) => stroka(lang.code, key);
-const MONR = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const s = (key: string): any => stroka(lang.code, key);
+const MONR: string[] = s('mesyacyR');
 const date = (k: string) => +k.slice(3) + ' ' + MONR[+k.slice(0, 2) - 1];
 const withImg = days.filter((d) => (d.data.images ?? []).length > 0).length;
 ---
-<Base title={`Таблица года · ${m.title_ru}`} description={`${m.title_ru}: все дни года одной таблицей — дата, название, хук.`} museum={m.slug} museumTitle={m.title_ru} here="Таблица года">
-  <header slot="header"><div class="b1">{m.title_ru}</div><h1>Таблица года</h1></header>
-  <p class="calstat">Записей: <b>{days.length}</b> · с картинкой: <b>{withImg}</b></p>
+<Base title={`${s('tablicaGoda')} · ${m.title_ru}`} description={`${m.title_ru}: ${s('tablicaOpisanie')}`} museum={m.slug} museumTitle={m.title_ru} here={s('tablicaGoda')}>
+  <header slot="header"><div class="b1">{m.title_ru}</div><h1>{s('tablicaGoda')}</h1></header>
+  <p class="calstat">{s('zapisey')} <b>{days.length}</b> · {s('sKartinkoy')} <b>{withImg}</b></p>
   <table class="yadro-tablica">
-    <thead><tr><th>Дата</th><th>Название</th><th>Хук</th><th>Картинка</th></tr></thead>
+    <thead><tr><th>{s('stolbecData')}</th><th>{s('stolbecNazvanie')}</th><th>{s('stolbecHuk')}</th><th>{s('stolbecKartinka')}</th></tr></thead>
     <tbody>{days.map((d) => (
       <tr data-k={d.data.key}><td>{date(d.data.key)}</td><td><a href={`${base}muzei/${m.slug}/den/${d.data.key}/`}>{d.data.title}</a></td>
-        <td>{d.data.hook ?? '—'}</td><td>{(d.data.images ?? []).length > 0 ? 'есть' : 'нет'}</td></tr>))}</tbody>
+        <td>{d.data.hook ?? '—'}</td><td>{(d.data.images ?? []).length > 0 ? s('est') : s('net')}</td></tr>))}</tbody>
   </table>
   <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/calendar/`}>{`${strelkaNazad(lang.dir)} ${s('kalendarMuzeya')}`}</a> · <a href={`${base}muzei/${m.slug}/`}>{s('vMuzey')}</a></Fragment>
 </Base>

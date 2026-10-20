@@ -1,7 +1,10 @@
 ---
 // §6-quater: только реальные согласившиеся эксперты; пока их нет — честная строка-приглашение.
+import { yazyk, razobratPut, stroka } from '../../lib/yazyki.mjs';
+const lang = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
+const s = (key: string): any => stroka(lang.code, key);
 ---
 <section class="mh-sec mh-council" id="sovet">
-  <h2 class="mh-h">Консультанты музея</h2>
-  <p>Ищем консультанта музея</p>
+  <h2 class="mh-h">{s('konsultanty')}</h2>
+  <p>{s('ishchemKonsultanta')}</p>
 </section>

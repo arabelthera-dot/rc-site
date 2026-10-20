@@ -1,11 +1,14 @@
 ---
+import { yazyk, razobratPut, stroka, strelkaVpered } from '../../lib/yazyki.mjs';
+const lang = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
+const s = (key: string): any => stroka(lang.code, key);
 interface Props { days: { title: string; href: string; when: string }[]; total: number; calHref?: string }
 const { days, total, calHref } = Astro.props;
 ---
 <section class="mh-sec" id="otkryto">
-  <h2 class="mh-h">Открытые дни</h2>
+  <h2 class="mh-h">{s('otkrytyeDni')}</h2>
   {days.length ? (<>
     <ul class="mh-open">{days.map((d) => <li><a href={d.href}><span class="w">{d.when}</span>{d.title}</a></li>)}</ul>
-    {calHref && total > days.length && <p class="mh-note"><a href={calHref}>Все {total} открытых дней — в календаре →</a></p>}
-  </>) : <p class="mh-empty">Открытых дней пока нет.</p>}
+    {calHref && total > days.length && <p class="mh-note"><a href={calHref}>{`${s('vseOtkrytye').replace('{n}', String(total))} ${strelkaVpered(lang.dir)}`}</a></p>}
+  </>) : <p class="mh-empty">{s('otkrytyhNet')}</p>}
 </section>
