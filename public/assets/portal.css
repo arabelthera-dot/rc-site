@@ -78,3 +78,6 @@ a.p-in:focus-visible{outline:2px solid var(--p-gold-l);outline-offset:2px}
 body > footer{font-family:'Inter',sans-serif;opacity:1;color:var(--p-muted);border-top:1px solid rgba(201,168,76,.2)}
 footer .slog{font-family:'Playfair Display',Georgia,serif}
 .p-park{font-size:13px;margin:8px 0 0;color:var(--p-muted)}
+/* Детский вход (Р41, Е3, 20.10.2026): ссылка под подзаголовком главной на /detyam/ */
+.p-detyam{margin:14px 0 0;font-size:18px}
+.p-detyam a{color:#d9b95c;display:inline-flex;align-items:center;min-height:44px}

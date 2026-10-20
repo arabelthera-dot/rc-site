@@ -39,7 +39,7 @@
       clickmap: true,
       trackLinks: true,
       accurateTrackBounce: true,
-      webvisor: true
+      webvisor: false // выключен везде — сайт смотрят дети (Р41, 20.10.2026)
     });
   }
 

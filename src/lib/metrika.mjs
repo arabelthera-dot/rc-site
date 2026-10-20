@@ -4,6 +4,8 @@
 // Вариант без #205 (политика и плашка cookie откатаны): код счётчика — как до 19.10, механика «файлом» — из #224.
 import { createHash } from 'node:crypto';
 export const METRIKA_ID = 113664375;
+// Вебвизор (запись действий посетителя) выключен везде — сайт смотрят дети (Р41, Е3, Сергей 20.10.2026).
+// В кабинете Метрики тот же переключатель — «Вебвизор, карта скроллинга, аналитика форм» — должен быть выключен (Михаил).
 // Код скрипта — отдельной строкой: по умолчанию он идёт файлом assets/rc-metrika-<md5>.js (вес сборки, 20.10:
 // инлайн ×~4400 страниц ≈ 7 МБ), файл пишет integrations/metrika-fajlom.mjs. Код тот же, буква в букву.
 // Откат без правки кода: RC_METRIKA_INLAYN=1 — скрипт снова инлайном, как до 20.10.
@@ -27,7 +29,7 @@ export const metrikaJs = `    // Отложенная загрузка (19.10, L
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
-        webvisor:true
+        webvisor:false
     });
 `;
 const metrikaTail = `<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
