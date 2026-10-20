@@ -1,0 +1,52 @@
+---
+// Витрина всех музеев — общая для главной (раздел «Музеи») и страницы /muzei/ (обход сайта 20.10, задача OB).
+// Вид — public/assets/portal.css (его подключает страница). Имя музея — title_ru из museums.json дословно.
+// bezZagolovka — на /muzei/ заголовок раздела уже в шапке страницы (h1), свой h2 витрине не нужен.
+import { getCollection } from 'astro:content';
+import { beyondYear, isDated } from '../../lib/kalendar';
+import { yazyk, razobratPut, stroka, chislo, strelkaVpered } from '../../lib/yazyki.mjs';
+interface Props { bezZagolovka?: boolean }
+const { bezZagolovka = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key: string): any => stroka(lang.code, key);
+const museums = (await getCollection('museums')).sort((a, b) => a.data.number - b.data.number);
+const days = await getCollection('days');
+// в счётчик — только дни года, записи «сверх года» не считаются (как на странице календаря)
+const count = (slug: string) => { const dated = isDated(slug); return days.filter((d) => d.data.museum === slug && !beyondYear(d.data.key, dated)).length; };
+// ссылка — только на страницы, которые реально собираются: src/pages/muzei/[slug]/index.astro
+// строит адрес для каждого музея из коллекции museums (getStaticPaths), других страниц музея нет
+const built = new Set(museums.map((m) => m.data.slug));
+const cards = museums
+  .map((m) => ({ ...m.data, n: count(m.data.slug),
+    // обложки старого сайта (og/<slug>_index.jpg) несут зашитую надпись — текст на картинке запрещён (03.08), в витрине не берём
+    cover: null as string | null,
+    href: built.has(m.data.slug) ? `${base}muzei/${m.data.slug}/` : null }))
+  // музеи с календарём — выше, внутри групп — по номеру
+  .sort((a, b) => (b.n > 0 ? 1 : 0) - (a.n > 0 ? 1 : 0) || a.number - b.number);
+let eager = 2; // первые обложки — без ленивой загрузки
+---
+<section class="p-vitrina" {...(bezZagolovka ? { 'aria-label': s('muzei') } : { 'aria-labelledby': 'p-vit-h' })}>
+  {!bezZagolovka && <h2 id="p-vit-h" class="p-sec">{s('muzei')}</h2>}
+  <ul class="p-grid">
+    {cards.map((c) => {
+      const Tag = c.href ? 'a' : 'div';
+      const lazy = c.cover ? (eager-- > 0 ? 'eager' : 'lazy') : undefined;
+      return (
+        <li class:list={['p-card', c.cover ? 'has-cover' : 'is-type', c.n > 0 && 'has-cal']}>
+          <Tag class="p-in" {...(c.href ? { href: c.href } : {})}>
+            {c.cover
+              ? <img class="p-cover" src={c.cover} alt="" width="1200" height="630" loading={lazy} decoding="async" />
+              : <div class="p-plate" aria-hidden="true"><span class="p-no">№&nbsp;{c.number}</span></div>}
+            <div class="p-body">
+              <h3>{c.title_ru}</h3>
+              {c.promise_ru && <p>{c.promise_ru}</p>}
+              {c.n > 0 && <div class="p-st">{s('vKalendare').replace('{n}', String(c.n)).replace('{dney}', chislo(lang.code, c.n, 'dneyFormy'))}</div>}
+              {c.href && <span class="p-go" aria-hidden="true">{`${s('voytiVMuzey')} ${strelkaVpered(lang.dir)}`}</span>}
+            </div>
+          </Tag>
+        </li>
+      );
+    })}
+  </ul>
+</section>

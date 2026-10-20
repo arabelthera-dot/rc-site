@@ -11,7 +11,7 @@ const PREFIXES = ['doska/docs/', 'control/', 'review/', 'lab/', 'pult/', 'glazam
   'glavnaya-proto-0810.html', 'handkerchief.html', 'map.html'];
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
-<Base title="Страница не найдена · Русская цивилизация" description="Такой страницы нет." noindex crumbs={[{ label: 'Страница не найдена' }]}>
+<Base title="Страница не найдена · Русская цивилизация" description="Такой страницы нет." noindex bezAdresa crumbs={[{ label: 'Страница не найдена' }]}>
   <script is:inline slot="head" define:vars={{ RABOCHEE, PREFIXES, base }}>
     var rest = location.pathname.slice(base.length);
     if (PREFIXES.some(function (p) { return rest === p.replace(/\/$/, '') || rest.indexOf(p) === 0; }))

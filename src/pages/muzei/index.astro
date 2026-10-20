@@ -1,0 +1,32 @@
+---
+// Витрина всех музеев по адресу раздела /muzei/ (обход сайта 20.10, задача OB): адрес — родитель всех
+// /muzei/<музей>/…, посетитель и поисковик поднимаются к нему из адреса страницы, раньше здесь был 404.
+// Своя страница, а не переадресация на главную: у раздела свой адрес, заголовок и место в карте сайта.
+// Витрина — общий компонент главной (src/components/portal/Vitrina.astro), вид — только public/assets/portal.css.
+import Base from '../../layouts/Base.astro';
+import InlineCss from '../../components/InlineCss.astro';
+import '../../styles/portal-base.css';
+import Vitrina from '../../components/portal/Vitrina.astro';
+import { getCollection } from 'astro:content';
+const base = import.meta.env.BASE_URL;
+const n = (await getCollection('museums')).length;
+const formy: Record<string, string> = { one: 'музей', few: 'музея', many: 'музеев', other: 'музея' };
+const muzeev = `${n} ${formy[new Intl.PluralRules('ru').select(n)]}`;
+---
+<Base portal schema="page" title="Все музеи — Русская цивилизация" ogTitle="Все музеи «Русской цивилизации»"
+  image={`${base}og/index.jpg`} description={`Все музеи «Русской цивилизации» на одной странице — ${muzeev}: выберите музей и откройте его дни.`}>
+  <Fragment slot="head">
+    <InlineCss file="fonts-portal.css" />
+    <InlineCss file="portal.css" />
+  </Fragment>
+  <header slot="header" class="p-hero">
+    <div class="p-orn" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+    <h1>Все музеи</h1>
+    <p class="p-lead">{muzeev} «Русской цивилизации»</p>
+    <p class="p-sub"><a href={base}>На главную — вещь дня и день по дате →</a></p>
+    <div class="p-orn p-orn-b" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+  </header>
+  <div class="p-wrap">
+    <Vitrina bezZagolovka />
+  </div>
+</Base>
