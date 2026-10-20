@@ -53,7 +53,7 @@ export function snimki(root = '.') {
 /** Тексты для сверки: { gde, syroy, norm } — по полям карточек и полным страницам. */
 export function teksty(root = '.') {
   const out = [];
-  const add = (gde, raw) => { if (raw) out.push({ gde, syroy: raw, norm: norm(raw.replace(/<[^>]+>/g, ' ')) }); };
+  const add = (gde, raw) => { if (raw) out.push(tekst(gde, raw)); };
   for (const museum of ls(path.join(root, DAYS))) {
     for (const f of ls(path.join(root, DAYS, museum)).filter((x) => x.endsWith('.json'))) {
       const d = readJson(path.join(root, DAYS, museum, f), {});
@@ -80,11 +80,18 @@ export function teksty(root = '.') {
 
 const silnoe = (v, s) => v.adres || (s.vid !== 'materialy' && v.tekst.split(' ').filter((w) => w.length > 1).length >= 3);
 
+/** Текст для сверки: { gde, syroy, norm }. gde начинается с «<музей>/<ключ>» — по нему снимаются исключения. */
+export const tekst = (gde, raw) => ({ gde, syroy: raw, norm: norm(String(raw).replace(/<[^>]+>/g, ' ')) });
+
 /** Е1: совпадения с реестрами. { snimkov, zapisey, sovpadeniya, vozmozhnye: [{ gde, reestr, imya, variant }], starye } */
-export function sverkaReestrov(root = '.', { segodnya = new Date() } = {}) {
+export function sverkaReestrov(root = '.', opts = {}) {
+  return sverkaTekstov(teksty(root), root, opts);
+}
+
+/** Е1 по любым текстам (сборка — все карточки и страницы, пост в каналы — его хуки): тот же разбор и те же исключения. */
+export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
   const isk = readJson(path.join(root, REESTRY, 'isklyucheniya.json'), {});
   const sn = snimki(root);
-  const tx = teksty(root);
   const sovpadeniya = [];
   const vozmozhnye = [];
   const starye = [];
@@ -135,24 +142,36 @@ const godIz = (s) => [...String(s ?? '').matchAll(/(?<!\d)(1[0-9]\d\d|20\d\d)(?!
 /** Кадр XX века: год дня ≥ 1900 (первый год в поле year) или год ≥ 1900 в подписи. */
 export const vekXX = (godDnya, podpis) => (godIz(godDnya)[0] ?? 0) >= 1900 || godIz(podpis).some((g) => g >= 1900);
 
+export const vedomostOsnovaniy = (root = '.') => readJson(path.join(root, REESTRY, 'osnovaniya.json'), {});
+
+/**
+ * Е2 для одного кадра (сборка — все кадры, пост в каналы — его картинка). fr — кадр карточки (cardFrames: caption,
+ * credit, generated) или полной страницы (pageFrames: sign, alt, state). Не XX век — null; иначе
+ * { museum, key, src, podpis, gde, osnovanie, otkuda, ssylka } — osnovanie пусто, если основания нет.
+ */
+export function kadrXX(fr, gde, godDnya, vedomost) {
+  const karta = gde === 'карточка';
+  const podpis = karta ? fr.caption : fr.sign || fr.alt;
+  if (!vekXX(godDnya, podpis)) return null;
+  // Полная страница: подпись у кадра или таблица прав страницы (state rights — основание в списке прав страницы).
+  const gotovo = karta ? (fr.generated ? 'своя генерация проекта' : '') : fr.state === 'rights' ? 'в таблице прав страницы' : '';
+  const ved = vedomost[fr.src];
+  const iz = gotovo || osnovanieIz(karta ? `${fr.credit} ${fr.caption}` : `${fr.sign} ${fr.alt}`);
+  return { museum: fr.museum, key: fr.key, src: fr.src, podpis: String(podpis || '').slice(0, 160), gde,
+    osnovanie: iz || ved?.osnovanie || '', otkuda: iz ? 'подпись' : ved?.osnovanie ? 'ведомость' : '', ssylka: ved?.ssylka || '' };
+}
+
 /** Е2: кадры XX века и их основания. { vsego, bez: [...], kadry: [{ museum, key, src, podpis, osnovanie, otkuda, gde }] } */
 export function kadryXX(root = '.') {
-  const vedomost = readJson(path.join(root, REESTRY, 'osnovaniya.json'), {});
+  const vedomost = vedomostOsnovaniy(root);
   const gody = {};
   for (const museum of ls(path.join(root, DAYS)))
     for (const f of ls(path.join(root, DAYS, museum)).filter((x) => x.endsWith('.json')))
       gody[`${museum}/${f.slice(0, -5)}`] = readJson(path.join(root, DAYS, museum, f), {}).year;
   const kadry = [];
-  const one = (fr, gde, podpis, txt, gotovo) => {
-    if (!vekXX(gody[`${fr.museum}/${fr.key}`], podpis)) return;
-    const ved = vedomost[fr.src];
-    const iz = gotovo || osnovanieIz(txt);
-    kadry.push({ museum: fr.museum, key: fr.key, src: fr.src, podpis: String(podpis || '').slice(0, 160), gde,
-      osnovanie: iz || ved?.osnovanie || '', otkuda: iz ? 'подпись' : ved?.osnovanie ? 'ведомость' : '', ssylka: ved?.ssylka || '' });
-  };
-  for (const fr of cardFrames(root)) one(fr, 'карточка', fr.caption, `${fr.credit} ${fr.caption}`, fr.generated ? 'своя генерация проекта' : '');
-  // Полная страница: подпись у кадра или таблица прав страницы (state rights — основание в списке прав страницы).
-  for (const fr of fullFrames(root)) one(fr, 'полная страница', fr.sign || fr.alt, `${fr.sign} ${fr.alt}`, fr.state === 'rights' ? 'в таблице прав страницы' : '');
+  const add = (k) => { if (k) kadry.push(k); };
+  for (const fr of cardFrames(root)) add(kadrXX(fr, 'карточка', gody[`${fr.museum}/${fr.key}`], vedomost));
+  for (const fr of fullFrames(root)) add(kadrXX(fr, 'полная страница', gody[`${fr.museum}/${fr.key}`], vedomost));
   const bez = kadry.filter((k) => !k.osnovanie);
   return { vsego: kadry.length, bez, kadry };
 }
