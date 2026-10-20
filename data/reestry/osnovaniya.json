@@ -48,12 +48,26 @@
     "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
     "ssylka": "https://commons.wikimedia.org/wiki/File:Awake_the_Russian_Bear_-_DPLA_-_73b6dc4694a80999735f66fafac65ab1.jpg"
   },
+  "muzei/karikatura/media/bear-1918-berryman.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Клиффорд Берримен",
+    "gody": "1869–1949",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://hdl.loc.gov/loc.pnp/ds.10156"
+  },
   "muzei/karikatura/media/bear-1918-regretting.jpg": {
     "osnovanie": "общественное достояние",
     "avtor": "Э. А. Бушнелл",
     "gody": "1876–1939",
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://commons.wikimedia.org/wiki/File:Bushnell_cartoon_of_Russia_regretting_its_participation_in_WW1_(May_1918).jpg"
+  },
+  "muzei/karikatura/media/krokodil-1922-no1.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1889–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Обложка_I_номера_журнала_«Крокодил».jpg"
   },
   "muzei/karikatura/media/krokodil-1923-no43.jpg": {
     "osnovanie": "общественное достояние",
@@ -124,6 +138,20 @@
     "gody": "1891–1932",
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-vecher-afisha.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не установлен, типография «Рабочей газеты»",
+    "gody": "опубл. 1925",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Афиша_эстрадной_программы_«Вечер_Крокодила».jpg"
+  },
+  "muzei/karikatura/media/radakov-provody-krokodil.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1877–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:1926._Трогательные_и_подражания_достойные_проводы_председателя_(журнал_«Крокодил»_№_21_за_1926_год,_стр._9).jpg"
   },
   "muzei/karikatura/media/radakov-satirikon-1918-oblozhka.jpg": {
     "osnovanie": "общественное достояние",
@@ -397,5 +425,26 @@
     "gody": "1876–1942",
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://commons.wikimedia.org/wiki/File:1932._Билибин._Морозко.jpg"
+  },
+  "muzei/skazki/img/bilibin-vasilisa-11.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. Я. Билибин",
+    "gody": "1876–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Ivan_Bilibin_-_illustration-for-the-fairy-tale-vasilisa-the-beautiful-1900-11.jpg"
+  },
+  "muzei/skazki/img/lissner-lisichka-prorub.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Э. Э. Лисснер",
+    "gody": "1874–1941",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Сказка_о_лисичке-сестричке_и_волке_3.jpg"
+  },
+  "muzei/skazki/img/sytin-snegurushka-na-lise.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не указан, издание И. Д. Сытина",
+    "gody": "опубл. 1912",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "http://arch.rgdb.ru/xmlui/handle/123456789/44562"
   }
 }
