@@ -347,12 +347,26 @@
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://www.wikiart.org/en/boris-kustodiev/akaky-akakiyevich-in-the-new-coat-1905"
   },
+  "muzei/literatura/media-shkatulka/bazhov-moneta-1994.jpg": {
+    "osnovanie": "не объект авторского права",
+    "avtor": "Банк России",
+    "gody": "1994",
+    "pravilo": "п. 6 ст. 1259 ГК РФ: денежные знаки не являются объектами авторских прав",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:RR5110-0001R_115-летие_со_дня_рождения_П.П._Бажова.png"
+  },
   "muzei/literatura/media-shkatulka/ekaterinburg-1909.jpg": {
     "osnovanie": "общественное достояние",
     "avtor": "С. М. Прокудин-Горский",
     "gody": "1863–1944",
     "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
     "ssylka": "https://commons.wikimedia.org/wiki/File:PG_-_Central_part_of_Yekaterinburg_with_pond.jpg"
+  },
+  "muzei/literatura/media-shkatulka/eparhialnoe-uchilishche-1907.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "автор открытки не указан",
+    "gody": "опубл. 1907",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Епархиальное_женское_училище_открытка.jpg"
   },
   "muzei/literatura/media-shkatulka/malahitovyy-zal-hero.jpg": {
     "osnovanie": "общественное достояние",
