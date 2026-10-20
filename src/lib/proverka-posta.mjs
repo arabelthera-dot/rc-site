@@ -49,9 +49,11 @@ export async function otvet(url) {
   return st;
 }
 
+// Метки utm_* (откуда пришёл посетитель) на ответ страницы не влияют — проверяется адрес без них.
+const bezUtm = (u) => u.replace(/[?&]utm_[^&#]*/g, '').replace(/^([^?#]*)&/, '$1?');
 const adresa = (post) => [...new Set([...(post.urls || []), post.url,
   ...[...String(post.tg || '').matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, '&')),
-  ...[...String(post.vk || '').matchAll(/https?:\/\/[^\s<>"«»]+/g)].map((m) => m[0])].filter(Boolean))];
+  ...[...String(post.vk || '').matchAll(/https?:\/\/[^\s<>"«»]+/g)].map((m) => m[0])].filter(Boolean).map(bezUtm))];
 
 /** Картинка поста: файл в public/, кадр карточки дня или полной страницы с подписью; XX век — с основанием прав. */
 function proverkaKartinki(post, root, karta, brak) {

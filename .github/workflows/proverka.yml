@@ -74,6 +74,8 @@ jobs:
       # красная, список в отчёте. Строгая сразу (решение Сергея Р49); откат — удалить этот шаг.
       - name: vneshnie-hosty — ни одного запроса за рубеж
         run: node scripts/vneshnie-hosty.mjs --dist dist
+      - name: Личной почты в сборке нет (разбор безопасности 20.10)
+        run: node scripts/pochta-v-sborke.mjs dist
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2

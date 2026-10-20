@@ -41,7 +41,7 @@
   var doc = document, body = doc.body;
   if(!body) return;
 
-  var MAIL   = C.mail   || 'arabelthera@gmail.com';
+  var MAIL   = C.mail   || 'info@russian-civilization.ru';
   var MUSEUM = C.museum || 'Русская цивилизация';
   var PAGE   = C.page   || doc.title;
   var EN     = (C.lang === 'en');
