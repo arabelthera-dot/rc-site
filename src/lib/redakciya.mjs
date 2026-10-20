@@ -78,7 +78,7 @@ const DATA = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', y
 const den = (iso) => DATA.format(new Date(iso)).replace(/\s*г\.$/, '');
 const dIso = (iso) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Moscow' }).format(new Date(iso));
 
-/** Журнал дня: { provereno, proverenoIso, zapisi: [{ data, iso, chto }] } (новые сверху) или undefined. */
+/** Журнал дня: { provereno, proverenoIso, modified, published (первая запись карточки — дата выхода дня), zapisi: [{ data, iso, chto }] } (новые сверху) или undefined. */
 export function zhurnal(museum, key) {
   const raw = istoriya().get(`src/content/days/${museum}/${key}.json`);
   if (!raw?.length) return undefined;
@@ -88,7 +88,7 @@ export function zhurnal(museum, key) {
     // в один день одно и то же — одной строкой
     if (!zapisi.some((x) => x.iso === z.iso && x.chto === z.chto)) zapisi.push(z);
   }
-  return { provereno: zapisi[0].data, proverenoIso: zapisi[0].iso, modified: raw[0].date, zapisi };
+  return { provereno: zapisi[0].data, proverenoIso: zapisi[0].iso, modified: raw[0].date, published: raw.at(-1).date, zapisi };
 }
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

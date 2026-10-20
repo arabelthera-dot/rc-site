@@ -35,10 +35,23 @@ jobs:
       - name: kanaly — пробы проверки поста
         timeout-minutes: 2
         run: node scripts/kanaly/proverka.test.mjs
+      # Г20: проверочная сборка включает арабскую пробу /ar/ (RC_PROBA_RTL=1) — её ссылки, разметка и вид проверяются
+      # в каждой заявке. На живой сайт проба не попадает: deploy.yml собирает без этой переменной.
       - run: npm run build
         env:
           RC_POISK: ${{ vars.RC_POISK }}
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+          RC_PROBA_RTL: '1'
+      # Г20: страница-проба с её стилями — артефактом заявки (≈5 МБ, 3 дня), чтобы смотреть письмо справа налево
+      # глазами без полной локальной сборки: gh run download <run> -n proba-rtl.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: proba-rtl
+          path: |
+            dist/ar
+            dist/assets
+            dist/_astro
+          retention-days: 3
       # «Поддержать проект» выключен до работающего приёма денег (Р31, 20.10.2026): в сборке не должно быть
       # ни текста «Поддержать проект», ни движка museum-support.js. Включение — переменная PUBLIC_PODDERZHKA=1.
       - name: podderzhka — блок поддержки выключен
