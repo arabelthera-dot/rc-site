@@ -100,3 +100,7 @@
 .p-today__h, .p-today__title { font-family: 'Playfair Display', Georgia, serif; letter-spacing: 0; }
 /* подмена списка по московской дате (Segodnya.astro): до подмены блок невидим, место держится — без сдвига (#2004) */
 .p-today--swap .p-today__head, .p-today--swap .p-today__list, .p-today--swap [data-t="vesch"] { visibility: hidden; }
+
+/* двойники дня (20.10): тот же человек/событие в другом музее — одна карточка и строка «Ещё в музее …» */
+.p-today__takzhe { margin: .5em 0 0; font-size: .9em; opacity: .85; }
+.p-today__takzhe a { color: inherit; text-decoration: underline; }
