@@ -6,7 +6,8 @@ import { stroka } from './yazyki.mjs';
 
 // Кто подписывает тексты сайта — Редакция (Р34): JSON-LD author/publisher, <meta name="author">.
 export const REDAKCIYA = 'Редакция «Русской цивилизации»';
-// Тексты и уроки — CC BY 4.0 (Р35); изображения — по лицензиям из подписей (страница /avtory-izobrazheniy/).
+// Тексты и уроки — CC BY 4.0 (Р35), собственные рисунки и схемы музея — тоже (Р54, подпись «Русская цивилизация, CC BY 4.0»);
+// чужие изображения — по лицензиям из подписей (страница /avtory-izobrazheniy/).
 export const LICENZIYA = 'https://creativecommons.org/licenses/by/4.0/deed.ru';
 
 export const redakciyaLd = (home) => ({ '@type': 'Organization', name: REDAKCIYA, url: home });
