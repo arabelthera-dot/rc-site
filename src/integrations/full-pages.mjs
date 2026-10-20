@@ -586,7 +586,7 @@ export default function fullPages() {
             const vz = znak(museum, key);
             const bez = bezOchkov(vz);
             html = html.replace(/<html\b/i, `<html data-rc-vozrast="${vz}"${bez ? ' data-rc-bez-ochkov' : ''}`);
-            if (bez) html = html.replace(/\s*За (?:каждый )?верный ответ — \d+ очк\w* из 100\./g, '')
+            if (bez) html = html.replace(/\s*За (?:каждый )?верный ответ — \d+ очк[а-яё]* из 100\./g, '') // \w без флага u кириллицу не ловит
               .replace(/Для викторины и счёта нужен JavaScript; без него очки не начисляются\./g, 'Для викторины нужен JavaScript.');
             html = html.replace(/<\/head>/i, `<style data-rc-vozrast>${VOZRAST_CSS}</style>\n${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key), vozrast: znakHtml(vz) })}${roditelyuHtml(roditelyu(museum, key))}`);
