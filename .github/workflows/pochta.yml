@@ -1,0 +1,81 @@
+# Почта (Р32, Сергей 20.10.2026; сервис и секрет — Михаил, М48): каждый день в 9:00 МСК — письмо
+# «Сегодня в Русской цивилизации» подписчикам. Текст дня и проверка (Е8) — те же, что у поста в каналы
+# (scripts/kanaly/pochta.py берёт их из post.py). Описание — docs/kanaly.md, раздел «Почта».
+# ВЫКЛЮЧЕНО: нет секрета MAIL_API_KEY — строка «спит: нет MAIL_API_KEY (М48)», работа зелёная, остальное не трогается.
+# Откат — Actions → pochta → Disable workflow или удалить секрет MAIL_API_KEY.
+name: pochta
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Пробный запуск — собрать письмо и напечатать, ничего не отправлять'
+        type: boolean
+        default: true
+      date:
+        description: 'ММ-ДД для пробного запуска (пусто — сегодня)'
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: pochta
+  cancel-in-progress: false
+jobs:
+  pismo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      MAIL_API_KEY: ${{ secrets.MAIL_API_KEY }}
+    steps:
+      # Без секрета — сразу «спит», без npm ci и Python: ни минут Actions, ни красных работ.
+      - name: Выключатель
+        id: vkl
+        run: |
+          if [ -z "$MAIL_API_KEY" ] && [ "${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}" != "true" ]; then
+            echo "спит: нет MAIL_API_KEY (М48)"; echo "da=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "da=1" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.vkl.outputs.da == '1'
+        uses: actions/checkout@v4
+      - if: steps.vkl.outputs.da == '1'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.vkl.outputs.da == '1'
+        run: npm ci --no-audit --no-fund
+      - if: steps.vkl.outputs.da == '1'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - if: steps.vkl.outputs.da == '1'
+        id: d
+        run: echo "today=$(TZ=Europe/Moscow date +%F)" >> "$GITHUB_OUTPUT"
+      # Отметка «уже отправлено» на дату: повторный запуск в тот же день второго письма не шлёт.
+      - if: steps.vkl.outputs.da == '1'
+        id: sent
+        uses: actions/cache/restore@v4
+        with:
+          path: .kanaly/pochta
+          key: kanaly-pochta-${{ steps.d.outputs.today }}
+      - if: steps.vkl.outputs.da == '1'
+        name: Письмо дня
+        env:
+          MAIL_LIST_ID: ${{ vars.MAIL_LIST_ID }}
+          MAIL_SENDER_EMAIL: ${{ vars.MAIL_SENDER_EMAIL }}
+          MAIL_SENDER_NAME: ${{ vars.MAIL_SENDER_NAME }}
+          DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          DATE: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && inputs.date || '' }}
+        run: |
+          args=(--state .kanaly)
+          [ "$DRY" = "true" ] && args+=(--dry-run)
+          [ -n "$DATE" ] && args+=(--date "$DATE")
+          python scripts/kanaly/pochta.py "${args[@]}"
+      - if: always() && steps.vkl.outputs.da == '1' && steps.sent.outputs.cache-hit != 'true' && hashFiles('.kanaly/pochta/sent') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .kanaly/pochta
+          key: kanaly-pochta-${{ steps.d.outputs.today }}

@@ -41,6 +41,9 @@ jobs:
         env:
           RC_POISK: ${{ vars.RC_POISK }}
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+          PUBLIC_POCHTA: ${{ vars.PUBLIC_POCHTA }}
+          PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}
+          PUBLIC_POCHTA_SPISOK: ${{ vars.PUBLIC_POCHTA_SPISOK }}
           RC_PROBA_RTL: '1'
       # Г20: страница-проба с её стилями — артефактом заявки (≈5 МБ, 3 дня), чтобы смотреть письмо справа налево
       # глазами без полной локальной сборки: gh run download <run> -n proba-rtl.

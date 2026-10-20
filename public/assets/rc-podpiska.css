@@ -6,6 +6,13 @@
   background:#1B75A8;color:#fff!important;font-size:17px;font-weight:600;text-decoration:none}
 .rc-sub a:hover{background:#176FA0}
 .rc-sub a:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
+/* Почта (Р32) — форма под кнопкой Telegram, только при PUBLIC_POCHTA=1 (src/lib/sitebar.mjs pochtaHtml). */
+.rc-pochta{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:12px;font-size:15px}
+.rc-pochta-adres{display:flex;flex-direction:column;gap:6px;align-items:center}
+.rc-pochta input[type=email]{min-height:44px;width:min(320px,100%);padding:0 14px;border-radius:22px;border:1px solid #888;font:inherit}
+.rc-pochta-pd{font-size:13px;opacity:.9}
+.rc-pochta-pd a{display:inline;min-height:0;padding:0;background:none;color:inherit!important;font-size:inherit;font-weight:400;text-decoration:underline}
+.rc-pochta button{min-height:44px;padding:0 20px;border-radius:22px;border:0;background:#8a6a1f;color:#fff;font:inherit;font-weight:600;cursor:pointer}
 
 /* Строка «Поделиться» полной страницы дня — её ставит сборка (full-pages.mjs, data-chrome-share), стили museum-chrome.js
    повторены здесь, в <head>: иначе строка меняла высоту, когда museum-chrome.js доходил до конца страницы (CLS). */
