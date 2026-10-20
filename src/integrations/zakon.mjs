@@ -3,8 +3,8 @@
 // Е1: сильное совпадение с реестром Минюста (иноагенты, нежелательные и экстремистские организации, экстремистские
 //     материалы) — сборка красная со строкой «где — кто — какой реестр». Возможные (однофамильцы, короткие
 //     названия) и старый снимок (> 14 дней) — предупреждением. Ложное — строкой в data/reestry/isklyucheniya.json.
-// Е2: кадр XX века без основания — красная при PRAVA_XX_STROGO=1; без переменной — отчёт числом (пока кадров
-//     без основания больше 0, сайт не роняем — Сергей 20.10). Список — node scripts/prava.mjs --xx.
+// Е2: кадр XX века без основания — сборка красная (с 20.10, Р47: 147 кадров разобраны в data/reestry/osnovaniya.json,
+//     без основания 0). Новый кадр — основание в подписи или строкой в ведомости. Список — node scripts/prava.mjs --xx.
 import { sverkaReestrov, probaReestrov, kadryXX } from '../lib/zakon.mjs';
 
 export default function zakon() {
@@ -27,9 +27,11 @@ export default function zakon() {
         }
         logger.info(`реестры: снимков ${r.snimkov}, записей ${r.zapisey}, совпадений 0`);
         const xx = kadryXX();
-        const msg = `кадры XX века: ${xx.vsego}, без основания ${xx.bez.length} — список: node scripts/prava.mjs --xx`;
-        if (xx.bez.length && process.env.PRAVA_XX_STROGO === '1') throw new Error(msg);
-        (xx.bez.length ? logger.warn : logger.info).call(logger, msg);
+        if (xx.bez.length) {
+          for (const k of xx.bez) logger.error(`${k.museum}/${k.key} ${k.gde}: ${k.put} — нет основания показа`);
+          throw new Error(`кадры XX века: ${xx.vsego}, без основания ${xx.bez.length} — основание (ГК РФ: общественное достояние, свободная лицензия, ст. 1259, ст. 1274, разрешение) в подписи кадра или строкой в data/reestry/osnovaniya.json со ссылкой на источник`);
+        }
+        logger.info(`кадры XX века: ${xx.vsego}, без основания 0`);
       },
     },
   };

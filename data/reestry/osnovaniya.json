@@ -1,1 +1,485 @@
-{}
+{
+  "muzei/arhitektura/media/terem-astashovo/ruin-2011.webp": {
+    "osnovanie": "CC BY-SA 3.0",
+    "avtor": "IvanShkaev",
+    "gody": "снимок 2011",
+    "pravilo": "открытая лицензия правообладателя (ст. 1286.1 ГК РФ)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:AstAsevO_tereM_2011.JPG"
+  },
+  "muzei/karikatura/media/bear-1900-muscovite-caution.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Удо Кепплер",
+    "gody": "1872–1956; опубл. в США 1900",
+    "pravilo": "п. 4 ст. 1256 ГК РФ: срок охраны не больше, чем в стране происхождения (США, публикация до 1930 — общественное достояние)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Muscovite_caution_-_Keppler._LCCN2010651233.jpg"
+  },
+  "muzei/karikatura/media/bear-1904-bluffing.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Э. А. Бушнелл",
+    "gody": "1876–1939",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Bushnell_cartoon_about_Russia_and_Japan_bluffing_each_other.jpg"
+  },
+  "muzei/karikatura/media/bear-1904-house-of-cards.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Удо Кепплер",
+    "gody": "1872–1956; опубл. в США 1904",
+    "pravilo": "п. 4 ст. 1256 ГК РФ: срок охраны не больше, чем в стране происхождения (США, публикация до 1930 — общественное достояние)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:A_house_of_cards_-_Keppler._LCCN2010652338.jpg"
+  },
+  "muzei/karikatura/media/bear-1914-hunter-hunted.png": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не указан, журнал Punch",
+    "gody": "опубл. 1914",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Punch_147_-_1914.09.16_-_233_-_The_Hunter_Hunted.png"
+  },
+  "muzei/karikatura/media/bear-1914-power-behind.png": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не указан, журнал Punch",
+    "gody": "опубл. 1914",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Punch_147_-_1914.07.29_-_103_-_The_Power_Behind.png"
+  },
+  "muzei/karikatura/media/bear-1918-awake.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "автор не указан, Управление куратора Сената США",
+    "gody": "опубл. 1918",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Awake_the_Russian_Bear_-_DPLA_-_73b6dc4694a80999735f66fafac65ab1.jpg"
+  },
+  "muzei/karikatura/media/bear-1918-berryman.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Клиффорд Берримен",
+    "gody": "1869–1949",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://hdl.loc.gov/loc.pnp/ds.10156"
+  },
+  "muzei/karikatura/media/bear-1918-regretting.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Э. А. Бушнелл",
+    "gody": "1876–1939",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Bushnell_cartoon_of_Russia_regretting_its_participation_in_WW1_(May_1918).jpg"
+  },
+  "muzei/karikatura/media/krokodil-1922-no1.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1889–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Обложка_I_номера_журнала_«Крокодил».jpg"
+  },
+  "muzei/karikatura/media/krokodil-1923-no43.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1891–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1924-no26.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1891–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1925-no20.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1891–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1925-no35.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1877–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1925-no41.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1877–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1925-no48.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1877–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1926-no15.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1891–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1927-no04.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1891–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1927-no08.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1891–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-1927-no09.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. А. Малютин",
+    "gody": "1891–1932",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://search.rsl.ru/ru/record/01003381749"
+  },
+  "muzei/karikatura/media/krokodil-vecher-afisha.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не установлен, типография «Рабочей газеты»",
+    "gody": "опубл. 1925",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Афиша_эстрадной_программы_«Вечер_Крокодила».jpg"
+  },
+  "muzei/karikatura/media/radakov-provody-krokodil.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1877–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:1926._Трогательные_и_подражания_достойные_проводы_председателя_(журнал_«Крокодил»_№_21_за_1926_год,_стр._9).jpg"
+  },
+  "muzei/karikatura/media/radakov-satirikon-1918-oblozhka.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1877–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Обложка_Нового_Сатирикона._№2_за_1918_год.jpg"
+  },
+  "muzei/literatura/media-amfibiya/posleslovie-1928-zarodysh.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не указан",
+    "gody": "опубл. 1928",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Afterword_to_the_%C2%ABAmphibian_Man%C2%BB_novel_(Belyaev)_05.jpg"
+  },
+  "muzei/literatura/media-braslet/kuprin-1912.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф не указан",
+    "gody": "опубл. 1912",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Alexander_Ivanovich_Kuprin_7.jpg"
+  },
+  "muzei/literatura/media-braslet/sinefono-1915.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "автор не указан",
+    "gody": "опубл. 1915",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D0%B1%D1%80%D0%B0%D1%81%D0%BB%D0%B5%D1%82_(%D0%A1%D0%B8%D0%BD%D0%B5-%D1%84%D0%BE%D0%BD%D0%BE).png"
+  },
+  "muzei/literatura/media-braslet/sinefono-hero.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "автор не указан",
+    "gody": "опубл. 1915",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B0%D0%BD%D0%B0%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D0%B1%D1%80%D0%B0%D1%81%D0%BB%D0%B5%D1%82_(%D0%A1%D0%B8%D0%BD%D0%B5-%D1%84%D0%BE%D0%BD%D0%BE).png",
+    "primechanie": "кадр для шапки — кадрированная копия того же кадра"
+  },
+  "muzei/literatura/media-glupov/yakovlev-grustilov-1907.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. Е. Яковлев",
+    "gody": "1887–1938",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Grustilov_(A.E.Yakovlev,_1907).jpg"
+  },
+  "muzei/literatura/media-levsha/afisha-hero.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Б. М. Кустодиев",
+    "gody": "1878–1927",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%84%D0%B8%D1%88%D0%B0_%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D0%B0%D0%BA%D0%BB%D1%8F_%C2%AB%D0%91%D0%BB%D0%BE%D1%85%D0%B0%C2%BB_(1925).jpg",
+    "primechanie": "кадр для шапки — кадрированная копия того же кадра"
+  },
+  "muzei/literatura/media-levsha/kustodiev-blokha-afisha-1925.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Б. М. Кустодиев",
+    "gody": "1878–1927",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%84%D0%B8%D1%88%D0%B0_%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D0%B0%D0%BA%D0%BB%D1%8F_%C2%AB%D0%91%D0%BB%D0%BE%D1%85%D0%B0%C2%BB_(1925).jpg"
+  },
+  "muzei/literatura/media-mandelshtam/mandelshtam-1930-rgali.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "фотограф не установлен (РГАЛИ)",
+    "gody": "снимок 1930; впервые опубл. 2018",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; как ОД не проходит (п. 2 ст. 1281 — 70 лет от обнародования 2018)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Mandelshtam17.jpg"
+  },
+  "muzei/literatura/media-neznakomka/blok-avtograf-1906.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Блок",
+    "gody": "1880–1921",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Blok_Variant_Neznakomki.jpg"
+  },
+  "muzei/literatura/media-neznakomka/nechayannaya-radost-1907.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Блок",
+    "gody": "1880–1921",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B5%D0%B7%D0%BD%D0%B0%D0%BA%D0%BE%D0%BC%D0%BA%D0%B0,_%D0%90._%D0%91%D0%BB%D0%BE%D0%BA._%D0%9F%D0%B5%D1%80%D0%B2%D0%B0%D1%8F_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F.png"
+  },
+  "muzei/literatura/media-neznakomka/ozerki-hero.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф не установлен",
+    "gody": "1900-е",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Ozerki_in_1900s.jpg",
+    "primechanie": "кадр для шапки — кадрированная копия того же кадра"
+  },
+  "muzei/literatura/media-neznakomka/ozerki-stanciya-1900e.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф не установлен",
+    "gody": "1900-е",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Ozerki_in_1900s.jpg"
+  },
+  "muzei/literatura/media-neznakomka/somov-blok-1907.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "К. А. Сомов",
+    "gody": "1869–1939",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Konstantin_Somov,_Alexander_Blok,_1907,_Tretyakov_Gallery_9641.png"
+  },
+  "muzei/literatura/media-pamyatnik/repin-pushkin-ekzamen-1911.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. Е. Репин",
+    "gody": "1844–1930",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Pushkin_derzhavin.jpg"
+  },
+  "muzei/literatura/media-parus/kataev-1916.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф не установлен",
+    "gody": "опубл. 1916",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Valentin_Kataev_(1916).jpg"
+  },
+  "muzei/literatura/media-parus/odessa-port-1905.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф не установлен",
+    "gody": "опубл. 1905",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Odessa_Potemkin_mutiny.jpg"
+  },
+  "muzei/literatura/media-parus/potemkin-brassey-1905.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "У. Ф. Митчелл",
+    "gody": "1845–1914",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Potemkin_-_Brassey's_Naval_Annual_1905.png"
+  },
+  "muzei/literatura/media-parus/potemkin-hero.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "У. Ф. Митчелл",
+    "gody": "1845–1914",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Potemkin_-_Brassey's_Naval_Annual_1905.png",
+    "primechanie": "кадр для шапки — кадрированная копия того же кадра"
+  },
+  "muzei/literatura/media-petr/serov-petr-1907.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "В. А. Серов",
+    "gody": "1865–1911",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Serov_%E2%80%94_Peter_the_Great.jpg"
+  },
+  "muzei/literatura/media-petr/serov-petr-na-rabotah.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "В. А. Серов",
+    "gody": "1865–1911",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Peter_I_at_works_by_V.Serov_%281910-11%29.jpg"
+  },
+  "muzei/literatura/media-rekviem/kardovskaya-1914.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "О. Л. Делла-Вос-Кардовская",
+    "gody": "1877–1952",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Olga_kardovskaya_portret_ahmatovoy_1914_szh_16.jpg"
+  },
+  "muzei/literatura/media-rekviem/kresty-hero.jpg": {
+    "osnovanie": "CC BY-SA 1.0",
+    "avtor": "Георгий Шуклин",
+    "gody": "снимок 2007",
+    "pravilo": "лицензия правообладателя, ст. 1286.1 ГК РФ (открытая лицензия)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Кресты.jpg",
+    "primechanie": "кадр для шапки — кадрированная копия того же кадра"
+  },
+  "muzei/literatura/media-rekviem/petrov-vodkin-1922.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "К. С. Петров-Водкин",
+    "gody": "1878–1939",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Kuzma_Petrov-Vodkin._Portrait_of_Anna_Akhmatova._1922.jpg"
+  },
+  "muzei/literatura/media-shinel/kustodiev-na-nevskom-1905.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Б. М. Кустодиев",
+    "gody": "1878–1927",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://rusmuseumvrm.ru/data/collections/drawings/r-999/index.php"
+  },
+  "muzei/literatura/media-shinel/kustodiev-u-petrovicha-1905.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Б. М. Кустодиев",
+    "gody": "1878–1927",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://rusmuseumvrm.ru/data/collections/drawings/r-5000/index.php"
+  },
+  "muzei/literatura/media-shinel/kustodiev-v-novoy-shineli-1905.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Б. М. Кустодиев",
+    "gody": "1878–1927",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://www.wikiart.org/en/boris-kustodiev/akaky-akakiyevich-in-the-new-coat-1905"
+  },
+  "muzei/literatura/media-shkatulka/bazhov-moneta-1994.jpg": {
+    "osnovanie": "не объект авторского права",
+    "avtor": "Банк России",
+    "gody": "1994",
+    "pravilo": "п. 6 ст. 1259 ГК РФ: денежные знаки не являются объектами авторских прав",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:RR5110-0001R_115-летие_со_дня_рождения_П.П._Бажова.png"
+  },
+  "muzei/literatura/media-shkatulka/ekaterinburg-1909.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "С. М. Прокудин-Горский",
+    "gody": "1863–1944",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:PG_-_Central_part_of_Yekaterinburg_with_pond.jpg"
+  },
+  "muzei/literatura/media-shkatulka/eparhialnoe-uchilishche-1907.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "автор открытки не указан",
+    "gody": "опубл. 1907",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Епархиальное_женское_училище_открытка.jpg"
+  },
+  "muzei/literatura/media-shkatulka/malahitovyy-zal-hero.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "К. А. Ухтомский",
+    "gody": "1818–1881",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Ухтомский_-_Виды_залов_Зимнего_дворца._Малахитовый_зал.jpg",
+    "primechanie": "кадр для шапки — кадрированная копия того же кадра"
+  },
+  "muzei/literatura/media-shkatulka/ukhtomskiy-malahitovyy-zal.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "К. А. Ухтомский",
+    "gody": "1818–1881",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Ухтомский_-_Виды_залов_Зимнего_дворца._Малахитовый_зал.jpg"
+  },
+  "muzei/literatura/media-shkatulka/verh-isetskiy-1909.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "С. М. Прокудин-Горский",
+    "gody": "1863–1944",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:PG_-_Factory_settlement_of_the_Verkh-Isetskii_factory.jpg"
+  },
+  "muzei/literatura/media-simonov/kamen-doska.jpg": {
+    "osnovanie": "CC BY-SA 3.0",
+    "avtor": "Futureal",
+    "gody": "снимок XXI в.",
+    "pravilo": "лицензия правообладателя, ст. 1286.1 ГК РФ (открытая лицензия)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Дошка_на_мэмарыяльным_камені_К.Сіманава.jpg"
+  },
+  "muzei/literatura/media-simonov/kamen-hero.jpg": {
+    "osnovanie": "CC BY-SA 3.0",
+    "avtor": "Futureal",
+    "gody": "снимок XXI в.",
+    "pravilo": "лицензия правообладателя, ст. 1286.1 ГК РФ (открытая лицензия)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Мэмарыяльны_камень_К.Сіманава.jpg",
+    "primechanie": "кадр для шапки — кадрированная копия того же кадра"
+  },
+  "muzei/literatura/media-simonov/simonovskiy-kamen.jpg": {
+    "osnovanie": "CC BY-SA 3.0",
+    "avtor": "Futureal",
+    "gody": "снимок XXI в.",
+    "pravilo": "лицензия правообладателя, ст. 1286.1 ГК РФ (открытая лицензия)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Мэмарыяльны_камень_К.Сіманава.jpg"
+  },
+  "muzei/literatura/media-timur/gaydar-foto.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф не установлен",
+    "gody": "опубл. 1946",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%93%D0%B0%D0%B9%D0%B4%D0%B0%D1%80,_%D0%90%D1%80%D0%BA%D0%B0%D0%B4%D0%B8%D0%B9_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%B8%D1%87_001.png"
+  },
+  "muzei/literatura/media-toska/chekhov-serov-1902.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "В. А. Серов",
+    "gody": "1865–1911",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Valentin_Serov,_Anton_Chekhov,_1902,_State_Literature_Museum,_Moscow_ГЛМ_КП_51808;_from_goskatalog.ru.jpg"
+  },
+  "muzei/literatura/media-volokolamskoe/panfilov-serebryakov-egorov-1941.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "М. А. Калашников",
+    "gody": "1906–1944",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора + 4 года участнику войны (ст. 6 ФЗ № 231-ФЗ)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%B0%D0%BD%D1%84%D0%B8%D0%BB%D0%BE%D0%B2,_%D0%A1%D1%80%D0%B5%D0%B1%D1%80%D1%8F%D0%BA%D0%BE%D0%B2,_%D0%95%D0%B3%D0%BE%D1%80%D0%BE%D0%B2.jpg"
+  },
+  "muzei/skazki/img/bilibin-morozko-1932.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. Я. Билибин",
+    "gody": "1876–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:1932._Билибин._Морозко.jpg"
+  },
+  "muzei/skazki/img/bilibin-vasilisa-11.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "И. Я. Билибин",
+    "gody": "1876–1942",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Ivan_Bilibin_-_illustration-for-the-fairy-tale-vasilisa-the-beautiful-1900-11.jpg"
+  },
+  "muzei/skazki/img/lissner-lisichka-prorub.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "Э. Э. Лисснер",
+    "gody": "1874–1941",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Сказка_о_лисичке-сестричке_и_волке_3.jpg"
+  },
+  "muzei/skazki/img/sytin-snegurushka-na-lise.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "художник не указан, издание И. Д. Сытина",
+    "gody": "опубл. 1912",
+    "pravilo": "п. 2 ст. 1281 ГК РФ: анонимное произведение, 70 лет после обнародования",
+    "ssylka": "http://arch.rgdb.ru/xmlui/handle/123456789/44562"
+  },
+  "muzei/karikatura/media/radakov-bezbozhnik-1929.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "А. А. Радаков",
+    "gody": "1879–1942; обложка журнала «Безбожник у станка», 1929, № 20",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:Bezbozhnik_u_stanka_-_the_transition_of_the_Union_of_militant_atheists_to_the_continuous_working_week,_1929,_n.20.jpg"
+  },
+  "muzei/skazki/img/yaguzhinskiy-zimove-zverey-1909.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "С. И. Ягужинский",
+    "gody": "1862–1947; «Русские народные басни и сказки о зверях», изд. т-ва И. Д. Сытина, 1909, с. 9",
+    "pravilo": "п. 1 ст. 1281 ГК РФ: 70 лет после смерти автора",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:1909---Русские-народные-басни-и-сказки-о-зверях-9.jpg"
+  },
+  "muzei/arhitektura/media/terem-astashovo/terem-2018-sredi-elej.webp": {
+    "osnovanie": "CC BY-SA 4.0",
+    "avtor": "AnikinDmitriy1967",
+    "gody": "снимок 29.07.2018",
+    "pravilo": "открытая лицензия правообладателя (ст. 1286.1 ГК РФ)",
+    "ssylka": "https://commons.wikimedia.org/wiki/File:NUU9JShAp-I.jpg"
+  }
+}

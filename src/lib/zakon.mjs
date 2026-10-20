@@ -15,8 +15,12 @@
 //
 // Е2 — основание у кадров XX века (год дня ≥ 1900 или год ≥ 1900 в подписи): общественное достояние
 // (ст. 1281–1282 ГК), свободная лицензия, цитирование (ст. 1274 ГК) со ссылкой, разрешение, своя генерация.
-// Основание берётся из credit/подписи, если оно там названо однозначно; иначе — из ведомости
-// data/reestry/osnovaniya.json («<адрес кадра>»: { "osnovanie": "…", "ssylka": "…" }).
+// Основание — из ведомости data/reestry/osnovaniya.json, если кадр там есть (Е2, 20.10: проверенное решение
+// по ГК важнее пометки в подписи); иначе — из credit/подписи или data-license кадра полной страницы, если оно
+// названо однозначно. Ключ ведомости — путь кадра от public/ («muzei/<музей>/…»), запись:
+// { "osnovanie", "avtor", "gody", "pravilo", "ssylka" }; запись без основания или без ссылки на источник
+// (страница файла, музейная карточка) основанием не считается. Сборка строгая: кадр XX века без основания —
+// красная (src/integrations/zakon.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
 import { cardFrames, fullFrames } from './podpisi.mjs';
@@ -177,13 +181,21 @@ export function kadrXX(fr, gde, godDnya, vedomost) {
   if (!vekXX(godDnya, podpis)) return null;
   // Полная страница: подпись у кадра или таблица прав страницы (state rights — основание в списке прав страницы).
   const gotovo = karta ? (fr.generated ? 'своя генерация проекта' : '') : fr.state === 'rights' ? 'в таблице прав страницы' : '';
-  const ved = vedomost[fr.src];
-  const iz = gotovo || osnovanieIz(karta ? `${fr.credit} ${fr.caption}` : `${fr.sign} ${fr.alt}`);
-  return { museum: fr.museum, key: fr.key, src: fr.src, podpis: String(podpis || '').slice(0, 160), gde,
-    osnovanie: iz || ved?.osnovanie || '', otkuda: iz ? 'подпись' : ved?.osnovanie ? 'ведомость' : '', ssylka: ved?.ssylka || '' };
+  const put = putKadra(fr.museum, fr.src);
+  // Строка ведомости засчитывается только с основанием и ссылкой на страницу файла.
+  const ved = vedomost[put]?.osnovanie && vedomost[put]?.ssylka ? vedomost[put] : null;
+  const iz = ved ? '' : gotovo || osnovanieIz(karta ? `${fr.credit} ${fr.caption}` : `${fr.sign} ${fr.alt} ${fr.data || ''}`);
+  return { museum: fr.museum, key: fr.key, src: fr.src, put, podpis: String(podpis || '').slice(0, 160), gde,
+    osnovanie: ved?.osnovanie || iz, otkuda: ved ? 'ведомость' : iz ? 'подпись' : '', ssylka: ved?.ssylka || '' };
 }
 
 /** Е2: кадры XX века и их основания. { vsego, bez: [...], kadry: [{ museum, key, src, podpis, osnovanie, otkuda, gde }] } */
+/** Путь кадра от public/: «../../muzei/x/a.jpg», «media/a.jpg» на странице музея x → «muzei/x/…». */
+export const putKadra = (museum, src) => {
+  const p = String(src || '').split(/[?#]/)[0].replace(/^(\.\.\/|\.\/|\/)+/, '');
+  return p.startsWith('muzei/') ? p : `muzei/${museum}/${p}`;
+};
+
 export function kadryXX(root = '.') {
   const vedomost = vedomostOsnovaniy(root);
   const gody = {};
