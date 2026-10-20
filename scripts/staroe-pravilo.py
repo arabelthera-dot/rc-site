@@ -133,11 +133,19 @@ def engine_award_calls(s, path):
     (`window.award('q'+idx, points)`). У страницы, которая объявила реестр и отдала
     раздачу движку, список вызовов выходил пустым — и проверка отвечала «нарушено»
     до того, как доходила до честного реестра. Образец приёма — slogan_ok/hero_fit_ok.
+
+    20.10.2026 (Р49, первопроходцы 01-01): так же — свой скрипт страницы из её папки (nikitin/page.js),
+    не общий движок и не vendor/. Иначе страница, отдавшая счёт движку, а награды — своему файлу,
+    получала «нарушено» при честном реестре: проверке нечего было с ним сверить.
     """
     out = []
     for engine in ('museum-score.js', 'museum-quiz.js', 'museum-choice-run.js'):
         for text in engine_sources(s, path, engine):
             out += award_calls(_code_only(text))
+    for src in re.findall(r'<script[^>]+src=["\']([^"\']+\.js)(?:[?#][^"\']*)?["\']', s):
+        if '/assets/' not in src and 'vendor/' not in src:
+            for text in engine_sources(s, path, src):
+                out += award_calls(_code_only(text))
     return out
 
 
