@@ -22,7 +22,7 @@ const support = { museum: s('portalImya'), lang: lang.code };
 // заголовок и хук — только в og:title/og:description, картинка — сам кадр (1200×630, без текста); нет кадра — общая.
 const og = await ogSegodnya(lang.code);
 ---
-<Base portal schema="home" title={s('portalTitle')} ogTitle={og.title ?? s('portalImya')} image={og.file ? `${base}og/segodnya-${og.key}.jpg` : `${base}og/og-default.jpg`} imageAlt={og.file ? og.alt : undefined} description={og.description ?? s('portalOpisanie')}>
+<Base portal schema="home" title={s('portalTitle')} ogTitle={og.title ?? s('portalImya')} image={og.file ? `${base}og/segodnya-${og.key}.jpg` : `${base}og/og-default.jpg`} imageAlt={og.file ? og.alt : undefined} description={s('portalOpisanie')} ogDescription={og.description}>
   <Fragment slot="head">
     {/* только шрифты главной (#2004 п.6); кириллица Inter и Playfair — заранее: ими набран первый экран */}
     <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />

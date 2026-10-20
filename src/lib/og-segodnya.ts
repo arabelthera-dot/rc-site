@@ -20,10 +20,18 @@ export function kadrFile(src?: string): string | undefined {
 
 export const pervoePredlozhenie = (s?: string) => (s ? (s.trim().match(/^.+?[.!?…](?=\s|$)/)?.[0] ?? s.trim()) : undefined);
 
+// og:title = событие « — » полное имя музея (title_ru из museums.json), если вместе ≤ 90 знаков; иначе только событие
+export const OG_TITLE_MAX = 90;
+export function ogZagolovok(v?: Card): string | undefined {
+  if (!v?.title) return undefined;
+  const s = v.museumTitle ? `${v.title} — ${v.museumTitle}` : v.title;
+  return [...s].length <= OG_TITLE_MAX ? s : v.title;
+}
+
 export interface OgSegodnya { key: string; vesch?: Card; file?: string; title?: string; description?: string; alt?: string }
 export async function ogSegodnya(code?: string): Promise<OgSegodnya> {
   const t = await today(klyuchMsk(), code);
   const v = t.cards[0];
   const file = v?.credit ? kadrFile(v.img) : undefined;
-  return { key: t.key, vesch: v, file, title: v?.title, description: pervoePredlozhenie(v?.hook), alt: v?.alt ?? v?.title };
+  return { key: t.key, vesch: v, file, title: ogZagolovok(v), description: pervoePredlozhenie(v?.hook), alt: v?.alt ?? v?.title };
 }
