@@ -4,11 +4,20 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # Ночная пересборка (Сергей 17.10.2026, «да» на стандартную настройку): дни и RSS зависят от даты,
-  # поэтому сайт собирается заново каждую ночь — 00:07 МСК (21:07 UTC), минута не круглая,
-  # чтобы не стоять в общей очереди GitHub. Откат — убрать этот блок.
+    inputs:
+      nochnaya:
+        description: 'Ночная пересборка: собрать, только если сегодня (по Москве) сайт ещё не собирался — для внешнего будильника'
+        type: boolean
+        default: false
+  # Ночная пересборка (Сергей 17.10.2026, «да» на стандартную настройку): RSS, «Детям» и вид без JS зависят от даты,
+  # поэтому сайт собирается заново каждую ночь. Расписание GitHub время не гарантирует (Б11: 19.10 запуск в 01:58,
+  # 20.10 — в 03:12 МСК вместо 00:07), поэтому попыток три — 00:07, 00:37, 01:07 МСК (21:07, 21:37, 22:07 UTC),
+  # минуты не круглые, чтобы не стоять в общей очереди GitHub. Собирает первая; остальные видят в задаче «nado»,
+  # что сегодня по Москве сборка уже прошла, и выходят. Откат — revert заявки (Б11, задача L).
   schedule:
     - cron: '7 21 * * *'
+    - cron: '37 21 * * *'
+    - cron: '7 22 * * *'
 permissions:
   contents: read
   pages: write
@@ -17,7 +26,40 @@ concurrency:
   group: pages
   cancel-in-progress: false
 jobs:
+  # «Уже собрано сегодня — выйти» (Б11, задача L): для запуска по расписанию и для ночного вызова извне
+  # (workflow_dispatch с nochnaya=true) — есть ли с московской полуночи запуск этого же deploy.yml с успешной
+  # задачей build (любой: по расписанию, по слиянию в main, ручной). Есть — сборка и выкладка пропускаются.
+  # Запуски deploy.yml идут по одному (concurrency: pages), поэтому двух проверяющих одновременно не бывает.
+  # Слияние в main и ручной запуск собирают всегда. Ошибка API — собираем (лишняя сборка лучше вчерашнего сайта).
+  nado:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    outputs:
+      sobrat: ${{ steps.p.outputs.sobrat }}
+    steps:
+      - id: p
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOBYTIE: ${{ github.event_name }}
+          NOCHNAYA: ${{ inputs.nochnaya }}
+        run: |
+          if [ "$SOBYTIE" != schedule ] && [ "$NOCHNAYA" != true ]; then echo "sobrat=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          polnoch=$(date -u -d "$(TZ=Europe/Moscow date +%F) 00:00 +0300" +%FT%TZ)
+          echo "московская полночь — $polnoch UTC"
+          runs=$(gh api -X GET "repos/$GITHUB_REPOSITORY/actions/workflows/deploy.yml/runs" -f created=">=$polnoch" -f status=success -f per_page=100 \
+            --jq ".workflow_runs[] | select(.id != $GITHUB_RUN_ID) | .id") || { echo "::warning::список запусков недоступен — собираем"; echo "sobrat=true" >> "$GITHUB_OUTPUT"; exit 0; }
+          for id in $runs; do
+            if [ "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id/jobs" --jq '[.jobs[] | select(.name == "build" and .conclusion == "success")] | length')" != 0 ]; then
+              echo "сегодня по Москве сайт уже собран: запуск $id — выходим"
+              echo "sobrat=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+          done
+          echo "сегодня по Москве сборки ещё не было — собираем"
+          echo "sobrat=true" >> "$GITHUB_OUTPUT"
   build:
+    needs: nado
+    if: needs.nado.outputs.sobrat == 'true'
     runs-on: ubuntu-latest
     # Основной адрес https://russian-civilization.ru/ (свой домен на Pages этого репо с 19.10.2026) —
     # индексируется. Откат на старую выкладку — revert заявки «домен на rc-site» + cname обратно.
@@ -62,4 +104,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/indexnow.mjs ${{ github.event_name == 'schedule' && '--tolko-svezhie' || '' }}
+      - run: node scripts/indexnow.mjs ${{ (github.event_name == 'schedule' || inputs.nochnaya) && '--tolko-svezhie' || '' }}
