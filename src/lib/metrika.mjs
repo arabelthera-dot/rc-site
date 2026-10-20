@@ -98,11 +98,15 @@ ${celiJs}  }
     b.innerHTML='<p>Мы используем cookie и Яндекс Метрику, чтобы понимать, какие залы музея интересны посетителям. '
       +'Нажимая «Принять», вы даёте согласие на обработку этих данных. Подробнее — в <a href="${POLITIKA_URL}">Политике конфиденциальности</a>.</p>'
       +'<div class="rc-cookie-b"><button type="button" class="da">Принять</button><button type="button" class="net">Отказаться</button></div>';
-    b.querySelector(".da").onclick=function(){set("da");b.remove();metrika(true)};
-    b.querySelector(".net").onclick=function(){set("net");b.remove()};
+    // пока плашка видна, под ней резервируется место (html.rc-cookie-on, --rc-cookie-h): низ страницы и подвал не закрыты
+    var h=d.documentElement;
+    function fit(){h.style.setProperty("--rc-cookie-h",b.offsetHeight+"px")}
+    function hide(){b.remove();h.classList.remove("rc-cookie-on");h.style.removeProperty("--rc-cookie-h");w.removeEventListener("resize",fit)}
+    b.querySelector(".da").onclick=function(){set("da");hide();metrika(true)};
+    b.querySelector(".net").onclick=function(){set("net");hide()};
     // вид — файлом (rc-cookie.css), плашка показывается, когда стиль готов: без мигания голого текста
     var css="/assets/rc-cookie.css",l=d.querySelector('link[href="'+css+'"]');
-    function show(){d.body.appendChild(b)}
+    function show(){d.body.appendChild(b);fit();h.classList.add("rc-cookie-on");w.addEventListener("resize",fit,{passive:true})}
     if(l){show();return}
     l=d.createElement("link");l.rel="stylesheet";l.href=css;l.onload=show;l.onerror=show;d.head.appendChild(l);
   }
