@@ -27,7 +27,11 @@ jobs:
       # «Поддержать проект» (Р31, 20.10.2026): пусто — выключен до работающего приёма денег, '1' — включён.
       PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
     steps:
+      # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
+      # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: withastro/action@v5
   deploy:
     needs: build

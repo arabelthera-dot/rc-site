@@ -18,6 +18,36 @@ import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
+import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
+
+// Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
+// («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
+// У произведений (есть headline или тип *Page/Article/CreativeWork) — license и, если нет, author; дата правки — из git.
+const WORK = /(?:Article|Page|CreativeWork|LearningResource|Course)$/;
+function ldRedakciya(html, red, modified) {
+  const OUR_NAMES = new Set(['Русская цивилизация', ...Object.values(MUSEUMS)]);
+  return html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (m, a, json, z) => {
+    let data;
+    try { data = JSON.parse(json); } catch { return m; }
+    const ours = (v) => v && typeof v === 'object' && !Array.isArray(v) && v['@type'] === 'Organization' && OUR_NAMES.has(v.name);
+    const walk = (o) => {
+      if (Array.isArray(o)) return o.forEach(walk);
+      if (!o || typeof o !== 'object') return;
+      for (const k of ['author', 'publisher']) if (ours(o[k])) o[k] = red;
+      for (const v of Object.values(o)) walk(v);
+    };
+    walk(data);
+    const top = Array.isArray(data) ? data : data['@graph'] ?? [data];
+    for (const n of top) {
+      const t = [].concat(n?.['@type'] ?? []);
+      if (!n || !(n.headline || t.some((x) => WORK.test(x)))) continue;
+      n.author ??= red;
+      n.license ??= LICENZIYA;
+      if (modified && /Article/.test(t.join())) n.dateModified ??= modified;
+    }
+    return a + JSON.stringify(data).replace(/</g, '\\u003c') + z;
+  });
+}
 
 const SRC = 'src/data/full-pages';
 const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
@@ -521,13 +551,25 @@ export default function fullPages() {
                   url, inLanguage: 'ru', ...(d.hook ? { description: d.hook } : {}),
                   isPartOf: { '@type': 'Museum', name: MUSEUMS[museum], url: new URL(`${base}muzei/${museum}/`, site).href },
                   typicalAgeRange: typicalAgeRange(znak(museum, key)),
-                  publisher: { '@type': 'Organization', name: 'Русская цивилизация', url: new URL(base, site).href } };
+                  author: redakciyaLd(new URL(base, site).href), publisher: redakciyaLd(new URL(base, site).href), license: LICENZIYA };
                 add.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
               }
               // Своя ld+json у старой страницы — возраст (436-ФЗ, Р41) отдельной WebPage этого адреса.
               if (!add.some((x) => x.includes('typicalAgeRange'))) add.push(`<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org',
                 '@type': 'WebPage', url, inLanguage: 'ru', typicalAgeRange: typicalAgeRange(znak(museum, key)) })}</script>`);
               html = html.replace(/<\/head>/i, `${add.join('\n')}\n</head>`);
+            }
+            // Подпись «Редакция», лицензия CC BY 4.0 (Р34, Р35), «Проверено» и журнал исправлений (Е5) — как у шаблонов
+            // (Base.astro, страница дня): журнал — перед подвалом страницы, строка лицензии — в конце подвала.
+            const zh = staraya ? undefined : zhurnal(museum, key);
+            if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), zh?.modified);
+            html = html.replace(/<meta\s+name=["']author["'][^>]*>\s*/gi, '').replace(/<link\s+rel=["']license["'][^>]*>\s*/gi, '')
+              .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<link rel="stylesheet" href="${base}assets/rc-podval.css" />\n</head>`);
+            {
+              const lic = licenziyaHtml(base, { links: true });
+              const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
+              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
+              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${zhurnalHtml(zh)}${lic}\n</body>`);
             }
             // «Поделиться» — один раз (glazami п.16): у страницы свой блок — строку museum-chrome не ставим,
             // а museum-support.js не добавляет кнопку, если на странице уже есть блок «Поделиться».
