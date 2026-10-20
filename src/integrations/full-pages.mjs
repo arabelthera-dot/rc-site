@@ -64,6 +64,7 @@ const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
 // Подвал и кнопка «глаз» — по 1–1,5 КБ, внутрь <head> вместо блокирующих запросов (Б10, скорость, 20.10).
 const PODVAL_CSS = fs.readFileSync('public/assets/rc-podval.css', 'utf8');
 const SLABOVID_KNOPKA_CSS = fs.readFileSync('public/assets/rc-slabovid-knopka.css', 'utf8');
+const POLNYY_DEN_CSS = fs.readFileSync('public/assets/rc-polnyy-den.css', 'utf8'); // контраст подвала (Б10)
 // Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
@@ -606,7 +607,13 @@ export default function fullPages() {
             const zhKartochki = zhurnal(museum, key), zh = staraya ? undefined : zhKartochki;
             if (site) html = ldRedakciya(html, redakciyaLd(new URL(base, site).href), { modified: zhKartochki?.modified, published: zhKartochki?.published, url: new URL(self, site).href });
             html = html.replace(/<meta\s+name=["']author["'][^>]*>\s*/gi, '').replace(/<link\s+rel=["']license["'][^>]*>\s*/gi, '')
-              .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<style data-rc-podval>${PODVAL_CSS}</style>\n</head>`);
+              .replace(/<\/head>/i, `<meta name="author" content="${REDAKCIYA}" />\n<link rel="license" href="${LICENZIYA}" />\n<style data-rc-podval>${PODVAL_CSS}\n${POLNYY_DEN_CSS}</style>\n</head>`);
+            // Область <main> (WCAG 1.3.1, Lighthouse landmark-one-main; Б10, 20.10): у 61 полной страницы её нет —
+            // всё от <body> до подвала страницы (последний <footer> верхнего уровня). Полоса и кнопка «глаз» встают позже — снаружи.
+            if (!/<main\b|role=["']main["']/i.test(html)) {
+              const b = html.match(/<body\b[^>]*>/i), f = html.search(/\n<footer\b(?![\s\S]*\n<footer\b)/i);
+              if (b && f > b.index) { const a = b.index + b[0].length; html = `${html.slice(0, a)}\n<main>${html.slice(a, f)}\n</main>${html.slice(f)}`; }
+            }
             {
               const lic = licenziyaHtml(base, { links: true });
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
