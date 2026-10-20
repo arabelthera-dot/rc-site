@@ -38,3 +38,21 @@ html.rc-slabovid body .hero > :is(.bg,.scrim){display:none!important}
 html.rc-slabovid body .hero .down{white-space:normal!important}
 /* подзаголовки главной (.p-lead «Летопись…», .p-sub) и музея были серыми через opacity — чёрные */
 html.rc-slabovid body :is(.p-lead,.p-sub,.mh-slogan,.mh-promise,.mh-scene figcaption,.cdate,.rc-sb-link,.rt-lbl){opacity:1!important;color:#000!important}
+/* Золотые и акцентные кнопки общего шаблона (Д7, 20.10). Движок museum-support.js вставляет свой CSS с !important
+   и селекторами весом (0,2,1)–(0,4,0) — тяжелее общего правила «body *» (0,1,2), поэтому «Поддержать»,
+   «Поделиться», «Сообщить об ошибке», «Ещё» и подпись блока оставались золотыми (контраст ~5:1).
+   Здесь — тот же вид для всех кнопок шаблона: чёрное на белом (21:1), рамка 2 px, фокус — общий контур 3 px.
+   Вес начинается с #-селектора внутри :is() — заведомо тяжелее любого правила движка и темы. */
+html.rc-slabovid body .support :is(#rc-sv-x,.sup-l,p,b,a){color:#000!important;background:#fff!important;background-image:none!important}
+html.rc-slabovid body .support .sup-l::after{background:#000!important;height:2px!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart,#rc-copied),
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart,#rc-copied):is(:hover,:active,.gold){
+  background:#fff!important;background-image:none!important;color:#000!important;-webkit-text-fill-color:#000!important;
+  border:2px solid #000!important;opacity:1!important;transition:none!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,#heart) :is(a,span,b,i,svg){color:#000!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart):hover{text-decoration:underline!important}
+/* выбранная вкладка/пункт был отмечен золотой заливкой — теперь инверсия: белое на чёрном (21:1) */
+html.rc-slabovid body :is(#rc-sv-x,#secnav a.on,.agnav button.on,.zb.on),
+html.rc-slabovid body :is(#rc-sv-x,#secnav a.on,.agnav button.on,.zb.on) *{background:#000!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html.rc-slabovid body :is(#rc-sv-x,.support .sup-btns button,.support .sup-btns .sup-action,.btn,.gbtn,.sharebtn,.backbtn,.calnext,.hero-btns>a,.hero-btns>button,.hero-cta,.cta,.p-dpd__btn,.p-today-all__btn,.audio button,#heart,#secnav a.on,.agnav button.on,.zb.on):focus-visible{
+  outline:3px solid #000!important;outline-offset:3px!important;box-shadow:0 0 0 6px #fff!important}
