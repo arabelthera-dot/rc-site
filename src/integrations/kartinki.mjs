@@ -55,7 +55,7 @@ export default function kartinki() {
           const file = path.join(root, rel);
           if (RASTER.test(rel) && fs.existsSync(file)) {
             const hash = crypto.createHash('sha1').update(fs.readFileSync(file)).digest('hex').slice(0, 12);
-            res = { hash, file, bytes: fs.statSync(file).size };
+            res = { hash, file, rel, bytes: fs.statSync(file).size };
           }
           info.set(rel, res);
           return res;
@@ -89,7 +89,13 @@ export default function kartinki() {
             if (!W || (W <= WIDTHS[0] && it.bytes < MIN_BYTES)) { it.skip = true; return; }
             const widths = WIDTHS.filter((w) => w * 1.15 < W); // 480 рядом с 486 — лишняя копия
             if (W <= WIDTHS.at(-1)) widths.push(W);
+            // оригинал уже WebP не шире 1600 — в свою ширину идёт он сам, копия была бы дублем (−11 МБ, 76 копий, Р49/T2);
+            // адрес с запятой или пробелом в srcset не пишется — тогда копия, как раньше
+            const own = /\.webp$/i.test(it.file) && W <= WIDTHS.at(-1) && encodeURI(it.rel);
+            const useOwn = own && !/[,\s]/.test(own);
+            if (useOwn && widths.length === 1) { it.skip = true; return; } // srcset из одного src не нужен
             it.srcset = widths.map((w) => {
+              if (w === W && useOwn) return `${base}${own} ${w}w`;
               const name = `${it.hash}-${w}.webp`;
               if (!jobs.has(name)) jobs.set(name, { it, w, name });
               return `${base}_k/${name} ${w}w`;
