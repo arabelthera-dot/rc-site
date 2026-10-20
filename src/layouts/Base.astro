@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; ogDescription?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
@@ -32,6 +32,9 @@ const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
 const headFont = own && /--font-h:\s*'([^']+)'/.exec(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8'))?.[1];
 const headFiles = headFont ? fontFiles([headFont], ['700']) : [];
 const url = new URL(Astro.url.pathname, Astro.site).href;
+// Описание для пересылки (og/twitter) отдельно от описания для поисковиков (20.10, #290): главная кладёт сюда хук
+// вещи дня, meta description остаётся постоянным описанием сайта. По умолчанию — то же description.
+const ogDescription = Astro.props.ogDescription ?? description;
 // У страницы без своего адреса (404 — её отдают на любой несуществующий путь) нет canonical, og:url и hreflang:
 // иначе они ведут на /404/, которого нет, и спорят с noindex (обход сайта 20.10, задача OB).
 const bezAdresa = Astro.props.bezAdresa === true;
@@ -117,13 +120,13 @@ const oshibkaUrl = oshibkaMailto
   <meta property="og:locale" content={ogLocale(lang)} />
   <meta property="og:type" content={type} />
   <meta property="og:title" content={ogTitle ?? title} />
-  {description && <meta property="og:description" content={description} />}
+  {ogDescription && <meta property="og:description" content={ogDescription} />}
   {!bezAdresa && <meta property="og:url" content={url} />}
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:alt" content={imageAlt ?? title} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={ogTitle ?? title} />
-  {description && <meta name="twitter:description" content={description} />}
+  {ogDescription && <meta name="twitter:description" content={ogDescription} />}
   <meta name="twitter:image" content={ogImage} />
   <link rel="sitemap" href={`${base}sitemap-index.xml`} />
   <link rel="alternate" type="application/rss+xml" title="Русская цивилизация — новые дни музеев" href={`${base}rss.xml`} />
