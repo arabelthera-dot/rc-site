@@ -58,6 +58,14 @@ jobs:
         env:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
         run: node scripts/podderzhka.test.mjs && node scripts/podderzhka.mjs dist
+      # Названия музеев только полностью (правило Сергея 09.10, AI_Projects#804, 20.10.2026): в тексте, title, meta,
+      # og, JSON-LD, alt, подписях скриптов сборки — ни одного «Музей …», которое короче или старее title_ru
+      # («Музей «Русские не сдаются»», «Музей русских побед»). Сначала проба на заведомых строках, потом весь dist.
+      # Строгая сразу (решение Сергея есть; на ветке 0 из 76 бывших). Выключатель — переменная NAZVANIYA_STROGO=0.
+      - name: nazvaniya-muzeev — имя музея только title_ru
+        continue-on-error: ${{ vars.NAZVANIYA_STROGO == '0' }}
+        timeout-minutes: 2
+        run: node scripts/nazvaniya-muzeev.mjs --proba && node scripts/nazvaniya-muzeev.mjs --dist dist
       # Внешние хосты (Е4, Р38, 20.10.2026): всё, что браузер посетителя грузит сам (скрипты, стили, шрифты,
       # картинки, iframe, fetch), — со своего домена, Яндекса, VK Видео или Rutube. Новый чужой хост — заявка
       # красная, список в отчёте. Строгая сразу (решение Сергея Р49); откат — удалить этот шаг.

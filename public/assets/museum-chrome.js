@@ -13,7 +13,7 @@
 
    Подключение перед </body>:
      <script>window.MUSEUM_CHROME={
-       museum:{title:'Музей изобретений',href:'index.html'},
+       museum:{title:'Музей «Что изобрели русские первыми в мире»',href:'index.html'},
        share:{title:'…',text:'…'},
        prev:{href:'day-04jan-pilchikov.html',title:'4 января · Пильчиков'},
        next:{href:'day-06jan-bering.html',title:'6 января · Беринг'},
