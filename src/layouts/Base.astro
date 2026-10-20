@@ -1,5 +1,5 @@
 ---
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; portal?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
@@ -11,6 +11,7 @@ import { fontFiles } from '../lib/shrifty.mjs';
 import nastroyki from '../data/nastroyki.json';
 import { slabovidHeadJs, slabovidButtonHtml } from '../lib/slabovid.mjs';
 import { ogRaster } from '../lib/og-den.mjs';
+import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml } from '../lib/redakciya.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
 // src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
 import museumCss from '../styles/museum.css?url';
@@ -45,6 +46,8 @@ const ogImage = new URL(ogRaster(image) ?? ogFile, Astro.site).href;
 // выбрасывает undefined). SearchAction у WebSite нет: поиск (интеграция poisk) по умолчанию выключен (Д5 плана сайта, 19.10).
 const home = new URL(base, Astro.site).href;
 const org = { '@type': 'Organization', name: 'Русская цивилизация', url: home };
+// Подпись текстов — «Редакция „Русской цивилизации“» (Р34), лицензия текстов — CC BY 4.0 (Р35): у всех страниц-произведений.
+const red = redakciyaLd(home);
 const museumLd = museum && museumTitle ? { '@type': 'Museum', name: museumTitle, url: new URL(`${base}muzei/${museum}/`, Astro.site).href } : undefined;
 // Язык страницы — по приставке адреса (/en/… и т.п., src/data/yazyki.json); русский — без приставки.
 // og:locale, inLanguage, строки подвала и «Подписаться» — от него (Г20; русский вывод не меняется).
@@ -54,13 +57,15 @@ const kind = Astro.props.schema ?? (Astro.url.pathname.replace(/\/?$/, '/') === 
   : museumLd && here ? 'calendar' : museumLd ? 'museum' : 'page');
 const ldName = ogTitle ?? title;
 const ld = kind === 'home'
-  ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Русская цивилизация', url: home, inLanguage: lang.code, description, publisher: org },
+  ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Русская цивилизация', url: home, inLanguage: lang.code, description, publisher: red, license: LICENZIYA },
      { '@context': 'https://schema.org', ...org, logo: new URL(`${base}og/index.jpg`, Astro.site).href }]
-  : kind === 'museum' ? { '@context': 'https://schema.org', ...museumLd, description, image: ogImage, parentOrganization: org }
-  : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumLd }
-  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumLd, publisher: org,
-      about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal }
-  : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home } };
+  // Museum — не произведение (license у него не бывает): лицензия и подпись — у его страницы WebPage.
+  : kind === 'museum' ? [{ '@context': 'https://schema.org', ...museumLd, description, image: ogImage, parentOrganization: org },
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, about: museumLd, author: red, publisher: red, license: LICENZIYA }]
+  : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumLd, author: red, publisher: red, license: LICENZIYA }
+  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumLd, author: red, publisher: red, license: LICENZIYA,
+      about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal, dateModified: Astro.props.modified }
+  : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
 const ldJson = JSON.stringify(ld).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
 // hreflang — только готовые языки (ready:true) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
@@ -88,6 +93,8 @@ const oshibkaUrl = oshibkaMailto
   <title>{title}</title>
   {noindex && <meta name="robots" content="noindex" />}
   {description && <meta name="description" content={description} />}
+  <meta name="author" content={REDAKCIYA} />
+  <link rel="license" href={LICENZIYA} />
   <meta property="og:site_name" content="Русская цивилизация" />
   <meta property="og:locale" content={ogLocale(lang)} />
   <meta property="og:type" content={type} />
@@ -121,6 +128,7 @@ const oshibkaUrl = oshibkaMailto
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
   {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
   <InlineCss file="rc-podpiska.css" />
+  <InlineCss file="rc-podval.css" />
   {/* режим слабовидящих — 22,6 КБ: файлом, не инлайном (инлайн × ~3600 страниц = +80 МБ сборки, 20.10).
        Класс ставит скрипт в начале <head>, а <link> в <head> блокирует отрисовку — мигания нет; файл кэшируется. */}
   <link rel="stylesheet" href={`${base}assets/rc-slabovid.css`} />
@@ -151,9 +159,10 @@ const oshibkaUrl = oshibkaMailto
   <footer>
     <div class="slog">{s('slogan')}</div>
     <slot name="footer"><a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></slot>
-    <div class="foot-links"><a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · {oshibkaMailto
+    <div class="foot-links"><a href={`${base}o-proekte/`}>О проекте</a> · <a href={`${base}kak-sdelan-muzey/`}>Как сделан музей</a> · <a href={`${base}kontakty/`}>Контакты</a>{oshibkaUrl && <> · {oshibkaMailto
       ? <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">Нашли ошибку?</a>
       : <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">Нашли ошибку?</a>}</>}</div>
+    <Fragment set:html={licenziyaHtml(base)} />
     {oshibkaMailto && <script is:inline>(function(){var a=document.querySelector('a.oshibka[data-pochta]');if(!a)return;var v='';function z(){v=String(window.getSelection?window.getSelection():'').trim().slice(0,1500)}a.addEventListener('pointerdown',z,true);a.addEventListener('click',function(){if(!v)z();var u=a.dataset.stranica,b='Страница: '+u+'\n\n'+(v?'Выделенный текст:\n«'+v+'»\n\n':'')+'Что не так:\n\n';a.href='mailto:'+a.dataset.pochta+'?subject='+encodeURIComponent('Ошибка на странице '+u)+'&body='+encodeURIComponent(b);v=''})})();</script>}
   </footer>
   <script is:inline defer src={`${base}assets/analytics.js`}></script>
