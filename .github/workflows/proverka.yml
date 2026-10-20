@@ -45,6 +45,11 @@ jobs:
         env:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
         run: node scripts/podderzhka.test.mjs && node scripts/podderzhka.mjs dist
+      # Внешние хосты (Е4, Р38, 20.10.2026): всё, что браузер посетителя грузит сам (скрипты, стили, шрифты,
+      # картинки, iframe, fetch), — со своего домена, Яндекса, VK Видео или Rutube. Новый чужой хост — заявка
+      # красная, список в отчёте. Строгая сразу (решение Сергея Р49); откат — удалить этот шаг.
+      - name: vneshnie-hosty — ни одного запроса за рубеж
+        run: node scripts/vneshnie-hosty.mjs --dist dist
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@v2
