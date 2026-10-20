@@ -1,4 +1,4 @@
-// Разбор утверждённого месяца блоками «## День N — …» (ne-sdayutsya). Вынесено из import-legacy.mjs (19.10),
+// Разбор утверждённого месяца блоками «## День N — …» (ne-sdayutsya). Вынесено из import-legacy.mjs (19.10; он в archive/kalendar-staryy-put-2110/),
 // общий для импорта и scripts/tablicy/razbor.mjs.
 import fs from 'node:fs';
 

@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "node --max-old-space-size=1400 ./node_modules/astro/bin/astro.mjs build",
     "preview": "astro preview",
-    "import": "node scripts/import-legacy.mjs && node scripts/redirects.mjs && node scripts/full-pages.mjs",
+    "import": "node scripts/redirects.mjs && node scripts/full-pages.mjs",
     "full-pages": "node scripts/full-pages.mjs",
     "proverka-podpisey": "node scripts/proverka-podpisey.mjs",
     "og-razmer": "node scripts/og-razmer.mjs dist"
