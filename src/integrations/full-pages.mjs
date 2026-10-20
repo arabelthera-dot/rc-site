@@ -4,6 +4,8 @@
 // Якоря href="#…" при <base> вели бы на папку музея — переписываются на собственный адрес страницы.
 // Относительные href/src/poster/srcset/url() — в абсолютные от папки музея: <base> видит браузер, но не проверка
 // ссылок (lychee резолвит от адреса файла — 757 ложных «нет файла», rc-site#16); <base> остаётся для скриптов.
+// data-src/data-poster (ленивые аудио, видео, картинки) — так же (20.10): обход сайта резолвил их от адреса
+// /den/MM-DD/ и нашёл 18 «битых» файлов; проверка — scripts/data-src.mjs в proverka.
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -458,7 +460,7 @@ export default function fullPages() {
               .replace(/(["'])\/(?:rc-site|rc-museum-preview)\//gi, `$1${base}`)
               .replace(/<head([^>]*)>/i, `<head$1>\n<base href="${base}muzei/${museum}/">`)
               .replace(/(\bhref\s*=\s*["'])#/gi, `$1${self}#`)
-              .replace(/(\s(?:href|src|poster)\s*=\s*)(["'])([^"']*)\2/gi,
+              .replace(/(\s(?:href|src|poster|data-src|data-poster)\s*=\s*)(["'])([^"']*)\2/gi,
                 (m, a, q, u) => `${a}${q}${absolute(u, `${base}muzei/${museum}/`)}${q}`)
               .replace(/(\ssrcset\s*=\s*)(["'])([^"']*)\2/gi, (m, a, q, v) => `${a}${q}${v.split(',')
                 .map((part) => part.replace(/^(\s*)(\S+)/, (x, sp, u) => sp + absolute(u, `${base}muzei/${museum}/`)))
