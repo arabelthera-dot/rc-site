@@ -12,6 +12,7 @@ kadr = {muzey, den, fayl, podpis, derzhatel, inv, avtor, nazvanie, god, syuzhet}
 """
 
 # Зарегистрированные адаптеры (kadr.adaptery() грузит scripts/fondy/*.py сам; список — для сверки):
-# ermitazh (#332), rgb_neb (#334), goskatalog (#335, туннель 127.0.0.1:8899), loc (#336); primer — заглушка-образец.
+# ermitazh (#332), rgb_neb (#334), goskatalog (#335, туннель 127.0.0.1:8899), loc (#336, Р93: выключен,
+# только kadr.py zamena --s-loc с личного разрешения владельца); primer — заглушка-образец, не грузится.
 ADAPTERY = ('ermitazh', 'rgb_neb', 'goskatalog', 'loc', 'tretyakov', 'rusmuseum')
 # _set.py — общий сетевой путь (напрямую → прокси, кэш «недоступен» на прогон); certs/ — промежуточные сертификаты.

@@ -595,11 +595,19 @@ def kadry_html(path):
                        **opis(tekst, podpis or STRIP(at('alt'))))
 
 
-def adaptery():
+# Р93 (21.10.2026, Сергей): Библиотека Конгресса — «только в самом крайнем случае», как Википедия:
+# по личному разрешению владельца. По умолчанию не загружается; включает только --s-loc.
+TOLKO_PO_RAZRESHENIYU = {'loc': 'Р93: Библиотека Конгресса — только с личного разрешения владельца'}
+
+
+def adaptery(vkl=(), bez=()):
+    """Адаптеры scripts/fondy/*.py. Фонды из TOLKO_PO_RAZRESHENIYU — только если названы в vkl; bez — выключить любые."""
     import importlib.util
     out = []
     for f in sorted((ROOT / 'scripts/fondy').glob('*.py')):
-        if f.name.startswith('_'):  # __init__, _set — не адаптеры
+        if f.name.startswith('_') or f.stem == 'primer':  # __init__, _set, заглушка — не адаптеры
+            continue
+        if f.stem in bez or (f.stem in TOLKO_PO_RAZRESHENIYU and f.stem not in vkl):
             continue
         try:
             spec = importlib.util.spec_from_file_location(f'fondy.{f.stem}', f)
@@ -683,8 +691,8 @@ def primenit(k, r):
     return True
 
 
-def zamena(muzey=None, prim=False):
-    ad = adaptery()
+def zamena(muzey=None, prim=False, vkl=(), bez=()):
+    ad = adaptery(vkl, bez)
     if any(n == 'goskatalog' for n, _ in ad):  # #335: Госкаталог только через туннель RU_PROXY
         import socket
         hp = urllib.parse.urlsplit(RU_PROXY)
@@ -694,46 +702,77 @@ def zamena(muzey=None, prim=False):
             if Path(tun).exists():
                 subprocess.Popen([sys.executable, tun, 'serve'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True); warn(f'туннель {RU_PROXY} поднят фоном: {tun}')
             else: warn(f'туннель {RU_PROXY} не слушает, {tun} не найден — goskatalog вернёт пусто')
-    print(f'адаптеров фондов: {len(ad)} ({", ".join(n for n, _ in ad) or "нет"}); режим: {"ПРИМЕНИТЬ" if prim else "сухой прогон"}')
+    vykl = sorted(set(TOLKO_PO_RAZRESHENIYU) - set(vkl)) + sorted(set(bez) - set(TOLKO_PO_RAZRESHENIYU))
+    print(f'адаптеров фондов: {len(ad)} ({", ".join(n for n, _ in ad) or "нет"}); выключены: {", ".join(vykl) or "нет"}; '
+          f'режим: {"ПРИМЕНИТЬ" if prim else "сухой прогон"}', flush=True)
     kadry = list(kadry_muzeya(muzey))
-    itog, net = {}, []
-    # html правится с конца файла, чтобы смещения ещё не обработанных кадров не съезжали
-    for k in sorted(kadry, key=lambda k: (str(k['put']), -(k.get('tag') or (0,))[0])):
-        s = itog.setdefault(k['muzey'], dict(kadrov=0, derzh=0, inv=0, naydeno=0, zameneno=0))
-        s['kadrov'] += 1; s['derzh'] += bool(k['derzhatel']); s['inv'] += bool(k['inv'])
-        kk = {x: k[x] for x in ('muzey', 'den', 'fayl', 'podpis', 'derzhatel', 'inv', 'avtor', 'nazvanie', 'god', 'syuzhet')}
-        hit = None
-        for name, fn in ad:
-            try:
-                for r in fn(dict(kk)) or []:
-                    why = strogo(kk, r)
-                    if why:
-                        hit = (r, why); break
-            except Exception as e:
-                warn(f'адаптер {name} упал на {k["muzey"]}/{k["den"]} ({type(e).__name__}: {e}) — пропускаю')
-            if hit:
-                break
-        if hit:
-            s['naydeno'] += 1
-            print(f'  {k["muzey"]}/{k["den"]} {k["fayl"]} → {hit[0]["fond"]} {hit[0]["card"]} ({hit[1]})')
-            if prim and primenit(k, hit[0]):
-                s['zameneno'] += 1
-        else:
-            iskali = '; '.join(f'{a}: {kk[b]}' for a, b in (('инв.', 'inv'), ('автор', 'avtor'), ('название', 'nazvanie'), ('год', 'god')) if kk[b]) \
-                     + f'; сюжет: {kk["syuzhet"][:100]}'
-            net.append([k['muzey'], k['den'], k['fayl'], k['derzhatel'], k['inv'], iskali])
+    itog, po_fondam = {}, {}
     out = ROOT / 'data/r90-na-razreshenie.tsv'
     out.parent.mkdir(exist_ok=True)
-    if muzey and out.is_file():  # --muzey: строки других музеев сохраняются
-        net += [r.split('\t') for r in out.read_text().splitlines()[1:] if r and r.split('\t')[0] != muzey]
     clean = lambda v: re.sub(r'[\t\n]+', ' ', str(v))
-    out.write_text('\t'.join(('музей', 'день', 'файл', 'держатель', 'инв', 'что искали')) + '\n'
-                   + ''.join('\t'.join(map(clean, r)) + '\n' for r in sorted(net)))
+    drugie = []
+    if muzey and out.is_file():  # --muzey: строки других музеев сохраняются
+        drugie = [r for r in out.read_text().splitlines()[1:] if r and r.split('\t')[0] != muzey]
+    # таблица пишется по ходу (дозапись + flush): прерванный прогон не теряет найденного
+    tsv = out.open('w')
+    tsv.write('\t'.join(('музей', 'день', 'файл', 'держатель', 'инв', 'что искали', 'почему нет')) + '\n'
+              + ''.join(r + '\n' for r in sorted(drugie)))
+    tsv.flush()
+    n_net = 0
+    try:
+        # html правится с конца файла, чтобы смещения ещё не обработанных кадров не съезжали
+        for k in sorted(kadry, key=lambda k: (str(k['put']), -(k.get('tag') or (0,))[0])):
+            s = itog.setdefault(k['muzey'], dict(kadrov=0, derzh=0, inv=0, naydeno=0, zameneno=0))
+            s['kadrov'] += 1; s['derzh'] += bool(k['derzhatel']); s['inv'] += bool(k['inv'])
+            kk = {x: k[x] for x in ('muzey', 'den', 'fayl', 'podpis', 'derzhatel', 'inv', 'avtor', 'nazvanie', 'god', 'syuzhet')}
+            hit, kand, upali = None, 0, []
+            for name, fn in ad:
+                try:
+                    for r in fn(dict(kk)) or []:
+                        kand += 1
+                        why = strogo(kk, r)
+                        if why:
+                            hit = (r, why); break
+                except Exception as e:
+                    upali.append(name)
+                    warn(f'адаптер {name} упал на {k["muzey"]}/{k["den"]} ({type(e).__name__}: {e}) — пропускаю')
+                if hit:
+                    break
+            stranica = f'{k["muzey"]}/{k["den"]}'
+            if hit:
+                s['naydeno'] += 1
+                po_fondam[hit[0]['fond']] = po_fondam.get(hit[0]['fond'], 0) + 1
+                print(f'{stranica} | {k["fayl"]} | найдено: {hit[0]["fond"]} → {hit[0]["card"]} ({hit[1]})', flush=True)
+                if prim and primenit(k, hit[0]):
+                    s['zameneno'] += 1
+            else:
+                if not ad:
+                    pochemu = 'нет включённых адаптеров'
+                elif not kk['inv'] and not (kk['avtor'] and (kk['nazvanie'] or kk['syuzhet'])):
+                    pochemu = 'в подписи нет ни инв. номера, ни автора с названием'
+                elif kand:
+                    pochemu = f'кандидатов {kand}, строгой сверки (номер у держателя или автор+год+название) нет'
+                    if not kk['god']:
+                        pochemu += '; в подписи нет года'
+                else:
+                    pochemu = 'фонды ничего не вернули'
+                if upali:
+                    pochemu += f'; упали: {", ".join(upali)}'
+                print(f'{stranica} | {k["fayl"]} | нет ({pochemu})', flush=True)
+                iskali = '; '.join(f'{a}: {kk[b]}' for a, b in (('инв.', 'inv'), ('автор', 'avtor'), ('название', 'nazvanie'), ('год', 'god')) if kk[b]) \
+                         + f'; сюжет: {kk["syuzhet"][:100]}'
+                tsv.write('\t'.join(map(clean, [k['muzey'], k['den'], k['fayl'], k['derzhatel'], k['inv'], iskali, pochemu])) + '\n')
+                tsv.flush()
+                n_net += 1
+    finally:
+        tsv.close()
     print(f'\n{"музей":<18}{"кадров":>7}{"держ.":>7}{"инв.":>6}{"найдено":>9}{"не найд.":>9}' + ('  заменено' if prim else ''))
     for m, s in sorted(itog.items()) + [('ВСЕГО', {x: sum(s[x] for s in itog.values()) for x in ('kadrov', 'derzh', 'inv', 'naydeno', 'zameneno')})]:
         print(f'{m:<18}{s["kadrov"]:>7}{s["derzh"]:>7}{s["inv"]:>6}{s["naydeno"]:>9}{s["kadrov"] - s["naydeno"]:>9}'
               + (f'{s["zameneno"]:>10}' if prim else ''))
-    print(f'\nна личное разрешение Сергея: {len(net)} строк → {out.relative_to(ROOT)}')
+    if po_fondam:
+        print('найдено по фондам: ' + '; '.join(f'{f} {n}' for f, n in sorted(po_fondam.items(), key=lambda x: -x[1])))
+    print(f'\nна личное разрешение Сергея: {n_net} строк → {out.relative_to(ROOT)}')
 
 
 def kadry_muzeya(muzey=None):
@@ -780,12 +819,14 @@ def main(argv=None):
     pu.add_argument('--card', help='ссылка на карточку предмета')
     z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
+    z.add_argument('--s-loc', action='store_true', help='включить Библиотеку Конгресса — только с личного разрешения владельца, Р93')
+    z.add_argument('--bez', metavar='ФОНД,...', default='', help='выключить фонды (имена файлов scripts/fondy/, через запятую)')
     r = sub.add_parser('razbor', help='без сети: сводка автор/название/год из подписей для zamena')
     r.add_argument('--muzey', help='только этот музей'); r.add_argument('-n', type=int, default=5, help='сколько примеров')
     a = ap.parse_args(argv)
     RAZRESHENIE = getattr(a, 'razreshenie', None)
     if a.cmd == 'zamena':
-        zamena(a.muzey, a.primenit)
+        zamena(a.muzey, a.primenit, vkl=('loc',) if a.s_loc else (), bez={x.strip() for x in a.bez.split(',') if x.strip()})
     elif a.cmd == 'razbor':
         razbor(a.muzey, a.n)
     elif a.cmd == 'find':
