@@ -5,7 +5,7 @@
 # без нужного — проверка идёт, отправка пишет «спит: нет секрета», работа зелёная; проверка — ручной пуск
 # с proba=true шлёт пробное «сбой»; откат — переменная STOROZH_VKL ≠ '1' или удалить файл.
 # Выключатель расписания — переменная STOROZH_VKL (≠ '1' — спит). Адрес — переменная STOROZH_ADRES
-# (по умолчанию http://russian-civilization.ru; появится сертификат — поставить https://…).
+# (по умолчанию https://russian-civilization.ru — сертификат Let's Encrypt на msk-new с 21.10.2026).
 name: storozh
 on:
   schedule:
@@ -41,7 +41,7 @@ jobs:
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_STOROZH_CHAT: ${{ secrets.TG_STOROZH_CHAT }}
-          ADRES: ${{ vars.STOROZH_ADRES || 'http://russian-civilization.ru' }}
+          ADRES: ${{ vars.STOROZH_ADRES || 'https://russian-civilization.ru' }}
           PROBA: ${{ github.event_name == 'workflow_dispatch' && inputs.proba }}
         run: bash scripts/storozh/storozh.sh
       - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0

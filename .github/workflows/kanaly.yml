@@ -24,6 +24,8 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
+    # Окружение kanaly (Р64): ключи TG/VK заводятся секретами окружения с правилом «только main», не секретами репо.
+    environment: kanaly
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
