@@ -30,7 +30,7 @@ class Otbor(unittest.TestCase):
         (root / 'astro.config.mjs').write_text("  site: 'https://proba.example',\n  base: '/rc',\n", encoding='utf-8')
         (root / 'src/data/museums.json').write_text(json.dumps({'museums': [
             {'slug': 'proba', 'number': 1, 'title_ru': 'Музей проб'}]}), encoding='utf-8')
-        (root / 'src/data/vozrast.json').write_text(json.dumps({'sajt': '6+', 'muzei': {}, 'dni': {}}), encoding='utf-8')
+        (root / 'src/data/vozrast.json').write_text(json.dumps({'sajt': '6+', 'muzei': {}, 'tragicheskieDni': {}}), encoding='utf-8')
         self.saved = (P.ROOT, P.DAYS, P.FULL, P.PUBLIC)
         P.ROOT, P.DAYS, P.FULL, P.PUBLIC = root, self.days, self.full, self.public
         (self.days / 'proba').mkdir(parents=True)

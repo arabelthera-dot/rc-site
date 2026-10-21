@@ -78,7 +78,7 @@
     }
   }
 
-  // 12+ и старше (data-rc-bez-ochkov на <html>, src/lib/vozrast.mjs; Р41, 20.10.2026): трагический день — без очков,
+  // Трагический день (data-rc-bez-ochkov на <html>, src/lib/vozrast.mjs; Р40, Р87) — без очков,
   // званий и диплома. award() остаётся и копит молча: викторины и игры работают как прежде, вывода нет.
   var bez = document.documentElement.hasAttribute('data-rc-bez-ochkov');
 

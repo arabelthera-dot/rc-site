@@ -79,8 +79,8 @@ const ld = kind === 'home'
   : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA,
       about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal, datePublished: Astro.props.published, dateModified: Astro.props.modified }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
-// Знак 436-ФЗ (Р41, Е3, 20.10): музей и день — из адреса, данные — src/data/vozrast.json. В JSON-LD — typicalAgeRange
-// (свойство CreativeWork: у главной — WebSite, у музея — его WebPage). 12+ и старше — data-rc-bez-ochkov на <html>:
+// Знак 436-ФЗ (Р87, 21.10: сайт 6+, сказки 0+): музей и день — из адреса, данные — src/data/vozrast.json. В JSON-LD — typicalAgeRange
+// (свойство CreativeWork: у главной — WebSite, у музея — его WebPage). Трагический день (Р40) — data-rc-bez-ochkov на <html>:
 // движки счёта (museum-score.js, museum-quiz.js) и rc-vozrast.css прячут очки, баллы и звания, интерактив работает.
 const pv = poPuti(Astro.url.pathname, base);
 const vz = znak(museum ?? pv.museum, pv.key);
@@ -107,7 +107,7 @@ const oshibkaUrl = oshibkaMailto
 const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: выключено без PUBLIC_CSP=1
 ---
 <!doctype html>
-<html lang={lang.code} dir={lang.dir} data-museum={museum} data-rc-vozrast={vz} data-rc-bez-ochkov={bezOchkov(vz) ? '' : undefined}>
+<html lang={lang.code} dir={lang.dir} data-museum={museum} data-rc-vozrast={vz} data-rc-bez-ochkov={bezOchkov(museum ?? pv.museum, pv.key) ? '' : undefined}>
 <head>
   <meta charset="utf-8" />
   {csp && <meta http-equiv="Content-Security-Policy" content={csp} />}

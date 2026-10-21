@@ -636,10 +636,10 @@ export default function fullPages() {
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             // Яндекс Метрика (тот же код, что Metrika.astro в Base.astro) — один раз; уже есть в исходнике — не дублируем.
             if (!/mc\.yandex\.ru\/metrika\/tag\.js/.test(html)) html = html.replace(/<\/head>/i, `${metrikaHtml}\n</head>`);
-            // Знак 436-ФЗ (Р41, Е3, 20.10) — в полосе; на 12+/16+ под ней строка «Родителю», на <html> — data-rc-bez-ochkov:
+            // Знак 436-ФЗ (Р87, 21.10) — в полосе; на трагическом дне (Р40) под ней строка «Родителю», на <html> — data-rc-bez-ochkov:
             // museum-score.js / museum-quiz.js и rc-vozrast.css не показывают очки и звания; фраза про очки в тексте — долой.
             const vz = znak(museum, key);
-            const bez = bezOchkov(vz);
+            const bez = bezOchkov(museum, key);
             html = html.replace(/<html\b/i, `<html data-rc-vozrast="${vz}"${bez ? ' data-rc-bez-ochkov' : ''}`);
             // Направление письма (Г19, 20.10) — как у шаблонов (Base.astro: dir={lang.dir}): из src/data/yazyki.json по lang страницы.
             {

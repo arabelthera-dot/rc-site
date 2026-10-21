@@ -9,9 +9,9 @@
 Картинка — первая из images дня (jpg/png/webp, без text_on_image); у дня без такой — картинка из блоков анкеты body,
 затем первая <img> большой страницы (локальный файл сайта; HTML читается, только если он есть).
 Карточки-превью og/ с надписью не берутся: день без картинки идёт только в «Сегодня также». WebP перед отправкой переводится в JPEG (Pillow) — VK его не принимает.
-Возраст (Р41, src/data/vozrast.json): день 16+ — тихий трагический день, в пост не идёт; на 12+ в строке даты знак.
+Трагический день (Р40, признак tragicheskieDni в src/data/vozrast.json) — тихий, в пост не идёт; знаков в посте нет (Р87).
 Каждый пропущенный музей — строкой в журнале, замена главного дня не бывает молчаливой. Сколько музеев
-отсечено по каждой причине (нет карточки / большой страницы / хука, 16+, нет картинки) — строкой «Отсев» в журнале;
+отсечено по каждой причине (нет карточки / большой страницы / хука, трагический день, нет картинки) — строкой «Отсев» в журнале;
 поста нет — та же строка ::warning:: в Actions (выход 0).
 
 Проверка (Е8, Р47): перед отправкой пост проходит scripts/kanaly/proverka.mjs — те же функции, что у сборки
@@ -117,16 +117,16 @@ def first_image(slug, key, day):
     return None
 
 
-def znak(slug, key, vozrast):
-    """Знак 436-ФЗ дня: день-исключение → музей → сайт (тот же порядок, что src/lib/vozrast.mjs znak)."""
-    return ((vozrast['dni'].get(slug) or {}).get(key) or {}).get('znak') or vozrast['muzei'].get(slug) or vozrast['sajt']
+def tragicheskij(slug, key, vozrast):
+    """Причина трагического дня (Р40) или None — тот же признак, что src/lib/vozrast.mjs tragicheskij."""
+    return ((vozrast.get('tragicheskieDni') or {}).get(slug) or {}).get(key)
 
 
-OTSEV = ('нет карточки дня', 'нет большой страницы', 'нет хука', '16+', 'нет картинки')
+OTSEV = ('нет карточки дня', 'нет большой страницы', 'нет хука', 'трагический день', 'нет картинки')
 
 
 def collect(key, skipped=None, otsev=None):
-    """Музеи с хуком и большой страницей на день key — по номеру в каталоге. 16+ — в skipped с причиной.
+    """Музеи с хуком и большой страницей на день key — по номеру в каталоге. Трагический день — в skipped с причиной.
     Большая страница — как у сайта (ADR 0001): анкета body в карточке дня ИЛИ HTML в src/data/full-pages.
     otsev — счётчик причин отсева (dict причина → число музеев)."""
     museums = json.loads((ROOT / 'src/data/museums.json').read_text(encoding='utf-8'))['museums']
@@ -147,13 +147,12 @@ def collect(key, skipped=None, otsev=None):
         if not (day.get('hook') or '').strip():
             cut('нет хука')
             continue
-        z = znak(m['slug'], key, vozrast)
-        if int(z.rstrip('+')) >= 16:
-            cut('16+')
-            skipped.append(f"{m['title_ru']} — день {z}, тихий трагический день, в пост не идёт")
+        if tragicheskij(m['slug'], key, vozrast):
+            cut('трагический день')
+            skipped.append(f"{m['title_ru']} — тихий трагический день, в пост не идёт")
             continue
         out.append({'slug': m['slug'], 'number': m['number'], 'title': m['title_ru'], 'hook': day['hook'].strip(),
-                    'image': first_image(m['slug'], key, day), 'znak': z})
+                    'image': first_image(m['slug'], key, day)})
     return out
 
 
@@ -195,8 +194,6 @@ def build(date, otsev=None):
         log(f"Пропуск главным: {m['title']} — нет картинки без надписи, идёт в «Сегодня также».")
     also = [m for m in ring if m is not main][:ALSO_MAX]
     when = f'{date.day} {MONTHS[date.month - 1]}'
-    if int(main['znak'].rstrip('+')) >= 12:
-        when += f" · {main['znak']}"
 
     def tg(also):
         e = html.escape
@@ -219,8 +216,8 @@ def build(date, otsev=None):
     vk = f"{when} · {main['title']}\n\n{main['hook']}\n\nОткрыть день в музее: {vku(main)}"
     if also:
         vk += '\n\nСегодня также:\n' + '\n'.join(f"• {m['title']} — {vku(m)}" for m in also)
-    # Р40: на трагических днях (16+ хотя бы у одного музея дня, Р41) комментарии закрыты заранее.
-    tragichno = any('тихий трагический день' in s for s in skipped) or any(int(m['znak'].rstrip('+')) >= 16 for m in found)
+    # Р40: на трагических днях (признак хотя бы у одного музея дня) комментарии закрыты заранее.
+    tragichno = any('тихий трагический день' in s for s in skipped)
     return {'key': key, 'url': url(main), 'image': main['image'], 'tg': caption, 'vk': vk,
             'main': main, 'also': also, 'urls': [url(main)] + [url(m) for m in also],
             'kommentarii_zakryty': tragichno}, key

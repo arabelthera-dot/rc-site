@@ -1,6 +1,7 @@
-// Знак информационной продукции (436-ФЗ) и всё, что от него зависит (Р41, Е3, Сергей 20.10.2026):
-// знак в шапке каждой страницы, строка «Родителю» на 12+/16+, typicalAgeRange в JSON-LD, без очков на 12+/16+,
-// отбор для /detyam/. Данные — src/data/vozrast.json; один источник для Base.astro и full-pages.mjs.
+// Знак информационной продукции (436-ФЗ) и признак трагического дня (Р87, Сергей 21.10.2026, заменяет Р41):
+// знак в шапке каждой страницы (сайт 6+, сказки 0+), typicalAgeRange в JSON-LD, отбор для /detyam/.
+// Трагический день (Р40) — не знак: без очков и «Итога дня», строка «Родителю», в пост 9:00 не идёт.
+// Данные — src/data/vozrast.json; один источник для Base.astro, full-pages.mjs и проверки поста.
 import fs from 'node:fs';
 const data = JSON.parse(fs.readFileSync('src/data/vozrast.json', 'utf8'));
 
@@ -9,16 +10,16 @@ const chislo = (znak) => parseInt(znak, 10);
 
 export const znakMuzeya = (museum) => data.muzei[museum] ?? data.sajt;
 
-// Знак страницы: день-исключение → музей → сайт.
-export function znak(museum, key) {
-  const den = museum && key ? data.dni[museum]?.[key] : undefined;
-  return den?.znak ?? (museum ? znakMuzeya(museum) : data.sajt);
-}
+// Знак страницы: музей → сайт (знаков у отдельных дней нет, Р87).
+export const znak = (museum) => (museum ? znakMuzeya(museum) : data.sajt);
 
-// 12+ и старше — трагические страницы: без очков, баллов и званий в интерактивах (п.3 задачи).
-export const bezOchkov = (z) => chislo(z) >= 12;
+// Трагический день (Р40): причина или undefined.
+export const tragicheskij = (museum, key) => (museum && key ? data.tragicheskieDni[museum]?.[key] : undefined);
 
-// schema.org typicalAgeRange: «12-» — с 12 лет и старше.
+// Трагический день — без очков, баллов и званий в интерактивах; интерактив остаётся.
+export const bezOchkov = (museum, key) => Boolean(tragicheskij(museum, key));
+
+// schema.org typicalAgeRange: «6-» — с 6 лет и старше.
 export const typicalAgeRange = (z) => `${chislo(z)}-`;
 
 // Адрес → музей и день: /muzei/<slug>/ и /muzei/<slug>/den/<ключ>/ (с языковой приставкой и без).
@@ -31,18 +32,14 @@ export function poPuti(pathname, base = '/') {
 export const znakHtml = (z) =>
   `<span class="rc-vozrast" role="note" aria-label="Возрастная маркировка: ${z}" title="Знак информационной продукции (436-ФЗ): ${z}">${z}</span>`;
 
-// Строка «Родителю»: о чём день и с какого возраста лучше смотреть вместе. Только на 12+/16+.
+// Строка «Родителю» — только на трагическом дне: о чём день, без возраста (Р87).
 export function roditelyu(museum, key) {
-  const z = znak(museum, key);
-  if (!bezOchkov(z)) return undefined;
-  if (!key) return data.roditelyuMuzej[museum];
+  const prichina = tragicheskij(museum, key);
+  if (!prichina) return undefined;
   const f = `src/content/days/${museum}/${key}.json`;
   const d = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {};
   const o = d.title ? `день о том, кто не сдался: ${d.title}${d.year ? `, ${d.year}` : ''}` : 'день о стойкости людей на войне и в беде';
-  const den = data.dni[museum]?.[key];
-  return den
-    ? `${o}. В рассказе — ${den.prichina}. С 16 лет; подростку 12–15 лет — только вместе со взрослым.`
-    : `${o}. Есть война и гибель людей, без жестоких подробностей. С 12 лет; младшим — вместе со взрослым.`;
+  return `${o}. В рассказе — ${prichina}. Ребёнку лучше смотреть вместе со взрослым.`;
 }
 
 export const roditelyuHtml = (text) =>
