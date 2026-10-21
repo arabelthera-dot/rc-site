@@ -11,12 +11,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const SPISOK = 'data/razreshennye-domeny.txt';
-const KORNI = ['src/content/days', 'src/data', 'src/components', 'src/layouts', 'src/pages', 'src/lib', 'public/assets'];
+// data/uchrezhdeniya.json — словарь адресов источников (srcHtml): его сайты тоже только из списка.
+const KORNI = ['data/uchrezhdeniya.json', 'src/content/days', 'src/data', 'src/components', 'src/layouts', 'src/pages', 'src/lib', 'public/assets'];
 const RASSH = /\.(?:md|mdx|json|ya?ml|html|astro|js|mjs|ts|css|svg)$/i;
 const URL_RE = /https?:\/\/([A-Za-z0-9.-]+)/g;
 
 function* faily(dir) {
   if (!fs.existsSync(dir)) return;
+  if (fs.statSync(dir).isFile()) { yield dir; return; }
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) yield* faily(p);

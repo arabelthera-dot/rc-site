@@ -40,5 +40,36 @@ export const stripSrcPrefix = (v?: string) => (v ? String(v).replace(SRC_PREFIX,
 // Источник — ссылкой (Б18, опись Р84, 21.10): адрес в тексте источника становится нажимаемой ссылкой
 // («Как сделан музей» обещает, что источник можно открыть самому). Текст экранируется, адрес — без хвостовой пунктуации.
 const escSrc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-export const srcHtml = (v?: string) => escSrc(stripSrcPrefix(v)).replace(/https?:\/\/[^\s<>"]+?(?=[.,;:)»]*(?:\s|$))/g,
-  (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+// Источник без адреса (21.10): адрес — по сайту, названному в тексте («(rvb.ru)»; только домены из
+// data/razreshennye-domeny.txt, если сайта нет в списке — ссылки нет), иначе по названию учреждения из словаря data/uchrezhdeniya.json
+// («Картина в Третьяковской галерее» → tretyakovgallery.ru). Данные дней не правятся — одно правило в одном месте.
+const lnk = (href: string, text: string) => `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+const URL_IN_SRC = /https?:\/\/[^\s<>"]+?(?=[.,;:)»]*(?:\s|$))/g;
+const hostOf = (h: string) => h.toLowerCase().replace(/^www\./, '');
+const RAZR = fs.readFileSync('data/razreshennye-domeny.txt', 'utf8').split('\n').map((s) => s.trim())
+  .filter((s) => s && !s.startsWith('#')).map(hostOf);
+// web.archive.org без пути — пустая главная архива, не источник
+const razreshen = (h: string) => h !== 'web.archive.org' && RAZR.some((r) => h === r || h.endsWith('.' + r));
+const DOMEN = /(?<![\w@.\/-])((?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,})(\/[^\s()<>"«»]*[^\s()<>"«».,;:])?(?![\w-])/gi;
+const UCH: { re: RegExp; url: string }[] = JSON.parse(fs.readFileSync('data/uchrezhdeniya.json', 'utf8')).uchrezhdeniya
+  .map((u: { shablon: string; url: string }) => ({ re: new RegExp(`(?<!\\p{L})(?:${u.shablon})(?!\\p{L})`, 'u'), url: u.url }));
+// Адрес источника по тексту без адреса: сайт из текста или учреждение из словаря; null — не нашли.
+export const srcAdresHtml = (t: string): string | null => {
+  let est = false;
+  const sDomenom = t.replace(DOMEN, (m, h: string, put = '') => {
+    if (!razreshen(hostOf(h))) return m;
+    est = true;
+    return lnk(`https://${h}${put}`, m);
+  });
+  if (est) return sDomenom;
+  for (const u of UCH) {
+    const m = t.match(u.re);
+    if (m && m.index !== undefined) return t.slice(0, m.index) + lnk(u.url, m[0]) + t.slice(m.index + m[0].length);
+  }
+  return null;
+};
+export const srcHtml = (v?: string) => {
+  const t = escSrc(stripSrcPrefix(v));
+  if (/https?:\/\//.test(t)) return t.replace(URL_IN_SRC, (u) => lnk(u, u));
+  return srcAdresHtml(t) ?? t;
+};
