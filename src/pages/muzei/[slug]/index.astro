@@ -17,12 +17,16 @@ import Support from '../../../components/home/Support.astro';
 import KudaDalshe from '../../../components/home/KudaDalshe.astro';
 export async function getStaticPaths() {
   const days = await getCollection('days');
-  return (await getCollection('museums')).map((m) => ({
+  const museums = await getCollection('museums');
+  const imena = Object.fromEntries(museums.map((m) => [m.data.slug, m.data.title_ru]));
+  // Б10 (опись Р84): заполненные дни (готовая страница) всех музеев — для пустого музея «Куда дальше»
+  const polnye = days.filter((d) => d.data.legacy_page).map((d) => ({ museum: d.data.museum, key: d.data.key, title: d.data.title, imya: imena[d.data.museum] }));
+  return museums.map((m) => ({
     params: { slug: m.data.slug },
-    props: { m: m.data, days: days.filter((d) => d.data.museum === m.data.slug).map((d) => d.data).sort((a, b) => a.key.localeCompare(b.key)) },
+    props: { m: m.data, polnye: polnye.filter((d) => d.museum !== m.data.slug), days: days.filter((d) => d.data.museum === m.data.slug).map((d) => d.data).sort((a, b) => a.key.localeCompare(b.key)) },
   }));
 }
-const { m, days } = Astro.props;
+const { m, days, polnye } = Astro.props;
 const base = import.meta.env.BASE_URL;
 // «Поддержать проект» — выключено до работающего приёма денег (Р31, 20.10.2026); включение — PUBLIC_PODDERZHKA=1.
 const podderzhka = import.meta.env.PUBLIC_PODDERZHKA === '1';
@@ -51,6 +55,15 @@ const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(
   .concat(extra.length ? [{ name: s('sverhGoda'), days: extra.map((d) => ({ title: d.title, href: href(d.key) })) }] : []).filter((g) => g.days.length);
 const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...days.filter((d) => !(d.legacy_page || d.images.length))].slice(0, 12)
   .map((d) => ({ title: d.title, href: href(d.key), when: when(d.key) }));
+// Б10: у музея нет ни одного полного дня — ближайшие к сегодняшней дате (сборки) полные дни соседей, по одному на музей, 4 штуки
+const segK = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Moscow' }).slice(5);
+const vidennye = new Set<string>();
+const sosedi = days.some((d) => d.legacy_page) ? [] : [...polnye]
+  .filter((d) => /^\d\d-\d\d$/.test(d.key))
+  .sort((a, b) => ((a.key < segK ? '1' : '0') + a.key).localeCompare((b.key < segK ? '1' : '0') + b.key))
+  .filter((d) => !vidennye.has(d.museum) && vidennye.add(d.museum))
+  .slice(0, 4)
+  .map((d) => { const mm = +d.key.slice(0, 2), dd = +d.key.slice(3); return { title: d.title, href: `${base}muzei/${d.museum}/den/${d.key}/`, when: `${dd} ${MONR[mm - 1]}`, museum: d.imya }; });
 const poisk = (poiskVitrin.vitriny as Record<string, { hvost: string; opisanie: string }>)[m.slug];
 ---
 <Base title={poisk?.hvost ? `${m.title_ru} — ${poisk.hvost}` : m.title_ru} ogTitle={m.title_ru} description={poisk?.opisanie ?? m.promise_ru} ogDescription={m.promise_ru} museum={m.slug} museumTitle={m.title_ru} ogFallback={ogFallback} rss={{ href: `${base}muzei/${m.slug}/rss.xml`, title: `${m.title_ru} — ${s('novyeDni')}` }}>
@@ -62,7 +75,7 @@ const poisk = (poiskVitrin.vitriny as Record<string, { hvost: string; opisanie: 
   <Themes groups={groups} />
   <OpenDays days={featured} total={yearDays.length} calHref={days.length ? `${base}muzei/${m.slug}/calendar/` : undefined} />
   <Council />
-  <KudaDalshe />
+  <KudaDalshe sosedi={sosedi} />
   <Support museum={m.title_ru} />
   <a slot="footer" href={base}>{`${s('vyytiVGorod')} ${strelkaVpered(lang.dir)}`}</a>
 </Base>
