@@ -229,6 +229,7 @@
   <div class="b2">Первый цифровой музей достижений России · Цивилизация первенств — что Россия дала миру раньше всех</div>
   <div class="b3">Музей «Что изобрели русские первыми в мире»</div>
   <div class="b4">365 изобретений. Все русские. Все первые</div>
+  <div class="score" id="scoreBox" title="Баллы знаний за этот день">⭐ <span id="score">0</span> / 100</div>
 </header>
 
 <nav class="crumbs" aria-label="Хлебные крошки"><div class="wrap">
@@ -278,12 +279,17 @@
 <nav class="daynav" aria-label="Разделы дня">
   <div class="wrap">
     <a href="#story">Операция</a>
+    <a href="#games">Сшей шунт</a>
     <a href="#fakty">Пять фактов</a>
+    <a href="#more">Ещё о Колесове</a>
     <a href="#pervenstvo">Первенство</a>
+    <a href="#quiz">Викторина</a>
     <a href="#sources">Источники</a>
     <a href="#calendar">Календарь</a>
   </div>
 </nav>
+
+<section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>
 
 <section class="block" id="story">
   <div class="wrap">
@@ -304,6 +310,28 @@
           <p class="src-note">Источник: Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1. С. 90; ПСПбГМУ им. И. П. Павлова, «МИР 24», 29.02.2024.</p>
         </div></details></li>
     </ol>
+  </div>
+</section>
+
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Сшей обходной путь на бьющемся сердце</h2>
+    <p style="max-width:62ch">Повтори операцию 25 февраля 1964 года. Сначала пережми артерию сердца и следи за кардиограммой, как Колесов: выдержит ли сердце. Потом наложи шов — пришей грудную артерию ниже сужения. Сердце не останавливают, поэтому точки шва движутся вместе с ним. Последний стежок — и кровь пойдёт в обход.</p>
+    <div class="press" id="press">
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="clampGo">Пережать артерию и смотреть ЭКГ</button>
+        <button class="btn ghost" type="button" id="shuntReset">Начать заново</button>
+      </div>
+      <div class="press-stage">
+        <figure><canvas id="cvEkg" width="300" height="300" role="img" aria-label="Модель кардиограммы во время пережатия артерии"></canvas><figcaption>Кардиограмма: <span id="ekgTxt">артерия не пережата</span></figcaption></figure>
+        <figure><canvas id="cvHeart" width="300" height="300" role="img" aria-label="Модель бьющегося сердца: суженная артерия и грудная артерия, которую нужно пришить ниже сужения"></canvas><figcaption>Шов: <span id="shovTxt">ждёт проверки ЭКГ</span></figcaption></figure>
+      </div>
+      <div class="lab-cap">Модель, а не снимок: восемь минут пережатия сжаты до восьми секунд, число стежков задано программой.</div>
+      <div class="lab-msg" id="shuntMsg" aria-live="polite">Начни с пережатия артерии.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: перед тем как вскрыть артерию сердца, Колесов восемь минут держал её пережатой и следил за кардиограммой. Сердце выдержало. Тогда он вручную, под лупой, пришил собственную внутреннюю грудную артерию больного к ветви артерии сердца ниже сужения — не останавливая сердце и без аппарата искусственного кровообращения. Кровь пошла в обход сужения.</div></noscript>
+    </div>
+    <p class="src-note" style="margin-top:10px">Правило модели — протокол первой операции: Седов В. М., Немков А. С. // Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1. С. 92.</p>
   </div>
 </section>
 
@@ -353,6 +381,40 @@
   </div>
 </section>
 
+<section class="block" id="more">
+  <div class="wrap">
+    <div class="kicker">Ещё о Колесове</div>
+    <h2>Путь к первому шунту</h2>
+    <ol class="udary">
+      <li><details><summary><span>Мальчишкой будущий хирург сердца пел в церковном хоре и подрабатывал писарем.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Василий Колесов родился 24 сентября 1904 года в вологодской деревне Мартьяновская, в крестьянской семье, где было шестеро детей.</p>
+          <p>Выучившись грамоте и чистописанию, он подрабатывал писарем при церкви в селе Кубенское и пел в церковном хоре.</p>
+          <p class="src-note">Источник: Седов В. М., Немков А. С. // Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1. С. 90.</p>
+        </div></details></li>
+      <li><details><summary><span>Свою первую операцию молодой врач сделал вместо хирурга — и спас ребёнка.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>В 1931 году Колесова отправили в Чусовую, в Пермский край, заведовать инфекционным отделением в разгар сыпного тифа. Тиф, дифтерия и скарлатина лежали вместе, водопровод и канализация не работали.</p>
+          <p>Когда у двух детей с дифтерией после трахеотомии случились смертельные осложнения, хирург предложил третью операцию сделать Колесову. Она прошла успешно. Анатомию он потом отрабатывал с патологоанатомом в маленькой часовне.</p>
+          <p>В Чусовой он встретил и жену — акушера Эттель Исаевну Керштейн.</p>
+          <p class="src-note">Источник: Седов В. М., Немков А. С. // Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1. С. 90–91.</p>
+        </div></details></li>
+      <li><details><summary><span>До прямого шунта клиника Колесова сделала больше трёхсот операций, которые подкармливали сердце кровью окольным путём.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>До 1964 года клиника сделала 310 операций Фиески и 21 операцию Вайнберга. Это «непрямые» способы подвести к сердцу больше крови.</p>
+          <p>Их эффект наступал медленно — и именно это подтолкнуло Колесова к прямому шунту: пришить артерию к сердцу сразу.</p>
+          <p class="src-note">Источник: Седов В. М., Немков А. С. // Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1.</p>
+        </div></details></li>
+      <li><details><summary><span>22 марта 1967 года Колесов впервые соединил артерию с сердцем не рукой, а сшивающим аппаратом.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Это был первый механический маммарно-коронарный анастомоз: шов наложил советский сосудосшивающий аппарат АСЦ-4.</p>
+          <p>Тем же аппаратом через год Колесов шил шунт одному из трёх больных, у которых начался инфаркт.</p>
+          <p class="src-note">Источник: Седов В. М., Немков А. С. // Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1.</p>
+        </div></details></li>
+    </ol>
+  </div>
+</section>
+
 <section class="block" id="pervenstvo">
   <div class="wrap">
     <div class="kicker">Проверка факта</div>
@@ -370,6 +432,28 @@
         <tr><td>Ленинград, В. И. Колесов</td><td>Первый механический шов аппаратом АСЦ-4; экстренные шунты при инфаркте</td><td>1967–1968</td></tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<section class="block" id="quiz">
+  <div class="wrap">
+    <div class="kicker">Проверь себя · 5 вопросов</div>
+    <h2>Викторина</h2>
+    <p style="color:var(--muted);max-width:62ch">На каждый вопрос — одна попытка. После ответа покажем объяснение.</p>
+    <div id="quizBox"></div>
+    <noscript><div class="noscript-box">Для викторины нужен JavaScript. Ответы: 1 — 25 февраля 1964 года, Ленинград; 2 — собственная внутренняя грудная артерия; 3 — нет, сердце билось; 4 — Дональду Эффлеру из Кливленда; 5 — шунтировал при начинающемся инфаркте, и все трое выжили.</div></noscript>
+  </div>
+</section>
+
+<section class="block" id="result">
+  <div class="wrap">
+    <h2 style="margin-bottom:6px">Итог дня</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">Проверка ЭКГ, шов и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
+    <div class="day-result">
+      <div class="dr-score" id="dayTxt">0 / 100 · звание: Гость дня</div>
+      <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
+      <div class="dr-note">Пережми артерию, сшей шунт на бьющемся сердце и ответь на вопросы.</div>
+    </div>
   </div>
 </section>
 
@@ -418,14 +502,154 @@
   Русская цивилизация · Музей «Что изобрели русские первыми в мире»</div></footer>
 
 <script>
-document.getElementById('readBtn').onclick=function(){document.getElementById('story').scrollIntoView({behavior:'smooth'});};
+/* ── СЧЁТ ── шкала из 100 держит assets/museum-score.js; здесь только реестр наград.
+   ЭКГ 10 + шов 40 + викторина 5×10 = 100. */
+window.MUSEUM_SCORE = {awards:{ekg:10, shov:40, q:[5,10]},
+  ranks:[[100,'Хирург сердца'],[70,'Ассистент Колесова'],[40,'Студент Павловского'],[0,'Гость дня']]};
 </script>
+<script src="../../assets/museum-score.js"></script>
+<script>
+(function(){
+  var $ = function(id){return document.getElementById(id);};
+  $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
+  function msg(t, cls){ var m=$('shuntMsg'); m.className='lab-msg'+(cls?' '+cls:''); m.textContent=t; }
+
+  /* ── ЭКГ ── восемь «минут» пережатия = восемь секунд; ритм ровный: сердце выдержало (протокол 1964). */
+  var ekg = $('cvEkg'), ec = ekg.getContext('2d'), clampT = -1, clampOk = false, raf = 0;
+  function ekgDraw(t){
+    var w=ekg.width, h=ekg.height; ec.fillStyle='#0b1a12'; ec.fillRect(0,0,w,h);
+    ec.strokeStyle='rgba(80,160,110,.25)'; ec.lineWidth=1;
+    for (var x=0;x<w;x+=20){ec.beginPath();ec.moveTo(x,0);ec.lineTo(x,h);ec.stroke();}
+    for (var y=0;y<h;y+=20){ec.beginPath();ec.moveTo(0,y);ec.lineTo(w,y);ec.stroke();}
+    ec.strokeStyle='#5fe08a'; ec.lineWidth=2; ec.beginPath();
+    for (var i=0;i<=w;i++){
+      var ph=((i+t*120)%75)/75, v=0;
+      if (ph>.30&&ph<.34) v=-8; else if (ph>.36&&ph<.39) v=70*(1-Math.abs(ph-.375)/.015); else if (ph>.39&&ph<.42) v=-14; else if (ph>.55&&ph<.68) v=12*Math.sin((ph-.55)/.13*Math.PI);
+      var yy=h/2-v; if(i===0) ec.moveTo(i,yy); else ec.lineTo(i,yy);
+    }
+    ec.stroke();
+  }
+
+  /* ── СЕРДЦЕ ── холст 300×300; точки шва вокруг места соединения ниже сужения качаются с пульсом. */
+  var cv = $('cvHeart'), c = cv.getContext('2d'), N = 8, done = [], flow = false, t0 = performance.now();
+  var J = {x:112, y:200};
+  function beat(t){ return 1+0.035*Math.max(0,Math.sin(t*7.5)); }
+  function pts(t){
+    var k=beat(t), r=[], i;
+    for (i=0;i<N;i++){ var a=i/N*Math.PI*2; r.push({x:150+(J.x+Math.cos(a)*15-150)*k, y:170+(J.y+Math.sin(a)*15-170)*k}); }
+    return r;
+  }
+  function heart(t){
+    var w=cv.width, h=cv.height, k=beat(t);
+    c.fillStyle='#f3ecd9'; c.fillRect(0,0,w,h);
+    c.save(); c.translate(150,170); c.scale(k,k); c.translate(-150,-170);
+    c.fillStyle='#b5473a'; c.beginPath(); c.ellipse(150,180,95,100,-0.35,0,Math.PI*2); c.fill();
+    c.strokeStyle='#e9c7a8'; c.lineWidth=7; c.lineCap='round';
+    c.beginPath(); c.moveTo(165,85); c.quadraticCurveTo(110,120,105,175); c.quadraticCurveTo(100,230,130,265); c.stroke();
+    c.strokeStyle='#5a2a24'; c.lineWidth=9; c.beginPath(); c.moveTo(116,140); c.lineTo(110,158); c.stroke();
+    c.restore();
+    c.strokeStyle='#d9543f'; c.lineWidth=6; c.beginPath(); c.moveTo(20,20); c.quadraticCurveTo(70,90,J.x-2,J.y-14); c.stroke();
+    c.fillStyle='#333'; c.font='12px sans-serif'; c.fillText('грудная артерия',8,14); c.fillText('сужение',150,148);
+    pts(t).forEach(function(p,i){
+      c.beginPath(); c.arc(p.x,p.y,done[i]?3:6,0,Math.PI*2);
+      c.fillStyle=done[i]?'#1d1d1d':'rgba(201,168,76,.95)'; c.fill();
+      if(!done[i]&&clampOk){c.strokeStyle='#7a5a10';c.lineWidth=1.5;c.stroke();}
+    });
+    if (flow){
+      c.fillStyle='#ff2d2d';
+      for (var d=0; d<6; d++){
+        var u=((t*0.6)+d/6)%1, x=(1-u)*(1-u)*20+2*(1-u)*u*70+u*u*(J.x-2), y=(1-u)*(1-u)*20+2*(1-u)*u*90+u*u*(J.y-14);
+        c.beginPath(); c.arc(x,y,4,0,Math.PI*2); c.fill();
+      }
+    }
+  }
+  function loop(now){
+    var t=(now-t0)/1000;
+    if (clampT>=0 && !clampOk){
+      var m=Math.min(8,Math.floor((now-clampT)/1000)+1); $('ekgTxt').textContent='пережатие, минута '+m+' из 8';
+      if (now-clampT>=8000){ clampOk=true; award('ekg',10); $('ekgTxt').textContent='8 минут, ритм ровный';
+        $('shovTxt').textContent='стежков 0 из '+N; msg('Сердце выдержало. Вскрывай артерию и шей: нажимай на золотые точки — они движутся вместе с сердцем.','ok'); }
+    }
+    ekgDraw(t); heart(t); raf=requestAnimationFrame(loop);
+  }
+  $('clampGo').onclick = function(){
+    if (clampT>=0) return; clampT=performance.now(); this.disabled=true;
+    msg('Артерия пережата. Смотри на кардиограмму: если ритм собьётся, вскрывать нельзя.');
+  };
+  cv.addEventListener('click', function(e){
+    if (!clampOk || flow) { if(!clampOk) msg('Сначала пережми артерию и проверь ЭКГ — так сделал Колесов.','bad'); return; }
+    var r=cv.getBoundingClientRect(), x=(e.clientX-r.left)*cv.width/r.width, y=(e.clientY-r.top)*cv.height/r.height;
+    var P=pts((performance.now()-t0)/1000), hit=-1;
+    P.forEach(function(p,i){ if(!done[i] && Math.hypot(p.x-x,p.y-y)<13) hit=i; });
+    if (hit<0){ msg('Мимо: сердце бьётся, лови точку в такт.'); return; }
+    done[hit]=true; var n=done.filter(Boolean).length; $('shovTxt').textContent='стежков '+n+' из '+N;
+    if (n===N){ flow=true; award('shov',40); $('shovTxt').textContent='шов готов, кровь идёт в обход';
+      msg('Шов наложен. Кровь пошла по грудной артерии в обход сужения. Так 25 февраля 1964 года Колесов избавил больного от болей — первым в мире сшив такой шунт на бьющемся сердце.','ok'); }
+    else msg('Стежок наложен. Осталось '+(N-n)+'.');
+  });
+  $('shuntReset').onclick = function(){
+    clampT=-1; clampOk=false; flow=false; done=[]; $('clampGo').disabled=false;
+    $('ekgTxt').textContent='артерия не пережата'; $('shovTxt').textContent='ждёт проверки ЭКГ';
+    msg('Операция начата заново. Уже полученные баллы сохраняются и повторно не начисляются.');
+  };
+  raf=requestAnimationFrame(loop);
+
+  /* ── ВИКТОРИНА ── один ответ на вопрос; дистракторы сверены с источниками страницы. */
+  var Q = [
+    {q:'Когда и где прошла первая в мире шовная операция коронарного шунтирования?', o:['1953 год, Москва','25 февраля 1964 года, Ленинград','1967 год, Кливленд'], a:1,
+     e:'Ленинград, 25 февраля 1964 года. В 1953-м в Москве Демихов делал опыт на собаке без шва, в 1967-м в Кливленде Фавалоро шунтировал веной.'},
+    {q:'Чем Колесов обошёл суженную артерию сердца?', o:['Веной с ноги больного','Металлической трубкой','Собственной внутренней грудной артерией больного'], a:2,
+     e:'Внутренней грудной артерией — сосудом, который идёт вдоль грудины. Фавалоро через три года взял вену.'},
+    {q:'Останавливал ли Колесов сердце и подключал ли аппарат искусственного кровообращения?', o:['Нет, шил на бьющемся сердце','Да, сердце остановили','Да, но только на час'], a:0,
+     e:'Сердце билось, аппарата не было: тяжелобольному, считал Колесов, он только вредит. Шов — вручную, под лупой.'},
+    {q:'Кому американский журнал отправил статью Колесова на рецензию?', o:['Самому Фавалоро','Дональду Эффлеру, шефу Кливлендской клиники','Демихову'], a:1,
+     e:'Эффлеру — шефу клиники, где работал Фавалоро. Статья всё равно вышла в 1967 году, а Колесов ответил на комментарий там же.'},
+    {q:'Что Колесов сделал в 1968 году первым в мире?', o:['Пересадил сердце','Шунтировал сердце при начинающемся инфаркте','Построил сшивающий аппарат'], a:1,
+     e:'У трёх больных начался инфаркт — Колесов шунтировал их экстренно, на работающем сердце. Все трое выжили.'}
+  ];
+  var box = $('quizBox');
+  Q.forEach(function(it, qi){
+    var wrap = document.createElement('div');
+    var h = document.createElement('p'); h.className='quiz-q'; h.textContent=(qi+1)+'. '+it.q; wrap.appendChild(h);
+    var exp = document.createElement('div'); exp.className='exp'; exp.setAttribute('aria-live','polite');
+    var btns = it.o.map(function(txt, oi){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.textContent=txt;
+      b.onclick=function(){
+        if (wrap.dataset.done) return; wrap.dataset.done='1';
+        btns.forEach(function(x,xi){ x.disabled=true; if (xi===it.a) x.classList.add('correct'); });
+        if (oi===it.a){ award('q'+qi,10); exp.textContent='Верно. '+it.e; }
+        else { b.classList.add('wrong'); exp.textContent='Не совсем. '+it.e; }
+        exp.classList.add('show');
+      };
+      wrap.appendChild(b); return b;
+    });
+    wrap.appendChild(exp); box.appendChild(wrap);
+  });
+})();
+</script>
+
 <script src="../../assets/museum-chrome.js"></script>
 <script>window.MUSEUM_SUPPORT={museum:'Музей «Что изобрели русские первыми в мире»'};</script>
 <script src="../../assets/museum-support.js"></script>
 <script src="calendar-izobreteniya.js"></script>
 <script>window.MUSEUM_CALENDAR_INITIAL='01-07';</script>
 <script src="../../assets/museum-calendar-month.js"></script>
+<script>window.MUSEUM_RETURN={riddle:{q:"Сколько больных с пришитой к сердцу грудной артерией было у Колесова, когда в 1967 году его статья вышла в американском журнале?",a:"Двенадцать: за три года после первой операции Колесов сделал уже 12 таких шунтов.",src:"Вестник хирургии им. И. И. Грекова, 2015; Креативная кардиология, 2017"}};</script>
+<script src="../../assets/museum-return.js" data-museum="izobreteniya" data-day="01-07"></script>
 <script defer src="../../assets/analytics.js"></script>
+<script type="application/json" data-proof>
+{
+ "status": "found",
+ "claim_id": "rc:izobreteniya:kolesov:claim-first-sutured-cabg",
+ "ours": {
+  "kind": "публикация",
+  "title": "В. И. Колесов. Статья о первых операциях маммарно-коронарного анастомоза в «The Journal of Thoracic and Cardiovascular Surgery» (к выходу — 12 больных); первый случай напечатан в 1965 году",
+  "date": "1967",
+  "holder": "В. И. Колесов, кафедра факультетской хирургии 1-го Ленинградского медицинского института им. И. П. Павлова",
+  "source_url": "http://heart-master.com/wp-content/uploads/2017/10/2017_03_202-211.pdf"
+ }
+}
+</script>
+<script src="../../assets/museum-proof.js"></script>
 </body>
 </html>
