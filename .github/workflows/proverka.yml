@@ -21,12 +21,17 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # Замок выключателей (21.10.2026): незаданная переменная в сравнении переменной с нулём — это null, GitHub сравнивает
+      # его с '0' как числа (0 = 0), и строгая проверка молча становится мягкой (так bez-viki пропустила #323).
+      # Сравнивать только через format('{0}', vars.X). Нашёл голое сравнение без format — заявка красная.
+      - name: zamok-vyklyuchateley — строгие проверки не мягчеют сами
+        run: "! grep -nE \"vars\\.[A-Z_0-9]+ *== *'0'\" .github/workflows/*.yml"
       - run: npm ci
       # «Сегодня» — по Москве во всех блоках (B11, 19.10.2026): home/Today.astro и portal/Segodnya.astro
       # дают один день под TZ Лос-Анджелеса/Москвы/Владивостока. Без сборки, секунды.
       # Строгая с 20.10.2026 (Р52: на main 0 расхождений). Выключатель — переменная SEGODNYA_MSK_STROGO=0.
       - name: segodnya-msk — один день по Москве
-        continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SEGODNYA_MSK_STROGO) == '0' }}
         timeout-minutes: 1
         run: node scripts/segodnya-msk.test.mjs && node scripts/segodnya-msk.mjs
       # Пост 9:00 в каналы (Е8, Р47, 20.10.2026): заведомый брак (имя из реестра Минюста, второе предложение в хуке,
@@ -89,7 +94,7 @@ jobs:
       # «появится после приёмки», «реквизиты появятся», TODO/lorem — в видимом тексте и строках календаря.
       # Сначала проба на заведомых строках, потом весь dist. Строгая сразу (Р84). Выключатель — SLUZHEBNYY_STROGO=0.
       - name: sluzhebnyy-tekst — служебных пометок на страницах нет
-        continue-on-error: ${{ vars.SLUZHEBNYY_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SLUZHEBNYY_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/sluzhebnyy-tekst.mjs --proba && node scripts/sluzhebnyy-tekst.mjs --dist dist
       # Названия музеев только полностью (правило Сергея 09.10, AI_Projects#804, 20.10.2026): в тексте, title, meta,
@@ -97,7 +102,7 @@ jobs:
       # («Музей «Русские не сдаются»», «Музей русских побед»). Сначала проба на заведомых строках, потом весь dist.
       # Строгая сразу (решение Сергея есть; на ветке 0 из 76 бывших). Выключатель — переменная NAZVANIYA_STROGO=0.
       - name: nazvaniya-muzeev — имя музея только title_ru
-        continue-on-error: ${{ vars.NAZVANIYA_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.NAZVANIYA_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/nazvaniya-muzeev.mjs --proba && node scripts/nazvaniya-muzeev.mjs --dist dist
       # Внешние хосты (Е4, Р38, 20.10.2026): всё, что браузер посетителя грузит сам (скрипты, стили, шрифты,
@@ -107,7 +112,7 @@ jobs:
       # потолка из scripts/bez-viki-dolg.json (числа main 21.10), в новом месте — ни одного. Долг может только убывать.
       # Сначала проба на заведомых строках, потом весь dist. Выключатель — переменная BEZ_VIKI_STROGO=0.
       - name: bez-viki — Википедии не прибавилось
-        continue-on-error: ${{ vars.BEZ_VIKI_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.BEZ_VIKI_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/bez-viki.mjs --proba && node scripts/bez-viki.mjs --dist dist
       - name: vneshnie-hosty — ни одного запроса за рубеж
@@ -129,7 +134,7 @@ jobs:
       # 3D или библиотеки ловит scripts/js-import.mjs. Строгая с 20.10.2026 (Р52: на main пропавших 0).
       # Выключатель — переменная JSIMPORT_STROGO=0.
       - name: js-import — подгрузки движков
-        continue-on-error: ${{ vars.JSIMPORT_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.JSIMPORT_STROGO) == '0' }}
         run: node scripts/js-import.mjs dist
       # Ленивые адреса data-src/data-poster (20.10.2026): lychee их не видит — 18 «битых» аудио/видео/картинок
       # на полных страницах дней ловит scripts/data-src.mjs. Строгий с 20.10.2026: прогон показал 0 битых из 18.
@@ -138,14 +143,14 @@ jobs:
       # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгий с 20.10.2026 (Р52: на main
       # 932.4 МБ — запас 17.6 МБ). Выключатель — переменная VES_STROGO=0.
       - name: ves — вес сборки
-        continue-on-error: ${{ vars.VES_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.VES_STROGO) == '0' }}
         run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12
       # Карточка пересылки (Б9/Б10, 20.10.2026): og:image меньше 600×315 Telegram/ВК показывают крошкой —
       # сборка ставит запасную (og-den), проверка считает остаток (должно быть 0); у каждой страницы дня
       # есть og:image (файл в dist) и twitter:card. Строгая с 20.10.2026 (задача E: обход живого сайта —
       # 4331 из 4332 дней в порядке, последний — временный 503). Выключатель — OGRAZMER_STROGO=0.
       - name: og-razmer — карточка пересылки у каждого дня
-        continue-on-error: ${{ vars.OGRAZMER_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.OGRAZMER_STROGO) == '0' }}
         run: node scripts/og-razmer.mjs dist
       # Закон РФ (Сергей «да» 20.10.2026): символика врага — не превью (ст. 20.3 КоАП), чужие подложки карт — нет.
       - name: simvolika-vraga — кадр из списка не og:image и не превью
@@ -170,7 +175,7 @@ jobs:
       # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.
       # Выключатель — переменная репозитория PODATE_STROGO=0 (вернуть мягкость без отката кода).
       - name: po-date — список дней не задвоен
-        continue-on-error: ${{ vars.PODATE_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.PODATE_STROGO) == '0' }}
         timeout-minutes: 3
         run: node scripts/po-date.mjs --dist dist
       # Сверка текста старый/новый сайт (план переезда, шаг 4; 19.10.2026): по дням с legacy_page —
@@ -178,7 +183,7 @@ jobs:
       # Строгая с 20.10.2026 (Р60: 7 красных дней и Никитин закрыты, на сайте 0 красных): заявка краснеет.
       # Выключатель — переменная репозитория SVERKA_STROGO=0 (вернуть мягкость без отката кода).
       - name: sverka-teksta — текст старого и нового сайта 1:1
-        continue-on-error: ${{ vars.SVERKA_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SVERKA_STROGO) == '0' }}
         timeout-minutes: 6
         run: |
           # без --depth: нужна история всех веток (git log --all), blob:none — без содержимого старых версий
@@ -195,7 +200,7 @@ jobs:
       # из scripts/legacy-paths.txt есть в сборке — страницей или переадресацией; иначе список и код 1.
       # Строгая с 20.10.2026 (Р52: на main 221 из 221). Выключатель — переменная REDIR_STROGO=0.
       - name: polnota — старые адреса не умирают
-        continue-on-error: ${{ vars.REDIR_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.REDIR_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/polnota.mjs --dist dist
       # Сверка карточки дня и полной страницы (19.10.2026): title карточки против <title>/<h1> страницы
@@ -203,7 +208,7 @@ jobs:
       # сдвинул страницы «Не сдаются» на соседний день, и никто не поймал. Строгая с 20.10.2026
       # (Р52: на main расхождений 0). Выключатель — переменная SVERKA_H1_STROGO=0.
       - name: sverka-h1 — страница дня про этот день
-        continue-on-error: ${{ vars.SVERKA_H1_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SVERKA_H1_STROGO) == '0' }}
         timeout-minutes: 1
         env:
           SVERKA_H1_STROGO: '1'
@@ -213,7 +218,7 @@ jobs:
       # долг «только таблица прав» — не выше потолков scripts/podpisi-dolg.json. Самотест — первым.
       # Выключатель — переменная PODPISI_STROGO=0.
       - name: podpisi — у каждого кадра есть подпись
-        continue-on-error: ${{ vars.PODPISI_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.PODPISI_STROGO) == '0' }}
         timeout-minutes: 1
         run: node scripts/proverka-podpisey.test.mjs && npm run proverka-podpisey
       # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам
