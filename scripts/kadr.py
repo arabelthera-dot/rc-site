@@ -18,7 +18,10 @@ PastVu (только с --geo lat,lon). Русский музей, Третья�
   kadr.py find "Gherman Titov Vostok 2" [-n 10] [--geo 55.75,37.62]
                                                       кандидаты по фондам: файл, размер, лицензия, автор
   kadr.py put arhitektura 03-05 "pastvu:760729:i/e/n/ien36rd3zgbt83806t.jpg" "подпись" "Автор, 1961"
-  kadr.py put … "rusmuseum:https://…/img.jpg" "подпись" "Автор" --card https://…/card
+  kadr.py put … "rusmuseum:https://…/img.jpg" "подпись" "Автор" --card https://…/card --smert 1898
+                                                      --smert — год смерти автора: основание показа
+                                                      «общественное достояние (ст. 1281 ГК РФ)» в credit;
+                                                      без него кадр фонда без открытой лицензии не кладётся
                                                       кадр из российского фонда: автор (шестой) обязателен,
                                                       credit — фонд, название и ссылка на карточку из sources.json
 Кадр после put — открыть и посмотреть: в поиске попадаются письма, автографы, плакаты с надписями.
@@ -281,13 +284,13 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:48]
 
 
-def put(museum, key, title, caption, avtor=None, card=None):
+def put(museum, key, title, caption, avtor=None, card=None, smert=None):
     day = ROOT / 'src/content/days' / museum / f'{key}.json'
     if not day.is_file():
         sys.exit(f'нет дня {day}')
     fond = title.split(':', 1)[0]
     if fond in FONDY:
-        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card)
+        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, smert)
     if not RAZRESHENIE:
         sys.exit('Викисклад выключен (Р90): сначала российские фонды и museum-source-access; '
                  'кадр оттуда — только с --razreshenie "слово Сергея"')
@@ -333,7 +336,20 @@ def write_day(day, rel, caption, credit):
     day.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
 
 
-def put_fond(day, museum, key, fond, ref, caption, avtor, card):
+def osnovanie(pravo, smert):
+    """Основание показа для credit (Р84/Б16: без него proverka-podpisey роняет сборку, 21.10.2026)."""
+    if re.search(r'\bCC[ -]?(BY|0)|обществен\S* достоян|public domain|PD-', pravo, re.I):
+        return pravo
+    if not smert:
+        sys.exit(f'права фонда «{pravo}» — не основание показа: укажите --smert ГОД (ст. 1281 ГК РФ) '
+                 'или не ставьте кадр')
+    import datetime
+    if datetime.date.today().year <= int(smert) + 70:
+        sys.exit(f'автор умер в {smert}: 70 лет не прошло (ст. 1281 ГК РФ) — кадр не ставить')
+    return f'общественное достояние (ст. 1281 ГК РФ, автор умер в {smert}); условия фонда: {pravo}'
+
+
+def put_fond(day, museum, key, fond, ref, caption, avtor, card, smert=None):
     """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json."""
     if not avtor:
         sys.exit(f'{fond}: шестым аргументом — автор и год по-русски (фонд не отдаёт паспорт машинно)')
@@ -347,8 +363,9 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card):
         raw = fetch(url)
     except Exception as e:
         sys.exit(f'{fond}: файл не получен ({e})')
+    pravo = osnovanie(src.get('rights') or src.get('license') or PRAVA.get(fond)
+                      or 'в sources.json не указаны — сверить по карточке', smert)
     rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'))
-    pravo = src.get('rights') or src.get('license') or PRAVA.get(fond) or 'в sources.json не указаны — сверить по карточке'
     credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
     write_day(day, rel, caption, credit)
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
@@ -358,6 +375,9 @@ if __name__ == '__main__':
     a = sys.argv[1:]
     opt = lambda k: a[a.index(k) + 1] if k in a and a.index(k) + 1 < len(a) else None
     card = opt('--card')
+    smert = opt('--smert')
+    if smert:
+        i = a.index('--smert'); del a[i:i + 2]
     RAZRESHENIE = opt('--razreshenie')
     if RAZRESHENIE:
         i = a.index('--razreshenie'); del a[i:i + 2]
@@ -366,6 +386,6 @@ if __name__ == '__main__':
     if a[:1] == ['find'] and len(a) >= 2:
         find(a[1], int(opt('-n') or 10), opt('--geo'))
     elif a[:1] == ['put'] and len(a) in (5, 6):
-        put(*a[1:], card=card) if len(a) == 6 else put(*a[1:], None, card)
+        put(*a[1:], card=card, smert=smert) if len(a) == 6 else put(*a[1:], None, card, smert)
     else:
         sys.exit(__doc__)
