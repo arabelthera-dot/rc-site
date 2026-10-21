@@ -626,18 +626,82 @@ def norm(s):
     return re.sub(r'[^0-9a-zа-я]', '', str(s or '').lower().replace('ё', 'е'))
 
 
+STOP_SLOVA = set('и в во на с со к ко о об от из за по для до при без под над про его ее её их а но же ли не'.split())
+
+
+def slova_nazv(s):
+    """Слова названия: регистр, ё, кавычки, пунктуация сняты; служебные слова и одиночные буквы — вон."""
+    s = str(s or '').lower().replace('ё', 'е')
+    w = [w for w in re.findall(r'[0-9a-zа-яѳѵі]+', s) if w not in STOP_SLOVA or len(w) == 1]
+    dl = [x for x in w if len(x) > 1]
+    return w if len(dl) <= 2 else dl  # короткое «Буква «В»» — буква значима; в длинном одиночные — предлоги
+
+
+def odno_slovo(a, b):
+    """Одна словоформа: равны или общая основа ≥5 букв (наполеона/наполеоном, россии/россия)."""
+    if a == b:
+        return True
+    if min(len(a), len(b)) < 5:
+        return False
+    n = 0
+    while n < min(len(a), len(b)) and a[n] == b[n]:
+        n += 1
+    return n >= max(5, min(len(a), len(b)) - 3)
+
+
+def pokrytie(iz, v):
+    return sum(any(odno_slovo(w, x) for x in v) for w in iz) / len(iz) if iz else 0.0
+
+
+def gody(r):
+    """Годы записи фонда: god и все годы датировки («1813-1814» → 1813..1814, «1950-е» → 1950..1959)."""
+    s = f"{r.get('god') or ''} {r.get('datirovka') or ''}"
+    g = [int(x) for x in re.findall(r'(?<!\d)(1[0-9]\d{2}|20[0-2]\d)(?!\d)', s)]
+    g += [int(x) + 9 for x in re.findall(r'(?<!\d)(1[0-9]\d0|20[0-2]0)-?е', s)]
+    return (min(g), max(g)) if g else None
+
+
+def god_sovpal(k, r):
+    if not re.fullmatch(r'\d{4}', str(k.get('god') or '')):
+        return False
+    d = gody(r)
+    return bool(d) and d[0] <= int(k['god']) <= d[1]
+
+
+def familii(s):
+    """Фамилии авторов записи: «Иван Иванович Теребенев, Пётр Соколов» → {теребенев, соколов}."""
+    return {norm(re.split(r'[\s.]+', a.strip())[-1]) for a in re.split(r'[,;]', str(s or '')) if a.strip()} - {''}
+
+
+def nomer_vypuska(s):
+    m = re.search(r'№\s*(\d+)', str(s or ''))
+    return m.group(1) if m else ''
+
+
+POROG_NAZV = 0.8  # доля слов названия, найденных в обе стороны
+
+
 def strogo(k, r):
-    """Р90: только строгое совпадение. Номер у того же держателя — или автор + год + название."""
+    """Р90: только строгое совпадение. Номер у того же держателя; автор + год + название (название фонда —
+    с полем nazvanie подписи, не со всей подписью); выпуск журнала — название журнала + год + номер."""
     if k['inv'] and r.get('inv') and norm(k['inv']) == norm(r['inv']):
         dk, dr = norm(k['derzhatel']), norm(r.get('derzhatel'))
         if dk and dr and (dk in dr or dr in dk):
             return 'инв. номер у того же держателя'
-    fam = lambda s: norm(re.split(r'[\s.]+', str(s or '').strip())[-1]) if s else ''
-    slova = [w for w in re.findall(r'[а-яёa-z]{4,}', str(r.get('title') or '').lower())]
-    tekst = (k['podpis'] + ' ' + k['syuzhet'] + ' ' + k.get('nazvanie', '')).lower()
-    if (fam(k['avtor']) and fam(k['avtor']) == fam(r.get('avtor')) and k['god'] and str(r.get('god') or '')[:4] == k['god']
-            and slova and sum(w[:-1] in tekst for w in slova) >= max(1, round(len(slova) * .6))):
+    nf, nk = slova_nazv(r.get('title')), slova_nazv(k.get('nazvanie'))
+    fk = familii(k.get('avtor'))
+    if (fk and fk & familii(r.get('avtor')) and god_sovpal(k, r) and nf and nk
+            and pokrytie(nf, nk) >= POROG_NAZV and pokrytie(nk, nf) >= POROG_NAZV):
         return 'автор + год + название'
+    # выпуск журнала (запись без автора): «Будильник, 1873. № 4» ↔ подпись «… «Будильник», 1873, № 4»
+    if not r.get('avtor'):
+        nr = nomer_vypuska(r.get('title'))
+        nkd = nomer_vypuska(k.get('podpis')) or nomer_vypuska(k.get('nazvanie'))
+        zh = slova_nazv(re.split(r'[,.:]|\d', str(r.get('title') or ''))[0])
+        tekst = slova_nazv(f"{k.get('podpis') or ''} {k.get('nazvanie') or ''}")
+        if (nr and nkd and nr == nkd and zh and str(r.get('god') or '')[:4] == str(k.get('god') or '') and k.get('god')
+                and all(any(odno_slovo(w, x) for x in tekst) for w in zh)):
+            return 'журнал + год + номер выпуска'
     return None
 
 
