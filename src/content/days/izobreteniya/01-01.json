@@ -38,7 +38,7 @@
     },
     {
       "type": "razdel",
-      "html": "\n\n<div class=\"adband\">\n  <div class=\"wrap\">\n    <div class=\"ad-slot billboard\">\n      <span class=\"lbl\">Реклама</span>\n      <span class=\"ph-txt\">Баннер-шапка 970×120 — продаётся напрямую или через рекламную сеть (РСЯ / Google AdSense). Такой слот — на каждой из 365 страниц музея.</span>\n    </div>\n  </div>\n</div>"
+      "html": "\n\n\n"
     },
     {
       "type": "navigaciya",
@@ -71,7 +71,7 @@
     },
     {
       "type": "razdel",
-      "html": "\n\n<div class=\"wrap\">\n  <div class=\"ad-slot\">\n    <span class=\"lbl\">Реклама</span>\n    <span class=\"ph-txt\">Встроенный блок в теле статьи — самый дорогой формат: читатель уже вовлечён в историю.</span>\n  </div>\n</div>"
+      "html": "\n\n"
     },
     {
       "type": "interaktiv",
@@ -114,7 +114,7 @@
     },
     {
       "type": "razdel",
-      "html": "\n\n<div class=\"wrap\">\n  <div class=\"ad-slot\">\n    <span class=\"lbl\">Реклама</span>\n    <span class=\"ph-txt\">Партнёрский блок в подвале — доступен на страницах дней, на витрине музея и на общем портале.</span>\n  </div>\n</div>"
+      "html": "\n\n"
     },
     {
       "type": "kuda-dalshe",
