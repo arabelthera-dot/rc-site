@@ -372,7 +372,7 @@ INV = [re.compile(p, re.I) for p in (
     r'\b(ЭРР-?\s?\d[\d/-]*)', r'(?<![\w-])(Ж-\s?\d[\d/-]*)', r'\b(ГИМ\s?\d[\d\s/]*\d)',
     r'\b(IWM\s+[A-Z]{1,3}\s?\d+)', r'\b(Ф\.\s?\d+\s*,?\s*(?:оп\.\s?\d+\s*,?\s*)?(?:к|карт|ед\.\s?хр|д)\.\s?\d+[\w.]*)',
     r'\bшифр\s+(?:РГБ\s+)?([A-ZА-ЯЁ0-9][\w./-]*\d)')]
-AVTOR = re.compile(r'(?:Фото(?:граф)?:?|Автор:?|работы|[Хх]уд(?:ожник)?\.?|[Гг]равюра|[Лл]итография)\s+'
+AVTOR = re.compile(r'(?:Фото(?:граф)?:?|Автор:?|работы|[Хх]уд(?:ожник)?\.?|[Гг]равюра|[Лл]итография|[Рр]исунок)\s+'
                    r'((?:[А-ЯЁA-Z]\.\s?){1,2}\s?[А-ЯЁA-Z][\w-]+|[А-ЯЁA-Z][\w-]+(?:\s[А-ЯЁA-Z][\w.-]+){0,2})')
 GOD = re.compile(r'\b(1[0-9]{3}|20[0-2]\d)\b')
 STRIP = lambda s: re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s or ''))).strip()
@@ -400,6 +400,76 @@ def kavychki(s):
     return a, len(s)
 
 
+ROD_PRED = re.compile(r'(?i)(?:^|[\s(])(?:фото(?:графия)?|снимок|рисунок|работы|гравюра|литография|картина|портрет|худ\.)$')  # после них — родительный
+ZHEN_IMENA = set('Анна Ольга Елена Екатерина Татьяна Ирина Светлана Марина Галина Нина Вера Надежда Зоя Алла Людмила Тамара '
+                 'Валентина Александра Евгения Мария Анастасия Лидия Наталия Юлия Виктория Валерия Софья София Ксения Дарья Наталья '
+                 'Любовь Полина Алёна Алина Вероника Варвара Зинаида Клавдия Антонина Маргарита Кира Лариса Оксана Яна'.split())
+
+
+def _fam_im(f, zhen):
+    """Фамилия из родительного в именительный; не уверен — как есть."""
+    if zhen:
+        for a, b in (('ской', 'ская'), ('цкой', 'цкая'), ('овой', 'ова'), ('евой', 'ева'), ('ёвой', 'ёва'), ('иной', 'ина'), ('ыной', 'ына')):
+            if f.endswith(a):
+                return f[:-len(a)] + b
+        return f
+    for a, b in (('ского', 'ский'), ('цкого', 'цкий'), ('ова', 'ов'), ('ева', 'ев'), ('ёва', 'ёв'), ('ина', 'ин'), ('ына', 'ын'),
+                 ('ея', 'ей'), ('ия', 'ий'), ('ого', 'ой')):
+        if f.endswith(a) and len(f) > len(a) + 1:
+            return f[:-len(a)] + b
+    if re.search(r'[бвгдзклмнпрстфхцчшщ]а$', f) and len(f) > 4:  # Нотбека → Нотбек, Гейтмана → Гейтман
+        return f[:-1]
+    return f
+
+
+def _imya_im(n):
+    if n == 'Любови':
+        return 'Любовь'
+    for a, b in (('ьи', 'ья'), ('ии', 'ия'), ('ия', 'ий'), ('ея', 'ей'), ('ая', 'ай'), ('ы', 'а')):
+        if n.endswith(a):
+            return n[:-len(a)] + b
+    if re.search(r'[гкх]и$', n):
+        return n[:-1] + 'а'
+    return n[:-1] if n.endswith('а') else n
+
+
+def imenitelny(avtor, pered=''):
+    """«Евгения Халдея» → «Евгений Халдей», «Екатерины Борисовой» → «Екатерина Борисова», «Картина Айвазовского» → «Айвазовский».
+    pered — текст перед именем: после «фото/рисунок/работы…» без двоеточия — родительный. Не уверен — как есть; мусор — ''."""
+    a = re.sub(r'\s+', ' ', avtor or '').strip(' ,;')
+    m = re.match(r'(?i)(?:картина|портрет|фото(?:графия)?|рисунок|работы|гравюра|литография)\s+(?=[А-ЯЁ])', a)
+    if m:
+        a, pered = a[m.end():], m.group(0).strip()
+    a = re.sub(r'^(.+?[а-яё]{2})\.\s.*$', r'\1', a)  # «Михаила Калашникова. По» → до точки
+    sl = a.split()
+    if not re.search(r'[а-яёa-z]', a):
+        return ''  # «XIX», «Р-7» — не имя
+    if not sl or not re.search('[А-ЯЁ]', a[:1]) or re.search(r'[A-Za-z]', a):
+        return a
+    if any(w.endswith('ью') for w in sl) or (len(sl) == 1 and re.search(r'(?:ых|их|ной|ного)$', a)):
+        return ''  # «Любовью Тимофеевной», «Вооружённых», «Красной» — не имя
+    ini = [w for w in sl[:-1] if re.fullmatch(r'[А-ЯЁ]\.(?:[А-ЯЁ]\.)?', w)]
+    imena = [w for w in sl[:-1] if w not in ini]
+    fam = sl[-1]
+    if imena:  # падеж — по имени
+        n = imena[0]
+        muzh_rod = bool(re.search(r'(?:ея|ия|ого|его|[оеёиы]ва|[иы]на|[бвгдзклмнпрстфхцчшщ]а)$', fam))
+        zhen_rod = bool(re.search(r'(?:ы|ьи|ии|[гкх]и)$', n) or n == 'Любови') and bool(re.search(r'(?:ой|ей)$', fam))
+        if n == 'Евгения' and re.search(r'(?:ея|ия|ого|его)$', fam):
+            pass  # «Евгения Халдея» — мужской родительный
+        elif n in ZHEN_IMENA or re.search(r'(?:[йь]|[бвгдзклмнпрстфхцчшщ])$', n):
+            return a  # именительный: «Виталий Барсов», «Наталья Филатова», «Иван Шкаев»
+        if zhen_rod:
+            return ' '.join([_imya_im(w) for w in imena] + [_fam_im(fam, True)])
+        if muzh_rod and re.search(r'(?:[бвгдзклмнпрстфхцчшщ]а|[иеа]я)$', n):
+            return ' '.join([_imya_im(w) for w in imena] + [_fam_im(fam, False)])
+        return a
+    if not ROD_PRED.search(pered.strip(' :').strip()) or pered.rstrip().endswith(':'):
+        return a  # «Фото: И. Иванов», «Художник В. Завьялов» — уже именительный
+    zhen = bool(re.search(r'(?:овой|евой|ёвой|иной|ыной|ской|цкой)$', fam))
+    return ' '.join(ini + [_fam_im(fam, zhen)])
+
+
 def avtor_v(s):
     """Имя человека из куска подписи: «А. Радаков», «Дмитрий Моор», «Уильям Элмс, Лондон» → имя."""
     for kus in re.split(r'\s*[,;]\s*|(?<=[а-яёa-z]{2})\.\s+(?=[А-ЯЁA-Z][а-яёa-z])', s.strip()):
@@ -409,8 +479,28 @@ def avtor_v(s):
     return ''
 
 
+TVORETS = re.compile(r'(?:^|[\s,.;(])(?:[Рр]исунок|работы|[Фф]ото:?|[Хх]уд(?:ожник)?\.?|[Гг]равюра|[Лл]итография|[Аа]втор(?: снимка)?:?)\s+')
+
+
 def iz_podpisi(podpis):
-    """dict(avtor, nazvanie, god) из подписи кадра; чего нет — пустая строка."""
+    """dict(avtor, nazvanie, god) из подписи кадра; автор — тот, кто после «рисунок/работы/фото…», а не изображённый."""
+    d = _iz_podpisi(podpis)
+    s = re.sub(r'\s+', ' ', podpis or '')
+    for m in TVORETS.finditer(s):
+        hv = s[m.end():]
+        if re.match(r'(?i)неизвестн', hv):
+            return dict(d, avtor='')  # «Портрет работы неизвестного художника» — изображённый не автор
+        k = re.match(r'(?:[А-ЯЁ]\.\s?){1,2}\s?[А-ЯЁ][а-яё]+(?:-[А-ЯЁ][а-яё]+)?|[А-ЯЁ][а-яё]+(?:\s[А-ЯЁ][а-яё]+){0,2}', hv)
+        if k and not NE_AVTOR.match(k.group(0)):
+            av = imenitelny(k.group(0), s[:m.end()])
+            if av:
+                return dict(d, avtor=av)
+    if re.search(r'(?i)автор(?: снимка)? (?:неизвест|не установлен)|без имени автора|неизвестн\w* (?:автор|художник|фотограф)', s):
+        return dict(d, avtor='')
+    return dict(d, avtor=imenitelny(d['avtor']))
+
+
+def _iz_podpisi(podpis):
     s = re.sub(r'\s+', ' ', podpis or '').strip()
     if not s:
         return dict(avtor='', nazvanie='', god='')
@@ -464,7 +554,8 @@ def opis(tekst, podpis):
     av = next((a for a in AVTOR.finditer(tekst) if not NE_AVTOR.match(a.group(1))), None)
     god = GOD.search(tekst)
     pp = iz_podpisi(podpis)  # год подписи точнее года из имени файла; автор — явный «Фото:/Худ.» прежде
-    return dict(derzhatel=derzh, inv=inv, avtor=(av.group(1).strip() if av else '') or pp['avtor'],
+    av = imenitelny(av.group(1), tekst[max(0, av.start(1) - 12):av.start(1)]) if av else ''
+    return dict(derzhatel=derzh, inv=inv, avtor=av or pp['avtor'],
                 god=pp['god'] or (god.group(1) if god else ''), nazvanie=pp['nazvanie'],
                 syuzhet=re.split(r'(?<=[^А-ЯЁA-Z])\.\s', podpis)[0][:160])
 
