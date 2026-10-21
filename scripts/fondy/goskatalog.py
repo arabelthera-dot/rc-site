@@ -9,7 +9,7 @@ kadr = {muzey, den, fayl, podpis, derzhatel, inv, avtor, god, syuzhet}
 rf-proxy:1080 забанен, 403); не ответил никак — хост пропускается до конца прогона.
 Браузерный User-Agent обязателен: с Python-UA портал отвечает 403. Права Госкаталог не даёт.
 """
-import json, re, sys, urllib.parse, urllib.request
+import json, re, sys, threading, urllib.parse, urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -28,10 +28,23 @@ _S = _set.sessiya(HEAD['User-Agent'])
 _S.headers.update(HEAD)
 
 
+# Напрямую Госкаталог из сервера закрыт: сразу узел, до 60 с (один туннель на 3–4 параллельных запроса).
+_HOST = urllib.parse.urlparse(GK).hostname
+_POVTOROV = 3
+
+
 def _open(path, data=None, timeout=None):
-    r = _set.zapros(_S, 'POST' if data is not None else 'GET', GK + path, data=data, proxy=_kadr.RU_PROXY)
-    r.raise_for_status()
-    return r.json()
+    for k in range(_POVTOROV):
+        _set._put[_HOST] = 'proxy'
+        try:
+            r = _set.zapros(_S, 'POST' if data is not None else 'GET', GK + path, data=data,
+                            timeout=timeout or 60, proxy=_kadr.RU_PROXY)
+            r.raise_for_status()
+            return r.json()
+        except Exception:
+            if k == _POVTOROV - 1:
+                raise
+            threading.Event().wait(3 * (k + 1))
 
 
 def poisk(q, n=20):
