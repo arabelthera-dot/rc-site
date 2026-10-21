@@ -61,8 +61,8 @@ jobs:
     needs: nado
     if: needs.nado.outputs.sobrat == 'true'
     runs-on: ubuntu-latest
-    # Основной адрес https://russian-civilization.ru/ (свой домен на Pages этого репо с 19.10.2026) —
-    # индексируется. Откат на старую выкладку — revert заявки «домен на rc-site» + cname обратно.
+    # Основной адрес https://russian-civilization.ru/ — сервер msk-new (nginx + Let's Encrypt, с 21.10.2026), задача msk ниже;
+    # Pages этого репо — зеркало (свой домен с Pages снят). Индексируется основной адрес.
     env:
       # Поиск по сайту (pagefind) — переменная репозитория RC_POISK ('1' — включён; src/integrations/poisk.mjs).
       RC_POISK: ${{ vars.RC_POISK }}
@@ -102,6 +102,9 @@ jobs:
   msk:
     needs: build
     runs-on: ubuntu-latest
+    # Окружение msk-new (Р64): секрет RU_DEPLOY_KEY переносится сюда из секретов репо (Михаил) с правилом «только main».
+    # Пока окружение без правил — поведение прежнее.
+    environment: msk-new
     continue-on-error: true
     timeout-minutes: 20
     permissions:
