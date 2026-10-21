@@ -4,8 +4,8 @@
 interface Props { museum: string }
 const { museum } = Astro.props;
 const base = import.meta.env.BASE_URL;
-// Р31 (20.10.2026): выключено, пока нет работающего приёма денег; включение — PUBLIC_PODDERZHKA=1.
-const vkl = import.meta.env.PUBLIC_PODDERZHKA === '1';
+// Р88 (21.10.2026, заменяет Р31): блок на всех страницах; выключение — PUBLIC_PODDERZHKA=0.
+const vkl = import.meta.env.PUBLIC_PODDERZHKA !== '0';
 const cfg = { museum, lang: 'ru' };
 ---
 {vkl && <>

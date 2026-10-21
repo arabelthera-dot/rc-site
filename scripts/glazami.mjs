@@ -67,7 +67,7 @@ const POROGI = {
   'текст ≥17': r => r.font === null || r.font >= 17, 'межстрочный 1.5–1.65': r => r.lh === null || (r.lh >= 1.5 && r.lh <= 1.65),
   'подпись ≤2 строк': r => r.podpis === null || r.podpis <= 2,
   'вчера/завтра': r => !r.den || r.sosedi > 0, 'поделиться 1': r => !r.den || r.share === 1,
-  'цели ≥44': r => r.melkie === 0, 'поддержать в 1/3': r => process.env.PUBLIC_PODDERZHKA !== '1' || (r.podderzhat !== null && r.podderzhat <= 33), // Р31: выключено — не требуется
+  'цели ≥44': r => r.melkie === 0, 'поддержать в 1/3': r => process.env.PUBLIC_PODDERZHKA === '0' || (r.podderzhat !== null && r.podderzhat <= 33), // Р31: выключено — не требуется
   'подписка': r => r.podpiska > 0, 'вес ≤1 МБ': r => r.kb <= 1024, 'картинки с размерами': r => r.bezRazmera === 0,
   'CLS<0.1': r => r.cls < 0.1, 'нет ошибок': r => r.oshibki === 0 && r.bitye === 0,
   'нет заглушки': r => !r.zaglushka, 'без своих стилей': r => r.svoiStili === 0,

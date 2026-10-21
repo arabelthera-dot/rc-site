@@ -69,9 +69,9 @@ jobs:
             dist/assets
             dist/_astro
           retention-days: 3
-      # «Поддержать проект» выключен до работающего приёма денег (Р31, 20.10.2026): в сборке не должно быть
-      # ни текста «Поддержать проект», ни движка museum-support.js. Включение — переменная PUBLIC_PODDERZHKA=1.
-      - name: podderzhka — блок поддержки выключен
+      # «Поддержать проект» на всех страницах (Р88, 21.10.2026). При PUBLIC_PODDERZHKA=0 в сборке не должно быть
+      # ни текста «Поддержать проект», ни движка museum-support.js; по умолчанию проверка пропускается.
+      - name: podderzhka — замок выключателя блока поддержки
         env:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
           PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}

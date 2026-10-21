@@ -28,8 +28,8 @@ export async function getStaticPaths() {
 }
 const { m, days, polnye } = Astro.props;
 const base = import.meta.env.BASE_URL;
-// «Поддержать проект» — выключено до работающего приёма денег (Р31, 20.10.2026); включение — PUBLIC_PODDERZHKA=1.
-const podderzhka = import.meta.env.PUBLIC_PODDERZHKA === '1';
+// «Поддержать проект» — на всех страницах (Р88, 21.10.2026, заменяет Р31); выключение — PUBLIC_PODDERZHKA=0.
+const podderzhka = import.meta.env.PUBLIC_PODDERZHKA !== '0';
 // Служебные строки шаблона — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key: string): any => stroka(lang.code, key);
