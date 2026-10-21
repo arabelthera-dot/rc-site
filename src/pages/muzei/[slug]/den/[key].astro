@@ -16,7 +16,7 @@ import DenSlovar from '../../../../components/den/DenSlovar.astro';
 import { YEAR_KEYS, isDated, isReady, nearestReady, stripSrcPrefix } from '../../../../lib/kalendar';
 import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../../lib/yazyki.mjs';
 import { zhurnal, zhurnalHtml } from '../../../../lib/redakciya.mjs';
-import nastroyki from '../../../../data/nastroyki.json';
+import { podvalDnyaHtml } from '../../../../lib/podval-dnya.mjs';
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
   const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
@@ -61,10 +61,9 @@ const near = soon ? nearestReady(own, d.key) : undefined;
 // «Проверено: дата» и журнал исправлений (Е5) — из истории git карточки, не из её полей (схема заморожена).
 const zh = soon ? undefined : zhurnal(m.slug, d.key);
 const title = empty ? 'День готовится' : d.title;
-// «Нашли ошибку?» (Сергей 20.10.2026) — письмо на почту проекта (nastroyki.pochtaOshibka): тема «Ошибка на странице: <заголовок>»,
-// в теле — полный адрес страницы. Собирается при сборке, без JS.
+// Общий подвал дня (А2+Б6, Р84): «Сообщите об ошибке», «Детям», контакты, автор, источники картинок — src/lib/podval-dnya.mjs.
 const stranicaUrl = new URL(Astro.url.pathname, Astro.site).href;
-const oshibkaPismo = `mailto:${nastroyki.pochtaOshibka}?subject=${encodeURIComponent(`${s('oshibkaTema')}: ${title}`)}&body=${encodeURIComponent(`${s('oshibkaStranica')}: ${stranicaUrl}\n\n${s('oshibkaChtoNeTak')}:\n\n`)}`;
+const podvalDnya = podvalDnyaHtml({ base, title, url: stranicaUrl, code: lang.code });
 // Дата в <title> и карточке пересылки: «17 октября 1944: …» (п.2 очереди 1, 17.10).
 const dateTitle = d.year ? (dated ? `${when} ${d.year}` : `${when} · ${d.year}`) : when;
 const museumUrl = `${base}muzei/${m.slug}/`;
@@ -238,7 +237,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
     <div class="dp-foot">
       <a href={museumUrl}>{`${strelkaNazad(lang.dir)} ${m.title_ru}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a>
     </div>
-    <div class="dp-err">{s('oshibkaVopros')} <a href={oshibkaPismo} rel="nofollow">{s('oshibkaSsylka')}</a> {s('oshibkaKonec')}</div>
+    <Fragment set:html={podvalDnya} />
   </Fragment>
 
   <script is:inline set:html={chrome}></script>

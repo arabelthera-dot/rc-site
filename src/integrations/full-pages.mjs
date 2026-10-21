@@ -21,6 +21,7 @@ import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
 import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
+import { podvalDnyaHtml } from '../lib/podval-dnya.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
@@ -618,7 +619,9 @@ export default function fullPages() {
               if (b && f > b.index) { const a = b.index + b[0].length; html = `${html.slice(0, a)}\n<main>${html.slice(a, f)}\n</main>${html.slice(f)}`; }
             }
             {
-              const lic = licenziyaHtml(base, { links: true });
+              // Общий подвал дня (А2+Б6, Р84) — из шаблона src/lib/podval-dnya.mjs, тот же, что у карточки дня.
+              const zag = decode(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i.exec(html)?.[1]?.replace(/<[^>]+>/g, '').trim() || key);
+              const lic = podvalDnyaHtml({ base, title: zag, url: site ? new URL(self, site).href : self }) + licenziyaHtml(base, { links: true });
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
               if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
               else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${zhurnalHtml(zh)}${lic}\n</body>`);
