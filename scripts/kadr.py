@@ -35,7 +35,19 @@ UA = {'User-Agent': 'rc-site-kadr/1.0 (info@russian-civilization.ru)'}
 ROOT = Path(__file__).resolve().parent.parent
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
-RU_PROXY = os.environ.get('RC_RU_PROXY', 'http://127.0.0.1:8899')  # выход rf-proxy:1080 забанен Госкаталогом (403)
+# выход rf-proxy:1080 забанен Госкаталогом (403) — ходим российским туннелем реестра (ru_tunnel.py)
+
+
+def ru_proxy():
+    """Адрес туннеля; погас после часа простоя — поднимает его transport.py реестра, как для access.py."""
+    if os.environ.get('RC_RU_PROXY'):
+        return os.environ['RC_RU_PROXY']
+    sys.path.insert(0, str(ACCESS.parent))
+    import transport
+    px = transport.ru_proxy('goskatalog.ru')
+    if not px:
+        raise RuntimeError('российский туннель не поднят (ru-route.json выключен или нет ключа, ru_tunnel.py join)')
+    return px
 # Права фондов, которых нет в sources.json (рецепты — knowledge/kadr-recepty-fondov.md, 19.10.2026)
 PRAVA = {'goskatalog': 'Госкаталог прав не даёт — автор и год смерти по карточке',
          'rusmuseum': '© Русский музей, открытой лицензии нет',
@@ -87,8 +99,9 @@ def access(*args, timeout=90):
         raise RuntimeError(f'нет access.py ({ACCESS}); задай RC_ACCESS')
     with tempfile.TemporaryDirectory(prefix='kadr-') as tmp:
         env = dict(os.environ)
-        if any('goskatalog.ru' in x for x in args):  # Госкаталог — только через туннель RU_PROXY
-            env.update(HTTPS_PROXY=RU_PROXY, https_proxy=RU_PROXY)
+        if any('goskatalog.ru' in x for x in args):  # Госкаталог — только через российский туннель
+            px = ru_proxy()
+            env.update(HTTPS_PROXY=px, https_proxy=px)
         r = subprocess.run([sys.executable, str(ACCESS), *args, '--out-dir', tmp],
                            capture_output=True, text=True, timeout=timeout, env=env)
         rep = Path(tmp) / 'report.json'
@@ -128,7 +141,8 @@ def find_goskatalog(fond, query, n, geo):
     req = urllib.request.Request(f'{gk}/muzfo-rest/rest/exhibits/ext?{q}', data=b'[]', method='POST', headers={
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0', 'Content-Type': 'application/json',
         'Accept': 'application/json', 'Origin': gk, 'Referer': gk + '/portal/'})
-    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': RU_PROXY, 'http': RU_PROXY}))
+    px = ru_proxy()
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': px, 'http': px}))
     objs = json.loads(opener.open(req, timeout=40).read()).get('objects', [])
     for o in objs:
         img = (o.get('mainImage') or {}).get('id')
