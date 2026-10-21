@@ -7,4 +7,8 @@
 #rc-slabovid-btn:focus-visible{outline:3px solid #d9b95c;outline-offset:2px}
 #rc-slabovid-btn .rc-sv-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 nav.rc-sitebar{padding-right:60px}
+/* Липкие ленты вкладок при прокрутке уходят к верхнему краю, в ту же полосу, что и кнопка (fixed, справа сверху):
+   резерв справа, чтобы кнопка не ложилась на последнюю вкладку («Календарь», 01-02 на 390px, 21.10). Видимая область прокрутки ряда кончается до кнопки (margin, не padding). */
+nav#secnav .row{margin-right:60px}
+body .daynav{padding-right:60px}
 @media print{#rc-slabovid-btn{display:none}}
