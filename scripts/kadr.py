@@ -512,6 +512,15 @@ def primenit(k, r):
 
 def zamena(muzey=None, prim=False):
     ad = adaptery()
+    if any(n == 'goskatalog' for n, _ in ad):  # #335: Госкаталог только через туннель RU_PROXY
+        import socket
+        hp = urllib.parse.urlsplit(RU_PROXY)
+        try: socket.create_connection((hp.hostname, hp.port), 2).close()
+        except OSError:
+            tun = os.environ.get('RC_RU_TUNNEL', str(Path.home() / 'projects/russian-civilization/docs/registries/ru_tunnel.py'))
+            if Path(tun).exists():
+                subprocess.Popen([sys.executable, tun, 'serve'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True); warn(f'туннель {RU_PROXY} поднят фоном: {tun}')
+            else: warn(f'туннель {RU_PROXY} не слушает, {tun} не найден — goskatalog вернёт пусто')
     print(f'адаптеров фондов: {len(ad)} ({", ".join(n for n, _ in ad) or "нет"}); режим: {"ПРИМЕНИТЬ" if prim else "сухой прогон"}')
     kadry = []
     for p in sorted((ROOT / 'src/content/days').glob('*/*.json')) + sorted((ROOT / 'src/data/full-pages').glob('*/*.html')):
