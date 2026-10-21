@@ -11,6 +11,7 @@ import SegodnyaVse from '../components/portal/SegodnyaVse.astro';
 import Vitrina from '../components/portal/Vitrina.astro';
 import { yazyk, razobratPut, stroka } from '../lib/yazyki.mjs';
 import { ogSegodnya } from '../lib/og-segodnya';
+import { poiskOn } from '../integrations/poisk.mjs';
 const base = import.meta.env.BASE_URL;
 // «Поддержать проект» — выключено до работающего приёма денег (Р31, 20.10.2026); включение — PUBLIC_PODDERZHKA=1.
 const podderzhka = import.meta.env.PUBLIC_PODDERZHKA === '1';
@@ -21,17 +22,35 @@ const support = { museum: s('portalImya'), lang: lang.code };
 // Паспорт пересылки главной — «вещь дня» на московскую дату сборки (20.10.2026, src/lib/og-segodnya.ts):
 // заголовок и хук — только в og:title/og:description, картинка — сам кадр (1200×630, без текста); нет кадра — общая.
 const og = await ogSegodnya(lang.code);
+// Меню и поиск — как в шапке музеев (опись Р84 Б7, 21.10): «Музеи», «Сегодня», «Детям», «Поиск»;
+// поиск — тем же выключателем RC_POISK, что ссылка «Поиск» в полосе музеев (src/lib/sitebar.mjs).
+const poisk = poiskOn();
 ---
 <Base portal schema="home" title={s('portalTitle')} ogTitle={og.title ?? s('portalImya')} image={og.file ? `${base}og/segodnya-${og.key}.jpg` : `${base}og/og-default.jpg`} imageAlt={og.file ? og.alt : undefined} description={s('portalOpisanie')} ogDescription={og.description}>
   <Fragment slot="head">
-    {/* только шрифты главной (#2004 п.6); кириллица Inter и Playfair — заранее: ими набран первый экран */}
+    {/* только шрифты главной (#2004 п.6); кириллица Inter и PT Serif 700 — заранее: ими набран первый экран.
+        Заголовки — PT Serif, как у музеев (опись Р84 Б7, 21.10; Playfair снят) */}
     <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={`${base}assets/fonts/playfairdisplay-nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/ptserif-EJRSQgYoZZY2vCFuvAnt66qWVyvHpA.woff2`} as="font" type="font/woff2" crossorigin />
     {/* стили первого экрана — внутрь <head>, без блокирующих запросов (render-blocking, 18.10) */}
     <InlineCss file="fonts-portal.css" />
     <InlineCss file="portal.css" />
   </Fragment>
   <header slot="header" class="p-hero">
+    <nav class="p-menu" aria-label={s('razdelySayta')}>
+      <ul>
+        <li><a href={`${base}muzei/`}>{s('muzei')}</a></li>
+        <li><a href="#segodnya">{s('segodnya')}</a></li>
+        <li><a href={`${base}detyam/`}>{s('podvalDetyam')}</a></li>
+      </ul>
+      {poisk && (
+        <form class="p-menu__poisk" action={`${base}poisk/`} method="get" role="search">
+          <label class="p-menu__lbl" for="p-menu-q">{s('poisk')}</label>
+          <input id="p-menu-q" type="search" name="q" placeholder={s('poiskPodskazka')} autocomplete="off" />
+          <button type="submit">{s('poisk')}</button>
+        </form>
+      )}
+    </nav>
     <div class="p-orn" aria-hidden="true"><span></span><i>✦</i><span></span></div>
     <h1>{s('portalImya')}</h1>
     <p class="p-lead">{s('portalLead')}</p>

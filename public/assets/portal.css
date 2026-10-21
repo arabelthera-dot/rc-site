@@ -1,5 +1,5 @@
 /* Главная портала «Русская цивилизация». Токены — rc-artdirection §1 (эталон Шухова):
-   тёмный зал, золото — только ценное, Playfair — заголовки, Inter — текст. Текста поверх картинок нет. */
+   тёмный зал, золото — только ценное, PT Serif — заголовки, как у музеев (museum.css, опись Р84 Б7), Inter — текст. Текста поверх картинок нет. */
 :root{--p-dark:#060c17;--p-dark2:#0c1826;--p-surface:#111f33;--p-gold:#c9a84c;--p-gold-l:#e4c97a;
   --p-gold-g:rgba(201,168,76,.13);--p-ink:#e8eef5;--p-muted:#8fadc9;--p-line:rgba(201,168,76,.28)}
 body{background:var(--p-dark);color:var(--p-ink);font-family:'Inter','Segoe UI',sans-serif;
@@ -13,13 +13,31 @@ body > header.p-hero{padding:72px 20px 40px;text-align:center;max-width:980px;ma
 .p-orn span:last-child{background:linear-gradient(90deg,var(--p-gold),transparent)}
 .p-orn i{font-style:normal;font-size:13px;line-height:1}
 .p-orn-b{margin-top:30px;max-width:120px}
-.p-hero h1{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:#fff;
+.p-hero h1{font-family:'PT Serif',Georgia,serif;font-weight:700;color:#fff;
   font-size:clamp(44px,12.5vw,104px);line-height:1.02;letter-spacing:-.01em;margin:26px 0 22px;
   text-wrap:balance;text-shadow:0 0 60px rgba(201,168,76,.18)}
-.p-lead{font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--p-gold-l);
+.p-lead{font-family:'PT Serif',Georgia,serif;font-style:italic;color:var(--p-gold-l);
   font-size:clamp(19px,4.6vw,27px);line-height:1.35;max-width:22em;margin:0 auto;text-wrap:balance}
 .p-sub{font-family:'Inter','Segoe UI',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--p-muted);margin:20px auto 0;
   font-weight:600;line-height:1.6;opacity:1;font-style:normal}
+
+/* меню и поиск главной — как полоса музеев (rc-sitebar.css): Inter, золото на тёмном (опись Р84 Б7, 21.10).
+   Стоит в потоке под углом со знаком возраста и кнопкой слабовидящих (они выше, в первых 48 px) — без наложения. */
+.p-menu{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;margin:0 auto 30px;
+  font-family:'Inter','Segoe UI',sans-serif;font-size:14px;line-height:1.3}
+.p-menu ul{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;list-style:none;margin:0;padding:0}
+.p-menu a{display:inline-block;padding:10px 14px;min-height:44px;box-sizing:border-box;border-radius:22px;color:var(--p-ink);
+  text-decoration:none;border:1px solid rgba(201,168,76,.22)}
+.p-menu a:hover,.p-menu a:focus-visible{border-color:var(--p-gold);color:var(--p-gold-l)}
+.p-menu__poisk{display:flex;gap:6px;flex:0 1 340px;min-width:0}
+.p-menu__lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.p-menu__poisk input{flex:1;min-width:0;min-height:44px;box-sizing:border-box;padding:10px 16px;border-radius:22px;
+  border:1px solid rgba(201,168,76,.35);background:rgba(255,255,255,.04);color:var(--p-ink);font:inherit}
+.p-menu__poisk input::placeholder{color:var(--p-muted);opacity:1}
+.p-menu__poisk button{min-height:44px;padding:10px 16px;border-radius:22px;border:0;background:var(--p-gold);color:var(--p-dark);
+  font:inherit;font-weight:600;cursor:pointer}
+.p-menu__poisk input:focus-visible,.p-menu__poisk button:focus-visible{outline:2px solid var(--p-gold-l);outline-offset:2px}
+@media(max-width:560px){.p-menu__poisk{flex-basis:100%}}
 
 /* ── колонка ── */
 /* museum.css грузится позже и держит main в 720px — перебиваем специфичностью */
@@ -36,7 +54,7 @@ body > main{max-width:none;padding:0 0 40px}
 .p-supslot .support{box-shadow:0 0 0 1px rgba(201,168,76,.12),0 18px 60px -20px rgba(201,168,76,.35) !important}
 
 /* ── витрина ── */
-.p-sec{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:#fff;font-size:clamp(28px,6vw,40px);
+.p-sec{font-family:'PT Serif',Georgia,serif;font-weight:700;color:#fff;font-size:clamp(28px,6vw,40px);
   text-align:center;margin:0 0 28px;line-height:1.13}
 .p-sec::after{content:'';display:block;width:56px;height:1px;margin:16px auto 0;
   background:linear-gradient(90deg,transparent,var(--p-gold),transparent)}
@@ -58,14 +76,14 @@ a.p-in:focus-visible{outline:2px solid var(--p-gold-l);outline-offset:2px}
   border-bottom:1px solid rgba(201,168,76,.22)}
 .p-plate::before{content:'';position:absolute;inset:12px;border:1px solid rgba(201,168,76,.22)}
 .p-plate::after{content:'';position:absolute;inset:17px;border:1px solid rgba(201,168,76,.10)}
-.p-no{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(40px,11vw,58px);color:transparent;
+.p-no{font-family:'PT Serif',Georgia,serif;font-weight:700;font-size:clamp(40px,11vw,58px);color:transparent;
   -webkit-text-stroke:1px rgba(228,201,122,.75);letter-spacing:.02em;line-height:1}
 /* табличка у музеев без календаря — ниже, витрина не тонет в пустых рамках */
 .p-card.is-type:not(.has-cal) .p-plate{aspect-ratio:auto;height:96px}
 .p-card.is-type:not(.has-cal) .p-no{font-size:38px}
 @media(max-width:639px){.p-card.is-type .p-plate{aspect-ratio:auto;height:96px}.p-card.is-type .p-no{font-size:38px}}
 .p-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
-.p-body h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:#fff;font-size:21px;line-height:1.2;margin:0 0 10px}
+.p-body h3{font-family:'PT Serif',Georgia,serif;font-weight:700;color:#fff;font-size:21px;line-height:1.2;margin:0 0 10px}
 .p-body p{font-size:15px;line-height:1.6;color:#c3d3e3;margin:0 0 14px}
 .p-st{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:12.5px;color:var(--p-gold);letter-spacing:.3px;margin-top:auto}
 .p-go{font-size:14px;color:var(--p-gold-l);margin-top:12px}
@@ -76,7 +94,7 @@ a.p-in:focus-visible{outline:2px solid var(--p-gold-l);outline-offset:2px}
 
 /* ── подвал ── */
 body > footer{font-family:'Inter',sans-serif;opacity:1;color:var(--p-muted);border-top:1px solid rgba(201,168,76,.2)}
-footer .slog{font-family:'Playfair Display',Georgia,serif}
+footer .slog{font-family:'PT Serif',Georgia,serif}
 .p-park{font-size:13px;margin:8px 0 0;color:var(--p-muted)}
 /* Детский вход (Р41, Е3, 20.10.2026): ссылка под подзаголовком главной на /detyam/ */
 .p-detyam{margin:14px 0 0;font-size:18px}
