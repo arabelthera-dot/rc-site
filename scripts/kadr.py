@@ -382,8 +382,9 @@ STRIP = lambda s: re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s or
 IMYA = re.compile(r'(?:[А-ЯЁA-Z]\.\s?){1,2}\s?[А-ЯЁA-Z][а-яёa-z]+(?:-[А-ЯЁA-Z][а-яёa-z]+)?'
                   r'|[А-ЯЁA-Z][а-яёa-z]+(?:\s(?:де|фон|ван)?\s?[А-ЯЁA-Z][а-яёa-z]+(?:-[А-ЯЁA-Z][а-яёa-z]+)?){1,2}')
 NE_AVTOR = re.compile(r'(?i)^(?:лубок|азбука|журнал|издатель|художник|неизвестн|исторический|обложка|карикатура'
-                      r'|плакат|гравюра|литография|страница|рисунок|буква|сатирикон|крокодил|будильник)')
-GOD_PODP = re.compile(r'(?:\bок\.\s?|\bс\.\s?)?\b(1[5-9]\d{2}|20[0-2]\d)\b(?:\s?г(?:\.|ода?)?)?')
+                      r'|плакат|гравюра|литография|страница|рисунок|буква|сатирикон|крокодил|будильник'
+                      r'|фото|снимок|портрет|дом\b|здание|вид\b|памятник|почтов|министерств)')  # «Дом Ошевнева», «Фото Министерства обороны»
+GOD_PODP = re.compile(r'(?:\bок\.\s?|\bс\.\s?)?\b(1[5-9]\d{2}|20[0-2]\d)\b(?!-)(?:\s?г(?:\.|ода?)?)?')
 
 
 def kavychki(s):
@@ -439,6 +440,9 @@ def iz_podpisi(podpis):
         pered = s[:k[0]].strip(' ,.')
         av = avtor_v(pered)
         return dict(avtor=av, nazvanie=(s[k[0]:k[1]] if av or not pered else s[:k[1]]).strip(), god=god)
+    m = re.match(r'(.{3,120}?),\s(?:\d{1,2}\.\d{1,2}\.)?(1[5-9]\d{2}|20[0-2]\d)\b(?!-)\.?\s+(?=[А-ЯЁ])', s)
+    if m and not re.search(r'[а-яёa-z]{2}\.\s', m.group(1)):  # «Лагерь встречает самолёт, 1934 Печатная подпись …» — название до года, дальше описание
+        return dict(avtor='', nazvanie=m.group(1).strip(' .'), god=m.group(2))
     m = re.match(r'((?:[А-ЯЁ]\.\s?){1,2}[А-ЯЁ][а-яё]+(?:-[А-ЯЁ][а-яё]+)?)\s+(?=[А-ЯЁ«])', s)
     if m and not re.match(r'[А-ЯЁ][а-яё]*\.\s', s[m.end():]):  # «А. Радаков Подборка карикатур …»
         rest = s[m.end():]
@@ -447,7 +451,9 @@ def iz_podpisi(podpis):
     kus = [c.strip() for c in re.split(r'(?<=[^А-ЯЁA-Z\s])\.\s+', s) if c.strip()]
     if len(kus) >= 2 and avtor_v(kus[0]):  # «Автор. Название. 1905»
         return dict(avtor=avtor_v(kus[0]), nazvanie=GOD_PODP.sub('', kus[1]).strip(' .,'), god=god)
-    return dict(avtor='', nazvanie=GOD_PODP.sub('', kus[0]).strip(' .,')[:160] if kus else '', god=god)
+    g0 = GOD_PODP.search(kus[0]) if kus else None  # «Фотография Мандельштама, 1930 год, автор …» — до года
+    nazv = (kus[0][:g0.start()] if g0 and g0.start() > 10 else GOD_PODP.sub('', kus[0])) if kus else ''
+    return dict(avtor='', nazvanie=re.sub(r'\s+', ' ', nazv).strip(' .,:')[:160], god=god)
 
 
 def opis(tekst, podpis):
@@ -455,7 +461,7 @@ def opis(tekst, podpis):
     derzh = next((m.group(0).strip() for m in DERZH.finditer(tekst)
                   if not re.match(r'(?i)wikimedia', m.group(0)) and not re.fullmatch(r'[а-яё]+', m.group(0).strip())), '')
     inv = next((m.group(1).strip() for r in INV for m in [r.search(tekst)] if m), '')
-    av = AVTOR.search(tekst)
+    av = next((a for a in AVTOR.finditer(tekst) if not NE_AVTOR.match(a.group(1))), None)
     god = GOD.search(tekst)
     pp = iz_podpisi(podpis)  # год подписи точнее года из имени файла; автор — явный «Фото:/Худ.» прежде
     return dict(derzhatel=derzh, inv=inv, avtor=(av.group(1).strip() if av else '') or pp['avtor'],
@@ -655,12 +661,12 @@ def razbor(muzey=None, n=5):
     """Офлайн-сводка: что zamena отдаст адаптерам для кадров без держателя и инв. номера."""
     ks = list(kadry_muzeya(muzey))
     bez = [k for k in ks if not k['derzhatel'] and not k['inv']]
-    print(f'{muzey or "все музеи"}: мест кадров {len(ks)}, без держателя и инв. {len(bez)}')
+    print(f'{muzey or "все музеи"}: мест кадров {len(ks)}, с держателем или инв. {len(ks) - len(bez)}, без них {len(bez)}')
     for x, nm in (('avtor', 'с автором'), ('nazvanie', 'с названием'), ('god', 'с годом')):
         print(f'  {nm:<12} {sum(bool(k[x]) for k in bez):>4} из {len(bez)}')
     print(f'  все три    {sum(all(k[x] for x in ("avtor", "nazvanie", "god")) for k in bez):>4} из {len(bez)}')
     vidno = list({k['podpis']: k for k in bez if k['avtor'] and k['nazvanie']}.values())
-    for k in vidno[::max(1, len(vidno) // n)][:n]:
+    for k in vidno[::max(1, len(vidno) // max(1, n))][:max(0, n)]:
         print(f'  {k["podpis"][:90]!r}\n    → {k["avtor"]} | {k["nazvanie"]} | {k["god"]}')
 
 
