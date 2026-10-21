@@ -1,0 +1,23 @@
+/* Печать урока (опись Р84, Б22, взгляд 03): белая бумага, без кнопок, плашек и полос, ссылки — адресом.
+   Подключается ссылкой media="print" (Base.astro и полные страницы дней — src/integrations/full-pages.mjs):
+   на экране файл не грузит отрисовку. */
+@media print {
+  @page { margin: 15mm 14mm; }
+  html, body, main, section, article, header, footer, .section, .section.dark, .section.soft, .block, .hero, .hero-scene {
+    background: #fff !important; color: #000 !important; box-shadow: none !important; text-shadow: none !important;
+  }
+  body * { color: #000 !important; background-image: none !important; }
+  img, video, svg, canvas { max-width: 100% !important; height: auto !important; }
+  img { filter: none !important; }
+  figure, img, table, blockquote, .fig, .more-pic { break-inside: avoid; page-break-inside: avoid; }
+  h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  p, li { orphans: 3; widows: 3; }
+  /* служебное на бумаге не нужно */
+  .rc-sitebar, .rc-sosedi, .rc-cookie, #rc-slabovid-btn, #rc-sv-panel, .rc-sub, .rc-pochta, .sharerow, .support,
+  .rt-box, .crumbs, .backbtn, .btn, button, nav, form, iframe, audio, video, dialog, .rc-uv, #heart,
+  .top, .quick-progress, .foot-links, .slog { display: none !important; }
+  /* ссылки — адресом после текста; внутренние якоря и картинки-ссылки — без адреса */
+  a { color: #000 !important; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 85%; word-break: break-all; }
+  a[href^="#"]::after, a:has(> img)::after, a[href^="mailto:"]::after { content: none !important; }
+}

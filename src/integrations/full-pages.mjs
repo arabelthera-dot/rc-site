@@ -653,6 +653,8 @@ export default function fullPages() {
             // Версия для слабовидящих (Д7): класс — первым скриптом <head> (до стилей, без мигания), кнопка — в начале <body>.
             html = html.replace(/<head(?:\s[^>]*)?>/i, (h) => `${h}\n<script>${slabovidHeadJs(base)}</script>`)
               .replace(/<\/head>/i, `<style data-rc-slabovid>${SLABOVID_KNOPKA_CSS}</style>\n${slabovidCssHtml(base)}\n</head>`)
+              // печать урока (Б22) и картина во весь экран (Б20) — как у шаблонов (Base.astro)
+              .replace(/<\/head>/i, `<link rel="stylesheet" media="print" href="${base}assets/rc-pechat.css">\n<script defer src="${base}assets/rc-uvelichenie.js"></script>\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${slabovidButtonHtml()}`);
             html = staticHero(html);
             if (!/\srel=["'](?:prev|next)["']/i.test(html)) html = html.replace(/<\/body>/i, `${sosediHtml(base, museum, keys, key)}\n</body>`);
