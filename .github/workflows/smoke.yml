@@ -4,6 +4,8 @@
 # Пять вопросов: задевает — ничего, только читает сайт; нужно — github.token (чтение); без нужного —
 # спит; проверка — ручной пуск (workflow_dispatch работает и при выключенном расписании); откат —
 # удалить файл или переменную. Выключатель расписания — переменная SMOKE_TEST (≠ '1' — спит).
+# Прокси (21.10.2026): задевает — только путь браузера smoke; нужно — secrets.RF_PROXY (российский выход,
+# маршрут Azure→Москва рвётся); без него — прямой путь, как раньше; проверка — ручной пуск на ветке; откат — убрать env.
 name: smoke
 on:
   schedule:
@@ -38,6 +40,8 @@ jobs:
           npx --no-install playwright install --with-deps chromium
       - name: smoke
         working-directory: tests/smoke
+        env:
+          RF_PROXY: ${{ secrets.RF_PROXY }}
         run: npx --no-install playwright test -c playwright.config.mjs
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
