@@ -1,8 +1,7 @@
 // Карта сайта волнами (Е6, Р47; «да» Сергея 20.10.2026) — вместо @astrojs/sitemap. Поисковик сначала получает
 // флагманские страницы, потом остальное, языки — по одному. Открытые волны — строка otkryty в src/data/karta-sayta.json.
 //   sitemap-index.xml          — индекс только открытых волн (его называет robots.txt; /sitemap.xml — копия);
-//   sitemap-volna-1.xml        — главная, витрина музеев /muzei/, «О проекте», «Как сделан музей», витрины всех 35 музеев,
-//                                все заполненные дни (Б14, опись Р84, 21.10.2026; незаполненные — noindex, вне карт);
+//   sitemap-volna-1.xml        — главная, витрина музеев /muzei/, «О проекте», «Как сделан музей», музеи с готовыми днями, лучшие дни;
 //   sitemap-volna-2.xml        — остальные страницы для поиска;
 //   sitemap-<код языка>.xml    — страницы /<код>/…; в индексе, только если код в otkryty и ready:true в yazyki.json.
 // Файлы всех волн пишутся всегда (scripts/glazami.mjs меряет по ним весь сайт), в индекс идут только открытые.
@@ -74,9 +73,11 @@ export default function kartaVolnami() {
         const denDate = new Map();
         const muzeyDate = new Map();
         let vsehDate;
+        const sGotovymi = new Set();
         for (const m of fs.readdirSync(DAYS))
           for (const f of fs.readdirSync(path.join(DAYS, m)).filter((x) => x.endsWith('.json'))) {
             const d = read(path.join(DAYS, m, f));
+            if (d.hook || d.gist) sGotovymi.add(m);
             const iso = zhurnal(m, d.key)?.modified;
             if (!iso) continue;
             denDate.set(`${m}/${d.key}`, iso);
@@ -99,18 +100,11 @@ export default function kartaVolnami() {
             : p === '/' ? vsehDate
             : gitDate(`src/pages${p.slice(0, -1)}.astro`) || gitDate(`src/pages${p}index.astro`);
           const volna = yazyk ? yazyk.code
-            // Б14 (опись Р84, 21.10.2026): в открытой волне — витрины всех музеев и все заполненные дни
-            // (незаполненный день — «День готовится» с noindex, отсеян выше).
-            : FLAGMANY.has(p) || den || (muzey && p === `/muzei/${muzey[1]}/`) ? 'volna-1'
+            : FLAGMANY.has(p) || (den && luchshie.has(`${den[1]}/${den[2]}`)) || (muzey && p === `/muzei/${muzey[1]}/` && sGotovymi.has(muzey[1])) ? 'volna-1'
             : 'volna-2';
           volny.get(volna).push({ loc: new URL(p.slice(1), site).href, lastmod });
         }
 
-        // Б14: каждый музей из museums.json — в открытой волне, иначе сборка падает.
-        const v1 = new Set(volny.get('volna-1').map((u) => new URL(u.loc).pathname));
-        const netMuzeev = read('src/data/museums.json').museums
-          .map((m) => `${new URL(site).pathname.replace(/\/$/, '')}/muzei/${m.slug}/`).filter((u) => !v1.has(u));
-        if (!vseNoindex && netMuzeev.length) throw new Error(`карта сайта: музеев нет в volna-1: ${netMuzeev.join(', ')}`);
         const index = [];
         const otchet = [];
         for (const [imya, items] of volny) {
