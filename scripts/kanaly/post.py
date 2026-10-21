@@ -4,13 +4,15 @@
 Запуск — .github/workflows/kanaly.yml, каждый день в 9:00 МСК. Описание — docs/kanaly.md.
 
 День — сегодняшняя дата по Москве (ММ-ДД). В пост идут музеи, у которых на этот день есть карточка с хуком
-и большая страница (src/data/full-pages/<музей>/<ММ-ДД>.html). Главный музей — по кругу (порядок по номеру
-в каталоге, шаг — номер дня в году), ещё до трёх — строкой «Сегодня также». Хук и title_ru — дословно.
-Картинка — первая из images дня (jpg/png/webp, без text_on_image); у дня без такой — первая <img> большой
-страницы (локальный файл сайта). Карточки-превью og/ с надписью не берутся: день без картинки идёт только
-в «Сегодня также». WebP перед отправкой переводится в JPEG (Pillow) — VK его не принимает.
+и большая страница — как у сайта (ADR 0001): анкета body в карточке ИЛИ src/data/full-pages/<музей>/<ММ-ДД>.html.
+Главный музей — по кругу (порядок по номеру в каталоге, шаг — номер дня в году), ещё до трёх — строкой «Сегодня также». Хук и title_ru — дословно.
+Картинка — первая из images дня (jpg/png/webp, без text_on_image); у дня без такой — картинка из блоков анкеты body,
+затем первая <img> большой страницы (локальный файл сайта; HTML читается, только если он есть).
+Карточки-превью og/ с надписью не берутся: день без картинки идёт только в «Сегодня также». WebP перед отправкой переводится в JPEG (Pillow) — VK его не принимает.
 Возраст (Р41, src/data/vozrast.json): день 16+ — тихий трагический день, в пост не идёт; на 12+ в строке даты знак.
-Каждый пропущенный музей — строкой в журнале, замена главного дня не бывает молчаливой.
+Каждый пропущенный музей — строкой в журнале, замена главного дня не бывает молчаливой. Сколько музеев
+отсечено по каждой причине (нет карточки / большой страницы / хука, 16+, нет картинки) — строкой «Отсев» в журнале;
+поста нет — та же строка ::warning:: в Actions (выход 0).
 
 Проверка (Е8, Р47): перед отправкой пост проходит scripts/kanaly/proverka.mjs — те же функции, что у сборки
 (схема дня, title_ru полностью, реестры Минюста, возраст, картинка с основанием прав, ссылки отвечают 200).
@@ -76,22 +78,41 @@ def site_base():
 SIMVOLIKA = {k['fail'].lower() for k in json.loads((ROOT / 'data' / 'simvolika-vraga.json').read_text(encoding='utf-8'))['kadry']}
 
 
+IMG_RE = r'<img\b[^>]*?\ssrc="([^"]+)"'
+
+
+def local_image(slug, src):
+    """Адрес картинки со страницы → локальный файл в public/ или None (чужой хост, не картинка, нет файла)."""
+    src = html.unescape(src).split('?')[0].split('#')[0]
+    if re.match(r'^[a-z][a-z0-9+.-]*:|^//', src, re.I) or not src.lower().endswith(IMG_EXT):
+        return None
+    f = (PUBLIC / src.lstrip('/')) if src.startswith('/') else (PUBLIC / 'muzei' / slug / src)
+    f = f.resolve()
+    if f.is_file() and PUBLIC.resolve() in f.parents and f.name.lower() not in SIMVOLIKA:
+        return f
+    return None
+
+
 def first_image(slug, key, day):
-    """Первая картинка дня — локальный файл в public/. У дня без images — первая <img> большой страницы."""
+    """Первая картинка дня — локальный файл в public/. Порядок: images дня (без text_on_image) → блоки анкеты
+    body (src блока, затем <img> в его html; ADR 0001) → первая <img> большой страницы, если HTML есть."""
     for im in day.get('images') or []:
         f = PUBLIC / im['src'].lstrip('/')
         if im.get('text_on_image') or not f.name.lower().endswith(IMG_EXT) or f.name.lower() in SIMVOLIKA:
             continue
         if f.is_file():
             return f
-    page = (FULL / slug / f'{key}.html').read_text(encoding='utf-8')
-    for src in re.findall(r'<img\b[^>]*?\ssrc="([^"]+)"', page):
-        src = html.unescape(src).split('?')[0].split('#')[0]
-        if re.match(r'^[a-z][a-z0-9+.-]*:|^//', src, re.I) or not src.lower().endswith(IMG_EXT):
-            continue
-        f = (PUBLIC / src.lstrip('/')) if src.startswith('/') else (PUBLIC / 'muzei' / slug / src)
-        f = f.resolve()
-        if f.is_file() and PUBLIC.resolve() in f.parents and f.name.lower() not in SIMVOLIKA:
+    for b in day.get('body') or []:
+        for src in ([b['src']] if b.get('src') else []) + re.findall(IMG_RE, b.get('html') or ''):
+            f = local_image(slug, src)
+            if f:
+                return f
+    page = FULL / slug / f'{key}.html'
+    if not page.is_file():
+        return None
+    for src in re.findall(IMG_RE, page.read_text(encoding='utf-8')):
+        f = local_image(slug, src)
+        if f:
             return f
     return None
 
@@ -101,21 +122,34 @@ def znak(slug, key, vozrast):
     return ((vozrast['dni'].get(slug) or {}).get(key) or {}).get('znak') or vozrast['muzei'].get(slug) or vozrast['sajt']
 
 
-def collect(key, skipped=None):
-    """Музеи с хуком и большой страницей на день key — по номеру в каталоге. 16+ — в skipped с причиной."""
+OTSEV = ('нет карточки дня', 'нет большой страницы', 'нет хука', '16+', 'нет картинки')
+
+
+def collect(key, skipped=None, otsev=None):
+    """Музеи с хуком и большой страницей на день key — по номеру в каталоге. 16+ — в skipped с причиной.
+    Большая страница — как у сайта (ADR 0001): анкета body в карточке дня ИЛИ HTML в src/data/full-pages.
+    otsev — счётчик причин отсева (dict причина → число музеев)."""
     museums = json.loads((ROOT / 'src/data/museums.json').read_text(encoding='utf-8'))['museums']
     vozrast = json.loads((ROOT / 'src/data/vozrast.json').read_text(encoding='utf-8'))
     skipped = [] if skipped is None else skipped
+    otsev = {} if otsev is None else otsev
+    cut = lambda why: otsev.__setitem__(why, otsev.get(why, 0) + 1)
     out = []
     for m in sorted(museums, key=lambda m: m['number']):
         card = DAYS / m['slug'] / f'{key}.json'
-        if not card.is_file() or not (FULL / m['slug'] / f'{key}.html').is_file():
+        if not card.is_file():
+            cut('нет карточки дня')
             continue
         day = json.loads(card.read_text(encoding='utf-8'))
+        if not day.get('body') and not (FULL / m['slug'] / f'{key}.html').is_file():
+            cut('нет большой страницы')
+            continue
         if not (day.get('hook') or '').strip():
+            cut('нет хука')
             continue
         z = znak(m['slug'], key, vozrast)
         if int(z.rstrip('+')) >= 16:
+            cut('16+')
             skipped.append(f"{m['title_ru']} — день {z}, тихий трагический день, в пост не идёт")
             continue
         out.append({'slug': m['slug'], 'number': m['number'], 'title': m['title_ru'], 'hook': day['hook'].strip(),
@@ -128,14 +162,21 @@ def utm(u, source, key):
     return f"{u}{'&' if '?' in u else '?'}utm_source={source}&utm_medium=post&utm_campaign=den-{key}"
 
 
-def build(date):
+def otsev_text(otsev):
+    """«нет большой страницы — 3, нет хука — 1, …» в постоянном порядке OTSEV; пусто — «—»."""
+    return ', '.join(f'{k} — {otsev[k]}' for k in OTSEV if otsev.get(k)) or '—'
+
+
+def build(date, otsev=None):
+    """Пост на дату или (None, key). otsev — счётчик причин отсева, заполняется для журнала."""
+    otsev = {} if otsev is None else otsev
     key = date.strftime('%m-%d')
     base = site_base()
     url = lambda m: f"{base}muzei/{m['slug']}/den/{key}/"
     tgu = lambda m: utm(url(m), 'telegram', key)
     vku = lambda m: utm(url(m), 'vk', key)
     skipped = []
-    found = collect(key, skipped)
+    found = collect(key, skipped, otsev)
     for s in skipped:
         log(f'Пропуск: {s}.')
     if not found:
@@ -143,6 +184,10 @@ def build(date):
     # Главный — по кругу: шаг — номер дня в году; у кого нет картинки, главным не идёт.
     start = date.timetuple().tm_yday % len(found)
     ring = found[start:] + found[:start]
+    # «нет картинки» — не может быть главным (в «Сегодня также» идёт, если пост есть).
+    nopic = sum(1 for m in found if not m['image'])
+    if nopic:
+        otsev['нет картинки'] = otsev.get('нет картинки', 0) + nopic
     main = next((m for m in ring if m['image']), None)
     if not main:
         return None, key
@@ -300,13 +345,17 @@ def main():
     if a.json:
         global LOG
         LOG = sys.stderr
-        post, key = build(date)
+        post, key = build(date, {})
         print(json.dumps(as_json(post) if post else None, ensure_ascii=False))
         return 0
-    post, key = build(date)
+    otsev = {}
+    post, key = build(date, otsev)
     log(f'Каналы: день {key} ({date.isoformat()}), адрес сайта {site_base()}')
+    log(f'Отсев музеев на {key}: {otsev_text(otsev)}.')
     if not post:
-        log(f'Сегодня ({key}) нет музея с хуком, большой страницей и картинкой — пост не ставится.')
+        # Не брак (поста просто нет), работа зелёная — но видно в Actions, чего не хватило.
+        log(f'::warning::Пост {key} не ставится — нет музея с хуком, большой страницей и картинкой. '
+            f'Отсев: {otsev_text(otsev)}.')
         return 0
 
     log(f"Главный: {post['main']['title']} · картинка {post['image'].relative_to(ROOT)} "
