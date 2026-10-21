@@ -8,24 +8,14 @@
   "legacy_page": "muzei/literatura/lit-goncharov-oblomov.html",
   "images": [
     {
-      "src": "muzei/literatura/media-oblomov/chichagov-hero.jpg",
-      "caption": "Рисунок: барин лежит в постели под одеялом, рядом стоит старый лысый слуга с длинной бородой",
-      "credit": "К. Н. Чичагов. «Обломов и Захар», 1885 (кадр для шапки); «Chichagov Oblomov 1885.jpg», Wikimedia Commons, общественное достояние"
+      "src": "muzei/literatura/img/01-23-goskatalog-857449.jpg",
+      "caption": "Портрет: пожилой мужчина с седыми бакенбардами в тёмном сюртуке",
+      "credit": "И. Н. Крамской. Портрет И. А. Гончарова, 1874 (печатное воспроизведение). Источник: Госкаталог Музейного фонда РФ, https://goskatalog.ru/portal/#/collections?id=4103998. Общественное достояние: автор умер в 1887 году (ст. 1281 ГК РФ)."
     },
     {
-      "src": "muzei/literatura/media-oblomov/chichagov-oblomov-zahar-1885.jpg",
-      "caption": "К. Н. Чичагов. «Обломов и Захар», 1885. Иллюстрация к роману.",
-      "credit": "К. Н. Чичагов. «Обломов и Захар», 1885; «Chichagov Oblomov 1885.jpg», Wikimedia Commons, общественное достояние"
-    },
-    {
-      "src": "muzei/literatura/media-oblomov/oblomov-titul-1859.jpg",
-      "caption": "Первое отдельное издание, 1859. Санкт-Петербург, издание Д. Е. Кожанчикова.",
-      "credit": "Титульный лист «Обломова», 1859; «Oblomov-russ1859.jpg», Wikimedia Commons, общественное достояние"
-    },
-    {
-      "src": "muzei/literatura/media-oblomov/kramskoy-goncharov-1874.jpg",
-      "caption": "И. Н. Крамской. Портрет И. А. Гончарова, 1874. Холст, масло.",
-      "credit": "И. Н. Крамской. Портрет И. А. Гончарова, 1874; «Ivan Nikolayevich Kramskoi - Portrait of Ivan Aleksandrovich Goncharov, 1874.jpg», Wikimedia Commons, общественное достояние"
+      "src": "muzei/literatura/img/01-23-goskatalog-857449.jpg",
+      "caption": "Иван Крамской. Портрет И. А. Гончарова, 1874.",
+      "credit": "И. Н. Крамской. Портрет И. А. Гончарова, 1874 (печатное воспроизведение). Источник: Госкаталог Музейного фонда РФ, https://goskatalog.ru/portal/#/collections?id=4103998. Общественное достояние: автор умер в 1887 году (ст. 1281 ГК РФ)."
     }
   ]
 }
