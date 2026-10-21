@@ -54,6 +54,7 @@ jobs:
         env:
           RC_POISK: ${{ vars.RC_POISK }}
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+          PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
           PUBLIC_POCHTA: ${{ vars.PUBLIC_POCHTA }}
           PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}
           PUBLIC_POCHTA_SPISOK: ${{ vars.PUBLIC_POCHTA_SPISOK }}
@@ -73,6 +74,7 @@ jobs:
       - name: podderzhka — блок поддержки выключен
         env:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+          PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
         run: node scripts/podderzhka.test.mjs && node scripts/podderzhka.mjs dist
       # Названия музеев только полностью (правило Сергея 09.10, AI_Projects#804, 20.10.2026): в тексте, title, meta,
       # og, JSON-LD, alt, подписях скриптов сборки — ни одного «Музей …», которое короче или старее title_ru
@@ -135,6 +137,7 @@ jobs:
         timeout-minutes: 5
         env:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+          PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
         run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
       # Сторож «Найти день по дате» (18.10.2026): список дней на главной не задваивается при медленной сети.
       # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.

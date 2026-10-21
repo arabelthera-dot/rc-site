@@ -68,6 +68,7 @@ jobs:
       RC_POISK: ${{ vars.RC_POISK }}
       # «Поддержать проект» (Р31, 20.10.2026): пусто — выключен до работающего приёма денег, '1' — включён.
       PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
+      PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
       # Почта (Р32, М48): форма подписки рядом с Telegram — только при PUBLIC_POCHTA=1 и адресе формы сервиса.
       PUBLIC_POCHTA: ${{ vars.PUBLIC_POCHTA }}
       PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}

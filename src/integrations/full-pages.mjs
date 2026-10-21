@@ -6,6 +6,7 @@
 // ссылок (lychee резолвит от адреса файла — 757 ложных «нет файла», rc-site#16); <base> остаётся для скриптов.
 // data-src/data-poster (ленивые аудио, видео, картинки) — так же (20.10): обход сайта резолвил их от адреса
 // /den/MM-DD/ и нашёл 18 «битых» файлов; проверка — scripts/data-src.mjs в proverka.
+import { cspVkl, cspMeta } from '../lib/csp.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -472,6 +473,8 @@ export default function fullPages() {
             else if (OLD_KAL.test(html)) { OLD_KAL.lastIndex = 0; bad.push(`${museum}/${key} — тег старого calendar-*.js, а записей дней нет`); continue; }
             if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
+            // CSP (Р64): полная страница идёт мимо Base.astro — та же meta сразу после <head>; выключено без PUBLIC_CSP=1.
+            if (cspVkl()) html = html.replace(/<meta\s+http-equiv=["']Content-Security-Policy["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, (h) => `${h}\n${cspMeta()}`);
             for (const e of checkMuseumName(html, museum)) bad.push(`${museum}/${key} — ${e}`);
             // Превью-сборка (PUBLIC_NOINDEX=1, как в Base.astro): свой robots страницы заменяется на noindex.
             if (process.env.PUBLIC_NOINDEX === '1') html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '')
