@@ -1,4 +1,5 @@
 ---
+import { CSP } from '../lib/csp.mjs';
 interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; ogDescription?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
@@ -103,11 +104,13 @@ const oshibkaUrl = oshibkaMailto
   body: `Страница: ${url}\n\nЧто не так:\n\n`,
   labels: 'oshibka-s-sayta',
 }).toString() : undefined;
+const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: выключено без PUBLIC_CSP=1
 ---
 <!doctype html>
 <html lang={lang.code} dir={lang.dir} data-museum={museum} data-rc-vozrast={vz} data-rc-bez-ochkov={bezOchkov(vz) ? '' : undefined}>
 <head>
   <meta charset="utf-8" />
+  {csp && <meta http-equiv="Content-Security-Policy" content={csp} />}
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {/* версия для слабовидящих (Д7) — класс на <html> до первой отрисовки, без мигания */}
   <script is:inline set:html={slabovidHeadJs(base)} />
