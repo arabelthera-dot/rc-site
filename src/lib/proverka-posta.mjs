@@ -5,7 +5,7 @@
 //                  как её грузит Astro; заморожённый файл схемы не копируется и не правится;
 //   имя музея    — дословно title_ru и checkMuseumName (src/lib/imya-muzeya.mjs), как на полных страницах;
 //   реестры      — sverkaTekstov (src/lib/zakon.mjs): сильное совпадение — брак, возможное — предупреждение;
-//   возраст      — src/lib/vozrast.mjs: день 16+ в пост не идёт (тихий трагический день), на 12+ в посте знак;
+//   трагический день — src/lib/vozrast.mjs (Р40, признак tragicheskieDni): в пост не идёт;
 //   картинка     — файл сайта, кадр дня с подписью и источником; кадр XX века — с основанием (kadrXX, ведомость);
 //   ссылки       — только на адрес сайта (site из astro.config.mjs) и открываются с ответом 200 до отправки.
 import fs from 'node:fs';
@@ -13,7 +13,7 @@ import path from 'node:path';
 import { checkMuseumName, decode, MUSEUMS } from './imya-muzeya.mjs';
 import { sverkaTekstov, tekst, kadrXX, vedomostOsnovaniy } from './zakon.mjs';
 import { pageFrames } from './podpisi.mjs';
-import { znak, bezOchkov } from './vozrast.mjs';
+import { tragicheskij } from './vozrast.mjs';
 
 const DAYS = 'src/content/days';
 const FULL = 'src/data/full-pages';
@@ -110,9 +110,7 @@ export async function proverkaPosta(post, { root = process.cwd(), site, shema, p
     if (m.hook !== String(karta.hook ?? '').trim()) brak.push(`${id}: хук в посте не дословно из карточки`);
     if (!MUSEUMS[m.slug]) brak.push(`${id}: музея нет в src/data/museums.json`);
     else if (m.title !== MUSEUMS[m.slug]) brak.push(`${id}: имя музея «${m.title}» вместо «${MUSEUMS[m.slug]}» (title_ru полностью)`);
-    const z = znak(m.slug, key);
-    if (parseInt(z, 10) >= 16) brak.push(`${id}: день ${z} — тихий трагический день, в пост не идёт`);
-    else if (m === post.main && bezOchkov(z) && !String(post.tg).includes(z)) brak.push(`${id}: день ${z} — в посте нет знака ${z} (436-ФЗ)`);
+    if (tragicheskij(m.slug, key)) brak.push(`${id}: тихий трагический день, в пост не идёт`);
     tx.push(tekst(`${id} пост.hook`, m.hook || '')); // title_ru — утверждённое имя, сверено выше дословно
   }
 

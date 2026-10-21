@@ -91,7 +91,7 @@
         var done = document.createElement('p');
         done.className = 'mq-done';
         var right = answered.filter(Boolean).length;
-        // 12+ и старше (data-rc-bez-ochkov, Р41): без счёта верных — только что вопросы пройдены
+        // трагический день (data-rc-bez-ochkov, Р40): без счёта верных — только что вопросы пройдены
         done.textContent = document.documentElement.hasAttribute('data-rc-bez-ochkov') ? 'Вопросы пройдены.'
           : 'Вопросы пройдены: верных ' + right + ' из ' + cfg.items.length + '.';
         card.appendChild(done);

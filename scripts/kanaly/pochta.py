@@ -42,9 +42,8 @@ def pismo(p, date):
     main = p['main']
     when = f'{date.day} {kanaly.MONTHS[date.month - 1]}'
     tema = f"{TEMA} · {when}"
-    znak = f" · {e(main['znak'])}" if int(main['znak'].rstrip('+')) >= 12 else ''
     also = ''.join(f'<li><a href="{e(u)}">{e(m["title"])}</a></li>' for m, u in zip(p['also'], [kanaly.utm(x, 'email', p['key']) for x in p['urls'][1:]]))
-    body = (f'<h2>{e(when)}{znak} · {e(main["title"])}</h2>'
+    body = (f'<h2>{e(when)} · {e(main["title"])}</h2>'
             f'<p>{e(main["hook"])}</p>'
             f'<p><a href="{e(kanaly.utm(p["url"], "email", p["key"]))}">Открыть день в музее</a></p>'
             + (f'<p>Сегодня также:</p><ul>{also}</ul>' if also else '')

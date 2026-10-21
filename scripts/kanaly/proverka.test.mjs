@@ -62,13 +62,13 @@ p = kopiya(norma);
 zamenit(p, p.url, 'https://example.com/'); p.urls[0] = p.url = 'https://example.com/';
 await brak('ссылка не на сайт', p, /не на https:\/\/russian-civilization\.ru\//);
 
-// 6. День 16+ — тихий трагический день: post.py его не берёт, подложенный — отклонён.
+// 6. Трагический день (Р40) — тихий: post.py его не берёт, подложенный — отклонён.
 const tihiy = sobrat('01-08');
-assert.ok(![tihiy?.main, ...(tihiy?.also || [])].some((m) => m?.slug === 'ne-sdayutsya'), 'день 16+ попал в пост');
+assert.ok(![tihiy?.main, ...(tihiy?.also || [])].some((m) => m?.slug === 'ne-sdayutsya'), 'трагический день попал в пост');
 const karta = JSON.parse(fs.readFileSync('src/content/days/ne-sdayutsya/01-08.json', 'utf8'));
 p = kopiya(tihiy);
 p.also = [...p.also, { slug: 'ne-sdayutsya', title: 'Музей стойкости и подвига «Русские не сдаются»', hook: karta.hook.trim() }];
-await brak('день 16+', p, /16\+ — тихий трагический день/);
+await brak('трагический день', p, /тихий трагический день/);
 
 // 7. Картинка не с сайта.
 p = kopiya(norma);

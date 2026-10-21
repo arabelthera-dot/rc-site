@@ -1,4 +1,4 @@
-/* Знак информационной продукции (436-ФЗ) и строка «Родителю» (Р41, Е3, 20.10.2026). Разметка — src/lib/vozrast.mjs:
+/* Знак информационной продукции (436-ФЗ) и строка «Родителю» (Р41, Е3, 20.10.2026; знаки — Р87, 21.10: сайт 6+, сказки 0+). Разметка — src/lib/vozrast.mjs:
    в верхней полосе музея (li.rc-sb-vozrast), на прочих страницах — в верхнем углу (.rc-vozrast-ugol). */
 .rc-vozrast{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:34px;height:22px;
   padding:0 6px;border:1px solid currentColor;border-radius:4px;font:600 12px/1 'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
@@ -12,6 +12,6 @@ html nav.rc-sitebar{padding-inline-end:60px}
 .rc-roditelyu{box-sizing:border-box;max-width:760px;margin:12px auto;padding:8px 14px;border-inline-start:3px solid #c9a84c;
   background:rgba(201,168,76,.08);color:inherit;font:400 15px/1.45 'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;text-align:start}
 .rc-roditelyu b{font-weight:600}
-/* 12+ и старше: без очков, баллов и званий — интерактив остаётся (data-rc-bez-ochkov ставит сборка) */
+/* трагический день (Р40): без очков, баллов и званий — интерактив остаётся (data-rc-bez-ochkov ставит сборка) */
 html[data-rc-bez-ochkov] :is(#itog,#scoreBox,.dayscore,.itog-score,#dayBar,#dayTxt,#dipl,#diplnote){display:none!important}
 @media print{.rc-vozrast-ugol{position:static}}
