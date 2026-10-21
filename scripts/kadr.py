@@ -922,8 +922,8 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
     # пишется во временный файл рядом, в конце — атомарная подмена (os.replace)
     fd, tmp = tempfile.mkstemp(prefix='.r90-', suffix='.tsv', dir=out.parent)
     tsv = os.fdopen(fd, 'w')
-    tsv.write('\t'.join(('музей', 'день', 'файл', 'держатель', 'инв', 'что искали', 'почему нет')) + '\n'
-              + ''.join(r + '\n' for r in sorted(drugie)))
+    # строки чужих музеев сюда не пишутся: в конце берутся из таблицы заново под замком — параллельные прогоны
+    # разных музеев не затирают друг друга
     if prodolzhit:
         tsv.write(''.join(r + '\n' for r in stary))
     tsv.flush()
@@ -981,7 +981,15 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
             warn(f'\nпрогон оборван: обработано {len(gotovo)} из {len(kadry)}, прежних строк возвращено {len(vernul)} '
                  f'(дальше — --prodolzhit)')
         tsv.close()
-        os.replace(tmp, out)
+        import fcntl
+        with open(out.parent / '.r90.lock', 'w') as zamok:
+            fcntl.flock(zamok, fcntl.LOCK_EX)
+            if muzey and out.is_file():
+                drugie = [r for r in out.read_text().splitlines()[1:] if r and r.split('\t')[0] != muzey]
+            nashi = Path(tmp).read_text().splitlines()
+            Path(tmp).write_text('\n'.join(['\t'.join(('музей', 'день', 'файл', 'держатель', 'инв', 'что искали', 'почему нет'))]
+                                           + sorted(drugie) + nashi) + '\n')
+            os.replace(tmp, out)
         if staryy_sig is not None:
             signal.signal(signal.SIGTERM, staryy_sig)
     print(f'\n{"музей":<18}{"кадров":>7}{"держ.":>7}{"инв.":>6}{"найдено":>9}{"не найд.":>9}' + ('  заменено' if prim else ''))

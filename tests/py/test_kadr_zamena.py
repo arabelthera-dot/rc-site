@@ -55,6 +55,18 @@ class Zamena(unittest.TestCase):
         self.assertTrue(all('старое' not in r for r in m))
         self.assertEqual(rows[0], SHAPKA)
 
+    def test_parallelnyy_muzey_ne_zatiraetsya(self):
+        # другой музей дописал свои строки, пока шёл наш прогон: при подмене таблицы они остаются
+        def fn(k):
+            if k['den'] == '01':
+                with open(self.out, 'a') as f:
+                    f.write('drug2\t02\tg.jpg\t\t\tx\ty\n')
+            return []
+        rows = self.run_([('f', fn)])
+        self.assertIn('drug2\t02\tg.jpg\t\t\tx\ty', rows)
+        self.assertIn('drug\t01\tf.jpg\t\t\tx\ty', rows)
+        self.assertEqual(rows[0], SHAPKA)
+
     def test_prodolzhit(self):
         self.kadry.append(kadr_('06'))
         vyzov = []
