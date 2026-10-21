@@ -23,12 +23,15 @@ PastVu (только с --geo lat,lon). Русский музей, Третья�
                                                       credit — фонд, название и ссылка на карточку из sources.json
 Кадр после put — открыть и посмотреть: в поиске попадаются письма, автографы, плакаты с надписями.
   kadr.py find|put … --razreshenie "Р95: Сергей разрешил кадр …"  — Викисклад, только по слову Сергея
-  kadr.py zamena [--muzey X] [--primenit]
+  kadr.py zamena [--muzey X] [--primenit] [-j 6] [--prodolzhit]
                                                       Р90: кадры с Викисклада → российские фонды (адаптеры
                                                       scripts/fondy/*.py, po_nomeru); строго: инв. номер у того же
                                                       держателя или автор+год+название; без --primenit — сухой прогон;
                                                       ненайденное — data/r90-na-razreshenie.tsv (на разрешение Сергея);
-                                                      адаптерам идут и avtor/nazvanie/god из подписи (iz_podpisi)
+                                                      адаптерам идут и avtor/nazvanie/god из подписи (iz_podpisi);
+                                                      -j кадров параллельно (≤2 запроса на хост, кэш ответов на прогон);
+                                                      таблица — атомарно, при обрыве прежние строки сохраняются;
+                                                      --prodolzhit — пропустить кадры, уже стоящие в таблице
   kadr.py razbor [--muzey X] [-n 5]                    без сети: сколько кадров без держателя получили автор/название/год
 Лицензии — только общественное достояние, CC0, CC BY, CC BY-SA; прочее put отклоняет.
 """
@@ -691,7 +694,118 @@ def primenit(k, r):
     return True
 
 
-def zamena(muzey=None, prim=False, vkl=(), bez=()):
+# ── параллельный прогон: не больше HOST_MAX запросов на хост разом, кэш одинаковых ответов на прогон ──
+HOST_MAX = 2
+_set_lock = __import__('threading').Lock()
+_hosty, _kesh, _kesh_zamki = {}, {}, {}
+VYVOD = __import__('threading').Lock()  # строки вывода не перемешиваются
+PLOHO_KESH = {403, 407, 429, 500, 502, 503, 504}
+
+
+def _host_sem(url):
+    import threading
+    h = urllib.parse.urlsplit(str(url)).hostname or ''
+    with _set_lock:
+        return _hosty.setdefault(h, threading.BoundedSemaphore(HOST_MAX))
+
+
+def _kesh_zamok(key):
+    import threading
+    with _set_lock:
+        return _kesh_zamki.setdefault(key, threading.Lock())
+
+
+def cherez_kesh(key, url, delat, keshirovat=lambda r: True):
+    """Ответ по key из кэша прогона; нет — delat() под семафором хоста. Одинаковые запросы разом — один в сеть."""
+    with _kesh_zamok(key):
+        if key in _kesh:
+            return _kesh[key]
+        with _host_sem(url):
+            r = delat()
+        if keshirovat(r):
+            _kesh[key] = r
+        return r
+
+
+class _Otvet(io.BytesIO):
+    """Сохранённый ответ urllib: read()/json.load, status, headers, with."""
+    def __init__(self, body, status, headers, url):
+        super().__init__(body); self.status = self.code = status; self.headers = headers; self.url = url
+    def getcode(self): return self.status
+    def geturl(self): return self.url
+    def info(self): return self.headers
+
+
+def ustanovit_set():
+    """Обёртки над requests.Session.request и urllib OpenerDirector.open для адаптеров scripts/fondy (один раз)."""
+    if getattr(ustanovit_set, 'gotovo', False):
+        return
+    ustanovit_set.gotovo = True
+    try:
+        import requests
+        orig_req = requests.Session.request
+
+        def request(self, method, url, *a, **kw):
+            if kw.get('stream'):
+                with _host_sem(url):
+                    return orig_req(self, method, url, *a, **kw)
+            key = ('rq', str(method).upper(), str(url), repr(a), repr(sorted((k, repr(v)) for k, v in kw.items() if k != 'timeout')))
+            return cherez_kesh(key, url, lambda: orig_req(self, method, url, *a, **kw),
+                               lambda r: getattr(r, 'status_code', 0) not in PLOHO_KESH)
+        requests.Session.request = request
+    except ImportError:
+        pass
+    orig_open = urllib.request.OpenerDirector.open
+
+    def open_(self, fullurl, data=None, *a, **kw):
+        url = fullurl.full_url if isinstance(fullurl, urllib.request.Request) else str(fullurl)
+        if isinstance(fullurl, urllib.request.Request):
+            data = data if data is not None else fullurl.data
+            key = ('ul', fullurl.get_method(), url, repr(data), repr(sorted(fullurl.header_items())), id(self.handlers[0]) if self.handlers else 0)
+        else:
+            key = ('ul', 'POST' if data else 'GET', url, repr(data), (), id(self.handlers[0]) if self.handlers else 0)
+
+        def delat():
+            with orig_open(self, fullurl, data, *a, **kw) as r:
+                return _Otvet(r.read(), getattr(r, 'status', 200), r.headers, r.geturl())
+        r = cherez_kesh(key, url, delat)
+        return _Otvet(r.getvalue(), r.status, r.headers, r.url)
+    urllib.request.OpenerDirector.open = open_
+
+
+def pechat(*a, err=False):
+    with VYVOD:
+        print(*a, file=sys.stderr if err else sys.stdout, flush=True)
+
+
+def iskat(k, ad):
+    """Поиск одного кадра по адаптерам (в потоке): (hit, kand, upali)."""
+    kk = {x: k[x] for x in ('muzey', 'den', 'fayl', 'podpis', 'derzhatel', 'inv', 'avtor', 'nazvanie', 'god', 'syuzhet')}
+    hit, kand, upali = None, 0, []
+    for name, fn in ad:
+        try:
+            for r in fn(dict(kk)) or []:
+                kand += 1
+                why = strogo(kk, r)
+                if why:
+                    hit = (r, why); break
+        except Exception as e:
+            upali.append(name)
+            pechat(f'адаптер {name} упал на {k["muzey"]}/{k["den"]} ({type(e).__name__}: {e}) — пропускаю', err=True)
+        if hit:
+            break
+    return kk, hit, kand, upali
+
+
+def klyuch(stroka):
+    """(музей, день, файл) строки таблицы."""
+    c = stroka.split('\t')
+    return tuple(c[:3]) if len(c) >= 3 else None
+
+
+def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
+    import signal
+    from concurrent.futures import ThreadPoolExecutor
     ad = adaptery(vkl, bez)
     if any(n == 'goskatalog' for n, _ in ad):  # #335: Госкаталог только через туннель RU_PROXY
         import socket
@@ -702,47 +816,55 @@ def zamena(muzey=None, prim=False, vkl=(), bez=()):
             if Path(tun).exists():
                 subprocess.Popen([sys.executable, tun, 'serve'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True); warn(f'туннель {RU_PROXY} поднят фоном: {tun}')
             else: warn(f'туннель {RU_PROXY} не слушает, {tun} не найден — goskatalog вернёт пусто')
+    ustanovit_set()
     vykl = sorted(set(TOLKO_PO_RAZRESHENIYU) - set(vkl)) + sorted(set(bez) - set(TOLKO_PO_RAZRESHENIYU))
     print(f'адаптеров фондов: {len(ad)} ({", ".join(n for n, _ in ad) or "нет"}); выключены: {", ".join(vykl) or "нет"}; '
-          f'режим: {"ПРИМЕНИТЬ" if prim else "сухой прогон"}', flush=True)
+          f'режим: {"ПРИМЕНИТЬ" if prim else "сухой прогон"}; потоков: {j}', flush=True)
     kadry = list(kadry_muzeya(muzey))
     itog, po_fondam = {}, {}
     out = ROOT / 'data/r90-na-razreshenie.tsv'
     out.parent.mkdir(exist_ok=True)
     clean = lambda v: re.sub(r'[\t\n]+', ' ', str(v))
-    drugie = []
-    if muzey and out.is_file():  # --muzey: строки других музеев сохраняются
-        drugie = [r for r in out.read_text().splitlines()[1:] if r and r.split('\t')[0] != muzey]
-    # таблица пишется по ходу (дозапись + flush): прерванный прогон не теряет найденного
-    tsv = out.open('w')
+    drugie, stary = [], []
+    if out.is_file():
+        for r in out.read_text().splitlines()[1:]:
+            if r:
+                (stary if not muzey or r.split('\t')[0] == muzey else drugie).append(r)
+    # прежние строки обрабатываемых музеев: при обрыве необработанные дописываются, ничего не теряется
+    gotovo = set()  # ключи (музей, день, файл), обработанные в этом прогоне
+    propusk = {klyuch(r) for r in stary} if prodolzhit else set()
+    if prodolzhit:
+        n0 = len(kadry)
+        kadry = [k for k in kadry if (k['muzey'], k['den'], k['fayl']) not in propusk]
+        print(f'--prodolzhit: пропускаю {n0 - len(kadry)} кадров, уже стоящих в таблице', flush=True)
+    # пишется во временный файл рядом, в конце — атомарная подмена (os.replace)
+    fd, tmp = tempfile.mkstemp(prefix='.r90-', suffix='.tsv', dir=out.parent)
+    tsv = os.fdopen(fd, 'w')
     tsv.write('\t'.join(('музей', 'день', 'файл', 'держатель', 'инв', 'что искали', 'почему нет')) + '\n'
               + ''.join(r + '\n' for r in sorted(drugie)))
+    if prodolzhit:
+        tsv.write(''.join(r + '\n' for r in stary))
     tsv.flush()
-    n_net = 0
+    n_net, oborvan = 0, False
+
+    def stop(*_):
+        raise KeyboardInterrupt
+    staryy_sig = signal.signal(signal.SIGTERM, stop) if __import__('threading').current_thread() is __import__('threading').main_thread() else None
+    # html правится с конца файла, чтобы смещения ещё не обработанных кадров не съезжали; поиск — параллельно,
+    # разбор результатов и правка — по порядку в главном потоке
+    kadry.sort(key=lambda k: (str(k['put']), -(k.get('tag') or (0,))[0]))
+    pool = ThreadPoolExecutor(max_workers=max(1, j))
     try:
-        # html правится с конца файла, чтобы смещения ещё не обработанных кадров не съезжали
-        for k in sorted(kadry, key=lambda k: (str(k['put']), -(k.get('tag') or (0,))[0])):
+        futs = [(k, pool.submit(iskat, k, ad)) for k in kadry]
+        for k, fu in futs:
+            kk, hit, kand, upali = fu.result()
             s = itog.setdefault(k['muzey'], dict(kadrov=0, derzh=0, inv=0, naydeno=0, zameneno=0))
             s['kadrov'] += 1; s['derzh'] += bool(k['derzhatel']); s['inv'] += bool(k['inv'])
-            kk = {x: k[x] for x in ('muzey', 'den', 'fayl', 'podpis', 'derzhatel', 'inv', 'avtor', 'nazvanie', 'god', 'syuzhet')}
-            hit, kand, upali = None, 0, []
-            for name, fn in ad:
-                try:
-                    for r in fn(dict(kk)) or []:
-                        kand += 1
-                        why = strogo(kk, r)
-                        if why:
-                            hit = (r, why); break
-                except Exception as e:
-                    upali.append(name)
-                    warn(f'адаптер {name} упал на {k["muzey"]}/{k["den"]} ({type(e).__name__}: {e}) — пропускаю')
-                if hit:
-                    break
             stranica = f'{k["muzey"]}/{k["den"]}'
             if hit:
                 s['naydeno'] += 1
                 po_fondam[hit[0]['fond']] = po_fondam.get(hit[0]['fond'], 0) + 1
-                print(f'{stranica} | {k["fayl"]} | найдено: {hit[0]["fond"]} → {hit[0]["card"]} ({hit[1]})', flush=True)
+                pechat(f'{stranica} | {k["fayl"]} | найдено: {hit[0]["fond"]} → {hit[0]["card"]} ({hit[1]})')
                 if prim and primenit(k, hit[0]):
                     s['zameneno'] += 1
             else:
@@ -758,21 +880,38 @@ def zamena(muzey=None, prim=False, vkl=(), bez=()):
                     pochemu = 'фонды ничего не вернули'
                 if upali:
                     pochemu += f'; упали: {", ".join(upali)}'
-                print(f'{stranica} | {k["fayl"]} | нет ({pochemu})', flush=True)
+                pechat(f'{stranica} | {k["fayl"]} | нет ({pochemu})')
                 iskali = '; '.join(f'{a}: {kk[b]}' for a, b in (('инв.', 'inv'), ('автор', 'avtor'), ('название', 'nazvanie'), ('год', 'god')) if kk[b]) \
                          + f'; сюжет: {kk["syuzhet"][:100]}'
                 tsv.write('\t'.join(map(clean, [k['muzey'], k['den'], k['fayl'], k['derzhatel'], k['inv'], iskali, pochemu])) + '\n')
                 tsv.flush()
                 n_net += 1
+            gotovo.add((k['muzey'], k['den'], k['fayl']))
+    except KeyboardInterrupt:
+        oborvan = True
+        pool.shutdown(wait=False, cancel_futures=True)
     finally:
+        if not oborvan:
+            pool.shutdown(wait=False, cancel_futures=True)
+        if oborvan or sys.exc_info()[0] is not None:  # обрыв или ошибка: прежние строки необработанных кадров — назад
+            vernul = [r for r in stary if klyuch(r) not in gotovo and klyuch(r) not in propusk]
+            tsv.write(''.join(r + '\n' for r in vernul))
+            warn(f'\nпрогон оборван: обработано {len(gotovo)} из {len(kadry)}, прежних строк возвращено {len(vernul)} '
+                 f'(дальше — --prodolzhit)')
         tsv.close()
+        os.replace(tmp, out)
+        if staryy_sig is not None:
+            signal.signal(signal.SIGTERM, staryy_sig)
     print(f'\n{"музей":<18}{"кадров":>7}{"держ.":>7}{"инв.":>6}{"найдено":>9}{"не найд.":>9}' + ('  заменено' if prim else ''))
     for m, s in sorted(itog.items()) + [('ВСЕГО', {x: sum(s[x] for s in itog.values()) for x in ('kadrov', 'derzh', 'inv', 'naydeno', 'zameneno')})]:
         print(f'{m:<18}{s["kadrov"]:>7}{s["derzh"]:>7}{s["inv"]:>6}{s["naydeno"]:>9}{s["kadrov"] - s["naydeno"]:>9}'
               + (f'{s["zameneno"]:>10}' if prim else ''))
     if po_fondam:
         print('найдено по фондам: ' + '; '.join(f'{f} {n}' for f, n in sorted(po_fondam.items(), key=lambda x: -x[1])))
-    print(f'\nна личное разрешение Сергея: {n_net} строк → {out.relative_to(ROOT)}')
+    print(f'\nна личное разрешение Сергея: {n_net} строк → {out.relative_to(ROOT)}', flush=True)
+    if oborvan:  # потоки с запросами в полёте не ждём: таблица уже подменена
+        sys.stdout.flush(); sys.stderr.flush()
+        os._exit(130)
 
 
 def kadry_muzeya(muzey=None):
@@ -821,12 +960,15 @@ def main(argv=None):
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
     z.add_argument('--s-loc', action='store_true', help='включить Библиотеку Конгресса — только с личного разрешения владельца, Р93')
     z.add_argument('--bez', metavar='ФОНД,...', default='', help='выключить фонды (имена файлов scripts/fondy/, через запятую)')
+    z.add_argument('-j', type=int, default=6, help='кадров параллельно (по умолчанию 6; на один хост — не больше 2 запросов)')
+    z.add_argument('--prodolzhit', action='store_true', help='пропустить кадры, уже стоящие в data/r90-na-razreshenie.tsv')
     r = sub.add_parser('razbor', help='без сети: сводка автор/название/год из подписей для zamena')
     r.add_argument('--muzey', help='только этот музей'); r.add_argument('-n', type=int, default=5, help='сколько примеров')
     a = ap.parse_args(argv)
     RAZRESHENIE = getattr(a, 'razreshenie', None)
     if a.cmd == 'zamena':
-        zamena(a.muzey, a.primenit, vkl=('loc',) if a.s_loc else (), bez={x.strip() for x in a.bez.split(',') if x.strip()})
+        zamena(a.muzey, a.primenit, vkl=('loc',) if a.s_loc else (), bez={x.strip() for x in a.bez.split(',') if x.strip()},
+               j=a.j, prodolzhit=a.prodolzhit)
     elif a.cmd == 'razbor':
         razbor(a.muzey, a.n)
     elif a.cmd == 'find':
