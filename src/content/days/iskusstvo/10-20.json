@@ -6,14 +6,14 @@
   "hook": "Крестный ход: сотня лиц, пыль и свечи — и один горбун с фонарём, которого не забыть",
   "mechanic": "Зум + найди деталь",
   "source": "Картина в Третьяковской галерее, 1883",
-  "images": [
-    {
-      "src": "muzei/iskusstvo/img/10-20-ilya-repin-krestnyy-hod-v-kurskoy-gubernii-googl.jpg",
-      "caption": "Илья Репин. «Крестный ход в Курской губернии»",
-      "credit": "Илья Репин, 1880–1883. Цифровой файл: Wikimedia Commons, «Ilya Repin - Крестный ход в Курской губернии - Google Art Project.jpg» (Public domain)."
-    }
-  ],
   "slovar": [
     "lyudi:ilya-repin"
+  ],
+  "images": [
+    {
+      "src": "muzei/iskusstvo/img/10-20-tretyakov-95cb377cadef2e1673452f933164d29e.jpg",
+      "caption": "Илья Репин. «Крестный ход в Курской губернии»",
+      "credit": "Илья Репин, 1880–1883. Источник: Третьяковская галерея (my.tretyakov.ru) [tretyakov], https://my.tretyakov.ru/app/masterpiece/21725. Права: общественное достояние (ст. 1281 ГК РФ, автор умер в 1930); условия фонда: некоммерческое использование, подпись «Из собрания Третьяковской галереи»."
+    }
   ]
 }

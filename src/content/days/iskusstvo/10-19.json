@@ -6,14 +6,14 @@
   "hook": "Пётр и стрельцы смотрят друг на друга — и Суриков так и не сказал, кто из них прав",
   "mechanic": "Развилка судьбы",
   "source": "Картина в Третьяковской галерее, 1881",
-  "images": [
-    {
-      "src": "muzei/iskusstvo/img/10-19-vasily-surikov-utro-streleckoy-kazni-google-art-.jpg",
-      "caption": "Василий Суриков. «Утро стрелецкой казни»",
-      "credit": "Василий Суриков, 1881. Цифровой файл: Wikimedia Commons, «Vasily Surikov - Утро стрелецкой казни - Google Art Project.jpg» (Public domain)."
-    }
-  ],
   "slovar": [
     "lyudi:vasiliy-surikov"
+  ],
+  "images": [
+    {
+      "src": "muzei/iskusstvo/img/10-19-tretyakov-3e7cde925a08a23ba69d8aa07171b8a4.jpg",
+      "caption": "Василий Суриков. «Утро стрелецкой казни»",
+      "credit": "Василий Суриков, 1881. Источник: Третьяковская галерея (my.tretyakov.ru) [tretyakov], https://my.tretyakov.ru/app/masterpiece/8414. Права: общественное достояние (ст. 1281 ГК РФ, автор умер в 1916); условия фонда: некоммерческое использование, подпись «Из собрания Третьяковской галереи»."
+    }
   ]
 }
