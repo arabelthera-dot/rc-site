@@ -7,14 +7,14 @@
   "legacy_page": "muzei/literatura/lit-tolstoy-petr-pervyy.html",
   "images": [
     {
-      "src": "muzei/literatura/media-petr/hero-serov-1907.jpg",
-      "caption": "Пётр шагает по берегу против ветра, за ним придворные",
-      "credit": "В. А. Серов. «Пётр I», кадр для шапки страницы; «Serov — Peter the Great.jpg», Wikimedia Commons, общественное достояние"
+      "src": "muzei/literatura/img/01-10-tretyakov-f94a0ace7ffd552bd1f719be3399b654.jpg",
+      "caption": "Пётр на двуколке объезжает стройку",
+      "credit": "В. А. Серов. «Пётр I на работах», 1910–1911, кадр для шапки. Из собрания Третьяковской галереи, https://my.tretyakov.ru/app/masterpiece/146015. Общественное достояние (ст. 1281 ГК РФ, автор умер в 1911 году)"
     },
     {
-      "src": "muzei/literatura/media-petr/serov-petr-1907.jpg",
+      "src": "muzei/literatura/img/01-10-goskatalog-74629112.jpg",
       "caption": "В. А. Серов. «Пётр I». 1907. Государственная Третьяковская галерея. Серов написал Петра на ходу: царь идёт против ветра так быстро, что свита едва поспевает.",
-      "credit": "В. А. Серов. «Пётр I», 1907. Третьяковская галерея; «Serov — Peter the Great.jpg», Wikimedia Commons, общественное достояние"
+      "credit": "В. А. Серов. «Пётр I», 1907. Источник: Госкаталог Музейного фонда РФ, https://goskatalog.ru/portal/#/collections?id=58679700 (диапозитив). Общественное достояние (ст. 1281 ГК РФ, автор умер в 1911 году)"
     },
     {
       "src": "muzei/literatura/media-petr/shoonebek-vzyatie-azova.jpg",
@@ -22,9 +22,9 @@
       "credit": "Осада Азова в 1696 году. Гравюра петровского времени (альбом, лист 4). Музей архитектуры имени А. В. Щусева, инв. Р XII-99/4; Госкаталог музейного фонда РФ, общественное достояние"
     },
     {
-      "src": "muzei/literatura/media-petr/serov-petr-na-rabotah.jpg",
+      "src": "muzei/literatura/img/01-10-tretyakov-f94a0ace7ffd552bd1f719be3399b654.jpg",
       "caption": "В. А. Серов. «Пётр I на работах». 1910–1911. Пётр объезжает стройку на двуколке — каким его видел Толстой в «Дне Петра».",
-      "credit": "В. А. Серов. «Пётр I на работах», 1910–1911; «Peter I at works by V.Serov (1910-11, GTG).jpg», Wikimedia Commons, общественное достояние"
+      "credit": "В. А. Серов. «Пётр I на работах», 1910–1911. Из собрания Третьяковской галереи, https://my.tretyakov.ru/app/masterpiece/146015. Общественное достояние (ст. 1281 ГК РФ, автор умер в 1911 году)"
     }
   ]
 }
