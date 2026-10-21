@@ -194,7 +194,7 @@ def po_nomeru(kadr: dict) -> list[dict]:
     if not res and repro:
         res = _json_poisk(repro.group(0), 3)
     if not res:
-        nazv = kadr.get("syuzhet") or kadr.get("podpis") or ""
+        nazv = kadr.get("nazvanie") or kadr.get("syuzhet") or kadr.get("podpis") or ""
         avtor = kadr.get("avtor") or ""
         if nazv:
             res = _json_poisk(f"{nazv} {avtor}".strip(), 5) or _sru(_sru_q(nazv, avtor), 5) or _sru(_sru_q(nazv), 5)

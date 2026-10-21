@@ -105,7 +105,7 @@ def po_nomeru(kadr: dict) -> list:
             add(_safe(q), f'инв. номер {inv} совпал', True)
             if out:
                 return out
-    q = ' '.join(x for x in (kadr.get('avtor'), kadr.get('syuzhet') or kadr.get('podpis')) if x)
+    q = ' '.join(x for x in (kadr.get('avtor'), kadr.get('nazvanie') or kadr.get('syuzhet') or kadr.get('podpis')) if x)
     if q:
         add(_safe(q[:120]), f'поиск «{q[:60]}»' + (' + держатель' if derzh else ''), False)
     return out

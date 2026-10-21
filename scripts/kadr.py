@@ -27,7 +27,9 @@ PastVu (только с --geo lat,lon). Русский музей, Третья�
                                                       Р90: кадры с Викисклада → российские фонды (адаптеры
                                                       scripts/fondy/*.py, po_nomeru); строго: инв. номер у того же
                                                       держателя или автор+год+название; без --primenit — сухой прогон;
-                                                      ненайденное — data/r90-na-razreshenie.tsv (на разрешение Сергея)
+                                                      ненайденное — data/r90-na-razreshenie.tsv (на разрешение Сергея);
+                                                      адаптерам идут и avtor/nazvanie/god из подписи (iz_podpisi)
+  kadr.py razbor [--muzey X] [-n 5]                    без сети: сколько кадров без держателя получили автор/название/год
 Лицензии — только общественное достояние, CC0, CC BY, CC BY-SA; прочее put отклоняет.
 """
 import html, io, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
@@ -375,6 +377,78 @@ AVTOR = re.compile(r'(?:Фото(?:граф)?:?|Автор:?|работы|[Хх]
 GOD = re.compile(r'\b(1[0-9]{3}|20[0-2]\d)\b')
 STRIP = lambda s: re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s or ''))).strip()
 
+# Подпись → автор, название, год: «А. Радаков · 1917 «Название» описание», «Автор. Название. 1905»,
+# «Название (Автор, 1905)», «Карикатура … журнал «Будильник», 1906»
+IMYA = re.compile(r'(?:[А-ЯЁA-Z]\.\s?){1,2}\s?[А-ЯЁA-Z][а-яёa-z]+(?:-[А-ЯЁA-Z][а-яёa-z]+)?'
+                  r'|[А-ЯЁA-Z][а-яёa-z]+(?:\s(?:де|фон|ван)?\s?[А-ЯЁA-Z][а-яёa-z]+(?:-[А-ЯЁA-Z][а-яёa-z]+)?){1,2}')
+NE_AVTOR = re.compile(r'(?i)^(?:лубок|азбука|журнал|издатель|художник|неизвестн|исторический|обложка|карикатура'
+                      r'|плакат|гравюра|литография|страница|рисунок|буква|сатирикон|крокодил|будильник)')
+GOD_PODP = re.compile(r'(?:\bок\.\s?|\bс\.\s?)?\b(1[5-9]\d{2}|20[0-2]\d)\b(?:\s?г(?:\.|ода?)?)?')
+
+
+def kavychki(s):
+    """Первое «…» с учётом вложенных «…«…»…»: (начало, конец) или None."""
+    a = s.find('«')
+    if a < 0:
+        return None
+    d = 0
+    for i in range(a, len(s)):
+        d += {'«': 1, '»': -1}.get(s[i], 0)
+        if d == 0:
+            return a, i + 1
+    return a, len(s)
+
+
+def avtor_v(s):
+    """Имя человека из куска подписи: «А. Радаков», «Дмитрий Моор», «Уильям Элмс, Лондон» → имя."""
+    for kus in re.split(r'\s*[,;]\s*|(?<=[а-яёa-z]{2})\.\s+(?=[А-ЯЁA-Z][а-яёa-z])', s.strip()):
+        kus = kus.strip(' .')
+        if kus and not NE_AVTOR.match(kus) and IMYA.fullmatch(kus):
+            return kus
+    return ''
+
+
+def iz_podpisi(podpis):
+    """dict(avtor, nazvanie, god) из подписи кадра; чего нет — пустая строка."""
+    s = re.sub(r'\s+', ' ', podpis or '').strip()
+    if not s:
+        return dict(avtor='', nazvanie='', god='')
+    m = re.fullmatch(r'(.+?)\s*\(([^()]+?),\s*(?:ок\.\s?)?(1[5-9]\d{2}|20[0-2]\d)[^()]*\)\.?(.*)', s)
+    if m and avtor_v(m.group(2)):  # «Название (Автор, 1905)»
+        return dict(avtor=avtor_v(m.group(2)), nazvanie=m.group(1).strip(' .«»'), god=m.group(3))
+    chasti = s.split(' · ')
+    if len(chasti) > 1:  # «Автор · год · … «Название» описание»
+        hvost = chasti[-1]
+        g = GOD_PODP.match(hvost) or re.match(r'(?:(?:нач|кон|сер)\.\s?)?[IVXLC]+\s?в(?:ек|\.)?', hvost)
+        if g:
+            hvost = hvost[g.end():].strip()
+        golova = chasti[:-1] + ([chasti[-1][:g.end()]] if g else [])
+        god = next((x.group(1) for c in golova for x in [GOD_PODP.search(c)] if x), '')
+        avtor = next((x for c in golova for x in [avtor_v(re.sub(r'«[^»]*»', '', GOD_PODP.sub('', c)))] if x), '')
+        fr = [f for f in re.split(r'(?<=[^А-ЯЁA-Z])\.\s', hvost) if f.strip()]
+        while len(fr) > 1 and re.search(r'(?i)коллекци|собрани|музе|библиотек|архив', fr[0]):
+            fr.pop(0)  # «Наполеоновская коллекция …» — держатель, не название
+        kav = [(c, kavychki(c)) for c in [hvost] + [GOD_PODP.sub('', c, 1).strip() for c in chasti[:-1]]]
+        c, k = next(((c, k) for c, k in kav if k and k[0] <= 40), (hvost, None))
+        nazv = c[:k[1]] if k else (fr[0] if fr else '')
+        return dict(avtor=avtor, nazvanie=nazv.strip(' .')[:160], god=god)
+    g = GOD_PODP.search(s)
+    god = g.group(1) if g else ''
+    k = kavychki(s)
+    if k and k[0] <= 60:  # «Карикатура … журнал «Будильник», 1906», «Автор «Название», 1905»
+        pered = s[:k[0]].strip(' ,.')
+        av = avtor_v(pered)
+        return dict(avtor=av, nazvanie=(s[k[0]:k[1]] if av or not pered else s[:k[1]]).strip(), god=god)
+    m = re.match(r'((?:[А-ЯЁ]\.\s?){1,2}[А-ЯЁ][а-яё]+(?:-[А-ЯЁ][а-яё]+)?)\s+(?=[А-ЯЁ«])', s)
+    if m and not re.match(r'[А-ЯЁ][а-яё]*\.\s', s[m.end():]):  # «А. Радаков Подборка карикатур …»
+        rest = s[m.end():]
+        k = kavychki(rest)
+        return dict(avtor=m.group(1), nazvanie=(rest[:k[1]] if k and k[0] <= 40 else re.split(r'(?<=[^А-ЯЁA-Z])\.\s', rest)[0]).strip(' .')[:160], god=god)
+    kus = [c.strip() for c in re.split(r'(?<=[^А-ЯЁA-Z\s])\.\s+', s) if c.strip()]
+    if len(kus) >= 2 and avtor_v(kus[0]):  # «Автор. Название. 1905»
+        return dict(avtor=avtor_v(kus[0]), nazvanie=GOD_PODP.sub('', kus[1]).strip(' .,'), god=god)
+    return dict(avtor='', nazvanie=GOD_PODP.sub('', kus[0]).strip(' .,')[:160] if kus else '', god=god)
+
 
 def opis(tekst, podpis):
     """Держатель, инв., автор, год, сюжет — из подписи, credit и строки прав."""
@@ -383,8 +457,10 @@ def opis(tekst, podpis):
     inv = next((m.group(1).strip() for r in INV for m in [r.search(tekst)] if m), '')
     av = AVTOR.search(tekst)
     god = GOD.search(tekst)
-    return dict(derzhatel=derzh, inv=inv, avtor=av.group(1).strip() if av else '',
-                god=god.group(1) if god else '', syuzhet=re.split(r'(?<=[^А-ЯЁA-Z])\.\s', podpis)[0][:160])
+    pp = iz_podpisi(podpis)  # год подписи точнее года из имени файла; автор — явный «Фото:/Худ.» прежде
+    return dict(derzhatel=derzh, inv=inv, avtor=(av.group(1).strip() if av else '') or pp['avtor'],
+                god=pp['god'] or (god.group(1) if god else ''), nazvanie=pp['nazvanie'],
+                syuzhet=re.split(r'(?<=[^А-ЯЁA-Z])\.\s', podpis)[0][:160])
 
 
 def kadry_json(path):
@@ -450,7 +526,7 @@ def strogo(k, r):
             return 'инв. номер у того же держателя'
     fam = lambda s: norm(re.split(r'[\s.]+', str(s or '').strip())[-1]) if s else ''
     slova = [w for w in re.findall(r'[а-яёa-z]{4,}', str(r.get('title') or '').lower())]
-    tekst = (k['podpis'] + ' ' + k['syuzhet']).lower()
+    tekst = (k['podpis'] + ' ' + k['syuzhet'] + ' ' + k.get('nazvanie', '')).lower()
     if (fam(k['avtor']) and fam(k['avtor']) == fam(r.get('avtor')) and k['god'] and str(r.get('god') or '')[:4] == k['god']
             and slova and sum(w[:-1] in tekst for w in slova) >= max(1, round(len(slova) * .6))):
         return 'автор + год + название'
@@ -522,21 +598,13 @@ def zamena(muzey=None, prim=False):
                 subprocess.Popen([sys.executable, tun, 'serve'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True); warn(f'туннель {RU_PROXY} поднят фоном: {tun}')
             else: warn(f'туннель {RU_PROXY} не слушает, {tun} не найден — goskatalog вернёт пусто')
     print(f'адаптеров фондов: {len(ad)} ({", ".join(n for n, _ in ad) or "нет"}); режим: {"ПРИМЕНИТЬ" if prim else "сухой прогон"}')
-    kadry = []
-    for p in sorted((ROOT / 'src/content/days').glob('*/*.json')) + sorted((ROOT / 'src/data/full-pages').glob('*/*.html')):
-        if muzey and p.parent.name != muzey:
-            continue
-        try:
-            for k in (kadry_json(p) if p.suffix == '.json' else kadry_html(p)):
-                kadry.append(dict(k, muzey=p.parent.name, den=p.stem))
-        except Exception as e:
-            warn(f'{p.relative_to(ROOT)}: не разобран ({e})')
+    kadry = list(kadry_muzeya(muzey))
     itog, net = {}, []
     # html правится с конца файла, чтобы смещения ещё не обработанных кадров не съезжали
     for k in sorted(kadry, key=lambda k: (str(k['put']), -(k.get('tag') or (0,))[0])):
         s = itog.setdefault(k['muzey'], dict(kadrov=0, derzh=0, inv=0, naydeno=0, zameneno=0))
         s['kadrov'] += 1; s['derzh'] += bool(k['derzhatel']); s['inv'] += bool(k['inv'])
-        kk = {x: k[x] for x in ('muzey', 'den', 'fayl', 'podpis', 'derzhatel', 'inv', 'avtor', 'god', 'syuzhet')}
+        kk = {x: k[x] for x in ('muzey', 'den', 'fayl', 'podpis', 'derzhatel', 'inv', 'avtor', 'nazvanie', 'god', 'syuzhet')}
         hit = None
         for name, fn in ad:
             try:
@@ -554,7 +622,7 @@ def zamena(muzey=None, prim=False):
             if prim and primenit(k, hit[0]):
                 s['zameneno'] += 1
         else:
-            iskali = '; '.join(f'{a}: {kk[b]}' for a, b in (('инв.', 'inv'), ('автор', 'avtor'), ('год', 'god')) if kk[b]) \
+            iskali = '; '.join(f'{a}: {kk[b]}' for a, b in (('инв.', 'inv'), ('автор', 'avtor'), ('название', 'nazvanie'), ('год', 'god')) if kk[b]) \
                      + f'; сюжет: {kk["syuzhet"][:100]}'
             net.append([k['muzey'], k['den'], k['fayl'], k['derzhatel'], k['inv'], iskali])
     out = ROOT / 'data/r90-na-razreshenie.tsv'
@@ -571,20 +639,63 @@ def zamena(muzey=None, prim=False):
     print(f'\nна личное разрешение Сергея: {len(net)} строк → {out.relative_to(ROOT)}')
 
 
-if __name__ == '__main__':
-    a = sys.argv[1:]
-    opt = lambda k: a[a.index(k) + 1] if k in a and a.index(k) + 1 < len(a) else None
-    card = opt('--card')
-    RAZRESHENIE = opt('--razreshenie')
-    if RAZRESHENIE:
-        i = a.index('--razreshenie'); del a[i:i + 2]
-    if card:
-        i = a.index('--card'); del a[i:i + 2]
-    if a[:1] == ['zamena']:
-        zamena(opt('--muzey'), '--primenit' in a)
-    elif a[:1] == ['find'] and len(a) >= 2:
-        find(a[1], int(opt('-n') or 10), opt('--geo'))
-    elif a[:1] == ['put'] and len(a) in (5, 6):
-        put(*a[1:], card=card) if len(a) == 6 else put(*a[1:], None, card)
+def kadry_muzeya(muzey=None):
+    """Все места кадров с Викисклада (без сети) — те же, что берёт zamena."""
+    for p in sorted((ROOT / 'src/content/days').glob('*/*.json')) + sorted((ROOT / 'src/data/full-pages').glob('*/*.html')):
+        if muzey and p.parent.name != muzey:
+            continue
+        try:
+            for k in (kadry_json(p) if p.suffix == '.json' else kadry_html(p)):
+                yield dict(k, muzey=p.parent.name, den=p.stem)
+        except Exception as e:
+            warn(f'{p.relative_to(ROOT)}: не разобран ({e})')
+
+
+def razbor(muzey=None, n=5):
+    """Офлайн-сводка: что zamena отдаст адаптерам для кадров без держателя и инв. номера."""
+    ks = list(kadry_muzeya(muzey))
+    bez = [k for k in ks if not k['derzhatel'] and not k['inv']]
+    print(f'{muzey or "все музеи"}: мест кадров {len(ks)}, без держателя и инв. {len(bez)}')
+    for x, nm in (('avtor', 'с автором'), ('nazvanie', 'с названием'), ('god', 'с годом')):
+        print(f'  {nm:<12} {sum(bool(k[x]) for k in bez):>4} из {len(bez)}')
+    print(f'  все три    {sum(all(k[x] for x in ("avtor", "nazvanie", "god")) for k in bez):>4} из {len(bez)}')
+    vidno = list({k['podpis']: k for k in bez if k['avtor'] and k['nazvanie']}.values())
+    for k in vidno[::max(1, len(vidno) // n)][:n]:
+        print(f'  {k["podpis"][:90]!r}\n    → {k["avtor"]} | {k["nazvanie"]} | {k["god"]}')
+
+
+def main(argv=None):
+    import argparse
+    global RAZRESHENIE
+    ap = argparse.ArgumentParser(prog='kadr.py', description=__doc__.split('\n\n')[0],
+                                 epilog='Подробно: python3 scripts/kadr.py <команда> --help', formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,put,zamena,razbor}')
+    raz = argparse.ArgumentParser(add_help=False)
+    raz.add_argument('--razreshenie', metavar='СЛОВО', help='Р90: Викисклад — только по слову Сергея ("Р№ или дата и слова")')
+    f = sub.add_parser('find', parents=[raz], help='кандидаты по российским фондам')
+    f.add_argument('query', help='что искать')
+    f.add_argument('-n', type=int, default=10, help='сколько кандидатов (по умолчанию 10)')
+    f.add_argument('--geo', metavar='LAT,LON', help='точка для PastVu')
+    pu = sub.add_parser('put', parents=[raz], help='положить кадр из фонда в public/muzei/<музей>/img/')
+    pu.add_argument('museum'); pu.add_argument('key', help='день, напр. 03-05')
+    pu.add_argument('title', help='"фонд:ссылка" или имя файла'); pu.add_argument('caption', help='подпись')
+    pu.add_argument('avtor', nargs='?', help='автор (для фонда обязателен)')
+    pu.add_argument('--card', help='ссылка на карточку предмета')
+    z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
+    z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
+    r = sub.add_parser('razbor', help='без сети: сводка автор/название/год из подписей для zamena')
+    r.add_argument('--muzey', help='только этот музей'); r.add_argument('-n', type=int, default=5, help='сколько примеров')
+    a = ap.parse_args(argv)
+    RAZRESHENIE = getattr(a, 'razreshenie', None)
+    if a.cmd == 'zamena':
+        zamena(a.muzey, a.primenit)
+    elif a.cmd == 'razbor':
+        razbor(a.muzey, a.n)
+    elif a.cmd == 'find':
+        find(a.query, a.n, a.geo)
     else:
-        sys.exit(__doc__)
+        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card)
+
+
+if __name__ == '__main__':
+    main()

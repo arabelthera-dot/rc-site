@@ -151,7 +151,7 @@ def po_nomeru(kadr: dict) -> list:
     zaprosy = []
     if kadr.get('inv'):
         zaprosy.append(str(kadr['inv']))
-    nazv = kadr.get('syuzhet') or kadr.get('podpis') or ''
+    nazv = kadr.get('nazvanie') or kadr.get('syuzhet') or kadr.get('podpis') or ''
     q = ' '.join(x for x in [nazv, kadr.get('avtor') or '', str(kadr.get('god') or '')] if x).strip()
     if q:
         zaprosy.append(q)

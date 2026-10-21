@@ -88,7 +88,14 @@ def _nash_derzhatel(d):
 
 
 def _familiya(avtor):
-    return re.split(r"[\s,]+", (avtor or "").strip())[0] if avtor else ""
+    """«Орловский, Александр» → Орловский; «И. Теребенев», «Исаак Крукшенк» → фамилия последним словом."""
+    a = (avtor or "").strip()
+    if not a:
+        return ""
+    if "," in a:
+        return a.split(",")[0].strip()
+    slova = [w for w in re.split(r"\s+", a) if len(w) > 2 and not w.endswith(".")]
+    return slova[-1] if slova else re.split(r"\s+", a)[-1]
 
 
 def po_nomeru(kadr: dict) -> list:
@@ -98,7 +105,7 @@ def po_nomeru(kadr: dict) -> list:
     zaprosy = []
     if inv:
         zaprosy.append(("inv", inv))
-    nazv = (kadr.get("syuzhet") or kadr.get("podpis") or "").strip()
+    nazv = (kadr.get("nazvanie") or kadr.get("syuzhet") or kadr.get("podpis") or "").strip(" «»")
     if nazv:
         zaprosy.append(("nazv", f"{_familiya(kadr.get('avtor'))} {nazv}".strip()))
     vyhod, byli = [], set()
