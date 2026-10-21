@@ -6,14 +6,14 @@
   "hook": "Сосны среди спелой ржи и дорога, уходящая прямо в небо: Россия, какой она снится",
   "mechanic": "Звуковой слой эпохи",
   "source": "Картина в Третьяковской галерее, 1878",
-  "images": [
-    {
-      "src": "muzei/iskusstvo/img/10-17-ivan-shishkin-roj-google-art-project.jpg",
-      "caption": "Иван Шишкин. «Рожь»",
-      "credit": "Иван Шишкин, 1878. Цифровой файл: Wikimedia Commons, «Ivan Shishkin - Рожь - Google Art Project.jpg» (Public domain)."
-    }
-  ],
   "slovar": [
     "lyudi:ivan-shishkin"
+  ],
+  "images": [
+    {
+      "src": "muzei/iskusstvo/img/10-17-tretyakov-5dfcb3f78275f03f68d3258db041efd5.jpg",
+      "caption": "Иван Шишкин. «Рожь»",
+      "credit": "Иван Шишкин, 1878. Источник: Третьяковская галерея (my.tretyakov.ru) [tretyakov], https://my.tretyakov.ru/app/masterpiece/8401. Права: некоммерческое использование, подпись «Из собрания Третьяковской галереи»."
+    }
   ]
 }

@@ -6,14 +6,14 @@
   "hook": "Ни берега, ни корабля, ни человека — только чёрное море, и оно страшнее любого шторма",
   "mechanic": "Ограниченный зум 🧪",
   "source": "Картина в Третьяковской галерее, 1881",
-  "images": [
-    {
-      "src": "muzei/iskusstvo/img/10-21-ivan-konstantinovic-ayvazovskiy-cernoe-more-na-c.jpg",
-      "caption": "Иван Айвазовский. «Чёрное море»",
-      "credit": "Иван Айвазовский, 1881. Цифровой файл: Wikimedia Commons, «Иван Константинович Айвазовский - Черное море (на Черном море начинает разыгрываться буря) - Google Art Project.jpg» (Public domain)."
-    }
-  ],
   "slovar": [
     "lyudi:ivan-ayvazovskiy"
+  ],
+  "images": [
+    {
+      "src": "muzei/iskusstvo/img/10-21-tretyakov-0d9b35809f42833ad511b1d950661b76.jpg",
+      "caption": "Иван Айвазовский. «Чёрное море»",
+      "credit": "Иван Айвазовский, 1881. Источник: Третьяковская галерея (my.tretyakov.ru) [tretyakov], https://my.tretyakov.ru/app/masterpiece/20683. Права: некоммерческое использование, подпись «Из собрания Третьяковской галереи»."
+    }
   ]
 }
