@@ -6,6 +6,24 @@ import { getCollection } from 'astro:content';
 import { isDated, beyondYear } from './kalendar';
 import { stroka, poUmolchaniyu } from './yazyki.mjs';
 
+// Б13 (опись Р84, взгляд 01): подпись картинки на главной — для человека: «кто, год», ниже мелко источник и лицензия
+// по-русски, без латинского имени файла. Полная строка (с именем файла) — на странице дня и в «Авторах изображений».
+const LIC_RU: [RegExp, string][] = [
+  [/public domain|PD-|обществен\S* достоян/i, 'общественное достояние'],
+  [/CC[ -]?BY[ -]?SA[ -]?([\d.]+)/i, 'CC BY-SA $1'], [/CC[ -]?BY[ -]?([\d.]+)/i, 'CC BY $1'], [/CC[ -]?0/i, 'CC0'],
+];
+export function podpisDlyaCheloveka(credit?: string): string | undefined {
+  if (!credit) return credit;
+  const i = credit.search(/Цифровой файл\s*:/);
+  if (i < 0) return credit;
+  const kto = credit.slice(0, i).trim().replace(/[.;,]\s*$/, '');
+  const fayl = credit.slice(i);
+  const otkuda = /commons|викисклад/i.test(fayl) ? 'Викисклад' : '';
+  const lic = LIC_RU.map(([re, ru]) => { const m = fayl.match(re); return m ? ru.replace('$1', m[1] ?? '') : ''; }).find(Boolean) ?? '';
+  const hvost = [otkuda, lic].filter(Boolean).join(', ');
+  return [kto, hvost && `Источник: ${hvost}`].filter(Boolean).join('. ');
+}
+
 const LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const p2 = (n: number) => String(n).padStart(2, '0');
 
@@ -75,7 +93,7 @@ async function byKey() {
     // Адрес дня собирается у каждой карточки (den/[key].astro); полная страница — src/data/full-pages.
     const card: Card = {
       museum: slug, museumTitle: m.data.title_ru, title: d.data.title, hook: d.data.hook,
-      img: first && url(first.src), alt: first?.caption, credit: first?.credit,
+      img: first && url(first.src), alt: first?.caption, credit: podpisDlyaCheloveka(first?.credit),
       href: `${base}muzei/${slug}/den/${d.data.key}/`,
       full: fs.existsSync(`src/data/full-pages/${slug}/${d.data.key}.html`),
       year: d.data.year === undefined ? undefined : String(d.data.year),
