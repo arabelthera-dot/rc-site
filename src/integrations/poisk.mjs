@@ -36,6 +36,8 @@ export default function poisk() {
             // Заглушка дня — noindex; в превью-сборке (PUBLIC_NOINDEX=1) noindex у всех, там отличаем по тексту.
             if ((ownNoindex && /<meta name="robots" content="noindex"/.test(html)) || /День готовится/.test(html)) { skip++; continue; }
             html = /<main\b/.test(html) ? html.replace(/<main\b/, '<main data-pagefind-body') : html.replace(/<body\b/, '<body data-pagefind-body');
+            // Б9 (Р84): заголовок дня (имя героя, событие) весит больше слов текста — «Гагарин», «Попов» первыми.
+            html = html.replace(/<h1\b(?![^>]*data-pagefind-weight)/, '<h1 data-pagefind-weight="10"');
             const r = await index.addHTMLFile({ url: '/' + rel.replace(/index\.html$/, ''), content: html });
             if (r.errors?.length) logger.warn(`${rel}: ${r.errors.join('; ')}`); else n++;
           }

@@ -12,13 +12,38 @@ const on = poiskOn();
     <h1>Поиск по музеям</h1>
     {on ? <>
       <p>Слово, имя или изобретение — например, «Шухов» или «Сусанин».</p>
-      <div id="poisk"></div>
+      <div id="poisk-data" aria-live="polite"></div>
+      <div id="poisk" data-base={base}></div>
       <script is:inline src={`${base}pagefind/pagefind-ui.js`}></script>
       <script is:inline>
         // ?q= — запрос с формы страницы 404 (Б8, Р84)
+        // Б9 (Р84): точное слово выше обрывка основы («Попов» ≠ «поп»), длина страницы почти не штрафует.
         var ui = new PagefindUI({ element: '#poisk', showSubResults: true, showImages: false,
+          ranking: { termSimilarity: 6.0, termSaturation: 1.6, pageLength: 0.3 },
           translations: { placeholder: 'Что ищем?', zero_results: 'По запросу «[SEARCH_TERM]» ничего не нашлось' } });
         try { var q = new URLSearchParams(location.search).get('q'); if (q) ui.triggerSearch(q); } catch (e) {}
+        // Б9 (Р84): запрос «число + месяц» («12 апреля») — сразу дни всех музеев на эту дату (те же segodnya/ММ-ДД.json, что у главной).
+        (function () {
+          var MES = ['январ','феврал','март','апрел','ма','июн','июл','август','сентябр','октябр','ноябр','декабр'];
+          var box = document.getElementById('poisk-data'), seq = 0, last = '';
+          var check = function (v) {
+            v = (v || '').trim().toLowerCase(); if (v === last) return; last = v;
+            var m = /^(\d{1,2})\s+([а-яё]+)/.exec(v), my = ++seq; box.textContent = '';
+            if (!m) return;
+            var mi = -1; MES.forEach(function (p, i) { if (m[2].indexOf(p) === 0 && (p !== 'ма' || /^ма[йяе]/.test(m[2]))) mi = i; });
+            var d = +m[1]; if (mi < 0 || d < 1 || d > 31) return;
+            var key = String(mi + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+            fetch(document.getElementById('poisk').getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
+              if (my !== seq || !t || !t.cards || !t.cards.length || t.shown !== key) return;
+              var h = document.createElement('h2'); h.textContent = 'В этот день в музеях — ' + d + ' ' + m[2]; box.appendChild(h);
+              var ul = document.createElement('ul');
+              t.cards.forEach(function (c) { var li = document.createElement('li'), a = document.createElement('a'); a.href = c.href; a.textContent = c.museumTitle + ': ' + c.title; li.appendChild(a); ul.appendChild(li); });
+              box.appendChild(ul);
+            }).catch(function () {});
+          };
+          document.addEventListener('input', function (e) { if (e.target && e.target.closest && e.target.closest('#poisk')) check(e.target.value); });
+          try { var q0 = new URLSearchParams(location.search).get('q'); if (q0) check(q0); } catch (e) {}
+        })();
       </script>
     </> : <p>Поиск готовится.</p>}
   </section>
