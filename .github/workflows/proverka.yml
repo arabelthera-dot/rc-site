@@ -76,6 +76,13 @@ jobs:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
           PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
         run: node scripts/podderzhka.test.mjs && node scripts/podderzhka.mjs dist
+      # Служебный текст на странице (опись Р84, машинная проверка №1, 21.10.2026): рекламные «слоты»,
+      # «появится после приёмки», «реквизиты появятся», TODO/lorem — в видимом тексте и строках календаря.
+      # Сначала проба на заведомых строках, потом весь dist. Строгая сразу (Р84). Выключатель — SLUZHEBNYY_STROGO=0.
+      - name: sluzhebnyy-tekst — служебных пометок на страницах нет
+        continue-on-error: ${{ vars.SLUZHEBNYY_STROGO == '0' }}
+        timeout-minutes: 2
+        run: node scripts/sluzhebnyy-tekst.mjs --proba && node scripts/sluzhebnyy-tekst.mjs --dist dist
       # Названия музеев только полностью (правило Сергея 09.10, AI_Projects#804, 20.10.2026): в тексте, title, meta,
       # og, JSON-LD, alt, подписях скриптов сборки — ни одного «Музей …», которое короче или старее title_ru
       # («Музей «Русские не сдаются»», «Музей русских побед»). Сначала проба на заведомых строках, потом весь dist.
