@@ -3,6 +3,7 @@
 // (src/lib/vozrast.mjs); в отбор идут только готовые дни (хук или суть) музеев со знаком не старше 6+.
 // Дни — ближайшие к дате сборки вперёд по году, по шесть сказок и по три дня остальных музеев. Вид — public/assets/rc-detyam.css.
 import Base from '../layouts/Base.astro';
+import fs from 'node:fs';
 import { getCollection } from 'astro:content';
 import { isReady } from '../lib/kalendar';
 import { znak, znakMuzeya } from '../lib/vozrast.mjs';
@@ -13,8 +14,10 @@ const days = (await getCollection('days')).map((d) => d.data);
 const now = new Date(Date.now() + 3 * 3600e3); // МСК
 const today = `${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`;
 const img = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
+// А5 (Р84, 21.10): «Открыть день» — только на заполненный день (есть полная страница src/data/full-pages), не на пустой.
+const zapolnen = (slug: string, key: string) => fs.existsSync(`src/data/full-pages/${slug}/${key}.html`);
 const blizhajshie = (slug: string, n: number) => {
-  const own = days.filter((d) => d.museum === slug && isReady(d) && parseInt(znak(slug, d.key), 10) <= 6)
+  const own = days.filter((d) => d.museum === slug && isReady(d) && zapolnen(slug, d.key) && parseInt(znak(slug, d.key), 10) <= 6)
     .sort((a, b) => a.key.localeCompare(b.key));
   return [...own.filter((d) => d.key >= today), ...own.filter((d) => d.key < today)].slice(0, n);
 };
