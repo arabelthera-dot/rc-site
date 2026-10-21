@@ -91,6 +91,10 @@ jobs:
         run: node scripts/vneshnie-hosty.mjs --dist dist
       - name: Личной почты в сборке нет (разбор безопасности 20.10)
         run: node scripts/pochta-v-sborke.mjs dist
+      # Проверка №2 (Р84, 21.10.2026): на каждой странице дня — общий подвал (src/lib/podval-dnya.mjs) с кнопкой
+      # «Сообщите об ошибке». Нет — красная, список страниц в отчёте. Откат — удалить этот шаг.
+      - name: podval-dnya — общий подвал с кнопкой «Сообщите об ошибке» на каждой странице дня
+        run: node scripts/podval-dnya.mjs dist
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
