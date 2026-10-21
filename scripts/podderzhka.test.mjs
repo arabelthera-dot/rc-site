@@ -4,7 +4,8 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import { vyrezatPodderzhku, podderzhkaVkl } from '../src/lib/podderzhka.mjs';
 
-assert.equal(podderzhkaVkl({}), false);
+assert.equal(podderzhkaVkl({}), true);
+assert.equal(podderzhkaVkl({ PUBLIC_PODDERZHKA: '0' }), false);
 assert.equal(podderzhkaVkl({ PUBLIC_PODDERZHKA: '1' }), true);
 
 const mini = '<p>до</p><div class="support x"><div class="sup-l">Поддержать проект</div><div><a href="#">Поддержать выпуск →</a></div></div><p>после</p>'

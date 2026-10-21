@@ -1,11 +1,11 @@
-// Замок Р31 (20.10.2026): при выключенном PUBLIC_PODDERZHKA в сборке нет «Поддержать проект» и движка
-// museum-support.js — иначе ошибка. При PUBLIC_PODDERZHKA=1 проверка пропускается.
+// Замок выключателя (Р31 → Р88, 21.10.2026): только при PUBLIC_PODDERZHKA=0 в сборке не должно быть
+// «Поддержать проект» и движка museum-support.js. По умолчанию блок включён — проверка пропускается.
 // node scripts/podderzhka.mjs [dist]
 import fs from 'node:fs';
 import path from 'node:path';
 import { podderzhkaVkl } from '../src/lib/podderzhka.mjs';
 
-if (podderzhkaVkl()) { console.log('podderzhka: включена (PUBLIC_PODDERZHKA=1) — пропуск'); process.exit(0); }
+if (podderzhkaVkl()) { console.log('podderzhka: включена (по умолчанию, Р88) — пропуск'); process.exit(0); }
 const dist = process.argv[2] || 'dist';
 const bad = [];
 let files = 0;
