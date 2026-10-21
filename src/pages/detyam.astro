@@ -1,5 +1,5 @@
 ---
-// Детский вход (Р41, Е3, Сергей 20.10.2026): музеи и дни 0+ и 6+ — крупно и просто. Знаки — src/data/vozrast.json
+// Детский вход (Р41, Е3, Сергей 20.10.2026): музеи и дни 6+ — крупно и просто. Знаки — src/data/vozrast.json
 // (src/lib/vozrast.mjs); в отбор идут только готовые дни (хук или суть) музеев со знаком не старше 6+.
 // Дни — ближайшие к дате сборки вперёд по году, по шесть сказок и по три дня остальных музеев. Вид — public/assets/rc-detyam.css.
 import Base from '../layouts/Base.astro';
@@ -18,18 +18,20 @@ const blizhajshie = (slug: string, n: number) => {
     .sort((a, b) => a.key.localeCompare(b.key));
   return [...own.filter((d) => d.key >= today), ...own.filter((d) => d.key < today)].slice(0, n);
 };
-const gruppa = (z: string, n: number) => museums.filter((m) => znakMuzeya(m.slug) === z)
+// Б19 (опись Р84, 21.10.2026): у сказок 6+, как у сайта; группы — сказки и прочие музеи 6+.
+const SKAZKI = new Set(['skazki', 'skazki-narodov']);
+const gruppa = (z: string, n: number, est: (slug: string) => boolean) => museums.filter((m) => znakMuzeya(m.slug) === z && est(m.slug))
   .map((m) => ({ m, dni: blizhajshie(m.slug, n) })).filter((x) => x.dni.length);
-const skazki = gruppa('0+', 6);
-const shkola = gruppa('6+', 3);
+const skazki = gruppa('6+', 6, (s) => SKAZKI.has(s));
+const shkola = gruppa('6+', 3, (s) => !SKAZKI.has(s));
 ---
-<Base title="Детям — Русская цивилизация" description="Сказки и дни музеев «Русской цивилизации» для детей: 0+ — для самых маленьких, 6+ — для школьников.">
+<Base title="Детям — Русская цивилизация" description="Сказки и дни музеев «Русской цивилизации» для детей с 6 лет.">
   <Fragment slot="head"><link rel="stylesheet" href={`${base}assets/rc-detyam.css`} /></Fragment>
   <header slot="header" class="dt-head">
     <h1>Детям</h1>
-    <p class="dt-lead">Сказки и истории, которые можно смотреть детям. Знак у музея — с какого возраста: <b>0+</b> — для самых маленьких, <b>6+</b> — для школьников.</p>
+    <p class="dt-lead">Сказки и истории, которые можно смотреть детям. Всё здесь — со знаком <b>6+</b>: для детей с 6 лет; младшим — вместе со взрослым.</p>
   </header>
-  {[{ id: 'skazki', h: 'Сказки', z: '0+', list: skazki }, { id: 'shkola', h: 'Для школьников', z: '6+', list: shkola }].map((g) => g.list.length > 0 && (
+  {[{ id: 'skazki', h: 'Сказки', z: '6+', list: skazki }, { id: 'shkola', h: 'Для школьников', z: '6+', list: shkola }].map((g) => g.list.length > 0 && (
     <section class="dt-gruppa" aria-labelledby={`dt-${g.id}`}>
       <h2 id={`dt-${g.id}`}>{g.h} <span class="rc-vozrast">{g.z}</span></h2>
       {g.list.map(({ m, dni }) => (
