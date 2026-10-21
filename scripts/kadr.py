@@ -1,29 +1,28 @@
 #!/usr/bin/env python3
-"""Кадр дня: сначала российские фонды, Викисклад (Commons) — последним запасным (#2193).
+"""Кадр дня: только российские фонды. Викисклад (Commons) выключен (Сергей 21.10.2026, Р90).
 
 Порядок find: ГИМ (shm_catalog, не поддержан: robots.txt запрещает /api/, не обходим) → Госкаталог
 (goskatalog) → Русский музей (rusmuseum) → Третьяковка (tretyakov) → Артефакт (ar_culture) →
-PastVu (только с --geo lat,lon) → Commons. Русский музей, Третьяковка и Артефакт ищутся прямыми
+PastVu (только с --geo lat,lon). Русский музей, Третьяковка и Артефакт ищутся прямыми
 открытыми API сайтов (рецепты — knowledge/kadr-recepty-fondov.md, 19.10.2026). К фондам ходит не kadr.py, а реестровый access.py
 (навык museum-source-access): путь — переменная RC_ACCESS, по умолчанию
 ~/projects/russian-civilization/docs/registries/access.py, рядом с ним sources.json. Нет файла,
 фонд недоступен, 403, таймаут — строка в stderr и следующий фонд, не падение. Для фонда без
 способа поиска в access.py/sources.json печатается «поиск не поддержан» и план поиска (--discover).
 
-Картинки с Викисклада можно (Сергей 12.08.2026), текст оттуда — нельзя: подпись к кадру пишет человек
-по русскому источнику дня. Инструмент только находит файл, тянет автора и лицензию и кладёт кадр в
-public/muzei/<музей>/img/ — так же, как кадры, перенесённые со старого превью.
+Р90 (Сергей 21.10.2026): «викисклад вообще вычеркни… Только по личному моему разрешению и только
+в том случае, если… вы что-то не нашли в наших базах данных». Поэтому find и put Викисклад не трогают;
+ход туда открывает только --razreshenie "Р№ или дата и слова Сергея" — без него отказ. Подпись к кадру
+пишет человек по русскому источнику дня; инструмент кладёт кадр в public/muzei/<музей>/img/.
 
   kadr.py find "Gherman Titov Vostok 2" [-n 10] [--geo 55.75,37.62]
                                                       кандидаты по фондам: файл, размер, лицензия, автор
-  kadr.py put izobreteniya 10-17 "File:Titov.jpg" "Герман Титов перед полётом, 1961"
-                                                      скачать, ужать до 1600 px, дописать images[] дня
-  kadr.py put … "подпись" "Фото: ТАСС, 1961"        шестым — строка автора по-русски вместо данных Викисклада
   kadr.py put arhitektura 03-05 "pastvu:760729:i/e/n/ien36rd3zgbt83806t.jpg" "подпись" "Автор, 1961"
   kadr.py put … "rusmuseum:https://…/img.jpg" "подпись" "Автор" --card https://…/card
                                                       кадр из российского фонда: автор (шестой) обязателен,
                                                       credit — фонд, название и ссылка на карточку из sources.json
 Кадр после put — открыть и посмотреть: в поиске попадаются письма, автографы, плакаты с надписями.
+  kadr.py find|put … --razreshenie "Р95: Сергей разрешил кадр …"  — Викисклад, только по слову Сергея
 Лицензии — только общественное достояние, CC0, CC BY, CC BY-SA; прочее put отклоняет.
 """
 import html, io, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
@@ -42,7 +41,8 @@ PRAVA = {'goskatalog': 'Госкаталог прав не даёт — авто
          'rusmuseum': '© Русский музей, открытой лицензии нет',
          'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
          'ar_culture': 'у музея-держателя — по карточке Артефакта'}
-FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'commons']  # порядок поиска
+FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu']  # порядок поиска
+RAZRESHENIE = None  # Р90: Викисклад — только с --razreshenie (слово Сергея), иначе не трогаем
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
 
 
@@ -263,7 +263,7 @@ def find(query, n=10, geo=None):
         names = {}
         warn(f'sources.json не прочитан ({e}) — российские фонды будут пропущены')
     got = []
-    for fond in FONDY:
+    for fond in FONDY + (['commons'] if RAZRESHENIE else []):
         name = names.get(fond, {}).get('name', fond)
         print(f'== {fond} — {name}', flush=True)
         try:
@@ -286,8 +286,11 @@ def put(museum, key, title, caption, avtor=None, card=None):
     if not day.is_file():
         sys.exit(f'нет дня {day}')
     fond = title.split(':', 1)[0]
-    if fond in FONDY and fond != 'commons':
+    if fond in FONDY:
         return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card)
+    if not RAZRESHENIE:
+        sys.exit('Викисклад выключен (Р90): сначала российские фонды и museum-source-access; '
+                 'кадр оттуда — только с --razreshenie "слово Сергея"')
     if not title.startswith('File:'):
         title = 'File:' + title
     c = info([title])
@@ -355,6 +358,9 @@ if __name__ == '__main__':
     a = sys.argv[1:]
     opt = lambda k: a[a.index(k) + 1] if k in a and a.index(k) + 1 < len(a) else None
     card = opt('--card')
+    RAZRESHENIE = opt('--razreshenie')
+    if RAZRESHENIE:
+        i = a.index('--razreshenie'); del a[i:i + 2]
     if card:
         i = a.index('--card'); del a[i:i + 2]
     if a[:1] == ['find'] and len(a) >= 2:
