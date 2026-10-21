@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 // Рабочие страницы (доска-документы, опись, контроль, составы на утверждение) живут вне витрины —
 // на rc-rabochee (переключение 18.10, мировой стандарт: внутреннее не на публичном сайте, noindex).
 // Старые ссылки на них приходят сюда и уходят туда по тому же пути. Список — служебные пути старого main.
@@ -10,6 +11,8 @@ const PREFIXES = ['doska/docs/', 'control/', 'review/', 'lab/', 'pult/', 'glazam
   'arhitektura-v2', 'competitors.html', 'control.html', 'daily-report.html', 'film.html', 'game-3d-jump.html',
   'glavnaya-proto-0810.html', 'handkerchief.html', 'map.html'];
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+// Б8 (Р84, 21.10): 404 — не тупик: поиск и все музеи (названия дословно title_ru).
+const museums = (await getCollection('museums')).map((m) => m.data).sort((a, b) => a.number - b.number);
 ---
 <Base title="Страница не найдена · Русская цивилизация" description="Такой страницы нет." noindex bezAdresa crumbs={[{ label: 'Страница не найдена' }]}>
   <script is:inline slot="head" define:vars={{ RABOCHEE, PREFIXES, base }}>
@@ -18,5 +21,14 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       location.replace(RABOCHEE + rest + location.search + location.hash);
   </script>
   <header slot="header"><h1>Такой страницы нет</h1><p>Возможно, адрес устарел или в нём опечатка.</p></header>
+  <form action={`${base}poisk/`} method="get" role="search">
+    <label for="nf-q">Найти на сайте</label>
+    <input id="nf-q" name="q" type="search" placeholder="Имя, изобретение, событие" />
+    <button type="submit">Найти</button>
+  </form>
+  <h2>Музеи «Русской цивилизации»</h2>
+  <ul>
+    {museums.map((m) => <li><a href={`${base}muzei/${m.slug}/`}>{m.title_ru}</a></li>)}
+  </ul>
   <p><a href={base}>На главную «Русской цивилизации» →</a></p>
 </Base>

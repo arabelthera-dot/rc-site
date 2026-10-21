@@ -15,8 +15,10 @@ const on = poiskOn();
       <div id="poisk"></div>
       <script is:inline src={`${base}pagefind/pagefind-ui.js`}></script>
       <script is:inline>
-        new PagefindUI({ element: '#poisk', showSubResults: true, showImages: false,
+        // ?q= — запрос с формы страницы 404 (Б8, Р84)
+        var ui = new PagefindUI({ element: '#poisk', showSubResults: true, showImages: false,
           translations: { placeholder: 'Что ищем?', zero_results: 'По запросу «[SEARCH_TERM]» ничего не нашлось' } });
+        try { var q = new URLSearchParams(location.search).get('q'); if (q) ui.triggerSearch(q); } catch (e) {}
       </script>
     </> : <p>Поиск готовится.</p>}
   </section>
