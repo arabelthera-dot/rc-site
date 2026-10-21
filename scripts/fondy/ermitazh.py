@@ -8,26 +8,23 @@ searchQuery, lng=ru, page, limit -> data.searchResults.workofart.elements[]
 (id, name, image, params.avtor/date). Ищет и по инв. номеру (ЭРР-6046, ГЭ-1234),
 и по автору+названию. Инв. номер сверяется по карточке
 (div[data-row=record_id]). Скан — api/files/fshow с w=1600.
-Сайт открывается только через прокси socks5h://rf-proxy:1080 и с verify=False.
+Сеть — fondy/_set.py: напрямую первым, затем прокси. Сайт не отдаёт промежуточный сертификат
+GlobalSign GCC R46 AlphaSSL CA 2025 — он лежит в fondy/certs/, проверка TLS полная (verify=False нет).
 """
 import re
 import sys
 import datetime
 
 import requests
-import urllib3
+from pathlib import Path
 
-urllib3.disable_warnings()
+sys.path.insert(0, str(Path(__file__).parent))
+import _set  # noqa: E402
 
 FOND = "Государственный Эрмитаж"
 BAZA = "https://www.hermitagemuseum.org"
-PROXY = "socks5h://rf-proxy:1080"
-TAIMAUT = 40
 
-_s = requests.Session()
-_s.proxies = {"http": PROXY, "https": PROXY}
-_s.verify = False
-_s.headers["User-Agent"] = "Mozilla/5.0 (rc-site kadr.py zamena)"
+_s = _set.sessiya()
 
 _INV = re.compile(r"\b(ЭРР|ГЭ|ЭРЖ|ЭРГ|ЭРТ|ЭРМб|ЭРФ|ЭРО|ЭРЗ|ЭРС|ЭРД|ЭРН|ЭРК|ЭРА|ЭРЭ)[\s\-–]*(\d+)", re.I)
 
@@ -38,10 +35,9 @@ def _norm_inv(s):
 
 
 def _poisk(zapros, limit=10):
-    r = _s.post(f"{BAZA}/api/search/search/default",
+    r = _set.post(_s, f"{BAZA}/api/search/search/default",
                 files={k: (None, v) for k, v in
-                       {"searchQuery": zapros, "lng": "ru", "page": "1", "limit": str(limit)}.items()},
-                timeout=TAIMAUT)
+                       {"searchQuery": zapros, "lng": "ru", "page": "1", "limit": str(limit)}.items()})
     r.raise_for_status()
     d = r.json()
     if d.get("error") != "ok":
@@ -51,7 +47,7 @@ def _poisk(zapros, limit=10):
 
 def _kartochka(eid):
     """Инв. номер и полный скан со страницы карточки."""
-    t = _s.get(f"{BAZA}/digital-collection/{eid}", timeout=TAIMAUT).text
+    t = _set.get(_s, f"{BAZA}/digital-collection/{eid}").text
     m = re.search(r'data-row="record_id".*?class="value">\s*([^<]+?)\s*<', t, re.S)
     inv = m.group(1).strip() if m else ""
     im = re.search(r'https://hermitagemuseum\.org/api/files/fshow\?needlePath=[^"\'\s<]+', t)

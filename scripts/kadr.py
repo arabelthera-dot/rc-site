@@ -599,7 +599,7 @@ def adaptery():
     import importlib.util
     out = []
     for f in sorted((ROOT / 'scripts/fondy').glob('*.py')):
-        if f.name == '__init__.py':
+        if f.name.startswith('_'):  # __init__, _set — не адаптеры
             continue
         try:
             spec = importlib.util.spec_from_file_location(f'fondy.{f.stem}', f)

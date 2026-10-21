@@ -16,28 +16,21 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-PROXY = 'socks5h://rf-proxy:1080'
-PX = {'http': PROXY, 'https': PROXY}
-UA = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) rc-site kadr.py'}
-TIMEOUT = 25
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+import _set  # noqa: E402  напрямую первым, затем прокси; закрытый хост — пропуск на прогон
+
 ODO = 'общественное достояние: автор умер более 70 лет назад / издание до 1925 г. — проверить по автору'
 
 
 def _s():
-    s = requests.Session()
-    s.headers.update(UA)
-    return s
+    return _set.sessiya()
 
 
 def _get(s, url, **kw):
-    """Напрямую, при отказе — через прокси РФ."""
-    try:
-        r = s.get(url, timeout=TIMEOUT, **kw)
-        if r.status_code == 200:
-            return r
-    except requests.RequestException:
-        pass
-    return s.get(url, timeout=TIMEOUT, proxies=PX, **kw)
+    return _set.get(s, url, **kw)
 
 
 def _god(text):
@@ -67,10 +60,9 @@ def rgb(zapros, n=8):
     if not m:
         return []
     tok = m.group(1)
-    j = s.post('https://search.rsl.ru/site/ajax-search?language=ru',
+    j = _set.post(s, 'https://search.rsl.ru/site/ajax-search?language=ru',
                data={'SearchFilterForm[search]': zapros, '_csrf': tok},
-               headers={'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-Token': tok},
-               timeout=TIMEOUT).json()
+               headers={'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-Token': tok}).json()
     soup = BeautifulSoup(j.get('content') or '', 'html.parser')
     out = []
     for d in soup.select('div.search-container')[:n]:
@@ -125,7 +117,7 @@ def neb(zapros, n=8):
 def prlib(zapros, n=8):
     s = _s()
     try:
-        r = s.get('https://www.prlib.ru/search', params={'query': zapros}, proxies=PX, timeout=TIMEOUT)
+        r = _get(s, 'https://www.prlib.ru/search', params={'query': zapros})
     except requests.RequestException:
         return []
     soup = BeautifulSoup(r.text, 'html.parser')
