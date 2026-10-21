@@ -95,8 +95,8 @@ ${celiJs}  }
   function plashka(){
     if(d.querySelector(".rc-cookie"))return;
     var b=d.createElement("div");b.className="rc-cookie";b.setAttribute("role","region");b.setAttribute("aria-label","Согласие на cookie");
-    b.innerHTML='<p>Мы используем cookie и Яндекс Метрику, чтобы понимать, какие залы музея интересны посетителям. '
-      +'Нажимая «Принять», вы даёте согласие на обработку этих данных. Подробнее — в <a href="${POLITIKA_URL}">Политике конфиденциальности</a>.</p>'
+    b.innerHTML='<p>Мы используем cookie и Яндекс Метрику. «Принять» — согласие на обработку этих данных '
+      +'(<a href="${POLITIKA_URL}">политика конфиденциальности</a>).</p>'
       +'<div class="rc-cookie-b"><button type="button" class="da">Принять</button><button type="button" class="net">Отказаться</button></div>';
     // пока плашка видна, под ней резервируется место (html.rc-cookie-on, --rc-cookie-h): низ страницы и подвал не закрыты
     var h=d.documentElement;

@@ -81,6 +81,8 @@ async function byKey() {
       year: d.data.year === undefined ? undefined : String(d.data.year),
       sv: klyuchiDvoynika(d.data.slovar, d.data.title, d.data.year),
     };
+    // А5 (Р84, 21.10): на главной только заполненные дни — пустой день (заголовок и фраза) в «Открыть день» не ведём.
+    if (!card.full) continue;
     (cache.get(d.data.key) ?? cache.set(d.data.key, []).get(d.data.key)!).push(card);
   }
   krug = museums.filter((m) => days.some((d) => d.data.museum === m.id)).sort((a, b) => a.data.number - b.data.number).map((m) => m.id);

@@ -1,21 +1,22 @@
 /* Плашка согласия на cookie (Д1, Р51). Разметку ставит код Метрики (src/lib/metrika.mjs), он же подключает этот файл —
-   только когда плашка нужна. Режим слабовидящих: белый фон — rc-slabovid.css (#226). */
-.rc-cookie{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;box-sizing:border-box;max-width:720px;margin:0 auto;
-  padding:14px 16px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;background:var(--panel,#12151c);
-  color:var(--txt,#e8e2d4);font:15px/1.45 'Inter',system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.45)}
-.rc-cookie p{margin:0 0 10px}
+   только когда плашка нужна. Режим слабовидящих: белый фон — rc-slabovid.css (#226).
+   Б12 (Р84, 21.10): узкая полоса у нижнего края во всю ширину — текст и кнопки в одну строку, не окно на пол-экрана. */
+.rc-cookie{position:fixed;left:0;right:0;bottom:0;z-index:9999;box-sizing:border-box;display:flex;align-items:center;
+  justify-content:center;gap:8px 16px;flex-wrap:wrap;padding:8px 16px;border-top:1px solid var(--line,rgba(255,255,255,.14));
+  background:var(--panel,#12151c);color:var(--txt,#e8e2d4);font:14px/1.35 'Inter',system-ui,sans-serif;box-shadow:0 -4px 16px rgba(0,0,0,.35)}
+.rc-cookie p{margin:0;flex:1 1 320px;max-width:640px}
 .rc-cookie a{color:var(--gold,#c8a24a);text-decoration:underline;text-underline-offset:.15em}
-.rc-cookie .rc-cookie-b{display:flex;gap:10px;flex-wrap:wrap}
-.rc-cookie button{min-height:44px;padding:0 20px;border-radius:22px;font:inherit;font-weight:600;cursor:pointer}
+.rc-cookie .rc-cookie-b{display:flex;gap:8px;flex:0 0 auto}
+.rc-cookie button{min-height:44px;padding:0 18px;border-radius:22px;font:inherit;font-weight:600;cursor:pointer}
 .rc-cookie .da{background:var(--gold,#c8a24a);color:#111;border:0}
 .rc-cookie .net{background:transparent;color:var(--txt,#e8e2d4);border:1px solid var(--line,rgba(255,255,255,.3))}
 .rc-cookie button:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
 /* Пока плашка видна, под ней место: последний экран страницы (подвал, ссылка на политику) не уходит под плашку. */
-html.rc-cookie-on body{padding-bottom:calc(var(--rc-cookie-h,0px) + 24px)}
-/* Телефон: плашка компактнее (была ~¼ экрана на 390px), кнопки в ряд на всю ширину. */
+html.rc-cookie-on body{padding-bottom:var(--rc-cookie-h,0px)}
+/* Телефон 390px: две строки — текст 13px и кнопки в ряд (около 100px высоты, не пол-экрана). */
 @media (max-width:480px){
-  .rc-cookie{left:8px;right:8px;bottom:8px;padding:12px 14px;font-size:14px;line-height:1.4}
-  .rc-cookie p{margin-bottom:8px}
-  .rc-cookie .rc-cookie-b{flex-wrap:nowrap;gap:8px}
-  .rc-cookie button{flex:1 1 0;padding:0 12px}
+  .rc-cookie{padding:6px 10px;gap:6px;font-size:13px;line-height:1.3}
+  .rc-cookie p{flex-basis:100%}
+  .rc-cookie .rc-cookie-b{flex:1 1 100%}
+  .rc-cookie button{flex:1 1 0;padding:0 10px}
 }
