@@ -28,3 +28,4 @@ if (full) {
   show('Карточки без лицензии', cYellow, (f) => `${f.museum}/${f.key} ${f.src} — «${f.credit.slice(0, 80)}»`);
 }
 if (cRed.length) { console.error(`\nОШИБКА: ${cRed.length} кадров карточек без подписи.`); process.exit(1); }
+if (cYellow.length) { console.error(`\nОШИБКА (Р84, Б16): ${cYellow.length} кадров карточек без лицензии в подписи.`); process.exit(1); }

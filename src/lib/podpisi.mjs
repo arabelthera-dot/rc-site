@@ -9,6 +9,25 @@ import path from 'node:path';
 export const LIC = /\bCC[ -]?(BY|0)|Free Art License|обществен\S* достоян|public domain|PD-|свободн\S* лиценз|©|все права/i;
 export const SRC = /фото\s*:|автор|викисклад|commons|музе|архив|библиотек|собрани|коллекци|ГИМ|ГТГ|РГБ|НЭБ|ГМИИ|Эрмитаж|источник|из книги|журнал|газет|генерац|Genosai|реконструкц|https?:\/\/|рисун\S+ [А-ЯЁ]|гравюр|издани/i;
 
+/** Опись Р84, Б16: название лицензии из текста подписи для колонки «Лицензия» сводной страницы; '' — не найдена. */
+export function licName(text = '') {
+  const t = String(text);
+  const cc = t.match(/\bCC[ -]?(BY(?:[ -](?:SA|ND|NC))*(?:[ -](?:SA|ND))?|0)(?:[ -]?(\d\.\d))?/i);
+  if (cc) return `CC ${cc[1].toUpperCase().replace(/ /g, '-')}${cc[2] ? ` ${cc[2]}` : ''}`;
+  if (/Free Art License/i.test(t)) return 'Free Art License';
+  if (/обществен\S* достоян|public domain|PD-/i.test(t)) return 'общественное достояние';
+  if (/свободн\S* лиценз/i.test(t)) return 'свободная лицензия';
+  if (/с разрешени\S+/i.test(t)) return 'с разрешения правообладателя';
+  if (/©|все права/i.test(t)) return '© правообладатель';
+  return '';
+}
+
+/** «1 кадр», «2 кадра», «5 кадров». */
+export function kadrov(n) {
+  const a = n % 10, b = n % 100;
+  return `${n} ${a === 1 && b !== 11 ? 'кадр' : a >= 2 && a <= 4 && (b < 12 || b > 14) ? 'кадра' : 'кадров'}`;
+}
+
 const DAYS = 'src/content/days';
 const FULL = 'src/data/full-pages';
 const ls = (dir) => (fs.existsSync(dir) ? fs.readdirSync(dir).sort() : []);

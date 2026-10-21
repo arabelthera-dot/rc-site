@@ -14,3 +14,5 @@
 .rc-tekst{max-width:720px;margin:0 auto;padding:0 16px}
 .rc-tekst p{font-size:17px;line-height:1.6}
 .rc-tekst h2{margin-top:1.6em}
+/* Опись Р84, Б16: «не указана» в колонке «Лицензия» на /avtory-izobrazheniy/ */
+.lic-net{color:#b3261e;font-weight:600}

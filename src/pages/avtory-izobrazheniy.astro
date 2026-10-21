@@ -4,7 +4,7 @@
 import Base from '../layouts/Base.astro';
 import Credit from '../components/den/Credit.astro';
 import { getCollection } from 'astro:content';
-import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
+import { cardFrames, fullFrames, licName, kadrov } from '../lib/podpisi.mjs';
 
 const base = import.meta.env.BASE_URL;
 const museums = (await getCollection('museums')).map((m) => m.data).sort((a, b) => a.number - b.number);
@@ -14,14 +14,16 @@ const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace
 const dayUrl = (m: string, k: string) => `${base}muzei/${m}/den/${k}/`;
 const groups = museums.map((m) => ({ m, cards: cards.filter((f) => f.museum === m.slug), pages: pages.filter((f) => f.museum === m.slug) }))
   .filter((g) => g.cards.length || g.pages.length);
-const STATE: Record<string, string> = { ok: 'указана', partial: 'неполная подпись', near: 'указана рядом с кадром', rights: 'в списке прав страницы', none: 'нет подписи' };
+// Б16 (Р84): в колонке — сама лицензия; не найдена — «не указана» (класс lic-net в rc-podval.css), чтобы видно было, что чинить.
+const STATE: Record<string, string> = { partial: 'неполная подпись', near: 'рядом с кадром', rights: 'в списке прав страницы', none: 'нет подписи' };
+const pageLic = (f: any) => licName(`${f.sign} ${f.data}`) || STATE[f.state] || '';
 const noLic = cards.filter((f) => !f.lic).length;
 ---
 <Base title="Авторы изображений · Русская цивилизация" description="Кто снял, нарисовал и сохранил кадры музеев «Русской цивилизации»: автор, источник и лицензия каждого изображения." crumbs={[{ label: 'Авторы изображений' }]} schema="page">
   <header slot="header"><h1>Авторы изображений</h1><p>Кто снял, нарисовал и сохранил каждый кадр наших музеев</p></header>
   <div class="avtory">
     <p>Здесь собраны все изображения со страниц дней: автор или источник, лицензия и ссылка на день, где кадр показан.
-      Список собирается сам при каждом обновлении сайта. Всего в карточках дней — {cards.length} кадров, на полных страницах дней — {pages.length}.
+      Список собирается сам при каждом обновлении сайта. Всего в карточках дней — {kadrov(cards.length)}, на полных страницах дней — {kadrov(pages.length)}.
       {noLic > 0 && <Fragment> У {noLic} кадров карточек источник указан, а лицензия — нет: уточняем.</Fragment>}</p>
     <p>Нашли неточность или вы автор кадра — напишите нам, исправим подпись.</p>
     <nav class="avtory-oglavlenie"><ul>{groups.map((g) => <li><a href={`#${g.m.slug}`}>{g.m.title_ru}</a></li>)}</ul></nav>
@@ -35,7 +37,7 @@ const noLic = cards.filter((f) => !f.lic).length;
               <tr>
                 <td><img src={url(f.src)} alt={f.caption} loading="lazy" decoding="async" width="96" /><span class="podpis">{f.caption}</span></td>
                 <td><Credit text={f.credit} /></td>
-                <td>{f.lic ? 'указана' : 'уточняется'}</td>
+                <td>{licName(f.credit) || <span class="lic-net">не указана</span>}</td>
                 <td><a href={dayUrl(f.museum, f.key)}>{f.title || f.key}</a></td>
               </tr>))}</tbody>
           </table>)}
@@ -48,7 +50,7 @@ const noLic = cards.filter((f) => !f.lic).length;
                 <tr>
                   <td>{f.alt || f.src.split('/').at(-1)}</td>
                   <td>{f.sign || '—'}</td>
-                  <td>{STATE[f.state]}</td>
+                  <td>{pageLic(f) && f.lic ? pageLic(f) : <span class="lic-net">{pageLic(f) || 'не указана'}</span>}</td>
                   <td><a href={dayUrl(f.museum, f.key)}>{f.key}</a></td>
                 </tr>))}</tbody>
             </table>
