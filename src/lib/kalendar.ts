@@ -37,3 +37,8 @@ export const nearestReady = <T extends { key: string; hook?: string; gist?: stri
 // не дублируем (17.10, круг 1 приёмки: «Источник: Источники:»). Одно правило для календаря и страницы дня.
 export const SRC_PREFIX = /^\s*(?:<(?:b|strong|i|em)>\s*)?(?:Источник|Источники|ИСТОЧНИК|ИСТОЧНИКИ)\s*:\s*(?:<\/(?:b|strong|i|em)>\s*)?/i;
 export const stripSrcPrefix = (v?: string) => (v ? String(v).replace(SRC_PREFIX, '') : '');
+// Источник — ссылкой (Б18, опись Р84, 21.10): адрес в тексте источника становится нажимаемой ссылкой
+// («Как сделан музей» обещает, что источник можно открыть самому). Текст экранируется, адрес — без хвостовой пунктуации.
+const escSrc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+export const srcHtml = (v?: string) => escSrc(stripSrcPrefix(v)).replace(/https?:\/\/[^\s<>"]+?(?=[.,;:)»]*(?:\s|$))/g,
+  (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);

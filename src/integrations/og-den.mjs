@@ -118,6 +118,67 @@ async function fallbackSmall(root, base, site, logger) {
   logger.info(`og:image меньше ${OG_MIN_W}×${OG_MIN_H} заменена запасной у ${n} стр.${n ? `: ${Object.entries(by).map(([k, v]) => `${k} ${v}`).join(', ')}` : ''}`);
 }
 
+// Своя картинка дня — ровно 1200×630 (Б15, опись Р84, 21.10): кадр дня шёл в пересылку как есть — 1400×458
+// у изобретений, 960×637 у спорта; ВК, Одноклассники и Telegram режут его в рамку 1,91:1 как придётся.
+// Теперь у каждой страницы дня, чья og:image — файл сайта не 1200×630 (свой кадр новой страницы, своя картинка
+// старой полной страницы, запасная обложка музея), кадр обрезается по смыслу (sharp attention) в JPG 1200×630
+// og/den/<музей>/<ключ>.jpg — без текста поверх картинки, только кадр. Заодно у всех страниц сайта с og:image
+// своего сайта без og:image:width/height размеры ставятся по файлу (первое превью ВК/Telegram без них
+// приходит без картинки, взгляд 10, п.3). Кэш — по содержимому исходного файла. Проверка — scripts/og-razmer.mjs.
+async function cropDays(root, base, site, logger) {
+  const host = new URL(site).host;
+  const metaRe = (n) => new RegExp(`<meta\\b[^>]*\\b(?:property|name)=["']${n}["'][^>]*>\\s*`, 'gi');
+  const fromUrl = (u) => path.join(root, decodeURIComponent(u.pathname.slice(new URL(base, site).pathname.length)));
+  const dims = new Map();
+  const size = (file) => {
+    if (!dims.has(file)) dims.set(file, fs.existsSync(file) ? sharp(file).metadata().then((m) => [m.width, m.height], () => null) : Promise.resolve(null));
+    return dims.get(file);
+  };
+  const files = [];
+  (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+    const p = path.join(d, e.name);
+    if (e.isDirectory()) walk(p); else if (e.name.endsWith('.html')) files.push(p);
+  } })(root);
+  const jobs = [];
+  let sized = 0;
+  for (const f of files) {
+    const h = fs.readFileSync(f, 'utf8');
+    const og = /content=["']([^"']*)["']/i.exec(h.match(metaRe('og:image'))?.[0] ?? '')?.[1];
+    if (!og) continue;
+    let u; try { u = new URL(og); } catch { continue; }
+    if (u.host !== host) continue;
+    const file = fromUrl(u);
+    const d = await size(file);
+    if (!d) continue;
+    const day = /(?:^|[\\/])muzei[\\/]([^\\/]+)[\\/]den[\\/](\d\d-\d\d)[\\/]index\.html$/.exec(path.relative(root, f));
+    let abs = og, w = d[0], hh = d[1];
+    if (day && (w !== W || hh !== H)) {
+      const rel = `og/den/${day[1]}/${day[2]}.jpg`;
+      jobs.push({ src: file, out: path.join(root, rel) });
+      abs = new URL(`${base}${rel}`, site).href; w = W; hh = H;
+    } else if (h.match(metaRe('og:image:width')) && h.match(metaRe('og:image:height'))) continue;
+    const out = ['og:image', 'twitter:image', 'og:image:width', 'og:image:height', 'og:image:type']
+      .reduce((x, k) => x.replace(metaRe(k), ''), h)
+      .replace(/<\/head>/i, `<meta property="og:image" content="${abs}" />\n<meta property="og:image:width" content="${w}" />\n`
+        + `<meta property="og:image:height" content="${hh}" />\n<meta name="twitter:image" content="${abs}" />\n</head>`);
+    if (out !== h) { fs.writeFileSync(f, out); if (abs === og) sized++; }
+  }
+  let drawn = 0;
+  await pool(jobs, PAR, async ({ src, out }) => {
+    const buf = fs.readFileSync(src);
+    const hash = crypto.createHash('sha1').update('crop1').update(buf).digest('hex');
+    const cached = path.join(CACHE, `${hash}.jpg`);
+    if (!fs.existsSync(cached)) {
+      fs.writeFileSync(cached, await sharp(buf).resize(W, H, { fit: 'cover', position: 'attention' }).flatten({ background: C.ink })
+        .jpeg({ quality: 82, mozjpeg: true }).toBuffer());
+      drawn++;
+    }
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.copyFileSync(cached, out);
+  });
+  logger.info(`кадр дня в пересылке обрезан до ${W}×${H}: ${jobs.length} стр. (заново ${drawn}); размеры og:image добавлены у ${sized} стр.`);
+}
+
 export default function ogDen() {
   let site, base;
   return {
@@ -162,9 +223,10 @@ export default function ogDen() {
           bytes += fs.statSync(out).size;
         });
         plate = undefined; // плашка не держится после хука
+        await fallbackSmall(root, base, site, logger);
+        await cropDays(root, base, site, logger);
         sharp.cache(vips.cache.memory ? { memory: vips.cache.memory.max, files: vips.cache.files.max, items: vips.cache.items.max } : true);
         sharp.concurrency(vips.threads); // kartinki идёт следом со своими настройками
-        await fallbackSmall(root, base, site, logger);
         // Предупреждение (не роняет сборку, 19.10): страницы музеев, у которых пересылка всё ещё общей
         // картинкой (og-default / og/index) или SVG — Telegram/ВК покажут одно и то же или ничего. По музеям.
         const common = {};
