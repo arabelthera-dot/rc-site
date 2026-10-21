@@ -693,6 +693,7 @@ def nomer_vypuska(s):
 
 
 POROG_NAZV = 0.8  # доля слов названия, найденных в обе стороны
+KARTINNYE = {'tretyakov', 'rusmuseum', 'Государственная Третьяковская галерея', 'Государственный Русский музей'}  # FOND адаптеров scripts/fondy/
 
 
 def strogo(k, r):
@@ -702,11 +703,20 @@ def strogo(k, r):
         dk, dr = norm(k['derzhatel']), norm(r.get('derzhatel'))
         if dk and dr and (dk in dr or dr in dk):
             return 'инв. номер у того же держателя'
-    nf, nk = slova_nazv(r.get('title')), slova_nazv(k.get('nazvanie'))
-    fk = familii(k.get('avtor'))
-    if (fk and fk & familii(r.get('avtor')) and god_sovpal(k, r) and nf and nk
-            and pokrytie(nf, nk) >= POROG_NAZV and pokrytie(nk, nf) >= POROG_NAZV):
-        return 'автор + год + название'
+    nk, fk = slova_nazv(k.get('nazvanie')), familii(k.get('avtor'))
+    # пояснение фонда в скобках не часть названия: «Черное море (На Черном море начинает разыгрываться буря)»
+    t = str(r.get('title') or '')
+    nfs = [x for x in (slova_nazv(t), slova_nazv(re.sub(r'\s*\([^)]*\)', '', t))) if x]
+    nazv = max((min(pokrytie(nf, nk), pokrytie(nk, nf)) for nf in nfs), default=0.0) if nk else 0.0
+    if fk and fk & familii(r.get('avtor')) and nazv >= POROG_NAZV:
+        if god_sovpal(k, r):
+            return 'автор + год + название'
+        # картина в одном экземпляре (ГТГ, ГРМ), название слово в слово — год подписи может расходиться
+        # с датировкой фонда на 1–3 года (Репин «Крестный ход в Курской губернии»: подпись 1880, ГТГ 1881–1883);
+        # в credit идёт год фонда. Гравюры и журналы — тиражи по годам, там год решает (test_fondy_pushkin)
+        d = gody(r)
+        if r.get('fond') in KARTINNYE and nazv == 1.0 and d and re.fullmatch(r'\d{4}', str(k.get('god') or '')) and d[0] - 3 <= int(k['god']) <= d[1] + 3:
+            return 'автор + название слово в слово, год по датировке фонда'
     # выпуск журнала (запись без автора): «Будильник, 1873. № 4» ↔ подпись «… «Будильник», 1873, № 4»
     if not r.get('avtor'):
         nr = nomer_vypuska(r.get('title'))
