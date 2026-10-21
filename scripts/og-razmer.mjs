@@ -2,7 +2,7 @@
 // миниатюрой или не показывают совсем. Считает страницы dist, у которых og:image (файл своего сайта)
 // меньше 600×315, и страницы, где og:image:width/height не совпадают с настоящим размером файла.
 // Страница дня (/muzei/<музей>/den/ММ-ДД/) без og:image или без twitter:card summary_large_image — тоже ошибка
-// (задача E, 20.10.2026: у каждой страницы дня рабочая карточка пересылки).
+// (задача E, 20.10.2026: у каждой страницы дня рабочая карточка пересылки); превью дня — ровно 1200×630 с размерами (Б15, 21.10).
 // Переадресации и noindex не считаются. Выход 1, если есть хоть одна такая страница.
 // Запуск: node scripts/og-razmer.mjs [dist]   (npm run og-razmer)
 import fs from 'node:fs';
@@ -44,6 +44,9 @@ for (const f of files) {
   if (w < MIN_W || hh < MIN_H) small.push(`${rel}: ${w}×${hh} ${u.pathname}`);
   const mw = meta(h, 'og:image:width'), mh = meta(h, 'og:image:height');
   if ((mw && +mw !== w) || (mh && +mh !== hh)) wrong.push(`${rel}: в теге ${mw}×${mh}, файл ${w}×${hh}`);
+  // Б15 (опись Р84, 21.10): у страницы дня превью ровно 1200×630 и размеры в разметке (og-den, cropDays).
+  if (/(^|\/)den\/\d\d-\d\d\/index\.html$/.test(rel.split(path.sep).join('/')) && (w !== 1200 || hh !== 630 || !mw || !mh))
+    noOg.push(`${rel}: превью ${w}×${hh}${mw ? '' : ', нет og:image:width/height'} — нужно 1200×630`);
 }
 console.log(`og-razmer: страниц с og:image ${total}, картинка меньше ${MIN_W}×${MIN_H} — ${small.length}, `
   + `неверные og:image:width/height — ${wrong.length}, файла нет в dist — ${missing.length}, чужой адрес — ${foreign}, `
