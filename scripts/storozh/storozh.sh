@@ -85,5 +85,27 @@ else
     date -u +%FT%TZ > .storozh/sert-skazal
   fi
 fi
+# Срок сертификата (Б21, опись Р84, 21.10.2026): до истечения меньше SROK_DNEY (14) дней — одно сообщение тем же путём
+# (shli), пока срок не продлят; продлили — «сертификат продлён». Отметка — .storozh/srok-skazal.
+SROK_DNEY="${SROK_DNEY:-14}"
+konec=$(echo | timeout 20 openssl s_client -servername "$DOMEN" -connect "$DOMEN:443" 2>/dev/null \
+  | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
+if [ -n "$konec" ]; then
+  ostalos=$(( ( $(date -u -d "$konec" +%s) - $(date -u +%s) ) / 86400 ))
+  echo "сертификат $DOMEN: действует до $konec, осталось $ostalos дн."
+  if [ "$ostalos" -lt "$SROK_DNEY" ]; then
+    echo "::warning::сертификат $DOMEN истекает через $ostalos дн. ($konec)"
+    echo "### 🟡 Сертификат $DOMEN истекает через $ostalos дн. ($konec)" >> "$SVODKA"
+    if [ ! -f .storozh/srok-skazal ]; then
+      shli "🟡 Сертификат https://$DOMEN/ истекает через $ostalos дн. ($konec). Автопродление Let's Encrypt не сработало — проверить certbot на сервере. Запуск: $ZAPUSK"
+      date -u +%FT%TZ > .storozh/srok-skazal
+    fi
+  elif [ -f .storozh/srok-skazal ]; then
+    shli "🟢 Сертификат https://$DOMEN/ продлён: действует до $konec."
+    rm -f .storozh/srok-skazal
+  fi
+else
+  echo "срок сертификата $DOMEN не прочитан (https не отвечает — см. проверку выше)"
+fi
 date -u +%FT%TZ > .storozh/posledniy   # каталог не пустой — кэш сохранится
 exit 0
