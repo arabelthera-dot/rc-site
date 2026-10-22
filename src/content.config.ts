@@ -37,7 +37,7 @@ import slovar from './data/slovar.json'; // slovar — словарь связе
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
 // Инициалы («А. К. Толстой») — не конец предложения: точка после одиночной заглавной буквы не считается.
 const secondSentence = /(?<!(?:^|[^А-Яа-яЁёA-Za-z])[А-ЯЁA-Z])[.!?…]\s+[А-ЯЁA-Z]/;
-const wiki = /wiki|википеди|викитек/i;
+const wiki = /wiki(?!art)|википеди|викитек/i; // WikiArt — не Википедия (Р108, Кустодиев 01-11)
 
 const image = z.object({
   src: z.string().min(1),
