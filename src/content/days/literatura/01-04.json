@@ -5,21 +5,5 @@
   "hook": "Василий Ян превратил сухие строки летописей в живых людей, и мир прочёл о Чингисхане в русском романе.",
   "source": "Н. М. Карамзин. История государства Российского, т. III, гл. VIII (spsl.nsc.ru)",
   "legacy_page": "muzei/literatura/lit-yan-chingishan.html",
-  "images": [
-    {
-      "src": "muzei/literatura/media-chingishan/chingishan-yuan-hero.jpg",
-      "caption": "Лицо Чингисхана на старинном китайском портрете",
-      "credit": "Портрет Чингисхана, альбом императоров Юань, XIV век (кадрирование); «YuanEmperorAlbumGenghisPortrait.jpg», Wikimedia Commons, общественное достояние"
-    },
-    {
-      "src": "muzei/literatura/media-chingishan/chingishan-yuan-portret.jpg",
-      "caption": "Портрет Чингисхана. Китай, XIV век. Из альбома портретов императоров династии Юань, Национальный музей Гугун (Тайбэй). Написан через десятилетия после смерти Чингисхана — это образ, а не портрет с натуры.",
-      "credit": "Портрет Чингисхана, альбом императоров Юань, XIV век; «YuanEmperorAlbumGenghisPortrait.jpg», Wikimedia Commons, общественное достояние"
-    },
-    {
-      "src": "muzei/literatura/media-chingishan/chingishan-dzhami-at-tavarih.jpg",
-      "caption": "Чингисхан в шатре после провозглашения. Около 1430 года. Миниатюра из «Джами ат-таварих» Рашид ад-Дина — одной из восточных летописей, по которым работал Ян. Национальная библиотека Франции.",
-      "credit": "Чингисхан в шатре, «Джами ат-таварих», около 1430 года, Wikimedia Commons; общественное достояние (рукопись около 1430 года)"
-    }
-  ]
+  "images": []
 }

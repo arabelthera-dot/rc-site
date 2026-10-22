@@ -7,31 +7,6 @@
   "legacy_page": "muzei/sport/day-01jan-ledyanye-gory.html",
   "images": [
     {
-      "src": "muzei/sport/media/ledyanye-gory/atkinson-1804-960.webp",
-      "caption": "Гравюра 1804 года: высокая деревянная ледяная гора с флагами на льду реки, по скату летят санки, внизу толпа в шубах",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/geysler-neva-400c.webp",
-      "caption": "Гравюра конца XVIII века: ледяные горы на Неве у Смольного монастыря, толпа и сани на льду",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/serracapriola-1817-330t.webp",
-      "caption": "Раскрашенная гравюра 1817 года: катальные горы на Большой Неве, тройки на льду",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/timm-1858-330t.webp",
-      "caption": "Литография Тимма 1858 года: масленичное гулянье в Петербурге, балаганы и толпа",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/delabart-1795-400c.webp",
-      "caption": "Раскрашенная гравюра: ледяные горы в Москве во время сырной недели, у торговых рядов, толпа на льду",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
       "src": "muzei/sport/img/01-01-gosudarstvennaa-tret-akovskaa-galerea-51ecdd123c.jpg",
       "caption": "Картина Кустодиева «Масленица» 1919 года: зимний город, катание на санях",
       "credit": "Борис Кустодиев, 1916. Источник: Государственная Третьяковская галерея [Государственная Третьяковская галерея], https://my.tretyakov.ru/app/masterpiece/10892. Права: сверить по карточке."
@@ -40,81 +15,6 @@
       "src": "muzei/sport/media/ledyanye-gory/kustodiev-1916-330t.webp",
       "caption": "Картина Кустодиева «Масленица» 1916 года: тройка мчится по снегу под розовым закатом",
       "credit": "Общественное достояние (ст. 1281 ГК РФ), Государственная Третьяковская галерея, инв. 11891"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/spb-1874-400c.webp",
-      "caption": "Рисунок из книги 1874 года: Масленица в Петербурге, деревянные горки с флагами и гуляющие",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/rijks-1903-330t.webp",
-      "caption": "Фотография 1903–1904 годов: компания с санками на верху ледяной горки в России",
-      "credit": "CC0, Рейксмузеум, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/orenburg-2020-330t.webp",
-      "caption": "Фотография 2020 года: ледяная горка для детей в Оренбурге, дети съезжают по ледяному жёлобу",
-      "credit": "CC BY-SA 4.0, автор ХВикт, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/rastrelli-1752-794.webp",
-      "caption": "Чертёж Растрелли 1752 года: фасад павильона катальной горы в Царском Селе и длинный скат с галереей",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/gruzinsky-1889-400c.webp",
-      "caption": "Картина Грузинского «Масленица» 1889 года: тройки с седоками мчатся по деревенской улице",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/lubok-1839-330t.webp",
-      "caption": "Лубок 1839 года «Масленица»: катание на санях и гулянье",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/solomatkin-1878-330t.webp",
-      "caption": "Картина Соломаткина «Масленица» 1878 года: горка, сани и толпа на улице городка",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/surikov-1891-400c.webp",
-      "caption": "Картина Сурикова «Взятие снежного городка» 1891 года: всадник на коне прорывается через снежную стену, толпа машет руками",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/russian-mountains-1807-400c.webp",
-      "caption": "Раскрашенная гравюра 1807 года из немецкой книжки для детей: две ледяные горы с флагами и катающиеся",
-      "credit": "Общественное достояние: издание 1807 года, автор неизвестен; скан на Commons — Free Art License, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/paris-roule-1816-400c.webp",
-      "caption": "Французская гравюра 1816 года «Русские горы у заставы Руль»: дамы на галерее у длинного ската",
-      "credit": "CC0, Музеи Парижа, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/paris-belleville-1817-409.webp",
-      "caption": "Гравюра: «Русские горы» в Бельвиле, парк и аттракцион с тележками",
-      "credit": "CC BY-SA 4.0, Музеи Парижа, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/paris-tivoli-1818-482.webp",
-      "caption": "Гравюра 1818 года: горы сада Тиволи в Париже среди деревьев",
-      "credit": "CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/stockholm-1830-400c.webp",
-      "caption": "Раскрашенная литография 1830 года: русская гора зимой в стокгольмском парке Юргорден",
-      "credit": "Общественное достояние (Public domain), Национальный музей Швеции, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/cheret-1889-400c.webp",
-      "caption": "Афиша Жюля Шере 1889 года «Montagnes Russes» с танцовщицей в красно-жёлтом платье",
-      "credit": "Общественное достояние (Public domain), Wikimedia Commons"
-    },
-    {
-      "src": "muzei/sport/media/ledyanye-gory/switchback-1884-461.webp",
-      "caption": "Гравюра 1884 года: деревянная эстакада горок тянется вдоль пляжа Кони-Айленда, по ней катится вагончик, внизу гуляет публика, над павильоном флаг США",
-      "credit": "Общественное достояние (Public domain): гравюра 1884 года, автор неизвестен, Wikimedia Commons"
     }
   ]
 }

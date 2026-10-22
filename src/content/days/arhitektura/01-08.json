@@ -5,46 +5,5 @@
   "hook": "Почему вместо купола над храмом появилась золотая корона?",
   "source": "Храм Знамения Пресвятой Богородицы в Дубровицах, официальный сайт (dubrovicy.cerkov.ru)",
   "legacy_page": "muzei/arhitektura/dubrovicy.html",
-  "images": [
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/hero.webp",
-      "caption": "Церковь Знамения Пресвятой Богородицы в Дубровицах, современный вид. Источник: Викисклад; фото: Елена Нечипоренко, CC BY-SA 4.0; уменьшено.",
-      "credit": "Елена Нечипоренко, CC BY-SA 4.0; редакционное уменьшение и кадрирование, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/siluet-kak-postroeno.webp",
-      "caption": "Силуэт по фотографии храма. Источник: Викисклад; автор Goussew, CC BY-SA 4.0; кадрирование и порог — производная работа музея.",
-      "credit": "Производная работа музея по фотографии Goussew, CC BY-SA 4.0; кадрирование и порог, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/detail.webp",
-      "caption": "Круглая белокаменная скульптура на парапете храма в Дубровицах",
-      "credit": "Никонико962, CC BY-SA 4.0; редакционное уменьшение и кадрирование, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/building.webp",
-      "caption": "Храм Знамения в Дубровицах: столп в три световых яруса и корона над куполом",
-      "credit": "Goussew, CC BY-SA 4.0; редакционное уменьшение и кадрирование, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/ensemble.webp",
-      "caption": "Храм Знамения и усадьба Дубровицы с высоты",
-      "credit": "Ludvig14, CC BY-SA 4.0; редакционное уменьшение и кадрирование, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/landscape.webp",
-      "caption": "Храм Знамения поднимается над деревьями у реки",
-      "credit": "Dmitry Ivanov, CC BY-SA 4.0; редакционное уменьшение и кадрирование, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/ist-1790.webp",
-      "caption": "Вид Дубровиц, гравюра 1790-х годов. Источник: Викисклад; автор С. Ф. Щедрин (1791–1830), общественное достояние, срок охраны истёк.",
-      "credit": "С. Ф. Щедрин, 1790-е годы; общественное достояние, срок охраны истёк; источник файла — Викисклад, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/dubrovicy/ist-1900.webp",
-      "caption": "Храм Знамения около 1900 года. Источник: Викисклад; фотография П. Павлова, общественное достояние, срок охраны истёк.",
-      "credit": "П. Павлов, около 1900 года; общественное достояние, срок охраны истёк; источник файла — Викисклад, Wikimedia Commons"
-    }
-  ]
+  "images": []
 }

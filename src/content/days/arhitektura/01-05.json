@@ -5,41 +5,5 @@
   "hook": "Почему Невьянская башня наклонена, но продолжает стоять?",
   "source": "официальной карточке Культура.РФ (culture.ru)",
   "legacy_page": "muzei/arhitektura/nevjanskaya-bashnya.html",
-  "images": [
-    {
-      "src": "muzei/arhitektura/media/nevjanskaya-bashnya/hero.webp",
-      "caption": "Невьянская башня, современный вид. Фото: Вячеслав Бухаров, CC BY-SA 4.0.",
-      "credit": "Vyacheslav Bukharov, CC BY-SA 4.0; редакционное уменьшение WebP, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/nevjanskaya-bashnya/stair.webp",
-      "caption": "Вид сверху на винтовую чугунную лестницу внутри башни",
-      "credit": "Ludvig14, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/nevjanskaya-bashnya/foundation.webp",
-      "caption": "Белёное кирпичное основание Невьянской башни с железными связями",
-      "credit": "Vyacheslav Bukharov, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/nevjanskaya-bashnya/ensemble.webp",
-      "caption": "Невьянск, XVIII век. Кирпичная вертикаль при заводе и пруде; квадратное основание переходит в восьмигранные ярусы.",
-      "credit": "Ludvig14, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/nevjanskaya-bashnya/landscape.webp",
-      "caption": "Верхние ярусы башни на фоне Невьянска, холмов и заводского пруда",
-      "credit": "Vyacheslav Bukharov, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/nevjanskaya-bashnya/clock.webp",
-      "caption": "Часовой механизм внутри башни. Фото: Вячеслав Бухаров, CC BY-SA 4.0.",
-      "credit": "Vyacheslav Bukharov, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/nevjanskaya-bashnya/pisa.webp",
-      "caption": "Пиза, XI–XIV века. Цилиндрическая мраморная кампанила — часть религиозного ансамбля собора, баптистерия и кладбища.",
-      "credit": "Ray in Manila, CC BY 2.0, Wikimedia Commons"
-    }
-  ]
+  "images": []
 }
