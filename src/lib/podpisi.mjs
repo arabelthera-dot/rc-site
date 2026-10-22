@@ -125,7 +125,9 @@ export function kadryNeNaStranice(root = '.') {
     for (const f of ls(path.join(root, FULL, museum)).filter((x) => x.endsWith('.html'))) {
       const key = f.slice(0, -5), day = path.join(root, DAYS, museum, `${key}.json`);
       if (!fs.existsSync(day)) continue;
-      const html = fs.readFileSync(path.join(root, FULL, museum, f), 'utf8');
+      // Р154: у дня-анкеты (в json есть body) живая страница — из блоков body, full-pages лишь на den/<день>/staraya/
+      const anketa = JSON.parse(fs.readFileSync(day, 'utf8')).body;
+      const html = anketa ? anketa.map((b) => b.html ?? '').join('') : fs.readFileSync(path.join(root, FULL, museum, f), 'utf8');
       const srcs = [...new Set([...html.matchAll(/src="([^"]+\.(?:jpe?g|png|webp))"/gi)].map((m) => m[1]))];
       const bloki = html.match(/<figure\b[\s\S]*?<\/figure>|<img\b[^>]*>/gi) ?? [];
       for (const im of JSON.parse(fs.readFileSync(day, 'utf8')).images || []) {
