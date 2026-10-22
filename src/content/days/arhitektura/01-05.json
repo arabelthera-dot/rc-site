@@ -5,5 +5,11 @@
   "hook": "Почему Невьянская башня наклонена, но продолжает стоять?",
   "source": "официальной карточке Культура.РФ (culture.ru)",
   "legacy_page": "muzei/arhitektura/nevjanskaya-bashnya.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/arhitektura/img/01-05-goskatalog-10287021.jpg",
+      "caption": "Открытое письмо «Средний Урал — Невьянский завод. Собор и Наклонная башня», до 1917 года",
+      "credit": "автор не указан. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=12452944. Права: Общественное достояние: анонимное издание до 1917 года."
+    }
+  ]
 }
