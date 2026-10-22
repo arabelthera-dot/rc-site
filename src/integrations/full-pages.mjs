@@ -17,7 +17,7 @@ import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
-import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
+import { cardFrames, fullFrames, kadryNeNaStranice } from '../lib/podpisi.mjs';
 import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
@@ -406,6 +406,14 @@ function checkPodpisi() {
   console.warn(`⚠ ${msg}`);
 }
 
+// Р132 (22.10): кадр карточки не показан на полной странице дня (замена #333 вырезала figure, кадр лёг только в json).
+// Только отчёт — сборку не роняет (новых замков без слова Сергея нет). Починка: python3 scripts/kadr.py vernut --primenit.
+function checkKadryKartochki() {
+  const net = kadryNeNaStranice();
+  if (!net.length) return console.log('kadry: все кадры карточек дней показаны на их полных страницах');
+  console.warn(`⚠ kadry: ${net.length} кадр(ов) карточки не показаны на полной странице дня — python3 scripts/kadr.py vernut\n${net.map((x) => `  ${x.museum}/${x.key} ${x.src}`).join('\n')}`);
+}
+
 // Замок на второй путь к календарю (план сайта А4, 20.10; как AI_Projects #2284): данные календаря — только из записей
 // src/content/days (src/lib/kalendar-dannye.mjs). Файл в public/, который сам задаёт window.MUSEUM_CALENDAR = {…},
 // — второй источник дат мимо src/: сайт не собирается.
@@ -436,6 +444,7 @@ export default function fullPages() {
         const root = fileURLToPath(dir);
         checkNetStaryhKalendarey();
         checkPodpisi();
+        checkKadryKartochki();
         if (!fs.existsSync(SRC)) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
         const bad = [];
         let n = 0;

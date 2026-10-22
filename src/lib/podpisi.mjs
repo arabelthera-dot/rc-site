@@ -105,3 +105,41 @@ export function fullFrames(root = '.') {
   }
   return out;
 }
+
+// Р132 (22.10): кадр карточки дня, которого нет на полной странице этого дня, — посетитель его не видит (сайт показывает
+// full-pages 1:1). Показан = то же имя файла, тот же файл под другим именем или та же вещь (¾ значимых слов подписи —
+// в alt/подписи кадра страницы). Правило то же, что у scripts/kadr.py (_dub); починка — kadr.py vernut / sinhron.
+const SLUZH = new Set(['госкаталог', 'музейного', 'фонда', 'фонд', 'собрания', 'государственная', 'государственный', 'галерея', 'галереи',
+  'третьяковская', 'третьяковской', 'музей', 'музея', 'иллюстрация', 'репродукция', 'художника', 'работа', 'неизвестного']);
+const slova = (s) => new Set((`${[...String(s).matchAll(/\b(?:alt|data-title)="([^"]*)"/g)].map((m) => m[1]).join(' ')} ${String(s).replace(/<[^>]+>/g, ' ')}`)
+  .toLowerCase().replace(/ё/g, 'е').match(/[а-яa-z0-9]{4,}/g)?.filter((w) => !SLUZH.has(w)).map((w) => w.slice(0, 5)) ?? []);
+const WIKI = /commons\.wikimedia\.org|upload\.wikimedia\.org|wikimedia\s+commons|викисклад/i;
+
+export function kadryNeNaStranice(root = '.') {
+  const out = [];
+  const fajl = (s) => { const f = path.join(root, 'public', s.replace(/^\/+/, '')); return fs.existsSync(f) ? f : null; };
+  for (const museum of ls(path.join(root, FULL))) {
+    for (const f of ls(path.join(root, FULL, museum)).filter((x) => x.endsWith('.html'))) {
+      const key = f.slice(0, -5), day = path.join(root, DAYS, museum, `${key}.json`);
+      if (!fs.existsSync(day)) continue;
+      const html = fs.readFileSync(path.join(root, FULL, museum, f), 'utf8');
+      const srcs = [...new Set([...html.matchAll(/src="([^"]+\.(?:jpe?g|png|webp))"/gi)].map((m) => m[1]))];
+      const bloki = html.match(/<figure\b[\s\S]*?<\/figure>|<img\b[^>]*>/gi) ?? [];
+      for (const im of JSON.parse(fs.readFileSync(day, 'utf8')).images || []) {
+        const src = String(im.src || ''), imya = src.split('/').pop();
+        if (!imya || html.includes(imya) || WIKI.test(`${src} ${im.credit || ''}`)) continue;
+        const moj = fajl(src);
+        if (moj) {
+          const byte = fs.readFileSync(moj);
+          const tot = srcs.some((s) => { const g = fajl(s.includes('muzei/') ? `muzei/${s.split('muzei/').pop()}` : `muzei/${museum}/${s}`);
+            return g && fs.statSync(g).size === byte.length && fs.readFileSync(g).equals(byte); });
+          if (tot) continue;
+        }
+        const sk = slova(im.caption || '');
+        if (sk.size && bloki.some((b) => { const sb = slova(b); return [...sk].filter((w) => sb.has(w)).length >= 0.75 * sk.size; })) continue;
+        out.push({ museum, key, src: imya });
+      }
+    }
+  }
+  return out;
+}
