@@ -59,6 +59,8 @@ def ru_proxy():
         raise RuntimeError('российский туннель не поднят (ru-route.json выключен или нет ключа, ru_tunnel.py join)')
     return px
 # Права фондов, которых нет в sources.json (рецепты — knowledge/kadr-recepty-fondov.md, 19.10.2026)
+# Права без лицензии (общественное достояние, CC…) кадр не ставят: подпись-заглушка «сверить по карточке» роняла сборку (22.10)
+LIC_OK = re.compile(r'\bCC[ -]?(BY|0)|обществен\S* достоян|public domain|свободн\S* лиценз', re.I)
 PRAVA = {'goskatalog': 'Госкаталог прав не даёт — автор и год смерти по карточке',
          'rusmuseum': '© Русский музей, открытой лицензии нет',
          'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
@@ -305,13 +307,13 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:48]
 
 
-def put(museum, key, title, caption, avtor=None, card=None):
+def put(museum, key, title, caption, avtor=None, card=None, prava=None):
     day = ROOT / 'src/content/days' / museum / f'{key}.json'
     if not day.is_file():
         sys.exit(f'нет дня {day}')
     fond = title.split(':', 1)[0]
     if fond in FONDY:
-        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card)
+        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava)
     if not RAZRESHENIE:
         sys.exit('Викисклад выключен (Р90): сначала российские фонды и museum-source-access; '
                  'кадр оттуда — только с --razreshenie "слово Сергея"')
@@ -357,7 +359,7 @@ def write_day(day, rel, caption, credit):
     day.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
 
 
-def put_fond(day, museum, key, fond, ref, caption, avtor, card):
+def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
     """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json."""
     if not avtor:
         sys.exit(f'{fond}: шестым аргументом — автор и год по-русски (фонд не отдаёт паспорт машинно)')
@@ -372,7 +374,9 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card):
     except Exception as e:
         sys.exit(f'{fond}: файл не получен ({e})')
     rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'))
-    pravo = src.get('rights') or src.get('license') or PRAVA.get(fond) or 'в sources.json не указаны — сверить по карточке'
+    pravo = prava or src.get('rights') or src.get('license') or PRAVA.get(fond) or ''
+    if not LIC_OK.search(pravo):
+        sys.exit(f'{fond}: права не названы ({pravo or "нет"}) — посмотри карточку и дай --prava "общественное достояние (автор умер в ГГГГ)"')
     credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
     write_day(day, rel, caption, credit)
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
@@ -737,7 +741,10 @@ def bez_wiki(s):
 def primenit(k, r):
     """Скан через fetch/save (как put_fond), затем подпись, data-source, data-license, строка прав."""
     src = sources().get(r['fond'], {})
-    pravo = src.get('rights') or src.get('license') or PRAVA.get(r['fond']) or 'сверить по карточке'
+    pravo = src.get('rights') or src.get('license') or PRAVA.get(r['fond']) or ''
+    if not LIC_OK.search(pravo):
+        warn(f'{k["muzey"]}/{k["den"]} {k["fayl"]}: права не названы — кадр не ставлю, через put --prava')
+        return False
     name = src.get('name') or r['fond']
     imya = slug(f'{r["fond"]}-{Path(urllib.parse.urlsplit(r["image"]).path).stem}')
     gotov = ROOT / 'public' / f'muzei/{k["muzey"]}/img/{k["den"]}-{imya}.jpg'
@@ -1092,6 +1099,7 @@ def main(argv=None):
     pu.add_argument('title', help='"фонд:ссылка" или имя файла'); pu.add_argument('caption', help='подпись')
     pu.add_argument('avtor', nargs='?', help='автор (для фонда обязателен)')
     pu.add_argument('--card', help='ссылка на карточку предмета')
+    pu.add_argument('--prava', help='права по карточке: «общественное достояние (автор умер в ГГГГ)», CC BY …')
     z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
     z.add_argument('--s-loc', action='store_true', help='включить Библиотеку Конгресса — только с личного разрешения владельца, Р93')
@@ -1110,7 +1118,7 @@ def main(argv=None):
     elif a.cmd == 'find':
         find(a.query, a.n, a.geo)
     else:
-        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card)
+        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card, a.prava)
 
 
 if __name__ == '__main__':

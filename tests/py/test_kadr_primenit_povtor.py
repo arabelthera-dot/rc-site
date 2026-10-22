@@ -27,7 +27,10 @@ class PovtorKadra(unittest.TestCase):
             k = dict(muzey='sport', den='01-01', fayl='a-330t.webp', avtor='', god='', put=den, vid='json', i=1)
             with mock.patch.object(kadr, 'ROOT', root), mock.patch.object(kadr, 'sources', lambda: {}), \
                     mock.patch.object(kadr, 'fetch', side_effect=AssertionError('сеть не нужна')):
-                self.assertTrue(kadr.primenit(k, hit))
+                # без названных прав кадр не ставится (22.10: заглушка «сверить по карточке» роняла сборку)
+                self.assertFalse(kadr.primenit(k, hit))
+                with mock.patch.dict(kadr.PRAVA, {'ГТГ': 'общественное достояние'}):
+                    self.assertTrue(kadr.primenit(k, hit))
             self.assertEqual(json.loads(den.read_text())['images'][1]['src'], f'muzei/sport/img/01-01-{imya}.jpg')
 
 
