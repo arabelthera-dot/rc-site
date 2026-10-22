@@ -171,3 +171,33 @@ class Sinhron(unittest.TestCase):
         self.page.write_text('<figure class="fig"><img src="m.jpg" alt="Почтовая марка"><figcaption>м</figcaption></figure><p>x</p>')
         t, v, z, u = kadr.sinhron_den(self.page, self.day)
         self.assertEqual((t, u), ('<p>x</p>', 1))
+
+
+class Vernut(unittest.TestCase):
+    """Р132: кадр карточки встаёт на место figure, вырезанного заменой #333, той же обёрткой; счётчик — по числу кадров."""
+    K = dict(src='/muzei/m/img/01-08-goskatalog-1.jpg', caption='Симонов монастырь, старая фотография.', muzey='m',
+             source='https://goskatalog.ru/x?id=1', license='общественное достояние', fond='Госкаталог Музейного фонда РФ', avtor='автор не указан')
+
+    def test_mesto_i_obertka(self):
+        old = ('<p>а</p><figure class="human-frame" data-rc-rights-id="sim"><img src="../../muzei/m/media/sim.jpg" alt="Симонов монастырь">'
+               '<figcaption><b>Симонов монастырь.</b> <span>Викисклад</span></figcaption></figure><p>б</p>')
+        cur = '<p>а</p><p>б</p>'
+        (pos, blok), = kadr.mesta(old, cur)
+        self.assertEqual(cur[:pos], '<p>а</p>')
+        nov = kadr.pereodet(blok, self.K, Path('/net'))
+        self.assertIn('<figure class="human-frame" data-rc-rights-id="sim"><img src="../../muzei/m/img/01-08-goskatalog-1.jpg"', nov)
+        self.assertIn('data-source="https://goskatalog.ru/x?id=1"', nov)
+        self.assertIn('<b>Симонов монастырь, старая фотография.</b>', nov)
+        self.assertNotIn('Викисклад', nov)
+
+    def test_zamenennyy_na_meste_ne_mesto(self):
+        self.assertEqual(kadr.mesta('<p>а</p><img src="a.jpg" alt="x"><p>б</p>', '<p>а</p><img src="b.jpg" alt="y"><p>б</p>'), [])
+
+    def test_schetchik(self):
+        t = 'На странице <span data-rc-count="exhibits" data-value="1">1</span> изображение; общественное достояние.'
+        self.assertEqual(kadr.schetchik(t, 1), 'На странице <span data-rc-count="exhibits" data-value="2">2</span> изображения; все — общественное достояние.')
+
+    def test_dubl(self):
+        t = '<figure><img src="x.jpg" alt="Портрет"><figcaption>В. А. Серов. Портрет Н. С. Лескова, 1894. Холст, масло.</figcaption></figure>'
+        self.assertTrue(kadr._dub(dict(self.K, caption='В. А. Серов. Портрет Н. С. Лескова. 1894. Госкаталог Музейного фонда РФ.'), t, Path('/net')))
+        self.assertFalse(kadr._dub(self.K, t, Path('/net')))
