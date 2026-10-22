@@ -18,9 +18,6 @@
       change:'Что изменилось: указом от 6 февраля 1786 года главный корпус велено разобрать до основания и строить по новому, казаковскому плану; закладка — 15 июля 1786 года. К 1796 году дворец был почти готов, но с временной кровлей, без отделки; после смерти Екатерины работы остановились, а Павел I запретил стройку.'
     },
     museum:{
-      img:'hero.webp',
-      alt:'Большой Царицынский дворец после реставрации: современный вид музея-заповедника «Царицыно»',
-      caption:'Большой Царицынский дворец, современный вид. Фото: Mike1979 Russia, CC BY-SA 3.0; уменьшено и переведено в WebP.',
       status:'Состояние сегодня: Большой дворец музея-заповедника «Царицыно» после реставрации.',
       change:'Что изменилось: дворец простоял руиной почти двести лет. Реставрация Большого дворца завершена в августе 2007 года, комплекс открыт 2 сентября 2007 года. Башни и кровли при этом взяты из позднего варианта неосуществлённого проекта Казакова — это реконструкция, а не подлинник; подлинные стены и белокаменный декор сохранены.'
     }
@@ -35,8 +32,9 @@
   let answered=false;
   const looked=new Set();
   function show(key){
-    const s=states[key];if(!s||!img)return;
-    img.src=base+s.img;img.alt=s.alt;cap.textContent=s.caption;
+    const s=states[key];if(!s)return;
+    if(img){if(s.img){img.hidden=false;img.src=base+s.img;img.alt=s.alt;}else img.hidden=true;}
+    if(cap)cap.textContent=s.caption||'';
     status.textContent=s.status;change.textContent=s.change;
     buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.era===key)));
     looked.add(key);
