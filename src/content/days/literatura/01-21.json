@@ -6,5 +6,11 @@
   "hook": "Фёдор Достоевский впустил читателя в голову студента, решившего, что ему всё позволено, и мир прочёл эту исповедь.",
   "source": "Источник эпизода · Как читать «Преступление и наказание» Достоевского. (Культура.РФ, https://www.culture.ru/materials/256441/kak-chitat-prestuplenie-i-nakazanie-dostoevskogo)",
   "legacy_page": "muzei/literatura/lit-dostoevskiy-prestuplenie.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/literatura/img/01-21-goskatalog-13998997.jpg",
+      "caption": "П. М. Боклевский. Раскольников. Иллюстрация к роману Ф. М. Достоевского «Преступление и наказание». Госкаталог Музейного фонда РФ.",
+      "credit": "П. М. Боклевский. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=6244782. Права: общественное достояние (автор умер в 1897)."
+    }
+  ]
 }
