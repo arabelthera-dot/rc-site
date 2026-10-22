@@ -88,17 +88,33 @@ export function ssylkiNaKadry(html) {
     for (const u of (m[1] || m[2]).matchAll(IMG)) out.add(u[0]);
   return out;
 }
+// Интерактивы держат кадры строками в JS (массивы visuals, film-stage) — ни атрибута, ни <img>, и сверка по
+// HTML их не видела (терем 01-03, 22.10). Поэтому смотрим и .js/.json музея, и каждую строку-путь к картинке:
+// по отпечатку файла, а если путь не открылся — по хвосту пути из списка снятых (не короче «папка/файл»).
+export function stroki_kadrov(text) {
+  const out = new Set();
+  for (const m of text.matchAll(/["'`]([^"'`\s]+\.(?:jpe?g|png|webp|gif|avif))(?:[?#][^"'`]*)?["'`]/gi)) out.add(m[1]);
+  return out;
+}
+const snyatyePuti = Object.values(SNYATO).map((v) => v[2]);
+const poHvostu = (pn) => {
+  const h = pn.replace(/^(?:\.\.?\/)+/, '').replace(/^\//, '');
+  return h.includes('/') && snyatyePuti.some((p) => p === h || p.endsWith('/' + h));
+};
 const kadrySnyatye = new Map(); // музей → Set('страница → файл')
 if (Object.keys(SNYATO).length) for (const f of faily(DIST)) {
   const rel = path.relative(DIST, f).split(path.sep).join('/');
-  if (!/^muzei\/[^/]+\/.*\.html$/.test(rel)) continue;
-  for (const u of ssylkiNaKadry(fs.readFileSync(f, 'utf8'))) {
+  if (!/^muzei\/[^/]+\/.*\.(?:html|m?js|json)$/.test(rel)) continue;
+  const text = fs.readFileSync(f, 'utf8');
+  const vse = new Set([...ssylkiNaKadry(text), ...stroki_kadrov(text)]);
+  for (const u of vse) {
+    if (/^https?:/i.test(u) && !/russian-civilization|rc-museum-preview/.test(u)) continue;
     let pn;
     try { pn = decodeURIComponent(new URL(u, 'https://x/' + rel).pathname).replace(/^\/rc-museum-preview\//, '/'); } catch { continue; }
     const fp = path.join(DIST, pn);
     if (!otpechatok.has(fp)) otpechatok.set(fp, fs.existsSync(fp) && fs.statSync(fp).isFile() ? crypto.createHash('sha256').update(fs.readFileSync(fp)).digest('hex') : '');
     const h = otpechatok.get(fp);
-    if (!h || !SNYATO[h]) continue;
+    if (!(h && SNYATO[h]) && !(!h && poHvostu(u))) continue;
     const mz = muzeyIz(rel);
     if (!kadrySnyatye.has(mz)) kadrySnyatye.set(mz, new Set());
     kadrySnyatye.get(mz).add(`${rel} → ${pn.slice(1)}`);
