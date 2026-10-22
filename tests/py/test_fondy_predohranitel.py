@@ -28,25 +28,36 @@ class Sessiya:
 
 class Predohranitel(unittest.TestCase):
     def setUp(self):
-        for d in (_set._put, _set._sboi, _set._pauza):
+        for d in (_set._put, _set._okno, _set._pauza):
             d.clear()
         _set._put['h.ru'] = 'pryamo'  # хост уже отвечал в этом прогоне
 
     def test_pauza_i_proba(self):
         s, url, chasy = Sessiya(), 'https://h.ru/api', [1000.0]
         with mock.patch.object(_set.time, 'monotonic', lambda: chasy[0]):
-            for _ in range(_set.SBOI_PODRYAD):
+            for _ in range(_set.OKNO_MIN):
                 with self.assertRaises(_set.Nedostupen):
                     _set.get(s, url)
-            self.assertEqual(s.vyzovy, _set.SBOI_PODRYAD)
+            n = s.vyzovy
             with self.assertRaisesRegex(_set.Nedostupen, 'на паузе'):
                 _set.get(s, url)
-            self.assertEqual(s.vyzovy, _set.SBOI_PODRYAD, 'на паузе сеть не трогаем')
+            self.assertEqual(s.vyzovy, n, 'на паузе сеть не трогаем')
             chasy[0] += _set.PAUZA_S + 1
             s.molchit = False
             self.assertIs(type(_set.get(s, url)), Otvet)
-            self.assertEqual(_set._sboi['h.ru'], 0)
+            self.assertEqual(_set._okno['h.ru'], [False])
             self.assertNotIn('h.ru', _set._pauza)
+
+    def test_redkiy_otvet_ne_spasaet(self):
+        # молчит, отвечает, молчит, молчит, молчит — как Эрмитаж 22.10: доля сбоев 4/5 → пауза
+        s, url = Sessiya(), 'https://h.ru/api'
+        for molchit in (True, False, True, True, True):
+            s.molchit = molchit
+            try:
+                _set.get(s, url)
+            except _set.Nedostupen:
+                pass
+        self.assertIn('h.ru', _set._pauza)
 
     def test_razovyy_sboy_ne_pauza(self):
         s, url = Sessiya(), 'https://h.ru/api'
