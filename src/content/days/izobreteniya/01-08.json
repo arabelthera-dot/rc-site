@@ -6,7 +6,13 @@
   "mechanic": "Ломаешь одним движением: убираешь скошенный нос — и корабль перестаёт лезть на лёд ✅",
   "source": "Источники: rgo.ru · histrf.ru · tvzvezda.ru · tass.ru",
   "legacy_page": "muzei/izobreteniya/day-08jan-icebreaker.html",
-  "images": [],
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/01-08-goskatalog-50255453.jpg",
+      "caption": "Ледокол «Ермакъ». Фотопозитив начала XX века, фотограф неизвестен.",
+      "credit": "автор не указан. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/muzfo-imaginator/rest/images/original/50255453. Права: общественное достояние (аноним, до 1918)."
+    }
+  ],
   "slovar": [
     "tema:ledokoly"
   ]
