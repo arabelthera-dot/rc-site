@@ -97,7 +97,8 @@
     /* следующий день: календарный +1 или следующая единица состава (без круга года:
        после последней единицы намёка нет — выдумывать «завтра» нельзя) */
     var after = function (key) {
-      if (dated) return nextKey(key);
+      /* 29 февраля без карточки — завтра после 28-го 1 марта (невисокосный год, ревизия Р119) */
+      if (dated) { var nk2 = nextKey(key); return nk2 === '02-29' && !(cal[nk2] && cal[nk2].t) ? '03-01' : nk2; }
       var ks = Object.keys(cal).filter(function (k) { return /^\d\d-\d\d$/.test(k); }).sort();
       for (var i = 0; i < ks.length; i++) if (ks[i] > key) return ks[i];
       return null;
