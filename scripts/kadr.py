@@ -739,8 +739,12 @@ def primenit(k, r):
     src = sources().get(r['fond'], {})
     pravo = src.get('rights') or src.get('license') or PRAVA.get(r['fond']) or 'сверить по карточке'
     name = src.get('name') or r['fond']
+    imya = slug(f'{r["fond"]}-{Path(urllib.parse.urlsplit(r["image"]).path).stem}')
+    gotov = ROOT / 'public' / f'muzei/{k["muzey"]}/img/{k["den"]}-{imya}.jpg'
     try:
-        rel, im = save(fetch(r['image']), k['muzey'], k['den'], slug(f'{r["fond"]}-{Path(urllib.parse.urlsplit(r["image"]).path).stem}'))
+        # имя — из адреса скана: файл уже есть = тот же скан под второй копией кадра дня (крупный + превью)
+        rel, im = (gotov.relative_to(ROOT / 'public').as_posix(), Image.open(gotov)) if gotov.exists() \
+            else save(fetch(r['image']), k['muzey'], k['den'], imya)
     except (Exception, SystemExit) as e:
         warn(f'{k["muzey"]}/{k["den"]} {k["fayl"]}: скан не взят ({e})')
         return False
