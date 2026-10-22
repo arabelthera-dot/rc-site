@@ -172,6 +172,21 @@ class Sinhron(unittest.TestCase):
         t, v, z, u = kadr.sinhron_den(self.page, self.day)
         self.assertEqual((t, u), ('<p>x</p>', 1))
 
+    def test_anketa_body(self):
+        """Р154: у дня-анкеты кадр встаёт в блоки body (живую страницу собирает DenAnketa), скрипты не тронуты."""
+        import json
+        d = json.loads(self.day.read_text())
+        d['body'] = [{'type': 'shapka', 'html': '<header>ш</header>'}, {'type': 'kod', 'html': '<script>x="<section class=\\"block\\""</script>'},
+                     {'type': 'istoriya', 'html': '\n<section class="block" id="story"><p>р</p></section>'}]
+        self.day.write_text(json.dumps(d, ensure_ascii=False))
+        nov, v, z, u = kadr.sinhron_anketa(self.day)
+        self.assertEqual((v, z, u), (1, 0, 0))
+        self.assertEqual([b['html'] for b in nov['body'][:2]], [b['html'] for b in d['body'][:2]])
+        h = nov['body'][2]['html']
+        self.assertTrue(h.index('01-07-goskatalog-1.jpg') < h.index('id="story"'))
+        self.day.write_text(json.dumps(nov, ensure_ascii=False))
+        self.assertEqual(kadr.sinhron_anketa(self.day)[1], 0)  # повтор — не дубль
+
 
 class Vernut(unittest.TestCase):
     """Р132: кадр карточки встаёт на место figure, вырезанного заменой #333, той же обёрткой; счётчик — по числу кадров."""

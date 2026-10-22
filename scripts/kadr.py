@@ -1197,9 +1197,12 @@ def _img(k, cls=None, lazy=True):
 
 def sinhron_den(page, day):
     """Возвращает (новый текст, вставлено, марок заменено, марок убрано)."""
-    t = page.read_text()
+    return sinhron_tekst(page.read_text(), day, page.parent.name)
+
+
+def sinhron_tekst(t, day, muzey):
     kadry = fond_kadry(day) if day.is_file() else []
-    est = lambda k: _dub(dict(k, muzey=page.parent.name), t, ROOT / 'public')  # Р132: тот же файл / та же вещь — не дубль
+    est = lambda k: _dub(dict(k, muzey=muzey), t, ROOT / 'public')  # Р132: тот же файл / та же вещь — не дубль
     novye = [k for k in kadry if not est(k)]
     zameneno = ubrano = 0
     # (б) марки → кадр из json того же дня, нечем — убрать
@@ -1266,21 +1269,48 @@ def sinhron_den(page, day):
     return t, vstavleno, zameneno, ubrano
 
 
+# Р154: у дня-анкеты (в json есть body, ADR docs/adr/0001-anketa-dnya.md) живую страницу собирает DenAnketa из body,
+# а full-pages того дня уходит на den/<день>/staraya/ — кадр нужен в блоках body. Служебные блоки (скрипты, движок) не трогаем.
+SLUZH_BLOKI = {'kod', 'dvizhok', 'nastroyki'}
+RAZDEL = '\x00'
+
+
+def sinhron_anketa(day):
+    """Тот же sinhron_tekst по блокам body дня-анкеты: (новый json или None, вставлено, марок заменено, марок убрано)."""
+    d = json.loads(day.read_text()) if day.is_file() else {}
+    body = d.get('body') or []
+    idx = [i for i, b in enumerate(body) if b.get('type') not in SLUZH_BLOKI and isinstance(b.get('html'), str)]
+    if not idx:
+        return None, 0, 0, 0
+    t, v, z, u = sinhron_tekst(RAZDEL.join(body[i]['html'] for i in idx), day, day.parent.name)
+    chasti = t.split(RAZDEL)
+    if not (v or z or u) or len(chasti) != len(idx):
+        return None, 0, 0, 0
+    for i, h in zip(idx, chasti):
+        body[i]['html'] = h
+    return d, v, z, u
+
+
 def sinhron(muzey=None, prim=False, tolko=None):
     itog = {}
-    for page in sorted((ROOT / FULL).glob(f'{muzey or "*"}/*.html')):
-        m, den = page.parent.name, page.stem
+    dni = {(p.parent.name, p.stem) for p in (ROOT / FULL).glob(f'{muzey or "*"}/*.html')}
+    dni |= {(p.parent.name, p.stem) for p in (ROOT / 'src/content/days').glob(f'{muzey or "*"}/*.json')}
+    for m, den in sorted(dni):
         if tolko and den != tolko:
             continue
-        day = ROOT / 'src/content/days' / m / f'{den}.json'
-        t, v, z, u = sinhron_den(page, day)
-        if not (v or z or u):
-            continue
-        s = itog.setdefault(m, [0, 0, 0, 0])
-        s[0] += 1; s[1] += v; s[2] += z; s[3] += u
-        print(f'{m}/{den}: вставить {v}, марок заменить {z}, убрать {u}')
-        if prim:
-            page.write_text(t)
+        page, day = ROOT / FULL / m / f'{den}.html', ROOT / 'src/content/days' / m / f'{den}.json'
+        for kuda, (t, v, z, u) in (('', sinhron_den(page, day) if page.is_file() else (None, 0, 0, 0)),
+                                    (' (анкета, body)', sinhron_anketa(day))):
+            if not (v or z or u):
+                continue
+            s = itog.setdefault(m, [0, 0, 0, 0])
+            s[0] += 1; s[1] += v; s[2] += z; s[3] += u
+            print(f'{m}/{den}{kuda}: вставить {v}, марок заменить {z}, убрать {u}')
+            if prim:
+                if kuda:
+                    day.write_text(json.dumps(t, ensure_ascii=False, indent=2) + '\n')
+                else:
+                    page.write_text(t)
     for m, (d, v, z, u) in itog.items():
         print(f'итог {m}: дней {d}, кадров вставлено {v}, марок заменено {z}, убрано {u}')
     if not prim:
