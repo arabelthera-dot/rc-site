@@ -5,56 +5,5 @@
   "hook": "Почему ярославское село выглядит как нарядный городской квартал?",
   "source": "ЮНЕСКО: Vyatskoe village, предварительный список № 6441 (whc.unesco.org)",
   "legacy_page": "muzei/arhitektura/vyatskoe.html",
-  "images": [
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/lions-street.webp",
-      "caption": "Середская улица у Дома со львами. Фото: Чуринъ, CC BY-SA 4.0. Веб-версия исходного кадра.",
-      "credit": "Чуринъ, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/lions.webp",
-      "caption": "Дом со львами Рельеф работает внутри всей фасадной композиции. Фото Blooming soul, CC BY-SA 4.0.",
-      "credit": "Blooming soul, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/landscape.webp",
-      "caption": "Село: дома, дорога и храм читаются как связанная среда.",
-      "credit": "Vyatskoe, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/lion-detail.webp",
-      "caption": "Львиная маска Производная деталь помогает увидеть объём лепнины. Фото Blooming soul, CC BY-SA 4.0; кадрирование музея.",
-      "credit": "Blooming soul, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/house-16.webp",
-      "caption": "Ритм проёмов Окна, карниз и вертикали собираются в парадное лицо. Фото Виталий Барсов, CC BY-SA 4.0.",
-      "credit": "Виталий Барсов, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/house-10.webp",
-      "caption": "Дом № 10 Другой фасад сохраняет тот же язык порядка и рельефа. Фото Виталий Барсов, CC BY-SA 4.0.",
-      "credit": "Виталий Барсов, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/house-14.webp",
-      "caption": "Дом № 14 Сравни ширину простенков и завершение стены. Фото Виталий Барсов, CC BY-SA 4.0.",
-      "credit": "Виталий Барсов, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/house-18.webp",
-      "caption": "Дом № 18 Декор меняется, но фасад продолжает разговор с улицей. Фото Виталий Барсов, CC BY-SA 4.0.",
-      "credit": "Виталий Барсов, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/davydkovskaya-13.webp",
-      "caption": "Давыдковская улица Городской приём не привязан к одному знаменитому дому. Фото Виталий Барсов, CC BY-SA 4.0.",
-      "credit": "Виталий Барсов, CC BY-SA 4.0, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/vyatskoe/pervomayskaya-9.webp",
-      "caption": "Усадьба на Первомайской Ещё один способ связать дом, ограду и уличный фронт. Фото Виталий Барсов, CC BY-SA 4.0.",
-      "credit": "Виталий Барсов, CC BY-SA 4.0, Wikimedia Commons"
-    }
-  ]
+  "images": []
 }

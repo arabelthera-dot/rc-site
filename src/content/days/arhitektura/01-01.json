@@ -5,23 +5,7 @@
   "hook": "Что на Кижах стояло изначально, а что привезли ради спасения?",
   "source": "Музей-заповедник «Кижи»: из истории создания музея (site.kizhi.karelia.ru)",
   "legacy_page": "muzei/arhitektura/kizhi-muzey.html",
-  "images": [
-    {
-      "src": "muzei/arhitektura/media/kizhi/pogost-1280.webp",
-      "caption": "Кижский погост; видны реставрационные леса. Фото: Alexxx1979, CC BY-SA 4.0.",
-      "credit": "Alexxx1979, CC BY-SA 4.0; редакционное уменьшение WebP, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/kizhi/pogost-1280.jpg",
-      "caption": "Ансамбль. Две церкви и колокольня работают вместе внутри ограды.",
-      "credit": "Alexxx1979, CC BY-SA 4.0; редакционное уменьшение WebP, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/kizhi/archangel-1280.jpg",
-      "caption": "Деталь. Шатёр, тесовая кровля и переходы объёмов показывают разные задачи плотника.",
-      "credit": "Alexxx1979, CC BY-SA 4.0, Wikimedia Commons"
-    }
-  ],
+  "images": [],
   "slovar": [
     "mesto:kizhi"
   ]

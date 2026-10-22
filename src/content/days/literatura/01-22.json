@@ -6,21 +6,5 @@
   "hook": "Аркадий Гайдар придумал Тимура, который тайно помогал семьям фронтовиков, и по стране поднялись тимуровские команды.",
   "source": "Источник эпизода · Книга «Тимур и его команда», Литературно-мемориальный музей А. П. Гайдара. (Артефакт, https://ar.culture.ru/ru/subject/kniga-timur-i-ego-komanda)",
   "legacy_page": "muzei/literatura/lit-gaydar-timur.html",
-  "images": [
-    {
-      "src": "muzei/literatura/media-timur/marka-hero.jpg",
-      "caption": "Почтовая марка СССР 1964 года: портрет Гайдара и его юные герои",
-      "credit": "Почтовая марка СССР, 1964 (кадр для шапки); «The Soviet Union 1964 CPA 3032 stamp (Soviet Writers. Arkady Gaidar (1904-1941). Heroes of his works - Malchish-Kibalchish, Timur, Chuk and Gek) small resolution.jpg», Wikimedia Commons, общественное достояние"
-    },
-    {
-      "src": "muzei/literatura/media-timur/marka-gaydar-1964.jpg",
-      "caption": "Почтовая марка СССР, 1964. Гайдар и его герои: Мальчиш-Кибальчиш, Тимур, Чук и Гек.",
-      "credit": "Почтовая марка СССР «Аркадий Гайдар», 1964; «The Soviet Union 1964 CPA 3032 stamp (Soviet Writers. Arkady Gaidar (1904-1941). Heroes of his works - Malchish-Kibalchish, Timur, Chuk and Gek) small resolution.jpg», Wikimedia Commons, общественное достояние"
-    },
-    {
-      "src": "muzei/literatura/media-timur/gaydar-foto.jpg",
-      "caption": "Аркадий Гайдар. Фотография неизвестного автора, опубликована в 1946 году.",
-      "credit": "Фотография А. П. Гайдара, автор не установлен, Wikimedia Commons; общественное достояние (анонимная фотография 1930-х годов, опубликована более 70 лет назад)"
-    }
-  ]
+  "images": []
 }

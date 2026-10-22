@@ -5,13 +5,7 @@
   "hook": "Священник и философ спорят в саду — а через год этому тихому миру суждено исчезнуть",
   "mechanic": "Почему они рядом?",
   "source": "Третьяковская галерея, 1917; дату (05.10.1942 ст.) сверить",
-  "images": [
-    {
-      "src": "muzei/iskusstvo/img/10-18-1917-nesterow-philosophen-anagoria.jpg",
-      "caption": "Михаил Нестеров. «Философы» — Сергей Булгаков и Павел Флоренский",
-      "credit": "Михаил Нестеров, 1917. Цифровой файл: Wikimedia Commons, «1917 Nesterow Philosophen anagoria.JPG» (Public domain)."
-    }
-  ],
+  "images": [],
   "slovar": [
     "lyudi:mihail-nesterov"
   ]

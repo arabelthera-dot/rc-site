@@ -72,6 +72,39 @@ for (const f of faily(DIST)) {
   z.stranicy.set(rel, n);
 }
 
+// Снятые кадры (Р90): проход 21.10 чистил карточки дней, а полные страницы остались с кадрами Викисклада —
+// подписи «Фото: ник, CC BY-SA» слова «wikimedia» не содержат, и счётчик выше их не видел.
+// bez-viki-snyato.json — отпечатки (sha256) файлов из data/r90-snyato/ в том виде, в каком они стояли до снятия
+// (Р106, Р108 — личные разрешения Сергея — исключены). Картинка, на которую ссылается страница музея и чей
+// отпечаток в списке, — снятый кадр вернулся. Потолок — "snyato:<музей>" в bez-viki-dolg.json, только убывает.
+import crypto from 'node:crypto';
+const snyatoFile = path.join(path.dirname(new URL(import.meta.url).pathname), 'bez-viki-snyato.json');
+const SNYATO = fs.existsSync(snyatoFile) ? JSON.parse(fs.readFileSync(snyatoFile, 'utf8')) : {};
+const otpechatok = new Map();
+export function ssylkiNaKadry(html) {
+  const out = new Set();
+  const IMG = /[^\s"'(),]+\.(?:jpe?g|png|webp|gif|avif)(?=[\s"'),?#]|$)/gi;
+  for (const m of html.matchAll(/(?:src|srcset|href|content|poster|data-[a-z-]+)\s*=\s*["']([^"']+)["']|"(?:url|image|contentUrl|src)"\s*:\s*"([^"]+)"/gi))
+    for (const u of (m[1] || m[2]).matchAll(IMG)) out.add(u[0]);
+  return out;
+}
+const kadrySnyatye = new Map(); // музей → Set('страница → файл')
+if (Object.keys(SNYATO).length) for (const f of faily(DIST)) {
+  const rel = path.relative(DIST, f).split(path.sep).join('/');
+  if (!/^muzei\/[^/]+\/.*\.html$/.test(rel)) continue;
+  for (const u of ssylkiNaKadry(fs.readFileSync(f, 'utf8'))) {
+    let pn;
+    try { pn = decodeURIComponent(new URL(u, 'https://x/' + rel).pathname).replace(/^\/rc-museum-preview\//, '/'); } catch { continue; }
+    const fp = path.join(DIST, pn);
+    if (!otpechatok.has(fp)) otpechatok.set(fp, fs.existsSync(fp) && fs.statSync(fp).isFile() ? crypto.createHash('sha256').update(fs.readFileSync(fp)).digest('hex') : '');
+    const h = otpechatok.get(fp);
+    if (!h || !SNYATO[h]) continue;
+    const mz = muzeyIz(rel);
+    if (!kadrySnyatye.has(mz)) kadrySnyatye.set(mz, new Set());
+    kadrySnyatye.get(mz).add(`${rel} → ${pn.slice(1)}`);
+  }
+}
+
 const dolgFile = path.join(path.dirname(new URL(import.meta.url).pathname), 'bez-viki-dolg.json');
 const dolg = fs.existsSync(dolgFile) ? JSON.parse(fs.readFileSync(dolgFile, 'utf8')) : {};
 const oshibki = [];
@@ -88,7 +121,13 @@ for (const [mz, z] of stroki) {
     for (const [rel, n] of [...z.stranicy].sort((a, b) => b[1] - a[1])) console.log(`   ${n}\t${rel}`);
   }
 }
-for (const mz of Object.keys(dolg)) if (!poMuzeyam.has(mz)) console.log(`${mz}: 0 — дочищен, строку из bez-viki-dolg.json удалить`);
+for (const [mz, set] of kadrySnyatye) {
+  const potolok = dolg['snyato:' + mz] ?? 0;
+  console.log(`${mz}: снятых кадров Викисклада снова на страницах — ${set.size}${set.size > potolok ? ` (потолок ${potolok})` : ''}`);
+  if (set.size > potolok) { oshibki.push('snyato:' + mz); for (const x of set) console.log('   ' + x); }
+}
+for (const mz of Object.keys(dolg)) if (mz.startsWith('snyato:') && !kadrySnyatye.has(mz.slice(7))) console.log(`${mz}: 0 — дочищен, строку из bez-viki-dolg.json удалить`);
+for (const mz of Object.keys(dolg)) if (!mz.startsWith("snyato:") && !poMuzeyam.has(mz)) console.log(`${mz}: 0 — дочищен, строку из bez-viki-dolg.json удалить`);
 console.log(`Итого упоминаний Википедии/Викисклада: ${itogo}; кадров в музеях: ${itogoKadrov}`);
 if (JSON_OUT) fs.writeFileSync(JSON_OUT, JSON.stringify(Object.fromEntries(stroki.map(([mz, z]) => [mz, { vsego: z.vsego, kadry: [...z.kadry], stranicy: Object.fromEntries(z.stranicy) }])), null, 1));
 if (oshibki.length) {
