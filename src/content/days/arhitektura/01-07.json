@@ -7,29 +7,9 @@
   "legacy_page": "muzei/arhitektura/pokrova-na-nerli.html",
   "images": [
     {
-      "src": "muzei/arhitektura/media/pokrova-na-nerli/hero.webp",
-      "caption": "Церковь Покрова на Нерли, современный вид. Фото: kishjar?, CC BY 2.0; уменьшено.",
-      "credit": "kishjar?, CC BY 2.0; уменьшение и WebP, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/pokrova-na-nerli/ensemble.webp",
-      "caption": "Ландшафт · пойма Нерли и Клязьмы. Фото: Pol33, CC BY-SA 4.0.",
-      "credit": "Pol33, CC BY-SA 4.0; уменьшение и WebP, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/pokrova-na-nerli/detail.webp",
-      "caption": "Белокаменные членения и резьба фасада",
-      "credit": "Soghomon Matevosyan, CC BY-SA 4.0; уменьшение и WebP, Wikimedia Commons"
-    },
-    {
-      "src": "muzei/arhitektura/media/pokrova-na-nerli/building.webp",
-      "caption": "Церковь Покрова на Нерли целиком",
-      "credit": "A. Savin, Free Art License; уменьшение и WebP; «Bogolyubovo asv2019-01 img06 Intercession Church.jpg», Wikimedia Commons, Free Art License"
-    },
-    {
-      "src": "muzei/arhitektura/media/pokrova-na-nerli/landscape.webp",
-      "caption": "Церковь на холме у старого русла",
-      "credit": "kishjar?, CC BY 2.0, Wikimedia Commons"
+      "src": "muzei/arhitektura/img/01-07-pastvu-b0iup2s62nxpk71dy8.jpg",
+      "caption": "Вид на западный вход и часть рельефного пояса церкви Покрова на Нерли, 1883. Фото: И. Ф. Барщевский. PastVu",
+      "credit": "И. Ф. Барщевский, 1883. Источник: PastVu (архив исторических фото по координатам) [pastvu], https://pastvu.com/p/262432. Права: общественное достояние (автор умер в 1948)."
     }
   ]
 }

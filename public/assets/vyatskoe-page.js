@@ -110,7 +110,6 @@
     if (lab) {
       var labData = [
           {
-            image: "media/vyatskoe/landscape.webp",
             alt: "Общий вид Вятского",
             overlay: "landscape",
             kicker: "1 · Село",
@@ -120,7 +119,6 @@
             result: "Проявлена связь поселения: дорога ведёт взгляд между домами к общей вертикали храма.",
           },
           {
-            image: "media/vyatskoe/street.webp",
             alt: "Дома 9 и 11 на улице Клюшниково",
             overlay: "street",
             kicker: "2 · Улица",
@@ -130,7 +128,6 @@
             result: "Проявлена граница улицы. Это схема музейного чтения кадра, не обмер и не доказательство непрерывности всей улицы.",
           },
           {
-            image: "media/vyatskoe/house-16.webp",
             alt: "Парадный фасад дома 16 на улице Клюшниково",
             overlay: "house",
             kicker: "3 · Дом",
@@ -140,7 +137,6 @@
             result: "Проявлена схема фасада: верхняя горизонталь и вертикальные оси связывают окна в одно целое.",
           },
           {
-            image: "media/vyatskoe/facade-detail.webp",
             alt: "Карниз и проёмы дома 16 на улице Клюшниково крупным планом",
             overlay: "detail",
             kicker: "4 · Деталь",
@@ -182,9 +178,11 @@
         var item = labData[index];
         labIndex = index;
         lab.classList.remove("is-revealed");
-        labImage.src = item.image;
-        labImage.alt = item.alt;
-        labCaption.textContent = item.caption;
+        if (labImage && item.image) {
+          labImage.src = item.image;
+          labImage.alt = item.alt;
+          if (labCaption) labCaption.textContent = item.caption;
+        }
         labKicker.textContent = item.kicker;
         labTitle.textContent = item.title;
         labCopy.textContent = item.copy;
