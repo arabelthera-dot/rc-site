@@ -856,7 +856,7 @@ if(cv){ try{
 
   // --- реальные фото как парящие панели ---
   const gallery=[]; const loader=new THREE.TextureLoader();
-  const photos=[{f:'portrait-real.jpg'},{f:'rk1-scheme.jpg'},{f:'test1912.jpg'}];
+  const photos=[];
   photos.forEach((p,idx)=>{loader.load(p.f,tex=>{tex.colorSpace=THREE.SRGBColorSpace;
     const ar=(tex.image.width||1)/(tex.image.height||1); const h=1.55,w=h*ar;
     const g=new THREE.Group();
