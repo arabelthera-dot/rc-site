@@ -4,13 +4,16 @@
 # Пять вопросов: задевает — ничего, только читает сайт; нужно — github.token (чтение); без нужного —
 # спит; проверка — ручной пуск (workflow_dispatch работает и при выключенном расписании); откат —
 # удалить файл или переменную. Выключатель расписания — переменная SMOKE_TEST (≠ '1' — спит).
+# Р76 (21.10.2026): исполнитель — свой (self-hosted arabelthera-dot, схема jarvis-potok.yml и
+# uborshchik-stale.yml в AI_Projects). Причина: сайт открыт только для России, из облака GitHub (США)
+# маршрут виснет — плавающий ERR_TIMED_OUT; с нашего VPS 20/20 зелёных. Правило своего исполнителя:
+# только main и только schedule / workflow_dispatch (/ push в main), никогда pull_request и workflow_run —
+# поэтому запуск после deploy (workflow_run) снят. Код заявок на свой исполнитель не попадает.
+# Браузер ставится без --with-deps (на своём исполнителе нет sudo/apt; библиотеки уже есть на хосте).
 name: smoke
 on:
   schedule:
     - cron: '17 */3 * * *'
-  workflow_run:
-    workflows: [deploy]
-    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,8 +22,11 @@ concurrency:
   cancel-in-progress: true
 jobs:
   sait:
-    if: github.event_name == 'workflow_dispatch' || vars.SMOKE_TEST == '1'
-    runs-on: ubuntu-latest
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event_name == 'schedule' && vars.SMOKE_TEST == '1'))
+    runs-on: [self-hosted, arabelthera-dot]
     timeout-minutes: 10
     steps:
       # sparse-checkout в режиме cone берёт и файлы корня — package.json и package-lock.json:
@@ -35,7 +41,7 @@ jobs:
       - name: Playwright
         run: |
           npm ci --no-audit --no-fund
-          npx --no-install playwright install --with-deps chromium
+          npx --no-install playwright install chromium
       - name: smoke
         working-directory: tests/smoke
         run: npx --no-install playwright test -c playwright.config.mjs
