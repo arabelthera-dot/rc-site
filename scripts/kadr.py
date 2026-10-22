@@ -66,6 +66,8 @@ PRAVA = {'goskatalog': 'Госкаталог прав не даёт — авто
          'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
          'ar_culture': 'у музея-держателя — по карточке Артефакта'}
 FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu']  # порядок поиска
+# Р134: библиотеки с PDF изданий — put без поиска, «адрес PDF#page=N» (страница с 1), права — только --prava
+PDF_FONDY = ['rusneb', 'prlib', 'rsl', 'nlr', 'shpl']
 RAZRESHENIE = None  # Р90: Викисклад — только с --razreshenie (слово Сергея), иначе не трогаем
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
 
@@ -312,7 +314,7 @@ def put(museum, key, title, caption, avtor=None, card=None, prava=None):
     if not day.is_file():
         sys.exit(f'нет дня {day}')
     fond = title.split(':', 1)[0]
-    if fond in FONDY:
+    if fond in FONDY or fond in PDF_FONDY:
         return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava)
     if not RAZRESHENIE:
         sys.exit('Викисклад выключен (Р90): сначала российские фонды и museum-source-access; '
@@ -359,6 +361,21 @@ def write_day(day, rel, caption, credit):
     day.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
 
 
+def pdf_stranica(raw, n):
+    """Р134: кадр — страница n (с 1) PDF издания: самая крупная вложенная картинка, иначе отрисовка 200 dpi."""
+    import pymupdf
+    if not raw.startswith(b'%PDF'):
+        sys.exit('#page=: по адресу не PDF')
+    doc = pymupdf.open(stream=raw, filetype='pdf')
+    if not 1 <= n <= len(doc):
+        sys.exit(f'#page={n}: в PDF {len(doc)} стр.')
+    pg = doc[n - 1]
+    imgs = sorted(pg.get_images(full=True), key=lambda x: x[2] * x[3], reverse=True)
+    if imgs:
+        return doc.extract_image(imgs[0][0])['image']
+    return pg.get_pixmap(dpi=200).tobytes('jpeg')
+
+
 def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
     """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json."""
     if not avtor:
@@ -369,11 +386,18 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
         url, card = f'https://pastvu.com/_p/a/{file}', card or f'https://pastvu.com/p/{cid}'
     else:  # ref = прямой адрес изображения, --card — карточка предмета
         url, card = ref, card or ref
+    url, _, page = url.partition('#page=')
+    if page and fond not in PDF_FONDY:
+        sys.exit(f'{fond}: #page= — только для PDF библиотек ({", ".join(PDF_FONDY)})')
     try:
         raw = fetch(url)
     except Exception as e:
         sys.exit(f'{fond}: файл не получен ({e})')
-    rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'))
+    stem = Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem
+    if page:
+        raw = pdf_stranica(raw, int(page))
+        stem = (urllib.parse.parse_qs(urllib.parse.urlsplit(url).query).get('book_id') or [stem])[0] + f'-s{page}'
+    rel, im = save(raw, museum, key, slug(f'{fond}-{stem}'))
     pravo = prava or src.get('rights') or src.get('license') or PRAVA.get(fond) or ''
     if not LIC_OK.search(pravo):
         sys.exit(f'{fond}: права не названы ({pravo or "нет"}) — посмотри карточку и дай --prava "общественное достояние (автор умер в ГГГГ)"')
