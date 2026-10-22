@@ -136,3 +136,38 @@ class BezMarok(unittest.TestCase):
         for n in ('Бомбардировка крепости Осовец', 'Кижский погост. Колокольня Общий вид.',
                   'Маркиз де Кюстин', 'Портрет генерала Бржозовского'):
             self.assertFalse(kadr.marka(n), n)
+
+
+class Sinhron(unittest.TestCase):
+    """Р128: кадр из фонда, положенный в json дня, попадает в полную страницу; марки уходят."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        r = Path(self.tmp.name)
+        self.day, self.page = r / 'd.json', r / 'p.html'
+        self.day.write_text('{"images": [{"src": "muzei/m/img/01-07-goskatalog-1.jpg", "caption": "Ил-4 перед вылетом, 1942.",'
+                            ' "credit": "Фотограф, 1942. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/x?id=1. Права: общественное достояние."}]}')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_marka_zamenena(self):
+        self.page.write_text('<meta content="https://s/muzei/m/marka-1942.jpg"><div class="st-stage">\n<img class="st-scene active" src="marka-1942.jpg" alt="Почтовая марка СССР">\n</div>'
+                             '<span class="st-src">Марка СССР · 1942</span>')
+        t, v, z, u = kadr.sinhron_den(self.page, self.day)
+        self.assertEqual((v, z, u), (0, 1, 0))
+        self.assertNotIn('марк', t.lower()); self.assertNotIn('marka', t)
+        self.assertIn('src="/muzei/m/img/01-07-goskatalog-1.jpg"', t)
+        self.assertIn('data-source="https://goskatalog.ru/x?id=1"', t)
+
+    def test_vstavka_v_scenu(self):
+        self.page.write_text('<div class="hero-scene st-stage">\n  <img class="st-scene active" src="a.jpg" alt="а">\n</div>')
+        t, v, z, u = kadr.sinhron_den(self.page, self.day)
+        self.assertEqual((v, z, u), (1, 0, 0))
+        self.assertIn('class="st-scene" src="/muzei/m/img/01-07-goskatalog-1.jpg"', t)
+        self.assertEqual(kadr.sinhron_den(self.page.__class__(self.page), self.day)[1], 1)  # без записи — повтор тот же
+
+    def test_marka_ubrana_bez_zameny(self):
+        self.day.write_text('{"images": []}')
+        self.page.write_text('<figure class="fig"><img src="m.jpg" alt="Почтовая марка"><figcaption>м</figcaption></figure><p>x</p>')
+        t, v, z, u = kadr.sinhron_den(self.page, self.day)
+        self.assertEqual((t, u), ('<p>x</p>', 1))
