@@ -158,7 +158,7 @@ def find_goskatalog(fond, query, n, geo):
     objs = json.loads(opener.open(req, timeout=40).read()).get('objects', [])
     for o in objs:
         img = (o.get('mainImage') or {}).get('id')
-        if not img:
+        if not img or marka(o.get('name')):
             continue
         avt = ', '.join(a.get('name', '') for a in o.get('authors') or [] if isinstance(a, dict)) or 'автор не указан'
         print(f"? goskatalog:{gk}/muzfo-imaginator/rest/images/original/{img} | {o.get('name', '')[:90]} | {avt}\n"
@@ -700,6 +700,15 @@ POROG_NAZV = 0.8  # доля слов названия, найденных в о
 KARTINNYE = {'tretyakov', 'rusmuseum', 'Государственная Третьяковская галерея', 'Государственный Русский музей'}  # FOND адаптеров scripts/fondy/
 
 
+# Р126 (Сергей, 22.10): «Вообще нахуй марки не бери, это какой-то колхозанский подход» — филателия не кадр.
+MARKA = re.compile(r'\bмарк(?:а|и|ой|у)\b|\bмарочн|маркированн|\bконверт|\bштемпел|\bфилатели', re.I)
+
+
+def marka(nazv):
+    """Почтовая марка, марочный блок, маркированная карточка, конверт — в кадры не берём (Р126)."""
+    return bool(MARKA.search(str(nazv or '')))
+
+
 def strogo(k, r):
     """Р90: только строгое совпадение. Номер у того же держателя; автор + год + название (название фонда —
     с полем nazvanie подписи, не со всей подписью); выпуск журнала — название журнала + год + номер."""
@@ -884,6 +893,8 @@ def iskat(k, ad):
     for name, fn in ad:
         try:
             for r in fn(dict(kk)) or []:
+                if marka(r.get('title')):
+                    continue
                 kand += 1
                 why = strogo(kk, r)
                 if why:

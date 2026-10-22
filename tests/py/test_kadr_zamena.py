@@ -122,3 +122,17 @@ class Strogo(unittest.TestCase):
     def test_god_daleko_ne_proskakivaet(self):
         r = dict(fond='tretyakov', title='Крестный ход в Курской губернии', avtor='Илья Репин', god='1891')
         self.assertIsNone(kadr.strogo(self.k('Илья Репин', 'Крестный ход в Курской губернии', '1880'), r))
+
+
+class BezMarok(unittest.TestCase):
+    """Р126: марки и прочая филателия в кадры не попадают."""
+    def test_marki(self):
+        for n in ('Марка почтовая. № 893. Н.Ф. Гастелло', 'Почтовая марка, посвященная капитану Гастелло',
+                  'Карточка почтовая маркированная «Дальний бомбардировщик Ил-4»', 'Конверт первого дня',
+                  'Марочный лист «Кижи»'):
+            self.assertTrue(kadr.marka(n), n)
+
+    def test_ne_marki(self):
+        for n in ('Бомбардировка крепости Осовец', 'Кижский погост. Колокольня Общий вид.',
+                  'Маркиз де Кюстин', 'Портрет генерала Бржозовского'):
+            self.assertFalse(kadr.marka(n), n)
