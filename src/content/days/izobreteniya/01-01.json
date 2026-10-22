@@ -5,7 +5,18 @@
   "hook": "Кабельное телевидение начиналось не в Америке: в 1939-м в Москве картинку по проводам получали тридцать квартир.",
   "mechanic": "Ставка до ответа: угадываешь, в какой стране первыми пустили телевидение по проводу, потом видишь ответ ✅",
   "legacy_page": "muzei/izobreteniya/day-01jan-cabletv.html",
-  "images": [],
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/01-01-goskatalog-13319093.jpg",
+      "caption": "Телевизор «Б-2», выпуск 1935–1936 годов.",
+      "credit": "советское производство, 1935–1936. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=4731853. Права: общественное достояние (серийный прибор 1935–1936 годов, автор не указан)."
+    },
+    {
+      "src": "muzei/izobreteniya/img/01-01-goskatalog-12693197.jpg",
+      "caption": "Брошюра «Телевизор Б-2» с описанием и конструкцией прибора, Ленинград, 1936 год.",
+      "credit": "автор не указан, 1936. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=13134005. Права: общественное достояние (анонимное издание 1936 года)."
+    }
+  ],
   "doc": {
     "prolog": "<!DOCTYPE html>\n<html lang=\"ru\" data-museum=\"inventions\" data-fabric=\"instrument\">\n",
     "head_attrs": "",
