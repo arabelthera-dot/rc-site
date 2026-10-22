@@ -380,6 +380,7 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
     credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
     write_day(day, rel, caption, credit)
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
+    sinhron(museum, True, tolko=key)  # Р128: полная страница дня показывает кадр сразу
 
 # ── zamena: массовый перевод кадров с Викисклада на российские фонды (Р90, Сергей 21.10.2026) ──
 WIKI = re.compile(r'commons\.wikimedia\.org|upload\.wikimedia\.org|wikimedia\s+commons|викисклад', re.I)
@@ -1093,12 +1094,136 @@ def razbor(muzey=None, n=5):
         print(f'  {k["podpis"][:90]!r}\n    → {k["avtor"]} | {k["nazvanie"]} | {k["god"]}')
 
 
+# ── sinhron: кадры из фондов — в полные страницы дней (Р128, 22.10.2026) ──
+# Корень: put пишет кадр только в days/<музей>/<день>.json, а сайт показывает full-pages/<музей>/<день>.html.
+FULL = 'src/data/full-pages'
+FOND_CREDIT = re.compile(r'Источник:\s*(?P<name>[^\[]+?)\s*\[(?P<fond>[\w-]+)\],\s*(?P<card>\S+?)\.\s+Права:\s*(?P<prava>.+?)\.?$')
+
+
+def fond_kadry(day):
+    """Кадры json дня, положенные из российских фондов (не Викисклад, не марки)."""
+    out = []
+    for im in json.loads(day.read_text()).get('images') or []:
+        cr, cap = str(im.get('credit') or ''), str(im.get('caption') or '')
+        m = FOND_CREDIT.search(cr)
+        if m and not WIKI.search(cr) and not marka(cap) and not marka(im['src']):
+            out.append(dict(src='/' + im['src'].lstrip('/'), alt=cap.rstrip('.'), caption=cap,
+                            source=m['card'], license=m['prava'], fond=m['name'].strip()))
+    return out
+
+
+def _attr(tag, k):
+    m = re.search(rf'\b{k}="([^"]*)"', tag)
+    return m.group(1) if m else ''
+
+
+def _set(tag, k, v):
+    v = html.escape(v, quote=True)
+    if re.search(rf'\b{k}="', tag):
+        return re.sub(rf'\b{k}="[^"]*"', lambda _: f'{k}="{v}"', tag, count=1)
+    return tag.replace('<img', f'<img {k}="{v}"', 1)
+
+
+def _img(k, cls=None, lazy=True):
+    a = f' class="{cls}"' if cls else ''
+    lz = ' loading="lazy" decoding="async"' if lazy else ''
+    e = lambda s: html.escape(s, quote=True)
+    return f'<img{a} src="{e(k["src"])}" alt="{e(k["alt"])}"{lz} data-source="{e(k["source"])}" data-license="{e(k["license"])}">'
+
+
+def sinhron_den(page, day):
+    """Возвращает (новый текст, вставлено, марок заменено, марок убрано)."""
+    t = page.read_text()
+    kadry = fond_kadry(day) if day.is_file() else []
+    est = lambda k: Path(k['src']).name in t
+    novye = [k for k in kadry if not est(k)]
+    zameneno = ubrano = 0
+    # (б) марки → кадр из json того же дня, нечем — убрать
+    while True:
+        m = next((m for m in re.finditer(r'<img\b[^>]*>', t, re.S)
+                  if marka(_attr(m.group(0), 'src')) or marka(_attr(m.group(0), 'alt'))), None)
+        if not m:
+            break
+        tag, star = m.group(0), _attr(m.group(0), 'src')
+        k = novye[0] if novye else (kadry[0] if kadry else None)
+        fig = None
+        for f in re.finditer(r'<figure\b[^>]*>.*?</figure>', t, re.S):
+            if f.start() <= m.start() and m.end() <= f.end():
+                fig = f
+        if k:
+            nov = tag
+            for a, v in (('src', k['src']), ('alt', k['alt']), ('data-source', k['source']), ('data-license', k['license'])):
+                nov = _set(nov, a, v)
+            nov = re.sub(r'\s(?:width|height)="\d+"', '', nov)
+            t = t[:m.start()] + nov + t[m.end():]
+            if fig:  # подпись фигуры — подпись кадра
+                f = re.search(r'<figure\b[^>]*>.*?</figure>', t[fig.start():], re.S)
+                blok = re.sub(r'(<figcaption[^>]*>).*?(</figcaption>)', lambda x: x[1] + html.escape(k['caption']) + x[2], f.group(0), count=1, flags=re.S)
+                t = t[:fig.start()] + blok + t[fig.start() + f.end():]
+            else:  # подпись сцены рядом: «Марка СССР · 1942» → держатель
+                s = re.search(r'<span class="st-src">([^<]*)</span>', t[m.start():m.start() + 1500])
+                if s and marka(s.group(1)):
+                    a = m.start() + s.start()
+                    t = t[:a] + f'<span class="st-src">{html.escape(k["fond"])}</span>' + t[a + len(s.group(0)):]
+            if star and not star.startswith('http'):  # og:image, JSON-LD
+                t = re.sub(r'(?<=/)' + re.escape(star.lstrip('/').split('/')[-1]) + r'(?=")',
+                           lambda _: k['src'].split('/', 3)[-1], t)
+            if novye and k is novye[0]:
+                novye.pop(0)
+            zameneno += 1
+        else:
+            if fig:
+                t = t[:fig.start()] + t[fig.end():]
+            else:
+                t = t[:m.start()] + t[m.end():]
+                if 'active' in _attr(tag, 'class'):
+                    t = re.sub(r'class="st-scene(?!\s*active)', 'class="st-scene active', t, count=1)
+            ubrano += 1
+    # (а) недостающие кадры фондов: в сцену героя по образцу 01-06, без сцены — фигурой перед источниками
+    vstavleno = 0
+    for k in [k for k in novye if Path(k['src']).name not in t]:
+        st = re.search(r'<div class="[^"]*\bst-stage\b[^"]*">(.*?)(\n\s*)</div>', t, re.S)
+        if st:
+            cls = 'st-scene' if 'st-scene' in st.group(1) else 'st-scene active'
+            t = t[:st.end(1)] + st.group(2) + '  ' + _img(k, cls, lazy=False) + t[st.end(1):]
+        else:
+            fig = f'<figure class="fig">{_img(k)}<figcaption>{html.escape(k["caption"])}</figcaption></figure>\n'
+            p = re.search(r'<section\b[^>]*id="(?:sources|istochniki|prava|kadry)"', t) or re.search(r'</main>', t)
+            if not p:
+                continue
+            t = t[:p.start()] + fig + t[p.start():]
+        vstavleno += 1
+    return t, vstavleno, zameneno, ubrano
+
+
+def sinhron(muzey=None, prim=False, tolko=None):
+    itog = {}
+    for page in sorted((ROOT / FULL).glob(f'{muzey or "*"}/*.html')):
+        m, den = page.parent.name, page.stem
+        if tolko and den != tolko:
+            continue
+        day = ROOT / 'src/content/days' / m / f'{den}.json'
+        t, v, z, u = sinhron_den(page, day)
+        if not (v or z or u):
+            continue
+        s = itog.setdefault(m, [0, 0, 0, 0])
+        s[0] += 1; s[1] += v; s[2] += z; s[3] += u
+        print(f'{m}/{den}: вставить {v}, марок заменить {z}, убрать {u}')
+        if prim:
+            page.write_text(t)
+    for m, (d, v, z, u) in itog.items():
+        print(f'итог {m}: дней {d}, кадров вставлено {v}, марок заменено {z}, убрано {u}')
+    if not prim:
+        print('сухой прогон — применить: --primenit')
+    return itog
+
+
 def main(argv=None):
     import argparse
     global RAZRESHENIE
     ap = argparse.ArgumentParser(prog='kadr.py', description=__doc__.split('\n\n')[0],
                                  epilog='Подробно: python3 scripts/kadr.py <команда> --help', formatter_class=argparse.RawDescriptionHelpFormatter)
-    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,put,zamena,razbor}')
+    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,put,zamena,razbor,sinhron}')
     raz = argparse.ArgumentParser(add_help=False)
     raz.add_argument('--razreshenie', metavar='СЛОВО', help='Р90: Викисклад — только по слову Сергея ("Р№ или дата и слова")')
     f = sub.add_parser('find', parents=[raz], help='кандидаты по российским фондам')
@@ -1119,11 +1244,15 @@ def main(argv=None):
     z.add_argument('--prodolzhit', action='store_true', help='пропустить кадры, уже стоящие в data/r90-na-razreshenie.tsv')
     r = sub.add_parser('razbor', help='без сети: сводка автор/название/год из подписей для zamena')
     r.add_argument('--muzey', help='только этот музей'); r.add_argument('-n', type=int, default=5, help='сколько примеров')
+    sn = sub.add_parser('sinhron', help='Р128: кадры фондов из json дня — в полную страницу; марки — заменить или убрать')
+    sn.add_argument('--muzey', help='только этот музей'); sn.add_argument('--primenit', action='store_true', help='записать (без — сухой список)')
     a = ap.parse_args(argv)
     RAZRESHENIE = getattr(a, 'razreshenie', None)
     if a.cmd == 'zamena':
         zamena(a.muzey, a.primenit, vkl=('loc',) if a.s_loc else (), bez={x.strip() for x in a.bez.split(',') if x.strip()},
                j=a.j, prodolzhit=a.prodolzhit)
+    elif a.cmd == 'sinhron':
+        sinhron(a.muzey, a.primenit)
     elif a.cmd == 'razbor':
         razbor(a.muzey, a.n)
     elif a.cmd == 'find':
