@@ -6,7 +6,13 @@
   "mechanic": "Запускаешь прошлое: гоняешь нефть по трубе, меняешь диаметр и вязкость, видишь, где расчёт побеждает наугад 🔜 (карточка готова, ждёт «да»)",
   "source": "ТАСС · «Первый российский трубопровод» (transnefthistory.tass.ru)",
   "legacy_page": "muzei/izobreteniya/day-05jan-shukhov.html",
-  "images": [],
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/01-05-goskatalog-1828920.jpg",
+      "caption": "Нефтяной промысел в Балаханах под Баку, 1904 год: отсюда в 1878 году ушла к Чёрному городу первая шуховская труба. Государственный центральный музей современной истории России.",
+      "credit": "фотограф не указан. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=5548354. Права: общественное достояние (фотограф не указан, 1904)."
+    }
+  ],
   "doc": {
     "prolog": "<!DOCTYPE html>\n<html lang=\"ru\" data-museum=\"inventions\" data-fabric=\"blueprint\">\n",
     "head_attrs": "",
