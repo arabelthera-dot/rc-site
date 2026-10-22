@@ -211,6 +211,26 @@
   .kassa button[disabled]{cursor:default}
   .kassa button.correct{border-color:#3f9b52;background:rgba(40,120,60,.18)}
   .kassa button.wrong{border-color:#c0453f;background:rgba(180,40,40,.13)}
+  /* ── блоки дня по эталону 01-05 ── */
+  .q{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 22px;margin:12px 0}
+  .q h3{margin:0 0 6px;font-size:19px;color:#fff;font-family:'Playfair Display',Georgia,serif}
+  .q h3 em{display:block;font-style:normal;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;margin-bottom:5px;font-weight:700}
+  .q p{margin:0;color:var(--muted);font-size:14.5px}
+  .deepd{background:rgba(255,255,255,.02);border:1px solid var(--card-b);border-radius:16px;padding:16px 22px}
+  .deepd summary{cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;list-style:none}
+  .deepd summary::-webkit-details-marker{display:none}
+  .deepd[open] summary{margin-bottom:12px;opacity:.7}
+  .deepd h3{font-family:'Playfair Display',Georgia,serif;color:var(--gold-l);font-size:20px;margin:20px 0 6px}
+  .src{font-size:12px;color:var(--muted);opacity:.8;margin-top:14px}
+  .chip{cursor:pointer;background:rgba(255,255,255,.05);border:1px solid var(--card-b);border-radius:20px;padding:7px 16px;margin:4px 5px 4px 0;font-size:13px;display:inline-block;color:var(--muted);font-family:'Inter',sans-serif;transition:.16s}
+  .chip:hover{border-color:var(--gold);color:var(--gold)}
+  .msg{margin:8px 0;padding:12px 16px;border-radius:14px;max-width:88%;font-size:15px}
+  .msg.you{background:rgba(45,140,191,.18);border:1px solid rgba(45,140,191,.28);margin-left:auto;text-align:right;color:#a8d4f0}
+  .msg.inv{background:rgba(255,255,255,.05);border:1px solid var(--card-b);color:var(--ink)}
+  .fork-opt{background:var(--card);border:1px solid var(--card-b);border-radius:14px;padding:16px 18px;margin:10px 0;cursor:pointer;transition:.18s;font-size:15px}
+  .fork-opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
+  .fork-opt.chosen{border-color:var(--gold);background:var(--gold-g)}
+  #forkReal.exp{display:none}
 </style>
 <meta name="description" content="Колесов пришил к живому, бьющемуся сердцу собственную артерию человека — за три года до того, как это сделал Запад">
 <link rel="canonical" href="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov.html">
@@ -435,6 +455,39 @@
   </div>
 </section>
 
+<!-- ── ТРУДНО ПОВЕРИТЬ ── -->
+<section class="block" id="trudno-poverit" style="background:rgba(6,12,23,.6)">
+  <div class="wrap">
+    <div class="kicker">Хирург и его время</div>
+    <h2 style="margin-bottom:6px">В это трудно поверить</h2>
+    <div class="q"><h3><em>Факт 1</em>Восемь минут он держал артерию пережатой — и смотрел на кардиограмму</h3><p>25 февраля 1964 года Колесов не стал сразу вскрывать сосуд. Он пережал артерию и восемь минут следил за ЭКГ: собьётся ритм — резать нельзя. Ритм остался ровным. Только тогда хирург вскрыл артерию и пришил к ней грудную — на сердце, которое ни на секунду не остановилось.</p></div>
+    <div class="q"><h3><em>Факт 2</em>Шов на бьющемся сердце он накладывал под обычной лупой</h3><p>Ни операционного микроскопа, ни аппарата искусственного кровообращения. Колесов шил вручную, «под контролем лупы». Аппарат он не взял сознательно: тяжелобольному, считал хирург, тот только вредит. Больной 44 лет, перенёсший инфаркт восемь лет назад, избавился от болей в сердце.</p></div>
+    <div class="q"><h3><em>Факт 3</em>Первую в жизни операцию он сделал вместо хирурга</h3><p>1931 год, Чусовая, разгар сыпного тифа. Молодой Колесов заведует инфекционным отделением, где тиф, дифтерия и скарлатина лежат вместе, а водопровод и канализация не работают. У двух детей с дифтерией после трахеотомии случились смертельные осложнения — и третью такую операцию хирург доверил Колесову. Она прошла успешно. Анатомию он потом отрабатывал с патологоанатомом в маленькой часовне, приспособленной под прозекторскую.</p></div>
+    <div class="q"><h3><em>Факт 4</em>До первого шунта — 310 операций в обход</h3><p>Прямой шов на сердце не появился из ниоткуда. До 1964 года клиника Колесова сделала 310 операций Фиески и 21 операцию Вайнберга — «непрямых» способов подкормить сердце кровью. Они помогали медленно. Именно эта медленность и толкнула Колесова к прямому пути: пришить артерию к сердцу самому.</p></div>
+    <div class="q"><h3><em>Факт 5</em>Собака с шунтом прожила семь лет — за десять лет до человека</h3><p>1 ноября 1953 года в Москве Владимир Демихов соединил собаке по кличке Дога внутреннюю грудную артерию с сердечной. Шва не было: стеклянная канюля-тройник, затянутая нитками. Дога прожила с новым руслом крови семь лет. Через десять лет Колесов сделал это человеку — уже швом.</p></div>
+  </div>
+</section>
+
+<!-- ── РАЗБОР ── -->
+<section class="block" id="razbor">
+  <div class="wrap">
+    <div class="kicker">Разбор</div>
+    <h2 style="margin-bottom:10px">Для тех, кто смотрит внимательно</h2>
+    <details class="deepd">
+      <summary>Четыре сюжета подробно — развернуть</summary>
+      <h3>Артерию взяли у самого больного</h3>
+      <p>Обходной путь Колесов сделал не из чужого сосуда и не из вены, а из внутренней грудной артерии того же человека: она идёт рядом с сердцем, и её можно отвести, не отрезая от кровотока. Фавалоро в Кливленде в 1967 году шунтировал веной. Разница не только в трёх годах: Колесов первым в мире пришил к сердцу собственную артерию больного — швом, руками.</p>
+      <h3>Демихов и Колесов — два разных способа</h3>
+      <p>Демихов в 1953 году соединял сосуды собаки стеклянной канюлей, без шва. Колесов в 1964-м шил сосуды человека нитью. Колесов знал работу Демихова и ссылался на неё в своих монографиях, но путь у него свой. Поэтому точнее так: сначала на собаке — Демихов, потом на человеке — Колесов.</p>
+      <h3>Кто такой Эффлер и почему важна его рецензия</h3>
+      <p>В ноябре 1966 года американский «The Journal of Thoracic and Cardiovascular Surgery» отправил рукопись Колесова Дональду Эффлеру — шефу Кливлендской клиники, где работал Рене Фавалоро. Статья вышла в октябре 1967 года с его оговоркой, что «по некоторым позициям» он иного мнения. Колесов ответил там же. Русская работа ушла в печать через руки главного соперника — и вышла.</p>
+      <h3>Мальчик из церковного хора</h3>
+      <p>Колесов родился 24 сентября 1904 года в вологодской деревне Мартьяновская, в крестьянской семье, где было шестеро детей. Мальчишкой, выучившись грамоте и чистописанию, подрабатывал писарем при церкви в селе Кубенское и пел в церковном хоре. Твёрдая рука чистописания пригодилась потом там, где ошибка в миллиметр стоит жизни.</p>
+    </details>
+    <div class="src">Источники: vestnik-grekova.ru · heart-master.com · racvs.ru · mediasphera.ru · 1spbgmu.ru</div>
+  </div>
+</section>
+
 <section class="block" id="quiz">
   <div class="wrap">
     <div class="kicker">Проверь себя · 5 вопросов</div>
@@ -445,10 +498,136 @@
   </div>
 </section>
 
+<!-- ── МИРОВОЙ КОНТЕКСТ ── -->
+<section class="block" id="mirovoy-kontekst">
+  <div class="wrap">
+    <div class="kicker">Контекст</div>
+    <h2 style="margin-bottom:6px">Что в это время делал мир</h2>
+    <p style="max-width:66ch">Тысяча девятьсот шестьдесят четвёртый. В феврале, в те же дни, что и операция в Ленинграде, Америка смотрит по телевизору на «Битлз». Осенью Токио принимает первую в Азии Олимпиаду, а Япония запускает скоростной поезд «Синкансэн». В октябре над планетой летит «Восход» — первый в мире многоместный космический корабль.</p>
+    <p style="max-width:66ch">Мир разгоняется — а лечить больное сердце медицина почти не умеет. Хирурги обходят его стороной: пытаются подкормить кровью непрямыми операциями и ждут, сработает ли. В Ленинграде профессор Колесов, сделавший таких операций больше трёхсот, решает идти напрямую — к самой артерии бьющегося сердца.</p>
+    <p style="max-width:66ch">Отсюда вывод, ради которого этот день стоит в календаре: <b style="color:var(--gold-l)">первым бывает тот, кто решился сделать руками то, что другие считали слишком опасным.</b> Сегодня, по словам историков хирургии, едва ли найдётся клиника в мире, где не применяют его операцию.</p>
+  </div>
+</section>
+
+<!-- ── ЧАТ ── -->
+<section class="block" id="chat-sec">
+  <div class="wrap">
+    <div class="kicker">Поговори с изобретателем</div>
+    <h2>Спроси Василия Колесова</h2>
+    <p style="color:var(--muted)">Задай вопрос — ответит сам хирург.</p>
+    <div id="starters"></div>
+    <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <input id="chatInput" type="text" placeholder="Написать вопрос..." aria-label="Вопрос Василию Колесову" style="flex:1;padding:12px 16px;font-size:15px">
+      <button class="btn gold" onclick="sendChat()">Отправить</button>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы сформированы на основе документальных источников.</p>
+  </div>
+</section>
+
+<!-- ── РАЗВИЛКА ── -->
+<section class="block" id="fork" style="background:rgba(45,140,191,.04)">
+  <div class="wrap">
+    <div class="kicker">Твой выбор</div>
+    <h2>А как поступил бы ты?</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">Ленинград, 1964 год. Перед тобой больной 44 лет: инфаркт восемь лет назад, боли в сердце не отпускают. Непрямые операции помогают медленно. Можно пришить артерию прямо к сердцу — но для этого его либо останавливают и подключают аппарат искусственного кровообращения, либо шьют на бьющемся. Ты на месте Колесова — что выбираешь?</p>
+    <div class="fork-opt">🫀 Оперирую на работающем сердце, без аппарата</div>
+    <div class="fork-opt">⚙️ Подключаю аппарат искусственного кровообращения и останавливаю сердце</div>
+    <div class="fork-opt">⏳ Жду, пока появится способ надёжнее, — и делаю ещё одну непрямую операцию</div>
+    <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Колесов шил на работающем сердце: тяжелобольному, считал он, аппарат искусственного кровообращения только вредит. Восемь минут пережатия под контролем ЭКГ, шов под лупой — и больной избавился от болей. Через полвека отказ от аппарата и операция на работающем сердце названы главным направлением коронарной хирургии.</div>
+  </div>
+</section>
+
+<section class="block" id="theme-inventions" style="background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.15)">
+  <div class="wrap">
+    <div class="kicker">Медицина · Русские первенства</div>
+    <h2 style="margin-bottom:6px">Что ещё русские изобрели первыми в теме «медицина»</h2>
+    <p style="color:var(--muted);margin-top:0;margin-bottom:16px;max-width:62ch">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
+    <div style="text-align:center;margin:14px 0 4px">
+      <button class="btn gold" id="themeInvBtn" data-label="Показать 16 изобретений →">Показать 16 изобретений →</button>
+    </div>
+    <div id="themeInvBody" style="display:none;margin-top:20px">
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15)">
+          <span style="color:var(--gold-l);font-weight:600;font-size:14px;letter-spacing:.5px">16 ИЗОБРЕТЕНИЙ · МЕДИЦИНА</span>
+        </div>
+        <div style="padding:4px 20px 12px">
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">28 янв</span>
+          <span>Вакцины Хавкина: первая в мире противохолерная (1892) и противочумная (1897)</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">21 фев</span>
+          <span>Медицинская микробиология, первая в России станция прививок от бешенства</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">6 мар</span>
+          <span>Первый в мире обезболивающий наркоз на поле боя (эфирный)</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">6 апр</span>
+          <span>Антисептическая и полостная хирургия</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">30 апр</span>
+          <span>Первый в мире аппарат искусственного кровообращения (автожектор) — прообраз АИК в современной хирургии</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">15 мая</span>
+          <span><a href="day-15may-mechnikov.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Учение об иммунитете, фагоцитоз (Нобель) →</a></span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">13 июл</span>
+          <span>Первая в мире государственная система здравоохранения (модель Семашко)</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">8 авг</span>
+          <span>Микрохирургия глаза, первый в мире поток-метод операций</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">4 сен</span>
+          <span>Местная анестезия и мазь Вишневского</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">5 сен</span>
+          <span>Научная клиническая медицина, первая бесплатная больничная лаборатория</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">26 сен</span>
+          <span><a href="day-26sep-pavlov.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Учение об условных рефлексах (Нобель) →</a></span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">9 окт</span>
+          <span>Метод хранения и переливания крови (в т.ч. трупной)</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">1 ноя</span>
+          <span>Первое в мире массовое применение живой вакцины от полиомиелита</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">25 ноя</span>
+          <span><a href="day-25nov-pirogov.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Военно-полевая хирургия и наркоз в полевых условиях →</a></span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">10 дек</span>
+          <span>Кардиохирургия, аппарат искусственного сердца, биокибернетика</span>
+        </div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
+          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">28 дек</span>
+          <span>Учение о природной очаговости чумы (мировой приоритет)</span>
+        </div>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:12px">Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="result">
   <div class="wrap">
-    <h2 style="margin-bottom:6px">Итог дня</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Проверка ЭКГ, шов и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
+    <div class="kicker">Итог дня</div>
+    <h2 style="margin-bottom:6px">Сколько баллов ты собрал?</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">Проверка ЭКГ, шов, викторина, выбор в развилке, вопрос хирургу и перечень медицинских первенств вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
     <div class="day-result">
       <div class="dr-score" id="dayTxt">0 / 100 · звание: Гость дня</div>
       <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
@@ -474,7 +653,8 @@
 
 <section class="block" id="calendar">
   <div class="wrap">
-    <h2 style="margin-bottom:6px">Календарь изобретений</h2>
+    <div class="kicker">Календарь изобретений</div>
+    <h2 style="margin-bottom:6px">Выбери любой день года</h2>
     <p style="color:var(--muted);margin-top:0;max-width:62ch">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
     <div id="calbox"></div>
   </div>
@@ -497,14 +677,23 @@
   </div>
 </section>
 
+<section class="block" id="catalog" style="background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none">
+  <div class="wrap" style="text-align:center">
+    <h2 style="margin-bottom:6px;color:#fff">У нас много изобретений</h2>
+    <p style="color:var(--muted);margin:0 auto 16px;max-width:60ch">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
+    <a class="btn gold" href="index.html" style="display:inline-block;text-decoration:none">Вернуться в музей →</a>
+  </div>
+</section>
+
+
 <footer><div class="wrap">
   <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
   Русская цивилизация · Музей «Что изобрели русские первыми в мире»</div></footer>
 
 <script>
 /* ── СЧЁТ ── шкала из 100 держит assets/museum-score.js; здесь только реестр наград.
-   ЭКГ 10 + шов 40 + викторина 5×10 = 100. */
-window.MUSEUM_SCORE = {awards:{ekg:10, shov:40, q:[5,10]},
+   ЭКГ 10 + шов 25 + викторина 5×10 + развилка 5 + чат 5 + перечень темы 5 = 100. */
+window.MUSEUM_SCORE = {awards:{ekg:10, shov:25, q:[5,10], fork:5, chat:5, theme:5},
   ranks:[[100,'Хирург сердца'],[70,'Ассистент Колесова'],[40,'Студент Павловского'],[0,'Гость дня']]};
 </script>
 <script src="../../assets/museum-score.js"></script>
@@ -583,7 +772,7 @@ window.MUSEUM_SCORE = {awards:{ekg:10, shov:40, q:[5,10]},
     P.forEach(function(p,i){ if(!done[i] && Math.hypot(p.x-x,p.y-y)<13) hit=i; });
     if (hit<0){ msg('Мимо: сердце бьётся, лови точку в такт.'); return; }
     done[hit]=true; var n=done.filter(Boolean).length; $('shovTxt').textContent='стежков '+n+' из '+N;
-    if (n===N){ flow=true; award('shov',40); $('shovTxt').textContent='шов готов, кровь идёт в обход';
+    if (n===N){ flow=true; award('shov',25); $('shovTxt').textContent='шов готов, кровь идёт в обход';
       msg('Шов наложен. Кровь пошла по грудной артерии в обход сужения. Так 25 февраля 1964 года Колесов избавил больного от болей — первым в мире сшив такой шунт на бьющемся сердце.','ok'); }
     else msg('Стежок наложен. Осталось '+(N-n)+'.');
   });
@@ -628,6 +817,80 @@ window.MUSEUM_SCORE = {awards:{ekg:10, shov:40, q:[5,10]},
 })();
 </script>
 
+<script>
+// ── РАЗВИЛКА ──────────────────────────────────────────────────────────────────
+document.querySelectorAll('.fork-opt').forEach((el,i)=>{
+  el.onclick=function(){
+    document.querySelectorAll('.fork-opt').forEach(b=>b.classList.remove('chosen'));
+    this.classList.add('chosen');
+    document.getElementById('forkReal').style.display='block';
+    award('fork',5);
+  };
+});
+
+// ── ЧАТ ───────────────────────────────────────────────────────────────────────
+const kb=[
+ {k:['аппарат','искусственн','остановить','остановил','работающ','бьющ'],a:'Сердце я не останавливал и аппарат искусственного кровообращения не подключал. Тяжелобольному он, по моему убеждению, только вредит. Шил на работающем сердце, под лупой. Через полвека именно так — без аппарата, на работающем сердце — назовут главным направлением коронарной хирургии.'},
+ {k:['лупа','лупой','шов','шил','восемь минут','экг','кардиограмм','пережа'],a:'Сначала я пережал артерию и восемь минут смотрел на кардиограмму: собьётся ритм — вскрывать нельзя. Ритм остался ровным. Тогда вскрыл и наложил шов, под контролем лупы. Микроскопа не было, да он и не понадобился.'},
+ {k:['демихов','собак','дога','1953'],a:'Владимир Петрович Демихов в 1953 году в Москве соединил у собаки грудную артерию с сердечной — без шва, стеклянной канюлей. Собака по кличке Дога прожила так семь лет. Я на эти опыты ссылался в своих монографиях. У меня способ свой — шов, и делал я это человеку.'},
+ {k:['эффлер','журнал','статья','рецензи','признал'],a:'Рукопись я отправил в американский «The Journal of Thoracic and Cardiovascular Surgery». В ноябре 1966-го её отдали на рецензию Дональду Эффлеру — шефу Кливлендской клиники. Статья вышла в октябре 1967-го с его оговоркой, что «по некоторым позициям» он иного мнения. Я ответил там же. К тому времени таких больных у меня было уже двенадцать.'},
+ {k:['фавалоро','америк','кливленд','вена','веной','запад'],a:'Рене Фавалоро в Кливленде в 1967 году стал шунтировать веной. Я на три года раньше пришил к сердцу артерию самого больного. Сравнивать, кто лучше, — дело историков. Факты такие.'},
+ {k:['блокад','война','1942','голод'],a:'Всю блокаду я оперировал в Ленинграде — в больнице имени Ленина на Васильевском, потом в эвакогоспитале. Зимой 1942-го от голода у меня самого вода собралась в сердечной сумке — еле выходили к весне. Брата я потерял. А в том же 1942-м мы собрали в блокадном городе научную конференцию: показали двух раненых, спасённых сосудистым швом.'},
+ {k:['инфаркт','1968','экстрен','выжил'],a:'В 1968 году у трёх больных, которых мы готовили к плановой операции, начался инфаркт. Ждать было нельзя — шунтировали экстренно, на работающем сердце: двоих ручным швом, третьего аппаратом АСЦ-4. Все трое выжили.'},
+ {k:['детств','хор','кубенск','деревн','родил','вологод'],a:'Родился я в 1904 году в вологодской деревне Мартьяновская, в крестьянской семье, нас было шестеро детей. Мальчишкой выучился грамоте и чистописанию, подрабатывал писарем при церкви в Кубенском и пел в церковном хоре.'},
+ {k:['чусов','тиф','первая операция','дифтери','1931'],a:'В 1931 году меня отправили в Чусовую заведовать инфекционным отделением — в разгар сыпного тифа. Водопровод не работал, тиф, дифтерия и скарлатина лежали вместе. У двух детей с дифтерией после трахеотомии случились смертельные осложнения, и третью такую операцию хирург доверил мне. Она прошла успешно. Анатомию я потом отрабатывал в часовне, приспособленной под прозекторскую.'},
+ {k:['фиески','вайнберг','непрям','до 1964'],a:'До 1964 года мы сделали 310 операций Фиески и 21 операцию Вайнберга — это непрямые способы подвести к сердцу кровь. Помогали они медленно. Вот эта медленность и заставила меня идти напрямую — к самой артерии.'},
+ {k:['мемуар','записки','книг','оцени'],a:'Свой путь в коронарную хирургию я считал не оценённым по достоинству современниками. «Записки старого хирурга» при жизни не вышли — их издали мои ученики в 2001 году.'},
+ {k:['первым','первый','1964','25 феврал','операци','шунт'],a:'25 февраля 1964 года, Ленинград. Больному сорок четыре года, инфаркт у него был восемь лет назад, боли не отпускали. Я пришил его собственную внутреннюю грудную артерию к артерии сердца — швом, руками. С этой операции, как потом напишут на моей кафедре, началась эпоха коронарного шунтирования.'}
+];
+
+function addMsg(text,who){
+  const d=document.createElement('div');
+  d.className='msg '+who;
+  d.textContent=text;
+  document.getElementById('chatBox').appendChild(d);
+  d.scrollIntoView({behavior:'smooth'});
+}
+
+function findAnswer(q){
+  q=q.toLowerCase();
+  for(const item of kb){
+    if(item.k.some(k=>q.includes(k.toLowerCase())))return item.a;
+  }
+  return 'Спросите точнее — о первой операции 1964 года, о шве на бьющемся сердце, о Демихове, о блокаде или об американском журнале. Отвечу как было.';
+}
+
+function sendChat(){
+  const inp=document.getElementById('chatInput');
+  const q=inp.value.trim();
+  if(!q)return;
+  addMsg(q,'you');
+  inp.value='';
+  setTimeout(()=>{addMsg(findAnswer(q),'inv');award('chat',5);},600);
+}
+document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
+
+// стартовые вопросы + приветствие (без прокрутки при загрузке)
+(function(){
+  const qs=['Почему вы не остановили сердце?','Что сделал Демихов до вас?','Как американский журнал принял вашу статью?'];
+  const box=document.getElementById('starters');
+  qs.forEach(q=>{const c=document.createElement('span');c.className='chip';c.textContent=q;
+    c.onclick=()=>{document.getElementById('chatInput').value=q;sendChat();};box.appendChild(c);});
+  const w=document.createElement('div');w.className='msg inv';
+  w.textContent='Здравствуйте. Василий Иванович Колесов, хирург, кафедра факультетской хирургии в Ленинграде. Спрашивайте — про сердце расскажу как было.';
+  document.getElementById('chatBox').appendChild(w);
+})();
+
+// ── ТЕМАТИЧЕСКИЕ ИЗОБРЕТЕНИЯ ─────────────────────────────────────────────────
+const themeBtn=document.getElementById('themeInvBtn');
+if(themeBtn)themeBtn.onclick=function(){
+  const b=document.getElementById('themeInvBody');
+  const open=b.style.display==='none';
+  b.style.display=open?'block':'none';
+  this.textContent=open?'▲ Скрыть':this.dataset.label||'Показать перечень →';
+  if(open)award('theme',5);
+};
+</script>
 <script src="../../assets/museum-chrome.js"></script>
 <script>window.MUSEUM_SUPPORT={museum:'Музей «Что изобрели русские первыми в мире»'};</script>
 <script src="../../assets/museum-support.js"></script>
