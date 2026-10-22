@@ -67,6 +67,28 @@ class Predohranitel(unittest.TestCase):
         _set.get(s, url)
         self.assertNotIn('h.ru', _set._pauza)
 
+    def test_medlennyy_otvet_kak_sboy(self):
+        # Эрмитаж 22.10: отвечает всегда, но по 9 с — медленные ответы отдаются, хост уходит на паузу
+        s, url, chasy = Sessiya(), 'https://h.ru/api', [1000.0]
+        s.molchit = False
+        def medlenno(*a, **kw):
+            chasy[0] += _set.MEDLENNO_S + 4
+            return Otvet()
+        s.request = medlenno
+        with mock.patch.object(_set.time, 'monotonic', lambda: chasy[0]):
+            for _ in range(_set.OKNO_MIN):
+                self.assertIs(type(_set.get(s, url)), Otvet)
+            self.assertIn('h.ru', _set._pauza)
+            with self.assertRaisesRegex(_set.Nedostupen, 'на паузе'):
+                _set.get(s, url)
+
+    def test_bystryy_otvet_ne_sboy(self):
+        s, url = Sessiya(), 'https://h.ru/api'
+        s.molchit = False
+        for _ in range(_set.OKNO):
+            _set.get(s, url)
+        self.assertEqual(_set._okno['h.ru'], [False] * _set.OKNO)
+
 
 if __name__ == '__main__':
     unittest.main()

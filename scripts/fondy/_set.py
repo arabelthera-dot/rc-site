@@ -7,6 +7,8 @@
 отвечавшему, не меньше DOLYA сбоев (при OKNO_MIN+ запросах) — хост на паузу PAUZA_S: запросы к нему сразу
 Nedostupen, без ожидания таймаута; после паузы одна проба, окно с нуля. Сбои подряд не годятся: редкий ответ
 медленного хоста (Эрмитаж, 22.10) обнулял счёт, и каждый кадр ждал по 9 с.
+Медленный ответ (дольше MEDLENNO_S, как slowCallDurationThreshold в resilience4j) отдаётся вызывающему, но в окне
+считается сбоем: Эрмитаж отвечал по 8–9 с, ни разу не молча, и предохранитель его не ловил.
 
 TLS: verify — бандл certifi + scripts/fondy/certs/*.pem. Там лежат промежуточные сертификаты, которые
 некоторые сайты не отдают сами (Эрмитаж — GlobalSign GCC R46 AlphaSSL CA 2025, корень GlobalSign Root R46
@@ -30,6 +32,7 @@ PLOHO = {403, 407, 429, 502, 503, 504}  # 500 — ответ сервера по
 
 OKNO, OKNO_MIN, DOLYA = 10, 4, 0.5
 PAUZA_S = 60
+MEDLENNO_S = 5
 
 _put: dict[str, str] = {}        # хост -> 'pryamo' | 'proxy' | 'net' (на прогон)
 _okno: dict[str, list] = {}      # хост -> исходы последних OKNO запросов (True — сбой)
@@ -76,16 +79,17 @@ def zapros(s: requests.Session, metod: str, url: str, timeout=None, proxy=None, 
     with _zamok:
         do = _pauza.get(host, 0)
         if do > time.monotonic():
-            raise Nedostupen(f'{host}: на паузе — больше половины запросов не ответили')
+            raise Nedostupen(f'{host}: на паузе — больше половины запросов не ответили или ответили медленно')
         if do:
             # пауза вышла: эта проба одна, остальные ждут её исхода ещё PAUZA_S
             _pauza[host] = time.monotonic() + PAUZA_S
+    t0 = time.monotonic()
     try:
         r = _zapros(s, metod, url, host, put, timeout, proxy, **kw)
     except Nedostupen:
         _ishod(host, True)
         raise
-    _ishod(host, False)
+    _ishod(host, time.monotonic() - t0 > MEDLENNO_S)
     return r
 
 
