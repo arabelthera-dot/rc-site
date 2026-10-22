@@ -915,10 +915,14 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
     # прежние строки обрабатываемых музеев: при обрыве необработанные дописываются, ничего не теряется
     gotovo = set()  # ключи (музей, день, файл), обработанные в этом прогоне
     propusk = {klyuch(r) for r in stary} if prodolzhit else set()
+    # найденное — data/r90-naydeno.tsv, пишется сразу: дозапуск и --primenit берут находку оттуда, без сети
+    nayd_put = ROOT / 'data/r90-naydeno.tsv'
+    naydeno = naydeno_chitat(nayd_put)
     if prodolzhit:
         n0 = len(kadry)
-        kadry = [k for k in kadry if (k['muzey'], k['den'], k['fayl']) not in propusk]
-        print(f'--prodolzhit: пропускаю {n0 - len(kadry)} кадров, уже стоящих в таблице', flush=True)
+        kadry = [k for k in kadry if (k['muzey'], k['den'], k['fayl']) not in propusk
+                 and (prim or (k['muzey'], k['den'], k['fayl']) not in naydeno)]
+        print(f'--prodolzhit: пропускаю {n0 - len(kadry)} кадров, уже стоящих в таблицах', flush=True)
     # пишется во временный файл рядом, в конце — атомарная подмена (os.replace)
     fd, tmp = tempfile.mkstemp(prefix='.r90-', suffix='.tsv', dir=out.parent)
     tsv = os.fdopen(fd, 'w')
@@ -937,9 +941,14 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
     kadry.sort(key=lambda k: (str(k['put']), -(k.get('tag') or (0,))[0]))
     pool = ThreadPoolExecutor(max_workers=max(1, j))
     try:
-        futs = [(k, pool.submit(iskat, k, ad)) for k in kadry]
+        futs = [(k, None if (k['muzey'], k['den'], k['fayl']) in naydeno else pool.submit(iskat, k, ad)) for k in kadry]
         for k, fu in futs:
-            kk, hit, kand, upali = fu.result()
+            if fu is None:  # найдено прежним прогоном
+                kk, hit, kand, upali = k, naydeno[(k['muzey'], k['den'], k['fayl'])], 0, []
+            else:
+                kk, hit, kand, upali = fu.result()
+                if hit:
+                    naydeno_zapisat(nayd_put, k, hit)
             s = itog.setdefault(k['muzey'], dict(kadrov=0, derzh=0, inv=0, naydeno=0, zameneno=0))
             s['kadrov'] += 1; s['derzh'] += bool(k['derzhatel']); s['inv'] += bool(k['inv'])
             stranica = f'{k["muzey"]}/{k["den"]}'
@@ -1008,6 +1017,33 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
         sys.exit(f'СТОП: ноль находок в {", ".join(nol)} — до следующего шага посмотреть кадры глазами, '
                  'разложить по типу (картина, фото войны, марка, газета, экспонат, памятник) и проверить, '
                  'есть ли под каждый тип своя база; сеть виноватой не считать')
+
+
+NAYD_SHAPKA = ('музей', 'день', 'файл', 'фонд', 'карточка', 'сверка', 'находка (json)')
+
+
+def naydeno_chitat(put):
+    """(музей, день, файл) -> (hit, сверка) из data/r90-naydeno.tsv; поздняя строка того же кадра главнее."""
+    d = {}
+    if put.is_file():
+        for r in put.read_text().splitlines()[1:]:
+            c = r.split('\t')
+            if len(c) == len(NAYD_SHAPKA):
+                d[tuple(c[:3])] = (json.loads(c[6]), c[5])
+    return d
+
+
+def naydeno_zapisat(put, k, hit):
+    import fcntl
+    clean = lambda v: re.sub(r'[\t\n]+', ' ', str(v))
+    with open(put.parent / '.r90.lock', 'w') as zamok:
+        fcntl.flock(zamok, fcntl.LOCK_EX)
+        novyy = not put.is_file()
+        with open(put, 'a') as f:
+            if novyy:
+                f.write('\t'.join(NAYD_SHAPKA) + '\n')
+            f.write('\t'.join(map(clean, [k['muzey'], k['den'], k['fayl'], hit[0]['fond'], hit[0]['card'], hit[1]]))
+                    + '\t' + json.dumps(hit[0], ensure_ascii=False) + '\n')
 
 
 def kadry_muzeya(muzey=None):
