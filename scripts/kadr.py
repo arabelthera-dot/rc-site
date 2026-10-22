@@ -78,8 +78,8 @@ GK_NOMER = re.compile(r'goskatalog\.ru/portal/#/collections\?id=(\d+)')
 
 def atribuciya(avtor, muzey, card, fond_name):
     """Видимая строка credit line: «Фото: автор, год. Хранится: музей. Госкаталог музейного фонда РФ, № N»."""
-    if not re.search(r'\b(1[6-9]\d\d|20[0-2]\d)\b', avtor or ''):
-        sys.exit('--hranitsya: в авторе нужен год по карточке — «Фамилия И. О., 1961» или «автор не указан, 1961»')
+    if not re.search(r'\b(1[6-9]\d\d|20[0-2]\d)\b|\b[XVI]{2,5}\s*(?:в\.|век)', avtor or ''):  # год или век по карточке
+        sys.exit('--hranitsya: в авторе нужен год (или век) по карточке — «Фамилия И. О., 1961» или «автор не указан, середина XX века»')
     if not (muzey or '').strip() or not re.match(r'https?://', card or ''):
         sys.exit('--hranitsya: нужны полное название музея и --card — адрес карточки предмета')
     m = GK_NOMER.search(card)
@@ -1254,8 +1254,13 @@ def sinhron_den(page, day):
             hr = f' <span class="credit">{html.escape(k["vidno"])}.</span>' if k.get('vidno') else ''
             fig = f'<figure class="fig">{_img(k)}<figcaption>{html.escape(k["caption"])}{hr}</figcaption></figure>\n'
             p = re.search(r'<section\b[^>]*id="(?:sources|istochniki|prava|kadry)"', t) or re.search(r'</main>', t)
-            if not p:
-                continue
+            if not p:  # Р136: страница с анимированным героем без <main> и раздела источников — свой раздел перед рассказом
+                p = re.search(r'<section class="block" id="story"', t) or re.search(r'<section class="block"', t)
+                if not p:
+                    continue
+                im = _img(k).replace('<img ', '<img style="display:block;width:100%;height:auto" ', 1)
+                fig = (f'<section class="block" id="kadry"><div class="wrap"><figure class="fig" style="margin:0 auto;max-width:820px">{im}'
+                       f'<figcaption style="font-size:13px;color:var(--muted);margin-top:8px">{html.escape(k["caption"])}{hr}</figcaption></figure></div></section>\n')
             t = t[:p.start()] + fig + t[p.start():]
         vstavleno += 1
     return t, vstavleno, zameneno, ubrano

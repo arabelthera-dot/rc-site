@@ -18,6 +18,10 @@ class Atribuciya(unittest.TestCase):
         s = kadr.atribuciya('Иванов И. И., 1975', 'Российская национальная библиотека', 'https://nlr.ru/x/1', 'РНБ')
         self.assertTrue(s.endswith('Хранится: Российская национальная библиотека. РНБ, карточка https://nlr.ru/x/1'), s)
 
+    def test_vek_po_kartochke(self):
+        s = kadr.atribuciya('автор не указан, середина XX века', 'Губкинский краеведческий музей', GK, 'Госкаталог')
+        self.assertTrue(s.startswith('Фото: автор не указан, середина XX века. Хранится:'), s)
+
     def test_bez_goda_bez_muzeya_bez_kartochki(self):
         for av, mz, card in (('Иванов И. И.', 'Музей', GK), ('Иванов, 1961', '', GK), ('Иванов, 1961', 'Музей', '')):
             with self.assertRaises(SystemExit):
