@@ -35,7 +35,7 @@ PastVu (только с --geo lat,lon). Русский музей, Третья�
   kadr.py razbor [--muzey X] [-n 5]                    без сети: сколько кадров без держателя получили автор/название/год
 Лицензии — только общественное достояние, CC0, CC BY, CC BY-SA; прочее put отклоняет.
 """
-import difflib, html, io, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
+import contextlib, difflib, html, io, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
 from pathlib import Path
 
 from PIL import Image
@@ -293,8 +293,10 @@ def find(query, n=10, geo=None):
         name = names.get(fond, {}).get('name', fond)
         print(f'== {fond} — {name}', flush=True)
         try:
-            k = SEARCH[fond](fond, query, n, geo)
-            if k:
+            with contextlib.redirect_stdout(io.StringIO()) as out:
+                k = SEARCH[fond](fond, query, n, geo)
+            k -= bez_marok(out.getvalue())
+            if k > 0:
                 got.append(f'{fond}: {k}')
         except Exception as e:
             warn(f'  {fond} недоступен: {type(e).__name__}: {str(e)[:200]} — дальше')
@@ -703,12 +705,24 @@ KARTINNYE = {'tretyakov', 'rusmuseum', 'Государственная Трет�
 
 
 # Р126 (Сергей, 22.10): «Вообще нахуй марки не бери, это какой-то колхозанский подход» — филателия не кадр.
-MARKA = re.compile(r'\bмарк(?:а|и|ой|у)\b|\bмарочн|маркированн|\bконверт|\bштемпел|\bфилатели', re.I)
+MARKA = re.compile(r'\bмар(?:к(?:а|и|е|у|ой|ами|ах)|ок)\b|\bмарочн|маркированн|\bконверт|\bштемпел|\bфилатели'
+                   r'|почтов\w* (?:блок|карточк)|\b(?:postage )?stamps?\b|\bbriefmarke', re.I)
 
 
 def marka(nazv):
     """Почтовая марка, марочный блок, маркированная карточка, конверт — в кадры не берём (Р126)."""
     return bool(MARKA.search(str(nazv or '')))
+
+
+def bez_marok(vyvod):
+    """Р126: кандидаты любого фонда («? фонд:файл | название | …» и строки под ним) — марки выкидываем, прочее печатаем.
+    Возвращает число выкинутых."""
+    bloki = re.split(r'(?m)^(?=\? )', vyvod)
+    marki = [b for b in bloki if b.startswith('? ') and marka(b.split('\n', 1)[0].split(' | ', 1)[-1])]
+    print(''.join(b for b in bloki if b not in marki), end='', flush=True)
+    if marki:
+        warn(f'  марок отсеяно (Р126): {len(marki)}')
+    return len(marki)
 
 
 def strogo(k, r):
