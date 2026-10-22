@@ -307,13 +307,17 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:48]
 
 
-def put(museum, key, title, caption, avtor=None, card=None, prava=None):
+def put(museum, key, title, caption, avtor=None, card=None, prava=None, istochnik=None, obrez=None):
     day = ROOT / 'src/content/days' / museum / f'{key}.json'
     if not day.is_file():
         sys.exit(f'нет дня {day}')
     fond = title.split(':', 1)[0]
+    if istochnik:
+        if fond != 'goskatalog':
+            sys.exit('--istochnik-fonda — только для кадров Госкаталога (goskatalog:<адрес изображения>)')
+        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava, istochnik, obrez)
     if fond in FONDY:
-        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava)
+        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava, obrez=obrez)
     if not RAZRESHENIE:
         sys.exit('Викисклад выключен (Р90): сначала российские фонды и museum-source-access; '
                  'кадр оттуда — только с --razreshenie "слово Сергея"')
@@ -335,8 +339,12 @@ def put(museum, key, title, caption, avtor=None, card=None, prava=None):
     print(f'{rel} {im.size[0]}×{im.size[1]} {c["license"]}\n  {credit}')
 
 
-def save(raw, museum, key, name):
+def save(raw, museum, key, name, obrez=None):
     im = Image.open(io.BytesIO(raw)).convert('RGB')
+    if obrez:  # доли кадра слева, сверху, справа, снизу: служебная шкала цвета, поля скана
+        l, t, r, b = obrez
+        w, h = im.size
+        im = im.crop((round(w * l), round(h * t), round(w * (1 - r)), round(h * (1 - b))))
     im.thumbnail((1600, 1600))
     if min(im.size) < 400:
         sys.exit(f'кадр мелкий ({im.size[0]}×{im.size[1]}) — ищи крупнее')
@@ -359,9 +367,24 @@ def write_day(day, rel, caption, credit):
     day.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
 
 
-def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
-    """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json."""
-    if not avtor:
+def gk_podpis(avtor, god, muzey, nomer):
+    """Р136: подпись кадра Госкаталога без открытой лицензии — кто снял, когда, где хранится, номер в Госкаталоге."""
+    if not re.fullmatch(r'\d{5,9}', str(nomer or '')):
+        sys.exit(f'Госкаталог: номер предмета — цифры из адреса карточки (?id=…), дано «{nomer}»')
+    if not avtor or not god:
+        sys.exit('Госкаталог: автор (или «автор не указан») и год по карточке обязательны')
+    if not muzey or len(muzey) < 12 or not re.search(r'[Мм]узе|РОСФОТО|[Гг]алере|[Кк]унсткамер', muzey):
+        sys.exit(f'Госкаталог: --hranitsya — полное название музея-держателя по карточке, дано «{muzey}»')
+    return f'Фото: {avtor}, {god}. Хранится: {muzey}. Госкаталог музейного фонда РФ, № {nomer}'
+
+
+def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None, istochnik=None, obrez=None):
+    """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json.
+    istochnik — Р136 (Сергей 22.10.2026): кадр Госкаталога без открытой лицензии ставится только с полной
+    атрибуцией (dict avtor/god/muzey/nomer); права не выдумываем, подпись называет держателя и номер."""
+    if istochnik:
+        credit = gk_podpis(avtor, istochnik.get('god'), istochnik.get('muzey'), istochnik.get('nomer'))
+    elif not avtor:
         sys.exit(f'{fond}: шестым аргументом — автор и год по-русски (фонд не отдаёт паспорт машинно)')
     src = sources()[fond]
     if fond == 'pastvu':  # ref = <cid>:<файл> из find --geo
@@ -373,11 +396,13 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
         raw = fetch(url)
     except Exception as e:
         sys.exit(f'{fond}: файл не получен ({e})')
-    rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'))
-    pravo = prava or src.get('rights') or src.get('license') or PRAVA.get(fond) or ''
-    if not LIC_OK.search(pravo):
-        sys.exit(f'{fond}: права не названы ({pravo or "нет"}) — посмотри карточку и дай --prava "общественное достояние (автор умер в ГГГГ)"')
-    credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
+    if not istochnik:
+        pravo = prava or src.get('rights') or src.get('license') or PRAVA.get(fond) or ''
+        if not LIC_OK.search(pravo):
+            sys.exit(f'{fond}: права не названы ({pravo or "нет"}) — посмотри карточку и дай --prava "общественное достояние (автор умер в ГГГГ)"'
+                     ' или, для Госкаталога по Р136, --istochnik-fonda НОМЕР --hranitsya МУЗЕЙ --god ГОД')
+        credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
+    rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'), obrez)
     write_day(day, rel, caption, credit)
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
     vernut(museum, True, tolko=key)  # Р132: на место вырезанного заменой #333 figure
@@ -1098,6 +1123,8 @@ def razbor(muzey=None, n=5):
 # ── sinhron: кадры из фондов — в полные страницы дней (Р128, 22.10.2026) ──
 # Корень: put пишет кадр только в days/<музей>/<день>.json, а сайт показывает full-pages/<музей>/<день>.html.
 FULL = 'src/data/full-pages'
+GK_CREDIT = re.compile(r'^Фото: (?P<avtor>.+?), (?P<god>[^,]+?)\. Хранится: (?P<muzey>.+?)\. Госкаталог музейного фонда РФ, № (?P<nomer>\d+)$')
+GK_KARTA = 'https://goskatalog.ru/portal/#/collections?id='
 FOND_CREDIT = re.compile(r'Источник:\s*(?P<name>[^\[]+?)\s*\[(?P<fond>[\w-]+)\],\s*(?P<card>\S+?)\.\s+Права:\s*(?P<prava>.+?)\.?$')
 
 
@@ -1107,7 +1134,11 @@ def fond_kadry(day):
     for im in json.loads(day.read_text()).get('images') or []:
         cr, cap = str(im.get('credit') or ''), str(im.get('caption') or '')
         m = FOND_CREDIT.search(cr)
-        if m and not WIKI.search(cr) and not marka(cap) and not marka(im['src']):
+        g = GK_CREDIT.match(cr)
+        if g and not marka(cap) and not marka(im['src']):  # Р136: подпись источника целиком, номер — ссылка
+            out.append(dict(src='/' + im['src'].lstrip('/'), alt=cap.rstrip('.'), caption=cap,
+                            source=GK_KARTA + g['nomer'], license=cr, fond='', gk=g['nomer']))
+        elif m and not WIKI.search(cr) and not marka(cap) and not marka(im['src']):
             out.append(dict(src='/' + im['src'].lstrip('/'), alt=cap.rstrip('.'), caption=cap,
                             source=m['card'], license=m['prava'], fond=m['name'].strip()))
     return out
@@ -1188,7 +1219,8 @@ def sinhron_den(page, day):
             cls = 'st-scene' if 'st-scene' in st.group(1) else 'st-scene active'
             t = t[:st.end(1)] + st.group(2) + '  ' + _img(k, cls, lazy=False) + t[st.end(1):]
         else:
-            fig = f'<figure class="fig">{_img(k)}<figcaption>{html.escape(k["caption"])}</figcaption></figure>\n'
+            cap = html.escape(k['caption']) + (f' <span class="credit">{gk_html(k["license"])}</span>' if k.get('gk') else '')
+            fig = f'<figure class="fig">{_img(k)}<figcaption>{cap}</figcaption></figure>\n'
             p = re.search(r'<section\b[^>]*id="(?:sources|istochniki|prava|kadry)"', t) or re.search(r'</main>', t)
             if not p:
                 continue
@@ -1260,6 +1292,11 @@ def karta_kadry(day, muzey):
         if WIKI.search(cr) or WIKI.search(im['src']) or marka(cap) or marka(im['src']):
             continue
         m = FOND_CREDIT.search(cr)
+        g = GK_CREDIT.match(cr)
+        if g:
+            out.append(dict(src='/' + im['src'].lstrip('/'), caption=cap, muzey=muzey, source=GK_KARTA + g['nomer'],
+                            license=cr, fond='', avtor=g['avtor'], gk=g['nomer'], god=g['god']))
+            continue
         url = m['card'] if m else (re.search(r'https?://\S+?(?=[.,;]?(?:\s|$))', cr) or [''])[0]
         out.append(dict(src='/' + im['src'].lstrip('/'), caption=cap, muzey=muzey, source=url,
                         license=(m['prava'] if m else cr).rstrip('.'), fond=(m['name'].strip() if m else ''),
@@ -1350,7 +1387,18 @@ def _podpis(k):
     fond = k['fond'] if k['fond'] and k['fond'].lower()[:10] not in k['caption'].lower() else ''
     hvost = '; '.join(x for x in (fond, k['license']) if x)
     hvost = hvost[:1].upper() + hvost[1:]
+    if k.get('gk'):  # Р136: подпись Госкаталога как есть, номер — ссылка на карточку
+        return html.escape(k['caption'].strip()), gk_html(k['license'])
     return html.escape(k['caption'].strip()), html.escape(hvost + '.' if hvost else '')
+
+
+def gk_html(credit):
+    g = GK_CREDIT.match(credit)
+    t = html.escape(credit)
+    if g:
+        n = g['nomer']
+        t = t[:-len(n)] + f'<a href="{GK_KARTA}{n}" target="_blank" rel="noopener">{n}</a>'
+    return t
 
 
 def pereodet(blok, k, pub):
@@ -1376,6 +1424,8 @@ def pereodet(blok, k, pub):
     obr = lambda b0: f'<b>{cap}</b> <span>{hvost}</span>' if b0 else f'{cap} {hvost}'.strip()
     blok = re.sub(r'(<figcaption[^>]*>)(.*?)(</figcaption>)', lambda x: x[1] + obr('<b>' in x[2]) + x[3], blok, count=1, flags=re.S)
     blok = re.sub(r'(<div class="(?:[^"]*\s)?scene-cap(?:\s[^"]*)?"[^>]*>)(.*?)(</div>)', lambda x: x[1] + obr('<b>' in x[2]) + x[3], blok, count=1, flags=re.S)
+    if k.get('gk'):  # Р136: подсказка старого кадра («Предмет · ВДНХ») — про другой снимок
+        blok = re.sub(r'(<span class="scene-hint">)[^<]*', lambda x: x[1] + 'Фото · ' + html.escape(k['god']), blok, count=1)
     for a_, v in (('data-title', alt), ('data-attribution', k['avtor'] or k['fond'])):
         blok = re.sub(rf'\b{a_}="[^"]*"', lambda _: f'{a_}="{html.escape(v, quote=True)}"', blok)
     blok = re.sub(r'\sdata-explanation="[^"]*"', '', blok)
@@ -1507,6 +1557,11 @@ def main(argv=None):
     pu.add_argument('avtor', nargs='?', help='автор (для фонда обязателен)')
     pu.add_argument('--card', help='ссылка на карточку предмета')
     pu.add_argument('--prava', help='права по карточке: «общественное достояние (автор умер в ГГГГ)», CC BY …')
+    pu.add_argument('--istochnik-fonda', metavar='НОМЕР', help='Р136: кадр Госкаталога без открытой лицензии — номер предмета; '
+                    'подпись «Фото: автор, год. Хранится: музей. Госкаталог музейного фонда РФ, № НОМЕР»; нужны --hranitsya и --god')
+    pu.add_argument('--hranitsya', metavar='МУЗЕЙ', help='полное название музея-держателя (для --istochnik-fonda)')
+    pu.add_argument('--god', help='год (дата) снимка по карточке (для --istochnik-fonda)')
+    pu.add_argument('--obrez', metavar='Л,В,П,Н', help='срезать доли кадра слева, сверху, справа, снизу (служебная шкала, поля): 0,0.22,0,0')
     z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
     z.add_argument('--s-loc', action='store_true', help='включить Библиотеку Конгресса — только с личного разрешения владельца, Р93')
@@ -1534,7 +1589,13 @@ def main(argv=None):
     elif a.cmd == 'find':
         find(a.query, a.n, a.geo)
     else:
-        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card, a.prava)
+        ist = dict(nomer=a.istochnik_fonda, muzey=a.hranitsya, god=a.god) if a.istochnik_fonda else None
+        if not ist and (a.hranitsya or a.god):
+            sys.exit('--hranitsya и --god — только вместе с --istochnik-fonda')
+        obrez = tuple(float(x) for x in a.obrez.split(',')) if a.obrez else None
+        if obrez and (len(obrez) != 4 or not all(0 <= x < 0.5 for x in obrez)):
+            sys.exit('--obrez: четыре доли от 0 до 0,5 через запятую')
+        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card, a.prava, ist, obrez)
 
 
 if __name__ == '__main__':

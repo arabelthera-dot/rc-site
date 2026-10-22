@@ -1,8 +1,11 @@
 ---
 // Подпись источника картинки со ссылками (Сергей 17.10): лицензия CC / общественное достояние —
 // ссылка на её текст на creativecommons.org; адрес в подписи — ссылка на страницу источника. Текст подписи выводится дословно, ссылками становятся только его куски.
+import { GK_PODPIS, goskatalogUrl } from '../../lib/podpisi.mjs';
 interface Props { text: string }
 const { text } = Astro.props;
+// Р136: подпись кадра Госкаталога — номер предмета ссылкой на его карточку
+const gk = text.match(GK_PODPIS);
 const LIC = /\bCC[ -]?(BY(?:-SA)?|BY-NC(?:-SA)?|BY-ND|BY-NC-ND)[ -](\d\.\d)\b|\bCC0\b|\bpublic domain\b|общественное достояние/gi;
 const licUrl = (m: RegExpExecArray) => {
   if (m[1]) return `https://creativecommons.org/licenses/${m[1].toLowerCase()}/${m[2]}/deed.ru`;
@@ -19,4 +22,5 @@ parts.push({ t: text.slice(last) });
 const url = text.match(/https?:\/\/[^\s,;»)]+/)?.[0];
 const file = url;
 ---
-<span class="credit">{parts.map((p) => (p.href ? <a href={p.href} rel="license noopener" target="_blank">{p.t}</a> : p.t))}{file && <Fragment> · <a href={file} rel="noopener" target="_blank">страница файла</a></Fragment>}</span>
+{gk ? <span class="credit">{text.slice(0, gk.index! + gk[0].length - gk[1].length)}<a href={goskatalogUrl(gk[1])} rel="noopener" target="_blank">{gk[1]}</a>{text.slice(gk.index! + gk[0].length)}</span> :
+<span class="credit">{parts.map((p) => (p.href ? <a href={p.href} rel="license noopener" target="_blank">{p.t}</a> : p.t))}{file && <Fragment> · <a href={file} rel="noopener" target="_blank">страница файла</a></Fragment>}</span>}

@@ -7,6 +7,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const LIC = /\bCC[ -]?(BY|0)|Free Art License|обществен\S* достоян|не объект\S* авторск\S* прав|public domain|PD-|свободн\S* лиценз|©|все права/i;
+// Р136 (Сергей 22.10.2026): кадр Госкаталога без открытой лицензии — с полной атрибуцией держателя и номера
+// («Фото: автор, год. Хранится: музей. Госкаталог музейного фонда РФ, № N»); обрывок без держателя или номера — не подпись.
+export const GK_PODPIS = /Фото: .+?, [^,]+?\. Хранится: .+?\. Госкаталог музейного фонда РФ, № (\d+)/;
+export const goskatalogUrl = (n) => `https://goskatalog.ru/portal/#/collections?id=${n}`;
 export const SRC = /фото\s*:|автор|музе|архив|библиотек|собрани|коллекци|ГИМ|ГТГ|РГБ|НЭБ|ГМИИ|Эрмитаж|источник|из книги|журнал|газет|генерац|Genosai|реконструкц|https?:\/\/|рисун\S+ [А-ЯЁ]|гравюр|издани/i;
 
 /** Опись Р84, Б16: название лицензии из текста подписи для колонки «Лицензия» сводной страницы; '' — не найдена. */
@@ -18,6 +22,7 @@ export function licName(text = '') {
   if (/обществен\S* достоян|public domain|PD-/i.test(t)) return 'общественное достояние';
   if (/свободн\S* лиценз/i.test(t)) return 'свободная лицензия';
   if (/с разрешени\S+/i.test(t)) return 'с разрешения правообладателя';
+  if (GK_PODPIS.test(t)) return 'с указанием музея-держателя и номера Госкаталога (Р136)';
   if (/©|все права/i.test(t)) return '© правообладатель';
   return '';
 }
@@ -43,7 +48,7 @@ export function cardFrames(root = '.') {
       for (const im of ims) {
         const credit = String(im.credit || '').trim();
         out.push({ museum, key: d.key || f.slice(0, -5), title: d.title || '', src: im.src || '', caption: im.caption || '',
-          credit, lic: LIC.test(credit), generated: !!im.generated });
+          credit, lic: LIC.test(credit) || GK_PODPIS.test(credit), generated: !!im.generated });
       }
     }
   }
@@ -77,13 +82,13 @@ export function pageFrames(html) {
   }
   const frames = imgs.filter((im) => !im.deco).map((im, i, all) => {
     const txt = [im.cap || '', im.data, im.title].join(' ');
-    let lic = LIC.test(txt); const src = SRC.test(txt);
+    let lic = LIC.test(txt) || GK_PODPIS.test(txt); const src = SRC.test(txt);
     if (/licen/.test(im.data)) lic = true;
     const nextAt = imgs[imgs.indexOf(im) + 1]?.at ?? raw.length;
     const near = strip(raw.slice(im.end, Math.min(nextAt, im.end + 700)));
     const state = (lic && src) || (lic && im.data) ? 'ok'
       : lic || src || im.creditEl ? 'partial'
-      : im.cap === undefined && LIC.test(near) && SRC.test(near) ? 'near'
+      : im.cap === undefined && (LIC.test(near) || GK_PODPIS.test(near)) && SRC.test(near) ? 'near'
       : pageRights ? 'rights' : 'none';
     return { src: im.src, alt: im.alt || '', cap: im.cap || '', data: im.data, sign: (im.cap || im.title || im.data || '').trim(), lic: state === 'ok' || (state === 'near'), state };
   });
