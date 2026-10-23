@@ -1,12 +1,14 @@
 /* ============================================================
-   igra-pravila.css — блок «Как играть» у каждой игры (Р199, 23.10.2026;
-   стандарт museum-core 04-build §5-бис). Разметка — контракт Р199:
+   igra-pravila.css — блок «Как играть» у каждой игры (Р199, Р201, 23.10.2026;
+   стандарт museum-core 04-build §5-бис). Картинка игры видна сразу и сразу
+   работает: ни экрана правил до старта, ни кнопок «Начать» и «Правила» (Р201).
+   Разметка — контракт Р201: строка .igra-seychas над картинкой игры; ПОСЛЕ сцены
+   и кнопок игры — обычный видимый блок
    [data-igra-pravila] > .igra-pravila-h, .igra-pravila-zachem, ol.igra-pravila-shagi,
-   .igra-pravila-nyuans, .igra-pravila-final, button[data-igra-start];
-   в игре — button[data-igra-pravila-open] и строка .igra-seychas.
+   .igra-pravila-nyuans, .igra-pravila-final.
    Цвета не задаются: блок наследует текст страницы (светлой или тёмной),
    акцент и шрифты — токены museum-theme.css (--acc, --font-h, --font-b, --radius).
-   Поведение — igra-pravila.js; без JS блок виден текстом, кнопки скрыты.
+   JS не нужен.
    ============================================================ */
 
 .igra-pravila{
@@ -25,7 +27,6 @@
   overflow-wrap:anywhere;
 }
 .igra-pravila *{box-sizing:border-box}
-.igra-pravila[hidden]{display:none}
 
 .igra-pravila .igra-pravila-h{
   margin:0 0 6px;
@@ -72,39 +73,6 @@
 }
 .igra-pravila .igra-pravila-final{font-weight:600}
 
-/* Кнопки — только когда работает JS (класс ставит igra-pravila.js). */
-.igra-start,
-.igra-pravila-open{display:none}
-.igra-pravila-js .igra-start{
-  display:block;
-  width:100%;
-  min-height:48px;
-  margin:12px 0 0;
-  padding:12px 20px;
-  border:0;
-  border-radius:999px;
-  background:var(--igra-acc,var(--acc,#c9a84c));
-  color:#111;
-  font:700 17px/1.2 var(--font-b,system-ui,sans-serif);
-  cursor:pointer;
-}
-.igra-pravila-js .igra-pravila-open{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  min-height:44px;
-  padding:8px 16px;
-  border:1px solid color-mix(in srgb,var(--acc,#c9a84c) 70%,transparent);
-  border-radius:999px;
-  background:transparent;
-  color:inherit;
-  font:600 15px/1.2 var(--font-b,system-ui,sans-serif);
-  cursor:pointer;
-}
-.igra-pravila-js .igra-pravila-open::before{content:"?";font-weight:700}
-.igra-start:focus-visible,
-.igra-pravila-open:focus-visible{outline:3px solid var(--acc,#c9a84c);outline-offset:3px}
-
 /* Строка «Что сделать сейчас:» внутри игры. */
 .igra-seychas{
   margin:10px 0;
@@ -116,43 +84,7 @@
 }
 .igra-seychas b{font-weight:700}
 
-/* До «Начать» сцена игры неактивна: видна приглушённо, нажатия не доходят. */
-[data-igra-ozhidaet] [data-igra-zamok]{
-  opacity:.35;
-  filter:grayscale(.6);
-  pointer-events:none;
-  user-select:none;
-  transition:opacity .25s;
-}
-
-/* «Правила» внутри игры: блок поверх сцены. */
-.igra-pravila-zatemnenie{
-  position:fixed;
-  inset:0;
-  z-index:9998;
-  background:rgba(0,0,0,.6);
-}
-.igra-pravila.igra-pravila--poverh{
-  position:fixed;
-  z-index:9999;
-  left:12px;right:12px;
-  top:50%;
-  transform:translateY(-50%);
-  max-width:560px;
-  max-height:calc(100dvh - 24px);
-  margin:0 auto;
-  overflow:auto;
-  overscroll-behavior:contain;
-  background:var(--igra-pravila-fon,#fff);
-  color:var(--igra-pravila-tekst,#111);
-  box-shadow:0 12px 40px rgba(0,0,0,.45);
-}
-
 @media (min-width:700px){
   .igra-pravila{padding:20px 24px 22px}
   .igra-pravila .igra-pravila-h{font-size:1.4rem}
-  .igra-pravila-js .igra-start{display:inline-block;width:auto;min-width:220px}
-}
-@media (prefers-reduced-motion:reduce){
-  [data-igra-ozhidaet] [data-igra-zamok]{transition:none}
 }

@@ -231,6 +231,9 @@
   .fork-opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
   .fork-opt.chosen{border-color:var(--gold);background:var(--gold-g)}
   #forkReal.exp{display:none}
+  /* Р201: по ссылке «Сшей шунт» картинка игры — на первом экране телефона (над игрой только меню дня). */
+  #games{scroll-margin-top:52px}
+  @media (max-width:600px){#games{padding-top:36px}#games .wrap>h2{font-size:26px}#games .press{padding:14px}#games .lab-btns .btn{padding:11px 18px}}
 </style>
 <meta name="description" content="Колесов пришил к живому, бьющемуся сердцу собственную артерию человека — за три года до того, как это сделал Запад">
 <link rel="canonical" href="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov.html">
@@ -338,7 +341,21 @@
   <div class="wrap">
     <div class="kicker">Главное действие · модель</div>
     <h2>Сшей обходной путь на бьющемся сердце</h2>
-    <p style="max-width:62ch">Повтори операцию 25 февраля 1964 года. Сначала пережми артерию сердца и следи за кардиограммой, как Колесов: выдержит ли сердце. Потом наложи шов — пришей грудную артерию ниже сужения. Сердце не останавливают, поэтому точки шва движутся вместе с ним. Последний стежок — и кровь пойдёт в обход.</p>
+    <p style="max-width:62ch">Повтори операцию Колесова 25 февраля 1964 года — на сердце, которое не останавливают.</p>
+    <div class="press" id="press">
+      <p class="igra-seychas"><b>Что сделать сейчас:</b> <span id="shuntSeychas">нажми «Пережать артерию и смотреть ЭКГ».</span></p>
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="clampGo">Пережать артерию и смотреть ЭКГ</button>
+        <button class="btn ghost" type="button" id="shuntReset">Начать заново</button>
+      </div>
+      <div class="press-stage">
+        <figure><canvas id="cvEkg" width="300" height="300" role="img" aria-label="Модель кардиограммы во время пережатия артерии"></canvas><figcaption>Кардиограмма: <span id="ekgTxt">артерия не пережата</span></figcaption></figure>
+        <figure><canvas id="cvHeart" width="300" height="300" role="img" aria-label="Модель бьющегося сердца: суженная артерия и грудная артерия, которую нужно пришить ниже сужения"></canvas><figcaption>Шов: <span id="shovTxt">ждёт проверки ЭКГ</span></figcaption></figure>
+      </div>
+      <div class="lab-cap">Модель, а не снимок: восемь минут пережатия сжаты до восьми секунд, число стежков задано программой.</div>
+      <div class="lab-msg" id="shuntMsg" aria-live="polite">Начни с пережатия артерии.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: перед тем как вскрыть артерию сердца, Колесов восемь минут держал её пережатой и следил за кардиограммой. Сердце выдержало. Тогда он вручную, под лупой, пришил собственную внутреннюю грудную артерию больного к ветви артерии сердца ниже сужения — не останавливая сердце и без аппарата искусственного кровообращения. Кровь пошла в обход сужения.</div></noscript>
+    </div>
     <div class="igra-pravila" data-igra-pravila>
       <h2 class="igra-pravila-h">Как играть</h2>
       <p class="igra-pravila-zachem">Ты — хирург Колесов, 1964 год. Проверишь руками, можно ли пришить новую артерию к сердцу, которое не останавливают.</p>
@@ -349,22 +366,6 @@
       </ol>
       <p class="igra-pravila-nyuans">Нюансы: сердце бьётся, и точки качаются вместе с ним — попади точно в точку, промах не засчитается. Пока не прошли 8 секунд ЭКГ, шить нельзя. «Начать заново» сбрасывает операцию.</p>
       <p class="igra-pravila-final">Восьмой стежок — и красные капли крови побегут в обход сужения: операция удалась.</p>
-      <button type="button" class="igra-start" data-igra-start>Начать</button>
-    </div>
-    <div class="press" id="press">
-      <div class="lab-btns">
-        <button class="btn gold" type="button" id="clampGo">Пережать артерию и смотреть ЭКГ</button>
-        <button class="btn ghost" type="button" id="shuntReset">Начать заново</button>
-        <button type="button" class="igra-pravila-open" data-igra-pravila-open>Правила</button>
-      </div>
-      <div class="press-stage">
-        <figure><canvas id="cvEkg" width="300" height="300" role="img" aria-label="Модель кардиограммы во время пережатия артерии"></canvas><figcaption>Кардиограмма: <span id="ekgTxt">артерия не пережата</span></figcaption></figure>
-        <figure><canvas id="cvHeart" width="300" height="300" role="img" aria-label="Модель бьющегося сердца: суженная артерия и грудная артерия, которую нужно пришить ниже сужения"></canvas><figcaption>Шов: <span id="shovTxt">ждёт проверки ЭКГ</span></figcaption></figure>
-      </div>
-      <div class="lab-cap">Модель, а не снимок: восемь минут пережатия сжаты до восьми секунд, число стежков задано программой.</div>
-      <p class="igra-seychas"><b>Что сделать сейчас:</b> <span id="shuntSeychas">нажми «Пережать артерию и смотреть ЭКГ».</span></p>
-      <div class="lab-msg" id="shuntMsg" aria-live="polite">Начни с пережатия артерии.</div>
-      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: перед тем как вскрыть артерию сердца, Колесов восемь минут держал её пережатой и следил за кардиограммой. Сердце выдержало. Тогда он вручную, под лупой, пришил собственную внутреннюю грудную артерию больного к ветви артерии сердца ниже сужения — не останавливая сердце и без аппарата искусственного кровообращения. Кровь пошла в обход сужения.</div></noscript>
     </div>
     <p class="src-note" style="margin-top:10px">Правило модели — протокол первой операции: Седов В. М., Немков А. С. // Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1. С. 92.</p>
   </div>
@@ -711,7 +712,6 @@
 window.MUSEUM_SCORE = {awards:{ekg:10, shov:25, q:[5,10], fork:5, chat:5, theme:5},
   ranks:[[100,'Хирург сердца'],[70,'Ассистент Колесова'],[40,'Студент Павловского'],[0,'Гость дня']]};
 </script>
-<script src="../../assets/igra-pravila.js" defer></script>
 <script src="../../assets/museum-score.js"></script>
 <script>
 (function(){
