@@ -1,0 +1,65 @@
+/* Игра «Подними камеру в небо» (26 января). Палитра — как у черновиков изобретений 23–25 января. */
+.sr-body{margin:0;background:#060c17;color:#e8eef5;font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.55}
+.sr-wrap{max-width:720px;margin:0 auto;padding:0 12px}
+.sr-top-h{padding:14px 0 4px;background:linear-gradient(180deg,#0c1826,#060c17)}
+.sr-museum{margin:0 0 4px;color:#c9a84c;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.sr-top-h h1{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,5vw,32px);line-height:1.15}
+.sr-igra{position:relative;margin:10px 0 8px;padding:12px 14px 18px;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:#0c1826}
+.sr-steps{display:flex;gap:6px;margin:0 0 6px;padding:0;list-style:none}
+.sr-steps li{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:rgba(255,255,255,.07);color:#7a9ab8}
+.sr-steps li.on{background:#c9a84c;color:#1a1206}
+.sr-task{margin:0;font-size:clamp(21px,5.6vw,28px);font-weight:800;line-height:1.2;color:#fff}
+.sr-sub{margin:3px 0 10px;min-height:1.45em;font-size:clamp(15px,4vw,17px);color:#e4c97a}
+[hidden]{display:none!important}
+
+/* Шаг 1: вид из корзины + верёвка с шаром */
+.sr-s1{display:grid;grid-template-columns:1fr 68px;gap:10px;align-items:stretch}
+.sr-view{display:block;width:100%;aspect-ratio:1;border-radius:12px;background:#3d6a84;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.sr-flash .sr-view{animation:sr-flash .38s ease-out}
+@keyframes sr-flash{0%{filter:brightness(1)}15%{filter:brightness(4)}100%{filter:brightness(1)}}
+.sr-rope{position:relative;border-radius:34px;background:linear-gradient(180deg,#14273d,#0a1525);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);touch-action:none;cursor:ns-resize;user-select:none;-webkit-user-select:none}
+.sr-rope::before{content:'';position:absolute;left:50%;bottom:10px;width:2px;margin-left:-1px;height:calc((100% - 66px) * var(--p,0) + 4px);background:repeating-linear-gradient(180deg,#d9c08a 0 5px,#9c8255 5px 8px)}
+.sr-rope::after{content:'';position:absolute;left:50%;bottom:4px;width:30px;height:10px;margin-left:-15px;border-radius:4px;background:#5a3a22;box-shadow:inset 0 0 0 2px #7a5232}
+.sr-goal{position:absolute;top:6px;left:0;right:0;text-align:center;font-size:12px;font-weight:800;color:#ffd65a;pointer-events:none}
+.sr-goal::after{content:'';display:block;margin:2px auto 0;width:40px;border-top:2px dashed #ffd65a}
+.sr-ball{position:absolute;left:50%;bottom:0;width:48px;height:56px;margin-left:-24px;display:grid;place-items:center;font-size:40px;line-height:1;outline:none;pointer-events:none}
+.sr-ball:focus-visible{outline:3px solid #e4c97a;outline-offset:2px;border-radius:12px}
+.sr-hand{position:absolute;font-size:34px;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.sr-hand-up{left:50%;bottom:14px;margin-left:-6px;animation:sr-up 1.6s ease-in-out infinite}
+@keyframes sr-up{0%{transform:translateY(40px);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateY(-90px);opacity:0}}
+.sr-touched .sr-hand-up{display:none}
+.sr-row{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px}
+.sr-alt{margin:0;font-size:15px;color:#a9bed3}
+.sr-alt b{font-size:30px;color:#fff;font-variant-numeric:tabular-nums}
+.sr-top .sr-alt b{color:#ffd65a}
+.sr-shoot{position:relative;display:flex;align-items:center;gap:8px;min-height:56px;padding:8px 20px 8px 10px;border:0;border-radius:30px;background:#d8432f;color:#fff;font:inherit;font-size:18px;font-weight:800;cursor:pointer;animation:sr-pulse 1.1s ease-in-out infinite}
+.sr-shoot i{width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 6px #d8432f,0 0 0 3px #fff;font-style:normal}
+.sr-shoot:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@keyframes sr-pulse{50%{box-shadow:0 0 0 10px rgba(216,67,47,.25)}}
+
+/* Шаг 2: кювета с проявителем */
+.sr-s2{display:flex;flex-direction:column;align-items:center}
+.sr-tray{position:relative;width:min(100%,520px);padding:22px;border-radius:14px;background:radial-gradient(ellipse at 40% 30%,#3b2a1c,#1a110a);box-shadow:inset 0 0 0 3px #50392a,0 8px 22px rgba(0,0,0,.5);overflow:hidden}
+.sr-tray::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(255,200,120,.1),transparent 40%),radial-gradient(circle at 70% 70%,rgba(255,200,120,.07),transparent 35%);animation:sr-wave 2.4s ease-in-out infinite alternate;pointer-events:none}
+@keyframes sr-wave{to{transform:translate(4%,-3%)}}
+.sr-plate{display:block;width:100%;height:auto;aspect-ratio:1;border-radius:3px;box-shadow:0 0 0 2px rgba(220,230,240,.25);opacity:.04;filter:brightness(2.6) contrast(.15)}
+.sr-dev .sr-plate{transition:opacity 4.6s ease-in,filter 5.2s ease-in;opacity:1;filter:brightness(1) contrast(1)}
+.sr-cap{margin:10px 0 0;font-size:14px;color:#a9bed3;text-align:center}
+
+/* Шаг 3: шторка M-47 */
+.sr-s3 .fl{margin:0}
+.sr-s3 .fl-frame{position:relative}
+.sr-hand-lr{left:50%;top:55%;margin-left:-10px;animation:sr-lr 1.6s ease-in-out infinite;z-index:3}
+@keyframes sr-lr{0%,100%{transform:translateX(-40px)}50%{transform:translateX(50px)}}
+
+/* Финал */
+.sr-finale{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1)}
+.sr-big{margin:0 0 10px;font-size:clamp(18px,4.6vw,21px);line-height:1.4}
+.sr-facts{margin:0 0 12px;padding-left:20px}
+.sr-facts li{margin:0 0 8px}
+.sr-more summary{cursor:pointer;color:#e4c97a;font-weight:700;min-height:44px;display:flex;align-items:center}
+.sr-more p{font-size:15px;color:#cdd8e3}
+.sr-src{font-size:13px!important;color:#8fa6bd!important;word-break:break-word}
+.sr-again{margin:12px auto 0;display:block;min-height:48px;padding:10px 22px;border:0;border-radius:24px;background:#c9a84c;color:#1a1206;font:inherit;font-size:17px;font-weight:800;cursor:pointer}
+@media (min-width:900px){.sr-s1{grid-template-columns:1fr 84px}.sr-ball{font-size:46px}}
+@media (prefers-reduced-motion:reduce){.sr-hand,.sr-shoot,.sr-tray::after{animation:none}.sr-dev .sr-plate{transition-duration:.6s}}
