@@ -4,7 +4,8 @@
 .rc-cookie{position:fixed;left:0;right:0;bottom:0;z-index:9999;box-sizing:border-box;display:flex;align-items:center;
   justify-content:center;gap:8px 16px;flex-wrap:wrap;padding:8px 16px;border-top:1px solid var(--line,rgba(255,255,255,.14));
   background:var(--panel,#12151c);color:var(--txt,#e8e2d4);font:14px/1.35 'Inter',system-ui,sans-serif;box-shadow:0 -4px 16px rgba(0,0,0,.35)}
-.rc-cookie p{margin:0;flex:1 1 320px;max-width:640px}
+/* plaintext: направление абзаца — по его тексту: русская плашка на странице dir="rtl" (проба /ar/, Р162) не теряет точку в начало строки. */
+.rc-cookie p{margin:0;flex:1 1 320px;max-width:640px;unicode-bidi:plaintext;text-align:start}
 .rc-cookie a{color:var(--gold,#c8a24a);text-decoration:underline;text-underline-offset:.15em}
 .rc-cookie .rc-cookie-b{display:flex;gap:8px;flex:0 0 auto}
 .rc-cookie button{min-height:44px;padding:0 18px;border-radius:22px;font:inherit;font-weight:600;cursor:pointer}
