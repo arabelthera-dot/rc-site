@@ -23,6 +23,7 @@ import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } 
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 import { podvalDnyaHtml } from '../lib/podval-dnya.mjs';
 import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
+import { SOSEDI_POLNYE, polnyeSosedi, perepisatSosedey, zagolovok } from '../lib/sosedi-polnye.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
@@ -477,6 +478,14 @@ export default function fullPages() {
             if (htmlKeys.includes(key)) jobsKey.push({ ...old, self: `${day}staraya/`, out: path.join(root, 'muzei', museum, 'den', key, 'staraya', 'index.html'), staraya: true });
             return jobsKey;
           });
+          // «Куда дальше» и стрелки шапки — ближайшие полные страницы музея (src/lib/sosedi-polnye.mjs, Р165).
+          const polnye = SOSEDI_POLNYE.has(museum) ? [...new Set(jobs.map((j) => j.key))] : [];
+          const sosedInfo = (k) => {
+            const card = JSON.parse(fs.readFileSync(path.join(cardsDir, `${k}.json`), 'utf8'));
+            const src = path.join(SRC, museum, `${k}.html`);
+            const title = (fs.existsSync(src) && zagolovok(fs.readFileSync(src, 'utf8'))) || card.title;
+            return { href: `${base}muzei/${museum}/den/${k}/`, when: whenOfKey(k), title, hook: card.hook };
+          };
           for (const { key, self, out, from, staraya } of jobs) {
             if (!fs.existsSync(path.join(root, 'muzei', museum, 'den', key, 'index.html'))) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
             let html = fs.readFileSync(from, 'utf8');
@@ -484,6 +493,10 @@ export default function fullPages() {
             else if (OLD_KAL.test(html)) { OLD_KAL.lastIndex = 0; bad.push(`${museum}/${key} — тег старого calendar-*.js, а записей дней нет`); continue; }
             if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
+            if (polnye.length) {
+              const { prev, next } = polnyeSosedi(polnye, key);
+              html = perepisatSosedey(html, { prev: prev && sosedInfo(prev), next: next && sosedInfo(next) });
+            }
             // CSP (Р64): полная страница идёт мимо Base.astro — та же meta сразу после <head>; выключено без PUBLIC_CSP=1.
             if (cspVkl()) html = html.replace(/<meta\s+http-equiv=["']Content-Security-Policy["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, (h) => `${h}\n${cspMeta()}`);
             for (const e of checkMuseumName(html, museum)) bad.push(`${museum}/${key} — ${e}`);
