@@ -41,6 +41,11 @@ jobs:
         env:
           DATA_DNYA_STROGO: ${{ vars.DATA_DNYA_STROGO }}
         run: node scripts/data-dnya.mjs --proba && node scripts/data-dnya.mjs
+      # Соседи полной страницы дня (Р165, 23.10.2026): «Куда дальше» и стрелки шапки — ближайшие полные страницы музея
+      # (src/lib/sosedi-polnye.mjs). Без сборки, секунды. Откат — удалить шаг.
+      - name: sosedi-polnye — пробы соседей дня
+        timeout-minutes: 1
+        run: node scripts/sosedi-polnye.test.mjs
       - name: kanaly — пробы проверки поста
         timeout-minutes: 2
         run: node scripts/kanaly/proverka.test.mjs
