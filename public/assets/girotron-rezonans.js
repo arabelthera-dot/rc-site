@@ -1,6 +1,7 @@
 /* Игра «Поймай резонанс» (31 января, гиротрон). Одна ручка «магнит»: попал в такт — точки-электроны
    сбиваются в сгусток, из трубки бьёт луч, счётчик ватт под сценой растёт. Шаги: 1964 (6 Вт) → ИТЭР (1 000 000 Вт)
-   → финал: 8 лучей в бублик реактора, градусник до 300 млн °C. Все числа и подписи — в HTML под сценой. */
+   → финал: 8 лучей в бублик реактора, градусник до 300 млн °C. Все числа и подписи — в HTML под сценой.
+   Р198: до кнопки «Начать» виден только экран «Как играть», игра не рисуется и не реагирует; «Правила» открывают его снова. */
 (function () {
   var root = document.querySelector('[data-girotron-igra]');
   if (!root) return;
@@ -10,6 +11,7 @@
   var wattEl = $('.gr-watt'), wBox = $('.gr-w'), eraEl = $('.gr-era'), eraL = $('.gr-era-l');
   var msg = $('.gr-msg'), next = $('.gr-next'), steps = root.querySelectorAll('.gr-steps li');
   var termo = $('.gr-termo'), tfill = $('.gr-tfill'), tempEl = $('.gr-temp'), sunL = $('.gr-tsun-l');
+  var rules = $('.gr-rules'), play = $('.gr-play'), go = $('.gr-go'), poke = $('.gr-poke'), tap = $('.gr-tap');
   var schema = $('.gr-schema'), finale = $('.gr-finale'), knobBox = $('.gr-knob'), kname = $('.gr-kname'), read = $('.gr-read');
 
   var LEVELS = [
@@ -19,7 +21,7 @@
   var N = 30, el = [];
   for (var i = 0; i < N; i++) el.push({ s0: i / N + Math.random() * 0.02, ph: Math.random() * Math.PI * 2 });
 
-  var lv, prog, bunch, done, t = 0, last = 0, mode, fin, touched;
+  var lv, prog, bunch, done, t = 0, last = 0, mode, fin, touched, raf = 0, running = false, begun = false, hot = false;
 
   function fmtW(x) {
     if (x < 10) return x.toFixed(1).replace('.', ',').replace(',0', '') + ' Вт';
@@ -33,11 +35,14 @@
     knobBox.hidden = false; kname.hidden = false; read.hidden = false; termo.hidden = true; finale.hidden = true;
     range.value = n === 0 ? 80 : 900;
     schema.textContent = 'схема · точки — электроны, кольца — магнит, справа — луч (настоящий невидим)';
+    hot = false; poke.hidden = true; tap.hidden = true;
     if (n === 0) {
-      task.textContent = 'Двигай магнит — зажги луч';
+      task.textContent = 'Тяни жёлтый кружок на ручке внизу';
+      sub.textContent = 'Ищи место, где точки закружат вместе';
       eraEl.textContent = '1964'; eraL.textContent = 'первый прибор, «молоток»';
     } else {
-      task.textContent = 'Поймай такт у гиротрона для ИТЭР';
+      task.textContent = 'Снова тяни кружок — теперь медленно';
+      sub.textContent = 'У большого гиротрона нужное место другое и узкое';
       eraEl.textContent = 'ИТЭР'; eraL.textContent = 'гиротрон для реактора, наши дни';
     }
     hand.hidden = false; touched = false;
@@ -48,14 +53,16 @@
     done = true; hand.hidden = true;
     if (lv === 0) {
       wattEl.textContent = '6 Вт';
-      msg.innerHTML = '<b>6 ватт — как ночник.</b> Столько дал первый гиротрон, «молоток», в 1964 году. Его сделали в Горьком трое: Андрей Гапонов-Грехов, Михаил Петелин и Валентин Юлпатов.';
+      msg.innerHTML = '<p class="gr-why-did"><b>Что произошло.</b> Ты подобрал такую силу магнита, что все электроны закружили в такт — вместе, одной кучкой. Так они толкают луч все разом, как дети раскачивают качели, если толкают в такт. Это и называют резонансом.</p><b>6 ватт — как ночник.</b> Столько дал первый гиротрон, «молоток», в 1964 году. Его сделали в Горьком трое: Андрей Гапонов-Грехов, Михаил Петелин и Валентин Юлпатов.';
       next.textContent = 'Дальше: гиротрон для ИТЭР →';
     } else {
       wattEl.textContent = '1 000 000 Вт';
-      msg.innerHTML = '<b>1 000 000 ватт</b> — столько даёт один гиротрон для ИТЭР и держит так 1000 секунд. Мощность выросла не от ручки: сам прибор стал больше и сильнее, а такт по-прежнему нужно поймать. ИТЭР — международный термоядерный реактор во Франции; Россия сделала для него восемь гиротронов.';
+      msg.innerHTML = '<p class="gr-why-did"><b>Что произошло.</b> Ты снова поймал такт, только место было уже: чем мощнее прибор, тем точнее надо подобрать магнит.</p><b>1 000 000 ватт</b> — столько даёт один гиротрон для ИТЭР и держит так 1000 секунд. Мощность выросла не от ручки: сам прибор стал больше и сильнее, а такт по-прежнему нужно поймать. ИТЭР — международный термоядерный реактор во Франции; Россия сделала для него восемь гиротронов.';
       next.textContent = 'Финал: 8 лучей в реактор →';
     }
-    sub.textContent = 'Получилось!';
+    task.textContent = 'Прочитай, что вышло, и нажми «' + (lv === 0 ? 'Дальше' : 'Финал') + '»';
+    sub.textContent = 'Получилось! Ручку больше трогать не надо';
+    tap.hidden = true;
     msg.hidden = false; next.hidden = false;
   }
 
@@ -63,19 +70,59 @@
     mode = 'fin'; setStep(2); fin = { t: 0, on: false, end: false };
     knobBox.hidden = true; kname.hidden = true; read.hidden = true; msg.hidden = true; hand.hidden = true;
     termo.hidden = false; tfill.style.width = '0'; tempEl.textContent = '0'; sunL.classList.remove('past');
-    task.textContent = 'Включи 8 гиротронов — нагрей реактор';
+    task.textContent = 'Нажми кнопку «Включить 8 гиротронов»';
     schema.textContent = 'схема · бублик — реактор с плазмой, лучи — 8 гиротронов';
-    sub.textContent = 'Нажми на кнопку — и смотри на градусник';
+    sub.textContent = 'Кнопка — сразу под картинкой. Потом смотри на градусник ниже';
     next.textContent = 'Включить 8 гиротронов'; next.hidden = false;
   }
 
   next.addEventListener('click', function () {
     if (mode === 'play' && lv === 0) start(1);
     else if (mode === 'play') startFinal();
-    else if (mode === 'fin' && !fin.on) { fin.on = true; next.hidden = true; sub.textContent = 'Лучи греют плазму…'; }
+    else if (mode === 'fin' && !fin.on) {
+      fin.on = true; next.hidden = true;
+      task.textContent = 'Смотри на градусник';
+      sub.textContent = 'Лучи греют плазму — газ, раскалённый до свечения…';
+    }
+  });
+
+  // экран «Как играть»: до «Начать» игра скрыта и не крутит кадры
+  function openGame() {
+    rules.hidden = true; play.hidden = false;
+    if (!begun) { begun = true; resize(); start(0); }
+    if (!running) { running = true; last = 0; raf = requestAnimationFrame(frame); }
+    root.scrollIntoView({ block: 'start' });
+  }
+  go.addEventListener('click', openGame);
+  $('.gr-rules-btn').addEventListener('click', function () {
+    running = false; cancelAnimationFrame(raf); play.hidden = true; rules.hidden = false;
+    go.textContent = 'Вернуться к игре';
+    root.scrollIntoView({ block: 'start' });
+  });
+
+  // неверные действия: ткнул в картинку; ткнул в ручку вместо «тяни»
+  var pokeT;
+  $('.gr-stage').addEventListener('click', function () {
+    if (mode !== 'play' || done) return;
+    poke.hidden = false; clearTimeout(pokeT);
+    pokeT = setTimeout(function () { poke.hidden = true; }, 3500);
+  });
+  var px = null, pv = 0, pMoved = false;
+  range.addEventListener('pointerdown', function (e) { px = e.clientX; pv = +range.value; pMoved = false; });
+  range.addEventListener('pointermove', function (e) { if (px !== null && Math.abs(e.clientX - px) > 8) pMoved = true; });
+  range.addEventListener('pointerup', function () {
+    if (px === null || mode !== 'play' || done) { px = null; return; }
+    px = null;
+    if (!pMoved && !hot) {
+      tap.textContent = 'Ты ткнул — а нужно тянуть: прижми жёлтый кружок и веди его влево-вправо, не отрывая пальца';
+      tap.hidden = false;
+    }
   });
   $('.gr-again').addEventListener('click', function () { start(0); root.scrollIntoView({ behavior: 'smooth' }); });
-  range.addEventListener('input', function () { if (!touched) { touched = true; hand.hidden = true; } });
+  range.addEventListener('input', function () {
+    if (!touched) { touched = true; hand.hidden = true; }
+    if (pMoved) tap.hidden = true;
+  });
 
   function resize() {
     var r = window.devicePixelRatio || 1, w = cv.clientWidth || 640;
@@ -163,7 +210,7 @@
       fin.end = true;
       tempEl.textContent = '300 млн';
       msg.innerHTML = '<b>300 млн °C — в 20 раз горячее ядра Солнца.</b> Лучи гиротронов помогут нагреть до такой жары плазму в реакторе ИТЭР. Из 24 его гиротронов восемь сделала Россия.';
-      msg.hidden = false; sub.textContent = 'Горячее Солнца!'; finale.hidden = false;
+      msg.hidden = false; task.textContent = 'Готово! Читай факты ниже'; sub.textContent = 'Горячее Солнца: градусник дошёл до 300 млн °C'; finale.hidden = false;
     }
   }
 
@@ -181,15 +228,17 @@
         var watt = lv === 0 ? 6 * prog : 6 * Math.pow(1e6 / 6, prog);
         wattEl.textContent = fmtW(lv === 0 ? watt : (prog > 0 ? watt : 6));
         wBox.classList.toggle('hot', bunch > 0.8);
-        sub.textContent = bunch > 0.8 ? 'Есть такт! Держи ручку — мощность растёт'
-          : bunch > 0.25 ? 'Теплее! Ещё чуть ' + (v < L.target ? 'правее →' : '← левее')
-          : lv === 0 ? 'Двигай ручку, пока точки не закружат вместе' : 'Такт стал узким: двигай ручку медленно';
+        var wasHot = hot; hot = bunch > 0.8;
+        if (hot && !wasHot) { task.textContent = 'Стоп! Оставь кружок на этом месте'; tap.hidden = true; }
+        if (!hot && wasHot) task.textContent = lv === 0 ? 'Тяни жёлтый кружок на ручке внизу' : 'Снова тяни кружок — теперь медленно';
+        sub.textContent = hot ? 'Есть такт: точки кружат вместе и бьют лучом. Не двигай ручку — мощность растёт'
+          : bunch > 0.25 ? 'Теплее! Точки почти вместе. Ещё чуть ' + (v < L.target ? 'правее →' : '← левее')
+          : lv === 0 ? 'Ищи место, где точки закружат вместе' : 'Нужное место узкое: веди кружок медленно';
         if (prog >= 1) finish();
       }
       drawTube(v, dt);
     }
-    requestAnimationFrame(frame);
+    if (running) raf = requestAnimationFrame(frame);
   }
 
-  resize(); start(0); requestAnimationFrame(frame);
 })();
