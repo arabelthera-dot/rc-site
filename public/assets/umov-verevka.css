@@ -1,0 +1,44 @@
+/* Игра «Верёвка с колокольчиком» (23 января, Умов). Палитра — как у страниц изобретений 01-21/01-22. */
+.uv-body{margin:0;background:#060c17;color:#e8eef5;font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.6}
+.uv-wrap{max-width:960px;margin:0 auto;padding:0 16px}
+.uv-top{padding:22px 0 10px;background:linear-gradient(180deg,#0c1826,#060c17)}
+.uv-museum{margin:0 0 6px;color:#c9a84c;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700}
+.uv-top h1{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,5.4vw,34px);line-height:1.15}
+.uv-lead{margin:8px 0 0;color:#b9cadb;font-size:clamp(15px,3.8vw,17px)}
+.uv-igra{margin:14px 0 8px;border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;background:#0c1826}
+.uv-stage{background:radial-gradient(120% 90% at 50% 20%,#14304f 0%,#0b1a2c 60%,#081321 100%);transition:background .4s}
+.uv-igra.umov .uv-stage{background:radial-gradient(120% 90% at 50% 30%,#1c1408 0%,#0a0805 70%)}
+.uv-stage canvas{display:block;width:100%;height:clamp(250px,62vw,380px);touch-action:none;cursor:grab;outline:none}
+.uv-stage canvas:active{cursor:grabbing}
+.uv-stage canvas:focus-visible{box-shadow:inset 0 0 0 3px #e4c97a}
+.uv-panel{padding:12px 16px 16px;border-top:1px solid rgba(255,255,255,.07)}
+.uv-steps{display:flex;gap:6px;list-style:none;margin:0 0 10px;padding:0;font-size:12.5px;color:#7a9ab8}
+.uv-steps li{flex:1;display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:20px;background:rgba(255,255,255,.04);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uv-steps li span{flex:0 0 20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);font-weight:700;font-size:11px}
+.uv-steps li.on{color:#fff;background:rgba(201,168,76,.16)}
+.uv-steps li.on span{background:#c9a84c;color:#060c17}
+.uv-steps li.ok span{background:#3aa36b;color:#fff}
+.uv-steps li.ok span{font-size:0}.uv-steps li.ok span::after{content:'✓';font-size:12px}
+.uv-task{margin:0;font-size:clamp(20px,5.2vw,26px);font-weight:700;line-height:1.25;color:#fff}
+.uv-sub{margin:4px 0 0;min-height:1.5em;font-size:clamp(15px,4vw,17px);color:#e4c97a}
+.uv-meter{position:relative;margin:10px 0 0;height:12px;border-radius:8px;background:rgba(255,255,255,.08);max-width:340px}
+.uv-meter-fill{height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#7a5a20,#e4c97a);transition:width .4s}
+.uv-meter.ok .uv-meter-fill{background:linear-gradient(90deg,#2f8f5b,#7fe0a6)}
+.uv-meter-mark{position:absolute;left:66.7%;top:-4px;bottom:-4px;width:2px;background:#fff}
+.uv-meter-bell{position:absolute;left:calc(66.7% + 6px);top:-7px;font-size:15px}
+.uv-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.uv-btns button,.uv-again{font:inherit;font-size:16px;font-weight:600;min-height:48px;padding:10px 18px;border-radius:26px;border:1px solid rgba(201,168,76,.45);background:rgba(201,168,76,.12);color:#f3e2b0;cursor:pointer}
+.uv-btns button[aria-pressed=true]{background:#e4a33a;color:#1a1004;border-color:#e4a33a}
+.uv-btns button.zov{animation:uv-zov 1.1s ease-in-out infinite}
+@keyframes uv-zov{0%,100%{box-shadow:0 0 0 0 rgba(228,201,122,.0)}50%{box-shadow:0 0 0 7px rgba(228,201,122,.35)}}
+@media (prefers-reduced-motion:reduce){.uv-btns button.zov{animation:none;box-shadow:0 0 0 3px rgba(228,201,122,.6)}}
+.uv-btns button:focus-visible,.uv-again:focus-visible{outline:3px solid #e4c97a;outline-offset:2px}
+.uv-finale{padding:18px 16px 20px;border-top:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,#14223a,#0c1826)}
+.uv-finale h2{margin:0 0 8px;font-family:'Playfair Display',Georgia,serif;font-size:22px;color:#e4c97a}
+.uv-big{font-size:17px}
+.uv-more{margin:10px 0 14px;border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:8px 14px;background:rgba(255,255,255,.03)}
+.uv-more summary{cursor:pointer;font-weight:600;color:#e4c97a;min-height:32px;display:flex;align-items:center}
+.uv-formula{font-family:Georgia,serif;font-size:24px;text-align:center;color:#ffd68a;margin:8px 0}
+.uv-src{font-size:13px;color:#7a9ab8}
+.uv-note{font-size:12.5px;color:#7a9ab8;margin:8px 0 30px}
+@media (max-width:420px){.uv-steps{font-size:11.5px}.uv-steps li{padding:4px 6px;gap:4px}}
