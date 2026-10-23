@@ -198,7 +198,7 @@
   function reached() {
     done = true; h = target = TOP; setBall();
     root.classList.add('sr-top');
-    task.textContent = 'Есть Кронштадт! Жми затвор';
+    task.textContent = 'Есть Кронштадт! Жми «Снять!»';
     sub.textContent = 'Весь остров влез в рамку';
     $('.sr-shoot').hidden = false; $('.sr-shoot').focus({ preventScroll: true });
   }
