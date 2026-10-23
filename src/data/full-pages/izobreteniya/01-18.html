@@ -9,229 +9,7 @@
   Форма — вариант А музея изобретений: короткие удары, подробности свёрнуты.
 -->
 <link rel="stylesheet" href="../../assets/fonts.css">
-<style>
-
-
-  :root{
-    --dark:#060c17; --dark2:#0c1826; --surface:#111f33;
-    --card:rgba(255,255,255,.05); --card-b:rgba(255,255,255,.09);
-    --gold:#c9a84c; --gold-l:#e4c97a; --gold-g:rgba(201,168,76,.13);
-    --ink:#e8eef5; --muted:#7a9ab8; --line:rgba(255,255,255,.07);
-    --accent:#2d8cbf; --accent2:#1f6f8b;
-    /* legacy compat */
-    --paper:#0c1826; --paper2:#111f33;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;color:var(--ink);background:var(--dark);line-height:1.72}
-  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.13;margin:0}
-  .wrap{max-width:840px;margin:0 auto;padding:0 24px}
-  a{color:var(--accent)}
-
-  /* ── ШАПКА ── */
-  header.top{background:rgba(6,12,23,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--card-b);color:#fff;position:sticky;top:0;z-index:30}
-  header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-  .logo svg{display:block;filter:drop-shadow(0 0 8px rgba(201,168,76,.4))}
-  .logo .lt{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:16px}
-  .logo .lt small{display:block;font-size:9px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Inter',sans-serif}
-  .score{background:var(--gold-g);border:1px solid rgba(201,168,76,.3);border-radius:24px;padding:6px 16px;font-size:13px;color:var(--gold-l);cursor:pointer;font-family:'Inter',sans-serif}
-  .score-info{position:absolute;right:12px;top:66px;max-width:260px;background:#0e1c30;color:var(--ink);border:1px solid var(--card-b);border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.6;box-shadow:0 20px 60px rgba(0,0,0,.6);display:none;z-index:40}
-  .score-info.show{display:block}
-
-  /* ── HERO — СТАНДАРТ (не менять): 3D-сцена сверху, текст отдельным блоком ниже ── */
-  .hero-scene{position:relative;height:52vh;min-height:300px;max-height:520px;overflow:hidden;background:linear-gradient(160deg,#0a1e3a 0%,#1a3a6a 55%,#0d2240 100%)}
-  .hero-scene canvas.scene,.hero-scene img.scene{width:100%;height:100%;display:block;object-fit:cover}
-  .scene-caption{background:#060d18;padding:11px 0 12px}
-  .scene-caption .wrap{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-  .scene-cap{font-size:13.5px;line-height:1.6;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:14px;flex:1 1 420px}
-  .scene-hint{flex:0 0 auto;font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:.4px;color:#e4c97a;
-    background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.34);border-radius:24px;padding:7px 16px;font-weight:600}
-  .hero-lead{background:linear-gradient(180deg,#0c1826 0%,#060c17 100%);color:#fff;padding:28px 0 38px}
-  .hero-lead .museum{color:var(--gold);font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;font-family:'Inter',sans-serif;margin-bottom:12px;opacity:.9}
-  .hero-lead .who{font-family:'Inter',sans-serif;font-size:clamp(13px,3vw,15px);letter-spacing:.4px;color:var(--accent-l,#7dc8ff);margin-bottom:10px}
-  .hero-lead .who i{font-style:normal;color:#7893ab;font-weight:400}
-  .hero-lead h1{color:#fff;font-size:56px;font-weight:900;line-height:1.04;margin-bottom:16px}
-  .hero-lead .hook{color:#b8ccde;font-size:19px;max-width:580px;margin-bottom:28px;line-height:1.65;font-weight:400}
-  .hero-lead .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-  @media(max-width:680px){.hero-lead h1{font-size:34px}.hero-lead .hook{font-size:16px}
-    .hero-scene{height:34vh;min-height:230px;max-height:300px}
-    .scene-caption .wrap{flex-direction:column;gap:9px}
-    .scene-hint{order:-1;align-self:flex-start;font-size:11.5px;padding:6px 13px}
-    .scene-cap{font-size:12.8px;flex:1 1 auto}}
-  .date-chip{display:inline-block;background:var(--gold-g);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-weight:700;padding:6px 18px;border-radius:24px;font-size:12px;margin-bottom:16px;font-family:'Inter',sans-serif;letter-spacing:.5px}
-
-  /* ── НАВИГАЦИЯ ДНЯ ── */
-  .daynav{position:sticky;top:64px;z-index:25;background:rgba(6,12,23,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--card-b)}
-  .daynav .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
-  .daynav::-webkit-scrollbar{display:none}
-  .daynav a{flex:0 0 auto;padding:14px 20px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;color:var(--muted);text-decoration:none;white-space:nowrap;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid transparent;transition:.18s}
-  .daynav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
-
-  /* ── СЕКЦИИ ── */
-  section.block{padding:64px 0;border-bottom:1px solid var(--line);scroll-margin-top:130px}
-  .kicker{font-size:10px;text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);font-weight:700;font-family:'Inter',sans-serif;margin-bottom:8px}
-  section.block h2{font-size:34px;color:#fff;margin-bottom:10px}
-  p{margin:14px 0;color:var(--ink)}
-  .pull{background:var(--gold-g);border-left:3px solid var(--gold);padding:18px 22px;border-radius:0 14px 14px 0;font-style:italic;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5;margin:26px 0}
-
-  /* ── КНОПКИ ── */
-  .btn{cursor:pointer;border:none;border-radius:12px;padding:14px 26px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:var(--accent2);color:#fff;transition:.18s;letter-spacing:.2px}
-  .btn:hover{filter:brightness(1.18)}
-  .btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--card-b)}
-  .btn.ghost:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.2)}
-  .btn.gold{background:linear-gradient(135deg,var(--gold),#b8882b);color:#1a0f00;box-shadow:0 4px 20px rgba(201,168,76,.25)}
-  .btn.gold:hover{filter:brightness(1.1);box-shadow:0 6px 28px rgba(201,168,76,.4)}
-  .btn:active{transform:translateY(1px)}
-  .pulse{animation:pulse .9s ease-in-out infinite}
-  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-
-  /* ── КАРТОЧКИ ── */
-  .card{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:20px 22px;margin:16px 0;backdrop-filter:blur(6px)}
-
-  /* ── КВИЗ ── */
-  .opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:13px 16px;margin:8px 0;cursor:pointer;font-size:15px;color:var(--ink);font-family:'Inter',sans-serif;transition:.16s}
-  .opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
-  .opt.correct{background:rgba(40,120,60,.18);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
-  .opt.wrong{background:rgba(180,40,40,.13);border-color:#c0453f;color:#f08080}
-  .exp{margin-top:10px;font-size:14px;background:var(--gold-g);border-radius:10px;padding:12px 14px;display:none;color:var(--gold-l)}
-  .exp.show{display:block}
-
-  /* ── ИТОГ ДНЯ ── */
-  .day-result{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:22px 24px;max-width:460px}
-  .dr-rank{font-family:'Playfair Display',Georgia,serif;font-size:28px;color:var(--gold-l);font-weight:700}
-  .dr-score{font-size:16px;margin:4px 0 12px;color:var(--ink)}.dr-score span{color:var(--muted);font-size:14px}
-  .dr-bar{height:8px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden}
-  .dr-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--gold));transition:width .6s cubic-bezier(.2,.7,.2,1)}
-  .dr-note{margin-top:12px;font-size:14px;color:var(--muted)}
-
-  /* ── РЕКЛАМНЫЕ СЛОТЫ ── */
-  .ad-slot{position:relative;margin:26px 0;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:14px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
-  .ad-slot .lbl{position:absolute;top:7px;right:12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.15);font-family:'Inter',sans-serif}
-  .ad-slot .ph-txt{font-size:12px;max-width:80%;color:rgba(255,255,255,.18)}
-  .ad-slot.billboard{min-height:108px}
-  .adband{background:transparent;border-bottom:none}
-
-  footer{padding:40px 0 80px;color:rgba(255,255,255,.2);font-size:12px;text-align:center;font-family:'Inter',sans-serif;letter-spacing:.5px}
-  .crumbs{background:rgba(6,12,23,.6);border-bottom:1px solid var(--card-b);font-family:'Inter',sans-serif;font-size:12.5px}
-  .crumbs .wrap{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
-  .crumbs a{color:var(--gold-l);text-decoration:none;white-space:nowrap}
-  .crumbs a:hover{text-decoration:underline}
-  .crumbs .sep{color:var(--muted);opacity:.6}
-  .crumbs .here{color:var(--muted);white-space:nowrap}
-
-
-  /* ── ШАПКА: четыре строки по museum-core §6-бис ── */
-  header.top{display:block;text-align:center;padding:10px 12px 8px;height:auto;position:relative}
-  header.top .b1{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:15px;letter-spacing:.5px;color:#fff}
-  header.top .b2{font-size:11px;color:var(--muted);margin-top:2px}
-  header.top .b3{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px}
-  header.top .b4{font-size:12.5px;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-style:italic}
-  header.top .score{position:absolute;right:12px;top:10px}
-  .daynav{top:0}
-  .hero-scene{height:38vh;min-height:250px;max-height:400px}
-  @media(max-width:680px){.hero-lead h1{font-size:31px}}
-  .hero-scene img.scene{object-fit:cover;object-position:50% 50%}
-  .date-origin{font-size:13px;color:#9fb4c8;margin:-6px 0 12px;max-width:62ch}
-  .hero-lead .hook{color:#c6d8e8;max-width:62ch}
-  .hero-under{background:linear-gradient(180deg,#060d18,#060c17);padding:4px 0 22px}
-  .stamp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(125,200,255,.28);margin-top:14px}
-  .stamp>div{padding:11px 12px;border-left:1px solid rgba(125,200,255,.16);min-width:0}
-  .stamp>div:first-child{border-left:0}
-  .stamp .v{font-size:clamp(15px,3.4vw,21px);font-weight:700;color:#8fd3ff;line-height:1.1;overflow-wrap:anywhere}
-  .stamp .k{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#8fa5b9;margin-top:5px}
-  @media(max-width:600px){.stamp{grid-template-columns:repeat(2,minmax(0,1fr))}.stamp>div:nth-child(3){border-left:0}.stamp>div:nth-child(n+3){border-top:1px solid rgba(125,200,255,.16)}}
-
-  /* ── ЛЕНТА УДАРОВ (museum-inventions, вариант А; museum-core §5-бис) ── */
-  .udary{list-style:none;margin:18px 0 0;padding:0;counter-reset:u}
-  .udary>li{border-top:1px solid var(--line);padding:4px 0}
-  .udary details>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr;gap:10px;padding:12px 0;font-size:17px;line-height:1.55;color:var(--ink)}
-  .udary details>summary::-webkit-details-marker{display:none}
-  .udary details>summary::before{counter-increment:u;content:counter(u);font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:20px;color:var(--gold);line-height:1.3}
-  .udary .more-lbl{display:block;grid-column:2;font-size:12.5px;color:var(--gold-l);letter-spacing:.3px;margin-top:4px}
-  .udary .more-lbl::after{content:' ▾'}
-  .udary details[open] .more-lbl::after{content:' ▴'}
-  .udary details[open] .more-lbl .o{display:none}
-  .udary details:not([open]) .more-lbl .c{display:none}
-  .udary summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
-  .udary .det{margin:0 0 14px 44px;padding:12px 16px;background:rgba(255,255,255,.035);border-left:2px solid rgba(201,168,76,.45);border-radius:0 10px 10px 0;font-size:15px;color:#d5e0ea}
-  .udary .det p{margin:8px 0}
-  .udary .tag{display:inline-block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#1a0f00;background:var(--gold-l);border-radius:6px;padding:1px 7px;margin-right:6px}
-  .udary .find{border-left:3px solid var(--gold);padding-left:8px}
-  figure.fig{margin:18px 0}
-  figure.fig img{max-width:100%;height:auto;border-radius:10px;display:block}
-  figure.fig figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
-  .src-note{font-size:12px;color:#8fa5b9}
-
-  /* ── ТИГЕЛЬ АНОСОВА (главное предметное действие) ── */
-  .lab{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
-  .lab-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
-  .lab-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
-  .seg{cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;min-height:44px}
-  .seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
-  .seg:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .lab-stage{position:relative;margin-top:12px}
-  .lab-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#1c2530}
-  .lab-cap{font-size:12px;color:#8fa5b9;margin-top:6px}
-  .lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
-  .lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
-  .lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
-  .lab-found{font-size:13px;color:var(--muted);margin-top:8px}
-  .lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-  .micro{display:none;margin-top:14px;text-align:center}
-  .micro canvas{width:min(280px,80%);height:auto;border-radius:50%;border:6px solid #2b3642;box-shadow:0 0 0 2px rgba(201,168,76,.5)}
-  .micro.show{display:block}
-  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
-
-  /* ── ГРАНИЦА ПЕРВЕНСТВА ── */
-  .border-box{background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.3);border-radius:14px;padding:16px 18px}
-  .border-box b{color:#8fd3ff}
-  .ctx{width:100%;border-collapse:collapse;margin-top:14px;font-size:14.5px}
-  .ctx th,.ctx td{text-align:left;padding:9px 8px;border-top:1px solid var(--line);vertical-align:top}
-  .ctx th{color:var(--gold-l);font-weight:600;font-size:12.5px;letter-spacing:.5px}
-  .quiz-q{margin:18px 0 6px;font-weight:600}
-  .sources a{color:var(--gold-l)}
-  .sources li{margin:6px 0;font-size:14px;color:#c8d6e2}
-  @media(max-width:600px){header.top{padding:8px 64px 6px}header.top .score{top:8px;right:8px;padding:4px 10px;font-size:12px}header.top .b3{margin-top:3px}
-    .hero-scene{height:26vh;min-height:200px;max-height:260px}.date-origin{font-size:12px;margin:-8px 0 8px}.hero-lead{padding:18px 0 26px}.hero-lead .date-chip{margin-bottom:12px}}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
-
-  .hero-scene{background:#56716a}
-  .hero-scene img.scene{object-fit:contain}
-  /* ── СТАНОК: орловский прогон против трёх отдельных ── */
-  .press{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
-  .press-stage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-  .press-stage figure{margin:0}
-  .press-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#f3ecd9}
-  .press-stage figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
-  @media(max-width:600px){.press-stage{grid-template-columns:1fr}}
-  .kassa{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
-  .kassa button{cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:8px;color:var(--ink);font:inherit;font-size:14px;min-height:44px}
-  .kassa button canvas{width:100%;height:auto;display:block;border-radius:8px;background:#f3ecd9;margin-bottom:6px}
-  .kassa button[disabled]{cursor:default}
-  .kassa button.correct{border-color:#3f9b52;background:rgba(40,120,60,.18)}
-  .kassa button.wrong{border-color:#c0453f;background:rgba(180,40,40,.13)}
-  /* ── блоки дня по эталону 01-05 ── */
-  .q{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 22px;margin:12px 0}
-  .q h3{margin:0 0 6px;font-size:19px;color:#fff;font-family:'Playfair Display',Georgia,serif}
-  .q h3 em{display:block;font-style:normal;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;margin-bottom:5px;font-weight:700}
-  .q p{margin:0;color:var(--muted);font-size:14.5px}
-  .deepd{background:rgba(255,255,255,.02);border:1px solid var(--card-b);border-radius:16px;padding:16px 22px}
-  .deepd summary{cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;list-style:none}
-  .deepd summary::-webkit-details-marker{display:none}
-  .deepd[open] summary{margin-bottom:12px;opacity:.7}
-  .deepd h3{font-family:'Playfair Display',Georgia,serif;color:var(--gold-l);font-size:20px;margin:20px 0 6px}
-  .src{font-size:12px;color:var(--muted);opacity:.8;margin-top:14px}
-  .chip{cursor:pointer;background:rgba(255,255,255,.05);border:1px solid var(--card-b);border-radius:20px;padding:7px 16px;margin:4px 5px 4px 0;font-size:13px;display:inline-block;color:var(--muted);font-family:'Inter',sans-serif;transition:.16s}
-  .chip:hover{border-color:var(--gold);color:var(--gold)}
-  .msg{margin:8px 0;padding:12px 16px;border-radius:14px;max-width:88%;font-size:15px}
-  .msg.you{background:rgba(45,140,191,.18);border:1px solid rgba(45,140,191,.28);margin-left:auto;text-align:right;color:#a8d4f0}
-  .msg.inv{background:rgba(255,255,255,.05);border:1px solid var(--card-b);color:var(--ink)}
-  .fork-opt{background:var(--card);border:1px solid var(--card-b);border-radius:14px;padding:16px 18px;margin:10px 0;cursor:pointer;transition:.18s;font-size:15px}
-  .fork-opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
-  .fork-opt.chosen{border-color:var(--gold);background:var(--gold-g)}
-  #forkReal.exp{display:none}
-</style>
+<link rel="stylesheet" href="../../assets/izobreteniya-den-01-18.css">
 <meta name="description" content="Механический калькулятор из Петербурга считал на всех континентах почти сто лет — в СССР его звали «Феликс».">
 <link rel="canonical" href="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-18jan-odner.html">
 <meta property="og:type" content="article">
@@ -335,9 +113,26 @@
 
 <section class="block" id="games">
   <div class="wrap">
-    <div class="kicker">Главное действие · модель</div>
-    <h2>Посчитай на арифмометре Однера</h2>
-    <p style="max-width:62ch">Задача счетовода: в цехе 23 рабочих, каждому положено 147 рублей. Сколько выдать всего? Набери рычажками 147 — смотри, как из каждого колеса выдвигаются зубцы. Потом крути ручку: три оборота, сдвиг каретки, ещё два. Пять оборотов вместо двадцати трёх сложений. Попробуешь вычесть больше, чем есть, — зазвенит звонок.</p>
+    <div class="kicker">Главное действие · полка арифмометров</div>
+    <h2>Мир считал на петербургском колесе</h2>
+    <p class="s18-1">Семь машин из четырёх стран — корпуса у всех разные. Веди пальцем светящийся просвет по полке или нажми на машину: что у неё внутри?</p>
+    <div class="polka" id="polka">
+      <div class="polka-shelf"><div class="polka-lens" aria-hidden="true"></div></div>
+      <div class="polka-count"><span>Колесо Однера найдено: <b id="polkaCnt">0</b> из 7</span><span class="polka-bar"><i></i></span></div>
+      <div class="lab-msg" id="polkaMsg" aria-live="polite">Просвет стоит над петербургской машиной 1890 года. Подержи — и веди к немецкой, шведской, американской.</div>
+      <div class="stopki" id="stopki" hidden>
+        <div class="stopki-row">
+          <div class="stopki-col stopki-fr"><div class="stopki-pile"><i class="on"></i></div><div class="stopki-v">≈ 5 000</div><div class="stopki-k">арифмометров Тома де Кольмара, Франция, — за сто лет</div></div>
+          <div class="stopki-col stopki-ru"><div class="stopki-pile stopki-wall"></div><div class="stopki-v" id="stopkiNum">0</div><div class="stopki-k">«Феликсов» собрал один Курск — к 1973 году</div></div>
+        </div>
+        <p class="stopki-leg">Один кирпичик — 5 000 машин. Слева один, справа шестьсот.</p>
+      </div>
+      <noscript><div class="noscript-box">Для полки нужен JavaScript. Текстовая версия: на полке петербургский «Однер» 1890 года, немецкие Brunsviga и Triumphator, шведские Original-Odhner и Facit, американский Marchant и курский «Феликс». Корпуса разные, а внутри у всех одно колесо Однера с выдвижными зубцами. Французских арифмометров Тома за сто лет сделали около 5 000, курских «Феликсов» — 3 миллиона.</div></noscript>
+    </div>
+    <p class="src-note">Схема музея, не снимок: корпуса нарисованы по типу машин. Марки-потомки — по А. И. Басову (НИУ ВШЭ, IQ.HSE, 2024); 5 000 машин Тома и 3 миллиона «Феликсов» — там же и «Курский завод „Счётмаш“», Виртуальный компьютерный музей.</p>
+
+    <h3 class="press-h">Возьми любую и покрути ручку</h3>
+    <p class="s18-1">В руках: <b id="inHand">«Однер», Петербург (Россия)</b> — просвеченную машину на полке можно выбрать нажатием. Задача счетовода: в цехе 23 рабочих, каждому положено 147 рублей. Набери рычажками 147, крути ручку пальцем по кругу: три оборота, сдвиг каретки, ещё два. Уйдёшь в минус — зазвенит звонок.</p>
     <div class="press" id="press">
       <div class="lab-btns">
         <button class="btn ghost" type="button" data-lev="0" data-d="1">Сотни +1</button>
@@ -351,6 +146,12 @@
         <button class="btn ghost" type="button" id="shiftCar">Сдвинуть каретку</button>
         <button class="btn ghost" type="button" id="arReset">Начать заново</button>
       </div>
+      <div class="crank-row">
+        <div class="crank" id="crank" role="button" tabindex="0" aria-label="Ручка арифмометра: крути по кругу — по часовой прибавить, против часовой вычесть; стрелки клавиатуры тоже работают">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" class="crank-ring"/><circle cx="60" cy="60" r="10" class="crank-hub"/><g class="crank-arm"><rect x="56" y="10" width="8" height="52" rx="4"/><circle cx="60" cy="16" r="11" class="crank-knob"/></g></svg>
+        </div>
+        <div class="crank-hint">Крути пальцем по кругу: по часовой — прибавить, против — вычесть. Нажатие — один оборот вперёд.</div>
+      </div>
       <div class="press-stage">
         <figure><canvas id="cvWheel" width="300" height="300" role="img" aria-label="Модель трёх колёс Однера: из каждого выдвинуто столько зубцов, какая цифра набрана"></canvas><figcaption>Набрано: <span id="setTxt">000</span></figcaption></figure>
         <figure><canvas id="cvCount" width="300" height="300" role="img" aria-label="Модель счётчика арифмометра: окошки результата, положение каретки и число оборотов"></canvas><figcaption>Счётчик: <span id="cntTxt">0, оборотов 0</span></figcaption></figure>
@@ -359,7 +160,7 @@
       <div class="lab-msg" id="arMsg" aria-live="polite">Набери рычажками 147.</div>
       <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: на арифмометре Однера число набирают рычажками, и из каждого колеса выдвигается столько зубцов, какая цифра стоит. Один оборот ручки прибавляет набранное число к счётчику. Чтобы умножить 147 на 23, ручку крутят три раза, сдвигают каретку на разряд и крутят ещё два раза: в счётчике 3381. Если при вычитании уйти в минус, у «Феликса» звенит звонок.</div></noscript>
     </div>
-    <p class="src-note" style="margin-top:10px">Правило модели — устройство колеса Однера: Понятов А. «Рождение легенды», «Наука и жизнь» № 6, 2020; звонок — «Арифмометр „Феликс“», Музей истории города Обнинска.</p>
+    <p class="src-note s18-2">Правило модели — устройство колеса Однера: Понятов А. «Рождение легенды», «Наука и жизнь» № 6, 2020; звонок — «Арифмометр „Феликс“», Музей истории города Обнинска.</p>
   </div>
 </section>
 
@@ -368,40 +169,35 @@
     <div class="kicker">Пять фактов об Однере</div>
     <h2>Механик, которого выгнали с завода</h2>
     <ol class="udary">
-      <li><details><summary><span>Швед Однер бросил институт после смерти отца и осенью 1868 года приехал в Петербург с восемью рублями, не зная ни слова по-русски.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+      <li><details><summary><span>Лучший в мире французский арифмометр Однеру дали починить — он сделал свой, и Курск собрал его 3 миллиона.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>Отец, землемер, внезапно умер в 1863 году, и в семье осталось шестеро детей. Однер ушёл из Королевского технологического института в Стокгольме после третьего курса и дома работы не нашёл.</p>
-          <p>Диплома он так и не получил и до конца жизни называл себя механиком, а не инженером.</p>
-          <p class="src-note">Источник: Басов А. И., IQ.HSE, 26.06.2024.</p>
+          <p>Около 1871 г. мастеру завода Нобеля принесли сломанный арифмометр Тома де Кольмара — до Однера мировой стандарт: больше 10 кг, около 5000 штук за сто лет. Однер разобрал его и придумал своё колесо.</p>
+          <p>Трёхмиллионный «Феликс» сошёл в Курске в 1973 г.</p>
+          <p class="src-note">Источник: А. И. Басов (НИУ ВШЭ), «История с вычислениями. Эпизод третий: империя арифмометров», IQ.HSE — <a href="https://iq-media.ru/archive/936485878" rel="noopener">iq-media.ru/archive/936485878</a>; «Курский завод „Счётмаш“», Виртуальный компьютерный музей — <a href="https://www.computer-museum.ru/histussr/schetmash.htm" rel="noopener">computer-museum.ru/histussr/schetmash.htm</a>.</p>
         </div></details></li>
-      <li><details><summary><span>Около 1871 года на заводе Нобеля ему дали починить французский арифмометр — Однер разобрал его и решил построить свой, лучше.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+      <li><details><summary><span>Завод Нобеля выгнал Однера — а через 14 лет компания Нобелей сама считала на десяти его машинах.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>Около 1871 года мастеру завода Людвига Нобеля поручили отремонтировать арифмометр Тома де Кольмара. Однер разобрал его, увидел слабые места и взялся за свою машину.</p>
-          <p>Гнала его, признавался он, надежда разбогатеть: жалованье маленькое, а дома жена и пошли дети.</p>
-          <p class="src-note">Источник: Басов А. И., IQ.HSE, 26.06.2024; «Арифмометр Однера», Волгоградский областной краеведческий музей.</p>
+          <p>В 1877 г., пока Людвиг Нобель был в отъезде, директора запретили Однеру появляться на заводе и уволили его, партия из 14 машин осталась без производства.</p>
+          <p>В 1891 г. «Товарищество братьев Нобель» уже работало на десяти его арифмометрах.</p>
+          <p class="src-note">Источник: А. И. Басов (НИУ ВШЭ), «История с вычислениями. Эпизод третий: империя арифмометров», IQ.HSE — <a href="https://iq-media.ru/archive/936485878" rel="noopener">iq-media.ru/archive/936485878</a>.</p>
         </div></details></li>
-      <li><details><summary><span>В 1877 году, пока Нобель был в отъезде, директора запретили изобретателю даже заходить на завод — и уволили его.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+      <li><details><summary><span>Первые машины Однера годами считали для правительства США — теперь они в Смитсоновском институте.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>На заводе Нобеля уже собрали пробную партию из 14 машин. Нобель уехал в долгую поездку по Европе, и директора завода запретили Однеру появляться на территории, а потом уволили.</p>
-          <p>Готовая партия осталась без производства, а вложиться снова Нобель отказался.</p>
-          <p class="src-note">Источник: Басов А. И., IQ.HSE, 26.06.2024.</p>
+          <p>Американский агент компаньона Однера продал два арифмометра пробной партии 1870-х чиновникам правительства США, «которые использовали их на протяжении многих лет».</p>
+          <p>Третий экземпляр той партии хранится в Политехническом музее.</p>
+          <p class="src-note">Источник: А. И. Басов (НИУ ВШЭ), «История с вычислениями. Эпизод третий: империя арифмометров», IQ.HSE — <a href="https://iq-media.ru/archive/936485878" rel="noopener">iq-media.ru/archive/936485878</a>.</p>
         </div></details></li>
-      <li><details><summary><span>Уволенный механик 14 лет руководил отделом там, где печатали деньги, и придумал машину, которая сама нумерует банкноты.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+      <li><details><summary><span>Немецкая «Брунсвига» — это Однер: Германия купила лицензию у петербургского мастера и сделала 20 000 машин.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>Однер ушёл в Экспедицию заготовления государственных бумаг, получил золотую медаль за улучшения и участвовал в создании «орловской печати», защищавшей банкноты от подделки.</p>
-          <p>Ещё его изобретения: папиросная машина и турникеты, которые до середины XX века стояли почти у всех пароходных компаний России. На заработанное он в 1887 году открыл свою мастерскую.</p>
-          <p class="src-note">Источник: Басов А. И., IQ.HSE, 26.06.2024; Понятов А., «Наука и жизнь» № 6, 2020.</p>
+          <p>С 1892 г. немецкая фирма выпускала арифмометры по лицензии Однера, к 1912 г. — 20 000 штук.</p>
+          <p>Его колесо крутили и под другими марками: Facit в Швеции, Triumphator в Германии, «Рапид» во Франции.</p>
+          <p class="src-note">Источник: А. И. Басов (НИУ ВШЭ), «История с вычислениями. Эпизод третий: империя арифмометров», IQ.HSE — <a href="https://iq-media.ru/archive/936485878" rel="noopener">iq-media.ru/archive/936485878</a>; А. Понятов, «Рождение легенды», «Наука и жизнь», 2020, № 6 — <a href="https://www.nkj.ru/archive/articles/38885/" rel="noopener">nkj.ru/archive/articles/38885</a>.</p>
         </div></details></li>
-      <li><details><summary><span>На его заводике работали 25 взрослых и десять детей — а в 1893 году арифмометр взял высшую награду Всемирной выставки в Чикаго.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+      <li><details><summary><span>Ракеты в поле считали на «Феликсе»: ему не нужно электричество.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>В 1893 году на заводе стояли 25 станков и нефтяной двигатель в четыре силы. Потом пошли медали в Брюсселе (1895), Нижнем Новгороде (1896), Стокгольме (1897) и Париже (1900).</p>
-          <p>Однер умер в Петербурге в 1905 году, завод перешёл наследникам.</p>
-          <p class="src-note">Источник: Басов А. И., IQ.HSE, 26.06.2024; Понятов А., «Наука и жизнь» № 6, 2020; справочник предприятий Петербурга.</p>
-        </div></details></li>
-      <li class="find"><details><summary><span>Компания, которая его уволила, стала его покупателем: в 1891 году «Товарищество братьев Нобель» считало на десяти арифмометрах Однера.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Через четырнадцать лет после увольнения изобретатель уже продавал машины тем, кто когда-то закрыл перед ним ворота завода.</p>
-          <p class="src-note">Источник: Басов А. И., IQ.HSE, 26.06.2024.</p>
+          <p>Армия была главным покупателем — «только на арифмометре в полевых и боевых условиях при отсутствии электричества и можно было сделать необходимые для запуска ракет расчёты».</p>
+          <p>Только за 1969 г. выпустили 300 тысяч «Феликсов».</p>
+          <p class="src-note">Источник: «Огонёк», № 34, 29.08.2004 — <a href="https://www.kommersant.ru/doc/2294058" rel="noopener">kommersant.ru/doc/2294058</a>.</p>
         </div></details></li>
     </ol>
   </div>
@@ -441,8 +237,8 @@
     <div class="kicker">Проверка факта</div>
     <h2>Что именно Однер сделал первым</h2>
     <div class="border-box">
-      <p style="margin-top:0"><b>Граница первенства:</b> арифмометр Однера с колесом выдвижных зубцов — самая массовая механическая вычислительная машина в истории. Серия началась в Петербурге в 1890 году, потомки этой машины по всему миру выпускались миллионами, а в СССР под именем «Феликс» — до 1978 года.</p>
-      <p style="margin-bottom:0"><b>Чего здесь нет:</b> считающие машины были и раньше — арифмометр Тома де Кольмара во Франции выпускали с 1820 года; похожее колесо в 1875 году запатентовал американец Болдуин. Первенство Однера — машина, которую весь мир стал делать миллионами.</p>
+      <p class="s18-3"><b>Граница первенства:</b> арифмометр Однера с колесом выдвижных зубцов — самая массовая механическая вычислительная машина в истории. Серия началась в Петербурге в 1890 году, потомки этой машины по всему миру выпускались миллионами, а в СССР под именем «Феликс» — до 1978 года.</p>
+      <p class="s18-4"><b>Чего здесь нет:</b> считающие машины были и раньше — арифмометр Тома де Кольмара во Франции выпускали с 1820 года; похожее колесо в 1875 году запатентовал американец Болдуин. Первенство Однера — машина, которую весь мир стал делать миллионами.</p>
     </div>
     <table class="ctx">
       <thead><tr><th scope="col">Где</th><th scope="col">Что</th><th scope="col">Когда</th></tr></thead>
@@ -459,15 +255,12 @@
 </section>
 
 <!-- ── ТРУДНО ПОВЕРИТЬ ── -->
-<section class="block" id="trudno-poverit" style="background:rgba(6,12,23,.6)">
+<section class="block s18-5" id="trudno-poverit">
   <div class="wrap">
     <div class="kicker">Машина и её время</div>
-    <h2 style="margin-bottom:6px">В это трудно поверить</h2>
-    <div class="q"><h3><em>Факт 1</em>Два первых арифмометра Однера считали у чиновников правительства США</h3><p>Из пробной партии 1870-х два арифмометра годами работали у американских чиновников. Третий экземпляр той же партии сегодня хранится в Политехническом музее — это единственный известный арифмометр из первых промышленных образцов.</p></div>
-    <div class="q"><h3><em>Факт 2</em>Три миллиона «Феликсов» — на одном заводе</h3><p>Трёхмиллионный «Феликс» сошёл с конвейера курского «Счётмаша» в июне 1973 года. А прежнего мирового чемпиона, французский арифмометр Тома, за сто лет выпустили всего около пяти тысяч.</p></div>
-    <div class="q"><h3><em>Факт 3</em>Калькуляторы уже продавались, а «Феликс» всё равно покупали</h3><p>В 1970-е карманный калькулятор был уже в магазинах. Но «Феликс» стоил примерно в десять раз дешевле — и его брали. А если при вычитании уходил в минус, звенел звонок.</p></div>
-    <div class="q"><h3><em>Факт 4</em>Машину с ручкой выпускали дольше, чем существовал СССР</h3><p>Петербургская серия началась в 1890 году, курский «Феликс» делали до 1978-го. Почти девяносто лет — без смены принципа: то же колесо с выдвижными зубцами.</p></div>
-    <div class="q"><h3><em>Факт 5</em>«Немецкий» арифмометр — тоже Однер</h3><p>Знаменитая «Брунсвига» работала по лицензии, купленной у петербургского мастера, и к 1912 году Германия выпустила 20 000 таких машин.</p></div>
+    <h2 class="s18-6">В это трудно поверить</h2>
+    <div class="q"><h3><em>Факт 1</em>Калькуляторы уже продавались, а «Феликс» всё равно покупали</h3><p>В 1970-е карманный калькулятор был уже в магазинах. Но «Феликс» стоил примерно в десять раз дешевле — и его брали. А если при вычитании уходил в минус, звенел звонок.</p></div>
+    <div class="q"><h3><em>Факт 2</em>Машину с ручкой выпускали дольше, чем существовал СССР</h3><p>Петербургская серия началась в 1890 году, курский «Феликс» делали до 1978-го. Почти девяносто лет — без смены принципа: то же колесо с выдвижными зубцами.</p></div>
   </div>
 </section>
 
@@ -475,7 +268,7 @@
 <section class="block" id="razbor">
   <div class="wrap">
     <div class="kicker">Разбор</div>
-    <h2 style="margin-bottom:10px">Для тех, кто смотрит внимательно</h2>
+    <h2 class="s18-7">Для тех, кто смотрит внимательно</h2>
     <details class="deepd">
       <summary>Четыре сюжета подробно — развернуть</summary>
       <h3>Почему колесо, а не валик</h3>
@@ -495,7 +288,7 @@
   <div class="wrap">
     <div class="kicker">Проверь себя · 5 вопросов</div>
     <h2>Викторина</h2>
-    <p style="color:var(--muted);max-width:62ch">На каждый вопрос — одна попытка. После ответа покажем объяснение.</p>
+    <p class="s18-8">На каждый вопрос — одна попытка. После ответа покажем объяснение.</p>
     <div id="quizBox"></div>
     <noscript><div class="noscript-box">Для викторины нужен JavaScript. Ответы: 1 — колесо с выдвижными зубцами; 2 — с восемью рублями, не зная русского; 3 — 14 машин на заводе Нобеля; 4 — с 1890 года, Петербург; 5 — около пяти тысяч.</div></noscript>
   </div>
@@ -505,10 +298,10 @@
 <section class="block" id="mirovoy-kontekst">
   <div class="wrap">
     <div class="kicker">Контекст</div>
-    <h2 style="margin-bottom:6px">Что в это время делал мир</h2>
-    <p style="max-width:66ch">Тысяча восемьсот девяностый. Мир считает вручную — столбиком, на счётах, а у кого есть деньги, на тяжёлых французских арифмометрах Тома. За семьдесят лет их сделали несколько тысяч: машина дорогая, громоздкая, и стоит она в редкой конторе.</p>
-    <p style="max-width:66ch">И тут из Петербурга приходит машина, которая помещается на столе. Уже в 1892–1893 годах немецкая фирма покупает лицензию Однера и начинает делать «Брунсвигу». В 1893 году на Всемирной выставке в Чикаго петербургский арифмометр получает высшую награду.</p>
-    <p style="max-width:66ch">Отсюда вывод, ради которого этот день стоит в календаре: <b style="color:var(--gold-l)">первым бывает тот, кто сделал сложное простым и дешёвым — тогда им пользуется весь мир.</b> До карманных калькуляторов бухгалтерии, конторы и школы почти сто лет крутили ручку машины, придуманной в Петербурге.</p>
+    <h2 class="s18-6">Что в это время делал мир</h2>
+    <p class="s18-9">Тысяча восемьсот девяностый. Мир считает вручную — столбиком, на счётах, а у кого есть деньги, на тяжёлых французских арифмометрах Тома. За семьдесят лет их сделали несколько тысяч: машина дорогая, громоздкая, и стоит она в редкой конторе.</p>
+    <p class="s18-9">И тут из Петербурга приходит машина, которая помещается на столе. Уже в 1892–1893 годах немецкая фирма покупает лицензию Однера и начинает делать «Брунсвигу». В 1893 году на Всемирной выставке в Чикаго петербургский арифмометр получает высшую награду.</p>
+    <p class="s18-9">Отсюда вывод, ради которого этот день стоит в календаре: <b class="s18-10">первым бывает тот, кто сделал сложное простым и дешёвым — тогда им пользуется весь мир.</b> До карманных калькуляторов бухгалтерии, конторы и школы почти сто лет крутили ручку машины, придуманной в Петербурге.</p>
   </div>
 </section>
 
@@ -517,95 +310,95 @@
   <div class="wrap">
     <div class="kicker">Поговори с изобретателем</div>
     <h2>Спроси Вильгодта Однера</h2>
-    <p style="color:var(--muted)">Задай вопрос — ответит сам механик.</p>
+    <p class="s18-11">Задай вопрос — ответит сам механик.</p>
     <div id="starters"></div>
-    <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
-    <div style="display:flex;gap:10px;margin-top:12px">
-      <input id="chatInput" type="text" placeholder="Написать вопрос..." aria-label="Вопрос Вильгодту Однеру" style="flex:1;padding:12px 16px;font-size:15px">
+    <div class="s18-12" id="chatBox"></div>
+    <div class="s18-13">
+      <input class="s18-14" id="chatInput" type="text" placeholder="Написать вопрос..." aria-label="Вопрос Вильгодту Однеру">
       <button class="btn gold" onclick="sendChat()">Отправить</button>
     </div>
-    <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы сформированы на основе документальных источников.</p>
+    <p class="s18-15">Ответы сформированы на основе документальных источников.</p>
   </div>
 </section>
 
 <!-- ── РАЗВИЛКА ── -->
-<section class="block" id="fork" style="background:rgba(45,140,191,.04)">
+<section class="block s18-16" id="fork">
   <div class="wrap">
     <div class="kicker">Твой выбор</div>
     <h2>А как поступил бы ты?</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Петербург, 1877 год. Тебя только что уволили с завода, где собрана готовая партия из 14 твоих арифмометров. Хозяин вкладываться больше не хочет. Дома жена и дети, денег нет. Ты на месте Однера — что выбираешь?</p>
+    <p class="s18-17">Петербург, 1877 год. Тебя только что уволили с завода, где собрана готовая партия из 14 твоих арифмометров. Хозяин вкладываться больше не хочет. Дома жена и дети, денег нет. Ты на месте Однера — что выбираешь?</p>
     <div class="fork-opt">🏭 Иду на хорошую службу, коплю деньги и потом открываю свою фабрику</div>
     <div class="fork-opt">🧳 Продаю изобретение за границу целиком и забываю о нём</div>
     <div class="fork-opt">🛑 Бросаю арифмометр: раз не вышло у Нобеля, не выйдет ни у кого</div>
-    <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Однер ушёл в Экспедицию заготовления государственных бумаг и 14 лет руководил там отделом. Арифмометр он не бросил: в 1878–1879 годах взял патенты в нескольких странах, в 1887 году открыл мастерскую, а с 1890 года пустил машину в серию.</div>
+    <div id="forkReal" class="exp s18-18"><b>Как было на самом деле.</b> Однер ушёл в Экспедицию заготовления государственных бумаг и 14 лет руководил там отделом. Арифмометр он не бросил: в 1878–1879 годах взял патенты в нескольких странах, в 1887 году открыл мастерскую, а с 1890 года пустил машину в серию.</div>
   </div>
 </section>
 
-<section class="block" id="theme-inventions" style="background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.15)">
+<section class="block s18-19" id="theme-inventions">
   <div class="wrap">
     <div class="kicker">Вычислительная техника · Русские первенства</div>
-    <h2 style="margin-bottom:6px">Что ещё русские изобрели первыми в теме «вычислительная техника»</h2>
-    <p style="color:var(--muted);margin-top:0;margin-bottom:16px;max-width:62ch">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
-    <div style="text-align:center;margin:14px 0 4px">
+    <h2 class="s18-6">Что ещё русские изобрели первыми в теме «вычислительная техника»</h2>
+    <p class="s18-20">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
+    <div class="s18-21">
       <button class="btn gold" id="themeInvBtn" data-label="Показать 12 изобретений →">Показать 12 изобретений →</button>
     </div>
-    <div id="themeInvBody" style="display:none;margin-top:20px">
-      <div class="card" style="padding:0;overflow:hidden">
-        <div style="padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15)">
-          <span style="color:var(--gold-l);font-weight:600;font-size:14px;letter-spacing:.5px">12 ИЗОБРЕТЕНИЙ · ВЫЧИСЛИТЕЛЬНАЯ ТЕХНИКА</span>
+    <div class="s18-22" id="themeInvBody">
+      <div class="card s18-23">
+        <div class="s18-24">
+          <span class="s18-25">12 ИЗОБРЕТЕНИЙ · ВЫЧИСЛИТЕЛЬНАЯ ТЕХНИКА</span>
         </div>
-        <div style="padding:4px 20px 12px">
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">25 янв</span>
+        <div class="s18-26">
+<div class="s18-27">
+          <span class="s18-28">25 янв</span>
           <span>Машины С. Н. Корсакова на перфокартах, 1832</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">27 янв</span>
+<div class="s18-27">
+          <span class="s18-28">27 янв</span>
           <span>Архитектура процессоров Pentium</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">7 фев</span>
+<div class="s18-27">
+          <span class="s18-28">7 фев</span>
           <span>Первая в мире троичная ЭВМ «Сетунь»</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">18 мая</span>
+<div class="s18-27">
+          <span class="s18-28">18 мая</span>
           <span>Прототип персонального компьютера и первый плоттер</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">6 июн</span>
+<div class="s18-27">
+          <span class="s18-28">6 июн</span>
           <span>«Тетрис» А. Пажитнова, 1984</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">9 июн</span>
+<div class="s18-27">
+          <span class="s18-28">9 июн</span>
           <span>«Каисса»: первый чемпион мира среди программ, 1974</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">24 авг</span>
+<div class="s18-27">
+          <span class="s18-28">24 авг</span>
           <span>Кибернетика, проект ОГАС (прообраз интернета), ЭВМ «МИР»</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">13 сен</span>
+<div class="s18-27">
+          <span class="s18-28">13 сен</span>
           <span>Гидроинтегратор — первая в мире аналоговая ЭВМ</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">23 сен</span>
+<div class="s18-27">
+          <span class="s18-28">23 сен</span>
           <span>Первая в мире ЭВМ для экономических расчётов «БЭСМ-6»</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">2 ноя</span>
+<div class="s18-27">
+          <span class="s18-28">2 ноя</span>
           <span>Первая ЭВМ в континентальной Европе (МЭСМ)</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">8 дек</span>
+<div class="s18-27">
+          <span class="s18-28">8 дек</span>
           <span>БЭСМ — одна из самых быстрых ЭВМ в мире (1953)</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">19 дек</span>
+<div class="s18-27">
+          <span class="s18-28">19 дек</span>
           <span>Первый советский персональный ЭВМ «МИР» для инженеров</span>
         </div>
         </div>
       </div>
-      <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:12px">Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
+      <p class="s18-29">Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
     </div>
   </div>
 </section>
@@ -613,11 +406,11 @@
 <section class="block" id="result">
   <div class="wrap">
     <div class="kicker">Итог дня</div>
-    <h2 style="margin-bottom:6px">Сколько баллов ты собрал?</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Набор числа, умножение на арифмометре, викторина, выбор в развилке, вопрос изобретателю и перечень первенств темы вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
+    <h2 class="s18-6">Сколько баллов ты собрал?</h2>
+    <p class="s18-17">Набор числа, умножение на арифмометре, викторина, выбор в развилке, вопрос изобретателю и перечень первенств темы вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
     <div class="day-result">
       <div class="dr-score" id="dayTxt">0 / 100 · звание: Гость дня</div>
-      <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
+      <div class="dr-bar"><i class="s18-30" id="dayBar"></i></div>
       <div class="dr-note">Набери число рычажками, умножь его за пять оборотов и ответь на вопросы.</div>
     </div>
   </div>
@@ -645,8 +438,8 @@
 <section class="block" id="calendar">
   <div class="wrap">
     <div class="kicker">Календарь изобретений</div>
-    <h2 style="margin-bottom:6px">Выбери любой день года</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
+    <h2 class="s18-6">Выбери любой день года</h2>
+    <p class="s18-17">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
     <div id="calbox"></div>
   </div>
 </section>
@@ -668,11 +461,11 @@
   </div>
 </section>
 
-<section class="block" id="catalog" style="background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none">
-  <div class="wrap" style="text-align:center">
-    <h2 style="margin-bottom:6px;color:#fff">У нас много изобретений</h2>
-    <p style="color:var(--muted);margin:0 auto 16px;max-width:60ch">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
-    <a class="btn gold" href="index.html" style="display:inline-block;text-decoration:none">Вернуться в музей →</a>
+<section class="block s18-31" id="catalog">
+  <div class="wrap s18-32">
+    <h2 class="s18-33">У нас много изобретений</h2>
+    <p class="s18-34">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
+    <a class="btn gold s18-35" href="index.html">Вернуться в музей →</a>
   </div>
 </section>
 
@@ -683,8 +476,8 @@
 
 <script>
 /* ── СЧЁТ ── шкала из 100 держит assets/museum-score.js; здесь только реестр наград.
-   Набор 10 + умножение 25 + викторина 5×10 + развилка 5 + чат 5 + перечень темы 5 = 100. */
-window.MUSEUM_SCORE = {awards:{nabor:10, umnozh:25, q:[5,10], fork:5, chat:5, theme:5},
+   Полка 15 + набор 5 + умножение 15 + викторина 5×10 + развилка 5 + чат 5 + перечень темы 5 = 100. */
+window.MUSEUM_SCORE = {awards:{polka:15, nabor:5, umnozh:15, q:[5,10], fork:5, chat:5, theme:5},
   ranks:[[100,'Главный счетовод'],[70,'Мастер завода Однера'],[40,'Ученик счетовода'],[0,'Гость дня']]};
 </script>
 <script src="../../assets/museum-score.js"></script>
@@ -736,15 +529,15 @@ window.MUSEUM_SCORE = {awards:{nabor:10, umnozh:25, q:[5,10], fork:5, chat:5, th
   document.querySelectorAll('[data-lev]').forEach(function(b){
     b.onclick=function(){
       var k=+b.dataset.lev; lev[k]=(lev[k]+1)%10; redraw();
-      if (setNum()===TARGET){ award('nabor',10); msg('Набрано 147. Видишь: из колёс выдвинуто 1, 4 и 7 зубцов. Теперь крути ручку вперёд — три раза.','ok'); }
+      if (setNum()===TARGET){ award('nabor',5); msg('Набрано 147. Видишь: из колёс выдвинуто 1, 4 и 7 зубцов. Теперь крути ручку вперёд — три раза.','ok'); }
       else msg('Набрано '+setNum()+'. Нужно 147: сотни — 1, десятки — 4, единицы — 7.');
     };
   });
   $('levClear').onclick=function(){ lev=[0,0,0]; redraw(); msg('Рычажки в нуле, зубцы спрятаны.'); };
   $('turnPlus').onclick=function(){
     if (!setNum()){ msg('Сначала набери число рычажками.','bad'); return; }
-    acc+=setNum()*(car?10:1); turns++; redraw();
-    if (acc===GOAL && setNum()===TARGET){ award('umnozh',25);
+    acc+=setNum()*(car?10:1); turns++; redraw(); if (window.odnerTik) window.odnerTik();
+    if (acc===GOAL && setNum()===TARGET){ award('umnozh',15);
       msg('3381 рубль — и всего '+turns+' оборотов ручки вместо 23 сложений. Так считали почти сто лет — с 1890-го до 1978-го.','ok'); }
     else if (setNum()===TARGET && !car && acc===TARGET*3) msg('Три оборота — в счётчике 441. Теперь сдвинь каретку на разряд.');
     else msg('Оборот! В счётчике '+acc+'.');
@@ -752,7 +545,7 @@ window.MUSEUM_SCORE = {awards:{nabor:10, umnozh:25, q:[5,10], fork:5, chat:5, th
   $('turnMinus').onclick=function(){
     if (!setNum()){ msg('Сначала набери число рычажками.','bad'); return; }
     var v=acc-setNum()*(car?10:1); turns++;
-    if (v<0){ ring=40; msg('Дзынь! Ушёл в минус — у настоящего «Феликса» в этот миг звенит звонок. Крути ручку вперёд, чтобы вернуться.','bad');
+    if (v<0){ ring=40; if (window.odnerZvon) window.odnerZvon(); msg('Дзынь! Ушёл в минус — у настоящего «Феликса» в этот миг звенит звонок. Крути ручку вперёд, чтобы вернуться.','bad');
       acc=v; tick(); return; }
     acc=v; redraw(); msg('Вычтено. В счётчике '+acc+'.');
   };
@@ -865,12 +658,13 @@ document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='
 const themeBtn=document.getElementById('themeInvBtn');
 if(themeBtn)themeBtn.onclick=function(){
   const b=document.getElementById('themeInvBody');
-  const open=b.style.display==='none';
+  const open=getComputedStyle(b).display==='none';
   b.style.display=open?'block':'none';
   this.textContent=open?'▲ Скрыть':this.dataset.label||'Показать перечень →';
   if(open)award('theme',5);
 };
 </script>
+<script src="../../assets/odner-polka.js"></script>
 <script src="../../assets/museum-chrome.js"></script>
 <script>window.MUSEUM_SUPPORT={museum:'Музей «Что изобрели русские первыми в мире»'};</script>
 <script src="../../assets/museum-support.js"></script>
