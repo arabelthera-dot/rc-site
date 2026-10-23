@@ -35,7 +35,7 @@ PastVu (только с --geo lat,lon). Русский музей, Третья�
   kadr.py razbor [--muzey X] [-n 5]                    без сети: сколько кадров без держателя получили автор/название/год
 Лицензии — только общественное достояние, CC0, CC BY, CC BY-SA; прочее put отклоняет.
 """
-import html, io, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
+import contextlib, difflib, html, io, json, os, re, subprocess, sys, tempfile, urllib.parse, urllib.request
 from pathlib import Path
 
 from PIL import Image
@@ -66,7 +66,27 @@ PRAVA = {'goskatalog': 'Госкаталог прав не даёт — авто
          'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
          'ar_culture': 'у музея-держателя — по карточке Артефакта'}
 FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu']  # порядок поиска
+# Р134: библиотеки с PDF изданий — put без поиска, «адрес PDF#page=N» (страница с 1), права — только --prava
+PDF_FONDY = ['rusneb', 'prlib', 'rsl', 'nlr', 'shpl']
 RAZRESHENIE = None  # Р90: Викисклад — только с --razreshenie (слово Сергея), иначе не трогаем
+# Р136 (Сергей 22.10): кадр фонда любого года — по международному стандарту музеев (credit line): видимая подпись
+# «Фото: автор, год. Хранится: музей. Госкаталог музейного фонда РФ, № …» и основание — цитирование с указанием автора
+# и источника (ст. 1274 ГК РФ). Только через put --hranitsya; LIC_OK этим не расширен, запреты (марки, Викисклад) те же.
+ATRIB_PRAVO = 'цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)'
+GK_NOMER = re.compile(r'goskatalog\.ru/portal/#/collections\?id=(\d+)')
+
+
+def atribuciya(avtor, muzey, card, fond_name):
+    """Видимая строка credit line: «Фото: автор, год. Хранится: музей. Госкаталог музейного фонда РФ, № N»."""
+    if not re.search(r'\b(1[6-9]\d\d|20[0-2]\d)\b|\b[XVI]{2,5}\s*(?:в\.|век)', avtor or ''):  # год или век по карточке
+        sys.exit('--hranitsya: в авторе нужен год (или век) по карточке — «Фамилия И. О., 1961» или «автор не указан, середина XX века»')
+    if not (muzey or '').strip() or not re.match(r'https?://', card or ''):
+        sys.exit('--hranitsya: нужны полное название музея и --card — адрес карточки предмета')
+    m = GK_NOMER.search(card)
+    nomer = f'Госкаталог музейного фонда РФ, № {m[1]}' if m else f'{fond_name}, карточка {card}'
+    return f'Фото: {avtor.strip().removeprefix("Фото:").strip()}. Хранится: {muzey.strip().rstrip(".")}. {nomer}'
+
+
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
 
 
@@ -158,7 +178,7 @@ def find_goskatalog(fond, query, n, geo):
     objs = json.loads(opener.open(req, timeout=40).read()).get('objects', [])
     for o in objs:
         img = (o.get('mainImage') or {}).get('id')
-        if not img:
+        if not img or marka(o.get('name')):
             continue
         avt = ', '.join(a.get('name', '') for a in o.get('authors') or [] if isinstance(a, dict)) or 'автор не указан'
         print(f"? goskatalog:{gk}/muzfo-imaginator/rest/images/original/{img} | {o.get('name', '')[:90]} | {avt}\n"
@@ -293,8 +313,10 @@ def find(query, n=10, geo=None):
         name = names.get(fond, {}).get('name', fond)
         print(f'== {fond} — {name}', flush=True)
         try:
-            k = SEARCH[fond](fond, query, n, geo)
-            if k:
+            with contextlib.redirect_stdout(io.StringIO()) as out:
+                k = SEARCH[fond](fond, query, n, geo)
+            k -= bez_marok(out.getvalue())
+            if k > 0:
                 got.append(f'{fond}: {k}')
         except Exception as e:
             warn(f'  {fond} недоступен: {type(e).__name__}: {str(e)[:200]} — дальше')
@@ -307,13 +329,13 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:48]
 
 
-def put(museum, key, title, caption, avtor=None, card=None, prava=None):
+def put(museum, key, title, caption, avtor=None, card=None, prava=None, hranitsya=None):
     day = ROOT / 'src/content/days' / museum / f'{key}.json'
     if not day.is_file():
         sys.exit(f'нет дня {day}')
     fond = title.split(':', 1)[0]
-    if fond in FONDY:
-        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava)
+    if fond in FONDY or fond in PDF_FONDY:
+        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava, hranitsya)
     if not RAZRESHENIE:
         sys.exit('Викисклад выключен (Р90): сначала российские фонды и museum-source-access; '
                  'кадр оттуда — только с --razreshenie "слово Сергея"')
@@ -359,7 +381,22 @@ def write_day(day, rel, caption, credit):
     day.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
 
 
-def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
+def pdf_stranica(raw, n):
+    """Р134: кадр — страница n (с 1) PDF издания: самая крупная вложенная картинка, иначе отрисовка 200 dpi."""
+    import pymupdf
+    if not raw.startswith(b'%PDF'):
+        sys.exit('#page=: по адресу не PDF')
+    doc = pymupdf.open(stream=raw, filetype='pdf')
+    if not 1 <= n <= len(doc):
+        sys.exit(f'#page={n}: в PDF {len(doc)} стр.')
+    pg = doc[n - 1]
+    imgs = sorted(pg.get_images(full=True), key=lambda x: x[2] * x[3], reverse=True)
+    if imgs:
+        return doc.extract_image(imgs[0][0])['image']
+    return pg.get_pixmap(dpi=200).tobytes('jpeg')
+
+
+def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None, hranitsya=None):
     """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json."""
     if not avtor:
         sys.exit(f'{fond}: шестым аргументом — автор и год по-русски (фонд не отдаёт паспорт машинно)')
@@ -369,17 +406,27 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
         url, card = f'https://pastvu.com/_p/a/{file}', card or f'https://pastvu.com/p/{cid}'
     else:  # ref = прямой адрес изображения, --card — карточка предмета
         url, card = ref, card or ref
+    url, _, page = url.partition('#page=')
+    if page and fond not in PDF_FONDY:
+        sys.exit(f'{fond}: #page= — только для PDF библиотек ({", ".join(PDF_FONDY)})')
+    vidno = atribuciya(avtor, hranitsya, card, src['name']) if hranitsya else ''
     try:
         raw = fetch(url)
     except Exception as e:
         sys.exit(f'{fond}: файл не получен ({e})')
-    rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'))
-    pravo = prava or src.get('rights') or src.get('license') or PRAVA.get(fond) or ''
-    if not LIC_OK.search(pravo):
+    stem = Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem
+    if page:
+        raw = pdf_stranica(raw, int(page))
+        stem = (urllib.parse.parse_qs(urllib.parse.urlsplit(url).query).get('book_id') or [stem])[0] + f'-s{page}'
+    rel, im = save(raw, museum, key, slug(f'{fond}-{stem}'))
+    pravo = prava or (ATRIB_PRAVO if vidno else '') or src.get('rights') or src.get('license') or PRAVA.get(fond) or ''
+    if not LIC_OK.search(pravo) and not (vidno and pravo == ATRIB_PRAVO):
         sys.exit(f'{fond}: права не названы ({pravo or "нет"}) — посмотри карточку и дай --prava "общественное достояние (автор умер в ГГГГ)"')
-    credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
+    credit = f'{vidno or avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
     write_day(day, rel, caption, credit)
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
+    vernut(museum, True, tolko=key)  # Р132: на место вырезанного заменой #333 figure
+    sinhron(museum, True, tolko=key)  # Р128: полная страница дня показывает кадр сразу
 
 # ── zamena: массовый перевод кадров с Викисклада на российские фонды (Р90, Сергей 21.10.2026) ──
 WIKI = re.compile(r'commons\.wikimedia\.org|upload\.wikimedia\.org|wikimedia\s+commons|викисклад', re.I)
@@ -700,6 +747,27 @@ POROG_NAZV = 0.8  # доля слов названия, найденных в о
 KARTINNYE = {'tretyakov', 'rusmuseum', 'Государственная Третьяковская галерея', 'Государственный Русский музей'}  # FOND адаптеров scripts/fondy/
 
 
+# Р126 (Сергей, 22.10): «Вообще нахуй марки не бери, это какой-то колхозанский подход» — филателия не кадр.
+MARKA = re.compile(r'\bмар(?:к(?:а|и|е|у|ой|ами|ах)|ок)\b|\bмарочн|маркированн|\bконверт|\bштемпел|\bфилатели'
+                   r'|почтов\w* (?:блок|карточк)|\b(?:postage )?stamps?\b|\bbriefmarke', re.I)
+
+
+def marka(nazv):
+    """Почтовая марка, марочный блок, маркированная карточка, конверт — в кадры не берём (Р126)."""
+    return bool(MARKA.search(str(nazv or '')))
+
+
+def bez_marok(vyvod):
+    """Р126: кандидаты любого фонда («? фонд:файл | название | …» и строки под ним) — марки выкидываем, прочее печатаем.
+    Возвращает число выкинутых."""
+    bloki = re.split(r'(?m)^(?=\? )', vyvod)
+    marki = [b for b in bloki if b.startswith('? ') and marka(b.split('\n', 1)[0].split(' | ', 1)[-1])]
+    print(''.join(b for b in bloki if b not in marki), end='', flush=True)
+    if marki:
+        warn(f'  марок отсеяно (Р126): {len(marki)}')
+    return len(marki)
+
+
 def strogo(k, r):
     """Р90: только строгое совпадение. Номер у того же держателя; автор + год + название (название фонда —
     с полем nazvanie подписи, не со всей подписью); выпуск журнала — название журнала + год + номер."""
@@ -884,6 +952,8 @@ def iskat(k, ad):
     for name, fn in ad:
         try:
             for r in fn(dict(kk)) or []:
+                if marka(r.get('title')):
+                    continue
                 kand += 1
                 why = strogo(kk, r)
                 if why:
@@ -1082,12 +1152,450 @@ def razbor(muzey=None, n=5):
         print(f'  {k["podpis"][:90]!r}\n    → {k["avtor"]} | {k["nazvanie"]} | {k["god"]}')
 
 
+# ── sinhron: кадры из фондов — в полные страницы дней (Р128, 22.10.2026) ──
+# Корень: put пишет кадр только в days/<музей>/<день>.json, а сайт показывает full-pages/<музей>/<день>.html.
+FULL = 'src/data/full-pages'
+FOND_CREDIT = re.compile(r'Источник:\s*(?P<name>[^\[]+?)\s*\[(?P<fond>[\w-]+)\],\s*(?P<card>\S+?)\.\s+Права:\s*(?P<prava>.+?)\.?$')
+
+
+def vidno(cr):
+    """Р136: видимая credit line «Фото: …. Хранится: …. Госкаталог…, № N» из credit кадра; нет — ''."""
+    s = str(cr or '').split(' Источник:')[0].strip().rstrip('.')
+    return s if 'Хранится:' in s else ''
+
+
+def fond_kadry(day):
+    """Кадры json дня, положенные из российских фондов (не Викисклад, не марки)."""
+    out = []
+    for im in json.loads(day.read_text()).get('images') or []:
+        cr, cap = str(im.get('credit') or ''), str(im.get('caption') or '')
+        m = FOND_CREDIT.search(cr)
+        if m and not WIKI.search(cr) and not marka(cap) and not marka(im['src']):
+            out.append(dict(src='/' + im['src'].lstrip('/'), alt=cap.rstrip('.'), caption=cap,
+                            source=m['card'], license=m['prava'], fond=m['name'].strip(), vidno=vidno(cr)))
+    return out
+
+
+def _attr(tag, k):
+    m = re.search(rf'\b{k}="([^"]*)"', tag)
+    return m.group(1) if m else ''
+
+
+def _set(tag, k, v):
+    v = html.escape(v, quote=True)
+    if re.search(rf'\b{k}="', tag):
+        return re.sub(rf'\b{k}="[^"]*"', lambda _: f'{k}="{v}"', tag, count=1)
+    return tag.replace('<img', f'<img {k}="{v}"', 1)
+
+
+def _img(k, cls=None, lazy=True):
+    a = f' class="{cls}"' if cls else ''
+    lz = ' loading="lazy" decoding="async"' if lazy else ''
+    e = lambda s: html.escape(s, quote=True)
+    return f'<img{a} src="{e(k["src"])}" alt="{e(k["alt"])}"{lz} data-source="{e(k["source"])}" data-license="{e(k["license"])}">'
+
+
+def sinhron_den(page, day):
+    """Возвращает (новый текст, вставлено, марок заменено, марок убрано)."""
+    return sinhron_tekst(page.read_text(), day, page.parent.name)
+
+
+def sinhron_tekst(t, day, muzey):
+    kadry = fond_kadry(day) if day.is_file() else []
+    est = lambda k: _dub(dict(k, muzey=muzey), t, ROOT / 'public')  # Р132: тот же файл / та же вещь — не дубль
+    novye = [k for k in kadry if not est(k)]
+    zameneno = ubrano = 0
+    # (б) марки → кадр из json того же дня, нечем — убрать
+    while True:
+        m = next((m for m in re.finditer(r'<img\b[^>]*>', t, re.S)
+                  if marka(_attr(m.group(0), 'src')) or marka(_attr(m.group(0), 'alt'))), None)
+        if not m:
+            break
+        tag, star = m.group(0), _attr(m.group(0), 'src')
+        k = novye[0] if novye else (kadry[0] if kadry else None)
+        fig = None
+        for f in re.finditer(r'<figure\b[^>]*>.*?</figure>', t, re.S):
+            if f.start() <= m.start() and m.end() <= f.end():
+                fig = f
+        if k:
+            nov = tag
+            for a, v in (('src', k['src']), ('alt', k['alt']), ('data-source', k['source']), ('data-license', k['license'])):
+                nov = _set(nov, a, v)
+            nov = re.sub(r'\s(?:width|height)="\d+"', '', nov)
+            t = t[:m.start()] + nov + t[m.end():]
+            if fig:  # подпись фигуры — подпись кадра
+                f = re.search(r'<figure\b[^>]*>.*?</figure>', t[fig.start():], re.S)
+                blok = re.sub(r'(<figcaption[^>]*>).*?(</figcaption>)', lambda x: x[1] + html.escape(k['caption']) + (f' <span class="credit">{html.escape(k["vidno"])}.</span>' if k.get('vidno') else '') + x[2], f.group(0), count=1, flags=re.S)
+                t = t[:fig.start()] + blok + t[fig.start() + f.end():]
+            else:  # подпись сцены рядом: «Марка СССР · 1942» → держатель
+                s = re.search(r'<span class="st-src">([^<]*)</span>', t[m.start():m.start() + 1500])
+                if s and marka(s.group(1)):
+                    a = m.start() + s.start()
+                    t = t[:a] + f'<span class="st-src">{html.escape(k["fond"])}</span>' + t[a + len(s.group(0)):]
+            if star and not star.startswith('http'):  # og:image, JSON-LD
+                t = re.sub(r'(?<=/)' + re.escape(star.lstrip('/').split('/')[-1]) + r'(?=")',
+                           lambda _: k['src'].split('/', 3)[-1], t)
+            if novye and k is novye[0]:
+                novye.pop(0)
+            zameneno += 1
+        else:
+            if fig:
+                t = t[:fig.start()] + t[fig.end():]
+            else:
+                t = t[:m.start()] + t[m.end():]
+                if 'active' in _attr(tag, 'class'):
+                    t = re.sub(r'class="st-scene(?!\s*active)', 'class="st-scene active', t, count=1)
+            ubrano += 1
+    # (а) недостающие кадры фондов: в сцену героя по образцу 01-06, без сцены — фигурой перед источниками
+    vstavleno = 0
+    for k in [k for k in novye if Path(k['src']).name not in t]:
+        st = re.search(r'<div class="[^"]*\bst-stage\b[^"]*">(.*?)(\n\s*)</div>', t, re.S)
+        if st:
+            cls = 'st-scene' if 'st-scene' in st.group(1) else 'st-scene active'
+            t = t[:st.end(1)] + st.group(2) + '  ' + _img(k, cls, lazy=False) + t[st.end(1):]
+        else:
+            hr = f' <span class="credit">{html.escape(k["vidno"])}.</span>' if k.get('vidno') else ''
+            fig = f'<figure class="fig">{_img(k)}<figcaption>{html.escape(k["caption"])}{hr}</figcaption></figure>\n'
+            p = re.search(r'<section\b[^>]*id="(?:sources|istochniki|prava|kadry)"', t) or re.search(r'</main>', t)
+            if not p:  # Р136: страница с анимированным героем без <main> и раздела источников — свой раздел перед рассказом
+                p = re.search(r'<section class="block" id="story"', t) or re.search(r'<section class="block"', t)
+                if not p:
+                    continue
+                im = _img(k).replace('<img ', '<img style="display:block;width:100%;height:auto" ', 1)
+                fig = (f'<section class="block" id="kadry"><div class="wrap"><figure class="fig" style="margin:0 auto;max-width:820px">{im}'
+                       f'<figcaption style="font-size:13px;color:var(--muted);margin-top:8px">{html.escape(k["caption"])}{hr}</figcaption></figure></div></section>\n')
+            t = t[:p.start()] + fig + t[p.start():]
+        vstavleno += 1
+    return t, vstavleno, zameneno, ubrano
+
+
+# Р154: у дня-анкеты (в json есть body, ADR docs/adr/0001-anketa-dnya.md) живую страницу собирает DenAnketa из body,
+# а full-pages того дня уходит на den/<день>/staraya/ — кадр нужен в блоках body. Служебные блоки (скрипты, движок) не трогаем.
+SLUZH_BLOKI = {'kod', 'dvizhok', 'nastroyki'}
+RAZDEL = '\x00'
+
+
+def sinhron_anketa(day):
+    """Тот же sinhron_tekst по блокам body дня-анкеты: (новый json или None, вставлено, марок заменено, марок убрано)."""
+    d = json.loads(day.read_text()) if day.is_file() else {}
+    body = d.get('body') or []
+    idx = [i for i, b in enumerate(body) if b.get('type') not in SLUZH_BLOKI and isinstance(b.get('html'), str)]
+    if not idx:
+        return None, 0, 0, 0
+    t, v, z, u = sinhron_tekst(RAZDEL.join(body[i]['html'] for i in idx), day, day.parent.name)
+    chasti = t.split(RAZDEL)
+    if not (v or z or u) or len(chasti) != len(idx):
+        return None, 0, 0, 0
+    for i, h in zip(idx, chasti):
+        body[i]['html'] = h
+    return d, v, z, u
+
+
+def sinhron(muzey=None, prim=False, tolko=None):
+    itog = {}
+    dni = {(p.parent.name, p.stem) for p in (ROOT / FULL).glob(f'{muzey or "*"}/*.html')}
+    dni |= {(p.parent.name, p.stem) for p in (ROOT / 'src/content/days').glob(f'{muzey or "*"}/*.json')}
+    for m, den in sorted(dni):
+        if tolko and den != tolko:
+            continue
+        page, day = ROOT / FULL / m / f'{den}.html', ROOT / 'src/content/days' / m / f'{den}.json'
+        for kuda, (t, v, z, u) in (('', sinhron_den(page, day) if page.is_file() else (None, 0, 0, 0)),
+                                    (' (анкета, body)', sinhron_anketa(day))):
+            if not (v or z or u):
+                continue
+            s = itog.setdefault(m, [0, 0, 0, 0])
+            s[0] += 1; s[1] += v; s[2] += z; s[3] += u
+            print(f'{m}/{den}{kuda}: вставить {v}, марок заменить {z}, убрать {u}')
+            if prim:
+                if kuda:
+                    day.write_text(json.dumps(t, ensure_ascii=False, indent=2) + '\n')
+                else:
+                    page.write_text(t)
+    for m, (d, v, z, u) in itog.items():
+        print(f'итог {m}: дней {d}, кадров вставлено {v}, марок заменено {z}, убрано {u}')
+    if not prim:
+        print('сухой прогон — применить: --primenit')
+    return itog
+
+
+# ── vernut: кадр карточки — на место figure, вырезанного заменой #333 (Р132, 22.10.2026) ──
+# Корень: zamena (c6765f3) сняла со старых страниц figure/hero с кадрами Викисклада, новый кадр лёг только в json дня,
+# а посетитель видит full-pages 1:1. vernut ставит кадр туда, где стоял снятый, той же обёрткой; строку прав — туда же.
+DO_ZAMENY = 'c6765f3^'
+TOK = re.compile(r'<!--.*?-->|<[^>]+>|[^<]+', re.S)
+PUSTYE = {'img', 'br', 'hr', 'meta', 'link', 'input', 'source', 'wbr'}
+SLUZH = {'госкаталог', 'музейного', 'фонда', 'фонд', 'собрания', 'государственная', 'государственный', 'галерея', 'галереи',
+         'третьяковская', 'третьяковской', 'музей', 'музея', 'иллюстрация', 'репродукция', 'художника', 'работа', 'неизвестного'}
+
+
+def _slova(s):
+    s = ' '.join(re.findall(r'\b(?:alt|data-title)="([^"]*)"', s)) + ' ' + re.sub(r'<[^>]+>', ' ', s)
+    s = html.unescape(s).lower().replace('ё', 'е')
+    return {w[:5] for w in re.findall(r'[а-яa-z0-9]{4,}', s) if w not in SLUZH}
+
+
+def _dub(k, t, pub):
+    """Кадр уже на странице: то же имя файла, тот же файл под другим именем или та же вещь (подпись слово в слово)."""
+    if Path(k['src']).name in t:
+        return True
+    f = pub / k['src'].lstrip('/')
+    if f.is_file():
+        for s in set(re.findall(r'src="([^"]+\.(?:jpe?g|png|webp))"', t)):
+            g = pub / 'muzei' / k['muzey'] / s.split(f'muzei/{k["muzey"]}/')[-1] if 'muzei/' in s else pub / 'muzei' / k['muzey'] / s
+            if g.is_file() and g.stat().st_size == f.stat().st_size and g.read_bytes() == f.read_bytes():
+                return True
+    sk = _slova(k['caption'])
+    for b in re.findall(r'<figure\b.*?</figure>|<img\b[^>]*>', t, re.S):
+        if sk and len(sk & _slova(b)) >= 0.75 * len(sk):
+            return True
+    return False
+
+
+def karta_kadry(day, muzey):
+    """Все кадры карточки (не Викисклад, не марки) с подписью, источником и правами."""
+    out = []
+    for im in json.loads(day.read_text()).get('images') or []:
+        cr, cap = str(im.get('credit') or ''), str(im.get('caption') or '')
+        if WIKI.search(cr) or WIKI.search(im['src']) or marka(cap) or marka(im['src']):
+            continue
+        m = FOND_CREDIT.search(cr)
+        url = m['card'] if m else (re.search(r'https?://\S+?(?=[.,;]?(?:\s|$))', cr) or [''])[0]
+        out.append(dict(src='/' + im['src'].lstrip('/'), caption=cap, muzey=muzey, source=url,
+                        license=(m['prava'] if m else cr).rstrip('.'), fond=(m['name'].strip() if m else ''),
+                        avtor=cr.split('. Источник:')[0].strip() if m else '', vidno=vidno(cr)))
+    return out
+
+
+def _derevo(toks):
+    """Для каждого открывающего тега — индекс закрывающего и родителя."""
+    konec, roditel, stek = {}, {}, []
+    for i, x in enumerate(toks):
+        if not x.startswith('<') or x.startswith('<!'):
+            continue
+        tm = re.match(r'</?([a-zA-Z][\w-]*)', x)
+        if not tm:
+            continue
+        tag = tm[1].lower()
+        if x.startswith('</'):
+            while stek:
+                j, tg = stek.pop()
+                konec[j] = i
+                if tg == tag:
+                    break
+        else:
+            roditel[i] = stek[-1][0] if stek else -1
+            if tag in PUSTYE or x.endswith('/>'):
+                konec[i] = i
+            else:
+                stek.append((i, tag))
+    return konec, roditel
+
+
+def _mesto_ok(tag):
+    return re.match(r'<(figure|img)\b', tag) or re.match(r'<div\b[^>]*class="[^"]*\bhero-scene\b', tag)
+
+
+def mesta(old, cur):
+    """Вырезанные места: [(позиция в cur, старый html)] — figure / hero-scene / img с кадром, чей родитель уцелел."""
+    a, b = TOK.findall(old), TOK.findall(cur)
+    sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
+    para = {}
+    for blk in sm.get_matching_blocks():
+        if blk.size < 3 and len(''.join(a[blk.a:blk.a + blk.size]).strip()) < 40:
+            continue  # одинокий «</div>» посреди вырезанного — случайное совпадение
+        for d in range(blk.size):
+            para[blk.a + d] = blk.b + d
+    konec, roditel = _derevo(a)
+    vzyato, out = set(), []
+    for i, x in enumerate(a):
+        if i in para or not x.startswith('<img') or i in vzyato:
+            continue
+        u = i  # подняться до места: figure / hero-scene / сам img, всё вырезано целиком, родитель — на месте
+        while True:
+            p = roditel.get(u, -1)
+            if p < 0 or p in para:
+                break
+            u = p
+        cel = lambda x, y: not any(k in para for k in range(x, y + 1) if not a[k].startswith('</'))  # закрывающие теги совпадают с чем угодно
+        if not _mesto_ok(a[u]) or not cel(u, konec[u]):
+            continue
+        e = konec[u]
+        # подпись сцены рядом (scene-caption / caption), вырезанная вместе
+        s = e + 1
+        while s < len(a) and not a[s].strip():
+            s += 1
+        if s < len(a) and re.match(r'<div\b[^>]*class="[^"]*caption', a[s]) and s in konec and s not in para:
+            e = konec[s]
+        vzyato.update(range(u, e + 1))
+        k = u - 1
+        while k >= 0 and k not in para:
+            k -= 1
+        if k >= 0 and para[k] + 1 < len(b) and b[para[k] + 1].startswith('<img'):
+            continue  # кадр заменён на месте, а не вырезан
+        out.append((len(''.join(b[:para[k] + 1])) if k >= 0 else 0, ''.join(a[u:e + 1])))
+    return out
+
+
+def _otn(stary_src, k):
+    s = k['src'].lstrip('/')
+    if stary_src.startswith('/'):
+        return '/' + s
+    if stary_src.startswith('../'):
+        return re.match(r'(?:\.\./)+', stary_src)[0] + s
+    return s.split(f'muzei/{k["muzey"]}/', 1)[-1]
+
+
+def _podpis(k):
+    fond = k['fond'] if k['fond'] and k['fond'].lower()[:10] not in k['caption'].lower() else ''
+    hvost = '; '.join(x for x in (fond, k['license']) if x)
+    hvost = hvost[:1].upper() + hvost[1:]
+    if k.get('vidno'):  # Р136: credit line целиком — автор, год, музей-держатель, номер карточки
+        hvost = f"{k['vidno']}. Права: {k['license']}"
+    return html.escape(k['caption'].strip()), html.escape(hvost + '.' if hvost else '')
+
+
+def pereodet(blok, k, pub):
+    """Старый вырезанный блок → тот же блок с кадром карточки."""
+    cap, hvost = _podpis(k)
+    alt = k['caption'].strip().rstrip('.')
+    try:
+        w, h = Image.open(pub / k['src'].lstrip('/')).size
+    except Exception:
+        w = h = None
+
+    def img(m):
+        t = m.group(0)
+        t = re.sub(r'\s(?:srcset|sizes|data-source|data-license)="[^"]*"', '', t)
+        t = _set(t, 'src', _otn(_attr(t, 'src'), k))
+        t = _set(t, 'alt', alt)
+        if w and re.search(r'\bwidth="', t):
+            t = re.sub(r'\bwidth="\d+"', f'width="{w}"', t); t = re.sub(r'\bheight="\d+"', f'height="{h}"', t)
+        e = lambda s: html.escape(s, quote=True)
+        return re.sub(r'\s*/?>$', '', t) + f' data-source="{e(k["source"])}" data-license="{e(k["license"])}">'
+    blok = re.sub(r'<img\b[^>]*>', img, blok, count=1)
+    blok = re.sub(r'(<img\b[^>]*>)(.*?)(<img\b[^>]*>)', r'\1\2', blok, flags=re.S)  # второй кадр в обёртке — долой
+    obr = lambda b0: f'<b>{cap}</b> <span>{hvost}</span>' if b0 else f'{cap} {hvost}'.strip()
+    blok = re.sub(r'(<figcaption[^>]*>)(.*?)(</figcaption>)', lambda x: x[1] + obr('<b>' in x[2]) + x[3], blok, count=1, flags=re.S)
+    blok = re.sub(r'(<div class="(?:[^"]*\s)?scene-cap(?:\s[^"]*)?"[^>]*>)(.*?)(</div>)', lambda x: x[1] + obr('<b>' in x[2]) + x[3], blok, count=1, flags=re.S)
+    for a_, v in (('data-title', alt), ('data-attribution', k['avtor'] or k['fond'])):
+        blok = re.sub(rf'\b{a_}="[^"]*"', lambda _: f'{a_}="{html.escape(v, quote=True)}"', blok)
+    blok = re.sub(r'\sdata-explanation="[^"]*"', '', blok)
+    blok = re.sub(r'<p class="src">.*?</p>', '', blok, flags=re.S)
+    return blok
+
+
+def _prava_stroka(old, cur, rid, k):
+    """Строка таблицы прав / заметка прав для data-rc-rights-id: (позиция в cur, html) или None."""
+    m = re.search(rf'<tr data-rc-rights-id="{re.escape(rid)}">.*?</tr>', old, re.S)
+    e = lambda s: html.escape(s, quote=True)
+    pr = k['license'][:1].upper() + k['license'][1:]
+    if m:
+        nov = (f'<tr data-rc-rights-id="{e(rid)}"><td>{html.escape(k["caption"].strip().rstrip("."))}</td>'
+               f'<td><a href="{e(k["source"])}">источник</a></td><td>{html.escape(k["fond"] or "Музейный фонд РФ")}; {html.escape(k["license"])}.</td></tr>')
+        za = old[:m.start()].rsplit('<tr', 1)
+        sosed = re.search(r'<tr data-rc-rights-id="[^"]+">', za[1]) if len(za) > 1 else None
+        p = cur.find(sosed.group(0)) if sosed else -1
+        if p >= 0:
+            return cur.find('</tr>', p) + 5, nov
+        p = cur.find('<tbody>', cur.find('rights-table'))
+        return (p + 7, nov) if p >= 7 else None
+    m = re.search(rf'<div id="{re.escape(rid)}" class="document-note">(<b>.*?</b>).*?</div>', old, re.S)
+    if m:
+        nov = (f'<div id="{e(rid)}" class="document-note">{m[1]} {html.escape(k["caption"].strip().rstrip("."))}. {html.escape(pr)}. '
+               f'Источник: <a href="{e(k["source"])}">{html.escape(k["fond"] or "Госкаталог Музейного фонда РФ")}</a>.</div>')
+        p = cur.find('class="document-note"')
+        if p >= 0:
+            return cur.rfind('<div', 0, p), nov
+        sek = re.search(r'<section\b[^>]*id="sources"', cur)  # все заметки вырезаны — в конец раздела источников
+        p = cur.find('</section>', sek.end()) if sek else -1
+        return (p, nov) if p >= 0 else None
+    return None
+
+
+SLOVO = lambda n: 'изображение' if n % 10 == 1 and n % 100 != 11 else 'изображения' if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14 else 'изображений'
+
+
+def schetchik(t, plus):
+    """Счётчик кадров на странице (#351): «На странице N изображени…» — плюс вставленные."""
+    def f(m):
+        n = int(m[1]) + plus
+        hvost = ('; все — общественное' if n > 1 else '; общественное') if m[2] else ''
+        return f'<span data-rc-count="exhibits" data-value="{n}">{n}</span> {SLOVO(n)}{hvost}'
+    return re.sub(r'<span data-rc-count="exhibits" data-value="(\d+)">\d+</span> изображени[еяй](;\s*(?:все — )?общественное)?', f, t, count=1)
+
+
+def vernut_den(page, day, muzey):
+    """(новый текст, вставлено, не_вышло[список причин])."""
+    t = page.read_text()
+    pub = ROOT / 'public'
+    kadry = [k for k in karta_kadry(day, muzey) if (pub / k['src'].lstrip('/')).is_file()]
+    nado = [k for k in kadry if not _dub(k, t, pub)]
+    if not nado:
+        return t, 0, []
+    rel = str(page.relative_to(ROOT))
+    old = subprocess.run(['git', '-C', str(ROOT), 'show', f'{DO_ZAMENY}:{rel}'], capture_output=True, text=True).stdout
+    mm = mesta(old, t) if old else []
+    vstavki, ne, n = [], [], 0
+    for k in nado:
+        if vstavki and _dub(k, ''.join(b for _, b, _ in vstavki), pub):
+            ne.append(f'{Path(k["src"]).name}: та же вещь уже вставлена этим проходом — не дублирую'); continue
+        sk = _slova(k['caption'])
+        ocenka = lambda m: (len(sk & _slova(m[1])), 'hero' not in m[1][:60])
+        luchshee = max(mm, key=ocenka, default=None)
+        if luchshee and ocenka(luchshee)[0] == 0 and len(mm) > 1:
+            luchshee = None  # несколько мест, ни одно не про этот кадр — не гадать
+        if luchshee is None:
+            f = re.search(r'<figure\b[^>]*>.*?</figure>', t, re.S)  # нет места — после первой картинки страницы
+            if not f:
+                ne.append(f'{Path(k["src"]).name}: нет вырезанного места и нет figure на странице')
+                continue
+            vstavki.append((f.end(), pereodet(re.sub(r'\sdata-rc-(?:exhibit|rights)-id="[^"]*"', '', f.group(0)), k, pub), None))
+        else:
+            mm.remove(luchshee)
+            pos, blok = luchshee
+            blok = pereodet(blok, k, pub)
+            if re.search(r'\bdata-f="\d+"', blok) and not re.search(r'\bdata-f="\d+"', t):  # лента кадров: единственный — первый и видимый
+                blok = re.sub(r'\bdata-f="\d+"', 'data-f="0"', blok, count=1)
+                blok = re.sub(r'<figure class="human-frame(?! on)', '<figure class="human-frame on', blok, count=1)
+            rid = _attr(re.match(r'<[^>]+>', blok)[0], 'data-rc-rights-id')
+            vstavki.append((pos, blok, (rid, k) if rid else None))
+        if WIKI.search(vstavki[-1][1]):
+            ne.append(f'{Path(k["src"]).name}: в старом блоке остался Викисклад — не вставлен'); vstavki.pop(); continue
+        n += 1
+    prava = [pr for _, _, r in vstavki if r and f'"{r[0]}"' not in t for pr in [_prava_stroka(old, t, *r)] if pr]
+    for p, b in sorted([(p, b) for p, b, _ in vstavki] + prava, key=lambda x: -x[0]):
+        t = t[:p] + b + t[p:]
+    if n:
+        t = schetchik(t, n)
+    return t, n, ne
+
+
+def vernut(muzey=None, prim=False, tolko=None, dni=None):
+    itog = [0, 0]
+    for page in sorted((ROOT / FULL).glob(f'{muzey or "*"}/*.html')):
+        m, den = page.parent.name, page.stem
+        if (tolko and den != tolko) or (dni and f'{m}/{den}' not in dni):
+            continue
+        day = ROOT / 'src/content/days' / m / f'{den}.json'
+        if not day.is_file():
+            continue
+        t, n, ne = vernut_den(page, day, m)
+        if not (n or ne):
+            continue
+        itog[0] += bool(n); itog[1] += n
+        print(f'{m}/{den}: вставлено {n}' + ''.join(f'\n  не вышло: {x}' for x in ne))
+        if prim and n:
+            page.write_text(t)
+    print(f'итог: дней {itog[0]}, кадров на место вырезанных {itog[1]}' + ('' if prim else ' — сухой прогон, применить: --primenit'))
+    return itog
+
+
 def main(argv=None):
     import argparse
     global RAZRESHENIE
     ap = argparse.ArgumentParser(prog='kadr.py', description=__doc__.split('\n\n')[0],
                                  epilog='Подробно: python3 scripts/kadr.py <команда> --help', formatter_class=argparse.RawDescriptionHelpFormatter)
-    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,put,zamena,razbor}')
+    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,put,zamena,razbor,sinhron,vernut}')
     raz = argparse.ArgumentParser(add_help=False)
     raz.add_argument('--razreshenie', metavar='СЛОВО', help='Р90: Викисклад — только по слову Сергея ("Р№ или дата и слова")')
     f = sub.add_parser('find', parents=[raz], help='кандидаты по российским фондам')
@@ -1099,6 +1607,8 @@ def main(argv=None):
     pu.add_argument('title', help='"фонд:ссылка" или имя файла'); pu.add_argument('caption', help='подпись')
     pu.add_argument('avtor', nargs='?', help='автор (для фонда обязателен)')
     pu.add_argument('--card', help='ссылка на карточку предмета')
+    pu.add_argument('--hranitsya', metavar='МУЗЕЙ', help='Р136: кадр фонда любого года с полной подписью — полное название '
+                    'музея-держателя по карточке; автор — «Фамилия И. О., год»; основание — ст. 1274 ГК РФ')
     pu.add_argument('--prava', help='права по карточке: «общественное достояние (автор умер в ГГГГ)», CC BY …')
     z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
@@ -1108,17 +1618,26 @@ def main(argv=None):
     z.add_argument('--prodolzhit', action='store_true', help='пропустить кадры, уже стоящие в data/r90-na-razreshenie.tsv')
     r = sub.add_parser('razbor', help='без сети: сводка автор/название/год из подписей для zamena')
     r.add_argument('--muzey', help='только этот музей'); r.add_argument('-n', type=int, default=5, help='сколько примеров')
+    sn = sub.add_parser('sinhron', help='Р128: кадры фондов из json дня — в полную страницу; марки — заменить или убрать')
+    sn.add_argument('--muzey', help='только этот музей'); sn.add_argument('--primenit', action='store_true', help='записать (без — сухой список)')
+    vr = sub.add_parser('vernut', help='Р132: кадр карточки — на место figure, вырезанного заменой #333 (c6765f3)')
+    vr.add_argument('--muzey', help='только этот музей'); vr.add_argument('--dni', help='список музей/ДД-ММ через пробел')
+    vr.add_argument('--primenit', action='store_true', help='записать (без — сухой список)')
     a = ap.parse_args(argv)
     RAZRESHENIE = getattr(a, 'razreshenie', None)
     if a.cmd == 'zamena':
         zamena(a.muzey, a.primenit, vkl=('loc',) if a.s_loc else (), bez={x.strip() for x in a.bez.split(',') if x.strip()},
                j=a.j, prodolzhit=a.prodolzhit)
+    elif a.cmd == 'vernut':
+        vernut(a.muzey, a.primenit, dni=set(a.dni.split()) if a.dni else None)
+    elif a.cmd == 'sinhron':
+        sinhron(a.muzey, a.primenit)
     elif a.cmd == 'razbor':
         razbor(a.muzey, a.n)
     elif a.cmd == 'find':
         find(a.query, a.n, a.geo)
     else:
-        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card, a.prava)
+        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card, a.prava, a.hranitsya)
 
 
 if __name__ == '__main__':

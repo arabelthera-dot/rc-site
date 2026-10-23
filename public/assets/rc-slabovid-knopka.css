@@ -11,4 +11,10 @@ nav.rc-sitebar{padding-right:60px}
    резерв справа, чтобы кнопка не ложилась на последнюю вкладку («Календарь», 01-02 на 390px, 21.10). Видимая область прокрутки ряда кончается до кнопки (margin, не padding). */
 nav#secnav .row{margin-right:60px}
 body .daynav{padding-right:60px}
+/* Письмо справа налево (проба /ar/, Р162): кнопка в левом верхнем углу, резервы под неё — слева. */
+[dir=rtl] #rc-slabovid-btn{right:auto;left:8px}
+[dir=rtl] nav.rc-sitebar{padding-right:12px}
+@media (max-width:600px){[dir=rtl] nav.rc-sitebar{padding-right:6px}}
+[dir=rtl] nav#secnav .row{margin-right:0;margin-left:60px}
+[dir=rtl] body .daynav{padding-right:0;padding-left:60px}
 @media print{#rc-slabovid-btn{display:none}}

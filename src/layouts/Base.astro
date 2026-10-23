@@ -1,6 +1,6 @@
 ---
 import { CSP } from '../lib/csp.mjs';
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; ogDescription?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; ogDescription?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; den?: { key: string; year?: string | number; images?: { src: string; caption: string; credit: string; generated?: boolean }[]; dated?: boolean }; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
@@ -14,6 +14,7 @@ import kanaly from '../data/kanaly.json';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { ogRaster } from '../lib/og-den.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml } from '../lib/redakciya.mjs';
+import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { znak, poPuti, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
 // src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
@@ -68,6 +69,12 @@ const s = (key: string) => stroka(lang.code, key);
 const kind = Astro.props.schema ?? (Astro.url.pathname.replace(/\/?$/, '/') === base.replace(/\/?$/, '/') ? 'home' : type === 'article' && museumLd ? 'article'
   : museumLd && here ? 'calendar' : museumLd ? 'museum' : 'page');
 const ldName = ogTitle ?? title;
+// Событие и произведения дня (Д5, пакет 3, 22.10): у страницы дня (пропс den) — Event (дата — ключ ММ-ДД у датированного
+// музея и год) и VisualArtwork настоящих кадров живописи и карикатуры; Article ссылается на них по @id (src/lib/razmetka.mjs).
+const den = Astro.props.den;
+const absolyut = (src: string) => new URL(/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`, Astro.site).href;
+const sobytie = kind === 'article' && den?.dated ? sobytieLd({ title: Astro.props.about, year: den.year, key: den.key, url, image: ogImage }) : undefined;
+const proizvedeniya = kind === 'article' && den && museum ? proizvedeniyaLd({ museum, images: den.images, url, absolyut }) : [];
 const ld = kind === 'home'
   ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Русская цивилизация', url: home, inLanguage: lang.code, description, publisher: red, license: LICENZIYA },
      { '@context': 'https://schema.org', ...org, logo: new URL(`${base}og/index.jpg`, Astro.site).href }]
@@ -77,7 +84,8 @@ const ld = kind === 'home'
       { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, about: museumLd, author: red, publisher: red, license: LICENZIYA }]
   : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA }
   : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA,
-      about: Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined, temporalCoverage: Astro.props.temporal, datePublished: Astro.props.published, dateModified: Astro.props.modified }
+      about: sobytie ? { '@id': sobytie['@id'] } : Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined,
+      mentions: proizvedeniya.length ? proizvedeniya.map((p) => ({ '@id': p['@id'] })) : undefined, temporalCoverage: Astro.props.temporal, datePublished: Astro.props.published, dateModified: Astro.props.modified }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
 // Знак 436-ФЗ (Р87, 21.10: сайт 6+, сказки 0+): музей и день — из адреса, данные — src/data/vozrast.json. В JSON-LD — typicalAgeRange
 // (свойство CreativeWork: у главной — WebSite, у музея — его WebPage). Трагический день (Р40) — data-rc-bez-ochkov на <html>:
@@ -86,24 +94,22 @@ const pv = poPuti(Astro.url.pathname, base);
 const vz = znak(museum ?? pv.museum, pv.key);
 const rod = roditelyu(museum ?? pv.museum, pv.key);
 const age = typicalAgeRange(vz);
-const ldAge = Array.isArray(ld) ? ld.map((o) => (o['@type'] === 'WebSite' || o['@type'] === 'WebPage' ? { ...o, typicalAgeRange: age } : o))
-  : { ...ld, typicalAgeRange: age };
+const ldVse = kind === 'article' && (sobytie || proizvedeniya.length) ? [ld, sobytie, ...proizvedeniya].filter(Boolean) : ld;
+const ldAge = Array.isArray(ldVse) ? ldVse.map((o) => (['WebSite', 'WebPage', 'Article'].includes(o['@type']) ? { ...o, typicalAgeRange: age } : o))
+  : { ...ldVse, typicalAgeRange: age };
 const ldJson = JSON.stringify(ldAge).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
 // hreflang — только готовые языки (ready:true) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
 const alternates = bezAdresa ? [] : hreflangi(Astro.url.pathname, base, Astro.site);
 const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
-// «Нашли ошибку?» (Д6) — только на страницах музея/дня и только при флаге knopkaOshibka (src/data/nastroyki.json, по умолчанию выкл.).
-// Ссылка на новую карточку доски AI_Projects с предзаполненными заголовком, текстом и меткой; без токенов и сервера.
-// Замена без GitHub (#212): PUBLIC_OSHIBKA_FORMA=mailto → письмо на nastroyki.pochtaOshibka; без флага — прежнее поведение.
-const oshibkaMailto = import.meta.env.PUBLIC_OSHIBKA_FORMA === 'mailto' && museum && nastroyki.pochtaOshibka;
+// «Нашли ошибку?» (Д6, Р84; пакет 3 описи 22.10.2026) — в подвале каждой страницы, кроме страниц дня: у них своя строка
+// «Нашли ошибку? Сообщите нам» в подвале дня (src/lib/podval-dnya.mjs), второй не нужно. Письмо на nastroyki.pochtaOshibka
+// с адресом страницы и выделенным текстом — без ключей и сервера. Ссылка на новую карточку GitHub не годится: доска
+// AI_Projects закрытая, посетителю она не откроется. Письмо → карточка с меткой oshibka-na-sayte — после ящика (М45).
+const oshibkaMailto = type !== 'article' && !bezAdresa && nastroyki.pochtaOshibka;
 const oshibkaUrl = oshibkaMailto
   ? `mailto:${nastroyki.pochtaOshibka}?subject=${encodeURIComponent(`Ошибка на странице ${url}`)}&body=${encodeURIComponent(`Страница: ${url}\n\nЧто не так:\n\n`)}`
-  : nastroyki.knopkaOshibka && museum ? 'https://github.com/arabelthera-dot/AI_Projects/issues/new?' + new URLSearchParams({
-  title: `Ошибка на сайте: ${Astro.url.pathname}`,
-  body: `Страница: ${url}\n\nЧто не так:\n\n`,
-  labels: 'oshibka-s-sayta',
-}).toString() : undefined;
+  : undefined;
 const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: выключено без PUBLIC_CSP=1
 ---
 <!doctype html>
@@ -193,9 +199,7 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
   <footer>
     <div class="slog">{s('slogan')}</div>
     <slot name="footer"><a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></slot>
-    <div class="foot-links"><a href={`${base}detyam/`}>{s('podvalDetyam')}</a> · <a href={`${base}o-proekte/`}>{s('podvalOProekte')}</a> · <a href={`${base}kak-sdelan-muzey/`}>{s('podvalKakSdelan')}</a> · <a href={`${base}kontakty/`}>{s('podvalKontakty')}</a> · <a href={`${base}politika-konfidencialnosti/`}>{s('podvalPolitika')}</a>{oshibkaUrl && <> · {oshibkaMailto
-      ? <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">{s('podvalOshibka')}</a>
-      : <a class="oshibka" href={oshibkaUrl} target="_blank" rel="noopener nofollow">{s('podvalOshibka')}</a>}</>}</div>
+    <div class="foot-links"><a href={`${base}detyam/`}>{s('podvalDetyam')}</a> · <a href={`${base}o-proekte/`}>{s('podvalOProekte')}</a> · <a href={`${base}kak-sdelan-muzey/`}>{s('podvalKakSdelan')}</a> · <a href={`${base}kontakty/`}>{s('podvalKontakty')}</a> · <a href={`${base}politika-konfidencialnosti/`}>{s('podvalPolitika')}</a>{oshibkaUrl && <> · <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">{s('podvalOshibka')}</a></>}</div>
     {lang.code === 'ru' && <div class="foot-links">Официальный сайт — <a href={kanaly.sayt}>{kanaly.saytImya}</a>. Других сайтов, каналов и сборов у нас нет</div>}
     {lang.code === 'ru' && <div class="foot-links">Автор проекта — <a href={`${base}o-proekte/#osnovatel`}>Сергей Ефименко</a> · <a href={`mailto:${kanaly.pochta}`}>{kanaly.pochta}</a></div>}
     <Fragment set:html={licenziyaHtml(base, { code: lang.code })} />
