@@ -4,7 +4,11 @@
       и data-igra-zamok, у секции — data-igra-ozhidaet.
    2. «Начать» снимает замок, сворачивает блок и шлёт на секции событие 'igra:start'.
    3. «Правила» внутри игры открывает блок поверх сцены с кнопкой «Продолжить» (Esc и тап мимо — закрыть).
-   Секция игры — ближайший предок с data-igra-sekciya, иначе ближайший <section>. */
+   Секция игры — ближайший предок с data-igra-sekciya, иначе ближайший <section>.
+   Разметка для проходчика игр (Р204, scripts/prohodchik-igr.mjs — проход пальцем на телефоне до финала):
+   data-igra-final — финальный экран (виден = игра пройдена); data-igra-hod="tap|derzhi|vedi" — чем играть
+   элемент (тап, держать, вести по нему); data-igra-sejchas — ход, который игра ждёт сейчас. Новая игра ставит их
+   у себя — тогда сценарий в tests/igry/scenarii/ не нужен. */
 (function () {
   'use strict';
   var bloki = Array.prototype.slice.call(document.querySelectorAll('[data-igra-pravila]'));

@@ -9,7 +9,8 @@
     "import": "node scripts/redirects.mjs && node scripts/full-pages.mjs",
     "full-pages": "node scripts/full-pages.mjs",
     "proverka-podpisey": "node scripts/proverka-podpisey.mjs",
-    "og-razmer": "node scripts/og-razmer.mjs dist"
+    "og-razmer": "node scripts/og-razmer.mjs dist",
+    "prohod-igr": "node scripts/prohodchik-igr.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
