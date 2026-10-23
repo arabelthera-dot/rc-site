@@ -6,7 +6,8 @@
   if (!root) return;
   var $ = function (s) { return root.querySelector(s); };
   var cv = $('.ko-cv'), ctx = cv.getContext('2d');
-  var task = $('.ko-task'), sub = $('.ko-sub'), cap = $('.ko-cap'), next = $('.ko-next');
+  var task = $('.ko-task'), sub = $('.ko-sub'), cap = $('.ko-cap'), capT = $('.ko-cap-t'), next = $('.ko-next'), tip = $('.ko-tip');
+  var rules = $('.ko-rules'), play = $('.ko-play'), bStart = $('.ko-start');
   var steps = root.querySelectorAll('.ko-steps li');
   var stName = $('.ko-st-name'), stVal = $('.ko-st-val'), status = $('.ko-status'), meter = $('.ko-meter'), meterI = $('.ko-meter i');
   var partsBox = $('.ko-parts'), parts = root.querySelectorAll('.ko-part');
@@ -15,22 +16,28 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var PART_NAMES = ['Фанерные кольца', 'Шахта с каютой вдоль', 'Спицы к кольцам', 'Шёлк сверху'];
+  // что произошло после каждой детали и почему
+  var PART_WHY = ['фанерные кольца держат обхват — корпус больше не сплющить с боков.',
+    'шахта — длинная балка вдоль всего корпуса, в середине каюта. Теперь нос не продавить.',
+    'спицы тянутся от шахты к кольцам — как у велосипедного колеса: тонкие, а вместе держат кольцо круглым.',
+    'сверху натянули шёлк — это обшивка. Каркас готов.'];
   var S; // состояние
+  var started = false; // до «Начать» кнопки игры не работают
   function reset() {
     S = { phase: 'soft', wind: 0, hold: false, crush: 0, built: 0, prog: [0, 0, 0, 0],
           windT: 0, len: 36, stretching: false, autoWind: 0, t: 0, shake: 0 };
     setStep(0);
-    task.textContent = 'Пусти мягкий дирижабль против ветра';
-    sub.textContent = 'Держи палец на кнопке «Ветер»';
+    task.textContent = 'Нажми кнопку «Ветер» внизу и не отпускай палец';
+    sub.textContent = 'Смотри, что ветер сделает с мягким баллоном';
     stName.textContent = 'Мягкий баллон';
-    cap.hidden = true; next.hidden = true; partsBox.hidden = true; finale.hidden = true;
+    cap.hidden = true; tip.hidden = true; next.hidden = true; partsBox.hidden = true; finale.hidden = true;
     bWind.hidden = false; bStretch.hidden = true; bWind.classList.add('hint'); bStretch.classList.remove('hint');
     years.classList.remove('go');
     parts.forEach(function (p) { p.classList.remove('done', 'next', 'no'); });
     upStatus();
   }
   function setStep(i) { steps.forEach(function (li, k) { li.classList.toggle('on', k === i); }); }
-  function say(t) { cap.textContent = t; cap.hidden = false; }
+  function say(t) { capT.textContent = t; cap.hidden = false; }
 
   // ---- Холст ----
   var W = 0, H = 0, dpr = 1;
@@ -230,6 +237,18 @@
     stVal.textContent = val;
   }
 
+  // ---- Полоска внутри кнопки: сколько ещё держать ----
+  var fWind = bWind.querySelector('.ko-fill'), fStretch = bStretch.querySelector('.ko-fill');
+  function holdProg() {
+    if (S.phase === 'soft') return S.crush;
+    if (S.phase === 'rigid') return Math.min(1, S.windT / 1.6);
+    return S.phase === 'softDone' || S.phase === 'rigidDone' ? 1 : 0;
+  }
+  function upFill() {
+    fWind.style.width = Math.round(holdProg() * 100) + '%';
+    fStretch.style.width = Math.round(Math.max(0, (S.len - 36) / 28) * 100) + '%';
+  }
+
   // ---- Цикл ----
   var last = 0;
   function loop(ts) {
@@ -254,7 +273,8 @@
       if (S.len >= 64) final();
     }
     upStatus();
-    draw();
+    upFill();
+    if (!play.hidden) draw();
     requestAnimationFrame(loop);
   }
 
@@ -262,32 +282,41 @@
   function softDone() {
     S.phase = 'softDone';
     bWind.classList.remove('hint');
-    task.textContent = 'Мягкий баллон смяло, как пакет';
-    sub.textContent = 'Нос продавило, дирижабль клюёт носом';
-    say('А Костович придумал вставить внутрь скелет из своей фанеры.');
+    tip.hidden = true;
+    task.textContent = 'Нажми кнопку «Вставить каркас Костовича»';
+    sub.textContent = '';
+    say('ветер смял мягкий баллон, как пакет. Жёсткости у него нет — форму держит только газ внутри, поэтому ветер продавил нос, и дирижабль клюёт носом. Костович придумал вставить внутрь скелет из своей фанеры.');
     next.hidden = false;
   }
   next.addEventListener('click', function () {
+    if (!started) return;
     next.hidden = true; cap.hidden = true;
     S.phase = 'build'; S.crush = 0; S.hold = false;
     setStep(1);
     bWind.hidden = true; partsBox.hidden = false;
-    task.textContent = 'Собери каркас Костовича';
-    sub.textContent = 'Нажимай детали по порядку — первая мигает';
+    task.textContent = 'Нажми деталь «' + PART_NAMES[0] + '» — она мигает';
+    sub.textContent = 'Собираем каркас по порядку: кольца → шахта → спицы → шёлк';
     stName.textContent = 'Каркас';
     markNext();
   });
   function markNext() { parts.forEach(function (p, k) { p.classList.toggle('next', k === S.built); }); }
   parts.forEach(function (p, k) {
     p.addEventListener('click', function () {
-      if (S.phase !== 'build' || p.classList.contains('done')) return;
+      if (!started || S.phase !== 'build' || p.classList.contains('done')) return;
       if (k !== S.built) {
         p.classList.remove('no'); void p.offsetWidth; p.classList.add('no');
-        sub.textContent = 'Сначала — «' + PART_NAMES[S.built] + '»';
+        sub.textContent = 'Не та деталь. Сейчас нужна «' + PART_NAMES[S.built] + '» — она мигает';
         return;
       }
       S.built++; p.classList.add('done'); p.classList.remove('next');
-      sub.textContent = ['Фанерные кольца держат обхват', 'Шахта — длинная балка вдоль корпуса, в середине каюта', 'Спицы — как у велосипедного колеса', 'Сверху шёлк'][k];
+      say(PART_WHY[k]);
+      if (S.built < 4) {
+        task.textContent = 'Теперь нажми «' + PART_NAMES[S.built] + '»';
+        sub.textContent = 'Собрано ' + S.built + ' из 4';
+      } else {
+        task.textContent = 'Подожди секунду…';
+        sub.textContent = 'Собрано 4 из 4';
+      }
       markNext();
       if (S.built === 4) setTimeout(rigidStart, 900);
     });
@@ -295,46 +324,76 @@
   function rigidStart() {
     S.phase = 'rigid'; S.windT = 0;
     setStep(2);
-    partsBox.hidden = true; bWind.hidden = false; bWind.classList.add('hint');
-    task.textContent = 'Тот же ветер — на каркас';
-    sub.textContent = 'Держи палец на кнопке «Ветер»';
+    partsBox.hidden = true; bWind.hidden = false; bWind.classList.add('hint'); cap.hidden = true;
+    task.textContent = 'Снова нажми «Ветер» и не отпускай палец';
+    sub.textContent = 'Тот же ветер — теперь на каркас Костовича';
     stName.textContent = 'Каркас Костовича';
   }
   function rigidDone() {
     S.phase = 'rigidDone';
     bWind.classList.remove('hint');
-    task.textContent = 'Держит форму!';
-    sub.textContent = 'Ветер ничего не может сделать с фанерным скелетом';
-    say('С каркасом корпус можно тянуть в длину. Вытяни до 64 метров — как «Россия».');
+    tip.hidden = true;
+    task.textContent = 'Держит форму! Отпусти «Ветер»';
+    sub.textContent = '';
+    say('ветер тот же, а каркас не мнётся. Форму держит фанерный скелет изнутри: кольца — обхват, шахта — длину, спицы — круг. А с жёстким скелетом корпус можно сделать длинным.');
     setTimeout(function () {
       if (S.phase !== 'rigidDone') return;
       S.phase = 'stretch';
-      bStretch.hidden = false; bStretch.classList.add('hint');
-      task.textContent = 'Вытяни корпус до 64 метров';
-      sub.textContent = 'Держи палец на кнопке «Тянуть»';
+      bWind.hidden = true; bStretch.hidden = false; bStretch.classList.add('hint');
+      task.textContent = 'Нажми «Тянуть» и держи, пока корпус не станет 64 метра';
+      sub.textContent = 'Столько был длиной дирижабль «Россия»';
     }, 1400);
   }
   function final() {
     S.phase = 'final'; S.stretching = false; S.autoWind = 3.2;
     bStretch.classList.remove('go', 'hint'); bStretch.hidden = true;
-    task.textContent = '64 метра — и форма держится';
-    sub.textContent = 'Так Костович задумал дирижабль «Россия» в 1879 году';
-    say('Первый немецкий цеппелин с жёстким каркасом поднимется только в 1900 году.');
+    tip.hidden = true;
+    task.textContent = 'Готово! Листай ниже — там факты дня';
+    sub.textContent = '';
+    say('корпус вытянулся до 64 метров, а форма держится. Таким Костович задумал дирижабль «Россия» в 1879 году. Первый немецкий цеппелин с жёстким каркасом поднимется только в 1900 году.');
     years.classList.add('go');
     setTimeout(function () { finale.hidden = false; }, reduce ? 0 : 1600);
   }
   $('.ko-again').addEventListener('click', function () { reset(); root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); });
 
   // ---- Кнопки «держи» ----
-  function holdable(btn, on, off) {
-    btn.addEventListener('pointerdown', function (e) { e.preventDefault(); try { btn.setPointerCapture(e.pointerId); } catch (_) {} btn.classList.add('go'); on(); });
-    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (ev) { btn.addEventListener(ev, function () { btn.classList.remove('go'); off(); }); });
-    btn.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); btn.classList.add('go'); on(); } });
-    btn.addEventListener('keyup', function (e) { if (e.key === ' ' || e.key === 'Enter') { btn.classList.remove('go'); off(); } });
+  // ткнул и отпустил быстрее 0,4 с — подсказать, что кнопку надо держать
+  function holdable(btn, on, off, busy) {
+    var t0 = 0;
+    function down() { if (!started) return; t0 = performance.now(); tip.hidden = true; btn.classList.add('go'); on(); }
+    function up() {
+      if (!t0) return;
+      var quick = performance.now() - t0 < 400; t0 = 0;
+      btn.classList.remove('go'); off();
+      if (quick && busy()) tip.hidden = false;
+    }
+    btn.addEventListener('pointerdown', function (e) { e.preventDefault(); try { btn.setPointerCapture(e.pointerId); } catch (_) {} down(); });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (ev) { btn.addEventListener(ev, up); });
+    btn.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); down(); } });
+    btn.addEventListener('keyup', function (e) { if (e.key === ' ' || e.key === 'Enter') up(); });
     btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
   }
-  holdable(bWind, function () { S.hold = true; bWind.classList.remove('hint'); }, function () { S.hold = false; });
-  holdable(bStretch, function () { if (S.phase === 'stretch') { S.stretching = true; bStretch.classList.remove('hint'); } }, function () { S.stretching = false; });
+  holdable(bWind, function () { S.hold = true; bWind.classList.remove('hint'); }, function () { S.hold = false; },
+    function () { return S.phase === 'soft' || S.phase === 'rigid'; });
+  holdable(bStretch, function () { if (S.phase === 'stretch') { S.stretching = true; bStretch.classList.remove('hint'); } }, function () { S.stretching = false; },
+    function () { return S.phase === 'stretch'; });
 
-  reset(); size(); requestAnimationFrame(loop);
+  // ---- Экран «Как играть» ----
+  function showRules() {
+    started = false; S.hold = false; S.stretching = false;
+    bWind.classList.remove('go'); bStretch.classList.remove('go');
+    play.hidden = true; rules.hidden = false;
+    bStart.textContent = played ? 'Вернуться к игре' : 'Начать';
+    root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+  var played = false;
+  bStart.addEventListener('click', function () {
+    rules.hidden = true; play.hidden = false;
+    started = true; played = true;
+    size(); draw();
+    root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  });
+  $('.ko-rules-btn').addEventListener('click', showRules);
+
+  reset(); requestAnimationFrame(loop);
 })();

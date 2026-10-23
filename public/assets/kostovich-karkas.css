@@ -6,7 +6,25 @@
 .ko-top h1{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,5vw,32px);line-height:1.15}
 .ko-hook{margin:6px 0 0;font-size:clamp(15px,4vw,18px);color:#d6e0ea}
 .ko-igra{position:relative;margin:10px 0 8px;padding:12px 14px 18px;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:#0c1826;user-select:none;-webkit-user-select:none}
-.ko-steps{display:flex;gap:6px;margin:0 0 6px;padding:0;list-style:none}
+/* Экран «Как играть» (Р198) */
+.ko-rules{padding:4px 2px 2px}
+.ko-rules-h{margin:0 0 6px;font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,6.4vw,32px);line-height:1.15;color:#fff}
+.ko-rules-why{margin:0 0 14px;font-size:clamp(16px,4.3vw,18px);color:#d6e0ea}
+.ko-rules-steps{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.ko-rules-steps li{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;background:rgba(255,255,255,.05)}
+.ko-rn{flex:0 0 36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#c9a84c;color:#1a1206;font-size:19px;font-weight:800}
+.ko-rd{margin:0;font-size:clamp(17px,4.6vw,19px);font-weight:700;line-height:1.4;color:#fff}
+.ko-rs{margin:4px 0 0;font-size:17px;color:#e2eaf2}
+.ko-pill{display:inline-block;padding:0 8px;border:2px solid #c9a84c;border-radius:14px;color:#e4c97a;font-weight:800;white-space:nowrap}
+.ko-rules-end{margin:14px 0 0;font-size:17px;font-weight:700;color:#e4c97a}
+.ko-rules-first{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:rgba(201,168,76,.14);font-size:17px;font-weight:700;color:#fff}
+.ko-rules-tip{margin:6px 0 0;font-size:16px;color:#d6e0ea}
+.ko-start{display:block;width:100%;max-width:360px;margin:16px auto 0;min-height:60px;border:0;border-radius:30px;background:#c9a84c;color:#1a1206;font:inherit;font-size:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 0 #8a6f2c}
+.ko-start:active{transform:translateY(4px);box-shadow:0 2px 0 #8a6f2c}
+.ko-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 6px}
+.ko-rules-btn{min-height:36px;padding:4px 14px;border:1px solid rgba(228,201,122,.6);border-radius:18px;background:transparent;color:#e4c97a;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.ko-lbl{margin:0;font-size:15px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#c9a84c}
+.ko-steps{display:flex;gap:6px;margin:0;padding:0;list-style:none}
 .ko-steps li{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:rgba(255,255,255,.07);color:#7a9ab8}
 .ko-steps li.on{background:#c9a84c;color:#1a1206}
 .ko-task{margin:0;font-size:clamp(21px,5.6vw,28px);font-weight:800;line-height:1.2;color:#fff}
@@ -43,16 +61,22 @@
 .ko-ico-silk{border-radius:50%/45%;background:linear-gradient(180deg,#f3ead2,#c9b98f)}
 
 .ko-ctl{display:flex;justify-content:center;gap:14px;margin:14px 0 0}
-.ko-hold{display:flex;align-items:center;justify-content:center;gap:10px;min-width:180px;min-height:64px;padding:10px 26px;border:0;border-radius:32px;background:#c9a84c;color:#1a1206;font:inherit;font-size:20px;font-weight:800;cursor:pointer;touch-action:none;-webkit-touch-callout:none;box-shadow:0 6px 0 #8a6f2c;transition:transform .08s,box-shadow .08s}
+.ko-hold{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;min-width:220px;min-height:68px;padding:8px 26px;border:0;border-radius:32px;background:#c9a84c;color:#1a1206;font:inherit;font-size:20px;font-weight:800;cursor:pointer;touch-action:none;-webkit-touch-callout:none;box-shadow:0 6px 0 #8a6f2c;transition:transform .08s,box-shadow .08s}
+.ko-hold-t{position:relative;display:flex;flex-direction:column;align-items:flex-start;line-height:1.1}
+.ko-hold-t small{font-size:14px;font-weight:700}
+.ko-fan,.ko-arrows{position:relative}
+.ko-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:#e9cf7e;box-shadow:inset -3px 0 0 #8a6f2c}
+.ko-tip{margin:10px auto 0;max-width:520px;padding:8px 12px;border-radius:10px;background:rgba(224,96,122,.18);color:#ffd3cc;font-size:17px;font-weight:700;text-align:center}
 .ko-hold.go{transform:translateY(4px);box-shadow:0 2px 0 #8a6f2c}
 .ko-hold.hint{animation:ko-pulse 1.3s ease-in-out infinite}
 .ko-fan{width:30px;height:30px;border-radius:50%;background:conic-gradient(#1a1206 0 50deg,transparent 50deg 120deg,#1a1206 120deg 170deg,transparent 170deg 240deg,#1a1206 240deg 290deg,transparent 290deg)}
 .ko-hold.go .ko-fan{animation:ko-spin .35s linear infinite}
 @keyframes ko-spin{to{transform:rotate(360deg)}}
 .ko-arrows{font-size:28px;line-height:1}
-.ko-hold:focus-visible,.ko-part:focus-visible,.ko-next:focus-visible,.ko-again:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.ko-start:focus-visible,.ko-rules-btn:focus-visible,.ko-hold:focus-visible,.ko-part:focus-visible,.ko-next:focus-visible,.ko-again:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .ko-next,.ko-again{margin:14px auto 0;display:block;min-height:48px;padding:10px 22px;border:0;border-radius:24px;background:#c9a84c;color:#1a1206;font:inherit;font-size:17px;font-weight:800;cursor:pointer}
-.ko-cap{margin:12px auto 0;max-width:520px;font-size:17px;font-weight:600;text-align:center;color:#fff}
+.ko-cap{margin:12px auto 0;max-width:560px;padding:10px 12px;border-left:4px solid #4cd27a;border-radius:8px;background:rgba(76,210,122,.08);font-size:17px;line-height:1.45;color:#fff}
+.ko-cap b{color:#7fe3a0}
 
 /* Лента лет — отдельной строкой под сценой */
 .ko-years{display:flex;align-items:center;gap:10px;margin:18px 0 0;padding:12px 12px;border-radius:12px;background:rgba(255,255,255,.04)}
@@ -76,4 +100,4 @@
 .ko-facts summary{margin-top:4px;color:#e4c97a;cursor:pointer;font-size:15px}
 .ko-facts details p{margin:6px 0 0;font-size:15px;color:#c9d6e2}
 .ko-src{font-size:13px!important;color:#7f9bb5!important}
-@media (prefers-reduced-motion:reduce){.ko-part.next,.ko-hold.hint{animation:none}.ko-line i{transition:none}}
+@media (prefers-reduced-motion:reduce){.ko-part.next,.ko-hold.hint{animation:none}.ko-start:active{transform:none}.ko-line i{transition:none}}
