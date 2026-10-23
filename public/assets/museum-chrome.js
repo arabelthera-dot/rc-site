@@ -117,8 +117,10 @@
   + '.hero-scene,.hero-visual,.hero .bg,.hero.mc-cover{max-height:var(--hero-fit,none)!important}'
   /* Исключение — картинные музеи: полотно показывается целиком (.fit-full), обрезать его
      ради первого экрана нельзя. Высоту там держит сама картинка (max-height:62vh). */
-  + '.hero-scene.fit-full{max-height:none!important}'
-  + '.hero-scene.fit-full img{max-height:min(62vh,var(--hero-fit,62vh))}'
+  /* Потолок --hero-fit (нижний предел 200 px) экспонат не режет: на 1280 «Оригинал-Однер» (18 января) сжимался
+     до 300×200 посреди пустой полосы (Р165, 23.10). Кадр стоит целиком в свою высоту, полоса — по кадру. */
+  + '.hero-scene.fit-full{max-height:none!important;height:auto!important;min-height:0!important;display:flex;justify-content:center}'
+  + '.hero-scene.fit-full img{width:auto!important;height:auto!important;max-width:100%;max-height:min(62vh,560px);object-fit:contain}'
   /* ── строка слогана портала под названием музея (museum-core, раздел 6-бис) ──
      Слоган стоял руками только у эталона Шухова, у остальных 15 страниц января его не было
      (аудит 08.09.2026). Повторяющийся блок отдан движку, а не размножен копией по файлам
