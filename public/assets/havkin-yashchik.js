@@ -239,8 +239,8 @@
     }
     VILS.forEach(function (v, i) { if (p > (i + 1) / 9) v.el.classList.add('vac'); });
     if (p < .12) sub.textContent = '1897: сначала Хавкин привил себя — дозой в 10 раз больше';
-    else if (year < 1909) sub.textContent = 'В тех, кто прививал, летели камни. Держи дальше!';
-    else if (p < 1) sub.textContent = year < 1925 ? '1909: уже 8 миллионов. Держи!' : 'Бомбейская лаборатория — теперь Институт Хавкина';
+    else if (year < 1909) sub.textContent = 'В тех, кто прививал, летели камни. Держи палец на ящике!';
+    else if (p < 1) sub.textContent = year < 1925 ? '1909: уже 8 миллионов. Держи палец на ящике!' : 'Бомбейская лаборатория — теперь Институт Хавкина';
     else sub.textContent = '1940: 35 миллионов прививок';
   }
   function tick(t) {
@@ -255,10 +255,10 @@
     $('.hv-result').hidden = true; $('.hv-crate-s2').parentNode.hidden = false;
     $('.hv-legend').hidden = true; $('.hv-schema').textContent = 'схема · зелёная точка — привитые от чумы';
     VILS.forEach(function (v) { v.el.classList.remove('vac'); v.el.tabIndex = -1; $$('i', v.el).forEach(function (i) { i.classList.remove('out'); }); });
-    vials.forEach(function (v) { v.classList.remove('used'); v.style.cursor = 'pointer'; });
+    vials.forEach(function (v) { v.classList.remove('used'); v.classList.add('plague'); v.style.cursor = 'pointer'; });
     crate2.style.cursor = 'pointer'; crate2.setAttribute('aria-label', 'Ящик с вакциной от чумы: нажми и держи');
     $('.hv-counter').hidden = false; $('.hv-bar').hidden = false;
-    say('Пришла чума. Прививай всю Индию', 'Нажми и держи ящик');
+    say('Новая болезнь — чума. Прививай всю Индию', 'Новая вакцина Хавкина. Держи палец на ящике');
     root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     setTimeout(function () { pointHand(crate2, 70, 6); }, 600);
     requestAnimationFrame(function (t) { last = t; requestAnimationFrame(tick); });
