@@ -41,6 +41,20 @@ jobs:
         env:
           DATA_DNYA_STROGO: ${{ vars.DATA_DNYA_STROGO }}
         run: node scripts/data-dnya.mjs --proba && node scripts/data-dnya.mjs
+      # Инструкция к каждой игре (Р199, 23.10.2026; 04-build §5-бис): страница дня с игрой без блока «Как играть»
+      # (data-igra-pravila, шаги, кнопка «Начать», assets/igra-pravila.css и .js) — ошибка. Изменённые в заявке
+      # страницы — строго; весь сайт — отчёт «инструкция есть N из M» по музеям в сводке шага и артефакте
+      # igra-pravila (на main 23.10 — 0 из 82). Без сборки, секунды. Выключатель — IGRA_PRAVILA_STROGO=0; откат — удалить шаг.
+      - name: igra-pravila — у каждой игры есть инструкция
+        continue-on-error: ${{ vars.IGRA_PRAVILA_STROGO == '0' }}
+        timeout-minutes: 1
+        run: node scripts/igra-pravila.mjs --proba && node scripts/igra-pravila.mjs
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: igra-pravila
+          path: /tmp/igra-pravila
+          if-no-files-found: ignore
       # Соседи полной страницы дня (Р165, 23.10.2026): «Куда дальше» и стрелки шапки — ближайшие полные страницы музея
       # (src/lib/sosedi-polnye.mjs). Без сборки, секунды. Откат — удалить шаг.
       - name: sosedi-polnye — пробы соседей дня
