@@ -166,7 +166,7 @@
   function startElbrus() {
     mode = 2; place = {}; selected = null; setStep(2);
     task.textContent = 'Два повара: уложи суп в меньше шагов';
-    sub.textContent = 'Ставь две плитки рядом, в один шаг';
+    sub.textContent = 'Пока один повар наливает воду, второй моет картошку. Ставь две плитки рядом — в один шаг';
     btnNext.hidden = true; race.hidden = true; say('');
     render(); startDemo(true);
   }
@@ -191,7 +191,7 @@
         win.innerHTML = 'Два повара: <b>' + n + ' шага</b> вместо 8. Ты ускорил программу вдвое.';
       } else {
         task.textContent = 'Быстрее! А можно ещё';
-        win.innerHTML = n + ' шагов вместо 8. Рекорд — 4 шага. Подсказка: зелень подождёт до конца.';
+        win.innerHTML = n + ' шагов вместо 8. Рекорд — 4 шага. Подсказка: пусть повара сначала делают воду и картошку, а зелень — в последнем шаге.';
         btnReset.textContent = 'Уложить в 4 шага'; btnReset.hidden = false;
       }
       btnNext.textContent = 'Кто так считал первым? →';
@@ -212,7 +212,7 @@
     place = {}; selected = null; say(''); race.hidden = true; btnNext.hidden = true; btnReset.hidden = true;
     btnReset.textContent = 'Разложить заново';
     task.textContent = 'Два повара: уложи суп в меньше шагов';
-    sub.textContent = 'Ставь две плитки рядом, в один шаг';
+    sub.textContent = 'Пока один повар наливает воду, второй моет картошку. Ставь две плитки рядом — в один шаг';
     render();
   });
   $('.el-again').addEventListener('click', function () {
@@ -236,17 +236,10 @@
       demo.className = 'el-tile el-demo'; demo.removeAttribute('aria-label'); demo.setAttribute('aria-hidden', 'true');
       demo.style.left = (a.left - rr.left) + 'px'; demo.style.top = (a.top - rr.top) + 'px'; demo.style.width = a.width + 'px';
       if (second) {
-        var x2 = pool.querySelectorAll('.el-tile')[3] || from; a = x2.getBoundingClientRect();
+        var x2 = pool.querySelector('.el-tile[data-id="p1"]') || from; a = x2.getBoundingClientRect();
         demo.innerHTML = x2.innerHTML; demo.style.left = (a.left - rr.left) + 'px'; demo.style.top = (a.top - rr.top) + 'px';
-        var first = rowsEl.querySelector('.el-slot'); var fb = first.getBoundingClientRect();
-        var d1 = pool.querySelector('.el-tile').cloneNode(true);
-        d1.className = 'el-tile el-demo'; d1.setAttribute('aria-hidden', 'true');
-        var a1 = pool.querySelector('.el-tile').getBoundingClientRect();
-        d1.style.left = (a1.left - rr.left) + 'px'; d1.style.top = (a1.top - rr.top) + 'px'; d1.style.width = fb.width + 'px';
-        d1.style.setProperty('--dx', (fb.left - a1.left) + 'px'); d1.style.setProperty('--dy', (fb.top - a1.top) + 'px');
-        root.appendChild(d1); demo._pair = d1;
-        demo.style.width = b.width + 'px';
       }
+      demo.style.width = Math.min(a.width, b.width) + 'px';
       demo.style.setProperty('--dx', (b.left - a.left) + 'px'); demo.style.setProperty('--dy', (b.top - a.top) + 'px');
       root.appendChild(demo);
     });
@@ -278,6 +271,7 @@
     }
     drag.ghost.style.left = (e.clientX - drag.ox) + 'px';
     drag.ghost.style.top = (e.clientY - drag.oy) + 'px';
+    if (e.clientY > innerHeight - 110) scrollBy(0, 14); else if (e.clientY < 70) scrollBy(0, -14);
     hot(target(e.clientX, e.clientY));
   });
   function target(x, y) {
