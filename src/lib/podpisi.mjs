@@ -6,7 +6,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const LIC = /\bCC[ -]?(BY|0)|Free Art License|обществен\S* достоян|не объект\S* авторск\S* прав|public domain|PD-|свободн\S* лиценз|©|все права/i;
+// Р136 (22.10): кадр фонда любого года по стандарту музеев (credit line) — «Хранится: музей» и основание ст. 1274 ГК РФ
+// в одной подписи; одна ссылка на статью без держателя лицензией не считается.
+export const LIC = /\bCC[ -]?(BY|0)|Free Art License|обществен\S* достоян|не объект\S* авторск\S* прав|public domain|PD-|свободн\S* лиценз|©|все права|Хранится:[^]*ст\. 1274 ГК/i;
 export const SRC = /фото\s*:|автор|музе|архив|библиотек|собрани|коллекци|ГИМ|ГТГ|РГБ|НЭБ|ГМИИ|Эрмитаж|источник|из книги|журнал|газет|генерац|Genosai|реконструкц|https?:\/\/|рисун\S+ [А-ЯЁ]|гравюр|издани/i;
 
 /** Опись Р84, Б16: название лицензии из текста подписи для колонки «Лицензия» сводной страницы; '' — не найдена. */
@@ -17,6 +19,7 @@ export function licName(text = '') {
   if (/Free Art License/i.test(t)) return 'Free Art License';
   if (/обществен\S* достоян|public domain|PD-/i.test(t)) return 'общественное достояние';
   if (/свободн\S* лиценз/i.test(t)) return 'свободная лицензия';
+  if (/Хранится:[^]*ст\. 1274 ГК/i.test(t)) return 'цитирование с указанием источника (ст. 1274 ГК РФ)';
   if (/с разрешени\S+/i.test(t)) return 'с разрешения правообладателя';
   if (/©|все права/i.test(t)) return '© правообладатель';
   return '';
@@ -101,6 +104,46 @@ export function fullFrames(root = '.') {
     for (const f of ls(path.join(root, FULL, museum)).filter((x) => x.endsWith('.html'))) {
       const html = fs.readFileSync(path.join(root, FULL, museum, f), 'utf8');
       for (const fr of pageFrames(html)) out.push({ museum, key: f.slice(0, -5), ...fr });
+    }
+  }
+  return out;
+}
+
+// Р132 (22.10): кадр карточки дня, которого нет на полной странице этого дня, — посетитель его не видит (сайт показывает
+// full-pages 1:1). Показан = то же имя файла, тот же файл под другим именем или та же вещь (¾ значимых слов подписи —
+// в alt/подписи кадра страницы). Правило то же, что у scripts/kadr.py (_dub); починка — kadr.py vernut / sinhron.
+const SLUZH = new Set(['госкаталог', 'музейного', 'фонда', 'фонд', 'собрания', 'государственная', 'государственный', 'галерея', 'галереи',
+  'третьяковская', 'третьяковской', 'музей', 'музея', 'иллюстрация', 'репродукция', 'художника', 'работа', 'неизвестного']);
+const slova = (s) => new Set((`${[...String(s).matchAll(/\b(?:alt|data-title)="([^"]*)"/g)].map((m) => m[1]).join(' ')} ${String(s).replace(/<[^>]+>/g, ' ')}`)
+  .toLowerCase().replace(/ё/g, 'е').match(/[а-яa-z0-9]{4,}/g)?.filter((w) => !SLUZH.has(w)).map((w) => w.slice(0, 5)) ?? []);
+const WIKI = /commons\.wikimedia\.org|upload\.wikimedia\.org|wikimedia\s+commons|викисклад/i;
+
+export function kadryNeNaStranice(root = '.') {
+  const out = [];
+  const fajl = (s) => { const f = path.join(root, 'public', s.replace(/^\/+/, '')); return fs.existsSync(f) ? f : null; };
+  for (const museum of ls(path.join(root, FULL))) {
+    for (const f of ls(path.join(root, FULL, museum)).filter((x) => x.endsWith('.html'))) {
+      const key = f.slice(0, -5), day = path.join(root, DAYS, museum, `${key}.json`);
+      if (!fs.existsSync(day)) continue;
+      // Р154: у дня-анкеты (в json есть body) живая страница — из блоков body, full-pages лишь на den/<день>/staraya/
+      const anketa = JSON.parse(fs.readFileSync(day, 'utf8')).body;
+      const html = anketa ? anketa.map((b) => b.html ?? '').join('') : fs.readFileSync(path.join(root, FULL, museum, f), 'utf8');
+      const srcs = [...new Set([...html.matchAll(/src="([^"]+\.(?:jpe?g|png|webp))"/gi)].map((m) => m[1]))];
+      const bloki = html.match(/<figure\b[\s\S]*?<\/figure>|<img\b[^>]*>/gi) ?? [];
+      for (const im of JSON.parse(fs.readFileSync(day, 'utf8')).images || []) {
+        const src = String(im.src || ''), imya = src.split('/').pop();
+        if (!imya || html.includes(imya) || WIKI.test(`${src} ${im.credit || ''}`)) continue;
+        const moj = fajl(src);
+        if (moj) {
+          const byte = fs.readFileSync(moj);
+          const tot = srcs.some((s) => { const g = fajl(s.includes('muzei/') ? `muzei/${s.split('muzei/').pop()}` : `muzei/${museum}/${s}`);
+            return g && fs.statSync(g).size === byte.length && fs.readFileSync(g).equals(byte); });
+          if (tot) continue;
+        }
+        const sk = slova(im.caption || '');
+        if (sk.size && bloki.some((b) => { const sb = slova(b); return [...sk].filter((w) => sb.has(w)).length >= 0.75 * sk.size; })) continue;
+        out.push({ museum, key, src: imya });
+      }
     }
   }
   return out;

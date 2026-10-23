@@ -3,6 +3,8 @@
 // ссылка на её текст на creativecommons.org; адрес в подписи — ссылка на страницу источника. Текст подписи выводится дословно, ссылками становятся только его куски.
 interface Props { text: string }
 const { text } = Astro.props;
+// Р136: «Госкаталог музейного фонда РФ, № N» — номер ссылкой на карточку предмета.
+const GKN = /(?<=Госкаталог музейного фонда РФ, № )\d+/g;
 const LIC = /\bCC[ -]?(BY(?:-SA)?|BY-NC(?:-SA)?|BY-ND|BY-NC-ND)[ -](\d\.\d)\b|\bCC0\b|\bpublic domain\b|общественное достояние/gi;
 const licUrl = (m: RegExpExecArray) => {
   if (m[1]) return `https://creativecommons.org/licenses/${m[1].toLowerCase()}/${m[2]}/deed.ru`;
@@ -11,8 +13,11 @@ const licUrl = (m: RegExpExecArray) => {
 };
 const parts: { t: string; href?: string }[] = [];
 let last = 0;
-for (const m of text.matchAll(LIC)) {
-  parts.push({ t: text.slice(last, m.index) }, { t: m[0], href: licUrl(m as RegExpExecArray) });
+const hits = [...[...text.matchAll(LIC)].map((m) => ({ m, href: licUrl(m as RegExpExecArray) })),
+  ...[...text.matchAll(GKN)].map((m) => ({ m, href: `https://goskatalog.ru/portal/#/collections?id=${m[0]}` }))]
+  .sort((a, b) => a.m.index! - b.m.index!);
+for (const { m, href } of hits) {
+  parts.push({ t: text.slice(last, m.index) }, { t: m[0], href });
   last = m.index! + m[0].length;
 }
 parts.push({ t: text.slice(last) });
