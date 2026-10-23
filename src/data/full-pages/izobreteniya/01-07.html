@@ -241,6 +241,7 @@
 <meta property="og:url" content="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov.html">
 <meta property="og:image" content="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov-byust.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Первое в мире коронарное шунтирование", "description": "Колесов пришил к живому, бьющемуся сердцу собственную артерию человека — за три года до того, как это сделал Запад", "url": "https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov.html", "inLanguage": "ru", "isPartOf": {"@type": "WebSite", "name": "Музей «Что изобрели русские первыми в мире»"}, "publisher": {"@type": "Organization", "name": "Русская цивилизация"}, "image": "https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov-byust.jpg"}</script>
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 </head>
 <body>
 
@@ -338,16 +339,30 @@
     <div class="kicker">Главное действие · модель</div>
     <h2>Сшей обходной путь на бьющемся сердце</h2>
     <p style="max-width:62ch">Повтори операцию 25 февраля 1964 года. Сначала пережми артерию сердца и следи за кардиограммой, как Колесов: выдержит ли сердце. Потом наложи шов — пришей грудную артерию ниже сужения. Сердце не останавливают, поэтому точки шва движутся вместе с ним. Последний стежок — и кровь пойдёт в обход.</p>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты — хирург Колесов, 1964 год. Проверишь руками, можно ли пришить новую артерию к сердцу, которое не останавливают.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми «Пережать артерию и смотреть ЭКГ»</b> — артерию сердца зажмут, на левом экране побежит кардиограмма (линия ударов сердца).</li>
+        <li><b>Подожди 8 секунд</b> — это 8 минут операции. Ритм ровный — сердце выдержит, можно шить.</li>
+        <li><b>Нажимай на золотые точки</b> на рисунке сердца справа — одна точка = один стежок шва, всего 8.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: сердце бьётся, и точки качаются вместе с ним — попади точно в точку, промах не засчитается. Пока не прошли 8 секунд ЭКГ, шить нельзя. «Начать заново» сбрасывает операцию.</p>
+      <p class="igra-pravila-final">Восьмой стежок — и красные капли крови побегут в обход сужения: операция удалась.</p>
+      <button type="button" class="igra-start" data-igra-start>Начать</button>
+    </div>
     <div class="press" id="press">
       <div class="lab-btns">
         <button class="btn gold" type="button" id="clampGo">Пережать артерию и смотреть ЭКГ</button>
         <button class="btn ghost" type="button" id="shuntReset">Начать заново</button>
+        <button type="button" class="igra-pravila-open" data-igra-pravila-open>Правила</button>
       </div>
       <div class="press-stage">
         <figure><canvas id="cvEkg" width="300" height="300" role="img" aria-label="Модель кардиограммы во время пережатия артерии"></canvas><figcaption>Кардиограмма: <span id="ekgTxt">артерия не пережата</span></figcaption></figure>
         <figure><canvas id="cvHeart" width="300" height="300" role="img" aria-label="Модель бьющегося сердца: суженная артерия и грудная артерия, которую нужно пришить ниже сужения"></canvas><figcaption>Шов: <span id="shovTxt">ждёт проверки ЭКГ</span></figcaption></figure>
       </div>
       <div class="lab-cap">Модель, а не снимок: восемь минут пережатия сжаты до восьми секунд, число стежков задано программой.</div>
+      <p class="igra-seychas"><b>Что сделать сейчас:</b> <span id="shuntSeychas">нажми «Пережать артерию и смотреть ЭКГ».</span></p>
       <div class="lab-msg" id="shuntMsg" aria-live="polite">Начни с пережатия артерии.</div>
       <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: перед тем как вскрыть артерию сердца, Колесов восемь минут держал её пережатой и следил за кардиограммой. Сердце выдержало. Тогда он вручную, под лупой, пришил собственную внутреннюю грудную артерию больного к ветви артерии сердца ниже сужения — не останавливая сердце и без аппарата искусственного кровообращения. Кровь пошла в обход сужения.</div></noscript>
     </div>
@@ -696,12 +711,14 @@
 window.MUSEUM_SCORE = {awards:{ekg:10, shov:25, q:[5,10], fork:5, chat:5, theme:5},
   ranks:[[100,'Хирург сердца'],[70,'Ассистент Колесова'],[40,'Студент Павловского'],[0,'Гость дня']]};
 </script>
+<script src="../../assets/igra-pravila.js" defer></script>
 <script src="../../assets/museum-score.js"></script>
 <script>
 (function(){
   var $ = function(id){return document.getElementById(id);};
   $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
   function msg(t, cls){ var m=$('shuntMsg'); m.className='lab-msg'+(cls?' '+cls:''); m.textContent=t; }
+  function seychas(t){ $('shuntSeychas').textContent=t; }
 
   /* ── ЭКГ ── восемь «минут» пережатия = восемь секунд; ритм ровный: сердце выдержало (протокол 1964). */
   var ekg = $('cvEkg'), ec = ekg.getContext('2d'), clampT = -1, clampOk = false, raf = 0;
@@ -757,13 +774,15 @@ window.MUSEUM_SCORE = {awards:{ekg:10, shov:25, q:[5,10], fork:5, chat:5, theme:
     if (clampT>=0 && !clampOk){
       var m=Math.min(8,Math.floor((now-clampT)/1000)+1); $('ekgTxt').textContent='пережатие, минута '+m+' из 8';
       if (now-clampT>=8000){ clampOk=true; award('ekg',10); $('ekgTxt').textContent='8 минут, ритм ровный';
-        $('shovTxt').textContent='стежков 0 из '+N; msg('Сердце выдержало. Вскрывай артерию и шей: нажимай на золотые точки — они движутся вместе с сердцем.','ok'); }
+        $('shovTxt').textContent='стежков 0 из '+N; msg('Сердце выдержало. Вскрывай артерию и шей: нажимай на золотые точки — они движутся вместе с сердцем.','ok');
+        seychas('нажимай на золотые точки на сердце справа, все 8.'); }
     }
     ekgDraw(t); heart(t); raf=requestAnimationFrame(loop);
   }
   $('clampGo').onclick = function(){
     if (clampT>=0) return; clampT=performance.now(); this.disabled=true;
     msg('Артерия пережата. Смотри на кардиограмму: если ритм собьётся, вскрывать нельзя.');
+    seychas('подожди 8 секунд и смотри на кардиограмму слева.');
   };
   cv.addEventListener('click', function(e){
     if (!clampOk || flow) { if(!clampOk) msg('Сначала пережми артерию и проверь ЭКГ — так сделал Колесов.','bad'); return; }
@@ -773,12 +792,14 @@ window.MUSEUM_SCORE = {awards:{ekg:10, shov:25, q:[5,10], fork:5, chat:5, theme:
     if (hit<0){ msg('Мимо: сердце бьётся, лови точку в такт.'); return; }
     done[hit]=true; var n=done.filter(Boolean).length; $('shovTxt').textContent='стежков '+n+' из '+N;
     if (n===N){ flow=true; award('shov',25); $('shovTxt').textContent='шов готов, кровь идёт в обход';
+      seychas('операция закончена. Ниже — вопросы о ней; «Начать заново» — пройти ещё раз.');
       msg('Шов наложен. Кровь пошла по грудной артерии в обход сужения. Так 25 февраля 1964 года Колесов избавил больного от болей — первым в мире сшив такой шунт на бьющемся сердце.','ok'); }
     else msg('Стежок наложен. Осталось '+(N-n)+'.');
   });
   $('shuntReset').onclick = function(){
     clampT=-1; clampOk=false; flow=false; done=[]; $('clampGo').disabled=false;
     $('ekgTxt').textContent='артерия не пережата'; $('shovTxt').textContent='ждёт проверки ЭКГ';
+    seychas('нажми «Пережать артерию и смотреть ЭКГ».');
     msg('Операция начата заново. Уже полученные баллы сохраняются и повторно не начисляются.');
   };
   raf=requestAnimationFrame(loop);
