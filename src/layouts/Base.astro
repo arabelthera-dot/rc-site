@@ -170,9 +170,8 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
     <InlineCss file="rc-sitebar.css" />
     <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
   </>}
-  {/* печать урока (Б22) — только для бумаги, отрисовку экрана не держит; картина во весь экран (Б20) — стиль грузит сам скрипт */}
+  {/* печать урока (Б22) — только для бумаги, отрисовку экрана не держит; лупу на кадр (Р178) ставит сборка — src/integrations/lupa.mjs */}
   <link rel="stylesheet" media="print" href={`${base}assets/rc-pechat.css`} />
-  <script is:inline defer src={`${base}assets/rc-uvelichenie.js`}></script>
   <script type="application/ld+json" set:html={ldJson} />
   {metrika && <Metrika />}
   <slot name="head" />

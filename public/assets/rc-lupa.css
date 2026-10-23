@@ -1,0 +1,24 @@
+/* Лупа на кадр (Р178): значок и курсор на кадре, подпись внутри просмотрщика PhotoSwipe. Поведение — rc-lupa.js,
+   правило «что кадр» — src/lib/lupa.mjs. Сам вид просмотрщика — assets/vendor/photoswipe/photoswipe.css (из npm). */
+img.rc-lupa-kadr { cursor: zoom-in; }
+.rc-lupa-ramka { position: relative; }
+.rc-lupa-znak { position: absolute; z-index: 2; width: 32px; height: 32px; margin: 0; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(20, 20, 22, .42) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='M15 15l5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center / 18px no-repeat;
+  opacity: .55; cursor: zoom-in; transition: opacity .2s; pointer-events: auto; }
+span.rc-lupa-znak { pointer-events: none; }
+.rc-lupa-znak[hidden] { display: none; }
+.rc-lupa-znak:hover, .rc-lupa-kadr:hover + .rc-lupa-znak { opacity: .9; }
+.rc-lupa-znak:focus-visible { opacity: 1; outline: 2px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 4px #1a1a1a; }
+.rc-lupa-sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* подпись — полосой внизу, на своём тёмном поле; место под неё вычтено из кадра (paddingFn), при приближении скрыта */
+.rc-lupa-podpis { position: absolute; left: 0; right: 0; bottom: 0; box-sizing: border-box; max-height: 35vh; overflow: auto;
+  margin: 0; padding: 10px 16px max(12px, env(safe-area-inset-bottom)); background: #111; color: #e8e6e1;
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; text-align: center; transition: opacity .2s; }
+.rc-lupa-podpis[hidden] { display: none; }
+.rc-lupa-zamer { position: absolute; left: -9999px; top: 0; right: auto; bottom: auto; visibility: hidden; pointer-events: none; max-height: none; }
+.pswp.pswp--zoomed-in .rc-lupa-podpis { opacity: 0; pointer-events: none; }
+.pswp.pswp--zoomed-in .pswp__counter { opacity: 0; }
+@media (min-width: 600px) { .rc-lupa-podpis { font-size: 15px; padding-left: 10%; padding-right: 10%; } }
+@media print { .rc-lupa-znak { display: none !important; } }

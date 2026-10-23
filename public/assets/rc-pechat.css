@@ -14,7 +14,7 @@
   p, li { orphans: 3; widows: 3; }
   /* служебное на бумаге не нужно */
   .rc-sitebar, .rc-sosedi, .rc-cookie, #rc-slabovid-btn, #rc-sv-panel, .rc-sub, .rc-pochta, .sharerow, .support,
-  .rt-box, .crumbs, .backbtn, .btn, button, nav, form, iframe, audio, video, dialog, .rc-uv, #heart,
+  .rt-box, .crumbs, .backbtn, .btn, button, nav, form, iframe, audio, video, dialog, .pswp, .rc-lupa-znak, #heart,
   .top, .quick-progress, .foot-links, .slog { display: none !important; }
   /* ссылки — адресом после текста; внутренние якоря и картинки-ссылки — без адреса */
   a { color: #000 !important; text-decoration: underline; }

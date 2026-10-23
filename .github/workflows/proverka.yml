@@ -46,6 +46,10 @@ jobs:
       - name: sosedi-polnye — пробы соседей дня
         timeout-minutes: 1
         run: node scripts/sosedi-polnye.test.mjs
+      # Лупа на кадр (Р178, 23.10.2026): правило «что кадр» и порог 1200 px (src/lib/lupa.mjs). Без сборки, секунды.
+      - name: lupa — пробы правила кадра
+        timeout-minutes: 1
+        run: node scripts/lupa.test.mjs
       - name: kanaly — пробы проверки поста
         timeout-minutes: 2
         run: node scripts/kanaly/proverka.test.mjs

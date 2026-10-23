@@ -12,6 +12,7 @@ import podderzhka from './src/integrations/podderzhka.mjs';
 import zakon from './src/integrations/zakon.mjs';
 import kartaVolnami from './src/integrations/karta-volnami.mjs';
 import razmetka from './src/integrations/razmetka.mjs';
+import lupa from './src/integrations/lupa.mjs';
 
 // Свой домен https://russian-civilization.ru/ — Pages этого репо (19.10.2026, перенос с rc-museum-preview).
 // Старые github.io/rc-site/* GitHub переадресует на домен сам. Смена адреса — правится только site/base.
@@ -33,6 +34,7 @@ export default defineConfig({
   // zakon — до сборки: сверка текстов с реестрами Минюста (красная) и основания кадров XX века (Е1/Е2, src/lib/zakon.mjs).
   // kartaVolnami — после всех правок HTML: карта сайта волнами sitemap-index.xml (+ /sitemap.xml), открытые волны —
   //   src/data/karta-sayta.json; noindex и служебные (/doska/, /karta/, /poisk/, /proverka/) — вне карт (Е6, Р47).
+  // lupa — после kartinki: лупа на кадр (Р178, PhotoSwipe из npm), кадры с исходником от 1200 px; выключатель — src/lib/lupa.mjs.
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [zakon(), legacyRedirects(), fullPages(), ogDen(), kartinki(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), kartaVolnami(), razmetka(), poisk()],
+  integrations: [zakon(), legacyRedirects(), fullPages(), ogDen(), kartinki(), lupa(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), kartaVolnami(), razmetka(), poisk()],
 });
