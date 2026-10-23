@@ -22,6 +22,7 @@ import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 import { podvalDnyaHtml } from '../lib/podval-dnya.mjs';
+import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
@@ -608,6 +609,15 @@ export default function fullPages() {
                   typicalAgeRange: typicalAgeRange(znak(museum, key)),
                   author: redakciyaLd(new URL(base, site).href), publisher: redakciyaLd(new URL(base, site).href), license: LICENZIYA };
                 add.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
+              }
+              // Событие и произведения дня (Д5, пакет 3, 22.10) — тем же построителем, что у шаблона (Base.astro), и у страниц со своей ld+json.
+              if (MUSEUMS[museum] && d.title) {
+                const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${museum}.json`, 'utf8')).dated;
+                const ogImg = /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i.exec(html)?.[1];
+                const absolyut = (src) => new URL(/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`, site).href;
+                const sobytie = dated ? sobytieLd({ title: d.title, year: d.year, key, url, image: ogImg }) : undefined;
+                for (const u of [sobytie, ...proizvedeniyaLd({ museum, images: d.images, url, absolyut })].filter(Boolean))
+                  add.push(`<script type="application/ld+json">${JSON.stringify(u).replace(/</g, '\\u003c')}</script>`);
               }
               // Своя ld+json у старой страницы — возраст (436-ФЗ, Р41) отдельной WebPage этого адреса.
               if (!add.some((x) => x.includes('typicalAgeRange'))) add.push(`<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org',
