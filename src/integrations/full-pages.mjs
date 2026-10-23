@@ -17,11 +17,12 @@ import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
-import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
+import { cardFrames, fullFrames, kadryNeNaStranice } from '../lib/podpisi.mjs';
 import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 import { podvalDnyaHtml } from '../lib/podval-dnya.mjs';
+import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
@@ -406,6 +407,14 @@ function checkPodpisi() {
   console.warn(`⚠ ${msg}`);
 }
 
+// Р132 (22.10): кадр карточки не показан на полной странице дня (замена #333 вырезала figure, кадр лёг только в json).
+// Только отчёт — сборку не роняет (новых замков без слова Сергея нет). Починка: python3 scripts/kadr.py vernut --primenit.
+function checkKadryKartochki() {
+  const net = kadryNeNaStranice();
+  if (!net.length) return console.log('kadry: все кадры карточек дней показаны на их полных страницах');
+  console.warn(`⚠ kadry: ${net.length} кадр(ов) карточки не показаны на полной странице дня — python3 scripts/kadr.py vernut\n${net.map((x) => `  ${x.museum}/${x.key} ${x.src}`).join('\n')}`);
+}
+
 // Замок на второй путь к календарю (план сайта А4, 20.10; как AI_Projects #2284): данные календаря — только из записей
 // src/content/days (src/lib/kalendar-dannye.mjs). Файл в public/, который сам задаёт window.MUSEUM_CALENDAR = {…},
 // — второй источник дат мимо src/: сайт не собирается.
@@ -436,6 +445,7 @@ export default function fullPages() {
         const root = fileURLToPath(dir);
         checkNetStaryhKalendarey();
         checkPodpisi();
+        checkKadryKartochki();
         if (!fs.existsSync(SRC)) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
         const bad = [];
         let n = 0;
@@ -599,6 +609,15 @@ export default function fullPages() {
                   typicalAgeRange: typicalAgeRange(znak(museum, key)),
                   author: redakciyaLd(new URL(base, site).href), publisher: redakciyaLd(new URL(base, site).href), license: LICENZIYA };
                 add.push(`<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);
+              }
+              // Событие и произведения дня (Д5, пакет 3, 22.10) — тем же построителем, что у шаблона (Base.astro), и у страниц со своей ld+json.
+              if (MUSEUMS[museum] && d.title) {
+                const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${museum}.json`, 'utf8')).dated;
+                const ogImg = /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i.exec(html)?.[1];
+                const absolyut = (src) => new URL(/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`, site).href;
+                const sobytie = dated ? sobytieLd({ title: d.title, year: d.year, key, url, image: ogImg }) : undefined;
+                for (const u of [sobytie, ...proizvedeniyaLd({ museum, images: d.images, url, absolyut })].filter(Boolean))
+                  add.push(`<script type="application/ld+json">${JSON.stringify(u).replace(/</g, '\\u003c')}</script>`);
               }
               // Своя ld+json у старой страницы — возраст (436-ФЗ, Р41) отдельной WebPage этого адреса.
               if (!add.some((x) => x.includes('typicalAgeRange'))) add.push(`<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org',
