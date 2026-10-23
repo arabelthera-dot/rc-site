@@ -233,11 +233,6 @@
 .opyt-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
 .opyt-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
 .opyt-row .seg[disabled]{opacity:.45;cursor:default}
-.kletki{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-.kletki figure{margin:0;min-width:0}
-.kletki canvas{width:100%;height:auto;display:block;border-radius:10px;background:#efe6cf}
-.kletki figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
-.kletki figcaption b{color:var(--ink);font-weight:600}
 .den-shkala{display:flex;align-items:center;gap:12px;margin-top:12px}
 .den-shkala .den{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:26px;color:var(--gold-l);min-width:4.6em}
 .den-shkala .polosa{flex:1;height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
@@ -248,7 +243,7 @@
 .zhurnal{margin:10px 0 0;padding:0;list-style:none;font-size:14px;color:#c8d6e2}
 .zhurnal li{padding:6px 0;border-top:1px solid var(--line)}
 .zhurnal li b{color:var(--gold-l)}
-@media(max-width:420px){.kletki{gap:8px}.den-shkala .den{font-size:21px}}
+
 
 /* ── блоки без style="" ── */
 .border-box p:first-child{margin-top:0}
@@ -285,3 +280,75 @@
 .hero-scene.portret.fit-full img.scene{width:auto;height:auto;max-width:100%;margin:0 auto;object-fit:contain}
 figure.fig.portret-gim{margin:26px auto 4px;max-width:523px}
 figure.fig.portret-gim img{width:100%;border-radius:4px;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+
+/* ── Механика «Спаси мышь — и не сможешь» (Р176): клетки SVG, полка с баночками, сроки ── */
+.mysh .kletki{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+.kletka{margin:0;min-width:0}
+.kletka svg{display:block;width:100%;height:auto;border-radius:12px;transition:box-shadow .25s,transform .25s}
+.kletka.zhdyot svg{box-shadow:0 0 0 2px rgba(201,168,76,.45)}
+.kletka.nad svg{box-shadow:0 0 0 3px var(--gold),0 0 26px rgba(201,168,76,.45);transform:scale(1.015)}
+.kletka.final svg{box-shadow:0 0 0 2px var(--gold-l),0 0 34px rgba(241,207,99,.35)}
+.kletka figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.45;min-height:2.9em}
+.kletka figcaption b{color:var(--ink);font-weight:600;display:block}
+.k-fon{fill:#f1e8d2}.k-noch{fill:#0d1a33;transition:opacity .2s}
+.k-pol{fill:#dcc9a0}.k-podst rect{fill:rgba(140,108,58,.45)}
+.prutya path{stroke:rgba(70,62,50,.32);stroke-width:2.2;fill:none}.k-krysha{fill:rgba(70,62,50,.55)}
+.m-ten{fill:rgba(0,0,0,.12)}.m-telo{fill:#8e97a3}.m-verh{fill:#a8b0ba}
+.korm{transition:rx .35s,ry .35s}.moloko{fill:#fffdf6;transition:rx .45s,ry .45s}
+.miska{transform-box:fill-box;transform-origin:50% 100%}
+.miska.plesk{animation:plesk .45s ease-out}
+@keyframes plesk{0%{transform:scale(1)}35%{transform:scale(1.12,.9)}70%{transform:scale(.97,1.04)}100%{transform:scale(1)}}
+.tulovo{fill:#9aa1ad}.uho{fill:#9aa1ad}.uho-v{fill:#e9b4b6}.nos{fill:#e48f97}.glaz{fill:#1b1b1b}
+.glaz-zakr{stroke:#1b1b1b;stroke-width:1.6;fill:none;stroke-linecap:round}
+.hvost{stroke:#d29a9e;stroke-width:2.6;fill:none;stroke-linecap:round}
+.lapa{stroke:#d29a9e;stroke-width:2.6;stroke-linecap:round}
+.mysh-g{transition:opacity .6s}
+.kol-stoyka{stroke:#7b8590;stroke-width:4;fill:none;stroke-linecap:round}
+.kol-obod{fill:rgba(255,255,255,.25);stroke:#7b8590;stroke-width:4}
+.kol-spica{stroke:#9aa3ad;stroke-width:2;fill:none}.kol-os{fill:#7b8590}
+.vopros{transition:opacity .8s}
+.v-svet{fill:rgba(241,207,99,.35)}.v-znak{stroke:#b8860b;stroke-width:5.5;fill:none;stroke-linecap:round;stroke-linejoin:round}.v-tochka{fill:#b8860b}
+.vopros.gorit .v-svet{animation:svet 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes svet{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+.polka{margin-top:14px;padding:12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px dashed rgba(201,168,76,.35)}
+.polka-lbl{font-size:13px;color:var(--muted);margin-bottom:10px}
+.banki{display:flex;flex-wrap:wrap;gap:8px}
+.banka{display:flex;flex-direction:column;align-items:center;gap:4px;width:calc(20% - 7px);min-width:62px;min-height:84px;padding:8px 4px 6px;border-radius:12px;border:1px solid var(--card-b);background:rgba(255,255,255,.05);color:var(--ink);font:inherit;font-size:12.5px;line-height:1.2;text-align:center;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:transform .2s,opacity .3s,border-color .2s,background .2s}
+.banka[hidden]{display:none}
+.banka svg{width:34px;height:40px;flex:none}
+.banka:hover:not([disabled]){border-color:var(--gold);transform:translateY(-2px)}
+.banka:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.banka.nesut{opacity:.3}
+.banka.vzyato,.banka[disabled]{opacity:.32;cursor:default;transform:none}
+.banka.dop{width:calc(50% - 4px);flex-direction:row;justify-content:center;gap:8px;font-size:13.5px;border-color:var(--gold);background:var(--gold-g)}
+.banka.dop.vzyato{background:rgba(255,255,255,.04);border-color:var(--card-b)}
+.banka.poyavis{animation:poyavis .6s ease-out}
+@keyframes poyavis{0%{opacity:0;transform:translateY(10px) scale(.9)}100%{opacity:1;transform:none}}
+.banka.prizrak{position:fixed;z-index:60;margin:0;pointer-events:none;opacity:.95;box-shadow:0 14px 30px rgba(0,0,0,.45);background:#1e2a36;cursor:grabbing;transition:none}
+.banka.prizrak.nazad{transition:transform .3s ease-in,opacity .3s ease-in}
+.bk-st{fill:rgba(220,235,245,.18);stroke:#c8d6e2;stroke-width:1.6}.bk-kr{fill:#8a6a3a}
+.bk-moloko{fill:#fffdf6}.bk-belok{fill:#f4efe2}.bk-zhir{fill:#f1cf63}.bk-sahar{fill:#ffffff;opacity:.85}.bk-voda{fill:#8cc4ea}.bk-soda{fill:#d9e4ea}.bk-soli{fill:#c9b8a6}
+.mysh .den-shkala .nedel{font-size:13px;color:var(--muted);white-space:nowrap}
+.mysh.idyot .den-shkala .den{color:#fff}
+.sroki{margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.035)}
+.sroki-h{font-size:13px;color:var(--muted);margin-bottom:6px}
+.srok{display:grid;grid-template-columns:7.5em 1fr;gap:4px 10px;align-items:center;padding:6px 0;font-size:14px}
+.srok-n{color:var(--ink);font-weight:600}
+.srok-p{height:10px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
+.srok-p i{display:block;height:100%;width:0;border-radius:6px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.srok-p i.zhiva{width:100%;background:linear-gradient(90deg,#3f9b52,#7cc68a)}
+.srok-p i.gibel{background:linear-gradient(90deg,#8f3a36,#c0453f)}
+.srok-d{grid-column:2;font-size:12.5px;color:#c8d6e2}
+.vyvod{transition:opacity .8s,transform .8s;opacity:0;transform:translateY(8px)}
+.vyvod.vidno{opacity:1;transform:none}
+.vyvod .vopros-str{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:30px;color:var(--gold-l);margin:0 0 6px}
+@media(max-width:520px){
+  .mysh{padding:12px}
+  .mysh .kletki{gap:8px}
+  .kletka figcaption{font-size:13px}
+  .banka{width:calc(33.333% - 6px)}
+  .banka.dop{width:100%}
+  .den-shkala .den{font-size:21px}
+  .srok{grid-template-columns:6.4em 1fr;font-size:13px}
+}
+.mysh .btn[disabled]{opacity:.45;cursor:default;box-shadow:none;filter:grayscale(.4)}
