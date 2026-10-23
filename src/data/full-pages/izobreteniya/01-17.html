@@ -9,238 +9,7 @@
   Форма — вариант А музея изобретений: короткие удары, подробности свёрнуты.
 -->
 <link rel="stylesheet" href="../../assets/fonts.css">
-<style>
-
-
-  :root{
-    --dark:#060c17; --dark2:#0c1826; --surface:#111f33;
-    --card:rgba(255,255,255,.05); --card-b:rgba(255,255,255,.09);
-    --gold:#c9a84c; --gold-l:#e4c97a; --gold-g:rgba(201,168,76,.13);
-    --ink:#e8eef5; --muted:#7a9ab8; --line:rgba(255,255,255,.07);
-    --accent:#2d8cbf; --accent2:#1f6f8b;
-    /* legacy compat */
-    --paper:#0c1826; --paper2:#111f33;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;color:var(--ink);background:var(--dark);line-height:1.72}
-  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.13;margin:0}
-  .wrap{max-width:840px;margin:0 auto;padding:0 24px}
-  a{color:var(--accent)}
-
-  /* ── ШАПКА ── */
-  header.top{background:rgba(6,12,23,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--card-b);color:#fff;position:sticky;top:0;z-index:30}
-  header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-  .logo svg{display:block;filter:drop-shadow(0 0 8px rgba(201,168,76,.4))}
-  .logo .lt{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:16px}
-  .logo .lt small{display:block;font-size:9px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Inter',sans-serif}
-  .score{background:var(--gold-g);border:1px solid rgba(201,168,76,.3);border-radius:24px;padding:6px 16px;font-size:13px;color:var(--gold-l);cursor:pointer;font-family:'Inter',sans-serif}
-  .score-info{position:absolute;right:12px;top:66px;max-width:260px;background:#0e1c30;color:var(--ink);border:1px solid var(--card-b);border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.6;box-shadow:0 20px 60px rgba(0,0,0,.6);display:none;z-index:40}
-  .score-info.show{display:block}
-
-  /* ── HERO — СТАНДАРТ (не менять): 3D-сцена сверху, текст отдельным блоком ниже ── */
-  .hero-scene{position:relative;height:52vh;min-height:300px;max-height:520px;overflow:hidden;background:linear-gradient(160deg,#0a1e3a 0%,#1a3a6a 55%,#0d2240 100%)}
-  .hero-scene canvas.scene,.hero-scene img.scene{width:100%;height:100%;display:block;object-fit:cover}
-  .scene-caption{background:#060d18;padding:11px 0 12px}
-  .scene-caption .wrap{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-  .scene-cap{font-size:13.5px;line-height:1.6;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:14px;flex:1 1 420px}
-  .scene-hint{flex:0 0 auto;font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:.4px;color:#e4c97a;
-    background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.34);border-radius:24px;padding:7px 16px;font-weight:600}
-  .hero-lead{background:linear-gradient(180deg,#0c1826 0%,#060c17 100%);color:#fff;padding:28px 0 38px}
-  .hero-lead .museum{color:var(--gold);font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;font-family:'Inter',sans-serif;margin-bottom:12px;opacity:.9}
-  .hero-lead .who{font-family:'Inter',sans-serif;font-size:clamp(13px,3vw,15px);letter-spacing:.4px;color:var(--accent-l,#7dc8ff);margin-bottom:10px}
-  .hero-lead .who i{font-style:normal;color:#7893ab;font-weight:400}
-  .hero-lead h1{color:#fff;font-size:56px;font-weight:900;line-height:1.04;margin-bottom:16px}
-  .hero-lead .hook{color:#b8ccde;font-size:19px;max-width:580px;margin-bottom:28px;line-height:1.65;font-weight:400}
-  .hero-lead .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-  @media(max-width:680px){.hero-lead h1{font-size:34px}.hero-lead .hook{font-size:16px}
-    .hero-scene{height:34vh;min-height:230px;max-height:300px}
-    .scene-caption .wrap{flex-direction:column;gap:9px}
-    .scene-hint{order:-1;align-self:flex-start;font-size:11.5px;padding:6px 13px}
-    .scene-cap{font-size:12.8px;flex:1 1 auto}}
-  .date-chip{display:inline-block;background:var(--gold-g);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-weight:700;padding:6px 18px;border-radius:24px;font-size:12px;margin-bottom:16px;font-family:'Inter',sans-serif;letter-spacing:.5px}
-
-  /* ── НАВИГАЦИЯ ДНЯ ── */
-  .daynav{position:sticky;top:64px;z-index:25;background:rgba(6,12,23,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--card-b)}
-  .daynav .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
-  .daynav::-webkit-scrollbar{display:none}
-  .daynav a{flex:0 0 auto;padding:14px 20px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;color:var(--muted);text-decoration:none;white-space:nowrap;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid transparent;transition:.18s}
-  .daynav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
-
-  /* ── СЕКЦИИ ── */
-  section.block{padding:64px 0;border-bottom:1px solid var(--line);scroll-margin-top:130px}
-  .kicker{font-size:10px;text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);font-weight:700;font-family:'Inter',sans-serif;margin-bottom:8px}
-  section.block h2{font-size:34px;color:#fff;margin-bottom:10px}
-  p{margin:14px 0;color:var(--ink)}
-  .pull{background:var(--gold-g);border-left:3px solid var(--gold);padding:18px 22px;border-radius:0 14px 14px 0;font-style:italic;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5;margin:26px 0}
-
-  /* ── КНОПКИ ── */
-  .btn{cursor:pointer;border:none;border-radius:12px;padding:14px 26px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:var(--accent2);color:#fff;transition:.18s;letter-spacing:.2px}
-  .btn:hover{filter:brightness(1.18)}
-  .btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--card-b)}
-  .btn.ghost:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.2)}
-  .btn.gold{background:linear-gradient(135deg,var(--gold),#b8882b);color:#1a0f00;box-shadow:0 4px 20px rgba(201,168,76,.25)}
-  .btn.gold:hover{filter:brightness(1.1);box-shadow:0 6px 28px rgba(201,168,76,.4)}
-  .btn:active{transform:translateY(1px)}
-  .pulse{animation:pulse .9s ease-in-out infinite}
-  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-
-  /* ── КАРТОЧКИ ── */
-  .card{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:20px 22px;margin:16px 0;backdrop-filter:blur(6px)}
-
-  /* ── КВИЗ ── */
-  .opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:13px 16px;margin:8px 0;cursor:pointer;font-size:15px;color:var(--ink);font-family:'Inter',sans-serif;transition:.16s}
-  .opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
-  .opt.correct{background:rgba(40,120,60,.18);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
-  .opt.wrong{background:rgba(180,40,40,.13);border-color:#c0453f;color:#f08080}
-  .exp{margin-top:10px;font-size:14px;background:var(--gold-g);border-radius:10px;padding:12px 14px;display:none;color:var(--gold-l)}
-  .exp.show{display:block}
-
-  /* ── ИТОГ ДНЯ ── */
-  .day-result{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:22px 24px;max-width:460px}
-  .dr-rank{font-family:'Playfair Display',Georgia,serif;font-size:28px;color:var(--gold-l);font-weight:700}
-  .dr-score{font-size:16px;margin:4px 0 12px;color:var(--ink)}.dr-score span{color:var(--muted);font-size:14px}
-  .dr-bar{height:8px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden}
-  .dr-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--gold));transition:width .6s cubic-bezier(.2,.7,.2,1)}
-  .dr-note{margin-top:12px;font-size:14px;color:var(--muted)}
-
-  /* ── РЕКЛАМНЫЕ СЛОТЫ ── */
-  .ad-slot{position:relative;margin:26px 0;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:14px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
-  .ad-slot .lbl{position:absolute;top:7px;right:12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.15);font-family:'Inter',sans-serif}
-  .ad-slot .ph-txt{font-size:12px;max-width:80%;color:rgba(255,255,255,.18)}
-  .ad-slot.billboard{min-height:108px}
-  .adband{background:transparent;border-bottom:none}
-
-  footer{padding:40px 0 80px;color:rgba(255,255,255,.2);font-size:12px;text-align:center;font-family:'Inter',sans-serif;letter-spacing:.5px}
-  .crumbs{background:rgba(6,12,23,.6);border-bottom:1px solid var(--card-b);font-family:'Inter',sans-serif;font-size:12.5px}
-  .crumbs .wrap{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
-  .crumbs a{color:var(--gold-l);text-decoration:none;white-space:nowrap}
-  .crumbs a:hover{text-decoration:underline}
-  .crumbs .sep{color:var(--muted);opacity:.6}
-  .crumbs .here{color:var(--muted);white-space:nowrap}
-
-
-  /* ── ШАПКА: четыре строки по museum-core §6-бис ── */
-  header.top{display:block;text-align:center;padding:10px 12px 8px;height:auto;position:relative}
-  header.top .b1{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:15px;letter-spacing:.5px;color:#fff}
-  header.top .b2{font-size:11px;color:var(--muted);margin-top:2px}
-  header.top .b3{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px}
-  header.top .b4{font-size:12.5px;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-style:italic}
-  header.top .score{position:absolute;right:12px;top:10px}
-  .daynav{top:0}
-  .hero-scene{height:38vh;min-height:250px;max-height:400px}
-  @media(max-width:680px){.hero-lead h1{font-size:31px}}
-  .hero-scene img.scene{object-fit:cover;object-position:50% 50%}
-  .date-origin{font-size:13px;color:#9fb4c8;margin:-6px 0 12px;max-width:62ch}
-  .hero-lead .hook{color:#c6d8e8;max-width:62ch}
-  .hero-under{background:linear-gradient(180deg,#060d18,#060c17);padding:4px 0 22px}
-  .stamp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(125,200,255,.28);margin-top:14px}
-  .stamp>div{padding:11px 12px;border-left:1px solid rgba(125,200,255,.16);min-width:0}
-  .stamp>div:first-child{border-left:0}
-  .stamp .v{font-size:clamp(15px,3.4vw,21px);font-weight:700;color:#8fd3ff;line-height:1.1;overflow-wrap:anywhere}
-  .stamp .k{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#8fa5b9;margin-top:5px}
-  @media(max-width:600px){.stamp{grid-template-columns:repeat(2,minmax(0,1fr))}.stamp>div:nth-child(3){border-left:0}.stamp>div:nth-child(n+3){border-top:1px solid rgba(125,200,255,.16)}}
-
-  /* ── ЛЕНТА УДАРОВ (museum-inventions, вариант А; museum-core §5-бис) ── */
-  .udary{list-style:none;margin:18px 0 0;padding:0;counter-reset:u}
-  .udary>li{border-top:1px solid var(--line);padding:4px 0}
-  .udary details>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr;gap:10px;padding:12px 0;font-size:17px;line-height:1.55;color:var(--ink)}
-  .udary details>summary::-webkit-details-marker{display:none}
-  .udary details>summary::before{counter-increment:u;content:counter(u);font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:20px;color:var(--gold);line-height:1.3}
-  .udary .more-lbl{display:block;grid-column:2;font-size:12.5px;color:var(--gold-l);letter-spacing:.3px;margin-top:4px}
-  .udary .more-lbl::after{content:' ▾'}
-  .udary details[open] .more-lbl::after{content:' ▴'}
-  .udary details[open] .more-lbl .o{display:none}
-  .udary details:not([open]) .more-lbl .c{display:none}
-  .udary summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
-  .udary .det{margin:0 0 14px 44px;padding:12px 16px;background:rgba(255,255,255,.035);border-left:2px solid rgba(201,168,76,.45);border-radius:0 10px 10px 0;font-size:15px;color:#d5e0ea}
-  .udary .det p{margin:8px 0}
-  .udary .tag{display:inline-block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#1a0f00;background:var(--gold-l);border-radius:6px;padding:1px 7px;margin-right:6px}
-  .udary .find{border-left:3px solid var(--gold);padding-left:8px}
-  figure.fig{margin:18px 0}
-  figure.fig img{max-width:100%;height:auto;border-radius:10px;display:block}
-  figure.fig figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
-  .src-note{font-size:12px;color:#8fa5b9}
-
-  /* ── ТИГЕЛЬ АНОСОВА (главное предметное действие) ── */
-  .lab{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
-  .lab-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
-  .lab-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
-  .seg{cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;min-height:44px}
-  .seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
-  .seg:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .lab-stage{position:relative;margin-top:12px}
-  .lab-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#1c2530}
-  .lab-cap{font-size:12px;color:#8fa5b9;margin-top:6px}
-  .lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
-  .lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
-  .lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
-  .lab-found{font-size:13px;color:var(--muted);margin-top:8px}
-  .lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-  .micro{display:none;margin-top:14px;text-align:center}
-  .micro canvas{width:min(280px,80%);height:auto;border-radius:50%;border:6px solid #2b3642;box-shadow:0 0 0 2px rgba(201,168,76,.5)}
-  .micro.show{display:block}
-  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
-
-  /* ── ГРАНИЦА ПЕРВЕНСТВА ── */
-  .border-box{background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.3);border-radius:14px;padding:16px 18px}
-  .border-box b{color:#8fd3ff}
-  .ctx{width:100%;border-collapse:collapse;margin-top:14px;font-size:14.5px}
-  .ctx th,.ctx td{text-align:left;padding:9px 8px;border-top:1px solid var(--line);vertical-align:top}
-  .ctx th{color:var(--gold-l);font-weight:600;font-size:12.5px;letter-spacing:.5px}
-  .quiz-q{margin:18px 0 6px;font-weight:600}
-  .sources a{color:var(--gold-l)}
-  .sources li{margin:6px 0;font-size:14px;color:#c8d6e2}
-  @media(max-width:600px){header.top{padding:8px 64px 6px}header.top .score{top:8px;right:8px;padding:4px 10px;font-size:12px}header.top .b3{margin-top:3px}
-    .hero-scene{height:26vh;min-height:200px;max-height:260px}.date-origin{font-size:12px;margin:-8px 0 8px}.hero-lead{padding:18px 0 26px}.hero-lead .date-chip{margin-bottom:12px}}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
-
-  .hero-scene{background:#1d1d1b}
-  .hero-scene img.scene{object-fit:contain}
-  /* ── КРЫЛО В ПОТОКЕ: модель угла атаки и срыва ── */
-  .press{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
-  .press-stage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-  .press-stage figure{margin:0}
-  .press-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#f3ecd9}
-  .press-stage figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
-  @media(max-width:600px){.press-stage{grid-template-columns:1fr}}
-  .kassa{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
-  .kassa button{cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:8px;color:var(--ink);font:inherit;font-size:14px;min-height:44px}
-  .kassa button canvas{width:100%;height:auto;display:block;border-radius:8px;background:#f3ecd9;margin-bottom:6px}
-  .kassa button[disabled]{cursor:default}
-  .kassa button.correct{border-color:#3f9b52;background:rgba(40,120,60,.18)}
-  .kassa button.wrong{border-color:#c0453f;background:rgba(180,40,40,.13)}
-  /* ── блоки дня по эталону 01-05 ── */
-  .q{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 22px;margin:12px 0}
-  .q h3{margin:0 0 6px;font-size:19px;color:#fff;font-family:'Playfair Display',Georgia,serif}
-  .q h3 em{display:block;font-style:normal;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;margin-bottom:5px;font-weight:700}
-  .q p{margin:0;color:var(--muted);font-size:14.5px}
-  .deepd{background:rgba(255,255,255,.02);border:1px solid var(--card-b);border-radius:16px;padding:16px 22px}
-  .deepd summary{cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;list-style:none}
-  .deepd summary::-webkit-details-marker{display:none}
-  .deepd[open] summary{margin-bottom:12px;opacity:.7}
-  .deepd h3{font-family:'Playfair Display',Georgia,serif;color:var(--gold-l);font-size:20px;margin:20px 0 6px}
-  .src{font-size:12px;color:var(--muted);opacity:.8;margin-top:14px}
-  .chip{cursor:pointer;background:rgba(255,255,255,.05);border:1px solid var(--card-b);border-radius:20px;padding:7px 16px;margin:4px 5px 4px 0;font-size:13px;display:inline-block;color:var(--muted);font-family:'Inter',sans-serif;transition:.16s}
-  .chip:hover{border-color:var(--gold);color:var(--gold)}
-  .msg{margin:8px 0;padding:12px 16px;border-radius:14px;max-width:88%;font-size:15px}
-  .msg.you{background:rgba(45,140,191,.18);border:1px solid rgba(45,140,191,.28);margin-left:auto;text-align:right;color:#a8d4f0}
-  .msg.inv{background:rgba(255,255,255,.05);border:1px solid var(--card-b);color:var(--ink)}
-  .fork-opt{background:var(--card);border:1px solid var(--card-b);border-radius:14px;padding:16px 18px;margin:10px 0;cursor:pointer;transition:.18s;font-size:15px}
-  .fork-opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
-  .fork-opt.chosen{border-color:var(--gold);background:var(--gold-g)}
-  #forkReal.exp{display:none}
-  .wing-range{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
-  .wing-range input{flex:1;min-width:200px;accent-color:#c9a84c;min-height:44px}
-  .wing-range output{font-weight:700;color:var(--gold-l);min-width:64px}
-  .formula{display:none;margin-top:12px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.35);border-radius:12px;padding:12px 16px;font-size:15px}
-  .formula.show{display:block}
-  .formula b{font-family:'Playfair Display',Georgia,serif;font-size:20px;color:var(--gold-l)}
-  .fig{margin:20px 0 4px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
-  .fig img{width:min(300px,100%);height:auto;border-radius:12px;border:1px solid var(--card-b)}
-  .fig figcaption{flex:1;min-width:220px;font-size:13.5px;color:var(--muted)}
-</style>
+<link rel="stylesheet" href="../../assets/izobreteniya-den-01-17.css">
 <meta name="description" content="Жуковский вывел, откуда берётся подъёмная сила, — и авиация из авантюры стала наукой.">
 <link rel="canonical" href="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-17jan-zhukovsky.html">
 <meta property="og:type" content="article">
@@ -297,20 +66,20 @@
 <div class="hero-under">
   <div class="wrap">
     <div class="stamp">
-      <div><div class="v">1906</div><div class="k">теорема о подъёмной силе</div></div>
-      <div><div class="v">1902</div><div class="k">аэродинамическая труба в университете</div></div>
-      <div><div class="v">1918</div><div class="k">по его предложению — ЦАГИ</div></div>
-      <div><div class="v">1920</div><div class="k">«отец русской авиации»</div></div>
+      <div><div class="v">1891</div><div class="k">мёртвая петля — на бумаге</div></div>
+      <div><div class="v">1904</div><div class="k">первый в Европе аэродинамический институт</div></div>
+      <div><div class="v">1906</div><div class="k">подъёмная сила любого крыла</div></div>
+      <div><div class="v">1918</div><div class="k">по его настоянию — ЦАГИ</div></div>
     </div>
+  </div>
   </div>
 </div>
 
 <nav class="daynav" aria-label="Разделы дня">
   <div class="wrap">
-    <a href="#story">Теорема</a>
-    <a href="#games">Крыло в потоке</a>
-    <a href="#fakty">Пять фактов</a>
-    <a href="#more">Ещё о Жуковском</a>
+    <a href="#story">Пять фактов</a>
+    <a href="#truba">Труба</a>
+    <a href="#games">Наугад или по формуле</a>
     <a href="#pervenstvo">Что он сделал</a>
     <a href="#quiz">Викторина</a>
     <a href="#sources">Источники</a>
@@ -322,21 +91,48 @@
 
 <section class="block" id="story">
   <div class="wrap">
-    <div class="kicker">История открытия</div>
-    <h2>Вихрь, который держит крыло</h2>
+    <div class="kicker">Пять фактов о Жуковском</div>
+    <h2>Посчитал раньше, чем полетели</h2>
     <ol class="udary">
-      <li><details><summary><span>Самолёт держит в воздухе невидимый вихрь, «прицепленный» к крылу: Жуковский вывел его формулу — и подъёмную силу впервые посчитали на бумаге.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+      <li><details><summary><span>Немец Кутта посчитал подъёмную силу для одного частного крыла — Жуковский в 1906-м вывел её для любого.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>Воздух, обтекая крыло, не просто течёт мимо: вокруг крыла он закручивается. Жуковский назвал это присоединённым вихрем. Подъёмная сила, доказал он, равна произведению плотности воздуха, скорости потока и силы этой закрутки — циркуляции — и направлена поперёк потока.</p>
-          <p>Раньше подъёмную силу узнавали, разбивая аппараты. После Жуковского её можно было рассчитать до того, как крыло построено.</p>
-          <p>Идея пришла осенью 1904 года, доклад «О присоединённых вихрях» Жуковский прочитал в Московском математическом обществе 15 (28) ноября 1905 года, напечатана работа в 1906-м.</p>
-          <p class="src-note">Источник: Математическая энциклопедия, «Жуковского теорема»; «Коммерсантъ», «Вихрь, поднявший на крыло птиц и людей»; Научно-мемориальный музей Н. Е. Жуковского, «Биография».</p>
+          <p>Кутта разобрал частный случай — изогнутую пластину. Общую теорему о подъёмной силе в 1906 году доказал Жуковский, по ней считают крыло любой формы.</p>
+          <p class="src-note">Источник: «Наука и жизнь», «Центр авиационной науки» — <a href="https://www.nkj.ru/archive/articles/14886/" rel="noopener" target="_blank">nkj.ru/archive/articles/14886</a></p>
         </div></details></li>
-      <li><details><summary><span>Формулу Жуковский проверял в собственных трубах — первой в России, 1902 года, — и в Кучине, где в 1904-м заработал первый в Европе аэродинамический институт.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+      <li><details><summary><span>Мёртвую петлю Жуковский рассчитал на бумаге в 1891-м — Нестеров сделал её в небе через 22 года.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>1902 год: в механической лаборатории Московского университета под руководством Жуковского заработала аэродинамическая труба закрытого типа — первая в России и одна из первых в мире.</p>
-          <p>Ещё через два года, в 1904-м, в подмосковном Кучине открылся аэродинамический институт — первый в Европе, и тоже под его руководством. Здесь, на прогулке у лаборатории, Жуковскому и пришла главная идея.</p>
-          <p class="src-note">Источник: РИА Новости, «Биография Николая Жуковского», 17.01.2017; «Узнай Москву»; Научно-мемориальный музей Н. Е. Жуковского, «Биография».</p>
+          <p>В работе «О парении птиц» он впервые вычислил возможные фигуры полёта, в том числе мёртвую петлю. В 1913 году Пётр Нестеров первым в мире выполнил её на «Ньюпоре-4».</p>
+          <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Биография» — <a href="https://zhukovskymuseum.ru/biography/" rel="noopener" target="_blank">zhukovskymuseum.ru/biography</a>; «Родина», «Пять главных открытий „отца русской авиации“», 16.03.2014 — <a href="https://rodina-history.ru/2014/03/16/zukovskiy-site.html" rel="noopener" target="_blank">rodina-history.ru</a></p>
+        </div></details></li>
+      <li><details><summary><span>Все истребители Великой Отечественной сперва «летали» в трубах ЦАГИ — института, который пробил Жуковский.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>В 1940–1945 годах через большие трубы ЦАГИ прошли все опытные и серийные истребители советских КБ. В Т-101, самой большой дозвуковой трубе Европы (24×14 м), испытывали почти все советские и российские самолёты.</p>
+          <p class="src-note">Источник: ЦАГИ, «100-летие ЦАГИ в истории: аэродинамические трубы Т-101 и Т-104» — <a href="https://www.tsagi.ru/pressroom/news/4515/" rel="noopener" target="_blank">tsagi.ru/pressroom/news/4515</a>; «Российская газета», 01.03.2023 — <a href="https://rg.ru/2023/03/01/samaia-bolshaia-v-evrope-aerodinamicheskaia-truba-gde-ispytyvaiut-samolety-otkroetsia-dlia-turistov.html" rel="noopener" target="_blank">rg.ru</a></p>
+        </div></details></li>
+      <li><details><summary><span>В кружке Жуковского студент Туполев впервые полетел на планёре, который строил сам, — потом создал больше 100 самолётов.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>В 1909 году студент МВТУ Андрей Туполев пришёл в воздухоплавательный кружок Жуковского; в 1910-м впервые полетел на планёре, который строил сам с товарищами. Под его руководством потом создано более 100 типов самолётов.</p>
+          <p class="src-note">Источник: РИА Новости, «Биография Андрея Туполева» — <a href="https://ria.ru/20131110/975497582.html" rel="noopener" target="_blank">ria.ru/20131110/975497582</a>; «Коммерсантъ», «Вихрь, поднявший на крыло птиц и людей» (более 100 типов) — <a href="https://www.kommersant.ru/doc/2865648" rel="noopener" target="_blank">kommersant.ru/doc/2865648</a></p>
+        </div></details></li>
+      <li><details><summary><span>Первый в Европе аэродинамический институт открылся в 1904 году под Москвой — и вёл его Жуковский.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Институт в Кучине построил на свои деньги Дмитрий Рябушинский и позвал руководить Жуковского. Там же, гуляя в поле, Жуковский пришёл к идее присоединённого вихря.</p>
+          <p class="src-note">Источник: «Узнай Москву», Н. Е. Жуковский — <a href="https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/" rel="noopener" target="_blank">um.mos.ru</a>; «Наука и жизнь» (Рябушинский, Кучино) — <a href="https://www.nkj.ru/archive/articles/14885/" rel="noopener" target="_blank">nkj.ru/archive/articles/14885</a></p>
+        </div></details></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="truba">
+  <div class="wrap">
+    <div class="kicker">Вопрос, который задают первым</div>
+    <h2>Изобрёл ли Жуковский аэродинамическую трубу?</h2>
+    <ol class="udary udary-odin">
+      <li><details><summary><span>Трубу изобрёл не Жуковский — но трубы, в которых испытывают все наши самолёты, стоят в институте его имени.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Труба Жуковского 1902 года в Московском университете — первая в России и «одна из первых в мире» (РИА Новости), «одна из первых в Европе» («Узнай Москву»). Первенство у него другое: в 1904 году он возглавил в Кучине первый в Европе аэродинамический институт.</p>
+          <p>Из Кучина вырос ЦАГИ — создан в 1918 году по настоянию Жуковского и носит его имя. Сегодня все наши самолёты продувают в трубах ЦАГИ: в Т-101, самой большой дозвуковой трубе Европы, испытывали «практически все советские и российские летательные аппараты».</p>
+          <p class="src-note">Источник: РИА Новости, «Биография Николая Жуковского», 17.01.2017 — <a href="https://ria.ru/20170117/1485561584.html" rel="noopener" target="_blank">ria.ru/20170117/1485561584</a>; «Узнай Москву» — <a href="https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/" rel="noopener" target="_blank">um.mos.ru</a>; «Российская газета» со ссылкой на ЦАГИ, 01.03.2023 — <a href="https://rg.ru/2023/03/01/samaia-bolshaia-v-evrope-aerodinamicheskaia-truba-gde-ispytyvaiut-samolety-otkroetsia-dlia-turistov.html" rel="noopener" target="_blank">rg.ru</a></p>
         </div></details></li>
     </ol>
     <figure class="fig">
@@ -349,87 +145,37 @@
 <section class="block" id="games">
   <div class="wrap">
     <div class="kicker">Главное действие · модель</div>
-    <h2>Поверни крыло — и поймай вихрь</h2>
-    <p style="max-width:62ch">Перед тобой крыло в потоке воздуха. Поворачивай его ползунком: чем круче угол, тем сильнее закрутка вокруг крыла и тем выше поднимается самолётик. Но у крыла есть предел. Перейдёшь его — поток над крылом сорвётся, вихрь уплывёт, и самолётик начнёт падать. Успей вернуть крыло, пока он не коснулся земли.</p>
-    <div class="press" id="press">
-      <canvas id="cvWing" width="640" height="320" role="img" aria-label="Модель: профиль крыла в потоке воздуха, стрелка подъёмной силы и самолётик, который поднимается или падает" style="width:100%;height:auto;display:block;border-radius:10px;background:#0b1a2a"></canvas>
+    <h2>Подними пилота: наугад — или по формуле</h2>
+    <p class="games-lead">До 1906 года крыло подбирали на глаз и проверяли падением. Попробуй так же: у каждого планёра свой пилот, угол крыла ставишь сам, а силы крыла не видно. Разобьёшь пару планёров — включи «Глазами Жуковского».</p>
+    <div class="press zh-lab" id="press">
+      <div class="zh-mode" role="group" aria-label="Как подбирать угол">
+        <button class="zh-seg on" type="button" id="modeBlind" aria-pressed="true">Наугад, как до 1906-го</button>
+        <button class="zh-seg" type="button" id="modeZh" aria-pressed="false">Глазами Жуковского</button>
+      </div>
+      <div class="zh-stat">
+        <div class="zh-pilot">Пилот: <b id="pilotKg">70</b> кг</div>
+        <div class="zh-crash" id="crashBox">Разбито планёров: <b id="crashN">0</b> <span class="zh-icons" id="crashIcons" aria-hidden="true"></span></div>
+      </div>
+      <canvas id="cvWing" class="zh-cv" width="640" height="340" role="img" aria-label="Модель: планёр с пилотом на склоне холма; после старта он летит, клюёт носом или сваливается и разбивается о землю"></canvas>
+      <ul class="zh-legend" id="zhLegend" hidden>
+        <li><i class="zl-up"></i>подъёмная сила крыла</li>
+        <li><i class="zl-down"></i>вес пилота с планёром</li>
+        <li><i class="zl-vih"></i>присоединённый вихрь</li>
+      </ul>
       <div class="wing-range">
         <label for="ugol">Угол крыла</label>
-        <input type="range" id="ugol" min="0" max="25" step="1" value="2">
-        <output id="ugolTxt" for="ugol">2°</output>
+        <input type="range" id="ugol" min="0" max="20" step="0.5" value="4">
+        <output id="ugolTxt" for="ugol">4°</output>
       </div>
       <div class="lab-btns">
-        <button class="btn ghost" type="button" id="wingReset">Начать заново</button>
+        <button class="btn gold zh-go" type="button" id="wingGo">В воздух</button>
       </div>
-      <div class="formula" id="formula" aria-live="polite"><b>Y = ρ · V · Γ</b> — подъёмная сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию Γ. <b style="font-size:16px">Вихрь ушёл — силы нет.</b> Это Жуковский и чертил мелом на доске.</div>
-      <div class="lab-cap">Модель, а не расчёт: предельный угол и высота полёта заданы программой, чтобы показать сам закон.</div>
-      <div class="lab-msg" id="wingMsg" aria-live="polite">Подними угол крыла — и посмотри, что станет с самолётиком.</div>
-      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: когда крыло наклоняют круче, закрутка воздуха вокруг него — циркуляция — растёт, и вместе с ней растёт подъёмная сила: по Жуковскому, она равна плотности воздуха, умноженной на скорость потока и на циркуляцию. Если угол слишком крутой, поток над крылом срывается, вихрь уходит назад, циркуляция пропадает — и подъёмная сила исчезает. Самолёт сваливается.</div></noscript>
+      <div class="formula" id="formula" aria-live="polite"><b>Y = ρ · V · Γ</b> — подъёмная сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию Γ. По этой формуле Жуковского угол считают до полёта, а не подбирают обломками.</div>
+      <div class="lab-msg" id="wingMsg" aria-live="polite">Пилот 70 кг ждёт на холме. Поставь угол крыла на глаз и жми «В воздух».</div>
+      <div class="lab-cap">Модель, а не расчёт: вес пилотов, предел угла 15° и запас ±6% заданы программой, чтобы показать сам закон. Сколько планёров разбили до 1906 года на самом деле, игра не утверждает.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: наугад угол крыла под пилота не угадать — мало угла, и планёр клюёт носом, много — нос задирается, поток срывается, планёр сваливается. По теореме Жуковского подъёмную силу считают заранее: она равна плотности воздуха, умноженной на скорость потока и на циркуляцию, — и угол под пилота ставят с первого раза.</div></noscript>
     </div>
-    <p class="src-note" style="margin-top:10px">Правило модели — теорема Жуковского: Математическая энциклопедия, «Жуковского теорема».</p>
-  </div>
-</section>
-
-<section class="block" id="fakty">
-  <div class="wrap">
-    <div class="kicker">Пять фактов о Жуковском</div>
-    <h2>Неудачник-инженер, ставший отцом авиации</h2>
-    <ol class="udary">
-      <li><details><summary><span>Будущий «отец русской авиации» родился 17 января 1847 года во владимирской глуши, в маленьком имении Орехово, — растила его няня.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Отец, Егор Иванович, — небогатый помещик с Полтавщины, инженер путей сообщения, строил Нижегородскую железную дорогу. Мальчика растила няня Арина Михайловна, а первый учитель предсказывал ему «блестящее будущее».</p>
-          <p>Дом в Орехове, где он родился, с 1937 года — музей.</p>
-          <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Семья» и «Биография»; РИА Новости, 17.01.2017.</p>
-        </div></details></li>
-      <li><details><summary><span>Инженера, как отец, из него не вышло: Петербургский институт путей сообщения он не одолел — и пошёл учить физике гимназисток.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Семья жила бедно. Гимназию он окончил с серебряной медалью в 1864 году, а в Московский университет пошёл потому, что Москва дешевле Петербурга. Блестящих способностей там, по словам биографов, «не показал».</p>
-          <p>Попытка выучиться на инженера путей сообщения — профессию отца — «закончилась неудачей». С 1870 года Жуковский преподаёт физику в женской гимназии.</p>
-          <p class="src-note">Источник: «Коммерсантъ», «Вихрь, поднявший на крыло птиц и людей»; Научно-мемориальный музей Н. Е. Жуковского, «Биография».</p>
-        </div></details></li>
-      <li><details><summary><span>В 1895-м Жуковский сам поехал в Берлин к «летающему человеку» Лилиенталю — и увёз его планёр, который и сегодня стоит в Москве.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>В Берлине Жуковский познакомился с Лилиенталем, смотрел его полёты и купил серийный планёр.</p>
-          <p>Этот планёр — в экспозиции Научно-мемориального музея Н. Е. Жуковского в Москве.</p>
-          <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Планёр Отто Лилиенталя»; Государственный музей истории космонавтики, 17.01.2026.</p>
-        </div></details></li>
-      <li><details><summary><span>В Первую мировую он учил военных лётчиков, а 1 декабря 1918 года добился создания ЦАГИ — главного авиационного института страны.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>С 1914 по 1919 год Жуковский руководил в Москве теоретическими курсами авиации — через них прошли пилоты Первой мировой. В доме, где сейчас его музей, с 1915 года жили лётчики и шли занятия.</p>
-          <p>В 1918 году по его предложению появился Центральный аэрогидродинамический институт. А в 1920-м, в 73 года, Жуковский стал первым ректором Института инженеров Красного Воздушного флота — будущей Военно-воздушной инженерной академии.</p>
-          <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Биография»; «Узнай Москву»; Государственный музей истории космонавтики, 17.01.2026.</p>
-        </div></details></li>
-      <li><details><summary><span>В декабре 1920-го Ленин подписал постановление об «отце русской авиации» — а 17 марта 1921 года Жуковского не стало.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Жена, Надежда Сергеевна, умерла в 1904 году. Дочь Елена, которая вела его дом и сама училась на математическом отделении Высших женских курсов, умерла в 1920-м от болезни лёгких — ей было 26 лет. Голод, разруха и эта смерть подорвали его.</p>
-          <p>3 декабря 1920 года Совнарком отметил 50 лет научной деятельности «отца русской авиации»: оклад, премия его имени, издание трудов. Через три с половиной месяца, 17 марта 1921 года, Жуковского не стало. Похоронен в Донском монастыре. Сын Сергей пережил отца на три года.</p>
-          <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Семья»; «Узнай Москву»; РИО, Электронная библиотека исторических документов, постановление СНК от 3 декабря 1920 года.</p>
-        </div></details></li>
-    </ol>
-  </div>
-</section>
-
-<section class="block" id="more">
-  <div class="wrap">
-    <div class="kicker">Ещё о Жуковском</div>
-    <h2>От птиц к самолётам</h2>
-    <ol class="udary">
-      <li><details><summary><span>Самолётов ещё не было, а Жуковский уже разбирал полёт: в 1891 году он написал работу «О парении птиц».<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Начинал он с птиц: как держится в воздухе парящая птица? Через полтора десятка лет Жуковский ответит на тот же вопрос для крыла — и ответ станет формулой.</p>
-          <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Биография».</p>
-        </div></details></li>
-      <li><details><summary><span>Член-корреспондент академии с 1894 года, в 1900-м Жуковский снял свою кандидатуру в академики — лишь бы не бросать преподавание в Москве.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Членом-корреспондентом Петербургской академии наук Жуковский стал в 1894 году. А в 1900 году снял кандидатуру в академики, «не желая оставлять преподавание» в Москве.</p>
-          <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Биография»; «Узнай Москву».</p>
-        </div></details></li>
-      <li><details><summary><span>ЦАГИ получил имя Жуковского в 1921 году — в год смерти основателя — и носит его до сих пор.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Институт, созданный по его предложению в 1918 году, назвали именем основателя в 1921-м, в год его смерти. С тех пор главный авиационный институт страны — институт Жуковского.</p>
-          <p class="src-note">Источник: РИА Новости, «Биография Николая Жуковского», 17.01.2017.</p>
-        </div></details></li>
-    </ol>
+    <p class="src-note">Правило модели — теорема Жуковского: Математическая энциклопедия, «Жуковского теорема».</p>
   </div>
 </section>
 
@@ -438,8 +184,8 @@
     <div class="kicker">Проверка факта</div>
     <h2>Что именно сделал Жуковский</h2>
     <div class="border-box">
-      <p style="margin-top:0"><b>Что он сделал:</b> вывел и доказал теорему о подъёмной силе крыла — сила равна произведению плотности воздуха, скорости потока и циркуляции. Работа «О присоединённых вихрях» вышла в 1906 году. Трубы, институт в Кучине и ЦАГИ довершили дело: аэродинамика стала наукой расчёта, а не проб и разбитых аппаратов.</p>
-      <p style="margin-bottom:0"><b>Имя в мировой науке:</b> в Германии к той же формуле независимо подошёл математик Мартин Кутта — и в мире её называют теоремой Кутты — Жуковского. Русская фамилия стоит в главной формуле авиации навсегда.</p>
+      <p><b>Что он сделал:</b> вывел и доказал теорему о подъёмной силе крыла — сила равна произведению плотности воздуха, скорости потока и циркуляции. Работа «О присоединённых вихрях» вышла в 1906 году. Трубы, институт в Кучине и ЦАГИ довершили дело: аэродинамика стала наукой расчёта, а не проб и разбитых аппаратов.</p>
+      <p><b>Имя в мировой науке:</b> в Германии к той же формуле независимо подошёл математик Мартин Кутта — и в мире её называют теоремой Кутты — Жуковского. Русская фамилия стоит в главной формуле авиации навсегда.</p>
     </div>
     <table class="ctx">
       <thead><tr><th scope="col">Где</th><th scope="col">Что</th><th scope="col">Когда</th></tr></thead>
@@ -454,24 +200,11 @@
   </div>
 </section>
 
-<!-- ── ТРУДНО ПОВЕРИТЬ ── -->
-<section class="block" id="trudno-poverit" style="background:rgba(6,12,23,.6)">
-  <div class="wrap">
-    <div class="kicker">Учёный и его время</div>
-    <h2 style="margin-bottom:6px">В это трудно поверить</h2>
-    <div class="q"><h3><em>Факт 1</em>Главная формула авиации пришла на прогулке в поле</h3><p>Праздничный день, 1 октября 1904 года. Жуковский приехал в Кучинскую аэродинамическую лабораторию, пошёл гулять в поле — и пришёл, как пишет «Коммерсантъ», «к гениальной по простоте идее о присоединённых вихрях»: крыло держит невидимый вихрь, который движется вместе с ним.</p></div>
-    <div class="q"><h3><em>Факт 2</em>Несостоявшийся инженер создал школу авиаинженеров</h3><p>В молодости его попытка выучиться в Петербургском институте путей сообщения кончилась неудачей. А в старости он основал ЦАГИ и стал первым ректором академии, где до сих пор учат авиационных инженеров.</p></div>
-    <div class="q"><h3><em>Факт 3</em>В голодный 1920-й профессору назначили оклад сто тысяч рублей</h3><p>Постановление Совнаркома 3 декабря 1920 года за подписью Ленина: освободить Жуковского «от обязательного чтения лекций», оставив ему право объявлять курсы важнейшего научного содержания, и назначить оклад «ста тысяч (100 000) рублей». Через пять дней его напечатали «Известия».</p></div>
-    <div class="q"><h3><em>Факт 4</em>Планёр Лилиенталя пережил их обоих</h3><p>Берлин, 1895 год: Жуковский смотрит полёты Отто Лилиенталя и увозит в Москву его планёр. Этот планёр и сегодня стоит в мемориальном музее Жуковского.</p></div>
-    <div class="q"><h3><em>Факт 5</em>Его первая труба — одна из первых в мире</h3><p>1902 год: в механической лаборатории Московского университета под руководством Жуковского заработала аэродинамическая труба закрытого типа — первая в России и одна из первых в мире. Через два года в Кучине появился первый в Европе аэродинамический институт.</p></div>
-  </div>
-</section>
-
 <!-- ── РАЗБОР ── -->
 <section class="block" id="razbor">
   <div class="wrap">
     <div class="kicker">Разбор</div>
-    <h2 style="margin-bottom:10px">Для тех, кто смотрит внимательно</h2>
+    <h2>Для тех, кто смотрит внимательно</h2>
     <details class="deepd">
       <summary>Четыре сюжета подробно — развернуть</summary>
       <h3>Что такое циркуляция — на пальцах</h3>
@@ -483,7 +216,7 @@
       <h3>Почему крыло сваливается</h3>
       <p>Теорема Жуковского объясняет и опасность: подъёмная сила держится, пока держится закрутка вокруг крыла. Если поднять нос слишком круто, поток над крылом срывается, вихрь уносит назад — и сила пропадает. Именно это ты видел в модели.</p>
     </details>
-    <div class="src">Источники: zhukovskymuseum.ru · kommersant.ru · docs.historyrussia.org · gufo.me · ria.ru · um.mos.ru · gmik.ru</div>
+    <div class="src">Источники: zhukovskymuseum.ru · nkj.ru · rodina-history.ru · tsagi.ru · rg.ru · kommersant.ru · docs.historyrussia.org · gufo.me · ria.ru · um.mos.ru · gmik.ru</div>
   </div>
 </section>
 
@@ -491,7 +224,7 @@
   <div class="wrap">
     <div class="kicker">Проверь себя · 5 вопросов</div>
     <h2>Викторина</h2>
-    <p style="color:var(--muted);max-width:62ch">На каждый вопрос — одна попытка. После ответа покажем объяснение.</p>
+    <p>На каждый вопрос — одна попытка. После ответа покажем объяснение.</p>
     <div id="quizBox"></div>
     <noscript><div class="noscript-box">Для викторины нужен JavaScript. Ответы: 1 — вихрь, присоединённый к крылу (циркуляция); 2 — на прогулке в поле у Кучинской лаборатории, 1 октября 1904 года; 3 — в 1906 году; 4 — планёр; 5 — ЦАГИ.</div></noscript>
   </div>
@@ -501,10 +234,10 @@
 <section class="block" id="mirovoy-kontekst">
   <div class="wrap">
     <div class="kicker">Контекст</div>
-    <h2 style="margin-bottom:6px">Что в это время делал мир</h2>
-    <p style="max-width:66ch">Тысяча девятьсот шестой. 27 апреля (10 мая) в Петербурге открылась I Государственная дума — первый парламент России; она проработала всего 72 дня. Страна спорит о власти и законе.</p>
-    <p style="max-width:66ch">А в Москве профессор Жуковский печатает работу «О присоединённых вихрях». Летать к этому времени уже пробуют — но крыло строят на глаз и проверяют падением. Формула, по которой силу крыла можно посчитать заранее, переводит это дело из смелых опытов в инженерный расчёт.</p>
-    <p style="max-width:66ch">Отсюда вывод, ради которого этот день стоит в календаре: <b style="color:var(--gold-l)">наукой авиация стала тогда, когда кто-то объяснил, почему крыло держит.</b> Объяснил это Жуковский.</p>
+    <h2>Что в это время делал мир</h2>
+    <p>Тысяча девятьсот шестой. 27 апреля (10 мая) в Петербурге открылась I Государственная дума — первый парламент России; она проработала всего 72 дня. Страна спорит о власти и законе.</p>
+    <p>А в Москве профессор Жуковский печатает работу «О присоединённых вихрях». Летать к этому времени уже пробуют — но крыло строят на глаз и проверяют падением. Формула, по которой силу крыла можно посчитать заранее, переводит это дело из смелых опытов в инженерный расчёт.</p>
+    <p>Отсюда вывод, ради которого этот день стоит в календаре: <b>наукой авиация стала тогда, когда кто-то объяснил, почему крыло держит.</b> Объяснил это Жуковский.</p>
     <p class="src-note">Источник: Президентская библиотека им. Б. Н. Ельцина, «Открылась I Государственная дума» — https://www.prlib.ru/history/619233</p>
   </div>
 </section>
@@ -514,95 +247,95 @@
   <div class="wrap">
     <div class="kicker">Поговори с изобретателем</div>
     <h2>Спроси Николая Жуковского</h2>
-    <p style="color:var(--muted)">Задай вопрос — ответит сам профессор.</p>
+    <p>Задай вопрос — ответит сам профессор.</p>
     <div id="starters"></div>
-    <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
-    <div style="display:flex;gap:10px;margin-top:12px">
-      <input id="chatInput" type="text" placeholder="Написать вопрос..." aria-label="Вопрос Николаю Жуковскому" style="flex:1;padding:12px 16px;font-size:15px">
-      <button class="btn gold" onclick="sendChat()">Отправить</button>
+    <div class="s17-9" id="chatBox"></div>
+    <div>
+      <input class="s17-11" id="chatInput" type="text" placeholder="Написать вопрос..." aria-label="Вопрос Николаю Жуковскому">
+      <button class="btn gold" type="button" id="chatSend">Отправить</button>
     </div>
-    <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы сформированы на основе документальных источников.</p>
+    <p>Ответы сформированы на основе документальных источников.</p>
   </div>
 </section>
 
 <!-- ── РАЗВИЛКА ── -->
-<section class="block" id="fork" style="background:rgba(45,140,191,.04)">
+<section class="block s17-13" id="fork">
   <div class="wrap">
     <div class="kicker">Твой выбор</div>
     <h2>А как поступил бы ты?</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">1904 год, Кучино. У тебя аэродинамическая лаборатория, а в мире — смельчаки, которые строят летательные аппараты наугад и разбиваются. Никто не может объяснить, почему крыло вообще держит. Ты на месте Жуковского — что делаешь?</p>
+    <p>1904 год, Кучино. У тебя аэродинамическая лаборатория, а в мире — смельчаки, которые строят летательные аппараты наугад и разбиваются. Никто не может объяснить, почему крыло вообще держит. Ты на месте Жуковского — что делаешь?</p>
     <div class="fork-opt">🛩 Строю аппараты и пробую, пока какой-нибудь не полетит</div>
     <div class="fork-opt">📐 Ищу закон: почему крыло держит — и как это посчитать</div>
     <div class="fork-opt">⏳ Жду, пока авиаторы сами разберутся на опыте</div>
-    <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Жуковский искал закон. 1 октября 1904 года на прогулке у Кучинской лаборатории он пришёл к идее присоединённых вихрей, в ноябре 1905-го доложил её в Московском математическом обществе, а в 1906-м напечатал. С этой формулой подъёмную силу крыла стало можно рассчитать до полёта.</div>
+    <div id="forkReal" class="exp s17-15"><b>Как было на самом деле.</b> Жуковский искал закон. 1 октября 1904 года на прогулке у Кучинской лаборатории он пришёл к идее присоединённых вихрей, в ноябре 1905-го доложил её в Московском математическом обществе, а в 1906-м напечатал. С этой формулой подъёмную силу крыла стало можно рассчитать до полёта.</div>
   </div>
 </section>
 
-<section class="block" id="theme-inventions" style="background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.15)">
+<section class="block s17-16" id="theme-inventions">
   <div class="wrap">
     <div class="kicker">Авиация · Русские первенства</div>
-    <h2 style="margin-bottom:6px">Что ещё русские изобрели первыми в теме «авиация»</h2>
-    <p style="color:var(--muted);margin-top:0;margin-bottom:16px;max-width:62ch">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
-    <div style="text-align:center;margin:14px 0 4px">
+    <h2>Что ещё русские изобрели первыми в теме «авиация»</h2>
+    <p>Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
+    <div>
       <button class="btn gold" id="themeInvBtn" data-label="Показать 12 изобретений →">Показать 12 изобретений →</button>
     </div>
-    <div id="themeInvBody" style="display:none;margin-top:20px">
-      <div class="card" style="padding:0;overflow:hidden">
-        <div style="padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15)">
-          <span style="color:var(--gold-l);font-weight:600;font-size:14px;letter-spacing:.5px">12 ИЗОБРЕТЕНИЙ · АВИАЦИЯ</span>
+    <div id="themeInvBody" class="theme-body" hidden>
+      <div class="card s17-19">
+        <div>
+          <span>12 ИЗОБРЕТЕНИЙ · АВИАЦИЯ</span>
         </div>
-        <div style="padding:4px 20px 12px">
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">30 янв</span>
-          <span><a href="day-30jan-kotelnikov.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Ранцевый парашют РК-1 Котельникова →</a></span>
+        <div>
+<div>
+          <span>30 янв</span>
+          <span><a class="s17-25" href="day-30jan-kotelnikov.html">Ранцевый парашют РК-1 Котельникова →</a></span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">11 фев</span>
+<div>
+          <span>11 фев</span>
           <span>Первый в мире морской гидросамолёт — летающая лодка М-5</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">15 фев</span>
+<div>
+          <span>15 фев</span>
           <span>Первая в мире «мёртвая петля», рождение высшего пилотажа</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">21 мар</span>
+<div>
+          <span>21 мар</span>
           <span>Самолёт Можайского, один из первых в мире</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">5 апр</span>
+<div>
+          <span>5 апр</span>
           <span>Аэродинамика, теорема Чаплыгина</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">1 мая</span>
+<div>
+          <span>1 мая</span>
           <span>Первый в мире одноместный вертолёт с автоматом перекоса в испытаниях</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">6 мая</span>
+<div>
+          <span>6 мая</span>
           <span>Первый в мире научный полёт на аэростате, Я. Д. Захаров, 1804</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">17 июн</span>
+<div>
+          <span>17 июн</span>
           <span>Первый в мире серийный реактивный пассажирский самолёт Ту-104</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">22 авг</span>
+<div>
+          <span>22 авг</span>
           <span>Первый в мире реактивный самолёт с крылом изменяемой стреловидности</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">4 ноя</span>
+<div>
+          <span>4 ноя</span>
           <span>Первый в мире многомоторный тяжёлый самолёт «Илья Муромец»</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">9 ноя</span>
+<div>
+          <span>9 ноя</span>
           <span>Автомат перекоса — «сердце» вертолёта</span>
         </div>
-<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-          <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">31 дек</span>
+<div>
+          <span>31 дек</span>
           <span>Первый в мире полёт сверхзвукового пассажирского самолёта Ту-144</span>
         </div>
         </div>
       </div>
-      <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:12px">Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
+      <p>Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
     </div>
   </div>
 </section>
@@ -610,12 +343,12 @@
 <section class="block" id="result">
   <div class="wrap">
     <div class="kicker">Итог дня</div>
-    <h2 style="margin-bottom:6px">Сколько баллов ты собрал?</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Подъём самолётика, пойманный вихрь, викторина, выбор в развилке, вопрос профессору и перечень авиационных первенств вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
+    <h2>Сколько баллов ты собрал?</h2>
+    <p>Первый старт, полёт по формуле Жуковского, викторина, выбор в развилке, вопрос профессору и перечень авиационных первенств вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
     <div class="day-result">
       <div class="dr-score" id="dayTxt">0 / 100 · звание: Гость дня</div>
-      <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
-      <div class="dr-note">Подними самолётик, сорви поток и поймай вихрь обратно, ответь на вопросы.</div>
+      <div class="dr-bar"><i class="s17-27" id="dayBar"></i></div>
+      <div class="dr-note">Разбей пару планёров наугад, подними пилота по формуле, ответь на вопросы.</div>
     </div>
   </div>
 </section>
@@ -627,8 +360,12 @@
     <ul class="sources">
       <li><a href="https://gufo.me/dict/mathematics_encyclopedia/Жуковского_Теорема" rel="noopener" target="_blank">Математическая энциклопедия, статья «Жуковского теорема»</a>: формула подъёмной силы, 1906 год.</li>
       <li><a href="https://www.kommersant.ru/doc/2865648" rel="noopener" target="_blank">«Коммерсантъ», «Вихрь, поднявший на крыло птиц и людей»</a>: прогулка 1 октября 1904 года, доклад 1905 года, юность и неудача с институтом путей сообщения.</li>
-      <li><a href="https://zhukovskymuseum.ru/biography/" rel="noopener" target="_blank">Научно-мемориальный музей Н. Е. Жуковского, «Биография»</a>, <a href="https://zhukovskymuseum.ru/nezh-semjya/" rel="noopener" target="_blank">«Семья Н. Е. Жуковского»</a> и <a href="https://zhukovskymuseum.ru/lilienthal/" rel="noopener" target="_blank">«Планёр Отто Лилиенталя»</a>: даты жизни и работ, семья, планёр.</li>
-      <li><a href="https://gmik.ru/2026/01/17/k-70-letiyu-nauchno-memorialnogo-muzeya-professora-n-e-zhukovskogo/" rel="noopener" target="_blank">Государственный музей истории космонавтики, «К 70-летию научно-мемориального музея профессора Н. Е. Жуковского», 17.01.2026</a>: планёр, курсы лётчиков.</li>
+      <li><a href="https://zhukovskymuseum.ru/biography/" rel="noopener" target="_blank">Научно-мемориальный музей Н. Е. Жуковского, «Биография»</a>: даты жизни и работ, «О парении птиц» и мёртвая петля.</li>
+      <li><a href="https://www.nkj.ru/archive/articles/14886/" rel="noopener" target="_blank">«Наука и жизнь», «Центр авиационной науки»</a> и <a href="https://www.nkj.ru/archive/articles/14885/" rel="noopener" target="_blank">статья о Рябушинском и Кучине</a>: Кутта и общая теорема, институт в Кучине.</li>
+      <li><a href="https://rodina-history.ru/2014/03/16/zukovskiy-site.html" rel="noopener" target="_blank">«Родина», «Пять главных открытий „отца русской авиации“», 16.03.2014</a>: мёртвая петля и Нестеров.</li>
+      <li><a href="https://www.tsagi.ru/pressroom/news/4515/" rel="noopener" target="_blank">ЦАГИ, «100-летие ЦАГИ в истории: аэродинамические трубы Т-101 и Т-104»</a> и <a href="https://rg.ru/2023/03/01/samaia-bolshaia-v-evrope-aerodinamicheskaia-truba-gde-ispytyvaiut-samolety-otkroetsia-dlia-turistov.html" rel="noopener" target="_blank">«Российская газета», 01.03.2023</a>: истребители войны в трубах ЦАГИ, Т-101.</li>
+      <li><a href="https://ria.ru/20131110/975497582.html" rel="noopener" target="_blank">РИА Новости, «Биография Андрея Туполева»</a>: кружок Жуковского, первый полёт на планёре.</li>
+      <li><a href="https://gmik.ru/2026/01/17/k-70-letiyu-nauchno-memorialnogo-muzeya-professora-n-e-zhukovskogo/" rel="noopener" target="_blank">Государственный музей истории космонавтики, «К 70-летию научно-мемориального музея профессора Н. Е. Жуковского», 17.01.2026</a>: курсы лётчиков.</li>
       <li><a href="https://docs.historyrussia.org/ru/nodes/12763-3-dekabrya-postanovlenie-snk-v-svyazi-s-50-letiem-nauchnoy-deyatelnosti-professora-n-e-zhukovskogo" rel="noopener" target="_blank">РИО, Электронная библиотека исторических документов: постановление СНК от 3 декабря 1920 года к 50-летию научной деятельности Н. Е. Жуковского</a>: «отец русской авиации», оклад, лекции.</li>
       <li><a href="https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/" rel="noopener" target="_blank">«Узнай Москву», Н. Е. Жуковский</a>: Кучино, ЦАГИ, последние годы, 17 марта 1921 года.</li>
       <li><a href="https://ria.ru/20170117/1485561584.html" rel="noopener" target="_blank">РИА Новости, «Биография Николая Жуковского», 17.01.2017</a>: труба 1902 года, институт в Кучине, имя ЦАГИ.</li>
@@ -641,8 +378,8 @@
 <section class="block" id="calendar">
   <div class="wrap">
     <div class="kicker">Календарь изобретений</div>
-    <h2 style="margin-bottom:6px">Выбери любой день года</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
+    <h2>Выбери любой день года</h2>
+    <p>Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
     <div id="calbox"></div>
   </div>
 </section>
@@ -664,11 +401,11 @@
   </div>
 </section>
 
-<section class="block" id="catalog" style="background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none">
-  <div class="wrap" style="text-align:center">
-    <h2 style="margin-bottom:6px;color:#fff">У нас много изобретений</h2>
-    <p style="color:var(--muted);margin:0 auto 16px;max-width:60ch">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
-    <a class="btn gold" href="index.html" style="display:inline-block;text-decoration:none">Вернуться в музей →</a>
+<section class="block s17-28" id="catalog">
+  <div class="wrap s17-29">
+    <h2>У нас много изобретений</h2>
+    <p>Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
+    <a class="btn gold s17-32" href="index.html">Вернуться в музей →</a>
   </div>
 </section>
 
@@ -679,7 +416,7 @@
 
 <script>
 /* ── СЧЁТ ── шкала из 100 держит assets/museum-score.js; здесь только реестр наград.
-   Подъём 10 + пойманный вихрь 25 + викторина 5×10 + развилка 5 + чат 5 + перечень темы 5 = 100. */
+   Первый старт 10 + полёт по формуле 25 + викторина 5×10 + развилка 5 + чат 5 + перечень темы 5 = 100. */
 window.MUSEUM_SCORE = {awards:{podem:10, vihr:25, q:[5,10], fork:5, chat:5, theme:5},
   ranks:[[100,'Аэродинамик'],[70,'Ученик Жуковского'],[40,'Слушатель курсов авиации'],[0,'Гость дня']]};
 </script>
@@ -690,85 +427,129 @@ window.MUSEUM_SCORE = {awards:{podem:10, vihr:25, q:[5,10], fork:5, chat:5, them
   $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
   function msg(t, cls){ var m=$('wingMsg'); m.className='lab-msg'+(cls?' '+cls:''); m.textContent=t; }
 
-  /* ── КРЫЛО ── подъёмная сила ~ циркуляция ~ угол до предела модели (15°); за пределом — срыв, сила падает. */
-  var cv=$('cvWing'), c=cv.getContext('2d'), W=cv.width, H=cv.height, KRIT=15;
-  var ugol=2, alt=0.25, stalled=false, stallT=0, gotLift=false, gotVihr=false, crashed=false;
-  var P=[]; for (var i=0;i<70;i++) P.push({x:Math.random()*W, y:30+Math.random()*(H-60), s:.7+Math.random()*.6});
-  function lift(){ return stalled ? 0.08 : Math.min(ugol,KRIT)/KRIT; }
-  var CX=230, CY=170;
-  function wingPath(a){
-    c.save(); c.translate(CX,CY); c.rotate(a*Math.PI/180);
-    c.beginPath(); c.moveTo(-90,4);
-    c.bezierCurveTo(-90,-18,-40,-26,10,-20); c.bezierCurveTo(50,-15,85,-4,100,2);
-    c.bezierCurveTo(60,6,-30,14,-70,12); c.bezierCurveTo(-86,11,-90,8,-90,4); c.closePath();
+  /* ── КРЫЛО: НАУГАД ИЛИ ПО ФОРМУЛЕ ── модель: подъёмная сила ~ угол до предела 15°, за пределом — срыв.
+     Нужный угол = вес пилота / 7,5; запас ±6% силы. Наугад силу не видно, «глазами Жуковского» — стрелки и вихрь. */
+  var cv=$('cvWing'), c=cv.getContext('2d'), W=cv.width, H=cv.height, KRIT=15, K=7.5, BAND=0.06, GROUND=H-34;
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ugol=4, mode='blind', kg=70, crashes=0, zhWins=0, state='ready', fl=null, wrecks=[], bits=[], wreckFade=1;
+  var KG=[70,88,61,79,93,66,84,57,75,90];
+  var kgI=0;
+  function nextKg(){ kgI=(kgI+1)%KG.length; kg=KG[kgI]; $('pilotKg').textContent=kg; }
+  function ratio(a){ return a>KRIT ? 0.12 : (a/ (kg/K)); }
+  function hillY(x){ return x<150 ? 210+ (x/150)*(x/150)*(GROUND-210) : GROUND; }
+  var P=[]; for (var i=0;i<46;i++) P.push({x:Math.random()*W, y:20+Math.random()*(GROUND-60), s:.6+Math.random()*.7});
+  function glider(x,y,rot,a,alpha){
+    c.save(); c.globalAlpha=alpha==null?1:alpha; c.translate(x,y); c.rotate(rot); c.scale(1.35,1.35);
+    c.save(); c.scale(-1,1); c.rotate(a*Math.PI/180);
+    c.beginPath(); c.moveTo(-46,2); c.bezierCurveTo(-46,-10,-20,-15,6,-12); c.bezierCurveTo(28,-9,46,-2,54,1);
+    c.bezierCurveTo(30,4,-16,8,-36,7); c.bezierCurveTo(-44,6,-46,4,-46,2); c.closePath();
+    c.fillStyle='#e8eef5'; c.fill(); c.restore();
+    c.strokeStyle='#c9a84c'; c.lineWidth=2.4; c.beginPath(); c.moveTo(-4,4); c.lineTo(-10,26); c.moveTo(6,4); c.lineTo(-2,26); c.stroke();
+    c.fillStyle='#c9a84c'; c.beginPath(); c.arc(-6,30,5,0,7); c.fill(); c.fillRect(-9,34,6,14);
     c.restore();
+  }
+  function arrow(x,y,len,col,w){
+    var d=len<0?-1:1; c.strokeStyle=col; c.fillStyle=col; c.lineWidth=w;
+    c.beginPath(); c.moveTo(x,y); c.lineTo(x,y-len+d*10); c.stroke();
+    c.beginPath(); c.moveTo(x-9,y-len+d*12); c.lineTo(x+9,y-len+d*12); c.lineTo(x,y-len); c.closePath(); c.fill();
+  }
+  function vortex(x,y,t,al,drift){
+    if (al<=0) return; c.strokeStyle='rgba(125,200,255,'+al.toFixed(2)+')'; c.lineWidth=2;
+    for (var k=0;k<3;k++){ c.beginPath(); c.ellipse(x+drift,y,92+k*14,34+k*7,0,t*2+k,t*2+k+4.4); c.stroke(); }
   }
   function draw(t){
-    var L=lift();
     c.fillStyle='#0b1a2a'; c.fillRect(0,0,W,H);
-    c.fillStyle='#3a2f22'; c.fillRect(0,H-12,W,12);
-    // поток: частицы слева направо; над крылом быстрее, при срыве — клубки за крылом
-    P.forEach(function(p){
-      var dy=p.y-CY, dx=p.x-CX, near=Math.abs(dx)<120 && Math.abs(dy)<70;
-      var v=2.2*p.s; if (near && dy<0 && !stalled) v*=1+L*0.9; if (near && dy>0) v*=1-L*0.3;
-      p.x+=v;
-      if (near && !stalled) p.y+= (dy<0?-1:1)*0.25*Math.cos(dx/120*Math.PI/2) - L*0.35*Math.sin(dx/120*Math.PI);
-      if (stalled && p.x>CX-20 && p.x<CX+260 && dy<0 && dy>-90){ p.y+=Math.sin(t*6+p.x/18)*2.2; }
-      if (p.x>W){ p.x=0; p.y=30+Math.random()*(H-60); }
-      c.fillStyle= stalled && p.x>CX && dy<0 && dy>-90 ? 'rgba(255,140,110,.85)' : 'rgba(140,200,255,.75)';
-      c.fillRect(p.x,p.y,6,1.6);
-    });
-    // вихрь: вокруг крыла, пока держится; при срыве уплывает назад
-    var vx = stalled ? CX+Math.min(380,(t-stallT)*140) : CX, va = stalled ? Math.max(0,1-(t-stallT)/2.5) : 0.25+L*0.6;
-    c.strokeStyle='rgba(201,168,76,'+va.toFixed(2)+')'; c.lineWidth=2;
-    for (var k=0;k<3;k++){ c.beginPath(); c.ellipse(vx,CY,120+k*14,46+k*8,0,t*1.6+k,t*1.6+k+4.4); c.stroke(); }
-    // крыло
-    wingPath(ugol); c.fillStyle='#e8eef5'; c.fill();
-    // стрелка подъёмной силы
-    var len=20+L*110; c.strokeStyle='#5fe08a'; c.fillStyle='#5fe08a'; c.lineWidth=5;
-    c.beginPath(); c.moveTo(CX,CY-20); c.lineTo(CX,CY-20-len); c.stroke();
-    c.beginPath(); c.moveTo(CX-10,CY-14-len); c.lineTo(CX+10,CY-14-len); c.lineTo(CX,CY-30-len); c.closePath(); c.fill();
-    c.font='14px sans-serif'; c.fillText('подъёмная сила',CX+14,CY-24-len/2);
-    // самолётик справа: высота следует за силой
-    var py=H-24-alt*(H-60), px=W-90;
-    c.save(); c.translate(px,py); c.rotate(stalled? .5 : -L*0.25);
-    c.fillStyle='#c9a84c'; c.fillRect(-26,-4,52,8); c.fillRect(-6,-16,12,32); c.fillRect(-26,-10,6,10);
-    c.restore();
-    c.fillStyle='#7a9ab8'; c.font='13px sans-serif'; c.fillText('угол '+ugol+'° · предел модели '+KRIT+'°',12,20);
+    P.forEach(function(p){ p.x+=(RM?0.6:1.8)*p.s; if (p.x>W){p.x=0;p.y=20+Math.random()*(GROUND-60);} c.fillStyle='rgba(140,200,255,.35)'; c.fillRect(p.x,p.y,6,1.4); });
+    c.fillStyle='#3a2f22'; c.beginPath(); c.moveTo(0,H); for (var x=0;x<=W;x+=10) c.lineTo(x,hillY(x)); c.lineTo(W,H); c.closePath(); c.fill();
+    c.fillStyle='#4f6b3a'; c.fillRect(0,GROUND,W,3);
+    wrecks.forEach(function(w){ c.save(); c.globalAlpha=wreckFade; c.translate(w.x,w.y); c.rotate(w.r); c.fillStyle='#8c97a3'; c.fillRect(-w.l/2,-2,w.l,4); c.restore(); });
+    bits.forEach(function(b){ c.save(); c.translate(b.x,b.y); c.rotate(b.r); c.fillStyle='#d6dde5'; c.fillRect(-b.l/2,-2,b.l,4); c.restore(); });
+    var zh = mode==='zh';
+    if (state==='ready'){
+      var gx=96, gy=hillY(96)-70, r=ratio(ugol);
+      glider(gx,gy,0,ugol);
+      if (zh){
+        var stall=ugol>KRIT, good=Math.abs(r-1)<=BAND && !stall;
+        vortex(gx+4,gy-2,t, stall?0.25:0.25+Math.min(r,1.3)*0.45, stall? 40+Math.sin(t*3)*20 : 0);
+        c.setLineDash([6,6]); c.strokeStyle='rgba(255,120,110,.8)'; c.lineWidth=2; c.beginPath(); c.moveTo(gx+46,gy-12-90); c.lineTo(gx+114,gy-12-90); c.stroke(); c.setLineDash([]);
+        arrow(gx+80,gy-12, Math.max(10,Math.min(170,90*r)), good?'#5fe08a':(stall?'#ff8a6e':'#e8c66a'), 6);
+        arrow(gx+80,gy+60, -90, 'rgba(255,120,110,.85)', 4);
+      }
+    } else if (fl){
+      if (zh && !fl.crash) vortex(fl.x+4,fl.y-2,t, fl.stall?Math.max(0,.6-(t-fl.st)*0.4):0.6, fl.stall?(t-fl.st)*-160:0);
+      if (!fl.gone) glider(fl.x,fl.y,fl.rot,ugol);
+    }
   }
+  function launch(){
+    if (state!=='ready') return;
+    var r=ratio(ugol), kind = ugol>KRIT ? 'srv' : (r<1-BAND ? 'malo' : (r>1+BAND ? 'mnogo' : 'ok'));
+    state='fly'; fl={x:96,y:hillY(96)-70,vx:150,vy:0,rot:0,t:0,kind:kind,stall:kind==='srv',st:0,crash:false};
+    if (fl.stall) fl.st=(performance.now()-t0)/1000;
+    $('wingGo').disabled=true; $('ugol').disabled=true; award('podem',10);
+    msg(mode==='zh'?'Старт по расчёту…':'Старт наугад…');
+  }
+  function step(dt,t){
+    bits.forEach(function(b){ if (b.rest) return; b.vy+=420*dt; b.x+=b.vx*dt; b.y+=b.vy*dt; b.r+=b.vr*dt;
+      if (b.y>=GROUND-2){ b.y=GROUND-2; b.rest=true; wrecks.push({x:b.x,y:b.y,r:b.r,l:b.l}); } });
+    bits=bits.filter(function(b){return !b.rest;});
+    if (state!=='fly' || !fl) return;
+    fl.t+=dt; var k=fl.kind, g=300;
+    if (k==='ok'){ fl.vy += (-g*0.04 - fl.vy*1.5)*dt; fl.rot += (-0.05-fl.rot)*dt*3; }
+    else if (k==='malo'){ fl.vy += g*0.55*dt; fl.rot += (0.7-fl.rot)*dt*1.4; }
+    else if (k==='mnogo'){ if (!fl.stall){ fl.vy += (-g*0.9)*dt; fl.rot += (-0.9-fl.rot)*dt*2.2; if (fl.t>0.75){ fl.stall=true; fl.st=t; } }
+      else { fl.vy += g*1.1*dt; fl.vx*=1-dt*0.9; fl.rot += 3.2*dt; } }
+    else { if (fl.t<0.35) fl.vy += -g*0.2*dt; else { fl.vy += g*1.2*dt; fl.vx*=1-dt*0.8; fl.rot += 2.6*dt; } }
+    fl.x+=fl.vx*dt; fl.y+=fl.vy*dt;
+    if (k==='ok' && fl.x>W+60){ fl.gone=true; finish(true); return; }
+    if (fl.y+52>=hillY(fl.x) && fl.t>0.2){ fl.crash=true; fl.gone=true;
+      for (var i=0;i<7;i++) bits.push({x:fl.x+(i-3)*6,y:hillY(fl.x)-14,vx:fl.vx*0.3+(Math.random()-.5)*160,vy:-80-Math.random()*140,r:Math.random()*3,vr:(Math.random()-.5)*12,l:10+Math.random()*16});
+      finish(false); }
+  }
+  function finish(ok){
+    state='done';
+    var a=String(ugol).replace('.',','), wasKg=kg, kind=fl.kind;
+    if (!ok){ crashes++; $('crashN').textContent=crashes; var ic=document.createElement('i'); $('crashIcons').appendChild(ic);
+      $('crashBox').classList.add('bump'); setTimeout(function(){ $('crashBox').classList.remove('bump'); },500); }
+    var text, cls='bad';
+    if (ok && mode==='zh'){
+      zhWins++; cls='ok'; award('vihr',25); $('formula').classList.add('show');
+      if (crashes>0 && zhWins===1){
+        text='С первого раза! Наугад ты разбил '+crashes+' '+plural(crashes,'планёр','планёра','планёров')+' — а по формуле хватило одного расчёта. Этим Жуковский и перевернул авиацию в 1906 году.';
+        $('crashBox').classList.add('pogas'); wreckFade=1; fade();
+      } else text='Долетел: стрелка силы ровно на черте веса — пилот '+wasKg+' кг в воздухе. Следующий пилот другой — посчитай и его.';
+    } else if (ok){ cls='ok'; text='Повезло — долетел с углом '+a+'°. Но следующий пилот весит иначе. Угадаешь снова?'; }
+    else if (kind==='malo') text='Мало силы: при '+a+'° крыло не удержало пилота '+wasKg+' кг — планёр клюнул носом.';
+    else if (kind==='mnogo') text='Перетянул: при '+a+'° нос задрался, поток над крылом сорвался — сваливание.';
+    else text='Угол '+a+'° за пределом: поток сорвался сразу, вихрь ушёл с крыла — и сила пропала.';
+    if (!ok && mode==='blind' && crashes>=2){ text+=' Так и учились до 1906 года — обломками. Включи «Глазами Жуковского».'; $('modeZh').classList.add('zovu'); }
+    msg(text,cls);
+    setTimeout(function(){ fl=null; state='ready'; nextKg(); $('wingGo').disabled=false; $('ugol').disabled=false; }, ok?900:1300);
+  }
+  function fade(){ var s=performance.now(); (function f(n){ wreckFade=Math.max(0,1-(n-s)/1600); if (wreckFade>0) requestAnimationFrame(f); else wrecks=[]; })(s); }
+  function plural(n,a,b,c5){ var m=n%10,h=n%100; return (m===1&&h!==11)?a:(m>=2&&m<=4&&(h<12||h>14))?b:c5; }
+  function setMode(m){ mode=m; $('modeBlind').classList.toggle('on',m==='blind'); $('modeZh').classList.toggle('on',m==='zh');
+    $('modeBlind').setAttribute('aria-pressed',m==='blind'); $('modeZh').setAttribute('aria-pressed',m==='zh');
+    $('zhLegend').hidden = m!=='zh'; $('modeZh').classList.remove('zovu');
+    msg(m==='zh' ? 'Теперь видно то, что увидел Жуковский: вихрь вокруг крыла и стрелку силы. Поставь угол так, чтобы зелёная стрелка дошла до красной черты — и жми «В воздух».'
+                 : 'Снова наугад: силы не видно, только угол. Пилот '+kg+' кг ждёт.'); }
   var last=performance.now(), t0=last;
-  function loop(now){
-    var dt=Math.min(.05,(now-last)/1000); last=now; var t=(now-t0)/1000;
-    var L=lift(), target = stalled ? -0.2 : 0.15+L*0.8;
-    alt += (target-alt)*dt*(stalled?0.55:0.9);
-    if (alt<0){ alt=0; if (stalled && !crashed){ crashed=true; msg('Самолётик коснулся земли: вихрь не успели вернуть. Нажми «Начать заново» — и опускай угол сразу, как только поток сорвётся.','bad'); } }
-    if (!stalled && !gotLift && ugol>=8 && alt>0.55){ gotLift=true; award('podem',10);
-      msg('Самолётик набрал высоту: чем круче угол, тем сильнее закрутка воздуха вокруг крыла. Попробуй поднять угол ещё выше.','ok'); }
-    draw(t); requestAnimationFrame(loop);
-  }
-  $('ugol').addEventListener('input', function(){
-    ugol=+this.value; $('ugolTxt').textContent=ugol+'°';
-    var now=(performance.now()-t0)/1000;
-    if (!stalled && ugol>KRIT && !crashed){ stalled=true; stallT=now; $('formula').classList.add('show');
-      msg('Сваливание! Поток над крылом сорвался, вихрь уплыл назад — подъёмной силы нет. Верни угол ниже предела, пока самолётик не упал.','bad'); }
-    else if (stalled && ugol<=KRIT-3 && !crashed){ stalled=false;
-      if (!gotVihr){ gotVihr=true; award('vihr',25); }
-      msg('Поймал! Поток снова прилип к крылу, вихрь вернулся — и подъёмная сила с ним. Это и есть закон Жуковского: нет вихря — нет силы.','ok'); }
-  });
-  $('wingReset').onclick=function(){ ugol=2; $('ugol').value=2; $('ugolTxt').textContent='2°'; alt=0.25; stalled=false; crashed=false;
-    $('formula').classList.remove('show'); msg('Полёт начат заново. Уже полученные баллы сохраняются и повторно не начисляются.'); };
+  function loop(now){ var dt=Math.min(.05,(now-last)/1000); last=now; var t=(now-t0)/1000; step(dt,t); draw(t); requestAnimationFrame(loop); }
+  $('ugol').addEventListener('input', function(){ ugol=+this.value; $('ugolTxt').textContent=String(ugol).replace('.',',')+'°'; });
+  $('wingGo').onclick=launch;
+  $('modeBlind').onclick=function(){ if (state==='ready') setMode('blind'); };
+  $('modeZh').onclick=function(){ if (state==='ready') setMode('zh'); };
   requestAnimationFrame(loop);
 
   /* ── ВИКТОРИНА ── один ответ на вопрос; дистракторы сверены с источниками страницы. */
   var Q = [
     {q:'Что, по Жуковскому, создаёт подъёмную силу крыла?', o:['Тёплый воздух под крылом','Вихрь, присоединённый к крылу, — циркуляция','Взмахи, как у птицы'], a:1,
      e:'Присоединённый вихрь: сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию.'},
-    {q:'Где Жуковскому пришла идея присоединённых вихрей?', o:['В Берлине, на полётах Лилиенталя','На прогулке в поле у Кучинской лаборатории','На экзамене в Петербурге'], a:1,
+    {q:'Где Жуковскому пришла идея присоединённых вихрей?', o:['В Берлине, в гостях у немецких учёных','На прогулке в поле у Кучинской лаборатории','На экзамене в Петербурге'], a:1,
      e:'1 октября 1904 года, в праздничный день, у аэродинамической лаборатории в Кучине.'},
     {q:'В каком году вышла работа «О присоединённых вихрях»?', o:['1895','1906','1918'], a:1,
      e:'В 1906-м. Идея — 1904 год, доклад в Московском математическом обществе — ноябрь 1905-го.'},
-    {q:'Что Жуковский купил у Отто Лилиенталя в 1895 году?', o:['Планёр','Мотор','Аэродинамическую трубу'], a:0,
-     e:'Планёр. Он и сейчас в мемориальном музее Жуковского в Москве.'},
+    {q:'Какую фигуру полёта Жуковский рассчитал на бумаге в 1891 году — за 22 года до Нестерова?', o:['Мёртвую петлю','Штопор','Бочку'], a:0,
+     e:'Мёртвую петлю: в работе «О парении птиц». В небе её первым в мире выполнил Пётр Нестеров в 1913 году.'},
     {q:'Что создано по предложению Жуковского 1 декабря 1918 года?', o:['ЦАГИ — Центральный аэрогидродинамический институт','Московский университет','Институт путей сообщения'], a:0,
      e:'ЦАГИ. С 1921 года институт носит имя Жуковского.'}
   ];
@@ -810,8 +591,10 @@ const kb=[
  {k:['кучин','прогулк','поле','1904','идея','придумал'],a:'1 октября 1904 года был праздник. Я приехал в Кучинскую аэродинамическую лабораторию и пошёл гулять в поле. Там и пришла мысль: крыло несёт с собой вихрь, и в нём весь секрет подъёмной силы.'},
  {k:['доклад','математическ','1905','общество'],a:'Доклад «О присоединённых вихрях» я прочитал в Московском математическом обществе 15 ноября 1905 года по старому стилю. Напечатана работа в 1906-м.'},
  {k:['кутт','герман','первым','первый','единствен'],a:'Говорить, что я один пришёл к этой формуле, не стану: в Германии к ней независимо подошёл Кутта. Моё дело — вывести закон и построить, где его проверять: трубы, лабораторию в Кучине, потом ЦАГИ.'},
- {k:['труб','лаборатор','1902','мвту','училищ'],a:'Первую аэродинамическую трубу мы построили в 1902 году в механической лаборатории Московского университета. В 1904-м в Кучине заработал аэродинамический институт. А в 1916-м строили трубу в Московском высшем техническом училище — я стою в ней на фотографии.'},
- {k:['лилиентал','планёр','планер','берлин','1895'],a:'В 1895 году я поехал в Берлин к Отто Лилиенталю, смотрел, как он летает, и купил у него планёр. Он и теперь стоит в моём доме-музее в Москве.'},
+ {k:['труб','лаборатор','1902','мвту','училищ'],a:'Трубу придумал не я. Первую в России аэродинамическую трубу мы построили в 1902 году в механической лаборатории Московского университета. В 1904-м в Кучине заработал аэродинамический институт. А в 1916-м строили трубу в Московском высшем техническом училище — я стою в ней на фотографии.'},
+ {k:['петл','нестеров','фигур','1891'],a:'В 1891 году в работе «О парении птиц» я рассчитал, какие фигуры возможны в полёте, — среди них и мёртвую петлю. В небе её первым сделал Пётр Нестеров, в 1913 году.'},
+ {k:['туполев','кружок','студент','планёр','планер'],a:'В 1909 году в мой воздухоплавательный кружок пришёл студент Андрей Туполев. В 1910-м он впервые полетел на планёре, который строил сам с товарищами. Потом под его руководством создано больше ста типов самолётов.'},
+ {k:['рябушинск'],a:'Аэродинамический институт в Кучине построил на свои деньги Дмитрий Рябушинский и позвал меня руководить. Открылся он в 1904 году — первый в Европе.'},
  {k:['цаги','институт','1918','академи','ректор'],a:'1 декабря 1918 года по моему предложению создали Центральный аэрогидродинамический институт — ЦАГИ. А в 1920-м меня назначили первым ректором Института инженеров Красного Воздушного флота, будущей Военно-воздушной академии.'},
  {k:['лётчик','летчик','войн','курс'],a:'С 1914 по 1919 год я руководил в Москве теоретическими курсами авиации. Через них прошли пилоты войны. В доме, где сейчас мой музей, с 1915 года жили лётчики и шли занятия.'},
  {k:['детств','родил','орехов','няня','отец','семь'],a:'Родился я 17 января 1847 года в сельце Орехово Владимирской губернии. Отец, Егор Иванович, был инженером путей сообщения, строил Нижегородскую железную дорогу. Растила меня няня, Арина Михайловна.'},
@@ -833,7 +616,7 @@ function findAnswer(q){
   for(const item of kb){
     if(item.k.some(k=>q.includes(k.toLowerCase())))return item.a;
   }
-  return 'Спросите точнее — о присоединённых вихрях, о прогулке в Кучине, о планёре Лилиенталя, о трубах или о ЦАГИ. Отвечу как было.';
+  return 'Спросите точнее — о присоединённых вихрях, о прогулке в Кучине, о мёртвой петле, о Туполеве, о трубах или о ЦАГИ. Отвечу как было.';
 }
 
 function sendChat(){
@@ -844,11 +627,12 @@ function sendChat(){
   inp.value='';
   setTimeout(()=>{addMsg(findAnswer(q),'inv');award('chat',5);},600);
 }
+document.getElementById('chatSend').addEventListener('click',sendChat);
 document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
 
 // стартовые вопросы + приветствие (без прокрутки при загрузке)
 (function(){
-  const qs=['Почему крыло держит самолёт?','Как вам пришла эта идея?','Зачем вы купили планёр Лилиенталя?'];
+  const qs=['Почему крыло держит самолёт?','Как вам пришла эта идея?','Правда, что вы рассчитали мёртвую петлю?'];
   const box=document.getElementById('starters');
   qs.forEach(q=>{const c=document.createElement('span');c.className='chip';c.textContent=q;
     c.onclick=()=>{document.getElementById('chatInput').value=q;sendChat();};box.appendChild(c);});
@@ -861,8 +645,8 @@ document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='
 const themeBtn=document.getElementById('themeInvBtn');
 if(themeBtn)themeBtn.onclick=function(){
   const b=document.getElementById('themeInvBody');
-  const open=b.style.display==='none';
-  b.style.display=open?'block':'none';
+  const open=b.hidden;
+  b.hidden=!open;
   this.textContent=open?'▲ Скрыть':this.dataset.label||'Показать перечень →';
   if(open)award('theme',5);
 };
