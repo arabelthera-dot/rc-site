@@ -1,14 +1,70 @@
+/* igra-ruka — вид как у образца 29 янв. (ko-hand, rc-site e4f86d74). Подсказка «куда жать» (Р206, 23.10.2026): на шаге одна активная кнопка
+   пульсирует, над ней рука «тап-тап», остальные кнопки игры приглушены.
+   Вставить В НАЧАЛО скрипта игры как есть. Использование:
+     var ruka = igraRuka(root);   // root — секция игры
+     ruka.na(knopka);             // показать руку над кнопкой, кнопка пульсирует
+     ruka.ubrat();                // убрать (пока идёт анимация / финал)
+   Отклик на касание (≤100 мс): класс .igra-zhmyak на pointerdown + navigator.vibrate(20). */
+function igraRuka(root) {
+  var el = document.createElement('span');
+  el.className = 'igra-ruka'; el.setAttribute('aria-hidden', 'true'); el.hidden = true;
+  el.innerHTML = '<i class="igra-ruka-krug"></i><svg viewBox="0 0 40 48" width="40" height="48"><path d="M15 4c2.2 0 4 1.8 4 4v13l1.2-.5c1.9-.7 4 .2 4.8 2l.3.7.8-.3c1.9-.6 4 .3 4.7 2.2l.2.5c1.9-.4 3.8.7 4.4 2.5.2.6.3 1.2.3 1.8V36c0 5.5-4.5 10-10 10h-4.6c-3 0-5.8-1.4-7.7-3.7L5.2 33.5c-1.3-1.6-1.1-4 .5-5.3 1.5-1.2 3.7-1.1 5.1.3l.2.2V8c0-2.2 1.8-4 4-4z" fill="#fff" stroke="#1a1206" stroke-width="2.2" stroke-linejoin="round"/></svg>';
+  if (getComputedStyle(root).position === 'static') root.style.position = 'relative';
+  root.appendChild(el);
+  var cel = null;
+  function mesto() {
+    if (!cel || el.hidden) return;
+    var r = cel.getBoundingClientRect(), b = root.getBoundingClientRect();
+    el.style.left = Math.round(r.left - b.left + r.width * 0.86) + 'px';
+    el.style.top = Math.round(r.top - b.top + r.height * 0.5) + 'px';
+  }
+  function ubrat() {
+    if (cel) cel.classList.remove('igra-aktiv');
+    cel = null; el.hidden = true; root.classList.remove('igra-ved');
+  }
+  function na(knopka) {
+    ubrat();
+    if (!knopka) return;
+    cel = knopka; cel.classList.add('igra-aktiv'); root.classList.add('igra-ved');
+    el.hidden = false; mesto();
+    requestAnimationFrame(mesto);
+  }
+  window.addEventListener('resize', mesto);
+  if (window.ResizeObserver) new ResizeObserver(mesto).observe(root);
+  root.addEventListener('pointerdown', function (e) {
+    var k = e.target.closest('button, [role="button"]');
+    if (!k || !root.contains(k)) return;
+    k.classList.add('igra-zhmyak');
+    setTimeout(function () { k.classList.remove('igra-zhmyak'); }, 160);
+    if (navigator.vibrate) { try { navigator.vibrate(20); } catch (_) {} }
+  });
+  root.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  return { na: na, ubrat: ubrat, mesto: mesto };
+}
+
 /* Игра «Уйди от „Анчара“» (24 января). Движок — аркада M-13 со страницы 30 января (Котельников):
-   цикл кадров с ограниченным dt, состояния «ждём → игра → итог», руль кнопками/пальцем/стрелками,
-   защита координат от NaN. Добавлено: рукоять машинного телеграфа, погоня лодки по фазам, счёт расстояния. */
+   цикл кадров с ограниченным dt, защита координат от NaN. Р201/Р206: сцена видна сразу, правила — под ней;
+   каждый шаг — одно нажатие на одну мигающую кнопку с рукой; после нажатия проигрывается его итог,
+   потом сцена ждёт следующего нажатия («Анчар» держит расстояние и не догоняет сам). */
 (function(){
   const root=document.querySelector('[data-anchar-igra]');if(!root)return;
   const cv=root.querySelector('canvas'),ctx=cv.getContext('2d');
   const $=s=>root.querySelector(s);
   const elTask=$('.an-task'),elSub=$('.an-sub'),elGap=$('.an-gap-num'),elTrend=$('.an-gap-trend');
   const elCv=$('.an-spd-cv'),elSv=$('.an-spd-sv'),elSu=$('.an-spd-su'),elMax=$('.an-max');
-  const tg=$('.an-telegraf'),tgTrack=$('.an-tg-track'),tgKnob=$('.an-tg-knob'),tgFill=$('.an-tg-fill'),tgHand=$('.an-tg-hand');
-  const bL=$('.an-left'),bR=$('.an-right'),fin=$('.an-finale'),finH=$('.an-fin-h'),again=$('.an-again'),elBest=$('.an-best'),elIntro=$('.an-intro');
+  const tg=$('.an-telegraf'),tgTrack=$('.an-tg-track'),tgKnob=$('.an-tg-knob'),tgFill=$('.an-tg-fill');
+  const bPoln=$('.an-poln'),bUpor=$('.an-upor'),bKurs=$('.an-kurs'),bL=$('.an-left'),bR=$('.an-right');
+  const fin=$('.an-finale'),again=$('.an-again'),elBest=$('.an-best');
+  const knopki=[bPoln,bUpor,bKurs,bL,bR];
+
+  /* Р206: на шаге одна активная пульсирующая кнопка + рука «тап-тап»; остальные приглушены (общий компонент igraRuka) */
+  const ruka=igraRuka(root);let tekAktiv=null;
+  function aktiv(btn){
+    tekAktiv=btn||null;
+    knopki.forEach(b=>b.setAttribute('aria-disabled',b===btn?'false':'true'));
+    if(btn)ruka.na(btn);else ruka.ubrat();
+  }
+  function otklik() { try { if (navigator.vibrate) navigator.vibrate(20); } catch (e) { /* нет вибро */ } }
 
   const K=6;                         // ускорение времени: игровая секунда = 6 настоящих
   const MS=kmh=>kmh/3.6*K;           // км/ч → игровые м/с
@@ -16,19 +72,35 @@
   const SIDE=130;                    // лодка держится сбоку, м
   const PASS_END=380;                // насколько лодка уходит вперёд к финалу, м
 
+  // шаги: одна кнопка — одно нажатие; t — задание (3–5 слов), s — пояснение
+  const SHAGI=[
+    {b:bPoln,t:'Нажми «Полный ход»',s:'Ты — капитан американского авианосца. «Анчар» в 250 м позади. Уйди от него!'},
+    {b:bUpor,t:'Нажми «До упора»',s:'«Анчар» отстаёт! Дай ещё ход — до упора.'},
+    {b:bKurs,t:'Нажми «Прямо»',s:'Отрываешься! 56 км/ч — быстрее авианосец не может. Иди прямо.'},
+    {b:bL,t:'Нажми руль влево ◀',s:'«Анчар» рядом с тобой! Резкий поворот его стряхнёт.'},
+    {b:bR,t:'Нажми руль вправо ▶',s:'Он снова рядом! Сверни ещё раз.'},
+    {b:bL,t:'Снова нажми руль влево ◀',s:'Опять рядом. Сверни ещё раз — уйдёшь?'}
+  ];
+
   let W=0,H=0,S=1,dpr=1,shook=0;
-  let passA=0,shakes=0,turnT=0,best=0,bestEver=0,tries=0,c,sub,thr,steerBtn,steerDrag,st,T,phT,trail,subTrail,gapPrev,trendSm,maxSeen,raf,last;
+  let passA=0,shakes=0,best=0,c,sub,thr,steerDir,steerT,lost,ph,phT,phD,shag,ryadom,off,trail,subTrail,gapPrev,trendSm,raf,last;
 
   function reset(){
     c={x:0,y:0,h:0,v:MS(V_MIN)};
     sub={x:0,y:250,h:0,v:MS(V_MIN)};
-    thr=0;steerBtn=0;steerDrag=0;st='wait';T=0;phT=0;trail=[];subTrail=[];gapPrev=null;trendSm=0;maxSeen=false;
-    best=0;shakes=0;turnT=0;fin.hidden=true;setThr(0);tgHand.hidden=false;elIntro.hidden=false;
-    say('Уйди от «Анчара»','Ты — капитан американского авианосца. Потяни золотой шар вверх до упора');
+    off={x:0,y:250};
+    steerDir=0;steerT=0;lost=0;ph='zhdi';phT=0;phD=0;shag=0;ryadom=false;
+    trail=[];subTrail=[];gapPrev=null;trendSm=0;best=0;shakes=0;shook=0;fin.hidden=true;setThr(0);
     elSv.textContent='тайна';elSu.hidden=true;elTrend.textContent='';elTrend.className='an-gap-trend';
-    bL.classList.remove('zov');bR.classList.remove('zov');
+    zhdat();
   }
-  function say(t,s){if(elTask.textContent!==t)elTask.textContent=t;if(elSub.textContent!==s)elSub.textContent=s;}
+  // t — что сделать (после «Что сделать сейчас:»), s — пояснение: что произошло и почему
+  function say(t,s){if(elTask.lastChild.textContent!==' '+t)elTask.innerHTML='<b>Что сделать сейчас:</b> '+t.replace(/[<&]/g,'');if(elSub.textContent!==s)elSub.textContent=s;}
+  // сцена ждёт нажатия: лодка держит расстояние, на кнопке шага — рука
+  function zhdat(){
+    ph='zhdi';off={x:sub.x-c.x,y:sub.y-c.y};
+    const k=SHAGI[shag];aktiv(k.b);say(k.t,k.s);
+  }
 
   // --- холст под размер и плотность экрана ---
   function resize(){
@@ -47,37 +119,48 @@
   function sideTarget(ahead){const f=fwd(c.h),l=left(c.h);return {x:c.x+l.x*SIDE+f.x*ahead,y:c.y+l.y*SIDE+f.y*ahead};}
 
   // --- шаг мира ---
+  function chaseMove(dt){            // «Анчар» на 83 км/ч срезает углы и встаёт рядом
+    const t=sideTarget(0),d=Math.hypot(t.x-sub.x,t.y-sub.y);
+    const want=d>160?MS(V_SUB):c.v+(MS(V_SUB)-c.v)*d/160;
+    sub.v+=(want-sub.v)*Math.min(1,dt*1.5);turnTo(sub,t.x,t.y,1.6,dt);
+    const g=fwd(sub.h);sub.x+=g.x*sub.v*dt;sub.y+=g.y*sub.v*dt;
+    return d;
+  }
+  function holdMove(dt){             // держится рядом, повторяет каждый поворот
+    const t=sideTarget(0);sub.x+=(t.x-sub.x)*Math.min(1,dt*3);sub.y+=(t.y-sub.y)*Math.min(1,dt*3);
+    sub.h+=wrap(c.h-sub.h)*Math.min(1,dt*4);sub.v=c.v;
+  }
   function step(dt){
-    const steer=Math.max(-1,Math.min(1,steerBtn+steerDrag));
+    if(steerT>0)steerT-=dt;
+    const steer=steerT>0?steerDir:0;
     const kmh=V_MIN+(V_MAX-V_MIN)*thr;
-    c.v+=(MS(kmh)-c.v)*Math.min(1,dt/2.2);
-    c.h=wrap(c.h+steer*0.42*dt);
+    c.v+=(MS(kmh)-c.v)*Math.min(1,dt/1.6);
+    c.h=wrap(c.h+steer*0.5*dt);
     const f=fwd(c.h);c.x+=f.x*c.v*dt;c.y+=f.y*c.v*dt;
     if(!isFinite(c.x)||!isFinite(c.y)){c.x=0;c.y=0;}
-    if(st==='wait'){ // до первого касания лодка идёт следом на том же расстоянии
-      const b={x:c.x-f.x*250,y:c.y-f.y*250};sub.x+=(b.x-sub.x)*Math.min(1,dt*2);sub.y+=(b.y-sub.y)*Math.min(1,dt*2);sub.h=c.h;sub.v=c.v;
+    if(ph==='zhdi'){                 // ждём нажатия: расстояние не меняется
+      sub.x=c.x+off.x;sub.y=c.y+off.y;sub.h+=wrap(c.h-sub.h)*Math.min(1,dt*3);sub.v=c.v;
     }else{
-      T+=dt;phT+=dt;
-      if(st==='hope'){                       // лодка будто отстаёт — посетитель видит «дальше»
+      phT+=dt;
+      if(ph==='razgon'){             // лодка будто отстаёт — посетитель видит «дальше»
         sub.v+=(MS(30)-sub.v)*Math.min(1,dt);turnTo(sub,c.x,c.y,1.2,dt);
-        if(phT>6){st='chase';phT=0;}  // у всех одинаково: отрыв зависит от того, как быстро дал полный ход
-      }else if(st==='chase'){                // проснулась: 83 км/ч, срезает углы
-        const t=sideTarget(0),d=Math.hypot(t.x-sub.x,t.y-sub.y);
-        const want=d>160?MS(V_SUB):c.v+(MS(V_SUB)-c.v)*d/160;
-        sub.v+=(want-sub.v)*Math.min(1,dt*1.5);turnTo(sub,t.x,t.y,1.6,dt);
-        if(d<45){st='hold';phT=0;}
-      }else if(st==='hold'){                 // держится рядом, повторяет каждый поворот
-        const t=sideTarget(0);sub.x+=(t.x-sub.x)*Math.min(1,dt*3);sub.y+=(t.y-sub.y)*Math.min(1,dt*3);
-        sub.h+=wrap(c.h-sub.h)*Math.min(1,dt*4);sub.v=c.v;
-        turnT=Math.abs(steer)>0.8?turnT+dt:0;
-        if(turnT>0.7&&shakes<2){shakes++;turnT=0;st='chase';phT=0;sub.v=MS(35);sub.h=wrap(sub.h+(steer>0?-0.5:0.5));shook=1.6;} // резкий поворот — лодка теряет тебя, ненадолго
-        else if(phT>5){st='pass';phT=0;passA=0;}
-      }else if(st==='pass'){                 // выходит вперёд на 83 км/ч
+        const g=fwd(sub.h);sub.x+=g.x*sub.v*dt;sub.y+=g.y*sub.v*dt;
+        if(phT>phD)zhdat();
+      }else if(ph==='dogon'){        // проснулась: 83 км/ч, догоняет до борта
+        if(lost>0){lost-=dt;const g=fwd(sub.h);sub.x+=g.x*sub.v*dt;sub.y+=g.y*sub.v*dt;
+          if(lost<=0)say('Смотри на строку «Анчар»','«Анчар» снова прибавил ход и догоняет!');}
+        else if(ryadom)holdMove(dt);
+        else if(chaseMove(dt)<45||phT>16)ryadom=true;
+        if(ryadom&&steerT<=0)zhdat();
+      }else if(ph==='povtor'){       // третий поворот: «Анчар» повторяет его и не отстаёт
+        holdMove(dt);
+        if(phT>2.2){ph='pass';phT=0;passA=0;ryadom=false;
+          say('Смотри: «Анчар» обгоняет','«Анчар» обгоняет тебя под водой! Ты на 56 км/ч — быстрее авианосец не может.');}
+      }else if(ph==='pass'){         // выходит вперёд на 83 км/ч
         sub.v+=(MS(V_SUB)-sub.v)*Math.min(1,dt*2);passA+=(sub.v-c.v)*dt;   // уходит вперёд ровно на разницу скоростей
         const t=sideTarget(passA);sub.x+=(t.x-sub.x)*Math.min(1,dt*4);sub.y+=(t.y-sub.y)*Math.min(1,dt*4);sub.h+=wrap(c.h-sub.h)*Math.min(1,dt*3);
         if(along()>=PASS_END||phT>12)finish();
       }
-      if(st==='hope'||st==='chase'){const g=fwd(sub.h);sub.x+=g.x*sub.v*dt;sub.y+=g.y*sub.v*dt;}
       if(!isFinite(sub.x)||!isFinite(sub.y)){sub.x=c.x;sub.y=c.y+250;}
     }
     {const f2=fwd(c.h),Lm=Math.max(320,92/S);trail.push({x:c.x-f2.x*Lm*0.45,y:c.y-f2.y*Lm*0.45,a:0});}subTrail.push({x:sub.x,y:sub.y,a:0,v:sub.v});
@@ -87,44 +170,44 @@
     hud(dt);
   }
 
-  // --- счёт и подсказки (вне картинки) ---
+  // --- счёт (вне картинки) ---
   function hud(dt){
     const g=along(),kc=Math.round(c.v/K*3.6),ks=Math.round(sub.v/K*3.6);
-    if((st==='hope'||st==='chase')&&-g>best)best=-g;
+    if(ph!=='pass'&&ph!=='end'&&-g>best)best=-g;
     elCv.textContent=kc;
-    const atMax=thr>0.98&&kc>=55;elMax.hidden=!atMax;if(atMax)maxSeen=true;
-    if(st==='pass'||st==='end'){elSv.textContent=ks;elSu.hidden=false;}
+    elMax.hidden=!(thr>0.98&&kc>=55);
+    if(ph==='pass'||ph==='end'){elSv.textContent=ks;elSu.hidden=false;}
     const r=Math.round(Math.abs(g)/10)*10;
-    let txt;
-    if(st==='hold'||(Math.abs(g)<60&&st!=='wait'&&st!=='hope'))txt='рядом с тобой';
-    else txt=(g<0?'позади · ':'впереди · ')+r+' м';
+    const txt=ryadom||(shag>=3&&Math.abs(g)<60)?'рядом с тобой':(g<0?'позади · ':'впереди · ')+r+' м';
     if(elGap.textContent!==txt)elGap.textContent=txt;
     if(gapPrev!==null&&dt>0){const rate=(Math.abs(g)-Math.abs(gapPrev))/dt*(g<0?1:-1);trendSm+=(rate-trendSm)*Math.min(1,dt*3);}
     gapPrev=g;
     let tr='',cl='';
-    if(st==='wait'){}
-    else if(st==='hold'){tr='не отстаёт';cl='near';}
+    if(ryadom){tr='не отстаёт';cl='near';}
     else if(g>=60){tr='обгоняет ▲';cl='near';}
     else if(trendSm>4){tr='дальше ▲ отрываешься';cl='far';}
     else if(trendSm<-4){tr='ближе ▼ догоняет';cl='near';}
     if(elTrend.textContent!==tr){elTrend.textContent=tr;elTrend.className='an-gap-trend '+cl;}
-    // задание и подсказка
-    if(st==='wait')return;
-    if(st==='hope'){thr<0.98?say('Уходи!','Ещё! Шар до упора — чем быстрее, тем больше отрыв'):say('Отрываешься!','Полный ход — 56 км/ч. Держи курс');}
-    else if(shook>0)say('Стряхнул! ('+shakes+' из 2)','«Анчар» потерял тебя… ненадолго');
-    else if(st==='chase')say('«Анчар» прибавил ход!','Догоняет. Когда подойдёт — держи руль, резкий поворот его стряхнёт');
-    else if(st==='hold')say('«Анчар» рядом с тобой',shakes<2?'Держи руль влево или вправо — стряхни его!':'Больше не стряхнуть — повторяет каждый поворот');
-    else if(st==='pass')say('«Анчар» обгоняет тебя под водой!',thr<0.98?'Шар до упора — может, успеешь?':'56 км/ч — быстрее авианосец не может');
-    const z=st==='chase'||st==='hold';bL.classList.toggle('zov',z&&!steerBtn);bR.classList.toggle('zov',z&&!steerBtn);
   }
 
-  function start(){if(st!=='wait')return;st='hope';phT=0;tgHand.hidden=true;elIntro.hidden=true;}
+  // --- нажатие: мгновенный отклик, потом итог шага ---
+  function nazhal(b){
+    if(ph!=='zhdi'||SHAGI[shag].b!==b){if(tekAktiv)elSub.textContent='Жми мигающую кнопку';return;}
+    otklik();aktiv(null);
+    const n=shag;shag++;phT=0;
+    if(n===0){setThr(0.5);ph='razgon';phD=3;say('Смотри: «Анчар» отстаёт','Ход растёт — «Анчар» отстаёт. Чем быстрее, тем больше отрыв.');}
+    else if(n===1){setThr(1);ph='razgon';phD=3.5;say('Смотри: «Анчар» отстаёт','До упора — 56 км/ч, быстрее авианосец не может.');}
+    else if(n===2){ph='dogon';lost=0;ryadom=false;say('Смотри на строку «Анчар»','«Анчар» прибавил ход и догоняет!');}
+    else if(n===3||n===4){                // резкий поворот — лодка теряет тебя, ненадолго
+      steerDir=n===3?-1:1;steerT=1.4;shakes++;ryadom=false;ph='dogon';lost=1.8;shook=1.8;
+      sub.v=MS(35);sub.h=wrap(sub.h+(steerDir>0?-0.6:0.6));
+      say('Смотри: «Анчар» потерял тебя','Стряхнул! ('+shakes+' из 2) Резкий поворот — «Анчар» потерял тебя… ненадолго.');}
+    else{steerDir=-1;steerT=1.4;ph='povtor';say('Смотри на «Анчар»','«Анчар» повторяет каждый твой поворот — больше не стряхнуть.');}
+  }
   function finish(){
-    st='end';const g=Math.round(along()/10)*10;
-
-    const b=Math.round(best/10)*10;tries++;const rec=b>bestEver&&tries>1;bestEver=Math.max(bestEver,b);
-    elBest.textContent='Твой лучший отрыв за игру — '+b+' м'+(shakes?', стряхнул «Анчар» '+shakes+' раз'+(shakes>1?'а':''):'')+(rec?' — новый рекорд!':tries>1?' (рекорд: '+bestEver+' м)':'')+'.';
-    say('Уйти не удалось — как и «Саратоге» в 1971-м','Смотри ниже, что это было');
+    ph='end';aktiv(null);ryadom=false;
+    elBest.textContent='Твой самый большой отрыв — '+Math.round(best/10)*10+' м'+(shakes?', стряхнул «Анчар» '+shakes+' раз'+(shakes>1?'а':''):'')+'.';
+    say('Прокрути вниз и прочитай','Уйти не удалось — как и «Саратоге» в 1971-м: «Анчар» под водой быстрее.');
     elTrend.textContent='';
     fin.hidden=false;
     setTimeout(()=>fin.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'}),600);
@@ -197,47 +280,24 @@
 
   function loop(ts){
     if(!last)last=ts;const dt=Math.min((ts-last)/1000,0.05);last=ts;
-    if(st!=='end')step(dt);
+    if(ph!=='end')step(dt);
     draw();
     raf=requestAnimationFrame(loop);
   }
 
-  // --- рукоять машинного телеграфа ---
+  // --- указатель хода (только показывает, не тянется) ---
   function setThr(v){
     thr=Math.max(0,Math.min(1,v));
     const travel=tgTrack.clientHeight-tgKnob.offsetHeight-4;
     tgKnob.style.bottom=(2+thr*travel)+'px';tgFill.style.height=(thr*100)+'%';
     tg.setAttribute('aria-valuenow',Math.round(thr*100));
-    tg.setAttribute('aria-valuetext',thr>0.98?'До упора':thr>0.5?'Полный ход':'Средний ход');
+    tg.setAttribute('aria-valuetext',thr>0.98?'До упора':thr>0.3?'Полный ход':'Средний ход');
   }
-  function thrFromY(e){const r=tgTrack.getBoundingClientRect(),k=tgKnob.offsetHeight/2;
-    const v=1-(e.clientY-r.top-k)/(r.height-2*k);if(isFinite(v)){setThr(v);if(thr>0.02)start();}}
-  let tgDrag=false;
-  tg.addEventListener('pointerdown',e=>{e.preventDefault();tgDrag=true;tg.setPointerCapture&&tg.setPointerCapture(e.pointerId);thrFromY(e);});
-  tg.addEventListener('pointermove',e=>{if(tgDrag)thrFromY(e);});
-  ['pointerup','pointercancel'].forEach(ev=>tg.addEventListener(ev,()=>{tgDrag=false;}));
-  tg.addEventListener('keydown',e=>{
-    if(e.key==='ArrowUp'||e.key==='ArrowRight'||e.key==='PageUp'){e.preventDefault();setThr(thr+0.25);start();}
-    if(e.key==='ArrowDown'||e.key==='ArrowLeft'||e.key==='PageDown'){e.preventDefault();setThr(thr-0.25);}
-    if(e.key==='End'){setThr(1);start();}});
 
-  // --- руль: кнопки, палец по картинке, стрелки ---
-  function steerBind(b,d){
-    b.addEventListener('pointerdown',e=>{e.preventDefault();steerBtn=d;b.classList.add('on');start();});
-    ['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,e=>{if(e&&e.cancelable)e.preventDefault();steerBtn=0;b.classList.remove('on');}));
-    b.addEventListener('contextmenu',e=>e.preventDefault());}
-  steerBind(bL,-1);steerBind(bR,1);
-  let dragX=null;
-  cv.addEventListener('pointerdown',e=>{e.preventDefault();dragX=e.clientX;cv.setPointerCapture&&cv.setPointerCapture(e.pointerId);start();});
-  cv.addEventListener('pointermove',e=>{if(dragX===null)return;const dx=e.clientX-dragX;steerDrag=Math.max(-1,Math.min(1,dx/60));});
-  ['pointerup','pointercancel'].forEach(ev=>cv.addEventListener(ev,()=>{dragX=null;steerDrag=0;}));
-  document.addEventListener('keydown',e=>{if(e.target===tg)return;
-    if(e.key==='ArrowLeft'){steerBtn=-1;start();}if(e.key==='ArrowRight'){steerBtn=1;start();}
-    if(e.key==='ArrowUp'){e.preventDefault();setThr(thr+0.25);start();}if(e.key==='ArrowDown'){e.preventDefault();setThr(thr-0.25);}});
-  document.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight')steerBtn=0;});
-
-  again.addEventListener('click',()=>{reset();root.scrollIntoView({behavior:'smooth',block:'start'});});
+  knopki.forEach(b=>b.addEventListener('click',()=>nazhal(b)));
+  cv.addEventListener('click',()=>{if(tekAktiv)tekAktiv.click();});  // нажатие на картинку = мигающая кнопка
+  again.addEventListener('click',()=>{otklik();reset();root.scrollIntoView({behavior:'smooth',block:'start'});});
   window.addEventListener('resize',()=>{resize();setThr(thr);});
   resize();reset();raf=requestAnimationFrame(loop);
-  window.__anchar={get st(){return st;},get gap(){return along();},setThr,start}; // для браузерной проверки
+  window.__anchar={get ph(){return ph;},get shag(){return shag;},get gap(){return along();}}; // для браузерной проверки
 })();
