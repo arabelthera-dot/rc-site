@@ -8,8 +8,7 @@
 .uv-igra{margin:14px 0 8px;border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;background:#0c1826}
 .uv-stage{background:radial-gradient(120% 90% at 50% 20%,#14304f 0%,#0b1a2c 60%,#081321 100%);transition:background .4s}
 .uv-igra.umov .uv-stage{background:radial-gradient(120% 90% at 50% 30%,#1c1408 0%,#0a0805 70%)}
-.uv-stage canvas{display:block;width:100%;height:clamp(250px,62vw,380px);touch-action:none;cursor:grab;outline:none}
-.uv-stage canvas:active{cursor:grabbing}
+.uv-stage canvas{display:block;width:100%;height:clamp(250px,62vw,380px);touch-action:manipulation;cursor:default;outline:none}
 .uv-stage canvas:focus-visible{box-shadow:inset 0 0 0 3px #e4c97a}
 .uv-panel{padding:12px 16px 16px;border-top:1px solid rgba(255,255,255,.07)}
 .uv-steps{display:flex;gap:6px;list-style:none;margin:0 0 10px;padding:0;font-size:12.5px;color:#7a9ab8}
@@ -19,19 +18,12 @@
 .uv-steps li.on span{background:#c9a84c;color:#060c17}
 .uv-steps li.ok span{background:#3aa36b;color:#fff}
 .uv-steps li.ok span{font-size:0}.uv-steps li.ok span::after{content:'✓';font-size:12px}
+.uv-task b:first-child{color:#7fe0a6}
 .uv-task{margin:0;font-size:clamp(20px,5.2vw,26px);font-weight:700;line-height:1.25;color:#fff}
 .uv-sub{margin:4px 0 0;min-height:1.5em;font-size:clamp(15px,4vw,17px);color:#e4c97a}
-.uv-meter{position:relative;margin:10px 0 0;height:12px;border-radius:8px;background:rgba(255,255,255,.08);max-width:340px}
-.uv-meter-fill{height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#7a5a20,#e4c97a);transition:width .4s}
-.uv-meter.ok .uv-meter-fill{background:linear-gradient(90deg,#2f8f5b,#7fe0a6)}
-.uv-meter-mark{position:absolute;left:66.7%;top:-4px;bottom:-4px;width:2px;background:#fff}
-.uv-meter-bell{position:absolute;left:calc(66.7% + 6px);top:-7px;font-size:15px}
 .uv-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 .uv-btns button,.uv-again{font:inherit;font-size:16px;font-weight:600;min-height:48px;padding:10px 18px;border-radius:26px;border:1px solid rgba(201,168,76,.45);background:rgba(201,168,76,.12);color:#f3e2b0;cursor:pointer}
-.uv-btns button[aria-pressed=true]{background:#e4a33a;color:#1a1004;border-color:#e4a33a}
-.uv-btns button.zov{animation:uv-zov 1.1s ease-in-out infinite}
-@keyframes uv-zov{0%,100%{box-shadow:0 0 0 0 rgba(228,201,122,.0)}50%{box-shadow:0 0 0 7px rgba(228,201,122,.35)}}
-@media (prefers-reduced-motion:reduce){.uv-btns button.zov{animation:none;box-shadow:0 0 0 3px rgba(228,201,122,.6)}}
+.uv-btns button[aria-pressed=true]{background:rgba(228,163,58,.2);color:#ffd68a;border-color:#e4a33a}
 .uv-btns button:focus-visible,.uv-again:focus-visible{outline:3px solid #e4c97a;outline-offset:2px}
 .uv-finale{padding:18px 16px 20px;border-top:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,#14223a,#0c1826)}
 .uv-finale h2{margin:0 0 8px;font-family:'Playfair Display',Georgia,serif;font-size:22px;color:#e4c97a}
@@ -42,3 +34,26 @@
 .uv-src{font-size:13px;color:#7a9ab8}
 .uv-note{font-size:12.5px;color:#7a9ab8;margin:8px 0 30px}
 @media (max-width:420px){.uv-steps{font-size:11.5px}.uv-steps li{padding:4px 6px;gap:4px}}
+/* «Как играть» — статичный блок под картинкой (Р201) */
+.uv-rules{padding:14px 16px 16px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025)}
+.uv-rules-h{margin:0 0 8px;font-family:'Playfair Display',Georgia,serif;font-size:19px;color:#e4c97a}
+.uv-rules-shagi{margin:0;padding-left:22px;font-size:15.5px;line-height:1.5;color:#c9d6e3}
+.uv-rules-shagi li{margin:0 0 6px}
+.uv-rules-shagi li::marker{color:#c9a84c;font-weight:700}
+.uv-rules-shagi b{color:#f3e2b0}
+
+/* igra-ruka — подсказка «куда жать» (Р206); вид — как у образца 29 янв. (ko-hand, rc-site e4f86d74). Вставить в конец css игры как есть. */
+.igra-ruka-zona{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+.igra-ruka-zona button{touch-action:manipulation;min-height:48px;min-width:48px}
+.igra-ruka-zona .igra-pravila{-webkit-user-select:text;user-select:text}
+.igra-ruka{position:absolute;z-index:30;width:40px;height:48px;margin:0;pointer-events:none;animation:igra-tap 1.1s ease-in-out infinite;transform-origin:15px 4px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
+.igra-ruka[hidden]{display:none}
+.igra-ruka svg{display:block}
+.igra-ruka-krug{position:absolute;left:-7px;top:-14px;width:44px;height:44px;border:3px solid #fff;border-radius:50%;opacity:0;animation:igra-krug 1.1s ease-out infinite}
+@keyframes igra-tap{0%,100%{transform:translate(-15px,10px) scale(1)}40%{transform:translate(-15px,-4px) scale(.88)}55%{transform:translate(-15px,-4px) scale(.88)}}
+@keyframes igra-krug{0%,35%{opacity:0;transform:scale(.3)}45%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(1.2)}}
+.igra-ved button:not(.igra-aktiv){opacity:.42;filter:saturate(.4)}
+.igra-aktiv{position:relative;z-index:2;opacity:1!important;filter:none!important;animation:igra-puls 1.1s ease-in-out infinite!important;outline:3px solid #e9cf7e;outline-offset:3px}
+@keyframes igra-puls{0%,100%{box-shadow:0 0 0 0 rgba(233,207,126,.75)}50%{box-shadow:0 0 0 12px rgba(233,207,126,0)}}
+.igra-zhmyak{transform:scale(.94)!important;transition:transform 60ms}
+@media (prefers-reduced-motion:reduce){.igra-ruka,.igra-aktiv{animation:none!important}.igra-ruka{transform:translate(-15px,0)}.igra-ruka-krug{display:none}}

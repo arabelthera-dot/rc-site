@@ -1,10 +1,53 @@
+/* igra-ruka — вид как у образца 29 янв. (ko-hand, rc-site e4f86d74). Подсказка «куда жать» (Р206, 23.10.2026): на шаге одна активная кнопка
+   пульсирует, над ней рука «тап-тап», остальные кнопки игры приглушены.
+   Вставить В НАЧАЛО скрипта игры как есть. Использование:
+     var ruka = igraRuka(root);   // root — секция игры
+     ruka.na(knopka);             // показать руку над кнопкой, кнопка пульсирует
+     ruka.ubrat();                // убрать (пока идёт анимация / финал)
+   Отклик на касание (≤100 мс): класс .igra-zhmyak на pointerdown + navigator.vibrate(20). */
+function igraRuka(root) {
+  var el = document.createElement('span');
+  el.className = 'igra-ruka'; el.setAttribute('aria-hidden', 'true'); el.hidden = true;
+  el.innerHTML = '<i class="igra-ruka-krug"></i><svg viewBox="0 0 40 48" width="40" height="48"><path d="M15 4c2.2 0 4 1.8 4 4v13l1.2-.5c1.9-.7 4 .2 4.8 2l.3.7.8-.3c1.9-.6 4 .3 4.7 2.2l.2.5c1.9-.4 3.8.7 4.4 2.5.2.6.3 1.2.3 1.8V36c0 5.5-4.5 10-10 10h-4.6c-3 0-5.8-1.4-7.7-3.7L5.2 33.5c-1.3-1.6-1.1-4 .5-5.3 1.5-1.2 3.7-1.1 5.1.3l.2.2V8c0-2.2 1.8-4 4-4z" fill="#fff" stroke="#1a1206" stroke-width="2.2" stroke-linejoin="round"/></svg>';
+  if (getComputedStyle(root).position === 'static') root.style.position = 'relative';
+  root.appendChild(el);
+  var cel = null;
+  function mesto() {
+    if (!cel || el.hidden) return;
+    var r = cel.getBoundingClientRect(), b = root.getBoundingClientRect();
+    el.style.left = Math.round(r.left - b.left + r.width * 0.86) + 'px';
+    el.style.top = Math.round(r.top - b.top + r.height * 0.5) + 'px';
+  }
+  function ubrat() {
+    if (cel) cel.classList.remove('igra-aktiv');
+    cel = null; el.hidden = true; root.classList.remove('igra-ved');
+  }
+  function na(knopka) {
+    ubrat();
+    if (!knopka) return;
+    cel = knopka; cel.classList.add('igra-aktiv'); root.classList.add('igra-ved');
+    el.hidden = false; mesto();
+    requestAnimationFrame(mesto);
+  }
+  window.addEventListener('resize', mesto);
+  if (window.ResizeObserver) new ResizeObserver(mesto).observe(root);
+  root.addEventListener('pointerdown', function (e) {
+    var k = e.target.closest('button, [role="button"]');
+    if (!k || !root.contains(k)) return;
+    k.classList.add('igra-zhmyak');
+    setTimeout(function () { k.classList.remove('igra-zhmyak'); }, 160);
+    if (navigator.vibrate) { try { navigator.vibrate(20); } catch (_) {} }
+  });
+  root.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  return { na: na, ubrat: ubrat, mesto: mesto };
+}
+
 /* Игра «Верёвка с колокольчиком» — 23 января, Николай Умов, поток энергии (1874).
    Движок: струна (волновое уравнение, число Куранта 1 — импульс бежит без искажений),
    левый конец — ручка посетителя, правый — колокольчик (поглощающий конец, энергия уходит в него),
    «палец» — закреплённая точка (полное отражение). Слой «глазами Умова» рисует плотность энергии
    w = ½(v² + c²·y'²) светящимся сгустком и стрелку по знаку потока S = −v·y'.
-   Мировая практика: PhET «Wave on a String» (ручка + кнопка импульса, закреплённый конец, замедление),
-   Exploratorium (просто дёрни — эффект без таблички). Р183, черновик для показа Сергею (Р177). */
+   Управление — только кнопки, одно нажатие на шаг (Р201, Р206); канвас — картинка. Р183, черновик для показа Сергею (Р177). */
 (function () {
   'use strict';
   var root = document.querySelector('[data-umov-igra]');
@@ -12,8 +55,9 @@
   var cv = root.querySelector('canvas');
   var ctx = cv.getContext('2d');
   var $ = function (s) { return root.querySelector(s); };
-  var elTask = $('.uv-task'), elSub = $('.uv-sub'), elMeter = $('.uv-meter'), elMeterFill = $('.uv-meter-fill');
+  var elTask = $('.uv-task'), elSub = $('.uv-sub');
   var btnPull = $('.uv-pull'), btnEye = $('.uv-eye'), btnPin = $('.uv-pin'), btnAgain = $('.uv-again');
+  var knopki = [btnPull, btnEye, btnPin];
   var steps = root.querySelectorAll('.uv-steps li');
   var finale = $('.uv-finale');
 
@@ -25,17 +69,26 @@
   var acc = 0, last = 0;
 
   var hand = 0;                // смещение ручки, px
-  var drag = null;             // {startY, y0, t0, moved}
-  var spring = 0;              // скорость возврата ручки после отпускания
-  var script = null;           // готовый рывок кнопкой: {t, T, A}
+  var spring = 0;              // скорость возврата ручки
+  var script = null;           // рывок кнопкой: {t, T, A}
+  var PIN_AT = Math.round(N * 0.55);
   var pin = -1;                // узел под пальцем, −1 — нет
   var umov = false;
-  var step = 1, done = false;
+  var step = 1, done = false;  // шаги 1–5, потом финал
   var bell = { a: 0, w: 0, ring: 0, glow: 0 };
-  var ev = null;               // текущий рывок: {absorbed, launchE, t, umov, pin, ringed, peak}
+  var ev = null;               // текущий рывок: {absorbed, t, umov, pin, ringed, rest, sinceRing}
   var E_REF = 1, THRESH = 1;
-  var hintT = 0;
   var audio = null, lastRatio = 0;
+
+  /* Р206: на шаге одна активная пульсирующая кнопка + рука «тап-тап»; остальные приглушены (общий компонент igraRuka) */
+  var ruka = igraRuka(root), tekAktiv = null;
+  function aktiv(btn) {
+    tekAktiv = btn || null;
+    knopki.forEach(function (b) { b.setAttribute('aria-disabled', b === btn ? 'false' : 'true'); });
+    if (btn) ruka.na(btn); else ruka.ubrat();
+  }
+  function mimo() { if (tekAktiv) elSub.textContent = 'Жми мигающую кнопку'; }
+  function otklik() { try { if (navigator.vibrate) navigator.vibrate(20); } catch (e) { /* нет вибро */ } }
 
   function layout() {
     var r = cv.getBoundingClientRect();
@@ -46,7 +99,6 @@
     ry = H * 0.56; dx = (x1 - x0) / N;
   }
   function amp() { return H * 0.17; }        // рывок кнопкой
-  function maxHand() { return H * 0.36; }
 
   /* ---------- физика ---------- */
   function driveLeft(dt) {
@@ -55,8 +107,7 @@
       var p = script.t / script.T;
       hand = p >= 1 ? 0 : -script.A * Math.sin(Math.PI * p);
       if (p >= 1) script = null;
-    } else if (!drag) {
-      // пружинка возвращает ручку в покой — это вторая половина рывка
+    } else {
       spring += (-hand * 900 - spring * 42) * dt;
       hand += spring * dt;
       if (Math.abs(hand) < 0.05 && Math.abs(spring) < 0.5) { hand = 0; spring = 0; }
@@ -88,6 +139,10 @@
     E_REF = s.absorbed || 1;
     THRESH = E_REF * 0.55;
   }
+  function calm() {   // верёвка в покое (для «Сыграть ещё раз»)
+    state.y.fill(0); state.yOld.fill(0); state.yNew.fill(0);
+    hand = 0; spring = 0; script = null; state.hand = 0; ev = null;
+  }
 
   function energyAt(i) {
     var v = state.y[i] - state.yOld[i];
@@ -103,36 +158,23 @@
   /* ---------- события игры ---------- */
   function launchCheck(dt) {
     var moving = Math.abs(state.hand) > 2;
-    if (moving && !ev) {
-      ev = { absorbed: 0, t: 0, umov: umov, pin: pin > 0, ringed: false, rest: 0, sinceRing: 0 };
-      if (window.rcUmovLog) window.rcUmovLog('рывок');
-    }
+    if (moving && !ev) ev = { absorbed: 0, t: 0, umov: umov, pin: pin > 0, ringed: false, rest: 0, sinceRing: 0 };
     if (!ev) return;
     ev.t += dt;
-    if (umov) ev.umov = true;
-    if (pin > 0) ev.pin = true;
     var travel = N / STEPS_PER_SEC;
     // итог рывка: звон — сразу, иначе — когда посылка точно успела бы доехать после того, как ручку отпустили
-    if (drag || script || Math.abs(state.hand) > 0.5) ev.rest = 0; else ev.rest += dt * (umov ? 0.5 : 1);
+    if (script || Math.abs(state.hand) > 0.5) ev.rest = 0; else ev.rest += dt * (umov ? 0.5 : 1);
     if (ev.ringed) ev.sinceRing += dt;
     if (ev.sinceRing > 0.6 || ev.rest > travel * 1.25 || ev.t > 30) finish();
   }
+  // рывок доехал (или не доехал): нужный исход — следующий шаг, иначе тот же шаг заново
   function finish() {
     var e = ev; ev = null;
-    var ratio = e.absorbed / THRESH; lastRatio = ratio;
-    showMeter(ratio);
-    if (step === 1) {
-      if (e.ringed) { pass(2); }
-      else if (ratio > 0.05) say('Почти! Не хватило силы', 'Потяни ручку пальцем вниз подальше и отпусти — или нажми «Дёрнуть»');
-      else if (e.pin) say('Палец мешает — убери его и дёрни', '');
-    } else if (step === 2) {
-      if (e.umov && ratio > 0.05) pass(3);
-      else if (!e.umov) say('Сначала нажми на глаз', 'Он покажет, что едет по верёвке');
-    } else if (step === 3) {
-      if (e.pin && !e.ringed) pass(4);
-      else if (!e.pin) say('Прижми верёвку пальцем — коснись её посередине', 'Или нажми кнопку с пальцем внизу');
-      else say('Посылка проскочила — прижми ближе к колокольчику', '');
-    }
+    lastRatio = e.absorbed / THRESH;
+    if (done) return;
+    if (step === 1) { if (e.ringed) goStep(2); else goStep(1, 'Не дозвонились — нажми ещё раз'); }
+    else if (step === 3) { if (e.ringed || lastRatio > 0.05) goStep(4); else goStep(3, 'Рывок не доехал — нажми ещё раз'); }
+    else if (step === 5) { if (e.pin && !e.ringed) goStep(6); else goStep(5, 'Колокольчик зазвенел — нажми ещё раз'); }
   }
   function onAbsorb(out) {
     if (!ev) return;
@@ -144,29 +186,33 @@
     }
   }
 
-  /* ---------- шаги ---------- */
-  var TEXT = {
-    1: ['Позвони в колокольчик', 'Дёрни верёвку за ручку слева'],
-    2: ['Звенит! А что едет по верёвке?', 'Нажми на глаз и дёрни ещё раз'],
-    3: ['А теперь не дай ему зазвонить', 'Прижми верёвку пальцем посередине и дёрни'],
-    4: ['Получилось!', '']
+  /* ---------- шаги: одно нажатие на шаг ---------- */
+  var SHAG = {
+    1: [btnPull, 'нажми «Дёрнуть»', 'Колокольчик справа зазвенит, если рывок до него доедет'],
+    2: [btnEye, 'нажми «Глазами Умова»', 'Звенит! Рывок доехал по верёвке до колокольчика. Теперь посмотрим, что именно по ней едет'],
+    3: [btnPull, 'нажми «Дёрнуть»', 'Включено «Глазами Умова»: всё идёт медленнее, а энергия светится'],
+    4: [btnPin, 'нажми «Прижать пальцем»', 'Видел светящийся комок? Это энергия едет к колокольчику, а сама верёвка остаётся на месте. Теперь не дай ему зазвонить'],
+    5: [btnPull, 'нажми «Дёрнуть»', 'Палец прижал верёвку посередине. Доедет ли энергия до колокольчика?'],
+    6: [null, 'прочитай рассказ ниже', 'Получилось! Колокольчик молчит: энергия упёрлась в палец и поехала назад']
   };
-  function pass(n) {
+  var ETAP = [0, 1, 2, 2, 3, 3, 4];   // шаг → этап полоски (Позвонить / Увидеть / Помешать)
+  function goStep(n, sub) {
     step = n;
-    steps.forEach(function (li, k) { li.classList.toggle('on', k + 1 === n); li.classList.toggle('ok', k + 1 < n); });
-    btnEye.hidden = n < 2; btnPin.hidden = n < 3;
-    if (n > 1 && n < 4) elMeter.hidden = true;
-    btnEye.classList.toggle('zov', n === 2 && !umov);
-    btnPin.classList.toggle('zov', n === 3 && pin < 0);
-    if (n === 2) say(TEXT[2][0], TEXT[2][1]);
-    if (n === 3) say(TEXT[3][0], TEXT[3][1]);
-    if (n === 4) { done = true; finale.hidden = false; setTimeout(function () { finale.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 1200); say('Получилось! Колокольчик молчит', 'Посылка упёрлась в палец и поехала назад'); }
+    var e = ETAP[n];
+    steps.forEach(function (li, k) { li.classList.toggle('on', k + 1 === e); li.classList.toggle('ok', k + 1 < e); });
+    aktiv(SHAG[n][0]);
+    say(SHAG[n][1], sub || SHAG[n][2]);
+    if (n === 6) {
+      done = true; finale.hidden = false;
+      setTimeout(function () { if (done) finale.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 1200);
+    }
   }
-  function say(a, b) { elTask.textContent = a; elSub.textContent = b || ''; }
-  function showMeter(r) {
-    elMeter.hidden = false;
-    elMeterFill.style.width = Math.max(4, Math.min(100, r * 66.7)) + '%';
-    elMeter.classList.toggle('ok', r >= 1);
+  // задание всегда начинается с «Что сделать сейчас:» (контракт Р199), вторая строка — пояснение, что произошло
+  function say(a, b) {
+    elTask.textContent = '';
+    var m = document.createElement('b'); m.textContent = 'Что сделать сейчас:';
+    elTask.appendChild(m); elTask.appendChild(document.createTextNode(' ' + a));
+    elSub.textContent = b || '';
   }
 
   /* ---------- звук ---------- */
@@ -186,68 +232,55 @@
     } catch (e) { /* без звука */ }
   }
 
-  /* ---------- ввод ---------- */
-  function pos(e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
-  function nearRope(p) {
-    if (p.x < x0 + (x1 - x0) * 0.12 || p.x > x1 - 10) return -1;
-    var i = Math.round((p.x - x0) / dx);
-    return Math.abs(p.y - (ry + state.y[i])) < 46 ? i : -1;
-  }
-  cv.addEventListener('pointerdown', function (e) {
-    var p = pos(e);
-    hintT = -1;
-    if (p.x < x0 + Math.max(70, (x1 - x0) * 0.22)) {
-      cv.setPointerCapture(e.pointerId);
-      drag = { startY: p.y, h0: state.hand, t0: performance.now(), moved: 0 };
-      script = null; spring = 0;
-      e.preventDefault();
-      return;
-    }
-    if (step >= 3) {
-      var i = nearRope(p);
-      if (i > 0) { setPin(pin === i ? -1 : i); e.preventDefault(); }
-    }
-  });
-  cv.addEventListener('pointermove', function (e) {
-    if (!drag) return;
-    var p = pos(e), m = maxHand();
-    drag.moved = Math.max(drag.moved, Math.abs(p.y - drag.startY));
-    hand = Math.max(-m, Math.min(m, drag.h0 + (p.y - drag.startY) * 1.15));
-  });
-  function up() {
-    if (!drag) return;
-    var quick = drag.moved < 8 && performance.now() - drag.t0 < 400;
-    drag = null;
-    if (quick) pull();
-  }
-  cv.addEventListener('pointerup', up);
-  cv.addEventListener('pointercancel', up);
-
-  function pull(strong) {
-    hintT = -1;
-    script = { t: 0, T: 0.22, A: amp() * (strong ? 1.5 : 1) };
+  /* ---------- ввод: только нажатия на кнопки (click) ---------- */
+  function pull() {
+    script = { t: 0, T: 0.22, A: amp() };
+    driveLeft(1 / STEPS_PER_SEC); state.hand = hand;   // ручка дёргается в том же кадре
+    aktiv(null);                                        // пока волна едет — все кнопки ждут
+    say('смотри на колокольчик', 'Рывок едет по верёвке…');
   }
   function setPin(i) {
     pin = i; state.pin = i;
     btnPin.setAttribute('aria-pressed', pin > 0 ? 'true' : 'false');
-    btnPin.classList.toggle('zov', step === 3 && pin < 0);
-    if (step === 3 && pin > 0) say('Палец держит верёвку. Теперь дёрни!', '');
   }
-  btnPull.addEventListener('click', function () { pull(false); });
+  function setUmov(on) {
+    umov = on;
+    btnEye.setAttribute('aria-pressed', on ? 'true' : 'false');
+    root.classList.toggle('umov', on);
+  }
+  btnPull.addEventListener('click', function () {
+    otklik();
+    if (tekAktiv !== btnPull) return mimo();
+    if (step === 1 || step === 3 || step === 5) pull();
+  });
   btnEye.addEventListener('click', function () {
-    umov = !umov;
-    btnEye.setAttribute('aria-pressed', umov ? 'true' : 'false');
-    btnEye.classList.remove('zov');
-    root.classList.toggle('umov', umov);
-    if (step === 2 && umov) say('Глазами Умова. Дёрни!', 'Смотри, что поедет к колокольчику');
+    otklik();
+    if (step !== 2 || tekAktiv !== btnEye) return mimo();
+    setUmov(true);                 // не тумблер: вид остаётся включённым до «Сыграть ещё раз»
+    draw(performance.now());
+    goStep(3);
   });
-  btnPin.addEventListener('click', function () { setPin(pin > 0 ? -1 : Math.round(N * 0.55)); });
+  btnPin.addEventListener('click', function () {
+    otklik();
+    if (step !== 4 || tekAktiv !== btnPin) return mimo();
+    setPin(PIN_AT);                // не тумблер: палец остаётся до «Сыграть ещё раз»
+    draw(performance.now());
+    goStep(5);
+  });
   btnAgain.addEventListener('click', function () {
-    finale.hidden = true; done = false; setPin(-1); umov = false; root.classList.remove('umov');
-    btnEye.setAttribute('aria-pressed', 'false'); elMeter.hidden = true; hintT = 0; pass(1); say(TEXT[1][0], TEXT[1][1]);
+    otklik();
+    finale.hidden = true; done = false;
+    calm(); setPin(-1); setUmov(false);
+    goStep(1);
+    root.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+  cv.addEventListener('click', function () { if (tekAktiv) tekAktiv.click(); });
   root.addEventListener('keydown', function (e) {
-    if (e.target === cv && (e.key === ' ' || e.key === 'Enter')) { pull(e.shiftKey); e.preventDefault(); }
+    if (e.target === cv && (e.key === ' ' || e.key === 'Enter')) {
+      e.preventDefault();
+      var b = SHAG[step] && SHAG[step][0];
+      if (b && b === tekAktiv) b.click();
+    }
   });
 
   /* ---------- рисование ---------- */
@@ -278,8 +311,6 @@
     drawHandle(pts[0], now);
     if (pin > 0) drawFinger(pts[pin], false);
     drawBell();
-    if (hintT >= 0) drawHint(now);
-    if (step === 3 && pin < 0 && hintT < 0) drawPinHint(now);
   }
   function drawPost() {
     var bx = x1 + Math.max(26, W * 0.045);
@@ -349,34 +380,6 @@
     ctx.beginPath(); ctx.ellipse(x, yy - 9, 5, 6, 0, 0, 7); ctx.fill();
     ctx.restore();
   }
-  function drawHint(now) {
-    // призрачная рука тянет ручку вниз-вверх: подсказка действием, без слов
-    var t = (now / 1000) % 1.8, k = t < 0.9 ? Math.sin(Math.PI * t / 0.9) : 0;
-    var hx = x0 - 16, hy = ry + k * H * 0.16;
-    ctx.save();
-    ctx.globalAlpha = 0.9;
-    ctx.strokeStyle = 'rgba(228,201,122,.9)'; ctx.lineWidth = 2.5;
-    // стрелки ↕
-    ctx.beginPath();
-    ctx.moveTo(hx + 26, ry - 26); ctx.lineTo(hx + 26, ry + 34);
-    ctx.moveTo(hx + 20, ry - 18); ctx.lineTo(hx + 26, ry - 26); ctx.lineTo(hx + 32, ry - 18);
-    ctx.moveTo(hx + 20, ry + 26); ctx.lineTo(hx + 26, ry + 34); ctx.lineTo(hx + 32, ry + 26);
-    ctx.stroke();
-    // пульсирующее кольцо вокруг ручки
-    ctx.strokeStyle = 'rgba(228,201,122,' + (0.6 - 0.6 * ((now / 1000) % 1)) + ')';
-    ctx.beginPath(); ctx.arc(hx, ry, 24 + 14 * ((now / 1000) % 1), 0, 7); ctx.stroke();
-    ctx.restore();
-    drawFinger([hx, hy + 2], true);
-  }
-  function drawPinHint(now) {
-    var i = Math.round(N * 0.55), p = [x0 + i * dx, ry];
-    var k = Math.abs(Math.sin(now / 450));
-    ctx.save(); ctx.globalAlpha = 0.45 + 0.4 * k;
-    drawFinger([p[0], p[1] - 14 * k], true);
-    ctx.strokeStyle = 'rgba(228,201,122,.8)'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.arc(p[0], p[1], 10 + 10 * k, 0, 7); ctx.stroke();
-    ctx.restore();
-  }
   function drawEnergy(pts) {
     // светящийся сгусток: толщина ~ корень плотности энергии
     ctx.save();
@@ -427,7 +430,7 @@
     var sdt = 1 / STEPS_PER_SEC;
     while (acc >= 1) {
       acc -= 1;
-      if (!drag) driveLeft(sdt); else spring = 0;
+      driveLeft(sdt);
       state.hand = hand;
       onAbsorb(simStep());
       launchCheck(sdt / slow);
@@ -443,8 +446,8 @@
 
   layout(); calibrate();
   window.addEventListener('resize', function () { layout(); calibrate(); });
-  pass(1); say(TEXT[1][0], TEXT[1][1]);
+  goStep(1);
   requestAnimationFrame(frame);
   // для проверки сценария в браузере (снимки, тест)
-  window.rcUmov = { dbg: function () { return { E_REF: E_REF, THRESH: THRESH, H: H, W: W, hand: hand, ev: ev, last: lastRatio }; }, pull: pull, eye: function () { btnEye.click(); }, pin: function (on) { setPin(on ? Math.round(N * 0.55) : -1); }, step: function () { return step; } };
+  window.rcUmov = { dbg: function () { return { E_REF: E_REF, THRESH: THRESH, H: H, W: W, hand: hand, ev: ev, last: lastRatio }; }, step: function () { return step; } };
 })();

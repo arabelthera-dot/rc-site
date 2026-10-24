@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Черновик игры · 23 января · Николай Умов — поток энергии (1874)</title>
-<link rel="stylesheet" href="../assets/umov-verevka.css">
+<link rel="stylesheet" href="../assets/umov-verevka.css?v=288a7cdd">
 </head>
 <body class="uv-body">
 <header class="uv-top">
@@ -17,9 +17,9 @@
 </header>
 
 <main class="uv-wrap">
-  <section class="uv-igra" data-umov-igra aria-label="Игра: верёвка с колокольчиком">
+  <section class="uv-igra igra-ruka-zona" data-umov-igra aria-label="Игра: верёвка с колокольчиком">
     <div class="uv-stage">
-      <canvas tabindex="0" aria-label="Длинная верёвка: слева ручка, справа колокольчик. Пробел или Enter — дёрнуть, Shift+Enter — сильнее."></canvas>
+      <canvas tabindex="0" aria-label="Длинная верёвка: слева ручка, справа колокольчик. Пробел или Enter — нажать кнопку текущего шага."></canvas>
     </div>
     <div class="uv-panel">
       <ol class="uv-steps" aria-label="Задания">
@@ -27,14 +27,22 @@
         <li><span>2</span>Увидеть</li>
         <li><span>3</span>Помешать</li>
       </ol>
-      <p class="uv-task" aria-live="polite">Позвони в колокольчик</p>
-      <p class="uv-sub">Дёрни верёвку за ручку слева</p>
-      <div class="uv-meter" hidden aria-hidden="true"><div class="uv-meter-fill"></div><i class="uv-meter-mark"></i><span class="uv-meter-bell">🔔</span></div>
+      <p class="uv-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> нажми «Дёрнуть»</p>
+      <p class="uv-sub igra-poyasnenie">Колокольчик справа зазвенит, если рывок до него доедет</p>
       <div class="uv-btns">
         <button type="button" class="uv-pull"><span aria-hidden="true">✊</span> Дёрнуть</button>
-        <button type="button" class="uv-eye" aria-pressed="false" hidden><span aria-hidden="true">👁</span> Глазами Умова</button>
-        <button type="button" class="uv-pin" aria-pressed="false" hidden><span aria-hidden="true">☝</span> Прижать пальцем</button>
+        <button type="button" class="uv-eye" aria-pressed="false" aria-disabled="true"><span aria-hidden="true">👁</span> Глазами Умова</button>
+        <button type="button" class="uv-pin" aria-pressed="false" aria-disabled="true"><span aria-hidden="true">☝</span> Прижать пальцем</button>
       </div>
+    </div>
+
+    <div class="uv-rules">
+      <h2 class="uv-rules-h">Как играть</h2>
+      <ol class="uv-rules-shagi">
+        <li>Нажимай кнопку, которая мигает, — к ней показывает рука. Одно нажатие на шаг.</li>
+        <li><b>«Дёрнуть»</b> — по верёвке бежит рывок, колокольчик звенит. <b>«Глазами Умова»</b> — замедленный показ: по верёвке едет светящийся комок, это энергия рывка.</li>
+        <li><b>«Прижать пальцем»</b> — палец прижимает верёвку посередине, и колокольчик промолчит. Тогда ниже откроется рассказ про физика Николая Умова.</li>
+      </ol>
     </div>
 
     <div class="uv-finale" hidden>
@@ -54,6 +62,6 @@
   </section>
   <p class="uv-note">Черновик для показа (Р183). Страница дня собирается отдельно.</p>
 </main>
-<script src="../assets/umov-verevka.js" defer></script>
+<script src="../assets/umov-verevka.js?v=b6fd7d81" defer></script>
 </body>
 </html>
