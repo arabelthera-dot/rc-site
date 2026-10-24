@@ -1,3 +1,46 @@
+/* igra-ruka — вид как у образца 29 янв. (ko-hand, rc-site e4f86d74). Подсказка «куда жать» (Р206, 23.10.2026): на шаге одна активная кнопка
+   пульсирует, над ней рука «тап-тап», остальные кнопки игры приглушены.
+   Вставить В НАЧАЛО скрипта игры как есть. Использование:
+     var ruka = igraRuka(root);   // root — секция игры
+     ruka.na(knopka);             // показать руку над кнопкой, кнопка пульсирует
+     ruka.ubrat();                // убрать (пока идёт анимация / финал)
+   Отклик на касание (≤100 мс): класс .igra-zhmyak на pointerdown + navigator.vibrate(20). */
+function igraRuka(root) {
+  var el = document.createElement('span');
+  el.className = 'igra-ruka'; el.setAttribute('aria-hidden', 'true'); el.hidden = true;
+  el.innerHTML = '<i class="igra-ruka-krug"></i><svg viewBox="0 0 40 48" width="40" height="48"><path d="M15 4c2.2 0 4 1.8 4 4v13l1.2-.5c1.9-.7 4 .2 4.8 2l.3.7.8-.3c1.9-.6 4 .3 4.7 2.2l.2.5c1.9-.4 3.8.7 4.4 2.5.2.6.3 1.2.3 1.8V36c0 5.5-4.5 10-10 10h-4.6c-3 0-5.8-1.4-7.7-3.7L5.2 33.5c-1.3-1.6-1.1-4 .5-5.3 1.5-1.2 3.7-1.1 5.1.3l.2.2V8c0-2.2 1.8-4 4-4z" fill="#fff" stroke="#1a1206" stroke-width="2.2" stroke-linejoin="round"/></svg>';
+  if (getComputedStyle(root).position === 'static') root.style.position = 'relative';
+  root.appendChild(el);
+  var cel = null;
+  function mesto() {
+    if (!cel || el.hidden) return;
+    var r = cel.getBoundingClientRect(), b = root.getBoundingClientRect();
+    el.style.left = Math.round(r.left - b.left + r.width * 0.86) + 'px';
+    el.style.top = Math.round(r.top - b.top + r.height * 0.5) + 'px';
+  }
+  function ubrat() {
+    if (cel) cel.classList.remove('igra-aktiv');
+    cel = null; el.hidden = true; root.classList.remove('igra-ved');
+  }
+  function na(knopka) {
+    ubrat();
+    if (!knopka) return;
+    cel = knopka; cel.classList.add('igra-aktiv'); root.classList.add('igra-ved');
+    el.hidden = false; mesto();
+    requestAnimationFrame(mesto);
+  }
+  window.addEventListener('resize', mesto);
+  if (window.ResizeObserver) new ResizeObserver(mesto).observe(root);
+  root.addEventListener('pointerdown', function (e) {
+    var k = e.target.closest('button, [role="button"]');
+    if (!k || !root.contains(k)) return;
+    k.classList.add('igra-zhmyak');
+    setTimeout(function () { k.classList.remove('igra-zhmyak'); }, 160);
+    if (navigator.vibrate) { try { navigator.vibrate(20); } catch (_) {} }
+  });
+  root.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  return { na: na, ubrat: ubrat, mesto: mesto };
+}
 /* Игра «Уложи команды в шаг» (27 января, «Эльбрус»): рецепт супа = программа, лента шагов = время машины.
    Один повар — одна команда за шаг (8 шагов). Два повара («Эльбрус») — по две за шаг, если команда не ждёт чужого результата. */
 (function () {
@@ -19,25 +62,29 @@
 
   var T = [
     { id: 'w1', t: 'Налей воду', ic: 'drop', deps: [] },
-    { id: 'w2', t: 'Вскипяти воду', ic: 'fire', deps: ['w1'], why: 'кипятить нечего — воды в кастрюле ещё нет' },
-    { id: 'w3', t: 'Посоли воду', ic: 'salt', deps: ['w2'], why: 'солить рано — вода ещё не кипит' },
+    { id: 'w2', t: 'Вскипяти воду', ic: 'fire', deps: ['w1'] },
+    { id: 'w3', t: 'Посоли воду', ic: 'salt', deps: ['w2'] },
     { id: 'p1', t: 'Помой картошку', ic: 'potato', deps: [] },
-    { id: 'p2', t: 'Почисти картошку', ic: 'peel', deps: ['p1'], why: 'сначала картошку надо помыть' },
-    { id: 'p3', t: 'Нарежь картошку', ic: 'knife', deps: ['p2'], why: 'сначала картошку надо почистить' },
+    { id: 'p2', t: 'Почисти картошку', ic: 'peel', deps: ['p1'] },
+    { id: 'p3', t: 'Нарежь картошку', ic: 'knife', deps: ['p2'] },
     { id: 'g', t: 'Нарежь зелень', ic: 'leaf', deps: [] },
-    { id: 's', t: 'Брось картошку в воду', ic: 'pot', deps: ['w3', 'p3'], why: 'нужна солёная кипящая вода и нарезанная картошка' }
+    { id: 's', t: 'Брось картошку в воду', ic: 'pot', deps: ['w3', 'p3'] }
   ];
   var byId = {}; T.forEach(function (x, i) { x.n = i + 1; byId[x.id] = x; });
 
   var $ = function (s) { return root.querySelector(s); };
   var pool = $('.el-pool'), rowsEl = $('.el-rows'), cooksEl = $('.el-cooks');
-  var task = $('.el-task'), sub = $('.el-sub'), oops = $('.el-oops'), nEl = $('.el-n');
-  var race = $('.el-race'), win = $('.el-win'), btnNext = $('.el-next'), btnReset = $('.el-reset');
+  var task = $('.el-task'), sub = $('.el-sub'), nEl = $('.el-n');
+  var race = $('.el-race'), win = $('.el-win'), btnNext = $('.el-next');
   var steps = root.querySelectorAll('.el-steps li');
+  var ruka = igraRuka(root);
+
+  function setTask(t) { task.innerHTML = '<b>Что сделать сейчас:</b> ' + t; }
 
   var mode = 1;          // 1 — один повар, 2 — «Эльбрус», два повара
   var place = {};        // id -> номер шага (0..7)
-  var selected = null, demo = null, busy = false, touched = false;
+  var order = [];        // какие плитки посетитель кладёт сам, по очереди
+  var cel = null, busy = false;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function setStep(k) { steps.forEach(function (li, i) { li.classList.toggle('on', i === k - 1); }); }
@@ -49,9 +96,8 @@
       if (place[x.id] != null) return;
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'el-tile'; b.dataset.id = x.id; b.setAttribute('role', 'listitem');
-      b.setAttribute('aria-label', x.n + '. ' + x.t + ' — перетащи на шаг');
+      b.setAttribute('aria-label', x.n + '. ' + x.t);
       b.innerHTML = tileHTML(x);
-      if (selected === x.id) b.classList.add('sel');
       pool.appendChild(b);
     });
     var left = pool.children.length; pool.hidden = !left; $('.el-label').hidden = !left;
@@ -67,14 +113,12 @@
       for (var c = 0; c < 2; c++) {
         var s = document.createElement('div');
         s.className = 'el-slot' + (mode === 1 && c === 1 ? ' off' : '');
-        s.dataset.row = r;
         var x = inRow[c];
         if (x) {
-          var b2 = document.createElement('button');
-          b2.type = 'button'; b2.className = 'el-tile done'; b2.dataset.id = x.id;
-          b2.setAttribute('aria-label', x.t + ', шаг ' + (r + 1) + (mode === 2 ? ' — нажми, чтобы убрать' : ''));
-          b2.innerHTML = tileHTML(x);
-          s.appendChild(b2);
+          var d = document.createElement('span');
+          d.className = 'el-tile done'; d.dataset.id = x.id;
+          d.innerHTML = tileHTML(x);
+          s.appendChild(d);
         }
         row.appendChild(s);
       }
@@ -84,78 +128,71 @@
     nEl.textContent = used.length ? Math.max.apply(null, used.map(function (x) { return place[x.id]; })) + 1 : 0;
   }
 
-  function say(msg) { oops.textContent = msg; }
-  function shake(id) {
-    var el = root.querySelector('.el-tile[data-id="' + id + '"]');
-    if (el) { el.classList.remove('no'); void el.offsetWidth; el.classList.add('no'); }
+  // Одна активная кнопка: мигает, над ней рука. Если не видна — подкрутить к ней.
+  function aktiv(el) {
+    cel = el; ruka.na(el);
+    if (!el) return;
+    var r = el.getBoundingClientRect();
+    if (r.top < 60 || r.bottom > innerHeight - 90) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
   }
-
-  // Можно ли поставить команду в шаг r: всё, чего она ждёт, — строго выше; всё, что ждёт её, — строго ниже.
-  function check(id, r) {
-    var x = byId[id];
-    for (var i = 0; i < x.deps.length; i++) {
-      var d = byId[x.deps[i]], pr = place[d.id];
-      if (pr == null) return 'Рано! «' + x.t + '»: ' + x.why + '. Сначала уложи «' + d.t + '».';
-      if (pr >= r) return '«' + x.t + '» ждёт «' + d.t + '» — положи её на шаг ниже. В одном шаге повара работают одновременно.';
-    }
-    var kids = T.filter(function (k) { return k.deps.indexOf(id) >= 0 && place[k.id] != null && k.id !== id; });
-    for (var j = 0; j < kids.length; j++) {
-      if (place[kids[j].id] <= r) return '«' + kids[j].t + '» ждёт «' + x.t + '» — эту плитку нужно выше.';
-    }
-    var cap = mode === 1 ? 1 : 2;
-    var n = T.filter(function (k) { return place[k.id] === r && k.id !== id; }).length;
-    if (n >= cap) return mode === 1 ? 'В шаге только один повар — одна команда.' : 'В шаге только два повара — клади в другой шаг.';
-    return '';
-  }
+  function tile(id) { return pool.querySelector('.el-tile[data-id="' + id + '"]'); }
+  function zhdat() { cel = null; ruka.ubrat(); }
 
   function nextFree() { for (var r = 0; r < 8; r++) if (!T.some(function (k) { return place[k.id] === r; })) return r; return -1; }
-
-  function tryPlace(id, r) {
-    if (busy) return;
-    if (mode === 1) r = nextFree();
-    if (r < 0) return;
-    var was = place[id]; delete place[id];
-    var err = check(id, r);
-    if (err) { if (was != null) place[id] = was; say(err); render(); shake(id); return; }
-    place[id] = r; selected = null; say('');
-    render(); after();
+  // Самый ранний шаг для команды у двух поваров: всё, чего она ждёт, — выше, и в шаге есть свободный повар.
+  function earliest(id) {
+    var x = byId[id], r = 0;
+    x.deps.forEach(function (d) { r = Math.max(r, place[d] + 1); });
+    while (T.filter(function (k) { return place[k.id] === r; }).length >= 2) r++;
+    return r;
   }
-
-  function unplace(id) {
-    if (busy || mode === 1) return;
-    var kid = T.filter(function (k) { return k.deps.indexOf(id) >= 0 && place[k.id] != null; })[0];
-    if (kid) { say('Сначала убери «' + kid.t + '» — она ждёт эту команду.'); shake(id); return; }
-    delete place[id]; say(''); render(); after();
-  }
-
   function count() { return T.filter(function (x) { return place[x.id] != null; }).length; }
 
-  function after() {
-    stopDemo();
+  var SAY1 = ['Хорошо! Повар сделает это в шаге 1.', 'Шаг 2 занят. Ещё одну — и машина продолжит сама'];
+  var SAY2 = {
+    w1: 'Повар 1 наливает воду — это шаг 1.',
+    p1: '«Помой картошку» не ждёт воду — второй повар делает это в тот же шаг!',
+    w2: '«Вскипяти воду» ждёт «Налей воду» — значит, шаг 2.',
+    p2: '«Почисти картошку» тоже в шаге 2: второй повар не ждёт воду. Дальше машина сама.'
+  };
+
+  function polozhit(id) {
+    zhdat();
+    place[id] = mode === 1 ? nextFree() : earliest(id);
     var c = count();
-    if (mode === 1) {
-      if (c === 1) sub.textContent = 'Хорошо! Ещё одну';
-      if (c === 3) autoFill();
+    if (mode === 1) sub.textContent = SAY1[c - 1] || '';
+    else sub.textContent = SAY2[id];
+    setTask('Смотри на ленту шагов');
+    render();
+    setTimeout(dalshe, reduce ? 80 : 450);
+  }
+
+  function dalshe() {
+    var c = count();
+    if (c < order.length) {
+      var nx = byId[order[c]];
+      setTask('Нажми «' + nx.t + '»');
+      aktiv(tile(nx.id));
       return;
     }
-    btnReset.hidden = c === 0;
-    if (c > 0 && c < 8) sub.textContent = 'Две плитки в одном шаге — если вторая не ждёт первую';
-    if (c === 8) finish();
+    if (mode === 1) autoFill(); else autoPairs();
   }
 
   // Режим 1: один повар — после трёх плиток машина докладывает остальное сама, по одной.
   function autoFill() {
     busy = true;
+    setTask('Смотри — машина докладывает сама');
     sub.textContent = 'Один повар делает по одной команде. Машина доложит остальное…';
     var rest = T.filter(function (x) { return place[x.id] == null; });
     var i = 0;
     (function step() {
       if (i >= rest.length) {
         busy = false;
-        task.textContent = 'Один повар: 8 команд — 8 шагов';
-        sub.textContent = 'Долго! Позови второго повара';
+        setTask('Нажми «Позвать второго повара →»');
+        sub.textContent = 'Один повар: 8 команд — 8 шагов. Долго! Позови второго повара';
         btnNext.textContent = 'Позвать второго повара →';
         btnNext.hidden = false;
+        aktiv(btnNext);
         return;
       }
       place[rest[i].id] = nextFree(); i++; render();
@@ -164,21 +201,37 @@
   }
 
   function startElbrus() {
-    mode = 2; place = {}; selected = null; setStep(2);
-    task.textContent = 'Два повара: уложи суп в меньше шагов';
-    sub.textContent = 'Пока один повар наливает воду, второй моет картошку. Ставь две плитки рядом — в один шаг';
-    btnNext.hidden = true; race.hidden = true; say('');
-    render(); startDemo(true);
+    mode = 2; place = {}; order = ['w1', 'p1', 'w2', 'p2']; setStep(2);
+    btnNext.hidden = true; race.hidden = true;
+    sub.textContent = 'Пока один повар наливает воду, второй моет картошку — в один шаг';
+    render();
+    setTimeout(dalshe, reduce ? 80 : 450);
+  }
+
+  // Режим 2: остальное машина кладёт сама, парами — как «Эльбрус».
+  function autoPairs() {
+    busy = true;
+    setTask('Смотри — машина кладёт парами');
+    var pary = [['w3', 'p3'], ['s', 'g']], i = 0;
+    (function step() {
+      if (i >= pary.length) return setTimeout(finish, reduce ? 60 : 500);
+      var r = earliest(pary[i][0]);
+      pary[i].forEach(function (id) { place[id] = r; });
+      sub.textContent = '«' + byId[pary[i][0]].t + '» и «' + byId[pary[i][1]].t + '» не ждут друг друга — шаг ' + (r + 1);
+      i++; render();
+      setTimeout(step, reduce ? 80 : 900);
+    })();
   }
 
   function finish() {
     var n = +nEl.textContent;
-    busy = true; btnReset.hidden = true;
-    task.textContent = 'Готово! Смотри, кто сварит быстрее';
+    busy = true;
+    setTask('Смотри, кто сварит быстрее');
     sub.textContent = '';
     race.hidden = false; win.textContent = '';
     var slow = $('.el-bar-slow'), fast = $('.el-bar-fast');
     slow.innerHTML = fast.innerHTML = new Array(9).join('<i></i>');
+    setTimeout(function () { race.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }, 50);
     var t = 0;
     (function tick() {
       if (t < 8) slow.children[t].classList.add('on');
@@ -186,148 +239,38 @@
       t++;
       if (t < 8) return setTimeout(tick, reduce ? 40 : 320);
       busy = false;
-      if (n <= 4) {
-        task.textContent = 'Вдвое быстрее!';
-        win.innerHTML = 'Два повара: <b>' + n + ' шага</b> вместо 8. Ты ускорил программу вдвое.';
-      } else {
-        task.textContent = 'Быстрее! А можно ещё';
-        win.innerHTML = n + ' шагов вместо 8. Рекорд — 4 шага. Подсказка: пусть повара сначала делают воду и картошку, а зелень — в последнем шаге.';
-        btnReset.textContent = 'Уложить в 4 шага'; btnReset.hidden = false;
-      }
+      setTask('Нажми «Кто так считал первым? →»');
+      win.innerHTML = 'Два повара: <b>' + n + ' шага</b> вместо 8. Ты ускорил программу вдвое.';
       btnNext.textContent = 'Кто так считал первым? →';
       btnNext.hidden = false;
-      setTimeout(function () { race.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }, 50);
+      aktiv(btnNext);
     })();
   }
 
   function finale() {
+    zhdat(); busy = true;
     setStep(3);
-    $('.el-head').hidden = true; $('.el-play').hidden = true;
+    $('.el-play').hidden = true;
+    setTask('Прочитай, как считал «Эльбрус»'); sub.textContent = '';
     var f = $('.el-finale'); f.hidden = false;
-    root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    f.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }
 
-  btnNext.addEventListener('click', function () { if (mode === 1) startElbrus(); else finale(); });
-  btnReset.addEventListener('click', function () {
-    place = {}; selected = null; say(''); race.hidden = true; btnNext.hidden = true; btnReset.hidden = true;
-    btnReset.textContent = 'Разложить заново';
-    task.textContent = 'Два повара: уложи суп в меньше шагов';
-    sub.textContent = 'Пока один повар наливает воду, второй моет картошку. Ставь две плитки рядом — в один шаг';
-    render();
-  });
-  $('.el-again').addEventListener('click', function () {
-    mode = 1; place = {}; selected = null; touched = false; setStep(1);
-    $('.el-finale').hidden = true; $('.el-head').hidden = false; $('.el-play').hidden = false;
-    race.hidden = true; btnNext.hidden = true; btnReset.hidden = true; say('');
-    task.textContent = 'Свари суп машиной: уложи рецепт в шаги';
-    sub.textContent = 'Тяни плитку вниз, на ленту шагов';
-    render(); startDemo(); root.scrollIntoView({ block: 'start' });
-  });
-
-  // Подсказка-действие: призрак первой плитки сам едет на ленту, пока посетитель не тронет плитку.
-  function startDemo(second) {
-    stopDemo();
-    if (reduce) return;
-    requestAnimationFrame(function () {
-      var from = pool.querySelector('.el-tile'), to = rowsEl.querySelector(second ? '.el-row .el-slot:nth-of-type(2)' : '.el-slot');
-      if (!from || !to) return;
-      var rr = root.getBoundingClientRect(), a = from.getBoundingClientRect(), b = to.getBoundingClientRect();
-      demo = from.cloneNode(true);
-      demo.className = 'el-tile el-demo'; demo.removeAttribute('aria-label'); demo.setAttribute('aria-hidden', 'true');
-      demo.style.left = (a.left - rr.left) + 'px'; demo.style.top = (a.top - rr.top) + 'px'; demo.style.width = a.width + 'px';
-      if (second) {
-        var x2 = pool.querySelector('.el-tile[data-id="p1"]') || from; a = x2.getBoundingClientRect();
-        demo.innerHTML = x2.innerHTML; demo.style.left = (a.left - rr.left) + 'px'; demo.style.top = (a.top - rr.top) + 'px';
-      }
-      demo.style.width = Math.min(a.width, b.width) + 'px';
-      demo.style.setProperty('--dx', (b.left - a.left) + 'px'); demo.style.setProperty('--dy', (b.top - a.top) + 'px');
-      root.appendChild(demo);
-    });
-  }
-  function stopDemo() { if (demo) { if (demo._pair) demo._pair.remove(); demo.remove(); demo = null; } }
-
-  // Перетаскивание пальцем и мышью (pointer events) + запасной путь «нажми плитку, потом шаг».
-  var drag = null;
-  root.addEventListener('pointerdown', function (e) {
-    var t = e.target.closest('.el-tile');
-    if (!t || busy || t.classList.contains('el-demo') || !root.contains(t) || $('.el-play').hidden) return;
-    if (t.classList.contains('done') && mode === 1) return;
-    stopDemo();
-    drag = { id: t.dataset.id, el: t, x: e.clientX, y: e.clientY, moved: false, ghost: null, pid: e.pointerId };
-    try { t.setPointerCapture(e.pointerId); } catch (_) {}
-  });
-  root.addEventListener('pointermove', function (e) {
-    if (!drag || e.pointerId !== drag.pid) return;
-    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-    if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 8) return;
-    e.preventDefault();
-    if (!drag.moved) {
-      drag.moved = true;
-      var r = drag.el.getBoundingClientRect();
-      drag.ox = drag.x - r.left; drag.oy = drag.y - r.top;
-      drag.ghost = drag.el.cloneNode(true); drag.ghost.classList.add('ghost'); drag.ghost.classList.remove('sel', 'done');
-      drag.ghost.style.width = r.width + 'px';
-      document.body.appendChild(drag.ghost); drag.el.classList.add('lift');
-    }
-    drag.ghost.style.left = (e.clientX - drag.ox) + 'px';
-    drag.ghost.style.top = (e.clientY - drag.oy) + 'px';
-    if (e.clientY > innerHeight - 110) scrollBy(0, 14); else if (e.clientY < 70) scrollBy(0, -14);
-    hot(target(e.clientX, e.clientY));
-  });
-  function target(x, y) {
-    var el = document.elementFromPoint(x, y);
-    if (!el) return null;
-    var row = el.closest('.el-row');
-    if (row) return { row: +row.dataset.row, el: row.querySelector('.el-slot:not(.off)') };
-    if (el.closest('.el-strip') || (mode === 1 && el.closest('.el-count'))) return { row: -1, el: null, strip: true };
-    if (el.closest('.el-pool')) return { pool: true };
-    return null;
-  }
-  function hot(tg) {
-    root.querySelectorAll('.el-slot.hot').forEach(function (s) { s.classList.remove('hot'); });
-    if (!tg) return;
-    if (mode === 1 && (tg.row != null || tg.strip)) { var f = nextFree(); if (f >= 0) rowsEl.children[f].querySelector('.el-slot').classList.add('hot'); }
-    else if (tg.el) {
-      var free = Array.prototype.filter.call(rowsEl.children[tg.row].querySelectorAll('.el-slot'), function (s) { return !s.firstChild; })[0];
-      (free || tg.el).classList.add('hot');
-    }
-  }
-  function endDrag(e, cancel) {
-    if (!drag || e.pointerId !== drag.pid) return;
-    var d = drag; drag = null; hot(null);
-    if (d.ghost) d.ghost.remove();
-    d.el.classList.remove('lift');
-    if (cancel) return;
-    var placed = place[d.id] != null;
-    if (d.moved) {
-      var tg = target(e.clientX, e.clientY);
-      if (!tg) { if (placed && mode === 2) unplace(d.id); return; }
-      if (tg.pool) { if (placed) unplace(d.id); return; }
-      if (mode === 1 && (tg.row != null || tg.strip)) return tryPlace(d.id, 0);
-      if (tg.row >= 0) return tryPlace(d.id, tg.row);
+  // Каждый шаг — одно нажатие на мигающую кнопку. Нажатие мимо — только подсказка.
+  root.addEventListener('click', function (e) {
+    if (e.target.closest('.el-finale, [data-igra-pravila]')) return;
+    var k = e.target.closest('.igra-aktiv');
+    if (k && k === cel) {
+      if (k === btnNext) { zhdat(); btnNext.hidden = true; if (mode === 1) startElbrus(); else finale(); return; }
+      if (k.dataset.id) return polozhit(k.dataset.id);
       return;
     }
-    // Нажатие без перетаскивания
-    if (placed) return unplace(d.id);
-    selected = selected === d.id ? null : d.id;
-    if (selected) sub.textContent = 'Теперь нажми на шаг на ленте';
-    render();
-  }
-  root.addEventListener('pointerup', function (e) { endDrag(e, false); });
-  root.addEventListener('pointercancel', function (e) { endDrag(e, true); });
-  rowsEl.addEventListener('click', function (e) {
-    if (!selected || e.target.closest('.el-tile')) return;
-    var row = e.target.closest('.el-row');
-    if (row) tryPlace(selected, +row.dataset.row);
+    if (!busy && cel) sub.textContent = 'Жми мигающую кнопку — над ней рука.';
   });
-  // Клавиатура: Enter на плитке выбирает её, Enter на шаге — кладёт.
-  rowsEl.addEventListener('keydown', function (e) {
-    if ((e.key === 'Enter' || e.key === ' ') && selected && e.target.classList.contains('el-row')) { e.preventDefault(); tryPlace(selected, +e.target.dataset.row); }
-  });
-  pool.addEventListener('keydown', function (e) {
-    var t = e.target.closest('.el-tile');
-    if (t && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); selected = t.dataset.id; sub.textContent = 'Теперь выбери шаг на ленте и нажми Enter'; render(); var r0 = rowsEl.querySelector('.el-row'); if (r0) { rowsEl.querySelectorAll('.el-row').forEach(function (r) { r.tabIndex = 0; }); r0.focus(); } }
-  });
+  $('.el-again').addEventListener('click', function () { location.reload(); });
 
-  render(); startDemo();
+  // Игра стартует сама: мигает первая плитка.
+  order = ['w1', 'w2', 'w3'];
+  render();
+  setTimeout(dalshe, 300);
 })();

@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Черновик игры · 27 января · «Эльбрус» и Владимир Пентковский</title>
-<link rel="stylesheet" href="../assets/elbrus-shag.css">
+<link rel="stylesheet" href="../assets/igra-pravila.css?v=9449179f">
+<link rel="stylesheet" href="../assets/elbrus-shag.css?v=cd749a3b">
 </head>
 <body class="el-body">
 <header class="el-top">
@@ -16,11 +17,11 @@
 </header>
 
 <main class="el-wrap">
-  <section class="el-igra" data-elbrus-igra aria-label="Игра: уложи команды в шаги машины">
+  <section class="el-igra igra-ruka-zona" data-elbrus-igra aria-label="Игра: уложи команды в шаги машины">
     <ol class="el-steps" aria-hidden="true"><li class="on">1</li><li>2</li><li>3</li></ol>
     <div class="el-head">
-      <p class="el-task" aria-live="polite">Свари суп машиной: уложи рецепт в шаги</p>
-      <p class="el-sub">Тяни плитку вниз, на ленту шагов</p>
+      <p class="el-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> Нажми «Налей воду»</p>
+      <p class="el-sub igra-poyasnenie" aria-live="polite">Свари суп машиной: один повар делает одну команду за шаг</p>
     </div>
 
     <div class="el-play">
@@ -32,7 +33,6 @@
         <div class="el-rows"></div>
       </div>
       <div class="el-dock">
-        <p class="el-oops" aria-live="assertive"></p>
         <div class="el-count"><span class="el-count-t">Шагов у машины:</span> <strong class="el-n">0</strong></div>
       </div>
 
@@ -43,9 +43,21 @@
       </div>
 
       <div class="el-btns">
-        <button type="button" class="el-reset" hidden>Разложить заново</button>
         <button type="button" class="el-next" hidden>Дальше →</button>
       </div>
+    </div>
+
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Представь кухню, где повар — машина: делает одно дело за один шаг. Рецепт супа — это плитки-карточки: «Налей воду», «Помой картошку» и другие. Внизу лента шагов: одна клетка — один шаг. Узнаешь, за сколько шагов сварят суп один повар и два.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми мигающую плитку — и так три раза.</b> «Налей воду», «Вскипяти воду», «Посоли воду» лягут в клетки по порядку, остальные пять машина положит сама: 8 команд — 8 шагов.</li>
+        <li><b>Нажми «Позвать второго повара →».</b> Теперь в каждой клетке два места: два повара работают одновременно.</li>
+        <li><b>Нажми по очереди четыре мигающие плитки.</b> Каждая встанет в самый ранний шаг: «Налей воду» и «Помой картошку» — в шаг 1, пока один наливает, другой моет. Остальное машина разложит парами сама и устроит гонку поваров.</li>
+        <li><b>Нажми «Кто так считал первым? →».</b> Откроется рассказ, кто первым считал по два дела за шаг.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Жми ту плитку или кнопку, которая мигает и над которой рука. Кипятить воду, пока её не налили, нельзя — поэтому «Вскипяти воду» всегда на шаг позже.</p>
+      <p class="igra-pravila-final">В конце узнаешь, что так же, по два дела за шаг, считал советский компьютер «Эльбрус» — на 15 лет раньше американского Pentium.</p>
     </div>
 
     <!-- Финал: лента лет (M-74) -->
@@ -79,8 +91,8 @@
       <div class="el-btns"><button type="button" class="el-again">Сыграть ещё раз</button></div>
     </div>
   </section>
-  <!-- Черновик для показа (Р190). Страница дня собирается отдельно. Лента лет — M-74 ✅, движок «уложи команды в шаг» — новый. -->
+  <!-- Черновик для показа (Р190). Страница дня собирается отдельно. Лента лет — M-74 ✅, движок «уложи команды в шаг» — новый, на нажатиях (Р206). -->
 </main>
-<script src="../assets/elbrus-shag.js" defer></script>
+<script src="../assets/elbrus-shag.js?v=8363f063" defer></script>
 </body>
 </html>
