@@ -57,6 +57,12 @@ for (const list of Object.values(dni)) {
   const pick = [list[0], list[list.length >> 1], list[list.length - 1]];
   vyborka.push(...new Set(pick));
 }
+// Дни, чья полная страница правится в заявке, — в выборку обязательно (01-26 не попал в «первый/средний/последний»).
+try {
+  const { execFileSync } = await import('node:child_process');
+  const izm = execFileSync('git', ['diff', '--name-only', 'origin/main...HEAD', '--', 'src/data/full-pages'], { encoding: 'utf8' }).match(/[^/\s]+\/\d\d-\d\d(?=\.html)/g) || [];
+  for (const k of izm) { const u = all.find(x => x.endsWith(`muzei/${k}/`.replace(/\/(\d\d-\d\d)\/$/, '/den/$1/'))); if (u && !vyborka.includes(u)) vyborka.push(u); }
+} catch {}
 
 const POROGI = {
   'og': r => r.og === 3, 'title≤60': r => r.titleLen > 0 && r.titleLen <= 60,
@@ -70,6 +76,7 @@ const POROGI = {
   'цели ≥44': r => r.melkie === 0, 'поддержать в 1/3': r => process.env.PUBLIC_PODDERZHKA === '0' || (r.podderzhat !== null && r.podderzhat <= 33), // Р31: выключено — не требуется
   'подписка': r => r.podpiska > 0, 'вес ≤1 МБ': r => r.kb <= 1024, 'картинки с размерами': r => r.bezRazmera === 0,
   'CLS<0.1': r => r.cls < 0.1, 'нет ошибок': r => r.oshibki === 0 && r.bitye === 0,
+  'обложка дня': r => !r.den || r.zaglushka || (r.oblozhka && r.pustyeImg === 0),
   'нет заглушки': r => !r.zaglushka, 'без своих стилей': r => r.svoiStili === 0,
 };
 
@@ -160,6 +167,9 @@ async function zamer(url) {
       bezRazmera: qa('img').filter(i => !i.getAttribute('width') || !i.getAttribute('height')).length,
       zaglushka: /День готовится/.test(txt), svoiStili: qa('body style, [style]').filter(e => e.tagName === 'STYLE' || e.getAttribute('style').length > 60).length,
       den: /\/den\//.test(location.pathname), cls: +window.__cls.toFixed(3),
+      // обложка дня (r230, 01-26 вышел без hero-fig): кадр в figure.hero-fig загружен; видимая img без src или битая — брак
+      oblozhka: qa('figure.hero-fig img').some(i => i.naturalWidth > 0),
+      pustyeImg: qa('img').filter(i => (vis(i) && !i.getAttribute('src')) || (i.complete && i.getAttribute('src') && i.naturalWidth === 0)).length,
     };
   }, { W, H }).catch(() => null);
   await ctx.close();
@@ -168,6 +178,8 @@ async function zamer(url) {
   rows.push(r);
   process.stdout.write('.');
 }
+// --tolko izobreteniya/01-25,izobreteniya/01-26 — замер только этих дней (ручная проверка одной правки)
+if (opt.tolko) vyborka.splice(0, vyborka.length, ...opt.tolko.split(',').map(k => all.find(u => u.endsWith(`muzei/${k.replace('/', '/den/')}/`))).filter(Boolean));
 // несколько страниц одновременно — укладываемся в ~3 минуты в проверке заявки
 const ochered = [...vyborka];
 await Promise.all(Array.from({ length: POTOKOV }, async () => { while (ochered.length) await zamer(ochered.shift()); }));
