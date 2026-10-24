@@ -60,6 +60,22 @@ for (const w of [390, 1280]) {
   const okC = c === '01-16' && cu === ok2k;
   if (!okC) brak++;
   console.log(`${w}: календарь ?d=01-16 → выбран ${c}; клик ${ok2k} → ?d=${cu} — ${okC ? 'ок' : 'БРАК: день календаря не в адресе'}`);
+  // Р238 (24.10.2026): в карточке дня год стоял дважды — «…на перфокартах, 1832 1832» (год в названии + поле y);
+  // «занято N из M» в шапке месяца на странице дня — ровно дни месяца, у которых в сборке есть страница дня.
+  const dubl = (s) => /(?:^|\D)(\d{3,4})(?!\d)[\s\S]*?\D\1(?!\d)/.test(s);
+  await p.goto(SITE + 'muzei/izobreteniya/calendar/?d=01-25', { waitUntil: 'load' });
+  const h3c = await p.evaluate(() => (document.querySelector('#calcard h3') || {}).textContent || '');
+  await p.goto(SITE + 'muzei/izobreteniya/den/01-25/', { waitUntil: 'load' });
+  await p.waitForSelector('#calbox .calcard', { timeout: 5000 }).catch(() => {});
+  const m = await p.evaluate(() => ({ h3: (document.querySelector('#calbox .calcard h3') || {}).textContent || '',
+    head: document.querySelector('#calbox')?.innerText.match(/занято (\d+) \S+ из (\d+)/),
+    hrefs: Object.entries(window.MUSEUM_CALENDAR || {}).filter(([k, v]) => /^01-\d\d$/.test(k) && v && v.href).map(([, v]) => v.href) }));
+  // пустые дни датированного музея тоже получают страницу «записи пока нет» — считаем только записи со страницей
+  const pages = m.hrefs.filter((h) => fs.existsSync(path.join(ROOT, new URL(h, SITE).pathname.slice(BASE.length), 'index.html'))).length;
+  const okY = h3c && m.h3 && !dubl(h3c) && !dubl(m.h3) && m.head && +m.head[1] === pages && +m.head[2] === 31;
+  if (!okY) brak++;
+  console.log(`${w}: 25 января — календарь «${h3c}», день «${m.h3}», шапка «${m.head?.[0]}» при ${pages} страницах января — ` +
+    (okY ? 'ок' : 'БРАК: год задвоен или «занято» не по страницам'));
   await ctx.close();
 }
 await browser.close(); server.close();
