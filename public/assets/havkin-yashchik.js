@@ -64,8 +64,13 @@ function igraRuka(root) {
   }
   // Активная кнопка шага: пульсирует, над ней рука; если ушла за край экрана — подкрутить
   var cel = null;
+  // До первого нажатия в игре страницу не крутим: иначе при загрузке посетитель попадает в середину, мимо обложки.
+  var nachal = false;
+  root.addEventListener('pointerdown', function () { nachal = true; }, { capture: true });
+  root.addEventListener('keydown', function () { nachal = true; }, { capture: true });
   function aktiv(el) {
     cel = el; ruka.na(el);
+    if (!nachal) return;
     var r = el.getBoundingClientRect();
     if (r.top < 8 || r.bottom > window.innerHeight - 8) el.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
   }

@@ -2,7 +2,9 @@
 // Каждая страница дня, изменённая в заявке, в собранном dist открывается в браузере и должна иметь:
 //   1) обложку — figure.hero-fig с загруженной картинкой (naturalWidth > 0);
 //   2) хотя бы одну загруженную картинку в тексте — вне обложки, вне игры и вне навигации (календарь, «Куда дальше», каталог);
-//   3) ни одной видимой картинки без src или битой. Картинки внутри игры не в счёт: игра заполняет их сама (в финале).
+//   3) ни одной видимой картинки без src или битой. Картинки внутри игры не в счёт: игра заполняет их сама (в финале);
+//   4) страница открывается сверху: через 2,5 с после загрузки scrollY = 0 (r239: игры 27 и 28 янв. сами уезжали
+//      к своей кнопке на 2000 px, посетитель не видел обложку).
 // Изменённые дни — git diff с базой: src/data/full-pages/<музей>/ММ-ДД.html и карточки src/content/days/<музей>/ММ-ДД.json
 // (карточка — только если у дня есть полная страница: дни без полной страницы — пустые, замок их не касается).
 // Нарушение — код 1 и ::error:: по-русски: какой день, чего нет. Откат — удалить шаг из .github/workflows/proverka.yml.
@@ -47,6 +49,9 @@ function server(root) {
 // Что не так с картинками открытой страницы: [] — всё на месте; плюс счёт для таблицы.
 async function proverit(page, url) {
   await page.goto(url, { waitUntil: 'load', timeout: 45000 });
+  // Прокрутка без нажатия: игры стартуют через 0,3–0,7 с и докручивают плавно — ждём с запасом, до своей прокрутки.
+  await page.waitForTimeout(2500);
+  const uehala = Math.round(await page.evaluate(() => window.scrollY));
   // Ленивые картинки — грузить сразу и прокрутить страницу, чтобы сработали наблюдатели.
   await page.evaluate(async () => {
     document.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
@@ -58,7 +63,7 @@ async function proverit(page, url) {
       new Promise((r) => setTimeout(r, 15000)),
     ]);
   });
-  return page.evaluate(({ IGRA, NAVIGACIYA }) => {
+  const r = await page.evaluate(({ IGRA, NAVIGACIYA }) => {
     const vidna = (el) => {
       const cs = getComputedStyle(el);
       return el.getClientRects().length > 0 && cs.visibility !== 'hidden' && cs.display !== 'none';
@@ -85,6 +90,8 @@ async function proverit(page, url) {
     if (bitye.length) o.push(`видимые картинки не загрузились: ${bitye.join(', ')}`);
     return { o, oblozhka, vTekste, bitye: bitye.length };
   }, { IGRA, NAVIGACIYA });
+  if (uehala !== 0) r.o.push(`страница сама уехала вниз на ${uehala} px после загрузки — посетитель не видит обложку`);
+  return { ...r, uehala };
 }
 
 const browser = await chromium.launch();
@@ -95,9 +102,9 @@ async function prognat(root, dni) {
   const itog = [];
   for (const d of dni) {
     const f = path.join(root, d.adres, 'index.html');
-    if (!fs.existsSync(f)) { itog.push({ ...d, o: [`страницы нет в сборке (${d.adres})`], oblozhka: '—', vTekste: 0, bitye: 0 }); continue; }
+    if (!fs.existsSync(f)) { itog.push({ ...d, o: [`страницы нет в сборке (${d.adres})`], oblozhka: '—', vTekste: 0, bitye: 0, uehala: '—' }); continue; }
     try { itog.push({ ...d, ...(await proverit(page, base + d.adres)) }); }
-    catch (e) { itog.push({ ...d, o: [`страница не открылась: ${e.message.split('\n')[0]}`], oblozhka: '—', vTekste: 0, bitye: 0 }); }
+    catch (e) { itog.push({ ...d, o: [`страница не открылась: ${e.message.split('\n')[0]}`], oblozhka: '—', vTekste: 0, bitye: 0, uehala: '—' }); }
   }
   s.close();
   return itog;
@@ -120,6 +127,10 @@ if (est('--proba')) {
     ['в тексте только «Куда дальше»', hero + '<section class="block kd" id="kuda-dalshe"><img src="b.svg"></section>', 1],
     ['битая картинка в тексте', hero + tekst + '<img src="net.jpg">', 1],
     ['видимая картинка без src', hero + tekst + '<img alt="пусто">', 1],
+    ['игра сама крутит к себе при загрузке', hero + tekst + '<div style="height:3000px"></div><button id="k">Жми</button>'
+      + '<script>setTimeout(function () { document.getElementById("k").scrollIntoView({ block: "center", behavior: "smooth" }); }, 650)</script>', 1],
+    ['игра крутит только после нажатия', hero + tekst + '<div style="height:3000px"></div><button id="k">Жми</button>'
+      + '<script>document.getElementById("k").onclick = function () { this.scrollIntoView(); }</script>', 0],
   ];
   const dni = proba.map(([, html], n) => {
     const d = den('proba', String(n).padStart(2, '0'));
@@ -172,9 +183,9 @@ if (est('--vse')) {
 const itog = await prognat(DIST, dni);
 await browser.close();
 const proshli = itog.filter((r) => !r.o.length);
-const stroki = ['| день | обложка | картинок в тексте | битые | итог |', '|---|---|---|---|---|',
-  ...itog.map((r) => `| ${r.muzey} ${r.key} | ${r.oblozhka} | ${r.vTekste} | ${r.bitye} | ${r.o.length ? 'КРАСНЫЙ: ' + r.o.join('; ') : 'зелёный'} |`)];
-const otchet = `### Картинки дня (Р231): прошли ${proshli.length} из ${itog.length}\n\n${stroki.join('\n')}\n`;
+const stroki = ['| день | обложка | картинок в тексте | битые | уехала, px | итог |', '|---|---|---|---|---|---|',
+  ...itog.map((r) => `| ${r.muzey} ${r.key} | ${r.oblozhka} | ${r.vTekste} | ${r.bitye} | ${r.uehala} | ${r.o.length ? 'КРАСНЫЙ: ' + r.o.join('; ') : 'зелёный'} |`)];
+const otchet = `### Картинки дня и открытие сверху (Р231, r239): прошли ${proshli.length} из ${itog.length}\n\n${stroki.join('\n')}\n`;
 console.log(otchet);
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, otchet + '\n');
 if (est('--vse')) process.exit(0);
