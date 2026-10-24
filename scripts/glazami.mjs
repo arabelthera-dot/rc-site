@@ -178,6 +178,8 @@ async function zamer(url) {
   rows.push(r);
   process.stdout.write('.');
 }
+// --tolko izobreteniya/01-25,izobreteniya/01-26 — замер только этих дней (ручная проверка одной правки)
+if (opt.tolko) vyborka.splice(0, vyborka.length, ...opt.tolko.split(',').map(k => all.find(u => u.endsWith(`muzei/${k.replace('/', '/den/')}/`))).filter(Boolean));
 // несколько страниц одновременно — укладываемся в ~3 минуты в проверке заявки
 const ochered = [...vyborka];
 await Promise.all(Array.from({ length: POTOKOV }, async () => { while (ochered.length) await zamer(ochered.shift()); }));
