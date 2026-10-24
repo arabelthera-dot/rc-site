@@ -6,5 +6,21 @@
   "hook": "Иван Тургенев вывел в Базарове человека, который отрицает всё, и сделал слово «нигилист» известным всему миру.",
   "source": "Источник эпизода · «Отцы и дети»: главное о романе. (Культура.РФ, https://www.culture.ru/materials/258142/otcy-i-deti-glavnoe-o-romane)",
   "legacy_page": "muzei/literatura/lit-turgenev-otcy-i-deti.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/literatura/media-turgenev/turgenev-hero.jpg",
+      "caption": "Седой человек с белой бородой в тёмном сюртуке сидит в кресле",
+      "credit": "В. Г. Перов. Портрет И. С. Тургенева, 1872 (кадр для шапки страницы); «Перов Тургенев.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/literatura/media-turgenev/perov-portret-1872.jpg",
+      "caption": "Василий Перов. Портрет И. С. Тургенева, 1872. Написан через десять лет после выхода романа.",
+      "credit": "В. Г. Перов. Портрет И. С. Тургенева, 1872; «Перов Тургенев.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/literatura/media-turgenev/otcy-i-deti-titul-1880.jpg",
+      "caption": "Титульный лист издания «Отцов и детей», Лейпциг, 1880. Роман печатали и за границей — по-русски, для читателей в Европе.",
+      "credit": "Титульный лист «Отцов и детей», Лейпциг, 1880, Wikimedia Commons; общественное достояние (издание 1880 года)"
+    }
+  ]
 }

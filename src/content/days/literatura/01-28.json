@@ -6,5 +6,26 @@
   "hook": "Валентин Катаев отправил двух одесских мальчишек в бурю 1905 года и стал классиком советского детства.",
   "source": "М. Ю. Лермонтов. «Парус» (rvb.ru)",
   "legacy_page": "muzei/literatura/lit-kataev-parus.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/literatura/media-parus/potemkin-hero.jpg",
+      "caption": "Рисунок: трёхтрубный броненосец идёт по серому морю, за ним стелется дым",
+      "credit": "У. Ф. Митчелл. Броненосец «Потёмкин» (кадр для шапки); «Potemkin - Brassey's Naval Annual 1905.png», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/literatura/media-parus/potemkin-brassey-1905.jpg",
+      "caption": "Броненосец «Князь Потёмкин-Таврический». Рисунок У. Ф. Митчелла в Brassey’s Naval Annual, 1905.",
+      "credit": "У. Ф. Митчелл. Броненосец «Потёмкин», 1905; «Potemkin - Brassey's Naval Annual 1905.png», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/literatura/media-parus/odessa-port-1905.jpg",
+      "caption": "Одесский порт после пожара, лето 1905 года. Почтовая открытка, автор снимка неизвестен.",
+      "credit": "Одесский порт после пожара, лето 1905 года, Wikimedia Commons; общественное достояние (анонимная фотография 1905 года)"
+    },
+    {
+      "src": "muzei/literatura/media-parus/kataev-1916.jpg",
+      "caption": "Валентин Катаев в 1916 году. Фотография из журнала «Весь мир»; автор неизвестен.",
+      "credit": "Валентин Катаев, 1916; «Valentin Kataev (1916).jpg», Wikimedia Commons, общественное достояние"
+    }
+  ]
 }

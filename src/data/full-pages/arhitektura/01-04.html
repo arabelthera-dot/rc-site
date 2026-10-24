@@ -77,6 +77,22 @@
     </nav>
     <main id="content">
       <section class="hero-scene" aria-label="Современный вид Вятского">
+        <figure class="hero">
+          <img
+            src="media/vyatskoe/lions-street.webp"
+            width="1600"
+            height="1054"
+            fetchpriority="high"
+            alt="Середская улица у Дома со львами: фасады стоят вдоль общей линии" data-source="https://commons.wikimedia.org/wiki/File:Hа_Середской_улице_у_„дома_со_львами“.jpg" data-license="CC BY-SA 4.0 — фото: Чуринъ, 2022; Wikimedia Commons"/>
+          <figcaption>
+            Середская улица у Дома со львами. Фото: Чуринъ,
+            <a
+              href="https://creativecommons.org/licenses/by-sa/4.0/"
+              rel="license"
+              >CC BY-SA 4.0</a
+            >. Веб-версия исходного кадра.
+          </figcaption>
+        </figure>
       </section>
       <header class="hero-copy">
         <div class="wrap">
@@ -123,11 +139,52 @@
               архитектурной лаборатории ниже.
             </p>
           </header>
-          <div class="film" data-film style="grid-template-columns:1fr">
+          <div class="film" data-film>
+            <div class="film-stage">
+              <img
+                class="is-active"
+                aria-hidden="false"
+                src="media/vyatskoe/lions.webp"
+                loading="lazy"
+                data-caption="С близкого расстояния память цепляется за львиные головы."
+                alt="Дом со львами в Вятском" data-source="https://commons.wikimedia.org/wiki/File:Дом_со_львами.jpg" data-license="CC BY-SA 4.0 — фото: Blooming soul, 2017; Wikimedia Commons"/><img
+                aria-hidden="true"
+                data-src="media/vyatskoe/lions-street.webp"
+                loading="lazy"
+                data-caption="Шаг назад: знаменитый дом снова становится частью уличного фронта."
+                alt="Середская улица у Дома со львами"
+              /><img
+                aria-hidden="true"
+                data-src="media/vyatskoe/house-10.webp"
+                loading="lazy"
+                data-caption="Другой дом: городской характер не принадлежит одному знаменитому фасаду."
+                alt="Дом номер 10 на улице Клюшниково"
+              /><img
+                aria-hidden="true"
+                data-src="media/vyatskoe/landscape.webp"
+                loading="lazy"
+                data-caption="Финал: линия застройки живёт внутри дороги, храмов и сельского ландшафта."
+                alt="Вятское в ландшафте" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_2020_год.jpg" data-license="CC BY-SA 4.0 — фото: Vyatskoe, 2020; Wikimedia Commons"
+              />
+            </div>
             <div class="film-copy">
               <h3 data-film-caption aria-live="polite">
                 С близкого расстояния память цепляется за львиные головы.
               </h3>
+              <div class="film-dots" aria-label="Четыре кадра">
+                <button
+                  class="is-active"
+                  data-film-step="0"
+                  aria-pressed="true"
+                >
+                  1</button
+                ><button data-film-step="1" aria-pressed="false">2</button
+                ><button data-film-step="2" aria-pressed="false">3</button
+                ><button data-film-step="3" aria-pressed="false">4</button>
+              </div>
+              <button class="next" type="button" data-film-next>
+                Следующий кадр
+              </button>
               <div class="speech-controls" data-speech-controls>
                 <button type="button" data-speak="#film-transcript">
                   ▶ Читать системным голосом
@@ -245,6 +302,46 @@
           </header>
           <div class="distance-lab" data-distance-lab>
             <div class="distance-stage">
+              <figure>
+              <img
+                data-lab-image
+                src="media/vyatskoe/landscape.webp"
+                loading="lazy"
+                width="1280"
+                height="854"
+                alt="Общий вид Вятского" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_2020_год.jpg" data-license="CC BY-SA 4.0 — фото: Vyatskoe, 2020; Wikimedia Commons"
+              />
+              <svg class="lab-overlay" data-lab-overlay viewBox="0 0 1000 660" aria-hidden="true">
+                <g data-overlay="landscape">
+                  <path d="M40 610 C260 520 390 570 520 480 S770 420 960 455" />
+                  <path d="M535 480 L535 160" />
+                  <circle cx="535" cy="160" r="17" />
+                  <text x="565" y="175">дорога и вертикаль храма</text>
+                </g>
+                <g data-overlay="street">
+                  <path d="M55 485 L255 414 L472 390 L710 372 L950 350" />
+                  <path d="M55 535 L255 468 L472 444 L710 428 L950 410" />
+                  <text x="70" y="325">общий фронт фасадов</text>
+                </g>
+                <g data-overlay="house">
+                  <path d="M105 244 L785 225" />
+                  <path d="M190 250 L190 560 M420 243 L420 560 M655 233 L655 560" />
+                  <rect x="125" y="315" width="590" height="235" rx="8" />
+                  <text x="125" y="205">карниз</text>
+                  <text x="452" y="520">ритм проёмов</text>
+                </g>
+                <g data-overlay="detail">
+                  <path d="M90 310 L890 285" />
+                  <rect x="210" y="330" width="185" height="235" rx="8" />
+                  <rect x="430" y="322" width="185" height="240" rx="8" />
+                  <text x="100" y="270">верх стены: карниз</text>
+                  <text x="650" y="520">простенок</text>
+                </g>
+              </svg>
+              <figcaption data-lab-caption>
+                Село: дома, дорога и храм читаются как связанная среда.
+              </figcaption>
+              </figure>
             </div>
             <div class="distance-controls">
               <div class="lab-mode" role="group" aria-label="Режим прохождения">
@@ -361,6 +458,65 @@
             >
               <figure data-rail-card>
                 <img
+                  src="media/vyatskoe/lions.webp"
+                  width="1600"
+                  height="1067"
+                  loading="lazy"
+                  alt="Дом со львами в Вятском" data-source="https://commons.wikimedia.org/wiki/File:Дом_со_львами.jpg" data-license="CC BY-SA 4.0 — фото: Blooming soul, 2017; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Дом со львами</b
+                  ><span>Рельеф работает внутри всей фасадной композиции.</span
+                  ><small>Фото Blooming soul, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/lion-detail.webp"
+                  width="1000"
+                  height="1000"
+                  loading="lazy"
+                  alt="Крупный фрагмент лепной львиной маски"
+                />
+                <figcaption>
+                  <b>Львиная маска</b
+                  ><span
+                    >Производная деталь помогает увидеть объём лепнины.</span
+                  ><small
+                    >Фото Blooming soul, CC BY-SA 4.0; кадрирование
+                    музея.</small
+                  >
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/lions-street.webp"
+                  width="1600"
+                  height="1054"
+                  loading="lazy"
+                  alt="Улица у Дома со львами" data-source="https://commons.wikimedia.org/wiki/File:Hа_Середской_улице_у_„дома_со_львами“.jpg" data-license="CC BY-SA 4.0 — фото: Чуринъ, 2022; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Дом внутри улицы</b
+                  ><span
+                    >С расстояния деталь уступает место линии застройки.</span
+                  ><small>Фото Чуринъ, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/house-16.webp"
+                  width="1600"
+                  height="1059"
+                  loading="lazy"
+                  alt="Фасад дома 16 на улице Клюшниково" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_16.jpg" data-license="CC BY-SA 4.0 — фото: Виталий Барсов, 2020; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Ритм проёмов</b
+                  ><span
+                    >Окна, карниз и вертикали собираются в парадное лицо.</span
+                  ><small>Фото Виталий Барсов, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
                   src="media/vyatskoe/facade-detail.webp"
                   width="1100"
                   height="760"
@@ -378,6 +534,77 @@
                   >
                 </figcaption>
               </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/house-10.webp"
+                  width="1600"
+                  height="1060"
+                  loading="lazy"
+                  alt="Дом 10 на улице Клюшниково" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_10.jpg" data-license="CC BY-SA 4.0 — фото: Виталий Барсов, 2020; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Дом № 10</b
+                  ><span
+                    >Другой фасад сохраняет тот же язык порядка и рельефа.</span
+                  ><small>Фото Виталий Барсов, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/house-14.webp"
+                  width="1600"
+                  height="1060"
+                  loading="lazy"
+                  alt="Дом 14 на улице Клюшниково" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_14.jpg" data-license="CC BY-SA 4.0 — фото: Виталий Барсов, 2020; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Дом № 14</b
+                  ><span>Сравни ширину простенков и завершение стены.</span
+                  ><small>Фото Виталий Барсов, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/house-18.webp"
+                  width="1600"
+                  height="1060"
+                  loading="lazy"
+                  alt="Дом 18 на улице Клюшниково" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_18-3.jpg" data-license="CC BY-SA 4.0 — фото: Виталий Барсов, 2020; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Дом № 18</b
+                  ><span
+                    >Декор меняется, но фасад продолжает разговор с
+                    улицей.</span
+                  ><small>Фото Виталий Барсов, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/davydkovskaya-13.webp"
+                  width="1600"
+                  height="1060"
+                  loading="lazy"
+                  alt="Дом 13 на Давыдковской улице" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Давыдковская,_13.jpg" data-license="CC BY-SA 4.0 — фото: Виталий Барсов, 2020; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Давыдковская улица</b
+                  ><span
+                    >Городской приём не привязан к одному знаменитому
+                    дому.</span
+                  ><small>Фото Виталий Барсов, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
+              <figure data-rail-card>
+                <img
+                  src="media/vyatskoe/pervomayskaya-9.webp"
+                  width="1600"
+                  height="1200"
+                  loading="lazy"
+                  alt="Усадьба на Первомайской улице, 9" data-source="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Первомайская,_9_усадьба.jpg" data-license="CC BY-SA 4.0 — фото: Виталий Барсов, 2020; Wikimedia Commons"/>
+                <figcaption>
+                  <b>Усадьба на Первомайской</b
+                  ><span
+                    >Ещё один способ связать дом, ограду и уличный фронт.</span
+                  ><small>Фото Виталий Барсов, CC BY-SA 4.0.</small>
+                </figcaption>
+              </figure>
             </div>
           </div>
           <details class="facade-passports">
@@ -386,10 +613,10 @@
               <table>
                 <thead><tr><th>Кадр</th><th>Адрес</th><th>Датировка и охрана</th><th>Что видно о состоянии</th><th>Источник</th></tr></thead>
                 <tbody>
-                  <tr><th>Дом № 10</th><td>ул. Клюшниково, 10</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>Современный документальный вид; доля подлинного и восстановленного не установлена.</td><td>—</td></tr>
-                  <tr><th>Дом № 14</th><td>ул. Клюшниково, 14</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>Современный документальный вид; доля подлинного и восстановленного не установлена.</td><td>—</td></tr>
-                  <tr><th>Дом № 16</th><td>ул. Клюшниково, 16</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>В кадре заметны поздние инженерные элементы и утраты отделки; это наблюдение по фото, не акт реставрации.</td><td>—</td></tr>
-                  <tr><th>Дом № 18</th><td>ул. Клюшниково, 18</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>Современный документальный вид; доля подлинного и восстановленного не установлена.</td><td>—</td></tr>
+                  <tr><th>Дом № 10</th><td>ул. Клюшниково, 10</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>Современный документальный вид; доля подлинного и восстановленного не установлена.</td><td><a href="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_10.jpg">карточка снимка</a></td></tr>
+                  <tr><th>Дом № 14</th><td>ул. Клюшниково, 14</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>Современный документальный вид; доля подлинного и восстановленного не установлена.</td><td><a href="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_14.jpg">карточка снимка</a></td></tr>
+                  <tr><th>Дом № 16</th><td>ул. Клюшниково, 16</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>В кадре заметны поздние инженерные элементы и утраты отделки; это наблюдение по фото, не акт реставрации.</td><td><a href="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_16.jpg">карточка снимка</a></td></tr>
+                  <tr><th>Дом № 18</th><td>ул. Клюшниково, 18</td><td>Индивидуальная датировка и запись ОКН не установлены в источниках выпуска.</td><td>Современный документальный вид; доля подлинного и восстановленного не установлена.</td><td><a href="https://commons.wikimedia.org/wiki/File:Вятское,_улица_Клюшниково,_18-3.jpg">карточка снимка</a></td></tr>
                 </tbody>
               </table>
             </div>
@@ -432,7 +659,7 @@
             <div class="evidence-overview" aria-label="Краткое сравнение двух свидетельств">
               <span><strong class="evidence-doc" aria-hidden="true">1984</strong><b>Книжная подпись<br />дом Саловых</b></span>
               <i aria-hidden="true">≠</i>
-              <span><b>Современное Вятское<br />другой объект</b></span>
+              <span><img src="media/vyatskoe/lion-detail.webp" width="1000" height="1000" loading="lazy" alt="" /><b>Современное Вятское<br />другой объект</b></span>
             </div>
             <figure class="archive-witness">
               <div class="archive-mat" aria-label="Книжная подпись к снимку 1984 года">
@@ -457,6 +684,31 @@
                     >Карточка издания и фрагмент</a
                   >.
                 </small>
+              </figcaption>
+            </figure>
+            <figure class="modern-witness">
+              <img
+                src="media/vyatskoe/lion-detail.webp"
+                width="1000"
+                height="1000"
+                loading="lazy"
+                alt="Лепная львиная маска на фасаде дома во Вятском"
+              />
+              <figcaption>
+                <span>Современное Вятское</span>
+                <b>Лепная деталь на фасаде</b>
+                <p>
+                  Свидетельства нельзя сливать в одно доказательство: книжная
+                  подпись относится к региональному промыслу, а этот кадр — к
+                  сохранившемуся декору Вятского. Материал и автор конкретного
+                  фасада не приписываются.
+                </p>
+                <small
+                  >Фото Blooming soul,
+                  <a href="https://commons.wikimedia.org/wiki/File:Дом_со_львами.jpg">исходная карточка</a>,
+                  <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>;
+                  кадрирование музея.</small
+                >
               </figcaption>
             </figure>
           </div>
@@ -618,6 +870,13 @@
                   >UNESCO Urban Heritage Atlas: Amsterdam</a
                 > — основание учебного сравнения границы улицы и узких участков;
                 схема на странице не является обмером.
+              </li>
+              <li>
+                Фотографии: Wikimedia Commons; автор и лицензия указаны у
+                каждого кадра. Точные карточки исходников, изменения и SHA-256
+                собраны в
+                <a href="media/vyatskoe/media-manifest.json">медиапаспорте выпуска</a>.
+                Текст Википедии не использован.
               </li>
               <li>
                 А. А. Маслова, Ю. В. Маслов.

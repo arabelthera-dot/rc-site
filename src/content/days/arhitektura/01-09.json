@@ -5,5 +5,46 @@
   "hook": "Что не понравилось Екатерине в уже построенном дворце?",
   "source": "Сборник Андреевских чтений 2021 года, ГМЗ «Царицыно» (trenihin.ru)",
   "legacy_page": "muzei/arhitektura/tsaritsyno.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/hero.webp",
+      "caption": "Большой Царицынский дворец, современный вид. Источник: Викисклад; фото: Mike1979 Russia, CC BY-SA 3.0; уменьшено.",
+      "credit": "Mike1979 Russia, CC BY-SA 3.0; редакционное уменьшение и кадрирование, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/plan-1776.webp",
+      "caption": "Генеральный план Царицына, 1776 год. Источник: Викисклад; автор В. И. Баженов, общественное достояние, срок охраны истёк; уменьшено и переведено в WebP.",
+      "credit": "В. И. Баженов, 1776 год; общественное достояние, срок охраны истёк; уменьшение и WebP, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/detail.webp",
+      "caption": "Белокаменные шпили и декор башен Большого Царицынского дворца",
+      "credit": "Егор Черняков, CC BY-SA 3.0; редакционное уменьшение, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/building.webp",
+      "caption": "Большой Царицынский дворец: краснокирпичный объём с белокаменным декором, впереди — раскрытые фундаменты",
+      "credit": "Filtv, CC BY-SA 3.0; редакционное кадрирование и уменьшение, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/ensemble.webp",
+      "caption": "Царицынский ансамбль с высоты: дворец, корпуса и пруды",
+      "credit": "Marina Lystseva, CC BY-SA 3.0; редакционное уменьшение, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/landscape.webp",
+      "caption": "Царицынский парк осенью: пруд и постройки ансамбля среди деревьев",
+      "credit": "Adam Baker, CC BY 2.0; редакционное уменьшение, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/ist-1900.webp",
+      "caption": "Руина Большого дворца, фотография около 1900 года. Источник: Викисклад; открытка начала XX века, общественное достояние, срок охраны истёк.",
+      "credit": "открытка начала XX века, около 1900 года; общественное достояние, срок охраны истёк; уменьшение и WebP, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/tsaritsyno/fund-1795.webp",
+      "caption": "Фундаменты баженовского корпуса, раскрытые у Большого дворца. Источник: Викисклад; Алена Ж, CC BY-SA 4.0.",
+      "credit": "Алена Ж, CC BY-SA 4.0; редакционное уменьшение, Wikimedia Commons"
+    }
+  ]
 }

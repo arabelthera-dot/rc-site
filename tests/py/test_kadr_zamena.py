@@ -55,18 +55,6 @@ class Zamena(unittest.TestCase):
         self.assertTrue(all('старое' not in r for r in m))
         self.assertEqual(rows[0], SHAPKA)
 
-    def test_parallelnyy_muzey_ne_zatiraetsya(self):
-        # другой музей дописал свои строки, пока шёл наш прогон: при подмене таблицы они остаются
-        def fn(k):
-            if k['den'] == '01':
-                with open(self.out, 'a') as f:
-                    f.write('drug2\t02\tg.jpg\t\t\tx\ty\n')
-            return []
-        rows = self.run_([('f', fn)])
-        self.assertIn('drug2\t02\tg.jpg\t\t\tx\ty', rows)
-        self.assertIn('drug\t01\tf.jpg\t\t\tx\ty', rows)
-        self.assertEqual(rows[0], SHAPKA)
-
     def test_prodolzhit(self):
         self.kadry.append(kadr_('06'))
         vyzov = []
@@ -98,27 +86,3 @@ class Set(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-class Strogo(unittest.TestCase):
-    """Промахи сухого прогона iskusstvo 21.10.2026: картины есть в ГТГ, сверка их не узнавала."""
-    def k(self, avtor, nazv, god):
-        return dict(inv='', derzhatel='', avtor=avtor, nazvanie=nazv, god=god, podpis='')
-
-    def test_skobki_fonda(self):
-        r = dict(title='Черное море (На Черном море начинает разыгрываться буря)', avtor='Иван Айвазовский', god='1881')
-        self.assertTrue(kadr.strogo(self.k('Иван Айвазовский', 'Чёрное море', '1881'), r))
-
-    def test_god_ryadom_s_datirovkoy(self):
-        r = dict(fond='Государственная Третьяковская галерея', title='Крестный ход в Курской губернии', avtor='Илья Репин', god='1881–1883', datirovka='1881–1883')
-        self.assertTrue(kadr.strogo(self.k('Илья Репин', 'Крестный ход в Курской губернии', '1880'), r))
-
-    def test_chuzhaya_kartina_ne_proskakivaet(self):
-        r = dict(fond='tretyakov', title='Крестный ход в дубовом лесу. Явленная икона', avtor='Илья Репин', god='1877–1924')
-        self.assertIsNone(kadr.strogo(self.k('Илья Репин', 'Крестный ход в Курской губернии', '1880'), r))
-        r = dict(title='Хоста. Черное море', avtor='Алексей Моргунов', god='1881')
-        self.assertIsNone(kadr.strogo(self.k('Иван Айвазовский', 'Чёрное море', '1881'), r))
-
-    def test_god_daleko_ne_proskakivaet(self):
-        r = dict(fond='tretyakov', title='Крестный ход в Курской губернии', avtor='Илья Репин', god='1891')
-        self.assertIsNone(kadr.strogo(self.k('Илья Репин', 'Крестный ход в Курской губернии', '1880'), r))

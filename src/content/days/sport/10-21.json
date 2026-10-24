@@ -3,5 +3,11 @@
   "key": "10-21",
   "title": "Людмила Хведосюк, байдарка, Токио-1964",
   "hook": "Людмила Хведосюк выиграла байдарку-одиночку в Токио-1964, а потом ещё два олимпийских золота — в Мехико и Мюнхене.",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/sport/img/10-21-hilde-lauer-lyudmila-pinayeva-marcia-jones-1964.jpg",
+      "caption": "Людмила Хведосюк (в центре) на пьедестале байдарки-одиночки, Токио, 1964 год",
+      "credit": "Олимпийский комитет Румынии, 1964. Цифровой файл: Wikimedia Commons, «Hilde Lauer, Lyudmila Pinayeva, Marcia Jones 1964.jpg» (Public domain)."
+    }
+  ]
 }

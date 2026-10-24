@@ -3,5 +3,11 @@
   "key": "10-20",
   "title": "Международный день повара",
   "hook": "Кастрюля, поварёшка, борщ — карикатура века рисовала кухню с улыбкой.",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/karikatura/img/10-20-french-crow-soup-by-i-i-terebenev.jpg",
+      "caption": "Карикатура «Французский вороний суп»: крестьянки угощают голодных французов",
+      "credit": "Иван Теребенев, 1813. Цифровой файл: Wikimedia Commons, «French crow soup by I.I. Terebenev.png» (Public domain)."
+    }
+  ]
 }

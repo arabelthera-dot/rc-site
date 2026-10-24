@@ -4,5 +4,11 @@
   "title": "Карибский кризис · 1962",
   "year": "1962",
   "hook": "Мир стоял на краю — и карикатура рисовала ракеты, примеряя страх к смеху.",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/karikatura/img/10-22-p-3a-vp-44-over-uss-barry-dd-933-and-metallurg-a.jpg",
+      "caption": "Американский патрульный самолёт над советским судном «Металлург Аносов» и эсминцем США, ноябрь 1962 года",
+      "credit": "ВМС США, 1962. Цифровой файл: Wikimedia Commons, «P-3A VP-44 over USS Barry (DD-933) and Metallurg Anosov during Cuban Missile Crisis 1962.jpg» (Public domain)."
+    }
+  ]
 }

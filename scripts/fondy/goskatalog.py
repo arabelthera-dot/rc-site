@@ -5,7 +5,7 @@ kadr = {muzey, den, fayl, podpis, derzhatel, inv, avtor, god, syuzhet}
 
 Порядок: 1) инвентарный/КП-номер + музей-держатель (точное совпадение номера, держатель по museumId);
 2) нет номера или пусто — автор + сюжет, держатель (если задан) обязателен.
-Сеть — fondy/_set.py: напрямую первым (таймаут 9 с), затем туннель kadr.ru_proxy() (поднимает transport.py реестра;
+Сеть — fondy/_set.py: напрямую первым (таймаут 9 с), затем туннель kadr.RU_PROXY (127.0.0.1:8899, ru_tunnel.py;
 rf-proxy:1080 забанен, 403); не ответил никак — хост пропускается до конца прогона.
 Браузерный User-Agent обязателен: с Python-UA портал отвечает 403. Права Госкаталог не даёт.
 """
@@ -13,7 +13,7 @@ import json, re, sys, threading, urllib.parse, urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-import kadr as _kadr  # noqa: E402  ru_proxy и find_goskatalog — общие с kadr.py
+import kadr as _kadr  # noqa: E402  RU_PROXY и find_goskatalog — общие с kadr.py
 sys.path.insert(0, str(Path(__file__).parent))
 import _set  # noqa: E402
 
@@ -38,7 +38,7 @@ def _open(path, data=None, timeout=None):
         _set._put[_HOST] = 'proxy'
         try:
             r = _set.zapros(_S, 'POST' if data is not None else 'GET', GK + path, data=data,
-                            timeout=timeout or 60, proxy=_kadr.ru_proxy())
+                            timeout=timeout or 60, proxy=_kadr.RU_PROXY)
             r.raise_for_status()
             return r.json()
         except Exception:

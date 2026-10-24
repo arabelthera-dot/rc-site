@@ -8,9 +8,19 @@
   "legacy_page": "muzei/literatura/lit-ostrovskiy-groza.html",
   "images": [
     {
-      "src": "muzei/literatura/img/01-18-gosudarstvennaa-tret-akovskaa-galerea-8d6fd525de.jpg",
+      "src": "muzei/literatura/media-groza/groza-hero.jpg",
+      "caption": "Рыжебородый человек в тёмном халате с меховым воротником",
+      "credit": "В. Г. Перов. Портрет А. Н. Островского, 1871 (кадр для шапки страницы); «Перов Островский.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/literatura/media-groza/kositskaya-1850.jpg",
+      "caption": "Любовь Павловна Косицкая. Литография, около 1850 года. Первая Катерина: роль на премьере в Малом театре 17 (29) ноября 1859 года.",
+      "credit": "Портрет Л. П. Косицкой, литография около 1850 года; «Kositskaya.png», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/literatura/media-groza/perov-ostrovskiy-1871.jpg",
       "caption": "Василий Перов. Портрет А. Н. Островского, 1871. Драматург в домашнем халате с меховым воротником.",
-      "credit": "Василий Перов, 1871. Источник: Государственная Третьяковская галерея [Государственная Третьяковская галерея], https://my.tretyakov.ru/app/masterpiece/8406. Права: общественное достояние (автор умер в 1882)."
+      "credit": "В. Г. Перов. Портрет А. Н. Островского, 1871; «Перов Островский.jpg», Wikimedia Commons, общественное достояние"
     }
   ]
 }

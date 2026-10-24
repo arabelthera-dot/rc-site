@@ -8,9 +8,204 @@
   "legacy_page": "muzei/karikatura/day-02jan-napoleon-slava-nos.html",
   "images": [
     {
-      "src": "muzei/karikatura/img/01-02-gmii-im-a-s-puskina-yyi1rsz-4nftokqarlmjs8ab2xth.jpg",
+      "src": "muzei/karikatura/media/napoleon-nos-paris.jpg",
+      "caption": "И. Теребенев · 1813 «Нос, привезённый Наполеоном с собой из России в Париж» От великой армии домой везёт один отмороженный нос.",
+      "credit": "Теребенев И.И. // Ivan Terebenev (1780-1815); Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Кар. 'Нос, привез. Наполеоном с собой из России в Париж'., Теребенев И.~1813. изд.1881 ГИМ.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/napoleon-myunhgauzen.jpg",
+      "caption": "И. Теребенев · 1813 «Наполеон и Мюнхгаузен» Хвастается небылицами, как барон Мюнхгаузен.",
+      "credit": "Ivan Ivanovich Terebenyov; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Наполеонъ и Мюнхгаузенъ.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/napoleon-ugoschenie-gim.jpg",
+      "caption": "И. Теребенев · 1813 «Угощение Наполеону в России» Русские «угощают» завоевателя отпором — он не рад.",
+      "credit": "Теребенев И.И. // Ivan Terebenev (1780-1815); Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «'Угощение Наполеону в России'. Рис. Теребенев И. 1813 , изд.1881г. ГИМ e1t3.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/napoleon-voroniy-sup.png",
+      "caption": "И. Теребенев · XIX в. «Вороний суп» Голодная армия варит суп из вороны вместо мяса.",
+      "credit": "И.И. Теребенев; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «French crow soup by I.I. Terebenev.png», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/napoleon-russkiy-stsevola.png",
       "caption": "И. Теребенев · 1813 «Русский Сцевола» Крестьянин отсекает заклеймённую руку: в сюжете гравюры он отказывается служить Наполеону.",
-      "credit": "Иван Иванович Теребенев, 1813. Источник: ГМИИ им. А. С. Пушкина [ГМИИ им. А. С. Пушкина], https://collection.pushkinmuseum.art/entity/OBJECT/291621. Права: общественное достояние (автор умер в 1815)."
+      "credit": "Ivan Ivanovich Terebenyov; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «РУССКИЙ СЦЕВОЛА.png», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/napoleon-antiki-auction.jpg",
+      "caption": "И. Теребенев · 1813 «Наполеон продаёт с молотка похищенные им антики» Распродаёт награбленное в Европе добро.",
+      "credit": "Теребенев И.И. // Ivan Terebenev (1780-1815); Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «'Наполеон продает с молотка похищенные им антики' рис.Теребенев Иван И. 1813г. e1.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/general-frost-shaving-boney.jpg",
+      "caption": "Исторический оригинал. Уильям Элмс, Лондон, 1 декабря 1812 · издатель Томас Тегг · раскрашенная гравюра · Наполеоновская коллекция Университета Вашингтона. Мороз бреет Наполеона бритвой «Русская сталь» и говорит: «Вторгся в мою страну — побрею, заморожу и похороню в снегу, обезьянка!»",
+      "credit": "Уильям Элмс; издатель Томас Тегг (по карточке Commons); Наполеоновская коллекция Университета Вашингтона (по карточке Commons); «General Frost Shaveing Little Boney (NAPOLEON 151).jpeg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/napoleon-satan-moscow.png",
+      "caption": "Автор не установлен · XIX в. «Наполеон с сатаной после сожжения Москвы» После пожара Москвы показан рядом с сатаной.",
+      "credit": "Авторство требует сверки: Commons приписывает Ивану Алексеевичу Иванову, страница оставляет автора неустановленным; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Napoleon with Satan after burning Moscow (19th century).png», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-a.jpg",
+      "caption": "Азбука · 1815 Буква «А» Крестьянин притворяется глухим и издевается над французами.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - А.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-b.jpg",
+      "caption": "Азбука · 1815 Буква «Б» Французы бегут, чтобы не попасть в плен с маршалами Даву и Понятовским.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Б.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-v.jpg",
+      "caption": "Азбука · 1815 Буква «В» Голодные французы в отступлении едят ворон.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - В.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-g.jpg",
+      "caption": "Азбука · 1815 Буква «Г» Наполеон храбр на словах, как тигр, а в деле труслив, как заяц.",
+      "credit": "И. И. Теребенев (традиционная атрибуция издания); в каталоге ГМИИ атрибуция отдельных листов отмечена знаком вопроса; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Г.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-d.jpg",
+      "caption": "Азбука · 1815 Буква «Д» Позорное бегство французов домой из России.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Д.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-e.jpg",
+      "caption": "Азбука · 1815 Буква «Е» Старостиха Василиса гонит пленных французов.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По гравюре А.Г. Венецианова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Е.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-zh.jpg",
+      "caption": "Азбука · 1815 Буква «Ж» Француз хотел муштровать русских — теперь пляшет под их дудку.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ж.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-z.jpg",
+      "caption": "Азбука · 1815 Буква «З» После нашествия русские «окуривают» заразу от французов.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - З.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-i.jpg",
+      "caption": "Азбука · 1815 Буквы «И» и «I» Старостиха Василиса держит пленных французов.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; по оригиналу А. Г. Венецианова; цифровая копия Commons; «Terebenevskaya azbuka - И.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-k.jpg",
+      "caption": "Азбука · 1815 Буква «К» Русский отказывается носить на руке имя Наполеона.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - К.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-l.jpg",
+      "caption": "Азбука · 1815 Буква «Л» Французы бегут, бросив награбленное.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Л.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-m.jpg",
+      "caption": "Азбука · 1815 Буква «М» Москва стала могилой французской армии.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу И.А. Иванова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - М.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-n.jpg",
+      "caption": "Азбука · 1815 Буква «Н» Наполеоновские рекруты — жалкие остатки.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Н.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-o.jpg",
+      "caption": "Азбука · 1815 Буква «О» Русские солдаты кормят пленных французов — милосердие к врагу.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу И.А. Иванова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - О.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-p.jpg",
+      "caption": "Азбука · 1815 Буква «П» Наполеон сел не в свои сани — не ему править Россией.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу И.А. Иванова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - П.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-r.jpg",
+      "caption": "Азбука · 1815 Буква «Р» Наполеон позорно возвращается в Париж.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу А.Г. Венецианова (?); Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Р.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-s.jpg",
+      "caption": "Азбука · 1815 Буква «С» Приглашение посмотреть на позор Наполеона.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - С.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-t.jpg",
+      "caption": "Азбука · 1815 Буква «Т» Вернулся нагим, но с «носом» — обманутыми ожиданиями.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Т.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-u.jpg",
+      "caption": "Азбука · 1815 Буква «У» Подпись провожает Наполеона насмешкой: «Прощай ещё хоть раз».",
+      "credit": "И. И. Теребенев (традиционная атрибуция издания); в каталоге ГМИИ атрибуция отдельных листов отмечена знаком вопроса; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - У.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-f.jpg",
+      "caption": "Азбука · 1815 Буква «Ф» Василиса заперла французов в избе, как мышей в ловушке.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ф.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-kh.jpg",
+      "caption": "Азбука · 1815 Буква «Х» Наполеон вознёсся, но свергнут на остров Эльба.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу А.Г. Венецианова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Х.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-ts.jpg",
+      "caption": "Азбука · 1815 Буква «Ц» Польскому солдату велят молчать и оставаться во французском строю.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ц.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-ch.jpg",
+      "caption": "Азбука · 1815 Буква «Ч» Француза в отступлении везут на свиньях.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ч.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-sh.jpg",
+      "caption": "Азбука · 1815 Буква «Ш» Казак с нагайкой против широкоплечего француза.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ш.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-shch.jpg",
+      "caption": "Азбука · 1815 Буква «Щ» Счастье покинуло француза и ускакало с казаком.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу А.Г. Венецианова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Щ.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-tverdy.jpg",
+      "caption": "Азбука · 1815 Буква «Ъ» Наполеон — последний, как твёрдый знак.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ъ.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-y.jpg",
+      "caption": "Азбука · 1815 Буква «Ы» Наполеоновское величие слетело с колеса Фортуны.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу А.Г. Венецианова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ы.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-myagky.jpg",
+      "caption": "Азбука · 1815 Буква «Ь» Наполеон съёжился и обмяк, как мягкий знак.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ь.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-eh.jpg",
+      "caption": "Азбука · 1815 Буква «Э» Казаки хватают бегущих французов.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Э.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-yu.jpg",
+      "caption": "Азбука · 1815 Буква «Ю» Наполеон юлит, обещает горы — на деле развращает молодёжь.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По оригиналу А.Г. Венецианова; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ю.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-ya.jpg",
+      "caption": "Азбука · 1815 Буква «Я» Наполеон — тонущий корабль, пример гибели для потомков.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Я.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/karikatura/media/azbuka-yat.jpg",
+      "caption": "Азбука · 1815 Буква «Ять» Казак увозит в свой стан отбитую французскую пушку.",
+      "credit": "И. И. Теребенев (?) — каталог ГМИИ; По собственному оригиналу; Цифровой файл: Wikimedia Commons; физический держатель требует отдельной сверки; «Terebenevskaya azbuka - Ять.jpg», Wikimedia Commons, общественное достояние"
     }
   ]
 }

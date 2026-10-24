@@ -6,7 +6,28 @@
   "hook": "Александр Радищев написал правду о крепостном рабстве, и Екатерина назвала его бунтовщиком хуже Пугачёва.",
   "source": "«А. Н. Радищев — философ-материалист» (cyberleninka.ru)",
   "legacy_page": "muzei/literatura/lit-radishchev-puteshestvie.html",
-  "images": [],
+  "images": [
+    {
+      "src": "muzei/literatura/media-radishchev/ilimsk-hero.jpg",
+      "caption": "Деревянная башня с шатровой крышей и двуглавым орлом на шпиле на фоне синего неба",
+      "credit": "Спасская башня Илимского острога (кадр для шапки). Фото: Alexander Klink, 2017; «RU Irkutsk Taltsy Spasskya Tower Ilimsk Ostrog.jpg», Wikimedia Commons, CC BY 4.0"
+    },
+    {
+      "src": "muzei/literatura/media-radishchev/radishchev-portret.jpg",
+      "caption": "Александр Радищев. Портрет работы неизвестного художника, не позднее 1790. Таким его знали сослуживцы по Петербургской таможне, которой он управлял, когда печатал книгу.",
+      "credit": "Портрет А. Н. Радищева, Wikimedia Commons; общественное достояние (портрет XVIII века)"
+    },
+    {
+      "src": "muzei/literatura/media-radishchev/puteshestvie-1790-titul.jpg",
+      "caption": "Титульный лист первого издания, 1790. Имени автора на нём нет. Эпиграф — «Чудище обло, озорно, огромно, стозевно и лаяй».",
+      "credit": "Титульный лист «Путешествия», 1790; «Pallas titul.jpg», Wikimedia Commons, общественное достояние"
+    },
+    {
+      "src": "muzei/literatura/media-radishchev/ilimsk-spasskaya-bashnya.jpg",
+      "caption": "Спасская проезжая башня Илимского острога (1667), музей «Тальцы». Перед затоплением Усть-Илимского водохранилища башню перевезли под Иркутск; Радищев жил в Илимске в 1792–1796 годах.",
+      "credit": "Спасская проезжая башня Илимского острога, музей «Тальцы». Фото: Alexander Klink, 2017; «RU Irkutsk Taltsy Spasskya Tower Ilimsk Ostrog.jpg», Wikimedia Commons, CC BY 4.0"
+    }
+  ],
   "slovar": [
     "mesto:moskva",
     "mesto:sankt-peterburg"

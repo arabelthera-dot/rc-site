@@ -4,5 +4,101 @@
   "title": "Городки: 15 фигур от «пушки» до «письма», 1923/1933",
   "hook": "Дворовые городки получили в 1923 году первые правила соревнований — и забава с битой стала настоящим спортом.",
   "source": "Федерация городошного спорта России, «Городки в СССР» (gorodki-russia.ru)",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/sport/media/gorodki/karneev-1812-960.webp",
+      "caption": "Раскрашенная гравюра 1812 года: на площади у ограды мужики в рубахах и кафтанах замахиваются битами, один упал, вокруг зрители",
+      "credit": "Общественное достояние, Е. М. Карнеев, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/spiele-11-400c.webp",
+      "caption": "Раскрашенная гравюра 1805 года: у деревянного забора мужики в кафтанах бросают палки по чуркам в круге",
+      "credit": "Общественное достояние, Gottfried Heinrich Geißler, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/spiele-12-400c.webp",
+      "caption": "Гравюра 1805 года: игроки с палками у избы, один замахивается",
+      "credit": "Общественное достояние, Gottfried Heinrich Geißler, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/bramatti-1826-400c.webp",
+      "caption": "Акватинта Браматти 1826 года: толпа играет в городки и пристенок у ограды",
+      "credit": "Общественное достояние, Браматти, Джузеппе, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/zemtsov-400c.webp",
+      "caption": "Гравюра до 1917 года: воскресный день в деревне, у избы под деревом толпа смотрит, как парень бросает биту",
+      "credit": "Общественное достояние, автор неизвестен, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/tolstoy-1909-400c.webp",
+      "caption": "Фото 1909 года: Лев Толстой в длинной рубахе замахивается битой в осеннем парке",
+      "credit": "Общественное достояние, Т. Тапсель, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/shalyapin-1914-400c.webp",
+      "caption": "Фото 1914 года: Фёдор Шаляпин в кепке и пиджаке держит две биты",
+      "credit": "Общественное достояние, автор неизвестен, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/pavlov-400c.webp",
+      "caption": "Фото 1900–1910-х: группа мужчин с битами у дачи, в центре Иван Павлов",
+      "credit": "Общественное достояние, unknown/неизвестен, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/spb-site-400c.webp",
+      "caption": "Фото 2008 года: городошная площадка в Петербурге у старой кирпичной стены, игрок бросает биту",
+      "credit": "Общественное достояние, Manmelman, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/pushka-400c.webp",
+      "caption": "Компьютерная схема фигуры «пушка»: пять деревянных городков",
+      "credit": "CC BY 3.0, Begemotv2718, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/pismo-400c.webp",
+      "caption": "Компьютерная схема фигуры «письмо»: четыре городка по углам и один в центре квадрата",
+      "credit": "CC BY 3.0, Begemotv2718, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/oslo-1935-400c.webp",
+      "caption": "Фото 1935 года: игроки в городки в майках на песчаной площадке, один замахивается битой",
+      "credit": "CC BY 2.0, Municipal Archives of Trondheim from Trondheim, Norway, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/hammond-1958-400c.webp",
+      "caption": "Цветное фото 1958 года: пионеры в белых рубашках играют в городки в парке",
+      "credit": "CC BY-SA 4.0, Thomas Taylor Hammond (1920-1993), Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/coin-1980-400c.webp",
+      "caption": "Серебряная монета 5 рублей 1980 года серии Игр XXII Олимпиады: городошник с битой и фигуры",
+      "credit": "Общественное достояние, State Bank of the USSR, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/tyumen-2021-400c.webp",
+      "caption": "Фото 2021 года: новая городошная площадка под навесом в парке Тюмени",
+      "credit": "CC BY-SA 4.0, RG72, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/spb-player-400c.webp",
+      "caption": "Фото 2008 года: городошник в белой футболке нагибается за битой на красной площадке",
+      "credit": "Общественное достояние, Manmelman, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/nn-2010-400c.webp",
+      "caption": "Фото 2010 года: ворота «Городошный стадион» в Нижнем Новгороде",
+      "credit": "CC BY-SA 3.0, Aleksey Igonin, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/stamp-1999-400c.webp",
+      "caption": "Марка России 1999 года «Игра в городки»: игрок в кепке замахивается битой",
+      "credit": "Общественное достояние, Russian post, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/sport/media/gorodki/stamp-2023-400c.webp",
+      "caption": "Марка России 2023 года из серии «Виды спорта»: городошница бросает биту",
+      "credit": "CC0, Художник-дизайнер – Бельтюков В., Wikimedia Commons"
+    }
+  ]
 }

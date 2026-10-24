@@ -3,12 +3,6 @@
 Порядок: сначала напрямую (браузерный UA, таймаут PRYAMO_S), при отказе/таймауте/403/429/5xx —
 через прокси РФ (RC_FONDY_PROXY, по умолчанию socks5h://rf-proxy:1080; пусто — без прокси).
 Хост, не ответивший ни так, ни так, помечается «недоступен» до конца прогона и дальше пропускается сразу.
-Предохранитель (circuit breaker, как failure-rate в resilience4j): из последних OKNO запросов к хосту, уже
-отвечавшему, не меньше DOLYA сбоев (при OKNO_MIN+ запросах) — хост на паузу PAUZA_S: запросы к нему сразу
-Nedostupen, без ожидания таймаута; после паузы одна проба, окно с нуля. Сбои подряд не годятся: редкий ответ
-медленного хоста (Эрмитаж, 22.10) обнулял счёт, и каждый кадр ждал по 9 с.
-Медленный ответ (дольше MEDLENNO_S, как slowCallDurationThreshold в resilience4j) отдаётся вызывающему, но в окне
-считается сбоем: Эрмитаж отвечал по 8–9 с, ни разу не молча, и предохранитель его не ловил.
 
 TLS: verify — бандл certifi + scripts/fondy/certs/*.pem. Там лежат промежуточные сертификаты, которые
 некоторые сайты не отдают сами (Эрмитаж — GlobalSign GCC R46 AlphaSSL CA 2025, корень GlobalSign Root R46
@@ -16,8 +10,6 @@ TLS: verify — бандл certifi + scripts/fondy/certs/*.pem. Там лежа�
 """
 import os
 import tempfile
-import threading
-import time
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -30,14 +22,7 @@ PRYAMO_S = 9
 PROXY_S = 20
 PLOHO = {403, 407, 429, 502, 503, 504}  # 500 — ответ сервера по существу (Госкаталог на кривой номер), не сеть
 
-OKNO, OKNO_MIN, DOLYA = 10, 4, 0.5
-PAUZA_S = 60
-MEDLENNO_S = 5
-
 _put: dict[str, str] = {}        # хост -> 'pryamo' | 'proxy' | 'net' (на прогон)
-_okno: dict[str, list] = {}      # хост -> исходы последних OKNO запросов (True — сбой)
-_pauza: dict[str, float] = {}    # хост -> monotonic, до которого не спрашиваем
-_zamok = threading.Lock()
 _bundle = None
 
 
@@ -76,36 +61,6 @@ def zapros(s: requests.Session, metod: str, url: str, timeout=None, proxy=None, 
     put = _put.get(host)
     if put == 'net':
         raise Nedostupen(f'{host}: недоступен в этом прогоне')
-    with _zamok:
-        do = _pauza.get(host, 0)
-        if do > time.monotonic():
-            raise Nedostupen(f'{host}: на паузе — больше половины запросов не ответили или ответили медленно')
-        if do:
-            # пауза вышла: эта проба одна, остальные ждут её исхода ещё PAUZA_S
-            _pauza[host] = time.monotonic() + PAUZA_S
-    t0 = time.monotonic()
-    try:
-        r = _zapros(s, metod, url, host, put, timeout, proxy, **kw)
-    except Nedostupen:
-        _ishod(host, True)
-        raise
-    _ishod(host, time.monotonic() - t0 > MEDLENNO_S)
-    return r
-
-
-def _ishod(host, sboy):
-    with _zamok:
-        if _pauza.pop(host, None) is not None and not sboy:
-            _okno[host] = []  # проба после паузы прошла — окно с нуля
-        o = _okno.setdefault(host, [])
-        o.append(sboy)
-        del o[:-OKNO]
-        if sboy and _put.get(host) != 'net' and len(o) >= OKNO_MIN and sum(o) >= DOLYA * len(o):
-            _pauza[host] = time.monotonic() + PAUZA_S
-            o.clear()
-
-
-def _zapros(s, metod, url, host, put, timeout, proxy, **kw):
     if put in (None, 'pryamo'):
         try:
             r = s.request(metod, url, timeout=timeout or PRYAMO_S, proxies={'http': None, 'https': None}, **kw)

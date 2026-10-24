@@ -6,5 +6,16 @@
   "mechanic": "Проходишь четыре расстояния: пакет из пяти блоков → один блок → двигатель → форсунка ✅",
   "source": "Президентская библиотека имени Б. Н. Ельцина · «Состоялся запуск первой советской межконтинентальной баллистической ракеты Р-7» (prlib.ru)",
   "legacy_page": "muzei/izobreteniya/day-12jan-r7.html",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/izobreteniya/day-12jan-r7-vdnh.jpg",
+      "caption": "Белая ракета в стальной стартовой ферме; внизу четыре боковых блока вокруг центрального",
+      "credit": "Фото igor_f, 2007, CC BY 3.0, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/izobreteniya/day-12jan-r7-semyorka.svg",
+      "caption": "Р-7 (8К71), рисунок WDGraham. Свободная лицензия с указанием автора.",
+      "credit": "Рисунок WDGraham, свободная лицензия с указанием автора, Wikimedia Commons"
+    }
+  ]
 }

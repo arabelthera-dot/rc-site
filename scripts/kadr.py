@@ -45,22 +45,8 @@ UA = {'User-Agent': 'rc-site-kadr/1.0 (info@russian-civilization.ru)'}
 ROOT = Path(__file__).resolve().parent.parent
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
-# выход rf-proxy:1080 забанен Госкаталогом (403) — ходим российским туннелем реестра (ru_tunnel.py)
-
-
-def ru_proxy():
-    """Адрес туннеля; погас после часа простоя — поднимает его transport.py реестра, как для access.py."""
-    if os.environ.get('RC_RU_PROXY'):
-        return os.environ['RC_RU_PROXY']
-    sys.path.insert(0, str(ACCESS.parent))
-    import transport
-    px = transport.ru_proxy('goskatalog.ru')
-    if not px:
-        raise RuntimeError('российский туннель не поднят (ru-route.json выключен или нет ключа, ru_tunnel.py join)')
-    return px
+RU_PROXY = os.environ.get('RC_RU_PROXY', 'http://127.0.0.1:8899')  # выход rf-proxy:1080 забанен Госкаталогом (403)
 # Права фондов, которых нет в sources.json (рецепты — knowledge/kadr-recepty-fondov.md, 19.10.2026)
-# Права без лицензии (общественное достояние, CC…) кадр не ставят: подпись-заглушка «сверить по карточке» роняла сборку (22.10)
-LIC_OK = re.compile(r'\bCC[ -]?(BY|0)|обществен\S* достоян|public domain|свободн\S* лиценз', re.I)
 PRAVA = {'goskatalog': 'Госкаталог прав не даёт — автор и год смерти по карточке',
          'rusmuseum': '© Русский музей, открытой лицензии нет',
          'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
@@ -111,9 +97,8 @@ def access(*args, timeout=90):
         raise RuntimeError(f'нет access.py ({ACCESS}); задай RC_ACCESS')
     with tempfile.TemporaryDirectory(prefix='kadr-') as tmp:
         env = dict(os.environ)
-        if any('goskatalog.ru' in x for x in args):  # Госкаталог — только через российский туннель
-            px = ru_proxy()
-            env.update(HTTPS_PROXY=px, https_proxy=px)
+        if any('goskatalog.ru' in x for x in args):  # Госкаталог — только через туннель RU_PROXY
+            env.update(HTTPS_PROXY=RU_PROXY, https_proxy=RU_PROXY)
         r = subprocess.run([sys.executable, str(ACCESS), *args, '--out-dir', tmp],
                            capture_output=True, text=True, timeout=timeout, env=env)
         rep = Path(tmp) / 'report.json'
@@ -153,8 +138,7 @@ def find_goskatalog(fond, query, n, geo):
     req = urllib.request.Request(f'{gk}/muzfo-rest/rest/exhibits/ext?{q}', data=b'[]', method='POST', headers={
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0', 'Content-Type': 'application/json',
         'Accept': 'application/json', 'Origin': gk, 'Referer': gk + '/portal/'})
-    px = ru_proxy()
-    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': px, 'http': px}))
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': RU_PROXY, 'http': RU_PROXY}))
     objs = json.loads(opener.open(req, timeout=40).read()).get('objects', [])
     for o in objs:
         img = (o.get('mainImage') or {}).get('id')
@@ -307,13 +291,13 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')[:48]
 
 
-def put(museum, key, title, caption, avtor=None, card=None, prava=None):
+def put(museum, key, title, caption, avtor=None, card=None):
     day = ROOT / 'src/content/days' / museum / f'{key}.json'
     if not day.is_file():
         sys.exit(f'нет дня {day}')
     fond = title.split(':', 1)[0]
     if fond in FONDY:
-        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card, prava)
+        return put_fond(day, museum, key, fond, title.split(':', 1)[1], caption, avtor, card)
     if not RAZRESHENIE:
         sys.exit('Викисклад выключен (Р90): сначала российские фонды и museum-source-access; '
                  'кадр оттуда — только с --razreshenie "слово Сергея"')
@@ -359,7 +343,7 @@ def write_day(day, rel, caption, credit):
     day.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
 
 
-def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
+def put_fond(day, museum, key, fond, ref, caption, avtor, card):
     """Кадр из российского фонда: файл через access.py, credit — из записи фонда в sources.json."""
     if not avtor:
         sys.exit(f'{fond}: шестым аргументом — автор и год по-русски (фонд не отдаёт паспорт машинно)')
@@ -374,9 +358,7 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None):
     except Exception as e:
         sys.exit(f'{fond}: файл не получен ({e})')
     rel, im = save(raw, museum, key, slug(f'{fond}-{Path(urllib.parse.unquote(urllib.parse.urlsplit(url).path)).stem}'))
-    pravo = prava or src.get('rights') or src.get('license') or PRAVA.get(fond) or ''
-    if not LIC_OK.search(pravo):
-        sys.exit(f'{fond}: права не названы ({pravo or "нет"}) — посмотри карточку и дай --prava "общественное достояние (автор умер в ГГГГ)"')
+    pravo = src.get('rights') or src.get('license') or PRAVA.get(fond) or 'в sources.json не указаны — сверить по карточке'
     credit = f'{avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
     write_day(day, rel, caption, credit)
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
@@ -697,7 +679,6 @@ def nomer_vypuska(s):
 
 
 POROG_NAZV = 0.8  # доля слов названия, найденных в обе стороны
-KARTINNYE = {'tretyakov', 'rusmuseum', 'Государственная Третьяковская галерея', 'Государственный Русский музей'}  # FOND адаптеров scripts/fondy/
 
 
 def strogo(k, r):
@@ -707,20 +688,11 @@ def strogo(k, r):
         dk, dr = norm(k['derzhatel']), norm(r.get('derzhatel'))
         if dk and dr and (dk in dr or dr in dk):
             return 'инв. номер у того же держателя'
-    nk, fk = slova_nazv(k.get('nazvanie')), familii(k.get('avtor'))
-    # пояснение фонда в скобках не часть названия: «Черное море (На Черном море начинает разыгрываться буря)»
-    t = str(r.get('title') or '')
-    nfs = [x for x in (slova_nazv(t), slova_nazv(re.sub(r'\s*\([^)]*\)', '', t))) if x]
-    nazv = max((min(pokrytie(nf, nk), pokrytie(nk, nf)) for nf in nfs), default=0.0) if nk else 0.0
-    if fk and fk & familii(r.get('avtor')) and nazv >= POROG_NAZV:
-        if god_sovpal(k, r):
-            return 'автор + год + название'
-        # картина в одном экземпляре (ГТГ, ГРМ), название слово в слово — год подписи может расходиться
-        # с датировкой фонда на 1–3 года (Репин «Крестный ход в Курской губернии»: подпись 1880, ГТГ 1881–1883);
-        # в credit идёт год фонда. Гравюры и журналы — тиражи по годам, там год решает (test_fondy_pushkin)
-        d = gody(r)
-        if r.get('fond') in KARTINNYE and nazv == 1.0 and d and re.fullmatch(r'\d{4}', str(k.get('god') or '')) and d[0] - 3 <= int(k['god']) <= d[1] + 3:
-            return 'автор + название слово в слово, год по датировке фонда'
+    nf, nk = slova_nazv(r.get('title')), slova_nazv(k.get('nazvanie'))
+    fk = familii(k.get('avtor'))
+    if (fk and fk & familii(r.get('avtor')) and god_sovpal(k, r) and nf and nk
+            and pokrytie(nf, nk) >= POROG_NAZV and pokrytie(nk, nf) >= POROG_NAZV):
+        return 'автор + год + название'
     # выпуск журнала (запись без автора): «Будильник, 1873. № 4» ↔ подпись «… «Будильник», 1873, № 4»
     if not r.get('avtor'):
         nr = nomer_vypuska(r.get('title'))
@@ -741,17 +713,10 @@ def bez_wiki(s):
 def primenit(k, r):
     """Скан через fetch/save (как put_fond), затем подпись, data-source, data-license, строка прав."""
     src = sources().get(r['fond'], {})
-    pravo = src.get('rights') or src.get('license') or PRAVA.get(r['fond']) or ''
-    if not LIC_OK.search(pravo):
-        warn(f'{k["muzey"]}/{k["den"]} {k["fayl"]}: права не названы — кадр не ставлю, через put --prava')
-        return False
+    pravo = src.get('rights') or src.get('license') or PRAVA.get(r['fond']) or 'сверить по карточке'
     name = src.get('name') or r['fond']
-    imya = slug(f'{r["fond"]}-{Path(urllib.parse.urlsplit(r["image"]).path).stem}')
-    gotov = ROOT / 'public' / f'muzei/{k["muzey"]}/img/{k["den"]}-{imya}.jpg'
     try:
-        # имя — из адреса скана: файл уже есть = тот же скан под второй копией кадра дня (крупный + превью)
-        rel, im = (gotov.relative_to(ROOT / 'public').as_posix(), Image.open(gotov)) if gotov.exists() \
-            else save(fetch(r['image']), k['muzey'], k['den'], imya)
+        rel, im = save(fetch(r['image']), k['muzey'], k['den'], slug(f'{r["fond"]}-{Path(urllib.parse.urlsplit(r["image"]).path).stem}'))
     except (Exception, SystemExit) as e:
         warn(f'{k["muzey"]}/{k["den"]} {k["fayl"]}: скан не взят ({e})')
         return False
@@ -906,9 +871,15 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
     import signal
     from concurrent.futures import ThreadPoolExecutor
     ad = adaptery(vkl, bez)
-    if any(n == 'goskatalog' for n, _ in ad):  # Госкаталог только через российский туннель; ru_proxy() поднимает его сам (#347)
-        try: ru_proxy()
-        except RuntimeError as e: warn(f'{e} — goskatalog вернёт пусто')
+    if any(n == 'goskatalog' for n, _ in ad):  # #335: Госкаталог только через туннель RU_PROXY
+        import socket
+        hp = urllib.parse.urlsplit(RU_PROXY)
+        try: socket.create_connection((hp.hostname, hp.port), 2).close()
+        except OSError:
+            tun = os.environ.get('RC_RU_TUNNEL', str(Path.home() / 'projects/russian-civilization/docs/registries/ru_tunnel.py'))
+            if Path(tun).exists():
+                subprocess.Popen([sys.executable, tun, 'serve'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True); warn(f'туннель {RU_PROXY} поднят фоном: {tun}')
+            else: warn(f'туннель {RU_PROXY} не слушает, {tun} не найден — goskatalog вернёт пусто')
     ustanovit_set()
     vykl = sorted(set(TOLKO_PO_RAZRESHENIYU) - set(vkl)) + sorted(set(bez) - set(TOLKO_PO_RAZRESHENIYU))
     print(f'адаптеров фондов: {len(ad)} ({", ".join(n for n, _ in ad) or "нет"}); выключены: {", ".join(vykl) or "нет"}; '
@@ -926,19 +897,15 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
     # прежние строки обрабатываемых музеев: при обрыве необработанные дописываются, ничего не теряется
     gotovo = set()  # ключи (музей, день, файл), обработанные в этом прогоне
     propusk = {klyuch(r) for r in stary} if prodolzhit else set()
-    # найденное — data/r90-naydeno.tsv, пишется сразу: дозапуск и --primenit берут находку оттуда, без сети
-    nayd_put = ROOT / 'data/r90-naydeno.tsv'
-    naydeno = naydeno_chitat(nayd_put)
     if prodolzhit:
         n0 = len(kadry)
-        kadry = [k for k in kadry if (k['muzey'], k['den'], k['fayl']) not in propusk
-                 and (prim or (k['muzey'], k['den'], k['fayl']) not in naydeno)]
-        print(f'--prodolzhit: пропускаю {n0 - len(kadry)} кадров, уже стоящих в таблицах', flush=True)
+        kadry = [k for k in kadry if (k['muzey'], k['den'], k['fayl']) not in propusk]
+        print(f'--prodolzhit: пропускаю {n0 - len(kadry)} кадров, уже стоящих в таблице', flush=True)
     # пишется во временный файл рядом, в конце — атомарная подмена (os.replace)
     fd, tmp = tempfile.mkstemp(prefix='.r90-', suffix='.tsv', dir=out.parent)
     tsv = os.fdopen(fd, 'w')
-    # строки чужих музеев сюда не пишутся: в конце берутся из таблицы заново под замком — параллельные прогоны
-    # разных музеев не затирают друг друга
+    tsv.write('\t'.join(('музей', 'день', 'файл', 'держатель', 'инв', 'что искали', 'почему нет')) + '\n'
+              + ''.join(r + '\n' for r in sorted(drugie)))
     if prodolzhit:
         tsv.write(''.join(r + '\n' for r in stary))
     tsv.flush()
@@ -952,14 +919,9 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
     kadry.sort(key=lambda k: (str(k['put']), -(k.get('tag') or (0,))[0]))
     pool = ThreadPoolExecutor(max_workers=max(1, j))
     try:
-        futs = [(k, None if (k['muzey'], k['den'], k['fayl']) in naydeno else pool.submit(iskat, k, ad)) for k in kadry]
+        futs = [(k, pool.submit(iskat, k, ad)) for k in kadry]
         for k, fu in futs:
-            if fu is None:  # найдено прежним прогоном
-                kk, hit, kand, upali = k, naydeno[(k['muzey'], k['den'], k['fayl'])], 0, []
-            else:
-                kk, hit, kand, upali = fu.result()
-                if hit:
-                    naydeno_zapisat(nayd_put, k, hit)
+            kk, hit, kand, upali = fu.result()
             s = itog.setdefault(k['muzey'], dict(kadrov=0, derzh=0, inv=0, naydeno=0, zameneno=0))
             s['kadrov'] += 1; s['derzh'] += bool(k['derzhatel']); s['inv'] += bool(k['inv'])
             stranica = f'{k["muzey"]}/{k["den"]}'
@@ -1001,15 +963,7 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
             warn(f'\nпрогон оборван: обработано {len(gotovo)} из {len(kadry)}, прежних строк возвращено {len(vernul)} '
                  f'(дальше — --prodolzhit)')
         tsv.close()
-        import fcntl
-        with open(out.parent / '.r90.lock', 'w') as zamok:
-            fcntl.flock(zamok, fcntl.LOCK_EX)
-            if muzey and out.is_file():
-                drugie = [r for r in out.read_text().splitlines()[1:] if r and r.split('\t')[0] != muzey]
-            nashi = Path(tmp).read_text().splitlines()
-            Path(tmp).write_text('\n'.join(['\t'.join(('музей', 'день', 'файл', 'держатель', 'инв', 'что искали', 'почему нет'))]
-                                           + sorted(drugie) + nashi) + '\n')
-            os.replace(tmp, out)
+        os.replace(tmp, out)
         if staryy_sig is not None:
             signal.signal(signal.SIGTERM, staryy_sig)
     print(f'\n{"музей":<18}{"кадров":>7}{"держ.":>7}{"инв.":>6}{"найдено":>9}{"не найд.":>9}' + ('  заменено' if prim else ''))
@@ -1028,33 +982,6 @@ def zamena(muzey=None, prim=False, vkl=(), bez=(), j=6, prodolzhit=False):
         sys.exit(f'СТОП: ноль находок в {", ".join(nol)} — до следующего шага посмотреть кадры глазами, '
                  'разложить по типу (картина, фото войны, марка, газета, экспонат, памятник) и проверить, '
                  'есть ли под каждый тип своя база; сеть виноватой не считать')
-
-
-NAYD_SHAPKA = ('музей', 'день', 'файл', 'фонд', 'карточка', 'сверка', 'находка (json)')
-
-
-def naydeno_chitat(put):
-    """(музей, день, файл) -> (hit, сверка) из data/r90-naydeno.tsv; поздняя строка того же кадра главнее."""
-    d = {}
-    if put.is_file():
-        for r in put.read_text().splitlines()[1:]:
-            c = r.split('\t')
-            if len(c) == len(NAYD_SHAPKA):
-                d[tuple(c[:3])] = (json.loads(c[6]), c[5])
-    return d
-
-
-def naydeno_zapisat(put, k, hit):
-    import fcntl
-    clean = lambda v: re.sub(r'[\t\n]+', ' ', str(v))
-    with open(put.parent / '.r90.lock', 'w') as zamok:
-        fcntl.flock(zamok, fcntl.LOCK_EX)
-        novyy = not put.is_file()
-        with open(put, 'a') as f:
-            if novyy:
-                f.write('\t'.join(NAYD_SHAPKA) + '\n')
-            f.write('\t'.join(map(clean, [k['muzey'], k['den'], k['fayl'], hit[0]['fond'], hit[0]['card'], hit[1]]))
-                    + '\t' + json.dumps(hit[0], ensure_ascii=False) + '\n')
 
 
 def kadry_muzeya(muzey=None):
@@ -1099,7 +1026,6 @@ def main(argv=None):
     pu.add_argument('title', help='"фонд:ссылка" или имя файла'); pu.add_argument('caption', help='подпись')
     pu.add_argument('avtor', nargs='?', help='автор (для фонда обязателен)')
     pu.add_argument('--card', help='ссылка на карточку предмета')
-    pu.add_argument('--prava', help='права по карточке: «общественное достояние (автор умер в ГГГГ)», CC BY …')
     z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
     z.add_argument('--s-loc', action='store_true', help='включить Библиотеку Конгресса — только с личного разрешения владельца, Р93')
@@ -1118,7 +1044,7 @@ def main(argv=None):
     elif a.cmd == 'find':
         find(a.query, a.n, a.geo)
     else:
-        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card, a.prava)
+        put(a.museum, a.key, a.title, a.caption, a.avtor, a.card)
 
 
 if __name__ == '__main__':

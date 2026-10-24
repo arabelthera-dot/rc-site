@@ -1,6 +1,7 @@
 ---
 // Подпись источника картинки со ссылками (Сергей 17.10): лицензия CC / общественное достояние —
-// ссылка на её текст на creativecommons.org; адрес в подписи — ссылка на страницу источника. Текст подписи выводится дословно, ссылками становятся только его куски.
+// ссылка на её текст на creativecommons.org; файл Викисклада («Имя.jpg» в подписи) или адрес в подписи —
+// ссылка на страницу источника. Текст подписи выводится дословно, ссылками становятся только его куски.
 interface Props { text: string }
 const { text } = Astro.props;
 const LIC = /\bCC[ -]?(BY(?:-SA)?|BY-NC(?:-SA)?|BY-ND|BY-NC-ND)[ -](\d\.\d)\b|\bCC0\b|\bpublic domain\b|общественное достояние/gi;
@@ -16,7 +17,8 @@ for (const m of text.matchAll(LIC)) {
   last = m.index! + m[0].length;
 }
 parts.push({ t: text.slice(last) });
+const commons = /wikimedia commons|викисклад/i.test(text) && text.match(/«([^«»]+\.(?:jpe?g|png|tiff?|gif|svg|webp))»/i)?.[1];
 const url = text.match(/https?:\/\/[^\s,;»)]+/)?.[0];
-const file = url;
+const file = commons ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(commons.replace(/ /g, '_'))}` : url;
 ---
 <span class="credit">{parts.map((p) => (p.href ? <a href={p.href} rel="license noopener" target="_blank">{p.t}</a> : p.t))}{file && <Fragment> · <a href={file} rel="noopener" target="_blank">страница файла</a></Fragment>}</span>

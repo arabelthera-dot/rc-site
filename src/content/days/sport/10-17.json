@@ -3,5 +3,11 @@
   "key": "10-17",
   "title": "Россия — Англия 2:1, Лужники, 2007",
   "hook": "Сборная России отыгралась с 0:1 и обыграла Англию 2:1 в Лужниках, а Роман Павлюченко забил оба мяча за четыре минуты.",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/sport/img/10-17-roman-pavlyuchenko-brighton-v-spurs-amex-opening.jpg",
+      "caption": "Роман Павлюченко на поле",
+      "credit": "Фото: Джеймс Бойс, 2011. Цифровой файл: Wikimedia Commons, «Roman Pavlyuchenko Brighton v Spurs Amex Opening 30711.jpg» (CC BY 2.0)."
+    }
+  ]
 }

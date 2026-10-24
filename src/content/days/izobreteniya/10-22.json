@@ -4,5 +4,11 @@
   "title": "«Венера-9»: первые в мире снимки поверхности другой планеты",
   "hook": "«Венера-9» передала первые снимки с поверхности другой планеты и проработала 53 минуты в аду из жара и давления.",
   "mechanic": "Держишь аппарат живым, пока жар и давление съедают запас",
-  "images": []
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/10-22-moscow-vdnkh-pavillion-32-cosmos-venera-9-lander.jpg",
+      "caption": "Макет спускаемого аппарата «Венеры-9» в натуральную величину на ВДНХ",
+      "credit": "Фото: Alexxx1979, 2019. Цифровой файл: Wikimedia Commons, «Moscow. VDNKh. Pavillion 32 Cosmos. Venera 9 Lander P5293259 2645.jpg» (CC BY-SA 4.0)."
+    }
+  ]
 }

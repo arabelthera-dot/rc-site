@@ -7,6 +7,41 @@
   "legacy_page": "muzei/arhitektura/terem-astashovo.html",
   "images": [
     {
+      "src": "muzei/arhitektura/media/terem-astashovo/hero-1280.webp",
+      "caption": "Восстановленный деревянный терем в Асташове с резным фасадом и высокой башней",
+      "credit": "Olga Shuklina, CC BY-SA 4.0; редакционное уменьшение WebP, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/terem-astashovo/terem-2018-sredi-elej.webp",
+      "caption": "Терем в Асташове среди елей, снимок 2018 года",
+      "credit": "AnikinDmitriy1967, CC BY-SA 4.0, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/terem-astashovo/ruin-2011.webp",
+      "caption": "2 · Кровля. Ищи путь воды, а не только утраченный декор.",
+      "credit": "IvanShkaev, CC BY-SA 3.0, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/terem-astashovo/restored-wide-2018.webp",
+      "caption": "3 · Сруб. Старые и новые элементы снова образуют работающую стену.",
+      "credit": "Olga Shuklina, CC BY-SA 4.0, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/terem-astashovo/restored-aerial.webp",
+      "caption": "1 · Лес. Дом читается как вертикальная метка в ландшафте.",
+      "credit": "Usadboved / Vadim Razumov, CC BY-SA 4.0, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/terem-astashovo/restored-tower-2018.webp",
+      "caption": "4 · Резьба. Видимый результат появляется после невидимой инженерной работы.",
+      "credit": "Olga Shuklina, CC BY-SA 4.0, Wikimedia Commons"
+    },
+    {
+      "src": "muzei/arhitektura/media/terem-astashovo/restored-entry-2024.webp",
+      "caption": "Усадьба. Крыльцо и человек возвращают терему реальный размер.",
+      "credit": "Pilgrim-chik, CC BY-SA 4.0, Wikimedia Commons"
+    },
+    {
       "src": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/018_1876.webp",
       "caption": "1 · Фронтон и крыльцо Две крутые диагонали ведут взгляд к коньку, а крыльцо повторяет силуэт дома в уменьшенном виде. Загородный дом, 1876 · И. П. Ропет · общественное достояние · источник",
       "credit": "И. П. Ропет, 1876; общественное достояние; цифровой источник Totalarch; веб-конверсия WebP"
@@ -60,6 +95,11 @@
       "src": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/094_1878.webp",
       "caption": "11 · Мотивы складываются в панораму Башни, шатры, крыльца и цветные кровли соединены в длинный выставочный фасад — не копию древнего здания, а новую композицию. Русский отдел Всемирной выставки в Париже, 1878 · И. П. Ропет · общественное достояние · источник",
       "credit": "И. П. Ропет, 1878; общественное достояние; цифровой источник Totalarch; веб-конверсия WebP"
+    },
+    {
+      "src": "muzei/arhitektura/media/terem-astashovo/sazonovy-1908.webp",
+      "caption": "Мартьян и Елизавета Сазоновы с домочадцами у деревянного терема",
+      "credit": "Автор не установлен, общественное достояние, Wikimedia Commons"
     }
   ]
 }

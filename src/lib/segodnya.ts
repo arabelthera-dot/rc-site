@@ -18,8 +18,10 @@ export function podpisDlyaCheloveka(credit?: string): string | undefined {
   if (i < 0) return credit;
   const kto = credit.slice(0, i).trim().replace(/[.;,]\s*$/, '');
   const fayl = credit.slice(i);
+  const otkuda = /commons|викисклад/i.test(fayl) ? 'Викисклад' : '';
   const lic = LIC_RU.map(([re, ru]) => { const m = fayl.match(re); return m ? ru.replace('$1', m[1] ?? '') : ''; }).find(Boolean) ?? '';
-  return [kto, lic].filter(Boolean).join('. ');
+  const hvost = [otkuda, lic].filter(Boolean).join(', ');
+  return [kto, hvost && `Источник: ${hvost}`].filter(Boolean).join('. ');
 }
 
 const LEAP = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
