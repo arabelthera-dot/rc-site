@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Черновик игры · 26 января · Вячеслав Срезневский — съёмка с неба</title>
-<link rel="stylesheet" href="../assets/sreznevskiy-shar.css">
+<link rel="stylesheet" href="../assets/igra-pravila.css?v=9449179f">
+<link rel="stylesheet" href="../assets/sreznevskiy-shar.css?v=b41803a3">
 </head>
 <body class="sr-body">
 <header class="sr-top-h">
@@ -16,11 +17,11 @@
 </header>
 
 <main class="sr-wrap">
-  <section class="sr-igra" data-shar-igra data-step="1" aria-label="Игра: подними камеру на воздушном шаре и сними Кронштадт">
+  <section class="sr-igra igra-ruka-zona" data-shar-igra data-step="1" aria-label="Игра: подними камеру на воздушном шаре и сними Кронштадт">
     <ol class="sr-steps" aria-hidden="true"><li class="on">1</li><li>2</li><li>3</li></ol>
     <div class="sr-head">
-      <p class="sr-task" aria-live="polite">Подними шар на 1100 метров</p>
-      <p class="sr-sub">Тяни шар пальцем вверх</p>
+      <p class="sr-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> Нажми «Выше ↑»</p>
+      <p class="sr-sub igra-poyasnenie">Шар у самой земли. Каждое нажатие поднимает его выше.</p>
     </div>
 
     <!-- Шаг 1. Вид вниз из корзины -->
@@ -28,11 +29,11 @@
       <canvas class="sr-view" width="600" height="600" aria-label="Вид вниз из корзины воздушного шара: чем выше, тем больше видно. Рамка — то, что попадёт на снимок."></canvas>
       <div class="sr-rope">
         <span class="sr-goal" aria-hidden="true">1100&nbsp;м</span>
-        <span class="sr-ball" tabindex="0" role="slider" aria-label="Высота шара, стрелка вверх — поднять" aria-valuemin="0" aria-valuemax="1100" aria-valuenow="0">🎈</span>
-        <span class="sr-hand sr-hand-up" aria-hidden="true">👆</span>
+        <span class="sr-ball" aria-hidden="true">🎈</span>
       </div>
       <div class="sr-row">
         <p class="sr-alt">Высота <b>0</b> м</p>
+        <button type="button" class="sr-up">Выше ↑</button>
         <button type="button" class="sr-shoot" hidden><i aria-hidden="true"></i>Снять!</button>
       </div>
     </div>
@@ -43,9 +44,29 @@
       <p class="sr-cap">Стеклянная пластинка 24×24 см в проявителе</p>
     </div>
 
-    <!-- Шаг 3. Шторка: снимок 1886 / карта сегодня (движок M-47) -->
+    <!-- Шаг 3. Шторка: карта сегодня ложится на снимок 1886 года -->
     <div class="sr-scene sr-s3" hidden>
-      <div id="sr-shtorka"></div>
+      <button type="button" class="sr-nalozhi">Наложи карту</button>
+      <div class="sr-sht-metki"><span class="sr-m-plate">1886 · снимок с шара</span><span class="sr-m-map">сегодня · карта</span></div>
+      <div class="sr-sht">
+        <img class="sr-sht-plate" alt="Схема снимка: остров Котлин и Кронштадт с высоты 1100 метров">
+        <img class="sr-sht-map" alt="Схема сегодняшней карты острова Котлин">
+        <i class="sr-sht-line" aria-hidden="true"></i>
+      </div>
+      <p class="sr-cap">Схема. Так мог выглядеть снимок на стеклянной пластинке 24×24 см. Подлинник в открытом доступе не найден — это рисунок музея.</p>
+      <p class="sr-cap sr-cap-map" hidden>Тот же остров на карте сегодня: берега, гавани и форты на тех же местах. Новое — дамба поперёк острова.</p>
+    </div>
+
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">1886 год. Ты летишь на воздушном шаре с фотоаппаратом и снимаешь сверху остров Кронштадт у Петербурга — как снял его тогда Срезневский.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми «Выше ↑» три раза.</b> Шар поднимется на 300, 700 и 1100 метров — в окне всё больше земли, а на 1100 м в рамку влезет Кронштадт.</li>
+        <li><b>Нажми красную кнопку «Снять!».</b> Тогда снимали на стекло: снимок сам проступит на стеклянной пластинке. Ничего не нажимай, смотри.</li>
+        <li><b>Нажми «Наложи карту».</b> Сегодняшняя карта острова ляжет поверх старого снимка.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Жми ту кнопку, которая мигает и над которой рука. Шар на полоске справа только показывает высоту.</p>
+      <p class="igra-pravila-final">Когда карта ляжет на снимок, ниже будет рассказ, как это было на самом деле.</p>
     </div>
 
     <!-- Финал -->
@@ -66,8 +87,8 @@
       <button type="button" class="sr-again">Сыграть ещё раз</button>
     </div>
   </section>
-  <!-- Черновик для показа (Р188). Страница дня собирается отдельно. Высота — по образцу M-33, шторка — движок M-47 museum-firstlook.js, проявка — новая. -->
+  <!-- Черновик для показа (Р188). Страница дня собирается отдельно. Высота — по образцу M-33, проявка и шторка — свои, на нажатиях (Р206). -->
 </main>
-<script src="../assets/sreznevskiy-shar.js" defer></script>
+<script src="../assets/sreznevskiy-shar.js?v=920b8649" defer></script>
 </body>
 </html>

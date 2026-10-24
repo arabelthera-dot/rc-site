@@ -1,13 +1,60 @@
+/* igra-ruka — вид как у образца 29 янв. (ko-hand, rc-site e4f86d74). Подсказка «куда жать» (Р206, 23.10.2026): на шаге одна активная кнопка
+   пульсирует, над ней рука «тап-тап», остальные кнопки игры приглушены.
+   Вставить В НАЧАЛО скрипта игры как есть. Использование:
+     var ruka = igraRuka(root);   // root — секция игры
+     ruka.na(knopka);             // показать руку над кнопкой, кнопка пульсирует
+     ruka.ubrat();                // убрать (пока идёт анимация / финал)
+   Отклик на касание (≤100 мс): класс .igra-zhmyak на pointerdown + navigator.vibrate(20). */
+function igraRuka(root) {
+  var el = document.createElement('span');
+  el.className = 'igra-ruka'; el.setAttribute('aria-hidden', 'true'); el.hidden = true;
+  el.innerHTML = '<i class="igra-ruka-krug"></i><svg viewBox="0 0 40 48" width="40" height="48"><path d="M15 4c2.2 0 4 1.8 4 4v13l1.2-.5c1.9-.7 4 .2 4.8 2l.3.7.8-.3c1.9-.6 4 .3 4.7 2.2l.2.5c1.9-.4 3.8.7 4.4 2.5.2.6.3 1.2.3 1.8V36c0 5.5-4.5 10-10 10h-4.6c-3 0-5.8-1.4-7.7-3.7L5.2 33.5c-1.3-1.6-1.1-4 .5-5.3 1.5-1.2 3.7-1.1 5.1.3l.2.2V8c0-2.2 1.8-4 4-4z" fill="#fff" stroke="#1a1206" stroke-width="2.2" stroke-linejoin="round"/></svg>';
+  if (getComputedStyle(root).position === 'static') root.style.position = 'relative';
+  root.appendChild(el);
+  var cel = null;
+  function mesto() {
+    if (!cel || el.hidden) return;
+    var r = cel.getBoundingClientRect(), b = root.getBoundingClientRect();
+    el.style.left = Math.round(r.left - b.left + r.width * 0.86) + 'px';
+    el.style.top = Math.round(r.top - b.top + r.height * 0.5) + 'px';
+  }
+  function ubrat() {
+    if (cel) cel.classList.remove('igra-aktiv');
+    cel = null; el.hidden = true; root.classList.remove('igra-ved');
+  }
+  function na(knopka) {
+    ubrat();
+    if (!knopka) return;
+    cel = knopka; cel.classList.add('igra-aktiv'); root.classList.add('igra-ved');
+    el.hidden = false; mesto();
+    requestAnimationFrame(mesto);
+  }
+  window.addEventListener('resize', mesto);
+  if (window.ResizeObserver) new ResizeObserver(mesto).observe(root);
+  root.addEventListener('pointerdown', function (e) {
+    var k = e.target.closest('button, [role="button"]');
+    if (!k || !root.contains(k)) return;
+    k.classList.add('igra-zhmyak');
+    setTimeout(function () { k.classList.remove('igra-zhmyak'); }, 160);
+    if (navigator.vibrate) { try { navigator.vibrate(20); } catch (_) {} }
+  });
+  root.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  return { na: na, ubrat: ubrat, mesto: mesto };
+}
+
 /* Игра «Подними камеру в небо» (26 января, Срезневский, 1886).
-   Шаг 1 — тащишь шар вверх, вид вниз из корзины (высота — по образцу M-33, свой код на canvas).
-   Шаг 2 — затвор и проявка пластинки 24×24 (новое).
-   Шаг 3 — шторка «снимок 1886 / карта сегодня» — готовый движок M-47 museum-firstlook.js.
+   Только нажатия (Р206): «Выше ↑» ×3 → «Снять!» → «Наложи карту» — 5 нажатий.
+   Шаг 1 — шар поднимается на 300 → 700 → 1100 м, вид вниз из корзины (высота — по образцу M-33, canvas).
+   Шаг 2 — затвор и проявка пластинки 24×24, сама.
+   Шаг 3 — карта сегодня ложится на снимок 1886 года (своя шторка на clip-path).
    Всё нарисовано по схеме: подлинного снимка 1886 года в открытом доступе нет. */
 (function () {
   var root = document.querySelector('[data-shar-igra]');
   if (!root) return;
   function $(s) { return root.querySelector(s); }
   var TOP = 1100;
+  var ruka = igraRuka(root);
+  function setTask(t) { task.innerHTML = '<b>Что сделать сейчас:</b> ' + t; }
 
   /* География: единица = 100 м, x — на восток, y — на юг, (0,0) — Дворцовая площадь. */
   var NORTH = [[-600,-175],[-520,-168],[-420,-150],[-330,-140],[-260,-116],[-180,-96],[-110,-70],[-70,-50],[-45,-32]];
@@ -169,44 +216,59 @@
     var p = h / TOP;
     ball.style.bottom = 'calc(' + (p * 100) + '% - ' + (p * 56) + 'px)';
     track.style.setProperty('--p', p);
-    ball.setAttribute('aria-valuenow', Math.round(h));
     alt.textContent = Math.round(h / 10) * 10;
   }
-  function loop() {
-    var d = target - h;
-    if (Math.abs(d) > 0.3) h += Math.sign(d) * Math.min(Math.abs(d) * 0.14 + 1, 22); else h = target;
-    setBall(); render(true);
-    if (h >= TOP - 0.5 && !done) reached();
+  /* Подъём: каждое нажатие «Выше ↑» — плавно к следующей высоте за 1,6 с. */
+  var LEVELS = [300, 700, TOP], lvl = 0, from = 0, t0 = 0, DUR = 1600, busy = false;
+  var SAY = [
+    '300 метров. Под тобой улица: видны люди и экипажи. Рамка — то, что попадёт на снимок.',
+    '700 метров. В окне уже весь Петербург, Нева и острова. Кронштадта в рамке пока нет.',
+    'Есть Кронштадт! С 1100 метров весь остров влез в рамку.'
+  ];
+  var up = $('.sr-up');
+  function loop(now) {
+    if (busy) {
+      var u = Math.min(1, (now - t0) / DUR), e = u * u * (3 - 2 * u);
+      h = from + (target - from) * e; setBall();
+      if (u >= 1) { h = target; setBall(); busy = false; arrived(); }
+    }
+    render(true);
     raf = requestAnimationFrame(loop);
   }
-  function fromY(e) {
-    var r = track.getBoundingClientRect();
-    target = Math.max(h - 0.01, Math.min(TOP, (r.bottom - e.clientY - 28) / (r.height - 56) * TOP));
-    target = Math.max(0, target);
+  up.addEventListener('click', function () {
+    if (busy || done || up.hidden) return;
+    ruka.ubrat(); busy = true; from = h; target = LEVELS[lvl]; t0 = performance.now();
+    up.textContent = 'Летим… ↑';
+    sub.textContent = 'Шар поднимается на ' + target + ' м…';
+    root.classList.add('sr-touched');
+  });
+  function arrived() {
+    sub.textContent = SAY[lvl]; lvl++;
+    if (lvl < LEVELS.length) { up.textContent = 'Выше ↑'; ruka.na(up); }
+    else reached();
   }
-  var drag = false;
-  track.addEventListener('pointerdown', function (e) { if (done) return; drag = true; track.setPointerCapture(e.pointerId); fromY(e); root.classList.add('sr-touched'); e.preventDefault(); });
-  track.addEventListener('pointermove', function (e) { if (drag && !done) fromY(e); });
-  ['pointerup', 'pointercancel'].forEach(function (ev) { track.addEventListener(ev, function () { drag = false; }); });
-  ball.addEventListener('keydown', function (e) {
-    if (done) return;
-    if (e.key === 'ArrowUp' || e.key === 'PageUp') { target = Math.min(TOP, target + (e.key === 'PageUp' ? 300 : 100)); root.classList.add('sr-touched'); e.preventDefault(); }
-    if (e.key === 'End') { target = TOP; e.preventDefault(); }
+  /* Нажатие мимо мигающей кнопки игру не ломает. */
+  root.addEventListener('click', function (e) {
+    if (fin || busy || e.target.closest('.igra-aktiv, .sr-finale, .igra-pravila')) return;
+    if (root.querySelector('.igra-aktiv')) sub.textContent = 'Жми мигающую кнопку — над ней рука.';
   });
 
   function stepOn(n) { steps.forEach(function (li, i) { li.classList.toggle('on', i === n - 1); }); root.dataset.step = n; }
   function reached() {
     done = true; h = target = TOP; setBall();
     root.classList.add('sr-top');
-    task.textContent = 'Есть Кронштадт! Жми «Снять!»';
-    sub.textContent = 'Весь остров влез в рамку';
-    $('.sr-shoot').hidden = false; $('.sr-shoot').focus({ preventScroll: true });
+    setTask('Нажми «Снять!»');
+    up.hidden = true;
+    $('.sr-shoot').hidden = false; ruka.na($('.sr-shoot'));
   }
 
   /* ---------- Шаг 2: затвор и проявка ---------- */
   var plateURL = '', mapURL = '';
+  var shot = false;
   $('.sr-shoot').addEventListener('click', function () {
+    if (shot) return; shot = true; ruka.ubrat();
     root.classList.add('sr-flash');
+    sub.textContent = 'Щёлк! Затвор открылся на миг.';
     var v = viewAt(TOP), F = v.w * FRAME, fv = { w: F, cx: v.cx, cy: v.cy }, N = 720;
     var pc = $('.sr-plate'); pc.width = pc.height = N;
     var pctx = pc.getContext('2d');
@@ -218,50 +280,42 @@
     setTimeout(function () {
       cancelAnimationFrame(raf);
       $('.sr-s1').hidden = true; $('.sr-s2').hidden = false; stepOn(2);
-      task.textContent = 'Снимок проявляется…';
-      sub.textContent = 'Смотри на пластинку';
+      setTask('Смотри на пластинку');
+      sub.textContent = 'Снимок сделан на стеклянную пластинку. В проявителе — особой жидкости — он проступает сам.';
       requestAnimationFrame(function () { root.classList.add('sr-dev'); });
-      setTimeout(shutterStep, 5600);
+      setTimeout(shutterStep, 4000);
     }, 380);
   });
 
-  /* ---------- Шаг 3: шторка — движок M-47 ---------- */
+  /* ---------- Шаг 3: карта ложится на снимок ---------- */
+  var sht = $('.sr-sht'), nal = $('.sr-nalozhi');
   function shutterStep() {
+    $('.sr-sht-plate').src = plateURL; $('.sr-sht-map').src = mapURL;
     $('.sr-s2').hidden = true; $('.sr-s3').hidden = false; stepOn(3);
-    task.textContent = 'Тяни шторку: что под снимком?';
-    sub.textContent = 'Под ним — карта из твоего телефона';
-    window.MUSEUM_FIRSTLOOK = [{
-      mount: '#sr-shtorka', mode: 'shutter', ratio: '1/1', maxw: '520px',
-      states: [
-        { date: '1886', label: 'снимок с шара', img: plateURL, alt: 'Схема снимка: остров Котлин и Кронштадт с высоты 1100 метров',
-          kind: 'Схема', caption: 'Так мог выглядеть снимок на стеклянной пластинке 24×24 см. Подлинник в открытом доступе не найден — это рисунок музея.' },
-        { date: 'сегодня', label: 'карта', img: mapURL, alt: 'Схема сегодняшней карты острова Котлин',
-          kind: 'Схема', caption: 'Тот же остров на карте сегодня: берега, гавани и форты на тех же местах. Новое — дамба поперёк острова.' }
-      ]
-    }];
-    var s = document.createElement('script'); s.src = '../assets/museum-firstlook.js';
-    s.onload = function () {
-      var fr = document.querySelector('#sr-shtorka .fl-frame'), rail = document.querySelector('#sr-shtorka .fl-rail');
-      if (!fr) return;
-      var hand = document.createElement('span'); hand.className = 'sr-hand sr-hand-lr'; hand.setAttribute('aria-hidden', 'true'); hand.textContent = '👆';
-      fr.appendChild(hand);
-      function check() { hand.remove(); if (Math.abs(rail.value - 50) > 22) finale(); }
-      fr.addEventListener('pointerup', check); fr.addEventListener('pointermove', function (e) { if (e.buttons) check(); });
-      rail.addEventListener('input', check);
-    };
-    document.body.appendChild(s);
+    setTask('Нажми «Наложи карту»');
+    sub.textContent = 'Снимок проявился. Теперь положим на него карту из твоего телефона.';
+    ruka.na(nal);
   }
+  nal.addEventListener('click', function () {
+    if (sht.classList.contains('sr-sht-go')) return;
+    ruka.ubrat(); nal.hidden = true;
+    sht.classList.add('sr-sht-go'); root.classList.add('sr-map-on');
+    sub.textContent = 'Карта ложится на снимок…';
+    setTimeout(function () { $('.sr-cap-map').hidden = false; finale(); }, 1700);
+  });
   var fin = false;
   function finale() {
     if (fin) return; fin = true;
-    task.textContent = 'Совпало! Снимок 1886 года лёг на карту';
-    sub.textContent = '';
+    setTask('Прочитай, как это было');
+    sub.textContent = 'Совпало! Снимок 1886 года лёг на карту: берега и форты на тех же местах.';
     var f = $('.sr-finale'); f.hidden = false;
     setTimeout(function () { f.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 900);
   }
 
   $('.sr-again').addEventListener('click', function () { location.reload(); });
 
-  fit(); setBall(); render(false); loop();
+  fit(); setBall(); render(false);
+  ruka.na(up);
+  raf = requestAnimationFrame(loop);
   window.addEventListener('resize', function () { fit(); render(false); });
 })();
