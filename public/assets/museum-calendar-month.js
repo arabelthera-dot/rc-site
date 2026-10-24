@@ -63,8 +63,7 @@
     '#calbox .calcard a{display:inline-block;margin-top:8px;font-size:13px}' +
     '#calbox .calcard.empty h3{opacity:.7}' +
     '#calbox .caljump{background:none;border:none;padding:0;margin-top:8px;cursor:pointer;' +
-      'color:var(--gold);font-size:13px;text-decoration:underline;font-family:inherit}' +
-    '#calbox .calfoot{font-size:12px;opacity:.5;margin-top:10px;text-align:center}';
+      'color:var(--gold);font-size:13px;text-decoration:underline;font-family:inherit}';
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
@@ -86,7 +85,6 @@
       'Календарь наполняется: к каждому дню года мы привязываем событие этого музея.';
     var today = new Date(), tm = today.getMonth(), td = today.getDate();
     var tk = pad(tm + 1) + '-' + pad(td);
-    var total = Object.keys(data).length;
     var febYear = today.getFullYear() + (tm > 1 ? 1 : 0);
     DIM[1] = (isLeap(febYear) || data['02-29']) ? 29 : 28;
 
@@ -168,9 +166,7 @@
           '<button class="calnav" data-step="1" aria-label="Следующий месяц">›</button>' +
         '</div>' +
         '<div class="calgrid">' + cells + '</div>' +
-        (sel ? cardHtml(sel) : '') +
-        '<div class="calfoot">Заполнено ' + total + ' ' + plural(total, 'день', 'дня', 'дней') +
-          ' из 365 — каждый готовый повод для ролика и поста</div>';
+        (sel ? cardHtml(sel) : '');
 
       box.querySelectorAll('.calnav').forEach(function (b) {
         b.addEventListener('click', function () {
