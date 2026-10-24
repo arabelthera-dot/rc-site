@@ -205,3 +205,6 @@
 .orig.collapsed .orig-body:after{content:'';position:absolute;left:0;right:0;bottom:0;height:80px;
   background:linear-gradient(transparent,rgba(0,0,0,.72))}
 .orig .org-legend{display:block;margin-top:10px;font-size:12px;color:var(--muted)}
+
+/* Обложка дня — figure.hero-fig (замок картинок Р231): без полей figure по умолчанию */
+.hero-fig{margin:0}
