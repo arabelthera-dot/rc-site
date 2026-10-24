@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Черновик игры · 25 января · Семён Корсаков — машины на перфокартах</title>
-<link rel="stylesheet" href="../assets/korsakov-karta.css">
+<link rel="stylesheet" href="../assets/korsakov-karta.css?v=bd8a17a3">
 </head>
 <body class="ko-body">
 <header class="ko-top">
@@ -16,11 +16,11 @@
 </header>
 
 <main class="ko-wrap">
-  <section class="ko-igra" data-korsakov-igra data-step="1" aria-label="Игра: перфокарта ищет лекарство">
+  <section class="ko-igra igra-ruka-zona" data-korsakov-igra data-step="1" aria-label="Игра: перфокарта ищет лекарство">
     <ol class="ko-steps" aria-hidden="true"><li class="on">1</li><li>2</li><li>3</li></ol>
     <div class="ko-head">
-      <p class="ko-task" aria-live="polite">Вставь перфокарту в станок</p>
-      <p class="ko-sub">Нажми на карточку с дырками</p>
+      <p class="ko-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> нажми на перфокарту</p>
+      <p class="ko-sub igra-poyasnenie">Карточка с дырками светится под станком</p>
     </div>
 
     <!-- Шаг 1. Станок Жаккара -->
@@ -31,10 +31,9 @@
       </div>
       <button type="button" class="ko-card ko-card-loom" aria-label="Перфокарта с дырками — вставить в станок">
         <span class="ko-holes" aria-hidden="true"></span>
-        <span class="ko-hand" aria-hidden="true">👆</span>
       </button>
       <p class="ko-cap" hidden>Так было до 1832 года: в станке Жаккара дырки в карте говорили, какие нитки поднять. Карта умела только ткать узор.</p>
-      <button type="button" class="ko-next" hidden>Дальше: карта Корсакова →</button>
+      <button type="button" class="ko-btn ko-next" hidden>Дальше</button>
     </div>
 
     <!-- Шаг 2. Пробить признаки -->
@@ -45,19 +44,32 @@
       </div>
       <div class="ko-cols" aria-hidden="true"></div>
       <div class="ko-card ko-card-k" role="group" aria-label="Пустая карта Корсакова: пробей признаки больного"></div>
-      <p class="ko-oops" aria-live="polite"></p>
+      <p class="ko-oops igra-poyasnenie" aria-live="polite"></p>
+      <button type="button" class="ko-btn ko-to-table" hidden>К таблице лекарств</button>
     </div>
 
-    <!-- Шаг 3. Протащить по таблице -->
+    <!-- Шаг 3. Сдвигать карту по таблице -->
     <div class="ko-scene ko-s3" hidden>
       <div class="ko-cols ko-cols3" aria-hidden="true"></div>
       <div class="ko-table">
         <div class="ko-rows"></div>
-        <div class="ko-card ko-card-k ko-slider" tabindex="0" role="slider" aria-label="Карта больного: тяни вниз по таблице лекарств" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1">
-          <span class="ko-hand ko-hand-down" aria-hidden="true">👇</span>
-        </div>
+        <div class="ko-card ko-card-k ko-slider" aria-hidden="true"></div>
       </div>
-      <p class="ko-verdict" aria-live="polite"></p>
+      <p class="ko-verdict igra-poyasnenie" aria-live="polite"></p>
+      <button type="button" class="ko-btn ko-down">Сдвинь ниже ↓</button>
+      <button type="button" class="ko-btn ko-answer" hidden>Узнать ответ</button>
+    </div>
+
+    <!-- Как играть: статично под картинкой (Р201) -->
+    <div class="ko-pravila">
+      <h2>Как играть</h2>
+      <p>Семён Корсаков придумал карточку с дырками, по которой лекарство находится само.</p>
+      <ol>
+        <li>Нажми на перфокарту — станок соткёт узор. Нажми «Дальше».</li>
+        <li>Пробей три дырки: жар, кашель, слабость.</li>
+        <li>Нажимай «Сдвинь ниже», пока шипы не войдут во все дырки.</li>
+      </ol>
+      <p>Нажимай то, что светится и куда показывает рука.</p>
     </div>
 
     <!-- Финал -->
@@ -81,11 +93,11 @@
         <p>В сентябре 1832 года Корсаков написал в Академию наук, что «добровольно отказывается от преимуществ исключительной привилегии» и передаёт изобретение «безвозмездно».</p>
         <p class="ko-src">Источники: С. Н. Корсаков, «Начертание нового способа исследования при помощи машин, сравнивающих идеи», под ред. А. С. Михайлова, М.: МИФИ, 2009, с. 29–32 — raai.robofob.ru/library/books/korsakov/korsakov_book.pdf; А. Нитусов, «Семен Корсаков и „машина для сравнения идей“», Виртуальный компьютерный музей — computer-museum.ru/precomp/korsakov.htm; Д. Кузнецов, «Идейные машины советника Корсакова», IQ.Media НИУ ВШЭ, 20.10.2023 — iq-media.ru/archive/867027146.html</p>
       </details>
-      <button type="button" class="ko-again">Сыграть ещё раз</button>
+      <button type="button" class="ko-btn ko-again">Сыграть ещё раз</button>
     </div>
   </section>
-  <!-- Черновик для показа (Р187). Страница дня собирается отдельно. Наложение — по образцу M-29, действие «пробить и протащить» — новое. -->
+  <!-- Черновик для показа (Р187). Страница дня собирается отдельно. Наложение — по образцу M-29, действие «пробить и сдвинуть» — новое; по одному нажатию на шаг (Р206). -->
 </main>
-<script src="../assets/korsakov-karta.js" defer></script>
+<script src="../assets/korsakov-karta.js?v=2380af5a" defer></script>
 </body>
 </html>
