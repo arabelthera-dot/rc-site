@@ -112,6 +112,11 @@ jobs:
             dist/assets
             dist/_astro
           retention-days: 3
+      # Версия в адресе своих .js/.css (задача Джарвиса 24.10.2026, #449): npm run build дописывает ?v=<sha1 файла>
+      # к каждой ссылке на /assets/*.js|css во всём dist (scripts/versii.mjs). Замок: ссылка без версии или с чужой — красная.
+      - name: versii — у ссылок на свои js/css версия по содержимому
+        timeout-minutes: 2
+        run: node scripts/versii.mjs dist --proverka
       # «Поддержать проект» на всех страницах (Р88, 21.10.2026). При PUBLIC_PODDERZHKA=0 в сборке не должно быть
       # ни текста «Поддержать проект», ни движка museum-support.js; по умолчанию проверка пропускается.
       - name: podderzhka — замок выключателя блока поддержки
