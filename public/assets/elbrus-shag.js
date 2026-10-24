@@ -155,7 +155,12 @@ function igraRuka(root) {
     chasy();
   }
 
+  // До первого нажатия в игре страницу не крутим: иначе при загрузке посетитель попадает в середину, мимо обложки.
+  var nachal = false;
+  root.addEventListener('pointerdown', function () { nachal = true; }, { capture: true });
+  root.addEventListener('keydown', function () { nachal = true; }, { capture: true });
   function vidno(el) {
+    if (!nachal) return;
     var r = el.getBoundingClientRect();
     if (r.top < 60 || r.bottom > innerHeight - 96) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
   }
