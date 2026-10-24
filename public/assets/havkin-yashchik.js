@@ -1,35 +1,81 @@
-/* Игра «Неси ящик с вакциной» (28 января, Хавкин).
-   Шаг 1 — две двери: дома закрыто, в Индии открыто.
-   Шаг 2 — флаконы пальцем в деревни, по карте идёт волна холеры, огоньки гаснут.
-   Шаг 3 — держишь ящик, счётчик доз растёт до 35 млн к 1940 году. */
+/* igra-ruka — вид как у образца 29 янв. (ko-hand, rc-site e4f86d74). Подсказка «куда жать» (Р206, 23.10.2026): на шаге одна активная кнопка
+   пульсирует, над ней рука «тап-тап», остальные кнопки игры приглушены.
+   Вставить В НАЧАЛО скрипта игры как есть. Использование:
+     var ruka = igraRuka(root);   // root — секция игры
+     ruka.na(knopka);             // показать руку над кнопкой, кнопка пульсирует
+     ruka.ubrat();                // убрать (пока идёт анимация / финал)
+   Отклик на касание (≤100 мс): класс .igra-zhmyak на pointerdown + navigator.vibrate(20). */
+function igraRuka(root) {
+  var el = document.createElement('span');
+  el.className = 'igra-ruka'; el.setAttribute('aria-hidden', 'true'); el.hidden = true;
+  el.innerHTML = '<i class="igra-ruka-krug"></i><svg viewBox="0 0 40 48" width="40" height="48"><path d="M15 4c2.2 0 4 1.8 4 4v13l1.2-.5c1.9-.7 4 .2 4.8 2l.3.7.8-.3c1.9-.6 4 .3 4.7 2.2l.2.5c1.9-.4 3.8.7 4.4 2.5.2.6.3 1.2.3 1.8V36c0 5.5-4.5 10-10 10h-4.6c-3 0-5.8-1.4-7.7-3.7L5.2 33.5c-1.3-1.6-1.1-4 .5-5.3 1.5-1.2 3.7-1.1 5.1.3l.2.2V8c0-2.2 1.8-4 4-4z" fill="#fff" stroke="#1a1206" stroke-width="2.2" stroke-linejoin="round"/></svg>';
+  if (getComputedStyle(root).position === 'static') root.style.position = 'relative';
+  root.appendChild(el);
+  var cel = null;
+  function mesto() {
+    if (!cel || el.hidden) return;
+    var r = cel.getBoundingClientRect(), b = root.getBoundingClientRect();
+    el.style.left = Math.round(r.left - b.left + r.width * 0.86) + 'px';
+    el.style.top = Math.round(r.top - b.top + r.height * 0.5) + 'px';
+  }
+  function ubrat() {
+    if (cel) cel.classList.remove('igra-aktiv');
+    cel = null; el.hidden = true; root.classList.remove('igra-ved');
+  }
+  function na(knopka) {
+    ubrat();
+    if (!knopka) return;
+    cel = knopka; cel.classList.add('igra-aktiv'); root.classList.add('igra-ved');
+    el.hidden = false; mesto();
+    requestAnimationFrame(mesto);
+  }
+  window.addEventListener('resize', mesto);
+  if (window.ResizeObserver) new ResizeObserver(mesto).observe(root);
+  root.addEventListener('pointerdown', function (e) {
+    var k = e.target.closest('button, [role="button"]');
+    if (!k || !root.contains(k)) return;
+    k.classList.add('igra-zhmyak');
+    setTimeout(function () { k.classList.remove('igra-zhmyak'); }, 160);
+    if (navigator.vibrate) { try { navigator.vibrate(20); } catch (_) {} }
+  });
+  root.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  return { na: na, ubrat: ubrat, mesto: mesto };
+}
+
+
+/* Игра «Неси ящик с вакциной» (28 января, Хавкин). Только простые нажатия (Р206).
+   Шаг 1 — ящик к двери «Россия» (закрыто), потом в Индию: 2 нажатия.
+   Шаг 2 — мигает одна деревня, нажатие — флакон летит туда: 4 нажатия; волна холеры сама.
+   Шаг 3 — «Дальше» и 3 нажатия по ящику: годы бегут к 1909, 1925, 1940. */
 (function () {
   var root = document.querySelector('[data-havkin-igra]');
   if (!root) return;
   var $ = function (s, el) { return (el || root).querySelector(s); };
   var $$ = function (s, el) { return Array.prototype.slice.call((el || root).querySelectorAll(s)); };
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ruka = igraRuka(root);
 
   var task = $('.hv-task'), sub = $('.hv-sub'), steps = $$('.hv-steps li');
-  function say(t, s) { task.textContent = t; sub.textContent = s || ''; }
+  function say(t, s) { task.innerHTML = '<b>Что сделать сейчас:</b> ' + t; if (s !== undefined) sub.textContent = s; }
   function step(n) { steps.forEach(function (li, i) { li.classList.toggle('on', i === n - 1); }); }
-
-  /* Указатель-рука */
-  var hand = document.createElement('span');
-  hand.className = 'hv-hand'; hand.setAttribute('aria-hidden', 'true'); hand.textContent = '👆';
-  root.appendChild(hand);
-  var hintAnim = null;
   function at(el) {
     var r = el.getBoundingClientRect(), b = root.getBoundingClientRect();
     return { x: r.left - b.left + r.width / 2, y: r.top - b.top + r.height / 2 };
   }
-  function pointHand(el, dx, dy) {
-    stopHint();
-    var p = at(el);
-    hand.hidden = false;
-    hand.style.left = (p.x + (dx || 0)) + 'px';
-    hand.style.top = (p.y + (dy || 0)) + 'px';
+  // Активная кнопка шага: пульсирует, над ней рука; если ушла за край экрана — подкрутить
+  var cel = null;
+  function aktiv(el) {
+    cel = el; ruka.na(el);
+    var r = el.getBoundingClientRect();
+    if (r.top < 8 || r.bottom > window.innerHeight - 8) el.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
   }
-  function stopHint() { if (hintAnim) { hintAnim.cancel(); hintAnim = null; } }
+  function zhdat() { cel = null; ruka.ubrat(); }
+  // Нажатие мимо мигающей кнопки — игру не ломает, только подсказка
+  root.addEventListener('click', function (e) {
+    if (!cel || cel.contains(e.target)) return;
+    if (!e.target.closest('.hv-scene, .hv-head')) return;
+    sub.textContent = 'Жми мигающую кнопку — над ней рука.';
+  });
 
   /* ---------- Шаг 1 ---------- */
   var ru = $('.hv-s1 .hv-door-ru'), ind = $('.hv-s1 .hv-door-in'), crate1 = $('.hv-crate-s1'), cap = $('.hv-cap');
@@ -39,7 +85,8 @@
     crate1.style.transform = 'translate(' + (d.x - a.x) * 0.8 + 'px,' + (d.y - a.y + 40) * 0.8 + 'px) scale(.7)';
   }
   function goHome() {
-    phase = 'busy'; hand.hidden = true;
+    phase = 'busy'; zhdat();
+    say('Смотри на дверь «Россия»', 'Ящик едет домой, в Россию…');
     moveCrate(ru);
     setTimeout(function () {
       ru.classList.add('shut');
@@ -50,21 +97,19 @@
     setTimeout(function () {
       crate1.style.transform = '';
       ind.classList.add('glow');
-      say('Дома не взяли. Неси в Индию', 'Нажми на ящик ещё раз');
+      say('Нажми на ящик ещё раз', 'Дома дверь закрылась: прививку назвали «не нужна». Открыта дверь в Индию.');
       phase = 'india';
-      setTimeout(function () { pointHand(crate1, 50, 10); }, 650);
+      setTimeout(function () { aktiv(crate1); }, reduce ? 0 : 650);
     }, reduce ? 300 : 1900);
   }
   function goIndia() {
-    phase = 'busy'; hand.hidden = true;
+    phase = 'busy'; zhdat();
+    say('Смотри на дверь «Индия»', 'Ящик едет в Индию…');
     moveCrate(ind);
     setTimeout(function () { ind.classList.add('open'); }, reduce ? 0 : 600);
     setTimeout(startMap, reduce ? 300 : 1800);
   }
-  function s1tap() { if (phase === 'home') goHome(); else if (phase === 'india') goIndia(); }
-  crate1.addEventListener('click', s1tap);
-  ru.addEventListener('click', function () { if (phase === 'home') goHome(); });
-  ind.addEventListener('click', function () { if (phase === 'india') goIndia(); });
+  crate1.addEventListener('click', function () { if (phase === 'home') goHome(); else if (phase === 'india') goIndia(); });
 
   /* ---------- Карта ---------- */
   // Схема Индии (долгота, широта) → координаты 310×310: x=(lon-67)·10, y=(38-lat)·10
@@ -89,85 +134,52 @@
     v.el = b;
   });
 
-  /* ---------- Шаг 2 ---------- */
+  /* ---------- Шаг 2: флаконы в деревни ---------- */
   var crate2 = $('.hv-crate-s2'), vials = $$('.hv-vial', crate2), vaccinated = 0, s2phase = 'off';
-  var hint = document.createElement('span');
-  hint.className = 'hv-hand'; hint.style.animation = 'none'; hint.setAttribute('aria-hidden', 'true');
-  hint.innerHTML = '<span class="hv-vial" style="display:inline-block;margin:0 -6px 0 0;vertical-align:bottom;transform:scale(.7)"></span>👆';
+  var PORYADOK = [5, 0, 6, 3]; // какие деревни мигают, по очереди
+  VILS.forEach(function (v) { v.el.tabIndex = -1; });
 
   function startMap() {
     $('.hv-s1').hidden = true; $('.hv-s2').hidden = false; step(2);
-    say('Привей деревни: тащи флакон на деревню', 'Флаконов 4, деревень 8 — выбирай');
-    s2phase = 'drag';
-    root.appendChild(hint); hand.hidden = true;
-    setTimeout(runHint, 300);
+    say('Нажми на мигающую деревню', 'Ящик доехал до Индии. Деревня — кружок с огоньками, один огонёк — один житель. Флаконов 4.');
+    s2phase = 'vac';
+    root.scrollIntoView({ block: 'start', behavior: 'auto' });
+    setTimeout(function () { aktiv(VILS[PORYADOK[0]].el); }, 300);
   }
-  function runHint() {
-    if (s2phase !== 'drag' || vaccinated > 0) return;
-    var a = at(vials[0]), t = at(VILS[5].el);
-    hint.hidden = false; hint.style.left = '0px'; hint.style.top = '0px';
-    if (reduce || !hint.animate) { hint.style.transform = 'translate(' + t.x + 'px,' + t.y + 'px)'; return; }
-    hintAnim = hint.animate([
-      { transform: 'translate(' + (a.x - 12) + 'px,' + (a.y - 10) + 'px)', opacity: 0 },
-      { transform: 'translate(' + (a.x - 12) + 'px,' + (a.y - 10) + 'px)', opacity: 1, offset: .15 },
-      { transform: 'translate(' + (t.x - 12) + 'px,' + (t.y - 10) + 'px)', opacity: 1, offset: .75 },
-      { transform: 'translate(' + (t.x - 12) + 'px,' + (t.y - 10) + 'px)', opacity: 0 }
-    ], { duration: 2200, iterations: Infinity, easing: 'ease-in-out' });
-  }
-  function hideHint() { stopHint(); hint.hidden = true; }
-
   function nextVial() { for (var i = 0; i < vials.length; i++) if (!vials[i].classList.contains('used')) return vials[i]; return null; }
-  function vaccinate(v, vial) {
-    if (s2phase !== 'drag' || v.el.classList.contains('vac')) return;
-    vial = vial || nextVial(); if (!vial) return;
-    vial.classList.add('used'); v.el.classList.add('vac'); v.vac = true;
-    v.el.setAttribute('aria-label', 'Деревня привита');
-    vaccinated++; hideHint();
+  function letit(vial, v, gotovo) {
+    var a = at(vial), t = at(v.el);
+    var g = vial.cloneNode(); g.className = 'hv-vial hv-let'; root.appendChild(g);
+    g.style.left = (a.x - 11) + 'px'; g.style.top = (a.y - 27) + 'px';
+    vial.classList.add('used');
+    if (reduce || !g.animate) { g.remove(); gotovo(); return; }
+    var dx = t.x - a.x, dy = t.y - a.y;
+    g.animate([
+      { transform: 'translate(0,0) scale(1) rotate(0)' },
+      { transform: 'translate(' + dx * 0.5 + 'px,' + (dy * 0.5 - 70) + 'px) scale(1.15) rotate(-20deg)', offset: .5 },
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.5) rotate(0)', opacity: .2 }
+    ], { duration: 750, easing: 'ease-in-out' }).onfinish = function () { g.remove(); gotovo(); };
+  }
+  function vaccinate(v) {
+    if (s2phase !== 'vac' || cel !== v.el) return;
+    var vial = nextVial(); if (!vial) return;
+    zhdat(); vaccinated++;
     var left = 4 - vaccinated;
-    if (left > 0) say('Привей деревни: тащи флакон на деревню', 'Осталось флаконов: ' + left);
-    else { s2phase = 'wave'; say('Смотри: идёт холера', 'Огонёк гаснет — холера унесла жителя'); setTimeout(wave, 900); }
+    say(left > 0 ? 'Смотри, летит флакон' : 'Смотри, как идёт холера', 'Флакон летит в деревню…');
+    letit(vial, v, function () {
+      v.el.classList.add('vac'); v.vac = true;
+      v.el.setAttribute('aria-label', 'Деревня привита');
+      if (left > 0) {
+        say('Нажми на мигающую деревню', 'Деревня привита — она стала зелёной. Осталось флаконов: ' + left);
+        setTimeout(function () { aktiv(VILS[PORYADOK[vaccinated]].el); }, reduce ? 0 : 250);
+      } else {
+        s2phase = 'wave';
+        say('Смотри, как идёт холера', 'Флаконы кончились. Огонёк гаснет — холера унесла жителя');
+        setTimeout(wave, 900);
+      }
+    });
   }
   VILS.forEach(function (v) { v.el.addEventListener('click', function () { vaccinate(v); }); });
-
-  // Перетаскивание флакона пальцем или мышью
-  var drag = null;
-  function vilUnder(x, y) {
-    for (var i = 0; i < VILS.length; i++) {
-      var r = VILS[i].el.getBoundingClientRect(), pad = 10;
-      if (x > r.left - pad && x < r.right + pad && y > r.top - pad && y < r.bottom + pad) return VILS[i];
-    }
-    return null;
-  }
-  vials.forEach(function (vial) {
-    vial.addEventListener('pointerdown', function (e) {
-      if (s2phase !== 'drag' || vial.classList.contains('used')) return;
-      e.preventDefault(); hideHint();
-      var g = vial.cloneNode(); g.classList.add('hv-ghost'); document.body.appendChild(g);
-      drag = { vial: vial, g: g, over: null };
-      vial.style.opacity = '.25';
-      try { vial.setPointerCapture(e.pointerId); } catch (_) {}
-      moveDrag(e);
-    });
-    vial.addEventListener('pointermove', function (e) { if (drag && drag.vial === vial) moveDrag(e); });
-    function end(e) {
-      if (!drag || drag.vial !== vial) return;
-      var v = vilUnder(e.clientX, e.clientY);
-      drag.g.remove(); vial.style.opacity = '';
-      if (drag.over) drag.over.el.classList.remove('hot');
-      drag = null;
-      if (v && !v.vac) vaccinate(v, vial);
-      else if (!vaccinated) setTimeout(runHint, 400);
-    }
-    vial.addEventListener('pointerup', end);
-    vial.addEventListener('pointercancel', end);
-  });
-  function moveDrag(e) {
-    drag.g.style.left = e.clientX + 'px'; drag.g.style.top = e.clientY + 'px';
-    var v = vilUnder(e.clientX, e.clientY);
-    if (drag.over && drag.over !== v) drag.over.el.classList.remove('hot');
-    if (v && !v.vac) v.el.classList.add('hot');
-    drag.over = v;
-  }
 
   // Волна холеры: слева направо, на привитых гаснет в 10 раз меньше огоньков (10 из 40 против 1 из 40)
   function wave() {
@@ -189,22 +201,26 @@
           for (var j = 0; j < v.loss; j++) lights[idx[j]].classList.add('out');
         }
       });
-      if (k < 1) requestAnimationFrame(frame); else { rect.classList.remove('go'); setTimeout(result, 500); }
+      if (k < 1) requestAnimationFrame(frame); else { rect.classList.remove('go'); s2phase = 'result'; setTimeout(result, 500); }
     }
     requestAnimationFrame(frame);
   }
   function row(el, out) {
     for (var i = 0; i < 40; i++) { var d = document.createElement('i'); if (i >= 40 - out) d.className = 'out'; el.appendChild(d); }
   }
+  function row(el, out) {
+    for (var i = 0; i < 40; i++) { var d = document.createElement('i'); if (i >= 40 - out) d.className = 'out'; el.appendChild(d); }
+  }
   function result() {
     row($('.lt-u'), 10); row($('.lt-v'), 1);
-    say('Привитые деревни почти все горят', 'Без прививки погас каждый 4-й огонёк, с прививкой — 1 из 40');
+    say('Нажми «Дальше» внизу', 'Привитые деревни почти все горят. Без прививки погас каждый 4-й огонёк, с прививкой — 1 из 40');
     $('.hv-result').hidden = false; $('.hv-crate-s2').parentNode.hidden = true;
-    $('.hv-result').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    aktiv($('.hv-next'));
   }
 
-  /* ---------- Шаг 3: чума, держи ящик ---------- */
-  var p = 0, holding = false, last = 0, done = false;
+  /* ---------- Шаг 3: чума, три нажатия по ящику ---------- */
+  var p = 0, done = false, busy = false, etap = 0;
+  var CELI = [(1909 - 1897) / 43, (1925 - 1897) / 43, 1];
   var DOTS = (function () {
     var s = 7, out = [];
     function rnd() { s = (s * 16807) % 2147483647; return s / 2147483647; }
@@ -227,9 +243,9 @@
     return Math.round(d / 1000) * 1000;
   }
   function draw() {
-    var year = Math.floor(1897 + p * 43);
+    var year = Math.floor(1897 + p * 43 + 1e-6);
     $('.hv-year').textContent = year;
-    $('.hv-doses').textContent = p >= 1 ? '35 000 000' : fmt(doses(p));
+    $('.hv-doses').textContent = p >= 1 ? '35 000 000' : fmt(doses(p));
     $('.hv-bar span').style.width = (p * 100) + '%';
     var want = Math.round(p * DOTS.length);
     while (shown < want) {
@@ -239,50 +255,55 @@
     }
     VILS.forEach(function (v, i) { if (p > (i + 1) / 9) v.el.classList.add('vac'); });
     if (p < .12) sub.textContent = '1897: сначала Хавкин привил себя — дозой в 10 раз больше';
-    else if (year < 1909) sub.textContent = 'В тех, кто прививал, летели камни. Держи палец на ящике!';
-    else if (p < 1) sub.textContent = year < 1925 ? '1909: уже 8 миллионов. Держи палец на ящике!' : 'Бомбейская лаборатория — теперь Институт Хавкина';
+    else if (year < 1909) sub.textContent = 'В тех, кто прививал, летели камни.';
+    else if (p < 1) sub.textContent = year < 1925 ? '1909: уже 8 миллионов.' : 'Бомбейская лаборатория — теперь Институт Хавкина';
     else sub.textContent = '1940: 35 миллионов прививок';
   }
-  function tick(t) {
-    if (done) return;
-    if (holding) { p = Math.min(1, p + (t - last) / 7000); draw(); }
-    last = t;
-    if (p >= 1) { done = true; setTimeout(finale, 1300); return; }
-    requestAnimationFrame(tick);
+  var ZADANIE = ['Нажми на ящик — до 1909', 'Нажми на ящик — до 1925', 'Нажми на ящик — до 1940'];
+  function godyBegut() {
+    if (s2phase !== 'plague' || busy || done || cel !== crate2) return;
+    busy = true; zhdat();
+    say('Смотри, бегут годы');
+    var ot = p, k = CELI[etap], t0 = null, dur = reduce ? 300 : 2000;
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      var x = Math.min(1, (t - t0) / dur), e = x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+      p = ot + (k - ot) * e; draw();
+      if (x < 1) { requestAnimationFrame(frame); return; }
+      p = k; draw(); busy = false; etap++;
+      if (etap >= CELI.length) { done = true; say('Смотри: 1940 год'); setTimeout(finale, 1300); return; }
+      say(ZADANIE[etap]);
+      setTimeout(function () { aktiv(crate2); }, reduce ? 0 : 300);
+    }
+    requestAnimationFrame(frame);
   }
   function startPlague() {
+    if (s2phase !== 'result') return;
+    zhdat();
     step(3); s2phase = 'plague';
     $('.hv-result').hidden = true; $('.hv-crate-s2').parentNode.hidden = false;
     $('.hv-legend').hidden = true; $('.hv-schema').textContent = 'схема · зелёная точка — привитые от чумы';
-    VILS.forEach(function (v) { v.el.classList.remove('vac'); v.el.tabIndex = -1; $$('i', v.el).forEach(function (i) { i.classList.remove('out'); }); });
-    vials.forEach(function (v) { v.classList.remove('used'); v.classList.add('plague'); v.style.cursor = 'pointer'; });
-    crate2.style.cursor = 'pointer'; crate2.setAttribute('aria-label', 'Ящик с вакциной от чумы: нажми и держи');
+    VILS.forEach(function (v) { v.el.classList.remove('vac'); $$('i', v.el).forEach(function (i) { i.classList.remove('out'); }); });
+    vials.forEach(function (v) { v.classList.remove('used'); v.classList.add('plague'); });
+    crate2.setAttribute('aria-label', 'Ящик с вакциной от чумы: нажми — побегут годы');
     $('.hv-counter').hidden = false; $('.hv-bar').hidden = false;
-    say('Новая болезнь — чума. Прививай всю Индию', 'Новая вакцина Хавкина. Держи палец на ящике');
-    root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    setTimeout(function () { pointHand(crate2, 70, 6); }, 600);
-    requestAnimationFrame(function (t) { last = t; requestAnimationFrame(tick); });
+    say(ZADANIE[0], 'Новая болезнь — чума. Новая вакцина Хавкина. Прививай всю Индию');
+    root.scrollIntoView({ behavior: 'auto', block: 'start' });
+    setTimeout(function () { aktiv(crate2); }, reduce ? 0 : 400);
   }
-  function hold(on) {
-    if (s2phase !== 'plague' || done) return;
-    holding = on; crate2.classList.toggle('hold', on);
-    if (on) hand.hidden = true;
-  }
-  crate2.addEventListener('pointerdown', function (e) { if (s2phase === 'plague') { e.preventDefault(); hold(true); } });
-  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) { crate2.addEventListener(ev, function () { hold(false); }); });
-  crate2.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); hold(true); } });
-  crate2.addEventListener('keyup', function () { hold(false); });
-  crate2.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  crate2.addEventListener('click', godyBegut);
   $('.hv-next').addEventListener('click', startPlague);
 
   function finale() {
-    hand.hidden = true; hint.hidden = true;
+    zhdat();
     $('.hv-s2').hidden = true; $('.hv-head').hidden = true; $('.hv-steps').hidden = true;
-    $('.hv-finale').hidden = false;
-    root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    var fin = $('.hv-finale');
+    fin.hidden = false;
+    root.insertBefore(fin, $('[data-igra-pravila]')); // финал — сразу под картинкой, правила ниже
+    fin.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }
   $('.hv-again').addEventListener('click', function () { location.reload(); });
 
-  // Первая подсказка
-  setTimeout(function () { pointHand(crate1, 60, 4); }, 300);
+  // Игра стартует сама (Р201)
+  setTimeout(function () { aktiv(crate1); }, 300);
 })();

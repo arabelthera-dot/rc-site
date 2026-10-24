@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Черновик игры · 28 января · Владимир Хавкин — вакцины от холеры и чумы</title>
-<link rel="stylesheet" href="../assets/havkin-yashchik.css">
+<link rel="stylesheet" href="../assets/igra-pravila.css?v=9449179f">
+<link rel="stylesheet" href="../assets/havkin-yashchik.css?v=5c18b3a9">
 </head>
 <body class="hv-body">
 <header class="hv-top">
@@ -17,24 +18,24 @@
 </header>
 
 <main class="hv-wrap">
-  <section class="hv-igra" data-havkin-igra aria-label="Игра: неси ящик с вакциной">
+  <section class="hv-igra igra-ruka-zona" data-havkin-igra aria-label="Игра: неси ящик с вакциной">
     <ol class="hv-steps" aria-hidden="true"><li class="on">1</li><li>2</li><li>3</li></ol>
     <div class="hv-head">
-      <p class="hv-task" aria-live="polite">Отнеси ящик с прививкой домой</p>
-      <p class="hv-sub">Нажми на ящик</p>
+      <p class="hv-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> Нажми на ящик</p>
+      <p class="hv-sub igra-poyasnenie" aria-live="polite">Ящик внизу, под дверями. Хавкин сделал прививку от холеры и сначала понёс её домой, в Россию.</p>
     </div>
 
     <!-- Шаг 1. Две двери -->
     <div class="hv-scene hv-s1">
       <div class="hv-doors">
-        <button type="button" class="hv-door hv-door-ru" tabindex="-1" aria-label="Дверь: Россия, 1892">
+        <div class="hv-door hv-door-ru" role="img" aria-label="Дверь: Россия, 1892">
           <span class="hv-frame"><span class="hv-leaf"></span><span class="hv-lock" aria-hidden="true"></span></span>
           <span class="hv-dlabel">Россия, 1892<small>дома</small></span>
-        </button>
-        <button type="button" class="hv-door hv-door-in" tabindex="-1" aria-label="Дверь: Индия, 1893">
+        </div>
+        <div class="hv-door hv-door-in" role="img" aria-label="Дверь: Индия, 1893">
           <span class="hv-frame"><span class="hv-leaf"></span></span>
           <span class="hv-dlabel">Индия, 1893<small>далеко</small></span>
-        </button>
+        </div>
       </div>
       <div class="hv-tray">
         <button type="button" class="hv-crate hv-crate-s1" aria-label="Ящик с прививкой от холеры">
@@ -85,6 +86,19 @@
       </div>
     </div>
 
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты врач Хавкин. У тебя ящик с прививкой — уколом, после которого человек не заболеет. Неси её людям и смотри, спасает ли она от холеры и чумы — страшных болезней.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми на мигающий ящик.</b> Он поедет к двери «Россия», но дома прививку не возьмут — дверь закроется. <b>Нажми на ящик ещё раз</b> — он поедет в Индию.</li>
+        <li><b>Нажми на мигающую деревню — и так четыре раза.</b> Деревня — кружок с огоньками, один огонёк — один житель. Флакон из ящика полетит в деревню, и она станет зелёной. Потом по карте сама пройдёт холера.</li>
+        <li><b>Нажми «Дальше: новая болезнь — чума →».</b> Увидишь новую болезнь — чуму — и новую прививку Хавкина.</li>
+        <li><b>Нажми на ящик три раза.</b> Каждый раз побегут годы — до 1909, 1925 и 1940 года, а счётчик покажет, сколько сделано прививок.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Жми ту кнопку, которая мигает и над которой рука. Двери нажимать не нужно — ящик едет сам.</p>
+      <p class="igra-pravila-final">В конце узнаешь, сколько людей в Индии привили и кто такой Хавкин.</p>
+    </div>
+
     <!-- Финал -->
     <div class="hv-finale" hidden>
       <div class="hv-fin-doors" aria-hidden="true">
@@ -115,8 +129,8 @@
       <button type="button" class="hv-again">Сыграть ещё раз</button>
     </div>
   </section>
-  <!-- Черновик для показа (Р192). Страница дня собирается отдельно. Движок «волна по карте» — новый, в реестре готового нет. -->
+  <!-- Черновик для показа (Р192). Страница дня собирается отдельно. Движок «волна по карте» — новый, в реестре готового нет; на нажатиях (Р206). -->
 </main>
-<script src="../assets/havkin-yashchik.js" defer></script>
+<script src="../assets/havkin-yashchik.js?v=48a84b50" defer></script>
 </body>
 </html>
