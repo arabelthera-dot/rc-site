@@ -389,6 +389,24 @@
         "local": "muzei/arhitektura/video/day-08jan-dubrovicy-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/26jan-sreznevskiy": {
+      "title": "История в 48 секунд",
+      "note": "Кадры — подлинные: отчёт о полётах шара 1886 г. (Госкаталог), рисунок аэрофотоаппарата и портрет Срезневского из книги Г. Абрамова; два рисунка музея. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy.mp4",
+        "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 48.3,
+        "mb": 8.8
+      },
+      "poster": {
+        "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
