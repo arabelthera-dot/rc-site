@@ -9,7 +9,9 @@
     "import": "node scripts/redirects.mjs && node scripts/full-pages.mjs",
     "full-pages": "node scripts/full-pages.mjs",
     "proverka-podpisey": "node scripts/proverka-podpisey.mjs",
-    "og-razmer": "node scripts/og-razmer.mjs dist"
+    "og-razmer": "node scripts/og-razmer.mjs dist",
+    "igry": "playwright test -c tests/igry/playwright.config.mjs",
+    "igry:etalony": "playwright test -c tests/igry/playwright.config.mjs --update-snapshots"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
