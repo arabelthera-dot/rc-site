@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "node --max-old-space-size=1400 ./node_modules/astro/bin/astro.mjs build",
+    "build": "node --max-old-space-size=1400 ./node_modules/astro/bin/astro.mjs build && node scripts/versii.mjs dist",
+    "versii": "node scripts/versii.mjs dist",
     "preview": "astro preview",
     "import": "node scripts/redirects.mjs && node scripts/full-pages.mjs",
     "full-pages": "node scripts/full-pages.mjs",
