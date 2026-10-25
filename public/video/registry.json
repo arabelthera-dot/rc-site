@@ -471,6 +471,38 @@
         "local": "muzei/izobreteniya/video/day-04jan-pilchikov-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/07jan-kolesov": {
+      "title": "История в 45 секунд",
+      "note": "Кадры — подлинные: открытие бюста В. И. Колесова и цветы к бюсту (фото 2021, со страницы дня). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/07jan-kolesov/day-07jan-kolesov.mp4",
+        "local": "muzei/izobreteniya/video/day-07jan-kolesov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 44.7,
+        "mb": 12.1
+      },
+      "vertical": {
+        "file": "izobreteniya/07jan-kolesov/day-07jan-kolesov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-07jan-kolesov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 44.7,
+        "mb": 12.1
+      },
+      "poster": {
+        "file": "izobreteniya/07jan-kolesov/day-07jan-kolesov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-07jan-kolesov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/07jan-kolesov/day-07jan-kolesov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-07jan-kolesov-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
