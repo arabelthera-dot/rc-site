@@ -407,6 +407,168 @@
         "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/07jan-kolesov": {
+      "title": "История в 45 секунд",
+      "note": "Кадры — подлинные: фото открытия бюста В. И. Колесову (пресс-служба ПСПбГМУ, 2021). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/07jan-kolesov/day-07jan-kolesov.mp4",
+        "local": "muzei/izobreteniya/video/day-07jan-kolesov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 44.7,
+        "mb": 11.5
+      },
+      "poster": {
+        "file": "izobreteniya/07jan-kolesov/day-07jan-kolesov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-07jan-kolesov-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/17jan-zhukovsky": {
+      "title": "История в 47 секунд",
+      "note": "Кадры — подлинные: Жуковский у доски и в строящейся трубе МВТУ, 1916 (Музей современной истории России, Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky.mp4",
+        "local": "muzei/izobreteniya/video/day-17jan-zhukovsky.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 46.7,
+        "mb": 9.8
+      },
+      "poster": {
+        "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/18jan-odner": {
+      "title": "История в 40 секунд",
+      "note": "Кадры — подлинные: арифмометры Однера из Политехнического и Белогорского краеведческого музеев (Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/18jan-odner/day-18jan-odner.mp4",
+        "local": "muzei/izobreteniya/video/day-18jan-odner.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 40.3,
+        "mb": 10.6
+      },
+      "poster": {
+        "file": "izobreteniya/18jan-odner/day-18jan-odner-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-18jan-odner-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/19jan-kantorovich": {
+      "title": "История в 46 секунд",
+      "note": "Кадры — подлинные: Нобелевский диплом и матрикул Канторовича (Музей истории СПбГУ, Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich.mp4",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 45.5,
+        "mb": 9.1
+      },
+      "poster": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/20jan-lunin": {
+      "title": "История в 50 секунд",
+      "note": "Кадры — подлинные: фото Н. И. Лунина, ателье Каспари (ГИМ, Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin.mp4",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 49.9,
+        "mb": 6.3
+      },
+      "poster": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/21jan-obninsk": {
+      "title": "История в 46 секунд",
+      "note": "Кадры — подлинные: пульт Первой АЭС (ГИМ) и Гагарин у станции (Музей истории Обнинска), 1966, Госкаталог. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk.mp4",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 45.9,
+        "mb": 9.6
+      },
+      "poster": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/22jan-landau": {
+      "title": "История в 42 секунды",
+      "note": "Кадры — подлинные: Ландау дома и его Нобелевский диплом (ГИМ), ожижитель Капицы (кабинет-музей П. Л. Капицы), Госкаталог. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau.mp4",
+        "local": "muzei/izobreteniya/video/day-22jan-landau.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 41.8,
+        "mb": 8.4
+      },
+      "poster": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-22jan-landau-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/27jan-elbrus": {
+      "title": "История в 59 секунд",
+      "note": "Кадры — подлинные: схема «Эльбруса-2» (Виртуальный компьютерный музей), портрет В. М. Пентковского (Программа мегагрантов). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus.mp4",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.3,
+        "mb": 11.4
+      },
+      "poster": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/28jan-havkin": {
+      "title": "История в 57 секунд",
+      "note": "Кадры — подлинные: Хавкин в Бенгалии, 1896, и прививки крестьянам (РИО), портрет («Химия и жизнь», 2018). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/28jan-havkin/day-28jan-havkin.mp4",
+        "local": "muzei/izobreteniya/video/day-28jan-havkin.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 57.2,
+        "mb": 11.6
+      },
+      "poster": {
+        "file": "izobreteniya/28jan-havkin/day-28jan-havkin-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-28jan-havkin-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
