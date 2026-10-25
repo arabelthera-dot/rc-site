@@ -391,6 +391,7 @@
   </script>
   <!-- rc-meta:end -->
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 </head>
 <body>
 
@@ -411,7 +412,7 @@
 <div class="sheet-rule l"></div><div class="sheet-rule r"></div>
 
 <figure class="hero-fig">
-<div class="hero-scene">
+<div class="hero-scene fit-full">
   <img class="scene" src="day-05jan-shukhov-za-stolom-1933.jpg" data-source="https://goskatalog.ru/portal/#/collections?id=5969845" data-license="общественное достояние (анонимный снимок 1933 года) · Государственный центральный музей современной истории России, Госкаталог, рег. № 5793495" width="628" height="800" alt="Пожилой седой Владимир Шухов в тёмном костюме с галстуком сидит за письменным столом, заваленным бумагами, с пресс-папье и чернильницей" style="object-position:50% 35%" fetchpriority="high">
 </div>
 <figcaption class="scene-caption">
@@ -705,7 +706,7 @@
   </label>
 </div>
 
-<div class="pipe-stage">
+<div class="pipe-stage" data-igra-scena>
   <div class="pipe-end" style="left:0">🛢️</div>
   <div class="pipe-end" style="right:0">🏭</div>
   <div class="pipe-tube" id="pTube"><div class="pipe-flow" id="pFlow"></div></div>
@@ -722,6 +723,17 @@
 <div class="pipe-try" id="pTry">Попыток: 0</div>
 <button class="btn gold" id="pGo" style="width:100%">Построить и пустить нефть →</button>
 <div id="pRes" style="margin-top:12px;font-size:14px;line-height:1.6;min-height:20px"></div>
+<div class="igra-pravila" data-igra-pravila>
+  <h2 class="igra-pravila-h">Как играть</h2>
+  <p class="igra-pravila-zachem">Ты — Шухов в Баку, 1878 год. Построй нефтепровод, который перегонит 80 000 пудов в сутки и уложится в смету 90 тысяч рублей.</p>
+  <ol class="igra-pravila-shagi">
+    <li><b>Двигай три ползунка</b>: диаметр трубы, число насосных станций, подогрев нефти. Картинка трубы и цифры «расход» и «смета» меняются сразу.</li>
+    <li><b>Смотри на цвет цифр</b>: зелёный — норма выполнена или смета уложилась, красный — нет.</li>
+    <li><b>Нажми «Построить и пустить нефть»</b> — под кнопкой появится, что вышло и что поправить.</li>
+  </ol>
+  <p class="igra-pravila-nyuans">Нюансы: без насосов нефть стоит в трубе. Толще труба, больше насосов и подогрев — расход выше, но и смета дороже: ищи самое дешёвое решение, которое даёт норму. Чем меньше попыток, тем больше баллов.</p>
+  <p class="igra-pravila-final">Норма взята и смета не больше 90 тысяч — ты нашёл решение Шухова.</p>
+</div>
 <div class="pipe-note">Модель упрощена: расход считается по формуле сопротивления трубы (диаметр в степени 2,6, напор — под корнем), смета — в условных рублях 1878 года. Историческое решение — три дюйма и одна насосная станция.</div>
 <script>
 (function(){

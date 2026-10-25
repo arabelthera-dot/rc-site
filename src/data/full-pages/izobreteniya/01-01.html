@@ -239,6 +239,7 @@
   </script>
   <!-- rc-meta:end -->
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 </head>
 <body>
 
@@ -267,7 +268,7 @@
 </div></nav>
 
 <figure class="hero-fig">
-<div class="hero-scene">
+<div class="hero-scene fit-full">
   <img class="scene" src="day-01jan-rozing-portret.jpg" data-source="https://goskatalog.ru/portal/#/collections?id=40212328" data-license="общественное достояние (анонимная фотография 1900-х годов) · Государственный исторический музей, Госкаталог, рег. № 39982113" width="600" height="800" alt="Студийный портрет Бориса Розинга в профиль: усы, фрак, белый галстук-бабочка; овальная виньетка на листе альбома с золотой рамкой" style="object-position:50% 30%" fetchpriority="high">
 </div>
 <figcaption class="scene-caption">
@@ -451,12 +452,6 @@
   <div class="wrap">
     <h2>Игра 1 · Дотяни сигнал до квартиры</h2>
     <p style="color:var(--muted);margin-top:0;max-width:64ch">Сигнал телецентра падает с антенны. Поймай его и направь по кабелю к нужной квартире — той, что мигает. Ветровые помехи сносят сигнал в сторону.</p>
-    <div style="background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.2);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.7;color:var(--ink)">
-      <b>Как играть</b><br>
-      1. Нажми <b>«Включить трансляцию»</b> — сигнал полетит вниз.<br>
-      2. <b>Тапни по полю</b> (или жми «Усилить»), чтобы поймать сигнал в нужный момент.<br>
-      3. Под «куполом» усилителя <b>веди пальцем</b> по полю (или ◀ / ▶), чтобы попасть в мигающую квартиру.
-    </div>
     <div style="text-align:center">
       <div id="windLbl" style="font-size:13px;color:var(--gold-l);font-weight:600;min-height:18px;margin-bottom:6px"></div>
       <canvas id="game" width="800" height="330" style="width:100%;max-width:800px;background:linear-gradient(#cfe6f7,#eaf4fb);border-radius:14px;border:1px solid var(--line);touch-action:none"></canvas>
@@ -468,6 +463,17 @@
         <button class="btn ghost" id="rs" style="display:none">Заново</button>
       </div>
       <div id="gm" style="font-weight:600;min-height:24px;color:var(--gold-l)"></div>
+    </div>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты — инженер телецентра. Доведи сигнал с антенны до квартиры, где мигает окно, — там ждут передачу.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми «Включить трансляцию»</b> — синий сигнал поплывёт от антенны вниз.</li>
+        <li><b>Тапни по полю</b> (или жми «Усилить сигнал»), чтобы поймать сигнал: чем выше поймаешь, тем больше времени на наведение.</li>
+        <li><b>Веди пальцем или мышью</b> по полю (или держи ◀ / ▶) — направь сигнал на мигающее золотое окно.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: надпись над полем («Ветер ◀ влево · сильный» и т. п.) — это помехи, они сносят сигнал в сторону, бери поправку. Не успеешь усилить — сигнал поймается сам у самой крыши, и навести почти не выйдет. «Заново» даёт новую квартиру и новые помехи.</p>
+      <p class="igra-pravila-final">Сигнал лёг в мигающую квартиру или рядом с ней — передача дошла, игра засчитана.</p>
     </div>
   </div>
 </section>
