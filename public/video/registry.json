@@ -535,6 +535,38 @@
         "local": "muzei/izobreteniya/video/day-06jan-orlov-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/08jan-ermak": {
+      "title": "История в 48 секунд",
+      "note": "Кадры — подлинные: фотография ледокола «Ермак» начала XX века (Северный морской музей, Госкаталог № 41192160), крупные планы — фрагменты того же снимка. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/08jan-ermak/day-08jan-ermak.mp4",
+        "local": "muzei/izobreteniya/video/day-08jan-ermak.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 48.5,
+        "mb": 9.8
+      },
+      "vertical": {
+        "file": "izobreteniya/08jan-ermak/day-08jan-ermak-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-08jan-ermak-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 48.5,
+        "mb": 8.6
+      },
+      "poster": {
+        "file": "izobreteniya/08jan-ermak/day-08jan-ermak-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-08jan-ermak-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/08jan-ermak/day-08jan-ermak-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-08jan-ermak-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
