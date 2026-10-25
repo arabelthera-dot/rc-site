@@ -1,0 +1,12 @@
+/* museum-video.css — вид плеера ролика дня, когда museum-video.js выбрал 9:16 (узкий экран, r273).
+ * Подключает движок сам, только когда показывает вертикальный ролик. !important — потому что
+ * у старых страниц размер 16:9 записан в style самого <video>. */
+video[data-rc-shown="vertical"] {
+  aspect-ratio: 9 / 16 !important;
+  width: 100% !important;
+  max-width: min(100%, calc(80vh * 9 / 16)) !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  object-fit: contain;
+}
