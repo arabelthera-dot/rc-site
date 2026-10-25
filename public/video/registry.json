@@ -7,35 +7,35 @@
   },
   "releases": {
     "izobreteniya/05jan-shukhov": {
-      "title": "История в 82 секунды",
-      "note": "Часть кадров сгенерирована нейросетью (Genosai) — не архивная съёмка. Закадровый текст озвучен синтезом речи.",
+      "title": "История в 47 секунд",
+      "note": "Кадры — подлинные: Балаханы 1880-х, возчики с бочками, портрет В. Г. Шухова, Шаболовская башня. Одна вставка 5 секунд в начале — реконструкция, сгенерирована нейросетью (Genosai), помечена в кадре. Закадровый текст озвучен синтезом речи (edge-tts).",
       "horizontal": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov.mp4",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov.mp4",
-        "v": 3,
+        "v": 4,
         "w": 1920,
         "h": 1080,
-        "sec": 82,
-        "mb": 20.8
+        "sec": 46.9,
+        "mb": 10.6
       },
       "vertical": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 34.8,
-        "mb": 11.9
+        "sec": 46.9,
+        "mb": 10.5
       },
       "poster": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov-poster.jpg",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "arhitektura/01jan-kizhi": {
