@@ -6,20 +6,29 @@
 // или data-igra-scena — от начала игры), подключён assets/igra-pravila.css. Картинка видна сразу (Р201): кнопка
 // «Начать» (data-igra-start), «Правила» (data-igra-pravila-open), замок data-igra-ozhidaet и
 // assets/igra-pravila.js (удалён) — ошибка.
+// Несколько игр на странице (r278, 25.10.2026): если игры подписаны «Игра 1 ·», «Игра 2 ·»… (заголовок h2/h3, кроме
+// викторины #quiz и «Как поступил бы ты» #fork), инструкция нужна КАЖДОЙ — внутри своей игры (от её заголовка до
+// следующей игры или конца её секции), под её картинкой. Без подписанных игр — одна игра на страницу, как раньше.
+// День, который сайт собирает из анкеты (src/content/days/<музей>/ММ-ДД.json с body), проверяется по анкете, не по html.
 // Режимы: по всему сайту — отчёт «инструкция есть N из M» по музеям (лог, сводка шага, /tmp/igra-pravila/otchet.md),
 // без падения; по страницам, изменённым в заявке (git diff с базой), — код выхода 1 (на main ~82 игры без
 // инструкции — чинятся по одной). Запуск: node scripts/igra-pravila.mjs [--proba] [--baza origin/main].
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { assemble } from '../src/lib/anketa.mjs';
 
 const FULL = 'src/data/full-pages';
+const DAYS = 'src/content/days';
 const IGRA_ID = /<(?:section|div)\b[^>]*\bid=["'](?:games?|game-[\w-]+|[\w-]+-game|igra[\w-]*)["']/i;
 const IGRA_ATTR = /<[a-z][^>]*\sdata-game(?:-section)?(?=[\s=>])/i;
 const IGRA_CANVAS = /<canvas\b[^>]*\b(?:id|aria-label)=["'][^"']*(?:game|[Ии]гр)/;
 
+// Заголовок подписанной игры: «Игра 2 · …», «⏱ Игра 3 · …».
+const IGRA_H = /<h[23]\b[^>]*>[^<\p{L}]{0,6}Игра\s+\d+\b/giu;
+
 export function estIgra(html) {
-  return IGRA_ID.test(html) || IGRA_ATTR.test(html) || IGRA_CANVAS.test(html);
+  return IGRA_ID.test(html) || IGRA_ATTR.test(html) || IGRA_CANVAS.test(html) || podpisannye(html).length > 0;
 }
 
 // Элемент с началом в i — до парного закрывающего тега (счёт вложенных одноимённых).
@@ -36,24 +45,55 @@ function element(html, i) {
 }
 const tekst = (t) => t.replace(/<[^>]+>/g, ' ').replace(/&nbsp;|\s+/g, ' ').trim();
 
+// Секция, внутри которой стоит позиция i: [начало, конец] или null.
+function sekciya(html, i) {
+  for (const m of [...html.slice(0, i).matchAll(/<section\b[^>]*>/gi)].reverse()) {
+    const kon = m.index + element(html, m.index).length;
+    if (kon > i) return { i: m.index, kon, open: m[0] };
+  }
+  return null;
+}
+// Подписанные игры: [{ nazv, i, kon }] — от заголовка до следующей игры или конца её секции; викторина и развилка — не игры.
+function podpisannye(html) {
+  const h = [...html.matchAll(IGRA_H)].map((m) => ({ i: m.index, s: sekciya(html, m.index) }))
+    .filter((x) => !(x.s && /\bid=["'](?:quiz|fork)["']/i.test(x.s.open)));
+  return h.map((x, k) => ({
+    nazv: tekst(element(html, x.i)).slice(0, 60),
+    i: x.i,
+    kon: Math.min(h[k + 1]?.i ?? html.length, x.s?.kon ?? html.length),
+  }));
+}
+
 const IGRA_NACHALO = new RegExp([IGRA_ID, IGRA_ATTR, IGRA_CANVAS].map((r) => r.source).join('|'), 'i');
 const SCENA = /<(?:canvas|svg|img)\b|<[a-z][^>]*\sdata-igra-scena(?=[\s=>])/i;
 
-// Что не так с инструкцией страницы: [] — всё на месте.
-export function oshibkiPravil(html) {
-  const bez = html.replace(/<!--[\s\S]*?-->/g, '');
-  const o = [];
-  const starts = [...bez.matchAll(/<[a-z][^>]*\sdata-igra-pravila(?=[\s=>])[^>]*>/gi)];
-  if (!starts.length) return ['нет блока data-igra-pravila'];
+// Инструкция одной игры в [ot, do_) html: [] — на месте. n — начало игры (от него ищется сцена), pre — приставка ошибки.
+function pravilaIgry(bez, n, ot, do_, pre) {
+  const starts = [...bez.slice(ot, do_).matchAll(/<[a-z][^>]*\sdata-igra-pravila(?=[\s=>])[^>]*>/gi)];
+  if (!starts.length) return [pre + 'нет блока data-igra-pravila'];
   const shagiEst = (b) => [...b.matchAll(/<ol\b[^>]*class=["'][^"']*\bigra-pravila-shagi\b[^>]*>/gi)]
     .some((m) => [...element(b, m.index).matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)].some((li) => tekst(li[1])));
-  const bloki = starts.map((m) => ({ i: m.index, html: element(bez, m.index) })).filter((b) => shagiEst(b.html));
-  if (!bloki.length) o.push('пустой или нет ol.igra-pravila-shagi');
+  const bloki = starts.map((m) => ({ i: ot + m.index, html: element(bez, ot + m.index) })).filter((b) => shagiEst(b.html));
+  if (!bloki.length) return [pre + 'пустой или нет ol.igra-pravila-shagi'];
   // Сцена — первая картинка игры от начала игры; правила — под ней, не над ней (Р201).
-  const n = bez.search(IGRA_NACHALO);
-  const s = n < 0 ? -1 : bez.slice(n).search(SCENA);
+  const s = n < 0 ? -1 : bez.slice(n, do_).search(SCENA);
   const scena = s < 0 ? -1 : n + s;
-  if (bloki.length && scena >= 0 && !bloki.some((b) => b.i > scena)) o.push('блок «Как играть» стоит над картинкой игры — нужен под ней');
+  if (scena >= 0 && !bloki.some((b) => b.i > scena)) return [pre + 'блок «Как играть» стоит над картинкой игры — нужен под ней'];
+  return [];
+}
+
+// Сколько игр на странице: подписанные «Игра N» или одна.
+export function chisloIgr(html) {
+  return podpisannye(html.replace(/<!--[\s\S]*?-->/g, '')).length || 1;
+}
+
+// Что не так с инструкциями страницы: [] — всё на месте.
+export function oshibkiPravil(html) {
+  const bez = html.replace(/<!--[\s\S]*?-->/g, '');
+  const igry = podpisannye(bez);
+  const o = igry.length
+    ? igry.flatMap((g) => pravilaIgry(bez, g.i, g.i, g.kon, `«${g.nazv}»: `))
+    : pravilaIgry(bez, bez.search(IGRA_NACHALO), 0, bez.length, '');
   if (/<[a-z][^>]*\sdata-igra-start(?=[\s=>])/i.test(bez)) o.push('есть кнопка «Начать» (data-igra-start) — картинка игры должна работать сразу');
   if (/<[a-z][^>]*\sdata-igra-pravila-open(?=[\s=>])/i.test(bez)) o.push('есть кнопка «Правила» (data-igra-pravila-open) — правила и так видны под картинкой');
   if (/\sdata-igra-ozhidaet(?=[\s=>])/i.test(bez)) o.push('игра спрятана до старта (data-igra-ozhidaet)');
@@ -75,6 +115,8 @@ if (process.argv.includes('--proba')) {
     ['декоративный холст — не игра', '<canvas id="heroCvs" class="hero-particles">', false],
     ['викторина — не игра', '<section id="quiz">', false],
     ['data-game-slot — не игра', '<section data-game-slot hidden>', false],
+    ['подписанная игра без id', '<section id="assemble"><h2>Игра 2 · Собери тракт</h2></section>', true],
+    ['«Игра 1» в викторине — не игра', '<section id="quiz"><h3>Игра 1 · Вопрос</h3></section>', false],
   ];
   const pravilaProba = [
     ['всё на месте: правила под картинкой', ok + blok('<li><b>Нажми</b> — увидишь.</li>'), 0],
@@ -89,6 +131,15 @@ if (process.argv.includes('--proba')) {
     ['не подключён css', blok('<li>шаг</li>'), 1],
     ['подключён удалённый js', ok + '<script src="../../assets/igra-pravila.js" defer></script>' + blok('<li>шаг</li>'), 1],
     ['блок в комментарии не в счёт', ok + '<!--' + blok('<li>шаг</li>') + '-->', 1],
+    ['две игры, правила у обеих', ok + igra('<h2>Игра 1 · А</h2>', pravila('<li>шаг</li>'))
+      + '<section id="b"><h2>Игра 2 · Б</h2><div></div>' + pravila('<li>шаг</li>') + '</section>', 0],
+    ['две игры, у второй нет правил (r278)', ok + igra('<h2>Игра 1 · А</h2>', pravila('<li>шаг</li>'))
+      + '<section id="b"><h2>Игра 2 · Б</h2><div></div></section>', 1],
+    ['три игры в одной секции, правила только у первой', ok + '<section id="games"><div class="gm"><h3>🎛 Игра 1 · А</h3><canvas></canvas>'
+      + pravila('<li>шаг</li>') + '</div><div class="gm"><h3>📡 Игра 2 · Б</h3><canvas></canvas></div><div class="gm"><h3>⏱ Игра 3 · В</h3></div></section>', 2],
+    ['правила второй игры над её картинкой', ok + igra('<h2>Игра 1 · А</h2>', pravila('<li>шаг</li>'))
+      + '<section id="b"><h2>Игра 2 · Б</h2>' + pravila('<li>шаг</li>') + '<canvas></canvas></section>', 1],
+    ['правила после секции игры — не её', ok + '<section id="b"><h2>Игра 1 · Б</h2><canvas></canvas></section>' + pravila('<li>шаг</li>'), 1],
   ];
   let bad = 0;
   for (const [n, h, zhdu] of proba) if (estIgra(h) !== zhdu) { bad++; console.error(`проба «${n}»: игра=${!zhdu}, ждали ${zhdu}`); }
@@ -101,16 +152,30 @@ if (process.argv.includes('--proba')) {
   process.exit(0);
 }
 
-// Все страницы: отчёт по музеям.
+// Что сайт показывает за день: анкета с body (src/content/days) — её сборка, иначе html из full-pages.
+function stranica(m, key) {
+  const j = path.join(DAYS, m, `${key}.json`);
+  if (fs.existsSync(j)) {
+    const d = JSON.parse(fs.readFileSync(j, 'utf8'));
+    if (d.body && d.doc) return { html: assemble(d), ist: j };
+  }
+  const f = path.join(FULL, m, `${key}.html`);
+  return fs.existsSync(f) ? { html: fs.readFileSync(f, 'utf8'), ist: f } : null;
+}
+
+// Все страницы: отчёт по музеям (счёт — по играм).
 const muzei = fs.readdirSync(FULL).filter((m) => fs.statSync(path.join(FULL, m)).isDirectory()).sort();
 const schet = {}, bez = [];
 for (const m of muzei) {
   for (const f of fs.readdirSync(path.join(FULL, m)).filter((x) => x.endsWith('.html')).sort()) {
-    const html = fs.readFileSync(path.join(FULL, m, f), 'utf8');
+    const { html } = stranica(m, f.slice(0, -5));
     if (!estIgra(html)) continue;
     const s = (schet[m] ??= { est: 0, vsego: 0 });
-    s.vsego++;
-    if (oshibkiPravil(html).length) bez.push(`${m}/${f}`); else s.est++;
+    const vsego = chisloIgr(html), o = oshibkiPravil(html);
+    const plohih = Math.min(vsego, new Set(o.map((x) => x.split(': ')[0])).size);
+    s.vsego += vsego;
+    s.est += vsego - plohih;
+    if (o.length) bez.push(`${m}/${f}`);
   }
 }
 const N = Object.values(schet).reduce((a, s) => a + s.est, 0), M = Object.values(schet).reduce((a, s) => a + s.vsego, 0);
@@ -129,17 +194,19 @@ let izm;
 try {
   izm = execFileSync('git', ['diff', '--name-only', '--diff-filter=AMR', `${baza}...HEAD`, '--', FULL], { encoding: 'utf8' })
     .split('\n').filter((f) => f.endsWith('.html'));
+  izm.push(...execFileSync('git', ['diff', '--name-only', '--diff-filter=AMR', `${baza}...HEAD`, '--', DAYS], { encoding: 'utf8' })
+    .split('\n').filter((f) => f.endsWith('.json')).map((f) => path.join(FULL, path.basename(path.dirname(f)), path.basename(f, '.json') + '.html')));
+  izm = [...new Set(izm)];
 } catch (e) {
   console.log(`::warning::igra-pravila: нет базы ${baza} — изменённые страницы не проверены`);
   process.exit(0);
 }
 const krasnye = [];
 for (const f of izm) {
-  if (!fs.existsSync(f)) continue;
-  const html = fs.readFileSync(f, 'utf8');
-  if (!estIgra(html)) continue;
-  const o = oshibkiPravil(html);
-  if (o.length) krasnye.push(`${f}: ${o.join('; ')}`);
+  const st = stranica(path.basename(path.dirname(f)), path.basename(f, '.html'));
+  if (!st || !estIgra(st.html)) continue;
+  const o = oshibkiPravil(st.html);
+  if (o.length) krasnye.push(`${st.ist}: ${o.join('; ')}`);
 }
 console.log(`igra-pravila: изменено в заявке страниц ${izm.length}, с игрой без инструкции ${krasnye.length}`);
 if (krasnye.length) {
