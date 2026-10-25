@@ -567,6 +567,38 @@
         "local": "muzei/izobreteniya/video/day-08jan-ermak-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/09jan-blinov": {
+      "title": "История в 60 секунд",
+      "note": "Кадры — подлинные, из Госкаталога: картина К. П. Белова «Первый гусеничный трактор Блинова», 1947 (Омский музей Кондратия Белова); фото М. П. Дмитриева «Хлебная пристань на Волге. С. Балаково», конец XIX в. (Нижегородский историко-архитектурный музей-заповедник); медальон с профилем Ф. А. Блинова и пожарный насос завода Блинова (Музей истории г. Балаково); почтовая марка 2021 года «Трактор Ф.А. Блинова» (Нижнетагильский музей-заповедник). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/09jan-blinov/day-09jan-blinov.mp4",
+        "local": "muzei/izobreteniya/video/day-09jan-blinov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.8,
+        "mb": 12.9
+      },
+      "vertical": {
+        "file": "izobreteniya/09jan-blinov/day-09jan-blinov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-09jan-blinov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 59.8,
+        "mb": 14.1
+      },
+      "poster": {
+        "file": "izobreteniya/09jan-blinov/day-09jan-blinov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-09jan-blinov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/09jan-blinov/day-09jan-blinov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-09jan-blinov-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }

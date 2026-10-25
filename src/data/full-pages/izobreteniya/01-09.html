@@ -240,8 +240,15 @@
 <section class="block" id="video">
   <div class="wrap">
     <div class="kicker">Видео дня</div>
-    <h2>История в 90 секундах</h2>
-    <div style="aspect-ratio:16/9;background:rgba(255,255,255,.03);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--muted)">Видео создаётся — скоро появится</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">История в 60 секунд</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field="izobreteniya/09jan-blinov:horizontal.sec" data-rc-video-suffix="сек">60 сек</span></div>
+    <p style="color:var(--muted);margin-top:0">Та же история коротким роликом — от колеса, которое проваливается в грязь, до гусеницы под всей тяжёлой техникой планеты.</p>
+    <!-- Адрес ролика подставляет ../../assets/museum-video.js из video/registry.json (16:9 на компьютере, 9:16 на телефоне).
+         Путь ниже — запасной, на случай недоступного реестра. -->
+    <video controls playsinline preload="none" poster="video/day-09jan-blinov-poster.jpg?v=1" data-rc-video="izobreteniya/09jan-blinov" data-rc-format="horizontal" style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
+      <source src="video/day-09jan-blinov.mp4?v=1" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">Кадры ролика — подлинные: картина К. П. Белова «Первый гусеничный трактор Блинова», 1947 (Омский музей Кондратия Белова); фотография М. П. Дмитриева «Хлебная пристань на Волге. С. Балаково», конец XIX века (Нижегородский историко-архитектурный музей-заповедник); медальон с профилем Ф. А. Блинова, 1970–1980-е, и пожарный насос завода Блинова, 1880-е (Музей истории г. Балаково); почтовая марка России 2021 года «Трактор Ф.А. Блинова» (Нижнетагильский музей-заповедник «Горнозаводской Урал»). Все — из Госкаталога музейного фонда РФ; сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.</p>
   </div>
 </section>
 
@@ -931,6 +938,7 @@ document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
   note:'Озвучено синтезом речи — временно, до записи голосом автора музея.'
 };</script>
 <script src="../../assets/museum-audioguide.js"></script>
+<script src="../../assets/museum-video.js"></script>
 <script type="application/json" data-proof>
 {
  "status": "found",
