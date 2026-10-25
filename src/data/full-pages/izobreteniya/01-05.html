@@ -410,19 +410,17 @@
 
 <div class="sheet-rule l"></div><div class="sheet-rule r"></div>
 
-<!-- ── HERO: сцена ОТДЕЛЬНО, текст ОТДЕЛЬНО (правило Сергея, 03.08) ──
-     Никакого текста поверх изображения: ни поверх фото, ни поверх живой 3D-сцены.
-     Сначала сцена во всю ширину, под ней этикетка сцены, затем заголовок и хук. -->
-<div class="hero-scene" id="hero">
-  <canvas id="heroCvs"></canvas>
+<figure class="hero-fig">
+<div class="hero-scene">
+  <img class="scene" src="day-05jan-shukhov-za-stolom-1933.jpg" data-source="https://goskatalog.ru/portal/#/collections?id=5969845" data-license="общественное достояние (анонимный снимок 1933 года) · Государственный центральный музей современной истории России, Госкаталог, рег. № 5793495" width="628" height="800" alt="Пожилой седой Владимир Шухов в тёмном костюме с галстуком сидит за письменным столом, заваленным бумагами, с пресс-папье и чернильницей" style="object-position:50% 35%" fetchpriority="high">
 </div>
-
-<div class="scene-caption">
+<figcaption class="scene-caption">
   <div class="wrap">
-    <div class="scene-cap">Слева — промысел Балаханы, справа — заводы Чёрного города, между ними десять километров трубы. Пока насос стоит, нефть тянут подводами — три тысячи бочек в день.</div>
-    <button type="button" class="scene-hint cta-pulse" id="heroHint">▶ Нажать — пустить нефть</button>
+    <div class="scene-cap">Академик В. Г. Шухов за рабочим столом. Москва, 1933 год. <span class="credit">Автор не указан. Хранится: Государственный центральный музей современной истории России; Госкаталог музейного фонда РФ, рег. № 5793495. Права: общественное достояние (анонимный снимок 1933 года).</span></div>
+    <span class="scene-hint">Фото · 1933</span>
   </div>
-</div>
+</figcaption>
+</figure>
 
 <header class="hero-lead">
   <div class="wrap">
@@ -448,6 +446,18 @@
   </div>
 </div>
 
+
+<!-- живая сцена дня (была сверху; обложка — фото выше, Р231) -->
+<div class="hero-scene" id="hero">
+  <canvas id="heroCvs"></canvas>
+</div>
+
+<div class="scene-caption">
+  <div class="wrap">
+    <div class="scene-cap">Слева — промысел Балаханы, справа — заводы Чёрного города, между ними десять километров трубы. Пока насос стоит, нефть тянут подводами — три тысячи бочек в день.</div>
+    <button type="button" class="scene-hint cta-pulse" id="heroHint">▶ Нажать — пустить нефть</button>
+  </div>
+</div>
 
 <nav class="daynav">
   <div class="wrap">
