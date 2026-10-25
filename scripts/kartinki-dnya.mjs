@@ -5,6 +5,8 @@
 //   3) ни одной видимой картинки без src или битой. Картинки внутри игры не в счёт: игра заполняет их сама (в финале);
 //   4) страница открывается сверху: через 2,5 с после загрузки scrollY = 0 (r239: игры 27 и 28 янв. сами уезжали
 //      к своей кнопке на 2000 px, посетитель не видел обложку).
+//   5) обложка не срезана на 390×844: ни object-fit:cover при других пропорциях кадра, ни контейнер с overflow:hidden
+//      (r274: у Пильчикова 4 янв. сцена в 200 px показывала бороду и пиджак без головы). Лечится классом fit-full у .hero-scene.
 // Изменённые дни — git diff с базой: src/data/full-pages/<музей>/ММ-ДД.html и карточки src/content/days/<музей>/ММ-ДД.json
 // (карточка — только если у дня есть полная страница: дни без полной страницы — пустые, замок их не касается).
 // Нарушение — код 1 и ::error:: по-русски: какой день, чего нет. Откат — удалить шаг из .github/workflows/proverka.yml.
@@ -77,7 +79,22 @@ async function proverit(page, url) {
     if (!hero) o.push('нет обложки — figure.hero-fig');
     else if (!heroImg) o.push('в обложке figure.hero-fig нет картинки');
     else if (!zagruzhena(heroImg)) o.push(`картинка обложки не загрузилась (${imya(heroImg)})`);
-    else oblozhka = 'да';
+    else {
+      oblozhka = 'да';
+      // Срез кадра: пропорции рамки не совпадают с кадром при cover/none или рамку обрезает предок с overflow.
+      const r = heroImg.getBoundingClientRect(), fit = getComputedStyle(heroImg).objectFit;
+      const kadr = heroImg.naturalWidth / heroImg.naturalHeight, ramka = r.width / r.height;
+      const srez = [];
+      if (fit !== 'contain' && fit !== 'scale-down' && Math.abs(ramka / kadr - 1) > 0.03)
+        srez.push(fit === 'fill' ? 'кадр растянут не по пропорциям' : `object-fit:${fit} режет кадр`);
+      for (let el = heroImg.parentElement; el && el !== document.body; el = el.parentElement) {
+        if (getComputedStyle(el).overflow === 'visible') continue;
+        const a = el.getBoundingClientRect();
+        const px = Math.round(Math.max(0, a.top - r.top) + Math.max(0, r.bottom - a.bottom) + Math.max(0, a.left - r.left) + Math.max(0, r.right - a.right));
+        if (px > 2) { srez.push(`контейнер ${el.classList[0] ? '.' + el.classList[0] : el.tagName.toLowerCase()} срезает ${px} px`); break; }
+      }
+      if (srez.length) o.push(`обложка срезана (${imya(heroImg)}): ${srez.join('; ')} — кадр целиком: класс fit-full у .hero-scene`);
+    }
     let vTekste = 0;
     const bitye = [];
     for (const i of document.querySelectorAll('img')) {
@@ -121,6 +138,9 @@ if (est('--proba')) {
     ['всё на месте', hero + tekst, 0],
     ['кадр игры без src — не в счёт', hero + tekst + '<section id="games"><img class="final"></section>', 0],
     ['нет обложки', tekst, 1],
+    ['обложка целиком в рамке', '<figure class="hero-fig"><div style="height:120px;overflow:hidden"><img src="a.svg" style="width:200px;height:100px"></div></figure>' + tekst, 0],
+    ['обложку срезает контейнер', '<figure class="hero-fig"><div style="height:50px;overflow:hidden"><img src="a.svg" style="width:200px;height:100px"></div></figure>' + tekst, 1],
+    ['обложку режет object-fit:cover', '<figure class="hero-fig"><img src="a.svg" style="width:100px;height:100px;object-fit:cover"></figure>' + tekst, 1],
     ['битая обложка', '<figure class="hero-fig"><img src="net.svg"></figure>' + tekst, 1],
     ['нет картинки в тексте', hero + '<p>Сухой текст</p>', 1],
     ['в тексте только игра', hero + '<section id="games"><img src="b.svg"></section>', 1],
