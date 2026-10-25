@@ -599,6 +599,38 @@
         "local": "muzei/izobreteniya/video/day-09jan-blinov-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/10jan-britnev": {
+      "title": "История в 59 секунд",
+      "note": "Кадры — подлинные: гравюра «North Sea» во льду у Кронштадта (Illustrated London News, 1856); панорама Кронштадта, ок. 1854; портрет М. О. Бритнева, миниатюра 1845; почтовая марка СССР 1976 «Ледокол „Пайлот“» — условный рисунок; В. В. Игнациус «Кронштадтская гавань зимой», 1870–80-е, литография «Военная гавань зимой в 1851 году» (ЦВММ); открытка «Кронштадт. Ораниенбаумская пристань», нач. XX в. (Музей истории Кронштадта); ледокол «Ермак» у Кронштадта (The Graphic, 1900). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/10jan-britnev/day-10jan-britnev.mp4",
+        "local": "muzei/izobreteniya/video/day-10jan-britnev.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.2,
+        "mb": 15.2
+      },
+      "vertical": {
+        "file": "izobreteniya/10jan-britnev/day-10jan-britnev-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-10jan-britnev-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 59.2,
+        "mb": 15.5
+      },
+      "poster": {
+        "file": "izobreteniya/10jan-britnev/day-10jan-britnev-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-10jan-britnev-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/10jan-britnev/day-10jan-britnev-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-10jan-britnev-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
