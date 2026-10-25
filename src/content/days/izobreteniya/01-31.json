@@ -2,6 +2,59 @@
   "museum": "izobreteniya",
   "key": "01-31",
   "title": "Гиротрон, первый в мире источник мегаваттных миллиметровых волн · [У] А. В. Гапонов-Грехов 1964",
+  "year": 1964,
   "hook": "Гапонов-Грехов построил прибор, чьим лучом сегодня разогревают плазму в международном термоядерном реакторе",
-  "mechanic": "Подбирается при сборке дня"
+  "source": "сборник «Андрей Викторович Гапонов-Грехов. К 100-летию со дня рождения», ИПФ РАН, 2026; ИПФ РАН, «История института»; ГИКОМ, новости 2015 и 2022; ITER Organization, 8 июня 2026",
+  "mechanic": "Игра „Поймай резонанс“: настрой магнитное поле нажатиями",
+  "images": [
+    {
+      "src": "muzei/izobreteniya/day-31jan-iter-girotron.jpg",
+      "caption": "Российский гиротрон, установленный на ИТЭР (Кадараш, Франция), 2026",
+      "credit": "© ITER Organization. Источник: ITER Organization, «First Russian gyrotrons installed», 8 июня 2026, https://www.iter.org/node/20687/first-russian-gyrotrons-installed. Права: п. 1 ст. 1274 ГК РФ — цитирование в информационных целях",
+      "generated": false,
+      "text_on_image": false
+    },
+    {
+      "src": "muzei/izobreteniya/day-31jan-laureaty-1967.jpg",
+      "caption": "Лауреаты Государственной премии 1967 года — создатели гиротрона: В. К. Юлпатов, М. И. Петелин, В. А. Флягин, А. В. Гапонов-Грехов, И. И. Антаков; около 1967",
+      "credit": "Хранится: архив ИПФ РАН. Источник: сборник «Андрей Викторович Гапонов-Грехов. К 100-летию со дня рождения», ИПФ РАН, 2026, с. 271, https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf. Права: п. 1 ст. 1274 ГК РФ — цитирование в информационных целях",
+      "generated": false,
+      "text_on_image": false
+    },
+    {
+      "src": "muzei/izobreteniya/day-31jan-girotron-shema.jpg",
+      "caption": "Рабочее пространство гиротрона: винтовые траектории электронов в магнитном поле; ИПФ РАН, 2019",
+      "credit": "© ИПФ РАН. Источник: ИПФ РАН, «Мощный непрерывный субтерагерцовый гиротрон», 2019, https://ipfran.ru/scientific-activity/important-result/2019-powerful-subterahertz-gyrotron. Права: п. 1 ст. 1274 ГК РФ — цитирование в информационных целях",
+      "generated": false,
+      "text_on_image": false
+    },
+    {
+      "src": "muzei/izobreteniya/day-31jan-grekhova.jpg",
+      "caption": "М. Т. Грехова, мать А. В. Гапонова-Грехова, первый декан радиофизического факультета; 1930–1940-е",
+      "credit": "Хранится: архив ИПФ РАН. Источник: ИПФ РАН, «История института», https://ipfran.ru/institute/info/history. Права: п. 1 ст. 1274 ГК РФ — цитирование в информационных целях",
+      "generated": false,
+      "text_on_image": false
+    },
+    {
+      "src": "muzei/izobreteniya/day-31jan-gaponov-portret.jpg",
+      "caption": "А. В. Гапонов-Грехов, 1960–1970-е",
+      "credit": "Хранится: архив ИПФ РАН. Источник: сборник «Андрей Викторович Гапонов-Грехов. К 100-летию со дня рождения», ИПФ РАН, 2026, с. 31, https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf. Права: п. 1 ст. 1274 ГК РФ — цитирование в информационных целях",
+      "generated": false,
+      "text_on_image": false
+    },
+    {
+      "src": "muzei/izobreteniya/day-31jan-gaponov-aleksandrov.jpg",
+      "caption": "Директор ИПФ А. В. Гапонов-Грехов с президентом АН СССР А. П. Александровым, 1980-е",
+      "credit": "Хранится: архив ИПФ РАН. Источник: ИПФ РАН, «История института», https://ipfran.ru/institute/info/history. Права: п. 1 ст. 1274 ГК РФ — цитирование в информационных целях",
+      "generated": false,
+      "text_on_image": false
+    },
+    {
+      "src": "muzei/izobreteniya/day-31jan-ipf-zdanie.jpg",
+      "caption": "Главное здание ИПФ РАН, Нижний Новгород; 2010-е или 2020-е",
+      "credit": "© ИПФ РАН. Источник: ИПФ РАН, «Об институте», https://ipfran.ru/institute/info. Права: п. 1 ст. 1274 ГК РФ — цитирование в информационных целях",
+      "generated": false,
+      "text_on_image": false
+    }
+  ]
 }

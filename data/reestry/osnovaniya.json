@@ -790,5 +790,54 @@
     "gody": "портрет В. М. Пентковского, 2010-е",
     "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
     "ssylka": "https://megagrant.ru/labs/scientists/scientist_rus_112121/"
+  },
+  "muzei/izobreteniya/day-31jan-gaponov-aleksandrov.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "Фото из архива ИПФ РАН (фотограф не указан)",
+    "gody": "1980-е (приблизительно)",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://ipfran.ru/institute/info/history"
+  },
+  "muzei/izobreteniya/day-31jan-gaponov-portret.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "Архив ИПФ РАН; сборник «А. В. Гапонов-Грехов. К 100-летию со дня рождения», ИПФ РАН, 2026",
+    "gody": "1960–1970-е (приблизительно)",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf"
+  },
+  "muzei/izobreteniya/day-31jan-laureaty-1967.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "Архив ИПФ РАН; сборник «А. В. Гапонов-Грехов. К 100-летию со дня рождения», ИПФ РАН, 2026",
+    "gody": "около 1967",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf"
+  },
+  "muzei/izobreteniya/day-31jan-girotron-shema.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "ИПФ РАН",
+    "gody": "2019",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://ipfran.ru/scientific-activity/important-result/2019-powerful-subterahertz-gyrotron"
+  },
+  "muzei/izobreteniya/day-31jan-iter-girotron.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "ITER Organization",
+    "gody": "2026",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://www.iter.org/node/20687/first-russian-gyrotrons-installed"
+  },
+  "muzei/izobreteniya/day-31jan-ipf-zdanie.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "ИПФ РАН",
+    "gody": "2010-е или 2020-е",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://ipfran.ru/institute/info"
+  },
+  "muzei/izobreteniya/day-31jan-grekhova.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "Фото из архива ИПФ РАН (фотограф не указан)",
+    "gody": "1930–1940-е (приблизительно)",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://ipfran.ru/institute/info/history"
   }
 }
