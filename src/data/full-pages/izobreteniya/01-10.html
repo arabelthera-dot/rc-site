@@ -260,6 +260,7 @@
 
 <nav class="daynav" aria-label="Разделы дня">
   <div class="wrap">
+    <a href="#video">Видео</a>
     <a href="#story">Читать</a>
     <a href="#audioguide">Слушать</a>
     <a href="#fakty">Факты</a>
@@ -271,6 +272,21 @@
 </nav>
 
 <section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>
+
+<section class="block" id="video">
+  <div class="wrap">
+    <div class="kicker">Видео дня</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">История в 59 секунд</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field="izobreteniya/10jan-britnev:horizontal.sec" data-rc-video-suffix="сек">59 сек</span></div>
+    <p style="color:var(--muted);margin-top:0">Та же история коротким роликом — от парохода, который бьётся о кронштадтский лёд, до «Пайлота», ставшего прообразом ледоколов.</p>
+    <!-- Адрес ролика подставляет ../../assets/museum-video.js из video/registry.json (16:9 на компьютере, 9:16 на телефоне).
+         Путь ниже — запасной, на случай недоступного реестра. -->
+    <video controls playsinline preload="none" poster="video/day-10jan-britnev-poster.jpg?v=1" data-rc-video="izobreteniya/10jan-britnev" data-rc-format="horizontal" style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
+      <source src="video/day-10jan-britnev.mp4?v=1" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">Кадры ролика — подлинные: гравюра «Пароход „North Sea“ пробивается сквозь лёд у Кронштадта» (Illustrated London News, 1856); панорама Кронштадта, гравюра ок. 1854; портрет М. О. Бритнева, миниатюра 1845; почтовая марка СССР 1976 года «Ледокол „Пайлот“» — условный рисунок, как выглядел «Пайлот», точно не известно; В. В. Игнациус «Кронштадтская гавань зимой», 1870–1880-е, и литография «Военная гавань зимой в 1851 году» (Центральный военно-морской музей); открытка «Кронштадт. Ораниенбаумская пароходная пристань», начало XX века (Музей истории Кронштадта); ледокол «Ермак» у Кронштадта (The Graphic, 1900) — наследник «Пайлота». Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.</p>
+  </div>
+</section>
 
 <section class="block" id="audioguide"></section>
 
@@ -685,6 +701,7 @@ window.MUSEUM_SCORE = {awards:{lab:35, why0:5, why1:5, why2:5, q:[5,10]},
   ],
   note:"Озвучено синтезом речи — временно, до записи голосом автора музея."
 };</script>
+<script src="../../assets/museum-video.js"></script>
 <script src="../../assets/museum-audioguide.js"></script>
 <script type="application/json" data-proof>
 {
