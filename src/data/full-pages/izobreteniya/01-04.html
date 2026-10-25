@@ -167,6 +167,7 @@
   </script>
   <!-- rc-meta:end -->
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 </head>
 <body>
 
@@ -510,6 +511,17 @@
 <div style="text-align:center;margin:10px 0"><button class="btn gold" id="tnBtn" disabled onclick="tnFire()">⚡ Передать команду</button></div>
 <div id="tnResult" style="text-align:center;font-size:16px;font-weight:700;min-height:24px;color:var(--gold-l)"></div>
 <div class="gm-score" style="text-align:center;margin-top:6px">Команд принято: <b id="tnScore">0</b> / 3</div>
+<div class="igra-pravila" data-igra-pravila>
+  <h2 class="igra-pravila-h">Как играть</h2>
+  <p class="igra-pravila-zachem">Ты — Пильчиков в 1898 году. Настрой передатчик на волну своего приёмника и передай ему три команды.</p>
+  <ol class="igra-pravila-shagi">
+    <li><b>Двигай ползунок настройки</b> — синяя волна меняется. Совмести её с золотой волной приёмника.</li>
+    <li><b>Совпали — волна станет зелёной</b>, лампа справа загорится, и кнопка «⚡ Передать команду» оживёт.</li>
+    <li><b>Нажми «Передать команду»</b>. После каждой команды приёмник перестраивается — найди новую волну.</li>
+  </ol>
+  <p class="igra-pravila-nyuans">Нюансы: пока волны не совпали, кнопка не нажимается — это и есть протектор: чужой сигнал приёмник не слушает. Подводи ползунок медленно, совпасть надо почти точно.</p>
+  <p class="igra-pravila-final">Три команды приняты — протектор освоен.</p>
+</div>
 <script>(function(){
 const cv=document.getElementById('tnCvs');if(!cv)return;
 const ctx=cv.getContext('2d');const sl=document.getElementById('tnSlider');

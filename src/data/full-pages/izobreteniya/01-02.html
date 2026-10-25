@@ -152,6 +152,7 @@
   </script>
   <!-- rc-meta:end -->
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 </head>
 <body>
 
@@ -387,6 +388,17 @@
       <input type="range" id="l1angle" min="25" max="70" value="45" style="flex:1;min-width:140px;accent-color:#c9a84c">
       <button class="btn gold" id="l1launch" style="padding:12px 28px">🚀 Запуск</button>
       <button class="btn ghost" id="l1reset" style="display:none">Ещё раз</button>
+    </div>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты — баллистик 1959 года. Выбери угол запуска так, чтобы «Луна-1» прошла рядом с Луной, как настоящая.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Двигай ползунок «Угол запуска»</b> — пунктир от Земли покажет направление старта.</li>
+        <li><b>Нажми «🚀 Запуск»</b> и смотри, как ракета летит от Земли к Луне.</li>
+        <li><b>Не попал — нажми «Ещё раз»</b>, поправь угол и запускай снова.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: цель — пунктирный круг вокруг Луны, «лунный коридор». Пролетел мимо круга — промах; врезался прямо в Луну — тоже не то: это была бы уже «Луна-2». Каждый запуск сообщает, на сколько километров ракета разминулась с Луной, — по этому числу и правь угол.</p>
+      <p class="igra-pravila-final">Ракета прошла внутри коридора — ты повторил полёт «Луны-1».</p>
     </div>
     <div id="l1msg" style="min-height:28px;font-weight:600;font-size:16px;color:var(--gold-l);text-align:center"></div>
   </div>
