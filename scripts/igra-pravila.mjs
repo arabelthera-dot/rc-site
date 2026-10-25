@@ -8,7 +8,9 @@
 // assets/igra-pravila.js (удалён) — ошибка.
 // Несколько игр на странице (r278, 25.10.2026): если игры подписаны «Игра 1 ·», «Игра 2 ·»… (заголовок h2/h3, кроме
 // викторины #quiz и «Как поступил бы ты» #fork), инструкция нужна КАЖДОЙ — внутри своей игры (от её заголовка до
-// следующей игры или конца её секции), под её картинкой. Без подписанных игр — одна игра на страницу, как раньше.
+// следующей игры или конца её секции), под её картинкой. Неподписанная игра перед первой подписанной (картинка до
+// первой подписи или подписи начинаются с «Игра 2») — тоже игра со своим блоком. Без подписанных игр — одна игра на
+// страницу, как раньше.
 // День, который сайт собирает из анкеты (src/content/days/<музей>/ММ-ДД.json с body), проверяется по анкете, не по html.
 // Режимы: по всему сайту — отчёт «инструкция есть N из M» по музеям (лог, сводка шага, /tmp/igra-pravila/otchet.md),
 // без падения; по страницам, изменённым в заявке (git diff с базой), — код выхода 1 (на main ~82 игры без
@@ -57,11 +59,20 @@ function sekciya(html, i) {
 function podpisannye(html) {
   const h = [...html.matchAll(IGRA_H)].map((m) => ({ i: m.index, s: sekciya(html, m.index) }))
     .filter((x) => !(x.s && /\bid=["'](?:quiz|fork)["']/i.test(x.s.open)));
-  return h.map((x, k) => ({
+  const igry = h.map((x, k) => ({
     nazv: tekst(element(html, x.i)).slice(0, 60),
     i: x.i,
     kon: Math.min(h[k + 1]?.i ?? html.length, x.s?.kon ?? html.length),
   }));
+  // Неподписанная игра перед первой подписанной (01-08: игра без «Игра 1», потом «Игра 2 · Быстрый ответ») — тоже
+  // игра: от начала игровой секции до первой подписи, если там есть картинка или подпись начинается не с «Игра 1».
+  if (igry.length) {
+    const n = html.search(IGRA_NACHALO);
+    const nomer = +/Игра\s+(\d+)/u.exec(tekst(element(html, igry[0].i)))?.[1];
+    if (n >= 0 && n < igry[0].i && (SCENA.test(html.slice(n, igry[0].i)) || nomer > 1))
+      igry.unshift({ nazv: 'игра без подписи «Игра 1»', i: n, kon: igry[0].i });
+  }
+  return igry;
 }
 
 const IGRA_NACHALO = new RegExp([IGRA_ID, IGRA_ATTR, IGRA_CANVAS].map((r) => r.source).join('|'), 'i');
@@ -139,6 +150,12 @@ if (process.argv.includes('--proba')) {
       + pravila('<li>шаг</li>') + '</div><div class="gm"><h3>📡 Игра 2 · Б</h3><canvas></canvas></div><div class="gm"><h3>⏱ Игра 3 · В</h3></div></section>', 2],
     ['правила второй игры над её картинкой', ok + igra('<h2>Игра 1 · А</h2>', pravila('<li>шаг</li>'))
       + '<section id="b"><h2>Игра 2 · Б</h2>' + pravila('<li>шаг</li>') + '<canvas></canvas></section>', 1],
+    ['неподписанная игра и «Игра 2», правила только у второй (r278)', ok + '<section id="games"><h2>А</h2><canvas></canvas>'
+      + '<div class="gm"><h3>⏱ Игра 2 · Б</h3><button>1</button>' + pravila('<li>шаг</li>') + '</div></section>', 1],
+    ['неподписанная игра и «Игра 2», правила у обеих', ok + '<section id="games"><h2>А</h2><canvas></canvas>' + pravila('<li>шаг</li>')
+      + '<div class="gm"><h3>⏱ Игра 2 · Б</h3><button>1</button>' + pravila('<li>шаг</li>') + '</div></section>', 0],
+    ['заголовок секции до «Игра 1» — не отдельная игра', ok + '<section id="games"><h2>Игры дня</h2>'
+      + '<div class="gm"><h3>Игра 1 · А</h3><canvas></canvas>' + pravila('<li>шаг</li>') + '</div></section>', 0],
     ['правила после секции игры — не её', ok + '<section id="b"><h2>Игра 1 · Б</h2><canvas></canvas></section>' + pravila('<li>шаг</li>'), 1],
   ];
   let bad = 0;
