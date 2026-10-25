@@ -115,6 +115,8 @@
   .crumbs .here{color:var(--muted);white-space:nowrap}
 </style>
 <link rel="stylesheet" href="../../assets/museum-theme.css">
+<link rel="stylesheet" href="../../assets/fakty-dnya.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 <!-- rc-meta:start -->
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="description" content="Первый в мире гусеничный ход — «бесконечные рельсы». Крестьянин без образования придумал принцип, на котором держится вся тяжёлая техника планеты — за 25 лет до американцев, которые…">
@@ -192,17 +194,17 @@
 </div></nav>
 
 
-<div class="hero-scene" id="hero">
-  <canvas id="heroCvs" class="hero-particles"></canvas>
-  <div class="hero-year">1879</div>
+<figure class="hero-fig" style="margin:0">
+<div class="hero-scene fit-full" id="hero">
+  <img class="scene" src="/muzei/izobreteniya/img/01-09-goskatalog-726938.jpg" data-source="https://goskatalog.ru/portal/#/collections?id=3908682" data-license="цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)" width="1600" height="1062" alt="Зимнее село на Волге: толпа крестьян в тулупах обступила паровой трактор Блинова на гусеницах, из трубы идёт дым" fetchpriority="high">
 </div>
-
-<div class="scene-caption">
+<figcaption class="scene-caption">
   <div class="wrap">
-    <div class="scene-cap">Балаково · 1879 · первый гусеничный ход в мире</div>
-    <button type="button" class="scene-hint cta-pulse" id="heroHint" onclick="var c=document.getElementById('heroCvs');if(c)c.click()">⚡ тапни — пусти трактор по пашне</button>
+    <div class="scene-cap">«Первый гусеничный трактор Блинова». Картина К. П. Белова. <span class="credit">Белов К. П., 1947. Хранится: Омский музей Кондратия Белова; Госкаталог музейного фонда РФ, № 3908682. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ).</span></div>
+    <span class="scene-hint">Картина · 1947</span>
   </div>
-</div>
+</figcaption>
+</figure>
 
 <header class="hero-lead">
 <div class="wrap">
@@ -221,6 +223,7 @@
 <nav class="daynav">
   <div class="wrap">
     <a href="#story">Читать</a>
+    <a href="#fakty">Факты</a>
     <a href="#video">Видео</a>
     <a href="#quiz">Викторина</a>
     <a href="#fork">Развилка</a>
@@ -247,7 +250,7 @@
 <section class="block" id="audioguide"></section>
 
 <!-- ── СТАТЬЯ ── -->
-<section class="block" id="kadry"><div class="wrap"><figure class="fig" style="margin:0 auto;max-width:820px"><img style="display:block;width:100%;height:auto" src="/muzei/izobreteniya/img/01-09-goskatalog-726938.jpg" alt="Первый гусеничный трактор Фёдора Блинова среди крестьян — картина К. П. Белова" loading="lazy" decoding="async" data-source="https://goskatalog.ru/portal/#/collections?id=3908682" data-license="цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Первый гусеничный трактор Фёдора Блинова среди крестьян — картина К. П. Белова. <span class="credit">Фото: Белов К. П., 1947. Хранится: Бюджетное учреждение культуры Омской области «Омский музей Кондратия Белова». Госкаталог музейного фонда РФ, № 3908682. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ).</span></figcaption></figure></div></section>
+<section class="block" id="kadry"><div class="wrap"><figure class="fig" style="margin:0 auto;max-width:820px"><img style="display:block;width:100%;height:auto" src="/muzei/izobreteniya/img/01-09-goskatalog-35806032.jpg" width="1540" height="1116" alt="Почтовая марка России 2021 года: паровой трактор Ф. А. Блинова на гусеницах, надпись «Трактор Ф.А. Блинова (1896)»" loading="lazy" decoding="async" data-source="https://goskatalog.ru/portal/#/collections?id=35806032" data-license="общественное достояние: почтовые марки не охраняются авторским правом (п. 6 ст. 1259 ГК РФ)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Почтовая марка России 2021 года «Трактор Ф.А. Блинова». Год на марке — 1896-й: тогда трактор показали на Всероссийской выставке в Нижнем Новгороде; построен он был в 1888 году. <span class="credit">Художник В. Бельтюков. Хранится: Нижнетагильский музей-заповедник «Горнозаводской Урал»; Госкаталог музейного фонда РФ, № 35806032. Права: общественное достояние (п. 6 ст. 1259 ГК РФ).</span></figcaption></figure></div></section>
 <section class="block" id="story">
   <div class="wrap">
     <div class="kicker">История изобретения</div>
@@ -281,6 +284,46 @@
   </div>
 </section>
 
+<section class="block" id="fakty">
+  <div class="wrap">
+    <div class="kicker">Пять фактов о Блинове и его «самоходе»</div>
+    <h2>Изобретатель, которому дали медаль, как за рогожи</h2>
+    <ol class="udary">
+      <li><details><summary><span>Задолго до трактора Блинов заставил пароход поворачиваться на месте — разрезав сломанный гребной вал надвое.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Почти четверть века Блинов прослужил на волжском пароходе «Геркулес»: был кочегаром, помощником машиниста, потом машинистом. Однажды в разгар навигации лопнул гребной вал, который от двух паровых машин вращал водяные колёса. Мастера браться за ремонт отказались: все считали, что нужен новый вал.</p>
+          <p>Блинов предложил разрезать вал на две части, чтобы каждая машина крутила своё колесо. Ремонт пошёл быстрее, а пароход стал послушнее: выключи одну машину, и «Геркулес» поворачивается даже на месте. Так же потом поворачивал и его гусеничный «самоход» 1888 года: каждую гусеницу вела своя паровая машина, и для поворота одну из них выключали.</p>
+          <p class="src-note">Источник: Салтыков Р. В. «Из истории изобретения трактора» // Образование. Карьера. Общество, 2013 (cyberleninka.ru).</p>
+        </div></details></li>
+      <li><details><summary><span>Первую гусеничную повозку испытали с грузом из 2000 кирпичей и трёх десятков человек, а тянула её пара обычных лошадей.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Запатентованный «вагон» Блинова сам не ездил. Это был прицеп на гусеницах для пароконной упряжки. Летом 1880 года в Вольске Блинов испытал его на пахоте, на грунтовых дорогах и даже на болоте. Пара лошадей везла на нём столько, сколько на колёсной телеге потянули бы не меньше десяти.</p>
+          <p>Потом были официальные испытания. 8 января 1881 года «Саратовский листок» напечатал письмо из Вольска: платформа «с самодвижущимися рельсами» с 550 пудами груза, то есть 2000 кирпичей и больше 30 взрослых людей, несколько раз проехала по улицам города на паре лошадей и вызвала всеобщее одобрение.</p>
+          <p class="src-note">Источник: Салтыков Р. В. «Из истории изобретения трактора» // cyberleninka.ru (цитата по «Саратовскому листку» от 8 января 1881 г.).</p>
+        </div></details></li>
+      <li><details><summary><span>Первый в мире гусеничный трактор получил на выставке ту же медаль, что и чьи-то мочала и рогожи.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Готовый «самоход» Блинов ещё месяц испытывал в любых условиях и никому его не показывал. Только когда сам во всём уверился, вывел машину к людям, причём не просто показывал её, а объяснял устройство и доказывал, что механическая тяга нужна сельскому хозяйству.</p>
+          <p>В 1889 году трактор показали в работе на сельскохозяйственной выставке в Саратове. Изобретатель получил серебряную медаль. Ровно такой же наградой отметили одну помещичью экономию за мочала и рогожи. На этом признание и закончилось.</p>
+          <p class="src-note">Источник: Салтыков Р. В. «Из истории изобретения трактора» // cyberleninka.ru.</p>
+        </div></details></li>
+      <li><details><summary><span>На Нижегородской выставке серебро Блинову дали за пожарный насос, а за трактор — лишь похвальную грамоту.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Деньги на трактор Блинову приносили пожарные насосы. Он придумал одноцилиндровый насос, который работал лучше и надёжнее привычного двухцилиндрового, а в 1887 году взял в аренду небольшой чугунолитейный завод и наладил их выпуск.</p>
+          <p>На выставку 1896 года в Нижнем Новгороде он привёз улучшенный «самоход» и называл его «паровозом для грунтовых дорог». Серебряную медаль жюри снова присудило, только за насос. Трактор получил похвальную грамоту. А немецкая фирма прямо на выставке предложила купить машину за хорошие деньги и наладить выпуск. Блинов, хоть и сидел без денег, отказал: «Я русский мужик, думал и делал для России».</p>
+          <p class="src-note">Источник: Салтыков Р. В. «Из истории изобретения трактора» // cyberleninka.ru (слова Блинова — в пересказе дочери, Устиньи Фёдоровны).</p>
+        </div></details></li>
+      <li><details><summary><span>Мальчик, пришедший к Блинову в мастерскую в 11 лет, позже выпустил в Балакове «Русский трактор».<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Яков Мамин окончил приходскую школу в Балакове, поработал учеником у лудильщика, а в 11 лет перешёл в мастерскую Блинова. После неудачи в Нижнем Новгороде Блинов сказал ему: «Не поняли меня купцы… А ты доживёшь, увидишь, какое значение будут иметь „самоходы“ для русских людей».</p>
+          <p>Ученик дожил. Осенью 1914 года «Саратовский листок» писал, что по улицам Балакова прошёл трактор завода Я. В. Мамина и что завод собирается выпускать машины в 25 и 50 сил под названием «Русский трактор»: пока таких собрали четыре. Позже Мамин построил простейший трактор «Карлик». Сегодня он стоит у здания минсельхоза Саратовской области.</p>
+          <p class="src-note">Источники: Салтыков Р. В. «Из истории изобретения трактора» // cyberleninka.ru; Китаев Е. «От „Карлика“ до „Титана“» // Российская газета, 09.10.2025 (rg.ru).</p>
+        </div></details></li>
+    </ol>
+  </div>
+</section>
+
+
 <section class="block" id="more">
   <div class="wrap">
     <div class="kicker">Гусеница изменила мир</div>
@@ -295,11 +338,10 @@
   <div class="wrap">
     <div class="kicker">Транспорт · Русские первенства</div>
     <h2 style="margin-bottom:6px">Что ещё русские изобрели первыми в теме «транспорт»</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">1896 год. Выставка в Нижнем Новгороде прошла хорошо. Диплом есть. Но серийного завода по-прежнему нет — ни инвесторов, ни государственного заказа. Тебе 65 лет. Ты на месте Блинова — что делаешь?</p>
-    <div class="fork-opt">🏭 Ищу промышленника, продаю лицензию — пусть сам строит завод</div>
-    <div class="fork-opt">📜 Подаю прошение в министерство земледелия — трактор нужен крестьянам</div>
-    <div class="fork-opt">🔧 Продолжаю совершенствовать машину в мастерских — пока не появится покупатель</div>
-    <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Блинов продолжал работать в балаковских мастерских до смерти в 1902 году — завод так и не появился. Через два года Бенджамин Холт в США запатентовал то же самое и за несколько лет построил империю «Caterpillar». Разница была не в идее — а в том, кто стоял за спиной изобретателя.</div>
+    <p style="color:var(--muted);margin-top:0;margin-bottom:16px;max-width:62ch">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
+    <div style="text-align:center;margin:14px 0 4px">
+      <button class="btn gold" id="themeInvBtn" data-label="Показать 19 изобретений →">Показать 19 изобретений →</button>
+    </div>
     <div id="themeInvBody" style="display:none;margin-top:20px">
       <div class="card" style="padding:0;overflow:hidden">
         <div style="padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15)">
@@ -427,11 +469,11 @@
   <div class="wrap">
     <div class="kicker">Твой выбор</div>
     <h2>А как поступил бы ты?</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">1897 год. Чиновники снова отказали в деньгах на ледокол. Проект считают фантазией. Менделеев готов поддержать, но нужно убедить лично министра финансов Витте на встрече через неделю. Ты на месте Макарова:</p>
-    <div class="fork-opt">🗣 Иду к Витте сам и кладу на стол расчёты</div>
-    <div class="fork-opt">📜 Прошу Менделеева выступить первым — его имя убедительнее</div>
-    <div class="fork-opt">🌐 Публикую статью в газетах — пусть общество давит на министерство</div>
-    <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Менделеев и Макаров действовали вместе: авторитет химика открыл двери, точные расчёты адмирала убедили министерство. Витте дал деньги. «Ермак» построили в Ньюкасле и в 1899 году он уже спасал суда из ледового плена Финского залива. Союз учёного и практика сработал там, где одиночные обращения терпели неудачу.</div>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">1896 год. Выставка в Нижнем Новгороде прошла хорошо. Диплом есть. Но серийного завода по-прежнему нет — ни инвесторов, ни государственного заказа. Тебе 65 лет. Ты на месте Блинова — что делаешь?</p>
+    <div class="fork-opt">🏭 Ищу промышленника, продаю лицензию — пусть сам строит завод</div>
+    <div class="fork-opt">📜 Подаю прошение в министерство земледелия — трактор нужен крестьянам</div>
+    <div class="fork-opt">🔧 Продолжаю совершенствовать машину в мастерских — пока не появится покупатель</div>
+    <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Блинов продолжал работать в балаковских мастерских до смерти в 1902 году — завод так и не появился. Через два года Бенджамин Холт в США запатентовал то же самое и за несколько лет построил империю «Caterpillar». Разница была не в идее — а в том, кто стоял за спиной изобретателя.</div>
   </div>
 </section>
 
@@ -489,49 +531,35 @@
 .gm-drop.over{border-color:#c9a84c;background:rgba(201,168,76,.08)}
 .gm-drop.filled{border-style:solid;border-color:#c9a84c;color:#e4c97a;font-weight:600}
 </style>
-<div class="gm" id="gm_ermak">
-<h3>🎮 Пробей арктический лёд — как «Ермак»</h3>
-<p style="color:var(--muted);font-size:14px;margin-bottom:14px">Нажимай на блоки льда чтобы расчистить путь — у «Ермака» было 3 попытки на каждый блок</p>
-<div id="ermakGrid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px"></div>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-  <div style="font-size:13px;color:var(--muted)">Сломано: <b id="ermakBroken" style="color:var(--gold-l)">0</b> / 10</div>
-  <div style="font-size:13px;color:var(--muted)">Удары: <b id="ermakHits">0</b></div>
-</div>
-<div id="ermakResult" style="text-align:center;font-size:14px;font-weight:600;min-height:18px;color:var(--gold-l)"></div>
-<script>(function(){
-const grid=document.getElementById('ermakGrid');if(!grid)return;
-let broken=0,hits=0;const blocks=[];
-const types=[{hp:1,col:'rgba(190,225,245,.6)',label:'тонкий'},{hp:2,col:'rgba(140,185,220,.7)',label:'обычный'},{hp:3,col:'rgba(90,140,190,.8)',label:'толстый'}];
-for(let i=0;i<10;i++){const type=types[Math.floor(Math.random()*types.length)];const div=document.createElement('div');
-  div.style.cssText='aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:10px;font-weight:700;color:rgba(255,255,255,.7);transition:.15s;border:1px solid rgba(255,255,255,.15);user-select:none';
-  div.style.background=type.col;div.textContent=type.label;div.dataset.hp=type.hp;div.dataset.maxHp=type.hp;
-  div.onclick=function(){if(this.dataset.hp<=0)return;
-    hits++;document.getElementById('ermakHits').textContent=hits;
-    this.dataset.hp--;const hp=+this.dataset.hp;const maxHp=+this.dataset.maxHp;
-    if(hp===0){broken++;document.getElementById('ermakBroken').textContent=broken;
-      this.style.background='rgba(201,168,76,.15)';this.style.borderColor='rgba(201,168,76,.3)';this.textContent='💧';this.style.cursor='default';
-      this.style.transform='scale(.95)';
-      if(broken>=10){document.getElementById('ermakResult').textContent='🏆 Путь открыт! «Ермак» пробил арктический лёд — как в 1899!';if(typeof award==='function')award('gm_ermak',15);}}
-    else{const frac=hp/maxHp;this.style.background=`rgba(${Math.round(90+frac*100)},${Math.round(140+frac*45)},${Math.round(190+frac*30)},.${Math.round(6+frac*2)})`;
-      this.style.transform='scale(1.05)';setTimeout(()=>this.style.transform='',120);}};
-  grid.appendChild(div);blocks.push(div);}
-})();</script></div>
 <div class="gm" id="gm_quiz2">
-  <h3>⏱ Игра 2 · Быстрый ответ</h3>
+  <h3>⏱ Быстрый ответ</h3>
   <div class="gm-score">Чем быстрее ответишь — тем больше очков. Осталось: <b id="gm_quiz2_t">15</b> сек</div>
   <p style="font-weight:600;font-size:16px;margin:0 0 12px">В каком году Блинов получил патент на гусеничный ход?</p>
-  <div id="gm_quiz2_opts"><button class="gm-btn" onclick="gm_quiz2_ans(0)">А) 1865</button><button class="gm-btn" onclick="gm_quiz2_ans(1)">Б) 1879</button><button class="gm-btn" onclick="gm_quiz2_ans(2)">В) 1896</button><button class="gm-btn" onclick="gm_quiz2_ans(3)">Г) 1902</button></div>
-  <div class="gm-exp" id="gm_quiz2_exp">1879 год, патент №2245 «вагон с бесконечными рельсами». В 1888-м Блинов уже ехал на нём своим ходом под Балаковым — почти за 20 лет до Холта.</div>
+  <div id="gm_quiz2_opts" data-igra-scena><button class="gm-btn" onclick="gm_quiz2_ans(0)">А) 1865</button><button class="gm-btn" onclick="gm_quiz2_ans(1)">Б) 1879</button><button class="gm-btn" onclick="gm_quiz2_ans(2)">В) 1896</button><button class="gm-btn" onclick="gm_quiz2_ans(3)">Г) 1902</button></div>
+  <div class="gm-exp" id="gm_quiz2_exp">1879 год, привилегия № 2245 на «вагон с бесконечными рельсами» — его ещё тянули лошади. А в 1888-м Блинов построил под Балаковым паровой трактор на гусеницах — за 16 лет до патента Холта.</div>
+  <div class="igra-pravila" data-igra-pravila>
+    <h2 class="igra-pravila-h">Как играть</h2>
+    <p class="igra-pravila-zachem">Проверь, помнишь ли ты главный год этой истории — когда Блинов получил патент на гусеничный ход.</p>
+    <ol class="igra-pravila-shagi">
+      <li><b>Прочитай вопрос</b> — часы начинают отсчёт 15 секунд, когда игра появилась на экране.</li>
+      <li><b>Нажми один из четырёх ответов.</b> Выбор один, передумать нельзя.</li>
+      <li><b>Прочитай пояснение</b> под ответами: зелёный — верный ответ, красный — твой неверный.</li>
+    </ol>
+    <p class="igra-pravila-nyuans">Нюансы: чем быстрее верный ответ, тем больше баллов — от 5 до 15. Не успел за 15 секунд — ответ засчитан как неверный, пояснение откроется само.</p>
+    <p class="igra-pravila-final">Верный ответ — баллы сразу уходят в общий счёт страницы «Сколько баллов ты собрал?».</p>
+  </div>
 </div>
 <script>
 (function(){
   let t=15,ti=null,done=false;
   const correct=1;
-  ti=setInterval(()=>{
+  function go(){if(ti||done)return;ti=setInterval(()=>{
     if(done)return;
     t--;document.getElementById('gm_quiz2_t').textContent=t;
     if(t<=0){clearInterval(ti);gm_quiz2_ans(-1);}
-  },1000);
+  },1000);}
+  const box=document.getElementById('gm_quiz2');
+  if('IntersectionObserver' in window&&box){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){io.disconnect();go();}},{threshold:.6});io.observe(box);}else go();
   window['gm_quiz2_ans']=function(i){
     if(done)return;done=true;clearInterval(ti);
     const btns=document.querySelectorAll('#gm_quiz2_opts .gm-btn');
@@ -609,7 +637,7 @@ for(let i=0;i<10;i++){const type=types[Math.floor(Math.random()*types.length)];c
 <script>
 // ── СЧЁТ ── шкала посетителя из 100 держит движок assets/museum-score.js
 // Здесь только награды этой страницы: сумма сырых очков и звания.
-window.MUSEUM_SCORE = {awards: {tm:5, vb:5, char:10, gm_ermak:15, gm_quiz2:15, read:5, q:[2,10], fork:10, chat:5, theme:5}, ranks: [[100,'Первый по целине'],[70,'Знаток'],[40,'Экскурсант'],[0,'Гость музея']]};
+window.MUSEUM_SCORE = {awards: {tm:5, vb:5, char:10, gm_quiz2:15, read:5, q:[2,10], fork:10, chat:5, theme:5}, ranks: [[100,'Первый по целине'],[70,'Знаток'],[40,'Экскурсант'],[0,'Гость музея']]};
 
 // ── СТАТЬЯ ────────────────────────────────────────────────────────────────────
 document.getElementById('moreBtn').onclick=function(){
