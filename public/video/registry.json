@@ -7,35 +7,35 @@
   },
   "releases": {
     "izobreteniya/05jan-shukhov": {
-      "title": "История в 82 секунды",
-      "note": "Часть кадров сгенерирована нейросетью (Genosai) — не архивная съёмка. Закадровый текст озвучен синтезом речи.",
+      "title": "История в 47 секунд",
+      "note": "Кадры — подлинные: Балаханы 1880-х, возчики с бочками, портрет В. Г. Шухова, Шаболовская башня. Одна вставка 5 секунд в начале — реконструкция, сгенерирована нейросетью (Genosai), помечена в кадре. Закадровый текст озвучен синтезом речи (edge-tts).",
       "horizontal": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov.mp4",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov.mp4",
-        "v": 3,
+        "v": 4,
         "w": 1920,
         "h": 1080,
-        "sec": 82,
-        "mb": 20.8
+        "sec": 46.9,
+        "mb": 10.6
       },
       "vertical": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 34.8,
-        "mb": 11.9
+        "sec": 46.9,
+        "mb": 10.5
       },
       "poster": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov-poster.jpg",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "izobreteniya/05jan-shukhov/day-05jan-shukhov-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-05jan-shukhov-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "arhitektura/01jan-kizhi": {
@@ -405,6 +405,70 @@
       "poster": {
         "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy-poster.jpg",
         "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/03jan-anosov": {
+      "title": "История в 51 секунду",
+      "note": "Кадры — подлинные: чертежи печей для варки булата из работы П. П. Аносова «О булатах», 1841 (Свердловский областной краеведческий музей, Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/03jan-anosov/day-03jan-anosov.mp4",
+        "local": "muzei/izobreteniya/video/day-03jan-anosov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 50.9,
+        "mb": 12.2
+      },
+      "vertical": {
+        "file": "izobreteniya/03jan-anosov/day-03jan-anosov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-03jan-anosov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 50.9,
+        "mb": 11.1
+      },
+      "poster": {
+        "file": "izobreteniya/03jan-anosov/day-03jan-anosov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-03jan-anosov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/03jan-anosov/day-03jan-anosov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-03jan-anosov-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/04jan-pilchikov": {
+      "title": "История в 49 секунд",
+      "note": "Кадры — подлинные: портрет профессора Н. Д. Пильчикова (Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov.mp4",
+        "local": "muzei/izobreteniya/video/day-04jan-pilchikov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 49.4,
+        "mb": 10.2
+      },
+      "vertical": {
+        "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-04jan-pilchikov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 49.4,
+        "mb": 8.7
+      },
+      "poster": {
+        "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-04jan-pilchikov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-04jan-pilchikov-9x16-poster.jpg",
         "v": 1
       }
     }
