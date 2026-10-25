@@ -503,6 +503,38 @@
         "local": "muzei/izobreteniya/video/day-07jan-kolesov-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/06jan-orlov": {
+      "title": "История в 46 секунд",
+      "note": "Кадры ролика — подлинные: государственный кредитный билет 50 рублей образца 1899 года (Тобольский музей-заповедник, Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/06jan-orlov/day-06jan-orlov.mp4",
+        "local": "muzei/izobreteniya/video/day-06jan-orlov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 45.9,
+        "mb": 15.3
+      },
+      "vertical": {
+        "file": "izobreteniya/06jan-orlov/day-06jan-orlov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-06jan-orlov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 45.9,
+        "mb": 15.0
+      },
+      "poster": {
+        "file": "izobreteniya/06jan-orlov/day-06jan-orlov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-06jan-orlov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/06jan-orlov/day-06jan-orlov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-06jan-orlov-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
