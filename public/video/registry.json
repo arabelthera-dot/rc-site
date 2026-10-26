@@ -631,6 +631,38 @@
         "local": "muzei/izobreteniya/video/day-10jan-britnev-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/12jan-r7": {
+      "title": "История в 59 секунд",
+      "note": "Кадры — подлинные: ракета Р-7 перед стартом на полигоне Байконур, 1957 (две фотографии, Мемориальный музей космонавтики, Госкаталог № 27352216 и 27352243); ракета-носитель Р-7 на стартовом столе, 1961 (там же, № 18488988); С. П. Королёв, 1963 (Белгородский государственный историко-краеведческий музей, № 5507469). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/12jan-r7/day-12jan-r7.mp4",
+        "local": "muzei/izobreteniya/video/day-12jan-r7.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 58.6,
+        "mb": 5.6
+      },
+      "vertical": {
+        "file": "izobreteniya/12jan-r7/day-12jan-r7-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-12jan-r7-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 58.6,
+        "mb": 5.7
+      },
+      "poster": {
+        "file": "izobreteniya/12jan-r7/day-12jan-r7-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-12jan-r7-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/12jan-r7/day-12jan-r7-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-12jan-r7-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
