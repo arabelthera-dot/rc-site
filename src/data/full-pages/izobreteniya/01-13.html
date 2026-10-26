@@ -261,6 +261,7 @@
     <a href="#story">Читать</a>
     <a href="#audioguide">Слушать</a>
     <a href="#fakty">Факты</a>
+    <a href="#video">Видео</a>
     <a href="#games">Уйти на километр</a>
     <a href="#pervenstvo">Рекорд</a>
     <a href="#quiz">Викторина</a>
@@ -269,6 +270,21 @@
 </nav>
 
 <section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>
+
+<section class="block" id="video">
+  <div class="wrap">
+    <div class="kicker">Видео дня</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">История в 57 секунд</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field="izobreteniya/13jan-k278:horizontal.sec" data-rc-video-suffix="сек">57 сек</span></div>
+    <p style="color:var(--muted);margin-top:0">Та же история коротким роликом — от титанового корпуса до 1027 метров — рекорда, который не побит до сих пор.</p>
+    <!-- Адрес ролика подставляет ../../assets/museum-video.js из video/registry.json (16:9 на компьютере, 9:16 на телефоне).
+         Путь ниже — запасной, на случай недоступного реестра. -->
+    <video controls playsinline preload="none" poster="video/day-13jan-k278-poster.jpg?v=1" data-rc-video="izobreteniya/13jan-k278" data-rc-format="horizontal" style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
+      <source src="video/day-13jan-k278.mp4?v=1" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: фотография «Атомная подводная лодка «Комсомолец» перед последним выходом в плавание», 1989, автор не указан (Владимиро-Суздальский музей-заповедник, № 4655496); фотография атомной подводной лодки «Комсомолец» и модель К-278 проекта 685 (Центральный военно-морской музей, № 20729222 и № 9860261); портрет вице-адмирала Е. Д. Чернова, фото А. Степанова, 1983 (Центральный музей Великой Отечественной войны, № 21947646); эхограмма лодки на дне Норвежского моря, 1991 (Политехнический музей, № 22917495); памятный знак «ПЛА „Комсомолец“ 1983–1989», 1990 (Северный морской музей, № 51789636). Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.</p>
+  </div>
+</section>
 
 <section class="block" id="audioguide"></section>
 
@@ -704,6 +720,7 @@ window.MUSEUM_SCORE = {awards:{lab:35, why0:5, why1:5, why2:5, q:[5,10]},
   note:"Озвучено синтезом речи — временно, до записи голосом автора музея."
 };</script>
 <script src="../../assets/museum-audioguide.js"></script>
+<script src="../../assets/museum-video.js"></script>
 <script type="application/json" data-proof>
 {
  "status": "not_found",

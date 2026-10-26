@@ -663,6 +663,38 @@
         "local": "muzei/izobreteniya/video/day-12jan-r7-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/13jan-k278": {
+      "title": "История в 57 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: «Атомная подводная лодка «Комсомолец» перед последним выходом в плавание», 1989 (Владимиро-Суздальский музей-заповедник, № 4655496); фотография АПЛ «Комсомолец» и модель К-278 проекта 685 (Центральный военно-морской музей, № 20729222 и № 9860261); вице-адмирал Е. Д. Чернов, фото А. Степанова, 1983 (Центральный музей Великой Отечественной войны, № 21947646); эхограмма лодки на дне Норвежского моря, 1991 (Политехнический музей, № 22917495); памятный знак «ПЛА „Комсомолец“ 1983–1989» (Северный морской музей, № 51789636). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/13jan-k278/day-13jan-k278.mp4",
+        "local": "muzei/izobreteniya/video/day-13jan-k278.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 56.9,
+        "mb": 10.5
+      },
+      "vertical": {
+        "file": "izobreteniya/13jan-k278/day-13jan-k278-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-13jan-k278-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 56.9,
+        "mb": 10.5
+      },
+      "poster": {
+        "file": "izobreteniya/13jan-k278/day-13jan-k278-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-13jan-k278-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/13jan-k278/day-13jan-k278-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-13jan-k278-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
