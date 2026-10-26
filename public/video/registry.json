@@ -631,6 +631,38 @@
         "local": "muzei/izobreteniya/video/day-10jan-britnev-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/15jan-kovalevskaya": {
+      "title": "История в 59 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: фотографии С. В. Ковалевской из ателье Dahllöf, Стокгольм, 1880-е (Псковский музей-заповедник); гравюра И. И. Матюшина по фотографии С. Л. Левицкого, 1891 (ГМИИ им. А. С. Пушкина); М. В. Остроградский, литография П. Ф. Бореля, 1869 (ГЛМ им. В. И. Даля); фототипия конца XIX в. (Национальный музей Республики Татарстан); могила Ковалевской в Стокгольме, фото 1973 (Псковский музей-заповедник); модель волчка — со страницы дня. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya.mp4",
+        "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.8,
+        "mb": 9.5
+      },
+      "vertical": {
+        "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 59.8,
+        "mb": 10.6
+      },
+      "poster": {
+        "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
