@@ -79,7 +79,28 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+      # Ролики — только со своего сервера (Р263, Сергей 26.10.2026; заявка r284): Pages — 1 ГБ на сайт, сборка
+      # с роликами упёрлась в 950 МБ. После сборки все *.mp4 переносятся (не удаляются) из dist/ в video-sajta/ с теми
+      # же путями: в артефакт github-pages (выкладка Pages) уходит сборка без роликов, ролики — отдельным артефактом
+      # video-sajta, задача msk складывает их обратно в полную сборку для сервера. На копии Pages ролика нет (там и так
+      # не грузятся стили: base '/', адрес …/rc-site/) — тег <video> с постером, проигрывание — 404.
+      # Откат — убрать build-cmd и шаг «video-sajta», в msk — шаг «ролики обратно».
       - uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
+        with:
+          build-cmd: >-
+            npm run build &&
+            mkdir -p video-sajta &&
+            (cd dist && find . -type f -name '*.mp4' -print0 | xargs -0 -r cp --parents -p -t ../video-sajta) &&
+            find dist -type f -name '*.mp4' -delete &&
+            echo "ролики вынесены из сборки Pages: $(find video-sajta -type f -name '*.mp4' | wc -l) mp4, $(du -sm video-sajta | cut -f1) МБ; сборка Pages $(du -sm dist | cut -f1) МБ"
+      - name: video-sajta — ролики отдельным артефактом для своего сервера
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2 (та же, что в withastro/action)
+        with:
+          name: video-sajta
+          path: video-sajta
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -93,7 +114,8 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
   # Российская площадка msk-new (Р6; решение Михаила 20.10.2026: сайт на своём сервере nginx + Let's Encrypt, Облако
-  # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages), уходит rsync по ssh на
+  # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages), плюс ролики (артефакт
+  # video-sajta, Р263) уходит rsync по ssh на
   # rcdeploy@185.149.145.227. На сервере ключ ограничен rrsync -wo с корнем /srv/rc-site/www — путь в команде не пишется.
   # Ключ хоста — строкой ниже (не секрет, данные Михаила 20.10), StrictHostKeyChecking=yes: подменённый сервер сайт не
   # получит. --delay-updates + --delete-after: новые файлы подменяются разом в конце, старые удаляются после — посетитель
@@ -130,11 +152,25 @@ jobs:
         with:
           name: github-pages
           path: artefakt
+      # Ролики обратно в сборку (Р263, r284): Pages получил сборку без *.mp4, сервер — полную. Роликов в сборке должно
+      # стать ровно столько, сколько в video-sajta, иначе выкладка останавливается: --delete-after стёр бы ролики с сервера.
+      - name: ролики обратно
+        if: steps.est.outputs.est == 'true'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: video-sajta
+          path: video-sajta
       - name: выкладка на msk-new
         if: steps.est.outputs.est == 'true'
         run: |
           set -euo pipefail
           mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
+          vsego=$(find video-sajta -type f -name '*.mp4' | wc -l)
+          [ "$vsego" -gt 0 ] || { echo "::error::msk-new: артефакт video-sajta пуст — выкладка остановлена"; exit 1; }
+          cp -a video-sajta/. dist/
+          v_dist=$(find dist -type f -name '*.mp4' | wc -l)
+          [ "$v_dist" = "$vsego" ] || { echo "::error::msk-new: роликов в сборке $v_dist, а вынесено $vsego — выкладка остановлена"; exit 1; }
+          echo "msk-new: роликов $v_dist из $vsego, $(du -sm video-sajta | cut -f1) МБ"
           # Проверка содержимого до выкладки (Р63): обязательные файлы есть, секретов и ключей нет, размер разумный.
           for f in index.html 404.html robots.txt; do
             test -f "dist/$f" || { echo "::error::msk-new: в сборке нет $f — выкладка остановлена"; exit 1; }
