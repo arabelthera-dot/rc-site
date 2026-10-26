@@ -632,6 +632,38 @@
         "v": 1
       }
     },
+    "izobreteniya/11jan-kostovich": {
+      "title": "История в 58 секунд",
+      "note": "Кадры — подлинные: бензиновый мотор Костовича, 1883 (Центральный музей ВВС, Монино; Госкаталог 25505972); лубок «Переход русских войск через Дунай», 1877 (Владимиро-Суздальский музей-заповедник); лист В. Ф. Тимма «Полёт воздушного шара в Петербурге», 1852 (Музей Л. Н. Толстого); портрет О. С. Костовича, не позднее 1916 (Музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich.mp4",
+        "local": "muzei/izobreteniya/video/day-11jan-kostovich.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 58.4,
+        "mb": 13.7
+      },
+      "vertical": {
+        "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-11jan-kostovich-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 58.4,
+        "mb": 13.7
+      },
+      "poster": {
+        "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-11jan-kostovich-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-11jan-kostovich-9x16-poster.jpg",
+        "v": 1
+      }
+    },
     "izobreteniya/12jan-r7": {
       "title": "История в 59 секунд",
       "note": "Кадры — подлинные: ракета Р-7 перед стартом на полигоне Байконур, 1957 (две фотографии, Мемориальный музей космонавтики, Госкаталог № 27352216 и 27352243); ракета-носитель Р-7 на стартовом столе, 1961 (там же, № 18488988); С. П. Королёв, 1963 (Белгородский государственный историко-краеведческий музей, № 5507469). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
