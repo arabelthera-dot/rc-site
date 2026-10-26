@@ -181,9 +181,10 @@ jobs:
         run: node scripts/data-src.mjs --dist dist
       # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгий с 20.10.2026 (Р52: на main
       # 932.4 МБ — запас 17.6 МБ). Выключатель — переменная VES_STROGO=0.
+      # С 26.10.2026 (Р263, r284) — по артефакту Pages, без *.mp4: ролики отдаёт только свой сервер (deploy.yml).
       - name: ves — вес сборки
         continue-on-error: ${{ format('{0}', vars.VES_STROGO) == '0' }}
-        run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12
+        run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12 --bez-video
       # Карточка пересылки (Б9/Б10, 20.10.2026): og:image меньше 600×315 Telegram/ВК показывают крошкой —
       # сборка ставит запасную (og-den), проверка считает остаток (должно быть 0); у каждой страницы дня
       # есть og:image (файл в dist) и twitter:card. Строгая с 20.10.2026 (задача E: обход живого сайта —
