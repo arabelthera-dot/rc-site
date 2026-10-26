@@ -638,30 +638,30 @@
       "horizontal": {
         "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich.mp4",
         "local": "muzei/izobreteniya/video/day-11jan-kostovich.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
         "sec": 58.4,
-        "mb": 13.7
+        "mb": 6.6
       },
       "vertical": {
         "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-11jan-kostovich-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
         "sec": 58.4,
-        "mb": 13.7
+        "mb": 6.5
       },
       "poster": {
         "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-poster.jpg",
         "local": "muzei/izobreteniya/video/day-11jan-kostovich-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-11jan-kostovich-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "izobreteniya/12jan-r7": {
