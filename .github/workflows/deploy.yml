@@ -85,7 +85,7 @@ jobs:
       # video-sajta, задача msk складывает их обратно в полную сборку для сервера. На копии Pages ролика нет (там и так
       # не грузятся стили: base '/', адрес …/rc-site/) — тег <video> с постером, проигрывание — 404.
       # Откат — убрать build-cmd и шаг «video-sajta», в msk — шаг «ролики обратно».
-      - uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
+      - uses: withastro/action@a8b97df764791eb61fbf3338ef713b0e61ae05c5 # v6.1.4
         with:
           build-cmd: >-
             npm run build &&
