@@ -480,18 +480,26 @@ export default function fullPages() {
           });
           // «Куда дальше» и стрелки шапки — ближайшие полные страницы музея (src/lib/sosedi-polnye.mjs, Р165).
           const polnye = SOSEDI_POLNYE.has(museum) ? [...new Set(jobs.map((j) => j.key))] : [];
+          // Пилот den-shablon (Р297): день из карточки src/content/dni-shablon и общего шаблона — den-shablon/<ключ>/,
+          // как анкета: from = out (страницу собрал шаблон), дальше тот же конвейер. Копия для сверки 1:1 с den/<ключ>/ —
+          // noindex и без hreflang, как staraya; журнал правок — как у живой страницы (иначе не 1:1).
+          const shablonDir = path.join(root, 'muzei', museum, 'den-shablon');
+          if (fs.existsSync(shablonDir)) for (const key of fs.readdirSync(shablonDir).sort()) {
+            const out = path.join(shablonDir, key, 'index.html');
+            if (fs.existsSync(out)) jobs.push({ key, self: `${base}muzei/${museum}/den-shablon/${key}/`, out, from: out, shablon: true });
+          }
           const sosedInfo = (k) => {
             const card = JSON.parse(fs.readFileSync(path.join(cardsDir, `${k}.json`), 'utf8'));
             const src = path.join(SRC, museum, `${k}.html`);
             const title = (fs.existsSync(src) && zagolovok(fs.readFileSync(src, 'utf8'))) || card.title;
             return { href: `${base}muzei/${museum}/den/${k}/`, when: whenOfKey(k), title, hook: card.hook };
           };
-          for (const { key, self, out, from, staraya } of jobs) {
+          for (const { key, self, out, from, staraya, shablon } of jobs) {
             if (!fs.existsSync(path.join(root, 'muzei', museum, 'den', key, 'index.html'))) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
             let html = fs.readFileSync(from, 'utf8');
             if (kalSrc) html = html.replace(OLD_KAL, (m, a, q) => { nKal++; return `${a}${q}${kalSrc}${q}`; });
             else if (OLD_KAL.test(html)) { OLD_KAL.lastIndex = 0; bad.push(`${museum}/${key} — тег старого calendar-*.js, а записей дней нет`); continue; }
-            if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
+            if (staraya || shablon) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
             if (polnye.length) {
               const { prev, next } = polnyeSosedi(polnye, key);
@@ -506,7 +514,7 @@ export default function fullPages() {
             // Пометки языков (hreflang, как в Base.astro; план сайта Г19): только готовые языки + x-default.
             // Старые пометки страницы — долой; у копии «staraya» (noindex) их нет.
             html = html.replace(/<link\b[^>]*\bhreflang=[^>]*>\s*/gi, '');
-            if (!staraya) html = html.replace(/<head([^>]*)>/i, (h) => `${h}\n${hreflangi(self, base, site).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}">`).join('\n')}`);
+            if (!staraya && !shablon) html = html.replace(/<head([^>]*)>/i, (h) => `${h}\n${hreflangi(self, base, site).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}">`).join('\n')}`);
             // Шрифты (CLS 0,16–0,29 у дней, #2004): полная страница идёт мимо Base.astro и не получала ни одного
             // preload — Playfair/Inter приходили после первой отрисовки и сдвигали шапку дня. Теперь файлы тех
             // семейств, которыми набрана сама страница, — заранее, сразу после <head>. Google-шрифты старой

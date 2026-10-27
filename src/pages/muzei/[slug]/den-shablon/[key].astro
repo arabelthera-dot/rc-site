@@ -1,0 +1,18 @@
+---
+// Пилот «страница дня = общий layout + карточка данных» (Р297): /muzei/<музей>/den-shablon/ММ-ДД/ — из коллекции
+// src/content/dni-shablon/<музей>/ММ-ДД.yaml (схема и загрузка — src/lib/dni-shablon.mjs) и шаблона музея. Живой адрес den/ММ-ДД не тронут;
+// эта копия — для сверки 1:1, noindex и вне карты сайта (src/integrations/full-pages.mjs, karta-volnami.mjs).
+import { getCollection } from 'astro:content';
+import { kartochki } from '../../../../lib/dni-shablon.mjs';
+import DenIzobreteniya from '../../../../layouts/DenIzobreteniya.astro';
+export async function getStaticPaths() {
+  const museums = await getCollection('museums');
+  const layouts = { izobreteniya: DenIzobreteniya };
+  return kartochki().map((d) => {
+    if (!layouts[d.muzei]) throw new Error(`den-shablon: у музея ${d.muzei} нет шаблона дня`);
+    return { params: { slug: d.muzei, key: d.key }, props: { d, museum: museums.find((m) => m.id === d.muzei)!.data } };
+  });
+}
+const { d, museum } = Astro.props;
+---
+<DenIzobreteniya d={d} museum={museum} />
