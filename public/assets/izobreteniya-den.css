@@ -183,3 +183,10 @@
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
   /* Обложка целиком (флаг oblozhka.celikom карточки) — вместо правила в <style> страницы (15 янв: вертикальная визитка ателье). */
   .hero-scene[data-oblozhka="celikom"] img.scene{object-fit:contain;object-position:50% 50%}
+
+/* Факт дня на обычном адресе (Р286): пометка достоверности и ссылка на место в источнике — видны сразу,
+   дословный отрывок — в раскрытии «Узнать подробнее». */
+.fakt-ist{margin:6px 0 0;font-size:13px;color:var(--muted)}
+.fakt-ist a{color:var(--gold)}
+.fakt-pometka{display:inline-block;border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:1px 10px;margin-right:6px;font-family:'Inter',sans-serif;font-size:12px;color:var(--gold)}
+.fakt-otryvok{margin:10px 0 0;padding:8px 14px;border-left:3px solid var(--gold);font-style:italic;color:var(--muted)}
