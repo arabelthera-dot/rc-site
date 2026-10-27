@@ -10,7 +10,8 @@
     "import": "node scripts/redirects.mjs && node scripts/full-pages.mjs",
     "full-pages": "node scripts/full-pages.mjs",
     "proverka-podpisey": "node scripts/proverka-podpisey.mjs",
-    "og-razmer": "node scripts/og-razmer.mjs dist"
+    "og-razmer": "node scripts/og-razmer.mjs dist",
+    "priemka": "node -e \"import('./src/lib/dni-shablon.mjs').then(async (m) => console.log(await m.otchetPriemki(process.argv[1])))\""
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
