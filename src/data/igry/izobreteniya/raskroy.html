@@ -1,0 +1,48 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Раскрои лист фанеры — и обгони Америку</h2>
+    <p class="kz-intro">Заказ: два больших щита, два малых и две полосы — всё из одного листа. Перетащи деталь пальцем или мышью на лист, поверни, если нужно. Схватишь уложенную деталь — её можно переложить, коснёшься — вернётся в заказ. Мастер по соседству режет «на глаз» и теряет четверть листа. Обойди его — или нажми «Посчитать по Канторовичу».</p>
+    <div class="press kz-press" id="press">
+      <div class="kz-tray" id="pieceRow" aria-label="Детали заказа"></div>
+      <div class="lab-btns">
+        <button class="btn ghost" type="button" id="rotGo">↻ Повернуть деталь</button>
+        <button class="btn gold" type="button" id="kantGo">Посчитать по Канторовичу</button>
+        <button class="btn ghost" type="button" id="listReset">Начать заново</button>
+      </div>
+      <div class="lab-stage kz-stage"><canvas id="cvList" width="600" height="400" role="img" aria-label="Модель листа фанеры, расчерченного на клетки, на который перетаскивают детали заказа"></canvas></div>
+      <div class="kz-meter" aria-live="polite">
+        <div class="kz-meter-row">
+          <span class="kz-meter-lbl">Лист в деле</span>
+          <b class="kz-meter-num" id="otxNum">0%</b>
+        </div>
+        <div class="kz-bar"><i id="otxBar"></i><span class="kz-bar-mark" title="Мастер «на глаз»"></span></div>
+        <div class="kz-bar-legend"><span>0%</span><span class="kz-bar-legend-m">мастер «на глаз» — 75%<span class="kz-tail">, четверть листа в обрезки</span></span><span>100%</span></div>
+        <div class="kz-otx" id="otxTxt">Отходы: весь лист. У мастера «на глаз» — 25%.</div>
+      </div>
+      <div class="lab-msg" id="listMsg" aria-live="polite">Перетащи деталь из заказа на лист.</div>
+
+      <div class="kz-lenta" id="lenta" hidden>
+        <div class="kz-lenta-top">
+          <span class="kz-lenta-kicker">Лист готов. А теперь — когда до этого дошли в Америке</span>
+          <b class="kz-lenta-god" id="lentaGod">1939</b>
+        </div>
+        <div class="kz-track" aria-hidden="true">
+          <div class="kz-track-line"><i id="lentaFill"></i></div>
+          <div class="kz-ticks" id="lentaTicks"></div>
+        </div>
+        <div class="kz-ends">
+          <div class="kz-end kz-end-ru on"><b>1939 · Ленинград</b>Канторович: брошюра на 68 страниц — метод готов</div>
+          <div class="kz-end kz-end-us" id="lentaUs"><b>1947 · США</b>Данциг приходит к тому же методу</div>
+        </div>
+        <div class="kz-fora" id="lentaFora">Фора Канторовича: <b id="foraNum">0</b> <span id="foraWord">лет</span></div>
+        <blockquote class="kz-danzig" id="lentaDanzig">«Канторовича следует признать первым, кто обнаружил, что широкий класс важнейших производственных задач поддаётся чёткой математической формулировке».<cite>— Джордж Данциг, отец симплекс-метода</cite></blockquote>
+        <button class="btn ghost kz-again" type="button" id="lentaAgain">Прокрутить ленту ещё раз</button>
+      </div>
+
+      <div class="lab-cap">Модель, а не чертёж треста: лист 12 на 8 клеток, размеры деталей и результат мастера «на глаз» заданы программой. Годы на ленте — по источникам: брошюра Канторовича 1939 года, работы Данцига 1947 года.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: лист 12 на 8 клеток, заказ — два щита 6×4, два малых щита 3×4 и две полосы 6×2. «На глаз» четверть листа уходит в обрезки. Если положить большие щиты друг над другом в левую половину, малые щиты — рядом в правую верхнюю четверть, а полосы — под ними, лист уходит в дело целиком. Канторович нашёл общий способ находить такой план в 1939 году; американец Данциг пришёл к тому же методу в 1947-м — через восемь лет — и написал: «Канторовича следует признать первым».</div></noscript>
+    </div>
+    <p class="src-note kz-src">Идея модели — задача Ленинградского фанерного треста 1938 года и книга Л. В. Канторовича и В. А. Залгаллера «Расчёт рационального раскроя промышленных материалов» (1951): Институт математики им. С. Л. Соболева СО РАН. Цитата Данцига — по биобиблиографическому указателю «Л. В. Канторович», ИМ СО РАН, 2012.</p>
+  </div>
+</section>
