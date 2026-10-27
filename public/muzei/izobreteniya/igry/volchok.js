@@ -88,6 +88,8 @@
     chaos:['Хаос. Разница в одну миллионную разрослась, и через несколько оборотов волчки ведут себя по-разному. Такое движение не просчитать до конца формулой — именно на этом застряли математики после Эйлера и Лагранжа.','bad'],
     kov:['Порядок там, где его никто не ждал: центр тяжести сбоку от оси, а следы волчков совпадают. Это случай Ковалевской, найденный в 1888 году, — третий за сто с лишним лет. За него Парижская академия подняла премию Бордена до 5000 франков.','ok']
   };
+  // счёт «начал — доиграл» (Р286 п.3, assets/rc-igra-schet.js): без модуля событие никуда не уходит
+  function igraSchet(e){ document.dispatchEvent(new CustomEvent('rc-igra', {detail:{e:e, igra:'volchok'}})); }
   var AW = {euler:['why0',5], lagrange:['why1',5], chaos:['why2',5], kov:['lab',35]};
   var anim=null;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -102,11 +104,13 @@
     stop();
     var v=verdict(st.mass, st.cm), res=simulate(st.mass, st.cm), N=res.dist.length;
     msg('Волчки запущены…');
+    igraSchet('nachal');
     function finish(){
       drawUpTo(res, N-1);
       msg(TEXT[v][0], TEXT[v][1]);
       if (!found[v]){ found[v]=1; award(AW[v][0], AW[v][1]); }
       setFound();
+      igraSchet(v === 'kov' ? 'vyigral' : 'proigral');
     }
     if (reduce){ finish(); return; }
     var k=0;

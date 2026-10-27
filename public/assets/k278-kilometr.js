@@ -185,7 +185,7 @@ function igraRuka(root) {
   function stop(){
     if(ph==='osmotr'){vest('Лодка и так стоит на ступени '+Math.round(depth)+' м.',2);return;}
     if(ph!=='hod')return;
-    otklik();cel=sledStupen(depth);ph='tormoz';
+    otklik();igraSchet('nachal');cel=sledStupen(depth);ph='tormoz';
   }
   function strelyat(){
     if(ph!=='vverh'||torpeda!==null)return;
@@ -196,9 +196,12 @@ function igraRuka(root) {
     bTorp.hidden=true;ruku(null);
   }
 
+  // счёт «начал — доиграл» (Р286 п.3, assets/rc-igra-schet.js): без модуля событие никуда не уходит
+  function igraSchet(e){document.dispatchEvent(new CustomEvent('rc-igra',{detail:{e:e,igra:'k278'}}));}
   function pobeda(){
     depth=REKORD;ph='vverh';rezhim=null;knopkiHoda();levels.fill(0);
     if(window.award)window.award('lab',35);
+    igraSchet('vyigral');
     root.classList.add('kk-pobeda');
     [bMalo,bPolno,bStop].forEach(b=>b.hidden=true);bTorp.hidden=false;
     zapasPobedy=vremya;
@@ -207,6 +210,7 @@ function igraRuka(root) {
   let zapasPobedy=0;
   function proigral(prich){
     ph=prich;flash=1.2;ruku(null);hod.hidden=true;root.classList.add('kk-avaria');
+    igraSchet('proigral');
     const h=hudo(),d=Math.round(depth);
     $('.kk-fin-h').textContent=prich==='avaria'?'Авария на глубине '+d+' м':'Не успели: запас времени кончился на '+d+' м';
     $('.kk-fin-txt').innerHTML=prich==='avaria'
