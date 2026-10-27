@@ -25,7 +25,7 @@ export const adresUzla = (base, key) => `${base}segodnya/${key}/`;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 let cache;
-// Map «ММ-ДД» → готовые дни даты по номеру музея: { museum, museumTitle, key, title, hook, img?, alt? }
+// Map «ММ-ДД» → готовые дни даты по номеру музея: { museum, museumTitle, key, title, hook, year?, vnutri[], img?, alt? }
 export function gotovyeDni() {
   if (cache) return cache;
   cache = new Map();
@@ -42,8 +42,19 @@ export function gotovyeDni() {
       const polnaya = fs.existsSync(html);
       if (!polnaya && !card.body) continue;
       const first = (card.images ?? []).find((i) => i?.src && (/^https?:/.test(i.src) || fs.existsSync(path.join('public', i.src.replace(/^\//, '')))));
-      const title = (polnaya && zagolovok(fs.readFileSync(html, 'utf8'))) || decode(card.title ?? key);
-      (cache.get(key) ?? cache.set(key, []).get(key)).push({ museum, museumTitle: MUSEUMS[museum], key, title, hook: card.hook, img: first?.src, alt: first?.caption });
+      const text = polnaya ? fs.readFileSync(html, 'utf8') : '';
+      const title = (polnaya && zagolovok(text)) || decode(card.title ?? key);
+      // Год события: из карточки, иначе — из пометок даты полной страницы: год обложки, плашка даты («15 января · 1850»),
+      // строка над заголовком, если она начинается с даты («2 января · биатлон · Саппоро-1972»). Нет — года нет.
+      const metki = [/class="hero-year">([^<]*)/, /class="date-chip">([^<]*)/, /class="eyebrow">(\d{1,2} [а-я]+[^<]*)/].map((r) => r.exec(text)?.[1] ?? '');
+      const year = card.year ?? metki.map((m) => /\b(1[0-9]{3}|20[0-2][0-9])\b/.exec(m)?.[1]).find(Boolean);
+      // Что внутри дня — по разметке полной страницы: правила игры, «Главное действие», <video>, <audio>.
+      const vnutri = [];
+      if (/class="igra-pravila"/.test(text)) vnutri.push('игра');
+      else if (/class="kicker">Главное действие/.test(text)) vnutri.push('интерактив');
+      if (/<video[\s>]/.test(text)) vnutri.push('ролик');
+      if (/<audio[\s>]/.test(text)) vnutri.push('аудиогид');
+      (cache.get(key) ?? cache.set(key, []).get(key)).push({ museum, museumTitle: MUSEUMS[museum], key, title, hook: card.hook, year: year && String(year), vnutri, img: first?.src, alt: first?.caption });
     }
   }
   return cache;
