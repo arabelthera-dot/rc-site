@@ -1,11 +1,11 @@
 // Ежедневная привычка возвращаться (Р289 п.1, 27.10.2026): «Завтра в музеях», «Поделиться итогом игры»,
 // «Ты с нами N дней подряд». Вёрстка блока «Завтра» — здесь (чистый node: полные страницы full-pages.mjs, шаблон дня,
 // узел /segodnya/<ММ-ДД>/); кнопка итога и серия — public/assets/rc-privychka.js; вид — public/assets/rc-privychka.css.
-// ВЫКЛЮЧЕН: VKLYUCHENO = false — страницы те же байт в байт. Включение — заявкой VKLYUCHENO = true после снимков
+// ВКЛЮЧЕН 27.10 (r302-privychka-vkl): VKLYUCHENO = true — заявкой после снимков
 // 390/1440 на трёх днях; проба у себя — PUBLIC_PRIVYCHKA=1 npm run build. Откат — VKLYUCHENO = false.
 import { gotovyeDni, kogda } from './etot-den.mjs';
 
-const VKLYUCHENO = false;
+const VKLYUCHENO = true;
 export const privychkaOn = () => VKLYUCHENO || process.env.PUBLIC_PRIVYCHKA === '1';
 export const privychkaJs = (base) => `<script defer src="${base}assets/rc-privychka.js"></script>`;
 
