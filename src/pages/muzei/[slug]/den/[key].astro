@@ -10,6 +10,8 @@ import { queueOgDen, ogRaster, ogSmall } from '../../../../lib/og-den.mjs';
 import { denFamilies, faceCss } from '../../../../lib/shrifty.mjs';
 import DenMedia from '../../../../components/den/DenMedia.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
+import InlineCss from '../../../../components/InlineCss.astro';
+import { privychkaOn, blokZavtra } from '../../../../lib/privychka.mjs';
 import Credit from '../../../../components/den/Credit.astro';
 import DenAnketa from '../../../../components/den/DenAnketa.astro';
 import DenSlovar from '../../../../components/den/DenSlovar.astro';
@@ -63,6 +65,8 @@ const when = whenOf(d.key);
 // «День готовится» (Сергей 17.10): даты без карточки и карточки с одним названием (без хука и текста) —
 // строка-заглушка и ближайший готовый день музея вперёд по году; такие страницы не для поисковиков (noindex).
 const soon = empty || !isReady(d);
+// Ежедневная привычка (Р289 п.1): «Завтра в музеях» и серия — только у готового дня и при включённом флаге.
+const privychka = !soon && privychkaOn() ? blokZavtra(base, d.key) : '';
 const near = soon ? nearestReady(own, d.key) : undefined;
 // «Проверено: дата» и журнал исправлений (Е5) — из истории git карточки, не из её полей (схема заморожена).
 const zh = soon ? undefined : zhurnal(m.slug, d.key);
@@ -132,6 +136,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
   about={soon ? undefined : d.title} modified={zh?.modified} published={zh?.published} temporal={!soon && d.year != null && d.year !== '' ? String(d.year) : undefined}
   den={soon ? undefined : { key: d.key, year: d.year, images: d.images, dated }}>
   <Fragment slot="head">
+    {privychka && <><InlineCss file="rc-privychka.css" /><script is:inline defer src={`${base}assets/rc-privychka.js`}></script></>}
     {fontCss && <style data-rc-fonts set:html={fontCss} />}
     <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />
   </Fragment>
@@ -232,6 +237,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
   </nav>
 
   <DenZavtra museum={m.slug} day={d.key} dated={dated} days={own} when={whenOf} mark={!empty} />
+  {privychka && <Fragment set:html={privychka} />}
 
   <section class="block" id="kuda-dalshe">
     <h2>{s('muzeyProdolzhaetsya')}</h2>
