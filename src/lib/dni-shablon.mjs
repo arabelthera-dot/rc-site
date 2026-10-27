@@ -23,6 +23,13 @@ export const NORMA_FAKTOV = 4;
 export const BLOKI = ['daynav', 'dokument', 'video', 'audioguide', 'story', 'fakty', 'igra', 'pervenstvo', 'quiz', 'result', 'figures', 'sources', 'calendar', 'kuda-dalshe'];
 const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str });
 
+// Блок фактов: id секции (по умолчанию fakty), необязательная разметка после списка (dop, напр. фото экспоната)
+// и место — после какого блока шаблона (posle; нет — на своём месте, после story). Блоков может быть несколько (Р302, 18 янв.).
+const faktyBlok = z.object({ id: str.default('fakty'), posle: z.enum(BLOKI).optional(), kicker: str, h2: str, udary: z.array(udar).min(1), dop: str.optional() });
+// Список источников: обычная строка (ссылка + пометка + пояснение) или готовая разметка пункта (html) — у старых страниц бывает
+// «Госкаталог: <a>…</a> и <a>…</a>» (Р302).
+const istochnik = z.union([z.object({ href: z.string().url(), title: str, pometka: str.optional(), note: str }), z.object({ html: str })]);
+
 export const skhema = z.object({
   muzei: str,
   // `den` — карточка рисует живой адрес den/ММ-ДД (Р286, den/[key].astro), старый HTML уходит на den/ММ-ДД/staraya/;
@@ -35,11 +42,14 @@ export const skhema = z.object({
     og: z.object({ type: str, site_name: str, title: str, description: str, url: str, image: str.optional() }),
     ld: z.record(z.string(), z.unknown()) }),
   // Свой CSS дня (01-17…: public/assets/<имя>.css вместо общего izobreteniya-den.css, как на старой странице); нет — общий.
-  css: z.array(z.string().regex(/^[\w-]+$/)).min(1).optional(),
+  // Можно одной строкой (18 янв.) — то же, что список из одного файла.
+  css: z.union([z.string().regex(/^[\w-]+$/).transform((c) => [c]), z.array(z.string().regex(/^[\w-]+$/)).min(1)]).optional(),
   // Разметка обложки старой страницы (01-17…): style у <figure>, id у сцены, без decoding, подпись без credit — необязательно.
   oblozhka: kartinka.extend({ width: z.number().int().positive(), height: z.number().int().positive(), hint: str,
     fit_full: z.boolean().default(false), celikom: z.boolean().default(false),
-    credit: str.optional(), stil_figury: str.optional(), id_sceny: str.optional(), decoding: z.boolean().default(true) }).optional(),
+    credit: str.optional(), stil_figury: str.optional(), id_sceny: str.optional(), decoding: z.boolean().default(true),
+    // id и style обложки под именами 18 янв. (<figure style="margin:0">, <div id="hero">) — то же, что id_sceny/stil_figury.
+    id: str.optional(), stil: str.optional() }).optional(),
   kroshka: str,
   lead: z.object({ data: str, privyazka: str, kto: str, h1: str, hook: str }),
   stamp: z.array(z.object({ v: str, k: str })),
@@ -48,8 +58,10 @@ export const skhema = z.object({
   // меню дня (verh), пустой блок после подвала (podval, как у части старых страниц) или нет (net).
   dokument: z.enum(['verh', 'podval', 'net']).default('verh'),
   video: z.object({ h2: str, klyuch: str, format: str, pole: str, suffix: str, badge: str, intro: str, poster: str, mp4: str, note: str }).optional(),
-  story: z.object({ kicker: str, h2: str, intro: str.optional(), udary: z.array(udar).min(1) }),
-  fakty: z.object({ kicker: str, h2: str, udary: z.array(udar).min(1) }).optional(),
+  // История — ударами (udary) или простыми абзацами разметкой 1:1 (abzacy, у старых страниц без ударов); intro необязателен.
+  story: z.object({ kicker: str, h2: str, intro: str.optional(), udary: z.array(udar).min(1).optional(), abzacy: z.array(str).min(1).optional() })
+    .refine((s) => s.udary || s.abzacy, 'у story нужны udary или abzacy'),
+  fakty: z.union([faktyBlok, z.array(faktyBlok).min(1)]).optional(),
   // Уникальные разделы дня (труба, разбор, мировой контекст…): готовая разметка 1:1 после блока posle (из BLOKI);
   // несколько с одним posle — подряд, в порядке карточки. Layout их не знает поимённо — новый день его не правит.
   // Блок шаблона со своей разметкой старой страницы (01-17…: без inline-стилей, классы своего CSS) — 1:1 вместо
@@ -61,15 +73,20 @@ export const skhema = z.object({
   pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }).optional(),
   quiz: z.object({ kicker: str.optional(), h2: str.optional(), intro: str.optional(), noscript: str.optional(), ball: z.number().int().positive().default(10),
     voprosy: z.array(z.object({ q: str, o: z.array(str).min(2), a: z.number().int().min(0), e: str })).min(1) }),
-  result: z.object({ h2: str, intro: str, zvanie: str, note: str }).optional(),
+  result: z.object({ kicker: str.optional(), h2: str, intro: str, zvanie: str, note: str }).optional(),
+  // Подписи календаря; нет — как у 16 янв. (без кикера, «Календарь изобретений»).
+  kalendar: z.object({ kicker: str.optional(), h2: str, intro: str }).optional(),
   figures: z.array(kartinka).default([]),
   // Строка не по образцу «название: пояснение» — { html } (содержимое <li> как есть).
-  sources: z.array(z.union([z.object({ href: z.string().url(), title: str, pometka: str.optional(), note: str }), z.object({ html: str }).strict()])).min(1),
+  sources: z.array(istochnik).min(1),
   kuda: z.array(z.object({ lbl: str, href: str, title: str, hook: str, main: z.boolean() })),
   score: z.object({ awards: z.record(z.string(), z.union([z.number(), z.array(z.number())])), ranks: z.array(z.tuple([z.number(), str])) }),
   // Нет chrome — нет window.MUSEUM_CHROME (museum-chrome.js без настроек, как на части старых страниц).
   chrome: z.object({ share: z.object({ title: str, text: str }), prev: z.object({ href: str, title: str }).optional(),
     next: z.object({ href: str, title: str }).optional(), all: z.object({ href: str, label: str }), random: z.array(str) }).optional(),
+  // Дополнительные скрипты дня как есть — после викторины, по порядку: внешний (src) или inline (js). Напр. развилка/чат и
+  // внешний скрипт полки 18 янв. Нет — нет.
+  skripty: z.array(z.union([z.object({ src: str }), z.object({ js: str })])).default([]),
   return: z.object({ q: str, a: str, src: str }),
   audioguide: z.object({ audioSrc: str, durationLabel: str, lead: str, stops: z.array(z.object({ t: z.number(), mark: str, title: str })),
     transcript: z.array(str), note: str }),
@@ -84,7 +101,7 @@ export const skhema = z.object({
   // ЗАМОК (Р286): на обычном адресе у дня не меньше NORMA_FAKTOV фактов, у каждого — отрывок, страница, ссылка, пометка.
   if (d.adres === 'den') {
     if (!d.head.sobytie || !d.head.god) ctx.addIssue({ code: 'custom', path: ['head'], message: 'на адресе den нужны head.sobytie и head.god (заголовок вкладки)' });
-    const udary = d.fakty?.udary ?? [];
+    const udary = [d.fakty ?? []].flat().flatMap((b) => b.udary);
     if (udary.length < NORMA_FAKTOV)
       ctx.addIssue({ code: 'custom', path: ['fakty', 'udary'], message: `ЗАМОК: фактов ${udary.length}, нужно не меньше ${NORMA_FAKTOV} (museum-inventions п.6, Р101: «4–5 фактов»)` });
     udary.forEach((u, i) => { const net = ['otryvok', 'stranica', 'href', 'pometka'].filter((k) => !u[k]);
