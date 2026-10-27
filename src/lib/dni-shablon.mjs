@@ -49,7 +49,9 @@ export const skhema = z.object({
     fit_full: z.boolean().default(false), celikom: z.boolean().default(false),
     credit: str.optional(), stil_figury: str.optional(), id_sceny: str.optional(), decoding: z.boolean().default(true),
     // id и style обложки под именами 18 янв. (<figure style="margin:0">, <div id="hero">) — то же, что id_sceny/stil_figury.
-    id: str.optional(), stil: str.optional() }).optional(),
+    id: str.optional(), stil: str.optional(),
+    // Доп. класс обложки между hero-scene и fit-full, как на старой странице (20 янв.: «hero-scene portret fit-full»); нет — не пишется.
+    klass: z.string().regex(/^[\w -]+$/).optional() }).optional(),
   kroshka: str,
   lead: z.object({ data: str, privyazka: str, kto: str, h1: str, hook: str }),
   stamp: z.array(z.object({ v: str, k: str })),
@@ -87,7 +89,8 @@ export const skhema = z.object({
   // Дополнительные скрипты дня как есть — после викторины, по порядку: внешний (src) или inline (js). Напр. развилка/чат и
   // внешний скрипт полки 18 янв. Нет — нет.
   skripty: z.array(z.union([z.object({ src: str }), z.object({ js: str })])).default([]),
-  return: z.object({ q: str, a: str, src: str }),
+  // src загадки необязателен: у старой страницы 20 янв. его нет (MUSEUM_RETURN={riddle:{q,a}}); нет — не пишется.
+  return: z.object({ q: str, a: str, src: str.optional() }),
   audioguide: z.object({ audioSrc: str, durationLabel: str, lead: str, stops: z.array(z.object({ t: z.number(), mark: str, title: str })),
     transcript: z.array(str), note: str }),
   proof: z.record(z.string(), z.unknown()),

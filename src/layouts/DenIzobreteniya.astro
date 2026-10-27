@@ -120,7 +120,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 </div></nav>
 
 {o && (<figure class="hero-fig" style={o.stil_figury ?? o.stil}>
-<div class={o.fit_full ? 'hero-scene fit-full' : 'hero-scene'} id={o.id_sceny ?? o.id} data-oblozhka={o.celikom ? 'celikom' : undefined}>
+<div class={['hero-scene', o.klass, o.fit_full && 'fit-full'].filter(Boolean).join(' ')} id={o.id_sceny ?? o.id} data-oblozhka={o.celikom ? 'celikom' : undefined}>
   <img class="scene" src={o.src} data-source={o.data_source} data-license={o.license} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding={o.decoding ? 'async' : undefined}>
 </div>
 <figcaption class="scene-caption">
