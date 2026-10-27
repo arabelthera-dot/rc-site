@@ -1,0 +1,43 @@
+---
+// «Этот день во всех музеях» (Р286 п.2, 27.10.2026): /segodnya/<ММ-ДД>/ — готовые дни этой даты во всех музеях,
+// по номеру музея. Адрес — рядом с данными блока «Сегодня» (segodnya/<ММ-ДД>.json): та же дата, тот же раздел.
+// Страница — только у даты, где готов хотя бы один день (src/lib/etot-den.mjs); пустых дат и пустых карточек нет,
+// соседи «←/→» — ближайшие такие же даты по кругу года. Вид — public/assets/rc-etot-den.css.
+import Base from '../../../layouts/Base.astro';
+import InlineCss from '../../../components/InlineCss.astro';
+import { gotovyeDni, datyUzlov, kogda, adresUzla, adresDnya } from '../../../lib/etot-den.mjs';
+import { plural } from '../../../lib/kalendar';
+export function getStaticPaths() {
+  const daty = datyUzlov();
+  return daty.map((key, i) => ({ params: { key }, props: { prev: daty[(i - 1 + daty.length) % daty.length], next: daty[(i + 1) % daty.length] } }));
+}
+const { key } = Astro.params;
+const { prev, next } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const dni = gotovyeDni().get(key!)!;
+const when = kogda(key!);
+const src = (s: string) => (/^https?:/.test(s) ? s : `${base}${s.replace(/^\//, '')}`);
+const lead = dni.length === 1
+  ? `Пока ${when} готово только в одном музее портала. Как только этот день будет готов в других музеях, они появятся здесь сами.`
+  : `${dni.length} ${plural(dni.length, 'музей', 'музея', 'музеев')} портала — что в каждом из них ${when}.`;
+const daty = datyUzlov();
+---
+<Base title={`${when} во всех музеях · Русская цивилизация`} description={`Этот день во всех музеях «Русской цивилизации»: ${dni.map((d) => d.title).join('; ')}.`.slice(0, 300)} schema="page" image={dni.find((d) => d.img)?.img && src(dni.find((d) => d.img)!.img!)} crumbs={[{ label: `${when} во всех музеях` }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>{when} во всех музеях</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">{lead}</p>
+    <ul class="rc-uzel-list">
+      {dni.map((d) => (
+        <li><a class="rc-uzel-card" href={adresDnya(base, d.museum, d.key)}>
+          {d.img && <img src={src(d.img)} alt={d.alt ?? ''} loading="lazy" decoding="async" width="640" height="400" />}
+          <span class="rc-uzel-body"><span class="rc-uzel-muzey">{d.museumTitle}</span><span class="rc-uzel-title">{d.title}</span>{d.hook && <span class="rc-uzel-hook">{d.hook}</span>}</span>
+        </a></li>))}
+    </ul>
+    {daty.length > 1 && <nav class="rc-uzel-nav" aria-label="Соседние даты">
+      <a href={adresUzla(base, prev)} rel="prev">← {kogda(prev)}</a>
+      <a href={`${base}segodnya/`}>Все даты</a>
+      <a href={adresUzla(base, next)} rel="next">{kogda(next)} →</a>
+    </nav>}
+  </div>
+</Base>

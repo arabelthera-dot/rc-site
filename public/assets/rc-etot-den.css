@@ -1,0 +1,28 @@
+/* «Этот день во всех музеях» (Р286 п.2): блок внизу полной страницы дня (full-pages.mjs, <style data-rc-etot-den>)
+   и узел даты /segodnya/ММ-ДД/ (InlineCss). Цвет — от страницы (currentColor): у музеев светлые и тёмные дни. */
+.rc-etot-den{max-width:860px;margin:32px auto 8px;padding:0 16px;font-family:'Inter',system-ui,sans-serif;color:inherit;box-sizing:border-box}
+.rc-ed-h{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin:0 0 12px;opacity:.85}
+.rc-ed-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.rc-ed-link{display:block;min-height:44px;padding:12px 14px;border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:10px;color:inherit;text-decoration:none;box-sizing:border-box}
+.rc-ed-link:hover,.rc-ed-link:focus-visible{border-color:currentColor;background:color-mix(in srgb,currentColor 7%,transparent)}
+.rc-ed-muzey{display:block;font-size:13px;line-height:1.35;opacity:.8;margin-bottom:4px}
+.rc-ed-title{display:block;font-size:16px;line-height:1.35;font-weight:600}
+.rc-ed-vse{margin:12px 0 0;font-size:15px}
+.rc-ed-vse a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* узел даты */
+.rc-uzel{max-width:960px;margin:0 auto;padding:0 16px 32px;box-sizing:border-box}
+.rc-uzel-lead{font-size:var(--fs-body,17px);line-height:1.5;margin:0 0 18px}
+.rc-uzel-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.rc-uzel-card{display:flex;flex-direction:column;height:100%;border:1px solid rgba(201,168,76,.35);border-radius:12px;overflow:hidden;color:inherit;text-decoration:none}
+.rc-uzel-card:hover,.rc-uzel-card:focus-visible{border-color:var(--gold,#c9a84c)}
+.rc-uzel-card img{display:block;width:100%;aspect-ratio:16/10;height:auto;object-fit:cover}
+.rc-uzel-body{padding:12px 14px 16px}
+.rc-uzel-muzey{display:block;font-family:'Inter',system-ui,sans-serif;font-size:13px;line-height:1.35;opacity:.8;margin-bottom:6px}
+.rc-uzel-title{display:block;font-size:19px;line-height:1.3;color:var(--gold-l,#e2c675);margin-bottom:6px}
+.rc-uzel-hook{display:block;font-size:15.5px;line-height:1.45}
+.rc-uzel-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:26px 0 0;font-family:'Inter',system-ui,sans-serif;font-size:15px}
+.rc-uzel-nav a{color:var(--gold-l,#e2c675);min-height:44px;display:inline-flex;align-items:center}
+.rc-uzel-daty{columns:4 150px;list-style:none;padding:0;margin:0;font-size:16px}
+.rc-uzel-daty li{padding:4px 0}
+.rc-uzel-daty a{color:var(--gold-l,#e2c675)}
+.rc-uzel-daty span{opacity:.6;font-size:13px}

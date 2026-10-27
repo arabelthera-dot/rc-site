@@ -1,0 +1,19 @@
+---
+// Все даты узла «Этот день во всех музеях» (Р286 п.2): только даты, где готов хотя бы один день (src/lib/etot-den.mjs).
+import Base from '../../layouts/Base.astro';
+import InlineCss from '../../components/InlineCss.astro';
+import { gotovyeDni, datyUzlov, kogda, adresUzla } from '../../lib/etot-den.mjs';
+import { plural } from '../../lib/kalendar';
+const base = import.meta.env.BASE_URL;
+const dni = gotovyeDni();
+---
+<Base title="Этот день во всех музеях · Русская цивилизация" description="Даты года, где готовы дни музеев «Русской цивилизации», — все музеи на одной странице." schema="page" crumbs={[{ label: 'Этот день во всех музеях' }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>Этот день во всех музеях</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">Выберите дату — на её странице собраны готовые дни всех музеев портала.</p>
+    <ul class="rc-uzel-daty">
+      {datyUzlov().map((k) => { const n = dni.get(k)!.length; return <li><a href={adresUzla(base, k)}>{kogda(k)}</a> <span>{n} {plural(n, 'музей', 'музея', 'музеев')}</span></li>; })}
+    </ul>
+  </div>
+</Base>

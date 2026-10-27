@@ -24,6 +24,7 @@ import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../l
 import { podvalDnyaHtml } from '../lib/podval-dnya.mjs';
 import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { SOSEDI_POLNYE, polnyeSosedi, perepisatSosedey, zagolovok } from '../lib/sosedi-polnye.mjs';
+import { blokDrugieMuzei } from '../lib/etot-den.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
@@ -69,6 +70,8 @@ const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
 const PODVAL_CSS = fs.readFileSync('public/assets/rc-podval.css', 'utf8');
 const SLABOVID_KNOPKA_CSS = fs.readFileSync('public/assets/rc-slabovid-knopka.css', 'utf8');
 const POLNYY_DEN_CSS = fs.readFileSync('public/assets/rc-polnyy-den.css', 'utf8'); // контраст подвала (Б10)
+// «Этот день в других музеях» (Р286 п.2) — вид блока, тот же файл, что у узла даты /segodnya/<ММ-ДД>/.
+const ETOT_DEN_CSS = fs.readFileSync('public/assets/rc-etot-den.css', 'utf8');
 // Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
@@ -662,9 +665,13 @@ export default function fullPages() {
               // Общий подвал дня (А2+Б6, Р84) — из шаблона src/lib/podval-dnya.mjs, тот же, что у карточки дня.
               const zag = decode(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i.exec(html)?.[1]?.replace(/<[^>]+>/g, '').trim() || key);
               const lic = podvalDnyaHtml({ base, title: zag, url: site ? new URL(self, site).href : self }) + licenziyaHtml(base, { links: true });
+              // «Этот день в других музеях» (Р286 п.2, src/lib/etot-den.mjs) — перед журналом и подвалом; у копии «staraya» нет.
+              // Других готовых дней этой даты нет — блока нет.
+              const ed = staraya ? '' : blokDrugieMuzei(base, museum, key);
+              if (ed) html = html.replace(/<\/head>/i, `<style data-rc-etot-den>${ETOT_DEN_CSS}</style>\n</head>`);
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
-              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
-              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${zhurnalHtml(zh)}${lic}\n</body>`);
+              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
+              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${zhurnalHtml(zh)}${lic}\n</body>`);
             }
             // «Поделиться» — один раз (glazami п.16): у страницы свой блок — строку museum-chrome не ставим,
             // а museum-support.js не добавляет кнопку, если на странице уже есть блок «Поделиться».
