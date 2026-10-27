@@ -1,0 +1,282 @@
+---
+// Страница дня музея изобретений из карточки данных (пилот den-shablon, Р297): каркас — старая полная страница
+// src/data/full-pages/izobreteniya/ММ-ДД.html, блок за блоком и в том же порядке; данные дня — карточка
+// src/content/dni-shablon/izobreteniya/ММ-ДД.yaml (схема и загрузка — src/lib/dni-shablon.mjs).
+// Стили — public/assets/izobreteniya-den.css (бывший inline <style>, то же место каскада); своих <style> нет.
+// Игра — «как есть» по имени: разметка src/data/igry/<музей>/<имя>.html, скрипт public/muzei/<музей>/igry/<имя>.js.
+// Дальше страницу ведёт тот же конвейер, что и старый HTML (src/integrations/full-pages.mjs, job «den-shablon»):
+// полоса, подвал, шрифты, метрика, абсолютные адреса от <base>, соседи; noindex, вне карты сайта.
+import fs from 'node:fs';
+const { d, museum } = Astro.props;
+const muzeyName = museum.title_ru;
+const igraHtml = fs.readFileSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`, 'utf8').replace(/\n$/, '');
+// JS-строка в одинарных кавычках — как в старых страницах: конвейер (src/lib/sosedi-polnye.mjs) ищет
+// prev/next в window.MUSEUM_CHROME именно в таком виде и переписывает на ближайшие полные страницы.
+const q = (s: string) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/</g, '\\u003c')}'`;
+const json = (x: unknown) => JSON.stringify(x).replace(/</g, '\\u003c');
+const c = d.chrome;
+const chromeJs = `window.MUSEUM_CHROME={
+  museum:{title:${q(muzeyName)},href:'index.html'},
+  share:{title:${q(c.share.title)},
+         text:${q(c.share.text)}},${c.prev ? `
+  prev:{href:${q(c.prev.href)},title:${q(c.prev.title)}},` : ''}${c.next ? `
+  next:{href:${q(c.next.href)},title:${q(c.next.title)}},` : ''}
+  all:{href:${q(c.all.href)},label:${q(c.all.label)}},
+  city:'../../index.html',
+  random:[${c.random.map(q).join(',')}]
+};`;
+// Ключи без кавычек — как в старых страницах: проверка счёта (scripts/staroe-pravilo.py) ищет реестр «awards:{…}».
+const scoreJs = `window.MUSEUM_SCORE = ${json(d.score).replace(/"(\w+)":/g, '$1:')};`;
+// Викторина дня: вопросы — из карточки, вёрстка ответов — общая (была в одном inline-скрипте с игрой).
+const quizJs = `(function(){
+  var $ = function(id){return document.getElementById(id);};
+  var Q = ${json(d.quiz.voprosy)};
+  var box = $('quizBox');
+  Q.forEach(function(it, qi){
+    var wrap = document.createElement('div');
+    var h = document.createElement('p'); h.className='quiz-q'; h.textContent=(qi+1)+'. '+it.q; wrap.appendChild(h);
+    var exp = document.createElement('div'); exp.className='exp'; exp.setAttribute('aria-live','polite');
+    var btns = it.o.map(function(txt, oi){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.textContent=txt;
+      b.onclick=function(){
+        if (wrap.dataset.done) return; wrap.dataset.done='1';
+        btns.forEach(function(x,xi){ x.disabled=true; if (xi===it.a) x.classList.add('correct'); });
+        if (oi===it.a){ award('q'+qi,10); exp.textContent='Верно. '+it.e; }
+        else { b.classList.add('wrong'); exp.textContent='Не совсем. '+it.e; }
+        exp.classList.add('show');
+      };
+      wrap.appendChild(b); return b;
+    });
+    wrap.appendChild(exp); box.appendChild(wrap);
+  });
+})();`;
+const knopkiJs = `(function(){
+  var $ = function(id){return document.getElementById(id);};
+  $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
+  $('listenBtn').onclick = function(){ $('audioguide').scrollIntoView({behavior:'smooth'}); };
+})();`;
+const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.tag}</span>` : ''}${p}</p>`).join('\n')}
+          <p class="src-note">${u.src}</p>
+        </div></details></li>`;
+const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;
+const o = d.oblozhka;
+---
+<!DOCTYPE html>
+<html lang="ru" data-museum={d.muzei}>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{d.head.title}</title>
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/izobreteniya-den.css">
+
+<meta name="description" content={d.head.description}>
+<link rel="canonical" href={d.head.canonical}>
+<meta property="og:type" content={d.head.og.type}>
+<meta property="og:site_name" content={d.head.og.site_name}>
+<meta property="og:title" content={d.head.og.title}>
+<meta property="og:description" content={d.head.og.description}>
+<meta property="og:url" content={d.head.og.url}>
+<script type="application/ld+json" is:inline set:html={json(d.head.ld)}></script>
+<link rel="stylesheet" href="../../assets/fakty-dnya.css">
+{d.igra.css.map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}
+</head>
+<body>
+
+<header class="top">
+  <div class="b1">Русская цивилизация</div>
+  <div class="b2">Первый цифровой музей достижений России · Цивилизация первенств — что Россия дала миру раньше всех</div>
+  <div class="b3">{muzeyName}</div>
+  <div class="b4">365 изобретений. Все русские. Все первые</div>
+  <div class="score" id="scoreBox" title="Баллы знаний за этот день">⭐ <span id="score">0</span> / 100</div>
+</header>
+
+<nav class="crumbs" aria-label="Хлебные крошки"><div class="wrap">
+  <a href="../../index.html">Русская цивилизация</a>
+  <span class="sep">›</span>
+  <a href="index.html">{muzeyName}</a>
+  <span class="sep">›</span>
+  <span class="here">{d.kroshka}</span>
+</div></nav>
+
+<figure class="hero-fig">
+<div class={o.fit_full ? 'hero-scene fit-full' : 'hero-scene'} data-oblozhka={o.celikom ? 'celikom' : undefined}>
+  <img class="scene" src={o.src} data-source={o.data_source} data-license={o.license} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding="async">
+</div>
+<figcaption class="scene-caption">
+  <div class="wrap">
+    <div class="scene-cap"><Fragment set:html={o.podpis} /> <span class="credit"><Fragment set:html={o.credit} /></span></div>
+    <span class="scene-hint">{o.hint}</span>
+  </div>
+</figcaption>
+</figure>
+
+<header class="hero-lead">
+  <div class="wrap">
+    <div class="date-chip">{d.lead.data}</div>
+    <p class="date-origin"><Fragment set:html={d.lead.privyazka} /></p>
+    <div class="who"><Fragment set:html={d.lead.kto} /></div>
+    <div class="museum">{muzeyName}</div>
+    <h1><Fragment set:html={d.lead.h1} /></h1>
+    <p class="hook"><Fragment set:html={d.lead.hook} /></p>
+    <div class="hero-btns">
+      <button class="btn gold" id="readBtn" type="button">Читать историю ↓</button>
+      <button class="btn ghost" id="listenBtn" type="button">🎧 Слушать аудиогид</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero-under">
+  <div class="wrap">
+    <div class="stamp">
+      {d.stamp.map((s) => <div><div class="v">{s.v}</div><div class="k">{s.k}</div></div>)}
+    </div>
+  </div>
+</div>
+
+<nav class="daynav" aria-label="Разделы дня">
+  <div class="wrap">
+    {d.daynav.map((n) => <a href={`#${n.id}`}>{n.label}</a>)}
+  </div>
+</nav>
+
+<section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>
+
+<section class="block" id="video">
+  <div class="wrap">
+    <div class="kicker">Видео дня</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">{d.video.h2}</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field={d.video.pole} data-rc-video-suffix={d.video.suffix}>{d.video.badge}</span></div>
+    <p style="color:var(--muted);margin-top:0"><Fragment set:html={d.video.intro} /></p>
+    <!-- Адрес ролика подставляет ../../assets/museum-video.js из video/registry.json (16:9 на компьютере, 9:16 на телефоне).
+         Путь ниже — запасной, на случай недоступного реестра. -->
+    <video controls playsinline preload="none" poster={d.video.poster} data-rc-video={d.video.klyuch} data-rc-format={d.video.format} style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
+      <source src={d.video.mp4} type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px"><Fragment set:html={d.video.note} /></p>
+  </div>
+</section>
+
+<section class="block" id="audioguide"></section>
+
+<section class="block" id="story">
+  <div class="wrap">
+    <div class="kicker">{d.story.kicker}</div>
+    <h2>{d.story.h2}</h2>
+    <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>
+    <Fragment set:html={udaryHtml(d.story.udary)} />
+  </div>
+</section>
+
+<section class="block" id="fakty">
+  <div class="wrap">
+    <div class="kicker">{d.fakty.kicker}</div>
+    <h2>{d.fakty.h2}</h2>
+    <Fragment set:html={udaryHtml(d.fakty.udary)} />
+  </div>
+</section>
+
+<Fragment set:html={igraHtml} />
+
+<section class="block" id="pervenstvo">
+  <div class="wrap">
+    <div class="kicker">{d.pervenstvo.kicker}</div>
+    <h2>{d.pervenstvo.h2}</h2>
+    <div class="border-box">
+      <p style="margin-top:0"><Fragment set:html={d.pervenstvo.granica} /></p>
+      <p style="margin-bottom:0"><Fragment set:html={d.pervenstvo.net} /></p>
+    </div>
+    <table class="ctx">
+      <thead><tr>{d.pervenstvo.kolonki.map((k) => <th scope="col">{k}</th>)}</tr></thead>
+      <tbody>
+        {d.pervenstvo.stroki.map((r) => <tr>{r.map((t) => <td><Fragment set:html={t} /></td>)}</tr>)}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block" id="quiz">
+  <div class="wrap">
+    <div class="kicker">{d.quiz.kicker}</div>
+    <h2>{d.quiz.h2}</h2>
+    <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.quiz.intro} /></p>
+    <div id="quizBox"></div>
+    <noscript><div class="noscript-box"><Fragment set:html={d.quiz.noscript} /></div></noscript>
+  </div>
+</section>
+
+<section class="block" id="result">
+  <div class="wrap">
+    <h2 style="margin-bottom:6px">{d.result.h2}</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={d.result.intro} /></p>
+    <div class="day-result">
+      <div class="dr-score" id="dayTxt">{d.result.zvanie}</div>
+      <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
+      <div class="dr-note"><Fragment set:html={d.result.note} /></div>
+    </div>
+  </div>
+</section>
+
+{d.figures.map((f) => <figure class="fig"><img src={f.src} alt={f.alt} loading="lazy" decoding="async" data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.podpis} /> <span class="credit"><Fragment set:html={f.credit} /></span></figcaption></figure>)}
+<section class="block" id="sources">
+  <div class="wrap">
+    <div class="kicker">Источники</div>
+    <h2>На чём стоит страница</h2>
+    <ul class="sources">
+      {d.sources.map((s) => <li><a href={s.href} rel="noopener" target="_blank"><Fragment set:html={s.title} /></a>{s.pometka ? ` ${s.pometka}` : ''}: <Fragment set:html={s.note} /></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="calendar">
+  <div class="wrap">
+    <h2 style="margin-bottom:6px">Календарь изобретений</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
+    <div id="calbox"></div>
+  </div>
+</section>
+
+<section class="block kd" id="kuda-dalshe">
+  <div class="wrap">
+    <div class="kd-kicker">Куда дальше</div>
+    <h2>Музей продолжается</h2>
+    <Fragment set:html={`<div class="kd-grid">\n${d.kuda.map((k) => `      <div class="kd-card${k.main ? ' main' : ''}"><span class="kd-lbl">${k.lbl}</span><a href="${k.href}">${k.title} <span class="kd-arr">→</span></a>\n        <p>${k.hook}</p></div>`).join('\n')}
+      <div class="kd-card"><span class="kd-lbl">Весь музей</span><a href="index.html">${muzeyName} <span class="kd-arr">→</span></a>
+        <p>Все изобретения — по залам и по дням года.</p></div>
+      <div class="kd-card main"><span class="kd-lbl">Город-музей</span><a href="../../index.html">Русская цивилизация <span class="kd-arr">→</span></a>
+        <p>Все музеи проекта на одной карте.</p></div>
+    </div>`} />
+  </div>
+</section>
+
+{/* Перевод строки перед <footer> — явно: compressHTML его съедает, а конвейер ставит <main> до «\n<footer» (WCAG, Б10). */}
+<Fragment set:html={'\n'} /><footer><div class="wrap">
+  <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
+  Русская цивилизация · {muzeyName}</div></footer>
+
+<script is:inline set:html={scoreJs}></script>
+<script is:inline src="../../assets/museum-score.js"></script>
+<script is:inline set:html={knopkiJs}></script>
+<script is:inline src={`igry/${d.igra.imya}.js`}></script>
+<script is:inline set:html={quizJs}></script>
+<script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
+<script is:inline set:html={chromeJs}></script>
+<script is:inline src="../../assets/museum-chrome.js"></script>
+<script is:inline set:html={`window.MUSEUM_SUPPORT={museum:${q(muzeyName)}};`}></script>
+<script is:inline src="../../assets/museum-support.js"></script>
+<script is:inline src={`calendar-${d.muzei}.js`}></script>
+<script is:inline set:html={`window.MUSEUM_CALENDAR_INITIAL='${d.key}';`}></script>
+<script is:inline src="../../assets/museum-calendar-month.js"></script>
+<script is:inline set:html={`window.MUSEUM_RETURN=${json({ riddle: d.return })};`}></script>
+<script is:inline src="../../assets/museum-return.js" data-museum={d.muzei} data-day={d.key}></script>
+<script is:inline defer src="../../assets/analytics.js"></script>
+
+<script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(d.audioguide, null, 2).replace(/</g, '\\u003c')};`}></script>
+<script is:inline src="../../assets/museum-video.js"></script>
+<script is:inline src="../../assets/museum-audioguide.js"></script>
+<script type="application/json" data-proof is:inline set:html={`\n${JSON.stringify(d.proof, null, 1)}\n`}></script>
+<script is:inline src="../../assets/museum-proof.js"></script>
+</body>
+</html>
