@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
 import { igrySchetOn, igrySchetHtml } from '../lib/igry-schet.mjs';
+import { privychkaOn, privychkaJs, blokZavtra } from '../lib/privychka.mjs';
 import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
@@ -73,6 +74,8 @@ const SLABOVID_KNOPKA_CSS = fs.readFileSync('public/assets/rc-slabovid-knopka.cs
 const POLNYY_DEN_CSS = fs.readFileSync('public/assets/rc-polnyy-den.css', 'utf8'); // контраст подвала (Б10)
 // «Этот день в других музеях» (Р286 п.2) — вид блока, тот же файл, что у узла даты /segodnya/<ММ-ДД>/.
 const ETOT_DEN_CSS = fs.readFileSync('public/assets/rc-etot-den.css', 'utf8');
+// Ежедневная привычка (Р289 п.1) — «Завтра в музеях», серия и «Поделиться итогом»; только при включённом флаге.
+const PRIVYCHKA_CSS = fs.readFileSync('public/assets/rc-privychka.css', 'utf8');
 // Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
@@ -670,9 +673,12 @@ export default function fullPages() {
               // Других готовых дней этой даты нет — блока нет.
               const ed = staraya ? '' : blokDrugieMuzei(base, museum, key);
               if (ed) html = html.replace(/<\/head>/i, `<style data-rc-etot-den>${ETOT_DEN_CSS}</style>\n</head>`);
+              // «Завтра в музеях» + серия (Р289 п.1, src/lib/privychka.mjs) — после «Этот день в других музеях»; флаг выключен — ничего.
+              const pv = staraya || !privychkaOn() ? '' : blokZavtra(base, key);
+              if (pv) html = html.replace(/<\/head>/i, `<style data-rc-privychka>${PRIVYCHKA_CSS}</style>\n${privychkaJs(base)}\n</head>`);
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
-              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
-              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${zhurnalHtml(zh)}${lic}\n</body>`);
+              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + pv + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
+              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${pv}${zhurnalHtml(zh)}${lic}\n</body>`);
             }
             // «Поделиться» — один раз (glazami п.16): у страницы свой блок — строку museum-chrome не ставим,
             // а museum-support.js не добавляет кнопку, если на странице уже есть блок «Поделиться».
