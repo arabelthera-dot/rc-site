@@ -4,13 +4,13 @@
 // Разметка — машиной по тексту дня (scripts/temy-razmetka.mjs пишет temy-dni.json, правка глазом — в нём же);
 // готовый день, которого в temy-dni.json ещё нет, размечается той же машиной при сборке — темы у дня есть всегда.
 // Люди и места поимённо — словарь src/data/slovar.json (Р37); здесь — широкие темы, связывающие разные музеи.
-// ВЫКЛЮЧЕН: VKLYUCHENO = false — полные страницы дня те же байт в байт, страниц /tema/ нет. Проба у себя —
-// PUBLIC_TEMY=1 npm run build. Включение — заявкой VKLYUCHENO = true после снимков 390/1440 на трёх днях.
+// ВКЛЮЧЁН после снимков 390/1440 на трёх днях (r303). Откат — VKLYUCHENO = false: блока и страниц /tema/ нет;
+// проба при false — PUBLIC_TEMY=1 npm run build.
 import fs from 'node:fs';
 import path from 'node:path';
 import { gotovyeDni, adresDnya, kogda } from './etot-den.mjs';
 
-const VKLYUCHENO = false;
+const VKLYUCHENO = true;
 export const temyOn = () => VKLYUCHENO || process.env.PUBLIC_TEMY === '1';
 
 export const TEMY = JSON.parse(fs.readFileSync('src/data/temy.json', 'utf8')).temy;
