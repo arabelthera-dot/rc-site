@@ -27,6 +27,7 @@ import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { SOSEDI_POLNYE, polnyeSosedi, perepisatSosedey, zagolovok } from '../lib/sosedi-polnye.mjs';
 import { blokDrugieMuzei } from '../lib/etot-den.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
+import { kartochki } from '../lib/dni-shablon.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
 // («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
@@ -472,6 +473,8 @@ export default function fullPages() {
           const cardsDir = path.join('src/content/days', museum);
           const anketa = new Set((fs.existsSync(cardsDir) ? fs.readdirSync(cardsDir) : []).filter((f) => f.endsWith('.json'))
             .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)));
+          // Карточка шаблона с `adres: den` (Р286): den/<ключ>/ уже собрал общий layout (den/[key].astro) — ведём как анкету.
+          for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den') anketa.add(k.key);
           const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
           const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {
             const dayOut = path.join(root, 'muzei', museum, 'den', key, 'index.html');

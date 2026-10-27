@@ -13,6 +13,8 @@ import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import Credit from '../../../../components/den/Credit.astro';
 import DenAnketa from '../../../../components/den/DenAnketa.astro';
 import DenSlovar from '../../../../components/den/DenSlovar.astro';
+import DenIzobreteniya from '../../../../layouts/DenIzobreteniya.astro';
+import { kartochki } from '../../../../lib/dni-shablon.mjs';
 import { YEAR_KEYS, isDated, isReady, nearestReady, srcHtml } from '../../../../lib/kalendar';
 import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../../lib/yazyki.mjs';
 import { zhurnal, zhurnalHtml } from '../../../../lib/redakciya.mjs';
@@ -20,12 +22,16 @@ import { podvalDnyaHtml } from '../../../../lib/podval-dnya.mjs';
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
   const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
+  // Карточка шаблона с `adres: den` (Р286, src/lib/dni-shablon.mjs) — день рисует общий layout музея, не Base/DenAnketa.
+  const shablony = kartochki().filter((k) => k.adres === 'den');
+  for (const k of shablony) if (k.muzei !== 'izobreteniya') throw new Error(`den: у музея ${k.muzei} нет шаблона дня`);
   const full = days.map((d) => {
     const own = days.filter((x) => x.data.museum === d.data.museum);
     const i = own.indexOf(d);
     return { params: { slug: d.data.museum, key: d.data.key },
       props: { d: d.data, m: museums.find((x) => x.id === d.data.museum)!.data, prev: own[i - 1]?.data, next: own[i + 1]?.data,
-        keys: own.map((x) => x.data.key), own: own.map((x) => x.data) } };
+        keys: own.map((x) => x.data.key), own: own.map((x) => x.data),
+        shablon: shablony.find((k) => k.muzei === d.data.museum && k.key === d.data.key) } };
   });
   // Дата года без карточки у датированного музея — страница «День готовится» (не 404): шапка и крошки дня,
   // ниже — ближайший готовый день этого музея. Только для музеев, у которых уже есть дни.
@@ -39,7 +45,7 @@ export async function getStaticPaths() {
   });
   return [...full, ...empty];
 }
-const { d, m, prev, next, keys, own, empty = false } = Astro.props;
+const { d, m, prev, next, keys, own, empty = false, shablon } = Astro.props;
 const base = import.meta.env.BASE_URL;
 // «Поддержать проект» — на всех страницах (Р88, 21.10.2026, заменяет Р31); выключение — PUBLIC_PODDERZHKA=0.
 const podderzhka = import.meta.env.PUBLIC_PODDERZHKA !== '0';
@@ -118,7 +124,7 @@ const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`pub
 const fontCss = faceCss([...new Set([...denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), 'Playfair Display'])], base);
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
 ---
-{d.body ? <DenAnketa d={d} /> : (
+{shablon ? <DenIzobreteniya d={shablon} museum={m} /> : d.body ? <DenAnketa d={d} /> : (
 <Base ownStyle title={`${dateTitle}: ${title} — ${m.title_ru} — Русская цивилизация`} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={ogCover?.src ?? ogCard} imageAlt={ogCover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"

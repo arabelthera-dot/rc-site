@@ -8,7 +8,8 @@ import DenIzobreteniya from '../../../../layouts/DenIzobreteniya.astro';
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
   const layouts = { izobreteniya: DenIzobreteniya };
-  return kartochki().map((d) => {
+  // Карточки с `adres: den` (Р286) живут на обычном адресе den/ММ-ДД (den/[key].astro), здесь — только пробы.
+  return kartochki().filter((d) => d.adres !== 'den').map((d) => {
     if (!layouts[d.muzei]) throw new Error(`den-shablon: у музея ${d.muzei} нет шаблона дня`);
     return { params: { slug: d.muzei, key: d.key }, props: { d, museum: museums.find((m) => m.id === d.muzei)!.data } };
   });
