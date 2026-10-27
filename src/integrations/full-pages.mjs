@@ -13,6 +13,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
+import { igrySchetOn, igrySchetHtml } from '../lib/igry-schet.mjs';
 import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
@@ -683,6 +684,8 @@ export default function fullPages() {
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             // Яндекс Метрика (тот же код, что Metrika.astro в Base.astro) — один раз; уже есть в исходнике — не дублируем.
             if (!/mc\.yandex\.ru\/metrika\/tag\.js/.test(html)) html = html.replace(/<\/head>/i, `${metrikaHtml}\n</head>`);
+            // Подсчёт «начал игру — доиграл» (Р286 п.3) — только при PUBLIC_IGRY_SCHET=1 (src/lib/igry-schet.mjs).
+            if (igrySchetOn() && !/rc-igra-schet\.js/.test(html)) html = html.replace(/<\/head>/i, `${igrySchetHtml(base)}\n</head>`);
             // Знак 436-ФЗ (Р87, 21.10) — в полосе; на трагическом дне (Р40) под ней строка «Родителю», на <html> — data-rc-bez-ochkov:
             // museum-score.js / museum-quiz.js и rc-vozrast.css не показывают очки и звания; фраза про очки в тексте — долой.
             const vz = znak(museum, key);
