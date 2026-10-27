@@ -1,0 +1,31 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Пристыкуй «Союз-4» к «Союз-5»</h2>
+    <p style="max-width:62ch">Стыковочный узел «Контакт» защёлкивал замки только в узком окне: нужна была подходящая скорость на последнем участке сближения и точное попадание штыря в приёмный конус. Выбери скорость и точность оси и нажми «Сблизиться» — посмотри, что получится.</p>
+    <div class="lab" id="lab">
+      <div class="lab-row" role="group" aria-labelledby="lg1"><span class="lbl" id="lg1">1. Скорость на последнем участке сближения</span>
+        <button class="seg" type="button" data-k="speed" data-v="fast" aria-pressed="false">Быстрее — не терять время</button>
+        <button class="seg" type="button" data-k="speed" data-v="correct" aria-pressed="true">Как велели баллистики</button>
+        <button class="seg" type="button" data-k="speed" data-v="slow" aria-pressed="false">Медленнее — беречь топливо</button>
+      </div>
+      <div class="lab-row" role="group" aria-labelledby="lg2"><span class="lbl" id="lg2">2. Удержание оси перед касанием</span>
+        <button class="seg" type="button" data-k="align" data-v="good" aria-pressed="true">Точно по оси</button>
+        <button class="seg" type="button" data-k="align" data-v="small" aria-pressed="false">Небольшой перекос — в пределах конуса</button>
+        <button class="seg" type="button" data-k="align" data-v="large" aria-pressed="false">Большой перекос — мимо конуса</button>
+      </div>
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="labGo">Сблизиться</button>
+        <button class="btn ghost" type="button" id="labReset">Начать заново</button>
+      </div>
+      <div class="lab-stage">
+        <canvas id="labCv" width="640" height="260" role="img" aria-label="Вид сбоку: «Союз-4» приближается к приёмному конусу «Союза-5»"></canvas>
+        <div class="lab-cap">Модель, а не телеметрия: условная кинематика сближения иллюстрирует узкое окно скорости и конус улавливания реального узла «Контакт»; точные цифры скорости и допуска конуса на странице не заявлены как архивные.</div>
+      </div>
+      <div class="lab-msg" id="labMsg" aria-live="polite">Выбери скорость и ось и нажми «Сблизиться».</div>
+      <div class="lab-found" id="labFound">Найдено: мягкая стыковка — нет, жёсткий удар — нет, мимо конуса — нет, замки не защёлкнулись — нет.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия опыта: стыковка получается только при скорости «как велели баллистики» и оси «точно по оси» или «небольшой перекос». Слишком быстрое сближение кончается жёстким ударом даже при хорошей оси. Слишком медленное — замки не успевают защёлкнуться. Большой перекос — штырь проходит мимо приёмного конуса при любой скорости.</div></noscript>
+    </div>
+    <p class="src-note" style="margin-top:10px">Узкое окно скорости и приёмный конус стыковочного узла «Контакт» — по общему описанию конструкции в Drew Ex Machina и RussianSpaceWeb.com; реальные скорость и допуск на странице не приводятся как точные цифры.</p>
+  </div>
+</section>

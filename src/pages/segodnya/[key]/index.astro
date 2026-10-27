@@ -7,6 +7,7 @@ import Base from '../../../layouts/Base.astro';
 import InlineCss from '../../../components/InlineCss.astro';
 import { gotovyeDni, datyUzlov, kogda, adresUzla, adresDnya } from '../../../lib/etot-den.mjs';
 import { plural } from '../../../lib/kalendar';
+import { privychkaOn, blokZavtra } from '../../../lib/privychka.mjs';
 export function getStaticPaths() {
   const daty = datyUzlov();
   return daty.map((key, i) => ({ params: { key }, props: { prev: daty[(i - 1 + daty.length) % daty.length], next: daty[(i + 1) % daty.length] } }));
@@ -25,9 +26,11 @@ const skolko = dni.length === 1
   : `${dni.length} ${plural(dni.length, 'музей', 'музея', 'музеев')} портала — ${dni.length} ${plural(dni.length, 'история', 'истории', 'историй')} одного дня`;
 const vnutri = (d: { vnutri: string[] }) => (d.vnutri.length ? `внутри: ${d.vnutri.join(' · ')}` : '');
 const daty = datyUzlov();
+// Ежедневная привычка (Р289 п.1): «Завтра в музеях» и серия — при включённом флаге (src/lib/privychka.mjs).
+const privychka = privychkaOn() ? blokZavtra(base, key!) : '';
 ---
 <Base title={`${when} во всех музеях · Русская цивилизация`} description={`Этот день во всех музеях «Русской цивилизации»: ${dni.map((d) => d.title).join('; ')}.`.slice(0, 300)} schema="page" image={dni.find((d) => d.img)?.img && src(dni.find((d) => d.img)!.img!)} crumbs={[{ label: `${when} во всех музеях` }]}>
-  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" />{privychka && <><InlineCss file="rc-privychka.css" /><script is:inline defer src={`${base}assets/rc-privychka.js`}></script></>}</Fragment>
   <div class="rc-uzel">
     <header class="rc-uzel-head">
       <p class="rc-uzel-kicker">Этот день во всех музеях</p>
@@ -58,6 +61,7 @@ const daty = datyUzlov();
           </span>
         </a></li>))}
     </ul>}
+    {privychka && <Fragment set:html={privychka} />}
     {daty.length > 1 && <nav class="rc-uzel-nav" aria-label="Соседние даты">
       <a href={adresUzla(base, prev)} rel="prev">← {kogda(prev)}</a>
       <a href={`${base}segodnya/`}>Все даты</a>

@@ -1,0 +1,36 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Подними пилота: наугад — или по формуле</h2>
+    <p class="games-lead">До 1906 года крыло подбирали на глаз и проверяли падением. Попробуй так же: у каждого планёра свой пилот, угол крыла ставишь сам, а силы крыла не видно. Разобьёшь пару планёров — включи «Глазами Жуковского».</p>
+    <div class="press zh-lab" id="press">
+      <div class="zh-mode" role="group" aria-label="Как подбирать угол">
+        <button class="zh-seg on" type="button" id="modeBlind" aria-pressed="true">Наугад, как до 1906-го</button>
+        <button class="zh-seg" type="button" id="modeZh" aria-pressed="false">Глазами Жуковского</button>
+      </div>
+      <div class="zh-stat">
+        <div class="zh-pilot">Пилот: <b id="pilotKg">70</b> кг</div>
+        <div class="zh-crash" id="crashBox">Разбито планёров: <b id="crashN">0</b> <span class="zh-icons" id="crashIcons" aria-hidden="true"></span></div>
+      </div>
+      <canvas id="cvWing" class="zh-cv" width="640" height="340" role="img" aria-label="Модель: планёр с пилотом на склоне холма; после старта он летит, клюёт носом или сваливается и разбивается о землю"></canvas>
+      <ul class="zh-legend" id="zhLegend" hidden>
+        <li><i class="zl-up"></i>подъёмная сила крыла</li>
+        <li><i class="zl-down"></i>вес пилота с планёром</li>
+        <li><i class="zl-vih"></i>присоединённый вихрь</li>
+      </ul>
+      <div class="wing-range">
+        <label for="ugol">Угол крыла</label>
+        <input type="range" id="ugol" min="0" max="20" step="0.5" value="4">
+        <output id="ugolTxt" for="ugol">4°</output>
+      </div>
+      <div class="lab-btns">
+        <button class="btn gold zh-go" type="button" id="wingGo">В воздух</button>
+      </div>
+      <div class="formula" id="formula" aria-live="polite"><b>Y = ρ · V · Γ</b> — подъёмная сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию Γ. По этой формуле Жуковского угол считают до полёта, а не подбирают обломками.</div>
+      <div class="lab-msg" id="wingMsg" aria-live="polite">Пилот 70 кг ждёт на холме. Поставь угол крыла на глаз и жми «В воздух».</div>
+      <div class="lab-cap">Модель, а не расчёт: вес пилотов, предел угла 15° и запас ±6% заданы программой, чтобы показать сам закон. Сколько планёров разбили до 1906 года на самом деле, игра не утверждает.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: наугад угол крыла под пилота не угадать — мало угла, и планёр клюёт носом, много — нос задирается, поток срывается, планёр сваливается. По теореме Жуковского подъёмную силу считают заранее: она равна плотности воздуха, умноженной на скорость потока и на циркуляцию, — и угол под пилота ставят с первого раза.</div></noscript>
+    </div>
+    <p class="src-note">Правило модели — теорема Жуковского: Математическая энциклопедия, «Жуковского теорема».</p>
+  </div>
+</section>
