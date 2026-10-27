@@ -1,0 +1,35 @@
+/* Игра-погоня на холсте с двумя крупными кнопками под полем (удержание хода + манёвр).
+   Первая страница — 14 янв., «Перехват». Разметка: #pg .pg-*; кнопки ≥56 px для большого пальца. */
+.pg-lead{max-width:62ch}
+.pg{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:14px;margin-top:14px;max-width:520px}
+.pg-mode{display:flex;gap:8px;margin-bottom:10px}
+.pg-mode .seg{flex:1;cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;min-height:48px}
+.pg-mode .seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
+.pg-mode .seg:disabled{opacity:.55;cursor:default}
+.pg-stage{position:relative}
+.pg-stage canvas{display:block;width:100%;height:auto;border-radius:12px;touch-action:none}
+.pg-go{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);min-height:56px;min-width:180px;font-size:18px}
+.pg-go[hidden]{display:none}
+.pg-hint{margin:10px 0 0;font-size:15px;color:var(--gold-l);min-height:2.6em}
+.pg-ctrl{display:flex;gap:10px;margin-top:8px;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.pg-ctrl button{min-height:64px;border-radius:14px;font:inherit;font-size:17px;font-weight:700;cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+.pg-hod{flex:3;border:1px solid var(--gold);background:linear-gradient(#e4c97a,#c9962e);color:#1a1408}
+.pg-hod small{display:block;font-size:12px;font-weight:500;opacity:.8}
+.pg-hod:active:not(:disabled){filter:brightness(1.15)}
+.pg-razv{flex:2;border:1px solid var(--card-b);background:rgba(255,255,255,.06);color:var(--ink)}
+.pg-ctrl button:disabled{opacity:.4;cursor:default}
+.pg-ctrl button:focus-visible,.pg-mode .seg:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.pg-msg{margin-top:12px;padding:12px 14px;border-left:3px solid var(--card-b);border-radius:10px;background:rgba(255,255,255,.04);font-size:15px;line-height:1.5}
+.pg-msg.ok{border-left-color:#4caf6a;background:rgba(76,175,106,.10)}
+.pg-msg.bad{border-left-color:#e0605a;background:rgba(224,96,90,.10)}
+.pg-res{margin:8px 0 0;font-weight:600;min-height:1.4em}
+.pg-cap{margin:8px 0 0;font-size:13px;color:var(--muted)}
+.pg+.igra-pravila,.pg~.src-note{margin-top:10px}
+/* Телефон: холст, подсказка и обе кнопки должны помещаться в экран над плашкой cookie. */
+@media (max-width:480px){
+.pg{padding:12px}
+.pg-mode{margin-bottom:8px}
+.pg-hint{margin-top:6px;font-size:14px;line-height:1.35;min-height:0}
+.pg-ctrl{margin-top:6px}
+.pg-ctrl button{min-height:56px}
+}
