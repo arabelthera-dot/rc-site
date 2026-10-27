@@ -10,7 +10,9 @@ permissions:
 jobs:
   sborka-i-ssylki:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # 25, не 15 (27.10.2026): checkout с полной историей ~3 мин, oshibki-js ~3,5, glazami ~2,5 — всё зелёное,
+    # но Lighthouse обрывался на 15-й минуте; так краснели #515, #516, #520 при живой сборке.
+    timeout-minutes: 25
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
       # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.

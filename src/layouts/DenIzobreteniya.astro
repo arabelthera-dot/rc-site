@@ -2,20 +2,25 @@
 // Страница дня музея изобретений из карточки данных (пилот den-shablon, Р297): каркас — старая полная страница
 // src/data/full-pages/izobreteniya/ММ-ДД.html, блок за блоком и в том же порядке; данные дня — карточка
 // src/content/dni-shablon/izobreteniya/ММ-ДД.yaml (схема и загрузка — src/lib/dni-shablon.mjs).
-// Стили — public/assets/izobreteniya-den.css (бывший inline <style>, то же место каскада); своих <style> нет.
+// Стили — public/assets/izobreteniya-den.css (бывший inline <style>, то же место каскада) или свой CSS дня (карточка css); своих <style> нет.
 // Игра — «как есть» по имени: разметка src/data/igry/<музей>/<имя>.html, скрипт public/muzei/<музей>/igry/<имя>.js.
 // Дальше страницу ведёт тот же конвейер, что и старый HTML (src/integrations/full-pages.mjs, job «den-shablon»):
 // полоса, подвал, шрифты, метрика, абсолютные адреса от <base>, соседи; noindex, вне карты сайта.
 import fs from 'node:fs';
 const { d, museum } = Astro.props;
 const muzeyName = museum.title_ru;
+// Заголовок вкладки и og:title — из даты, года и события карточки (Р286 п.4); у пробы без них — как в карточке.
+const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.key.slice(0, 2)) - 1]} ${d.head.god}: ${d.head.sobytie}`;
+const title = kogda ? `${kogda} — ${muzeyName} — Русская цивилизация` : d.head.title;
+const ogTitle = kogda || d.head.og.title;
 const igraHtml = fs.readFileSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`, 'utf8').replace(/\n$/, '');
 // JS-строка в одинарных кавычках — как в старых страницах: конвейер (src/lib/sosedi-polnye.mjs) ищет
 // prev/next в window.MUSEUM_CHROME именно в таком виде и переписывает на ближайшие полные страницы.
 const q = (s: string) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/</g, '\\u003c')}'`;
 const json = (x: unknown) => JSON.stringify(x).replace(/</g, '\\u003c');
 const c = d.chrome;
-const chromeJs = `window.MUSEUM_CHROME={
+const chromeJs = c && `window.MUSEUM_CHROME={
   museum:{title:${q(muzeyName)},href:'index.html'},
   share:{title:${q(c.share.title)},
          text:${q(c.share.text)}},${c.prev ? `
@@ -41,7 +46,7 @@ const quizJs = `(function(){
       b.onclick=function(){
         if (wrap.dataset.done) return; wrap.dataset.done='1';
         btns.forEach(function(x,xi){ x.disabled=true; if (xi===it.a) x.classList.add('correct'); });
-        if (oi===it.a){ award('q'+qi,10); exp.textContent='Верно. '+it.e; }
+        if (oi===it.a){ award('q'+qi,${d.quiz.ball}); exp.textContent='Верно. '+it.e; }
         else { b.classList.add('wrong'); exp.textContent='Не совсем. '+it.e; }
         exp.classList.add('show');
       };
@@ -58,29 +63,32 @@ const knopkiJs = `(function(){
 const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
 ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.tag}</span>` : ''}${p}</p>`).join('\n')}
-          <p class="src-note">${u.src}</p>
-        </div></details></li>`;
+          <p class="src-note">${u.src}</p>${u.otryvok ? `
+          <blockquote class="fakt-otryvok">${u.otryvok}</blockquote>` : ''}
+        </div></details>${u.pometka ? `<p class="fakt-ist"><span class="fakt-pometka">${u.pometka}</span> <a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}</li>`;
 const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;
 const o = d.oblozhka;
+// Уникальные разделы дня (карточка razdely, Р286) — разметкой 1:1 сразу после своего блока; нет — пусто.
+const posle = (id) => d.razdely.filter((r) => r.posle === id).map((r) => `\n${r.html}`).join('');
 ---
 <!DOCTYPE html>
 <html lang="ru" data-museum={d.muzei}>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{d.head.title}</title>
+<title>{title}</title>
 <link rel="stylesheet" href="../../assets/fonts.css">
-<link rel="stylesheet" href="../../assets/izobreteniya-den.css">
+{(d.css ?? ['izobreteniya-den']).map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}
 
 <meta name="description" content={d.head.description}>
 <link rel="canonical" href={d.head.canonical}>
 <meta property="og:type" content={d.head.og.type}>
 <meta property="og:site_name" content={d.head.og.site_name}>
-<meta property="og:title" content={d.head.og.title}>
+<meta property="og:title" content={ogTitle}>
 <meta property="og:description" content={d.head.og.description}>
-<meta property="og:url" content={d.head.og.url}>
+<meta property="og:url" content={d.head.og.url}>{d.head.og.image && <meta property="og:image" content={d.head.og.image}>}
 <script type="application/ld+json" is:inline set:html={json(d.head.ld)}></script>
-<link rel="stylesheet" href="../../assets/fakty-dnya.css">
+{d.fakty && <link rel="stylesheet" href="../../assets/fakty-dnya.css">}
 {d.igra.css.map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}
 </head>
 <body>
@@ -101,17 +109,17 @@ const o = d.oblozhka;
   <span class="here">{d.kroshka}</span>
 </div></nav>
 
-<figure class="hero-fig">
-<div class={o.fit_full ? 'hero-scene fit-full' : 'hero-scene'} data-oblozhka={o.celikom ? 'celikom' : undefined}>
-  <img class="scene" src={o.src} data-source={o.data_source} data-license={o.license} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding="async">
+{o && (<figure class="hero-fig" style={o.stil_figury}>
+<div class={o.fit_full ? 'hero-scene fit-full' : 'hero-scene'} id={o.id_sceny} data-oblozhka={o.celikom ? 'celikom' : undefined}>
+  <img class="scene" src={o.src} data-source={o.data_source} data-license={o.license} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding={o.decoding ? 'async' : undefined}>
 </div>
 <figcaption class="scene-caption">
   <div class="wrap">
-    <div class="scene-cap"><Fragment set:html={o.podpis} /> <span class="credit"><Fragment set:html={o.credit} /></span></div>
+    <div class="scene-cap"><Fragment set:html={o.credit ? `${o.podpis} <span class="credit">${o.credit}</span>` : o.podpis} /></div>
     <span class="scene-hint">{o.hint}</span>
   </div>
 </figcaption>
-</figure>
+</figure>)}
 
 <header class="hero-lead">
   <div class="wrap">
@@ -140,11 +148,11 @@ const o = d.oblozhka;
   <div class="wrap">
     {d.daynav.map((n) => <a href={`#${n.id}`}>{n.label}</a>)}
   </div>
-</nav>
+</nav><Fragment set:html={posle('daynav')} />
 
-<section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>
+{d.dokument === 'verh' && <section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>}<Fragment set:html={posle('dokument')} />
 
-<section class="block" id="video">
+{d.video && (<section class="block" id="video">
   <div class="wrap">
     <div class="kicker">Видео дня</div>
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">{d.video.h2}</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field={d.video.pole} data-rc-video-suffix={d.video.suffix}>{d.video.badge}</span></div>
@@ -157,30 +165,30 @@ const o = d.oblozhka;
     </video>
     <p style="font-size:13px;color:var(--muted);margin-top:10px"><Fragment set:html={d.video.note} /></p>
   </div>
-</section>
+</section>)}<Fragment set:html={posle('video')} />
 
-<section class="block" id="audioguide"></section>
+<section class="block" id="audioguide"></section><Fragment set:html={posle('audioguide')} />
 
 <section class="block" id="story">
   <div class="wrap">
     <div class="kicker">{d.story.kicker}</div>
     <h2>{d.story.h2}</h2>
-    <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>
+    {d.story.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>}
     <Fragment set:html={udaryHtml(d.story.udary)} />
   </div>
-</section>
+</section><Fragment set:html={posle('story')} />
 
-<section class="block" id="fakty">
+{d.fakty && (<section class="block" id="fakty">
   <div class="wrap">
     <div class="kicker">{d.fakty.kicker}</div>
     <h2>{d.fakty.h2}</h2>
     <Fragment set:html={udaryHtml(d.fakty.udary)} />
   </div>
-</section>
+</section>)}<Fragment set:html={posle('fakty')} />
 
-<Fragment set:html={igraHtml} />
+<Fragment set:html={igraHtml} /><Fragment set:html={posle('igra')} />
 
-<section class="block" id="pervenstvo">
+{d.svoi?.pervenstvo ? <Fragment set:html={d.svoi.pervenstvo} /> : (<section class="block" id="pervenstvo">
   <div class="wrap">
     <div class="kicker">{d.pervenstvo.kicker}</div>
     <h2>{d.pervenstvo.h2}</h2>
@@ -195,9 +203,9 @@ const o = d.oblozhka;
       </tbody>
     </table>
   </div>
-</section>
+</section>)}<Fragment set:html={posle('pervenstvo')} />
 
-<section class="block" id="quiz">
+{d.svoi?.quiz ? <Fragment set:html={d.svoi.quiz} /> : (<section class="block" id="quiz">
   <div class="wrap">
     <div class="kicker">{d.quiz.kicker}</div>
     <h2>{d.quiz.h2}</h2>
@@ -205,9 +213,9 @@ const o = d.oblozhka;
     <div id="quizBox"></div>
     <noscript><div class="noscript-box"><Fragment set:html={d.quiz.noscript} /></div></noscript>
   </div>
-</section>
+</section>)}<Fragment set:html={posle('quiz')} />
 
-<section class="block" id="result">
+{d.svoi?.result ? <Fragment set:html={d.svoi.result} /> : (<section class="block" id="result">
   <div class="wrap">
     <h2 style="margin-bottom:6px">{d.result.h2}</h2>
     <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={d.result.intro} /></p>
@@ -217,26 +225,26 @@ const o = d.oblozhka;
       <div class="dr-note"><Fragment set:html={d.result.note} /></div>
     </div>
   </div>
-</section>
+</section>)}<Fragment set:html={posle('result')} />
 
-{d.figures.map((f) => <figure class="fig"><img src={f.src} alt={f.alt} loading="lazy" decoding="async" data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.podpis} /> <span class="credit"><Fragment set:html={f.credit} /></span></figcaption></figure>)}
+{d.figures.map((f) => <figure class="fig"><img src={f.src} alt={f.alt} loading="lazy" decoding="async" data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.podpis} /> <span class="credit"><Fragment set:html={f.credit} /></span></figcaption></figure>)}<Fragment set:html={posle('figures')} />
 <section class="block" id="sources">
   <div class="wrap">
     <div class="kicker">Источники</div>
     <h2>На чём стоит страница</h2>
     <ul class="sources">
-      {d.sources.map((s) => <li><a href={s.href} rel="noopener" target="_blank"><Fragment set:html={s.title} /></a>{s.pometka ? ` ${s.pometka}` : ''}: <Fragment set:html={s.note} /></li>)}
+      {d.sources.map((s) => s.html ? <li><Fragment set:html={s.html} /></li> : <li><a href={s.href} rel="noopener" target="_blank"><Fragment set:html={s.title} /></a>{s.pometka ? ` ${s.pometka}` : ''}: <Fragment set:html={s.note} /></li>)}
     </ul>
   </div>
-</section>
+</section><Fragment set:html={posle('sources')} />
 
-<section class="block" id="calendar">
+{d.svoi?.calendar ? <Fragment set:html={d.svoi.calendar} /> : (<section class="block" id="calendar">
   <div class="wrap">
     <h2 style="margin-bottom:6px">Календарь изобретений</h2>
     <p style="color:var(--muted);margin-top:0;max-width:62ch">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
     <div id="calbox"></div>
   </div>
-</section>
+</section>)}<Fragment set:html={posle('calendar')} />
 
 <section class="block kd" id="kuda-dalshe">
   <div class="wrap">
@@ -249,20 +257,21 @@ const o = d.oblozhka;
         <p>Все музеи проекта на одной карте.</p></div>
     </div>`} />
   </div>
-</section>
+</section><Fragment set:html={posle('kuda-dalshe')} />
 
 {/* Перевод строки перед <footer> — явно: compressHTML его съедает, а конвейер ставит <main> до «\n<footer» (WCAG, Б10). */}
 <Fragment set:html={'\n'} /><footer><div class="wrap">
   <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
   Русская цивилизация · {muzeyName}</div></footer>
+{d.dokument === 'podval' && <Fragment set:html={'\n\n<section data-proof-block></section>'} />}
 
 <script is:inline set:html={scoreJs}></script>
 <script is:inline src="../../assets/museum-score.js"></script>
 <script is:inline set:html={knopkiJs}></script>
 <script is:inline src={`igry/${d.igra.imya}.js`}></script>
-<script is:inline set:html={quizJs}></script>
+<script is:inline set:html={quizJs}></script>{d.igra.dop && <script is:inline src={`igry/${d.igra.imya}-dop.js`}></script>}
 <script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
-<script is:inline set:html={chromeJs}></script>
+{chromeJs && <script is:inline set:html={chromeJs}></script>}
 <script is:inline src="../../assets/museum-chrome.js"></script>
 <script is:inline set:html={`window.MUSEUM_SUPPORT={museum:${q(muzeyName)}};`}></script>
 <script is:inline src="../../assets/museum-support.js"></script>
@@ -274,7 +283,7 @@ const o = d.oblozhka;
 <script is:inline defer src="../../assets/analytics.js"></script>
 
 <script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(d.audioguide, null, 2).replace(/</g, '\\u003c')};`}></script>
-<script is:inline src="../../assets/museum-video.js"></script>
+{d.video && <script is:inline src="../../assets/museum-video.js"></script>}
 <script is:inline src="../../assets/museum-audioguide.js"></script>
 <script type="application/json" data-proof is:inline set:html={`\n${JSON.stringify(d.proof, null, 1)}\n`}></script>
 <script is:inline src="../../assets/museum-proof.js"></script>

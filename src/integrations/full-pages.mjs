@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
 import { igrySchetOn, igrySchetHtml } from '../lib/igry-schet.mjs';
+import { privychkaOn, privychkaJs, blokZavtra } from '../lib/privychka.mjs';
 import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
@@ -27,6 +28,7 @@ import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { SOSEDI_POLNYE, polnyeSosedi, perepisatSosedey, zagolovok } from '../lib/sosedi-polnye.mjs';
 import { blokDrugieMuzei } from '../lib/etot-den.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
+import { kartochki } from '../lib/dni-shablon.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
 // («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
@@ -73,6 +75,8 @@ const SLABOVID_KNOPKA_CSS = fs.readFileSync('public/assets/rc-slabovid-knopka.cs
 const POLNYY_DEN_CSS = fs.readFileSync('public/assets/rc-polnyy-den.css', 'utf8'); // контраст подвала (Б10)
 // «Этот день в других музеях» (Р286 п.2) — вид блока, тот же файл, что у узла даты /segodnya/<ММ-ДД>/.
 const ETOT_DEN_CSS = fs.readFileSync('public/assets/rc-etot-den.css', 'utf8');
+// Ежедневная привычка (Р289 п.1) — «Завтра в музеях», серия и «Поделиться итогом»; только при включённом флаге.
+const PRIVYCHKA_CSS = fs.readFileSync('public/assets/rc-privychka.css', 'utf8');
 // Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
@@ -472,6 +476,8 @@ export default function fullPages() {
           const cardsDir = path.join('src/content/days', museum);
           const anketa = new Set((fs.existsSync(cardsDir) ? fs.readdirSync(cardsDir) : []).filter((f) => f.endsWith('.json'))
             .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)));
+          // Карточка шаблона с `adres: den` (Р286): den/<ключ>/ уже собрал общий layout (den/[key].astro) — ведём как анкету.
+          for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den') anketa.add(k.key);
           const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
           const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {
             const dayOut = path.join(root, 'muzei', museum, 'den', key, 'index.html');
@@ -670,9 +676,12 @@ export default function fullPages() {
               // Других готовых дней этой даты нет — блока нет.
               const ed = staraya ? '' : blokDrugieMuzei(base, museum, key);
               if (ed) html = html.replace(/<\/head>/i, `<style data-rc-etot-den>${ETOT_DEN_CSS}</style>\n</head>`);
+              // «Завтра в музеях» + серия (Р289 п.1, src/lib/privychka.mjs) — после «Этот день в других музеях»; флаг выключен — ничего.
+              const pv = staraya || !privychkaOn() ? '' : blokZavtra(base, key);
+              if (pv) html = html.replace(/<\/head>/i, `<style data-rc-privychka>${PRIVYCHKA_CSS}</style>\n${privychkaJs(base)}\n</head>`);
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
-              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
-              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${zhurnalHtml(zh)}${lic}\n</body>`);
+              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + pv + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
+              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${pv}${zhurnalHtml(zh)}${lic}\n</body>`);
             }
             // «Поделиться» — один раз (glazami п.16): у страницы свой блок — строку museum-chrome не ставим,
             // а museum-support.js не добавляет кнопку, если на странице уже есть блок «Поделиться».
