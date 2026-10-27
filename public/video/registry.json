@@ -791,6 +791,38 @@
         "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/16jan-soyuz45": {
+      "title": "История в 52 секунды",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: экипаж «Союза-5» в скафандрах «Ястреб» (Прокопьевский городской краеведческий музей); открытка с портретом В. А. Шаталова (Сургутский краеведческий музей); скафандр «Ястреб» для выхода из «Союза-4» и «Союза-5» (Мемориальный музей космонавтики); Елисеев, Волынов, Шаталов и Хрунов (Государственный музей политической истории России); Шаталов, Хрунов и Елисеев с газетами, 17 января 1969 (РОСФОТО); приём в Кремле в честь экипажей (Государственный центральный музей современной истории России). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/16jan-soyuz45/day-16jan-soyuz45.mp4",
+        "local": "muzei/izobreteniya/video/day-16jan-soyuz45.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 51.8,
+        "mb": 10.9
+      },
+      "vertical": {
+        "file": "izobreteniya/16jan-soyuz45/day-16jan-soyuz45-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-16jan-soyuz45-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 51.8,
+        "mb": 9.9
+      },
+      "poster": {
+        "file": "izobreteniya/16jan-soyuz45/day-16jan-soyuz45-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-16jan-soyuz45-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/16jan-soyuz45/day-16jan-soyuz45-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-16jan-soyuz45-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
