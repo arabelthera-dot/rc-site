@@ -85,6 +85,7 @@
   .card{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:20px 22px;margin:16px 0;backdrop-filter:blur(6px)}
 
   /* ── КВИЗ ── */
+  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
   .opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:13px 16px;margin:8px 0;cursor:pointer;font-size:15px;color:var(--ink);font-family:'Inter',sans-serif;transition:.16s}
   .opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
   .opt.correct{background:rgba(40,120,60,.18);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
@@ -159,21 +160,6 @@
   .src-note{font-size:12px;color:#8fa5b9}
 
   /* ── МОДЕЛЬ ДНЯ (главное предметное действие) ── */
-  .lab{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
-  .lab-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
-  .lab-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
-  .seg{cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;min-height:44px}
-  .seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
-  .seg:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .lab-stage{position:relative;margin-top:12px}
-  .lab-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#1c2530}
-  .lab-cap{font-size:12px;color:#8fa5b9;margin-top:6px}
-  .lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
-  .lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
-  .lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
-  .lab-found{font-size:13px;color:var(--muted);margin-top:8px}
-  .lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
 
   /* ── ГРАНИЦА ПЕРВЕНСТВА ── */
   .border-box{background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.3);border-radius:14px;padding:16px 18px}
@@ -199,6 +185,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Мировой рекорд глубины для подводной лодки — 1027 метров", "description": "Обычной атомной подлодке хватало 600 метров, а К-278 ушла на 1027 — и этот рекорд не побит до сих пор.", "url": "https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-13jan-k278.html", "inLanguage": "ru", "isPartOf": {"@type": "WebSite", "name": "Музей «Что изобрели русские первыми в мире»"}, "publisher": {"@type": "Organization", "name": "Русская цивилизация"}, "about": {"@type": "CreativeWork", "name": "Мировой рекорд глубины для подводной лодки — 1027 метров"}}</script>
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
 <link rel="stylesheet" href="../../assets/igra-pravila.css">
+<link rel="stylesheet" href="../../assets/k278-kilometr.css">
 </head>
 <body>
 
@@ -474,40 +461,54 @@
 
 <section class="block" id="games">
   <div class="wrap">
-    <div class="kicker">Главное действие · модель</div>
+    <div class="kicker">Главное действие · игра</div>
     <h2>Игра 1 · Уйти на километр</h2>
-    <p style="max-width:62ch">Выбери корпус и опускай лодку ступенями, как К-278: до 800 метров — по 50, дальше — по 25. Следи за давлением. Дойди до рекорда, на обратном пути выстрели торпедой с той же глубины, что и экипаж, и всплыви.</p>
-    <div class="lab" id="lab">
-      <div class="lab-row" role="group" aria-labelledby="lg1"><span class="lbl" id="lg1">1. Прочный корпус</span>
-        <button class="seg" type="button" data-k="hull" data-v="steel" aria-pressed="true">Сталь, как у обычной АПЛ: рабочая глубина до 600 м</button>
-        <button class="seg" type="button" data-k="hull" data-v="ti" aria-pressed="false">Титан, как у К-278: рабочая глубина 1000 м</button>
+    <section class="kk-igra igra-ruka-zona" data-k278-igra aria-label="Игра: веди К-278 на рекордную глубину">
+      <div class="kk-head">
+        <p class="kk-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> Нажми «Малый ход»</p>
+        <p class="kk-sub igra-poyasnenie" aria-live="polite">4 августа 1985 года, Норвежское море. Веди К-278 вниз, к рекорду — 1027 метров.</p>
       </div>
-      <div class="lab-btns">
-        <button class="btn gold" type="button" id="labDown">Глубже на ступень</button>
-        <button class="btn ghost" type="button" id="labUp">Всплыть на ступень</button>
-        <button class="btn ghost" type="button" id="labFire">Пустить торпеду</button>
-        <button class="btn ghost" type="button" id="labReset">Начать заново</button>
+      <div class="kk-tablo" aria-live="off">
+        <div>Глубина<b class="kk-depth">0 м</b></div>
+        <div>Давление<b class="kk-atm">≈ 0 атм</b></div>
+        <div>Запас времени<b class="kk-time">5 ч 00 мин</b></div>
       </div>
-      <div class="lab-stage">
-        <canvas id="labCv" width="640" height="260" role="img" aria-label="Разрез моря: слева шкала глубины до 1250 метров, на ней подводная лодка"></canvas>
-        <div class="lab-cap">Модель, а не чертёж. Глубины 600, 700, 800, 1000, 1027 и 1250 метров — по источникам; давление — наш расчёт: около одной атмосферы на каждые 10 метров воды.</div>
+      <div class="kk-stage">
+        <canvas aria-label="Разрез моря: в центре подводная лодка К-278 из семи отсеков, мимо проходят ступени глубины; слева шкала до 1100 метров, справа прибор давления."></canvas>
       </div>
-      <div class="lab-msg" id="labMsg" aria-live="polite">Лодка у поверхности. Выбери корпус и нажми «Глубже на ступень».</div>
-      <div class="lab-found" id="labFound">Найдено открытий: 0 из 3.</div>
-      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия опыта: со стальным корпусом обычной атомной лодки дальше 600 метров идти нельзя. С титановым корпусом К-278 уходит ступенями — до 800 метров по 50, дальше по 25 — на 1000 метров, а потом ещё на 27 — до рекорда 1027 метров. На каждые 10 метров давление растёт примерно на атмосферу: на рекордной глубине около 103 атмосфер. На обратном пути, на 800 метрах, лодка стреляет торпедой и затем всплывает.</div></noscript>
-    </div>
+      <div class="kk-hod">
+        <button type="button" class="kk-malo" aria-pressed="false">Малый ход<small>надёжно</small></button>
+        <button type="button" class="kk-polno" aria-pressed="false">Полный ход<small>быстро</small></button>
+        <button type="button" class="kk-stop">Стоп · осмотр<small>на ступени</small></button>
+        <button type="button" class="kk-torp" hidden>Торпеда!</button>
+      </div>
+      <div class="kk-finale" hidden>
+        <h3 class="kk-fin-h"></h3>
+        <p class="kk-fin-txt"></p>
+        <p class="kk-rang"></p>
+        <div class="kk-fin-bars" aria-label="Сравнение глубин">
+          <div class="kk-bar kk-bar-k"><span>К-278, рекорд 1985 года</span><i style="--w:100%"></i><b>1027 м</b></div>
+          <div class="kk-bar"><span>«Сивулф» (США, 1997), предельная глубина</span><i style="--w:58%"></i><b>600 м</b></div>
+          <div class="kk-bar"><span>Обычная атомная лодка, рабочая глубина</span><i style="--w:58%"></i><b>до 600 м</b></div>
+        </div>
+        <button type="button" class="kk-again">Сыграть ещё</button>
+      </div>
+      <p class="kk-cap">Модель, а не чертёж. Ступени, глубины 600, 700, 800, 1000 и 1027 м — по источникам; давление — наш расчёт: около атмосферы на каждые 10 метров. Запас времени и неполадки в отсеках — условия игры, по мотивам рассказа адмирала Чернова.</p>
       <div class="igra-pravila" data-igra-pravila>
         <h2 class="igra-pravila-h">Как играть</h2>
-        <p class="igra-pravila-zachem">Ты ведёшь К-278 в рекордное погружение, Норвежское море, 4 августа 1985 года. Узнаешь, почему обычная лодка не уходит на километр, а К-278 ушла.</p>
+        <p class="igra-pravila-zachem">Ты ведёшь К-278 в рекордное погружение. Цель — 1027 метров, глубже не уходила ни одна подводная лодка.</p>
         <ol class="igra-pravila-shagi">
-          <li><b>Выбери прочный корпус</b> — сталь, как у обычной лодки, или титан, как у К-278. Корпус меняют только у поверхности.</li>
-          <li><b>Нажимай «Глубже на ступень»</b> и следи за давлением, пока не дойдёшь до рекорда — 1027 метров. До 800 метров ступень — 50 метров, ниже — 25, как у К-278.</li>
-          <li><b>На обратном пути</b> нажимай «Всплыть на ступень», на 800 метрах нажми «Пустить торпеду», затем всплыви до поверхности.</li>
+          <li><b>«Малый ход» или «Полный ход»</b> — лодка идёт вниз. Полный быстрее, но в отсеках чаще появляются неполадки.</li>
+          <li><b>Отсек пожелтел — жми «Стоп · осмотр».</b> Лодка встанет на ближайшей ступени: до 800 метров через 50, ниже через 25, как у К-278. На остановке экипаж устраняет течь.</li>
+          <li><b>Следи за запасом времени.</b> Пока стоишь, часы идут. Отсеки в порядке — снова дай ход.</li>
+          <li><b>После рекорда — всплытие.</b> Нажми «Торпеда», когда лодка будет на 800 метрах.</li>
         </ol>
-        <p class="igra-pravila-nyuans">Нюансы: со стальным корпусом дальше 600 метров не пустят — это первое из трёх открытий. Торпеда засчитывается только на 800 метрах и только после рекорда. «Начать заново» вернёт лодку к поверхности, баллы сохранятся.</p>
-        <p class="igra-pravila-final">Чем кончится: рекорд 1027 метров даёт 35 баллов, а предел стали, выстрел с 800 метров и всплытие — три открытия из трёх, как в испытании 1985 года.</p>
+        <p class="igra-pravila-nyuans">Нюансы: на ходу течь растёт, на остановке — нет. Глубже 700 метров неполадки чаще, а полный ход там опасен. Отсеки нумеруются от носа (справа).</p>
+        <p class="igra-pravila-final">Чем кончится: течь дошла до верха отсека — авария; кончилось время — не успели; дошёл до 1027 метров — рекорд и звание. Лучший запас времени игра запомнит.</p>
       </div>
-    <p class="src-note" style="margin-top:10px">Правила модели: рабочая глубина обычной АПЛ до 600 м — «Российская газета»; 1000 и 1250 м у К-278 — Общество памяти АПЛ «Комсомолец»; 700 м — полная мощность реактора, 1027 м и стрельба на 800 м — рассказы Е. Д. Чернова и В. Матвеева (телеканал «Звезда»); ступени по 50 м до 800 м и по 25 м ниже — ответственный сдатчик Севмаша В. Чувакин (пресс-служба ПО «Севмаш»).</p>
+      <noscript><p class="kk-cap">Для игры нужен JavaScript. Текстовая версия: К-278 уходила ступенями — до 800 метров по 50, дальше по 25 — и на каждой ступени осматривала отсеки. На 1000 метрах адмирал Чернов сказал «Остановись, мгновенье!», а на 1027 метрах потёк фланец и отлетали срезанные титановые болты, но лодка слушалась рулей. На обратном пути, на 800 метрах, она выстрелила торпедой.</p></noscript>
+    </section>
+    <p class="src-note" style="margin-top:10px">Правила игры: рабочая глубина обычной АПЛ до 600 м — «Российская газета»; предельная глубина «Сивулфа» 600 м — еженедельник «Звезда»; 700 м — полная мощность реактора, 1000 и 1027 м, стрельба на 800 м — рассказы Е. Д. Чернова и В. Матвеева (телеканал «Звезда»); ступени по 50 м до 800 м и по 25 м ниже, обжатие корпуса с 700 м — ответственный сдатчик Севмаша В. Чувакин (пресс-служба ПО «Севмаш»).</p>
   </div>
 </section>
 
@@ -546,7 +547,7 @@
 <section class="block" id="result">
   <div class="wrap">
     <h2 style="margin-bottom:6px">Итог дня</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Модель, три открытия и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">Игра, три открытия и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
     <div class="day-result">
       <div class="dr-score" id="dayTxt">0 / 100 · звание: Гость дня</div>
       <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
@@ -607,106 +608,17 @@
 
 <script>
 /* ── СЧЁТ ── шкала из 100 держит assets/museum-score.js; здесь только реестр наград.
-   модель 35 + три открытия 3×5 + викторина 5×10 = 100. */
+   рекорд 1027 м 35 + три открытия 3×5 (первая устранённая течь, переход на ступени по 25 м, торпеда на 800 м) + викторина 5×10 = 100. */
 window.MUSEUM_SCORE = {awards:{lab:35, why0:5, why1:5, why2:5, q:[5,10]},
   ranks:[[100,'Командир глубины'],[70,'Штурман'],[40,'Юнга'],[0,'Гость дня']]};
 </script>
 <script src="../../assets/museum-score.js"></script>
+<script src="../../assets/k278-kilometr.js"></script>
 <script>
 (function(){
   var $ = function(id){return document.getElementById(id);};
   $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
   $('listenBtn').onclick = function(){ $('audioguide').scrollIntoView({behavior:'smooth'}); };
-
-  /* ── УЙТИ НА КИЛОМЕТР ── холст 640×260, CSS только масштабирует.
-     Кадр рисуется по состоянию, без случайностей. Глубина меняется ступенями по 50 м до 800 м и по 25 м ниже (Севмаш),
-     от 1000 м последняя ступень — 27 м, до рекорда. */
-  var hull = 'steel', depth = 0, record = false, fired = false, found = {};
-  var W = 640, H = 260, TOP = 22, BOT = 246, MAXD = 1250;
-  function y(d){ return TOP + (BOT-TOP)*d/MAXD; }
-  function atm(d){ return Math.round(d/10); }
-  function draw(state){
-    var c=$('labCv').getContext('2d');
-    var g=c.createLinearGradient(0,TOP,0,BOT); g.addColorStop(0,'#1d4e74'); g.addColorStop(1,'#040a14');
-    c.fillStyle='#0b1828'; c.fillRect(0,0,W,H);
-    c.fillStyle=g; c.fillRect(0,TOP,W,BOT-TOP);
-    c.font='11px Inter, sans-serif'; c.textAlign='left';
-    var marks=[[0,'0'],[600,'600 м — обычная АПЛ'],[1000,'1000 м — рабочая К-278'],[1250,'1250 м — предельная К-278']];
-    for (var i=0;i<marks.length;i++){ var my=y(marks[i][0]);
-      c.strokeStyle= marks[i][0]===600 ? 'rgba(240,128,128,.7)' : 'rgba(228,201,122,.45)';
-      c.setLineDash([4,4]); c.beginPath(); c.moveTo(70,my); c.lineTo(W,my); c.stroke(); c.setLineDash([]);
-      c.fillStyle='#c6d8e8'; c.fillText(marks[i][1], 76, my-3); }
-    if (record){ c.fillStyle='#e4c97a'; c.fillRect(70,y(1027)-1,W-70,2); c.fillText('1027 м — рекорд', 420, y(1027)+13); }
-    // шкала
-    c.fillStyle='#8fa5b9'; for (var d=0; d<=MAXD; d+=250){ c.fillRect(56,y(d),10,1); c.textAlign='right'; c.fillText(String(d),52,y(d)+4); c.textAlign='left'; }
-    // лодка
-    var sy=y(depth), sx=250;
-    c.fillStyle= state==='bad' ? '#c0453f' : (hull==='ti' ? '#b9c4cf' : '#7c8a96');
-    c.beginPath(); c.ellipse(sx, sy, 70, 9, 0, 0, 6.3); c.fill();
-    c.fillRect(sx-14, sy-17, 26, 10);
-    if (state==='fire'){ c.fillStyle='#e4c97a'; c.fillRect(sx+80, sy-2, 44, 4); }
-    // табло
-    c.fillStyle='rgba(6,12,23,.8)'; c.fillRect(W-196,TOP+6,188,44);
-    c.fillStyle='#e4c97a'; c.font='bold 15px Inter, sans-serif'; c.fillText('Глубина: '+depth+' м', W-188, TOP+24);
-    c.fillStyle='#c6d8e8'; c.font='12px Inter, sans-serif'; c.fillText('Давление: ≈ '+atm(depth)+' атм', W-188, TOP+42);
-  }
-  function setFound(){ $('labFound').textContent='Найдено открытий: '+Object.keys(found).length+' из 3.'; }
-  function msg(t, cls){ var m=$('labMsg'); m.className='lab-msg'+(cls?' '+cls:''); m.textContent=t; }
-  function setHull(v){
-    hull=v; var segs=document.querySelectorAll('#lab .seg');
-    for (var j=0;j<segs.length;j++) segs[j].setAttribute('aria-pressed', segs[j].getAttribute('data-v')===v ? 'true':'false');
-  }
-  var segs = document.querySelectorAll('#lab .seg');
-  for (var s=0;s<segs.length;s++) segs[s].addEventListener('click', function(){
-    if (depth>0){ msg('Корпус меняют на верфи, а не под водой. Всплыви до поверхности или начни заново.'); return; }
-    setHull(this.getAttribute('data-v')); draw(''); msg('Лодка у поверхности. Нажми «Глубже на ступень».');
-  });
-  $('labDown').onclick = function(){
-    if (hull==='steel' && depth>=600){
-      draw('bad'); found.steel=1; award('why0',5); setFound();
-      msg('Стоп. Рабочая глубина обычной атомной лодки — не больше 600 метров, дальше её корпус не рассчитан. Чтобы идти глубже, ЦКБ-18 сделало прочный корпус из титанового сплава. Всплыви и смени корпус.','bad');
-      return;
-    }
-    if (record || depth>=1027){ msg('Рекорд взят. Глубже 1027 метров К-278 не погружалась: предельные 1250 — запас прочности, а не цель. Теперь всплывай.'); return; }
-    depth = depth>=1000 ? 1027 : depth + (depth<800 ? 50 : 25);
-    if (depth===1027){
-      record=true; draw(''); award('lab',35);
-      msg('1027 метров — мировой рекорд. «Там потёк фланец, там треснула деревянная панель… как пули, стали отлетать срезанные немыслимым обжатием титановые болты». Но лодка слушалась рулей. Теперь всплывай — и не забудь про торпеду.','ok');
-    } else {
-      draw('');
-      var t='Глубина '+depth+' м, давление около '+atm(depth)+' атмосфер. Остановка — осмотр отсеков.';
-      if (depth===700) t='700 метров. Здесь реактор К-278 вывели на полную мощность. Давление около 70 атмосфер.';
-      if (depth===1000) t='1000 метров. Адмирал Чернов сказал в микрофон: «Остановись, мгновенье!» Конструкторы согласились: ещё 20 метров корпус выдержит. Нажми «Глубже» ещё раз.';
-      msg(t);
-    }
-  };
-  $('labUp').onclick = function(){
-    if (depth===0){ msg('Лодка и так у поверхности.'); return; }
-    depth = depth===1027 ? 1000 : Math.max(0, depth - (depth>800 ? 25 : 50));
-    draw('');
-    if (depth===0){
-      if (record && fired && !found.up){ found.up=1; award('why2',5); setFound();
-        msg('Всплыли. С 800 метров лодка поднялась, по словам мичмана Матвеева, «за 30 секунд». На берегу экипаж встретил командующий Северным флотом.','ok'); }
-      else msg(record ? 'На поверхности. А торпеду с глубины так и не пустили — нырни на 800 метров и выстрели.' : 'Лодка на поверхности.');
-      return;
-    }
-    msg('Глубина '+depth+' м, давление около '+atm(depth)+' атмосфер.');
-  };
-  $('labFire').onclick = function(){
-    if (depth===0){ msg('С поверхности стреляет любая лодка. Испытание было в другом: выстрелить с огромной глубины.'); return; }
-    if (depth===800 && record){
-      fired=true; draw('fire');
-      if (!found.fire){ found.fire=1; award('why1',5); setFound(); }
-      msg('Торпеда вышла. «Когда открыли передние крышки торпедных аппаратов, мы увидели, как дрогнули задние от напора глубины. Дрогнули, но… удержали». С такой глубины лодку не достать ни торпедой, ни глубинной бомбой.','ok');
-      return;
-    }
-    msg(record ? 'Экипаж стрелял на обратном пути, на 800 метрах. Поднимись до этой глубины.' : 'Сначала дойди до рекорда: стрельбу проверяли после погружения, на обратном пути.');
-  };
-  $('labReset').onclick = function(){
-    depth=0; record=false; fired=false; setHull('steel'); draw('');
-    msg('Лодка снова у поверхности. Уже полученные баллы сохраняются и повторно не начисляются.');
-  };
-  draw('');
 
   /* ── ВИКТОРИНА ── один ответ на вопрос; дистракторы сверены с источниками страницы. */
   var Q = [
