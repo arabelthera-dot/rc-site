@@ -137,12 +137,12 @@ export function razmetkaRiska(d) {
   const chasti = [];
   const dob = (chast, nomer, tekst, pometka) => { const metki = metkiTeksta(tekst, pometka); if (metki.length) chasti.push({ chast, nomer, tekst: bezTegov(tekst), metki }); };
   (d.fakty?.udary ?? []).forEach((u, i) => dob('факт', i + 1, u.summary, u.pometka));
-  d.story.udary.forEach((u, i) => dob('рассказ', i + 1, u.summary, u.pometka));
-  dob('заголовок', 0, `${d.lead.h1}. ${d.lead.hook}`);
-  dob('граница первенства', 0, d.pervenstvo.granica);
-  d.razdely.forEach((r, i) => dob('доп. раздел', i + 1, r.html));
-  d.audioguide.transcript.forEach((t, i) => dob('аудиогид', i + 1, t));
-  d.quiz.voprosy.forEach((v, i) => dob('викторина', i + 1, `${v.q} ${v.e}`));
+  (d.story?.udary ?? []).forEach((u, i) => dob('рассказ', i + 1, u.summary, u.pometka));
+  if (d.lead) dob('заголовок', 0, `${d.lead.h1}. ${d.lead.hook}`);
+  if (d.pervenstvo) dob('граница первенства', 0, d.pervenstvo.granica);
+  (d.razdely ?? []).forEach((r, i) => dob('доп. раздел', i + 1, r.html));
+  (d.audioguide?.transcript ?? []).forEach((t, i) => dob('аудиогид', i + 1, t));
+  (d.quiz?.voprosy ?? []).forEach((v, i) => dob('викторина', i + 1, `${v.q} ${v.e}`));
   return chasti;
 }
 
