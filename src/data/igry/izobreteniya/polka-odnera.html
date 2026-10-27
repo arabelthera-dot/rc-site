@@ -1,0 +1,52 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · полка арифмометров</div>
+    <h2>Мир считал на петербургском колесе</h2>
+    <p class="s18-1">Семь машин из четырёх стран — корпуса у всех разные. Веди пальцем светящийся просвет по полке или нажми на машину: что у неё внутри?</p>
+    <div class="polka" id="polka">
+      <div class="polka-shelf"><div class="polka-lens" aria-hidden="true"></div></div>
+      <div class="polka-count"><span>Колесо Однера найдено: <b id="polkaCnt">0</b> из 7</span><span class="polka-bar"><i></i></span></div>
+      <div class="lab-msg" id="polkaMsg" aria-live="polite">Просвет стоит над петербургской машиной 1890 года. Подержи — и веди к немецкой, шведской, американской.</div>
+      <div class="stopki" id="stopki" hidden>
+        <div class="stopki-row">
+          <div class="stopki-col stopki-fr"><div class="stopki-pile"><i class="on"></i></div><div class="stopki-v">≈ 2 000</div><div class="stopki-k">арифмометров Тома де Кольмара, Франция, — за XIX век</div></div>
+          <div class="stopki-col stopki-ru"><div class="stopki-pile stopki-wall"></div><div class="stopki-v" id="stopkiNum">0</div><div class="stopki-k">«Феликсов» собрал один Курск — к 1973 году</div></div>
+        </div>
+        <p class="stopki-leg">Один кирпичик — 5 000 машин. Слева меньше половины кирпичика, справа шестьсот.</p>
+      </div>
+      <noscript><div class="noscript-box">Для полки нужен JavaScript. Текстовая версия: на полке петербургский «Однер» 1890 года, немецкие Brunsviga и Triumphator, шведские Original-Odhner и Facit, американский Marchant и курский «Феликс». Корпуса разные, а внутри у всех одно колесо Однера с выдвижными зубцами. Французских арифмометров Тома за XIX век сделали около 2 000, курских «Феликсов» — 3 миллиона.</div></noscript>
+    </div>
+    <p class="src-note">Схема музея, не снимок: корпуса нарисованы по типу машин. Марки-потомки — по А. И. Басову (НИУ ВШЭ, IQ.HSE, 2024); около 2 000 машин Тома за XIX век — Понятов А. «Рождение легенды», «Наука и жизнь» № 6, 2020; 3 миллиона «Феликсов» — у Басова и «Курский завод „Счётмаш“», Виртуальный компьютерный музей.</p>
+
+    <h3 class="press-h">Возьми любую и покрути ручку</h3>
+    <p class="s18-1">В руках: <b id="inHand">«Однер», Петербург (Россия)</b> — просвеченную машину на полке можно выбрать нажатием. Задача счетовода: в цехе 23 рабочих, каждому положено 147 рублей. Набери рычажками 147, крути ручку пальцем по кругу: три оборота, сдвиг каретки, ещё два. Уйдёшь в минус — зазвенит звонок.</p>
+    <div class="press" id="press">
+      <div class="lab-btns">
+        <button class="btn ghost" type="button" data-lev="0" data-d="1">Сотни +1</button>
+        <button class="btn ghost" type="button" data-lev="1" data-d="1">Десятки +1</button>
+        <button class="btn ghost" type="button" data-lev="2" data-d="1">Единицы +1</button>
+        <button class="btn ghost" type="button" id="levClear">Рычажки в ноль</button>
+      </div>
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="turnPlus">Ручку вперёд: прибавить</button>
+        <button class="btn ghost" type="button" id="turnMinus">Ручку назад: вычесть</button>
+        <button class="btn ghost" type="button" id="shiftCar">Сдвинуть каретку</button>
+        <button class="btn ghost" type="button" id="arReset">Начать заново</button>
+      </div>
+      <div class="crank-row">
+        <div class="crank" id="crank" role="button" tabindex="0" aria-label="Ручка арифмометра: крути по кругу — по часовой прибавить, против часовой вычесть; стрелки клавиатуры тоже работают">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56" class="crank-ring"/><circle cx="60" cy="60" r="10" class="crank-hub"/><g class="crank-arm"><rect x="56" y="10" width="8" height="52" rx="4"/><circle cx="60" cy="16" r="11" class="crank-knob"/></g></svg>
+        </div>
+        <div class="crank-hint">Крути пальцем по кругу: по часовой — прибавить, против — вычесть. Нажатие — один оборот вперёд.</div>
+      </div>
+      <div class="press-stage">
+        <figure><canvas id="cvWheel" width="300" height="300" role="img" aria-label="Модель трёх колёс Однера: из каждого выдвинуто столько зубцов, какая цифра набрана"></canvas><figcaption>Набрано: <span id="setTxt">000</span></figcaption></figure>
+        <figure><canvas id="cvCount" width="300" height="300" role="img" aria-label="Модель счётчика арифмометра: окошки результата, положение каретки и число оборотов"></canvas><figcaption>Счётчик: <span id="cntTxt">0, оборотов 0</span></figcaption></figure>
+      </div>
+      <div class="lab-cap">Модель, а не снимок: три колеса вместо девяти, каретка на два положения, звонок — как у «Феликса».</div>
+      <div class="lab-msg" id="arMsg" aria-live="polite">Набери рычажками 147.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: на арифмометре Однера число набирают рычажками, и из каждого колеса выдвигается столько зубцов, какая цифра стоит. Один оборот ручки прибавляет набранное число к счётчику. Чтобы умножить 147 на 23, ручку крутят три раза, сдвигают каретку на разряд и крутят ещё два раза: в счётчике 3381. Если при вычитании уйти в минус, у «Феликса» звенит звонок.</div></noscript>
+    </div>
+    <p class="src-note s18-2">Правило модели — устройство колеса Однера: Понятов А. «Рождение легенды», «Наука и жизнь» № 6, 2020; звонок — «Арифмометр „Феликс“», Музей истории города Обнинска.</p>
+  </div>
+</section>

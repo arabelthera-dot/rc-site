@@ -68,8 +68,18 @@ ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.
         </div></details>${u.pometka ? `<p class="fakt-ist"><span class="fakt-pometka">${u.pometka}</span> <a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}</li>`;
 const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;
 const o = d.oblozhka;
+// Блоки фактов (один или несколько, Р302): без posle — на своём месте после story, с posle — после указанного блока.
+const faktyBloki = [d.fakty ?? []].flat();
+const faktyHtml = (b) => `<section class="block" id="${b.id}">
+  <div class="wrap">
+    <div class="kicker">${b.kicker}</div>
+    <h2>${b.h2}</h2>
+    ${udaryHtml(b.udary)}${b.dop ? `\n${b.dop}` : ''}
+  </div>
+</section>`;
+const kal = d.kalendar ?? { h2: 'Календарь изобретений', intro: 'Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.' };
 // Уникальные разделы дня (карточка razdely, Р286) — разметкой 1:1 сразу после своего блока; нет — пусто.
-const posle = (id) => d.razdely.filter((r) => r.posle === id).map((r) => `\n${r.html}`).join('');
+const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
 ---
 <!DOCTYPE html>
 <html lang="ru" data-museum={d.muzei}>
@@ -109,8 +119,8 @@ const posle = (id) => d.razdely.filter((r) => r.posle === id).map((r) => `\n${r.
   <span class="here">{d.kroshka}</span>
 </div></nav>
 
-{o && (<figure class="hero-fig" style={o.stil_figury}>
-<div class={o.fit_full ? 'hero-scene fit-full' : 'hero-scene'} id={o.id_sceny} data-oblozhka={o.celikom ? 'celikom' : undefined}>
+{o && (<figure class="hero-fig" style={o.stil_figury ?? o.stil}>
+<div class={o.fit_full ? 'hero-scene fit-full' : 'hero-scene'} id={o.id_sceny ?? o.id} data-oblozhka={o.celikom ? 'celikom' : undefined}>
   <img class="scene" src={o.src} data-source={o.data_source} data-license={o.license} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding={o.decoding ? 'async' : undefined}>
 </div>
 <figcaption class="scene-caption">
@@ -174,17 +184,18 @@ const posle = (id) => d.razdely.filter((r) => r.posle === id).map((r) => `\n${r.
     <div class="kicker">{d.story.kicker}</div>
     <h2>{d.story.h2}</h2>
     {d.story.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>}
-    <Fragment set:html={udaryHtml(d.story.udary)} />
+    {d.story.udary && <Fragment set:html={udaryHtml(d.story.udary)} />}
+    {d.story.abzacy && <Fragment set:html={d.story.abzacy.join('\n    ')} />}
   </div>
 </section><Fragment set:html={posle('story')} />
 
-{d.fakty && (<section class="block" id="fakty">
+{faktyBloki.filter((b) => !b.posle).map((b) => (<section class="block" id={b.id}>
   <div class="wrap">
-    <div class="kicker">{d.fakty.kicker}</div>
-    <h2>{d.fakty.h2}</h2>
-    <Fragment set:html={udaryHtml(d.fakty.udary)} />
+    <div class="kicker">{b.kicker}</div>
+    <h2>{b.h2}</h2>
+    <Fragment set:html={udaryHtml(b.udary)} />{b.dop && <Fragment set:html={b.dop} />}
   </div>
-</section>)}<Fragment set:html={posle('fakty')} />
+</section>))}<Fragment set:html={posle('fakty')} />
 
 <Fragment set:html={igraHtml} /><Fragment set:html={posle('igra')} />
 
@@ -217,6 +228,7 @@ const posle = (id) => d.razdely.filter((r) => r.posle === id).map((r) => `\n${r.
 
 {d.svoi?.result ? <Fragment set:html={d.svoi.result} /> : (<section class="block" id="result">
   <div class="wrap">
+    {d.result.kicker && <div class="kicker">{d.result.kicker}</div>}
     <h2 style="margin-bottom:6px">{d.result.h2}</h2>
     <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={d.result.intro} /></p>
     <div class="day-result">
@@ -233,15 +245,16 @@ const posle = (id) => d.razdely.filter((r) => r.posle === id).map((r) => `\n${r.
     <div class="kicker">Источники</div>
     <h2>На чём стоит страница</h2>
     <ul class="sources">
-      {d.sources.map((s) => s.html ? <li><Fragment set:html={s.html} /></li> : <li><a href={s.href} rel="noopener" target="_blank"><Fragment set:html={s.title} /></a>{s.pometka ? ` ${s.pometka}` : ''}: <Fragment set:html={s.note} /></li>)}
+      {d.sources.map((s) => 'html' in s ? <li><Fragment set:html={s.html} /></li> : <li><a href={s.href} rel="noopener" target="_blank"><Fragment set:html={s.title} /></a>{s.pometka ? ` ${s.pometka}` : ''}: <Fragment set:html={s.note} /></li>)}
     </ul>
   </div>
 </section><Fragment set:html={posle('sources')} />
 
 {d.svoi?.calendar ? <Fragment set:html={d.svoi.calendar} /> : (<section class="block" id="calendar">
   <div class="wrap">
-    <h2 style="margin-bottom:6px">Календарь изобретений</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
+    {kal.kicker && <div class="kicker">{kal.kicker}</div>}
+    <h2 style="margin-bottom:6px">{kal.h2}</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={kal.intro} /></p>
     <div id="calbox"></div>
   </div>
 </section>)}<Fragment set:html={posle('calendar')} />
@@ -270,6 +283,7 @@ const posle = (id) => d.razdely.filter((r) => r.posle === id).map((r) => `\n${r.
 <script is:inline set:html={knopkiJs}></script>
 <script is:inline src={`igry/${d.igra.imya}.js`}></script>
 <script is:inline set:html={quizJs}></script>{d.igra.dop && <script is:inline src={`igry/${d.igra.imya}-dop.js`}></script>}
+{d.skripty.map((s) => 'src' in s ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.js}></script>)}
 <script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
 {chromeJs && <script is:inline set:html={chromeJs}></script>}
 <script is:inline src="../../assets/museum-chrome.js"></script>

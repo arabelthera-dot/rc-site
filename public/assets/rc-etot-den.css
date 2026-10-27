@@ -9,19 +9,73 @@
 .rc-ed-title{display:block;font-size:16px;line-height:1.35;font-weight:600}
 .rc-ed-vse{margin:12px 0 0;font-size:15px}
 .rc-ed-vse a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-/* узел даты */
-.rc-uzel{max-width:960px;margin:0 auto;padding:0 16px 32px;box-sizing:border-box}
-.rc-uzel-lead{font-size:var(--fs-body,17px);line-height:1.5;margin:0 0 18px}
-.rc-uzel-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.rc-uzel-card{display:flex;flex-direction:column;height:100%;border:1px solid rgba(201,168,76,.35);border-radius:12px;overflow:hidden;color:inherit;text-decoration:none}
-.rc-uzel-card:hover,.rc-uzel-card:focus-visible{border-color:var(--gold,#c9a84c)}
-.rc-uzel-card img{display:block;width:100%;aspect-ratio:16/10;height:auto;object-fit:cover}
-.rc-uzel-body{padding:12px 14px 16px}
-.rc-uzel-muzey{display:block;font-family:'Inter',system-ui,sans-serif;font-size:13px;line-height:1.35;opacity:.8;margin-bottom:6px}
-.rc-uzel-title{display:block;font-size:19px;line-height:1.3;color:var(--gold-l,#e2c675);margin-bottom:6px}
-.rc-uzel-hook{display:block;font-size:15.5px;line-height:1.45}
-.rc-uzel-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:26px 0 0;font-family:'Inter',system-ui,sans-serif;font-size:15px}
+/* узел даты (r301, 27.10): «афиша дня» — дата крупно, хук дня в полный голос, главная карточка, ровная сетка остальных.
+   Сетка — 12 колонок, раскладка по числу карточек (data-n у списка): ни при каком числе нет дыры в последнем ряду. */
+/* общий main страницы — 720px; узлу нужна ширина афиши: выходит из него до 1120px, по центру, без прокрутки вбок */
+.rc-uzel{margin:0 calc((100% - min(1120px,100vw - 32px)) / 2);padding:8px 0 40px;box-sizing:border-box}
+.rc-uzel-daty,.rc-uzel-lead{max-width:720px;margin-left:auto;margin-right:auto}
+.rc-uzel-head{max-width:860px;margin:0 auto 34px;text-align:center}
+.rc-uzel-kicker{margin:0 0 6px;font:600 13px/1.3 'Inter',system-ui,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--gold,#c9a84c)}
+.rc-uzel-data{margin:0;font-family:'PT Serif',Georgia,serif;font-weight:700;font-size:clamp(52px,9vw,104px);line-height:1;letter-spacing:-.01em;color:#fff}
+.rc-uzel-hook-dnya{margin:22px auto 0;max-width:30ch;font-family:'PT Serif',Georgia,serif;font-size:clamp(21px,2.5vw,29px);line-height:1.32;color:var(--gold-l,#e4c97a);text-wrap:balance}
+.rc-uzel-skolko{margin:18px 0 0;font:500 14px/1.4 'Inter',system-ui,sans-serif;color:var(--muted,#9fb4c8);letter-spacing:.3px}
+.rc-uzel-skolko::before,.rc-uzel-skolko::after{content:'';display:inline-block;width:28px;height:1px;margin:0 12px;vertical-align:middle;background:rgba(201,168,76,.5)}
+/* карточка */
+.rc-uzel-card{display:flex;flex-direction:column;height:100%;box-sizing:border-box;border:1px solid rgba(201,168,76,.28);border-radius:14px;overflow:hidden;color:inherit;text-decoration:none;background:linear-gradient(180deg,rgba(17,31,51,.72),rgba(12,24,38,.55));transition:border-color .2s,transform .2s,box-shadow .2s}
+.rc-uzel-card:hover,.rc-uzel-card:focus-visible{border-color:var(--gold,#c9a84c);box-shadow:0 10px 32px rgba(0,0,0,.35),0 0 0 1px rgba(201,168,76,.25)}
+.rc-uzel-card:focus-visible{outline:2px solid var(--gold-l,#e4c97a);outline-offset:3px}
+.rc-uzel-kadr{display:block;position:relative;overflow:hidden;aspect-ratio:16/10;background:#0c1826}
+.rc-uzel-kadr img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform .5s ease}
+.rc-uzel-card:hover .rc-uzel-kadr img{transform:scale(1.03)}
+/* день без снимка: не рисунок-заглушка, а типографская плашка — год крупно на тёмном поле с золотой рамкой */
+.rc-uzel-bez{display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 60%,rgba(201,168,76,.14),transparent 70%),#0c1826;font-family:'PT Serif',Georgia,serif;font-weight:700;font-size:clamp(44px,5vw,64px);color:rgba(228,201,122,.85);letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(201,168,76,.25),inset 0 0 0 10px #0c1826,inset 0 0 0 11px rgba(201,168,76,.18)}
+.rc-uzel-body{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px}
+.rc-uzel-muzey{display:block;font:500 12.5px/1.4 'Inter',system-ui,sans-serif;letter-spacing:.2px;color:var(--muted,#9fb4c8);margin-bottom:8px}
+.rc-uzel-title{display:block;font-family:'PT Serif',Georgia,serif;font-weight:700;font-size:20px;line-height:1.25;color:var(--gold-l,#e4c97a);margin-bottom:8px}
+.rc-uzel-hook{display:block;font-size:15.5px;line-height:1.5;margin-bottom:14px}
+.rc-uzel-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 14px;font:500 13px/1.3 'Inter',system-ui,sans-serif;color:var(--muted,#9fb4c8)}
+.rc-uzel-god{font:600 13px/1.2 'Inter',system-ui,sans-serif;font-variant-numeric:tabular-nums lining-nums;letter-spacing:.5px;color:var(--gold,#c9a84c);padding:3px 8px;border:1px solid rgba(201,168,76,.45);border-radius:6px}
+.rc-uzel-otkryt{margin-top:auto;display:inline-flex;align-items:center;gap:6px;min-height:24px;font:600 14.5px/1.3 'Inter',system-ui,sans-serif;color:var(--gold-l,#e4c97a)}
+.rc-uzel-otkryt span{transition:transform .2s}
+.rc-uzel-card:hover .rc-uzel-otkryt span{transform:translateX(4px)}
+/* главная карточка — день первого по номеру музея; хук дня стоит над ней, в карточке не повторяется */
+.rc-uzel-glav{height:auto;margin:0 0 20px}
+.rc-uzel-glav .rc-uzel-title{font-size:clamp(23px,2.6vw,32px);line-height:1.2}
+/* сетка остальных */
+.rc-uzel-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.rc-uzel-list>li{grid-column:span 12}
+@media (min-width:640px){
+  .rc-uzel-list>li{grid-column:span 6}
+  /* нечётное число — последняя карточка во всю ширину, кадр слева */
+  .rc-uzel-list>li:last-child:nth-child(odd){grid-column:span 12}
+  .rc-uzel-list>li:last-child:nth-child(odd) .rc-uzel-card,.rc-uzel-glav{flex-direction:row}
+  .rc-uzel-list>li:last-child:nth-child(odd) .rc-uzel-kadr{flex:0 0 46%;aspect-ratio:auto;min-height:240px}
+  .rc-uzel-glav .rc-uzel-kadr{flex:0 0 56%;aspect-ratio:auto;min-height:300px}
+  .rc-uzel-glav .rc-uzel-body{justify-content:center;padding:28px 30px}
+  .rc-uzel-glav .rc-uzel-otkryt{margin-top:10px}
+}
+@media (min-width:980px){
+  .rc-uzel-glav .rc-uzel-kadr{min-height:400px}
+  .rc-uzel-glav .rc-uzel-body{padding:36px 40px}
+  /* 3 в ряд; хвост ряда — 2 по половине (n=2,5,8) или 4 по четверти (n=7); n=4 — 2×2; n=1 — во всю ширину кадром слева */
+  .rc-uzel-list>li,.rc-uzel-list>li:last-child:nth-child(odd){grid-column:span 4}
+  .rc-uzel-list>li:last-child:nth-child(odd) .rc-uzel-card{flex-direction:column}
+  .rc-uzel-list>li:last-child:nth-child(odd) .rc-uzel-kadr{flex:none;aspect-ratio:16/10;min-height:0}
+  .rc-uzel-list[data-n="2"]>li,.rc-uzel-list[data-n="4"]>li,.rc-uzel-list[data-n="5"]>li:nth-child(n+4),.rc-uzel-list[data-n="8"]>li:nth-child(n+7){grid-column:span 6}
+  .rc-uzel-list[data-n="7"]>li:nth-child(n+4){grid-column:span 3}
+  .rc-uzel-list[data-n="1"]>li{grid-column:span 12}
+  .rc-uzel-list[data-n="1"] .rc-uzel-card{flex-direction:row}
+  .rc-uzel-list[data-n="1"] .rc-uzel-kadr{flex:0 0 46%;aspect-ratio:auto;min-height:260px}
+  .rc-uzel-list[data-n="7"]>li:nth-child(n+4) .rc-uzel-title{font-size:18px}
+}
+/* кадры с полями скана (лист альбома, белая рамка отпечатка): кадр — по самому изображению, без бумаги и рамки */
+.rc-uzel-kadr img[src$="/01-15-goskatalog-12323745.jpg"]{transform:scale(1.05)}
+.rc-uzel-kadr img[src$="/01-15-goskatalog-27039900.jpg"]{object-position:52% 40%;transform:scale(1.75);transform-origin:52% 40%}
+.rc-uzel-card:hover .rc-uzel-kadr img[src$="/01-15-goskatalog-27039900.jpg"]{transform:scale(1.8)}
+.rc-uzel-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:34px 0 0;padding-top:18px;border-top:1px solid rgba(201,168,76,.2);font-family:'Inter',system-ui,sans-serif;font-size:15px}
 .rc-uzel-nav a{color:var(--gold-l,#e2c675);min-height:44px;display:inline-flex;align-items:center}
+@media (prefers-reduced-motion:reduce){.rc-uzel-card,.rc-uzel-kadr img,.rc-uzel-otkryt span{transition:none}}
+.rc-uzel-lead{font-size:var(--fs-body,17px);line-height:1.5;margin:0 auto 18px}
 .rc-uzel-daty{columns:4 150px;list-style:none;padding:0;margin:0;font-size:16px}
 .rc-uzel-daty li{padding:4px 0}
 .rc-uzel-daty a{color:var(--gold-l,#e2c675)}
@@ -30,3 +84,10 @@
 .rc-po-teme{margin-top:24px}
 .rc-pt-temy a{margin:0 2px}
 .rc-tema-vid{margin:22px 0 10px}
+
+/* телефон: крошки узла — в одну колонку между углами (значок возраста и кнопка «глаз» стоят absolute сверху справа);
+   :has(.rc-uzel) — только страницы узла, полные страницы дней с блоком выше не задеваются */
+@media (max-width:600px){
+  body:has(.rc-uzel) .crumbs{padding-left:16px;padding-right:96px;text-align:left}
+  .rc-uzel-skolko::before,.rc-uzel-skolko::after{display:none}
+}
