@@ -26,3 +26,7 @@
 .rc-uzel-daty li{padding:4px 0}
 .rc-uzel-daty a{color:var(--gold-l,#e2c675)}
 .rc-uzel-daty span{opacity:.6;font-size:13px}
+/* «По этой теме в других музеях» и страницы тем /tema/ (Р289 п.2, src/lib/temy.mjs) — тот же вид */
+.rc-po-teme{margin-top:24px}
+.rc-pt-temy a{margin:0 2px}
+.rc-tema-vid{margin:22px 0 10px}
