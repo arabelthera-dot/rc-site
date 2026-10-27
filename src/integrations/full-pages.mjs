@@ -27,6 +27,7 @@ import { podvalDnyaHtml } from '../lib/podval-dnya.mjs';
 import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { SOSEDI_POLNYE, polnyeSosedi, perepisatSosedey, zagolovok } from '../lib/sosedi-polnye.mjs';
 import { blokDrugieMuzei } from '../lib/etot-den.mjs';
+import { temyOn, blokPoTeme } from '../lib/temy.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 import { kartochki } from '../lib/dni-shablon.mjs';
 
@@ -675,13 +676,15 @@ export default function fullPages() {
               // «Этот день в других музеях» (Р286 п.2, src/lib/etot-den.mjs) — перед журналом и подвалом; у копии «staraya» нет.
               // Других готовых дней этой даты нет — блока нет.
               const ed = staraya ? '' : blokDrugieMuzei(base, museum, key);
-              if (ed) html = html.replace(/<\/head>/i, `<style data-rc-etot-den>${ETOT_DEN_CSS}</style>\n</head>`);
+              // «По этой теме в других музеях» (Р289 п.2, src/lib/temy.mjs) — сразу после него, тем же видом; флаг выключен — ничего.
+              const pt = staraya || !temyOn() ? '' : blokPoTeme(base, museum, key);
+              if (ed || pt) html = html.replace(/<\/head>/i, `<style data-rc-etot-den>${ETOT_DEN_CSS}</style>\n</head>`);
               // «Завтра в музеях» + серия (Р289 п.1, src/lib/privychka.mjs) — после «Этот день в других музеях»; флаг выключен — ничего.
               const pv = staraya || !privychkaOn() ? '' : blokZavtra(base, key);
               if (pv) html = html.replace(/<\/head>/i, `<style data-rc-privychka>${PRIVYCHKA_CSS}</style>\n${privychkaJs(base)}\n</head>`);
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
-              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + pv + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
-              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${pv}${zhurnalHtml(zh)}${lic}\n</body>`);
+              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + pt + pv + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
+              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${pt}${pv}${zhurnalHtml(zh)}${lic}\n</body>`);
             }
             // «Поделиться» — один раз (glazami п.16): у страницы свой блок — строку museum-chrome не ставим,
             // а museum-support.js не добавляет кнопку, если на странице уже есть блок «Поделиться».
