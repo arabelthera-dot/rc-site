@@ -301,6 +301,13 @@ const chromeSrc = fs.readFileSync('public/assets/museum-chrome.js', 'utf8');
 const chromeMap = (name) => vm.runInNewContext(`(${new RegExp(`var\\s+${name}\\s*=\\s*(\\{[\\s\\S]*?\\});`).exec(chromeSrc)[1]})`);
 const NAV_LABEL = chromeMap('LABEL');
 const NAV_SKIP = chromeMap('SKIP');
+// Р323 (28.10): ссылка на сайт с сертификатом НУЦ Минцифры (список — src/data/tls-nedoverie.json, пишет
+// scripts/proverka-tls.mjs): Chrome/Safari покажут «угрозу безопасности» — подписываем, куда ссылка откроется.
+const RU_CA = (() => { try { const h = JSON.parse(fs.readFileSync('src/data/tls-nedoverie.json', 'utf8')).hosts;
+  return Object.keys(h).filter((k) => h[k].kind === 'ru-ca'); } catch { return []; } })();
+const RU_CA_NOTE = ' <span class="rc-ruca">(откроется в Яндекс Браузере)</span>';
+export const podpisRuCa = (html) => !RU_CA.length ? html : html.replace(/<a\b[^>]*\bhref=["']https?:\/\/(?:www\.)?([^/"':]+)[^>]*>([\s\S]*?)<\/a>(?! <span class="rc-ruca">)/gi,
+  (m, host, text) => (RU_CA.includes(host) && !/Яндекс Браузере/.test(text) ? m + RU_CA_NOTE : m));
 const escHtml = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 function chromeConfig(html) {
   const win = {};
@@ -512,6 +519,7 @@ export default function fullPages() {
             else if (OLD_KAL.test(html)) { OLD_KAL.lastIndex = 0; bad.push(`${museum}/${key} — тег старого calendar-*.js, а записей дней нет`); continue; }
             if (staraya || shablon) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
+            html = podpisRuCa(html);
             if (polnye.length) {
               const { prev, next } = polnyeSosedi(polnye, key);
               html = perepisatSosedey(html, { prev: prev && sosedInfo(prev), next: next && sosedInfo(next) });
