@@ -984,6 +984,38 @@
         "v": 1
       }
     },
+    "izobreteniya/27jan-elbrus": {
+      "title": "История в 36 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: проспект «Эльбрус-2», 1982 (Музей современной истории России); план-график отладки МВК «Эльбрус-2», 1980 (Политехнический музей); книга В. С. Бурцева «Параллелизм вычислительных процессов…», 1998 (Политехнический музей). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus.mp4",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 36.4,
+        "mb": 7.9
+      },
+      "vertical": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 36.4,
+        "mb": 5.9
+      },
+      "poster": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus-9x16-poster.jpg",
+        "v": 1
+      }
+    },
     "izobreteniya/24jan-anchar": {
       "title": "История в 51 секунду",
       "note": "Кадры ролика — подлинные: модель К-162 «Анчар» и снимок Н. Н. Исанина с Н. Н. Назаровым (Центральный военно-морской музей, Госкаталог музейного фонда РФ); портрет академика Н. Н. Исанина (Музей истории подводных сил России). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
