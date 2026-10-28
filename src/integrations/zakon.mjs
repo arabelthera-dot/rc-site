@@ -5,7 +5,16 @@
 //     названия) и старый снимок (> 14 дней) — предупреждением. Ложное — строкой в data/reestry/isklyucheniya.json.
 // Е2: кадр XX века без основания — сборка красная (с 20.10, Р47: 147 кадров разобраны в data/reestry/osnovaniya.json,
 //     без основания 0). Новый кадр — основание в подписи или строкой в ведомости. Список — node scripts/prava.mjs --xx.
-import { sverkaReestrov, probaReestrov, kadryXX } from '../lib/zakon.mjs';
+// Стоп-лист Р316 (Сергей 28.10.2026): любое упоминание из STOP — красная и в исходниках (до сборки), и в dist (после);
+//     исключений и пометок нет.
+import { fileURLToPath } from 'node:url';
+import { sverkaReestrov, probaReestrov, kadryXX, stopList, stopDist } from '../lib/zakon.mjs';
+
+const stop = (logger, r, gde) => {
+  if (!r.length) return logger.info(`стоп-лист Р316 (${gde}): 0`);
+  for (const s of r) logger.error(`${s.gde}: ${s.kto} — найдено «${s.naydeno}»`);
+  throw new Error(`стоп-лист Р316 (${gde}): ${r.length} упоминаний — убрать полностью, исключений и пометок нет`);
+};
 
 export default function zakon() {
   return {
@@ -18,6 +27,7 @@ export default function zakon() {
           for (const s of sboi) logger.error(s);
           throw new Error(`закон о содержании: проба сверки не прошла (${sboi.length}) — сверка с реестрами сломана или снимки пусты`);
         }
+        stop(logger, stopList(), 'исходники');
         const r = sverkaReestrov();
         for (const s of r.starye) logger.warn(s);
         for (const s of r.zhdut) logger.warn(`ждёт решения Сергея (r380), сверка выключена: ${s.gde}: «${s.imya}» — ${s.reestr} (найдено «${s.variant}»)`);
@@ -34,6 +44,7 @@ export default function zakon() {
         }
         logger.info(`кадры XX века: ${xx.vsego}, без основания 0`);
       },
+      'astro:build:done': ({ dir, logger }) => stop(logger, stopDist(fileURLToPath(dir)), 'dist'),
     },
   };
 }
