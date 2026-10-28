@@ -1113,35 +1113,35 @@
       }
     },
     "izobreteniya/31jan-girotron": {
-      "title": "История в 45 секунд",
-      "note": "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: А. В. Гапонов-Грехов на снимках 1969 и 1985 годов (Нижегородский государственный историко-архитектурный музей-заповедник). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "title": "История в 59 секунд",
+      "note": "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: А. В. Гапонов-Грехов на снимках 1969 и 1985 годов (Нижегородский государственный историко-архитектурный музей-заповедник), юбилейная медаль 1987 года (РОСИЗО). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
       "horizontal": {
         "file": "izobreteniya/31jan-girotron/day-31jan-girotron.mp4",
         "local": "muzei/izobreteniya/video/day-31jan-girotron.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 44.7,
-        "mb": 7.4
+        "sec": 58.8,
+        "mb": 9.7
       },
       "vertical": {
         "file": "izobreteniya/31jan-girotron/day-31jan-girotron-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-31jan-girotron-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 44.7,
-        "mb": 7.7
+        "sec": 58.8,
+        "mb": 10.6
       },
       "poster": {
         "file": "izobreteniya/31jan-girotron/day-31jan-girotron-poster.jpg",
         "local": "muzei/izobreteniya/video/day-31jan-girotron-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "izobreteniya/31jan-girotron/day-31jan-girotron-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-31jan-girotron-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     }
   }
