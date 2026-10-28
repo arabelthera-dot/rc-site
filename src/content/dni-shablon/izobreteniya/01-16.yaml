@@ -235,7 +235,7 @@ razdely: []
 igra:
   imya: soyuz-prichal
   css:
-    - soyuz-prichal
+    - igra-soyuz-prichal
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире
