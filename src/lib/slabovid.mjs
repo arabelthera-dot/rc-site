@@ -2,14 +2,18 @@
 // и полные страницы дней (src/integrations/full-pages.mjs). По нажатию — класс rc-slabovid на <html>:
 // крупный шрифт, чёрное на белом, без фоновых картинок, подчёркнутые ссылки, видимый фокус
 // (по сути ГОСТ Р 52872-2019 и требований к сайтам госорганов). Вид — public/assets/rc-slabovid.css.
-// Состояние — localStorage 'rc-slabovid'; применяется в <head> до отрисовки (headScript), без мигания.
+// Состояние — sessionStorage 'rc-slabovid' (до закрытия вкладки; Сергей 28.10, Р317: случайное нажатие не должно
+// залипать белым навсегда); старая запись localStorage стирается. Применяется в <head> до отрисовки, без мигания.
 export const SLABOVID_KEY = 'rc-slabovid';
 
+// Адрес с ?slabovid=0 / ?slabovid=1 выключает/включает режим на эту вкладку.
 // Режим включён — rc-slabovid.css пишется в <head> обычной (блокирующей) ссылкой: первая отрисовка уже в режиме.
 export const slabovidHeadJs = (base = '/') =>
-  `try{var h=document.documentElement,z=localStorage.getItem('rc-sv-size'),c=localStorage.getItem('rc-sv-color');`
+  `try{var h=document.documentElement,q=/[?&]slabovid=([01])/.exec(location.search);`
+  + `localStorage.removeItem('${SLABOVID_KEY}');if(q)sessionStorage.setItem('${SLABOVID_KEY}',q[1]);`
+  + `var z=localStorage.getItem('rc-sv-size'),c=localStorage.getItem('rc-sv-color');`
   + `if(z)h.setAttribute('data-rc-sv-size',z);if(c)h.setAttribute('data-rc-sv-color',c);`
-  + `if(localStorage.getItem('${SLABOVID_KEY}')==='1'){h.classList.add('rc-slabovid');`
+  + `if(sessionStorage.getItem('${SLABOVID_KEY}')==='1'){h.classList.add('rc-slabovid');`
   + `document.write('<link rel="stylesheet" href="${base}assets/rc-slabovid.css">')}}catch(e){}`;
 
 // Скорость (Б10, 20.10): режим — 21 КБ, все правила под html.rc-slabovid; обычному посетителю он не нужен до нажатия
@@ -22,7 +26,7 @@ export const slabovidCssHtml = (base = '/') =>
 const EYE = '<svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>';
 
 const CLICK = `var h=document.documentElement,on=h.classList.toggle('rc-slabovid');`
-  + `this.setAttribute('aria-pressed',on);try{localStorage.setItem('${SLABOVID_KEY}',on?'1':'0')}catch(e){}`;
+  + `this.setAttribute('aria-pressed',on);try{sessionStorage.setItem('${SLABOVID_KEY}',on?'1':'0')}catch(e){}`;
 
 // aria-pressed правится скриптом сразу за кнопкой — состояние уже известно из <head>.
 export const slabovidButtonHtml = () =>
