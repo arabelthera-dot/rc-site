@@ -951,6 +951,38 @@
         "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/24jan-k162": {
+      "title": "История в 56 секунд",
+      "note": "Кадры ролика — подлинные снимки со страницы дня (публикация РИА Новости, 18.12.2020): К-162 «Анчар» на ходу (фото ВМС США), обтекаемый корпус и рубка лодки проекта 661, пенный след «Анчара». Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/24jan-k162/day-24jan-k162.mp4",
+        "local": "muzei/izobreteniya/video/day-24jan-k162.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 56.4,
+        "mb": 15.6
+      },
+      "vertical": {
+        "file": "izobreteniya/24jan-k162/day-24jan-k162-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-24jan-k162-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 56.4,
+        "mb": 14.7
+      },
+      "poster": {
+        "file": "izobreteniya/24jan-k162/day-24jan-k162-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-24jan-k162-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/24jan-k162/day-24jan-k162-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-24jan-k162-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
