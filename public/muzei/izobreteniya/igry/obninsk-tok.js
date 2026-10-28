@@ -85,6 +85,7 @@ function igraRuka(root) {
   }
   function finish(ok) {
     S.konec = true; ruka.ubrat(); $('.ot-hod').hidden = true; hod2.hidden = true;
+    $('.ot-signal').textContent = ''; root.classList.remove('ot-trevoga'); zadacha(ok ? 'Смена сдана' : 'Нажми «Ещё раз»', '');
     const z = [[ok && S.lit > 0, 'Ток в сети'], [S.avarii === 0, 'Ни одной аварийной остановки'], [S.lit >= OKON, 'Горят все ' + OKON + ' окон']];
     const n = z.filter(x => x[0]).length;
     $('.ot-fin-h').textContent = ok ? (n === 3 ? 'Ток пошёл людям — как 26 июня 1954-го!' : 'Ток в сети!') : 'Пуск сорван';

@@ -16,6 +16,7 @@
 .ot-stage canvas{display:block;width:100%;height:clamp(220px,52vw,360px)}
 .ot-hod,.ot-hod2{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 14px}
 .ot-hod2{grid-template-columns:1fr}
+.ot-igra [hidden]{display:none}
 .ot-igra button{font:inherit;font-weight:800;font-size:17px;border:0;border-radius:14px;padding:12px 8px;color:#07101c;background:#ffd666;cursor:pointer}
 .ot-igra button small{display:block;font-size:12px;font-weight:600;opacity:.75}
 .ot-igra .ot-vniz{background:#9fc7ff}.ot-igra .ot-zadv{background:#6fe0a0}
