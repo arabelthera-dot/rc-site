@@ -1,0 +1,338 @@
+:root{
+    --dark:#060c17; --dark2:#0c1826; --surface:#111f33;
+    --card:rgba(255,255,255,.05); --card-b:rgba(255,255,255,.09);
+    --gold:#c9a84c; --gold-l:#e4c97a; --gold-g:rgba(201,168,76,.13);
+    --ink:#e8eef5; --muted:#7a9ab8; --line:rgba(255,255,255,.07);
+    --accent:#2d8cbf; --accent2:#1f6f8b;
+    /* legacy compat */
+    --paper:#0c1826; --paper2:#111f33;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;color:var(--ink);background:var(--dark);line-height:1.72}
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.13;margin:0}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px}
+  a{color:var(--accent)}
+
+  /* ── ШАПКА ── */
+  header.top{background:rgba(6,12,23,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--card-b);color:#fff;position:sticky;top:0;z-index:30}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+  .logo svg{display:block;filter:drop-shadow(0 0 8px rgba(201,168,76,.4))}
+  .logo .lt{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:16px}
+  .logo .lt small{display:block;font-size:9px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Inter',sans-serif}
+  .score{background:var(--gold-g);border:1px solid rgba(201,168,76,.3);border-radius:24px;padding:6px 16px;font-size:13px;color:var(--gold-l);cursor:pointer;font-family:'Inter',sans-serif}
+  .score-info{position:absolute;right:12px;top:66px;max-width:260px;background:#0e1c30;color:var(--ink);border:1px solid var(--card-b);border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.6;box-shadow:0 20px 60px rgba(0,0,0,.6);display:none;z-index:40}
+  .score-info.show{display:block}
+
+  /* ── HERO — СТАНДАРТ (не менять): 3D-сцена сверху, текст отдельным блоком ниже ── */
+  .hero-scene{position:relative;height:52vh;min-height:300px;max-height:520px;overflow:hidden;background:linear-gradient(160deg,#0a1e3a 0%,#1a3a6a 55%,#0d2240 100%)}
+  .hero-scene canvas.scene,.hero-scene img.scene{width:100%;height:100%;display:block;object-fit:cover}
+  .scene-caption{background:#060d18;padding:11px 0 12px}
+  .scene-caption .wrap{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+  .scene-cap{font-size:13.5px;line-height:1.6;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:14px;flex:1 1 420px}
+  .scene-hint{flex:0 0 auto;font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:.4px;color:#e4c97a;
+    background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.34);border-radius:24px;padding:7px 16px;font-weight:600}
+  .hero-lead{background:linear-gradient(180deg,#0c1826 0%,#060c17 100%);color:#fff;padding:28px 0 38px}
+  .hero-lead .museum{color:var(--gold);font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;font-family:'Inter',sans-serif;margin-bottom:12px;opacity:.9}
+  .hero-lead .who{font-family:'Inter',sans-serif;font-size:clamp(13px,3vw,15px);letter-spacing:.4px;color:var(--accent-l,#7dc8ff);margin-bottom:10px}
+  .hero-lead .who i{font-style:normal;color:#7893ab;font-weight:400}
+  .hero-lead h1{color:#fff;font-size:56px;font-weight:900;line-height:1.04;margin-bottom:16px}
+  .hero-lead .hook{color:#b8ccde;font-size:19px;max-width:580px;margin-bottom:28px;line-height:1.65;font-weight:400}
+  .hero-lead .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  @media(max-width:680px){.hero-lead h1{font-size:34px}.hero-lead .hook{font-size:16px}
+    .hero-scene{height:34vh;min-height:230px;max-height:300px}
+    .scene-caption .wrap{flex-direction:column;gap:9px}
+    .scene-hint{order:-1;align-self:flex-start;font-size:11.5px;padding:6px 13px}
+    .scene-cap{font-size:12.8px;flex:1 1 auto}}
+  .date-chip{display:inline-block;background:var(--gold-g);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-weight:700;padding:6px 18px;border-radius:24px;font-size:12px;margin-bottom:16px;font-family:'Inter',sans-serif;letter-spacing:.5px}
+
+  /* ── НАВИГАЦИЯ ДНЯ ── */
+  .daynav{position:sticky;top:64px;z-index:25;background:rgba(6,12,23,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--card-b)}
+  .daynav .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+  .daynav::-webkit-scrollbar{display:none}
+  .daynav a{flex:0 0 auto;padding:14px 20px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;color:var(--muted);text-decoration:none;white-space:nowrap;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid transparent;transition:.18s}
+  .daynav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+  /* ── СЕКЦИИ ── */
+  section.block{padding:64px 0;border-bottom:1px solid var(--line);scroll-margin-top:130px}
+  .kicker{font-size:10px;text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);font-weight:700;font-family:'Inter',sans-serif;margin-bottom:8px}
+  section.block h2{font-size:34px;color:#fff;margin-bottom:10px}
+  p{margin:14px 0;color:var(--ink)}
+  .pull{background:var(--gold-g);border-left:3px solid var(--gold);padding:18px 22px;border-radius:0 14px 14px 0;font-style:italic;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5;margin:26px 0}
+
+  /* ── КНОПКИ ── */
+  .btn{cursor:pointer;border:none;border-radius:12px;padding:14px 26px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:var(--accent2);color:#fff;transition:.18s;letter-spacing:.2px}
+  .btn:hover{filter:brightness(1.18)}
+  .btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--card-b)}
+  .btn.ghost:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.2)}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),#b8882b);color:#1a0f00;box-shadow:0 4px 20px rgba(201,168,76,.25)}
+  .btn.gold:hover{filter:brightness(1.1);box-shadow:0 6px 28px rgba(201,168,76,.4)}
+  .btn:active{transform:translateY(1px)}
+  .pulse{animation:pulse .9s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+  /* ── КАРТОЧКИ ── */
+  .card{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:20px 22px;margin:16px 0;backdrop-filter:blur(6px)}
+
+  /* ── КВИЗ ── */
+  .opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:13px 16px;margin:8px 0;cursor:pointer;font-size:15px;color:var(--ink);font-family:'Inter',sans-serif;transition:.16s}
+  .opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
+  .opt.correct{background:rgba(40,120,60,.18);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
+  .opt.wrong{background:rgba(180,40,40,.13);border-color:#c0453f;color:#f08080}
+  .exp{margin-top:10px;font-size:14px;background:var(--gold-g);border-radius:10px;padding:12px 14px;display:none;color:var(--gold-l)}
+  .exp.show{display:block}
+
+  /* ── ИТОГ ДНЯ ── */
+  .day-result{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:22px 24px;max-width:460px}
+  .dr-rank{font-family:'Playfair Display',Georgia,serif;font-size:28px;color:var(--gold-l);font-weight:700}
+  .dr-score{font-size:16px;margin:4px 0 12px;color:var(--ink)}.dr-score span{color:var(--muted);font-size:14px}
+  .dr-bar{height:8px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden}
+  .dr-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--gold));transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  .dr-note{margin-top:12px;font-size:14px;color:var(--muted)}
+
+  /* ── РЕКЛАМНЫЕ СЛОТЫ ── */
+  .ad-slot{position:relative;margin:26px 0;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:14px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
+  .ad-slot .lbl{position:absolute;top:7px;right:12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.15);font-family:'Inter',sans-serif}
+  .ad-slot .ph-txt{font-size:12px;max-width:80%;color:rgba(255,255,255,.18)}
+  .ad-slot.billboard{min-height:108px}
+  .adband{background:transparent;border-bottom:none}
+
+  footer{padding:40px 0 80px;color:rgba(255,255,255,.2);font-size:12px;text-align:center;font-family:'Inter',sans-serif;letter-spacing:.5px}
+  .crumbs{background:rgba(6,12,23,.6);border-bottom:1px solid var(--card-b);font-family:'Inter',sans-serif;font-size:12.5px}
+  .crumbs .wrap{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
+  .crumbs a{color:var(--gold-l);text-decoration:none;white-space:nowrap}
+  .crumbs a:hover{text-decoration:underline}
+  .crumbs .sep{color:var(--muted);opacity:.6}
+  .crumbs .here{color:var(--muted);white-space:nowrap}
+
+
+  /* ── ШАПКА: четыре строки по museum-core §6-бис ── */
+  header.top{display:block;text-align:center;padding:10px 12px 8px;height:auto;position:relative}
+  header.top .b1{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:15px;letter-spacing:.5px;color:#fff}
+  header.top .b2{font-size:11px;color:var(--muted);margin-top:2px}
+  header.top .b3{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px}
+  header.top .b4{font-size:12.5px;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-style:italic}
+  header.top .score{position:absolute;right:12px;top:10px}
+  .daynav{top:0}
+  .hero-scene{height:38vh;min-height:250px;max-height:400px}
+  @media(max-width:680px){.hero-lead h1{font-size:31px}}
+  .hero-scene img.scene{object-fit:cover;object-position:50% 50%}
+  .date-origin{font-size:13px;color:#9fb4c8;margin:-6px 0 12px;max-width:62ch}
+  .hero-lead .hook{color:#c6d8e8;max-width:62ch}
+  .hero-under{background:linear-gradient(180deg,#060d18,#060c17);padding:4px 0 22px}
+  .stamp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(125,200,255,.28);margin-top:14px}
+  .stamp>div{padding:11px 12px;border-left:1px solid rgba(125,200,255,.16);min-width:0}
+  .stamp>div:first-child{border-left:0}
+  .stamp .v{font-size:clamp(15px,3.4vw,21px);font-weight:700;color:#8fd3ff;line-height:1.1;overflow-wrap:anywhere}
+  .stamp .k{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#8fa5b9;margin-top:5px}
+  @media(max-width:600px){.stamp{grid-template-columns:repeat(2,minmax(0,1fr))}.stamp>div:nth-child(3){border-left:0}.stamp>div:nth-child(n+3){border-top:1px solid rgba(125,200,255,.16)}}
+
+  /* ── ЛЕНТА УДАРОВ (museum-inventions, вариант А; museum-core §5-бис) ── */
+  .udary{list-style:none;margin:18px 0 0;padding:0;counter-reset:u}
+  .udary>li{border-top:1px solid var(--line);padding:4px 0}
+  .udary details>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr;gap:10px;padding:12px 0;font-size:17px;line-height:1.55;color:var(--ink)}
+  .udary details>summary::-webkit-details-marker{display:none}
+  .udary details>summary::before{counter-increment:u;content:counter(u);font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:20px;color:var(--gold);line-height:1.3}
+  .udary .more-lbl{display:block;grid-column:2;font-size:12.5px;color:var(--gold-l);letter-spacing:.3px;margin-top:4px}
+  .udary .more-lbl::after{content:' ▾'}
+  .udary details[open] .more-lbl::after{content:' ▴'}
+  .udary details[open] .more-lbl .o{display:none}
+  .udary details:not([open]) .more-lbl .c{display:none}
+  .udary summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+  .udary .det{margin:0 0 14px 44px;padding:12px 16px;background:rgba(255,255,255,.035);border-left:2px solid rgba(201,168,76,.45);border-radius:0 10px 10px 0;font-size:15px;color:#d5e0ea}
+  .udary .det p{margin:8px 0}
+  .udary .tag{display:inline-block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#1a0f00;background:var(--gold-l);border-radius:6px;padding:1px 7px;margin-right:6px}
+  .udary .find{border-left:3px solid var(--gold);padding-left:8px}
+  figure.fig{margin:18px 0}
+  figure.fig img{max-width:100%;height:auto;border-radius:10px;display:block}
+  figure.fig figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .src-note{font-size:12px;color:#8fa5b9}
+
+  /* ── ТИГЕЛЬ АНОСОВА (главное предметное действие) ── */
+  .lab{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
+  .lab-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+  .lab-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
+  .seg{cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;min-height:44px}
+  .seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
+  .seg:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .lab-stage{position:relative;margin-top:12px}
+  .lab-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#1c2530}
+  .lab-cap{font-size:12px;color:#8fa5b9;margin-top:6px}
+  .lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
+  .lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
+  .lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
+  .lab-found{font-size:13px;color:var(--muted);margin-top:8px}
+  .lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .micro{display:none;margin-top:14px;text-align:center}
+  .micro canvas{width:min(280px,80%);height:auto;border-radius:50%;border:6px solid #2b3642;box-shadow:0 0 0 2px rgba(201,168,76,.5)}
+  .micro.show{display:block}
+  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
+
+  /* ── ГРАНИЦА ПЕРВЕНСТВА ── */
+  .border-box{background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.3);border-radius:14px;padding:16px 18px}
+  .border-box b{color:#8fd3ff}
+  .ctx{width:100%;border-collapse:collapse;margin-top:14px;font-size:14.5px}
+  .ctx th,.ctx td{text-align:left;padding:9px 8px;border-top:1px solid var(--line);vertical-align:top}
+  .ctx th{color:var(--gold-l);font-weight:600;font-size:12.5px;letter-spacing:.5px}
+  .quiz-q{margin:18px 0 6px;font-weight:600}
+  .sources a{color:var(--gold-l)}
+  .sources li{margin:6px 0;font-size:14px;color:#c8d6e2}
+  @media(max-width:600px){header.top{padding:8px 64px 6px}header.top .score{top:8px;right:8px;padding:4px 10px;font-size:12px}header.top .b3{margin-top:3px}
+    .hero-scene{height:26vh;min-height:200px;max-height:260px}.date-origin{font-size:12px;margin:-8px 0 8px}.hero-lead{padding:18px 0 26px}.hero-lead .date-chip{margin-bottom:12px}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+  .hero-scene{background:#56716a}
+  .hero-scene img.scene{object-fit:contain}
+  /* ── СТАНОК: орловский прогон против трёх отдельных ── */
+  .press{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
+  .press-stage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .press-stage figure{margin:0}
+  .press-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#f3ecd9}
+  .press-stage figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+  @media(max-width:600px){.press-stage{grid-template-columns:1fr}}
+  .kassa{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+  .kassa button{cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:8px;color:var(--ink);font:inherit;font-size:14px;min-height:44px}
+  .kassa button canvas{width:100%;height:auto;display:block;border-radius:8px;background:#f3ecd9;margin-bottom:6px}
+  .kassa button[disabled]{cursor:default}
+  .kassa button.correct{border-color:#3f9b52;background:rgba(40,120,60,.18)}
+  .kassa button.wrong{border-color:#c0453f;background:rgba(180,40,40,.13)}
+  /* ── блоки дня по эталону 01-05 ── */
+  .q{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 22px;margin:12px 0}
+  .q h3{margin:0 0 6px;font-size:19px;color:#fff;font-family:'Playfair Display',Georgia,serif}
+  .q h3 em{display:block;font-style:normal;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;margin-bottom:5px;font-weight:700}
+  .q p{margin:0;color:var(--muted);font-size:14.5px}
+  .deepd{background:rgba(255,255,255,.02);border:1px solid var(--card-b);border-radius:16px;padding:16px 22px}
+  .deepd summary{cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;list-style:none}
+  .deepd summary::-webkit-details-marker{display:none}
+  .deepd[open] summary{margin-bottom:12px;opacity:.7}
+  .deepd h3{font-family:'Playfair Display',Georgia,serif;color:var(--gold-l);font-size:20px;margin:20px 0 6px}
+  .src{font-size:12px;color:var(--muted);opacity:.8;margin-top:14px}
+  .chip{cursor:pointer;background:rgba(255,255,255,.05);border:1px solid var(--card-b);border-radius:20px;padding:7px 16px;margin:4px 5px 4px 0;font-size:13px;display:inline-block;color:var(--muted);font-family:'Inter',sans-serif;transition:.16s}
+  .chip:hover{border-color:var(--gold);color:var(--gold)}
+  .msg{margin:8px 0;padding:12px 16px;border-radius:14px;max-width:88%;font-size:15px}
+  .msg.you{background:rgba(45,140,191,.18);border:1px solid rgba(45,140,191,.28);margin-left:auto;text-align:right;color:#a8d4f0}
+  .msg.inv{background:rgba(255,255,255,.05);border:1px solid var(--card-b);color:var(--ink)}
+  .fork-opt{background:var(--card);border:1px solid var(--card-b);border-radius:14px;padding:16px 18px;margin:10px 0;cursor:pointer;transition:.18s;font-size:15px}
+  .fork-opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
+  .fork-opt.chosen{border-color:var(--gold);background:var(--gold-g)}
+  #forkReal.exp{display:none}
+
+/* бывшие style="" страницы 01-18 — вынесены классами s18-* */
+.s18-1{max-width:62ch !important}
+.s18-2{margin-top:10px !important}
+.s18-3{margin-top:0 !important}
+.s18-4{margin-bottom:0 !important}
+.s18-5{background:rgba(6,12,23,.6) !important}
+.s18-6{margin-bottom:6px !important}
+.s18-7{margin-bottom:10px !important}
+.s18-8{color:var(--muted) !important;max-width:62ch !important}
+.s18-9{max-width:66ch !important}
+.s18-10{color:var(--gold-l) !important}
+.s18-11{color:var(--muted) !important}
+.s18-12{margin:16px 0 !important;min-height:80px !important}
+.s18-13{display:flex !important;gap:10px !important;margin-top:12px !important}
+.s18-14{flex:1 !important;padding:12px 16px !important;font-size:15px !important}
+.s18-15{font-size:12px !important;color:var(--muted) !important;margin-top:8px !important}
+.s18-16{background:rgba(45,140,191,.04) !important}
+.s18-17{color:var(--muted) !important;margin-top:0 !important;max-width:62ch !important}
+.s18-18{display:none;margin-top:14px}
+.s18-19{background:rgba(201,168,76,.03) !important;border-top:1px solid rgba(201,168,76,.15) !important}
+.s18-20{color:var(--muted) !important;margin-top:0 !important;margin-bottom:16px !important;max-width:62ch !important}
+.s18-21{text-align:center !important;margin:14px 0 4px !important}
+.s18-22{display:none;margin-top:20px}
+.s18-23{padding:0 !important;overflow:hidden !important}
+.s18-24{padding:14px 20px !important;background:rgba(201,168,76,.08) !important;border-bottom:1px solid rgba(201,168,76,.15) !important}
+.s18-25{color:var(--gold-l) !important;font-weight:600 !important;font-size:14px !important;letter-spacing:.5px !important}
+.s18-26{padding:4px 20px 12px !important}
+.s18-27{display:grid !important;grid-template-columns:110px 1fr !important;gap:6px 12px !important;padding:7px 0 !important;border-bottom:1px solid rgba(255,255,255,.06) !important;font-size:14px !important;align-items:baseline !important}
+.s18-28{color:var(--gold) !important;font-weight:700 !important;font-size:13px !important;white-space:nowrap !important}
+.s18-29{text-align:center !important;color:var(--muted) !important;font-size:14px !important;margin-top:12px !important}
+.s18-30{width:0%}
+.s18-31{background:linear-gradient(135deg,#16294a,#0f1e33) !important;border-bottom:none !important}
+.s18-32{text-align:center !important}
+.s18-33{margin-bottom:6px !important;color:#fff !important}
+.s18-34{color:var(--muted) !important;margin:0 auto 16px !important;max-width:60ch !important}
+.s18-35{display:inline-block !important;text-decoration:none !important}
+
+/* ── МЕХАНИКА «ПОЛКА ПРОСВЕТА» (Р169, Р176) — разметку строит assets/odner-polka.js ── */
+.polka{margin-top:18px}
+.polka-shelf{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:14px 10px;border-radius:16px;
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--card-b);
+  box-shadow:inset 0 -10px 0 -4px rgba(122,74,36,.35)}
+.mash{appearance:none;-webkit-appearance:none;font:inherit;color:inherit;text-align:center;cursor:pointer;
+  flex:0 0 calc(25% - 12px);max-width:calc(25% - 12px);display:flex;flex-direction:column;align-items:stretch;gap:3px;
+  margin:0;padding:8px 8px 10px;background:var(--card);border:1px solid var(--card-b);border-radius:12px;transition:border-color .3s,box-shadow .3s}
+@media(max-width:680px){.mash{flex-basis:calc(50% - 12px);max-width:calc(50% - 12px)}}
+.mash:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.mash-art{position:relative;display:block;width:100%;aspect-ratio:200/140;border-radius:8px;overflow:hidden;background:#0b1522}
+.mash-art svg{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.mash-in{clip-path:circle(0 at 50% 50%)}
+.mash.found .mash-in{transition:clip-path .7s ease-out}
+.mash-name{display:block;margin-top:6px;font-size:13.5px;font-weight:700;color:#fff;line-height:1.25}
+.mash-land{display:block;font-size:11.5px;color:var(--muted);line-height:1.3}
+.mash-tag{display:block;font-size:11.5px;font-weight:600;color:var(--gold-l);line-height:1.3;opacity:0;max-height:0;overflow:hidden;transition:opacity .5s .3s,max-height .5s}
+.mash.found .mash-tag{opacity:1;max-height:3em}
+.mash.found{border-color:rgba(201,168,76,.35)}
+.mash.taken{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 18px rgba(201,168,76,.3)}
+/* колесо Однера крутится вокруг своей оси (центры колёс в координатах рисунка 200×140) */
+.mash .pw{transform-box:view-box}
+.mash .pw.w1{transform-origin:56px 82px}
+.mash .pw.w2{transform-origin:100px 82px}
+.mash .pw.w3{transform-origin:144px 82px}
+.mash.found .pw{animation:odner-rot 4s linear infinite}
+.mash.found .pw.w2{animation-duration:2.6s;animation-direction:reverse}
+.mash.found .pw.w3{animation-duration:5.2s}
+@keyframes odner-rot{to{transform:rotate(360deg)}}
+.polka-lens{position:absolute;left:0;top:0;width:116px;height:116px;border-radius:50%;z-index:5;pointer-events:auto;
+  cursor:grab;touch-action:none;will-change:transform;
+  border:3px solid var(--gold-l);
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.34) 0,rgba(255,255,255,.08) 18%,rgba(125,200,255,.05) 45%,rgba(125,200,255,.12) 100%);
+  box-shadow:0 0 0 2px rgba(125,200,255,.55),0 0 22px rgba(125,200,255,.45),0 0 40px rgba(201,168,76,.25),inset 0 0 18px rgba(125,200,255,.25)}
+.polka-lens::after{content:"";position:absolute;left:18%;top:14%;width:28%;height:14%;border-radius:50%;background:rgba(255,255,255,.35);transform:rotate(-28deg);filter:blur(1px)}
+.polka-lens.drag{cursor:grabbing;scale:1.06;box-shadow:0 0 0 2px rgba(125,200,255,.7),0 0 30px rgba(125,200,255,.6),0 0 54px rgba(201,168,76,.35),inset 0 0 18px rgba(125,200,255,.3)}
+.polka-count{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:14px;color:var(--muted)}
+.polka-count b{color:var(--gold-l)}
+.polka-bar{flex:1 1 140px;height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.polka-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));border-radius:3px;transition:width .6s ease-out}
+
+/* ── СТОПКИ: 5 000 французских против 3 000 000 «Феликсов» ── */
+.stopki{margin-top:18px;padding:18px 14px 14px;border-radius:16px;background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.18);
+  opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.stopki[hidden]{display:none}
+.stopki.go{opacity:1;transform:none}
+.stopki-row{display:flex;justify-content:center;align-items:flex-end;gap:18px}
+.stopki-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center}
+.stopki-fr{flex:0 1 34%}
+.stopki-pile{display:flex;justify-content:center;align-items:flex-end;min-height:5px}
+.stopki-pile i{display:inline-block;width:8px;height:5px;border-radius:1px;background:transparent}
+.stopki-fr .stopki-pile i{background:#8fa3b8;box-shadow:0 0 6px rgba(143,163,184,.6)}
+.stopki-wall{display:grid;grid-template-columns:repeat(30,minmax(0,8px));gap:1px;width:100%;max-width:270px;transform:scaleY(-1)}
+.stopki-wall i{width:auto;transition:background-color .25s,box-shadow .25s}
+.stopki-wall i.on{background:var(--gold-l);box-shadow:0 0 3px rgba(228,201,122,.45)}
+.stopki-v{margin-top:10px;font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:clamp(24px,6vw,38px);line-height:1.1;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stopki-ru .stopki-v{color:var(--gold-l)}
+.stopki-k{margin-top:4px;font-size:12.5px;color:var(--muted);line-height:1.4;max-width:24ch}
+.stopki-leg{margin:14px 0 0;text-align:center;font-size:13px;color:var(--muted)}
+.stopki.end .stopki-ru .stopki-v{animation:odner-flash 1s ease-out}
+@keyframes odner-flash{0%{text-shadow:0 0 0 rgba(255,210,122,0)}30%{text-shadow:0 0 22px rgba(255,210,122,.95);transform:scale(1.08)}100%{text-shadow:0 0 0 rgba(255,210,122,0);transform:none}}
+
+/* ── РУЧКА ── */
+.press-h{font-size:24px;color:#fff;margin:40px 0 10px}
+.crank-row{display:flex;align-items:center;gap:18px;margin-top:14px}
+@media(max-width:680px){.crank-row{flex-direction:column;align-items:center;text-align:center}}
+.crank{flex:0 0 auto;width:120px;height:120px;touch-action:none;cursor:grab;border-radius:50%;user-select:none;-webkit-user-select:none}
+.crank.drag{cursor:grabbing}
+.crank svg{display:block;width:100%;height:100%}
+.crank:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.crank-ring{fill:rgba(255,255,255,.04);stroke:rgba(201,168,76,.45);stroke-width:2;stroke-dasharray:4 5}
+.crank-hub{fill:var(--gold)}
+.crank-arm{transform-box:view-box;transform-origin:60px 60px}
+.crank-arm rect{fill:#b9c2c9}
+.crank-knob{fill:var(--gold-l);stroke:#7a5a1a;stroke-width:2}
+.crank-hint{font-size:14px;color:var(--muted);max-width:44ch}
+
+@media(prefers-reduced-motion:reduce){
+  .mash.found .pw,.stopki.end .stopki-ru .stopki-v{animation:none}
+  .mash.found .mash-in,.stopki,.polka-bar i,.stopki-wall i,.mash-tag{transition:none}
+}
