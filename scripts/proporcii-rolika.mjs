@@ -8,7 +8,7 @@
 //      под обложкой 9:16 играет запасной 16:9 из HTML (корень r413).
 // Расхождение пропорций больше 2% — код 1 и ::error::. Файла пары нет — ::warning:: (жёлтая строка, отдельный долг),
 // мерить нечего. Без сборки и браузера, секунды.
-// Запуск: node scripts/proporcii-rolika.mjs [--proba]. Откат — удалить шаг из .github/workflows/proverka.yml.
+// Запуск: node scripts/proporcii-rolika.mjs [--proba]. Стоит в начале npm run build (package.json): красный — сборка не идёт. Откат — убрать вызов оттуда.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
