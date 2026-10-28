@@ -951,6 +951,38 @@
         "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/22jan-landau": {
+      "title": "История в 42 секунды",
+      "note": "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Л. Д. Ландау за работой дома; гелиевый ожижитель П. Л. Капицы; Нобелевский диплом Ландау 1962 года. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau.mp4",
+        "local": "muzei/izobreteniya/video/day-22jan-landau.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 41.8,
+        "mb": 9.1
+      },
+      "vertical": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-22jan-landau-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 41.8,
+        "mb": 9.0
+      },
+      "poster": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-22jan-landau-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-22jan-landau-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }

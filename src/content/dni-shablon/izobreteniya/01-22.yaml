@@ -56,6 +56,8 @@ stamp:
   - v: "1962"
     k: Нобелевская — в больнице
 daynav:
+  - id: video
+    label: Видео
   - id: audioguide
     label: Слушать
   - id: story
@@ -76,6 +78,17 @@ daynav:
     label: Источники
   - id: calendar
     label: Календарь
+video:
+  h2: История в 42 секунды
+  klyuch: izobreteniya/22jan-landau
+  format: horizontal
+  pole: izobreteniya/22jan-landau:horizontal.sec
+  suffix: сек
+  badge: 42 сек
+  intro: Та же история коротким роликом — от гелия, который у Капицы течёт без трения, до объяснения Ландау и Нобелевской премии 1962 года.
+  poster: video/day-22jan-landau-poster.jpg?v=1
+  mp4: video/day-22jan-landau.mp4?v=1
+  note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Л. Д. Ландау за работой дома; гелиевый ожижитель П. Л. Капицы; Нобелевский диплом Ландау 1962 года. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История открытия
   h2: Капица увидел, Ландау объяснил
