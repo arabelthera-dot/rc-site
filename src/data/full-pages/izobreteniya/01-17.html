@@ -4,12 +4,177 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Аэродинамика как наука: Н. Е. Жуковский и подъёмная сила крыла, 1906 — Музей «Что изобрели русские первыми в мире»</title>
-<!--
-  Страница дня 17 января (волна 1, 22.10.2026), материал: rc-wt/izob-0117-material.md.
-  Форма — вариант А музея изобретений: короткие удары, подробности свёрнуты.
--->
 <link rel="stylesheet" href="../../assets/fonts.css">
-<link rel="stylesheet" href="../../assets/izobreteniya-den-01-17.css">
+<style>
+
+  :root{
+    --dark:#060c17; --dark2:#0c1826; --surface:#111f33;
+    --card:rgba(255,255,255,.05); --card-b:rgba(255,255,255,.09);
+    --gold:#c9a84c; --gold-l:#e4c97a; --gold-g:rgba(201,168,76,.13);
+    --ink:#e8eef5; --muted:#7a9ab8; --line:rgba(255,255,255,.07);
+    --accent:#2d8cbf; --accent2:#1f6f8b;
+    /* legacy compat */
+    --paper:#0c1826; --paper2:#111f33;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Inter','Segoe UI',sans-serif;color:var(--ink);background:var(--dark);line-height:1.72}
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.13;margin:0}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px}
+  a{color:var(--accent)}
+
+  /* ── ШАПКА ── */
+  header.top{background:rgba(6,12,23,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--card-b);color:#fff;position:sticky;top:0;z-index:30}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+  .logo svg{display:block;filter:drop-shadow(0 0 8px rgba(201,168,76,.4))}
+  .logo .lt{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:16px}
+  .logo .lt small{display:block;font-size:9px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Inter',sans-serif}
+  .score{background:var(--gold-g);border:1px solid rgba(201,168,76,.3);border-radius:24px;padding:6px 16px;font-size:13px;color:var(--gold-l);cursor:pointer;font-family:'Inter',sans-serif}
+  .score-info{position:absolute;right:12px;top:66px;max-width:260px;background:#0e1c30;color:var(--ink);border:1px solid var(--card-b);border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.6;box-shadow:0 20px 60px rgba(0,0,0,.6);display:none;z-index:40}
+  .score-info.show{display:block}
+
+  /* ── HERO — СТАНДАРТ (не менять): 3D-сцена сверху, текст отдельным блоком ниже ── */
+  .hero-scene{position:relative;height:52vh;min-height:300px;max-height:520px;overflow:hidden;background:linear-gradient(160deg,#0a1e3a 0%,#1a3a6a 55%,#0d2240 100%)}
+  .hero-scene canvas.scene,.hero-scene img.scene{width:100%;height:100%;display:block;object-fit:cover}
+  .scene-caption{background:#060d18;padding:11px 0 12px}
+  .scene-caption .wrap{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+  .scene-cap{font-size:13.5px;line-height:1.6;color:var(--muted);border-left:2px solid rgba(201,168,76,.4);padding-left:14px;flex:1 1 420px}
+  .scene-hint{flex:0 0 auto;font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:.4px;color:#e4c97a;
+    background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.34);border-radius:24px;padding:7px 16px;font-weight:600}
+  .hero-lead{background:linear-gradient(180deg,#0c1826 0%,#060c17 100%);color:#fff;padding:28px 0 38px}
+  .hero-lead .museum{color:var(--gold);font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;font-family:'Inter',sans-serif;margin-bottom:12px;opacity:.9}
+  .hero-lead .who{font-family:'Inter',sans-serif;font-size:clamp(13px,3vw,15px);letter-spacing:.4px;color:var(--accent-l,#7dc8ff);margin-bottom:10px}
+  .hero-lead .who i{font-style:normal;color:#7893ab;font-weight:400}
+  .hero-lead h1{color:#fff;font-size:56px;font-weight:900;line-height:1.04;margin-bottom:16px}
+  .hero-lead .hook{color:#b8ccde;font-size:19px;max-width:580px;margin-bottom:28px;line-height:1.65;font-weight:400}
+  .hero-lead .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  @media(max-width:680px){.hero-lead h1{font-size:34px}.hero-lead .hook{font-size:16px}
+    .hero-scene{height:34vh;min-height:230px;max-height:300px}
+    .scene-caption .wrap{flex-direction:column;gap:9px}
+    .scene-hint{order:-1;align-self:flex-start;font-size:11.5px;padding:6px 13px}
+    .scene-cap{font-size:12.8px;flex:1 1 auto}}
+  .date-chip{display:inline-block;background:var(--gold-g);border:1px solid rgba(201,168,76,.35);color:var(--gold);font-weight:700;padding:6px 18px;border-radius:24px;font-size:12px;margin-bottom:16px;font-family:'Inter',sans-serif;letter-spacing:.5px}
+
+  /* ── НАВИГАЦИЯ ДНЯ ── */
+  .daynav{position:sticky;top:64px;z-index:25;background:rgba(6,12,23,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--card-b)}
+  .daynav .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+  .daynav::-webkit-scrollbar{display:none}
+  .daynav a{flex:0 0 auto;padding:14px 20px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;color:var(--muted);text-decoration:none;white-space:nowrap;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid transparent;transition:.18s}
+  .daynav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+  /* ── СЕКЦИИ ── */
+  section.block{padding:64px 0;border-bottom:1px solid var(--line);scroll-margin-top:130px}
+  .kicker{font-size:10px;text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);font-weight:700;font-family:'Inter',sans-serif;margin-bottom:8px}
+  section.block h2{font-size:34px;color:#fff;margin-bottom:10px}
+  p{margin:14px 0;color:var(--ink)}
+  .pull{background:var(--gold-g);border-left:3px solid var(--gold);padding:18px 22px;border-radius:0 14px 14px 0;font-style:italic;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5;margin:26px 0}
+
+  /* ── КНОПКИ ── */
+  .btn{cursor:pointer;border:none;border-radius:12px;padding:14px 26px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:var(--accent2);color:#fff;transition:.18s;letter-spacing:.2px}
+  .btn:hover{filter:brightness(1.18)}
+  .btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--card-b)}
+  .btn.ghost:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.2)}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),#b8882b);color:#1a0f00;box-shadow:0 4px 20px rgba(201,168,76,.25)}
+  .btn.gold:hover{filter:brightness(1.1);box-shadow:0 6px 28px rgba(201,168,76,.4)}
+  .btn:active{transform:translateY(1px)}
+  .pulse{animation:pulse .9s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+  /* ── КАРТОЧКИ ── */
+  .card{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:20px 22px;margin:16px 0;backdrop-filter:blur(6px)}
+
+  /* ── КВИЗ ── */
+  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
+  .opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:13px 16px;margin:8px 0;cursor:pointer;font-size:15px;color:var(--ink);font-family:'Inter',sans-serif;transition:.16s}
+  .opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
+  .opt.correct{background:rgba(40,120,60,.18);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
+  .opt.wrong{background:rgba(180,40,40,.13);border-color:#c0453f;color:#f08080}
+  .exp{margin-top:10px;font-size:14px;background:var(--gold-g);border-radius:10px;padding:12px 14px;display:none;color:var(--gold-l)}
+  .exp.show{display:block}
+
+  /* ── ИТОГ ДНЯ ── */
+  .day-result{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:22px 24px;max-width:460px}
+  .dr-rank{font-family:'Playfair Display',Georgia,serif;font-size:28px;color:var(--gold-l);font-weight:700}
+  .dr-score{font-size:16px;margin:4px 0 12px;color:var(--ink)}.dr-score span{color:var(--muted);font-size:14px}
+  .dr-bar{height:8px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden}
+  .dr-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--gold));transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  .dr-note{margin-top:12px;font-size:14px;color:var(--muted)}
+
+  /* ── РЕКЛАМНЫЕ СЛОТЫ ── */
+  .ad-slot{position:relative;margin:26px 0;background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:14px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
+  .ad-slot .lbl{position:absolute;top:7px;right:12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.15);font-family:'Inter',sans-serif}
+  .ad-slot .ph-txt{font-size:12px;max-width:80%;color:rgba(255,255,255,.18)}
+  .ad-slot.billboard{min-height:108px}
+  .adband{background:transparent;border-bottom:none}
+
+  footer{padding:40px 0 80px;color:rgba(255,255,255,.2);font-size:12px;text-align:center;font-family:'Inter',sans-serif;letter-spacing:.5px}
+  .crumbs{background:rgba(6,12,23,.6);border-bottom:1px solid var(--card-b);font-family:'Inter',sans-serif;font-size:12.5px}
+  .crumbs .wrap{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
+  .crumbs a{color:var(--gold-l);text-decoration:none;white-space:nowrap}
+  .crumbs a:hover{text-decoration:underline}
+  .crumbs .sep{color:var(--muted);opacity:.6}
+  .crumbs .here{color:var(--muted);white-space:nowrap}
+
+
+  /* ── ШАПКА: четыре строки по museum-core §6-бис ── */
+  header.top{display:block;text-align:center;padding:10px 12px 8px;height:auto;position:relative}
+  header.top .b1{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:15px;letter-spacing:.5px;color:#fff}
+  header.top .b2{font-size:11px;color:var(--muted);margin-top:2px}
+  header.top .b3{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px}
+  header.top .b4{font-size:12.5px;color:var(--gold-l);font-family:'Playfair Display',Georgia,serif;font-style:italic}
+  header.top .score{position:absolute;right:12px;top:10px}
+  .daynav{top:0}
+  .hero-scene{background:#0e1c2c;height:38vh;min-height:250px;max-height:400px}
+  @media(max-width:680px){.hero-lead h1{font-size:31px}}
+  .hero-scene img.scene{object-fit:cover;object-position:50% 55%}
+  .date-origin{font-size:13px;color:#9fb4c8;margin:-6px 0 12px;max-width:62ch}
+  .hero-lead .hook{color:#c6d8e8;max-width:62ch}
+  .hero-under{background:linear-gradient(180deg,#060d18,#060c17);padding:4px 0 22px}
+  .stamp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(125,200,255,.28);margin-top:14px}
+  .stamp>div{padding:11px 12px;border-left:1px solid rgba(125,200,255,.16);min-width:0}
+  .stamp>div:first-child{border-left:0}
+  .stamp .v{font-size:clamp(15px,3.4vw,21px);font-weight:700;color:#8fd3ff;line-height:1.1;overflow-wrap:anywhere}
+  .stamp .k{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#8fa5b9;margin-top:5px}
+  @media(max-width:600px){.stamp{grid-template-columns:repeat(2,minmax(0,1fr))}.stamp>div:nth-child(3){border-left:0}.stamp>div:nth-child(n+3){border-top:1px solid rgba(125,200,255,.16)}}
+
+  /* ── ЛЕНТА УДАРОВ (museum-inventions, вариант А; museum-core §5-бис) ── */
+  .udary{list-style:none;margin:18px 0 0;padding:0;counter-reset:u}
+  .udary>li{border-top:1px solid var(--line);padding:4px 0}
+  .udary details>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr;gap:10px;padding:12px 0;font-size:17px;line-height:1.55;color:var(--ink)}
+  .udary details>summary::-webkit-details-marker{display:none}
+  .udary details>summary::before{counter-increment:u;content:counter(u);font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:20px;color:var(--gold);line-height:1.3}
+  .udary .more-lbl{display:block;grid-column:2;font-size:12.5px;color:var(--gold-l);letter-spacing:.3px;margin-top:4px}
+  .udary .more-lbl::after{content:' ▾'}
+  .udary details[open] .more-lbl::after{content:' ▴'}
+  .udary details[open] .more-lbl .o{display:none}
+  .udary details:not([open]) .more-lbl .c{display:none}
+  .udary summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+  .udary .det{margin:0 0 14px 44px;padding:12px 16px;background:rgba(255,255,255,.035);border-left:2px solid rgba(201,168,76,.45);border-radius:0 10px 10px 0;font-size:15px;color:#d5e0ea}
+  .udary .det p{margin:8px 0}
+  .udary .tag{display:inline-block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#1a0f00;background:var(--gold-l);border-radius:6px;padding:1px 7px;margin-right:6px}
+  .udary .find{border-left:3px solid var(--gold);padding-left:8px}
+  figure.fig{margin:18px 0}
+  figure.fig img{max-width:100%;height:auto;border-radius:10px;display:block}
+  figure.fig figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .src-note{font-size:12px;color:#8fa5b9}
+
+  /* ── МОДЕЛЬ ДНЯ (главное предметное действие) ── */
+
+  /* ── ГРАНИЦА ПЕРВЕНСТВА ── */
+  .border-box{background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.3);border-radius:14px;padding:16px 18px}
+  .border-box b{color:#8fd3ff}
+  .ctx{width:100%;border-collapse:collapse;margin-top:14px;font-size:14.5px}
+  .ctx th,.ctx td{text-align:left;padding:9px 8px;border-top:1px solid var(--line);vertical-align:top}
+  .ctx th{color:var(--gold-l);font-weight:600;font-size:12.5px;letter-spacing:.5px}
+  .quiz-q{margin:18px 0 6px;font-weight:600}
+  .sources a{color:var(--gold-l)}
+  .sources li{margin:6px 0;font-size:14px;color:#c8d6e2}
+  @media(max-width:600px){header.top{padding:8px 64px 6px}header.top .score{top:8px;right:8px;padding:4px 10px;font-size:12px}header.top .b3{margin-top:3px}
+    .hero-scene{height:26vh;min-height:200px;max-height:260px}.date-origin{font-size:12px;margin:-8px 0 8px}.hero-lead{padding:18px 0 26px}.hero-lead .date-chip{margin-bottom:12px}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+
 <meta name="description" content="Жуковский вывел, откуда берётся подъёмная сила, — и авиация из авантюры стала наукой.">
 <link rel="canonical" href="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-17jan-zhukovsky.html">
 <meta property="og:type" content="article">
@@ -19,6 +184,9 @@
 <meta property="og:url" content="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-17jan-zhukovsky.html">
 <meta property="og:image" content="https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-17jan-zhukovsky-doska.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Аэродинамика как наука", "description": "Жуковский вывел, откуда берётся подъёмная сила, — и авиация из авантюры стала наукой.", "url": "https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-17jan-zhukovsky.html", "inLanguage": "ru", "isPartOf": {"@type": "WebSite", "name": "Музей «Что изобрели русские первыми в мире»"}, "publisher": {"@type": "Organization", "name": "Русская цивилизация"}, "image": "https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-17jan-zhukovsky-doska.jpg"}</script>
+<link rel="stylesheet" href="../../assets/fakty-dnya.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
+<link rel="stylesheet" href="../../assets/podemnaya-sila.css">
 </head>
 <body>
 
@@ -38,11 +206,10 @@
   <span class="here">17 января · Аэродинамика как наука</span>
 </div></nav>
 
-<figure class="hero-fig" style="margin:0">
-<div class="hero-scene fit-full" id="hero">
-  <img class="scene" src="day-17jan-zhukovsky-doska.jpg" data-source="https://goskatalog.ru/portal/#/collections?id=5992150" data-license="Государственный центральный музей современной истории России · Госкаталог, рег. № 5816870" width="603" height="800" alt="Николай Жуковский, седой, с бородой, стоит у доски в аудитории; на доске мелом нарисованы профиль крыла, линии обтекания и формулы" fetchpriority="high">
+<figure class="hero-fig" id="hero">
+<div class="hero-scene fit-full">
+  <img class="scene" src="day-17jan-zhukovsky-doska.jpg" width="603" height="800" alt="Николай Жуковский, седой, с бородой, стоит у доски в аудитории; на доске мелом нарисованы профиль крыла, линии обтекания и формулы" fetchpriority="high" decoding="async" data-source="https://goskatalog.ru/portal/#/collections?id=5992150" data-license="Государственный центральный музей современной истории России · Госкаталог, рег. № 5816870">
 </div>
-
 <figcaption class="scene-caption">
   <div class="wrap">
     <div class="scene-cap">Н. Е. Жуковский читает курс «Теоретические основы воздухоплавания» в Московском высшем техническом училище; на доске — профиль крыла и обтекание. Фотография из серии «К столетию со дня рождения Н. Е. Жуковского». Автор не указан. Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5816870. Права: общественное достояние (аноним, до 1953).</div>
@@ -75,39 +242,44 @@
       <div><div class="v">1918</div><div class="k">по его настоянию — ЦАГИ</div></div>
     </div>
   </div>
-  </div>
 </div>
 
 <nav class="daynav" aria-label="Разделы дня">
   <div class="wrap">
+    <a href="#story">Читать</a>
     <a href="#audioguide">Слушать</a>
-    <a href="#story">Пять фактов</a>
-    <a href="#truba">Труба</a>
+    <a href="#fakty">Факты</a>
+    <a href="#video">Видео</a>
     <a href="#games">Наугад или по формуле</a>
     <a href="#pervenstvo">Что он сделал</a>
     <a href="#quiz">Викторина</a>
-    <a href="#sources">Источники</a>
     <a href="#calendar">Календарь</a>
   </div>
 </nav>
 
 <section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>
 
+<section class="block" id="video"><div class="wrap">
+    <div class="kicker">Видео дня</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">История в 55 секунд</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field="izobreteniya/17jan-zhukovsky:horizontal.sec" data-rc-video-suffix="сек">55 сек</span></div>
+    <p style="color:var(--muted);margin-top:0">Та же история коротким роликом — от формулы подъёмной силы 1906 года и петли Нестерова до ЦАГИ и трубы Т-1-2, на момент постройки самой большой в мире.</p>
+    <!-- Адрес ролика подставляет ../../assets/museum-video.js из video/registry.json (16:9 на компьютере, 9:16 на телефоне).
+         Путь ниже — запасной, на случай недоступного реестра. -->
+    <video controls playsinline preload="none" poster="video/day-17jan-zhukovsky-poster.jpg?v=1" data-rc-video="izobreteniya/17jan-zhukovsky" data-rc-format="horizontal" style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
+      <source src="video/day-17jan-zhukovsky.mp4?v=1" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px">Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Н. Е. Жуковский читает лекцию, его рукопись, лётчик П. Н. Нестеров, здание аэродинамической лаборатории ЦАГИ (Государственный центральный музей современной истории России); брошюра к 60-летию труда Жуковского «О присоединённых вихрях» (Центральный музей ВВС); испытание самолёта в аэродинамической трубе Т-1-2 ЦАГИ (Научно-мемориальный музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.</p>
+  </div>
+</section>
+
 <section class="block" id="audioguide"></section>
 
-<section class="block" id="story">
-  <div class="wrap">
-    <div class="kicker">Пять фактов о Жуковском</div>
-    <h2>Посчитал раньше, чем полетели</h2>
-    <ol class="udary">
-      <li><details><summary><span>Немец Кутта посчитал подъёмную силу для одного частного крыла — Жуковский в 1906-м вывел её для любого.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
-        <div class="det">
-          <p>Кутта разобрал частный случай — изогнутую пластину. Общую теорему о подъёмной силе в 1906 году доказал Жуковский, по ней считают крыло любой формы.</p>
-          <p class="src-note">Источник: «Наука и жизнь», «Центр авиационной науки» — <a href="https://www.nkj.ru/archive/articles/14886/" rel="noopener" target="_blank">nkj.ru/archive/articles/14886</a></p>
-        </div></details></li>
+<section class="block" id="story"><div class="wrap"><div class="kicker">Четыре факта о Жуковском</div><h2>Посчитал раньше, чем полетели</h2>
+    <p style="color:var(--muted);max-width:62ch">Читается подряд. Нажми на удар — откроется подробный разбор с источниками.</p><ol class="udary">
       <li><details><summary><span>Мёртвую петлю Жуковский рассчитал на бумаге в 1891-м — Нестеров сделал её в небе через 22 года.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>В работе «О парении птиц» он впервые вычислил возможные фигуры полёта, в том числе мёртвую петлю. В 1913 году Пётр Нестеров первым в мире выполнил её на «Ньюпоре-4».</p>
+          <p>В работе «О парении птиц» он впервые вычислил возможные фигуры полёта, в том числе мёртвую петлю. В 1913 году Пётр Нестеров первым в мире выполнил её.</p>
           <p class="src-note">Источник: Научно-мемориальный музей Н. Е. Жуковского, «Биография» — <a href="https://zhukovskymuseum.ru/biography/" rel="noopener" target="_blank">zhukovskymuseum.ru/biography</a>; «Родина», «Пять главных открытий „отца русской авиации“», 16.03.2014 — <a href="https://rodina-history.ru/2014/03/16/zukovskiy-site.html" rel="noopener" target="_blank">rodina-history.ru</a></p>
         </div></details></li>
       <li><details><summary><span>Все истребители Великой Отечественной сперва «летали» в трубах ЦАГИ — института, который пробил Жуковский.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
@@ -125,28 +297,38 @@
           <p>Институт в Кучине построил на свои деньги Дмитрий Рябушинский и позвал руководить Жуковского. Там же, гуляя в поле, Жуковский пришёл к идее присоединённого вихря.</p>
           <p class="src-note">Источник: «Узнай Москву», Н. Е. Жуковский — <a href="https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/" rel="noopener" target="_blank">um.mos.ru</a>; «Наука и жизнь» (Рябушинский, Кучино) — <a href="https://www.nkj.ru/archive/articles/14885/" rel="noopener" target="_blank">nkj.ru/archive/articles/14885</a></p>
         </div></details></li>
-    </ol>
-  </div>
-</section>
+    </ol></div></section>
 
-<section class="block" id="truba">
-  <div class="wrap">
-    <div class="kicker">Вопрос, который задают первым</div>
-    <h2>Изобрёл ли Жуковский аэродинамическую трубу?</h2>
-    <ol class="udary udary-odin">
-      <li><details><summary><span>Трубу изобрёл не Жуковский — но трубы, в которых испытывают все наши самолёты, стоят в институте его имени.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+<section class="block" id="fakty"><div class="wrap"><div class="kicker">Четыре факта о Жуковском и трубах</div><h2>Факты дня</h2><ol class="udary">
+      <li><details><summary><span><b>Самая большая труба мира — в институте Жуковского.</b> Её запустили в ЦАГИ в последний день 1925 года.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
-          <p>Труба Жуковского 1902 года в Московском университете — первая в России и «одна из первых в мире» (РИА Новости), «одна из первых в Европе» («Узнай Москву»). Первенство у него другое: в 1904 году он возглавил в Кучине первый в Европе аэродинамический институт.</p>
-          <p>Из Кучина вырос ЦАГИ — создан в 1918 году по настоянию Жуковского и носит его имя. Сегодня все наши самолёты продувают в трубах ЦАГИ: в Т-101, самой большой дозвуковой трубе Европы, испытывали «практически все советские и российские летательные аппараты».</p>
-          <p class="src-note">Источник: РИА Новости, «Биография Николая Жуковского», 17.01.2017 — <a href="https://ria.ru/20170117/1485561584.html" rel="noopener" target="_blank">ria.ru/20170117/1485561584</a>; «Узнай Москву» — <a href="https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/" rel="noopener" target="_blank">um.mos.ru</a>; «Российская газета» со ссылкой на ЦАГИ, 01.03.2023 — <a href="https://rg.ru/2023/03/01/samaia-bolshaia-v-evrope-aerodinamicheskaia-truba-gde-ispytyvaiut-samolety-otkroetsia-dlia-turistov.html" rel="noopener" target="_blank">rg.ru</a></p>
-        </div></details></li>
-    </ol>
-    <figure class="fig">
-      <img src="day-17jan-zhukovsky-truba.jpg" data-source="https://goskatalog.ru/portal/#/collections?id=5992175" data-license="Государственный центральный музей современной истории России · Госкаталог, рег. № 5816845" width="584" height="800" loading="lazy" alt="Жуковский стоит у стены в строящейся аэродинамической трубе; рядом на станине большой вентилятор с двухлопастным пропеллером">
-      <figcaption>Николай Егорович в строившейся трубе аэродинамической лаборатории Московского высшего технического училища, 1916 год. Автор не указан. Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5816845. Права: общественное достояние (аноним, до 1953).</figcaption>
-    </figure>
-  </div>
-</section>
+          <p>Труба Т-1-2 заработала в ночь с 31 декабря 1925 на 1 января 1926 года. Она стоит в Москве на улице Радио — там же, где сейчас дом-музей Жуковского. Строили её ученики уже после смерти учителя: Юрьев, Мусинянц, Черёмухин.</p>
+          <p>До войны в ней продували модели самолётов, например истребителя И-16. В 1950-е — проекты экранопланов. Сейчас в ней обдувают ветром модели «Рабочего и колхозницы» и небоскрёбов «Москва-Сити». Трубе сто лет, и она работает.</p>
+          <p class="src-note">Источник: «85 лет первой аэродинамической трубе ЦАГИ», ЦАГИ — https://www.tsagi.ru/pressroom/news/1765/; «Жуковские вести», 23.12.2025 — https://www.zhukvesti.ru/articles/detail/69138/</p>
+          <blockquote class="fakt-otryvok">«31 декабря исполняется 85 лет со дня ввода в эксплуатацию первой аэродинамической трубы ЦАГИ Т-1-2 , расположенной на улице Радио в Москве . К моменту создания эта уникальная установка была самой большой в мире .» … «В настоящее время эта старейшая аэродинамическая труба ЦАГИ используется для исследований объектов промышленной аэродинамики , таких , например , как модели монументов Зураба Церетели , скульптуры « Рабочий и колхозница » , модели множества высотных зданий , в том числе комплекса «Москва-Сити»»</blockquote>
+        </div></details><p class="fakt-ist"><span class="fakt-pometka">документ</span> <a href="https://www.tsagi.ru/pressroom/news/1765/" rel="noopener" target="_blank">ЦАГИ, Пресс-центр, Новости, «85 лет первой аэродинамической трубе ЦАГИ», 29.12.2010</a></p></li>
+      <li><details><summary><span><b>Книга о велосипедном колесе — с автографом Шухову.</b> Жуковский подарил её автору Шуховской башни.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Инженер Шухов построил знаменитую радиобашню на Шаболовке. А ещё он был заядлым велогонщиком и однажды стал чемпионом Москвы среди любителей. Шухов, кстати, учился у Жуковского.</p>
+          <p>В 1902 году Жуковский выпустил брошюру в 14 страниц «О прочности велосипедного колеса». Экземпляр с надписью «Глубокоуважаемому Владимиру Григорьевичу Шухову от автора» хранится в библиотеке МГТУ имени Баумана.</p>
+          <p class="src-note">Источник: «3 июня — Всемирный день велосипеда», НТБ МГТУ им. Н. Э. Баумана — https://library.bmstu.ru/News/Details/1779; Летопись МГУ, «Жуковский Николай Егорович» — https://letopis.msu.ru/peoples/8552</p>
+          <blockquote class="fakt-otryvok">«В 1902 году в знак признания успехов Шухова-велосипедиста русский учёный-механик, основоположник гидро- и аэродинамики Николай Егорович Жуковский подарил ему свою только что вышедшую книгу «О прочности велосипедного колеса», надписав её: «Глубокоуважаемому Владимиру Григорьевичу Шухову от автора». Фонд редких книг НТБ МГТУ им. Н.Э. Баумана: Жуковский Н. Е. О прочности велосипедного колеса / Жуковский Н. Е. - М. : Университетская типография, 1902. - 14 с.»</blockquote>
+        </div></details><p class="fakt-ist"><span class="fakt-pometka">документ</span> <a href="https://library.bmstu.ru/News/Details/1779" rel="noopener" target="_blank">Научно-техническая библиотека МГТУ им. Н. Э. Баумана, новость «3 июня — Всемирный день велосипеда»</a></p></li>
+      <li><details><summary><span><b>Не стал академиком ради студентов.</b> В 1900 году Жуковский снял свою кандидатуру, чтобы не уезжать из Москвы.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Звание действительного члена Академии наук — высшее для учёного. Но академикам нужно было жить в Петербурге. А Жуковский не хотел бросать Московский университет и Техническое училище.</p>
+          <p>Он сам снял свою кандидатуру и остался преподавать. Академиком он так и не стал. Зато стал «отцом русской авиации».</p>
+          <p class="src-note">Источник: РИА Новости, «Биография Николая Жуковского», 17.01.2017 — https://ria.ru/20170117/1485561584.html; «Узнай Москву», «Жуковский Николай Егорович» — https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/</p>
+          <blockquote class="fakt-otryvok">«В 1894 году Жуковский был избран в члены‑корреспонденты Петербургской академии наук; в 1900 году был выдвинут кандидатом в действительные члены академии наук, но снял свою кандидатуру, не желая оставлять преподавание в Московском университете и Техническом училище.» (РИА). Второй источник: «…но снял свою кандидатуру, не желая оставлять преподавание в Московском университете и МВТУ, т. к. избрание означало бы переезд в Санкт-Петербург.» («Узнай Москву»)</blockquote>
+        </div></details><p class="fakt-ist"><span class="fakt-pometka">два источника</span> <a href="https://ria.ru/20170117/1485561584.html" rel="noopener" target="_blank">РИА Новости, «Биография Николая Жуковского», 17.01.2017; «Узнай Москву», «Жуковский Николай Егорович»</a></p></li>
+      <li><details><summary><span><b>Первую статью Циолковского в печать отдал Жуковский.</b> Это была работа 1891 года о полёте.<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
+        <div class="det">
+          <p>Учитель Циолковский прислал в Москву рукопись о том, как воздух давит на плоскость, то есть на крыло. Жуковский вместе с физиком Столетовым представил её к печати в научном сборнике.</p>
+          <p>В этой статье Циолковский впервые расчётом и опытом показал, как важна вытянутость крыла. Рукопись хранится в Архиве Российской академии наук.</p>
+          <p class="src-note">Источник: виртуальная выставка «Константин Эдуардович Циолковский. Жизнь, деятельность и память о нем в рукописях и фотографиях», Архив РАН — https://arran.ru/exposition3_1</p>
+          <blockquote class="fakt-otryvok">«В этой работе К.Э. Циолковский впервые установил аналитически и доказал экспериментально - путем устройства оригинального и простого прибора, значение продолговатости крыла. К напечатанию в Трудах Физического отделения Общества любителей естествознания в Москве она была представлена Н.Е. Жуковским и А.Г. Столетовым.»</blockquote>
+        </div></details><p class="fakt-ist"><span class="fakt-pometka">документ</span> <a href="https://arran.ru/exposition3_1" rel="noopener" target="_blank">Архив РАН, виртуальная выставка о К. Э. Циолковском, часть 1; рукопись «Давление жидкости на равномерно движущуюся в ней плоскость», 1891, АРАН, Ф. 555, Оп. 1, Д. 2</a></p></li>
+    </ol></div></section>
 
 <section class="block" id="games">
   <div class="wrap">
@@ -180,10 +362,24 @@
       <div class="lab-msg" id="wingMsg" aria-live="polite">Пилот 70 кг ждёт на холме. Поставь угол крыла на глаз и жми «В воздух».</div>
       <div class="lab-cap">Модель, а не расчёт: вес пилотов, предел угла 15° и запас ±6% заданы программой, чтобы показать сам закон. Сколько планёров разбили до 1906 года на самом деле, игра не утверждает.</div>
       <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия: наугад угол крыла под пилота не угадать — мало угла, и планёр клюёт носом, много — нос задирается, поток срывается, планёр сваливается. По теореме Жуковского подъёмную силу считают заранее: она равна плотности воздуха, умноженной на скорость потока и на циркуляцию, — и угол под пилота ставят с первого раза.</div></noscript>
+      <div class="igra-pravila" data-igra-pravila>
+        <h2 class="igra-pravila-h">Как играть</h2>
+        <p class="igra-pravila-zachem">На холме ждёт пилот. Подбери угол крыла так, чтобы планёр поднял именно его, — сначала наугад, как летали до 1906 года, потом по формуле Жуковского.</p>
+        <ol class="igra-pravila-shagi">
+          <li><b>Поставь угол крыла</b> ползунком «Угол крыла» и нажми «В воздух».</li>
+          <li><b>Мало угла — планёр клюнет носом, много — сорвётся в сваливание.</b> Разбитые планёры считаются на табло.</li>
+          <li><b>Переключись на «Глазами Жуковского».</b> Появятся стрелки: зелёная — подъёмная сила крыла, красная — вес пилота с планёром, голубые кольца — присоединённый вихрь.</li>
+          <li><b>Доведи зелёную стрелку до красной черты</b> и запускай: сила равна весу — пилот летит.</li>
+        </ol>
+        <p class="igra-pravila-nyuans">Нюансы: каждый следующий пилот весит иначе, так что угаданный угол второй раз не сработает. Круче 15° поток срывается с крыла сразу.</p>
+        <p class="igra-pravila-final">Чем кончится: планёр улетел за край — пилот в воздухе, и под картинкой появится формула подъёмной силы; разбился — пробуй снова с новым пилотом.</p>
+      </div>
     </div>
     <p class="src-note">Правило модели — теорема Жуковского: Математическая энциклопедия, «Жуковского теорема».</p>
   </div>
 </section>
+
+<section class="block" id="kadry"><div class="wrap"><figure class="fig" style="margin:0 auto;max-width:820px"><img style="display:block;width:100%;height:auto" src="/muzei/izobreteniya/day-17jan-zhukovsky-truba.jpg" width="584" height="800" loading="lazy" decoding="async" alt="Жуковский стоит у стены в строящейся аэродинамической трубе; рядом на станине большой вентилятор с двухлопастным пропеллером" data-source="https://goskatalog.ru/portal/#/collections?id=5992175" data-license="Государственный центральный музей современной истории России · Госкаталог, рег. № 5816845"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Николай Егорович в строившейся трубе аэродинамической лаборатории Московского высшего технического училища, 1916 год. Автор не указан. Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5816845. Права: общественное достояние (аноним, до 1953).</figcaption></figure></div></section>
 
 <section class="block" id="pervenstvo">
   <div class="wrap">
@@ -191,38 +387,17 @@
     <h2>Что именно сделал Жуковский</h2>
     <div class="border-box">
       <p><b>Что он сделал:</b> вывел и доказал теорему о подъёмной силе крыла — сила равна произведению плотности воздуха, скорости потока и циркуляции. Работа «О присоединённых вихрях» вышла в 1906 году. Трубы, институт в Кучине и ЦАГИ довершили дело: аэродинамика стала наукой расчёта, а не проб и разбитых аппаратов.</p>
-      <p><b>Имя в мировой науке:</b> в Германии к той же формуле независимо подошёл математик Мартин Кутта — и в мире её называют теоремой Кутты — Жуковского. Русская фамилия стоит в главной формуле авиации навсегда.</p>
     </div>
     <table class="ctx">
       <thead><tr><th scope="col">Где</th><th scope="col">Что</th><th scope="col">Когда</th></tr></thead>
       <tbody>
-        <tr><td>Москва, университет</td><td>Аэродинамическая труба закрытого типа — первая в России</td><td>1902</td></tr>
+        <tr><td>Москва, университет</td><td>Аэродинамическая труба — одна из первых всасывающих в мире</td><td>1902</td></tr>
         <tr><td>Кучино</td><td>Первый в Европе аэродинамический институт; 1 октября — идея присоединённых вихрей</td><td>1904</td></tr>
         <tr><td>Москва, Математическое общество</td><td>Доклад «О присоединённых вихрях»</td><td>15 (28) ноября 1905</td></tr>
         <tr><td>Москва</td><td>Опубликована работа «О присоединённых вихрях» — теорема о подъёмной силе</td><td>1906</td></tr>
         <tr><td>Москва</td><td>По предложению Жуковского создан ЦАГИ</td><td>1 декабря 1918</td></tr>
       </tbody>
     </table>
-  </div>
-</section>
-
-<!-- ── РАЗБОР ── -->
-<section class="block" id="razbor">
-  <div class="wrap">
-    <div class="kicker">Разбор</div>
-    <h2>Для тех, кто смотрит внимательно</h2>
-    <details class="deepd">
-      <summary>Четыре сюжета подробно — развернуть</summary>
-      <h3>Что такое циркуляция — на пальцах</h3>
-      <p>Представь, что к обычному потоку воздуха добавили медленный круговорот вокруг крыла. Над крылом он идёт по течению — воздух там бежит быстрее, под крылом против течения — медленнее. Разница и толкает крыло вверх. Жуковский доказал: сила равна плотности воздуха, умноженной на скорость потока и на силу этого круговорота, циркуляцию. Нет круговорота — нет силы.</p>
-      <h3>1904, 1905 или 1906?</h3>
-      <p>Все три года верны, но про разное. 1 октября 1904 года — идея на прогулке в Кучине. 15 (28) ноября 1905 года — доклад «О присоединённых вихрях» в Московском математическом обществе. 1906 год — печатная работа. Поэтому на странице главный год — 1906-й: с публикации формулу мог проверить любой.</p>
-      <h3>Откуда слова «отец русской авиации»</h3>
-      <p>Это не прозвище из учебника, а строка государственного документа: так Жуковский назван в постановлении Совнаркома от 3 декабря 1920 года к 50-летию его научной деятельности. Постановление напечатали «Известия» № 276 от 8 декабря 1920 года.</p>
-      <h3>Почему крыло сваливается</h3>
-      <p>Теорема Жуковского объясняет и опасность: подъёмная сила держится, пока держится закрутка вокруг крыла. Если поднять нос слишком круто, поток над крылом срывается, вихрь уносит назад — и сила пропадает. Именно это ты видел в модели.</p>
-    </details>
-    <div class="src">Источники: zhukovskymuseum.ru · nkj.ru · rodina-history.ru · tsagi.ru · rg.ru · kommersant.ru · docs.historyrussia.org · gufo.me · ria.ru · um.mos.ru · gmik.ru</div>
   </div>
 </section>
 
@@ -236,156 +411,24 @@
   </div>
 </section>
 
-<!-- ── МИРОВОЙ КОНТЕКСТ ── -->
-<section class="block" id="mirovoy-kontekst">
-  <div class="wrap">
-    <div class="kicker">Контекст</div>
-    <h2>Что в это время делал мир</h2>
-    <p>Тысяча девятьсот шестой. 27 апреля (10 мая) в Петербурге открылась I Государственная дума — первый парламент России; она проработала всего 72 дня. Страна спорит о власти и законе.</p>
-    <p>А в Москве профессор Жуковский печатает работу «О присоединённых вихрях». Летать к этому времени уже пробуют — но крыло строят на глаз и проверяют падением. Формула, по которой силу крыла можно посчитать заранее, переводит это дело из смелых опытов в инженерный расчёт.</p>
-    <p>Отсюда вывод, ради которого этот день стоит в календаре: <b>наукой авиация стала тогда, когда кто-то объяснил, почему крыло держит.</b> Объяснил это Жуковский.</p>
-    <p class="src-note">Источник: Президентская библиотека им. Б. Н. Ельцина, «Открылась I Государственная дума» — https://www.prlib.ru/history/619233</p>
-  </div>
-</section>
-
-<!-- ── ЧАТ ── -->
-<section class="block" id="chat-sec">
-  <div class="wrap">
-    <div class="kicker">Поговори с изобретателем</div>
-    <h2>Спроси Николая Жуковского</h2>
-    <p>Задай вопрос — ответит сам профессор.</p>
-    <div id="starters"></div>
-    <div class="s17-9" id="chatBox"></div>
-    <div>
-      <input class="s17-11" id="chatInput" type="text" placeholder="Написать вопрос..." aria-label="Вопрос Николаю Жуковскому">
-      <button class="btn gold" type="button" id="chatSend">Отправить</button>
-    </div>
-    <p>Ответы сформированы на основе документальных источников.</p>
-  </div>
-</section>
-
-<!-- ── РАЗВИЛКА ── -->
-<section class="block s17-13" id="fork">
-  <div class="wrap">
-    <div class="kicker">Твой выбор</div>
-    <h2>А как поступил бы ты?</h2>
-    <p>1904 год, Кучино. У тебя аэродинамическая лаборатория, а в мире — смельчаки, которые строят летательные аппараты наугад и разбиваются. Никто не может объяснить, почему крыло вообще держит. Ты на месте Жуковского — что делаешь?</p>
-    <div class="fork-opt">🛩 Строю аппараты и пробую, пока какой-нибудь не полетит</div>
-    <div class="fork-opt">📐 Ищу закон: почему крыло держит — и как это посчитать</div>
-    <div class="fork-opt">⏳ Жду, пока авиаторы сами разберутся на опыте</div>
-    <div id="forkReal" class="exp s17-15"><b>Как было на самом деле.</b> Жуковский искал закон. 1 октября 1904 года на прогулке у Кучинской лаборатории он пришёл к идее присоединённых вихрей, в ноябре 1905-го доложил её в Московском математическом обществе, а в 1906-м напечатал. С этой формулой подъёмную силу крыла стало можно рассчитать до полёта.</div>
-  </div>
-</section>
-
-<section class="block s17-16" id="theme-inventions">
-  <div class="wrap">
-    <div class="kicker">Авиация · Русские первенства</div>
-    <h2>Что ещё русские изобрели первыми в теме «авиация»</h2>
-    <p>Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
-    <div>
-      <button class="btn gold" id="themeInvBtn" data-label="Показать 12 изобретений →">Показать 12 изобретений →</button>
-    </div>
-    <div id="themeInvBody" class="theme-body" hidden>
-      <div class="card s17-19">
-        <div>
-          <span>12 ИЗОБРЕТЕНИЙ · АВИАЦИЯ</span>
-        </div>
-        <div>
-<div>
-          <span>30 янв</span>
-          <span><a class="s17-25" href="day-30jan-kotelnikov.html">Ранцевый парашют РК-1 Котельникова →</a></span>
-        </div>
-<div>
-          <span>11 фев</span>
-          <span>Первый в мире морской гидросамолёт — летающая лодка М-5</span>
-        </div>
-<div>
-          <span>15 фев</span>
-          <span>Первая в мире «мёртвая петля», рождение высшего пилотажа</span>
-        </div>
-<div>
-          <span>21 мар</span>
-          <span>Самолёт Можайского, один из первых в мире</span>
-        </div>
-<div>
-          <span>5 апр</span>
-          <span>Аэродинамика, теорема Чаплыгина</span>
-        </div>
-<div>
-          <span>1 мая</span>
-          <span>Первый в мире одноместный вертолёт с автоматом перекоса в испытаниях</span>
-        </div>
-<div>
-          <span>6 мая</span>
-          <span>Первый в мире научный полёт на аэростате, Я. Д. Захаров, 1804</span>
-        </div>
-<div>
-          <span>17 июн</span>
-          <span>Первый в мире серийный реактивный пассажирский самолёт Ту-104</span>
-        </div>
-<div>
-          <span>22 авг</span>
-          <span>Первый в мире реактивный самолёт с крылом изменяемой стреловидности</span>
-        </div>
-<div>
-          <span>4 ноя</span>
-          <span>Первый в мире многомоторный тяжёлый самолёт «Илья Муромец»</span>
-        </div>
-<div>
-          <span>9 ноя</span>
-          <span>Автомат перекоса — «сердце» вертолёта</span>
-        </div>
-<div>
-          <span>31 дек</span>
-          <span>Первый в мире полёт сверхзвукового пассажирского самолёта Ту-144</span>
-        </div>
-        </div>
-      </div>
-      <p>Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
-    </div>
-  </div>
-</section>
-
 <section class="block" id="result">
   <div class="wrap">
-    <div class="kicker">Итог дня</div>
-    <h2>Сколько баллов ты собрал?</h2>
-    <p>Первый старт, полёт по формуле Жуковского, викторина, выбор в развилке, вопрос профессору и перечень авиационных первенств вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
+    <h2 style="margin-bottom:6px">Итог дня</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">Первый старт, полёт по формуле Жуковского и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново.</p>
     <div class="day-result">
       <div class="dr-score" id="dayTxt">0 / 100 · звание: Гость дня</div>
-      <div class="dr-bar"><i class="s17-27" id="dayBar"></i></div>
-      <div class="dr-note">Разбей пару планёров наугад, подними пилота по формуле, ответь на вопросы.</div>
+      <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
+      <div class="dr-note">Разбей пару планёров наугад, подними пилота по формуле и ответь на вопросы.</div>
     </div>
   </div>
 </section>
 
-<section class="block" id="sources">
-  <div class="wrap">
-    <div class="kicker">Источники</div>
-    <h2>На чём стоит страница</h2>
-    <ul class="sources">
-      <li><a href="https://gufo.me/dict/mathematics_encyclopedia/Жуковского_Теорема" rel="noopener" target="_blank">Математическая энциклопедия, статья «Жуковского теорема»</a>: формула подъёмной силы, 1906 год.</li>
-      <li><a href="https://www.kommersant.ru/doc/2865648" rel="noopener" target="_blank">«Коммерсантъ», «Вихрь, поднявший на крыло птиц и людей»</a>: прогулка 1 октября 1904 года, доклад 1905 года, юность и неудача с институтом путей сообщения.</li>
-      <li><a href="https://zhukovskymuseum.ru/biography/" rel="noopener" target="_blank">Научно-мемориальный музей Н. Е. Жуковского, «Биография»</a>: даты жизни и работ, «О парении птиц» и мёртвая петля.</li>
-      <li><a href="https://www.nkj.ru/archive/articles/14886/" rel="noopener" target="_blank">«Наука и жизнь», «Центр авиационной науки»</a> и <a href="https://www.nkj.ru/archive/articles/14885/" rel="noopener" target="_blank">статья о Рябушинском и Кучине</a>: Кутта и общая теорема, институт в Кучине.</li>
-      <li><a href="https://rodina-history.ru/2014/03/16/zukovskiy-site.html" rel="noopener" target="_blank">«Родина», «Пять главных открытий „отца русской авиации“», 16.03.2014</a>: мёртвая петля и Нестеров.</li>
-      <li><a href="https://www.tsagi.ru/pressroom/news/4515/" rel="noopener" target="_blank">ЦАГИ, «100-летие ЦАГИ в истории: аэродинамические трубы Т-101 и Т-104»</a> и <a href="https://rg.ru/2023/03/01/samaia-bolshaia-v-evrope-aerodinamicheskaia-truba-gde-ispytyvaiut-samolety-otkroetsia-dlia-turistov.html" rel="noopener" target="_blank">«Российская газета», 01.03.2023</a>: истребители войны в трубах ЦАГИ, Т-101.</li>
-      <li><a href="https://ria.ru/20131110/975497582.html" rel="noopener" target="_blank">РИА Новости, «Биография Андрея Туполева»</a>: кружок Жуковского, первый полёт на планёре.</li>
-      <li><a href="https://gmik.ru/2026/01/17/k-70-letiyu-nauchno-memorialnogo-muzeya-professora-n-e-zhukovskogo/" rel="noopener" target="_blank">Государственный музей истории космонавтики, «К 70-летию научно-мемориального музея профессора Н. Е. Жуковского», 17.01.2026</a>: курсы лётчиков.</li>
-      <li><a href="https://docs.historyrussia.org/ru/nodes/12763-3-dekabrya-postanovlenie-snk-v-svyazi-s-50-letiem-nauchnoy-deyatelnosti-professora-n-e-zhukovskogo" rel="noopener" target="_blank">РИО, Электронная библиотека исторических документов: постановление СНК от 3 декабря 1920 года к 50-летию научной деятельности Н. Е. Жуковского</a>: «отец русской авиации», оклад, лекции.</li>
-      <li><a href="https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/" rel="noopener" target="_blank">«Узнай Москву», Н. Е. Жуковский</a>: Кучино, ЦАГИ, последние годы, 17 марта 1921 года.</li>
-      <li><a href="https://ria.ru/20170117/1485561584.html" rel="noopener" target="_blank">РИА Новости, «Биография Николая Жуковского», 17.01.2017</a>: труба 1902 года, институт в Кучине, имя ЦАГИ.</li>
-      <li><a href="https://www.prlib.ru/history/619233" rel="noopener" target="_blank">Президентская библиотека им. Б. Н. Ельцина, «Открылась I Государственная дума»</a>: 1906 год в мире.</li>
-      <li>Изображения: <a href="https://goskatalog.ru/portal/#/collections?id=5992150" rel="noopener" target="_blank">Госкаталог, рег. № 5816870 — Жуковский у доски в МВТУ</a> и <a href="https://goskatalog.ru/portal/#/collections?id=5992175" rel="noopener" target="_blank">рег. № 5816845 — в строившейся трубе МВТУ, 1916</a>; держатель — Государственный центральный музей современной истории России.</li>
-    </ul>
-  </div>
-</section>
+<section class="block" id="sources"><div class="wrap"><div class="kicker">Источники</div><h2>На чём стоит страница</h2><ul class="sources"><li><a href="https://gufo.me/dict/mathematics_encyclopedia/Жуковского_Теорема" rel="noopener" target="_blank">Математическая энциклопедия, статья «Жуковского теорема»</a>: формула подъёмной силы, 1906 год.</li><li><a href="https://www.kommersant.ru/doc/2865648" rel="noopener" target="_blank">«Коммерсантъ», «Вихрь, поднявший на крыло птиц и людей»</a>: прогулка 1 октября 1904 года, доклад 1905 года, юность и неудача с институтом путей сообщения.</li><li><a href="https://zhukovskymuseum.ru/biography/" rel="noopener" target="_blank">Научно-мемориальный музей Н. Е. Жуковского, «Биография»</a>: даты жизни и работ, «О парении птиц» и мёртвая петля.</li><li><a href="https://www.nkj.ru/archive/articles/14886/" rel="noopener" target="_blank">«Наука и жизнь», «Центр авиационной науки»</a> и <a href="https://www.nkj.ru/archive/articles/14885/" rel="noopener" target="_blank">статья о Рябушинском и Кучине</a>: общая теорема о подъёмной силе, институт в Кучине.</li><li><a href="https://rodina-history.ru/2014/03/16/zukovskiy-site.html" rel="noopener" target="_blank">«Родина», «Пять главных открытий „отца русской авиации“», 16.03.2014</a>: мёртвая петля и Нестеров.</li><li><a href="https://www.tsagi.ru/pressroom/news/4515/" rel="noopener" target="_blank">ЦАГИ, «100-летие ЦАГИ в истории: аэродинамические трубы Т-101 и Т-104»</a> и <a href="https://rg.ru/2023/03/01/samaia-bolshaia-v-evrope-aerodinamicheskaia-truba-gde-ispytyvaiut-samolety-otkroetsia-dlia-turistov.html" rel="noopener" target="_blank">«Российская газета», 01.03.2023</a>: истребители войны в трубах ЦАГИ, Т-101.</li><li><a href="https://ria.ru/20131110/975497582.html" rel="noopener" target="_blank">РИА Новости, «Биография Андрея Туполева»</a>: кружок Жуковского, первый полёт на планёре.</li><li><a href="https://gmik.ru/2026/01/17/k-70-letiyu-nauchno-memorialnogo-muzeya-professora-n-e-zhukovskogo/" rel="noopener" target="_blank">Государственный музей истории космонавтики, «К 70-летию научно-мемориального музея профессора Н. Е. Жуковского», 17.01.2026</a>: курсы лётчиков.</li><li><a href="https://docs.historyrussia.org/ru/nodes/12763-3-dekabrya-postanovlenie-snk-v-svyazi-s-50-letiem-nauchnoy-deyatelnosti-professora-n-e-zhukovskogo" rel="noopener" target="_blank">РИО, Электронная библиотека исторических документов: постановление СНК от 3 декабря 1920 года к 50-летию научной деятельности Н. Е. Жуковского</a>: «отец русской авиации», оклад, лекции.</li><li><a href="https://um.mos.ru/personalities/zhukovskiy_nikolay_egorovich/" rel="noopener" target="_blank">«Узнай Москву», Н. Е. Жуковский</a>: Кучино, ЦАГИ, последние годы, 17 марта 1921 года.</li><li><a href="https://ria.ru/20170117/1485561584.html" rel="noopener" target="_blank">РИА Новости, «Биография Николая Жуковского», 17.01.2017</a>: труба 1902 года, институт в Кучине, имя ЦАГИ.</li><li>Изображения: <a href="https://goskatalog.ru/portal/#/collections?id=5992150" rel="noopener" target="_blank">Госкаталог, рег. № 5816870 — Жуковский у доски в МВТУ</a> и <a href="https://goskatalog.ru/portal/#/collections?id=5992175" rel="noopener" target="_blank">рег. № 5816845 — в строившейся трубе МВТУ, 1916</a>; держатель — Государственный центральный музей современной истории России.</li></ul></div></section>
 
 <section class="block" id="calendar">
   <div class="wrap">
-    <div class="kicker">Календарь изобретений</div>
-    <h2>Выбери любой день года</h2>
-    <p>Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
+    <h2 style="margin-bottom:6px">Календарь изобретений</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch">Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.</p>
     <div id="calbox"></div>
   </div>
 </section>
@@ -395,7 +438,7 @@
     <div class="kd-kicker">Куда дальше</div>
     <h2>Музей продолжается</h2>
     <div class="kd-grid">
-      <div class="kd-card main"><span class="kd-lbl">Следующая страница</span><a href="day-30jan-kotelnikov.html">30 января — Ранцевый парашют Котельникова <span class="kd-arr">→</span></a>
+      <div class="kd-card main"><span class="kd-lbl">Следующий день</span><a href="day-30jan-kotelnikov.html">30 января — Ранцевый парашют Котельникова <span class="kd-arr">→</span></a>
         <p>Парашют, который лётчик носит на себе.</p></div>
       <div class="kd-card"><span class="kd-lbl">Предыдущий день</span><a href="day-16jan-soyuz45.html">16 января — Первая в мире стыковка пилотируемых кораблей <span class="kd-arr">→</span></a>
         <p>«Союз-4» и «Союз-5» встретились на орбите.</p></div>
@@ -407,159 +450,26 @@
   </div>
 </section>
 
-<section class="block s17-28" id="catalog">
-  <div class="wrap s17-29">
-    <h2>У нас много изобретений</h2>
-    <p>Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
-    <a class="btn gold s17-32" href="index.html">Вернуться в музей →</a>
-  </div>
-</section>
-
-
 <footer><div class="wrap">
   <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
   Русская цивилизация · Музей «Что изобрели русские первыми в мире»</div></footer>
 
 <script>
 /* ── СЧЁТ ── шкала из 100 держит assets/museum-score.js; здесь только реестр наград.
-   Первый старт 10 + полёт по формуле 25 + викторина 5×10 + развилка 5 + чат 5 + перечень темы 5 = 100. */
-window.MUSEUM_SCORE = {awards:{podem:10, vihr:25, q:[5,10], fork:5, chat:5, theme:5},
+   Первый старт 10 + полёт по формуле 25 + викторина 5×10. */
+window.MUSEUM_SCORE = {awards:{podem:10, vihr:25, q:[5,10]},
   ranks:[[100,'Аэродинамик'],[70,'Ученик Жуковского'],[40,'Слушатель курсов авиации'],[0,'Гость дня']]};
 </script>
 <script src="../../assets/museum-score.js"></script>
+<script src="igry/podemnaya-sila.js"></script>
 <script>
 (function(){
   var $ = function(id){return document.getElementById(id);};
   $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
   $('listenBtn').onclick = function(){ $('audioguide').scrollIntoView({behavior:'smooth'}); };
-  function msg(t, cls){ var m=$('wingMsg'); m.className='lab-msg'+(cls?' '+cls:''); m.textContent=t; }
 
-  /* ── КРЫЛО: НАУГАД ИЛИ ПО ФОРМУЛЕ ── модель: подъёмная сила ~ угол до предела 15°, за пределом — срыв.
-     Нужный угол = вес пилота / 7,5; запас ±6% силы. Наугад силу не видно, «глазами Жуковского» — стрелки и вихрь. */
-  var cv=$('cvWing'), c=cv.getContext('2d'), W=cv.width, H=cv.height, KRIT=15, K=7.5, BAND=0.06, GROUND=H-34;
-  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ugol=4, mode='blind', kg=70, crashes=0, zhWins=0, state='ready', fl=null, wrecks=[], bits=[], wreckFade=1;
-  var KG=[70,88,61,79,93,66,84,57,75,90];
-  var kgI=0;
-  function nextKg(){ kgI=(kgI+1)%KG.length; kg=KG[kgI]; $('pilotKg').textContent=kg; }
-  function ratio(a){ return a>KRIT ? 0.12 : (a/ (kg/K)); }
-  function hillY(x){ return x<150 ? 210+ (x/150)*(x/150)*(GROUND-210) : GROUND; }
-  var P=[]; for (var i=0;i<46;i++) P.push({x:Math.random()*W, y:20+Math.random()*(GROUND-60), s:.6+Math.random()*.7});
-  function glider(x,y,rot,a,alpha){
-    c.save(); c.globalAlpha=alpha==null?1:alpha; c.translate(x,y); c.rotate(rot); c.scale(1.35,1.35);
-    c.save(); c.scale(-1,1); c.rotate(a*Math.PI/180);
-    c.beginPath(); c.moveTo(-46,2); c.bezierCurveTo(-46,-10,-20,-15,6,-12); c.bezierCurveTo(28,-9,46,-2,54,1);
-    c.bezierCurveTo(30,4,-16,8,-36,7); c.bezierCurveTo(-44,6,-46,4,-46,2); c.closePath();
-    c.fillStyle='#e8eef5'; c.fill(); c.restore();
-    c.strokeStyle='#c9a84c'; c.lineWidth=2.4; c.beginPath(); c.moveTo(-4,4); c.lineTo(-10,26); c.moveTo(6,4); c.lineTo(-2,26); c.stroke();
-    c.fillStyle='#c9a84c'; c.beginPath(); c.arc(-6,30,5,0,7); c.fill(); c.fillRect(-9,34,6,14);
-    c.restore();
-  }
-  function arrow(x,y,len,col,w){
-    var d=len<0?-1:1; c.strokeStyle=col; c.fillStyle=col; c.lineWidth=w;
-    c.beginPath(); c.moveTo(x,y); c.lineTo(x,y-len+d*10); c.stroke();
-    c.beginPath(); c.moveTo(x-9,y-len+d*12); c.lineTo(x+9,y-len+d*12); c.lineTo(x,y-len); c.closePath(); c.fill();
-  }
-  function vortex(x,y,t,al,drift){
-    if (al<=0) return; c.strokeStyle='rgba(125,200,255,'+al.toFixed(2)+')'; c.lineWidth=2;
-    for (var k=0;k<3;k++){ c.beginPath(); c.ellipse(x+drift,y,92+k*14,34+k*7,0,t*2+k,t*2+k+4.4); c.stroke(); }
-  }
-  function draw(t){
-    c.fillStyle='#0b1a2a'; c.fillRect(0,0,W,H);
-    P.forEach(function(p){ p.x+=(RM?0.6:1.8)*p.s; if (p.x>W){p.x=0;p.y=20+Math.random()*(GROUND-60);} c.fillStyle='rgba(140,200,255,.35)'; c.fillRect(p.x,p.y,6,1.4); });
-    c.fillStyle='#3a2f22'; c.beginPath(); c.moveTo(0,H); for (var x=0;x<=W;x+=10) c.lineTo(x,hillY(x)); c.lineTo(W,H); c.closePath(); c.fill();
-    c.fillStyle='#4f6b3a'; c.fillRect(0,GROUND,W,3);
-    wrecks.forEach(function(w){ c.save(); c.globalAlpha=wreckFade; c.translate(w.x,w.y); c.rotate(w.r); c.fillStyle='#8c97a3'; c.fillRect(-w.l/2,-2,w.l,4); c.restore(); });
-    bits.forEach(function(b){ c.save(); c.translate(b.x,b.y); c.rotate(b.r); c.fillStyle='#d6dde5'; c.fillRect(-b.l/2,-2,b.l,4); c.restore(); });
-    var zh = mode==='zh';
-    if (state==='ready'){
-      var gx=96, gy=hillY(96)-70, r=ratio(ugol);
-      glider(gx,gy,0,ugol);
-      if (zh){
-        var stall=ugol>KRIT, good=Math.abs(r-1)<=BAND && !stall;
-        vortex(gx+4,gy-2,t, stall?0.25:0.25+Math.min(r,1.3)*0.45, stall? 40+Math.sin(t*3)*20 : 0);
-        c.setLineDash([6,6]); c.strokeStyle='rgba(255,120,110,.8)'; c.lineWidth=2; c.beginPath(); c.moveTo(gx+46,gy-12-90); c.lineTo(gx+114,gy-12-90); c.stroke(); c.setLineDash([]);
-        arrow(gx+80,gy-12, Math.max(10,Math.min(170,90*r)), good?'#5fe08a':(stall?'#ff8a6e':'#e8c66a'), 6);
-        arrow(gx+80,gy+60, -90, 'rgba(255,120,110,.85)', 4);
-      }
-    } else if (fl){
-      if (zh && !fl.crash) vortex(fl.x+4,fl.y-2,t, fl.stall?Math.max(0,.6-(t-fl.st)*0.4):0.6, fl.stall?(t-fl.st)*-160:0);
-      if (!fl.gone) glider(fl.x,fl.y,fl.rot,ugol);
-    }
-  }
-  function launch(){
-    if (state!=='ready') return;
-    var r=ratio(ugol), kind = ugol>KRIT ? 'srv' : (r<1-BAND ? 'malo' : (r>1+BAND ? 'mnogo' : 'ok'));
-    state='fly'; fl={x:96,y:hillY(96)-70,vx:150,vy:0,rot:0,t:0,kind:kind,stall:kind==='srv',st:0,crash:false};
-    if (fl.stall) fl.st=(performance.now()-t0)/1000;
-    $('wingGo').disabled=true; $('ugol').disabled=true; award('podem',10);
-    msg(mode==='zh'?'Старт по расчёту…':'Старт наугад…');
-  }
-  function step(dt,t){
-    bits.forEach(function(b){ if (b.rest) return; b.vy+=420*dt; b.x+=b.vx*dt; b.y+=b.vy*dt; b.r+=b.vr*dt;
-      if (b.y>=GROUND-2){ b.y=GROUND-2; b.rest=true; wrecks.push({x:b.x,y:b.y,r:b.r,l:b.l}); } });
-    bits=bits.filter(function(b){return !b.rest;});
-    if (state!=='fly' || !fl) return;
-    fl.t+=dt; var k=fl.kind, g=300;
-    if (k==='ok'){ fl.vy += (-g*0.04 - fl.vy*1.5)*dt; fl.rot += (-0.05-fl.rot)*dt*3; }
-    else if (k==='malo'){ fl.vy += g*0.55*dt; fl.rot += (0.7-fl.rot)*dt*1.4; }
-    else if (k==='mnogo'){ if (!fl.stall){ fl.vy += (-g*0.9)*dt; fl.rot += (-0.9-fl.rot)*dt*2.2; if (fl.t>0.75){ fl.stall=true; fl.st=t; } }
-      else { fl.vy += g*1.1*dt; fl.vx*=1-dt*0.9; fl.rot += 3.2*dt; } }
-    else { if (fl.t<0.35) fl.vy += -g*0.2*dt; else { fl.vy += g*1.2*dt; fl.vx*=1-dt*0.8; fl.rot += 2.6*dt; } }
-    fl.x+=fl.vx*dt; fl.y+=fl.vy*dt;
-    if (k==='ok' && fl.x>W+60){ fl.gone=true; finish(true); return; }
-    if (fl.y+52>=hillY(fl.x) && fl.t>0.2){ fl.crash=true; fl.gone=true;
-      for (var i=0;i<7;i++) bits.push({x:fl.x+(i-3)*6,y:hillY(fl.x)-14,vx:fl.vx*0.3+(Math.random()-.5)*160,vy:-80-Math.random()*140,r:Math.random()*3,vr:(Math.random()-.5)*12,l:10+Math.random()*16});
-      finish(false); }
-  }
-  function finish(ok){
-    state='done';
-    var a=String(ugol).replace('.',','), wasKg=kg, kind=fl.kind;
-    if (!ok){ crashes++; $('crashN').textContent=crashes; var ic=document.createElement('i'); $('crashIcons').appendChild(ic);
-      $('crashBox').classList.add('bump'); setTimeout(function(){ $('crashBox').classList.remove('bump'); },500); }
-    var text, cls='bad';
-    if (ok && mode==='zh'){
-      zhWins++; cls='ok'; award('vihr',25); $('formula').classList.add('show');
-      if (crashes>0 && zhWins===1){
-        text='С первого раза! Наугад ты разбил '+crashes+' '+plural(crashes,'планёр','планёра','планёров')+' — а по формуле хватило одного расчёта. Этим Жуковский и перевернул авиацию в 1906 году.';
-        $('crashBox').classList.add('pogas'); wreckFade=1; fade();
-      } else text='Долетел: стрелка силы ровно на черте веса — пилот '+wasKg+' кг в воздухе. Следующий пилот другой — посчитай и его.';
-    } else if (ok){ cls='ok'; text='Повезло — долетел с углом '+a+'°. Но следующий пилот весит иначе. Угадаешь снова?'; }
-    else if (kind==='malo') text='Мало силы: при '+a+'° крыло не удержало пилота '+wasKg+' кг — планёр клюнул носом.';
-    else if (kind==='mnogo') text='Перетянул: при '+a+'° нос задрался, поток над крылом сорвался — сваливание.';
-    else text='Угол '+a+'° за пределом: поток сорвался сразу, вихрь ушёл с крыла — и сила пропала.';
-    if (!ok && mode==='blind' && crashes>=2){ text+=' Так и учились до 1906 года — обломками. Включи «Глазами Жуковского».'; $('modeZh').classList.add('zovu'); }
-    msg(text,cls);
-    setTimeout(function(){ fl=null; state='ready'; nextKg(); $('wingGo').disabled=false; $('ugol').disabled=false; }, ok?900:1300);
-  }
-  function fade(){ var s=performance.now(); (function f(n){ wreckFade=Math.max(0,1-(n-s)/1600); if (wreckFade>0) requestAnimationFrame(f); else wrecks=[]; })(s); }
-  function plural(n,a,b,c5){ var m=n%10,h=n%100; return (m===1&&h!==11)?a:(m>=2&&m<=4&&(h<12||h>14))?b:c5; }
-  function setMode(m){ mode=m; $('modeBlind').classList.toggle('on',m==='blind'); $('modeZh').classList.toggle('on',m==='zh');
-    $('modeBlind').setAttribute('aria-pressed',m==='blind'); $('modeZh').setAttribute('aria-pressed',m==='zh');
-    $('zhLegend').hidden = m!=='zh'; $('modeZh').classList.remove('zovu');
-    msg(m==='zh' ? 'Теперь видно то, что увидел Жуковский: вихрь вокруг крыла и стрелку силы. Поставь угол так, чтобы зелёная стрелка дошла до красной черты — и жми «В воздух».'
-                 : 'Снова наугад: силы не видно, только угол. Пилот '+kg+' кг ждёт.'); }
-  var last=performance.now(), t0=last;
-  function loop(now){ var dt=Math.min(.05,(now-last)/1000); last=now; var t=(now-t0)/1000; step(dt,t); draw(t); requestAnimationFrame(loop); }
-  $('ugol').addEventListener('input', function(){ ugol=+this.value; $('ugolTxt').textContent=String(ugol).replace('.',',')+'°'; });
-  $('wingGo').onclick=launch;
-  $('modeBlind').onclick=function(){ if (state==='ready') setMode('blind'); };
-  $('modeZh').onclick=function(){ if (state==='ready') setMode('zh'); };
-  requestAnimationFrame(loop);
-
-  /* ── ВИКТОРИНА ── один ответ на вопрос; дистракторы сверены с источниками страницы. */
-  var Q = [
-    {q:'Что, по Жуковскому, создаёт подъёмную силу крыла?', o:['Тёплый воздух под крылом','Вихрь, присоединённый к крылу, — циркуляция','Взмахи, как у птицы'], a:1,
-     e:'Присоединённый вихрь: сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию.'},
-    {q:'Где Жуковскому пришла идея присоединённых вихрей?', o:['В Берлине, в гостях у немецких учёных','На прогулке в поле у Кучинской лаборатории','На экзамене в Петербурге'], a:1,
-     e:'1 октября 1904 года, в праздничный день, у аэродинамической лаборатории в Кучине.'},
-    {q:'В каком году вышла работа «О присоединённых вихрях»?', o:['1895','1906','1918'], a:1,
-     e:'В 1906-м. Идея — 1904 год, доклад в Московском математическом обществе — ноябрь 1905-го.'},
-    {q:'Какую фигуру полёта Жуковский рассчитал на бумаге в 1891 году — за 22 года до Нестерова?', o:['Мёртвую петлю','Штопор','Бочку'], a:0,
-     e:'Мёртвую петлю: в работе «О парении птиц». В небе её первым в мире выполнил Пётр Нестеров в 1913 году.'},
-    {q:'Что создано по предложению Жуковского 1 декабря 1918 года?', o:['ЦАГИ — Центральный аэрогидродинамический институт','Московский университет','Институт путей сообщения'], a:0,
-     e:'ЦАГИ. С 1921 года институт носит имя Жуковского.'}
-  ];
+  /* ── ВИКТОРИНА ── один ответ на вопрос. */
+  var Q = [{"q":"Что, по Жуковскому, создаёт подъёмную силу крыла?","o":["Тёплый воздух под крылом","Вихрь, присоединённый к крылу, — циркуляция","Взмахи, как у птицы"],"a":1,"e":"Присоединённый вихрь: сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию."},{"q":"Где Жуковскому пришла идея присоединённых вихрей?","o":["В университетском кабинете, за письменным столом","На прогулке в поле у Кучинской лаборатории","На экзамене в Петербурге"],"a":1,"e":"1 октября 1904 года, в праздничный день, у аэродинамической лаборатории в Кучине."},{"q":"В каком году вышла работа «О присоединённых вихрях»?","o":["1895","1906","1918"],"a":1,"e":"В 1906-м. Идея — 1904 год, доклад в Московском математическом обществе — ноябрь 1905-го."},{"q":"Какую фигуру полёта Жуковский рассчитал на бумаге в 1891 году — за 22 года до Нестерова?","o":["Мёртвую петлю","Штопор","Бочку"],"a":0,"e":"Мёртвую петлю: в работе «О парении птиц». В небе её первым в мире выполнил Пётр Нестеров в 1913 году."},{"q":"Что создано по предложению Жуковского 1 декабря 1918 года?","o":["ЦАГИ — Центральный аэрогидродинамический институт","Московский университет","Институт путей сообщения"],"a":0,"e":"ЦАГИ. С 1921 года институт носит имя Жуковского."}];
   var box = $('quizBox');
   Q.forEach(function(it, qi){
     var wrap = document.createElement('div');
@@ -580,84 +490,17 @@ window.MUSEUM_SCORE = {awards:{podem:10, vihr:25, q:[5,10], fork:5, chat:5, them
   });
 })();
 </script>
-
-<script>
-// ── РАЗВИЛКА ──────────────────────────────────────────────────────────────────
-document.querySelectorAll('.fork-opt').forEach((el,i)=>{
-  el.onclick=function(){
-    document.querySelectorAll('.fork-opt').forEach(b=>b.classList.remove('chosen'));
-    this.classList.add('chosen');
-    document.getElementById('forkReal').style.display='block';
-    award('fork',5);
-  };
-});
-
-// ── ЧАТ ───────────────────────────────────────────────────────────────────────
-const kb=[
- {k:['вихр','циркуляц','подъёмн','подъемн','формул','теорем','крыло держ'],a:'Крыло держит вихрь, присоединённый к нему: воздух не только течёт мимо, но и закручивается вокруг крыла. Подъёмная сила равна плотности воздуха, умноженной на скорость потока и на эту закрутку — циркуляцию, и направлена поперёк потока. Работу «О присоединённых вихрях» я напечатал в 1906 году.'},
- {k:['кучин','прогулк','поле','1904','идея','придумал'],a:'1 октября 1904 года был праздник. Я приехал в Кучинскую аэродинамическую лабораторию и пошёл гулять в поле. Там и пришла мысль: крыло несёт с собой вихрь, и в нём весь секрет подъёмной силы.'},
- {k:['доклад','математическ','1905','общество'],a:'Доклад «О присоединённых вихрях» я прочитал в Московском математическом обществе 15 ноября 1905 года по старому стилю. Напечатана работа в 1906-м.'},
- {k:['кутт','герман','первым','первый','единствен'],a:'Говорить, что я один пришёл к этой формуле, не стану: в Германии к ней независимо подошёл Кутта. Моё дело — вывести закон и построить, где его проверять: трубы, лабораторию в Кучине, потом ЦАГИ.'},
- {k:['труб','лаборатор','1902','мвту','училищ'],a:'Трубу придумал не я. Первую в России аэродинамическую трубу мы построили в 1902 году в механической лаборатории Московского университета. В 1904-м в Кучине заработал аэродинамический институт. А в 1916-м строили трубу в Московском высшем техническом училище — я стою в ней на фотографии.'},
- {k:['петл','нестеров','фигур','1891'],a:'В 1891 году в работе «О парении птиц» я рассчитал, какие фигуры возможны в полёте, — среди них и мёртвую петлю. В небе её первым сделал Пётр Нестеров, в 1913 году.'},
- {k:['туполев','кружок','студент','планёр','планер'],a:'В 1909 году в мой воздухоплавательный кружок пришёл студент Андрей Туполев. В 1910-м он впервые полетел на планёре, который строил сам с товарищами. Потом под его руководством создано больше ста типов самолётов.'},
- {k:['рябушинск'],a:'Аэродинамический институт в Кучине построил на свои деньги Дмитрий Рябушинский и позвал меня руководить. Открылся он в 1904 году — первый в Европе.'},
- {k:['цаги','институт','1918','академи','ректор'],a:'1 декабря 1918 года по моему предложению создали Центральный аэрогидродинамический институт — ЦАГИ. А в 1920-м меня назначили первым ректором Института инженеров Красного Воздушного флота, будущей Военно-воздушной академии.'},
- {k:['лётчик','летчик','войн','курс'],a:'С 1914 по 1919 год я руководил в Москве теоретическими курсами авиации. Через них прошли пилоты войны. В доме, где сейчас мой музей, с 1915 года жили лётчики и шли занятия.'},
- {k:['детств','родил','орехов','няня','отец','семь'],a:'Родился я 17 января 1847 года в сельце Орехово Владимирской губернии. Отец, Егор Иванович, был инженером путей сообщения, строил Нижегородскую железную дорогу. Растила меня няня, Арина Михайловна.'},
- {k:['учил','гимнази','неудач','путей сообщ','университет','провал'],a:'Жили мы бедно. В Московский университет я пошёл, потому что в Москве дешевле, чем в Петербурге. Хотел стать инженером путей сообщения, как отец, — не вышло. С 1870 года учил физике гимназисток.'},
- {k:['птиц','парени','1891'],a:'Начинал я с птиц: в 1891 году написал работу «О парении птиц». Как держится в воздухе птица, так же потом пришлось объяснить и крыло аппарата.'},
- {k:['ленин','отец русской','постановлен','оклад','1920','дочь','умер'],a:'3 декабря 1920 года вышло постановление Совнаркома к пятидесятилетию моей научной работы — там меня назвали «отцом русской авиации». Но тот год отнял у меня дочь Елену. Мне было уже семьдесят три.'}
-];
-
-function addMsg(text,who){
-  const d=document.createElement('div');
-  d.className='msg '+who;
-  d.textContent=text;
-  document.getElementById('chatBox').appendChild(d);
-  d.scrollIntoView({behavior:'smooth'});
-}
-
-function findAnswer(q){
-  q=q.toLowerCase();
-  for(const item of kb){
-    if(item.k.some(k=>q.includes(k.toLowerCase())))return item.a;
-  }
-  return 'Спросите точнее — о присоединённых вихрях, о прогулке в Кучине, о мёртвой петле, о Туполеве, о трубах или о ЦАГИ. Отвечу как было.';
-}
-
-function sendChat(){
-  const inp=document.getElementById('chatInput');
-  const q=inp.value.trim();
-  if(!q)return;
-  addMsg(q,'you');
-  inp.value='';
-  setTimeout(()=>{addMsg(findAnswer(q),'inv');award('chat',5);},600);
-}
-document.getElementById('chatSend').addEventListener('click',sendChat);
-document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
-
-// стартовые вопросы + приветствие (без прокрутки при загрузке)
-(function(){
-  const qs=['Почему крыло держит самолёт?','Как вам пришла эта идея?','Правда, что вы рассчитали мёртвую петлю?'];
-  const box=document.getElementById('starters');
-  qs.forEach(q=>{const c=document.createElement('span');c.className='chip';c.textContent=q;
-    c.onclick=()=>{document.getElementById('chatInput').value=q;sendChat();};box.appendChild(c);});
-  const w=document.createElement('div');w.className='msg inv';
-  w.textContent='Здравствуйте. Николай Егорович Жуковский, профессор механики. Спрашивайте — про крыло и вихри расскажу как было.';
-  document.getElementById('chatBox').appendChild(w);
-})();
-
-// ── ТЕМАТИЧЕСКИЕ ИЗОБРЕТЕНИЯ ─────────────────────────────────────────────────
-const themeBtn=document.getElementById('themeInvBtn');
-if(themeBtn)themeBtn.onclick=function(){
-  const b=document.getElementById('themeInvBody');
-  const open=b.hidden;
-  b.hidden=!open;
-  this.textContent=open?'▲ Скрыть':this.dataset.label||'Показать перечень →';
-  if(open)award('theme',5);
-};
-</script>
+<script>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
+<script>window.MUSEUM_CHROME={
+  museum:{title:'Музей «Что изобрели русские первыми в мире»',href:'index.html'},
+  share:{title:'Аэродинамика как наука — Музей «Что изобрели русские первыми в мире»',
+         text:'Жуковский вывел, откуда берётся подъёмная сила, — и авиация из авантюры стала наукой. Что Россия дала миру раньше всех — день за днём.'},
+  prev:{href:'day-16jan-soyuz45.html',title:'16 января · «Союз-4» и «Союз-5»'},
+  next:{href:'day-30jan-kotelnikov.html',title:'30 января · Парашют Котельникова'},
+  all:{href:'index.html',label:'Все изобретения'},
+  city:'../../index.html',
+  random:['day-01jan-cabletv.html','day-02jan-luna1.html','day-03jan-anosov.html','day-04jan-pilchikov.html','day-05jan-shukhov.html','day-06jan-orlov.html','day-08jan-icebreaker.html','day-09jan-blinov.html','day-10jan-britnev.html','day-11jan-kostovich.html','day-12jan-r7.html','day-13jan-k278.html','day-14jan-lira.html','day-30jan-kotelnikov.html','day-03feb-luna9.html','day-18mar-leonov.html','day-15may-mechnikov.html','day-16jun-tereshkova.html','day-26sep-pavlov.html','day-15nov-buran.html','day-25nov-pirogov.html','day-01dec-lobachevsky.html','day-14dec-laser.html']
+};</script>
 <script src="../../assets/museum-chrome.js"></script>
 <script>window.MUSEUM_SUPPORT={museum:'Музей «Что изобрели русские первыми в мире»'};</script>
 <script src="../../assets/museum-support.js"></script>
@@ -667,6 +510,61 @@ if(themeBtn)themeBtn.onclick=function(){
 <script>window.MUSEUM_RETURN={riddle:{q:"В какой день и где Жуковскому пришла идея присоединённых вихрей?",a:"1 октября 1904 года, в праздник, на прогулке в поле у Кучинской аэродинамической лаборатории.",src:"«Коммерсантъ», «Вихрь, поднявший на крыло птиц и людей»"}};</script>
 <script src="../../assets/museum-return.js" data-museum="izobreteniya" data-day="01-17"></script>
 <script defer src="../../assets/analytics.js"></script>
+
+<script>window.MUSEUM_AUDIOGUIDE={
+  "audioSrc": "audio-guide-zhukovsky-ru.mp3",
+  "durationLabel": "5 минут 30 секунд",
+  "lead": "Голос ведёт по залу аэродинамики: от Жуковского у доски через мёртвую петлю на бумаге и игру с планёрами до формулы, по которой считают любое крыло. Семь остановок, на каждой — что искать глазами. Слушать можно фоном, пока читаешь страницу.",
+  "stops": [
+    {
+      "t": 0,
+      "mark": "0:00",
+      "title": "Профессор у доски"
+    },
+    {
+      "t": 52,
+      "mark": "0:52",
+      "title": "Посчитал раньше, чем полетели"
+    },
+    {
+      "t": 93,
+      "mark": "1:33",
+      "title": "Трубы, кружок и Кучино"
+    },
+    {
+      "t": 138,
+      "mark": "2:18",
+      "title": "Чья это труба"
+    },
+    {
+      "t": 182,
+      "mark": "3:02",
+      "title": "Наугад или по формуле"
+    },
+    {
+      "t": 239,
+      "mark": "3:59",
+      "title": "Что он сделал"
+    },
+    {
+      "t": 292,
+      "mark": "4:52",
+      "title": "Почему крыло держит"
+    }
+  ],
+  "transcript": [
+    "\u003cp>«Здравствуйте. Мы в зале аэродинамики как науки. Посмотрите на обложку: седой профессор с бородой стоит у доски в аудитории, а на доске мелом нарисованы профиль крыла, линии обтекания и формулы. Это Николай Егорович Жуковский, он читает курс «Теоретические основы воздухоплавания» в Московском высшем техническом училище. Он родился семнадцатого января тысяча восемьсот сорок седьмого года, в этот самый день календаря. Главная мысль такая: Жуковский вывел, откуда берётся подъёмная сила, и авиация из авантюры стала наукой. Под обложкой полоса из четырёх чисел. Тысяча восемьсот девяносто первый — мёртвая петля на бумаге. Тысяча девятьсот четвёртый — первый в Европе аэродинамический институт. Тысяча девятьсот шестой — подъёмная сила любого крыла. И тысяча девятьсот восемнадцатый — по его настоянию создан ЦАГИ. Пройдём по залу по порядку.»\u003c/p>",
+    "\u003cp>«Ниже найдите пять фактов о Жуковском. Каждый можно развернуть кнопкой «Узнать подробнее». Первый факт про немецкого учёного Кутту. Кутта посчитал подъёмную силу для одного частного крыла, изогнутой пластины. А Жуковский в тысяча девятьсот шестом году доказал общую теорему: по ней считают крыло любой формы. Второй факт про мёртвую петлю. В работе «О парении птиц», в тысяча восемьсот девяносто первом году, Жуковский впервые вычислил возможные фигуры полёта, и среди них мёртвую петлю. А в небе её первым в мире выполнил Пётр Нестеров на «Ньюпоре-четыре» в тысяча девятьсот тринадцатом году. Через двадцать два года после расчёта.»\u003c/p>",
+    "\u003cp>«Третий факт: все истребители Великой Отечественной сперва «летали» в трубах ЦАГИ. С тысяча девятьсот сорокового по тысяча девятьсот сорок пятый год через большие трубы ЦАГИ прошли все опытные и серийные истребители советских конструкторских бюро. Четвёртый факт про Туполева. В тысяча девятьсот девятом году студент Андрей Туполев пришёл в воздухоплавательный кружок Жуковского, а в тысяча девятьсот десятом впервые полетел на планёре, который строил сам с товарищами. Потом под его руководством создано больше ста типов самолётов. Пятый факт: первый в Европе аэродинамический институт открылся в тысяча девятьсот четвёртом году под Москвой, в Кучине. Построил его на свои деньги Дмитрий Рябушинский и позвал руководить Жуковского. Там же, гуляя в поле, Жуковский пришёл к идее присоединённого вихря.»\u003c/p>",
+    "\u003cp>«Дальше вопрос, который задают первым: изобрёл ли Жуковский аэродинамическую трубу? Честный ответ: нет, трубу изобрёл не он. Его труба тысяча девятьсот второго года в Московском университете — одна из первых в мире всасывающих труб. Первой в России она не была: раньше трубы строили Пашкевич в Петербурге и Циолковский в Калуге. Его первенство другое: институт в Кучине. Из Кучина вырос ЦАГИ, он носит имя Жуковского. Сегодня все наши самолёты продувают в трубах ЦАГИ, а в самой большой дозвуковой трубе Европы испытывали практически все советские и российские летательные аппараты. Посмотрите на второй снимок: Жуковский стоит у стены в строящейся аэродинамической трубе, рядом на станине большой вентилятор с двухлопастным пропеллером. Это лаборатория Московского высшего технического училища, тысяча девятьсот шестнадцатый год.»\u003c/p>",
+    "\u003cp>«Теперь игра «Подними пилота: наугад — или по формуле». До тысяча девятьсот шестого года крыло подбирали на глаз и проверяли падением. Попробуйте так же. Первый пилот весит семьдесят килограммов, у каждого следующего вес свой. Сдвиньте ползунок «Угол крыла» и нажмите «В воздух». Мало угла — планёр клюёт носом. Много — нос задирается, поток срывается, планёр сваливается. Счётчик покажет, сколько планёров разбито. Разбив пару, включите «Глазами Жуковского». Теперь видно вихрь вокруг крыла и стрелку силы. Поставьте угол так, чтобы зелёная стрелка дошла до красной черты, и пилот полетит с первого раза. Честная оговорка: это модель, а не расчёт. Вес пилотов, предел угла в пятнадцать градусов и запас плюс-минус шесть процентов заданы программой. Сколько планёров разбили до тысяча девятьсот шестого года на самом деле, игра не утверждает.»\u003c/p>",
+    "\u003cp>«Следующая остановка — что именно сделал Жуковский. Он вывел и доказал теорему о подъёмной силе крыла: сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию. На пальцах это так: к потоку воздуха добавили медленный круговорот вокруг крыла. Над крылом воздух бежит быстрее, под крылом медленнее, и разница толкает крыло вверх. Нет круговорота — нет силы. Найдите ленту дат. Первого октября тысяча девятьсот четвёртого года — идея на прогулке в Кучине. В ноябре тысяча девятьсот пятого — доклад «О присоединённых вихрях» в Московском математическом обществе. Тысяча девятьсот шестой — печатная работа, с неё формулу мог проверить любой. Первого декабря тысяча девятьсот восемнадцатого по его предложению создан ЦАГИ. В Германии к той же формуле независимо подошёл Мартин Кутта, и в мире её называют теоремой Кутты — Жуковского.»\u003c/p>",
+    "\u003cp>«Итог зала. В тысяча девятьсот шестом году летать уже пробовали, но крыло строили на глаз и проверяли падением. Формула Жуковского перевела это дело из смелых опытов в инженерный расчёт. Наукой авиация стала тогда, когда кто-то объяснил, почему крыло держит. Объяснил это Жуковский. И слова «отец русской авиации» — не прозвище из учебника, а строка постановления Совнаркома от третьего декабря тысяча девятьсот двадцатого года. Теперь вернитесь к игре: разбейте пару планёров наугад, а потом поднимите пилота по формуле. Или откройте пять фактов и ответьте на пять вопросов викторины. Спасибо, что прошли зал.»\u003c/p>"
+  ],
+  "note": "Озвучено синтезом речи — временно, до записи голосом автора музея."
+};</script>
+<script src="../../assets/museum-audioguide.js"></script>
+<script src="../../assets/museum-video.js"></script>
 <script type="application/json" data-proof>
 {
  "status": "found",
@@ -681,30 +579,5 @@ if(themeBtn)themeBtn.onclick=function(){
 }
 </script>
 <script src="../../assets/museum-proof.js"></script>
-<script>window.MUSEUM_AUDIOGUIDE={
-  audioSrc:"audio-guide-zhukovsky-ru.mp3",
-  durationLabel:"5 минут 30 секунд",
-  lead:"Голос ведёт по залу аэродинамики: от Жуковского у доски через мёртвую петлю на бумаге и игру с планёрами до формулы, по которой считают любое крыло. Семь остановок, на каждой — что искать глазами. Слушать можно фоном, пока читаешь страницу.",
-  stops:[
-    {t:0,mark:"0:00",title:"Профессор у доски"},
-    {t:52,mark:"0:52",title:"Посчитал раньше, чем полетели"},
-    {t:93,mark:"1:33",title:"Трубы, кружок и Кучино"},
-    {t:138,mark:"2:18",title:"Чья это труба"},
-    {t:182,mark:"3:02",title:"Наугад или по формуле"},
-    {t:239,mark:"3:59",title:"Что он сделал"},
-    {t:292,mark:"4:52",title:"Почему крыло держит"}
-  ],
-  transcript:[
-    "<p>«Здравствуйте. Мы в зале аэродинамики как науки. Посмотрите на обложку: седой профессор с бородой стоит у доски в аудитории, а на доске мелом нарисованы профиль крыла, линии обтекания и формулы. Это Николай Егорович Жуковский, он читает курс «Теоретические основы воздухоплавания» в Московском высшем техническом училище. Он родился семнадцатого января тысяча восемьсот сорок седьмого года, в этот самый день календаря. Главная мысль такая: Жуковский вывел, откуда берётся подъёмная сила, и авиация из авантюры стала наукой. Под обложкой полоса из четырёх чисел. Тысяча восемьсот девяносто первый — мёртвая петля на бумаге. Тысяча девятьсот четвёртый — первый в Европе аэродинамический институт. Тысяча девятьсот шестой — подъёмная сила любого крыла. И тысяча девятьсот восемнадцатый — по его настоянию создан ЦАГИ. Пройдём по залу по порядку.»</p>",
-    "<p>«Ниже найдите пять фактов о Жуковском. Каждый можно развернуть кнопкой «Узнать подробнее». Первый факт про немецкого учёного Кутту. Кутта посчитал подъёмную силу для одного частного крыла, изогнутой пластины. А Жуковский в тысяча девятьсот шестом году доказал общую теорему: по ней считают крыло любой формы. Второй факт про мёртвую петлю. В работе «О парении птиц», в тысяча восемьсот девяносто первом году, Жуковский впервые вычислил возможные фигуры полёта, и среди них мёртвую петлю. А в небе её первым в мире выполнил Пётр Нестеров на «Ньюпоре-четыре» в тысяча девятьсот тринадцатом году. Через двадцать два года после расчёта.»</p>",
-    "<p>«Третий факт: все истребители Великой Отечественной сперва «летали» в трубах ЦАГИ. С тысяча девятьсот сорокового по тысяча девятьсот сорок пятый год через большие трубы ЦАГИ прошли все опытные и серийные истребители советских конструкторских бюро. Четвёртый факт про Туполева. В тысяча девятьсот девятом году студент Андрей Туполев пришёл в воздухоплавательный кружок Жуковского, а в тысяча девятьсот десятом впервые полетел на планёре, который строил сам с товарищами. Потом под его руководством создано больше ста типов самолётов. Пятый факт: первый в Европе аэродинамический институт открылся в тысяча девятьсот четвёртом году под Москвой, в Кучине. Построил его на свои деньги Дмитрий Рябушинский и позвал руководить Жуковского. Там же, гуляя в поле, Жуковский пришёл к идее присоединённого вихря.»</p>",
-    "<p>«Дальше вопрос, который задают первым: изобрёл ли Жуковский аэродинамическую трубу? Честный ответ: нет, трубу изобрёл не он. Его труба тысяча девятьсот второго года в Московском университете — первая в России и одна из первых в мире. Его первенство другое: институт в Кучине. Из Кучина вырос ЦАГИ, он носит имя Жуковского. Сегодня все наши самолёты продувают в трубах ЦАГИ, а в самой большой дозвуковой трубе Европы испытывали практически все советские и российские летательные аппараты. Посмотрите на второй снимок: Жуковский стоит у стены в строящейся аэродинамической трубе, рядом на станине большой вентилятор с двухлопастным пропеллером. Это лаборатория Московского высшего технического училища, тысяча девятьсот шестнадцатый год.»</p>",
-    "<p>«Теперь игра «Подними пилота: наугад — или по формуле». До тысяча девятьсот шестого года крыло подбирали на глаз и проверяли падением. Попробуйте так же. Первый пилот весит семьдесят килограммов, у каждого следующего вес свой. Сдвиньте ползунок «Угол крыла» и нажмите «В воздух». Мало угла — планёр клюёт носом. Много — нос задирается, поток срывается, планёр сваливается. Счётчик покажет, сколько планёров разбито. Разбив пару, включите «Глазами Жуковского». Теперь видно вихрь вокруг крыла и стрелку силы. Поставьте угол так, чтобы зелёная стрелка дошла до красной черты, и пилот полетит с первого раза. Честная оговорка: это модель, а не расчёт. Вес пилотов, предел угла в пятнадцать градусов и запас плюс-минус шесть процентов заданы программой. Сколько планёров разбили до тысяча девятьсот шестого года на самом деле, игра не утверждает.»</p>",
-    "<p>«Следующая остановка — что именно сделал Жуковский. Он вывел и доказал теорему о подъёмной силе крыла: сила равна плотности воздуха, умноженной на скорость потока и на циркуляцию. На пальцах это так: к потоку воздуха добавили медленный круговорот вокруг крыла. Над крылом воздух бежит быстрее, под крылом медленнее, и разница толкает крыло вверх. Нет круговорота — нет силы. Найдите ленту дат. Первого октября тысяча девятьсот четвёртого года — идея на прогулке в Кучине. В ноябре тысяча девятьсот пятого — доклад «О присоединённых вихрях» в Московском математическом обществе. Тысяча девятьсот шестой — печатная работа, с неё формулу мог проверить любой. Первого декабря тысяча девятьсот восемнадцатого по его предложению создан ЦАГИ. В Германии к той же формуле независимо подошёл Мартин Кутта, и в мире её называют теоремой Кутты — Жуковского.»</p>",
-    "<p>«Итог зала. В тысяча девятьсот шестом году летать уже пробовали, но крыло строили на глаз и проверяли падением. Формула Жуковского перевела это дело из смелых опытов в инженерный расчёт. Наукой авиация стала тогда, когда кто-то объяснил, почему крыло держит. Объяснил это Жуковский. И слова «отец русской авиации» — не прозвище из учебника, а строка постановления Совнаркома от третьего декабря тысяча девятьсот двадцатого года. Теперь вернитесь к игре: разбейте пару планёров наугад, а потом поднимите пилота по формуле. Или откройте пять фактов и ответьте на пять вопросов викторины. Спасибо, что прошли зал.»</p>"
-  ],
-  note:"Озвучено синтезом речи — временно, до записи голосом автора музея."
-};</script>
-<script src="../../assets/museum-audioguide.js"></script>
 </body>
 </html>
