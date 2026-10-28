@@ -103,7 +103,7 @@ story:
 fakty:
   id: fakty
   nav: Факты
-  kicker: Пять фактов о Хавкине
+  kicker: Десять фактов о Хавкине
   h2: Факты дня
   udary:
     - summary: <b>Дома вакцину Хавкина сочли ненужной — а там, где ею привили, от холеры умирали в 10 раз реже.</b>
@@ -150,6 +150,51 @@ fakty:
       otryvok: "«…во врачей полетели камни. Но вместо того чтобы сбежать, Хавкин снял пиджак и рубашку… К 1909 году противочумной вакциной Хавкина в одной Индии было привито 8 миллионов человек, к 1940 году — 35 миллионов»."
       stranica: В. А. Острогорская, «Непопулярный в России», «Химия и жизнь», 2018, № 3
       href: https://hij.ru/read/11413/
+      pometka: документ
+    - summary: <b>Будущего спасителя миллионов трижды арестовывали, дважды выгоняли из университета и восемь лет держали под надзором.</b>
+      utverzhdeno: Р339
+      det:
+        - "Студент-естественник из Одессы состоял в «Народной воле» и Еврейской лиге самообороны, суда и каторги избежал чудом."
+      src: 'Источник: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4 — <a href="https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin" rel="noopener" target="_blank">elementy.ru</a>.'
+      otryvok: "«…трижды арестовывали, дважды исключали из университета и восемь лет он жил в Одессе под надзором полиции»."
+      stranica: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4
+      href: https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin
+      pometka: документ
+    - summary: <b>В Пастеровском институте будущий победитель холеры начинал помощником библиотекаря, а опыты ставил только по вечерам.</b>
+      utverzhdeno: Р339
+      det:
+        - "Должность дали по просьбе Мечникова: непрестижная и малооплачиваемая, но открывала дверь в лабораторию."
+      src: 'Источник: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4 — <a href="https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin" rel="noopener" target="_blank">elementy.ru</a>; «Владимир Аронович Хавкин. Самый неизвестный учёный России», Российское историческое общество — <a href="https://historyrussia.org/tsekh-istorikov/vladimir-aronovich-khavkin-samyj-neizvestnyj-uchjonyj-rossii.html" rel="noopener" target="_blank">historyrussia.org</a>.'
+      otryvok: "«…помощника библиотекаря и только по вечерам имел возможность работать в лаборатории»; «Должность помощника библиотекаря была непрестижной и малооплачиваемой»."
+      stranica: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4
+      href: https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin
+      pometka: два источника
+    - summary: <b>В 1902 году после прививок в индийской деревне умерли 19 человек, и всю вину свалили на Хавкина.</b>
+      utverzhdeno: Р339
+      det:
+        - "Пять лет он жил с клеймом, пока комиссия не признала виновным врача, делавшего уколы, а в 1907-м Хавкина оправдали полностью."
+      src: 'Источник: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4 — <a href="https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin" rel="noopener" target="_blank">elementy.ru</a>; «Химия и жизнь», 2018, № 3 — <a href="https://hij.ru/read/11413/" rel="noopener" target="_blank">hij.ru</a>.'
+      otryvok: "«19 человек скончались от столбняка, на Хавкина была возложена вина»; «В 1907 году Хавкин был окончательно и абсолютно оправдан»."
+      stranica: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4
+      href: https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin
+      pometka: два источника
+    - summary: <b>За честное имя Хавкина вступились десять учёных во главе с нобелевским лауреатом Рональдом Россом.</b>
+      utverzhdeno: Р339
+      det:
+        - "Их открытое письмо вышло в лондонской «Таймс» 29 июля 1907 года."
+      src: 'Источник: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4 — <a href="https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin" rel="noopener" target="_blank">elementy.ru</a>.'
+      otryvok: "«…письмо в защиту Хавкина, опубликованное в газете The Times 29 июля 1907 г.»"
+      stranica: М. Сорокина, «Между верой и разумом», «Природа», 2020, № 4
+      href: https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin
+      pometka: документ
+    - summary: <b>Создав вакцину, Хавкин первым делом предложил её России, но «неблагонадёжному» бывшему арестанту отказали.</b>
+      utverzhdeno: Р339
+      det:
+        - "Отказ отправил его в Индию — на двадцать с лишним лет."
+      src: 'Источник: «Владимир Аронович Хавкин. Самый неизвестный учёный России», Российское историческое общество — <a href="https://historyrussia.org/tsekh-istorikov/vladimir-aronovich-khavkin-samyj-neizvestnyj-uchjonyj-rossii.html" rel="noopener" target="_blank">historyrussia.org</a>.'
+      otryvok: "«Владимир в первую очередь предлагает помощь российским властям… Но предложение «неблагонадёжного гражданина» было отклонено»."
+      stranica: «Владимир Аронович Хавкин. Самый неизвестный учёный России», Российское историческое общество
+      href: https://historyrussia.org/tsekh-istorikov/vladimir-aronovich-khavkin-samyj-neizvestnyj-uchjonyj-rossii.html
       pometka: документ
 igra:
   imya: zelenaya-stena
