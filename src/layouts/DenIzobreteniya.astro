@@ -2,7 +2,9 @@
 // Страница дня музея изобретений из карточки данных (пилот den-shablon, Р297): каркас — старая полная страница
 // src/data/full-pages/izobreteniya/ММ-ДД.html, блок за блоком и в том же порядке; данные дня — карточка
 // src/content/dni-shablon/izobreteniya/ММ-ДД.yaml (схема и загрузка — src/lib/dni-shablon.mjs).
-// Стили — public/assets/izobreteniya-den.css (бывший inline <style>, то же место каскада) или свой CSS дня (карточка css); своих <style> нет.
+// Вид — как у эталона 13 янв. (src/data/full-pages/izobreteniya/01-13.html, Р302): стили всегда одним порядком — fonts.css,
+// izobreteniya-den.css (= встроенный <style> 13-го + общие правила), fakty-dnya.css, igra-pravila.css, css игры (igra.css);
+// блоки — в порядке 13-го (сторож tests/vid-dnya.mjs сверяет собранные страницы с 13-м). Своих <style> и CSS дня нет.
 // Игра — «как есть» по имени: разметка src/data/igry/<музей>/<имя>.html, скрипт public/muzei/<музей>/igry/<имя>.js.
 // Дальше страницу ведёт тот же конвейер, что и старый HTML (src/integrations/full-pages.mjs, job «den-shablon»):
 // полоса, подвал, шрифты, метрика, абсолютные адреса от <base>, соседи; noindex, вне карты сайта.
@@ -83,13 +85,13 @@ const kal = d.kalendar ?? { h2: 'Календарь изобретений', int
 const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
 ---
 <!DOCTYPE html>
-<html lang="ru" data-museum={d.muzei}>
+<html lang="ru" data-museum={d.muzei} data-shablon="den-izobreteniya">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <link rel="stylesheet" href="../../assets/fonts.css">
-{(d.css ?? ['izobreteniya-den']).map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}
+<link rel="stylesheet" href="../../assets/izobreteniya-den.css">
 
 <meta name="description" content={d.head.description}>
 <link rel="canonical" href={d.head.canonical}>
@@ -99,7 +101,8 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <meta property="og:description" content={d.head.og.description}>
 <meta property="og:url" content={d.head.og.url}>{d.head.og.image && <meta property="og:image" content={d.head.og.image}>}
 <script type="application/ld+json" is:inline set:html={json(d.head.ld)}></script>
-{d.fakty && <link rel="stylesheet" href="../../assets/fakty-dnya.css">}
+<link rel="stylesheet" href="../../assets/fakty-dnya.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 {d.igra.css.map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}
 </head>
 <body>
@@ -120,9 +123,9 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   <span class="here">{d.kroshka}</span>
 </div></nav>
 
-{o && (<figure class="hero-fig" style={o.stil_figury ?? o.stil}>
-<div class={['hero-scene', o.klass, o.fit_full && 'fit-full'].filter(Boolean).join(' ')} id={o.id_sceny ?? o.id} data-oblozhka={o.celikom ? 'celikom' : undefined}>
-  <img class="scene" src={o.src} data-source={o.data_source} data-license={o.license} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding={o.decoding ? 'async' : undefined}>
+{o && (<figure class="hero-fig" id="hero">
+<div class={['hero-scene', o.klass, 'fit-full'].filter(Boolean).join(' ')} data-oblozhka={o.celikom ? 'celikom' : undefined}>
+  <img class="scene" src={o.src} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding="async" data-source={o.data_source} data-license={o.license}>
 </div>
 <figcaption class="scene-caption">
   <div class="wrap">
@@ -161,7 +164,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   </div>
 </nav><Fragment set:html={posle('daynav')} />
 
-{d.dokument === 'verh' && <section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section>}<Fragment set:html={posle('dokument')} />
+<section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section><Fragment set:html={posle('dokument')} />
 
 {d.video && (<section class="block" id="video">
   <div class="wrap">
@@ -200,7 +203,10 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 
 <Fragment set:html={igraHtml} /><Fragment set:html={posle('igra')} />
 
-{d.svoi?.pervenstvo ? <Fragment set:html={d.svoi.pervenstvo} /> : (<section class="block" id="pervenstvo">
+{/* Кадры дня — блок #kadry сразу после игры, как у 13 янв.; вид — общие правила #kadry в izobreteniya-den.css. */}
+{d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis} /></figcaption></figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
+
+<section class="block" id="pervenstvo">
   <div class="wrap">
     <div class="kicker">{d.pervenstvo.kicker}</div>
     <h2>{d.pervenstvo.h2}</h2>
@@ -215,9 +221,9 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
       </tbody>
     </table>
   </div>
-</section>)}<Fragment set:html={posle('pervenstvo')} />
+</section><Fragment set:html={posle('pervenstvo')} />
 
-{d.svoi?.quiz ? <Fragment set:html={d.svoi.quiz} /> : (<section class="block" id="quiz">
+<section class="block" id="quiz">
   <div class="wrap">
     <div class="kicker">{d.quiz.kicker}</div>
     <h2>{d.quiz.h2}</h2>
@@ -225,9 +231,9 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
     <div id="quizBox"></div>
     <noscript><div class="noscript-box"><Fragment set:html={d.quiz.noscript} /></div></noscript>
   </div>
-</section>)}<Fragment set:html={posle('quiz')} />
+</section><Fragment set:html={posle('quiz')} />
 
-{d.svoi?.result ? <Fragment set:html={d.svoi.result} /> : (<section class="block" id="result">
+<section class="block" id="result">
   <div class="wrap">
     {d.result.kicker && <div class="kicker">{d.result.kicker}</div>}
     <h2 style="margin-bottom:6px">{d.result.h2}</h2>
@@ -238,9 +244,9 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
       <div class="dr-note"><Fragment set:html={d.result.note} /></div>
     </div>
   </div>
-</section>)}<Fragment set:html={posle('result')} />
+</section><Fragment set:html={posle('result')} />
 
-{d.figures.map((f) => <figure class="fig"><img src={f.src} alt={f.alt} loading="lazy" decoding="async" data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.podpis} /> <span class="credit"><Fragment set:html={f.credit} /></span></figcaption></figure>)}<Fragment set:html={posle('figures')} />
+
 <section class="block" id="sources">
   <div class="wrap">
     <div class="kicker">Источники</div>
@@ -251,14 +257,14 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   </div>
 </section><Fragment set:html={posle('sources')} />
 
-{d.svoi?.calendar ? <Fragment set:html={d.svoi.calendar} /> : (<section class="block" id="calendar">
+<section class="block" id="calendar">
   <div class="wrap">
     {kal.kicker && <div class="kicker">{kal.kicker}</div>}
     <h2 style="margin-bottom:6px">{kal.h2}</h2>
     <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={kal.intro} /></p>
     <div id="calbox"></div>
   </div>
-</section>)}<Fragment set:html={posle('calendar')} />
+</section><Fragment set:html={posle('calendar')} />
 
 <section class="block kd" id="kuda-dalshe">
   <div class="wrap">
@@ -277,7 +283,6 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <Fragment set:html={'\n'} /><footer><div class="wrap">
   <div class="slog">Цивилизация первенств — что Россия дала миру раньше всех</div>
   Русская цивилизация · {muzeyName}</div></footer>
-{d.dokument === 'podval' && <Fragment set:html={'\n\n<section data-proof-block></section>'} />}
 
 <script is:inline set:html={scoreJs}></script>
 <script is:inline src="../../assets/museum-score.js"></script>

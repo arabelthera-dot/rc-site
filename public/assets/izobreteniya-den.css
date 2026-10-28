@@ -1,5 +1,7 @@
-/* Общий каркас страницы дня музея изобретений — inline <style> старых страниц src/data/full-pages/izobreteniya
-   (строки 9–189, у дней января одинаковые), вынесен для шаблона src/layouts/DenIzobreteniya.astro (пилот den-shablon, Р297). */
+/* Общий вид страницы дня музея изобретений (шаблон src/layouts/DenIzobreteniya.astro, Р302, r370).
+   Часть 1 — дословно встроенный <style> эталона 13 января (src/data/full-pages/izobreteniya/01-13.html, строки 9–175).
+   Часть 2 — общие правила для блоков, которых у 13-го нет (уникальные разделы дней, кадр-портрет, обложка целиком);
+   правил под один день здесь нет. Вид игры — в igra-<имя>.css, вид фактов — в fakty-dnya.css. */
 
   :root{
     --dark:#060c17; --dark2:#0c1826; --surface:#111f33;
@@ -79,6 +81,7 @@
   .card{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:20px 22px;margin:16px 0;backdrop-filter:blur(6px)}
 
   /* ── КВИЗ ── */
+  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
   .opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--card-b);border-radius:12px;padding:13px 16px;margin:8px 0;cursor:pointer;font-size:15px;color:var(--ink);font-family:'Inter',sans-serif;transition:.16s}
   .opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
   .opt.correct{background:rgba(40,120,60,.18);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
@@ -153,21 +156,6 @@
   .src-note{font-size:12px;color:#8fa5b9}
 
   /* ── МОДЕЛЬ ДНЯ (главное предметное действие) ── */
-  .lab{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
-  .lab-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
-  .lab-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
-  .seg{cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;min-height:44px}
-  .seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
-  .seg:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .lab-stage{position:relative;margin-top:12px}
-  .lab-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#1c2530}
-  .lab-cap{font-size:12px;color:#8fa5b9;margin-top:6px}
-  .lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
-  .lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
-  .lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
-  .lab-found{font-size:13px;color:var(--muted);margin-top:8px}
-  .lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-  .noscript-box{background:rgba(255,255,255,.04);border:1px dashed var(--card-b);border-radius:12px;padding:12px 16px;font-size:15px}
 
   /* ── ГРАНИЦА ПЕРВЕНСТВА ── */
   .border-box{background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.3);border-radius:14px;padding:16px 18px}
@@ -181,12 +169,100 @@
   @media(max-width:600px){header.top{padding:8px 64px 6px}header.top .score{top:8px;right:8px;padding:4px 10px;font-size:12px}header.top .b3{margin-top:3px}
     .hero-scene{height:26vh;min-height:200px;max-height:260px}.date-origin{font-size:12px;margin:-8px 0 8px}.hero-lead{padding:18px 0 26px}.hero-lead .date-chip{margin-bottom:12px}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
-  /* Обложка целиком (флаг oblozhka.celikom карточки) — вместо правила в <style> страницы (15 янв: вертикальная визитка ателье). */
-  .hero-scene[data-oblozhka="celikom"] img.scene{object-fit:contain;object-position:50% 50%}
 
-/* Факт дня на обычном адресе (Р286): пометка достоверности и ссылка на место в источнике — видны сразу,
-   дословный отрывок — в раскрытии «Узнать подробнее». */
-.fakt-ist{margin:6px 0 0;font-size:13px;color:var(--muted)}
-.fakt-ist a{color:var(--gold)}
-.fakt-pometka{display:inline-block;border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:1px 10px;margin-right:6px;font-family:'Inter',sans-serif;font-size:12px;color:var(--gold)}
-.fakt-otryvok{margin:10px 0 0;padding:8px 14px;border-left:3px solid var(--gold);font-style:italic;color:var(--muted)}
+/* ── Часть 2: общие правила (не под день) ── */
+/* Обложка целиком (oblozhka.celikom) и портретная обложка (oblozhka.klass: portret) — без обрезки лица. */
+.hero-scene[data-oblozhka="celikom"] img.scene{object-fit:contain;object-position:50% 50%}
+.hero-scene.portret{background:radial-gradient(ellipse at 50% 40%,#3a3226 0%,#16130f 70%)}
+.hero-scene.portret img.scene{object-fit:contain;object-position:50% 50%}
+/* Кадры дня (section#kadry) — как у 13-го: кадр по центру, не шире 820px; портретный (figures[].klass: portret) — уже. */
+#kadry figure.fig{margin:0 auto;max-width:820px}
+#kadry figure.fig img{display:block;width:100%;height:auto}
+#kadry figure.fig figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+#kadry figure.fig.portret{max-width:540px}
+/* Уникальные разделы дней (razdely: разбор, мировой контекст, чат, развилка, тематический перечень, каталог). */
+.deepd{background:rgba(255,255,255,.02);border:1px solid var(--card-b);border-radius:16px;padding:16px 22px}
+.deepd summary{cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;list-style:none}
+.deepd summary::-webkit-details-marker{display:none}
+.deepd[open] summary{margin-bottom:12px;opacity:.7}
+.deepd h3{font-family:'Playfair Display',Georgia,serif;color:var(--gold-l);font-size:20px;margin:20px 0 6px}
+.src{font-size:12px;color:var(--muted);opacity:.8;margin-top:14px}
+.chip{cursor:pointer;background:rgba(255,255,255,.05);border:1px solid var(--card-b);border-radius:20px;padding:7px 16px;margin:4px 5px 4px 0;font-size:13px;display:inline-block;color:var(--muted);font-family:'Inter',sans-serif;transition:.16s}
+.chip:hover{border-color:var(--gold);color:var(--gold)}
+.msg{margin:8px 0;padding:12px 16px;border-radius:14px;max-width:88%;font-size:15px}
+.msg.you{background:rgba(45,140,191,.18);border:1px solid rgba(45,140,191,.28);margin-left:auto;text-align:right;color:#a8d4f0}
+.msg.inv{background:rgba(255,255,255,.05);border:1px solid var(--card-b);color:var(--ink)}
+.fork-opt{background:var(--card);border:1px solid var(--card-b);border-radius:14px;padding:16px 18px;margin:10px 0;cursor:pointer;transition:.18s;font-size:15px}
+.fork-opt:hover{border-color:var(--accent);background:rgba(45,140,191,.08)}
+.fork-opt.chosen{border-color:var(--gold);background:var(--gold-g)}
+#forkReal.exp{display:none}
+.theme-body{margin-top:20px}
+#theme-inventions a{transition:color .15s}
+#theme-inventions a:hover{color:var(--gold-l)}
+.q{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 22px;margin:12px 0}
+.q h3{margin:0 0 6px;font-size:19px;color:#fff;font-family:'Playfair Display',Georgia,serif}
+.q h3 em{display:block;font-style:normal;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-family:'Inter',sans-serif;margin-bottom:5px;font-weight:700}
+.q p{margin:0;color:var(--muted);font-size:14.5px}
+.lead-p{max-width:62ch}
+.muted-p{color:var(--muted);max-width:62ch}
+#fork{background:rgba(45,140,191,.04)}
+#theme-inventions{background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.15)}
+#catalog{background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none}
+#catalog .wrap{text-align:center}
+#catalog h2{margin-bottom:6px;color:#fff}
+#catalog p{color:var(--muted);margin:0 auto 16px;max-width:60ch}
+#catalog .btn{display:inline-block;text-decoration:none}
+.h2-tight{margin-bottom:6px}
+.forkReal{margin-top:14px}
+.chat-box{margin:16px 0;min-height:80px}
+.chat-row{display:flex;gap:10px;margin-top:12px}
+.chat-row input{flex:1;min-width:0;padding:12px 16px;font-size:15px}
+.chat-note{font-size:12px;color:var(--muted);margin-top:8px}
+.theme-btnrow{text-align:center;margin:14px 0 4px}
+.theme-list{padding:0;overflow:hidden}
+.theme-head{padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15);color:var(--gold-l);font-weight:600;font-size:14px;letter-spacing:.5px}
+.theme-rows{padding:4px 20px 12px;margin:0;list-style:none}
+.theme-rows li{display:grid;grid-template-columns:76px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline}
+.theme-rows li .d{color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap}
+.theme-rows li.here{color:var(--gold-l)}
+.theme-rows a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3)}
+.theme-rows a:hover{color:var(--gold-l)}
+.theme-foot{text-align:center;color:var(--muted);font-size:14px;margin-top:12px}
+/* Служебные классы вместо бывших style="" в разметке дней и игр. */
+.iz-u3{margin-bottom:10px !important}
+.iz-u5{margin-bottom:6px !important}
+.iz-u6{max-width:66ch !important}
+.iz-u7{color:var(--gold-l) !important}
+.iz-u8{color:var(--muted) !important}
+.iz-u9{margin:16px 0 !important;min-height:80px !important}
+.iz-u10{display:flex;gap:10px !important;margin-top:12px !important}
+.iz-u11{flex:1 !important;padding:12px 16px !important;font-size:15px !important}
+.iz-u12{font-size:12px !important;color:var(--muted) !important;margin-top:8px !important}
+.iz-u13{background:rgba(45,140,191,.04) !important}
+.iz-u14{color:var(--muted) !important;margin-top:0 !important;max-width:62ch !important}
+.iz-u15{display:none;margin-top:14px !important}
+.iz-u16{background:rgba(201,168,76,.03) !important;border-top:1px solid rgba(201,168,76,.15) !important}
+.iz-u17{color:var(--muted) !important;margin-top:0 !important;margin-bottom:16px !important;max-width:62ch !important}
+.iz-u18{text-align:center !important;margin:14px 0 4px !important}
+.iz-u19{padding:0 !important;overflow:hidden !important}
+.iz-u20{padding:14px 20px !important;background:rgba(201,168,76,.08) !important;border-bottom:1px solid rgba(201,168,76,.15) !important}
+.iz-u21{color:var(--gold-l) !important;font-weight:600 !important;font-size:14px !important;letter-spacing:.5px !important}
+.iz-u22{padding:4px 20px 12px !important}
+.iz-u23{display:grid;grid-template-columns:110px 1fr !important;gap:6px 12px !important;padding:7px 0 !important;border-bottom:1px solid rgba(255,255,255,.06) !important;font-size:14px !important;align-items:baseline !important}
+.iz-u24{color:var(--gold) !important;font-weight:700 !important;font-size:13px !important;white-space:nowrap !important}
+.iz-u25{color:inherit !important;text-decoration:none !important;border-bottom:1px solid rgba(201,168,76,.3) !important;transition:.15s !important}
+.iz-u26{text-align:center !important;color:var(--muted) !important;font-size:14px !important;margin-top:12px !important}
+.iz-u28{background:linear-gradient(135deg,#16294a,#0f1e33) !important;border-bottom:none !important}
+.iz-u29{text-align:center !important}
+.iz-u30{margin-bottom:6px !important;color:#fff !important}
+.iz-u31{color:var(--muted) !important;margin:0 auto 16px !important;max-width:60ch !important}
+.iz-u32{display:inline-block;text-decoration:none !important}
+.iz-u33{max-width:62ch !important}
+.iz-u34{margin-top:10px !important}
+.iz-u35{background:rgba(6,12,23,.6) !important}
+.iz-u36{display:flex !important;gap:10px !important;margin-top:12px !important}
+.iz-u37{display:none;margin-top:14px}
+.iz-u38{display:none;margin-top:20px}
+.iz-u39{display:grid !important;grid-template-columns:110px 1fr !important;gap:6px 12px !important;padding:7px 0 !important;border-bottom:1px solid rgba(255,255,255,.06) !important;font-size:14px !important;align-items:baseline !important}
+.iz-u41{display:inline-block !important;text-decoration:none !important}
+.iz-u42{display:none;margin-top:20px !important}
