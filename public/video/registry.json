@@ -823,6 +823,38 @@
         "local": "muzei/izobreteniya/video/day-16jan-soyuz45-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/19jan-kantorovich": {
+      "title": "История в 59 секунд",
+      "note": "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Нобелевский диплом 1975 года и студенческий матрикул 1926 года (Музей истории СПбГУ); портрет Л. В. Канторовича, книги «Рациональный раскрой промышленных материалов» и «Экономический расчёт наилучшего использования ресурсов» (польское издание) (Новосибирский государственный краеведческий музей); академик Л. В. Канторович (Музейный центр «Площадь Мира», Красноярск); счётная машина «Вильнюс» (Политехнический музей). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich.mp4",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.4,
+        "mb": 14.0
+      },
+      "vertical": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 59.4,
+        "mb": 11.4
+      },
+      "poster": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
