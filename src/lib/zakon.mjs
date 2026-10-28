@@ -8,9 +8,9 @@
 // src/data/full-pages. Совпадение — сборка красная.
 // Два уровня (замер 20.10: 242 совпадения, почти все — однофамильцы «Иван Павлов» и короткие слова «Гроза»):
 //   сильное — сборка красная: полное ФИО (три слова целиком), название организации из 3+ слов в кавычках,
-//   адрес экстремистского материала; с r405 (28.10, r380 нашёл Каспарова и «Facebook AI Research» мимо сверки) ещё
+//   адрес экстремистского материала; с r405 (28.10, r380 нашёл иноагента «имя фамилия» и короткое название мимо сверки) ещё
 //   иноагент-человек «имя фамилия» / «фамилия имя», его фамилия, если имя из реестра стоит в той же карточке,
-//   и короткие названия запрещённых организаций из data/reestry/korotkie-nazvaniya.json (Meta, Facebook, Instagram…);
+//   и короткие названия запрещённых организаций из data/reestry/korotkie-nazvaniya.json;
 //   слабое — только отчёт для человека: инициалы с фамилией, название из 1–2 слов,
 //   название экстремистского материала (в описаниях Минюста в кавычках и цитаты — «Отцы и дети», «Победа будет за нами»).
 // Пометка рядом (±300 знаков: «иностранный агент», у организаций — «запрещена», «экстремистская», «нежелательная»)
@@ -18,6 +18,8 @@
 // Ложное совпадение (однофамилец, слово из названия книги) снимается строкой в data/reestry/isklyucheniya.json:
 // «<музей>/<ключ>|<вариант>»: «кто решил и дата» — как passport-waivers.json. Раздел «ждёт решения Сергея, r380» —
 // найденное, но не исправленное (содержание решает Сергей): сборку не роняет, выводится предупреждением.
+// Стоп-лист (Р316, Сергей 28.10.2026: «убирай полностью … вообще все упоминания … и не ставить на странице») — STOP
+// ниже: ни исключение, ни пометка, ни раздел «ждёт решения» его не снимают; сборка красная при любом упоминании.
 //
 // Е2 — основание у кадров XX века (год дня ≥ 1900 или год ≥ 1900 в подписи): общественное достояние
 // (ст. 1281–1282 ГК), свободная лицензия, цитирование (ст. 1274 ГК) со ссылкой, разрешение, своя генерация.
@@ -155,7 +157,7 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date(), bezZhdut 
   const vozmozhnye = [];
   const starye = [];
   const zhdut = [];
-  // Одна находка — один раз на поле (у человека несколько вариантов: «гарри каспаров», «каспаров гарри»…).
+  // Одна находка — один раз на поле (у человека несколько вариантов: «имя фамилия», «фамилия имя»…).
   const bylo = new Set();
   // Исключение снимает запись по своему варианту, у человека — и «фамилию + имя» по любому его варианту в той же карточке.
   const naydeno = (t, s, z, v, sil, drugie = []) => {
@@ -200,8 +202,8 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date(), bezZhdut 
           naydeno(t, s, z, v, sil);
         }
       }
-      // Фамилия иноагента-человека и его имя из реестра рядом (в двух словах от неё, то же поле): «Гарри Кимович Каспаров»,
-      // «Каспаров, Гарри», «Александр Андреевич Иванов» — отчество не важно. Отчество («Уварович») — не имя и не фамилия.
+      // Фамилия иноагента-человека и его имя из реестра рядом (в двух словах от неё, то же поле): «Имя Отчество Фамилия»,
+      // «Фамилия, Имя», «Александр Андреевич Иванов» — отчество не важно. Отчество («Уварович») — не имя и не фамилия.
       if (chelovek(z, s)) {
         const [fam, im] = norm(z.imya).split(' ');
         if (!fam || !im || fam.length < 3 || im.length < 2) continue;
@@ -224,6 +226,55 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date(), bezZhdut 
     }
   }
   return { snimkov: sn.length, zapisey, sovpadeniya, vozmozhnye, starye, zhdut };
+}
+
+// --- Стоп-лист Р316 ---------------------------------------------------------------------------------
+
+// Р316 (Сергей 28.10.2026): человек и компания, которых на сайте нет ни в каком виде — ни с пометкой «иноагент»
+// или «запрещена», ни строкой в isklyucheniya.json, ни в разделе «ждёт решения». Ловится любая форма слова.
+export const STOP = [
+  { kto: 'Каспаров (Р316)', re: /каспаров|kasparov/iu },
+  { kto: 'Facebook (Р316)', re: /facebook|ф[еэ]йсбук|meta\s+platforms|мета\s+платформ/iu },
+  // Компания Meta — слово с заглавной; тег <meta> и metaKey в коде не ловятся.
+  { kto: 'Meta (Р316)', re: /(?<![\p{L}\p{N}_<.-])Meta(?![\p{L}\p{N}_-])/u },
+];
+// Что попадает на страницу: карточки и полные страницы (src/content, src/data), таблицы года (страница «таблица»), страницы и компоненты, public/.
+const STOP_PAPKI = ['data/tablicy', 'src/pages', 'src/components', 'src/layouts', 'src/data', 'src/content', 'public'];
+const STOP_FAYLY = /\.(md|json|ya?ml|html?|astro|m?js|ts|css|txt|xml|svg|vtt|srt)$/i;
+const STOP_MIMO = /(^|\/)(vendor|node_modules)(\/|$)/;
+const obhodFaylov = (dir, out = []) => {
+  if (!fs.existsSync(dir) || STOP_MIMO.test(dir)) return out;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) obhodFaylov(p, out);
+    else if (STOP_FAYLY.test(e.name) && !STOP_MIMO.test(p)) out.push(p);
+  }
+  return out;
+};
+
+/** Стоп-лист по текстам: [{ gde, kto, naydeno }] — по строкам, без исключений и пометок. */
+export function stopTekstov(tx) {
+  const out = [];
+  for (const t of tx) {
+    const stroki = String(t.syroy).split('\n');
+    for (const s of STOP) stroki.forEach((x, i) => {
+      for (const m of x.matchAll(new RegExp(s.re.source, s.re.flags + 'g')))
+        out.push({ gde: stroki.length > 1 ? `${t.gde}:${i + 1}` : t.gde, kto: s.kto, naydeno: m[0] });
+    });
+  }
+  return out;
+}
+
+/** Стоп-лист Р316 по исходникам сайта: все текстовые файлы STOP_PAPKI (карточки дней и шаблона — целиком, кроме vendor). */
+export function stopList(root = '.') {
+  const fayly = STOP_PAPKI.flatMap((d) => obhodFaylov(path.join(root, d)))
+    .map((f) => ({ gde: path.relative(root, f), syroy: fs.readFileSync(f, 'utf8') }));
+  return stopTekstov(fayly);
+}
+
+/** Стоп-лист Р316 по собранному сайту (dist): то, что на самом деле ушло на страницу. */
+export function stopDist(dir) {
+  return stopTekstov(obhodFaylov(dir).map((f) => ({ gde: path.relative(dir, f), syroy: fs.readFileSync(f, 'utf8') })));
 }
 
 /**
