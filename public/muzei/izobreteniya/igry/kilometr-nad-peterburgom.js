@@ -90,7 +90,7 @@ function igraRuka(root) {
   function shag(dt) {
     S.t += dt; S.vint += dt * (S.polnyy ? 30 : 15);
     var v = S.polnyy ? 40 : 20;
-    S.put += v * dt; S.benz -= (S.polnyy ? 3.6 : 2.6) * dt;
+    S.put += v * dt; S.benz -= (S.polnyy ? 2.8 : 2.6) * dt;
     if (S.neuyazv > 0) S.neuyazv -= dt;
     /* порывы */
     S.sled -= dt;
@@ -98,10 +98,10 @@ function igraRuka(root) {
     var sila = 0;
     if (S.poryv) {
       S.poryv.t += dt;
-      if (S.poryv.t > 0) sila = S.poryv.dir * 0.42 * (S.polnyy ? 2 : 1);
+      if (S.poryv.t > 0) sila = S.poryv.dir * 1.5 * (S.polnyy ? 2 : 1);
       if (S.poryv.t > 1.6) { S.poryv = null; S.sled = 1.6 + (S.np % 3) * 0.6; txt('Держи «Россию» между крышами и тучами', S.polnyy ? 'Идёшь полным ходом.' : 'Малым ходом бензина на километр не хватит.'); }
     }
-    S.gnut += ((sila ? S.poryv.dir : 0) - S.gnut) * Math.min(1, dt * 4);
+    S.gnut += ((sila > 0 ? 1 : sila < 0 ? -1 : 0) - S.gnut) * Math.min(1, dt * 4);
     var a = (S.cel - S.y) * 9 - S.vy * 4.2 + sila;
     S.vy += a * dt; S.y += S.vy * dt;
     var verh = 0.14, nz = niz(S.put);

@@ -118,7 +118,7 @@ fakty:
       otryvok: "«…при массе двигателя 240 кг (эти показатели были даже лучшими, чем у первого двигателя…)»; «В России это был первый двигатель внутреннего сгорания, предназначавшийся для летательного аппарата»."
       stranica: «Двигатель внутреннего сгорания для дирижабля О. С. Костовича», «Российская авиация»
       href: http://xn--80aafy5bs.xn--p1ai/aviamuseum/dvigateli-i-vooruzhenie/aviamotorostroenie/aviamotory-rossijskoj-imperii/dvigatel-vnutrennego-sgoraniya-dlya-dirizhablya-o-s-kostovicha/
-      pometka: музей и статья
+      pometka: два источника
     - summary: <b>Костович первым предложил прятать торпеды внутри подводной лодки — так их и носят подлодки сегодня.</b>
       utverzhdeno: Р197
       det:
@@ -127,7 +127,7 @@ fakty:
       otryvok: "«…первым предложил размещать торпеды внутри подводной лодки»."
       stranica: Международная военно-историческая ассоциация, «Костович Огнеслав Степанович» (по «Морскому биографическому словарю»)
       href: https://imha.ru/1144548367-kostovich-ogneslav-stepanovich.html
-      pometka: словарь
+      pometka: документ
     - summary: <b>Костович построил скафандр, в котором водолаз шесть часов работал под водой без шланга с поверхности.</b>
       utverzhdeno: Р197
       det:
@@ -136,11 +136,11 @@ fakty:
       otryvok: "«…автономный скафандр, позволявший водолазу находиться под водой 6 часов без сообщения с поверхностью моря»."
       stranica: Международная военно-историческая ассоциация, «Костович Огнеслав Степанович»
       href: https://imha.ru/1144548367-kostovich-ogneslav-stepanovich.html
-      pometka: словарь
+      pometka: документ
 igra:
   imya: kilometr-nad-peterburgom
   css:
-    - igra-kilometr
+    - igra-kilometr-nad-peterburgom
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно Костович сделал первым
