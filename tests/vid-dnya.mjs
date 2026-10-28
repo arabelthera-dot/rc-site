@@ -96,6 +96,7 @@ if (!dni.length || dni.length < kartochki.length) {
     `${net.length ? `; нет страниц: ${net.join(', ')}` : ''}. Шаблон не ставит метку или страницы не собрались.`);
   process.exit(1);
 }
+console.log(`vid-dnya: карточек с adres: den — ${kartochki.length} (${kartochki.map((d) => d.key).join(', ')}); шаблонных страниц — ${dni.length} (${dni.join(', ')})`);
 const oshibki = [];
 for (const k of dni) {
   const r = razobrano.get(k);
