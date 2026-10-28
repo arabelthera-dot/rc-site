@@ -238,7 +238,7 @@ function igraRuka(root) {
     S.sost = 'pobeda'; root.classList.add('oa-pobeda');
     var ty = S.ty.reduce(function (a, b) { return a + b; }, 0), ak = AK_VSEGO * 3;
     q('.oa-fin-h').textContent = 'Машина обогнала академиков!';
-    q('.oa-fin-txt').textContent = 'Так в 1832-м работал первый поисковик.';
+    q('.oa-fin-txt').textContent = 'Так в 1832-м работал поисковик на перфокартах.';
     q('.oa-fin-sravn').textContent = 'Ты — ' + sek(ty) + ', академик — ' + sekCel(ak);
     var ul = q('.oa-fin-raundy'); ul.textContent = '';
     S.ty.forEach(function (t, i) { var li = document.createElement('li'); li.textContent = 'Раунд ' + (i + 1) + ': ты — ' + sek(t) + ', академик — ' + sekCel(AK_VSEGO); ul.appendChild(li); });
