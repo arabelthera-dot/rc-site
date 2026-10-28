@@ -73,7 +73,7 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История в 46 секунд
+  h2: История в 48 секунд
   klyuch: izobreteniya/21jan-obninsk
   format: horizontal
   pole: izobreteniya/21jan-obninsk:horizontal.sec
@@ -81,7 +81,7 @@ video:
   badge: 46 сек
   intro: Та же история коротким роликом — от задвижки на пульте 26 июня 1954 года до тока в общей сети и почти 48 лет работы станции.
   poster: video/day-21jan-obninsk-poster.jpg?v=1
-  mp4: video/day-21jan-obninsk.mp4?v=1
+  mp4: video/day-21jan-obninsk.mp4?v=2
   note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: пульт управления Первой АЭС в Обнинске, 1966 (Государственный исторический музей, рег. № 69176047); Юрий Гагарин у здания Первой АЭС, 31 мая 1966 (Музей истории города Обнинска, рег. № 2335970). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История пуска
@@ -184,7 +184,6 @@ fakty:
       stranica: «„Аварийные сигналы звучали по несколько раз в день“. Экскурсия на Обнинскую АЭС» (рассказывает И. Мохирева, руководитель музейной группы комплекса «Первая в мире АЭС»), «Страна Росатом», 19.08.2020
       href: https://strana-rosatom.ru/2020/08/19/avarijnye-signaly-zvuchali-po-neskol/
       pometka: документ
-razdely: []
 igra:
   imya: obninsk-tok
   css:
@@ -303,9 +302,6 @@ sources:
   - href: https://strana-rosatom.ru/2019/10/28/sozdatel-novogo-k-120-letiju-nikolaya-do/
     title: «Страна Росатом», «Создатель нового — к 120-летию Николая Доллежаля»
     note: биография Доллежаля.
-  - href: https://strana-rosatom.ru/2023/02/16/srazhenie-kita-i-nautilusa-kak-so/
-    title: «Страна Росатом», «Сражение "Кита" и "Наутилуса"»
-    note: выход «Наутилуса» на атомном ходу.
   - href: https://historyrussia.org/sobytiya/70-let-nazad-27-iyunya-1954-goda-sostoyalsya-pusk-pervoj-v-mire-atomnoj-elektrostantsii.html
     title: Российское историческое общество, «70 лет назад, 27 июня 1954 года, состоялся пуск первой в мире атомной электростанции»
     note: АМ «Атом мирный», 5 мегаватт, воспоминание Блохинцева о паре.
@@ -325,9 +321,6 @@ sources:
   - href: http://jinrmag.jinr.ru/2022/12/bl12.htm
     title: Еженедельник ОИЯИ «Дубна», «Таланты и поклонники»
     note: картины Блохинцева.
-  - href: https://ria.ru/20190930/1559215939.html
-    title: РИА Новости, «Схватка атомных акул. "Ленинский комсомол" против "Наутилуса"»
-    note: спуск «Наутилуса» в январе 1954 года.
   - html: '<a href="https://docs.historyrussia.org/ru/nodes/355215-postanovlenie-plenuma-tsk-kpss-2-marta-1954-g-o-dalneyshem-uvelichenii-proizvodstva-zerna-v-strane-i-ob-osvoenii-tselinnyh-i-zalezhnyh-zemel-izvlechenie" rel="noopener" target="_blank">РИО, Электронная библиотека исторических документов: постановление пленума ЦК КПСС 2 марта 1954 года об освоении целинных и залежных земель</a>.'
   - href: https://ria.ru/20141223/1039786201.html
     title: РИА Новости, «Как это случилось с Крымом в 1954-м»

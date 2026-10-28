@@ -953,25 +953,25 @@
       }
     },
     "izobreteniya/21jan-obninsk": {
-      "title": "История в 46 секунд",
+      "title": "История в 48 секунд",
       "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: пульт управления Первой АЭС в Обнинске, 1966 (Государственный исторический музей, рег. № 69176047); Юрий Гагарин у здания Первой АЭС, 31 мая 1966 (Музей истории города Обнинска, рег. № 2335970). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
       "horizontal": {
         "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk.mp4",
         "local": "muzei/izobreteniya/video/day-21jan-obninsk.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 45.9,
-        "mb": 10.5
+        "sec": 47.8,
+        "mb": 12.5
       },
       "vertical": {
         "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-21jan-obninsk-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 45.9,
-        "mb": 10.4
+        "sec": 47.8,
+        "mb": 12.4
       },
       "poster": {
         "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-poster.jpg",
