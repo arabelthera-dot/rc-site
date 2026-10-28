@@ -984,6 +984,38 @@
         "v": 1
       }
     },
+    "izobreteniya/24jan-anchar": {
+      "title": "История в 51 секунду",
+      "note": "Кадры ролика — подлинные: модель К-162 «Анчар» и снимок Н. Н. Исанина с Н. Н. Назаровым (Центральный военно-морской музей, Госкаталог музейного фонда РФ); портрет академика Н. Н. Исанина (Музей истории подводных сил России). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar.mp4",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 51.0,
+        "mb": 10.1
+      },
+      "vertical": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 51.0,
+        "mb": 7.6
+      },
+      "poster": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar-9x16-poster.jpg",
+        "v": 1
+      }
+    },
     "izobreteniya/28jan-havkin": {
       "title": "История в 59 секунд",
       "note": "Кадры — подлинные фотографии 1890-х годов: Хавкин делает прививки индийским крестьянам (публикация Российского исторического общества), прививка в Бенгалии, 1896 (публикация Российского исторического общества), портрет В. А. Хавкина (журнал «Химия и жизнь»). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
