@@ -50,9 +50,9 @@ const stem = (w) => (w.length > 4 ? w.replace(/[аяоеыиуюйь]$/, '') : w
 // Беглая гласная: «Павел» — «Павла», «Лев» — «Льва»; вторая основа без «е» перед последней согласной
 // (в односложном — «ь»), иначе родительный и творительный падежи имени проходили мимо сверки.
 const beglaya = (w) => { const m = /^(.*[^аеиоуыэюя])е([вклмнр])$/.exec(w); return m ? m[1] + (m[1].length === 1 ? 'ь' : '') + m[2] : null; };
-const osnovy = (w) => [stem(w), beglaya(w)].filter(Boolean);
+export const osnovy = (w) => [stem(w), beglaya(w)].filter(Boolean);
 // Слова варианта уже нормализованы (только буквы и цифры) — экранировать нечего.
-const wordRe = (w, flex) => (flex && w.length > 1 ? `(?:${osnovy(w).join('|')})\\p{L}{0,3}` : w);
+export const wordRe = (w, flex) => (flex && w.length > 1 ? `(?:${osnovy(w).join('|')})\\p{L}{0,3}` : w);
 
 /** Сверщик одной записи реестра: вариант → RegExp по нормализованному тексту (или по сырому — для кавычек). */
 function matcher(v) {
