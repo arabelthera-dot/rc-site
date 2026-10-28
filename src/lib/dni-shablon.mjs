@@ -15,8 +15,23 @@ const str = z.string().min(1);
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка
 // достоверности (замок ниже); у пробы den-shablon эти поля необязательны.
 export const POMETKI = ['документ', 'два источника', 'легенда'];
+// utverzhdeno — номер решения Сергея, которым утверждён факт («Р294»); на адресе den обязателен у каждого факта блока fakty
+// (замок ниже), а что строка этого Р в реестре называет дату дня — сверяет tests/vid-dnya.mjs по scripts/utverzhdeno.json (Р304, r419).
 const udar = z.object({ summary: str, find: z.boolean().optional(), tag: str.optional(), det: z.array(str).min(1), src: str,
-  otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum(POMETKI).optional() });
+  otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum(POMETKI).optional(),
+  utverzhdeno: z.string().regex(/^Р\d+$/, 'utverzhdeno — номер решения Сергея: «Р294» (кириллическая Р)').optional() });
+// Шаблонные блоки, которые Сергей не утверждал (Р302–Р304, r419): на адресе den их нет ни в каком поле карточки —
+// ни разделом, ни подписью, ни скриптом. Ловится текст; развилка/чат — ещё и полями igra.dop, skripty, razdely (ниже).
+export const SHABLONNYE = [
+  ['«Спроси …» (чат с героем)', /Спроси(?:те)?(?![а-яё])/u],
+  ['«А как поступил бы ты?» (развилка)', /как\s+поступил(?:а|и)?\s+бы\s+ты/iu],
+  ['«Сколько баллов»', /сколько\s+баллов/iu],
+  ['«Что в это время делал мир»', /что\s+в\s+это\s+время\s+делал\s+мир/iu],
+  ['развилка', /развилк/iu],
+];
+// Все строки карточки с путём: [['quiz.voprosy.0.q', '…'], …].
+export const stroki = (x, put = []) => (typeof x === 'string' ? [[put.join('.'), x]]
+  : x && typeof x === 'object' ? Object.entries(x).flatMap(([k, v]) => stroki(v, [...put, k])) : []);
 // Норма фактов дня — museum-inventions п.6 (Р101): «4–5 фактов»; меньше — сборка красная (только adres: den).
 export const NORMA_FAKTOV = 4;
 // Блоки шаблона по порядку; к ним цепляются уникальные разделы дня (razdely.posle), 1:1 из старой страницы.
@@ -103,6 +118,15 @@ export const skhema = z.object({
     const udary = [d.fakty ?? []].flat().flatMap((b) => b.udary);
     if (udary.length < NORMA_FAKTOV)
       ctx.addIssue({ code: 'custom', path: ['fakty', 'udary'], message: `ЗАМОК: фактов ${udary.length}, нужно не меньше ${NORMA_FAKTOV} (museum-inventions п.6, Р101: «4–5 фактов»)` });
+    // Факт без утверждения Сергея на страницу не идёт (Р304, r419): номер решения у каждого факта.
+    udary.forEach((u, i) => { if (!u.utverzhdeno) ctx.addIssue({ code: 'custom', path: ['fakty', 'udary', i, 'utverzhdeno'],
+      message: `ЗАМОК: у факта «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» нет utverzhdeno: "Р<номер>" — факт не утверждён Сергеем` }); });
+    // Шаблонные блоки (r419): развилка/чат и свои разделы — полями, остальное — текстом в любом поле.
+    if (d.igra.dop) ctx.addIssue({ code: 'custom', path: ['igra', 'dop'], message: 'ЗАМОК: на адресе den второго скрипта игры (развилка/чат) нет — шаблонный блок не утверждён (r419)' });
+    if (d.skripty.length) ctx.addIssue({ code: 'custom', path: ['skripty'], message: 'ЗАМОК: на адресе den своих скриптов дня (развилка, чат, полка) нет — день только из блоков шаблона (r419)' });
+    if (d.razdely.length) ctx.addIssue({ code: 'custom', path: ['razdely'], message: `ЗАМОК: на адресе den своих разделов (razdely: ${d.razdely.length}) нет — «Спроси», «А как поступил бы ты?», «Что в это время делал мир» не утверждены; день только из блоков шаблона (r419)` });
+    for (const [put, t] of stroki(d)) for (const [chto, re] of SHABLONNYE) if (re.test(t))
+      ctx.addIssue({ code: 'custom', path: put.split('.'), message: `ЗАМОК: шаблонный блок ${chto} — на адресе den запрещён (r419)` });
     udary.forEach((u, i) => { const net = ['otryvok', 'stranica', 'href', 'pometka'].filter((k) => !u[k]);
       if (net.length) ctx.addIssue({ code: 'custom', path: ['fakty', 'udary', i], message: `ЗАМОК: у факта «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» нет: ${net.join(', ')} (отрывок, страница, ссылка, пометка: ${POMETKI.join(' / ')})` }); });
   }

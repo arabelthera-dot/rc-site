@@ -9,11 +9,17 @@
 //      в <body> нет ни одного <link rel=stylesheet>/<style>, которого нет в <body> у 13-го (разделы дня не тащат свой css);
 //  (б) порядок главных блоков: блоки верхнего уровня страницы 13-го (дети <body>/<main>), у дня отфильтрованные по этому
 //      списку, — те же, все и в том же порядке.
+//  (в) содержание дня (Р304, r419): у каждого факта карточки (fakty) utverzhdeno: "Р<номер>", этот Р есть в
+//      scripts/utverzhdeno.json (пишет Джарвис из реестра решений: node scripts/utverzhdeno.mjs <реестр>) и называет дату
+//      дня; в фактах нет имён и слов вида «факты» из общего стоп-листа data/stop-list-inoagenty.txt (Р297–Р300);
+//      в собранной странице нет шаблонных блоков («Спроси …», «А как поступил бы ты?», «Сколько баллов»,
+//      «Что в это время делал мир», развилка) — SHABLONNYE из src/lib/dni-shablon.mjs, та же строка, что держит схему.
 // Списки стилей и блоков берутся из собранного 01-13, не из кода. Исключений нет. Расхождение — exit 1.
 // Запуск: node tests/vid-dnya.mjs [dist]
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
+import { SHABLONNYE } from '../src/lib/dni-shablon.mjs';
 
 const DIST = process.argv[2] ?? 'dist';
 const DEN = path.join(DIST, 'muzei/izobreteniya/den');
@@ -22,6 +28,8 @@ const ETALON = '01-13';
 const IGRA_13 = ['k278-kilometr.css'];
 const BAZA = 'izobreteniya-den.css';
 const KARTOCHKI = 'src/content/dni-shablon/izobreteniya';
+const UTVERZHDENO = 'scripts/utverzhdeno.json';
+const STOP = 'data/stop-list-inoagenty.txt';
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
 
 const norm = (s) => s.replace(/\s+/g, ' ').trim();
@@ -116,9 +124,33 @@ for (const k of dni) {
   if (chuzhie.length) chto.push(`в <body> стили, которых нет у 13-го: ${[...new Set(chuzhie)].join(', ')}`);
   if (chto.length) oshibki.push(`  ${k}: ${chto.join('\n         ')}`);
 }
+// (в) Содержание: утверждение каждого факта, стоп-лист фактов, шаблонные блоки в собранной странице.
+const utv = JSON.parse(fs.readFileSync(UTVERZHDENO, 'utf8'));
+// Варианты строки стоп-листа: «/re/флаги» — как есть; «~слова» и фраза — без регистра, целым словом.
+const variant = (v) => { const r = /^\/(.+)\/([a-z]*)$/.exec(v); if (r) return new RegExp(r[1], r[2].includes('u') ? r[2] : r[2] + 'u');
+  const f = v.replace(/^~|"/g, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); return new RegExp(`(?<![\\p{L}])${f}(?![\\p{L}])`, 'iu'); };
+const stopFakty = fs.readFileSync(STOP, 'utf8').split('\n').filter((x) => /^факты\s/.test(x)).map((x) => x.split('|').map((y) => y.trim()))
+  .map(([vid, kto, v]) => ({ kto: `${kto} (${vid})`, re: v.split(/;\s+/).filter(Boolean).map(variant) }));
+if (!stopFakty.length) { console.error(`vid-dnya: в ${STOP} нет строк вида «факты» — стоп-лист фактов пуст`); process.exit(1); }
+const tekst = (h) => h.replace(/<[^>]+>/g, ' ');
+for (const d of kartochki) {
+  const chto = [];
+  [d.fakty ?? []].flat().flatMap((b) => b.udary).forEach((u, i) => {
+    const f = `факт ${i + 1} «${tekst(u.summary).replace(/\s+/g, ' ').trim().slice(0, 50)}»`;
+    const r = u.utverzhdeno;
+    if (!r) chto.push(`${f}: нет utverzhdeno — факт не утверждён Сергеем`);
+    else if (!utv[r]) chto.push(`${f}: ${r} нет в ${UTVERZHDENO} (или строка ${r} не называет ни одного дня) — обновить: node scripts/utverzhdeno.mjs <реестр>`);
+    else if (!utv[r].dni.includes(d.key)) chto.push(`${f}: строка ${r} в реестре не называет ${d.key} (называет ${utv[r].dni.join(', ')})`);
+    const t = [u.summary, ...u.det, u.otryvok ?? ''].map(tekst).join(' ');
+    for (const s of stopFakty) for (const re of s.re) { const m = t.match(re); if (m) chto.push(`${f}: «${m[0]}» — ${s.kto}`); }
+  });
+  const html = fs.existsSync(path.join(DEN, d.key, 'index.html')) ? read(d.key) : '';
+  for (const [kto, re] of SHABLONNYE) { const m = html.match(re); if (m) chto.push(`страница: шаблонный блок ${kto} («${m[0]}»)`); }
+  if (chto.length) oshibki.push(`  ${d.key}: ${chto.join('\n         ')}`);
+}
 console.log(`vid-dnya: эталон 01-13 — стили ${stili13.join(' → ')}; блоки ${bloki13.join(' ')}`);
 if (oshibki.length) {
-  console.error(`vid-dnya: не в виде 13 января — ${oshibki.length} из ${dni.length} дней:\n${oshibki.join('\n')}`);
+  console.error(`vid-dnya: не в виде 13 января или содержание не утверждено — ${oshibki.length} записей (дней ${dni.length}):\n${oshibki.join('\n')}`);
   process.exit(1);
 }
 console.log(`vid-dnya: все ${dni.length} шаблонных дней (${dni.join(', ')}) в виде 13 января; старые HTML и анкеты (${vse.length - dni.length}) не проверяются`);
