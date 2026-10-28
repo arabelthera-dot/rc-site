@@ -1,0 +1,48 @@
+# Опасные пути — только вручную (Р311, Сергей «первый вопрос да» 28.10.2026; дыра 2 из r391).
+# Заявка, которая задевает автоматику (.github/), файл владельцев, правила агентов, deploy/ или astro.config,
+# краснеет, пока на ней нет метки st:gate-sergey. Метку ставит только Джарвис (arabelthera-dot) по слову
+# Сергея в чате; агентам ставить её запрещено (AGENTS.md, п. 5а). Остальные заявки — зелёные сразу.
+# Без фильтра paths: статус нужен на каждой заявке, иначе обязательная проверка висела бы «ожидает».
+# Переименование тоже считается: смотрим и новый путь, и прежний (previous_filename).
+# Откат: убрать opasnye-puti из обязательных проверок ruleset main-proverka, затем удалить этот файл.
+name: opasnye-puti
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+permissions:
+  contents: read
+  pull-requests: read
+concurrency:
+  group: opasnye-puti-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  opasnye-puti:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: opasnye-puti — без st:gate-sergey не сливается
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          METKA: ${{ contains(github.event.pull_request.labels.*.name, 'st:gate-sergey') }}
+        run: |
+          set -euo pipefail
+          gh api --paginate "repos/$REPO/pulls/$PR/files" \
+            --jq '.[] | .filename, (.previous_filename // empty)' > faily.txt
+          echo "Файлов в заявке: $(sort -u faily.txt | wc -l)"
+          # .github/** · CODEOWNERS где угодно · AGENTS.md/CLAUDE.md/GEMINI.md где угодно · .claude/ .cursor/ .cursorrules
+          # · deploy/** · astro.config.*
+          OPASNO='^\.github/|(^|/)CODEOWNERS$|(^|/)(AGENTS|CLAUDE|GEMINI)\.md$|^\.(claude|cursor)/|(^|/)\.cursorrules$|^deploy/|^astro\.config\.'
+          if ! grep -E "$OPASNO" faily.txt | sort -u > opasnye.txt; then
+            echo "Опасных путей нет — зелёная."
+            exit 0
+          fi
+          echo "Заявка задевает опасные пути:"
+          sed 's/^/  /' opasnye.txt
+          if [ "$METKA" = "true" ]; then
+            echo "Метка st:gate-sergey стоит — слово Сергея получено, зелёная."
+            exit 0
+          fi
+          echo "::error::Опасные пути без метки st:gate-sergey. Слияние — только по слову Сергея: метку ставит Джарвис (arabelthera-dot), агентам — нельзя (Р311)."
+          exit 1
