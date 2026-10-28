@@ -952,6 +952,38 @@
         "v": 1
       }
     },
+    "izobreteniya/21jan-obninsk": {
+      "title": "История в 48 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: пульт управления Первой АЭС в Обнинске, 1966 (Государственный исторический музей, рег. № 69176047); Юрий Гагарин у здания Первой АЭС, 31 мая 1966 (Музей истории города Обнинска, рег. № 2335970). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk.mp4",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk.mp4",
+        "v": 2,
+        "w": 1920,
+        "h": 1080,
+        "sec": 47.8,
+        "mb": 12.5
+      },
+      "vertical": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk-9x16.mp4",
+        "v": 2,
+        "w": 1080,
+        "h": 1920,
+        "sec": 47.8,
+        "mb": 12.4
+      },
+      "poster": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk-9x16-poster.jpg",
+        "v": 1
+      }
+    },
     "izobreteniya/22jan-landau": {
       "title": "История в 42 секунды",
       "note": "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Л. Д. Ландау за работой дома; гелиевый ожижитель П. Л. Капицы; Нобелевский диплом Ландау 1962 года. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
