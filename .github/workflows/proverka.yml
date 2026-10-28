@@ -73,6 +73,11 @@ jobs:
         env:
           MEDIA_ROLIK_STROGO: ${{ vars.MEDIA_ROLIK_STROGO }}
         run: node scripts/media-dnya.mjs --proba && node scripts/media-dnya.mjs
+      # Пропорции ролика дня (r413, 28.10): обложка и ролик одного формата на телефоне и ПК — настоящие размеры JPEG/MP4
+      # в public/, запасная пара дней шаблона, подмена адреса движком по play. Без сборки, секунды. Откат — удалить шаг.
+      - name: proporcii-rolika — обложка и ролик одной пропорции
+        timeout-minutes: 2
+        run: node scripts/proporcii-rolika.mjs --proba && node scripts/proporcii-rolika.mjs
       # Соседи полной страницы дня (Р165, 23.10.2026): «Куда дальше» и стрелки шапки — ближайшие полные страницы музея
       # (src/lib/sosedi-polnye.mjs). Без сборки, секунды. Откат — удалить шаг.
       - name: sosedi-polnye — пробы соседей дня

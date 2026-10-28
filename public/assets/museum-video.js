@@ -100,23 +100,36 @@
     // Новый адрес назначаем только при намерении запустить ролик. Вызов load() во время
     // инициализации заставляет Chromium скачать MP4 даже при preload="none". Ролик
     // грузится только после подмены — второго скачивания (16:9, потом 9:16) нет.
-    // Сравниваем с currentSrc: одинаковые — плеер не трогаем.
+    // Сравниваем с currentSrc: одинаковые — плеер не трогаем. true — адрес подменён.
     var activate = function () {
-      if (started) return;
+      if (started) return false;
       started = true;
       var src = show();
+      var swapped = false;
       if (video.currentSrc !== src) {
         source.setAttribute('src', src);
         source.setAttribute('type', 'video/mp4');
         video.load();
+        swapped = true;
       }
       video.removeEventListener('pointerdown', activate);
       video.removeEventListener('click', activate);
       video.removeEventListener('keydown', activate);
+      video.removeEventListener('play', onPlay);
+      return swapped;
+    };
+    // Запуск мимо касания (r413): play() из скрипта, системные кнопки плеера и медиаклавиши
+    // не дают pointerdown/click — без этого играл запасной 16:9 из HTML под обложкой 9:16.
+    // Подменяем адрес и запускаем снова: обложка и ролик всегда одного формата.
+    var onPlay = function () {
+      if (!activate()) return;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
     };
     video.addEventListener('pointerdown', activate);
     video.addEventListener('click', activate);
     video.addEventListener('keydown', activate);
+    video.addEventListener('play', onPlay);
 
     if (mq && rel.vertical && attr === 'horizontal') {
       var onTurn = function () { if (!started) show(); };
