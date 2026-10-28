@@ -1,5 +1,6 @@
 // Общие правила календаря музея — одно место для главной портала, главной музея и страницы календаря.
 import fs from 'node:fs';
+import tlsNedoverie from '../data/tls-nedoverie.json';
 
 // длина месяцев невисокосного года: у недатированного музея «ДД» — номер записи в месяце
 export const YEAR = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -40,5 +41,9 @@ export const stripSrcPrefix = (v?: string) => (v ? String(v).replace(SRC_PREFIX,
 // Источник — ссылкой (Б18, опись Р84, 21.10): адрес в тексте источника становится нажимаемой ссылкой
 // («Как сделан музей» обещает, что источник можно открыть самому). Текст экранируется, адрес — без хвостовой пунктуации.
 const escSrc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Р323 (28.10): сайт с сертификатом НУЦ Минцифры (список пишет scripts/proverka-tls.mjs) — Chrome/Safari
+// покажут «угрозу безопасности», поэтому ссылка подписана, куда она откроется.
+const ruCa = (u: string) => { try { const h = new URL(u).hostname.replace(/^www\./, '');
+  return (tlsNedoverie.hosts as Record<string, { kind?: string }>)[h]?.kind === 'ru-ca'; } catch { return false; } };
 export const srcHtml = (v?: string) => escSrc(stripSrcPrefix(v)).replace(/https?:\/\/[^\s<>"]+?(?=[.,;:)»]*(?:\s|$))/g,
-  (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+  (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>${ruCa(u) ? ' <span class="rc-ruca">(откроется в Яндекс Браузере)</span>' : ''}`);

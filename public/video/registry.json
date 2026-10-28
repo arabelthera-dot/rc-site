@@ -396,11 +396,11 @@
       "horizontal": {
         "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy.mp4",
         "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 48.3,
-        "mb": 8.8
+        "sec": 50.3,
+        "mb": 8.3
       },
       "poster": {
         "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy-poster.jpg",
@@ -949,6 +949,166 @@
       "poster_vertical": {
         "file": "izobreteniya/20jan-lunin/day-20jan-lunin-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/21jan-obninsk": {
+      "title": "История в 48 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: пульт управления Первой АЭС в Обнинске, 1966 (Государственный исторический музей, рег. № 69176047); Юрий Гагарин у здания Первой АЭС, 31 мая 1966 (Музей истории города Обнинска, рег. № 2335970). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk.mp4",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk.mp4",
+        "v": 2,
+        "w": 1920,
+        "h": 1080,
+        "sec": 47.8,
+        "mb": 12.5
+      },
+      "vertical": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk-9x16.mp4",
+        "v": 2,
+        "w": 1080,
+        "h": 1920,
+        "sec": 47.8,
+        "mb": 12.4
+      },
+      "poster": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/21jan-obninsk/day-21jan-obninsk-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-21jan-obninsk-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/22jan-landau": {
+      "title": "История в 42 секунды",
+      "note": "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Л. Д. Ландау за работой дома; гелиевый ожижитель П. Л. Капицы; Нобелевский диплом Ландау 1962 года. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau.mp4",
+        "local": "muzei/izobreteniya/video/day-22jan-landau.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 41.8,
+        "mb": 9.1
+      },
+      "vertical": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-22jan-landau-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 41.8,
+        "mb": 9.0
+      },
+      "poster": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-22jan-landau-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-22jan-landau-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/27jan-elbrus": {
+      "title": "История в 36 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: проспект «Эльбрус-2», 1982 (Музей современной истории России); план-график отладки МВК «Эльбрус-2», 1980 (Политехнический музей); книга В. С. Бурцева «Параллелизм вычислительных процессов…», 1998 (Политехнический музей). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus.mp4",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 36.4,
+        "mb": 7.9
+      },
+      "vertical": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 36.4,
+        "mb": 5.9
+      },
+      "poster": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/27jan-elbrus/day-27jan-elbrus-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-27jan-elbrus-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/24jan-anchar": {
+      "title": "История в 51 секунду",
+      "note": "Кадры ролика — подлинные: модель К-162 «Анчар» и снимок Н. Н. Исанина с Н. Н. Назаровым (Центральный военно-морской музей, Госкаталог музейного фонда РФ); портрет академика Н. Н. Исанина (Музей истории подводных сил России). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar.mp4",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 51.0,
+        "mb": 10.1
+      },
+      "vertical": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 51.0,
+        "mb": 7.6
+      },
+      "poster": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/24jan-anchar/day-24jan-anchar-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-24jan-anchar-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/28jan-havkin": {
+      "title": "История в 59 секунд",
+      "note": "Кадры — подлинные фотографии 1890-х годов: Хавкин делает прививки индийским крестьянам (публикация Российского исторического общества), прививка в Бенгалии, 1896 (публикация Российского исторического общества), портрет В. А. Хавкина (журнал «Химия и жизнь»). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/28jan-havkin/day-28jan-havkin.mp4",
+        "local": "muzei/izobreteniya/video/day-28jan-havkin.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 58.8,
+        "mb": 11.4
+      },
+      "vertical": {
+        "file": "izobreteniya/28jan-havkin/day-28jan-havkin-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-28jan-havkin-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 58.8,
+        "mb": 12.0
+      },
+      "poster": {
+        "file": "izobreteniya/28jan-havkin/day-28jan-havkin-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-28jan-havkin-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/28jan-havkin/day-28jan-havkin-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-28jan-havkin-9x16-poster.jpg",
         "v": 1
       }
     }

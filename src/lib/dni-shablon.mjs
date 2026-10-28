@@ -86,7 +86,7 @@ export const skhema = z.object({
   // src загадки необязателен: у старой страницы 20 янв. его нет (MUSEUM_RETURN={riddle:{q,a}}); нет — не пишется.
   return: z.object({ q: str, a: str, src: str.optional() }),
   audioguide: z.object({ audioSrc: str, durationLabel: str, lead: str, stops: z.array(z.object({ t: z.number(), mark: str, title: str })),
-    transcript: z.array(str), note: str }),
+    transcript: z.array(str), note: str }).optional(), // нет — нет блока, кнопки «Слушать» и скриптов гида (недоделка дня, Р232)
   proof: z.record(z.string(), z.unknown()),
 }).superRefine((d, ctx) => {
   if (!fs.existsSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`) || !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.imya}.js`))
