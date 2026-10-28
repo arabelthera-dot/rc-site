@@ -200,11 +200,15 @@ const denRu = (key) => datаRu(`0000-${key}`);
 // Разметка риска карточки дня: по каждому факту и каждой части дня. [{ chast, nomer, tekst, metki }], только помеченное.
 export function razmetkaRiska(d) {
   const chasti = [];
-  const dob = (chast, nomer, tekst, pometka) => { const metki = metkiTeksta(tekst, pometka); if (metki.length) chasti.push({ chast, nomer, tekst: bezTegov(tekst), metki }); };
-  (d.fakty?.udary ?? []).forEach((u, i) => dob('факт', i + 1, u.summary, u.pometka));
-  (d.story?.udary ?? []).forEach((u, i) => dob('рассказ', i + 1, u.summary, u.pometka));
+  const dob = (chast, nomer, tekst, pometka, blok) => { const metki = metkiTeksta(tekst, pometka); if (metki.length) chasti.push({ chast, nomer, tekst: bezTegov(tekst), metki, ...(blok && { blok }) }); };
+  // fakty — блок или список блоков (18 янв.); история — удары и/или простые абзацы (18, 20 янв.), нумерация сквозная.
+  [d.fakty ?? []].flat().flatMap((b) => b.udary).forEach((u, i) => dob('факт', i + 1, u.summary, u.pometka));
+  [...(d.story?.udary ?? []).map((u) => [u.summary, u.pometka]), ...(d.story?.abzacy ?? []).map((a) => [a])]
+    .forEach(([t, p], i) => dob('рассказ', i + 1, t, p));
   if (d.lead) dob('заголовок', 0, `${d.lead.h1}. ${d.lead.hook}`);
   if (d.pervenstvo) dob('граница первенства', 0, d.pervenstvo.granica);
+  // Своя разметка блока (01-17…) — вместо полей шаблона, читается целиком.
+  Object.entries(d.svoi ?? {}).forEach(([k, html]) => dob('свой блок', 0, html, undefined, k));
   (d.razdely ?? []).forEach((r, i) => dob('доп. раздел', i + 1, r.html));
   (d.audioguide?.transcript ?? []).forEach((t, i) => dob('аудиогид', i + 1, t));
   (d.quiz?.voprosy ?? []).forEach((v, i) => dob('викторина', i + 1, `${v.q} ${v.e}`));
@@ -256,7 +260,8 @@ export async function vyborkaNedeli(nedelya) {
 }
 
 const MUZEI_RU = { izobreteniya: 'Изобретения' };
-const CHAST_RU = { 'факт': 'факт', 'рассказ': 'рассказ, абзац', 'заголовок': 'заголовок дня', 'граница первенства': 'граница первенства', 'доп. раздел': 'дополнительный раздел', 'аудиогид': 'аудиогид, абзац', 'викторина': 'викторина, вопрос' };
+const CHAST_RU = { 'факт': 'факт', 'рассказ': 'рассказ, абзац', 'заголовок': 'заголовок дня', 'граница первенства': 'граница первенства', 'доп. раздел': 'дополнительный раздел', 'аудиогид': 'аудиогид, абзац', 'викторина': 'викторина, вопрос', 'свой блок': 'блок' };
+const SVOI_RU = { pervenstvo: '«Первенство»', quiz: '«Викторина»', result: '«Итог»', calendar: '«Календарь»' };
 // Текст для Сергея: обычный русский, без путей и терминов.
 export async function otchetPriemki(nedelya) {
   const v = await vyborkaNedeli(nedelya);
@@ -271,7 +276,7 @@ export async function otchetPriemki(nedelya) {
       const svodka = [];
       for (const c of d.chasti) {
         const prostoe = !['факт', 'рассказ'].includes(c.chast) && c.metki.every((x) => ['первенство', 'число'].includes(x.metka));
-        const gde = c.nomer ? `${CHAST_RU[c.chast]} ${c.nomer}` : CHAST_RU[c.chast];
+        const gde = c.blok ? `${CHAST_RU[c.chast]} ${SVOI_RU[c.blok] ?? c.blok}` : c.nomer ? `${CHAST_RU[c.chast]} ${c.nomer}` : CHAST_RU[c.chast];
         if (prostoe) { svodka.push(gde); continue; }
         const t = c.tekst.length > 100 ? `${c.tekst.slice(0, 97)}…` : c.tekst;
         s.push(`  • ${gde} «${t}» — ${c.metki.map((x) => `${x.metka}: ${x.pochemu}`).join('; ')}.`);
