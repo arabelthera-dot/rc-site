@@ -41,7 +41,9 @@ const today = new Date().toISOString().slice(0, 10);
 for (const r of await Promise.all([...hosts].sort().map(check))) {
   if (r.ok === false) {
     const iss = await issuer(r.host);
-    out.hosts[r.host] = { kind: /Russian Trusted/i.test(iss) ? 'ru-ca' : 'other', error: r.error, issuer: iss, checked: today };
+    // издатель не узнан (сайт оборвал второе соединение) — вид записи прежний, иначе сайт выпадет из RU_CA
+    const kind = iss ? (/Russian Trusted/i.test(iss) ? 'ru-ca' : 'other') : (prev.hosts[r.host]?.kind || 'other');
+    out.hosts[r.host] = { kind, error: r.error, issuer: iss || prev.hosts[r.host]?.issuer || '', checked: today };
   }
   else if (r.ok === null && prev.hosts[r.host]) out.hosts[r.host] = prev.hosts[r.host];
 }
