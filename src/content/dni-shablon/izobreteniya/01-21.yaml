@@ -53,7 +53,7 @@ stamp:
     k: ток пошёл в общую сеть
   - v: 48 лет
     k: работы вместо 30 по плану
-  - v: 0
+  - v: "0"
     k: облучённых за 48 лет
 daynav:
   - id: video
@@ -300,8 +300,6 @@ sources:
   - href: https://strana-rosatom.ru/2019/05/22/sudba-am-1-ili-s-legkim-parom/
     title: «Страна Росатом», «Судьба АМ-1, или С лёгким паром»
     note: «С лёгким паром!», 48 лет работы, гости станции.
-  - href: https://strana-rosatom.ru/2021/12/08/atomnyj-turnir-sverhderzhav-o-njuansah/
-    title: «Страна Росатом», «Атомный турнир сверхдержав»
   - href: https://strana-rosatom.ru/2019/10/28/sozdatel-novogo-k-120-letiju-nikolaya-do/
     title: «Страна Росатом», «Создатель нового — к 120-летию Николая Доллежаля»
     note: биография Доллежаля.
