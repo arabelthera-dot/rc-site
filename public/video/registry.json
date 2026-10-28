@@ -855,6 +855,38 @@
         "local": "muzei/izobreteniya/video/day-19jan-kantorovich-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/20jan-lunin": {
+      "title": "История в 59 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: тушка домовой мыши (Забайкальский краевой краеведческий музей им. А. К. Кузнецова); открытка «Юрьев (Дерпт), университет» (Государственный музей истории Санкт-Петербурга); весы аптечные (Государственный музей истории Санкт-Петербурга); фарфоровая выпарительная чашка (музей-заповедник «Кузнецкая крепость»); портрет Н. И. Лунина (Государственный исторический музей); обложка книги Г. Бунге «Алкоголизм и вырождение» (Государственный музей Л. Н. Толстого). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin.mp4",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.1,
+        "mb": 12.4
+      },
+      "vertical": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 59.1,
+        "mb": 10.6
+      },
+      "poster": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
