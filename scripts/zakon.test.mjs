@@ -10,9 +10,13 @@ import { sverkaReestrov } from '../src/lib/zakon.mjs';
 let oshibok = 0;
 const proverka = (ok, msg) => { console.log(`${ok ? '✓' : '✗'} ${msg}`); if (!ok) oshibok++; };
 
-const r380 = [['sport/02-17', 'Каспаров Гарри Кимович'], ['sport/06-25', 'Каспаров Гарри Кимович'], ['izobreteniya/01-19', 'Meta Platforms']];
+const r380 = [['sport/02-17', 'Каспаров Гарри Кимович', 'каспаров'], ['sport/06-25', 'Каспаров Гарри Кимович', 'каспаров'], ['izobreteniya/01-19', 'Meta Platforms', 'facebook']];
+// Место r380, убранное из содержания (19 янв. изобретений переписан r403, #544), — не ошибка: ловить там нечего.
+const estVSoderzhanii = (id, slovo) => [`src/content/days/${id}.json`, `src/content/dni-shablon/${id}.yaml`]
+  .some((f) => fs.existsSync(f) && fs.readFileSync(f, 'utf8').toLowerCase().includes(slovo));
 const bez = sverkaReestrov('.', { bezZhdut: true });
-for (const [id, kto] of r380) {
+for (const [id, kto, slovo] of r380) {
+  if (!estVSoderzhanii(id, slovo)) { console.log(`· ${id}: «${slovo}» убрано из содержания — ловить нечего`); continue; }
   const s = bez.sovpadeniya.find((x) => x.gde.startsWith(`${id} `) && x.imya.includes(kto));
   proverka(!!s, s ? `красная без исключения: ${s.gde}: «${s.imya}» — ${s.reestr} (найдено «${s.variant}»)` : `${id}: «${kto}» не пойман`);
 }
