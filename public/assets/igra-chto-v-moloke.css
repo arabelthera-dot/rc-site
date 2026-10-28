@@ -1,0 +1,65 @@
+/* Игра «Что ещё есть в молоке» (20 января, Н. И. Лунин, 1880), r416-20. Палитра — тёмная, как у «Причаль вручную». */
+.vm-igra{margin:10px 0 8px;border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;background:#141008}
+.vm-h{margin:0;padding:12px 14px 0;font-family:'Playfair Display',Georgia,serif;font-size:21px;color:#ffd666}
+.vm-head{padding:6px 14px 8px}
+.vm-task{margin:0;font-size:clamp(19px,5vw,23px);font-weight:800;line-height:1.2;color:#fff;min-height:calc(19px + 2.4em)}
+.vm-task b:first-child{display:block;color:#6fe0a0;font-size:15px;font-weight:700}
+.vm-sub{margin:4px 0 0;min-height:2.8em;font-size:clamp(15px,4vw,17px);line-height:1.4;color:#e4c97a}
+.vm-tablo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 14px 8px}
+.vm-tablo div{padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.05);font-size:12px;color:#c7b89a;line-height:1.2}
+.vm-tablo b{display:block;font-size:20px;color:#fff;font-variant-numeric:tabular-nums}
+.vm-tablo b.vm-malo{color:#ff7a66}
+.vm-kletki{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 10px}
+.vm-kletka{border-radius:14px;background:#1e170c;border:1px solid rgba(233,207,126,.18);padding:6px;min-width:0}
+.vm-scena{position:relative;height:118px;border-radius:10px;overflow:hidden;background:repeating-linear-gradient(90deg,#2a2114 0 9px,#3b2f1c 9px 11px);display:flex;align-items:flex-end;justify-content:center}
+.vm-den{position:absolute;left:6px;top:4px;font-size:13px;font-weight:700;color:#ffd666;font-variant-numeric:tabular-nums}
+.vm-zdorovie{position:absolute;left:6px;right:6px;bottom:4px;height:6px;border-radius:3px;background:rgba(0,0,0,.45)}
+.vm-zdorovie i{display:block;height:100%;width:100%;border-radius:3px;background:#6fe0a0;transition:width .12s linear,background .3s}
+.vm-mysh-mesto svg{display:block;width:118px;height:96px;margin-bottom:10px}
+.vm-koleso{transform-origin:84px 46px}
+.vm-bodr .vm-koleso{animation:vm-kr 0.8s linear infinite}
+.vm-bodr .vm-telo{animation:vm-beg .3s ease-in-out infinite alternate}
+.vm-slab .vm-telo{filter:grayscale(.7);opacity:.75}
+.vm-mertv .vm-telo{transform:translate(0,14px) rotate(180deg);transform-origin:42px 62px;filter:grayscale(1);opacity:.5}
+.vm-mertv .vm-scena{background:repeating-linear-gradient(90deg,#1c1710 0 9px,#26201a 9px 11px)}
+@keyframes vm-kr{to{transform:rotate(360deg)}}
+@keyframes vm-beg{to{transform:translateY(-3px)}}
+.vm-itog{margin:6px 2px;min-height:2.6em;font-size:14px;line-height:1.3;color:#f1e6cc}
+.vm-itog.vm-zhiv{color:#6fe0a0}.vm-itog.vm-gib{color:#ff9a88}
+.vm-korm{display:flex;flex-wrap:wrap;gap:5px}
+.vm-korm button{flex:1 1 calc(50% - 5px);min-width:0;padding:6px 4px;border-radius:10px;border:1px solid rgba(233,207,126,.35);background:#2a2114;color:#f1e6cc;font:600 13px/1.15 system-ui,sans-serif;cursor:pointer}
+.vm-korm button[aria-pressed="true"]{background:#e9cf7e;color:#1a1206;border-color:#e9cf7e}
+.vm-korm button.vm-soda{border-style:dashed}
+.vm-korm button:disabled{opacity:.5;cursor:default}
+.vm-bunge{margin:10px 14px 0;padding:10px 12px;border-left:4px solid #ff9a66;border-radius:8px;background:rgba(255,154,102,.1);color:#ffdcc8;font-size:15px;line-height:1.4}
+.vm-hod{display:flex;padding:10px 14px}
+.vm-hod button,.vm-again{flex:1;padding:12px;border-radius:14px;border:0;background:#e9cf7e;color:#1a1206;font:800 18px/1.1 system-ui,sans-serif;cursor:pointer}
+.vm-hod button small{display:block;font-size:12px;font-weight:600;margin-top:3px}
+.vm-hod button:disabled{opacity:.5}
+.vm-finale{padding:4px 14px 12px}
+.vm-fin-h{margin:4px 0;font-family:'Playfair Display',Georgia,serif;font-size:24px;color:#ffd666}
+.vm-fin-txt{margin:0 0 8px;color:#f1e6cc;font-size:16px;line-height:1.45}
+.vm-zvezdy{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:4px}
+.vm-zvezdy li{font-size:15px;color:#c7b89a}.vm-zvezdy li.vm-da{color:#ffd666}
+.vm-again{width:100%}
+.vm-spravka{margin-top:12px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);font-size:15px;line-height:1.45;color:#e8dcc2}
+.vm-spravka-h{margin:0 0 4px;font-weight:800;color:#ffd666}
+.vm-src{font-size:13px;color:#b7a988}.vm-src a{color:#e9cf7e}
+.vm-cap{margin:0;padding:0 14px 12px;font-size:12px;color:#9c8f74}
+@media (min-width:760px){.vm-scena{height:150px}.vm-mysh-mesto svg{width:150px;height:122px}.vm-korm button{flex-basis:calc(33% - 5px);font-size:14px}}
+@media (prefers-reduced-motion:reduce){.vm-koleso,.vm-telo{animation:none!important}}
+/* igra-ruka — подсказка «куда жать» (Р206); вид — как у образца 29 янв. (ko-hand, rc-site e4f86d74). Вставить в конец css игры как есть. */
+.igra-ruka-zona{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+.igra-ruka-zona button{touch-action:manipulation;min-height:48px;min-width:48px}
+.igra-ruka-zona .igra-pravila{-webkit-user-select:text;user-select:text}
+.igra-ruka{position:absolute;z-index:30;width:40px;height:48px;margin:0;pointer-events:none;animation:igra-tap 1.1s ease-in-out infinite;transform-origin:15px 4px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
+.igra-ruka[hidden]{display:none}
+.igra-ruka svg{display:block}
+.igra-ruka-krug{position:absolute;left:-7px;top:-14px;width:44px;height:44px;border:3px solid #fff;border-radius:50%;opacity:0;animation:igra-krug 1.1s ease-out infinite}
+@keyframes igra-tap{0%,100%{transform:translate(-15px,10px) scale(1)}40%{transform:translate(-15px,-4px) scale(.88)}55%{transform:translate(-15px,-4px) scale(.88)}}
+@keyframes igra-krug{0%,35%{opacity:0;transform:scale(.3)}45%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(1.2)}}
+.igra-ved button:not(.igra-aktiv){opacity:.42;filter:saturate(.4)}
+.igra-aktiv{position:relative;z-index:2;opacity:1!important;filter:none!important;animation:igra-puls 1.1s ease-in-out infinite!important;outline:3px solid #e9cf7e;outline-offset:3px}
+@keyframes igra-puls{0%,100%{box-shadow:0 0 0 0 rgba(233,207,126,.75)}50%{box-shadow:0 0 0 12px rgba(233,207,126,0)}}
+.igra-zhmyak{transform:scale(.94)!important;transition:transform 60ms}
+@media (prefers-reduced-motion:reduce){.igra-ruka,.igra-aktiv{animation:none!important}.igra-ruka{transform:translate(-15px,0)}.igra-ruka-krug{display:none}}
