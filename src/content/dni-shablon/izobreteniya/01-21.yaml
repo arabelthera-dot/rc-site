@@ -56,6 +56,8 @@ stamp:
   - v: ×25
     k: мощнее EBR-I — и в сеть
 daynav:
+  - id: video
+    label: Видео
   - id: audioguide
     label: Слушать
   - id: story
@@ -76,6 +78,17 @@ daynav:
     label: Источники
   - id: calendar
     label: Календарь
+video:
+  h2: История в 46 секунд
+  klyuch: izobreteniya/21jan-obninsk
+  format: horizontal
+  pole: izobreteniya/21jan-obninsk:horizontal.sec
+  suffix: сек
+  badge: 46 сек
+  intro: Та же история коротким роликом — от задвижки на пульте 26 июня 1954 года до тока в общей сети и почти 48 лет работы станции.
+  poster: video/day-21jan-obninsk-poster.jpg?v=1
+  mp4: video/day-21jan-obninsk.mp4?v=1
+  note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: пульт управления Первой АЭС в Обнинске, 1966 (Государственный исторический музей, рег. № 69176047); Юрий Гагарин у здания Первой АЭС, 31 мая 1966 (Музей истории города Обнинска, рег. № 2335970). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История пуска
   h2: Пар без угля
