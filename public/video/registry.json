@@ -1118,30 +1118,30 @@
       "horizontal": {
         "file": "izobreteniya/23jan-umov/day-23jan-umov.mp4",
         "local": "muzei/izobreteniya/video/day-23jan-umov.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 49.8,
+        "sec": 49.7,
         "mb": 10.6
       },
       "vertical": {
         "file": "izobreteniya/23jan-umov/day-23jan-umov-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-23jan-umov-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 49.8,
-        "mb": 8.5
+        "sec": 49.7,
+        "mb": 8.4
       },
       "poster": {
         "file": "izobreteniya/23jan-umov/day-23jan-umov-poster.jpg",
         "local": "muzei/izobreteniya/video/day-23jan-umov-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "izobreteniya/23jan-umov/day-23jan-umov-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-23jan-umov-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     }
   }
