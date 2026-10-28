@@ -2,7 +2,7 @@
   "museum": "izobreteniya",
   "key": "01-05",
   "title": "Первый в мире расчётный нефтепровод Балаханы–Черный город",
-  "hook": "Перевозка нефти стоила дороже самой нефти — 24-летний инженер пустил её по трубе и оставил без работы десять тысяч возчиков.",
+  "hook": "24-летний Шухов пустил нефть по первому в мире расчётному нефтепроводу — и оставил без работы десять тысяч возчиков, чья перевозка стоила дороже самой нефти.",
   "mechanic": "Запускаешь прошлое: гоняешь нефть по трубе, меняешь диаметр и вязкость, видишь, где расчёт побеждает наугад 🔜 (карточка готова, ждёт «да»)",
   "source": "ТАСС · «Первый российский трубопровод» (transnefthistory.tass.ru)",
   "legacy_page": "muzei/izobreteniya/day-05jan-shukhov.html",
@@ -44,7 +44,7 @@
     },
     {
       "type": "oblozhka",
-      "html": "\n\n<header class=\"hero-lead\">\n  <div class=\"wrap\">\n    <div class=\"date-chip mono\">5 января · 1878</div>\n    <div class=\"who\">Владимир Шухов <i>· инженер, 24 года</i></div>\n    <h1>Первый в мире расчётный нефтепровод</h1>\n    <p class=\"hook\">Перевозка нефти стоила дороже самой нефти — 24-летний инженер пустил её по трубе и оставил без работы десять тысяч возчиков.</p>\n    <div class=\"hero-btns\">\n      <button class=\"btn gold\" onclick=\"document.getElementById('story').scrollIntoView({behavior:'smooth'})\">Читать историю ↓</button>\n      <button class=\"btn ghost\" onclick=\"document.getElementById('audioguide').scrollIntoView({behavior:'smooth'})\">🎧 Слушать аудиогид</button>\n    </div>\n  </div>\n</header>"
+      "html": "\n\n<header class=\"hero-lead\">\n  <div class=\"wrap\">\n    <div class=\"date-chip mono\">5 января · 1878</div>\n    <div class=\"who\">Владимир Шухов <i>· инженер, 24 года</i></div>\n    <h1>Первый в мире расчётный нефтепровод</h1>\n    <p class=\"hook\">24-летний Шухов пустил нефть по первому в мире расчётному нефтепроводу — и оставил без работы десять тысяч возчиков, чья перевозка стоила дороже самой нефти.</p>\n    <div class=\"hero-btns\">\n      <button class=\"btn gold\" onclick=\"document.getElementById('story').scrollIntoView({behavior:'smooth'})\">Читать историю ↓</button>\n      <button class=\"btn ghost\" onclick=\"document.getElementById('audioguide').scrollIntoView({behavior:'smooth'})\">🎧 Слушать аудиогид</button>\n    </div>\n  </div>\n</header>"
     },
     {
       "type": "oblozhka",
