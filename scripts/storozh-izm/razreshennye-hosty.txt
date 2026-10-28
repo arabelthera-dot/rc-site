@@ -1,0 +1,21 @@
+# Хосты, с которых странице можно грузить скрипт, фрейм, стиль, шрифт и куда слать форму (и адреса внутри <script>).
+# Запись разрешает хост и его поддомены. Основа — src/lib/csp.mjs (Метрика, VK Видео, Rutube).
+russian-civilization.ru
+yandex.ru
+yandex.com
+yandex.net
+yastatic.net
+vk.com
+vk.ru
+vkvideo.ru
+userapi.com
+vkuser.net
+mycdn.me
+okcdn.ru
+rutube.ru
+rtbcdn.ru
+# адреса-строки во встроенных скриптах (не загрузка): мессенджер, лицензия, схема разметки
+t.me
+creativecommons.org
+schema.org
+w3.org

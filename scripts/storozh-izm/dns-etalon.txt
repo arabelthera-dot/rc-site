@@ -1,0 +1,14 @@
+# Эталон DNS для сторожа изменений (storozh-izm.yml, Р309). Снято 28.10.2026 через Cloudflare и Google DNS.
+# Строка: «имя тип значение»; «имя тип -» — записи этого типа быть не должно. Любое расхождение = тревога.
+# Сменили DNS законно (Михаил, почта Р11 и т. п.) — правь этот файл заявкой в тот же день.
+russian-civilization.ru A 185.149.145.227
+russian-civilization.ru AAAA -
+russian-civilization.ru NS ns1.reg.ru.
+russian-civilization.ru NS ns2.reg.ru.
+russian-civilization.ru MX -
+russian-civilization.ru CAA -
+www.russian-civilization.ru A 185.149.145.227
+www.russian-civilization.ru AAAA -
+media.russian-civilization.ru A 185.149.145.227
+media.russian-civilization.ru AAAA -
+media.russian-civilization.ru CAA -

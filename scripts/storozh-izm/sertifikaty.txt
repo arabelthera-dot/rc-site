@@ -1,0 +1,7 @@
+# Сертификаты на *.russian-civilization.ru из журналов Certificate Transparency.
+# «izdatel» — разрешённый удостоверяющий центр (подстрока имени издателя). Чужой издатель = тревога всегда.
+# «nash» — известный свой сертификат (номер Cert Spotter или crt.sh, или серийный номер) — не тревожит.
+# Свой Let's Encrypt узнаётся и сам: тот же ключ или серийный номер, что отдаёт наш сервер сейчас.
+izdatel Let's Encrypt
+nash 17893951426 russian-civilization.ru + www, YE2, 20.10.2026
+nash 18018840953 media.russian-civilization.ru, YE1, 27.10.2026
