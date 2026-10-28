@@ -10,7 +10,7 @@
 //  (б) порядок главных блоков: блоки верхнего уровня страницы 13-го (дети <body>/<main>), у дня отфильтрованные по этому
 //      списку, — те же, все и в том же порядке.
 // Списки стилей и блоков берутся из собранного 01-13, не из кода. Исключений нет. Расхождение — exit 1.
-// Запуск: node tests/vid-dnya.mjs [dist]
+// Запуск: node tests/vid-dnya.mjs [dist] [--pervyi]  (--pervyi — только отчёт замка «первый», см. ниже)
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
@@ -25,6 +25,52 @@ const KARTOCHKI = 'src/content/dni-shablon/izobreteniya';
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
 
 const norm = (s) => s.replace(/\s+/g, ' ').trim();
+
+// Замок «первый — только в мире» (Р342–Р343, r443/r445): «первый/впервые» на портале — только мировое первенство.
+// Во всех собранных днях музеев, где заявлено первенство (muzei/*/den/ММ-ДД; костюмные пропускаются — первенства не
+// заявляют), видимый текст без цитат в «ёлочках» ищется двумя образцами: (1) «первый … в России/СССР/Европе/на Урале/…»;
+// (2) «первый в мире» и место через ≤6 слов («первый в мире алмаз в Якутии»). ТОЛЬКО ОТЧЁТ: предупреждение в логе
+// со списком страниц и строк, код выхода не меняется, своя ошибка проверки сборку не роняет («Сторож»: косметика — отчёт).
+// Откат — переменная PERVYI_ZAMOK=0 (vars.PERVYI_ZAMOK в proverka.yml). Только этот отчёт: node tests/vid-dnya.mjs dist --pervyi
+const SL = '[\\p{L}\\p{N}-]+', RAZD = '[\\s,;:—–]+';
+const MESTO = '(?:в|на)\\s+(?:Росси|СССР|стран|Европ|импери|Сибир|Урал|Якути|Москв|Петербург|област|кра[ею]|город)';
+const PERV = '(?<![\\p{L}\\p{N}])(?:перв\\p{L}*|впервые)';
+const PERVYI = [
+  new RegExp(`${PERV}(?:\\s+${SL}){0,2}\\s+${MESTO}`, 'giu'),
+  new RegExp(`${PERV}(?:\\s+${SL}){0,2}\\s+в\\s+мире(?:${RAZD}${SL}){0,6}?${RAZD}${MESTO}`, 'giu'),
+];
+const tekst = (html) => html.replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1\s*>|<!--[\s\S]*?-->/gi, ' ')
+  .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
+  .replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+const bezCitat = (t) => { let x = t, y; while ((y = x.replace(/«[^«»]*»/g, ' ')) !== x) x = y; return x; };
+function pervyiZamok(dist) {
+  const muzei = path.join(dist, 'muzei');
+  const naydeno = [];
+  let stranic = 0;
+  for (const m of fs.readdirSync(muzei).filter((m) => !/kostyum/.test(m)).sort()) {
+    const den = path.join(muzei, m, 'den');
+    if (!fs.existsSync(den)) continue;
+    for (const k of fs.readdirSync(den).filter((k) => /^\d\d-\d\d$/.test(k)).sort()) {
+      const f = path.join(den, k, 'index.html');
+      if (!fs.existsSync(f)) continue;
+      stranic++;
+      const t = bezCitat(tekst(fs.readFileSync(f, 'utf8')));
+      const vidano = new Set();
+      for (const re of PERVYI) for (const x of t.matchAll(re)) {
+        const stroka = norm(t.slice(Math.max(0, x.index - 60), x.index + x[0].length + 40));
+        if (![...vidano].some((v) => v.includes(x[0]))) { vidano.add(x[0]); naydeno.push(`  /muzei/${m}/den/${k}/: …${stroka}…`); }
+      }
+    }
+  }
+  if (naydeno.length) {
+    console.log(`::warning title=pervyi-zamok::«первый» не в мировом смысле — ${naydeno.length} строк на ${new Set(naydeno.map((s) => s.split(':')[0])).size} страницах (из ${stranic}); список в логе шага. Только отчёт (Р342).`);
+    console.log(`pervyi-zamok: ${naydeno.length} строк:\n${naydeno.join('\n')}`);
+  } else console.log(`pervyi-zamok: страниц дней ${stranic}, «первый» не в мировом смысле — 0`);
+}
+if (process.env.PERVYI_ZAMOK !== '0') {
+  try { pervyiZamok(DIST); } catch (e) { console.log(`::warning title=pervyi-zamok::проверка не прошла (${e.message}) — сборку не роняет`); }
+}
+if (process.argv.includes('--pervyi')) process.exit(0);
 const attr = (tag, a) => (tag.match(new RegExp(`\\s${a}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, 'i')) ?? []).slice(1).find((x) => x !== undefined);
 
 // Разбор: стили по порядку и элементы верхнего уровня (дети body, а если конвейер обернул в <main> — дети main).
