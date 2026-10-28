@@ -31,7 +31,9 @@ const norm = (s) => s.replace(/\s+/g, ' ').trim();
 // заявляют), видимый текст без цитат в «ёлочках» ищется двумя образцами: (1) «первый … в России/СССР/Европе/на Урале/…»;
 // (2) «первый в мире» и место через ≤6 слов («первый в мире алмаз в Якутии»). ТОЛЬКО ОТЧЁТ: предупреждение в логе
 // со списком страниц и строк, код выхода не меняется, своя ошибка проверки сборку не роняет («Сторож»: косметика — отчёт).
-// Откат — переменная PERVYI_ZAMOK=0 (vars.PERVYI_ZAMOK в proverka.yml). Только этот отчёт: node tests/vid-dnya.mjs dist --pervyi
+// Откат — константа PERVYI_ZAMOK ниже: true → false (одна строка; локально то же даёт env PERVYI_ZAMOK=0).
+// Только этот отчёт: node tests/vid-dnya.mjs dist --pervyi
+const PERVYI_ZAMOK = true;
 const SL = '[\\p{L}\\p{N}-]+', RAZD = '[\\s,;:—–]+';
 const MESTO = '(?:в|на)\\s+(?:Росси|СССР|стран|Европ|импери|Сибир|Урал|Якути|Москв|Петербург|област|кра[ею]|город)';
 const PERV = '(?<![\\p{L}\\p{N}])(?:перв\\p{L}*|впервые)';
@@ -67,7 +69,7 @@ function pervyiZamok(dist) {
     console.log(`pervyi-zamok: ${naydeno.length} строк:\n${naydeno.join('\n')}`);
   } else console.log(`pervyi-zamok: страниц дней ${stranic}, «первый» не в мировом смысле — 0`);
 }
-if (process.env.PERVYI_ZAMOK !== '0') {
+if (PERVYI_ZAMOK && process.env.PERVYI_ZAMOK !== '0') {
   try { pervyiZamok(DIST); } catch (e) { console.log(`::warning title=pervyi-zamok::проверка не прошла (${e.message}) — сборку не роняет`); }
 }
 if (process.argv.includes('--pervyi')) process.exit(0);
