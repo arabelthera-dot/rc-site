@@ -1,0 +1,38 @@
+/* Игра «Рекордный ход» (24 января, К-162 «Анчар»), r418-24. Палитра — как у «Причаль вручную» (16 янв.). */
+.ra-igra{margin:10px 0 8px;border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;background:#0a1622;color:#e8eef5}
+.ra-h{margin:0;padding:12px 14px 0;font-family:'Playfair Display',Georgia,serif;font-size:21px;color:#ffd666}
+.ra-head{padding:6px 14px 8px}
+.ra-task{margin:0;font-size:clamp(19px,5vw,23px);font-weight:800;line-height:1.2;color:#fff;min-height:calc(19px + 2.4em)}
+.ra-task b:first-child{display:block;color:#6fe0a0;font-size:15px;font-weight:700}
+.ra-sub{margin:4px 0 0;min-height:3em;font-size:clamp(15px,4vw,17px);line-height:1.4;color:#e4c97a}
+.ra-tablo{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px;padding:0 14px 8px}
+.ra-tablo div{padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.05);font-size:12px;color:#9fb6cc;line-height:1.2}
+.ra-tablo b{display:block;margin-top:2px;font-size:clamp(18px,5.4vw,24px);font-weight:800;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ra-tablo .ra-krasn{color:#ff7a6a}
+.ra-pbar{display:block;height:6px;margin-top:4px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
+.ra-pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#6fe0a0,#ffd666)}
+.ra-vest{margin:0 14px 8px;padding:5px 10px;border-radius:10px;font-size:14px;font-weight:700;background:rgba(143,194,255,.1);color:#bfe0ff;min-height:1.5em}
+.ra-vest.ra-udar{background:rgba(255,74,74,.25);color:#fff}
+.ra-stage canvas{display:block;width:100%;height:clamp(260px,72vw,400px);touch-action:none;cursor:ns-resize}
+.ra-hod{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:10px;padding:10px 14px 12px;border-top:1px solid rgba(255,255,255,.07)}
+.ra-hod[hidden]{display:none}
+.ra-hod button{font:inherit;font-size:18px;font-weight:800;line-height:1.15;min-height:64px;padding:6px;border-radius:14px;cursor:pointer;border:1px solid rgba(201,168,76,.45);background:rgba(255,255,255,.06);color:#fff;user-select:none;-webkit-user-select:none;touch-action:none}
+.ra-hod button small{display:block;font-size:12px;font-weight:600;opacity:.85}
+.ra-hod .ra-hod-polny{background:#e4a33a;border-color:#ffd666;color:#1a1004}
+.ra-hod .ra-hod-polny:disabled{opacity:.45;cursor:default}
+.ra-hod button.ra-zhmu{background:#2f5a8a;border-color:#8fc2ff}
+.ra-hod button:focus-visible,.ra-again:focus-visible{outline:3px solid #e4c97a;outline-offset:2px}
+.ra-proigr .ra-stage{box-shadow:inset 0 0 0 3px #ff5a4a}
+.ra-pobeda .ra-stage{box-shadow:inset 0 0 0 3px #ffd666}
+.ra-finale{padding:14px 14px 18px;border-top:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,#13233a,#0a1622)}
+.ra-finale[hidden]{display:none}
+.ra-fin-h{margin:0 0 8px;font-family:'Playfair Display',Georgia,serif;font-size:24px;line-height:1.15;color:#ff9f8a}
+.ra-pobeda .ra-fin-h{color:#ffd666}
+.ra-fin-txt{margin:0 0 8px}
+.ra-zvezdy{list-style:none;margin:0 0 12px;padding:0;font-size:17px;color:#7d8fa3}
+.ra-zvezdy li.on{color:#ffd666;font-weight:700}
+.ra-again{font:inherit;font-size:17px;font-weight:700;min-height:52px;padding:10px 22px;border-radius:26px;cursor:pointer;border:1px solid #ffd666;background:#e4a33a;color:#1a1004}
+.ra-spravka{margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08)}
+.ra-spravka-h{margin:0 0 6px;font-weight:800;color:#ffd666}
+.ra-cap,.ra-src{margin:0;padding:8px 14px 12px;font-size:13px;color:#9fb6cc}
+.ra-src a{color:#bfe0ff}

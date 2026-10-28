@@ -60,7 +60,7 @@ const quizJs = `(function(){
 const knopkiJs = `(function(){
   var $ = function(id){return document.getElementById(id);};
   $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
-  $('listenBtn').onclick = function(){ $('audioguide').scrollIntoView({behavior:'smooth'}); };
+  if ($('listenBtn')) $('listenBtn').onclick = function(){ $('audioguide').scrollIntoView({behavior:'smooth'}); };
 })();`;
 const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">Узнать подробнее</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
@@ -145,7 +145,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
     <p class="hook"><Fragment set:html={d.lead.hook} /></p>
     <div class="hero-btns">
       <button class="btn gold" id="readBtn" type="button">Читать историю ↓</button>
-      <button class="btn ghost" id="listenBtn" type="button">🎧 Слушать аудиогид</button>
+      {d.audioguide && <button class="btn ghost" id="listenBtn" type="button">🎧 Слушать аудиогид</button>}
     </div>
   </div>
 </header>
@@ -181,7 +181,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   </div>
 </section>)}<Fragment set:html={posle('video')} />
 
-<section class="block" id="audioguide"></section><Fragment set:html={posle('audioguide')} />
+{d.audioguide && <section class="block" id="audioguide"></section>}<Fragment set:html={posle('audioguide')} />
 
 <section class="block" id="story">
   <div class="wrap">
@@ -302,9 +302,9 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <script is:inline src="../../assets/museum-return.js" data-museum={d.muzei} data-day={d.key}></script>
 <script is:inline defer src="../../assets/analytics.js"></script>
 
-<script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(d.audioguide, null, 2).replace(/</g, '\\u003c')};`}></script>
+{d.audioguide && <script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(d.audioguide, null, 2).replace(/</g, '\\u003c')};`}></script>}
 {d.video && <script is:inline src="../../assets/museum-video.js"></script>}
-<script is:inline src="../../assets/museum-audioguide.js"></script>
+{d.audioguide && <script is:inline src="../../assets/museum-audioguide.js"></script>}
 <script type="application/json" data-proof is:inline set:html={`\n${JSON.stringify(d.proof, null, 1)}\n`}></script>
 <script is:inline src="../../assets/museum-proof.js"></script>
 </body>
