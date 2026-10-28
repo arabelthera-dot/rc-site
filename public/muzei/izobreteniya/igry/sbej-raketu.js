@@ -123,7 +123,7 @@ function igraRuka(root) {
     napisat('Противоракета в полёте…', 'Теперь решает точность: цель и противоракета должны встретиться.');
   });
   function sgorel() {
-    s.rezhim = 'avariya'; s.tAv = 0; avaria.hidden = false; restart.disabled = true; pusk.disabled = true;
+    s.rezhim = 'avariya'; s.avariyaV = -1; s.tAv = 0; avaria.hidden = false; restart.disabled = true; pusk.disabled = true;
     stoyka.innerHTML = '';
     var plohoy = Math.floor(Math.random() * 6);
     for (var i = 0; i < 6; i++) {
