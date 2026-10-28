@@ -823,6 +823,38 @@
         "local": "muzei/izobreteniya/video/day-16jan-soyuz45-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/18jan-odner": {
+      "title": "История в 62 секунды",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: арифмометр Однера № 16981 (Глазовский краеведческий музей); арифмометр Тома де Кольмара (Государственный Эрмитаж); модель зубчатого колеса конструкции В. Т. Однера (Политехнический музей); арифмометр Однера № 18539 (Белогорский краеведческий музей); арифмометр «Однер» 1897 года (Бодайбинский городской краеведческий музей); арифмометр Triumphator (Бердский историко-художественный музей); арифмометр «Феликс» (Ставропольский музей-заповедник); «Феликс» и «Феликс-М» (Рыбинский музей-заповедник). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/18jan-odner/day-18jan-odner.mp4",
+        "local": "muzei/izobreteniya/video/day-18jan-odner.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 62.1,
+        "mb": 16.4
+      },
+      "vertical": {
+        "file": "izobreteniya/18jan-odner/day-18jan-odner-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-18jan-odner-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 62.1,
+        "mb": 13.8
+      },
+      "poster": {
+        "file": "izobreteniya/18jan-odner/day-18jan-odner-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-18jan-odner-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/18jan-odner/day-18jan-odner-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-18jan-odner-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
