@@ -5,9 +5,12 @@
 // Состояние — localStorage 'rc-slabovid'; применяется в <head> до отрисовки (headScript), без мигания.
 export const SLABOVID_KEY = 'rc-slabovid';
 
+// Адрес с ?slabovid=0 / ?slabovid=1 выключает/включает режим и запоминает (ссылка «вернуть обычный вид»).
 // Режим включён — rc-slabovid.css пишется в <head> обычной (блокирующей) ссылкой: первая отрисовка уже в режиме.
 export const slabovidHeadJs = (base = '/') =>
-  `try{var h=document.documentElement,z=localStorage.getItem('rc-sv-size'),c=localStorage.getItem('rc-sv-color');`
+  `try{var h=document.documentElement,q=/[?&]slabovid=([01])/.exec(location.search);`
+  + `if(q)localStorage.setItem('${SLABOVID_KEY}',q[1]);`
+  + `var z=localStorage.getItem('rc-sv-size'),c=localStorage.getItem('rc-sv-color');`
   + `if(z)h.setAttribute('data-rc-sv-size',z);if(c)h.setAttribute('data-rc-sv-color',c);`
   + `if(localStorage.getItem('${SLABOVID_KEY}')==='1'){h.classList.add('rc-slabovid');`
   + `document.write('<link rel="stylesheet" href="${base}assets/rc-slabovid.css">')}}catch(e){}`;
