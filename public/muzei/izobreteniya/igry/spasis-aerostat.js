@@ -88,7 +88,7 @@ function igraRuka(root) {
   function shag(dt){if(st.faza==='final')return;st.t+=dt;
     if(st.faza==='korzina'){if(st.t>OGON)proigrysh('Горящая оболочка рухнула на корзину.');return;}
     if(st.faza==='padenie'){st.h-=V0*dt;st.x+=st.veter*0.3*dt;if(st.h<=0){st.h=0;proigrysh('Кольцо не дёрнуто вовремя — удар о землю.');}return;}
-    if(st.faza==='kupol'){st.h-=V1*dt;st.x+=(st.veter*(1+st.h/100)-st.rul*(7+uroven*4))*dt;
+    if(st.faza==='kupol'){st.h-=V1*dt;st.x+=(st.veter*(1+st.h/100)+st.rul*(7+uroven*4))*dt;
       if(st.h<=0){st.h=0;if(st.x< -12)pobeda();else if(st.x>12)proigrysh('Ветер унёс купол за линию фронта.');else proigrysh('Ты сел на нейтральную полосу, под огонь.');}}}
   function risui(){var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#2a3f63');g.addColorStop(1,'#a9b9c9');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
     var cy=H*0.42,k=H*0.5/80,zy=cy+st.h*k,cx=W/2,mx=W/90,px=cx+st.x*mx;
