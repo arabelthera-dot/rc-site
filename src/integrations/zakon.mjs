@@ -20,6 +20,7 @@ export default function zakon() {
         }
         const r = sverkaReestrov();
         for (const s of r.starye) logger.warn(s);
+        for (const s of r.zhdut) logger.warn(`ждёт решения Сергея (r380), сверка выключена: ${s.gde}: «${s.imya}» — ${s.reestr} (найдено «${s.variant}»)`);
         if (r.vozmozhnye.length) logger.warn(`реестры: возможных совпадений ${r.vozmozhnye.length} (однофамильцы, короткие названия) — список: node scripts/prava.mjs --zakon --vse`);
         if (r.sovpadeniya.length) {
           for (const s of r.sovpadeniya) logger.error(`${s.gde}: «${s.imya}» — ${s.reestr} (найдено «${s.variant}»)`);
