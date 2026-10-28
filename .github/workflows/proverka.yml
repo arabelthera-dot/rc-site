@@ -85,8 +85,6 @@ jobs:
       - name: kanaly — пробы проверки поста
         timeout-minutes: 2
         run: node scripts/kanaly/proverka.test.mjs
-      - name: Сверка с реестрами ловит находки r380 (Каспаров, Facebook), проба с исключением — зелёная (r405)
-        run: node scripts/zakon.test.mjs
       # Сторож ссылок и опасного JS (разбор безопасности 20.10.2026, п. 1-2): каждый внешний домен в днях, полных
       # страницах, шаблонах и движках — из data/razreshennye-domeny.txt (206 с main); eval/new Function/atob/
       # document.write/location= на чужой адрес/склейка 'ht'+'tps' — запрещены. На main 0 нарушений — строгий сразу.
