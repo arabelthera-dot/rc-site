@@ -20,8 +20,11 @@ const udar = z.object({ summary: str, find: z.boolean().optional(), tag: str.opt
 // Норма фактов дня — museum-inventions п.6 (Р101): «4–5 фактов»; меньше — сборка красная (только adres: den).
 export const NORMA_FAKTOV = 4;
 // Блоки шаблона по порядку; к ним цепляются уникальные разделы дня (razdely.posle), 1:1 из старой страницы.
-export const BLOKI = ['daynav', 'dokument', 'video', 'audioguide', 'story', 'fakty', 'igra', 'pervenstvo', 'quiz', 'result', 'figures', 'sources', 'calendar', 'kuda-dalshe'];
-const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str });
+// Порядок — как у эталона 13 янв. (src/data/full-pages/izobreteniya/01-13.html): кадры (#kadry) — сразу после игры (Р302).
+export const BLOKI = ['daynav', 'dokument', 'video', 'audioguide', 'story', 'fakty', 'igra', 'kadry', 'pervenstvo', 'quiz', 'result', 'sources', 'calendar', 'kuda-dalshe'];
+const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional() });
+// Кадр дня (блок #kadry, как у 13 янв.): размеры — со старой страницы; klass: portret — портретный кадр уже (общее правило izobreteniya-den.css).
+const kadr = kartinka.extend({ width: z.number().int().positive().optional(), height: z.number().int().positive().optional(), klass: z.literal('portret').optional() });
 
 // Блок фактов: id секции (по умолчанию fakty), необязательная разметка после списка (dop, напр. фото экспоната)
 // и место — после какого блока шаблона (posle; нет — на своём месте, после story). Блоков может быть несколько (Р302, 18 янв.).
@@ -42,24 +45,16 @@ export const skhema = z.object({
   head: z.object({ title: str, description: str, canonical: str, sobytie: str.optional(), god: z.string().regex(/^\d{3,4}$/).optional(),
     og: z.object({ type: str, site_name: str, title: str, description: str, url: str, image: str.optional() }),
     ld: z.record(z.string(), z.unknown()) }),
-  // Свой CSS дня (01-17…: public/assets/<имя>.css вместо общего izobreteniya-den.css, как на старой странице); нет — общий.
-  // Можно одной строкой (18 янв.) — то же, что список из одного файла.
-  css: z.union([z.string().regex(/^[\w-]+$/).transform((c) => [c]), z.array(z.string().regex(/^[\w-]+$/)).min(1)]).optional(),
-  // Разметка обложки старой страницы (01-17…): style у <figure>, id у сцены, без decoding, подпись без credit — необязательно.
+  // Вид дня — один для всех (Р302): fonts.css, izobreteniya-den.css, fakty-dnya.css, igra-pravila.css и css игры (igra.css); своего CSS у дня нет.
+  // Обложка — разметкой 13 янв. (<figure class="hero-fig" id="hero"><div class="hero-scene fit-full">); на адресе den обязательна.
+  // celikom — кадр целиком, без обрезки; klass — доп. класс сцены перед fit-full (portret — портрет без растяжения).
   oblozhka: kartinka.extend({ width: z.number().int().positive(), height: z.number().int().positive(), hint: str,
-    fit_full: z.boolean().default(false), celikom: z.boolean().default(false),
-    credit: str.optional(), stil_figury: str.optional(), id_sceny: str.optional(), decoding: z.boolean().default(true),
-    // id и style обложки под именами 18 янв. (<figure style="margin:0">, <div id="hero">) — то же, что id_sceny/stil_figury.
-    id: str.optional(), stil: str.optional(),
-    // Доп. класс обложки между hero-scene и fit-full, как на старой странице (20 янв.: «hero-scene portret fit-full»); нет — не пишется.
-    klass: z.string().regex(/^[\w -]+$/).optional() }).optional(),
+    celikom: z.boolean().default(false), klass: z.literal('portret').optional() }).optional(),
   kroshka: str,
   lead: z.object({ data: str, privyazka: str, kto: str, h1: str, hook: str }),
   stamp: z.array(z.object({ v: str, k: str })),
   daynav: z.array(z.object({ id: str, label: str })),
-  // Секции, которых у дня нет, — не пишутся: нет oblozhka/video/fakty — нет блока. Документ первенства — блок после
-  // меню дня (verh), пустой блок после подвала (podval, как у части старых страниц) или нет (net).
-  dokument: z.enum(['verh', 'podval', 'net']).default('verh'),
+  // Секции, которых у дня нет, — не пишутся: нет video — нет блока. Документ первенства (#dokument) — всегда после меню дня, как у 13 янв.
   video: z.object({ h2: str, klyuch: str, format: str, pole: str, suffix: str, badge: str, intro: str, poster: str, mp4: str, note: str }).optional(),
   // История — ударами (udary) или простыми абзацами разметкой 1:1 (abzacy, у старых страниц без ударов); intro необязателен.
   story: z.object({ kicker: str, h2: str, intro: str.optional(), udary: z.array(udar).min(1).optional(), abzacy: z.array(str).min(1).optional() })
@@ -67,19 +62,17 @@ export const skhema = z.object({
   fakty: z.union([faktyBlok, z.array(faktyBlok).min(1)]).optional(),
   // Уникальные разделы дня (труба, разбор, мировой контекст…): готовая разметка 1:1 после блока posle (из BLOKI);
   // несколько с одним posle — подряд, в порядке карточки. Layout их не знает поимённо — новый день его не правит.
-  // Блок шаблона со своей разметкой старой страницы (01-17…: без inline-стилей, классы своего CSS) — 1:1 вместо
-  // вёрстки шаблона; тогда поля блока (pervenstvo, result; у quiz — всё, кроме ball/voprosy) не нужны.
-  svoi: z.object({ pervenstvo: str.optional(), quiz: str.optional(), result: str.optional(), calendar: str.optional() }).strict().optional(),
+  // Блоки шаблона (pervenstvo, quiz, result, calendar) своей разметки не имеют — их рисует шаблон из полей карточки (Р302).
   razdely: z.array(z.object({ posle: z.enum(BLOKI), html: str })).default([]),
   // dop — второй скрипт дня (развилка, чат…) public/muzei/<музей>/igry/<имя>-dop.js, после викторины.
   igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]) }),
-  pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }).optional(),
-  quiz: z.object({ kicker: str.optional(), h2: str.optional(), intro: str.optional(), noscript: str.optional(), ball: z.number().int().positive().default(10),
+  pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }),
+  quiz: z.object({ kicker: str, h2: str, intro: str, noscript: str, ball: z.number().int().positive().default(10),
     voprosy: z.array(z.object({ q: str, o: z.array(str).min(2), a: z.number().int().min(0), e: str })).min(1) }),
-  result: z.object({ kicker: str.optional(), h2: str, intro: str, zvanie: str, note: str }).optional(),
+  result: z.object({ kicker: str.optional(), h2: str, intro: str, zvanie: str, note: str }),
   // Подписи календаря; нет — как у 16 янв. (без кикера, «Календарь изобретений»).
   kalendar: z.object({ kicker: str.optional(), h2: str, intro: str }).optional(),
-  figures: z.array(kartinka).default([]),
+  figures: z.array(kadr).default([]),
   // Строка не по образцу «название: пояснение» — { html } (содержимое <li> как есть).
   sources: z.array(istochnik).min(1),
   kuda: z.array(z.object({ lbl: str, href: str, title: str, hook: str, main: z.boolean() })),
@@ -100,21 +93,19 @@ export const skhema = z.object({
     ctx.addIssue({ code: 'custom', path: ['igra', 'imya'], message: `игры ${d.muzei}/${d.igra.imya} нет (html в src/data/igry, js в public/muzei/<музей>/igry)` });
   if (d.igra.dop && !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.imya}-dop.js`))
     ctx.addIssue({ code: 'custom', path: ['igra', 'dop'], message: `нет public/muzei/${d.muzei}/igry/${d.igra.imya}-dop.js` });
-  (d.css ?? []).forEach((c, i) => { if (!fs.existsSync(`public/assets/${c}.css`)) ctx.addIssue({ code: 'custom', path: ['css', i], message: `нет public/assets/${c}.css` }); });
   d.igra.css.forEach((c, i) => { if (!fs.existsSync(`public/assets/${c}.css`)) ctx.addIssue({ code: 'custom', path: ['igra', 'css', i], message: `нет public/assets/${c}.css` }); });
   // ЗАМОК (Р286): на обычном адресе у дня не меньше NORMA_FAKTOV фактов, у каждого — отрывок, страница, ссылка, пометка.
   if (d.adres === 'den') {
     if (!d.head.sobytie || !d.head.god) ctx.addIssue({ code: 'custom', path: ['head'], message: 'на адресе den нужны head.sobytie и head.god (заголовок вкладки)' });
+    // Вид 13 янв. (Р302): обложка и кадры обязательны.
+    if (!d.oblozhka) ctx.addIssue({ code: 'custom', path: ['oblozhka'], message: 'на адресе den нужна обложка (oblozhka), как у 13 янв.' });
+    if (!d.figures.length) ctx.addIssue({ code: 'custom', path: ['figures'], message: 'на адресе den нужен хотя бы один кадр (figures → блок #kadry), как у 13 янв.' });
     const udary = [d.fakty ?? []].flat().flatMap((b) => b.udary);
     if (udary.length < NORMA_FAKTOV)
       ctx.addIssue({ code: 'custom', path: ['fakty', 'udary'], message: `ЗАМОК: фактов ${udary.length}, нужно не меньше ${NORMA_FAKTOV} (museum-inventions п.6, Р101: «4–5 фактов»)` });
     udary.forEach((u, i) => { const net = ['otryvok', 'stranica', 'href', 'pometka'].filter((k) => !u[k]);
       if (net.length) ctx.addIssue({ code: 'custom', path: ['fakty', 'udary', i], message: `ЗАМОК: у факта «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» нет: ${net.join(', ')} (отрывок, страница, ссылка, пометка: ${POMETKI.join(' / ')})` }); });
   }
-  // Без своей разметки (svoi) блок шаблона должен быть заполнен.
-  if (!d.svoi?.pervenstvo && !d.pervenstvo) ctx.addIssue({ code: 'custom', path: ['pervenstvo'], message: 'нет pervenstvo (или svoi.pervenstvo)' });
-  if (!d.svoi?.result && !d.result) ctx.addIssue({ code: 'custom', path: ['result'], message: 'нет result (или svoi.result)' });
-  if (!d.svoi?.quiz) ['kicker', 'h2', 'intro', 'noscript'].filter((k) => !d.quiz[k]).forEach((k) => ctx.addIssue({ code: 'custom', path: ['quiz', k], message: 'нет поля (или svoi.quiz)' }));
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) ctx.addIssue({ code: 'custom', path: ['quiz', 'voprosy', i, 'a'], message: 'номер ответа вне списка' }); });
 });
 
@@ -208,8 +199,6 @@ export function razmetkaRiska(d) {
     .forEach(([t, p], i) => dob('рассказ', i + 1, t, p));
   if (d.lead) dob('заголовок', 0, `${d.lead.h1}. ${d.lead.hook}`);
   if (d.pervenstvo) dob('граница первенства', 0, d.pervenstvo.granica);
-  // Своя разметка блока (01-17…) — вместо полей шаблона, читается целиком.
-  Object.entries(d.svoi ?? {}).forEach(([k, html]) => dob('свой блок', 0, html, undefined, k));
   (d.razdely ?? []).forEach((r, i) => dob('доп. раздел', i + 1, r.html));
   (d.audioguide?.transcript ?? []).forEach((t, i) => dob('аудиогид', i + 1, t));
   (d.quiz?.voprosy ?? []).forEach((v, i) => dob('викторина', i + 1, `${v.q} ${v.e}`));
