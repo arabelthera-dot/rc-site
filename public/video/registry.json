@@ -951,6 +951,38 @@
         "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "izobreteniya/23jan-umov": {
+      "title": "История в 50 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: два портрета Н. А. Умова (Государственный центральный музей современной истории России); Физический институт Московского университета, 1936 (Музей Москвы). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov.mp4",
+        "local": "muzei/izobreteniya/video/day-23jan-umov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 49.8,
+        "mb": 10.6
+      },
+      "vertical": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-23jan-umov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 49.8,
+        "mb": 8.5
+      },
+      "poster": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-23jan-umov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-23jan-umov-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
