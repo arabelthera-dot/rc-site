@@ -97,6 +97,7 @@ if (!dni.length || dni.length < kartochki.length) {
   process.exit(1);
 }
 console.log(`vid-dnya: карточек с adres: den — ${kartochki.length} (${kartochki.map((d) => d.key).join(', ')}); шаблонных страниц — ${dni.length} (${dni.join(', ')})`);
+const MEDIA = ['#video', '#audioguide'];
 const oshibki = [];
 for (const k of dni) {
   const r = razobrano.get(k);
@@ -108,9 +109,14 @@ for (const k of dni) {
       `${lishnie.length ? `; лишнее: ${lishnie.join(', ')}` : ''}${net.length ? `; нет: ${net.join(', ')}` : ''}`);
   }
   const bl = r.bloki.filter((b) => nabor13.has(b));
-  if (bl.join(' ') !== bloki13.join(' ')) {
-    const net = bloki13.filter((b) => !bl.includes(b));
-    chto.push(`блоки: ${net.length ? `нет ${net.join(', ')}; ` : ''}порядок ${bl.join(' ')} — нужно ${bloki13.join(' ')}`);
+  // Ролика и аудиогида может не быть, пока их не сделали (недоделка дня, Р232; замок медиа — media-dnya): не ошибка вида,
+  // но строка в выводе. Остальные блоки и порядок — строго как у 13-го.
+  const bezMedia = MEDIA.filter((b) => bloki13.includes(b) && !bl.includes(b));
+  if (bezMedia.length) console.log(`vid-dnya: ${k}: нет ${bezMedia.join(', ')} — недоделка (ролик/аудиогид), вид не нарушен`);
+  const nuzhno = bloki13.filter((b) => !bezMedia.includes(b));
+  if (bl.join(' ') !== nuzhno.join(' ')) {
+    const net = nuzhno.filter((b) => !bl.includes(b));
+    chto.push(`блоки: ${net.length ? `нет ${net.join(', ')}; ` : ''}порядок ${bl.join(' ')} — нужно ${nuzhno.join(' ')}`);
   }
   const chuzhie = vTele(r.stili).filter((x) => !telo13.has(x));
   if (chuzhie.length) chto.push(`в <body> стили, которых нет у 13-го: ${[...new Set(chuzhie)].join(', ')}`);
