@@ -249,7 +249,7 @@ razdely:
 igra:
   imya: spasi-mysh
   css:
-    - lunin-page
+    - igra-spasi-mysh
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно Лунин сделал первым
