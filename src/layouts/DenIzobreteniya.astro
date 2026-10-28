@@ -85,7 +85,7 @@ const kal = d.kalendar ?? { h2: 'Календарь изобретений', int
 const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
 ---
 <!DOCTYPE html>
-<html lang="ru" data-museum={d.muzei}>
+<html lang="ru" data-museum={d.muzei} data-shablon="den-izobreteniya">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

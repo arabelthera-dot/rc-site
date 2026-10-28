@@ -1,9 +1,12 @@
 #!/usr/bin/env node
-// Сторож вида дня музея изобретений (Р303, r370): каждая собранная страница dist/muzei/izobreteniya/den/ММ-ДД/index.html
-// (кроме самого эталона 01-13 и копий staraya) сверяется с собранным эталоном 13 января:
+// Сторож вида дня музея изобретений (Р303, r370): каждая собранная страница dist/muzei/izobreteniya/den/ММ-ДД/index.html,
+// которую нарисовал шаблон src/layouts/DenIzobreteniya.astro (метка шаблона <html data-shablon="den-izobreteniya">),
+// сверяется с собранным эталоном 13 января. Старые HTML и анкеты (без метки) не проверяются — их перевод на шаблон
+// отдельной задачей. Шаблонных страниц нет или меньше, чем карточек с adres: den, — тоже ошибка (не стать молча зелёным).
 //  (а) упорядоченный набор общих стилей — встроенный базовый <style> 13-го ≡ izobreteniya-den.css; css игры дня
-//      (igra.css карточки src/content/dni-shablon; у 13-го — k278-kilometr) и общесайтовые файлы конвейера (rc-*.css,
+//      (только файл igra-<igra.imya>.css карточки; у 13-го — k278-kilometr) и общесайтовые файлы конвейера (rc-*.css,
 //      <style data-…>) не сравниваются; всё прочее должно совпасть в том же порядке — лишний css (свой css дня) — ошибка;
+//      в <body> нет ни одного <link rel=stylesheet>/<style>, которого нет в <body> у 13-го (разделы дня не тащат свой css);
 //  (б) порядок главных блоков: блоки верхнего уровня страницы 13-го (дети <body>/<main>), у дня отфильтрованные по этому
 //      списку, — те же, все и в том же порядке.
 // Списки стилей и блоков берутся из собранного 01-13, не из кода. Исключений нет. Расхождение — exit 1.
@@ -27,18 +30,20 @@ const attr = (tag, a) => (tag.match(new RegExp(`\\s${a}\\s*=\\s*(?:"([^"]*)"|'([
 // Разбор: стили по порядку и элементы верхнего уровня (дети body, а если конвейер обернул в <main> — дети main).
 function razbor(html) {
   const stili = [], bloki = [];
+  let shablon;
   const re = /<!--[\s\S]*?-->|<(script|style)\b([^>]*)>([\s\S]*?)<\/\1\s*>|<\/?([a-zA-Z][\w-]*)\b[^>]*>/g;
   const stek = [];
   let m;
   while ((m = re.exec(html))) {
     if (m[0].startsWith('<!--')) continue;
     if (m[1]) {
-      if (m[1].toLowerCase() === 'style') stili.push({ style: m[2].trim(), css: m[3] });
+      if (m[1].toLowerCase() === 'style') stili.push({ style: m[2].trim(), css: m[3], body: stek.includes('body') });
       continue;
     }
     const tag = m[4].toLowerCase(), close = m[0].startsWith('</');
     if (close) { const i = stek.lastIndexOf(tag); if (i >= 0) stek.length = i; continue; }
-    if (tag === 'link' && /rel\s*=\s*["']?stylesheet/i.test(m[0])) stili.push({ href: attr(m[0], 'href') });
+    if (tag === 'link' && /rel\s*=\s*["']?stylesheet/i.test(m[0])) stili.push({ href: attr(m[0], 'href'), body: stek.includes('body') });
+    if (tag === 'html') shablon = attr(m[0], 'data-shablon');
     const roditel = stek.at(-1);
     if ((roditel === 'body' || roditel === 'main') && tag !== 'main' && !['noscript', 'template'].includes(tag)) {
       // Ключ блока: у <section> — id, у прочих — тег и первый класс (figure.hero-fig, nav.daynav, footer).
@@ -49,7 +54,7 @@ function razbor(html) {
     }
     if (!VOID.has(tag) && !m[0].endsWith('/>')) stek.push(tag);
   }
-  return { stili, bloki };
+  return { stili, bloki, shablon };
 }
 
 // Общие стили страницы: имена файлов без ?v=, базовый <style> — как izobreteniya-den.css (если совпадает с 13-м),
@@ -66,6 +71,8 @@ function obshchieStili(stili, baza13, igra) {
   return out;
 }
 
+// Стиль в <body> — ключом: файл без ?v= или <style> с его атрибутами.
+const vTele = (stili) => stili.filter((s) => s.body).map((s) => ('href' in s ? path.basename(String(s.href ?? '').split(/[?#]/)[0]) : `<style ${s.style}>`));
 const read = (k) => fs.readFileSync(path.join(DEN, k, 'index.html'), 'utf8');
 if (!fs.existsSync(path.join(DEN, ETALON, 'index.html'))) { console.error(`vid-dnya: нет собранного эталона ${DEN}/${ETALON}/index.html — сначала npm run build`); process.exit(1); }
 const e = razbor(read(ETALON));
@@ -73,19 +80,25 @@ const baza13 = norm(e.stili.find((s) => s.style === '')?.css ?? '');
 const stili13 = obshchieStili(e.stili, null, IGRA_13);
 const bloki13 = e.bloki;
 const nabor13 = new Set(bloki13);
+const telo13 = new Set(vTele(e.stili));
 if (!stili13.includes(BAZA) || bloki13.length < 5) { console.error('vid-dnya: эталон 01-13 разобрать не удалось (нет базового <style> или блоков)'); process.exit(1); }
 
-const igraDnya = (k) => {
-  const f = path.join(KARTOCHKI, `${k}.yaml`);
-  if (!fs.existsSync(f)) return [];
-  const d = YAML.parse(fs.readFileSync(f, 'utf8'));
-  return d.adres === 'den' ? (d.igra?.css ?? []).map((c) => `${c}.css`) : [];
-};
+// Карточки шаблона на живом адресе (adres: den) и css их игры: из сравнения выпадает только igra-<igra.imya>.css.
+const kartochki = fs.readdirSync(KARTOCHKI).filter((f) => f.endsWith('.yaml')).map((f) => YAML.parse(fs.readFileSync(path.join(KARTOCHKI, f), 'utf8'))).filter((d) => d.adres === 'den');
+const igraDnya = (k) => { const d = kartochki.find((x) => x.key === k); return d ? [`igra-${d.igra.imya}.css`] : []; };
 
-const dni = fs.readdirSync(DEN).filter((k) => /^\d\d-\d\d$/.test(k) && k !== ETALON && fs.existsSync(path.join(DEN, k, 'index.html'))).sort();
+const vse = fs.readdirSync(DEN).filter((k) => /^\d\d-\d\d$/.test(k) && k !== ETALON && fs.existsSync(path.join(DEN, k, 'index.html'))).sort();
+const razobrano = new Map(vse.map((k) => [k, razbor(read(k))]));
+const dni = vse.filter((k) => razobrano.get(k).shablon === 'den-izobreteniya');
+if (!dni.length || dni.length < kartochki.length) {
+  const net = kartochki.map((d) => d.key).filter((k) => !dni.includes(k));
+  console.error(`vid-dnya: шаблонных страниц (data-shablon="den-izobreteniya") в ${DEN} — ${dni.length}, а карточек с adres: den — ${kartochki.length}` +
+    `${net.length ? `; нет страниц: ${net.join(', ')}` : ''}. Шаблон не ставит метку или страницы не собрались.`);
+  process.exit(1);
+}
 const oshibki = [];
 for (const k of dni) {
-  const r = razbor(read(k));
+  const r = razobrano.get(k);
   const st = obshchieStili(r.stili, baza13, igraDnya(k));
   const chto = [];
   if (st.join(' → ') !== stili13.join(' → ')) {
@@ -98,6 +111,8 @@ for (const k of dni) {
     const net = bloki13.filter((b) => !bl.includes(b));
     chto.push(`блоки: ${net.length ? `нет ${net.join(', ')}; ` : ''}порядок ${bl.join(' ')} — нужно ${bloki13.join(' ')}`);
   }
+  const chuzhie = vTele(r.stili).filter((x) => !telo13.has(x));
+  if (chuzhie.length) chto.push(`в <body> стили, которых нет у 13-го: ${[...new Set(chuzhie)].join(', ')}`);
   if (chto.length) oshibki.push(`  ${k}: ${chto.join('\n         ')}`);
 }
 console.log(`vid-dnya: эталон 01-13 — стили ${stili13.join(' → ')}; блоки ${bloki13.join(' ')}`);
@@ -105,4 +120,4 @@ if (oshibki.length) {
   console.error(`vid-dnya: не в виде 13 января — ${oshibki.length} из ${dni.length} дней:\n${oshibki.join('\n')}`);
   process.exit(1);
 }
-console.log(`vid-dnya: все ${dni.length} дней в виде 13 января`);
+console.log(`vid-dnya: все ${dni.length} шаблонных дней (${dni.join(', ')}) в виде 13 января; старые HTML и анкеты (${vse.length - dni.length}) не проверяются`);
