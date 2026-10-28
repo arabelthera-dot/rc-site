@@ -98,6 +98,13 @@ jobs:
       - name: innerhtml-opis — новые небезопасные вставки HTML
         timeout-minutes: 1
         run: node scripts/innerhtml-opis.mjs
+      # Стоп-лист иноагентов и запрещённых организаций (Р316, Р318 — Сергей 28.10.2026: «просто их нет в нашем музее»):
+      # data/stop-list-inoagenty.txt (реестры Минюста), пометка «иноагент» не спасает. Сначала пробы, потом исходники
+      # src/, public/, data/tablicy; найдено — красная с файлом и строкой. Однофамильцы — data/stop-list-lozhnye.txt.
+      # Секунды. Откат — удалить этот шаг и «stop-list — dist».
+      - name: stop-list — исходники без иноагентов
+        timeout-minutes: 2
+        run: node scripts/stop-list.mjs --proba && node scripts/stop-list.mjs --ishodniki
       # Г20: проверочная сборка включает арабскую пробу /ar/ (RC_PROBA_RTL=1) — её ссылки, разметка и вид проверяются
       # в каждой заявке. На живой сайт проба не попадает: deploy.yml собирает без этой переменной.
       - run: npm run build
@@ -169,6 +176,10 @@ jobs:
       # из собранного 01-13. Исключений нет. Откат — удалить этот шаг и tests/vid-dnya.mjs.
       - name: vid-dnya — дни изобретений в виде 13 января
         run: node tests/vid-dnya.mjs dist
+      # Тот же стоп-лист по тексту собранного сайта dist/ (страницы, ленты, sitemap, js) — Р318.
+      - name: stop-list — dist без иноагентов
+        timeout-minutes: 3
+        run: node scripts/stop-list.mjs dist
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2

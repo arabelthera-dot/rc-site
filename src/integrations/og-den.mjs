@@ -196,7 +196,7 @@ export default function ogDen() {
           if (!fs.existsSync(html)) continue;
           const src = fs.readFileSync(html, 'utf8');
           const abs = new URL(`${base}${rel}`, site).href;
-          // Мета-тег в любом порядке атрибутов (у старых страниц бывает content раньше property).
+          // Тег <meta> в любом порядке атрибутов (у старых страниц бывает content раньше property).
           const metaRe = (n) => new RegExp(`<meta\\b[^>]*\\b(?:property|name)=["']${n}["'][^>]*>\\s*`, 'gi');
           const og = /content=["']([^"']*)["']/i.exec(src.match(metaRe('og:image'))?.[0] ?? '')?.[1];
           // Своя картинка у полной старой страницы — не трогаем и карточку не рисуем.

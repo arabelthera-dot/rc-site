@@ -112,32 +112,44 @@ export function zagruzit(fayl = FAYL) {
   });
 }
 
-/** Однофамильцы: «вариант | слова рядом (в той же строке, ±120 знаков) | кто это и кто сверил». */
+/** Однофамильцы: «вариант | слова рядом (в той же строке, ±120 знаков) или @часть пути файла | кто это и кто сверил». */
 export function lozhnye(fayl = LOZHNYE) {
   if (!fs.existsSync(fayl)) return [];
   return fs.readFileSync(fayl, 'utf8').split('\n').filter((l) => l.trim() && !l.startsWith('#'))
-    .map((l) => { const [variant, ryadom, kto] = l.split(' | '); return { variant: variant.trim(), ryadom: norm(ryadom), kto }; });
+    .map((l) => { const [variant, ryadom, kto] = l.split(' | ').map((x) => x.trim());
+      return { variant, ...(ryadom.startsWith('@') ? { put: ryadom.slice(1) } : { ryadom: norm(ryadom) }), kto }; });
 }
 
 const SUSHCH = { laquo: '«', raquo: '»', quot: '"', amp: '&', nbsp: ' ', bdquo: '„', ldquo: '“', rdquo: '”', mdash: '—', ndash: '–', apos: "'" };
 const ATR = /\b(?:alt|title|content|aria-label|placeholder|data-caption|data-title)\s*=\s*("[^"]*"|'[^']*')/gi;
-/** Видимый текст строки: теги — пробелом (их подписи alt/title/content — остаются), сущности — знаками. */
+// Строчные теги внутри фразы: «Иван <b>Павлов</b>» — одна фраза; блочные (<li>, <p>, <meta>) и подписи — раздел « | ».
+const STROCHNYE = /^<\/?(a|b|i|u|s|em|strong|span|small|mark|abbr|cite|q|sup|sub|nobr|wbr)\b/i;
+/** Видимый текст строки: теги — пробелом или разделом (их подписи alt/title/content — остаются), сущности — знаками. */
 export const vidimyy = (s) => String(s)
-  .replace(/<[^>]*>/g, (tag) => ' ' + [...tag.matchAll(ATR)].map((m) => m[1].slice(1, -1)).join(' ') + ' ')
+  .replace(/<[^>]*>/g, (tag) => {
+    const atr = [...tag.matchAll(ATR)].map((m) => m[1].slice(1, -1));
+    return atr.length ? ' | ' + atr.join(' | ') + ' | ' : STROCHNYE.test(tag) ? ' ' : ' | ';
+  })
   .replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => (e[0] === '#' ? String.fromCodePoint(e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : +e.slice(1)) : SUSHCH[e.toLowerCase()] ?? m))
   .replace(/\\u([0-9a-f]{4})/gi, (m, h) => String.fromCharCode(parseInt(h, 16)));
+
+// Фраза не перескакивает через знаки препинания: «Иван Шишкин, Михаил Нестеров» — не «Шишкин Михаил»,
+// "@type":"Article","headline":"19 января" — не «Article 19», «юрий смирнов, александр…» — не «Смирнов Александр».
+const RAZDEL = /[,;:!?()[\]{}«»„“”"|/·—–=<>]+|\.(?=\s|$)/u;
+const kuski = (v) => v.split(RAZDEL).map(norm).filter(Boolean).join(' ¦ ');
 
 /** Проверка текстов [{ gde, syroy }]: [{ gde, stroka, vid, imya, variant, naydeno, kusok }]. */
 export function proverit(tx, spisok = zagruzit(), lozh = lozhnye()) {
   const fayly = tx.map((t) => {
-    const stroki = String(t.syroy).split('\n').map((x) => { const v = vidimyy(x); return { v, n: norm(v) }; });
-    return { gde: t.gde, stroki, slova: new Set(stroki.flatMap((s) => s.n.split(' '))) };
+    const stroki = String(t.syroy).split('\n').map((x) => { const v = vidimyy(x); return { v, n: kuski(v) }; });
+    const slova = new Set(stroki.flatMap((s) => s.n.split(' ')));
+    return { gde: t.gde, stroki, slova, poryadok: [...slova].sort() };
   });
-  // Предотбор: варианты, все слова которых (или их основы) есть в корпусе.
-  const slovar = [...new Set(fayly.flatMap((f) => [...f.slova]))].sort();
-  const estPrefiks = (p) => { let lo = 0, hi = slovar.length; while (lo < hi) { const m = (lo + hi) >> 1; if (slovar[m] < p) lo = m + 1; else hi = m; } return !!slovar[lo]?.startsWith(p); };
-  const est = (w, flex) => (flex && w.length > 1 ? osnovy(w).some(estPrefiks) : estPrefiks(w));
-  const vFayle = (f, w, flex) => (flex && w.length > 1 ? [...f.slova].some((x) => osnovy(w).some((o) => x.startsWith(o))) : f.slova.has(w));
+  // Предотбор: варианты, все слова которых (или их основы) есть в корпусе, затем — в файле (двоичный поиск по основе).
+  const slovar = [...new Set(fayly.flatMap((f) => f.poryadok))].sort();
+  const estPrefiks = (p, sp = slovar) => { let lo = 0, hi = sp.length; while (lo < hi) { const m = (lo + hi) >> 1; if (sp[m] < p) lo = m + 1; else hi = m; } return !!sp[lo]?.startsWith(p); };
+  const est = (w, flex) => (flex && w.length > 1 ? osnovy(w).some((o) => estPrefiks(o)) : estPrefiks(w));
+  const vFayle = (f, w, flex) => (flex && w.length > 1 ? osnovy(w).some((o) => estPrefiks(o, f.poryadok)) : f.slova.has(w));
   const out = [];
   for (const z of spisok.filter((x) => !x.vid.startsWith('факты'))) for (const v of z.varianty) {
     if (!v.slova.every((w) => est(w, v.flex))) continue;
@@ -149,7 +161,7 @@ export function proverit(tx, spisok = zagruzit(), lozh = lozhnye()) {
           const kusok = txt.slice(Math.max(0, m.index - 60), m.index + m[0].length + 60).replace(/\s+/g, ' ').trim();
           if (z.vid !== 'стоп Р316') {
             const okno = norm(txt.slice(Math.max(0, m.index - 120), m.index + m[0].length + 120));
-            if (lozh.some((l) => l.variant === v.tekst && okno.includes(l.ryadom))) continue;
+            if (lozh.some((l) => l.variant === v.tekst && (l.put ? f.gde.includes(l.put) : okno.includes(l.ryadom)))) continue;
           }
           out.push({ gde: f.gde, stroka: i + 1, vid: z.vid, imya: z.imya, variant: v.tekst, naydeno: m[0], kusok });
         }
@@ -163,8 +175,8 @@ export function proverit(tx, spisok = zagruzit(), lozh = lozhnye()) {
 
 const TEKSTOVYE = /\.(html?|json|md|mdx|ya?ml|astro|m?js|ts|txt|xml|svg|vtt|srt|webmanifest)$/i;
 const MIMO = /(^|\/)(vendor|node_modules|\.git)(\/|$)/;
-// Сам стоп-лист, его однофамильцы и снимки реестров — справочники, на страницу не выводятся.
-const SPRAVOCHNIKI = /(^|\/)(stop-list-inoagenty\.txt|stop-list-lozhnye\.txt|data\/reestry\/)/;
+// Сам стоп-лист, его однофамильцы, снимки реестров и сторож сборки zakon.mjs (жёсткий стоп Р316) — на страницу не выводятся.
+const SPRAVOCHNIKI = /(^|\/)(stop-list-inoagenty\.txt|stop-list-lozhnye\.txt|data\/reestry\/|src\/lib\/zakon\.mjs$)/;
 export function obhod(dir, out = []) {
   if (!fs.existsSync(dir) || MIMO.test(dir)) return out;
   for (const e of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
@@ -214,11 +226,15 @@ function proba() {
     [`<p>Деньги дал ${kav}.</p>`, `нежелательная ${kav}`],
     [`<p>Это ${exTekst} (запрещена в России).</p>`, `экстремистская «${exTekst}» с пометкой`],
     ['<p>Расследование &laquo;Фонда борьбы с коррупцией&raquo;</p>', 'короткое название в сущностях HTML'],
+    [`<p>Об этом рассказал <b>${imya.split(' ')[0]}</b> ${imya.split(' ')[1]}.</p>`, `иноагент «${imya}» через строчный тег <b>`],
   ];
   const zelenye = [
     ['<meta name="description" content="Шахматы: чемпион мира Владимир Крамник">', '<meta> и Крамник'],
     ['<p>«Металлург» Магнитогорск</p><script>if(e.metaKey){import.meta.env}</script>', 'Металлург, metaKey, import.meta'],
     ['<p>Мемориал Ленина в Ульяновске</p>', 'мемориал без кавычек'],
+    [`<li>${imya.split(' ')[0]}</li><li>${imya.split(' ')[1]}ский</li>`, 'соседние пункты списка — не одна фраза'],
+    [`<p>${imya.split(' ')[0]} Петров, ${imya.split(' ')[1]}ский</p>`, 'через запятую — не одна фраза'],
+    ['<script type="application/ld+json">{"@type":"Article","headline":"19 января"}</script>', 'тип Article и дата — не «Article 19»'],
   ];
   let sboev = 0;
   for (const [t, chto] of krasnye) {
