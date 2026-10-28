@@ -4,10 +4,14 @@
 # Сергея в чате; агентам ставить её запрещено (AGENTS.md, п. 5а). Остальные заявки — зелёные сразу.
 # Без фильтра paths: статус нужен на каждой заявке, иначе обязательная проверка висела бы «ожидает».
 # Переименование тоже считается: смотрим и новый путь, и прежний (previous_filename).
+# r412: запуск по pull_request_target — workflow всегда берётся из main, заявка не может ослабить проверку
+# правкой этого файла (дыра из r394). Код заявки НЕ выкачивается и НЕ исполняется: только список путей
+# через API. Не добавлять сюда actions/checkout и любые шаги с кодом из заявки — под pull_request_target
+# это исполнение чужого кода с правами базовой ветки.
 # Откат: убрать opasnye-puti из обязательных проверок ruleset main-proverka, затем удалить этот файл.
 name: opasnye-puti
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened, labeled, unlabeled]
 permissions:
   contents: read
