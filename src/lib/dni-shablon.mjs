@@ -25,7 +25,8 @@ const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, 
 
 // Блок фактов: id секции (по умолчанию fakty), необязательная разметка после списка (dop, напр. фото экспоната)
 // и место — после какого блока шаблона (posle; нет — на своём месте, после story). Блоков может быть несколько (Р302, 18 янв.).
-const faktyBlok = z.object({ id: str.default('fakty'), posle: z.enum(BLOKI).optional(), kicker: str, h2: str, udary: z.array(udar).min(1), dop: str.optional() });
+// nav — подпись чипа в полосе разделов (#secnav); без nav чипа нет.
+const faktyBlok = z.object({ id: str.default('fakty'), posle: z.enum(BLOKI).optional(), kicker: str, h2: str, udary: z.array(udar).min(1), dop: str.optional(), nav: str.optional() });
 // Список источников: обычная строка (ссылка + пометка + пояснение) или готовая разметка пункта (html) — у старых страниц бывает
 // «Госкаталог: <a>…</a> и <a>…</a>» (Р302).
 const istochnik = z.union([z.object({ href: z.string().url(), title: str, pometka: str.optional(), note: str }), z.object({ html: str })]);

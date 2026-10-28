@@ -824,6 +824,38 @@
         "v": 1
       }
     },
+    "izobreteniya/17jan-zhukovsky": {
+      "title": "История в 55 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: Н. Е. Жуковский читает лекцию, его рукопись, лётчик П. Н. Нестеров, здание аэродинамической лаборатории ЦАГИ (Государственный центральный музей современной истории России); брошюра к 60-летию труда Жуковского «О присоединённых вихрях» (Центральный музей ВВС); испытание самолёта «Ньюпор XVII» в аэродинамической трубе Т-1-2 ЦАГИ (Научно-мемориальный музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky.mp4",
+        "local": "muzei/izobreteniya/video/day-17jan-zhukovsky.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 55.4,
+        "mb": 12.5
+      },
+      "vertical": {
+        "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 55.4,
+        "mb": 10.3
+      },
+      "poster": {
+        "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16-poster.jpg",
+        "v": 1
+      }
+    },
     "izobreteniya/18jan-odner": {
       "title": "История в 62 секунды",
       "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: арифмометр Однера № 16981 (Глазовский краеведческий музей); арифмометр Тома де Кольмара (Государственный Эрмитаж); модель зубчатого колеса конструкции В. Т. Однера (Политехнический музей); арифмометр Однера № 18539 (Белогорский краеведческий музей); арифмометр «Однер» 1897 года (Бодайбинский городской краеведческий музей); арифмометр Triumphator (Бердский историко-художественный музей); арифмометр «Феликс» (Ставропольский музей-заповедник); «Феликс» и «Феликс-М» (Рыбинский музей-заповедник). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
@@ -853,6 +885,70 @@
       "poster_vertical": {
         "file": "izobreteniya/18jan-odner/day-18jan-odner-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-18jan-odner-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/19jan-kantorovich": {
+      "title": "История в 59 секунд",
+      "note": "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Нобелевский диплом 1975 года и студенческий матрикул 1926 года (Музей истории СПбГУ); портрет Л. В. Канторовича, книги «Рациональный раскрой промышленных материалов» и «Экономический расчёт наилучшего использования ресурсов» (польское издание) (Новосибирский государственный краеведческий музей); академик Л. В. Канторович (Музейный центр «Площадь Мира», Красноярск); счётная машина «Вильнюс» (Политехнический музей). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich.mp4",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.4,
+        "mb": 14.0
+      },
+      "vertical": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 59.4,
+        "mb": 11.4
+      },
+      "poster": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-19jan-kantorovich-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "izobreteniya/20jan-lunin": {
+      "title": "История в 59 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: тушка домовой мыши (Забайкальский краевой краеведческий музей им. А. К. Кузнецова); открытка «Юрьев (Дерпт), университет» (Государственный музей истории Санкт-Петербурга); весы аптечные (Государственный музей истории Санкт-Петербурга); фарфоровая выпарительная чашка (музей-заповедник «Кузнецкая крепость»); портрет Н. И. Лунина (Государственный исторический музей); обложка книги Г. Бунге «Алкоголизм и вырождение» (Государственный музей Л. Н. Толстого). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin.mp4",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 59.1,
+        "mb": 12.4
+      },
+      "vertical": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 59.1,
+        "mb": 10.6
+      },
+      "poster": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/20jan-lunin/day-20jan-lunin-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-20jan-lunin-9x16-poster.jpg",
         "v": 1
       }
     }

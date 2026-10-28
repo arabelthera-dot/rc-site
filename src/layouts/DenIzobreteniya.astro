@@ -69,8 +69,9 @@ ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.
 const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;
 const o = d.oblozhka;
 // Блоки фактов (один или несколько, Р302): без posle — на своём месте после story, с posle — после указанного блока.
+// nav — подпись чипа в полосе разделов (#secnav берёт data-nav); без nav чипа нет, как раньше.
 const faktyBloki = [d.fakty ?? []].flat();
-const faktyHtml = (b) => `<section class="block" id="${b.id}">
+const faktyHtml = (b) => `<section class="block" id="${b.id}"${b.nav ? ` data-nav="${b.nav}"` : ''}>
   <div class="wrap">
     <div class="kicker">${b.kicker}</div>
     <h2>${b.h2}</h2>
@@ -189,7 +190,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   </div>
 </section><Fragment set:html={posle('story')} />
 
-{faktyBloki.filter((b) => !b.posle).map((b) => (<section class="block" id={b.id}>
+{faktyBloki.filter((b) => !b.posle).map((b) => (<section class="block" id={b.id} data-nav={b.nav}>
   <div class="wrap">
     <div class="kicker">{b.kicker}</div>
     <h2>{b.h2}</h2>
