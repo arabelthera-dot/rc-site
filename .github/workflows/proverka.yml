@@ -202,10 +202,37 @@ jobs:
       # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
       # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).
       # Строгость включается переменной репозитория GLAZAMI_STROGO=1; без неё — только предупреждение.
+      # Браузер из кэша (r309, 28.10.2026): #525 краснела на po-date «Executable doesn't exist ... headless_shell»,
+      # потому что playwright install при медленном скачивании молча обрывался на 4-й минуте. Теперь: кэш
+      # ~/.cache/ms-playwright по версии playwright из package-lock (в логе «Cache restored» / «Cache not found»),
+      # установка — до 3 попыток по 3 мин, кэш сохраняется сразу после удачной установки (не ждёт конца заявки).
+      - name: glazami — версия браузера
+        id: pw
+        run: echo "versiya=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
+      - name: glazami — браузер из кэша
+        id: pw-kesh
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.versiya }}-chromium
       - name: glazami — браузер
+        id: pw-ustanovka
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
-        timeout-minutes: 4
-        run: npx --no-install playwright install --with-deps chromium
+        timeout-minutes: 10
+        run: |
+          echo "Кэш браузера: ${{ steps.pw-kesh.outputs.cache-hit == 'true' && 'hit' || 'miss' }} (playwright ${{ steps.pw.outputs.versiya }})"
+          for i in 1 2 3; do
+            timeout 180 npx --no-install playwright install --with-deps chromium && exit 0
+            echo "::warning::playwright install: попытка $i не удалась"
+          done
+          exit 1
+      - name: glazami — браузер в кэш
+        if: steps.pw-kesh.outputs.cache-hit != 'true' && steps.pw-ustanovka.outcome == 'success'
+        continue-on-error: true
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.versiya }}-chromium
       - name: glazami — замер против эталона
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 5
@@ -219,7 +246,12 @@ jobs:
       - name: po-date — список дней не задвоен
         continue-on-error: ${{ format('{0}', vars.PODATE_STROGO) == '0' }}
         timeout-minutes: 3
-        run: node scripts/po-date.mjs --dist dist
+        run: |
+          # браузера нет — честная причина вместо ложного «страница сломана» (r309)
+          node -e "require('playwright').chromium.launch().then(b => b.close())" 2>/dev/null || {
+            echo "::error::po-date: браузер не установлен (шаг «glazami — браузер» не справился) — страницы не проверены, это не поломка страниц. Перезапуск: gh run rerun --failed"
+            exit 1; }
+          node scripts/po-date.mjs --dist dist
       # Замок ошибок JS (задание r253, 24.10.2026): карикатура 01-01…01-04 сыпала SyntaxError на каждой прокрутке,
       # а проверки молчали. Каждая полная страница дня — загрузка и прокрутка до низа; ошибка JS — заявка красная.
       - name: oshibki-js — на полных страницах дней нет ошибок JS
