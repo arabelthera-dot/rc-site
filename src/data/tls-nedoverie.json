@@ -37,6 +37,12 @@
    "issuer": "GlobalSign GCC R6 AlphaSSL CA 2025",
    "checked": "2026-10-28"
   },
+  "ipfran.ru": {
+   "kind": "ru-ca",
+   "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+   "issuer": "Russian Trusted Sub CA",
+   "checked": "2026-10-28"
+  },
   "mathsoc.pdmi.ras.ru": {
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
