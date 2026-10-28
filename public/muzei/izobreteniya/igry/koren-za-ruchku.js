@@ -108,7 +108,7 @@ function igraRuka(root) {
     }
     const z=[[zv.a,'√25 найден оборотами'],[zv.b,'√196 без звонка перекрута'],[zv.c,'обогнал счетовода']];
     finZ.innerHTML=z.map(([y,t])=>'<li class="'+(y?'da':'')+'">'+(y?'★':'☆')+' '+t+'</li>').join('');
-    if(zv.a&&zv.b&&zv.c&&typeof window.award==='function')window.award('why0',10);
+    if(zv.a&&zv.b&&zv.c&&typeof window.award==='function')window.award('why0',12);
   }
   function nachat(krug){
     clearInterval(timer);fin.hidden=true;
