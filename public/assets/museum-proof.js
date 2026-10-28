@@ -19,7 +19,7 @@
     '.rc-proof__gap{text-align:center;font-weight:700;color:var(--gold-l,#b8943f);white-space:nowrap}'+
     '.rc-proof__side--them{text-align:right}.rc-proof a{color:inherit}'+
     '@media(max-width:480px){.rc-proof__vs{grid-template-columns:1fr}.rc-proof__side--them{text-align:left}.rc-proof__gap{text-align:left}}';
-  var RU_CA=['admship.ru','ckb-rubin.ru','rgantd.ru'];
+  var RU_CA=['admship.ru','ckb-rubin.ru','ipfran.ru','rgantd.ru'];
   function ruCa(u){try{var h=new URL(u).hostname.replace(/^www\./,'');return RU_CA.indexOf(h)>=0;}catch(e){return false;}}
   function full(d){return /^\d{4}-\d{2}-\d{2}$/.test(String(d||''));}
   function day(d){var p=String(d).split('-');return Date.UTC(+p[0],+p[1]-1,+p[2]);}
