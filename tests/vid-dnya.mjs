@@ -86,7 +86,7 @@ if (!stili13.includes(BAZA) || bloki13.length < 5) { console.error('vid-dnya: э
 
 // Карточки шаблона на живом адресе (adres: den) и css их игры: из сравнения выпадает только igra-<igra.imya>.css.
 const kartochki = fs.readdirSync(KARTOCHKI).filter((f) => f.endsWith('.yaml')).map((f) => YAML.parse(fs.readFileSync(path.join(KARTOCHKI, f), 'utf8'))).filter((d) => d.adres === 'den');
-const igraDnya = (k) => { const d = kartochki.find((x) => x.key === k); return d ? [`igra-${d.igra.imya}.css`, ...d.igra.css.map((c) => `${c}.css`)] : []; };
+const igraDnya = (k) => { const d = kartochki.find((x) => x.key === k); return d ? [`igra-${d.igra.imya}.css`, ...(d.igra.css ?? []).map((c) => `${c}.css`)] : []; };
 
 const vse = fs.readdirSync(DEN).filter((k) => /^\d\d-\d\d$/.test(k) && k !== ETALON && fs.existsSync(path.join(DEN, k, 'index.html'))).sort();
 const razobrano = new Map([...vse.map((k) => [k, razbor(read(k))]), [ETALON, e]]);
