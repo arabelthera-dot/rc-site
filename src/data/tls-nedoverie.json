@@ -47,7 +47,7 @@
    "kind": "other",
    "error": "ERR_TLS_CERT_ALTNAME_INVALID",
    "issuer": "GlobalSign GCC R3 DV TLS CA 2020",
-   "checked": "2026-10-28"
+   "checked": "2026-10-29"
   },
   "mathsoc.pdmi.ras.ru": {
    "kind": "other",
