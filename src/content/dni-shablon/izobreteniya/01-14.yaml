@@ -289,7 +289,6 @@ razdely: []
 igra:
   imya: perehvat
   css:
-    - igra-pravila
     - igra-pogonya
 pervenstvo:
   kicker: Проверка факта
