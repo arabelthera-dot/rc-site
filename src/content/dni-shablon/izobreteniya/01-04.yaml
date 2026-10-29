@@ -101,7 +101,6 @@ story:
     - '<p style="font-size:13px;color:var(--muted);margin-top:26px">Источники: histrf.ru · rg.ru · nkj.ru · tvzvezda.ru</p>'
 fakty:
   - id: fakty
-    posle: igra
     nav: Факты
     kicker: Десять фактов о Пильчикове
     h2: Запрет директора и тюремный залог
@@ -197,7 +196,6 @@ fakty:
         href: https://ufn.ru/ufn54/ufn54_5/Russian/r545f.pdf
         pometka: документ
   - id: fakty-dnya
-    posle: igra
     kicker: Ещё пять фактов
     h2: Рентген, деньги флота и своя метеостанция
     udary:

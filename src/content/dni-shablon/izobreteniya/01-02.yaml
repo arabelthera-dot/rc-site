@@ -116,7 +116,6 @@ story:
           </div>
 fakty:
   - id: fakty
-    posle: igra
     nav: Факты
     kicker: Десять фактов о «Луне-1» и её создателях
     h2: Промах на несколько секунд
@@ -216,7 +215,6 @@ fakty:
         href: https://readings.gmik.ru/lecture/2019-PERVIE-POLETI-K-LUNE-AVTOMATICHESKIH-STANTSIY-THE-FIRST-SPACE-PROBES-LAUNCHED-TO-THE-MOON
         pometka: два источника
   - id: fakty-dnya
-    posle: igra
     kicker: Ещё пять фактов
     h2: Вымпел, солнечный ветер и 30 часов на БЭСМ
     udary:
@@ -271,7 +269,7 @@ razdely:
   - posle: daynav
     html: |-
       <!-- живая сцена дня (была сверху; обложка — фото выше, Р231) -->
-      <div class="hero">
+      <div class="luna1-scena">
         <canvas id="heroCvs" class="hero-particles"></canvas>
       </div>
       <div class="hero-caption"><div class="wrap"><div class="hero-year">1959</div></div></div>
