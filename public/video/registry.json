@@ -1162,6 +1162,38 @@
         "v": 2
       }
     },
+    "izobreteniya/23jan-umov": {
+      "title": "История в 50 секунд",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: два портрета Н. А. Умова (Государственный центральный музей современной истории России); Физический институт Московского университета, 1936 (Музей Москвы). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov.mp4",
+        "local": "muzei/izobreteniya/video/day-23jan-umov.mp4",
+        "v": 2,
+        "w": 1920,
+        "h": 1080,
+        "sec": 49.7,
+        "mb": 10.6
+      },
+      "vertical": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-23jan-umov-9x16.mp4",
+        "v": 2,
+        "w": 1080,
+        "h": 1920,
+        "sec": 49.7,
+        "mb": 8.4
+      },
+      "poster": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-23jan-umov-poster.jpg",
+        "v": 2
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/23jan-umov/day-23jan-umov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-23jan-umov-9x16-poster.jpg",
+        "v": 2
+      }
+    },
     "izobreteniya/30jan-kotelnikov": {
       "title": "История за минуту",
       "note": "Кадр ролика — подлинная фотография Г. Е. Котельникова, Уральский государственный военно-исторический музей (Госкаталог № 12764542). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
