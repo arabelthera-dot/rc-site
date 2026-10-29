@@ -1,0 +1,16 @@
+/* Стили игры probey-led и своих блоков дня (перенесено из src/data/full-pages/izobreteniya/01-08.html) */
+.article{position:relative}
+.article.collapsed .body{max-height:260px;overflow:hidden}
+.article.collapsed .body:after{content:'';position:absolute;left:0;right:0;bottom:44px;height:110px;background:linear-gradient(transparent,var(--dark))}
+.more{text-align:center;margin-top:16px}
+.gm{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;margin:14px 0}
+.gm h3{margin:0 0 14px;font-size:20px;color:#e4c97a;font-family:'Playfair Display',serif}
+.gm-btn{cursor:pointer;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 16px;margin:7px 0;
+  background:rgba(255,255,255,.04);color:#e8eef5;font-size:14px;font-family:'Inter',sans-serif;width:100%;text-align:left;transition:.16s}
+.gm-btn:hover{border-color:#c9a84c;background:rgba(201,168,76,.1)}
+.gm-btn.ok{background:rgba(40,120,60,.2);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
+.gm-btn.no{background:rgba(180,40,40,.15);border-color:#c0453f;color:#f08080}
+.gm-btn.neutral{opacity:.5;pointer-events:none}
+.gm-exp{margin-top:10px;background:rgba(201,168,76,.12);border-radius:10px;padding:12px 14px;font-size:14px;color:#e4c97a;display:none}
+.gm-exp.show{display:block}
+.gm-score{font-size:13px;color:#7a9ab8;margin-bottom:10px}

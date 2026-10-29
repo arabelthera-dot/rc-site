@@ -78,18 +78,20 @@ if (!fs.existsSync(path.join(DEN, ETALON, 'index.html'))) { console.error(`vid-d
 const e = razbor(read(ETALON));
 const baza13 = norm(e.stili.find((s) => s.style === '')?.css ?? '');
 const stili13 = obshchieStili(e.stili, null, IGRA_13);
-const bloki13 = e.bloki;
+// Второй блок фактов (#fakty-dnya, образец 18-го) — необязателен: с переводом 13-го на шаблон он есть и у эталона.
+const bloki13 = e.bloki.filter((b) => b !== '#fakty-dnya');
 const nabor13 = new Set(bloki13);
 const telo13 = new Set(vTele(e.stili));
 if (!stili13.includes(BAZA) || bloki13.length < 5) { console.error('vid-dnya: эталон 01-13 разобрать не удалось (нет базового <style> или блоков)'); process.exit(1); }
 
 // Карточки шаблона на живом адресе (adres: den) и css их игры: из сравнения выпадает только igra-<igra.imya>.css.
 const kartochki = fs.readdirSync(KARTOCHKI).filter((f) => f.endsWith('.yaml')).map((f) => YAML.parse(fs.readFileSync(path.join(KARTOCHKI, f), 'utf8'))).filter((d) => d.adres === 'den');
-const igraDnya = (k) => { const d = kartochki.find((x) => x.key === k); return d ? [`igra-${d.igra.imya}.css`] : []; };
+const igraDnya = (k) => { const d = kartochki.find((x) => x.key === k); return d ? [`igra-${d.igra.imya}.css`, ...(d.igra.css ?? []).map((c) => `${c}.css`)] : []; };
 
 const vse = fs.readdirSync(DEN).filter((k) => /^\d\d-\d\d$/.test(k) && k !== ETALON && fs.existsSync(path.join(DEN, k, 'index.html'))).sort();
-const razobrano = new Map(vse.map((k) => [k, razbor(read(k))]));
-const dni = vse.filter((k) => razobrano.get(k).shablon === 'den-izobreteniya');
+const razobrano = new Map([...vse.map((k) => [k, razbor(read(k))]), [ETALON, e]]);
+// Эталон 01-13 сам переведён на шаблон (r476-d) — он тоже шаблонная страница и считается вместе с остальными.
+const dni = [...(e.shablon === 'den-izobreteniya' ? [ETALON] : []), ...vse.filter((k) => razobrano.get(k).shablon === 'den-izobreteniya')];
 if (!dni.length || dni.length < kartochki.length) {
   const net = kartochki.map((d) => d.key).filter((k) => !dni.includes(k));
   console.error(`vid-dnya: шаблонных страниц (data-shablon="den-izobreteniya") в ${DEN} — ${dni.length}, а карточек с adres: den — ${kartochki.length}` +
