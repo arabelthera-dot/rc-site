@@ -1,0 +1,40 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Игра 1 · Собрать Р-7 и довести до Камчатки</h2>
+    <p style="max-width:62ch">Ты в ОКБ-1 в 1954 году. Реши, как сложить ступени и что делать с боковыми блоками, когда в них кончится топливо. Потом нажми «Пуск» и проследи полёт от Тюра-Тама до полигона Кура.</p>
+    <div class="lab" id="lab">
+      <div class="lab-row" role="group" aria-labelledby="lg1"><span class="lbl" id="lg1">1. Как сложить ступени</span>
+        <button class="seg" type="button" data-k="scheme" data-v="tandem" aria-pressed="true">Башней, одна над другой</button>
+        <button class="seg" type="button" data-k="scheme" data-v="pack" aria-pressed="false">Пакетом вокруг центрального</button>
+      </div>
+      <div class="lab-row" role="group" aria-labelledby="lg2"><span class="lbl" id="lg2">2. Пустые боковые блоки</span>
+        <button class="seg" type="button" data-k="drop" data-v="keep" aria-pressed="true">Везти до конца</button>
+        <button class="seg" type="button" data-k="drop" data-v="drop" aria-pressed="false">Сбросить</button>
+      </div>
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="labGo">Пуск</button>
+        <button class="btn ghost" type="button" id="labReset">Начать заново</button>
+      </div>
+      <div class="lab-stage">
+        <canvas id="labCv" width="640" height="220" role="img" aria-label="Схема ракеты и траектория полёта от Тюра-Тама до Камчатки"></canvas>
+        <div class="lab-cap">Модель, а не карта: траектория и масштаб условны, блоки нарисованы схематично.</div>
+      </div>
+      <div class="lab-msg" id="labMsg" aria-live="polite">Ракета на старте. Выбери схему и нажми «Пуск».</div>
+      <div class="lab-found" id="labFound">Найдено причин неудачи: 0 из 2.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия опыта: у ракеты-башни верхнюю ступень пришлось бы зажигать в полёте, а в пакете все двигатели запускаются ещё на земле. Если везти пустые боковые блоки до конца, ракета тащит мёртвый вес и не долетает. Р-7 собрана пакетом, а отработавшие боковые блоки сбрасывает — и 21 августа 1957 года её головная часть дошла до Камчатки.</div></noscript>
+    </div>
+      <div class="igra-pravila" data-igra-pravila>
+        <h2 class="igra-pravila-h">Как играть</h2>
+        <p class="igra-pravila-zachem">Ты — конструктор в ОКБ-1, 1954 год. Узнаешь, почему ракета-башня не годилась и как Р-7 долетела от Тюра-Тама до Камчатки.</p>
+        <ol class="igra-pravila-shagi">
+          <li><b>Выбери, как сложить ступени</b> — башней, одна над другой, или пакетом вокруг центрального блока.</li>
+          <li><b>Реши, что делать с пустыми боковыми блоками</b> — везти до конца или сбросить.</li>
+          <li><b>Нажми «Пуск»</b> и проследи полёт на схеме.</li>
+        </ol>
+        <p class="igra-pravila-nyuans">Нюансы: если ракета не долетела, под схемой появится, что помешало, — это одна из двух причин неудачи. Найди обе: счётчик покажет «Найдено причин неудачи: 2 из 2». «Начать заново» вернёт башню и «Везти до конца»; полученные баллы сохраняются, а повторно не начисляются.</p>
+        <p class="igra-pravila-final">Верное сочетание — и головная часть доходит до полигона Кура на Камчатке, как 21 августа 1957 года.</p>
+      </div>
+    <p class="src-note" style="margin-top:10px">Правила модели: пакетная схема и запуск всех двигателей на земле — РИА Новости, 2012; две ступени с параллельным делением — там же; полёт 21 августа до полигона Кура — «Парламентская газета», 2019.</p>
+  </div>
+</section>
