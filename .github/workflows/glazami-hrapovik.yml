@@ -52,19 +52,22 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0 # сборке нужна вся история (журнал исправлений)
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: npx --no-install playwright install --with-deps chromium
+      - id: brauzer
+        run: npx --no-install playwright install --with-deps chromium
       - run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json ${{ github.ref == 'refs/heads/main' && vars.GLAZAMI_HRAPOVIK == '1' && '--zapisat' || '' }}
       - name: все дни с телефона
-        if: success() || failure()
+        if: (success() || failure()) && steps.brauzer.outcome == 'success'
         run: node scripts/glazami.mjs https://russian-civilization.ru/ /tmp/glazami-dni --dist dist --dni vse --potokov 6 --porog scripts/glazami-porog.json ${{ github.ref == 'refs/heads/main' && vars.GLAZAMI_HRAPOVIK == '1' && '--zapisat' || '' }}
       - name: все дни — таблица
-        if: success() || failure()
+        if: (success() || failure()) && steps.brauzer.outcome == 'success'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: glazami-dni
