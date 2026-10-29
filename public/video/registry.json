@@ -408,6 +408,24 @@
         "v": 1
       }
     },
+    "izobreteniya/29jan-kostovich-rossiya": {
+      "title": "История в 49 секунд",
+      "note": "Кадры — подлинные: рисунок «Россия» над Петербургом, фотографии Костовича в мастерской и в пожилом возрасте (Госкаталог, музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya.mp4",
+        "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 48.5,
+        "mb": 12.1
+      },
+      "poster": {
+        "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya-poster.jpg",
+        "v": 1
+      }
+    },
     "izobreteniya/03jan-anosov": {
       "title": "История в 51 секунду",
       "note": "Кадры — подлинные: чертежи печей для варки булата из работы П. П. Аносова «О булатах», 1841 (Свердловский областной краеведческий музей, Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",

@@ -2,7 +2,7 @@
   "museum": "izobreteniya",
   "key": "01-01",
   "title": "Первая в мире сеть кабельного телевидения (Москва, 30 абонентов)",
-  "hook": "Кабельное телевидение начиналось не в Америке: в 1939-м в Москве картинку по проводам получали тридцать квартир.",
+  "hook": "Москва первой в мире провела телевидение по кабелю — 30 абонентов одного дома смотрели его в 1939-м, за девять лет до Америки.",
   "mechanic": "Ставка до ответа: угадываешь, в какой стране первыми пустили телевидение по проводу, потом видишь ответ ✅",
   "legacy_page": "muzei/izobreteniya/day-01jan-cabletv.html",
   "images": [
@@ -40,7 +40,7 @@
     },
     {
       "type": "oblozhka",
-      "html": "\n\n<header class=\"hero-lead\">\n  <div class=\"wrap\">\n    <div class=\"date-chip\">1 января · 1939</div>\n    <div class=\"who\">НИИ телевидения и ЦНИИ связи <i>· проект кабельного узла, приёмники АТП-1</i></div>\n    <div class=\"museum\">Музей «Что изобрели русские первыми в мире»</div>\n    <h1>Первая в мире сеть<br>кабельного телевидения</h1>\n    <p class=\"hook\">Первые 30 кабельных абонентов планеты жили в одном московском доме — за девять лет до Америки.</p>\n    <div class=\"hero-btns\">\n      <button class=\"btn gold\" id=\"readBtn\">Читать историю ↓</button>\n      <button class=\"btn ghost\" onclick=\"document.getElementById('audioguide').scrollIntoView({behavior:'smooth'})\">🎧 Слушать аудиогид</button>\n    </div>\n  </div>\n</header>"
+      "html": "\n\n<header class=\"hero-lead\">\n  <div class=\"wrap\">\n    <div class=\"date-chip\">1 января · 1939</div>\n    <div class=\"who\">НИИ телевидения и ЦНИИ связи <i>· проект кабельного узла, приёмники АТП-1</i></div>\n    <div class=\"museum\">Музей «Что изобрели русские первыми в мире»</div>\n    <h1>Первая в мире сеть<br>кабельного телевидения</h1>\n    <p class=\"hook\">Москва первой в мире провела телевидение по кабелю — 30 абонентов одного дома смотрели его в 1939-м, за девять лет до Америки.</p>\n    <div class=\"hero-btns\">\n      <button class=\"btn gold\" id=\"readBtn\">Читать историю ↓</button>\n      <button class=\"btn ghost\" onclick=\"document.getElementById('audioguide').scrollIntoView({behavior:'smooth'})\">🎧 Слушать аудиогид</button>\n    </div>\n  </div>\n</header>"
     },
     {
       "type": "oblozhka",
