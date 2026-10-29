@@ -296,6 +296,7 @@ fakty:
 razdely: []
 igra:
   imya: stanok-orlova
+  css: []
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире
