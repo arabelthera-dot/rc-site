@@ -12,8 +12,10 @@ const obhod = (dir) => {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) obhod(p);
     else if (e.name === 'index.html' && /[\\/]den[\\/][^\\/]+[\\/](?:staraya[\\/])?index\.html$/.test(p)) {
-      n++;
       const html = fs.readFileSync(p, 'utf8');
+      // Переадресация старого адреса (src/integrations/legacy-redirects.mjs, напр. staraya/ дня, переехавшего на шаблон) — не страница дня.
+      if (/<meta http-equiv="refresh"/.test(html) && !/<body\b/i.test(html)) continue;
+      n++;
       const i = html.indexOf('data-rc-podval-dnya');
       const kusok = i < 0 ? '' : html.slice(i, html.indexOf('</div>', i));
       if (!/<a\b[^>]*href="mailto:[^"]+"[^>]*>[^<]+<\/a>/.test(kusok)) bad.push(path.relative(dist, p));
