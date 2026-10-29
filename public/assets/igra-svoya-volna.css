@@ -21,3 +21,4 @@
   background:radial-gradient(circle at 35% 30%,#e4c97a,#b8882b);border:2px solid #1a0f00;
   box-shadow:0 2px 10px rgba(201,168,76,.5);cursor:pointer}
 .gm-slider::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#c9a84c;border:2px solid #1a0f00}
+.gm-exp.show{display:block}

@@ -15,3 +15,4 @@
 .lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .micro{display:none;margin-top:14px;text-align:center}
 .micro canvas{width:min(280px,80%);height:auto;border-radius:50%;border:6px solid #2b3642;box-shadow:0 0 0 2px rgba(201,168,76,.5)}
+.micro.show{display:block}
