@@ -80,7 +80,7 @@
   + '#secnav .prog{height:2px;width:0;background:var(--gold,#c8a24a);box-shadow:0 0 8px rgba(200,162,74,.6)}'
   + 'section[id]{scroll-margin-top:56px}'
   + '@media (max-width:520px){#secnav a{font-size:12px;padding:5px 10px}#secnav .row{padding:8px 10px}}'
-  + '#secnav.sv .row{flex-wrap:wrap;overflow:hidden;max-height:var(--sv-h,44px);padding-right:84px}#secnav.sv.open .row{max-height:none}'
+  + '#secnav.sv .row{box-sizing:border-box;flex-wrap:wrap;overflow:hidden;max-height:var(--sv-h,44px);padding-right:84px}#secnav.sv:not(.open) .row{row-gap:24px}#secnav.sv.open .row{max-height:none}'
   + '#secnav .vse{position:absolute;top:0;right:0;height:var(--sv-h,44px);padding:0 12px 0 14px;border:0;border-left:1px solid var(--line,rgba(255,255,255,.14));background:rgba(11,13,17,.98);color:var(--gold,#c8a24a);font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer}'
   /* стрелки «пред/след» */
   + '.mcnav{position:fixed;top:50%;transform:translateY(-50%);z-index:54;display:flex;align-items:center;gap:8px;'
