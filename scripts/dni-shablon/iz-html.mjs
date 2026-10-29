@@ -18,22 +18,27 @@ const may = (re, s = src) => re.exec(s)?.[1];
 const all = (re, s) => [...s.matchAll(re)];
 const ctx = (code, w = {}) => { vm.runInNewContext(code, { window: w }); return w; };
 // Все секции верхнего уровня (<section …id="…">…\n</section>) по порядку — для известных блоков и razdely.
-const sekcii = all(/^<section[^>]*id="([^"]+)"[^>]*><\/section>|^<section[^>]*?id="([^"]+)"[\s\S]*?\n<\/section>/gm, src).map((m) => ({ id: m[1] ?? m[2], html: m[0] }));
+// Секция одной строкой (01-13: #kadry с кадром внутри) — до конца своей строки, иначе она съедает следующую.
+const sekcii = all(/^<section[^>]*id="([^"]+)"[^>]*>.*<\/section>$|^<section[^>]*?id="([^"]+)"[\s\S]*?\n<\/section>/gm, src).map((m) => ({ id: m[1] ?? m[2], html: m[0] }));
 const sec = (id) => sekcii.find((s) => s.id === id)?.html;
 const IGRA = 'games';
-const udary = (s) => all(/<li( class="find")?><details><summary><span>([\s\S]*?)<span class="more-lbl"><span class="o">Узнать подробнее<\/span><span class="c">Свернуть<\/span><\/span><\/span><\/summary>\n        <div class="det">\n([\s\S]*?)\n        <\/div><\/details><\/li>/g, s).map((m) => {
-  const ps = m[3].split('\n').map((p) => { const x = /^          <p( class="src-note")?>([\s\S]*)<\/p>$/.exec(p); if (!x) throw new Error('абзац удара не разобран: ' + p); return x; });
+const udary = (s) => all(/<li( class="find")?><details><summary><span>([\s\S]*?)<span class="more-lbl"><span class="o">([^<]*)<\/span><span class="c">Свернуть<\/span><\/span><\/span><\/summary>\n        <div class="det">\n([\s\S]*?)\n        <\/div><\/details><\/li>/g, s).map((m) => {
+  const ps = m[4].split('\n').map((p) => { const x = /^          <p( class="src-note")?>([\s\S]*)<\/p>$/.exec(p); if (!x) throw new Error('абзац удара не разобран: ' + p); return x; });
   const det = ps.filter((x) => !x[1]).map((x) => x[2]); const srcN = ps.filter((x) => x[1]);
   if (srcN.length !== 1 || ps.at(-1) !== srcN[0]) throw new Error('у удара не одна строка src-note в конце');
   const u = { summary: m[2] };
   if (m[1]) u.find = true;
+  // Своя надпись кнопки вместо «Узнать подробнее» (01-13, удар 12: «Указ о награждении и День памяти») — 1:1.
+  if (m[3] !== 'Узнать подробнее') u.podrobnee = m[3];
   const t = /^<span class="tag">([^<]*)<\/span>/.exec(det[0]); if (t) { u.tag = t[1]; det[0] = det[0].slice(t[0].length); }
   u.det = det; u.src = srcN[0][2]; return u; });
 const proverUdary = (s, list) => { const n = (s.match(/<li>|<li class/g) || []).length; if (n !== list.length) throw new Error(`ударов ${list.length} из ${n}`); return list; };
 
 // Скрипт страницы с игрой и викториной: «кнопки» + игра + «ВИКТОРИНА». Игра — как есть, в своей обёртке.
 const bigJs = one(/<script>\n(\(function\(\)\{\n  var \$ = function\(id\)\{return document\.getElementById\(id\);\};\n  \$\('readBtn'\)[\s\S]*?\n\}\)\(\);)\n<\/script>/);
-const igraJs = one(/\$\('listenBtn'\)[^\n]*\n\n?([\s\S]*?)\n\n  \/\* ── ВИКТОРИНА/, bigJs);
+// Игра — в большом скрипте; у части дней (01-13) её скрипт отдельным файлом assets/<имя>.js сразу после museum-score.js — берётся как есть.
+const vneshIgra = may(/<script src="\.\.\/\.\.\/assets\/museum-score\.js"><\/script>\n<script src="\.\.\/\.\.\/assets\/([\w-]+)\.js"><\/script>/);
+const igraJs = vneshIgra ? null : one(/\$\('listenBtn'\)[^\n]*\n\n?([\s\S]*?)\n\n  \/\* ── ВИКТОРИНА/, bigJs);
 const Q = vm.runInNewContext('(' + one(/\n  var Q = (\[[\s\S]*?\n  \]);/, bigJs) + ')');
 const qBall = +one(/award\('q'\+qi,(\d+)\)/, bigJs);
 const W = ctx(one(/<script>\n(?:\/\*[\s\S]*?\*\/\n)?(window\.MUSEUM_SCORE = [\s\S]*?)\n<\/script>/));
@@ -120,7 +125,10 @@ const nIst = (sec('sources').match(/<li>/g) || []).length;
 if (card.sources.length !== nIst) throw new Error(`источников ${card.sources.length} из ${nIst}`);
 fs.mkdirSync(`src/data/igry/${muzei}`, { recursive: true }); fs.mkdirSync(`public/muzei/${muzei}/igry`, { recursive: true });
 fs.writeFileSync(`src/data/igry/${muzei}/${imya}.html`, sec(IGRA) + '\n');
-fs.writeFileSync(`public/muzei/${muzei}/igry/${imya}.js`, `/* Игра ${key} — скрипт как есть со страницы src/data/full-pages/${muzei}/${key}.html (scripts/dni-shablon/iz-html.mjs, Р286);
+if (vneshIgra) fs.writeFileSync(`public/muzei/${muzei}/igry/${imya}.js`, `/* Игра ${key} — скрипт как есть из public/assets/${vneshIgra}.js (scripts/dni-shablon/iz-html.mjs, Р286);
+   разметка — src/data/igry/${muzei}/${imya}.html. Нужна глобальная award() (assets/museum-score.js). */
+${fs.readFileSync(`public/assets/${vneshIgra}.js`, 'utf8')}`);
+else fs.writeFileSync(`public/muzei/${muzei}/igry/${imya}.js`, `/* Игра ${key} — скрипт как есть со страницы src/data/full-pages/${muzei}/${key}.html (scripts/dni-shablon/iz-html.mjs, Р286);
    разметка — src/data/igry/${muzei}/${imya}.html. Нужна глобальная award() (assets/museum-score.js). */
 (function(){
   var $ = function(id){return document.getElementById(id);};
