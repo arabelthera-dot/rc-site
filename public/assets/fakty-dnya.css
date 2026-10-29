@@ -22,3 +22,8 @@
 .fakt-ist a{color:var(--gold)}
 .fakt-pometka{display:inline-block;border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:1px 10px;margin-right:6px;font-family:'Inter',sans-serif;font-size:12px;color:var(--gold)}
 .fakt-otryvok{margin:10px 0 0;padding:8px 14px;border-left:3px solid var(--gold);font-style:italic;color:var(--muted)}
+
+/* Заголовок блока фактов (Р383): крупно «10 фактов о …», красивое название — строкой под ним (шаблон дня, faktyZag). */
+section.block h2.fakty-zag{margin-bottom:6px}
+.fakty-pod{margin:0 0 4px;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:19px;line-height:1.35;color:var(--gold-l,#e0c77a)}
+@media (max-width:480px){section.block h2.fakty-zag{font-size:28px}.fakty-pod{font-size:17px}}

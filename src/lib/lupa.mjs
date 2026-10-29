@@ -9,6 +9,9 @@ export const LUPA_VKL = true;
 
 // Меньше этого по длинной стороне — лупа не включается: увеличивать было бы нечего, кроме пикселей.
 export const MIN_STORONA = 1200;
+// Страница с меткой <html data-lupa-vse> (шаблон дня изобретений, Р383) — лупа на всех кадрах без порога: на телефоне
+// кадр во весь экран крупнее, чем в колонке; открывается сам файл кадра (или файл, на который кадр ссылается) — крупнейший.
+const VSE = /<html\b[^>]*\sdata-lupa-vse[\s=>]/i;
 
 // Что считается кадром: своя растровая картинка (jpg/png/webp) в <figure> или внутри ссылки на файл картинки.
 // Не кадр (лупа не ставится): механики и всё, что меняет скрипт (у <img> id или data-*src*/data-*image* — та же
@@ -79,7 +82,7 @@ export function kadry(html, base = '/') {
 // Разметить страницу: кадрам с исходником не меньше MIN_STORONA — data-lupa (адрес файла), data-lupa-w/-h
 // (размер файла, снят на сборке) и data-lupa-srcset (копии kartinki + сам файл — телефон не качает оригинал,
 // пока не приблизит). razmer(put) → [w, h] | null. Возвращает { html, vkl, kadrov, prichiny }.
-export function razmetit(html, { base = '/', razmer, min = MIN_STORONA }) {
+export function razmetit(html, { base = '/', razmer, min = VSE.test(html) ? 0 : MIN_STORONA }) {
   const list = kadry(html, base);
   const prichiny = {};
   let vkl = 0, kadrov = 0;

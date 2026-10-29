@@ -70,13 +70,24 @@ ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.
         </div></details>${u.pometka ? `<p class="fakt-ist"><span class="fakt-pometka">${u.pometka}</span> <a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}</li>`;
 const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;
 const o = d.oblozhka;
-// Блоки фактов (один или несколько, Р302): без posle — на своём месте после story, с posle — после указанного блока.
+// Блоки фактов (один или несколько, Р302): без posle — на своём месте сразу после story, с posle — после указанного блока.
 // nav — подпись чипа в полосе разделов (#secnav берёт data-nav); без nav чипа нет, как раньше.
 const faktyBloki = [d.fakty ?? []].flat();
+// Заголовок блока фактов (Р383, недостаток 18-го): крупно — «10 фактов о …» (слово-число кикера заменяется цифрой, счёт —
+// по списку ударов), красивое название h2 — строкой под ним. Кикер без слова-числа («Факты дня») — как раньше.
+const CHISLA = ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать',
+  'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать', 'двадцать'];
+const reChislo = new RegExp(`^((?:Ещё|Еще)\\s+)?(${CHISLA.join('|')})(?=\\s+факт)`, 'i');
+const faktyZag = (b) => {
+  const m = reChislo.exec(b.kicker ?? '');
+  if (!m) return `<div class="kicker">${b.kicker}</div>\n    <h2>${b.h2}</h2>`;
+  const zag = `<h2 class="fakty-zag">${b.kicker.replace(reChislo, (_, esh) => `${esh ?? ''}${b.udary.length}`)}</h2>`;
+  // h2 «Факты дня» — не название, а повтор заголовка: подзаголовком не ставим
+  return /^факты дня$/i.test(b.h2.trim()) ? zag : `${zag}\n    <p class="fakty-pod">${b.h2}</p>`;
+};
 const faktyHtml = (b) => `<section class="block" id="${b.id}"${b.nav ? ` data-nav="${b.nav}"` : ''}>
   <div class="wrap">
-    <div class="kicker">${b.kicker}</div>
-    <h2>${b.h2}</h2>
+    ${faktyZag(b)}
     ${udaryHtml(b.udary)}${b.dop ? `\n${b.dop}` : ''}
   </div>
 </section>`;
@@ -85,7 +96,7 @@ const kal = d.kalendar ?? { h2: 'Календарь изобретений', int
 const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
 ---
 <!DOCTYPE html>
-<html lang="ru" data-museum={d.muzei} data-shablon="den-izobreteniya">
+<html lang="ru" data-museum={d.muzei} data-shablon="den-izobreteniya" data-lupa-vse>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,6 +175,20 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   </div>
 </nav><Fragment set:html={posle('daynav')} />
 
+{/* Р383: история и факты — сразу после полосы разделов, до документа, ролика, аудиогида и игры (факты 18-го были на 7-м
+    экране из 23). Сторож вида (tests/vid-dnya.mjs) берёт порядок из собранного 01-13 — он тоже из этого шаблона. */}
+<section class="block" id="story">
+  <div class="wrap">
+    <div class="kicker">{d.story.kicker}</div>
+    <h2>{d.story.h2}</h2>
+    {d.story.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>}
+    {d.story.udary && <Fragment set:html={udaryHtml(d.story.udary)} />}
+    {d.story.abzacy && <Fragment set:html={d.story.abzacy.join('\n    ')} />}
+  </div>
+</section><Fragment set:html={posle('story')} />
+
+<Fragment set:html={faktyBloki.filter((b) => !b.posle).map(faktyHtml).join('\n')} /><Fragment set:html={posle('fakty')} />
+
 <section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section><Fragment set:html={posle('dokument')} />
 
 {d.video && (<section class="block" id="video">
@@ -183,23 +208,6 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 
 {d.audioguide && <section class="block" id="audioguide"></section>}<Fragment set:html={posle('audioguide')} />
 
-<section class="block" id="story">
-  <div class="wrap">
-    <div class="kicker">{d.story.kicker}</div>
-    <h2>{d.story.h2}</h2>
-    {d.story.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>}
-    {d.story.udary && <Fragment set:html={udaryHtml(d.story.udary)} />}
-    {d.story.abzacy && <Fragment set:html={d.story.abzacy.join('\n    ')} />}
-  </div>
-</section><Fragment set:html={posle('story')} />
-
-{faktyBloki.filter((b) => !b.posle).map((b) => (<section class="block" id={b.id} data-nav={b.nav}>
-  <div class="wrap">
-    <div class="kicker">{b.kicker}</div>
-    <h2>{b.h2}</h2>
-    <Fragment set:html={udaryHtml(b.udary)} />{b.dop && <Fragment set:html={b.dop} />}
-  </div>
-</section>))}<Fragment set:html={posle('fakty')} />
 
 <Fragment set:html={igraHtml} /><Fragment set:html={posle('igra')} />
 
