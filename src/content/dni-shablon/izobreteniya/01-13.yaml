@@ -307,7 +307,7 @@ razdely: []
 igra:
   imya: k278-kilometr
   css:
-    - igra-pravila
+    - k278-kilometr
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире
