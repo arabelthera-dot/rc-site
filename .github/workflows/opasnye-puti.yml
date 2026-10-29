@@ -4,6 +4,8 @@
 # Сергея в чате; агентам ставить её запрещено (AGENTS.md, п. 5а). Остальные заявки — зелёные сразу.
 # Без фильтра paths: статус нужен на каждой заявке, иначе обязательная проверка висела бы «ожидает».
 # Переименование тоже считается: смотрим и новый путь, и прежний (previous_filename).
+# Р383 (Сергей 29.10.2026): самодельные страницы дней изобретений (src/data/full-pages/izobreteniya/)
+# только удаляются — день правится данными (src/content/dni-shablon/) или общим шаблоном. Метка не спасает.
 # Откат: убрать opasnye-puti из обязательных проверок ruleset main-proverka, затем удалить этот файл.
 name: opasnye-puti
 on:
@@ -20,6 +22,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: rukopisnye-dni — самодельную страницу дня не правят, только удаляют (Р383)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          gh api --paginate "repos/$REPO/pulls/$PR/files" \
+            --jq '.[] | select(.status != "removed") | .filename' \
+            | grep -E '^src/data/full-pages/izobreteniya/' > rukopisnye.txt || true
+          if [ -s rukopisnye.txt ]; then
+            echo "Заявка правит самодельные страницы дней:"
+            sed 's/^/  /' rukopisnye.txt
+            echo "::error::Самодельные страницы дней только удаляются. День правится в src/content/dni-shablon/izobreteniya/ГГ-ДД.yaml, вид — в общем шаблоне src/layouts/DenIzobreteniya.astro (Р383)."
+            exit 1
+          fi
+          echo "Самодельные страницы дней не правятся — зелёная."
       - name: opasnye-puti — без st:gate-sergey не сливается
         env:
           GH_TOKEN: ${{ github.token }}
