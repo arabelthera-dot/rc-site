@@ -1161,6 +1161,38 @@
         "local": "muzei/izobreteniya/video/day-31jan-girotron-9x16-poster.jpg",
         "v": 2
       }
+    },
+    "izobreteniya/30jan-kotelnikov": {
+      "title": "История за минуту",
+      "note": "Кадр ролика — подлинная фотография Г. Е. Котельникова, Уральский государственный военно-исторический музей (Госкаталог № 12764542). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov.mp4",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 66.7,
+        "mb": 14.6
+      },
+      "vertical": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 66.7,
+        "mb": 14.3
+      },
+      "poster": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
