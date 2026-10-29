@@ -258,7 +258,8 @@ async function rezhimDni() {
   const filtr = opt.dni === 'vse' ? '' : opt.dni;
   const spisok = Object.values(dni).flat().filter(u => u.includes('muzei/' + filtr.replace(/^([^/]+)\//, '$1/den/')));
   const PUNKTY = {
-    'не открылась': d => d.sloman, 'факты ниже 2-го экрана': d => d.fakty > 2, 'нет блока фактов': d => !d.sloman && d.fakty === null,
+    'не открылась': d => d.sloman, 'заготовка «День готовится»': d => d.zagotovka,
+    'факты ниже 2-го экрана': d => d.fakty > 2, 'нет блока фактов': d => !d.sloman && !d.zagotovka && d.fakty === null,
     'лупа не открылась': d => d.lupa === 'нет', 'кадр без лупы': d => d.bezLupy > 0, 'шире 390': d => d.shire > W, 'битые картинки': d => d.bitye > 0,
     'ошибки консоли': d => d.oshibki > 0, 'плашка >10%': d => d.plashka > 10,
   };
@@ -287,15 +288,16 @@ async function rezhimDni() {
       const p1 = await page.evaluate(PLASHKI, { W, H, lipkie: false }).catch(() => ({ p: 0, kto: '' }));
       const r = await page.evaluate(async ({ W, H }) => {
         const vis = e => { const b = e.getBoundingClientRect(); const cs = getComputedStyle(e); return b.width > 0 && b.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
-        const f = [...document.querySelectorAll('#fakty, #fakty-dnya, [id*="fakt"], [class*="fakt"]')].find(vis)
-          || [...document.querySelectorAll('h2,h3')].find(e => vis(e) && /факт/i.test(e.textContent));
+        // id блока фактов в днях: fakty, fakty-dnya, facts (не fakt-ili-mif — это игра «факт или миф»)
+        const f = [...document.querySelectorAll('#fakty, #fakty-dnya, #facts')].find(vis)
+          || [...document.querySelectorAll('h2,h3')].find(e => vis(e) && /факты/i.test(e.textContent));
         const fakty = f ? Math.floor((f.getBoundingClientRect().top + scrollY) / H) + 1 : null;
         // ленивые картинки — грузим все, ждём до 8 с
         const imgs = [...document.querySelectorAll('img[src]')];
         imgs.forEach(i => { i.loading = 'eager'; });
         await Promise.race([Promise.all(imgs.map(i => i.complete ? 0 : new Promise(ok => { i.onload = i.onerror = ok; }))), new Promise(ok => setTimeout(ok, 8000))]);
         return {
-          fakty, shire: document.documentElement.scrollWidth,
+          fakty, shire: document.documentElement.scrollWidth, zagotovka: !!document.querySelector('.den-soon'),
           bitye: imgs.filter(i => i.complete && i.naturalWidth === 0).map(i => i.currentSrc || i.src),
           kadrov: imgs.filter(i => i.closest('figure') && vis(i)).length, sLupoy: document.querySelectorAll('img[data-lupa]').length,
           bezLupy: imgs.filter(i => i.closest('figure') && vis(i) && !i.hasAttribute('data-lupa')).length,
@@ -328,8 +330,8 @@ async function rezhimDni() {
   await Promise.all(Array.from({ length: POTOKOV }, async () => { while (och.length) await zamerDnya(och.shift()); }));
   out.sort((a, b) => a.den.localeCompare(b.den));
   const zn = v => v ?? '—';
-  const tsv = [['день', 'факты, экран', 'кадров', 'с лупой', 'кадров без лупы', 'лупа открылась', 'ширина', 'битых картинок', 'ошибок консоли', 'плашка, % экрана', 'плашка', 'недостатки'].join('\t')];
-  for (const d of out) tsv.push([d.den, d.sloman ? 'не открылась' : zn(d.fakty), zn(d.kadrov), zn(d.sLupoy), zn(d.bezLupy), zn(d.lupa), zn(d.shire), zn(d.bitye), d.oshibki, zn(d.plashka), d.plashkaKto || '',
+  const tsv = [['день', 'заготовка', 'факты, экран', 'кадров', 'с лупой', 'кадров без лупы', 'лупа открылась', 'ширина', 'битых картинок', 'ошибок консоли', 'плашка, % экрана', 'плашка', 'недостатки'].join('\t')];
+  for (const d of out) tsv.push([d.den, d.zagotovka ? 'да' : '', d.sloman ? 'не открылась' : zn(d.fakty), zn(d.kadrov), zn(d.sLupoy), zn(d.bezLupy), zn(d.lupa), zn(d.shire), zn(d.bitye), d.oshibki, zn(d.plashka), d.plashkaKto || '',
     Object.keys(PUNKTY).filter(n => PUNKTY[n](d)).join('; ')].join('\t'));
   fs.writeFileSync(`${OUT}/dni.tsv`, tsv.join('\n') + '\n');
   fs.writeFileSync(`${OUT}/dni-syroe.json`, JSON.stringify(out, null, 1));
