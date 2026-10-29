@@ -178,6 +178,10 @@ async function zamer(url) {
   rows.push(r);
   process.stdout.write('.');
 }
+// --dni vse | --dni izobreteniya/01- — все страницы дней (Р384, r486: «машина смотрит все дни с телефона после каждой
+// выкладки»), по шесть мерок на день; итог — dni.tsv «день → цифры» и dni-svodka.md: недостаток на 2+ днях одного
+// музея — «чинить в шаблоне». С --porog — свой раздел «dni» в эталоне: хуже — код 1, лучше — с --zapisat понижается.
+if (opt.dni) { await rezhimDni(); await browser.close(); server?.close(); process.exit(process.exitCode || 0); }
 // --tolko izobreteniya/01-25,izobreteniya/01-26 — замер только этих дней (ручная проверка одной правки)
 if (opt.tolko) vyborka.splice(0, vyborka.length, ...opt.tolko.split(',').map(k => all.find(u => u.endsWith(`muzei/${k.replace('/', '/den/')}/`))).filter(Boolean));
 // несколько страниц одновременно — укладываемся в ~3 минуты в проверке заявки
@@ -224,7 +228,7 @@ if (opt.porog) {
     for (const [n, v] of Object.entries(itog)) punkty[n] = staryy?.punkty?.[n] !== undefined ? Math.min(staryy.punkty[n], v) : v;
     // Ни одно число не снизилось — файл не трогаем, чтобы храповик не плодил пустых заявок.
     if (staryy && JSON.stringify(punkty) === JSON.stringify(staryy.punkty)) console.log('Эталон не изменился.');
-    else fs.writeFileSync(opt.porog, JSON.stringify({
+    else fs.writeFileSync(opt.porog, JSON.stringify({ ...staryy,
       'что это': 'Эталон замера «глазами посетителя»: сколько страниц выборки проваливают пункт. Заявка, где провалов больше, — красная. Понижать можно, повышать нельзя.',
       'снят': new Date().toISOString().slice(0, 10), 'страниц': rows.length, punkty }, null, 2) + '\n');
     if (!staryy || JSON.stringify(punkty) !== JSON.stringify(staryy.punkty)) console.log(`Эталон записан: ${opt.porog}`);
@@ -244,4 +248,126 @@ if (opt.porog) {
     if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '```\n' + s + o + '```\n');
     if (huzhe.length) process.exit(1);
   }
+}
+
+// ——— Режим --dni: все страницы дней ———
+// Мерки дня: экран, на котором начинается блок фактов (1 — первый экран 844 px); открывается ли лупа у первого кадра
+// (касание по кадру, как посетитель: если плашка закрыла кадр — не откроется); ширина страницы; битые картинки
+// (ленивые грузятся все); ошибки консоли; плашки (fixed/sticky), закрывающие >10% экрана — сверху и после прокрутки.
+async function rezhimDni() {
+  const filtr = opt.dni === 'vse' ? '' : opt.dni;
+  const spisok = Object.values(dni).flat().filter(u => u.includes('muzei/' + filtr.replace(/^([^/]+)\//, '$1/den/')));
+  const PUNKTY = {
+    'не открылась': d => d.sloman, 'факты ниже 2-го экрана': d => d.fakty > 2, 'нет блока фактов': d => !d.sloman && d.fakty === null,
+    'лупа не открылась': d => d.lupa === 'нет', 'кадр без лупы': d => d.bezLupy > 0, 'шире 390': d => d.shire > W, 'битые картинки': d => d.bitye > 0,
+    'ошибки консоли': d => d.oshibki > 0, 'плашка >10%': d => d.plashka > 10,
+  };
+  const out = [], t1 = Date.now();
+  async function zamerDnya(url) {
+    const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+    const page = await ctx.newPage();
+    const d = { den: url.match(/muzei\/([^/]+)\/den\/([^/]+)/).slice(1).join('/'), oshibki: 0, chto: [] };
+    const bityeAdr = new Set();
+    page.on('pageerror', e => { d.oshibki++; d.chto.push(String(e.message).slice(0, 80)); });
+    page.on('console', m => { if (m.type() === 'error') { d.oshibki++; d.chto.push(m.text().slice(0, 80)); } });
+    page.on('response', res => { if (res.status() >= 400 && res.request().resourceType() === 'image') bityeAdr.add(res.url()); });
+    try {
+      await page.goto(url, { waitUntil: 'load', timeout: 45000 });
+      // плашка cookie (src/lib/metrika.mjs) встаёт, когда догрузится её стиль, — ждём её до 1,5 с, иначе мерка видит пустой экран
+      await page.locator('.rc-cookie').first().waitFor({ state: 'visible', timeout: 1500 }).catch(() => {});
+      await page.waitForTimeout(300);
+      // липкая (sticky) наверху страницы стоит в потоке и ничего не закрывает — её мерим только после прокрутки
+      const PLASHKI = ({ W, H, lipkie }) => [...document.querySelectorAll('body *')].map(e => {
+        const cs = getComputedStyle(e); if (cs.position !== 'fixed' && !(lipkie && cs.position === 'sticky')) return null;
+        if (cs.visibility === 'hidden' || cs.display === 'none' || +cs.opacity === 0) return null;
+        const b = e.getBoundingClientRect();
+        const a = Math.max(0, Math.min(b.bottom, H) - Math.max(b.top, 0)) * Math.max(0, Math.min(b.right, W) - Math.max(b.left, 0));
+        return { p: Math.round(a / (W * H) * 100), kto: e.tagName.toLowerCase() + (e.id ? '#' + e.id : e.classList[0] ? '.' + e.classList[0] : '') };
+      }).filter(x => x && x.p > 0).sort((a, b) => b.p - a.p)[0] || { p: 0, kto: '' };
+      const p1 = await page.evaluate(PLASHKI, { W, H, lipkie: false }).catch(() => ({ p: 0, kto: '' }));
+      const r = await page.evaluate(async ({ W, H }) => {
+        const vis = e => { const b = e.getBoundingClientRect(); const cs = getComputedStyle(e); return b.width > 0 && b.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none'; };
+        const f = [...document.querySelectorAll('#fakty, #fakty-dnya, [id*="fakt"], [class*="fakt"]')].find(vis)
+          || [...document.querySelectorAll('h2,h3')].find(e => vis(e) && /факт/i.test(e.textContent));
+        const fakty = f ? Math.floor((f.getBoundingClientRect().top + scrollY) / H) + 1 : null;
+        // ленивые картинки — грузим все, ждём до 8 с
+        const imgs = [...document.querySelectorAll('img[src]')];
+        imgs.forEach(i => { i.loading = 'eager'; });
+        await Promise.race([Promise.all(imgs.map(i => i.complete ? 0 : new Promise(ok => { i.onload = i.onerror = ok; }))), new Promise(ok => setTimeout(ok, 8000))]);
+        return {
+          fakty, shire: document.documentElement.scrollWidth,
+          bitye: imgs.filter(i => i.complete && i.naturalWidth === 0).map(i => i.currentSrc || i.src),
+          kadrov: imgs.filter(i => i.closest('figure') && vis(i)).length, sLupoy: document.querySelectorAll('img[data-lupa]').length,
+          bezLupy: imgs.filter(i => i.closest('figure') && vis(i) && !i.hasAttribute('data-lupa')).length,
+        };
+      }, { W, H });
+      Object.assign(d, r);
+      await page.evaluate(() => window.scrollTo(0, innerHeight * 2));
+      await page.waitForTimeout(400);
+      const p2 = await page.evaluate(PLASHKI, { W, H, lipkie: true }).catch(() => ({ p: 0, kto: '' }));
+      const pl = p2.p > p1.p ? p2 : p1; d.plashka = pl.p; d.plashkaKto = pl.kto;
+      await page.evaluate(() => window.scrollTo(0, 0));
+      // лупа: касание по первому кадру с лупой — открылся ли просмотрщик
+      d.lupa = '—';
+      if (d.sLupoy) {
+        const k = page.locator('img[data-lupa]').first();
+        try {
+          await k.click({ timeout: 3000 });
+          await page.locator('.pswp--open, .pswp').first().waitFor({ state: 'visible', timeout: 4000 });
+          d.lupa = 'да'; await page.keyboard.press('Escape');
+        } catch { d.lupa = 'нет'; }
+      }
+      for (const u of d.bitye) bityeAdr.add(u);
+      d.bitye = bityeAdr.size; d.bityeAdr = [...bityeAdr].slice(0, 3).map(u => u.replace(SITE, '/'));
+    } catch (e) { d.sloman = 1; d.chto.push(String(e.message).split('\n')[0].slice(0, 80)); }
+    await ctx.close();
+    out.push(d);
+    if (out.length % 100 === 0) console.log(`дни: ${out.length} из ${spisok.length}`);
+  }
+  const och = [...spisok];
+  await Promise.all(Array.from({ length: POTOKOV }, async () => { while (och.length) await zamerDnya(och.shift()); }));
+  out.sort((a, b) => a.den.localeCompare(b.den));
+  const zn = v => v ?? '—';
+  const tsv = [['день', 'факты, экран', 'кадров', 'с лупой', 'кадров без лупы', 'лупа открылась', 'ширина', 'битых картинок', 'ошибок консоли', 'плашка, % экрана', 'плашка', 'недостатки'].join('\t')];
+  for (const d of out) tsv.push([d.den, d.sloman ? 'не открылась' : zn(d.fakty), zn(d.kadrov), zn(d.sLupoy), zn(d.bezLupy), zn(d.lupa), zn(d.shire), zn(d.bitye), d.oshibki, zn(d.plashka), d.plashkaKto || '',
+    Object.keys(PUNKTY).filter(n => PUNKTY[n](d)).join('; ')].join('\t'));
+  fs.writeFileSync(`${OUT}/dni.tsv`, tsv.join('\n') + '\n');
+  fs.writeFileSync(`${OUT}/dni-syroe.json`, JSON.stringify(out, null, 1));
+  // сводка по музеям: недостаток на 2+ днях одного музея — «чинить в шаблоне», на одном — «чинить в дне»
+  const muzei = {}; for (const d of out) (muzei[d.den.split('/')[0]] ||= []).push(d);
+  const itog = {}; for (const n of Object.keys(PUNKTY)) itog[n] = out.filter(PUNKTY[n]).length;
+  fs.writeFileSync(`${OUT}/dni-itog.json`, JSON.stringify(itog, null, 2) + '\n');
+  let md = `# Все дни глазами посетителя, 390×844\n\nзамер на ${out.filter(d => !d.sloman).length} из ${spisok.length} страниц дней, ${opt.dist ? 'сборка ' + opt.dist : SITE}, ${Math.round((Date.now() - t1) / 1000)} с\n\n`;
+  md += `| недостаток | дней |\n|---|---|\n${Object.entries(itog).map(([n, v]) => `| ${n} | ${v} |`).join('\n')}\n\n`;
+  for (const [m, list] of Object.entries(muzei)) {
+    const str = Object.keys(PUNKTY).map(n => [n, list.filter(PUNKTY[n]).map(d => d.den.split('/')[1])]).filter(([, l]) => l.length);
+    md += `## ${m} — ${list.length} дн.\n`;
+    md += str.length ? str.map(([n, l]) => `- ${l.length >= 2 ? '**чинить в шаблоне**' : 'чинить в дне'}: ${n} — ${l.length} дн. (${l.slice(0, 12).join(', ')}${l.length > 12 ? ' …' : ''})`).join('\n') : '- недостатков нет';
+    const pl = [...new Set(list.filter(PUNKTY['плашка >10%']).map(d => d.plashkaKto))];
+    if (pl.length) md += `\n- плашки: ${pl.join(', ')}`;
+    md += '\n\n';
+  }
+  fs.writeFileSync(`${OUT}/dni-svodka.md`, md);
+  console.log(md.split('\n## ')[0]);
+  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, md);
+  if (!opt.porog) return;
+  // храповик дней — раздел «dni» эталона, тот же закон: понижать можно, повышать нельзя
+  const staryy = fs.existsSync(opt.porog) ? JSON.parse(fs.readFileSync(opt.porog, 'utf8')) : {};
+  const bylo = staryy.dni?.punkty;
+  const huzhe = bylo ? Object.entries(itog).filter(([n, v]) => v > (bylo[n] ?? 0)).map(([n, v]) => `  ✗ ${n}: было ${bylo[n] ?? 0}, стало ${v}`) : [];
+  let o = bylo ? (huzhe.length ? `\nДни: ХУЖЕ эталона — ${huzhe.length} п.:\n${huzhe.join('\n')}\nПо дням — dni.tsv, по музеям — dni-svodka.md.\n` : '\nДни: ни один пункт не стал хуже. ✓\n')
+    : '\nДни: эталона ещё нет — снят этим замером.\n';
+  if (opt.zapisat) {
+    const punkty = Object.fromEntries(Object.entries(itog).map(([n, v]) => [n, bylo?.[n] !== undefined ? Math.min(bylo[n], v) : v]));
+    if (JSON.stringify(punkty) !== JSON.stringify(bylo)) {
+      staryy.dni = { 'что это': 'Все страницы дней (r486): сколько дней проваливают пункт. Хуже — храповик красный. Понижать можно, повышать нельзя.',
+        'снят': new Date().toISOString().slice(0, 10), 'страниц': spisok.length, punkty };
+      fs.writeFileSync(opt.porog, JSON.stringify(staryy, null, 2) + '\n');
+      o += `Эталон дней записан: ${opt.porog}\n`;
+    }
+  }
+  console.log(o);
+  fs.appendFileSync(`${OUT}/dni-svodka.md`, '```' + o + '```\n');
+  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '```' + o + '```\n');
+  if (huzhe.length) process.exitCode = 1;
 }

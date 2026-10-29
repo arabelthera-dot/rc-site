@@ -6,6 +6,15 @@
 # пуск proverka к заявке не прикрепляется (замер 17.10, #52) — храповик сам одобряет свою ждущую проверку.
 # Выключатель — переменная GLAZAMI_HRAPOVIK (≠ '1' — спит). Откат — удалить этот файл.
 #
+# Все дни с телефона (r486, Р384: «машина смотрит глазами посетителя вместо Сергея»): тем же заданием после выборки
+# `glazami.mjs --dni vse` открывает ВСЕ страницы дней всех музеев на 390×844 и меряет каждую: экран блока фактов,
+# открывается ли лупа, кадры без лупы, ширина, битые картинки, ошибки консоли, плашки >10% экрана. Артефакт
+# glazami-dni — dni.tsv «день → цифры» и dni-svodka.md (недостаток на 2+ днях одного музея — «чинить в шаблоне»).
+# Храповик — раздел «dni» в scripts/glazami-porog.json: стало хуже — задание красное; лучше — эталон понижается той же заявкой.
+# Пять вопросов: задевает — только это задание и раздел «dni» эталона, сайт не меняет; нужно — GLAZAMI_HRAPOVIK=1;
+# без нужного — после слияний спит, как и выборка; проверка — ручной пуск с любой ветки
+# (gh workflow run glazami-hrapovik.yml --ref <ветка>): мерит и краснеет, если хуже, эталон не пишет, заявки нет; откат — убрать два шага «все дни».
+#
 # Задание reestry (Е1, Сергей 20.10.2026, Р47) — тот же храповик-заявка для снимков реестров Минюста: по понедельникам
 # в 6:20 МСК `node scripts/prava.mjs --reestry` обновляет data/reestry/*.json, есть разница — заявка с автослиянием;
 # её сборка сверяет сайт с новым снимком (src/integrations/zakon.mjs) — новое имя из реестра в тексте роняет заявку.
@@ -29,13 +38,15 @@ concurrency:
   cancel-in-progress: true
 jobs:
   hrapovik:
-    if: github.event_name != 'schedule' && vars.GLAZAMI_HRAPOVIK == '1' && github.ref == 'refs/heads/main'
+    # после слияния — только при GLAZAMI_HRAPOVIK=1; ручной пуск — всегда и с любой ветки (проба),
+    # эталон пишется и заявка открывается только на main при включённом выключателе
+    if: (github.event_name == 'push' && vars.GLAZAMI_HRAPOVIK == '1') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
       actions: write
-    timeout-minutes: 15
+    timeout-minutes: 75
     env:
       VETKA: avto/glazami-porog
       GH_TOKEN: ${{ github.token }}
@@ -48,8 +59,23 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npx --no-install playwright install --with-deps chromium
-      - run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json --zapisat
+      - run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json ${{ github.ref == 'refs/heads/main' && vars.GLAZAMI_HRAPOVIK == '1' && '--zapisat' || '' }}
+      - name: все дни с телефона
+        if: success() || failure()
+        run: node scripts/glazami.mjs https://russian-civilization.ru/ /tmp/glazami-dni --dist dist --dni vse --potokov 6 --porog scripts/glazami-porog.json ${{ github.ref == 'refs/heads/main' && vars.GLAZAMI_HRAPOVIK == '1' && '--zapisat' || '' }}
+      - name: все дни — таблица
+        if: success() || failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: glazami-dni
+          path: |
+            /tmp/glazami-dni/dni.tsv
+            /tmp/glazami-dni/dni-svodka.md
+            /tmp/glazami-dni/dni-syroe.json
+            /tmp/glazami-dni/dni-itog.json
+          retention-days: 30
       - name: заявка с понижённым эталоном
+        if: github.ref == 'refs/heads/main' && vars.GLAZAMI_HRAPOVIK == '1'
         run: |
           git diff --quiet -- scripts/glazami-porog.json && { echo "Эталон не изменился — заявки нет."; exit 0; }
           git config user.name 'github-actions[bot]'
