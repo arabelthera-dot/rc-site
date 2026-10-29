@@ -875,35 +875,35 @@
       }
     },
     "izobreteniya/18jan-odner": {
-      "title": "История в 62 секунды",
-      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: арифмометр Однера № 16981 (Глазовский краеведческий музей); арифмометр Тома де Кольмара (Государственный Эрмитаж); модель зубчатого колеса конструкции В. Т. Однера (Политехнический музей); арифмометр Однера № 18539 (Белогорский краеведческий музей); арифмометр «Однер» 1897 года (Бодайбинский городской краеведческий музей); арифмометр Triumphator (Бердский историко-художественный музей); арифмометр «Феликс» (Ставропольский музей-заповедник); «Феликс» и «Феликс-М» (Рыбинский музей-заповедник). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "title": "История в 51 секунду",
+      "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: арифмометр Однера № 16981 (Глазовский краеведческий музей); модель зубчатого колеса конструкции В. Т. Однера (Политехнический музей); арифмометр Однера № 18539 (Белогорский краеведческий музей им. Н. Г. Ельченинова); арифмометр фирмы «Однер» 1897 года (Бодайбинский городской краеведческий музей им. В. Ф. Верещагина); арифмометр «Феликс» (Ставропольский музей-заповедник им. Г. Н. Прозрителева и Г. К. Праве); арифмометры «Феликс» и «Феликс-М» (Рыбинский музей-заповедник). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
       "horizontal": {
         "file": "izobreteniya/18jan-odner/day-18jan-odner.mp4",
         "local": "muzei/izobreteniya/video/day-18jan-odner.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 62.1,
-        "mb": 16.4
+        "sec": 51.4,
+        "mb": 15.0
       },
       "vertical": {
         "file": "izobreteniya/18jan-odner/day-18jan-odner-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-18jan-odner-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 62.1,
-        "mb": 13.8
+        "sec": 51.4,
+        "mb": 11.5
       },
       "poster": {
         "file": "izobreteniya/18jan-odner/day-18jan-odner-poster.jpg",
         "local": "muzei/izobreteniya/video/day-18jan-odner-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "izobreteniya/18jan-odner/day-18jan-odner-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-18jan-odner-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "izobreteniya/19jan-kantorovich": {
@@ -1192,6 +1192,38 @@
         "file": "izobreteniya/23jan-umov/day-23jan-umov-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-23jan-umov-9x16-poster.jpg",
         "v": 2
+      }
+    },
+    "izobreteniya/30jan-kotelnikov": {
+      "title": "История за минуту",
+      "note": "Кадр ролика — подлинная фотография Г. Е. Котельникова, Уральский государственный военно-исторический музей (Госкаталог № 12764542). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov.mp4",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 66.7,
+        "mb": 14.6
+      },
+      "vertical": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 66.7,
+        "mb": 14.3
+      },
+      "poster": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-30jan-kotelnikov-9x16-poster.jpg",
+        "v": 1
       }
     }
   }
