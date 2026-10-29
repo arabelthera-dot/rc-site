@@ -49,6 +49,12 @@
    "issuer": "GlobalSign GCC R3 DV TLS CA 2020",
    "checked": "2026-10-29"
   },
+  "keldysh.ru": {
+   "kind": "other",
+   "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+   "issuer": "YE2",
+   "checked": "2026-10-29"
+  },
   "mai.ru": {
    "kind": "ru-ca",
    "error": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
@@ -59,6 +65,12 @@
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
    "issuer": "YR1",
+   "checked": "2026-10-29"
+  },
+  "mining-enc.ru": {
+   "kind": "other",
+   "error": "CERT_HAS_EXPIRED",
+   "issuer": "5.45.112.142",
    "checked": "2026-10-29"
   },
   "ns.kapitza.ras.ru": {

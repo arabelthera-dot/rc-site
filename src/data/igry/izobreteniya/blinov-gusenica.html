@@ -1,0 +1,84 @@
+<section class="block" id="games" style="background:rgba(6,12,23,.6)">
+  <div class="wrap">
+    <div class="kicker">Играй</div>
+    <h2>Игры дня</h2>
+<!-- ── ИГРЫ ── -->
+
+<div class="gm bl-igra" id="gm_blinov" data-blinov-igra data-award="gm_blinov" data-points="15">
+  <h3>🐎 Игра 1 · Проведи воз по грязи</h3>
+  <div class="bl-play">
+    <div class="bl-bar">
+      <ol class="bl-steps" aria-label="Шаг игры"><li class="on">1</li><li>2</li><li>3</li></ol>
+      <p class="bl-lbl">Что сделать сейчас:</p>
+    </div>
+    <p class="bl-task" aria-live="polite">Нажми «Поехали»</p>
+    <p class="bl-sub">Обычная телега: 2000 кирпичей, 30 человек, пара лошадей</p>
+    <div class="bl-stage" data-igra-scena>
+      <canvas class="bl-cv" role="img" aria-label="Рисованная сцена игры: воз с кирпичами и людьми на паре лошадей на грязной дороге"></canvas>
+    </div>
+    <p class="bl-place">Вольск · испытания 1880–1881 · рисованная схема</p>
+    <div class="bl-status" aria-live="polite">
+      <span class="bl-st-name">Телега на колёсах</span>
+      <span class="bl-meter" aria-hidden="true"><i></i></span>
+      <span class="bl-st-val">стоит на дороге</span>
+    </div>
+    <div class="bl-ctl">
+      <button type="button" class="bl-btn bl-go" aria-label="Поехали — нажми один раз"><span class="bl-btn-t">Поехали<small>нажми</small></span></button>
+      <button type="button" class="bl-btn bl-link" hidden aria-label="Положить звено под колёса"><span class="bl-ico-link" aria-hidden="true"></span><span class="bl-btn-t">Звено<small class="bl-cnt">0 из 8</small></span></button>
+    </div>
+    <span class="bl-hand" aria-hidden="true" hidden><i class="bl-hand-ring"></i><svg viewBox="0 0 40 48" width="40" height="48"><path d="M15 4c2.2 0 4 1.8 4 4v13l1.2-.5c1.9-.7 4 .2 4.8 2l.3.7.8-.3c1.9-.6 4 .3 4.7 2.2l.2.5c1.9-.4 3.8.7 4.4 2.5.2.6.3 1.2.3 1.8V36c0 5.5-4.5 10-10 10h-4.6c-3 0-5.8-1.4-7.7-3.7L5.2 33.5c-1.3-1.6-1.1-4 .5-5.3 1.5-1.2 3.7-1.1 5.1.3l.2.2V8c0-2.2 1.8-4 4-4z" fill="#fff" stroke="#1a1206" stroke-width="2.2" stroke-linejoin="round"/></svg></span>
+    <div class="bl-cap" aria-live="polite" hidden><b>Что произошло:</b> <span class="bl-cap-t"></span></div>
+
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты везёшь груз настоящего испытания Блинова — 2000 кирпичей и три десятка человек — по раскисшей дороге.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми «Поехали»</b> → обычная телега на колёсах увязнет, лошади встанут.</li>
+        <li><b>Нажми «Звено» 8 раз</b> → каждое звено ложится в грязь под колёса, воз поднимается, цепь замыкается.</li>
+        <li><b>Снова нажми «Поехали»</b> → воз на «бесконечных рельсах» идёт по грязи на той же паре лошадей.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: держать палец не нужно — только нажимать. Нажимай то, что мигает и куда показывает рука.</p>
+      <p class="igra-pravila-final">Чем кончится: воз пройдёт, откроется лента лет от патента Блинова до танков и бульдозеров, +15 баллов в общий счёт страницы.</p>
+    </div>
+
+    <div class="bl-finale" hidden>
+      <p class="bl-big">Тот же груз, та же пара лошадей — и воз идёт по грязи.</p>
+      <div class="bl-vs">
+        <div class="bl-vs-old"><b>10+</b>лошадей нужно телеге на колёсах</div>
+        <div class="bl-vs-new"><b>2</b>лошади везут вагон на бесконечных рельсах</div>
+      </div>
+      <ol class="bl-years" aria-label="Лента лет">
+        <li><b>1879</b>патент Блинова на «вагон с бесконечными рельсами»</li>
+        <li><b>1888</b>паровой «самоход» на гусеницах</li>
+        <li><b>1910-е</b>гусеничные тракторы в полях</li>
+        <li><b>1916</b>первые танки</li>
+        <li><b>сегодня</b>бульдозеры, экскаваторы, краны</li>
+      </ol>
+      <p class="bl-note">+15 баллов — в общем счёте страницы «Сколько баллов ты собрал?».</p>
+      <button type="button" class="bl-again">↻ Сыграть ещё раз</button>
+    </div>
+    <p class="bl-note">Модель, а не расчёт: глубина колеи условная. Груз и пара лошадей — испытание в Вольске («Саратовский листок», 8 января 1881 г.); «не меньше десяти лошадей» для колёсной телеги — по Р. В. Салтыкову (cyberleninka.ru).</p>
+  </div>
+  <noscript><p>Для игры нужен JavaScript. Текстом: обычная телега с 2000 кирпичей и 30 людьми вязнет в грязи — колесо давит в одну точку. Блинов подложил под колёса замкнутую цепь звеньев, «бесконечные рельсы»: вес лёг на длинную полосу, и тот же воз пошёл на паре лошадей вместо десяти. Дальше — тракторы, танки и вся гусеничная техника.</p></noscript>
+</div>
+<div class="gm" id="gm_quiz2">
+  <h3>⏱ Игра 2 · Быстрый ответ</h3>
+  <div class="gm-score">Чем быстрее ответишь — тем больше очков. Осталось: <b id="gm_quiz2_t">15</b> сек</div>
+  <p style="font-weight:600;font-size:16px;margin:0 0 12px">В каком году Блинов получил патент на гусеничный ход?</p>
+  <div id="gm_quiz2_opts" data-igra-scena><button class="gm-btn" onclick="gm_quiz2_ans(0)">А) 1865</button><button class="gm-btn" onclick="gm_quiz2_ans(1)">Б) 1879</button><button class="gm-btn" onclick="gm_quiz2_ans(2)">В) 1896</button><button class="gm-btn" onclick="gm_quiz2_ans(3)">Г) 1902</button></div>
+  <div class="gm-exp" id="gm_quiz2_exp">1879 год, привилегия № 2245 на «вагон с бесконечными рельсами» — его ещё тянули лошади. А в 1888-м Блинов построил под Балаковым паровой трактор на гусеницах — за 16 лет до испытаний Холта.</div>
+  <div class="igra-pravila" data-igra-pravila>
+    <h2 class="igra-pravila-h">Как играть</h2>
+    <p class="igra-pravila-zachem">Проверь, помнишь ли ты главный год этой истории — когда Блинов получил патент на гусеничный ход.</p>
+    <ol class="igra-pravila-shagi">
+      <li><b>Прочитай вопрос</b> — часы начинают отсчёт 15 секунд, когда игра появилась на экране.</li>
+      <li><b>Нажми один из четырёх ответов.</b> Выбор один, передумать нельзя.</li>
+      <li><b>Прочитай пояснение</b> под ответами: зелёный — верный ответ, красный — твой неверный.</li>
+    </ol>
+    <p class="igra-pravila-nyuans">Нюансы: чем быстрее верный ответ, тем больше баллов — от 5 до 15. Не успел за 15 секунд — ответ засчитан как неверный, пояснение откроется само.</p>
+    <p class="igra-pravila-final">Верный ответ — баллы сразу уходят в общий счёт страницы «Сколько баллов ты собрал?».</p>
+  </div>
+</div>
+
+  </div>
+</section>

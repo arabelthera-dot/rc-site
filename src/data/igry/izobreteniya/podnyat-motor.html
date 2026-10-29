@@ -1,0 +1,41 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Игра 1 · Поднять мотор в небо</h2>
+    <p style="max-width:62ch">Дирижаблю нужно 80 лошадиных сил на винт. Выбери, на чём работает мотор и как он устроен, и нажми «Запустить». Взлетит только верное сочетание. На каждый неверный ход объясним, что пошло не так.</p>
+    <div class="lab" id="lab">
+      <div class="lab-row" role="group" aria-labelledby="lg1"><span class="lbl" id="lg1">1. Чем крутить винт</span>
+        <button class="seg" type="button" data-k="fuel" data-v="steam" aria-pressed="true">Паровая машина: котёл и уголь</button>
+        <button class="seg" type="button" data-k="fuel" data-v="gas" aria-pressed="false">Газовый двигатель: газ в баллонах</button>
+        <button class="seg" type="button" data-k="fuel" data-v="petrol" aria-pressed="false">Бензиновый мотор</button>
+      </div>
+      <div class="lab-row" role="group" aria-labelledby="lg2"><span class="lbl" id="lg2">2. Вес на одну лошадиную силу</span>
+        <button class="seg" type="button" data-k="build" data-v="heavy" aria-pressed="true">30 кг, как моторы LZ-1 (1900)</button>
+        <button class="seg" type="button" data-k="build" data-v="light" aria-pressed="false">3 кг, как мотор Костовича</button>
+      </div>
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="labGo">Запустить</button>
+        <button class="btn ghost" type="button" id="labReset">Начать заново</button>
+      </div>
+      <div class="lab-stage">
+        <canvas id="labCv" width="640" height="220" role="img" aria-label="Дирижабль у земли, под ним гондола с мотором"></canvas>
+        <div class="lab-cap">Модель, а не чертёж: подъёмная сила условная. Вес моторов — из источников: 240 кг на 80 сил у Костовича, 420 кг на 14 сил у LZ-1.</div>
+      </div>
+      <div class="lab-msg" id="labMsg" aria-live="polite">Дирижабль у земли. Выбери топливо и вес мотора и нажми «Запустить».</div>
+      <div class="lab-found" id="labFound">Найдено причин неудачи: 0 из 3.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия опыта: паровой машине нужны котёл и запас угля — дирижабль с ними не поднимется. Газовому двигателю нужен газ в баллонах на борту — тот же лишний груз. Бензиновый мотор с весом 30 кг на силу на 80 сил весит 2400 кг — тоже слишком тяжело. Взлетает так: бензин и 3 кг на силу, как у Костовича, — 240 кг на 80 сил.</div></noscript>
+    </div>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты — конструктор дирижабля «Россия» в Петербурге, 1880-е годы. Узнаешь, почему ни пар, ни газ, ни тяжёлый мотор не поднимут корабль и какой мотор Костович поставил вместо них.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Выбери, чем крутить винт</b> — паровая машина с котлом и углём, газовый двигатель с баллонами или бензиновый мотор.</li>
+        <li><b>Выбери вес на одну лошадиную силу</b> — 30 кг, как у моторов первого цеппелина LZ-1, или 3 кг, как у мотора Костовича.</li>
+        <li><b>Нажми «Запустить»</b> — и посмотри, поднимется ли дирижабль.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: если дирижабль не взлетел, под картинкой появится, что именно помешало, — это одна из трёх причин неудачи. Счётчик «Найдено причин неудачи: N из 3» покажет, сколько ты уже нашёл. «Начать заново» вернёт паровую машину и 30 кг на силу; заработанные баллы сохраняются.</p>
+      <p class="igra-pravila-final">Верное сочетание — бензиновый мотор и 3 кг на силу: дирижабль взлетает, 80 лошадиных сил весят всего 240 кг.</p>
+    </div>
+    <p class="src-note" style="margin-top:10px">Правила модели: отказ от пара и газа — М. И. Левин, «Машина-двигатель»; 80 сил при 240 кг — Центральный музей ВВС; 14 сил при 420 кг у LZ-1 — «Российская авиация». 2400 кг — наш расчёт: 30 кг × 80 сил.</p>
+  </div>
+</section>
