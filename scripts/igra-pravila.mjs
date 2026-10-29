@@ -219,7 +219,12 @@ try {
   process.exit(0);
 }
 const krasnye = [];
+// День с карточкой шаблона `adres: den` (src/content/dni-shablon) рисует общий layout музея — html в full-pages у него
+// мёртвая копия, на сайт не идёт; правка его записи (хук, название) не должна будить проверку этой копии (r464, Р365).
+const shablonDen = (m, k) => { const y = `src/content/dni-shablon/${m}/${k}.yaml`;
+  return fs.existsSync(y) && /^adres:\s*den\s*$/m.test(fs.readFileSync(y, 'utf8')); };
 for (const f of izm) {
+  if (shablonDen(path.basename(path.dirname(f)), path.basename(f, '.html'))) continue;
   const st = stranica(path.basename(path.dirname(f)), path.basename(f, '.html'));
   if (!st || !estIgra(st.html)) continue;
   const o = oshibkiPravil(st.html);
