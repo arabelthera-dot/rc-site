@@ -43,6 +43,12 @@
    "issuer": "Russian Trusted Sub CA",
    "checked": "2026-10-29"
   },
+  "ivak.spb.ru": {
+   "kind": "other",
+   "error": "ERR_TLS_CERT_ALTNAME_INVALID",
+   "issuer": "GlobalSign GCC R3 DV TLS CA 2020",
+   "checked": "2026-10-28"
+  },
   "mathsoc.pdmi.ras.ru": {
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
