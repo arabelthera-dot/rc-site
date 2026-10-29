@@ -19,6 +19,9 @@ const udar = z.object({ summary: str, find: z.boolean().optional(), tag: str.opt
   otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum(POMETKI).optional() });
 // Норма фактов дня — museum-inventions п.6 (Р101): «4–5 фактов»; меньше — сборка красная (только adres: den).
 export const NORMA_FAKTOV = 4;
+// Два блока фактов, как у 18 янв. (Р374, Р386: «вместо двух партий полухуков… она одна»): «Десять фактов о …» (id fakty,
+// не меньше 10) и «Ещё пять фактов» (id fakty-dnya, не меньше 5). Один блок или меньше — сборка красная (только adres: den).
+export const BLOK_FAKTOV = 10, BLOK_ESHCHE = 5;
 // Блоки шаблона по порядку; к ним цепляются уникальные разделы дня (razdely.posle), 1:1 из старой страницы.
 // Порядок — как у эталона 13 янв. (src/data/full-pages/izobreteniya/01-13.html): кадры (#kadry) — сразу после игры (Р302).
 export const BLOKI = ['daynav', 'dokument', 'video', 'audioguide', 'story', 'fakty', 'igra', 'kadry', 'pervenstvo', 'quiz', 'result', 'sources', 'calendar', 'kuda-dalshe'];
@@ -103,6 +106,9 @@ export const skhema = z.object({
     const udary = [d.fakty ?? []].flat().flatMap((b) => b.udary);
     if (udary.length < NORMA_FAKTOV)
       ctx.addIssue({ code: 'custom', path: ['fakty', 'udary'], message: `ЗАМОК: фактов ${udary.length}, нужно не меньше ${NORMA_FAKTOV} (museum-inventions п.6, Р101: «4–5 фактов»)` });
+    const bloki = [d.fakty ?? []].flat(), glavnyy = bloki.find((b) => b.id === 'fakty'), eshche = bloki.find((b) => b.id === 'fakty-dnya');
+    if (!glavnyy || glavnyy.udary.length < BLOK_FAKTOV || !eshche || eshche.udary.length < BLOK_ESHCHE)
+      ctx.addIssue({ code: 'custom', path: ['fakty'], message: `ЗАМОК (Р386): нужны два блока фактов, как у 18 янв. — «Десять фактов» (id fakty, ≥${BLOK_FAKTOV}) и «Ещё пять фактов» (id fakty-dnya, ≥${BLOK_ESHCHE}); сейчас ${bloki.length ? bloki.map((b) => `${b.id}: ${b.udary.length}`).join(', ') : 'фактов нет'}` });
     udary.forEach((u, i) => { const net = ['otryvok', 'stranica', 'href', 'pometka'].filter((k) => !u[k]);
       if (net.length) ctx.addIssue({ code: 'custom', path: ['fakty', 'udary', i], message: `ЗАМОК: у факта «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» нет: ${net.join(', ')} (отрывок, страница, ссылка, пометка: ${POMETKI.join(' / ')})` }); });
   }
