@@ -1,0 +1,21 @@
+/* Стили игры sshey-shunt и своих блоков дня (перенесено из src/data/full-pages/izobreteniya/01-07.html) */
+.lab-cap{font-size:12px;color:#8fa5b9;margin-top:6px}
+.lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
+.lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
+.lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
+.lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.press{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
+.press-stage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.press-stage figure{margin:0}
+.press-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#f3ecd9}
+.press-stage figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+@media(max-width:600px){
+  .press-stage{grid-template-columns:1fr}
+}
+#games{scroll-margin-top:52px}
+@media (max-width:600px){
+  #games{padding-top:36px}
+  #games .wrap>h2{font-size:26px}
+  #games .press{padding:14px}
+  #games .lab-btns .btn{padding:11px 18px}
+}

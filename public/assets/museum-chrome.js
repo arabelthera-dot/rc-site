@@ -80,6 +80,8 @@
   + '#secnav .prog{height:2px;width:0;background:var(--gold,#c8a24a);box-shadow:0 0 8px rgba(200,162,74,.6)}'
   + 'section[id]{scroll-margin-top:56px}'
   + '@media (max-width:520px){#secnav a{font-size:12px;padding:5px 10px}#secnav .row{padding:8px 10px}}'
+  + '#secnav.sv .row{box-sizing:border-box;flex-wrap:wrap;overflow:hidden;max-height:var(--sv-h,44px);padding-right:84px}#secnav.sv:not(.open) .row{row-gap:24px}#secnav.sv.open .row{max-height:none}'
+  + '#secnav .vse{position:absolute;top:0;right:0;height:var(--sv-h,44px);padding:0 12px 0 14px;border:0;border-left:1px solid var(--line,rgba(255,255,255,.14));background:rgba(11,13,17,.98);color:var(--gold,#c8a24a);font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer}'
   /* стрелки «пред/след» */
   + '.mcnav{position:fixed;top:50%;transform:translateY(-50%);z-index:54;display:flex;align-items:center;gap:8px;'
   + 'max-width:min(38vw,300px);background:rgba(11,13,17,.9);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);'
@@ -415,6 +417,26 @@
   }
   if(nav){
     var nrow = nav.querySelector('.row'), nprog = doc.getElementById('secprog');
+    /* Р383: на узком экране чипы, которые не влезают, не режутся краем («Ещ…»): строка переносится, видна первая,
+       остальные — под кнопкой «Все ▾». Вид — rc-secnav.css (.sv, .vse). */
+    if(nrow && !nav.querySelector('.vse')){
+      var vse = el('button','vse','Все ▾'); vse.type = 'button'; vse.setAttribute('aria-expanded','false');
+      vse.setAttribute('aria-label','Все разделы страницы');
+      var svSet = function(open){
+        nav.classList.toggle('open', open); vse.setAttribute('aria-expanded', open ? 'true' : 'false');
+        vse.textContent = open ? 'Свернуть ▴' : 'Все ▾';
+      };
+      vse.addEventListener('click', function(){ svSet(!nav.classList.contains('open')); });
+      nrow.addEventListener('click', function(e){ if(e.target.closest('a')) svSet(false); });
+      var svFit = function(){
+        nav.classList.remove('sv'); svSet(false);
+        if(nrow.scrollWidth <= nrow.clientWidth + 1){ if(vse.parentNode) nav.removeChild(vse); return; }
+        var cs = getComputedStyle(nrow), first = nrow.querySelector('a');
+        nav.style.setProperty('--sv-h', (first.offsetHeight + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom)) + 'px');
+        nav.classList.add('sv'); if(!vse.parentNode) nav.insertBefore(vse, nrow.nextSibling);
+      };
+      svFit(); addEventListener('resize', svFit, {passive:true});
+    }
     /* якорь бывает и «адрес-страницы#id» (сборка ставит адрес: при <base> голый # уводит в папку музея) */
     var links = [].slice.call(nav.querySelectorAll('a[href*="#"]:not(.home)'));
     var targets = links.map(function(a){return doc.getElementById(a.getAttribute('href').split('#')[1]);});

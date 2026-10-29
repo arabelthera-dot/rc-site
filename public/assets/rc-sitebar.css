@@ -56,6 +56,8 @@ body:has(> nav.rc-sitebar) .backbtn{display:none!important}
 }
 /* Размеры картинок старых страниц дней (full-pages.mjs): атрибут height не растягивает кадр при img{width:100%} */
 :where(img[data-rc-razmer]){height:auto}
+/* Картинка в figure не шире экрана (Р374: figure.fig 1 янв. — 857 px на телефоне 390); нулевая сила — свои размеры страницы выигрывают */
+:where(figure img){max-width:100%;height:auto}
 /* Соседние дни внизу полной страницы дня (full-pages.mjs) */
 .rc-sosedi{box-sizing:border-box;max-width:720px;margin:24px auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;
   font-family:'Inter',system-ui,sans-serif;font-size:16px}

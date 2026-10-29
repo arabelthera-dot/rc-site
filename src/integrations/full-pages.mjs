@@ -485,7 +485,11 @@ export default function fullPages() {
           const anketa = new Set((fs.existsSync(cardsDir) ? fs.readdirSync(cardsDir) : []).filter((f) => f.endsWith('.json'))
             .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)));
           // Карточка шаблона с `adres: den` (Р286): den/<ключ>/ уже собрал общий layout (den/[key].astro) — ведём как анкету.
-          for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den') anketa.add(k.key);
+          const h1Shablona = new Map();
+          for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den') {
+            anketa.add(k.key);
+            if (k.lead?.h1) h1Shablona.set(k.key, k.lead.h1.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+          }
           const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
           const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {
             const dayOut = path.join(root, 'muzei', museum, 'den', key, 'index.html');
@@ -508,8 +512,10 @@ export default function fullPages() {
           }
           const sosedInfo = (k) => {
             const card = JSON.parse(fs.readFileSync(path.join(cardsDir, `${k}.json`), 'utf8'));
+            // День на шаблоне (`adres: den`): старый HTML — лишь копия staraya/ со старым h1, название — h1 карточки шаблона (Р365).
+            const h1 = h1Shablona.get(k);
             const src = path.join(SRC, museum, `${k}.html`);
-            const title = (fs.existsSync(src) && zagolovok(fs.readFileSync(src, 'utf8'))) || card.title;
+            const title = h1 || (fs.existsSync(src) && zagolovok(fs.readFileSync(src, 'utf8'))) || card.title;
             return { href: `${base}muzei/${museum}/den/${k}/`, when: whenOfKey(k), title, hook: card.hook };
           };
           for (const { key, self, out, from, staraya, shablon } of jobs) {

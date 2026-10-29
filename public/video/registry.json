@@ -409,21 +409,21 @@
       }
     },
     "izobreteniya/29jan-kostovich-rossiya": {
-      "title": "История в 49 секунд",
+      "title": "История в 51 секунду",
       "note": "Кадры — подлинные: рисунок «Россия» над Петербургом, фотографии Костовича в мастерской и в пожилом возрасте (Госкаталог, музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
       "horizontal": {
         "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya.mp4",
         "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 48.5,
-        "mb": 12.1
+        "sec": 51.3,
+        "mb": 12.2
       },
       "poster": {
         "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya-poster.jpg",
         "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "izobreteniya/03jan-anosov": {
@@ -1159,6 +1159,38 @@
       "poster_vertical": {
         "file": "izobreteniya/31jan-girotron/day-31jan-girotron-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-31jan-girotron-9x16-poster.jpg",
+        "v": 2
+      }
+    },
+    "izobreteniya/25jan-korsakov": {
+      "title": "История в 51 секунду",
+      "note": "Кадры — подлинные: чертежи машин и титульный лист брошюры С. Н. Корсакова 1832 года, портрет С. Н. Корсакова (оцифровка Виртуального компьютерного музея). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov.mp4",
+        "local": "muzei/izobreteniya/video/day-25jan-korsakov.mp4",
+        "v": 2,
+        "w": 1920,
+        "h": 1080,
+        "sec": 51.1,
+        "mb": 14.6
+      },
+      "vertical": {
+        "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16.mp4",
+        "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16.mp4",
+        "v": 2,
+        "w": 1080,
+        "h": 1920,
+        "sec": 51.1,
+        "mb": 14.5
+      },
+      "poster": {
+        "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-25jan-korsakov-poster.jpg",
+        "v": 2
+      },
+      "poster_vertical": {
+        "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16-poster.jpg",
+        "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16-poster.jpg",
         "v": 2
       }
     },

@@ -49,6 +49,12 @@
    "issuer": "GlobalSign GCC R3 DV TLS CA 2020",
    "checked": "2026-10-29"
   },
+  "mai.ru": {
+   "kind": "ru-ca",
+   "error": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
+   "issuer": "Russian Trusted Sub CA",
+   "checked": "2026-10-29"
+  },
   "mathsoc.pdmi.ras.ru": {
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
@@ -82,6 +88,12 @@
   "rgantd.ru": {
    "kind": "ru-ca",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+   "issuer": "Russian Trusted Sub CA",
+   "checked": "2026-10-29"
+  },
+  "rostec.ru": {
+   "kind": "ru-ca",
+   "error": "SELF_SIGNED_CERT_IN_CHAIN",
    "issuer": "Russian Trusted Sub CA",
    "checked": "2026-10-29"
   },
