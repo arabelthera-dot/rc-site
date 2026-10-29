@@ -1163,35 +1163,35 @@
       }
     },
     "izobreteniya/25jan-korsakov": {
-      "title": "История в 53 секунды",
+      "title": "История в 51 секунду",
       "note": "Кадры — подлинные: чертежи машин и титульный лист брошюры С. Н. Корсакова 1832 года, портрет С. Н. Корсакова (оцифровка Виртуального компьютерного музея). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
       "horizontal": {
         "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov.mp4",
         "local": "muzei/izobreteniya/video/day-25jan-korsakov.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 52.9,
-        "mb": 14
+        "sec": 51.1,
+        "mb": 14.6
       },
       "vertical": {
         "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16.mp4",
         "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 52.9,
-        "mb": 13.4
+        "sec": 51.1,
+        "mb": 14.5
       },
       "poster": {
         "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-poster.jpg",
         "local": "muzei/izobreteniya/video/day-25jan-korsakov-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "izobreteniya/23jan-umov": {
