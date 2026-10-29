@@ -6,7 +6,7 @@ head:
   description: Чтобы учиться математике, ей пришлось фиктивно выйти замуж и уехать из России, — а через шестнадцать лет она стала первой в мире женщиной-профессором математики.
   canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-15jan-kovalevskaya.html
   sobytie: Первая в мире женщина-профессор математики
-  god: "1850"
+  god: "1889"
   og:
     type: article
     site_name: Русская цивилизация
@@ -298,7 +298,7 @@ razdely: []
 igra:
   imya: volchok
   css:
-    - igra-pravila
+    - igra-volchok
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире
