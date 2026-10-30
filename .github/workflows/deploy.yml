@@ -94,7 +94,7 @@ jobs:
             find dist -type f -name '*.mp4' -delete &&
             echo "ролики вынесены из сборки Pages: $(find video-sajta -type f -name '*.mp4' | wc -l) mp4, $(du -sm video-sajta | cut -f1) МБ; сборка Pages $(du -sm dist | cut -f1) МБ"
       - name: video-sajta — ролики отдельным артефактом для своего сервера
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2 (та же, что в withastro/action)
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v4.6.2 (та же, что в withastro/action)
         with:
           name: video-sajta
           path: video-sajta
