@@ -58,6 +58,7 @@ const M = {
   concrete: new THREE.MeshStandardMaterial({ map: noiseTex('#9a978f', 0.22, 2600, 6), roughness: 0.95 }),
   pit: new THREE.MeshStandardMaterial({ color: 0x2b2a28, roughness: 1 }),
   steppe: new THREE.MeshStandardMaterial({ map: noiseTex('#b39d6e', 0.3, 5000, 260), roughness: 1 }),
+  halo: new THREE.SpriteMaterial({ map: texGlow, color: 0xff9a3c, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, opacity: 0.9 }),
   core: new THREE.MeshBasicMaterial({ map: texGlow, color: 0xffd9a0, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, side: THREE.DoubleSide }),
   flame: new THREE.MeshBasicMaterial({ map: texGlow, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false }),
   smoke: new THREE.MeshBasicMaterial({ map: texSmoke, transparent: true, depthWrite: false }),
@@ -85,7 +86,7 @@ const curve = (a, b, c, d) => new PiecewiseBezier([[new Bezier(a, b, c, d), 0]])
 function flamePS(scale) {
   const ps = new ParticleSystem({
     duration: 1, looping: true, worldSpace: true,
-    startLife: new IntervalValue(0.13, 0.24), startSpeed: new IntervalValue(26 * scale + 8, 36 * scale + 10),
+    startLife: new IntervalValue(0.18, 0.34), startSpeed: new IntervalValue(26 * scale + 8, 36 * scale + 10),
     startSize: new IntervalValue(0.75 * scale, 1.25 * scale), startColor: new ColorRange(new Vector4(1, 0.95, 0.85, 1), new Vector4(1, 0.78, 0.5, 1)),
     shape: new ConeEmitter({ radius: 0.32 * scale, angle: 0.07, thickness: 1, arc: Math.PI * 2 }),
     emissionOverTime: new ConstantValue(0), material: M.flame, renderMode: RenderMode.BillBoard,
@@ -145,10 +146,11 @@ function boom(pos, big) {
 function sopla(parent, list, out) {
   for (const [x, z, rExit, len, steer] of list) {
     const n = mesh(nozzleGeo(rExit, len), M.nozzle, false); n.position.set(x, 0, z); parent.add(n);
-    const core = new THREE.Mesh(new THREE.ConeGeometry(rExit * 0.85, 3.2 * len, 12, 1, true), M.core);
-    core.position.set(x, -len - 1.6 * len, z); core.rotation.x = Math.PI; core.visible = false; parent.add(core);
+    const core = new THREE.Mesh(new THREE.ConeGeometry(rExit * 0.9, 5 * len, 12, 1, true), M.core);
+    core.position.set(x, -len - 2.5 * len, z); core.rotation.x = Math.PI; core.visible = false; parent.add(core);
+    const halo = new THREE.Sprite(M.halo); halo.position.set(x, -len - 0.5, z); halo.visible = false; halo.size = rExit * 13; parent.add(halo);   // ореол у среза сопла
     const ps = flamePS(rExit / 0.42); ps.emitter.position.set(x, -len, z); addPS(ps, parent);
-    out.push({ ps, core, steer, rExit });
+    out.push({ ps, core, halo, steer, rExit });
   }
 }
 function makePack() {
@@ -257,7 +259,8 @@ function makeSky() {
         vec3 c = mix(hor, zen, pow(h, 0.55));
         c += vec3(1.0,0.86,0.6) * pow(max(dot(vD, uSun), 0.0), 220.0) * 1.4 + vec3(1.0,0.8,0.55) * pow(max(dot(vD, uSun), 0.0), 8.0) * 0.18;
         if (vD.y < 0.0) c = mix(hor, vec3(0.55,0.5,0.4), min(-vD.y * 6.0, 1.0));
-        gl_FragColor = vec4(c, 1.0); #include <colorspace_fragment>
+        gl_FragColor = vec4(c, 1.0);
+        #include <colorspace_fragment>
       }`,
   });
   sky = new THREE.Mesh(new THREE.SphereGeometry(8000, 32, 16), mat); sky.frustumCulled = false; scene.add(sky);
@@ -273,6 +276,7 @@ function setFlames(list, level) {
   for (const n of list) {
     n.ps.emissionOverTime.value = level > 0 ? n.ps.nozzleRate * level : 0;
     n.core.visible = level > 0.3; n.level = level;
+    n.halo.visible = level > 0; n.halo.scale.setScalar(n.halo.size * (0.6 + 0.4 * Math.min(level, 1.2)));
   }
 }
 function disposeRocket() {
@@ -314,7 +318,9 @@ function needRapier() {
   return rapierP;
 }
 function pusk() {
-  if (phase !== 'build' || tweens.length) return;
+  if (phase !== 'build') return;
+  for (const tw of tweens) tw.fn(1);   // сборка ещё идёт — доводим её мгновенно, «Пуск» не теряется
+  tweens = [];
   phase = 'count'; T = 0; lock(true); needRapier().catch((e) => console.warn('rapier', e));
   say('Обратный отсчёт. Смотри на сцену.');
 }
@@ -323,7 +329,7 @@ function resetAll(msg) {
   bodies = []; follow = null; vel.set(0, 0, 0); dropped = false;
   for (const ps of padSmoke) killPS(ps); padSmoke = []; if (trail) { killPS(trail); trail = null; }
   if (rocket && rocket.s2Holder) rocket.s2Holder.removeFromParent();
-  phase = 'build'; T = 0; ui.lastCmd = -1; count(''); padLight.intensity = 0; speedUp = 1; boomAt = null;
+  phase = 'build'; T = 0; ui.lastCmd = -1; count(''); padLight.intensity = 0; speedUp = 1; boomAt = null; slowMo = 1;
   assemble(st.scheme === 'pack' ? 'pack' : 'tower');
   sky.material.uniforms.uAlt.value = 0;
   camGoal = null; controls.target.set(0, 13, 0); camera.position.copy(camHome);
@@ -356,7 +362,7 @@ function debris(pos, v, n) {
 }
 
 const TSEP = 11, T1 = 8.5;
-let speedUp = 1, camGoal = null, boomAt = null;
+let speedUp = 1, camGoal = null, boomAt = null, slowMo = 1;   // slowMo < 1 — замедление на разделении
 function flight(dt) {
   T += dt;
   const r = rocket;
@@ -366,7 +372,7 @@ function flight(dt) {
     if (i === 5 && !r.lit) { r.lit = 1; setFlames(r.kind === 'pack' ? r.noz : r.noz, 0.25); startPadSmoke(0.4); }
     if (i === 6 && r.lit === 1) { r.lit = 2; setFlames(r.noz, 0.5); }
     if (i === 8 && r.lit === 2) { r.lit = 3; setFlames(r.noz, 1); startPadSmoke(1); }
-    padLight.intensity = (r.lit || 0) * 900 * (0.85 + Math.random() * 0.3);
+    padLight.intensity = (r.lit || 0) * 2200 * (0.85 + Math.random() * 0.3);
     if (i === 9) { phase = 'fly'; T = 0; trail = addPS(smokePS({ size: 3.5, life: [3.5, 5], speed: [4, 8], rate: 28, angle: 0.25, radius: 1.5, alpha: 0.55, rise: 0.6 }), r.g); trail.emitter.rotation.x = Math.PI / 2; trail.emitter.position.y = -3; }
     return;
   }
@@ -377,7 +383,7 @@ function flight(dt) {
     vel.y += a * dt; const tilt = Math.max(0, Math.min(0.14, (T - 5) * 0.02));
     vel.x = vel.y * Math.sin(tilt);
     r.g.position.addScaledVector(vel, dt); r.g.rotation.z = -tilt;
-    padLight.intensity = Math.max(0, 1 - r.g.position.y / 60) * 1000 * (0.85 + Math.random() * 0.3);
+    padLight.intensity = Math.max(0, 1 - r.g.position.y / 60) * 3000 * (0.85 + Math.random() * 0.3);
     if (T > 4) for (const ps of padSmoke) ps.emissionOverTime.value *= 0.985;
     const realT = Math.round(T * (r.kind === 'pack' ? 118 / TSEP : 100 / T1)), km = Math.round(r.g.position.y * (r.kind === 'pack' ? 50 / 330 : 45 / 210));
     count(`T + ${realT} с · высота ≈ ${km} км`, 'полёт · время и высота сжаты');
@@ -401,7 +407,8 @@ function flight(dt) {
     return;
   }
   if (phase === 'sep') {               // центральный блок уходит вверх, боковые кувыркаются в Rapier
-    vel.y += (12 + T) * dt; r.g.position.addScaledVector(vel, dt);
+    // Первые 4 с тяжесть тянет одинаково и блок, и сброшенные боковые: они расходятся наружу «крестом», потом блок уходит.
+    vel.y += (T < 4 ? 1.5 + 1.5 * T - 9.81 : 12 + T) * dt; r.g.position.addScaledVector(vel, dt);
     sky.material.uniforms.uAlt.value = Math.min(1, 0.55 + T * 0.04);
     if (T > 3.2 && !r.told) {
       r.told = 1; award('lab', 30); count('Пакет разделился', 'боковые блоки сброшены');
@@ -450,13 +457,14 @@ function separate() {
       // Нос блока отходит наружу, блок кувыркается назад и в сторону — с земли это «крест Королёва».
       const out = V(Math.cos(s.phi), 0, Math.sin(s.phi)).applyAxisAngle(V(0, 0, 1), r.g.rotation.z);
       const w = V(Math.sin(s.phi), 0, -Math.cos(s.phi)).multiplyScalar(0.85);
-      const h = toPhysics(s.b, V(0, 7, 0), R.ColliderDesc.cone(9.5, 1.3), vel.clone().addScaledVector(out, 4).add(V(0, -6, 0)), w, 6000);
+      const h = toPhysics(s.b, V(0, 7, 0), R.ColliderDesc.cone(9.5, 1.3), vel.clone().addScaledVector(out, 5).add(V(0, -1.5, 0)), w.multiplyScalar(1.7), 6000);
       const puff = addPS(smokePS({ size: 2.2, life: [1.2, 2.2], speed: [5, 9], rate: 0, angle: 0.4, radius: 0.3, alpha: 0.8, rise: 0 }));
       puff.emissionBursts.push({ time: 0, count: new ConstantValue(18), cycle: 1, interval: 0.01, probability: 1 });
       puff.looping = false; puff.emitter.position.copy(h.localToWorld(V(0, 10, 0))); setTimeout(() => killPS(puff), 4000);
     }
-    phase = 'sep'; T = 0; dropped = true; follow = () => rocket.g.position.clone().add(V(0, 12, 0));
-    if (!dragging) camGoal = V(26, -38, 30);
+    phase = 'sep'; T = 0; dropped = true; follow = () => rocket.g.position.clone().add(V(0, 2, 0));
+    if (!dragging) camGoal = V(22, -64, 26).multiplyScalar(camera.aspect < 1 ? 1.5 : 1);   // снизу вдоль оси: так с земли и видели «крест»
+    slowMo = REDUCE ? 1 : 0.4;
     count('T + 118 с · разделение', 'боковые блоки уходят');
   });
 }
@@ -476,13 +484,13 @@ function keepFail() {
 function startPadSmoke(level) {
   if (!padSmoke.length) {
     // Клубы из котлована по кругу и струя из газоотводного лотка на запад.
-    const ring = addPS(smokePS({ size: 7, life: [3.5, 6], speed: [7, 14], rate: 26, angle: 1.35, radius: 4, alpha: 0.85, rise: 1.8 }));
+    const ring = addPS(smokePS({ size: 10, life: [4, 7], speed: [9, 17], rate: 30, angle: 1.35, radius: 4, alpha: 0.85, rise: 1.8 }));
     ring.emitter.position.set(0, 1, 0); ring.emitter.rotation.x = -Math.PI / 2;
-    const duct = addPS(smokePS({ size: 8, life: [4, 7], speed: [22, 34], rate: 30, angle: 0.3, radius: 3, alpha: 0.85, rise: 3 }));
+    const duct = addPS(smokePS({ size: 11, life: [4.5, 8], speed: [24, 38], rate: 34, angle: 0.3, radius: 3, alpha: 0.85, rise: 3 }));
     duct.emitter.position.set(-16, 0.5, 0); duct.emitter.rotation.order = 'YXZ'; duct.emitter.rotation.y = -Math.PI / 2; duct.emitter.rotation.x = -0.25;
     padSmoke = [ring, duct];
   }
-  for (const ps of padSmoke) ps.emissionOverTime.value = (ps === padSmoke[0] ? 26 : 30) * K * level;
+  for (const ps of padSmoke) ps.emissionOverTime.value = (ps === padSmoke[0] ? 30 : 34) * Math.max(K, 0.7) * level;
 }
 
 // ── Цикл ──
@@ -490,7 +498,8 @@ let camHome, dragging = false, visible = true, fps = { n: 0, t: 0 }, prevTarget 
 function loop() {
   if (!visible) return;
   requestAnimationFrame(loop);
-  const dt = Math.min(clock.getDelta(), 1 / 20);
+  const dt = Math.min(clock.getDelta(), 1 / 20) * slowMo;
+  if (slowMo < 1 && phase === 'sep' && T > 1.6) slowMo = Math.min(1, slowMo + 0.006);
   for (const tw of tweens) { tw.t += dt; if (tw.t >= 0) tw.fn(Math.min(1, tw.t / tw.dur)); }
   tweens = tweens.filter((tw) => tw.t < tw.dur);
   if (phase !== 'build') flight(dt);
@@ -505,10 +514,10 @@ function loop() {
     controls.target.add(d); camera.position.add(d); prevTarget.copy(controls.target);
   }
   if (camGoal && !dragging) {
-    const off = camera.position.clone().sub(controls.target); off.lerp(camGoal, 0.035); camera.position.copy(controls.target).add(off);
+    const off = camera.position.clone().sub(controls.target); off.lerp(camGoal, phase === 'sep' ? 0.07 : 0.035); camera.position.copy(controls.target).add(off);
     if (off.distanceTo(camGoal) < 0.5) camGoal = null;
   }
-  for (const n of rocket ? rocket.noz.concat(rocket.n2 || []) : []) if (n.core.visible) { const f = 0.85 + Math.random() * 0.3; n.core.scale.set(f, (0.8 + Math.random() * 0.4) * (n.level || 1), f); }
+  for (const n of rocket ? rocket.noz.concat(rocket.n2 || []) : []) if (n.core.visible) { const f = 0.85 + Math.random() * 0.3; n.core.scale.set(f, (0.8 + Math.random() * 0.4) * (n.level || 1), f); n.halo.scale.setScalar(n.halo.size * f * (0.6 + 0.4 * Math.min(n.level, 1.2))); }
   flash.intensity *= 0.86; if (shake > 0.01) { camera.position.add(V(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).multiplyScalar(shake)); shake *= 0.9; }
   const alt = rocket ? rocket.g.position.y : 0;
   if (phase === 'fly') sky.material.uniforms.uAlt.value = Math.min(0.55, alt / 600);
