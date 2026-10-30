@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/proverka-tls.mjs && node scripts/proporcii-rolika.mjs --proba && node scripts/proporcii-rolika.mjs && node --max-old-space-size=1400 ./node_modules/astro/bin/astro.mjs build && node scripts/versii.mjs dist && node scripts/pervyj-v-mire.mjs --proba && node scripts/pervyj-v-mire.mjs --dist dist",
+    "build": "node scripts/proverka-tls.mjs && node scripts/hook-odno.mjs --proba && node scripts/hook-odno.mjs && node scripts/proporcii-rolika.mjs --proba && node scripts/proporcii-rolika.mjs && node --max-old-space-size=1400 ./node_modules/astro/bin/astro.mjs build && node scripts/versii.mjs dist && node scripts/pervyj-v-mire.mjs --proba && node scripts/pervyj-v-mire.mjs --dist dist",
     "versii": "node scripts/versii.mjs dist",
     "preview": "astro preview",
     "import": "node scripts/redirects.mjs && node scripts/full-pages.mjs",
