@@ -15,8 +15,12 @@ const str = z.string().min(1);
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка
 // достоверности (замок ниже); у пробы den-shablon эти поля необязательны.
 export const POMETKI = ['документ', 'два источника', 'легенда'];
+const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional() });
+// Кадр дня (блок #kadry, как у 13 янв.): размеры — со старой страницы; klass: portret — портретный кадр уже (общее правило izobreteniya-den.css).
+const kadr = kartinka.extend({ width: z.number().int().positive().optional(), height: z.number().int().positive().optional(), klass: z.literal('portret').optional() });
+// kadr у факта (Р17, «очень много картинок»: каждая — у своего факта) — виден под строкой факта, вне «Подробнее».
 const udar = z.object({ summary: str, find: z.boolean().optional(), tag: str.optional(), podrobnee: str.optional(), det: z.array(str).min(1), src: str,
-  otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum(POMETKI).optional() });
+  otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum(POMETKI).optional(), kadr: kadr.optional() });
 // Норма фактов дня — museum-inventions п.6 (Р101): «4–5 фактов»; меньше — сборка красная (только adres: den).
 export const NORMA_FAKTOV = 4;
 // Два блока фактов, как у 18 янв. (Р374, Р386: «вместо двух партий полухуков… она одна»): «Десять фактов о …» (id fakty,
@@ -25,9 +29,6 @@ export const BLOK_FAKTOV = 10, BLOK_ESHCHE = 5;
 // Блоки шаблона по порядку; к ним цепляются уникальные разделы дня (razdely.posle), 1:1 из старой страницы.
 // Порядок — как у эталона 13 янв. (src/data/full-pages/izobreteniya/01-13.html): кадры (#kadry) — сразу после игры (Р302).
 export const BLOKI = ['daynav', 'dokument', 'video', 'audioguide', 'story', 'fakty', 'igra', 'kadry', 'pervenstvo', 'quiz', 'result', 'sources', 'calendar', 'kuda-dalshe'];
-const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional() });
-// Кадр дня (блок #kadry, как у 13 янв.): размеры — со старой страницы; klass: portret — портретный кадр уже (общее правило izobreteniya-den.css).
-const kadr = kartinka.extend({ width: z.number().int().positive().optional(), height: z.number().int().positive().optional(), klass: z.literal('portret').optional() });
 
 // Блок фактов: id секции (по умолчанию fakty), необязательная разметка после списка (dop, напр. фото экспоната)
 // и место — после какого блока шаблона (posle; нет — на своём месте, после story). Блоков может быть несколько (Р302, 18 янв.).

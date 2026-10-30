@@ -62,12 +62,14 @@ const knopkiJs = `(function(){
   $('readBtn').onclick = function(){ $('story').scrollIntoView({behavior:'smooth'}); };
   if ($('listenBtn')) $('listenBtn').onclick = function(){ $('audioguide').scrollIntoView({behavior:'smooth'}); };
 })();`;
+// Кадр у своего факта (Р17): виден всегда, под строкой факта; паспорт — в подписи и data-атрибутах, как в #kadry.
+const kadrHtml = (f) => `<figure class="${f.klass ? `fig ${f.klass}` : 'fig'}"><img src="${f.src}"${f.width ? ` width="${f.width}" height="${f.height}"` : ''} loading="lazy" decoding="async" alt="${f.alt.replace(/"/g, '&quot;')}" data-source="${f.data_source}" data-license="${f.license.replace(/"/g, '&quot;')}"><figcaption>${f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis}</figcaption></figure>`;
 const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">${u.podrobnee ?? 'Узнать подробнее'}</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
 ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.tag}</span>` : ''}${p}</p>`).join('\n')}
           <p class="src-note">${u.src}</p>${u.otryvok ? `
           <blockquote class="fakt-otryvok">${u.otryvok}</blockquote>` : ''}
-        </div></details>${u.pometka ? `<p class="fakt-ist"><span class="fakt-pometka">${u.pometka}</span> <a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}</li>`;
+        </div></details>${u.pometka ? `<p class="fakt-ist"><span class="fakt-pometka">${u.pometka}</span> <a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}${u.kadr ? kadrHtml(u.kadr) : ''}</li>`;
 const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;
 const o = d.oblozhka;
 // Блоки фактов (один или несколько, Р302): без posle — на своём месте сразу после story, с posle — после указанного блока.
