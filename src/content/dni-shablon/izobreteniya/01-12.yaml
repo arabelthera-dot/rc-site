@@ -67,6 +67,8 @@ daynav:
     label: Факты
   - id: games
     label: Собрать ракету
+  - id: igra-3d
+    label: Р-7 в 3D
   - id: pervenstvo
     label: Первенство
   - id: quiz
@@ -295,8 +297,10 @@ fakty:
 razdely: []
 igra:
   imya: soberi-r7
+  opyt3d: soberi-r7-3d
   css:
     - igra-soberi-r7
+    - igra-soberi-r7-3d
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно сделано первым
