@@ -262,7 +262,7 @@ razdely:
 
       <div class="scene-caption">
         <div class="wrap">
-          <div class="scene-cap">Вечер, московская квартира. На круглом кинескопе АТП-1 — эфир Шуховской башни: сигнал пришёл не с антенны на крыше, а по кабелю из подвала.</div>
+          <div class="scene-cap">Так могло выглядеть: вечер, московская квартира. На круглом кинескопе АТП-1 — эфир Шуховской башни: сигнал пришёл не с антенны на крыше, а по кабелю из подвала.</div>
           <span class="scene-hint">3D · телевизор АТП-1</span>
         </div>
       </div>
@@ -474,7 +474,7 @@ razdely:
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px;flex-wrap:wrap">
             <h2 style="margin:0">Спроси инженера узла</h2>
           </div>
-          <p style="color:var(--muted);margin-top:0;max-width:62ch">Задай вопрос инженеру телевизионного узла на Петровском бульваре — он ответит как человек 1939 года. Помнит стройку узла, приёмники АТП-1, жильцов дома и судьбу своей сети. Спрашивай о чём угодно.</p>
+          <p style="color:var(--muted);margin-top:0;max-width:62ch">Задай вопрос вымышленному инженеру телевизионного узла на Петровском бульваре — программа ответит про устройство узла, приёмники АТП-1 и судьбу сети. Ответы — пересказ по источникам дня.</p>
           <div id="chat" class="card" style="min-height:120px"></div>
           <div id="suggest" style="margin:8px 0"></div>
           <div style="display:flex;gap:8px">

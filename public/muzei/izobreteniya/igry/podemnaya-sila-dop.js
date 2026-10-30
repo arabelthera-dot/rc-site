@@ -41,7 +41,7 @@ function findAnswer(q){
   for(const item of kb){
     if(item.k.some(k=>q.includes(k.toLowerCase())))return item.a;
   }
-  return 'Спросите точнее — о присоединённых вихрях, о прогулке в Кучине, о мёртвой петле, о Туполеве, о трубах или о ЦАГИ. Отвечу как было.';
+  return 'Спросите точнее — о присоединённых вихрях, о прогулке в Кучине, о мёртвой петле, о Туполеве, о трубах или о ЦАГИ. Отвечу пересказом по источникам дня.';
 }
 
 function sendChat(){
@@ -62,7 +62,7 @@ document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='
   qs.forEach(q=>{const c=document.createElement('span');c.className='chip';c.textContent=q;
     c.onclick=()=>{document.getElementById('chatInput').value=q;sendChat();};box.appendChild(c);});
   const w=document.createElement('div');w.className='msg inv';
-  w.textContent='Здравствуйте. Николай Егорович Жуковский, профессор механики. Спрашивайте — про крыло и вихри расскажу как было.';
+  w.textContent='Здравствуйте. Николай Егорович Жуковский, профессор механики. Спрашивайте — про крыло и вихри отвечу пересказом по источникам дня.';
   document.getElementById('chatBox').appendChild(w);
 })();
 

@@ -393,14 +393,14 @@
   <div class="wrap">
     <div class="kicker">Поговори с изобретателем</div>
     <h2>Спроси изобретателя</h2>
-    <p style="color:var(--muted)">Задай вопрос — ответит сам изобретатель.</p>
+    <p style="color:var(--muted)">Задай вопрос — программа ответит пересказом по источникам дня.</p>
     <div id="starters"></div>
     <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
     <div style="display:flex;gap:10px;margin-top:12px">
       <input id="chatInput" type="text" placeholder="Написать вопрос..." style="flex:1;padding:12px 16px;font-size:15px">
       <button class="btn gold" onclick="sendChat()">Отправить</button>
     </div>
-    <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы сформированы на основе документальных источников.</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы — пересказ по источникам дня.</p>
   </div>
 </section>
 
@@ -637,7 +637,7 @@ function findAnswer(q){
   for(const item of kb){
     if(item.k.some(k=>q.includes(k.toLowerCase())))return item.a;
   }
-  return 'Про это не берусь. А вот про «Чайку», про трое суток одной на орбите или про то, как ткачиха стала космонавтом, — спрашивайте, расскажу как было.';
+  return 'Про это не берусь. А вот про «Чайку», про трое суток одной на орбите или про то, как ткачиха стала космонавтом, — спрашивайте, отвечу пересказом по источникам дня.';
 }
 
 function sendChat(){
