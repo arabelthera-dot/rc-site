@@ -127,7 +127,7 @@
   }
   function loop(ts){ if (!g||g.end) return; var dt=last?Math.min(0.05,(ts-last)/1000):0; last=ts; step(dt); if (!g.end){ draw(); raf=requestAnimationFrame(loop); } }
   function start(){ g=fresh(); hold=false; last=0; setBtns(true); $('pgRes').textContent='';
-    say(mode==='lira'?'Пуск. Сплав горячий — в базе его держали выше 145 °C, иначе он каменеет в трубах.':'Обычная АПЛ: каждый разгон начинается с перехода установки на повышенные параметры.');
+    say(mode==='lira'?'Пуск. Сплав горячий — в базе его держали выше 123 °C, иначе он каменеет в трубах.':'Обычная АПЛ: каждый разгон начинается с перехода установки на повышенные параметры.');
     cancelAnimationFrame(raf); raf=requestAnimationFrame(loop);
     setTimeout(fit,120); }
   function fit(){ var cb=document.querySelector('#pg .pg-ctrl').getBoundingClientRect(), ck=document.querySelector('.rc-cookie'), lim=innerHeight;
