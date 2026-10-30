@@ -268,7 +268,7 @@ function makeSky() {
 
 // ── Ход игры ──
 function say(t, cls) { const m = ui.msg; m.className = 'lab-msg' + (cls ? ' ' + cls : ''); m.textContent = t; }
-function count(big, small) { ui.count.innerHTML = ''; if (!big) return; ui.count.textContent = big; if (small) { const s = document.createElement('small'); s.textContent = small; ui.count.prepend(s); } }
+function count(big, small) { ui.count.replaceChildren(); if (!big) return; ui.count.textContent = big; if (small) { const s = document.createElement('small'); s.textContent = small; ui.count.prepend(s); } }
 function lock(on) { for (const b of ui.root.querySelectorAll('#r3Ctrl .seg, #r3Go')) b.disabled = on; }
 function award(k, n) { if (typeof window.award === 'function') window.award(k, n); }
 
