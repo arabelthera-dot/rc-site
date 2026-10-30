@@ -20,7 +20,10 @@ concurrency:
 jobs:
   sait:
     if: github.event_name == 'workflow_dispatch' || vars.SMOKE_TEST == '1'
-    runs-on: ubuntu-latest
+    # М64 (23.10): зарубежная машина GitHub не достаёт сервер в РФ — smoke можно перевести на российского
+    # исполнителя: переменная SMOKE_RUNNER = его метка. Пусто — как раньше, ubuntu-latest. Запусков из веток
+    # здесь нет (только main, расписание, ручной) — правило Михаила 02.10 соблюдено. Откат — стереть переменную.
+    runs-on: ${{ vars.SMOKE_RUNNER || 'ubuntu-latest' }}
     timeout-minutes: 10
     steps:
       # sparse-checkout в режиме cone берёт и файлы корня — package.json и package-lock.json:
@@ -35,7 +38,7 @@ jobs:
       - name: Playwright
         run: |
           npm ci --no-audit --no-fund
-          npx --no-install playwright install --with-deps chromium
+          npx --no-install playwright install ${{ runner.environment == 'github-hosted' && '--with-deps' || '' }} chromium
       - name: smoke
         working-directory: tests/smoke
         run: npx --no-install playwright test -c playwright.config.mjs
