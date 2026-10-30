@@ -278,14 +278,14 @@
   <div class="wrap">
     <div class="kicker">Поговори с учёным</div>
     <h2>Спроси Льва Ландау</h2>
-    <p class="muted">Задай вопрос — программа ответит пересказом по источникам дня.</p>
+    <p class="muted">Задай вопрос — ответит сам Ландау.</p>
     <div id="starters"></div>
     <div id="chatBox" class="chat-box"></div>
     <div class="chat-row">
       <input id="chatInput" type="text" placeholder="Написать вопрос..." aria-label="Вопрос Льву Ландау">
       <button class="btn gold" type="button" id="chatSend">Отправить</button>
     </div>
-    <p class="note-s">Ответы — пересказ по источникам дня.</p>
+    <p class="note-s">Ответы сформированы на основе документальных источников.</p>
   </div>
 </section>
 
@@ -818,7 +818,7 @@ function addMsg(text,who){
 function findAnswer(q){
   q=q.toLowerCase();
   for (var i=0;i<kb.length;i++){ if (kb[i].k.some(function(k){return q.indexOf(k)>=0;})) return kb[i].a; }
-  return 'Спросите точнее — о сверхтекучем гелии, о Капице и тюрьме, о моей шкале физиков, о теорминимуме или о Нобелевской премии. Отвечу пересказом по источникам дня.';
+  return 'Спросите точнее — о сверхтекучем гелии, о Капице и тюрьме, о моей шкале физиков, о теорминимуме или о Нобелевской премии. Отвечу как было.';
 }
 function sendChat(){
   var inp=document.getElementById('chatInput'), q=inp.value.trim();
@@ -834,7 +834,7 @@ document.getElementById('chatInput').addEventListener('keydown',function(e){ if(
   qs.forEach(function(q){ var c=document.createElement('button'); c.type='button'; c.className='chip'; c.textContent=q;
     c.onclick=function(){ document.getElementById('chatInput').value=q; sendChat(); }; box.appendChild(c); });
   var w=document.createElement('div'); w.className='msg inv';
-  w.textContent='Здравствуйте. Лев Давидович Ландау. Спрашивайте — про сверхтекучий гелий и про всё остальное отвечу пересказом по источникам дня.';
+  w.textContent='Здравствуйте. Лев Давидович Ландау. Спрашивайте — про сверхтекучий гелий и про всё остальное расскажу как было.';
   document.getElementById('chatBox').appendChild(w);
 })();
 
