@@ -6,6 +6,7 @@
 // сверено 20.10.2026, ред. 08.09.2026); Яндекс тип Article для сниппетов не поддерживает и длину не задаёт
 // (https://yandex.ru/support/webmaster/ru/schema-org/what-is-schema-org). Адрес url разметки страницы должен совпадать с canonical — иначе поисковик
 // приписывает разметку чужой странице. Сборка только предупреждает (src/integrations/zakon.mjs).
+import { kadrLd } from './prava-ld.mjs';
 
 const ISO = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?)?$/;
 const ABS = /^https?:\/\/[^\s]+$/;
@@ -41,7 +42,7 @@ export function proverkaRazmetki(html, canonical) {
       for (const [svoystvo, ok, chto] of PRAVILA[tip] ?? []) if (!ok(u[svoystvo])) bedy.push(`${tip}: ${chto ?? `нет ${svoystvo}`}`);
       for (const k of ['datePublished', 'dateModified', 'startDate', 'endDate']) if (est(u[k]) && !(ISO.test(u[k]) || /^\d{4}(-\d{2})?$/.test(u[k]))) bedy.push(`${tip}: ${k} не ISO 8601 («${u[k]}»)`);
       for (const k of ['url', 'image', 'logo', 'license']) for (const v of [u[k]].flat()) {
-        const s = typeof v === 'object' && v ? v.url : v;
+        const s = typeof v === 'object' && v ? v.url ?? v.contentUrl : v;
         if (est(s) && !ABS.test(s)) bedy.push(`${tip}: ${k} не абсолютный адрес («${s}»)`);
       }
       // Разметка этой страницы (не вложенный музей/сайт) — о её адресе
@@ -66,7 +67,8 @@ export function sobytieLd({ title, year, key, url, image }) {
   if (!odin && !dva) return undefined;
   const dates = odin ? { startDate: `${god(odin[0])}-${key}` } : { startDate: god(dva[1]), endDate: god(dva[2]) };
   return { '@context': 'https://schema.org', '@type': 'Event', '@id': `${url}#sobytie`, name: title, ...dates, url,
-    ...(image ? { image } : {}) };
+    // Р396 п.2: картинка события — ImageObject с паспортом (карточка пересылки og/ — наша, CC BY), не голая строка.
+    ...(image ? { image: typeof image === 'string' ? kadrLd({ src: image, license: /\/og\//.test(image) ? 'Русская цивилизация, CC BY 4.0' : '' }) : image } : {}) };
 }
 
 export function proizvedeniyaLd({ museum, images = [], url, absolyut }) {
@@ -74,5 +76,5 @@ export function proizvedeniyaLd({ museum, images = [], url, absolyut }) {
   if (!artform) return [];
   return images.filter((i) => !i.generated && i.src && !/\.svg$/i.test(i.src)).map((i, n) => ({
     '@context': 'https://schema.org', '@type': 'VisualArtwork', '@id': `${url}#proizvedenie-${n + 1}`,
-    name: i.caption, image: absolyut(i.src), artform, creditText: i.credit, url }));
+    name: i.caption, image: kadrLd({ src: absolyut(i.src), license: i.license ?? '', text: `${i.caption ?? ''}. ${i.credit ?? ''}` }), artform, creditText: i.credit, url }));
 }

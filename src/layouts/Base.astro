@@ -14,6 +14,7 @@ import kanaly from '../data/kanaly.json';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { ogRaster } from '../lib/og-den.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml } from '../lib/redakciya.mjs';
+import { kadrLd, TEKSTY_NOTICE } from '../lib/prava-ld.mjs';
 import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { znak, poPuti, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 // museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
@@ -75,6 +76,10 @@ const den = Astro.props.den;
 const absolyut = (src: string) => new URL(/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`, Astro.site).href;
 const sobytie = kind === 'article' && den?.dated ? sobytieLd({ title: Astro.props.about, year: den.year, key: den.key, url, image: ogImage }) : undefined;
 const proizvedeniya = kind === 'article' && den && museum ? proizvedeniyaLd({ museum, images: den.images, url, absolyut }) : [];
+// Р396 п.2: CC BY 4.0 — только тексты; у каждого кадра дня — своя лицензия и держатель из паспорта (credit, подпись).
+const kadryLd = kind === 'article' && den ? (den.images ?? []).map((i) => kadrLd({ src: absolyut(i.src), license: i.license ?? '', text: `${i.caption ?? ''}. ${i.credit ?? ''}` })) : [];
+const ogLd = ogImage && !kadryLd.some((k) => k.contentUrl.split('/').pop() === String(ogImage).split('/').pop())
+  ? [kadrLd({ src: ogImage, license: /\/og\//.test(ogImage) ? 'Русская цивилизация, CC BY 4.0' : '' })] : [];
 const ld = kind === 'home'
   ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Русская цивилизация', url: home, inLanguage: lang.code, description, publisher: red, license: LICENZIYA },
      { '@context': 'https://schema.org', ...org, logo: new URL(`${base}og/index.jpg`, Astro.site).href }]
@@ -83,7 +88,7 @@ const ld = kind === 'home'
   : kind === 'museum' ? [{ '@context': 'https://schema.org', ...museumLd, '@type': ['Museum', 'Organization'], description, image: ogImage, parentOrganization: org },
       { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, about: museumLd, author: red, publisher: red, license: LICENZIYA }]
   : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA }
-  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: ogImage, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA,
+  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: [...kadryLd, ...ogLd].length ? [...kadryLd, ...ogLd] : undefined, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA, copyrightNotice: TEKSTY_NOTICE,
       about: sobytie ? { '@id': sobytie['@id'] } : Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined,
       mentions: proizvedeniya.length ? proizvedeniya.map((p) => ({ '@id': p['@id'] })) : undefined, temporalCoverage: Astro.props.temporal, datePublished: Astro.props.published, dateModified: Astro.props.modified }
   : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
