@@ -17,6 +17,8 @@ const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.ke
 const title = kogda ? `${kogda} — ${muzeyName} — Русская цивилизация` : d.head.title;
 const ogTitle = kogda || d.head.og.title;
 const igraHtml = fs.readFileSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`, 'utf8').replace(/\n$/, '');
+// 3D-блок игры (опыт Р392) — отдельной секцией сразу после игры; сама игра не меняется.
+const opyt3dHtml = d.igra.opyt3d ? fs.readFileSync(`src/data/igry/${d.muzei}/${d.igra.opyt3d}.html`, 'utf8').replace(/\n$/, '') : '';
 // JS-строка в одинарных кавычках — как в старых страницах: конвейер (src/lib/sosedi-polnye.mjs) ищет
 // prev/next в window.MUSEUM_CHROME именно в таком виде и переписывает на ближайшие полные страницы.
 const q = (s: string) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/</g, '\\u003c')}'`;
@@ -209,7 +211,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 {d.audioguide && <section class="block" id="audioguide"></section>}<Fragment set:html={posle('audioguide')} />
 
 
-<Fragment set:html={igraHtml} /><Fragment set:html={posle('igra')} />
+<Fragment set:html={igraHtml} /><Fragment set:html={opyt3dHtml} /><Fragment set:html={posle('igra')} />
 
 {/* Кадры дня — блок #kadry сразу после игры, как у 13 янв.; вид — общие правила #kadry в izobreteniya-den.css. */}
 {d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis} /></figcaption></figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
@@ -295,7 +297,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <script is:inline set:html={scoreJs}></script>
 <script is:inline src="../../assets/museum-score.js"></script>
 <script is:inline set:html={knopkiJs}></script>
-<script is:inline src={`igry/${d.igra.imya}.js`}></script>
+<script is:inline src={`igry/${d.igra.imya}.js`}></script>{d.igra.opyt3d && <script is:inline src={`igry/${d.igra.opyt3d}.js`}></script>}
 <script is:inline set:html={quizJs}></script>{d.igra.dop && <script is:inline src={`igry/${d.igra.imya}-dop.js`}></script>}
 {d.skripty.map((s) => 'src' in s ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.js}></script>)}
 <script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
