@@ -5,97 +5,109 @@
    "kind": "ru-ca",
    "error": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "book.uraic.ru": {
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
    "issuer": "GlobalSign GCC R46 AlphaSSL CA 2025",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "buran.ru": {
    "kind": "other",
    "error": "CERT_HAS_EXPIRED",
    "issuer": "Encryption Everywhere DV TLS CA - G1",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "ckb-rubin.ru": {
    "kind": "ru-ca",
    "error": "SELF_SIGNED_CERT_IN_CHAIN",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "heart-master.com": {
    "kind": "other",
    "error": "CERT_HAS_EXPIRED",
    "issuer": "heart-master.com",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "heritage-institute.ru": {
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
    "issuer": "GlobalSign GCC R6 AlphaSSL CA 2025",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "ipfran.ru": {
    "kind": "ru-ca",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "ivak.spb.ru": {
    "kind": "other",
    "error": "ERR_TLS_CERT_ALTNAME_INVALID",
    "issuer": "GlobalSign GCC R3 DV TLS CA 2020",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
+  },
+  "keldysh.ru": {
+   "kind": "other",
+   "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+   "issuer": "YE2",
+   "checked": "2026-10-30"
   },
   "mai.ru": {
    "kind": "ru-ca",
    "error": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "mathsoc.pdmi.ras.ru": {
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
    "issuer": "YR1",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
+  },
+  "mining-enc.ru": {
+   "kind": "other",
+   "error": "CERT_HAS_EXPIRED",
+   "issuer": "5.45.112.142",
+   "checked": "2026-10-30"
   },
   "ns.kapitza.ras.ru": {
    "kind": "other",
    "error": "ERR_TLS_CERT_ALTNAME_INVALID",
    "issuer": "YR1",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "paseka.su": {
    "kind": "other",
    "error": "CERT_HAS_EXPIRED",
    "issuer": "massage-and-spa.ru",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "racvs.ru": {
    "kind": "other",
    "error": "CERT_HAS_EXPIRED",
    "issuer": "R10",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "retroplan.ru": {
    "kind": "other",
    "error": "ERR_TLS_CERT_ALTNAME_INVALID",
    "issuer": "GlobalSign GCC R3 DV TLS CA 2020",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "rgantd.ru": {
    "kind": "ru-ca",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "rostec.ru": {
    "kind": "ru-ca",
    "error": "SELF_SIGNED_CERT_IN_CHAIN",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-10-29"
+   "checked": "2026-10-30"
   },
   "yp-muzeum.ru": {
    "kind": "other",
