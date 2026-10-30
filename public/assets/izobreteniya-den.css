@@ -153,6 +153,10 @@
   figure.fig{margin:18px 0}
   figure.fig img{max-width:100%;height:auto;border-radius:10px;display:block}
   figure.fig figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+  /* Кадр у своего факта (udary[].kadr, Р17): под строкой факта, с отступом номера; портретный — уже. */
+  .udary figure.fig{margin:4px 0 18px 44px;max-width:640px}
+  .udary figure.fig.portret{max-width:340px}
+  @media (max-width:600px){.udary figure.fig{margin-left:0}}
   .src-note{font-size:12px;color:#8fa5b9}
 
   /* ── МОДЕЛЬ ДНЯ (главное предметное действие) ── */
