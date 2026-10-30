@@ -19,7 +19,9 @@ import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
-import { cardFrames, fullFrames, kadryNeNaStranice } from '../lib/podpisi.mjs';
+import { cardFrames, fullFrames, kadryNeNaStranice, pageFrames } from '../lib/podpisi.mjs';
+import { kadrLd, TEKSTY_NOTICE } from '../lib/prava-ld.mjs';
+import { pometki } from '../lib/pometki.mjs';
 import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
@@ -40,6 +42,14 @@ function ldRedakciya(html, red, { modified, published, url } = {}) {
   // Картинка статьи — og:image самой страницы (Google Article: image), если своей в ld+json нет.
   const image = /<meta\b[^>]*\bproperty=["']og:image["'][^>]*\bcontent=["']([^"']+)["']/i.exec(html)?.[1];
   const OUR_NAMES = new Set(['Русская цивилизация', ...Object.values(MUSEUMS)]);
+  // Р396 п.2: CC BY 4.0 страницы — только тексты; кадры — ImageObject со своей лицензией и держателем из паспорта
+  // (data-license, подпись, credit). Относительный src — от папки музея (<base> страницы дня).
+  const papka = url && url.replace(/den\/[^/]+\/(?:staraya\/)?$/, '');
+  const abs = (s) => { try { return papka ? new URL(s, papka).href : s; } catch { return s; } };
+  const kadry = [...new Map(pageFrames(html).filter((f) => f.src && !/\.svg(?:$|\?)/i.test(f.src))
+    .map((f) => [abs(f.src), kadrLd({ src: abs(f.src), license: /data-license=([^]*?)(?= data-|$)/.exec(f.data)?.[1] ?? '', text: f.cap || f.sign })])).values()];
+  const imya = (s) => String(s).split(/[?#]/)[0].split('/').pop();
+  const kadrK = (s) => kadry.find((k) => imya(k.contentUrl) === imya(s));
   return html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (m, a, json, z) => {
     let data;
     try { data = JSON.parse(json); } catch { return m; }
@@ -58,10 +68,17 @@ function ldRedakciya(html, red, { modified, published, url } = {}) {
       n.author ??= red;
       n.publisher ??= red;
       n.license ??= LICENZIYA;
+      if (n.license === LICENZIYA) n.copyrightNotice ??= TEKSTY_NOTICE;
       if (/Article/.test(t.join())) {
         if (modified) n.dateModified ??= modified; if (published) n.datePublished ??= published;
         if (image && /^https?:\/\//.test(image)) n.image ??= image;
       }
+      // Строка-адрес картинки наследовала бы лицензию страницы — заменяем паспортом кадра; свой кадр пересылки (og/) — наш.
+      // ImageObject шаблона (без data-license) — тоже на паспорт кадра со страницы, если кадр на ней есть.
+      const ims = [].concat(n.image ?? []).map((v) => typeof v !== 'string' ? (v?.contentUrl && kadrK(v.contentUrl)) || v : kadrK(v)
+        ?? (/\/og\//.test(v) ? kadrLd({ src: v, license: 'Русская цивилизация, CC BY 4.0' }) : kadrLd({ src: v })));
+      for (const k of kadry) if (!ims.some((v) => v?.contentUrl === k.contentUrl)) ims.push(k);
+      if (ims.length) n.image = ims;
       if (url && typeof n.url === 'string' && /\.html?$/.test(n.url)) n.url = url;
     }
     return a + JSON.stringify(data).replace(/</g, '\\u003c') + z;
@@ -78,6 +95,8 @@ const POLNYY_DEN_CSS = fs.readFileSync('public/assets/rc-polnyy-den.css', 'utf8'
 const ETOT_DEN_CSS = fs.readFileSync('public/assets/rc-etot-den.css', 'utf8');
 // Ежедневная привычка (Р289 п.1) — «Завтра в музеях», серия и «Поделиться итогом»; только при включённом флаге.
 const PRIVYCHKA_CSS = fs.readFileSync('public/assets/rc-privychka.css', 'utf8');
+// Р396: плашка вымышленного собеседника и строка происхождения 3D-модели (src/lib/pometki.mjs).
+const POMETKI_CSS = fs.readFileSync('public/assets/rc-pometki.css', 'utf8');
 // Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
@@ -706,6 +725,9 @@ export default function fullPages() {
               html = html.replace(/(<script[^>]*src=["'][^"']*museum-chrome\.js)/i,
                 '<script>window.MUSEUM_CHROME=Object.assign(window.MUSEUM_CHROME||{},{shareRow:false})</script>\n$1');
             html = staticChrome(html);
+            // Р396 п.1, п.3: плашка собеседника и происхождение 3D-сцены — на всех страницах дней всех музеев.
+            { const pm = pometki(html, museum, key);
+              if (pm !== html) html = pm.replace(/<\/head>/i, `<style data-rc-pometki>${POMETKI_CSS}</style>\n</head>`); }
             html = staticSecnav(html, base, `${base}muzei/${museum}/`, self);
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             // Яндекс Метрика (тот же код, что Metrika.astro в Base.astro) — один раз; уже есть в исходнике — не дублируем.
