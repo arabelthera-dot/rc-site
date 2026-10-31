@@ -180,7 +180,71 @@ function boom(pos, big) {
       behaviors: [new ApplyForce(new QV3(0, -1, 0), new ConstantValue(22)), new ColorOverLife(grad([[1, 1, 1, 0], [1, 0.4, 0.1, 1]], [[1, 0], [0, 1]]))] }),
   ];
   for (const ps of parts) { ps.emitter.position.copy(pos); addPS(ps); setTimeout(() => killPS(ps), 7000); }
+  burst({ dur: big ? 4.5 : 3, gain: big ? 1.6 : 1.1, f0: 1800, f1: 60 }); burst({ dur: 0.5, gain: 0.9, f0: 4000, f1: 400 });
   flash.position.copy(pos); flash.intensity = big ? 9000 : 5000; shake = REDUCE ? 0 : 0.9;
+}
+
+
+// ── Звук (Web Audio, без файлов): рёв двигателей по тяге, хлопок зажигания, удар ферм, грохот взрыва, сигнал прибытия ──
+// Включается первым нажатием «Пуск» (браузер разрешает звук только после действия человека). Кнопка «Звук» выключает.
+let AC = null, master, roarG, roarF, subG, noiseBuf, sndOn = true, roarLvl = 0;
+function audioInit() {
+  if (AC) { if (AC.state === 'suspended') AC.resume(); return; }
+  const C = window.AudioContext || window.webkitAudioContext; if (!C) return;
+  AC = new C(); master = AC.createGain(); master.gain.value = sndOn ? 0.8 : 0; master.connect(AC.destination);
+  if (window.__recAudio) { const d = AC.createMediaStreamDestination(); master.connect(d); window.__audioStream = d.stream; }
+  const len = AC.sampleRate * 3, buf = AC.createBuffer(1, len, AC.sampleRate), ch = buf.getChannelData(0); let last = 0;
+  for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; ch[i] = last * 3.5 + w * 0.08; }   // «коричневый» шум с шорохом
+  noiseBuf = buf;
+  const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
+  roarF = AC.createBiquadFilter(); roarF.type = 'lowpass'; roarF.frequency.value = 300; roarF.Q.value = 0.7;
+  roarG = AC.createGain(); roarG.gain.value = 0; src.connect(roarF).connect(roarG).connect(master); src.start();
+  const sub = AC.createOscillator(); sub.type = 'sawtooth'; sub.frequency.value = 38;
+  const subF = AC.createBiquadFilter(); subF.type = 'lowpass'; subF.frequency.value = 90;
+  subG = AC.createGain(); subG.gain.value = 0; sub.connect(subF).connect(subG).connect(master); sub.start();
+}
+function burst({ dur = 1.5, gain = 1, f0 = 1200, f1 = 120, q = 0.8, delay = 0 }) {
+  if (!AC) return; const t = AC.currentTime + delay;
+  const s = AC.createBufferSource(); s.buffer = noiseBuf; s.playbackRate.value = 0.8 + Math.random() * 0.4;
+  const f = AC.createBiquadFilter(); f.type = 'lowpass'; f.Q.value = q; f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(f1, t + dur);
+  const g = AC.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(gain, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  s.connect(f).connect(g).connect(master); s.start(t, Math.random() * 1.5); s.stop(t + dur + 0.1);
+}
+function clank() {   // фермы отходят: металлический удар
+  if (!AC) return; const t = AC.currentTime;
+  for (const [fr, g0] of [[180, 0.5], [413, 0.3], [767, 0.18]]) {
+    const o = AC.createOscillator(); o.type = 'triangle'; o.frequency.value = fr;
+    const g = AC.createGain(); g.gain.setValueAtTime(g0, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.1);
+    o.connect(g).connect(master); o.start(t); o.stop(t + 1.2);
+  }
+  burst({ dur: 0.35, gain: 0.6, f0: 2500, f1: 300 });
+}
+function chime() {   // головная часть дошла
+  if (!AC) return; const t = AC.currentTime;
+  [[659, 0], [880, 0.18], [1319, 0.36]].forEach(([fr, d]) => {
+    const o = AC.createOscillator(); o.type = 'sine'; o.frequency.value = fr;
+    const g = AC.createGain(); g.gain.setValueAtTime(0.0001, t + d); g.gain.exponentialRampToValueAtTime(0.35, t + d + 0.03); g.gain.exponentialRampToValueAtTime(0.0001, t + d + 1.6);
+    o.connect(g).connect(master); o.start(t + d); o.stop(t + d + 1.7);
+  });
+}
+function soundTick() {
+  if (!AC) return;
+  const r = rocket; let L = 0;
+  if (r && phase === 'count') L = [0, 0.3, 0.55, 1][r.lit || 0];
+  else if (r && phase === 'fly') L = Math.max(0.22, 1 - r.g.position.y / 520);
+  else if (phase === 'sep') L = Math.max(0, 0.3 - T * 0.03);
+  else if (phase === 'tower2' && r && r.spark >= 1 && r.spark < 4) L = 0.25;
+  else if (phase === 'map' && mapKind === 'ok' && mapSaid < 2) L = 0.05;
+  roarLvl += (L - roarLvl) * 0.08;
+  const now = AC.currentTime;
+  roarG.gain.setTargetAtTime(roarLvl * 1.1, now, 0.05);
+  roarF.frequency.setTargetAtTime(220 + roarLvl * 900 + Math.random() * 60 * roarLvl, now, 0.05);
+  subG.gain.setTargetAtTime(roarLvl * 0.35, now, 0.05);
+}
+function setSnd(on) {
+  sndOn = on; if (master) master.gain.setTargetAtTime(on ? 0.8 : 0, AC.currentTime, 0.05);
+  const b = ui.root.querySelector('#r3Snd');
+  if (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.textContent = on ? 'Звук: включён' : 'Звук: выключен'; }
 }
 
 // ── Модели ракет ──
@@ -387,6 +451,7 @@ function needRapier() {
 }
 function pusk() {
   if (phase !== 'build') return;
+  audioInit();
   for (const tw of tweens) tw.fn(1);   // сборка ещё идёт — доводим её мгновенно, «Пуск» не теряется
   tweens = [];
   phase = 'count'; T = 0; lock(true); needRapier().catch((e) => console.warn('rapier', e));
@@ -443,7 +508,7 @@ function flight(dt) {
     const i = Math.min(CMD.length - 1, Math.floor(T / 0.62));
     if (ui.lastCmd !== i) { ui.lastCmd = i; count(CMD[i][0], CMD[i][1] ? `T − ${CMD[i][1]} с` : 'старт'); }
     if (i === 3 && !r.drain) { r.drain = 1; setVapor(0); say('Ключ на дренаж: клапаны закрыты, кислород больше не парит — баки под давлением.'); }
-    if (i === 5 && !r.lit) { say('Зажигание. Все двигатели загораются ещё на земле, на предварительной ступени тяги.'); r.lit = 1; setFlames(r.kind === 'pack' ? r.noz : r.noz, 0.25); startPadSmoke(0.4); }
+    if (i === 5 && !r.lit) { say('Зажигание. Все двигатели загораются ещё на земле, на предварительной ступени тяги.'); r.lit = 1; setFlames(r.kind === 'pack' ? r.noz : r.noz, 0.25); startPadSmoke(0.4); burst({ dur: 1.2, gain: 0.8, f0: 900, f1: 150 }); }
     if (i === 6 && r.lit === 1) { r.lit = 2; setFlames(r.noz, 0.5); }
     if (i === 8 && r.lit === 2) { r.lit = 3; setFlames(r.noz, 1); startPadSmoke(1); shake = REDUCE ? 0 : 0.45; say('Главная ступень — полная тяга. Ракета ещё держится на фермах.'); }
     padLight.intensity = (r.lit || 0) * 2200 * (0.85 + Math.random() * 0.3);
@@ -584,7 +649,7 @@ function startMap(kind) {
   const m = MAP, cv = renderer.domElement;
   mapKind = kind; mapT = 0; mapSaid = 0;
   m.trailG.setDrawRange(0, 0); m.fallG.setDrawRange(0, 0); m.drop.visible = false; m.hit.visible = false; m.ring.visible = false;
-  m.rk.visible = true; m.body.scale.set(1, 1, 1); m.torch.visible = true;
+  m.rk.visible = true; m.body.scale.set(1, 1, 1); m.torch.visible = true; m.torch.material.color.set(0xffb050); m.torch.position.set(0, -1.9, 0); m.torch.scale.setScalar(3.4);
   m.cam.aspect = camera.aspect; m.cam.updateProjectionMatrix();
   cv.style.transition = 'opacity .4s'; cv.style.opacity = '0';
   mapTimer = setTimeout(() => { phase = 'map'; T = 0; cv.style.opacity = '1'; for (const ps of [...live]) if (ps.emitter && ps.emitter.parent) ps.emitter.visible = false;
@@ -612,9 +677,11 @@ function mapStep(dt) {
   if (mapKind === 'ok') {
     if (p >= MAPDROP && mapSaid < 1) { mapSaid = 1; m.drop.visible = true; say('Красная точка — здесь отделились пустые боковые блоки. Дальше летит центральный блок с головной частью.'); }
     if (p >= MAPCUT && mapSaid < 2) { mapSaid = 2; m.torch.visible = false; m.body.scale.set(0.8, 0.35, 0.8); say('Центральный блок отработал. Головная часть отделилась и летит дальше сама, по инерции, через всю Сибирь.'); }
+    if (p >= 0.84 && mapSaid < 2.5) { mapSaid = 2.5; m.torch.visible = true; m.torch.material.color.set(0xff7a30); m.torch.position.set(0, 0.6, 0); say('Головная часть входит в атмосферу и раскаляется — до Камчатки считанные секунды.'); }
+    if (mapSaid === 2.5) m.torch.scale.setScalar(7 + 4 * Math.sin(performance.now() / 60) ** 2 + (p - 0.84) * 70);
     if (p >= 1 && mapSaid < 3) {
       mapSaid = 3; m.rk.visible = false; m.ring.visible = true; m.hit.visible = true; m.hit.material.color.set(0xffffff); m.hit.position.copy(m.goal.position);
-      award('lab', 30); count('Дошла!', 'полигон Кура, Камчатка'); nextHint('ok');
+      award('lab', 30); count('Дошла!', 'полигон Кура, Камчатка'); nextHint('ok'); chime();
       say('Дошла! Пакет, все двигатели зажжены на земле, пустые боковые блоки сброшены — так 21 августа 1957 года головная часть дошла до полигона Кура на Камчатке. Честная оговорка: в плотных слоях атмосферы она разрушилась, её доводили дальше.', 'ok');
     }
     if (m.ring.visible) { const k = 1 + ((performance.now() / 900) % 1) * 3; m.ring.scale.setScalar(k); m.ring.material.opacity = 1 - (k - 1) / 3; }
@@ -628,13 +695,15 @@ function mapStep(dt) {
   // Камера: от старта, сбоку от ракеты — к общему виду всей дуги над Азией.
   const e = ease(Math.min(1, mapT * 1.15)), P = mapKind === 'ok' ? p : F;
   const look = m.at(Math.min(1, P)).lerp(m.mid.clone().multiplyScalar(RE), mapKind === 'ok' ? e : e * 0.5);
-  const near = m.A.clone().multiplyScalar(RE + 70).add(V(0, -26, 0)), far = m.mid.clone().multiplyScalar(RE + (camera.aspect < 1 ? 230 : 150)).add(V(0, 18, 0));
+  const north = V(0, 1, 0).sub(m.mid.clone().multiplyScalar(m.mid.y)).normalize(), k = camera.aspect < 1 ? 1.45 : 1;
+  const near = m.A.clone().multiplyScalar(RE + 42 * k).addScaledVector(north, -48 * k), far = m.mid.clone().multiplyScalar(RE + 95 * k).addScaledVector(north, -120 * k);
   m.cam.position.copy(near.lerp(far, mapKind === 'ok' ? e : e * 0.6)); m.cam.lookAt(look);
 }
 function mapReset() { clearTimeout(mapTimer); mapKind = null; renderer.domElement.style.opacity = '1'; for (const ps of live) if (ps.emitter) ps.emitter.visible = true; }
 
 // Отрыв: камера держит ракету чуть выше центра кадра и отъезжает, чтобы в кадре были пламя, фермы и шлейф.
 function liftoff(r) {
+  clank();
   say('Подъём! Фермы раскрылись, и ракета уходит со стола на столбе огня.');
   slowMo = REDUCE ? 1 : 0.45; shake = REDUCE ? 0 : 0.7;
   const ice = icePS(); ice.emitter.position.set(0, 18, 0); ice.emitter.rotation.x = Math.PI / 2; addPS(ice, r.g); setTimeout(() => killPS(ice), 5000);
@@ -665,6 +734,7 @@ function towerFail() {
 function separate() {
   const r = rocket; phase = 'wait';
   for (const s of r.sides) setFlames(s.noz, 0);
+  burst({ dur: 0.6, gain: 0.7, f0: 3000, f1: 300 }); burst({ dur: 0.6, gain: 0.5, f0: 2500, f1: 250, delay: 0.12 });   // пироболты
   ready((no) => {
     if (no) { phase = 'sep'; T = 0; return; }
     for (const s of r.sides) {
@@ -740,7 +810,7 @@ function loop() {
   scene.fog.far = 2600 + Math.max(alt, controls.target.y) * 5;
   controls.maxPolarAngle = phase === 'build' || phase === 'count' ? Math.PI * 0.485 : Math.PI * 0.94;   // на столе — не под землю
   controls.update();
-  batch.update(dt);
+  batch.update(dt); soundTick();
   if (phase === 'map') renderer.render(MAP.sc, MAP.cam); else renderer.render(scene, camera);
   fps.n++; fps.t += dt; if (fps.t >= 1) { window.__r7fps = Math.round(fps.n / fps.t); fps.n = 0; fps.t = 0; }
 }
@@ -789,6 +859,7 @@ export async function zapusk(root) {
     if (k === 'drop') say(v === 'drop' ? 'Пустые боковые блоки будут сброшены на высоте.' : 'Пустые боковые блоки полетят с ракетой до конца.');
   }));
   root.querySelector('#r3Go').addEventListener('click', pusk);
+  const sb = root.querySelector('#r3Snd'); if (sb) sb.addEventListener('click', () => { audioInit(); setSnd(!sndOn); });
   root.querySelector('#r3Reset').addEventListener('click', () => {
     st = { scheme: 'tower', drop: 'keep' };
     segs.forEach((x) => x.setAttribute('aria-pressed', x.dataset.v === 'tandem' || x.dataset.v === 'keep' ? 'true' : 'false'));
