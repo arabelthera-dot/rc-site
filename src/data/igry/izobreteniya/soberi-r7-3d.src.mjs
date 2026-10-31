@@ -86,8 +86,8 @@ const curve = (a, b, c, d) => new PiecewiseBezier([[new Bezier(a, b, c, d), 0]])
 function flamePS(scale) {
   const ps = new ParticleSystem({
     duration: 1, looping: true, worldSpace: true,
-    startLife: new IntervalValue(0.18, 0.34), startSpeed: new IntervalValue(26 * scale + 8, 36 * scale + 10),
-    startSize: new IntervalValue(0.75 * scale, 1.25 * scale), startColor: new ColorRange(new Vector4(1, 0.95, 0.85, 1), new Vector4(1, 0.78, 0.5, 1)),
+    startLife: new IntervalValue(0.26, 0.5), startSpeed: new IntervalValue(26 * scale + 8, 36 * scale + 10),
+    startSize: new IntervalValue(1.0 * scale, 1.7 * scale), startColor: new ColorRange(new Vector4(1, 0.95, 0.85, 1), new Vector4(1, 0.78, 0.5, 1)),
     shape: new ConeEmitter({ radius: 0.32 * scale, angle: 0.07, thickness: 1, arc: Math.PI * 2 }),
     emissionOverTime: new ConstantValue(0), material: M.flame, renderMode: RenderMode.BillBoard,
     behaviors: [
@@ -203,7 +203,7 @@ function makeTower() {
 }
 
 // ── Сцена ──
-let renderer, scene, camera, controls, clock, world, R, sky, flash, padLight, shake = 0;
+let rocketLight; let renderer, scene, camera, controls, clock, world, R, sky, flash, padLight, shake = 0;
 let rocket, st = { scheme: 'tower', drop: 'keep' }, phase = 'build', T = 0, follow = null, bodies = [], trusses = [];
 let padSmoke = [], trail = null, vel = V(0, 0, 0), dropped = false, found = {}, ui;
 
@@ -332,7 +332,7 @@ function resetAll(msg) {
   phase = 'build'; T = 0; ui.lastCmd = -1; count(''); padLight.intensity = 0; speedUp = 1; boomAt = null; slowMo = 1;
   assemble(st.scheme === 'pack' ? 'pack' : 'tower');
   sky.material.uniforms.uAlt.value = 0;
-  camGoal = null; controls.target.set(0, 13, 0); camera.position.copy(camHome);
+  camGoal = null; rocketLight.removeFromParent(); rocketLight.intensity = 0; controls.target.set(0, 13, 0); camera.position.copy(camHome);
   lock(false); say(msg || 'Ракета на столе. Выбери, как её собрать, и нажми «Пуск».');
 }
 
@@ -369,11 +369,11 @@ function flight(dt) {
   if (phase === 'count') {
     const i = Math.min(CMD.length - 1, Math.floor(T / 0.62));
     if (ui.lastCmd !== i) { ui.lastCmd = i; count(CMD[i][0], CMD[i][1] ? `T − ${CMD[i][1]} с` : 'старт'); }
-    if (i === 5 && !r.lit) { r.lit = 1; setFlames(r.kind === 'pack' ? r.noz : r.noz, 0.25); startPadSmoke(0.4); }
+    if (i === 5 && !r.lit) { say('Зажигание. Все двигатели загораются ещё на земле, на предварительной ступени тяги.'); r.lit = 1; setFlames(r.kind === 'pack' ? r.noz : r.noz, 0.25); startPadSmoke(0.4); }
     if (i === 6 && r.lit === 1) { r.lit = 2; setFlames(r.noz, 0.5); }
-    if (i === 8 && r.lit === 2) { r.lit = 3; setFlames(r.noz, 1); startPadSmoke(1); }
+    if (i === 8 && r.lit === 2) { r.lit = 3; setFlames(r.noz, 1); startPadSmoke(1); shake = REDUCE ? 0 : 0.45; say('Главная ступень — полная тяга. Ракета ещё держится на фермах.'); }
     padLight.intensity = (r.lit || 0) * 2200 * (0.85 + Math.random() * 0.3);
-    if (i === 9) { phase = 'fly'; T = 0; trail = addPS(smokePS({ size: 3.5, life: [3.5, 5], speed: [4, 8], rate: 28, angle: 0.25, radius: 1.5, alpha: 0.55, rise: 0.6 }), r.g); trail.emitter.rotation.x = Math.PI / 2; trail.emitter.position.y = -3; }
+    if (i === 9) { phase = 'fly'; T = 0; liftoff(r); trail = addPS(smokePS({ size: 3.5, life: [3.5, 5], speed: [4, 8], rate: 28, angle: 0.25, radius: 1.5, alpha: 0.55, rise: 0.6 }), r.g); trail.emitter.rotation.x = Math.PI / 2; trail.emitter.position.y = -3; }
     return;
   }
   // Подъём: ускорение растёт по мере выгорания топлива; с 5-й секунды ракета плавно наклоняется к востоку.
@@ -383,8 +383,12 @@ function flight(dt) {
     vel.y += a * dt; const tilt = Math.max(0, Math.min(0.14, (T - 5) * 0.02));
     vel.x = vel.y * Math.sin(tilt);
     r.g.position.addScaledVector(vel, dt); r.g.rotation.z = -tilt;
+    if (slowMo < 1 && T > 0.8) slowMo = Math.min(1, slowMo + 0.012);
+    rocketLight.intensity = 2600 * (0.85 + Math.random() * 0.3);
+    if (!r.saidTilt && T > 5) { r.saidTilt = 1; say('Ракета ложится на курс: на восток, к Камчатке.'); }
+    if (!r.saidAlt && r.kind === 'pack' && T > TSEP - 2.5) { r.saidAlt = 1; say(st.drop === 'drop' ? 'Боковые блоки догорают. Сейчас будет разделение — смотри снизу.' : 'Боковые блоки догорают. Пустые баки остаются на ракете.'); }
     padLight.intensity = Math.max(0, 1 - r.g.position.y / 60) * 3000 * (0.85 + Math.random() * 0.3);
-    if (T > 4) for (const ps of padSmoke) ps.emissionOverTime.value *= 0.985;
+    if (T > 2) for (const ps of padSmoke) ps.emissionOverTime.value *= 0.97;
     const realT = Math.round(T * (r.kind === 'pack' ? 118 / TSEP : 100 / T1)), km = Math.round(r.g.position.y * (r.kind === 'pack' ? 50 / 330 : 45 / 210));
     count(`T + ${realT} с · высота ≈ ${km} км`, 'полёт · время и высота сжаты');
     if (r.kind === 'tower' && T >= T1) towerFail();
@@ -429,6 +433,14 @@ function flight(dt) {
     }
   }
 }
+// Отрыв: камера держит ракету чуть выше центра кадра и отъезжает, чтобы в кадре были пламя, фермы и шлейф.
+function liftoff(r) {
+  say('Подъём! Фермы раскрылись, и ракета уходит со стола на столбе огня.');
+  slowMo = REDUCE ? 1 : 0.45; shake = REDUCE ? 0 : 0.7;
+  r.g.add(rocketLight); rocketLight.position.set(0, -14, 0); rocketLight.intensity = 2600;
+  follow = () => r.g.position.clone().add(V(0, 4 - Math.min(10, r.g.position.y * 0.08), 0));
+  if (!dragging) { const dir = camera.position.clone().sub(controls.target).setY(0).normalize(); camGoal = dir.multiplyScalar(camera.aspect < 1 ? 105 : 80).setY(-14); }
+}
 function setFound() { ui.found.textContent = 'Найдено причин неудачи: ' + Object.keys(found).length + ' из 2.'; }
 // Rapier грузится по «Пуску»; ответ, пришедший после «Начать заново», — уже не к этой ракете.
 function ready(fn) { const r = rocket; const go = (no) => { if (rocket === r) fn(no); }; if (world) go(); else needRapier().then(() => go()).catch(() => go(true)); }
@@ -466,6 +478,7 @@ function separate() {
     if (!dragging) camGoal = V(22, -64, 26).multiplyScalar(camera.aspect < 1 ? 1.5 : 1);   // снизу вдоль оси: так с земли и видели «крест»
     slowMo = REDUCE ? 1 : 0.4;
     count('T + 118 с · разделение', 'боковые блоки уходят');
+    say('Разделение! Четыре пустых блока отходят «крестом Королёва», центральный летит дальше.');
   });
 }
 function keepFail() {
@@ -484,13 +497,13 @@ function keepFail() {
 function startPadSmoke(level) {
   if (!padSmoke.length) {
     // Клубы из котлована по кругу и струя из газоотводного лотка на запад.
-    const ring = addPS(smokePS({ size: 10, life: [4, 7], speed: [9, 17], rate: 30, angle: 1.35, radius: 4, alpha: 0.85, rise: 1.8 }));
+    const ring = addPS(smokePS({ size: 10, life: [4, 7], speed: [9, 17], rate: 22, angle: 1.35, radius: 4, alpha: 0.6, rise: 1.8 }));
     ring.emitter.position.set(0, 1, 0); ring.emitter.rotation.x = -Math.PI / 2;
-    const duct = addPS(smokePS({ size: 11, life: [4.5, 8], speed: [24, 38], rate: 34, angle: 0.3, radius: 3, alpha: 0.85, rise: 3 }));
+    const duct = addPS(smokePS({ size: 11, life: [4.5, 8], speed: [24, 38], rate: 26, angle: 0.3, radius: 3, alpha: 0.62, rise: 3 }));
     duct.emitter.position.set(-16, 0.5, 0); duct.emitter.rotation.order = 'YXZ'; duct.emitter.rotation.y = -Math.PI / 2; duct.emitter.rotation.x = -0.25;
     padSmoke = [ring, duct];
   }
-  for (const ps of padSmoke) ps.emissionOverTime.value = (ps === padSmoke[0] ? 30 : 34) * Math.max(K, 0.7) * level;
+  for (const ps of padSmoke) ps.emissionOverTime.value = (ps === padSmoke[0] ? 22 : 26) * Math.max(K, 0.7) * level;
 }
 
 // ── Цикл ──
@@ -517,6 +530,7 @@ function loop() {
     const off = camera.position.clone().sub(controls.target); off.lerp(camGoal, phase === 'sep' ? 0.07 : 0.035); camera.position.copy(controls.target).add(off);
     if (off.distanceTo(camGoal) < 0.5) camGoal = null;
   }
+  if (camera.position.y < 3) camera.position.y = 3;   // камера не уходит под бетон стола
   for (const n of rocket ? rocket.noz.concat(rocket.n2 || []) : []) if (n.core.visible) { const f = 0.85 + Math.random() * 0.3; n.core.scale.set(f, (0.8 + Math.random() * 0.4) * (n.level || 1), f); n.halo.scale.setScalar(n.halo.size * f * (0.6 + 0.4 * Math.min(n.level, 1.2))); }
   flash.intensity *= 0.86; if (shake > 0.01) { camera.position.add(V(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5).multiplyScalar(shake)); shake *= 0.9; }
   const alt = rocket ? rocket.g.position.y : 0;
@@ -554,7 +568,7 @@ export async function zapusk(root) {
   sun.shadow.mapSize.set(SLAB ? 1024 : 2048, SLAB ? 1024 : 2048);
   Object.assign(sun.shadow.camera, { left: -40, right: 40, top: 45, bottom: -25, near: 10, far: 220 }); sun.shadow.bias = -0.0005; sun.shadow.normalBias = 0.04;
   scene.add(sun);
-  padLight = new THREE.PointLight(0xff9a40, 0, 140, 1.6); padLight.position.set(0, -1, 0); scene.add(padLight);
+  rocketLight = new THREE.PointLight(0xffa24a, 0, 260, 1.4); padLight = new THREE.PointLight(0xff9a40, 0, 140, 1.6); padLight.position.set(0, -1, 0); scene.add(padLight);
   flash = new THREE.PointLight(0xffb060, 0, 400, 1.4); scene.add(flash);
   batch = new BatchedRenderer(); scene.add(batch);
   makeSky(); buildPad();
