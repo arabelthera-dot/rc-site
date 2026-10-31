@@ -323,6 +323,18 @@ function makeSky() {
 function say(t, cls) { const m = ui.msg; m.className = 'lab-msg' + (cls ? ' ' + cls : ''); m.textContent = t; }
 function count(big, small) { ui.count.replaceChildren(); if (!big) return; ui.count.textContent = big; if (small) { const s = document.createElement('small'); s.textContent = small; ui.count.prepend(s); } }
 function lock(on) { for (const b of ui.root.querySelectorAll('#r3Ctrl .seg, #r3Go')) b.disabled = on; }
+// «Что сделать сейчас» — строка над кнопками: после каждой попытки говорит, что поменять в следующий раз.
+const tried = {};
+const comboKey = () => (st.scheme === 'pack' ? 'pack-' + st.drop : 'tower');
+function hint(t) { ui.hint.textContent = t; }
+function nextHint(result) {
+  tried[comboKey()] = result;
+  const left = [!found.s && 'башню', !found.d && 'пакет с «Везти до конца»'].filter(Boolean);
+  if (result === 'tower') hint('Что сделать сейчас: нажми «Начать заново», выбери «Пакетом вокруг центрального» — тогда все двигатели загорятся ещё на земле.');
+  else if (result === 'keep') hint('Что сделать сейчас: нажми «Начать заново», оставь пакет, а пустые блоки — «Сбросить». Лишний вес уйдёт, и ракета полетит дальше.');
+  else hint(left.length ? 'Ракета дошла. Чтобы найти обе причины неудачи, нажми «Начать заново» и попробуй ' + left.join(', потом ') + ': увидишь, почему так не долетает.'
+    : 'Пройдено всё: верная сборка найдена, обе причины неудачи тоже. Можно запускать снова и смотреть с других сторон.');
+}
 function award(k, n) { if (typeof window.award === 'function') window.award(k, n); }
 
 function setFlames(list, level) {
@@ -378,7 +390,9 @@ function pusk() {
   for (const tw of tweens) tw.fn(1);   // сборка ещё идёт — доводим её мгновенно, «Пуск» не теряется
   tweens = [];
   phase = 'count'; T = 0; lock(true); needRapier().catch((e) => console.warn('rapier', e));
-  say('Обратный отсчёт. Смотри на сцену.');
+  const was = tried[comboKey()];
+  say(was === 'tower' || was === 'keep' ? 'Так ты уже пробовал, и ракета не долетела. Пускаем ещё раз — смотри, в какой момент сорвётся.' : 'Обратный отсчёт. Смотри на сцену.');
+  hint('Сейчас ничего нажимать не нужно: смотри на сцену и читай под ней, что происходит.');
 }
 function resetAll(msg) {
   mapReset();
@@ -391,6 +405,7 @@ function resetAll(msg) {
   sky.material.uniforms.uAlt.value = 0;
   camGoal = null; rocketLight.removeFromParent(); rocketLight.intensity = 0; controls.target.set(0, 13, 0); camera.position.copy(camHome);
   lock(false); say(msg || 'Ракета на столе. Выбери, как её собрать, и нажми «Пуск».');
+  if (ui.hint.textContent.startsWith('Сейчас')) hint('Что сделать сейчас: выбери, как собрать ракету и что делать с пустыми блоками, и нажми «Пуск».');
 }
 
 // Тело Rapier из части ракеты: её мировое положение, скорость полёта, вращение «наружу».
@@ -463,7 +478,7 @@ function flight(dt) {
       r.spark = 4; const p = r.s2Holder.localToWorld(V(0, 5, 0));
       boom(p, false); killPS(r.n2[0].ps); r.s2Holder.removeFromParent(); debris(p, vel, SLAB ? 8 : 14);
       follow = () => p; phase = 'end'; T = 0; mapTimer = setTimeout(() => startMap('tower'), 3200);
-      found.s = 1; award('why0', 10); setFound();
+      found.s = 1; award('why0', 10); setFound(); nextHint('tower');
       count('Авария', 'вторая ступень');
       say('Первая ступень отработала, и вторую надо зажечь высоко в небе. Здесь это и сорвалось: зажигание в полёте не прошло, ступень разрушилась. В пакете Королёва все двигатели запускаются ещё на земле, «а не в полёте», и отказ виден на старте.', 'bad');
     }
@@ -486,7 +501,7 @@ function flight(dt) {
       boom(p, true); for (const n of r.noz) killPS(n.ps); if (trail) { killPS(trail); trail = null; }
       world.removeRigidBody(b.body); b.obj.removeFromParent(); bodies.shift(); debris(V(p.x, 6, p.z), V(0, 8, 0), SLAB ? 10 : 18);
       follow = () => p; phase = 'end'; speedUp = 1; mapTimer = setTimeout(() => startMap('keep'), 3600);
-      found.d = 1; award('why1', 10); setFound();
+      found.d = 1; award('why1', 10); setFound(); nextHint('keep');
       count('Падение', 'ракета не долетела');
       say('Топливо в боковых блоках кончилось, а ракета тащит их пустые баки дальше. Мёртвый вес съедает скорость: ракета зависла, свалилась набок и упала. До Камчатки не хватило. У Р-7 две ступени: боковые блоки отработали и отделились.', 'bad');
     }
@@ -599,7 +614,7 @@ function mapStep(dt) {
     if (p >= MAPCUT && mapSaid < 2) { mapSaid = 2; m.torch.visible = false; m.body.scale.set(0.8, 0.35, 0.8); say('Центральный блок отработал. Головная часть отделилась и летит дальше сама, по инерции, через всю Сибирь.'); }
     if (p >= 1 && mapSaid < 3) {
       mapSaid = 3; m.rk.visible = false; m.ring.visible = true; m.hit.visible = true; m.hit.material.color.set(0xffffff); m.hit.position.copy(m.goal.position);
-      award('lab', 30); count('Дошла!', 'полигон Кура, Камчатка');
+      award('lab', 30); count('Дошла!', 'полигон Кура, Камчатка'); nextHint('ok');
       say('Дошла! Пакет, все двигатели зажжены на земле, пустые боковые блоки сброшены — так 21 августа 1957 года головная часть дошла до полигона Кура на Камчатке. Честная оговорка: в плотных слоях атмосферы она разрушилась, её доводили дальше.', 'ok');
     }
     if (m.ring.visible) { const k = 1 + ((performance.now() / 900) % 1) * 3; m.ring.scale.setScalar(k); m.ring.material.opacity = 1 - (k - 1) / 3; }
@@ -732,7 +747,7 @@ function loop() {
 
 export async function zapusk(root) {
   const stage = root.querySelector('#r3Stage');
-  ui = { root, msg: root.querySelector('#r3Msg'), count: root.querySelector('#r3Count'), found: root.querySelector('#r3Found') };
+  ui = { root, msg: root.querySelector('#r3Msg'), count: root.querySelector('#r3Count'), found: root.querySelector('#r3Found'), hint: root.querySelector('#r3Hint') };
   renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio, SLAB ? 1.5 : 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
@@ -781,7 +796,7 @@ export async function zapusk(root) {
   });
   root.querySelector('#r3Ctrl').hidden = false;
   root.setAttribute('data-sostoyanie', 'gotovo');
-  root.querySelector('#r3Hint').textContent = 'Крути сцену пальцем или мышью, двумя пальцами или колёсиком — ближе.';
+  hint('Что сделать сейчас: выбери в пункте 1, как собрать ракету, в пункте 2 — что делать с пустыми блоками, и нажми «Пуск». Сцену можно крутить пальцем или мышью.');
   say('Ракета на столе, пока башней. Выбери, как её собрать, и нажми «Пуск».');
   loop();
   window.__r7 = { st: () => ({ phase, T }), pick: (k, v) => root.querySelector(`#r3Ctrl .seg[data-k="${k}"][data-v="${v}"]`).click() };
