@@ -188,6 +188,12 @@ function boom(pos, big) {
 // ── Звук (Web Audio, без файлов): рёв двигателей по тяге, хлопок зажигания, удар ферм, грохот взрыва, сигнал прибытия ──
 // Включается первым нажатием «Пуск» (браузер разрешает звук только после действия человека). Кнопка «Звук» выключает.
 let AC = null, master, roarG, roarF, subG, noiseBuf, sndOn = true, roarLvl = 0;
+// Голос отсчёта — как по громкой связи стартовой площадки (файлы zvuk/*.mp3, 4–7 КБ, грузятся по первому «Пуску»).
+const VOICE = { 0: 'start', 3: 'drenazh', 5: 'zazhiganie', 8: 'glavnaya', 9: 'podyom' }, voiceBuf = {};
+function voice(i) {
+  const b = voiceBuf[VOICE[i]]; if (!AC || !b) return;
+  const s = AC.createBufferSource(); s.buffer = b; const g = AC.createGain(); g.gain.value = 1.3; s.connect(g).connect(master); s.start();
+}
 function audioInit() {
   if (AC) { if (AC.state === 'suspended') AC.resume(); return; }
   const C = window.AudioContext || window.webkitAudioContext; if (!C) return;
@@ -196,6 +202,7 @@ function audioInit() {
   const len = AC.sampleRate * 3, buf = AC.createBuffer(1, len, AC.sampleRate), ch = buf.getChannelData(0); let last = 0;
   for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; ch[i] = last * 3.5 + w * 0.08; }   // «коричневый» шум с шорохом
   noiseBuf = buf;
+  for (const n of Object.values(VOICE)) fetch(new URL('./zvuk/' + n + '.mp3', import.meta.url)).then((r) => r.arrayBuffer()).then((a) => AC.decodeAudioData(a)).then((b) => { voiceBuf[n] = b; }).catch(() => {});
   const src = AC.createBufferSource(); src.buffer = buf; src.loop = true;
   roarF = AC.createBiquadFilter(); roarF.type = 'lowpass'; roarF.frequency.value = 300; roarF.Q.value = 0.7;
   roarG = AC.createGain(); roarG.gain.value = 0; src.connect(roarF).connect(roarG).connect(master); src.start();
@@ -505,8 +512,8 @@ function flight(dt) {
   const r = rocket;
   if (phase === 'map') { mapStep(dt); return; }
   if (phase === 'count') {
-    const i = Math.min(CMD.length - 1, Math.floor(T / 0.62));
-    if (ui.lastCmd !== i) { ui.lastCmd = i; count(CMD[i][0], CMD[i][1] ? `T − ${CMD[i][1]} с` : 'старт'); }
+    const i = Math.min(CMD.length - 1, Math.floor(T / 0.9));   // шаг 0,9 с: голос каждой команды успевает прозвучать
+    if (ui.lastCmd !== i) { ui.lastCmd = i; voice(i); count(CMD[i][0], CMD[i][1] ? `T − ${CMD[i][1]} с` : 'старт'); }
     if (i === 3 && !r.drain) { r.drain = 1; setVapor(0); say('Ключ на дренаж: клапаны закрыты, кислород больше не парит — баки под давлением.'); }
     if (i === 5 && !r.lit) { say('Зажигание. Все двигатели загораются ещё на земле, на предварительной ступени тяги.'); r.lit = 1; setFlames(r.kind === 'pack' ? r.noz : r.noz, 0.25); startPadSmoke(0.4); burst({ dur: 1.2, gain: 0.8, f0: 900, f1: 150 }); }
     if (i === 6 && r.lit === 1) { r.lit = 2; setFlames(r.noz, 0.5); }
@@ -870,6 +877,7 @@ export async function zapusk(root) {
   hint('Что сделать сейчас: выбери в пункте 1, как собрать ракету, в пункте 2 — что делать с пустыми блоками, и нажми «Пуск». Сцену можно крутить пальцем или мышью.');
   say('Ракета на столе, пока башней. Выбери, как её собрать, и нажми «Пуск».');
   loop();
+  audioInit();   // контекст создаётся «спящим», голоса успевают загрузиться; оживает по «Пуску»
   window.__r7 = { st: () => ({ phase, T }), pick: (k, v) => root.querySelector(`#r3Ctrl .seg[data-k="${k}"][data-v="${v}"]`).click() };
 }
 
