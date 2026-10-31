@@ -10,6 +10,8 @@ import {
   BatchedRenderer, ParticleSystem, ConeEmitter, SphereEmitter, PointEmitter, IntervalValue, ConstantValue, ColorRange,
   Gradient, ColorOverLife, SizeOverLife, ApplyForce, PiecewiseBezier, Bezier, RenderMode, Vector4, Vector3 as QV3,
 } from 'three.quarks';
+import { feature } from 'topojson-client';
+import land110 from 'world-atlas/land-110m.json';   // Natural Earth 1:110 млн, общественное достояние
 
 const SLAB = matchMedia('(pointer: coarse)').matches || innerWidth < 760;   // телефон: меньше частиц и теней
 const K = SLAB ? 0.5 : 1;
@@ -379,6 +381,7 @@ function pusk() {
   say('Обратный отсчёт. Смотри на сцену.');
 }
 function resetAll(msg) {
+  mapReset();
   for (const b of bodies) { if (world) world.removeRigidBody(b.body); b.obj.removeFromParent(); }
   bodies = []; follow = null; vel.set(0, 0, 0); dropped = false;
   for (const ps of padSmoke) killPS(ps); padSmoke = []; if (trail) { killPS(trail); trail = null; }
@@ -420,6 +423,7 @@ let speedUp = 1, camGoal = null, boomAt = null, slowMo = 1;   // slowMo < 1 — 
 function flight(dt) {
   T += dt;
   const r = rocket;
+  if (phase === 'map') { mapStep(dt); return; }
   if (phase === 'count') {
     const i = Math.min(CMD.length - 1, Math.floor(T / 0.62));
     if (ui.lastCmd !== i) { ui.lastCmd = i; count(CMD[i][0], CMD[i][1] ? `T − ${CMD[i][1]} с` : 'старт'); }
@@ -458,7 +462,7 @@ function flight(dt) {
     if (T > 1.75 && r.spark === 3) {
       r.spark = 4; const p = r.s2Holder.localToWorld(V(0, 5, 0));
       boom(p, false); killPS(r.n2[0].ps); r.s2Holder.removeFromParent(); debris(p, vel, SLAB ? 8 : 14);
-      follow = () => p; phase = 'end'; T = 0;
+      follow = () => p; phase = 'end'; T = 0; mapTimer = setTimeout(() => startMap('tower'), 3200);
       found.s = 1; award('why0', 10); setFound();
       count('Авария', 'вторая ступень');
       say('Первая ступень отработала, и вторую надо зажечь высоко в небе. Здесь это и сорвалось: зажигание в полёте не прошло, ступень разрушилась. В пакете Королёва все двигатели запускаются ещё на земле, «а не в полёте», и отказ виден на старте.', 'bad');
@@ -470,10 +474,10 @@ function flight(dt) {
     vel.y += (T < 4 ? 1.5 + 1.5 * T - 9.81 : 12 + T) * dt; r.g.position.addScaledVector(vel, dt);
     sky.material.uniforms.uAlt.value = Math.min(1, 0.55 + T * 0.04);
     if (T > 3.2 && !r.told) {
-      r.told = 1; award('lab', 30); count('Пакет разделился', 'боковые блоки сброшены');
-      say('Дошла! Пакет, все двигатели зажжены на земле, пустые боковые блоки сброшены «крестом Королёва». Так 21 августа 1957 года головная часть дошла до полигона Кура на Камчатке. Честная оговорка: в плотных слоях атмосферы она разрушилась, её доводили дальше. Сам полёт до Камчатки — на схеме в первой игре.', 'ok');
+      r.told = 1; count('Пакет разделился', 'боковые блоки сброшены');
+      say('Разделение прошло. Центральный блок с головной частью летит дальше — к Камчатке. Сейчас камера поднимется в космос.');
     }
-    if (T > 9) { phase = 'end'; follow = null; for (const n of r.central) n.ps.emissionOverTime.value *= 0.5; }
+    if (T > 7.5) { phase = 'end'; follow = null; startMap('ok'); }
     return;
   }
   if (phase === 'tumble') {            // пакет с пустыми баками валится и падает (ускоренно ×3)
@@ -481,13 +485,139 @@ function flight(dt) {
       const p = V(b.body.translation().x, 2, b.body.translation().z); boomAt = p;
       boom(p, true); for (const n of r.noz) killPS(n.ps); if (trail) { killPS(trail); trail = null; }
       world.removeRigidBody(b.body); b.obj.removeFromParent(); bodies.shift(); debris(V(p.x, 6, p.z), V(0, 8, 0), SLAB ? 10 : 18);
-      follow = () => p; phase = 'end'; speedUp = 1;
+      follow = () => p; phase = 'end'; speedUp = 1; mapTimer = setTimeout(() => startMap('keep'), 3600);
       found.d = 1; award('why1', 10); setFound();
       count('Падение', 'ракета не долетела');
       say('Топливо в боковых блоках кончилось, а ракета тащит их пустые баки дальше. Мёртвый вес съедает скорость: ракета зависла, свалилась набок и упала. До Камчатки не хватило. У Р-7 две ступени: боковые блоки отработали и отделились.', 'bad');
     }
   }
 }
+
+// ── Второй акт: полёт до Камчатки над глобусом (то, что раньше было плоской схемой первой игры) ──
+// Земля — Natural Earth 1:110 млн. Высота дуги преувеличена, время сжато; координаты точек — приблизительные.
+const RE = 100, D2R = Math.PI / 180;
+const TYURATAM = [45.92, 63.34], KURA = [57.3, 160.9];
+const MAPF = { ok: 1, tower: 0.16, keep: 0.34 }, MAPDROP = 0.2, MAPCUT = 0.42;
+let MAP = null, mapKind = null, mapT = 0, mapTimer = 0, mapSaid = 0;
+const ll = (lat, lon, h = 0) => { const la = lat * D2R, ph = (lon + 180) * D2R, r = RE + h; return V(-r * Math.cos(la) * Math.cos(ph), r * Math.sin(la), r * Math.cos(la) * Math.sin(ph)); };
+function earthTex() {
+  return canvasTex(2048, (g, s) => {
+    const W = s, H = s / 2;
+    const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#0b1a2e'); gr.addColorStop(0.5, '#123355'); gr.addColorStop(1, '#0b1a2e');
+    g.fillStyle = gr; g.fillRect(0, 0, W, s);
+    g.strokeStyle = 'rgba(143,165,185,.16)'; g.lineWidth = 1;
+    for (let lo = -180; lo <= 180; lo += 15) { const x = (lo + 180) / 360 * W; g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
+    for (let la = -75; la <= 75; la += 15) { const y = (90 - la) / 180 * H; g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
+    const land = feature(land110, land110.objects.land);
+    g.fillStyle = '#4c5e3f'; g.strokeStyle = '#b8a77a'; g.lineWidth = 1.4;
+    for (const f of land.features) {
+      const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+      for (const poly of polys) {
+        // Контур, пересекающий линию перемены дат, разворачиваем непрерывно и рисуем трижды со сдвигом на ширину карты.
+        for (const sh of [-W, 0, W]) {
+          g.beginPath();
+          for (const ring of poly) { let prev = null, acc = 0; ring.forEach(([lo, la], i) => { if (prev !== null && Math.abs(lo - prev) > 180) acc += prev > lo ? 360 : -360; prev = lo; const x = (lo + acc + 180) / 360 * W + sh, y = (90 - la) / 180 * H; i ? g.lineTo(x, y) : g.moveTo(x, y); }); }
+          g.fill('evenodd'); g.stroke();
+        }
+      }
+    }
+  });
+}
+function buildMap() {
+  const sc = new THREE.Scene(); sc.background = new THREE.Color(0x02050b);
+  const cam = new THREE.PerspectiveCamera(40, camera.aspect, 0.5, 5000);
+  const tex = earthTex(); tex.repeat.set(1, 0.5); tex.offset.set(0, 0.5); tex.anisotropy = 8;   // холст квадратный, карта — верхняя половина
+  const globe = new THREE.Mesh(new THREE.SphereGeometry(RE, 128, 64), new THREE.MeshStandardMaterial({ map: tex, roughness: 1, metalness: 0 }));
+  sc.add(globe);
+  const atm = new THREE.Mesh(new THREE.SphereGeometry(RE * 1.035, 64, 32), new THREE.ShaderMaterial({
+    side: THREE.BackSide, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    vertexShader: 'varying vec3 vN; varying vec3 vP; void main(){ vN=normalize(normalMatrix*normal); vec4 p=modelViewMatrix*vec4(position,1.); vP=p.xyz; gl_Position=projectionMatrix*p; }',
+    fragmentShader: 'varying vec3 vN; varying vec3 vP; void main(){ float f=pow(1.-abs(dot(vN,normalize(-vP))),3.); gl_FragColor=vec4(.35,.62,1.,1.)*f*1.4; }',
+  }));
+  sc.add(atm);
+  const starPos = []; let seed = 5; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 1500; i++) { const v = V(rnd() - 0.5, rnd() - 0.5, rnd() - 0.5).normalize().multiplyScalar(2000 + rnd() * 800); starPos.push(v.x, v.y, v.z); }
+  const sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+  sc.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xffffff, size: 1.6, sizeAttenuation: false })));
+  const sun = new THREE.DirectionalLight(0xfff4e0, 2.6); sun.position.copy(ll(20, 95, 300)); sc.add(sun);
+  sc.add(new THREE.HemisphereLight(0x8fb4ff, 0x0b1a2e, 0.55));
+  // Путь по большому кругу, высота — баллистическая парабола (преувеличена).
+  const A = ll(...TYURATAM).normalize(), B = ll(...KURA).normalize(), ang = A.angleTo(B), N = 240, pts = [];
+  for (let i = 0; i <= N; i++) { const t = i / N; const d = A.clone().multiplyScalar(Math.sin((1 - t) * ang)).add(B.clone().multiplyScalar(Math.sin(t * ang))).divideScalar(Math.sin(ang)); pts.push(d.normalize().multiplyScalar(RE + 0.15 + 16 * 4 * t * (1 - t))); }
+  const at = (t) => { const f = Math.min(N, Math.max(0, t * N)), i = Math.floor(f), j = Math.min(N, i + 1); return pts[i].clone().lerp(pts[j], f - i); };
+  const ghost = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineDashedMaterial({ color: 0x8fa5b9, dashSize: 1.2, gapSize: 1.4, transparent: true, opacity: 0.55 }));
+  ghost.computeLineDistances(); sc.add(ghost);
+  const trailG = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), N, 0.32, 8, false); trailG.setDrawRange(0, 0);   // путь — трубка: линия в WebGL всегда в 1 пиксель
+  sc.add(new THREE.Mesh(trailG, new THREE.MeshBasicMaterial({ color: 0xf0d27a })));
+  const fallG = new THREE.BufferGeometry().setFromPoints(new Array(41).fill(0).map(() => V(0, 0, 0))); fallG.setDrawRange(0, 0);
+  sc.add(new THREE.Line(fallG, new THREE.LineBasicMaterial({ color: 0xff8a7a })));
+  const dot = (color, size, p) => { const m = new THREE.Sprite(new THREE.SpriteMaterial({ map: texGlow, color, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false })); m.scale.setScalar(size); m.position.copy(p); sc.add(m); return m; };
+  const start = dot(0xe4c97a, 3.2, ll(...TYURATAM, 0.4)), goal = dot(0xffffff, 3.2, ll(...KURA, 0.4));
+  const drop = dot(0xff8a7a, 2.6, at(MAPDROP)); drop.visible = false;
+  const hit = dot(0xff5a3c, 9, V()); hit.visible = false;
+  const ring = new THREE.Mesh(new THREE.RingGeometry(0.9, 1.15, 48), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, side: THREE.DoubleSide, depthWrite: false }));
+  ring.position.copy(ll(...KURA, 0.3)); ring.lookAt(ring.position.clone().multiplyScalar(2)); ring.visible = false; sc.add(ring);
+  // Ракета на карте: корпус-игла и факел; после выключения центрального блока летит одна головная часть.
+  const rk = new THREE.Group(); sc.add(rk);
+  const body = new THREE.Mesh(new THREE.ConeGeometry(0.35, 2.6, 12), new THREE.MeshStandardMaterial({ color: 0xeef2f4, roughness: 0.5, emissive: 0x334455 })); rk.add(body);
+  const torch = dot(0xffb050, 3.4, V(0, -1.9, 0)); rk.remove(torch); rk.add(torch);
+  const mid = A.clone().add(B).normalize();
+  MAP = { sc, cam, at, pts, N, trailG, fallG, start, goal, drop, hit, ring, rk, body, torch, mid, A };
+}
+function startMap(kind) {
+  if (!MAP) buildMap();
+  const m = MAP, cv = renderer.domElement;
+  mapKind = kind; mapT = 0; mapSaid = 0;
+  m.trailG.setDrawRange(0, 0); m.fallG.setDrawRange(0, 0); m.drop.visible = false; m.hit.visible = false; m.ring.visible = false;
+  m.rk.visible = true; m.body.scale.set(1, 1, 1); m.torch.visible = true;
+  m.cam.aspect = camera.aspect; m.cam.updateProjectionMatrix();
+  cv.style.transition = 'opacity .4s'; cv.style.opacity = '0';
+  mapTimer = setTimeout(() => { phase = 'map'; T = 0; cv.style.opacity = '1'; for (const ps of [...live]) if (ps.emitter && ps.emitter.parent) ps.emitter.visible = false;
+    count('Полёт до Камчатки', 'путь по карте · высота преувеличена, время сжато');
+    say(kind === 'ok' ? 'Полёт до Камчатки. Золотая точка — старт в Тюра-Таме, белая — полигон Кура на Камчатке. Золотая линия — путь ракеты.'
+      : 'Теперь на карте: золотая точка — старт в Тюра-Таме, белая — полигон Кура на Камчатке, куда ракета должна была долететь.'); }, 420);
+}
+function mapStep(dt) {
+  const m = MAP, F = MAPF[mapKind], dur = mapKind === 'ok' ? 11 : 6;
+  mapT = Math.min(1, mapT + dt / dur);
+  const p = Math.min(F, mapT / (mapKind === 'ok' ? 1 : 0.75) * F);   // у аварий — последняя четверть времени на падение
+  m.trailG.setDrawRange(0, Math.round(p * m.N) * 8 * 6);
+  let pos = m.at(p), ahead = m.at(Math.min(1, p + 0.004));
+  if (mapKind !== 'ok' && mapT > 0.75) {   // ветка падения: от точки аварии вниз к земле
+    const u = (mapT - 0.75) / 0.25, top = m.at(F), gnd = top.clone().normalize().multiplyScalar(RE + 0.2).add(m.at(F + 0.03).sub(top).multiplyScalar(0.6)).normalize().multiplyScalar(RE + 0.2);
+    const arr = m.fallG.attributes.position; const n = Math.round(u * 40);
+    for (let i = 0; i <= 40; i++) { const k = Math.min(i, n) / 40; const q = top.clone().lerp(gnd, k * k); arr.setXYZ(i, q.x, q.y, q.z); }
+    arr.needsUpdate = true; m.fallG.setDrawRange(0, n + 1);
+    ahead = pos.clone(); pos = top.clone().lerp(gnd, u * u); m.torch.visible = false;
+    if (u >= 1 && !m.hit.visible) { m.hit.visible = true; m.hit.position.copy(gnd); m.rk.visible = false; }
+  }
+  if (m.rk.visible) { m.rk.position.copy(pos); const dir = ahead.clone().sub(pos); if (dir.lengthSq() > 1e-6) m.rk.quaternion.setFromUnitVectors(V(0, 1, 0), dir.normalize()); }
+  m.torch.material.opacity = 0.75 + Math.random() * 0.25;
+  if (m.hit.visible) m.hit.material.opacity = Math.max(0.35, m.hit.material.opacity * 0.97);
+  if (mapKind === 'ok') {
+    if (p >= MAPDROP && mapSaid < 1) { mapSaid = 1; m.drop.visible = true; say('Красная точка — здесь отделились пустые боковые блоки. Дальше летит центральный блок с головной частью.'); }
+    if (p >= MAPCUT && mapSaid < 2) { mapSaid = 2; m.torch.visible = false; m.body.scale.set(0.8, 0.35, 0.8); say('Центральный блок отработал. Головная часть отделилась и летит дальше сама, по инерции, через всю Сибирь.'); }
+    if (p >= 1 && mapSaid < 3) {
+      mapSaid = 3; m.rk.visible = false; m.ring.visible = true; m.hit.visible = true; m.hit.material.color.set(0xffffff); m.hit.position.copy(m.goal.position);
+      award('lab', 30); count('Дошла!', 'полигон Кура, Камчатка');
+      say('Дошла! Пакет, все двигатели зажжены на земле, пустые боковые блоки сброшены — так 21 августа 1957 года головная часть дошла до полигона Кура на Камчатке. Честная оговорка: в плотных слоях атмосферы она разрушилась, её доводили дальше.', 'ok');
+    }
+    if (m.ring.visible) { const k = 1 + ((performance.now() / 900) % 1) * 3; m.ring.scale.setScalar(k); m.ring.material.opacity = 1 - (k - 1) / 3; }
+    count(p < 1 ? `Пройдено ${Math.round(p * 100)} % пути` : 'Дошла!', p < 1 ? 'до полигона Кура · время сжато' : 'полигон Кура, Камчатка');
+  } else if (mapT >= 1 && mapSaid < 1) {
+    mapSaid = 1; count('Не долетела', 'до Камчатки далеко');
+    say(mapKind === 'tower'
+      ? 'Красная точка — здесь упала ракета-башня: вторая ступень не зажглась в полёте. Пройдена малая часть пути, до Камчатки далеко. В пакете Королёва все двигатели запускаются ещё на земле.'
+      : 'Красная точка — здесь упала ракета с пустыми боковыми блоками. Мёртвый вес съел скорость, до Камчатки не хватило. У Р-7 две ступени: боковые блоки отработали — и отделились.', 'bad');
+  }
+  // Камера: от старта, сбоку от ракеты — к общему виду всей дуги над Азией.
+  const e = ease(Math.min(1, mapT * 1.15)), P = mapKind === 'ok' ? p : F;
+  const look = m.at(Math.min(1, P)).lerp(m.mid.clone().multiplyScalar(RE), mapKind === 'ok' ? e : e * 0.5);
+  const near = m.A.clone().multiplyScalar(RE + 70).add(V(0, -26, 0)), far = m.mid.clone().multiplyScalar(RE + (camera.aspect < 1 ? 230 : 150)).add(V(0, 18, 0));
+  m.cam.position.copy(near.lerp(far, mapKind === 'ok' ? e : e * 0.6)); m.cam.lookAt(look);
+}
+function mapReset() { clearTimeout(mapTimer); mapKind = null; renderer.domElement.style.opacity = '1'; for (const ps of live) if (ps.emitter) ps.emitter.visible = true; }
+
 // Отрыв: камера держит ракету чуть выше центра кадра и отъезжает, чтобы в кадре были пламя, фермы и шлейф.
 function liftoff(r) {
   say('Подъём! Фермы раскрылись, и ракета уходит со стола на столбе огня.');
@@ -596,7 +726,7 @@ function loop() {
   controls.maxPolarAngle = phase === 'build' || phase === 'count' ? Math.PI * 0.485 : Math.PI * 0.94;   // на столе — не под землю
   controls.update();
   batch.update(dt);
-  renderer.render(scene, camera);
+  if (phase === 'map') renderer.render(MAP.sc, MAP.cam); else renderer.render(scene, camera);
   fps.n++; fps.t += dt; if (fps.t >= 1) { window.__r7fps = Math.round(fps.n / fps.t); fps.n = 0; fps.t = 0; }
 }
 
@@ -630,7 +760,7 @@ export async function zapusk(root) {
   batch = new BatchedRenderer(); scene.add(batch);
   makeSky(); buildPad();
   assemble('tower');
-  const resize = () => { const W = stage.clientWidth, H = stage.clientHeight; renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix(); };
+  const resize = () => { const W = stage.clientWidth, H = stage.clientHeight; renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix(); if (MAP) { MAP.cam.aspect = W / H; MAP.cam.updateProjectionMatrix(); } };
   resize(); new ResizeObserver(resize).observe(stage);
   new IntersectionObserver((es) => { const v = es[0].isIntersecting; if (v && !visible) { visible = true; clock.getDelta(); loop(); } visible = v; }).observe(stage);
   // Кнопки под сценой.
