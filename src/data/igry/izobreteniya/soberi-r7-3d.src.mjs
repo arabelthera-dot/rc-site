@@ -49,6 +49,14 @@ const noiseTex = (base, spread, n, repeat) => canvasTex(256, (g, s) => {
   }
 }, repeat);
 
+// Иней на кислородных баках: белая шуба с вертикальными подтёками.
+const texFrost = canvasTex(256, (g, s) => {
+  g.fillStyle = '#f4f7fa'; g.fillRect(0, 0, s, s);
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 3200; i++) { const v = rnd(); g.fillStyle = v > 0.5 ? `rgba(255,255,255,${(v - 0.5) * 1.4})` : `rgba(120,145,170,${v * 0.5})`; const w = 1 + rnd() * 3; g.fillRect(rnd() * s, rnd() * s, w, w); }
+  for (let i = 0; i < 90; i++) { const x = rnd() * s, y = rnd() * s, h = 10 + rnd() * 60; g.fillStyle = `rgba(140,165,190,${0.2 + rnd() * 0.3})`; g.fillRect(x, y, 1 + rnd() * 3, h); }
+}, 3);
+
 // ── Материалы ──
 const M = {
   body: new THREE.MeshStandardMaterial({ color: 0xdfe3df, roughness: 0.5, metalness: 0.25 }),
@@ -58,6 +66,7 @@ const M = {
   concrete: new THREE.MeshStandardMaterial({ map: noiseTex('#9a978f', 0.22, 2600, 6), roughness: 0.95 }),
   pit: new THREE.MeshStandardMaterial({ color: 0x2b2a28, roughness: 1 }),
   steppe: new THREE.MeshStandardMaterial({ map: noiseTex('#b39d6e', 0.3, 5000, 260), roughness: 1 }),
+  frost: new THREE.MeshStandardMaterial({ map: texFrost, color: 0xffffff, emissive: 0x9fb4c8, emissiveIntensity: 0.28, roughness: 0.97, metalness: 0, transparent: true }),
   halo: new THREE.SpriteMaterial({ map: texGlow, color: 0xff9a3c, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, opacity: 0.9 }),
   core: new THREE.MeshBasicMaterial({ map: texGlow, color: 0xffd9a0, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, side: THREE.DoubleSide }),
   flame: new THREE.MeshBasicMaterial({ map: texGlow, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false }),
@@ -113,6 +122,37 @@ function smokePS({ size = 6, life = [3, 5], speed = [8, 16], rate = 20, angle = 
     ],
   });
 }
+// Кислородный пар из дренажных клапанов: белые клубы стекают вниз — жидкий кислород холоднее воздуха.
+function vaporPS(radius) {
+  const ps = new ParticleSystem({
+    duration: 1, looping: true, worldSpace: true,
+    startLife: new IntervalValue(2.4, 4), startSpeed: new IntervalValue(1, 2.6), startSize: new IntervalValue(1.8, 3.4), startRotation: new IntervalValue(0, 6.28),
+    startColor: new ColorRange(new Vector4(1, 1, 1, 0.7), new Vector4(0.92, 0.96, 1, 0.7)),
+    shape: new ConeEmitter({ radius, angle: 1.1, thickness: 1, arc: Math.PI * 2 }),
+    emissionOverTime: new ConstantValue(0), material: M.smoke, renderMode: RenderMode.BillBoard,
+    behaviors: [new ColorOverLife(grad([[1, 1, 1, 0], [1, 1, 1, 1]], [[0, 0], [1, 0.15], [0.6, 0.55], [0, 1]])),
+      new SizeOverLife(curve(0.5, 1.4, 2.3, 3)), new ApplyForce(new QV3(0, -1, 0), new ConstantValue(1.6))],
+  });
+  ps.emitter.rotation.x = Math.PI / 2; ps.vaporRate = (SLAB ? 9 : 16) * K;
+  return ps;
+}
+// Осыпание инея на отрыве: ледяная крошка сыплется с баков.
+function icePS() {
+  return new ParticleSystem({
+    duration: 1.6, looping: false, worldSpace: true, emissionOverTime: new ConstantValue((SLAB ? 70 : 150) * K),
+    startLife: new IntervalValue(1.5, 3), startSpeed: new IntervalValue(1, 5), startSize: new IntervalValue(0.12, 0.4), startRotation: new IntervalValue(0, 6.28),
+    startColor: new ColorRange(new Vector4(1, 1, 1, 1), new Vector4(0.85, 0.92, 1, 1)),
+    shape: new ConeEmitter({ radius: 3, angle: 1.4, thickness: 1, arc: Math.PI * 2 }), material: M.flame, renderMode: RenderMode.BillBoard,
+    behaviors: [new ApplyForce(new QV3(0, -1, 0), new ConstantValue(14)), new ColorOverLife(grad([[1, 1, 1, 0], [0.8, 0.9, 1, 1]], [[1, 0], [0.8, 0.7], [0, 1]]))],
+  });
+}
+// Шуба инея поверх участка бака: профиль тела [[r, y]…] между y0 и y1, чуть шире корпуса.
+function frostSleeve(prof, y0, y1, seg = 40) {
+  const rAt = (y) => { for (let i = 1; i < prof.length; i++) { const [r0, a] = prof[i - 1], [r1, b] = prof[i]; if (y >= a && y <= b) return b === a ? r1 : r0 + (r1 - r0) * (y - a) / (b - a); } return 0; };
+  const pts = []; for (let k = 0; k <= 12; k++) { const y = y0 + (y1 - y0) * k / 12; pts.push([rAt(y) + 0.03, y]); }
+  const m = mesh(lathe(pts, seg), M.frost, false); m.receiveShadow = true; return m;
+}
+
 // Взрыв: огненный шар, клубы чёрного дыма, искры.
 function boom(pos, big) {
   const s = big ? 1.6 : 1;
@@ -156,9 +196,13 @@ function sopla(parent, list, out) {
 function makePack() {
   const g = new THREE.Group(), noz = [], sides = [];
   // Центральный блок «А»: хвост 0 м, «талия» под боковыми блоками, пояс на 17 м, головная часть до 29,9 м.
-  const A = mesh(lathe([[0, 0], [1.02, 0], [1.07, 0.5], [1.07, 13.8], [1.2, 16.2], [1.47, 18.6], [1.47, 22.6], [1.36, 23.6], [1.22, 24.2],
-    [1.05, 25.4], [0.78, 26.9], [0.48, 28.3], [0.24, 29.3], [0.07, 29.85], [0, 29.9]]), M.body);
+  const profA = [[0, 0], [1.02, 0], [1.07, 0.5], [1.07, 13.8], [1.2, 16.2], [1.47, 18.6], [1.47, 22.6], [1.36, 23.6], [1.22, 24.2],
+    [1.05, 25.4], [0.78, 26.9], [0.48, 28.3], [0.24, 29.3], [0.07, 29.85], [0, 29.9]];
+  const A = mesh(lathe(profA), M.body);
   g.add(A);
+  const frost = [frostSleeve(profA, 17.7, 22.0)], vapor = [];   // кислородный бак центрального блока — под головной частью
+  g.add(frost[0]);
+  const vA = vaporPS(1.2); vA.emitter.position.y = 21.5; addPS(vA, g); vapor.push(vA);
   const tail = mesh(new THREE.CylinderGeometry(1.08, 1.04, 1.2, 40), M.bodyDark); tail.position.y = 0.6; g.add(tail);
   const belt = mesh(new THREE.TorusGeometry(1.33, 0.12, 8, 40), M.bodyDark); belt.rotation.x = Math.PI / 2; belt.position.y = 17.4; g.add(belt);
   const band = mesh(new THREE.CylinderGeometry(1.48, 1.48, 0.5, 40), M.bodyDark); band.position.y = 22.3; g.add(band);
@@ -169,12 +213,15 @@ function makePack() {
   sopla(g, cn, noz);
   // Боковые блоки «Б»–«Д»: конус 19 м, низ прижат к центральному, нос упирается под пояс; РД-107 — 4 основные и 2 рулевые.
   const R0 = 2.42, TILT = Math.asin((R0 - 1.5) / 18.9);
-  const sideGeo = lathe([[0, 0], [1.3, 0], [1.34, 0.5], [1.34, 3.2], [1.2, 6.5], [0.98, 10.2], [0.76, 13.4], [0.55, 15.8], [0.36, 17.3], [0.19, 18.3], [0.05, 18.9], [0, 19]]);
+  const profB = [[0, 0], [1.3, 0], [1.34, 0.5], [1.34, 3.2], [1.2, 6.5], [0.98, 10.2], [0.76, 13.4], [0.55, 15.8], [0.36, 17.3], [0.19, 18.3], [0.05, 18.9], [0, 19]];
+  const sideGeo = lathe(profB);
   for (let k = 0; k < 4; k++) {
     const phi = k * Math.PI / 2;
     const yaw = new THREE.Group(); yaw.position.set(Math.cos(phi) * R0, 0, Math.sin(phi) * R0); yaw.rotation.y = -phi; g.add(yaw);
     const b = new THREE.Group(); b.rotation.z = TILT; yaw.add(b);
     b.add(mesh(sideGeo, M.body));
+    const fb = frostSleeve(profB, 9.5, 16.6, 32); b.add(fb); frost.push(fb);   // кислородный бак бокового блока — в верхнем конусе
+    const vb = vaporPS(0.5); vb.emitter.position.y = 16.2; addPS(vb, b); vapor.push(vb);
     const t = mesh(new THREE.CylinderGeometry(1.35, 1.31, 1.0, 36), M.bodyDark); t.position.y = 0.5; b.add(t);
     const fin = mesh(new THREE.BoxGeometry(1.3, 1.1, 0.07), M.bodyDark); fin.position.set(1.85, 0.9, 0); b.add(fin);   // воздушный руль
     const list = [];
@@ -183,23 +230,27 @@ function makePack() {
     const bn = []; sopla(b, list, bn); noz.push(...bn);
     sides.push({ yaw, b, phi, noz: bn, tilt: TILT });
   }
-  return { g, noz, sides, central: noz.slice(0, 8), kind: 'pack' };
+  return { g, noz, sides, central: noz.slice(0, 8), kind: 'pack', frost, vapor };
 }
 // Ракета-башня (для сравнения): первая ступень снизу, вторая сверху — её надо зажечь в полёте.
 function makeTower() {
   const g = new THREE.Group(), noz = [];
   const s1 = new THREE.Group(); g.add(s1);
-  s1.add(mesh(lathe([[0, 0], [1.5, 0], [1.55, 0.5], [1.55, 15.6], [1.35, 16.6], [0, 16.6]]), M.body));
+  const prof1 = [[0, 0], [1.5, 0], [1.55, 0.5], [1.55, 15.6], [1.35, 16.6], [0, 16.6]];
+  s1.add(mesh(lathe(prof1), M.body));
+  const frost = [frostSleeve(prof1, 9, 15.4)], vapor = [vaporPS(1.4)]; s1.add(frost[0]); vapor[0].emitter.position.y = 15; addPS(vapor[0], s1);
   const t = mesh(new THREE.CylinderGeometry(1.57, 1.57, 1.2, 40), M.bodyDark); t.position.y = 0.6; s1.add(t);
   const list = [];
   for (const [x, z] of [[0.5, 0.5], [-0.5, 0.5], [0.5, -0.5], [-0.5, -0.5]]) list.push([x, z, 0.4, 1.6, false]);
   for (let k = 0; k < 4; k++) { const a = Math.PI / 4 + k * Math.PI / 2; list.push([Math.cos(a) * 1.15, Math.sin(a) * 1.15, 0.17, 0.75, true]); }
   sopla(s1, list, noz);
   const s2 = new THREE.Group(); s2.position.y = 16.6; g.add(s2);
-  s2.add(mesh(lathe([[0, 0], [1.3, 0], [1.3, 0.3], [1.3, 8.4], [1.1, 9.4], [0.75, 11.2], [0.38, 12.6], [0.08, 13.3], [0, 13.4]]), M.body));
+  const prof2 = [[0, 0], [1.3, 0], [1.3, 0.3], [1.3, 8.4], [1.1, 9.4], [0.75, 11.2], [0.38, 12.6], [0.08, 13.3], [0, 13.4]];
+  s2.add(mesh(lathe(prof2), M.body));
+  frost.push(frostSleeve(prof2, 4.2, 8.2)); s2.add(frost[1]);
   const ring = mesh(new THREE.CylinderGeometry(1.33, 1.33, 0.6, 40), M.bodyDark); ring.position.y = 0.3; s2.add(ring);
   const n2 = []; sopla(s2, [[0, 0, 0.45, 1.2, false]], n2);   // сопло второй ступени — внутри переходника
-  return { g, noz, s1, s2, n2, kind: 'tower' };
+  return { g, noz, s1, s2, n2, kind: 'tower', frost, vapor };
 }
 
 // ── Сцена ──
@@ -279,9 +330,11 @@ function setFlames(list, level) {
     n.halo.visible = level > 0; n.halo.scale.setScalar(n.halo.size * (0.6 + 0.4 * Math.min(level, 1.2)));
   }
 }
+function setVapor(level) { for (const ps of (rocket && rocket.vapor) || []) ps.emissionOverTime.value = ps.vaporRate * level; }
 function disposeRocket() {
   if (!rocket) return;
   for (const n of [...rocket.noz, ...(rocket.n2 || [])]) killPS(n.ps);
+  for (const ps of rocket.vapor || []) killPS(ps);
   rocket.g.removeFromParent();
 }
 // Сборка на глазах: блоки опускаются краном сверху и встают по местам.
@@ -291,6 +344,7 @@ function assemble(kind) {
   disposeRocket();
   rocket = kind === 'pack' ? makePack() : makeTower();
   scene.add(rocket.g); rocket.g.position.set(0, 0.3, 0);
+  M.frost.opacity = 1; setVapor(1);
   const parts = kind === 'pack' ? [] : [{ o: rocket.s1, d: 0 }, { o: rocket.s2, d: 0.45 }];
   if (kind === 'pack') { // пакет опускается целиком, боковые блоки подъезжают к центральному отдельно
     rocket.g.position.y = 40; tween(0.8, 0, (t) => { rocket.g.position.y = 0.3 + 39.7 * (1 - ease(t)); });
@@ -369,6 +423,7 @@ function flight(dt) {
   if (phase === 'count') {
     const i = Math.min(CMD.length - 1, Math.floor(T / 0.62));
     if (ui.lastCmd !== i) { ui.lastCmd = i; count(CMD[i][0], CMD[i][1] ? `T − ${CMD[i][1]} с` : 'старт'); }
+    if (i === 3 && !r.drain) { r.drain = 1; setVapor(0); say('Ключ на дренаж: клапаны закрыты, кислород больше не парит — баки под давлением.'); }
     if (i === 5 && !r.lit) { say('Зажигание. Все двигатели загораются ещё на земле, на предварительной ступени тяги.'); r.lit = 1; setFlames(r.kind === 'pack' ? r.noz : r.noz, 0.25); startPadSmoke(0.4); }
     if (i === 6 && r.lit === 1) { r.lit = 2; setFlames(r.noz, 0.5); }
     if (i === 8 && r.lit === 2) { r.lit = 3; setFlames(r.noz, 1); startPadSmoke(1); shake = REDUCE ? 0 : 0.45; say('Главная ступень — полная тяга. Ракета ещё держится на фермах.'); }
@@ -437,6 +492,8 @@ function flight(dt) {
 function liftoff(r) {
   say('Подъём! Фермы раскрылись, и ракета уходит со стола на столбе огня.');
   slowMo = REDUCE ? 1 : 0.45; shake = REDUCE ? 0 : 0.7;
+  const ice = icePS(); ice.emitter.position.set(0, 18, 0); ice.emitter.rotation.x = Math.PI / 2; addPS(ice, r.g); setTimeout(() => killPS(ice), 5000);
+  tween(2.2, 0.2, (t) => { M.frost.opacity = 1 - 0.75 * t; });   // иней осыпается от тряски и пламени
   r.g.add(rocketLight); rocketLight.position.set(0, -14, 0); rocketLight.intensity = 2600;
   follow = () => r.g.position.clone().add(V(0, 4 - Math.min(10, r.g.position.y * 0.08), 0));
   if (!dragging) { const dir = camera.position.clone().sub(controls.target).setY(0).normalize(); camGoal = dir.multiplyScalar(camera.aspect < 1 ? 105 : 80).setY(-14); }
