@@ -57,6 +57,8 @@ def obekty(sc):
 
 
 def pravilo_sceny(imya, sc):
+    if imya in P.get('proba', {}):
+        return [{'ok': True, 'tekst': 'правило не применяется: ' + P['proba'][imya]}]
     vse = obekty(sc)
     glav = list(sc.get('glavnye') or []) + [i for i, o in vse.items() if o.get('glavnyy')] + list(P['glavnye'].get(imya, []))
     glav = list(dict.fromkeys(glav))
@@ -234,7 +236,7 @@ def main(a):
             odobrit(s)
         return 0
     snimki = '--bez-snimkov' not in a
-    imena = [x for x in a if not x.startswith('--')] or list(P['glavnye'])
+    imena = [x for x in a if not x.startswith('--')] or list(P['glavnye']) + [x for x in P.get('proba', {}) if x not in P['glavnye']]
     VYHOD.mkdir(exist_ok=True)
     scenes = []
     for s in imena:

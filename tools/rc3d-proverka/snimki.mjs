@@ -22,6 +22,9 @@ p.on('response', (r) => { R.zaprosy.push({ url: r.url(), status: r.status() }); 
 const shot = async (sel, imya) => { const f = `${OUT}/${imya}.png`; await p.locator(sel).screenshot({ path: f, animations: 'allow' }); R.kadry.push(imya); };
 // Самый длинный идущий прогон таймлайна (setup-прогоны мгновенные и в runs не попадают).
 const RUN = (k) => `(() => { const rs = __rc3d.${k}.S.runs; return rs.length ? rs.reduce((a, r) => (r.end > a.end ? r : a)) : null; })()`;
+// Стоп-кадр: на первом кадре, где таймлайн дошёл до h, время сцены замирает (timeK = 0) — снимок повторяем.
+const freeze = (k, h) => p.waitForFunction(new Function('h', `const r = ${RUN(k)}, S = __rc3d.${k}.S; if (!r || r.T >= h) { S.__k = S.timeK; S.timeK = 0; return true; } return false;`), h, { timeout: 240000, polling: 'raf' });
+const thaw = (k) => p.evaluate(`(S => { S.timeK = S.__k ?? 1; })(__rc3d.${k}.S)`);
 const sample = (k, ms) => { const id = setInterval(async () => { try { const f = await p.evaluate(`__rc3d.${k}.S.fps`); if (f) R.fps[k].push(f); } catch {} }, 500); return () => clearInterval(id); };
 const t0 = Date.now();
 try {
@@ -35,8 +38,8 @@ try {
     const end = await p.evaluate(new Function(`return ${RUN('z')}.end;`));
     R.vremya.zastavka = end;
     const stop = sample('z');
-    await p.waitForFunction(new Function('h', `const r = ${RUN('z')}; return !r || r.T >= h;`), end / 2, { timeout: 240000, polling: 100 });
-    stop(); await shot('#zStage', 'z-seredina');
+    await freeze('z', end / 2); stop();
+    await p.waitForTimeout(300); await shot('#zStage', 'z-seredina'); await thaw('z');
   }
   // ── Игра: верный вариант — начало, середина, итог ──
   const ok = await p.evaluate(() => (__rc3d.sc.igra.outcomes || []).find((o) => o.result === 'ok'));
@@ -52,10 +55,11 @@ try {
     const end = await p.evaluate(new Function(`return ${RUN('g')}.end;`));
     R.vremya.igra = end;
     const stop = sample('g');
-    await p.waitForFunction(new Function('h', `const r = ${RUN('g')}; return !r || r.T >= h;`), end / 2, { timeout: 240000, polling: 100 });
-    await shot('#gStage', 'g-seredina');
+    await freeze('g', end / 2); stop();
+    await p.waitForTimeout(300); await shot('#gStage', 'g-seredina'); await thaw('g');
+    const stop2 = sample('g');
     await p.waitForFunction(() => __rc3d.g.st().phase === 'itog', null, { timeout: 240000, polling: 200 });
-    stop(); await p.waitForTimeout(1200); await shot('#gStage', 'g-itog');
+    stop2(); await p.waitForTimeout(1200); await shot('#gStage', 'g-itog');
     R.itog = await p.evaluate(() => __rc3d.g.st());
   }
 } catch (e) { R.oshibki.push('бот: ' + e.message.split('\n')[0]); }

@@ -1,12 +1,52 @@
 {
-  "_": "Правила вида 3D-игр rc3d. Главные объекты — временно здесь; целевая схема — поле \"glavnye\": [id…] в корне сцены или \"glavnyy\": true у объекта (проверка читает все три источника).",
-  "byudzhet": { "ves_mb": 15, "fps_min": 18, "oshibki_konsoli": 0 },
-  "snimki": { "okna": [[1280, 720], [390, 844]], "porog_pikselya": 0.1, "porog_doli": 0.03 },
-  "glavnye_tip": "model",
-  "zapreshchyonnye_tipy": ["box", "cylinder", "cone", "person", "sphere", "torus"],
-  "glavnye": {
-    "kotelnikov-parashyut": ["kotelnikov", "chelovek", "ranec", "samolet", "shar"],
-    "shukhov-nefteprovod": ["shuhov", "vyshka", "st1", "st2", "st3", "arba"],
-    "r7-proba": ["raketa"]
-  }
+ "_": "Правила вида 3D-игр rc3d. Главные объекты — временно здесь; целевая схема — поле \"glavnye\": [id…] в корне сцены или \"glavnyy\": true у объекта (проверка читает все три источника).",
+ "byudzhet": {
+  "ves_mb": 15,
+  "fps_min": 18,
+  "oshibki_konsoli": 0
+ },
+ "snimki": {
+  "okna": [
+   [
+    1280,
+    720
+   ],
+   [
+    390,
+    844
+   ]
+  ],
+  "porog_pikselya": 0.1,
+  "porog_doli": 0.03
+ },
+ "glavnye_tip": "model",
+ "zapreshchyonnye_tipy": [
+  "box",
+  "cylinder",
+  "cone",
+  "person",
+  "sphere",
+  "torus"
+ ],
+ "glavnye": {
+  "kotelnikov-parashyut": [
+   "kotelnikov",
+   "chelovek",
+   "ranec",
+   "samolet",
+   "les",
+   "shar"
+  ],
+  "shukhov-nefteprovod": [
+   "shuhov",
+   "vyshka",
+   "st1",
+   "st2",
+   "st3",
+   "arba"
+  ]
+ },
+ "proba": {
+  "r7-proba": "проба движка, не день музея — правило главных объектов не применяется"
+ }
 }
