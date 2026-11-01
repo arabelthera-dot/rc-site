@@ -73,7 +73,7 @@ function igraRuka(root) {
     setka.forEach(function (c) { if (c.t !== 'lab') S.vsego += ves(c); });
     S.rynok = kl(4, R - 4); S.lab = kl(C - 1, 0); S.port = kl(0, R - 1);
     razmer(); tablo();
-    txt('Проведи шприцем по домикам у порта', 'Из порта ползёт чума. Привитый домик зеленеет — через него болезнь не пройдёт.');
+    txt(PODSKAZKI[0][0], PODSKAZKI[0][1]);
     root.dataset.faza = 'zhdem'; delete root.dataset.itog;
     ruka.ubrat();
   }
@@ -81,6 +81,22 @@ function igraRuka(root) {
   function ves(c) { return c.t === 'rynok' ? RYNOK_VES : 1; }
   function sosedi(c) { return [kl(c.x - 1, c.y), kl(c.x + 1, c.y), kl(c.x, c.y - 1), kl(c.x, c.y + 1)].filter(Boolean); }
   function txt(a, b) { elTask.innerHTML = '<b>Что сделать сейчас:</b> ' + a; elSub.textContent = b || ''; }
+  // r527: подсказки разной длины (2–3 строки на телефоне) двигали карту на 26 px под пальцем после первого касания —
+  // второй тап и свайп попадали в соседний домик. Высоту подсказки держим по самой длинной из подсказок хода.
+  var PODSKAZKI = [
+    ['Проведи шприцем по домикам у порта', 'Из порта ползёт чума. Привитый домик зеленеет — через него болезнь не пройдёт.'],
+    ['Строй стену поперёк волны', 'Корабль с чумой причалил. Веди по домикам сплошной полосой от края до края.'],
+    ['Флакон пуст — держи колбу 2 секунды', 'Пока ты в лаборатории, волна идёт дальше. Не тяни.'],
+    ['Последняя доза — скоро в лабораторию', 'Колба под картой или лаборатория на карте вверху справа.'],
+    ['Флакон полон — достраивай стену', 'Пять доз. Закрой щели: чума ищет любой непривитый домик рядом.']
+  ];
+  function zapas() {
+    var bylo = [elTask.innerHTML, elSub.textContent], a = 0, b = 0;
+    elTask.style.minHeight = elSub.style.minHeight = '';
+    PODSKAZKI.forEach(function (p) { txt(p[0], p[1]); a = Math.max(a, elTask.offsetHeight); b = Math.max(b, elSub.offsetHeight); });
+    elTask.innerHTML = bylo[0]; elSub.textContent = bylo[1];
+    elTask.style.minHeight = a + 'px'; elSub.style.minHeight = b + 'px';
+  }
   function sobytie(e) { try { document.dispatchEvent(new CustomEvent('rc-igra', { detail: { e: e, igra: 'zelenaya-stena' } })); } catch (x) {} }
   function poteri() { var p = 0; S.setka.forEach(function (c) { if (c.s === 2 && c.t !== 'lab') p += ves(c); }); return p / S.vsego; }
   function doz(n) { return n + (n === 1 ? ' доза' : n >= 2 && n <= 4 ? ' дозы' : ' доз'); }
@@ -98,7 +114,7 @@ function igraRuka(root) {
     if (S.faza !== 'zhdem') return;
     S.faza = 'idet'; S.t = 0; root.dataset.faza = 'idet';
     if (!nachal) { nachal = true; sobytie('nachal'); }
-    txt('Строй стену поперёк волны', 'Корабль с чумой причалил. Веди по домикам сплошной полосой от края до края.');
+    txt(PODSKAZKI[1][0], PODSKAZKI[1][1]);
   }
 
   /* ── шприц и колба ───────────────────────────────────────── */
@@ -106,8 +122,8 @@ function igraRuka(root) {
     if (!c || c.t === 'lab' || c.s !== 0) return;
     if (S.doz <= 0) { S.mig = 0.6; return; }
     c.s = 1; c.ot = S.t; S.doz--; tablo();
-    if (S.doz === 0) { txt('Флакон пуст — держи колбу 2 секунды', 'Пока ты в лаборатории, волна идёт дальше. Не тяни.'); ruka.na(bKolba); }
-    else if (S.doz === 1) txt('Последняя доза — скоро в лабораторию', 'Колба под картой или лаборатория на карте вверху справа.');
+    if (S.doz === 0) { txt(PODSKAZKI[2][0], PODSKAZKI[2][1]); ruka.na(bKolba); }
+    else if (S.doz === 1) txt(PODSKAZKI[3][0], PODSKAZKI[3][1]);
   }
   function kletkaV(px, py, tochno) {
     var x = Math.floor((px - ox) / k), y = Math.floor((py - oy) / k);
@@ -156,7 +172,7 @@ function igraRuka(root) {
     S.t += dt;
     if (S.derzhuOt !== null) {
       S.derzhu = Math.min(KOLBA, S.derzhu + dt);
-      if (S.derzhu >= KOLBA) { S.doz = DOZ; S.derzhu = 0; S.derzhuOt = null; S.pusto = 0; ruka.ubrat(); txt('Флакон полон — достраивай стену', 'Пять доз. Закрой щели: чума ищет любой непривитый домик рядом.'); }
+      if (S.derzhu >= KOLBA) { S.doz = DOZ; S.derzhu = 0; S.derzhuOt = null; S.pusto = 0; ruka.ubrat(); txt(PODSKAZKI[4][0], PODSKAZKI[4][1]); }
       tablo();
     }
     S.pusto = S.doz === 0 && S.derzhuOt === null ? S.pusto + dt : 0;
@@ -213,6 +229,7 @@ function igraRuka(root) {
     dpr = Math.min(2, window.devicePixelRatio || 1);
     W = w;
     if (S && (staroe >= 600) !== (W >= 600) && S.faza === 'zhdem') { nov(); return; }
+    zapas();
     var c = C || 9, r = R || 11;
     k = Math.floor(Math.min(W / c, (W >= 600 ? 460 : 470) / r));
     H = k * r + 8; ox = Math.floor((W - k * c) / 2); oy = 4;
@@ -289,5 +306,6 @@ function igraRuka(root) {
   W = cv.parentNode.clientWidth || 340;
   nov();
   window.addEventListener('resize', razmer);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(zapas);
   requestAnimationFrame(kadr);
 })();
