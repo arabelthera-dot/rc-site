@@ -378,25 +378,16 @@
   },
   {
    "id": "ranec",
-   "type": "box",
+   "type": "model",
+   "src": "models/ranec-rk1.glb",
    "parent": "chelovek",
    "bone": "ranec_mount",
    "snap": true,
-   "size": [
-    0.3,
-    0.4,
-    0.15
-   ],
    "pos": [
     0,
     0.0,
     -0.08
-   ],
-   "mat": {
-    "kind": "metal",
-    "color": "#8d9399",
-    "rough": 0.55
-   }
+   ]
   },
   {
    "id": "petlya",
@@ -410,55 +401,14 @@
   },
   {
    "id": "kryshka",
-   "type": "box",
+   "type": "model",
+   "src": "models/kryshka-rk1.glb",
    "parent": "petlya",
-   "size": [
-    0.31,
-    0.4,
-    0.015
-   ],
    "pos": [
     0,
     -0.2,
     -0.008
-   ],
-   "mat": {
-    "kind": "metal",
-    "color": "#8d9399",
-    "rough": 0.55
-   }
-  },
-  {
-   "id": "zaklepki",
-   "type": "sphere",
-   "parent": "kryshka",
-   "r": 0.008,
-   "seg": 6,
-   "copies": {
-    "at": [
-     [
-      -0.14,
-      0.18,
-      -0.01
-     ],
-     [
-      0.14,
-      0.18,
-      -0.01
-     ],
-     [
-      -0.14,
-      -0.18,
-      -0.01
-     ],
-     [
-      0.14,
-      -0.18,
-      -0.01
-     ]
-    ]
-   },
-   "mat": "metal"
+   ]
   },
   {
    "id": "pruzhina",
