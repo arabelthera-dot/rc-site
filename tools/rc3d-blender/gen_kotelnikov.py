@@ -45,15 +45,15 @@ objects = [
     {'id': 'chelovek', 'type': 'model', 'src': 'models/lyotchik-1912.glb', 'parent': 'telo', 'pos': [0, -0.95, 0], 'pose': 'stand', 'poses': LYOTCHIK_POSES},
     {'id': 'poyas', 'type': 'torus', 'parent': 'chelovek', 'bone': 'pelvis', 'snap': True, 'r': 0.175, 'tube': 0.022, 'pos': [0, 0.0, 0.0], 'scale': [1, 1, 0.78], 'mat': LEATHER},
     # Лямки от плечевых точек модели: спереди по груди, сзади к ранцу.
-    {'id': 'lyamki', 'type': 'box', 'parent': 'chelovek', 'bone': 'spine_03', 'snap': True, 'size': [0.05, 0.42, 0.012], 'rot': [-8, 0, 0], 'copies': {'at': [[-0.095, -0.06, 0.135], [0.095, -0.06, 0.135]]}, 'mat': LEATHER},
+    {'id': 'lyamki', 'type': 'box', 'parent': 'chelovek', 'bone': 'spine_03', 'snap': True, 'size': [0.05, 0.42, 0.012], 'rot': [-8, 0, 0], 'copies': {'at': [[-0.10, -0.06, 0.135], [0.10, -0.06, 0.135]]}, 'mat': LEATHER},
     {'id': 'lyamkiPlecho', 'type': 'box', 'parent': 'chelovek', 'size': [0.055, 0.012, 0.2], 'pos': [0, 0.008, 0], 'bone': 'plecho_L', 'snap': True, 'mat': LEATHER},
     {'id': 'lyamkiPlechoR', 'type': 'box', 'parent': 'chelovek', 'size': [0.055, 0.012, 0.2], 'pos': [0, 0.008, 0], 'bone': 'plecho_R', 'snap': True, 'mat': LEATHER},
-    # Ранец РК-1 — модель (tools/rc3d-blender/ranec_rk1.py): корпус-лоток, заклёпки, полка, лямки; крышка — отдельная модель на петле.
-    {'id': 'ranec', 'type': 'model', 'src': 'models/ranec-rk1.glb', 'parent': 'chelovek', 'bone': 'ranec_mount', 'snap': True, 'pos': [0, 0.0, -0.08]},
-    {'id': 'petlya', 'type': 'group', 'parent': 'ranec', 'pos': [0, 0.2, -0.078]},
-    {'id': 'kryshka', 'type': 'model', 'src': 'models/kryshka-rk1.glb', 'parent': 'petlya', 'pos': [0, -0.2, -0.008]},
+    # Ранец РК-1 — модель (tools/rc3d-blender/ranec_rk1.py), пропорции по схеме rk1.jpg (0.36×0.29×0.16, трапеция): корпус-лоток, заклёпки, полка, лямки; крышка — отдельная модель на петле.
+    {'id': 'ranec', 'type': 'model', 'src': 'models/ranec-rk1.glb', 'parent': 'chelovek', 'bone': 'ranec_mount', 'snap': True, 'pos': [0, 0.04, -0.085]},
+    {'id': 'petlya', 'type': 'group', 'parent': 'ranec', 'pos': [0, 0.125, -0.083]},
+    {'id': 'kryshka', 'type': 'model', 'src': 'models/kryshka-rk1.glb', 'parent': 'petlya', 'pos': [0, -0.135, -0.008]},
     {'id': 'pruzhina', 'type': 'tube', 'parent': 'ranec', 'helix': {'r': 0.02, 'h': 0.1, 'turns': 6}, 'r': 0.004, 'radial': 5, 'rot': [-90, 0, 0], 'scale': [1, 0.3, 1],
-     'copies': {'at': [[-0.07, 0.06, -0.075], [0.07, 0.06, -0.075], [-0.07, -0.08, -0.075], [0.07, -0.08, -0.075]]}, 'mat': 'metal', 'hidden': True},
+     'copies': {'at': [[-0.09, 0.04, -0.08], [0.09, 0.04, -0.08], [-0.09, -0.06, -0.08], [0.09, -0.06, -0.08]]}, 'mat': 'metal', 'hidden': True},
     {'id': 'kolco', 'type': 'torus', 'parent': 'chelovek', 'bone': 'spine_02', 'snap': True, 'r': 0.04, 'tube': 0.008, 'pos': [0.1, -0.03, 0.135], 'rot': [90, 0, 0], 'mat': 'metal:#c9b27a'},
     kupol('kupol', SILK, True), kupol('kupolS1', SILK, False), kupol('kupolL2', LINEN, True), kupol('kupolL1', LINEN, False),
     strelka('strelkaKupol', 'lyotchik', [2.2, 5.0, 0], [0, 0, 90], 3),
