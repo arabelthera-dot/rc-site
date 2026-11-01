@@ -81,10 +81,11 @@ export class Model {
     if (this.cur && fade > 0) { const old = this.cur; setTimeout(() => { if (old !== this.cur) old.stop(); }, fade * 1000 + 50); }
     this.cur = a; return true;
   }
-  // Поза: клип позы + доворот костей; dur — время перехода.
+  // Поза: клип позы + доворот костей; dur — время перехода. В своих позах сценария ("poses") once:true — клип один раз
+  // с остановкой на последнем кадре (приземление), speed — скорость клипа.
   pose(name, dur = 0.3) {
     const P = (this.spec.poses && this.spec.poses[name]) || HUMAN[name] || HUMAN.stand;
-    const hasClip = P.clip ? this.play(P.clip, { fade: Math.max(0.05, dur) }) : false;
+    const hasClip = P.clip ? this.play(P.clip, { fade: Math.max(0.05, dur), once: P.once, speed: P.speed }) : false;
     const dir = P.ifNoClip && hasClip ? {} : P.dir || {};
     if (!this.human) return;
     for (const k of ORDER) {

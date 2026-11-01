@@ -184,28 +184,127 @@
   },
   {
    "id": "chelovek",
-   "type": "person",
+   "type": "model",
+   "src": "models/lyotchik-1912.glb",
    "parent": "telo",
    "pos": [
     0,
     -0.95,
     0
    ],
-   "coat": "fabric:#8a7b5c",
-   "pants": "fabric:#6f6448",
-   "hat": "helmet",
-   "hatColor": "#4a3326"
+   "pose": "stand",
+   "poses": {
+    "stand": {
+     "clip": [
+      "Idle_Loop"
+     ]
+    },
+    "sit": {
+     "clip": [
+      "Sitting_Idle_Loop"
+     ]
+    },
+    "spread": {
+     "clip": [
+      "Jump_Loop"
+     ],
+     "dir": {
+      "ual": [
+       1,
+       0.35,
+       0.1
+      ],
+      "lal": [
+       1,
+       0.45,
+       0.15
+      ],
+      "uar": [
+       1,
+       0.35,
+       0.1
+      ],
+      "lar": [
+       1,
+       0.45,
+       0.15
+      ]
+     }
+    },
+    "arms-forward": {
+     "clip": [
+      "Jump_Loop"
+     ],
+     "dir": {
+      "uar": [
+       0.15,
+       -0.35,
+       1
+      ],
+      "lar": [
+       -0.9,
+       0.2,
+       0.5
+      ]
+     }
+    },
+    "arms-up": {
+     "clip": [
+      "Idle_Loop"
+     ],
+     "dir": {
+      "ual": [
+       0.3,
+       1,
+       0.1
+      ],
+      "lal": [
+       0.05,
+       1,
+       0.15
+      ],
+      "uar": [
+       0.3,
+       1,
+       0.1
+      ],
+      "lar": [
+       0.05,
+       1,
+       0.15
+      ]
+     }
+    },
+    "land": {
+     "clip": [
+      "Jump_Land"
+     ],
+     "once": true
+    },
+    "kneel": {
+     "clip": [
+      "Crouch_Idle_Loop"
+     ]
+    }
+   }
   },
   {
    "id": "poyas",
    "type": "torus",
    "parent": "chelovek",
-   "r": 0.19,
-   "tube": 0.025,
+   "bone": "pelvis",
+   "snap": true,
+   "r": 0.175,
+   "tube": 0.022,
    "pos": [
     0,
-    0.95,
-    0
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1,
+    1,
+    0.78
    ],
    "mat": "paint:#4a2f1f"
   },
@@ -213,41 +312,76 @@
    "id": "lyamki",
    "type": "box",
    "parent": "chelovek",
+   "bone": "spine_03",
+   "snap": true,
    "size": [
     0.05,
-    0.5,
+    0.42,
     0.012
+   ],
+   "rot": [
+    -8,
+    0,
+    0
    ],
    "copies": {
     "at": [
      [
-      -0.1,
-      1.27,
-      0.185
+      -0.095,
+      -0.06,
+      0.135
      ],
      [
-      0.1,
-      1.27,
-      0.185
-     ],
-     [
-      -0.1,
-      1.27,
-      -0.19
-     ],
-     [
-      0.1,
-      1.27,
-      -0.19
+      0.095,
+      -0.06,
+      0.135
      ]
     ]
    },
    "mat": "paint:#4a2f1f"
   },
   {
+   "id": "lyamkiPlecho",
+   "type": "box",
+   "parent": "chelovek",
+   "size": [
+    0.055,
+    0.012,
+    0.2
+   ],
+   "pos": [
+    0,
+    0.008,
+    0
+   ],
+   "bone": "plecho_L",
+   "snap": true,
+   "mat": "paint:#4a2f1f"
+  },
+  {
+   "id": "lyamkiPlechoR",
+   "type": "box",
+   "parent": "chelovek",
+   "size": [
+    0.055,
+    0.012,
+    0.2
+   ],
+   "pos": [
+    0,
+    0.008,
+    0
+   ],
+   "bone": "plecho_R",
+   "snap": true,
+   "mat": "paint:#4a2f1f"
+  },
+  {
    "id": "ranec",
    "type": "box",
    "parent": "chelovek",
+   "bone": "ranec_mount",
+   "snap": true,
    "size": [
     0.3,
     0.4,
@@ -255,8 +389,8 @@
    ],
    "pos": [
     0,
-    1.22,
-    -0.265
+    0.0,
+    -0.08
    ],
    "mat": {
     "kind": "metal",
@@ -378,12 +512,14 @@
    "id": "kolco",
    "type": "torus",
    "parent": "chelovek",
+   "bone": "spine_02",
+   "snap": true,
    "r": 0.04,
    "tube": 0.008,
    "pos": [
-    0.12,
-    1.15,
-    0.2
+    0.1,
+    -0.03,
+    0.135
    ],
    "rot": [
     90,
@@ -413,14 +549,14 @@
     "n": 24,
     "to": [
      [
-      -0.22,
-      -5.32,
-      0
+      -0.13,
+      -5.247,
+      -0.065
      ],
      [
-      0.22,
-      -5.32,
-      0
+      0.13,
+      -5.247,
+      -0.065
      ]
     ],
     "rot": 90,
@@ -478,14 +614,14 @@
     "n": 24,
     "to": [
      [
-      -0.22,
-      -5.32,
-      0
+      -0.13,
+      -5.247,
+      -0.065
      ],
      [
-      0.22,
-      -5.32,
-      0
+      0.13,
+      -5.247,
+      -0.065
      ]
     ],
     "rot": 90,
@@ -2628,6 +2764,13 @@
      },
      {
       "t": 12.5,
+      "do": "pose",
+      "id": "chelovek",
+      "pose": "land",
+      "dur": 0.15
+     },
+     {
+      "t": 13.6,
       "do": "pose",
       "id": "chelovek",
       "pose": "stand",

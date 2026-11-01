@@ -60,7 +60,8 @@ export class Scena {
         (p ? p.o : scene).add(e.o);
         // "bone":"spine_03" — тело едет за костью модели-родителя (ранец на спине, шлем на голове); pos/rot — в осях
         // модели в её исходной позе, как будто кости нет.
-        if (e.spec.bone && p && p.model) { const b = p.model.bone(e.spec.bone); if (b) { p.o.updateMatrixWorld(true); b.attach(e.o); } else console.warn('rc3d: нет кости', e.spec.bone); }
+        // "snap":true — pos считается от самой кости (точки крепления модели: ranec_mount, plecho_L…), а не от начала модели.
+        if (e.spec.bone && p && p.model) { const b = p.model.bone(e.spec.bone); if (b) { p.o.updateMatrixWorld(true); if (e.spec.snap) e.o.position.add(p.o.worldToLocal(b.getWorldPosition(new THREE.Vector3()))); b.attach(e.o); } else console.warn('rc3d: нет кости', e.spec.bone); }
         if (e.spec.latlon && p && p.globe) { const G = await globus(); e.o.position.copy(G.ll(p.globe.R, ...e.spec.latlon)); e.o.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), e.o.position.clone().normalize()); }
       }
       for (const f of W.fx || []) this.addFx(f, world);
