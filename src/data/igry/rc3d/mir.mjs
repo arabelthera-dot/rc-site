@@ -2,9 +2,14 @@
 // Земли: steppe (степь), field (поле с травой), concrete (заводская площадка), snow (снег), water (вода), none.
 // Сценарий: "env": {"sky":"day", "ground":"field", "size":600, "fog":[200,2600], "shadow":40, "sun":[55,75,35]}.
 // Настоящее небо и свет — HDRI: "hdri":"sky/kloofendal_48d_1k.hdr" (освещение окружением, PMREM), "background":
-// "sky/…_bg.jpg" (резкий фон; без него — сама HDRI) или false, "hdriYaw":град, "hdriSun":[x,y,z] (иначе — по самой яркой
+// "sky/…_bg.jpg" (резкий фон; без него — сама HDRI) или false, "bgFloor":0.01 — ниже этой высоты фон берёт цвет горизонта (нет серой
+// полосы под краем земли, когда камера высоко), "hdriYaw":град, "hdriSun":[x,y,z] (иначе — по самой яркой
 // точке HDRI), "exposure", "envIntensity", "sunI". Земля по текстурам: "groundTex":"tex/grass004", "groundTile":4 (м на
 // плитку) или "groundRepeat":n, "groundTex2":"tex/ground037" — пятнами по шуму, "groundRes":{"diffuse":"2k"}.
+// Без плитки на большой высоте: "groundMaskTile":м — макро-маска из той же текстуры (её яркость, растянутая на м метров)
+// решает, где лежит вторая текстура и где земля светлее/темнее (вместо формульного шума); "groundFar":[ближе, дальше, доля] —
+// вдали текстура смешивается с собой же в 9 раз крупнее (повтор не виден сверху). Дымка к горизонту: "fogDensity":0.0012
+// (экспоненциальный туман вместо линейного "fog"), цвет — из HDRI или "fogColor".
 // Трава: "grass":{"n":14000,"areas":[[x,z,r],…],"h":0.32}. Постобработка: "post":{"bloom":0.25,"ao":true,"vignette":0.25}.
 import * as THREE from 'three';
 import { texNoise, texGrass, texWater, texSmoke } from './tekstury.mjs';
@@ -46,18 +51,19 @@ const D = Math.PI / 180;
 // Резкий фон неба из JPG, в который при сборке уже «запечён» ACES (как его покажет three.js). Шейдер переводит цвет
 // обратно в линейный (обращение ACES), и общий тон-маппинг (на экран или в постобработке) возвращает его 1:1 —
 // фон и сцена проходят через один и тот же ACES, а файл весит 200 КБ вместо 20 МБ.
-function skyDome(t, yaw) {
+function skyDome(t, yaw, floor = 0) {
   const mat = new THREE.ShaderMaterial({
     side: THREE.BackSide, depthWrite: false, fog: false, toneMapped: true,
-    uniforms: { tSky: { value: t }, uExp: { value: 1 }, uYaw: { value: yaw } },
+    uniforms: { tSky: { value: t }, uExp: { value: 1 }, uYaw: { value: yaw }, uFloor: { value: floor } },
     vertexShader: 'varying vec3 vD; void main(){ vD = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); gl_Position.z = gl_Position.w; }',
-    fragmentShader: `varying vec3 vD; uniform sampler2D tSky; uniform float uExp, uYaw;
+    fragmentShader: `varying vec3 vD; uniform sampler2D tSky; uniform float uExp, uYaw, uFloor;
       vec3 invRRT(vec3 v){ // решение (x(x+a)-b)/(x(cx+d)+e) = v
         const float a = 0.0245786, b = 0.000090537, c = 0.983729, d = 0.4329510, e = 0.238081;
         vec3 A = 1.0 - v * c, B = a - v * d, C = -(b + v * e);
         return (-B + sqrt(max(B * B - 4.0 * A * C, 0.0))) / (2.0 * max(A, 1e-3)); }
       void main(){
-        vec3 d = normalize(vD); float cy = cos(uYaw), sy = sin(uYaw); d = vec3(cy * d.x + sy * d.z, d.y, -sy * d.x + cy * d.z);
+        vec3 d = normalize(vD); if (uFloor > 0.0) d = normalize(vec3(d.x, max(d.y, uFloor), d.z));   // ниже горизонта — цвет горизонта
+        float cy = cos(uYaw), sy = sin(uYaw); d = vec3(cy * d.x + sy * d.z, d.y, -sy * d.x + cy * d.z);
         vec2 uv = vec2(atan(d.z, d.x) * 0.15915494 + 0.5, asin(clamp(d.y, -1.0, 1.0)) * 0.31830989 + 0.5);
         vec3 s = texture2D(tSky, uv).rgb;   // линейный (sRGB → линейный сделал загрузчик)
         s = min(s, vec3(0.985));
@@ -85,8 +91,9 @@ export class Mir {
     this.sun.shadow.bias = -0.0005; this.sun.shadow.normalBias = 0.04;
     scene.add(this.sun, this.sun.target);
     const fog = env.fog === false ? null : (env.fog || [260, 2600]);
-    if (fog) scene.fog = new THREE.Fog(0xd9ddd8, fog[0], fog[1]);
-    this.fog0 = fog;
+    if (env.fogDensity) scene.fog = new THREE.FogExp2(0xd9ddd8, env.fogDensity);
+    else if (fog) scene.fog = new THREE.Fog(0xd9ddd8, fog[0], fog[1]);
+    this.fog0 = env.fogDensity ? null : fog;
     this.pmrem = new THREE.PMREMGenerator(renderer);
     this.cur = { ...(SKY[env.sky] || SKY.day) };
     if (env.sun) this.cur.sun = env.sun;
@@ -119,7 +126,7 @@ export class Mir {
     for (let x = 0; x < W; x++) { const i = (row * W + x) * 4; c[0] += data[i]; c[1] += data[i + 1]; c[2] += data[i + 2]; n++; }
     this.hdFog = new THREE.Color(...(env.fogColor || c.map((v) => (v / n) * (env.fogK ?? 0.92))));
     if (env.background !== false) {
-      if (env.background) this.scene.add(this.dome = skyDome(tex(env.background, { srgb: true }), yaw));
+      if (env.background) this.scene.add(this.dome = skyDome(tex(env.background, { srgb: true }), yaw, env.bgFloor ?? 0));
       else { this.scene.background = t; this.scene.backgroundRotation.y = yaw; this.scene.backgroundIntensity = env.bgIntensity ?? 1; }
     }
     this.apply(this.cur, false);
@@ -162,7 +169,7 @@ export class Mir {
       if (k >= 1) { this.trans = null; this.envmap(); }
     }
     if (focus) { this.sun.target.position.copy(focus); this.sun.position.copy(focus).addScaledVector(this.sunDir, this.sunDist); }
-    if (this.scene.fog && this.fog0) this.scene.fog.far = this.fog0[1] + Math.max(0, alt) * 5;
+    if (this.scene.fog && this.fog0 && this.scene.fog.isFog) this.scene.fog.far = this.fog0[1] + Math.max(0, alt) * 5;
     if (this.grassMat?.userData.sh) this.grassMat.userData.sh.uniforms.uTime.value += dt;
     if (this.grassMesh && focus) { /* трава стоит на месте: поле не «плывёт» за камерой */ }
     if (this.water) this.water.offset.x += dt * 0.01, this.water.offset.y += dt * 0.004;
@@ -192,9 +199,10 @@ export class Mir {
     if (env.groundColor) m.color.set(env.groundColor);
     m.onBeforeCompile = (sh) => {
       sh.uniforms.map2 = { value: t2 || m.map }; sh.uniforms.uMix2 = { value: t2 ? env.groundMix ?? 0.45 : 0 }; sh.uniforms.uMacro = { value: env.groundMacro ?? 0.35 };
+      sh.uniforms.uMaskTile = { value: env.groundMaskTile ? 1 / env.groundMaskTile : 0 }; sh.uniforms.uFar = { value: new THREE.Vector3(...(env.groundFar || [0, 1, 0])) };
       sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec2 vWxz;').replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWxz = (modelMatrix * vec4(transformed, 1.0)).xz;');
       sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
-        varying vec2 vWxz; uniform sampler2D map2; uniform float uMix2, uMacro;
+        varying vec2 vWxz; uniform sampler2D map2; uniform float uMix2, uMacro, uMaskTile; uniform vec3 uFar;
         float hn(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
         float vn(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f); return mix(mix(hn(i), hn(i+vec2(1,0)), f.x), mix(hn(i+vec2(0,1)), hn(i+vec2(1,1)), f.x), f.y); }
         float fbm(vec2 p){ return 0.5*vn(p) + 0.3*vn(p*2.03+7.1) + 0.2*vn(p*4.1+3.3); }`).replace('#include <map_fragment>', `
@@ -204,10 +212,17 @@ export class Mir {
           vec4 tB = texture2D(map, r2);
           float nA = fbm(vWxz * 0.035);
           vec4 col = mix(tA, tB, smoothstep(0.3, 0.7, nA) * 0.6);
+          if (uFar.z > 0.0) col = mix(col, texture2D(map, vMapUv * 0.111 + vec2(0.37, 0.61)), uFar.z * smoothstep(uFar.x, uFar.y, length(vViewPosition)));
           float n2 = fbm(vWxz * 0.021 + 13.0);
+          float macro = fbm(vWxz * 0.006 + 2.0);
+          if (uMaskTile > 0.0) {   // макро-маска из той же текстуры: её яркость в огромном масштабе (поворот — чтобы не совпадала с плиткой)
+            vec2 mu = mat2(0.6, -0.8, 0.8, 0.6) * vWxz * uMaskTile;
+            float mk = dot(texture2D(map, mu).rgb, vec3(0.333)), mk2 = dot(texture2D(map, mu * 0.37 + 0.5).rgb, vec3(0.333));
+            n2 = smoothstep(0.25, 0.6, mk * 0.6 + mk2 * 0.4) * 0.5 + 0.5 * n2;
+            macro = clamp((mk2 - 0.35) * 2.2 + 0.5, 0.0, 1.0);
+          }
           vec4 c2 = texture2D(map2, vMapUv * 0.73);
           col = mix(col, c2, uMix2 * smoothstep(0.52, 0.72, n2));
-          float macro = fbm(vWxz * 0.006 + 2.0);
           col.rgb *= 1.0 + uMacro * (macro - 0.5) * 1.6;
           col.rgb = mix(col.rgb, col.rgb * vec3(1.08, 1.04, 0.86), uMacro * smoothstep(0.55, 0.8, fbm(vWxz * 0.01 + 5.0)));
           diffuseColor *= col;
