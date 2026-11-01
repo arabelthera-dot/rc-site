@@ -19,7 +19,7 @@ p.on('console', (m) => {
 });
 p.on('requestfailed', (q) => R.oshibki.push('запрос не прошёл: ' + q.url() + ' ' + (q.failure()?.errorText || '')));
 p.on('response', (r) => { R.zaprosy.push({ url: r.url(), status: r.status() }); if (r.status() >= 400) R.oshibki.push(`HTTP ${r.status()}: ${r.url()}`); });
-const shot = async (sel, imya) => { const f = `${OUT}/${imya}.png`; await p.locator(sel).screenshot({ path: f, animations: 'allow' }); R.kadry.push(imya); };
+const shot = async (sel, imya) => { const f = `${OUT}/${imya}.png`; await p.locator(sel).screenshot({ path: f, animations: 'allow', timeout: 120000 }); R.kadry.push(imya); };
 // Самый длинный идущий прогон таймлайна (setup-прогоны мгновенные и в runs не попадают).
 const RUN = (k) => `(() => { const rs = __rc3d.${k}.S.runs; return rs.length ? rs.reduce((a, r) => (r.end > a.end ? r : a)) : null; })()`;
 // Стоп-кадр: на первом кадре, где таймлайн дошёл до h, время сцены замирает (timeK = 0) — снимок повторяем.
