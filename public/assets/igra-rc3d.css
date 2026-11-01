@@ -40,3 +40,11 @@
 .rc3-link{background:none;border:0;padding:6px 0;min-height:44px;color:var(--gold-l);text-decoration:underline;font:inherit;cursor:pointer}
 .rc3-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .rc3 [hidden]{display:none!important}
+/* Ручное управление (igra.pilot): круг допуска поверх сцены и кнопки «Тормоз/Тяга» + крест сдвига. */
+.rc3-pricel{position:absolute;border:2px solid #7fe08a;border-radius:50%;pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.45),inset 0 0 0 1px rgba(0,0,0,.45)}
+.rc3-pricel.mimo{border-color:#ff8a6a}
+.rc3-pilot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0}
+.rc3-pilot-dv{display:flex;gap:8px;flex-wrap:wrap}
+.rc3-pilot-krest{display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(3,44px);gap:4px}
+.rc3-pilot-krest .rc3-pilot-b{padding:0;min-width:48px;min-height:44px;font-size:1.2rem;touch-action:none;user-select:none}
+#gUp{grid-column:2;grid-row:1}#gLeft{grid-column:1;grid-row:2}#gRight{grid-column:3;grid-row:2}#gDown{grid-column:2;grid-row:3}

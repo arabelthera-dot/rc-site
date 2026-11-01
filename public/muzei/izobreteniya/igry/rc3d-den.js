@@ -10,7 +10,7 @@
   var base = document.currentScript.src.replace(/[^\/]*$/, '') + 'rc3d/';
   var VER = (document.currentScript.src.split('?')[1] || '').replace(/[^\w=&.-]/g, '');
   // Файлы движка и их размер в байтах — ставит сборка tools/rc3d/build.mjs (строку не править руками).
-  var FAILY = [["rc3d.js",382029],["chunk-HXJWYLEG.js",59517],["chunk-3SXUJFDJ.js",595812]];
+  var FAILY = [["rc3d.js",308083],["chunk-EB2GTQWS.js",59833],["chunk-7KLF23E5.js",78990],["chunk-K2RFEHHZ.js",5343],["chunk-2RODXGAG.js",591773]];
   var scen = root.getAttribute('data-s'), stage = $('rc3dStage'), video = $('rc3dVideo'), started = false, popytka = 0;
   var conn = navigator.connection || {};
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;

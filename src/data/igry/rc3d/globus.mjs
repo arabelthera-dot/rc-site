@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { feature } from 'topojson-client';
 import land110 from 'world-atlas/land-110m.json';
 import { canvasTex } from './tekstury.mjs';
+import { tex } from './zagruzka.mjs';
 
 const D2R = Math.PI / 180;
 export const ll = (R, lat, lon, h = 0) => { const la = lat * D2R, ph = (lon + 180) * D2R, r = R + h; return new THREE.Vector3(-r * Math.cos(la) * Math.cos(ph), r * Math.sin(la), r * Math.cos(la) * Math.sin(ph)); };
@@ -37,9 +38,13 @@ function earthTex() {
 
 export function build(o, ctx) {
   if (o.type === 'globe') {
-    const R = o.r ?? 100, g = new THREE.Group();
-    const m = new THREE.MeshStandardMaterial({ map: earthTex(), roughness: 1, metalness: 0 });
-    g.add(new THREE.Mesh(new THREE.SphereGeometry(R, 128, 64), m));
+    const R = o.r ?? 100, g = new THREE.Group(), shar = new THREE.Group(); g.add(shar);
+    // "map":"tex/zemlya.webp" — настоящая карта (равнопромежуточная, как Blue Marble) вместо контуров Natural Earth;
+    // "clouds":"tex/oblaka.webp" — облака отдельной сферой (яркость = прозрачность); "pod":[lat,lon] — эта точка вверху (+Y).
+    const m = new THREE.MeshStandardMaterial({ map: o.map ? tex(o.map, { srgb: true }) : earthTex(), roughness: o.map ? 0.85 : 1, metalness: 0 });
+    shar.add(new THREE.Mesh(new THREE.SphereGeometry(R, 128, 64), m));
+    if (o.clouds) { const c = tex(o.clouds); shar.add(new THREE.Mesh(new THREE.SphereGeometry(R * 1.004, 96, 48), new THREE.MeshStandardMaterial({ color: 0xffffff, alphaMap: c, transparent: true, depthWrite: false, roughness: 1 }))); }
+    if (o.pod) shar.quaternion.setFromUnitVectors(ll(1, ...o.pod).normalize(), new THREE.Vector3(0, 1, 0));
     g.add(new THREE.Mesh(new THREE.SphereGeometry(R * 1.035, 64, 32), new THREE.ShaderMaterial({
       side: THREE.BackSide, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
       vertexShader: 'varying vec3 vN; varying vec3 vP; void main(){ vN=normalize(normalMatrix*normal); vec4 p=modelViewMatrix*vec4(position,1.); vP=p.xyz; gl_Position=projectionMatrix*p; }',

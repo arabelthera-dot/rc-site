@@ -1,6 +1,6 @@
 // rc3d · Проигрыватель дня: по сценарию JSON строит ЗАСТАВКУ (сверху) и ИГРУ (ниже) с блоком «Как играть».
 // Заставка: запускается сама, когда видна; без звука до клика; идёт по кругу (zastavka.loop).
-// Игра: выбор вариантов → кнопка → исход (outcome) по таблице «when». Счётчик причин неудачи, баллы window.award.
+// Игра: выбор вариантов → кнопка → исход (outcome) по таблице «when»; или ручное управление (igra.pilot, pilot.mjs) — исход по порогам. Счётчик причин неудачи, баллы window.award.
 // Текст — только под сценой (#…Count, #…Msg, «Что сделать сейчас»); на самой картинке надписей нет.
 import { Scena } from './scena.mjs';
 import { Zvuk } from './zvuk.mjs';
@@ -77,13 +77,14 @@ export async function zapusk(root, sc, base) {
       return el('div', { class: 'lab-row', role: 'group', 'aria-labelledby': lid }, el('span', { class: 'lbl', id: lid, text: `${i + 1}. ${c.label}` }),
         c.options.map((op) => { const b = el('button', { class: 'seg', type: 'button', 'data-k': c.id, 'data-v': op.id, 'aria-pressed': sel[c.id] === op.id ? 'true' : 'false', text: op.label }); segs.push(b); return b; }));
     });
+    const PL = G.pilot ? await import('./pilot.mjs') : null, pk = PL ? PL.knopki(G.pilot, el) : null;
     const go = el('button', { class: 'btn gold', type: 'button', id: 'gGo', text: G.button || 'Пуск' });
     const reset = el('button', { class: 'btn ghost', type: 'button', id: 'gReset', text: G.resetLabel || 'Начать заново' });
     const snd = el('button', { class: 'btn ghost', type: 'button', id: 'gSnd', 'aria-pressed': 'true', text: 'Звук: включён' });
     const fails = [...new Set((G.outcomes || []).filter((o) => o.result === 'fail' && o.reason).map((o) => o.reason))];
     const found = el('div', { class: 'lab-found', id: 'gFound' });
     const box = el('div', { class: 'lab rc3', id: 'rc3G', 'data-sostoyanie': 'gruzit' }, stage,
-      el('div', { class: 'rc3-under' }, L.count, el('div', { class: 'rc3-ctrl', id: 'gCtrl' }, rows, el('div', { class: 'lab-btns' }, go, reset, snd)), L.msg, found));
+      el('div', { class: 'rc3-under' }, L.count, el('div', { class: 'rc3-ctrl', id: 'gCtrl' }, rows, pk ? pk.ctrl : null, el('div', { class: 'lab-btns' }, go, reset, snd)), L.msg, found));
     const R = G.rules || {};
     const pravila = el('div', { class: 'igra-pravila', 'data-igra-pravila': true },
       el('h2', { class: 'igra-pravila-h', text: 'Как играть' }), el('p', { class: 'igra-pravila-zachem', text: R.zachem || '' }),
@@ -104,8 +105,10 @@ export async function zapusk(root, sc, base) {
     const match = () => (G.outcomes || []).find((o) => Object.entries(o.when || {}).every(([k, v]) => v === '*' || (Array.isArray(v) ? v.includes(sel[k]) : sel[k] === v)));
     const optOf = (cid, oid) => G.choices.find((c) => c.id === cid).options.find((o) => o.id === oid);
     const lock = (on) => { for (const b of [...segs, go]) b.disabled = on; };
+    const pkb = pk ? [pk.brake, pk.thrust, ...Object.values(pk.dirs)] : [];
+    const lockP = (on) => { for (const b of pkb) b.disabled = on; };
     // Подготовка сцены под выбор: исходное состояние + setup выбранных вариантов (последний изменённый — с анимацией).
-    const prepare = (changed) => {
+    let prepare = (changed) => {
       S.reset(); ui.count('');
       for (const c of G.choices || []) { const op = optOf(c.id, sel[c.id]); if (op.setup && c.id !== changed) S.run(op.setup, { instant: true }); }
       if (changed) { const op = optOf(changed, sel[changed]); if (op.setup) S.run(op.setup); }
@@ -130,7 +133,7 @@ export async function zapusk(root, sc, base) {
       }
       api.g.result = o.result; api.g.last = o.id;
     };
-    const start = () => {
+    let start = () => {
       if (phase === 'pusk') return;
       zv.resume();
       if (phase === 'itog') prepare(null);
@@ -141,6 +144,15 @@ export async function zapusk(root, sc, base) {
       hint(G.watchHint || 'Что сделать сейчас: ничего не нажимай — смотри на сцену и читай под ней, что происходит.');
       S.run(o.timeline, { onEnd: () => finish(o) });
     };
+    // Ручное управление: «Старт» начинает полёт, кнопки и палец ведут корабль, исход — в момент касания.
+    let PI = null;
+    if (PL) {
+      PI = PL.pilot(S, G, pk, { ui, hint, stage, box, zv, lock: lockP, finish: (o) => { finish(o); lockP(true); } });
+      lockP(true);
+      prepare = () => PI.prepare();
+      start = () => { zv.resume(); if (phase === 'pusk') return; if (phase === 'itog') { PI.prepare(); } phase = 'pusk'; api.g.result = null; go.disabled = true; lockP(false); PI.go();
+        hint(G.watchHint || 'Что сделать сейчас: держи цель в круге и тормози.'); };
+    }
     segs.forEach((b) => b.addEventListener('click', () => {
       if (phase === 'pusk') return;
       const k = b.dataset.k, v = b.dataset.v;
@@ -150,13 +162,14 @@ export async function zapusk(root, sc, base) {
       const op = optOf(k, v); if (op.say) ui.say(op.say);
     }));
     go.addEventListener('click', start);
-    reset.addEventListener('click', () => { phase = 'vybor'; lock(false); prepare(null); ui.say(G.resetSay || 'Всё снова на месте. Уже полученные баллы сохраняются и повторно не начисляются.'); hint(G.hint || 'Что сделать сейчас: выбери варианты и нажми «' + go.textContent + '».'); });
+    reset.addEventListener('click', () => { phase = 'vybor'; lock(false); lockP(true); prepare(null); ui.say(G.resetSay || 'Всё снова на месте. Уже полученные баллы сохраняются и повторно не начисляются.'); hint(G.hint || 'Что сделать сейчас: выбери варианты и нажми «' + go.textContent + '».'); });
     snd.addEventListener('click', () => { zv.resume(); zv.setOn(!zv.on); snd.setAttribute('aria-pressed', zv.on ? 'true' : 'false'); snd.textContent = zv.on ? 'Звук: включён' : 'Звук: выключен'; });
     prepare(null); setFound(got);
     hint(G.hint || 'Что сделать сейчас: выбери варианты и нажми «' + go.textContent + '». Сцену можно крутить пальцем или мышью.');
     ui.say(G.startText || '');
     api.g = { S, sel, pick: (k, v) => segs.find((x) => x.dataset.k === k && x.dataset.v === v).click(), go: start, reset: () => reset.click(),
-      st: () => ({ phase, result: api.g.result, last: api.g.last, found: Object.keys(got).length, fails: fails.length }),
+      st: () => ({ ...(PI ? { ...PI.pst(), polyot: PI.pst().phase } : {}), phase, result: api.g.result, last: api.g.last, found: Object.keys(got).length, fails: fails.length }),
+      pilot: PI,
       combos: () => (G.choices || []).reduce((acc, c) => acc.flatMap((a) => c.options.map((o) => ({ ...a, [c.id]: o.id }))), [{}]) };
   }
   api.ready = true;
