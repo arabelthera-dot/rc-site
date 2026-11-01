@@ -16,7 +16,37 @@ const MES = ['января', 'февраля', 'марта', 'апреля', 'м
 const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.key.slice(0, 2)) - 1]} ${d.head.god}: ${d.head.sobytie}`;
 const title = kogda ? `${kogda} — ${muzeyName} — Русская цивилизация` : d.head.title;
 const ogTitle = kogda || d.head.og.title;
-const igraHtml = [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
+// 3D-игра дня на движке rc3d (igra.rc3d): заставка и «Играть» над 2D-игрой; сам движок грузит igry/rc3d-den.js по кнопке.
+const r3 = d.igra.rc3d;
+const e = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+const rc3dHtml = r3 ? `<div id="rc3d" data-s="${r3.scen}"${r3.zastavka ? ` data-zastavka="${r3.zastavka}"` : ''}>
+<section class="block rc3-blok rc3-den" id="games-3d">
+  <div class="wrap">
+    <div class="kicker">${r3.kicker}</div>
+    <h2>${r3.h2}</h2>
+    <p class="r3-lead">${r3.lead}</p>
+    <div class="lab rc3" data-sostoyanie="zhdet">
+      <div class="rc3-stage" id="rc3dStage" role="img" aria-label="${e(r3.alt)}">${r3.zastavka ? '<video class="rc3-video" id="rc3dVideo" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>' : ''}</div>
+      <div class="rc3-under">
+        <p class="rc3-hint" id="rc3dHint">Нажми «Играть»: загрузится 3D-сцена (${r3.razmer}). Та же игра без 3D — ниже, открывается сразу.</p>
+        <div class="lab-btns"><button class="btn gold" type="button" id="rc3dRun">Играть</button></div>
+        <div class="rc3-load" id="rc3dLoad" hidden>
+          <div class="rc3-load-bar" id="rc3dLoadBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="rc3dLoadT"><span id="rc3dLoadFill"></span></div>
+          <p class="rc3-load-t" id="rc3dLoadT">Загрузка 3D: 0 %</p>
+        </div>
+        <div class="rc3-slab" id="rc3dSlab" hidden>
+          <p id="rc3dSlabT">На этом телефоне 3D может тормозить. Есть та же игра без 3D — она чуть ниже и открывается сразу.</p>
+          <div class="lab-btns"><a class="btn gold" href="#games">Играть в 2D ниже</a></div>
+          <p class="rc3-slab-vse"><button class="rc3-link" type="button" id="rc3dVse">Всё равно открыть 3D</button></p>
+        </div>
+        <noscript><div class="noscript-box">Для 3D нужен JavaScript. Та же игра без 3D — ниже.</div></noscript>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+` : '';
+const igraHtml = rc3dHtml + [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
 // JS-строка в одинарных кавычках — как в старых страницах: конвейер (src/lib/sosedi-polnye.mjs) ищет
 // prev/next в window.MUSEUM_CHROME именно в таком виде и переписывает на ближайшие полные страницы.
 const q = (s: string) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/</g, '\\u003c')}'`;
@@ -116,7 +146,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <script type="application/ld+json" is:inline set:html={json(d.head.ld)}></script>
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
 <link rel="stylesheet" href="../../assets/igra-pravila.css">
-{d.igra.css.map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}
+{d.igra.css.map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}{r3 && <link rel="stylesheet" href="../../assets/igra-rc3d.css">}
 </head>
 <body>
 
@@ -297,7 +327,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <script is:inline set:html={scoreJs}></script>
 <script is:inline src="../../assets/museum-score.js"></script>
 <script is:inline set:html={knopkiJs}></script>
-<script is:inline src={`igry/${d.igra.imya}.js`}></script>{d.igra.vtoraya && <script is:inline src={`igry/${d.igra.vtoraya}.js`}></script>}
+{r3 && <script is:inline src="igry/rc3d-den.js"></script>}<script is:inline src={`igry/${d.igra.imya}.js`}></script>{d.igra.vtoraya && <script is:inline src={`igry/${d.igra.vtoraya}.js`}></script>}
 <script is:inline set:html={quizJs}></script>{d.igra.dop && <script is:inline src={`igry/${d.igra.imya}-dop.js`}></script>}
 {d.skripty.map((s) => 'src' in s ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.js}></script>)}
 <script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
