@@ -13,7 +13,7 @@ LYOTCHIK_POSES = {
     'sit': {'clip': ['Sitting_Idle_Loop']},
     'spread': {'clip': ['Jump_Loop'], 'dir': {'ual': [1, 0.35, 0.1], 'lal': [1, 0.45, 0.15], 'uar': [1, 0.35, 0.1], 'lar': [1, 0.45, 0.15]}},
     'arms-forward': {'clip': ['Jump_Loop'], 'dir': {'uar': [0.15, -0.35, 1], 'lar': [-0.9, 0.2, 0.5]}},
-    'arms-up': {'clip': ['Idle_Loop'], 'dir': {'ual': [0.3, 1, 0.1], 'lal': [0.05, 1, 0.15], 'uar': [0.3, 1, 0.1], 'lar': [0.05, 1, 0.15]}},
+    'arms-up': {'clip': ['Idle_Loop'], 'dir': {'ual': [0.35, 1, 0.2], 'lal': [-0.3, 1, 0.1], 'uar': [0.35, 1, 0.2], 'lar': [-0.3, 1, 0.1], 'thl': [0.08, -1, 0.25], 'thr': [0.04, -1, 0.1]}},
     'land': {'clip': ['Jump_Land'], 'once': True},
     'kneel': {'clip': ['Crouch_Idle_Loop']},
 }
@@ -265,7 +265,8 @@ def outcome_A2(oid, silk, two):
             {'t': 5.0, 'do': 'sound', 'kind': 'crack', 'k': 1.3}, {'t': 5.0, 'do': 'sound', 'kind': 'wind', 'level': 0.35},
             {'t': 5.0, 'do': 'move', 'id': 'lyotchik', 'by': [0.6, -5, 0], 'dur': 1, 'ease': 'out2'},
             {'t': 5.0, 'do': 'pose', 'id': 'chelovek', 'pose': 'arms-up', 'dur': 0.5},
-            {'t': 5.0, 'do': 'camera', 'follow': 'lyotchik', 'lookOffset': [0, 4, 0]}, {'t': 5.0, 'do': 'camera', 'offset': [6, -7, 6], 'dur': 1.4},
+            {'t': 4.9, 'do': 'camera', 'follow': None}, {'t': 4.9, 'do': 'camera', 'pos': [LX - 16, LY - 23, 8], 'look': [LX + 22, LY - 15, -1], 'dur': 0.2},
+            {'t': 4.9, 'do': 'slow', 'k': 0.3, 'dur': 0.2}, {'t': 5.9, 'do': 'slow', 'k': 1, 'dur': 0.6},
             {'t': 5.0, 'do': 'count', 'text': 'Купол раскрылся', 'small': 'за мгновение'},
         ]
         y_after = LY - 16 - 5
@@ -273,6 +274,7 @@ def outcome_A2(oid, silk, two):
             tl += [
                 {'t': 5.4, 'do': 'say', 'text': 'Шёлк с тросиком в кромке наполнился за мгновение. Две группы строп держат лётчика за плечи — он висит ровно и разворачивается по ветру.'},
                 {'t': 6.0, 'do': 'move', 'id': 'lyotchik', 'to': [LX + 14, 0.95, 4], 'dur': 6.5, 'ease': 'linear'},
+                {'t': 6.6, 'do': 'camera', 'follow': 'lyotchik', 'lookOffset': [0, 3, 0]},
                 {'t': 6.5, 'do': 'rotate', 'id': 'lyotchik', 'by': [0, 70, 0], 'dur': 2.5},
                 {'t': 7.0, 'do': 'camera', 'offset': [18, 1, 20], 'dur': 2.5},
                 {'t': 10.6, 'do': 'camera', 'follow': 'lyotchik', 'lookOffset': [0, 0.5, 0]}, {'t': 10.6, 'do': 'camera', 'offset': [5, 0.2, 6], 'dur': 1.4},
@@ -394,7 +396,7 @@ sc = {
     'istochniki': 'Опыт: 3D-заставка и игра по фактам дня. Размеры ранца и купола условные, высота и время на сцене сжаты. Купол из 24 клиньев, стальной тросик в кромке, 24 стропы двумя группами к плечам, ранец на спине, испытание с аэростата на 200 метров у Салюзи под Гатчиной в 1912 году — Президентская библиотека, «Ростех», История.РФ, УрФУ, «Коммерсантъ. Наука», «Гатчина-инфо». Реплики в заставке стилизованы.',
     # Небо — HDRI Poly Haven (свет и солнце из неё, резкий фон 4K-JPG), земля — аэросъёмка Poly Haven aerial_* двумя текстурами
     # с макро-маской из той же текстуры, вдали — та же текстура крупнее; дымка к горизонту экспоненциальная.
-    'env': {'sky': 'day', 'ground': 'field', 'size': 12000, 'fogDensity': 0.0006, 'shadow': 22,
+    'env': {'sky': 'day', 'ground': 'field', 'free': True, 'size': 12000, 'fogDensity': 0.0006, 'shadow': 22,
             'hdri': 'sky/kloofendal_48d_1k.hdr', 'background': 'sky/kloofendal_48d_bg.jpg', 'bgFloor': 0.012, 'exposure': 1.0, 'envIntensity': 1.0, 'sunI': 3.0,
             'groundTex': 'tex/aerial_grass_rock', 'groundRes': {'diffuse': '2k'}, 'groundTile': 22, 'groundTex2': 'tex/aerial_ground_rock', 'groundRes2': '2k', 'groundTile2K': 0.8,
             'groundMix': 0.75, 'groundMacro': 0.6, 'groundMaskTile': 520, 'groundFar': [40, 450, 0.65], 'groundColor': '#dcefb8',
