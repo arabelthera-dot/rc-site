@@ -5,11 +5,20 @@
     <p class="r3-lead">Ты — конструктор Королёва. Собери ракету своими руками, зажги все 32 сопла и проведи головную часть от Тюра-Тама до Камчатки. Ошибёшься — ракета взорвётся или упадёт, и ты увидишь почему.</p>
     <div class="lab r3" id="r3" data-sostoyanie="zhdet">
       <div class="r3-stage" id="r3Stage" data-igra-scena role="img" aria-label="Трёхмерная сцена: ракета Р-7 на стартовом столе. Поворачивается пальцем или мышью">
-        <div class="r3-poster" aria-hidden="true"><span class="r3-poster-c"></span><span class="r3-poster-b l"></span><span class="r3-poster-b r"></span></div>
+        <video class="r3-video" id="r3Video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
       </div>
       <div class="r3-under">
-        <p class="r3-hint" id="r3Hint">3D загрузится, как только блок окажется на экране, или по кнопке.</p>
-        <div class="lab-btns r3-start"><button class="btn gold" type="button" id="r3Run">Запустить 3D</button></div>
+        <p class="r3-hint" id="r3Hint">Сверху — заставка. Нажми «Играть»: загрузится 3D-сцена (около 1 МБ), и ракету можно будет собрать самому.</p>
+        <div class="lab-btns r3-start"><button class="btn gold" type="button" id="r3Run">Играть</button></div>
+        <div class="r3-load" id="r3Load" hidden>
+          <div class="r3-load-bar" id="r3LoadBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="r3LoadT"><span id="r3LoadFill"></span></div>
+          <p class="r3-load-t" id="r3LoadT">Загрузка 3D: 0 %</p>
+        </div>
+        <div class="r3-slab" id="r3Slab" hidden>
+          <p id="r3SlabT">На этом телефоне 3D может тормозить. Есть та же игра без 3D — она чуть ниже и открывается сразу.</p>
+          <div class="lab-btns"><a class="btn gold" href="#games-2d">Играть в 2D ниже</a></div>
+          <p class="r3-slab-vse" id="r3SlabVse"><button class="r3-link" type="button" id="r3Vse">Всё равно открыть 3D</button></p>
+        </div>
         <div class="r3-count" id="r3Count" aria-live="assertive"></div>
         <div class="r3-ctrl" id="r3Ctrl" hidden>
           <div class="lab-row" role="group" aria-labelledby="r3g1"><span class="lbl" id="r3g1">1. Как собрать ракету</span>
@@ -26,10 +35,10 @@
             <button class="btn ghost" type="button" id="r3Snd" aria-pressed="true">Звук: включён</button>
           </div>
         </div>
-        <div class="lab-msg" id="r3Msg" aria-live="polite">Ракета ещё не на столе. Запусти 3D.</div>
+        <div class="lab-msg" id="r3Msg" aria-live="polite">Ракета ещё не на столе. Нажми «Играть».</div>
         <div class="lab-found" id="r3Found">Найдено причин неудачи: 0 из 2.</div>
         <div class="r3-text" id="r3Text" hidden>
-          <p><b>Текстовая версия игры.</b> Твой браузер не показывает 3D, поэтому вот что было бы на сцене.</p>
+          <p><b>Текстовая версия игры.</b> Твой браузер не показывает 3D, поэтому вот что было бы на сцене. А собрать ракету самому можно <a href="#games-2d">в игре без 3D ниже</a>.</p>
           <p><b>Башня.</b> Первая ступень отрабатывает, а вторую надо зажечь высоко в небе. Здесь это и срывается: вторая ступень вспыхивает и разрушается, обломки падают в степь. В пакете Королёва все двигатели зажигаются ещё на земле.</p>
           <p><b>Пакет, пустые блоки везём.</b> Двигатели боковых блоков гаснут, а ракета тащит их пустые баки дальше. Мёртвый вес съедает скорость: ракета зависает, валится набок и падает.</p>
           <p><b>Пакет, пустые блоки сбрасываем.</b> На высоте четыре боковых блока отходят «крестом Королёва» и, кувыркаясь, падают, а центральный блок летит дальше. Так 21 августа 1957 года головная часть дошла до полигона Кура на Камчатке.</p>

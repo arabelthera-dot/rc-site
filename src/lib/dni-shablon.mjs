@@ -69,7 +69,8 @@ export const skhema = z.object({
   // Блоки шаблона (pervenstvo, quiz, result, calendar) своей разметки не имеют — их рисует шаблон из полей карточки (Р302).
   razdely: z.array(z.object({ posle: z.enum(BLOKI), html: str })).default([]),
   // dop — второй скрипт дня (развилка, чат…) public/muzei/<музей>/igry/<имя>-dop.js, после викторины.
-  igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]) }),
+  // vtoraya — вторая игра сразу под первой (своя разметка и скрипт, как у imya; напр. плоская под 3D, 12 янв., Р412).
+  igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), vtoraya: z.string().regex(/^[a-z0-9-]+$/).optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]) }),
   pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }),
   quiz: z.object({ kicker: str, h2: str, intro: str, noscript: str, ball: z.number().int().positive().default(10),
     voprosy: z.array(z.object({ q: str, o: z.array(str).min(2), a: z.number().int().min(0), e: str })).min(1) }),
@@ -95,6 +96,8 @@ export const skhema = z.object({
 }).superRefine((d, ctx) => {
   if (!fs.existsSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`) || !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.imya}.js`))
     ctx.addIssue({ code: 'custom', path: ['igra', 'imya'], message: `игры ${d.muzei}/${d.igra.imya} нет (html в src/data/igry, js в public/muzei/<музей>/igry)` });
+  if (d.igra.vtoraya && (!fs.existsSync(`src/data/igry/${d.muzei}/${d.igra.vtoraya}.html`) || !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.vtoraya}.js`)))
+    ctx.addIssue({ code: 'custom', path: ['igra', 'vtoraya'], message: `игры ${d.muzei}/${d.igra.vtoraya} нет (html в src/data/igry, js в public/muzei/<музей>/igry)` });
   if (d.igra.dop && !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.imya}-dop.js`))
     ctx.addIssue({ code: 'custom', path: ['igra', 'dop'], message: `нет public/muzei/${d.muzei}/igry/${d.igra.imya}-dop.js` });
   d.igra.css.forEach((c, i) => { if (!fs.existsSync(`public/assets/${c}.css`)) ctx.addIssue({ code: 'custom', path: ['igra', 'css', i], message: `нет public/assets/${c}.css` }); });
