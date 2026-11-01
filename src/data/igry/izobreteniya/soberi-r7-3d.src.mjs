@@ -873,11 +873,13 @@ function loop() {
   kachestvo();
 }
 // Автокачество: 2 с прогрева, потом окна по ~2 с; окно < 25 к/с — ступень вниз:
-// 1) pixelRatio 1, тени выключены, частиц ×0,5; 2) pixelRatio 0,75. Сцена ушла с экрана — прогрев заново.
-const AQ = { t0: 0, n: 0, ur: 0 };
+// 1) pixelRatio 1, тени выключены, частиц ×0,5; 2) pixelRatio 0,75. Сцена ушла с экрана, вкладка скрыта
+// или кадры встали больше чем на 1 с (свёрнутое окно) — прогрев заново, иначе простой посчитался бы как тормоза.
+const AQ = { t0: 0, n: 0, ur: 0, pr: 0 };
+document.addEventListener('visibilitychange', () => { AQ.t0 = 0; });
 function kachestvo() {
-  const now = performance.now();
-  if (!AQ.t0) { AQ.t0 = now + 2000; AQ.n = 0; return; }
+  const now = performance.now(), gap = now - AQ.pr; AQ.pr = now;
+  if (!AQ.t0 || gap > 1000) { AQ.t0 = now + 2000; AQ.n = 0; return; }
   if (now < AQ.t0) return;
   AQ.n++; const span = now - AQ.t0; if (span < 2000) return;
   const f = AQ.n * 1000 / span; AQ.t0 = now; AQ.n = 0;

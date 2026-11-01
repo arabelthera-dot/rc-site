@@ -9,8 +9,8 @@
   var $ = function(id){ return document.getElementById(id); };
   var base = document.currentScript.src.replace(/[^\/]*$/, '') + 'soberi-r7-3d/';
   var VER = (document.currentScript.src.split('?')[1] || '').replace(/[^\w=&.-]/g, '');
-  var RAZMER = 834150;   // байт в scena.js без сжатия — ставит сборка (Content-Length при gzip — сжатый)
-  var stage = $('r3Stage'), video = $('r3Video'), started = false;
+  var RAZMER = 834240;   // байт в scena.js без сжатия — ставит сборка (Content-Length при gzip — сжатый)
+  var stage = $('r3Stage'), video = $('r3Video'), started = false, popytka = 0;
   var conn = navigator.connection || {};
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var igrat = !reduce && !conn.saveData;   // ролик крутим; иначе — только постер
@@ -75,11 +75,22 @@
     root.setAttribute('data-sostoyanie', 'gruzit');
     $('r3Run').parentNode.hidden = true; $('r3Slab').hidden = true; $('r3Load').hidden = false; proc(0);
     $('r3Hint').textContent = 'Загружаю 3D-сцену…';
-    var url = base + 'scena.js' + (VER ? '?' + VER : '');   // версия загрузчика — чтобы после выкладки не взялась старая сцена из кеша (max-age 7 дней)
+    // версия загрузчика — чтобы после выкладки не взялась старая сцена из кеша (max-age 7 дней);
+    // повтор после сбоя сети — новый адрес: неудачный import() браузер запоминает
+    var q = [VER, popytka ? 'p=' + popytka : ''].filter(Boolean).join('&');
+    var url = base + 'scena.js' + (q ? '?' + q : ''), skachano = false;
     skachat(url).then(function(){ return import(url); })
-      .then(function(m){ proc(100); return m.zapusk(root, base); })
+      .then(function(m){ skachano = true; proc(100); return m.zapusk(root, base); })
       .then(function(){ $('r3Load').hidden = true; })
-      .catch(function(e){ console.warn('r7-3d', e); tekst('3D не загрузилось, поэтому игра — текстом.'); });
+      .catch(function(e){
+        console.warn('r7-3d', e);
+        if (skachano) { tekst('3D не загрузилось, поэтому игра — текстом.'); return; }
+        // сбой сети — можно попробовать ещё раз или сыграть в 2D ниже
+        started = false; popytka++;
+        root.setAttribute('data-sostoyanie', 'oshibka');
+        $('r3Load').hidden = true; $('r3Run').textContent = 'Попробовать ещё раз'; $('r3Run').parentNode.hidden = false;
+        $('r3Hint').textContent = '3D-сцена не загрузилась — проверь связь и попробуй ещё раз. Та же игра без 3D — ниже.';
+      });
   }
   $('r3Run').addEventListener('click', function(){
     if (!webgl()) { vidStop(); tekst('Браузер не показывает 3D (нет WebGL 2), поэтому игра — текстом.'); return; }
