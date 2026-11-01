@@ -1,0 +1,82 @@
+{
+  "id": "r7-proba",
+  "title": "Р-7 на стартовом столе (проба движка)",
+  "env": { "sky": "day", "ground": "steppe", "fog": [260, 2600], "shadow": 40 },
+  "camera": { "pos": [34, 11, 38], "posNarrow": [30, 14, 46], "look": [0, 13, 0], "min": 12, "max": 200 },
+  "objects": [
+    { "id": "stol", "type": "box", "size": [60, 1, 60], "pos": [0, -0.5, 0], "mat": "concrete", "shadow": false },
+    { "id": "kolco", "type": "torus", "r": 6.6, "tube": 0.35, "pos": [0, 0.25, 0], "mat": "steel" },
+    { "id": "ferma", "type": "group", "copies": { "n": 4, "radius": 6.5, "start": 45, "y": 0.3 },
+      "parts": [{ "id": "fermaR", "type": "truss", "h": 16.2, "w": 0.9, "mat": "steel", "rot": [0, 0, 16.4] }] },
+    { "id": "raketa", "type": "group", "pos": [0, 0.3, 0] },
+    { "id": "centr", "parent": "raketa", "type": "lathe", "mat": "paint:#dfe3df",
+      "profile": [[0,0],[1.02,0],[1.07,0.5],[1.07,13.8],[1.2,16.2],[1.47,18.6],[1.47,22.6],[1.36,23.6],[1.05,25.4],[0.78,26.9],[0.48,28.3],[0.24,29.3],[0,29.9]] },
+    { "id": "inei", "parent": "raketa", "type": "cylinder", "r": 1.5, "h": 4.2, "pos": [0, 20, 0], "mat": "frost" },
+    { "id": "bok", "parent": "raketa", "type": "lathe", "mat": "paint:#dfe3df", "copies": { "n": 4, "radius": 2.42 }, "rot": [0, 0, 2.8],
+      "profile": [[0,0],[1.3,0],[1.34,0.5],[1.34,3.2],[1.2,6.5],[0.98,10.2],[0.76,13.4],[0.55,15.8],[0.36,17.3],[0.19,18.3],[0,19]] }
+  ],
+  "fx": [
+    { "id": "fakel", "kind": "flame", "parent": "bok", "pos": [0, -0.2, 0], "dir": [0, -1, 0], "size": 1.6 },
+    { "id": "fakelC", "kind": "flame", "parent": "centr", "pos": [0, -0.2, 0], "dir": [0, -1, 0], "size": 1.6 },
+    { "id": "par", "kind": "vapor", "parent": "centr", "pos": [1.2, 21, 0], "dir": [1, 0, 0], "size": 1.5, "on": true },
+    { "id": "dym", "kind": "smoke", "pos": [0, 1, 0], "dir": [0, 1, 0], "size": 9, "radius": 4, "spread": 1.35, "speed": [9, 17] }
+  ],
+  "sceny": [
+    { "id": "karta", "env": { "sky": "space", "ground": "none", "fog": false, "shadow": 0 },
+      "camera": { "pos": [40, 200, -150], "look": [0, 75, -30], "min": 20, "max": 600 },
+      "objects": [
+        { "id": "zemlya", "type": "globe", "r": 100 },
+        { "id": "put", "type": "route", "parent": "zemlya", "from": [45.92, 63.34], "to": [57.3, 160.9], "height": 16 },
+        { "id": "start", "type": "dot", "parent": "zemlya", "latlon": [45.92, 63.34, 0.4], "color": "#e4c97a", "size": 3.2 },
+        { "id": "kura", "type": "dot", "parent": "zemlya", "latlon": [57.3, 160.9, 0.4], "color": "#ffffff", "size": 3.2 },
+        { "id": "golova", "type": "cone", "parent": "zemlya", "r": 0.35, "h": 2.6, "mat": "paint:#eef2f4", "latlon": [45.92, 63.34, 0.5] }
+      ] }
+  ],
+  "zastavka": {
+    "loop": true,
+    "timeline": [
+      { "t": 0, "do": "count", "text": "Ключ на старт", "small": "T − 10 с" }, { "t": 0, "do": "voice", "file": "start" },
+      { "t": 1.2, "do": "count", "text": "Ключ на дренаж", "small": "T − 7 с" }, { "t": 1.2, "do": "voice", "file": "drenazh" }, { "t": 1.2, "do": "stop", "id": "par", "dur": 0.5 },
+      { "t": 2.6, "do": "count", "text": "Зажигание", "small": "T − 5 с" }, { "t": 2.6, "do": "voice", "file": "zazhiganie" },
+      { "t": 2.6, "do": "emit", "id": ["fakel", "fakelC"], "level": 0.3 }, { "t": 2.6, "do": "emit", "id": "dym", "level": 0.4 }, { "t": 2.6, "do": "sound", "kind": "roar", "level": 0.4 },
+      { "t": 4.2, "do": "count", "text": "Главная", "small": "T − 2 с" }, { "t": 4.2, "do": "voice", "file": "glavnaya" },
+      { "t": 4.2, "do": "emit", "id": ["fakel", "fakelC"], "level": 1, "dur": 0.4 }, { "t": 4.2, "do": "emit", "id": "dym", "level": 1 }, { "t": 4.2, "do": "sound", "kind": "roar", "level": 1 }, { "t": 4.2, "do": "shake", "k": 0.45 },
+      { "t": 5.4, "do": "count", "text": "Подъём!", "small": "старт" }, { "t": 5.4, "do": "voice", "file": "podyom" }, { "t": 5.4, "do": "sound", "kind": "hit" },
+      { "t": 5.4, "do": "rotate", "id": "fermaR", "to": [0, 0, -35], "dur": 1.3 },
+      { "t": 5.4, "do": "move", "id": "raketa", "path": [[0, 8, 0], [2, 60, 0], [25, 260, 0]], "dur": 8, "ease": "in" },
+      { "t": 5.4, "do": "camera", "follow": "raketa", "lookOffset": [0, 10, 0] }, { "t": 5.6, "do": "camera", "offset": [60, -10, 60], "dur": 3 },
+      { "t": 8, "do": "stop", "id": "dym", "dur": 3 },
+      { "t": 11, "do": "say", "text": "Боковые блоки отходят «крестом Королёва»." },
+      { "t": 11, "do": "stop", "id": "fakel" }, { "t": 11, "do": "sound", "kind": "pop" },
+      { "t": 11, "do": "fall", "id": "bok", "v": [0, -2, 0], "spin": [0, 0, 40] },
+      { "t": 11, "do": "camera", "offset": [22, -60, 26], "dur": 1.5 },
+      { "t": 11, "do": "sky", "to": "space", "dur": 4 },
+      { "t": 14.5, "do": "scene", "id": "karta" }, { "t": 14.5, "do": "sound", "kind": "roar", "level": 0.05 },
+      { "t": 15, "do": "count", "text": "Полёт до Камчатки", "small": "путь по карте · высота преувеличена" },
+      { "t": 15, "do": "fill", "id": "put", "to": 1, "dur": 8 }, { "t": 15, "do": "move", "id": "golova", "along": "put", "dur": 8, "orient": true, "ease": "linear" },
+      { "t": 15, "do": "camera", "pos": [-30, 230, -170], "look": [-10, 80, -30], "dur": 8 },
+      { "t": 23, "do": "count", "text": "Дошла!", "small": "полигон Кура, Камчатка" }, { "t": 23, "do": "sound", "kind": "signal" },
+      { "t": 23, "do": "say", "text": "21 августа 1957 года головная часть дошла до Камчатки.", "cls": "ok" },
+      { "t": 26, "do": "end" }
+    ]
+  },
+  "igra": {
+    "title": "Мини-игра: как собрать ракету",
+    "button": "Пуск",
+    "choices": [
+      { "id": "shema", "label": "Как собрать", "options": [
+        { "id": "paket", "label": "Пакетом" },
+        { "id": "bashnya", "label": "Без боковых блоков", "setup": [{ "do": "hide", "id": "bok" }] } ] }
+    ],
+    "outcomes": [
+      { "id": "ok", "when": { "shema": "paket" }, "result": "ok", "title": "Ушла!", "text": "Пакет поднялся: все двигатели зажжены на земле.",
+        "timeline": [ { "t": 0, "do": "emit", "id": ["fakel", "fakelC"], "level": 1, "dur": 0.5 }, { "t": 0, "do": "sound", "kind": "roar", "level": 1 },
+          { "t": 1, "do": "move", "id": "raketa", "by": [0, 120, 0], "dur": 5, "ease": "in" }, { "t": 1, "do": "camera", "follow": "raketa", "lookOffset": [0, 10, 0] }, { "t": 6.5, "do": "end" } ] },
+      { "id": "slabo", "when": { "shema": "bashnya" }, "result": "fail", "reason": "tyaga", "title": "Не взлетела", "text": "Одного блока мало: тяги не хватает.",
+        "hint": "Что сделать сейчас: выбери «Пакетом».",
+        "timeline": [ { "t": 0, "do": "emit", "id": "fakelC", "level": 1, "dur": 0.5 }, { "t": 2, "do": "emit", "kind": "explosion", "on": "centr", "offset": [0, 5, 0] },
+          { "t": 2, "do": "hide", "id": "raketa" }, { "t": 2, "do": "stop", "id": "fakelC" }, { "t": 2, "do": "debris", "on": "centr", "offset": [0, 5, 0], "from": "centr", "n": 10 }, { "t": 5, "do": "end" } ] }
+    ],
+    "rules": { "zachem": "Проба движка.", "shagi": ["**Выбери.** Как собрать.", "**Нажми «Пуск».** Смотри."], "oshibki": ["Без боковых блоков тяги мало."], "povtor": "Нажми «Начать заново».", "final": "Верно — пакет." }
+  }
+}
