@@ -11,21 +11,26 @@ from lib import *
 
 reset(); random.seed(7)
 
-# Металл: Poly Haven «metal_plate» (CC0, 1k) — некрашеная жесть/сталь, тёплый серый; цвет РК-1 в материалах
-# проекта не указан, поэтому краска не выдумывается. Износ по рёбрам — маска (pointiness + AO) запекается в текстуру.
-def metal_mat(name, tint=(1.0, 0.96, 0.9)):
-    m = mat(name, rough=0.6, metal=0.85, tex='metal_plate_diff_1k.png', tile=0.35)
+# Металл: Poly Haven «rusty_metal_sheet» (CC0, 1k, Amal Kumar) — у Poly Haven нет чистой гладкой жести, поэтому
+# от текстуры берётся только шершавость и нормаль (микрорельеф листа), а цвет — ровный некрашеный серый металл
+# с 12% обесцвеченного снимка (лёгкая неоднородность без ржавчины и рисунка). Цвет РК-1 в материалах проекта не указан.
+MT = 'rusty_metal_sheet'
+def metal_mat(name, tint=(0.56, 0.55, 0.52)):
+    m = mat(name, rough=0.45, metal=0.9, tex=MT + '_diff_1k.png', normal=MT + '_nor_gl_1k.png', nstr=0.25, tile=0.5)
     nt = m.node_tree; bsdf = nt.nodes['Principled BSDF']
-    r = nt.nodes.new('ShaderNodeTexImage'); r.image = bpy.data.images.load(os.path.join(TEX, 'metal_plate_rough_1k.png'), check_existing=True)
-    r.image.colorspace_settings.name = 'Non-Color'; nt.links.new(r.outputs['Color'], bsdf.inputs['Roughness'])
-    tex = [n for n in nt.nodes if n.type == 'TEX_IMAGE' and n.image.name.startswith('metal_plate_diff')][0]
-    mul = nt.nodes.new('ShaderNodeMix'); mul.data_type = 'RGBA'; mul.blend_type = 'MULTIPLY'; mul.inputs[0].default_value = 1
-    nt.links.new(tex.outputs['Color'], mul.inputs[6]); mul.inputs[7].default_value = (*tint, 1)
-    nt.links.new(mul.outputs[2], bsdf.inputs['Base Color'])
+    r = nt.nodes.new('ShaderNodeTexImage'); r.image = bpy.data.images.load(os.path.join(TEX, MT + '_rough_1k.png'), check_existing=True)
+    r.image.colorspace_settings.name = 'Non-Color'
+    rr = nt.nodes.new('ShaderNodeMapRange'); rr.inputs[3].default_value = 0.32; rr.inputs[4].default_value = 0.55
+    nt.links.new(r.outputs['Color'], rr.inputs[0]); nt.links.new(rr.outputs[0], bsdf.inputs['Roughness'])
+    tex = [n for n in nt.nodes if n.type == 'TEX_IMAGE' and n.image.name.startswith(MT + '_diff')][0]
+    hsv = nt.nodes.new('ShaderNodeHueSaturation'); hsv.inputs['Saturation'].default_value = 0.0
+    nt.links.new(tex.outputs['Color'], hsv.inputs['Color'])
+    mix = nt.nodes.new('ShaderNodeMix'); mix.data_type = 'RGBA'; mix.blend_type = 'OVERLAY'; mix.inputs[0].default_value = 0.12
+    mix.inputs[6].default_value = (*tint, 1); nt.links.new(hsv.outputs['Color'], mix.inputs[7])
+    nt.links.new(mix.outputs[2], bsdf.inputs['Base Color'])
     return m
 
 KR = metal_mat('metall_rk1')
-KRI = mat('metall_vnutri', color=hexc('#77736c'), rough=0.7, metal=0.6)
 ZAK = mat('zaklepka', color=hexc('#a7a49c'), rough=0.35, metal=1.0)
 LAT = mat('pryazhka_stal', color=hexc('#b8b4aa'), rough=0.3, metal=1.0)
 KOZ = mat('kozha_lyamok', rough=0.7, tex='kozha.png', normal='kozha_n.png', nstr=1.0, tile=0.25)
@@ -49,21 +54,21 @@ def bake_wear(ob, size=1024):
         for n in nt.nodes:
             if n.type == 'TEX_IMAGE': nt.links.new(uvn.outputs['UV'], n.inputs['Vector'])
         if m == KR:
-            geo = nt.nodes.new('ShaderNodeNewGeometry'); ao = nt.nodes.new('ShaderNodeAmbientOcclusion'); ao.inputs['Distance'].default_value = 0.03
-            nz = nt.nodes.new('ShaderNodeTexNoise'); nz.inputs['Scale'].default_value = 60; nz.inputs['Detail'].default_value = 8
+            geo = nt.nodes.new('ShaderNodeNewGeometry'); ao = nt.nodes.new('ShaderNodeAmbientOcclusion'); ao.inputs['Distance'].default_value = 0.015
+            nz = nt.nodes.new('ShaderNodeTexNoise'); nz.inputs['Scale'].default_value = 6; nz.inputs['Detail'].default_value = 2
             # кромка: pointiness > 0.5 → 1, плюс шум рвёт кромку
-            pr = nt.nodes.new('ShaderNodeMapRange'); pr.inputs[1].default_value = 0.62; pr.inputs[2].default_value = 0.72
+            pr = nt.nodes.new('ShaderNodeMapRange'); pr.inputs[1].default_value = 0.70; pr.inputs[2].default_value = 0.76
             nt.links.new(geo.outputs['Pointiness'], pr.inputs[0])
             nm = nt.nodes.new('ShaderNodeMath'); nm.operation = 'MULTIPLY'; nt.links.new(pr.outputs[0], nm.inputs[0])
-            nr = nt.nodes.new('ShaderNodeMapRange'); nr.inputs[1].default_value = 0.42; nr.inputs[2].default_value = 0.58
+            nr = nt.nodes.new('ShaderNodeMapRange'); nr.inputs[1].default_value = 0.30; nr.inputs[2].default_value = 0.60; nr.inputs[3].default_value = 0.5
             nt.links.new(nz.outputs['Fac'], nr.inputs[0]); nt.links.new(nr.outputs[0], nm.inputs[1])
             # в углах (низкий AO) — грязь
             dirt = nt.nodes.new('ShaderNodeMix'); dirt.data_type = 'RGBA'; dirt.blend_type = 'MULTIPLY'
-            ai = nt.nodes.new('ShaderNodeMapRange'); ai.inputs[1].default_value = 0.4; ai.inputs[2].default_value = 1.0; ai.inputs[3].default_value = 0.55; ai.inputs[4].default_value = 1.0
+            ai = nt.nodes.new('ShaderNodeMapRange'); ai.inputs[1].default_value = 0.25; ai.inputs[2].default_value = 0.7; ai.inputs[3].default_value = 0.72; ai.inputs[4].default_value = 1.0
             nt.links.new(ao.outputs['AO'], ai.inputs[0])
             nt.links.new(src, dirt.inputs[6]); nt.links.new(ai.outputs[0], dirt.inputs[7]); dirt.inputs[0].default_value = 1
             wear = nt.nodes.new('ShaderNodeMix'); wear.data_type = 'RGBA'
-            nt.links.new(nm.outputs[0], wear.inputs[0]); nt.links.new(dirt.outputs[2], wear.inputs[6]); wear.inputs[7].default_value = (0.78, 0.76, 0.72, 1)
+            nt.links.new(nm.outputs[0], wear.inputs[0]); nt.links.new(dirt.outputs[2], wear.inputs[6]); wear.inputs[7].default_value = (0.74, 0.73, 0.70, 1)
             nt.links.new(wear.outputs[2], em.inputs['Color'])
         elif src: nt.links.new(src, em.inputs['Color'])
         else: em.inputs['Color'].default_value = bc.default_value
@@ -126,10 +131,10 @@ for s in (-1, 1):
     B.box((s * (W / 2 - 0.004), 0, -Dp / 2 + 0.003), (0.012, H, 0.006), KR)
     B.box((0, s * (H / 2 - 0.004), -Dp / 2 + 0.003), (W, 0.012, 0.006), KR)
 # внутри: полка и упоры пружин (сами пружины — объект 'pruzhina' сцены)
-B.box((0, -0.01, -0.005), (W - 2 * t, 0.008, Dp - 2 * t), KRI)
+B.box((0, -0.01, -0.005), (W - 2 * t, 0.008, Dp - 2 * t), KR)
 for x in (-0.07, 0.07):
-    for y in (0.06, -0.08): B.cyl(V(x, y, Dp / 2 - t), V(x, y, Dp / 2 - t - 0.006), 0.026, KRI, sides=12)
-B.box((0, 0, Dp / 2 - t - 0.001), (W - 2 * t, H - 2 * t, 0.002), KRI)
+    for y in (0.06, -0.08): B.cyl(V(x, y, Dp / 2 - t), V(x, y, Dp / 2 - t - 0.006), 0.026, KR, sides=12)
+B.box((0, 0, Dp / 2 - t - 0.001), (W - 2 * t, H - 2 * t, 0.002), KR)
 # заклёпки по боковинам и верху/низу (видны снаружи и сзади)
 for s in (-1, 1):
     for y in np.linspace(-0.17, 0.17, 7): B.sphere((s * (W / 2 + 0.0005), y, -0.045), 0.0055, ZAK, 8, 5, (0.5, 1, 1)); B.sphere((s * (W / 2 + 0.0005), y, 0.045), 0.0055, ZAK, 8, 5, (0.5, 1, 1))
