@@ -1,7 +1,8 @@
 # Сценарий дня «Котельников, РК-1» для движка rc3d. Скрипт только собирает JSON (данные), без кода движка.
 import json, copy
 
-OUT = '/home/agent/worktrees/claude2-r7-3d/public/muzei/izobreteniya/igry/rc3d/scen/kotelnikov-parashyut.json'
+import os
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../public/muzei/izobreteniya/igry/rc3d/scen/kotelnikov-parashyut.json')
 SILK, LINEN = 'fabric:#f3ecd8', 'fabric:#c2b28c'
 LEATHER = 'paint:#4a2f1f'
 RANEC = {'kind': 'metal', 'color': '#8d9399', 'rough': 0.55}
@@ -69,8 +70,9 @@ zastavka_objects = [
     {'id': 'verevka', 'type': 'cylinder', 'parent': 'shar', 'anchor': 'base', 'r': 0.012, 'h': 2.72, 'pos': [0, 1.48, 0], 'mat': 'paint:#6b5f4a'},
     {'id': 'tros', 'type': 'cylinder', 'anchor': 'base', 'r': 0.014, 'h': 4.6, 'pos': [0.55, 0, 0.1], 'mat': 'dark'},
     {'id': 'lebedka', 'type': 'box', 'size': [1.2, 0.7, 0.9], 'pos': [0.9, 0.35, 0.6], 'mat': 'paint:#3e4a3a'},
-    {'id': 'kotelnikov', 'type': 'person', 'pos': [0.45, 0, -0.85], 'rot': [0, -25, 0], 'pose': 'arms-forward', 'coat': 'fabric:#46503e', 'pants': 'fabric:#2f332c', 'hat': 'cap', 'hatColor': '#2f3a2c', 'beard': '#5b4a3a'},
-    {'id': 'lyudi', 'type': 'person', 'copies': {'at': [[-12, 0, 8], [-13.5, 0, 10], [-11, 0, 11.5], [-14.5, 0, 7], [-10, 0, 9.5], [-12.5, 0, 12.5]]}, 'rot': [0, 60, 0], 'coat': 'fabric:#4d5643', 'pants': 'fabric:#2b2e28', 'hat': 'cap'},
+    # Люди — готовая модель Quaternius (CC0), не фигуры из цилиндров.
+    {'id': 'kotelnikov', 'type': 'model', 'src': 'models/chelovek-1912.glb', 'pos': [0.45, 0, -0.85], 'rot': [0, -25, 0], 'pose': 'arms-forward'},
+    {'id': 'lyudi', 'type': 'model', 'src': 'models/chelovek-1912.glb', 'copies': {'at': [[-12, 0, 8], [-13.5, 0, 10], [-11, 0, 11.5], [-14.5, 0, 7], [-10, 0, 9.5], [-12.5, 0, 12.5]]}, 'rot': [0, 60, 0], 'pose': 'stand'},
     {'id': 'avto', 'type': 'group', 'pos': [-16, 0, -5], 'rot': [0, 25, 0],
      'parts': [{'type': 'box', 'size': [3.2, 0.7, 1.5], 'pos': [0, 0.85, 0], 'mat': 'paint:#2e3a2c'}, {'type': 'box', 'size': [1.1, 0.55, 1.3], 'pos': [1.1, 1.45, 0], 'mat': 'paint:#2e3a2c'},
                {'type': 'box', 'size': [0.9, 0.6, 1.4], 'pos': [-0.7, 1.45, 0], 'mat': 'paint:#4a2f22'},
@@ -154,7 +156,7 @@ igra_objects = [
     {'id': 'samolet', 'type': 'group', 'pos': [-6, 1.4, 7], 'rot': [0, 160, 0]},
     # Аэроплан «Фарман IV» (1909–1910): модели tools/rc3d-blender/aeroplan.py, по glb на каждый узел разлома.
     {'id': 'fuzelyazh', 'type': 'group', 'parent': 'samolet',
-     'parts': [{'type': 'model', 'src': 'models/aeroplan-fuzelyazh.glb'},
+     'parts': [{'id': 'aeroplan', 'type': 'model', 'src': 'models/aeroplan-fuzelyazh.glb'},
                {'id': 'vint', 'type': 'model', 'src': 'models/aeroplan-vint.glb', 'pos': [-2.59, 0.28, 0]}]},
     {'id': 'zont', 'type': 'cylinder', 'parent': 'fuzelyazh', 'r': 0.125, 'h': 1.5, 'rot': [0, 0, 90], 'pos': [-1.4, 0.48, 0], 'mat': 'fabric:#d8cdb2', 'hidden': True},
     {'id': 'shnur', 'type': 'tube', 'parent': 'fuzelyazh', 'points': [[-0.65, 0.48, 0], [-0.6, 0.7, 0.1], [-0.55, 0.45, 0.15]], 'r': 0.01, 'mat': 'paint:#6b5f4a', 'hidden': True},
@@ -387,9 +389,16 @@ choices = [
 sc = {
     'id': 'kotelnikov-parashyut',
     'title': 'Котельников: первый в мире авиационный ранцевый парашют РК-1',
+    # Главные объекты дня — только готовые модели glTF (проверка tools/rc3d-proverka краснеет на фигурах из примитивов).
+    'glavnye': ['ranec', 'kryshka', 'chelovek', 'aeroplan', 'kotelnikov'],
     'istochniki': 'Опыт: 3D-заставка и игра по фактам дня. Размеры ранца и купола условные, высота и время на сцене сжаты. Купол из 24 клиньев, стальной тросик в кромке, 24 стропы двумя группами к плечам, ранец на спине, испытание с аэростата на 200 метров у Салюзи под Гатчиной в 1912 году — Президентская библиотека, «Ростех», История.РФ, УрФУ, «Коммерсантъ. Наука», «Гатчина-инфо». Реплики в заставке стилизованы.',
-    'env': {'sky': 'day', 'ground': 'field', 'size': 900, 'fog': [140, 900], 'clouds': 12, 'shadow': 22, 'sun': [0.5, 0.55, -0.6], 'groundTex': 'tex/grass004', 'groundTile': 3, 'groundTex2': 'tex/ground037', 'groundMix': 0.35, 'groundMacro': 0.3,
-            'grass': {'n': 7000, 'areas': [[0, 0, 10], [0, 0, 22], [0, 0, 40]], 'h': 0.3, 'base': '#33401a', 'tip': '#b0a85e'}},
+    # Небо — HDRI Poly Haven (свет и солнце из неё, резкий фон 4K-JPG), земля — аэросъёмка Poly Haven aerial_* двумя текстурами
+    # с макро-маской из той же текстуры, вдали — та же текстура крупнее; дымка к горизонту экспоненциальная.
+    'env': {'sky': 'day', 'ground': 'field', 'size': 12000, 'fogDensity': 0.0006, 'shadow': 22,
+            'hdri': 'sky/kloofendal_48d_1k.hdr', 'background': 'sky/kloofendal_48d_bg.jpg', 'bgFloor': 0.012, 'exposure': 1.0, 'envIntensity': 1.0, 'sunI': 3.0,
+            'groundTex': 'tex/aerial_grass_rock', 'groundRes': {'diffuse': '2k'}, 'groundTile': 22, 'groundTex2': 'tex/aerial_ground_rock', 'groundRes2': '2k', 'groundTile2K': 0.8,
+            'groundMix': 0.75, 'groundMacro': 0.6, 'groundMaskTile': 520, 'groundFar': [40, 450, 0.65], 'groundColor': '#dcefb8',
+            'grass': {'n': 7000, 'areas': [[0, 0, 10], [0, 0, 22], [0, 0, 40]], 'h': 0.3, 'base': '#4f5f26', 'tip': '#c7c07a'}},
     'camera': {'pos': [1.6, 1.8, -2.4], 'look': [0, 1.25, -0.2], 'min': 0.6, 'max': 260, 'fov': 42},
     'objects': objects,
     'zastavka': {

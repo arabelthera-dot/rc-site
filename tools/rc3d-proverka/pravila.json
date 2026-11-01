@@ -1,8 +1,8 @@
 {
- "_": "Правила вида 3D-игр rc3d. Главные объекты — временно здесь; целевая схема — поле \"glavnye\": [id…] в корне сцены или \"glavnyy\": true у объекта (проверка читает все три источника).",
+ "_": "Правила вида 3D-игр rc3d. Главные объекты сцены — поле \"glavnye\": [id…] в корне сцены (или \"glavnyy\": true у объекта); здесь — только для сцен, где его ещё нет (проверка читает все три источника).",
  "byudzhet": {
   "ves_mb": 15,
-  "fps_min": 18,
+  "fps_min": 30,
   "oshibki_konsoli": 0
  },
  "snimki": {
@@ -29,14 +29,6 @@
   "torus"
  ],
  "glavnye": {
-  "kotelnikov-parashyut": [
-   "kotelnikov",
-   "chelovek",
-   "ranec",
-   "samolet",
-   "les",
-   "shar"
-  ],
   "shukhov-nefteprovod": [
    "shuhov",
    "vyshka",
