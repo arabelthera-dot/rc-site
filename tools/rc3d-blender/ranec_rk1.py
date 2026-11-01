@@ -15,12 +15,12 @@ reset(); random.seed(7)
 # от текстуры берётся только шершавость и нормаль (микрорельеф листа), а цвет — ровный некрашеный серый металл
 # с 12% обесцвеченного снимка (лёгкая неоднородность без ржавчины и рисунка). Цвет РК-1 в материалах проекта не указан.
 MT = 'rusty_metal_sheet'
-def metal_mat(name, tint=(0.56, 0.55, 0.52)):
-    m = mat(name, rough=0.45, metal=0.9, tex=MT + '_diff_1k.png', normal=MT + '_nor_gl_1k.png', nstr=0.25, tile=0.5)
+def metal_mat(name, tint=(0.30, 0.31, 0.33)):   # тёмная сталь (было 0.56 — светлый алюминий)
+    m = mat(name, rough=0.28, metal=0.9, tex=MT + '_diff_1k.png', normal=MT + '_nor_gl_1k.png', nstr=0.25, tile=0.5)
     nt = m.node_tree; bsdf = nt.nodes['Principled BSDF']
     r = nt.nodes.new('ShaderNodeTexImage'); r.image = bpy.data.images.load(os.path.join(TEX, MT + '_rough_1k.png'), check_existing=True)
     r.image.colorspace_settings.name = 'Non-Color'
-    rr = nt.nodes.new('ShaderNodeMapRange'); rr.inputs[3].default_value = 0.32; rr.inputs[4].default_value = 0.55
+    rr = nt.nodes.new('ShaderNodeMapRange'); rr.inputs[3].default_value = 0.16; rr.inputs[4].default_value = 0.34
     nt.links.new(r.outputs['Color'], rr.inputs[0]); nt.links.new(rr.outputs[0], bsdf.inputs['Roughness'])
     tex = [n for n in nt.nodes if n.type == 'TEX_IMAGE' and n.image.name.startswith(MT + '_diff')][0]
     hsv = nt.nodes.new('ShaderNodeHueSaturation'); hsv.inputs['Saturation'].default_value = 0.0
@@ -57,10 +57,10 @@ def bake_wear(ob, size=1024):
             geo = nt.nodes.new('ShaderNodeNewGeometry'); ao = nt.nodes.new('ShaderNodeAmbientOcclusion'); ao.inputs['Distance'].default_value = 0.015
             nz = nt.nodes.new('ShaderNodeTexNoise'); nz.inputs['Scale'].default_value = 6; nz.inputs['Detail'].default_value = 2
             # кромка: pointiness > 0.5 → 1, плюс шум рвёт кромку
-            pr = nt.nodes.new('ShaderNodeMapRange'); pr.inputs[1].default_value = 0.70; pr.inputs[2].default_value = 0.76
+            pr = nt.nodes.new('ShaderNodeMapRange'); pr.inputs[1].default_value = 0.66; pr.inputs[2].default_value = 0.72
             nt.links.new(geo.outputs['Pointiness'], pr.inputs[0])
             nm = nt.nodes.new('ShaderNodeMath'); nm.operation = 'MULTIPLY'; nt.links.new(pr.outputs[0], nm.inputs[0])
-            nr = nt.nodes.new('ShaderNodeMapRange'); nr.inputs[1].default_value = 0.30; nr.inputs[2].default_value = 0.60; nr.inputs[3].default_value = 0.5
+            nr = nt.nodes.new('ShaderNodeMapRange'); nr.inputs[1].default_value = 0.30; nr.inputs[2].default_value = 0.60; nr.inputs[3].default_value = 0.75
             nt.links.new(nz.outputs['Fac'], nr.inputs[0]); nt.links.new(nr.outputs[0], nm.inputs[1])
             # в углах (низкий AO) — грязь
             dirt = nt.nodes.new('ShaderNodeMix'); dirt.data_type = 'RGBA'; dirt.blend_type = 'MULTIPLY'
@@ -68,7 +68,7 @@ def bake_wear(ob, size=1024):
             nt.links.new(ao.outputs['AO'], ai.inputs[0])
             nt.links.new(src, dirt.inputs[6]); nt.links.new(ai.outputs[0], dirt.inputs[7]); dirt.inputs[0].default_value = 1
             wear = nt.nodes.new('ShaderNodeMix'); wear.data_type = 'RGBA'
-            nt.links.new(nm.outputs[0], wear.inputs[0]); nt.links.new(dirt.outputs[2], wear.inputs[6]); wear.inputs[7].default_value = (0.74, 0.73, 0.70, 1)
+            nt.links.new(nm.outputs[0], wear.inputs[0]); nt.links.new(dirt.outputs[2], wear.inputs[6]); wear.inputs[7].default_value = (0.86, 0.85, 0.82, 1)
             nt.links.new(wear.outputs[2], em.inputs['Color'])
         elif src: nt.links.new(src, em.inputs['Color'])
         else: em.inputs['Color'].default_value = bc.default_value
@@ -120,12 +120,14 @@ def pryazhka(B, c, t, side, w, m=LAT):
 
 # ── Корпус: лоток, открытый в сторону −Z (наружу от спины), крышка закрывает −Z ──
 B = Builder(); W, H, Dp, t, r = 0.30, 0.40, 0.15, 0.012, 0.022
-B.rbox((0, 0, Dp / 2 - t / 2), (W, H, t), KR, rad=0.006)                       # спинка (к лётчику)
+# стенки короче на радиус угла: углы — гладкие цилиндры (32 грани), спинка — пластина со скруглёнными углами, щелей нет
+B.box((0, 0, Dp / 2 - t / 2), (W - 2 * r, H, t), KR)                          # спинка (к лётчику): середина + две полосы,
+for s in (-1, 1): B.box((s * (W / 2 - r / 2), 0, Dp / 2 - t / 2), (r, H - 2 * r, t), KR)   # без наложения граней
 for s in (-1, 1):
-    B.rbox((s * (W / 2 - t / 2), 0, 0), (t, H, Dp), KR, rad=0.006)             # боковины
-    B.rbox((0, s * (H / 2 - t / 2), 0), (W, t, Dp), KR, rad=0.006)             # верх/низ
+    B.box((s * (W / 2 - t / 2), 0, 0), (t, H - 2 * r, Dp), KR)             # боковины
+    B.box((0, s * (H / 2 - t / 2), 0), (W - 2 * r, t, Dp), KR)             # верх/низ
 for s in (-1, 1):
-    for sy in (-1, 1): B.cyl(V(s * (W / 2 - r), sy * (H / 2 - r), -Dp / 2), V(s * (W / 2 - r), sy * (H / 2 - r), Dp / 2), r, KR, sides=12)  # скругление вертикальных рёбер
+    for sy in (-1, 1): B.cyl(V(s * (W / 2 - r), sy * (H / 2 - r), -Dp / 2), V(s * (W / 2 - r), sy * (H / 2 - r), Dp / 2), r, KR, sides=32)  # скруглённые вертикальные рёбра
 # отбортовка по краю проёма
 for s in (-1, 1):
     B.box((s * (W / 2 - 0.004), 0, -Dp / 2 + 0.003), (0.012, H, 0.006), KR)
@@ -153,7 +155,7 @@ for s in (-1, 1):
     xb = s * (W / 2 + 0.003)
     remen(B, [(xb, -0.15, -0.03), (xb, -0.15, Dp / 2), (xb + s * 0.01, -0.15, Dp / 2 + 0.04), (xb + s * 0.005, -0.15, Dp / 2 + 0.10)], (0, 1, 0), 0.036, 0.005, KOZ)
     pryazhka(B, (xb + s * 0.004, -0.15, -0.005), (0, 0, 1), (0, 1, 0), 0.036)
-korpus = B.object('ranec_rk1', smooth_angle=40)
+korpus = B.object('ranec_rk1', smooth_angle=30)
 bake_wear(korpus)
 export([korpus], 'ranec-rk1')
 
