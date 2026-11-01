@@ -182,6 +182,17 @@ jobs:
       # из собранного 01-13. Исключений нет. Откат — удалить этот шаг и tests/vid-dnya.mjs.
       - name: vid-dnya — дни изобретений в виде 13 января
         run: node tests/vid-dnya.mjs dist
+      # Кадры дня — разные (Сергей 01.11, Р408; museum-page-production п. 2-тер; r534): для каждой страницы den/ всех музеев —
+      # кадры тела, повторы по pHash (Хэмминг ≤ 8), доля портретов (лицо по каскаду Хаара OpenCV или «портрет» в alt).
+      # Только отчёт: шаг не роняет заявку (правило «новых замков нет»). Стоит здесь, а не в задании tablicy:
+      # ему нужна собранная dist, tablicy сборку не делает. Откат — удалить этот шаг и tools/kadry-povtory.py.
+      - name: kadry-povtory — разные кадры дня (только отчёт)
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 5
+        run: |
+          python3 -m venv /tmp/kp && /tmp/kp/bin/pip install -q --disable-pip-version-check pillow imagehash 'opencv-python-headless==4.10.0.84' || true
+          /tmp/kp/bin/python tools/kadry-povtory.py dist --svod "$GITHUB_STEP_SUMMARY" || true
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
