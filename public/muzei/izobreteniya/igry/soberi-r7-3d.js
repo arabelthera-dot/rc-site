@@ -8,6 +8,7 @@
   var root = document.getElementById('r3'); if (!root) return;
   var $ = function(id){ return document.getElementById(id); };
   var base = document.currentScript.src.replace(/[^\/]*$/, '') + 'soberi-r7-3d/';
+  var VER = (document.currentScript.src.split('?')[1] || '').replace(/[^\w=&.-]/g, '');
   var RAZMER = 834150;   // байт в scena.js без сжатия — ставит сборка (Content-Length при gzip — сжатый)
   var stage = $('r3Stage'), video = $('r3Video'), started = false;
   var conn = navigator.connection || {};
@@ -74,7 +75,7 @@
     root.setAttribute('data-sostoyanie', 'gruzit');
     $('r3Run').parentNode.hidden = true; $('r3Slab').hidden = true; $('r3Load').hidden = false; proc(0);
     $('r3Hint').textContent = 'Загружаю 3D-сцену…';
-    var url = base + 'scena.js';
+    var url = base + 'scena.js' + (VER ? '?' + VER : '');   // версия загрузчика — чтобы после выкладки не взялась старая сцена из кеша (max-age 7 дней)
     skachat(url).then(function(){ return import(url); })
       .then(function(m){ proc(100); return m.zapusk(root, base); })
       .then(function(){ $('r3Load').hidden = true; })
@@ -85,7 +86,7 @@
     var slab = (navigator.deviceMemory && navigator.deviceMemory <= 2) || conn.saveData;
     if (slab) {
       root.setAttribute('data-sostoyanie', 'slab');
-      $('r3Run').parentNode.hidden = true; $('r3Slab').hidden = false;
+      $('r3Run').parentNode.hidden = true; $('r3Slab').hidden = false; $('r3Hint').textContent = '';
       $('r3Msg').textContent = 'Выбери: игра без 3D ниже или 3D-сцена.';
       return;
     }
