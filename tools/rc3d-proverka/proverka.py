@@ -32,10 +32,18 @@ SCEN = PUBLIC / 'muzei/izobreteniya/igry/rc3d/scen'
 ETALONY, VYHOD = TUT / 'etalony', TUT / 'vyhod'
 P = json.loads((TUT / 'pravila.json').read_text())
 HOME = os.path.expanduser('~')
-ENV = dict(os.environ,
-           LD_LIBRARY_PATH=f'{HOME}/opt/root/usr/lib/x86_64-linux-gnu:{HOME}/opt/root/lib/x86_64-linux-gnu',
-           PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS='1', FONTCONFIG_FILE=f'{HOME}/opt/fonts.conf')
-ENV.setdefault('CH', f'{HOME}/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell')
+# Библиотеки и шрифты: дописываем к окружению машины (не затираем), chromium — первый найденный headless shell.
+LD = ':'.join(x for x in [os.environ.get('LD_LIBRARY_PATH', ''), f'{HOME}/opt/root/usr/lib/x86_64-linux-gnu', f'{HOME}/opt/root/lib/x86_64-linux-gnu'] if x)
+ENV = dict(os.environ, LD_LIBRARY_PATH=LD, PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS='1')
+if os.path.isfile(f'{HOME}/opt/fonts.conf'):
+    ENV.setdefault('FONTCONFIG_FILE', f'{HOME}/opt/fonts.conf')
+if 'CH' not in ENV:
+    for c in (f'{HOME}/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell',
+              f'{HOME}/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell',
+              f'{HOME}/.cache/ms-playwright/chromium_headless_shell-1193/chrome-linux/headless_shell'):
+        if os.path.isfile(c):
+            ENV['CH'] = c
+            break
 
 
 # ── 1. Правило сцены ──
@@ -236,7 +244,8 @@ def main(a):
             odobrit(s)
         return 0
     snimki = '--bez-snimkov' not in a
-    imena = [x for x in a if not x.startswith('--')] or list(P['glavnye']) + [x for x in P.get('proba', {}) if x not in P['glavnye']]
+    svoi = sorted(f.stem for f in SCEN.glob('*.json') if 'glavnye' in json.loads(f.read_text()))   # сцены с полем glavnye в json
+    imena = [x for x in a if not x.startswith('--')] or list(dict.fromkeys(list(P['glavnye']) + svoi + list(P.get('proba', {}))))
     VYHOD.mkdir(exist_ok=True)
     scenes = []
     for s in imena:
