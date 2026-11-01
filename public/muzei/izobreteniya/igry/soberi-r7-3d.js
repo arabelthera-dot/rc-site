@@ -90,6 +90,7 @@
         root.setAttribute('data-sostoyanie', 'oshibka');
         $('r3Load').hidden = true; $('r3Run').textContent = 'Попробовать ещё раз'; $('r3Run').parentNode.hidden = false;
         $('r3Hint').textContent = '3D-сцена не загрузилась — проверь связь и попробуй ещё раз. Та же игра без 3D — ниже.';
+        $('r3Msg').textContent = 'Нажми «Попробовать ещё раз» или сыграй в 2D ниже.';
       });
   }
   $('r3Run').addEventListener('click', function(){
