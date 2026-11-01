@@ -152,21 +152,16 @@ Z = [
 # ── Игра ──
 igra_objects = [
     {'id': 'samolet', 'type': 'group', 'pos': [-6, 1.4, 7], 'rot': [0, 160, 0]},
+    # Аэроплан «Фарман IV» (1909–1910): модели tools/rc3d-blender/aeroplan.py, по glb на каждый узел разлома.
     {'id': 'fuzelyazh', 'type': 'group', 'parent': 'samolet',
-     'parts': [{'type': 'box', 'size': [5.6, 0.7, 0.7], 'mat': 'fabric:#e3d6b6'}, {'type': 'box', 'size': [0.8, 0.9, 0.05], 'pos': [-2.6, 0.6, 0], 'mat': 'fabric:#e3d6b6'},
-               {'type': 'box', 'size': [0.9, 0.05, 2.4], 'pos': [-2.5, 0.2, 0], 'mat': 'fabric:#e3d6b6'},
-               {'type': 'cylinder', 'r': 0.36, 'h': 0.5, 'rot': [0, 0, 90], 'pos': [2.95, 0, 0], 'mat': 'dark'},
-               {'id': 'vint', 'type': 'box', 'size': [0.06, 2.3, 0.14], 'pos': [3.25, 0, 0], 'mat': 'wood'},
-               {'type': 'cylinder', 'r': 0.04, 'h': 1.0, 'pos': [1.2, -0.75, 0.5], 'rot': [20, 0, 0], 'mat': 'wood'}, {'type': 'cylinder', 'r': 0.04, 'h': 1.0, 'pos': [1.2, -0.75, -0.5], 'rot': [-20, 0, 0], 'mat': 'wood'},
-               {'type': 'cylinder', 'r': 0.32, 'h': 0.1, 'rot': [90, 0, 0], 'pos': [1.2, -1.08, 0.72], 'mat': 'rubber'}, {'type': 'cylinder', 'r': 0.32, 'h': 0.1, 'rot': [90, 0, 0], 'pos': [1.2, -1.08, -0.72], 'mat': 'rubber'}]},
+     'parts': [{'type': 'model', 'src': 'models/aeroplan-fuzelyazh.glb'},
+               {'id': 'vint', 'type': 'model', 'src': 'models/aeroplan-vint.glb', 'pos': [-2.59, 0.28, 0]}]},
     {'id': 'zont', 'type': 'cylinder', 'parent': 'fuzelyazh', 'r': 0.125, 'h': 1.5, 'rot': [0, 0, 90], 'pos': [-1.4, 0.48, 0], 'mat': 'fabric:#d8cdb2', 'hidden': True},
     {'id': 'shnur', 'type': 'tube', 'parent': 'fuzelyazh', 'points': [[-0.65, 0.48, 0], [-0.6, 0.7, 0.1], [-0.55, 0.45, 0.15]], 'r': 0.01, 'mat': 'paint:#6b5f4a', 'hidden': True},
-    {'id': 'kryloVL', 'type': 'box', 'parent': 'samolet', 'size': [1.6, 0.07, 4.8], 'pos': [0.6, 1.0, 2.5], 'mat': 'fabric:#e8dcc0',
-     'parts': [{'type': 'cylinder', 'r': 0.03, 'h': 1.45, 'pos': [0.5, -0.72, 0.6], 'mat': 'wood'}, {'type': 'cylinder', 'r': 0.03, 'h': 1.45, 'pos': [-0.5, -0.72, 0.6], 'mat': 'wood'}]},
-    {'id': 'kryloVR', 'type': 'box', 'parent': 'samolet', 'size': [1.6, 0.07, 4.8], 'pos': [0.6, 1.0, -2.5], 'mat': 'fabric:#e8dcc0',
-     'parts': [{'type': 'cylinder', 'r': 0.03, 'h': 1.45, 'pos': [0.5, -0.72, -0.6], 'mat': 'wood'}, {'type': 'cylinder', 'r': 0.03, 'h': 1.45, 'pos': [-0.5, -0.72, -0.6], 'mat': 'wood'}]},
-    {'id': 'kryloNL', 'type': 'box', 'parent': 'samolet', 'size': [1.4, 0.07, 4.4], 'pos': [0.6, -0.45, 2.4], 'mat': 'fabric:#e8dcc0'},
-    {'id': 'kryloNR', 'type': 'box', 'parent': 'samolet', 'size': [1.4, 0.07, 4.4], 'pos': [0.6, -0.45, -2.4], 'mat': 'fabric:#e8dcc0'},
+    {'id': 'kryloVL', 'type': 'group', 'parent': 'samolet', 'pos': [-1.3, 1.0, 2.6], 'parts': [{'type': 'model', 'src': 'models/aeroplan-krylo-vl.glb'}]},
+    {'id': 'kryloVR', 'type': 'group', 'parent': 'samolet', 'pos': [-1.3, 1.0, -2.6], 'parts': [{'type': 'model', 'src': 'models/aeroplan-krylo-vr.glb'}]},
+    {'id': 'kryloNL', 'type': 'group', 'parent': 'samolet', 'pos': [-1.3, -0.45, 2.45], 'parts': [{'type': 'model', 'src': 'models/aeroplan-krylo-nl.glb'}]},
+    {'id': 'kryloNR', 'type': 'group', 'parent': 'samolet', 'pos': [-1.3, -0.45, -2.45], 'parts': [{'type': 'model', 'src': 'models/aeroplan-krylo-nr.glb'}]},
     strelka('strelkaZont', 'fuzelyazh', [-1.4, 1.35, 0], [0, 0, 0], 1.5),
 ]
 
