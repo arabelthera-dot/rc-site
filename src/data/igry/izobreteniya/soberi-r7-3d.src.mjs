@@ -465,6 +465,8 @@ function pusk() {
   const was = tried[comboKey()];
   say(was === 'tower' || was === 'keep' ? 'Так ты уже пробовал, и ракета не долетела. Пускаем ещё раз — смотри, в какой момент сорвётся.' : 'Обратный отсчёт. Смотри на сцену.');
   hint('Сейчас ничего нажимать не нужно: смотри на сцену и читай под ней, что происходит.');
+  // На телефоне сцена и «Пуск» не помещаются в один экран; ушедшая с экрана сцена стоит на паузе — показываем её.
+  ui.root.querySelector('#r3Stage').scrollIntoView({ block: 'nearest', behavior: REDUCE ? 'auto' : 'smooth' });
 }
 function resetAll(msg) {
   mapReset();
