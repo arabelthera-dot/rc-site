@@ -70,7 +70,12 @@ export const skhema = z.object({
   razdely: z.array(z.object({ posle: z.enum(BLOKI), html: str })).default([]),
   // dop — второй скрипт дня (развилка, чат…) public/muzei/<музей>/igry/<имя>-dop.js, после викторины.
   // vtoraya — вторая игра сразу под первой (своя разметка и скрипт, как у imya; напр. плоская под 3D, 12 янв., Р412).
-  igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), vtoraya: z.string().regex(/^[a-z0-9-]+$/).optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]) }),
+  // rc3d — 3D-игра дня на общем движке (Р412): блок над игрой imya (она остаётся 2D ниже, #games). Сцена —
+  // public/muzei/<музей>/igry/rc3d/scen/<scen>.json; zastavka: rolik (кадр + ролик) | kadr (только кадр) из scen/<scen>/zastavka/.
+  // Нет rc3d — нет ни блока, ни css, ни скрипта. Как сделать — docs/interactive/3d-igra-dnya.md (репозиторий russian-civilization).
+  igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), vtoraya: z.string().regex(/^[a-z0-9-]+$/).optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]),
+    rc3d: z.object({ scen: z.string().regex(/^[a-z0-9-]+$/), kicker: str.default('Главное действие · 3D'), h2: str, lead: str, alt: str,
+      zastavka: z.enum(['rolik', 'kadr']).optional(), razmer: str.default('около 1 МБ') }).optional() }),
   pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }),
   quiz: z.object({ kicker: str, h2: str, intro: str, noscript: str, ball: z.number().int().positive().default(10),
     voprosy: z.array(z.object({ q: str, o: z.array(str).min(2), a: z.number().int().min(0), e: str })).min(1) }),
