@@ -17,7 +17,34 @@
    0.55,
    -0.6
   ],
-  "grassRadius": 40
+  "groundTex": "tex/grass004",
+  "groundTile": 3,
+  "groundTex2": "tex/ground037",
+  "groundMix": 0.35,
+  "groundMacro": 0.3,
+  "grass": {
+   "n": 7000,
+   "areas": [
+    [
+     0,
+     0,
+     10
+    ],
+    [
+     0,
+     0,
+     22
+    ],
+    [
+     0,
+     0,
+     40
+    ]
+   ],
+   "h": 0.3,
+   "base": "#33401a",
+   "tip": "#b0a85e"
+  }
  },
  "camera": {
   "pos": [
@@ -41,30 +68,13 @@
    "copies": {
     "n": 40,
     "radius": 150,
-    "face": false
+    "face": false,
+    "instanced": true
    },
    "parts": [
     {
-     "type": "cylinder",
-     "r": 0.35,
-     "h": 3,
-     "pos": [
-      0,
-      1.5,
-      0
-     ],
-     "mat": "wood"
-    },
-    {
-     "type": "cone",
-     "r": 2.6,
-     "h": 8,
-     "pos": [
-      0,
-      6.5,
-      0
-     ],
-     "mat": "paint:#2e4a2a"
+     "type": "model",
+     "src": "models/el.glb"
     }
    ]
   },
@@ -75,30 +85,13 @@
     "n": 46,
     "radius": 172,
     "start": 4,
-    "face": false
+    "face": false,
+    "instanced": true
    },
    "parts": [
     {
-     "type": "cylinder",
-     "r": 0.35,
-     "h": 3,
-     "pos": [
-      0,
-      1.5,
-      0
-     ],
-     "mat": "wood"
-    },
-    {
-     "type": "cone",
-     "r": 3,
-     "h": 10,
-     "pos": [
-      0,
-      7.5,
-      0
-     ],
-     "mat": "paint:#29432a"
+     "type": "model",
+     "src": "models/beryoza.glb"
     }
    ]
   },
@@ -132,39 +125,13 @@
       0,
       -84
      ]
-    ]
+    ],
+    "instanced": true
    },
    "parts": [
     {
-     "type": "box",
-     "size": [
-      6,
-      3,
-      5
-     ],
-     "pos": [
-      0,
-      1.5,
-      0
-     ],
-     "mat": "wood"
-    },
-    {
-     "type": "cone",
-     "seg": 4,
-     "r": 4.6,
-     "h": 2.4,
-     "pos": [
-      0,
-      4.2,
-      0
-     ],
-     "rot": [
-      0,
-      45,
-      0
-     ],
-     "mat": "paint:#5a3b2b"
+     "type": "model",
+     "src": "models/izba.glb"
     }
    ]
   },

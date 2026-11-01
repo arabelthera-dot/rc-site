@@ -32,12 +32,12 @@ def strelka(id_, parent, pos, rot, scale=1):
 
 objects = [
     # Лес на горизонте и крыши деревни (Салюзи) — общий фон.
-    {'id': 'les', 'type': 'group', 'copies': {'n': 40, 'radius': 150, 'face': False},
-     'parts': [{'type': 'cylinder', 'r': 0.35, 'h': 3, 'pos': [0, 1.5, 0], 'mat': 'wood'}, {'type': 'cone', 'r': 2.6, 'h': 8, 'pos': [0, 6.5, 0], 'mat': 'paint:#2e4a2a'}]},
-    {'id': 'les2', 'type': 'group', 'copies': {'n': 46, 'radius': 172, 'start': 4, 'face': False},
-     'parts': [{'type': 'cylinder', 'r': 0.35, 'h': 3, 'pos': [0, 1.5, 0], 'mat': 'wood'}, {'type': 'cone', 'r': 3, 'h': 10, 'pos': [0, 7.5, 0], 'mat': 'paint:#29432a'}]},
-    {'id': 'izba', 'type': 'group', 'copies': {'at': [[95, 0, -62], [106, 0, -50], [86, 0, -74], [116, 0, -38], [76, 0, -84]]},
-     'parts': [{'type': 'box', 'size': [6, 3, 5], 'pos': [0, 1.5, 0], 'mat': 'wood'}, {'type': 'cone', 'seg': 4, 'r': 4.6, 'h': 2.4, 'pos': [0, 4.2, 0], 'rot': [0, 45, 0], 'mat': 'paint:#5a3b2b'}]},
+    {'id': 'les', 'type': 'group', 'copies': {'n': 40, 'radius': 150, 'face': False, 'instanced': True},
+     'parts': [{'type': 'model', 'src': 'models/el.glb'}]},
+    {'id': 'les2', 'type': 'group', 'copies': {'n': 46, 'radius': 172, 'start': 4, 'face': False, 'instanced': True},
+     'parts': [{'type': 'model', 'src': 'models/beryoza.glb'}]},
+    {'id': 'izba', 'type': 'group', 'copies': {'at': [[95, 0, -62], [106, 0, -50], [86, 0, -74], [116, 0, -38], [76, 0, -84]], 'instanced': True},
+     'parts': [{'type': 'model', 'src': 'models/izba.glb'}]},
     # Лётчик-манекен: lyotchik — точка у пояса (на ней висят стропы), telo — шарнир для наклона и вращения.
     {'id': 'lyotchik', 'type': 'group', 'pos': [0, 0.95, 0]},
     {'id': 'telo', 'type': 'group', 'parent': 'lyotchik'},
@@ -388,7 +388,8 @@ sc = {
     'id': 'kotelnikov-parashyut',
     'title': 'Котельников: первый в мире авиационный ранцевый парашют РК-1',
     'istochniki': 'Опыт: 3D-заставка и игра по фактам дня. Размеры ранца и купола условные, высота и время на сцене сжаты. Купол из 24 клиньев, стальной тросик в кромке, 24 стропы двумя группами к плечам, ранец на спине, испытание с аэростата на 200 метров у Салюзи под Гатчиной в 1912 году — Президентская библиотека, «Ростех», История.РФ, УрФУ, «Коммерсантъ. Наука», «Гатчина-инфо». Реплики в заставке стилизованы.',
-    'env': {'sky': 'day', 'ground': 'field', 'size': 900, 'fog': [140, 900], 'clouds': 12, 'shadow': 22, 'sun': [0.5, 0.55, -0.6], 'grassRadius': 40},
+    'env': {'sky': 'day', 'ground': 'field', 'size': 900, 'fog': [140, 900], 'clouds': 12, 'shadow': 22, 'sun': [0.5, 0.55, -0.6], 'groundTex': 'tex/grass004', 'groundTile': 3, 'groundTex2': 'tex/ground037', 'groundMix': 0.35, 'groundMacro': 0.3,
+            'grass': {'n': 7000, 'areas': [[0, 0, 10], [0, 0, 22], [0, 0, 40]], 'h': 0.3, 'base': '#33401a', 'tip': '#b0a85e'}},
     'camera': {'pos': [1.6, 1.8, -2.4], 'look': [0, 1.25, -0.2], 'min': 0.6, 'max': 260, 'fov': 42},
     'objects': objects,
     'zastavka': {
