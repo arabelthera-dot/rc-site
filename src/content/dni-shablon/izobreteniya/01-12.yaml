@@ -67,6 +67,8 @@ daynav:
     label: Факты
   - id: games
     label: Собрать ракету
+  - id: games-2d
+    label: Игра без 3D
   - id: pervenstvo
     label: Первенство
   - id: quiz
@@ -295,6 +297,7 @@ fakty:
 razdely: []
 igra:
   imya: soberi-r7-3d
+  vtoraya: soberi-r7
   css:
     - igra-soberi-r7
     - igra-soberi-r7-3d

@@ -1,7 +1,9 @@
 // 3D-блок игры 01-12 «Р-7 на стартовом столе Тюра-Тама» (опыт Р392). Исходник сцены; на сайт идёт сборка
 // public/muzei/izobreteniya/igry/soberi-r7-3d/ (scena.js + чанк Rapier + rapier.wasm), см. сборку в конце файла.
 // Ракета, стол и фермы — процедурно (цилиндры, конусы, вращение профиля), моделей .glb нет.
-// Пламя, дым, взрыв — three.quarks; падение отработавших блоков и обломков — Rapier (WASM, грузится по «Пуску»).
+// Пламя, дым, взрыв — three.quarks; падение отработавших блоков и обломков — Rapier (WASM; подгружается в фоне, как сцена готова,
+// при saveData — по «Пуску»; не успел к падению — запасная простая баллистика, prostoWorld).
+// Автокачество (Р521): при < 25 к/с — pixelRatio 1, без теней, частиц ×0,5, потом pixelRatio 0,75; уровень — window.__r7q.
 // Весь текст — под сценой (#r3Count, #r3Msg); на сцене подписей нет.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -13,8 +15,8 @@ import {
 import { feature } from 'topojson-client';
 import land110 from 'world-atlas/land-110m.json';   // Natural Earth 1:110 млн, общественное достояние
 
-const SLAB = matchMedia('(pointer: coarse)').matches || innerWidth < 760;   // телефон: меньше частиц и теней
-const K = SLAB ? 0.5 : 1;
+let SLAB = matchMedia('(pointer: coarse)').matches || innerWidth < 760;   // телефон: меньше частиц и теней; автокачество тоже ставит true
+let K = SLAB ? 0.5 : 1;   // множитель частиц; автокачество делит пополам
 const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const ease = (t) => 1 - Math.pow(1 - Math.min(1, Math.max(0, t)), 3);
@@ -327,7 +329,7 @@ function makeTower() {
 }
 
 // ── Сцена ──
-let rocketLight; let renderer, scene, camera, controls, clock, world, R, sky, flash, padLight, shake = 0;
+let rocketLight, sun; let renderer, scene, camera, controls, clock, world, R, sky, flash, padLight, shake = 0;
 let rocket, st = { scheme: 'tower', drop: 'keep' }, phase = 'build', T = 0, follow = null, bodies = [], trusses = [];
 let padSmoke = [], trail = null, vel = V(0, 0, 0), dropped = false, found = {}, ui;
 
@@ -446,15 +448,51 @@ function assemble(kind) {
 
 const CMD = [['Ключ на старт', 10], ['Протяжка', 9], ['Продувка', 8], ['Ключ на дренаж', 7], ['Пуск', 6], ['Зажигание', 5],
   ['Предварительная', 4], ['Промежуточная', 3], ['Главная', 2], ['Подъём!', 0]];
-let rapierP = null;
+// Rapier: чанк + rapier.wasm(.gz). Пока тел нет — сразу становится текущей физикой; летят тела запасной — сменится на «Начать заново».
+let rapierP = null, realR = null, realWorld = null;
 function needRapier() {
   if (!rapierP) rapierP = import('@dimforge/rapier3d-compat').then(async (m) => {
-    R = m.default || m; await R.init();
-    world = new R.World({ x: 0, y: -9.81, z: 0 });
-    world.createCollider(R.ColliderDesc.cuboid(4000, 1, 4000).setTranslation(0, -1, 0).setFriction(0.8).setRestitution(0.15));
-    return R;
+    const r = m.default || m; await r.init();
+    const w = new r.World({ x: 0, y: -9.81, z: 0 });
+    w.createCollider(r.ColliderDesc.cuboid(4000, 1, 4000).setTranslation(0, -1, 0).setFriction(0.8).setRestitution(0.15));
+    realR = r; realWorld = w; if (!bodies.length) { R = r; world = w; }
+    return r;
   });
   return rapierP;
+}
+// Запасная физика, если Rapier не успел (медленная сеть) или не загрузился: баллистика, вращение, земля y = 0 —
+// блоки и обломки падают и ложатся, игра идёт дальше. API — тот малый кусок Rapier, что зовёт сцена.
+class PD {
+  constructor(h = 1, r = 1) { Object.assign(this, { h, r, p: { x: 0, y: 0, z: 0 }, q: { x: 0, y: 0, z: 0, w: 1 }, v: { x: 0, y: 0, z: 0 }, w: { x: 0, y: 0, z: 0 } }); }
+  setTranslation(x, y, z) { this.p = { x, y, z }; return this; }
+  setRotation(q) { this.q = { x: q.x, y: q.y, z: q.z, w: q.w }; return this; }
+  setLinvel(x, y, z) { this.v = { x, y, z }; return this; }
+  setAngvel(w) { this.w = { x: w.x, y: w.y, z: w.z }; return this; }
+}
+for (const k of ['setLinearDamping', 'setAngularDamping', 'setCanSleep', 'setMass', 'setFriction', 'setRestitution']) PD.prototype[k] = function () { return this; };
+const PROSTO = { ColliderDesc: { cylinder: (h, r) => new PD(h, r), cone: (h, r) => new PD(h, r), cuboid: (x, y) => new PD(y, y) }, RigidBodyDesc: { dynamic: () => new PD() } };
+function prostoWorld() {
+  const list = [], q = new THREE.Quaternion(), dq = new THREE.Quaternion(), ax = new THREE.Vector3();
+  return {
+    timestep: 1 / 60, prosto: true,
+    createRigidBody(d) { const b = { p: { ...d.p }, q: { ...d.q }, v: { ...d.v }, w: { ...d.w }, h: 1, r: 1, translation() { return this.p; }, rotation() { return this.q; } }; list.push(b); return b; },
+    createCollider(d, b) { if (b) { b.h = d.h; b.r = d.r; } },
+    removeRigidBody(b) { const i = list.indexOf(b); if (i >= 0) list.splice(i, 1); },
+    step() {
+      const dt = this.timestep;
+      for (const b of list) {
+        b.v.y -= 9.81 * dt; b.p.x += b.v.x * dt; b.p.y += b.v.y * dt; b.p.z += b.v.z * dt;
+        ax.set(b.w.x, b.w.y, b.w.z); const a = ax.length() * dt;
+        if (a > 1e-6) { dq.setFromAxisAngle(ax.normalize(), a); q.set(b.q.x, b.q.y, b.q.z, b.q.w).premultiply(dq); b.q = { x: q.x, y: q.y, z: q.z, w: q.w }; }
+        const up = Math.abs(1 - 2 * (b.q.x * b.q.x + b.q.z * b.q.z));   // насколько тело стоит торчком
+        const floor = b.r + (b.h - b.r) * up;
+        if (b.p.y < floor) {   // земля: гасим скорость и вращение, тело заваливается и лежит
+          b.p.y = floor; if (b.v.y < 0) b.v.y *= -0.15;
+          const f = Math.pow(0.02, dt); b.v.x *= f; b.v.z *= f; b.w.x *= f; b.w.y *= f; b.w.z *= f;
+        }
+      }
+    },
+  };
 }
 function pusk() {
   if (phase !== 'build') return;
@@ -471,6 +509,7 @@ function pusk() {
 function resetAll(msg) {
   mapReset();
   for (const b of bodies) { if (world) world.removeRigidBody(b.body); b.obj.removeFromParent(); }
+  if (realWorld) { R = realR; world = realWorld; }   // после запасной физики — снова Rapier
   bodies = []; follow = null; vel.set(0, 0, 0); dropped = false;
   for (const ps of padSmoke) killPS(ps); padSmoke = []; if (trail) { killPS(trail); trail = null; }
   if (rocket && rocket.s2Holder) rocket.s2Holder.removeFromParent();
@@ -722,8 +761,17 @@ function liftoff(r) {
   if (!dragging) { const dir = camera.position.clone().sub(controls.target).setY(0).normalize(); camGoal = dir.multiplyScalar(camera.aspect < 1 ? 105 : 80).setY(-14); }
 }
 function setFound() { ui.found.textContent = 'Найдено причин неудачи: ' + Object.keys(found).length + ' из 2.'; }
-// Rapier грузится по «Пуску»; ответ, пришедший после «Начать заново», — уже не к этой ракете.
-function ready(fn) { const r = rocket; const go = (no) => { if (rocket === r) fn(no); }; if (world) go(); else needRapier().then(() => go()).catch(() => go(true)); }
+// Rapier ещё грузится — ждём не дольше 1,5 с, потом запасная физика (prostoWorld); ответ, пришедший после «Начать заново», — уже не к этой ракете.
+function ready(fn) {
+  const r = rocket; let done = false;
+  const go = () => {
+    if (done) return; done = true; if (rocket !== r) return;
+    if (!world) { R = PROSTO; world = prostoWorld(); }
+    fn();
+  };
+  if (world) return go();
+  needRapier().then(go, (e) => { console.warn('rapier', e); go(); }); setTimeout(go, 1500);
+}
 
 function towerFail() {
   const r = rocket; phase = 'wait';
@@ -822,6 +870,31 @@ function loop() {
   batch.update(dt); soundTick();
   if (phase === 'map') renderer.render(MAP.sc, MAP.cam); else renderer.render(scene, camera);
   fps.n++; fps.t += dt; if (fps.t >= 1) { window.__r7fps = Math.round(fps.n / fps.t); fps.n = 0; fps.t = 0; }
+  kachestvo();
+}
+// Автокачество: 2 с прогрева, потом окна по ~2 с; окно < 25 к/с — ступень вниз:
+// 1) pixelRatio 1, тени выключены, частиц ×0,5; 2) pixelRatio 0,75. Сцена ушла с экрана, вкладка скрыта
+// или кадры встали больше чем на 1 с (свёрнутое окно) — прогрев заново, иначе простой посчитался бы как тормоза.
+const AQ = { t0: 0, n: 0, ur: 0, pr: 0 };
+document.addEventListener('visibilitychange', () => { AQ.t0 = 0; });
+function kachestvo() {
+  const now = performance.now(), gap = now - AQ.pr; AQ.pr = now;
+  if (!AQ.t0 || gap > 1000) { AQ.t0 = now + 2000; AQ.n = 0; return; }
+  if (now < AQ.t0) return;
+  AQ.n++; const span = now - AQ.t0; if (span < 2000) return;
+  const f = AQ.n * 1000 / span; AQ.t0 = now; AQ.n = 0;
+  if (f < 25 && AQ.ur < 2) {
+    AQ.ur++;
+    if (AQ.ur === 1) {
+      renderer.setPixelRatio(Math.min(1, renderer.getPixelRatio()));
+      renderer.shadowMap.enabled = false; sun.castShadow = false;
+      scene.traverse((o) => { if (o.material) [o.material].flat().forEach((m) => { m.needsUpdate = true; }); });
+      K *= 0.5; SLAB = true;
+      for (const ps of padSmoke) ps.emissionOverTime.value *= 0.5;
+      if (trail) trail.emissionOverTime.value *= 0.5;
+    } else renderer.setPixelRatio(Math.min(0.75, renderer.getPixelRatio()));
+  }
+  window.__r7q = { uroven: AQ.ur, fps: Math.round(f), pr: renderer.getPixelRatio(), teni: renderer.shadowMap.enabled, k: K };
 }
 
 export async function zapusk(root) {
@@ -845,7 +918,7 @@ export async function zapusk(root) {
   controls.addEventListener('end', () => { dragging = false; });
   clock = new THREE.Clock();
   scene.add(new THREE.HemisphereLight(0xcfe0ff, 0x8a7550, 1.25));
-  const sun = new THREE.DirectionalLight(0xfff0d8, 2.8); sun.position.set(55, 75, 35); sun.castShadow = true;
+  sun = new THREE.DirectionalLight(0xfff0d8, 2.8); sun.position.set(55, 75, 35); sun.castShadow = true;
   sun.shadow.mapSize.set(SLAB ? 1024 : 2048, SLAB ? 1024 : 2048);
   Object.assign(sun.shadow.camera, { left: -40, right: 40, top: 45, bottom: -25, near: 10, far: 220 }); sun.shadow.bias = -0.0005; sun.shadow.normalBias = 0.04;
   scene.add(sun);
@@ -856,7 +929,7 @@ export async function zapusk(root) {
   assemble('tower');
   const resize = () => { const W = stage.clientWidth, H = stage.clientHeight; renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix(); if (MAP) { MAP.cam.aspect = W / H; MAP.cam.updateProjectionMatrix(); } };
   resize(); new ResizeObserver(resize).observe(stage);
-  new IntersectionObserver((es) => { const v = es[0].isIntersecting; if (v && !visible) { visible = true; clock.getDelta(); loop(); } visible = v; }).observe(stage);
+  new IntersectionObserver((es) => { const v = es[0].isIntersecting; if (v && !visible) { visible = true; AQ.t0 = 0; clock.getDelta(); loop(); } visible = v; }).observe(stage);
   // Кнопки под сценой.
   const segs = root.querySelectorAll('#r3Ctrl .seg');
   segs.forEach((b) => b.addEventListener('click', () => {
@@ -880,9 +953,16 @@ export async function zapusk(root) {
   say('Ракета на столе, пока башней. Выбери, как её собрать, и нажми «Пуск».');
   loop();
   audioInit();   // контекст создаётся «спящим», голоса успевают загрузиться; оживает по «Пуску»
+  window.__r7q = { uroven: 0 };
+  // Rapier — в фоне, как только сцена готова: к концу отсчёта «Пуска» уже есть. Экономия трафика — только по «Пуску».
+  if (!(navigator.connection && navigator.connection.saveData)) {
+    const fon = () => needRapier().catch((e) => console.warn('rapier', e));
+    if (window.requestIdleCallback) requestIdleCallback(fon, { timeout: 3000 }); else setTimeout(fon, 1500);
+  }
   window.__r7 = { st: () => ({ phase, T }), pick: (k, v) => root.querySelector(`#r3Ctrl .seg[data-k="${k}"][data-v="${v}"]`).click() };
 }
 
 /* Сборка (из корня rc-site, esbuild — во временной папке, в сайт не ставится):
    node /tmp/r495/build/build.mjs — бандл ESM с разделением: scena.js (three + three.quarks + сцена),
-   чанк Rapier (@dimforge/rapier3d-compat) грузится по «Пуску»; WASM вынесен из base64 в rapier.wasm. */
+   чанк Rapier (@dimforge/rapier3d-compat) — отдельно; WASM вынесен из base64 в rapier.wasm и rapier.wasm.gz
+   (gzip -9; браузер с DecompressionStream берёт .gz, иначе .wasm). Папки zvuk/ и zastavka/ сборка не трогает. */
