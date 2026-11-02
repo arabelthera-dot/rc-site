@@ -1,0 +1,36 @@
+---
+// Усилитель визуализации дня «Было — стало» (Р436, Р437, 02.11.2026): шторка тогда/сейчас на npm img-comparison-slider
+// (веб-компонент, свой файл сборки, без CDN). Данные — vizual.bylo_stalo дня: { bylo, stalo, podpis, istochnik };
+// нет одного из кадров — блока нет. Путь кадра — от корня сайта («/media/…») или как у images дня («muzei/…»).
+// Подписи «было/стало», подпись и источник — строками под шторкой, на кадре текста нет. Без JS виден кадр «было».
+// Стили — public/assets/vizual-bylo.css.
+import Credit from '../Credit.astro';
+
+interface Props { bylo_stalo?: { bylo?: string; stalo?: string; podpis?: string; istochnik?: string}; zagolovok?: string }
+const { bylo_stalo: bs, zagolovok = 'Было — стало' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const put = (p: string) => (/^(https?:)?\//.test(p) ? p : `${base}${p}`);
+const est = !!(bs?.bylo && bs?.stalo);
+const podpis = bs?.podpis ?? '';
+---
+{est && (
+  <section class="vz-bylo" aria-label={zagolovok}>
+    <link rel="stylesheet" href={`${base}assets/vizual-bylo.css`} />
+    <h2 class="vz-bylo__h">{zagolovok}</h2>
+    <figure class="vz-bylo__fig">
+      <img-comparison-slider class="vz-bylo__shtorka" value="50" keyboard="enabled" tabindex="0">
+        <img slot="first" src={put(bs!.bylo!)} alt={`Было. ${podpis}`.trim()} loading="lazy" decoding="async" />
+        <img slot="second" src={put(bs!.stalo!)} alt={`Стало. ${podpis}`.trim()} loading="lazy" decoding="async" />
+      </img-comparison-slider>
+      <p class="vz-bylo__metki" aria-hidden="true"><span>◀ было</span><span>стало ▶</span></p>
+      <figcaption class="vz-bylo__podpis">
+        {podpis && <span class="vz-bylo__tekst">{podpis}</span>}
+        {bs!.istochnik && <span class="vz-bylo__istochnik">Источник: <Credit text={bs!.istochnik} /></span>}
+      </figcaption>
+    </figure>
+  </section>
+)}
+
+<script>
+  import 'img-comparison-slider';
+</script>

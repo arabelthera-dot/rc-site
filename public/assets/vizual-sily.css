@@ -1,0 +1,17 @@
+/* «Соотношение сил» — src/components/den/vizual/Sily.astro (Р436, Р437). Наши — цветом акцента музея, враг — цветом текста. */
+.vz-sily{margin:2.2rem 0}
+.vz-sily__h{font-family:var(--font-h,Georgia,serif);font-size:1.45rem;margin:0 0 .9rem}
+.vz-sily__fig{margin:0;display:grid;gap:.9rem}
+.vz-sily__storona{display:grid;gap:.3rem}
+.vz-sily__chislo{margin:0;font-family:var(--font-h,Georgia,serif);font-size:2.6rem;line-height:1;font-variant-numeric:lining-nums}
+.vz-sily__storona--nashi .vz-sily__chislo{color:var(--acc,#a8341f)}
+.vz-sily__storona--vrag .vz-sily__chislo{color:var(--fg,#241d16)}
+.vz-sily__kto{margin:0;color:var(--muted,#5d5348);font-size:.95rem}
+.vz-sily__protiv{margin:0;font-style:italic;color:var(--muted,#5d5348)}
+.vz-sily__polye{min-height:1.2rem}
+.vz-sily__svg{display:block;width:100%;height:auto}
+.vz-sily__f path{fill:var(--fg,#241d16);opacity:.72}
+.vz-sily__f--nashi path{fill:var(--acc,#a8341f);opacity:1}
+.vz-sily__f path.vz-sily__ten{opacity:.18}
+.vz-sily__podpis{display:grid;gap:.25rem;font-size:.9rem;color:var(--muted,#5d5348);border-top:1px solid var(--line,rgba(36,29,22,.28));padding-top:.6rem}
+@media (min-width:760px){.vz-sily__chislo{font-size:3.2rem}}

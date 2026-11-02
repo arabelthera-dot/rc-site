@@ -16,6 +16,9 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "astro": "^7.4.0",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
+    "img-comparison-slider": "^8.0.7",
     "photoswipe": "^5.4.4"
   },
   "devDependencies": {

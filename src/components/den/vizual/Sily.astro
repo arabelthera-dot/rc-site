@@ -1,0 +1,112 @@
+---
+// Усилитель визуализации дня «Соотношение сил» (Р436, Р437, 02.11.2026): фигурки наших и врага рядом — «18 против 184».
+// Данные — vizual.sily дня: { nashi: {chislo, podpis}, vrag: {chislo, podpis}, istochnik }. Нет обоих чисел — блока нет.
+// Масштаб сам: одна фигурка = 1, 2, 5, 10, 20, 50… так, чтобы у большей стороны было не больше 200 фигурок
+// (40 000 — это 200 фигурок по 200, а не 40 000 узлов); неполная последняя фигурка закрашена долей.
+// Вид фигурки — из подписи: орудия/пушки → пушка, корабли → корабль, танки → танк, иначе человек.
+// Рисует D3 (npm d3-selection, d3-transition) у посетителя; анимация — при появлении в экране, без неё при
+// prefers-reduced-motion. Без JS остаются числа и подписи. Подпись и источник — строкой под фигурками, не поверх.
+// Стили — public/assets/vizual-sily.css.
+import Credit from '../Credit.astro';
+import { masshtabSil, vidFigurki, slovoFigurki, razVo } from '../../../lib/vizual-sily.mjs';
+
+interface Storona { chislo?: number; podpis?: string }
+interface Props { sily?: { nashi?: Storona; vrag?: Storona; istochnik?: string }; zagolovok?: string }
+const { sily, zagolovok = 'Соотношение сил' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const nashi = Number(sily?.nashi?.chislo) || 0;
+const vrag = Number(sily?.vrag?.chislo) || 0;
+const est = nashi > 0 && vrag > 0;
+const shag = est ? masshtabSil(nashi, vrag) : 1;
+const vid = est ? vidFigurki(`${sily?.nashi?.podpis ?? ''} ${sily?.vrag?.podpis ?? ''}`) : 'chelovek';
+const legenda = `Одна фигурка — ${shag.toLocaleString('ru-RU')} ${slovoFigurki(vid, shag)}`;
+const raz = est ? razVo(nashi, vrag) : '';
+const chislo = (n: number) => n.toLocaleString('ru-RU');
+const dannye = JSON.stringify({ nashi, vrag, shag, vid });
+---
+{est && (
+  <section class="vz-sily" aria-label={zagolovok}>
+    <link rel="stylesheet" href={`${base}assets/vizual-sily.css`} />
+    <h2 class="vz-sily__h">{zagolovok}</h2>
+    <figure class="vz-sily__fig" data-sily={dannye}>
+      <div class="vz-sily__storona vz-sily__storona--nashi">
+        <p class="vz-sily__chislo">{chislo(nashi)}</p>
+        {sily?.nashi?.podpis && <p class="vz-sily__kto">{sily.nashi.podpis}</p>}
+        <div class="vz-sily__polye" data-storona="nashi"></div>
+      </div>
+      <p class="vz-sily__protiv">против</p>
+      <div class="vz-sily__storona vz-sily__storona--vrag">
+        <p class="vz-sily__chislo">{chislo(vrag)}</p>
+        {sily?.vrag?.podpis && <p class="vz-sily__kto">{sily.vrag.podpis}</p>}
+        <div class="vz-sily__polye" data-storona="vrag"></div>
+      </div>
+      <figcaption class="vz-sily__podpis">
+        <span class="vz-sily__legenda">{legenda}{raz && <>. {raz}</>}.</span>
+        {sily?.istochnik && <span class="vz-sily__istochnik">Источник: <Credit text={sily.istochnik} /></span>}
+      </figcaption>
+    </figure>
+  </section>
+)}
+
+<script>
+  import { select } from 'd3-selection';
+  import 'd3-transition';
+  import { FIGURKI } from '../../../lib/vizual-sily.mjs';
+
+  const KOLONOK = 20;
+  const YACHEYKA = 24;
+  const tiho = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let nomer = 0;
+
+  function polye(uzel: HTMLElement, storona: string, n: number, shag: number, vid: string) {
+    const polnyh = Math.floor(n / shag);
+    const dolya = n / shag - polnyh;
+    const vsego = polnyh + (dolya > 0 ? 1 : 0);
+    const kolonok = Math.min(KOLONOK, vsego);
+    const ryadov = Math.ceil(vsego / KOLONOK);
+    const svg = select(uzel).append('svg')
+      .attr('viewBox', `0 0 ${kolonok * YACHEYKA} ${ryadov * YACHEYKA}`)
+      .attr('class', 'vz-sily__svg')
+      .style('max-width', `${(kolonok / KOLONOK) * 100}%`)
+      .attr('role', 'img')
+      .attr('aria-label', `${n.toLocaleString('ru-RU')}: ${vsego} фигурок`);
+    const id = `vz-sily-dolya-${++nomer}`;
+    if (dolya > 0) {
+      svg.append('clipPath').attr('id', id).append('rect')
+        .attr('x', 0).attr('y', 0).attr('width', YACHEYKA * dolya).attr('height', YACHEYKA);
+    }
+    const g = svg.selectAll('g').data(Array.from({ length: vsego }, (_, i) => i)).join('g')
+      .attr('class', `vz-sily__f vz-sily__f--${storona}`)
+      .attr('transform', (i) => `translate(${(i % KOLONOK) * YACHEYKA},${Math.floor(i / KOLONOK) * YACHEYKA})`);
+    g.each(function (i) {
+      const f = select(this);
+      const chastichnaya = dolya > 0 && i === vsego - 1;
+      if (chastichnaya) f.append('path').attr('d', FIGURKI[vid]).attr('class', 'vz-sily__ten');
+      f.append('path').attr('d', FIGURKI[vid]).attr('clip-path', chastichnaya ? `url(#${id})` : null);
+    });
+    return g;
+  }
+
+  function pokazat(g: any, zaderzhka: number, dlitelnost: number) {
+    const n = g.size();
+    g.style('opacity', 0)
+      .transition().delay((i: number) => zaderzhka + (i / Math.max(1, n)) * dlitelnost).duration(260)
+      .style('opacity', 1);
+  }
+
+  for (const fig of document.querySelectorAll<HTMLElement>('.vz-sily__fig[data-sily]')) {
+    const { nashi, vrag, shag, vid } = JSON.parse(fig.dataset.sily!);
+    const gN = polye(fig.querySelector('[data-storona="nashi"]')!, 'nashi', nashi, shag, vid);
+    const gV = polye(fig.querySelector('[data-storona="vrag"]')!, 'vrag', vrag, shag, vid);
+    fig.classList.add('vz-sily__fig--gotovo');
+    if (tiho || !('IntersectionObserver' in window)) continue;
+    gN.style('opacity', 0); gV.style('opacity', 0);
+    const nab = new IntersectionObserver((zapisi) => {
+      if (!zapisi.some((z) => z.isIntersecting)) return;
+      nab.disconnect();
+      pokazat(gN, 0, 500);
+      pokazat(gV, 700, 1400);
+    }, { threshold: 0.25 });
+    nab.observe(fig);
+  }
+</script>
