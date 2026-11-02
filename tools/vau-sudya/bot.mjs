@@ -1,7 +1,8 @@
 // Бот судьи «вау по кадру»: открывает 3D-сцену дня (страницу или голую модель .glb), снимает 4 стороны,
 // меряет загрузку, кадры/с, текст поверх сцены; режим «слабый телефон» и режим «без WebGL».
 // Запуск — только через tools/vau-sudya.py (он ставит окружение). Вход — переменная VS (JSON):
-//   {url, start, stage, rezhim: 'pk'|'tel'|'bez-webgl', out, glb: true|false}
+//   {url, start, stage, rezhim: 'pk'|'tel'|'bez-webgl', out, glb: true|false, skroll: null|'#блок'}
+// skroll — сцена, которую ведёт прокрутка (образец r567): 4 стороны = 4 точки прокрутки этого блока, а не поворот мышью.
 import { createRequire } from 'module';
 import { writeFileSync, mkdirSync } from 'fs';
 const require = createRequire(process.env.PW_FROM || '/home/agent/projects/agent-env/shot/x.js');
@@ -34,6 +35,12 @@ await ctx.addInitScript(() => {
   const tick = () => { if (V.draws !== last) { V.frames++; last = V.draws; } requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
 });
+// Таймер «3D не успела за 8 с → 2D» (assets/igra-dnya.js) на снимках pk/tel выключен: на загруженном сервере тяжёлая сцена
+// (01-30) не успевает, страница честно уходит в 2D, и снимать нечего. Медленная загрузка и так красная в замке «загрузка < 8 с».
+if (A.rezhim !== 'bez-webgl') await ctx.addInitScript(() => {
+  let id;
+  Object.defineProperty(window, 'IGRA_DNYA', { configurable: true, get: () => id, set: (v) => { id = v; if (v) { v.zhdat = () => {}; setTimeout(() => v.gotovo(), 0); } } });   // gotovo() снимает уже взведённый внутренний таймер
+});
 const p = await ctx.newPage();
 p.on('pageerror', (e) => R.oshibki.push('pageerror: ' + e.message.slice(0, 200)));
 p.on('console', (m) => { if (m.type() === 'error') R.oshibki.push('console.error: ' + m.text().slice(0, 200)); });
@@ -54,13 +61,25 @@ const glCanvas = () => p.evaluate((sel) => {
 }, stageSel);
 const snimok = async (imya) => {
   const f = `${A.out}/${imya}.png`;
-  const el = A.glb ? p.locator('canvas') : p.locator(stageSel).first();
-  await el.screenshot({ path: f, animations: 'allow', timeout: 20000 });
+  // Снимок страницы по рамке сцены, а не el.screenshot: тот ждёт «стабильности» элемента и на тяжёлой сцене (01-30, < 1 к/с) не дожидается.
+  const bb = await p.evaluate(([sel, glb]) => {
+    // Движок rc3d (01-30) после «Играть» заменяет заставку вместе с [data-igra-scena] своей сценой — тогда снимаем сам WebGL-холст.
+    const e = (glb ? document.querySelector('canvas') : document.querySelector(sel)) || __vs.gl.find((c) => c.isConnected && c.getBoundingClientRect().width > 50);
+    const r = e.getBoundingClientRect();
+    return { x: r.x, y: r.y, width: r.width, height: r.height };
+  }, [stageSel, !!A.glb]);
+  await p.screenshot({ path: f, clip: bb, animations: 'allow', timeout: 90000 });
   R.kadry.push(imya);
 };
 // Поворот на 90°: OrbitControls поворачивает на 2π·dx/высота, значит четверть оборота — сдвиг на высоту/4.
-const povorot = async (g) => {
+const SKROLL = [0.02, 0.3, 0.62, 0.97];
+const kSkrollu = (dolya) => p.evaluate(([sel, d]) => {
+  const b = document.querySelector(sel), r = b.getBoundingClientRect();
+  scrollTo(0, scrollY + r.top + (r.height - innerHeight) * d);
+}, [A.skroll, dolya]);
+const povorot = async (g, i) => {
   if (A.glb) { await p.evaluate(() => __vs.povorot(90)); return; }
+  if (A.skroll) { await kSkrollu(SKROLL[i]); return; }
   const cx = g.x + g.w / 2, cy = g.y + g.h / 2, dx = g.h / 4;
   await p.mouse.move(cx, cy); await p.mouse.down();
   for (let i = 1; i <= 10; i++) await p.mouse.move(cx + (dx * i) / 10, cy, { steps: 2 });
@@ -72,7 +91,9 @@ try {
   await p.goto(A.url, { waitUntil: 'load', timeout: 60000 });
   R.vremya.stranica = (Date.now() - t0) / 1000;
   if (!A.glb) {
-    await p.locator(stageSel).first().scrollIntoViewIfNeeded({ timeout: 10000 });
+    // Без WebGL страница сама меняет блок 3D на 2D из <template id="igra2d"> (assets/igra-dnya.js) — сцены может уже не быть.
+    if (A.rezhim === 'bez-webgl') await p.locator(stageSel).first().scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+    else await p.locator(stageSel).first().scrollIntoViewIfNeeded({ timeout: 45000 });
     if (A.start) {
       const s = p.locator(A.start).first();
       if (await s.isVisible().catch(() => false)) await s.click();
@@ -87,16 +108,20 @@ try {
       const ssylki = [...document.querySelectorAll('a[href^="#"]')].filter(vid).filter((a) => /2d|без 3d/i.test(a.textContent + a.getAttribute('href')));
       const cel = ssylki.map((a) => document.querySelector(a.getAttribute('href'))).find((e) => e && e.querySelector('button, canvas, svg, [role=button]'));
       const risunok = st && [...st.querySelectorAll('img, svg, canvas, video')].some((e) => vid(e) && !__vs.gl.includes(e));
+      // Общий запас сайта: html[data-igra-rezhim=2d] и на месте 3D — 2D-игра с кнопками/рисунком.
+      const rez = document.documentElement.getAttribute('data-igra-rezhim') || '';
+      const igra2d = rez === '2d' && [...document.querySelectorAll('#games button, #games svg, #games canvas, #games img')].some((e) => vid(e) && !__vs.gl.includes(e));
       const tekst = st ? (st.closest('[data-igra]') || st.parentElement).innerText.match(/[^.\n]*(2D|без 3D)[^.\n]*/i)?.[0] || '' : '';
-      return { webgl: __vs.gl.length, ssylka: ssylki[0]?.textContent.trim() || '', cel_rabochaya: !!cel, risunok_v_scene: !!risunok, tekst };
+      return { webgl: __vs.gl.length, ssylka: ssylki[0]?.textContent.trim() || '', cel_rabochaya: !!cel, risunok_v_scene: !!risunok || igra2d, rezhim: rez, prichina: document.documentElement.getAttribute('data-igra-prichina') || '', tekst };
     }, stageSel);
-    await snimok('bez-webgl');
+    if (await p.locator(stageSel).count()) await snimok('bez-webgl');
+    else { await p.locator('#games').first().screenshot({ path: `${A.out}/bez-webgl.png`, timeout: 30000 }).catch(() => {}); R.kadry.push('bez-webgl'); }
   } else {
     // Готово = есть WebGL-холст и на нём уже нарисовано ≥ 3 кадров.
     await p.waitForFunction((sel) => {
       const c = __vs.gl.find((c) => c.isConnected && c.getBoundingClientRect().width > 50);
       return c && __vs.frames >= 3;
-    }, stageSel, { timeout: A.rezhim === 'tel' ? 90000 : 45000, polling: 100 });
+    }, stageSel, { timeout: A.rezhim === 'tel' ? 120000 : 90000, polling: 100 });
     R.vremya.do_3d = (Date.now() - t0) / 1000;
     R.render = await p.evaluate(() => {
       const c = document.createElement('canvas').getContext('webgl');
@@ -111,17 +136,21 @@ try {
     if (!A.glb) {
       await p.evaluate((sel) => {
         const st = document.querySelector(sel);
+        if (!st) return;
         for (const e of document.querySelectorAll('body *')) {
           const ps = getComputedStyle(e).position;
           if ((ps === 'fixed' || ps === 'sticky') && !e.contains(st) && !st.contains(e)) e.style.visibility = 'hidden';
         }
-        st.scrollIntoView({ block: 'center' });
+        if (getComputedStyle(st).position !== 'fixed') st.scrollIntoView({ block: 'center' });
       }, stageSel);
+      if (A.skroll) await kSkrollu(SKROLL[0]);
       await p.waitForTimeout(800);
     }
+    const sdalas = await p.evaluate(() => document.documentElement.getAttribute('data-igra-rezhim') === '2d' && (document.documentElement.getAttribute('data-igra-prichina') || '?'));
+    if (sdalas) throw new Error(`3D сдалась, страница включила 2D (причина «${sdalas}»: 8s — 3D не успела за 8 с)`);
     const g = await glCanvas();
     R.holst = g;
-    if (A.rezhim === 'tel') await snimok('tel');
+    if (A.rezhim === 'tel') { if (A.skroll) await p.waitForTimeout(3000); await snimok('tel'); }
     else {
       // Текст поверх сцены: элемент со своим видимым текстом, лежащий на холсте и видимый в точке (не закрыт холстом).
       R.tekst_poverh = await p.evaluate((g) => {
@@ -139,12 +168,15 @@ try {
         return out;
       }, g);
       for (const [i, imya] of ['1-pered', '2-bok', '3-zad', '4-bok2'].entries()) {
-        if (i) { await povorot(g); await p.waitForTimeout(4000); }   // плавное затухание камеры доворачивает угол за десятки кадров
+        if (i) { await povorot(g, i); await p.waitForTimeout(4000); }   // плавное затухание камеры доворачивает угол за десятки кадров
         await snimok(imya);
       }
     }
   }
-} catch (e) { R.oshibki.push('бот: ' + e.message.split('\n')[0]); }
+} catch (e) {
+  R.oshibki.push('бот: ' + e.message.split('\n')[0]);
+  R.stranica_rezhim = await p.evaluate(() => [document.documentElement.getAttribute('data-igra-rezhim'), document.documentElement.getAttribute('data-igra-prichina'), document.querySelector('#games')?.className]).catch(() => null);
+}
 R.vremya.vsego = (Date.now() - t0) / 1000;
 writeFileSync(`${A.out}/bot.json`, JSON.stringify(R, null, 1));
 await b.close();
