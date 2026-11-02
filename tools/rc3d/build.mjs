@@ -23,3 +23,6 @@ import fs from 'fs';
 const faily = Object.entries(r.metafile.outputs).filter(([f]) => f.endsWith('.js')).map(([f, o]) => [f.split('/').pop(), o.bytes]);
 const L = W + 'public/muzei/izobreteniya/igry/rc3d-den.js';
 fs.writeFileSync(L, fs.readFileSync(L, 'utf8').replace(/var FAILY = .*;/, 'var FAILY = ' + JSON.stringify(faily) + ';'));
+// Ссылка на статью в комментарии шейдера three.js — внешний домен для storozh-ssylok; в просмотре модели она не нужна.
+const M3 = W + 'public/assets/igra-dnya/model3d.js';
+fs.writeFileSync(M3, fs.readFileSync(M3, 'utf8').replace(/^[\t ]*\/\/ https:\/\/jcgt\.org\/\S*\n/gm, ''));

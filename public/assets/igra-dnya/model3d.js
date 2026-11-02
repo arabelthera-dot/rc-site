@@ -3635,7 +3635,6 @@ void main() {
 
 			// GGX VNDF importance sampling (Eric Heitz 2018)
 			// "Sampling the GGX Distribution of Visible Normals"
-			// https://jcgt.org/published/0007/04/01/
 			vec3 importanceSampleGGX_VNDF(vec2 Xi, vec3 V, float roughness) {
 				float alpha = roughness * roughness;
 
