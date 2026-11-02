@@ -47,15 +47,23 @@ const dannye = JSON.stringify({ ...karta, geojson: url(karta.geojson), osnova: `
   import { scaleLinear } from 'd3-scale';
 
   const tiho = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const css = (el: Element, k: string, d: string) => getComputedStyle(el).getPropertyValue(k).trim() || d;
+  // Цвет темы (в т. ч. color-mix) → rgba: MapLibre понимает только простые цвета, браузер считает их на 1 пикселе.
+  const px = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+  const css = (el: Element, k: string, d: string) => {
+    const v = getComputedStyle(el).getPropertyValue(k).trim() || d;
+    if (!px) return d;
+    px.clearRect(0, 0, 1, 1); px.fillStyle = d; px.fillStyle = v; px.fillRect(0, 0, 1, 1);
+    const [r, g, b, a] = px.getImageData(0, 0, 1, 1).data;
+    return `rgba(${r},${g},${b},${(a / 255).toFixed(3)})`;
+  };
   const webgl = () => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } };
 
   // Лента осады: шкала дней, деления по неделям, метки шагов с «den»; нажатие на метку листает к шагу.
   function lenta(blok: HTMLElement, d: any, shagi: HTMLElement[]) {
     const mesto = blok.querySelector<HTMLElement>('.vk-lenta');
     if (!mesto || !d.lenta) return () => {};
-    const L = d.lenta, W = 600, H = 54, x = scaleLinear().domain([0, L.dney]).range([14, W - 14]);
-    const svg = select(mesto).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('preserveAspectRatio', 'none');
+    const L = d.lenta, W = Math.max(300, Math.round(mesto.clientWidth) - 16), H = 54, x = scaleLinear().domain([0, L.dney]).range([14, W - 14]);
+    const svg = select(mesto).append('svg').attr('viewBox', `0 0 ${W} ${H}`);
     svg.append('line').attr('class', 'vk-l-os').attr('x1', x(0)).attr('x2', x(L.dney)).attr('y1', 22).attr('y2', 22);
     const hod = svg.append('line').attr('class', 'vk-l-hod').attr('x1', x(0)).attr('x2', x(0)).attr('y1', 22).attr('y2', 22);
     const sh = L.shag || 7;
@@ -76,7 +84,7 @@ const dannye = JSON.stringify({ ...karta, geojson: url(karta.geojson), osnova: `
   async function karta(blok: HTMLElement, d: any, shagi: HTMLElement[]) {
     const mesto = blok.querySelector<HTMLElement>('.vk-karta')!;
     if (!webgl()) { blok.classList.add('vk-bez-karty'); return () => {}; }
-    const maplibregl = (await import('maplibre-gl')).default;
+    const maplibregl = await import('maplibre-gl');
     maplibregl.setWorkerUrl(workerUrl);
     const [osn, den] = await Promise.all([
       Promise.all(['susha', 'ozera', 'reki'].map((f) => fetch(`${d.osnova}${f}.geojson`).then((r) => r.json()))),
