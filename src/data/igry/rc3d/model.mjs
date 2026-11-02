@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { chasti } from './chasti.mjs';
 
 // pokazat(stage, glb, {progress}) → Promise: модель в кадре и первый кадр нарисован.
 export function pokazat(stage, glb, o = {}) {
@@ -33,9 +34,10 @@ export function pokazat(stage, glb, o = {}) {
     cam.position.set(R * 1.6, R * 0.7, R * 2.2); cam.near = R / 100; cam.far = R * 100; c.target.set(0, 0, 0);
     stage.appendChild(r.domElement); razmer(); c.update();
     new ResizeObserver(razmer).observe(stage);
+    const shag = chasti(stage, m, cam, r.domElement, c), clock = new THREE.Clock();
     let vidno = true;
     if ('IntersectionObserver' in window) new IntersectionObserver((es) => { vidno = es[0].isIntersecting; }).observe(stage);
-    r.setAnimationLoop(() => { if (!vidno) return; c.update(); r.render(scene, cam); });
+    r.setAnimationLoop(() => { const dt = clock.getDelta(); if (!vidno) return; if (shag) shag(dt); c.update(); r.render(scene, cam); });
     r.render(scene, cam);
     return { stop: () => r.setAnimationLoop(null) };
   });
