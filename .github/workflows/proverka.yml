@@ -124,12 +124,6 @@ jobs:
       - name: versii — у ссылок на свои js/css версия по содержимому
         timeout-minutes: 2
         run: node scripts/versii.mjs dist --proverka
-      # Адрес страницы на своём домене (r608, 02.11.2026): canonical и og:url страниц dist и карточек шаблона дня —
-      # только https://russian-civilization.ru/…, у страницы — её собственный путь (22 из 31 карточки января смотрели
-      # на старый rc-museum-preview). РЕЖИМ ОТЧЁТА: жёлтые строки и сводка шага, заявку не красит. Откат — удалить шаг.
-      - name: canonical-domen — адрес страницы на своём домене (отчёт)
-        timeout-minutes: 2
-        run: node scripts/canonical-domen.mjs --proba && node scripts/canonical-domen.mjs --dist dist
       # «Поддержать проект» на всех страницах (Р88, 21.10.2026). При PUBLIC_PODDERZHKA=0 в сборке не должно быть
       # ни текста «Поддержать проект», ни движка museum-support.js; по умолчанию проверка пропускается.
       - name: podderzhka — замок выключателя блока поддержки

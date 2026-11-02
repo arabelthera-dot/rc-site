@@ -3,7 +3,7 @@
 // 22 из 31 карточки января музея изобретений смотрели на старый arabelthera-dot.github.io/rc-museum-preview: живой сайт
 // это не задевало (конвейер src/integrations/full-pages.mjs ставит адрес заново), но карточка врала, и любой обход
 // конвейера отдал бы поисковику чужой первоисточник. В dist адрес сверяется ещё и с путём страницы.
-// РЕЖИМ ОТЧЁТА: находки — жёлтые строки (::warning) и сводка шага, код выхода всегда 0.
+// Запускается в конце npm run build (шаг сборки proverka.yml и деплой). РЕЖИМ ОТЧЁТА: находки — жёлтые строки (::warning) и сводка шага, код выхода всегда 0.
 // Запуск: node scripts/canonical-domen.mjs --proba && node scripts/canonical-domen.mjs [--dist dist]
 import fs from 'node:fs';
 import path from 'node:path';
