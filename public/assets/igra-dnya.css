@@ -9,4 +9,11 @@
 .igd .igd-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
 .igd .igd-bar span{display:block;height:100%;width:0;background:var(--gold,#c9a84c);transition:width .2s}
 .igd .igd-t{margin:10px 0 0;font-size:14px;color:var(--muted)}
+/* Части модели (r593): список рядом со сценой, факт раскрывается по нажатию — текст не поверх 3D. */
+.igd .igd-chasti{margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;align-items:start}
+.igd .igd-chasti h3{grid-column:1/-1;margin:0 0 4px;font-size:16px}
+.igd .igd-chasti details{border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:8px 12px;background:rgba(255,255,255,.03)}
+.igd .igd-chasti summary{cursor:pointer;font-weight:600}
+.igd .igd-chasti details[open] summary{color:var(--gold,#c9a84c)}
+.igd .igd-chasti p{margin:8px 0 2px;font-size:15px;line-height:1.5}
 @media (max-width:700px){.igd .igd-stage{aspect-ratio:4/5;max-height:62vh}}
