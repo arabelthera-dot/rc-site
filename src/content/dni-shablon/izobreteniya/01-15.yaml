@@ -353,8 +353,10 @@ fakty:
 razdely: []
 igra:
   imya: volchok
+  vtoraya: opyt-01-15
   css:
     - igra-volchok
+    - zhanr-opyt
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире

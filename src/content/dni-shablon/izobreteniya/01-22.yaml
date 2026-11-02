@@ -306,8 +306,10 @@ fakty:
 razdely: []
 igra:
   imya: vtoroy-zvuk
+  vtoraya: masshtab-01-22
   css:
     - igra-vtoroy-zvuk
+    - zhanr-masshtab
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире

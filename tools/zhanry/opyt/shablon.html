@@ -1,0 +1,37 @@
+<section class="block" id="games-opyt">
+  <div class="wrap">
+    <div class="kicker">Опыт · {{predmet}}</div>
+    <section class="zo" data-zhanr-opyt data-sostoyanie="zhdet" aria-label="Игра «Опыт»: {{predmet}}">
+      <h2 class="zo-h">{{h2}}</h2>
+      <p class="zo-seychas igra-seychas" aria-live="polite"><b>{{seychas}}</b></p>
+      <div class="zo-scena" role="img" aria-label="{{alt_sceny}}">
+        <img class="zo-foto" src="{{img_src}}" alt="" decoding="async">
+        <canvas class="zo-canvas" width="600" height="450" aria-hidden="true"></canvas>
+      </div>
+      <div class="zo-pod">
+        <p class="zo-schet" aria-live="off">{{parametr}}: <b class="zo-znach">0 %</b></p>
+        <div class="zo-shkala" aria-hidden="true"><span class="zo-polosa"></span><span class="zo-stupeni"></span></div>
+        <p class="zo-tekst igra-poyasnenie" aria-live="polite">Шагов истории внутри: {{n}} — по одному на каждой ступени шкалы. Начни опыт.</p>
+        <div class="lab-btns"><button class="btn gold zo-knopka" type="button">{{knopka}}</button></div>
+        <div class="zo-final" hidden>
+          <p class="zo-cifra"><b>{{cifra_v}}</b> {{cifra_k}}</p>
+          <figure class="zo-fig"><img src="{{img_src}}" alt="{{img_alt}}" loading="lazy" decoding="async"><figcaption>{{img_podpis}}</figcaption></figure>
+          <p class="zo-fakt"><b>Факт дня.</b> {{fakt}}</p>
+          <div class="lab-btns"><button class="btn ghost zo-snova" type="button">Повторить опыт</button></div>
+        </div>
+      </div>
+      <div class="igra-pravila" data-igra-pravila>
+        <h3 class="igra-pravila-h">Как играть</h3>
+        <p class="igra-pravila-zachem">{{zachem}}</p>
+        <ol class="igra-pravila-shagi">
+          <li><b>Держи кнопку «{{knopka}}»</b> (или жми часто) — {{parametr}} растёт; отпустишь — падает.</li>
+          <li><b>На каждой ступени</b> шкалы — шаг истории дня, всего {{n}}.</li>
+          <li><b>Дойди до конца шкалы</b>: {{kulminaciya}}.</li>
+        </ol>
+        <p class="igra-pravila-final">Финал: главная цифра и факт дня.</p>
+      </div>
+      <p class="zo-cap">Снимок — настоящий, свечение и узор нарисованы поверх. Игра собрана программой из данных дня ({{istochnik}}).</p>
+      <script type="application/json" class="zo-dannye">{{{json}}}</script>
+    </section>
+  </div>
+</section>

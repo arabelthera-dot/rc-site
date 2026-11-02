@@ -351,8 +351,10 @@ fakty:
 razdely: []
 igra:
   imya: k278-kilometr
+  vtoraya: masshtab-01-13
   css:
     - k278-kilometr
+    - zhanr-masshtab
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире

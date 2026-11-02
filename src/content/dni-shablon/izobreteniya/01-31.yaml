@@ -296,8 +296,10 @@ fakty:
 razdely: []
 igra:
   imya: razgoni-girotron
+  vtoraya: opyt-01-31
   css:
   - igra-razgoni-girotron
+  - zhanr-opyt
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире

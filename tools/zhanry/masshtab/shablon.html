@@ -1,0 +1,40 @@
+<section class="block" id="games-masshtab">
+  <div class="wrap">
+    <div class="kicker">Угадай и проверь масштабом · {{predmet}}</div>
+    <section class="zm" data-zhanr-masshtab data-sostoyanie="zhdet" aria-label="Игра «Угадай и проверь масштабом»: {{predmet}}">
+      <h2 class="zm-h">{{h2}}</h2>
+      <p class="zm-seychas igra-seychas" aria-live="polite"><b>{{seychas}}</b></p>
+      <div class="zm-scena">
+        <svg class="zm-svg" viewBox="0 0 300 420" role="img" aria-label="{{alt_sceny}}">
+          <image class="zm-foto" href="{{img_src}}" x="150" y="8" width="128" height="96" preserveAspectRatio="xMidYMid slice"/>
+        </svg>
+      </div>
+      <div class="zm-pod">
+        <p class="zm-schet" aria-live="polite">Твоя догадка: <b class="zm-dogadka">{{start}}</b> {{edinica}}</p>
+        <label class="zm-polzunok"><span class="vh">Твоя догадка, {{edinica}}</span>
+          <input class="zm-range" type="range" min="{{min}}" max="{{max}}" step="{{shag}}" value="{{start}}"></label>
+        <p class="zm-tekst igra-poyasnenie" aria-live="polite">Поставь ползунок туда, где, по-твоему, правильный ответ. Подсказки на шкале — линии: золотые — цифры дня, синие — то, что ты знаешь.</p>
+        <ul class="zm-legenda"></ul>
+        <div class="lab-btns"><button class="btn gold zm-knopka" type="button">Проверить</button></div>
+        <div class="zm-final" hidden>
+          <p class="zm-cifra"><b>{{cifra_v}}</b> {{cifra_k}}</p>
+          <figure class="zm-fig"><img src="{{img_src}}" alt="{{img_alt}}" loading="lazy" decoding="async"><figcaption>{{img_podpis}}</figcaption></figure>
+          <p class="zm-fakt"><b>Факт дня.</b> {{fakt}}</p>
+          <div class="lab-btns"><button class="btn ghost zm-snova" type="button">Угадать ещё раз</button></div>
+        </div>
+      </div>
+      <div class="igra-pravila" data-igra-pravila>
+        <h3 class="igra-pravila-h">Как играть</h3>
+        <p class="igra-pravila-zachem">{{zachem}}</p>
+        <ol class="igra-pravila-shagi">
+          <li><b>Двигай ползунок</b> — поставь свою догадку.</li>
+          <li><b>Нажми «Проверить»</b>: снимок пойдёт по шкале к настоящей цифре мимо меток ({{metki_spisok}}). По дороге — шаги истории дня (всего {{n}}).</li>
+          <li><b>В конце</b> — насколько ты ошибся, настоящий предмет и факт дня.</li>
+        </ol>
+        <p class="igra-pravila-final">Финал: настоящая цифра и факт дня.</p>
+      </div>
+      <p class="zm-cap">Шкала в масштабе, снимок — настоящий. Игра собрана программой из данных дня ({{istochnik}}).</p>
+      <script type="application/json" class="zm-dannye">{{{json}}}</script>
+    </section>
+  </div>
+</section>
