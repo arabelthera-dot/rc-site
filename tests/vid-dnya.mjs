@@ -19,7 +19,7 @@ const DIST = process.argv[2] ?? 'dist';
 const DEN = path.join(DIST, 'muzei/izobreteniya/den');
 const ETALON = '01-13';
 // Игра 13-го нарисована старой страницей без карточки — её css называем здесь (единственное, чего нет в собранной странице).
-const IGRA_13 = ['k278-kilometr.css'];
+const IGRA_13 = ['k278-kilometr.css', 'igra-dnya.css'];   // igra-dnya.css — 3D наверху у 13-го (r592, Р432)
 const BAZA = 'izobreteniya-den.css';
 const KARTOCHKI = 'src/content/dni-shablon/izobreteniya';
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
@@ -79,7 +79,8 @@ const e = razbor(read(ETALON));
 const baza13 = norm(e.stili.find((s) => s.style === '')?.css ?? '');
 const stili13 = obshchieStili(e.stili, null, IGRA_13);
 // Второй блок фактов (#fakty-dnya, образец 18-го) — необязателен: с переводом 13-го на шаблон он есть и у эталона.
-const bloki13 = e.bloki.filter((b) => b !== '#fakty-dnya');
+// Блок игры дня (#games, Р432) — только у дней с 3D: у эталона он есть, у дня без 3D его нет — не ошибка вида.
+const bloki13 = e.bloki.filter((b) => b !== '#fakty-dnya' && b !== '#games');
 const nabor13 = new Set(bloki13);
 const telo13 = new Set(vTele(e.stili));
 if (!stili13.includes(BAZA) || bloki13.length < 5) { console.error('vid-dnya: эталон 01-13 разобрать не удалось (нет базового <style> или блоков)'); process.exit(1); }
