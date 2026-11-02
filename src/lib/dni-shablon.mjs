@@ -76,7 +76,11 @@ export const skhema = z.object({
   // pravila — шаги «Как играть» под 3D (проверка igra-pravila).
   igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), vtoraya: z.string().regex(/^[a-z0-9-]+$/).optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]),
     model3d: z.object({ glb: z.string().regex(/^[\w\/.-]+\.glb$/), kicker: str.default('Игра дня · 3D'), h2: str, lead: str, alt: str,
-      razmer: str, pravila: z.array(str).min(1) }).optional(),
+      razmer: str, pravila: z.array(str).min(1),
+      // Части модели (r595): кнопки под сценой и нажатие на саму модель; uzel — имя узла в .glb, факт — HTML рядом со сценой,
+      // только из фактов этого дня или русских музейных источников. razborka — кнопка «Разобрать» (смещения — extras.razborka узлов).
+      chasti: z.array(z.object({ uzel: z.string().regex(/^[\w-]+$/), nazvanie: str, fakt: str, istochnik: str })).default([]),
+      razborka: z.boolean().default(false) }).optional(),
     rc3d: z.object({ scen: z.string().regex(/^[a-z0-9-]+$/), kicker: str.default('Главное действие · 3D'), h2: str, lead: str, alt: str,
       zastavka: z.enum(['rolik', 'kadr']).optional(), razmer: str.default('около 1 МБ'), pravila: z.array(str).min(1) }).optional() }),
   pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }),

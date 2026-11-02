@@ -52,6 +52,11 @@ const m3Html = m3 ? `<section class="block igra-dnya igd" id="games" data-igra-d
     <div class="igd-stage" id="igdStage" data-igra-scena role="img" aria-label="${e(m3.alt)}">
       <div class="igd-load" id="igdLoad"><div class="igd-bar"><span id="igdFill"></span></div><p class="igd-t" id="igdT">Загрузка 3D (${m3.razmer})…</p></div>
     </div>
+    ${m3.chasti.length ? `<div class="igd-chasti" data-igd-chasti>
+      <p class="igd-chasti-h">Нажми часть на модели или здесь:</p>
+      <div class="igd-knopki">${m3.chasti.map((x) => `<button type="button" class="igd-kn" data-uzel="${x.uzel}" aria-pressed="false">${x.nazvanie}</button>`).join('')}${m3.razborka ? `<button type="button" class="igd-kn igd-razbor" data-igd-razbor data-razobrat="Разобрать" data-sobrat="Собрать" aria-pressed="false">Разобрать</button>` : ''}</div>
+      ${m3.chasti.map((x) => `<div class="igd-fakt" data-uzel="${x.uzel}" hidden><b>${x.nazvanie}</b><p>${x.fakt}</p><small>${x.istochnik}</small></div>`).join('\n      ')}
+    </div>` : ''}
     ${pravilaHtml(m3.pravila)}
     <noscript><div class="noscript-box">Для 3D нужен JavaScript.</div></noscript>
   </div>

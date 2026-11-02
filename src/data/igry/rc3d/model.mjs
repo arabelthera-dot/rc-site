@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { chasti } from './chasti.mjs';
 
 // pokazat(stage, glb, {progress}) → Promise: модель в кадре и первый кадр нарисован.
 export function pokazat(stage, glb, o = {}) {
@@ -32,6 +33,7 @@ export function pokazat(stage, glb, o = {}) {
     const R = size.length() / 2;
     cam.position.set(R * 1.6, R * 0.7, R * 2.2); cam.near = R / 100; cam.far = R * 100; c.target.set(0, 0, 0);
     stage.appendChild(r.domElement); razmer(); c.update();
+    chasti({ stage, r, cam, c, m });   // части с фактами рядом, если у дня есть igra.model3d.chasti
     new ResizeObserver(razmer).observe(stage);
     let vidno = true;
     if ('IntersectionObserver' in window) new IntersectionObserver((es) => { vidno = es[0].isIntersecting; }).observe(stage);
