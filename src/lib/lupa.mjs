@@ -7,6 +7,14 @@
 // страницы работают как раньше, кадр просто не приближается.
 export const LUPA_VKL = true;
 
+// ГЛУБОКИЙ ЗУМ (решение Сергея Р449, 02.11.2026): кадр с исходником от MIN_GLUBOKIY px по длинной стороне открывается не в
+// PhotoSwipe, а в OpenSeadragon (BSD-3, assets/vendor/) по плиткам Deep Zoom (DZI) — приближение до мазка и подписи на чертеже,
+// телефон качает только видимые плитки. Плитки режет сборка (sharp = libvips dzsave) в dist/_dz/. ВЫКЛЮЧАТЕЛЬ —
+// GLUBOKIY_ZUM_VKL: false — глубокого зума нет, все кадры открывает PhotoSwipe, как раньше. Пробная сборка без правки
+// файла: RC_GLUBOKIY_ZUM=1 npm run build (RC_GLUBOKIY_ZUM_POROG=1500 — порог ниже, только для пробы).
+export const GLUBOKIY_ZUM_VKL = false || process.env.RC_GLUBOKIY_ZUM === '1';
+export const MIN_GLUBOKIY = Number(process.env.RC_GLUBOKIY_ZUM_POROG) || 2000;
+
 // Меньше этого по длинной стороне — лупа не включается: увеличивать было бы нечего, кроме пикселей.
 export const MIN_STORONA = 1200;
 // Страница с меткой <html data-lupa-vse> (шаблон дня изобретений, Р383) — лупа на всех кадрах без порога: на телефоне
@@ -81,11 +89,12 @@ export function kadry(html, base = '/') {
 
 // Разметить страницу: кадрам с исходником не меньше MIN_STORONA — data-lupa (адрес файла), data-lupa-w/-h
 // (размер файла, снят на сборке) и data-lupa-srcset (копии kartinki + сам файл — телефон не качает оригинал,
-// пока не приблизит). razmer(put) → [w, h] | null. Возвращает { html, vkl, kadrov, prichiny }.
-export function razmetit(html, { base = '/', razmer, min = VSE.test(html) ? 0 : MIN_STORONA }) {
+// пока не приблизит). razmer(put) → [w, h] | null. dz(put) → адрес .dzi | null — глубокий зум (data-lupa-dzi).
+// Возвращает { html, vkl, kadrov, prichiny, dz } (dz — сколько кадров с глубоким зумом).
+export function razmetit(html, { base = '/', razmer, dz = () => null, min = VSE.test(html) ? 0 : MIN_STORONA }) {
   const list = kadry(html, base);
   const prichiny = {};
-  let vkl = 0, kadrov = 0;
+  let vkl = 0, kadrov = 0, glub = 0;
   const repl = [];
   for (const k of list) {
     if (k.reason && k.reason !== 'не в figure' && k.reason !== 'картинка — ссылка на страницу') {
@@ -108,11 +117,13 @@ export function razmetit(html, { base = '/', razmer, min = VSE.test(html) ? 0 : 
       if (!set.some((s) => s.endsWith(` ${w}w`))) set.push(`${own} ${w}w`);
       t = put(t, `data-lupa-srcset="${esc(set.join(', '))}"`);
     }
+    const dzi = dz(k.full);
+    if (dzi) { t = put(t, `data-lupa-dzi="${esc(dzi)}"`); glub++; }
     repl.push([k.index, k.tag.length, t]);
     vkl++;
   }
   for (const [i, len, t] of repl.reverse()) html = html.slice(0, i) + t + html.slice(i + len);
-  return { html, vkl, kadrov, prichiny };
+  return { html, vkl, kadrov, prichiny, dz: glub };
 }
 
 // Подключение на страницу с хотя бы одним кадром под лупу: вид — в <head> (значок и курсор без мигания),

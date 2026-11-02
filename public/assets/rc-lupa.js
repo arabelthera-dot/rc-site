@@ -3,7 +3,10 @@
    Кадры размечает сборка (src/lib/lupa.mjs): img[data-lupa] — адрес полного файла, data-lupa-w/-h — его размер,
    data-lupa-srcset — копии разной ширины. Здесь: значок лупы в углу кадра, курсор, открытие по нажатию/Enter.
    Приближение: пальцами, двойным касанием, колесом/щелчком, клавиатурой. Подпись — под кадром на своём тёмном поле,
-   место под неё вычитается из кадра; при приближении прячется (не ложится на изображение). Вид — rc-lupa.css. */
+   место под неё вычитается из кадра; при приближении прячется (не ложится на изображение). Вид — rc-lupa.css.
+   Глубокий зум (Р449): кадр с data-lupa-dzi (плитки Deep Zoom, режет сборка) открывается в OpenSeadragon (BSD-3,
+   assets/vendor/openseadragon.min.js — тот же, что у museum-deep-zoom.js; грузится при первом открытии): кнопки сверху, кадр посередине, подпись снизу —
+   три своих полосы, ничего не ложится на изображение. Щипок, двойное касание, колесо, клавиши +/−/0, Esc. */
 (function () {
   if (window.__rcLupa) return; window.__rcLupa = 1;
   var me = document.currentScript && document.currentScript.src || '';
@@ -60,9 +63,77 @@
     });
   }
 
+  var osd;
+  function loadOsd() {
+    if (!osd) osd = new Promise(function (ok, no) {
+      if (window.OpenSeadragon) return ok(window.OpenSeadragon);
+      var sc = document.createElement('script'); sc.src = me.replace(/[^/]*$/, '') + 'vendor/openseadragon.min.js';
+      sc.onload = function () { ok(window.OpenSeadragon); }; sc.onerror = function () { osd = null; no(); }; document.head.appendChild(sc);
+    });
+    return osd;
+  }
+
+  function knopka(cls, label, text) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'rc-dz-k ' + cls;
+    b.setAttribute('aria-label', label); b.title = label; b.textContent = text; return b;
+  }
+
+  function openDz(img) {
+    var back = document.activeElement;
+    var box = document.createElement('div'); box.className = 'rc-dz';
+    box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Кадр крупно, глубокое приближение');
+    var bar = document.createElement('div'); bar.className = 'rc-dz-bar';
+    var plus = knopka('rc-dz-plus', 'Приблизить (+)', '+'), minus = knopka('rc-dz-minus', 'Отдалить (−)', '−'),
+      home = knopka('rc-dz-home', 'Весь кадр (0)', '⤢'), close = knopka('rc-dz-close', 'Закрыть (Esc)', '×');
+    bar.append(plus, minus, home, close);
+    var pole = document.createElement('div'); pole.className = 'rc-dz-pole';
+    var cap = caption(img), podpis = document.createElement('div'); podpis.className = 'rc-dz-podpis';
+    podpis.textContent = cap; podpis.hidden = !cap;
+    box.append(bar, pole, podpis);
+    document.body.appendChild(box);
+    document.documentElement.classList.add('rc-dz-otkryt');
+    close.focus();
+    var viewer;
+    function shut() {
+      document.removeEventListener('keydown', key, true);
+      if (viewer) viewer.destroy();
+      box.remove(); document.documentElement.classList.remove('rc-dz-otkryt');
+      if (back && back.focus) back.focus();
+    }
+    function key(e) {
+      if (e.key === 'Escape') { e.preventDefault(); shut(); }
+      else if (e.key === 'Tab') { // фокус не уходит из окна
+        var f = bar.querySelectorAll('button'), first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+    document.addEventListener('keydown', key, true);
+    close.addEventListener('click', shut);
+    loadOsd().then(function (OSD) {
+      if (!box.isConnected) return;
+      viewer = OSD({
+        element: pole, tileSources: img.dataset.lupaDzi, showNavigationControl: false, prefixUrl: '',
+        visibilityRatio: 1, constrainDuringPan: true, maxZoomPixelRatio: 2, animationTime: 0.6, springStiffness: 9,
+        immediateRender: true, preserveImageSizeOnResize: true, keyboardNavEnabled: false, // клавиши — свои, ниже
+        gestureSettingsMouse: { clickToZoom: true, dblClickToZoom: false, scrollToZoom: true },
+        gestureSettingsTouch: { pinchToZoom: true, dblClickToZoom: true, flickEnabled: true, clickToZoom: false }
+      });
+      plus.addEventListener('click', function () { viewer.viewport.zoomBy(2); viewer.viewport.applyConstraints(); });
+      minus.addEventListener('click', function () { viewer.viewport.zoomBy(0.5); viewer.viewport.applyConstraints(); });
+      home.addEventListener('click', function () { viewer.viewport.goHome(); });
+      box.addEventListener('keydown', function (e) {
+        if (e.key === '+' || e.key === '=') plus.click(); else if (e.key === '-' || e.key === '_') minus.click(); else if (e.key === '0') home.click(); else return;
+        e.preventDefault();
+      });
+      viewer.addHandler('open-failed', function () { shut(); open([img], 0); }); // плиток нет — обычная лупа
+    }, function () { shut(); open([img], 0); });
+  }
+
   function kadry() { return Array.prototype.slice.call(document.querySelectorAll('img[data-lupa]')); }
   function go(img, e) {
     if (e) e.preventDefault();
+    if (img.dataset.lupaDzi) return openDz(img);
     var all = kadry(); open(all, Math.max(0, all.indexOf(img)));
   }
 

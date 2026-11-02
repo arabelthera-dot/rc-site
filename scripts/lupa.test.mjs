@@ -32,6 +32,12 @@ assert.match(out.html, /alt="Большой"[^>]*data-lupa="\/muzei\/a\/big\.jpg
 assert.match(out.html, /alt="Ссылка на полный файл"[^>]*data-lupa="\/muzei\/a\/full\.jpg" data-lupa-w="3000" data-lupa-h="2000">/);
 assert.doesNotMatch(out.html, /alt="Мелкий"[^>]*data-lupa/);
 assert.equal(out.prichiny['исходник мельче 1200 px'], 1);
+// глубокий зум (Р449): кадру, которому сборка нарезала плитки, — data-lupa-dzi; остальным — нет
+const glub = razmetit(html, { razmer, dz: (p) => (p === 'muzei/a/full.jpg' ? '/_dz/abc.dzi' : null) });
+assert.equal(glub.dz, 1);
+assert.match(glub.html, /alt="Ссылка на полный файл"[^>]*data-lupa-dzi="\/_dz\/abc\.dzi"/);
+assert.doesNotMatch(glub.html, /alt="Большой"[^>]*data-lupa-dzi/);
+assert.equal(out.dz, 0, 'без плиток — без глубокого зума');
 // повторная разметка ничего не меняет
 assert.equal(razmetit(out.html, { razmer }).html, out.html);
 console.log('lupa.test: ok');
