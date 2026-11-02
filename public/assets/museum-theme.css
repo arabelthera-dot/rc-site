@@ -406,6 +406,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none}
 .credit a{color:inherit;text-decoration:underline;text-decoration-color:rgba(212,175,55,.6)}
 /* Обложка дня — figure.hero-fig (замок картинок Р231): без полей браузера у figure; :where — не перебивает стили страниц */
 :where(figure.hero-fig){margin:0}
+/* «Русские не сдаются»: обложка дня — figure.hero-fig со сценой скроллтеллинга; кадр целиком, без среза cover (замок r274, r596) */
+[data-museum="ne-sdayutsya"] figure.hero-fig .st-stage .st-scene{object-fit:contain;object-position:center;transform:none!important}
+[data-museum="ne-sdayutsya"] .hero-medallion figure.hero-fig{max-width:900px;margin:0 auto 24px;text-align:left}
 /* Обложка-карта под заголовком дня (первопроходцы 01-07: над заголовком холст-игра) */
 .hero-karta{background:#05090f;padding:14px 0 10px}
 .hero-karta img{display:block;width:100%;max-width:820px;height:auto;margin:0 auto}
