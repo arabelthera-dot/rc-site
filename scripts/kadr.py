@@ -68,7 +68,8 @@ PRAVA = {'goskatalog': 'Госкаталог прав не даёт — авто
          'rusmuseum': '© Русский музей, открытой лицензии нет',
          'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
          'ar_culture': 'у музея-держателя — по карточке Артефакта'}
-FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'rusneb', 'pastvu']  # порядок поиска
+FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu']  # порядок поиска
+POISK_PDF = ['rusneb']  # r612: библиотеки, у которых find ищет издания (put — как PDF_FONDY, «адрес PDF#page=N»)
 # Р134: библиотеки с PDF изданий — put без поиска, «адрес PDF#page=N» (страница с 1), права — только --prava
 PDF_FONDY = ['rusneb', 'prlib', 'rsl', 'nlr', 'shpl']
 RAZRESHENIE = None  # Р90: Викисклад — только с --razreshenie (слово Сергея), иначе не трогаем
@@ -367,7 +368,7 @@ def find(query, n=10, geo=None):
         names = {}
         warn(f'sources.json не прочитан ({e}) — российские фонды будут пропущены')
     got = []
-    for fond in FONDY + (['commons'] if RAZRESHENIE else []):
+    for fond in FONDY + POISK_PDF + (['commons'] if RAZRESHENIE else []):
         name = names.get(fond, {}).get('name', fond)
         print(f'== {fond} — {name}', flush=True)
         try:
