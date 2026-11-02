@@ -5,9 +5,10 @@
 import { getCollection } from 'astro:content';
 import { kartochki } from '../../../../lib/dni-shablon.mjs';
 import DenIzobreteniya from '../../../../layouts/DenIzobreteniya.astro';
+import DenNeSdayutsya from '../../../../layouts/DenNeSdayutsya.astro';
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
-  const layouts = { izobreteniya: DenIzobreteniya };
+  const layouts = { izobreteniya: DenIzobreteniya, 'ne-sdayutsya': DenNeSdayutsya };
   // Карточки с `adres: den` (Р286) живут на обычном адресе den/ММ-ДД (den/[key].astro), здесь — только пробы.
   return kartochki().filter((d) => d.adres !== 'den').map((d) => {
     if (!layouts[d.muzei]) throw new Error(`den-shablon: у музея ${d.muzei} нет шаблона дня`);
@@ -15,5 +16,6 @@ export async function getStaticPaths() {
   });
 }
 const { d, museum } = Astro.props;
+const Layout = { izobreteniya: DenIzobreteniya, 'ne-sdayutsya': DenNeSdayutsya }[d.muzei];
 ---
-<DenIzobreteniya d={d} museum={museum} />
+<Layout d={d} museum={museum} />
