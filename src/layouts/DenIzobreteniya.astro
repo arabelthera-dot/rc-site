@@ -16,37 +16,53 @@ const MES = ['января', 'февраля', 'марта', 'апреля', 'м
 const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.key.slice(0, 2)) - 1]} ${d.head.god}: ${d.head.sobytie}`;
 const title = kogda ? `${kogda} — ${muzeyName} — Русская цивилизация` : d.head.title;
 const ogTitle = kogda || d.head.og.title;
-// 3D-игра дня на движке rc3d (igra.rc3d): заставка и «Играть» над 2D-игрой; сам движок грузит igry/rc3d-den.js по кнопке.
-const r3 = d.igra.rc3d;
+// Игра дня (Р432): 3D наверху страницы, сразу под обложкой и хуком; 2D (igra.imya) — только запасной режим этого дня:
+// лежит в <template id="igra2d"> и сама встаёт на место 3D на слабом устройстве (assets/igra-dnya.js). 3D — модель
+// предмета (igra.model3d, .glb) или сцена движка rc3d (igra.rc3d). Нет 3D — нет блока игры вообще: ни 2D, ни css, ни скриптов.
+const r3 = d.igra.rc3d, m3 = d.igra.model3d, est3d = !!(r3 || m3);
 const e = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-const rc3dHtml = r3 ? `<div id="rc3d" data-s="${r3.scen}"${r3.zastavka ? ` data-zastavka="${r3.zastavka}"` : ''}>
+const pravilaHtml = (p: string[]) => `<div class="igra-pravila" data-igra-pravila><h2>Как играть</h2><ol class="igra-pravila-shagi">${p.map((x) => `<li>${x}</li>`).join('')}</ol></div>`;
+const rc3dHtml = r3 ? `<div class="igra-dnya" id="games" data-igra-dnya><div id="rc3d" data-s="${r3.scen}"${r3.zastavka ? ` data-zastavka="${r3.zastavka}"` : ''}>
 <section class="block rc3-blok rc3-den" id="games-3d">
   <div class="wrap">
     <div class="kicker">${r3.kicker}</div>
     <h2>${r3.h2}</h2>
     <p class="r3-lead">${r3.lead}</p>
     <div class="lab rc3" data-sostoyanie="zhdet">
-      <div class="rc3-stage" id="rc3dStage" role="img" aria-label="${e(r3.alt)}">${r3.zastavka ? '<video class="rc3-video" id="rc3dVideo" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>' : ''}</div>
+      <div class="rc3-stage" id="rc3dStage" data-igra-scena role="img" aria-label="${e(r3.alt)}">${r3.zastavka ? '<video class="rc3-video" id="rc3dVideo" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>' : ''}</div>
       <div class="rc3-under">
-        <p class="rc3-hint" id="rc3dHint">Нажми «Играть»: загрузится 3D-сцена (${r3.razmer}). Та же игра без 3D — ниже, открывается сразу.</p>
+        <p class="rc3-hint" id="rc3dHint">Нажми «Играть»: загрузится 3D-сцена (${r3.razmer}).</p>
         <div class="lab-btns"><button class="btn gold" type="button" id="rc3dRun">Играть</button></div>
         <div class="rc3-load" id="rc3dLoad" hidden>
           <div class="rc3-load-bar" id="rc3dLoadBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="rc3dLoadT"><span id="rc3dLoadFill"></span></div>
           <p class="rc3-load-t" id="rc3dLoadT">Загрузка 3D: 0 %</p>
         </div>
-        <div class="rc3-slab" id="rc3dSlab" hidden>
-          <p id="rc3dSlabT">На этом телефоне 3D может тормозить. Есть та же игра без 3D — она чуть ниже и открывается сразу.</p>
-          <div class="lab-btns"><a class="btn gold" href="#games">Играть в 2D ниже</a></div>
-          <p class="rc3-slab-vse"><button class="rc3-link" type="button" id="rc3dVse">Всё равно открыть 3D</button></p>
-        </div>
-        <noscript><div class="noscript-box">Для 3D нужен JavaScript. Та же игра без 3D — ниже.</div></noscript>
+        <noscript><div class="noscript-box">Для 3D нужен JavaScript.</div></noscript>
       </div>
     </div>
+    ${pravilaHtml(r3.pravila)}
   </div>
 </section>
-</div>
-` : '';
-const igraHtml = rc3dHtml + [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
+</div></div>` : '';
+const m3Html = m3 ? `<section class="block igra-dnya igd" id="games" data-igra-dnya data-glb="${m3.glb}">
+  <div class="wrap">
+    <div class="kicker">${m3.kicker}</div>
+    <h2>${m3.h2}</h2>
+    <p class="igd-lead">${m3.lead}</p>
+    <div class="igd-stage" id="igdStage" data-igra-scena role="img" aria-label="${e(m3.alt)}">
+      <div class="igd-load" id="igdLoad"><div class="igd-bar"><span id="igdFill"></span></div><p class="igd-t" id="igdT">Загрузка 3D (${m3.razmer})…</p></div>
+    </div>
+    ${pravilaHtml(m3.pravila)}
+    <noscript><div class="noscript-box">Для 3D нужен JavaScript.</div></noscript>
+  </div>
+</section>` : '';
+// Скрипты 2D-запаса — по порядку, как раньше на странице: игра, вторая игра, её -dop.
+const zapasSkripty = [d.igra.imya, d.igra.vtoraya, d.igra.dop && `${d.igra.imya}-dop`].filter(Boolean).map((i) => `igry/${i}.js`);
+const zapas2d = [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
+const igraHtml = est3d ? `${rc3dHtml}${m3Html}\n<template id="igra2d" data-skripty="${e(JSON.stringify(zapasSkripty))}">\n${zapas2d}\n</template>` : '';
+// Полоса разделов: пункт игры (#games…) — только у дня с 3D и всегда на блок наверху.
+const daynav = d.daynav.flatMap((n) => (/^games/.test(n.id) ? (est3d ? [{ ...n, id: 'games' }] : []) : [n]))
+  .filter((n, i, all) => all.findIndex((x) => x.id === n.id) === i);
 // JS-строка в одинарных кавычках — как в старых страницах: конвейер (src/lib/sosedi-polnye.mjs) ищет
 // prev/next в window.MUSEUM_CHROME именно в таком виде и переписывает на ближайшие полные страницы.
 const q = (s: string) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/</g, '\\u003c')}'`;
@@ -146,7 +162,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <script type="application/ld+json" is:inline set:html={json(d.head.ld)}></script>
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
 <link rel="stylesheet" href="../../assets/igra-pravila.css">
-{d.igra.css.map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}{r3 && <link rel="stylesheet" href="../../assets/igra-rc3d.css">}
+{est3d && d.igra.css.map((f) => <link rel="stylesheet" href={`../../assets/${f}.css`}>)}{r3 && <link rel="stylesheet" href="../../assets/igra-rc3d.css">}{est3d && <link rel="stylesheet" href="../../assets/igra-dnya.css">}
 </head>
 <body>
 
@@ -192,6 +208,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
     </div>
   </div>
 </header>
+<Fragment set:html={igraHtml} />
 
 <div class="hero-under">
   <div class="wrap">
@@ -203,7 +220,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 
 <nav class="daynav" aria-label="Разделы дня">
   <div class="wrap">
-    {d.daynav.map((n) => <a href={`#${n.id}`}>{n.label}</a>)}
+    {daynav.map((n) => <a href={`#${n.id}`}>{n.label}</a>)}
   </div>
 </nav><Fragment set:html={posle('daynav')} />
 
@@ -241,7 +258,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 {d.audioguide && <section class="block" id="audioguide"></section>}<Fragment set:html={posle('audioguide')} />
 
 
-<Fragment set:html={igraHtml} /><Fragment set:html={posle('igra')} />
+<Fragment set:html={posle('igra')} />
 
 {/* Кадры дня — блок #kadry сразу после игры, как у 13 янв.; вид — общие правила #kadry в izobreteniya-den.css. */}
 {d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis} /></figcaption></figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
@@ -327,8 +344,8 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <script is:inline set:html={scoreJs}></script>
 <script is:inline src="../../assets/museum-score.js"></script>
 <script is:inline set:html={knopkiJs}></script>
-{r3 && <script is:inline src="igry/rc3d-den.js"></script>}<script is:inline src={`igry/${d.igra.imya}.js`}></script>{d.igra.vtoraya && <script is:inline src={`igry/${d.igra.vtoraya}.js`}></script>}
-<script is:inline set:html={quizJs}></script>{d.igra.dop && <script is:inline src={`igry/${d.igra.imya}-dop.js`}></script>}
+{est3d && <script is:inline src="../../assets/igra-dnya.js"></script>}{r3 && <script is:inline src="igry/rc3d-den.js"></script>}
+<script is:inline set:html={quizJs}></script>
 {d.skripty.map((s) => 'src' in s ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.js}></script>)}
 <script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
 {chromeJs && <script is:inline set:html={chromeJs}></script>}

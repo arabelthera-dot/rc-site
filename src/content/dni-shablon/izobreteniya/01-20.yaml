@@ -426,7 +426,7 @@ proof:
   claim_id: rc:izobreteniya:lunin:claim-first-vitamin-experiment
   ours:
     kind: диссертация
-    title: Н. И. Лунин. «О значении неорганических солей для питания животных» — докторская диссертация, защищена в Дерптском университете 18 сентября 1880 г.; опубликована в 1881 г.
+    title: "Н. И. Лунин. «О значении неорганических солей в питании животных» (по БСЭ; в оригинале по-немецки: «Über die Bedeutung der anorganischen Salze für die Ernährung des Thieres») — докторская диссертация, защищена в Дерптском университете 18 сентября 1880 г.; опубликована в 1881 г."
     date: "1880"
     holder: Н. И. Лунин, Дерптский (Юрьевский) университет
     source_url: https://cyberleninka.ru/article/n/nikolay-ivanovich-lunin-osnovatel-vitaminologii-i-uchenyy-vnesshiy-znachitelnyy-vklad-v-razvitie-gigieny-pitaniya

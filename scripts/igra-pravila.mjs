@@ -180,6 +180,14 @@ function stranica(m, key) {
   return fs.existsSync(f) ? { html: fs.readFileSync(f, 'utf8'), ist: f } : null;
 }
 
+// Та же страница в базе заявки (git show), null — если дня в базе не было.
+function stranicaBazy(m, key) {
+  const git = (f) => { try { return execFileSync('git', ['show', `${baza}:${f}`], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }); } catch { return null; } };
+  const j = git(path.posix.join(DAYS, m, `${key}.json`));
+  if (j) { const d = JSON.parse(j); if (d.body && d.doc) return assemble(d); }
+  return git(path.posix.join(FULL, m, `${key}.html`));
+}
+
 // Все страницы: отчёт по музеям (счёт — по играм).
 const muzei = fs.readdirSync(FULL).filter((m) => fs.statSync(path.join(FULL, m)).isDirectory()).sort();
 const schet = {}, bez = [];
@@ -228,7 +236,14 @@ for (const f of izm) {
   const st = stranica(path.basename(path.dirname(f)), path.basename(f, '.html'));
   if (!st || !estIgra(st.html)) continue;
   const o = oshibkiPravil(st.html);
-  if (o.length) krasnye.push(`${st.ist}: ${o.join('; ')}`);
+  if (!o.length) continue;
+  // «Не хуже, чем было» (Р423, 01.11.2026): заявка, которая не трогала игру (кадры, факты), не падает на старом
+  // пробеле страницы — красное только для новых ошибок: страница новая или ошибок больше, чем в базе. Старое — отчёт.
+  const b = stranicaBazy(path.basename(path.dirname(f)), path.basename(f, '.html'));
+  const bylo = b && estIgra(b) ? new Set(oshibkiPravil(b)) : null;
+  const novye = bylo ? o.filter((x) => !bylo.has(x)) : o;
+  if (novye.length) krasnye.push(`${st.ist}: ${novye.join('; ')}`);
+  else console.log(`::warning::${st.ist}: у игры нет инструкции и в базе (заявка игру не ухудшила) — ${o.join('; ')}`);
 }
 console.log(`igra-pravila: изменено в заявке страниц ${izm.length}, с игрой без инструкции ${krasnye.length}`);
 if (krasnye.length) {
