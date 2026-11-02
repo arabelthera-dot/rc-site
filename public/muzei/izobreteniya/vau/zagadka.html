@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Загадка дня — Музей «Что изобрели русские первыми в мире»</title>
+<!-- r569: слой «Загадка дня» из пробы r566 (r7.html), вопросы — из zagadki-01.json. Не для выкладки. -->
+<style>
+:root{--fon:#05070c;--ink:#eef2f8;--muted:#8b97ad;--zoloto:#c9a84c;--zoloto-l:#e7cf8a;--zel:#3fbf6a;--kr:#e0574f;--linia:rgba(255,255,255,.08)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--fon);font:17px/1.6 'Inter','Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.btn{cursor:pointer;border-radius:12px;padding:12px 18px;font:600 15px 'Inter',sans-serif;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:var(--ink)}
+.btn.z{background:linear-gradient(135deg,var(--zoloto),#b8882b);color:#1a0f00;border:0}
+#ritual{min-height:100vh;background:radial-gradient(120% 80% at 50% 0%,#121a2b,#05070c 70%);padding:60px 6vw 90px}
+#ritual .vnutri{max-width:640px;margin:0 auto;text-align:center}
+.kicker{color:var(--zoloto-l);font:600 13px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase}
+#ritual h2{font-size:clamp(30px,4vw,48px);line-height:1.15;margin:10px 0 8px}
+.vopros{display:none;text-align:left;margin:28px 0 0}
+.vopros.tek,.vopros.sdelan{display:block}
+.vopros.sdelan{opacity:.8}
+.vopros h3{font:600 19px/1.4 'Inter',sans-serif;margin:0 0 12px}
+.vopros button{display:block;width:100%;text-align:left;margin:8px 0;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--ink);font:500 16px 'Inter',sans-serif;cursor:pointer}
+.vopros button:disabled{cursor:default}
+.vopros button.verno{background:rgba(63,191,106,.18);border-color:var(--zel);color:#a6f0c0}
+.vopros button.mimo{background:rgba(224,87,79,.14);border-color:var(--kr);color:#f6b0aa}
+.vopros .poyasn{display:none;font-size:15px;color:var(--ink);margin:8px 0 0}
+.vopros .poyasn small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+.vopros.sdelan .poyasn{display:block}
+#plitki{display:flex;justify-content:center;gap:10px;margin:28px 0 6px}
+.plitka{width:54px;height:54px;border-radius:10px;border:2px solid rgba(255,255,255,.14);display:grid;place-items:center;font-size:28px}
+.plitka.otkr{animation:flip .5s both;border-color:transparent;background:rgba(255,255,255,.06)}
+@keyframes flip{0%{transform:rotateX(90deg)}100%{transform:none}}
+#ritual-itog{margin-top:26px;padding:22px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--linia)}
+#ritual-stroka{font:600 16px 'Inter',sans-serif;margin:0 0 14px}
+#skopirovano{margin-top:10px;font-size:14px;color:var(--zoloto-l);white-space:pre-wrap}
+.legenda{color:var(--muted);font-size:13px}
+.legenda a{color:var(--zoloto-l)}
+</style></head><body>
+<section id="ritual"><div class="vnutri">
+ <div class="kicker" id="kicker">Загадка дня</div>
+ <h2 id="zagolovok">Загадка дня</h2>
+ <p class="legenda">Три вопроса, на каждый — один ответ, без регистрации.</p>
+ <div id="plitki" aria-live="polite"></div>
+ <div id="voprosy"></div>
+ <div id="ritual-itog" hidden>
+  <p id="ritual-stroka"></p>
+  <button id="podelitsya" class="btn z">Поделиться результатом</button>
+  <div id="skopirovano" aria-live="polite"></div>
+  <p class="legenda" style="margin:14px 0 0">Следующая загадка — через <b id="do-zavtra">--:--:--</b></p>
+  <p class="legenda" style="margin:6px 0 0"><a id="k-dnyu" href="#">Весь рассказ дня в музее →</a></p>
+ </div>
+ <p class="legenda" style="margin-top:40px">Вопросы и ответы — из карточки дня в данных музея; у каждого пояснения указан источник.</p>
+</div></section>
+<noscript><p style="padding:20px">Для загадки нужен JavaScript.</p></noscript>
+<script type="module" src="zagadka.js"></script>
+</body></html>
