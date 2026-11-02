@@ -68,14 +68,17 @@ export const skhema = z.object({
   // несколько с одним posle — подряд, в порядке карточки. Layout их не знает поимённо — новый день его не правит.
   // Блоки шаблона (pervenstvo, quiz, result, calendar) своей разметки не имеют — их рисует шаблон из полей карточки (Р302).
   razdely: z.array(z.object({ posle: z.enum(BLOKI), html: str })).default([]),
-  // dop — второй скрипт дня (развилка, чат…) public/muzei/<музей>/igry/<имя>-dop.js, после викторины.
-  // vtoraya — вторая игра сразу под первой (своя разметка и скрипт, как у imya; напр. плоская под 3D, 12 янв., Р412).
-  // rc3d — 3D-игра дня на общем движке (Р412): блок над игрой imya (она остаётся 2D ниже, #games). Сцена —
-  // public/muzei/<музей>/igry/rc3d/scen/<scen>.json; zastavka: rolik (кадр + ролик) | kadr (только кадр) из scen/<scen>/zastavka/.
-  // Нет rc3d — нет ни блока, ни css, ни скрипта. Как сделать — docs/interactive/3d-igra-dnya.md (репозиторий russian-civilization).
+  // Игра дня (Р432): 3D наверху страницы — модель предмета model3d (.glb от папки музея, напр. modeli/r7.glb) или сцена
+  // движка rc3d (public/muzei/<музей>/igry/rc3d/scen/<scen>.json, как сделать — docs/interactive/3d-igra-dnya.md
+  // в russian-civilization). imya — 2D-игра этого дня, только запасной режим слабого устройства (не вторая игра и не выбор):
+  // разметка src/data/igry/<музей>/<имя>.html, скрипт public/muzei/<музей>/igry/<имя>.js; vtoraya — ещё одна 2D под ней,
+  // dop — её второй скрипт <имя>-dop.js. Нет model3d и rc3d — блока игры нет вообще (ни 2D, ни css, ни скриптов).
+  // pravila — шаги «Как играть» под 3D (проверка igra-pravila).
   igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), vtoraya: z.string().regex(/^[a-z0-9-]+$/).optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]),
+    model3d: z.object({ glb: z.string().regex(/^[\w\/.-]+\.glb$/), kicker: str.default('Игра дня · 3D'), h2: str, lead: str, alt: str,
+      razmer: str, pravila: z.array(str).min(1) }).optional(),
     rc3d: z.object({ scen: z.string().regex(/^[a-z0-9-]+$/), kicker: str.default('Главное действие · 3D'), h2: str, lead: str, alt: str,
-      zastavka: z.enum(['rolik', 'kadr']).optional(), razmer: str.default('около 1 МБ') }).optional() }),
+      zastavka: z.enum(['rolik', 'kadr']).optional(), razmer: str.default('около 1 МБ'), pravila: z.array(str).min(1) }).optional() }),
   pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }),
   quiz: z.object({ kicker: str, h2: str, intro: str, noscript: str, ball: z.number().int().positive().default(10),
     voprosy: z.array(z.object({ q: str, o: z.array(str).min(2), a: z.number().int().min(0), e: str })).min(1) }),
@@ -105,6 +108,8 @@ export const skhema = z.object({
     ctx.addIssue({ code: 'custom', path: ['igra', 'vtoraya'], message: `игры ${d.muzei}/${d.igra.vtoraya} нет (html в src/data/igry, js в public/muzei/<музей>/igry)` });
   if (d.igra.dop && !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.imya}-dop.js`))
     ctx.addIssue({ code: 'custom', path: ['igra', 'dop'], message: `нет public/muzei/${d.muzei}/igry/${d.igra.imya}-dop.js` });
+  if (d.igra.model3d && !fs.existsSync(`public/muzei/${d.muzei}/${d.igra.model3d.glb}`))
+    ctx.addIssue({ code: 'custom', path: ['igra', 'model3d', 'glb'], message: `нет public/muzei/${d.muzei}/${d.igra.model3d.glb}` });
   d.igra.css.forEach((c, i) => { if (!fs.existsSync(`public/assets/${c}.css`)) ctx.addIssue({ code: 'custom', path: ['igra', 'css', i], message: `нет public/assets/${c}.css` }); });
   // ЗАМОК (Р286): на обычном адресе у дня не меньше NORMA_FAKTOV фактов, у каждого — отрывок, страница, ссылка, пометка.
   if (d.adres === 'den') {
