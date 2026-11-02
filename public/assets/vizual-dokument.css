@@ -1,0 +1,16 @@
+/* Главный носитель «документ»: скан под лупой OpenSeadragon + расшифровка — src/components/den/vizual/Dokument.astro. */
+.viz-dokument{display:grid;gap:16px}
+@media (min-width:900px){.viz-dokument-2{grid-template-columns:minmax(0,3fr) minmax(0,2fr);align-items:start}
+  .viz-dokument-2 .viz-podpis{grid-column:1/-1}}
+.viz-skan{position:relative;width:100%;max-height:78vh;aspect-ratio:3/4;margin:0 auto;border:1px solid var(--line,rgba(255,255,255,.12));
+  border-radius:var(--radius,14px);background:rgba(0,0,0,.25);overflow:hidden}
+.viz-skan-zapas{display:block;width:100%;height:100%;object-fit:contain}
+.viz-lupa{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.viz-lupa[hidden]{display:none}
+.viz-lupa button{min-width:44px;height:44px;padding:0 14px;border:1px solid var(--line,rgba(255,255,255,.2));border-radius:999px;
+  background:transparent;color:var(--fg,#e9e4dc);font:600 18px/1 var(--font-b,system-ui);cursor:pointer}
+.viz-lupa button[data-lupa="ekran"]{font-size:14px}
+.viz-lupa button:hover,.viz-lupa button:focus-visible{border-color:var(--acc,#e8873a);color:var(--acc,#e8873a)}
+.viz-rasshifrovka{padding:16px 18px;border-left:3px solid var(--acc,#e8873a);background:var(--acc-soft,rgba(232,135,58,.08));color:inherit;border-radius:0 var(--radius,14px) var(--radius,14px) 0}
+.viz-rasshifrovka h3{margin:0 0 8px;font-size:13px;letter-spacing:var(--label-tr,2px);text-transform:uppercase;color:var(--acc,#e8873a);font-family:var(--font-m,ui-monospace,monospace)}
+.viz-rasshifrovka p{margin:0 0 10px;font-size:16px;line-height:1.6;color:inherit}

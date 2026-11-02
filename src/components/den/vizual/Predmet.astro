@@ -1,0 +1,59 @@
+---
+// Главный носитель «предмет» (Р437): GLB крутится пальцем — @google/model-viewer из npm (свой бандл, без CDN).
+// Метки — номерные точки на модели, их текст — списком под визуалом (текста поверх 3D нет). На телефоне — AR
+// (WebXR / Scene Viewer / Quick Look). Нет WebGL или скрипт не загрузился — остаётся фото (poster, иначе обложка дня).
+// Модель грузится, только когда блок подъехал к экрану: первый экран страницы её не ждёт.
+// Нет файла в public/ — сборка падает: битый 3D не выкладывается.
+import fs from 'node:fs';
+interface Metka { poz: string; norm?: string; tekst: string }
+interface Props { p: { glb: string; poster?: string; podpis?: string; istochnik: string; metki?: Metka[] }; foto?: { src: string; caption: string }; where: string }
+const { p, foto, where } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const put = (s: string) => s.replace(/^\//, '');
+for (const f of [p.glb, p.poster].filter(Boolean) as string[])
+  if (!fs.existsSync(`public/${put(f)}`)) throw new Error(`${where}: vizual.predmet — нет файла public/${put(f)}`);
+const url = (s: string) => `${base}${put(s)}`;
+const poster = p.poster ? url(p.poster) : foto?.src;
+const alt = p.podpis || foto?.caption || 'Предмет дня в 3D';
+const metki = p.metki ?? [];
+---
+<div class="viz-predmet" data-viz-predmet data-dekodery={`${base}assets/vizual-3d/`}>
+  <div class="viz-3d">
+    {poster && <img class="viz-3d-zapas" src={poster} alt={alt} loading="lazy" />}
+    <model-viewer data-src={url(p.glb)} poster={poster} alt={alt} camera-controls touch-action="pan-y"
+      auto-rotate auto-rotate-delay="4000" rotation-per-second="18deg" interaction-prompt="auto" shadow-intensity="1"
+      ar ar-modes="webxr scene-viewer quick-look" loading="lazy" reveal="auto">
+      {metki.map((m, i) => (
+        <button class="viz-metka" slot={`hotspot-${i + 1}`} data-position={m.poz} data-normal={m.norm ?? '0 1 0'}
+          data-visibility-attribute="visible" aria-label={m.tekst}>{i + 1}</button>
+      ))}
+    </model-viewer>
+  </div>
+  <p class="viz-podskazka">Крутите пальцем или мышью, двумя пальцами — ближе. На телефоне значок AR ставит предмет к вам на стол.</p>
+  {metki.length > 0 && (
+    <ol class="viz-metki">{metki.map((m) => <li>{m.tekst}</li>)}</ol>
+  )}
+  <p class="viz-podpis">{p.podpis && <span>{p.podpis}</span>} <span class="viz-istochnik">Источник: {p.istochnik}</span></p>
+</div>
+<link rel="stylesheet" href={`${base}assets/vizual-predmet.css`} />
+<script>
+  // Нет WebGL — 3D не грузим вовсе, остаётся фото. Есть — model-viewer подтягивается у экрана.
+  const est3d = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
+  for (const box of document.querySelectorAll<HTMLElement>('[data-viz-predmet]')) {
+    if (!est3d) { box.classList.add('viz-bez-3d'); continue; }
+    const mv = box.querySelector('model-viewer')!;
+    // Декодеры сжатых моделей (meshopt, Draco, KTX2) — свои копии из three в public/assets/vizual-3d/:
+    // по умолчанию model-viewer берёт их с gstatic/jsdelivr, а CDN нам нельзя (Р437).
+    const dek = box.dataset.dekodery!;
+    const start = () => import('@google/model-viewer').then(() => {
+      const MV = customElements.get('model-viewer') as any;
+      MV.meshoptDecoderLocation = `${dek}meshopt_decoder.js`;
+      MV.dracoDecoderLocation = `${dek}draco/`;
+      MV.ktx2TranscoderLocation = `${dek}basis/`;
+      mv.addEventListener('load', () => box.classList.add('viz-3d-gotov'), { once: true });
+      mv.addEventListener('error', () => box.classList.add('viz-bez-3d'), { once: true });
+      mv.setAttribute('src', mv.getAttribute('data-src')!);
+    }).catch(() => box.classList.add('viz-bez-3d'));
+    new IntersectionObserver((e, io) => { if (e.some((x) => x.isIntersecting)) { io.disconnect(); start(); } }, { rootMargin: '400px' }).observe(box);
+  }
+</script>

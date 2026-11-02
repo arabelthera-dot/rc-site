@@ -1,0 +1,67 @@
+---
+// Главный носитель «документ» (Р437): скан под лупой — OpenSeadragon из npm, простой источник-картинка
+// (адрес на info.json — IIIF). Расшифровка — рядом (на телефоне — под сканом), текста поверх скана нет.
+// Колесо мыши страницу листает, не увеличивает: лупа — кнопками под сканом, двойным нажатием и щипком.
+// Без JS и до загрузки виден сам скан картинкой. Нет файла в public/ — сборка падает.
+import fs from 'node:fs';
+import sharp from 'sharp';
+interface Props { d: { izobr: string; rasshifrovka?: string; podpis?: string; istochnik: string }; where: string }
+const { d, where } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const vnesh = /^https?:/.test(d.izobr);
+const put = d.izobr.replace(/^\//, '');
+if (!vnesh && !fs.existsSync(`public/${put}`)) throw new Error(`${where}: vizual.dokument — нет файла public/${put}`);
+const iiif = /info\.json$/.test(d.izobr);
+const src = vnesh ? d.izobr : `${base}${put}`;
+// Пропорции скана — из самого файла: место под лупу занято сразу, страница не прыгает.
+const meta = !vnesh && !iiif ? await sharp(`public/${put}`).metadata() : undefined;
+const ratio = meta?.width && meta?.height ? `${meta.width} / ${meta.height}` : '3 / 4';
+const abzacy = (d.rasshifrovka ?? '').split(/\n\s*\n/).map((t) => t.trim()).filter(Boolean);
+---
+<div class={`viz-dokument${abzacy.length ? ' viz-dokument-2' : ''}`} data-viz-dokument>
+  <div class="viz-skan-kol">
+    <div class="viz-skan" data-src={src} data-iiif={iiif ? '1' : undefined} data-ratio={ratio}>
+      {!iiif && <img class="viz-skan-zapas" src={src} alt={d.podpis || 'Документ дня'} loading="lazy" />}
+    </div>
+    <div class="viz-lupa" hidden>
+      <button type="button" data-lupa="plus" aria-label="Ближе">+</button>
+      <button type="button" data-lupa="minus" aria-label="Дальше">−</button>
+      <button type="button" data-lupa="dom" aria-label="Весь документ">⤢</button>
+      <button type="button" data-lupa="ekran" aria-label="Во весь экран">На весь экран</button>
+    </div>
+  </div>
+  {abzacy.length > 0 && (
+    <div class="viz-rasshifrovka">
+      <h3>Расшифровка</h3>
+      {abzacy.map((t) => <p>{t}</p>)}
+    </div>
+  )}
+  <p class="viz-podpis">{d.podpis && <span>{d.podpis}</span>} <span class="viz-istochnik">Источник: {d.istochnik}</span></p>
+</div>
+<link rel="stylesheet" href={`${base}assets/vizual-dokument.css`} />
+<script>
+  for (const box of document.querySelectorAll<HTMLElement>('[data-viz-dokument]')) {
+    const skan = box.querySelector<HTMLElement>('.viz-skan')!;
+    skan.style.aspectRatio = skan.dataset.ratio!;
+    const start = () => import('openseadragon').then(({ default: OSD }) => {
+      const url = skan.dataset.src!;
+      const v = OSD({
+        element: skan, tileSources: skan.dataset.iiif ? url : { type: 'image', url },
+        showNavigationControl: false, visibilityRatio: 1, constrainDuringPan: true, minZoomImageRatio: 1, maxZoomPixelRatio: 3,
+        gestureSettingsMouse: { scrollToZoom: false, clickToZoom: false, dblClickToZoom: true },
+        gestureSettingsTouch: { pinchToZoom: true, dblClickToZoom: true, flickEnabled: true },
+      });
+      v.addHandler('open', () => { skan.querySelector('.viz-skan-zapas')?.remove(); box.classList.add('viz-skan-gotov'); lupa.hidden = false; });
+      const lupa = box.querySelector<HTMLElement>('.viz-lupa')!;
+      lupa.addEventListener('click', (e) => {
+        const k = (e.target as HTMLElement).closest('button')?.dataset.lupa;
+        if (k === 'plus') v.viewport.zoomBy(1.6);
+        if (k === 'minus') v.viewport.zoomBy(1 / 1.6);
+        if (k === 'dom') v.viewport.goHome();
+        if (k === 'ekran') v.setFullScreen(true);
+        v.viewport.applyConstraints();
+      });
+    });
+    new IntersectionObserver((e, io) => { if (e.some((x) => x.isIntersecting)) { io.disconnect(); start(); } }, { rootMargin: '300px' }).observe(box);
+  }
+</script>

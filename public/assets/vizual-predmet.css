@@ -1,0 +1,17 @@
+/* Главный носитель «предмет»: 3D @google/model-viewer — src/components/den/vizual/Predmet.astro. */
+.viz-3d{position:relative;aspect-ratio:4/3;border:1px solid var(--line,rgba(255,255,255,.12));border-radius:var(--radius,14px);
+  background:radial-gradient(ellipse at 50% 40%,var(--panel,#1d1815),var(--ink,#14100e));overflow:hidden}
+.viz-3d model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:transparent;background:transparent}
+.viz-3d model-viewer:not(:defined){display:none}
+.viz-3d-zapas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.viz-3d-gotov .viz-3d-zapas{display:none}
+.viz-bez-3d model-viewer{display:none}
+.viz-bez-3d .viz-podskazka{display:none}
+.viz-metka{width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:var(--acc,#e8873a);color:#14100e;
+  font:700 13px/1 var(--font-m,ui-monospace,monospace);padding:0;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.5);
+  opacity:0;transition:opacity .3s}
+.viz-metka[data-visible]{opacity:1}
+.viz-metki{margin:12px 0 0;padding-left:1.6em;font-size:15px;line-height:1.5}
+.viz-metki li{margin:4px 0}
+.viz-metki li::marker{color:var(--acc,#e8873a);font-family:var(--font-m,ui-monospace,monospace);font-weight:700}
+@media (max-width:600px){.viz-3d{aspect-ratio:1/1}}

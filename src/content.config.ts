@@ -95,6 +95,54 @@ const blok = z.object({
   if (!['dvizhok', 'nastroyki'].includes(b.type) && b.html === undefined)
     ctx.addIssue({ code: 'custom', path: ['html'], message: `у блока ${b.type} нет содержимого` });
 });
+// Визуализация дня Музея «Русские не сдаются» (Р436, Р437, Сергей 02.11.2026): один главный носитель
+// (predmet — 3D model-viewer, karta — MapLibre, dokument — скан OpenSeadragon) и усилители под ним
+// (bylo_stalo — шторка тогда/сейчас, sily — соотношение сил). Все части необязательны; главное не указано —
+// выбирает src/components/den/vizual/Vizual.astro. Текста поверх визуала нет: подпись и источник — строкой под ним.
+// Источник — не Википедия, не Викисклад, не Библиотека Конгресса (Р436); нет файла в public/ — сборка красная (Vizual).
+const zapretIstochnika = /wiki|википеди|викитек|викисклад|loc\.gov|library of congress|библиотек[аи] конгресса/i;
+const istochnik = z.string().min(1).refine((t) => !zapretIstochnika.test(t), 'источник визуала — не Википедия, не Викисклад, не Библиотека Конгресса');
+const tochka = z.string().regex(/^-?[\d.]+(m|cm|mm)? -?[\d.]+(m|cm|mm)? -?[\d.]+(m|cm|mm)?$/, 'точка метки — «x y z»');
+const lonLat = z.tuple([z.number(), z.number()]);
+const vizual = z.object({
+  glavnoe: z.enum(['predmet', 'karta', 'dokument']).optional(),
+  zagolovok: z.string().min(1).optional(),
+  predmet: z.object({
+    glb: z.string().regex(/\.glb$/i, 'predmet.glb — файл .glb'),
+    poster: z.string().min(1).optional(),
+    podpis: z.string().optional(),
+    istochnik,
+    metki: z.array(z.object({ poz: tochka, norm: tochka.optional(), tekst: z.string().min(1) })).default([]),
+  }).optional(),
+  karta: z.object({
+    centr: lonLat,
+    zum: z.number(),
+    geojson: z.string().min(1).optional(),
+    shagi: z.array(z.object({ data: z.string().optional(), tekst: z.string().min(1), pokazat: z.array(z.string()).default([]),
+      kamera: z.object({ centr: lonLat, zum: z.number() }).optional() })).default([]),
+    istochnik,
+  }).optional(),
+  dokument: z.object({
+    izobr: z.string().min(1),
+    rasshifrovka: z.string().optional(),
+    podpis: z.string().optional(),
+    istochnik,
+  }).optional(),
+  bylo_stalo: z.object({ bylo: z.string().min(1), stalo: z.string().min(1), podpis: z.string().optional(), istochnik }).optional(),
+  sily: z.object({
+    nashi: z.object({ chislo: z.number().int().positive(), podpis: z.string().optional() }),
+    vrag: z.object({ chislo: z.number().int().positive(), podpis: z.string().optional() }),
+    istochnik,
+  }).optional(),
+}).superRefine((v, ctx) => {
+  if (v.glavnoe && !v[v.glavnoe])
+    ctx.addIssue({ code: 'custom', path: ['glavnoe'], message: `vizual.glavnoe = ${v.glavnoe}, а данных ${v.glavnoe} нет` });
+  const txt = (s?: string) => s ?? '';
+  const vse = [v.zagolovok, v.predmet?.podpis, v.dokument?.podpis, v.bylo_stalo?.podpis, ...(v.predmet?.metki ?? []).map((m) => m.tekst)].map(txt).join(' ');
+  if (/(^|[^а-яё])игр[аыуеоя]/i.test(vse))
+    ctx.addIssue({ code: 'custom', path: ['zagolovok'], message: 'в Музее «Русские не сдаются» игр нет — слово «игра» не пишем (Р437)' });
+});
+
 const doc = z.object({ prolog: z.string(), head_attrs: z.string(), head: z.string(), between: z.string(),
   body_attrs: z.string(), epilog: z.string() });
 
@@ -125,6 +173,8 @@ const days = defineCollection({
     body: z.array(blok).min(1).optional(),
     // slovar — связи дня со словарём src/data/slovar.json (Р37, Сергей 20.10: одно поле-ссылка, снимает заморозку только для него):
     // slovar — «tip:id», tip — lyudi | mesto | narod | tema; id нет в словаре — сборка красная (страницы /slovar/)
+    // vizual — визуализация дня «Русские не сдаются» (Р436, Р437, 02.11.2026), разбор — выше у const vizual.
+    vizual: vizual.optional(),
     slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
       .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
   }).superRefine((d, ctx) => {

@@ -1,0 +1,7 @@
+/* Визуализация дня Музея «Русские не сдаются» (Р436, Р437): общий вид блока — src/components/den/vizual/Vizual.astro.
+   Текста поверх визуала нет: подпись и источник — отдельной строкой под ним. */
+.viz{margin-top:8px}
+.viz .viz-podpis{margin:10px 0 0;font-size:13px;line-height:1.5;color:var(--muted,#a49a90)}
+.viz .viz-podpis span+span::before{content:" · "}
+.viz .viz-istochnik{font-family:var(--font-m,ui-monospace,monospace);font-size:12px}
+.viz .viz-podskazka{margin:10px 0 0;font-size:14px;line-height:1.45;color:var(--muted,#a49a90)}

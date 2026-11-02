@@ -1,0 +1,50 @@
+---
+// Визуализация дня Музея «Русские не сдаются» (Р436, Р437, Сергей 02.11.2026): игр в музее нет — у дня один
+// главный носитель по сюжету и усилители под ним, если для них есть данные. Всё из поля vizual карточки дня
+// (схема — src/content.config.ts, const vizual), на открытых компонентах: predmet — @google/model-viewer,
+// dokument — OpenSeadragon, karta — MapLibre GL (Karta.astro), усилители — ByloStalo.astro, Sily.astro.
+// Главное не указано — выбирает машина: есть predmet.glb → predmet; есть karta → karta; есть dokument → dokument;
+// ничего — блока нет (фото страницы остаётся). Включение — флаг vizual_ne_sdayutsya в src/data/nastroyki.json.
+// Текста поверх визуала нет: подпись и источник — строкой под ним.
+import nastroyki from '../../../data/nastroyki.json';
+import Predmet from './Predmet.astro';
+import Dokument from './Dokument.astro';
+// Karta, ByloStalo, Sily — импорт допишут их владельцы (r598, r599).
+
+type Glavnoe = 'predmet' | 'karta' | 'dokument';
+// foto — обложка дня: запасная картинка 3D, если у предмета нет своего poster.
+interface Props { v?: any; museum: string; where: string; foto?: { src: string; caption: string } }
+const { v, museum, where, foto } = Astro.props;
+const vkl = museum === 'ne-sdayutsya' && (nastroyki as Record<string, unknown>).vizual_ne_sdayutsya === true;
+
+// Порядок выбора главного — он же порядок в схеме Р437.
+function vybratGlavnoe(v: any): Glavnoe | undefined {
+  if (!v) return undefined;
+  if (v.glavnoe) return v.glavnoe;
+  if (v.predmet?.glb) return 'predmet';
+  if (v.karta) return 'karta';
+  if (v.dokument) return 'dokument';
+  return undefined;
+}
+// Носители, у которых уже есть компонент: karta добавит r598 вместе с импортом Karta. Нет компонента — блока нет
+// (заголовок без визуала — заглушка, их не ставим).
+const GOTOVO: Glavnoe[] = ['predmet', 'dokument'];
+const vybrano = vkl ? vybratGlavnoe(v) : undefined;
+const glavnoe = vybrano && GOTOVO.includes(vybrano) ? vybrano : undefined;
+if (glavnoe && !v[glavnoe]) throw new Error(`${where}: vizual.glavnoe = ${glavnoe}, а данных ${glavnoe} нет`);
+// Заголовок блока по носителю — если в карточке свой не задан.
+const ZAGOLOVOK: Record<Glavnoe, string> = { predmet: 'Рассмотри сам', karta: 'Как это было', dokument: 'Прочитай сам' };
+const zagolovok = v?.zagolovok ?? (glavnoe && ZAGOLOVOK[glavnoe]);
+const base = import.meta.env.BASE_URL;
+// Усилители — под главным, в этом порядке: шторка тогда/сейчас, затем соотношение сил.
+---
+{glavnoe && (
+  <section class="block viz" id="vizual" data-viz={glavnoe}>
+    <link rel="stylesheet" href={`${base}assets/vizual.css`} />
+    <h2>{zagolovok}</h2>
+    {glavnoe === 'predmet' && <Predmet p={v.predmet} foto={foto} where={where} />}
+    {glavnoe === 'dokument' && <Dokument d={v.dokument} where={where} />}
+    {/* glavnoe === 'karta' — <Karta k={v.karta} where={where} /> (r598) */}
+    {/* усилители: v.bylo_stalo — <ByloStalo b={v.bylo_stalo} where={where} />, v.sily — <Sily s={v.sily} where={where} /> (r599) */}
+  </section>
+)}

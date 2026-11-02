@@ -9,6 +9,7 @@ import { getCollection } from 'astro:content';
 import { queueOgDen, ogRaster, ogSmall } from '../../../../lib/og-den.mjs';
 import { denFamilies, faceCss } from '../../../../lib/shrifty.mjs';
 import DenMedia from '../../../../components/den/DenMedia.astro';
+import Vizual from '../../../../components/den/vizual/Vizual.astro';
 import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import InlineCss from '../../../../components/InlineCss.astro';
 import { privychkaOn, blokZavtra } from '../../../../lib/privychka.mjs';
@@ -180,6 +181,9 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
         {!d.gist && !legacy && !soon && <a class="btn ghost" href={cal}>Календарь музея</a>}
       </div>
     </header>
+
+    {/* Визуализация дня «Русские не сдаются» (Р437) — под обложкой и подводкой; флаг vizual_ne_sdayutsya, src/data/nastroyki.json. */}
+    {!soon && <Vizual v={d.vizual} museum={m.slug} where={`${m.slug}/${d.key}`} foto={cover} />}
 
     {podderzhka && <div class="dp-sup" data-support-slot></div>}
 
