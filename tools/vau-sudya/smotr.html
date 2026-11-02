@@ -1,10 +1,12 @@
 <!doctype html>
 <!-- Просмотрщик судьи для голой модели .glb: студийный свет, камера на 3/4 сверху, __vs.povorot(град) — поворот вокруг модели. -->
-<html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;background:#1d2128}canvas{display:block;width:100vw;height:100vh}</style>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;height:100%;background:#1d2128}canvas{display:block;width:100vw;height:100vh}</style>
 <script type="importmap">{"imports":{"three":"./three/build/three.module.js","three/addons/":"./three/examples/jsm/"}}</script></head>
 <body><script type="module">
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 const r = new THREE.WebGLRenderer({ antialias: true });
 r.setSize(innerWidth, innerHeight); r.toneMapping = THREE.ACESFilmicToneMapping;
@@ -14,13 +16,16 @@ sc.environment = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), 0.
 const sun = new THREE.DirectionalLight(0xffffff, 2); sun.position.set(3, 5, 2); sc.add(sun);
 const cam = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 0.01, 1e5);
 let ugol = 0.6, cel = new THREE.Vector3(), dist = 5, vys = 0;
-const g = await new GLTFLoader().loadAsync('./model.glb');
+const ld = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).setDRACOLoader(new DRACOLoader().setDecoderPath('./three/examples/jsm/libs/draco/gltf/'));   // сжатые модели (r579 — meshopt, r567 — draco)
+const g = await ld.loadAsync('./model.glb');
 sc.add(g.scene);
 g.scene.updateMatrixWorld(true);
 const box = new THREE.Box3();   // рамка — только по сеткам: пустые узлы, камеры и свет из .glb её не раздувают
 g.scene.traverse((o) => { if (o.isMesh && o.visible) { o.geometry.computeBoundingBox(); box.union(o.geometry.boundingBox.clone().applyMatrix4(o.matrixWorld)); } });
 const size = box.getSize(new THREE.Vector3());
-box.getCenter(cel); dist = Math.max(size.x, size.y, size.z) * 1.4 / Math.min(1, cam.aspect); vys = dist * 0.35;
+// Камера вписывает предмет в ~80 % кадра: длинный (подлодка, трубопровод) — по ширине, высокий (ракета) — по высоте.
+const tV = Math.tan(cam.fov * Math.PI / 360), tH = tV * cam.aspect, shir = Math.max(size.x, size.z);
+box.getCenter(cel); dist = Math.max(shir / (2 * tH * 0.85), size.y / (2 * tV * 0.85)) + Math.min(size.x, size.z) / 2; vys = dist * 0.35;
 const kam = () => { cam.position.set(cel.x + Math.sin(ugol) * dist, cel.y + vys, cel.z + Math.cos(ugol) * dist); cam.lookAt(cel); };
 window.__vs.povorot = (d) => { ugol += d * Math.PI / 180; };
 r.setAnimationLoop(() => { kam(); r.render(sc, cam); });

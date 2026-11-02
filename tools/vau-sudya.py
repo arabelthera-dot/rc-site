@@ -19,6 +19,8 @@
 Запуск:
   python3 tools/vau-sudya.py --url https://russian-civilization.ru/muzei/izobreteniya/den/01-12/ --imya 01-12
   python3 tools/vau-sudya.py --glb /путь/model.glb --imya podlodka      # голая модель: страницы нет, 2D/текст не проверяются
+  python3 tools/vau-sudya.py --url http://127.0.0.1:18589/muzei/izobreteniya/vau/r7.html --imya r567 --stage '#holst' --start '' --skroll '#skroll'   # образец
+  … --ocenka              не снимать заново, только ещё раз спросить модель (разброс: 3 раза, ocenki.jsonl)
   … --bez-modeli          только машинные замки (без claude -p)
   … --start '#r3Run'      кнопка запуска 3D (по умолчанию — первая кнопка внутри [data-igra] со словом «Играть»)
   … --stage '#r3Stage'    блок сцены (по умолчанию [data-igra-scena])
@@ -52,7 +54,7 @@ def three_papka():
 
 def bot(a, rezhim, out):
     out.mkdir(parents=True, exist_ok=True)
-    vs = dict(url=a['url'], start=a.get('start'), stage=a.get('stage'), glb=a['glb'], rezhim=rezhim, out=str(out))
+    vs = dict(url=a['url'], start=a.get('start'), stage=a.get('stage'), glb=a['glb'], skroll=a.get('skroll'), rezhim=rezhim, out=str(out))
     r = subprocess.run(['node', str(TUT / 'bot.mjs')], env=dict(ENV, VS=json.dumps(vs)), capture_output=True, text=True, timeout=600)
     try:
         return json.loads((out / 'bot.json').read_text())
@@ -93,6 +95,9 @@ def razbor(papka):
     return dict(ploshchadi=ploshchadi, svetoten=yark, raznica_storon=raz, yad=yad)
 
 
+ZAMKI_KADRA = ('не плоская', 'не ядовитый цвет', 'текст не поверх')
+
+
 def zamki(pk, tel, bw, rz, glb):
     Z = []
     def z(imya, cvet, tekst):
@@ -118,8 +123,8 @@ def zamki(pk, tel, bw, rz, glb):
         z('≥ 30 к/с', 'red', 'не мерено')
     elif f >= P['fps']['min']:
         z('≥ 30 к/с', 'green', f'{f} к/с')
-    elif prog and f >= P['fps']['min_programmno']:
-        z('≥ 30 к/с', 'yellow', f'{f} к/с в программном рендере сервера (≥{P["fps"]["min_programmno"]}) — 30 к/с мерить на железе')
+    elif prog:   # программный рендер на общем сервере зависит от его загрузки (r589: 01-12 от 2 до 15 к/с) — не мерило
+        z('≥ 30 к/с', 'yellow', f'{f} к/с в программном рендере сервера — 30 к/с мерить на железе')
     else:
         z('≥ 30 к/с', 'red', f'{f} к/с ({"программный рендер" if prog else rend})')
     tt = tel.get('vremya', {}).get('do_3d')
@@ -149,9 +154,11 @@ def list_kadrov(papka):
         L.paste(im.resize((w, h)), ((i % 2) * w, (i // 2) * h))
     t = papka.parent / 'tel' / 'tel.png'
     if t.is_file():
+        # Телефонный снимок вписать целиком, без растяжения: блок сцены на странице бывает не во весь экран.
         tm = Image.open(t).convert('RGB')
-        tm = tm.resize((tw, h * 2))
-        L.paste(tm, (w * 2, 0))
+        k = min(tw / tm.width, h * 2 / tm.height)
+        tm = tm.resize((max(1, round(tm.width * k)), max(1, round(tm.height * k))))
+        L.paste(tm, (w * 2 + (tw - tm.width) // 2, (h * 2 - tm.height) // 2))
     f = papka.parent / 'list.png'
     L.save(f)
     return f
@@ -165,6 +172,9 @@ def ocenka_modelyu(lst):
                            capture_output=True, text=True, timeout=400, cwd=str(lst.parent))
         t = r.stdout
         o = json.loads(t[t.index('{'):t.rindex('}') + 1])
+        # Балл и вердикт считает код: сумма пяти пунктов 0–2 (модель в арифметике и пороге путается от прогона к прогону).
+        o['ball'] = sum(max(0, min(2, int(o.get(k, 0)))) for k in 'ABCDE')
+        o['vau'] = o['ball'] >= P['vau']['vau_ot']
         return o
     except Exception as e:
         return {'oshibka': f'оценка не получена: {e}', 'vau': None}
@@ -189,39 +199,53 @@ def main():
     ap.add_argument('--imya', required=True)
     ap.add_argument('--start', default="[data-igra] button:has-text('Играть')")
     ap.add_argument('--stage', default='[data-igra-scena]')
+    ap.add_argument('--skroll', help='блок, прокрутка которого ведёт сцену (образец r567: #skroll); 4 стороны = 4 точки прокрутки')
     ap.add_argument('--bez-modeli', action='store_true')
+    ap.add_argument('--ocenka', action='store_true', help='не снимать заново: взять list.png из прошлого прогона и только спросить модель')
     o = ap.parse_args()
     VYH = TUT / 'vyhod' / o.imya
-    shutil.rmtree(VYH, ignore_errors=True)
-    pr = None
-    try:
-        if o.glb:
-            url, pr, tmp = sluga(o.glb)
-            a = dict(url=url, glb=True)
-        else:
-            a = dict(url=o.url, glb=False, start=o.start, stage=o.stage)
-        pk = bot(a, 'pk', VYH / 'pk')
-        tel = bot(a, 'tel', VYH / 'tel')
-        bw = {} if o.glb else bot(a, 'bez-webgl', VYH / 'bez-webgl')
-    finally:
-        if pr:
-            pr.terminate(); pr.wait()
-    rz = razbor(VYH / 'pk')
-    Z = zamki(pk, tel, bw, rz, bool(o.glb))
-    lst = list_kadrov(VYH / 'pk')
+    if o.ocenka:
+        # Повтор оценки по тем же снимкам: так меряется разброс самого судьи, а не съёмки.
+        B = json.loads((VYH / 'otchet.json').read_text())   # --url/--glb при --ocenka не читаются, источник — из отчёта
+        rz, lst = B['razbor'], Path(B['list'])
+        pk, tel, bw = B['bot']['pk'], B['bot']['tel'], B['bot']['bez-webgl']
+        Z = zamki(pk, tel, bw, rz, str(B['istochnik']).endswith('.glb'))
+    else:
+        shutil.rmtree(VYH, ignore_errors=True)
+        pr = None
+        try:
+            if o.glb:
+                url, pr, tmp = sluga(o.glb)
+                a = dict(url=url, glb=True)
+            else:
+                a = dict(url=o.url, glb=False, start=o.start or None, stage=o.stage, skroll=o.skroll)
+            pk = bot(a, 'pk', VYH / 'pk')
+            tel = bot(a, 'tel', VYH / 'tel')
+            bw = {} if o.glb else bot(a, 'bez-webgl', VYH / 'bez-webgl')
+        finally:
+            if pr:
+                pr.terminate(); pr.wait()
+        rz = razbor(VYH / 'pk')
+        Z = zamki(pk, tel, bw, rz, bool(o.glb))
+        lst = list_kadrov(VYH / 'pk')
     vau = {'vau': None, 'propushcheno': '--bez-modeli'} if o.bez_modeli or not lst else ocenka_modelyu(lst)
-    krasnye = [z['zamok'] for z in Z if z['cvet'] == 'red']
+    # «Вау по кадру» решают модель и замки самого кадра; загрузка, кадры/с, 2D-запас и телефон — готовность страницы, отдельной строкой.
+    krasnye = [z['zamok'] for z in Z if z['cvet'] == 'red' and z['zamok'] in ZAMKI_KADRA]
+    stranica = [z['zamok'] for z in Z if z['cvet'] == 'red' and z['zamok'] not in ZAMKI_KADRA]
     itog = 'ВАУ' if not krasnye and vau.get('vau') is True else ('НЕ ВАУ' if krasnye or vau.get('vau') is False else 'НЕ ОЦЕНЕНО')
-    O = dict(imya=o.imya, istochnik=o.url or o.glb, itog=itog, krasnye=krasnye, zamki=Z, vau=vau, razbor=rz, list=str(lst) if lst else None,
+    O = dict(imya=o.imya, istochnik=B['istochnik'] if o.ocenka else (o.url or o.glb), itog=itog, krasnye=krasnye, stranica_krasnye=stranica, zamki=Z, vau=vau, razbor=rz, list=str(lst) if lst else None,
              bot={'pk': pk, 'tel': tel, 'bez-webgl': bw}, vklyuchen=P['vklyuchen'])
+    if 'ball' in vau:
+        with open(VYH / 'ocenki.jsonl', 'a') as f:   # все оценки модели по этим снимкам — для разброса
+            f.write(json.dumps(vau, ensure_ascii=False) + '\n')
     (VYH / 'otchet.json').write_text(json.dumps(O, ensure_ascii=False, indent=1))
     znak = {'green': '✅', 'yellow': '🟡', 'red': '❌', 'grey': '—'}
-    print(f'{o.imya}: {itog}')
+    print(f'{o.imya}: {itog} по кадру; страница: ' + ('готова' if not stranica else 'красное — ' + ', '.join(stranica)))
     for z in Z:
         print(f'  {znak[z["cvet"]]} {z["zamok"]}: {z["tekst"]}')
     print(f'  вау (модель): {vau.get("ball", "—")}/10, {"вау" if vau.get("vau") else "не вау" if vau.get("vau") is False else "нет оценки"} — {vau.get("pochemu") or vau.get("oshibka") or ""}')
     print(f'  отчёт: {VYH / "otchet.json"}')
-    if P['vklyuchen'] and itog != 'ВАУ':
+    if P['vklyuchen'] and (itog != 'ВАУ' or stranica):
         sys.exit(1)
 
 
