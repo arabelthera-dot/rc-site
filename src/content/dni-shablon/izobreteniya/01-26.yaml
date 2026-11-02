@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первый в мире аэрофотоаппарат Срезневского, 1886 — Музей «Что изобрели русские первыми в мире»
   description: В 1886 году Срезневский создал первый в мире аэрофотоаппарат, снявший Кронштадт с воздушного шара с 1100 метров, и первую в мире подводную камеру, которая не пропускала воду.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-26jan-sreznevskiy.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-26/
   sobytie: Первый в мире аэрофотоаппарат (первым в мире)
   god: "1886"
   og:
@@ -13,14 +13,14 @@ head:
     site_name: Русская цивилизация
     title: Первый в мире аэрофотоаппарат Срезневского
     description: В 1886 году Срезневский создал первый в мире аэрофотоаппарат, снявший Кронштадт с воздушного шара с 1100 метров, и первую в мире подводную камеру, которая не пропускала воду.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-26jan-sreznevskiy.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/img/01-26-goskatalog-93127965.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-26/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/01-26-goskatalog-93127965.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первый в мире аэрофотоаппарат Срезневского
     description: В 1886 году Срезневский создал первый в мире аэрофотоаппарат, снявший Кронштадт с воздушного шара с 1100 метров, и первую в мире подводную камеру, которая не пропускала воду.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-26jan-sreznevskiy.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-26/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

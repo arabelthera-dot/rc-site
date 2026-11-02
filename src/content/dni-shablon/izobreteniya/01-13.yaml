@@ -4,7 +4,7 @@ adres: den
 head:
   title: "К-278 «Комсомолец»: единственная в мире боевая ПЛ, погрузившаяся на 1027 м (рекорд не побит) — Музей «Что изобрели русские первыми в мире»"
   description: Обычной атомной подлодке хватало 600 метров, а К-278 первой в мире ушла на 1027 — и этот рекорд не побит до сих пор.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-13jan-k278.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-13/
   sobytie: "К-278 «Комсомолец»: единственная в мире боевая ПЛ, погрузившаяся на 1027 м (рекорд не побит)"
   god: "1985"
   og:
@@ -12,13 +12,13 @@ head:
     site_name: Русская цивилизация
     title: Первая в мире подводная лодка на глубине 1027 метров — К-278
     description: Обычной атомной подлодке хватало 600 метров, а К-278 первой в мире ушла на 1027 — и этот рекорд не побит до сих пор.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-13jan-k278.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-13/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первая в мире подводная лодка на глубине 1027 метров — К-278
     description: Обычной атомной подлодке хватало 600 метров, а К-278 первой в мире ушла на 1027 — и этот рекорд не побит до сих пор.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-13jan-k278.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-13/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

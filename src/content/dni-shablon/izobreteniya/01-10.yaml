@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первый в мире ледокол «Пайлот» Бритнева — Музей «Что изобрели русские первыми в мире», 10 января
   description: Кронштадтский судовладелец Михаил Бритнев создал первый в мире ледокол — срезал пароходу нос, и судно не билось о лёд, а лезло на него.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-10jan-britnev.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-10/
   sobytie: Первый в мире ледокол «Пайлот»
   god: "1864"
   og:
@@ -13,13 +13,13 @@ head:
     site_name: Русская цивилизация
     title: Первый в мире ледокол
     description: Кронштадтский судовладелец Михаил Бритнев создал первый в мире ледокол — срезал пароходу нос, и судно не билось о лёд, а лезло на него.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-10jan-britnev.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-10/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первый в мире ледокол
     description: Кронштадтский судовладелец Михаил Бритнев создал первый в мире ледокол — срезал пароходу нос, и судно не билось о лёд, а лезло на него.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-10jan-britnev.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-10/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

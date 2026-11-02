@@ -4,7 +4,7 @@ adres: den
 head:
   title: Аносов первым в мире посмотрел на сталь в микроскоп — Музей «Что изобрели русские первыми в мире»
   description: Над тайной булата сдался даже Фарадей, а уральский инженер разгадал её, первым в мире положив сталь под микроскоп.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-03jan-anosov.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-03/
   sobytie: Первым в мире посмотрел на сталь в микроскоп
   god: "1831"
   og:
@@ -12,13 +12,13 @@ head:
     site_name: Русская цивилизация
     title: Первым в мире посмотрел на сталь в микроскоп
     description: Над тайной булата сдался даже Фарадей, а уральский инженер разгадал её, первым в мире положив сталь под микроскоп.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-03jan-anosov.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-03/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первым в мире посмотрел на сталь в микроскоп
     description: Над тайной булата сдался даже Фарадей, а уральский инженер разгадал её, первым в мире положив сталь под микроскоп.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-03jan-anosov.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-03/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

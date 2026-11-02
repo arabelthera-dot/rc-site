@@ -4,7 +4,7 @@ adres: den
 head:
   title: Первое в мире коронарное шунтирование, В. И. Колесов, 1964 — Музей «Что изобрели русские первыми в мире»
   description: Ленинградский хирург Василий Колесов сделал первое в мире коронарное шунтирование — пришил собственную артерию человека к живому, бьющемуся сердцу.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-07/
   sobytie: Первое в мире коронарное шунтирование
   god: "1964"
   og:
@@ -12,14 +12,14 @@ head:
     site_name: Русская цивилизация
     title: Первое в мире коронарное шунтирование
     description: Ленинградский хирург Василий Колесов сделал первое в мире коронарное шунтирование — пришил собственную артерию человека к живому, бьющемуся сердцу.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov-byust.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-07/
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-07jan-kolesov-byust.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первое в мире коронарное шунтирование
     description: Ленинградский хирург Василий Колесов сделал первое в мире коронарное шунтирование — пришил собственную артерию человека к живому, бьющемуся сердцу.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-07/
     inLanguage: ru
     isPartOf:
       "@type": WebSite
@@ -27,7 +27,7 @@ head:
     publisher:
       "@type": Organization
       name: Русская цивилизация
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-07jan-kolesov-byust.jpg
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-07jan-kolesov-byust.jpg
 oblozhka:
   src: day-07jan-kolesov-byust.jpg
   width: 900

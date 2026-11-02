@@ -4,7 +4,7 @@ adres: den
 head:
   title: Первое в мире радиоуправление (публичные демонстрации) — Музей «Что изобрели русские первыми в мире»
   description: Первое в мире публичное радиоуправление. Пильчиков первым в мире публично управлял по радио — взорвал заряд из другого конца зала, не прикоснувшись к нему, за сто лет до дронов.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-04jan-pilchikov.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-04/
   sobytie: Первое в мире радиоуправление (публичные демонстрации)
   god: "1898"
   og:
@@ -12,31 +12,31 @@ head:
     site_name: Русская цивилизация
     title: Первое в мире публичное радиоуправление — Пильчиков — Русские первые в мире
     description: Первое в мире публичное радиоуправление. Пильчиков первым в мире публично управлял по радио — взорвал заряд из другого конца зала, не прикоснувшись к нему, за сто лет до дронов.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-04jan-pilchikov.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-04jan-pilchikov.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-04/
+    image: https://russian-civilization.ru/og/izobreteniya_day-04jan-pilchikov.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первое в мире публичное радиоуправление — Пильчиков — Русские первые в мире
     description: Первое в мире публичное радиоуправление. Пильчиков первым в мире публично управлял по радио — взорвал заряд из другого конца зала, не прикоснувшись к нему, за сто лет до дронов.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-04jan-pilchikov.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-04jan-pilchikov.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-04/
+    image: https://russian-civilization.ru/og/izobreteniya_day-04jan-pilchikov.jpg
     inLanguage: ru-RU
     isAccessibleForFree: true
     publisher:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
     isPartOf:
       "@type": CollectionPage
       name: Музей «Что изобрели русские первыми в мире»
-      url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/
+      url: https://russian-civilization.ru/muzei/izobreteniya/
     author:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
 oblozhka:
   src: day-04jan-pilchikov-portret-biront.jpg
   width: 600

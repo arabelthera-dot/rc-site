@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первые в мире вакцины от холеры и чумы, испытанные на людях, 1892–1897 — Музей «Что изобрели русские первыми в мире»
   description: "Хавкин первым в мире испытал на людях вакцины от холеры и чумы: дома его прививку сочли ненужной, а против чумы ею привили 35 миллионов человек."
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-28jan-havkin.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-28/
   sobytie: Первая в мире вакцина от холеры (1892) и от чумы (1897)
   god: "1897"
   og:
@@ -13,14 +13,14 @@ head:
     site_name: Русская цивилизация
     title: Первые в мире вакцины от холеры и чумы, испытанные на людях
     description: "Хавкин первым в мире испытал на людях вакцины от холеры и чумы: дома его прививку сочли ненужной, а против чумы ею привили 35 миллионов человек."
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-28jan-havkin.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-28jan-holernaya-vakcina.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-28/
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-28jan-holernaya-vakcina.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первые в мире вакцины от холеры и чумы, испытанные на людях
     description: "Хавкин первым в мире испытал на людях вакцины от холеры и чумы: дома его прививку сочли ненужной, а против чумы ею привили 35 миллионов человек."
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-28jan-havkin.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-28/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

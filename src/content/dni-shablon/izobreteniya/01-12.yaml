@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первая в мире межконтинентальная баллистическая ракета Р-7 — Музей «Что изобрели русские первыми в мире»
   description: Королёв создал первую в мире межконтинентальную ракету Р-7 — через полтора месяца после полёта до цели она вывела на орбиту первый в мире спутник.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-12jan-r7.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-12/
   sobytie: Первая в мире межконтинентальная баллистическая ракета Р-7
   god: "1907"
   og:
@@ -13,13 +13,13 @@ head:
     site_name: Русская цивилизация
     title: Первая в мире межконтинентальная ракета
     description: Королёв создал первую в мире межконтинентальную ракету Р-7 — через полтора месяца после полёта до цели она вывела на орбиту первый в мире спутник.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-12jan-r7.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-12/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первая в мире межконтинентальная ракета
     description: Королёв создал первую в мире межконтинентальную ракету Р-7 — через полтора месяца после полёта до цели она вывела на орбиту первый в мире спутник.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-12jan-r7.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-12/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

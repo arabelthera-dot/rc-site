@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первая в мире сеть кабельного телевидения (Москва, 30 абонентов) — Музей «Что изобрели русские первыми в мире»
   description: Первая в мире сеть кабельного телевидения. Кабельное телевидение придумали не в Америке. Первые 30 кабельных абонентов планеты жили в одном московском доме — за 9 лет до США.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-01jan-cabletv.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-01/
   sobytie: Первая в мире сеть кабельного телевидения (Москва, 30 абонентов)
   god: "1939"
   og:
@@ -13,31 +13,31 @@ head:
     site_name: Русская цивилизация
     title: Музей «Что изобрели русские первыми в мире» — 1 января
     description: Первая в мире сеть кабельного телевидения. Кабельное телевидение придумали не в Америке. Первые 30 кабельных абонентов планеты жили в одном московском доме — за 9 лет до США.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-01jan-cabletv.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-01jan-cabletv.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-01/
+    image: https://russian-civilization.ru/og/izobreteniya_day-01jan-cabletv.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Музей «Что изобрели русские первыми в мире» — 1 января
     description: Первая в мире сеть кабельного телевидения. Кабельное телевидение придумали не в Америке. Первые 30 кабельных абонентов планеты жили в одном московском доме — за 9 лет до США.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-01jan-cabletv.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-01jan-cabletv.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-01/
+    image: https://russian-civilization.ru/og/izobreteniya_day-01jan-cabletv.jpg
     inLanguage: ru-RU
     isAccessibleForFree: true
     publisher:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
     isPartOf:
       "@type": CollectionPage
       name: Музей «Что изобрели русские первыми в мире»
-      url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/
+      url: https://russian-civilization.ru/muzei/izobreteniya/
     author:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
 oblozhka:
   src: /muzei/izobreteniya/img/01-01-goskatalog-82999227-atp1.jpg
   width: 514

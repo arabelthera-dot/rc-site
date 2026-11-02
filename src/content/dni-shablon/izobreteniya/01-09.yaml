@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первый в мире гусеничный ход — Блинов — Русские первые в мире
   description: Первый в мире гусеничный ход — «бесконечные рельсы». Крестьянин-самоучка Фёдор Блинов создал первый в мире гусеничный ход — на нём держится вся тяжёлая техника планеты.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-09jan-blinov.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-09/
   sobytie: Первый в мире гусеничный ход
   god: "1879"
   og:
@@ -13,31 +13,31 @@ head:
     site_name: Русская цивилизация
     title: Первый в мире гусеничный ход — Блинов — Русские первые в мире
     description: Первый в мире гусеничный ход — «бесконечные рельсы». Крестьянин-самоучка Фёдор Блинов создал первый в мире гусеничный ход — на нём держится вся тяжёлая техника планеты.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-09jan-blinov.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-09jan-blinov.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-09/
+    image: https://russian-civilization.ru/og/izobreteniya_day-09jan-blinov.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первый в мире гусеничный ход — Блинов — Русские первые в мире
     description: Первый в мире гусеничный ход — «бесконечные рельсы». Крестьянин-самоучка Фёдор Блинов создал первый в мире гусеничный ход — на нём держится вся тяжёлая техника планеты.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-09jan-blinov.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-09jan-blinov.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-09/
+    image: https://russian-civilization.ru/og/izobreteniya_day-09jan-blinov.jpg
     inLanguage: ru-RU
     isAccessibleForFree: true
     publisher:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
     isPartOf:
       "@type": CollectionPage
       name: Музей «Что изобрели русские первыми в мире»
-      url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/
+      url: https://russian-civilization.ru/muzei/izobreteniya/
     author:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
 oblozhka:
   src: /muzei/izobreteniya/img/01-09-goskatalog-726938.jpg
   width: 1600

@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первый в мире арктический ледокол «Ермак» — Макаров — Русские первые в мире
   description: Первый в мире арктический ледокол «Ермак». Макаров создал первый в мире арктический ледокол «Ермак» — такого корабля не было ни у одной державы, а деньги на него помог выбить химик из школьной таблицы Менделеев.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-08jan-icebreaker.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-08/
   sobytie: Макаров создал первый в мире арктический ледокол «Ермак»
   god: "1849"
   og:
@@ -13,31 +13,31 @@ head:
     site_name: Русская цивилизация
     title: Первый в мире арктический ледокол «Ермак» — Макаров — Русские первые в мире
     description: Первый в мире арктический ледокол «Ермак». Макаров создал первый в мире арктический ледокол «Ермак» — такого корабля не было ни у одной державы, а деньги на него помог выбить химик из школьной таблицы Менделеев.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-08jan-icebreaker.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-08jan-icebreaker.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-08/
+    image: https://russian-civilization.ru/og/izobreteniya_day-08jan-icebreaker.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первый в мире арктический ледокол «Ермак» — Макаров — Русские первые в мире
     description: Первый в мире арктический ледокол «Ермак». Макаров создал первый в мире арктический ледокол «Ермак» — такого корабля не было ни у одной державы, а деньги на него помог выбить химик из школьной таблицы Менделеев.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-08jan-icebreaker.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-08jan-icebreaker.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-08/
+    image: https://russian-civilization.ru/og/izobreteniya_day-08jan-icebreaker.jpg
     inLanguage: ru-RU
     isAccessibleForFree: true
     publisher:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
     isPartOf:
       "@type": CollectionPage
       name: Музей «Что изобрели русские первыми в мире»
-      url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/
+      url: https://russian-civilization.ru/muzei/izobreteniya/
     author:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
 oblozhka:
   src: /muzei/izobreteniya/img/01-08-goskatalog-50255453.jpg
   width: 800
