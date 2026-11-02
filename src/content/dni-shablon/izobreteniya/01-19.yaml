@@ -5,7 +5,7 @@ adres: den
 head:
   title: Линейное программирование, Л. В. Канторович, 1939 — Музей «Что изобрели русские первыми в мире»
   description: Канторович решал, как раскроить фанеру без отходов, а получил единственную в истории СССР Нобелевскую премию по экономике
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-19jan-kantorovich.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-19/
   sobytie: Линейное программирование (Нобель по экономике)
   god: "1939"
   og:
@@ -13,14 +13,14 @@ head:
     site_name: Русская цивилизация
     title: 'Первая в мире математика оптимального плана — линейное программирование'
     description: Канторович решал, как раскроить фанеру без отходов, а получил единственную в истории СССР Нобелевскую премию по экономике
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-19jan-kantorovich.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-19jan-kantorovich-diplom.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-19/
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-19jan-kantorovich-diplom.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: 'Первая в мире математика оптимального плана — линейное программирование'
     description: Канторович решал, как раскроить фанеру без отходов, а получил единственную в истории СССР Нобелевскую премию по экономике
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-19jan-kantorovich.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-19/
     inLanguage: ru
     isPartOf:
       "@type": WebSite
@@ -28,7 +28,7 @@ head:
     publisher:
       "@type": Organization
       name: Русская цивилизация
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-19jan-kantorovich-diplom.jpg
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-19jan-kantorovich-diplom.jpg
 oblozhka:
   src: day-19jan-kantorovich-diplom.jpg
   width: 1200

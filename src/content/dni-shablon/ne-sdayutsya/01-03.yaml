@@ -3,7 +3,7 @@ key: 01-03
 head:
   title: Николай Сиротинин — «Русские не сдаются» — Русская цивилизация
   description: Двадцатилетний наводчик с одной пушкой остался у моста через Добрость прикрывать отход полка — и танковая колонна встала на два часа.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-sirotinin.html
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-03/
   sobytie: Николай Сиротинин один держит мост через Добрость
   god: "1941"
   og:
@@ -11,13 +11,13 @@ head:
     site_name: Русская цивилизация
     title: Николай Сиротинин — один у моста через Добрость
     description: Двадцатилетний наводчик с одной пушкой остался у моста через Добрость прикрывать отход полка — и танковая колонна встала на два часа.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-sirotinin.html
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-03/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Николай Сиротинин — один у моста через Добрость
     description: Двадцатилетний наводчик с одной пушкой остался у моста через Добрость прикрывать отход полка — и танковая колонна встала на два часа.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-sirotinin.html
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-03/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

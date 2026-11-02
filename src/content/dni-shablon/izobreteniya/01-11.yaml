@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первый в мире бензиновый двигатель для дирижабля, Костович — Музей «Что изобрели русские первыми в мире», 11 января
   description: Огнеслав Костович создал первый в мире бензиновый двигатель для полёта — 80 сил для своего дирижабля «Россия».
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-11jan-kostovich.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-11/
   sobytie: Первый в мире бензиновый двигатель (для дирижабля)
   god: "1884"
   og:
@@ -13,13 +13,13 @@ head:
     site_name: Русская цивилизация
     title: Первый в мире бензиновый двигатель для дирижабля
     description: Огнеслав Костович создал первый в мире бензиновый двигатель для полёта — 80 сил для своего дирижабля «Россия».
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-11jan-kostovich.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-11/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первый в мире бензиновый двигатель для дирижабля
     description: Огнеслав Костович создал первый в мире бензиновый двигатель для полёта — 80 сил для своего дирижабля «Россия».
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-11jan-kostovich.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-11/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

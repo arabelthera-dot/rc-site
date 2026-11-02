@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первый в мире серийный арифмометр с колесом выдвижных зубцов, В. Т. Однер, Петербург — Музей «Что изобрели русские первыми в мире»
   description: Петербургский механик Однер первым в мире наладил серийный выпуск арифмометра с колесом выдвижных зубцов — в СССР его потомка звали «Феликс».
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-18jan-odner.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-18/
   sobytie: 'Первый в мире серийный арифмометр с колесом выдвижных зубцов'
   god: '1874'
   og:
@@ -13,14 +13,14 @@ head:
     site_name: Русская цивилизация
     title: Первый в мире серийный арифмометр с колесом выдвижных зубцов
     description: Петербургский механик Однер первым в мире наладил серийный выпуск арифмометра с колесом выдвижных зубцов — в СССР его потомка звали «Феликс».
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-18jan-odner.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-18jan-odner.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-18/
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-18jan-odner.jpg
   ld:
     '@context': https://schema.org
     '@type': Article
     headline: Первый в мире серийный арифмометр с колесом выдвижных зубцов
     description: Петербургский механик Однер первым в мире наладил серийный выпуск арифмометра с колесом выдвижных зубцов — в СССР его потомка звали «Феликс».
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-18jan-odner.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-18/
     inLanguage: ru
     isPartOf:
       '@type': WebSite
@@ -28,7 +28,7 @@ head:
     publisher:
       '@type': Organization
       name: Русская цивилизация
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-18jan-odner.jpg
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-18jan-odner.jpg
 oblozhka:
   src: day-18jan-odner.jpg
   width: 800

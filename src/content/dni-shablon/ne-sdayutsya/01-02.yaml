@@ -3,7 +3,7 @@ key: 01-02
 head:
   title: Бриг «Меркурий» — «Русские не сдаются»
   description: За три дня до этого русский фрегат сдался без боя. Бриг «Меркурий» — 18 пушек против 184 — положил пистолет у пороха, принял бой и вернулся, не спустив флага.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-merkuriy.html
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-02/
   sobytie: Бой брига «Меркурий» с двумя турецкими линкорами
   god: '1829'
   og:
@@ -11,14 +11,14 @@ head:
     site_name: Русская цивилизация
     title: Бриг «Меркурий» — «Русские не сдаются»
     description: За три дня до этого русский фрегат сдался без боя. Бриг «Меркурий» — 18 пушек против 184 — положил пистолет у пороха, принял бой и вернулся, не спустив флага.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-merkuriy.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/merkuriy-aivazovsky-1892.jpg
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-02/
+    image: https://russian-civilization.ru/muzei/ne-sdayutsya/merkuriy-aivazovsky-1892.jpg
   ld:
     '@context': https://schema.org
     '@type': Article
     headline: Бриг «Меркурий» — «Русские не сдаются»
     description: За три дня до этого русский фрегат сдался без боя. Бриг «Меркурий» — 18 пушек против 184 — положил пистолет у пороха, принял бой и вернулся, не спустив флага.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-merkuriy.html
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-02/
     inLanguage: ru
     isPartOf:
       '@type': WebSite

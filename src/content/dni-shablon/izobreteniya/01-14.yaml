@@ -4,7 +4,7 @@ adres: den
 head:
   title: "Подлодки пр. 705 «Лира»: самые быстрые серийные ПЛ в истории (41+ узел, титан) — Музей «Что изобрели русские первыми в мире»"
   description: "Советская «Лира» — первые в мире серийные подлодки, разгонявшиеся до 41 узла: полный ход за минуту и разворот за 42 секунды уводили её от торпед."
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-14jan-lira.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-14/
   sobytie: "Подлодки пр. 705 «Лира»: самые быстрые серийные ПЛ в истории (41+ узел, титан)"
   god: "1971"
   og:
@@ -12,13 +12,13 @@ head:
     site_name: Русская цивилизация
     title: Первые в мире серийные подлодки со скоростью 41 узел — «Лира»
     description: "Советская «Лира» — первые в мире серийные подлодки, разгонявшиеся до 41 узла: полный ход за минуту и разворот за 42 секунды уводили её от торпед."
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-14jan-lira.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-14/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первые в мире серийные подлодки со скоростью 41 узел — «Лира»
     description: "Советская «Лира» — первые в мире серийные подлодки, разгонявшиеся до 41 узла: полный ход за минуту и разворот за 42 секунды уводили её от торпед."
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-14jan-lira.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-14/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

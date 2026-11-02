@@ -4,7 +4,7 @@ adres: den
 head:
   title: Первая стыковка кораблей и переход через открытый космос («Союз-4/5») — Музей «Что изобрели русские первыми в мире»
   description: Перейти из одного корабля в другой можно было только через открытый космос — переходного люка ещё не придумали. Так 16 января 1969 года прошла первая в мире стыковка пилотируемых кораблей.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-16jan-soyuz45.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-16/
   sobytie: Первая стыковка кораблей и переход через открытый космос («Союз-4/5»)
   god: "1969"
   og:
@@ -12,13 +12,13 @@ head:
     site_name: Русская цивилизация
     title: "Первая в мире стыковка пилотируемых кораблей: «Союз-4» и «Союз-5»"
     description: Перейти из одного корабля в другой можно было только через открытый космос — переходного люка ещё не придумали. Так 16 января 1969 года прошла первая в мире стыковка пилотируемых кораблей.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-16jan-soyuz45.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-16/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: "Первая в мире стыковка пилотируемых кораблей: «Союз-4» и «Союз-5»"
     description: Перейти из одного корабля в другой можно было только через открытый космос — переходного люка ещё не придумали. Так 16 января 1969 года прошла первая в мире стыковка пилотируемых кораблей.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-16jan-soyuz45.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-16/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

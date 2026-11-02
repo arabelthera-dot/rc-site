@@ -4,7 +4,7 @@ adres: den
 head:
   title: «Луна-1», первая межпланетная станция и 2-я космическая скорость — Музей «Что изобрели русские первыми в мире»
   description: Первая в мире межпланетная станция «Луна-1». Она должна была упасть на Луну — но промахнулась.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-02jan-luna1.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-02/
   sobytie: «Луна-1», первая в мире межпланетная станция и 2-я космическая скорость
   god: "1959"
   og:
@@ -12,31 +12,31 @@ head:
     site_name: Русская цивилизация
     title: первая в мире межпланетная станция «Луна-1» — Русские первые в мире
     description: Первая в мире межпланетная станция «Луна-1». Она должна была упасть на Луну — но промахнулась.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-02jan-luna1.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-02jan-luna1.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-02/
+    image: https://russian-civilization.ru/og/izobreteniya_day-02jan-luna1.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: первая в мире межпланетная станция «Луна-1» — Русские первые в мире
     description: Первая в мире межпланетная станция «Луна-1». Она должна была упасть на Луну — но промахнулась.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-02jan-luna1.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-02jan-luna1.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-02/
+    image: https://russian-civilization.ru/og/izobreteniya_day-02jan-luna1.jpg
     inLanguage: ru-RU
     isAccessibleForFree: true
     publisher:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
     isPartOf:
       "@type": CollectionPage
       name: Музей «Что изобрели русские первыми в мире»
-      url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/
+      url: https://russian-civilization.ru/muzei/izobreteniya/
     author:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
 oblozhka:
   src: day-02jan-luna1-maket.jpg
   width: 730

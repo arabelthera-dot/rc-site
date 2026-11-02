@@ -4,7 +4,7 @@ adres: den
 head:
   title: Первая в мире печать всех красок банкноты за один прогон, И. И. Орлов — Музей «Что изобрели русские первыми в мире»
   description: Мальчик, просивший с бабушкой милостыню по деревням, первым в мире напечатал все краски банкноты за один прогон — так деньги многих стран защищают до сих пор.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-06jan-orlov.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-06/
   sobytie: "Первая в мире печать всех красок банкноты за один прогон: орловская печать, И. И. Орлов, 1890–1891"
   god: "1890"
   og:
@@ -12,13 +12,13 @@ head:
     site_name: Русская цивилизация
     title: Первая в мире печать всех красок банкноты за один прогон
     description: Мальчик, просивший с бабушкой милостыню по деревням, первым в мире напечатал все краски банкноты за один прогон — так деньги многих стран защищают до сих пор.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-06jan-orlov.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-06/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первая в мире печать всех красок банкноты за один прогон
     description: Мальчик, просивший с бабушкой милостыню по деревням, первым в мире напечатал все краски банкноты за один прогон — так деньги многих стран защищают до сих пор.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-06jan-orlov.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-06/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

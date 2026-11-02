@@ -4,7 +4,7 @@ adres: den
 head:
   title: Первый в мире расчётный нефтепровод — Шухов — Русские первые в мире
   description: "Первый в мире расчётный нефтепровод: 25-летний Шухов создал его в Баку в 1878 году — и оставил без работы десять тысяч возчиков."
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-05jan-shukhov.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-05/
   sobytie: Первый в мире расчётный нефтепровод Балаханы–Черный город
   god: "1878"
   og:
@@ -12,31 +12,31 @@ head:
     site_name: Русская цивилизация
     title: Первый в мире расчётный нефтепровод — Шухов — Русские первые в мире
     description: "Первый в мире расчётный нефтепровод: 25-летний Шухов создал его в Баку в 1878 году — и оставил без работы десять тысяч возчиков."
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-05jan-shukhov.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-05jan-shukhov.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-05/
+    image: https://russian-civilization.ru/og/izobreteniya_day-05jan-shukhov.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Первый в мире расчётный нефтепровод — Шухов — Русские первые в мире
     description: "Первый в мире расчётный нефтепровод: 25-летний Шухов создал его в Баку в 1878 году — и оставил без работы десять тысяч возчиков."
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-05jan-shukhov.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/izobreteniya_day-05jan-shukhov.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-05/
+    image: https://russian-civilization.ru/og/izobreteniya_day-05jan-shukhov.jpg
     inLanguage: ru-RU
     isAccessibleForFree: true
     publisher:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
     isPartOf:
       "@type": CollectionPage
       name: Музей «Что изобрели русские первыми в мире»
-      url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/
+      url: https://russian-civilization.ru/muzei/izobreteniya/
     author:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
-      logo: https://arabelthera-dot.github.io/rc-museum-preview/icon-512.png
+      url: https://russian-civilization.ru/
+      logo: https://russian-civilization.ru/icon-512.png
 oblozhka:
   src: day-05jan-shukhov-za-stolom-1933.jpg
   width: 628

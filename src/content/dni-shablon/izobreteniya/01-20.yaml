@@ -5,7 +5,7 @@ adres: den
 head:
   title: Первый в мире опыт, доказавший существование витаминов, Н. И. Лунин, 1880 — Музей «Что изобрели русские первыми в мире»
   description: 'Лунин первым в мире доказал опытом, что в еде есть витамины: мыши умирали на смеси чистых белков, жиров, сахара и солей — и жили на молоке.'
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-20jan-lunin.html
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/01-20/
   sobytie: Открытие витаминов, основы витаминологии (первым в мире)
   god: "1880"
   og:
@@ -13,14 +13,14 @@ head:
     site_name: Русская цивилизация
     title: 'Первый в мире опыт, доказавший существование витаминов'
     description: 'Лунин первым в мире доказал опытом, что в еде есть витамины: мыши умирали на смеси чистых белков, жиров, сахара и солей — и жили на молоке.'
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-20jan-lunin.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-20jan-lunin-portret.jpg
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-20/
+    image: https://russian-civilization.ru/muzei/izobreteniya/day-20jan-lunin-portret.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: 'Первый в мире опыт, доказавший существование витаминов'
     description: 'Лунин первым в мире доказал опытом, что в еде есть витамины: мыши умирали на смеси чистых белков, жиров, сахара и солей — и жили на молоке.'
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/izobreteniya/day-20jan-lunin.html
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/01-20/
     inLanguage: ru
     isPartOf:
       "@type": WebSite
