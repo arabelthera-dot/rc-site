@@ -2,8 +2,9 @@
    До «Играть» в блоке — заставка: кадр (и ролик, если есть) rc3d/scen/<сцена>/zastavka/zastavka-{4x5|16x10}.{webp,webm,mp4};
    постер берётся, когда блок близко, ролик играет, только пока виден (не при prefers-reduced-motion и saveData).
    Движок (rc3d.js + чанки, three.js) — ТОЛЬКО по «Играть», с полосой загрузки по реальным байтам; потом сцена scen/<сцена>.json.
-   Слабое устройство (Р432) общий блок игры дня assets/igra-dnya.js переключает на 2D ещё до заставки; здесь — только
-   нет WebGL 2 по «Играть» или сцена не загрузилась за 8 с: тогда 2D сама встаёт на место 3D (window.IGRA_DNYA.v2d). */
+   Слабое устройство (Р432) общий блок игры дня assets/igra-dnya.js переключает на 2D ещё до заставки; здесь — нет WebGL 2
+   (сразу при открытии, не дожидаясь «Играть»: движку нужен именно WebGL 2, а общий блок проверяет любой WebGL) или сцена
+   не загрузилась за 8 с: тогда 2D сама встаёт на место 3D (window.IGRA_DNYA.v2d). */
 (function(){
   var root = document.getElementById('rc3d'); if (!root) return;
   var $ = function(id){ return document.getElementById(id); };
@@ -70,6 +71,7 @@
   }
   var ID = window.IGRA_DNYA || { v2d: function(){}, zhdat: function(){}, gotovo: function(){} };
   function v2d(why){ vidStop(); ID.v2d(why); }
+  if (!webgl()) { v2d('net-webgl2'); return; }
   function start(){
     if (started) return; started = true;
     vidStop();

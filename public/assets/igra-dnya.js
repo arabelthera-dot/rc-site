@@ -30,7 +30,10 @@
     if (stop) try { stop(); } catch (e) {}
     html.setAttribute('data-igra-rezhim', tpl ? '2d' : 'net'); html.setAttribute('data-igra-prichina', why);
     if (!tpl) { blok.parentNode.removeChild(blok); return; }
-    blok.parentNode.replaceChild(tpl.content.cloneNode(true), blok);
+    // 2D встаёт на место 3D и наследует её якорь и метку сцены: ссылки #games и проверка машиной ([data-igra-scena]) ведут к ней.
+    var f = tpl.content.cloneNode(true), el = f.firstElementChild;
+    blok.parentNode.replaceChild(f, blok);
+    if (el) { if (!document.getElementById('games')) el.id = 'games'; el.setAttribute('data-igra-scena', ''); el.setAttribute('data-igra-2d', why); }
     skripty(JSON.parse(tpl.getAttribute('data-skripty') || '[]'));
   }
   function zhdat(){ clearTimeout(zhdu); zhdu = setTimeout(function(){ v2d('8s'); }, 8000); }
