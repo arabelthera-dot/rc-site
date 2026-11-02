@@ -1,0 +1,157 @@
+---
+// Карта-история дня (r598, Р436/Р437): липкая карта, шаги текста рядом (на телефоне — ниже), камера и слои
+// меняются по шагу; лента осады (D3) — если у карты есть «lenta». Движок — MapLibre GL (npm), подложка — своя
+// из Natural Earth (public/media/karty/osnova/), тайлов чужих серверов нет; подписи городов — HTML рядом с точкой.
+// Данные — vizual.karta карточки дня: centr, zum, geojson (свойство sloy у объектов), shagi[{data, tekst,
+// pokazat[], kamera{centr, zum}, den?}], lenta{dney, shag, edinica, podpis}?, istochnik.
+// Нет WebGL — шаги остаются списком, лента рисуется. Вид — public/assets/vizual-karta.css.
+interface Shag { data?: string; tekst: string; pokazat?: string[]; kamera?: { centr: [number, number]; zum: number }; den?: number }
+interface Props {
+  karta: { centr: [number, number]; zum: number; geojson?: string; shagi?: Shag[];
+    lenta?: { dney: number; shag?: number; edinica?: string; podpis?: string }; istochnik?: string };
+  zagolovok?: string;
+}
+const { karta, zagolovok = 'Как это было' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const shagi = karta.shagi ?? [];
+const url = (p?: string) => (p && p.startsWith('/') ? base + p : p);
+const dannye = JSON.stringify({ ...karta, geojson: url(karta.geojson), osnova: `${base}/media/karty/osnova/` });
+---
+{shagi.length > 0 && (
+  <section class="block vk" id="kak-eto-bylo" data-vk={dannye}>
+    <link rel="stylesheet" href={`${base}/assets/vizual-karta.css`} />
+    <h2>{zagolovok}</h2>
+    <div class="vk-scena">
+      <div class="vk-lipkaya">
+        <div class="vk-karta" role="img" aria-label="Карта: путь событий по шагам рассказа"></div>
+        {karta.lenta && <div class="vk-lenta" aria-hidden="true"></div>}
+      </div>
+      <ol class="vk-shagi">
+        {shagi.map((s, i) => (
+          <li class="vk-shag" data-i={i}>
+            {s.data && <span class="vk-data">{s.data}</span>}
+            <p>{s.tekst}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+    {(karta.lenta?.podpis || karta.istochnik) && (
+      <p class="vk-podpis">{karta.lenta?.podpis} {karta.istochnik && <span class="vk-ist">Источники: {karta.istochnik}</span>}</p>
+    )}
+  </section>
+)}
+
+<script>
+  import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
+  import { select } from 'd3-selection';
+  import { scaleLinear } from 'd3-scale';
+
+  const tiho = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = (el: Element, k: string, d: string) => getComputedStyle(el).getPropertyValue(k).trim() || d;
+  const webgl = () => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } };
+
+  // Лента осады: шкала дней, деления по неделям, метки шагов с «den»; нажатие на метку листает к шагу.
+  function lenta(blok: HTMLElement, d: any, shagi: HTMLElement[]) {
+    const mesto = blok.querySelector<HTMLElement>('.vk-lenta');
+    if (!mesto || !d.lenta) return () => {};
+    const L = d.lenta, W = 600, H = 54, x = scaleLinear().domain([0, L.dney]).range([14, W - 14]);
+    const svg = select(mesto).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('preserveAspectRatio', 'none');
+    svg.append('line').attr('class', 'vk-l-os').attr('x1', x(0)).attr('x2', x(L.dney)).attr('y1', 22).attr('y2', 22);
+    const hod = svg.append('line').attr('class', 'vk-l-hod').attr('x1', x(0)).attr('x2', x(0)).attr('y1', 22).attr('y2', 22);
+    const sh = L.shag || 7;
+    for (let n = 0; n <= L.dney; n += sh) {
+      svg.append('line').attr('class', 'vk-l-del').attr('x1', x(n)).attr('x2', x(n)).attr('y1', 16).attr('y2', 28);
+      if (n > 0) svg.append('text').attr('class', 'vk-l-txt').attr('x', x(n - sh / 2)).attr('y', 46).attr('text-anchor', 'middle').text(`${n / sh} ${L.edinica || ''}`);
+    }
+    const metki = d.shagi.map((s: any, i: number) => s.den == null ? null : svg.append('circle').attr('class', 'vk-l-metka')
+      .attr('cx', x(s.den)).attr('cy', 22).attr('r', 6).on('click', () => shagi[i].scrollIntoView({ behavior: tiho ? 'auto' : 'smooth', block: 'center' })));
+    return (i: number) => {
+      const s = d.shagi[i], den = s.den ?? (d.shagi.slice(0, i).some((p: any) => p.den != null) ? L.dney : 0);
+      mesto.classList.toggle('vk-l-vne', s.den == null);
+      hod.attr('x2', x(den));
+      metki.forEach((m: any, j: number) => m && m.classed('vk-l-akt', j === i));
+    };
+  }
+
+  async function karta(blok: HTMLElement, d: any, shagi: HTMLElement[]) {
+    const mesto = blok.querySelector<HTMLElement>('.vk-karta')!;
+    if (!webgl()) { blok.classList.add('vk-bez-karty'); return () => {}; }
+    const maplibregl = (await import('maplibre-gl')).default;
+    maplibregl.setWorkerUrl(workerUrl);
+    const [osn, den] = await Promise.all([
+      Promise.all(['susha', 'ozera', 'reki'].map((f) => fetch(`${d.osnova}${f}.geojson`).then((r) => r.json()))),
+      d.geojson ? fetch(d.geojson).then((r) => r.json()) : { type: 'FeatureCollection', features: [] },
+    ]);
+    const c = (k: string, z: string) => css(blok, k, z);
+    const sloi = [...new Set(den.features.map((f: any) => f.properties?.sloy).filter(Boolean))] as string[];
+    const layers: any[] = [
+      { id: 'more', type: 'background', paint: { 'background-color': c('--vk-more', '#1b2a3a') } },
+      { id: 'susha', type: 'fill', source: 'susha', paint: { 'fill-color': c('--vk-susha', '#e6dac0') } },
+      { id: 'ozera', type: 'fill', source: 'ozera', paint: { 'fill-color': c('--vk-more', '#1b2a3a') } },
+      { id: 'reki', type: 'line', source: 'reki', paint: { 'line-color': c('--vk-reka', '#7d93a6'),
+        'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.6, 10, 2.4] } },
+    ];
+    for (const s of sloi) {
+      const f = ['==', ['get', 'sloy'], s];
+      layers.push({ id: `l-${s}`, type: 'line', source: 'den', filter: ['all', f, ['==', ['geometry-type'], 'LineString']],
+        layout: { visibility: 'none', 'line-cap': 'round' },
+        paint: { 'line-color': c('--vk-put', '#a8341f'), 'line-width': 2.6, 'line-dasharray': [2, 1.4] } });
+      layers.push({ id: `t-${s}`, type: 'circle', source: 'den', filter: ['all', f, ['==', ['geometry-type'], 'Point']],
+        layout: { visibility: 'none' },
+        paint: { 'circle-color': ['match', ['get', 'vid'], 'glavnoe', c('--vk-akcent', '#c9a84c'), c('--vk-put', '#a8341f')],
+          'circle-radius': ['match', ['get', 'vid'], 'glavnoe', 8, 'napravlenie', 0, 5],
+          'circle-stroke-color': c('--vk-susha', '#e6dac0'), 'circle-stroke-width': 2 } });
+    }
+    const map = new maplibregl.Map({
+      container: mesto, interactive: false, attributionControl: false, center: d.centr, zoom: d.zum,
+      style: { version: 8, sources: {
+        susha: { type: 'geojson', data: osn[0] }, ozera: { type: 'geojson', data: osn[1] },
+        reki: { type: 'geojson', data: osn[2] }, den: { type: 'geojson', data: den } }, layers },
+    });
+    // Подписи — HTML рядом с точкой (справа), не поверх неё; шрифтов на карте нет.
+    const podpisi = den.features.filter((f: any) => f.geometry.type === 'Point' && f.properties?.imya).map((f: any) => {
+      const el = document.createElement('span');
+      el.className = `vk-imya vk-imya-${f.properties.vid || 'gorod'}`;
+      el.textContent = f.properties.imya;
+      return { sloy: f.properties.sloy, el, m: new maplibregl.Marker({ element: el, anchor: 'left', offset: [11, 0] }).setLngLat(f.geometry.coordinates) };
+    });
+    await new Promise((r) => map.once('load', r));
+    blok.classList.add('vk-gotova');
+    return (i: number) => {
+      const s = d.shagi[i], vid = new Set(s.pokazat ?? sloi);
+      for (const l of sloi) for (const p of ['l', 't']) map.setLayoutProperty(`${p}-${l}`, 'visibility', vid.has(l) ? 'visible' : 'none');
+      podpisi.forEach((p: any) => (vid.has(p.sloy) ? p.m.addTo(map) : p.m.remove()));
+      const k = s.kamera ?? { centr: d.centr, zum: d.zum };
+      tiho ? map.jumpTo({ center: k.centr, zoom: k.zum }) : map.flyTo({ center: k.centr, zoom: k.zum, duration: 1400, essential: false });
+    };
+  }
+
+  function zapusk(blok: HTMLElement) {
+    const d = JSON.parse(blok.dataset.vk!);
+    const shagi = [...blok.querySelectorAll<HTMLElement>('.vk-shag')];
+    const kLenta = lenta(blok, d, shagi);
+    let kKarta: (i: number) => void = () => {};
+    let tek = -1;
+    const shag = (i: number) => {
+      if (i === tek) return;
+      tek = i;
+      shagi.forEach((s, j) => s.classList.toggle('vk-akt', j === i));
+      kLenta(i); kKarta(i);
+    };
+    // Шаг активен, когда пересекает середину экрана (подход scrollama на IntersectionObserver).
+    const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && shag(Number((e.target as HTMLElement).dataset.i))),
+      { rootMargin: '-50% 0px -50% 0px' });
+    shagi.forEach((s) => io.observe(s));
+    shag(0);
+    // Тяжёлый движок карты — только когда блок в пределах экрана от видимой области.
+    const lenivo = new IntersectionObserver(async (es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      lenivo.disconnect();
+      try { kKarta = await karta(blok, d, shagi); const t = tek; tek = -1; shag(t); }
+      catch { blok.classList.add('vk-bez-karty'); }
+    }, { rootMargin: '100% 0px' });
+    lenivo.observe(blok);
+  }
+
+  document.querySelectorAll<HTMLElement>('section.vk[data-vk]').forEach(zapusk);
+</script>

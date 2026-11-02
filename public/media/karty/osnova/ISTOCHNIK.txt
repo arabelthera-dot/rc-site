@@ -1,0 +1,5 @@
+Подложка карт-историй (r598, 02.11.2026): Natural Earth 1:10m — ne_10m_land, ne_10m_lakes,
+ne_10m_rivers_lake_centerlines + ne_10m_rivers_europe (naciscdn.org/naturalearth, public domain).
+Вырезано по рамке 10..75 в. д., 38..72 с. ш., упрощено mapshaper (суша 12 %, реки и озёра 20 %),
+точность 0.001°. Государственных границ в подложке нет — только суша, реки, озёра.
+Повторить: mapshaper -i ne_10m_land.shp -clip bbox=10,38,75,72 -simplify 12% keep-shapes -o susha.geojson precision=0.001
