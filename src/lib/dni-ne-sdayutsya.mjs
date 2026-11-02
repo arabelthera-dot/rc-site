@@ -26,6 +26,10 @@ export const skhemaNeSdayutsya = z.object({
   // ЗАМОК (Р436): вместо игры — визуализация; слова «игра» в карточке нет.
   const igra = JSON.stringify(d).match(IGRA);
   if (igra) ctx.addIssue({ code: 'custom', path: [], message: `ЗАМОК (Р436): в карточке «не сдаются» слово «${igra[0]}…» — игры в музее нет (вместо игры визуализация)` });
+  // ЗАМОК («Календарь без дат», 27.08): ключ ММ-ДД — номер записи, не дата события; плашка начинается «День N · месяц».
+  const MESYACY = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+  const nachalo = `День ${parseInt(d.key.slice(3))} · ${MESYACY[parseInt(d.key.slice(0, 2)) - 1]}`;
+  if (!d.lead.data.startsWith(nachalo)) ctx.addIssue({ code: 'custom', path: ['lead', 'data'], message: `ЗАМОК: плашка «${d.lead.data}» — у музея без дат начинается «${nachalo}» (ключ дня — номер записи, не дата события)` });
   // ЗАМОК: музей не про первенство — «первый в мире» в заголовке и хуке нет.
   for (const k of ['h1', 'hook']) {
     const m = String(d.lead[k]).match(PERVYY_V_MIRE);

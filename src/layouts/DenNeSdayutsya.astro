@@ -10,8 +10,9 @@ import { q, json, chromeJs, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kud
 const { d, museum } = Astro.props;
 const muzeyName = museum.title_ru;
 const DEVIZ = 'И один в поле воин, если он по-русски скроен';
-const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.key.slice(0, 2)) - 1]} ${d.head.god}: ${d.head.sobytie}`;
+// Музей без дат (calendar-meta-ne-sdayutsya.json dated:false, «Календарь без дат» 27.08): ключ ММ-ДД — номер записи, не дата события;
+// во вкладке — год и событие, без числа и месяца из ключа.
+const kogda = d.head.sobytie && `${d.head.god}: ${d.head.sobytie}`;
 const title = kogda ? `${kogda} — ${muzeyName} — Русская цивилизация` : d.head.title;
 const ogTitle = kogda || d.head.og.title;
 const v = d.vizual;
