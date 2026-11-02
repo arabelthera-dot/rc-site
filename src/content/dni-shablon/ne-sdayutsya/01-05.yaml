@@ -3,7 +3,7 @@ key: 01-05
 head:
   title: Брестская крепость — «Русские не сдаются» — Русская цивилизация
   description: 22 июня 1941 года крепость на границе приняла бой в первый час войны и держалась, когда всё говорило «конец». «Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе. Музей стойкости и подвига «Русские не сдаются».
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-brest.html
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-05/
   sobytie: Брестская крепость
   god: "1941"
   og:
@@ -11,21 +11,21 @@ head:
     site_name: Русская цивилизация
     title: Брестская крепость — «Русские не сдаются» — Русская цивилизация
     description: 22 июня 1941 года крепость на границе приняла бой в первый час войны и держалась, когда всё говорило «конец». «Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе. Музей стойкости и подвига «Русские не сдаются».
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-brest.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/og-default.jpg
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-05/
+    image: https://russian-civilization.ru/og/og-default.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Брестская крепость — «Русские не сдаются»
     description: 22 июня 1941 года крепость на границе приняла бой в первый час войны и держалась, когда всё говорило «конец». «Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-brest.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/og/og-default.jpg
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-05/
+    image: https://russian-civilization.ru/og/og-default.jpg
     inLanguage: ru-RU
     isAccessibleForFree: true
     publisher:
       "@type": Organization
       name: Русская цивилизация
-      url: https://arabelthera-dot.github.io/rc-museum-preview/
+      url: https://russian-civilization.ru/
 oblozhka:
   src: /muzei/ne-sdayutsya/img/01-05-goskatalog-31681955.jpg
   width: 800

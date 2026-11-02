@@ -5,7 +5,7 @@ key: 01-04
 head:
   title: Оборона Козельска — «Русские не сдаются» — Русская цивилизация
   description: Семь недель малый город на реке Жиздре держал орду Батыя — дольше всех городов нашествия. За это Батый назвал Козельск «злым городом». Музей стойкости и подвига «Русские не сдаются».
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-kozelsk.html
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-04/
   sobytie: Оборона Козельска
   god: "1238"
   og:
@@ -13,14 +13,14 @@ head:
     site_name: Русская цивилизация
     title: Оборона Козельска — «Русские не сдаются» — Русская цивилизация
     description: Семь недель малый город на реке Жиздре держал орду Батыя — дольше всех городов нашествия. За это Батый назвал Козельск «злым городом».
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-kozelsk.html
-    image: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/kozelsk-miniatura-1-zahvat.jpg
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-04/
+    image: https://russian-civilization.ru/muzei/ne-sdayutsya/kozelsk-miniatura-1-zahvat.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Оборона Козельска — «Русские не сдаются»
     description: Семь недель малый город на реке Жиздре держал орду Батыя — дольше всех городов нашествия. За это Батый назвал Козельск «злым городом».
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-kozelsk.html
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-04/
     inLanguage: ru
     isPartOf:
       "@type": WebSite

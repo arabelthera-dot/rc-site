@@ -5,7 +5,7 @@ key: 01-01
 head:
   title: Евпатий Коловрат — «Русские не сдаются» — Русская цивилизация
   description: Батый сжёг Рязань — но запомнил имя того, кто рубился на пепелище. Воевода Евпатий Коловрат с малой дружиной догнал уходящую орду и принял бой, которого не мог выиграть.
-  canonical: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-kolovrat.html
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-01/
   sobytie: Евпатий Коловрат догнал орду Батыя
   god: "1237"
   og:
@@ -13,13 +13,13 @@ head:
     site_name: Русская цивилизация
     title: Евпатий Коловрат — «Русские не сдаются» — Русская цивилизация
     description: Батый сжёг Рязань — но запомнил имя того, кто рубился на пепелище. Воевода с малой дружиной догнал уходящую орду и принял бой, которого не мог выиграть.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-kolovrat.html
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-01/
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Евпатий Коловрат — «Русские не сдаются»
     description: Батый сжёг Рязань — но запомнил имя того, кто рубился на пепелище. Воевода с малой дружиной догнал уходящую орду и принял бой, которого не мог выиграть.
-    url: https://arabelthera-dot.github.io/rc-museum-preview/muzei/ne-sdayutsya/podvig-kolovrat.html
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-01/
     inLanguage: ru
     isAccessibleForFree: true
     publisher:
