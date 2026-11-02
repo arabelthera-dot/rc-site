@@ -2,8 +2,8 @@
    До «Играть» в блоке — заставка: кадр (и ролик, если есть) rc3d/scen/<сцена>/zastavka/zastavka-{4x5|16x10}.{webp,webm,mp4};
    постер берётся, когда блок близко, ролик играет, только пока виден (не при prefers-reduced-motion и saveData).
    Движок (rc3d.js + чанки, three.js) — ТОЛЬКО по «Играть», с полосой загрузки по реальным байтам; потом сцена scen/<сцена>.json.
-   Слабый телефон (deviceMemory ≤ 2 или saveData) — сначала предложение 2D-игры ниже (#games) и «всё равно открыть 3D»;
-   без WebGL 2 — сразу 2D. Образец — загрузчик 12 янв. soberi-r7-3d.js (#717). */
+   Слабое устройство (Р432) общий блок игры дня assets/igra-dnya.js переключает на 2D ещё до заставки; здесь — только
+   нет WebGL 2 по «Играть» или сцена не загрузилась за 8 с: тогда 2D сама встаёт на место 3D (window.IGRA_DNYA.v2d). */
 (function(){
   var root = document.getElementById('rc3d'); if (!root) return;
   var $ = function(id){ return document.getElementById(id); };
@@ -68,39 +68,26 @@
       });
     })).catch(function(){});
   }
-  function v2d(why){
-    vidStop(); root.setAttribute('data-sostoyanie', 'tekst');
-    $('rc3dRun').parentNode.hidden = true; $('rc3dLoad').hidden = true; $('rc3dSlab').hidden = false; $('rc3dVse').parentNode.hidden = true;
-    $('rc3dSlabT').textContent = why;
-  }
+  var ID = window.IGRA_DNYA || { v2d: function(){}, zhdat: function(){}, gotovo: function(){} };
+  function v2d(why){ vidStop(); ID.v2d(why); }
   function start(){
     if (started) return; started = true;
     vidStop();
     root.setAttribute('data-sostoyanie', 'gruzit');
-    $('rc3dRun').parentNode.hidden = true; $('rc3dSlab').hidden = true; $('rc3dLoad').hidden = false; proc(0);
+    $('rc3dRun').parentNode.hidden = true; $('rc3dLoad').hidden = false; proc(0);
     $('rc3dHint').textContent = 'Загружаю 3D-сцену…';
     var q = [VER, popytka ? 'p=' + popytka : ''].filter(Boolean).join('&');
     var url = base + 'rc3d.js' + (q ? '?' + q : '');
     // Движок сам находит #rc3d, читает data-s и заменяет заставку своей сценой и игрой (avtozapusk в igrok.mjs).
+    ID.zhdat();
     skachat(q).then(function(){ return import(url); })
-      .then(function(){ proc(100); })
+      .then(function(){ proc(100); ID.gotovo(); })
       .catch(function(e){
-        console.warn('rc3d', e);
-        started = false; popytka++;
-        root.setAttribute('data-sostoyanie', 'oshibka');
-        $('rc3dLoad').hidden = true; $('rc3dRun').textContent = 'Попробовать ещё раз'; $('rc3dRun').parentNode.hidden = false;
-        $('rc3dHint').textContent = '3D-сцена не загрузилась — проверь связь и попробуй ещё раз. Та же игра без 3D — ниже.';
+        console.warn('rc3d', e); ID.v2d('oshibka');
       });
   }
   $('rc3dRun').addEventListener('click', function(){
-    if (!webgl()) { v2d('Браузер не показывает 3D (нет WebGL 2). Та же игра без 3D — чуть ниже.'); return; }
-    var slab = (navigator.deviceMemory && navigator.deviceMemory <= 2) || conn.saveData;
-    if (slab) {
-      root.setAttribute('data-sostoyanie', 'slab');
-      $('rc3dRun').parentNode.hidden = true; $('rc3dSlab').hidden = false; $('rc3dHint').textContent = '';
-      return;
-    }
+    if (!webgl()) { v2d('net-webgl2'); return; }
     start();
   });
-  $('rc3dVse').addEventListener('click', start);
 })();
