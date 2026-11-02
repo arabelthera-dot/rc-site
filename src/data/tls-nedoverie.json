@@ -5,25 +5,25 @@
    "kind": "ru-ca",
    "error": "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-11-01"
+   "checked": "2026-11-02"
   },
   "book.uraic.ru": {
    "kind": "other",
    "error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
    "issuer": "GlobalSign GCC R46 AlphaSSL CA 2025",
-   "checked": "2026-11-01"
+   "checked": "2026-11-02"
   },
   "buran.ru": {
    "kind": "other",
    "error": "CERT_HAS_EXPIRED",
    "issuer": "Encryption Everywhere DV TLS CA - G1",
-   "checked": "2026-11-01"
+   "checked": "2026-11-02"
   },
   "ckb-rubin.ru": {
    "kind": "ru-ca",
    "error": "SELF_SIGNED_CERT_IN_CHAIN",
    "issuer": "Russian Trusted Sub CA",
-   "checked": "2026-11-01"
+   "checked": "2026-11-02"
   },
   "heart-master.com": {
    "kind": "other",
