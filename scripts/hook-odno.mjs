@@ -11,8 +11,8 @@
 // хук карточки src/content/dni-shablon/<музей>/ММ-ДД.yaml (lead.hook) дословно совпадает в каждом носителе:
 //   страница — <p class="hook"> дня; календарь — поле d в kalendar-dney.js; витрина — /segodnya/ММ-ДД/
 //   (если музей там стоит); пост — хук, который берёт scripts/kanaly/post.py (collect); аудиогид — текст гида
-//   (audioguide.transcript карточки и rc-rolik/audiogid/ММ-ДД.yaml); ролик — надпись сегмента hook в
-//   rc-rolik/days/<ДДмес>.json. Страница/календарь/витрина — из --dist <папка> или с живого --sait <адрес>,
+//   (audioguide.transcript карточки и rc-rolik/audiogid/ММ-ДД.yaml); ролик — надпись (без неё — озвучка) сегмента
+//   hook в rc-rolik/days/<ДДмес>.json. Страница/календарь/витрина — из --dist <папка> или с живого --sait <адрес>,
 //   без них — из src/content/days (источник календаря, витрины и поста). Сравнение — после снятия тегов,
 //   сущностей, знака ударения и лишних пробелов.
 // Нынешний текст хука появился (git log -S: карточка, days/*.json, полная страница) позже коммита mp4 ролика / mp3 гида —
@@ -154,7 +154,12 @@ print(json.dumps({k: {x['slug']: x['hook'] for x in post.collect(k)} for k in js
       const r = await rolik(`days/${id}.json`);
       if (r === undefined) ne('ролик', `${k.key}: без сети и --rolik`);
       else if (r === null) res['ролик'] = [`нет rc-rolik/days/${id}.json`];
-      else { const seg = JSON.parse(r).segments?.find((s) => s.id === 'hook'); res['ролик'] = [norm(seg?.show) || 'нет сегмента hook']; }
+      else {
+        // надпись сегмента hook, без надписи — его озвучка; без сегмента hook — хук в любом сегменте
+        const segs = JSON.parse(r).segments ?? [], seg = segs.find((s) => s.id === 'hook');
+        res['ролик'] = [seg ? norm(seg.show) || norm(seg.say) || 'пустой сегмент hook'
+          : segs.some((s) => norm(s.show) === hook || norm(s.say) === hook) ? hook : 'нет сегмента hook'];
+      }
     } else ne('ролик', `${k.key}: ролика нет`);
 
     for (const n of NOS) {
