@@ -301,6 +301,11 @@ function izStaroyStranicy(key) {
   if (ag) karta.audioguide = Object.fromEntries(['audioSrc', 'durationLabel', 'lead', 'stops', 'transcript', 'note'].map((k) => [k, ag[k]]));
   else zametki.push('аудиогида на старой странице нет — блока audioguide нет (адрес den его требует)');
   karta.razdely = [];
+  // Разделы старой страницы, которых нет в шаблоне, — вслух, по одному: среди них бывает визуализация дня (карта, каска —
+  // Р436, игр нет) — её переносит человек, иначе адрес den её потеряет.
+  const VZYATO = ['video', 'audioguide', 'istoriya', 'quiz', 'itog', 'sources-rights', 'calendar', 'kuda-dalshe'];
+  const vybrosheno = [...h.matchAll(/<section[^>]*\sid="([^"]+)"/g)].map((m) => m[1]).filter((id) => !VZYATO.includes(id));
+  if (vybrosheno.length) zametki.push(`ВЫБРОШЕНО (в шаблоне нет; визуализацию дня — перенести человеку, Р436): ${vybrosheno.join(', ')}`);
 
   if (!voprosy.length) stop(`${html}: викторины (const quiz=[…]) нет`);
   karta.quiz = { kicker: `Проверь себя · ${voprosy.length} вопросов`, h2: 'Викторина', intro: 'На каждый вопрос — одна попытка. После ответа покажем объяснение.',
