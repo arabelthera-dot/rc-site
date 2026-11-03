@@ -26,6 +26,9 @@ const adres = (u) => {
   if (u.startsWith('../../')) return `/${u.replace(/^(\.\.\/)+/, '')}`;
   return `/muzei/${MUZEI}/${u}`;
 };
+// Дополнение (Р494): источник эпизода, которого нет на старой странице, — src/data/karkas-dopolnenie/literatura.json,
+// { "ДД-ММ": { "номер удара": { src, url } | { ne_podtverzhden: "где искали" } } }; неподтверждённый удар не переносится.
+const DOPOLNENIE = (() => { const f = fileURLToPath(new URL(`../../src/data/karkas-dopolnenie/${MUZEI}.json`, import.meta.url)); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {}; })();
 const adresaVHtml = (s) => vnutri(s).replace(/\s(href|src)="([^"]*)"/g, (x, k, u) => ` ${k}="${adres(u)}"`);
 
 export function razobrat(html, json, den) {
@@ -93,7 +96,7 @@ export function razobrat(html, json, den) {
 
   // «Пять историй» — удары истории дня: заголовок и вводная — summary, абзацы раскрытия — det, строка «Источник эпизода» — src.
   const pyat = sekciya('five-stories');
-  const udary = [...(pyat ?? '').matchAll(/<article class="moment"[^>]*>([\s\S]*?)<\/article>/g)].map(([, a]) => {
+  const udary = [...(pyat ?? '').matchAll(/<article class="moment"[^>]*>([\s\S]*?)<\/article>/g)].map(([, a], i) => {
     const det = a.match(/<details>([\s\S]*?)<\/details>/)?.[1] ?? '';
     const istP = det.match(/<p class="source">([\s\S]*?)<\/p>/)?.[1];
     const u = { summary: `${tekst(h2(a))}. ${tekst(a.match(/<p class="lead">([\s\S]*?)<\/p>/)?.[1])}`.replace(/([.!?…])\. /, '$1 '),
@@ -110,9 +113,12 @@ export function razobrat(html, json, den) {
       if (k) { if (/portrait/.test(atr(fig[1], 'class') ?? '')) k.klass = 'portret'; u.kadr = k; }
     }
     if (!u.podrobnee) delete u.podrobnee;
+    const dop = DOPOLNENIE[den]?.[i];
+    if (!u.src && dop?.src) { u.src = `Источник: ${dop.src}`; if (dop.url) u.href = dop.url; }
+    if (!u.src && dop?.ne_podtverzhden) { nety.push(`история «${tekst(h2(a))}»: источник не подтверждён (${dop.ne_podtverzhden}) — удар не перенесён`); return null; }
     if (!u.src) nety.push(`история «${tekst(h2(a))}»: нет строки источника`);
     return u;
-  });
+  }).filter(Boolean);
   if (udary.length) karta.story = { kicker: tekst(pyat.match(/<div class="n">[^/]*\/\s*([^<]+)<\/div>/)?.[1]) || 'Пять историй', h2: h1, udary };
   else nety.push('нет на старой странице: пять историй — истории дня нет');
 
@@ -222,7 +228,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url) && process.argv.includes(
     catch (e) { provaly.push(`${den}: разбор упал — ${e.message}`); continue; }
     const { nety, vybrosheno, ...ost } = karta;
     if (!json) nety.push('нет записи дня src/content/days — событие и год не взяты');
-    for (const s of nety) { const vid = s.replace(/^кадр \S+/, 'кадр …').replace(/«.*»/g, '«…»').replace(/\(\d+ ссыл/, '(N ссыл'); vidyNety.set(vid, (vidyNety.get(vid) ?? 0) + 1); }
+    for (const s of nety) { const vid = s.replace(/^кадр \S+/, 'кадр …').replace(/источник не подтверждён \(.*\) —/, 'источник не подтверждён (…) —').replace(/«.*»/g, '«…»').replace(/\(\d+ ссыл/, '(N ссыл'); vidyNety.set(vid, (vidyNety.get(vid) ?? 0) + 1); }
     for (const s of vybrosheno) { const vid = s.replace(/«.*»/g, '«…»'); vidyVybr.set(vid, (vidyVybr.get(vid) ?? 0) + 1); }
     const r = skhema.safeParse(ost);
     if (r.success) proshla++;
