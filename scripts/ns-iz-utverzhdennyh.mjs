@@ -75,8 +75,9 @@ function razobrat(file) {
   if (fakty.length !== 15) stop(`${file}: фактов ${fakty.length}, нужно ровно 15`);
   fakty.forEach((f, i) => {
     if (f.n !== i + 1) stop(`${file}: факт №${f.n} стоит ${i + 1}-м — нумерация сбита`);
-    for (const k of ['podrobnee', 'istochnik']) if (!f[k]) stop(`${file}: у факта ${f.n} нет ${k === 'podrobnee' ? '«Подробнее»' : '«Источник»'}`);
-    f.ssylki = ssylki(f.istochnik, `${file}: факт ${f.n}`);
+    if (!f.podrobnee) stop(`${file}: у факта ${f.n} нет «Подробнее»`);
+    // Нет «Источник» в утверждённом (01-25, факт 1) — слова не трогаем; адрес возьмёт udar() из материала, нет и там — останов.
+    f.ssylki = f.istochnik ? ssylki(f.istochnik, `${file}: факт ${f.n}`) : [];
   });
   return { fakty, data };
 }
@@ -122,9 +123,12 @@ function otryvok(podrobnee) {
 // m — факт материала ~/workspace/knowledge/ns-material/ММ-ДД.md (цитата, адрес, страница, пометка), kadr — кадр материала к факту.
 function udar(f, staryy, data, m, kadr) {
   const [pervyy] = f.ssylki;
+  if (!pervyy && !m?.href) stop(`факт ${f.n}: «Источник» нет ни в утверждённом, ни адреса в материале`);
   const href = m?.href ?? pervyy.href;
   const stranica = m?.stranica ?? f.ssylki.find((s) => s.href === href)?.imya ?? (m?.href ? new URL(href).host : pervyy.imya);
-  const u = { summary: `<b>${f.summary}</b>`, det: [f.podrobnee], src: `Источник: ${f.istochnik}`, stranica, href };
+  if (!pervyy) console.log(`  · факт ${f.n}: в утверждённом нет «Источник» — адрес из материала ${href}`);
+  const src = `Источник: ${f.istochnik ?? `${stranica} — ${href}`}`;
+  const u = { summary: `<b>${f.summary}</b>`, det: [f.podrobnee], src, stranica, href };
   const o = m?.otryvok ?? staryy?.otryvok ?? otryvok(f.podrobnee);
   if (o) u.otryvok = o;
   // Пометка материала «один источник», «расхождение» — не из списка: пометки нет, «документ» не подставляется.
@@ -177,6 +181,12 @@ function den(key) {
   karta.adres = 'den';
   const r = skhemaNeSdayutsya.safeParse(karta);
   const zamki = r.success ? [] : r.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`);
+  // Карточка без adres тоже идёт в сборку: не проходит схему и без adres — не записывать, иначе сборка красная (01-30, r496).
+  const bezA = r.success ? r : skhemaNeSdayutsya.safeParse({ ...karta, adres: undefined });
+  if (!bezA.success) {
+    console.error(`${key}: схема не проходит и без adres — карточка не записана (сборка упала бы):\n  ${bezA.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('\n  ')}`);
+    return false;
+  }
   if (zamki.length && !bezAdresa) {
     console.error(`${key}: замки адреса den не проходят — карточка не записана:\n  ${zamki.join('\n  ')}\n${otchet.map((s) => `  · ${s}`).join('\n')}`);
     return false;
@@ -245,5 +255,12 @@ if (proverka) {
   process.exit(0);
 }
 const itog = [];
-for (const key of dni(args[0])) { if (izStaroy) await izStaroyStranicy(key); itog.push(den(key)); }
+// Карточка не записана — каркас не оставлять: вернуть прежний файл или убрать новый (иначе сборка красная, 01-30, r496).
+for (const key of dni(args[0])) {
+  const f = path.join(VYHOD, `${key}.yaml`), bylo = fs.existsSync(f) ? fs.readFileSync(f) : null;
+  if (izStaroy) await izStaroyStranicy(key);
+  const ok = den(key);
+  if (!ok && izStaroy) { if (bylo) fs.writeFileSync(f, bylo); else fs.rmSync(f, { force: true }); console.error(`${key}: каркас ${bylo ? 'откачен к прежнему' : 'убран'}`); }
+  itog.push(ok);
+}
 process.exit(itog.every(Boolean) ? 0 : 2);
