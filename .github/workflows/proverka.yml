@@ -66,6 +66,15 @@ jobs:
         if: always()
         timeout-minutes: 1
         run: node scripts/sverka-utverzhdeno.mjs --vse
+      # Кадры дня (Р536 п. 4, Р408, Р90): по карточкам src/content/dni-shablon/<музей>/ — разных кадров ≥ 6, повтор по
+      # pHash (Хэмминг ≤ 8, imagehash) и тот же файл дважды — брак, адрес Википедии или Викисклада — брак, кадра нет в public/ — брак.
+      # Недобор лечит машина: scripts/kadry-dnya.py dobor ДНИ --zapis берёт кадры из Госкаталога. Без сборки, секунды.
+      # Откат — удалить шаг и scripts/kadry-dnya.py.
+      - name: kadry-dnya — кадров ≥ 6, без повторов (pHash), без Википедии
+        timeout-minutes: 3
+        run: |
+          python3 -m venv /tmp/kd && /tmp/kd/bin/pip install -q --disable-pip-version-check pillow imagehash pyyaml
+          /tmp/kd/bin/python scripts/kadry-dnya.py zamok --proba && /tmp/kd/bin/python scripts/kadry-dnya.py zamok все
       # Инструкция к каждой игре (Р199, Р201, 23.10.2026; 04-build §5-бис): страница дня с игрой без блока «Как играть»
       # под картинкой игры (data-igra-pravila с шагами после сцены, assets/igra-pravila.css) — ошибка; кнопки «Начать»
       # и «Правила» и игра, спрятанная до старта, — тоже ошибка (Р201: картинка видна и работает сразу). Изменённые в заявке
@@ -187,6 +196,17 @@ jobs:
       # из собранного 01-13. Исключений нет. Откат — удалить этот шаг и tests/vid-dnya.mjs.
       - name: vid-dnya — дни изобретений в виде 13 января
         run: node tests/vid-dnya.mjs dist
+      # Кадры дня — разные (Сергей 01.11, Р408; museum-page-production п. 2-тер; r534): для каждой страницы den/ всех музеев —
+      # кадры тела, повторы по pHash (Хэмминг ≤ 8), доля портретов (лицо по каскаду Хаара OpenCV или «портрет» в alt).
+      # Только отчёт: шаг не роняет заявку (правило «новых замков нет»). Стоит здесь, а не в задании tablicy:
+      # ему нужна собранная dist, tablicy сборку не делает. Откат — удалить этот шаг и tools/kadry-povtory.py.
+      - name: kadry-povtory — разные кадры дня (только отчёт)
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 5
+        run: |
+          python3 -m venv /tmp/kp && /tmp/kp/bin/pip install -q --disable-pip-version-check pillow imagehash 'opencv-python-headless==4.10.0.84' || true
+          /tmp/kp/bin/python tools/kadry-povtory.py dist --svod "$GITHUB_STEP_SUMMARY" || true
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
