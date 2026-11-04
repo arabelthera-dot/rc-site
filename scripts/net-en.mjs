@@ -5,7 +5,7 @@
 // Красное: путь с каталогом en/, файл вида *-en.* / *_en.* / *.en.* (html, mp3, mp4, vtt, json, txt, jpg, png),
 // разметка lang="en" или hreflang="en" в .html.
 // Запуск: node scripts/net-en.mjs [папка ...]   (по умолчанию dist/, нет сборки — src/ и public/)
-// Выход: 0 — чисто, 1 — нарушения. В proverka.yml не подключён.
+// Выход: 0 — чисто, 1 — нарушения. Идёт в .github/workflows/testy.yml (src и public).
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
