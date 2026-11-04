@@ -61,6 +61,15 @@ jobs:
         if: always()
         timeout-minutes: 1
         run: node scripts/sverka-utverzhdeno.mjs --vse
+      # Кадры дня (Р536 п. 4, Р408, Р90): по карточкам src/content/dni-shablon/<музей>/ — разных кадров ≥ 6, повтор по
+      # pHash (Хэмминг ≤ 8, imagehash) и тот же файл дважды — брак, адрес Википедии или Викисклада — брак, кадра нет в public/ — брак.
+      # Недобор лечит машина: scripts/kadry-dnya.py dobor ДНИ --zapis берёт кадры из Госкаталога. Без сборки, секунды.
+      # Откат — удалить шаг и scripts/kadry-dnya.py.
+      - name: kadry-dnya — кадров ≥ 6, без повторов (pHash), без Википедии
+        timeout-minutes: 3
+        run: |
+          python3 -m venv /tmp/kd && /tmp/kd/bin/pip install -q --disable-pip-version-check pillow imagehash pyyaml
+          /tmp/kd/bin/python scripts/kadry-dnya.py zamok --proba && /tmp/kd/bin/python scripts/kadry-dnya.py zamok все
       # Инструкция к каждой игре (Р199, Р201, 23.10.2026; 04-build §5-бис): страница дня с игрой без блока «Как играть»
       # под картинкой игры (data-igra-pravila с шагами после сцены, assets/igra-pravila.css) — ошибка; кнопки «Начать»
       # и «Правила» и игра, спрятанная до старта, — тоже ошибка (Р201: картинка видна и работает сразу). Изменённые в заявке
