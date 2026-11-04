@@ -110,9 +110,64 @@
    "podrobnee": "Бухенвальд был шестнадцатым лагерем в судьбе гимнаста. При освобождении он весил около 40 кг. В 1949 году выиграл чемпионат СССР, в 1952 году в Хельсинки взял четыре золотые медали и стал первым абсолютным олимпийским чемпионом из СССР. В Мельбурне в 1956 году добавил ещё три золота."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-31-goskatalog-5879068.jpg",
+   "gk": "5879068",
+   "fakt": 5,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5 (также 8)"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-31-goskatalog-36173291.jpg",
+   "gk": "36173291",
+   "fakt": 8,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-31-goskatalog-36644928.jpg",
+   "gk": "36644928",
+   "fakt": 9,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-31-goskatalog-7736023.jpg",
+   "gk": "7736023",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-31-goskatalog-5878363.jpg",
+   "gk": "5878363",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-31-goskatalog-11843876.jpg",
+   "gk": "11843876",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-31.md",
-  "material": null
+  "material": "knowledge/ns-material/01-31.md"
  }
 }

@@ -11,7 +11,9 @@ export default defineConfig({
   reporter: [['list']],
   outputDir: '/tmp/obrazcy-rezultat',
   snapshotPathTemplate: '{testDir}/snimki/{arg}{ext}',
-  expect: { toHaveScreenshot: { maxDiffPixelRatio: 0.002, threshold: 0.2, animations: 'disabled', caret: 'hide' } },
+  // Съёмка с deviceScaleFactor 2 на облачной машине бывает дольше 5 с (обрыв «taking page screenshot … Timeout 5000ms» в прогонах
+  // 41799546907 и 41820972090 при снимке, совпавшем с образцом точка в точку) — запас 20 с, порог разницы прежний.
+  expect: { timeout: 20_000, toHaveScreenshot: { maxDiffPixelRatio: 0.002, threshold: 0.2, animations: 'disabled', caret: 'hide' } },
   use: { baseURL: `http://127.0.0.1:${PORT}/` },
   webServer: { command: `node scripts/dist-server.mjs dist ${PORT}`, cwd: '../..', url: `http://127.0.0.1:${PORT}/`, reuseExistingServer: false },
   projects: [{ name: 'telefon', use: { browserName: 'chromium' } }],

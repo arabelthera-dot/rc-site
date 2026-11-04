@@ -110,9 +110,64 @@
    "podrobnee": "Синодальная комиссия по канонизации отказалась причислить Родионова к лику святых: историю его гибели знают лишь со слов матери, которая виделась с Хайхороевым не более семи минут и «честно призналась, что доказать ничего нельзя». В ноябре 2002 года в одном из храмов Горного Алтая, по словам очевидцев, замироточила икона с изображением Родионова. На трассе М4 «Дон» у реки Осётр стоят поклонный крест и мемориал «Воину Евгению»."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-23-goskatalog-85090463.jpg",
+   "gk": "66338453",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-23-goskatalog-20078519.jpg",
+   "gk": "19529119",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-23-goskatalog-74425071.jpg",
+   "gk": "58555180",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-23-goskatalog-83071309.jpg",
+   "gk": "65037562",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-23-goskatalog-23907705.jpg",
+   "gk": "22255102",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-23-goskatalog-27491718.jpg",
+   "gk": "24841834",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-23.md",
-  "material": null
+  "material": "knowledge/ns-material/01-23.md"
  }
 }

@@ -1,0 +1,32 @@
+{
+  "title": "История в 58 секунд",
+  "note": "Кадры — подлинные: бензиновый мотор Костовича, 1883 (Центральный музей ВВС, Монино; Госкаталог 25505972); лубок «Переход русских войск через Дунай», 1877 (Владимиро-Суздальский музей-заповедник); лист В. Ф. Тимма «Полёт воздушного шара в Петербурге», 1852 (Музей Л. Н. Толстого); портрет О. С. Костовича, не позднее 1916 (Музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "horizontal": {
+    "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich.mp4",
+    "local": "muzei/izobreteniya/video/day-11jan-kostovich.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 58.4,
+    "mb": 6.6
+  },
+  "vertical": {
+    "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-11jan-kostovich-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 58.4,
+    "mb": 6.5
+  },
+  "poster": {
+    "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-11jan-kostovich-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/11jan-kostovich/day-11jan-kostovich-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-11jan-kostovich-9x16-poster.jpg",
+    "v": 2
+  }
+}

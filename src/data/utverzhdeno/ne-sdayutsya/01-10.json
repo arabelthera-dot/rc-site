@@ -110,7 +110,71 @@
    "podrobnee": "Публицисты 1904 года писали, что моряки взорвали крейсер вместе с собой, этого не было. По японским документам, сигнала «сдавайтесь» не поднимали, был сигнал сняться с якоря, а требование одно: покинуть рейд. Руднев в рапорте писал о потопленном миноносце, но японские корабли остались в строю, историки считают, что потери противника он преувеличил."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-10-goskatalog-1824297.jpg",
+   "gk": "5541971",
+   "fakt": 4,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-10-goskatalog-23034137.jpg",
+   "gk": "23034137",
+   "fakt": 11,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-10-goskatalog-30284937.jpg",
+   "gk": "30284937",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-10-goskatalog-18616793.jpg",
+   "gk": "18616793",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-10-goskatalog-20039821.jpg",
+   "gk": "20039821",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-10-goskatalog-49118470.jpg",
+   "gk": "49118470",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/ne-sdayutsya/img/01-10-goskatalog-4910360.jpg",
+   "gk": "8586173",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  }
+ ],
  "ne_povtory": [
   {
    "para": "4-11",
@@ -135,6 +199,6 @@
  ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-10.md",
-  "material": null
+  "material": "knowledge/ns-material/01-10.md"
  }
 }

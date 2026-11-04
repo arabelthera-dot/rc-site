@@ -1,7 +1,7 @@
 // Сторож пропорций ролика дня (r413, находка r402b 28.10: на 18 янв. изобретений телефон 390×844 показывал
 // обложку 9:16, а играл ролик 16:9). Обложка и ролик одного формата — и на телефоне, и на ПК.
 // Меряются настоящие файлы в public/ (JPEG — заголовок SOF, MP4 — tkhd видеодорожки), не числа из реестра:
-//   1) реестр public/video/registry.json: poster ↔ horizontal, poster_vertical ↔ vertical (у выпуска с файлами в public/);
+//   1) реестр public/video/registry/<музей>/<id>.json (scripts/reestr-rolikov.mjs): poster ↔ horizontal, poster_vertical ↔ vertical (у выпуска с файлами в public/);
 //   2) дни общего шаблона src/content/dni-shablon/<музей>/ММ-ДД.yaml: запасная пара video.poster ↔ video.mp4 из HTML
 //      и выпуск video.klyuch в реестре (его пары — п.1);
 //   3) движок public/assets/museum-video.js подменяет адрес и при событии play (запуск мимо касания) — иначе
@@ -12,6 +12,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
 
 const est = (k) => process.argv.includes(k);
 const DOPUSK = 0.02;
@@ -81,8 +82,7 @@ export function proverit(root) {
   const pub = (p) => path.join(root, 'public', bezV(p));
   const oshibki = [], zhyoltye = [];
   let par = 0;
-  const regPath = path.join(root, 'public/video/registry.json');
-  const reg = fs.existsSync(regPath) ? JSON.parse(fs.readFileSync(regPath, 'utf8')).releases || {} : {};
+  const reg = chitat(path.join(root, 'public')).releases;
   for (const [k, rel] of Object.entries(reg)) {
     for (const [pk, vk] of [['poster', 'horizontal'], ['poster_vertical', 'vertical']]) {
       if (!rel[pk] || !rel[vk]) continue;
@@ -145,9 +145,8 @@ if (est('--proba')) {
     fs.writeFileSync(path.join(vid, 'r-9x16.mp4'), mp4(...v)); fs.writeFileSync(path.join(vid, 'r-9x16.jpg'), jpg(...pv));
     fs.writeFileSync(path.join(tmp, 'public/assets/museum-video.js'), dv);
     const e = (f) => ({ local: `muzei/proba/video/${f}`, v: 1 });
-    fs.mkdirSync(path.join(tmp, 'public/video'), { recursive: true });
-    fs.writeFileSync(path.join(tmp, 'public/video/registry.json'), JSON.stringify({ releases: { 'proba/r': {
-      horizontal: e('r.mp4'), poster: e('r.jpg'), vertical: e('r-9x16.mp4'), poster_vertical: e('r-9x16.jpg') } } }));
+    zapisatVypusk(path.join(tmp, 'public'), 'proba/r', {
+      horizontal: e('r.mp4'), poster: e('r.jpg'), vertical: e('r-9x16.mp4'), poster_vertical: e('r-9x16.jpg') });
     fs.writeFileSync(path.join(tmp, 'src/content/dni-shablon/proba/01-01.yaml'),
       'video:\n  klyuch: proba/r\n  poster: video/r.jpg?v=1\n  mp4: video/r.mp4?v=1\n');
     const { oshibki } = proverit(tmp);
