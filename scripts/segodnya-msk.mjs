@@ -10,20 +10,24 @@
 // отдаёт атрибуты по имени, Today проверяется в обоих режимах data-dated, плюс подпись дня (текст «Сегодня»).
 // Пути блоков можно подменить (SEGODNYA_TODAY / SEGODNYA_PORTAL) — так работает самотест
 // scripts/segodnya-msk.test.mjs: верный блок → 0, блок с местной датой → брак.
+// 04.11.2026 (Р531): блоки зовут window.rcMsk() — одну функцию src/lib/msk.mjs (текст MSK_V_BRAUZERE, MskData.astro);
+// сторож исполняет её текст в той же песочнице перед блоком. Подмена функции — SEGODNYA_MSK (файл с текстом).
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { MSK_V_BRAUZERE, mskKlyuch } from '../src/lib/msk.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TODAY = process.env.SEGODNYA_TODAY || 'src/components/home/Today.astro';
 const PORTAL = process.env.SEGODNYA_PORTAL || 'src/components/portal/Segodnya.astro';
+const MSK_JS = process.env.SEGODNYA_MSK ? fs.readFileSync(process.env.SEGODNYA_MSK, 'utf8') : MSK_V_BRAUZERE;
 const inline = (rel) => {
   const s = fs.readFileSync(path.resolve(ROOT, rel), 'utf8');
   const m = s.match(/<script is:inline>([\s\S]*?)<\/script>/);
   if (!m) throw new Error(`нет встроенного скрипта в ${rel}`);
-  return m[1];
+  return MSK_JS + m[1];
 };
 
 // Моменты (UTC): Москва = UTC+3 круглый год.
@@ -78,9 +82,7 @@ if (process.argv[2] === '--child') {
 
 let brak = 0;
 for (const at of MOMENTS) {
-  const msk = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
-    .formatToParts(new Date(at)).map((x) => [x.type, x.value]));
-  const want = `${msk.month}-${msk.day}`;
+  const want = mskKlyuch(new Date(at));
   for (const tz of ZONES) {
     const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), '--child', at], { env: { ...process.env, TZ: tz }, encoding: 'utf8' });
     if (r.status !== 0) { console.log(`БРАК ${tz} ${at}: ${r.stderr.trim()}`); brak++; continue; }
@@ -97,7 +99,7 @@ const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => e.
 for (const f of ['src/components', 'src/pages'].flatMap((d) => walk(path.join(ROOT, d))).filter((f) => f.endsWith('.astro'))) {
   const s = fs.readFileSync(f, 'utf8');
   for (const m of s.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)) {
-    if (/\.get(Date|Month)\(\)/.test(m[1]) && !/Europe\/Moscow/.test(m[1])) {
+    if (/\.get(Date|Month)\(\)/.test(m[1]) && !/Europe\/Moscow|rcMsk\(/.test(m[1])) {
       console.log(`БРАК ${path.relative(ROOT, f)}: getDate()/getMonth() без Europe/Moscow во встроенном скрипте`); brak++;
     }
   }

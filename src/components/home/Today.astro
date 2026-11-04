@@ -4,6 +4,7 @@
 interface Props { first?: { key: string; title: string; hook: string; href: string; when: string }; dated: boolean }
 const { first, dated } = Astro.props;
 import { yazyk, razobratPut, stroka, strelkaVpered } from '../../lib/yazyki.mjs';
+import MskData from '../MskData.astro';
 const lang = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
 const s = (key: string): any => stroka(lang.code, key);
 // строки встроенного скрипта — текущего языка, из словаря (stroki.json), а не из кода скрипта
@@ -22,15 +23,15 @@ const strokiSkripta = JSON.stringify({ mon: s('mesyacy'), monR: s('mesyacyR'), d
     <p class="mh-empty">{s('eksponatyGotovyatsya')}</p>
   )}
 </section>
-{first && (
+{first && (<>
+<MskData />
 <script is:inline>
 (function(){
   var C = window.MUSEUM_CALENDAR || {}, keys = Object.keys(C).filter(function(k){ return /^\d\d-\d\d$/.test(k); }).sort();
   if (!keys.length) return;
   // «Сегодня» — по Москве, как в portal/Segodnya.astro и DenPoDate.astro (B11, 19.10.2026):
   // местное время браузера давало посетителю в другом поясе не тот день, что остальной сайт.
-  var q = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
-    .formatToParts(new Date()).forEach(function (x) { q[x.type] = x.value; });
+  var q = window.rcMsk();
   var tk = q.month + '-' + q.day;
   var k = C[tk] ? tk : (keys.filter(function(x){ return x >= tk; })[0] || keys[0]);
   var it = C[k], box = document.querySelector('.mh-today'); if (!box || !it) return;
@@ -43,4 +44,5 @@ const strokiSkripta = JSON.stringify({ mon: s('mesyacy'), monR: s('mesyacyR'), d
   box.querySelector('[data-today-href]').setAttribute('href', it.href);
 })();
 </script>
+</>
 )}
