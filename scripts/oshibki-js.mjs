@@ -7,8 +7,8 @@
 // файла — брак, код 1. --proba: подложенная страница с той же ошибкой обязана дать брак.
 // Запуск: node scripts/oshibki-js.mjs [--dist dist] [--proba]
 import fs from 'node:fs';
-import http from 'node:http';
 import path from 'node:path';
+import { serveDist } from './lib/dist.mjs';
 const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
 
 const argv = process.argv.slice(2), i = argv.indexOf('--dist'), PROBA = argv.includes('--proba');
@@ -16,21 +16,8 @@ const ROOT = path.resolve(i >= 0 ? argv[i + 1] : 'dist'), POTOKOV = 4;
 const PROBA_HTML = `<!doctype html><meta charset="utf-8"><div id="acts"><a href="/muzei/x/den/01-01/#hero">1</a></div>
 <div style="height:3000px" id="hero"></div><script>addEventListener('scroll',()=>document.querySelector(
 document.querySelector('#acts a').getAttribute('href')))</script>`;
-const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
-  '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
-  '.webp': 'image/webp', '.avif': 'image/avif', '.woff2': 'font/woff2', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4' };
-const server = http.createServer((req, res) => {
-  const u = decodeURIComponent(req.url.split('?')[0]);
-  if (u === '/__proba/') { res.writeHead(200, { 'content-type': MIME['.html'] }); return res.end(PROBA_HTML); }
-  let f = path.join(ROOT, u);
-  if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
-  if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
-  if (!fs.existsSync(f)) { res.writeHead(404); return res.end(); }
-  res.writeHead(200, { 'content-type': MIME[path.extname(f).toLowerCase()] || 'application/octet-stream' });
-  fs.createReadStream(f).pipe(res);
-});
-await new Promise(r => server.listen(0, '127.0.0.1', r));
-const SITE = `http://127.0.0.1:${server.address().port}`;
+const server = await serveDist(ROOT, { svoi: { '/__proba/': PROBA_HTML } });
+const SITE = server.url.slice(0, -1);
 
 let adresa;
 if (PROBA) adresa = ['/__proba/'];

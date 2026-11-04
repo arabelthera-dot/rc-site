@@ -5,6 +5,7 @@
 // Запуск: node scripts/sluzhebnyy-tekst.mjs --dist dist  |  --proba (проба на заведомых строках).
 import fs from 'node:fs';
 import path from 'node:path';
+import { distFiles } from './lib/dist.mjs';
 
 export const PRAVILA = [
   ['рекламный слот', /class="[^"]*\bad-slot\b|рекламн\S* (?:слот|сет)|продаётся напрямую|Такой слот/i],
@@ -28,13 +29,7 @@ export function nayti(html) {
   return out;
 }
 
-function* obhod(dir) {
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, e.name);
-    if (e.isDirectory()) yield* obhod(p);
-    else if (e.name.endsWith('.html')) yield p;
-  }
-}
+const obhod = (dir) => distFiles(dir, '**/*.html');
 
 const args = process.argv.slice(2);
 if (args.includes('--proba')) {
