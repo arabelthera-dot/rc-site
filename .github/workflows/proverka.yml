@@ -33,6 +33,11 @@ jobs:
       # «Сегодня» — по Москве во всех блоках (B11, 19.10.2026): home/Today.astro и portal/Segodnya.astro
       # дают один день под TZ Лос-Анджелеса/Москвы/Владивостока. Без сборки, секунды.
       # Строгая с 20.10.2026 (Р52: на main 0 расхождений). Выключатель — переменная SEGODNYA_MSK_STROGO=0.
+      # Проверка заявки одним днём (Р536, пункт 2): локально те же шаги этого задания одной командой —
+      # node scripts/proverka-dnya.mjs ММ-ДД, в узкой копии без public/. Проба: красный шаг роняет команду.
+      - name: proverka-dnya — одна команда дня ловит брак
+        timeout-minutes: 1
+        run: node scripts/proverka-dnya.mjs --proba
       - name: segodnya-msk — один день по Москве
         continue-on-error: ${{ format('{0}', vars.SEGODNYA_MSK_STROGO) == '0' }}
         timeout-minutes: 1
