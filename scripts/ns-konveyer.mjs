@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // Конвейер дня «Русские не сдаются» (Р524, пункт Б): утверждённая карточка → ролик на страницу → adres: den → сверка комплекта.
 // Шаги на день ММ-ДД:
-//   1. ролик: в реестре public/video/registry.json нет nesdayutsya/ДДmon-… — машина берёт последний собранный в облаке
+//   1. ролик: в реестре public/video/registry/ (scripts/reestr-rolikov.mjs) нет nesdayutsya/ДДmon-… — машина берёт последний собранный в облаке
 //      rc-rolik (render.yml) ролик nsДДmon (артефакты nsДДmon-A-16x9 и -9x16), кладёт mp4 и кадр-обложку в
-//      public/muzei/ne-sdayutsya/video/ и пишет выпуск в реестр. Сам ролик здесь не собирается (Р243) — только скачивается.
+//      public/muzei/ne-sdayutsya/video/ и пишет выпуск своим файлом public/video/registry/nesdayutsya/<id>.json. Сам ролик здесь не собирается (Р243) — только скачивается.
 //   2. карточка без блока video получает его из реестра (тем же rolikIzReestra, что каркас) и пункт «Видео» в daynav.
 //   3. scripts/ns-iz-utverzhdennyh.mjs ДЕНЬ — утверждённые факты и adres: den, если замки прошли.
 //   4. сверка комплекта: adres: den, страница, аудиогид (файл), ролик 16:9 и 9:16 (файлы), хук ролика = хук страницы.
@@ -18,10 +18,11 @@ import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
 import YAML from 'yaml';
 import { rolikIzReestra } from './karkas/ne-sdayutsya.mjs';
+import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const VYHOD = path.join(KOREN, 'src/content/dni-shablon/ne-sdayutsya');
-const REESTR = path.join(KOREN, 'public/video/registry.json');
+const PUB = path.join(KOREN, 'public');
 const VIDEO = 'muzei/ne-sdayutsya/video';
 const ROLIK = 'arabelthera-dot/rc-rolik';
 const MES_KL = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
@@ -61,7 +62,7 @@ const obsozhka = (mp4, jpg) => execFileSync('ffmpeg', ['-v', 'error', '-y', '-ss
 
 // Шаг 1: ролик из облака в public/ и реестр. Возвращает причину отказа или null.
 function rolikVReestr(key, karta, dd, mes) {
-  const reestr = JSON.parse(fs.readFileSync(REESTR, 'utf8'));
+  const reestr = chitat(PUB);
   const id = idRolika(dd, mes), hook = kartochkaDnya(key).hook ?? '';
   const est = Object.keys(reestr.releases).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
   const run = artefakty(id);
@@ -85,7 +86,7 @@ function rolikVReestr(key, karta, dd, mes) {
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
   const v = est ? (reestr.releases[est].horizontal?.v ?? 1) + 1 : 1; // новая версия — сбросить кэш у зрителя
   const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
-  reestr.releases[vypusk] = {
+  zapisatVypusk(PUB, vypusk, {
     title: `История в ${sekund(Math.round(fajly['16x9'].sec))}`,
     intro: hook,
     note: `Ролик собран в облаке rc-rolik (render.yml, прогон ${run}) из сценария days/${id}.json и кадров дня. Закадровый текст озвучен синтезом речи.`,
@@ -93,8 +94,7 @@ function rolikVReestr(key, karta, dd, mes) {
     vertical: fail('-9x16', 1080, 1920, fajly['9x16']),
     poster: { file: `${vypusk}/day-${imya}-poster.jpg`, local: `${VIDEO}/day-${imya}-poster.jpg`, v },
     poster_vertical: { file: `${vypusk}/day-${imya}-9x16-poster.jpg`, local: `${VIDEO}/day-${imya}-9x16-poster.jpg`, v },
-  };
-  fs.writeFileSync(REESTR, `${JSON.stringify(reestr, null, 2)}\n`);
+  });
   console.log(`  ролик: ${vypusk} из прогона ${run}, ${fajly['16x9'].sec} с${est ? `, замена старого (v${v})` : ''}`);
   return null;
 }
@@ -105,7 +105,7 @@ const sekund = (n) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? 'секунду' 
 function videoVKartochku(fail, dd, mes) {
   const doc = YAML.parseDocument(fs.readFileSync(fail, 'utf8'));
   const r = rolikIzReestra(dd, mes);
-  if (!r) return doc.has('video') ? null : 'ролика нет в реестре public/video/registry.json';
+  if (!r) return doc.has('video') ? null : 'ролика нет в реестре public/video/registry/';
   if (doc.has('video')) { // блок есть — обновить, если реестр новее (замена ролика)
     if (JSON.stringify(doc.toJS().video) === JSON.stringify(r)) return null;
     doc.set('video', doc.createNode(r));

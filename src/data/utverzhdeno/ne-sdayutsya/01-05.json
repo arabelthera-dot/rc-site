@@ -116,21 +116,46 @@
    "fajl": "/muzei/ne-sdayutsya/img/01-05-goskatalog-31681972.jpg",
    "gk": "7180313",
    "fakt": 2,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
   },
   {
    "n": 2,
    "fajl": "/muzei/ne-sdayutsya/img/01-05-goskatalog-31681951.jpg",
    "gk": "7180344",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/ne-sdayutsya/img/01-05-goskatalog-31681953.jpg",
    "gk": "7180298",
    "fakt": 13,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13",
+   "zapas": true
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-05-goskatalog-59825683.jpg",
+   "gk": "48247470",
+   "fakt": 5,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-05-goskatalog-31681949.jpg",
+   "gk": "7180316",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
   }
  ],
  "ne_povtory": [

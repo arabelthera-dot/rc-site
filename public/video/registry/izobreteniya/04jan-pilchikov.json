@@ -1,0 +1,32 @@
+{
+  "title": "История в 49 секунд",
+  "note": "Кадры — подлинные: портрет профессора Н. Д. Пильчикова (Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "horizontal": {
+    "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov.mp4",
+    "local": "muzei/izobreteniya/video/day-04jan-pilchikov.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.4,
+    "mb": 10.2
+  },
+  "vertical": {
+    "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-04jan-pilchikov-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.4,
+    "mb": 8.7
+  },
+  "poster": {
+    "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-04jan-pilchikov-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/04jan-pilchikov/day-04jan-pilchikov-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-04jan-pilchikov-9x16-poster.jpg",
+    "v": 1
+  }
+}
