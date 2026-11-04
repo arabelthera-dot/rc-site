@@ -1,32 +1,33 @@
 {
-  "title": "Евпатий Коловрат: пепелище Рязани, 1700 против орды",
-  "note": "Визуалы реальные: картина М. Преснякова «Евпатий Коловрат» (2009), миниатюра Лицевого летописного свода XVI века (общественное достояние), фото памятника в Рязани. Genosai не использовался. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "title": "История в 46 секунд",
+  "intro": "Батый сжёг Рязань — но запомнил имя того, кто рубился на пепелище",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41872778013) из сценария days/ns01jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat.mp4",
     "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 68.6,
-    "mb": 21.3
+    "sec": 45.7,
+    "mb": 13.4
   },
   "vertical": {
     "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 35.5,
-    "mb": 12.9
+    "sec": 45.7,
+    "mb": 13.1
   },
   "poster": {
     "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
