@@ -114,7 +114,7 @@ const days = defineCollection({
     gist: z.string().optional(),
     legacy_page: z.string().optional(),
     images: z.array(image).default([]),
-    // Ролик дня — ключ выпуска, файл public/video/registry/<музей>/<id>.json (движок museum-video.js); озвучка — mp3 в public/
+    // Ролик дня — ключ выпуска в public/video/registry.json (движок museum-video.js); озвучка — mp3 в public/
     // (движок museum-audioguide.js). Нет ключа в реестре или файла — сборка падает (src/components/DenMedia.astro).
     video: z.string().optional(),
     audio: z.object({ src: z.string().min(1), heading: z.string().optional(), lead: z.string().optional(),
