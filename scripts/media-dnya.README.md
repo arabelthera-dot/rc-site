@@ -11,7 +11,7 @@
 | что | когда зелёный | строгость |
 |---|---|---|
 | аудиогид | есть блок (`section#audioguide`, `window.MUSEUM_AUDIOGUIDE` или `<audio data-guide-audio>`), mp3 из `audioSrc` / `data-src` есть, не пустой, звучит ≥ 30 с | **строго** — красный роняет заявку |
-| ролик | есть `<video>` вне игры; mp4 есть и не пустой (`data-rc-video` — файл `local` из `public/video/registry.json`, иначе `src` / `<source>`) | отчёт — жёлтая строка (`::warning::`) |
+| ролик | есть `<video>` вне игры; mp4 есть и не пустой (`data-rc-video` — файл `local` из реестра `public/video/registry/<музей>/<id>.json`, иначе `src` / `<source>`) | отчёт — жёлтая строка (`::warning::`) |
 
 Не считаются: звук фильма (`data-film-audio`), звук и видео внутри игры, секция `#video` с надписью «Видео создаётся» без `<video>` (заглушка).
 Длительность mp3 — из самого файла (Xing/Info/VBRI или размер/битрейт), mp4 — из коробки `mvhd`; сверено с ffprobe на всех 141 файле `public/` 24.10.2026, расхождений 0.

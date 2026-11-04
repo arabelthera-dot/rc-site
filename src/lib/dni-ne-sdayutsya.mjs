@@ -7,7 +7,7 @@ import { z } from 'astro/zod';
 import { str, obshchiePolya, zamokObshchiy } from './den-obshchee.mjs';
 
 export const BLOKI_NS = ['daynav', 'video', 'audioguide', 'story', 'fakty', 'vizual', 'kadry', 'quiz', 'result', 'sources', 'calendar', 'kuda-dalshe'];
-const IGRA = /(?<![а-яё])игр[аеуоыиам]/i;
+export const IGRA = /(?<![а-яё])(?:игр(?:а|е|у|ы|ой|ам|ами|ах)(?![а-яё])|игров)/i; // существительное «игра» и «игровой»; «играла роль» — не игра
 const PERVYY_V_MIRE = /(?<![а-яё])перв[а-яё]*(?:\s|&nbsp;|&#160;)+в(?:\s|&nbsp;|&#160;)+мире/i;
 
 export const skhemaNeSdayutsya = z.object({
@@ -23,8 +23,9 @@ export const skhemaNeSdayutsya = z.object({
   if (d.adres === 'den') [d.fakty ?? []].flat().flatMap((b) => b.udary).forEach((u, i) => {
     if (!u.utverzhden) ctx.addIssue({ code: 'custom', path: ['fakty', 'udary', i, 'utverzhden'], message: `ЗАМОК (Р166/Р176): факт «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» не утверждён Сергеем (utverzhden) — неутверждённые факты на живой адрес не идут` });
   });
-  // ЗАМОК (Р436): вместо игры — визуализация; слова «игра» в карточке нет.
-  const igra = JSON.stringify(d).match(IGRA);
+  // ЗАМОК (Р436): вместо игры — визуализация; слова «игра» в карточке нет. Утверждённые факты (слово Сергея, «за игрой в казино»)
+  // машина не правит — они не проверяются.
+  const igra = JSON.stringify({ ...d, fakty: undefined }).match(IGRA);
   if (igra) ctx.addIssue({ code: 'custom', path: [], message: `ЗАМОК (Р436): в карточке «не сдаются» слово «${igra[0]}…» — игры в музее нет (вместо игры визуализация)` });
   // ЗАМОК («Календарь без дат», 27.08): ключ ММ-ДД — номер записи, не дата события; плашка начинается «День N · месяц».
   const MESYACY = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];

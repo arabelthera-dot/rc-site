@@ -1,0 +1,32 @@
+{
+  "title": "Евпатий Коловрат: пепелище Рязани, 1700 против орды",
+  "note": "Визуалы реальные: картина М. Преснякова «Евпатий Коловрат» (2009), миниатюра Лицевого летописного свода XVI века (общественное достояние), фото памятника в Рязани. Genosai не использовался. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "horizontal": {
+    "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 68.6,
+    "mb": 21.3
+  },
+  "vertical": {
+    "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 35.5,
+    "mb": 12.9
+  },
+  "poster": {
+    "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat-9x16-poster.jpg",
+    "v": 1
+  }
+}
