@@ -1,0 +1,33 @@
+{
+  "title": "История в 55 секунд",
+  "intro": "Леонид Рогозов на станции Новолазаревская: единственный врач экспедиции сам удалил себе аппендицит — и через две недели вернулся в строй.",
+  "note": "Кадры ролика — подлинные снимки и предметы из Госкаталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/13jan-rogozov/day-13jan-rogozov.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-13jan-rogozov.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 55,
+    "mb": 10.6
+  },
+  "vertical": {
+    "file": "nesdayutsya/13jan-rogozov/day-13jan-rogozov-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-13jan-rogozov-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 55,
+    "mb": 11
+  },
+  "poster": {
+    "file": "nesdayutsya/13jan-rogozov/day-13jan-rogozov-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-13jan-rogozov-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/13jan-rogozov/day-13jan-rogozov-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-13jan-rogozov-9x16-poster.jpg",
+    "v": 1
+  }
+}
