@@ -6,6 +6,7 @@ import Base from '../../../layouts/Base.astro';
 import { ogRaster } from '../../../lib/og-den.mjs';
 import { getCollection } from 'astro:content';
 import { beyondYear, isDated } from '../../../lib/kalendar';
+import { mskKlyuch } from '../../../lib/msk.mjs';
 import { yazyk, razobratPut, stroka, strelkaVpered } from '../../../lib/yazyki.mjs';
 import Cover from '../../../components/home/Cover.astro';
 import Today from '../../../components/home/Today.astro';
@@ -56,7 +57,7 @@ const groups = MON.map((name, i) => ({ name: name[0].toUpperCase() + name.slice(
 const featured = [...days.filter((d) => d.legacy_page || d.images.length), ...days.filter((d) => !(d.legacy_page || d.images.length))].slice(0, 12)
   .map((d) => ({ title: d.title, href: href(d.key), when: when(d.key) }));
 // Б10: у музея нет ни одного полного дня — ближайшие к сегодняшней дате (сборки) полные дни соседей, по одному на музей, 4 штуки
-const segK = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Moscow' }).slice(5);
+const segK = mskKlyuch();
 const vidennye = new Set<string>();
 const sosedi = days.some((d) => d.legacy_page) ? [] : [...polnye]
   .filter((d) => /^\d\d-\d\d$/.test(d.key))

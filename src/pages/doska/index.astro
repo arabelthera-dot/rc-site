@@ -7,6 +7,7 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import { YEAR_KEYS, beyondYear, isDated, isReady } from '../../lib/kalendar';
+import { MSK_TZ } from '../../lib/msk.mjs';
 const base = import.meta.env.BASE_URL;
 const museums = (await getCollection('museums')).sort((a, b) => a.data.number - b.data.number);
 const days = (await getCollection('days')).map((d) => d.data).sort((a, b) => a.key.localeCompare(b.key));
@@ -27,7 +28,7 @@ const rows = museums.map(({ data: m }) => {
 const museumUrl = (slug: string) => `${base}muzei/${slug}/`;
 const label = (k: string, dated: boolean) => dated ? `${k.slice(3)}.${k.slice(0, 2)}` : `№${+k.slice(3)} · ${k.slice(0, 2)}`;
 const total = (f: (r: (typeof rows)[number]) => number) => rows.reduce((s, r) => s + f(r), 0);
-const built = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow', dateStyle: 'long', timeStyle: 'short' });
+const built = new Date().toLocaleString('ru-RU', { timeZone: MSK_TZ, dateStyle: 'long', timeStyle: 'short' });
 ---
 <Base title="Доска музеев — Русская цивилизация" description="Что готово в каждом музее: числа и ссылки на сами страницы." noindex>
   <Fragment slot="head">

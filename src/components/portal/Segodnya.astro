@@ -9,14 +9,14 @@ import InlineCss from '../InlineCss.astro';
 // «Открыть день». Текст никогда не поверх картинки. Стили — только public/assets/portal-today.css.
 // width/height картинок = рамка 16:10 (object-fit: cover): место держится до загрузки (17.10).
 import { today, KEYS, whenOf } from '../../lib/segodnya';
+import { mskKlyuch } from '../../lib/msk.mjs';
+import MskData from '../MskData.astro';
 import { yazyk, razobratPut, stroka, strelkaVpered } from '../../lib/yazyki.mjs';
 const langS = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
 const s = (key: string): any => stroka(langS.code, key);
 const otkrytDen = `${s('otkrytDenKr')} ${strelkaVpered(langS.dir)}`;
 const base = import.meta.env.BASE_URL;
-const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
-  .formatToParts(new Date()).map((x) => [x.type, x.value]));
-const t = await today(`${parts.month}-${parts.day}`, langS.code);
+const t = await today(mskKlyuch(), langS.code);
 const [v, ...rest] = t.cards;
 // «Завтра» строкой под вещью дня (опись Р84 Б7, взгляд 18.1, 21.10): главная вещь завтрашней даты — без ссылки,
 // повод вернуться. Нет своих карточек у завтрашней даты (today() ушёл дальше) — строки нет. Скрипт ниже при
@@ -78,12 +78,12 @@ const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100
     ))}
   </div>
 </section>
+<MskData />
 <script is:inline>
 (function () {
   var box = document.getElementById('segodnya'), restBox = document.getElementById('segodnya-vse');
   if (!box || !restBox || !window.fetch) return;
-  var p = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
-    .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+  var p = window.rcMsk();
   var key = p.month + '-' + p.day;
   if (key === box.getAttribute('data-key')) return;
   // строка «Завтра» (опись Р84 Б7): следующая дата года, тот же список дат, что KEYS в src/lib/segodnya.ts

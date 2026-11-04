@@ -3,6 +3,7 @@
 // Вид — public/assets/rc-podval.css.
 import { execFileSync } from 'node:child_process';
 import { stroka } from './yazyki.mjs';
+import { MSK_TZ, mskIso } from './msk.mjs';
 
 // Кто подписывает тексты сайта — Редакция (Р34): JSON-LD author/publisher, <meta name="author">.
 export const REDAKCIYA = 'Редакция «Русской цивилизации»';
@@ -78,9 +79,9 @@ const SLOVA = [
 ];
 export const poChelovecheski = (subject) => { const s = SLOVA.find(([re]) => re.test(subject)); return s ? s[1] : 'правка'; };
 
-const DATA = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Moscow' });
+const DATA = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: MSK_TZ });
 const den = (iso) => DATA.format(new Date(iso)).replace(/\s*г\.$/, '');
-const dIso = (iso) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Moscow' }).format(new Date(iso));
+const dIso = (iso) => mskIso(new Date(iso));
 
 /** Журнал дня: { provereno, proverenoIso, modified, published (первая запись карточки — дата выхода дня), zapisi: [{ data, iso, chto }] } (новые сверху) или undefined. */
 export function zhurnal(museum, key) {

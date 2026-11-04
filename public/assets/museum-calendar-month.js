@@ -83,7 +83,10 @@
        window.MUSEUM_CALENDAR_EMPTY. Иначе в галерее искусства висело «основание острога». */
     var emptyTxt = window.MUSEUM_CALENDAR_EMPTY ||
       'Календарь наполняется: к каждому дню года мы привязываем событие этого музея.';
-    var today = new Date(), tm = today.getMonth(), td = today.getDate();
+    /* «сегодня» — по Москве (Р531): window.rcMsk из src/lib/msk.mjs (MskData.astro); старые вклеенные страницы
+       без него — местная дата, как раньше */
+    var msk = window.rcMsk && window.rcMsk(), mskD = msk ? new Date(+msk.year, +msk.month - 1, +msk.day) : new Date();
+    var today = mskD, tm = today.getMonth(), td = today.getDate();
     var tk = pad(tm + 1) + '-' + pad(td);
     var febYear = today.getFullYear() + (tm > 1 ? 1 : 0);
     DIM[1] = (isLeap(febYear) || data['02-29']) ? 29 : 28;

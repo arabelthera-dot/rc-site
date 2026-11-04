@@ -51,14 +51,17 @@
        365 дней, как и должно быть в году */
     /* февраль датированного музея — по ближайшему февралю вперёд: 2027 не високосный, 28 клеток (18.10);
        запись 02-29 в данных есть — клетка 29 остаётся. Та же формула в calendar.astro (вёрстка без скачка). */
-    var nowD = new Date(), febYear = nowD.getFullYear() + (nowD.getMonth() > 1 ? 1 : 0);
+    /* «сегодня» — по Москве (Р531): window.rcMsk из src/lib/msk.mjs (MskData.astro); старые вклеенные страницы
+       без него — местная дата, как раньше */
+    var msk = window.rcMsk && window.rcMsk(), mskD = msk ? new Date(+msk.year, +msk.month - 1, +msk.day) : new Date();
+    var nowD = mskD, febYear = nowD.getFullYear() + (nowD.getMonth() > 1 ? 1 : 0);
     DAYS[1] = (isLeap(febYear) || data['02-29']) ? 29 : 28;
     var mLen = dated
       ? ((meta.months && meta.months.length === 12) ? meta.months : DAYS)
       : YEAR;
     var total = dated ? (meta.total || 365) : 365;
 
-    var today = new Date(), tk = pad(today.getMonth() + 1) + '-' + pad(today.getDate());
+    var today = mskD, tk = pad(today.getMonth() + 1) + '-' + pad(today.getDate());
 
     /* номер единицы недатированного музея может быть больше числа дней месяца —
        такие записи в год не входят, но из музея не пропадают (блок «Сверх года») */
