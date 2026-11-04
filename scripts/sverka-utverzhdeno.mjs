@@ -1,27 +1,32 @@
 // Сверщик страницы дня с утверждённым (Р506, Сергей 04.11.2026: «делай всё, что нужно для автоматизации»).
 // Корень Р503/Р505: страница «Не сдаются» собиралась из старой, а не из утверждённой карточки, — отчёт одно, страница другое.
-// Правда — копия карточки src/data/utverzhdeno/ne-sdayutsya/ММ-ДД.json (scripts/utverzhdeno-kopiya.mjs из workspace).
-// По каждому дню, где есть и страница src/content/dni-shablon/ne-sdayutsya/ММ-ДД.yaml, и копия карточки:
-//  а) факты страницы (все блоки fakty[].udary[] подряд) — те же, что в карточке (от 10 до 15, Р510), и в порядке «poryadok»;
+// Р511: любой музей. Правда — копия карточки src/data/utverzhdeno/<музей>/ММ-ДД.json (scripts/utverzhdeno-kopiya.mjs
+// из workspace). Сверяются музеи, у которых есть копии; остальные — строка «карточек нет», не падение.
+// Страница — YAML шаблона src/content/dni-shablon/<музей>/ММ-ДД.yaml или старая src/data/full-pages/<музей>/ММ-ДД.html,
+// читает их scripts/sverka/chitat-stranicu.mjs (Р511, часть «чтение страниц»). По каждому дню со страницей и копией:
+//  а) факты страницы — те же, что в карточке (сколько утверждено, Р510), и в порядке «poryadok»;
 //     заголовок сравнивается после чистки тегов, ё=е, кавычек и тире; правка слов допустима, другой факт — нет;
-//  б) кадр у факта — тот, что привязан к нему в «Факт к кадру» (ns-material), если кадр в привязке есть;
+//  б) кадр у факта — тот, что привязан к нему в «Факт к кадру» (ns-material / ММ-ДД.kadry.md), если кадр в привязке есть;
 //  в) ни один кадр (номер Госкаталога или файл) не повторяется: обложка, кадры фактов, галерея figures;
 //  г) нет двух фактов про одно и то же — ни в карточке, ни на странице: общие редкие слова и сочетания
-//     (основы от 5 букв, имена, числа, названия в кавычках), вес — по редкости среди всех карточек музея.
+//     (основы от 5 букв, имена, числа, названия в кавычках), вес — по редкости среди всех карточек этого музея.
 //     Пара, которую человек проверил и признал разными фактами, пишется в копию карточки:
 //     "ne_povtory": [{ "para": "5-11", "pochemu": "…" }] — тогда она не повтор ни в карточке, ни на странице.
 // Обычный режим — дни, изменённые в заявке (git diff с базой): красное — код 1 и ::error:: по-русски.
 // --vse — таблица по всем дням и полный список повторов фактов, без падения (долг). --proba — заведомые случаи.
-// Откат — удалить шаг sverka-utverzhdeno из .github/workflows/proverka.yml.
-// Запуск: node scripts/sverka-utverzhdeno.mjs [--proba] [--vse] [--baza origin/main] [ММ-ДД …]
+// Откат — удалить шаги sverka-utverzhdeno из .github/workflows/proverka.yml.
+// Запуск: node scripts/sverka-utverzhdeno.mjs [--muzey X] [--proba] [--vse] [--baza origin/main] [ММ-ДД …]
+//   без --muzey — все 12 музеев (src/data/calendar-meta-*.json); дни ММ-ДД — только вместе с --muzey.
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
+import { chitatStranicu, izYaml, izHtml, idKadra, muzei } from './sverka/chitat-stranicu.mjs';
 
 const KOREN = new URL('..', import.meta.url).pathname;
-const STR = 'src/content/dni-shablon/ne-sdayutsya';
-const UTV = 'src/data/utverzhdeno/ne-sdayutsya';
+const STR = (m) => `src/content/dni-shablon/${m}`;
+const FULL = (m) => `src/data/full-pages/${m}`;
+const UTV = (m) => `src/data/utverzhdeno/${m}`;
 const est = (k) => process.argv.includes(k);
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 
@@ -62,12 +67,12 @@ const zhakkar = (a, b) => { let o = 0; for (const x of a) if (b.has(x)) o++; ret
 export const POROG = +arg('--porog', 29); // подобран на 01-02 (2–7, 6–11, 3–10) и 10 днях, проверенных глазами
 const toks = (t) => chistka(t).split(' ').filter((w) => w.length >= 4 || /^\d{2,}$/.test(w)).filter((w) => !STOP.has(w)).map(osnova);
 const pary2 = (t) => { const a = toks(t); const s = new Set(); for (let i = 0; i + 1 < a.length; i++) s.add(`${a[i]} ${a[i + 1]}`); return s; };
-let KORPUS = null;
+const KORPUS = new Map(); // музей → { df, df2, N }
 const klyuch = (a, b) => (a < b ? `${a}-${b}` : `${b}-${a}`);
 const nePovtory = (utv) => new Set((utv.ne_povtory || []).map((x) => klyuch(...x.para.split('-').map(Number))));
-export function korpus() {
-  if (KORPUS) return KORPUS;
-  const dir = path.join(KOREN, UTV);
+export function korpus(muzey) {
+  if (KORPUS.has(muzey)) return KORPUS.get(muzey);
+  const dir = path.join(KOREN, UTV(muzey));
   const df = new Map(); const df2 = new Map(); let N = 0;
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json'))) {
     for (const fk of JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).fakty) {
@@ -76,10 +81,10 @@ export function korpus() {
       for (const x of pary2(`${fk.zagolovok} ${fk.podrobnee}`)) df2.set(x, (df2.get(x) || 0) + 1);
     }
   }
-  KORPUS = { df, df2, N }; return KORPUS;
+  KORPUS.set(muzey, { df, df2, N }); return KORPUS.get(muzey);
 }
-export function povtory(fakty, porog = POROG, ne = new Set()) {
-  const K = korpus();
+export function povtory(muzey, fakty, porog = POROG, ne = new Set()) {
+  const K = korpus(muzey);
   const ves1 = (x) => Math.log(K.N / Math.max(1, K.df.get(x) || 1));
   const tekst = (f) => `${f.zagolovok} ${f.podrobnee}`;
   const sl = fakty.map((f) => slova(tekst(f)));
@@ -100,22 +105,11 @@ export function povtory(fakty, porog = POROG, ne = new Set()) {
 }
 
 // ——— страница ———
-const nomerGk = (k) => String(k?.data_source ?? '').match(/goskatalog\.ru\/portal\/#\/collections\?id=(\d+)/)?.[1]
-  || String(k?.src ?? '').match(/(?:gk|goskatalog)-(\d{5,})/)?.[1] || '';
-export function razobratStranicu(y) {
-  const udary = [];
-  for (const blok of y.fakty || []) for (const u of blok.udary || []) {
-    const sum = String(u.summary ?? '');
-    const zag = sum.match(/<b>([\s\S]*?)<\/b>/)?.[1] ?? sum;
-    const kadry = [u.kadr].flat().filter(Boolean);
-    udary.push({ zagolovok: zag, podrobnee: [sum.replace(zag, ''), ...[u.det].flat()].filter(Boolean).join(' '), kadry });
-  }
-  const vse = [];
-  if (y.oblozhka?.src) vse.push({ gde: 'обложка', k: y.oblozhka });
-  udary.forEach((u, i) => u.kadry.forEach((k) => vse.push({ gde: `факт ${i + 1}`, k })));
-  for (const k of [y.figures, y.kadry].flat().filter((x) => x?.src)) vse.push({ gde: 'галерея', k });
-  return { udary, kadry: vse };
-}
+// Страница читается scripts/sverka/chitat-stranicu.mjs: { fakty: [{ zagolovok, podrobnee, kadry: [id] }], vse_kadry: [{ gde, kadr, src }] }.
+// Кадр карточки узнаётся по тому же id (номер Госкаталога / camo:N / имя файла) или по имени своего файла.
+const imyaFajla = (s) => String(s || '').split(/[?#]/)[0].split('/').pop();
+const idyKadraKartochki = (x) => [x.gk, idKadra(x.fajl, x.gk ? `https://goskatalog.ru/portal/#/collections?id=${x.gk}` : ''), imyaFajla(x.fajl)].filter(Boolean);
+const PROVERYAEM = /^(обложка|факт \d+|галерея)$/; // прочие картинки записи (викторина, ролик) повтором кадра дня не считаются
 
 // Какому факту карточки соответствует факт страницы: заголовок, а если заголовок переписан — подробности.
 function shodstvo(u, f) {
@@ -126,9 +120,9 @@ function shodstvo(u, f) {
 }
 const ODIN = 0.5; // ниже — это уже не тот же факт
 
-export function sverit(utv, y) {
+export function sverit(muzey, utv, str) {
   const o = [];
-  const str = razobratStranicu(y);
+  str = { udary: str.fakty, kadry: str.vse_kadry.filter((k) => PROVERYAEM.test(k.gde)) };
   const poK = new Map(utv.fakty.map((f) => [f.n, f]));
   // а) состав и порядок
   if (str.udary.length !== utv.poryadok.length) o.push(`фактов на странице ${str.udary.length}, в карточке ${utv.poryadok.length}`);
@@ -147,7 +141,7 @@ export function sverit(utv, y) {
   const net = utv.poryadok.filter((n) => !nashli.has(n));
   if (net.length) o.push(`нет на странице фактов карточки: ${net.join(', ')}`);
   // б) кадр к факту
-  const kadrK = (k) => utv.kadry.find((x) => (x.gk && x.gk === nomerGk(k)) || x.fajl === k.src);
+  const kadrK = (id) => utv.kadry.find((x) => idyKadraKartochki(x).includes(id));
   str.udary.forEach((u, i) => {
     const n = nomer[i]; if (!n) return;
     for (const k of u.kadry) {
@@ -157,18 +151,18 @@ export function sverit(utv, y) {
   });
   // в) повтор кадров
   const vid = new Map();
-  for (const { gde, k } of str.kadry) {
-    const ids = [...new Set([nomerGk(k) && `Госкаталог ${nomerGk(k)}`, k.src].filter(Boolean))];
+  for (const { gde, kadr, src } of str.kadry) {
+    const ids = [...new Set([/^\d+$/.test(kadr) ? `Госкаталог ${kadr}` : kadr, imyaFajla(src)].filter(Boolean))];
     const id = ids.find((x) => vid.has(x)); // номер и файл одного кадра — одна ошибка
-    if (id && vid.get(id) !== gde) o.push(`кадр повторяется (${id.replace(/^\/muzei\/ne-sdayutsya\//, '')}): ${vid.get(id)} и ${gde}`);
+    if (id && vid.get(id) !== gde) o.push(`кадр повторяется (${id}): ${vid.get(id)} и ${gde}`);
     else if (id) o.push(`кадр повторяется (${id}) дважды: ${gde}`);
     for (const x of ids) vid.set(x, gde);
   }
   // г) повторы фактов — в карточке и на странице
   const ne = nePovtory(utv);
-  const pk = povtory(utv.fakty, POROG, ne);
+  const pk = povtory(muzey, utv.fakty, POROG, ne);
   for (const p of pk) o.push(`в карточке два факта про одно: ${p.a} и ${p.b} (${p.slova.slice(0, 4).join(', ')})`);
-  const pStr = povtory(str.udary.map((u, i) => ({ n: i + 1, zagolovok: u.zagolovok, podrobnee: u.podrobnee })));
+  const pStr = povtory(muzey, str.udary.map((u, i) => ({ n: i + 1, zagolovok: u.zagolovok, podrobnee: u.podrobnee })));
   const izKart = new Set(pk.map((p) => `${p.a}-${p.b}`));
   for (const p of pStr) {
     const a = nomer[p.a - 1]; const b = nomer[p.b - 1];
@@ -178,18 +172,37 @@ export function sverit(utv, y) {
   return { o: [...new Set(o)], povtoryKart: pk };
 }
 
-const chitatUtv = (key) => JSON.parse(fs.readFileSync(path.join(KOREN, UTV, `${key}.json`), 'utf8'));
-const chitatStr = (key) => YAML.parse(fs.readFileSync(path.join(KOREN, STR, `${key}.yaml`), 'utf8'), { maxAliasCount: -1 });
+const chitatUtv = (muzey, key) => JSON.parse(fs.readFileSync(path.join(KOREN, UTV(muzey), `${key}.json`), 'utf8'));
+// Полное имя музея — title_ru из museums.json (сокращать нельзя).
+const IMENA = new Map(JSON.parse(fs.readFileSync(path.join(KOREN, 'src/data/museums.json'), 'utf8')).museums.map((m) => [m.slug, m.title_ru]));
+const imya = (m) => IMENA.get(m) || m;
+export const kartyMuzeya = (muzey) => { const d = path.join(KOREN, UTV(muzey)); return fs.existsSync(d) ? fs.readdirSync(d).map((f) => f.match(/^(\d\d-\d\d)\.json$/)?.[1]).filter(Boolean).sort() : []; };
 
 if (import.meta.url === `file://${process.argv[1]}`) glavnoe();
+
+// Один музей: { muzey, net } — карточек нет; иначе { muzey, itog: [{ key, o | net, povtoryKart }] }.
+export function proveritMuzey(muzey, dni = null) {
+  const karty = kartyMuzeya(muzey);
+  if (!karty.length) return { muzey, net: 'карточек нет' };
+  const itog = [];
+  for (const key of dni || karty) {
+    if (!karty.includes(key)) { itog.push({ key, net: 'нет утверждённой карточки' }); continue; }
+    const utv = chitatUtv(muzey, key);
+    const str = chitatStranicu(muzey, key, KOREN);
+    if (!str) { itog.push({ key, net: 'страницы ещё нет', povtoryKart: povtory(muzey, utv.fakty, POROG, nePovtory(utv)) }); continue; }
+    itog.push({ key, ...sverit(muzey, utv, str) });
+  }
+  return { muzey, itog };
+}
 
 function glavnoe() {
 // ——— проба ———
 if (est('--proba')) {
   // Образец — карточка 01-02 до слияния повторов Р510 (15 фактов, повторы 2–7, 6–11, 3–10 в ней есть);
   // живая карточка 01-02 после Р510 — 12 фактов, на ней случай «карточка на 12 фактов».
+  const NS = 'ne-sdayutsya'; const IZ = 'izobreteniya';
   const utv = JSON.parse(fs.readFileSync(path.join(KOREN, 'tests/obrazcy/sverka-utverzhdeno/01-02-do-r510.json'), 'utf8'));
-  const zhivaya = chitatUtv('01-02');
+  const zhivaya = chitatUtv(NS, '01-02');
   const po = (n) => utv.fakty.find((f) => f.n === n);
   const udar = (f, kadr) => ({ summary: `<b>${f.zagolovok}</b>`, det: [f.podrobnee], ...(kadr ? { kadr } : {}) });
   const kd = (gk, u = utv) => { const m = u.kadry.find((x) => x.gk === gk); return { src: m.fajl, data_source: `https://goskatalog.ru/portal/#/collections?id=${gk}` }; };
@@ -202,77 +215,119 @@ if (est('--proba')) {
       n === 1 ? { ...po(1), zagolovok: po(1).zagolovok.replace(/«/g, '"').replace(/»/g, '"').replace('бился', 'сражался') } : po(n),
       n === 13 ? kd('16117881') : n === 5 ? kd('24083009') : null)) }],
     figures: [{ src: '/muzei/ne-sdayutsya/merkuriy-aivazovsky-1848.jpg', data_source: 'https://goskatalog.ru/portal/#/collections?id=20764039' }] });
+  // Тот же хороший день старой готовой страницей full-pages (формат «удары»): шапка, факты с кадрами, галерея.
+  const img = (k) => (k ? `<img src="${k.src}" data-source="${k.data_source}" alt="">` : '');
+  const html = (y, dop = '') => `<html><body><section class="hero">${img(y.oblozhka)}</section><section id="fakty"><ol class="udary">${
+    y.fakty[0].udary.map((u) => `<li><details><summary>${u.summary}</summary><p>${u.det.join(' ')}</p></details>${img(u.kadr)}</li>`).join('')
+  }</ol></section><section id="galereya">${y.figures.map((k) => `<figure>${img(k)}</figure>`).join('')}${dop}</section></body></html>`;
+  // Живые страницы изобретений и «Не сдаются» (шаблон) — по их карточкам должны быть зелёными.
+  const zhivoj = (m, key) => [chitatUtv(m, key), chitatStranicu(m, key, KOREN)];
+  const [izU, izS] = zhivoj(IZ, '01-03');
+  // 01-13: 16 фактов; пары 8–12 и 4–5 детектор считает повтором (один герой) — в пробе помечены ne_povtory
+  const [iz13U, iz13S] = zhivoj(IZ, '01-13');
+  const iz13 = { ...iz13U, ne_povtory: [{ para: '8-12', pochemu: 'проба' }, { para: '4-5', pochemu: 'проба' }] };
   const sluchai = [
-    ['хороший день', chistaya, horoshij(), null],
-    ['переставлен факт', chistaya, (() => { const y = horoshij(); const u = y.fakty[0].udary; [u[0], u[2]] = [u[2], u[0]]; return y; })(), /а по порядку здесь факт/],
-    ['подменён факт', chistaya, (() => { const y = horoshij(); y.fakty[0].udary[3] = udar({ zagolovok: 'Экипаж не кричал «Русские не сдаются!» — это поздняя легенда', podrobnee: 'Знаменитый возглас придумали позднее, в рапортах его нет.' }); return y; })(), /не из карточки/],
-    ['чужой кадр', chistaya, (() => { const y = horoshij(); y.fakty[0].udary[0].kadr = kd('16117881'); return y; })(), /чужой кадр/],
-    ['повтор кадра', chistaya, (() => { const y = horoshij(); y.figures.push(kd('16117881')); return y; })(), /кадр повторяется/],
-    ['повтор кадра на обложке', chistaya, (() => { const y = horoshij(); y.oblozhka = kd('24083009'); return y; })(), /кадр повторяется/],
-    ['повтор факта на странице', chistaya, (() => { const y = horoshij(); y.fakty[0].udary.push(udar(po(7))); return y; })(), /на странице два факта про одно/],
-    ['повтор факта 2–7 в карточке', utv, null, /в карточке два факта про одно: 2 и 7/],
-    ['повтор факта 6–11 в карточке', utv, null, /в карточке два факта про одно: 6 и 11/],
-    ['повтор факта 3–10 в карточке', utv, null, /в карточке два факта про одно: 3 и 10/],
-    ['карточка на 12 фактов', zhivaya, (() => {
+    ['хороший день', chistaya, izYaml(horoshij()), null],
+    ['переставлен факт', chistaya, izYaml((() => { const y = horoshij(); const u = y.fakty[0].udary; [u[0], u[2]] = [u[2], u[0]]; return y; })()), /а по порядку здесь факт/],
+    ['подменён факт', chistaya, izYaml((() => { const y = horoshij(); y.fakty[0].udary[3] = udar({ zagolovok: 'Экипаж не кричал «Русские не сдаются!» — это поздняя легенда', podrobnee: 'Знаменитый возглас придумали позднее, в рапортах его нет.' }); return y; })()), /не из карточки/],
+    ['чужой кадр', chistaya, izYaml((() => { const y = horoshij(); y.fakty[0].udary[0].kadr = kd('16117881'); return y; })()), /чужой кадр/],
+    ['повтор кадра', chistaya, izYaml((() => { const y = horoshij(); y.figures.push(kd('16117881')); return y; })()), /кадр повторяется/],
+    ['повтор кадра на обложке', chistaya, izYaml((() => { const y = horoshij(); y.oblozhka = kd('24083009'); return y; })()), /кадр повторяется/],
+    ['повтор факта на странице', chistaya, izYaml((() => { const y = horoshij(); y.fakty[0].udary.push(udar(po(7))); return y; })()), /на странице два факта про одно/],
+    ['повтор факта 2–7 в карточке', utv, izYaml(horoshij()), /в карточке два факта про одно: 2 и 7/],
+    ['повтор факта 6–11 в карточке', utv, izYaml(horoshij()), /в карточке два факта про одно: 6 и 11/],
+    ['повтор факта 3–10 в карточке', utv, izYaml(horoshij()), /в карточке два факта про одно: 3 и 10/],
+    ['карточка на 12 фактов', zhivaya, izYaml((() => {
       // по «Порядку» карточки, у каждого факта — его первый кадр из привязки, лишние кадры факта не ставятся
       const bylo = new Set();
       const kadrK = (n) => zhivaya.kadry.find((x) => x.fakt === n && !bylo.has(x.gk) && bylo.add(x.gk));
       return { fakty: [{ udary: zhivaya.poryadok.slice(0, 10).map((n) => { const k = kadrK(n); return udar(zhivaya.fakty.find((f) => f.n === n), k && kd(k.gk, zhivaya)); }) },
         { udary: zhivaya.poryadok.slice(10).map((n) => udar(zhivaya.fakty.find((f) => f.n === n))) }] };
-    })(), null],
+    })()), null],
+    // Р511: старые страницы full-pages и другие музеи
+    ['full-pages: хороший день', chistaya, izHtml(html(horoshij())), null],
+    ['full-pages: повтор кадра в галерее', chistaya, izHtml(html(horoshij(), img(kd('16117881')))), /кадр повторяется \(Госкаталог 16117881\): факт \d+ и галерея/],
+    ['full-pages: подменён факт', chistaya, izHtml(html((() => { const y = horoshij(); y.fakty[0].udary[3] = udar({ zagolovok: 'Экипаж не кричал «Русские не сдаются!» — это поздняя легенда', podrobnee: 'Знаменитый возглас придумали позднее, в рапортах его нет.' }); return y; })())), /не из карточки/],
+    ['изобретения 01-03: живая страница по карточке', izU, izS, null, IZ],
+    ['изобретения 01-13: 16 фактов, ne_povtory', iz13, iz13S, null, IZ],
+    ['изобретения 01-13: без ne_povtory — повтор 8–12', iz13U, iz13S, /в карточке два факта про одно: 8 и 12/, IZ],
+    ['изобретения 01-03: переставлен факт', izU, { ...izS, fakty: [izS.fakty[1], izS.fakty[0], ...izS.fakty.slice(2)] }, /а по порядку здесь факт/, IZ],
+    ['изобретения 01-03: повтор кадра обложкой', izU, { ...izS, vse_kadry: [{ gde: 'обложка', kadr: izS.fakty.find((f) => f.kadr).kadr, src: '' }, ...izS.vse_kadry.filter((k) => k.gde !== 'обложка')] }, /кадр повторяется/, IZ],
+    ...['01-01', '01-02', '01-03', '01-04', '01-05'].map((key) => [`«Не сдаются» ${key}: шаблон без регрессии`, ...zhivoj(NS, key), null]),
   ];
   if (zhivaya.fakty.length !== 12) { console.log(`::error::sverka-utverzhdeno: проба ждёт живую карточку 01-02 на 12 фактов, в ней ${zhivaya.fakty.length}`); process.exit(1); }
   let mimo = 0;
-  for (const [imya, u, y, zhdu] of sluchai) {
-    const { o } = sverit(u, y || horoshij());
+  for (const [nazv, u, str, zhdu, muzey = NS] of sluchai) {
+    const { o } = sverit(muzey, u, str);
     const ok = zhdu ? o.some((x) => zhdu.test(x)) : o.length === 0;
-    if (!ok) { mimo++; console.log(`проба ✗ ${imya}: ${o.join('; ') || 'ничего не найдено'}`); }
+    if (!ok) { mimo++; console.log(`проба ✗ ${nazv}: ${o.join('; ') || 'ничего не найдено'}`); }
   }
-  if (mimo) { console.log(`::error::sverka-utverzhdeno: проба мимо — ${mimo} из ${sluchai.length}`); process.exit(1); }
-  console.log(`sverka-utverzhdeno: проба ${sluchai.length} из ${sluchai.length}`);
+  // музей без карточек — пропуск с отчётом, не падение
+  const bez = muzei(KOREN).filter((m) => !kartyMuzeya(m).length);
+  const pustoj = bez.length ? proveritMuzey(bez[0]) : { net: 'карточек нет' };
+  const vsego = sluchai.length + 1;
+  if (pustoj.net !== 'карточек нет') { mimo++; console.log(`проба ✗ музей без карточек (${bez[0]}): ждали «карточек нет»`); }
+  if (mimo) { console.log(`::error::sverka-utverzhdeno: проба мимо — ${mimo} из ${vsego}`); process.exit(1); }
+  console.log(`sverka-utverzhdeno: проба ${vsego} из ${vsego}`);
   process.exit(0);
 }
 
-// ——— какие дни ———
-const vseKarty = fs.readdirSync(path.join(KOREN, UTV)).map((f) => f.match(/^(\d\d-\d\d)\.json$/)?.[1]).filter(Boolean).sort();
-const estStr = (k) => fs.existsSync(path.join(KOREN, STR, `${k}.yaml`));
-let dni = process.argv.slice(2).filter((x) => /^\d\d-\d\d$/.test(x));
-if (!dni.length && !est('--vse')) {
+// ——— какие музеи и дни ———
+const MUZEY = arg('--muzey', null);
+const vseMuzei = muzei(KOREN);
+if (MUZEY && !vseMuzei.includes(MUZEY)) { console.log(`::error::sverka-utverzhdeno: музея «${MUZEY}» нет (src/data/calendar-meta-${MUZEY}.json)`); process.exit(1); }
+const spisok = MUZEY ? [MUZEY] : vseMuzei;
+const dniArg = process.argv.slice(2).filter((x) => /^\d\d-\d\d$/.test(x));
+if (dniArg.length && !MUZEY) { console.log('::error::sverka-utverzhdeno: дни ММ-ДД — только вместе с --muzey'); process.exit(1); }
+let izm = null; // изменённые в заявке файлы, если не --vse и не названы дни
+if (!dniArg.length && !est('--vse')) {
   const baza = arg('--baza', process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/main');
-  // Страница — новая или изменённая; копия карточки — только изменённая: первая копия всех 31 дня (эта заявка)
+  // Страница — новая или изменённая; копия карточки — только изменённая: первая копия музея (заявка с новыми копиями)
   // не роняет дни, чьи страницы собраны раньше, — их долг печатает --vse.
-  let izm;
   try {
-    const diff = (filtr, put) => execFileSync('git', ['diff', '--name-only', `--diff-filter=${filtr}`, `${baza}...HEAD`, '--', put], { cwd: KOREN, encoding: 'utf8' });
-    izm = diff('AMR', STR) + diff('MR', UTV);
+    const diff = (filtr, ...puti) => execFileSync('git', ['diff', '--name-only', `--diff-filter=${filtr}`, `${baza}...HEAD`, '--', ...puti], { cwd: KOREN, encoding: 'utf8' });
+    izm = (diff('AMR', 'src/content/dni-shablon', 'src/data/full-pages') + diff('MR', 'src/data/utverzhdeno')).split('\n').filter(Boolean);
   } catch {
     console.log(`::error::sverka-utverzhdeno: нет базы ${baza} — изменённые дни не определить`);
     process.exit(1);
   }
-  dni = [...new Set(izm.split('\n').map((f) => f.match(/(\d\d-\d\d)\.(?:yaml|json)$/)?.[1]).filter(Boolean))].sort();
-  if (!dni.length) { console.log('sverka-utverzhdeno: в заявке нет изменённых страниц и карточек «Не сдаются» — проверять нечего'); process.exit(0); }
 }
-if (!dni.length) dni = vseKarty;
 
-const itog = [];
-for (const key of dni) {
-  if (!vseKarty.includes(key)) { itog.push({ key, net: 'нет утверждённой карточки' }); continue; }
-  const utv = chitatUtv(key);
-  if (!estStr(key)) { itog.push({ key, net: 'страницы ещё нет', povtoryKart: povtory(utv.fakty, POROG, nePovtory(utv)) }); continue; }
-  itog.push({ key, ...sverit(utv, chitatStr(key)) });
+const muzeiItog = [];
+for (const muzey of spisok) {
+  let dni = dniArg.length ? dniArg : null;
+  if (izm) {
+    const svoi = [STR(muzey), FULL(muzey), UTV(muzey)].map((d) => `${d}/`);
+    dni = [...new Set(izm.filter((f) => svoi.some((d) => f.startsWith(d))).map((f) => f.match(/(\d\d-\d\d)\.(?:yaml|html|json)$/)?.[1]).filter(Boolean))].sort();
+    if (!dni.length) { muzeiItog.push({ muzey, net: kartyMuzeya(muzey).length ? 'в заявке не менялся' : 'карточек нет' }); continue; }
+  }
+  muzeiItog.push(proveritMuzey(muzey, dni));
 }
-const proshli = itog.filter((r) => r.o && !r.o.length);
-const krasnye = itog.filter((r) => r.o?.length);
+const vseDni = muzeiItog.flatMap((m) => (m.itog || []).map((r) => ({ muzey: m.muzey, ...r })));
+const proshli = vseDni.filter((r) => r.o && !r.o.length);
+const krasnye = vseDni.filter((r) => r.o?.length);
+const sKartami = vseMuzei.filter((m) => kartyMuzeya(m).length);
+const shapka = `sverka-utverzhdeno: музеев с карточками ${sKartami.length} из ${vseMuzei.length} (${sKartami.join(', ') || '—'})`;
 if (est('--vse')) {
-  console.log('день  | итог      | что не так');
-  for (const r of itog) console.log(`${r.key} | ${r.net ? 'не сверяли' : r.o.length ? 'КРАСНЫЙ  ' : 'зелёный  '} | ${r.net || r.o.join('; ') || '—'}`);
-  console.log('\nПовторы фактов в утверждённых карточках:');
-  for (const r of itog) for (const p of r.povtoryKart || []) console.log(`${r.key}  ${p.a}–${p.b}  вес ${p.ves}: ${p.slova.join(', ')}`);
-  console.log(`\nsverka-utverzhdeno: сверено ${proshli.length + krasnye.length}, зелёных ${proshli.length}, красных ${krasnye.length}; без страницы ${itog.filter((r) => r.net).length}`);
+  console.log(shapka);
+  for (const m of muzeiItog) {
+    if (m.net) { console.log(`\n${imya(m.muzey)} (${m.muzey}): ${m.net} — пропуск`); continue; }
+    console.log(`\n${imya(m.muzey)} (${m.muzey})\nдень  | итог      | что не так`);
+    for (const r of m.itog) console.log(`${r.key} | ${r.net ? 'не сверяли' : r.o.length ? 'КРАСНЫЙ  ' : 'зелёный  '} | ${r.net || r.o.join('; ') || '—'}`);
+    const pk = m.itog.flatMap((r) => (r.povtoryKart || []).map((p) => `${r.key}  ${p.a}–${p.b}  вес ${p.ves}: ${p.slova.join(', ')}`));
+    if (pk.length) console.log(`Повторы фактов в утверждённых карточках:\n${pk.join('\n')}`);
+    const z = m.itog.filter((r) => r.o && !r.o.length).length; const k = m.itog.filter((r) => r.o?.length).length;
+    console.log(`итог ${m.muzey}: сверено ${z + k}, зелёных ${z}, красных ${k}; без страницы ${m.itog.filter((r) => r.net).length}`);
+  }
+  console.log(`\nsverka-utverzhdeno: всего сверено ${proshli.length + krasnye.length}, зелёных ${proshli.length}, красных ${krasnye.length}`);
   process.exit(0);
 }
-for (const r of itog.filter((x) => x.net && x.net !== 'страницы ещё нет')) console.log(`sverka-utverzhdeno: ${r.key} — ${r.net}, сверять не с чем`);
-for (const r of krasnye) for (const x of r.o) console.log(`::error::«Не сдаются» ${r.key}: ${x}`);
+console.log(shapka);
+for (const m of muzeiItog) {
+  if (m.net === 'карточек нет') console.log(`sverka-utverzhdeno: ${imya(m.muzey)} — карточек нет, пропуск`);
+  for (const r of (m.itog || []).filter((x) => x.net && x.net !== 'страницы ещё нет')) console.log(`sverka-utverzhdeno: ${imya(m.muzey)} ${r.key} — ${r.net}, сверять не с чем`);
+}
+for (const r of krasnye) for (const x of r.o) console.log(`::error::${imya(r.muzey)} ${r.key}: ${x}`);
 console.log(`sverka-utverzhdeno: дней ${proshli.length + krasnye.length}, зелёных ${proshli.length}, красных ${krasnye.length}`);
 process.exit(krasnye.length ? 1 : 0);
 

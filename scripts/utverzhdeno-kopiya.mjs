@@ -1,13 +1,15 @@
-// Копия утверждённого в сайт (Р506, 04.11.2026): карточки ns-utverzhdeno/ns-ММ-ДД.md и привязка кадров
-// ns-material/ММ-ДД.md («Факт к кадру: N») из workspace → src/data/utverzhdeno/ne-sdayutsya/ММ-ДД.json.
-// Сборка не видит workspace, поэтому сверщик (scripts/sverka-utverzhdeno.mjs) читает эту копию.
-// Порядок фактов на странице («poryadok», от 10 до 15 номеров: первые 10 — «Десять фактов», дальше — «Ещё»):
-// строка карточки «Порядок на странице: 7, 14, 1–6, 8–13, 15», иначе — из прежней копии, иначе по номерам.
-// Фактов в карточке от 10 до 15 (Р510: повторы слиты, номера не перенумерованы, новых не добирать);
+// Копия утверждённого в сайт (Р506, Р511 — любой музей, 04.11.2026): карточка дня и привязка кадров («Факт к кадру: N»)
+// из workspace → src/data/utverzhdeno/<музей>/ММ-ДД.json. Сборка не видит workspace, поэтому сверщик
+// (scripts/sverka-utverzhdeno.mjs) читает эту копию. Где карточки (стандарт — knowledge/utverzhdeno/README.md):
+//  — knowledge/utverzhdeno/<музей>/ММ-ДД.md; кадры — там же ММ-ДД.kadry.md или раздел «КАДРЫ» в самой карточке;
+//  — «Русские не сдаются» по-старому: ns-utverzhdeno/ns-ММ-ДД.md и ns-material/ММ-ДД.md (utverzhdeno/ne-sdayutsya/ главнее).
+// Порядок фактов на странице («poryadok»): строка карточки «Порядок на странице: 7, 14, 1–6, 8–13, 15»,
+// иначе — из прежней копии, иначе по номерам. Фактов — сколько утвердил Сергей (Р510: меньше можно, 15 не обязательно);
 // «Порядок» обязан назвать ровно те номера, что есть в карточке, — иначе копия не пишется.
 // Проверенные человеком «не повторы» (ne_povtory, см. sverka-utverzhdeno.mjs) тоже берутся из прежней копии.
-// Строка «Источник:» в копию не идёт: сверщику она не нужна, а её адреса в src/data ловит storozh-ssylok.
-// Запуск одной командой: node scripts/utverzhdeno-kopiya.mjs [--iz ~/workspace/knowledge] [ММ-ДД …]
+// Строка «Источник:» факта в копию не идёт: сверщику она не нужна, а её адреса в src/data ловит storozh-ssylok.
+// Запуск: node scripts/utverzhdeno-kopiya.mjs [--muzey X] [--iz ~/workspace/knowledge] [ММ-ДД …]
+//   без --muzey — все музеи, у которых в workspace есть карточки; музей без карточек — строка отчёта, не ошибка.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -15,8 +17,24 @@ import os from 'node:os';
 const argv = process.argv.slice(2);
 const i = argv.indexOf('--iz');
 const IZ = i >= 0 ? argv.splice(i, 2)[1] : path.join(os.homedir(), 'workspace/knowledge');
-const KUDA = new URL('../src/data/utverzhdeno/ne-sdayutsya/', import.meta.url).pathname;
-fs.mkdirSync(KUDA, { recursive: true });
+const j = argv.indexOf('--muzey');
+const MUZEY = j >= 0 ? argv.splice(j, 2)[1] : null;
+const KUDA = (muzey) => new URL(`../src/data/utverzhdeno/${muzey}/`, import.meta.url).pathname;
+
+// Где карточки музея: { dni: [ММ-ДД], kartochka(key), material(key) } — пути от IZ или null, если карточек нет.
+export function istochnikiMuzeya(muzey, iz = IZ) {
+  const nov = path.join(iz, 'utverzhdeno', muzey);
+  const est = (p) => fs.existsSync(p);
+  const iz1 = est(nov) ? fs.readdirSync(nov).map((f) => f.match(/^(\d\d-\d\d)\.md$/)?.[1]).filter(Boolean) : [];
+  const ns = muzey === 'ne-sdayutsya' && est(path.join(iz, 'ns-utverzhdeno'))
+    ? fs.readdirSync(path.join(iz, 'ns-utverzhdeno')).map((f) => f.match(/^ns-(\d\d-\d\d)\.md$/)?.[1]).filter(Boolean) : [];
+  const dni = [...new Set([...iz1, ...ns])].sort();
+  if (!dni.length) return null;
+  const kartochka = (key) => (iz1.includes(key) ? `utverzhdeno/${muzey}/${key}.md` : ns.includes(key) ? `ns-utverzhdeno/ns-${key}.md` : null);
+  const material = (key) => [`utverzhdeno/${muzey}/${key}.kadry.md`, ...(muzey === 'ne-sdayutsya' ? [`ns-material/${key}.md`] : [])]
+    .find((p) => est(path.join(iz, p))) || null;
+  return { dni, kartochka, material };
+}
 
 // «7, 14, 1–6, 8» → [7, 14, 1, 2, 3, 4, 5, 6, 8]
 export function razobratPoryadok(s) {
@@ -30,8 +48,12 @@ export function razobratPoryadok(s) {
   return out;
 }
 
+// Раздел «КАДРЫ» карточки — привязка кадров, не факты.
+const doKadrov = (tekst) => tekst.split(/^КАДРЫ\s*$/m)[0];
+const razdelKadrov = (tekst) => tekst.split(/^КАДРЫ\s*$/m)[1] || '';
+
 export function razobratKartochku(tekst) {
-  const stroki = tekst.split('\n');
+  const stroki = doKadrov(tekst).split('\n');
   const fakty = [];  // { n, metka, zagolovok, podrobnee }
   let tek = null; let poryadok = null;
   for (const s of stroki) {
@@ -62,26 +84,44 @@ export function razobratMaterial(tekst) {
   return kadry.filter((x) => x.fajl);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const dir = path.join(IZ, 'ns-utverzhdeno');
-  const dni = argv.length ? argv : fs.readdirSync(dir).map((f) => f.match(/^ns-(\d\d-\d\d)\.md$/)?.[1]).filter(Boolean).sort();
-  let n = 0;
+export function kopiyaMuzeya(muzey, dniArg = [], iz = IZ) {
+  const ist = istochnikiMuzeya(muzey, iz);
+  if (!ist) return { muzey, n: 0, net: true };
+  const kuda = KUDA(muzey);
+  fs.mkdirSync(kuda, { recursive: true });
+  const dni = dniArg.length ? dniArg : ist.dni;
+  let n = 0; let osh = 0;
   for (const key of dni) {
-    const k = razobratKartochku(fs.readFileSync(path.join(dir, `ns-${key}.md`), 'utf8'));
-    if (k.fakty.length < 10 || k.fakty.length > 15) { console.log(`::error::utverzhdeno-kopiya: ${key} — в карточке ${k.fakty.length} фактов, ждали от 10 до 15`); process.exitCode = 1; continue; }
-    const mf = path.join(IZ, 'ns-material', `${key}.md`);
-    const kadry = fs.existsSync(mf) ? razobratMaterial(fs.readFileSync(mf, 'utf8')).filter((x) => x.fakt) : [];
-    const staryj = path.join(KUDA, `${key}.json`);
+    const kp = ist.kartochka(key);
+    if (!kp) { console.log(`::error::utverzhdeno-kopiya: ${muzey} ${key} — карточки нет`); osh++; continue; }
+    const tekst = fs.readFileSync(path.join(iz, kp), 'utf8');
+    const k = razobratKartochku(tekst);
+    if (!k.fakty.length) { console.log(`::error::utverzhdeno-kopiya: ${muzey} ${key} — в карточке не нашлось ни одного факта «N. (метка) текст»`); osh++; continue; }
+    const mp = ist.material(key);
+    const kadryTekst = mp ? fs.readFileSync(path.join(iz, mp), 'utf8') : razdelKadrov(tekst);
+    const kadry = razobratMaterial(kadryTekst).filter((x) => x.fakt);
+    const staryj = path.join(kuda, `${key}.json`);
     const prezhnij = fs.existsSync(staryj) ? JSON.parse(fs.readFileSync(staryj, 'utf8')) : {};
     const nomera = k.fakty.map((f) => f.n);
     const poryadok = [k.poryadok, prezhnij.poryadok].find((p) => p && p.length === nomera.length
       && [...p].sort((a, b) => a - b).join() === [...nomera].sort((a, b) => a - b).join()) || (k.poryadok ? null : nomera);
-    if (!poryadok) { console.log(`::error::utverzhdeno-kopiya: ${key} — «Порядок на странице» (${k.poryadok.join(', ')}) не совпадает с номерами фактов карточки (${nomera.join(', ')})`); process.exitCode = 1; continue; }
+    if (!poryadok) { console.log(`::error::utverzhdeno-kopiya: ${muzey} ${key} — «Порядок на странице» (${k.poryadok.join(', ')}) не совпадает с номерами фактов карточки (${nomera.join(', ')})`); osh++; continue; }
     const zapis = { key, zagolovok: k.zagolovok, poryadok, fakty: k.fakty, kadry,
       ...(prezhnij.ne_povtory ? { ne_povtory: prezhnij.ne_povtory } : {}),
-      iz: { kartochka: `knowledge/ns-utverzhdeno/ns-${key}.md`, material: kadry.length ? `knowledge/ns-material/${key}.md` : null } };
+      iz: { kartochka: `knowledge/${kp}`, material: kadry.length ? (mp ? `knowledge/${mp}` : `knowledge/${kp}#КАДРЫ`) : null } };
     fs.writeFileSync(staryj, `${JSON.stringify(zapis, null, 1)}\n`);
     n++;
   }
-  console.log(`utverzhdeno-kopiya: записано ${n} дней в src/data/utverzhdeno/ne-sdayutsya/`);
+  return { muzey, n, osh };
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const vse = fs.readdirSync(new URL('../src/data/', import.meta.url).pathname)
+    .map((f) => f.match(/^calendar-meta-(.+)\.json$/)?.[1]).filter(Boolean).sort();
+  for (const muzey of MUZEY ? [MUZEY] : vse) {
+    const r = kopiyaMuzeya(muzey, argv);
+    if (r.osh) process.exitCode = 1;
+    console.log(r.net ? `utverzhdeno-kopiya: ${muzey} — карточек нет, копировать нечего`
+      : `utverzhdeno-kopiya: ${muzey} — записано ${r.n} дней в src/data/utverzhdeno/${muzey}/`);
+  }
 }
