@@ -10,6 +10,7 @@
 // Запуск: node scripts/bez-viki.mjs [--dist dist] [--spisok] [--json отчёт.json] [--proba]
 import fs from 'node:fs';
 import path from 'node:path';
+import { razobrat, vse, atr, celikom } from '../src/lib/html.mjs';
 
 const argv = process.argv.slice(2);
 const arg = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : d; };
@@ -27,12 +28,9 @@ export function schet(text) {
 export function kadry(html) {
   const out = new Set();
   const viki = (t) => { VIKI.lastIndex = 0; return VIKI.test(t); };
-  const src = (tag) => (/\ssrc\s*=\s*["']([^"']+)/i.exec(tag) || [])[1];
-  for (const f of html.matchAll(/<figure\b[\s\S]*?<\/figure>/gi)) {
-    if (!viki(f[0])) continue;
-    for (const im of f[0].matchAll(/<img\b[^>]*>/gi)) if (src(im[0])) out.add(src(im[0]));
-  }
-  for (const im of html.matchAll(/<img\b[^>]*>/gi)) if (viki(im[0]) && src(im[0])) out.add(src(im[0]));
+  const doc = razobrat(html);
+  for (const f of vse(doc, 'figure')) if (viki(celikom(f))) for (const im of vse(f, 'img')) if (atr(im, 'src')) out.add(atr(im, 'src'));
+  for (const im of vse(doc, 'img')) if (viki(celikom(im)) && atr(im, 'src')) out.add(atr(im, 'src'));
   return out;
 }
 

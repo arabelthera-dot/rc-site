@@ -10,20 +10,20 @@
 // Запуск: node scripts/pervyj-v-mire.mjs [--dist dist] [--proba]
 import fs from 'node:fs';
 import path from 'node:path';
+import { razobrat, pervyj, vse, atr, tekst } from '../src/lib/html.mjs';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const MUZEI = 'izobreteniya';
 const VMIRE = /в\s+мире/i;
-const decode = (t) => t.replace(/&nbsp;|&#160;/g, ' ').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
-  .replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n));
-const strip = (t) => decode((t ?? '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 
 // h1 и хук страницы: хук — первый элемент с классом, где есть «hook» (hero-hook, lead-hook, hook).
+// Читает разборщик src/lib/html.mjs (Р531).
+const klassy = (el) => atr(el, 'class') || '';
 export function razbor(html) {
-  const h1 = strip(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1]);
-  const hook = strip(html.match(/<(\w+)[^>]*class="[^"]*\bhook\b[^"]*"[^>]*>([\s\S]*?)<\/\1>/)?.[2]
-    ?? html.match(/<(\w+)[^>]*class="[^"]*hook[^"]*"[^>]*>([\s\S]*?)<\/\1>/)?.[2]);
-  const gotovitsya = /<meta[^>]+name="robots"[^>]+noindex/i.test(html);
+  const doc = razobrat(html);
+  const h1 = tekst(pervyj(doc, 'h1')) ?? '';
+  const hook = tekst(pervyj(doc, (el) => /\bhook\b/.test(klassy(el))) ?? pervyj(doc, (el) => klassy(el).includes('hook'))) ?? '';
+  const gotovitsya = vse(doc, 'meta').some((el) => atr(el, 'name') === 'robots' && /noindex/i.test(atr(el, 'content') || ''));
   return { h1, hook, gotovitsya };
 }
 export function oshibki({ h1, hook }) {

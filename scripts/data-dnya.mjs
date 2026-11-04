@@ -10,13 +10,11 @@
 // Пока режим отчёта (21.10.2026: настоящие расхождения чинит пункт А3 описи). Выключатель шага — переменная DATA_DNYA_STROGO=0.
 import fs from 'node:fs';
 import path from 'node:path';
+import { razobrat, pervyj, tekst } from '../src/lib/html.mjs';
 
 const DAYS = 'src/content/days', FULL = 'src/data/full-pages';
 const MON = ['январ', 'феврал', 'март', 'апрел', 'ма', 'июн', 'июл', 'август', 'сентябр', 'октябр', 'ноябр', 'декабр'];
 const MONR = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-const decode = (t) => t.replace(/&nbsp;/g, ' ').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
-  .replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n));
-const strip = (t) => decode(t.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 // «4 января», «1–4 января», «1 и 4 января», «4-го января»; перед датой — до 2 слов контекста.
 const RE = new RegExp(`(?:^|[^0-9а-яё])((?:[а-яё]+\\s+){0,1})((?:\\d{1,2}\\s*(?:[–—-]|и|,)\\s*)*)(\\d{1,2})(?:-?го)?\\s+(${MONR.join('|')})(?![а-яё])`, 'i');
 const OTNOS = /^(до|после|с|со|по|к|ко|от|на|накануне|кануне|через|между|прежде)$/i;
@@ -68,10 +66,10 @@ if (process.argv.includes('--proba')) {
   process.exit(bad ? 1 : 0);
 }
 
+// <title> и <h1> читает разборщик src/lib/html.mjs (Р531): сущности и вложенные теги раскрывает он.
 const pageHead = (html) => {
-  const t = html.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1];
-  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1];
-  return [t && strip(t).replace(/\s+—\s+(Музей|Русская цивилизация)[\s\S]*$/, ''), h1 && strip(h1)].filter(Boolean);
+  const doc = razobrat(html), t = tekst(pervyj(doc, 'title')), h1 = tekst(pervyj(doc, 'h1'));
+  return [t && t.replace(/\s+—\s+(Музей|Русская цивилизация)[\s\S]*$/, ''), h1].filter(Boolean);
 };
 const nahodki = [];
 let vsego = 0;

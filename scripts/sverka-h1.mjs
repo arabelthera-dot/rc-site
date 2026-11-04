@@ -10,23 +10,21 @@
 // (строгая с 20.10.2026, Р52).
 import fs from 'node:fs';
 import path from 'node:path';
+import { razobrat, pervyj, tekst } from '../src/lib/html.mjs';
 
 const DAYS = 'src/content/days', FULL = 'src/data/full-pages';
 const MONR = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября',
   'ноября', 'декабря'];
-const decode = (t) => t.replace(/&nbsp;/g, ' ').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
-  .replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n));
-const strip = (t) => decode(t.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 const lowWords = (t) => t.toLowerCase().replace(/ё/g, 'е').match(/[a-zа-я0-9]+/g) ?? [];
 const sameStem = (a, b) => { const n = Math.max(4, Math.min(a.length, b.length) - 2);
   return a.length >= n && b.length >= n && a.slice(0, n) === b.slice(0, n); };
 
 // Заголовок страницы — <title> (без хвоста «— Музей … — Русская цивилизация») и <h1>, как в pageHead импорта:
 // у части страниц h1 — вопрос-хук, а имя дня стоит только в <title>.
+// Читает разборщик src/lib/html.mjs (Р531): сущности и вложенные теги раскрывает он.
 function pageHead(html) {
-  const t = html.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1];
-  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1];
-  return [t && strip(t).replace(/\s+—\s+(Музей|Русская цивилизация)[\s\S]*$/, ''), h1 && strip(h1)]
+  const doc = razobrat(html), t = tekst(pervyj(doc, 'title')), h1 = tekst(pervyj(doc, 'h1'));
+  return [t && t.replace(/\s+—\s+(Музей|Русская цивилизация)[\s\S]*$/, ''), h1]
     .filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(' · ');
 }
 function matches(head, key, title, dated) {

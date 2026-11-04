@@ -4,8 +4,9 @@
 // Запуск: node scripts/simvolika-vraga.mjs --dist dist   (код 1 — нарушение)
 import fs from 'node:fs';
 import path from 'node:path';
+import { razobrat, vse, atr } from '../src/lib/html.mjs';
 
-const dist = process.argv[process.argv.indexOf('--dist') + 1] || 'dist';
+const dist = process.argv.includes('--dist') ? process.argv[process.argv.indexOf('--dist') + 1] : 'dist';
 const spisok = JSON.parse(fs.readFileSync('data/simvolika-vraga.json', 'utf8')).kadry.map(k => k.fail.toLowerCase());
 const est = src => { const f = src.split(/[?#]/)[0].split('/').pop().toLowerCase(); return spisok.includes(f); };
 // Страница дня: /muzei/<музей>/<ключ ММ-ДД>/ — там кадр допустим в теле.
@@ -19,11 +20,14 @@ const obhod = dir => {
     else if (e.name.endsWith('.html')) {
       const rel = path.relative(dist, p);
       const html = fs.readFileSync(p, 'utf8');
-      for (const m of html.matchAll(/<meta\b[^>]*(?:og:image|twitter:image)[^>]*content="([^"]+)"/gi))
-        if (est(m[1])) narusheniya.push(`${rel}: og/twitter:image = ${m[1]}`);
+      const doc = razobrat(html);
+      for (const el of vse(doc, 'meta')) {
+        const k = atr(el, 'content');
+        if (k && /og:image|twitter:image/i.test(`${atr(el, 'property') ?? ''} ${atr(el, 'name') ?? ''}`) && est(k)) narusheniya.push(`${rel}: og/twitter:image = ${k}`);
+      }
       if (!denStranica(rel))
-        for (const m of html.matchAll(/<img\b[^>]*?\ssrc="([^"]+)"/gi))
-          if (est(m[1])) narusheniya.push(`${rel}: превью <img> = ${m[1]}`);
+        for (const el of vse(doc, 'img'))
+          if (atr(el, 'src') && est(atr(el, 'src'))) narusheniya.push(`${rel}: превью <img> = ${atr(el, 'src')}`);
     }
   }
 };

@@ -8,11 +8,9 @@
 // Запуск: node scripts/hook-odno.mjs [--proba]
 import fs from 'node:fs';
 import path from 'node:path';
+import { razobrat, pervyj, atr, tekst } from '../src/lib/html.mjs';
 
 const SOKR = /^(г|гг|в|вв|ст|им|св|т|тыс|млн|млрд|руб|н|э|пр|ул|см|др|акад|проф)$/i;
-const decode = (t) => t.replace(/&nbsp;|&#160;/g, ' ').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»')
-  .replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n));
-const strip = (t) => decode(t.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 
 // Вторая фраза: [.!?…] + пробел + заглавная, вне кавычек «…», не после инициала и не после сокращения.
 export function vtorayaFraza(hook) {
@@ -62,8 +60,8 @@ for (const m of papki(shablon)) for (const f of fs.readdirSync(path.join(shablon
 }
 const full = path.join(root, 'src/data/full-pages');
 for (const m of papki(full)) for (const f of fs.readdirSync(path.join(full, m)).filter((f) => f.endsWith('.html'))) {
-  const h = fs.readFileSync(path.join(full, m, f), 'utf8').match(/<(\w+)[^>]*class="hook"[^>]*>([\s\S]*?)<\/\1>/)?.[2];
-  if (h) hooks.push([`src/data/full-pages/${m}/${f}`, strip(h)]);
+  const h = tekst(pervyj(razobrat(fs.readFileSync(path.join(full, m, f), 'utf8')), (el) => atr(el, 'class') === 'hook'));
+  if (h) hooks.push([`src/data/full-pages/${m}/${f}`, h]);
 }
 
 let krasnyh = 0;

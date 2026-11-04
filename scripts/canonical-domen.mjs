@@ -7,6 +7,7 @@
 // Запуск: node scripts/canonical-domen.mjs --proba && node scripts/canonical-domen.mjs [--dist dist]
 import fs from 'node:fs';
 import path from 'node:path';
+import { razobrat, vse, atr } from '../src/lib/html.mjs';
 const DOMEN = 'https://russian-civilization.ru/';
 const args = process.argv.slice(2);
 const DIST = args.includes('--dist') ? args[args.indexOf('--dist') + 1] : null;
@@ -14,10 +15,11 @@ const svoy = (u) => typeof u === 'string' && u.startsWith(DOMEN);
 
 // Адреса страницы из HTML: canonical и og:url (атрибуты в любом порядке).
 export function adresa(html) {
-  const out = [];
-  for (const [t] of html.matchAll(/<link\b[^>]*\brel=["']canonical["'][^>]*>/gi)) out.push(['canonical', /\bhref=["']([^"']*)["']/i.exec(t)?.[1]]);
-  for (const [t] of html.matchAll(/<meta\b[^>]*\bproperty=["']og:url["'][^>]*>/gi)) out.push(['og:url', /\bcontent=["']([^"']*)["']/i.exec(t)?.[1]]);
-  return out;
+  const doc = razobrat(html);
+  return [
+    ...vse(doc, (el) => el.nodeName === 'link' && atr(el, 'rel') === 'canonical').map((el) => ['canonical', atr(el, 'href')]),
+    ...vse(doc, (el) => el.nodeName === 'meta' && atr(el, 'property') === 'og:url').map((el) => ['og:url', atr(el, 'content')]),
+  ];
 }
 // Находки одной страницы dist: чужой домен или адрес не той страницы (rel — путь файла от корня dist).
 export function nahodkiStranicy(html, rel) {

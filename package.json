@@ -23,6 +23,7 @@
     "@lhci/cli": "0.15.1",
     "@playwright/test": "1.55.1",
     "pagefind": "^1.5.2",
+    "parse5": "7.2.1",
     "playwright": "1.55.1"
   },
   "overrides": {
