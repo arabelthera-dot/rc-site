@@ -110,9 +110,64 @@
    "podrobnee": "«Сусанин» значит «сын Сусанны» — так на Руси называли вдов, а отчество «Осипович», частое в литературе, RT называет выдумкой. Дата 30 марта 1613 года — расчёт: протоиерей Алексий Домнинский (1794–1871) относил гибель к осени 1612 года, большинство исследователей — ко времени после 3 марта 1613 года, когда Земский собор избрал Михаила на царство. RT называет Сусанина старостой Домнина, а местом рождения считают деревню Деревеньки."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-29-tretyakov-c2e5f505e09a830779ebe6c1a459ed12.jpg",
+   "gk": "",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-29-goskatalog-75491963.jpg",
+   "gk": "59245648",
+   "fakt": 3,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3 (также 14, 2, 11)"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-29-goskatalog-15330002.jpg",
+   "gk": "16081533",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-29-goskatalog-18541124.jpg",
+   "gk": "18406190",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-29-goskatalog-41573071.jpg",
+   "gk": "34945408",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-29-goskatalog-731259.jpg",
+   "gk": "3910611",
+   "fakt": 9,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-29.md",
-  "material": null
+  "material": "knowledge/ns-material/01-29.md"
  }
 }

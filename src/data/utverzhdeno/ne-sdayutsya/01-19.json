@@ -110,9 +110,64 @@
    "podrobnee": "Михаил Горбачёв как нобелевский лауреат выдвинул экипаж К-19 соискателем премии мира 2006 года; ходатайство ушло в Нобелевский комитет в начале 2006-го. Довод: в разгар «холодной войны» взрыв лодки мог быть расценен как провокация СССР, и ответ США и НАТО мог последовать незамедлительно. Восемь моряков погибли от облучения в считанные дни после аварии."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-19-goskatalog-21493970.jpg",
+   "gk": "21493970",
+   "fakt": 2,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-19-goskatalog-51367656.jpg",
+   "gk": "51367656",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-19-goskatalog-10664312.jpg",
+   "gk": "10664312",
+   "fakt": 5,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-19-goskatalog-21822331.jpg",
+   "gk": "21822331",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-19-goskatalog-15587629.jpg",
+   "gk": "15587629",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-19-goskatalog-37249620.jpg",
+   "gk": "37249620",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-19.md",
-  "material": null
+  "material": "knowledge/ns-material/01-19.md"
  }
 }

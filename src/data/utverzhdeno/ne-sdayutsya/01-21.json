@@ -110,9 +110,64 @@
    "podrobnee": "Отряд имени Сталина спустился в Старокарантинские каменоломни 7 ноября 1941 года: 41 человек, в основном рабочие Камыш-Бурунского комбината, «большое число женщин (17 чел.) и трёх подростков». 12 ноября к ним пришёл 31 красноармеец, 29 декабря отряд вышел на поверхность; сам Володя, по «АиФ-Крым», провёл под землёй 50 дней. 13 ноября погиб командир Зябрев, отрядом дальше командовал С. М. Лазарев."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-21-goskatalog-3020725.jpg",
+   "gk": "6979677",
+   "fakt": 5,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-21-goskatalog-30939166.jpg",
+   "gk": "30939166",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-21-goskatalog-18448984.jpg",
+   "gk": "18448984",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-21-goskatalog-41803713.jpg",
+   "gk": "41803713",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-21-goskatalog-17092755.jpg",
+   "gk": "17092755",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-21-goskatalog-12199397.jpg",
+   "gk": "12199397",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-21.md",
-  "material": null
+  "material": "knowledge/ns-material/01-21.md"
  }
 }

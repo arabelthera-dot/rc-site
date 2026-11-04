@@ -1,0 +1,32 @@
+{
+  "title": "История в 50 секунд",
+  "note": "Кадры — подлинные: макет станции «Луна-1» в экспозиции Мемориального музея космонавтики (Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "horizontal": {
+    "file": "izobreteniya/02jan-luna1/day-02jan-luna1.mp4",
+    "local": "muzei/izobreteniya/video/day-02jan-luna1.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.9,
+    "mb": 10.2
+  },
+  "vertical": {
+    "file": "izobreteniya/02jan-luna1/day-02jan-luna1-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-02jan-luna1-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.9,
+    "mb": 9.4
+  },
+  "poster": {
+    "file": "izobreteniya/02jan-luna1/day-02jan-luna1-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-02jan-luna1-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/02jan-luna1/day-02jan-luna1-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-02jan-luna1-9x16-poster.jpg",
+    "v": 2
+  }
+}
