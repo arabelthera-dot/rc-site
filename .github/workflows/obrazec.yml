@@ -1,0 +1,84 @@
+# Машина — только по образцу из мировой практики (Р525, Сергей 04.11.2026). Корень: правило «как в мире» жило
+# только текстом — реестр роликов одним файлом (#18, 17.10) прошёл без сверки с образцом.
+# Пять вопросов до изменения (Сергей, 28.09.2026):
+# Что задевает — каждую заявку в main: одна проверка obrazec, файлы сайта не меняются.
+# Что нужно — заявка правит машину (список путей — .github/puti.env, общий с mashina-otdelno) → в описании
+#   раздел «## Как это делают в мире» с рабочей ссылкой http(s) на образец. Нет — красная.
+#   В разделе «образца нет / самоделка» → красная, пока нет метки obrazets-da-sergey (ставит только Джарвис по слову Сергея).
+#   Заявка только с данными дня — зелёная без раздела.
+# Что будет без нужного — машина снова собирается самоделкой, заплатки копятся.
+# Проверка до слияния — 4 пробные заявки (данные без раздела, машина без раздела, машина со ссылкой,
+#   машина «самоделка» без метки), заявка mashina/obrazec.
+# Пути читаются с базы заявки: заявка не может ослабить проверку сама себе. Текст заявки — через env, не в скрипт.
+# Без фильтра paths: статус нужен на каждой заявке. Переименование считается по обоим путям.
+# Откат: удалить этот файл и .github/puti.env (в обязательные проверки ruleset не внесена).
+name: obrazec
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled]
+permissions:
+  contents: read
+  pull-requests: read
+concurrency:
+  group: obrazec-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  obrazec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: obrazec — машина по образцу из мировой практики (Р525)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+          TELO: ${{ github.event.pull_request.body }}
+          METKA: ${{ contains(github.event.pull_request.labels.*.name, 'obrazets-da-sergey') }}
+        run: |
+          set -euo pipefail
+          # общий список путей — с базы; на первой заявке, где его ещё нет в базе, — с ветки
+          if ! gh api -H 'Accept: application/vnd.github.raw' "repos/$REPO/contents/.github/puti.env?ref=$BASE" > puti.env 2>/dev/null; then
+            echo "В базе нет .github/puti.env — беру из заявки (первая заявка)."
+            gh api -H 'Accept: application/vnd.github.raw' "repos/$REPO/contents/.github/puti.env?ref=$HEAD" > puti.env
+          fi
+          DANNYE=$(sed -n "s/^DANNYE='\(.*\)'$/\1/p" puti.env)
+          MASHINA=$(sed -n "s/^MASHINA='\(.*\)'$/\1/p" puti.env)
+          [ -n "$DANNYE" ] && [ -n "$MASHINA" ] || { echo "::error::.github/puti.env без DANNYE или MASHINA"; exit 1; }
+          gh api --paginate "repos/$REPO/pulls/$PR/files" \
+            --jq '.[] | .filename, (.previous_filename // empty)' | sort -u > vse.txt
+          { grep -E "$MASHINA" vse.txt || true; } | { grep -vE "$DANNYE" || true; } > mashina.txt
+          if [ ! -s mashina.txt ]; then
+            echo "Машину заявка не правит (файлов: $(wc -l < vse.txt)) — зелёная."
+            exit 0
+          fi
+          echo "Машина в заявке:"; sed 's/^/  /' mashina.txt | head -20
+          # раздел «Как это делают в мире» до следующего заголовка ##, без HTML-комментариев шаблона
+          printf '%s\n' "$TELO" | tr -d '\r' | perl -0pe 's/<!--.*?-->//gs' \
+            | awk '/^##[[:space:]]+Как это делают в мире/{f=1;next} /^##[[:space:]]/{f=0} f' > razdel.txt
+          if [ ! -s razdel.txt ] || ! grep -q '[^[:space:]]' razdel.txt; then
+            echo "::error::Машина без образца из мировой практики (Р525): в описании нет раздела «## Как это делают в мире» со ссылкой на образец."
+            exit 1
+          fi
+          if grep -qiE '[оО]бразца нет|[нН]ет образца|[сС]амоделк' razdel.txt; then
+            if [ "$METKA" = "true" ]; then
+              echo "Образца нет, но метка obrazets-da-sergey стоит — Сергей разрешил, зелёная."
+              exit 0
+            fi
+            echo "::error::Машина без образца из мировой практики (Р525): в разделе написано «образца нет / самоделка». Ждёт метку obrazets-da-sergey — ставит только Джарвис по слову Сергея."
+            exit 1
+          fi
+          grep -oE 'https?://[A-Za-z0-9.-]+\.[A-Za-z]{2,}[^[:space:])>"]*' razdel.txt | sort -u > ssylki.txt || true
+          if [ ! -s ssylki.txt ]; then
+            echo "::error::Машина без образца из мировой практики (Р525): в разделе «Как это делают в мире» нет ссылки http(s) на образец."
+            exit 1
+          fi
+          # рабочая — сайт ответил и не «нет такой страницы»; хоть одна ссылка из раздела
+          while read -r u; do
+            kod=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 20 -A 'Mozilla/5.0 (obrazec-check)' "$u" || echo 000)
+            echo "  $kod $u"
+            case "$kod" in 000|404|410) ;; *) echo "Образец есть: $u — зелёная."; exit 0 ;; esac
+          done < ssylki.txt
+          echo "::error::Машина без образца из мировой практики (Р525): ссылка в разделе «Как это делают в мире» не открывается (нет ответа или 404)."
+          exit 1

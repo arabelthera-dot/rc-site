@@ -128,7 +128,7 @@ function otryvok(podrobnee) {
 // st — старый факт страницы с тем же смыслом, m — факт материала ~/workspace/knowledge/ns-material/ММ-ДД.md.
 // Источник — строка карточки дословно; страница и адрес — старого факта, если его адрес в этой строке, иначе материала, иначе первый адрес.
 // Отрывок — старый, если он дословно в «Подробнее», иначе первая цитата «Подробнее», иначе цитата материала; пометка — старая, иначе из материала
-// (служебные «один источник / мнение / воспоминание» — на страницу не идут, Р504), иначе «документ» при цитате, иначе «два источника» при двух сайтах, иначе пометки нет (её дописывает человек).
+// (служебные «один источник / мнение / воспоминание» — на страницу не идут, Р504), иначе «документ» при цитате, иначе «два источника» при двух сайтах, иначе «один источник» (служебная, Р504; в материале «СМИ», «исследование» — не из списка).
 function udar(f, st, data, m) {
   const [pervyy] = f.ssylki;
   if (!pervyy) stop(`факт ${f.n}: в утверждённом нет «Источник» с адресом`);
@@ -139,7 +139,7 @@ function udar(f, st, data, m) {
   const izKart = otryvok(f.podrobnee);
   const o = st?.otryvok && f.podrobnee.includes(st.otryvok.replace(/^«|»$/g, '')) ? st.otryvok : izKart ?? st?.otryvok ?? m?.otryvok;
   if (o) u.otryvok = o;
-  const pometka = st?.pometka ?? m?.pometka ?? (izKart ? 'документ' : new Set(f.ssylki.map((s) => new URL(s.href).host)).size >= 2 ? 'два источника' : null);
+  const pometka = st?.pometka ?? m?.pometka ?? (izKart ? 'документ' : new Set(f.ssylki.map((s) => new URL(s.href).host)).size >= 2 ? 'два источника' : 'один источник');
   if (pometka) u.pometka = pometka;
   return u;
 }
