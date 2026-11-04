@@ -1,0 +1,32 @@
+{
+  "title": "История в 49 секунд",
+  "note": "Кадры — подлинные: телевизор «Б-2» (1935–1936) и брошюра «Телевизор Б-2» (1936) из Госкаталога музейного фонда РФ. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "horizontal": {
+    "file": "izobreteniya/01jan-cabletv/day-01jan-cabletv.mp4",
+    "local": "muzei/izobreteniya/video/day-01jan-cabletv.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 48.8,
+    "mb": 11
+  },
+  "vertical": {
+    "file": "izobreteniya/01jan-cabletv/day-01jan-cabletv-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-01jan-cabletv-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 48.8,
+    "mb": 9.5
+  },
+  "poster": {
+    "file": "izobreteniya/01jan-cabletv/day-01jan-cabletv-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-01jan-cabletv-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/01jan-cabletv/day-01jan-cabletv-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-01jan-cabletv-9x16-poster.jpg",
+    "v": 2
+  }
+}

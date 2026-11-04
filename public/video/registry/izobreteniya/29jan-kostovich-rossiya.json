@@ -1,0 +1,18 @@
+{
+  "title": "История в 51 секунду",
+  "note": "Кадры — подлинные: рисунок «Россия» над Петербургом, фотографии Костовича в мастерской и в пожилом возрасте (Госкаталог, музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "horizontal": {
+    "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya.mp4",
+    "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 51.3,
+    "mb": 12.2
+  },
+  "poster": {
+    "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya-poster.jpg",
+    "v": 2
+  }
+}

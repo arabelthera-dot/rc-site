@@ -1,0 +1,33 @@
+{
+  "title": "История в 50 секунд",
+  "intro": "Малый Козельск семь недель держал орду Батыя — дольше всех городов нашествия, и враг прозвал его злым городом.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41802766703) из сценария days/ns04jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 50.3,
+    "mb": 14.9
+  },
+  "vertical": {
+    "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 50.3,
+    "mb": 14.3
+  },
+  "poster": {
+    "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16-poster.jpg",
+    "v": 1
+  }
+}
