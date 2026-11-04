@@ -2,17 +2,24 @@
 // Проверка сертификатов источников (Р323, 28.10): посетителя не отправляем на страницу с предупреждением браузера.
 // Собирает адреса source_url (блок «Документ»), source (строка «Источник») и ссылок href из src/content и src/data/full-pages,
 // проверяет сертификат каждого сайта обычной проверкой node tls (как Chrome/Safari без российского корня).
-// Не прошёл — сайт попадает в src/data/tls-nedoverie.json и в список RU_CA движка public/assets/museum-proof.js:
+// Не прошёл — сайт попадает в src/data/tls-nedoverie.json, а из него в список RU_CA движка dist/assets/museum-proof.js
+// (src/integrations/tls-ru-ca.mjs):
 // блок показывает реквизиты документа текстом, ссылку подписывает «сайт архива — откроется в Яндекс Браузере».
 // Выключить: PROVERKA_TLS=0. Нет сети / сайт не ответил — прежняя запись сайта сохраняется, сборка не падает.
+// Р531 (п. 15 аудита r530): файл — выход сборки, в git его нет (.gitignore), public/ скрипт не трогает —
+// сборка не оставляет грязную копию. Как в мире: generated files are build outputs, not sources.
 import fs from 'node:fs';
 import path from 'node:path';
 import tls from 'node:tls';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const OUT = path.join(ROOT, 'src/data/tls-nedoverie.json');
-const ENGINE = path.join(ROOT, 'public/assets/museum-proof.js');
-if (process.env.PROVERKA_TLS === '0') { console.log('proverka-tls: выключена (PROVERKA_TLS=0)'); process.exit(0); }
+const PUSTO = { _: 'Сайты источников, чей сертификат не проходит обычную проверку TLS; пишет scripts/proverka-tls.mjs', hosts: {} };
+if (process.env.PROVERKA_TLS === '0') {
+  // файл нужен импорту src/lib/kalendar.ts — без проверки пишем пустой, прежний не трогаем
+  if (!fs.existsSync(OUT)) fs.writeFileSync(OUT, JSON.stringify(PUSTO, null, 1) + '\n');
+  console.log('proverka-tls: выключена (PROVERKA_TLS=0)'); process.exit(0);
+}
 
 const files = [];
 const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) {
@@ -36,7 +43,7 @@ const issuer = (host) => new Promise((res) => {
 });
 
 const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : { hosts: {} };
-const out = { _: 'Сайты источников, чей сертификат не проходит обычную проверку TLS; пишет scripts/proverka-tls.mjs', hosts: {} };
+const out = { ...PUSTO, hosts: {} };
 const today = new Date().toISOString().slice(0, 10);
 for (const r of await Promise.all([...hosts].sort().map(check))) {
   if (r.ok === false) {
@@ -50,8 +57,5 @@ for (const r of await Promise.all([...hosts].sort().map(check))) {
 fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n');
 const list = Object.keys(out.hosts).filter((h) => out.hosts[h].kind === 'ru-ca').sort();
 const other = Object.keys(out.hosts).filter((h) => out.hosts[h].kind !== 'ru-ca');
-const js = fs.readFileSync(ENGINE, 'utf8');
-const next = js.replace(/var RU_CA=\[[^\]]*\];/, `var RU_CA=${JSON.stringify(list).replace(/"/g, "'")};`);
-if (next !== js) fs.writeFileSync(ENGINE, next);
 console.log(`proverka-tls: сайтов ${hosts.size}; сертификат НУЦ Минцифры — ${list.length}${list.length ? ': ' + list.join(', ') : ''}`);
 if (other.length) console.log(`proverka-tls: ВНИМАНИЕ, сертификат не проходит по другой причине: ${other.map((h) => `${h} (${out.hosts[h].error})`).join(', ')}`);

@@ -8,3 +8,6 @@ __pycache__/
 
 # Общий реестр роликов собирает scripts/reestr-rolikov.mjs из public/video/registry/<музей>/<id>.json (Р524)
 public/video/registry.json
+
+# Сайты с сертификатом не из мирового списка — выход scripts/proverka-tls.mjs при каждой сборке (Р531, п. 15 аудита)
+src/data/tls-nedoverie.json

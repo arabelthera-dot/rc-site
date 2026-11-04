@@ -5,6 +5,7 @@ import fullPages from './src/integrations/full-pages.mjs';
 import kartinki from './src/integrations/kartinki.mjs';
 import ogDen from './src/integrations/og-den.mjs';
 import minify from './src/integrations/minify.mjs';
+import tlsRuCa from './src/integrations/tls-ru-ca.mjs';
 import shriftyFajlom from './src/integrations/shrifty-fajlom.mjs';
 import metrikaFajlom from './src/integrations/metrika-fajlom.mjs';
 import poisk from './src/integrations/poisk.mjs';
@@ -36,5 +37,5 @@ export default defineConfig({
   //   src/data/karta-sayta.json; noindex и служебные (/doska/, /karta/, /poisk/, /proverka/) — вне карт (Е6, Р47).
   // lupa — после kartinki: лупа на кадр (Р178, PhotoSwipe из npm), кадры с исходником от 1200 px; выключатель — src/lib/lupa.mjs.
   // minify — после kartinki: public/assets/*.js|css и встроенный <style> (Lighthouse 19.10, LCP; выкл. RC_NO_MINIFY=1).
-  integrations: [zakon(), legacyRedirects(), fullPages(), ogDen(), kartinki(), lupa(), shriftyFajlom(), metrikaFajlom(), podderzhka(), minify(), kartaVolnami(), razmetka(), poisk()],
+  integrations: [zakon(), legacyRedirects(), fullPages(), ogDen(), kartinki(), lupa(), shriftyFajlom(), metrikaFajlom(), podderzhka(), tlsRuCa(), minify(), kartaVolnami(), razmetka(), poisk()],
 });
