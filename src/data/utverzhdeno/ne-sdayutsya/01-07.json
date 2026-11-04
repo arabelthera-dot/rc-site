@@ -110,7 +110,50 @@
    "podrobnee": "Гастелло летел на дальнем бомбардировщике ДБ-3Ф, а на марке ошибочно изобразили истребитель. Марку показывали на выставке в Музее Победы в 2019 году вместе с брошюрой «Капитан Гастелло», которую в 1941 году написали его родные, и нотами песни «Баллада о капитане Гастелло» (1941)."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-56785988.jpg",
+   "gk": "45962960",
+   "fakt": 2,
+   "takzhe": []
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-20656972.jpg",
+   "gk": "19947982",
+   "fakt": 5,
+   "takzhe": []
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-18796278.jpg",
+   "gk": "18579592",
+   "fakt": 11,
+   "takzhe": []
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-45844888.jpg",
+   "gk": "38060080",
+   "fakt": 14,
+   "takzhe": []
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-61254385.jpg",
+   "gk": "49213693",
+   "fakt": 3,
+   "takzhe": []
+  },
+  {
+   "n": 8,
+   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-55901881.jpg",
+   "gk": "6943258",
+   "fakt": 6,
+   "takzhe": []
+  }
+ ],
  "ne_povtory": [
   {
    "para": "6-12",
@@ -131,10 +174,15 @@
    "para": "14-15",
    "pochemu": "14 — «гастелловцы», 15 — ошибка на марке",
    "proveril": "Р506, 04.11.2026"
+  },
+  {
+   "para": "2-3",
+   "pochemu": "2 — Гастелло направил машину на колонну, 3 — никто из четверых не выпрыгнул",
+   "proveril": "r514, 04.11.2026"
   }
  ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-07.md",
-  "material": null
+  "material": "knowledge/ns-material/01-07.md"
  }
 }

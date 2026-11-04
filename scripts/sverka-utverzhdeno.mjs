@@ -2,7 +2,7 @@
 // Корень Р503/Р505: страница «Не сдаются» собиралась из старой, а не из утверждённой карточки, — отчёт одно, страница другое.
 // Правда — копия карточки src/data/utverzhdeno/ne-sdayutsya/ММ-ДД.json (scripts/utverzhdeno-kopiya.mjs из workspace).
 // По каждому дню, где есть и страница src/content/dni-shablon/ne-sdayutsya/ММ-ДД.yaml, и копия карточки:
-//  а) факты страницы (все блоки fakty[].udary[] подряд) — те же 15 и в порядке «poryadok» карточки;
+//  а) факты страницы (все блоки fakty[].udary[] подряд) — те же, что в карточке (от 10 до 15, Р510), и в порядке «poryadok»;
 //     заголовок сравнивается после чистки тегов, ё=е, кавычек и тире; правка слов допустима, другой факт — нет;
 //  б) кадр у факта — тот, что привязан к нему в «Факт к кадру» (ns-material), если кадр в привязке есть;
 //  в) ни один кадр (номер Госкаталога или файл) не повторяется: обложка, кадры фактов, галерея figures;
@@ -186,11 +186,13 @@ if (import.meta.url === `file://${process.argv[1]}`) glavnoe();
 function glavnoe() {
 // ——— проба ———
 if (est('--proba')) {
-  const key = '01-02';
-  const utv = chitatUtv(key);
+  // Образец — карточка 01-02 до слияния повторов Р510 (15 фактов, повторы 2–7, 6–11, 3–10 в ней есть);
+  // живая карточка 01-02 после Р510 — 12 фактов, на ней случай «карточка на 12 фактов».
+  const utv = JSON.parse(fs.readFileSync(path.join(KOREN, 'tests/obrazcy/sverka-utverzhdeno/01-02-do-r510.json'), 'utf8'));
+  const zhivaya = chitatUtv('01-02');
   const po = (n) => utv.fakty.find((f) => f.n === n);
   const udar = (f, kadr) => ({ summary: `<b>${f.zagolovok}</b>`, det: [f.podrobnee], ...(kadr ? { kadr } : {}) });
-  const kd = (gk) => { const m = utv.kadry.find((x) => x.gk === gk); return { src: m.fajl, data_source: `https://goskatalog.ru/portal/#/collections?id=${gk}` }; };
+  const kd = (gk, u = utv) => { const m = u.kadry.find((x) => x.gk === gk); return { src: m.fajl, data_source: `https://goskatalog.ru/portal/#/collections?id=${gk}` }; };
   // хороший день: порядок карточки, кадры по привязке, без повторов; карточка — без найденных повторов фактов
   const chistaya = { ...utv, fakty: utv.fakty.filter((f) => ![7, 10, 11].includes(f.n)) };
   chistaya.poryadok = chistaya.fakty.map((f) => f.n);
@@ -211,7 +213,15 @@ if (est('--proba')) {
     ['повтор факта 2–7 в карточке', utv, null, /в карточке два факта про одно: 2 и 7/],
     ['повтор факта 6–11 в карточке', utv, null, /в карточке два факта про одно: 6 и 11/],
     ['повтор факта 3–10 в карточке', utv, null, /в карточке два факта про одно: 3 и 10/],
+    ['карточка на 12 фактов', zhivaya, (() => {
+      // по «Порядку» карточки, у каждого факта — его первый кадр из привязки, лишние кадры факта не ставятся
+      const bylo = new Set();
+      const kadrK = (n) => zhivaya.kadry.find((x) => x.fakt === n && !bylo.has(x.gk) && bylo.add(x.gk));
+      return { fakty: [{ udary: zhivaya.poryadok.slice(0, 10).map((n) => { const k = kadrK(n); return udar(zhivaya.fakty.find((f) => f.n === n), k && kd(k.gk, zhivaya)); }) },
+        { udary: zhivaya.poryadok.slice(10).map((n) => udar(zhivaya.fakty.find((f) => f.n === n))) }] };
+    })(), null],
   ];
+  if (zhivaya.fakty.length !== 12) { console.log(`::error::sverka-utverzhdeno: проба ждёт живую карточку 01-02 на 12 фактов, в ней ${zhivaya.fakty.length}`); process.exit(1); }
   let mimo = 0;
   for (const [imya, u, y, zhdu] of sluchai) {
     const { o } = sverit(u, y || horoshij());
