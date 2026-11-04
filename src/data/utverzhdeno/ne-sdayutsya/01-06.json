@@ -112,68 +112,32 @@
  ],
  "kadry": [
   {
-   "n": 1,
-   "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-1750990.jpg",
-   "gk": "5476698",
-   "fakt": null,
-   "takzhe": [],
-   "mesto": "oblozhka",
-   "privyazka": "— (обложка)"
-  },
-  {
    "n": 2,
    "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-27191447.jpg",
    "gk": "24629846",
    "fakt": 5,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "5"
+   "takzhe": []
   },
   {
    "n": 3,
    "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-27183295.jpg",
    "gk": "24623277",
    "fakt": 10,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "10"
-  },
-  {
-   "n": 4,
-   "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-27180727.jpg",
-   "gk": "24621605",
-   "fakt": null,
-   "takzhe": [],
-   "mesto": "galereya",
-   "privyazka": "— (галерея)"
+   "takzhe": []
   },
   {
    "n": 5,
    "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-1371227.jpg",
    "gk": "4975312",
    "fakt": 11,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "11"
-  },
-  {
-   "n": 6,
-   "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-75631356.jpg",
-   "gk": "59348213",
-   "fakt": null,
-   "takzhe": [],
-   "mesto": "galereya",
-   "privyazka": "— (галерея)",
-   "zapas": true
+   "takzhe": []
   },
   {
    "n": 7,
    "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-1371546.jpg",
    "gk": "4975631",
    "fakt": 6,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "6"
+   "takzhe": []
   }
  ],
  "ne_povtory": [
@@ -186,6 +150,16 @@
    "para": "5-13",
    "pochemu": "5 — пушки Кане подбили гаубицы, 13 — четыре пушки в последний день",
    "proveril": "Р506, 04.11.2026"
+  },
+  {
+   "para": "8-15",
+   "pochemu": "8 — Чоглоков с сорока бойцами остановил ландверный полк, 15 — немецкий полк попал под собственный газ у Сосни",
+   "proveril": "r514, 04.11.2026"
+  },
+  {
+   "para": "4-15",
+   "pochemu": "4 — пехота побежала и повисла на своей проволоке, 15 — полк попал под собственный газ",
+   "proveril": "r514, 04.11.2026"
   }
  ],
  "iz": {

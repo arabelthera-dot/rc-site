@@ -112,76 +112,46 @@
  ],
  "kadry": [
   {
-   "n": 1,
-   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-51094387.jpg",
-   "gk": "1484031",
-   "fakt": null,
-   "takzhe": [],
-   "mesto": "oblozhka",
-   "privyazka": "— (обложка)"
-  },
-  {
    "n": 2,
    "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-56785988.jpg",
    "gk": "45962960",
    "fakt": 2,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "2"
+   "takzhe": []
   },
   {
    "n": 3,
    "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-20656972.jpg",
    "gk": "19947982",
    "fakt": 5,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "5"
+   "takzhe": []
   },
   {
    "n": 4,
    "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-18796278.jpg",
    "gk": "18579592",
    "fakt": 11,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "11"
+   "takzhe": []
   },
   {
    "n": 5,
    "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-45844888.jpg",
    "gk": "38060080",
    "fakt": 14,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "14"
-  },
-  {
-   "n": 6,
-   "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-4521022.jpg",
-   "gk": "8320969",
-   "fakt": null,
-   "takzhe": [],
-   "mesto": "galereya",
-   "privyazka": "— (галерея)"
+   "takzhe": []
   },
   {
    "n": 7,
    "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-61254385.jpg",
    "gk": "49213693",
    "fakt": 3,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "3"
+   "takzhe": []
   },
   {
    "n": 8,
    "fajl": "/muzei/ne-sdayutsya/img/01-07-goskatalog-55901881.jpg",
    "gk": "6943258",
    "fakt": 6,
-   "takzhe": [],
-   "mesto": "fakt",
-   "privyazka": "6"
+   "takzhe": []
   }
  ],
  "ne_povtory": [
@@ -204,6 +174,11 @@
    "para": "14-15",
    "pochemu": "14 — «гастелловцы», 15 — ошибка на марке",
    "proveril": "Р506, 04.11.2026"
+  },
+  {
+   "para": "2-3",
+   "pochemu": "2 — Гастелло направил машину на колонну, 3 — никто из четверых не выпрыгнул",
+   "proveril": "r514, 04.11.2026"
   }
  ],
  "iz": {
