@@ -110,9 +110,64 @@
    "podrobnee": "В первый раз Леонов отошёл на метр, в остальные четыре на всю длину фала. Снаружи скафандр нагревался на солнце до +60 °C, а в тени остывал до −100 °C. Шлюз был мягким: надувная труба из 36 секций, которую раскрывали уже на орбите."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-26-goskatalog-2581383.jpg",
+   "gk": "6327635",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-26-goskatalog-8941182.jpg",
+   "gk": "8941182",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1 (также 7)"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-26-goskatalog-12781470.jpg",
+   "gk": "12781470",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-26-goskatalog-57122082.jpg",
+   "gk": "57122082",
+   "fakt": 8,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-26-goskatalog-36019420.jpg",
+   "gk": "36019420",
+   "fakt": 6,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6 (также 7)"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-26-goskatalog-4973845.jpg",
+   "gk": "4973845",
+   "fakt": 12,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-26.md",
-  "material": null
+  "material": "knowledge/ns-material/01-26.md"
  }
 }

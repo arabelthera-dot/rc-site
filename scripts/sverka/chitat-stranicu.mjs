@@ -42,7 +42,7 @@ export function idKadra(src = '', istochnik = '') {
 }
 
 // ——— вход 1: YAML шаблона ———
-function izYaml(y) {
+export function izYaml(y) {
   const kd = (k) => (k && (k.src || k.data_source) ? idKadra(k.src, k.data_source) : '');
   const fakty = [];
   for (const blok of y.fakty || []) for (const u of blok.udary || []) {

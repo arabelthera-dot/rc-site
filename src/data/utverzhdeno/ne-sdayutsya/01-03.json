@@ -116,56 +116,72 @@
    "fajl": "/muzei/ne-sdayutsya/img/01-03-goskatalog-13617029.jpg",
    "gk": "13617029",
    "fakt": 3,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
   },
   {
    "n": 2,
    "fajl": "/muzei/ne-sdayutsya/img/01-03-goskatalog-12025903.jpg",
    "gk": "12025903",
    "fakt": 8,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
   },
   {
    "n": 3,
    "fajl": "/muzei/ne-sdayutsya/img/01-03-camo-58-977531-39-l780.jpg",
    "gk": "",
    "fakt": 11,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
   },
   {
    "n": 4,
    "fajl": "/muzei/ne-sdayutsya/img/01-03-camo-58-977531-39-l778.jpg",
    "gk": "",
    "fakt": 12,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
   },
   {
    "n": 5,
    "fajl": "/muzei/ne-sdayutsya/img/01-03-goskatalog-40548452.jpg",
    "gk": "40548452",
    "fakt": 3,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
   },
   {
    "n": 6,
    "fajl": "/muzei/ne-sdayutsya/img/01-03-goskatalog-12008284.jpg",
    "gk": "12008284",
    "fakt": 3,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
   },
   {
    "n": 7,
    "fajl": "/muzei/ne-sdayutsya/img/01-03-goskatalog-3743748.jpg",
    "gk": "3743748",
    "fakt": 2,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
   },
   {
    "n": 8,
    "fajl": "/muzei/ne-sdayutsya/img/01-03-goskatalog-42657991.jpg",
    "gk": "42657991",
    "fakt": 11,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
   }
  ],
  "iz": {

@@ -24,6 +24,8 @@ import { razobratKartochku } from './utverzhdeno-kopiya.mjs';
 const VHOD = path.join(os.homedir(), 'workspace/knowledge/ns-utverzhdeno');
 const VYHOD = 'src/content/dni-shablon/ne-sdayutsya';
 const UTV = 'src/data/utverzhdeno/ne-sdayutsya';
+const DAYS = 'src/content/days/ne-sdayutsya';
+const kartochkaKalendarya = (key) => { const f = path.join(DAYS, `${key}.json`); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null; };
 const BEZ_TEGOV = (s) => s.replace(/<[^>]+>/g, '');
 // Названия сочинений в кавычках — не отрывок источника.
 const NAZVANIE = /^(Повест|Сказани|Задонщин|Жити|Слов|Летопис|Хожени|Моления)/;
@@ -248,6 +250,9 @@ function den(key) {
     if (!u.kadr) otchet.push(`факт ${f.n}: без кадра`);
   });
 
+  const kal = kartochkaKalendarya(key);
+  if (!kal?.title || !kal?.hook) stop(`${key}: в ${DAYS}/${key}.json нет title или hook — название и хук брать неоткуда`);
+  karta.head = { ...karta.head, sobytie: kal.title }; karta.lead = { ...karta.lead, hook: kal.hook };
   const r = skhemaNeSdayutsya.safeParse({ ...karta, adres: 'den' });
   const zamki = r.success ? [] : r.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`);
   // Карточка без adres тоже идёт в сборку: не проходит схему и без adres — не записывать, иначе сборка красная (01-30, r496).
@@ -266,8 +271,23 @@ function den(key) {
   const stavimAdres = !zamki.length && !bezAdresa; // --bez-adresa: adres не трогаем вовсе (пересборка готовых дней без смены адреса)
   if (stavimAdres && !doc.has('adres')) doc.contents.items.splice(doc.contents.items.findIndex((p) => p.key.value === 'key') + 1, 0, doc.createPair('adres', 'den'));
   else if (stavimAdres) doc.set('adres', 'den');
+  // Название и хук — из утверждённой карточки календаря src/content/days/ne-sdayutsya/ММ-ДД.json дословно (Р «Дата = название
+  // и хук», r533): head.sobytie даёт <title> и og:title страницы, lead.hook — хук под заголовком и первый кадр ролика.
+  // Раньше брались со старой страницы или правились руками — 01-02 ушёл в сборку с сочинённым названием и хуком.
+  const stroki = [];
+  for (const [r, pole, v] of [['head', 'sobytie', kal.title], ['lead', 'hook', kal.hook]]) {
+    if (!doc.hasIn([r, pole])) stop(`${vyhod}: нет поля ${r}.${pole}`);
+    if (doc.getIn([r, pole]) !== v) { doc.setIn([r, pole], v); stroki.push([r, pole, v]); otchet.push(`${r}.${pole} ← карточка календаря: «${v}»`); }
+  }
   const svezhij = doc.toString({ lineWidth: 0, indentSeq, flowCollectionPadding: false });
   let vyh = tekst;
+  // Только строка поля внутри раздела, остальное в head и lead побайтно как было.
+  for (const [r, pole, v] of stroki) {
+    const st = razdel(vyh, r)?.[0], skalyar = new YAML.Document(v).toString({ lineWidth: 0 }).trimEnd();
+    const nv = st?.replace(new RegExp(`^(  ${pole}:) [^\\n]*$`, 'm'), (_, a) => `${a} ${skalyar}`);
+    if (!st || nv === st) stop(`${vyhod}: строку ${r}.${pole} не заменить`);
+    vyh = vyh.replace(st, () => nv);
+  }
   for (const kl of ['fakty', 'figures', ...(stavimAdres ? ['adres'] : [])]) {
     const st = razdel(vyh, kl), nv = razdel(svezhij, kl);
     if (!nv) stop(`${key}: раздела ${kl} нет в новом документе`);

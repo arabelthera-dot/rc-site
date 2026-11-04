@@ -12,6 +12,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { IGRA } from '../../src/lib/dni-ne-sdayutsya.mjs';
 import { POMETKI as VIDNYE, POMETKI_SLUZHEBNYE } from '../../src/lib/den-obshchee.mjs';
+import { chitat } from '../reestr-rolikov.mjs';
 
 const POMETKI = [...VIDNYE, ...POMETKI_SLUZHEBNYE];
 
@@ -35,12 +36,10 @@ const URL_ = /https?:\/\/[^\s()«»"]+?(?=[.,;]?(?:\s|\)|»|$))/;
 const put = (src) => `/${String(src).replace(/^\//, '')}`;
 
 // Размер кадра из файла (JPEG — маркер SOF, PNG — IHDR), если в материале его нет.
-// Ролик дня из реестра public/video/registry.json — выпуск nesdayutsya/ДДmon-… (ролик rc-rolik к дню без ролика на старой
+// Ролик дня из реестра public/video/registry/<музей>/<id>.json (scripts/reestr-rolikov.mjs) — выпуск nesdayutsya/ДДmon-… (ролик rc-rolik к дню без ролика на старой
 // странице, 10 янв., r521). Пути — абсолютные, с версией выпуска.
 export function rolikIzReestra(dd, mes) {
-  const f = path.join(KOREN, 'public/video/registry.json');
-  if (!fs.existsSync(f)) return null;
-  const vse = JSON.parse(fs.readFileSync(f, 'utf8')).releases ?? {};
+  const vse = chitat(path.join(KOREN, 'public')).releases;
   const klyuch = Object.keys(vse).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
   const r = klyuch && vse[klyuch];
   if (!r?.horizontal?.local || !r.poster?.local) return null;
@@ -239,7 +238,7 @@ export function razobrat(html, json, den) {
   karta.kroshka = `День ${d} · ${h1}`;
   karta.lead = { data: `День ${d} · ${MES[mes]}${chip ? ` · ${chip}` : ''}`,
     privyazka: `Дата условная: ${d} ${MES_R[mes]} — ${d}-й день музея${chip ? `; событие — ${chip}` : ''}.`,
-    kto: vnutri(klass(h, 'who')), h1, hook: tekst(h.match(/<p class="hook">([\s\S]*?)<\/p>/)?.[1]) || j.hook || '' };
+    kto: vnutri(klass(h, 'who')), h1, hook: j.hook || tekst(h.match(/<p class="hook">([\s\S]*?)<\/p>/)?.[1]) || '' }; // хук — из карточки дня дословно, старая страница — запасной (r533)
   if (!karta.lead.kto) nety.push('кто (div.who)');
   karta.stamp = [...(klass(h, 'stamp') ? h.matchAll(/<div class="v">([\s\S]*?)<\/div><div class="k">([\s\S]*?)<\/div>/g) : [])]
     .map((m) => ({ v: tekst(m[1]), k: tekst(m[2]) }));
@@ -268,7 +267,7 @@ export function razobrat(html, json, den) {
   } else if (rolik) {
     karta.video = rolik;
     nety.push(`video — ролика на старой странице нет, взят выпуск реестра ${rolik.klyuch}`);
-  } else nety.push('video (ролика нет ни на старой странице, ни в реестре public/video/registry.json)');
+  } else nety.push('video (ролика нет ни на старой странице, ни в реестре public/video/registry/)');
 
   if (ist) karta.story = { kicker: tekst(klass(ist, 'kicker')) || 'Подвиг', h2: tekst(h2(ist)) || h1, abzacy: abzacy(ist) };
   else if (j.gist) karta.story = { kicker: 'Подвиг', h2: h1, abzacy: [j.gist] };

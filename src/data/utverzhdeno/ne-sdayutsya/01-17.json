@@ -110,9 +110,55 @@
    "podrobnee": "Сын одного из спасителей Виктор Вихров разбирает мифы: первым стоны услышал пожилой сосед, потом пришли взрослые — дед и отец Вихрова с соседом Сергеем Малиным; в избе лётчик провёл два дня. Деревню Плав никто не сжигал, фронт туда не дошёл, а вместо ежа «на закуску» была ящерица, которая лишь испугала лётчика. По стенограмме 1943 года, первым его нашёл крестьянин Михаил Вихров, потом прибежали ребята 14–15 лет."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-17-goskatalog-2238788.jpg",
+   "gk": "5994024",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-17-goskatalog-6004591.jpg",
+   "gk": "6004591",
+   "fakt": 11,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11 (также 5)"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-17-goskatalog-6899878.jpg",
+   "gk": "6899878",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1 (также 6, 7, 11)"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-17-goskatalog-6898010.jpg",
+   "gk": "6898010",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-17-goskatalog-9691804.jpg",
+   "gk": "9691804",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-17.md",
-  "material": null
+  "material": "knowledge/ns-material/01-17.md"
  }
 }
