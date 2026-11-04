@@ -216,6 +216,24 @@ jobs:
             echo "### ❌ Выкладка в Россию (msk-new) не прошла"
             echo "Сайт в России остался старым; GitHub Pages обновлён. Причина — в журнале шага «выкладка на msk-new» (строка ::error)."
           } >> "$GITHUB_STEP_SUMMARY"
+      # Тревога о сбое (#2363, Михаил 04.11) — тот же бот и чат, что у сторожа (storozh.yml). Нет секретов — спит строкой.
+      - name: тревога в Telegram
+        if: failure() && steps.est.outputs.est == 'true'
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_STOROZH_CHAT: ${{ secrets.TG_STOROZH_CHAT }}
+          ZAPUSK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          tekst="Выкладка на msk-new (russian-civilization.ru) не прошла: $ZAPUSK"
+          if [ -z "${TG_BOT_TOKEN:-}" ] || [ -z "${TG_STOROZH_CHAT:-}" ]; then
+            echo "::notice::спит: нет секрета (TG_BOT_TOKEN / TG_STOROZH_CHAT) — не отправлено: $tekst"
+            exit 0
+          fi
+          kod=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' \
+              "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TG_STOROZH_CHAT}" \
+              --data-urlencode "text=${tekst}" || true)
+          echo "Telegram: код $kod"
   # Живой сайт после выкладки в Россию (Р536, п. 9) — post-deploy smoke на Playwright, как smoke.yml: машина открывает
   # https://russian-civilization.ru как посетитель — страницы дней, изменённых этой выкладкой (git diff от прошлой
   # успешной выкладки), а нет таких — выборку (tests/smoke/dni.spec.mjs). Страница 200 и равна выложенной сборке, хук
