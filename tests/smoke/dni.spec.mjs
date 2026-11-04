@@ -63,9 +63,12 @@ const DNI = dniDlyaProverki();
 test('есть дни для проверки', () => { expect(DNI.length, 'ни одного дня на адресе den').toBeGreaterThan(0); });
 
 for (const d of DNI) {
-  test(`день ${d}`, async ({ page, request }) => {
+  // Без браузера — запросом (Playwright API testing): проверяется то, что отдаёт сервер, а браузер с картинками и роликом
+  // открывает десятки соединений и упирается в таймаут с раннера GitHub (прогон 41881088870, ERR_TIMED_OUT).
+  test(`день ${d}`, async ({ request }) => {
+    test.setTimeout(90_000);
     const put = stranica(d);
-    const otvet = await page.goto(put, { waitUntil: 'domcontentloaded' });
+    const otvet = await request.get(put, { timeout: 40_000 });
     expect(otvet?.status(), `код ответа ${put}`).toBe(200);
     const html = await otvet.text();
     if (DIST) {
@@ -84,7 +87,7 @@ for (const d of DNI) {
     if (ag) media.push({ src: ag, tip: 'audio/mpeg' });
     for (const { src, tip } of media) {
       const u = adresFaila(d, src, base);
-      const h = await request.head(u);
+      const h = await request.head(u, { timeout: 40_000 });
       expect(h.status(), `${put}: ${u} — код`).toBe(200);
       expect(h.headers()['content-type'] ?? '', `${put}: ${u} — тип`).toContain(tip);
       const f = DIST && path.join(DIST, decodeURI(u.split(/[?#]/)[0]));

@@ -36,5 +36,4 @@ jobs:
         working-directory: tests/smoke
         env:
           SMOKE_MUZEI: ne-sdayutsya
-          SMOKE_SLOMAT: '1'
         run: npx --no-install playwright test -c playwright.config.mjs dni.spec.mjs
