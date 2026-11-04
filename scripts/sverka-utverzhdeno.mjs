@@ -24,6 +24,7 @@
 //   без --muzey — все 12 музеев (src/data/calendar-meta-*.json); дни ММ-ДД — только вместе с --muzey.
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { chitatStranicu, izYaml, izHtml, idKadra, muzei } from './sverka/chitat-stranicu.mjs';
@@ -261,7 +262,8 @@ export function sverit(muzey, utv, str) {
 
 // Дни в работе (Р514): { "<музей>": { "dni": ["ММ-ДД", …], "kto": "…", "pochemu": "…" } } — пересборка идёт,
 // строгий шаг печатает их ошибки долгом и не падает. Сдал день — убери его из списка в той же заявке.
-const V_RABOTE_PUT = path.join(KOREN, 'src/data/utverzhdeno/v-rabote.json');
+// SVERKA_V_RABOTE — другой файл списка (только для пробы: тот же день с пустым списком должен ронять).
+const V_RABOTE_PUT = process.env.SVERKA_V_RABOTE || path.join(KOREN, 'src/data/utverzhdeno/v-rabote.json');
 const V_RABOTE = fs.existsSync(V_RABOTE_PUT) ? JSON.parse(fs.readFileSync(V_RABOTE_PUT, 'utf8')) : {};
 const chitatUtv = (muzey, key) => JSON.parse(fs.readFileSync(path.join(KOREN, UTV(muzey), `${key}.json`), 'utf8'));
 // Полное имя музея — title_ru из museums.json (сокращать нельзя).
@@ -323,8 +325,10 @@ if (est('--proba')) {
   const iz3 = izS.fakty.map((f) => f.kadry[0]).find((k) => izU.kadry.some((x) => x.gk === k));
   const iz3gal = izS.vse_kadry.find((k) => k.gde === 'галерея');
   const material = (t) => razobratMaterial(t).map(({ n, mesto, fakt, takzhe, gk }) => `${n}:${mesto}:${fakt}:${takzhe.join('+')}:${gk}`).join(' ');
-  const strogij = (...dni) => { try { execFileSync('node', [process.argv[1], '--muzey', NS, ...dni], { cwd: KOREN, encoding: 'utf8' }); return 0; } catch (e) { return e.status; } };
-  const tolkoPrivyazka = (o) => o.length > 0 && o.every((x) => /привязк/.test(x)); // факты сверены без регрессии, долг — только кадры
+  const strogij = (dni, env = {}) => { try { execFileSync('node', [process.argv[1], '--muzey', NS, ...dni], { cwd: KOREN, encoding: 'utf8', env: { ...process.env, ...env } }); return 0; } catch (e) { return e.status; } };
+  // красный день из списка «в работе», не зашитый в пробу: сдали день — проба берёт следующий
+  const dolgDen = (V_RABOTE[NS]?.dni || []).find((d) => { const r = proveritMuzey(NS, [d]).itog?.[0]; return r && [...(r.o || []), ...(r.privyazka || [])].length; });
+  const pustojSpisok = path.join(os.tmpdir(), `sverka-v-rabote-pusto-${process.pid}.json`);
   const sluchai = [
     ['хороший день', chistaya, izYaml(horoshij()), null],
     ['переставлен факт', chistaya, izYaml((() => { const y = horoshij(); const u = y.fakty[0].udary; [u[0], u[2]] = [u[2], u[0]]; return y; })()), /а по порядку здесь факт/],
@@ -354,9 +358,8 @@ if (est('--proba')) {
     ['изобретения 01-13: факт 12 дважды на странице — повтор', iz13U, { ...iz13S, fakty: [...iz13S.fakty, iz13S.fakty[iz13U.poryadok.indexOf(12)]] }, /на странице два факта про одно/, IZ],
     ['изобретения 01-03: переставлен факт', izU, { ...izS, fakty: [izS.fakty[1], izS.fakty[0], ...izS.fakty.slice(2)] }, /а по порядку здесь факт/, IZ],
     ['изобретения 01-03: повтор кадра обложкой', izU, { ...izS, vse_kadry: [{ gde: 'обложка', kadr: izS.fakty.find((f) => f.kadr).kadr, src: '' }, ...izS.vse_kadry.filter((k) => k.gde !== 'обложка')] }, /кадр повторяется/, IZ],
-    ...['01-01', '01-02', '01-03'].map((key) => [`«Не сдаются» ${key}: шаблон без регрессии`, ...zhivoj(NS, key), null]),
-    // 01-04, 01-05: факты сходятся, красные только кадры — «к факту: —» и кадры страницы, которых нет в материале (долг Р514)
-    ...['01-04', '01-05'].map((key) => [`«Не сдаются» ${key}: факты без регрессии, долг — привязка кадров`, ...zhivoj(NS, key), tolkoPrivyazka]),
+    // 01-04, 01-05 пересобраны по карточкам (Р510, #792) — долга привязки кадров больше нет, тоже чистые
+    ...['01-01', '01-02', '01-03', '01-04', '01-05'].map((key) => [`«Не сдаются» ${key}: шаблон без регрессии`, ...zhivoj(NS, key), null]),
     // Р514: привязка кадров в карточке кадров / материале
     ['кадр с прочерком «к факту: —»', sKadrom(izU, iz3, { mesto: null, fakt: null, takzhe: [], privyazka: '—' }), izS, /нет привязки к факту \(«к факту: —»\)/, IZ],
     ['кадр без строки привязки', sKadrom(izU, iz3, { mesto: null, fakt: null, takzhe: [], privyazka: null }), izS, /нет привязки к факту \(«к факту: пусто»\)/, IZ],
@@ -375,8 +378,10 @@ if (est('--proba')) {
       + 'Кадр 2\nФайл: /b.jpg (800×600)\nИсточник: https://goskatalog.ru/portal/#/collections?id=6\nФакт к кадру: нет (обложка дня)\n\n'
       + '### Кадр 3\nфайл: /c.jpg\nк факту: 6 (экипаж 52 человека), также 8\n\n### Кадр 4\nфайл: /d.jpg\nк факту: —\n\nКадр 5\nФайл: /e.jpg\nФакт к кадру: 5 (и 1)')
       === '1:galereya:null::5 2:oblozhka:null::6 3:fakt:6:8: 4:null:null:: 5:fakt:5:1:', IZ],
-    ['день в работе (v-rabote.json) строгий шаг не роняет', izU, izS, () => !V_RABOTE[NS]?.dni?.includes('01-04') && strogij('01-04') === 1
-      && V_RABOTE[NS]?.dni?.length > 0 && strogij(V_RABOTE[NS].dni[0]) === 0, IZ],
+    // красный день в списке — не роняет; тот же день с пустым списком — роняет; день вне списка зелёный — не роняет
+    [`день в работе (v-rabote.json) строгий шаг не роняет${dolgDen ? ` (${dolgDen})` : ''}`, izU, izS, () => !dolgDen || (strogij([dolgDen]) === 0
+      && (fs.writeFileSync(pustojSpisok, '{}'), strogij([dolgDen], { SVERKA_V_RABOTE: pustojSpisok }) === 1)
+      && !V_RABOTE[NS].dni.includes('01-04') && strogij(['01-04']) === 0), IZ],
   ];
   if (zhivaya.fakty.length !== 12) { console.log(`::error::sverka-utverzhdeno: проба ждёт живую карточку 01-02 на 12 фактов, в ней ${zhivaya.fakty.length}`); process.exit(1); }
   let mimo = 0;
@@ -386,6 +391,7 @@ if (est('--proba')) {
     const ok = typeof zhdu === 'function' ? zhdu(o) : zhdu ? o.some((x) => zhdu.test(x)) : o.length === 0;
     if (!ok) { mimo++; console.log(`проба ✗ ${nazv}: ${o.join('; ') || 'ничего не найдено'}`); }
   }
+  fs.rmSync(pustojSpisok, { force: true });
   // музей без карточек — пропуск с отчётом, не падение
   const bez = muzei(KOREN).filter((m) => !kartyMuzeya(m).length);
   const pustoj = bez.length ? proveritMuzey(bez[0]) : { net: 'карточек нет' };
