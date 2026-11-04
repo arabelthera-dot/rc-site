@@ -103,7 +103,22 @@
    "podrobnee": "Об осаде независимо друг от друга рассказывают русская Ипатьевская (Галицко-Волынская) летопись и Рашид-ад-Дин, историк монгольских ханов. Оба сходятся в главном: малый город долго стоял против орды."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-04-goskatalog-22975986.jpg",
+   "gk": "21619457",
+   "fakt": 14,
+   "takzhe": []
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-04-goskatalog-14177108.jpg",
+   "gk": "14381980",
+   "fakt": 14,
+   "takzhe": []
+  }
+ ],
  "ne_povtory": [
   {
    "para": "1-15",
@@ -118,6 +133,6 @@
  ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-04.md",
-  "material": null
+  "material": "knowledge/ns-material/01-04.md"
  }
 }
