@@ -1322,6 +1322,39 @@
         "local": "muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "nesdayutsya/14jan-vir": {
+      "title": "История в 55 секунд",
+      "intro": "Блокадный Ленинград: хранители коллекции Вавилова голодали рядом с семенами, и ни один не взял из коллекции.",
+      "note": "Кадры ролика — подлинные предметы из Госкаталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "nesdayutsya/14jan-vir/day-14jan-vir.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-14jan-vir.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 54.9,
+        "mb": 16.2
+      },
+      "vertical": {
+        "file": "nesdayutsya/14jan-vir/day-14jan-vir-9x16.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-14jan-vir-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 54.9,
+        "mb": 16.4
+      },
+      "poster": {
+        "file": "nesdayutsya/14jan-vir/day-14jan-vir-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-14jan-vir-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "nesdayutsya/14jan-vir/day-14jan-vir-9x16-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-14jan-vir-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
