@@ -1,0 +1,40 @@
+# Проверка проверки (Р507, Р536 п. 9): заявка, меняющая tests/smoke или deploy.yml, гоняет tests/smoke/dni.spec.mjs
+# по живому https://russian-civilization.ru — та же проверка, что задача zhivoy в deploy.yml после выкладки, только без
+# выложенной сборки (страница 200, хук карточки на странице, ролик и аудиогид HEAD 200 с верным типом). Музей —
+# ne-sdayutsya (пилот конвейера, Р534): брак других музеев ловит zhivoy после выкладки, а не чужая заявка машины.
+# Пять вопросов: задевает — ничего, только читает сайт; нужно — ничего; без нужного — нечему ломаться; проверка —
+# SMOKE_SLOMAT=1 в этом файле даёт красный (заведомо неверный хук), без него — зелёный; откат — удалить файл.
+name: zhivoy-sayt
+on:
+  pull_request:
+    paths:
+      - 'tests/smoke/**'
+      - '.github/workflows/deploy.yml'
+      - '.github/workflows/zhivoy-sayt.yml'
+permissions:
+  contents: read
+jobs:
+  dni:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: |
+            tests/smoke
+            src/content/days
+            src/content/dni-shablon
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Playwright
+        run: |
+          npm ci --no-audit --no-fund
+          npx --no-install playwright install --with-deps chromium
+      - name: дни на живом сайте
+        working-directory: tests/smoke
+        env:
+          SMOKE_MUZEI: ne-sdayutsya
+          SMOKE_SLOMAT: '1'
+        run: npx --no-install playwright test -c playwright.config.mjs dni.spec.mjs
