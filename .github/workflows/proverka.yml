@@ -110,6 +110,14 @@ jobs:
       - name: innerhtml-opis — новые небезопасные вставки HTML
         timeout-minutes: 1
         run: node scripts/innerhtml-opis.mjs
+      # М78 (AI_Projects #2357): авторы статей-источников — сверка с реестрами (src/lib/avtory-ssylok.mjs, сопоставление
+      # zakon.mjs). Без сети: только кэш data/avtory-ssylok.json; адреса нет в кэше — предупреждение, иноагент-автор — красная.
+      # Выключить — переменная репозитория AVTORY_SSYLOK=0; откат — удалить этот шаг.
+      - name: avtory-ssylok — авторы ссылок-источников против реестров
+        timeout-minutes: 1
+        env:
+          AVTORY_SSYLOK: ${{ vars.AVTORY_SSYLOK }}
+        run: node scripts/avtory-ssylok.test.mjs && node scripts/avtory-ssylok.mjs
       # Г20: проверочная сборка включает арабскую пробу /ar/ (RC_PROBA_RTL=1) — её ссылки, разметка и вид проверяются
       # в каждой заявке. На живой сайт проба не попадает: deploy.yml собирает без этой переменной.
       - run: npm run build
