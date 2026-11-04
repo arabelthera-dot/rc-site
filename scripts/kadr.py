@@ -1696,21 +1696,37 @@ def vernut(muzey=None, prim=False, tolko=None, dni=None):
     return itog
 
 
+def gk_izobrazhenie(predmet):
+    """Номер первого изображения предмета Госкаталога по его карточке (/exhibits/{id})."""
+    px = ru_proxy()
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': px, 'http': px}))
+    h = {'User-Agent': BROWSER['User-Agent'], 'Accept': 'application/json', 'Referer': 'https://goskatalog.ru/portal/'}
+    k = json.loads(opener.open(urllib.request.Request(f'https://goskatalog.ru/muzfo-rest/rest/exhibits/{predmet}', headers=h), timeout=40).read())
+    izo = [i.get('id') for i in k.get('images') or [] if i.get('id')] or [(k.get('mainImage') or {}).get('id')]
+    if not izo[0]:
+        raise RuntimeError(f'у предмета {predmet} в Госкаталоге нет изображения')
+    return izo[0]
+
+
 def material(museum, key):
     """Р521: файлы кадров из материала дня (~/workspace/knowledge/ns-material/ММ-ДД.md, строки «Файл: …-goskatalog-<изображение>.jpg»)
-    — недостающие скачать из Госкаталога тем же save(), что и put; подпись и привязку ставит машина страницы из материала."""
+    — недостающие скачать из Госкаталога тем же save(), что и put; подпись и привязку ставит машина страницы из материала.
+    Номер в имени файла бывает номером изображения (01-09) или предмета (01-14): изображение берётся по карточке из строки
+    «Источник: …collections?id=N» под «Файл:» (первое изображение предмета), имя файла — как в материале."""
     mat = Path.home() / 'workspace/knowledge/ns-material' / f'{key}.md'
     if not mat.exists():
         sys.exit(f'{mat}: материала нет')
-    fajly = re.findall(rf'^\s*Файл:\s*/(muzei/{re.escape(museum)}/img/{re.escape(key)}-goskatalog-(\d+)\.jpg)\s*$', mat.read_text(), re.M)
+    fajly = re.findall(rf'^\s*Файл:\s*/(muzei/{re.escape(museum)}/img/{re.escape(key)}-goskatalog-(\d+)\.jpg)\s*\n(?:\s*Источник:[^\n]*?{GK_NOMER.pattern})?',
+                       mat.read_text(), re.M)
     if not fajly:
         sys.exit(f'{mat}: строк «Файл: /muzei/{museum}/img/{key}-goskatalog-<номер>.jpg» нет')
     ne = []
-    for rel, img in fajly:
+    for rel, nomer, predmet in fajly:
         if (ROOT / 'public' / rel).exists():
             print(f'есть  {rel}'); continue
         try:
-            rel2, im = save(fetch(f'{GK_IMG}{img}'), museum, key, f'goskatalog-{img}')
+            img = gk_izobrazhenie(predmet) if predmet else nomer
+            rel2, im = save(fetch(f'{GK_IMG}{img}'), museum, key, f'goskatalog-{nomer}')
             print(f'взят  {rel2} {im.size[0]}×{im.size[1]}')
         except (Exception, SystemExit) as e:
             ne.append(f'{rel}: {e}')

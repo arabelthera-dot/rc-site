@@ -38,7 +38,7 @@ const put = (src) => `/${String(src).replace(/^\//, '')}`;
 // Размер кадра из файла (JPEG — маркер SOF, PNG — IHDR), если в материале его нет.
 // Ролик дня из реестра public/video/registry/<музей>/<id>.json (scripts/reestr-rolikov.mjs) — выпуск nesdayutsya/ДДmon-… (ролик rc-rolik к дню без ролика на старой
 // странице, 10 янв., r521). Пути — абсолютные, с версией выпуска.
-function rolikIzReestra(dd, mes) {
+export function rolikIzReestra(dd, mes) {
   const vse = chitat(path.join(KOREN, 'public')).releases;
   const klyuch = Object.keys(vse).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
   const r = klyuch && vse[klyuch];
