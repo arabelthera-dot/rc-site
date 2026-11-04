@@ -311,7 +311,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-04-goskatalog-14177108.jpg
+  - src: https://upload.wikimedia.org/wikipedia/commons/a/a0/proba-brak.jpg
     alt: Почтовая марка «Козельск. Город воинской славы», 15 рублей, 2013
     data_source: https://goskatalog.ru/portal/#/collections?id=14381980
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
