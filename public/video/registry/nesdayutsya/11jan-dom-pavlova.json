@@ -1,0 +1,32 @@
+{
+  "title": "История в 40 секунд",
+  "note": "Кадры ролика — подлинные фотографии из Государственного каталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/11jan-dom-pavlova/day-11jan-dom-pavlova.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-11jan-dom-pavlova.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 40.2,
+    "mb": 9.9
+  },
+  "vertical": {
+    "file": "nesdayutsya/11jan-dom-pavlova/day-11jan-dom-pavlova-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 40.2,
+    "mb": 10.4
+  },
+  "poster": {
+    "file": "nesdayutsya/11jan-dom-pavlova/day-11jan-dom-pavlova-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/11jan-dom-pavlova/day-11jan-dom-pavlova-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-9x16-poster.jpg",
+    "v": 1
+  }
+}

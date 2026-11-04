@@ -110,9 +110,64 @@
    "podrobnee": "В сентябре 1944 года части 3-го Украинского фронта шли через перевал. Толбухин записал: «Приятно русскому сердцу видеть памятники своим предкам за пределами Советского Союза». Полки построились на кладбище под вершиной Столетова и дали винтовочный залп. Сегодня на месте боёв — парк-музей «Шипка» с памятником Свободы (1934), у подножия — мемориальный храм Рождества Христова (1902)."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-24-goskatalog-5500810.jpg",
+   "gk": "9039049",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-24-goskatalog-82886216.jpg",
+   "gk": "64923827",
+   "fakt": 11,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-24-goskatalog-17180247.jpg",
+   "gk": "17428956",
+   "fakt": 2,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-24-goskatalog-17180148.jpg",
+   "gk": "17428863",
+   "fakt": 9,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-24-goskatalog-32451745.jpg",
+   "gk": "28330289",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-24-goskatalog-63495417.jpg",
+   "gk": "44463764",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-24.md",
-  "material": null
+  "material": "knowledge/ns-material/01-24.md"
  }
 }

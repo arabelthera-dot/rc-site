@@ -17,6 +17,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { mp3Sek } from '../src/lib/mp3-sek.mjs';
+import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
 
 const FULL = 'src/data/full-pages';
 const DAYS = 'src/content/days';
@@ -86,10 +87,10 @@ export function proverit(html, muzey, root) {
     const tag = m[0].slice(0, m[0].indexOf('>') + 1);
     const klyuch = atr(tag, 'data-rc-video');
     if (klyuch) {
-      reg ??= JSON.parse(fs.readFileSync(path.join(root, 'video/registry.json'), 'utf8'));
+      reg ??= chitat(root);
       const fmt = atr(tag, 'data-rc-format') || 'horizontal';
       const zap = reg.releases?.[klyuch]?.[fmt];
-      rolik.push(zap?.local ? { rel: zap.local, kto: `реестр ${klyuch}` } : { net: `выпуска ${klyuch} (${fmt}) нет в video/registry.json` });
+      rolik.push(zap?.local ? { rel: zap.local, kto: `реестр ${klyuch}` } : { net: `выпуска ${klyuch} (${fmt}) нет в video/registry/` });
       continue;
     }
     const src = atr(tag, 'src') || atr(tag, 'data-src') || atr(m[1].match(/<source\b[^>]*>/i)?.[0] || '', 'src')
@@ -136,7 +137,7 @@ if (est('--proba')) {
   const mvhd = Buffer.alloc(40); mvhd.write('mvhd', 4, 'latin1'); mvhd.writeUInt32BE(1000, 20); mvhd.writeUInt32BE(45000, 24);
   fs.writeFileSync(path.join(m, 'video/rolik.mp4'), mvhd);
   fs.writeFileSync(path.join(m, 'video/pustoy.mp4'), '');
-  fs.writeFileSync(path.join(tmp, 'video/registry.json'), JSON.stringify({ releases: { 'proba/r': { horizontal: { local: 'muzei/proba/video/rolik.mp4' } } } }));
+  zapisatVypusk(tmp, 'proba/r', { horizontal: { local: 'muzei/proba/video/rolik.mp4' } });
   const ag = (src) => `<section class="block" id="audioguide"></section><script>window.MUSEUM_AUDIOGUIDE={\n  audioSrc:'${src}',\n};</script>`;
   const AG = ag('gid.mp3'), V = '<video controls><source src="video/rolik.mp4" type="video/mp4"></video>';
   const proba = [ // [имя, html, ждём красный аудиогид, ждём замечание по ролику]
