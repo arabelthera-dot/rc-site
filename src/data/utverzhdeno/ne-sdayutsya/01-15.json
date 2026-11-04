@@ -110,9 +110,64 @@
    "podrobnee": "14 февраля чрезвычайная тройка в Уэлене отчиталась, что мобилизовала 60 нарт для 700-километрового похода к лагерю. Уполномоченный ОГПУ Андрей Небольсин план не одобрил: в феврале и марте на Чукотке почти нет дня и постоянная пурга. Если забрать собак на два месяца, чукчи останутся без охоты. Разведка подтвердила, что до лагеря сплошные торосы и разводья, и от упряжек отказались в пользу авиации."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-15-goskatalog-12323745.jpg",
+   "gk": "13960299",
+   "fakt": 10,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-15-goskatalog-29485310.jpg",
+   "gk": "29485310",
+   "fakt": 2,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-15-goskatalog-59271092.jpg",
+   "gk": "59271092",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-15-goskatalog-13500766.jpg",
+   "gk": "13500766",
+   "fakt": 7,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-15-goskatalog-5567616.jpg",
+   "gk": "5567616",
+   "fakt": 9,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-15-goskatalog-5567103.jpg",
+   "gk": "5567103",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-15.md",
-  "material": null
+  "material": "knowledge/ns-material/01-15.md"
  }
 }

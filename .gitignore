@@ -5,3 +5,6 @@ dist/
 # Python
 __pycache__/
 *.pyc
+
+# Общий реестр роликов собирает scripts/reestr-rolikov.mjs из public/video/registry/<музей>/<id>.json (Р524)
+public/video/registry.json

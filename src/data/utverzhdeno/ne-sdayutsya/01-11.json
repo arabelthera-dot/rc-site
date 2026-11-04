@@ -110,7 +110,71 @@
    "podrobnee": "Бронебойщик из группы Сабгайды учился стрелять у снайпера Чехова прямо в доме, знак «Отличный снайпер» получил 7 ноября 1942 года. После ранения 25 ноября и Курской дуги его, инвалида на костылях, вместе с калмыцким народом выслали на 13 лет. В 1981 году он узнал дом на экскурсии; на звание «неизвестного солдата» претендовали около 50 человек. Хохолова признали 25-м защитником и наградили медалью «За отвагу»."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-11-goskatalog-61288345.jpg",
+   "gk": "49242068",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-11-goskatalog-2716617.jpg",
+   "gk": "6490366",
+   "fakt": 12,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-11-goskatalog-7710714.jpg",
+   "gk": "10558560",
+   "fakt": 10,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-11-goskatalog-12968454.jpg",
+   "gk": "14414389",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-11-goskatalog-2250954.jpg",
+   "gk": "6003340",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-11-goskatalog-9843981.jpg",
+   "gk": "5624945",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/ne-sdayutsya/img/01-11-goskatalog-29173461.jpg",
+   "gk": "26042283",
+   "fakt": 6,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
+  }
+ ],
  "ne_povtory": [
   {
    "para": "2-5",
@@ -130,6 +194,6 @@
  ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-11.md",
-  "material": null
+  "material": "knowledge/ns-material/01-11.md"
  }
 }
