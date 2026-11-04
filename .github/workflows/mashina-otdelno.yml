@@ -30,11 +30,15 @@ jobs:
     steps:
       - name: mashina-otdelno — машину отдельной заявкой
         env:
-          METKA: ${{ contains(github.event.pull_request.labels.*.name, 'mashina-i-dannye') }}
+          METKA_IMYA: mashina-i-dannye
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           PR: ${{ github.event.pull_request.number }}
         run: |
+          # Метка — с заявки в момент прогона, не из снимка события: перезапуск и прогон, обогнавший «labeled»,
+          # видят метку как есть сейчас (Р540, 04.11: #833/#842 краснели при стоящей метке).
+          METKA=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/$PR" --jq '[.labels[].name] | index($ENV.METKA_IMYA) != null')
+          echo "метка mashina-i-dannye: $METKA"
           set -euo pipefail
           gh api --paginate "repos/$REPO/pulls/$PR/files" \
             --jq '.[] | .filename, (.previous_filename // empty)' | sort -u > vse.txt
