@@ -126,12 +126,14 @@ function kadrMateriala(b) {
     istochnik = p['источник'] ?? ''; podpis = p['подпись'] ?? p['podpis']; alt = p['alt'];
     prava = p['license'] ?? p['права']; credit = p['credit'] ?? p['хранитель'] ?? p['держатель'];
     wh = (p['размер'] ?? p['ширина×высота'] ?? '').match(/(\d+)\s*×\s*(\d+)/);
-    kf = p['к факту'];
+    kf = p['к факту'] ?? p['факт к кадру'];
   }
   if (!src) return null;
-  const data_source = (istochnik.match(URL_) ?? (credit ?? '').match(URL_))?.[0];
+  // Ссылки нет (архивный шифр ЦАМО, как у 01-03) — источник записывается шифром, как в карточке.
+  const data_source = (istochnik.match(URL_) ?? (credit ?? '').match(URL_))?.[0] ?? (istochnik.trim() || undefined);
   if (!credit && istochnik) credit = istochnik.replace(URL_, '').replace(/^[\s,]+|[\s,]+$/g, '') || undefined;
-  const k = { src: put(src), alt: alt || podpis, data_source, license: prava || LITSENZIYA, podpis: podpis && `${podpis.replace(/\.$/, '')}.`, credit,
+  // privyazka — строка «к факту: N / обложка / галерея» как есть: её разбирает машина карточки (scripts/kartochka-v-stranicu.mjs).
+  const k = { n: b.n, privyazka: kf ?? null, src: put(src), alt: alt || podpis, data_source, license: prava || LITSENZIYA, podpis: podpis && `${podpis.replace(/\.$/, '')}.`, credit,
     kFaktu: [...(kf ?? '').matchAll(/\d+/g)].map((m) => +m[0]), oblozhka: /обложка/.test(b.ostatok), staryy: /старый/.test(`${b.ostatok} ${p['файл'] ?? ''}`), altIzPodpisi: !alt, est: fs.existsSync(path.join(KOREN, 'public', src)) };
   if (wh) Object.assign(k, { width: +wh[1], height: +wh[2] });
   return k;
