@@ -57,6 +57,11 @@ jobs:
       - name: sverka-utverzhdeno — страницы всех музеев с карточками как утверждённые карточки
         timeout-minutes: 1
         run: node scripts/sverka-utverzhdeno.mjs --proba && node scripts/sverka-utverzhdeno.mjs
+      # Схема копии карточки (аудит 04.11, п. 5): «кадр без факта» (Р514) — ошибка схемы коллекции utverzhdeno
+      # (src/lib/skhema-utverzhdeno.mjs), видна и при сборке. Пробы: живые карточки зелёные, заведомый брак красный.
+      - name: skhema — пробы схемы утверждённой карточки
+        timeout-minutes: 1
+        run: node --test tests/skhema/utverzhdeno.test.mjs
       - name: sverka-utverzhdeno — долг по всем музеям и дням (только отчёт)
         if: always()
         timeout-minutes: 1

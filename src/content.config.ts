@@ -6,6 +6,7 @@ import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { existsSync } from 'node:fs';
+import { kartochkaUtv } from './lib/skhema-utverzhdeno.mjs';
 
 // Музеи — каталог platform/catalog/museums.json как есть; title_ru — единственное имя музея.
 const museums = defineCollection({
@@ -176,4 +177,10 @@ const days = defineCollection({
   }).transform((d) => ({ ...d, title: d.title || d.hook || '' })),
 });
 
-export const collections = { museums, days };
+// Копии утверждённых карточек (src/data/utverzhdeno/<музей>/ММ-ДД.json): «кадр без факта» — ошибка схемы (аудит 04.11, п. 5).
+const utverzhdeno = defineCollection({
+  loader: glob({ pattern: '*/[0-9][0-9]-[0-9][0-9].json', base: './src/data/utverzhdeno' }),
+  schema: kartochkaUtv,
+});
+
+export const collections = { museums, days, utverzhdeno };
