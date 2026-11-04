@@ -57,12 +57,12 @@ function gidNaSaite(m, teg) {
 
 function spisok() {
   // новые сначала: «дата тег» по строке
-  const tegi = gh('api', '--paginate', `repos/${ROLIK}/releases?per_page=100`, '-q', '.[] | select(.tag_name | startswith("vypusk-")) | "\\(.created_at) \\(.tag_name)"')
+  const tegi = gh('api', '--paginate', `repos/${ROLIK}/releases?per_page=100`, '-q', '.[] | select((.tag_name | startswith("vypusk-")) and (.prerelease | not)) | "\\(.created_at) \\(.tag_name)"')
     .split('\n').filter(Boolean).sort().reverse().map((s) => s.split(' ')[1]);
   const reestr = chitat(PUB).releases ?? {}, vzyato = new Set();
   for (const teg of tegi) {
     let m;
-    try { m = manifest(teg); } catch (e) { console.error(`  ✗ ${e.message}`); continue; }
+    try { m = manifest(teg); } catch (e) { console.error(`::error::${e.message}`); process.exitCode = 1; continue; }
     if (vzyato.has(m.mesto)) continue; // на это место есть выпуск новее
     vzyato.add(m.mesto);
     if (m.vid === 'rolik' && reestr[m.mesto]?.note?.includes(`прогон ${m.run})`)) continue;
@@ -85,6 +85,14 @@ function primenit(teg) {
       fs.copyFileSync(ot, path.join(PUB, kuda));
       fajly.push(`public/${kuda}`);
     };
+    if (m.vid === 'rolik') for (const f of ['16x9', '9x16']) {
+      const x = m.fajly?.[f], mp4 = path.join(tmp, `day-${m.imya}${f === '9x16' ? '-9x16' : ''}.mp4`);
+      if (!(x?.sec > 0 && x?.mb > 0)) throw new Error(`${teg}: в vypusk.json нет длительности или размера ${f}`);
+      if (!fs.existsSync(mp4)) throw new Error(`${teg}: в выпуске нет ${path.basename(mp4)}`);
+      const b = Buffer.alloc(8), fd = fs.openSync(mp4, 'r');
+      fs.readSync(fd, b, 0, 8, 0); fs.closeSync(fd);
+      if (b.toString('latin1', 4, 8) !== 'ftyp') throw new Error(`${teg}: ${path.basename(mp4)} — не mp4 (нет ftyp)`);
+    }
     if (m.vid === 'audiogid') {
       vzyat(m.fajl, `muzei/${m.muzei}/${m.fajl}`);
       console.log(`гид ${m.muzei} ${m.den} → public/muzei/${m.muzei}/${m.fajl}, ${m.sec} с, прогон ${m.run}`);

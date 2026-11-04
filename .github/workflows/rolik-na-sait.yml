@@ -5,6 +5,8 @@
 # заявка с автослиянием. Руками mp4 и mp3 на сайт никто не носит. Одобрение ждущих проверок — как glazami-hrapovik.
 # Как в мире: последний шаг конвейера открывает заявку с результатом (peter-evans/create-pull-request, gh pr create).
 # Выпуски rc-rolik открытые — ключ не нужен; пишет свой GITHUB_TOKEN. Выпуск, чья заявка закрыта без слияния, не повторяется.
+# Брак выпуска (нет файла, не mp4, нет длительности) — заявки нет, прогон красный (r544). Образцы брака — пререлизы rc-rolik,
+# расписание их не берёт: gh workflow run rolik-na-sait.yml -f teg=vypusk-proba-brak-…
 # Выключатель — переменная ROLIK_NA_SAIT = '0' (расписание спит, ручной пуск работает). Откат — удалить этот файл.
 # Ручной пуск: gh workflow run rolik-na-sait.yml [-f teg=vypusk-…]
 name: rolik-na-sait
@@ -50,13 +52,15 @@ jobs:
       - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          if [ -n "$TEG" ]; then tegi="$TEG"; else tegi=$(node scripts/rolik-na-sait.mjs spisok); fi
-          [ -n "$tegi" ] || { echo "Новых выпусков нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
+          # брак выпуска (нет файла, не mp4, чужой музей) — прогон красный в конце, не молча (r544)
+          brak=0
+          if [ -n "$TEG" ]; then tegi="$TEG"; else tegi=$(node scripts/rolik-na-sait.mjs spisok) || brak=1; fi
+          [ -n "$tegi" ] || { echo "Новых выпусков нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit "$brak"; }
           for teg in $tegi; do
             VETKA="avto/rolik-$teg"
             git switch -q --detach origin/main && git sparse-checkout reapply
             git switch -q -C "$VETKA"
-            vyvod=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился"; continue; }
+            vyvod=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился — на сайт не идёт"; echo "- $teg — брак, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; continue; }
             git add --sparse public/
             git diff --cached --quiet && { echo "$teg: на сайте уже то же самое"; continue; }
             pervaya=$(printf '%s\n' "$vyvod" | head -1)
@@ -84,3 +88,4 @@ jobs:
             done
             [ -n "$ok" ] || echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"
           done
+          exit "$brak"
