@@ -1290,6 +1290,38 @@
         "local": "muzei/ne-sdayutsya/video/day-10jan-varyag-9x16-poster.jpg",
         "v": 1
       }
+    },
+    "nesdayutsya/09jan-panfilovtsy": {
+      "title": "28 панфиловцев: Дубосеково, 16 ноября 1941 года",
+      "note": "Визуалы — предметы Музейного фонда РФ из Госкаталога (рисунки и картина Е. И. Комарова «Подвиг 28 героев-панфиловцев», 1942). Genosai не использовался. Закадровый текст озвучен синтезом речи (edge-tts).",
+      "horizontal": {
+        "file": "nesdayutsya/09jan-panfilovtsy/day-09jan-panfilovtsy.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-09jan-panfilovtsy.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 45.8,
+        "mb": 14.4
+      },
+      "vertical": {
+        "file": "nesdayutsya/09jan-panfilovtsy/day-09jan-panfilovtsy-9x16.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 45.8,
+        "mb": 14.1
+      },
+      "poster": {
+        "file": "nesdayutsya/09jan-panfilovtsy/day-09jan-panfilovtsy-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "nesdayutsya/09jan-panfilovtsy/day-09jan-panfilovtsy-9x16-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-9x16-poster.jpg",
+        "v": 1
+      }
     }
   }
 }
