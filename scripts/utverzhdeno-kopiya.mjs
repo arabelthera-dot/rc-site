@@ -4,6 +4,7 @@
 // Порядок фактов на странице («poryadok», 15 номеров: первые 10 — «Десять фактов», дальше «Ещё пять»):
 // строка карточки «Порядок на странице: 7, 14, 1–6, 8–13, 15», иначе — из прежней копии, иначе 1…15.
 // Проверенные человеком «не повторы» (ne_povtory, см. sverka-utverzhdeno.mjs) тоже берутся из прежней копии.
+// Строка «Источник:» в копию не идёт: сверщику она не нужна, а её адреса в src/data ловит storozh-ssylok.
 // Запуск одной командой: node scripts/utverzhdeno-kopiya.mjs [--iz ~/workspace/knowledge] [ММ-ДД …]
 import fs from 'node:fs';
 import path from 'node:path';
@@ -29,16 +30,15 @@ export function razobratPoryadok(s) {
 
 export function razobratKartochku(tekst) {
   const stroki = tekst.split('\n');
-  const fakty = [];
+  const fakty = [];  // { n, metka, zagolovok, podrobnee }
   let tek = null; let poryadok = null;
   for (const s of stroki) {
     const m = s.match(/^(\d{1,2})\.\s+(?:\(([^)]*)\)\s+)?(.+)$/);
-    if (m) { tek = { n: +m[1], metka: m[2] || '', zagolovok: m[3].trim(), podrobnee: '', istochnik: '' }; fakty.push(tek); continue; }
+    if (m) { tek = { n: +m[1], metka: m[2] || '', zagolovok: m[3].trim(), podrobnee: '' }; fakty.push(tek); continue; }
     const p = s.match(/^Порядок на странице:\s*(.+)$/);
     if (p) { poryadok = razobratPoryadok(p[1]); continue; }
     if (!tek) continue;
     if (s.startsWith('Подробнее:')) tek.podrobnee = s.slice(10).trim();
-    else if (s.startsWith('Источник:')) tek.istochnik = s.slice(9).trim();
   }
   return { zagolovok: stroki[0].trim(), fakty, poryadok };
 }
