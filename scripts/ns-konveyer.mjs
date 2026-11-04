@@ -19,6 +19,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import YAML from 'yaml';
 import { rolikIzReestra } from './karkas/ne-sdayutsya.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
+import { failPublic } from '../src/lib/den-obshchee.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const VYHOD = path.join(KOREN, 'src/content/dni-shablon/ne-sdayutsya');
@@ -135,12 +136,13 @@ function sverka(key, fail, dd, mes) {
     if (k.video && k.video.intro !== kal.hook) net.push(`ролик: подпись «${k.video.intro}», в карточке календаря «${kal.hook}»`);
   }
   if (k.adres !== 'den') net.push('страница: нет adres: den — замки ns-iz-utverzhdennyh не прошли');
+  // Пути — как их читает страница (failPublic): от корня сайта «/muzei/…» или от папки музея «video/…» (r537, 01-01).
   const ag = k.audioguide?.audioSrc;
   if (!ag) net.push('аудиогид: нет audioguide.audioSrc');
-  else if (!fs.existsSync(path.join(KOREN, 'public/muzei/ne-sdayutsya', ag))) net.push(`аудиогид: нет файла ${ag}`);
+  else if (!fs.existsSync(path.join(KOREN, failPublic('ne-sdayutsya', ag)))) net.push(`аудиогид: нет файла ${ag}`);
   const v = k.video?.mp4?.split('?')[0];
   if (!v) net.push('ролик: нет блока video');
-  else for (const f of [v, v.replace(/\.mp4$/, '-9x16.mp4')]) if (!fs.existsSync(path.join(KOREN, 'public', f))) net.push(`ролик: нет файла ${f}`);
+  else for (const f of [v, v.replace(/\.mp4$/, '-9x16.mp4')]) if (!fs.existsSync(path.join(KOREN, failPublic('ne-sdayutsya', f)))) net.push(`ролик: нет файла ${f}`);
   const id = idRolika(dd, mes);
   if (!(id in scenarii)) {
     try { scenarii[id] = JSON.parse(gh('api', `repos/${ROLIK}/contents/days/${id}.json`, '-H', 'Accept: application/vnd.github.raw')); }
