@@ -5,7 +5,7 @@ head:
   title: Бриг «Меркурий» — «Русские не сдаются»
   description: За три дня до этого русский фрегат сдался без боя. Бриг «Меркурий» — 18 пушек против 184 — положил пистолет у пороха, принял бой и вернулся, не спустив флага.
   canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-02/
-  sobytie: Бой брига «Меркурий» с двумя турецкими линкорами
+  sobytie: бриг «Меркурий»
   god: '1829'
   og:
     type: article
@@ -43,7 +43,7 @@ lead:
   privyazka: 'Дата условная: в календаре музея бой стоит на 2 января, а был он 14 (26) мая 1829 года у Босфора.'
   kto: Экипаж брига «Меркурий» <i>· капитан-лейтенант А. И. Казарский</i>
   h1: Бриг «Меркурий»
-  hook: Бриг «Меркурий» с 18 пушками четыре часа дрался с двумя турецкими линкорами и вернулся к своим, не спустив флага.
+  hook: Двое против трёхсот пушек — и турки бросили погоню
 stamp:
   - v: '18'
     k: пушек у брига
@@ -69,16 +69,16 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История в 61 секунд
+  h2: История в 57 секунд
   klyuch: nesdayutsya/02jan-merkuriy
   format: horizontal
   pole: nesdayutsya/02jan-merkuriy:horizontal.sec
   suffix: сек
-  badge: 61 сек
-  intro: Бриг «Меркурий» с 18 пушками четыре часа дрался с двумя турецкими линкорами и вернулся к своим, не спустив флага.
-  poster: /muzei/ne-sdayutsya/video/day-02jan-merkuriy-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-02jan-merkuriy.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41805840902) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  badge: 57 сек
+  intro: Двое против трёхсот пушек — и турки бросили погоню
+  poster: /muzei/ne-sdayutsya/video/day-02jan-merkuriy-poster.jpg?v=2
+  mp4: /muzei/ne-sdayutsya/video/day-02jan-merkuriy.mp4?v=2
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг · 6 ударов
   h2: Четыре часа, которых не должно было быть

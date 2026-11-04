@@ -5,7 +5,7 @@ head:
   title: Николай Сиротинин — «Русские не сдаются» — Русская цивилизация
   description: Двадцатилетний наводчик с одной пушкой остался у моста через Добрость прикрывать отход полка — и танковая колонна встала на два часа.
   canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-03/
-  sobytie: Николай Сиротинин один держит мост через Добрость
+  sobytie: Николай Сиротинин
   god: "1941"
   og:
     type: article
@@ -42,7 +42,7 @@ lead:
   privyazka: "Дата условная: в календаре музея подвиг стоит на 3 января, а бой у моста был 17 июля 1941 года."
   kto: Николай Сиротинин <i>· старший сержант-артиллерист, 20 лет</i>
   h1: Николай Сиротинин
-  hook: Двадцатилетний Николай Сиротинин с одной пушкой остался у моста через Добрость — и танковая колонна встала на два часа.
+  hook: Один парень, одна пушка — и целая колонна встала
 stamp:
   - v: "1"
     k: пушка
@@ -68,16 +68,16 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История в 53 секунд
+  h2: История в 50 секунд
   klyuch: nesdayutsya/03jan-sirotinin
   format: horizontal
   pole: nesdayutsya/03jan-sirotinin:horizontal.sec
   suffix: сек
-  badge: 53 сек
-  intro: Двадцатилетний Николай Сиротинин с одной пушкой остался у моста через Добрость — и танковая колонна встала на два часа.
-  poster: /muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41802766703) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  badge: 50 сек
+  intro: Один парень, одна пушка — и целая колонна встала
+  poster: /muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg?v=2
+  mp4: /muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4?v=2
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг · 5 ударов
   h2: Два часа, которые задержали колонну

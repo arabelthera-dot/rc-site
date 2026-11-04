@@ -1324,69 +1324,69 @@
       }
     },
     "nesdayutsya/02jan-merkuriy": {
-      "title": "История в 61 секунду",
-      "intro": "Бриг «Меркурий» с 18 пушками четыре часа дрался с двумя турецкими линкорами и вернулся к своим, не спустив флага.",
-      "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41805840902) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+      "title": "История в 57 секунд",
+      "intro": "Двое против трёхсот пушек — и турки бросили погоню",
+      "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
       "horizontal": {
         "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy.mp4",
         "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 60.7,
-        "mb": 14.4
+        "sec": 57.2,
+        "mb": 14
       },
       "vertical": {
         "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy-9x16.mp4",
         "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 60.7,
+        "sec": 57.2,
         "mb": 14.3
       },
       "poster": {
         "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy-poster.jpg",
         "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy-9x16-poster.jpg",
         "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "nesdayutsya/03jan-sirotinin": {
-      "title": "История в 53 секунды",
-      "intro": "Двадцатилетний Николай Сиротинин с одной пушкой остался у моста через Добрость — и танковая колонна встала на два часа.",
-      "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41802766703) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+      "title": "История в 50 секунд",
+      "intro": "Один парень, одна пушка — и целая колонна встала",
+      "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
       "horizontal": {
         "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin.mp4",
         "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1920,
         "h": 1080,
-        "sec": 52.5,
-        "mb": 13
+        "sec": 49.7,
+        "mb": 12.5
       },
       "vertical": {
         "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin-9x16.mp4",
         "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin-9x16.mp4",
-        "v": 1,
+        "v": 2,
         "w": 1080,
         "h": 1920,
-        "sec": 52.5,
-        "mb": 12.9
+        "sec": 49.7,
+        "mb": 12.2
       },
       "poster": {
         "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin-poster.jpg",
         "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg",
-        "v": 1
+        "v": 2
       },
       "poster_vertical": {
         "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin-9x16-poster.jpg",
         "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin-9x16-poster.jpg",
-        "v": 1
+        "v": 2
       }
     },
     "nesdayutsya/04jan-kozelsk": {
