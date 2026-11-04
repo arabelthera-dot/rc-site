@@ -238,7 +238,7 @@ export function razobrat(html, json, den) {
   karta.kroshka = `День ${d} · ${h1}`;
   karta.lead = { data: `День ${d} · ${MES[mes]}${chip ? ` · ${chip}` : ''}`,
     privyazka: `Дата условная: ${d} ${MES_R[mes]} — ${d}-й день музея${chip ? `; событие — ${chip}` : ''}.`,
-    kto: vnutri(klass(h, 'who')), h1, hook: tekst(h.match(/<p class="hook">([\s\S]*?)<\/p>/)?.[1]) || j.hook || '' };
+    kto: vnutri(klass(h, 'who')), h1, hook: j.hook || tekst(h.match(/<p class="hook">([\s\S]*?)<\/p>/)?.[1]) || '' }; // хук — из карточки дня дословно, старая страница — запасной (r533)
   if (!karta.lead.kto) nety.push('кто (div.who)');
   karta.stamp = [...(klass(h, 'stamp') ? h.matchAll(/<div class="v">([\s\S]*?)<\/div><div class="k">([\s\S]*?)<\/div>/g) : [])]
     .map((m) => ({ v: tekst(m[1]), k: tekst(m[2]) }));
