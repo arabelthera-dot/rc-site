@@ -20,6 +20,7 @@ const MATERIAL = path.join(os.homedir(), 'workspace/knowledge/ns-material');
 const SAYT = 'https://russian-civilization.ru';
 const MES = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
 const MES_R = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const MES_KL = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 const LITSENZIYA = 'цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)';
 // Раздел истории у старых страниц без #istoriya (01-07…01-29): путь героя, плен, перевал, корабль, город, грамота.
 const ISTORIYA = ['istoriya', 'put', 'plen', 'pereval', 'sergokala', 'korabl', 'gorod', 'gramota'];
@@ -34,6 +35,20 @@ const URL_ = /https?:\/\/[^\s()«»"]+?(?=[.,;]?(?:\s|\)|»|$))/;
 const put = (src) => `/${String(src).replace(/^\//, '')}`;
 
 // Размер кадра из файла (JPEG — маркер SOF, PNG — IHDR), если в материале его нет.
+// Ролик дня из реестра public/video/registry.json — выпуск nesdayutsya/ДДmon-… (ролик rc-rolik к дню без ролика на старой
+// странице, 10 янв., r521). Пути — абсолютные, с версией выпуска.
+function rolikIzReestra(dd, mes) {
+  const f = path.join(KOREN, 'public/video/registry.json');
+  if (!fs.existsSync(f)) return null;
+  const vse = JSON.parse(fs.readFileSync(f, 'utf8')).releases ?? {};
+  const klyuch = Object.keys(vse).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
+  const r = klyuch && vse[klyuch];
+  if (!r?.horizontal?.local || !r.poster?.local) return null;
+  return { h2: r.title, klyuch, format: 'horizontal', pole: `${klyuch}:horizontal.sec`, suffix: 'сек',
+    badge: `${Math.round(r.horizontal.sec)} сек`, intro: r.intro ?? '', poster: `/${r.poster.local}?v=${r.poster.v ?? 1}`,
+    mp4: `/${r.horizontal.local}?v=${r.horizontal.v ?? 1}`, note: r.note ?? '' };
+}
+
 function razmer(src) {
   const f = path.join(KOREN, 'public', src);
   if (!fs.existsSync(f)) return null;
@@ -133,8 +148,9 @@ function kadrMateriala(b) {
   if (!src) return null;
   const data_source = (istochnik.match(URL_) ?? (credit ?? '').match(URL_))?.[0];
   if (!credit && istochnik) credit = istochnik.replace(URL_, '').replace(/^[\s,]+|[\s,]+$/g, '') || undefined;
+  // обложка — «Кадр 1 (обложка)» или «к факту: обложка» (README материала)
   const k = { src: put(src), alt: alt || podpis, data_source, license: prava || LITSENZIYA, podpis: podpis && `${podpis.replace(/\.$/, '')}.`, credit,
-    kFaktu: [...(kf ?? '').matchAll(/\d+/g)].map((m) => +m[0]), oblozhka: /обложка/.test(b.ostatok) || /^\s*обложка/i.test(kf ?? ''), staryy: /старый/.test(`${b.ostatok} ${p['файл'] ?? ''}`), altIzPodpisi: !alt, est: fs.existsSync(path.join(KOREN, 'public', src)) };
+    kFaktu: [...(kf ?? '').matchAll(/\d+/g)].map((m) => +m[0]), oblozhka: /обложка/.test(`${b.ostatok} ${kf ?? ''}`), staryy: /старый/.test(`${b.ostatok} ${p['файл'] ?? ''}`), altIzPodpisi: !alt, est: fs.existsSync(path.join(KOREN, 'public', src)) };
   if (wh) Object.assign(k, { width: +wh[1], height: +wh[2] });
   return k;
 }
@@ -231,6 +247,7 @@ export function razobrat(html, json, den) {
 
   const vid = sekciya('video');
   const video = vid && vid.match(/<video[^>]*>/)?.[0];
+  const rolik = !video && rolikIzReestra(dd, mes);
   const ids = [...h.matchAll(/<section[^>]*\sid="([^"]+)"/g)].map((m) => m[1]);
   const istId = ISTORIYA.find((id) => ids.includes(id)) ?? ids.find((id) => !SLUZHEBNYE.includes(id));
   const ist = istId && sekciya(istId);
@@ -239,7 +256,7 @@ export function razobrat(html, json, den) {
   const agStaryy = okno.MUSEUM_AUDIOGUIDE, agIgra = agStaryy && JSON.stringify(agStaryy).match(IGRA);
   const ag = agIgra ? null : agStaryy;
   if (agIgra) nety.push(`audioguide — в тексте звука «${agIgra[0]}» (Р436): нужен новый текст и новая запись`);
-  karta.daynav = [video && { id: 'video', label: 'Видео' }, { id: 'story', label: 'Читать' }, ag && { id: 'audioguide', label: 'Слушать' },
+  karta.daynav = [(video || rolik) && { id: 'video', label: 'Видео' }, { id: 'story', label: 'Читать' }, ag && { id: 'audioguide', label: 'Слушать' },
     { id: 'fakty', label: 'Факты' }, voprosy.length && { id: 'quiz', label: 'Викторина' }, kal && { id: 'calendar', label: 'Календарь' }].filter(Boolean);
   // Пути ролика на старой странице — от папки музея; на адресе /den/ММ-ДД/ относительные сломаются.
   const ot = (u) => (u && !/^(\/|https?:)/.test(u) ? `/muzei/ne-sdayutsya/${u}` : u);
@@ -248,7 +265,10 @@ export function razobrat(html, json, den) {
     karta.video = { h2: tekst(h2(vid)), klyuch, format, pole: `${klyuch}:${format}.sec`, suffix: 'сек',
       badge: tekst(vid.match(/<\/h2>\s*<span[^>]*>([\s\S]*?)<\/span>/)?.[1]) || 'ролик', intro: tekst(p[0]),
       poster: ot(atr(video, 'poster')), mp4: ot(atr(vid.match(/<source[^>]*>/)?.[0], 'src')), note: tekst(p.at(-1)) };
-  } else nety.push('video (ролика на старой странице нет)');
+  } else if (rolik) {
+    karta.video = rolik;
+    nety.push(`video — ролика на старой странице нет, взят выпуск реестра ${rolik.klyuch}`);
+  } else nety.push('video (ролика нет ни на старой странице, ни в реестре public/video/registry.json)');
 
   if (ist) karta.story = { kicker: tekst(klass(ist, 'kicker')) || 'Подвиг', h2: tekst(h2(ist)) || h1, abzacy: abzacy(ist) };
   else if (j.gist) karta.story = { kicker: 'Подвиг', h2: h1, abzacy: [j.gist] };
