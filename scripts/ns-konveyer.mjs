@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 // Конвейер дня «Русские не сдаются» (Р524, пункт Б): утверждённая карточка → ролик на страницу → adres: den → сверка комплекта.
 // Шаги на день ММ-ДД:
+//   0. аудиогид: в карточке нет audioguide (старый отбракован за «игру», Р436) — текст гида лежит данными в rc-rolik
+//      audiogid/ns-ММ-ДД.yaml (audioSrc, lead, заголовки остановок, transcript, note), озвучка — облако audiogid.yml
+//      (артефакт audiogid-ns-ММ-ДД: mp3 и длительности абзацев). Машина кладёт mp3 в public/muzei/ne-sdayutsya/ и пишет
+//      блок audioguide: остановки — по началу абзацев, длительность — по озвучке. Сам звук здесь не записывается — только скачивается.
 //   1. ролик: в реестре public/video/registry/ (scripts/reestr-rolikov.mjs) нет nesdayutsya/ДДmon-… — машина берёт последний собранный в облаке
 //      rc-rolik (render.yml) ролик nsДДmon (артефакты nsДДmon-A-16x9 и -9x16), кладёт mp4 и кадр-обложку в
 //      public/muzei/ne-sdayutsya/video/ и пишет выпуск своим файлом public/video/registry/nesdayutsya/<id>.json. Сам ролик здесь не собирается (Р243) — только скачивается.
@@ -19,6 +23,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import YAML from 'yaml';
 import { rolikIzReestra } from './karkas/ne-sdayutsya.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
+import { IGRA } from '../src/lib/dni-ne-sdayutsya.mjs';
 import { failPublic } from '../src/lib/den-obshchee.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -46,11 +51,18 @@ const idRolika = (dd, mes) => `ns${dd}${MES_KL[mes]}`;
 const kartochkaDnya = (key) => { const f = path.join(KOREN, 'src/content/days/ne-sdayutsya', `${key}.json`); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {}; };
 const norm = (s) => String(s ?? '').replace(/<[^>]+>/g, '').toLowerCase().replace(/ё/g, 'е').replace(/[^0-9a-zа-я]+/g, ' ').trim();
 
+// Последний живой артефакт по имени (свежий прогон) или null.
+function artefakt(imya) {
+  artefakty('');
+  return vseArtefakty.filter((x) => x.name === imya).sort((x, y) => y.created_at.localeCompare(x.created_at))[0]?.run ?? null;
+}
+
 // Последний живой артефакт ролика: { run, imena: { '16x9': name, '9x16': name } } или null.
 let vseArtefakty;
 function artefakty(id) {
   vseArtefakty ??= JSON.parse(gh('api', '--paginate', `repos/${ROLIK}/actions/artifacts?per_page=100`,
     '-q', '[.artifacts[] | select(.expired | not) | {name, run: .workflow_run.id, created_at}]').replace(/\]\s*\[/g, ','));
+  if (!id) return null;
   for (const a of vseArtefakty.filter((x) => x.name === `${id}-A-16x9`).sort((x, y) => y.created_at.localeCompare(x.created_at))) {
     if (vseArtefakty.some((x) => x.run === a.run && x.name === `${id}-A-9x16`)) return a.run;
   }
@@ -97,6 +109,53 @@ function rolikVReestr(key, karta, dd, mes) {
     poster_vertical: { file: `${vypusk}/day-${imya}-9x16-poster.jpg`, local: `${VIDEO}/day-${imya}-9x16-poster.jpg`, v },
   });
   console.log(`  ролик: ${vypusk} из прогона ${run}, ${fajly['16x9'].sec} с${est ? `, замена старого (v${v})` : ''}`);
+  return null;
+}
+
+const mark = (t) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`;
+const minSek = (n) => { const m = Math.floor(n / 60), s = n % 60;
+  const sl = (x, a, b, c) => (x % 10 === 1 && x % 100 !== 11 ? a : [2, 3, 4].includes(x % 10) && ![12, 13, 14].includes(x % 100) ? b : c);
+  return [m && `${m} ${sl(m, 'минута', 'минуты', 'минут')}`, s && `${s} ${sl(s, 'секунда', 'секунды', 'секунд')}`].filter(Boolean).join(' '); };
+
+// Шаг 0: аудиогид из облака rc-rolik в public/ и в карточку. Возвращает причину отказа или null.
+function audiogidVKartochku(key, fail) {
+  const doc = YAML.parseDocument(fs.readFileSync(fail, 'utf8'));
+  if (doc.getIn(['audioguide', 'audioSrc'])) return null;
+  const den = `ns-${key}`;
+  let tekst;
+  try { tekst = YAML.parse(gh('api', `repos/${ROLIK}/contents/audiogid/${den}.yaml`, '-H', 'Accept: application/vnd.github.raw')); }
+  catch { return `нет текста гида audiogid/${den}.yaml в rc-rolik`; }
+  const ag = tekst?.audioguide ?? {};
+  if (!/^audio-guide-[a-z0-9-]+-ru\.mp3$/.test(ag.audioSrc ?? '')) return `в audiogid/${den}.yaml нет audioSrc audio-guide-<имя>-ru.mp3`;
+  if (!ag.transcript?.length || ag.stops?.length !== ag.transcript.length) return `в audiogid/${den}.yaml заголовков остановок не столько, сколько абзацев`;
+  const igra = JSON.stringify(ag).match(IGRA);
+  if (igra) return `в тексте гида audiogid/${den}.yaml «${igra[0]}» (Р436)`;
+  const run = artefakt(`audiogid-${den}`);
+  if (!run) return `в облаке rc-rolik нет озвучки audiogid-${den} (gh workflow run audiogid.yml -R ${ROLIK} -f put=audiogid/${den}.yaml)`;
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), `ns-konveyer-ag-${key}-`));
+  let zvuk;
+  try {
+    gh('run', 'download', String(run), '-R', ROLIK, '-n', `audiogid-${den}`, '-D', tmp);
+    zvuk = JSON.parse(fs.readFileSync(path.join(tmp, `${den}.json`), 'utf8'));
+    if (zvuk.abzacy?.length !== ag.transcript.length) return `озвучка прогона ${run}: абзацев ${zvuk.abzacy?.length}, в тексте ${ag.transcript.length} — текст поменяли, перезапустить audiogid.yml`;
+    fs.copyFileSync(path.join(tmp, `${den}.mp3`), path.join(PUB, 'muzei/ne-sdayutsya', ag.audioSrc));
+  } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
+  const blok = {
+    audioSrc: ag.audioSrc,
+    durationLabel: minSek(Math.round(zvuk.total)),
+    lead: ag.lead,
+    stops: zvuk.abzacy.map((a, i) => ({ t: Math.round(a.start), mark: mark(Math.round(a.start)), title: ag.stops[i].title ?? ag.stops[i] })),
+    transcript: ag.transcript,
+    note: ag.note,
+  };
+  doc.set('audioguide', doc.createNode(blok));
+  const nav = doc.get('daynav');
+  if (nav && !nav.items.some((x) => x.get?.('id') === 'audioguide')) {
+    const i = nav.items.findIndex((x) => x.get?.('id') === 'story');
+    nav.items.splice(i + 1, 0, doc.createNode({ id: 'audioguide', label: 'Слушать' }));
+  }
+  fs.writeFileSync(fail, doc.toString({ lineWidth: 0 }));
+  console.log(`  аудиогид: ${ag.audioSrc} из прогона ${run}, ${blok.durationLabel}`);
   return null;
 }
 
@@ -164,6 +223,8 @@ for (const key of dni) {
   if (!fs.existsSync(fail)) net.push(`карточка: нет ${path.relative(KOREN, fail)} — сначала node scripts/ns-iz-utverzhdennyh.mjs ${key} --iz-staroy`);
   else {
     if (!SVERKA) {
+      const p0 = audiogidVKartochku(key, fail);
+      if (p0) console.log(`  аудиогид: ${p0}`);
       const karta = YAML.parse(fs.readFileSync(fail, 'utf8'));
       const p1 = rolikVReestr(key, karta, dd, mes) ?? videoVKartochku(fail, dd, mes);
       if (p1) console.log(`  ролик: ${p1}`);
