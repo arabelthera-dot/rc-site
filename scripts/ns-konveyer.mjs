@@ -6,7 +6,7 @@
 //      public/muzei/ne-sdayutsya/video/ и пишет выпуск своим файлом public/video/registry/nesdayutsya/<id>.json. Сам ролик здесь не собирается (Р243) — только скачивается.
 //   2. карточка без блока video получает его из реестра (тем же rolikIzReestra, что каркас) и пункт «Видео» в daynav.
 //   3. scripts/ns-iz-utverzhdennyh.mjs ДЕНЬ — утверждённые факты и adres: den, если замки прошли.
-//   4. сверка комплекта: adres: den, страница, аудиогид (файл), ролик 16:9 и 9:16 (файлы), хук ролика = хук страницы.
+//   4. сверка комплекта: замки scripts/ns-zamki.mjs, adres: den, страница, аудиогид (файл), ролик 16:9 и 9:16 (файлы), хук ролика = хук страницы.
 // Нет части — день не уходит: строка «✗ шаг: причина»; с --kartochki на доске заводится карточка с причиной.
 // Запуск: node scripts/ns-konveyer.mjs 01-02..01-08 [--sverka] [--kartochki] [--utverzhden ГГГГ-ММ-ДД]
 //   --sverka — только сверка, ничего не писать.
@@ -20,6 +20,7 @@ import YAML from 'yaml';
 import { rolikIzReestra } from './karkas/ne-sdayutsya.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
 import { failPublic } from '../src/lib/den-obshchee.mjs';
+import { proveritDen } from './ns-zamki.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const VYHOD = path.join(KOREN, 'src/content/dni-shablon/ne-sdayutsya');
@@ -128,13 +129,9 @@ function videoVKartochku(fail, dd, mes) {
 const scenarii = {};
 function sverka(key, fail, dd, mes) {
   const net = [];
-  const k = YAML.parse(fs.readFileSync(fail, 'utf8')), kal = kartochkaDnya(key);
-  if (!kal.title || !kal.hook) net.push(`карточка календаря: нет title или hook в src/content/days/ne-sdayutsya/${key}.json`);
-  else {
-    if (k.head?.sobytie !== kal.title) net.push(`название: на странице «${k.head?.sobytie}», в карточке календаря «${kal.title}»`);
-    if (k.lead?.hook !== kal.hook) net.push(`хук: на странице «${k.lead?.hook}», в карточке календаря «${kal.hook}»`);
-    if (k.video && k.video.intro !== kal.hook) net.push(`ролик: подпись «${k.video.intro}», в карточке календаря «${kal.hook}»`);
-  }
+  const k = YAML.parse(fs.readFileSync(fail, 'utf8'));
+  // Замки (r544): хук и название = карточке календаря, оговорок нет (Р504), факты только утверждённые — тот же шаг, что в сборке.
+  net.push(...proveritDen(key));
   if (k.adres !== 'den') net.push('страница: нет adres: den — замки ns-iz-utverzhdennyh не прошли');
   // Пути — как их читает страница (failPublic): от корня сайта «/muzei/…» или от папки музея «video/…» (r537, 01-01).
   const ag = k.audioguide?.audioSrc;
