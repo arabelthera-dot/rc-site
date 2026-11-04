@@ -220,8 +220,9 @@ function den(key) {
     let k = kand.find((p) => p.k && !ispolzovan.has(kadrId(p.k)))?.k;
     if (!k && st?.kadr && !svyazannye.has(kadrId(st.kadr)) && !ispolzovan.has(kadrId(st.kadr))) k = st.kadr;
     if (k) { u.kadr = k; ispolzovan.add(kadrId(k)); }
-    // Дата — со старого факта, у нового — дата файла (стр. 151); раньше новые оставались без неё и замок Р166 вставал (01-11, Р521).
-    if (st?.utverzhden ?? data) u.utverzhden = st?.utverzhden ?? data;
+    // utverzhden — со старого факта, новые получают дату файла (Р166/Р176: без неё замок adres: den не пускает день, 01-10 r521)
+    const utv = st?.utverzhden ?? data;
+    if (utv) u.utverzhden = utv;
     return u;
   });
   // Галерея: без обложки и кадров фактов; лишние привязанные и снятые со старых фактов — сюда же.

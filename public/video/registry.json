@@ -1,7 +1,7 @@
 {
   "_": "СГЕНЕРИРОВАНО tools/video-sync.py из docs/video/REGISTRY.json. Руками не править.",
   "version": 2,
-  "updated": "2026-11-04",
+  "updated": "2026-09-26",
   "hosting": {
     "base": ""
   },
@@ -1255,6 +1255,39 @@
       "poster_vertical": {
         "file": "izobreteniya/30jan-kotelnikov/day-30jan-kotelnikov-9x16-poster.jpg",
         "local": "muzei/izobreteniya/video/day-30jan-kotelnikov-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "nesdayutsya/10jan-varyag": {
+      "title": "История в 49 секунд",
+      "intro": "Крейсер «Варяг» в бою у Чемульпо: два русских корабля против шести японских крейсеров — и флаг, который не спустили.",
+      "note": "Кадры ролика — подлинные снимки из Госкаталога музейного фонда России: ЦВММ имени Петра Великого, ГЦМСИР, музей имени В. К. Арсеньева, Военно-исторический музей Тихоокеанского флота. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "nesdayutsya/10jan-varyag/day-10jan-varyag.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-10jan-varyag.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 49.1,
+        "mb": 11.4
+      },
+      "vertical": {
+        "file": "nesdayutsya/10jan-varyag/day-10jan-varyag-9x16.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-10jan-varyag-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 49.1,
+        "mb": 11.4
+      },
+      "poster": {
+        "file": "nesdayutsya/10jan-varyag/day-10jan-varyag-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "nesdayutsya/10jan-varyag/day-10jan-varyag-9x16-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-10jan-varyag-9x16-poster.jpg",
         "v": 1
       }
     },
