@@ -45,7 +45,10 @@
     if (!entry) return null;
     var base = (reg.hosting && reg.hosting.base) || '';
     if (base) return base.replace(/\/+$/, '') + '/' + entry.file;
-    return ROOT + entry.local + (entry.v ? '?v=' + entry.v : '');
+    // hosting.media — хранилище роликов (MEDIA_BASE сборки, scripts/media-base.mjs): только mp4, пути как в public/.
+    var media = (reg.hosting && reg.hosting.media) || '';
+    var root = media && /\.mp4$/i.test(entry.local) ? media.replace(/\/+$/, '') + '/' : ROOT;
+    return root + entry.local + (entry.v ? '?v=' + entry.v : '');
   }
 
   function wantFormat(attr, rel, mq) {
