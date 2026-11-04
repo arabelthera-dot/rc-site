@@ -1716,8 +1716,11 @@ def material(museum, key):
     mat = Path.home() / 'workspace/knowledge/ns-material' / f'{key}.md'
     if not mat.exists():
         sys.exit(f'{mat}: материала нет')
-    fajly = re.findall(rf'^\s*Файл:\s*/(muzei/{re.escape(museum)}/img/{re.escape(key)}-goskatalog-(\d+)\.jpg)\s*\n(?:\s*Источник:[^\n]*?{GK_NOMER.pattern})?',
-                       mat.read_text(), re.M)
+    # «Файл:»/«файл:» — оба написания материала (01-04 строчными); «Источник:» — в том же кадре, не обязательно следующей строкой
+    # (01-04: между ними «ширина×высота:»); до следующего «###» или «Файл:».
+    fajly = re.findall(rf'^\s*Файл:\s*/(muzei/{re.escape(museum)}/img/{re.escape(key)}-goskatalog-(\d+)\.jpg)\s*\n'
+                       rf'(?:(?:(?!\s*(?:###|Файл:))[^\n]*\n){{0,4}}?\s*Источник:[^\n]*?{GK_NOMER.pattern})?',
+                       mat.read_text(), re.M | re.I)
     if not fajly:
         sys.exit(f'{mat}: строк «Файл: /muzei/{museum}/img/{key}-goskatalog-<номер>.jpg» нет')
     ne = []
