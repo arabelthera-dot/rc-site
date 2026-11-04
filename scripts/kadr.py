@@ -20,6 +20,7 @@ PastVu (только с --geo lat,lon). Русский музей, Третья�
   kadr.py podbor izobreteniya 01-14 "лодка 705" "Лира" [-n 15] [--geo …] [--out t.tsv]
                                                       r612: кандидаты на день по нескольким запросам — без повторов
                                                       и уже стоящих кадров, паспорт (фонд, номер, хранитель, права, ссылка)
+  kadr.py material ne-sdayutsya 01-09                  Р521: файлы кадров материала дня (…-goskatalog-<изобр.>.jpg) — скачать недостающие
   kadr.py put arhitektura 03-05 "pastvu:760729:i/e/n/ien36rd3zgbt83806t.jpg" "подпись" "Автор, 1961"
   kadr.py put … "rusmuseum:https://…/img.jpg" "подпись" "Автор" --card https://…/card
                                                       кадр из российского фонда: автор (шестой) обязателен,
@@ -46,6 +47,7 @@ from PIL import Image
 API = 'https://commons.wikimedia.org/w/api.php'
 UA = {'User-Agent': 'rc-site-kadr/1.0 (info@russian-civilization.ru)'}
 ROOT = Path(__file__).resolve().parent.parent
+GK_IMG = 'https://goskatalog.ru/muzfo-imaginator/rest/images/original/'
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
 # выход rf-proxy:1080 забанен Госкаталогом (403) — ходим российским туннелем реестра (ru_tunnel.py)
@@ -1694,12 +1696,54 @@ def vernut(muzey=None, prim=False, tolko=None, dni=None):
     return itog
 
 
+def gk_izobrazhenie(predmet):
+    """Номер первого изображения предмета Госкаталога по его карточке (/exhibits/{id})."""
+    px = ru_proxy()
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': px, 'http': px}))
+    h = {'User-Agent': BROWSER['User-Agent'], 'Accept': 'application/json', 'Referer': 'https://goskatalog.ru/portal/'}
+    k = json.loads(opener.open(urllib.request.Request(f'https://goskatalog.ru/muzfo-rest/rest/exhibits/{predmet}', headers=h), timeout=40).read())
+    izo = [i.get('id') for i in k.get('images') or [] if i.get('id')] or [(k.get('mainImage') or {}).get('id')]
+    if not izo[0]:
+        raise RuntimeError(f'у предмета {predmet} в Госкаталоге нет изображения')
+    return izo[0]
+
+
+def material(museum, key):
+    """Р521: файлы кадров из материала дня (~/workspace/knowledge/ns-material/ММ-ДД.md, строки «Файл: …-goskatalog-<изображение>.jpg»)
+    — недостающие скачать из Госкаталога тем же save(), что и put; подпись и привязку ставит машина страницы из материала.
+    Номер в имени файла бывает номером изображения (01-09) или предмета (01-14): изображение берётся по карточке из строки
+    «Источник: …collections?id=N» под «Файл:» (первое изображение предмета), имя файла — как в материале."""
+    mat = Path.home() / 'workspace/knowledge/ns-material' / f'{key}.md'
+    if not mat.exists():
+        sys.exit(f'{mat}: материала нет')
+    # «Файл:»/«файл:» — оба написания материала (01-04 строчными); «Источник:» — в том же кадре, не обязательно следующей строкой
+    # (01-04: между ними «ширина×высота:»); до следующего «###» или «Файл:».
+    fajly = re.findall(rf'^\s*Файл:\s*/(muzei/{re.escape(museum)}/img/{re.escape(key)}-goskatalog-(\d+)\.jpg)\s*\n'
+                       rf'(?:(?:(?!\s*(?:###|Файл:))[^\n]*\n){{0,4}}?\s*Источник:[^\n]*?{GK_NOMER.pattern})?',
+                       mat.read_text(), re.M | re.I)
+    if not fajly:
+        sys.exit(f'{mat}: строк «Файл: /muzei/{museum}/img/{key}-goskatalog-<номер>.jpg» нет')
+    ne = []
+    for rel, nomer, predmet in fajly:
+        if (ROOT / 'public' / rel).exists():
+            print(f'есть  {rel}'); continue
+        try:
+            img = gk_izobrazhenie(predmet) if predmet else nomer
+            rel2, im = save(fetch(f'{GK_IMG}{img}'), museum, key, f'goskatalog-{nomer}')
+            print(f'взят  {rel2} {im.size[0]}×{im.size[1]}')
+        except (Exception, SystemExit) as e:
+            ne.append(f'{rel}: {e}')
+    for s in ne:
+        print(f'НЕ ВЗЯТ {s}', file=sys.stderr)
+    return not ne
+
+
 def main(argv=None):
     import argparse
     global RAZRESHENIE
     ap = argparse.ArgumentParser(prog='kadr.py', description=__doc__.split('\n\n')[0],
                                  epilog='Подробно: python3 scripts/kadr.py <команда> --help', formatter_class=argparse.RawDescriptionHelpFormatter)
-    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,podbor,put,zamena,razbor,sinhron,vernut}')
+    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,podbor,put,material,zamena,razbor,sinhron,vernut}')
     raz = argparse.ArgumentParser(add_help=False)
     raz.add_argument('--razreshenie', metavar='СЛОВО', help='Р90: Викисклад — только по слову Сергея ("Р№ или дата и слова")')
     f = sub.add_parser('find', parents=[raz], help='кандидаты по российским фондам')
@@ -1714,6 +1758,8 @@ def main(argv=None):
     pu.add_argument('--hranitsya', metavar='МУЗЕЙ', help='Р136: кадр фонда любого года с полной подписью — полное название '
                     'музея-держателя по карточке; автор — «Фамилия И. О., год»; основание — ст. 1274 ГК РФ')
     pu.add_argument('--prava', help='права по карточке: «общественное достояние (автор умер в ГГГГ)», CC BY …')
+    ma = sub.add_parser('material', help='Р521: файлы кадров материала дня (Госкаталог) — скачать недостающие')
+    ma.add_argument('museum'); ma.add_argument('key', help='день, напр. 01-09')
     z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
     z.add_argument('--s-loc', action='store_true', help='включить Библиотеку Конгресса — только с личного разрешения владельца, Р93')
@@ -1745,6 +1791,8 @@ def main(argv=None):
         razbor(a.muzey, a.n)
     elif a.cmd == 'podbor':
         podbor(a.muzey, a.key, a.zaprosy, a.n, a.geo, a.out)
+    elif a.cmd == 'material':
+        sys.exit(0 if material(a.museum, a.key) else 1)
     elif a.cmd == 'find':
         find(a.query, a.n, a.geo)
     else:

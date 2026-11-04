@@ -2,6 +2,8 @@
 // (собранный HTML 31 дня изобретений — байт-в-байт как до выноса), их же берёт src/layouts/DenNeSdayutsya.astro.
 // JS-строка в одинарных кавычках — как в старых страницах: конвейер (src/lib/sosedi-polnye.mjs) ищет
 // prev/next в window.MUSEUM_CHROME именно в таком виде и переписывает на ближайшие полные страницы.
+import { POMETKI } from './den-obshchee.mjs';
+
 export const q = (s) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/</g, '\\u003c')}'`;
 export const json = (x) => JSON.stringify(x).replace(/</g, '\\u003c');
 export const chromeJs = (d, muzeyName) => { const c = d.chrome; return c && `window.MUSEUM_CHROME={
@@ -51,7 +53,7 @@ export const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><su
 ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.tag}</span>` : ''}${p}</p>`).join('\n')}
           <p class="src-note">${u.src}</p>${u.otryvok ? `
           <blockquote class="fakt-otryvok">${u.otryvok}</blockquote>` : ''}
-        </div></details>${u.pometka ? `<p class="fakt-ist"><span class="fakt-pometka">${u.pometka}</span> <a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}${u.kadr ? kadrHtml(u.kadr) : ''}</li>`;
+        </div></details>${u.pometka ? `<p class="fakt-ist">${POMETKI.includes(u.pometka) ? `<span class="fakt-pometka">${u.pometka}</span> ` : ''}<a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}${u.kadr ? kadrHtml(u.kadr) : ''}</li>`;
 export const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;
 // Заголовок блока фактов (Р383, недостаток 18-го): крупно — «10 фактов о …» (слово-число кикера заменяется цифрой, счёт —
 // по списку ударов), красивое название h2 — строкой под ним. Кикер без слова-числа («Факты дня») — как раньше.

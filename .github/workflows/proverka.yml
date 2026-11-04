@@ -48,6 +48,19 @@ jobs:
         env:
           DATA_DNYA_STROGO: ${{ vars.DATA_DNYA_STROGO }}
         run: node scripts/data-dnya.mjs --proba && node scripts/data-dnya.mjs
+      # Сверщик с утверждённым (Р506, 04.11.2026; Р511 — любой музей): страница дня, изменённая в заявке, в любом
+      # музее с карточками — те же факты карточки и в её порядке, у факта его кадр, кадр не повторяется, нет двух фактов
+      # про одно. Правда — копии карточек src/data/utverzhdeno/<музей>/ (scripts/utverzhdeno-kopiya.mjs); страница
+      # читается в обоих видах (шаблон и full-pages) через scripts/sverka/chitat-stranicu.mjs. Музей без карточек —
+      # пропуск с отчётом. Сначала пробы на заведомых случаях. Строгий, без выключателя; долг всех дней всех музеев —
+      # следующий шаг, только отчёт. Без сборки, секунды. Откат — удалить этот шаг и следующий.
+      - name: sverka-utverzhdeno — страницы всех музеев с карточками как утверждённые карточки
+        timeout-minutes: 1
+        run: node scripts/sverka-utverzhdeno.mjs --proba && node scripts/sverka-utverzhdeno.mjs
+      - name: sverka-utverzhdeno — долг по всем музеям и дням (только отчёт)
+        if: always()
+        timeout-minutes: 1
+        run: node scripts/sverka-utverzhdeno.mjs --vse
       # Инструкция к каждой игре (Р199, Р201, 23.10.2026; 04-build §5-бис): страница дня с игрой без блока «Как играть»
       # под картинкой игры (data-igra-pravila с шагами после сцены, assets/igra-pravila.css) — ошибка; кнопки «Начать»
       # и «Правила» и игра, спрятанная до старта, — тоже ошибка (Р201: картинка видна и работает сразу). Изменённые в заявке
