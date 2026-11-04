@@ -220,7 +220,7 @@ function den(key) {
     let k = kand.find((p) => p.k && !ispolzovan.has(kadrId(p.k)))?.k;
     if (!k && st?.kadr && !svyazannye.has(kadrId(st.kadr)) && !ispolzovan.has(kadrId(st.kadr))) k = st.kadr;
     if (k) { u.kadr = k; ispolzovan.add(kadrId(k)); }
-    if (st?.utverzhden) u.utverzhden = st.utverzhden; // как в образце 01-03: дата утверждения — в шапке и копии, не у каждого факта
+    if (st?.utverzhden || data) u.utverzhden = st?.utverzhden ?? data; // старый факт — своя дата, новый — дата утверждённого файла (строка «Утверждено Сергеем»); без даты замок Р166/Р176 не пустит на den
     return u;
   });
   // Галерея: без обложки и кадров фактов; лишние привязанные и снятые со старых фактов — сюда же.

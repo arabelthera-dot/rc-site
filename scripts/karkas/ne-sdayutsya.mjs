@@ -134,7 +134,7 @@ function kadrMateriala(b) {
   const data_source = (istochnik.match(URL_) ?? (credit ?? '').match(URL_))?.[0];
   if (!credit && istochnik) credit = istochnik.replace(URL_, '').replace(/^[\s,]+|[\s,]+$/g, '') || undefined;
   const k = { src: put(src), alt: alt || podpis, data_source, license: prava || LITSENZIYA, podpis: podpis && `${podpis.replace(/\.$/, '')}.`, credit,
-    kFaktu: [...(kf ?? '').matchAll(/\d+/g)].map((m) => +m[0]), oblozhka: /обложка/.test(b.ostatok), staryy: /старый/.test(`${b.ostatok} ${p['файл'] ?? ''}`), altIzPodpisi: !alt, est: fs.existsSync(path.join(KOREN, 'public', src)) };
+    kFaktu: [...(kf ?? '').matchAll(/\d+/g)].map((m) => +m[0]), oblozhka: /обложка/.test(b.ostatok) || /^\s*обложка/i.test(kf ?? ''), staryy: /старый/.test(`${b.ostatok} ${p['файл'] ?? ''}`), altIzPodpisi: !alt, est: fs.existsSync(path.join(KOREN, 'public', src)) };
   if (wh) Object.assign(k, { width: +wh[1], height: +wh[2] });
   return k;
 }
