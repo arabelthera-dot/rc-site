@@ -43,7 +43,7 @@ lead:
   privyazka: 'Дата условная: в календаре музея бой стоит на 2 января, а был он 14 (26) мая 1829 года у Босфора.'
   kto: Экипаж брига «Меркурий» <i>· капитан-лейтенант А. И. Казарский</i>
   h1: Бриг «Меркурий»
-  hook: Двое против трёхсот пушек — и турки бросили погоню
+  hook: Двое против 184 пушек — и турки бросили погоню
 stamp:
   - v: '18'
     k: пушек у брига
@@ -69,16 +69,16 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История в 57 секунд
+  h2: История в 58 секунд
   klyuch: nesdayutsya/02jan-merkuriy
   format: horizontal
   pole: nesdayutsya/02jan-merkuriy:horizontal.sec
   suffix: сек
-  badge: 57 сек
-  intro: Двое против трёхсот пушек — и турки бросили погоню
-  poster: /muzei/ne-sdayutsya/video/day-02jan-merkuriy-poster.jpg?v=2
-  mp4: /muzei/ne-sdayutsya/video/day-02jan-merkuriy.mp4?v=2
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  badge: 58 сек
+  intro: Двое против 184 пушек — и турки бросили погоню
+  poster: /muzei/ne-sdayutsya/video/day-02jan-merkuriy-poster.jpg?v=3
+  mp4: /muzei/ne-sdayutsya/video/day-02jan-merkuriy.mp4?v=3
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41843577134) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг · 6 ударов
   h2: Четыре часа, которых не должно было быть
