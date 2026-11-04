@@ -5,8 +5,9 @@
 # Что нужно — заявка правит ЛИБО данные дня (src/content/, src/data/utverzhdeno/, public/muzei/),
 #   ЛИБО машину (scripts/, .github/). Оба сразу — красная «машину — отдельной заявкой».
 #   Исключение — метка mashina-i-dannye, ставит только Джарвис (arabelthera-dot); агентам — нельзя.
-#   public/video/registry.json — общий реестр: дописанные записи — не машина; но JSON валиден,
-#   без дублей ключей, прежние записи не стёрты и не изменены (иначе — машина).
+#   Реестр роликов — файл на выпуск public/video/registry/<музей>/<id>.json (Р524, заявка #820): данные, не машина;
+#   заявки дней пишут каждая свой файл. Валидность и неповтор id проверяет сборка (scripts/reestr-rolikov.mjs).
+#   Общего public/video/registry.json в git больше нет — исключения для него не нужно.
 # Что будет без нужного — помощник дня чинит машину у себя в ветке, параллельные дни ловят конфликт.
 # Проверка до слияния — 3 пробные заявки: только данные → зелёная, только машина → зелёная,
 #   данные + машина → красная; 3 из 3 (заявка Р524-А).
@@ -27,56 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: registry.json — валиден, без дублей, только дописан
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-          PR: ${{ github.event.pull_request.number }}
-          BAZA: ${{ github.event.pull_request.base.sha }}
-          GOLOVA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          set -euo pipefail
-          REESTR=public/video/registry.json
-          gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[] | .filename' > faily.txt
-          touch reestr-mashina.txt
-          if ! grep -qxF "$REESTR" faily.txt; then echo "Реестр видео не тронут."; exit 0; fi
-          gh api -H 'Accept: application/vnd.github.raw' "repos/$REPO/contents/$REESTR?ref=$GOLOVA" > novyy.json
-          gh api -H 'Accept: application/vnd.github.raw' "repos/$REPO/contents/$REESTR?ref=$BAZA" > staryy.json 2>/dev/null || echo '{}' > staryy.json
-          python3 - <<'PY'
-          import json, sys
-          def bez_dubley(pary):
-              klyuchi = [k for k, _ in pary]
-              dubli = sorted({k for k in klyuchi if klyuchi.count(k) > 1})
-              if dubli:
-                  raise ValueError('дубли ключей: ' + ', '.join(dubli))
-              return dict(pary)
-          try:
-              novyy = json.load(open('novyy.json', encoding='utf-8'), object_pairs_hook=bez_dubley)
-          except ValueError as e:
-              print(f'::error::public/video/registry.json сломан — {e}')
-              sys.exit(1)
-          staryy = json.load(open('staryy.json', encoding='utf-8'))
-          # дописывание = каждая прежняя запись на месте и та же; служебные updated/_ можно менять
-          def tronuto(s, n, put=''):
-              if isinstance(s, dict) and isinstance(n, dict):
-                  out = []
-                  for k, v in s.items():
-                      if put == '' and k in ('updated', '_'):
-                          continue
-                      if k not in n:
-                          out.append(f'{put}{k} — стёрто')
-                      else:
-                          out += tronuto(v, n[k], f'{put}{k}/' if isinstance(v, dict) else f'{put}{k}')
-                  return out
-              return [] if s == n else [put + ' — изменено']
-          t = tronuto(staryy, novyy)
-          if t:
-              print('Реестр видео: прежние записи тронуты — это правка машины:')
-              print('\n'.join('  ' + x for x in t[:20]))
-              open('reestr-mashina.txt', 'w').write('\n'.join(t))
-          else:
-              print('Реестр видео: JSON валиден, дублей нет, записи только дописаны — не машина.')
-          PY
       - name: mashina-otdelno — машину отдельной заявкой
         env:
           METKA: ${{ contains(github.event.pull_request.labels.*.name, 'mashina-i-dannye') }}
@@ -92,7 +43,6 @@ jobs:
           MASHINA='^(scripts/|\.github/)'
           grep -E "$DANNYE" vse.txt > dannye.txt || true
           grep -E "$MASHINA" vse.txt > mashina.txt || true
-          if [ -s reestr-mashina.txt ]; then echo "public/video/registry.json (прежние записи тронуты)" >> mashina.txt; fi
           if [ ! -s dannye.txt ] || [ ! -s mashina.txt ]; then
             echo "Данные дня: $(wc -l < dannye.txt), машина: $(wc -l < mashina.txt) — не вместе, зелёная."
             exit 0
