@@ -110,9 +110,64 @@
    "podrobnee": "В ночь с 8 на 9 марта 1944 года в селе Боратин Львовской области на группу Кузнецова напали бандеровцы. В перестрелке погибли Белов и Каминский, а Кузнецов, не желая сдаваться живым, подорвал себя противотанковой гранатой. 5 ноября 1944 года ему посмертно присвоили звание Героя Советского Союза. Могилу нашли лишь в сентябре 1959 года стараниями друга Н. Струтинского, через год останки перезахоронили на Холме Славы во Львове."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-18-goskatalog-43858267.jpg",
+   "gk": "36593128",
+   "fakt": 12,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-18-goskatalog-36593338.jpg",
+   "gk": "36593338",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-18-goskatalog-36593161.jpg",
+   "gk": "36593161",
+   "fakt": 3,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-18-goskatalog-41957086.jpg",
+   "gk": "41957086",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-18-goskatalog-43561179.jpg",
+   "gk": "43561179",
+   "fakt": 6,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-18-goskatalog-55403032.jpg",
+   "gk": "55403032",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-18.md",
-  "material": null
+  "material": "knowledge/ns-material/01-18.md"
  }
 }

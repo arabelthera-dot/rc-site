@@ -110,9 +110,55 @@
    "podrobnee": "Осенью 2016 года в Дагестане всё больше машин ездили со стикером «Работайте, братья! Магомед Нурбагандов, Герой России». Водитель Хабиб, возивший людей между Махачкалой и Сергокалой: «Проблема — если я буду молчать… Магу знал. Хороший. Не затрясся. И я не буду». Его имя носит школа в Сергокале, у её входа стоит монумент; улицы его имени есть в Грозном и Махачкале."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-25-goskatalog-89442929.jpg",
+   "gk": "68684480",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-25-kremlin-VznZldCU.jpg",
+   "gk": "",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14 (также 2)"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-25-kremlin-OOj6r2wy.jpg",
+   "gk": "",
+   "fakt": 2,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-25-kremlin-5ALGaqOu.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-25-kremlin-6H6Ch6te.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-25.md",
-  "material": null
+  "material": "knowledge/ns-material/01-25.md"
  }
 }
