@@ -124,19 +124,20 @@ function otryvok(podrobnee) {
 }
 
 // st — старый факт страницы с тем же смыслом, m — факт материала ~/workspace/knowledge/ns-material/ММ-ДД.md.
-// Источник — строка карточки дословно; страница и адрес — старого факта, если его адрес в этой строке, иначе первый адрес.
-// Отрывок — старый, если он дословно в «Подробнее», иначе первая цитата «Подробнее»; пометка — старая, иначе
-// «документ» при цитате, иначе «два источника» при двух сайтах, иначе пометки нет (её дописывает человек).
+// Источник — строка карточки дословно; страница и адрес — старого факта, если его адрес в этой строке, иначе материала, иначе первый адрес.
+// Отрывок — старый, если он дословно в «Подробнее», иначе первая цитата «Подробнее», иначе цитата материала; пометка — старая, иначе из материала
+// (служебные «один источник / мнение / воспоминание» — на страницу не идут, Р504), иначе «документ» при цитате, иначе «два источника» при двух сайтах, иначе пометки нет (её дописывает человек).
 function udar(f, st, data, m) {
   const [pervyy] = f.ssylki;
   if (!pervyy) stop(`факт ${f.n}: в утверждённом нет «Источник» с адресом`);
   const svoj = st && f.ssylki.find((s) => s.href === st.href);
+  const izMat = !svoj && m?.href && f.ssylki.find((s) => s.href === m.href);
   const u = { summary: `<b>${f.summary}</b>`, det: [f.podrobnee], src: `Источник: ${f.istochnik}`,
-    stranica: svoj ? st.stranica : pervyy.imya || new URL(pervyy.href).host, href: svoj ? st.href : pervyy.href };
+    stranica: (svoj && st.stranica) || (izMat && m.stranica) || (svoj && svoj.imya) || pervyy.imya || new URL(pervyy.href).host, href: svoj ? st.href : izMat ? m.href : pervyy.href };
   const izKart = otryvok(f.podrobnee);
-  const o = st?.otryvok && f.podrobnee.includes(st.otryvok.replace(/^«|»$/g, '')) ? st.otryvok : izKart ?? st?.otryvok;
+  const o = st?.otryvok && f.podrobnee.includes(st.otryvok.replace(/^«|»$/g, '')) ? st.otryvok : izKart ?? st?.otryvok ?? m?.otryvok;
   if (o) u.otryvok = o;
-  const pometka = st?.pometka ?? (izKart ? 'документ' : new Set(f.ssylki.map((s) => new URL(s.href).host)).size >= 2 ? 'два источника' : null);
+  const pometka = st?.pometka ?? m?.pometka ?? (izKart ? 'документ' : new Set(f.ssylki.map((s) => new URL(s.href).host)).size >= 2 ? 'два источника' : null);
   if (pometka) u.pometka = pometka;
   return u;
 }

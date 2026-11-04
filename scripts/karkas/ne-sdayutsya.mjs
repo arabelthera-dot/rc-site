@@ -11,6 +11,9 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { IGRA } from '../../src/lib/dni-ne-sdayutsya.mjs';
+import { POMETKI as VIDNYE, POMETKI_SLUZHEBNYE } from '../../src/lib/den-obshchee.mjs';
+
+const POMETKI = [...VIDNYE, ...POMETKI_SLUZHEBNYE];
 
 const KOREN = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const MATERIAL = path.join(os.homedir(), 'workspace/knowledge/ns-material');
@@ -18,7 +21,6 @@ const SAYT = 'https://russian-civilization.ru';
 const MES = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
 const MES_R = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 const LITSENZIYA = 'цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)';
-const POMETKI = ['документ', 'два источника', 'легенда'];
 // Раздел истории у старых страниц без #istoriya (01-07…01-29): путь героя, плен, перевал, корабль, город, грамота.
 const ISTORIYA = ['istoriya', 'put', 'plen', 'pereval', 'sergokala', 'korabl', 'gorod', 'gramota'];
 // Разделы, которые шаблон берёт; прочие идут в nety как выброшенные (визуализацию дня переносит человек, Р436).

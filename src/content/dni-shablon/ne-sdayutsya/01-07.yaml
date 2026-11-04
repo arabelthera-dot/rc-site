@@ -101,6 +101,7 @@ fakty:
         src: "Источник: «Огненный таран: как лётчик Гастелло совершил свой подвиг», «Российская газета», 26.06.2020 — https://rg.ru/2020/06/26/ognennyj-taran-letchik-gastello-sovershil-podvig-79-let-nazad.html; топливный бак — «Родина», 26.06.2026 — https://rodina-history.ru/2026/06/26/85-let-nazad-nikolaj-gastello-sovershil-svoj-znamenityj-podvig.html; Пометка: свидетельство очевидцев (Воробьёв, Рыбас), не протокол удара"
         stranica: "«Огненный таран: как лётчик Гастелло совершил свой подвиг», «Российская газета», 26.06.2020"
         href: https://rg.ru/2020/06/26/ognennyj-taran-letchik-gastello-sovershil-podvig-79-let-nazad.html
+        otryvok: «На их глазах капитан Гастелло развернул подбитый самолет, из которого шел дым, в сторону колонны. А затем направил машину прямо в гущу немецких танков и автомашин.»
         pometka: два источника
         kadr:
           src: /muzei/ne-sdayutsya/img/01-07-goskatalog-56785988.jpg
@@ -134,6 +135,7 @@ fakty:
         src: "Источник: «Российская газета» («Союз. Беларусь — Россия»), 23.07.2025 — https://rg.ru/2025/07/23/ognennyj-taran.html; «СБ. Беларусь сегодня», 25.07.2025 — https://www.sb.by/articles/ognennyy-taran.html"
         stranica: «Российская газета» («Союз. Беларусь — Россия»), 23.07.2025
         href: https://rg.ru/2025/07/23/ognennyj-taran.html
+        otryvok: "«Немецкие документы также подтверждают, что 26 июня на колонну 7-й танковой дивизии в районе деревень Мацки и Мерковичи упал советский самолет. Потери были значительными: 29 убитых, более сотни раненых, множество разбитой вражеской техники»"
         pometka: два источника
       - summary: "<b>Родители просили оставить восьмую пулю себе, а Гастелло отвечал: «Я другой выход найду».</b>"
         det:
@@ -158,6 +160,7 @@ fakty:
         src: "Источник: «Гастелло Николай Францевич», «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=275; «Родина», 26.06.2026 — https://rodina-history.ru/2026/06/26/85-let-nazad-nikolaj-gastello-sovershil-svoj-znamenityj-podvig.html; Белорусский государственный музей истории ВОВ — https://www.warmuseum.by/news/hronika_pobedy/ognennyy-taran-ekipazha-n-f-gastello/"
         stranica: «Гастелло Николай Францевич», «Герои страны»
         href: https://warheroes.ru/hero/hero.asp?Hero_id=275
+        otryvok: «стрелок лейтенант Г.Н. Скоробогатый (лётчик того же полка, он напросился в боевой вылет вместо штатного стрелка)»
         pometka: два источника
         kadr:
           src: /muzei/ne-sdayutsya/img/01-07-goskatalog-55901881.jpg
@@ -174,6 +177,7 @@ fakty:
         src: "Источник: «Российская газета», 26.06.2020 — https://rg.ru/2020/06/26/ognennyj-taran-letchik-gastello-sovershil-podvig-79-let-nazad.html; «Маслов Александр Спиридонович», «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=6774"
         stranica: «Российская газета», 26.06.2020
         href: https://rg.ru/2020/06/26/ognennyj-taran-letchik-gastello-sovershil-podvig-79-let-nazad.html
+        otryvok: «При перезахоронении был обнаружен пластмассовый медальон с документом, принадлежащим старшему сержанту Г.В. Реутову – воздушному стрелку-радисту экипажа А.С. Маслова.»
         pometka: два источника
       - summary: <b>Поисковики нашли номера двигателя и планера и доказали, где упала машина Гастелло.</b>
         det:
@@ -197,6 +201,8 @@ fakty:
         src: "Источник: Белорусский государственный музей истории ВОВ, «Огненный таран экипажа Н. Ф. Гастелло» — https://www.warmuseum.by/news/hronika_pobedy/ognennyy-taran-ekipazha-n-f-gastello/"
         stranica: Белорусский государственный музей истории ВОВ, «Огненный таран экипажа Н. Ф. Гастелло»
         href: https://www.warmuseum.by/news/hronika_pobedy/ognennyy-taran-ekipazha-n-f-gastello/
+        otryvok: «25 июня звеном эскадрильи капитана Гастелло было уничтожено и повреждено 20 танков и бронемашин.»
+        pometka: документ
   - id: fakty-dnya
     kicker: Ещё пять фактов
     h2: Ещё о подвиге
@@ -207,6 +213,7 @@ fakty:
         src: "Источник: «Российская газета», 26.06.2020 — https://rg.ru/2020/06/26/ognennyj-taran-letchik-gastello-sovershil-podvig-79-let-nazad.html; «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=275; «Родина», 26.06.2026 — https://rodina-history.ru/2026/06/26/85-let-nazad-nikolaj-gastello-sovershil-svoj-znamenityj-podvig.html"
         stranica: «Российская газета», 26.06.2020
         href: https://rg.ru/2020/06/26/ognennyj-taran-letchik-gastello-sovershil-podvig-79-let-nazad.html
+        otryvok: «В начале июля вся страна услышала сводку Советского информбюро об огненном таране. Месяц спустя после подвига капитану Николаю Францевичу Гастелло было посмертно присвоено звание Героя Советского Союза.»
         pometka: два источника
         kadr:
           src: /muzei/ne-sdayutsya/img/01-07-goskatalog-18796278.jpg
@@ -223,6 +230,7 @@ fakty:
         src: "Источник: «Подвиг во имя жизни», Ненецкий окружной краеведческий музей — https://naomuseum.ru/visitors/spetsialistam/issledovatelyam/nashi-issledovaniya/podvig-vo-imya-zhizni/; «Родина», 26.06.2026 — https://rodina-history.ru/2026/06/26/85-let-nazad-nikolaj-gastello-sovershil-svoj-znamenityj-podvig.html"
         stranica: «Подвиг во имя жизни», Ненецкий окружной краеведческий музей
         href: https://naomuseum.ru/visitors/spetsialistam/issledovatelyam/nashi-issledovaniya/podvig-vo-imya-zhizni/
+        otryvok: «Летом 1941 года командование части даёт Алексею отпуск, но в Архангельске его догоняет приказ о возвращении в часть.»
         pometka: два источника
       - summary: <b>Однополчанин Гастелло по Халхин-Голу Ююкин первым направил горящий самолёт на врага.</b>
         det:
@@ -238,6 +246,7 @@ fakty:
         src: "Источник: РВИО, «Подвиг Гастелло» — https://history.ru/read/articles/podvigh-gastiello-event; ТВ «Звезда», 26.07.2019 — https://tvzvezda.ru/news/201972620-EScdP.html; Пометка: у Фадеева («Звезда») — 16 морских и 160 танковых"
         stranica: РВИО, «Подвиг Гастелло»
         href: https://history.ru/read/articles/podvigh-gastiello-event
+        otryvok: «Всего за период Великой Отечественной войны было совершено 14 морских таранов, 52 танковых, 600 воздушных и 506 наземных.»
         pometka: два источника
         kadr:
           src: /muzei/ne-sdayutsya/img/01-07-goskatalog-45844888.jpg

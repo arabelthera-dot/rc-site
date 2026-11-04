@@ -126,6 +126,8 @@ fakty:
         src: "Источник: РОДИНА (https://rodina-history.ru/2024/10/02/brestskaia-krepost-poslednie-geroi.html) (Смирнов С. С., «Брестская крепость», М., 1965, с. 301; BA-MA ZA 1 1406)"
         stranica: РОДИНА
         href: https://rodina-history.ru/2024/10/02/brestskaia-krepost-poslednie-geroi.html
+        otryvok: «Один из офицеров, ..., снял каску .., и все солдаты, ... почтили верность воинскому долгу наших воинов снятием каски"»
+        pometka: документ
       - summary: "<b>Безымянный защитник выцарапал на стене: «Я умираю, но не сдаюсь. Прощай, Родина!»</b>"
         det:
           - Надпись нашёл в 1950 году научный сотрудник московского музея, обследуя западные казармы. Подписи под словами не было, но внизу стояла ясно различимая дата — «20 июля 1941 года». Так нашлось прямое доказательство, что крепость сопротивлялась и на 29-й день войны.
@@ -149,6 +151,8 @@ fakty:
         src: "Источник: МО-РГ (https://rg.ru/2019/06/22/minoborony-rassekretilo-dokumenty-o-zashchite-brestskoj-kreposti.html) (документы архива Минобороны РФ)"
         stranica: МО-РГ
         href: https://rg.ru/2019/06/22/minoborony-rassekretilo-dokumenty-o-zashchite-brestskoj-kreposti.html
+        otryvok: «Когда фашисты узнали, что отец девочки находится в крепости, они отправили туда Валю с ультиматумом о сдаче.»
+        pometka: документ
       - summary: <b>Крепость стреляла и после того, как штаб 45-й дивизии доложил, что она пала 1 июля.</b>
         det:
           - В немецком «Боевом донесении о занятии Брест-Литовска» сказано, что крепость держалась девять дней и пала к 1 июля. Но жён командиров брали в плен ещё 10–15 июля, когда бои продолжались. Охрану крепости немцам пришлось почти утроить, со 133 до 399 человек. Командир дивизии Фриц Шлипер спешил увести её на восток, потому что дальнейшее пребывание в Бресте «оказало бы неблагоприятное воздействие на боевой настрой». В донесении упомянута и авиабомба весом 1800 кг, «потрясшая детонацией весь город Брест».
@@ -171,6 +175,7 @@ fakty:
         src: "Источник: ИСТОРИЯ.РФ (https://histrf.ru/lenta-vremeni/event/view/oborona-briestskoi-krieposti) (Асташин); АиФ (https://aif.ru/society/history/chtoby-mir-uznal-kak-sergey-smirnov-razyskival-zashchitnikov-brestskoy-kreposti); «Российская газета», 17.06.2004 — https://rg.ru/2004/06/17/brest.html"
         stranica: ИСТОРИЯ.РФ
         href: https://histrf.ru/lenta-vremeni/event/view/oborona-briestskoi-krieposti
+        otryvok: «(чтобы унять жажду, Гаврилов прикладывал язык к влажным кирпичам подземных казематов)»
         pometka: два источника
       - summary: <b>Наши войска взяли под Орлом архив 45-й дивизии — и о подвиге Бреста рассказал сам враг.</b>
         det:
@@ -198,6 +203,7 @@ fakty:
         src: "Источник: ИСТОРИЯ.РФ (https://histrf.ru/lenta-vremeni/event/view/oborona-briestskoi-krieposti) (Асташин); МО-РИА (https://ria.ru/20190622/1555812484.html)"
         stranica: ИСТОРИЯ.РФ
         href: https://histrf.ru/lenta-vremeni/event/view/oborona-briestskoi-krieposti
+        otryvok: «В районе Тереспольских ворот немцы встретили отчаянную контратаку советских бойцов под общим командованием полкового комиссара Е.М. Фомина.»
         pometka: два источника
       - summary: <b>Лейтенант Наганов держал башню над Тереспольскими воротами — его нашли с пистолетом на взводе.</b>
         det:
@@ -205,6 +211,7 @@ fakty:
         src: "Источник: МК (https://brest-fortress.by), «Судьба моей семьи в истории моей страны» — https://www.brest-fortress.by/novosti/663-sudba-moej-semi-v-istorii-moej-strany"
         stranica: МК
         href: https://brest-fortress.by
+        otryvok: «В башне над воротами и закрепился с группой красноармейцев лейтенант Наганов.»
         pometka: два источника
         kadr:
           src: /muzei/ne-sdayutsya/img/01-05-goskatalog-31681953.jpg
@@ -221,6 +228,8 @@ fakty:
         src: "Источник: ИСТОРИЯ.РФ (https://histrf.ru/lenta-vremeni/event/view/oborona-briestskoi-krieposti) (Асташин); Пометка: «до половины гарнизона» — по некоторым оценкам"
         stranica: ИСТОРИЯ.РФ
         href: https://histrf.ru/lenta-vremeni/event/view/oborona-briestskoi-krieposti
+        otryvok: «С учетом потерь за первый день обороны, в итоге крепость защищали порядка 3,5 тыс. чел., блокированных в разных ее частях.»
+        pometka: один источник
         kadr:
           src: /muzei/ne-sdayutsya/img/01-05-goskatalog-31681949.jpg
           alt: Приказ № 1 по гарнизону Брестской крепости — фотокопия
