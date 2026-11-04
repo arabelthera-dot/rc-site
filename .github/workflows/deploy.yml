@@ -120,15 +120,16 @@ jobs:
   # Ключ хоста — строкой ниже (не секрет, данные Михаила 20.10), StrictHostKeyChecking=yes: подменённый сервер сайт не
   # получит. --delay-updates + --delete-after: новые файлы подменяются разом в конце, старые удаляются после — посетитель
   # не застаёт полусайт. nginx (Михаил): try_files $uri $uri/ $uri.html, error_page 404 /404.html.
-  # Нужно: секрет RU_DEPLOY_KEY (кладёт Михаил); нет — задача спит строкой в журнале. Ошибка — предупреждение, Pages и
-  # IndexNow не роняются (continue-on-error). Откат — убрать эту задачу.
+  # Нужно: секрет RU_DEPLOY_KEY (кладёт Михаил); нет — задача спит строкой в журнале (::notice::, зелёная).
+  # Сбой порога или rsync — задача красная и тревога в Telegram (#2363, Михаил 04.11: отказ выкладки на основной сайт
+  # не прячется в зелёное). Pages и IndexNow от msk не зависят (needs только на build/deploy) — не роняются.
+  # Порог по умолчанию 3000 МБ (на msk-new 32 ГБ свободно из 38, www 1,8 ГБ). Откат — вернуть continue-on-error: true.
   msk:
     needs: build
     runs-on: ubuntu-latest
     # Окружение msk-new (Р64): секрет RU_DEPLOY_KEY переносится сюда из секретов репо (Михаил) с правилом «только main».
     # Пока окружение без правил — поведение прежнее.
     environment: msk-new
-    continue-on-error: true
     timeout-minutes: 20
     permissions:
       contents: read
@@ -182,7 +183,7 @@ jobs:
             echo "::error::msk-new: в сборке закрытый ключ"; grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist; exit 1
           fi
           mb=$(du -sm dist | cut -f1); echo "msk-new: размер сборки $mb МБ"
-          [ "$mb" -le "${RU_DEPLOY_MAX_MB:-1500}" ] || { echo "::error::msk-new: сборка $mb МБ больше порога ${RU_DEPLOY_MAX_MB:-1500} МБ"; exit 1; }
+          [ "$mb" -le "${RU_DEPLOY_MAX_MB:-3000}" ] || { echo "::error::msk-new: сборка $mb МБ больше порога ${RU_DEPLOY_MAX_MB:-3000} МБ"; exit 1; }
           umask 077; mkdir -p ~/.ssh
           printf '%s\n' "$KLYUCH" > ~/.ssh/klyuch
           printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
@@ -195,6 +196,24 @@ jobs:
             echo "проверка $ADRES — код $kod"
             [ "$kod" = 200 ] || echo "::warning::msk-new: $ADRES ответил $kod"
           fi
+      # Тревога о сбое — тот же бот и чат, что у сторожа (storozh.yml). Нет секретов — спит строкой в журнале.
+      - name: тревога в Telegram
+        if: failure() && steps.est.outputs.est == 'true'
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_STOROZH_CHAT: ${{ secrets.TG_STOROZH_CHAT }}
+          ZAPUSK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          tekst="Выкладка на msk-new (russian-civilization.ru) не прошла: $ZAPUSK"
+          if [ -z "${TG_BOT_TOKEN:-}" ] || [ -z "${TG_STOROZH_CHAT:-}" ]; then
+            echo "::notice::спит: нет секрета (TG_BOT_TOKEN / TG_STOROZH_CHAT) — не отправлено: $tekst"
+            exit 0
+          fi
+          kod=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' \
+              "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${TG_STOROZH_CHAT}" \
+              --data-urlencode "text=${tekst}" || true)
+          echo "Telegram: код $kod"
   # IndexNow (Е6, Р47; «да» Сергея 20.10.2026): после выкладки — адреса волны 1 карты сайта и изменившиеся за сутки
   # Яндексу и Bing (scripts/indexnow.mjs; ночью — только изменившиеся). Без сети или с ошибкой — предупреждение,
   # выкладка уже прошла и не роняется. Откат — убрать эту задачу.
