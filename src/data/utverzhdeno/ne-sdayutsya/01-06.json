@@ -110,7 +110,36 @@
    "podrobnee": "По Хмелькову, после газа немцы могли быстро взять передовую позицию, но наступали медленно. На правом фланге 76-й ландверный полк попал под свои же газы, понёс огромные потери и встал у Сосни под огнём остатков 12-й роты. На левом фланге 5-й ландверный полк не смог прорезать проволоку у Бялогронд, и его атаку отбили. К 11 часам Сосненская позиция была очищена."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-27191447.jpg",
+   "gk": "24629846",
+   "fakt": 5,
+   "takzhe": []
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-27183295.jpg",
+   "gk": "24623277",
+   "fakt": 10,
+   "takzhe": []
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-1371227.jpg",
+   "gk": "4975312",
+   "fakt": 11,
+   "takzhe": []
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/ne-sdayutsya/img/01-06-goskatalog-1371546.jpg",
+   "gk": "4975631",
+   "fakt": 6,
+   "takzhe": []
+  }
+ ],
  "ne_povtory": [
   {
    "para": "9-12",
@@ -125,6 +154,6 @@
  ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-06.md",
-  "material": null
+  "material": "knowledge/ns-material/01-06.md"
  }
 }
