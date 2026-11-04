@@ -1,0 +1,32 @@
+{
+  "title": "История в 55 секунд",
+  "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: Н. Е. Жуковский читает лекцию, его рукопись, лётчик П. Н. Нестеров, здание аэродинамической лаборатории ЦАГИ (Государственный центральный музей современной истории России); брошюра к 60-летию труда Жуковского «О присоединённых вихрях» (Центральный музей ВВС); испытание самолёта «Ньюпор XVII» в аэродинамической трубе Т-1-2 ЦАГИ (Научно-мемориальный музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky.mp4",
+    "local": "muzei/izobreteniya/video/day-17jan-zhukovsky.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 55.4,
+    "mb": 12.5
+  },
+  "vertical": {
+    "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 55.4,
+    "mb": 10.3
+  },
+  "poster": {
+    "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16-poster.jpg",
+    "v": 1
+  }
+}

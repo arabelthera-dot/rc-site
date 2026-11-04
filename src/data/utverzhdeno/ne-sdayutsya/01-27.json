@@ -110,9 +110,64 @@
    "podrobnee": "В 3:01 «Туман» доложил: «Один бомбардировщик противника курсом 90 градусов, высота 100 метров». До этого немецкие эсминцы уже потопили «Пассат», РТ-67 и судно «Меридиан». Адмирал А. Г. Головко писал: «Занятый сухопутными делами, беспокоясь за положение базы, я допустил… ошибку, не обеспечив разведку со стороны моря», и «в двух предыдущих случаях появление вражеских эсминцев было предварено воздушной разведкой… Если бы сегодня мы учли это… картина боя могла быть иной»."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-27-goskatalog-21834293.jpg",
+   "gk": "20783106",
+   "fakt": 6,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-27-goskatalog-23850632.jpg",
+   "gk": "22213331",
+   "fakt": 12,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-27-goskatalog-6463595.jpg",
+   "gk": "9728870",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-27-goskatalog-14641077.jpg",
+   "gk": "15611564",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-27-goskatalog-14641038.jpg",
+   "gk": "15611528",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-27-goskatalog-9866441.jpg",
+   "gk": "7782304",
+   "fakt": 10,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-27.md",
-  "material": null
+  "material": "knowledge/ns-material/01-27.md"
  }
 }

@@ -110,9 +110,64 @@
    "podrobnee": "С 1986 по 1992 год в ликвидации участвовали более 600 тысяч человек, в том числе более 210 воинских частей общей численностью 340 тысяч военнослужащих; свыше 90 тысяч из них были в зоне в самый острый период, с апреля по декабрь 1986 года. В 30-километровой зоне работали более миллиона человек. Генерал Тараканов сравнивал полмиллиона прошедших через очаг за пять лет с наполеоновской армией."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-30-goskatalog-1413481.jpg",
+   "gk": "1413481",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-30-goskatalog-17377493.jpg",
+   "gk": "17377493",
+   "fakt": 8,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-30-goskatalog-35918768.jpg",
+   "gk": "35918768",
+   "fakt": 5,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-30-goskatalog-20046324.jpg",
+   "gk": "20046324",
+   "fakt": 3,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3 (также 12)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-30-goskatalog-11514652.jpg",
+   "gk": "11514652",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-30-goskatalog-20103802.jpg",
+   "gk": "20103802",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-30.md",
-  "material": null
+  "material": "knowledge/ns-material/01-30.md"
  }
 }

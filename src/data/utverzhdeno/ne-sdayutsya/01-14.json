@@ -110,9 +110,64 @@
    "podrobnee": "Сразу после снятия блокады, в феврале 1944 года, из Красноуфимска в Ленинград приехали сотрудники, чтобы отобрать образцы для срочного пересева. Отобрали 100 тысяч и разослали на 6 опытных станций института и в 72 селекционных учреждения страны. Всего с использованием коллекции ВИР выведено больше 4,5 тысячи районированных сортов. К началу войны в коллекции было 250 тысяч образцов — самая богатая коллекция семян на свете. Безвозвратно потеряно около двух тонн; из спасённого выведены новые сорта пшеницы, ячменя, риса, картофеля. Сегодня в коллекции больше 320 тысяч образцов."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-14-goskatalog-26073778.jpg",
+   "gk": "23841193",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-14-goskatalog-23840781.jpg",
+   "gk": "23840781",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15 (также 8)"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-14-goskatalog-58065377.jpg",
+   "gk": "58065377",
+   "fakt": 5,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5 (также 6)"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-14-goskatalog-57423967.jpg",
+   "gk": "57423967",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1 (также 5, 6)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-14-goskatalog-49620809.jpg",
+   "gk": "49620809",
+   "fakt": 4,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4 (также 9)"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-14-goskatalog-14842094.jpg",
+   "gk": "14842094",
+   "fakt": 8,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-14.md",
-  "material": null
+  "material": "knowledge/ns-material/01-14.md"
  }
 }
