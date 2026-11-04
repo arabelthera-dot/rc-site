@@ -196,8 +196,9 @@ export function razobrat(html, json, den) {
   const kadrPo = (src) => mat.kadry.find((k) => k.src === src) ?? izZapisi(src);
 
   const geroy = h.match(/<img[^>]*class="st-scene[^"]*"[^>]*>/)?.[0];
-  let obl = null;
-  if (geroy) {
+  // Пометка «(обложка)» в материале главнее кадра героя старой страницы: обложку выбирает редактор дня (Р513).
+  let obl = kadrKartochki(mat.kadry.find((k) => k.oblozhka && kadrKartochki(k)));
+  if (!obl && geroy) {
     const src = atr(geroy, 'src'), m = kadrPo(src);
     obl = m && kadrKartochki({ ...m, alt: m.alt || ent(atr(geroy, 'alt') ?? ''), width: atr(geroy, 'width') ?? m.width, height: atr(geroy, 'height') ?? m.height });
     if (!obl) nety.push(`обложка ${src} (кадр героя старой страницы): ни в материале, ни в записи дня нет адреса источника или подписи`);
