@@ -1,16 +1,18 @@
-// Утверждённые факты → карточка дня «Русские не сдаются» (Р489).
-// Вход: ~/workspace/knowledge/ns-utverzhdeno/ns-ММ-ДД.md (15 фактов, утверждены Сергеем).
-// Выход: src/content/dni-shablon/ne-sdayutsya/ММ-ДД.yaml — факты (fakty, fakty-dnya) заменяются утверждёнными дословно,
-// каждому ставится utverzhden, карточке — adres: den; остальное в карточке (обложка, кадры, ролик, аудио, викторина) сохраняется.
+// Утверждённые факты → карточка дня «Русские не сдаются» (Р489, Р514). Модуль музея к общей машине scripts/kartochka-v-stranicu.mjs (Р516).
+// Вход: ~/workspace/knowledge/ns-utverzhdeno/ns-ММ-ДД.md (10–15 фактов, утверждены Сергеем) и материал дня
+// ~/workspace/knowledge/ns-material/ММ-ДД.md (цитаты, пометки, кадры с привязкой «к факту: N / обложка / галерея»).
+// Выход: src/content/dni-shablon/ne-sdayutsya/ММ-ДД.yaml — разделы fakty, figures, oblozhka и adres: den; остальное
+// (ролик, аудио, викторина, рассказ) побайтно как было.
 // Запуск: node scripts/ns-iz-utverzhdennyh.mjs 01-01 | 01-01..01-31 [--utverzhden ГГГГ-ММ-ДД] [--bez-adresa] [--iz-staroy] [--proverka]
 //   --iz-staroy — карточки нет: собрать её из старой страницы src/data/full-pages/ne-sdayutsya/ММ-ДД.html и записи дня
 //                 src/content/days/ne-sdayutsya/ММ-ДД.json (образец — 01-01…01-05, r602), затем перенести факты как обычно.
 //                 Каркас — scripts/karkas-iz-staroy.mjs (Р493); перезаписывает только пробу без утверждённых фактов (нет utverzhden). Как переводить день на yaml — scripts/ns-iz-utverzhdennyh.README.md.
 //   --proverka — только разобрать утверждённые файлы (источники, дата), ничего не писать.
-//   --utverzhden — дата, если в файле нет строки «Утверждено Сергеем ДД.ММ.ГГГГ» (без неё и без флага — ошибка).
-//   --bez-adresa — adres не ставить и не трогать: записать карточку, даже если замки адреса den не проходят (с перечнем, чего не хватает).
-// Чего нет в утверждённом — машина не выдумывает: отрывок только дословной цитатой из «Подробнее», пометка — из карточки
-// или «документ», если у факта есть дословная цитата источника. Карточка до записи проходит схему музея (замки den-obshchee).
+//   --utverzhden — дата, если в файле нет строки «Утверждено Сергеем ДД.ММ.ГГГГ» (01-02: Р467, 03.11.2026); без даты — останов.
+//   --bez-adresa — adres не ставить и не трогать (пересборка без смены адреса); СТОП-правило действует и так.
+// Чего нет — машина не выдумывает и не угадывает по смыслу: строка, «Подробнее», источник — карточки дословно;
+// отрывок, адрес, пометка — из материала; кадр к факту — только по строке «к факту». Нет цитаты, пометки из списка,
+// привязки кадра, ролика — останов с днём и номером, yaml не пишется. Повторный запуск даёт тот же файл.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -18,15 +20,13 @@ import YAML from 'yaml';
 import { skhemaNeSdayutsya } from '../src/lib/dni-ne-sdayutsya.mjs';
 import { karkas } from './karkas-iz-staroy.mjs';
 import { material, kadrKartochki } from './karkas/ne-sdayutsya.mjs';
-import { chistka, slova } from './sverka-utverzhdeno.mjs';
+import { POMETKI } from '../src/lib/den-obshchee.mjs';
+import { proverit, rasstavit, razdel, kadrId } from './kartochka-v-stranicu.mjs';
 import { razobratKartochku } from './utverzhdeno-kopiya.mjs';
 
 const VHOD = path.join(os.homedir(), 'workspace/knowledge/ns-utverzhdeno');
 const VYHOD = 'src/content/dni-shablon/ne-sdayutsya';
 const UTV = 'src/data/utverzhdeno/ne-sdayutsya';
-const BEZ_TEGOV = (s) => s.replace(/<[^>]+>/g, '');
-// Названия сочинений в кавычках — не отрывок источника.
-const NAZVANIE = /^(Повест|Сказани|Задонщин|Жити|Слов|Летопис|Хожени|Моления)/;
 
 const args = process.argv.slice(2);
 const flag = (k) => { const i = args.indexOf(k); return i < 0 ? null : args.splice(i, 2)[1] ?? ''; };
@@ -113,34 +113,6 @@ function ssylki(s, gde) {
   return out;
 }
 
-// Первая дословная цитата источника из «Подробнее» (не название сочинения, не одно слово).
-function otryvok(podrobnee) {
-  for (const m of podrobnee.matchAll(/«((?:[^«»]|«[^«»]*»)+)»/g)) {
-    const q = m[1];
-    if (q.split(/\s+/).length < 3 || NAZVANIE.test(q)) continue;
-    return `«${q}»`;
-  }
-  return null;
-}
-
-// st — старый факт страницы с тем же смыслом, m — факт материала ~/workspace/knowledge/ns-material/ММ-ДД.md.
-// Источник — строка карточки дословно; страница и адрес — старого факта, если его адрес в этой строке, иначе первый адрес.
-// Отрывок — старый, если он дословно в «Подробнее», иначе первая цитата «Подробнее»; пометка — старая, иначе
-// «документ» при цитате, иначе «два источника» при двух сайтах, иначе пометки нет (её дописывает человек).
-function udar(f, st, data, m) {
-  const [pervyy] = f.ssylki;
-  if (!pervyy) stop(`факт ${f.n}: в утверждённом нет «Источник» с адресом`);
-  const svoj = st && f.ssylki.find((s) => s.href === st.href);
-  const u = { summary: `<b>${f.summary}</b>`, det: [f.podrobnee], src: `Источник: ${f.istochnik}`,
-    stranica: svoj ? st.stranica : pervyy.imya || new URL(pervyy.href).host, href: svoj ? st.href : pervyy.href };
-  const izKart = otryvok(f.podrobnee);
-  const o = st?.otryvok && f.podrobnee.includes(st.otryvok.replace(/^«|»$/g, '')) ? st.otryvok : izKart ?? st?.otryvok;
-  if (o) u.otryvok = o;
-  const pometka = st?.pometka ?? (izKart ? 'документ' : new Set(f.ssylki.map((s) => new URL(s.href).host)).size >= 2 ? 'два источника' : null);
-  if (pometka) u.pometka = pometka;
-  return u;
-}
-
 // Утверждённый файл дня → {vhod, fakty, data}; без файла или без даты — останов.
 function utverzhdennoe(key) {
   const vhod = path.join(VHOD, `ns-${key}.md`);
@@ -153,11 +125,6 @@ function utverzhdennoe(key) {
   return { vhod, fakty, data };
 }
 
-// Сходство слов (как у сверщика): доля общих слов от меньшего набора.
-const zh = (a, b) => { let o = 0; for (const x of a) if (b.has(x)) o++; return o / Math.max(1, Math.min(a.size, b.size)); };
-// Один кадр — один объект: номер Госкаталога, иначе путь файла.
-const gkNomer = (k) => String(k?.data_source ?? '').match(/collections\?id=(\d+)/)?.[1] || String(k?.src ?? '').match(/(?:gk|goskatalog)-(\d{5,})/)?.[1] || '';
-const kadrId = (k) => gkNomer(k) || k.src;
 const CHISLO = { 0: ['ноль', 'ноль фактов'], 1: ['один', 'один факт'], 2: ['два', 'два факта'], 3: ['три', 'три факта'], 4: ['четыре', 'четыре факта'], 5: ['пять', 'пять фактов'] };
 
 // Порядок на странице: строка карточки «Порядок на странице», иначе копия src/data/utverzhdeno, иначе по номерам (Р510).
@@ -170,14 +137,31 @@ function poryadokDnya(key, vhod, fakty) {
   return { poryadok: izKart ?? (tot(izKopii?.poryadok) ? izKopii.poryadok : nomera), kopiya: izKopii };
 }
 
-// В старый текст — только разделы fakty и figures, остальное побайтно как было (кавычки, скобки, комментарии).
-const razdel = (t, k) => t.match(new RegExp(`^${k}:[^\\n]*\\n(?:(?![\\w#])[^\\n]*\\n|\\n)*`, 'm'));
+// Факт страницы из утверждённого f и материала m: строка, «Подробнее» и источник — карточки дословно; отрывок, адрес,
+// страница и пометка — материала (дословно, руками не дописываются); utverzhden — дата карточки у каждого факта.
+// Страница источника — «страница:» материала, иначе имя этого адреса в строке «Источник» карточки.
+function udar(f, m, data) {
+  const svoj = f.ssylki.find((s) => s.href === m.href);
+  return { summary: `<b>${f.summary}</b>`, det: [f.podrobnee], src: `Источник: ${f.istochnik}`, otryvok: m.otryvok,
+    stranica: m.stranica || svoj?.imya || new URL(m.href).host, href: m.href, pometka: m.pometka, utverzhden: data };
+}
+
+// Ролик дня — тот, что стоял на старой странице src/data/full-pages/ne-sdayutsya/ММ-ДД.html (video/….mp4),
+// файл лежит в public/muzei/ne-sdayutsya/video/, блок video карточки указывает на него. Иначе — строка-ошибка.
+function rolik(key, karta) {
+  const html = path.join('src/data/full-pages/ne-sdayutsya', `${key}.html`);
+  const mp4 = fs.existsSync(html) ? fs.readFileSync(html, 'utf8').match(/video\/[\w.-]+\.mp4/)?.[0] : null;
+  if (!mp4) return 'на старой странице ролика нет и в public/muzei/ne-sdayutsya/video/ его нет — ролик делается в облаке rc-rolik';
+  if (!fs.existsSync(path.join('public/muzei/ne-sdayutsya', mp4))) return `файла public/muzei/ne-sdayutsya/${mp4} нет`;
+  if (!karta.video?.mp4?.split('?')[0].endsWith(mp4)) return `в карточке нет блока video с ${mp4} (на старой странице он есть)`;
+  return karta.video;
+}
 
 function den(key) {
   const vyhod = path.join(VYHOD, `${key}.yaml`);
   if (!fs.existsSync(vyhod)) stop(`${vyhod}: карточки нет — новую карточку строит запуск с --iz-staroy`);
   const { vhod, fakty, data } = utverzhdennoe(key);
-  const { poryadok, kopiya } = poryadokDnya(key, vhod, fakty);
+  const { poryadok } = poryadokDnya(key, vhod, fakty);
 
   const tekst = fs.readFileSync(vyhod, 'utf8'), doc = YAML.parseDocument(tekst);
   const indentSeq = !/^\w+:\n- /m.test(tekst); // 01-02 записан списками без отступа
@@ -185,96 +169,57 @@ function den(key) {
   const bloki = karta.fakty, glavnyy = bloki?.find((b) => b.id === 'fakty'), eshche = bloki?.find((b) => b.id === 'fakty-dnya');
   if (!glavnyy || !eshche) stop(`${vyhod}: нет блоков fakty и fakty-dnya`);
   const starye = [...glavnyy.udary, ...eshche.udary];
-  const otchet = [];
 
-  // Старый факт → утверждённый: жадно по сходству строки и «Подробнее», порог 0,5 (кадр, отрывок, пометка переходят только так).
-  const pary = [];
-  starye.forEach((u, i) => fakty.forEach((f) => {
-    const zag = u.summary.match(/<b>([\s\S]*?)<\/b>/)?.[1] ?? u.summary;
-    const s = chistka(zag) === chistka(f.summary) ? 1 : Math.max(zh(slova(zag), slova(f.summary)), 0.9 * zh(slova(u.det.join(' ')), slova(f.podrobnee)));
-    if (s >= 0.5) pary.push({ i, n: f.n, s });
-  }));
-  pary.sort((a, b) => b.s - a.s);
-  const staryj = new Map(), zanyat = new Set();
-  for (const p of pary) if (!staryj.has(p.n) && !zanyat.has(p.i)) { staryj.set(p.n, starye[p.i]); zanyat.add(p.i); }
+  // СТОП-правило (scripts/kartochka-v-stranicu.mjs): сначала все ошибки дня, при любой — yaml не пишется.
+  const mat = material(key);
+  const video = rolik(key, karta);
+  const { oshibki, kadry } = proverit({ nomera: fakty.map((f) => f.n), fakty: mat.fakty, pometki: POMETKI, utverzhden: data, video,
+    kadry: mat.kadry.map((m) => ({ n: m.n, privyazka: m.privyazka, obekt: kadrKartochki(m) })) });
+  if (oshibki.length) {
+    console.error(`${key}: ОСТАНОВ — карточка не записана (${path.basename(mat.file)}, ${path.basename(vhod)}):\n${oshibki.map((s) => `  ✗ ${key}: ${s}`).join('\n')}`);
+    return false;
+  }
 
-  // Кадры: со страницы (факты, галерея), потом из материала; привязка к фактам — копия карточки, иначе материал «к факту: N».
-  const mat = material(key), obekty = new Map();
-  const dobavit = (k) => { if (k?.src && !obekty.has(kadrId(k))) obekty.set(kadrId(k), k); };
-  starye.forEach((u) => dobavit(u.kadr)); (karta.figures || []).forEach(dobavit);
-  for (const m of mat.kadry) dobavit(kadrKartochki(m));
-  const obekt = (x) => obekty.get(x.gk || '') || [...obekty.values()].find((k) => k.src === x.fajl) || null;
-  const privyazki = kopiya?.kadry?.length
-    ? kopiya.kadry.map((x) => ({ k: obekt(x), fakty: [x.fakt, ...(x.takzhe || [])], x }))
-    : mat.kadry.filter((m) => m.kFaktu?.length && !m.oblozhka).map((m) => ({ k: kadrKartochki(m), fakty: m.kFaktu, x: { fajl: m.src } }));
-  for (const p of privyazki) if (!p.k) otchet.push(`кадр ${p.x.gk || p.x.fajl}: объекта нет ни на странице, ни в материале (или нет файла, подписи, адреса)`);
-  const svyazannye = new Set(privyazki.filter((p) => p.k).map((p) => kadrId(p.k)));
-  const ispolzovan = new Set(karta.oblozhka?.src ? [kadrId(karta.oblozhka)] : []);
-
+  const { oblozhka, kadrFakta, figures } = rasstavit(poryadok, kadry,
+    { oblozhka: karta.oblozhka, figures: karta.figures, kadryFaktov: starye.map((u) => u.kadr).filter(Boolean) });
   const novye = poryadok.map((n) => {
-    const f = fakty.find((x) => x.n === n), st = staryj.get(n);
-    const u = udar(f, st, data, mat.fakty.get(f.n));
-    // кадр: привязанный к факту первым номером, потом «также», потом кадр старого факта, если он ни к чему не привязан
-    const kand = [...privyazki.filter((p) => p.fakty[0] === n), ...privyazki.filter((p) => p.fakty.slice(1).includes(n))];
-    let k = kand.find((p) => p.k && !ispolzovan.has(kadrId(p.k)))?.k;
-    if (!k && st?.kadr && !svyazannye.has(kadrId(st.kadr)) && !ispolzovan.has(kadrId(st.kadr))) k = st.kadr;
-    if (k) { u.kadr = k; ispolzovan.add(kadrId(k)); }
-    if (st?.utverzhden) u.utverzhden = st.utverzhden; // как в образце 01-03: дата утверждения — в шапке и копии, не у каждого факта
+    const u = udar(fakty.find((x) => x.n === n), mat.fakty.get(n), data);
+    if (kadrFakta.has(n)) u.kadr = kadrFakta.get(n);
     return u;
   });
-  // Галерея: без обложки и кадров фактов; лишние привязанные и снятые со старых фактов — сюда же.
-  const figures = [];
-  const vGaleryu = (k) => { if (k?.src && !ispolzovan.has(kadrId(k))) { figures.push(k); ispolzovan.add(kadrId(k)); } };
-  (karta.figures || []).forEach(vGaleryu);
-  privyazki.forEach((p) => vGaleryu(p.k));
-  starye.forEach((u) => vGaleryu(u.kadr));
-  for (const m of mat.kadry) if (!m.oblozhka) vGaleryu(kadrKartochki(m));
-
   const ostatok = novye.length - 10, [nav, kicker] = CHISLO[ostatok];
   const b1 = { ...glavnyy, udary: novye.slice(0, 10) }, b2 = { ...eshche, udary: novye.slice(10) };
   if ('nav' in b2) b2.nav = `Ещё ${nav}`;
   b2.kicker = `Ещё ${kicker}`;
-  karta.fakty = [b1, b2]; karta.figures = figures;
+  Object.assign(karta, { fakty: [b1, b2], figures, oblozhka });
 
-  fakty.forEach((f) => {
-    const s = staryj.get(f.n), u = novye[poryadok.indexOf(f.n)];
-    if (!s) otchet.push(`факт ${f.n}: старого факта с тем же смыслом нет — отрывок и пометка из утверждённого`);
-    if (f.proverka) otchet.push(`факт ${f.n}: пометка проверки (на страницу не идёт): ${f.proverka}`);
-    if (!u.otryvok) otchet.push(`факт ${f.n}: в утверждённом «Подробнее» нет дословной цитаты источника — отрывка нет`);
-    if (!u.pometka) otchet.push(`факт ${f.n}: пометки достоверности нет ни в утверждённом, ни в карточке`);
-    if (!u.kadr) otchet.push(`факт ${f.n}: без кадра`);
-  });
-
-  const r = skhemaNeSdayutsya.safeParse({ ...karta, adres: 'den' });
-  const zamki = r.success ? [] : r.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`);
-  // Карточка без adres тоже идёт в сборку: не проходит схему и без adres — не записывать, иначе сборка красная (01-30, r496).
-  const bezA = skhemaNeSdayutsya.safeParse({ ...karta, adres: undefined });
-  if (!bezA.success) {
-    console.error(`${key}: схема не проходит и без adres — карточка не записана (сборка упала бы):\n  ${bezA.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('\n  ')}`);
-    return false;
-  }
-  if (zamki.length && !bezAdresa) {
-    console.error(`${key}: замки адреса den не проходят — карточка не записана:\n  ${zamki.join('\n  ')}\n${otchet.map((s) => `  · ${s}`).join('\n')}`);
+  const r = skhemaNeSdayutsya.safeParse({ ...karta, adres: bezAdresa ? karta.adres : 'den' });
+  if (!r.success) {
+    console.error(`${key}: ОСТАНОВ — схема и замки адреса den не проходят, карточка не записана:\n  ${r.error.issues.map((i) => `✗ ${key}: ${i.path.join('.')}: ${i.message}`).join('\n  ')}`);
     return false;
   }
 
   doc.set('fakty', doc.createNode(karta.fakty, { aliasDuplicateObjects: false }));
   doc.set('figures', doc.createNode(figures, { aliasDuplicateObjects: false }));
-  const stavimAdres = !zamki.length && !bezAdresa; // --bez-adresa: adres не трогаем вовсе (пересборка готовых дней без смены адреса)
+  if (oblozhka) doc.set('oblozhka', doc.createNode(oblozhka, { aliasDuplicateObjects: false }));
+  const stavimAdres = !bezAdresa; // --bez-adresa: adres не трогаем вовсе (пересборка без смены адреса)
   if (stavimAdres && !doc.has('adres')) doc.contents.items.splice(doc.contents.items.findIndex((p) => p.key.value === 'key') + 1, 0, doc.createPair('adres', 'den'));
   else if (stavimAdres) doc.set('adres', 'den');
   const svezhij = doc.toString({ lineWidth: 0, indentSeq, flowCollectionPadding: false });
   let vyh = tekst;
-  for (const kl of ['fakty', 'figures', ...(stavimAdres ? ['adres'] : [])]) {
+  for (const kl of ['fakty', 'figures', ...(oblozhka ? ['oblozhka'] : []), ...(stavimAdres ? ['adres'] : [])]) {
     const st = razdel(vyh, kl), nv = razdel(svezhij, kl);
     if (!nv) stop(`${key}: раздела ${kl} нет в новом документе`);
     vyh = st ? vyh.replace(st[0], () => nv[0]) : vyh.replace(/^key:[^\n]*\n/m, (s) => s + nv[0]);
   }
   if (JSON.stringify(YAML.parse(vyh, { maxAliasCount: -1 })) !== JSON.stringify(YAML.parse(svezhij, { maxAliasCount: -1 }))) stop(`${key}: вставка разделов разошлась с документом`);
   fs.writeFileSync(vyhod, vyh);
-  console.log(`${key}: ${stavimAdres ? 'adres: den' : zamki.length ? 'записана БЕЗ adres (замки не проходят)' : 'adres не тронут (--bez-adresa)'}, фактов ${novye.length} (${b1.udary.length}+${b2.udary.length}), кадров у фактов ${novye.filter((u) => u.kadr).length}, галерея ${figures.length}, старых совпало ${staryj.size}, утверждено ${data}`);
-  for (const s of otchet) console.log(`  · ${s}`);
-  for (const s of zamki) console.log(`  ✗ ${s}`);
+  console.log(`${key}: ${stavimAdres ? 'adres: den' : 'adres не тронут (--bez-adresa)'}, фактов ${novye.length} (${b1.udary.length}+${b2.udary.length}), кадров у фактов ${kadrFakta.size}, галерея ${figures.length}, утверждено ${data}`);
+  console.log(`  кадры: обложка ${oblozhka?.src ?? '—'}${kadry.filter((k) => k.p.vid === 'obl').length ? ' (кадр «обложка» материала)' : ' (прежняя)'}`);
+  for (const k of kadry) {
+    const n = [...kadrFakta].find(([, o]) => kadrId(o) === kadrId(k.obekt))?.[0];
+    console.log(`  · кадр ${k.n} (к факту: ${k.privyazka}) → ${kadrId(k.obekt) === kadrId(oblozhka ?? {}) ? 'обложка' : n ? `факт ${n}` : 'галерея'} ${k.obekt.src}`);
+  }
   return true;
 }
 
