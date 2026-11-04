@@ -37,7 +37,7 @@ const put = (src) => `/${String(src).replace(/^\//, '')}`;
 // Размер кадра из файла (JPEG — маркер SOF, PNG — IHDR), если в материале его нет.
 // Ролик дня из реестра public/video/registry.json — выпуск nesdayutsya/ДДmon-… (ролик rc-rolik к дню без ролика на старой
 // странице, 10 янв., r521). Пути — абсолютные, с версией выпуска.
-function rolikIzReestra(dd, mes) {
+export function rolikIzReestra(dd, mes) {
   const f = path.join(KOREN, 'public/video/registry.json');
   if (!fs.existsSync(f)) return null;
   const vse = JSON.parse(fs.readFileSync(f, 'utf8')).releases ?? {};
