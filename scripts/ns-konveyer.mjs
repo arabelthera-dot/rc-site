@@ -40,6 +40,8 @@ if (!dni.length) { console.error('запуск: node scripts/ns-konveyer.mjs 01-
 
 const gh = (...a) => execFileSync('gh', a, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
 const idRolika = (dd, mes) => `ns${dd}${MES_KL[mes]}`;
+// Название и хук дня — только из утверждённой карточки календаря src/content/days/ne-sdayutsya/ММ-ДД.json, дословно (r533).
+const kartochkaDnya = (key) => { const f = path.join(KOREN, 'src/content/days/ne-sdayutsya', `${key}.json`); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {}; };
 const norm = (s) => String(s ?? '').replace(/<[^>]+>/g, '').toLowerCase().replace(/ё/g, 'е').replace(/[^0-9a-zа-я]+/g, ' ').trim();
 
 // Последний живой артефакт ролика: { run, imena: { '16x9': name, '9x16': name } } или null.
@@ -60,9 +62,11 @@ const obsozhka = (mp4, jpg) => execFileSync('ffmpeg', ['-v', 'error', '-y', '-ss
 // Шаг 1: ролик из облака в public/ и реестр. Возвращает причину отказа или null.
 function rolikVReestr(key, karta, dd, mes) {
   const reestr = JSON.parse(fs.readFileSync(REESTR, 'utf8'));
-  if (Object.keys(reestr.releases).some((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`))) return null;
-  const id = idRolika(dd, mes);
+  const id = idRolika(dd, mes), hook = kartochkaDnya(key).hook ?? '';
+  const est = Object.keys(reestr.releases).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
   const run = artefakty(id);
+  // Выпуск уже в реестре — перекачиваем, только если в облаке ролик новее (сценарий поправили и пересобрали, r533).
+  if (est && (!run || reestr.releases[est].note?.includes(`прогон ${run})`))) return null;
   if (!run) return `в облаке rc-rolik нет собранного ролика ${id} (нет сценария days/${id}.json или render.yml не запускался)`;
   const slug = String(karta.audioguide?.audioSrc ?? '').match(/audio-guide-(.+?)-ru/)?.[1];
   if (!slug) return 'нет имени дня для файлов ролика (audioguide.audioSrc audio-guide-<имя>-ru.mp3)';
@@ -79,18 +83,19 @@ function rolikVReestr(key, karta, dd, mes) {
       fajly[f] = { cel, sec: ffprobeSec(cel), mb: +(fs.statSync(cel).size / 1048576).toFixed(1) };
     }
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
-  const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v: 1, w, h, sec: x.sec, mb: x.mb });
+  const v = est ? (reestr.releases[est].horizontal?.v ?? 1) + 1 : 1; // новая версия — сбросить кэш у зрителя
+  const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
   reestr.releases[vypusk] = {
     title: `История в ${sekund(Math.round(fajly['16x9'].sec))}`,
-    intro: karta.lead?.hook ?? '',
+    intro: hook,
     note: `Ролик собран в облаке rc-rolik (render.yml, прогон ${run}) из сценария days/${id}.json и кадров дня. Закадровый текст озвучен синтезом речи.`,
     horizontal: fail('', 1920, 1080, fajly['16x9']),
     vertical: fail('-9x16', 1080, 1920, fajly['9x16']),
-    poster: { file: `${vypusk}/day-${imya}-poster.jpg`, local: `${VIDEO}/day-${imya}-poster.jpg`, v: 1 },
-    poster_vertical: { file: `${vypusk}/day-${imya}-9x16-poster.jpg`, local: `${VIDEO}/day-${imya}-9x16-poster.jpg`, v: 1 },
+    poster: { file: `${vypusk}/day-${imya}-poster.jpg`, local: `${VIDEO}/day-${imya}-poster.jpg`, v },
+    poster_vertical: { file: `${vypusk}/day-${imya}-9x16-poster.jpg`, local: `${VIDEO}/day-${imya}-9x16-poster.jpg`, v },
   };
   fs.writeFileSync(REESTR, `${JSON.stringify(reestr, null, 2)}\n`);
-  console.log(`  ролик: ${vypusk} из прогона ${run}, ${fajly['16x9'].sec} с`);
+  console.log(`  ролик: ${vypusk} из прогона ${run}, ${fajly['16x9'].sec} с${est ? `, замена старого (v${v})` : ''}`);
   return null;
 }
 
@@ -99,9 +104,15 @@ const sekund = (n) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? 'секунду' 
 // Шаг 2: блок video в карточку из реестра.
 function videoVKartochku(fail, dd, mes) {
   const doc = YAML.parseDocument(fs.readFileSync(fail, 'utf8'));
-  if (doc.has('video')) return null;
   const r = rolikIzReestra(dd, mes);
-  if (!r) return 'ролика нет в реестре public/video/registry.json';
+  if (!r) return doc.has('video') ? null : 'ролика нет в реестре public/video/registry.json';
+  if (doc.has('video')) { // блок есть — обновить, если реестр новее (замена ролика)
+    if (JSON.stringify(doc.toJS().video) === JSON.stringify(r)) return null;
+    doc.set('video', doc.createNode(r));
+    fs.writeFileSync(fail, doc.toString({ lineWidth: 0 }));
+    console.log('  карточка: блок video обновлён из реестра');
+    return null;
+  }
   const items = doc.contents.items;
   const i = items.findIndex((p) => p.key?.value === 'daynav');
   items.splice(i < 0 ? items.length : i + 1, 0, doc.createPair('video', r));
@@ -114,9 +125,15 @@ function videoVKartochku(fail, dd, mes) {
 
 // Шаг 4: сверка комплекта. Возвращает список причин.
 const scenarii = {};
-function sverka(fail, dd, mes) {
+function sverka(key, fail, dd, mes) {
   const net = [];
-  const k = YAML.parse(fs.readFileSync(fail, 'utf8'));
+  const k = YAML.parse(fs.readFileSync(fail, 'utf8')), kal = kartochkaDnya(key);
+  if (!kal.title || !kal.hook) net.push(`карточка календаря: нет title или hook в src/content/days/ne-sdayutsya/${key}.json`);
+  else {
+    if (k.head?.sobytie !== kal.title) net.push(`название: на странице «${k.head?.sobytie}», в карточке календаря «${kal.title}»`);
+    if (k.lead?.hook !== kal.hook) net.push(`хук: на странице «${k.lead?.hook}», в карточке календаря «${kal.hook}»`);
+    if (k.video && k.video.intro !== kal.hook) net.push(`ролик: подпись «${k.video.intro}», в карточке календаря «${kal.hook}»`);
+  }
   if (k.adres !== 'den') net.push('страница: нет adres: den — замки ns-iz-utverzhdennyh не прошли');
   const ag = k.audioguide?.audioSrc;
   if (!ag) net.push('аудиогид: нет audioguide.audioSrc');
@@ -152,7 +169,7 @@ for (const key of dni) {
       for (const s of `${r.stdout}${r.stderr}`.split('\n').filter((x) => x && !x.startsWith('  ·'))) console.log(`  ${s}`);
       if (r.status === 1) net.push('страница: ns-iz-utverzhdennyh остановилась (ОСТАНОВ выше)');
     }
-    net = net.concat(sverka(fail, dd, mes));
+    net = net.concat(sverka(key, fail, dd, mes));
   }
   // Комплект неполный — день не уходит: adres снимаем (откат дня — тоже снять adres).
   if (net.length && !SVERKA && fs.existsSync(fail)) {
