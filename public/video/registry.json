@@ -176,7 +176,7 @@
         "w": 1920,
         "h": 1080,
         "sec": 48.8,
-        "mb": 11.0
+        "mb": 11
       },
       "vertical": {
         "file": "izobreteniya/01jan-cabletv/day-01jan-cabletv-9x16.mp4",
@@ -541,7 +541,7 @@
         "w": 1080,
         "h": 1920,
         "sec": 45.9,
-        "mb": 15.0
+        "mb": 15
       },
       "poster": {
         "file": "izobreteniya/06jan-orlov/day-06jan-orlov-poster.jpg",
@@ -884,7 +884,7 @@
         "w": 1920,
         "h": 1080,
         "sec": 51.4,
-        "mb": 15.0
+        "mb": 15
       },
       "vertical": {
         "file": "izobreteniya/18jan-odner/day-18jan-odner-9x16.mp4",
@@ -916,7 +916,7 @@
         "w": 1920,
         "h": 1080,
         "sec": 59.4,
-        "mb": 14.0
+        "mb": 14
       },
       "vertical": {
         "file": "izobreteniya/19jan-kantorovich/day-19jan-kantorovich-9x16.mp4",
@@ -1021,7 +1021,7 @@
         "w": 1080,
         "h": 1920,
         "sec": 41.8,
-        "mb": 9.0
+        "mb": 9
       },
       "poster": {
         "file": "izobreteniya/22jan-landau/day-22jan-landau-poster.jpg",
@@ -1075,7 +1075,7 @@
         "v": 1,
         "w": 1920,
         "h": 1080,
-        "sec": 51.0,
+        "sec": 51,
         "mb": 10.1
       },
       "vertical": {
@@ -1084,7 +1084,7 @@
         "v": 1,
         "w": 1080,
         "h": 1920,
-        "sec": 51.0,
+        "sec": 51,
         "mb": 7.6
       },
       "poster": {
@@ -1117,7 +1117,7 @@
         "w": 1080,
         "h": 1920,
         "sec": 58.8,
-        "mb": 12.0
+        "mb": 12
       },
       "poster": {
         "file": "izobreteniya/28jan-havkin/day-28jan-havkin-poster.jpg",
@@ -1320,6 +1320,105 @@
       "poster_vertical": {
         "file": "nesdayutsya/09jan-panfilovtsy/day-09jan-panfilovtsy-9x16-poster.jpg",
         "local": "muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "nesdayutsya/02jan-merkuriy": {
+      "title": "История в 61 секунду",
+      "intro": "Бриг «Меркурий» с 18 пушками четыре часа дрался с двумя турецкими линкорами и вернулся к своим, не спустив флага.",
+      "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41805840902) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 60.7,
+        "mb": 14.4
+      },
+      "vertical": {
+        "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy-9x16.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 60.7,
+        "mb": 14.3
+      },
+      "poster": {
+        "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy-9x16-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "nesdayutsya/03jan-sirotinin": {
+      "title": "История в 53 секунды",
+      "intro": "Двадцатилетний Николай Сиротинин с одной пушкой остался у моста через Добрость — и танковая колонна встала на два часа.",
+      "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41802766703) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 52.5,
+        "mb": 13
+      },
+      "vertical": {
+        "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin-9x16.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 52.5,
+        "mb": 12.9
+      },
+      "poster": {
+        "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin-9x16-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin-9x16-poster.jpg",
+        "v": 1
+      }
+    },
+    "nesdayutsya/04jan-kozelsk": {
+      "title": "История в 50 секунд",
+      "intro": "Малый Козельск семь недель держал орду Батыя — дольше всех городов нашествия, и враг прозвал его злым городом.",
+      "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41802766703) из сценария days/ns04jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+      "horizontal": {
+        "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk.mp4",
+        "v": 1,
+        "w": 1920,
+        "h": 1080,
+        "sec": 50.3,
+        "mb": 14.9
+      },
+      "vertical": {
+        "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16.mp4",
+        "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16.mp4",
+        "v": 1,
+        "w": 1080,
+        "h": 1920,
+        "sec": 50.3,
+        "mb": 14.3
+      },
+      "poster": {
+        "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg",
+        "v": 1
+      },
+      "poster_vertical": {
+        "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16-poster.jpg",
+        "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16-poster.jpg",
         "v": 1
       }
     }
