@@ -12,13 +12,15 @@ export const str = z.string().min(1);
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка
 // достоверности (замок ниже); у пробы den-shablon эти поля необязательны.
 export const POMETKI = ['документ', 'два источника', 'легенда'];
+// Служебные пометки (Р504, r514h): замок их принимает, на страницу они не идут — оговорок в тексте страницы нет.
+export const POMETKI_SLUZHEBNYE = ['один источник', 'мнение', 'воспоминание'];
 export const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional() });
 // Кадр дня (блок #kadry, как у 13 янв.): размеры — со старой страницы; klass: portret — портретный кадр уже (общее правило izobreteniya-den.css).
 export const kadr = kartinka.extend({ width: z.number().int().positive().optional(), height: z.number().int().positive().optional(), klass: z.literal('portret').optional() });
 // kadr у факта (Р17, «очень много картинок»: каждая — у своего факта) — виден под строкой факта, вне «Подробнее».
 // utverzhden — дата «да» Сергея по факту (ГГГГ-ММ-ДД, Р166/Р176); шаблон его не выводит, замок музея решает, обязателен ли.
 export const udar = z.object({ summary: str, find: z.boolean().optional(), tag: str.optional(), podrobnee: str.optional(), det: z.array(str).min(1), src: str,
-  otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum(POMETKI).optional(), kadr: kadr.optional(),
+  otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum([...POMETKI, ...POMETKI_SLUZHEBNYE]).optional(), kadr: kadr.optional(),
   utverzhden: z.string().regex(/^\d{4}-\d\d-\d\d$/, 'utverzhden — дата ГГГГ-ММ-ДД').optional() });
 // Норма фактов дня — museum-inventions п.6 (Р101): «4–5 фактов»; меньше — сборка красная (только adres: den).
 export const NORMA_FAKTOV = 4;
@@ -138,7 +140,7 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {} } = {}
   if (!glavnyy || glavnyy.udary.length < BLOK_FAKTOV || !eshche || eshche.udary.length < eshcheMin)
     iss(ctx, ['fakty'], `ЗАМОК (Р386): нужны два блока фактов, как у 18 янв. — «Десять фактов» (id fakty, ≥${BLOK_FAKTOV}) и «Ещё N фактов» (id fakty-dnya, ≥${eshcheMin}${vKartochke ? `, в утверждённой карточке ${vKartochke}` : ''}); сейчас ${bloki.length ? bloki.map((b) => `${b.id}: ${b.udary.length}`).join(', ') : 'фактов нет'}`);
   udary.forEach((u, i) => { const net = ['otryvok', 'stranica', 'href', 'pometka'].filter((k) => !u[k]);
-    if (net.length) iss(ctx, ['fakty', 'udary', i], `ЗАМОК: у факта «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» нет: ${net.join(', ')} (отрывок, страница, ссылка, пометка: ${POMETKI.join(' / ')})`); });
+    if (net.length) iss(ctx, ['fakty', 'udary', i], `ЗАМОК: у факта «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» нет: ${net.join(', ')} (отрывок, страница, ссылка, пометка: ${[...POMETKI, ...POMETKI_SLUZHEBNYE].join(' / ')})`); });
   // ЗАМОК кадров (r602): ≥ KADROV_MIN разных, хоть один в тексте. Долг — снимок на 02.11.2026: порог дня = числу из долга.
   const { vse, vTekste } = kadryDnya(d), dolg = dolgKadrov[d.key], porog = dolg ?? KADROV_MIN;
   if (vse.size < porog)
