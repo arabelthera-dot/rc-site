@@ -134,7 +134,8 @@ function udar(f, st, data, m) {
   if (!pervyy) stop(`факт ${f.n}: в утверждённом нет «Источник» с адресом`);
   const svoj = st && f.ssylki.find((s) => s.href === st.href);
   const izMat = !svoj && m?.href && f.ssylki.find((s) => s.href === m.href);
-  const u = { summary: `<b>${f.summary}</b>`, det: [f.podrobnee], src: `Источник: ${f.istochnik}`,
+  // «; Пометка: …» в строке «Источник» — заметка редакции (мнение, оговорка о сроке), на страницу не идёт (Р504, 01-04, 01-11).
+  const u = { summary: `<b>${f.summary}</b>`, det: [f.podrobnee], src: `Источник: ${f.istochnik.replace(/[;,]?\s*Пометка:[\s\S]*$/, '').trim()}`,
     stranica: (svoj && st.stranica) || (izMat && m.stranica) || (svoj && svoj.imya) || pervyy.imya || new URL(pervyy.href).host, href: svoj ? st.href : izMat ? m.href : pervyy.href };
   const izKart = otryvok(f.podrobnee);
   const o = st?.otryvok && f.podrobnee.includes(st.otryvok.replace(/^«|»$/g, '')) ? st.otryvok : izKart ?? st?.otryvok ?? m?.otryvok;
