@@ -120,24 +120,28 @@ jobs:
   # Ключ хоста — строкой ниже (не секрет, данные Михаила 20.10), StrictHostKeyChecking=yes: подменённый сервер сайт не
   # получит. --delay-updates + --delete-after: новые файлы подменяются разом в конце, старые удаляются после — посетитель
   # не застаёт полусайт. nginx (Михаил): try_files $uri $uri/ $uri.html, error_page 404 /404.html.
-  # Нужно: секрет RU_DEPLOY_KEY (кладёт Михаил); нет — задача спит строкой в журнале. Ошибка — предупреждение, Pages и
-  # IndexNow не роняются (continue-on-error). Откат — убрать эту задачу.
+  # Нужно: секрет RU_DEPLOY_KEY (кладёт Михаил); нет — задача спит строкой в журнале. Отказ выкладки — красный прогон
+  # и строка в итоге прогона (Р531, 04.11.2026: с continue-on-error прогон был зелёным, а сайт в России — старым,
+  # 41847877029: сборка 1647 МБ > порога). Pages и IndexNow от msk не зависят (needs: build / deploy) и выкладываются
+  # как прежде. Откат — убрать эту задачу.
   msk:
     needs: build
     runs-on: ubuntu-latest
     # Окружение msk-new (Р64): секрет RU_DEPLOY_KEY переносится сюда из секретов репо (Михаил) с правилом «только main».
     # Пока окружение без правил — поведение прежнее.
     environment: msk-new
-    continue-on-error: true
     timeout-minutes: 20
     permissions:
       contents: read
+    outputs:
+      est: ${{ steps.est.outputs.est }}
     env:
       KLYUCH: ${{ secrets.RU_DEPLOY_KEY }}
       KUDA: rcdeploy@185.149.145.227
       IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
       ADRES: ${{ vars.RU_DEPLOY_URL }}
-      RU_DEPLOY_MAX_MB: ${{ vars.RU_DEPLOY_MAX_MB }}
+      RU_SAYT_MAX_MB: ${{ vars.RU_SAYT_MAX_MB }}
+      RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
     steps:
       - id: est
         run: |
@@ -181,8 +185,16 @@ jobs:
           if grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist >/dev/null; then
             echo "::error::msk-new: в сборке закрытый ключ"; grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist; exit 1
           fi
-          mb=$(du -sm dist | cut -f1); echo "msk-new: размер сборки $mb МБ"
-          [ "$mb" -le "${RU_DEPLOY_MAX_MB:-1500}" ] || { echo "::error::msk-new: сборка $mb МБ больше порога ${RU_DEPLOY_MAX_MB:-1500} МБ"; exit 1; }
+          # Бюджет размера (Р536, п. 9) — как в мире, по частям, а не одним числом на всё (прежний RU_DEPLOY_MAX_MB от
+          # du -sm dist рос вместе с роликами, 04.11 его подняли руками до 3000 — заплатка). Сайт без роликов — не больше
+          # RU_SAYT_MAX_MB (1000: лимит опубликованного сайта GitHub Pages 1 ГБ, на Pages уходит эта же сборка —
+          # https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits); каждый ролик — не
+          # больше RU_ROLIK_MAX_MB (50; лимит на файл у статических хостингов: Cloudflare Pages 25 МБ, Pages 100 МБ).
+          # Общий объём роликов меряет не порог, а диск сервера: место кончилось — rsync падает, прогон красный (Михаил, М83).
+          sayt=$(du -sm --exclude='*.mp4' dist | cut -f1); echo "msk-new: сайт без роликов $sayt МБ, ролики $(du -sm video-sajta | cut -f1) МБ"
+          [ "$sayt" -le "${RU_SAYT_MAX_MB:-1000}" ] || { echo "::error::msk-new: сайт без роликов $sayt МБ больше бюджета ${RU_SAYT_MAX_MB:-1000} МБ"; exit 1; }
+          bolshie=$(find dist -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
+          if [ -n "$bolshie" ]; then echo "::error::msk-new: ролики больше ${RU_ROLIK_MAX_MB:-50} МБ:"; echo "$bolshie"; exit 1; fi
           umask 077; mkdir -p ~/.ssh
           printf '%s\n' "$KLYUCH" > ~/.ssh/klyuch
           printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
@@ -195,6 +207,92 @@ jobs:
             echo "проверка $ADRES — код $kod"
             [ "$kod" = 200 ] || echo "::warning::msk-new: $ADRES ответил $kod"
           fi
+      # Отказ — понятной строкой наверху прогона (как failure-сводки в GitHub Actions job summary).
+      - name: итог выкладки в Россию
+        if: failure()
+        run: |
+          echo "::error::Выкладка в Россию (msk-new) НЕ прошла — сайт в России старый, GitHub Pages обновлён. Причина — строкой ::error выше в шаге «выкладка на msk-new»."
+          {
+            echo "### ❌ Выкладка в Россию (msk-new) не прошла"
+            echo "Сайт в России остался старым; GitHub Pages обновлён. Причина — в журнале шага «выкладка на msk-new» (строка ::error)."
+          } >> "$GITHUB_STEP_SUMMARY"
+  # Живой сайт после выкладки в Россию (Р536, п. 9) — post-deploy smoke на Playwright, как smoke.yml: машина открывает
+  # https://russian-civilization.ru как посетитель — страницы дней, изменённых этой выкладкой (git diff от прошлой
+  # успешной выкладки), а нет таких — выборку (tests/smoke/dni.spec.mjs). Страница 200 и равна выложенной сборке, хук
+  # карточки на странице, ролик и аудиогид отдаются (HEAD 200, тип). Брак — красный прогон и карточка на доске
+  # (одна открытая на всё: следующий брак — комментарием к ней). Без секрета (msk спит) — не запускается.
+  # Пять вопросов: задевает — ничего, только читает сайт; нужно — github.token (actions/issues); без нужного — красный
+  # прогон без карточки; проверка — zhivoy-sayt.yml на заявке; откат — убрать эту задачу.
+  zhivoy:
+    needs: msk
+    if: needs.msk.outputs.est == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      actions: read
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: |
+            tests/smoke
+            src/content/days
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Playwright
+        run: |
+          npm ci --no-audit --no-fund
+          npx --no-install playwright install --with-deps chromium
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: github-pages
+          path: artefakt
+      # Из выложенной сборки — страницы дней и аудиогиды (сравнить с живыми); изменения — от прошлой успешной выкладки.
+      - name: что выложено
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p vylozheno && tar -xf artefakt/artifact.tar -C vylozheno --wildcards '*/den/*' '*.mp3'
+          proshlyy=$(gh api -X GET "repos/$GITHUB_REPOSITORY/actions/workflows/deploy.yml/runs" -f branch=main -f status=success -f per_page=20 \
+            --jq "[.workflow_runs[] | select(.id != $GITHUB_RUN_ID)][0].head_sha // empty") || proshlyy=
+          if [ -n "$proshlyy" ] && [ "$proshlyy" != "$GITHUB_SHA" ]; then
+            gh api "repos/$GITHUB_REPOSITORY/compare/$proshlyy...$GITHUB_SHA" --paginate --jq '.files[].filename' > izmeneniya.txt || : > izmeneniya.txt
+          else : > izmeneniya.txt; fi
+          echo "изменено файлов с ${proshlyy:-—}: $(wc -l < izmeneniya.txt)"
+      - name: дни на живом сайте
+        working-directory: tests/smoke
+        env:
+          SMOKE_DIST: ${{ github.workspace }}/vylozheno
+          SMOKE_IZMENENIYA: ${{ github.workspace }}/izmeneniya.txt
+        run: npx --no-install playwright test -c playwright.config.mjs dni.spec.mjs
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: failure()
+        with:
+          name: zhivoy-otchet
+          path: tests/smoke/otchet
+          retention-days: 7
+      - name: карточка на доске
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          zag='Выкладка в Россию: живой сайт не прошёл проверку дней'
+          prog="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "::error::Живой сайт после выкладки в Россию не прошёл проверку дней — $prog"
+          echo "### ❌ Живой сайт после выкладки не прошёл проверку дней — отчёт в артефакте zhivoy-otchet" >> "$GITHUB_STEP_SUMMARY"
+          n=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search "\"$zag\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$n" ]; then gh issue comment "$n" -R "$GITHUB_REPOSITORY" --body "Снова брак: $prog (коммит $GITHUB_SHA)"; exit 0; fi
+          gh issue create -R "$GITHUB_REPOSITORY" --title "$zag" --label agent:arabelthera-dot --body "$(printf '%s\n' \
+            "Прогон: $prog (коммит $GITHUB_SHA). Какие дни и что не так — в журнале шага «дни на живом сайте» и в артефакте zhivoy-otchet." \
+            '### Готово значит' 'Задача zhivoy в deploy.yml зелёная на следующей выкладке.' \
+            '### Что задевает' 'Живой сайт https://russian-civilization.ru — посетитель видит брак.' \
+            '### Что нужно' 'Хозяин дня чинит карточку или страницу; сервер — Михаил.' \
+            '### Что будет без нужного' 'На сайте в России день с браком.' \
+            '### Проверка до слияния' 'tests/smoke/dni.spec.mjs с SMOKE_DNI=<музей/ММ-ДД> зелёный.' \
+            '### Как откатить' 'Revert заявки, давшей брак.')"
   # IndexNow (Е6, Р47; «да» Сергея 20.10.2026): после выкладки — адреса волны 1 карты сайта и изменившиеся за сутки
   # Яндексу и Bing (scripts/indexnow.mjs; ночью — только изменившиеся). Без сети или с ошибкой — предупреждение,
   # выкладка уже прошла и не роняется. Откат — убрать эту задачу.

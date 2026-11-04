@@ -38,7 +38,7 @@ jobs:
           npx --no-install playwright install --with-deps chromium
       - name: smoke
         working-directory: tests/smoke
-        run: npx --no-install playwright test -c playwright.config.mjs
+        run: npx --no-install playwright test -c playwright.config.mjs sait.spec.mjs
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
