@@ -1,4 +1,4 @@
-// Копия утверждённого в сайт (Р506, Р511 — любой музей, 04.11.2026): карточка дня и привязка кадров («Факт к кадру: N»)
+// Копия утверждённого в сайт (Р506, Р511 — любой музей, Р514 — все кадры с привязкой, 04.11.2026): карточка дня и кадры («к факту: N»)
 // из workspace → src/data/utverzhdeno/<музей>/ММ-ДД.json. Сборка не видит workspace, поэтому сверщик
 // (scripts/sverka-utverzhdeno.mjs) читает эту копию. Где карточки (стандарт — knowledge/utverzhdeno/README.md):
 //  — knowledge/utverzhdeno/<музей>/ММ-ДД.md; кадры — там же ММ-ДД.kadry.md или раздел «КАДРЫ» в самой карточке;
@@ -67,19 +67,38 @@ export function razobratKartochku(tekst) {
   return { zagolovok: stroki[0].trim(), fakty, poryadok };
 }
 
+// Привязка кадра (Р514, единый вид): «к факту: N» / «к факту: обложка» / «к факту: галерея»; прежнее «Факт к кадру: N»
+// и «нет (обложка дня)» тоже читается. Числа в скобках — пояснение, не номер факта («6 (экипаж 52 человека)»),
+// кроме «(и 14)» / «(а также 2, 11)». mesto: 'fakt' | 'oblozhka' | 'galereya' | 'net' (нет, с пояснением) | null —
+// прочерк, пусто, голое «нет» или непонятное («общий») — сверщик краснеет; privyazka — строка как написана.
+export function razobratPrivyazku(s) {
+  const privyazka = String(s ?? '').trim();
+  const vne = privyazka.replace(/\([^)]*\)/g, ' ');
+  const vSkobkah = [...privyazka.matchAll(/\(\s*(?:и|а также)\s+([^)]*)\)/g)].map((m) => m[1]).join(' ');
+  const ch = [...new Set([...(vne.match(/\d+/g) || []), ...(vSkobkah.match(/\d+/g) || [])].map(Number))];
+  if (ch.length) return { mesto: 'fakt', fakt: ch[0], takzhe: ch.slice(1), privyazka };
+  const r = (mesto) => ({ mesto, fakt: null, takzhe: [], privyazka });
+  if (/обложк/i.test(privyazka)) return r('oblozhka');
+  if (/галере/i.test(privyazka)) return r('galereya');
+  if (/^нет\s*\(.*\S.*\)/i.test(privyazka)) return r('net');
+  return r(null);
+}
+
+// Кадры материала: «Кадр N» / «### Кадр N (запас)»; «Файл:»/«файл:», «Источник:»/«источник:», «Факт к кадру:»/«к факту:».
+// Пишутся все кадры с файлом — и без привязки: её отсутствие ловит сверщик, а не молчаливый пропуск.
 export function razobratMaterial(tekst) {
   const kadry = [];
   let tek = null;
   for (const s of tekst.split('\n')) {
-    const k = s.match(/^Кадр (\d+)\b/);
-    if (k) { tek = { n: +k[1], fajl: '', gk: '', fakt: null, takzhe: [] }; kadry.push(tek); continue; }
+    const k = s.match(/^(?:#{1,4}\s*)?Кадр (\d+)\b(.*)$/);
+    if (k) { tek = { n: +k[1], fajl: '', gk: '', fakt: null, takzhe: [], mesto: null, privyazka: null, ...(/запас/i.test(k[2]) ? { zapas: true } : {}) }; kadry.push(tek); continue; }
     if (!tek) continue;
-    if (s.startsWith('Файл:')) tek.fajl = s.slice(5).trim().replace(/\s*\(\d+×\d+\)\s*$/, '');
-    else if (s.startsWith('Источник:')) { const g = s.match(/goskatalog\.ru\/portal\/#\/collections\?id=(\d+)/); if (g) tek.gk = g[1]; }
-    else if (s.startsWith('Факт к кадру:')) {
-      const ch = (s.slice(13).match(/\d+/g) || []).map(Number);
-      tek.fakt = ch[0] ?? null; tek.takzhe = ch.slice(1);
-    }
+    const p = s.match(/^(файл|источник|факт к кадру|к факту):(.*)$/i);
+    if (!p) continue;
+    const pole = p[1].toLowerCase(); const z = p[2].trim();
+    if (pole === 'файл') tek.fajl = z.replace(/\s*\(\d+×\d+\)\s*$/, '');
+    else if (pole === 'источник') { const g = z.match(/goskatalog\.ru\/portal\/#\/collections\?id=(\d+)/); if (g) tek.gk = g[1]; }
+    else Object.assign(tek, razobratPrivyazku(z));
   }
   return kadry.filter((x) => x.fajl);
 }
@@ -99,7 +118,7 @@ export function kopiyaMuzeya(muzey, dniArg = [], iz = IZ) {
     if (!k.fakty.length) { console.log(`::error::utverzhdeno-kopiya: ${muzey} ${key} — в карточке не нашлось ни одного факта «N. (метка) текст»`); osh++; continue; }
     const mp = ist.material(key);
     const kadryTekst = mp ? fs.readFileSync(path.join(iz, mp), 'utf8') : razdelKadrov(tekst);
-    const kadry = razobratMaterial(kadryTekst).filter((x) => x.fakt);
+    const kadry = razobratMaterial(kadryTekst);
     const staryj = path.join(kuda, `${key}.json`);
     const prezhnij = fs.existsSync(staryj) ? JSON.parse(fs.readFileSync(staryj, 'utf8')) : {};
     const nomera = k.fakty.map((f) => f.n);

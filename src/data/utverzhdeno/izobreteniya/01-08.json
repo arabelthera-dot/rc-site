@@ -112,39 +112,67 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-08-goskatalog-50255453.jpg",
+   "gk": "41192160",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-08-kniga-ermak-vo-ldah.jpg",
    "gk": "35132416",
    "fakt": 3,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-08-apraksin-gogland.jpg",
    "gk": "68469139",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-08-ledovyi-pohod-1918.jpg",
    "gk": "18987852",
    "fakt": 10,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-08-model-vityaz.jpg",
    "gk": "3720911",
    "fakt": 14,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
   },
   {
    "n": 6,
    "fajl": "/muzei/izobreteniya/img/01-08-flag-ermaka-cvmm.jpg",
    "gk": "43976540",
    "fakt": 15,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/izobreteniya/img/01-08-goskatalog-41298564.jpg",
+   "gk": "34748422",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

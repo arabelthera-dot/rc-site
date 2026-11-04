@@ -112,39 +112,76 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-17-goskatalog-5816870.jpg",
+   "gk": "5992150",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-17-gidravlicheskiy-udar-1899.jpg",
    "gk": "1529419",
    "fakt": 3,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-17-o-parenii-ptic.jpg",
    "gk": "1526214",
    "fakt": 7,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-17-institut-inzhenerov-kvf.jpg",
    "gk": "66032968",
    "fakt": 11,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-17-kuchino-institut.jpg",
    "gk": "70405486",
    "fakt": 13,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
   },
   {
    "n": 6,
    "fajl": "/muzei/izobreteniya/img/01-17-vint-zhukovskogo-chertezh.jpg",
    "gk": "69842246",
    "fakt": 14,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/izobreteniya/img/01-17-ploskaya-truba-mvtu.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 8,
+   "fajl": "/muzei/izobreteniya/img/01-17-goskatalog-5816845.jpg",
+   "gk": "5992175",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

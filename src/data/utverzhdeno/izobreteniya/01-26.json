@@ -112,32 +112,67 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-26-goskatalog-93127965.jpg",
+   "gk": "7086342",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-26-przhevalskiy-4-puteshestvie-1888.jpg",
    "gk": "47592253",
    "fakt": 4,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-26-medal-sostyazanie-konkobezhcev-1896.jpg",
    "gk": "44358226",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-26-vodolaznaya-shkola-kronshtadt-1908.jpg",
    "gk": "66071326",
    "fakt": 8,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-26-olbk-spisok-chlenov-sreznevskiy.jpg",
    "gk": "69872577",
    "fakt": 15,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 6,
+   "fajl": "day-26jan-aerofotoapparat.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 7,
+   "fajl": "day-26jan-sreznevskiy-portret.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

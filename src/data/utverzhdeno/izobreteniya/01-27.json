@@ -112,11 +112,85 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-27jan-elbrus2-prospekt.jpg",
+   "gk": "12733546",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-27-elbrus-1891vm4ya.jpg",
    "gk": "",
    "fakt": 11,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
+  },
+  {
+   "n": 3,
+   "fajl": "day-27jan-elbrus2-plan.jpg",
+   "gk": "12367222",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 4,
+   "fajl": "day-27jan-burtsev-kniga.jpg",
+   "gk": "11833033",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "day-27jan-elbrus2-shema.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 6,
+   "fajl": "day-27jan-burtsev-uchsovet.jpg",
+   "gk": "11833040",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 7,
+   "fajl": "day-27jan-m40-yacheika.jpg",
+   "gk": "70308829",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 8,
+   "fajl": "day-27jan-pentkovsky-portret.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 9,
+   "fajl": "day-27jan-lebedev-1956.jpg",
+   "gk": "7629157",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

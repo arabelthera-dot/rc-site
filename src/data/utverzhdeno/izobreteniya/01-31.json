@@ -112,32 +112,67 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-31-gaponov-grehov-1985.jpg",
+   "gk": "36413762",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-31-megavattnyy-girotron.jpg",
    "gk": "",
    "fakt": 2,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-31-shema-nagreva-plazmy.jpg",
    "gk": "",
    "fakt": 4,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-31-iter-v-gikome.jpg",
    "gk": "",
    "fakt": 5,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-31-girotronnaya-pech-keramika.jpg",
    "gk": "",
    "fakt": 15,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/01-31-soveshchanie-po-girotronam-2000.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/izobreteniya/img/01-31-goskatalog-5378576.jpg",
+   "gk": "5378576",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

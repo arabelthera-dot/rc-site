@@ -112,39 +112,85 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-01-goskatalog-82999227-atp1.jpg",
+   "gk": "105171",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-01-shukhovskaya-bashnya.jpg",
    "gk": "11313199",
    "fakt": 5,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-01-trubka-rozinga.jpg",
    "gk": "30116454",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-01-shabolovka-apparatnaya.jpg",
    "gk": "22567695",
    "fakt": 7,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-01-tk1.jpg",
    "gk": "8725537",
    "fakt": 12,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
   },
   {
    "n": 6,
    "fajl": "/muzei/izobreteniya/img/01-01-shmakov-shema.jpg",
    "gk": "1536459",
    "fakt": 14,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/izobreteniya/day-01jan-rozing-portret.jpg",
+   "gk": "40212328",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 8,
+   "fajl": "/muzei/izobreteniya/img/01-01-goskatalog-12693197.jpg",
+   "gk": "13134005",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 9,
+   "fajl": "/muzei/izobreteniya/img/01-01-goskatalog-13319093.jpg",
+   "gk": "4731853",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

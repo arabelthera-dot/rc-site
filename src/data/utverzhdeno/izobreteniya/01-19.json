@@ -112,53 +112,85 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-19jan-kantorovich-diplom.jpg",
+   "gk": "57973402",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-19-ledovye-dorogi-ladogi.jpg",
    "gk": "45343921",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-19-optimalnoe-planirovanie-1964.jpg",
    "gk": "5853041",
    "fakt": 2,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-19-arifmometr-feliks.jpg",
    "gk": "16104163",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-19-nobelevskaya-lekciya-1975.jpg",
    "gk": "11812378",
    "fakt": 8,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
   },
   {
    "n": 6,
    "fajl": "/muzei/izobreteniya/img/01-19-portret-nobelevskogo-laureata.jpg",
    "gk": "57973519",
    "fakt": 9,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
   },
   {
    "n": 7,
    "fajl": "/muzei/izobreteniya/img/01-19-vilnyus-1969.jpg",
    "gk": "51576923",
    "fakt": 10,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
   },
   {
    "n": 8,
    "fajl": "/muzei/izobreteniya/img/01-19-raskroj-1971.jpg",
    "gk": "11812354",
    "fakt": 14,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 9,
+   "fajl": "day-19jan-kantorovich-matrikul.jpg",
+   "gk": "57973269",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

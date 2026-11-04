@@ -112,11 +112,58 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-22-kapica-filimonov-geliy.jpg",
+   "gk": "28924319",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-22-ifp-zdanie-1937.jpg",
    "gk": "42606413",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/01-22-landau-kapica-ifp.jpg",
+   "gk": "64011714",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 4,
+   "fajl": "day-22jan-landau-doma.jpg",
+   "gk": "35383289",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/01-22-kreslo-landau.jpg",
+   "gk": "64521134",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 6,
+   "fajl": "day-22jan-kapica-ozhizhitel.jpg",
+   "gk": "69524694",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

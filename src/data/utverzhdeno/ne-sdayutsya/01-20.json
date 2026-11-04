@@ -110,9 +110,55 @@
    "podrobnee": "От машины остался пустой корпус; по формуляру и виду опознали: надпись «Боевая подруга», белая стрела и гвардейский знак на башне, пять звёзд на стволе — по числу уничтоженных машин врага. Детали «находили выпускники училища и привозили из различных уголков страны», часть восстановили по чертежам. В марте 2020 г. Т-34-85 прошёл трассу «Танкового биатлона» под Благовещенском (ДВОКУ)."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-20-goskatalog-18388293.jpg",
+   "gk": "3975113",
+   "fakt": 8,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-20-goskatalog-28058864.jpg",
+   "gk": "28058864",
+   "fakt": 2,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-20-goskatalog-1711815.jpg",
+   "gk": "1711815",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-20-goskatalog-14954057.jpg",
+   "gk": "14954057",
+   "fakt": 6,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-20-goskatalog-18831642.jpg",
+   "gk": "18831642",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-20.md",
-  "material": null
+  "material": "knowledge/ns-material/01-20.md"
  }
 }

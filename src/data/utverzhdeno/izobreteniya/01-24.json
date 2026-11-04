@@ -1,6 +1,6 @@
 {
  "key": "01-24",
- "zagolovok": "24 ЯНВАРЯ · САМАЯ БЫСТРОХОДНАЯ В МИРЕ ПОДЛОДКА К-162 (ТИТАН)",
+ "zagolovok": "24 ЯНВАРЯ · ПЕРВАЯ В МИРЕ ПОДЛОДКА ИЗ ТИТАНА К-162",
  "poryadok": [
   1,
   2,
@@ -112,32 +112,58 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-24-model-k162.jpg",
+   "gk": "10664303",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-24-ametist-stend-shema.jpg",
    "gk": "",
    "fakt": 3,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-24-titan-slitok.jpg",
    "gk": "25527763",
    "fakt": 4,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-24-sevmash-1965.jpg",
    "gk": "",
    "fakt": 13,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-24-k162-v-more.jpg",
    "gk": "",
    "fakt": 15,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/01-24-isanin-portret.jpg",
+   "gk": "44939149",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

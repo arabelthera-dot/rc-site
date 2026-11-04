@@ -110,9 +110,64 @@
    "podrobnee": "Мягков в 2019 году: у старшины 4-й роты Дживаго, у самого Капрова, у политруков «информация одна: 16 ноября, высота 251, разъезд Дубосеково, деревня Петелино, начало боя — 9 утра, вначале идет пехота, потом две волны танков». По его словам, донесения разных людей не могут сходиться, если подвига не было. Капров в 1948 году показал: от 4-й роты «уцелело человек 20-25, остальные все погибли»."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-09-goskatalog-27296206.jpg",
+   "gk": "24706945",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-09-goskatalog-90949729.jpg",
+   "gk": "6939400",
+   "fakt": 10,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-09-goskatalog-25397183.jpg",
+   "gk": "23357898",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-09-goskatalog-17486577.jpg",
+   "gk": "1215350",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-09-goskatalog-19345257.jpg",
+   "gk": "18991450",
+   "fakt": 7,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-09-goskatalog-17023354.jpg",
+   "gk": "17311201",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-09.md",
-  "material": null
+  "material": "knowledge/ns-material/01-09.md"
  }
 }

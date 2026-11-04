@@ -6,13 +6,16 @@
 // читает их scripts/sverka/chitat-stranicu.mjs (Р511, часть «чтение страниц»). По каждому дню со страницей и копией:
 //  а) факты страницы — те же, что в карточке (сколько утверждено, Р510), и в порядке «poryadok»;
 //     заголовок сравнивается после чистки тегов, ё=е, кавычек и тире; правка слов допустима, другой факт — нет;
-//  б) кадр у факта — тот, что привязан к нему в «Факт к кадру» (ns-material / ММ-ДД.kadry.md), если кадр в привязке есть;
+//  б) у каждого кадра карточки кадров (ns-material / ММ-ДД.kadry.md) есть привязка «к факту: N | обложка | галерея»
+//     (Р514; прочерк, пусто, голое «нет» — ошибка), номер N есть в карточке; кадр у факта страницы — привязанный к нему,
+//     а не к другому факту, не к обложке/галерее и не кадр, которого в карточке кадров нет;
 //  в) ни один кадр (номер Госкаталога или файл) не повторяется: обложка, кадры фактов, галерея figures;
 //  г) нет двух фактов про одно и то же — ни в карточке, ни на странице: общие редкие слова и сочетания
 //     (основы от 5 букв, имена, числа, названия в кавычках), вес — по редкости среди всех карточек этого музея.
 //     Пара, которую человек проверил и признал разными фактами, пишется в копию карточки:
 //     "ne_povtory": [{ "para": "5-11", "pochemu": "…" }] — тогда она не повтор ни в карточке, ни на странице.
 // Обычный режим — дни, изменённые в заявке (git diff с базой): красное — код 1 и ::error:: по-русски.
+// День из src/data/utverzhdeno/v-rabote.json (пересборка идёт) в обычном режиме — строка долга, не падение.
 // --vse — таблица по всем дням и полный список повторов фактов, без падения (долг). --proba — заведомые случаи.
 // Откат — удалить шаги sverka-utverzhdeno из .github/workflows/proverka.yml.
 // Запуск: node scripts/sverka-utverzhdeno.mjs [--muzey X] [--proba] [--vse] [--baza origin/main] [ММ-ДД …]
@@ -22,6 +25,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { chitatStranicu, izYaml, izHtml, idKadra, muzei } from './sverka/chitat-stranicu.mjs';
+import { razobratMaterial } from './utverzhdeno-kopiya.mjs';
 
 const KOREN = new URL('..', import.meta.url).pathname;
 const STR = (m) => `src/content/dni-shablon/${m}`;
@@ -83,7 +87,36 @@ export function korpus(muzey) {
   }
   KORPUS.set(muzey, { df, df2, N }); return KORPUS.get(muzey);
 }
-export function povtory(muzey, fakty, porog = POROG, ne = new Set()) {
+// Герой дня (Р514): слова заголовка дня и имена людей («Виктор Слюсаренко», «мичман Слюсаренко» — имя из списка
+// ИМЕНА_ЛЮДЕЙ, за ним фамилия с заглавной) признаком повтора не считаются: у изобретений все факты — про одного
+// человека или одну машину, и общий герой говорит о герое, а не о той же детали. Остальные совпадения считаются.
+const IMENA_LYUDEJ = new Set(('александр алексей анатолий андрей антон аркадий борис вадим валентин валерий василий '
+  + 'виктор виталий владимир владислав всеволод вячеслав геннадий георгий герман глеб григорий даниил денис дмитрий '
+  + 'евгений евпатий егор иван игнатий игорь илья иосиф кирилл константин лев леонид максим марк матвей михаил '
+  + 'никита николай олег павел петр роман семен сергей станислав степан тимофей федор филипп эдуард юрий яков '
+  + 'александра алла анна валентина вера галина екатерина елена зинаида зоя ирина клавдия людмила мария надежда '
+  + 'мстислав ярослав святослав лаврентий ефим захар кузьма макар назар прохор савва фома арсений афанасий '
+  + 'наталья нина ольга светлана софья тамара татьяна').split(' '));
+export function geroiDnya(zagolovokDnya, fakty) {
+  const out = new Set();
+  const syroj = String(zagolovokDnya ?? '').replace(/^[^·]*·/, '');
+  for (const m of syroj.matchAll(/«([^«»]{3,40})»/g)) out.add(`«${chistka(m[1])}»`);
+  for (const w of chistka(syroj).split(' ')) {
+    if (w.length >= 4 && !STOP.has(w)) out.add(osnova(w));
+    for (const ch of w.match(/\d{2,}/g) || []) out.add(ch); // «К-278» → 278
+  }
+  const familii = new Set();
+  for (const f of fakty) {
+    const t = `${f.zagolovok} ${f.podrobnee}`.replace(/<[^>]+>/g, ' ').replace(/ё/g, 'е').replace(/Ё/g, 'Е');
+    for (const m of t.matchAll(/([А-Я][а-яе]+)(?=\s+(?:[А-Я][а-яе]+вич\s+|[А-Я]\.\s*)?([А-Я][а-яе]{3,}))/gu)) {
+      if (!IMENA_LYUDEJ.has(chistka(m[1]))) continue;
+      out.add(osnova(chistka(m[1]))); familii.add(osnova(chistka(m[2])));
+    }
+  }
+  for (const x of familii) out.add(x);
+  return out;
+}
+export function povtory(muzey, fakty, porog = POROG, ne = new Set(), geroj = new Set()) {
   const K = korpus(muzey);
   const ves1 = (x) => Math.log(K.N / Math.max(1, K.df.get(x) || 1));
   const tekst = (f) => `${f.zagolovok} ${f.podrobnee}`;
@@ -94,9 +127,10 @@ export function povtory(muzey, fakty, porog = POROG, ne = new Set()) {
   for (const s of sl) for (const x of s) df.set(x, (df.get(x) || 0) + 1);
   const par = [];
   for (let i = 0; i < fakty.length; i++) for (let j = i + 1; j < fakty.length; j++) {
-    const obshchie = [...sl[i]].filter((x) => sl[j].has(x) && df.get(x) <= 3).sort((a, b) => ves1(b) - ves1(a));
+    const obshchie = [...sl[i]].filter((x) => sl[j].has(x) && df.get(x) <= 3 && !geroj.has(x)).sort((a, b) => ves1(b) - ves1(a));
     const vZag = obshchie.filter((x) => zag[i].has(x) || zag[j].has(x));
-    const redkie2 = [...p2[i]].filter((x) => p2[j].has(x) && (K.df2.get(x) || 0) <= 2);
+    const redkie2 = [...p2[i]].filter((x) => p2[j].has(x) && (K.df2.get(x) || 0) <= 2
+      && !x.split(' ').some((w) => geroj.has(w) || df.get(w) > 3)); // сочетание с героем или словом всего дня — не в счёт
     const ves = obshchie.reduce((s, x) => s + ves1(x), 0) + vZag.reduce((s, x) => s + ves1(x), 0)
       + redkie2.length * Math.log(K.N / 2);
     if (ves >= porog && !ne.has(klyuch(fakty[i].n, fakty[j].n))) par.push({ a: fakty[i].n, b: fakty[j].n, ves: +ves.toFixed(1), slova: [...new Set([...redkie2, ...obshchie])] });
@@ -120,6 +154,23 @@ function shodstvo(u, f) {
 }
 const ODIN = 0.5; // ниже — это уже не тот же факт
 
+// Привязка кадров в самой карточке (Р514): у каждого кадра «к факту: N | обложка | галерея» (или «нет (пояснение)»),
+// прочерк, пусто, голое «нет» и непонятное — ошибка; номер — только из фактов карточки.
+const MESTO = { oblozhka: 'обложке', galereya: 'галерее', net: 'никакому факту («нет»)' };
+export function oshibkiPrivyazki(utv) {
+  const o = []; const est = new Set(utv.fakty.map((f) => f.n));
+  for (const x of utv.kadry) {
+    const kto = `кадр ${x.n} (${x.gk ? `Госкаталог ${x.gk}` : imyaFajla(x.fajl)})`;
+    const p = x.privyazka ?? '';
+    if (!x.mesto) o.push(/^(?:[—–-]*|нет\.?)$/i.test(p.trim()) ? `${kto} — нет привязки к факту («к факту: ${p.trim() || 'пусто'}»)` : `${kto} — непонятная привязка «${p}»: нужно «к факту: N», «обложка» или «галерея»`);
+    else if (x.mesto === 'fakt') {
+      const vne = [x.fakt, ...x.takzhe].filter((n) => !est.has(n));
+      if (vne.length) o.push(`${kto} — номер факта вне карточки: ${vne.join(', ')} (в карточке ${[...est].sort((a, b) => a - b).join(', ')})`);
+    }
+  }
+  return o;
+}
+
 export function sverit(muzey, utv, str) {
   const o = [];
   str = { udary: str.fakty, kadry: str.vse_kadry.filter((k) => PROVERYAEM.test(k.gde)) };
@@ -140,13 +191,16 @@ export function sverit(muzey, utv, str) {
   const nashli = new Set(nomer.filter(Boolean));
   const net = utv.poryadok.filter((n) => !nashli.has(n));
   if (net.length) o.push(`нет на странице фактов карточки: ${net.join(', ')}`);
-  // б) кадр к факту
+  // б) привязка кадров в карточке и кадр к факту на странице
+  o.push(...oshibkiPrivyazki(utv));
   const kadrK = (id) => utv.kadry.find((x) => idyKadraKartochki(x).includes(id));
   str.udary.forEach((u, i) => {
     const n = nomer[i]; if (!n) return;
     for (const k of u.kadry) {
       const m = kadrK(k);
-      if (m && m.fakt !== n && !m.takzhe.includes(n)) o.push(`у факта ${i + 1} (факт ${n} карточки) чужой кадр ${m.gk || m.fajl} — он к факту ${[m.fakt, ...m.takzhe].join(' или ')}`);
+      if (!m) o.push(`у факта ${i + 1} (факт ${n} карточки) кадр ${k}, которого нет в кадрах карточки, — привязки к факту нет`);
+      else if (m.mesto && m.mesto !== 'fakt') o.push(`у факта ${i + 1} (факт ${n} карточки) кадр ${m.gk || m.fajl}, а он к ${MESTO[m.mesto]}`);
+      else if (m.mesto && m.fakt !== n && !m.takzhe.includes(n)) o.push(`у факта ${i + 1} (факт ${n} карточки) чужой кадр ${m.gk || m.fajl} — он к факту ${[m.fakt, ...m.takzhe].join(' или ')}`);
     }
   });
   // в) повтор кадров
@@ -160,9 +214,10 @@ export function sverit(muzey, utv, str) {
   }
   // г) повторы фактов — в карточке и на странице
   const ne = nePovtory(utv);
-  const pk = povtory(muzey, utv.fakty, POROG, ne);
+  const geroj = geroiDnya(utv.zagolovok, utv.fakty);
+  const pk = povtory(muzey, utv.fakty, POROG, ne, geroj);
   for (const p of pk) o.push(`в карточке два факта про одно: ${p.a} и ${p.b} (${p.slova.slice(0, 4).join(', ')})`);
-  const pStr = povtory(muzey, str.udary.map((u, i) => ({ n: i + 1, zagolovok: u.zagolovok, podrobnee: u.podrobnee })));
+  const pStr = povtory(muzey, str.udary.map((u, i) => ({ n: i + 1, zagolovok: u.zagolovok, podrobnee: u.podrobnee })), POROG, new Set(), geroj);
   const izKart = new Set(pk.map((p) => `${p.a}-${p.b}`));
   for (const p of pStr) {
     const a = nomer[p.a - 1]; const b = nomer[p.b - 1];
@@ -172,6 +227,10 @@ export function sverit(muzey, utv, str) {
   return { o: [...new Set(o)], povtoryKart: pk };
 }
 
+// Дни в работе (Р514): { "<музей>": { "dni": ["ММ-ДД", …], "kto": "…", "pochemu": "…" } } — пересборка идёт,
+// строгий шаг печатает их ошибки долгом и не падает. Сдал день — убери его из списка в той же заявке.
+const V_RABOTE_PUT = path.join(KOREN, 'src/data/utverzhdeno/v-rabote.json');
+const V_RABOTE = fs.existsSync(V_RABOTE_PUT) ? JSON.parse(fs.readFileSync(V_RABOTE_PUT, 'utf8')) : {};
 const chitatUtv = (muzey, key) => JSON.parse(fs.readFileSync(path.join(KOREN, UTV(muzey), `${key}.json`), 'utf8'));
 // Полное имя музея — title_ru из museums.json (сокращать нельзя).
 const IMENA = new Map(JSON.parse(fs.readFileSync(path.join(KOREN, 'src/data/museums.json'), 'utf8')).museums.map((m) => [m.slug, m.title_ru]));
@@ -189,7 +248,7 @@ export function proveritMuzey(muzey, dni = null) {
     if (!karty.includes(key)) { itog.push({ key, net: 'нет утверждённой карточки' }); continue; }
     const utv = chitatUtv(muzey, key);
     const str = chitatStranicu(muzey, key, KOREN);
-    if (!str) { itog.push({ key, net: 'страницы ещё нет', povtoryKart: povtory(muzey, utv.fakty, POROG, nePovtory(utv)) }); continue; }
+    if (!str) { itog.push({ key, net: 'страницы ещё нет', privyazka: oshibkiPrivyazki(utv), povtoryKart: povtory(muzey, utv.fakty, POROG, nePovtory(utv), geroiDnya(utv.zagolovok, utv.fakty)) }); continue; }
     itog.push({ key, ...sverit(muzey, utv, str) });
   }
   return { muzey, itog };
@@ -207,7 +266,9 @@ if (est('--proba')) {
   const udar = (f, kadr) => ({ summary: `<b>${f.zagolovok}</b>`, det: [f.podrobnee], ...(kadr ? { kadr } : {}) });
   const kd = (gk, u = utv) => { const m = u.kadry.find((x) => x.gk === gk); return { src: m.fajl, data_source: `https://goskatalog.ru/portal/#/collections?id=${gk}` }; };
   // хороший день: порядок карточки, кадры по привязке, без повторов; карточка — без найденных повторов фактов
-  const chistaya = { ...utv, fakty: utv.fakty.filter((f) => ![7, 10, 11].includes(f.n)) };
+  // кадры убранных фактов (10 — повтор 3–10) уходят вместе с ними, иначе привязка вела бы вне карточки
+  const ubrany = [7, 10, 11];
+  const chistaya = { ...utv, fakty: utv.fakty.filter((f) => !ubrany.includes(f.n)), kadry: utv.kadry.filter((x) => !ubrany.includes(x.fakt)) };
   chistaya.poryadok = chistaya.fakty.map((f) => f.n);
   const horoshij = () => ({ oblozhka: { src: '/muzei/ne-sdayutsya/merkuriy-aivazovsky-1892.jpg', data_source: 'https://goskatalog.ru/portal/#/collections?id=54675768' },
     fakty: [{ udary: chistaya.poryadok.map((n) => udar(
@@ -223,9 +284,15 @@ if (est('--proba')) {
   // Живые страницы изобретений и «Не сдаются» (шаблон) — по их карточкам должны быть зелёными.
   const zhivoj = (m, key) => [chitatUtv(m, key), chitatStranicu(m, key, KOREN)];
   const [izU, izS] = zhivoj(IZ, '01-03');
-  // 01-13: 16 фактов; пары 8–12 и 4–5 детектор считает повтором (один герой) — в пробе помечены ne_povtory
+  // 01-13: 16 фактов про одного героя (Слюсаренко) — имя героя дня повтором не считается (Р514), ne_povtory не нужны
   const [iz13U, iz13S] = zhivoj(IZ, '01-13');
-  const iz13 = { ...iz13U, ne_povtory: [{ para: '8-12', pochemu: 'проба' }, { para: '4-5', pochemu: 'проба' }] };
+  // Р514: привязка кадров. Копия карточки с правкой одного кадра; кадр, что стоит у факта страницы 01-03.
+  const sKadrom = (u, gk, pravka) => ({ ...u, kadry: u.kadry.map((x) => (x.gk === gk ? { ...x, ...pravka } : x)) });
+  const iz3 = izS.fakty.map((f) => f.kadry[0]).find((k) => izU.kadry.some((x) => x.gk === k));
+  const iz3gal = izS.vse_kadry.find((k) => k.gde === 'галерея');
+  const material = (t) => razobratMaterial(t).map(({ n, mesto, fakt, takzhe, gk }) => `${n}:${mesto}:${fakt}:${takzhe.join('+')}:${gk}`).join(' ');
+  const strogij = (...dni) => { try { execFileSync('node', [process.argv[1], '--muzey', NS, ...dni], { cwd: KOREN, encoding: 'utf8' }); return 0; } catch (e) { return e.status; } };
+  const tolkoPrivyazka = (o) => o.length > 0 && o.every((x) => /привязк/.test(x)); // факты сверены без регрессии, долг — только кадры
   const sluchai = [
     ['хороший день', chistaya, izYaml(horoshij()), null],
     ['переставлен факт', chistaya, izYaml((() => { const y = horoshij(); const u = y.fakty[0].udary; [u[0], u[2]] = [u[2], u[0]]; return y; })()), /а по порядку здесь факт/],
@@ -249,17 +316,39 @@ if (est('--proba')) {
     ['full-pages: повтор кадра в галерее', chistaya, izHtml(html(horoshij(), img(kd('16117881')))), /кадр повторяется \(Госкаталог 16117881\): факт \d+ и галерея/],
     ['full-pages: подменён факт', chistaya, izHtml(html((() => { const y = horoshij(); y.fakty[0].udary[3] = udar({ zagolovok: 'Экипаж не кричал «Русские не сдаются!» — это поздняя легенда', podrobnee: 'Знаменитый возглас придумали позднее, в рапортах его нет.' }); return y; })())), /не из карточки/],
     ['изобретения 01-03: живая страница по карточке', izU, izS, null, IZ],
-    ['изобретения 01-13: 16 фактов, ne_povtory', iz13, iz13S, null, IZ],
-    ['изобретения 01-13: без ne_povtory — повтор 8–12', iz13U, iz13S, /в карточке два факта про одно: 8 и 12/, IZ],
+    ['изобретения 01-13: 16 фактов, герой дня — не повтор, без ne_povtory', iz13U, iz13S, null, IZ],
+    ['изобретения 01-13: факт 12 дважды на странице — повтор', iz13U, { ...iz13S, fakty: [...iz13S.fakty, iz13S.fakty[iz13U.poryadok.indexOf(12)]] }, /на странице два факта про одно/, IZ],
     ['изобретения 01-03: переставлен факт', izU, { ...izS, fakty: [izS.fakty[1], izS.fakty[0], ...izS.fakty.slice(2)] }, /а по порядку здесь факт/, IZ],
     ['изобретения 01-03: повтор кадра обложкой', izU, { ...izS, vse_kadry: [{ gde: 'обложка', kadr: izS.fakty.find((f) => f.kadr).kadr, src: '' }, ...izS.vse_kadry.filter((k) => k.gde !== 'обложка')] }, /кадр повторяется/, IZ],
-    ...['01-01', '01-02', '01-03', '01-04', '01-05'].map((key) => [`«Не сдаются» ${key}: шаблон без регрессии`, ...zhivoj(NS, key), null]),
+    ...['01-01', '01-02', '01-03'].map((key) => [`«Не сдаются» ${key}: шаблон без регрессии`, ...zhivoj(NS, key), null]),
+    // 01-04, 01-05: факты сходятся, красные только кадры — «к факту: —» и кадры страницы, которых нет в материале (долг Р514)
+    ...['01-04', '01-05'].map((key) => [`«Не сдаются» ${key}: факты без регрессии, долг — привязка кадров`, ...zhivoj(NS, key), tolkoPrivyazka]),
+    // Р514: привязка кадров в карточке кадров / материале
+    ['кадр с прочерком «к факту: —»', sKadrom(izU, iz3, { mesto: null, fakt: null, takzhe: [], privyazka: '—' }), izS, /нет привязки к факту \(«к факту: —»\)/, IZ],
+    ['кадр без строки привязки', sKadrom(izU, iz3, { mesto: null, fakt: null, takzhe: [], privyazka: null }), izS, /нет привязки к факту \(«к факту: пусто»\)/, IZ],
+    ['кадр с голым «нет»', sKadrom(izU, iz3, { mesto: null, fakt: null, takzhe: [], privyazka: 'нет' }), izS, /нет привязки к факту/, IZ],
+    ['кадр «к факту: общий» — непонятная привязка', sKadrom(izU, iz3, { mesto: null, fakt: null, takzhe: [], privyazka: 'общий' }), izS, /непонятная привязка «общий»/, IZ],
+    ['номер факта вне карточки', sKadrom(izU, iz3, { fakt: 99, takzhe: [], privyazka: '99' }), izS, /номер факта вне карточки: 99/, IZ],
+    ['второй номер вне карточки', sKadrom(izU, iz3, { takzhe: [40], privyazka: '1, 40' }), izS, /номер факта вне карточки: 40/, IZ],
+    ['кадр обложки стоит у факта', sKadrom(izU, iz3, { mesto: 'oblozhka', fakt: null, takzhe: [], privyazka: 'обложка' }), izS, /а он к обложке/, IZ],
+    ['кадр галереи стоит у факта', sKadrom(izU, iz3, { mesto: 'galereya', fakt: null, takzhe: [], privyazka: 'галерея' }), izS, /а он к галерее/, IZ],
+    ['кадр «нет (пояснение)» стоит у факта', sKadrom(izU, iz3, { mesto: 'net', fakt: null, takzhe: [], privyazka: 'нет (снимок другого года)' }), izS, /а он к никакому факту/, IZ],
+    ['у факта кадр, которого нет в карточке кадров', { ...izU, kadry: izU.kadry.filter((x) => x.gk !== iz3) }, izS, /которого нет в кадрах карточки/, IZ],
+    ['кадр привязан к другому факту', (() => { const m = izU.kadry.find((x) => x.gk === iz3); const drug = izU.fakty.map((f) => f.n).find((n) => n !== m.fakt && !m.takzhe.includes(n)); return sKadrom(izU, iz3, { fakt: drug, takzhe: [], privyazka: String(drug) }); })(), izS, /чужой кадр/, IZ],
+    ['изобретения 01-03: кадр факта повторён в галерее', izU, { ...izS, vse_kadry: [...izS.vse_kadry, { ...izS.vse_kadry.find((k) => k.kadr === iz3), gde: 'галерея' }] }, /кадр повторяется .*галерея/, IZ],
+    ['изобретения 01-03: кадр галереи дважды', izU, { ...izS, vse_kadry: [...izS.vse_kadry, iz3gal] }, /кадр повторяется .* дважды: галерея/, IZ],
+    ['разбор: оба написания привязки', izU, izS, () => material('### Кадр 1 (запас)\nфайл: /a.jpg\nисточник: https://goskatalog.ru/portal/#/collections?id=5\nк факту: галерея\n\n'
+      + 'Кадр 2\nФайл: /b.jpg (800×600)\nИсточник: https://goskatalog.ru/portal/#/collections?id=6\nФакт к кадру: нет (обложка дня)\n\n'
+      + '### Кадр 3\nфайл: /c.jpg\nк факту: 6 (экипаж 52 человека), также 8\n\n### Кадр 4\nфайл: /d.jpg\nк факту: —\n\nКадр 5\nФайл: /e.jpg\nФакт к кадру: 5 (и 1)')
+      === '1:galereya:null::5 2:oblozhka:null::6 3:fakt:6:8: 4:null:null:: 5:fakt:5:1:', IZ],
+    ['день в работе (v-rabote.json) строгий шаг не роняет', izU, izS, () => !V_RABOTE[NS]?.dni?.includes('01-04') && strogij('01-04') === 1
+      && V_RABOTE[NS]?.dni?.length > 0 && strogij(V_RABOTE[NS].dni[0]) === 0, IZ],
   ];
   if (zhivaya.fakty.length !== 12) { console.log(`::error::sverka-utverzhdeno: проба ждёт живую карточку 01-02 на 12 фактов, в ней ${zhivaya.fakty.length}`); process.exit(1); }
   let mimo = 0;
   for (const [nazv, u, str, zhdu, muzey = NS] of sluchai) {
     const { o } = sverit(muzey, u, str);
-    const ok = zhdu ? o.some((x) => zhdu.test(x)) : o.length === 0;
+    const ok = typeof zhdu === 'function' ? zhdu(o) : zhdu ? o.some((x) => zhdu.test(x)) : o.length === 0;
     if (!ok) { mimo++; console.log(`проба ✗ ${nazv}: ${o.join('; ') || 'ничего не найдено'}`); }
   }
   // музей без карточек — пропуск с отчётом, не падение
@@ -304,8 +393,10 @@ for (const muzey of spisok) {
   muzeiItog.push(proveritMuzey(muzey, dni));
 }
 const vseDni = muzeiItog.flatMap((m) => (m.itog || []).map((r) => ({ muzey: m.muzey, ...r })));
-const proshli = vseDni.filter((r) => r.o && !r.o.length);
-const krasnye = vseDni.filter((r) => r.o?.length);
+const oshibki = (r) => [...(r.o || []), ...(r.privyazka || [])];
+const vRabote = (r) => V_RABOTE[r.muzey]?.dni?.includes(r.key);
+const proshli = vseDni.filter((r) => r.o && !oshibki(r).length);
+const krasnye = vseDni.filter((r) => oshibki(r).length);
 const sKartami = vseMuzei.filter((m) => kartyMuzeya(m).length);
 const shapka = `sverka-utverzhdeno: музеев с карточками ${sKartami.length} из ${vseMuzei.length} (${sKartami.join(', ') || '—'})`;
 if (est('--vse')) {
@@ -313,11 +404,16 @@ if (est('--vse')) {
   for (const m of muzeiItog) {
     if (m.net) { console.log(`\n${imya(m.muzey)} (${m.muzey}): ${m.net} — пропуск`); continue; }
     console.log(`\n${imya(m.muzey)} (${m.muzey})\nдень  | итог      | что не так`);
-    for (const r of m.itog) console.log(`${r.key} | ${r.net ? 'не сверяли' : r.o.length ? 'КРАСНЫЙ  ' : 'зелёный  '} | ${r.net || r.o.join('; ') || '—'}`);
+    for (const r of m.itog) {
+      const ito = oshibki(r).length ? 'КРАСНЫЙ  ' : r.net ? 'не сверяли' : 'зелёный  ';
+      const rab = vRabote({ muzey: m.muzey, ...r }) ? `[в работе: ${V_RABOTE[m.muzey].kto}] ` : '';
+      console.log(`${r.key} | ${ito} | ${rab}${[r.net, ...oshibki(r)].filter(Boolean).join('; ') || '—'}`);
+    }
     const pk = m.itog.flatMap((r) => (r.povtoryKart || []).map((p) => `${r.key}  ${p.a}–${p.b}  вес ${p.ves}: ${p.slova.join(', ')}`));
     if (pk.length) console.log(`Повторы фактов в утверждённых карточках:\n${pk.join('\n')}`);
-    const z = m.itog.filter((r) => r.o && !r.o.length).length; const k = m.itog.filter((r) => r.o?.length).length;
-    console.log(`итог ${m.muzey}: сверено ${z + k}, зелёных ${z}, красных ${k}; без страницы ${m.itog.filter((r) => r.net).length}`);
+    const z = m.itog.filter((r) => r.o && !oshibki(r).length).length; const k = m.itog.filter((r) => r.o && oshibki(r).length).length;
+    const bp = m.itog.filter((r) => r.net); const bpk = bp.filter((r) => oshibki(r).length).length;
+    console.log(`итог ${m.muzey}: сверено ${z + k}, зелёных ${z}, красных ${k}; без страницы ${bp.length}${bpk ? ` (из них с ошибками привязки кадров ${bpk})` : ''}`);
   }
   console.log(`\nsverka-utverzhdeno: всего сверено ${proshli.length + krasnye.length}, зелёных ${proshli.length}, красных ${krasnye.length}`);
   process.exit(0);
@@ -327,8 +423,11 @@ for (const m of muzeiItog) {
   if (m.net === 'карточек нет') console.log(`sverka-utverzhdeno: ${imya(m.muzey)} — карточек нет, пропуск`);
   for (const r of (m.itog || []).filter((x) => x.net && x.net !== 'страницы ещё нет')) console.log(`sverka-utverzhdeno: ${imya(m.muzey)} ${r.key} — ${r.net}, сверять не с чем`);
 }
-for (const r of krasnye) for (const x of r.o) console.log(`::error::${imya(r.muzey)} ${r.key}: ${x}`);
-console.log(`sverka-utverzhdeno: дней ${proshli.length + krasnye.length}, зелёных ${proshli.length}, красных ${krasnye.length}`);
-process.exit(krasnye.length ? 1 : 0);
+// День в работе (src/data/utverzhdeno/v-rabote.json) заявку не роняет: его ошибки — строки долга, не ::error::.
+const dolg = krasnye.filter(vRabote); const padayut = krasnye.filter((r) => !vRabote(r));
+for (const r of dolg) for (const x of oshibki(r)) console.log(`sverka-utverzhdeno: долг, день в работе у ${V_RABOTE[r.muzey].kto} — ${imya(r.muzey)} ${r.key}: ${x}`);
+for (const r of padayut) for (const x of oshibki(r)) console.log(`::error::${imya(r.muzey)} ${r.key}: ${x}`);
+console.log(`sverka-utverzhdeno: дней ${proshli.length + krasnye.length}, зелёных ${proshli.length}, красных ${padayut.length}${dolg.length ? `, в работе с долгом ${dolg.length}` : ''}`);
+process.exit(padayut.length ? 1 : 0);
 
 }

@@ -112,32 +112,58 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-20jan-lunin-portret.jpg",
+   "gk": "28753072",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-20-dissertaciya-s15-vyvod.jpg",
    "gk": "",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-20-yurevskij-universitet-niva-1902.jpg",
    "gk": "",
    "fakt": 2,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-20-plakat-luk-kladovaya-vitaminov.jpg",
    "gk": "3844566",
    "fakt": 7,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-20-bolnica-oldenburgskogo-1869.jpg",
    "gk": "",
    "fakt": 9,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/01-20-korobka-vitaminy-1958.jpg",
+   "gk": "10982348",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

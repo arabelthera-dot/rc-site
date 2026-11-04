@@ -112,18 +112,40 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-10jan-kronshtadt-led-1856.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-10-pomorskij-karbas.jpg",
    "gk": "17170436",
    "fakt": 2,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-10-kronshtadtskij-vestnik-1882.jpg",
    "gk": "41225617",
    "fakt": 9,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/01-10-goskatalog-8462389.jpg",
+   "gk": "11107922",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

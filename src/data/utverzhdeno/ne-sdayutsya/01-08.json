@@ -110,9 +110,73 @@
    "podrobnee": "После менингита Зоя 40 дней лечилась в санатории в Сокольниках и там подружилась с Гайдаром, книги которого очень любила. Читала Толстого, Сервантеса, Шекспира, Гёте, мечтала о Литературном институте. Её тетрадь заканчивается записью октября 1941 года, словами Гамлета: «Прощай, прощай и помни обо мне!»"
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-08-goskatalog-46196164.jpg",
+   "gk": "38326477",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "— (обложка)"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-08-goskatalog-20667567.jpg",
+   "gk": "19956207",
+   "fakt": 2,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-08-goskatalog-24802346.jpg",
+   "gk": "22927992",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-08-goskatalog-2723524.jpg",
+   "gk": "6500011",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "— (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-08-goskatalog-15769576.jpg",
+   "gk": "16404448",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "— (галерея)"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-08-goskatalog-2236733.jpg",
+   "gk": "5992212",
+   "fakt": 4,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/ne-sdayutsya/img/01-08-goskatalog-2237300.jpg",
+   "gk": "5992779",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-08.md",
-  "material": null
+  "material": "knowledge/ns-material/01-08.md"
  }
 }

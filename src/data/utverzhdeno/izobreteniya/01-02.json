@@ -112,39 +112,67 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-02jan-luna1-maket.jpg",
+   "gk": "3885815",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/day-02jan-iskusstvennaya-kometa-karta.jpg",
    "gk": "12671754",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/day-02jan-parokhod-indigirka.jpg",
    "gk": "18416489",
    "fakt": 2,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/day-02jan-planer-sk3-model.jpg",
    "gk": "70410510",
    "fakt": 3,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/day-02jan-keldysh-flatter-cagi-1944.jpg",
    "gk": "59565688",
    "fakt": 4,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
   },
   {
    "n": 6,
    "fajl": "/muzei/izobreteniya/img/day-02jan-glushko-pismo-ciolkovskomu.jpg",
    "gk": "32158587",
    "fakt": 5,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/izobreteniya/img/day-02jan-vympel-etiketka-1959.jpg",
+   "gk": "46803391",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

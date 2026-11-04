@@ -103,7 +103,54 @@
    "podrobnee": "Об осаде независимо друг от друга рассказывают русская Ипатьевская (Галицко-Волынская) летопись и Рашид-ад-Дин, историк монгольских ханов. Оба сходятся в главном: малый город долго стоял против орды."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-04-goskatalog-18134111.jpg",
+   "gk": "18126558",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": null,
+   "privyazka": "—"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-04-goskatalog-35853661.jpg",
+   "gk": "449929",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": null,
+   "privyazka": "—"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-04-goskatalog-11592978.jpg",
+   "gk": "13401696",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": null,
+   "privyazka": "—"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-04-goskatalog-22975986.jpg",
+   "gk": "21619457",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-04-goskatalog-14177108.jpg",
+   "gk": "14381980",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14",
+   "zapas": true
+  }
+ ],
  "ne_povtory": [
   {
    "para": "1-15",
@@ -118,6 +165,6 @@
  ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-04.md",
-  "material": null
+  "material": "knowledge/ns-material/01-04.md"
  }
 }

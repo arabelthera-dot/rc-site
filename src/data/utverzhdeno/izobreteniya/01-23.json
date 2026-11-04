@@ -112,18 +112,49 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-23jan-umov-portret.jpg",
+   "gk": "4978913",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-23-ledentsov-blank-1912.jpg",
    "gk": "15508446",
    "fakt": 4,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-23-vremennik-ledentsova-1910.jpg",
    "gk": "18185244",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
+  },
+  {
+   "n": 4,
+   "fajl": "day-23jan-fizinstitut.jpg",
+   "gk": "46762123",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "day-23jan-umov-pismo-1911.jpg",
+   "gk": "17010580",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

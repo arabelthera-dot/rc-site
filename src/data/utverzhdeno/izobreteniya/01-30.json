@@ -112,18 +112,40 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-30-plakat-kotelnikov.jpg",
+   "gk": "18020792",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-30-salizi-s-aerostata.jpg",
    "gk": "4676295",
    "fakt": 7,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-30-anoshchenko-issledovanie-parashyutov-1918.jpg",
    "gk": "13851668",
    "fakt": 14,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/01-30-kniga-kotelnikova.jpg",
+   "gk": "53555618",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

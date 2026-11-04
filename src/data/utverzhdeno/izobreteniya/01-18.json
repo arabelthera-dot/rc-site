@@ -112,11 +112,67 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-18jan-odner.jpg",
+   "gk": "4798915",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-18-udostoverenie-zavoda-odnera.jpg",
    "gk": "18500612",
    "fakt": 8,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/01-18-nauka-i-zhizn-1890.jpg",
+   "gk": "41367943",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/01-18-artefakt-arifmometr-1890.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/01-18-artefakt-arifmometr-peterburg.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/01-18-goskatalog-20145786.jpg",
+   "gk": "20145786",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 7,
+   "fajl": "/muzei/izobreteniya/img/01-18-goskatalog-28344308.jpg",
+   "gk": "28344308",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

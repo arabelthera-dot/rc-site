@@ -110,9 +110,37 @@
    "podrobnee": "Раньше на спуске связь с космонавтом обрывалась: антенны сгорали в огне. Шаталов 17 января продолжал говорить с Землёй через запасные антенны — одна была спрятана даже в стропе парашюта. Лётчики поиска услышали его и доложили, что идут на сигнал маяка, а маяк включается только после приземления. Все обрадовались, но через минуту засомневались: сесть на 15 минут раньше расчёта благополучно корабль не мог. Оказалось, голос Шаталова приняли за маяк. А вскоре «Союз-4» и правда мягко сел под Карагандой."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-16-goskatalog-91005175.jpg",
+   "gk": "69567995",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/izobreteniya/img/01-16-goskatalog-36019112.jpg",
+   "gk": "36019112",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/01-16-goskatalog-13291282.jpg",
+   "gk": "13291282",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/utverzhdeno/izobreteniya/01-16.md",
-  "material": null
+  "material": "knowledge/utverzhdeno/izobreteniya/01-16.kadry.md"
  }
 }

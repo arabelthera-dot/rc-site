@@ -112,18 +112,40 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-15-goskatalog-86133712.jpg",
+   "gk": "67066060",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-15-rukopis-nigilistka.jpg",
    "gk": "67066483",
    "fakt": 12,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-15-plita-mogila.jpg",
    "gk": "67066438",
    "fakt": 14,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/01-15-polibino-dom.jpg",
+   "gk": "62386563",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

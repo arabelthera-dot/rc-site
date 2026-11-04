@@ -112,32 +112,58 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-06jan-orlov-portret-etiketka.jpg",
+   "gk": "23153289",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-06-ekspediciya-otkrytka.jpg",
    "gk": "",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/day-06jan-raschetnyj-znak-1919.jpg",
    "gk": "41192779",
    "fakt": 11,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-06-goznak-orlof-printing.jpg",
    "gk": "45321013",
    "fakt": 12,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-06-moneta-orlovskaya-pechat.jpg",
    "gk": "",
    "fakt": 15,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/01-06-goskatalog-9204490.jpg",
+   "gk": "11663734",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

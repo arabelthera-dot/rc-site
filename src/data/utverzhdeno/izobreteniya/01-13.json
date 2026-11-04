@@ -119,25 +119,49 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-13-goskatalog-42001363.jpg",
+   "gk": "4655496",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-13-spasennye-v-gospitale.jpg",
    "gk": "26730186",
    "fakt": 8,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "8"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-13-udostoverenie-vanina.jpg",
    "gk": "68297793",
    "fakt": 13,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-13-vint-na-dne-1991.jpg",
    "gk": "8146109",
    "fakt": 15,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/01-13-medal-koordinaty-gibeli.jpg",
+   "gk": "64842363",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

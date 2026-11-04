@@ -112,39 +112,85 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-05jan-shukhov-za-stolom-1933.jpg",
+   "gk": "5969845",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/day-05jan-kreking-baku-1932.jpg",
    "gk": "5572584",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/day-05jan-minaret-ulugbek.jpg",
    "gk": "50372312",
    "fakt": 5,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/day-05jan-privilegiya-azhurnaya-bashnya.jpg",
    "gk": "19689326",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/day-05jan-setchatye-pokrytiya.jpg",
    "gk": "54417400",
    "fakt": 7,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
   },
   {
    "n": 6,
    "fajl": "/muzei/izobreteniya/img/day-05jan-rezervuar-fragment.jpg",
    "gk": "16321636",
    "fakt": 15,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 7,
+   "fajl": "day-05jan-shukhov-shabolovka.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 8,
+   "fajl": "img/01-05-goskatalog-1828920.jpg",
+   "gk": "5548354",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 9,
+   "fajl": "img/day-05jan-bashnya-nn-1896.jpg",
+   "gk": "14540491",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

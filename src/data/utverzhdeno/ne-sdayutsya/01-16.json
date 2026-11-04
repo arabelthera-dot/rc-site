@@ -110,9 +110,64 @@
    "podrobnee": "В плен он попал тяжело контуженным, без сознания, 8 августа 1941 года у Днепра, близ деревни Добрейка Могилёвской области. Путь: Острув-Мазовецка → Замостье → Хаммельбург → Берлин, гестапо → Нюрнберг → Флоссенбюрг → Майданек → Освенцим → Заксенхаузен → Маутхаузен. На старой странице порядок был перепутан, теперь он исправлен."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-16-goskatalog-14164707.jpg",
+   "gk": "15279896",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-16-goskatalog-23853560.jpg",
+   "gk": "23853560",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-16-goskatalog-31774402.jpg",
+   "gk": "31774402",
+   "fakt": 2,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "2 (также 3)"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-16-goskatalog-30367529.jpg",
+   "gk": "30367529",
+   "fakt": 14,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "14 (также 6)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-16-goskatalog-27354483.jpg",
+   "gk": "27354483",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-16-goskatalog-6008180.jpg",
+   "gk": "6008180",
+   "fakt": 6,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-16.md",
-  "material": null
+  "material": "knowledge/ns-material/01-16.md"
  }
 }

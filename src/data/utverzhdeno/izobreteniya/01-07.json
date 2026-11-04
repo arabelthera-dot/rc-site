@@ -112,32 +112,58 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-07jan-kolesov-byust.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-07-demihov-golova.jpg",
    "gk": "9102194",
    "fakt": 5,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-07-kolesov-operiruet.jpg",
    "gk": "36565915",
    "fakt": 9,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "9"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-07-asc-apparat.jpg",
    "gk": "28365474",
    "fakt": 10,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-07-kniga-1966.jpg",
    "gk": "63795497",
    "fakt": 11,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/01-07-klinika-korpus.jpg",
+   "gk": "36565800",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

@@ -112,32 +112,76 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-25jan-komparator-chertezh.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-25-ostrogradskij-portret.jpg",
    "gk": "7825101",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-25-ideoskop-chertezh-1832.jpg",
    "gk": "",
    "fakt": 5,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "5"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-25-akademiya-nauk-1822.jpg",
    "gk": "18064199",
    "fakt": 7,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7"
   },
   {
    "n": 5,
    "fajl": "/muzei/izobreteniya/img/01-25-gomeoskop-nepodvizhnyj-1832.jpg",
    "gk": "",
    "fakt": 11,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "11"
+  },
+  {
+   "n": 6,
+   "fajl": "day-25jan-brosyura-1832.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 7,
+   "fajl": "day-25jan-korsakov-portret.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 8,
+   "fajl": "day-25jan-perfokarta-kraevaya.jpg",
+   "gk": "7589697",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

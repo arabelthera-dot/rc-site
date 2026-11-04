@@ -110,9 +110,64 @@
    "podrobnee": "23 января 2008 года девятая линия в Грозном стала улицей имени 84-х Псковских десантников — «единственная улица в чеченской столице, названная в честь российских воинов, погибших во время войны на Северном Кавказе». Погибшие — уроженцы 47 регионов России, двадцать из Псковской области. Звание Героя России получили 22 бойца, 21 посмертно; памятники стоят в Пскове и Москве, в родных городах есть улицы и доски."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/ne-sdayutsya/img/01-22-goskatalog-91503693.jpg",
+   "gk": "69830317",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "обложка"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/ne-sdayutsya/img/01-22-goskatalog-15494891.jpg",
+   "gk": "16203370",
+   "fakt": 4,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/ne-sdayutsya/img/01-22-goskatalog-17762914.jpg",
+   "gk": "17850119",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/ne-sdayutsya/img/01-22-goskatalog-17762936.jpg",
+   "gk": "17850129",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/ne-sdayutsya/img/01-22-goskatalog-24872120.jpg",
+   "gk": "20536278",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/ne-sdayutsya/img/01-22-goskatalog-24872152.jpg",
+   "gk": "21341321",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "галерея"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/ns-utverzhdeno/ns-01-22.md",
-  "material": null
+  "material": "knowledge/ns-material/01-22.md"
  }
 }

@@ -112,18 +112,49 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-29jan-rossiya-nad-peterburgom.jpg",
+   "gk": "54679006",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-29-gravyura-rossiya-1882.jpg",
    "gk": "45770479",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-29-patent-ssha-1906.jpg",
    "gk": "",
    "fakt": 10,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "10"
+  },
+  {
+   "n": 4,
+   "fajl": "day-29jan-kostovich-portret.jpg",
+   "gk": "59271130",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "day-29jan-dvigatel-cmvvs.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

@@ -112,18 +112,40 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "day-28jan-holernaya-vakcina.jpg",
+   "gk": "29049270",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-28-obyavlenie-holernaya-vakcina-1920e.jpg",
    "gk": "14965410",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-28-odessa-novorossiyskiy-universitet.jpg",
    "gk": "23946408",
    "fakt": 6,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "6"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/01-28-barak-chumnye-bombei.jpg",
+   "gk": "16918455",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {

@@ -110,9 +110,64 @@
    "podrobnee": "К-432 заложили в Северодвинске 12 ноября 1967 года, а на воду спустили только 3 ноября 1977-го. Соседняя К-123, заложенная там же в декабре 1967-го, ждала спуска больше восьми лет. Виновата авария первой лодки: в 1972 году работы по уже заложенным «Лирам» остановили, пока не найдут причину. Программу не закрыли, но седьмую лодку серии так и не достроили — её разобрали прямо на стапеле."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-14-goskatalog-26638281.jpg",
+   "gk": "24243467",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/izobreteniya/img/01-14-pastvu-zapadnaya-lica-705.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/01-14-goskatalog-38736860.jpg",
+   "gk": "38736860",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/01-14-goskatalog-10403812.jpg",
+   "gk": "10403812",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/01-14-goskatalog-3719439.jpg",
+   "gk": "3719439",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/01-14-goskatalog-10664324.jpg",
+   "gk": "10664324",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/utverzhdeno/izobreteniya/01-14.md",
-  "material": null
+  "material": "knowledge/utverzhdeno/izobreteniya/01-14.kadry.md"
  }
 }

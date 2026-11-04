@@ -112,25 +112,49 @@
  ],
  "kadry": [
   {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/01-12-goskatalog-89019516.jpg",
+   "gk": "27352216",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
    "n": 2,
    "fajl": "/muzei/izobreteniya/img/01-12-model-8k71.jpg",
    "gk": "60097021",
    "fakt": 1,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1"
   },
   {
    "n": 3,
    "fajl": "/muzei/izobreteniya/img/01-12-medal-2000-pusk.jpg",
    "gk": "69483522",
    "fakt": 12,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "12"
   },
   {
    "n": 4,
    "fajl": "/muzei/izobreteniya/img/01-12-soobshchenie-tass-1957.jpg",
    "gk": "58966187",
    "fakt": 13,
-   "takzhe": []
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/01-12-glavnye-konstruktory-1957.jpg",
+   "gk": "27831030",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
   }
  ],
  "iz": {
