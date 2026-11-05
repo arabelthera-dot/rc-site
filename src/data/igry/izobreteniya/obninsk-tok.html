@@ -1,0 +1,50 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · пуск первой АЭС</div>
+    <section class="ot-igra igra-ruka-zona" data-obninsk-igra aria-label="Игра: дай атомный ток в сеть">
+      <h2 class="ot-h">Дай атомный ток в сеть</h2>
+      <div class="ot-head">
+        <p class="ot-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> Жми «Поднять стержни»</p>
+        <p class="ot-sub igra-poyasnenie" aria-live="polite"></p>
+      </div>
+      <div class="ot-tablo">
+        <div>Мощность<b class="ot-p">0 %</b><span class="ot-pbar"><i></i><em></em></span></div>
+        <div>Пар<b class="ot-par">0 %</b><span class="ot-parbar"><i></i></span></div>
+        <div>Окон горит<b class="ot-okna">0</b></div>
+      </div>
+      <p class="ot-signal" aria-live="assertive"></p>
+      <div class="ot-stage"><canvas role="img" aria-label="Слева — шахта реактора со стержнями и синим свечением, справа — ночной посёлок: окна зажигаются, когда ток идёт в сеть"></canvas></div>
+      <div class="ot-hod">
+        <button type="button" class="ot-vniz">Опустить стержни<small>мощность вниз</small></button>
+        <button type="button" class="ot-vverh">Поднять стержни<small>мощность вверх</small></button>
+      </div>
+      <div class="ot-hod2" hidden>
+        <button type="button" class="ot-zadv">Открыть задвижку<small>пар — на турбину</small></button>
+      </div>
+      <div class="ot-finale" hidden>
+        <p class="ot-fin-h"></p>
+        <p class="ot-fin-txt"></p>
+        <ul class="ot-zvezdy"></ul>
+        <button type="button" class="ot-again">Ещё раз</button>
+        <div class="ot-spravka">
+          <p class="ot-spravka-h">Как было на самом деле</p>
+          <p>26 июня 1954 года в 17:45 на Обнинской АЭС открыли задвижку, пар пошёл на турбину, и первая в мире атомная станция дала ток в общую сеть. В первые полгода реактор тёк, аварийные сигналы звучали по нескольку раз в день — сотрудники прозвали их «нежданчиками». Станцию починили, и она проработала почти 48 лет, не облучив ни одного человека.</p>
+          <p class="ot-src">Источник: «„Аварийные сигналы звучали по несколько раз в день“. Экскурсия на Обнинскую АЭС», рассказ И. Мохиревой, руководителя музейной группы; «Страна Росатом», 19.08.2020 — <a href="https://strana-rosatom.ru/2020/08/19/avarijnye-signaly-zvuchali-po-neskol/" target="_blank" rel="noopener">strana-rosatom.ru</a></p>
+        </div>
+      </div>
+      <div class="igra-pravila" data-igra-pravila>
+        <h3 class="igra-pravila-h">Как играть</h3>
+        <p class="igra-pravila-zachem">Ты — дежурный инженер на пульте Обнинской АЭС, 26 июня 1954 года. Выведи реактор на мощность, набери пар и дай ток посёлку — впервые в мире от атома.</p>
+        <ol class="igra-pravila-shagi">
+          <li><b>«Поднять стержни»</b> — реактор разгоняется, <b>«Опустить»</b> — затихает. Мощность отзывается с запозданием: не дёргай.</li>
+          <li><b>Держи стрелку в зелёной полосе.</b> Выше красной черты сработает аварийная защита — и пуск сорван.</li>
+          <li><b>«Нежданчики»:</b> то и дело воет сигнал и мощность сама прыгает — успей поправить.</li>
+          <li><b>Пар набрался — открой задвижку.</b> Пар пойдёт на турбину, и в посёлке начнут зажигаться окна.</li>
+        </ol>
+        <p class="igra-pravila-nyuans">Пока задвижка открыта, держи мощность в зелёном: чем дольше ровно — тем больше окон горит.</p>
+        <p class="igra-pravila-final">Три звезды: ток в сети, ни одной аварийной остановки, загорелись все 60 окон.</p>
+      </div>
+      <p class="ot-cap">Модель, не съёмка: время сжато, физика реактора упрощена до одной стрелки.</p>
+    </section>
+  </div>
+</section>

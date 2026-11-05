@@ -26,7 +26,7 @@ from telegram.ext import AIORateLimiter, Application, CallbackQueryHandler, Comm
 MSK = ZoneInfo("Europe/Moscow")
 TOKEN = os.environ.get("RC_TG_BOT_TOKEN", "")
 CHANNEL = os.environ.get("RC_TG_CHANNEL", "@russian_civilization_ru")
-SITE = os.environ.get("RC_SITE_URL", "https://arabelthera-dot.github.io/rc-site").rstrip("/") + "/"
+SITE = os.environ.get("RC_SITE_URL", "https://russian-civilization.ru").rstrip("/") + "/"
 HOUR = int(os.environ.get("RC_TG_HOUR", "7"))
 POST_CHANNEL = os.environ.get("RC_TG_POST_CHANNEL", "1") == "1"
 DB = os.environ.get("RC_TG_DB", "/data/subs.sqlite")

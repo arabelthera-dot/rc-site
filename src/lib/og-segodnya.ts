@@ -4,12 +4,9 @@
 // Нет кадра, нет автора/лицензии (credit) или файла нет в public/ — общая картинка сайта (Base.astro, og-default.jpg).
 import fs from 'node:fs';
 import { today, type Card } from './segodnya';
+import { mskKlyuch } from './msk.mjs';
 
-export const klyuchMsk = () => {
-  const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', month: '2-digit', day: '2-digit' })
-    .formatToParts(new Date()).map((x) => [x.type, x.value]));
-  return `${p.month}-${p.day}`;
-};
+export const klyuchMsk = () => mskKlyuch();
 
 // файл кадра в public/ (адрес вида /rc-site/... или /...); внешний адрес — undefined
 export function kadrFile(src?: string): string | undefined {

@@ -1,0 +1,41 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Станок: три прогона против одного</h2>
+    <p style="max-width:62ch">Отпечатай трёхцветную розетку двумя способами. Сначала по-старому: каждая краска своим прогоном, и лист всякий раз ложится чуть иначе. Потом по-орловски: все краски с одной формы, один раз. Смотри на стык цветов.</p>
+    <div class="press" id="press">
+      <div class="lab-btns">
+        <button class="btn ghost" type="button" id="oldGo">Три прогона — по краске</button>
+        <button class="btn gold" type="button" id="orlovGo">Один прогон — по Орлову</button>
+        <button class="btn ghost" type="button" id="pressReset">Начать заново</button>
+      </div>
+      <div class="press-stage">
+        <figure><canvas id="cvOld" width="300" height="300" role="img" aria-label="Оттиск тремя прогонами"></canvas><figcaption>Три прогона: <span id="shiftTxt">ещё не печатали</span></figcaption></figure>
+        <figure><canvas id="cvOrlov" width="300" height="300" role="img" aria-label="Оттиск одним прогоном"></canvas><figcaption>Один прогон: <span id="orlTxt">ещё не печатали</span></figcaption></figure>
+      </div>
+      <div class="lab-cap">Модель, а не снимок: сдвиг листа между прогонами задан программой, чтобы показать причину.</div>
+      <div class="lab-msg" id="pressMsg" aria-live="polite">Станок готов. Начни с трёх прогонов.</div>
+      <div id="kassaBox" hidden>
+        <p class="quiz-q">Ты кассир. Какой из двух билетов настоящий?</p>
+        <div class="kassa">
+          <button type="button" id="kassaWrong"><canvas id="cvK1" width="200" height="200" aria-hidden="true"></canvas>Билет А</button>
+          <button type="button" id="kassaRight"><canvas id="cvK2" width="200" height="200" aria-hidden="true"></canvas>Билет Б</button>
+        </div>
+        <div class="lab-msg" id="kassaMsg" aria-live="polite">Посмотри на стык красок.</div>
+      </div>
+      <noscript><div class="noscript-box">Для станка нужен JavaScript. Текстовая версия опыта: если три краски печатать тремя прогонами, лист между прогонами ложится чуть по-разному, и на стыке цветов появляются белые щели и наплывы. Орловский способ собирает все краски на одной форме и печатает их одним прогоном, поэтому краски сдвигаются только вместе: линия меняет цвет без разрыва. Настоящий билет — тот, у которого на стыке цветов нет щели.</div></noscript>
+    </div>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты печатник Экспедиции. Отпечатай одну и ту же трёхцветную розетку по-старому и по-орловски, а потом, как кассир, отличи настоящий билет от подделки.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми «Три прогона — по краске»</b> — каждая краска ляжет своим прогоном. Смотри на стыки цветов: там щели и наплывы.</li>
+        <li><b>Нажми «Один прогон — по Орлову»</b> — все краски лягут с одной формы, стыки останутся целыми.</li>
+        <li><b>Ты кассир: выбери настоящий билет</b> — А или Б. Подсказка: у настоящего на стыке цветов нет щели.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: «Три прогона» можно нажимать снова — лист каждый раз ложится чуть по-другому. Билеты кассира появятся только после орловского прогона, и выбрать можно один раз. «Начать заново» очищает станок, полученные баллы сохраняются.</p>
+      <p class="igra-pravila-final">Нашёл настоящий билет — ты понял, почему орловскую печать нельзя подделать без машины Орлова.</p>
+    </div>
+    <p class="src-note" style="margin-top:10px">Правило модели — описание способа в справке Банка России (2025) и в «Науке и жизни»: до Орлова — отдельный прогон на каждую краску, у Орлова — многокрасочный оттиск с одной формы за один прогон.</p>
+  </div>
+</section>

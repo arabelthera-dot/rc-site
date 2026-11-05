@@ -10,6 +10,7 @@
 // Выход 1 — брак (или проба не сошлась). В CI строгая; выключатель — переменная репозитория NAZVANIYA_STROGO=0.
 import fs from 'node:fs';
 import path from 'node:path';
+import { distFiles } from './lib/dist.mjs';
 import { korotkieImena, MUSEUMS } from '../src/lib/imya-muzeya.mjs';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
@@ -35,12 +36,7 @@ if (process.argv.includes('--proba')) { console.log(`nazvaniya-muzeev: проб�
 
 const dist = arg('--dist', 'dist');
 if (!fs.existsSync(dist)) { console.error(`nazvaniya-muzeev: нет папки ${dist} — сначала npm run build`); process.exit(1); }
-function* obhod(d) {
-  for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-    const p = path.join(d, e.name);
-    if (e.isDirectory()) { if (e.name !== 'pagefind') yield* obhod(p); } else if (/\.(?:html|xml|json|webmanifest)$/.test(e.name)) yield p;
-  }
-}
+const obhod = (d) => distFiles(d, '**/*.{html,xml,json,webmanifest}', { krome: ['**/pagefind/**'] });
 let n = 0;
 const brak = new Map(); // «имя» → { slug, title, files[] }
 for (const f of obhod(dist)) {

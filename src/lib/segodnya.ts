@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import { getCollection } from 'astro:content';
 import { isDated, beyondYear } from './kalendar';
 import { stroka, poUmolchaniyu } from './yazyki.mjs';
+import { mskGod } from './msk.mjs';
 
 // Б13 (опись Р84, взгляд 01): подпись картинки на главной — для человека: «кто, год», ниже мелко источник и лицензия
 // по-русски, без латинского имени файла. Полная строка (с именем файла) — на странице дня и в «Авторах изображений».
@@ -52,7 +53,7 @@ const PORYADOK: Record<string, string[]> = (() => {
   try { return JSON.parse(fs.readFileSync('src/data/glavnaya-poryadok.json', 'utf8')); } catch { return {}; }
 })();
 // Год сборки по Москве — для «круглой годовщины»
-const GOD = +new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Moscow', year: 'numeric' }).format(new Date());
+const GOD = mskGod();
 // Вес истории (20.10, прозрачно): полная страница +2, картинка +1, круглая годовщина: кратно 50 — +2, кратно 10 — +1.
 export function ves(c: Card): number {
   const y = c.year && /^\d{3,4}$/.test(c.year.trim()) ? GOD - +c.year.trim() : 0;

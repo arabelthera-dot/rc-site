@@ -17,6 +17,10 @@ PastVu (только с --geo lat,lon). Русский музей, Третья�
 
   kadr.py find "Gherman Titov Vostok 2" [-n 10] [--geo 55.75,37.62]
                                                       кандидаты по фондам: файл, размер, лицензия, автор
+  kadr.py podbor izobreteniya 01-14 "лодка 705" "Лира" [-n 15] [--geo …] [--out t.tsv]
+                                                      r612: кандидаты на день по нескольким запросам — без повторов
+                                                      и уже стоящих кадров, паспорт (фонд, номер, хранитель, права, ссылка)
+  kadr.py material ne-sdayutsya 01-09                  Р521: файлы кадров материала дня (…-goskatalog-<изобр.>.jpg) — скачать недостающие
   kadr.py put arhitektura 03-05 "pastvu:760729:i/e/n/ien36rd3zgbt83806t.jpg" "подпись" "Автор, 1961"
   kadr.py put … "rusmuseum:https://…/img.jpg" "подпись" "Автор" --card https://…/card
                                                       кадр из российского фонда: автор (шестой) обязателен,
@@ -43,6 +47,7 @@ from PIL import Image
 API = 'https://commons.wikimedia.org/w/api.php'
 UA = {'User-Agent': 'rc-site-kadr/1.0 (info@russian-civilization.ru)'}
 ROOT = Path(__file__).resolve().parent.parent
+GK_IMG = 'https://goskatalog.ru/muzfo-imaginator/rest/images/original/'
 ACCESS = Path(os.environ.get('RC_ACCESS') or
               Path.home() / 'projects/russian-civilization/docs/registries/access.py').expanduser()
 # выход rf-proxy:1080 забанен Госкаталогом (403) — ходим российским туннелем реестра (ru_tunnel.py)
@@ -66,6 +71,7 @@ PRAVA = {'goskatalog': 'Госкаталог прав не даёт — авто
          'tretyakov': 'некоммерческое использование, подпись «Из собрания Третьяковской галереи»',
          'ar_culture': 'у музея-держателя — по карточке Артефакта'}
 FONDY = ['shm_catalog', 'goskatalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu']  # порядок поиска
+POISK_PDF = ['rusneb']  # r612: библиотеки, у которых find ищет издания (put — как PDF_FONDY, «адрес PDF#page=N»)
 # Р134: библиотеки с PDF изданий — put без поиска, «адрес PDF#page=N» (страница с 1), права — только --prava
 PDF_FONDY = ['rusneb', 'prlib', 'rsl', 'nlr', 'shpl']
 RAZRESHENIE = None  # Р90: Викисклад — только с --razreshenie (слово Сергея), иначе не трогаем
@@ -183,7 +189,33 @@ def find_goskatalog(fond, query, n, geo):
         avt = ', '.join(a.get('name', '') for a in o.get('authors') or [] if isinstance(a, dict)) or 'автор не указан'
         print(f"? goskatalog:{gk}/muzfo-imaginator/rest/images/original/{img} | {o.get('name', '')[:90]} | {avt}\n"
               f"    --card {gk}/portal/#/collections?id={o['id']} — права Госкаталог не даёт: автор и год смерти по карточке")
+        print('    ' + gk_pasport(opener, o))
     return len(objs)
+
+
+GK_MUZEI = {}  # museumId → название (на прогон)
+
+
+def gk_pasport(opener, o):
+    """r612: паспорт кадра из карточки (/exhibits/{id}: дата, инв. №) и музея (/museums/{id}) — без ручной записи."""
+    gk, h = 'https://goskatalog.ru', {'User-Agent': BROWSER['User-Agent'], 'Accept': 'application/json', 'Referer': 'https://goskatalog.ru/portal/'}
+    j = lambda u: json.loads(opener.open(urllib.request.Request(gk + u, headers=h), timeout=40).read())
+    try:
+        k = j(f"/muzfo-rest/rest/exhibits/{o['id']}")
+    except Exception as e:
+        k = {}
+        warn(f"  карточка {o['id']} не открылась: {e}")
+    m = o.get('museumId')
+    if m not in GK_MUZEI:
+        try:
+            mu = j(f'/muzfo-rest/rest/museums/{m}')
+            GK_MUZEI[m] = mu.get('abbreviation') or mu.get('name') or ''
+        except Exception:
+            GK_MUZEI[m] = ''
+    data = k.get('periodStr') or (k.get('startDate') or '')[:4] or 'дата не указана'
+    return (f"паспорт: Госкаталог № {o['id']} (рег. {o.get('regNumber')}, инв. {o.get('invNumber') or '—'}) | {data} | "
+            f"хранится: {GK_MUZEI[m] or 'музей ' + str(m)} | права: Р136 — подпись «Фото: автор, год. Хранится: музей. "
+            f"Госкаталог № …», ст. 1274 ГК РФ")
 
 
 BROWSER = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0', 'Accept': 'application/json, text/html'}
@@ -274,6 +306,34 @@ def find_ar_culture(fond, query, n, geo):
     return len(items)
 
 
+def find_rusneb(fond, query, n, geo):
+    """r612: НЭБ — поиск страницей /search/ через российский туннель (напрямую 403 «Отключите VPN»).
+    Берём только доступ «свободный»: кадр — страница издания (put rusneb:… #page=N), права — по году издания."""
+    nb = 'https://rusneb.ru'
+    px = ru_proxy()
+    op = urllib.request.build_opener(urllib.request.ProxyHandler({'https': px, 'http': px}))
+    h = op.open(urllib.request.Request(f'{nb}/search/?q=' + urllib.parse.quote(query), headers=BROWSER), timeout=40).read().decode('utf-8', 'replace')
+    k = 0
+    for b in re.split(r'data-search-result-item', h)[1:]:
+        cid = re.search(r'href="/catalog/([^"/]+)/"', b)
+        dostup = plain((re.search(r'Доступ:(.*?)</div>', b, re.S) or [None, ''])[1])
+        if not cid or 'свободн' not in dostup.lower():  # «⬤ свободный» / «⬤ только описание»
+            continue
+        nazv = plain((re.search(r"search-list__item_link max_height_unset'>.*?<div>(.*?)</div>", b, re.S) or [None, ''])[1])
+        avt = plain((re.search(r"search-list__item_subtext'>(.*?)</span>", b, re.S) or [None, ''])[1]) or 'автор не указан'
+        vyh = plain((re.search(r'top_4 font_smaller">\s*<div>(.*?)</div>', b, re.S) or [None, ''])[1])
+        derzh = plain((re.search(r'Источник:(.*?)</div>', b, re.S) or [None, ''])[1])
+        god = GOD.findall(vyh)
+        print(f"? rusneb:{nb}/catalog/{cid[1]}/ | {nazv[:90]} | {avt[:60]}\n"
+              f"    --card {nb}/catalog/{cid[1]}/ — права: {'общественное достояние, если автор умер до 1955 (издание ' + god[-1] + ')' if god else 'по году издания и автору'}\n"
+              f"    паспорт: НЭБ № {cid[1]} | {vyh[:80] or 'выходные данные не указаны'} | хранится: {derzh or 'НЭБ'} | "
+              f"доступ: {dostup} | кадр — страница: put … \"rusneb:<PDF>#page=N\" --prava …")
+        k += 1
+        if k >= n:
+            break
+    return k
+
+
 def find_pastvu(fond, query, n, geo):
     if not geo:
         warn('  пропущен: нужен --geo lat,lon (PastVu ищет по точке)')
@@ -299,7 +359,8 @@ def find_commons(fond, query, n, geo):
 
 
 SEARCH = {'shm_catalog': find_unsupported, 'goskatalog': find_goskatalog, 'rusmuseum': find_rusmuseum,
-          'tretyakov': find_tretyakov, 'ar_culture': find_ar_culture, 'pastvu': find_pastvu, 'commons': find_commons}
+          'tretyakov': find_tretyakov, 'ar_culture': find_ar_culture, 'rusneb': find_rusneb, 'pastvu': find_pastvu,
+          'commons': find_commons}
 
 
 def find(query, n=10, geo=None):
@@ -309,7 +370,7 @@ def find(query, n=10, geo=None):
         names = {}
         warn(f'sources.json не прочитан ({e}) — российские фонды будут пропущены')
     got = []
-    for fond in FONDY + (['commons'] if RAZRESHENIE else []):
+    for fond in FONDY + POISK_PDF + (['commons'] if RAZRESHENIE else []):
         name = names.get(fond, {}).get('name', fond)
         print(f'== {fond} — {name}', flush=True)
         try:
@@ -321,6 +382,51 @@ def find(query, n=10, geo=None):
         except Exception as e:
             warn(f'  {fond} недоступен: {type(e).__name__}: {str(e)[:200]} — дальше')
     print('итог: ' + (', '.join(got) if got else 'ни один фонд не дал кандидатов'))
+
+
+PODBOR_SHAPKA = ('фонд', 'название', 'автор', 'паспорт', 'права', 'карточка', 'файл', 'запрос')
+
+
+def uzhe_u_dnya(muzey, key):
+    """Номера (≥5 цифр) из yaml/json дня и имён его файлов в img/ — кадры, что уже стоят, второй раз не предлагать."""
+    tekst = ''
+    for f in (ROOT / f'src/content/dni-shablon/{muzey}/{key}.yaml', ROOT / f'src/content/days/{muzey}/{key}.json'):
+        tekst += f.read_text() if f.is_file() else ''
+    tekst += ' '.join(x.name for x in (ROOT / f'public/muzei/{muzey}/img').glob(f'{key}-*'))
+    return set(re.findall(r'\d{5,}', tekst))
+
+
+def podbor(muzey, key, zaprosy, n=15, geo=None, out=None):
+    """r612: кандидаты на один день по нескольким запросам — все фонды find, без повторов и уже стоящих кадров,
+    в названии — все слова запроса (Артефакт и Русский музей ищут по одному слову); таблица паспортов на утверждение."""
+    uzhe, vse, videl = uzhe_u_dnya(muzey, key), [], set()
+    for q in zaprosy:
+        with contextlib.redirect_stdout(io.StringIO()) as buf:
+            find(q, n, geo)
+        stems = [w[:5] if len(w) > 5 else w[:-1] if len(w) >= 4 and not w.isdigit() else w for w in words(q)]  # «лодка» → «лодк»: ловит «лодки»
+        for b in re.split(r'(?m)^(?=\? )', buf.getvalue()):
+            m = re.match(r'\? (\w+):(\S+) \| ([^\n]*?) \| ([^\n]*)', b)
+            if not m:
+                continue
+            fond, fail, nazv, avt = m.groups()
+            card = (re.search(r'(?:--card )?(https?://\S+) — (?:права[: ]*)?([^\n]*)', b.split('\n', 1)[-1]) or [None, fail, ''])
+            pasp = (re.search(r'паспорт: ([^\n]*)', b) or [None, ''])[1]
+            tekst = f'{nazv} {pasp}'.lower().replace('ё', 'е')
+            if not all(st in tekst for st in stems):
+                continue
+            nomera = set(re.findall(r'\d{5,}', fail + ' ' + card[1]))
+            if card[1] in videl or nomera & uzhe:
+                continue
+            videl.add(card[1])
+            vse.append(dict(zip(PODBOR_SHAPKA, (fond, nazv.strip(), avt.strip(), pasp or 'по карточке', card[2].strip(), card[1], f'{fond}:{fail}', q))))
+    stroki = ['\t'.join(PODBOR_SHAPKA)] + ['\t'.join(r[k].replace('\t', ' ') for k in PODBOR_SHAPKA) for r in vse]
+    if out:
+        Path(out).write_text('\n'.join(stroki) + '\n')
+    for i, r in enumerate(vse, 1):
+        print(f"{i}. [{r['фонд']}] {r['название'][:80]} — {r['автор'][:40]}\n   {r['паспорт']}\n   {r['карточка']}")
+    print(f'итог {muzey}/{key}: кандидатов {len(vse)}' + (f' (уже у дня отсеяно по номерам: {len(uzhe)})' if uzhe else '')
+          + (f' → {out}' if out else ''))
+    return vse
 
 
 def slug(s):
@@ -1590,12 +1696,54 @@ def vernut(muzey=None, prim=False, tolko=None, dni=None):
     return itog
 
 
+def gk_izobrazhenie(predmet):
+    """Номер первого изображения предмета Госкаталога по его карточке (/exhibits/{id})."""
+    px = ru_proxy()
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': px, 'http': px}))
+    h = {'User-Agent': BROWSER['User-Agent'], 'Accept': 'application/json', 'Referer': 'https://goskatalog.ru/portal/'}
+    k = json.loads(opener.open(urllib.request.Request(f'https://goskatalog.ru/muzfo-rest/rest/exhibits/{predmet}', headers=h), timeout=40).read())
+    izo = [i.get('id') for i in k.get('images') or [] if i.get('id')] or [(k.get('mainImage') or {}).get('id')]
+    if not izo[0]:
+        raise RuntimeError(f'у предмета {predmet} в Госкаталоге нет изображения')
+    return izo[0]
+
+
+def material(museum, key):
+    """Р521: файлы кадров из материала дня (~/workspace/knowledge/ns-material/ММ-ДД.md, строки «Файл: …-goskatalog-<изображение>.jpg»)
+    — недостающие скачать из Госкаталога тем же save(), что и put; подпись и привязку ставит машина страницы из материала.
+    Номер в имени файла бывает номером изображения (01-09) или предмета (01-14): изображение берётся по карточке из строки
+    «Источник: …collections?id=N» под «Файл:» (первое изображение предмета), имя файла — как в материале."""
+    mat = Path.home() / 'workspace/knowledge/ns-material' / f'{key}.md'
+    if not mat.exists():
+        sys.exit(f'{mat}: материала нет')
+    # «Файл:»/«файл:» — оба написания материала (01-04 строчными); «Источник:» — в том же кадре, не обязательно следующей строкой
+    # (01-04: между ними «ширина×высота:»); до следующего «###» или «Файл:».
+    fajly = re.findall(rf'^\s*Файл:\s*/(muzei/{re.escape(museum)}/img/{re.escape(key)}-goskatalog-(\d+)\.jpg)\s*\n'
+                       rf'(?:(?:(?!\s*(?:###|Файл:))[^\n]*\n){{0,4}}?\s*Источник:[^\n]*?{GK_NOMER.pattern})?',
+                       mat.read_text(), re.M | re.I)
+    if not fajly:
+        sys.exit(f'{mat}: строк «Файл: /muzei/{museum}/img/{key}-goskatalog-<номер>.jpg» нет')
+    ne = []
+    for rel, nomer, predmet in fajly:
+        if (ROOT / 'public' / rel).exists():
+            print(f'есть  {rel}'); continue
+        try:
+            img = gk_izobrazhenie(predmet) if predmet else nomer
+            rel2, im = save(fetch(f'{GK_IMG}{img}'), museum, key, f'goskatalog-{nomer}')
+            print(f'взят  {rel2} {im.size[0]}×{im.size[1]}')
+        except (Exception, SystemExit) as e:
+            ne.append(f'{rel}: {e}')
+    for s in ne:
+        print(f'НЕ ВЗЯТ {s}', file=sys.stderr)
+    return not ne
+
+
 def main(argv=None):
     import argparse
     global RAZRESHENIE
     ap = argparse.ArgumentParser(prog='kadr.py', description=__doc__.split('\n\n')[0],
                                  epilog='Подробно: python3 scripts/kadr.py <команда> --help', formatter_class=argparse.RawDescriptionHelpFormatter)
-    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,put,zamena,razbor,sinhron,vernut}')
+    sub = ap.add_subparsers(dest='cmd', required=True, metavar='{find,podbor,put,material,zamena,razbor,sinhron,vernut}')
     raz = argparse.ArgumentParser(add_help=False)
     raz.add_argument('--razreshenie', metavar='СЛОВО', help='Р90: Викисклад — только по слову Сергея ("Р№ или дата и слова")')
     f = sub.add_parser('find', parents=[raz], help='кандидаты по российским фондам')
@@ -1610,6 +1758,8 @@ def main(argv=None):
     pu.add_argument('--hranitsya', metavar='МУЗЕЙ', help='Р136: кадр фонда любого года с полной подписью — полное название '
                     'музея-держателя по карточке; автор — «Фамилия И. О., год»; основание — ст. 1274 ГК РФ')
     pu.add_argument('--prava', help='права по карточке: «общественное достояние (автор умер в ГГГГ)», CC BY …')
+    ma = sub.add_parser('material', help='Р521: файлы кадров материала дня (Госкаталог) — скачать недостающие')
+    ma.add_argument('museum'); ma.add_argument('key', help='день, напр. 01-09')
     z = sub.add_parser('zamena', help='Р90: кадры с Викисклада → российские фонды (сеть; без --primenit сухой прогон)')
     z.add_argument('--muzey', help='только этот музей'); z.add_argument('--primenit', action='store_true', help='применить найденное')
     z.add_argument('--s-loc', action='store_true', help='включить Библиотеку Конгресса — только с личного разрешения владельца, Р93')
@@ -1620,6 +1770,11 @@ def main(argv=None):
     r.add_argument('--muzey', help='только этот музей'); r.add_argument('-n', type=int, default=5, help='сколько примеров')
     sn = sub.add_parser('sinhron', help='Р128: кадры фондов из json дня — в полную страницу; марки — заменить или убрать')
     sn.add_argument('--muzey', help='только этот музей'); sn.add_argument('--primenit', action='store_true', help='записать (без — сухой список)')
+    pb = sub.add_parser('podbor', help='r612: кандидаты на день по нескольким запросам — таблица паспортов на утверждение')
+    pb.add_argument('muzey'); pb.add_argument('key', help='день, напр. 01-14')
+    pb.add_argument('zaprosy', nargs='+', help='запросы: предмет, номер проекта, фамилия («арифмометр Однер» «Однер»)')
+    pb.add_argument('-n', type=int, default=15, help='кандидатов на фонд и запрос (по умолчанию 15)')
+    pb.add_argument('--geo', metavar='LAT,LON', help='точка для PastVu'); pb.add_argument('--out', help='таблица TSV')
     vr = sub.add_parser('vernut', help='Р132: кадр карточки — на место figure, вырезанного заменой #333 (c6765f3)')
     vr.add_argument('--muzey', help='только этот музей'); vr.add_argument('--dni', help='список музей/ДД-ММ через пробел')
     vr.add_argument('--primenit', action='store_true', help='записать (без — сухой список)')
@@ -1634,6 +1789,10 @@ def main(argv=None):
         sinhron(a.muzey, a.primenit)
     elif a.cmd == 'razbor':
         razbor(a.muzey, a.n)
+    elif a.cmd == 'podbor':
+        podbor(a.muzey, a.key, a.zaprosy, a.n, a.geo, a.out)
+    elif a.cmd == 'material':
+        sys.exit(0 if material(a.museum, a.key) else 1)
     elif a.cmd == 'find':
         find(a.query, a.n, a.geo)
     else:

@@ -1,0 +1,44 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Нос «Пайлота»: пройти лёд</h2>
+    <p style="max-width:62ch">Ты на мостике буксира у кромки льда. Выбери форму носа, как идти на лёд и когда выходить. Пройдёшь только при верном сочетании. На каждый неверный ход объясним, что пошло не так.</p>
+    <div class="lab" id="lab">
+      <div class="lab-row" role="group" aria-labelledby="lg1"><span class="lbl" id="lg1">1. Форма носа</span>
+        <button class="seg" type="button" data-k="bow" data-v="straight" aria-pressed="true">Прямой, отвесный</button>
+        <button class="seg" type="button" data-k="bow" data-v="cut" aria-pressed="false">Срезан под 20°</button>
+      </div>
+      <div class="lab-row" role="group" aria-labelledby="lg2"><span class="lbl" id="lg2">2. Как идти на лёд</span>
+        <button class="seg" type="button" data-k="way" data-v="ram" aria-pressed="true">Разогнаться и ударить</button>
+        <button class="seg" type="button" data-k="way" data-v="climb" aria-pressed="false">Наползти и продавить весом</button>
+      </div>
+      <div class="lab-row" role="group" aria-labelledby="lg3"><span class="lbl" id="lg3">3. Когда выходить</span>
+        <button class="seg" type="button" data-k="when" data-v="winter" aria-pressed="true">В разгар зимы</button>
+        <button class="seg" type="button" data-k="when" data-v="edge" aria-pressed="false">Весной, у тонкой кромки</button>
+      </div>
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="labGo">Полный вперёд</button>
+        <button class="btn ghost" type="button" id="labReset">Начать заново</button>
+      </div>
+      <div class="lab-stage">
+        <canvas id="labCv" width="640" height="220" role="img" aria-label="Буксир у кромки льда, вид сбоку"></canvas>
+        <div class="lab-cap">Модель, а не чертёж: форма корпуса упрощена, угол носа — как у «Пайлота».</div>
+      </div>
+      <div class="lab-msg" id="labMsg" aria-live="polite">Буксир у кромки льда. Выбери три условия и нажми «Полный вперёд».</div>
+      <div class="lab-found" id="labFound">Найдено причин неудачи: 0 из 3.</div>
+      <noscript><div class="noscript-box">Для модели нужен JavaScript. Текстовая версия опыта: прямой нос упирается в кромку, и лёд держит судно. Если с разгона бить льдину, удар тратит машину и калечит корпус. Если выйти в разгар зимы, дороги не будет: зимой с Кронштадтом сообщались санным путём по льду, а «Пайлот» продлевал навигацию в начале и конце сезона. Проходит так: нос срезан под 20°, судно наползает и давит весом, выход — у тонкой весенней кромки.</div></noscript>
+    </div>
+      <div class="igra-pravila" data-igra-pravila>
+        <h2 class="igra-pravila-h">Как играть</h2>
+        <p class="igra-pravila-zachem">Ты — капитан буксира у кромки льда в Кронштадте, 1864 год. Узнаешь, почему обычный пароход застревает во льду, а «Пайлот» прошёл.</p>
+        <ol class="igra-pravila-shagi">
+          <li><b>Выбери форму носа</b> — отвесный, как у всех пароходов, или срезанный под 20°.</li>
+          <li><b>Выбери, как идти на лёд</b> — с разгона ударить льдину или наползти на неё и продавить весом.</li>
+          <li><b>Выбери время выхода</b> — в разгар зимы или весной, у тонкой кромки — и нажми «Полный вперёд».</li>
+        </ol>
+        <p class="igra-pravila-nyuans">Нюансы: если судно не прошло, под картинкой появится, что именно помешало, — это одна из трёх причин неудачи. Найди все три. «Начать заново» вернёт обычный пароход.</p>
+        <p class="igra-pravila-final">Верное сочетание — и буксир вползает на лёд и ломает его своим весом: так «Пайлот» и ходил с 1864 года.</p>
+      </div>
+    <p class="src-note" style="margin-top:10px">Правила модели: угол 20° и принцип «вползать и ломать весом» — ОСК и Президентская библиотека; работа в начале и конце сезона — Президентская библиотека (навигация 1865 года открылась раньше обычного).</p>
+  </div>
+</section>

@@ -129,6 +129,8 @@
       card.appendChild(exp);
     }
 
+    function schet(e) { document.dispatchEvent(new CustomEvent('rc-igra', { detail: { e: e, igra: 'viktorina' } })); }
+
     function answer(picked, list, item) {
       var btns = list.querySelectorAll('.mq-opt');
       if (btns.length && btns[0].disabled) return;   // повторное нажатие не начисляет заново
@@ -141,6 +143,9 @@
 
       var hit = picked === item.c;
       answered.push(hit);
+      // счёт «начал — доиграл» (Р286 п.3, assets/rc-igra-schet.js): первый ответ — начал, последний — исход
+      if (answered.length === 1) schet('nachal');
+      if (answered.length === cfg.items.length) schet(answered.filter(Boolean).length * 2 > cfg.items.length ? 'vyigral' : 'proigral');
       if (hit && typeof window.award === 'function') window.award('q' + idx, points);
 
       var exp = list.parentNode.querySelector('.mq-exp');

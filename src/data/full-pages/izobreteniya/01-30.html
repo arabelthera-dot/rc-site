@@ -166,6 +166,7 @@
   .crumbs .here{color:var(--muted);white-space:nowrap}
 </style>
 <link rel="stylesheet" href="../../assets/museum-theme.css">
+<link rel="stylesheet" href="../../assets/igra-pravila.css">
 <!-- rc-meta:start -->
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="description" content="Не инженер, а актёр драматического театра Глеб Котельников придумал ранцевый парашют, которым пользуется весь мир.">
@@ -447,12 +448,6 @@
   <div class="wrap">
     <h2>Игра 1 · Приземли парашютиста в мишень</h2>
     <p style="color:var(--muted);margin-top:0;max-width:64ch">Парашютист падает. Поймай высоту и раскрой парашют в нужный момент, а потом веди его к красной мишени против ветра.</p>
-    <div style="background:rgba(45,140,191,.08);border:1px solid rgba(45,140,191,.2);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.7;color:var(--ink)">
-      <b>Как играть</b><br>
-      1. Нажми <b>«Прыжок»</b> — парашютист полетит вниз.<br>
-      2. <b>Тапни по полю</b> (или жми «Раскрыть парашют»), чтобы раскрыть купол. Не успел — раскроется сам.<br>
-      3. Под куполом <b>веди пальцем</b> по полю (или ◀ / ▶, на компьютере — стрелки), чтобы попасть в мишень против ветра.
-    </div>
     <div style="text-align:center">
       <div id="windLbl" style="font-size:13px;color:var(--gold-l);font-weight:600;min-height:18px;margin-bottom:6px"></div>
       <canvas id="game" width="800" height="330" style="width:100%;max-width:800px;background:linear-gradient(#cfe6f7,#eaf4fb);border-radius:14px;border:1px solid var(--line);touch-action:none"></canvas>
@@ -465,6 +460,14 @@
       </div>
       <div id="gm" style="font-weight:600;min-height:24px;color:var(--gold-l)"></div>
     </div>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <ol class="igra-pravila-shagi">
+        <li>Нажми <b>«Прыжок»</b> — парашютист полетит вниз.</li>
+        <li><b>Тапни по полю</b> (или жми «Раскрыть парашют»), чтобы раскрыть купол. Не успел — раскроется сам.</li>
+        <li>Под куполом <b>веди пальцем</b> по полю (или ◀ / ▶, на компьютере — стрелки), чтобы попасть в мишень против ветра.</li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -472,11 +475,19 @@
   <div class="wrap">
     <h2>Игра 2 · Собери парашют РК-1</h2>
     <p style="color:var(--muted);margin-top:0;max-width:64ch">Нажимай части в правильном порядке укладки — так собирал свой парашют сам Котельников. Ошибёшься — подскажу.</p>
-    <div id="asmSlots" style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0"></div>
+    <div id="asmSlots" data-igra-scena style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0"></div>
     <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Детали — нажимай по порядку:</div>
     <div id="asmParts" style="display:flex;gap:10px;flex-wrap:wrap"></div>
     <div id="asmMsg" style="font-weight:600;min-height:24px;color:var(--gold-l);margin-top:12px"></div>
     <button class="btn ghost" id="asmReset" style="display:none;margin-top:6px">Собрать заново</button>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <ol class="igra-pravila-shagi">
+        <li>Смотри на детали под надписью «Детали — нажимай по порядку».</li>
+        <li><b>Нажимай части</b> в порядке укладки — так собирал свой парашют сам Котельников. Ошибёшься — подскажу.</li>
+        <li>Собрал — жми «Собрать заново», если хочешь ещё раз.</li>
+      </ol>
+    </div>
   </div>
 </section>
 

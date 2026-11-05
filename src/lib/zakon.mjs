@@ -1,17 +1,23 @@
 // Е1/Е2 (Сергей 20.10.2026, Р47): закон о содержании и права на кадры XX века — общий разбор для сборки
-// (src/integrations/zakon.mjs) и отчёта scripts/prava.mjs. Только чтение, без зависимостей.
+// (src/integrations/zakon.mjs) и отчёта scripts/prava.mjs. Только чтение, из зависимостей — yaml (уже есть у Astro).
 //
 // Е1 — сверка с реестрами Минюста: снимки data/reestry/*.json (иноагенты, нежелательные организации,
 // экстремистские организации, экстремистские материалы; обновляет `node scripts/prava.mjs --reestry`).
 // Ищем в карточках дней (название, хук, источник, суть, механика, подписи и источники кадров, доп. карточки,
-// анкета страницы) и в полных страницах src/data/full-pages. Совпадение — сборка красная.
+// анкета страницы), в карточках шаблона дня src/content/dni-shablon/**.yaml (все строки) и в полных страницах
+// src/data/full-pages. Совпадение — сборка красная.
 // Два уровня (замер 20.10: 242 совпадения, почти все — однофамильцы «Иван Павлов» и короткие слова «Гроза»):
 //   сильное — сборка красная: полное ФИО (три слова целиком), название организации из 3+ слов в кавычках,
-//   адрес экстремистского материала;
-//   слабое — только отчёт для человека: имя и фамилия без отчества, инициалы с фамилией, название из 1–2 слов,
+//   адрес экстремистского материала; с r405 (28.10, r380 нашёл Каспарова и «Facebook AI Research» мимо сверки) ещё
+//   иноагент-человек «имя фамилия» / «фамилия имя», его фамилия, если имя из реестра стоит в той же карточке,
+//   и короткие названия запрещённых организаций из data/reestry/korotkie-nazvaniya.json (Meta, Facebook, Instagram…);
+//   слабое — только отчёт для человека: инициалы с фамилией, название из 1–2 слов,
 //   название экстремистского материала (в описаниях Минюста в кавычках и цитаты — «Отцы и дети», «Победа будет за нами»).
+// Пометка рядом (±300 знаков: «иностранный агент», у организаций — «запрещена», «экстремистская», «нежелательная»)
+// снимает совпадение с человеком или организацией: упоминание с пометкой закон разрешает.
 // Ложное совпадение (однофамилец, слово из названия книги) снимается строкой в data/reestry/isklyucheniya.json:
-// «<музей>/<ключ>|<вариант>»: «кто решил и дата» — как passport-waivers.json.
+// «<музей>/<ключ>|<вариант>»: «кто решил и дата» — как passport-waivers.json. Раздел «ждёт решения Сергея, r380» —
+// найденное, но не исправленное (содержание решает Сергей): сборку не роняет, выводится предупреждением.
 //
 // Е2 — основание у кадров XX века (год дня ≥ 1900 или год ≥ 1900 в подписи): общественное достояние
 // (ст. 1281–1282 ГК), свободная лицензия, цитирование (ст. 1274 ГК) со ссылкой, разрешение, своя генерация.
@@ -23,10 +29,13 @@
 // красная (src/integrations/zakon.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
+import YAML from 'yaml';
 import { cardFrames, fullFrames } from './podpisi.mjs';
 
 const REESTRY = 'data/reestry';
 const DAYS = 'src/content/days';
+const SHABLON = 'src/content/dni-shablon';
+const ZHDUT = 'ждёт решения Сергея, r380';
 const FULL = 'src/data/full-pages';
 const ls = (dir) => (fs.existsSync(dir) ? fs.readdirSync(dir).sort() : []);
 const readJson = (f, def) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : def);
@@ -54,7 +63,7 @@ function matcher(v) {
 
 /** Снимки реестров: [{ fayl, reestr, istochnik, data_snimka, zapisi }] */
 export function snimki(root = '.') {
-  return ls(path.join(root, REESTRY)).filter((f) => f.endsWith('.json') && !['isklyucheniya.json', 'osnovaniya.json'].includes(f))
+  return ls(path.join(root, REESTRY)).filter((f) => f.endsWith('.json') && !['isklyucheniya.json', 'osnovaniya.json', 'korotkie-nazvaniya.json'].includes(f))
     .map((f) => ({ fayl: f, ...readJson(path.join(root, REESTRY, f), {}) }));
 }
 
@@ -77,6 +86,17 @@ export function teksty(root = '.') {
       (d.body || []).forEach((b, i) => add(`${id} body[${i}]`, [b.html, b.lead, typeof b.config === 'string' ? b.config : JSON.stringify(b.config ?? '')].join(' ')));
     }
   }
+  // Шаблон дня: все строки карточки, путь поля — «karty[3].det[1]».
+  for (const museum of ls(path.join(root, SHABLON))) {
+    for (const f of ls(path.join(root, SHABLON, museum)).filter((x) => x.endsWith('.yaml'))) {
+      const obhod = (v, p) => {
+        if (typeof v === 'string') add(`${museum}/${f.slice(0, -5)} ${p}`, v);
+        else if (Array.isArray(v)) v.forEach((x, i) => obhod(x, `${p}[${i}]`));
+        else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) obhod(x, p ? `${p}.${k}` : k);
+      };
+      obhod(YAML.parse(fs.readFileSync(path.join(root, SHABLON, museum, f), 'utf8')), '');
+    }
+  }
   for (const museum of ls(path.join(root, FULL))) {
     for (const f of ls(path.join(root, FULL, museum)).filter((x) => x.endsWith('.html'))) {
       const html = fs.readFileSync(path.join(root, FULL, museum, f), 'utf8').replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ');
@@ -86,7 +106,37 @@ export function teksty(root = '.') {
   return out;
 }
 
-const silnoe = (v, s) => v.adres || (s.vid !== 'materialy' && v.tekst.split(' ').filter((w) => w.length > 1).length >= 3);
+// Иноагент-человек: запись снимка иноагентов вида «Фамилия Имя [Отчество]» (организации и СМИ — в кавычках, со скобками).
+const chelovek = (z, s) => s.fayl === 'inoagenty.json' && /^[А-ЯЁ][а-яё-]+( [А-ЯЁ][а-яё-]+){1,3}$/.test(z.imya.trim());
+// Имя и фамилия человека целиком (два слова без инициалов) — сильное с r405.
+const imyaFamiliya = (v) => { const w = v.tekst.split(' '); return w.length === 2 && w.every((x) => x.length > 1); };
+const silnoe = (v, s, z) => v.adres || v.korotkoe || (s.vid !== 'materialy' && v.tekst.split(' ').filter((w) => w.length > 1).length >= 3)
+  || (z && chelovek(z, s) && imyaFamiliya(v));
+// Пометка рядом с совпадением (±300 знаков нормализованного текста).
+const POMETKA_CHEL = /иностранн\p{L}* агент|иноагент/u;
+const POMETKA_ORG = /запрещен|экстремистск|террористическ|нежелательн/u;
+const OTCHESTVO = /(?:ович|евич|ич|овн|евн|ичн|инич)\p{L}{0,3}$/u;
+const sPometkoy = (t, idx, len, re) => idx >= 0 && re.test(t.norm.slice(Math.max(0, idx - 300), idx + len + 300));
+
+/** Короткие названия запрещённых организаций (data/reestry/korotkie-nazvaniya.json) — псевдоснимок для сверки. */
+export function korotkie(root = '.') {
+  const k = readJson(path.join(root, REESTRY, 'korotkie-nazvaniya.json'), { zapisi: [] });
+  const sn = Object.fromEntries(snimki(root).map((s) => [s.fayl, s]));
+  return {
+    fayl: 'korotkie-nazvaniya.json', vid: 'korotkie', data_snimka: null,
+    zapisi: k.zapisi.map((z) => ({ ...z, reestr: sn[z.fayl]?.reestr || z.fayl,
+      vPerechne: !!sn[z.fayl]?.zapisi?.some((x) => x.imya.startsWith(z.zapis)),
+      varianty: z.varianty.map((t) => ({ tekst: norm(t), korotkoe: true })) })),
+  };
+}
+
+/** Исключения: { isk: {ключ: причина}, zhdut: {ключ: причина} } — раздел ZHDUT отдельно. */
+export function isklyucheniya(root = '.') {
+  const all = readJson(path.join(root, REESTRY, 'isklyucheniya.json'), {});
+  const isk = {};
+  for (const [k, v] of Object.entries(all)) if (typeof v === 'string') isk[k] = v;
+  return { isk, zhdut: all[ZHDUT] || {} };
+}
 
 /** Текст для сверки: { gde, syroy, norm }. gde начинается с «<музей>/<ключ>» — по нему снимаются исключения. */
 export const tekst = (gde, raw) => ({ gde, syroy: raw, norm: norm(String(raw).replace(/<[^>]+>/g, ' ')) });
@@ -97,12 +147,28 @@ export function sverkaReestrov(root = '.', opts = {}) {
 }
 
 /** Е1 по любым текстам (сборка — все карточки и страницы, пост в каналы — его хуки): тот же разбор и те же исключения. */
-export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
-  const isk = readJson(path.join(root, REESTRY, 'isklyucheniya.json'), {});
+export function sverkaTekstov(tx, root = '.', { segodnya = new Date(), bezZhdut = false } = {}) {
+  const { isk, zhdut: zh } = isklyucheniya(root);
+  const zhdutIsk = bezZhdut ? {} : zh;
   const sn = snimki(root);
   const sovpadeniya = [];
   const vozmozhnye = [];
   const starye = [];
+  const zhdut = [];
+  // Одна находка — один раз на поле (у человека несколько вариантов: «гарри каспаров», «каспаров гарри»…).
+  const bylo = new Set();
+  // Исключение снимает запись по своему варианту, у человека — и «фамилию + имя» по любому его варианту в той же карточке.
+  const naydeno = (t, s, z, v, sil, drugie = []) => {
+    const id = t.gde.split(' ')[0];
+    const klyuchi = [v.tekst, ...drugie.map((x) => x.tekst)].map((x) => `${id}|${x}`);
+    if (klyuchi.some((k) => k in isk)) return;
+    const zap = { gde: t.gde, reestr: z.reestr || s.reestr || s.fayl, imya: z.imya, variant: v.tekst };
+    const kz = klyuchi.find((k) => k in zhdutIsk);
+    if (kz) { if (sil) zhdut.push({ ...zap, prichina: zhdutIsk[kz] }); return; }
+    if (sil && bylo.has(`${t.gde}|${z.imya}`)) return;
+    if (sil) bylo.add(`${t.gde}|${z.imya}`);
+    (sil ? sovpadeniya : vozmozhnye).push(zap);
+  };
   let zapisey = 0;
   // Предотбор: сорт. словарь слов корпуса и слова каждого текста — регэксп только там, где есть все слова варианта.
   const prefiks = (arr, p) => { let lo = 0, hi = arr.length; while (lo < hi) { const m = (lo + hi) >> 1; if (arr[m] < p) lo = m + 1; else hi = m; } return !!arr[lo]?.startsWith(p); };
@@ -110,9 +176,9 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
   const slovar = [...new Set(tx.flatMap((t) => t.slova))].sort();
   const estPrefiks = (p) => prefiks(slovar, p);
   const vTekste = (t, w, flex) => (flex ? osnovy(w).some((o) => prefiks(t.slova, o)) : prefiks(t.slova, w) && t.slova.includes(w));
-  for (const s of sn) {
+  for (const s of [...sn, korotkie(root)]) {
     const dney = s.data_snimka ? Math.floor((segodnya - new Date(s.data_snimka)) / 864e5) : Infinity;
-    if (dney > 14) starye.push(`${s.fayl}: снимок ${s.data_snimka || 'без даты'} — старше 14 дней`);
+    if (s.data_snimka !== null && dney > 14) starye.push(`${s.fayl}: снимок ${s.data_snimka || 'без даты'} — старше 14 дней`);
     for (const z of s.zapisi || []) {
       zapisey++;
       for (const v of z.varianty || []) {
@@ -122,14 +188,42 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date() } = {}) {
         const { re, syroy } = matcher(v);
         for (const t of tx) {
           if (v.adres ? !t.niz.includes(v.tekst) : !words.every((w) => vTekste(t, w, flex(w)))) continue;
-          if (!re.test(syroy ? t.syroy : t.norm)) continue;
-          if (`${t.gde.split(' ')[0]}|${v.tekst}` in isk) continue;
-          (silnoe(v, s) ? sovpadeniya : vozmozhnye).push({ gde: t.gde, reestr: s.reestr || s.fayl, imya: z.imya, variant: v.tekst });
+          const m = (syroy ? t.syroy : t.norm).match(re);
+          if (!m) continue;
+          let sil = silnoe(v, s, z);
+          // Пометка рядом снимает человека и организацию (не материал и не адрес).
+          if (sil && !v.adres && s.vid !== 'materialy') {
+            const re2 = chelovek(z, s) ? POMETKA_CHEL : POMETKA_ORG;
+            const idx = syroy ? t.norm.indexOf(norm(m[0])) : m.index;
+            if (sPometkoy(t, idx, m[0].length, re2)) continue;
+          }
+          naydeno(t, s, z, v, sil);
+        }
+      }
+      // Фамилия иноагента-человека и его имя из реестра рядом (в двух словах от неё, то же поле): «Гарри Кимович Каспаров»,
+      // «Каспаров, Гарри», «Александр Андреевич Иванов» — отчество не важно. Отчество («Уварович») — не имя и не фамилия.
+      if (chelovek(z, s)) {
+        const [fam, im] = norm(z.imya).split(' ');
+        if (!fam || !im || fam.length < 3 || im.length < 2) continue;
+        if (!osnovy(fam).some(estPrefiks) || !osnovy(im).some(estPrefiks)) continue;
+        const slovo = (w) => new RegExp(`^${wordRe(w, true)}$`, 'u');
+        const reF = slovo(fam);
+        const reI = slovo(im);
+        const v = { tekst: `${fam} + ${im}` };
+        for (const t of tx) {
+          if (!vTekste(t, fam, true) || !vTekste(t, im, true) || bylo.has(`${t.gde}|${z.imya}`)) continue;
+          const sl = t.norm.split(' ');
+          const i = sl.findIndex((w, j) => reF.test(w) && !OTCHESTVO.test(w)
+            && sl.slice(Math.max(0, j - 2), j + 3).some((x, k) => k !== Math.min(j, 2) && reI.test(x) && !OTCHESTVO.test(x)));
+          if (i < 0) continue;
+          const idx = sl.slice(0, i).join(' ').length + (i ? 1 : 0);
+          if (sPometkoy(t, idx, sl[i].length, POMETKA_CHEL)) continue;
+          naydeno(t, s, z, v, true, z.varianty);
         }
       }
     }
   }
-  return { snimkov: sn.length, zapisey, sovpadeniya, vozmozhnye, starye };
+  return { snimkov: sn.length, zapisey, sovpadeniya, vozmozhnye, starye, zhdut };
 }
 
 /**

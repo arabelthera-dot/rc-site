@@ -1,0 +1,383 @@
+{
+ "_opisanie": "Темы готовых дней (Р289 п.2): «музей/ММ-ДД» → id тем из src/data/temy.json. Машиной — scripts/temy-razmetka.mjs; правка глазом — здесь. Пустой список — у дня нет общей темы.",
+ "dni": {
+  "izobreteniya/01-01": [
+   "moskva",
+   "peterburg"
+  ],
+  "pervoprohodcy/01-01": [
+   "puteshestviya"
+  ],
+  "arhitektura/01-01": [
+   "derevo",
+   "vera"
+  ],
+  "kalendar-pobed/01-01": [
+   "velikaya-otechestvennaya",
+   "kavkaz"
+  ],
+  "ne-sdayutsya/01-01": [
+   "drevnyaya-rus"
+  ],
+  "literatura/01-01": [
+   "drevnyaya-rus"
+  ],
+  "karikatura/01-01": [],
+  "skazki/01-01": [],
+  "sport/01-01": [
+   "zima",
+   "peterburg",
+   "moskva"
+  ],
+  "izobreteniya/01-02": [
+   "kosmos"
+  ],
+  "pervoprohodcy/01-02": [
+   "sibir"
+  ],
+  "arhitektura/01-02": [
+   "derevo"
+  ],
+  "kalendar-pobed/01-02": [
+   "velikaya-otechestvennaya",
+   "moskva"
+  ],
+  "ne-sdayutsya/01-02": [
+   "flot"
+  ],
+  "literatura/01-02": [
+   "pushkin"
+  ],
+  "karikatura/01-02": [
+   "1812",
+   "zima"
+  ],
+  "skazki/01-02": [
+   "zima"
+  ],
+  "sport/01-02": [
+   "zima"
+  ],
+  "izobreteniya/01-03": [],
+  "arhitektura/01-03": [
+   "derevo",
+   "velikaya-otechestvennaya"
+  ],
+  "ne-sdayutsya/01-03": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-03": [
+   "velikaya-otechestvennaya",
+   "moskva"
+  ],
+  "karikatura/01-03": [],
+  "skazki/01-03": [
+   "zima"
+  ],
+  "sport/01-03": [],
+  "izobreteniya/01-04": [],
+  "arhitektura/01-04": [],
+  "ne-sdayutsya/01-04": [
+   "drevnyaya-rus"
+  ],
+  "literatura/01-04": [
+   "drevnyaya-rus",
+   "velikaya-otechestvennaya"
+  ],
+  "karikatura/01-04": [],
+  "skazki/01-04": [
+   "zima",
+   "derevo"
+  ],
+  "izobreteniya/01-05": [
+   "moskva"
+  ],
+  "arhitektura/01-05": [],
+  "ne-sdayutsya/01-05": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-05": [],
+  "karikatura/01-05": [],
+  "skazki/01-05": [
+   "zima"
+  ],
+  "izobreteniya/01-06": [
+   "puteshestviya"
+  ],
+  "arhitektura/01-06": [
+   "vera"
+  ],
+  "ne-sdayutsya/01-06": [],
+  "literatura/01-06": [],
+  "karikatura/01-06": [],
+  "izobreteniya/01-07": [
+   "medicina"
+  ],
+  "pervoprohodcy/01-07": [
+   "sibir",
+   "puteshestviya",
+   "sever"
+  ],
+  "arhitektura/01-07": [
+   "vera"
+  ],
+  "ne-sdayutsya/01-07": [
+   "nebo",
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-07": [
+   "pushkin"
+  ],
+  "karikatura/01-07": [],
+  "izobreteniya/01-08": [
+   "sever"
+  ],
+  "arhitektura/01-08": [
+   "vera"
+  ],
+  "ne-sdayutsya/01-08": [
+   "velikaya-otechestvennaya",
+   "moskva",
+   "derevo"
+  ],
+  "literatura/01-08": [
+   "moskva",
+   "vera"
+  ],
+  "izobreteniya/01-09": [
+   "sever"
+  ],
+  "arhitektura/01-09": [
+   "moskva"
+  ],
+  "ne-sdayutsya/01-09": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-09": [
+   "pushkin"
+  ],
+  "izobreteniya/01-10": [
+   "sever",
+   "zima"
+  ],
+  "ne-sdayutsya/01-10": [
+   "flot"
+  ],
+  "literatura/01-10": [
+   "petr-pervyy"
+  ],
+  "izobreteniya/01-11": [
+   "nebo"
+  ],
+  "ne-sdayutsya/01-11": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-11": [],
+  "izobreteniya/01-12": [
+   "kosmos"
+  ],
+  "ne-sdayutsya/01-12": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-12": [
+   "vera"
+  ],
+  "izobreteniya/01-13": [
+   "flot"
+  ],
+  "ne-sdayutsya/01-13": [
+   "medicina",
+   "sever"
+  ],
+  "literatura/01-13": [],
+  "izobreteniya/01-14": [
+   "flot",
+   "peterburg"
+  ],
+  "ne-sdayutsya/01-14": [
+   "velikaya-otechestvennaya",
+   "peterburg"
+  ],
+  "literatura/01-14": [],
+  "izobreteniya/01-15": [
+   "matematika",
+   "peterburg"
+  ],
+  "ne-sdayutsya/01-15": [
+   "sever",
+   "nebo",
+   "zima"
+  ],
+  "literatura/01-15": [],
+  "izobreteniya/01-16": [
+   "kosmos"
+  ],
+  "ne-sdayutsya/01-16": [
+   "velikaya-otechestvennaya",
+   "zima"
+  ],
+  "literatura/01-16": [],
+  "izobreteniya/01-17": [
+   "nebo"
+  ],
+  "ne-sdayutsya/01-17": [
+   "nebo",
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-17": [],
+  "izobreteniya/01-18": [
+   "matematika",
+   "peterburg"
+  ],
+  "ne-sdayutsya/01-18": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-18": [],
+  "izobreteniya/01-19": [
+   "matematika",
+   "peterburg"
+  ],
+  "kalendar-pobed/01-19": [
+   "velikaya-otechestvennaya"
+  ],
+  "ne-sdayutsya/01-19": [
+   "flot"
+  ],
+  "izobreteniya/01-20": [
+   "medicina"
+  ],
+  "ne-sdayutsya/01-20": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-20": [
+   "1812",
+   "moskva"
+  ],
+  "izobreteniya/01-21": [],
+  "ne-sdayutsya/01-21": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/01-21": [],
+  "izobreteniya/01-22": [
+   "moskva"
+  ],
+  "kalendar-pobed/01-22": [
+   "velikaya-otechestvennaya"
+  ],
+  "ne-sdayutsya/01-22": [],
+  "literatura/01-22": [
+   "velikaya-otechestvennaya"
+  ],
+  "izobreteniya/01-23": [
+   "moskva",
+   "matematika"
+  ],
+  "ne-sdayutsya/01-23": [
+   "vera"
+  ],
+  "literatura/01-23": [],
+  "izobreteniya/01-24": [
+   "flot"
+  ],
+  "ne-sdayutsya/01-24": [
+   "zima"
+  ],
+  "literatura/01-24": [],
+  "izobreteniya/01-25": [
+   "matematika",
+   "medicina"
+  ],
+  "ne-sdayutsya/01-25": [
+   "kavkaz"
+  ],
+  "literatura/01-25": [],
+  "izobreteniya/01-26": [
+   "peterburg"
+  ],
+  "ne-sdayutsya/01-26": [
+   "kosmos"
+  ],
+  "literatura/01-26": [],
+  "izobreteniya/01-27": [
+   "moskva"
+  ],
+  "kalendar-pobed/01-27": [
+   "velikaya-otechestvennaya",
+   "peterburg"
+  ],
+  "ne-sdayutsya/01-27": [
+   "flot"
+  ],
+  "literatura/01-27": [
+   "drevnyaya-rus"
+  ],
+  "izobreteniya/01-28": [
+   "medicina"
+  ],
+  "ne-sdayutsya/01-28": [
+   "velikaya-otechestvennaya",
+   "deti-geroi"
+  ],
+  "literatura/01-28": [
+   "flot",
+   "sever",
+   "moskva"
+  ],
+  "izobreteniya/01-29": [
+   "nebo",
+   "flot"
+  ],
+  "ne-sdayutsya/01-29": [],
+  "literatura/01-29": [],
+  "izobreteniya/01-30": [
+   "nebo"
+  ],
+  "literatura/01-30": [
+   "sibir"
+  ],
+  "literatura/01-31": [],
+  "literatura/02-01": [],
+  "literatura/02-02": [
+   "peterburg"
+  ],
+  "izobreteniya/02-03": [
+   "kosmos"
+  ],
+  "literatura/02-03": [
+   "puteshestviya",
+   "moskva",
+   "peterburg"
+  ],
+  "literatura/02-04": [
+   "velikaya-otechestvennaya"
+  ],
+  "literatura/02-05": [
+   "zima",
+   "pushkin"
+  ],
+  "izobreteniya/03-18": [
+   "kosmos"
+  ],
+  "iskusstvo/05-02": [
+   "flot"
+  ],
+  "izobreteniya/05-15": [
+   "medicina"
+  ],
+  "izobreteniya/06-16": [
+   "kosmos"
+  ],
+  "izobreteniya/09-26": [],
+  "izobreteniya/11-15": [
+   "kosmos",
+   "nebo"
+  ],
+  "izobreteniya/11-25": [
+   "medicina"
+  ],
+  "izobreteniya/12-01": [
+   "matematika"
+  ],
+  "izobreteniya/12-14": []
+ }
+}

@@ -12,7 +12,7 @@
    Текст на рисунках не лежит: имена машин и подписи — строками под рисунком.
    Список марок — строго по А. И. Басову (НИУ ВШЭ, IQ.HSE, 2024): Original-Odhner и Facit (Швеция),
    Brunsviga и Triumphator (Германия), Marchant (США); плюс петербургский «Однер» и курский «Феликс».
-   Вид — public/assets/izobreteniya-den-01-18.css (.polka*, .stopki*, .crank*). */
+   Вид — public/assets/igra-polka-odnera.css (.polka*, .stopki*, .crank*); у копии staraya — izobreteniya-den-01-18.css. */
 (function () {
   'use strict';
   var root = document.getElementById('polka');

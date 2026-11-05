@@ -1,0 +1,18 @@
+/* Ежедневная привычка (Р289 п.1): блок «Завтра в музеях» + строка серии (src/lib/privychka.mjs) и кнопка
+   «Поделиться итогом» под игрой (rc-privychka.js). Цвет — от страницы (currentColor): у музеев светлые и тёмные дни. */
+.rc-privychka{max-width:860px;margin:28px auto 8px;padding:16px;font-family:'Inter',system-ui,sans-serif;color:inherit;box-sizing:border-box;border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:12px}
+.rc-privychka[hidden]{display:none}
+.rc-pv-tolko-seriya{padding:12px 16px}
+.rc-pv-h{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin:0 0 6px;opacity:.85}
+.rc-pv-kogda{margin:0 0 12px;font-size:15px;opacity:.85}
+.rc-pv-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.rc-pv-item{padding:10px 12px;border-left:3px solid color-mix(in srgb,currentColor 40%,transparent)}
+.rc-pv-muzey{display:block;font-size:13px;line-height:1.35;opacity:.8;margin-bottom:4px}
+.rc-pv-hook{display:block;font-size:16px;line-height:1.4}
+.rc-pv-seriya{margin:14px 0 0;font-size:15px;line-height:1.45;font-weight:600}
+.rc-pv-tolko-seriya .rc-pv-seriya{margin:0}
+.rc-pv-itog{display:flex;flex-wrap:wrap;align-items:center;gap:10px;max-width:860px;margin:14px 0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
+.rc-pv-knopka{min-height:44px;padding:10px 18px;font:600 16px/1.2 'Inter',system-ui,sans-serif;color:inherit;background:color-mix(in srgb,currentColor 8%,transparent);border:1px solid currentColor;border-radius:10px;cursor:pointer}
+.rc-pv-knopka:hover,.rc-pv-knopka:focus-visible{background:color-mix(in srgb,currentColor 16%,transparent)}
+.rc-pv-status{font-size:14px;opacity:.85;overflow-wrap:anywhere}
+.rc-pv-skryto{position:fixed;top:0;left:0;width:1px;height:1px;opacity:0}

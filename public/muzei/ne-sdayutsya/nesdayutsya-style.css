@@ -325,3 +325,5 @@
   table.rights th{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
   table.rights a{color:var(--gold-l)}
   table.rights code{font-size:11.5px;color:var(--muted)}
+/* Обложка дня — figure.hero-fig (замок картинок Р231): без полей браузера у figure */
+:where(figure.hero-fig){margin:0}

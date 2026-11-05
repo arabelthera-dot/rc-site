@@ -1,0 +1,195 @@
+// Замок картинок дня (Р231, Сергей 24.10.2026: «И фото сверху, и фото, либо картинки обязательные в тексте»).
+// Каждая страница дня, изменённая в заявке, в собранном dist открывается в браузере и должна иметь:
+//   1) обложку — figure.hero-fig с загруженной картинкой (naturalWidth > 0);
+//   2) хотя бы одну загруженную картинку в тексте — вне обложки, вне игры и вне навигации (календарь, «Куда дальше», каталог);
+//   3) ни одной видимой картинки без src или битой. Картинки внутри игры не в счёт: игра заполняет их сама (в финале);
+//   4) страница открывается сверху: через 2,5 с после загрузки scrollY = 0 (r239: игры 27 и 28 янв. сами уезжали
+//      к своей кнопке на 2000 px, посетитель не видел обложку).
+//   5) обложка не срезана на 390×844: ни object-fit:cover при других пропорциях кадра, ни контейнер с overflow:hidden
+//      (r274: у Пильчикова 4 янв. сцена в 200 px показывала бороду и пиджак без головы). Лечится классом fit-full у .hero-scene.
+// Изменённые дни — git diff с базой: src/data/full-pages/<музей>/ММ-ДД.html и карточки src/content/days/<музей>/ММ-ДД.json
+// (карточка — только если у дня есть полная страница: дни без полной страницы — пустые, замок их не касается).
+// Нарушение — код 1 и ::error:: по-русски: какой день, чего нет. Откат — удалить шаг из .github/workflows/proverka.yml.
+// Запуск: node scripts/kartinki-dnya.mjs [--dist dist] [--baza origin/main] [--proba]
+//         node scripts/kartinki-dnya.mjs --vse [--muzei izobreteniya,...] — таблица по всем полным страницам музеев, без падения.
+import fs from 'node:fs';
+import path from 'node:path';
+import { serveDist } from './lib/dist.mjs';
+import os from 'node:os';
+import { execFileSync } from 'node:child_process';
+const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
+
+const FULL = 'src/data/full-pages';
+const DAYS = 'src/content/days';
+const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
+const est = (k) => process.argv.includes(k);
+const DIST = arg('--dist', 'dist');
+
+// Где картинка не считается «в тексте» и не проверяется на пустой src: игра (заполняет кадры сама) и навигация.
+const IGRA = ['#games', '[id^="game"]', '[id$="-game"]', '[id^="igra"]', '[data-game]', '[data-game-section]',
+  '[data-igra-scena]', '.igra-blok', '.igra-ruka-zona', '[class*="-igra"]', '[class^="igra"]'].join(',');
+const NAVIGACIYA = ['header.site-header', 'nav', 'footer', '#calendar', '#kuda-dalshe', '.kd', '#catalog'].join(',');
+
+// Что не так с картинками открытой страницы: [] — всё на месте; плюс счёт для таблицы.
+async function proverit(page, url) {
+  await page.goto(url, { waitUntil: 'load', timeout: 45000 });
+  // Прокрутка без нажатия: игры стартуют через 0,3–0,7 с и докручивают плавно — ждём с запасом, до своей прокрутки.
+  await page.waitForTimeout(2500);
+  const uehala = Math.round(await page.evaluate(() => window.scrollY));
+  // Ленивые картинки — грузить сразу и прокрутить страницу, чтобы сработали наблюдатели.
+  await page.evaluate(async () => {
+    document.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
+    for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 30)); }
+    window.scrollTo(0, 0);
+    const imgs = [...document.images].filter((i) => i.getAttribute('src'));
+    await Promise.race([
+      Promise.all(imgs.map((i) => i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; }))),
+      new Promise((r) => setTimeout(r, 15000)),
+    ]);
+  });
+  const r = await page.evaluate(({ IGRA, NAVIGACIYA }) => {
+    const vidna = (el) => {
+      const cs = getComputedStyle(el);
+      return el.getClientRects().length > 0 && cs.visibility !== 'hidden' && cs.display !== 'none';
+    };
+    const imya = (i) => (i.getAttribute('src') || '').split('/').pop() || i.alt?.slice(0, 40) || i.className || 'img';
+    const zagruzhena = (i) => i.getAttribute('src') && i.complete && i.naturalWidth > 0;
+    const o = [];
+    const hero = document.querySelector('figure.hero-fig');
+    const heroImg = hero && hero.querySelector('img');
+    let oblozhka = 'нет';
+    if (!hero) o.push('нет обложки — figure.hero-fig');
+    else if (!heroImg) o.push('в обложке figure.hero-fig нет картинки');
+    else if (!zagruzhena(heroImg)) o.push(`картинка обложки не загрузилась (${imya(heroImg)})`);
+    else {
+      oblozhka = 'да';
+      // Срез кадра: пропорции рамки не совпадают с кадром при cover/none или рамку обрезает предок с overflow.
+      const r = heroImg.getBoundingClientRect(), fit = getComputedStyle(heroImg).objectFit;
+      const kadr = heroImg.naturalWidth / heroImg.naturalHeight, ramka = r.width / r.height;
+      const srez = [];
+      if (fit !== 'contain' && fit !== 'scale-down' && Math.abs(ramka / kadr - 1) > 0.03)
+        srez.push(fit === 'fill' ? 'кадр растянут не по пропорциям' : `object-fit:${fit} режет кадр`);
+      for (let el = heroImg.parentElement; el && el !== document.body; el = el.parentElement) {
+        if (getComputedStyle(el).overflow === 'visible') continue;
+        const a = el.getBoundingClientRect();
+        const px = Math.round(Math.max(0, a.top - r.top) + Math.max(0, r.bottom - a.bottom) + Math.max(0, a.left - r.left) + Math.max(0, r.right - a.right));
+        if (px > 2) { srez.push(`контейнер ${el.classList[0] ? '.' + el.classList[0] : el.tagName.toLowerCase()} срезает ${px} px`); break; }
+      }
+      if (srez.length) o.push(`обложка срезана (${imya(heroImg)}): ${srez.join('; ')} — кадр целиком: класс fit-full у .hero-scene`);
+    }
+    let vTekste = 0;
+    const bitye = [];
+    for (const i of document.querySelectorAll('img')) {
+      if (i.closest(IGRA)) continue;
+      const vObl = hero && hero.contains(i);
+      if (vidna(i) && !zagruzhena(i)) bitye.push(i.getAttribute('src') ? `битая ${imya(i)}` : `без src: ${imya(i)}`);
+      if (!vObl && !i.closest(NAVIGACIYA) && zagruzhena(i) && i.naturalWidth >= 100) vTekste++;
+    }
+    if (!vTekste) o.push('нет ни одной загруженной картинки в тексте (вне обложки и игры)');
+    if (bitye.length) o.push(`видимые картинки не загрузились: ${bitye.join(', ')}`);
+    return { o, oblozhka, vTekste, bitye: bitye.length };
+  }, { IGRA, NAVIGACIYA });
+  if (uehala !== 0) r.o.push(`страница сама уехала вниз на ${uehala} px после загрузки — посетитель не видит обложку`);
+  return { ...r, uehala };
+}
+
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+async function prognat(root, dni) {
+  const s = await serveDist(root);
+  const base = s.url.slice(0, -1);
+  const itog = [];
+  for (const d of dni) {
+    const f = path.join(root, d.adres, 'index.html');
+    if (!fs.existsSync(f)) { itog.push({ ...d, o: [`страницы нет в сборке (${d.adres})`], oblozhka: '—', vTekste: 0, bitye: 0, uehala: '—' }); continue; }
+    try { itog.push({ ...d, ...(await proverit(page, base + d.adres)) }); }
+    catch (e) { itog.push({ ...d, o: [`страница не открылась: ${e.message.split('\n')[0]}`], oblozhka: '—', vTekste: 0, bitye: 0, uehala: '—' }); }
+  }
+  s.close();
+  return itog;
+}
+const den = (muzey, key) => ({ muzey, key, adres: `/muzei/${muzey}/den/${key}/` });
+
+if (est('--proba')) {
+  // Заведомые страницы: замок пропускает хорошую и ловит каждый брак.
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'kartinki-proba-'));
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100"><rect width="200" height="100"/></svg>';
+  const hero = '<figure class="hero-fig"><img src="a.svg"></figure>';
+  const tekst = '<p>Текст</p><figure><img src="b.svg"></figure>';
+  const proba = [
+    ['всё на месте', hero + tekst, 0],
+    ['кадр игры без src — не в счёт', hero + tekst + '<section id="games"><img class="final"></section>', 0],
+    ['нет обложки', tekst, 1],
+    ['обложка целиком в рамке', '<figure class="hero-fig"><div style="height:120px;overflow:hidden"><img src="a.svg" style="width:200px;height:100px"></div></figure>' + tekst, 0],
+    ['обложку срезает контейнер', '<figure class="hero-fig"><div style="height:50px;overflow:hidden"><img src="a.svg" style="width:200px;height:100px"></div></figure>' + tekst, 1],
+    ['обложку режет object-fit:cover', '<figure class="hero-fig"><img src="a.svg" style="width:100px;height:100px;object-fit:cover"></figure>' + tekst, 1],
+    ['битая обложка', '<figure class="hero-fig"><img src="net.svg"></figure>' + tekst, 1],
+    ['нет картинки в тексте', hero + '<p>Сухой текст</p>', 1],
+    ['в тексте только игра', hero + '<section id="games"><img src="b.svg"></section>', 1],
+    ['в тексте только «Куда дальше»', hero + '<section class="block kd" id="kuda-dalshe"><img src="b.svg"></section>', 1],
+    ['битая картинка в тексте', hero + tekst + '<img src="net.jpg">', 1],
+    ['видимая картинка без src', hero + tekst + '<img alt="пусто">', 1],
+    ['игра сама крутит к себе при загрузке', hero + tekst + '<div style="height:3000px"></div><button id="k">Жми</button>'
+      + '<script>setTimeout(function () { document.getElementById("k").scrollIntoView({ block: "center", behavior: "smooth" }); }, 650)</script>', 1],
+    ['игра крутит только после нажатия', hero + tekst + '<div style="height:3000px"></div><button id="k">Жми</button>'
+      + '<script>document.getElementById("k").onclick = function () { this.scrollIntoView(); }</script>', 0],
+  ];
+  const dni = proba.map(([, html], n) => {
+    const d = den('proba', String(n).padStart(2, '0'));
+    fs.mkdirSync(path.join(tmp, d.adres), { recursive: true });
+    fs.writeFileSync(path.join(tmp, d.adres, 'index.html'), `<!doctype html><meta charset="utf-8"><body>${html}</body>`);
+    fs.writeFileSync(path.join(tmp, d.adres, 'a.svg'), svg);
+    fs.writeFileSync(path.join(tmp, d.adres, 'b.svg'), svg);
+    return d;
+  });
+  const itog = await prognat(tmp, dni);
+  let mimo = 0;
+  itog.forEach((r, n) => {
+    const [imya, , zhdu] = proba[n];
+    const ok = (r.o.length > 0 ? 1 : 0) === zhdu;
+    if (!ok) mimo++;
+    console.log(`${ok ? 'ок ' : 'МИМО'} ${imya}: ${r.o.join('; ') || 'чисто'}`);
+  });
+  fs.rmSync(tmp, { recursive: true, force: true });
+  await browser.close();
+  if (mimo) { console.log(`::error::kartinki-dnya: проба мимо — ${mimo} из ${proba.length}`); process.exit(1); }
+  console.log(`kartinki-dnya: проба ${proba.length} из ${proba.length}`);
+  process.exit(0);
+}
+
+let dni;
+if (est('--vse')) {
+  const muzei = arg('--muzei', '') ? arg('--muzei').split(',') : fs.readdirSync(FULL);
+  dni = muzei.flatMap((m) => fs.readdirSync(path.join(FULL, m)).filter((f) => /^\d\d-\d\d\.html$/.test(f)).sort()
+    .map((f) => den(m, f.slice(0, 5))));
+} else {
+  const baza = arg('--baza', process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/main');
+  let izm;
+  try {
+    izm = execFileSync('git', ['diff', '--name-only', '--diff-filter=AMR', `${baza}...HEAD`, '--', FULL, DAYS], { encoding: 'utf8' })
+      .split('\n').filter(Boolean);
+  } catch {
+    console.log(`::error::kartinki-dnya: нет базы ${baza} — изменённые дни не определить`);
+    process.exit(1);
+  }
+  const vse = new Map();
+  for (const f of izm) {
+    const m = /^src\/(?:data\/full-pages|content\/days)\/([\w-]+)\/(\d\d-\d\d)\.(html|json)$/.exec(f);
+    if (!m || !fs.existsSync(path.join(FULL, m[1], `${m[2]}.html`))) continue;
+    vse.set(`${m[1]}/${m[2]}`, den(m[1], m[2]));
+  }
+  dni = [...vse.values()];
+  if (!dni.length) { console.log('kartinki-dnya: в заявке нет изменённых страниц дней — проверять нечего'); await browser.close(); process.exit(0); }
+}
+
+const itog = await prognat(DIST, dni);
+await browser.close();
+const proshli = itog.filter((r) => !r.o.length);
+const stroki = ['| день | обложка | картинок в тексте | битые | уехала, px | итог |', '|---|---|---|---|---|---|',
+  ...itog.map((r) => `| ${r.muzey} ${r.key} | ${r.oblozhka} | ${r.vTekste} | ${r.bitye} | ${r.uehala} | ${r.o.length ? 'КРАСНЫЙ: ' + r.o.join('; ') : 'зелёный'} |`)];
+const otchet = `### Картинки дня и открытие сверху (Р231, r239): прошли ${proshli.length} из ${itog.length}\n\n${stroki.join('\n')}\n`;
+console.log(otchet);
+if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, otchet + '\n');
+if (est('--vse')) process.exit(0);
+for (const r of itog.filter((x) => x.o.length)) console.log(`::error::День ${r.muzey} ${r.key}: ${r.o.join('; ')}`);
+process.exit(proshli.length === itog.length ? 0 : 1);

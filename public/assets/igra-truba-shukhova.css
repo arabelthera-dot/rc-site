@@ -1,0 +1,69 @@
+/* Игры 5 янв. «Посчитай трубу» и «Быстрый ответ» — стили 1:1 со старой страницы src/data/full-pages/izobreteniya/01-05.html (#games). */
+.gm{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;margin:14px 0}
+.gm h3{margin:0 0 14px;font-size:20px;color:#e4c97a;font-family:'Playfair Display',serif}
+.gm-btn{cursor:pointer;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 16px;margin:7px 0;
+  background:rgba(255,255,255,.04);color:#e8eef5;font-size:14px;font-family:'Inter',sans-serif;width:100%;text-align:left;transition:.16s}
+.gm-btn:hover{border-color:#c9a84c;background:rgba(201,168,76,.1)}
+.gm-btn.ok{background:rgba(40,120,60,.2);border-color:#3f9b52;color:#7ed4a0;font-weight:600}
+.gm-btn.no{background:rgba(180,40,40,.15);border-color:#c0453f;color:#f08080}
+.gm-btn.neutral{opacity:.5;pointer-events:none}
+.gm-exp{margin-top:10px;background:rgba(201,168,76,.12);border-radius:10px;padding:12px 14px;font-size:14px;color:#e4c97a;display:none}
+.gm-exp.show{display:block}
+.gm-score{font-size:13px;color:#7a9ab8;margin-bottom:10px}
+.gm-tag{display:inline-block;background:rgba(45,140,191,.15);border:1px solid rgba(45,140,191,.3);
+  border-radius:20px;padding:5px 14px;margin:4px;font-size:13px;color:#a8d4f0;cursor:pointer;transition:.16s}
+.gm-tag:hover{border-color:#c9a84c;color:#e4c97a}
+.gm-tag.picked{background:rgba(201,168,76,.2);border-color:#c9a84c;color:#e4c97a}
+.gm-tag.wrong{background:rgba(180,40,40,.15);border-color:#c0453f;color:#f08080}
+.gm-slot{display:inline-block;min-width:90px;border-bottom:2px solid rgba(201,168,76,.4);padding:4px 10px;
+  margin:0 4px;color:#e4c97a;font-weight:600;text-align:center}
+.gm-slider{width:100%;accent-color:#c9a84c}
+.gm-result{font-size:18px;font-weight:700;color:#e4c97a;margin:10px 0}
+.gm-bar{height:6px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;margin:8px 0}
+.gm-bar i{display:block;height:100%;background:linear-gradient(90deg,#1f6f8b,#c9a84c);transition:width .5s}
+.gm-drag{cursor:grab;display:inline-block;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:7px 14px;margin:5px;font-size:14px;color:#e8eef5;user-select:none}
+.gm-drag:active{cursor:grabbing}
+.gm-drag.placed{opacity:.35;pointer-events:none}
+.gm-drop{min-width:120px;min-height:36px;border:1px dashed rgba(201,168,76,.3);border-radius:8px;padding:6px 10px;
+  margin:4px;display:inline-flex;align-items:center;color:#7a9ab8;font-size:13px;background:rgba(255,255,255,.02)}
+.gm-drop.over{border-color:#c9a84c;background:rgba(201,168,76,.08)}
+.gm-drop.filled{border-style:solid;border-color:#c9a84c;color:#e4c97a;font-weight:600}
+.pipe-lead{color:var(--muted,#7a9ab8);font-size:14px;line-height:1.65;margin:0 0 14px}
+.pipe-goal{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.pipe-goal>div{flex:1 1 150px;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:9px 13px}
+.pipe-goal b{display:block;font-family:'Playfair Display',serif;font-size:19px;color:#e4c97a;line-height:1.2}
+.pipe-goal span{font-size:10.5px;letter-spacing:.9px;text-transform:uppercase;color:#7a9ab8}
+.pipe-ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px}
+.pipe-ctl label{display:block;font-size:13px;color:#e8eef5;font-weight:600}
+.pipe-ctl .lv{float:right;color:#e4c97a}
+.pipe-ctl input{width:100%;margin-top:9px;accent-color:#c9a84c}
+.pipe-ctl .sub{font-size:11.5px;color:#7a9ab8;margin-top:4px;font-weight:400;line-height:1.4}
+.pipe-stage{position:relative;height:104px;border-radius:12px;background:linear-gradient(180deg,#050b16,#0a1424);border:1px solid rgba(255,255,255,.07);overflow:hidden;margin-bottom:14px}
+.pipe-tube{position:absolute;left:11%;right:11%;top:50%;transform:translateY(-50%);border-radius:20px;
+  background:linear-gradient(180deg,#7896be,#37557d 45%,#122037);border:1px solid rgba(140,170,210,.3);transition:height .35s}
+.pipe-flow{position:absolute;inset:1px;border-radius:20px;overflow:hidden}
+.pipe-flow i{position:absolute;top:50%;width:15px;height:60%;transform:translateY(-50%);border-radius:50%;
+  background:radial-gradient(circle,#ffcf6a 10%,rgba(245,180,55,.12) 70%);animation:pflow linear infinite}
+@keyframes pflow{from{left:-10%}to{left:104%}}
+.pipe-end{position:absolute;top:0;bottom:0;width:11%;display:flex;align-items:center;justify-content:center;font-size:21px;opacity:.85}
+.pipe-pump{position:absolute;top:14px;font-size:16px;transform:translateX(-50%);transition:.3s;filter:drop-shadow(0 0 7px rgba(201,168,76,.55))}
+.pipe-cart{position:absolute;bottom:7px;font-size:14px;opacity:.6;transition:opacity .5s}
+.pipe-gauge{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.pipe-gauge>div{flex:1 1 150px;border-radius:10px;padding:10px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
+.pipe-gauge b{display:block;font-size:20px;font-family:'Playfair Display',serif;line-height:1.25}
+.pipe-gauge span{font-size:10.5px;letter-spacing:.9px;text-transform:uppercase;color:#7a9ab8}
+.pipe-gauge .g-ok{color:#7ed4a0}.pipe-gauge .g-no{color:#f08080}.pipe-gauge .g-n{color:#e4c97a}
+.pipe-note{font-size:11.5px;color:#5f7a94;margin-top:12px;line-height:1.5}
+.pipe-try{font-size:12.5px;color:#7a9ab8;margin-bottom:8px}
+@media(max-width:640px){
+  .pipe-goal{gap:7px}
+  .pipe-goal>div{flex:1 1 0;min-width:0;padding:7px 9px}
+  .pipe-goal b{font-size:13px;margin-top:2px}
+  .pipe-goal span{font-size:9px;letter-spacing:.4px}
+  .pipe-ctl{gap:13px}
+  .pipe-stage{height:88px}
+  .pipe-gauge>div{flex:1 1 0;min-width:0;padding:8px 10px}
+  .pipe-gauge b{font-size:16px}
+  .pipe-gauge span{font-size:9px;letter-spacing:.4px}
+}

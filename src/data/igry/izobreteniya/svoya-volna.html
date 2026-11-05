@@ -1,0 +1,71 @@
+<section class="block" id="games" style="background:rgba(6,12,23,.6)">
+  <div class="wrap">
+    <div class="kicker">Играй</div>
+    <h2>Игры дня</h2>
+<!-- ── ИГРЫ ── -->
+
+<div class="gm" id="gm_tune">
+<h3>🎛 Игра 1 · Настройся на свою волну</h3>
+<p style="color:var(--muted);font-size:14px;margin-bottom:14px">У приёмника Пильчикова — своя частота, чужих он не слушает: это и есть протектор. Крути настройку, совмести свою волну (синюю) с волной приёмника (золотой) — и передай команду.</p>
+<div style="position:relative;height:110px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;margin-bottom:12px"><canvas id="tnCvs" style="width:100%;height:100%"></canvas></div>
+<input type="range" min="1" max="100" value="8" class="gm-slider" id="tnSlider" aria-label="настройка частоты">
+<div style="text-align:center;margin:10px 0"><button class="btn gold" id="tnBtn" disabled onclick="tnFire()">⚡ Передать команду</button></div>
+<div id="tnResult" style="text-align:center;font-size:16px;font-weight:700;min-height:24px;color:var(--gold-l)"></div>
+<div class="gm-score" style="text-align:center;margin-top:6px">Команд принято: <b id="tnScore">0</b> / 3</div>
+<div class="igra-pravila" data-igra-pravila>
+  <h2 class="igra-pravila-h">Как играть</h2>
+  <p class="igra-pravila-zachem">Ты — Пильчиков в 1898 году. Настрой передатчик на волну своего приёмника и передай ему три команды.</p>
+  <ol class="igra-pravila-shagi">
+    <li><b>Двигай ползунок настройки</b> — синяя волна меняется. Совмести её с золотой волной приёмника.</li>
+    <li><b>Совпали — волна станет зелёной</b>, лампа справа загорится, и кнопка «⚡ Передать команду» оживёт.</li>
+    <li><b>Нажми «Передать команду»</b>. После каждой команды приёмник перестраивается — найди новую волну.</li>
+  </ol>
+  <p class="igra-pravila-nyuans">Нюансы: пока волны не совпали, кнопка не нажимается — это и есть протектор: чужой сигнал приёмник не слушает. Подводи ползунок медленно, совпасть надо почти точно.</p>
+  <p class="igra-pravila-final">Три команды приняты — протектор освоен.</p>
+</div>
+</div>
+<div class="gm" id="gm_pilchikov">
+<h3>📡 Игра 2 · Передай сигнал вовремя</h3>
+<p style="color:var(--muted);font-size:14px;margin-bottom:14px">Нажимай кнопку когда волна достигнет приёмника — как Пильчиков в 1898 году</p>
+<div style="position:relative;height:90px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;margin-bottom:14px">
+  <canvas id="pgCvs" style="width:100%;height:100%"></canvas>
+</div>
+<div style="text-align:center;margin-bottom:10px">
+  <button class="btn gold" id="pgBtn" style="min-width:160px" onclick="pgSend()">📡 Отправить сигнал</button>
+</div>
+<div id="pgResult" style="text-align:center;font-size:16px;font-weight:700;min-height:24px;color:var(--gold-l)"></div>
+<div class="gm-score" style="text-align:center;margin-top:8px">Попаданий: <b id="pgScore">0</b> / 3</div>
+<div class="igra-pravila" data-igra-pravila>
+  <h2 class="igra-pravila-h">Как играть</h2>
+  <p class="igra-pravila-zachem">Ты — Пильчиков в 1898 году. Отправь волну с передатчика так, чтобы приёмник её принял, — три раза.</p>
+  <ol class="igra-pravila-shagi">
+    <li><b>Нажми «📡 Отправить сигнал»</b> — от левой антенны к правой полетит золотой шарик-волна.</li>
+    <li><b>Следи за зелёной полосой у приёмника</b>: волна вошла в неё — «✅ Принято!», счёт попаданий вырос.</li>
+    <li><b>Отправь снова</b>, когда волна долетела, — и так до трёх попаданий.</li>
+  </ol>
+  <p class="igra-pravila-nyuans">Нюансы: пока волна в пути, кнопка не срабатывает — дождись, пока она долетит. Счёт не вырос — волна проскочила приёмник; отправь ещё раз, попытки не ограничены.</p>
+  <p class="igra-pravila-final">Три попадания — «🏆 Все сигналы приняты!», игра засчитана.</p>
+</div>
+</div>
+<div class="gm" id="gm_quiz2">
+  <h3>⏱ Игра 3 · Быстрый ответ</h3>
+  <div class="gm-score">Чем быстрее ответишь — тем больше очков. Осталось: <b id="gm_quiz2_t">15</b> сек</div>
+  <p style="font-weight:600;font-size:16px;margin:0 0 12px">Зачем Пильчикову понадобился протектор?</p>
+  <div id="gm_quiz2_opts"><button class="gm-btn" onclick="gm_quiz2_ans(0)">А) Защищать приёмник от сырости</button><button class="gm-btn" onclick="gm_quiz2_ans(1)">Б) Чтобы приёмник слушался только «своего» передатчика</button><button class="gm-btn" onclick="gm_quiz2_ans(2)">В) Усиливать слабый сигнал</button><button class="gm-btn" onclick="gm_quiz2_ans(3)">Г) Экономить электричество</button></div>
+  <div class="gm-exp" id="gm_quiz2_exp">Протектор отсеивал чужие сигналы — машина подчинялась только своему хозяину. Прообраз кодированной связи: без этой идеи не летал бы ни один современный дрон.</div>
+  <div class="igra-pravila" data-igra-pravila>
+    <h2 class="igra-pravila-h">Как играть</h2>
+    <p class="igra-pravila-zachem">Проверь себя: один вопрос про протектор Пильчикова и 15 секунд на ответ.</p>
+    <ol class="igra-pravila-shagi">
+      <li><b>Прочитай вопрос</b> — над ним идёт отсчёт «Осталось: … сек».</li>
+      <li><b>Нажми один из ответов А–Г</b> — выбрать можно только один раз.</li>
+      <li><b>Посмотри подсветку</b>: верный ответ станет зелёным, ошибочный — красным, ниже откроется объяснение.</li>
+    </ol>
+    <p class="igra-pravila-nyuans">Нюансы: чем быстрее ответишь верно, тем больше баллов — от 3 до 10. Отсчёт идёт с открытия страницы: если время уже вышло, верный ответ подсвечен — прочитай объяснение.</p>
+    <p class="igra-pravila-final">Ответ дан — под вопросом объяснение; верный ответ приносит баллы дня.</p>
+  </div>
+</div>
+
+
+  </div>
+</section>

@@ -713,5 +713,117 @@
     "gody": "предмет музея — гелиевый ожижитель Капицы",
     "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; Госкаталог прав не даёт",
     "ssylka": "https://goskatalog.ru/portal/#/collections?id=69524694"
+  },
+  "muzei/izobreteniya/day-29jan-rossiya-chertezh.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "чертёж проекта О. С. Костовича (умер в 1916 году); публикация — «Российская газета», 30.12.2013 (фото: great-country.ru)",
+    "gody": "чертёж дирижабля «Россия», 1880-е",
+    "pravilo": "ст. 1281 ГК РФ: автор умер более 70 лет назад",
+    "ssylka": "https://rg.ru/2013/12/30/kostovich-site.html"
+  },
+  "muzei/izobreteniya/day-29jan-kostovich-motor-foto.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф неизвестен; публикация — «Российская газета», 30.12.2013 (фото: great-country.ru)",
+    "gody": "фото О. С. Костовича у своего мотора, не позднее 1916",
+    "pravilo": "ст. 1281 ГК РФ: снято не позднее 1916 года, срок охраны истёк",
+    "ssylka": "https://rg.ru/2013/12/30/kostovich-site.html"
+  },
+  "muzei/izobreteniya/day-29jan-dvigatel-cmvvs.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "снимок с сайта Центрального музея Военно-воздушных сил; держатель предмета — ЦМ ВВС (зал № 1)",
+    "gody": "предмет музея — двигатель Костовича, 1880-е",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://cmvvs.ru/ekspozitsiya/dvigateli.html?view=article&id=449"
+  },
+  "muzei/izobreteniya/day-25jan-komparator-chertezh.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "чертёж из брошюры С. Н. Корсакова (умер в 1853 году); публикация — Виртуальный компьютерный музей",
+    "gody": "чертёж «простого компаратора», 1832",
+    "pravilo": "ст. 1281 ГК РФ: автор умер более 70 лет назад",
+    "ssylka": "https://www.computer-museum.ru/precomp/korsakov.htm"
+  },
+  "muzei/izobreteniya/day-25jan-korsakov-portret.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "гравюра XIX века, автор неизвестен; публикация — Виртуальный компьютерный музей",
+    "gody": "портрет С. Н. Корсакова (1787–1853), XIX век",
+    "pravilo": "ст. 1281 ГК РФ: создано в XIX веке, срок охраны истёк",
+    "ssylka": "https://www.computer-museum.ru/precomp/korsakov.htm"
+  },
+  "muzei/izobreteniya/day-25jan-brosyura-1832.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "титульный лист брошюры С. Н. Корсакова (умер в 1853 году); публикация — Виртуальный компьютерный музей",
+    "gody": "издание 1832 года, Санкт-Петербург",
+    "pravilo": "ст. 1281 ГК РФ: автор умер более 70 лет назад",
+    "ssylka": "https://www.computer-museum.ru/precomp/korsakov.htm"
+  },
+  "muzei/izobreteniya/day-28jan-havkin-bengaliya-1896.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф неизвестен; публикация — Российское историческое общество",
+    "gody": "В. А. Хавкин делает прививку, Бенгалия, 1896",
+    "pravilo": "ст. 1281 ГК РФ: фотография 1896 года, срок охраны истёк",
+    "ssylka": "https://historyrussia.org/tsekh-istorikov/vladimir-aronovich-khavkin-samyj-neizvestnyj-uchjonyj-rossii.html"
+  },
+  "muzei/izobreteniya/day-28jan-privivka-krestyanam.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф неизвестен; публикация — Российское историческое общество",
+    "gody": "В. А. Хавкин прививает индийских крестьян от холеры, 1890-е",
+    "pravilo": "ст. 1281 ГК РФ: фотография 1890-х годов, срок охраны истёк",
+    "ssylka": "https://historyrussia.org/tsekh-istorikov/vladimir-aronovich-khavkin-samyj-neizvestnyj-uchjonyj-rossii.html"
+  },
+  "muzei/izobreteniya/day-28jan-havkin-portret.jpg": {
+    "osnovanie": "общественное достояние",
+    "avtor": "фотограф неизвестен; публикация — журнал «Химия и жизнь», 2018, № 3",
+    "gody": "портрет В. А. Хавкина (1860–1930), конец XIX века",
+    "pravilo": "ст. 1281 ГК РФ: фотография XIX века, срок охраны истёк",
+    "ssylka": "https://hij.ru/read/11413/"
+  },
+  "muzei/izobreteniya/day-27jan-elbrus2-shema.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "структурная схема МВК «Эльбрус-2» из технического описания комплекса; публикация — Виртуальный компьютерный музей",
+    "gody": "предмет музея — МВК «Эльбрус-2», 1980-е",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://www.computer-museum.ru/histussr/elbrus12.htm"
+  },
+  "muzei/izobreteniya/day-27jan-pentkovsky-portret.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "фотография с карточки учёного на сайте программы мегагрантов (Минобрнауки России)",
+    "gody": "портрет В. М. Пентковского, 2010-е",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника",
+    "ssylka": "https://megagrant.ru/labs/scientists/scientist_rus_112121/"
+  },
+  "muzei/izobreteniya/day-27jan-burtsev-kniga.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "обложка книги В. С. Бурцева; держатель — Политехнический музей (Госкаталог, рег. № 11715516)",
+    "gody": "издание 1998 г.",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; Госкаталог прав не даёт",
+    "ssylka": "https://goskatalog.ru/portal/#/collections?id=11833033"
+  },
+  "muzei/izobreteniya/day-27jan-burtsev-uchsovet.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "фотограф не указан; держатель — Политехнический музей (Госкаталог, рег. № 11715509)",
+    "gody": "фотография 1974 г.",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; Госкаталог прав не даёт",
+    "ssylka": "https://goskatalog.ru/portal/#/collections?id=11833040"
+  },
+  "muzei/izobreteniya/day-27jan-m40-yacheika.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "автор не указан; держатель — Политехнический музей (Госкаталог, рег. № 70038690)",
+    "gody": "предмет музея — ячейка ЭВМ М-40/М-50, 1958–1963",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; Госкаталог прав не даёт",
+    "ssylka": "https://goskatalog.ru/portal/#/collections?id=70308829"
+  },
+  "muzei/izobreteniya/day-27jan-lebedev-1956.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "фотограф не указан; держатель — Музей современной истории России (Госкаталог, рег. № 7497871)",
+    "gody": "фотография 1956 г.",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; Госкаталог прав не даёт",
+    "ssylka": "https://goskatalog.ru/portal/#/collections?id=7629157"
+  },
+  "muzei/izobreteniya/day-27jan-burtsev-portret.jpg": {
+    "osnovanie": "цитирование (ст. 1274 ГК)",
+    "avtor": "фотограф не указан; держатель — Политехнический музей (Госкаталог, рег. № 11715374)",
+    "gody": "фотография 1974 г.",
+    "pravilo": "п. 1 ст. 1274 ГК РФ: цитирование в информационных целях с указанием автора и источника; Госкаталог прав не даёт",
+    "ssylka": "https://goskatalog.ru/portal/#/collections?id=11833082"
   }
 }

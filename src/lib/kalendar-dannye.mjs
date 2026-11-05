@@ -10,13 +10,18 @@ const metaOf = (slug) => {
   return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {};
 };
 
+// Год уже стоит в названии («Машины С. Н. Корсакова на перфокартах, 1832») — отдельным полем y не дублируем:
+// все три вывода карточки (museum-calendar-month.js, museum-calendar-page.js, calendar.astro) дописывают y к t,
+// и выходило «…, 1832 1832» (Р238).
+const godVNazvanii = (t, y) => new RegExp(`(^|\\D)${String(y).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\D|$)`).test(t);
+
 // days — данные записей ({key, title, year, hook, mechanic, source}); title уже с подстановкой хука (content.config.ts).
 // empty — текст пустого дня (MUSEUM_CALENDAR_EMPTY) из calendar-meta, в объект календаря не входит.
 export function kalendarMuzeya(slug, days, base) {
   const { card = [], empty, ...conf } = metaOf(slug);
   const cal = { ...conf };
   for (const d of days) {
-    cal[d.key] = { t: d.title, y: d.year, d: d.hook ?? '',
+    cal[d.key] = { t: d.title, ...(d.year != null && !godVNazvanii(d.title, d.year) && { y: d.year }), d: d.hook ?? '',
       ...(card.includes('mech') && { mech: d.mechanic }), ...(card.includes('src') && { src: d.source }),
       href: `${base}muzei/${slug}/den/${d.key}/`, link: 'Открыть страницу →' };
   }

@@ -13,18 +13,25 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
+import { igrySchetOn, igrySchetHtml } from '../lib/igry-schet.mjs';
+import { privychkaOn, privychkaJs, blokZavtra } from '../lib/privychka.mjs';
 import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
-import { cardFrames, fullFrames, kadryNeNaStranice } from '../lib/podpisi.mjs';
+import { cardFrames, fullFrames, kadryNeNaStranice, pageFrames } from '../lib/podpisi.mjs';
+import { kadrLd, TEKSTY_NOTICE } from '../lib/prava-ld.mjs';
+import { pometki } from '../lib/pometki.mjs';
 import { MUSEUMS, decode, checkMuseumName } from '../lib/imya-muzeya.mjs';
 import { znak, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
 import { fontFiles, pageFamilies, preloadTag, usedFamilies, faceCss } from '../lib/shrifty.mjs';
 import { podvalDnyaHtml } from '../lib/podval-dnya.mjs';
 import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
 import { SOSEDI_POLNYE, polnyeSosedi, perepisatSosedey, zagolovok } from '../lib/sosedi-polnye.mjs';
+import { blokDrugieMuzei } from '../lib/etot-den.mjs';
+import { temyOn, blokPoTeme } from '../lib/temy.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
+import { kartochki } from '../lib/dni-shablon.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
 // («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
@@ -35,6 +42,14 @@ function ldRedakciya(html, red, { modified, published, url } = {}) {
   // Картинка статьи — og:image самой страницы (Google Article: image), если своей в ld+json нет.
   const image = /<meta\b[^>]*\bproperty=["']og:image["'][^>]*\bcontent=["']([^"']+)["']/i.exec(html)?.[1];
   const OUR_NAMES = new Set(['Русская цивилизация', ...Object.values(MUSEUMS)]);
+  // Р396 п.2: CC BY 4.0 страницы — только тексты; кадры — ImageObject со своей лицензией и держателем из паспорта
+  // (data-license, подпись, credit). Относительный src — от папки музея (<base> страницы дня).
+  const papka = url && url.replace(/den\/[^/]+\/(?:staraya\/)?$/, '');
+  const abs = (s) => { try { return papka ? new URL(s, papka).href : s; } catch { return s; } };
+  const kadry = [...new Map(pageFrames(html).filter((f) => f.src && !/\.svg(?:$|\?)/i.test(f.src))
+    .map((f) => [abs(f.src), kadrLd({ src: abs(f.src), license: /data-license=([^]*?)(?= data-|$)/.exec(f.data)?.[1] ?? '', text: f.cap || f.sign })])).values()];
+  const imya = (s) => String(s).split(/[?#]/)[0].split('/').pop();
+  const kadrK = (s) => kadry.find((k) => imya(k.contentUrl) === imya(s));
   return html.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (m, a, json, z) => {
     let data;
     try { data = JSON.parse(json); } catch { return m; }
@@ -53,10 +68,17 @@ function ldRedakciya(html, red, { modified, published, url } = {}) {
       n.author ??= red;
       n.publisher ??= red;
       n.license ??= LICENZIYA;
+      if (n.license === LICENZIYA) n.copyrightNotice ??= TEKSTY_NOTICE;
       if (/Article/.test(t.join())) {
         if (modified) n.dateModified ??= modified; if (published) n.datePublished ??= published;
         if (image && /^https?:\/\//.test(image)) n.image ??= image;
       }
+      // Строка-адрес картинки наследовала бы лицензию страницы — заменяем паспортом кадра; свой кадр пересылки (og/) — наш.
+      // ImageObject шаблона (без data-license) — тоже на паспорт кадра со страницы, если кадр на ней есть.
+      const ims = [].concat(n.image ?? []).map((v) => typeof v !== 'string' ? (v?.contentUrl && kadrK(v.contentUrl)) || v : kadrK(v)
+        ?? (/\/og\//.test(v) ? kadrLd({ src: v, license: 'Русская цивилизация, CC BY 4.0' }) : kadrLd({ src: v })));
+      for (const k of kadry) if (!ims.some((v) => v?.contentUrl === k.contentUrl)) ims.push(k);
+      if (ims.length) n.image = ims;
       if (url && typeof n.url === 'string' && /\.html?$/.test(n.url)) n.url = url;
     }
     return a + JSON.stringify(data).replace(/</g, '\\u003c') + z;
@@ -69,6 +91,12 @@ const VOZRAST_CSS = fs.readFileSync('public/assets/rc-vozrast.css', 'utf8');
 const PODVAL_CSS = fs.readFileSync('public/assets/rc-podval.css', 'utf8');
 const SLABOVID_KNOPKA_CSS = fs.readFileSync('public/assets/rc-slabovid-knopka.css', 'utf8');
 const POLNYY_DEN_CSS = fs.readFileSync('public/assets/rc-polnyy-den.css', 'utf8'); // контраст подвала (Б10)
+// «Этот день в других музеях» (Р286 п.2) — вид блока, тот же файл, что у узла даты /segodnya/<ММ-ДД>/.
+const ETOT_DEN_CSS = fs.readFileSync('public/assets/rc-etot-den.css', 'utf8');
+// Ежедневная привычка (Р289 п.1) — «Завтра в музеях», серия и «Поделиться итогом»; только при включённом флаге.
+const PRIVYCHKA_CSS = fs.readFileSync('public/assets/rc-privychka.css', 'utf8');
+// Р396: плашка вымышленного собеседника и строка происхождения 3D-модели (src/lib/pometki.mjs).
+const POMETKI_CSS = fs.readFileSync('public/assets/rc-pometki.css', 'utf8');
 // Имя музея и разбор сущностей — общие со сборкой поста в каналы (src/lib/imya-muzeya.mjs, Е8).
 
 // Стандарт полосы (Сергей 17.10): у каждой страницы дня, календаря и главной музея — ссылка на главную сайта
@@ -292,6 +320,13 @@ const chromeSrc = fs.readFileSync('public/assets/museum-chrome.js', 'utf8');
 const chromeMap = (name) => vm.runInNewContext(`(${new RegExp(`var\\s+${name}\\s*=\\s*(\\{[\\s\\S]*?\\});`).exec(chromeSrc)[1]})`);
 const NAV_LABEL = chromeMap('LABEL');
 const NAV_SKIP = chromeMap('SKIP');
+// Р323 (28.10): ссылка на сайт с сертификатом НУЦ Минцифры (список — src/data/tls-nedoverie.json, пишет
+// scripts/proverka-tls.mjs): Chrome/Safari покажут «угрозу безопасности» — подписываем, куда ссылка откроется.
+const RU_CA = (() => { try { const h = JSON.parse(fs.readFileSync('src/data/tls-nedoverie.json', 'utf8')).hosts;
+  return Object.keys(h).filter((k) => h[k].kind === 'ru-ca'); } catch { return []; } })();
+const RU_CA_NOTE = ' <span class="rc-ruca">(откроется в Яндекс Браузере)</span>';
+export const podpisRuCa = (html) => !RU_CA.length ? html : html.replace(/<a\b[^>]*\bhref=["']https?:\/\/(?:www\.)?([^/"':]+)[^>]*>([\s\S]*?)<\/a>(?! <span class="rc-ruca">)/gi,
+  (m, host, text) => (RU_CA.includes(host) && !/Яндекс Браузере/.test(text) ? m + RU_CA_NOTE : m));
 const escHtml = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 function chromeConfig(html) {
   const win = {};
@@ -468,6 +503,12 @@ export default function fullPages() {
           const cardsDir = path.join('src/content/days', museum);
           const anketa = new Set((fs.existsSync(cardsDir) ? fs.readdirSync(cardsDir) : []).filter((f) => f.endsWith('.json'))
             .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)));
+          // Карточка шаблона с `adres: den` (Р286): den/<ключ>/ уже собрал общий layout (den/[key].astro) — ведём как анкету.
+          const h1Shablona = new Map();
+          for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den') {
+            anketa.add(k.key);
+            if (k.lead?.h1) h1Shablona.set(k.key, k.lead.h1.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+          }
           const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
           const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {
             const dayOut = path.join(root, 'muzei', museum, 'den', key, 'index.html');
@@ -480,19 +521,30 @@ export default function fullPages() {
           });
           // «Куда дальше» и стрелки шапки — ближайшие полные страницы музея (src/lib/sosedi-polnye.mjs, Р165).
           const polnye = SOSEDI_POLNYE.has(museum) ? [...new Set(jobs.map((j) => j.key))] : [];
+          // Пилот den-shablon (Р297): день из карточки src/content/dni-shablon и общего шаблона — den-shablon/<ключ>/,
+          // как анкета: from = out (страницу собрал шаблон), дальше тот же конвейер. Копия для сверки 1:1 с den/<ключ>/ —
+          // noindex и без hreflang, как staraya; журнал правок — как у живой страницы (иначе не 1:1).
+          const shablonDir = path.join(root, 'muzei', museum, 'den-shablon');
+          if (fs.existsSync(shablonDir)) for (const key of fs.readdirSync(shablonDir).sort()) {
+            const out = path.join(shablonDir, key, 'index.html');
+            if (fs.existsSync(out)) jobs.push({ key, self: `${base}muzei/${museum}/den-shablon/${key}/`, out, from: out, shablon: true });
+          }
           const sosedInfo = (k) => {
             const card = JSON.parse(fs.readFileSync(path.join(cardsDir, `${k}.json`), 'utf8'));
+            // День на шаблоне (`adres: den`): старый HTML — лишь копия staraya/ со старым h1, название — h1 карточки шаблона (Р365).
+            const h1 = h1Shablona.get(k);
             const src = path.join(SRC, museum, `${k}.html`);
-            const title = (fs.existsSync(src) && zagolovok(fs.readFileSync(src, 'utf8'))) || card.title;
+            const title = h1 || (fs.existsSync(src) && zagolovok(fs.readFileSync(src, 'utf8'))) || card.title;
             return { href: `${base}muzei/${museum}/den/${k}/`, when: whenOfKey(k), title, hook: card.hook };
           };
-          for (const { key, self, out, from, staraya } of jobs) {
+          for (const { key, self, out, from, staraya, shablon } of jobs) {
             if (!fs.existsSync(path.join(root, 'muzei', museum, 'den', key, 'index.html'))) { bad.push(`${museum}/${key} — нет карточки дня`); continue; }
             let html = fs.readFileSync(from, 'utf8');
             if (kalSrc) html = html.replace(OLD_KAL, (m, a, q) => { nKal++; return `${a}${q}${kalSrc}${q}`; });
             else if (OLD_KAL.test(html)) { OLD_KAL.lastIndex = 0; bad.push(`${museum}/${key} — тег старого calendar-*.js, а записей дней нет`); continue; }
-            if (staraya) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
+            if (staraya || shablon) { fs.mkdirSync(path.dirname(out), { recursive: true }); html = html.replace(/<meta\s+name=["']robots["'][^>]*>\s*/gi, '').replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex">'); }
             if (!/<head[^>]*>/i.test(html)) { bad.push(`${museum}/${key} — нет <head>`); continue; }
+            html = podpisRuCa(html);
             if (polnye.length) {
               const { prev, next } = polnyeSosedi(polnye, key);
               html = perepisatSosedey(html, { prev: prev && sosedInfo(prev), next: next && sosedInfo(next) });
@@ -506,7 +558,7 @@ export default function fullPages() {
             // Пометки языков (hreflang, как в Base.astro; план сайта Г19): только готовые языки + x-default.
             // Старые пометки страницы — долой; у копии «staraya» (noindex) их нет.
             html = html.replace(/<link\b[^>]*\bhreflang=[^>]*>\s*/gi, '');
-            if (!staraya) html = html.replace(/<head([^>]*)>/i, (h) => `${h}\n${hreflangi(self, base, site).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}">`).join('\n')}`);
+            if (!staraya && !shablon) html = html.replace(/<head([^>]*)>/i, (h) => `${h}\n${hreflangi(self, base, site).map((a) => `<link rel="alternate" hreflang="${a.hreflang}" href="${a.href}">`).join('\n')}`);
             // Шрифты (CLS 0,16–0,29 у дней, #2004): полная страница идёт мимо Base.astro и не получала ни одного
             // preload — Playfair/Inter приходили после первой отрисовки и сдвигали шапку дня. Теперь файлы тех
             // семейств, которыми набрана сама страница, — заранее, сразу после <head>. Google-шрифты старой
@@ -654,9 +706,18 @@ export default function fullPages() {
               // Общий подвал дня (А2+Б6, Р84) — из шаблона src/lib/podval-dnya.mjs, тот же, что у карточки дня.
               const zag = decode(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i.exec(html)?.[1]?.replace(/<[^>]+>/g, '').trim() || key);
               const lic = podvalDnyaHtml({ base, title: zag, url: site ? new URL(self, site).href : self }) + licenziyaHtml(base, { links: true });
+              // «Этот день в других музеях» (Р286 п.2, src/lib/etot-den.mjs) — перед журналом и подвалом; у копии «staraya» нет.
+              // Других готовых дней этой даты нет — блока нет.
+              const ed = staraya ? '' : blokDrugieMuzei(base, museum, key);
+              // «По этой теме в других музеях» (Р289 п.2, src/lib/temy.mjs) — сразу после него, тем же видом; флаг выключен — ничего.
+              const pt = staraya || !temyOn() ? '' : blokPoTeme(base, museum, key);
+              if (ed || pt) html = html.replace(/<\/head>/i, `<style data-rc-etot-den>${ETOT_DEN_CSS}</style>\n</head>`);
+              // «Завтра в музеях» + серия (Р289 п.1, src/lib/privychka.mjs) — после «Этот день в других музеях»; флаг выключен — ничего.
+              const pv = staraya || !privychkaOn() ? '' : blokZavtra(base, key);
+              if (pv) html = html.replace(/<\/head>/i, `<style data-rc-privychka>${PRIVYCHKA_CSS}</style>\n${privychkaJs(base)}\n</head>`);
               const fOpen = html.search(/<footer\b(?![\s\S]*<footer\b)/i), fClose = html.lastIndexOf('</footer>');
-              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
-              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${zhurnalHtml(zh)}${lic}\n</body>`);
+              if (fOpen > 0 && fClose > fOpen) html = html.slice(0, fOpen) + ed + pt + pv + zhurnalHtml(zh) + html.slice(fOpen, fClose) + lic + html.slice(fClose);
+              else html = html.replace(/<\/body>(?![\s\S]*<\/body>)/i, `${ed}${pt}${pv}${zhurnalHtml(zh)}${lic}\n</body>`);
             }
             // «Поделиться» — один раз (glazami п.16): у страницы свой блок — строку museum-chrome не ставим,
             // а museum-support.js не добавляет кнопку, если на странице уже есть блок «Поделиться».
@@ -664,10 +725,15 @@ export default function fullPages() {
               html = html.replace(/(<script[^>]*src=["'][^"']*museum-chrome\.js)/i,
                 '<script>window.MUSEUM_CHROME=Object.assign(window.MUSEUM_CHROME||{},{shareRow:false})</script>\n$1');
             html = staticChrome(html);
+            // Р396 п.1, п.3: плашка собеседника и происхождение 3D-сцены — на всех страницах дней всех музеев.
+            { const pm = pometki(html, museum, key);
+              if (pm !== html) html = pm.replace(/<\/head>/i, `<style data-rc-pometki>${POMETKI_CSS}</style>\n</head>`); }
             html = staticSecnav(html, base, `${base}muzei/${museum}/`, self);
             // Единая верхняя полоса (Сергей 17.10) — сразу после <body…>; старые крошки страницы не трогаем.
             // Яндекс Метрика (тот же код, что Metrika.astro в Base.astro) — один раз; уже есть в исходнике — не дублируем.
             if (!/mc\.yandex\.ru\/metrika\/tag\.js/.test(html)) html = html.replace(/<\/head>/i, `${metrikaHtml}\n</head>`);
+            // Подсчёт «начал игру — доиграл» (Р286 п.3) — только при PUBLIC_IGRY_SCHET=1 (src/lib/igry-schet.mjs).
+            if (igrySchetOn() && !/rc-igra-schet\.js/.test(html)) html = html.replace(/<\/head>/i, `${igrySchetHtml(base)}\n</head>`);
             // Знак 436-ФЗ (Р87, 21.10) — в полосе; на трагическом дне (Р40) под ней строка «Родителю», на <html> — data-rc-bez-ochkov:
             // museum-score.js / museum-quiz.js и rc-vozrast.css не показывают очки и звания; фраза про очки в тексте — долой.
             const vz = znak(museum, key);

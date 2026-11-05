@@ -12,6 +12,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # Цепочка поставок (Р306): новая версия пакета — не раньше 7 дней после выхода,
+    # заражённые выпуски npm обычно снимают за 1–3 дня. Обновления безопасности идут без задержки.
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     groups:
       npm-minor-patch:

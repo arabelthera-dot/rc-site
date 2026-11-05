@@ -1,0 +1,37 @@
+# Перебор машины раз в квартал (Р531, аудит 04.11.2026 «чтобы список не рос»): scripts/perebor.mjs ищет
+# файлы без вызова и повторы (московская дата, свой сервер, разбор HTML регулярками) и открывает карточку
+# с отчётом. Ничего не удаляет и не правит: решение по каждому красному пункту — людям, удаление — с «да» Сергея.
+# Пять вопросов: задевает — ничего в репозитории, только открывает одну карточку; нужно — github.token
+# (чтение кода и запись карточек); без нужного — карточки нет, отчёт остаётся в журнале запуска;
+# проверка — ручной пуск (workflow_dispatch); откат — удалить файл.
+# Карточка от github.token не запускает другие workflow (kartochka.yml её не проверяет) — так устроен GitHub.
+name: perebor
+on:
+  schedule:
+    - cron: '0 6 1 1,4,7,10 *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  perebor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      # public/ — не машина (перебор её пропускает), без неё копия в разы легче.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: |
+            /*
+            !/public/
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - run: node scripts/perebor.mjs --out "$RUNNER_TEMP/perebor.md" && cat "$RUNNER_TEMP/perebor.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: карточка с отчётом
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create -R "$GITHUB_REPOSITORY" --title "Перебор машины $(TZ=Europe/Moscow date +%d.%m.%Y)" --body-file "$RUNNER_TEMP/perebor.md"

@@ -1,0 +1,6 @@
+---
+// Московская дата для встроенных скриптов (Р531): window.rcMsk() из src/lib/msk.mjs — та же функция, что при сборке.
+// Ставится перед скриптом, который её зовёт; повтор на странице безвреден (window.rcMsk||…).
+import { MSK_V_BRAUZERE } from '../lib/msk.mjs';
+---
+<script is:inline set:html={MSK_V_BRAUZERE} />

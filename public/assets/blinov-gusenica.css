@@ -1,0 +1,78 @@
+/* Игра «Проведи воз по грязи» (9 января, Блинов, Р258). Устройство и палитра — как у игры Костовича (Р206):
+   одна мигающая кнопка, рука «тап-тап», правила под картинкой, без экрана «Начать». */
+.bl-igra{position:relative;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.bl-igra button{touch-action:manipulation;-webkit-touch-callout:none}
+.bl-finale,.bl-igra .igra-pravila{-webkit-user-select:text;user-select:text}
+.bl-play{position:relative}
+.bl-bar{display:flex;align-items:center;gap:8px;margin:0 0 6px}
+.bl-steps{display:flex;gap:6px;margin:0;padding:0;list-style:none}
+.bl-steps li{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:rgba(255,255,255,.07);color:#7a9ab8}
+.bl-steps li.on{background:#c9a84c;color:#1a1206}
+.bl-steps li.done{background:rgba(76,210,122,.25);color:#7fe3a0}
+.bl-lbl{margin:0;font-size:15px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#c9a84c}
+.bl-task{margin:0;font-size:clamp(21px,5.6vw,28px);font-weight:800;line-height:1.2;color:#fff}
+.bl-sub{margin:3px 0 8px;min-height:1.45em;font-size:clamp(15px,4vw,17px);color:#e4c97a}
+
+.bl-stage{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#8fb3cc,#cfd9d6 62%,#6b5230 63%)}
+.bl-cv{display:block;width:100%;height:100%}
+@media (max-width:520px){.bl-stage{aspect-ratio:4/3}}
+.bl-place{margin:4px 0 0;font-size:14px;color:#9fb6cc}
+
+.bl-status{display:flex;align-items:center;gap:10px;margin:10px 0 0;font-size:16px;font-weight:700}
+.bl-st-name{flex:0 0 auto;color:#d6e0ea}
+.bl-meter{flex:1 1 auto;height:12px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.bl-meter i{display:block;height:100%;width:0;background:#4cd27a;border-radius:6px;transition:width .4s,background .3s}
+.bl-status.bad .bl-meter i{background:#e0607a}
+.bl-st-val{flex:0 0 auto;min-width:8em;text-align:right;color:#4cd27a}
+.bl-status.bad .bl-st-val{color:#ff9d94}
+@media (max-width:560px){.bl-status{flex-wrap:wrap;gap:6px 10px}.bl-st-name{flex:1 1 auto}.bl-st-val{min-width:0}.bl-meter{order:3;flex:1 1 100%}}
+
+.bl-ctl{display:flex;justify-content:center;gap:14px;margin:14px 0 0}
+.bl-btn{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-width:230px;min-height:68px;padding:8px 26px;border:0;border-radius:32px;background:#c9a84c;color:#1a1206;font:inherit;font-size:20px;font-weight:800;cursor:pointer;box-shadow:0 6px 0 #8a6f2c;transition:transform .06s,box-shadow .06s,opacity .2s}
+.bl-btn small{display:block;font-size:14px;font-weight:700}
+.bl-btn-t{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1}
+.bl-btn:active:not(:disabled),.bl-btn.press{transform:translateY(5px);box-shadow:0 1px 0 #8a6f2c}
+.bl-btn:disabled{cursor:default;opacity:.4;animation:none}
+.bl-btn.hint{animation:bl-pulse 1.1s ease-in-out infinite}
+.bl-btn:focus-visible,.bl-again:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@keyframes bl-pulse{0%,100%{box-shadow:0 6px 0 #8a6f2c,0 0 0 0 rgba(233,207,126,.75)}50%{box-shadow:0 6px 0 #8a6f2c,0 0 0 12px rgba(233,207,126,0)}}
+.bl-ico-link{flex:0 0 34px;height:20px;border-radius:4px;background:repeating-linear-gradient(90deg,#3b2a14 0 3px,#6b4a22 3px 15px);box-shadow:inset 0 -3px 0 rgba(0,0,0,.35)}
+.bl-cnt{font-variant-numeric:tabular-nums}
+
+/* Рука-подсказка «тап-тап» (Р206): над активной кнопкой, нажатия сквозь неё */
+.bl-hand{position:absolute;z-index:5;width:40px;height:48px;margin:0;pointer-events:none;animation:bl-tap 1.1s ease-in-out infinite;transform-origin:15px 4px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
+.bl-hand svg{display:block}
+.bl-hand-ring{position:absolute;left:-7px;top:-14px;width:44px;height:44px;border:3px solid #fff;border-radius:50%;opacity:0;animation:bl-ring 1.1s ease-out infinite}
+@keyframes bl-tap{0%,100%{transform:translate(-15px,10px) scale(1)}40%{transform:translate(-15px,-4px) scale(.88)}55%{transform:translate(-15px,-4px) scale(.88)}}
+@keyframes bl-ring{0%,35%{opacity:0;transform:scale(.3)}45%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(1.2)}}
+
+.bl-cap{margin:12px auto 0;max-width:600px;padding:10px 12px;border-left:4px solid #4cd27a;border-radius:8px;background:rgba(76,210,122,.08);font-size:17px;line-height:1.45;color:#fff}
+.bl-cap b{color:#7fe3a0}
+.bl-cap.bad{border-left-color:#e0607a;background:rgba(224,96,122,.08)}
+.bl-cap.bad b{color:#ff9d94}
+
+/* Финал: сравнение и лента лет */
+.bl-finale{margin:18px 0 0}
+.bl-big{margin:0;font-size:clamp(19px,5vw,24px);font-weight:800;line-height:1.25;color:#fff}
+.bl-vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0}
+.bl-vs div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);font-size:15px;color:#d6e0ea}
+.bl-vs b{display:block;font-size:30px;line-height:1.1;color:#fff}
+.bl-vs .bl-vs-old b{color:#ff9d94}
+.bl-vs .bl-vs-new b{color:#7fe3a0}
+.bl-years{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:16px 0 0;padding:12px 6px 10px;border-radius:12px;background:rgba(255,255,255,.04);list-style:none}
+.bl-years::before{content:'';position:absolute;left:10%;right:10%;top:23px;height:4px;border-radius:2px;background:rgba(255,255,255,.12)}
+.bl-years::after{content:'';position:absolute;left:10%;top:23px;height:4px;width:0;border-radius:2px;background:linear-gradient(90deg,#c9a84c,#7fe3a0);transition:width 2.6s ease}
+.bl-years.go::after{width:80%}
+.bl-years li{position:relative;z-index:1;text-align:center;font-size:13px;line-height:1.25;color:#9fb6cc;opacity:.25;transform:translateY(6px);transition:opacity .5s,transform .5s}
+.bl-years li::before{content:'';display:block;width:14px;height:14px;margin:4px auto 6px;border-radius:50%;background:#c9a84c;box-shadow:0 0 0 3px #0c1826}
+.bl-years li b{display:block;font-size:18px;color:#fff}
+.bl-years li:first-child b{color:#e4c97a}
+.bl-years.go li{opacity:1;transform:none}
+.bl-years.go li:nth-child(2){transition-delay:.6s}
+.bl-years.go li:nth-child(3){transition-delay:1.2s}
+.bl-years.go li:nth-child(4){transition-delay:1.8s}
+.bl-years.go li:nth-child(5){transition-delay:2.4s}
+@media (max-width:520px){.bl-years li{font-size:12px}.bl-years li b{font-size:15px}}
+.bl-again{margin:14px auto 0;display:block;min-height:48px;padding:10px 22px;border:0;border-radius:24px;background:rgba(255,255,255,.1);color:#e8eef5;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.bl-note{margin:8px 0 0;font-size:13px;color:#7f9bb5}
+@media (prefers-reduced-motion:reduce){.bl-btn.hint{animation:none}.bl-hand{animation:none;transform:translate(-15px,0)}.bl-hand-ring{display:none}.bl-years::after,.bl-years li{transition:none}}

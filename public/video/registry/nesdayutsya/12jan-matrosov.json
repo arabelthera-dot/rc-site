@@ -1,0 +1,33 @@
+{
+  "title": "История в 40 секунд",
+  "intro": "Александр Матросов под Чернушками: две гранаты, ожившая амбразура — и рота, которая поднялась в атаку.",
+  "note": "Кадры ролика — подлинные предметы и снимки из Госкаталога музейного фонда России: Центральный музей Великой Отечественной войны, Государственный исторический музей, Краеведческий музей города Великие Луки, Якутский государственный объединённый музей истории и культуры народов Севера, Мультимедийный комплекс актуальных искусств. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/12jan-matrosov/day-12jan-matrosov.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-12jan-matrosov.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 40.2,
+    "mb": 10.8
+  },
+  "vertical": {
+    "file": "nesdayutsya/12jan-matrosov/day-12jan-matrosov-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-12jan-matrosov-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 40.2,
+    "mb": 10.7
+  },
+  "poster": {
+    "file": "nesdayutsya/12jan-matrosov/day-12jan-matrosov-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-12jan-matrosov-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/12jan-matrosov/day-12jan-matrosov-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-12jan-matrosov-9x16-poster.jpg",
+    "v": 1
+  }
+}

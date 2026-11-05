@@ -1,0 +1,48 @@
+<section class="block" id="games" style="background:rgba(6,12,23,.6)">
+  <div class="wrap">
+    <div class="kicker">Играй</div>
+    <h2>Игры дня</h2>
+<!-- ── ИГРЫ ── -->
+
+<div class="gm" id="gm_ermak">
+<h3>🎮 Пробей арктический лёд — как «Ермак»</h3>
+<p style="color:var(--muted);font-size:14px;margin-bottom:14px">Что сделать сейчас: нажимай на льдины, пока не разобьёшь все 10.</p>
+<div id="ermakGrid" data-igra-scena style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+  <div style="font-size:13px;color:var(--muted)">Сломано: <b id="ermakBroken" style="color:var(--gold-l)">0</b> / 10</div>
+  <div style="font-size:13px;color:var(--muted)">Удары: <b id="ermakHits">0</b></div>
+</div>
+<div id="ermakResult" style="text-align:center;font-size:14px;font-weight:600;min-height:18px;color:var(--gold-l)"></div>
+<div class="igra-pravila" data-igra-pravila>
+  <h2 class="igra-pravila-h">Как играть</h2>
+  <p class="igra-pravila-zachem">Ты ведёшь «Ермак» через лёд. Ледокол не режет лёд, а наползает на него и ломает весом — здесь каждый удар и есть такой нажим.</p>
+  <ol class="igra-pravila-shagi">
+    <li><b>Нажми на льдину</b> — один нажим = один удар ледокола.</li>
+    <li><b>Смотри на подпись</b>: «тонкий» лёд ломается с 1 удара, «обычный» — с 2, «толстый» — с 3. Треснувшая льдина темнеет.</li>
+    <li><b>Разбей все 10 льдин</b> — счётчик «Сломано» сверху покажет, сколько осталось.</li>
+  </ol>
+  <p class="igra-pravila-nyuans">Нюансы: толщина льдин каждый раз новая, поэтому число ударов меняется. Разбитая льдина становится водой 💧 — нажимать на неё больше не нужно.</p>
+  <p class="igra-pravila-final">Десятая льдина — и путь открыт, как у «Ермака» в 1899 году: +15 баллов.</p>
+</div>
+</div>
+<div class="gm" id="gm_quiz2">
+  <h3>⏱ Игра 2 · Быстрый ответ</h3>
+  <div class="gm-score">Чем быстрее ответишь — тем больше очков. Осталось: <b id="gm_quiz2_t">15</b> сек</div>
+  <p style="font-weight:600;font-size:16px;margin:0 0 12px">Какой лёд мог форсировать «Ермак»?</p>
+  <div id="gm_quiz2_opts" data-igra-scena><button class="gm-btn" onclick="gm_quiz2_ans(0)">А) До 20 см</button><button class="gm-btn" onclick="gm_quiz2_ans(1)">Б) До 50 см</button><button class="gm-btn" onclick="gm_quiz2_ans(2)">В) До 1 метра</button><button class="gm-btn" onclick="gm_quiz2_ans(3)">Г) До 2 метров</button></div>
+  <div class="gm-exp" id="gm_quiz2_exp">До двух метров арктического льда — до «Ермака» ни один корабль мира такого не умел. Секрет: скошенный нос вползает на лёд и продавливает его весом судна.</div>
+  <div class="igra-pravila" data-igra-pravila>
+    <h2 class="igra-pravila-h">Как играть</h2>
+    <p class="igra-pravila-zachem">Проверь, знаешь ли ты главную силу «Ермака» — какой лёд он мог пройти.</p>
+    <ol class="igra-pravila-shagi">
+      <li><b>Прочитай вопрос</b> — часы начинают отсчёт 15 секунд, когда игра появилась на экране.</li>
+      <li><b>Нажми один из четырёх ответов.</b> Выбор один, передумать нельзя.</li>
+      <li><b>Прочитай пояснение</b> под ответами: зелёный — верный ответ, красный — твой неверный.</li>
+    </ol>
+    <p class="igra-pravila-nyuans">Нюансы: чем быстрее верный ответ, тем больше баллов — от 5 до 15. Не успел за 15 секунд — ответ засчитан как неверный, пояснение откроется само.</p>
+    <p class="igra-pravila-final">Верный ответ — баллы сразу уходят в общий счёт страницы «Сколько баллов ты собрал?».</p>
+  </div>
+</div>
+
+  </div>
+</section>

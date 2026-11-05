@@ -48,6 +48,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[2]
 DAYS = ROOT / 'src/content/days'
 FULL = ROOT / 'src/data/full-pages'
+SHABLON = ROOT / 'src/content/dni-shablon'
 PUBLIC = ROOT / 'public'
 MSK = ZoneInfo('Europe/Moscow')
 VK_API = '5.199'
@@ -127,7 +128,8 @@ OTSEV = ('нет карточки дня', 'нет большой страниц
 
 def collect(key, skipped=None, otsev=None):
     """Музеи с хуком и большой страницей на день key — по номеру в каталоге. Трагический день — в skipped с причиной.
-    Большая страница — как у сайта (ADR 0001): анкета body в карточке дня ИЛИ HTML в src/data/full-pages.
+    Большая страница — как у сайта (ADR 0001): анкета body в карточке дня ИЛИ HTML в src/data/full-pages
+    ИЛИ карточка общего шаблона src/content/dni-shablon/<музей>/<ММ-ДД>.yaml с `adres: den` (Р286).
     otsev — счётчик причин отсева (dict причина → число музеев)."""
     museums = json.loads((ROOT / 'src/data/museums.json').read_text(encoding='utf-8'))['museums']
     vozrast = json.loads((ROOT / 'src/data/vozrast.json').read_text(encoding='utf-8'))
@@ -141,7 +143,9 @@ def collect(key, skipped=None, otsev=None):
             cut('нет карточки дня')
             continue
         day = json.loads(card.read_text(encoding='utf-8'))
-        if not day.get('body') and not (FULL / m['slug'] / f'{key}.html').is_file():
+        shablon = SHABLON / m['slug'] / f'{key}.yaml'
+        na_shablone = shablon.is_file() and re.search(r'^adres: den$', shablon.read_text(encoding='utf-8'), re.M)
+        if not day.get('body') and not (FULL / m['slug'] / f'{key}.html').is_file() and not na_shablone:
             cut('нет большой страницы')
             continue
         if not (day.get('hook') or '').strip():

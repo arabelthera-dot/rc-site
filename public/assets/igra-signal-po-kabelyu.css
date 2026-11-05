@@ -1,0 +1,16 @@
+/* Стили игры signal-po-kabelyu и своих блоков дня (перенесено из src/data/full-pages/izobreteniya/01-01.html) */
+.article{position:relative}
+.more{text-align:center;margin-top:16px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.asm-slot{flex:0 0 auto;min-width:112px;min-height:58px;border:1px dashed rgba(255,255,255,.18);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:22px;padding:8px 10px;text-align:center;background:rgba(255,255,255,.02)}
+.asm-slot.filled{border-style:solid;border-color:var(--gold);background:var(--gold-g);color:var(--ink);font-size:14px;font-weight:600}
+.asm-part{cursor:pointer;text-align:left;background:var(--card);border:1px solid var(--card-b);border-radius:12px;padding:12px 16px;min-width:150px;max-width:230px;display:flex;flex-direction:column;gap:4px;transition:.16s}
+.asm-part b{font-size:15px;color:var(--ink)}
+.asm-part span{font-size:12px;color:var(--muted)}
+.asm-part:hover{border-color:var(--gold);background:var(--gold-g)}
+.asm-part.used{opacity:.25;pointer-events:none}
+.asm-part.shake{animation:shk .4s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.cal2{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:20px;max-width:520px}
+.reveal{opacity:1;transform:translateY(18px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.on{transform:none}

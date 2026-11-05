@@ -8,6 +8,8 @@ import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { kalendarMuzeya } from '../../../lib/kalendar-dannye.mjs';
 import { YEAR, beyondYear, stripSrcPrefix } from '../../../lib/kalendar';
+import { mskIso } from '../../../lib/msk.mjs';
+import MskData from '../../../components/MskData.astro';
 import { yazyk, razobratPut, stroka, chislo, strelkaVpered, strelkaNazad } from '../../../lib/yazyki.mjs';
 export async function getStaticPaths() {
   const days = await getCollection('days');
@@ -40,7 +42,7 @@ const pad = (n: number) => (n < 10 ? '0' : '') + n;
 const data: Record<string, Day> = Object.fromEntries(Object.entries(cal).filter(([k]) => /^\d{2}-\d{2}$/.test(k))) as Record<string, Day>;
 const dated = conf.dated !== false;
 const total = dated ? (conf.total || 365) : 365;
-const [ty, tm, td] = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Moscow' }).format(new Date()).split('-').map(Number);
+const [ty, tm, td] = mskIso().split('-').map(Number);
 const tk = pad(tm) + '-' + pad(td);
 // февраль — по ближайшему февралю вперёд (2027 не високосный — 28), запись 02-29 есть — 29; как в museum-calendar-page.js
 const febYear = ty + (tm > 2 ? 1 : 0);
@@ -100,6 +102,7 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   <div class="council"><b style="color:var(--gold-l)">{s('kalNapolnyaetsya')}</b> {s('kalSostav')}</div>
   <Fragment slot="footer"><a href={`${base}muzei/${m.slug}/`}>{`${strelkaNazad(lang.dir)} ${s('vMuzey')}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></Fragment>
   <script is:inline define:vars={{ cal }}>window.MUSEUM_CALENDAR = cal;</script>
+  <MskData />
   <script is:inline src={`${base}assets/museum-calendar-page.js`}></script>
   {podderzhka && <>
   <script is:inline define:vars={{ support: { museum: m.title_ru } }}>window.MUSEUM_SUPPORT = support;</script>

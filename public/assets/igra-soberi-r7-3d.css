@@ -1,0 +1,32 @@
+/* 3D-блок игры 01-12 (soberi-r7-3d, опыт Р392). Ниже на странице — плоская soberi-r7 (#games-2d). Сцена сверху, весь текст и кнопки — под ней (п. 9 чеклиста).
+   Общие классы .lab/.lab-row/.seg/.lab-msg/.lab-btns — из igra-soberi-r7.css. */
+.r3-lead{max-width:62ch}
+.r3{padding:0;overflow:hidden}
+.r3-stage{position:relative;aspect-ratio:16/10;background:linear-gradient(180deg,#5d86b3 0%,#a9c3da 52%,#c9b48a 53%,#8e7a55 100%);touch-action:none;border-bottom:1px solid var(--card-b)}
+.r3-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
+.r3-stage canvas:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+@media (max-width:700px){.r3-stage{aspect-ratio:4/5}}
+/* Заставка до «Играть» (Р412, Р521): ролик из 3D-сцены без текста; постер и файл — 4x5 на телефоне, 16x10 шире. Пуск 3D прячет. */
+.r3-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.r3[data-sostoyanie="gotovo"] .r3-video{display:none}
+/* Полоса загрузки 3D — под сценой, не поверх кадра. */
+.r3-load{margin:4px 0 8px}
+.r3-load-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.r3-load-bar span{display:block;height:100%;width:0;background:var(--gold);transition:width .2s linear}
+.r3-load-t{margin:6px 0 0;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.r3-load-bar span{transition:none}}
+/* Слабый телефон: предложение 2D. */
+.r3-slab{margin:4px 0 8px}
+.r3-slab p{margin:0 0 8px}
+.r3-slab-vse{font-size:14px}
+.r3-link{background:none;border:0;padding:6px 0;min-height:44px;color:var(--gold-l);text-decoration:underline;font:inherit;cursor:pointer}
+.r3-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.r3-under{padding:14px 18px 18px}
+.r3-hint{margin:0 0 4px;font-size:13px;color:var(--muted)}
+.r3-count{min-height:0;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.5px;color:var(--gold-l);font-size:20px;text-align:center}
+.r3-count:not(:empty){min-height:44px;padding:8px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0}
+.r3-count small{display:block;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.r3-text{margin-top:12px;font-size:15px}
+.r3-text p{margin:10px 0}
+.r3 .seg[disabled],.r3 .btn[disabled]{opacity:.45;cursor:default}
+.r3 [hidden]{display:none!important}

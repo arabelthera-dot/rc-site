@@ -258,6 +258,7 @@
   var DOCH = Math.max(doc.documentElement.scrollHeight, body.scrollHeight, 1);
   var peakHolder = null, peakEl = null;
 
+  var GAME_SEL = '.igra-ruka-zona, section[class*="igra"], #games, #game, #quiz, [data-igra], .game';
   function placePeak(){
     /* место размечено в вёрстке (<div data-support-slot>) — блок встаёт туда один раз и больше
        не двигается: перестановка после дорисовки сетки календаря давала сдвиг вёрстки
@@ -330,6 +331,12 @@
       }
     }
     if(!anchor) return;
+    /* Игра — целый блок: поле игры, «Что сделать сейчас» и кнопки стоят подряд, блок поддержки
+       между ними не встаёт никогда (Сергей 24.10, Р240: «приходится вверх-вниз двигать… никогда не
+       размещать… между экраном игры и ее правилами»). Якорь внутри игры заменяем самой игрой. */
+    var game = anchor.closest(GAME_SEL);
+    if(game) game = game.closest('section.block, main > section') || game;   /* с заголовком игры */
+    if(game && game !== anchor){ var sb = anchor.dataset.supBefore; delete anchor.dataset.supBefore; anchor = game; if(sb) anchor.dataset.supBefore = '1'; }
 
     if(!peakEl){
       peakEl = peakBlock();

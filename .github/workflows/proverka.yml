@@ -10,7 +10,9 @@ permissions:
 jobs:
   sborka-i-ssylki:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # 25, не 15 (27.10.2026): checkout с полной историей ~3 мин, oshibki-js ~3,5, glazami ~2,5 — всё зелёное,
+    # но Lighthouse обрывался на 15-й минуте; так краснели #515, #516, #520 при живой сборке.
+    timeout-minutes: 25
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
       # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.
@@ -21,12 +23,17 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # Замок выключателей (21.10.2026): незаданная переменная в сравнении переменной с нулём — это null, GitHub сравнивает
+      # его с '0' как числа (0 = 0), и строгая проверка молча становится мягкой (так bez-viki пропустила #323).
+      # Сравнивать только через format('{0}', vars.X). Нашёл голое сравнение без format — заявка красная.
+      - name: zamok-vyklyuchateley — строгие проверки не мягчеют сами
+        run: "! grep -nE \"vars\\.[A-Z_0-9]+ *== *'0'\" .github/workflows/*.yml"
       - run: npm ci
       # «Сегодня» — по Москве во всех блоках (B11, 19.10.2026): home/Today.astro и portal/Segodnya.astro
       # дают один день под TZ Лос-Анджелеса/Москвы/Владивостока. Без сборки, секунды.
       # Строгая с 20.10.2026 (Р52: на main 0 расхождений). Выключатель — переменная SEGODNYA_MSK_STROGO=0.
       - name: segodnya-msk — один день по Москве
-        continue-on-error: ${{ vars.SEGODNYA_MSK_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SEGODNYA_MSK_STROGO) == '0' }}
         timeout-minutes: 1
         run: node scripts/segodnya-msk.test.mjs && node scripts/segodnya-msk.mjs
       # Пост 9:00 в каналы (Е8, Р47, 20.10.2026): заведомый брак (имя из реестра Минюста, второе предложение в хуке,
@@ -41,12 +48,40 @@ jobs:
         env:
           DATA_DNYA_STROGO: ${{ vars.DATA_DNYA_STROGO }}
         run: node scripts/data-dnya.mjs --proba && node scripts/data-dnya.mjs
-      # Инструкция к каждой игре (Р199, 23.10.2026; 04-build §5-бис): страница дня с игрой без блока «Как играть»
-      # (data-igra-pravila, шаги, кнопка «Начать», assets/igra-pravila.css и .js) — ошибка. Изменённые в заявке
+      # Сверщик с утверждённым (Р506, 04.11.2026; Р511 — любой музей): страница дня, изменённая в заявке, в любом
+      # музее с карточками — те же факты карточки и в её порядке, у факта его кадр, кадр не повторяется, нет двух фактов
+      # про одно. Правда — копии карточек src/data/utverzhdeno/<музей>/ (scripts/utverzhdeno-kopiya.mjs); страница
+      # читается в обоих видах (шаблон и full-pages) через scripts/sverka/chitat-stranicu.mjs. Музей без карточек —
+      # пропуск с отчётом. Сначала пробы на заведомых случаях. Строгий, без выключателя; долг всех дней всех музеев —
+      # следующий шаг, только отчёт. Без сборки, секунды. Откат — удалить этот шаг и следующий.
+      - name: sverka-utverzhdeno — страницы всех музеев с карточками как утверждённые карточки
+        timeout-minutes: 1
+        run: node scripts/sverka-utverzhdeno.mjs --proba && node scripts/sverka-utverzhdeno.mjs
+      # Схема копии карточки (аудит 04.11, п. 5): «кадр без факта» (Р514) — ошибка схемы коллекции utverzhdeno
+      # (src/lib/skhema-utverzhdeno.mjs), видна и при сборке. Пробы: живые карточки зелёные, заведомый брак красный.
+      - name: skhema — пробы схемы утверждённой карточки
+        timeout-minutes: 1
+        run: node --test tests/skhema/utverzhdeno.test.mjs
+      - name: sverka-utverzhdeno — долг по всем музеям и дням (только отчёт)
+        if: always()
+        timeout-minutes: 1
+        run: node scripts/sverka-utverzhdeno.mjs --vse
+      # Кадры дня (Р536 п. 4, Р408, Р90): по карточкам src/content/dni-shablon/<музей>/ — разных кадров ≥ 6, повтор по
+      # pHash (Хэмминг ≤ 8, imagehash) и тот же файл дважды — брак, адрес Википедии или Викисклада — брак, кадра нет в public/ — брак.
+      # Недобор лечит машина: scripts/kadry-dnya.py dobor ДНИ --zapis берёт кадры из Госкаталога. Без сборки, секунды.
+      # Откат — удалить шаг и scripts/kadry-dnya.py.
+      - name: kadry-dnya — кадров ≥ 6, без повторов (pHash), без Википедии
+        timeout-minutes: 3
+        run: |
+          python3 -m venv /tmp/kd && /tmp/kd/bin/pip install -q --disable-pip-version-check pillow imagehash pyyaml
+          /tmp/kd/bin/python scripts/kadry-dnya.py zamok --proba && /tmp/kd/bin/python scripts/kadry-dnya.py zamok все
+      # Инструкция к каждой игре (Р199, Р201, 23.10.2026; 04-build §5-бис): страница дня с игрой без блока «Как играть»
+      # под картинкой игры (data-igra-pravila с шагами после сцены, assets/igra-pravila.css) — ошибка; кнопки «Начать»
+      # и «Правила» и игра, спрятанная до старта, — тоже ошибка (Р201: картинка видна и работает сразу). Изменённые в заявке
       # страницы — строго; весь сайт — отчёт «инструкция есть N из M» по музеям в сводке шага и артефакте
       # igra-pravila (на main 23.10 — 0 из 82). Без сборки, секунды. Выключатель — IGRA_PRAVILA_STROGO=0; откат — удалить шаг.
       - name: igra-pravila — у каждой игры есть инструкция
-        continue-on-error: ${{ vars.IGRA_PRAVILA_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.IGRA_PRAVILA_STROGO) == '0' }}
         timeout-minutes: 1
         run: node scripts/igra-pravila.mjs --proba && node scripts/igra-pravila.mjs
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -55,6 +90,16 @@ jobs:
           name: igra-pravila
           path: /tmp/igra-pravila
           if-no-files-found: ignore
+      # Замок аудиогида и ролика дня (Р232, Сергей 24.10.2026: «аудиогид обязателен, ролик обязателен»): каждая изменённая
+      # в заявке страница дня — блок аудиогида и mp3 в public/ есть, не пустой, ≥30 с; блок ролика (<video>) и mp4 есть.
+      # Аудиогид — строго. Ролик — пока отчёт (жёлтая строка); строгий — переменная MEDIA_ROLIK_STROGO=1 (включает Джарвис
+      # после прогона роликов по новому шаблону, Р233). Сначала проба на заведомых страницах. Без сборки, секунды.
+      # Описание — scripts/media-dnya.README.md. Откат — удалить этот шаг.
+      - name: media-dnya — аудиогид и ролик у дня
+        timeout-minutes: 2
+        env:
+          MEDIA_ROLIK_STROGO: ${{ vars.MEDIA_ROLIK_STROGO }}
+        run: node scripts/media-dnya.mjs --proba && node scripts/media-dnya.mjs
       # Соседи полной страницы дня (Р165, 23.10.2026): «Куда дальше» и стрелки шапки — ближайшие полные страницы музея
       # (src/lib/sosedi-polnye.mjs). Без сборки, секунды. Откат — удалить шаг.
       - name: sosedi-polnye — пробы соседей дня
@@ -101,6 +146,11 @@ jobs:
             dist/assets
             dist/_astro
           retention-days: 3
+      # Версия в адресе своих .js/.css (задача Джарвиса 24.10.2026, #449): npm run build дописывает ?v=<sha1 файла>
+      # к каждой ссылке на /assets/*.js|css во всём dist (scripts/versii.mjs). Замок: ссылка без версии или с чужой — красная.
+      - name: versii — у ссылок на свои js/css версия по содержимому
+        timeout-minutes: 2
+        run: node scripts/versii.mjs dist --proverka
       # «Поддержать проект» на всех страницах (Р88, 21.10.2026). При PUBLIC_PODDERZHKA=0 в сборке не должно быть
       # ни текста «Поддержать проект», ни движка museum-support.js; по умолчанию проверка пропускается.
       - name: podderzhka — замок выключателя блока поддержки
@@ -112,7 +162,7 @@ jobs:
       # «появится после приёмки», «реквизиты появятся», TODO/lorem — в видимом тексте и строках календаря.
       # Сначала проба на заведомых строках, потом весь dist. Строгая сразу (Р84). Выключатель — SLUZHEBNYY_STROGO=0.
       - name: sluzhebnyy-tekst — служебных пометок на страницах нет
-        continue-on-error: ${{ vars.SLUZHEBNYY_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SLUZHEBNYY_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/sluzhebnyy-tekst.mjs --proba && node scripts/sluzhebnyy-tekst.mjs --dist dist
       # Названия музеев только полностью (правило Сергея 09.10, AI_Projects#804, 20.10.2026): в тексте, title, meta,
@@ -120,7 +170,7 @@ jobs:
       # («Музей «Русские не сдаются»», «Музей русских побед»). Сначала проба на заведомых строках, потом весь dist.
       # Строгая сразу (решение Сергея есть; на ветке 0 из 76 бывших). Выключатель — переменная NAZVANIYA_STROGO=0.
       - name: nazvaniya-muzeev — имя музея только title_ru
-        continue-on-error: ${{ vars.NAZVANIYA_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.NAZVANIYA_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/nazvaniya-muzeev.mjs --proba && node scripts/nazvaniya-muzeev.mjs --dist dist
       # Внешние хосты (Е4, Р38, 20.10.2026): всё, что браузер посетителя грузит сам (скрипты, стили, шрифты,
@@ -130,7 +180,7 @@ jobs:
       # потолка из scripts/bez-viki-dolg.json (числа main 21.10), в новом месте — ни одного. Долг может только убывать.
       # Сначала проба на заведомых строках, потом весь dist. Выключатель — переменная BEZ_VIKI_STROGO=0.
       - name: bez-viki — Википедии не прибавилось
-        continue-on-error: ${{ vars.BEZ_VIKI_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.BEZ_VIKI_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/bez-viki.mjs --proba && node scripts/bez-viki.mjs --dist dist
       - name: vneshnie-hosty — ни одного запроса за рубеж
@@ -141,6 +191,22 @@ jobs:
       # «Сообщите об ошибке». Нет — красная, список страниц в отчёте. Откат — удалить этот шаг.
       - name: podval-dnya — общий подвал с кнопкой «Сообщите об ошибке» на каждой странице дня
         run: node scripts/podval-dnya.mjs dist
+      # Сторож вида дня изобретений (Р303, r370): каждая собранная страница den/ММ-ДД музея изобретений — в виде 13 января:
+      # те же общие стили в том же порядке (без своего css дня) и те же главные блоки в том же порядке. Эталон и списки —
+      # из собранного 01-13. Исключений нет. Откат — удалить этот шаг и tests/vid-dnya.mjs.
+      - name: vid-dnya — дни изобретений в виде 13 января
+        run: node tests/vid-dnya.mjs dist
+      # Кадры дня — разные (Сергей 01.11, Р408; museum-page-production п. 2-тер; r534): для каждой страницы den/ всех музеев —
+      # кадры тела, повторы по pHash (Хэмминг ≤ 8), доля портретов (лицо по каскаду Хаара OpenCV или «портрет» в alt).
+      # Только отчёт: шаг не роняет заявку (правило «новых замков нет»). Стоит здесь, а не в задании tablicy:
+      # ему нужна собранная dist, tablicy сборку не делает. Откат — удалить этот шаг и tools/kadry-povtory.py.
+      - name: kadry-povtory — разные кадры дня (только отчёт)
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 5
+        run: |
+          python3 -m venv /tmp/kp && /tmp/kp/bin/pip install -q --disable-pip-version-check pillow imagehash 'opencv-python-headless==4.10.0.84' || true
+          /tmp/kp/bin/python tools/kadry-povtory.py dist --svod "$GITHUB_STEP_SUMMARY" || true
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
@@ -152,7 +218,7 @@ jobs:
       # 3D или библиотеки ловит scripts/js-import.mjs. Строгая с 20.10.2026 (Р52: на main пропавших 0).
       # Выключатель — переменная JSIMPORT_STROGO=0.
       - name: js-import — подгрузки движков
-        continue-on-error: ${{ vars.JSIMPORT_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.JSIMPORT_STROGO) == '0' }}
         run: node scripts/js-import.mjs dist
       # Ленивые адреса data-src/data-poster (20.10.2026): lychee их не видит — 18 «битых» аудио/видео/картинок
       # на полных страницах дней ловит scripts/data-src.mjs. Строгий с 20.10.2026: прогон показал 0 битых из 18.
@@ -160,15 +226,16 @@ jobs:
         run: node scripts/data-src.mjs --dist dist
       # Замок веса (18.10.2026): лимит хостинга 1 ГБ, порог 950 МБ. Строгий с 20.10.2026 (Р52: на main
       # 932.4 МБ — запас 17.6 МБ). Выключатель — переменная VES_STROGO=0.
+      # С 26.10.2026 (Р263, r284) — по артефакту Pages, без *.mp4: ролики отдаёт только свой сервер (deploy.yml).
       - name: ves — вес сборки
-        continue-on-error: ${{ vars.VES_STROGO == '0' }}
-        run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12
+        continue-on-error: ${{ format('{0}', vars.VES_STROGO) == '0' }}
+        run: node scripts/ves.mjs --dist dist --porog 950 --rolik 12 --bez-video
       # Карточка пересылки (Б9/Б10, 20.10.2026): og:image меньше 600×315 Telegram/ВК показывают крошкой —
       # сборка ставит запасную (og-den), проверка считает остаток (должно быть 0); у каждой страницы дня
       # есть og:image (файл в dist) и twitter:card. Строгая с 20.10.2026 (задача E: обход живого сайта —
       # 4331 из 4332 дней в порядке, последний — временный 503). Выключатель — OGRAZMER_STROGO=0.
       - name: og-razmer — карточка пересылки у каждого дня
-        continue-on-error: ${{ vars.OGRAZMER_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.OGRAZMER_STROGO) == '0' }}
         run: node scripts/og-razmer.mjs dist
       # Закон РФ (Сергей «да» 20.10.2026): символика врага — не превью (ст. 20.3 КоАП), чужие подложки карт — нет.
       - name: simvolika-vraga — кадр из списка не og:image и не превью
@@ -178,10 +245,37 @@ jobs:
       # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
       # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).
       # Строгость включается переменной репозитория GLAZAMI_STROGO=1; без неё — только предупреждение.
+      # Браузер из кэша (r309, 28.10.2026): #525 краснела на po-date «Executable doesn't exist ... headless_shell»,
+      # потому что playwright install при медленном скачивании молча обрывался на 4-й минуте. Теперь: кэш
+      # ~/.cache/ms-playwright по версии playwright из package-lock (в логе «Cache restored» / «Cache not found»),
+      # установка — до 3 попыток по 3 мин, кэш сохраняется сразу после удачной установки (не ждёт конца заявки).
+      - name: glazami — версия браузера
+        id: pw
+        run: echo "versiya=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
+      - name: glazami — браузер из кэша
+        id: pw-kesh
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.versiya }}-chromium
       - name: glazami — браузер
+        id: pw-ustanovka
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
-        timeout-minutes: 4
-        run: npx --no-install playwright install --with-deps chromium
+        timeout-minutes: 10
+        run: |
+          echo "Кэш браузера: ${{ steps.pw-kesh.outputs.cache-hit == 'true' && 'hit' || 'miss' }} (playwright ${{ steps.pw.outputs.versiya }})"
+          for i in 1 2 3; do
+            timeout 180 npx --no-install playwright install --with-deps chromium && exit 0
+            echo "::warning::playwright install: попытка $i не удалась"
+          done
+          exit 1
+      - name: glazami — браузер в кэш
+        if: steps.pw-kesh.outputs.cache-hit != 'true' && steps.pw-ustanovka.outcome == 'success'
+        continue-on-error: true
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.versiya }}-chromium
       - name: glazami — замер против эталона
         continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 5
@@ -193,15 +287,33 @@ jobs:
       # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.
       # Выключатель — переменная репозитория PODATE_STROGO=0 (вернуть мягкость без отката кода).
       - name: po-date — список дней не задвоен
-        continue-on-error: ${{ vars.PODATE_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.PODATE_STROGO) == '0' }}
         timeout-minutes: 3
-        run: node scripts/po-date.mjs --dist dist
+        run: |
+          # браузера нет — честная причина вместо ложного «страница сломана» (r309)
+          node -e "require('playwright').chromium.launch().then(b => b.close())" 2>/dev/null || {
+            echo "::error::po-date: браузер не установлен (шаг «glazami — браузер» не справился) — страницы не проверены, это не поломка страниц. Перезапуск: gh run rerun --failed"
+            exit 1; }
+          node scripts/po-date.mjs --dist dist
+      # Замок ошибок JS (задание r253, 24.10.2026): карикатура 01-01…01-04 сыпала SyntaxError на каждой прокрутке,
+      # а проверки молчали. Каждая полная страница дня — загрузка и прокрутка до низа; ошибка JS — заявка красная.
+      - name: oshibki-js — на полных страницах дней нет ошибок JS
+        timeout-minutes: 8
+        run: node scripts/oshibki-js.mjs --proba && node scripts/oshibki-js.mjs --dist dist
+      # Замок картинок дня (Р231, Сергей 24.10.2026: «И фото сверху, и фото, либо картинки обязательные в тексте»):
+      # каждая изменённая в заявке страница дня в браузере — обложка figure.hero-fig загружена, хотя бы одна
+      # загруженная картинка в тексте (вне обложки, игры, навигации), ни одной видимой битой или без src
+      # (кадры внутри игры не в счёт). Сначала проба на заведомых страницах. Браузер ставит шаг «glazami — браузер».
+      # Строгий, без выключателя. Откат — удалить этот шаг.
+      - name: kartinki-dnya — обложка и картинки в тексте у дня
+        timeout-minutes: 4
+        run: node scripts/kartinki-dnya.mjs --proba && node scripts/kartinki-dnya.mjs --dist dist
       # Сверка текста старый/новый сайт (план переезда, шаг 4; 19.10.2026): по дням с legacy_page —
       # дата, название, хук, источник 1:1. Старый сайт клонируется с main rc-museum-preview (публичный).
       # Строгая с 20.10.2026 (Р60: 7 красных дней и Никитин закрыты, на сайте 0 красных): заявка краснеет.
       # Выключатель — переменная репозитория SVERKA_STROGO=0 (вернуть мягкость без отката кода).
       - name: sverka-teksta — текст старого и нового сайта 1:1
-        continue-on-error: ${{ vars.SVERKA_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SVERKA_STROGO) == '0' }}
         timeout-minutes: 6
         run: |
           # без --depth: нужна история всех веток (git log --all), blob:none — без содержимого старых версий
@@ -218,7 +330,7 @@ jobs:
       # из scripts/legacy-paths.txt есть в сборке — страницей или переадресацией; иначе список и код 1.
       # Строгая с 20.10.2026 (Р52: на main 221 из 221). Выключатель — переменная REDIR_STROGO=0.
       - name: polnota — старые адреса не умирают
-        continue-on-error: ${{ vars.REDIR_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.REDIR_STROGO) == '0' }}
         timeout-minutes: 2
         run: node scripts/polnota.mjs --dist dist
       # Сверка карточки дня и полной страницы (19.10.2026): title карточки против <title>/<h1> страницы
@@ -226,7 +338,7 @@ jobs:
       # сдвинул страницы «Не сдаются» на соседний день, и никто не поймал. Строгая с 20.10.2026
       # (Р52: на main расхождений 0). Выключатель — переменная SVERKA_H1_STROGO=0.
       - name: sverka-h1 — страница дня про этот день
-        continue-on-error: ${{ vars.SVERKA_H1_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.SVERKA_H1_STROGO) == '0' }}
         timeout-minutes: 1
         env:
           SVERKA_H1_STROGO: '1'
@@ -236,7 +348,7 @@ jobs:
       # долг «только таблица прав» — не выше потолков scripts/podpisi-dolg.json. Самотест — первым.
       # Выключатель — переменная PODPISI_STROGO=0.
       - name: podpisi — у каждого кадра есть подпись
-        continue-on-error: ${{ vars.PODPISI_STROGO == '0' }}
+        continue-on-error: ${{ format('{0}', vars.PODPISI_STROGO) == '0' }}
         timeout-minutes: 1
         run: node scripts/proverka-podpisey.test.mjs && npm run proverka-podpisey
       # Отчёт о скорости и доступности (18.10.2026): Lighthouse CI + axe-core по 4 страницам

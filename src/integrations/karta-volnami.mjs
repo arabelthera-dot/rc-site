@@ -20,7 +20,7 @@ import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
 
 const read = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 const DAYS = 'src/content/days';
-const SLUZHEBNYE = /^\/(?:doska|karta|poisk|proverka)\//;
+const SLUZHEBNYE = /^\/(?:doska|karta|poisk|proverka)\/|^\/muzei\/[^/]+\/den-shablon\//; // den-shablon — пилот шаблона дня (Р297), копия для сверки
 const FLAGMANY = new Set(['/', '/muzei/', '/o-proekte/', '/kak-sdelan-muzey/']);
 const LIMIT = 50000; // протокол: не больше 50 000 адресов в файле
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

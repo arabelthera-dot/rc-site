@@ -1,17 +1,18 @@
 ---
 // Ролик и озвучка дня (п.3–4 очереди 1, «да» Сергея 17.10): то, что было у старых страниц дня.
-// Ролик — ключом выпуска из public/video/registry.json: адрес подставляет движок museum-video.js,
+// Ролик — ключом выпуска из реестра public/video/registry/<музей>/<id>.json (scripts/reestr-rolikov.mjs): адрес подставляет движок museum-video.js,
 // в разметке — запасной путь без JS (как на полных страницах). Озвучка — движок museum-audioguide.js.
 // Ключа нет в реестре или файла нет в public/ — сборка падает: битый плеер не выкладывается.
 import fs from 'node:fs';
+import { chitat } from '../../../scripts/reestr-rolikov.mjs';
 interface Props { video?: string; audio?: { src: string; heading?: string; lead?: string; note?: string }; where: string }
 const { video, audio, where } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const pub = (p: string) => `public/${p.replace(/^\//, '')}`;
 let rel: any;
 if (video) {
-  rel = JSON.parse(fs.readFileSync('public/video/registry.json', 'utf8')).releases?.[video];
-  if (!rel?.horizontal) throw new Error(`${where}: ролика «${video}» нет в public/video/registry.json`);
+  rel = chitat('public').releases?.[video];
+  if (!rel?.horizontal) throw new Error(`${where}: ролика «${video}» нет в public/video/registry/ (файл ${video}.json)`);
   if (!fs.existsSync(pub(rel.horizontal.local))) throw new Error(`${where}: нет файла ролика ${rel.horizontal.local}`);
 }
 if (audio && !fs.existsSync(pub(audio.src))) throw new Error(`${where}: нет файла озвучки ${audio.src}`);

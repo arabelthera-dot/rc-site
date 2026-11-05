@@ -1,0 +1,52 @@
+---
+// Страницы тем (Р289 п.2, 27.10.2026): /tema/ — все темы, /tema/<id>/ — все готовые дни всех музеев по теме,
+// по музеям. Темы и разметка — src/lib/temy.mjs; страница — только у темы с готовыми днями двух и больше музеев.
+// Флаг выключен (temyOn) — страниц нет. Вид — public/assets/rc-etot-den.css (карточки узла даты).
+import Base from '../../layouts/Base.astro';
+import InlineCss from '../../components/InlineCss.astro';
+import { temyOn, temyStranic, adresTemy } from '../../lib/temy.mjs';
+import { adresDnya, kogda } from '../../lib/etot-den.mjs';
+import { plural } from '../../lib/kalendar';
+export function getStaticPaths() {
+  if (!temyOn()) return [];
+  const temy = temyStranic();
+  return [{ params: { id: undefined }, props: { temy } }, ...temy.map((t) => ({ params: { id: t.id }, props: { t, temy } }))];
+}
+const { t, temy } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const src = (s: string) => (/^https?:/.test(s) ? s : `${base}${s.replace(/^\//, '')}`);
+const VID: Record<string, string> = { tema: 'Темы', mesto: 'Места', chelovek: 'Люди' };
+const muzeev = (dni: any[]) => new Set(dni.map((d) => d.museum)).size;
+const lead = t && `${t.kratko} ${t.dni.length} ${plural(t.dni.length, 'день', 'дня', 'дней')} в ${muzeev(t.dni)} ${plural(muzeev(t.dni), 'музее', 'музеях', 'музеях')} портала.`;
+const pervaya = t?.dni.find((d: any) => d.img);
+---
+{t ? (
+<Base title={`${t.nazvanie} во всех музеях · Русская цивилизация`} description={`${t.kratko} Дни музеев «Русской цивилизации» по теме «${t.nazvanie}».`} schema="page" image={pervaya && src(pervaya.img)} crumbs={[{ href: `${base}tema/`, label: 'Темы' }, { label: t.nazvanie }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>{t.nazvanie}</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">{lead}</p>
+    <ul class="rc-uzel-list">
+      {t.dni.map((d: any) => (
+        <li><a class="rc-uzel-card" href={adresDnya(base, d.museum, d.key)}>
+          {d.img && <img src={src(d.img)} alt={d.alt ?? ''} loading="lazy" decoding="async" width="640" height="400" />}
+          <span class="rc-uzel-body"><span class="rc-uzel-muzey">{d.museumTitle} · {kogda(d.key)}</span><span class="rc-uzel-title">{d.title}</span>{d.hook && <span class="rc-uzel-hook">{d.hook}</span>}</span>
+        </a></li>))}
+    </ul>
+    <nav class="rc-uzel-nav" aria-label="Другие темы"><a href={`${base}tema/`}>Все темы</a><a href={`${base}segodnya/`}>Все даты</a></nav>
+  </div>
+</Base>
+) : (
+<Base title="Темы во всех музеях · Русская цивилизация" description="Темы, которые связывают музеи «Русской цивилизации»: Север, космос, флот, Москва и другие." schema="page" crumbs={[{ label: 'Темы' }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>Темы во всех музеях</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">Одна тема — дни из разных музеев портала.</p>
+    {Object.entries(VID).map(([vid, zag]) => temy.some((x: any) => x.vid === vid) && (<>
+      <h2 class="rc-ed-h rc-tema-vid">{zag}</h2>
+      <ul class="rc-uzel-daty">
+        {temy.filter((x: any) => x.vid === vid).map((x: any) => (<li><a href={adresTemy(base, x.id)}>{x.nazvanie}</a> <span>{x.dni.length}</span></li>))}
+      </ul></>))}
+  </div>
+</Base>
+)}

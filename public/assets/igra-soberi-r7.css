@@ -1,0 +1,15 @@
+/* CSS игры 01-12 (soberi-r7) — правила как есть из <style> старой страницы src/data/full-pages/izobreteniya/01-12.html (r483b). */
+.lab{background:var(--card);border:1px solid var(--card-b);border-radius:16px;padding:18px 18px 20px;margin-top:14px}
+.lab-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.lab-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
+.seg{cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;min-height:44px}
+.seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
+.seg:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.lab-stage{position:relative;margin-top:12px}
+.lab-stage canvas{width:100%;height:auto;display:block;border-radius:10px;background:#1c2530}
+.lab-cap{font-size:12px;color:#8fa5b9;margin-top:6px}
+.lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
+.lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
+.lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
+.lab-found{font-size:13px;color:var(--muted);margin-top:8px}
+.lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}

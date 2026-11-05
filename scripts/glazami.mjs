@@ -7,8 +7,8 @@
 //   --zapisat       — записать эталон в файл --porog (только вниз: число может уменьшиться, но не вырасти).
 // Пункты 10 (контраст) и 21 (счётчик, после М26) здесь не мерятся: контраст — в axe, счётчика ещё нет.
 import fs from 'node:fs';
-import http from 'node:http';
 import path from 'node:path';
+import { serveDist } from './lib/dist.mjs';
 const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
 
 const argv = process.argv.slice(2), opt = {}, pos = [];
@@ -24,27 +24,7 @@ const W = 390, H = 844, POTOKOV = +(opt.potokov || 4);
 fs.mkdirSync(OUT, { recursive: true });
 
 let server = null;
-if (opt.dist) {
-  const ROOT = path.resolve(opt.dist), BASE = '/';
-  const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
-    '.json': 'application/json', '.xml': 'application/xml', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
-    '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
-    '.woff2': 'font/woff2', '.woff': 'font/woff', '.mp4': 'video/mp4', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.txt': 'text/plain' };
-  server = http.createServer((req, res) => {
-    let u = decodeURIComponent(req.url.split('?')[0]);
-    if (!u.startsWith(BASE)) { res.writeHead(404); return res.end(); }
-    let f = path.join(ROOT, u.slice(BASE.length));
-    if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
-    try { if (fs.statSync(f).isDirectory()) f = path.join(f, 'index.html'); } catch {}
-    fs.readFile(f, (err, buf) => {
-      if (err) { res.writeHead(404); return res.end('404'); }
-      res.writeHead(200, { 'content-type': MIME[path.extname(f).toLowerCase()] || 'application/octet-stream', 'content-length': buf.length });
-      res.end(buf);
-    });
-  });
-  await new Promise(r => server.listen(0, '127.0.0.1', r));
-  SITE = `http://127.0.0.1:${server.address().port}${BASE}`;
-}
+if (opt.dist) { server = await serveDist(opt.dist); SITE = server.url; }
 
 // Весь сайт — обе волны карты сайта (Е6, src/integrations/karta-volnami.mjs): файлы волн пишутся и закрытыми.
 const VOLNY = ['sitemap-volna-1.xml', 'sitemap-volna-2.xml'];
@@ -57,6 +37,12 @@ for (const list of Object.values(dni)) {
   const pick = [list[0], list[list.length >> 1], list[list.length - 1]];
   vyborka.push(...new Set(pick));
 }
+// Дни, чья полная страница правится в заявке, — в выборку обязательно (01-26 не попал в «первый/средний/последний»).
+try {
+  const { execFileSync } = await import('node:child_process');
+  const izm = execFileSync('git', ['diff', '--name-only', 'origin/main...HEAD', '--', 'src/data/full-pages'], { encoding: 'utf8' }).match(/[^/\s]+\/\d\d-\d\d(?=\.html)/g) || [];
+  for (const k of izm) { const u = all.find(x => x.endsWith(`muzei/${k}/`.replace(/\/(\d\d-\d\d)\/$/, '/den/$1/'))); if (u && !vyborka.includes(u)) vyborka.push(u); }
+} catch {}
 
 const POROGI = {
   'og': r => r.og === 3, 'title≤60': r => r.titleLen > 0 && r.titleLen <= 60,
@@ -70,6 +56,7 @@ const POROGI = {
   'цели ≥44': r => r.melkie === 0, 'поддержать в 1/3': r => process.env.PUBLIC_PODDERZHKA === '0' || (r.podderzhat !== null && r.podderzhat <= 33), // Р31: выключено — не требуется
   'подписка': r => r.podpiska > 0, 'вес ≤1 МБ': r => r.kb <= 1024, 'картинки с размерами': r => r.bezRazmera === 0,
   'CLS<0.1': r => r.cls < 0.1, 'нет ошибок': r => r.oshibki === 0 && r.bitye === 0,
+  'обложка дня': r => !r.den || r.zaglushka || (r.oblozhka && r.pustyeImg === 0),
   'нет заглушки': r => !r.zaglushka, 'без своих стилей': r => r.svoiStili === 0,
 };
 
@@ -160,6 +147,9 @@ async function zamer(url) {
       bezRazmera: qa('img').filter(i => !i.getAttribute('width') || !i.getAttribute('height')).length,
       zaglushka: /День готовится/.test(txt), svoiStili: qa('body style, [style]').filter(e => e.tagName === 'STYLE' || e.getAttribute('style').length > 60).length,
       den: /\/den\//.test(location.pathname), cls: +window.__cls.toFixed(3),
+      // обложка дня (r230, 01-26 вышел без hero-fig): кадр в figure.hero-fig загружен; видимая img без src или битая — брак
+      oblozhka: qa('figure.hero-fig img').some(i => i.naturalWidth > 0),
+      pustyeImg: qa('img').filter(i => (vis(i) && !i.getAttribute('src')) || (i.complete && i.getAttribute('src') && i.naturalWidth === 0)).length,
     };
   }, { W, H }).catch(() => null);
   await ctx.close();
@@ -168,6 +158,8 @@ async function zamer(url) {
   rows.push(r);
   process.stdout.write('.');
 }
+// --tolko izobreteniya/01-25,izobreteniya/01-26 — замер только этих дней (ручная проверка одной правки)
+if (opt.tolko) vyborka.splice(0, vyborka.length, ...opt.tolko.split(',').map(k => all.find(u => u.endsWith(`muzei/${k.replace('/', '/den/')}/`))).filter(Boolean));
 // несколько страниц одновременно — укладываемся в ~3 минуты в проверке заявки
 const ochered = [...vyborka];
 await Promise.all(Array.from({ length: POTOKOV }, async () => { while (ochered.length) await zamer(ochered.shift()); }));

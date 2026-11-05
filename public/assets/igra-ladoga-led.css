@@ -1,0 +1,92 @@
+/* Игра «Причаль вручную» (16 января 1969, «Союз-4» и «Союз-5»), r320. Палитра — как у «Уйти на километр» (k278). */
+.ll-body{margin:0;background:#07101c;color:#e8eef5;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.ll-wrap{max-width:720px;margin:0 auto;padding:0 12px}
+.ll-top{padding:14px 0 4px}
+.ll-museum{margin:0;font-size:13px;color:#9fb6cc}
+.ll-top h1{margin:4px 0 6px;font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,6vw,30px);line-height:1.15;color:#fff}
+.ll-lead{margin:0 0 8px;color:#c9d6e3}
+.ll-igra{margin:10px 0 8px;border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;background:#0c1826}
+.ll-h{margin:0;padding:12px 14px 0;font-family:'Playfair Display',Georgia,serif;font-size:21px;color:#ffd666}
+.ll-head{padding:6px 14px 8px}
+.ll-task{margin:0;font-size:clamp(19px,5vw,23px);font-weight:800;line-height:1.2;color:#fff;min-height:calc(19px + 2.4em)}
+.ll-task b:first-child{display:block;color:#6fe0a0;font-size:15px;font-weight:700}
+.ll-sub{margin:4px 0 0;min-height:4.2em;font-size:clamp(15px,4vw,17px);line-height:1.4;color:#e4c97a}
+.ll-tablo{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:8px;padding:0 14px 8px}
+.ll-tablo div{padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.05);font-size:12px;color:#9fb6cc;line-height:1.2}
+.ll-tablo b{display:block;margin-top:2px;font-size:clamp(18px,5.4vw,24px);font-weight:800;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ll-tablo .ll-krasn{color:#ff7a6a}
+.ll-fbar{display:block;height:6px;margin-top:4px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
+.ll-fbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#e4a33a,#ffd666);transition:width .15s}
+.ll-tv{margin:0 14px 8px;padding:5px 10px;border-radius:10px;font-size:14px;font-weight:700;background:rgba(255,138,122,.1);color:#ffb3a6}
+.ll-tv.ll-efir{background:rgba(255,74,74,.22);color:#fff}
+.ll-stage canvas{display:block;width:100%;height:clamp(280px,82vw,420px);touch-action:none;cursor:grab}
+.ll-hod,.ll-vybor{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 14px 12px;border-top:1px solid rgba(255,255,255,.07)}
+.ll-hod[hidden],.ll-vybor[hidden]{display:none}
+.ll-hod button,.ll-vybor button{font:inherit;font-size:18px;font-weight:800;line-height:1.15;min-height:64px;padding:6px;border-radius:14px;cursor:pointer;border:1px solid rgba(201,168,76,.45);background:rgba(201,168,76,.14);color:#f3e2b0}
+.ll-hod button small,.ll-vybor button small{display:block;font-size:12px;font-weight:600;opacity:.85}
+.ll-hod .ll-sam{background:rgba(255,138,122,.16);border-color:rgba(255,138,122,.6);color:#ffd2c8}
+.ll-vybor .ll-zhdat{background:#2f5a8a;border-color:#8fc2ff;color:#fff}
+.ll-hod button:focus-visible,.ll-vybor button:focus-visible,.ll-again:focus-visible{outline:3px solid #e4c97a;outline-offset:2px}
+.ll-proigr .ll-stage{box-shadow:inset 0 0 0 3px #ff5a4a}
+.ll-pobeda .ll-stage{box-shadow:inset 0 0 0 3px #ffd666}
+.ll-finale{padding:14px 14px 18px;border-top:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,#14223a,#0c1826)}
+.ll-finale[hidden]{display:none}
+.ll-fin-h{margin:0 0 8px;font-family:'Playfair Display',Georgia,serif;font-size:24px;line-height:1.15;color:#ff9f8a}
+.ll-pobeda .ll-fin-h{color:#ffd666}
+.ll-fin-txt{margin:0 0 8px}
+.ll-zvezdy{list-style:none;margin:0 0 12px;padding:0;font-size:17px;color:#7d8fa3}
+.ll-zvezdy li.on{color:#ffd666;font-weight:700}
+.ll-again{font:inherit;font-size:17px;font-weight:700;min-height:52px;padding:10px 22px;border-radius:26px;cursor:pointer;border:1px solid #ffd666;background:#e4a33a;color:#1a1004}
+.ll-cap,.ll-src{margin:0;padding:8px 14px 12px;font-size:13px;color:#9fb6cc}
+.ll-src a{color:#c9d6e3}
+.ll-note{font-size:13px;color:#7d8fa3;margin:10px 0 24px}
+/* Полная версия (шаг 4): шкала скорости с границами 0,2 и 0,3 м/с (шкала 0…1 м/с) */
+.ll-vbar{position:relative;display:block;height:6px;margin-top:4px;border-radius:3px;background:linear-gradient(90deg,rgba(111,224,160,.22) 0 20%,rgba(255,214,102,.22) 20% 30%,rgba(255,106,90,.18) 30% 100%)}
+.ll-vbar::before,.ll-vbar::after{content:"";position:absolute;top:-3px;bottom:-3px;width:2px;border-radius:1px}
+.ll-vbar::before{left:20%;background:#6fe0a0}
+.ll-vbar::after{left:30%;background:#ff6a5a}
+.ll-vbar i{display:block;height:100%;width:0;border-radius:3px;transition:width .15s}
+.ll-vbar i.ll-vz{background:#6fe0a0}.ll-vbar i.ll-vzh{background:#ffd666}.ll-vbar i.ll-vk{background:#ff6a5a}
+.ll-vmet{position:relative;display:block;height:13px;margin-top:2px;font-size:10px;line-height:13px;white-space:nowrap}
+.ll-vmet em{position:absolute;top:0;font-style:normal;font-weight:700}
+.ll-vmet .ll-vm2{left:0;color:#6fe0a0}
+.ll-vmet .ll-vm3{right:0;color:#ff8a7a}
+/* «Тормози!» (правка дизайнера 1) */
+.ll-sami .ll-task{color:#ff7a6a;animation:sp-migay .5s steps(2,start) infinite}
+.ll-hod .ll-sam.ll-podsvet{background:#c7372a;border-color:#ffb3a6;color:#fff;outline:3px solid #ffd2c8;outline-offset:2px;animation:sp-puls-t .6s ease-in-out infinite}
+@keyframes sp-migay{to{visibility:hidden}}
+@keyframes sp-puls-t{0%,100%{box-shadow:0 0 0 0 rgba(255,106,90,.8)}50%{box-shadow:0 0 0 12px rgba(255,106,90,0)}}
+/* Пропущенная звезда (правка 5) и историческая справка в финале */
+.ll-propusk{margin:0 0 12px;padding:8px 10px;border-radius:10px;background:rgba(255,214,102,.1);color:#f3e2b0;font-size:15px}
+.ll-propusk[hidden]{display:none}
+.ll-spravka{margin:16px 0 0;padding:12px 0 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px;color:#c9d6e3}
+.ll-spravka p{margin:0 0 8px}
+.ll-spravka .ll-spravka-h{font-weight:700;color:#ffd666}
+.ll-spravka .ll-src{padding:0}
+/* «Как играть» внутри тёмной секции игры */
+.ll-igra .igra-pravila{--acc:#e4a33a;margin:12px 14px 6px;max-width:none}
+@media (prefers-reduced-motion:reduce){.ll-sami .ll-task,.ll-hod .ll-sam.ll-podsvet{animation:none}}
+/* igra-ruka — подсказка «куда жать» (Р206); вид — как у образца 29 янв. (ko-hand, rc-site e4f86d74). Вставить в конец css игры как есть. */
+.igra-ruka-zona{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+.igra-ruka-zona button{touch-action:manipulation;min-height:48px;min-width:48px}
+.igra-ruka-zona .igra-pravila{-webkit-user-select:text;user-select:text}
+.igra-ruka{position:absolute;z-index:30;width:40px;height:48px;margin:0;pointer-events:none;animation:igra-tap 1.1s ease-in-out infinite;transform-origin:15px 4px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
+.igra-ruka[hidden]{display:none}
+.igra-ruka svg{display:block}
+.igra-ruka-krug{position:absolute;left:-7px;top:-14px;width:44px;height:44px;border:3px solid #fff;border-radius:50%;opacity:0;animation:igra-krug 1.1s ease-out infinite}
+@keyframes igra-tap{0%,100%{transform:translate(-15px,10px) scale(1)}40%{transform:translate(-15px,-4px) scale(.88)}55%{transform:translate(-15px,-4px) scale(.88)}}
+@keyframes igra-krug{0%,35%{opacity:0;transform:scale(.3)}45%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(1.2)}}
+.igra-ved button:not(.igra-aktiv){opacity:.42;filter:saturate(.4)}
+.igra-aktiv{position:relative;z-index:2;opacity:1!important;filter:none!important;animation:igra-puls 1.1s ease-in-out infinite!important;outline:3px solid #e9cf7e;outline-offset:3px}
+@keyframes igra-puls{0%,100%{box-shadow:0 0 0 0 rgba(233,207,126,.75)}50%{box-shadow:0 0 0 12px rgba(233,207,126,0)}}
+.igra-zhmyak{transform:scale(.94)!important;transition:transform 60ms}
+@media (prefers-reduced-motion:reduce){.igra-ruka,.igra-aktiv{animation:none!important}.igra-ruka{transform:translate(-15px,0)}.igra-ruka-krug{display:none}}
+/* 19 января · «Лёд Ладоги» — своё поверх общего вида игры */
+.ll-vybor,.ll-hod{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.ll-vybor button,.ll-hod button{flex:1 1 150px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 12px;font-weight:700}
+.ll-vybor small,.ll-hod small{font-weight:400;opacity:.8}
+.ll-hod .ll-pusk{flex-basis:100%;font-size:1.1em}
+.ll-stage canvas{display:block;width:100%;border-radius:10px}
+.ll-tbar{display:block;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin-top:4px}.ll-tbar i{display:block;height:100%;background:#d9a441;border-radius:2px}
+.ll-zel{color:#7fe0a0}.ll-zhelt{color:#ffc46a}.ll-krasn{color:#ff7a5a}
+.ll-zvezdy li.ok{color:#e3c26b}

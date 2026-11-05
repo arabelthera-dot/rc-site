@@ -95,9 +95,10 @@ ${celiJs}  }
   function plashka(){
     if(d.querySelector(".rc-cookie"))return;
     var b=d.createElement("div");b.className="rc-cookie";b.setAttribute("role","region");b.setAttribute("aria-label","Согласие на cookie");
-    b.innerHTML='<p>Мы используем cookie и Яндекс Метрику. «Принять» — согласие на обработку этих данных '
-      +'(<a href="${POLITIKA_URL}">политика конфиденциальности</a>).</p>'
-      +'<div class="rc-cookie-b"><button type="button" class="da">Принять</button><button type="button" class="net">Отказаться</button></div>';
+    // Р383: текст короче — на телефоне плашка одной полосой (~60 px), не пятая часть экрана; смысл и ссылка те же
+    b.innerHTML='<p>Cookie и Яндекс Метрика: «Принять» — согласие на обработку этих данных '
+      +'(<a href="${POLITIKA_URL}">политика</a>).</p>'
+      +'<div class="rc-cookie-b"><button type="button" class="da">Принять</button><button type="button" class="net" aria-label="Отказаться от cookie и Метрики">Нет</button></div>';
     // пока плашка видна, под ней резервируется место (html.rc-cookie-on, --rc-cookie-h): низ страницы и подвал не закрыты
     var h=d.documentElement;
     function fit(){h.style.setProperty("--rc-cookie-h",b.offsetHeight+"px")}
