@@ -1,0 +1,498 @@
+{
+ "105171": {
+  "id": 105171,
+  "reg_nomer": "7013639",
+  "inv_nomer": "",
+  "nazvanie": "Лист рекламный телевизоров черно-белого и цветного изображения \"АТП-1\", \"КВН-49\", \"Рекорд-Б\", \"Рекорд-101\", \"Рекорд-Ц 275\", \"Рекорд-Ц 280\", \"Рекорд-340\", \"Рекорд-350\"",
+  "muzej": "Филиал \"Александровская слобода\" Федерального государственного бюджетного учреждения культуры \"Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник\"",
+  "muzej_id": 2681,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=105171",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/105171",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-01"
+  ],
+  "reg_na_stranice": false
+ },
+ "294713": {
+  "id": 294713,
+  "reg_nomer": "2335970",
+  "inv_nomer": "Ф-775",
+  "nazvanie": "Фотография. Гагарин Юрий Алексеевич у здания Обнинской АЭС.",
+  "muzej": "Муниципальное бюджетное учреждение \"Музей истории города Обнинска\"",
+  "muzej_id": 1507,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=294713",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/294713",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-21"
+  ],
+  "reg_na_stranice": true
+ },
+ "4978641": {
+  "id": 4978641,
+  "reg_nomer": "4920420",
+  "inv_nomer": "",
+  "nazvanie": "Умов Николай Алексеевич - первый русский физик-теоретик, профессор Московского университета, ушел в отставку в знак протеста против притеснений студентов.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный центральный музей современной истории России\"",
+  "muzej_id": 1152,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=4978641",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/4978641",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-23"
+  ],
+  "reg_na_stranice": false
+ },
+ "4978913": {
+  "id": 4978913,
+  "reg_nomer": "4920187",
+  "inv_nomer": "",
+  "nazvanie": "Умов Николай Алексеевич - первый русский физик-теоретик, профессор Московского университета, ушел в отставку в знак протеста против притеснений студентов.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный центральный музей современной истории России\"",
+  "muzej_id": 1152,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=4978913",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/4978913",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-23"
+  ],
+  "reg_na_stranice": false
+ },
+ "5992150": {
+  "id": 5992150,
+  "reg_nomer": "5816870",
+  "inv_nomer": "",
+  "nazvanie": "К столетию со дня рождения Н.Е. Жуковского. Николай Егорович читает курс лекций - \"Теоретические основы воздухоплавания\" в Московском высшем техучилище.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный центральный музей современной истории России\"",
+  "muzej_id": 1152,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=5992150",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/5992150",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-17"
+  ],
+  "reg_na_stranice": true
+ },
+ "5992175": {
+  "id": 5992175,
+  "reg_nomer": "5816845",
+  "inv_nomer": "",
+  "nazvanie": "К столетию со дня рождения Н.Е. Жуковского. Николай Егорович в строившейся трубе аэродинамической лаборатории Московского высшего технического училища (1916г).",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный центральный музей современной истории России\"",
+  "muzej_id": 1152,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=5992175",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/5992175",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-17"
+  ],
+  "reg_na_stranice": true
+ },
+ "7086342": {
+  "id": 7086342,
+  "reg_nomer": "6868589",
+  "inv_nomer": "К5 4449",
+  "nazvanie": "Брошюра. Сигунов А. О двух полетах на воздушном шаре Императорского Русского технического общества: Отчет.- Спб., [не ранее 10 июня 1886 - не позднее 11 марта 1887].- 36 с.+ 2 л. прил.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный музей истории космонавтики имени К.Э. Циолковского\"",
+  "muzej_id": 1833,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=7086342",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/7086342",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-26"
+  ],
+  "reg_na_stranice": false
+ },
+ "7589697": {
+  "id": 7589697,
+  "reg_nomer": "7456250",
+  "inv_nomer": "",
+  "nazvanie": "Перфокарта с краевой перфорацией, предназначена для хранения данных в виде записей, выполненных от руки или печатным способом, и выборки из базы данных по определенному признаку",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Политехнический музей\"",
+  "muzej_id": 2598,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=7589697",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/7589697",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-25"
+  ],
+  "reg_na_stranice": true
+ },
+ "12367222": {
+  "id": 12367222,
+  "reg_nomer": "12243583",
+  "inv_nomer": "",
+  "nazvanie": "План-график отладки МВК \"Эльбрус-2\" (В.С. Бурцев)",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Политехнический музей\"",
+  "muzej_id": 2598,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=12367222",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/12367222",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-27"
+  ],
+  "reg_na_stranice": false
+ },
+ "12733546": {
+  "id": 12733546,
+  "reg_nomer": "12614837",
+  "inv_nomer": "",
+  "nazvanie": "Проспект \"Многопроцессорный вычислительный комплекс \"Эльбрус-2\" (с автографом (1987 г.) члена-корреспондента АН СССР, директора Института точной механики и вычислительной техники АН СССР, руководителя работ по созданию супер-ЭВМ Г.Г. Рябова)",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный центральный музей современной истории России\"",
+  "muzej_id": 1152,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=12733546",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/12733546",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-27"
+  ],
+  "reg_na_stranice": false
+ },
+ "17010580": {
+  "id": 17010580,
+  "reg_nomer": "16885386",
+  "inv_nomer": ", д.11. Ф.41ТС, 1, Д. 1,  1.2.1.",
+  "nazvanie": "Письмо Н. Умова, проф. московского университета, физика профессору, декану физико-математического факультета К.А. Андрееву от 28 марта 1911 г. по поводу увольнения профессора М.А. Мензбира.",
+  "muzej": "Государственное бюджетное учреждение культуры города Москвы \"Музейное объединение \"Музей Москвы\"",
+  "muzej_id": 262,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=17010580",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/17010580",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-23"
+  ],
+  "reg_na_stranice": false
+ },
+ "18020792": {
+  "id": 18020792,
+  "reg_nomer": "17890761",
+  "inv_nomer": "Ип.-1866",
+  "nazvanie": "Плакат\"Глеб Евгеньевич Котельников.\"",
+  "muzej": "Муниципальное бюджетное учреждение культуры \"Геленджикский историко-краеведческий музей\" муниципального образования город-курорт Геленджик",
+  "muzej_id": 1309,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=18020792",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/18020792",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-30"
+  ],
+  "reg_na_stranice": false
+ },
+ "27410248": {
+  "id": 27410248,
+  "reg_nomer": "27261194",
+  "inv_nomer": "",
+  "nazvanie": "Медаль юбилейная «Академик А.В. Гапонов-Грехов. В честь 60-летия со дня рождения». Аверс.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный музейно-выставочный центр \"РОСИЗО\"",
+  "muzej_id": 2632,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=27410248",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/27410248",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-31"
+  ],
+  "reg_na_stranice": true
+ },
+ "28753072": {
+  "id": 28753072,
+  "reg_nomer": "28589909",
+  "inv_nomer": "И IX 2509/1",
+  "nazvanie": "Лунин Николай Иванович, врач, исследователь, установивший существование витаминов.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный исторический музей\"",
+  "muzej_id": 239,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=28753072",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/28753072",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-20"
+  ],
+  "reg_na_stranice": false
+ },
+ "29049270": {
+  "id": 29049270,
+  "reg_nomer": "28884632",
+  "inv_nomer": "МОФ-91",
+  "nazvanie": "Холерная вакцина",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры и искусства \"Военно-медицинский музей\" Министерства обороны Российской Федерации",
+  "muzej_id": 138,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=29049270",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/29049270",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-28"
+  ],
+  "reg_na_stranice": false
+ },
+ "31564532": {
+  "id": 31564532,
+  "reg_nomer": "31369768",
+  "inv_nomer": "Ф.сов.-683",
+  "nazvanie": "Фотография. Академик Гапонов-Грехов А.В.",
+  "muzej": "Государственное бюджетное учреждение культуры Нижегородской области \"Нижегородский государственный историко-архитектурный музей-заповедник\"",
+  "muzej_id": 2691,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=31564532",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/31564532",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-31"
+  ],
+  "reg_na_stranice": true
+ },
+ "35383289": {
+  "id": 35383289,
+  "reg_nomer": "35185685",
+  "inv_nomer": "И IX 13541",
+  "nazvanie": "Академик Ландау Лев Давидович за работой над статьёй у себя дома.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный исторический музей\"",
+  "muzej_id": 239,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=35383289",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/35383289",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-22"
+  ],
+  "reg_na_stranice": true
+ },
+ "35682369": {
+  "id": 35682369,
+  "reg_nomer": "35487249",
+  "inv_nomer": "Арх. 4614",
+  "nazvanie": "Фотография второго листа диплома Лауреата Нобелевской премии академика Л.Д.Ландау. Стокгольм",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный исторический музей\"",
+  "muzej_id": 239,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=35682369",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/35682369",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-22"
+  ],
+  "reg_na_stranice": true
+ },
+ "36413762": {
+  "id": 36413762,
+  "reg_nomer": "36203206",
+  "inv_nomer": "",
+  "nazvanie": "Фотография. Гапонов-Грехов А.В. - директор ИПФ АН СССР, академик.",
+  "muzej": "Государственное бюджетное учреждение культуры Нижегородской области \"Нижегородский государственный историко-архитектурный музей-заповедник\"",
+  "muzej_id": 2691,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=36413762",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/36413762",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-31"
+  ],
+  "reg_na_stranice": true
+ },
+ "39225585": {
+  "id": 39225585,
+  "reg_nomer": "39012263",
+  "inv_nomer": "ИЗО/15",
+  "nazvanie": "Скульптурная группа «Г.Е. Котельников и летчик-парашютист».",
+  "muzej": "\"Музей истории Воздушно-десантных войск\" филиал Федерального государственного бюджетного учреждения культуры и искусства \"Центральный музей Вооруженных Сил Российской Федерации\" Министерства обороны Российской Федерации",
+  "muzej_id": 3245,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=39225585",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/39225585",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-30"
+  ],
+  "reg_na_stranice": false
+ },
+ "46762123": {
+  "id": 46762123,
+  "reg_nomer": "46522844",
+  "inv_nomer": "",
+  "nazvanie": "Физический институт Московского университета. Фотография",
+  "muzej": "Государственное бюджетное учреждение культуры города Москвы \"Музейное объединение \"Музей Москвы\"",
+  "muzej_id": 262,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=46762123",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/46762123",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-23"
+  ],
+  "reg_na_stranice": false
+ },
+ "53555618": {
+  "id": 53555618,
+  "reg_nomer": "53300231",
+  "inv_nomer": "КН-544",
+  "nazvanie": "История одного изобретения: русский парашют. М. - Ленинград: Детиздат, 1938 г.",
+  "muzej": "Федеральное государственное казенное учреждение культуры и искусства \"Военно-исторический музей Тихоокеанского флота\" Министерства обороны Российской Федерации",
+  "muzej_id": 26,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=53555618",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/53555618",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-30"
+  ],
+  "reg_na_stranice": false
+ },
+ "54679006": {
+  "id": 54679006,
+  "reg_nomer": "54418504",
+  "inv_nomer": "",
+  "nazvanie": "Материалы об изобретателе и конструкторе Огнеславе Костовиче",
+  "muzej": "Филиал Федерального государственного бюджетного учреждения культуры \"Государственный музей истории космонавтики имени К.Э. Циолковского\" в городе Москве - \"Научно-мемориальный музей профессора Н.Е. Жуковского\"",
+  "muzej_id": 10206,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=54679006",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/54679006",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-29"
+  ],
+  "reg_na_stranice": false
+ },
+ "57973269": {
+  "id": 57973269,
+  "reg_nomer": "57677795",
+  "inv_nomer": "",
+  "nazvanie": "Матрикул студента Л.Х. Канторовича, будущего лауреата Нобелевской премии. 1926 г.",
+  "muzej": "Музей истории СПбГУ Управления экспозиций и коллекций Федерального государственного бюджетного образовательного учреждения высшего образования \"Санкт-Петербургский государственный университет\"",
+  "muzej_id": 114,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=57973269",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/57973269",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-19"
+  ],
+  "reg_na_stranice": true
+ },
+ "57973402": {
+  "id": 57973402,
+  "reg_nomer": "57677767",
+  "inv_nomer": "",
+  "nazvanie": "Диплом лауреата Нобелевской премии Л.В. Канторовича. 10 декабря 1975 г.",
+  "muzej": "Музей истории СПбГУ Управления экспозиций и коллекций Федерального государственного бюджетного образовательного учреждения высшего образования \"Санкт-Петербургский государственный университет\"",
+  "muzej_id": 114,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=57973402",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/57973402",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-19"
+  ],
+  "reg_na_stranice": true
+ },
+ "60062098": {
+  "id": 60062098,
+  "reg_nomer": "59767659",
+  "inv_nomer": "Арх. 4188",
+  "nazvanie": "Портрет заслуженного профессора Императорского Московского университета Николая Алексеевича Умова и его жены Елены Леонардовны Умовой, фотоателье Ф.И. Опитца; на обороте дарственная надпись Н.А. Умова Сергею Александровичу.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный исторический музей\"",
+  "muzej_id": 239,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=60062098",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/60062098",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-23"
+  ],
+  "reg_na_stranice": true
+ },
+ "65038107": {
+  "id": 65038107,
+  "reg_nomer": "64752540",
+  "inv_nomer": "Ф 4492/3",
+  "nazvanie": "Фотоснимок на тему Социалистическое строительство: Здание атомной электростанции в г. Обнинске. 1957 г.",
+  "muzej": "Федеральное государственное казенное учреждение \"Центральный пограничный музей Федеральной службы безопасности Российской Федерации\"",
+  "muzej_id": 107,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=65038107",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/65038107",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-21"
+  ],
+  "reg_na_stranice": true
+ },
+ "65038145": {
+  "id": 65038145,
+  "reg_nomer": "64752668",
+  "inv_nomer": "Ф 4492/4",
+  "nazvanie": "Фотоснимок на тему Социалистическое строительство: ентральный пункт управления атомной электростанциив. г. Обнинск. 1957 г.",
+  "muzej": "Федеральное государственное казенное учреждение \"Центральный пограничный музей Федеральной службы безопасности Российской Федерации\"",
+  "muzej_id": 107,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=65038145",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/65038145",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-21"
+  ],
+  "reg_na_stranice": true
+ },
+ "69445465": {
+  "id": 69445465,
+  "reg_nomer": "69176047",
+  "inv_nomer": "Арх. 6019",
+  "nazvanie": "Сенягина Т.Н. на АЭС в г. Обнинск Калужско области.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный исторический музей\"",
+  "muzej_id": 239,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=69445465",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/69445465",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-21"
+  ],
+  "reg_na_stranice": true
+ },
+ "69487321": {
+  "id": 69487321,
+  "reg_nomer": "69216976",
+  "inv_nomer": "",
+  "nazvanie": "Марка почтовая. Верхняя часть (защитное перекрытие) реактора электростанции. СССР. 07. 60 к. Ц.Ф.А.-1863. Первая в мире атомная элетростанция Академии наук СССР",
+  "muzej": "Федеральное государственное бюджетное учреждение \"Центральный музей связи имени А.С. Попова\"",
+  "muzej_id": 122,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=69487321",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/69487321",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-21"
+  ],
+  "reg_na_stranice": true
+ },
+ "69524694": {
+  "id": 69524694,
+  "reg_nomer": "69261290",
+  "inv_nomer": "",
+  "nazvanie": "гелиевый ожижитель Капицы",
+  "muzej": "Мемориальный кабинет-музей П.Л. Капицы Федерального государственного бюджетного учреждения науки Институт физических проблем им. П.Л. Капицы Российской академии наук",
+  "muzej_id": 11503,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=69524694",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/69524694",
+  "provereno": "2026-11-05",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "izobreteniya/01-22"
+  ],
+  "reg_na_stranice": true
+ }
+}
