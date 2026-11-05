@@ -3,6 +3,7 @@
 
 muzei: ne-sdayutsya
 key: 01-30
+adres: den
 head:
   title: Ликвидаторы Чернобыля — «Русские не сдаются» — Русская цивилизация
   description: Трое нырнули в смертельную воду, чтобы не взорвался второй реактор
@@ -57,6 +58,8 @@ stamp:
   - v: "1200"
     k: автобусов вывезли Припять меньше чем за три часа
 daynav:
+  - id: video
+    label: Видео
   - id: story
     label: Читать
   - id: audioguide
@@ -67,6 +70,17 @@ daynav:
     label: Викторина
   - id: calendar
     label: Календарь
+video:
+  h2: История в 42 секунды
+  klyuch: nesdayutsya/30jan-chernobyl
+  format: horizontal
+  pole: nesdayutsya/30jan-chernobyl:horizontal.sec
+  suffix: сек
+  badge: 42 сек
+  intro: Трое нырнули в смертельную воду, чтобы не взорвался второй реактор
+  poster: /muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-30jan-chernobyl.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42086799346) из сценария days/ns30jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Ликвидаторы Чернобыля
@@ -346,6 +360,14 @@ figures:
     credit: Историко-краеведческий музей Карталинского района, № ОФ-2366 (Н-627), Госкаталог № 20103802
     width: 497
     height: 800
+  - src: /muzei/ne-sdayutsya/img/01-30-goskatalog-23467401.jpg
+    alt: Ликвидаторы последствий аварии на Чернобыльской АЭС, групповая фотография
+    data_source: https://goskatalog.ru/portal/#/collections?id=21944906
+    license: цитирование с указанием музея и Госкаталога (ст. 1274 ГК РФ)
+    podpis: Ликвидаторы последствий аварии на Чернобыльской АЭС.
+    credit: "Фото: Автор не указан, 1988. Хранится: БГИКМ, Госкаталог № 21944906"
+    width: 800
+    height: 516
 sources:
   - href: https://tvzvezda.ru/news/2019681120-21A8y.html
     title: '«"Чернобыльские дайверы": ликвидатор затопленного коридора под реактором рассказал правду о задании», ТВ «Звезда», 08.06.2019 (пересказ интервью Ананенко)'

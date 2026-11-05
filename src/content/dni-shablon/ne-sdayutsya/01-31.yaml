@@ -346,6 +346,14 @@ figures:
     credit: ГБУК «Белгородский государственный историко-художественный музей-диорама „Курская битва. Белгородское направление“», № Н-639, Госкаталог № 11843876
     width: 625
     height: 800
+  - src: /muzei/ne-sdayutsya/img/01-31-goskatalog-9436169.jpg
+    alt: 'Эмалевый значок узника Бухенвальда: башня лагеря над флагами стран, надпись BUCHENWALD'
+    data_source: https://goskatalog.ru/portal/#/collections?id=11843876
+    license: цитирование с указанием музея и Госкаталога (ст. 1274 ГК РФ)
+    podpis: 'Значок узника концлагеря Бухенвальд.'
+    credit: 'Автор не указан, 1970-е. Хранится: Музей-диорама «Курская битва. Белгородское направление», Госкаталог № 11843876'
+    width: 625
+    height: 800
 sources:
   - href: https://www.sovsport.ru/boxing/articles/provyol-80-boyov-v-buhenvalde-posle-pobega-iz-konczlagerya-prodolzhil-unichtozhat-naczistov
     title: «Провёл 80 боёв в Бухенвальде. После побега из концлагеря продолжил уничтожать нацистов», А. Губин, «Советский спорт»
