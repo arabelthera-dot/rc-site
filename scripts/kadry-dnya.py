@@ -191,7 +191,9 @@ def nazvanie(o):
 
 # Кадр «в честь»: улица, колхоз, завод, номер дома имени героя — не кадр события.
 V_CHEST = re.compile(r'\b(ул\.|улиц|проспект|переул|площад[ьи] им|им\.|имени|колхоз|совхоз|артел|квартал|номер дома)', re.I)
-STOP = {'которые', 'потому', 'только', 'после', 'перед', 'всего', 'когда', 'чтобы', 'между', 'через', 'русские', 'сдаются'}
+STOP = {'которые', 'потому', 'только', 'после', 'перед', 'всего', 'когда', 'чтобы', 'между', 'через', 'русские', 'сдаются',
+        # слова каталога, не приметы дня: «Документ. Копия Межевой книги… Евгении Родионовны» шло за 01-23 (r544)
+        'документ', 'документы', 'фотография', 'фотографии'}
 
 
 def osnovy(tekst):
@@ -204,11 +206,13 @@ def opis_dnya(muzei, d, karta):
     k = json.loads(kal.read_text(encoding='utf-8')) if kal.exists() else {}
     imya = (karta.get('kroshka') or '').split('·')[-1].strip()
     podpis = (karta.get('oblozhka') or {}).get('podpis') or ''
+    # Без скобок: «Икона … воина Евгения (Родионова) (уже на старой странице).» Госкаталог не находит, без них — находит (01-23, r544).
+    podpis_q = re.sub(r'\s*\([^)]*\)', '', podpis).strip(' .')
     tekst = ' '.join(str(k.get(x) or '') for x in ('title', 'hook', 'mechanic', 'gist', 'source')) + f' {imya} {podpis}'
     glavnoe = k.get('title') or imya
     # Имена собственные (с заглавной не в начале фразы, в кавычках «…») — уточнение запроса: «челюскинцы Шмидта».
     imena = [w for w in re.findall(r'(?<![.!?—]\s)(?<=[\s«"])([А-ЯЁ][а-яё]{3,})', tekst) if w[:5].lower() not in osnovy(glavnoe)]
-    q = [glavnoe, imya, podpis] + [f'{glavnoe} {w}' for w in dict.fromkeys(imena)][:4]
+    q = [glavnoe, imya, podpis_q] +[f'{glavnoe} {w}' for w in dict.fromkeys(imena)][:4]
     # Фамилия героя + слова хука: «Октябрьская танк» находит экипаж, которого нет по «Мария Октябрьская» (01-20, r544).
     fam = re.findall(r'[А-ЯЁ][а-яё]{3,}', glavnoe)
     if len(fam) >= 2:
@@ -263,7 +267,9 @@ def dobor(a):
                 if not im or str(o['id']) in uzhe or str(im) in uzhe or VIKI.search(json.dumps(o, ensure_ascii=False)):
                     continue
                 uzhe |= {str(o['id']), str(im)}
-                if ochki(o, osn) >= 2 and pro_geroya(o, glav):   # два совпадения с днём: «челюскин» + «лагерь/Шмидт/лётчик…»
+                # два совпадения с днём: «челюскин» + «лагерь/Шмидт/лётчик…»; хоть одно — сверх имени героя,
+                # иначе «Родионов Евгений. Башкирская матрёшка» однофамильца проходит за 01-23 (r544)
+                if ochki(o, osn) >= 2 and osnovy(nazvanie(o)) & (osn - osnovy(glav)) and pro_geroya(o, glav):
                     nashli.append((s, o))
         nashli.sort(key=lambda x: -ochki(x[1], osn))
         vzyali = []
