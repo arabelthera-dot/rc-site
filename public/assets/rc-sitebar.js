@@ -31,8 +31,14 @@
       var t = parseFloat(cs.top);
       if(isNaN(t)) continue;
       if(cs.position === 'fixed' && (t >= H) || cs.position === 'fixed' && (cs.bottom !== 'auto' && parseFloat(cs.bottom) < H || e.offsetHeight > 200)) continue;
-      e.style.setProperty('top', 'calc(' + t + 'px + var(--rc-bar-vis, 0px))', 'important');
+      /* Р560: в атрибуте style — только число, само правило — классом (glazami «без своих стилей») */
+      e.style.setProperty('--rc-t', t + 'px'); e.classList.add('rc-sdvig');
     }
+  }
+  if(!document.getElementById('rc-sdvig-css')){
+    var sd = document.createElement('style'); sd.id = 'rc-sdvig-css';
+    sd.textContent = '.rc-sdvig{top:calc(var(--rc-t, 0px) + var(--rc-bar-vis, 0px))!important}';
+    document.head.appendChild(sd);
   }
   if(document.readyState === 'complete') shift(); else window.addEventListener('load', shift);
 
