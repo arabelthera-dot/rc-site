@@ -16,6 +16,7 @@
 
 muzei: ne-sdayutsya
 key: 01-21
+adres: den
 head:
   title: Володя Дубинин — «Русские не сдаются» — Русская цивилизация
   description: Володя Дубинин днём прошёл вражеские посты и спас отряд от затопления. Пройди его путь по ходам Старокарантинских каменоломен Керчи.
@@ -70,6 +71,8 @@ stamp:
   - v: 4.01.1942
     k: день гибели — в уже освобождённой Керчи
 daynav:
+  - id: video
+    label: Видео
   - id: story
     label: Читать
   - id: audioguide
@@ -80,6 +83,17 @@ daynav:
     label: Викторина
   - id: calendar
     label: Календарь
+video:
+  h2: История в 47 секунд
+  klyuch: nesdayutsya/21jan-dubinin
+  format: horizontal
+  pole: nesdayutsya/21jan-dubinin:horizontal.sec
+  suffix: сек
+  badge: 47 сек
+  intro: Володя Дубинин днём прошёл вражеские посты и спас отряд от затопления
+  poster: /muzei/ne-sdayutsya/video/day-21jan-dubinin-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-21jan-dubinin.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns21jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Подземный отряд
@@ -357,7 +371,7 @@ figures:
     width: 800
     height: 598
   - src: /muzei/ne-sdayutsya/img/01-21-goskatalog-20780144.jpg
-    alt: 'Кадр из музейного фонда: Герой Советского Союза Лёня Голиков и пионер-герой Володя Дубинин. Плакат'
+    alt: "Кадр из музейного фонда: Герой Советского Союза Лёня Голиков и пионер-герой Володя Дубинин. Плакат"
     data_source: https://goskatalog.ru/portal/#/collections?id=20021963
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
     podpis: Герой Советского Союза Лёня Голиков и пионер-герой Володя Дубинин. Плакат.

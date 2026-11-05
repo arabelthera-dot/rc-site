@@ -66,6 +66,8 @@ stamp:
   - v: "5"
     k: Героев Советского Союза (посмертно, 1943)
 daynav:
+  - id: video
+    label: Видео
   - id: story
     label: Читать
   - id: audioguide
@@ -76,6 +78,17 @@ daynav:
     label: Викторина
   - id: calendar
     label: Календарь
+video:
+  h2: История в 42 секунды
+  klyuch: nesdayutsya/28jan-molodaya-gvardiya
+  format: horizontal
+  pole: nesdayutsya/28jan-molodaya-gvardiya:horizontal.sec
+  suffix: сек
+  badge: 42 сек
+  intro: Школьники, которые не выдали никого — даже под пытками
+  poster: /muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns28jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Шахтёрский город под оккупацией

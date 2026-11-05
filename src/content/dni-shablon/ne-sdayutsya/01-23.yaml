@@ -13,6 +13,7 @@
 
 muzei: ne-sdayutsya
 key: 01-23
+adres: den
 head:
   title: Евгений Родионов — «Русские не сдаются» — Русская цивилизация
   description: Ему предложили снять крест — он не снял. Рассмотри вблизи крест на могиле пограничника Евгения Родионова и прочитай, что на нём написано.
@@ -67,6 +68,8 @@ stamp:
   - v: 2 м
     k: высота креста над могилой в Сатино-Русском
 daynav:
+  - id: video
+    label: Видео
   - id: story
     label: Читать
   - id: audioguide
@@ -77,6 +80,17 @@ daynav:
     label: Викторина
   - id: calendar
     label: Календарь
+video:
+  h2: История в 50 секунд
+  klyuch: nesdayutsya/23jan-rodionov
+  format: horizontal
+  pole: nesdayutsya/23jan-rodionov:horizontal.sec
+  suffix: сек
+  badge: 50 сек
+  intro: Ему предложили снять крест — он не снял
+  poster: /muzei/ne-sdayutsya/video/day-23jan-rodionov-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-23jan-rodionov.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns23jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Застава на чеченской границе
@@ -354,7 +368,7 @@ figures:
     width: 1600
     height: 1053
   - src: /muzei/ne-sdayutsya/img/01-23-goskatalog-60921077.jpg
-    alt: 'Кадр из музейного фонда: Молитва воина с изображением святого мученика Евгения (Родионова)'
+    alt: "Кадр из музейного фонда: Молитва воина с изображением святого мученика Евгения (Родионова)"
     data_source: https://goskatalog.ru/portal/#/collections?id=48958643
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
     podpis: Молитва воина с изображением святого мученика Евгения (Родионова).

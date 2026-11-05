@@ -67,6 +67,8 @@ stamp:
   - v: "22"
     k: звания Героя России, из них 21 — посмертно
 daynav:
+  - id: video
+    label: Видео
   - id: story
     label: Читать
   - id: audioguide
@@ -77,6 +79,17 @@ daynav:
     label: Викторина
   - id: calendar
     label: Календарь
+video:
+  h2: История в 47 секунд
+  klyuch: nesdayutsya/22jan-6-rota
+  format: horizontal
+  pole: nesdayutsya/22jan-6-rota:horizontal.sec
+  suffix: сек
+  badge: 47 сек
+  intro: Девяносто против двух тысяч — выжили шестеро, не отступил никто
+  poster: /muzei/ne-sdayutsya/video/day-22jan-6-rota-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-22jan-6-rota.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Высота над ущельем
