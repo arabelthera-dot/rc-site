@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "Девяносто против двух тысяч — выжили шестеро, не отступил никто",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.3,
+    "mb": 15.2
+  },
+  "vertical": {
+    "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.3,
+    "mb": 14.7
+  },
+  "poster": {
+    "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota-9x16-poster.jpg",
+    "v": 1
+  }
+}
