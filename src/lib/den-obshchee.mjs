@@ -113,6 +113,16 @@ export function kadryDnya(d) {
   return { vse, vTekste };
 }
 
+// Портреты среди кадров дня (Р408, Р544, pokaz.md п. 2-тер б): «портрет»/«фотопортрет» в alt целым словом — документ
+// «с портретами» (газета, марка) не портрет; klass portret — вёрстка узкого кадра, не признак. Лицо без пометки ловит отчёт tools/kadry-povtory.py (каскад Хаара).
+const PORTRET_ALT = /(?<![а-яё])(фото)?портрет(?![а-яё])/;
+export function portretyDnya(d) {
+  const { vse } = kadryDnya(d), p = new Set();
+  const kadry = [...(d.figures ?? []), ...(d.story?.udary ?? []).map((u) => u.kadr), ...[d.fakty ?? []].flat().flatMap((b) => b.udary).map((u) => u.kadr)];
+  for (const k of kadry) if (k && vse.has(k.src) && PORTRET_ALT.test(String(k.alt ?? '').toLowerCase())) p.add(k.src);
+  return p;
+}
+
 // Файл в public по адресу со страницы /muzei/<музей>/…: «/x» — от корня сайта, иначе — от папки музея (<base>).
 export function failPublic(muzei, src) {
   const u = String(src).split(/[?#]/)[0];
@@ -123,8 +133,8 @@ export const AUDIO_MIN_SEK = 30;
 const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message });
 // Общий замок дня (r602). На любом адресе: номер ответа викторины — в списке. На живом адресе (adres: den):
 // head.sobytie+god, обложка, факты 10 + 5 с отрывком/страницей/ссылкой/пометкой, кадры ≥ KADROV_MIN (долг — dolgKadrov),
-// аудиогид (файл есть, ≥30 с), ролик. dolgKadrov / dolgVTekste — { 'ММ-ДД': N }: снимок долга, ниже N нельзя.
-export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {} } = {}) {
+// аудиогид (файл есть, ≥30 с), ролик; portrety — портретов ≤ трети кадров. dolgKadrov / dolgVTekste — { 'ММ-ДД': N }: снимок долга, ниже N нельзя.
+export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portrety = false } = {}) {
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) iss(ctx, ['quiz', 'voprosy', i, 'a'], 'номер ответа вне списка'); });
   if (d.adres !== 'den') return;
   if (!d.head.sobytie || !d.head.god) iss(ctx, ['head'], 'на адресе den нужны head.sobytie и head.god (заголовок вкладки)');
@@ -147,6 +157,10 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {} } = {}
     iss(ctx, ['figures'], `ЗАМОК кадров: разных кадров ${vse.size}, нужно не меньше ${porog}${dolg !== undefined ? ` (долг на 02.11.2026 — меньше нельзя)` : ` (KADROV_MIN, без обложки: figures, kadr у фактов, <img> в razdely и dop)`}`);
   else if (dolg !== undefined && vse.size >= KADROV_MIN)
     console.log(`::warning::${d.muzei}/${d.key}: кадров ${vse.size} ≥ ${KADROV_MIN} — снять из долга (src/data/kadry-dolg.json)`);
+  // ЗАМОК портретов (Р408, Р544): портретов не больше трети разных кадров (portrety — музеи, где он включён).
+  const p = portrety ? portretyDnya(d) : new Set();
+  if (p.size * 3 > vse.size)
+    iss(ctx, ['figures'], `ЗАМОК портретов (Р408): портретов ${p.size} из ${vse.size} кадров — больше трети (pokaz.md п. 2-тер б): ${[...p].join(', ')}`);
   // Кадр в тексте: порог 1; у дня из долга dolgVTekste — число из долга (снимок на 02.11.2026).
   const dolgT = dolgVTekste[d.key], porogT = dolgT ?? 1;
   if (vTekste.size < porogT) iss(ctx, ['fakty'], 'ЗАМОК кадров: ни одного кадра в тексте (kadr у факта, <img> в razdely или dop)');

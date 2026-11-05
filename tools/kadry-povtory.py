@@ -9,22 +9,32 @@
   - портреты — на кадре найдено лицо (каскад Хаара OpenCV, лицо ≥ 3 % площади кадра) или в alt слово «портрет».
 Мерка: разных кадров в теле ≥ 6, портретов ≤ трети тела, повторов 0.
 
-Только отчёт: код выхода всегда 0 (правило «новых замков нет»). Откат — удалить файл и шаг в proverka.yml.
+Отчёт: код выхода 0. С --zamok <музей> (Р408, Р544) — код 1, если у дня этого музея повтор или портретов > 1/3;
+«разных < 6» не ловит (это ЗАМОК кадров сборки, src/data/kadry-dolg.json). Долг — снимок на 05.11.2026 в
+src/data/kadry-povtory-dolg.json: дни из него не роняют, пополнять нельзя, только убирать. В сборке стоит замок портретов
+по alt (portretyDnya, src/lib/den-obshchee.mjs); --zamok в proverka.yml не включён — правка .github/ идёт по st:gate-sergey.
+Откат --zamok — удалить разбор флага и функцию zamok().
 
   python3 tools/kadry-povtory.py dist                       # все музеи, таблица в stdout
   python3 tools/kadry-povtory.py dist --muzei izobreteniya --den 01-05 --podrobno
   python3 tools/kadry-povtory.py dist --json /tmp/kadry.json
+  python3 tools/kadry-povtory.py dist --zamok izobreteniya   # красный на повторе и портретах > 1/3
 """
 import argparse
 import html.parser
 import json
 import os
+import re
 import sys
 
 POROG = 8          # Хэмминг для pHash 64 бит: ≤ 8 — один кадр
 MIN_RAZNYH = 6
 DOLYA_PORTRETOV = 1 / 3
 DOLYA_LICA = 0.03
+# «портрет» в alt — сам кадр портрет: «портрет», «фотопортрет». Документ «с портретами» (газета, марка) — не портрет;
+# лицо на нём ловит каскад.
+PORTRET_ALT = re.compile(r'(?<![а-яё])(фото)?портрет(?![а-яё])')
+DOLG = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src', 'data', 'kadry-povtory-dolg.json')
 
 # Блоки, кадры которых в тело не идут.
 SLUZHEBNYE_ID = {'games', 'game', 'quiz', 'calendar', 'kuda-dalshe', 'result'}
@@ -64,7 +74,7 @@ class Razbor(html.parser.HTMLParser):
 class Glaz:
     """Хеш и лицо по файлу; один файл на многих страницах считается один раз."""
 
-    def __init__(self, koren, zapas):
+    def __init__(self, koren, zapas, strogo=False):
         from PIL import Image  # noqa: F401
         import imagehash  # noqa: F401
         self.koren, self.zapas, self.kesh = koren, zapas, {}
@@ -73,6 +83,8 @@ class Glaz:
             self.cv2 = cv2
             self.kaskad = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades, 'haarcascade_frontalface_default.xml'))
         except Exception:
+            if strogo:
+                raise
             self.cv2 = None
             print('kadry-povtory: OpenCV нет — портреты только по alt', file=sys.stderr)
 
@@ -127,7 +139,7 @@ def den(put_html, glaz):
         if g is None:
             propal.append(k['src'])
             continue
-        portret = bool(g['lico'] >= DOLYA_LICA or 'портрет' in k['alt'].lower())
+        portret = bool(g['lico'] >= DOLYA_LICA or PORTRET_ALT.search(k['alt'].lower()))
         vse.append(dict(k, hash=g['hash'], portret=portret, lico=round(g['lico'], 3)))
     # Повторы: первый кадр гнезда — подлинник, остальные близкие к нему — повторы.
     povtory = []
@@ -171,13 +183,18 @@ def main():
     ap.add_argument('--json', help='записать полный отчёт в файл')
     ap.add_argument('--podrobno', action='store_true', help='под таблицей — повторы и портреты по файлам')
     ap.add_argument('--svod', help='дописать в файл свод по музеям (для $GITHUB_STEP_SUMMARY)')
+    ap.add_argument('--zamok', action='append', default=[], help='ЗАМОК для музея: повтор или портретов > 1/3 — код 1')
+    ap.add_argument('--dolg', default=DOLG, help='долг замка (дни, которые пока не роняют)')
     a = ap.parse_args()
+    if a.zamok:
+        global STROGO
+        STROGO = True
 
     koren = os.path.join(a.dist, 'muzei')
     if not os.path.isdir(koren):
         print(f'kadry-povtory: нет {koren} — сначала npm run build; отчёт пропущен')
-        return 0
-    glaz = Glaz(a.dist, a.public)
+        return 1 if a.zamok else 0
+    glaz = Glaz(a.dist, a.public, strogo=bool(a.zamok))
     otchet = {}
     for m in sorted(os.listdir(koren)):
         if a.muzei and m not in a.muzei:
@@ -194,7 +211,7 @@ def main():
 
     plohie = {k: v for k, v in otchet.items() if v['flagi']}
     print(f'## Кадры дней (Р408): {len(otchet)} дней, по мерке {len(otchet) - len(plohie)}, '
-          f'с замечанием {len(plohie)} — только отчёт, заявку не роняет\n')
+          f'с замечанием {len(plohie)} — ' + (f"ЗАМОК: {', '.join(a.zamok)}" if a.zamok else 'только отчёт, заявку не роняет') + '\n')
     print(f'Мерка: разных в теле ≥ {MIN_RAZNYH}; портретов ≤ 1/3 тела; повтор = pHash, Хэмминг ≤ {POROG}.\n')
     print('| день | в теле | разных | портретов | повторов | замечание |')
     print('|---|---|---|---|---|---|')
@@ -228,12 +245,39 @@ def main():
     if a.json:
         with open(a.json, 'w', encoding='utf-8') as f:
             json.dump(otchet, f, ensure_ascii=False, indent=1)
-    return 0
+    return zamok(otchet, a.zamok, a.dolg) if a.zamok else 0
+
+
+def zamok(otchet, muzei, put_dolga):
+    dolg = {}
+    if os.path.isfile(put_dolga):
+        with open(put_dolga, encoding='utf-8') as f:
+            dolg = {m: set(d) for m, d in json.load(f).items() if not m.startswith('_')}
+    brak = []
+    for k, v in otchet.items():
+        m, d = k.split('/')
+        if m not in muzei:
+            continue
+        f = [x for x in v['flagi'] if x in ('повторы', 'портретов>1/3')]
+        if d in dolg.get(m, ()):
+            if not f:
+                print(f'::warning::{k}: кадры по мерке — снять из долга ({put_dolga})')
+            continue
+        if f:
+            brak.append(k)
+            print(f"::error::ЗАМОК кадров (Р408): {k} — {', '.join(f)}: в теле {v['telo']}, портретов {v['portretov']}, "
+                  f"повторов {v['povtorov']}. Портреты: {', '.join(v['portrety']) or '—'}. "
+                  f"Повторы: {', '.join(p['kadr'] + ' ≈ ' + p['kak'] for p in v['povtory']) or '—'}")
+    print(f"ЗАМОК кадров ({', '.join(muzei)}): брак {len(brak)}" + (f" — {', '.join(brak)}" if brak else ' — чисто'))
+    return 1 if brak else 0
+
+
+STROGO = False
 
 
 if __name__ == '__main__':
     try:
         sys.exit(main())
-    except Exception as e:  # отчёт не роняет заявку ни при какой ошибке
+    except Exception as e:  # отчёт не роняет заявку ни при какой ошибке; замок без проверки — красный
         print(f'kadry-povtory: отчёт не снят — {type(e).__name__}: {e}')
-        sys.exit(0)
+        sys.exit(1 if STROGO else 0)
