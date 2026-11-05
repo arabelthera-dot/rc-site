@@ -10,7 +10,7 @@
 //   data-igra-sekciya — корень игры; data-igra-start — «Начать»; data-igra-final — финальный экран;
 //   data-igra-hod="tap|derzhi|vedi" — чем играть элемент; data-igra-sejchas — ход, который игра ждёт сейчас.
 // Где разметки нет (старые страницы), проходчик ищет сам: корень — секция игры как в scripts/igra-pravila.mjs,
-// финал — скрытый на старте блок с final/finale/result/ending/itog/pobed/win в class или id, ходы — видимые кнопки,
+// финал — скрытый или пустой на старте блок с final/finale/result/ending/itog/pobed/win в class или id, ходы — видимые кнопки,
 // ползунки и холст игры; перебирает их, как ребёнок, пока на экране что-то меняется.
 //
 // Запуск: npm run prohod-igr [-- --igry chernovik/izobreteniya-01-29-igra.html,muzei/izobreteniya/den/01-07/]
@@ -65,6 +65,8 @@ function zadetye(vse, baza) {
   const assets = files.filter((f) => /^public\/assets\/.+\.(?:js|css)$/.test(f)).map((f) => f.slice('public/'.length));
   for (const f of files) {
     let m = /^src\/data\/full-pages\/([\w-]+)\/(\d\d-\d\d)\.html$/.exec(f);
+    if (m) nado.add(`muzei/${m[1]}/den/${m[2]}/`);
+    m = /^src\/content\/dni-shablon\/([\w-]+)\/(\d\d-\d\d)\.yaml$/.exec(f);
     if (m) nado.add(`muzei/${m[1]}/den/${m[2]}/`);
     m = /^public\/(chernovik\/[\w-]+-igra\.html)$/.exec(f);
     if (m) nado.add(m[1]);
@@ -185,6 +187,35 @@ class Palec {
   }
 }
 
+// ---------- игра дня в 3D (Р432): модель .glb или сцена движка rc3d ----------
+// Финального экрана у модели нет: проход — 3D загрузилась на телефоне и поворачивается пальцем (картинка меняется).
+async function igra3d(page, palec) {
+  palec.shag('3D: загрузка');
+  const blok = page.locator('[data-igra-dnya]').first();
+  await blok.scrollIntoViewIfNeeded();
+  const run = page.locator('#rc3dRun').filter({ visible: true });
+  if (await run.count()) await palec.tap(run.first(), 'тап «Играть» (3D-сцена)');
+  await palec.zhdi(() => {
+    const r = document.documentElement.getAttribute('data-igra-rezhim');
+    if (r && r !== '3d') return true;
+    const st = document.querySelector('#igdStage[data-gotovo]');
+    const rc = document.querySelector('#rc3d canvas');
+    return !!(st && st.querySelector('canvas')) || !!(rc && document.getElementById('rc3dLoad')?.hidden !== false);
+  }, 30_000, '3D загрузилась');
+  const rezhim = await page.evaluate(() => [document.documentElement.getAttribute('data-igra-rezhim'), document.documentElement.getAttribute('data-igra-prichina')]);
+  if (rezhim[0] !== '3d') throw new Error(`3D не встала, страница ушла в «${rezhim[0]}» (${rezhim[1]})`);
+  palec.shag('3D: повернуть пальцем');
+  const holst = page.locator('[data-igra-dnya] canvas').filter({ visible: true }).first();
+  if (!await holst.count()) throw new Error('3D: на сцене нет холста');
+  await holst.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(800);
+  const do_ = await holst.screenshot();
+  await palec.vedi(holst, { opis: 'провести пальцем по 3D', ot: 0.2, do: 0.8, shag: 10, pauza: 30 });
+  await page.waitForTimeout(800);
+  const posle = await holst.screenshot();
+  if (Buffer.compare(do_, posle) === 0) throw new Error('3D: после движения пальцем картинка не изменилась');
+}
+
 // ---------- общий проходчик по разметке ----------
 const KOREN = '[data-igra-sekciya], section:has([data-igra-pravila]), #games, #game, [id^="game-"], [id$="-game"], [id^="igra"], [data-game-section], [data-game], section:has(canvas[id*="game"]), section:has(canvas[aria-label*="игр"])';
 const FINAL_SAM = '[class*="final"], [class*="ending"], [class*="result"], [id*="result"], [id*="final"], [class*="itog"], [class*="pobed"], [class*="win"]';
@@ -199,7 +230,7 @@ async function obshchiy(page, palec, scen) {
   await koren.evaluate((r, [sel, sam]) => {
     const vid = (el) => el.checkVisibility ? el.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) : !!el.offsetParent;
     const kand = sel ? [...document.querySelectorAll(sel)] : [...r.querySelectorAll('[data-igra-final]')];
-    const list = kand.length ? kand : [...r.querySelectorAll(sam)].filter((el) => !vid(el));
+    const list = kand.length ? kand : [...r.querySelectorAll(sam)].filter((el) => (!vid(el) || !el.textContent.trim()) && !el.closest('[data-igra-pravila]'));
     list.forEach((el) => el.setAttribute('data-prohod-final', ''));
   }, [scen.final || '', FINAL_SAM]);
   const finalLoc = page.locator('[data-prohod-final]');
@@ -255,7 +286,7 @@ async function obshchiy(page, palec, scen) {
 }
 
 // ---------- одна игра ----------
-async function proyti(browser, base, id) {
+async function proyti(browser, base, id, rezhim = '') {
   const imya = klyuch(id);
   const scenFile = path.join(SCENARII, `${imya}.mjs`);
   const scen = fs.existsSync(scenFile) ? await import(pathToFileURL(scenFile).href) : {};
@@ -272,7 +303,7 @@ async function proyti(browser, base, id) {
   const cdp = await ctx.newCDPSession(page);
   const log = [];
   const palec = new Palec(page, cdp, log);
-  const snimok = path.join(OUT, `${imya}.png`);
+  const snimok = path.join(OUT, `${imya}${rezhim ? '-' + rezhim : ''}.png`);
   let itog;
   try {
     palec.shag('открыть страницу');
@@ -281,7 +312,10 @@ async function proyti(browser, base, id) {
     // Плашка cookie внизу закрывает пол-экрана телефона — посетитель сначала её закрывает, так и проходчик.
     const cookie = page.locator('.rc-cookie-b .net').filter({ visible: true });
     if (await cookie.count()) await palec.tap(cookie.first(), 'закрыть плашку cookie («Отказаться»)');
-    if (scen.default) {
+    const est3d = !rezhim && await page.locator('[data-igra-dnya]').count();
+    if (rezhim === '2d') await palec.zhdi(() => document.documentElement.getAttribute('data-igra-rezhim') === '2d', 10_000, '2D-запаска встала');
+    if (est3d) await igra3d(page, palec);
+    else if (scen.default) {
       await scen.default(palec, page);
       palec.shag('финальный экран');
       if (scen.final) await palec.zhdi(scen.final, 8000, 'финальный экран');
@@ -290,13 +324,15 @@ async function proyti(browser, base, id) {
     const fin = page.locator(scen.final || '[data-prohod-final]').filter({ visible: true }).first();
     if (await fin.count()) await fin.scrollIntoViewIfNeeded().catch(() => {});
     if (oshibki.length) throw new Error(oshibki[0]);
-    itog = { id, ok: true, stroka: `ок      ${id} — финал за ${palec.n} шаг(ов)${scen.default ? ', по сценарию' : ''}` };
+    const metka = rezhim === '2d' ? ' [2D без WebGL]' : est3d ? ' [3D]' : '';
+    if (est3d) itog = { id, ok: true, stroka: `ок      ${id}${metka} — 3D загрузилась и поворачивается пальцем, ${palec.n} шаг(ов)` };
+    else itog = { id, ok: true, stroka: `ок      ${id}${metka} — финал за ${palec.n} шаг(ов)${scen.default ? ', по сценарию' : ''}` };
   } catch (e) {
     const prichina = oshibki.length && !/^(?:консоль|ошибка скрипта|не загрузилось)/.test(e.message) ? `${e.message}; ${oshibki[0]}` : e.message;
-    itog = { id, ok: false, stroka: `провал  ${id} — ${palec.tekushchiy || 'старт'}: ${prichina}` };
+    itog = { id, ok: false, stroka: `провал  ${id}${rezhim === '2d' ? ' [2D без WebGL]' : ''} — ${palec.tekushchiy || 'старт'}: ${prichina}` };
   }
   await page.screenshot({ path: snimok }).catch(() => {});
-  itog.snimok = snimok; itog.log = log; itog.oshibki = oshibki;
+  itog.snimok = snimok; itog.est3d = !rezhim && await page.locator('#igra2d').count().catch(() => 0) > 0; itog.log = log; itog.oshibki = oshibki;
   await ctx.close();
   return itog;
 }
@@ -314,16 +350,26 @@ async function main() {
     if (arg('--baza')) igry = zadetye(igry, arg('--baza'));
   }
   if (!igry || !igry.length) { console.log('prohod-igr: игр для прохода нет'); srv?.close(); return; }
+  // Два прохода: обычный телефон (3D, если есть) и телефон без WebGL — там встаёт 2D-запаска из <template id="igra2d">.
   const browser = await chromium.launch();
+  const bez3d = await chromium.launch({ args: ['--disable-webgl', '--disable-webgl2', '--disable-3d-apis'] });
   const itogi = [];
   for (const id of igry) {
     const r = await proyti(browser, base, id);
     console.log(r.stroka);
     itogi.push(r);
+    if (r.est3d) {
+      // Запаска — не игра дня (Р432): её провал — предупреждение в отчёте, проверку не валит.
+      const r2 = await proyti(bez3d, base, id, '2d');
+      if (!r2.ok) { r2.zapaska = true; r2.stroka = r2.stroka.replace(/^провал /, 'внимание'); }
+      console.log(r2.stroka);
+      itogi.push(r2);
+    }
   }
   await browser.close();
+  await bez3d.close();
   srv?.close();
-  const ok = itogi.filter((r) => r.ok).length;
+  const ok = itogi.filter((r) => r.ok || r.zapaska).length;
   const md = [`## Проходчик игр — прошли ${ok} из ${itogi.length} (телефон ${TELEFON})`, '',
     ...itogi.map((r) => `- ${r.stroka}`), '', '<details><summary>Шаги</summary>', '',
     ...itogi.flatMap((r) => [`### ${r.id}`, '', ...r.log.map((l) => `    ${l}`), ...r.oshibki.map((o) => `    ! ${o}`), '']), '</details>', ''];
