@@ -19,10 +19,14 @@ export const chromeJs = (d, muzeyName) => { const c = d.chrome; return c && `win
 // Ключи без кавычек — как в старых страницах: проверка счёта (scripts/staroe-pravilo.py) ищет реестр «awards:{…}».
 export const scoreJs = (d) => `window.MUSEUM_SCORE = ${json(d.score).replace(/"(\w+)":/g, '$1:')};`;
 // Викторина дня: вопросы — из карточки, вёрстка ответов — общая (была в одном inline-скрипте с игрой).
+// Событие rc-igra (Р286 п.3, Р289 п.1): первый ответ — «nachal», последний — исход (верно не меньше половины —
+// «vyigral»). Его ловят rc-privychka.js (кнопка «Поделиться итогом» под викториной) и выключенный счёт rc-igra-schet.js.
 export const quizJs = (d) => `(function(){
   var $ = function(id){return document.getElementById(id);};
   var Q = ${json(d.quiz.voprosy)};
   var box = $('quizBox');
+  var otv = 0, ver = 0;
+  var igra = function(e){ document.dispatchEvent(new CustomEvent('rc-igra', {detail: {e: e, igra: 'viktorina', el: $('quiz') || box}})); };
   Q.forEach(function(it, qi){
     var wrap = document.createElement('div');
     var h = document.createElement('p'); h.className='quiz-q'; h.textContent=(qi+1)+'. '+it.q; wrap.appendChild(h);
@@ -35,6 +39,9 @@ export const quizJs = (d) => `(function(){
         if (oi===it.a){ award('q'+qi,${d.quiz.ball}); exp.textContent='Верно. '+it.e; }
         else { b.classList.add('wrong'); exp.textContent='Не совсем. '+it.e; }
         exp.classList.add('show');
+        if (!otv++) igra('nachal');
+        if (oi===it.a) ver++;
+        if (otv===Q.length) igra(ver*2>=Q.length ? 'vyigral' : 'proigral');
       };
       wrap.appendChild(b); return b;
     });
