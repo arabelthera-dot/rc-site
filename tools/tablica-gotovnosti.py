@@ -22,8 +22,10 @@ data-rc-video, в реестре у выпуска есть horizontal шире 
 «Полный для храповика» — все клетки зелёные, у «Источника» допустима серая (ссылки есть, но не проверены сетью).
 Новый такой день — ::notice::; --zapisat дописывает его в список (убирать из списка машина не умеет — только расти).
 
-РФ-выход (Р550, выключен): --rf-vyhod [socks5h://rf-proxy:1080] или переменная GOTOVNOST_RF_PROXY — ссылки источников
-проверяются через российский выход (PySocks). Выхода нет или он не отвечает — клетка «Источник» серая, не красная.
+РФ-выход (Р550, Р553, включён): ссылки источников проверяются через российский выход socks5h://rf-proxy:1080 (PySocks) —
+где он есть (наш раннер, наш сервер). Другой адрес — --rf-vyhod socks5h://хост:порт или GOTOVNOST_RF_PROXY; выключить —
+--rf-vyhod net. Выхода нет (облако GitHub) — проверка напрямую с чужой точки: открылось — зелёное, не открылось —
+серое, не красное (с чужой точки «не открылось» не доказывает «не открывается у читателя в России»).
 
   python3 tools/tablica-gotovnosti.py --dist dist                       # в сборке
   python3 tools/tablica-gotovnosti.py --live --out /tmp/gotovnost       # по живому сайту
@@ -353,6 +355,7 @@ def otkryt1(u, srok):
 
 
 RF_VYHOD_PO_UMOLCHANIYU = 'socks5h://rf-proxy:1080'
+RF_VYHOD = RF_VYHOD_PO_UMOLCHANIYU  # включатель одной строкой: None — выключить РФ-выход
 
 
 def vklyuchit_rf_vyhod(url):
@@ -374,15 +377,23 @@ def vklyuchit_rf_vyhod(url):
     return None
 
 
+def bez_rf_vyhoda(otvety):
+    """Проверка не из России: открылось — верим, не открылось — серое (с чужой точки отказ ничего не доказывает)."""
+    return {u: (k, pr) if k is not None and k < 400 else (None, f'{k or pr}, без РФ-выхода') for u, (k, pr) in otvety.items()}
+
+
 def proverit_ssylki(vse, srok, byudzhet, potokov, rf_vyhod=None):
     itog = {}
     nachalo = time.time()
+    s_rf = False
     if rf_vyhod:
         beda = vklyuchit_rf_vyhod(rf_vyhod)
-        if beda:  # выхода нет — не красное, а «не проверено»
-            print(f'::warning::tablica-gotovnosti: {beda} — источники не проверены (серые)', file=sys.stderr)
-            return {u: (None, 'нет РФ-выхода') for u in vse}
-        print(f'tablica-gotovnosti: источники — через РФ-выход {urllib.parse.urlsplit(rf_vyhod).hostname}', file=sys.stderr)
+        if beda:  # выхода нет — проверяем напрямую, отказы серые, не красные
+            print(f'::warning::tablica-gotovnosti: {beda} — источники напрямую, не открывшиеся серые', file=sys.stderr)
+        else:
+            s_rf = True
+            print(f'tablica-gotovnosti: источники — через РФ-выход {urllib.parse.urlsplit(rf_vyhod).hostname}',
+                  file=sys.stderr)
     with cf.ThreadPoolExecutor(potokov) as ex:
         bud = {ex.submit(otkryt, u, srok): u for u in vse}
         try:
@@ -394,9 +405,9 @@ def proverit_ssylki(vse, srok, byudzhet, potokov, rf_vyhod=None):
             if u not in itog:
                 f.cancel()
                 itog[u] = (None, 'не успели проверить')
-    print(f'tablica-gotovnosti: ссылок источников {len(vse)}, проверено за {time.time() - nachalo:.0f} с',
-          file=sys.stderr)
-    return itog
+    print(f'tablica-gotovnosti: ссылок источников {len(vse)}, проверено за {time.time() - nachalo:.0f} с'
+          + ('' if s_rf else ' (без РФ-выхода)'), file=sys.stderr)
+    return itog if s_rf else bez_rf_vyhoda(itog)
 
 
 def p_istochnik(ssylki, est, otvety):
@@ -541,6 +552,16 @@ def proba():
         ok = kod == kod_zhdu and len(nv) == novyh_zhdu
         print(f'{"ок " if ok else "БРАК"} проба «{imya}»: {"красный" if kod else "зелёный"}, новых {len(nv)}')
         plokho += not ok
+    sylki = ['https://a.ru/1', 'https://b.ru/2']
+    for imya, otvety, zhdu in [
+        ('без РФ-выхода 404 — серый', bez_rf_vyhoda({sylki[0]: (200, ''), sylki[1]: (404, '')}), SERYJ),
+        ('без РФ-выхода открылось — зелёный', bez_rf_vyhoda({sylki[0]: (200, ''), sylki[1]: (301, '')}), OK),
+        ('с РФ-выходом 404 — красный', {sylki[0]: (200, ''), sylki[1]: (404, '')}, NET),
+    ]:
+        tsvet = p_istochnik(sylki, True, otvety)[0]
+        ok = tsvet == zhdu
+        print(f'{"ок " if ok else "БРАК"} проба «{imya}»: {ZNAK.get(tsvet, tsvet)}')
+        plokho += not ok
     with tempfile.TemporaryDirectory() as t:  # рост: --zapisat дописывает и не убирает
         f = os.path.join(t, 'polnye-dni.json')
         zapisat_spisok(f, {'izobreteniya': {'01-02'}}, [('izobreteniya', '01-03')])
@@ -667,10 +688,13 @@ def main():
     ap.add_argument('--potokov', type=int, default=24)
     ap.add_argument('--zamok', help='храповик: список полных дней (JSON); полный стал неполным — код 1')
     ap.add_argument('--zapisat', action='store_true', help='с --zamok: дописать новые полные дни в список')
-    ap.add_argument('--rf-vyhod', nargs='?', const=RF_VYHOD_PO_UMOLCHANIYU, default=os.environ.get('GOTOVNOST_RF_PROXY') or None,
-                    help='проверять источники через РФ-выход socks5h:// (выключено; включение — флаг или GOTOVNOST_RF_PROXY)')
+    ap.add_argument('--rf-vyhod', nargs='?', const=RF_VYHOD_PO_UMOLCHANIYU,
+                    default=os.environ.get('GOTOVNOST_RF_PROXY') or RF_VYHOD,
+                    help='РФ-выход socks5h:// для проверки источников (включён: ' + str(RF_VYHOD) + '; net — выключить)')
     ap.add_argument('--proba', action='store_true', help='пробы храповика')
     a = ap.parse_args()
+    if a.rf_vyhod in ('net', 'no', '0'):
+        a.rf_vyhod = None
     if a.proba:
         return proba()
     try:
