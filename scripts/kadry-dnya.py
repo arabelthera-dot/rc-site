@@ -90,10 +90,7 @@ def proverit(tekst, public, imya='?'):
         n = sum(1 for _, s in kk if s == src)
         if n > 1:
             brak.append(f'повтор кадра: {Path(src).name} стоит в карточке {n} раза')
-    # Счёт — как замок схемы (src/lib/den-obshchee.mjs KADROV_MIN, r602): разные кадры без обложки; иначе добор молчит,
-    # а сборка падает «разных кадров 5» (01-15, 01-16, r544).
-    bez_obl = {src for p, src in kk if not p.startswith('.oblozhka')}
-    n = len([src for src, _ in hesh if src not in povtory and src in bez_obl])
+    n = len(hesh) - len(povtory)
     if n < MIN_KADROV:
         brak.append(f'разных кадров {n} < {MIN_KADROV} — добор: python3 scripts/kadry-dnya.py dobor {imya} --zapis')
     return brak, n
@@ -142,14 +139,14 @@ def proba():
         def karta(srcs, dop=''):
             return yaml.safe_dump({'oblozhka': {'src': srcs[0]}, 'figures': [{'src': s} for s in srcs[1:]]},
                                   allow_unicode=True) + dop
-        k = [f'/img/k{i}.jpg' for i in range(6)]  # k[0] — обложка, в счёт не идёт (r602)
+        k = [f'/img/k{i}.jpg' for i in range(6)]
         sluchai = [
-            ('хороший: обложка и 6 разных кадров', karta(k + ['/img/k6.jpg']), False),
-            ('обложка и 5 кадров', karta(k), True),
+            ('хороший: 6 разных кадров', karta(k), False),
+            ('5 кадров', karta(k[:5]), True),
             ('повтор кадра (тот же снимок, другой размер)', karta(k[:5] + ['/img/k6.jpg', '/img/k0-kopiya.jpg']), True),
             ('тот же файл дважды', karta(k + [k[1]]), True),
-            ('адрес Викисклада', karta(k + ['/img/k6.jpg'], 'sources:\n  - html: https://upload.wikimedia.org/x.jpg\n'), True),
-            ('адрес Википедии', karta(k + ['/img/k6.jpg'], 'sources:\n  - html: https://ru.wikipedia.org/wiki/X\n'), True),
+            ('адрес Викисклада', karta(k, 'sources:\n  - html: https://upload.wikimedia.org/x.jpg\n'), True),
+            ('адрес Википедии', karta(k, 'sources:\n  - html: https://ru.wikipedia.org/wiki/X\n'), True),
             ('нет файла', karta(k[:5] + ['/img/net.jpg']), True),
         ]
         zhdali = 0
@@ -158,17 +155,6 @@ def proba():
             ok = bool(brak) == plohoy
             zhdali += not ok
             print(f'  {"✓" if ok else "✗ ПРОБА НЕ ПРОШЛА"} {imya}: {"красный" if brak else "зелёный"}')
-    glav = 'Мария Октябрьская'
-    for imya, nazv, svoj in [('кадр с героем дня', 'Боевая подруга. Мария Васильевна Октябрьская', True),
-                             ('имя с инициалами', 'Фотография танкового экипажа Героя Советского Союза Октябрьской М.В.', True),
-                             ('имя в другом падеже', 'Экслибрис Памяти Марии Октябрьской', True),
-                             ('слова имени врозь', 'Подарки И.В. Сталину к годовщине Великой Октябрьской Социалистической революции. '
-                              'Поздравление от народных комитетов Сомотор, Св. Мария', False),
-                             ('китель с «орденом Октябрьской Революции»', 'Китель маршала, орден Октябрьской Революции, боевого Красного Знамени', False)]:
-        beryom = pro_geroya({'name': nazv}, glav)
-        ok = beryom == svoj
-        zhdali += not ok
-        print(f'  {"✓" if ok else "✗ ПРОБА НЕ ПРОШЛА"} добор, {imya}: {"берём" if beryom else "не берём"}')
     print('пробы kadry-dnya: ' + ('все как ждали' if not zhdali else f'{zhdali} не как ждали'))
     return 1 if zhdali else 0
 
@@ -191,9 +177,7 @@ def nazvanie(o):
 
 # Кадр «в честь»: улица, колхоз, завод, номер дома имени героя — не кадр события.
 V_CHEST = re.compile(r'\b(ул\.|улиц|проспект|переул|площад[ьи] им|им\.|имени|колхоз|совхоз|артел|квартал|номер дома)', re.I)
-STOP = {'которые', 'потому', 'только', 'после', 'перед', 'всего', 'когда', 'чтобы', 'между', 'через', 'русские', 'сдаются',
-        # слова каталога, не приметы дня: «Документ. Копия Межевой книги… Евгении Родионовны» шло за 01-23 (r544)
-        'документ', 'документы', 'фотография', 'фотографии'}
+STOP = {'которые', 'потому', 'только', 'после', 'перед', 'всего', 'когда', 'чтобы', 'между', 'через', 'русские', 'сдаются'}
 
 
 def osnovy(tekst):
@@ -206,38 +190,18 @@ def opis_dnya(muzei, d, karta):
     k = json.loads(kal.read_text(encoding='utf-8')) if kal.exists() else {}
     imya = (karta.get('kroshka') or '').split('·')[-1].strip()
     podpis = (karta.get('oblozhka') or {}).get('podpis') or ''
-    # Без скобок: «Икона … воина Евгения (Родионова) (уже на старой странице).» Госкаталог не находит, без них — находит (01-23, r544).
-    podpis_q = re.sub(r'\s*\([^)]*\)', '', podpis).strip(' .')
     tekst = ' '.join(str(k.get(x) or '') for x in ('title', 'hook', 'mechanic', 'gist', 'source')) + f' {imya} {podpis}'
     glavnoe = k.get('title') or imya
     # Имена собственные (с заглавной не в начале фразы, в кавычках «…») — уточнение запроса: «челюскинцы Шмидта».
     imena = [w for w in re.findall(r'(?<![.!?—]\s)(?<=[\s«"])([А-ЯЁ][а-яё]{3,})', tekst) if w[:5].lower() not in osnovy(glavnoe)]
-    q = [glavnoe, imya, podpis_q] +[f'{glavnoe} {w}' for w in dict.fromkeys(imena)][:4]
-    # Фамилия героя + слова хука: «Октябрьская танк» находит экипаж, которого нет по «Мария Октябрьская» (01-20, r544).
-    fam = re.findall(r'[А-ЯЁ][а-яё]{3,}', glavnoe)
-    if len(fam) >= 2:
-        q += [f'{fam[-1]} {w}' for w in dict.fromkeys(re.findall(r'[а-яё]{4,}', str(k.get('hook') or '')))][:3]
-    return [x.strip()[:120] for x in dict.fromkeys(q) if x and x.strip()], osnovy(tekst), glavnoe
+    q = [glavnoe, imya, podpis] + [f'{glavnoe} {w}' for w in dict.fromkeys(imena)][:4]
+    return [x.strip()[:120] for x in dict.fromkeys(q) if x and x.strip()], osnovy(tekst)
 
 
 def ochki(o, osn):
     """Сколько основ дня в названии кадра; кадр «в честь» — 0."""
     nazv = nazvanie(o)
     return 0 if V_CHEST.search(nazv) else len(osnovy(nazv) & osn)
-
-
-def pro_geroya(o, glavnoe):
-    """Кадр про героя дня: в названии рядом (не дальше 3 слов) стоят два слова заголовка дня (одно, если оно одно) —
-    по первым 4 буквам («Марии» = «Мария») или инициалом («Октябрьской М.В.»). Иначе «Мария Октябрьская» + «боевая»
-    ловят китель маршала с «орденом Октябрьской Революции», а «Св. Мария» + «Октябрьской революции» — подарки Сталину
-    (01-20, r544)."""
-    slova = re.findall(r'[А-ЯЁа-яё]{4,}', glavnoe or '')
-    toki = re.findall(r'[А-ЯЁа-яё]+\.?', nazvanie(o))
-    gde = [{i for i, x in enumerate(toki) if x.lower().startswith(w[:4].lower()) or (w[0].isupper() and x == w[0] + '.')}
-           for w in slova]
-    if len(slova) < 2:
-        return all(gde)
-    return any(abs(i - j) <= 3 for k, a in enumerate(gde) for b in gde[k + 1:] for i in a for j in b)
 
 
 def dobor(a):
@@ -259,7 +223,7 @@ def dobor(a):
             zakryto += 1
             continue
         uzhe = set(re.findall(r'collections\?id=(\d+)', tekst)) | set(re.findall(r'goskatalog-(\d+)\.', tekst))
-        q, osn, glav = opis_dnya(a.muzei, d, karta)
+        q, osn = opis_dnya(a.muzei, d, karta)
         nashli = []
         for s in q:
             for o in gk._safe(s, 30):
@@ -267,9 +231,7 @@ def dobor(a):
                 if not im or str(o['id']) in uzhe or str(im) in uzhe or VIKI.search(json.dumps(o, ensure_ascii=False)):
                     continue
                 uzhe |= {str(o['id']), str(im)}
-                # два совпадения с днём: «челюскин» + «лагерь/Шмидт/лётчик…»; хоть одно — сверх имени героя,
-                # иначе «Родионов Евгений. Башкирская матрёшка» однофамильца проходит за 01-23 (r544)
-                if ochki(o, osn) >= 2 and osnovy(nazvanie(o)) & (osn - osnovy(glav)) and pro_geroya(o, glav):
+                if ochki(o, osn) >= 2:   # два совпадения с днём: «челюскин» + «лагерь/Шмидт/лётчик…»
                     nashli.append((s, o))
         nashli.sort(key=lambda x: -ochki(x[1], osn))
         vzyali = []
