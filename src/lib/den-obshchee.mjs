@@ -133,7 +133,7 @@ export const AUDIO_MIN_SEK = 30;
 const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message });
 // Общий замок дня (r602). На любом адресе: номер ответа викторины — в списке. На живом адресе (adres: den):
 // head.sobytie+god, обложка, факты 10 + 5 с отрывком/страницей/ссылкой/пометкой, кадры ≥ KADROV_MIN (долг — dolgKadrov),
-// аудиогид (файл есть, ≥30 с), ролик; portrety — портретов ≤ трети кадров. dolgKadrov / dolgVTekste — { 'ММ-ДД': N }: снимок долга, ниже N нельзя.
+// аудиогид (файл есть, ≥30 с), ролик, у каждого источника ссылка (долг — src/data/dyry-dolg.json); portrety — портретов ≤ трети кадров. dolgKadrov / dolgVTekste — { 'ММ-ДД': N }: снимок долга, ниже N нельзя.
 export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portrety = false } = {}) {
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) iss(ctx, ['quiz', 'voprosy', i, 'a'], 'номер ответа вне списка'); });
   if (d.adres !== 'den') return;
@@ -179,7 +179,17 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portr
   }
   // ЗАМОК ролика (r602): на живом адресе ролик обязателен.
   if (!d.video) iss(ctx, ['video'], 'на адресе den нужен ролик (video)');
+  // ЗАМОК источников (Р550): у каждого пункта sources есть ссылка — href или <a href="http…"> в html. Долг — снимок
+  // src/data/dyry-dolg.json на 05.11.2026: пунктов без ссылки не больше, чем в долге; стало меньше — снять строку.
+  const bez = d.sources.filter((s) => !istochnikSoSsylkoy(s)), dolgI = DOLG_DYR['istochnik-bez-ssylki']?.[d.muzei]?.[d.key] ?? 0;
+  if (bez.length > dolgI)
+    iss(ctx, ['sources'], `ЗАМОК источников (Р550): пунктов без ссылки ${bez.length}${dolgI ? `, в долге ${dolgI} — больше нельзя` : ''} — у источника нужен адрес (href или <a href> в html): ${bez.map((s) => (s.title ?? s.html).replace(/<[^>]+>/g, '').slice(0, 50)).join(' | ')}`);
+  else if (bez.length < dolgI)
+    console.log(`::warning::${d.muzei}/${d.key}: пунктов источников без ссылки ${bez.length} < ${dolgI} — снять/уменьшить строку долга (src/data/dyry-dolg.json)`);
 }
+// Пункт источника со ссылкой: href или в разметке html есть <a href="http(s)://…">.
+export const istochnikSoSsylkoy = (s) => Boolean(s.href) || /href\s*=\s*["']?https?:\/\//i.test(s.html ?? '');
+const DOLG_DYR = JSON.parse(fs.readFileSync('src/data/dyry-dolg.json', 'utf8'));
 
 // Все карточки: [{ muzei, key, ... }]. Схема — по папке музея (skhemy[<музей>]); нет схемы у музея — ошибка.
 // Имя файла и папки должны совпадать с key и muzei карточки.

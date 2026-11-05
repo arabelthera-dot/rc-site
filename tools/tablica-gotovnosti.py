@@ -15,11 +15,22 @@ dist/muzei/<музей>/den/01-ДД/index.html и кладёт рядом таб
 (без imagehash — совпадение файла по содержимому). Ролики — по video/registry.json: у страницы есть
 data-rc-video, в реестре у выпуска есть horizontal шире высоты и vertical выше ширины.
 
-Только отчёт: код выхода всегда 0, сборку не роняет. Откат — убрать шаг из package.json и этот файл.
+Без --zamok только отчёт: код выхода всегда 0, сборку не роняет. Откат — убрать шаг из package.json и этот файл.
+
+Храповик полных дней (Р550, --zamok data/gotovnost/polnye-dni.json): день из списка получил красную клетку — код 1
+и ::error:: (полный день стал неполным — заявка красная). Серая клетка не краснит: облако без сети — серое, не красное.
+«Полный для храповика» — все клетки зелёные, у «Источника» допустима серая (ссылки есть, но не проверены сетью).
+Новый такой день — ::notice::; --zapisat дописывает его в список (убирать из списка машина не умеет — только расти).
+
+РФ-выход (Р550, выключен): --rf-vyhod [socks5h://rf-proxy:1080] или переменная GOTOVNOST_RF_PROXY — ссылки источников
+проверяются через российский выход (PySocks). Выхода нет или он не отвечает — клетка «Источник» серая, не красная.
 
   python3 tools/tablica-gotovnosti.py --dist dist                       # в сборке
   python3 tools/tablica-gotovnosti.py --live --out /tmp/gotovnost       # по живому сайту
   python3 tools/tablica-gotovnosti.py --live --bez-seti --out /tmp/g    # без проверки источников
+  python3 tools/tablica-gotovnosti.py --dist dist --bez-seti --zamok data/gotovnost/polnye-dni.json   # храповик в CI
+  python3 tools/tablica-gotovnosti.py --dist dist --rf-vyhod --zamok data/gotovnost/polnye-dni.json --zapisat
+  python3 tools/tablica-gotovnosti.py --proba                           # пробы храповика на выдуманных строках
 """
 import argparse
 import concurrent.futures as cf
@@ -32,6 +43,7 @@ import io
 import json
 import os
 import re
+import socket
 import ssl
 import sys
 import time
@@ -340,9 +352,37 @@ def otkryt1(u, srok):
     return None, poslednee
 
 
-def proverit_ssylki(vse, srok, byudzhet, potokov):
+RF_VYHOD_PO_UMOLCHANIYU = 'socks5h://rf-proxy:1080'
+
+
+def vklyuchit_rf_vyhod(url):
+    """Весь сокетный выход процесса — через SOCKS5 (socks5h: имя сайта разрешает выход). → None или почему нельзя."""
+    u = urllib.parse.urlsplit(url)
+    if u.scheme not in ('socks5', 'socks5h') or not u.hostname:
+        return f'РФ-выход {url}: нужен адрес socks5h://хост:порт'
+    try:
+        import socks  # PySocks
+    except ImportError:
+        return 'РФ-выход: нет PySocks (pip install pysocks)'
+    try:
+        socket.create_connection((u.hostname, u.port or 1080), timeout=3).close()
+    except OSError as e:
+        return f'РФ-выход {u.hostname}:{u.port or 1080} не отвечает ({type(e).__name__})'
+    socks.set_default_proxy(socks.SOCKS5, u.hostname, u.port or 1080, rdns=u.scheme == 'socks5h',
+                            username=u.username, password=u.password)
+    socket.socket = socks.socksocket
+    return None
+
+
+def proverit_ssylki(vse, srok, byudzhet, potokov, rf_vyhod=None):
     itog = {}
     nachalo = time.time()
+    if rf_vyhod:
+        beda = vklyuchit_rf_vyhod(rf_vyhod)
+        if beda:  # выхода нет — не красное, а «не проверено»
+            print(f'::warning::tablica-gotovnosti: {beda} — источники не проверены (серые)', file=sys.stderr)
+            return {u: (None, 'нет РФ-выхода') for u in vse}
+        print(f'tablica-gotovnosti: источники — через РФ-выход {urllib.parse.urlsplit(rf_vyhod).hostname}', file=sys.stderr)
     with cf.ThreadPoolExecutor(potokov) as ex:
         bud = {ex.submit(otkryt, u, srok): u for u in vse}
         try:
@@ -417,7 +457,101 @@ def poschitat(ist, set_):
             st['kletki']['istochnik'] = p_istochnik(ss, est, otvety)
             st['istochniki'] = {u: otvety.get(u) for u in ss} if otvety else ss
         st['polnyj'] = all(st['kletki'][k][0] == OK for k, _ in KOLONKI)
+        st['polnyj_zamok'] = polnyj_dlya_zamka(st['kletki'])
     return stroki
+
+
+# ── Храповик полных дней (Р550) ──
+
+def polnyj_dlya_zamka(kl):
+    """Все клетки зелёные; у «Источника» допустима серая — ссылки есть, сеть их не проверила."""
+    return all(kl[k][0] == OK or (k == 'istochnik' and kl[k][0] == SERYJ) for k, _ in KOLONKI)
+
+
+def chitat_spisok(fajl):
+    if not os.path.exists(fajl):
+        return {}
+    with open(fajl, encoding='utf-8') as f:
+        return {m: set(v) for m, v in json.load(f).items() if not m.startswith('_')}
+
+
+SHAPKA_SPISKA = ('Храповик полных дней января (Р550, tools/tablica-gotovnosti.py --zamok). День из списка получил красную '
+                 'клетку таблицы готовности — заявка красная. Список только растёт: новый полный день дописывает машина '
+                 '(.github/workflows/gotovnost-hrapovik.yml). Убрать день — только словом Сергея.')
+
+
+def sverit_so_spiskom(stroki, spisok):
+    """→ (сломались [(музей, день, причины)], новые [(музей, день)])."""
+    slomalis, novye = [], []
+    for st in stroki:
+        v_spiske = st['den'] in spisok.get(st['muzej'], ())
+        if v_spiske:
+            krasnye = [f'{z}: {st["kletki"][k][1]}' for k, z in KOLONKI if st['kletki'][k][0] == NET]
+            if krasnye:
+                slomalis.append((st['muzej'], st['den'], krasnye))
+        elif st['polnyj_zamok']:
+            novye.append((st['muzej'], st['den']))
+    return slomalis, novye
+
+
+def zapisat_spisok(fajl, spisok, novye):
+    for m, d in novye:
+        spisok.setdefault(m, set()).add(d)
+    os.makedirs(os.path.dirname(fajl) or '.', exist_ok=True)
+    with open(fajl, 'w', encoding='utf-8') as f:
+        json.dump({'_shapka': SHAPKA_SPISKA, **{m: sorted(spisok[m]) for m, _ in MUZEI if m in spisok}},
+                  f, ensure_ascii=False, indent=2)
+        f.write('\n')
+
+
+def hrapovik(stroki, fajl, zapis):
+    """Код выхода храповика: 1 — полный день стал неполным."""
+    spisok = chitat_spisok(fajl)
+    slomalis, novye = sverit_so_spiskom(stroki, spisok)
+    for m, d, pr in slomalis:
+        print(f'::error::tablica-gotovnosti: {m} {d} был полным ({fajl}), стал неполным — ' + '; '.join(pr))
+    for m, d in novye:
+        print(f'::notice::tablica-gotovnosti: {m} {d} — полный день, в храповик ({fajl}) его допишет машина после слияния')
+    if zapis and novye:
+        zapisat_spisok(fajl, spisok, novye)
+        print(f'tablica-gotovnosti: в храповик дописано {len(novye)} → {fajl}')
+    print(f'tablica-gotovnosti: храповик — в списке {sum(map(len, spisok.values()))}, сломалось {len(slomalis)}, новых {len(novye)}')
+    return 1 if slomalis else 0
+
+
+def proba():
+    """Пробы храповика на выдуманных строках: ждём красный, зелёный, серый-не-красный, рост списка."""
+    import tempfile
+    zel = {k: (OK, '') for k, _ in KOLONKI}
+    def stroka(d, **izm):
+        kl = dict(zel, **{k: (v, 'проба') for k, v in izm.items()})
+        return {'muzej': 'izobreteniya', 'den': d, 'kletki': kl, 'polnyj_zamok': polnyj_dlya_zamka(kl)}
+    proby = [  # имя, строки, список, ждём код, ждём новых
+        ('полный остался полным', [stroka('01-02')], {'izobreteniya': {'01-02'}}, 0, 0),
+        ('полный стал без кадров — красный', [stroka('01-02', kadry=NET)], {'izobreteniya': {'01-02'}}, 1, 0),
+        ('источник серый без сети — не красный', [stroka('01-02', istochnik=SERYJ)], {'izobreteniya': {'01-02'}}, 0, 0),
+        ('источник без ссылок — красный', [stroka('01-02', istochnik=NET)], {'izobreteniya': {'01-02'}}, 1, 0),
+        ('новый полный день — в список', [stroka('01-02'), stroka('01-03', istochnik=SERYJ)], {'izobreteniya': {'01-02'}}, 0, 1),
+        ('неполный не в списке — не трогаем', [stroka('01-04', v916=NET)], {}, 0, 0),
+    ]
+    plokho = 0
+    for imya, stroki, spisok, kod_zhdu, novyh_zhdu in proby:
+        sl, nv = sverit_so_spiskom(stroki, spisok)
+        kod = 1 if sl else 0
+        ok = kod == kod_zhdu and len(nv) == novyh_zhdu
+        print(f'{"ок " if ok else "БРАК"} проба «{imya}»: {"красный" if kod else "зелёный"}, новых {len(nv)}')
+        plokho += not ok
+    with tempfile.TemporaryDirectory() as t:  # рост: --zapisat дописывает и не убирает
+        f = os.path.join(t, 'polnye-dni.json')
+        zapisat_spisok(f, {'izobreteniya': {'01-02'}}, [('izobreteniya', '01-03')])
+        ok = chitat_spisok(f) == {'izobreteniya': {'01-02', '01-03'}}
+        print(f'{"ок " if ok else "БРАК"} проба «запись списка»: {sorted(chitat_spisok(f).get("izobreteniya", []))}')
+        plokho += not ok
+    if plokho:
+        print(f'::error::tablica-gotovnosti: {plokho} проб храповика не сработали')
+        return 1
+    print('tablica-gotovnosti: пробы храповика прошли')
+    return 0
 
 
 ZNAK = {OK: '✓', NET: '✗', SERYJ: '?'}
@@ -531,7 +665,14 @@ def main():
     ap.add_argument('--srok', type=float, default=12, help='секунд на одну ссылку')
     ap.add_argument('--byudzhet', type=float, default=150, help='секунд на все ссылки')
     ap.add_argument('--potokov', type=int, default=24)
+    ap.add_argument('--zamok', help='храповик: список полных дней (JSON); полный стал неполным — код 1')
+    ap.add_argument('--zapisat', action='store_true', help='с --zamok: дописать новые полные дни в список')
+    ap.add_argument('--rf-vyhod', nargs='?', const=RF_VYHOD_PO_UMOLCHANIYU, default=os.environ.get('GOTOVNOST_RF_PROXY') or None,
+                    help='проверять источники через РФ-выход socks5h:// (выключено; включение — флаг или GOTOVNOST_RF_PROXY)')
+    ap.add_argument('--proba', action='store_true', help='пробы храповика')
     a = ap.parse_args()
+    if a.proba:
+        return proba()
     try:
         if a.live:
             ist, otkuda = Zhivoj(a.live), 'живому сайту ' + a.live
@@ -539,10 +680,12 @@ def main():
             koren = a.dist or 'dist'
             if not os.path.isdir(os.path.join(koren, 'muzei')):
                 print(f'tablica-gotovnosti: нет {koren}/muzei — таблица пропущена')
-                return 0
+                if a.zamok:
+                    print(f'::error::tablica-gotovnosti: храповику нечего мерить — нет {koren}/muzei')
+                return 1 if a.zamok else 0
             ist, otkuda = Dist(koren), 'собранным страницам'
         out = a.out or os.path.join(a.dist or 'dist', PUT_TABLICY)
-        stroki = poschitat(ist, None if a.bez_seti else (a.srok, a.byudzhet, a.potokov))
+        stroki = poschitat(ist, None if a.bez_seti else (a.srok, a.byudzhet, a.potokov, a.rf_vyhod))
         sverka = 'по pHash (Хэмминг ≤ 8)' if PHASH else 'по содержимому файлов (imagehash нет)'
         polnyh, vsego, seryh = zapisat(stroki, out, otkuda, sverka)
         print(f'tablica-gotovnosti: полных дней {polnyh} из {vsego}; красного нет, но не проверено — ещё {seryh} → {out}')
@@ -550,8 +693,13 @@ def main():
             if not st['polnyj']:
                 bez = [f'{z}: {st["kletki"][k][1]}' for k, z in KOLONKI if st['kletki'][k][0] != OK]
                 print(f'  {st["muzej"]} {st["den"]} — ' + '; '.join(bez))
-    except Exception as e:  # только отчёт — сборку не роняем
+        if a.zamok:
+            return hrapovik(stroki, a.zamok, a.zapisat)
+    except Exception as e:  # только отчёт — сборку не роняем; храповик без замера — красный (нечем доказать, что цело)
         print(f'tablica-gotovnosti: сбой, таблица не пересчитана: {e!r}', file=sys.stderr)
+        if a.zamok:
+            print(f'::error::tablica-gotovnosti: храповик не смог померить: {e!r}')
+            return 1
     return 0
 
 
