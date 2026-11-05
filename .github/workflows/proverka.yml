@@ -300,6 +300,19 @@ jobs:
       - name: ramka-proverki — строгие проверки дней рамки
         timeout-minutes: 2
         run: node scripts/ramka-proverki.mjs --proba && node scripts/ramka-proverki.mjs --dist dist --kadry /tmp/kadry-ramka.json --glazami /tmp/glazami/tablica.tsv
+      # Проходчик игр (Р204, задание p544-b, 05.11.2026): игра задетого заявкой дня проходится пальцем на телефоне —
+      # 3D встаёт и поворачивается, 2D доходит до финала; провал 2D-запаски у 3D-дня — только предупреждение (Р432).
+      # На пробе (Р520): пока отчёт; строгость — переменная репозитория PROHOD_IGR_STROGO=1.
+      - name: prohod-igr — игры задетых дней проходятся пальцем
+        continue-on-error: ${{ vars.PROHOD_IGR_STROGO != '1' }}
+        timeout-minutes: 10
+        run: |
+          node -e "require('playwright').chromium.launch().then(b => b.close())" 2>/dev/null || {
+            echo "::error::prohod-igr: браузер не установлен (шаг «glazami — браузер» не справился) — игры не проверены. Перезапуск: gh run rerun --failed"
+            exit 1; }
+          rc=0; node scripts/prohodchik-igr.mjs --baza origin/${{ github.base_ref || 'main' }} || rc=$?
+          cat /tmp/prohod-igr/otchet.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          exit $rc
       # Сторож «Найти день по дате» (18.10.2026): список дней на главной не задваивается при медленной сети.
       # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.
       # Выключатель — переменная репозитория PODATE_STROGO=0 (вернуть мягкость без отката кода).
