@@ -1,0 +1,33 @@
+{
+  "title": "История в 49 секунд",
+  "intro": "Лёд раздавил корабль — и 104 человека со льдины вынесли лётчики, всех до одного",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns15jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/15jan-chelyuskincy/day-15jan-chelyuskincy.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-15jan-chelyuskincy.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.1,
+    "mb": 13.6
+  },
+  "vertical": {
+    "file": "nesdayutsya/15jan-chelyuskincy/day-15jan-chelyuskincy-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-15jan-chelyuskincy-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.1,
+    "mb": 13.6
+  },
+  "poster": {
+    "file": "nesdayutsya/15jan-chelyuskincy/day-15jan-chelyuskincy-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-15jan-chelyuskincy-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/15jan-chelyuskincy/day-15jan-chelyuskincy-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-15jan-chelyuskincy-9x16-poster.jpg",
+    "v": 1
+  }
+}
