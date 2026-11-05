@@ -1,0 +1,33 @@
+{
+  "title": "История в 57 секунд",
+  "intro": "Отравленные газом защитники Осовца поднялись в контратаку — и немцы бежали от тех, кто по всем законам уже не мог подняться.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41876731468) из сценария days/ns06jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/06jan-osovets/day-06jan-osovets.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-06jan-osovets.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 56.6,
+    "mb": 14.5
+  },
+  "vertical": {
+    "file": "nesdayutsya/06jan-osovets/day-06jan-osovets-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-06jan-osovets-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 56.6,
+    "mb": 14.7
+  },
+  "poster": {
+    "file": "nesdayutsya/06jan-osovets/day-06jan-osovets-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-06jan-osovets-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/06jan-osovets/day-06jan-osovets-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-06jan-osovets-9x16-poster.jpg",
+    "v": 1
+  }
+}

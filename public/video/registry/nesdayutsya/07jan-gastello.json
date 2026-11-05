@@ -1,0 +1,33 @@
+{
+  "title": "История в 52 секунды",
+  "intro": "Самолёт стал последним снарядом экипажа",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41877564547) из сценария days/ns07jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/07jan-gastello/day-07jan-gastello.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-07jan-gastello.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 51.7,
+    "mb": 12.9
+  },
+  "vertical": {
+    "file": "nesdayutsya/07jan-gastello/day-07jan-gastello-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-07jan-gastello-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 51.7,
+    "mb": 12.4
+  },
+  "poster": {
+    "file": "nesdayutsya/07jan-gastello/day-07jan-gastello-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-07jan-gastello-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/07jan-gastello/day-07jan-gastello-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-07jan-gastello-9x16-poster.jpg",
+    "v": 1
+  }
+}
