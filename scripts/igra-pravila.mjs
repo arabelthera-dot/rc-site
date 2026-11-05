@@ -18,6 +18,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
 import { assemble } from '../src/lib/anketa.mjs';
 
 const FULL = 'src/data/full-pages';
@@ -113,6 +114,9 @@ export function oshibkiPravil(html) {
   return o;
 }
 
+// Ниже — запуск из командной строки. При import { estIgra } (проходчики игр) не выполняется: иначе импорт
+// печатал бы отчёт по всем музеям и мог завершить чужой процесс кодом 1.
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
 if (process.argv.includes('--proba')) {
   const ok = '<link rel="stylesheet" href="../../assets/igra-pravila.css">';
   const pravila = (shagi) => `<div class="igra-pravila" data-igra-pravila><h2>Как играть</h2><ol class="igra-pravila-shagi">${shagi}</ol></div>`;
@@ -249,4 +253,5 @@ console.log(`igra-pravila: изменено в заявке страниц ${izm
 if (krasnye.length) {
   for (const k of krasnye) console.log(`::error::${k} — у игры нет инструкции «Как играть» (Р199, Р201, 04-build §5-бис; разметка — в шапке public/assets/igra-pravila.css)`);
   process.exit(1);
+}
 }

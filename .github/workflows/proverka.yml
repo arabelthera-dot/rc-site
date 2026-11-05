@@ -207,6 +207,22 @@ jobs:
         run: |
           python3 -m venv /tmp/kp && /tmp/kp/bin/pip install -q --disable-pip-version-check pillow imagehash 'opencv-python-headless==4.10.0.84' || true
           /tmp/kp/bin/python tools/kadry-povtory.py dist --svod "$GITHUB_STEP_SUMMARY" || true
+      # Храповик полных дней (Р550, Сергей 05.11.2026: «не уходи в заплатки и по автоматизации действуй»): день из
+      # data/gotovnost/polnye-dni.json получил красную клетку таблицы готовности — заявка красная. Серая (не проверено) —
+      # не краснит. Список растёт сам: .github/workflows/gotovnost-hrapovik.yml после слияния. Пробы — --proba.
+      # РФ-выход для «Источник открывается» выключен: GOTOVNOST_RF=1 и секрет RF_PROXY (socks5h://) — проверка через него;
+      # без выхода (облако GitHub) клетка серая. Выключатель храповика — GOTOVNOST_HRAPOVIK_STROGO=0. Откат — удалить шаг.
+      - name: gotovnost-hrapovik — полный день не стал неполным
+        if: always()
+        continue-on-error: ${{ format('{0}', vars.GOTOVNOST_HRAPOVIK_STROGO) == '0' }}
+        timeout-minutes: 8
+        env:
+          GOTOVNOST_RF_PROXY: ${{ vars.GOTOVNOST_RF == '1' && secrets.RF_PROXY || '' }}
+        run: |
+          python3 -m venv /tmp/gt && /tmp/gt/bin/pip install -q --disable-pip-version-check pillow imagehash pysocks
+          /tmp/gt/bin/python tools/tablica-gotovnosti.py --proba
+          set=--bez-seti; [ -n "$GOTOVNOST_RF_PROXY" ] && set=
+          /tmp/gt/bin/python tools/tablica-gotovnosti.py --dist dist $set --out /tmp/gotovnost --zamok data/gotovnost/polnye-dni.json
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
@@ -283,6 +299,19 @@ jobs:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
           PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
         run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
+      # Проходчик игр (Р204, задание p544-b, 05.11.2026): игра задетого заявкой дня проходится пальцем на телефоне —
+      # 3D встаёт и поворачивается, 2D доходит до финала; провал 2D-запаски у 3D-дня — только предупреждение (Р432).
+      # На пробе (Р520): пока отчёт; строгость — переменная репозитория PROHOD_IGR_STROGO=1.
+      - name: prohod-igr — игры задетых дней проходятся пальцем
+        continue-on-error: ${{ vars.PROHOD_IGR_STROGO != '1' }}
+        timeout-minutes: 10
+        run: |
+          node -e "require('playwright').chromium.launch().then(b => b.close())" 2>/dev/null || {
+            echo "::error::prohod-igr: браузер не установлен (шаг «glazami — браузер» не справился) — игры не проверены. Перезапуск: gh run rerun --failed"
+            exit 1; }
+          rc=0; node scripts/prohodchik-igr.mjs --baza origin/${{ github.base_ref || 'main' }} || rc=$?
+          cat /tmp/prohod-igr/otchet.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          exit $rc
       # Сторож «Найти день по дате» (18.10.2026): список дней на главной не задваивается при медленной сети.
       # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.
       # Выключатель — переменная репозитория PODATE_STROGO=0 (вернуть мягкость без отката кода).

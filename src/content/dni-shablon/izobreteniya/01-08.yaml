@@ -550,10 +550,21 @@ figures:
     height: 725
     klass: portret
 sources:
-  - html: rgo.ru
-  - html: histrf.ru
-  - html: tvzvezda.ru
-  - html: tass.ru
+  - href: https://cyberleninka.ru/article/n/s-o-makarov-f-f-vrangel-i-ermak
+    title: '«Полярные чтения на ледоколе „Красин“» · В. Г. Смирнов, «С. О. Макаров, Ф. Ф. Врангель и „Ермак“»'
+    note: '2014, по документам РГАВМФ — как Макаров добился постройки «Ермака».'
+  - href: https://www.rgo.ru/ru/article/doroga-vo-ldah-500-let-severnomu-morskomu-puti
+    title: 'Русское географическое общество · «Дорога во льдах — 500 лет Северному морскому пути»'
+    note: '«Ермак» и Макаров в истории Севморпути.'
+  - href: https://icebreakers.tass.ru/dolgij-put-na-sever/ot-ermaka-do-sovremennyh-atomohodov
+    title: 'ТАСС · «Прошлое и будущее Северного морского пути»: от «Ермака» до атомоходов'
+    note: 'спецпроект ТАСС о ледоколах, начиная с «Ермака».'
+  - href: https://cyberleninka.ru/article/n/uchastie-ledokola-ermak-v-geroicheskoy-oborone-leningrada
+    title: '«Полярные чтения на ледоколе „Красин“» · В. В. Дремлюг, «Участие ледокола „Ермак“ в героической обороне Ленинграда»'
+    note: '2014.'
+  - href: https://cyberleninka.ru/article/n/relikvii-osvoeniya-arktiki
+    title: '«Военно-исторический журнал» · Е. В. Овсянникова (ЦВММ), «Реликвии освоения Арктики»'
+    note: '2018.'
 kuda:
   - lbl: Следующий день
     href: day-09jan-blinov.html

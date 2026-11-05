@@ -5,7 +5,9 @@
 //   2) дни общего шаблона src/content/dni-shablon/<музей>/ММ-ДД.yaml: запасная пара video.poster ↔ video.mp4 из HTML
 //      и выпуск video.klyuch в реестре (его пары — п.1);
 //   3) движок public/assets/museum-video.js подменяет адрес и при событии play (запуск мимо касания) — иначе
-//      под обложкой 9:16 играет запасной 16:9 из HTML (корень r413).
+//      под обложкой 9:16 играет запасной 16:9 из HTML (корень r413);
+//   4) ЗАМОК 9:16 (Р550, дыра 26 янв.): рядом с horizontal.local лежит <имя>-9x16.mp4, а в реестре нет vertical —
+//      код 1 (телефон получает 16:9, хотя ролик 9:16 сделан). Долг — «9x16-bez-reestra» в src/data/dyry-dolg.json.
 // Расхождение пропорций больше 2% — код 1 и ::error::. Файла пары нет — ::warning:: (жёлтая строка, отдельный долг),
 // мерить нечего. Без сборки и браузера, секунды.
 // Запуск: node scripts/proporcii-rolika.mjs [--proba]. Стоит в начале npm run build (package.json): красный — сборка не идёт. Откат — убрать вызов оттуда.
@@ -83,6 +85,8 @@ export function proverit(root) {
   const oshibki = [], zhyoltye = [];
   let par = 0;
   const reg = chitat(path.join(root, 'public')).releases;
+  const fDolg = path.join(root, 'src/data/dyry-dolg.json');
+  const dolg9x16 = new Set(fs.existsSync(fDolg) ? JSON.parse(fs.readFileSync(fDolg, 'utf8'))['9x16-bez-reestra'] ?? [] : []);
   for (const [k, rel] of Object.entries(reg)) {
     for (const [pk, vk] of [['poster', 'horizontal'], ['poster_vertical', 'vertical']]) {
       if (!rel[pk] || !rel[vk]) continue;
@@ -94,6 +98,10 @@ export function proverit(root) {
     }
     if (rel.vertical && !rel.poster_vertical && fs.existsSync(pub(rel.vertical.local)))
       oshibki.push(`реестр ${k}: есть ролик 9:16, нет poster_vertical — на телефоне обложка 16:9 над роликом 9:16`);
+    const f9x16 = rel.horizontal?.local && !rel.vertical ? pub(bezV(rel.horizontal.local).replace(/\.mp4$/i, '-9x16.mp4')) : null;
+    if (f9x16 && fs.existsSync(f9x16)) {
+      if (!dolg9x16.has(k)) oshibki.push(`реестр ${k}: лежит ${path.basename(f9x16)}, а в реестре нет vertical — телефон получит 16:9 (Р550; записать vertical и poster_vertical в public/video/registry/${k}.json)`);
+    } else if (dolg9x16.has(k)) zhyoltye.push(`реестр ${k}: дыры 9:16 больше нет — снять из долга «9x16-bez-reestra» (src/data/dyry-dolg.json)`);
   }
   const shablon = path.join(root, 'src/content/dni-shablon');
   for (const muzey of fs.existsSync(shablon) ? fs.readdirSync(shablon) : []) {
@@ -129,14 +137,16 @@ if (est('--proba')) {
     return Buffer.concat([box('ftyp', Buffer.from('isom0000')), box('moov', box('trak', tkhd))]);
   };
   const DV_OK = "video.addEventListener('play', onPlay);";
-  const proby = [ // [имя, ролик 16:9, обложка, ролик 9:16, обложка 9:16, движок, ждём красный]
+  const proby = [ // [имя, ролик 16:9, обложка, ролик 9:16, обложка 9:16, движок, ждём красный, реестр без vertical: '' | 'да' | 'в долге']
     ['всё в пару', [1920, 1080], [1920, 1080], [1080, 1920], [1080, 1920], DV_OK, false],
     ['обложка 9:16 над роликом 16:9', [1920, 1080], [1080, 1920], [1080, 1920], [1080, 1920], DV_OK, true],
     ['обложка 16:9 над роликом 9:16', [1920, 1080], [1920, 1080], [1080, 1920], [1280, 720], DV_OK, true],
     ['движок без подмены по play', [1920, 1080], [1920, 1080], [1080, 1920], [1080, 1920], '', true],
+    ['файл 9:16 лежит, в реестре нет vertical', [1920, 1080], [1920, 1080], [1080, 1920], [1080, 1920], DV_OK, true, 'да'],
+    ['то же, но выпуск в долге', [1920, 1080], [1920, 1080], [1080, 1920], [1080, 1920], DV_OK, false, 'в долге'],
   ];
   let plokho = 0;
-  for (const [imya, h, p, v, pv, dv, zhdu] of proby) {
+  for (const [imya, h, p, v, pv, dv, zhdu, bezVert = ''] of proby) {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'proporcii-proba-'));
     const vid = path.join(tmp, 'public/muzei/proba/video');
     fs.mkdirSync(vid, { recursive: true }); fs.mkdirSync(path.join(tmp, 'public/assets'));
@@ -145,8 +155,12 @@ if (est('--proba')) {
     fs.writeFileSync(path.join(vid, 'r-9x16.mp4'), mp4(...v)); fs.writeFileSync(path.join(vid, 'r-9x16.jpg'), jpg(...pv));
     fs.writeFileSync(path.join(tmp, 'public/assets/museum-video.js'), dv);
     const e = (f) => ({ local: `muzei/proba/video/${f}`, v: 1 });
-    zapisatVypusk(path.join(tmp, 'public'), 'proba/r', {
+    zapisatVypusk(path.join(tmp, 'public'), 'proba/r', bezVert ? { horizontal: e('r.mp4'), poster: e('r.jpg') } : {
       horizontal: e('r.mp4'), poster: e('r.jpg'), vertical: e('r-9x16.mp4'), poster_vertical: e('r-9x16.jpg') });
+    if (bezVert === 'в долге') {
+      fs.mkdirSync(path.join(tmp, 'src/data'), { recursive: true });
+      fs.writeFileSync(path.join(tmp, 'src/data/dyry-dolg.json'), JSON.stringify({ '9x16-bez-reestra': ['proba/r'] }));
+    }
     fs.writeFileSync(path.join(tmp, 'src/content/dni-shablon/proba/01-01.yaml'),
       'video:\n  klyuch: proba/r\n  poster: video/r.jpg?v=1\n  mp4: video/r.mp4?v=1\n');
     const { oshibki } = proverit(tmp);
