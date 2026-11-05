@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "На эшафоте — восемнадцать лет и: «Всех не перевешаете, нас 170 миллионов»",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41876918133) из сценария days/ns08jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.1,
+    "mb": 13.2
+  },
+  "vertical": {
+    "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.1,
+    "mb": 12.8
+  },
+  "poster": {
+    "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-9x16-poster.jpg",
+    "v": 1
+  }
+}
