@@ -87,7 +87,7 @@ jobs:
       # Откат — убрать build-cmd и шаг «video-sajta», в msk — шаг «ролики обратно».
       # MEDIA_BASE (#2364, шаг 4): пусто — ролики со своего сервера, как раньше; https://media.russian-civilization.ru —
       # scripts/media-base.mjs переписывает ссылки mp4 на хранилище. Ставится переменной репо только после media.yml 108/108.
-      - uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
+      - uses: withastro/action@a8b97df764791eb61fbf3338ef713b0e61ae05c5 # v6.1.4
         env:
           MEDIA_BASE: ${{ vars.MEDIA_BASE }}
         with:
