@@ -251,10 +251,13 @@ def p_video(s, reestr):
             ver or (NET, pochemu or 'в реестре нет 9:16'), ids)
 
 
+RAZDELY_ISTOCHNIKOV = ('sources', 'sources-rights', 'istochnik')
+
+
 def ssylki_istochnikov(s):
     """→ (ссылки, есть ли раздел источников вообще)."""
     out, est = [], False
-    for sid in ('sources', 'sources-rights', 'istochnik'):
+    for sid in RAZDELY_ISTOCHNIKOV:
         r = razdel(s, sid)
         if r is not None:
             est = True
@@ -410,6 +413,48 @@ def proverit_ssylki(vse, srok, byudzhet, potokov, rf_vyhod=None):
     return itog if s_rf else bez_rf_vyhoda(itog)
 
 
+# ── Госкаталог — по сохранённому снимку (Р553) ──
+# goskatalog.ru закрыт для адреса РФ-выхода (nginx 403 на любой адрес), а id предмета стоит после # — сервер его не
+# видит. Снимок карточки (tools/snimok-goskatalog.py → data/gotovnost/snimki-goskatalog.json) — как archive/Perma.cc:
+# ссылка Госкаталога дня засчитывается, только если снимок есть у каждого её id. Ссылка без id или без снимка — как была.
+SNIMKI_GOSKATALOG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                 'data', 'gotovnost', 'snimki-goskatalog.json')
+GOSKATALOG = 'goskatalog.ru'
+PO_SNIMKU = 'по снимку'
+
+
+def goskatalog_id(s):
+    """→ id предметов Госкаталога из ссылок источников; None вместо id — ссылка на Госкаталог без номера предмета."""
+    out = []
+    for sid in RAZDELY_ISTOCHNIKOV:
+        for u in re.findall(r'href="(https?://[^"]+)"', razdel(s, sid) or ''):
+            u = html.unescape(u)
+            if (urllib.parse.urlsplit(u).hostname or '').removeprefix('www.') == GOSKATALOG:
+                m = re.search(r'[?&]id=(\d+)', u)
+                out.append(m.group(1) if m else None)
+    return list(dict.fromkeys(out))
+
+
+def chitat_snimki(fajl=SNIMKI_GOSKATALOG):
+    try:
+        with open(fajl, encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+def po_snimku_goskatalog(ssylki, idy, otvety, snimki):
+    """→ ответы дня: не открывшаяся ссылка Госкаталога — (200, «по снимку»), если у всех id дня есть снимок."""
+    if not idy or None in idy or any(i not in snimki for i in idy):
+        return otvety
+    otv = dict(otvety)
+    for u in ssylki:
+        kod = (otv.get(u) or (None, ''))[0]
+        if (urllib.parse.urlsplit(u).hostname or '').removeprefix('www.') == GOSKATALOG and not (kod and kod < 400):
+            otv[u] = (200, PO_SNIMKU)
+    return otv
+
+
 def p_istochnik(ssylki, est, otvety):
     if not ssylki:
         return NET, 'источники без ссылок — только названия' if est else 'нет раздела «Источники»'
@@ -433,14 +478,15 @@ def p_istochnik(ssylki, est, otvety):
         return NET, f'не открывается {len(plohie)} из {len(ssylki)}: ' + '; '.join(plohie[:3])
     if seryje:
         return SERYJ, f'не проверено {len(seryje)} из {len(ssylki)}: ' + '; '.join(seryje[:2])
-    return OK, f'открываются {len(ssylki)} из {len(ssylki)}'
+    snimkom = sum(otvety.get(u, (None, ''))[1] == PO_SNIMKU for u in ssylki)
+    return OK, f'открываются {len(ssylki)} из {len(ssylki)}' + (f', Госкаталог — проверено по снимку' if snimkom else '')
 
 
 # ── Сборка таблицы ──
 
 def poschitat(ist, set_):
     reestr = ist.reestr()
-    stroki, ssylki_dnya = [], {}
+    stroki, ssylki_dnya, gk_dnya = [], {}, {}
     for slug, nazv in MUZEI:
         for d in DNI:
             s = ist.stranica(slug, d)
@@ -456,17 +502,20 @@ def poschitat(ist, set_):
             kl['kadry'], st['kadry'] = p_kadry(s, b, ist)
             kl['v169'], kl['v916'], st['roliki'] = p_video(s, reestr)
             ssylki_dnya[(slug, d)] = ssylki_istochnikov(s)
+            gk_dnya[(slug, d)] = goskatalog_id(s)
             st['kletki'] = kl
             stroki.append(st)
     otvety = None
     if set_ is not None:
         vse = sorted({u for v, _ in ssylki_dnya.values() for u in v})
         otvety = proverit_ssylki(vse, *set_)
+    snimki = chitat_snimki()
     for st in stroki:
         if 'istochnik' not in st['kletki']:
             ss, est = ssylki_dnya.get((st['muzej'], st['den']), ([], False))
-            st['kletki']['istochnik'] = p_istochnik(ss, est, otvety)
-            st['istochniki'] = {u: otvety.get(u) for u in ss} if otvety else ss
+            otv = otvety and po_snimku_goskatalog(ss, gk_dnya.get((st['muzej'], st['den'])), otvety, snimki)
+            st['kletki']['istochnik'] = p_istochnik(ss, est, otv)
+            st['istochniki'] = {u: otv.get(u) for u in ss} if otv else ss
         st['polnyj'] = all(st['kletki'][k][0] == OK for k, _ in KOLONKI)
         st['polnyj_zamok'] = polnyj_dlya_zamka(st['kletki'])
     return stroki
@@ -567,6 +616,18 @@ def proba():
         zapisat_spisok(f, {'izobreteniya': {'01-02'}}, [('izobreteniya', '01-03')])
         ok = chitat_spisok(f) == {'izobreteniya': {'01-02', '01-03'}}
         print(f'{"ок " if ok else "БРАК"} проба «запись списка»: {sorted(chitat_spisok(f).get("izobreteniya", []))}')
+        plokho += not ok
+    gk, ru = 'https://goskatalog.ru/portal/', 'https://example.ru/'
+    otv = {gk: (403, ''), ru: (200, '')}
+    proby_gk = [  # имя, id дня, ждём клетку
+        ('снимок у всех id — зелёный', ['1', '2'], OK),
+        ('у одного id снимка нет — серый', ['1', '3'], SERYJ),
+        ('ссылка Госкаталога без id — серый', ['1', None], SERYJ),
+    ]
+    for imya, idy, zhdu in proby_gk:
+        kl = p_istochnik([gk, ru], True, po_snimku_goskatalog([gk, ru], idy, otv, {'1': {}, '2': {}}))[0]
+        ok = kl == zhdu
+        print(f'{"ок " if ok else "БРАК"} проба «Госкаталог: {imya}»: {SLOVO[kl]}')
         plokho += not ok
     if plokho:
         print(f'::error::tablica-gotovnosti: {plokho} проб храповика не сработали')
