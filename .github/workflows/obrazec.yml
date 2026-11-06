@@ -73,7 +73,7 @@ jobs:
             echo "::error::Машина без образца из мировой практики (Р525): в разделе написано «образца нет / самоделка». Ждёт метку obrazets-da-sergey — ставит только Джарвис по слову Сергея."
             exit 1
           fi
-          grep -oE 'https?://[A-Za-z0-9.-]+\.[A-Za-z]{2,}[^[:space:])>"]*' razdel.txt | sort -u > ssylki.txt || true
+          grep -oE 'https?://[A-Za-z0-9.-]+\.[A-Za-z]{2,}[^[:space:])>"]*' razdel.txt | sed -E 's/[.,;:!?*_~»…]+$//' | sort -u > ssylki.txt || true
           if [ ! -s ssylki.txt ]; then
             echo "::error::Машина без образца из мировой практики (Р525): в разделе «Как это делают в мире» нет ссылки http(s) на образец."
             exit 1

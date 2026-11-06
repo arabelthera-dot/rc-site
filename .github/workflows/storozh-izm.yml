@@ -1,0 +1,66 @@
+# Сторож изменений (Р309, 28.10.2026): не «жив ли сайт» (это storozh.yml), а «тот ли это сайт».
+# Четыре проверки (scripts/storozh-izm/storozh_izm.py): DNS ↔ эталон; главная и ключевые страницы ↔ зеркало Pages
+# той же сборки из main + чужие домены скриптов; новые сертификаты в журналах CT (crt.sh + Cert Spotter) не с нашего
+# сервера; новые зарегистрированные домены-двойники (dnstwist). Тревога — issue с меткой storozh-izm и Telegram.
+# Пять вопросов: задевает — ничего на сайте, только читает его снаружи и пишет issue/сообщение; нужно — секреты
+# TG_BOT_TOKEN и TG_STOROZH_CHAT (те же, что у storozh.yml; даёт Михаил); без нужного — issue создаётся, Telegram
+# пишет «спит: нет секрета», работа зелёная; проверка — ручной пуск (работает и при выключенном расписании),
+# proba=true — только пробное сообщение; откат — переменная STOROZH_IZM ≠ '1' или удалить файл.
+# Выключатель расписания — переменная STOROZH_IZM (≠ '1' — спит). Раз в 6 часов, минуты не круглые.
+name: storozh-izm
+on:
+  schedule:
+    - cron: '41 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      proba:
+        description: 'Проба связи — без проверок тревог не создавать, отправить пробное сообщение в Telegram'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  issues: write    # карточка тревоги
+  actions: write   # «уже видели» (сертификаты, двойники) хранится в кэше между запусками
+concurrency:
+  group: storozh-izm
+  cancel-in-progress: false
+jobs:
+  storozh-izm:
+    if: github.event_name == 'workflow_dispatch' || vars.STOROZH_IZM == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOST: .storozh-izm
+      TREVOGI: trevogi.json
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: scripts/storozh-izm
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .storozh-izm
+          key: storozh-izm-${{ github.run_id }}
+          restore-keys: storozh-izm-
+      - name: dnstwist и dnspython — точные версии
+        if: ${{ !inputs.proba }}
+        run: |
+          python3 -m venv /tmp/izm
+          /tmp/izm/bin/pip install --no-cache-dir 'dnstwist==20250130' 'dnspython==2.9.0'
+      - name: Проверки
+        if: ${{ !inputs.proba }}
+        run: /tmp/izm/bin/python scripts/storozh-izm/storozh_izm.py
+      - name: Тревога
+        if: ${{ !cancelled() }}
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_STOROZH_CHAT: ${{ secrets.TG_STOROZH_CHAT }}
+          PROBA: ${{ github.event_name == 'workflow_dispatch' && inputs.proba }}
+        run: |
+          [ -f trevogi.json ] || [ "$PROBA" = true ] || echo '[]' > trevogi.json
+          python3 scripts/storozh-izm/trevoga.py
+      - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        if: ${{ always() && !inputs.proba }}
+        with:
+          path: .storozh-izm
+          key: storozh-izm-${{ github.run_id }}

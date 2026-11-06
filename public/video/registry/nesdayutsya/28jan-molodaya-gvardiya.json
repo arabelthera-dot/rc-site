@@ -1,0 +1,33 @@
+{
+  "title": "История в 42 секунды",
+  "intro": "Школьники, которые не выдали никого — даже под пытками",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns28jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 42,
+    "mb": 10.4
+  },
+  "vertical": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 42,
+    "mb": 9
+  },
+  "poster": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-9x16-poster.jpg",
+    "v": 1
+  }
+}

@@ -277,7 +277,7 @@ function glavnoe() {
 // ——— проба ———
 if (est('--proba')) {
   // Образец — карточка 01-02 до слияния повторов Р510 (15 фактов, повторы 2–7, 6–11, 3–10 в ней есть);
-  // живая карточка 01-02 после Р510 — 12 фактов, на ней случай «карточка на 12 фактов».
+  // живая карточка 01-02 — 10 фактов и «Ещё» (число — из утверждённой копии), на ней случай «карточка на 10 + «Ещё»».
   const NS = 'ne-sdayutsya'; const IZ = 'izobreteniya';
   const utv = JSON.parse(fs.readFileSync(path.join(KOREN, 'tests/obrazcy/sverka-utverzhdeno/01-02-do-r510.json'), 'utf8'));
   const zhivaya = chitatUtv(NS, '01-02');
@@ -327,7 +327,7 @@ if (est('--proba')) {
     // 3–10 (Р510) — тот же факт другими словами; общее у них — слова из 3+ фактов дня (тема), словесная проверка его
     // не видит (Р520). Случай держит пропуск на виду: научится видеть — случай краснеет, его надо вернуть в «ловит».
     ['повтор факта 3–10 в карточке — известный пропуск', utv, izYaml(horoshij()), (o) => !o.some((x) => /два факта про одно: 3 и 10/.test(x))],
-    ['карточка на 12 фактов', zhivaya, izYaml((() => {
+    [`карточка на ${zhivaya.fakty.length} фактов (10 + «Ещё»)`, zhivaya, izYaml((() => {
       // по «Порядку» карточки, у каждого факта — его первый кадр из привязки, лишние кадры факта не ставятся
       const bylo = new Set();
       const kadrK = (n) => zhivaya.kadry.find((x) => x.fakt === n && !bylo.has(x.gk) && bylo.add(x.gk));
@@ -362,7 +362,8 @@ if (est('--proba')) {
       && (fs.writeFileSync(pustojSpisok, '{}'), strogij([dolgDen], { SVERKA_V_RABOTE: pustojSpisok }) === 1)
       && !V_RABOTE[NS].dni.includes('01-04') && strogij(['01-04']) === 0), IZ],
   ];
-  if (zhivaya.fakty.length !== 12) { console.log(`::error::sverka-utverzhdeno: проба ждёт живую карточку 01-02 на 12 фактов, в ней ${zhivaya.fakty.length}`); process.exit(1); }
+  // число фактов берётся из самой утверждённой копии (10 + «Ещё»), не прописывается рукой: добор «Ещё» (Р564) его меняет
+  if (zhivaya.fakty.length <= 10 || zhivaya.poryadok.length !== zhivaya.fakty.length) { console.log(`::error::sverka-utverzhdeno: проба ждёт живую карточку 01-02 на 10 фактов и «Ещё», в ней ${zhivaya.fakty.length} фактов и ${zhivaya.poryadok.length} в «Порядке»`); process.exit(1); }
   let mimo = 0;
   for (const [nazv, u, str, zhdu, muzey = NS] of sluchai) {
     const { o: oStrogo, naProbe } = sverit(muzey, u, str);

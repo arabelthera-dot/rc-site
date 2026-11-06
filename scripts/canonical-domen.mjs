@@ -3,7 +3,8 @@
 // 22 из 31 карточки января музея изобретений смотрели на старый arabelthera-dot.github.io/rc-museum-preview: живой сайт
 // это не задевало (конвейер src/integrations/full-pages.mjs ставит адрес заново), но карточка врала, и любой обход
 // конвейера отдал бы поисковику чужой первоисточник. В dist адрес сверяется ещё и с путём страницы.
-// Запускается в конце npm run build (шаг сборки proverka.yml и деплой). РЕЖИМ ОТЧЁТА: находки — жёлтые строки (::warning) и сводка шага, код выхода всегда 0.
+// Запускается в конце npm run build (шаг сборки proverka.yml и деплой). СТРОГО (Р557 п.1, 05.11.2026: на main 0 находок из 5395 страниц): находка — красная строка (::error) и код выхода 1.
+// Откат — вернуть ::warning и убрать process.exit(1) в конце файла.
 // Запуск: node scripts/canonical-domen.mjs --proba && node scripts/canonical-domen.mjs [--dist dist]
 import fs from 'node:fs';
 import path from 'node:path';
@@ -68,9 +69,10 @@ if (DIST) (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes:
   else if (e.name.endsWith('.html')) { stranic++; const rel = path.relative(DIST, p); for (const n of nahodkiStranicy(fs.readFileSync(p, 'utf8'), rel)) nahodki.push(`${DIST}/${rel}: ${n}`); }
 } })(DIST);
 
-const itog = `canonical-domen (отчёт): карточек шаблона ${kartochek}${DIST ? `, страниц dist ${stranic}` : ''}; адрес не на ${DOMEN} или не той страницы — ${nahodki.length}`;
+const itog = `canonical-domen: карточек шаблона ${kartochek}${DIST ? `, страниц dist ${stranic}` : ''}; адрес не на ${DOMEN} или не той страницы — ${nahodki.length}`;
 console.log(itog);
-for (const n of nahodki.slice(0, 50)) console.log(`::warning title=canonical не на своём домене::${n}`);
+for (const n of nahodki.slice(0, 50)) console.log(`::error title=canonical не на своём домене::${n}`);
 if (nahodki.length > 50) console.log(`… и ещё ${nahodki.length - 50}`);
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
   `### canonical-domen\n${itog}\n${nahodki.slice(0, 50).map((n) => `- ${n}`).join('\n')}\n`);
+if (nahodki.length) process.exit(1);

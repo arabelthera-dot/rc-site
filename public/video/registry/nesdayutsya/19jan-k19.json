@@ -1,0 +1,33 @@
+{
+  "title": "История в 48 секунд",
+  "intro": "Экипаж вошёл в реактор, чтобы лодка не стала вторым Чернобылем",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns19jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/19jan-k19/day-19jan-k19.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-19jan-k19.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 48.4,
+    "mb": 12.1
+  },
+  "vertical": {
+    "file": "nesdayutsya/19jan-k19/day-19jan-k19-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-19jan-k19-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 48.4,
+    "mb": 11
+  },
+  "poster": {
+    "file": "nesdayutsya/19jan-k19/day-19jan-k19-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-19jan-k19-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/19jan-k19/day-19jan-k19-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-19jan-k19-9x16-poster.jpg",
+    "v": 1
+  }
+}

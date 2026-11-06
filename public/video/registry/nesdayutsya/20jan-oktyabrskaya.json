@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "Продала всё и купила танк — за мужа",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns20jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/20jan-oktyabrskaya/day-20jan-oktyabrskaya.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 46.8,
+    "mb": 11.6
+  },
+  "vertical": {
+    "file": "nesdayutsya/20jan-oktyabrskaya/day-20jan-oktyabrskaya-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 46.8,
+    "mb": 10.5
+  },
+  "poster": {
+    "file": "nesdayutsya/20jan-oktyabrskaya/day-20jan-oktyabrskaya-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/20jan-oktyabrskaya/day-20jan-oktyabrskaya-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya-9x16-poster.jpg",
+    "v": 1
+  }
+}

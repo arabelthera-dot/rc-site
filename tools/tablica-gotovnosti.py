@@ -22,8 +22,10 @@ data-rc-video, в реестре у выпуска есть horizontal шире 
 «Полный для храповика» — все клетки зелёные, у «Источника» допустима серая (ссылки есть, но не проверены сетью).
 Новый такой день — ::notice::; --zapisat дописывает его в список (убирать из списка машина не умеет — только расти).
 
-РФ-выход (Р550, выключен): --rf-vyhod [socks5h://rf-proxy:1080] или переменная GOTOVNOST_RF_PROXY — ссылки источников
-проверяются через российский выход (PySocks). Выхода нет или он не отвечает — клетка «Источник» серая, не красная.
+РФ-выход (Р550, Р553, включён): ссылки источников проверяются через российский выход socks5h://rf-proxy:1080 (PySocks) —
+где он есть (наш раннер, наш сервер). Другой адрес — --rf-vyhod socks5h://хост:порт или GOTOVNOST_RF_PROXY; выключить —
+--rf-vyhod net. Выхода нет (облако GitHub) — проверка напрямую с чужой точки: открылось — зелёное, не открылось —
+серое, не красное (с чужой точки «не открылось» не доказывает «не открывается у читателя в России»).
 
   python3 tools/tablica-gotovnosti.py --dist dist                       # в сборке
   python3 tools/tablica-gotovnosti.py --live --out /tmp/gotovnost       # по живому сайту
@@ -64,7 +66,7 @@ KOLONKI = [  # ключ, заголовок
     ('fakty', '10 фактов + «Ещё 5»'),
     ('huk', 'Хук'),
     ('kadry', 'Кадры без повторов'),
-    ('igra', 'Игра'),
+    ('igra', 'Викторина'),  # проверяет викторину; в «не сдаются» игр нет (Р436)
     ('audio', 'Аудиогид'),
     ('v169', 'Ролик 16:9'),
     ('v916', 'Ролик 9:16'),
@@ -249,10 +251,13 @@ def p_video(s, reestr):
             ver or (NET, pochemu or 'в реестре нет 9:16'), ids)
 
 
+RAZDELY_ISTOCHNIKOV = ('sources', 'sources-rights', 'istochnik')
+
+
 def ssylki_istochnikov(s):
     """→ (ссылки, есть ли раздел источников вообще)."""
     out, est = [], False
-    for sid in ('sources', 'sources-rights', 'istochnik'):
+    for sid in RAZDELY_ISTOCHNIKOV:
         r = razdel(s, sid)
         if r is not None:
             est = True
@@ -353,6 +358,7 @@ def otkryt1(u, srok):
 
 
 RF_VYHOD_PO_UMOLCHANIYU = 'socks5h://rf-proxy:1080'
+RF_VYHOD = RF_VYHOD_PO_UMOLCHANIYU  # включатель одной строкой: None — выключить РФ-выход
 
 
 def vklyuchit_rf_vyhod(url):
@@ -374,15 +380,23 @@ def vklyuchit_rf_vyhod(url):
     return None
 
 
+def bez_rf_vyhoda(otvety):
+    """Проверка не из России: открылось — верим, не открылось — серое (с чужой точки отказ ничего не доказывает)."""
+    return {u: (k, pr) if k is not None and k < 400 else (None, f'{k or pr}, без РФ-выхода') for u, (k, pr) in otvety.items()}
+
+
 def proverit_ssylki(vse, srok, byudzhet, potokov, rf_vyhod=None):
     itog = {}
     nachalo = time.time()
+    s_rf = False
     if rf_vyhod:
         beda = vklyuchit_rf_vyhod(rf_vyhod)
-        if beda:  # выхода нет — не красное, а «не проверено»
-            print(f'::warning::tablica-gotovnosti: {beda} — источники не проверены (серые)', file=sys.stderr)
-            return {u: (None, 'нет РФ-выхода') for u in vse}
-        print(f'tablica-gotovnosti: источники — через РФ-выход {urllib.parse.urlsplit(rf_vyhod).hostname}', file=sys.stderr)
+        if beda:  # выхода нет — проверяем напрямую, отказы серые, не красные
+            print(f'::warning::tablica-gotovnosti: {beda} — источники напрямую, не открывшиеся серые', file=sys.stderr)
+        else:
+            s_rf = True
+            print(f'tablica-gotovnosti: источники — через РФ-выход {urllib.parse.urlsplit(rf_vyhod).hostname}',
+                  file=sys.stderr)
     with cf.ThreadPoolExecutor(potokov) as ex:
         bud = {ex.submit(otkryt, u, srok): u for u in vse}
         try:
@@ -394,9 +408,51 @@ def proverit_ssylki(vse, srok, byudzhet, potokov, rf_vyhod=None):
             if u not in itog:
                 f.cancel()
                 itog[u] = (None, 'не успели проверить')
-    print(f'tablica-gotovnosti: ссылок источников {len(vse)}, проверено за {time.time() - nachalo:.0f} с',
-          file=sys.stderr)
-    return itog
+    print(f'tablica-gotovnosti: ссылок источников {len(vse)}, проверено за {time.time() - nachalo:.0f} с'
+          + ('' if s_rf else ' (без РФ-выхода)'), file=sys.stderr)
+    return itog if s_rf else bez_rf_vyhoda(itog)
+
+
+# ── Госкаталог — по сохранённому снимку (Р553) ──
+# goskatalog.ru закрыт для адреса РФ-выхода (nginx 403 на любой адрес), а id предмета стоит после # — сервер его не
+# видит. Снимок карточки (tools/snimok-goskatalog.py → data/gotovnost/snimki-goskatalog.json) — как archive/Perma.cc:
+# ссылка Госкаталога дня засчитывается, только если снимок есть у каждого её id. Ссылка без id или без снимка — как была.
+SNIMKI_GOSKATALOG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                 'data', 'gotovnost', 'snimki-goskatalog.json')
+GOSKATALOG = 'goskatalog.ru'
+PO_SNIMKU = 'по снимку'
+
+
+def goskatalog_id(s):
+    """→ id предметов Госкаталога из ссылок источников; None вместо id — ссылка на Госкаталог без номера предмета."""
+    out = []
+    for sid in RAZDELY_ISTOCHNIKOV:
+        for u in re.findall(r'href="(https?://[^"]+)"', razdel(s, sid) or ''):
+            u = html.unescape(u)
+            if (urllib.parse.urlsplit(u).hostname or '').removeprefix('www.') == GOSKATALOG:
+                m = re.search(r'[?&]id=(\d+)', u)
+                out.append(m.group(1) if m else None)
+    return list(dict.fromkeys(out))
+
+
+def chitat_snimki(fajl=SNIMKI_GOSKATALOG):
+    try:
+        with open(fajl, encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+def po_snimku_goskatalog(ssylki, idy, otvety, snimki):
+    """→ ответы дня: не открывшаяся ссылка Госкаталога — (200, «по снимку»), если у всех id дня есть снимок."""
+    if not idy or None in idy or any(i not in snimki for i in idy):
+        return otvety
+    otv = dict(otvety)
+    for u in ssylki:
+        kod = (otv.get(u) or (None, ''))[0]
+        if (urllib.parse.urlsplit(u).hostname or '').removeprefix('www.') == GOSKATALOG and not (kod and kod < 400):
+            otv[u] = (200, PO_SNIMKU)
+    return otv
 
 
 def p_istochnik(ssylki, est, otvety):
@@ -422,14 +478,15 @@ def p_istochnik(ssylki, est, otvety):
         return NET, f'не открывается {len(plohie)} из {len(ssylki)}: ' + '; '.join(plohie[:3])
     if seryje:
         return SERYJ, f'не проверено {len(seryje)} из {len(ssylki)}: ' + '; '.join(seryje[:2])
-    return OK, f'открываются {len(ssylki)} из {len(ssylki)}'
+    snimkom = sum(otvety.get(u, (None, ''))[1] == PO_SNIMKU for u in ssylki)
+    return OK, f'открываются {len(ssylki)} из {len(ssylki)}' + (f', Госкаталог — проверено по снимку' if snimkom else '')
 
 
 # ── Сборка таблицы ──
 
 def poschitat(ist, set_):
     reestr = ist.reestr()
-    stroki, ssylki_dnya = [], {}
+    stroki, ssylki_dnya, gk_dnya = [], {}, {}
     for slug, nazv in MUZEI:
         for d in DNI:
             s = ist.stranica(slug, d)
@@ -445,17 +502,20 @@ def poschitat(ist, set_):
             kl['kadry'], st['kadry'] = p_kadry(s, b, ist)
             kl['v169'], kl['v916'], st['roliki'] = p_video(s, reestr)
             ssylki_dnya[(slug, d)] = ssylki_istochnikov(s)
+            gk_dnya[(slug, d)] = goskatalog_id(s)
             st['kletki'] = kl
             stroki.append(st)
     otvety = None
     if set_ is not None:
         vse = sorted({u for v, _ in ssylki_dnya.values() for u in v})
         otvety = proverit_ssylki(vse, *set_)
+    snimki = chitat_snimki()
     for st in stroki:
         if 'istochnik' not in st['kletki']:
             ss, est = ssylki_dnya.get((st['muzej'], st['den']), ([], False))
-            st['kletki']['istochnik'] = p_istochnik(ss, est, otvety)
-            st['istochniki'] = {u: otvety.get(u) for u in ss} if otvety else ss
+            otv = otvety and po_snimku_goskatalog(ss, gk_dnya.get((st['muzej'], st['den'])), otvety, snimki)
+            st['kletki']['istochnik'] = p_istochnik(ss, est, otv)
+            st['istochniki'] = {u: otv.get(u) for u in ss} if otv else ss
         st['polnyj'] = all(st['kletki'][k][0] == OK for k, _ in KOLONKI)
         st['polnyj_zamok'] = polnyj_dlya_zamka(st['kletki'])
     return stroki
@@ -541,11 +601,33 @@ def proba():
         ok = kod == kod_zhdu and len(nv) == novyh_zhdu
         print(f'{"ок " if ok else "БРАК"} проба «{imya}»: {"красный" if kod else "зелёный"}, новых {len(nv)}')
         plokho += not ok
+    sylki = ['https://a.ru/1', 'https://b.ru/2']
+    for imya, otvety, zhdu in [
+        ('без РФ-выхода 404 — серый', bez_rf_vyhoda({sylki[0]: (200, ''), sylki[1]: (404, '')}), SERYJ),
+        ('без РФ-выхода открылось — зелёный', bez_rf_vyhoda({sylki[0]: (200, ''), sylki[1]: (301, '')}), OK),
+        ('с РФ-выходом 404 — красный', {sylki[0]: (200, ''), sylki[1]: (404, '')}, NET),
+    ]:
+        tsvet = p_istochnik(sylki, True, otvety)[0]
+        ok = tsvet == zhdu
+        print(f'{"ок " if ok else "БРАК"} проба «{imya}»: {ZNAK.get(tsvet, tsvet)}')
+        plokho += not ok
     with tempfile.TemporaryDirectory() as t:  # рост: --zapisat дописывает и не убирает
         f = os.path.join(t, 'polnye-dni.json')
         zapisat_spisok(f, {'izobreteniya': {'01-02'}}, [('izobreteniya', '01-03')])
         ok = chitat_spisok(f) == {'izobreteniya': {'01-02', '01-03'}}
         print(f'{"ок " if ok else "БРАК"} проба «запись списка»: {sorted(chitat_spisok(f).get("izobreteniya", []))}')
+        plokho += not ok
+    gk, ru = 'https://goskatalog.ru/portal/', 'https://example.ru/'
+    otv = {gk: (403, ''), ru: (200, '')}
+    proby_gk = [  # имя, id дня, ждём клетку
+        ('снимок у всех id — зелёный', ['1', '2'], OK),
+        ('у одного id снимка нет — серый', ['1', '3'], SERYJ),
+        ('ссылка Госкаталога без id — серый', ['1', None], SERYJ),
+    ]
+    for imya, idy, zhdu in proby_gk:
+        kl = p_istochnik([gk, ru], True, po_snimku_goskatalog([gk, ru], idy, otv, {'1': {}, '2': {}}))[0]
+        ok = kl == zhdu
+        print(f'{"ок " if ok else "БРАК"} проба «Госкаталог: {imya}»: {SLOVO[kl]}')
         plokho += not ok
     if plokho:
         print(f'::error::tablica-gotovnosti: {plokho} проб храповика не сработали')
@@ -667,10 +749,13 @@ def main():
     ap.add_argument('--potokov', type=int, default=24)
     ap.add_argument('--zamok', help='храповик: список полных дней (JSON); полный стал неполным — код 1')
     ap.add_argument('--zapisat', action='store_true', help='с --zamok: дописать новые полные дни в список')
-    ap.add_argument('--rf-vyhod', nargs='?', const=RF_VYHOD_PO_UMOLCHANIYU, default=os.environ.get('GOTOVNOST_RF_PROXY') or None,
-                    help='проверять источники через РФ-выход socks5h:// (выключено; включение — флаг или GOTOVNOST_RF_PROXY)')
+    ap.add_argument('--rf-vyhod', nargs='?', const=RF_VYHOD_PO_UMOLCHANIYU,
+                    default=os.environ.get('GOTOVNOST_RF_PROXY') or RF_VYHOD,
+                    help='РФ-выход socks5h:// для проверки источников (включён: ' + str(RF_VYHOD) + '; net — выключить)')
     ap.add_argument('--proba', action='store_true', help='пробы храповика')
     a = ap.parse_args()
+    if a.rf_vyhod in ('net', 'no', '0'):
+        a.rf_vyhod = None
     if a.proba:
         return proba()
     try:
