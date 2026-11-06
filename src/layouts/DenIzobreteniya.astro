@@ -10,12 +10,14 @@
 // полоса, подвал, шрифты, метрика, абсолютные адреса от <base>, соседи; noindex, вне карты сайта.
 import fs from 'node:fs';
 import { q, json, chromeJs as chromeJsF, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml } from '../lib/den-razmetka.mjs';
+import { titleVkladki } from '../lib/title-vkladki.mjs';
 const { d, museum } = Astro.props;
 const muzeyName = museum.title_ru;
 // Заголовок вкладки и og:title — из даты, года и события карточки (Р286 п.4); у пробы без них — как в карточке.
 const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.key.slice(0, 2)) - 1]} ${d.head.god}: ${d.head.sobytie}`;
-const title = kogda ? `${kogda} — ${muzeyName} — Русская цивилизация` : d.head.title;
+// заголовок вкладки ≤60 (Р560): режется служебный хвост, не название дня
+const title = kogda ? titleVkladki(kogda, muzeyName) : d.head.title;
 const ogTitle = kogda || d.head.og.title;
 // Игра дня (Р432): 3D наверху страницы, сразу под обложкой и хуком; 2D (igra.imya) — только запасной режим этого дня:
 // лежит в <template id="igra2d"> и сама встаёт на место 3D на слабом устройстве (assets/igra-dnya.js). 3D — модель

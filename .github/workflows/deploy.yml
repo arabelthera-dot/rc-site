@@ -113,9 +113,22 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.povtor.outputs.page_url }}
+    # Повтор выкладки (Р568, 06.11.2026): прогон 42214452722 — Pages отменил выкладку («Deployment cancelled»/«Timeout
+    # reached»), сайт ждал ручного перезапуска. Образец — docs.github.com, контекст steps: первая попытка с
+    # continue-on-error, вторая — только при steps.deployment.outcome == 'failure', после паузы; та же сборка (артефакт
+    # github-pages). Вторая тоже упала — прогон красный, как прежде. Откат — убрать шаги pauza и povtor.
     steps:
       - id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - name: pauza — Pages отказал, вторая попытка через минуту
+        if: steps.deployment.outcome == 'failure'
+        run: |
+          echo "::warning::deploy-pages — первая попытка не удалась, повтор через минуту"
+          sleep 60
+      - id: povtor
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
   # Российская площадка msk-new (Р6; решение Михаила 20.10.2026: сайт на своём сервере nginx + Let's Encrypt, Облако
   # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages), плюс ролики (артефакт
