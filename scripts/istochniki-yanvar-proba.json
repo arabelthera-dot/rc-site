@@ -1,0 +1,166 @@
+{
+ "_shapka": "Находки istochniki-yanvar на origin/main до p544-e, размечены человеком (Р520): lozhnaya — ложная тревога. Строго при ≥10 находках и ≤1 ложной.",
+ "nakhodki": [
+  {
+   "muzei": "izobreteniya",
+   "key": "01-04",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "izobreteniya",
+   "key": "01-08",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "izobreteniya",
+   "key": "01-09",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-04",
+   "msg": "ни одна ссылка дня не проверена (в снимке — https://www.vokrugsveta.ru/articles/pochemu-kozelsk-zloi-gorod-id6208344/) — --seti",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-05",
+   "msg": "ни одна ссылка дня не проверена (в снимке — https://ria.ru/20210622/oborona-1737945933.html) — --seti",
+   "lozhnaya": true,
+   "razmetka": "ложная: на main ссылка brest-fortress.by открывалась (200, «Брест» в тексте); красный только потому, что снимок сделан с новой первой ссылкой РИА"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-06",
+   "msg": "ни одна ссылка дня не проверена (в снимке — https://nlr.ru/nlr_visit/RA10136/Osovets--krepost-russkikh-geroev) — --seti",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-15",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-16",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-17",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-18",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-19",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-20",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-21",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-22",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-23",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-24",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-25",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-26",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-27",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-28",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-29",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-30",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  },
+  {
+   "muzei": "ne-sdayutsya",
+   "key": "01-31",
+   "msg": "в поле источника нет ссылки https://…",
+   "lozhnaya": false,
+   "razmetka": "настоящая дыра, проверено вручную 05.11.2026 (p544-e)"
+  }
+ ]
+}
