@@ -1,0 +1,33 @@
+{
+  "title": "История в 50 секунд",
+  "intro": "Ему предложили снять крест — он не снял",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns23jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/23jan-rodionov/day-23jan-rodionov.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-23jan-rodionov.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.5,
+    "mb": 15.3
+  },
+  "vertical": {
+    "file": "nesdayutsya/23jan-rodionov/day-23jan-rodionov-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-23jan-rodionov-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.5,
+    "mb": 15
+  },
+  "poster": {
+    "file": "nesdayutsya/23jan-rodionov/day-23jan-rodionov-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-23jan-rodionov-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/23jan-rodionov/day-23jan-rodionov-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-23jan-rodionov-9x16-poster.jpg",
+    "v": 1
+  }
+}
