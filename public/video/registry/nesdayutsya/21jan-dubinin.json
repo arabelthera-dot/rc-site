@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "Володя Дубинин днём прошёл вражеские посты и спас отряд от затопления",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns21jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.4,
+    "mb": 13.7
+  },
+  "vertical": {
+    "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.4,
+    "mb": 13.4
+  },
+  "poster": {
+    "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin-9x16-poster.jpg",
+    "v": 1
+  }
+}

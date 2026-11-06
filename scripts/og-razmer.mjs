@@ -7,17 +7,14 @@
 // Запуск: node scripts/og-razmer.mjs [dist]   (npm run og-razmer)
 import fs from 'node:fs';
 import path from 'node:path';
+import { distFiles } from './lib/dist.mjs';
 import sharp from 'sharp';
 
 const DIST = process.argv[2] || 'dist';
 const MIN_W = 600, MIN_H = 315;
 const meta = (h, n) => /content=["']([^"']*)["']/i.exec(
   new RegExp(`<meta\\b[^>]*\\b(?:property|name)=["']${n}["'][^>]*>`, 'i').exec(h)?.[0] ?? '')?.[1];
-const files = [];
-(function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-  const p = path.join(d, e.name);
-  if (e.isDirectory()) walk(p); else if (e.name.endsWith('.html')) files.push(p);
-} })(DIST);
+const files = distFiles(DIST, '**/*.html');
 const size = new Map();
 async function dims(file) {
   if (!size.has(file)) size.set(file, fs.existsSync(file) ? sharp(file).metadata().then((m) => [m.width, m.height], () => null) : Promise.resolve(null));

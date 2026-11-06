@@ -46,8 +46,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           PR: ${{ github.event.pull_request.number }}
-          METKA: ${{ contains(github.event.pull_request.labels.*.name, 'st:gate-sergey') }}
+          METKA_IMYA: st:gate-sergey
         run: |
+          # Метка — с заявки в момент прогона, не из снимка события: перезапуск и прогон, обогнавший «labeled»,
+          # видят метку как есть сейчас (Р540, 04.11: #833/#842 краснели при стоящей метке).
+          METKA=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/$PR" --jq '[.labels[].name] | index($ENV.METKA_IMYA) != null')
+          echo "метка st:gate-sergey: $METKA"
           set -euo pipefail
           gh api --paginate "repos/$REPO/pulls/$PR/files" \
             --jq '.[] | .filename, (.previous_filename // empty)' > faily.txt

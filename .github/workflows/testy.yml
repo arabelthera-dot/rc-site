@@ -1,0 +1,46 @@
+# Тесты, которые раньше никто не запускал (аудит 04.11, п. 67–68; Р532 «да» на п. 9). Как в мире — GitHub Actions
+# «Building and testing Python» и node:test: тесты лежат в репозитории и идут на каждой заявке, а не по памяти.
+#   python — tests/py (кадры и фонды, 65 проб, без сети: сеть подменена) и scripts/kanaly/post.test.py (пост 9:00);
+#   node — scripts/zakon.test.mjs (сверка с реестрами Минюста, r405, ~75 с) и scripts/net-en.mjs (нет английского, src и public).
+# Пять вопросов: задевает — ничего, только читает; нужно — github.token (чтение); без нужного — не бывает;
+# проверка — эта заявка; откат — удалить файл.
+name: testy
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+# Новый пуш в заявку отменяет её прежний прогон (Р568, 06.11.2026): старые прогоны держали исполнители —
+# #883 и #885 стояли 23+ мин. Как в мире — GitHub Docs «Using concurrency», cancel-in-progress; на main не отменяем.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pillow==12.3.0 requests==2.34.2 pymupdf==1.28.2 beautifulsoup4==4.15.0 certifi
+      - name: tests/py — кадры и фонды
+        run: python -m unittest discover -s tests/py -p 'test_*.py'
+      - name: kanaly/post.test.py — отбор поста 9:00
+        run: python scripts/kanaly/post.test.py
+  node:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: zakon.test — сверка с реестрами ловит r380
+        run: node --test scripts/zakon.test.mjs
+      - name: net-en — нет английской версии
+        run: node scripts/net-en.mjs src public

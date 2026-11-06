@@ -7,6 +7,12 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+# Новый пуш в заявку отменяет её прежний прогон (Р568, 06.11.2026): старые прогоны держали исполнители —
+# #883 и #885 стояли 23+ мин. Как в мире — GitHub Docs «Using concurrency», cancel-in-progress; на main не отменяем.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   # Р531, аудит п.16: одна проверка разбита на задания. Без сборки (секунды) — bez-sborki; сборка ОДИН раз — sborka,
   # её dist уходит артефактом в proverki-dist и brauzer, которые идут параллельно. Обязательная проверка main
@@ -63,10 +69,24 @@ jobs:
       - name: sverka-utverzhdeno — страницы всех музеев с карточками как утверждённые карточки
         timeout-minutes: 1
         run: node scripts/sverka-utverzhdeno.mjs --proba && node scripts/sverka-utverzhdeno.mjs
+      # Схема копии карточки (аудит 04.11, п. 5): «кадр без факта» (Р514) — ошибка схемы коллекции utverzhdeno
+      # (src/lib/skhema-utverzhdeno.mjs), видна и при сборке. Пробы: живые карточки зелёные, заведомый брак красный.
+      - name: skhema — пробы схемы утверждённой карточки
+        timeout-minutes: 1
+        run: node --test tests/skhema/utverzhdeno.test.mjs
       - name: sverka-utverzhdeno — долг по всем музеям и дням (только отчёт)
         if: always()
         timeout-minutes: 1
         run: node scripts/sverka-utverzhdeno.mjs --vse
+      # Кадры дня (Р536 п. 4, Р408, Р90): по карточкам src/content/dni-shablon/<музей>/ — разных кадров ≥ 6, повтор по
+      # pHash (Хэмминг ≤ 8, imagehash) и тот же файл дважды — брак, адрес Википедии или Викисклада — брак, кадра нет в public/ — брак.
+      # Недобор лечит машина: scripts/kadry-dnya.py dobor ДНИ --zapis берёт кадры из Госкаталога. Без сборки, секунды.
+      # Откат — удалить шаг и scripts/kadry-dnya.py.
+      - name: kadry-dnya — кадров ≥ 6, без повторов (pHash), без Википедии
+        timeout-minutes: 3
+        run: |
+          python3 -m venv /tmp/kd && /tmp/kd/bin/pip install -q --disable-pip-version-check pillow imagehash pyyaml
+          /tmp/kd/bin/python scripts/kadry-dnya.py zamok --proba && /tmp/kd/bin/python scripts/kadry-dnya.py zamok все
       # Инструкция к каждой игре (Р199, Р201, 23.10.2026; 04-build §5-бис): страница дня с игрой без блока «Как играть»
       # под картинкой игры (data-igra-pravila с шагами после сцены, assets/igra-pravila.css) — ошибка; кнопки «Начать»
       # и «Правила» и игра, спрятанная до старта, — тоже ошибка (Р201: картинка видна и работает сразу). Изменённые в заявке
@@ -259,6 +279,33 @@ jobs:
       # из собранного 01-13. Исключений нет. Откат — удалить этот шаг и tests/vid-dnya.mjs.
       - name: vid-dnya — дни изобретений в виде 13 января
         run: node tests/vid-dnya.mjs dist
+      # Кадры дня — разные (Сергей 01.11, Р408; museum-page-production п. 2-тер; r534): для каждой страницы den/ всех музеев —
+      # кадры тела, повторы по pHash (Хэмминг ≤ 8), доля портретов (лицо по каскаду Хаара OpenCV или «портрет» в alt).
+      # Только отчёт: шаг не роняет заявку (правило «новых замков нет»). Стоит здесь, а не в задании tablicy:
+      # ему нужна собранная dist, tablicy сборку не делает. Откат — удалить этот шаг и tools/kadry-povtory.py.
+      - name: kadry-povtory — разные кадры дня (только отчёт)
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 5
+        run: |
+          python3 -m venv /tmp/kp && /tmp/kp/bin/pip install -q --disable-pip-version-check pillow imagehash 'opencv-python-headless==4.10.0.84' || true
+          /tmp/kp/bin/python tools/kadry-povtory.py dist --svod "$GITHUB_STEP_SUMMARY" || true
+      # Храповик полных дней (Р550, Сергей 05.11.2026: «не уходи в заплатки и по автоматизации действуй»): день из
+      # data/gotovnost/polnye-dni.json получил красную клетку таблицы готовности — заявка красная. Серая (не проверено) —
+      # не краснит. Список растёт сам: .github/workflows/gotovnost-hrapovik.yml после слияния. Пробы — --proba.
+      # РФ-выход для «Источник открывается» выключен: GOTOVNOST_RF=1 и секрет RF_PROXY (socks5h://) — проверка через него;
+      # без выхода (облако GitHub) клетка серая. Выключатель храповика — GOTOVNOST_HRAPOVIK_STROGO=0. Откат — удалить шаг.
+      - name: gotovnost-hrapovik — полный день не стал неполным
+        if: always()
+        continue-on-error: ${{ format('{0}', vars.GOTOVNOST_HRAPOVIK_STROGO) == '0' }}
+        timeout-minutes: 8
+        env:
+          GOTOVNOST_RF_PROXY: ${{ vars.GOTOVNOST_RF == '1' && secrets.RF_PROXY || '' }}
+        run: |
+          python3 -m venv /tmp/gt && /tmp/gt/bin/pip install -q --disable-pip-version-check pillow imagehash pysocks
+          /tmp/gt/bin/python tools/tablica-gotovnosti.py --proba
+          set=--bez-seti; [ -n "$GOTOVNOST_RF_PROXY" ] && set=
+          /tmp/gt/bin/python tools/tablica-gotovnosti.py --dist dist $set --out /tmp/gotovnost --zamok data/gotovnost/polnye-dni.json
       # Сайт живёт от корня домена — корень проверки и есть сборка.
       - run: ln -s "$PWD/dist" /tmp/root
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
@@ -296,7 +343,8 @@ jobs:
     needs: sborka
     runs-on: ubuntu-latest
     # 25, не 15 (27.10.2026): oshibki-js ~3,5, glazami ~2,5, Lighthouse обрывался на 15-й минуте (#515, #516, #520).
-    timeout-minutes: 25
+    # 45, не 25 (r561, 06.11.2026): prohod-igr проходит все игры и съедает свои 10; oshibki-js обрывался на 25-й (#876).
+    timeout-minutes: 45
     steps:
       # Вся история: glazami и kartinki-dnya берут изменённые в заявке дни из git diff с origin/main.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -337,8 +385,11 @@ jobs:
         timeout-minutes: 10
         run: |
           echo "Кэш браузера: ${{ steps.pw-kesh.outputs.cache-hit == 'true' && 'hit' || 'miss' }} (playwright ${{ steps.pw.outputs.versiya }})"
+          # Системные пакеты — один раз и без timeout: убитый timeout'ом npx
+          # оставлял живой apt-get с замком dpkg, и попытки 2 и 3 падали сразу.
+          npx --no-install playwright install-deps chromium || exit 1
           for i in 1 2 3; do
-            timeout 180 npx --no-install playwright install --with-deps chromium && exit 0
+            timeout 180 npx --no-install playwright install chromium && exit 0
             echo "::warning::playwright install: попытка $i не удалась"
           done
           exit 1
@@ -356,6 +407,19 @@ jobs:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
           PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
         run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
+      # Проходчик игр (Р204, задание p544-b, 05.11.2026): игра задетого заявкой дня проходится пальцем на телефоне —
+      # 3D встаёт и поворачивается, 2D доходит до финала; провал 2D-запаски у 3D-дня — только предупреждение (Р432).
+      # На пробе (Р520): пока отчёт; строгость — переменная репозитория PROHOD_IGR_STROGO=1.
+      - name: prohod-igr — игры задетых дней проходятся пальцем
+        continue-on-error: ${{ vars.PROHOD_IGR_STROGO != '1' }}
+        timeout-minutes: 10
+        run: |
+          node -e "require('playwright').chromium.launch().then(b => b.close())" 2>/dev/null || {
+            echo "::error::prohod-igr: браузер не установлен (шаг «glazami — браузер» не справился) — игры не проверены. Перезапуск: gh run rerun --failed"
+            exit 1; }
+          rc=0; node scripts/prohodchik-igr.mjs --baza origin/${{ github.base_ref || 'main' }} || rc=$?
+          cat /tmp/prohod-igr/otchet.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          exit $rc
       # Сторож «Найти день по дате» (18.10.2026): список дней на главной не задваивается при медленной сети.
       # Строгая с 19.10.2026 (на main зелёно, подложенный задвоенный список — красно): заявка краснеет.
       # Выключатель — переменная репозитория PODATE_STROGO=0 (вернуть мягкость без отката кода).

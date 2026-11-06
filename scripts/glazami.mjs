@@ -7,8 +7,8 @@
 //   --zapisat       — записать эталон в файл --porog (только вниз: число может уменьшиться, но не вырасти).
 // Пункты 10 (контраст) и 21 (счётчик, после М26) здесь не мерятся: контраст — в axe, счётчика ещё нет.
 import fs from 'node:fs';
-import http from 'node:http';
 import path from 'node:path';
+import { serveDist } from './lib/dist.mjs';
 const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
 
 const argv = process.argv.slice(2), opt = {}, pos = [];
@@ -24,27 +24,7 @@ const W = 390, H = 844, POTOKOV = +(opt.potokov || 4);
 fs.mkdirSync(OUT, { recursive: true });
 
 let server = null;
-if (opt.dist) {
-  const ROOT = path.resolve(opt.dist), BASE = '/';
-  const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
-    '.json': 'application/json', '.xml': 'application/xml', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
-    '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.ico': 'image/x-icon',
-    '.woff2': 'font/woff2', '.woff': 'font/woff', '.mp4': 'video/mp4', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.txt': 'text/plain' };
-  server = http.createServer((req, res) => {
-    let u = decodeURIComponent(req.url.split('?')[0]);
-    if (!u.startsWith(BASE)) { res.writeHead(404); return res.end(); }
-    let f = path.join(ROOT, u.slice(BASE.length));
-    if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
-    try { if (fs.statSync(f).isDirectory()) f = path.join(f, 'index.html'); } catch {}
-    fs.readFile(f, (err, buf) => {
-      if (err) { res.writeHead(404); return res.end('404'); }
-      res.writeHead(200, { 'content-type': MIME[path.extname(f).toLowerCase()] || 'application/octet-stream', 'content-length': buf.length });
-      res.end(buf);
-    });
-  });
-  await new Promise(r => server.listen(0, '127.0.0.1', r));
-  SITE = `http://127.0.0.1:${server.address().port}${BASE}`;
-}
+if (opt.dist) { server = await serveDist(opt.dist); SITE = server.url; }
 
 // Весь сайт — обе волны карты сайта (Е6, src/integrations/karta-volnami.mjs): файлы волн пишутся и закрытыми.
 const VOLNY = ['sitemap-volna-1.xml', 'sitemap-volna-2.xml'];

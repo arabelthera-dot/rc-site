@@ -10,6 +10,7 @@
 // Запуск: node scripts/bez-viki.mjs [--dist dist] [--spisok] [--json отчёт.json] [--proba]
 import fs from 'node:fs';
 import path from 'node:path';
+import { distFiles } from './lib/dist.mjs';
 
 const argv = process.argv.slice(2);
 const arg = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : d; };
@@ -46,13 +47,7 @@ if (argv.includes('--proba')) {
   process.exit(0);
 }
 
-function* faily(dir) {
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, e.name);
-    if (e.isDirectory()) yield* faily(p);
-    else if (/\.(?:html|js|mjs|json|css)$/i.test(e.name)) yield p;
-  }
-}
+const faily = (dir) => distFiles(dir, '**/*.{html,js,mjs,json,css}');
 
 // Музей — папка после muzei/; всё прочее — «sayt» (главная, служебные страницы).
 const muzeyIz = (rel) => { const m = /^muzei\/([^/]+)\//.exec(rel); return m ? m[1] : 'sayt'; };

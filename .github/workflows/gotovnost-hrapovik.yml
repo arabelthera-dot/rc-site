@@ -1,0 +1,76 @@
+# Рост храповика полных дней (Р550, Сергей 05.11.2026: «не уходи в заплатки и по автоматизации действуй»).
+# После слияния в main машина собирает сайт, считает таблицу готовности и дописывает новые полные дни
+# в data/gotovnost/polnye-dni.json — заявка бота с автослиянием, как glazami-hrapovik.yml. Убирать дни машина не умеет:
+# список только растёт (ratchet). Проверка заявок — шаг gotovnost-hrapovik в proverka.yml.
+# Пять вопросов: задевает — только data/gotovnost/polnye-dni.json; нужно — права contents/pull-requests/actions: write
+# (одобрить ждущую проверку своей заявки) и, по желанию, секрет RF_PROXY (socks5h://) с GOTOVNOST_RF=1 — источники
+# проверяются через российский выход; без нужного — источник серый, допустим для храповика (ссылки есть, сеть их
+# не проверила), заявки красные не будут; проверка — ручной пуск; откат — удалить этот файл.
+# Выключатель — переменная GOTOVNOST_HRAPOVIK (≠ '1' — спит).
+name: gotovnost-hrapovik
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['data/gotovnost/polnye-dni.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gotovnost-hrapovik
+  cancel-in-progress: true
+jobs:
+  rost:
+    if: vars.GOTOVNOST_HRAPOVIK == '1' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    timeout-minutes: 20
+    env:
+      VETKA: avto/gotovnost-polnye-dni
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      # Журнал исправлений на страницах дней берёт даты из git log —
+      # мелкий клон роняет сборку (как в proverka.yml).
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: таблица готовности и новые полные дни
+        env:
+          GOTOVNOST_RF_PROXY: ${{ vars.GOTOVNOST_RF == '1' && secrets.RF_PROXY || '' }}
+        run: |
+          python3 -m venv /tmp/gt && /tmp/gt/bin/pip install -q --disable-pip-version-check pillow imagehash pysocks
+          set=--bez-seti; [ -n "$GOTOVNOST_RF_PROXY" ] && set=
+          /tmp/gt/bin/python tools/tablica-gotovnosti.py --dist dist $set --out /tmp/gotovnost \
+            --zamok data/gotovnost/polnye-dni.json --zapisat || echo "::warning::в main полный день стал неполным — см. ::error:: выше"
+      - name: заявка с выросшим списком
+        run: |
+          git diff --quiet -- data/gotovnost/polnye-dni.json && { echo "Новых полных дней нет — заявки нет."; exit 0; }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -C "$VETKA"
+          git commit -m "[avto] gotovnost: новые полные дни по замеру ${GITHUB_SHA::7}" -- data/gotovnost/polnye-dni.json
+          git push -f origin "$VETKA"
+          telo="Машина замерила main ${GITHUB_SHA::7}: новые полные дни дописаны в храповик (убрать день нельзя).
+          $(git diff HEAD~1 -U0 -- data/gotovnost/polnye-dni.json | grep '^+ ' || true)"
+          nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
+          [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main \
+            --title "[avto] gotovnost: новые полные дни" --body "$telo" | grep -o '[0-9]*$')
+          gh pr merge "$nomer" --auto --squash
+          sha=$(git rev-parse HEAD)
+          zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
+          for i in $(seq 1 12); do
+            vsego=$(gh api "$zapros" -q '.total_count')
+            zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
+            for id in $zhdut; do gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/approve"; done
+            [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ] && { echo "Проверка заявки #$nomer идёт."; exit 0; }
+            sleep 10
+          done
+          echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"

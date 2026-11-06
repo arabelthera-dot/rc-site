@@ -11,6 +11,12 @@ on:
 permissions:
   contents: read
   pull-requests: read
+# Новый пуш в заявку отменяет её прежний прогон (Р568, 06.11.2026): старые прогоны держали исполнители —
+# #883 и #885 стояли 23+ мин. Как в мире — GitHub Docs «Using concurrency», cancel-in-progress; на main не отменяем.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   skhema-yadra:
     runs-on: ubuntu-latest
@@ -21,10 +27,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           PR: ${{ github.event.pull_request.number }}
-          DA_SERGEYA: ${{ contains(github.event.pull_request.labels.*.name, 'skhema:da-sergeya') }}
+          DA_SERGEYA_IMYA: skhema:da-sergeya
           SKHEMA: |
             src/content.config.ts
         run: |
+          # Метка — с заявки в момент прогона, не из снимка события: перезапуск и прогон, обогнавший «labeled»,
+          # видят метку как есть сейчас (Р540, 04.11: #833/#842 краснели при стоящей метке).
+          DA_SERGEYA=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/$PR" --jq '[.labels[].name] | index($ENV.DA_SERGEYA_IMYA) != null')
+          echo "метка skhema:da-sergeya: $DA_SERGEYA"
           gh api "repos/$REPO/pulls/$PR/files" --paginate --jq '.[] | .filename, (.previous_filename // empty)' > /tmp/izmeneno.txt
           zadeto=$(grep -Fxf <(printf '%s\n' $SKHEMA) /tmp/izmeneno.txt | sort -u || true)
           if [ -z "$zadeto" ]; then echo "схема ядра не задета"; exit 0; fi

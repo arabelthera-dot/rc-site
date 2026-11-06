@@ -28,7 +28,7 @@ const DAYS = 'src/content/days/ne-sdayutsya';
 const kartochkaKalendarya = (key) => { const f = path.join(DAYS, `${key}.json`); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null; };
 const BEZ_TEGOV = (s) => s.replace(/<[^>]+>/g, '');
 // Названия сочинений в кавычках — не отрывок источника.
-const NAZVANIE = /^(Повест|Сказани|Задонщин|Жити|Слов|Летопис|Хожени|Моления)/;
+const NAZVANIE = /^(Повест|Сказани|Задонщин|Жити|Слов|Летопис|Хожени|Моления|Песн)/;
 
 const args = process.argv.slice(2);
 const flag = (k) => { const i = args.indexOf(k); return i < 0 ? null : args.splice(i, 2)[1] ?? ''; };
@@ -140,7 +140,9 @@ function udar(f, st, data, m) {
   const izKart = otryvok(f.podrobnee);
   const o = st?.otryvok && f.podrobnee.includes(st.otryvok.replace(/^«|»$/g, '')) ? st.otryvok : izKart ?? st?.otryvok ?? m?.otryvok;
   if (o) u.otryvok = o;
-  const pometka = st?.pometka ?? m?.pometka ?? (izKart ? 'документ' : new Set(f.ssylki.map((s) => new URL(s.href).host)).size >= 2 ? 'два источника' : 'один источник');
+  // «легенда» со старой страницы или из материала не переносится: пометка видна на странице, а оговорок нет (Р504, r544)
+  const staraya = [st?.pometka, m?.pometka].find((x) => x && x !== 'легенда');
+  const pometka = staraya ?? (izKart ? 'документ' : new Set(f.ssylki.map((s) => new URL(s.href).host)).size >= 2 ? 'два источника' : 'один источник');
   if (pometka) u.pometka = pometka;
   return u;
 }

@@ -1,0 +1,92 @@
+# Ролик и аудиогид из облака — на сайт заявкой (r538, Р524/Р525/Р529; корень «забыл ролик»).
+# rc-rolik публикует собранное как выпуск (render.yml — vypusk-<день>-<прогон>, audiogid.yml — vypusk-ag-…);
+# здесь машина каждые полчаса забирает новые выпуски (scripts/rolik-na-sait.mjs spisok), на каждый — своя ветка
+# avto/rolik-<тег>, файлы в public/muzei/<музей>/ и запись реестра public/video/registry/<реестр>/<imya>.json,
+# заявка (автослияние — только у расписания). Руками mp4 и mp3 на сайт никто не носит. Одобрение ждущих проверок — как glazami-hrapovik.
+# Как в мире: последний шаг конвейера открывает заявку с результатом (peter-evans/create-pull-request, gh pr create).
+# Выпуски rc-rolik открытые — ключ не нужен; пишет свой GITHUB_TOKEN. Выпуск, чья заявка закрыта без слияния, не повторяется.
+# Брак выпуска (нет файла, не mp4, нет длительности) — заявки нет, прогон красный (r544). Образцы брака — пререлизы rc-rolik,
+# расписание их не берёт: gh workflow run rolik-na-sait.yml -f teg=vypusk-proba-brak-…
+# Выключатель — переменная ROLIK_NA_SAIT = '0' (расписание спит, ручной пуск работает). Откат — удалить этот файл.
+# Ручной пуск: gh workflow run rolik-na-sait.yml [-f teg=vypusk-…]
+name: rolik-na-sait
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+    inputs:
+      teg:
+        description: "один выпуск rc-rolik (vypusk-…); пусто — все новые"
+        required: false
+        default: ""
+concurrency:
+  group: rolik-na-sait
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  zabrat:
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'schedule' || vars.ROLIK_NA_SAIT != '0')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TEG: ${{ inputs.teg }}
+    steps:
+      # без public/ целиком: скрипт пишет только файлы выпуска (git add --sparse)
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          sparse-checkout: |
+            /scripts/
+            /public/video/registry/
+            /src/data/museums.json
+            /package.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # брак выпуска (нет файла, не mp4, чужой музей) — прогон красный в конце, не молча (r544)
+          brak=0
+          if [ -n "$TEG" ]; then tegi="$TEG"; else tegi=$(node scripts/rolik-na-sait.mjs spisok) || brak=1; fi
+          [ -n "$tegi" ] || { echo "Новых выпусков нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit "$brak"; }
+          for teg in $tegi; do
+            VETKA="avto/rolik-$teg"
+            git switch -q --detach origin/main && git sparse-checkout reapply
+            git switch -q -C "$VETKA"
+            vyvod=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился — на сайт не идёт"; echo "- $teg — брак, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; continue; }
+            git add --sparse public/
+            git diff --cached --quiet && { echo "$teg: на сайте уже то же самое"; continue; }
+            pervaya=$(printf '%s\n' "$vyvod" | head -1)
+            git commit -q -m "[avto] $pervaya ($teg)"
+            git push -q -f origin "$VETKA"
+            telo="Выпуск облака на сайт (r538): https://github.com/arabelthera-dot/rc-rolik/releases/tag/$teg
+
+          \`\`\`
+          $vyvod
+          \`\`\`
+          Заявку открыла машина .github/workflows/rolik-na-sait.yml; файлы и запись реестра — scripts/rolik-na-sait.mjs. Руками не правится: новый ролик — новый выпуск в rc-rolik."
+            nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
+            [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] $pervaya" --body "$telo" | grep -o '[0-9]*$')
+            # автослияние — только у расписания; ручной пуск (проба, разбор) оставляет заявку человеку
+            [ "$GITHUB_EVENT_NAME" = schedule ] && gh pr merge "$nomer" --auto --squash
+            echo "- $teg → https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
+            sha=$(git rev-parse HEAD)
+            zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
+            ok=
+            for i in $(seq 1 12); do
+              vsego=$(gh api "$zapros" -q '.total_count')
+              zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
+              for id in $zhdut; do gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/approve"; done
+              [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ] && { echo "Проверка заявки #$nomer идёт."; ok=1; break; }
+              sleep 10
+            done
+            [ -n "$ok" ] || echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"
+          done
+          exit "$brak"
