@@ -188,7 +188,10 @@ export function sverkaTekstov(tx, root = '.', { segodnya = new Date(), bezZhdut 
         const { re, syroy } = matcher(v);
         for (const t of tx) {
           if (v.adres ? !t.niz.includes(v.tekst) : !words.every((w) => vTekste(t, w, flex(w)))) continue;
-          const m = (syroy ? t.syroy : t.norm).match(re);
+          // Отчество — не фамилия: «Александра Ивановича» не «Александр Иванов» (01-02 Казарский, 01-30 Катюшкин, r565);
+          // слово варианта, само похожее на отчество («юрьевич»), так не снимается.
+          const otchestvo = (x) => !syroy && v.slovoforma && x[0].split(' ').some((w, k) => OTCHESTVO.test(w) && !OTCHESTVO.test(words[k] || ''));
+          const m = [...(syroy ? t.syroy : t.norm).matchAll(new RegExp(re.source, `${re.flags}g`))].find((x) => !otchestvo(x));
           if (!m) continue;
           let sil = silnoe(v, s, z);
           // Пометка рядом снимает человека и организацию (не материал и не адрес).
