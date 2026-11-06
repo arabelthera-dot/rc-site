@@ -128,7 +128,7 @@ fakty:
         stranica: «Подвиг и бесчестье», «Независимое военное обозрение», 05.02.2016
         href: https://nvo.ng.ru/history/2016-02-05/12_podvig.html
         otryvok: «дабы не иметь потомства труса»
-        pometka: легенда
+        pometka: документ
         utverzhden: 2026-11-03
       - summary: <b>С турецкого флагмана крикнули по-русски «Сдавайся!» — бриг ответил залпом всех пушек.</b>
         det:
@@ -236,7 +236,7 @@ fakty:
         stranica: А. Валагин, «Бриг „Меркурий“ в шестичасовом бою победил два турецких линкора», журнал «Родина», 26.05.2025
         href: https://rodina-history.ru/2025/05/26/brig-merkurij-v-shestichasovom-boiu-pobedil-dva-tureckih-linkora.html
         otryvok: «Не робеть, ребята! Пусть пугают — они везут нам Георгия»
-        pometka: легенда
+        pometka: документ
         utverzhden: 2026-11-03
       - summary: <b>«Меркурий» получил больше 300 попаданий, но своим ходом дошёл до эскадры.</b>
         det:
@@ -257,7 +257,7 @@ fakty:
           height: 517
         utverzhden: 2026-11-03
   - id: fakty-dnya
-    kicker: Ещё два факта
+    kicker: Ещё пять фактов
     h2: Память о победе
     udary:
       - summary: <b>Подвиг брига заставил императора навсегда держать во флоте корабль «Память Меркурия».</b>
@@ -285,6 +285,33 @@ fakty:
         stranica: А. Валагин, «Бриг „Меркурий“ в шестичасовом бою победил два турецких линкора», журнал «Родина», 26.05.2025
         href: https://rodina-history.ru/2025/05/26/brig-merkurij-v-shestichasovom-boiu-pobedil-dva-tureckih-linkora.html
         otryvok: «Совершенно невозможно допустить, что такое маленькое судно… вывело из строя два линейных корабля».
+        pometka: документ
+        utverzhden: 2026-11-03
+      - summary: <b>Подвигу «Меркурия» поставили первый памятник Севастополя.</b>
+        det:
+          - "Памятник Казарскому стал первым монументом города. На нём надпись: «Казарскому. Потомству в пример»."
+        src: "Источник: РГ (https://rg.ru/2021/06/15/kto-i-za-chto-otravil-komandira-legendarnogo-briga-merkurij-kazarskogo.html); РОДИНА (https://rodina-history.ru/2025/05/26/brig-merkurij-v-shestichasovom-boiu-pobedil-dva-tureckih-linkora.html)"
+        stranica: РГ
+        href: https://rg.ru/2021/06/15/kto-i-za-chto-otravil-komandira-legendarnogo-briga-merkurij-kazarskogo.html
+        otryvok: «Казарскому. Потомству в пример»
+        pometka: два источника
+        utverzhden: 2026-11-03
+      - summary: <b>За год до «Меркурия» Казарский на бриге «Соперник» брал Анапу и Варну — и получил золотую саблю.</b>
+        det:
+          - Ему было 30 лет. За Анапу и Варну он получил чин капитан-лейтенанта и золотую саблю.
+        src: "Источник: РГ (https://rg.ru/2021/06/15/kto-i-za-chto-otravil-komandira-legendarnogo-briga-merkurij-kazarskogo.html)"
+        stranica: РГ
+        href: https://rg.ru/2021/06/15/kto-i-za-chto-otravil-komandira-legendarnogo-briga-merkurij-kazarskogo.html
+        otryvok: «В 30 лет, командуя бригом "Соперник", участвовал во взятии Анапы и Варны, за что получил чин капитан-лейтенанта и золотую саблю.»
+        pometka: документ
+        utverzhden: 2026-11-03
+      - summary: <b>Ответное «ура» и залп «Меркурия» заставили турок убрать с марсов готовых к абордажу людей.</b>
+        det:
+          - Враг ждал, что бриг спустит флаг, и уже держал абордажные команды на марсах и реях. После залпа их пришлось убрать.
+        src: "Источник: «Подвиг и бесчестье», «Независимое военное обозрение», 05.02.2016, https://nvo.ng.ru/history/2016-02-05/12_podvig.html"
+        stranica: «Подвиг и бесчестье», «Независимое военное обозрение», 05.02.2016
+        href: https://nvo.ng.ru/history/2016-02-05/12_podvig.html
+        otryvok: «В результате туркам пришлось убрать с марсов и реев уже готовые абордажные команды.»
         pometka: документ
         utverzhden: 2026-11-03
 quiz:
