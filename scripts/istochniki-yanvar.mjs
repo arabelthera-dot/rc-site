@@ -104,12 +104,22 @@ function proba(snimok) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'istochniki-'));
   for (const d of ['src/content/days', 'src/content/dni-shablon']) for (const m of MUZEI)
     fs.cpSync(d + '/' + m, path.join(root, d, m), { recursive: true });
-  const chisto = proverit(root, snimok).length;
-  const id = MUZEI[1], key = KLYUCHI.find((k) => !fs.existsSync(path.join(root, 'src/content/dni-shablon', id, `${k}.yaml`)));
-  const f = path.join(root, 'src/content/days', id, `${key}.json`), zap = JSON.parse(fs.readFileSync(f, 'utf8'));
-  const sluchai = [['нет поля', () => { delete zap.source; }], ['нет ссылки', () => { zap.source = 'Газета (rg.ru).'; }],
-    ['ссылка не проверена', () => { zap.source = 'Газета, https://rg.ru/ne-proverena.html'; }]];
-  const ploho = sluchai.filter(([, izm]) => { izm(); fs.writeFileSync(f, JSON.stringify(zap)); return !proverit(root, snimok).some((o) => o.key === key && o.muzei === id); });
+  const chisto = proverit(root, snimok).filter((o) => !(snimok.dolg ?? []).includes(`${o.muzei}/${o.key}`)).length; // долг не в счёт
+  // День для дыр — карточка шаблона (`adres: den`, после Р570 п.3 весь январь такой); нет её — запись дня JSON.
+  const id = MUZEI[1], yml = (k) => path.join(root, 'src/content/dni-shablon', id, `${k}.yaml`);
+  let key = KLYUCHI.find((k) => fs.existsSync(yml(k)) && YAML.parse(fs.readFileSync(yml(k), 'utf8'))?.adres === 'den');
+  let f, zap, zapisat, sluchai;
+  if (key) {
+    f = yml(key); zap = YAML.parse(fs.readFileSync(f, 'utf8')); zapisat = () => YAML.stringify(zap);
+    sluchai = [['нет поля', () => { delete zap.sources; }], ['нет ссылки', () => { zap.sources = [{ title: 'Газета (rg.ru).' }]; }],
+      ['ссылка не проверена', () => { zap.sources = [{ title: 'Газета', href: 'https://rg.ru/ne-proverena.html' }]; }]];
+  } else {
+    key = KLYUCHI.find((k) => !fs.existsSync(yml(k)));
+    f = path.join(root, 'src/content/days', id, `${key}.json`); zap = JSON.parse(fs.readFileSync(f, 'utf8')); zapisat = () => JSON.stringify(zap);
+    sluchai = [['нет поля', () => { delete zap.source; }], ['нет ссылки', () => { zap.source = 'Газета (rg.ru).'; }],
+      ['ссылка не проверена', () => { zap.source = 'Газета, https://rg.ru/ne-proverena.html'; }]];
+  }
+  const ploho = sluchai.filter(([, izm]) => { izm(); fs.writeFileSync(f, zapisat()); return !proverit(root, snimok).some((o) => o.key === key && o.muzei === id); });
   fs.rmSync(root, { recursive: true, force: true });
   if (chisto || ploho.length) {
     console.log(`::error::istochniki-yanvar --proba: чистые данные — ${chisto} находок (ждали 0); не пойманы: ${ploho.map(([n]) => n).join(', ') || '—'}`);
@@ -126,10 +136,14 @@ if (isMain) {
   else {
     const p = JSON.parse(fs.readFileSync(PROBA, 'utf8'));
     const strogo = p.nakhodki.length >= 10 && p.nakhodki.filter((x) => x.lozhnaya).length <= 1;
+    // Долг (храповик, как data/rabochie-dni.json): записанный брак дня не краснит, а пишется предупреждением; новый — красный.
+    // Тексты дней машина не правит — день из долга чинит хозяин дня, затем убирает его из `dolg` снимка.
+    const dolg = new Set(snimok.dolg ?? []);
     const oshibki = proverit('.', snimok);
-    for (const o of oshibki) console.log(`::${strogo ? 'error' : 'warning'} file=${o.file}::${o.muzei} ${o.key}: ${o.msg}`);
-    const n = MUZEI.length * KLYUCHI.length;
-    console.log(`istochniki-yanvar: источник открывается ${n - oshibki.length} из ${n}${strogo ? '' : ' (на пробе, Р520)'}`);
-    if (oshibki.length && strogo) process.exit(1);
+    for (const o of oshibki) console.log(`::${strogo && !dolg.has(`${o.muzei}/${o.key}`) ? 'error' : 'warning'} file=${o.file}::${o.muzei} ${o.key}: ${o.msg}${dolg.has(`${o.muzei}/${o.key}`) ? ' (долг)' : ''}`);
+    for (const id of dolg) if (!oshibki.some((o) => `${o.muzei}/${o.key}` === id)) console.log(`::warning::${id} чист — убери его из dolg в ${SNIMOK}`);
+    const n = MUZEI.length * KLYUCHI.length, novye = oshibki.filter((o) => !dolg.has(`${o.muzei}/${o.key}`));
+    console.log(`istochniki-yanvar: источник открывается ${n - oshibki.length} из ${n}, в долге ${dolg.size}${strogo ? '' : ' (на пробе, Р520)'}`);
+    if (novye.length && strogo) process.exit(1);
   }
 }

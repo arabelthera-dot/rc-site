@@ -1,5 +1,8 @@
 {
  "_shapka": "Снимок проверки источников января (scripts/istochniki-yanvar.mjs). Пишет только --seti; ключ события (klyuch) правит человек.",
+ "dolg": [
+  "ne-sdayutsya/01-28"
+ ],
  "dni": {
   "izobreteniya/01-01": {
    "url": "http://vivovoco.astronet.ru/VV/JOURNAL/VIET/TV/TV.HTM",
@@ -10,7 +13,7 @@
    "naydeno": [
     "телевид"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-02": {
    "url": "https://rvsn.info/library/docs/doc_1_0258.html",
@@ -21,7 +24,7 @@
    "naydeno": [
     "Лун"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-03": {
    "url": "https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Anosov",
@@ -32,7 +35,7 @@
    "naydeno": [
     "Аносов"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-04": {
    "url": "https://habr.com/ru/companies/gazprombank/articles/873628/",
@@ -43,7 +46,7 @@
    "naydeno": [
     "Пильчиков"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-05": {
    "url": "https://transnefthistory.tass.ru/tube-1.html",
@@ -56,7 +59,7 @@
     "Балахан",
     "нефтепровод"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-06": {
    "url": "https://www.cbr.ru/cash_circulation/memorable_coins/coins_base/showcoins/?cat_num=5111-0528",
@@ -67,7 +70,7 @@
    "naydeno": [
     "орловск"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-07": {
    "url": "https://www.mediasphera.ru/issues/khirurgiya-zhurnal-im-n-i-pirogova/2016/8/1002312072016081094",
@@ -78,7 +81,7 @@
    "naydeno": [
     "шунтир"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-08": {
    "url": "https://www.prlib.ru/history/619672",
@@ -91,7 +94,7 @@
     "Ермак",
     "ледокол"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-09": {
    "url": "https://scientificrussia.ru/articles/beskonecnye-relsy-fedora-blinova",
@@ -102,7 +105,7 @@
    "naydeno": [
     "Блинов"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-10": {
    "url": "https://kronvestnik.ru/history/16467",
@@ -115,7 +118,7 @@
     "Пайлот",
     "Бритнев"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-11": {
    "url": "https://cmvvs.ru/ekspozitsiya/dvigateli.html?view=article&amp;id=449",
@@ -128,7 +131,7 @@
     "Костович",
     "двигател"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-12": {
    "url": "https://www.energia.ru/ru/history/systems/rockets/r7.html",
@@ -139,7 +142,7 @@
    "naydeno": [
     "Р-7"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-13": {
    "url": "https://navalmuseum.ru/exhibition?id=159",
@@ -150,7 +153,7 @@
    "naydeno": [
     "Комсомолец"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-14": {
    "url": "http://admship.ru/production/archive/spravochnik-proektov-podvodnykh-lodok-postroennykh-na-admiralteyskikh-verfyakh/proekt-705-lira/",
@@ -161,7 +164,7 @@
    "naydeno": [
     "705"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-15": {
    "url": "https://knowledge.su/k/kovalevskaya-sofya-vasilevna",
@@ -174,7 +177,7 @@
     "Ковалевск",
     "профессор"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-16": {
    "url": "https://museumgagarin.ru/news/yanvar_1969_goda_pervaya_v_mire_stykovka_dvukh_pilotiruemykh_kosmicheskikh_korabley/",
@@ -185,7 +188,7 @@
    "naydeno": [
     "стыковк"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-17": {
    "url": "https://gufo.me/dict/mathematics_encyclopedia/Жуковского_Теорема",
@@ -196,7 +199,7 @@
    "naydeno": [
     "Жуковск"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-18": {
    "url": "https://iq-media.ru/archive/936485878",
@@ -207,7 +210,7 @@
    "naydeno": [
     "Однер"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-19": {
    "url": "https://www.mathnet.ru/rus/rm2433",
@@ -218,7 +221,7 @@
    "naydeno": [
     "Канторович"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-20": {
    "url": "https://www.booksite.ru/fulltext/1/001/008/071/707.htm",
@@ -229,7 +232,7 @@
    "naydeno": [
     "Лунин"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-21": {
    "url": "http://www.vant.ippe.ru/founders/blokhintsev",
@@ -240,7 +243,7 @@
    "naydeno": [
     "Обнинск"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-22": {
    "url": "http://letopis.msu.ru/peoples/7575",
@@ -253,7 +256,7 @@
     "Ландау",
     "сверхтекуч"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-23": {
    "url": "https://phys.msu.ru/rus/about/sovphys/ISSUES-2005/1(43)-2005/umov/",
@@ -264,7 +267,7 @@
    "naydeno": [
     "Умов"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-24": {
    "url": "https://www.nkj.ru/archive/articles/8335/",
@@ -277,7 +280,7 @@
     "К-162",
     "титан"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-25": {
    "url": "https://www.computer-museum.ru/precomp/korsakov.htm",
@@ -288,7 +291,7 @@
    "naydeno": [
     "Корсаков"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-26": {
    "url": "http://www.photohistory.ru/1207248167929303.html",
@@ -301,7 +304,7 @@
     "Срезневск",
     "аэрофот"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-27": {
    "url": "https://old.computerra.ru/hitech/205267/",
@@ -312,7 +315,7 @@
    "naydeno": [
     "Эльбрус"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-28": {
    "url": "https://hij.ru/read/11413/",
@@ -323,7 +326,7 @@
    "naydeno": [
     "Хавкин"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-29": {
    "url": "https://rg.ru/2013/12/30/kostovich-site.html",
@@ -336,7 +339,7 @@
     "Костович",
     "дирижабл"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-30": {
    "url": "https://histrf.ru/read/biographies/kotielnikov-glieb-ievghienievich",
@@ -349,7 +352,7 @@
     "Котельников",
     "парашют"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "izobreteniya/01-31": {
    "url": "https://www.trv-science.ru/2016/03/kak-vyshli-v-mir-girotrony-iz-gorkogo/",
@@ -360,7 +363,7 @@
    "naydeno": [
     "гиротрон"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-01": {
    "url": "http://lib.pushkinskijdom.ru/Default.aspx?tabid=4956",
@@ -371,7 +374,7 @@
    "naydeno": [
     "Евпати"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-02": {
    "url": "https://rodina-history.ru/2025/05/26/brig-merkurij-v-shestichasovom-boiu-pobedil-dva-tureckih-linkora.html",
@@ -382,7 +385,7 @@
    "naydeno": [
     "Меркури"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-03": {
    "url": "https://tvzvezda.ru/news/20201141640-tXxSs.html",
@@ -393,7 +396,7 @@
    "naydeno": [
     "Сиротинин"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-04": {
    "url": "https://www.vokrugsveta.ru/articles/pochemu-kozelsk-zloi-gorod-id6208344/",
@@ -404,7 +407,7 @@
    "naydeno": [
     "Козельск"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-05": {
    "url": "https://ria.ru/20210622/oborona-1737945933.html",
@@ -417,7 +420,7 @@
     "Брест",
     "оборон"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-06": {
    "url": "https://nlr.ru/nlr_visit/RA10136/Osovets--krepost-russkikh-geroev",
@@ -428,7 +431,7 @@
    "naydeno": [
     "Осовец"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-07": {
    "url": "https://warheroes.ru/hero/hero.asp?Hero_id=275",
@@ -441,7 +444,7 @@
     "Гастелло",
     "таран"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-08": {
    "url": "http://vivovoco.astronet.ru/VV/JOURNAL/RUHIST/ZOYA.HTM",
@@ -452,7 +455,7 @@
    "naydeno": [
     "Космодемьянск"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-09": {
    "url": "https://rg.ru/2018/12/02/medinskij-nazval-sensaciej-novye-dokumenty-o-geroiah-panfilovcah.html",
@@ -463,7 +466,7 @@
    "naydeno": [
     "панфиловц"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-10": {
    "url": "https://rodina-history.ru/2024/10/31/vragu-ne-sdaetsia-nash-gordyj-variag-125-let-nazad-na-vodu-spushchen-legendarnyj-krejser.html",
@@ -474,7 +477,7 @@
    "naydeno": [
     "Варяг"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-11": {
    "url": "https://rg.ru/2017/10/17/reg-ufo/geroiu-stalingrada-serzhantu-pavlovu-ispolnilos-sto-let.html",
@@ -485,7 +488,7 @@
    "naydeno": [
     "Павлов"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-12": {
    "url": "https://rodina-history.ru/2018/02/22/rodina-matrosov.html",
@@ -498,7 +501,7 @@
     "Матросов",
     "амбразур"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-13": {
    "url": "https://aif.ru/society/people/1353447",
@@ -509,7 +512,7 @@
    "naydeno": [
     "Рогозов"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-14": {
    "url": "https://naukatv.ru/articles/umeret_ot_goloda_no_spasti_semena",
@@ -522,7 +525,7 @@
     "семян",
     "растениевод"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-15": {
    "url": "https://lenta.ru/articles/2024/02/13/cheluskin/",
@@ -533,7 +536,7 @@
    "naydeno": [
     "Челюскин"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-16": {
    "url": "https://ria.ru/20200218/1564903612.html",
@@ -546,7 +549,7 @@
     "Карбышев",
     "Маутхаузен"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-17": {
    "url": "https://rg.ru/2022/04/04/aleksej-maresev-pervoe-interviu.html",
@@ -557,10 +560,10 @@
    "naydeno": [
     "Маресьев"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-18": {
-   "url": "http://svr.gov.ru/history/person/kuznetsovN.htm",
+   "url": "http://svr.gov.ru/history/stages/kuznetsov.htm",
    "kod": 200,
    "klyuch": [
     "Кузнецов",
@@ -570,7 +573,7 @@
     "Кузнецов",
     "разведчик"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-19": {
    "url": "https://rg.ru/2021/07/04/avariia-na-k-19-kak-eto-bylo-60-let-nazad-i-chto-otkrylos-segodnia.html",
@@ -583,7 +586,7 @@
     "К-19",
     "реактор"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-20": {
    "url": "https://rodina-history.ru/2024/03/15/kupila-tank-i-bila-fashistov-80-let-nazad-umerla-ot-ran-mariia-oktiabrskaia.html",
@@ -594,7 +597,7 @@
    "naydeno": [
     "Октябрьск"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-21": {
    "url": "https://letopis-muzhestva.rgdb.ru/volodya-dubinin",
@@ -605,7 +608,7 @@
    "naydeno": [
     "Дубинин"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-22": {
    "url": "https://rg.ru/2025/02/28/heroes/prosti-proshchaj-shestaia-rota.html",
@@ -616,7 +619,7 @@
    "naydeno": [
     "шестая рота"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-23": {
    "url": "https://history.ru/read/biographies/rodionov-ievghienii-alieksandrovich",
@@ -629,10 +632,10 @@
     "Родионов",
     "крест"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-24": {
-   "url": "https://rm.shm.ru/core/event/106",
+   "url": "http://militera.lib.ru/h/genov/03.html",
    "kod": 200,
    "klyuch": [
     "Шипк"
@@ -640,10 +643,10 @@
    "naydeno": [
     "Шипк"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-25": {
-   "url": "https://lenta.ru/news/2023/07/10/brothers/",
+   "url": "https://dag.aif.ru/society/persona/-rabotayte-bratya-kak-zhivyot-semya-ubitogo-10-let-nazad-geroya-nurbagandova",
    "kod": 200,
    "klyuch": [
     "Нурбагандов"
@@ -651,7 +654,7 @@
    "naydeno": [
     "Нурбагандов"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-26": {
    "url": "https://rodina-history.ru/2025/03/18/a-zemlia-to-kruglaia-60-let-nazad-chelovek-vpervye-vyshel-v-otkrytyj-kosmos.html",
@@ -662,7 +665,7 @@
    "naydeno": [
     "Леонов"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-27": {
    "url": "https://pravdasevera.ru/2021/10/12/61653b1a3f46f9baff566122.html",
@@ -673,21 +676,19 @@
    "naydeno": [
     "Туман"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-28": {
-   "url": "https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/",
-   "kod": 200,
+   "url": "https://goskatalog.ru/portal/#/collections?id=5986146",
+   "kod": 403,
    "klyuch": [
     "Молодая гвардия"
    ],
-   "naydeno": [
-    "Молодая гвардия"
-   ],
-   "data": "2026-11-05"
+   "naydeno": [],
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-29": {
-   "url": "https://www.pnp.ru/social/ivan-susanin-sovershil-svoy-podvig-407-let-nazad.html",
+   "url": "https://ria.ru/20070330/62835275.html",
    "kod": 200,
    "klyuch": [
     "Сусанин",
@@ -697,7 +698,7 @@
     "Сусанин",
     "поляк"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-30": {
    "url": "https://tvzvezda.ru/news/2019681120-21A8y.html",
@@ -708,7 +709,7 @@
    "naydeno": [
     "Чернобыл"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   },
   "ne-sdayutsya/01-31": {
    "url": "https://www.sovsport.ru/boxing/articles/provyol-80-boyov-v-buhenvalde-posle-pobega-iz-konczlagerya-prodolzhil-unichtozhat-naczistov",
@@ -719,7 +720,7 @@
    "naydeno": [
     "Борзенко"
    ],
-   "data": "2026-11-05"
+   "data": "2026-11-06"
   }
  }
 }
