@@ -50,12 +50,10 @@ jobs:
       # проходит — теми же функциями, что у сборки (src/lib/proverka-posta.mjs). Без сети и без отправки, секунды.
       # Проверка №3 (Р84, 21.10.2026): дата события ≠ дата дня — первая дата «Д месяца» в названии, хуке карточки
       # или заголовке полной страницы не совпадает с ключом ММ-ДД (относительные «до/после…», скобки и «ст. ст.» —
-      # не в счёт). Сначала пробы на заведомых строках, потом все дни. Без сборки, секунды. Пока РЕЖИМ ОТЧЁТА
-      # (на main 6 находок, чинит пункт А3 описи); строгость — DATA_DNYA_STROGO: '1' здесь. Откат — удалить шаг.
+      # не в счёт). Сначала пробы на заведомых строках, потом дни рамки data/rabochie-dni.json (Р558, 05.11.2026).
+      # Здесь — только отчёт и проба; строгость даты для дней рамки — у судьи ramka-proverki ниже. Откат — удалить шаг.
       - name: data-dnya — дата события совпадает с датой дня
         timeout-minutes: 1
-        env:
-          DATA_DNYA_STROGO: ${{ vars.DATA_DNYA_STROGO }}
         run: node scripts/data-dnya.mjs --proba && node scripts/data-dnya.mjs
       # Сверщик с утверждённым (Р506, 04.11.2026; Р511 — любой музей): страница дня, изменённая в заявке, в любом
       # музее с карточками — те же факты карточки и в её порядке, у факта его кадр, кадр не повторяется, нет двух фактов
@@ -101,13 +99,11 @@ jobs:
           if-no-files-found: ignore
       # Замок аудиогида и ролика дня (Р232, Сергей 24.10.2026: «аудиогид обязателен, ролик обязателен»): каждая изменённая
       # в заявке страница дня — блок аудиогида и mp3 в public/ есть, не пустой, ≥30 с; блок ролика (<video>) и mp4 есть.
-      # Аудиогид — строго. Ролик — пока отчёт (жёлтая строка); строгий — переменная MEDIA_ROLIK_STROGO=1 (включает Джарвис
-      # после прогона роликов по новому шаблону, Р233). Сначала проба на заведомых страницах. Без сборки, секунды.
+      # Аудиогид — строго. Ролик здесь — строка таблицы без жёлтого; строгий ролик для дней рамки — у судьи ramka-proverki
+      # (Р558). Сначала проба на заведомых страницах. Без сборки, секунды.
       # Описание — scripts/media-dnya.README.md. Откат — удалить этот шаг.
       - name: media-dnya — аудиогид и ролик у дня
         timeout-minutes: 2
-        env:
-          MEDIA_ROLIK_STROGO: ${{ vars.MEDIA_ROLIK_STROGO }}
         run: node scripts/media-dnya.mjs --proba && node scripts/media-dnya.mjs
       # Соседи полной страницы дня (Р165, 23.10.2026): «Куда дальше» и стрелки шапки — ближайшие полные страницы музея
       # (src/lib/sosedi-polnye.mjs). Без сборки, секунды. Откат — удалить шаг.
@@ -145,6 +141,16 @@ jobs:
           PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}
           PUBLIC_POCHTA_SPISOK: ${{ vars.PUBLIC_POCHTA_SPISOK }}
           RC_PROBA_RTL: '1'
+      # Р531, аудит п.15: сборка не оставляет грязной копии — всё, что она пишет, либо в dist, либо в .gitignore.
+      # Новый сгенерированный файл в git → красный здесь, а не тихий шум в чужих заявках.
+      - name: сборка не оставила грязной копии
+        run: |
+          gryaz=$(git status --porcelain)
+          if [ -n "$gryaz" ]; then
+            echo "$gryaz"
+            echo "::error::сборка оставила грязную копию: сгенерированный файл — в .gitignore или в dist, не в git (Р531)"
+            exit 1
+          fi
       # Г20: страница-проба с её стилями — артефактом заявки (≈5 МБ, 3 дня), чтобы смотреть письмо справа налево
       # глазами без полной локальной сборки: gh run download <run> -n proba-rtl.
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -207,15 +213,14 @@ jobs:
         run: node tests/vid-dnya.mjs dist
       # Кадры дня — разные (Сергей 01.11, Р408; museum-page-production п. 2-тер; r534): для каждой страницы den/ всех музеев —
       # кадры тела, повторы по pHash (Хэмминг ≤ 8), доля портретов (лицо по каскаду Хаара OpenCV или «портрет» в alt).
-      # Только отчёт: шаг не роняет заявку (правило «новых замков нет»). Стоит здесь, а не в задании tablicy:
-      # ему нужна собранная dist, tablicy сборку не делает. Откат — удалить этот шаг и tools/kadry-povtory.py.
-      - name: kadry-povtory — разные кадры дня (только отчёт)
-        if: always()
-        continue-on-error: true
+      # Р558 (05.11.2026): меряет только дни рамки data/rabochie-dni.json, прочие дни молчат; отчёт /tmp/kadry-ramka.json
+      # судит ramka-proverki ниже (нет отчёта — красный). Нужна собранная dist, поэтому здесь, а не в tablicy.
+      # Откат — вернуть шаг из истории (git show 60f3fdd4:.github/workflows/proverka.yml) и удалить шаг судьи.
+      - name: kadry-povtory — разные кадры дней рамки
         timeout-minutes: 5
         run: |
-          python3 -m venv /tmp/kp && /tmp/kp/bin/pip install -q --disable-pip-version-check pillow imagehash 'opencv-python-headless==4.10.0.84' || true
-          /tmp/kp/bin/python tools/kadry-povtory.py dist --svod "$GITHUB_STEP_SUMMARY" || true
+          python3 -m venv /tmp/kp && /tmp/kp/bin/pip install -q --disable-pip-version-check pillow imagehash 'opencv-python-headless==4.10.0.84'
+          /tmp/kp/bin/python tools/kadry-povtory.py dist --ramka data/rabochie-dni.json --json /tmp/kadry-ramka.json
       # Храповик полных дней (Р550, Сергей 05.11.2026: «не уходи в заплатки и по автоматизации действуй»): день из
       # data/gotovnost/polnye-dni.json получил красную клетку таблицы готовности — заявка красная. Серая (не проверено) —
       # не краснит. Список растёт сам: .github/workflows/gotovnost-hrapovik.yml после слияния. Пробы — --proba.
@@ -267,9 +272,10 @@ jobs:
         run: node scripts/simvolika-vraga.mjs --dist dist
       - name: karty-podlozhki — внешний сервер тайлов только из разрешённых
         run: node scripts/karty-podlozhki.mjs
-      # Сторож «глазами посетителя» (Сергей 17.10.2026): заявка, которая делает сайт хуже достигнутого,
-      # краснеет. Мерка — эталон scripts/glazami-porog.json (понижать можно, повышать нельзя).
-      # Строгость включается переменной репозитория GLAZAMI_STROGO=1; без неё — только предупреждение.
+      # Сторож «глазами посетителя» (Сергей 17.10.2026). Р558 (05.11.2026): меряет только дни рамки
+      # data/rabochie-dni.json (--tolko), прочие страницы молчат; таблицу /tmp/glazami/tablica.tsv судит ramka-proverki ниже.
+      # Сравнение выборки сайта с эталоном scripts/glazami-porog.json снято. Откат — вернуть шаги из
+      # git show 60f3fdd4:.github/workflows/proverka.yml и удалить шаг судьи.
       # Браузер из кэша (r309, 28.10.2026): #525 краснела на po-date «Executable doesn't exist ... headless_shell»,
       # потому что playwright install при медленном скачивании молча обрывался на 4-й минуте. Теперь: кэш
       # ~/.cache/ms-playwright по версии playwright из package-lock (в логе «Cache restored» / «Cache not found»),
@@ -285,7 +291,6 @@ jobs:
           key: playwright-${{ runner.os }}-${{ steps.pw.outputs.versiya }}-chromium
       - name: glazami — браузер
         id: pw-ustanovka
-        continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
         timeout-minutes: 10
         run: |
           echo "Кэш браузера: ${{ steps.pw-kesh.outputs.cache-hit == 'true' && 'hit' || 'miss' }} (playwright ${{ steps.pw.outputs.versiya }})"
@@ -304,13 +309,19 @@ jobs:
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.pw.outputs.versiya }}-chromium
-      - name: glazami — замер против эталона
-        continue-on-error: ${{ vars.GLAZAMI_STROGO != '1' }}
+      - name: glazami — замер дней рамки
         timeout-minutes: 5
         env:
           PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
           PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}
-        run: node scripts/glazami.mjs --dist dist --porog scripts/glazami-porog.json
+        run: node scripts/glazami.mjs --dist dist --tolko "$(node scripts/ramka-proverki.mjs --spisok)"
+      # Судья рамки (Р558, Сергей 05.11.2026): четыре проверки — ролик, кадры, дата, глазами — строгие только для дней
+      # data/rabochie-dni.json (январь izobreteniya и ne-sdayutsya). Храповик, как у gotovnost: красный, если день рамки
+      # грязный и заявка его трогает или его нет в долге (долг — грязные дни на main, только убывает). Прочие дни молчат.
+      # Откат — удалить этот шаг (и вернуть шаги kadry/glazami из git show 60f3fdd4:.github/workflows/proverka.yml).
+      - name: ramka-proverki — строгие проверки дней рамки
+        timeout-minutes: 2
+        run: node scripts/ramka-proverki.mjs --proba && node scripts/ramka-proverki.mjs --dist dist --kadry /tmp/kadry-ramka.json --glazami /tmp/glazami/tablica.tsv
       # Проходчик игр (Р204, задание p544-b, 05.11.2026): игра задетого заявкой дня проходится пальцем на телефоне —
       # 3D встаёт и поворачивается, 2D доходит до финала; провал 2D-запаски у 3D-дня — только предупреждение (Р432).
       # На пробе (Р520): пока отчёт; строгость — переменная репозитория PROHOD_IGR_STROGO=1.
