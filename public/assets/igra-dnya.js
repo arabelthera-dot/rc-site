@@ -40,7 +40,7 @@
   html.setAttribute('data-igra-rezhim', '3d');
   var glb = blok.getAttribute('data-glb'); if (!glb) return;
   var $ = function(id){ return document.getElementById(id); };
-  function proc(x){ x = Math.round(Math.max(0, Math.min(1, x)) * 100); $('igdFill').style.width = x + '%'; $('igdT').textContent = 'Загрузка 3D: ' + x + ' %'; }
+  function proc(x){ var f = $('igdFill'), t = $('igdT'); if (v2 || !f || !t) return; x = Math.round(Math.max(0, Math.min(1, x)) * 100); f.style.width = x + '%'; t.textContent = 'Загрузка 3D: ' + x + ' %'; }
   zhdat();
   import(base + 'igra-dnya/model3d.js' + (ver ? '?' + ver : ''))
     .then(function(m){ proc(0.1); return m.pokazat($('igdStage'), glb, { progress: function(x){ proc(0.1 + x * 0.9); } }); })

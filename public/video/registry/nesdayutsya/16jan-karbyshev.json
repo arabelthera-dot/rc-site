@@ -1,0 +1,33 @@
+{
+  "title": "История в 49 секунд",
+  "intro": "Ему предлагали чужую форму — он выбрал ледяную стену",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns16jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.2,
+    "mb": 13.9
+  },
+  "vertical": {
+    "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.2,
+    "mb": 13.8
+  },
+  "poster": {
+    "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev-9x16-poster.jpg",
+    "v": 1
+  }
+}
