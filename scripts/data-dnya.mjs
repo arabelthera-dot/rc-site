@@ -6,10 +6,12 @@
 // Дата в скобках и дата со «ст. ст.» сразу за ней — пояснение, не дата события.
 // Дата в скобках и дата со «ст. ст.» сразу за ней — пояснение, не дата события.
 // Диапазон «1–4 января» / «1 и 4 января», где есть день карточки, — не расхождение.
-// Запуск: node scripts/data-dnya.mjs [--proba]. Находки печатаются всегда; код выхода 1 — только при DATA_DNYA_STROGO=1.
-// Пока режим отчёта (21.10.2026: настоящие расхождения чинит пункт А3 описи). Выключатель шага — переменная DATA_DNYA_STROGO=0.
+// Запуск: node scripts/data-dnya.mjs [--proba] [--vse]. Р558 (05.11.2026): строгий замок — у судьи рамки
+// scripts/ramka-proverki.mjs (дни data/rabochie-dni.json, по собранной dist); здесь — отчёт только по дням рамки,
+// про прочие дни молчим; --vse — все дни. Код выхода 1 — только проба мимо.
 import fs from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const DAYS = 'src/content/days', FULL = 'src/data/full-pages';
 const MON = ['январ', 'феврал', 'март', 'апрел', 'ма', 'июн', 'июл', 'август', 'сентябр', 'октябр', 'ноябр', 'декабр'];
@@ -44,6 +46,10 @@ export function rashozhdenie(text, key) {
   return p.txt;
 }
 
+// Модуль подключает судья рамки — без запуска главной части.
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) glavnaya();
+
+function glavnaya() {
 if (process.argv.includes('--proba')) {
   const proba = [
     ['01-01', 'Пильчиков 4 января взорвал заряд', true],
@@ -75,12 +81,18 @@ const pageHead = (html) => {
 };
 const nahodki = [];
 let vsego = 0;
+let ramka = null;
+if (!process.argv.includes('--vse')) {
+  const r = JSON.parse(fs.readFileSync('data/rabochie-dni.json', 'utf8'));
+  ramka = new Set(r['музеи'].flatMap((m) => Array.from({ length: 31 }, (_, i) => `${m}/${r['месяц']}-${String(i + 1).padStart(2, '0')}`)));
+}
 for (const museum of fs.readdirSync(DAYS).sort()) {
   let dated = true;
   try { dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${museum}.json`, 'utf8')).dated !== false; } catch {}
   if (!dated) continue;
   for (const f of fs.readdirSync(path.join(DAYS, museum)).filter((x) => /^\d\d-\d\d\.json$/.test(x)).sort()) {
     const key = f.slice(0, 5);
+    if (ramka && !ramka.has(`${museum}/${key}`)) continue;
     const d = JSON.parse(fs.readFileSync(path.join(DAYS, museum, f), 'utf8'));
     vsego++;
     const polya = [['название', d.title], ['хук', d.hook]];
@@ -92,9 +104,6 @@ for (const museum of fs.readdirSync(DAYS).sort()) {
     }
   }
 }
-const strogo = process.env.DATA_DNYA_STROGO === '1';
-console.log(`data-dnya: дней ${vsego}, находок «дата события ≠ дата дня» ${nahodki.length}${strogo ? '' : ' (режим отчёта)'}`);
+console.log(`data-dnya: дней ${vsego}${ramka ? ' (рамка data/rabochie-dni.json; все — --vse)' : ''}, находок «дата события ≠ дата дня» ${nahodki.length} (отчёт; строго — судья рамки)`);
 for (const n of nahodki) console.log('  ' + n);
-if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-  `### data-dnya — дата события ≠ дата дня: ${nahodki.length}\n\n${nahodki.map((n) => '- ' + n).join('\n')}\n`);
-process.exit(strogo && nahodki.length ? 1 : 0);
+}
