@@ -7,6 +7,7 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
+import { zamokYanvarya } from './zamok-yanvarya.mjs';
 
 export const str = z.string().min(1);
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка
@@ -137,6 +138,8 @@ const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message
 export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portrety = false } = {}) {
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) iss(ctx, ['quiz', 'voprosy', i, 'a'], 'номер ответа вне списка'); });
   if (d.adres !== 'den') return;
+  // Замок января (Р570 п.2): смягчения Р504, запретные имена, адрес источника у каждого факта — только январь двух музеев.
+  zamokYanvarya(d, ctx, d.muzei);
   if (!d.head.sobytie || !d.head.god) iss(ctx, ['head'], 'на адресе den нужны head.sobytie и head.god (заголовок вкладки)');
   // Вид 13 янв. (Р302): обложка и кадры обязательны.
   if (!d.oblozhka) iss(ctx, ['oblozhka'], 'на адресе den нужна обложка (oblozhka), как у 13 янв.');

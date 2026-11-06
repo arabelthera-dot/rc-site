@@ -7,6 +7,7 @@ import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { existsSync } from 'node:fs';
 import { kartochkaUtv } from './lib/skhema-utverzhdeno.mjs';
+import { zamokYanvarya } from './lib/zamok-yanvarya.mjs';
 
 // Музеи — каталог platform/catalog/museums.json как есть; title_ru — единственное имя музея.
 const museums = defineCollection({
@@ -173,6 +174,8 @@ const days = defineCollection({
       ctx.addIssue({ code: 'custom', path: ['hook'], message: 'у дня со страницей нет хука' });
     if (!waived && d.legacy_page && !d.source)
       ctx.addIssue({ code: 'custom', path: ['source'], message: 'у дня со страницей нет источника' });
+    // Замок января (Р570 п.2, метка skhema:da-sergeya): смягчения Р504 и запретные имена — январь «Изобретений» и «Русские не сдаются».
+    zamokYanvarya(d, ctx, d.museum);
   // Дня без названия в старом календаре (Календарь побед, 5 дней) — на месте названия его хук: другого текста нет.
   }).transform((d) => ({ ...d, title: d.title || d.hook || '' })),
 });

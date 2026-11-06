@@ -18,6 +18,7 @@ import YAML from 'yaml';
 import { izYaml } from './sverka/chitat-stranicu.mjs';
 import { sverit } from './sverka-utverzhdeno.mjs';
 import { POMETKI_SLUZHEBNYE } from '../src/lib/den-obshchee.mjs';
+import { OGOVORKI } from '../src/lib/zamok-yanvarya.mjs';
 
 const KOREN = new URL('..', import.meta.url).pathname;
 const MUZEY = 'ne-sdayutsya';
@@ -25,17 +26,8 @@ const STR = `src/content/dni-shablon/${MUZEY}`;
 const KAL = `src/content/days/${MUZEY}`;
 const UTV = `src/data/utverzhdeno/${MUZEY}`;
 
-// б) Оговорки, которых в тексте дня быть не может (Р504). «Легендарный» — не оговорка: (?![а-яё]) после окончаний;
-// «стал легендой» — похвала, «под легендой» — прикрытие разведчика, тоже не оговорки (01-18 Кузнецов, r544).
-export const SLOVA = [
-  ['легенда', /(?<![а-яё])(?<!(?:стал[аио]?|под)\s+)легенд(?:а|ы|е|у|ой|ою|ам|ами|ах)?(?![а-яё])/i],
-  ['историки спорят', /историки\s+(?:до\s+сих\s+пор\s+)?спорят/i],
-  ['по преданию', /по\s+преданию/i],
-  ['считается', /(?<![а-яё])считает?ся(?![а-яё])|(?<![а-яё])считаются(?![а-яё])/i],
-  ['Пометка:', /пометка\s*:/i],
-  ['один источник', /один\s+источник/i],
-  ['мнение', /(?<![а-яё])мнени(?:е|я|ю|ем|и|й|ям|ями|ях)(?![а-яё])/i],
-];
+// б) Оговорки, которых в тексте дня быть не может (Р504) — один список с замком января схемы (src/lib/zamok-yanvarya.mjs).
+export const SLOVA = OGOVORKI;
 // Поля, где не текст, а адрес или служебное значение.
 const NE_TEKST = new Set(['href', 'data_source', 'poster', 'license', 'width', 'height', 'utverzhden', 'id', 'key', 'muzei', 'adres', 'canonical']);
 const ADRES = /^(?:\/|https?:\/\/|\.\.?\/)\S*$/;
