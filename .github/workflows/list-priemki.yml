@@ -63,8 +63,11 @@ jobs:
         if: steps.chto.outputs.dni != '' || steps.chto.outputs.shablon != ''
         timeout-minutes: 10
         run: |
+          # Системные пакеты — один раз и без timeout: убитый timeout'ом npx
+          # оставлял живой apt-get с замком dpkg, и попытки 2 и 3 падали сразу.
+          npx --no-install playwright install-deps chromium || exit 1
           for i in 1 2 3; do
-            timeout 180 npx --no-install playwright install --with-deps chromium && exit 0
+            timeout 180 npx --no-install playwright install chromium && exit 0
             echo "::warning::playwright install: попытка $i не удалась"
           done
           exit 1

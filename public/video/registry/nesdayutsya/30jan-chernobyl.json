@@ -1,0 +1,33 @@
+{
+  "title": "История в 42 секунды",
+  "intro": "Трое нырнули в смертельную воду, чтобы не взорвался второй реактор",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42086799346) из сценария days/ns30jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 42.4,
+    "mb": 12
+  },
+  "vertical": {
+    "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 42.4,
+    "mb": 11.2
+  },
+  "poster": {
+    "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl-9x16-poster.jpg",
+    "v": 1
+  }
+}

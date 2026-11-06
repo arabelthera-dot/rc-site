@@ -5,8 +5,8 @@
 //   2) ролик — <video> вне игры с файлом mp4 в public/ (data-rc-video — через video/registry.json, иначе src/<source>):
 //      файл есть и не пустой. Секция «Видео создаётся» без <video> — заглушка, не ролик.
 // Пути — как у браузера: страница дня стоит с <base href="/muzei/<музей>/"> (src/integrations/full-pages.mjs).
-// Аудиогид — СТРОГО: нарушение — код 1 и ::error::. Ролик здесь — только строка таблицы, без жёлтого и красного:
-// строгость ролика — у судьи рамки scripts/ramka-proverki.mjs, только для дней data/rabochie-dni.json (Р558, 05.11.2026).
+// Аудиогид — СТРОГО: нарушение — код 1 и ::error::. Ролик — пока отчёт (::warning::, жёлтая строка);
+// MEDIA_ROLIK_STROGO=1 делает ролик строгим (включает Джарвис после прогона роликов по новому шаблону, Р233).
 // Изменённые дни — git diff с базой, как у kartinki-dnya: full-pages/<музей>/ММ-ДД.html и карточки days/<музей>/ММ-ДД.json
 // (карточка — только если у дня есть полная страница). Без сборки и браузера, секунды. Описание — scripts/media-dnya.README.md.
 // Откат — удалить шаг из .github/workflows/proverka.yml.
@@ -16,7 +16,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
-import { pathToFileURL } from 'node:url';
 import { mp3Sek } from '../src/lib/mp3-sek.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
 
@@ -25,6 +24,7 @@ const DAYS = 'src/content/days';
 const MIN_SEK = 30;
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const est = (k) => process.argv.includes(k);
+const ROLIK_STROGO = process.env.MEDIA_ROLIK_STROGO === '1';
 
 // Длительность mp3 — общий модуль src/lib/mp3-sek.mjs (его же берёт замок дня src/lib/den-obshchee.mjs, r602).
 export { mp3Sek };
@@ -44,14 +44,8 @@ const vIgre = (html, at) => {
   const do_ = html.slice(0, at);
   const otkr = [...do_.matchAll(/<(section|div)\b[^>]*\b(?:id=["'](?:games|game[^"']*|[^"']*-game|igra[^"']*)["']|data-game|data-igra-scena)[^>]*>/gi)].pop();
   if (!otkr) return false;
-  // Игра закрылась раньше, если глубина от её открывающего тега дошла до нуля (r558: простой счёт «открытых больше» ловил
-  // секцию самого ролика, идущую после игры, — так izobreteniya 01-29 с роликом считалась без ролика).
-  let gl = 0;
-  for (const t of do_.slice(otkr.index).match(new RegExp(`<\\/?${otkr[1]}\\b`, 'gi')) || []) {
-    gl += t.startsWith('</') ? -1 : 1;
-    if (gl === 0) return false;
-  }
-  return true;
+  const tegi = do_.slice(otkr.index).match(new RegExp(`<\\/?${otkr[1]}\\b`, 'gi')) || [];
+  return tegi.filter((t) => !t.startsWith('</')).length > tegi.filter((t) => t.startsWith('</')).length;
 };
 
 // Что не так с медиа страницы дня: { ag: [...], rolik: [...] } — пусто, значит на месте; плюс сведения для таблицы.
@@ -122,16 +116,12 @@ function otchet(itog, zagolovok) {
   const agOk = itog.filter((r) => !r.ag.length), rOk = itog.filter((r) => !r.rolik.length);
   const stroki = ['| день | аудиогид | ролик | итог |', '|---|---|---|---|',
     ...itog.map((r) => `| ${r.muzey} ${r.key} | ${r.ag.length ? 'нет' : sek(r.agSek)} | ${r.rolik.length ? 'нет' : sek(r.rolikSek)} | ${
-      [r.ag.length ? 'КРАСНЫЙ: ' + r.ag.join('; ') : '', r.rolik.length ? 'ролик: ' + r.rolik.join('; ') : '']
+      [r.ag.length ? 'КРАСНЫЙ: ' + r.ag.join('; ') : '', r.rolik.length ? `${ROLIK_STROGO ? 'КРАСНЫЙ' : 'ЖЁЛТЫЙ'}: ` + r.rolik.join('; ') : '']
         .filter(Boolean).join(' · ') || 'зелёный'} |`)];
   return `### ${zagolovok}: аудиогид ${agOk.length} из ${itog.length}, ролик ${rOk.length} из ${itog.length}`
-    + ` (ролик — отчёт; строго — судья рамки, Р558)\n\n${stroki.join('\n')}\n`;
+    + `${ROLIK_STROGO ? '' : ' (ролик — отчёт, MEDIA_ROLIK_STROGO≠1)'}\n\n${stroki.join('\n')}\n`;
 }
 
-// Модуль подключает судья рамки (scripts/ramka-proverki.mjs) — без запуска главной части.
-if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) glavnaya();
-
-function glavnaya() {
 if (est('--proba')) {
   // Заведомые страницы: замок пропускает хорошую и ловит каждый брак.
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'media-proba-'));
@@ -167,7 +157,6 @@ if (est('--proba')) {
     ['пустой mp4', AG + '<video src="video/pustoy.mp4"></video>', 0, 1],
     ['выпуска нет в реестре', AG + '<video data-rc-video="proba/net"></video>', 0, 1],
     ['ролик только в игре', AG + '<div id="game-1"><video src="video/rolik.mp4"></video></div>', 0, 1],
-    ['ролик в своей секции после игры', AG + '<section id="games"><section>и</section></section><section id="video"><video src="video/rolik.mp4"></video></section>', 0, 0],
   ];
   let mimo = 0;
   for (const [imya, html, zhduAg, zhduR] of proba) {
@@ -215,7 +204,7 @@ if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_S
 if (est('--vse')) process.exit(0);
 for (const r of itog) {
   if (r.ag.length) console.log(`::error::День ${r.muzey} ${r.key}: аудиогид — ${r.ag.join('; ')}`);
+  if (r.rolik.length) console.log(`::${ROLIK_STROGO ? 'error' : 'warning'}::День ${r.muzey} ${r.key}: ролик — ${r.rolik.join('; ')}`);
 }
-const krasnyy = itog.some((r) => r.ag.length);
+const krasnyy = itog.some((r) => r.ag.length || (ROLIK_STROGO && r.rolik.length));
 process.exit(krasnyy ? 1 : 0);
-}

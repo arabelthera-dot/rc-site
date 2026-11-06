@@ -185,13 +185,7 @@ def main():
     ap.add_argument('--svod', help='дописать в файл свод по музеям (для $GITHUB_STEP_SUMMARY)')
     ap.add_argument('--zamok', action='append', default=[], help='ЗАМОК для музея: повтор или портретов > 1/3 — код 1')
     ap.add_argument('--dolg', default=DOLG, help='долг замка (дни, которые пока не роняют)')
-    ap.add_argument('--ramka', help='только дни рамки (data/rabochie-dni.json, Р558): её музеи и месяц')
     a = ap.parse_args()
-    if a.ramka:
-        with open(a.ramka, encoding='utf-8') as f:
-            r = json.load(f)
-        a.muzei = (a.muzei or []) + r['музеи']
-        a.den = (a.den or []) + [f"{r['месяц']}-{d:02d}" for d in range(1, 32)]
     if a.zamok:
         global STROGO
         STROGO = True
@@ -222,7 +216,7 @@ def main():
     print('| день | в теле | разных | портретов | повторов | замечание |')
     print('|---|---|---|---|---|---|')
     for k, v in otchet.items():
-        if v['flagi'] or (a.den and not a.ramka):
+        if v['flagi'] or a.den:
             print(f"| {k} | {v['telo']} | {v['raznyh']} | {v['portretov']} | {v['povtorov']} | {', '.join(v['flagi'])} |")
     if a.podrobno:
         for k, v in otchet.items():
@@ -250,7 +244,7 @@ def main():
                 f.write(f'| {m} | ' + ' | '.join(map(str, c)) + ' |\n')
     if a.json:
         with open(a.json, 'w', encoding='utf-8') as f:
-            json.dump(otchet, f, ensure_ascii=False, indent=1, default=int)
+            json.dump(otchet, f, ensure_ascii=False, indent=1)
     return zamok(otchet, a.zamok, a.dolg) if a.zamok else 0
 
 

@@ -1,17 +1,12 @@
 # Каркас — scripts/karkas-iz-staroy.mjs (адаптер scripts/karkas/ne-sdayutsya.mjs) из старой страницы и записи дня 01-28.
-# НЕТ: video (ролика нет ни на старой странице, ни в реестре public/video/registry/)
 # НЕТ: история — из раздела #gorod (#istoriya нет)
 # НЕТ: выброшено (в шаблоне нет; визуализацию дня — перенести человеку, Р436): trudno-poverit, dokument, imena, chat-sec
-# НЕТ: кадр /muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-pict1.jpg: файла нет в public
-# НЕТ: кадр /muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-slide13.jpg: файла нет в public
-# НЕТ: кадр /muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-slide12.jpg: файла нет в public
-# НЕТ: кадр /muzei/ne-sdayutsya/img/01-28-victorymuseum-b1-slide31.jpg: файла нет в public
-# НЕТ: кадр /muzei/ne-sdayutsya/img/01-28-victorymuseum-b1-slide23.jpg: файла нет в public
 # НЕТ: кадры (figures): ни в материале, ни в записи дня
 # НЕТ: MUSEUM_RETURN — вопрос возврата из первого вопроса викторины
 
 muzei: ne-sdayutsya
 key: 01-28
+adres: den
 head:
   title: «Молодая гвардия» — «Русские не сдаются» — Русская цивилизация
   description: "Школьники, которые не выдали никого — даже под пытками. Открой карточку каждого из 71 молодогвардейца Краснодона: возраст, школа, что делал в подполье."
@@ -108,6 +103,15 @@ fakty:
         href: https://www.nkj.ru/archive/articles/2464/
         otryvok: «И почти сразу же в городе появились первые листовки, запылала новая баня, уже готовая под немецкие казармы. Это начал действовать Сережка Тюленин. Один.»
         pometka: один источник
+        kadr:
+          src: /muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-slide13.jpg
+          alt: Лист с рукописным текстом чернилами; сверху «Прочти и передай товарищу», ниже «Товарищи Краснодонцы!».
+          data_source: https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/
+          license: ст. 1274 ГК РФ, с указанием музеев; документ 1942 г., авторы-подпольщики погибли в 1943 г.
+          podpis: «Рукописная листовка „Молодой гвардии“. Краснодон, 1942».
+          credit: Краснодонский ордена Дружбы народов музей «Молодая гвардия»
+          width: 312
+          height: 372
         utverzhden: 2026-11-03
       - summary: <b>Виктор Третьякевич на краю шурфа схватил заместителя начальника полиции и потянул за собой вниз.</b>
         det:
@@ -135,6 +139,15 @@ fakty:
         href: https://molodguard.ru/guardian3.htm
         otryvok: «Не для того я вступила в организацию, чтобы потом просить у вас прощения»
         pometka: документ
+        kadr:
+          src: /muzei/ne-sdayutsya/img/01-28-victorymuseum-b1-slide31.jpg
+          alt: "Бланк-карточка на русском языке, заполненный от руки: фамилия «Громова», имя «Ульяна», внизу печать."
+          data_source: https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/
+          license: ст. 1274 ГК РФ, с указанием музеев
+          podpis: «Рабочая карточка Ульяны Громовой, выданная биржей труда. Краснодон, 1942».
+          credit: Краснодонский ордена Дружбы народов музей «Молодая гвардия»
+          width: 590
+          height: 309
         utverzhden: 2026-11-03
       - summary: <b>Сергей Тюленин раненым бежал из плена домой, но соседка выведала у малыша, где он прячется.</b>
         det:
@@ -144,6 +157,15 @@ fakty:
         href: https://molodguard.ru/guardian4.htm
         otryvok: «При выполнении задания он был ранен в правое предплечье.»
         pometka: документ
+        kadr:
+          src: /muzei/ne-sdayutsya/img/01-28-victorymuseum-b1-slide23.jpg
+          alt: "Довоенное групповое фото: подростки на дощатом полу, один стоит в кубанке и черкеске."
+          data_source: https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/
+          license: ст. 1274 ГК РФ; автор снимка не указан
+          podpis: «Сергей Тюленин (в кубанке) и Любовь Шевцова (2-я слева) среди участников агитбригады клуба имени Горького. Краснодон, 1939».
+          credit: Краснодонский ордена Дружбы народов музей «Молодая гвардия»
+          width: 691
+          height: 450
         utverzhden: 2026-11-03
       - summary: <b>Подпольщики сожгли биржу труда со списками и спасли от угона в Германию около двух с половиной тысяч человек.</b>
         det:
@@ -153,6 +175,15 @@ fakty:
         href: https://www.nkj.ru/archive/articles/2464/
         otryvok: «Ночью сожгли немецкую Биржу труда — и две с половиной тысячи краснодонцев были избавлены от немецкой каторги.»
         pometka: два источника
+        kadr:
+          src: /muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-pict1.jpg
+          alt: "Чёрно-белое фото: руины одноэтажного каменного здания без крыши на пыльной улице, рядом тополя."
+          data_source: https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/
+          license: цитирование в информационных целях с указанием Музея Победы и музея «Молодая гвардия» (ст. 1274 ГК РФ); автор снимка не указан
+          podpis: «Здание биржи труда, которое подожгли молодогвардейцы. Краснодон, 1943» (подпись Музея Победы дословно).
+          credit: Краснодонский ордена Дружбы народов музей «Молодая гвардия» (так в подписи Музея Победы)
+          width: 588
+          height: 374
         utverzhden: 2026-11-03
       - summary: <b>Молодогвардейцы молчали под пытками, а выдал их Геннадий Почепцов — струсил и сам донёс в полицию.</b>
         det:
@@ -180,6 +211,15 @@ fakty:
         href: https://molodguard.ru/guardian5.htm
         otryvok: «Гитлеровцы более месяца издевались над девушкой.»
         pometka: один источник
+        kadr:
+          src: /muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-slide12.jpg
+          alt: Узкая полоска бумаги с колонками рукописных цифр и букв.
+          data_source: https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/
+          license: ст. 1274 ГК РФ, с указанием музеев
+          podpis: «Шифр „Молодой гвардии“. Краснодон, 1942».
+          credit: Краснодонский ордена Дружбы народов музей «Молодая гвардия»
+          width: 236
+          height: 549
         utverzhden: 2026-11-03
       - summary: <b>Молодогвардейцы в ночь на 7 ноября 1942 года вывесили над Краснодоном восемь красных флагов.</b>
         det:

@@ -11,16 +11,21 @@
 | что | когда зелёный | строгость |
 |---|---|---|
 | аудиогид | есть блок (`section#audioguide`, `window.MUSEUM_AUDIOGUIDE` или `<audio data-guide-audio>`), mp3 из `audioSrc` / `data-src` есть, не пустой, звучит ≥ 30 с | **строго** — красный роняет заявку |
-| ролик | есть `<video>` вне игры; mp4 есть и не пустой (`data-rc-video` — файл `local` из реестра `public/video/registry/<музей>/<id>.json`, иначе `src` / `<source>`) | строка таблицы; строго — судья рамки (Р558) |
+| ролик | есть `<video>` вне игры; mp4 есть и не пустой (`data-rc-video` — файл `local` из реестра `public/video/registry/<музей>/<id>.json`, иначе `src` / `<source>`) | отчёт — жёлтая строка (`::warning::`) |
 
 Не считаются: звук фильма (`data-film-audio`), звук и видео внутри игры, секция `#video` с надписью «Видео создаётся» без `<video>` (заглушка).
 Длительность mp3 — из самого файла (Xing/Info/VBRI или размер/битрейт), mp4 — из коробки `mvhd`; сверено с ffprobe на всех 141 файле `public/` 24.10.2026, расхождений 0.
 
-## Строгость ролика (Р558, 05.11.2026)
+## Переключатель ролика
 
-Здесь ролик — только строка таблицы, без жёлтого и красного. Строгий ролик — у судьи рамки `scripts/ramka-proverki.mjs`
-и только для дней `data/rabochie-dni.json` (январь izobreteniya и ne-sdayutsya); переменная `MEDIA_ROLIK_STROGO` больше не читается.
-Выключателя аудиогида нет.
+`MEDIA_ROLIK_STROGO=1` — ролик тоже строгий (красный роняет заявку). В CI — переменная репозитория:
+
+```
+gh variable set MEDIA_ROLIK_STROGO --body 1 -R arabelthera-dot/rc-site   # включить
+gh variable delete MEDIA_ROLIK_STROGO -R arabelthera-dot/rc-site         # снова отчёт
+```
+
+Включает Джарвис после прогона роликов по новому шаблону (Р233). Выключателя аудиогида нет.
 
 ## Запуск
 
@@ -28,6 +33,7 @@
 node scripts/media-dnya.mjs --proba          # заведомые страницы: хорошая проходит, каждый брак ловится
 node scripts/media-dnya.mjs                  # изменённые дни против origin/main (--baza другая)
 node scripts/media-dnya.mjs --vse            # таблица по всем полным страницам, без падения (замер)
+MEDIA_ROLIK_STROGO=1 node scripts/media-dnya.mjs
 ```
 
 ## Откат

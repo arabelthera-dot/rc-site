@@ -1,6 +1,5 @@
 # Каркас — scripts/karkas-iz-staroy.mjs (адаптер scripts/karkas/ne-sdayutsya.mjs) из старой страницы и записи дня 01-27.
 # НЕТ: обложка: в материале нет кадра «(обложка)» — взят старый кадр дня /muzei/ne-sdayutsya/img/01-27-goskatalog-21834293.jpg
-# НЕТ: video (ролика нет ни на старой странице, ни в реестре public/video/registry/)
 # НЕТ: история — из раздела #korabl (#istoriya нет)
 # НЕТ: выброшено (в шаблоне нет; визуализацию дня — перенести человеку, Р436): trudno-poverit, dokument, masshtab, chat-sec
 # НЕТ: источники (#sources-rights) — машина фактов соберёт из утверждённых
