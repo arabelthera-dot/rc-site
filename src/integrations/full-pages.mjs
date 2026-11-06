@@ -32,6 +32,8 @@ import { blokDrugieMuzei } from '../lib/etot-den.mjs';
 import { temyOn, blokPoTeme } from '../lib/temy.mjs';
 import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml } from '../lib/redakciya.mjs';
 import { kartochki } from '../lib/dni-shablon.mjs';
+import { ukorotitTitle } from '../lib/title-vkladki.mjs';
+import { stiliVKlassy, CELI_CSS } from '../lib/svoi-stili.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
 // («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
@@ -761,6 +763,10 @@ export default function fullPages() {
             if (!/\srel=["'](?:prev|next)["']/i.test(html)) html = html.replace(/<\/body>/i, `${sosediHtml(base, museum, keys, key)}\n</body>`);
             html = await imgSizes(html, root, base);
             if (!MUSEUMS[museum]) { bad.push(`${museum}/${key} — музея нет в museums.json`); continue; }
+            // заголовок вкладки ≤60 (Р560): режется служебный хвост, название дня — нет (src/lib/title-vkladki.mjs)
+            html = ukorotitTitle(html, MUSEUMS[museum]);
+            // длинные style="…" — в классы, цели касания ≥44 (Р560, src/lib/svoi-stili.mjs)
+            html = stiliVKlassy(html).replace(/<\/head>/i, `<style data-rc-celi>${CELI_CSS}</style>\n</head>`);
             fs.writeFileSync(out, html);
             n++;
           }
