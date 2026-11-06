@@ -26,7 +26,7 @@ jobs:
       IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
       ADRES: https://media.russian-civilization.ru
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: список роликов
         run: |
           find public -type f -name '*.mp4' -printf '%P\n' | LC_ALL=C sort > "$RUNNER_TEMP/spisok.txt"
