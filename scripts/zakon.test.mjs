@@ -45,4 +45,9 @@ const pometka = proba({ 'proba/01-02|facebook': 'проба r405' }, 'Гарри
 proverka(pometka.sovpadeniya.length === 0, `проба с пометкой «иностранный агент» зелёная (совпадений ${pometka.sovpadeniya.length})`);
 const familiya = proba({ 'proba/01-02|facebook': 'проба r405' }, 'Гарри Кимович Каспаров сыграл с машиной, а Каспаров, Гарри — ещё раз.');
 proverka(familiya.sovpadeniya.length === 1, `«Гарри Кимович Каспаров» ловится (совпадений ${familiya.sovpadeniya.length})`);
+// r565: отчество в падеже («Александра Ивановича») — не фамилия «Иванов»; сама фамилия рядом с именем ловится.
+const otch = proba({ 'proba/01-02|facebook': 'проба r405', 'proba/01-01|гарри каспаров': 'проба r405' }, 'Удостоверение Александра Ивановича Катюшкина. Ивана Филипповича Афанасьева.');
+proverka(otch.sovpadeniya.length === 0, `отчество не фамилия: «Александра Ивановича» не ловится (совпадений ${otch.sovpadeniya.map((x) => x.variant).join(', ') || 0})`);
+const fam2 = proba({ 'proba/01-02|facebook': 'проба r405', 'proba/01-01|гарри каспаров': 'проба r405' }, 'Александра Иванова цитировали дважды.');
+proverka(fam2.sovpadeniya.length >= 1, `фамилия в падеже ловится: «Александра Иванова» (совпадений ${fam2.sovpadeniya.length})`);
 process.exit(oshibok ? 1 : 0);

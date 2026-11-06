@@ -7,12 +7,21 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+# Новый пуш в заявку отменяет её прежний прогон (Р568, 06.11.2026): старые прогоны держали исполнители —
+# #883 и #885 стояли 23+ мин. Как в мире — GitHub Docs «Using concurrency», cancel-in-progress; на main не отменяем.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   sborka-i-ssylki:
     runs-on: ubuntu-latest
     # 25, не 15 (27.10.2026): checkout с полной историей ~3 мин, oshibki-js ~3,5, glazami ~2,5 — всё зелёное,
     # но Lighthouse обрывался на 15-й минуте; так краснели #515, #516, #520 при живой сборке.
-    timeout-minutes: 25
+    # 45, не 25 (r561, 06.11.2026): заявка на общий шаблон задевает все дни — сборка 6,5 мин,
+    # prohod-igr проходит все игры и съедает свои 10; oshibki-js обрывался на 25-й минуте (#876).
+    # Каждый шаг ограничен своим timeout-minutes — общий лимит только не режет их раньше срока.
+    timeout-minutes: 45
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
       # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.
@@ -280,8 +289,11 @@ jobs:
         timeout-minutes: 10
         run: |
           echo "Кэш браузера: ${{ steps.pw-kesh.outputs.cache-hit == 'true' && 'hit' || 'miss' }} (playwright ${{ steps.pw.outputs.versiya }})"
+          # Системные пакеты — один раз и без timeout: убитый timeout'ом npx
+          # оставлял живой apt-get с замком dpkg, и попытки 2 и 3 падали сразу.
+          npx --no-install playwright install-deps chromium || exit 1
           for i in 1 2 3; do
-            timeout 180 npx --no-install playwright install --with-deps chromium && exit 0
+            timeout 180 npx --no-install playwright install chromium && exit 0
             echo "::warning::playwright install: попытка $i не удалась"
           done
           exit 1

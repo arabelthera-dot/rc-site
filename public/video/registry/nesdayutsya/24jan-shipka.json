@@ -1,0 +1,33 @@
+{
+  "title": "История в 44 секунды",
+  "intro": "Перевал держали в мороз — и не сошли",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns24jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/24jan-shipka/day-24jan-shipka.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-24jan-shipka.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 43.9,
+    "mb": 14.3
+  },
+  "vertical": {
+    "file": "nesdayutsya/24jan-shipka/day-24jan-shipka-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-24jan-shipka-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 43.9,
+    "mb": 13.7
+  },
+  "poster": {
+    "file": "nesdayutsya/24jan-shipka/day-24jan-shipka-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-24jan-shipka-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/24jan-shipka/day-24jan-shipka-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-24jan-shipka-9x16-poster.jpg",
+    "v": 1
+  }
+}

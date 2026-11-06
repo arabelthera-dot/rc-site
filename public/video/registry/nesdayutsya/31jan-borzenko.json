@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "Его выводили биться против сильнейших — он выигрывал и не сдавался",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42086799346) из сценария days/ns31jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/31jan-borzenko/day-31jan-borzenko.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-31jan-borzenko.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 46.6,
+    "mb": 14.1
+  },
+  "vertical": {
+    "file": "nesdayutsya/31jan-borzenko/day-31jan-borzenko-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-31jan-borzenko-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 46.6,
+    "mb": 13.5
+  },
+  "poster": {
+    "file": "nesdayutsya/31jan-borzenko/day-31jan-borzenko-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-31jan-borzenko-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/31jan-borzenko/day-31jan-borzenko-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-31jan-borzenko-9x16-poster.jpg",
+    "v": 1
+  }
+}
