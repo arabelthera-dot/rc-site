@@ -6,24 +6,13 @@
 // Пропажа блока с главной — тоже брак (19.10.2026: раньше «пропуск» с кодом 0 прятал потерю сценария).
 // Запуск: node scripts/po-date.mjs [--dist dist]
 import fs from 'node:fs';
-import http from 'node:http';
 import path from 'node:path';
+import { serveDist } from './lib/dist.mjs';
 const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
 
 const i = process.argv.indexOf('--dist'), ROOT = path.resolve(i > 0 ? process.argv[i + 1] : 'dist'), BASE = '/';
-const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml' };
-const server = http.createServer((req, res) => {
-  let u = decodeURIComponent(req.url.split('?')[0]);
-  if (!u.startsWith(BASE)) { res.writeHead(404); return res.end(); }
-  let f = path.join(ROOT, u.slice(BASE.length));
-  if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
-  if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
-  if (!fs.existsSync(f)) { res.writeHead(404); return res.end(); }
-  res.writeHead(200, { 'content-type': MIME[path.extname(f)] || 'application/octet-stream' });
-  fs.createReadStream(f).pipe(res);
-});
-await new Promise(r => server.listen(0, '127.0.0.1', r));
-const SITE = `http://127.0.0.1:${server.address().port}${BASE}`;
+const server = await serveDist(ROOT);
+const SITE = server.url;
 
 const browser = await chromium.launch();
 let brak = 0;

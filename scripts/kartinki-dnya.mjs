@@ -13,8 +13,8 @@
 // Запуск: node scripts/kartinki-dnya.mjs [--dist dist] [--baza origin/main] [--proba]
 //         node scripts/kartinki-dnya.mjs --vse [--muzei izobreteniya,...] — таблица по всем полным страницам музеев, без падения.
 import fs from 'node:fs';
-import http from 'node:http';
 import path from 'node:path';
+import { serveDist } from './lib/dist.mjs';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 const pw = await import(process.env.PW || 'playwright'); const chromium = pw.chromium || pw.default.chromium;
@@ -29,24 +29,6 @@ const DIST = arg('--dist', 'dist');
 const IGRA = ['#games', '[id^="game"]', '[id$="-game"]', '[id^="igra"]', '[data-game]', '[data-game-section]',
   '[data-igra-scena]', '.igra-blok', '.igra-ruka-zona', '[class*="-igra"]', '[class^="igra"]'].join(',');
 const NAVIGACIYA = ['header.site-header', 'nav', 'footer', '#calendar', '#kuda-dalshe', '.kd', '#catalog'].join(',');
-
-function server(root) {
-  const ROOT = path.resolve(root);
-  const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
-    '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
-    '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.woff2': 'font/woff2', '.mp4': 'video/mp4', '.mp3': 'audio/mpeg' };
-  const s = http.createServer((req, res) => {
-    let f = path.join(ROOT, decodeURIComponent(req.url.split('?')[0]));
-    if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
-    try { if (fs.statSync(f).isDirectory()) f = path.join(f, 'index.html'); } catch {}
-    fs.readFile(f, (err, buf) => {
-      if (err) { res.writeHead(404); return res.end('404'); }
-      res.writeHead(200, { 'content-type': MIME[path.extname(f).toLowerCase()] || 'application/octet-stream' });
-      res.end(buf);
-    });
-  });
-  return new Promise((r) => s.listen(0, '127.0.0.1', () => r(s)));
-}
 
 // Что не так с картинками открытой страницы: [] — всё на месте; плюс счёт для таблицы.
 async function proverit(page, url) {
@@ -114,8 +96,8 @@ async function proverit(page, url) {
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
 async function prognat(root, dni) {
-  const s = await server(root);
-  const base = `http://127.0.0.1:${s.address().port}`;
+  const s = await serveDist(root);
+  const base = s.url.slice(0, -1);
   const itog = [];
   for (const d of dni) {
     const f = path.join(root, d.adres, 'index.html');

@@ -1,0 +1,72 @@
+# Ролики сайта в хранилище media.russian-civilization.ru (#2364, Михаил «да» 04.11.2026, шаг 2 из 5).
+# Кладёт все mp4 из public/ в /srv/rc-media на msk-new (rcmedia@185.149.145.227, ключ ограничен rrsync -wo — только
+# запись, корень /srv/rc-media) тем же путём, что от корня сайта: public/muzei/x/a.mp4 → https://media.russian-civilization.ru/muzei/x/a.mp4
+# (ровно так ссылки переписывает scripts/media-base.mjs). Без --delete: в хранилище только докладываем.
+# Сверка двумя способами (поправка Михаила 1): повторный rsync -n -c -i — пустой список; каждый файл скачивается с
+# media.russian-civilization.ru и его sha256 равен файлу в репо — N из N. Плюс Range (206, перемотка с телефона) и адрес с ?v=2.
+# Пять вопросов: задевает — только /srv/rc-media, страницы сайта не меняет (MEDIA_BASE пуст до 108/108); нужно — секрет
+# MEDIA_SSH_KEY (есть); без секрета — красный прогон; проверка — сама сверка в этом прогоне; откат — удалить файл задачи,
+# файлы на хранилище никому не мешают.
+name: media
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: media
+  cancel-in-progress: false
+jobs:
+  zalivka:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
+      KUDA: rcmedia@185.149.145.227
+      IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+      ADRES: https://media.russian-civilization.ru
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: список роликов
+        run: |
+          find public -type f -name '*.mp4' -printf '%P\n' | LC_ALL=C sort > "$RUNNER_TEMP/spisok.txt"
+          n=$(wc -l < "$RUNNER_TEMP/spisok.txt")
+          [ "$n" -gt 0 ] || { echo "::error::в public нет mp4"; exit 1; }
+          echo "роликов в репо: $n, $(du -cm $(sed 's|^|public/|' "$RUNNER_TEMP/spisok.txt") | tail -1 | cut -f1) МБ"
+      - name: заливка в хранилище
+        run: |
+          [ -n "$KLYUCH" ] || { echo "::error::нет секрета MEDIA_SSH_KEY"; exit 1; }
+          umask 077; mkdir -p ~/.ssh
+          printf '%s\n' "$KLYUCH" > ~/.ssh/klyuch
+          printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
+          echo "SSH=ssh -i $HOME/.ssh/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes" >> "$GITHUB_ENV"
+          SSH="ssh -i $HOME/.ssh/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes"
+          rsync -rltz --delay-updates --chmod=D755,F644 --stats --files-from="$RUNNER_TEMP/spisok.txt" -e "$SSH" public/ "$KUDA:" | tail -n 15
+      - name: сверка 1 — повторный rsync пустой
+        run: |
+          ostalos=$(rsync -rlt -n -c -i --chmod=D755,F644 --files-from="$RUNNER_TEMP/spisok.txt" -e "$SSH" public/ "$KUDA:" | grep -E '^[<>c]f' || true)
+          if [ -n "$ostalos" ]; then echo "::error::rsync -n -c: на хранилище отличаются файлы:"; echo "$ostalos"; exit 1; fi
+          echo "сверка 1: rsync -n -c -i — пусто, все $(wc -l < "$RUNNER_TEMP/spisok.txt") совпадают"
+      - name: сверка 2 — sha256 каждого с media.russian-civilization.ru
+        run: |
+          n=0; ok=0; brak=""
+          while IFS= read -r p; do
+            n=$((n+1))
+            url="$ADRES/$(python3 -c 'import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1]))' "$p")"
+            nado=$(sha256sum "public/$p" | cut -d' ' -f1)
+            est=$(curl -fsS --retry 3 "$url" | sha256sum | cut -d' ' -f1) || est=net
+            if [ "$est" = "$nado" ]; then ok=$((ok+1)); else brak="$brak$p"$'\n'; fi
+          done < "$RUNNER_TEMP/spisok.txt"
+          echo "сверка 2: sha256 совпал $ok из $n"
+          echo "### Ролики в хранилище: $ok из $n (sha256 с $ADRES)" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$ok" != "$n" ]; then echo "::error::не совпали:"; printf '%s' "$brak"; exit 1; fi
+          p=$(head -1 "$RUNNER_TEMP/spisok.txt"); url="$ADRES/$(python3 -c 'import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1]))' "$p")"
+          r=$(curl -s -o /dev/null -w '%{http_code}' -r 0-1023 "$url")
+          v=$(curl -s -o /dev/null -w '%{http_code}' -I "$url?v=2")
+          echo "Range: $r, адрес с ?v=2: $v"
+          echo "Range (перемотка): $r; адрес с ?v=2: $v" >> "$GITHUB_STEP_SUMMARY"
+          [ "$r" = 206 ] || { echo "::error::Range ответил $r, нужно 206"; exit 1; }
+          [ "$v" = 200 ] || { echo "::error::адрес с ?v=2 ответил $v, нужно 200"; exit 1; }
+      - name: убрать ключ
+        if: always()
+        run: rm -f ~/.ssh/klyuch

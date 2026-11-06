@@ -6,6 +6,7 @@
 // Запуск: node scripts/vneshnie-hosty.mjs [--dist dist] [--json отчёт.json]
 import fs from 'node:fs';
 import path from 'node:path';
+import { distFiles } from './lib/dist.mjs';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const DIST = arg('--dist', 'dist');
@@ -80,13 +81,7 @@ function html(text, file) {
   }
 }
 
-function* faily(dir) {
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, e.name);
-    if (e.isDirectory()) yield* faily(p);
-    else if (/\.(?:html?|css|m?js|svg|webmanifest)$/i.test(e.name)) yield p;
-  }
-}
+const faily = (dir) => distFiles(dir, '**/*.{html,htm,css,js,mjs,svg,webmanifest}');
 
 if (!fs.existsSync(DIST)) { console.error(`vneshnie-hosty: нет папки ${DIST} — сначала npm run build`); process.exit(2); }
 let n = 0;

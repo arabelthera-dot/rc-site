@@ -6,6 +6,7 @@
 // Запуск: node scripts/data-src.mjs [--dist dist]
 import fs from 'node:fs';
 import path from 'node:path';
+import { distFiles } from './lib/dist.mjs';
 
 const i = process.argv.indexOf('--dist');
 const DIST = i > 0 ? process.argv[i + 1] : 'dist';
@@ -13,13 +14,7 @@ const SKIP = /^(?:[a-z][a-z0-9+.-]*:|\/\/|#|\$|\{|data:)/i;
 const bad = [];
 let vsego = 0;
 
-function* html(dir) {
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const p = path.join(dir, e.name);
-    if (e.isDirectory()) yield* html(p);
-    else if (e.name.endsWith('.html')) yield p;
-  }
-}
+const html = (dir) => distFiles(dir, '**/*.html');
 
 for (const file of html(DIST)) {
   const s = fs.readFileSync(file, 'utf8');

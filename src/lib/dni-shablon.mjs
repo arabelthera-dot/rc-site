@@ -48,7 +48,7 @@ export const skhema = z.object({
     ctx.addIssue({ code: 'custom', path: ['igra', 'model3d', 'glb'], message: `нет public/muzei/${d.muzei}/${d.igra.model3d.glb}` });
   d.igra.css.forEach((c, i) => { if (!fs.existsSync(`public/assets/${c}.css`)) ctx.addIssue({ code: 'custom', path: ['igra', 'css', i], message: `нет public/assets/${c}.css` }); });
   // Общий замок живого адреса (r602): заголовок, обложка, факты 10 + 5, кадры (долг), аудиогид, ролик, викторина.
-  zamokObshchiy(d, ctx, { dolgKadrov: DOLG.izobreteniya, dolgVTekste: DOLG['v-tekste'].izobreteniya });
+  zamokObshchiy(d, ctx, { dolgKadrov: DOLG.izobreteniya, dolgVTekste: DOLG['v-tekste'].izobreteniya, portrety: true });
 });
 
 // Все карточки: [{ muzei, key, ... }]; схема — по папке музея. Имя файла и папки должны совпадать с key и muzei карточки.
