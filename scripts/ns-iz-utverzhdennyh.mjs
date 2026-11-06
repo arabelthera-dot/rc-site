@@ -28,7 +28,7 @@ const DAYS = 'src/content/days/ne-sdayutsya';
 const kartochkaKalendarya = (key) => { const f = path.join(DAYS, `${key}.json`); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null; };
 const BEZ_TEGOV = (s) => s.replace(/<[^>]+>/g, '');
 // Названия сочинений в кавычках — не отрывок источника.
-const NAZVANIE = /^(Повест|Сказани|Задонщин|Жити|Слов|Летопис|Хожени|Моления|Песн)/;
+const NAZVANIE = /^(Повест|Сказани|Задонщин|Жити|Слов|Летопис|Хожени|Моления)/;
 
 const args = process.argv.slice(2);
 const flag = (k) => { const i = args.indexOf(k); return i < 0 ? null : args.splice(i, 2)[1] ?? ''; };
