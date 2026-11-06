@@ -1,8 +1,6 @@
 {
  "_shapka": "Снимок проверки источников января (scripts/istochniki-yanvar.mjs). Пишет только --seti; ключ события (klyuch) правит человек.",
- "dolg": [
-  "ne-sdayutsya/01-28"
- ],
+ "dolg": [],
  "dni": {
   "izobreteniya/01-01": {
    "url": "http://vivovoco.astronet.ru/VV/JOURNAL/VIET/TV/TV.HTM",
@@ -679,12 +677,14 @@
    "data": "2026-11-06"
   },
   "ne-sdayutsya/01-28": {
-   "url": "https://goskatalog.ru/portal/#/collections?id=5986146",
-   "kod": 403,
+   "url": "https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/",
+   "kod": 200,
    "klyuch": [
     "Молодая гвардия"
    ],
-   "naydeno": [],
+   "naydeno": [
+    "Молодая гвардия"
+   ],
    "data": "2026-11-06"
   },
   "ne-sdayutsya/01-29": {
