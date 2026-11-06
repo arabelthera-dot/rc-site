@@ -10,6 +10,12 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+# Новый пуш в заявку отменяет её прежний прогон (Р568, 06.11.2026): старые прогоны держали исполнители —
+# #883 и #885 стояли 23+ мин. Как в мире — GitHub Docs «Using concurrency», cancel-in-progress; на main не отменяем.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   python:
     runs-on: ubuntu-latest
