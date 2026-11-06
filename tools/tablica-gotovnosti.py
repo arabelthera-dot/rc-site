@@ -48,6 +48,7 @@ import re
 import socket
 import ssl
 import sys
+import threading
 import time
 import urllib.parse
 import urllib.request
@@ -323,13 +324,39 @@ def p_kadry(s, b, ist):
 
 # ── Источники: открываются ли (сеть) ──
 
+# Один сайт — один запрос за раз (как lychee/linkchecker): иначе libcat.ru, web.archive.org отвечают 429 (Р575).
+_ZAMKI_SAJTOV = {}
+_ZAMOK = threading.Lock()
+
+
+def zamok_sajta(u):
+    host = urllib.parse.urlsplit(u).hostname or u
+    with _ZAMOK:
+        return _ZAMKI_SAJTOV.setdefault(host, threading.Lock())
+
+
+def pauza_429(e, po_umolchaniyu=5):
+    """→ секунды из Retry-After (не больше 15), иначе по умолчанию."""
+    try:
+        return min(15, max(1, int((getattr(e, 'headers', None) or {}).get('Retry-After', po_umolchaniyu))))
+    except (TypeError, ValueError):
+        return po_umolchaniyu
+
+
 def otkryt(u, srok):
-    """→ (код или None, пояснение). 5xx бывает разовым — переспрашиваем один раз через паузу."""
-    kod, pr = otkryt1(u, srok)
-    if kod is not None and kod >= 500:
-        time.sleep(3)
+    """→ (код или None, пояснение). 5xx бывает разовым — переспрашиваем один раз через паузу;
+    429 «слишком часто» — до двух повторов через паузу Retry-After. Запросы к одному сайту — по одному."""
+    with zamok_sajta(u):
         kod, pr = otkryt1(u, srok)
-    return kod, pr
+        if kod is not None and kod >= 500:
+            time.sleep(3)
+            kod, pr = otkryt1(u, srok)
+        for _ in range(2):
+            if kod != 429:
+                break
+            time.sleep(pr if isinstance(pr, int) else 5)
+            kod, pr = otkryt1(u, srok)
+        return kod, ('' if isinstance(pr, int) else pr)
 
 
 def otkryt1(u, srok):
@@ -344,7 +371,7 @@ def otkryt1(u, srok):
             r.read(2048)
             return r.status, ''
         except urllib.error.HTTPError as e:
-            return e.code, ''
+            return e.code, (pauza_429(e) if e.code == 429 else '')
         except ssl.SSLError as e:
             poslednee = 'сертификат'
             continue
