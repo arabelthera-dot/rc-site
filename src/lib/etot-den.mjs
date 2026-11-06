@@ -2,7 +2,7 @@
 // музеях» внизу каждой готовой страницы дня. Одно место для страницы узла (src/pages/segodnya/[key]/index.astro)
 // и для сборки полных страниц (src/integrations/full-pages.mjs) — чистый node, без astro:content.
 // Готовый день — машинно, без ручных списков: полная страница src/data/full-pages/<музей>/<ключ>.html или анкета
-// (карточка src/content/days/<музей>/<ключ>.json с body, ADR 0001), и карточка дня есть; ключ «сверх года»
+// (карточка src/content/days/<музей>/<ключ>.json с body, ADR 0001) или карточка src/content/dni-shablon с adres: den, и карточка дня есть; ключ «сверх года»
 // у недатированного музея — не дата (то же правило, что «Сегодня» на главной, src/lib/segodnya.ts).
 // Карточка «День готовится» — не готовый день: в узел и в блок не идёт, ссылок на пустые страницы нет.
 // Имя музея — ровно title_ru из src/data/museums.json (src/lib/imya-muzeya.mjs). Вид — public/assets/rc-etot-den.css.
@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { MUSEUMS, decode } from './imya-muzeya.mjs';
 import { zagolovok } from './sosedi-polnye.mjs';
+import { kartochki } from './dni-shablon.mjs';
 
 const FULL = 'src/data/full-pages';
 const DAYS = 'src/content/days';
@@ -29,6 +30,8 @@ let cache;
 export function gotovyeDni() {
   if (cache) return cache;
   cache = new Map();
+  // Карточки дней (src/content/dni-shablon, adres: den) — та же страница дня, что полная (Р570): готовый день и без старого HTML.
+  const shablon = new Map(kartochki().filter((k) => k.adres === 'den').map((k) => [`${k.muzei}/${k.key}`, k]));
   const slugs = [...new Set([...(fs.existsSync(FULL) ? fs.readdirSync(FULL) : []), ...(fs.existsSync(DAYS) ? fs.readdirSync(DAYS) : [])])]
     .filter((s) => MUSEUMS[s]).sort((a, b) => (NOMER[a] ?? 999) - (NOMER[b] ?? 999) || a.localeCompare(b));
   for (const museum of slugs) {
@@ -40,13 +43,17 @@ export function gotovyeDni() {
       const card = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
       const html = path.join(FULL, museum, `${key}.html`);
       const polnaya = fs.existsSync(html);
-      if (!polnaya && !card.body) continue;
+      const sh = shablon.get(`${museum}/${key}`);
+      if (!polnaya && !card.body && !sh) continue;
       const first = (card.images ?? []).find((i) => i?.src && (/^https?:/.test(i.src) || fs.existsSync(path.join('public', i.src.replace(/^\//, '')))));
       const text = polnaya ? fs.readFileSync(html, 'utf8') : '';
-      const title = (polnaya && zagolovok(text)) || decode(card.title ?? key);
+      const h1 = sh?.lead?.h1 && sh.lead.h1.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+      const title = (polnaya && zagolovok(text)) || h1 || decode(card.title ?? key);
       // Год события: из карточки, иначе — из пометок даты полной страницы: год обложки, плашка даты («15 января · 1850»),
       // строка над заголовком, если она начинается с даты («2 января · биатлон · Саппоро-1972»). Нет — года нет.
       const metki = [/class="hero-year">([^<]*)/, /class="date-chip">([^<]*)/, /class="eyebrow">(\d{1,2} [а-я]+[^<]*)/].map((r) => r.exec(text)?.[1] ?? '');
+      // Карточка дня — год вкладки head.god, иначе строка даты lead.data; тот же отбор «четыре цифры года».
+      if (sh && !polnaya) metki.push(sh.head?.god ?? '', sh.lead?.data ?? '');
       const year = card.year ?? metki.map((m) => /\b(1[0-9]{3}|20[0-2][0-9])\b/.exec(m)?.[1]).find(Boolean);
       // Что внутри дня — по разметке полной страницы: правила игры, «Главное действие», <video>, <audio>.
       const vnutri = [];
@@ -54,6 +61,11 @@ export function gotovyeDni() {
       else if (/class="kicker">Главное действие/.test(text)) vnutri.push('интерактив');
       if (/<video[\s>]/.test(text)) vnutri.push('ролик');
       if (/<audio[\s>]/.test(text)) vnutri.push('аудиогид');
+      // Карточка дня — по тем же частям шаблона (src/layouts/Den*.astro): 3D с правилами «Как играть», раздел ролика.
+      if (sh && !polnaya) {
+        if (sh.igra?.rc3d || sh.igra?.model3d) vnutri.push('игра');
+        if (sh.video) vnutri.push('ролик');
+      }
       (cache.get(key) ?? cache.set(key, []).get(key)).push({ museum, museumTitle: MUSEUMS[museum], key, title, hook: card.hook, year: year && String(year), vnutri, img: first?.src, alt: first?.caption });
     }
   }

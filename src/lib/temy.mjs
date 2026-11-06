@@ -9,6 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { gotovyeDni, adresDnya, kogda } from './etot-den.mjs';
+import { kartochki } from './dni-shablon.mjs';
 
 const VKLYUCHENO = true;
 export const temyOn = () => VKLYUCHENO || process.env.PUBLIC_TEMY === '1';
@@ -29,9 +30,11 @@ const skolko = (s, re) => (s.match(re) ?? []).length;
 export function tekstDnya(museum, key) {
   const card = JSON.parse(fs.readFileSync(`src/content/days/${museum}/${key}.json`, 'utf8'));
   const html = path.join('src/data/full-pages', museum, `${key}.html`);
+  // Карточка дня (src/content/dni-shablon, adres: den, Р570) — та же страница дня без старого HTML: тело — её тексты.
+  const sh = kartochki().find((k) => k.muzei === museum && k.key === key && k.adres === 'den');
   const telo = fs.existsSync(html)
     ? fs.readFileSync(html, 'utf8').replace(/<(script|style|svg|nav|footer)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ')
-    : JSON.stringify(card.body ?? []);
+    : sh ? JSON.stringify(sh).replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ') : JSON.stringify(card.body ?? []);
   return { golova: `${card.title ?? ''} ${card.hook ?? ''}`, telo, slovar: card.slovar ?? [] };
 }
 

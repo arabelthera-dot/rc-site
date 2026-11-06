@@ -482,12 +482,15 @@ export default function fullPages() {
         checkNetStaryhKalendarey();
         checkPodpisi();
         checkKadryKartochki();
-        if (!fs.existsSync(SRC)) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
+        // Музеи конвейера — со старыми HTML и с карточками дней (src/content/dni-shablon): у музея, чьи старые HTML
+        // все удалены (Р570), папки в SRC нет, а дни из карточек идут тем же конвейером (полоса, календарь, соседи).
+        const muzeiKonveyera = [...new Set([...(fs.existsSync(SRC) ? fs.readdirSync(SRC) : []), ...kartochki().map((k) => k.muzei)])].sort();
+        if (!muzeiKonveyera.length) { checkSitebars(root, base); checkNoGoogleFonts(); return; }
         const bad = [];
         let n = 0;
         let nKal = 0;
         const kalFaily = [];
-        for (const museum of fs.readdirSync(SRC).sort()) {
+        for (const museum of muzeiKonveyera) {
           // Календарь страницы (museum-calendar-month.js) — из записей дней (шаг 4Б ядра, 19.10): один файл на музей
           // dist/muzei/<музей>/kalendar-dney.<хеш>.js вместо старого public/muzei/<музей>/calendar-<x>.js.
           // Старые calendar-<x>.js удалены (19.10), nikitin/calendar.js — 20.10 (А4): нет записей, а тег остался — ошибка сборки.
@@ -507,7 +510,7 @@ export default function fullPages() {
           const h1Shablona = new Map();
           for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den') {
             anketa.add(k.key);
-            if (k.lead?.h1) h1Shablona.set(k.key, k.lead.h1.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+            if (k.lead?.h1) h1Shablona.set(k.key, k.lead.h1.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
           }
           const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
           const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {

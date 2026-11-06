@@ -8,6 +8,7 @@ import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import { YEAR_KEYS, beyondYear, isDated, isReady } from '../../lib/kalendar';
 import { MSK_TZ } from '../../lib/msk.mjs';
+import { kartochki } from '../../lib/dni-shablon.mjs';
 const base = import.meta.env.BASE_URL;
 const museums = (await getCollection('museums')).sort((a, b) => a.data.number - b.data.number);
 const days = (await getCollection('days')).map((d) => d.data).sort((a, b) => a.key.localeCompare(b.key));
@@ -15,7 +16,9 @@ const FULL = 'src/data/full-pages';
 const rows = museums.map(({ data: m }) => {
   const dated = isDated(m.slug);
   const own = days.filter((d) => d.museum === m.slug);
-  const full = new Set(fs.existsSync(`${FULL}/${m.slug}`) ? fs.readdirSync(`${FULL}/${m.slug}`).map((f) => f.replace(/\.html$/, '')) : []);
+  // Полная страница — старый HTML или карточка дня src/content/dni-shablon с adres: den (Р570: та же страница дня).
+  const full = new Set([...(fs.existsSync(`${FULL}/${m.slug}`) ? fs.readdirSync(`${FULL}/${m.slug}`).map((f) => f.replace(/\.html$/, '')) : []),
+    ...kartochki().filter((k) => k.muzei === m.slug && k.adres === 'den').map((k) => k.key)]);
   const ready = own.filter(isReady).map((d) => ({ ...d, full: full.has(d.key) }));
   return { m, dated, ready,
     cal: own.filter((d) => !beyondYear(d.key, dated)).length,
