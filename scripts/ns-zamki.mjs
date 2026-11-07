@@ -35,10 +35,15 @@ export const SLOVA = [
   ['Пометка:', /пометка\s*:/i],
   ['один источник', /один\s+источник/i],
   ['мнение', /(?<![а-яё])мнени(?:е|я|ю|ем|и|й|ям|ями|ях)(?![а-яё])/i],
+  // 01-03 аудиогид (Р577): «Канонический итог: …», «деталь, которую рассказывают до сих пор»
+  ['каноническая версия', /(?<![а-яё])каноническ(?:ий|ая|ое|ие|ого|ой|ому|им|ую|их|ими)(?![а-яё])/i],
+  ['рассказывают до сих пор', /рассказывают\s+до\s+сих\s+пор/i],
 ];
 // Поля, где не текст, а адрес или служебное значение.
 const NE_TEKST = new Set(['href', 'data_source', 'poster', 'license', 'width', 'height', 'utverzhden', 'id', 'key', 'muzei', 'adres', 'canonical']);
 const ADRES = /^(?:\/|https?:\/\/|\.\.?\/)\S*$/;
+// Поля описания источника: src и stranica факта, title в sources.
+const ISTOCHNIK = /(?:\.src|\.stranica|^sources\[\d+\]\.title)$/;
 const tekst = (t) => String(t).replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
 
 export function ogovorki(y) {
@@ -55,7 +60,8 @@ export function ogovorki(y) {
       return;
     }
     if (typeof v !== 'string' || ADRES.test(v.trim())) return;
-    const t = tekst(v);
+    // в источнике «ёлочки» — название статьи («Дом Павлова без легенд и мифов»), не оговорка (01-11)
+    const t = ISTOCHNIK.test(gde) ? tekst(v).replace(/«[^«»]*»/g, '«»') : tekst(v);
     for (const [slovo, re] of SLOVA) {
       const m = t.match(re);
       if (m) o.push(`оговорка «${slovo}» в ${gde}: «…${t.slice(Math.max(0, m.index - 40), m.index + m[0].length + 30).trim()}…»`);
@@ -112,17 +118,22 @@ function proba() {
   plohoj.fakty[0].udary[1].src = 'Источник: «Звезда»; Пометка: один источник';
   plohoj.fakty[0].udary[3].pometka = 'один источник'; // служебная, на страницу не идёт — не ошибка
   delete plohoj.fakty[0].udary[2].utverzhden;
+  plohoj.audioguide = { transcript: ['<p>Канонический итог: одиннадцать танков. И деталь, которую рассказывают до сих пор: …</p>'] };
   const oH = zamki(horoshij, kal, utv);
   const oP = zamki(plohoj, kal, utv);
-  const nado = [/^хук:/, /«легенда» в story/, /историки спорят/, /«легенда» в fakty\[0\]\.udary\[1\]\.pometka/, /«Пометка:»/, /«один источник» в fakty\[0\]\.udary\[1\]\.src/, /^неутверждённый факт/, /без отметки utverzhden/];
+  const nado = [/^хук:/, /«легенда» в story/, /историки спорят/, /«легенда» в fakty\[0\]\.udary\[1\]\.pometka/, /«Пометка:»/, /«один источник» в fakty\[0\]\.udary\[1\]\.src/, /^неутверждённый факт/, /без отметки utverzhden/, /«каноническая версия» в audioguide/, /«рассказывают до сих пор» в audioguide/];
   const propushcheno = nado.filter((re) => !oP.some((s) => re.test(s)));
   if (oP.some((s) => /udary\[3\]\.pometka/.test(s))) propushcheno.push('служебная пометка «один источник» принята за текст');
   // «легендарный», «стал легендой», «под легендой» — не оговорки
-  const lozhnye = ogovorki({ t: 'легендарный полк, легендарная оборона. Инженер, который стал легендой, работал под легендой инженера.' });
+  let lozhnye = ogovorki({ t: 'легендарный полк, легендарная оборона. Инженер, который стал легендой, работал под легендой инженера.' });
+  // название статьи в источнике — не оговорка; та же оговорка вне «ёлочек» — ловится
+  const nazvanie = ogovorki({ fakty: [{ udary: [{ src: 'Источник: «Дом Павлова без легенд и мифов», НВО, 14.02.2014' }] }], sources: [{ title: '«Дом Павлова без легенд и мифов»' }] });
+  const vneNazvaniya = ogovorki({ fakty: [{ udary: [{ src: 'Источник: «НВО»; это легенда' }] }] });
+  if (nazvanie.length || !vneNazvaniya.length) lozhnye.push('название статьи в «ёлочках»');
   let ok = true;
   if (oH.length) { ok = false; console.log(`::error::ns-zamki --proba: хороший образец (${key}) упал:\n  ${oH.join('\n  ')}`); }
   if (propushcheno.length) { ok = false; console.log(`::error::ns-zamki --proba: плохой образец не пойман замками: ${propushcheno.join(', ')}`); }
-  if (lozhnye.length) { ok = false; console.log(`::error::ns-zamki --proba: «легендарный», «стал легендой» или «под легендой» принят за оговорку`); }
+  if (lozhnye.length) { ok = false; console.log(`::error::ns-zamki --proba: «легендарный», «стал легендой» или «под легендой» принят за оговорку (${lozhnye.join('; ')})`); }
   if (!ok) process.exit(1);
   console.log(`ns-zamki --proba: хороший образец ${key} прошёл, плохой упал (${oP.length} ошибок по трём замкам)`);
 }
