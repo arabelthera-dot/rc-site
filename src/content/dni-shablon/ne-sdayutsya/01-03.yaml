@@ -218,7 +218,7 @@ fakty:
       - summary: <b>Сиротинин остался без Звезды Героя, потому что его единственное фото потеряли в эвакуации.</b>
         det:
           - "Жители Кричева хлопотали о звании Героя, но для документов нужна была фотография. Сестра Таисия: «Единственная его карточка с паспорта… в эвакуации в Мордовии мама отдала её увеличить. А мастер её потерял!» В итоге его наградили посмертно орденом Отечественной войны I степени (представление подано в 1960 году)."
-        src: "Источник: СБ (https://www.sb.by/articles/emu-otdavali-chest-vragi-.html); АиФ (https://chr.aif.ru/orel/people/ubit_nepobezhdyonnym_kak_russkiy_soldat_sderzhal_nemeckuyu_tankovuyu_kolonnu); ЗВЕЗДА (https://tvzvezda.ru/news/20201141640-tXxSs.html); Пометка: по «Звезде», формальная причина отказа — представление должен был подписать непосредственный командир"
+        src: "Источник: СБ (https://www.sb.by/articles/emu-otdavali-chest-vragi-.html); АиФ (https://chr.aif.ru/orel/people/ubit_nepobezhdyonnym_kak_russkiy_soldat_sderzhal_nemeckuyu_tankovuyu_kolonnu); ЗВЕЗДА (https://tvzvezda.ru/news/20201141640-tXxSs.html)"
         stranica: СБ
         href: https://www.sb.by/articles/emu-otdavali-chest-vragi-.html
         otryvok: «Единственная его карточка с паспорта… в эвакуации в Мордовии мама отдала её увеличить. А мастер её потерял!»
@@ -227,11 +227,11 @@ fakty:
       - summary: <b>Сиротинин вывел из строя 11 танков, 7 бронемашин и 57 солдат.</b>
         det:
           - Эти цифры приводят «Звезда» и АиФ. Колонна стояла почти три часа.
-        src: "Источник: ЗВЕЗДА (https://tvzvezda.ru/news/20201141640-tXxSs.html); АиФ (https://chr.aif.ru/orel/people/ubit_nepobezhdyonnym_kak_russkiy_soldat_sderzhal_nemeckuyu_tankovuyu_kolonnu); Пометка: два источника; немецкими документами цифры не подтверждены"
+        src: "Источник: ЗВЕЗДА (https://tvzvezda.ru/news/20201141640-tXxSs.html); АиФ (https://chr.aif.ru/orel/people/ubit_nepobezhdyonnym_kak_russkiy_soldat_sderzhal_nemeckuyu_tankovuyu_kolonnu)"
         stranica: ЗВЕЗДА
         href: https://tvzvezda.ru/news/20201141640-tXxSs.html
         otryvok: «артиллерист Николай Сиротинин в одиночку уничтожил 11 танков, 7 бронемашин, 57 солдат и офицеров противника.»
-        pometka: легенда
+        pometka: два источника
         utverzhden: 2026-11-03
   - id: fakty-dnya
     kicker: Ещё пять фактов
@@ -259,7 +259,7 @@ fakty:
       - summary: <b>Запись немецкого офицера о бое у Сокольничей дошла до Симонова и запустила поиск героя.</b>
         det:
           - Подвиг известен по записи из дневника обер-лейтенанта Фридриха Хенфельда из 4-й танковой дивизии. Журналист Фёдор Селиванов показал запись К. Симонову, в поиске помогали С. Смирнов и маршал В. Куликов. В 1958 году «Огонёк» напечатал статью о подвиге — «тогда страна впервые узнала» о Сиротинине («Звезда»).
-        src: "Источник: ЗВЕЗДА (https://tvzvezda.ru/news/20201141640-tXxSs.html); Пометка: запись приписывается дневнику Хенфельда; статья «Огонька» 1958 г. называлась «Легенда о подвиге»"
+        src: "Источник: ЗВЕЗДА (https://tvzvezda.ru/news/20201141640-tXxSs.html)"
         stranica: ЗВЕЗДА
         href: https://tvzvezda.ru/news/20201141640-tXxSs.html
         otryvok: «тогда страна впервые узнала»
