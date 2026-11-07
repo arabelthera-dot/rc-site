@@ -8,12 +8,11 @@
 //      или у факта нет отметки utverzhden.
 // Запуск:
 //   node scripts/ns-zamki.mjs --proba   — заведомо плохой образец обязан упасть по всем трём замкам, хороший — пройти;
-//   node scripts/ns-zamki.mjs           — дни музея, изменённые в заявке (git diff с origin/main), строго: ошибка → выход 1;
+//   node scripts/ns-zamki.mjs           — все дни музея, строго: ошибка → выход 1 (Р577, так зовёт сборка);
 //   node scripts/ns-zamki.mjs ММ-ДД …   — названные дни, строго (так зовёт scripts/ns-konveyer.mjs);
 //   node scripts/ns-zamki.mjs --vse     — все дни, только отчёт (долг).
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { izYaml } from './sverka/chitat-stranicu.mjs';
 import { sverit } from './sverka-utverzhdeno.mjs';
@@ -140,19 +139,8 @@ function glavnoe() {
   const vse = argi.includes('--vse');
   let dni = argi.filter((x) => /^\d\d-\d\d$/.test(x));
   if (vse) dni = fs.readdirSync(path.join(KOREN, STR)).map((f) => f.match(/^(\d\d-\d\d)\.yaml$/)?.[1]).filter(Boolean).sort();
-  else if (!dni.length) {
-    const baza = process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/main';
-    let izm;
-    try {
-      izm = execFileSync('git', ['diff', '--name-only', '--diff-filter=AMR', `${baza}...HEAD`, '--', STR, KAL, UTV], { cwd: KOREN, encoding: 'utf8' });
-    } catch {
-      console.log(`ns-zamki: базы ${baza} нет (сборка не в заявке) — изменённых дней не определить, проверяет шаг заявки`);
-      return;
-    }
-    dni = [...new Set(izm.split('\n').map((f) => f.match(/(\d\d-\d\d)\.(?:yaml|json)$/)?.[1]).filter(Boolean))].sort();
-    dni = dni.filter((k) => fs.existsSync(path.join(KOREN, STR, `${k}.yaml`)));
-    if (!dni.length) { console.log('ns-zamki: дни «Русские не сдаются» в заявке не менялись'); return; }
-  }
+  // все дни строго (Р577): по одним изменённым дням долг остальных копился молча (01-03 09 11 12 13 14)
+  else if (!dni.length) dni = fs.readdirSync(path.join(KOREN, STR)).map((f) => f.match(/^(\d\d-\d\d)\.yaml$/)?.[1]).filter(Boolean).sort();
   let plohih = 0;
   for (const key of dni) {
     const o = proveritDen(key);
