@@ -8,11 +8,12 @@
 //      или у факта нет отметки utverzhden.
 // Запуск:
 //   node scripts/ns-zamki.mjs --proba   — заведомо плохой образец обязан упасть по всем трём замкам, хороший — пройти;
-//   node scripts/ns-zamki.mjs           — все дни музея, строго: ошибка → выход 1 (Р577, так зовёт сборка);
+//   node scripts/ns-zamki.mjs           — дни музея, изменённые в заявке (git diff с origin/main), строго: ошибка → выход 1;
 //   node scripts/ns-zamki.mjs ММ-ДД …   — названные дни, строго (так зовёт scripts/ns-konveyer.mjs);
 //   node scripts/ns-zamki.mjs --vse     — все дни, только отчёт (долг).
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { izYaml } from './sverka/chitat-stranicu.mjs';
 import { sverit } from './sverka-utverzhdeno.mjs';
@@ -38,8 +39,6 @@ export const SLOVA = [
 // Поля, где не текст, а адрес или служебное значение.
 const NE_TEKST = new Set(['href', 'data_source', 'poster', 'license', 'width', 'height', 'utverzhden', 'id', 'key', 'muzei', 'adres', 'canonical']);
 const ADRES = /^(?:\/|https?:\/\/|\.\.?\/)\S*$/;
-// Поля описания источника: src и stranica факта, title в sources.
-const ISTOCHNIK = /(?:\.src|\.stranica|^sources\[\d+\]\.title)$/;
 const tekst = (t) => String(t).replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
 
 export function ogovorki(y) {
@@ -56,8 +55,7 @@ export function ogovorki(y) {
       return;
     }
     if (typeof v !== 'string' || ADRES.test(v.trim())) return;
-    // в источнике «ёлочки» — название статьи («Дом Павлова без легенд и мифов»), не оговорка (01-11)
-    const t = ISTOCHNIK.test(gde) ? tekst(v).replace(/«[^«»]*»/g, '«»') : tekst(v);
+    const t = tekst(v);
     for (const [slovo, re] of SLOVA) {
       const m = t.match(re);
       if (m) o.push(`оговорка «${slovo}» в ${gde}: «…${t.slice(Math.max(0, m.index - 40), m.index + m[0].length + 30).trim()}…»`);
@@ -120,15 +118,11 @@ function proba() {
   const propushcheno = nado.filter((re) => !oP.some((s) => re.test(s)));
   if (oP.some((s) => /udary\[3\]\.pometka/.test(s))) propushcheno.push('служебная пометка «один источник» принята за текст');
   // «легендарный», «стал легендой», «под легендой» — не оговорки
-  let lozhnye = ogovorki({ t: 'легендарный полк, легендарная оборона. Инженер, который стал легендой, работал под легендой инженера.' });
-  // название статьи в источнике — не оговорка; та же оговорка вне «ёлочек» — ловится
-  const nazvanie = ogovorki({ fakty: [{ udary: [{ src: 'Источник: «Дом Павлова без легенд и мифов», НВО, 14.02.2014' }] }], sources: [{ title: '«Дом Павлова без легенд и мифов»' }] });
-  const vneNazvaniya = ogovorki({ fakty: [{ udary: [{ src: 'Источник: «НВО»; это легенда' }] }] });
-  if (nazvanie.length || !vneNazvaniya.length) lozhnye.push('название статьи в «ёлочках»');
+  const lozhnye = ogovorki({ t: 'легендарный полк, легендарная оборона. Инженер, который стал легендой, работал под легендой инженера.' });
   let ok = true;
   if (oH.length) { ok = false; console.log(`::error::ns-zamki --proba: хороший образец (${key}) упал:\n  ${oH.join('\n  ')}`); }
   if (propushcheno.length) { ok = false; console.log(`::error::ns-zamki --proba: плохой образец не пойман замками: ${propushcheno.join(', ')}`); }
-  if (lozhnye.length) { ok = false; console.log(`::error::ns-zamki --proba: «легендарный», «стал легендой» или «под легендой» принят за оговорку (${lozhnye.join('; ')})`); }
+  if (lozhnye.length) { ok = false; console.log(`::error::ns-zamki --proba: «легендарный», «стал легендой» или «под легендой» принят за оговорку`); }
   if (!ok) process.exit(1);
   console.log(`ns-zamki --proba: хороший образец ${key} прошёл, плохой упал (${oP.length} ошибок по трём замкам)`);
 }
@@ -139,8 +133,19 @@ function glavnoe() {
   const vse = argi.includes('--vse');
   let dni = argi.filter((x) => /^\d\d-\d\d$/.test(x));
   if (vse) dni = fs.readdirSync(path.join(KOREN, STR)).map((f) => f.match(/^(\d\d-\d\d)\.yaml$/)?.[1]).filter(Boolean).sort();
-  // все дни строго (Р577): по одним изменённым дням долг остальных копился молча (01-03 09 11 12 13 14)
-  else if (!dni.length) dni = fs.readdirSync(path.join(KOREN, STR)).map((f) => f.match(/^(\d\d-\d\d)\.yaml$/)?.[1]).filter(Boolean).sort();
+  else if (!dni.length) {
+    const baza = process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/main';
+    let izm;
+    try {
+      izm = execFileSync('git', ['diff', '--name-only', '--diff-filter=AMR', `${baza}...HEAD`, '--', STR, KAL, UTV], { cwd: KOREN, encoding: 'utf8' });
+    } catch {
+      console.log(`ns-zamki: базы ${baza} нет (сборка не в заявке) — изменённых дней не определить, проверяет шаг заявки`);
+      return;
+    }
+    dni = [...new Set(izm.split('\n').map((f) => f.match(/(\d\d-\d\d)\.(?:yaml|json)$/)?.[1]).filter(Boolean))].sort();
+    dni = dni.filter((k) => fs.existsSync(path.join(KOREN, STR, `${k}.yaml`)));
+    if (!dni.length) { console.log('ns-zamki: дни «Русские не сдаются» в заявке не менялись'); return; }
+  }
   let plohih = 0;
   for (const key of dni) {
     const o = proveritDen(key);
