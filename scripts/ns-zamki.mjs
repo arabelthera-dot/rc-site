@@ -5,7 +5,9 @@
 //      src/content/days/ne-sdayutsya/ММ-ДД.json;
 //   б) в видимом тексте дня есть оговорка (Р504: «мы победили, мы первые», без оговорок) — слова СЛОВА ниже;
 //   в) факт страницы не из утверждённой карточки src/data/utverzhdeno/ne-sdayutsya/ММ-ДД.json
-//      или у факта нет отметки utverzhden.
+//      или у факта нет отметки utverzhden;
+//   г) оговорка на живой странице src/data/full-pages/ne-sdayutsya/ММ-ДД.html — она идёт посетителю 1:1 вместо
+//      карточки (src/integrations/full-pages.mjs), а yaml её не видит (01-01 «досказала легенда», 07.11).
 // Запуск:
 //   node scripts/ns-zamki.mjs --proba   — заведомо плохой образец обязан упасть по всем трём замкам, хороший — пройти;
 //   node scripts/ns-zamki.mjs           — дни музея, изменённые в заявке (git diff с origin/main), строго: ошибка → выход 1;
@@ -24,6 +26,7 @@ const MUZEY = 'ne-sdayutsya';
 const STR = `src/content/dni-shablon/${MUZEY}`;
 const KAL = `src/content/days/${MUZEY}`;
 const UTV = `src/data/utverzhdeno/${MUZEY}`;
+const ZHIV = `src/data/full-pages/${MUZEY}`;
 
 // б) Оговорки, которых в тексте дня быть не может (Р504). «Легендарный» — не оговорка: (?![а-яё]) после окончаний;
 // «стал легендой» — похвала, «под легендой» — прикрытие разведчика, тоже не оговорки (01-18 Кузнецов, r544).
@@ -71,6 +74,31 @@ export function ogovorki(y) {
   return o;
 }
 
+// г) Видимый текст живой страницы: без скриптов, стилей, комментариев и тегов. Не оговорка — название книги
+// или статьи: «ёлочки» и запись списка литературы «Фамилия И. О. Название // Издание»
+// (01-11 «Дом Павлова без легенд и мифов», 01-18 «Легенда советской разведки»); «легенда» разведчика —
+// прикрытие (01-18: «легенда — обер-лейтенант», «готовилась легенда обер-лейтенанта»).
+export function vidimyjTekst(html) {
+  return html
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;|&#160;/g, ' ').replace(/&laquo;/g, '«').replace(/&raquo;/g, '»').replace(/&[a-z]+;|&#\d+;/g, ' ')
+    .replace(/\s+/g, ' ');
+}
+export function ogovorkiZhivoj(html) {
+  const t = vidimyjTekst(html)
+    .replace(/«[^«»]*»/g, '«»')
+    .replace(/[А-ЯЁ][а-яё-]+,?\s+[А-ЯЁ]\.\s*(?:[А-ЯЁ]\.\s*)?[^·•\/]{0,160}?\/\//g, ' // ')
+    .replace(/(?<![а-яё])легенд(?:а|ы|у|ой)(?:\s+—)?\s+(?:советской\s+разведки|обер-лейтенант|гауптман)/gi, ' ');
+  const o = [];
+  for (const [slovo, re] of SLOVA) {
+    const g = new RegExp(re.source, 'gi');
+    for (const m of t.matchAll(g)) o.push(`живая страница: оговорка «${slovo}»: «…${t.slice(Math.max(0, m.index - 40), m.index + m[0].length + 30).trim()}…»`);
+  }
+  return o;
+}
+
 export function zamki(y, kal, utv) {
   const o = [];
   // а) хук и название — из карточки календаря
@@ -96,7 +124,8 @@ export function proveritDen(key) {
   if (y == null) return [`нет страницы ${STR}/${key}.yaml`];
   const kal = chitat(path.join(KOREN, KAL, `${key}.json`));
   const utv = chitat(path.join(KOREN, UTV, `${key}.json`));
-  return zamki(YAML.parse(y), kal && JSON.parse(kal), utv && JSON.parse(utv));
+  const zh = chitat(path.join(KOREN, ZHIV, `${key}.html`));
+  return [...zamki(YAML.parse(y), kal && JSON.parse(kal), utv && JSON.parse(utv)), ...(zh == null ? [] : ogovorkiZhivoj(zh))];
 }
 
 // Проба (Р507): хороший образец — собран из карточек 01-03, плохой — тот же день с поломкой по каждому замку,
@@ -130,12 +159,17 @@ function proba() {
   const nazvanie = ogovorki({ fakty: [{ udary: [{ src: 'Источник: «Дом Павлова без легенд и мифов», НВО, 14.02.2014' }] }], sources: [{ title: '«Дом Павлова без легенд и мифов»' }] });
   const vneNazvaniya = ogovorki({ fakty: [{ udary: [{ src: 'Источник: «НВО»; это легенда' }] }] });
   if (nazvanie.length || !vneNazvaniya.length) lozhnye.push('название статьи в «ёлочках»');
+  // г) живая страница: оговорка 01-01 дословно ловится, а скрипт, книга в списке литературы и легенда разведчика — нет
+  const zhPloh = ogovorkiZhivoj('<p>Что здесь было на самом деле, а что досказала <b>легенда</b>, — историки спорят до сих пор.</p>');
+  const zhHor = ogovorkiZhivoj('<script>var legenda = "легенда";</script><!-- легенда --><p>Рощупкин В. Т. Дом Павлова без легенд и мифов // НВО. 14.02.2014 · Гладков Т. К. Легенда советской разведки — Н. Кузнецов</p><p>разведчик-нелегал, легенда — обер-лейтенант Пауль Зиберт; так готовилась легенда обер-лейтенанта</p>');
+  if (!zhPloh.some((s) => /«легенда»/.test(s)) || !zhPloh.some((s) => /историки спорят/.test(s))) propushcheno.push('живая страница: оговорка 01-01 не поймана');
+  if (zhHor.length) lozhnye.push(`живая страница: ${zhHor.join('; ')}`);
   let ok = true;
   if (oH.length) { ok = false; console.log(`::error::ns-zamki --proba: хороший образец (${key}) упал:\n  ${oH.join('\n  ')}`); }
   if (propushcheno.length) { ok = false; console.log(`::error::ns-zamki --proba: плохой образец не пойман замками: ${propushcheno.join(', ')}`); }
   if (lozhnye.length) { ok = false; console.log(`::error::ns-zamki --proba: «легендарный», «стал легендой» или «под легендой» принят за оговорку (${lozhnye.join('; ')})`); }
   if (!ok) process.exit(1);
-  console.log(`ns-zamki --proba: хороший образец ${key} прошёл, плохой упал (${oP.length} ошибок по трём замкам)`);
+  console.log(`ns-zamki --proba: хороший образец ${key} прошёл, плохой упал (${oP.length} ошибок по трём замкам), живая страница: оговорка поймана, книги и легенда разведчика пропущены`);
 }
 
 function glavnoe() {
@@ -148,12 +182,12 @@ function glavnoe() {
     const baza = process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/main';
     let izm;
     try {
-      izm = execFileSync('git', ['diff', '--name-only', '--diff-filter=AMR', `${baza}...HEAD`, '--', STR, KAL, UTV], { cwd: KOREN, encoding: 'utf8' });
+      izm = execFileSync('git', ['diff', '--name-only', '--diff-filter=AMR', `${baza}...HEAD`, '--', STR, KAL, UTV, ZHIV], { cwd: KOREN, encoding: 'utf8' });
     } catch {
       console.log(`ns-zamki: базы ${baza} нет (сборка не в заявке) — изменённых дней не определить, проверяет шаг заявки`);
       return;
     }
-    dni = [...new Set(izm.split('\n').map((f) => f.match(/(\d\d-\d\d)\.(?:yaml|json)$/)?.[1]).filter(Boolean))].sort();
+    dni = [...new Set(izm.split('\n').map((f) => f.match(/(\d\d-\d\d)\.(?:yaml|json|html)$/)?.[1]).filter(Boolean))].sort();
     dni = dni.filter((k) => fs.existsSync(path.join(KOREN, STR, `${k}.yaml`)));
     if (!dni.length) { console.log('ns-zamki: дни «Русские не сдаются» в заявке не менялись'); return; }
   }
