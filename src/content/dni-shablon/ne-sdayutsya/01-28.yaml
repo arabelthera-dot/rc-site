@@ -413,6 +413,9 @@ figures:
     width: 530
     height: 800
 sources:
+  - href: https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/
+    title: «Молодая гвардия» // Музей Победы, электронная выставка
+    note: к факту 1
   - html: 'Портрет Сергея Тюленина, 1941–1943 — <a href="https://goskatalog.ru/portal/#/collections?id=5986146" rel="noopener">Государственный центральный музей современной истории России, Госкаталог музейного фонда</a>. Общественное достояние: автор неизвестен, снимок 1941–1943 годов.'
 kuda:
   - lbl: Следующий день
