@@ -8,7 +8,7 @@
   "muzej_id": 2681,
   "adres": "https://goskatalog.ru/portal/#/collections?id=105171",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/105171",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-01"
@@ -24,12 +24,28 @@
   "muzej_id": 1507,
   "adres": "https://goskatalog.ru/portal/#/collections?id=294713",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/294713",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-21"
   ],
   "reg_na_stranice": true
+ },
+ "4975631": {
+  "id": 4975631,
+  "reg_nomer": "4917632",
+  "inv_nomer": "",
+  "nazvanie": "Бомбардировка крепости Осовец.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный центральный музей современной истории России\"",
+  "muzej_id": 1152,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=4975631",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/4975631",
+  "provereno": "2026-11-06",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "ne-sdayutsya/01-06"
+  ],
+  "reg_na_stranice": false
  },
  "4978641": {
   "id": 4978641,
@@ -40,7 +56,7 @@
   "muzej_id": 1152,
   "adres": "https://goskatalog.ru/portal/#/collections?id=4978641",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/4978641",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-23"
@@ -56,10 +72,26 @@
   "muzej_id": 1152,
   "adres": "https://goskatalog.ru/portal/#/collections?id=4978913",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/4978913",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-23"
+  ],
+  "reg_na_stranice": false
+ },
+ "5986146": {
+  "id": 5986146,
+  "reg_nomer": "5808952",
+  "inv_nomer": "",
+  "nazvanie": "Герой Советского Союза Сергей Тюленин.",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный центральный музей современной истории России\"",
+  "muzej_id": 1152,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=5986146",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/5986146",
+  "provereno": "2026-11-06",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "ne-sdayutsya/01-28"
   ],
   "reg_na_stranice": false
  },
@@ -72,7 +104,7 @@
   "muzej_id": 1152,
   "adres": "https://goskatalog.ru/portal/#/collections?id=5992150",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/5992150",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-17"
@@ -88,7 +120,7 @@
   "muzej_id": 1152,
   "adres": "https://goskatalog.ru/portal/#/collections?id=5992175",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/5992175",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-17"
@@ -104,7 +136,7 @@
   "muzej_id": 1833,
   "adres": "https://goskatalog.ru/portal/#/collections?id=7086342",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/7086342",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-26"
@@ -120,7 +152,7 @@
   "muzej_id": 2598,
   "adres": "https://goskatalog.ru/portal/#/collections?id=7589697",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/7589697",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-25"
@@ -136,7 +168,7 @@
   "muzej_id": 2598,
   "adres": "https://goskatalog.ru/portal/#/collections?id=12367222",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/12367222",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-27"
@@ -152,10 +184,42 @@
   "muzej_id": 1152,
   "adres": "https://goskatalog.ru/portal/#/collections?id=12733546",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/12733546",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-27"
+  ],
+  "reg_na_stranice": false
+ },
+ "12931201": {
+  "id": 12931201,
+  "reg_nomer": "12826458",
+  "inv_nomer": "ВМД А 36",
+  "nazvanie": "Шлем древнерусского воина, тип II.",
+  "muzej": "Муниципальное бюджетное учреждение культуры городского округа город Воронеж \"Центр военно-патриотического воспитания \"Музей-диорама\"",
+  "muzej_id": 798,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=12931201",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/12931201",
+  "provereno": "2026-11-06",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "ne-sdayutsya/01-01"
+  ],
+  "reg_na_stranice": false
+ },
+ "16999502": {
+  "id": 16999502,
+  "reg_nomer": "16873883",
+  "inv_nomer": "",
+  "nazvanie": "Изоиздание. Опись Оружейной палаты. Табл. 20. Старо-Рязанский клад. Кресты мраморные (№ 4030. 1,3). Образки и подвески (№74. 2, 5, 4, 6). Перстни (№№ 502, 503. 7, 9). Браслет (№506. 8). Пуговицы (№1461. 10, 11, 12) : [Рисунки к описи Московской Оружейной палаты] : [Несброшюрованный альбом]",
+  "muzej": "Государственное бюджетное учреждение культуры города Москвы \"Музейное объединение \"Музей Москвы\"",
+  "muzej_id": 262,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=16999502",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/16999502",
+  "provereno": "2026-11-06",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "ne-sdayutsya/01-01"
   ],
   "reg_na_stranice": false
  },
@@ -168,7 +232,7 @@
   "muzej_id": 262,
   "adres": "https://goskatalog.ru/portal/#/collections?id=17010580",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/17010580",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-23"
@@ -184,7 +248,7 @@
   "muzej_id": 1309,
   "adres": "https://goskatalog.ru/portal/#/collections?id=18020792",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/18020792",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-30"
@@ -200,7 +264,7 @@
   "muzej_id": 2632,
   "adres": "https://goskatalog.ru/portal/#/collections?id=27410248",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/27410248",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-31"
@@ -216,7 +280,7 @@
   "muzej_id": 239,
   "adres": "https://goskatalog.ru/portal/#/collections?id=28753072",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/28753072",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-20"
@@ -232,7 +296,7 @@
   "muzej_id": 138,
   "adres": "https://goskatalog.ru/portal/#/collections?id=29049270",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/29049270",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-28"
@@ -248,7 +312,7 @@
   "muzej_id": 2691,
   "adres": "https://goskatalog.ru/portal/#/collections?id=31564532",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/31564532",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-31"
@@ -264,7 +328,7 @@
   "muzej_id": 239,
   "adres": "https://goskatalog.ru/portal/#/collections?id=35383289",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/35383289",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-22"
@@ -280,7 +344,7 @@
   "muzej_id": 239,
   "adres": "https://goskatalog.ru/portal/#/collections?id=35682369",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/35682369",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-22"
@@ -296,7 +360,7 @@
   "muzej_id": 2691,
   "adres": "https://goskatalog.ru/portal/#/collections?id=36413762",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/36413762",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-31"
@@ -312,7 +376,7 @@
   "muzej_id": 3245,
   "adres": "https://goskatalog.ru/portal/#/collections?id=39225585",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/39225585",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-30"
@@ -328,10 +392,42 @@
   "muzej_id": 262,
   "adres": "https://goskatalog.ru/portal/#/collections?id=46762123",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/46762123",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-23"
+  ],
+  "reg_na_stranice": false
+ },
+ "47351224": {
+  "id": 47351224,
+  "reg_nomer": "47106202",
+  "inv_nomer": "ИКМ ОФ 2735",
+  "nazvanie": "Наконечник стрелы \"срезень\", с треугольным острием монгольского типа. 13-14 вв.",
+  "muzej": "Муниципальное бюджетное учреждение культуры \"Историко-краеведческий музей\" Дятьковского района Брянской области",
+  "muzej_id": 1671,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=47351224",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/47351224",
+  "provereno": "2026-11-06",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "ne-sdayutsya/01-01"
+  ],
+  "reg_na_stranice": false
+ },
+ "50086505": {
+  "id": 50086505,
+  "reg_nomer": "49844930",
+  "inv_nomer": "Н-6621",
+  "nazvanie": "Медаль памятная «Героическая оборона Козельска в 1238 г.». Набор памятных медалей «Калужский край - доблестный щит земли русской»",
+  "muzej": "Федеральное государственное бюджетное учреждение культуры \"Государственный военно-исторический и природный музей-заповедник \"Куликово поле\"",
+  "muzej_id": 2461,
+  "adres": "https://goskatalog.ru/portal/#/collections?id=50086505",
+  "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/50086505",
+  "provereno": "2026-11-06",
+  "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
+  "dni": [
+   "ne-sdayutsya/01-04"
   ],
   "reg_na_stranice": false
  },
@@ -344,7 +440,7 @@
   "muzej_id": 26,
   "adres": "https://goskatalog.ru/portal/#/collections?id=53555618",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/53555618",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-30"
@@ -360,7 +456,7 @@
   "muzej_id": 10206,
   "adres": "https://goskatalog.ru/portal/#/collections?id=54679006",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/54679006",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-29"
@@ -376,7 +472,7 @@
   "muzej_id": 114,
   "adres": "https://goskatalog.ru/portal/#/collections?id=57973269",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/57973269",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-19"
@@ -392,7 +488,7 @@
   "muzej_id": 114,
   "adres": "https://goskatalog.ru/portal/#/collections?id=57973402",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/57973402",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-19"
@@ -408,7 +504,7 @@
   "muzej_id": 239,
   "adres": "https://goskatalog.ru/portal/#/collections?id=60062098",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/60062098",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-23"
@@ -424,7 +520,7 @@
   "muzej_id": 107,
   "adres": "https://goskatalog.ru/portal/#/collections?id=65038107",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/65038107",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-21"
@@ -440,7 +536,7 @@
   "muzej_id": 107,
   "adres": "https://goskatalog.ru/portal/#/collections?id=65038145",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/65038145",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-21"
@@ -456,7 +552,7 @@
   "muzej_id": 239,
   "adres": "https://goskatalog.ru/portal/#/collections?id=69445465",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/69445465",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-21"
@@ -472,7 +568,7 @@
   "muzej_id": 122,
   "adres": "https://goskatalog.ru/portal/#/collections?id=69487321",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/69487321",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-21"
@@ -488,7 +584,7 @@
   "muzej_id": 11503,
   "adres": "https://goskatalog.ru/portal/#/collections?id=69524694",
   "karta_api": "https://goskatalog.ru/muzfo-rest/rest/exhibits/69524694",
-  "provereno": "2026-11-05",
+  "provereno": "2026-11-06",
   "otkuda": "goskatalog.ru, карточка muzfo-rest через общий российский узел (ru-route.json, http://127.0.0.1:8899)",
   "dni": [
    "izobreteniya/01-22"
