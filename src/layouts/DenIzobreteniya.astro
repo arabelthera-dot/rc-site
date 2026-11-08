@@ -15,6 +15,8 @@ const { d, museum } = Astro.props;
 const muzeyName = museum.title_ru;
 // Заголовок вкладки и og:title — из даты, года и события карточки (Р286 п.4); у пробы без них — как в карточке.
 const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+// Р649 п.15 шаг 2: проба цели таблицы дизайна только на этом дне (dizayn/proba), остальные дни без изменений
+const probaDizayna = d.muzei === 'izobreteniya' && d.key === '01-13';
 const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.key.slice(0, 2)) - 1]} ${d.head.god}: ${d.head.sobytie}`;
 // заголовок вкладки ≤60 (Р560): режется служебный хвост, не название дня
 const title = kogda ? titleVkladki(kogda, muzeyName) : d.head.title;
@@ -78,12 +80,13 @@ const kal = d.kalendar ?? { h2: 'Календарь изобретений', int
 const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
 ---
 <!DOCTYPE html>
-<html lang="ru" data-museum={d.muzei} data-shablon="den-izobreteniya" data-lupa-vse>
+<html lang="ru" data-museum={d.muzei} data-shablon="den-izobreteniya" data-dizayn={probaDizayna ? 'proba' : undefined} data-lupa-vse>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <link rel="stylesheet" href="../../assets/rc-dizayn.css">
+{probaDizayna && <link rel="stylesheet" href="../../assets/rc-dizayn-proba.css">}
 <link rel="stylesheet" href="../../assets/fonts.css">
 <link rel="stylesheet" href="../../assets/izobreteniya-den.css">
 
