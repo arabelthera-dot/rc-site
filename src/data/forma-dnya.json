@@ -2,6 +2,13 @@
   "zachem": "Форма карточки дня (Р631, Р635). na_stranicu — поле выводится на страницу; obyazatelno_dlya_gotov — без него день со status gotov не собирается. Схема — src/content.config.ts, образец — docs/forma-dnya-obrazec.json.",
   "polya": [
     {
+      "imya": "versiya_formy",
+      "chto": "версия формы дня, сейчас 1; форма меняется — миграция машиной по номеру версии",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "249"
+    },
+    {
       "imya": "status",
       "chto": "статус дня: заготовка или готов",
       "na_stranicu": false,
@@ -10,7 +17,7 @@
     },
     {
       "imya": "nomer_dnya",
-      "chto": "постоянный номер дня, латиницей через дефис",
+      "chto": "постоянный номер дня: d и 6 знаков (0-9 bcdfghjkmnpqrstvwxz), выдаёт scripts/nomer-dnya.mjs, реестр src/data/nomera-dnej.json; день переехал — номер тот же",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
       "punkt": "1"

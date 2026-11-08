@@ -9,6 +9,9 @@
 //      (r274: у Пильчикова 4 янв. сцена в 200 px показывала бороду и пиджак без головы). Лечится классом fit-full у .hero-scene.
 // Изменённые дни — git diff с базой: src/data/full-pages/<музей>/ММ-ДД.html и карточки src/content/days/<музей>/ММ-ДД.json
 // (карточка — только если у дня есть полная страница: дни без полной страницы — пустые, замок их не касается).
+// Карточка, у которой изменились только служебные поля (в src/data/forma-dnya.json na_stranicu: false — версия формы,
+// номер дня) или путь картинки сменился её постоянным номером из src/data/kartinki.json, страницу не меняет и не
+// проверяется: массовая миграция формы трогает все карточки (#916: 122 страницы — шаг упал по времени, 4 мин).
 // Нарушение — код 1 и ::error:: по-русски: какой день, чего нет. Откат — удалить шаг из .github/workflows/proverka.yml.
 // Запуск: node scripts/kartinki-dnya.mjs [--dist dist] [--baza origin/main] [--proba]
 //         node scripts/kartinki-dnya.mjs --vse [--muzei izobreteniya,...] — таблица по всем полным страницам музеев, без падения.
@@ -110,6 +113,17 @@ async function prognat(root, dni) {
 }
 const den = (muzey, key) => ({ muzey, key, adres: `/muzei/${muzey}/den/${key}/` });
 
+// Карточка так, как её видит страница: без служебных полей верхнего уровня, номера картинок — путями.
+const SLUZHEBNYE = new Set(JSON.parse(fs.readFileSync('src/data/forma-dnya.json', 'utf8')).polya
+  .filter((p) => p.na_stranicu === false && !p.imya.includes('.')).map((p) => p.imya));
+const razreshit = fs.existsSync('src/lib/kartinki.mjs') ? (await import('../src/lib/kartinki.mjs')).razreshit : (d) => d;
+const poryadok = (x) => (Array.isArray(x) ? x.map(poryadok) : x && typeof x === 'object'
+  ? Object.fromEntries(Object.keys(x).sort().map((k) => [k, poryadok(x[k])])) : x);
+export function dlyaStranicy(d) {
+  const r = razreshit(d);
+  return JSON.stringify(poryadok(Object.fromEntries(Object.entries(r).filter(([k]) => !SLUZHEBNYE.has(k)))));
+}
+
 if (est('--proba')) {
   // Заведомые страницы: замок пропускает хорошую и ловит каждый брак.
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'kartinki-proba-'));
@@ -144,6 +158,18 @@ if (est('--proba')) {
   });
   const itog = await prognat(tmp, dni);
   let mimo = 0;
+  // Сравнение карточек: служебное поле — страница та же, текст — другая.
+  const karta = { museum: 'proba', key: '01-01', title: 'Т', hook: 'Х', poster: 'muzei/proba/a.jpg' };
+  for (const [imya, b, zhdu] of [
+    ['служебные поля верхнего уровня — та же страница', { ...karta, status: 'gotov', nomer_dnya: 'd0000bc' }, true],
+    ['другой порядок ключей — та же страница', Object.fromEntries(Object.entries(karta).reverse()), true],
+    ['изменён заголовок — другая страница', { ...karta, title: 'Т2' }, false],
+    ['изменена обложка — другая страница', { ...karta, poster: 'muzei/proba/b.jpg' }, false],
+  ]) {
+    const ok = (dlyaStranicy(karta) === dlyaStranicy(b)) === zhdu;
+    if (!ok) mimo++;
+    console.log(`${ok ? 'ок ' : 'МИМО'} ${imya}`);
+  }
   itog.forEach((r, n) => {
     const [imya, , zhdu] = proba[n];
     const ok = (r.o.length > 0 ? 1 : 0) === zhdu;
@@ -152,8 +178,8 @@ if (est('--proba')) {
   });
   fs.rmSync(tmp, { recursive: true, force: true });
   await browser.close();
-  if (mimo) { console.log(`::error::kartinki-dnya: проба мимо — ${mimo} из ${proba.length}`); process.exit(1); }
-  console.log(`kartinki-dnya: проба ${proba.length} из ${proba.length}`);
+  if (mimo) { console.log(`::error::kartinki-dnya: проба мимо — ${mimo} из ${proba.length + 4}`); process.exit(1); }
+  console.log(`kartinki-dnya: проба ${proba.length + 4} из ${proba.length + 4}`);
   process.exit(0);
 }
 
@@ -173,12 +199,19 @@ if (est('--vse')) {
     process.exit(1);
   }
   const vse = new Map();
+  let bezIzmenenij = 0;
   for (const f of izm) {
     const m = /^src\/(?:data\/full-pages|content\/days)\/([\w-]+)\/(\d\d-\d\d)\.(html|json)$/.exec(f);
     if (!m || !fs.existsSync(path.join(FULL, m[1], `${m[2]}.html`))) continue;
+    if (m[3] === 'json') {
+      let bylo;
+      try { bylo = JSON.parse(execFileSync('git', ['show', `${baza}:${f}`], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })); } catch { bylo = null; }
+      if (bylo && dlyaStranicy(bylo) === dlyaStranicy(JSON.parse(fs.readFileSync(f, 'utf8')))) { bezIzmenenij++; continue; }
+    }
     vse.set(`${m[1]}/${m[2]}`, den(m[1], m[2]));
   }
   dni = [...vse.values()];
+  if (bezIzmenenij) console.log(`kartinki-dnya: карточек только со служебной правкой (страница та же) — ${bezIzmenenij}, не проверяются`);
   if (!dni.length) { console.log('kartinki-dnya: в заявке нет изменённых страниц дней — проверять нечего'); await browser.close(); process.exit(0); }
 }
 

@@ -35,6 +35,8 @@ const museums = defineCollection({
 // 16.10 Сергей: «переноси как есть, дальше будем менять, улучшать» — переписанный день строку снимает.
 import waivers from './data/passport-waivers.json';
 import slovar from './data/slovar.json'; // slovar — словарь связей дня (Р37, Сергей 20.10)
+// Постоянные номера дней (Р649): номер → «музей/ММ-ДД»; выдаёт и проставляет только scripts/nomer-dnya.mjs.
+import nomeraDnej from './data/nomera-dnej.json';
 
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
 // Инициалы («А. К. Толстой») — не конец предложения: точка после одиночной заглавной буквы не считается.
@@ -198,6 +200,10 @@ const days = defineCollection({
     // slovar — «tip:id», tip — lyudi | mesto | narod | tema; id нет в словаре — сборка красная (страницы /slovar/)
     // Р635 — форма карточки дня (src/data/forma-dnya.json); поля без значения по умолчанию — старые дни не меняются.
     status: z.enum(['zagotovka', 'gotov'], { message: "status — 'zagotovka' или 'gotov'" }).optional(),
+    // Р649 (очередь 249, 250): версия формы записи (образец — JSON Schema «$schema») и постоянный номер дня без даты
+    // и музея внутри (W3C «Cool URIs», ARK/NOID): «d» + 6 знаков 0-9bcdfghjkmnpqrstvwxz; переехал день — номер тот же.
+    // До миграции поля нет — день проходит как раньше; есть versiya_formy — номер строгий и сверяется с реестром.
+    versiya_formy: z.literal(1, { message: 'versiya_formy — 1 (scripts/nomer-dnya.mjs)' }).optional(),
     nomer_dnya: nomer.optional(),
     data_sobytiya: data.optional(),
     data_staryj_stil: data.optional(),
@@ -221,6 +227,13 @@ const days = defineCollection({
     slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
       .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
   }).superRefine((d, ctx) => {
+    const nomera: Record<string, string> = nomeraDnej.nomera;
+    if (d.versiya_formy !== undefined) {
+      if (!/^d[0-9bcdfghjkmnpqrstvwxz]{6}$/.test(d.nomer_dnya ?? ''))
+        ctx.addIssue({ code: 'custom', path: ['nomer_dnya'], message: 'nomer_dnya — d и 6 знаков (scripts/nomer-dnya.mjs)' });
+      else if (nomera[d.nomer_dnya!] !== `${d.museum}/${d.key}`)
+        ctx.addIssue({ code: 'custom', path: ['nomer_dnya'], message: `номер ${d.nomer_dnya} в src/data/nomera-dnej.json — у ${nomera[d.nomer_dnya!] ?? 'никого'}` });
+    }
     if (!!d.body !== !!d.doc)
       ctx.addIssue({ code: 'custom', path: ['body'], message: 'анкета страницы — body и doc вместе' });
     const waived = d.museum in waivers || `${d.museum}/${d.key}` in waivers;
