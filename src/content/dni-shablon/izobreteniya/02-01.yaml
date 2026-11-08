@@ -164,7 +164,7 @@ fakty:
     det:
     - Это энциклопедия о том, что делает каждый участок мозга. Выпуски выходили в Санкт-Петербурге с 1903 по 1907 год.
     - Четвёртый выпуск 1905 года хранится в Кировском областном краеведческом музее.
-    src: 'Источник: статья «В. М. Бехтерев и XXI век: к 150-летию со дня рождения учёного», научная электронная библиотека КиберЛенинка — <a href="https://cyberleninka.ru/article/n/v-m-behterev-i-xxi-vek-k-150-letiyu-so-dnya-rozhdeniya-uchenogo" rel="noopener" target="_blank">cyberleninka.ru</a>; статья «Смелость учёного», научная электронная библиотека КиберЛенинка — <a href="https://cyberleninka.ru/article/n/smelost-uchenogo" rel="noopener" target="_blank">cyberleninka.ru</a>'
+    src: 'Источник: статья «В. М. Бехтерев и XXI век: к 150-летию со дня рождения учёного», научная электронная библиотека КиберЛенинка — <a href="https://cyberleninka.ru/article/n/v-m-behterev-i-xxi-vek-k-150-letiyu-so-dnya-rozhdeniya-uchenogo" rel="noopener" target="_blank">cyberleninka.ru</a>; статья «Смелость учёного», научная электронная библиотека КиберЛенинка — <a href="https://cyberleninka.ru/article/n/smelost-uchenogo" rel="noopener" target="_blank">cyberleninka.ru</a>; Музей истории медицины Кировского ГМУ, страница «Владимир Михайлович Бехтерев» — <a href="https://muzeum.medkirov.ru/site/bekhterev" rel="noopener" target="_blank">muzeum.medkirov.ru</a>'
     otryvok: «Появился его энциклопедический труд «Основы учения о функциях мозга» в 7 книгах»
     stranica: 'КиберЛенинка; вторая статья: «был собран материал для одной из фундаментальных его работ - «Основы учения о функциях мозга»»'
     href: https://cyberleninka.ru/article/n/v-m-behterev-i-xxi-vek-k-150-letiyu-so-dnya-rozhdeniya-uchenogo
@@ -209,7 +209,7 @@ fakty:
   kicker: Ещё пять фактов
   h2: Институт, школа и наследники
   udary:
-  - summary: <b>Бехтерев основал больше 30 медицинских и учебных учреждений.</b>
+  - summary: <b>Бехтерев основал десятки медицинских и учебных учреждений.</b>
     kadr:
       src: /muzei/izobreteniya/img/02-01-goskatalog-34916745.jpg
       width: 584
@@ -222,7 +222,7 @@ fakty:
     det:
     - Главным из них стал Психоневрологический институт, где он был президентом.
     - Его подпись стоит на удостоверении 1918 года, которое хранит Музей истории Санкт-Петербурга.
-    src: 'Источник: статья «Санкт-Петербургскому научно-исследовательскому психоневрологическому институту им. В. М. Бехтерева — 100 лет», научная электронная библиотека КиберЛенинка — <a href="https://cyberleninka.ru/article/n/sankt-peterburgskomu-nauchno-issledovatelskomu-psihonevrologicheskomu-institutu-im-v-m-behtereva-100-let" rel="noopener" target="_blank">cyberleninka.ru</a>'
+    src: 'Источник: статья «Санкт-Петербургскому научно-исследовательскому психоневрологическому институту им. В. М. Бехтерева — 100 лет», научная электронная библиотека КиберЛенинка — <a href="https://cyberleninka.ru/article/n/sankt-peterburgskomu-nauchno-issledovatelskomu-psihonevrologicheskomu-institutu-im-v-m-behtereva-100-let" rel="noopener" target="_blank">cyberleninka.ru</a>; НМИЦ психиатрии и неврологии им. В. М. Бехтерева, «История центра» — <a href="https://bekhterev.ru/about/history/" rel="noopener" target="_blank">bekhterev.ru</a>'
     otryvok: «Среди более чем 30 различных медицинских и медико-педагогических учреждений, организованных Владимиром Михайловичем Бехтеревым»
     stranica: КиберЛенинка
     href: https://cyberleninka.ru/article/n/sankt-peterburgskomu-nauchno-issledovatelskomu-psihonevrologicheskomu-institutu-im-v-m-behtereva-100-let
@@ -387,7 +387,7 @@ sources:
   note: книга «Гипноз, внушение, психотерапия», 1911, критика психоанализа.
 - href: https://cyberleninka.ru/article/n/sankt-peterburgskomu-nauchno-issledovatelskomu-psihonevrologicheskomu-institutu-im-v-m-behtereva-100-let
   title: 'КиберЛенинка: статья «Санкт-Петербургскому научно-исследовательскому психоневрологическому институту им. В. М. Бехтерева — 100 лет»'
-  note: Психоневрологический институт, 1907; больше 30 учреждений.
+  note: Психоневрологический институт, 1907; десятки учреждений.
 - href: https://cyberleninka.ru/article/n/k-165-letiyu-so-dnya-rozhdeniya-i-k-95-letiyu-so-dnya-konchiny-v-m-behtereva
   title: 'КиберЛенинка: статья «К 165-летию со дня рождения и к 95-летию со дня кончины В. М. Бехтерева»'
   note: «Объективная психология», студенты любого пола и вероисповедания.
