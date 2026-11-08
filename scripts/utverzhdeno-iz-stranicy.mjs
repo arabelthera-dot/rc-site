@@ -4,7 +4,7 @@
 //   ММ-ДД.md       — заголовок дня, «Порядок на странице:», блоки «N. (стр.) заголовок» / «Подробнее:» / «Источник:»;
 //   ММ-ДД.kadry.md — «Кадр N» / «Файл:» / «Источник:» / «Факт к кадру: N» (вид ns-material, разборщик razobratMaterial).
 // Тексты не меняются ни на букву: заголовок — <b>…</b> из summary, «Подробнее» — остаток summary и абзацы det
-// через пробел (как их склеивает izYaml сверщика). После записи каждая карточка читается разборщиками
+// через пробел (как их склеивает razobratStranicu сверщика). После записи каждая карточка читается разборщиками
 // razobratKartochku / razobratMaterial и сравнивается со страницей; расхождение — код 1.
 // --povtory — пары фактов дня про одно (тот же счёт, что «г» в sverka-utverzhdeno.mjs, но редкость слов — по
 // карточкам этого музея) и повтор кадров внутри дня и между днями; ничего не сливается, список — человеку.
@@ -15,8 +15,7 @@ import path from 'node:path';
 import os from 'node:os';
 import YAML from 'yaml';
 import { razobratKartochku, razobratMaterial } from './utverzhdeno-kopiya.mjs';
-import { chistka, slova, POROG } from './sverka-utverzhdeno.mjs';
-import { izYaml } from './sverka/chitat-stranicu.mjs';
+import { razobratStranicu, chistka, slova, POROG } from './sverka-utverzhdeno.mjs';
 
 const argv = process.argv.slice(2);
 const vzyat = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv.splice(i, 2)[1] : d; };
@@ -28,6 +27,8 @@ const STR = new URL(`../src/content/dni-shablon/${MUZEI}/`, import.meta.url).pat
 const MES = ['ЯНВАРЯ', 'ФЕВРАЛЯ', 'МАРТА', 'АПРЕЛЯ', 'МАЯ', 'ИЮНЯ', 'ИЮЛЯ', 'АВГУСТА', 'СЕНТЯБРЯ', 'ОКТЯБРЯ', 'НОЯБРЯ', 'ДЕКАБРЯ'];
 
 const stroka = (t) => String(t ?? '').replace(/\s*\n\s*/g, ' ').trim(); // в карточке одна строка на поле
+const nomerGk = (k) => String(k?.data_source ?? '').match(/goskatalog\.ru\/portal\/#\/collections\?id=(\d+)/)?.[1]
+  || String(k?.src ?? '').match(/(?:gk|goskatalog)-(\d{5,})/)?.[1] || '';
 
 // Факты страницы по порядку: заголовок, «Подробнее», источник, кадры.
 export function faktyStranicy(y) {
@@ -132,8 +133,8 @@ function povtoryKadrov(dni) {
   const o = []; const gde = new Map();
   for (const { key, y } of dni) {
     const vid = new Map();
-    for (const { gde: g, kadr, src } of izYaml(y).vse_kadry.filter((x) => /^(обложка|факт \d+|галерея)$/.test(x.gde))) {
-      const ids = [...new Set([/^\d+$/.test(kadr) ? `Госкаталог ${kadr}` : kadr, src].filter(Boolean))];
+    for (const { gde: g, k } of razobratStranicu(y).kadry) {
+      const ids = [...new Set([nomerGk(k) && `Госкаталог ${nomerGk(k)}`, k.src].filter(Boolean))];
       const id = ids.find((x) => vid.has(x));
       if (id) o.push(`${key}: кадр ${id} — ${vid.get(id)} и ${g}`);
       for (const x of ids) {
