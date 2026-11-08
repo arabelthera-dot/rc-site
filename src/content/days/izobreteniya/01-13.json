@@ -10,7 +10,341 @@
     {
       "src": "muzei/izobreteniya/img/01-13-goskatalog-42001363.jpg",
       "caption": "Атомная подводная лодка «Комсомолец» (К-278) перед последним выходом в плавание.",
-      "credit": "Фото: автор не указан, 1989. Хранится: Федеральное государственное бюджетное учреждение культуры «Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник». Госкаталог музейного фонда РФ, № 4655496. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=4655496. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)."
+      "credit": "Фото: автор не указан, 1989. Хранится: Федеральное государственное бюджетное учреждение культуры «Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник». Госкаталог музейного фонда РФ, № 4798482. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=4655496. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ).",
+      "vid": "foto",
+      "prava": {
+        "avtor": "автор не указан",
+        "god_sozdaniya": 1989,
+        "anonim": true,
+        "sdelano_mashinoj": false,
+        "otkuda": "Госкаталог музейного фонда РФ, № 4798482",
+        "baza": "goskatalog",
+        "ssylka": "https://goskatalog.ru/portal/#/collections?id=4655496"
+      },
+      "nomer_predmeta": "4798482",
+      "nomer_snimka": "42001363",
+      "hranitel": "Федеральное государственное бюджетное учреждение культуры «Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник»",
+      "podpis_chto": "Атомная подводная лодка «Комсомолец» (К-278) перед последним выходом в плавание.",
+      "podpis_kogda": "1989",
+      "simvolika_proverena": false,
+      "podlinnik": {
+        "gde": "rc-site/public/muzei/izobreteniya/img/01-13-goskatalog-42001363.jpg — совпадает по размеру с /original/42001363 (800×617); больше 800 px Госкаталог не отдаёт",
+        "otkuda": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/42001363"
+      },
+      "svyashchennoe": false
     }
+  ],
+  "status": "gotov",
+  "nomer_dnya": "izobreteniya-k278",
+  "data_sobytiya": "1985-08-04",
+  "data_uslovnaya": "Дата условная: в календаре рекорд стоит на 13 января, а сам он поставлен 4 августа 1985 года.",
+  "chto_sluchilos": "К-278 «Комсомолец» погрузилась на 1027 метров в Норвежском море — абсолютный рекорд глубины для подводной лодки",
+  "god": 1985,
+  "god_tochnost": "tochno",
+  "god_pokaza": 2026,
+  "ves": "glavnoe",
+  "tyazhelaya_tema": [
+    "gibel"
+  ],
+  "fakty": [
+    {
+      "id": "f01",
+      "tekst": "Севмаш построил три док-камеры, чтобы ещё на заводе сдавить отсеки К-278 давлением глубины.",
+      "istochnik": "i13",
+      "dlya_voprosa": true,
+      "otvet": "три",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f02",
+      "tekst": "Сварщики Севмаша учились заново: титановую лодку нельзя было варить, как стальную.",
+      "istochnik": "i14",
+      "dlya_voprosa": true,
+      "otvet": "титан",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f03",
+      "tekst": "На флоте её звали «золотой рыбкой» — за сверхдорогой титан и долгие годы проектирования и постройки.",
+      "istochnik": "i15",
+      "dlya_voprosa": true,
+      "otvet": "«золотая рыбка»",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f04",
+      "tekst": "Экипаж К-278 продержал лодку на километровой глубине 51 минуту, прежде чем уйти ещё глубже.",
+      "istochnik": "i05",
+      "dlya_voprosa": true,
+      "otvet": "51 минуту",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f05",
+      "tekst": "Последние метры до рекорда экипаж К-278 прошёл шагами по 25 метров.",
+      "istochnik": "i13",
+      "dlya_voprosa": true,
+      "otvet": "по 25 метров",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f06",
+      "tekst": "К-278 ещё в 1985 году работала на глубине вдвое большей, чем американский «Сивулф» 1997 года.",
+      "istochnik": "i16",
+      "dlya_voprosa": true,
+      "otvet": "«Сивулф» («Морской волк»)",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f07",
+      "tekst": "К-278 опережала своё время на четверть века — так РИА Новости оценивает её характеристики.",
+      "istochnik": "i17",
+      "dlya_voprosa": true,
+      "otvet": "На четверть века — на 25 лет",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f08",
+      "tekst": "Мичман Виктор Слюсаренко — единственный в мире, кто спасся с лодки, затонувшей на глубине 1,5 км.",
+      "istochnik": "i15",
+      "dlya_voprosa": true,
+      "otvet": "мичман Виктор Слюсаренко",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f09",
+      "tekst": "На глубине в спасательной камере у моряков стали писклявые голоса.",
+      "istochnik": "i07",
+      "dlya_voprosa": true,
+      "otvet": "писклявыми",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f10",
+      "tekst": "Спасательная камера К-278 была рассчитана на 70 человек — то есть на весь экипаж.",
+      "istochnik": "i07",
+      "dlya_voprosa": true,
+      "otvet": "на 70",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f11",
+      "tekst": "Под водой лодка могла держаться 90 суток, а в последнем походе ей велели не всплывать три месяца.",
+      "istochnik": "i09",
+      "dlya_voprosa": true,
+      "otvet": "90",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f12",
+      "tekst": "На «Комсомольце» кормили пять раз в день — «физически столько не съесть».",
+      "istochnik": "i10",
+      "dlya_voprosa": true,
+      "otvet": "пять",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f13",
+      "tekst": "Имя «Комсомолец» придумали в экипаже: все на борту были молодыми комсомольцами.",
+      "istochnik": "i10",
+      "dlya_voprosa": true,
+      "otvet": "сам экипаж",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f14",
+      "tekst": "Экипаж Ил-38 поднял самолёт на помощь лодке за 49 минут вместо положенных 1 ч 20 мин.",
+      "istochnik": "i11",
+      "dlya_voprosa": true,
+      "otvet": "за 49 минут",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f15",
+      "tekst": "Лодку на дне «запечатали» двухметровыми титановыми заглушками — впервые в мире.",
+      "istochnik": "i12",
+      "dlya_voprosa": true,
+      "otvet": "двухметровыми титановыми заглушками",
+      "otvet_edinstvennyj": true
+    },
+    {
+      "id": "f16",
+      "tekst": "Приборы на корпусе «Комсомольца» однажды нашли срезанными: у лодки побывали «незваные гости».",
+      "istochnik": "i06",
+      "dlya_voprosa": true,
+      "otvet": "«Миры»",
+      "otvet_edinstvennyj": true
+    }
+  ],
+  "istochniki": [
+    {
+      "id": "i01",
+      "baza": "muzej-rf",
+      "nazvanie": "выставка «Памяти АПЛ К-278 „Комсомолец“»",
+      "avtor": "Центральный военно-морской музей имени императора Петра Великого",
+      "ssylka": "https://navalmuseum.ru/exhibition?id=159"
+    },
+    {
+      "id": "i02",
+      "baza": "sajt-organizacii",
+      "nazvanie": "«АПЛ К-278»",
+      "avtor": "Общество памяти АПЛ «Комсомолец»",
+      "ssylka": "https://opaplkomsomolec.ru/apl-k-278/"
+    },
+    {
+      "id": "i03",
+      "baza": "sajt-organizacii",
+      "nazvanie": "«История, 1955–1982»",
+      "avtor": "ЦКБ МТ «Рубин»",
+      "ssylka": "https://ckb-rubin.ru/ckb_mt_rubin/istorija/1955_1982/"
+    },
+    {
+      "id": "i04",
+      "baza": "periodika",
+      "nazvanie": "«АПЛ „Комсомолец“ установила рекорд глубины погружения 35 лет назад»",
+      "avtor": "«Российская газета»",
+      "god": 2020,
+      "ssylka": "https://rg.ru/2020/08/04/apl-komsomolec-ustanovila-rekord-glubiny-pogruzheniia-35-let-nazad.html"
+    },
+    {
+      "id": "i05",
+      "baza": "periodika",
+      "nazvanie": "«Погружение на рекордную глубину»",
+      "avtor": "«Московская правда»",
+      "god": 2021,
+      "ssylka": "https://mospravda.ru/2021/08/04/213644/"
+    },
+    {
+      "id": "i06",
+      "baza": "periodika",
+      "nazvanie": "«Титановый панцирь „Комсомольца“, или Триумф и трагедия самой глубоководной АПЛ»",
+      "avtor": "Еженедельник «Звезда» (телеканал «Звезда»)",
+      "god": 2025,
+      "ssylka": "https://zvezdaweekly.ru/news/20257221243-lJNcP.html"
+    },
+    {
+      "id": "i07",
+      "baza": "periodika",
+      "nazvanie": "«Тайна „камеры-убийцы“»",
+      "avtor": "Korabel.ru",
+      "god": 2004,
+      "ssylka": "https://www.korabel.ru/news/comments/tayna___kameri-ubiytsi.html"
+    },
+    {
+      "id": "i08",
+      "baza": "periodika",
+      "nazvanie": "«Как спастись с подводной лодки: „Комсомолец“ и другие»",
+      "avtor": "TechInsider («Популярная механика»)",
+      "ssylka": "https://www.techinsider.ru/weapon/492862-kak-spastis-s-podvodnoy-lodki-komsomolec-i-drugie/"
+    },
+    {
+      "id": "i09",
+      "baza": "periodika",
+      "nazvanie": "«„Ушла за минуты“: выжившие моряки рассказали о гибели АПЛ „Комсомолец“»",
+      "avtor": "РИА Новости",
+      "god": 2019,
+      "ssylka": "https://ria.ru/20190407/1552427815.html"
+    },
+    {
+      "id": "i10",
+      "baza": "periodika",
+      "nazvanie": "«Мичман Виктор Слюсаренко: „Я всплыл с 1000 метров…“»",
+      "avtor": "Журнал «Родина» («Российская газета»)",
+      "god": 2019,
+      "ssylka": "https://rodina-history.ru/2019/04/07/rodina-podlodka-komsomolets.html"
+    },
+    {
+      "id": "i11",
+      "baza": "periodika",
+      "nazvanie": "«Гибель атомной подводной лодки К-278 „Комсомолец“. Справка»",
+      "avtor": "РИА Новости",
+      "god": 2009,
+      "ssylka": "https://ria.ru/20090407/167349950.html"
+    },
+    {
+      "id": "i12",
+      "baza": "sajt-organizacii",
+      "nazvanie": "«Чрезвычайные экспедиции к месту нахождения затонувшей подводной лодки „Комсомолец“» (воспоминания А. И. Вялышева)",
+      "avtor": "ВДПО.рф (журнал портала)",
+      "ssylka": "https://xn--b1ae4ad.xn--p1ai/blog/post/chrezvychaynye-ekspeditsii-k-mestu-nakhozhdeniya-zatonuvshey-podvodnoy-lodki-komsomolets"
+    },
+    {
+      "id": "i13",
+      "baza": "periodika",
+      "nazvanie": "«Исполнилось 40 лет рекорду глубины погружения»",
+      "avtor": "Sudostroenie.info (пресс-служба ПО «Севмаш»)",
+      "god": 2025,
+      "ssylka": "https://sudostroenie.info/novosti/45757.html"
+    },
+    {
+      "id": "i14",
+      "baza": "periodika",
+      "nazvanie": "«Самой глубоководной в мире атомной подводной лодке исполнилось 40 лет»",
+      "avtor": "Korabel.ru",
+      "god": 2023,
+      "ssylka": "https://www.korabel.ru/news/comments/samoy_glubokovodnoy_v_mire_atomnoy_podvodnoy_lodke_ispolnilos_40_let.html"
+    },
+    {
+      "id": "i15",
+      "baza": "periodika",
+      "nazvanie": "«Конец „Комсомольца“. Как погибла лучшая советская подлодка»",
+      "avtor": "«Аргументы и факты»",
+      "god": 2014,
+      "ssylka": "https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka"
+    },
+    {
+      "id": "i16",
+      "baza": "periodika",
+      "nazvanie": "«Малошумный „Морской волк“ из США, или „Много шума из ничего“»",
+      "avtor": "Еженедельник «Звезда» (телеканал «Звезда»)",
+      "god": 2020,
+      "ssylka": "https://zvezdaweekly.ru/news/20201022106-WXh4E.html"
+    },
+    {
+      "id": "i17",
+      "baza": "periodika",
+      "nazvanie": "«Гибель атомной подводной лодки К-278 „Комсомолец“ (1989)»",
+      "avtor": "РИА Новости",
+      "god": 2019,
+      "ssylka": "https://ria.ru/20190407/1552413093.html"
+    },
+    {
+      "id": "i18",
+      "baza": "sajt-organizacii",
+      "nazvanie": "«Памятные даты»",
+      "avtor": "ПО «Севмаш»",
+      "ssylka": "https://sevmash.ru/rus/dates.html?start=110"
+    }
+  ],
+  "citaty": [
+    {
+      "kto": "Вениамин Матвеев, старшина команды штурманских электриков К-278",
+      "gde": "удар истории 4",
+      "tekst": "В тот день с глубиномера в центральном посту была оторвана чёрная бумажка, закрывавшая на его шкале секретности ради цифры предельной глубины. Мы ахнули: 900, 1000, 1100 метров…"
+    },
+    {
+      "kto": "Владимир Чувакин, ответственный сдатчик К-278 от ПО «Севмаш»",
+      "gde": "удар истории 5; факт 5 (длиннее)",
+      "tekst": "До восьмисот метров погружение осуществлялось ступенями через 50 метров, далее до предельной глубины ступенями через 25 метров.",
+      "istochnik": "i13"
+    },
+    {
+      "kto": "вице-адмирал Евгений Чернов, командующий 1-й флотилией АПЛ",
+      "gde": "удар истории 6; викторина, вопрос 4",
+      "tekst": "Остановись, мгновенье!"
+    },
+    {
+      "kto": "вице-адмирал Евгений Чернов",
+      "gde": "удар истории 7 («Находка дня»)",
+      "tekst": "Из отсеков поступали тревожные доклады: там потёк фланец, там треснула от резкого уменьшения диаметра корпуса деревянная панель… Потом, как пули, стали отлетать срезанные немыслимым обжатием титановые болты. Но в целом все механизмы работали без замечаний, корабль прекрасно управлялся как по глубине, так и по горизонту"
+    }
+  ],
+  "velichina_chislo": 1027,
+  "velichina_edinica": "м",
+  "velichina_chto": "глубина погружения 04.08.1985",
+  "etiketka_oblozhki": [
+    "Атомная подводная лодка «Комсомолец» (К-278)",
+    "перед последним выходом в плавание",
+    "фото 1989"
   ]
 }
