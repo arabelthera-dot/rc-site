@@ -7,6 +7,7 @@ import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { existsSync } from 'node:fs';
 import { kartochkaUtv } from './lib/skhema-utverzhdeno.mjs';
+import { igraDannymi } from './lib/igry-mehaniki';
 
 // Музеи — каталог platform/catalog/museums.json как есть; title_ru — единственное имя музея.
 const museums = defineCollection({
@@ -99,6 +100,9 @@ const blok = z.object({
 const doc = z.object({ prolog: z.string(), head_attrs: z.string(), head: z.string(), between: z.string(),
   body_attrs: z.string(), epilog: z.string() });
 
+// Игра дня данными (Р635, 08.11.2026): механика из src/lib/igry-mehaniki.ts + её данные; нет поля — дня не касается.
+const igra = igraDannymi;
+
 const days = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/days' }),
   schema: z.object({
@@ -122,6 +126,7 @@ const days = defineCollection({
       note: z.string().optional() }).optional(),
     more: z.array(more).optional(),
     more_title: z.string().optional(),
+    igra: igra.optional(),
     doc: doc.optional(),
     body: z.array(blok).min(1).optional(),
     // slovar — связи дня со словарём src/data/slovar.json (Р37, Сергей 20.10: одно поле-ссылка, снимает заморозку только для него):
