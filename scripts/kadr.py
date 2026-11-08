@@ -44,6 +44,9 @@ from pathlib import Path
 
 from PIL import Image
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kartinki import kartinka, razreshit  # noqa: E402
+
 API = 'https://commons.wikimedia.org/w/api.php'
 UA = {'User-Agent': 'rc-site-kadr/1.0 (info@russian-civilization.ru)'}
 ROOT = Path(__file__).resolve().parent.parent
@@ -491,7 +494,7 @@ def save(raw, museum, key, name):
 def write_day(day, rel, caption, credit):
     d = json.loads(day.read_text())
     imgs = d.get('images', [])
-    if any(x['src'] == rel for x in imgs):
+    if any(kartinka(x['src']) == rel for x in imgs):  # в карточке может стоять номер (Р649)
         sys.exit(f'кадр уже есть: {rel}')
     imgs.append(dict(src=rel, caption=caption, credit=credit))
     # images — сразу после ключевых полей дня, как у перенесённых дней (порядок полей zod не важен)
@@ -747,7 +750,7 @@ def opis(tekst, podpis):
 
 
 def kadry_json(path):
-    d = json.loads(path.read_text())
+    d = razreshit(json.loads(path.read_text()))  # картинки по номеру (Р649)
     for i, im in enumerate(d.get('images') or []):
         tekst = ' '.join(str(im.get(k) or '') for k in ('src', 'caption', 'credit', 'source', 'license'))
         if WIKI.search(tekst):
@@ -1285,7 +1288,7 @@ def vidno(cr):
 def fond_kadry(day):
     """Кадры json дня, положенные из российских фондов (не Викисклад, не марки)."""
     out = []
-    for im in json.loads(day.read_text()).get('images') or []:
+    for im in razreshit(json.loads(day.read_text())).get('images') or []:  # картинки по номеру (Р649)
         cr, cap = str(im.get('credit') or ''), str(im.get('caption') or '')
         m = FOND_CREDIT.search(cr)
         if m and not WIKI.search(cr) and not marka(cap) and not marka(im['src']):
@@ -1472,7 +1475,7 @@ def _dub(k, t, pub):
 def karta_kadry(day, muzey):
     """Все кадры карточки (не Викисклад, не марки) с подписью, источником и правами."""
     out = []
-    for im in json.loads(day.read_text()).get('images') or []:
+    for im in razreshit(json.loads(day.read_text())).get('images') or []:  # картинки по номеру (Р649)
         cr, cap = str(im.get('credit') or ''), str(im.get('caption') or '')
         if WIKI.search(cr) or WIKI.search(im['src']) or marka(cap) or marka(im['src']):
             continue

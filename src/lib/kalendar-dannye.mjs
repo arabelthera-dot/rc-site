@@ -3,6 +3,7 @@
 // Формат — старый window.MUSEUM_CALENDAR: {"ММ-ДД": {t, y, d, mech?, src?, href, link}} + конфиг total/dated/months.
 import fs from 'node:fs';
 import path from 'node:path';
+import { razreshit } from './kartinki.mjs'; // картинки по номеру (Р649)
 import crypto from 'node:crypto';
 
 const metaOf = (slug) => {
@@ -33,7 +34,7 @@ export function zapisiMuzeya(slug) {
   const dir = path.join('src/content/days', slug);
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort().map((f) => {
-    const d = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    const d = razreshit(JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
     return { ...d, title: d.title || d.hook || '' };
   });
 }

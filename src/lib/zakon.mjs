@@ -29,6 +29,7 @@
 // красная (src/integrations/zakon.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
+import { razreshit } from './kartinki.mjs'; // картинки по номеру (Р649)
 import YAML from 'yaml';
 import { cardFrames, fullFrames } from './podpisi.mjs';
 
@@ -73,7 +74,7 @@ export function teksty(root = '.') {
   const add = (gde, raw) => { if (raw) out.push(tekst(gde, raw)); };
   for (const museum of ls(path.join(root, DAYS))) {
     for (const f of ls(path.join(root, DAYS, museum)).filter((x) => x.endsWith('.json'))) {
-      const d = readJson(path.join(root, DAYS, museum, f), {});
+      const d = razreshit(readJson(path.join(root, DAYS, museum, f), {}));
       const id = `${museum}/${d.key || f.slice(0, -5)}`;
       const ims = (list, p) => (list || []).forEach((im, i) => { add(`${id} ${p}[${i}].caption`, im.caption); add(`${id} ${p}[${i}].credit`, im.credit); });
       for (const k of ['title', 'hook', 'source', 'gist', 'mechanic', 'more_title']) add(`${id} ${k}`, d[k]);
@@ -94,7 +95,7 @@ export function teksty(root = '.') {
         else if (Array.isArray(v)) v.forEach((x, i) => obhod(x, `${p}[${i}]`));
         else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) obhod(x, p ? `${p}.${k}` : k);
       };
-      obhod(YAML.parse(fs.readFileSync(path.join(root, SHABLON, museum, f), 'utf8')), '');
+      obhod(razreshit(YAML.parse(fs.readFileSync(path.join(root, SHABLON, museum, f), 'utf8')), { slesh: true }), '');
     }
   }
   for (const museum of ls(path.join(root, FULL))) {

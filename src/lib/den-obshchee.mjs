@@ -7,6 +7,7 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
+import { razreshit } from './kartinki.mjs'; // картинки по номеру (Р649)
 
 export const str = z.string().min(1);
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка
@@ -200,7 +201,7 @@ export function zagruzitKartochki(DIR, skhemy) {
     if (files.length && !skhemy[muzei]) throw new Error(`${DIR}/${muzei}: у музея нет схемы карточки дня`);
     return files.map((f) => {
       const file = path.join(DIR, muzei, f);
-      const r = skhemy[muzei].safeParse(YAML.parse(fs.readFileSync(file, 'utf8')));
+      const r = skhemy[muzei].safeParse(razreshit(YAML.parse(fs.readFileSync(file, 'utf8')), { slesh: true, gde: file }));
       if (!r.success) throw new Error(`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`);
       if (r.data.muzei !== muzei || r.data.key !== f.slice(0, -5)) throw new Error(`${file}: muzei/key карточки не совпадают с путём`);
       return r.data;

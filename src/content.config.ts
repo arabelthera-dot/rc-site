@@ -8,6 +8,7 @@ import { z } from 'astro/zod';
 import { existsSync } from 'node:fs';
 import { kartochkaUtv } from './lib/skhema-utverzhdeno.mjs';
 import { igraDannymi } from './lib/igry-mehaniki';
+import { razreshit } from './lib/kartinki.mjs';
 
 // Музеи — каталог platform/catalog/museums.json как есть; title_ru — единственное имя музея.
 const museums = defineCollection({
@@ -170,7 +171,8 @@ const igra = igraDannymi;
 
 const days = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/days' }),
-  schema: z.object({
+  // Картинки по номеру (Р649): «kartinka:000123» → путь из src/data/kartinki.json до проверки; нет номера — сборка падает.
+  schema: z.preprocess((d) => razreshit(d), z.object({
     museum: z.string(),
     key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД')
       // Ключ — существующий день года (365, без 29.02): 12-32…12-37 пришли из старого календаря первопроходцев (19.10).
@@ -267,7 +269,7 @@ const days = defineCollection({
       ctx.addIssue({ code: 'custom', path: ['source'], message: 'у дня со страницей нет источника' });
     formaDnya(d, ctx);
   // Дня без названия в старом календаре (Календарь побед, 5 дней) — на месте названия его хук: другого текста нет.
-  }).transform((d) => ({ ...d, title: d.title || d.hook || '' })),
+  }).transform((d) => ({ ...d, title: d.title || d.hook || '' }))),
 });
 
 // Р635: проверки формы. Ссылки и Википедия — у любого дня с полями формы; полнота — по status.

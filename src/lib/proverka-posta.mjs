@@ -10,6 +10,7 @@
 //   ссылки       — только на адрес сайта (site из astro.config.mjs) и открываются с ответом 200 до отправки.
 import fs from 'node:fs';
 import path from 'node:path';
+import { razreshit } from './kartinki.mjs'; // картинки по номеру (Р649)
 import { checkMuseumName, decode, MUSEUMS } from './imya-muzeya.mjs';
 import { sverkaTekstov, tekst, kadrXX, vedomostOsnovaniy } from './zakon.mjs';
 import { pageFrames } from './podpisi.mjs';
@@ -102,7 +103,7 @@ export async function proverkaPosta(post, { root = process.cwd(), site, shema, p
     const id = `${m.slug}/${key}`;
     const f = path.join(root, DAYS, m.slug, `${key}.json`);
     if (!fs.existsSync(f)) { brak.push(`${id}: нет карточки дня`); continue; }
-    const karta = JSON.parse(fs.readFileSync(f, 'utf8'));
+    const karta = razreshit(JSON.parse(fs.readFileSync(f, 'utf8')));
     karty[m.slug] = karta;
     // Карточка в том виде, в каком она уходит в пост (хук поста на месте хука карточки), — через схему сборки.
     const r = shema.safeParse({ ...karta, hook: m.hook });

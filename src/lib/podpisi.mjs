@@ -5,6 +5,7 @@
 // «без лицензии» — источник есть, лицензии в тексте нет. Только чтение, без зависимостей.
 import fs from 'node:fs';
 import path from 'node:path';
+import { razreshit } from './kartinki.mjs'; // картинки по номеру (Р649)
 
 // Р136 (22.10): кадр фонда любого года по стандарту музеев (credit line) — «Хранится: музей» и основание ст. 1274 ГК РФ
 // в одной подписи; одна ссылка на статью без держателя лицензией не считается.
@@ -40,7 +41,7 @@ export function cardFrames(root = '.') {
   const out = [];
   for (const museum of ls(path.join(root, DAYS))) {
     for (const f of ls(path.join(root, DAYS, museum)).filter((x) => x.endsWith('.json'))) {
-      const d = JSON.parse(fs.readFileSync(path.join(root, DAYS, museum, f), 'utf8'));
+      const d = razreshit(JSON.parse(fs.readFileSync(path.join(root, DAYS, museum, f), 'utf8')));
       const ims = [...(d.images || [])];
       for (const e of d.more || []) ims.push(...(e.images || []), ...(e.detail_images || []));
       for (const im of ims) {
@@ -130,7 +131,7 @@ export function kadryNeNaStranice(root = '.') {
       const html = anketa ? anketa.map((b) => b.html ?? '').join('') : fs.readFileSync(path.join(root, FULL, museum, f), 'utf8');
       const srcs = [...new Set([...html.matchAll(/src="([^"]+\.(?:jpe?g|png|webp))"/gi)].map((m) => m[1]))];
       const bloki = html.match(/<figure\b[\s\S]*?<\/figure>|<img\b[^>]*>/gi) ?? [];
-      for (const im of JSON.parse(fs.readFileSync(day, 'utf8')).images || []) {
+      for (const im of razreshit(JSON.parse(fs.readFileSync(day, 'utf8'))).images || []) {
         const src = String(im.src || ''), imya = src.split('/').pop();
         if (!imya || html.includes(imya) || WIKI.test(`${src} ${im.credit || ''}`)) continue;
         const moj = fajl(src);
