@@ -1,0 +1,127 @@
+{
+  "museum": "izobreteniya",
+  "key": "01-13",
+  "status": "gotov",
+  "nomer_dnya": "izobreteniya-k278-rekord-glubiny",
+  "title": "К-278 «Комсомолец»: единственная в мире боевая ПЛ, погрузившаяся на 1027 м (рекорд не побит)",
+  "hook": "Обычной атомной подлодке хватало 600 метров, а К-278 первой в мире ушла на 1027 — и этот рекорд не побит до сих пор.",
+  "etiketka_oblozhki": [
+    "К-278 «Комсомолец»",
+    "1027 метров под водой",
+    "Рекорд 1985 года не побит"
+  ],
+  "data_sobytiya": "1985-08-04",
+  "data_uslovnaya": "Дата условная: в календаре рекорд стоит на 13 января, а сам он поставлен 4 августа 1985 года.",
+  "chto_sluchilos": "рекорд глубины погружения подводной лодки",
+  "god": 1985,
+  "god_tochnost": "tochno",
+  "year": 1985,
+  "god_pokaza": 2027,
+  "ves": "glavnoe",
+  "tyazhelaya_tema": [
+    "gibel"
+  ],
+  "velichina_chislo": 1027,
+  "velichina_edinica": "м",
+  "velichina_chto": "глубина погружения",
+  "mechanic": "Опускаешь лодку на километр рядом с понятным ориентиром: Останкинская башня уходит под воду целиком 🔜",
+  "source": "Центральный военно-морской музей · выставка «Памяти АПЛ К-278 „Комсомолец“» (navalmuseum.ru)",
+  "istochniki": [
+    {
+      "id": "cvmm-vystavka-k278",
+      "baza": "muzej-rf",
+      "nazvanie": "Центральный военно-морской музей · выставка «Памяти АПЛ К-278 „Комсомолец“»",
+      "ssylka": "https://navalmuseum.ru/exhibition?id=159"
+    },
+    {
+      "id": "sevmash-40-let-rekordu",
+      "baza": "periodika",
+      "nazvanie": "«Исполнилось 40 лет рекорду глубины погружения», Sudostroenie.info (пресс-служба ПО «Севмаш»)",
+      "god": 2025,
+      "ssylka": "https://sudostroenie.info/novosti/45757.html"
+    },
+    {
+      "id": "korabel-40-let-lodke",
+      "baza": "periodika",
+      "nazvanie": "«Самой глубоководной в мире атомной подводной лодке исполнилось 40 лет», Korabel.ru (материал ПО «Севмаш»)",
+      "god": 2023,
+      "ssylka": "https://www.korabel.ru/news/comments/samoy_glubokovodnoy_v_mire_atomnoy_podvodnoy_lodke_ispolnilos_40_let.html"
+    },
+    {
+      "id": "aif-konec-komsomolca",
+      "baza": "periodika",
+      "avtor": "Андрей Сидорчик",
+      "nazvanie": "«Конец „Комсомольца“. Как погибла лучшая советская подлодка», «Аргументы и факты»",
+      "god": 2014,
+      "ssylka": "https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka"
+    },
+    {
+      "id": "mospravda-pogruzhenie",
+      "baza": "periodika",
+      "avtor": "Сергей Ишков",
+      "nazvanie": "«Погружение на рекордную глубину», «Московская правда»",
+      "god": 2021,
+      "ssylka": "https://mospravda.ru/2021/08/04/213644/"
+    }
+  ],
+  "fakty": [
+    {
+      "id": "dok-kamery-sevmasha",
+      "tekst": "Севмаш построил три док-камеры, чтобы ещё на заводе сдавить отсеки К-278 давлением глубины.",
+      "istochnik": "sevmash-40-let-rekordu"
+    },
+    {
+      "id": "svarka-titana",
+      "tekst": "Сварщики Севмаша учились заново: титановую лодку нельзя было варить, как стальную.",
+      "istochnik": "korabel-40-let-lodke"
+    },
+    {
+      "id": "zolotaya-rybka",
+      "tekst": "На флоте её звали «золотой рыбкой» — за сверхдорогой титан и долгие годы проектирования и постройки.",
+      "istochnik": "aif-konec-komsomolca"
+    },
+    {
+      "id": "51-minuta-na-kilometre",
+      "tekst": "Экипаж К-278 продержал лодку на километровой глубине 51 минуту, прежде чем уйти ещё глубже.",
+      "istochnik": "mospravda-pogruzhenie",
+      "dlya_voprosa": true,
+      "otvet": "51 минуту",
+      "otvet_edinstvennyj": true
+    }
+  ],
+  "citaty": [
+    {
+      "kto": "Владимир Чувакин, ответственный сдатчик Севмаша",
+      "gde": "«Исполнилось 40 лет рекорду глубины погружения», Sudostroenie.info (пресс-служба ПО «Севмаш»), 04.08.2025",
+      "tekst": "До восьмисот метров погружение осуществлялось ступенями через 50 метров, далее до предельной глубины ступенями через 25 метров.",
+      "istochnik": "sevmash-40-let-rekordu"
+    }
+  ],
+  "legacy_page": "muzei/izobreteniya/day-13jan-k278.html",
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/01-13-goskatalog-42001363.jpg",
+      "caption": "Атомная подводная лодка «Комсомолец» (К-278) перед последним выходом в плавание.",
+      "credit": "Фото: автор не указан, 1989. Хранится: Федеральное государственное бюджетное учреждение культуры «Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник». Госкаталог музейного фонда РФ, № 4655496. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=4655496. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ).",
+      "vid": "foto",
+      "podpis_chto": "Атомная подводная лодка «Комсомолец» (К-278)",
+      "podpis_kogda": "перед последним выходом в плавание, 1989",
+      "hranitel": "Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник",
+      "nomer_predmeta": "4655496",
+      "nomer_snimka": "42001363",
+      "prava": {
+        "avtor": "автор не указан",
+        "god_sozdaniya": 1989,
+        "anonim": true,
+        "sdelano_mashinoj": false,
+        "otkuda": "Госкаталог Музейного фонда РФ, № предмета 4655496",
+        "baza": "goskatalog",
+        "ssylka": "https://goskatalog.ru/portal/#/collections?id=4655496"
+      },
+      "podlinnik": {
+        "gde": "public/muzei/izobreteniya/img/01-13-goskatalog-42001363.jpg",
+        "otkuda": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/42001363"
+      }
+    }
+  ]
+}
