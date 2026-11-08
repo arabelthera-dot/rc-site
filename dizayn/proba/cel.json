@@ -1,0 +1,39 @@
+{
+  "$description": "Р649 п.15 шаг 2: утверждённая цель таблицы (Сергей, Р649): 2(+1) шрифта, 8 размеров, 3 скругления, 12 цветов + 3 оттенка музея, 2 наклона. Проба — только день, где <html data-dizayn=\"proba\"> (изобретения, 13 января).",
+  "shrift": {
+    "$type": "fontFamily",
+    "tekst": { "$value": "'Inter', system-ui, sans-serif", "$description": "весь текст, кнопки, подписи" },
+    "zagolovok": { "$value": "'Playfair Display', Georgia, serif", "$description": "заголовки и всё, что было с засечками" },
+    "cifry": { "$value": "'JetBrains Mono', ui-monospace, monospace", "$description": "+1: только моноширинное, где нужно" }
+  },
+  "razmer": {
+    "$type": "dimension",
+    "xs": { "$value": "12px" }, "s": { "$value": "14px" }, "m": { "$value": "16px" }, "l": { "$value": "18px" },
+    "xl": { "$value": "21px" }, "2xl": { "$value": "26px" }, "3xl": { "$value": "34px" }, "4xl": { "$value": "56px" }
+  },
+  "skruglenie": {
+    "$type": "dimension",
+    "malo": { "$value": "6px", "$description": "было до 8px: метки, поля, мелкие кнопки" },
+    "srednee": { "$value": "12px", "$description": "было 9–30px: карточки, блоки" },
+    "krug": { "$value": "999px", "$description": "было 32px и больше, 50%: круги и «таблетки»" }
+  },
+  "cvet": {
+    "$type": "color",
+    "fon": { "$value": "#060d18" }, "fon-2": { "$value": "#0e1c2c" }, "fon-3": { "$value": "#1b2a44" },
+    "tekst": { "$value": "#e8eef5" }, "tekst-2": { "$value": "#c8d6e2" }, "tekst-3": { "$value": "#8fa5b9" },
+    "belyy": { "$value": "#ffffff" }, "chernyy": { "$value": "#000000" }, "temnyy": { "$value": "#12151c" },
+    "sinij": { "$value": "#2d8cbf" }, "goluboy": { "$value": "#7dc8ff" }, "bezh": { "$value": "#e9e3d3" }
+  },
+  "muzei": {
+    "izobreteniya": {
+      "$type": "color",
+      "1": { "$value": "#c9a84c", "$description": "золото" },
+      "2": { "$value": "#e4c97a", "$description": "светлое золото" },
+      "3": { "$value": "#b8882b", "$description": "тёмное золото" }
+    }
+  },
+  "naklon": {
+    "$type": "number",
+    "kosoy": { "$value": "135deg" }, "pryamoy": { "$value": "180deg" }
+  }
+}
