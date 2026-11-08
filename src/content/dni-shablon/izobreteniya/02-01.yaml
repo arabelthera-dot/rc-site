@@ -59,6 +59,8 @@ daynav:
   label: Учёный
 - id: fakty
   label: Факты
+- id: games
+  label: Карта мозга
 - id: kadry
   label: Кадры
 - id: pervenstvo
@@ -282,6 +284,10 @@ fakty:
     href: https://cyberleninka.ru/article/n/kazanskiy-period-deyatelnosti-v-m-behtereva-k-160-letiyu-so-dnya-rozhdeniya-velikogo-uchenogo
     pometka: документ
 razdely: []
+igra:
+  imya: karta-mozga
+  css:
+  - izob-02-01-igra
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире
