@@ -22,7 +22,7 @@ def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
 
 slovar = json.load(open(f'{KOREN}/src/data/slovar.json'))
-po_imeni = {v['nazvanie']: k for k, v in slovar.items() if v['tip'] == 'lyudi'}
+po_imeni = {v['nazvanie']: k for k, v in slovar.items() if v.get('tip') == 'lyudi'}  # _roli — список ролей, не запись
 INIC = re.compile(r'\b([А-ЯЁ])\.\s?(?:([А-ЯЁ])\.\s?)?([А-ЯЁ][а-яё]{2,}(?:-[А-ЯЁ][а-яё]+)?)')
 PREDMET = re.compile(r'«([А-ЯЁ0-9][^«»]{1,40})»')
 
