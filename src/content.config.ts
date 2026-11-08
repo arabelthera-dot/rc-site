@@ -41,12 +41,77 @@ const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
 const secondSentence = /(?<!(?:^|[^А-Яа-яЁёA-Za-z])[А-ЯЁA-Z])[.!?…]\s+[А-ЯЁA-Z]/;
 const wiki = /wiki|википеди|викитек/i;
 
+// Р635 (Сергей 08.11: Р631 — очередь 0, Р635 — пп. 86, 115, 187): форма карточки дня — добавкой, поля плоские.
+// Поля нет — день как раньше; что поле значит и идёт ли оно на страницу — src/data/forma-dnya.json.
+// status: 'zagotovka' — обязательны название и хук; 'gotov' — обязательна вся форма (formaDnya ниже).
+// База источника и картинки — закрытый список: российские и белорусские да (Р469, Р136);
+// Википедии, Викисклада, Викитеки в нём нет и не будет (Р90).
+export const BAZY = ['goskatalog', 'shm_catalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'rusneb', 'prlib',
+  'rsl', 'nlr', 'shpl', 'pamyat-naroda', 'podvig-naroda', 'fips', 'muzej-rf', 'muzej-by', 'arhiv-rf', 'arhiv-by',
+  'biblioteka-rf', 'biblioteka-by', 'kniga', 'periodika', 'gosorgan-rf', 'gosorgan-by', 'nauka', 'sajt-organizacii'] as const;
+export const VIDY = ['foto', 'chertezh', 'karta', 'kartina', 'risunok', 'plakat', 'dokument', 'predmet', 'skhema',
+  'kadr-filma'] as const;
+const baza = z.enum(BAZY, { message: 'база — из закрытого списка BAZY (Википедия, Викисклад, Викитека запрещены, Р90)' });
+const nomer = z.string().regex(/^[a-z0-9-]+$/, 'номер — латиница, цифры, дефис');
+const god = z.union([z.number().int(), z.string().min(1)]);
+const data = z.string().regex(/^\d{1,4}-\d\d-\d\d$/, 'дата — ГГГГ-ММ-ДД');
+// Источник — запись: на него ссылаются факты и цитаты по id.
+const istochnik = z.object({
+  id: nomer,
+  baza,
+  nazvanie: z.string().min(1, 'у источника нет названия'),
+  avtor: z.string().min(1).optional(),
+  god: god.optional(),
+  ssylka: z.string().url('ссылка источника — адрес http(s)').optional(),
+  mesto: z.string().min(1).optional(),
+});
+// Факт — запись с постоянным id (не порядковым) и источником; уровней подтверждения нет (Р504, Р621).
+const fakt = z.object({
+  id: nomer,
+  tekst: z.string().min(1, 'у факта нет текста'),
+  istochnik: nomer,
+  dlya_voprosa: z.boolean().optional(),
+  otvet: z.string().min(1).optional(),
+  otvet_edinstvennyj: z.literal(true).optional(),
+}).refine((f) => !f.dlya_voprosa || (f.otvet && f.otvet_edinstvennyj), { message: 'факт для вопроса — с ответом, и ответ единственный (otvet, otvet_edinstvennyj)' });
+const citata = z.object({
+  kto: z.string().min(1, 'у цитаты нет автора'),
+  gde: z.string().min(1, 'у цитаты нет места публикации'),
+  tekst: z.string().min(1, 'у цитаты нет текста'),
+  istochnik: nomer.optional(),
+});
+// Паспорт прав картинки — одна запись; otkuda — откуда взята («Госкаталог, № предмета 4655496»).
+const prava = z.object({
+  avtor: z.string().min(1, 'автор картинки — имя или «автор не указан»'),
+  god_sozdaniya: god.optional(),
+  god_smerti_avtora: z.number().int().optional(),
+  god_reabilitacii: z.number().int().optional(),
+  anonim: z.boolean().optional(),
+  pervaya_publikaciya: god.optional(),
+  sdelano_mashinoj: z.boolean(),
+  otkuda: z.string().min(1, 'в паспорте прав нет «откуда»'),
+  baza: baza.optional(),
+  ssylka: z.string().url('ссылка картинки — адрес http(s)').optional(),
+});
+
 const image = z.object({
   src: z.string().min(1),
   caption: z.string().min(1, 'у картинки нет подписи'),
   credit: z.string().min(1, 'у картинки нет источника'),
   generated: z.boolean().default(false),
   text_on_image: z.literal(false, { message: 'текст на картинке запрещён' }).default(false),
+  // Р635 — поля формы картинки (смысл, страница или служебное — src/data/forma-dnya.json); нет поля — как раньше.
+  vid: z.enum(VIDY, { message: `vid картинки — ${VIDY.join(' | ')}` }).optional(),
+  prava: prava.optional(),
+  nomer_predmeta: z.string().min(1).optional(),
+  nomer_snimka: z.string().min(1).optional(),
+  hranitel: z.string().min(1).optional(),
+  podpis_chto: z.string().min(1).optional(),
+  podpis_gde: z.string().min(1).optional(),
+  podpis_kogda: z.string().min(1).optional(),
+  simvolika_proverena: z.boolean().optional(),
+  podlinnik: z.object({ gde: z.string().min(1), otkuda: z.string().min(1) }).optional(),
+  svyashchennoe: z.boolean().optional(),
 });
 
 // Доп. карточки дня (Сергей 17.10, museum-core §5-кватер п.5): внутри каждого дня 3–5 других открытий, дел,
@@ -131,6 +196,28 @@ const days = defineCollection({
     body: z.array(blok).min(1).optional(),
     // slovar — связи дня со словарём src/data/slovar.json (Р37, Сергей 20.10: одно поле-ссылка, снимает заморозку только для него):
     // slovar — «tip:id», tip — lyudi | mesto | narod | tema; id нет в словаре — сборка красная (страницы /slovar/)
+    // Р635 — форма карточки дня (src/data/forma-dnya.json); поля без значения по умолчанию — старые дни не меняются.
+    status: z.enum(['zagotovka', 'gotov'], { message: "status — 'zagotovka' или 'gotov'" }).optional(),
+    nomer_dnya: nomer.optional(),
+    data_sobytiya: data.optional(),
+    data_staryj_stil: data.optional(),
+    data_uslovnaya: z.string().min(1).optional(),
+    chto_sluchilos: z.string().min(1).optional(),
+    god: z.number().int().optional(),
+    god_tochnost: z.enum(['tochno', 'okolo', 'desyatiletie', 'vek']).optional(),
+    god_pokaza: z.number().int().min(2026).optional(),
+    ves: z.enum(['glavnoe', 'vtoroe', 'obychnoe']).optional(),
+    tyazhelaya_tema: z.array(z.enum(['vojna', 'kazn', 'golod', 'repressii', 'katastrofa', 'gibel'])).optional(),
+    fakty: z.array(fakt).optional(),
+    istochniki: z.array(istochnik).optional(),
+    citaty: z.array(citata).optional(),
+    velichina_chislo: z.number().optional(),
+    velichina_edinica: z.string().min(1).optional(),
+    velichina_chto: z.string().min(1).optional(),
+    voinskaya_chast: z.string().min(1).optional(),
+    operaciya: z.string().min(1).optional(),
+    front: z.string().min(1).optional(),
+    etiketka_oblozhki: z.array(z.string().min(1)).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
     slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
       .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
   }).superRefine((d, ctx) => {
@@ -178,9 +265,65 @@ const days = defineCollection({
       ctx.addIssue({ code: 'custom', path: ['hook'], message: 'у дня со страницей нет хука' });
     if (!waived && d.legacy_page && !d.source)
       ctx.addIssue({ code: 'custom', path: ['source'], message: 'у дня со страницей нет источника' });
+    formaDnya(d, ctx);
   // Дня без названия в старом календаре (Календарь побед, 5 дней) — на месте названия его хук: другого текста нет.
   }).transform((d) => ({ ...d, title: d.title || d.hook || '' })),
 });
+
+// Р635: проверки формы. Ссылки и Википедия — у любого дня с полями формы; полнота — по status.
+// Новые дни (есть status) — чистый текст без вёрстки и без «в этом году» (год показа — полем god_pokaza).
+const vyorstka = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function formaDnya(d: any, ctx: z.RefinementCtx) {
+  const net = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message });
+  const ist = new Set((d.istochniki ?? []).map((s: { id: string }) => s.id));
+  if (ist.size !== (d.istochniki ?? []).length) net(['istochniki'], 'id источников повторяются');
+  (d.istochniki ?? []).forEach((s: { ssylka?: string; nazvanie: string }, i: number) => {
+    if (wiki.test(`${s.ssylka ?? ''} ${s.nazvanie}`)) net(['istochniki', i], 'Википедия, Викисклад, Викитека как источник запрещены (Р90)');
+  });
+  const fid = new Set((d.fakty ?? []).map((f: { id: string }) => f.id));
+  if (fid.size !== (d.fakty ?? []).length) net(['fakty'], 'id фактов повторяются');
+  (d.fakty ?? []).forEach((f: { istochnik: string }, i: number) => {
+    if (!ist.has(f.istochnik)) net(['fakty', i, 'istochnik'], `источника «${f.istochnik}» нет в istochniki`);
+  });
+  (d.citaty ?? []).forEach((c: { istochnik?: string }, i: number) => {
+    if (c.istochnik && !ist.has(c.istochnik)) net(['citaty', i, 'istochnik'], `источника «${c.istochnik}» нет в istochniki`);
+  });
+  if (d.data_sobytiya && !d.data_sobytiya.endsWith(`-${d.key}`) && !d.data_sobytiya.endsWith('-02-29') && !d.data_uslovnaya)
+    net(['data_sobytiya'], `дата события не совпадает с днём ${d.key}: исходная 29.02 — можно, иначе объясни в data_uslovnaya`);
+  if (d.data_sobytiya && d.god !== undefined && Number(d.data_sobytiya.split('-')[0]) !== d.god)
+    net(['god'], 'год не совпадает с датой события');
+  d.images.forEach((im: z.infer<typeof image>, i: number) => {
+    if (im.prava && wiki.test(`${im.prava.otkuda} ${im.prava.ssylka ?? ''}`))
+      net(['images', i, 'prava'], 'Википедия, Викисклад, Викитека как источник картинки запрещены (Р90)');
+    if (im.prava && im.prava.sdelano_mashinoj !== im.generated)
+      net(['images', i, 'prava', 'sdelano_mashinoj'], 'sdelano_mashinoj не совпадает с generated');
+  });
+  if (!d.status) return;
+  if (!d.title) net(['title'], 'у дня нет названия');
+  if (!d.hook) net(['hook'], 'у дня нет хука');
+  const teksty: [(string | number)[], string][] = [[['title'], d.title], [['hook'], d.hook ?? ''],
+    ...(d.fakty ?? []).map((f: { tekst: string }, i: number) => [['fakty', i, 'tekst'], f.tekst]),
+    ...(d.citaty ?? []).map((c: { tekst: string }, i: number) => [['citaty', i, 'tekst'], c.tekst]),
+    ...(d.etiketka_oblozhki ?? []).map((t: string, i: number) => [['etiketka_oblozhki', i], t]),
+    ...d.images.flatMap((im: z.infer<typeof image>, i: number) => [[['images', i, 'caption'], im.caption]])];
+  for (const [path, t] of teksty) {
+    if (vyorstka.test(t)) net(path, 'новый день — чистый текст, без вёрстки внутри поля');
+    if (/в этом году/i.test(t)) net(path, '«в этом году» не пишется — год показа полем god_pokaza');
+  }
+  if (d.status !== 'gotov') return;
+  for (const k of ['nomer_dnya', 'data_sobytiya', 'chto_sluchilos', 'god', 'god_pokaza', 'ves', 'tyazhelaya_tema', 'etiketka_oblozhki'])
+    if (d[k] === undefined) net([k], `у готового дня нет поля ${k}`);
+  if (!d.fakty?.length) net(['fakty'], 'у готового дня нет фактов');
+  if (!d.istochniki?.length) net(['istochniki'], 'у готового дня нет источников');
+  if (!d.images.length) net(['images'], 'у готового дня нет картинки');
+  const voennyj = !!(d.voinskaya_chast || d.operaciya || d.front || d.tyazhelaya_tema?.includes('vojna'));
+  d.images.forEach((im: z.infer<typeof image>, i: number) => {
+    if (!im.vid) net(['images', i, 'vid'], 'у картинки готового дня нет vid');
+    if (!im.prava) net(['images', i, 'prava'], 'у картинки готового дня нет паспорта прав');
+    if (voennyj && im.simvolika_proverena !== true) net(['images', i, 'simvolika_proverena'], 'военный день — символика картинки проверена человеком');
+  });
+}
 
 // Копии утверждённых карточек (src/data/utverzhdeno/<музей>/ММ-ДД.json): «кадр без факта» — ошибка схемы (аудит 04.11, п. 5).
 const utverzhdeno = defineCollection({
