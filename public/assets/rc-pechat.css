@@ -4,9 +4,9 @@
 @media print {
   @page { margin: 15mm 14mm; }
   html, body, main, section, article, header, footer, .section, .section.dark, .section.soft, .block, .hero, .hero-scene {
-    background: #fff !important; color: #000 !important; box-shadow: none !important; text-shadow: none !important;
+    background: var(--cvet-ffffff) !important; color: var(--cvet-000000) !important; box-shadow: none !important; text-shadow: none !important;
   }
-  body * { color: #000 !important; background-image: none !important; }
+  body * { color: var(--cvet-000000) !important; background-image: none !important; }
   img, video, svg, canvas { max-width: 100% !important; height: auto !important; }
   img { filter: none !important; }
   figure, img, table, blockquote, .fig, .more-pic { break-inside: avoid; page-break-inside: avoid; }
@@ -17,7 +17,7 @@
   .rt-box, .crumbs, .backbtn, .btn, button, nav, form, iframe, audio, video, dialog, .pswp, .rc-lupa-znak, #heart,
   .top, .quick-progress, .foot-links, .slog { display: none !important; }
   /* ссылки — адресом после текста; внутренние якоря и картинки-ссылки — без адреса */
-  a { color: #000 !important; text-decoration: underline; }
-  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 85%; word-break: break-all; }
+  a { color: var(--cvet-000000) !important; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: var(--razmer-85pct); word-break: break-all; }
   a[href^="#"]::after, a:has(> img)::after, a[href^="mailto:"]::after { content: none !important; }
 }
