@@ -112,6 +112,8 @@ jobs:
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: dist
+          path: /tmp
+      - run: tar -xf /tmp/dist.tar && rm /tmp/dist.tar
       - name: vneshnie-hosty — ни одного запроса за рубеж
         run: node scripts/vneshnie-hosty.mjs --dist dist
       - name: Личной почты в сборке нет (разбор безопасности 20.10)
