@@ -35,36 +35,17 @@ const museums = defineCollection({
 // 16.10 Сергей: «переноси как есть, дальше будем менять, улучшать» — переписанный день строку снимает.
 import waivers from './data/passport-waivers.json';
 import slovar from './data/slovar.json'; // slovar — словарь связей дня (Р37, Сергей 20.10)
+import { BAZY, VIDY, wiki, nomer, polyaKartinki, polyaDnya as polyaDnyaFormy } from './lib/forma-dnya.mjs';
 
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
 // Инициалы («А. К. Толстой») — не конец предложения: точка после одиночной заглавной буквы не считается.
 const secondSentence = /(?<!(?:^|[^А-Яа-яЁёA-Za-z])[А-ЯЁA-Z])[.!?…]\s+[А-ЯЁA-Z]/;
-const wiki = /wiki|википеди|викитек/i;
 
 // Р635 (Сергей 08.11: Р631 — очередь 0, Р635 — пп. 86, 115, 187): форма карточки дня — добавкой, поля плоские.
 // Поля нет — день как раньше; что поле значит и идёт ли оно на страницу — src/data/forma-dnya.json.
 // status: 'zagotovka' — обязательны название и хук; 'gotov' — обязательна вся форма (formaDnya ниже).
-// База источника и картинки — закрытый список: российские и белорусские да (Р469, Р136);
-// Википедии, Викисклада, Викитеки в нём нет и не будет (Р90).
-export const BAZY = ['goskatalog', 'shm_catalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'rusneb', 'prlib',
-  'rsl', 'nlr', 'shpl', 'pamyat-naroda', 'podvig-naroda', 'fips', 'muzej-rf', 'muzej-by', 'arhiv-rf', 'arhiv-by',
-  'biblioteka-rf', 'biblioteka-by', 'kniga', 'periodika', 'gosorgan-rf', 'gosorgan-by', 'nauka', 'sajt-organizacii'] as const;
-export const VIDY = ['foto', 'chertezh', 'karta', 'kartina', 'risunok', 'plakat', 'dokument', 'predmet', 'skhema',
-  'kadr-filma'] as const;
-const baza = z.enum(BAZY, { message: 'база — из закрытого списка BAZY (Википедия, Викисклад, Викитека запрещены, Р90)' });
-const nomer = z.string().regex(/^[a-z0-9-]+$/, 'номер — латиница, цифры, дефис');
-const god = z.union([z.number().int(), z.string().min(1)]);
-const data = z.string().regex(/^\d{1,4}-\d\d-\d\d$/, 'дата — ГГГГ-ММ-ДД');
-// Источник — запись: на него ссылаются факты и цитаты по id.
-const istochnik = z.object({
-  id: nomer,
-  baza,
-  nazvanie: z.string().min(1, 'у источника нет названия'),
-  avtor: z.string().min(1).optional(),
-  god: god.optional(),
-  ssylka: z.string().url('ссылка источника — адрес http(s)').optional(),
-  mesto: z.string().min(1).optional(),
-});
+// Типы полей формы — общие с карточкой страницы dni-shablon: src/lib/forma-dnya.mjs (Р660).
+export { BAZY, VIDY };
 // Факт — запись с постоянным id (не порядковым) и источником; уровней подтверждения нет (Р504, Р621).
 const fakt = z.object({
   id: nomer,
@@ -74,25 +55,6 @@ const fakt = z.object({
   otvet: z.string().min(1).optional(),
   otvet_edinstvennyj: z.literal(true).optional(),
 }).refine((f) => !f.dlya_voprosa || (f.otvet && f.otvet_edinstvennyj), { message: 'факт для вопроса — с ответом, и ответ единственный (otvet, otvet_edinstvennyj)' });
-const citata = z.object({
-  kto: z.string().min(1, 'у цитаты нет автора'),
-  gde: z.string().min(1, 'у цитаты нет места публикации'),
-  tekst: z.string().min(1, 'у цитаты нет текста'),
-  istochnik: nomer.optional(),
-});
-// Паспорт прав картинки — одна запись; otkuda — откуда взята («Госкаталог, № предмета 4655496»).
-const prava = z.object({
-  avtor: z.string().min(1, 'автор картинки — имя или «автор не указан»'),
-  god_sozdaniya: god.optional(),
-  god_smerti_avtora: z.number().int().optional(),
-  god_reabilitacii: z.number().int().optional(),
-  anonim: z.boolean().optional(),
-  pervaya_publikaciya: god.optional(),
-  sdelano_mashinoj: z.boolean(),
-  otkuda: z.string().min(1, 'в паспорте прав нет «откуда»'),
-  baza: baza.optional(),
-  ssylka: z.string().url('ссылка картинки — адрес http(s)').optional(),
-});
 
 const image = z.object({
   src: z.string().min(1),
@@ -101,17 +63,7 @@ const image = z.object({
   generated: z.boolean().default(false),
   text_on_image: z.literal(false, { message: 'текст на картинке запрещён' }).default(false),
   // Р635 — поля формы картинки (смысл, страница или служебное — src/data/forma-dnya.json); нет поля — как раньше.
-  vid: z.enum(VIDY, { message: `vid картинки — ${VIDY.join(' | ')}` }).optional(),
-  prava: prava.optional(),
-  nomer_predmeta: z.string().min(1).optional(),
-  nomer_snimka: z.string().min(1).optional(),
-  hranitel: z.string().min(1).optional(),
-  podpis_chto: z.string().min(1).optional(),
-  podpis_gde: z.string().min(1).optional(),
-  podpis_kogda: z.string().min(1).optional(),
-  simvolika_proverena: z.boolean().optional(),
-  podlinnik: z.object({ gde: z.string().min(1), otkuda: z.string().min(1) }).optional(),
-  svyashchennoe: z.boolean().optional(),
+  ...polyaKartinki,
 });
 
 // Доп. карточки дня (Сергей 17.10, museum-core §5-кватер п.5): внутри каждого дня 3–5 других открытий, дел,
@@ -198,28 +150,8 @@ const days = defineCollection({
     // slovar — «tip:id», tip — lyudi | mesto | narod | tema; id нет в словаре — сборка красная (страницы /slovar/)
     // Р635 — форма карточки дня (src/data/forma-dnya.json); поля без значения по умолчанию — старые дни не меняются.
     status: z.enum(['zagotovka', 'gotov'], { message: "status — 'zagotovka' или 'gotov'" }).optional(),
-    nomer_dnya: nomer.optional(),
-    data_sobytiya: data.optional(),
-    data_staryj_stil: data.optional(),
-    data_uslovnaya: z.string().min(1).optional(),
-    chto_sluchilos: z.string().min(1).optional(),
-    god: z.number().int().optional(),
-    god_tochnost: z.enum(['tochno', 'okolo', 'desyatiletie', 'vek']).optional(),
-    god_pokaza: z.number().int().min(2026).optional(),
-    ves: z.enum(['glavnoe', 'vtoroe', 'obychnoe']).optional(),
-    tyazhelaya_tema: z.array(z.enum(['vojna', 'kazn', 'golod', 'repressii', 'katastrofa', 'gibel'])).optional(),
+    ...polyaDnyaFormy(slovar),
     fakty: z.array(fakt).optional(),
-    istochniki: z.array(istochnik).optional(),
-    citaty: z.array(citata).optional(),
-    velichina_chislo: z.number().optional(),
-    velichina_edinica: z.string().min(1).optional(),
-    velichina_chto: z.string().min(1).optional(),
-    voinskaya_chast: z.string().min(1).optional(),
-    operaciya: z.string().min(1).optional(),
-    front: z.string().min(1).optional(),
-    etiketka_oblozhki: z.array(z.string().min(1)).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
-    slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
-      .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
   }).superRefine((d, ctx) => {
     if (!!d.body !== !!d.doc)
       ctx.addIssue({ code: 'custom', path: ['body'], message: 'анкета страницы — body и doc вместе' });

@@ -7,6 +7,9 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
+import { polyaKartinki, polyaFakta, polyaDnya } from './forma-dnya.mjs';
+import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
+const SLOVAR = JSON.parse(fs.readFileSync('src/data/slovar.json', 'utf8'));
 
 export const str = z.string().min(1);
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка
@@ -14,14 +17,17 @@ export const str = z.string().min(1);
 export const POMETKI = ['документ', 'два источника', 'легенда'];
 // Служебные пометки (Р504, r514h): замок их принимает, на страницу они не идут — оговорок в тексте страницы нет.
 export const POMETKI_SLUZHEBNYE = ['один источник', 'мнение', 'воспоминание'];
-export const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional() });
+// Поля формы Р635 у картинки (vid, prava … svyashchennoe) — src/lib/forma-dnya.mjs; с 02-01 обязательны (docs/standart-dnya.md, Р660).
+export const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional(), ...polyaKartinki });
 // Кадр дня (блок #kadry, как у 13 янв.): размеры — со старой страницы; klass: portret — портретный кадр уже (общее правило izobreteniya-den.css).
 export const kadr = kartinka.extend({ width: z.number().int().positive().optional(), height: z.number().int().positive().optional(), klass: z.literal('portret').optional() });
 // kadr у факта (Р17, «очень много картинок»: каждая — у своего факта) — виден под строкой факта, вне «Подробнее».
 // utverzhden — дата «да» Сергея по факту (ГГГГ-ММ-ДД, Р166/Р176); шаблон его не выводит, замок музея решает, обязателен ли.
 export const udar = z.object({ summary: str, find: z.boolean().optional(), tag: str.optional(), podrobnee: str.optional(), det: z.array(str).min(1), src: str,
   otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum([...POMETKI, ...POMETKI_SLUZHEBNYE]).optional(), kadr: kadr.optional(),
-  utverzhden: z.string().regex(/^\d{4}-\d\d-\d\d$/, 'utverzhden — дата ГГГГ-ММ-ДД').optional() });
+  utverzhden: z.string().regex(/^\d{4}-\d\d-\d\d$/, 'utverzhden — дата ГГГГ-ММ-ДД').optional(),
+  // Поля формы Р635 у факта (id, istochnik, dlya_voprosa, otvet, otvet_edinstvennyj); с 02-01 обязательны (Р660).
+  ...polyaFakta });
 // Норма фактов дня — museum-inventions п.6 (Р101): «4–5 фактов»; меньше — сборка красная (только adres: den).
 export const NORMA_FAKTOV = 4;
 // Два блока фактов, как у 18 янв. (Р374, Р386: «вместо двух партий полухуков… она одна»): «Десять фактов о …» (id fakty,
@@ -95,6 +101,8 @@ export const obshchiePolya = (BLOKI) => {
     audioguide: z.object({ audioSrc: str, durationLabel: str, lead: str, stops: z.array(z.object({ t: z.number(), mark: str, title: str })),
       transcript: z.array(str), note: str }).optional(),
     proof: z.record(z.string(), z.unknown()),
+    // Поля формы Р635 у дня (nomer_dnya … slovar) — src/lib/forma-dnya.mjs; с 02-01 обязательны (docs/standart-dnya.md, Р660).
+    ...polyaDnya(SLOVAR),
   };
 };
 
@@ -192,18 +200,25 @@ export const istochnikSoSsylkoy = (s) => Boolean(s.href) || /href\s*=\s*["']?htt
 const DOLG_DYR = JSON.parse(fs.readFileSync('src/data/dyry-dolg.json', 'utf8'));
 
 // Все карточки: [{ muzei, key, ... }]. Схема — по папке музея (skhemy[<музей>]); нет схемы у музея — ошибка.
-// Имя файла и папки должны совпадать с key и muzei карточки.
+// Имя файла и папки должны совпадать с key и muzei карточки. Дни с 02-01 — ещё и стандарт дня (Р660, src/lib/standart-dnya.mjs).
+// Ошибки собираются по всем карточкам и уходят одним списком: исполнитель видит все пробелы сразу, а не по одному.
 export function zagruzitKartochki(DIR, skhemy) {
   if (!fs.existsSync(DIR)) return [];
-  return fs.readdirSync(DIR).sort().flatMap((muzei) => {
+  const oshibki = [];
+  const vse = fs.readdirSync(DIR).sort().flatMap((muzei) => {
     const files = fs.readdirSync(path.join(DIR, muzei)).filter((f) => f.endsWith('.yaml')).sort();
     if (files.length && !skhemy[muzei]) throw new Error(`${DIR}/${muzei}: у музея нет схемы карточки дня`);
-    return files.map((f) => {
+    return files.flatMap((f) => {
       const file = path.join(DIR, muzei, f);
-      const r = skhemy[muzei].safeParse(YAML.parse(fs.readFileSync(file, 'utf8')));
-      if (!r.success) throw new Error(`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`);
-      if (r.data.muzei !== muzei || r.data.key !== f.slice(0, -5)) throw new Error(`${file}: muzei/key карточки не совпадают с путём`);
-      return r.data;
+      const syroe = YAML.parse(fs.readFileSync(file, 'utf8'));
+      const r = skhemy[muzei].safeParse(syroe);
+      if (!r.success) { oshibki.push(`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`); return []; }
+      if (r.data.muzei !== muzei || r.data.key !== f.slice(0, -5)) { oshibki.push(`${file}: muzei/key карточки не совпадают с путём`); return []; }
+      oshibki.push(...standartDnya(r.data, syroe));
+      return [r.data];
     });
   });
+  oshibki.push(...nomeraDnej(vse));
+  if (oshibki.length) throw new Error(`карточки дней (${DIR}) — ошибок ${oshibki.length}:\n${oshibki.join('\n')}`);
+  return vse;
 }
