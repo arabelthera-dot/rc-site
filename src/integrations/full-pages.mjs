@@ -748,7 +748,7 @@ export default function fullPages() {
             }
             if (bez) html = html.replace(/\s*За (?:каждый )?верный ответ — \d+ очк[а-яё]* из 100\./g, '') // \w без флага u кириллицу не ловит
               .replace(/Для викторины и счёта нужен JavaScript; без него очки не начисляются\./g, 'Для викторины нужен JavaScript.');
-            html = html.replace(/<\/head>/i, `<style data-rc-vozrast>${VOZRAST_CSS}</style>\n${sitebarAssets(base)}\n</head>`)
+            html = html.replace(/<\/head>/i, `<link rel="stylesheet" href="${base}assets/rc-dizayn.css" />\n<style data-rc-vozrast>${VOZRAST_CSS}</style>\n${sitebarAssets(base)}\n</head>`)
               .replace(/<body([^>]*)>/i, (b) => `${b}\n${sitebarHtml({ base, slug: museum, title: MUSEUMS[museum], here: whenOfKey(key), vozrast: znakHtml(vz) })}${roditelyuHtml(roditelyu(museum, key))}`);
             // Версия для слабовидящих (Д7): класс — первым скриптом <head> (до стилей, без мигания), кнопка — в начале <body>.
             html = html.replace(/<head(?:\s[^>]*)?>/i, (h) => `${h}\n<script>${slabovidHeadJs(base)}</script>`)

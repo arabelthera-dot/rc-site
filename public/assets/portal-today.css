@@ -1,29 +1,29 @@
 /* «Сегодня в Русской цивилизации» — первый экран главной портала (src/components/portal/Segodnya.astro):
    «вещь дня» и ниже «Ещё сегодня в музеях». Тёмная гамма, текст никогда не поверх картинки; телефон — одна колонка. */
 .p-today {
-  --pt-bg: #060d18; --pt-card: #0d1828; --pt-line: rgba(214, 178, 106, .22);
-  --pt-gold: #d6b26a; --pt-text: #eef1f6; --pt-mute: #a9b3c3;
+  --pt-bg: var(--cvet-060d18); --pt-card: var(--cvet-0d1828); --pt-line: var(--cvet-d6b26a-a22);
+  --pt-gold: var(--cvet-d6b26a); --pt-text: var(--cvet-eef1f6); --pt-mute: var(--cvet-a9b3c3);
   background: var(--pt-bg); color: var(--pt-text);
   padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 48px);
 }
 .p-today__head { max-width: 1200px; margin: 0 auto 22px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
-.p-today__h { margin: 0; font-size: clamp(1.45rem, 3.6vw, 2.3rem); line-height: 1.15; font-weight: 700; letter-spacing: -.01em; }
-.p-today__date { margin: 0; color: var(--pt-gold); font-size: clamp(1rem, 2.2vw, 1.25rem); font-weight: 600; }
+.p-today__h { margin: 0; font-size: var(--razmer-clamp-1-45rem-3-6vw-2-3rem); line-height: 1.15; font-weight: 700; letter-spacing: -.01em; }
+.p-today__date { margin: 0; color: var(--pt-gold); font-size: var(--razmer-clamp-1rem-2-2vw-1-25rem); font-weight: 600; }
 /* резерв высоты: перерисовка по московской дате не сдвигает страницу */
 .p-today__list {
   max-width: 1200px; margin: 0 auto; min-height: 560px;
   display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start;
 }
 .p-today__card {
-  background: var(--pt-card); border: 1px solid var(--pt-line); border-radius: 14px; overflow: hidden;
+  background: var(--pt-card); border: 1px solid var(--pt-line); border-radius: var(--skruglenie-14px); overflow: hidden;
   display: flex; flex-direction: column;
 }
 .p-today__card--noimg { border-top: 3px solid var(--pt-gold); }
-.p-today__pic { aspect-ratio: 16 / 10; background: #0a1322; overflow: hidden; }
+.p-today__pic { aspect-ratio: 16 / 10; background: var(--cvet-0a1322); overflow: hidden; }
 .p-today__pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .p-today__body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.p-today__museum { margin: 0; color: var(--pt-gold); font-size: .82rem; line-height: 1.35; font-weight: 600; }
-.p-today__title { margin: 0; font-size: 1.12rem; line-height: 1.3; font-weight: 700; }
+.p-today__museum { margin: 0; color: var(--pt-gold); font-size: var(--razmer-82rem); line-height: 1.35; font-weight: 600; }
+.p-today__title { margin: 0; font-size: var(--razmer-1-12rem); line-height: 1.3; font-weight: 700; }
 .p-today__hook { margin: 0; color: var(--pt-mute); font-size: var(--fs-body, 17px); line-height: 1.5; }
 .p-today__go {
   margin-top: auto; padding-top: 6px; align-self: flex-start; color: var(--pt-gold);
@@ -42,34 +42,34 @@
 .p-today--vesch .p-today__head { margin-bottom: 16px; }
 .p-vesch {
   margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr);
-  background: var(--pt-card); border: 1px solid var(--pt-line); border-radius: 16px; overflow: hidden;
-  box-shadow: 0 0 0 1px rgba(201, 168, 76, .06), 0 24px 60px -30px rgba(201, 168, 76, .25);
+  background: var(--pt-card); border: 1px solid var(--pt-line); border-radius: var(--skruglenie-16px); overflow: hidden;
+  box-shadow: 0 0 0 1px var(--cvet-c9a84c-a6), 0 24px 60px -30px var(--cvet-c9a84c-a25);
 }
-.p-vesch__scene { margin: 0; background: #0a1322; display: flex; flex-direction: column; }
-.p-vesch__pic { aspect-ratio: 16 / 10; overflow: hidden; background: #0a1322; }
+.p-vesch__scene { margin: 0; background: var(--cvet-0a1322); display: flex; flex-direction: column; }
+.p-vesch__pic { aspect-ratio: 16 / 10; overflow: hidden; background: var(--cvet-0a1322); }
 .p-vesch__pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .p-vesch__cap {
-  padding: 10px 18px 12px; color: var(--pt-mute); font-size: .86rem; line-height: 1.45;
+  padding: 10px 18px 12px; color: var(--pt-mute); font-size: var(--razmer-86rem); line-height: 1.45;
   border-top: 1px solid var(--pt-line);
 }
-.p-vesch__credit { display: block; margin-top: 2px; font-size: .74rem; color: rgba(169, 179, 195, .8); }
+.p-vesch__credit { display: block; margin-top: 2px; font-size: var(--razmer-74rem); color: var(--cvet-a9b3c3-a80); }
 .p-vesch__lead { padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; gap: 10px; justify-content: center; }
 .p-vesch__kicker {
-  margin: 0; align-self: flex-start; padding: 4px 10px; border: 1px solid rgba(214, 178, 106, .5); border-radius: 999px;
-  color: var(--pt-gold); font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  margin: 0; align-self: flex-start; padding: 4px 10px; border: 1px solid var(--cvet-d6b26a-a50); border-radius: var(--skruglenie-999px);
+  color: var(--pt-gold); font-size: var(--razmer-74rem); font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
 }
-.p-vesch__museum { margin: 4px 0 0; color: #e4c97a; font-size: .95rem; line-height: 1.4; font-weight: 600; }
+.p-vesch__museum { margin: 4px 0 0; color: var(--cvet-e4c97a); font-size: var(--razmer-95rem); line-height: 1.4; font-weight: 600; }
 .p-vesch__title {
-  margin: 0; font-family: 'PT Serif', Georgia, serif; font-weight: 700;
-  font-size: clamp(1.55rem, 3.2vw, 2.35rem); line-height: 1.13; color: #fff;
+  margin: 0; font-family: var(--shrift-pt-serif-georgia-serif); font-weight: 700;
+  font-size: var(--razmer-clamp-1-55rem-3-2vw-2-35rem); line-height: 1.13; color: var(--cvet-ffffff);
 }
-.p-vesch__hook { margin: 0; color: var(--pt-text); font-size: clamp(1.02rem, 1.6vw, 1.15rem); line-height: 1.6; max-width: 46ch; }
+.p-vesch__hook { margin: 0; color: var(--pt-text); font-size: var(--razmer-clamp-1-02rem-1-6vw-1-15rem); line-height: 1.6; max-width: 46ch; }
 .p-vesch__go {
   margin-top: 8px; align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px;
-  color: #060c17; background: var(--pt-gold); border-radius: 10px; font-weight: 700; text-decoration: none;
+  color: var(--cvet-060c17); background: var(--pt-gold); border-radius: var(--skruglenie-10px); font-weight: 700; text-decoration: none;
 }
-.p-vesch__go:hover, .p-vesch__go:focus-visible { background: #e4c97a; }
-.p-vesch__go:focus-visible { outline: 2px solid #e4c97a; outline-offset: 3px; }
+.p-vesch__go:hover, .p-vesch__go:focus-visible { background: var(--cvet-e4c97a); }
+.p-vesch__go:focus-visible { outline: 2px solid var(--cvet-e4c97a); outline-offset: 3px; }
 /* без картинки дня — только текст на своём фоне, по центру, с золотой чертой */
 .p-vesch--noimg { border-top: 3px solid var(--pt-gold); text-align: center; }
 .p-vesch--noimg .p-vesch__lead { align-items: center; padding: clamp(26px, 4vw, 44px); }
@@ -79,35 +79,35 @@
   .p-vesch__scene { border-right: 1px solid var(--pt-line); }
 }
 @media (max-width: 560px) {
-  .p-vesch { border-radius: 14px; }
+  .p-vesch { border-radius: var(--skruglenie-14px); }
   .p-vesch__cap { padding: 8px 14px 10px; }
 }
 /* «Ещё сегодня в музеях» — вторая часть блока, после «Дня по дате» */
 .p-today--rest { padding-top: clamp(22px, 3.5vw, 40px); }
 .p-today__sub {
-  margin: 0 0 18px; font-family: 'PT Serif', Georgia, serif;
-  font-size: clamp(1.25rem, 2.8vw, 1.7rem); line-height: 1.2; font-weight: 700; color: var(--pt-text);
+  margin: 0 0 18px; font-family: var(--shrift-pt-serif-georgia-serif);
+  font-size: var(--razmer-clamp-1-25rem-2-8vw-1-7rem); line-height: 1.2; font-weight: 700; color: var(--pt-text);
 }
 /* «Показать все»: под «Ещё сегодня» видны три карточки (portal/SegodnyaVse.astro) */
 #segodnya-vse.p-today--cut .p-today__card:nth-child(n+4) { display: none; }
 #segodnya-vse.p-today--cut .p-today__list { min-height: 0; }
 .p-today-all { max-width: 860px; margin: -6px auto 18px; text-align: center; }
-.p-today-all__btn { min-height: 44px; padding: 0 20px; font: 600 15px 'Inter', 'Segoe UI', sans-serif; color: #e4c97a;
-  background: transparent; border: 1px solid rgba(201,168,76,.45); border-radius: 10px; cursor: pointer; }
-.p-today-all__btn:hover, .p-today-all__btn:focus-visible { border-color: #e4c97a; }
+.p-today-all__btn { min-height: 44px; padding: 0 20px; font: 600 var(--razmer-15px) var(--shrift-inter-segoe-ui-sans-serif); color: var(--cvet-e4c97a);
+  background: transparent; border: 1px solid var(--cvet-c9a84c-a45); border-radius: var(--skruglenie-10px); cursor: pointer; }
+.p-today-all__btn:hover, .p-today-all__btn:focus-visible { border-color: var(--cvet-e4c97a); }
 /* шрифты шапки портала: заголовки — PT Serif, текст — Inter (как portal.css и музеи, опись Р84 Б7) */
-.p-today, .p-today-all { font-family: 'Inter', 'Segoe UI', sans-serif; }
-.p-today__h, .p-today__title { font-family: 'PT Serif', Georgia, serif; letter-spacing: 0; }
+.p-today, .p-today-all { font-family: var(--shrift-inter-segoe-ui-sans-serif); }
+.p-today__h, .p-today__title { font-family: var(--shrift-pt-serif-georgia-serif); letter-spacing: 0; }
 /* подмена списка по московской дате (Segodnya.astro): до подмены блок невидим, место держится — без сдвига (#2004) */
 .p-today--swap .p-today__head, .p-today--swap .p-today__list, .p-today--swap [data-t="vesch"] { visibility: hidden; }
 
 /* двойники дня (20.10): тот же человек/событие в другом музее — одна карточка и строка «Ещё в музее …» */
-.p-today__takzhe { margin: .5em 0 0; font-size: .9em; opacity: .85; }
+.p-today__takzhe { margin: .5em 0 0; font-size: var(--razmer-9em); opacity: .85; }
 .p-today__takzhe a { color: inherit; text-decoration: underline; }
 
 /* строка «Завтра» под вещью дня (опись Р84 Б7, взгляд 18.1, 21.10): повод вернуться, без ссылки */
-.p-zavtra { margin: 14px 0 0; padding: 12px 16px; border-left: 3px solid var(--p-gold, #c9a84c);
-  background: rgba(201,168,76,.06); border-radius: 0 10px 10px 0;
-  font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.45; color: var(--p-muted, #8fadc9); }
-.p-zavtra b { color: var(--p-ink, #e8eef5); font-weight: 600; }
+.p-zavtra { margin: 14px 0 0; padding: 12px 16px; border-left: 3px solid var(--p-gold, var(--cvet-c9a84c));
+  background: var(--cvet-c9a84c-a6); border-radius: var(--skruglenie-0-10px-10px-0);
+  font-family: var(--shrift-inter-segoe-ui-sans-serif); font-size: var(--razmer-15px); line-height: 1.45; color: var(--p-muted, var(--cvet-8fadc9)); }
+.p-zavtra b { color: var(--p-ink, var(--cvet-e8eef5)); font-weight: 600; }
 .p-zavtra[hidden] { display: none; }

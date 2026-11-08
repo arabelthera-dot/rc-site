@@ -2,8 +2,8 @@
    Сцена сверху, весь текст и кнопки — под ней; на картинке подписей нет. Классы .lab/.seg/.lab-msg продублированы
    здесь в области .rc3, чтобы страница дня не зависела от стилей отдельных игр. Блок «Как играть» — igra-pravila.css. */
 .rc3-blok .r3-lead{max-width:62ch}
-.rc3{background:var(--card);border:1px solid var(--card-b);border-radius:16px;margin-top:14px;padding:0;overflow:hidden}
-.rc3-stage{position:relative;aspect-ratio:16/9;background:linear-gradient(180deg,#5d86b3 0%,#a9c3da 52%,#9a8a66 53%,#6e5f45 100%);touch-action:none;border-bottom:1px solid var(--card-b)}
+.rc3{background:var(--card);border:1px solid var(--card-b);border-radius:var(--skruglenie-16px);margin-top:14px;padding:0;overflow:hidden}
+.rc3-stage{position:relative;aspect-ratio:16/9;background:linear-gradient(180deg,var(--cvet-5d86b3) 0%,var(--cvet-a9c3da) 52%,var(--cvet-9a8a66) 53%,var(--cvet-6e5f45) 100%);touch-action:none;border-bottom:1px solid var(--card-b)}
 .rc3-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
 .rc3-stage canvas:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 @media (max-width:700px){.rc3-stage{aspect-ratio:4/5}}
@@ -11,32 +11,32 @@
 @keyframes rc3-dyshit{50%{opacity:.6}}
 @media (prefers-reduced-motion:reduce){.rc3[data-sostoyanie="gruzit"] .rc3-stage{animation:none}}
 .rc3-under{padding:14px 18px 18px}
-.rc3-count{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.5px;color:var(--gold-l);font-size:20px;text-align:center}
+.rc3-count{font-family:var(--shrift-inter-sans-serif);font-weight:700;letter-spacing:.5px;color:var(--gold-l);font-size:var(--razmer-20px);text-align:center}
 .rc3-count:not(:empty){min-height:44px;padding:8px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 8px}
-.rc3-count small{display:block;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.rc3-count small{display:block;font-size:var(--razmer-12px);font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
 .rc3 .lab-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
-.rc3 .lab-row .lbl{flex:0 0 100%;font-size:13px;color:var(--muted);letter-spacing:.3px}
-.rc3 .seg{cursor:pointer;border:1px solid var(--card-b);background:rgba(255,255,255,.04);color:var(--ink);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;min-height:44px}
+.rc3 .lab-row .lbl{flex:0 0 100%;font-size:var(--razmer-13px);color:var(--muted);letter-spacing:.3px}
+.rc3 .seg{cursor:pointer;border:1px solid var(--card-b);background:var(--cvet-ffffff-a4);color:var(--ink);border-radius:var(--skruglenie-10px);padding:10px 14px;font:inherit;font-size:var(--razmer-14-5px);min-height:44px}
 .rc3 .seg[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-g);color:var(--gold-l);font-weight:600}
 .rc3 .seg:focus-visible,.rc3 .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.rc3 .lab-msg{margin-top:12px;font-size:15.5px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.04);border-left:3px solid var(--card-b);min-height:48px}
+.rc3 .lab-msg{margin-top:12px;font-size:var(--razmer-15-5px);padding:12px 14px;border-radius:var(--skruglenie-10px);background:var(--cvet-ffffff-a4);border-left:3px solid var(--card-b);min-height:48px}
 .rc3 .lab-msg:empty{display:none}
-.rc3 .lab-msg.ok{border-left-color:#3f9b52;background:rgba(40,120,60,.14)}
-.rc3 .lab-msg.bad{border-left-color:#c0453f;background:rgba(180,40,40,.10)}
-.rc3 .lab-found{font-size:13px;color:var(--muted);margin-top:8px}
+.rc3 .lab-msg.ok{border-left-color:var(--cvet-3f9b52);background:var(--cvet-28783c-a14)}
+.rc3 .lab-msg.bad{border-left-color:var(--cvet-c0453f);background:var(--cvet-b42828-a10)}
+.rc3 .lab-found{font-size:var(--razmer-13px);color:var(--muted);margin-top:8px}
 .rc3 .lab-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .rc3 .seg[disabled],.rc3 .btn[disabled]{opacity:.45;cursor:default}
 /* Блок 3D на странице дня (igra.rc3d карточки, загрузчик igry/rc3d-den.js): заставка, «Играть», полоса загрузки, слабый телефон → 2D ниже. */
 .rc3-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
-.rc3-hint{margin:0 0 4px;font-size:13px;color:var(--muted)}
+.rc3-hint{margin:0 0 4px;font-size:var(--razmer-13px);color:var(--muted)}
 .rc3-load{margin:4px 0 8px}
-.rc3-load-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.rc3-load-bar{height:8px;border-radius:var(--skruglenie-4px);background:var(--line);overflow:hidden}
 .rc3-load-bar span{display:block;height:100%;width:0;background:var(--gold);transition:width .2s linear}
-.rc3-load-t{margin:6px 0 0;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rc3-load-t{margin:6px 0 0;font-size:var(--razmer-14px);color:var(--muted);font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.rc3-load-bar span{transition:none}}
 .rc3-slab{margin:4px 0 8px}
 .rc3-slab p{margin:0 0 8px}
-.rc3-slab-vse{font-size:14px}
+.rc3-slab-vse{font-size:var(--razmer-14px)}
 .rc3-link{background:none;border:0;padding:6px 0;min-height:44px;color:var(--gold-l);text-decoration:underline;font:inherit;cursor:pointer}
 .rc3-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .rc3 [hidden]{display:none!important}

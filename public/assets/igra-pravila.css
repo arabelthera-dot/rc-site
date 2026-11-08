@@ -12,7 +12,7 @@
    ============================================================ */
 
 .igra-pravila{
-  --igra-acc:var(--acc,#c9a84c);
+  --igra-acc:var(--acc,var(--cvet-c9a84c));
   box-sizing:border-box;
   max-width:68ch;
   margin:18px 0 20px;
@@ -22,7 +22,7 @@
   border-radius:var(--radius,14px);
   background:color-mix(in srgb,currentColor 5%,transparent);
   font-family:var(--font-b,inherit);
-  font-size:16px;
+  font-size:var(--razmer-16px);
   line-height:1.5;
   overflow-wrap:anywhere;
 }
@@ -31,7 +31,7 @@
 .igra-pravila .igra-pravila-h{
   margin:0 0 6px;
   font-family:var(--font-h,inherit);
-  font-size:1.25rem;
+  font-size:var(--razmer-1-25rem);
   line-height:1.25;
   letter-spacing:0;
   text-transform:none;
@@ -56,10 +56,10 @@
   position:absolute;
   left:0;top:0;
   width:28px;height:28px;
-  border-radius:50%;
+  border-radius:var(--skruglenie-50pct);
   background:var(--igra-acc);
-  color:#111;
-  font:700 15px/28px var(--font-b,system-ui,sans-serif);
+  color:var(--cvet-111111);
+  font:700 var(--razmer-15px)/28px var(--font-b,system-ui,sans-serif);
   text-align:center;
 }
 .igra-pravila .igra-pravila-shagi b{font-weight:700}
@@ -68,7 +68,7 @@
 .igra-pravila .igra-pravila-final{margin:0 0 10px;max-width:none}
 .igra-pravila .igra-pravila-nyuans{
   padding:8px 10px;
-  border-radius:10px;
+  border-radius:var(--skruglenie-10px);
   background:color-mix(in srgb,var(--igra-acc) 14%,transparent);
 }
 .igra-pravila .igra-pravila-final{font-weight:600}
@@ -77,14 +77,14 @@
 .igra-seychas{
   margin:10px 0;
   padding:8px 12px;
-  border-radius:10px;
-  background:color-mix(in srgb,var(--acc,#c9a84c) 14%,transparent);
-  font-size:16px;
+  border-radius:var(--skruglenie-10px);
+  background:color-mix(in srgb,var(--acc,var(--cvet-c9a84c)) 14%,transparent);
+  font-size:var(--razmer-16px);
   line-height:1.45;
 }
 .igra-seychas b{font-weight:700}
 
 @media (min-width:700px){
   .igra-pravila{padding:20px 24px 22px}
-  .igra-pravila .igra-pravila-h{font-size:1.4rem}
+  .igra-pravila .igra-pravila-h{font-size:var(--razmer-1-4rem)}
 }

@@ -4,22 +4,22 @@
 @property --rc-bar-vis{syntax:'<length>';inherits:true;initial-value:0px}
 html{transition:--rc-bar-vis .3s ease}
 nav.rc-sitebar{position:sticky;top:0;z-index:80;box-sizing:border-box;height:52px;margin:0;padding:0 12px;
-  background:#060d18;border-bottom:1px solid rgba(201,168,76,.28);display:flex;align-items:center;
+  background:var(--cvet-060d18);border-bottom:1px solid var(--cvet-c9a84c-a28);display:flex;align-items:center;
   transform:translateY(0);transition:transform .3s ease;
-  font:400 15px/1.2 'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;letter-spacing:0;text-align:start}
+  font:400 var(--razmer-15px)/1.2 var(--shrift-inter-system-ui-apple-system-94d390);letter-spacing:0;text-align:start}
 nav.rc-sitebar.rc-sb-hidden{transform:translateY(-100%)}
 nav.rc-sitebar ol{display:flex;align-items:center;gap:8px;min-width:0;width:100%;max-width:1200px;margin:0 auto;padding:0;list-style:none;white-space:nowrap}
-nav.rc-sitebar li{display:flex;align-items:center;min-width:0;margin:0;padding:0;list-style:none;color:#e8dcc0}
+nav.rc-sitebar li{display:flex;align-items:center;min-width:0;margin:0;padding:0;list-style:none;color:var(--cvet-e8dcc0)}
 nav.rc-sitebar li::marker{content:none}
-nav.rc-sitebar li + li::before{content:'›';flex:none;margin-inline-end:8px;color:rgba(201,168,76,.7);font-size:16px}
+nav.rc-sitebar li + li::before{content:'›';flex:none;margin-inline-end:8px;color:var(--cvet-c9a84c-a70);font-size:var(--razmer-16px)}
 /* Письмо справа налево (Г20): разделитель смотрит по ходу строки */
 [dir=rtl] nav.rc-sitebar li + li::before{content:'‹'}
 nav.rc-sitebar .rc-sb-link{display:inline-flex;align-items:center;box-sizing:border-box;min-height:44px;padding:0 6px;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;border-radius:8px;
-  color:#e8dcc0;text-decoration:none;font:inherit;background:none;border:0}
-nav.rc-sitebar a.rc-sb-link{color:#d9b95c}
-nav.rc-sitebar a.rc-sb-link:hover{background:rgba(201,168,76,.14);text-decoration:underline}
-nav.rc-sitebar a.rc-sb-link:focus-visible{outline:2px solid #d9b95c;outline-offset:-2px}
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;border-radius:var(--skruglenie-8px);
+  color:var(--cvet-e8dcc0);text-decoration:none;font:inherit;background:none;border:0}
+nav.rc-sitebar a.rc-sb-link{color:var(--cvet-d9b95c)}
+nav.rc-sitebar a.rc-sb-link:hover{background:var(--cvet-c9a84c-a14);text-decoration:underline}
+nav.rc-sitebar a.rc-sb-link:focus-visible{outline:2px solid var(--cvet-d9b95c);outline-offset:-2px}
 nav.rc-sitebar li:first-child{flex:none}
 nav.rc-sitebar li.rc-sb-m{flex:0 1 auto}
 nav.rc-sitebar li.rc-sb-here{flex:0 100 auto;opacity:.75}
@@ -27,13 +27,13 @@ nav.rc-sitebar li.rc-sb-poisk{margin-inline-start:auto;flex:0 0 auto}
 /* .rc-sb-link — inline-flex: многоточие нужно у текстового узла, поэтому блок-обёртка */
 nav.rc-sitebar .rc-sb-museum,nav.rc-sitebar .rc-sb-here .rc-sb-link{display:block;line-height:44px}
 @media (max-width:600px){
-  nav.rc-sitebar{padding:0 6px;font-size:15px}
+  nav.rc-sitebar{padding:0 6px;font-size:var(--razmer-15px)}
   nav.rc-sitebar li.rc-sb-here{display:none}
   /* Имя музея на телефоне читается целиком (17.10): корневой пункт «Русская цивилизация ›» убран,
      шрифт меньше, строка одна — полоса не растёт выше 52 px (замер glazami «шапка ≤56, одна») */
   nav.rc-sitebar li:first-child:not(:last-child){display:none}
   nav.rc-sitebar li:first-child + li::before{display:none}
-  nav.rc-sitebar{font-size:14px}
+  nav.rc-sitebar{font-size:var(--razmer-14px)}
   nav.rc-sitebar li.rc-sb-m{flex:1 1 auto}
 }
 @media (prefers-reduced-motion:reduce){
@@ -52,7 +52,7 @@ body:has(> nav.rc-sitebar) .backbtn{display:none!important}
     .sharebtn,.chip,.chips a,.daynav a,.cal2-nav a,.car-nav button,.car-nav a,nav a){min-height:44px;min-width:44px;box-sizing:border-box}
   body:has(> nav.rc-sitebar) :is(.daynav,.cal2-nav,.car-nav,.chips) a{display:inline-flex;align-items:center;justify-content:center}
   /* п.2 — основной текст ≥17 px */
-  body:has(> nav.rc-sitebar) :is(main,article,section,.wrap) :is(p,li,dd,blockquote){font-size:max(17px,1em);line-height:1.55}
+  body:has(> nav.rc-sitebar) :is(main,article,section,.wrap) :is(p,li,dd,blockquote){font-size:var(--razmer-max-17px-1em);line-height:1.55}
 }
 /* Размеры картинок старых страниц дней (full-pages.mjs): атрибут height не растягивает кадр при img{width:100%} */
 :where(img[data-rc-razmer]){height:auto}
@@ -60,7 +60,7 @@ body:has(> nav.rc-sitebar) .backbtn{display:none!important}
 :where(figure img){max-width:100%;height:auto}
 /* Соседние дни внизу полной страницы дня (full-pages.mjs) */
 .rc-sosedi{box-sizing:border-box;max-width:720px;margin:24px auto;padding:0 16px;display:flex;justify-content:space-between;gap:12px;
-  font-family:'Inter',system-ui,sans-serif;font-size:16px}
+  font-family:var(--shrift-inter-system-ui-sans-serif);font-size:var(--razmer-16px)}
 .rc-sosedi a{display:inline-flex;align-items:center;min-height:48px;padding:0 4px;color:inherit;text-decoration:underline;text-underline-offset:3px}
 .rc-sosedi .rc-sosed-next{margin-inline-start:auto;text-align:end}
-.rc-sosedi a:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
+.rc-sosedi a:focus-visible{outline:2px solid var(--cvet-d9b95c);outline-offset:2px}

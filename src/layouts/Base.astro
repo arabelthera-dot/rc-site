@@ -8,7 +8,7 @@ import Metrika from '../components/Metrika.astro';
 import Yazyki from '../components/Yazyki.astro';
 import { yazyk, razobratPut, hreflangi, ogLocale, stroka, strelkaVpered } from '../lib/yazyki.mjs';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
-import { fontFiles } from '../lib/shrifty.mjs';
+import { fontFiles, razvernut } from '../lib/shrifty.mjs';
 import nastroyki from '../data/nastroyki.json';
 import kanaly from '../data/kanaly.json';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
@@ -32,7 +32,7 @@ const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
 // Шрифт заголовков из своего стиля музея (--font-h) набирает название музея в шапке и h1 дня: его файлы
 // (кириллица + латиница, 700) — заранее, иначе Georgia до загрузки переносит название иначе и страница
 // прыгает (CLS 0,19 у «Не сдаются», P1 16.10). Файлы — из fonts.css, руками не перечисляются.
-const headFont = own && /--font-h:\s*'([^']+)'/.exec(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8'))?.[1];
+const headFont = own && /--font-h:\s*'([^']+)'/.exec(razvernut(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8')))?.[1];
 const headFiles = headFont ? fontFiles([headFont], ['700']) : [];
 const url = new URL(Astro.url.pathname, Astro.site).href;
 // Описание для пересылки (og/twitter) отдельно от описания для поисковиков (20.10, #290): главная кладёт сюда хук
@@ -161,6 +161,8 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
     <link rel="preload" href={`${base}assets/fonts/ptserif-EJRVQgYoZZY2vCFuvAFWzr8.woff2`} as="font" type="font/woff2" crossorigin />
   </>}
   {headFiles.map((f) => <link rel="preload" href={`${base}assets/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
+  {/* одна таблица дизайна (dizayn/tablica.json → rc-dizayn.css, Р649): переменные --cvet-/--razmer-/--shrift-… */}
+  <link rel="stylesheet" href={`${base}assets/rc-dizayn.css`} />
   {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
   {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
   <InlineCss file="rc-podpiska.css" />

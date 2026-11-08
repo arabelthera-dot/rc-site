@@ -18,8 +18,8 @@ const { code: tek, rest } = razobratPut(Astro.url.pathname, base);
 {vklyuchen && (
   <style is:inline>{`
     .rc-yazyki{position:fixed;top:.5rem;inset-inline-end:.5rem;z-index:1000;display:flex;gap:.25rem;
-      background:rgba(6,13,24,.72);border-radius:.5rem;padding:.2rem .35rem}
-    .rc-yazyki a{font-size:1.25rem;line-height:1;text-decoration:none;opacity:.6;padding:.15rem}
+      background:var(--cvet-060d18-a72);border-radius:var(--skruglenie-5rem);padding:.2rem .35rem}
+    .rc-yazyki a{font-size:var(--razmer-1-25rem);line-height:1;text-decoration:none;opacity:.6;padding:.15rem}
     .rc-yazyki a:hover,.rc-yazyki a:focus-visible,.rc-yazyki a[aria-current]{opacity:1}
   `}</style>
 )}
