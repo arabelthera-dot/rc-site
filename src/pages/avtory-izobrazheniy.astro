@@ -61,10 +61,10 @@ const noLic = cards.filter((f) => !f.lic).length;
 <style>
   .avtory { max-width: 72rem; margin: 0 auto; padding: 0 1rem 3rem; }
   .avtory-oglavlenie ul { columns: 2; padding-left: 1.2rem; }
-  .avtory-tablica { width: 100%; border-collapse: collapse; margin: .5rem 0 1.5rem; font-size: .92rem; }
-  .avtory-tablica th, .avtory-tablica td { border-bottom: 1px solid rgba(0,0,0,.12); padding: .45rem .5rem; text-align: left; vertical-align: top; }
+  .avtory-tablica { width: 100%; border-collapse: collapse; margin: .5rem 0 1.5rem; font-size: var(--razmer-92rem); }
+  .avtory-tablica th, .avtory-tablica td { border-bottom: 1px solid var(--cvet-000000-a12); padding: .45rem .5rem; text-align: left; vertical-align: top; }
   .avtory-tablica img { display: block; width: 96px; height: auto; max-height: 96px; object-fit: cover; margin-bottom: .25rem; }
-  .avtory-tablica .podpis { display: block; max-width: 16rem; font-size: .85rem; opacity: .8; }
+  .avtory-tablica .podpis { display: block; max-width: 16rem; font-size: var(--razmer-85rem); opacity: .8; }
   details summary { cursor: pointer; margin: .5rem 0; }
   @media (max-width: 40rem) { .avtory-oglavlenie ul { columns: 1; } .avtory-tablica .podpis { display: none; } }
 </style>

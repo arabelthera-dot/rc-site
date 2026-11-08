@@ -25,8 +25,16 @@ export function fontFiles(families, weights) {
 // своего <style>; в fonts.css нет — не наше (Georgia, системные), пропускается.
 export function pageFamilies(html) {
   const known = new Set(allFaces().map((f) => f.family));
-  const used = [...html.matchAll(/(?:font-family|--font-[\w-]+)\s*:\s*['"]?([A-Za-z][A-Za-z ]*?)['"]?\s*[,;}]/g)].map((m) => m[1].trim());
+  const used = [...razvernut(html).matchAll(/(?:font-family|--font-[\w-]+)\s*:\s*['"]?([A-Za-z][A-Za-z ]*?)['"]?\s*[,;}]/g)].map((m) => m[1].trim());
   return [...new Set(used)].filter((f) => known.has(f));
+}
+
+// Одна таблица дизайна (Р649): шрифты в стилях — переменные var(--shrift-…) из assets/rc-dizayn.css;
+// имена семейств ищутся после подстановки значений.
+let shrifty;
+export function razvernut(css) {
+  shrifty ??= new Map([...fs.readFileSync('public/assets/rc-dizayn.css', 'utf8').matchAll(/(--shrift-[\w-]+):\s*([^;]+);/g)].map((m) => [m[1], m[2]]));
+  return css.replace(/var\((--shrift-[\w-]+)\)/g, (v, n) => shrifty.get(n) ?? v);
 }
 
 export const preloadTag = (base, file) => `<link rel="preload" href="${base}assets/fonts/${file}" as="font" type="font/woff2" crossorigin>`;
@@ -38,7 +46,7 @@ export const preloadTag = (base, file) => `<link rel="preload" href="${base}asse
 const BLOCK = /(?:\/\* [\w-]+ \*\/\s*)?@font-face \{[^}]*\}/g;
 let blocks;
 export function usedFamilies(html) {
-  const text = html.replace(/\+/g, ' ');
+  const text = razvernut(html).replace(/\+/g, ' ');
   const known = [...new Set(allFaces().map((f) => f.family))];
   return known.filter((f) => text.includes(f));
 }

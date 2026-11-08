@@ -1,0 +1,327 @@
+{
+  "zachem": "Форма карточки дня (Р631, Р635). na_stranicu — поле выводится на страницу; obyazatelno_dlya_gotov — без него день со status gotov не собирается. Схема — src/content.config.ts, образец — docs/forma-dnya-obrazec.json.",
+  "polya": [
+    {
+      "imya": "status",
+      "chto": "статус дня: заготовка или готов",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "86"
+    },
+    {
+      "imya": "nomer_dnya",
+      "chto": "постоянный номер дня, латиницей через дефис",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "1"
+    },
+    {
+      "imya": "title",
+      "chto": "заголовок дня",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "2"
+    },
+    {
+      "imya": "hook",
+      "chto": "крючок — первая фраза, ради которой открывают день",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "2"
+    },
+    {
+      "imya": "data_sobytiya",
+      "chto": "полная дата события ГГГГ-ММ-ДД, месяц и день совпадают с днём",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "3"
+    },
+    {
+      "imya": "data_staryj_stil",
+      "chto": "дата по старому стилю, если событие до 1918 года",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "4"
+    },
+    {
+      "imya": "data_uslovnaya",
+      "chto": "пояснение, почему день стоит не на дату события",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "3"
+    },
+    {
+      "imya": "chto_sluchilos",
+      "chto": "что случилось — одной строкой",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "5"
+    },
+    {
+      "imya": "god",
+      "chto": "год события числом",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "6"
+    },
+    {
+      "imya": "god_tochnost",
+      "chto": "точность года: точно, около, десятилетие, век",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "6"
+    },
+    {
+      "imya": "god_pokaza",
+      "chto": "год, в который день показывается",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "8"
+    },
+    {
+      "imya": "ves",
+      "chto": "вес дня: главное, второе, обычное",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "9"
+    },
+    {
+      "imya": "tyazhelaya_tema",
+      "chto": "тяжёлая тема дня (война, казнь, голод, репрессии, катастрофа, гибель); пусто — нет",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "13"
+    },
+    {
+      "imya": "fakty",
+      "chto": "факты дня, хотя бы один",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "14"
+    },
+    {
+      "imya": "fakty.id",
+      "chto": "номер факта внутри дня",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "14"
+    },
+    {
+      "imya": "fakty.tekst",
+      "chto": "текст факта",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "14"
+    },
+    {
+      "imya": "fakty.istochnik",
+      "chto": "номер источника факта из istochniki",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "15"
+    },
+    {
+      "imya": "fakty.dlya_voprosa",
+      "chto": "факт годится для вопроса игры",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "16"
+    },
+    {
+      "imya": "fakty.otvet",
+      "chto": "ответ на вопрос по факту",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "16"
+    },
+    {
+      "imya": "fakty.otvet_edinstvennyj",
+      "chto": "ответ единственный — проверено",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "16"
+    },
+    {
+      "imya": "istochniki",
+      "chto": "источники-записи дня: номер, база, название, автор, год, ссылка",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "15"
+    },
+    {
+      "imya": "istochniki.baza",
+      "chto": "база источника из списка разрешённых (Р136, Р469); Википедия запрещена (Р90)",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "17"
+    },
+    {
+      "imya": "citaty",
+      "chto": "цитаты: кто, где, текст",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "18"
+    },
+    {
+      "imya": "velichina_chislo",
+      "chto": "главное число дня",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "19"
+    },
+    {
+      "imya": "velichina_edinica",
+      "chto": "единица главного числа",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "19"
+    },
+    {
+      "imya": "velichina_chto",
+      "chto": "что измерено главным числом",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "19"
+    },
+    {
+      "imya": "voinskaya_chast",
+      "chto": "воинская часть",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "20"
+    },
+    {
+      "imya": "operaciya",
+      "chto": "военная операция",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "20"
+    },
+    {
+      "imya": "front",
+      "chto": "фронт",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "20"
+    },
+    {
+      "imya": "etiketka_oblozhki",
+      "chto": "этикетка обложки, от одной до трёх строк",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "21"
+    },
+    {
+      "imya": "images",
+      "chto": "картинки дня, хотя бы одна",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "23"
+    },
+    {
+      "imya": "images.vid",
+      "chto": "вид картинки: фото, чертёж, карта, картина, рисунок, плакат, документ, предмет, схема, кадр фильма",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "187"
+    },
+    {
+      "imya": "images.prava",
+      "chto": "паспорт прав картинки: автор, годы, сделано машиной, откуда",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "24"
+    },
+    {
+      "imya": "images.prava.otkuda",
+      "chto": "откуда взята картинка — музей, архив, библиотека России или Беларуси",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "115"
+    },
+    {
+      "imya": "images.prava.sdelano_mashinoj",
+      "chto": "картинка сделана машиной; совпадает с generated",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "24"
+    },
+    {
+      "imya": "images.nomer_predmeta",
+      "chto": "номер предмета в музее или Госкаталоге",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "27"
+    },
+    {
+      "imya": "images.nomer_snimka",
+      "chto": "номер снимка в базе",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "27"
+    },
+    {
+      "imya": "images.hranitel",
+      "chto": "кто хранит подлинник",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "28"
+    },
+    {
+      "imya": "images.podpis_chto",
+      "chto": "подпись: что изображено",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "29"
+    },
+    {
+      "imya": "images.podpis_gde",
+      "chto": "подпись: где",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "29"
+    },
+    {
+      "imya": "images.podpis_kogda",
+      "chto": "подпись: когда",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "29"
+    },
+    {
+      "imya": "images.podlinnik",
+      "chto": "где лежит подлинник файла и откуда скачан",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "27"
+    },
+    {
+      "imya": "images.simvolika_proverena",
+      "chto": "символика на картинке проверена; в военном дне обязательно",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "28"
+    },
+    {
+      "imya": "images.svyashchennoe",
+      "chto": "на картинке святыня — обращаться бережно",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "28"
+    },
+    {
+      "imya": "slovar",
+      "chto": "словарь трудных слов дня",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "30"
+    },
+    {
+      "imya": "chistyj_tekst",
+      "chto": "правило: в полях нового дня нет вёрстки и слов «в этом году»",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "40"
+    }
+  ]
+}

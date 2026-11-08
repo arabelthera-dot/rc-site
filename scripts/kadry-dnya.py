@@ -293,6 +293,9 @@ def dobor(a):
                 if len(vzyali) >= nado:
                     break
                 im = o['mainImage']['id']
+                if not str(o.get('regNumber') or '').strip():  # Р635: в подписи — номер Госкаталога, без него кадр не берём
+                    print(f'    {d}: у карточки {o["id"]} нет номера Госкаталога (regNumber) — пропущена', file=sys.stderr)
+                    continue
                 try:
                     r = gk._set.zapros(gk._S, 'GET', f'{gk.GK}/muzfo-imaginator/rest/images/original/{im}',
                                        timeout=60, proxy=gk._kadr.ru_proxy())
@@ -314,7 +317,7 @@ def dobor(a):
                 vzyali.append({'src': f'/muzei/{a.muzei}/img/{put.name}', 'alt': f'Кадр из музейного фонда: {nazv}'[:200],
                                'data_source': f'{gk.GK}/portal/#/collections?id={o["id"]}', 'license': LICENZIYA,
                                'podpis': f'{nazv}.',
-                               'credit': f'{avt + ". " if avt else ""}Хранится: {gk.muzey(o.get("museumId"))}. Госкаталог № {o["id"]}',
+                               'credit': f'{avt + ". " if avt else ""}Хранится: {gk.muzey(o.get("museumId"))}. Госкаталог № {str(o["regNumber"]).strip()}',
                                'width': kadr.width, 'height': kadr.height})
             if vzyali:
                 f.write_text(dopisat_figures(tekst, vzyali), encoding='utf-8')

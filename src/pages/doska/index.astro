@@ -80,16 +80,16 @@ const built = new Date().toLocaleString('ru-RU', { timeZone: MSK_TZ, dateStyle: 
   </div>
 </Base>
 <style>
-  .dk{color:#c3d3e3;padding-bottom:40px}
+  .dk{color:var(--cvet-c3d3e3);padding-bottom:40px}
   .dk a{color:var(--p-gold-l)}
   .dk-scroll{overflow-x:auto;margin:24px 0 40px}
-  .dk-t{border-collapse:collapse;width:100%;font-size:15px}
-  .dk-t th,.dk-t td{border-bottom:1px solid rgba(201,168,76,.18);padding:8px 10px;text-align:right;white-space:nowrap}
+  .dk-t{border-collapse:collapse;width:100%;font-size:var(--razmer-15px)}
+  .dk-t th,.dk-t td{border-bottom:1px solid var(--cvet-c9a84c-a18);padding:8px 10px;text-align:right;white-space:nowrap}
   .dk-t th:first-child,.dk-t td:first-child{text-align:left;white-space:normal}
   .dk-t thead th,.dk-t tfoot th{color:var(--p-gold);font-weight:600}
-  .dk-m h2{font-family:'Playfair Display',Georgia,serif;color:#fff;font-size:24px;margin:36px 0 12px}
-  .dk-m ol{columns:2 320px;padding-left:1.4em;font-size:14px;line-height:1.6}
-  .dk-f{color:var(--p-gold);margin-left:6px;font-size:12px}
-  .dk-x{color:var(--p-muted);margin-left:6px;font-size:12px}
-  .dk-built{margin-top:40px;font-size:13px;color:var(--p-muted)}
+  .dk-m h2{font-family:var(--shrift-playfair-display-georgia-serif);color:var(--cvet-ffffff);font-size:var(--razmer-24px);margin:36px 0 12px}
+  .dk-m ol{columns:2 320px;padding-left:1.4em;font-size:var(--razmer-14px);line-height:1.6}
+  .dk-f{color:var(--p-gold);margin-left:6px;font-size:var(--razmer-12px)}
+  .dk-x{color:var(--p-muted);margin-left:6px;font-size:var(--razmer-12px)}
+  .dk-built{margin-top:40px;font-size:var(--razmer-13px);color:var(--p-muted)}
 </style>
