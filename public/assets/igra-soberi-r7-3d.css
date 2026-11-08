@@ -2,7 +2,7 @@
    Общие классы .lab/.lab-row/.seg/.lab-msg/.lab-btns — из igra-soberi-r7.css. */
 .r3-lead{max-width:62ch}
 .r3{padding:0;overflow:hidden}
-.r3-stage{position:relative;aspect-ratio:16/10;background:linear-gradient(180deg,#5d86b3 0%,#a9c3da 52%,#c9b48a 53%,#8e7a55 100%);touch-action:none;border-bottom:1px solid var(--card-b)}
+.r3-stage{position:relative;aspect-ratio:16/10;background:linear-gradient(180deg,var(--cvet-5d86b3) 0%,var(--cvet-a9c3da) 52%,var(--cvet-c9b48a) 53%,var(--cvet-8e7a55) 100%);touch-action:none;border-bottom:1px solid var(--card-b)}
 .r3-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
 .r3-stage canvas:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 @media (max-width:700px){.r3-stage{aspect-ratio:4/5}}
@@ -11,22 +11,22 @@
 .r3[data-sostoyanie="gotovo"] .r3-video{display:none}
 /* Полоса загрузки 3D — под сценой, не поверх кадра. */
 .r3-load{margin:4px 0 8px}
-.r3-load-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.r3-load-bar{height:8px;border-radius:var(--skruglenie-4px);background:var(--line);overflow:hidden}
 .r3-load-bar span{display:block;height:100%;width:0;background:var(--gold);transition:width .2s linear}
-.r3-load-t{margin:6px 0 0;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.r3-load-t{margin:6px 0 0;font-size:var(--razmer-14px);color:var(--muted);font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.r3-load-bar span{transition:none}}
 /* Слабый телефон: предложение 2D. */
 .r3-slab{margin:4px 0 8px}
 .r3-slab p{margin:0 0 8px}
-.r3-slab-vse{font-size:14px}
+.r3-slab-vse{font-size:var(--razmer-14px)}
 .r3-link{background:none;border:0;padding:6px 0;min-height:44px;color:var(--gold-l);text-decoration:underline;font:inherit;cursor:pointer}
 .r3-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .r3-under{padding:14px 18px 18px}
-.r3-hint{margin:0 0 4px;font-size:13px;color:var(--muted)}
-.r3-count{min-height:0;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.5px;color:var(--gold-l);font-size:20px;text-align:center}
+.r3-hint{margin:0 0 4px;font-size:var(--razmer-13px);color:var(--muted)}
+.r3-count{min-height:0;font-family:var(--shrift-inter-sans-serif);font-weight:700;letter-spacing:.5px;color:var(--gold-l);font-size:var(--razmer-20px);text-align:center}
 .r3-count:not(:empty){min-height:44px;padding:8px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0}
-.r3-count small{display:block;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
-.r3-text{margin-top:12px;font-size:15px}
+.r3-count small{display:block;font-size:var(--razmer-12px);font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.r3-text{margin-top:12px;font-size:var(--razmer-15px)}
 .r3-text p{margin:10px 0}
 .r3 .seg[disabled],.r3 .btn[disabled]{opacity:.45;cursor:default}
 .r3 [hidden]{display:none!important}

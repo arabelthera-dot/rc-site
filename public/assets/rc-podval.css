@@ -1,18 +1,18 @@
 /* Подвал: лицензия текстов (Р35) и блок «Проверено / Журнал исправлений» страницы дня (Е5).
    Разметка — src/lib/redakciya.mjs; на шаблонах файл вписан в <head>, на полных страницах дней — ссылкой. */
-.rc-lic{max-width:720px;margin:12px auto 0;padding:0 16px;font:12.5px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;opacity:.85;text-align:center}
+.rc-lic{max-width:720px;margin:12px auto 0;padding:0 16px;font:var(--razmer-12-5px)/1.55 var(--shrift-system-ui-apple-system-segoe-a40773);opacity:.85;text-align:center}
 .rc-lic a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .rc-lic-n{white-space:nowrap}
-.rc-zhurnal{max-width:760px;margin:28px auto;padding:14px 18px;border-top:1px solid rgba(201,168,76,.35);font:14px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif}
+.rc-zhurnal{max-width:760px;margin:28px auto;padding:14px 18px;border-top:1px solid var(--cvet-c9a84c-a35);font:var(--razmer-14px)/1.55 var(--shrift-system-ui-apple-system-segoe-a40773)}
 .rc-zh-prov{margin:0 0 6px;opacity:.9}
 .rc-zh-log summary{cursor:pointer;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.rc-zh-log summary:focus-visible{outline:2px solid #c9a84c;outline-offset:2px}
+.rc-zh-log summary:focus-visible{outline:2px solid var(--cvet-c9a84c);outline-offset:2px}
 .rc-zh-log ul{margin:8px 0 0;padding-inline-start:20px}
 .rc-zh-log li{margin:2px 0}
 .rc-zh-log time{font-variant-numeric:tabular-nums}
 /* Редакционные страницы («О проекте», «Как сделан музей»): основной текст ≥17 px, строка 1,6 (замер glazami). */
 .rc-tekst{max-width:720px;margin:0 auto;padding:0 16px}
-.rc-tekst p{font-size:17px;line-height:1.6}
+.rc-tekst p{font-size:var(--razmer-17px);line-height:1.6}
 .rc-tekst h2{margin-top:1.6em}
 /* Опись Р84, Б16: «не указана» в колонке «Лицензия» на /avtory-izobrazheniy/ */
-.lic-net{color:#b3261e;font-weight:600}
+.lic-net{color:var(--cvet-b3261e);font-weight:600}

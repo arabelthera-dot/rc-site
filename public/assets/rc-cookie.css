@@ -2,22 +2,22 @@
    только когда плашка нужна. Режим слабовидящих: белый фон — rc-slabovid.css (#226).
    Б12 (Р84, 21.10): узкая полоса у нижнего края во всю ширину — текст и кнопки в одну строку, не окно на пол-экрана. */
 .rc-cookie{position:fixed;left:0;right:0;bottom:0;z-index:9999;box-sizing:border-box;display:flex;align-items:center;
-  justify-content:center;gap:8px 16px;flex-wrap:wrap;padding:8px 16px;border-top:1px solid var(--line,rgba(255,255,255,.14));
-  background:var(--panel,#12151c);color:var(--txt,#e8e2d4);font:14px/1.35 'Inter',system-ui,sans-serif;box-shadow:0 -4px 16px rgba(0,0,0,.35)}
+  justify-content:center;gap:8px 16px;flex-wrap:wrap;padding:8px 16px;border-top:1px solid var(--line,var(--cvet-ffffff-a14));
+  background:var(--panel,var(--cvet-12151c));color:var(--txt,var(--cvet-e8e2d4));font:var(--razmer-14px)/1.35 var(--shrift-inter-system-ui-sans-serif);box-shadow:0 -4px 16px var(--cvet-000000-a35)}
 /* plaintext: направление абзаца — по его тексту: русская плашка на странице dir="rtl" (проба /ar/, Р162) не теряет точку в начало строки. */
 .rc-cookie p{margin:0;flex:1 1 320px;max-width:640px;unicode-bidi:plaintext;text-align:start}
-.rc-cookie a{color:var(--gold,#c8a24a);text-decoration:underline;text-underline-offset:.15em}
+.rc-cookie a{color:var(--gold,var(--cvet-c8a24a));text-decoration:underline;text-underline-offset:.15em}
 .rc-cookie .rc-cookie-b{display:flex;gap:8px;flex:0 0 auto}
-.rc-cookie button{min-height:44px;padding:0 18px;border-radius:22px;font:inherit;font-weight:600;cursor:pointer}
-.rc-cookie .da{background:var(--gold,#c8a24a);color:#111;border:0}
-.rc-cookie .net{background:transparent;color:var(--txt,#e8e2d4);border:1px solid var(--line,rgba(255,255,255,.3))}
-.rc-cookie button:focus-visible{outline:2px solid #d9b95c;outline-offset:2px}
+.rc-cookie button{min-height:44px;padding:0 18px;border-radius:var(--skruglenie-22px);font:inherit;font-weight:600;cursor:pointer}
+.rc-cookie .da{background:var(--gold,var(--cvet-c8a24a));color:var(--cvet-111111);border:0}
+.rc-cookie .net{background:transparent;color:var(--txt,var(--cvet-e8e2d4));border:1px solid var(--line,var(--cvet-ffffff-a30))}
+.rc-cookie button:focus-visible{outline:2px solid var(--cvet-d9b95c);outline-offset:2px}
 /* Пока плашка видна, под ней место: последний экран страницы (подвал, ссылка на политику) не уходит под плашку. */
 html.rc-cookie-on body{padding-bottom:var(--rc-cookie-h,0px)}
 /* Телефон 390px (Р383: было 114 px — пятая часть экрана): одна полоса около 60 px — текст 12px слева, две кнопки справа. */
 @media (max-width:480px){
-  .rc-cookie{flex-wrap:nowrap;gap:8px;padding:6px 8px max(6px,env(safe-area-inset-bottom)) 10px;font-size:12px;line-height:1.3}
+  .rc-cookie{flex-wrap:nowrap;gap:8px;padding:6px 8px max(6px,env(safe-area-inset-bottom)) 10px;font-size:var(--razmer-12px);line-height:1.3}
   .rc-cookie p{flex:1 1 auto;min-width:0}
   .rc-cookie .rc-cookie-b{gap:6px}
-  .rc-cookie button{min-height:36px;padding:0 11px;border-radius:18px}
+  .rc-cookie button{min-height:36px;padding:0 11px;border-radius:var(--skruglenie-18px)}
 }
