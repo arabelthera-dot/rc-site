@@ -28,6 +28,9 @@ import yaml
 from PIL import Image
 import imagehash
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from kartinki import razreshit  # noqa: E402
+
 KOREN = Path(__file__).resolve().parents[1]
 MIN_KADROV = 6
 POROG = 8
@@ -68,7 +71,7 @@ def proverit(tekst, public, imya='?'):
     brak = []
     for m in sorted({m.group(0) for m in VIKI.finditer(tekst)}):
         brak.append(f'адрес Википедии/Викисклада в карточке: «{m}» (Р90)')
-    karta = yaml.safe_load(tekst) or {}
+    karta = razreshit(yaml.safe_load(tekst) or {}, slesh=True, gde=imya)  # картинки по номеру (Р649)
     kk = kadry(karta)
     raznye = list(dict.fromkeys(src for _, src in kk))
     hesh = []

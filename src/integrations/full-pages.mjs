@@ -10,6 +10,7 @@ import { cspVkl, cspMeta } from '../lib/csp.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { razreshit } from '../lib/kartinki.mjs'; // картинки по номеру (Р649)
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
@@ -619,7 +620,7 @@ export default function fullPages() {
             if (site) html = html.replace(/https?:\/\/arabelthera-dot\.github\.io\/rc-museum-preview\//gi, new URL(base, site).href);
             // Нет своей карточки пересылки у старой страницы — кадр дня из карточки (images[0]), п.2 очереди 1, 17.10.
             const card = path.join('src/content/days', museum, `${key}.json`);
-            const img = fs.existsSync(card) && JSON.parse(fs.readFileSync(card, 'utf8')).images?.[0];
+            const img = fs.existsSync(card) && razreshit(JSON.parse(fs.readFileSync(card, 'utf8'))).images?.[0];
             // Нет и кадра в карточке — главный кадр самой страницы (hero, иначе первый растровый <img>), Д5 20.10:
             // literatura/02-01 была под noindex, check-og её пропускал, и страница вышла без og:image и без image в Article.
             const heroSrc = () => {
@@ -654,7 +655,7 @@ export default function fullPages() {
             // по карточке дня; карточка в Telegram/ВК — всегда крупная (summary_large_image), адрес — новый.
             if (site) {
               const url = new URL(self, site).href;
-              const d = fs.existsSync(card) ? JSON.parse(fs.readFileSync(card, 'utf8')) : {};
+              const d = fs.existsSync(card) ? razreshit(JSON.parse(fs.readFileSync(card, 'utf8'))) : {};
               const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
               const add = [];
               html = html.replace(/<meta\s+name=["']twitter:card["'][^>]*>\s*/gi, '');

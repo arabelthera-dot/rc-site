@@ -38,6 +38,9 @@ import os
 import re
 import subprocess
 import sys
+
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[1]))
+from kartinki import razreshit  # noqa: E402
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -142,7 +145,7 @@ def collect(key, skipped=None, otsev=None):
         if not card.is_file():
             cut('нет карточки дня')
             continue
-        day = json.loads(card.read_text(encoding='utf-8'))
+        day = razreshit(json.loads(card.read_text(encoding='utf-8')), gde=str(card))  # картинки по номеру (Р649)
         shablon = SHABLON / m['slug'] / f'{key}.yaml'
         na_shablone = shablon.is_file() and re.search(r'^adres: den$', shablon.read_text(encoding='utf-8'), re.M)
         if not day.get('body') and not (FULL / m['slug'] / f'{key}.html').is_file() and not na_shablone:

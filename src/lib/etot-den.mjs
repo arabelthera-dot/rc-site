@@ -8,6 +8,7 @@
 // Имя музея — ровно title_ru из src/data/museums.json (src/lib/imya-muzeya.mjs). Вид — public/assets/rc-etot-den.css.
 import fs from 'node:fs';
 import path from 'node:path';
+import { razreshit } from './kartinki.mjs'; // картинки по номеру (Р649)
 import { MUSEUMS, decode } from './imya-muzeya.mjs';
 import { zagolovok } from './sosedi-polnye.mjs';
 
@@ -37,7 +38,7 @@ export function gotovyeDni() {
     for (const f of (fs.existsSync(dir) ? fs.readdirSync(dir) : []).filter((x) => x.endsWith('.json')).sort()) {
       const key = f.slice(0, -5);
       if (!/^\d\d-\d\d$/.test(key) || (!dated && +key.slice(3) > YEAR[+key.slice(0, 2) - 1])) continue;
-      const card = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+      const card = razreshit(JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
       const html = path.join(FULL, museum, `${key}.html`);
       const polnaya = fs.existsSync(html);
       if (!polnaya && !card.body) continue;

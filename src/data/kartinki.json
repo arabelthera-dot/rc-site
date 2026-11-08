@@ -1,0 +1,3480 @@
+{
+ "_o": "Реестр картинок: постоянный номер → путь от public/ (+ источник и права, если были рядом в карточке). Разворот — src/lib/kartinki.mjs.",
+ "kartinki": {
+  "000001": {
+   "put": "muzei/izobreteniya/img/01-06-goskatalog-9204490.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11663734",
+   "licenziya": "общественное достояние (государственный денежный знак 1899 года; ГК РФ ст. 1259 п. 6)"
+  },
+  "000002": {
+   "put": "muzei/izobreteniya/img/01-08-goskatalog-50255453.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41192160",
+   "licenziya": "общественное достояние (аноним, до 1918)"
+  },
+  "000003": {
+   "put": "muzei/izobreteniya/img/01-09-goskatalog-726938.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3908682",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000004": {
+   "put": "muzei/izobreteniya/img/01-10-goskatalog-8462389.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11107922",
+   "licenziya": "общественное достояние (неизвестный художник, 1845 год)"
+  },
+  "000005": {
+   "put": "muzei/ne-sdayutsya/img/01-06-goskatalog-1371546.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4975631",
+   "licenziya": "общественное достояние (автор неизвестен, снимок 1915 года)"
+  },
+  "000006": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-56785988.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=45962960",
+   "licenziya": "общественное достояние (анонимный снимок 1942 года)"
+  },
+  "000007": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-51094387.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1484031",
+   "licenziya": "общественное достояние (анонимный снимок, обнародован до 1953)"
+  },
+  "000008": {
+   "put": "muzei/ne-sdayutsya/img/01-08-goskatalog-46196164.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38326477",
+   "licenziya": "общественное достояние (анонимная фотография, открытка 1943 года; ГИМ)"
+  },
+  "000009": {
+   "put": "muzei/ne-sdayutsya/img/01-09-goskatalog-27296206.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24706945",
+   "licenziya": "общественное достояние (анонимная фотография 1942 года)"
+  },
+  "000010": {
+   "put": "muzei/ne-sdayutsya/img/01-10-goskatalog-1824297.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5541971",
+   "licenziya": "общественное достояние (анонимное изображение 1904 года)"
+  },
+  "000011": {
+   "put": "muzei/izobreteniya/day-06jan-orlov-portret-etiketka.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23153289",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Волгодонский эколого-исторический музей, Госкаталог, рег. № 23015930"
+  },
+  "000012": {
+   "put": "muzei/izobreteniya/video/day-06jan-orlov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000013": {
+   "put": "muzei/izobreteniya/img/01-06-chikago-1893-ukazatel.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20046695",
+   "licenziya": "общественное достояние (издание 1893 года) · Музейный комплекс им. И. Я. Словцова, Тюмень · Госкаталог, рег. № 19914596"
+  },
+  "000014": {
+   "put": "muzei/izobreteniya/img/01-06-ekspediciya-otkrytka.jpg",
+   "istochnik": "https://pastvu.com/p/2112284",
+   "licenziya": "общественное достояние (открытка издана в 1900–1904 гг., автор снимка не указан) · pastvu.com"
+  },
+  "000015": {
+   "put": "muzei/izobreteniya/img/day-06jan-raschetnyj-znak-1919.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41192779",
+   "licenziya": "общественное достояние (государственный денежный знак 1919 года; ГК РФ ст. 1259 п. 6) · Димитровградский краеведческий музей"
+  },
+  "000016": {
+   "put": "muzei/izobreteniya/img/01-06-goznak-orlof-printing.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=45321013",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Центральный музей Вооружённых Сил РФ · Госкаталог, рег. № 45074011"
+  },
+  "000017": {
+   "put": "muzei/izobreteniya/img/01-06-moneta-orlovskaya-pechat.jpg",
+   "istochnik": "https://www.cbr.ru/cash_circulation/memorable_coins/coins_base/ShowCoins/?cat_num=5111-0528",
+   "licenziya": "общественное достояние (государственный денежный знак — памятная монета Банка России; ГК РФ ст. 1259 п. 6) · Банк России"
+  },
+  "000018": {
+   "put": "muzei/izobreteniya/day-07jan-kolesov-byust.jpg",
+   "istochnik": "https://www.1spbgmu.ru/universitet/media/novosti/5535-30-avgusta-2021-goda-proshla-torzhestvennaya-tseremoniya-otkrytiya-byusta-vydayushchemusya-khirurgu-v-i-kolesovu",
+   "licenziya": "© ПСПбГМУ им. И. П. Павлова"
+  },
+  "000019": {
+   "put": "muzei/izobreteniya/video/day-07jan-kolesov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000020": {
+   "put": "muzei/izobreteniya/img/01-07-broshyura-1965.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=63795578",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Вологодский государственный историко-архитектурный и художественный музей-заповедник · Госкаталог, рег. № 63495853"
+  },
+  "000021": {
+   "put": "muzei/izobreteniya/img/01-07-demihov-golova.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9102194",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Серпуховский историко-художественный музей · Госкаталог, рег. № 8988538"
+  },
+  "000022": {
+   "put": "muzei/izobreteniya/img/01-07-kolesov-operiruet.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36565915",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный музей истории Санкт-Петербурга · Госкаталог, рег. № 36351572"
+  },
+  "000023": {
+   "put": "muzei/izobreteniya/img/01-07-asc-apparat.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28365474",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Забайкальский краевой краеведческий музей им. А. К. Кузнецова · Госкаталог, рег. № 42508351"
+  },
+  "000024": {
+   "put": "muzei/izobreteniya/img/01-07-kniga-1966.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=63795497",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Вологодский государственный историко-архитектурный и художественный музей-заповедник · Госкаталог, рег. № 63495875"
+  },
+  "000025": {
+   "put": "muzei/izobreteniya/img/01-07-klinika-korpus.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36565800",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный музей истории Санкт-Петербурга · Госкаталог, рег. № 36351654"
+  },
+  "000026": {
+   "put": "muzei/izobreteniya/video/day-08jan-ermak-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000027": {
+   "put": "muzei/izobreteniya/img/01-08-kniga-ermak-vo-ldah.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=35132416",
+   "licenziya": "Общественное достояние (С. О. Макаров умер в 1904 г.); фото — цитирование в информационных и учебных целях (ст. 1274 ГК РФ) · Музей морского и речного флота · Госкаталог, рег. № 34925964"
+  },
+  "000028": {
+   "put": "muzei/izobreteniya/img/01-08-apraksin-gogland.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=68469139",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Мемориальный музей А. С. Попова СПбГЭТУ «ЛЭТИ» · Госкаталог, рег. № 68192137"
+  },
+  "000029": {
+   "put": "muzei/izobreteniya/img/01-08-ledovyi-pohod-1918.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18987852",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог, рег. № 18848500"
+  },
+  "000030": {
+   "put": "muzei/izobreteniya/img/01-08-model-vityaz.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3720911",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей Мирового океана · Госкаталог, рег. № 3274497"
+  },
+  "000031": {
+   "put": "muzei/izobreteniya/img/01-08-flag-ermaka-cvmm.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=43976540",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог, рег. № 43734676"
+  },
+  "000032": {
+   "put": "muzei/izobreteniya/img/01-08-goskatalog-41298564.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=34748422",
+   "licenziya": "общественное достояние (К. К. Булла, ум. 1929)"
+  },
+  "000033": {
+   "put": "muzei/izobreteniya/video/day-09jan-blinov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000034": {
+   "put": "muzei/izobreteniya/img/day-09jan-saratov-1889.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15607725",
+   "licenziya": "общественное достояние (газетная публикация 1889 года, автор неизвестен)"
+  },
+  "000035": {
+   "put": "muzei/izobreteniya/img/day-09jan-nasos-nadpis.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30117127",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000036": {
+   "put": "muzei/izobreteniya/img/day-09jan-mamin.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28649848",
+   "licenziya": "общественное достояние (фотография около 1895 года, автор неизвестен)"
+  },
+  "000037": {
+   "put": "muzei/izobreteniya/img/day-09jan-vagon-maket.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36112787",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000038": {
+   "put": "muzei/izobreteniya/img/day-09jan-medalon.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36935038",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000039": {
+   "put": "muzei/izobreteniya/img/day-09jan-russkiy-traktor.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18985475",
+   "licenziya": "общественное достояние (фотография 1910-х годов, автор неизвестен)"
+  },
+  "000040": {
+   "put": "muzei/izobreteniya/day-10jan-kronshtadt-led-1856.jpg",
+   "istochnik": "https://archive.org/details/sim_illustrated-london-news_1856-12-06_29_833/page/n8/mode/1up",
+   "licenziya": "общественное достояние (гравюра 1856 года)"
+  },
+  "000041": {
+   "put": "muzei/izobreteniya/video/day-10jan-britnev-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000042": {
+   "put": "muzei/izobreteniya/img/01-10-vid-kronshtadta-s-oranienbauma.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=25393848",
+   "licenziya": "общественное достояние (гравюра середины XIX века); Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000043": {
+   "put": "muzei/izobreteniya/img/01-10-oranienbaum-pristan-1856.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5817357",
+   "licenziya": "общественное достояние (И. И. Шарлемань, 1824–1870); Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000044": {
+   "put": "muzei/izobreteniya/img/01-10-kronshtadt-gavan-zimoj-ignacius.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18159468",
+   "licenziya": "общественное достояние (В. В. Игнациус, умер более 70 лет назад); Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000045": {
+   "put": "muzei/izobreteniya/img/01-10-pomorskij-karbas.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17170436",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000046": {
+   "put": "muzei/izobreteniya/img/01-10-kronshtadtskij-vestnik-1882.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41225617",
+   "licenziya": "общественное достояние (газета 1882 года); Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000047": {
+   "put": "muzei/ne-sdayutsya/img/01-06-goskatalog-1750990.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5476698",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000048": {
+   "put": "muzei/ne-sdayutsya/video/day-06jan-osovets-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000049": {
+   "put": "muzei/ne-sdayutsya/img/01-06-goskatalog-27191447.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24629846",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000050": {
+   "put": "muzei/ne-sdayutsya/img/01-06-goskatalog-27183295.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24623277",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000051": {
+   "put": "muzei/ne-sdayutsya/img/01-06-goskatalog-1371227.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4975312",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000052": {
+   "put": "muzei/ne-sdayutsya/img/01-06-goskatalog-27180727.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24621605",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000053": {
+   "put": "muzei/ne-sdayutsya/img/01-06-goskatalog-75631356.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59348213",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000054": {
+   "put": "muzei/ne-sdayutsya/video/day-07jan-gastello-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000055": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-61254385.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=49213693",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000056": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-20656972.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19947982",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000057": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-55901881.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6943258",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000058": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-18796278.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18579592",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000059": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-45844888.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38060080",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000060": {
+   "put": "muzei/ne-sdayutsya/img/01-07-goskatalog-4521022.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8320969",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000061": {
+   "put": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000062": {
+   "put": "muzei/ne-sdayutsya/img/01-08-goskatalog-24802346.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22927992",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000063": {
+   "put": "muzei/ne-sdayutsya/img/01-08-goskatalog-20667567.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19956207",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000064": {
+   "put": "muzei/ne-sdayutsya/img/01-08-goskatalog-2236733.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992212",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000065": {
+   "put": "muzei/ne-sdayutsya/img/01-08-goskatalog-2237300.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992779",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000066": {
+   "put": "muzei/ne-sdayutsya/img/01-08-goskatalog-2723524.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6500011",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000067": {
+   "put": "muzei/ne-sdayutsya/img/01-08-goskatalog-15769576.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16404448",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000068": {
+   "put": "muzei/ne-sdayutsya/img/01-09-goskatalog-17023354.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17311201",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000069": {
+   "put": "muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000070": {
+   "put": "muzei/ne-sdayutsya/img/01-09-goskatalog-5087514.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8717367",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000071": {
+   "put": "muzei/ne-sdayutsya/img/01-09-goskatalog-19345257.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18991450",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000072": {
+   "put": "muzei/ne-sdayutsya/img/01-09-goskatalog-90949729.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6939400",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000073": {
+   "put": "muzei/ne-sdayutsya/img/01-09-goskatalog-25397183.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23357898",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000074": {
+   "put": "muzei/ne-sdayutsya/img/01-09-goskatalog-17486577.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1215350",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000075": {
+   "put": "muzei/ne-sdayutsya/img/01-10-goskatalog-20039821.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20039821",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000076": {
+   "put": "muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000077": {
+   "put": "muzei/ne-sdayutsya/img/01-10-goskatalog-23034137.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23034137",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000078": {
+   "put": "muzei/ne-sdayutsya/img/01-10-goskatalog-4910360.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8586173",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000079": {
+   "put": "muzei/ne-sdayutsya/img/01-10-goskatalog-30284937.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30284937",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000080": {
+   "put": "muzei/ne-sdayutsya/img/01-10-goskatalog-18616793.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18616793",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000081": {
+   "put": "muzei/ne-sdayutsya/img/01-10-goskatalog-49118470.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=49118470",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000082": {
+   "put": "muzei/arhitektura/img/01-01-goskatalog-11039014.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13015140",
+   "licenziya": "общественное достояние (анонимный снимок, обнародован до 1953)"
+  },
+  "000083": {
+   "put": "muzei/arhitektura/img/01-02-goskatalog-82386682.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=64545566",
+   "licenziya": "общественное достояние (гравюра XVIII века; дворец разобран в 1768 году)"
+  },
+  "000084": {
+   "put": "muzei/arhitektura/img/01-02-goskatalog-68958999.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=54694046",
+   "licenziya": "общественное достояние (анонимное произведение XIX века)"
+  },
+  "000085": {
+   "put": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/018_1876.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000086": {
+   "put": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/019_1876.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000087": {
+   "put": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/027_1876.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000088": {
+   "put": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/028_1876.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000089": {
+   "put": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/057_1879.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000090": {
+   "put": "muzei/arhitektura/img/01-03-goskatalog-46163907.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38299294",
+   "licenziya": "общественное достояние (автор умер в 1908)"
+  },
+  "000091": {
+   "put": "muzei/arhitektura/img/01-03-goskatalog-16469028.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16922852",
+   "licenziya": "общественное достояние (автор умер в 1908)"
+  },
+  "000092": {
+   "put": "muzei/arhitektura/img/01-03-goskatalog-16469000.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16922830",
+   "licenziya": "общественное достояние (автор умер в 1908)"
+  },
+  "000093": {
+   "put": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/090_1878.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000094": {
+   "put": "muzei/arhitektura/media/terem-astashovo/motivy-ropeta/091_1878.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000095": {
+   "put": "muzei/arhitektura/img/01-03-goskatalog-69644190.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=55235618",
+   "licenziya": "общественное достояние (автор умер в 1908)"
+  },
+  "000096": {
+   "put": "muzei/arhitektura/img/01-03-goskatalog-41613318.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=34975292",
+   "licenziya": "общественное достояние (литография 1870–1880-х годов из журнала «Зодчий»)"
+  },
+  "000097": {
+   "put": "muzei/arhitektura/img/01-04-goskatalog-20496661.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19844301",
+   "licenziya": "общественное достояние (анонимный снимок 1936 года, обнародован до 1953)"
+  },
+  "000098": {
+   "put": "muzei/arhitektura/img/01-05-goskatalog-10287021.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12452944",
+   "licenziya": "Общественное достояние: анонимное издание до 1917 года"
+  },
+  "000099": {
+   "put": "muzei/arhitektura/img/01-06-goskatalog-88557100.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9636022",
+   "licenziya": "общественное достояние (анонимный снимок 1900-х годов)"
+  },
+  "000100": {
+   "put": "muzei/arhitektura/img/01-07-pastvu-b0iup2s62nxpk71dy8.jpg",
+   "istochnik": "https://pastvu.com/p/262432",
+   "licenziya": "общественное достояние (автор умер в 1948)"
+  },
+  "000101": {
+   "put": "muzei/arhitektura/img/01-08-goskatalog-35201909.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30335705",
+   "licenziya": "общественное достояние (автор умер в 1923)"
+  },
+  "000102": {
+   "put": "muzei/arhitektura/img/01-09-goskatalog-6777409.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9945977",
+   "licenziya": "общественное достояние (издание под ред. И. Е. Бондаренко, ум. 1947; фотограф не указан, издание 1904–1905 гг.)"
+  },
+  "000103": {
+   "put": "muzei/arhitektura/img/01-09-goskatalog-6777399.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9945966",
+   "licenziya": "общественное достояние (издание под ред. И. Е. Бондаренко, ум. 1947; фотограф не указан, издание 1904–1905 гг.)"
+  },
+  "000104": {
+   "put": "muzei/arhitektura/img/10-17-gribushin-house-perm-2008.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000105": {
+   "put": "muzei/arhitektura/img/10-18-dom-sevast-anova-okrujnoy-sud-ekaterinburg.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000106": {
+   "put": "muzei/arhitektura/img/10-19-thetre-of-opera-and-ballet-yekaterinburg.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000107": {
+   "put": "muzei/arhitektura/img/10-20-goskatalog-62500278.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=50142296",
+   "licenziya": "общественное достояние (фотограф не указан, дореволюционное издание)"
+  },
+  "000108": {
+   "put": "muzei/arhitektura/img/10-21-aksakov-people-s-house-in-ufa-march-2025-0.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000109": {
+   "put": "muzei/arhitektura/img/10-22-prospekt-revolucii-gostinica-bristol-panoramio.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000110": {
+   "put": "muzei/iskusstvo/img/05-02-gosudarstvennaa-tret-akovskaa-galerea-0d9b35809f.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/20683",
+   "licenziya": "общественное достояние (автор умер в 1900)"
+  },
+  "000111": {
+   "put": "muzei/iskusstvo/media/chernoe-more-hero.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000112": {
+   "put": "muzei/iskusstvo/img/05-02-goskatalog-830216.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4027584",
+   "licenziya": "общественное достояние (автор умер в 1903)"
+  },
+  "000113": {
+   "put": "muzei/iskusstvo/img/10-17-gosudarstvennaa-tret-akovskaa-galerea-5dfcb3f782.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/8401",
+   "licenziya": "общественное достояние (автор умер в 1898)"
+  },
+  "000114": {
+   "put": "muzei/iskusstvo/img/10-18-goskatalog-82020911.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4319003",
+   "licenziya": "общественное достояние (М. В. Нестеров умер в 1942 году)"
+  },
+  "000115": {
+   "put": "muzei/iskusstvo/img/10-19-gosudarstvennaa-tret-akovskaa-galerea-3e7cde925a.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/8414",
+   "licenziya": "общественное достояние (автор умер в 1916)"
+  },
+  "000116": {
+   "put": "muzei/iskusstvo/img/10-20-gosudarstvennaa-tret-akovskaa-galerea-95cb377cad.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/21725",
+   "licenziya": "общественное достояние (автор умер в 1930)"
+  },
+  "000117": {
+   "put": "muzei/iskusstvo/img/10-21-gosudarstvennaa-tret-akovskaa-galerea-0d9b35809f.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/20683",
+   "licenziya": "общественное достояние (автор умер в 1900)"
+  },
+  "000118": {
+   "put": "muzei/iskusstvo/img/10-22-gosudarstvennaa-tret-akovskaa-galerea-c706c2ec1c.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/8445",
+   "licenziya": "общественное достояние (автор умер в 1940)"
+  },
+  "000119": {
+   "put": "muzei/izobreteniya/img/01-01-goskatalog-82999227-atp1.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=105171",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ)"
+  },
+  "000120": {
+   "put": "muzei/izobreteniya/img/01-01-goskatalog-13319093.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4731853",
+   "licenziya": "общественное достояние (серийный прибор 1935–1936 годов, автор не указан)"
+  },
+  "000121": {
+   "put": "muzei/izobreteniya/img/01-01-goskatalog-12693197.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13134005",
+   "licenziya": "общественное достояние (анонимное издание 1936 года)"
+  },
+  "000122": {
+   "put": "muzei/izobreteniya/img/01-02-goskatalog-88351352.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3885815",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000123": {
+   "put": "muzei/izobreteniya/img/01-03-goskatalog-51188775.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41847319",
+   "licenziya": "общественное достояние (чертежи 1841 года, П. П. Аносов умер в 1851)"
+  },
+  "000124": {
+   "put": "muzei/izobreteniya/img/01-04-goskatalog-35301599.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30414608",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000125": {
+   "put": "muzei/izobreteniya/img/01-05-goskatalog-1828920.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5548354",
+   "licenziya": "общественное достояние (фотограф не указан, 1904)"
+  },
+  "000126": {
+   "put": "muzei/izobreteniya/img/01-11-goskatalog-75528367.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59271130",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято не позднее 1916 года)"
+  },
+  "000127": {
+   "put": "muzei/izobreteniya/img/01-12-goskatalog-89019516.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=27352216",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000128": {
+   "put": "muzei/izobreteniya/img/01-13-goskatalog-42001363.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4655496",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000129": {
+   "put": "muzei/izobreteniya/img/01-14-goskatalog-26638281.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24243467",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000130": {
+   "put": "muzei/izobreteniya/img/01-15-goskatalog-27039900.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4407623",
+   "licenziya": "общественное достояние (автор неизвестен, конец XIX — начало XX века)"
+  },
+  "000131": {
+   "put": "muzei/izobreteniya/img/01-16-goskatalog-91005175.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69567995",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000132": {
+   "put": "muzei/izobreteniya/img/01-26-goskatalog-93127965.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7086342",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000133": {
+   "put": "muzei/izobreteniya/img/01-30-goskatalog-10691518.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12764542",
+   "licenziya": "общественное достояние (фотограф не указан, снимок не позднее 1944 — года смерти Котельникова)"
+  },
+  "000134": {
+   "put": "muzei/izobreteniya/img/02-03-goskatalog-14641128.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15611617",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000135": {
+   "put": "muzei/izobreteniya/img/03-18-goskatalog-1369633.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4973845",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000136": {
+   "put": "muzei/izobreteniya/img/05-15-goskatalog-53309868.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=43372710",
+   "licenziya": "общественное достояние (анонимная фотография 1891 г.)"
+  },
+  "000137": {
+   "put": "muzei/izobreteniya/img/06-16-goskatalog-87929738.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11203992",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000138": {
+   "put": "muzei/izobreteniya/img/09-26-goskatalog-59383079.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=47924132",
+   "licenziya": "общественное достояние (анонимная фотография 1900-х гг.)"
+  },
+  "000139": {
+   "put": "muzei/izobreteniya/img/10-17-goskatalog-89175359.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28867095",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000140": {
+   "put": "muzei/izobreteniya/img/10-18-goskatalog-3530296.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7594628",
+   "licenziya": "общественное достояние (анонимное учебное издание 1950 года, прижизненный портрет Лодыгина)"
+  },
+  "000141": {
+   "put": "muzei/izobreteniya/img/10-21-tretyakov-76515f232cd3d9cf665db3cf729211d6.jpg",
+   "istochnik": "https://cdn.tretyakov.ru/mytretyakov/1/7de7a29b70c4632c5132a6873457b615/76515f232cd3d9cf665db3cf729211d6.png",
+   "licenziya": "общественное достояние (автор умер в XIX веке)"
+  },
+  "000142": {
+   "put": "muzei/izobreteniya/img/10-22-goskatalog-81462246.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5245497",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000143": {
+   "put": "muzei/izobreteniya/img/11-15-goskatalog-89019501.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=27352219",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000144": {
+   "put": "muzei/izobreteniya/img/11-25-goskatalog-569562.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3722399",
+   "licenziya": "общественное достояние (фотография 1874–1881 гг., автор умер до 1953)"
+  },
+  "000145": {
+   "put": "muzei/izobreteniya/img/12-01-goskatalog-14630959.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3802214",
+   "licenziya": "общественное достояние (портрет первой половины XIX века)"
+  },
+  "000146": {
+   "put": "muzei/izobreteniya/img/12-14-goskatalog-2265876.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6008422",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000147": {
+   "put": "muzei/kalendar-pobed/media/day-01jan-hero.svg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000148": {
+   "put": "muzei/kalendar-pobed/media/day-02jan-hero.svg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000149": {
+   "put": "muzei/kalendar-pobed/media/day-19jan-hero.svg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000150": {
+   "put": "muzei/kalendar-pobed/media/day-22jan-hero.svg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000151": {
+   "put": "muzei/kalendar-pobed/media/day-27jan-hero.svg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000152": {
+   "put": "muzei/karikatura/img/01-01-goskatalog-13057890.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14471306",
+   "licenziya": "общественное достояние (анонимный лубок 1914 года, издан более 70 лет назад)"
+  },
+  "000153": {
+   "put": "muzei/karikatura/img/01-01-goskatalog-19731064.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19289908",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000154": {
+   "put": "muzei/karikatura/img/01-02-gmii-im-a-s-puskina-yyi1rsz-4nftokqarlmjs8ab2xth.jpg",
+   "istochnik": "https://collection.pushkinmuseum.art/entity/OBJECT/291621",
+   "licenziya": "общественное достояние (автор умер в 1815)"
+  },
+  "000155": {
+   "put": "muzei/karikatura/img/01-02-goskatalog-26416542.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24090333",
+   "licenziya": "общественное достояние (автор умер в 1815)"
+  },
+  "000156": {
+   "put": "muzei/karikatura/img/01-02-goskatalog-37359112.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=31897003",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000157": {
+   "put": "muzei/karikatura/img/01-02-goskatalog-37359130.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=31897027",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000158": {
+   "put": "muzei/karikatura/img/01-03-goskatalog-33784563.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=29299863",
+   "licenziya": "общественное достояние (автор умер в 1942)"
+  },
+  "000159": {
+   "put": "muzei/karikatura/img/01-04-goskatalog-45840140.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38057076",
+   "licenziya": "общественное достояние (лист 1858 года)"
+  },
+  "000160": {
+   "put": "muzei/karikatura/img/01-05-goskatalog-21293830.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20404218",
+   "licenziya": "общественное достояние (автор умер в 1942)"
+  },
+  "000161": {
+   "put": "muzei/karikatura/img/01-06-goskatalog-16971923.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17271851",
+   "licenziya": "общественное достояние (лубок XIX века, издан более 70 лет назад)"
+  },
+  "000162": {
+   "put": "muzei/karikatura/img/01-07-goskatalog-35118290.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30276466",
+   "licenziya": "общественное достояние (автор умер в 1832)"
+  },
+  "000163": {
+   "put": "muzei/karikatura/img/10-17-goskatalog-82559134.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6449318",
+   "licenziya": "общественное достояние (С. Ф. Булаковский умер в 1937 году)"
+  },
+  "000164": {
+   "put": "muzei/karikatura/img/10-19-goskatalog-50258234.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41194305",
+   "licenziya": "общественное достояние (художник умер в 1946, автор текста — в 1945)"
+  },
+  "000165": {
+   "put": "muzei/karikatura/img/10-20-goskatalog-15309877.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16066771",
+   "licenziya": "общественное достояние (автор умер в 1815)"
+  },
+  "000166": {
+   "put": "muzei/karikatura/img/10-21-goskatalog-45844579.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38059376",
+   "licenziya": "общественное достояние (автор умер в 1815)"
+  },
+  "000167": {
+   "put": "muzei/karikatura/img/10-22-goskatalog-30899269.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=27285301",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000168": {
+   "put": "muzei/kostyum-narodov/img/10-17-goskatalog-35295153.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30409334",
+   "licenziya": "общественное достояние (анонимный народный предмет второй половины XIX века)"
+  },
+  "000169": {
+   "put": "muzei/kostyum-narodov/img/10-18-goskatalog-15333121.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16083914",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000170": {
+   "put": "muzei/kostyum-narodov/img/10-22-goskatalog-90769855.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69473949",
+   "licenziya": "общественное достояние (анонимный народный предмет)"
+  },
+  "000171": {
+   "put": "muzei/literatura/media-slovo/hero-battle-1880.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000172": {
+   "put": "muzei/literatura/hero-slovo-1800.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000173": {
+   "put": "muzei/literatura/img/01-01-goskatalog-22813640.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21509420",
+   "licenziya": "общественное достояние (В. Г. Перов умер в 1882)"
+  },
+  "000174": {
+   "put": "muzei/literatura/media-kapitanskaya/pushkin-kiprensky-1827.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000175": {
+   "put": "muzei/literatura/img/01-02-goskatalog-33660406.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5091864",
+   "licenziya": "общественное достояние (В. Г. Перов умер в 1882)"
+  },
+  "000176": {
+   "put": "muzei/literatura/img/01-03-goskatalog-21271669.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20389144",
+   "licenziya": "общественное достояние (анонимная открытка, издана до 1917)"
+  },
+  "000177": {
+   "put": "muzei/literatura/img/01-04-goskatalog-2789779.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4401136",
+   "licenziya": "общественное достояние (автор умер в 1947)"
+  },
+  "000178": {
+   "put": "muzei/literatura/img/01-05-goskatalog-2212696.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5970793",
+   "licenziya": "общественное достояние (фотограф неизвестен, снимок 1930 года)"
+  },
+  "000179": {
+   "put": "muzei/literatura/img/01-06-goskatalog-20714903.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19979147",
+   "licenziya": "общественное достояние (И. К. Айвазовский умер в 1900)"
+  },
+  "000180": {
+   "put": "muzei/literatura/media-pamyatnik/ekaterina-progulka-borovikovsky-1794.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000181": {
+   "put": "muzei/literatura/media-pamyatnik/derzhavin-borovikovsky.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000182": {
+   "put": "muzei/literatura/media-liza/bednaya-liza-kiprensky-1827.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000183": {
+   "put": "muzei/literatura/img/01-08-goskatalog-5441346.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8989609",
+   "licenziya": "общественное достояние (анонимная фотография, опубликована более 70 лет назад)"
+  },
+  "000184": {
+   "put": "muzei/literatura/media-onegin/onegin-glava1-oblozhka-1825.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000185": {
+   "put": "muzei/literatura/media-onegin/pushkin-onegin-risunok-1824.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000186": {
+   "put": "muzei/literatura/img/01-09-goskatalog-22277479.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21109338",
+   "licenziya": "общественное достояние (Нотбек умер в 1866, Гейтман — в 1862)"
+  },
+  "000187": {
+   "put": "muzei/literatura/media-petr/shoonebek-vzyatie-azova.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000188": {
+   "put": "muzei/literatura/img/01-10-gosudarstvennaa-tret-akovskaa-galerea-f94a0ace7f.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/146015",
+   "licenziya": "общественное достояние (автор умер в 1911 году)"
+  },
+  "000189": {
+   "put": "muzei/literatura/media-shinel/kustodiev-u-petrovicha-1905.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000190": {
+   "put": "muzei/literatura/media-shinel/kustodiev-na-nevskom-1905.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000191": {
+   "put": "muzei/literatura/media-shinel/kustodiev-v-novoy-shineli-1905.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000192": {
+   "put": "muzei/literatura/img/01-11-goskatalog-7514338.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10413284",
+   "licenziya": "общественное достояние (автор умер в 1927)"
+  },
+  "000193": {
+   "put": "muzei/literatura/img/01-12-goskatalog-85644581.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1261407",
+   "licenziya": "общественное достояние (автор умер в 1943)"
+  },
+  "000194": {
+   "put": "muzei/literatura/img/01-13-goskatalog-92289771.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4585858",
+   "licenziya": "общественное достояние (автор умер в 1866)"
+  },
+  "000195": {
+   "put": "muzei/literatura/img/01-14-gosudarstvennaa-tret-akovskaa-galerea-3f3e953f94.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/20655",
+   "licenziya": "общественное достояние (автор умер в 1900)"
+  },
+  "000196": {
+   "put": "muzei/literatura/img/01-14-goskatalog-8199557.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10912036",
+   "licenziya": "общественное достояние (анонимная гравюра XIX века)"
+  },
+  "000197": {
+   "put": "muzei/literatura/img/01-15-goskatalog-20367361.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19744829",
+   "licenziya": "общественное достояние (Борель умер в 1901, Уткин — в 1863)"
+  },
+  "000198": {
+   "put": "muzei/literatura/img/01-16-goskatalog-16245162.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16764684",
+   "licenziya": "общественное достояние (издание 1913; О. Э. Мандельштам умер в 1938)"
+  },
+  "000199": {
+   "put": "muzei/literatura/img/01-17-goskatalog-35182809.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19813256",
+   "licenziya": "общественное достояние (автор умер в 1882)"
+  },
+  "000200": {
+   "put": "muzei/literatura/img/01-18-gosudarstvennaa-tret-akovskaa-galerea-8d6fd525de.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/8406",
+   "licenziya": "общественное достояние (автор умер в 1882)"
+  },
+  "000201": {
+   "put": "muzei/literatura/img/01-18-goskatalog-90957674.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1609980",
+   "licenziya": "общественное достояние (литография XIX века, издана более 70 лет назад)"
+  },
+  "000202": {
+   "put": "muzei/literatura/media-voyna/fili-hero.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000203": {
+   "put": "muzei/literatura/media-voyna/kivshenko-fili-1880.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000204": {
+   "put": "muzei/literatura/media-voyna/voyna-i-mir-titul-1868.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000205": {
+   "put": "muzei/literatura/img/01-21-goskatalog-13998997.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6244782",
+   "licenziya": "общественное достояние (автор умер в 1897)"
+  },
+  "000206": {
+   "put": "muzei/literatura/img/01-22-goskatalog-41848694.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=35141912",
+   "licenziya": "общественное достояние (автор погиб в 1941)"
+  },
+  "000207": {
+   "put": "muzei/literatura/img/01-23-goskatalog-857449.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4103998",
+   "licenziya": "общественное достояние (автор умер в 1887)"
+  },
+  "000208": {
+   "put": "muzei/literatura/img/01-24-goskatalog-77248733.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=60570296",
+   "licenziya": "общественное достояние (анонимная открытка, издана в Российской империи в 1910-е)"
+  },
+  "000209": {
+   "put": "muzei/literatura/img/01-25-gosudarstvennaa-tret-akovskaa-galerea-11659e33d8.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/79603",
+   "licenziya": "общественное достояние (автор умер в 1911)"
+  },
+  "000210": {
+   "put": "muzei/literatura/img/01-25-goskatalog-17180191.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17428906",
+   "licenziya": "общественное достояние (автор умер в 1911)"
+  },
+  "000211": {
+   "put": "muzei/literatura/img/01-26-gosudarstvennaa-tret-akovskaa-galerea-9159a0e1d1.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/10449",
+   "licenziya": "общественное достояние (автор умер в 1939 году)"
+  },
+  "000212": {
+   "put": "muzei/literatura/img/01-26-goskatalog-919380.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4301683",
+   "licenziya": "общественное достояние (автор умер в 1939)"
+  },
+  "000213": {
+   "put": "muzei/literatura/img/01-27-gosudarstvennaa-tret-akovskaa-galerea-354fdb0a06.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/21930",
+   "licenziya": "общественное достояние (автор умер в 1887)"
+  },
+  "000214": {
+   "put": "muzei/literatura/img/01-27-tretyakov-354fdb0a06857ad757d94eb86ccdbf06.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/21930",
+   "licenziya": "общественное достояние (автор умер в 1887)"
+  },
+  "000215": {
+   "put": "muzei/literatura/img/01-28-goskatalog-21934036.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20847541",
+   "licenziya": "общественное достояние (анонимная открытка, издана в 1905)"
+  },
+  "000216": {
+   "put": "muzei/literatura/media-toska/toska-1886-hero.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000217": {
+   "put": "muzei/literatura/media-toska/toska-1886-s232.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000218": {
+   "put": "muzei/literatura/media-toska/toska-1886-s235.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000219": {
+   "put": "muzei/literatura/img/01-30-goskatalog-84302423.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23363816",
+   "licenziya": "общественное достояние (автор умер в 1881)"
+  },
+  "000220": {
+   "put": "muzei/literatura/img/01-31-goskatalog-90789257.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4319835",
+   "licenziya": "общественное достояние (автор умер в 1952)"
+  },
+  "000221": {
+   "put": "muzei/literatura/img/02-01-goskatalog-919218.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4301534",
+   "licenziya": "общественное достояние (автор умер в 1942; годы жизни — карточка ГИМ https://goskatalog.ru/portal/#/collections?id=34870075)"
+  },
+  "000222": {
+   "put": "muzei/literatura/img/02-02-goskatalog-50250421.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41188462",
+   "licenziya": "общественное достояние (анонимная гравюра, издана более 70 лет назад)"
+  },
+  "000223": {
+   "put": "muzei/literatura/img/02-03-goskatalog-35118003.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30276180",
+   "licenziya": "общественное достояние (анонимный портрет, создан более 70 лет назад)"
+  },
+  "000224": {
+   "put": "muzei/literatura/img/02-04-goskatalog-11123839.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13075783",
+   "licenziya": "общественное достояние (автор умер в 1944)"
+  },
+  "000225": {
+   "put": "muzei/literatura/img/02-05-goskatalog-1884810.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5633591",
+   "licenziya": "общественное достояние (авторы умерли в 1836 и 1856)"
+  },
+  "000226": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-16583638.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16999502",
+   "licenziya": "общественное достояние (издание 1893 года, автор не указан)"
+  },
+  "000227": {
+   "put": "muzei/ne-sdayutsya/img/01-03-goskatalog-68536113.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=54369889",
+   "licenziya": "общественное достояние (анонимная фотография 1942–1943 годов)"
+  },
+  "000228": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-31681955.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7180326",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000229": {
+   "put": "muzei/ne-sdayutsya/img/01-11-goskatalog-61288345.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=49242068",
+   "licenziya": "общественное достояние (анонимная фотография 1932 года)"
+  },
+  "000230": {
+   "put": "muzei/ne-sdayutsya/img/01-12-goskatalog-42348750.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18580182",
+   "licenziya": "общественное достояние (анонимная листовка 1943 года; текст официального приказа)"
+  },
+  "000231": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-25463798.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23405080",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000232": {
+   "put": "muzei/ne-sdayutsya/img/01-14-goskatalog-26073778.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23841193",
+   "licenziya": "общественное достояние (официальный документ 1943–1944 годов, автор не указан)"
+  },
+  "000233": {
+   "put": "muzei/ne-sdayutsya/img/01-15-goskatalog-12323745.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13960299",
+   "licenziya": "общественное достояние (анонимная фотография 1934 года)"
+  },
+  "000234": {
+   "put": "muzei/ne-sdayutsya/img/01-16-goskatalog-14164707.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15279896",
+   "licenziya": "общественное достояние (анонимная фотография 1940 года)"
+  },
+  "000235": {
+   "put": "muzei/ne-sdayutsya/img/01-17-goskatalog-2238788.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5994024",
+   "licenziya": "общественное достояние (анонимная фотография 1948 года)"
+  },
+  "000236": {
+   "put": "muzei/ne-sdayutsya/img/01-18-goskatalog-43858267.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36593128",
+   "licenziya": "общественное достояние (анонимная фотография 1942 года)"
+  },
+  "000237": {
+   "put": "muzei/ne-sdayutsya/img/01-19-goskatalog-26638282.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24243468",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000238": {
+   "put": "muzei/ne-sdayutsya/img/01-20-goskatalog-18388293.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3975113",
+   "licenziya": "общественное достояние (анонимная фотография 1943 года)"
+  },
+  "000239": {
+   "put": "muzei/ne-sdayutsya/img/01-21-goskatalog-3020725.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6979677",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000240": {
+   "put": "muzei/ne-sdayutsya/img/01-22-goskatalog-91503693.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69830317",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000241": {
+   "put": "muzei/ne-sdayutsya/img/01-23-goskatalog-85090463.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=66338453",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000242": {
+   "put": "muzei/ne-sdayutsya/img/01-24-goskatalog-5500810.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9039049",
+   "licenziya": "общественное достояние (автор умер в 1904)"
+  },
+  "000243": {
+   "put": "muzei/ne-sdayutsya/img/01-25-goskatalog-89442929.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=68684480",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000244": {
+   "put": "muzei/ne-sdayutsya/img/01-26-goskatalog-2581383.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6327635",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000245": {
+   "put": "muzei/ne-sdayutsya/img/01-27-goskatalog-21834293.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20783106",
+   "licenziya": "общественное достояние (анонимная фотография 1941 года)"
+  },
+  "000246": {
+   "put": "muzei/ne-sdayutsya/img/01-28-goskatalog-2228687.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5986146",
+   "licenziya": "общественное достояние (автор неизвестен, 1940-е)"
+  },
+  "000247": {
+   "put": "muzei/ne-sdayutsya/img/01-29-tretyakov-c2e5f505e09a830779ebe6c1a459ed12.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/91083",
+   "licenziya": "общественное достояние (автор умер в 1861)"
+  },
+  "000248": {
+   "put": "muzei/ne-sdayutsya/img/01-30-goskatalog-23467401.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21944906",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000249": {
+   "put": "muzei/ne-sdayutsya/img/01-31-goskatalog-30468492.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30468492",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000250": {
+   "put": "muzei/pervoprohodcy/img/01-01-goskatalog-67668886.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=53730442",
+   "licenziya": "общественное достояние (автор умер в 1948)"
+  },
+  "000251": {
+   "put": "muzei/pervoprohodcy/img/01-02-goskatalog-24809405.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22932866",
+   "licenziya": "общественное достояние (автор умер в 1916)"
+  },
+  "000252": {
+   "put": "muzei/pervoprohodcy/img/01-07-goskatalog-6558082.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9794575",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000253": {
+   "put": "muzei/pervoprohodcy/img/10-17-goskatalog-6005882.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9420219",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000254": {
+   "put": "muzei/pervoprohodcy/img/10-18-goskatalog-47643209.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=39389481",
+   "licenziya": "общественное достояние (аноним, опубликовано более 70 лет назад)"
+  },
+  "000255": {
+   "put": "muzei/pervoprohodcy/img/10-19-goskatalog-91451508.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69796568",
+   "licenziya": "общественное достояние (фотограф не указан, 1899)"
+  },
+  "000256": {
+   "put": "muzei/pervoprohodcy/img/10-20-goskatalog-1828345.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5547778",
+   "licenziya": "общественное достояние (фотограф не указан, 1903)"
+  },
+  "000257": {
+   "put": "muzei/pervoprohodcy/img/10-21-goskatalog-39648916.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=33562212",
+   "licenziya": "общественное достояние (автор умер в 1930)"
+  },
+  "000258": {
+   "put": "muzei/pervoprohodcy/img/10-22-goskatalog-3925124.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7879685",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000259": {
+   "put": "muzei/skazki/img/01-01-goskatalog-30765829.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=27185082",
+   "licenziya": "общественное достояние (И. Я. Билибин умер в 1942 году)"
+  },
+  "000260": {
+   "put": "muzei/skazki/img/01-02-goskatalog-44285461.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36913638",
+   "licenziya": "общественное достояние (И. Я. Билибин умер в 1942 году)"
+  },
+  "000261": {
+   "put": "muzei/skazki/img/01-03-rusneb-000207-000017-ru-rgdb-bibl-0000495076-s5.jpg",
+   "istochnik": "https://rusneb.ru/catalog/000207_000017_RU_RGDB_BIBL_0000495076/",
+   "licenziya": "общественное достояние (художник не указан, издание 1912 года)"
+  },
+  "000262": {
+   "put": "muzei/skazki/img/01-04-rusneb-000199-000009-005407504-s26.jpg",
+   "istochnik": "https://rusneb.ru/catalog/000199_000009_005407504/",
+   "licenziya": "общественное достояние (автор умер в 1947)"
+  },
+  "000263": {
+   "put": "muzei/skazki/img/01-05-goskatalog-48464374.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=39912761",
+   "licenziya": "общественное достояние (анонимный лубок 1893 года, издан более 70 лет назад)"
+  },
+  "000264": {
+   "put": "muzei/skazki/img/10-18-goskatalog-23997503.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1556291",
+   "licenziya": "общественное достояние (анонимный прижизненный портрет, изображённый ум. в 1871; оттиск — механическое воспроизведение)"
+  },
+  "000265": {
+   "put": "muzei/sport/img/01-01-gosudarstvennaa-tret-akovskaa-galerea-51ecdd123c.jpg",
+   "istochnik": "https://my.tretyakov.ru/app/masterpiece/10892",
+   "licenziya": "общественное достояние (автор умер в 1927 году)"
+  },
+  "000266": {
+   "put": "muzei/sport/media/ledyanye-gory/kustodiev-1916-330t.webp",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000267": {
+   "put": "muzei/sport/img/01-01-goskatalog-4009114.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7947240",
+   "licenziya": "общественное достояние (автор литографии Шарль де Ластейри умер в 1849 году)"
+  },
+  "000268": {
+   "put": "muzei/sport/img/01-01-goskatalog-11421953.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13281479",
+   "licenziya": "общественное достояние (гравюра 1794 года, анонимная репродукция начала XX века)"
+  },
+  "000269": {
+   "put": "muzei/sport/img/01-02-goskatalog-5586044.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9106623",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято в 1928 году)"
+  },
+  "000270": {
+   "put": "muzei/sport/img/01-03-goskatalog-41614412.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=34975386",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято в 1911 году)"
+  },
+  "000271": {
+   "put": "muzei/sport/img/10-17-goskatalog-10771808.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12822454",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято в начале 1900-х годов)"
+  },
+  "000272": {
+   "put": "muzei/sport/img/10-18-goskatalog-39893993.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=33739715",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято в 1930-е годы)"
+  },
+  "000273": {
+   "put": "muzei/sport/img/10-19-goskatalog-1415452.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5032675",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято в 1920 году)"
+  },
+  "000274": {
+   "put": "muzei/sport/img/10-20-goskatalog-15634871.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16304643",
+   "licenziya": "общественное достояние (автор умерла в 1919 году)"
+  },
+  "000275": {
+   "put": "muzei/sport/img/10-21-goskatalog-6306186.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9623277",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято в 1917 году)"
+  },
+  "000276": {
+   "put": "muzei/sport/img/10-22-goskatalog-46328585.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38429825",
+   "licenziya": "общественное достояние (автор умер в 1929 году)"
+  },
+  "000277": {
+   "put": "muzei/izobreteniya/video/day-01jan-cabletv-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000278": {
+   "put": "muzei/izobreteniya/img/01-01-shukhovskaya-bashnya.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11313199",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Мультимедийный комплекс актуальных искусств (МАММ) · Госкаталог, рег. № 11196021"
+  },
+  "000279": {
+   "put": "muzei/izobreteniya/img/01-01-trubka-rozinga.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30116454",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог, рег. № 29937002"
+  },
+  "000280": {
+   "put": "muzei/izobreteniya/img/01-01-shabolovka-apparatnaya.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22567695",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Мультимедийный комплекс актуальных искусств (МАММ) · Госкаталог, рег. № 22431683"
+  },
+  "000281": {
+   "put": "muzei/izobreteniya/img/01-01-tk1.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8725537",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог, рег. № 8615885"
+  },
+  "000282": {
+   "put": "muzei/izobreteniya/img/01-01-shmakov-shema.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1536459",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный Владимиро-Суздальский музей-заповедник · Госкаталог, рег. № 3365556"
+  },
+  "000283": {
+   "put": "muzei/izobreteniya/day-01jan-rozing-portret.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=40212328",
+   "licenziya": "общественное достояние (анонимная фотография 1900-х годов) · Государственный исторический музей, Госкаталог, рег. № 39982113"
+  },
+  "000284": {
+   "put": "muzei/izobreteniya/day-02jan-luna1-maket.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3885815",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Мемориальный музей космонавтики · Госкаталог, № 3885815"
+  },
+  "000285": {
+   "put": "muzei/izobreteniya/video/day-02jan-luna1-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000286": {
+   "put": "muzei/izobreteniya/img/day-02jan-iskusstvennaya-kometa-karta.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12671754",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России"
+  },
+  "000287": {
+   "put": "muzei/izobreteniya/img/day-02jan-parokhod-indigirka.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18416489",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого"
+  },
+  "000288": {
+   "put": "muzei/izobreteniya/img/day-02jan-planer-sk3-model.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70410510",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Научно-мемориальный музей Н. Е. Жуковского (филиал ГМИК им. К. Э. Циолковского)"
+  },
+  "000289": {
+   "put": "muzei/izobreteniya/img/day-02jan-keldysh-flatter-cagi-1944.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59565688",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Кабинет-музей академика М. В. Келдыша (ИПМ им. М. В. Келдыша РАН)"
+  },
+  "000290": {
+   "put": "muzei/izobreteniya/img/day-02jan-glushko-pismo-ciolkovskomu.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=32158587",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный музей истории космонавтики им. К. Э. Циолковского"
+  },
+  "000291": {
+   "put": "muzei/izobreteniya/img/day-02jan-vympel-etiketka-1959.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=46803391",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный музей истории космонавтики им. К. Э. Циолковского"
+  },
+  "000292": {
+   "put": "muzei/izobreteniya/day-03jan-anosov-portret.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14979168",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей истории и культуры города Златоуста, Госкаталог, рег. № 14882055"
+  },
+  "000293": {
+   "put": "muzei/izobreteniya/video/day-03jan-anosov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000294": {
+   "put": "muzei/izobreteniya/img/day-03jan-zavod-gravyura.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=35143926",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Омский государственный историко-краеведческий музей"
+  },
+  "000295": {
+   "put": "muzei/izobreteniya/img/day-03jan-gornyj-zhurnal-1841.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=42985362",
+   "licenziya": "общественное достояние (издание 1841 г.) · Томский областной краеведческий музей им. М. Б. Шатилова"
+  },
+  "000296": {
+   "put": "muzei/izobreteniya/img/day-03jan-gerb-kon.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24749904",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Челябинский государственный музей изобразительных искусств"
+  },
+  "000297": {
+   "put": "muzei/izobreteniya/img/day-03jan-medal-gornyj-korpus.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=42648916",
+   "licenziya": "общественное достояние (медаль 1801–1834 гг.) · Государственный мемориальный музей А. В. Суворова"
+  },
+  "000298": {
+   "put": "muzei/izobreteniya/img/day-03jan-formulyar-orden-anny.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=37344641",
+   "licenziya": "общественное достояние (официальный документ 1850 г., ст. 1259 ГК РФ) · Краеведческий музей Копейского городского округа"
+  },
+  "000299": {
+   "put": "muzei/izobreteniya/day-04jan-pilchikov-portret-biront.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17052307",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Г. П. Биронт, 1972 · Губкинский краеведческий музей, Госкаталог, рег. № 16925049"
+  },
+  "000300": {
+   "put": "muzei/izobreteniya/video/day-04jan-pilchikov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000301": {
+   "put": "muzei/izobreteniya/img/day-04jan-kma-pervaya-skvazhina.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13941942",
+   "licenziya": "Цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Щигровский краеведческий музей (филиал Курского областного краеведческого музея)"
+  },
+  "000302": {
+   "put": "muzei/izobreteniya/img/day-04jan-popov-portret-1887.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=68368432",
+   "licenziya": "Общественное достояние (фотография 1887 года, автор-фотограф неизвестен) · Мемориальный музей А. С. Попова СПбГЭТУ «ЛЭТИ»"
+  },
+  "000303": {
+   "put": "muzei/izobreteniya/img/day-04jan-harkov-tehnologicheskiy-institut.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9264177",
+   "licenziya": "Общественное достояние (открытка около 1912 года) · Курский областной краеведческий музей"
+  },
+  "000304": {
+   "put": "muzei/izobreteniya/img/day-04jan-trubka-kruksa.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12459060",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный военно-морской музей"
+  },
+  "000305": {
+   "put": "muzei/izobreteniya/img/day-04jan-odessa-novorossiyskiy-universitet.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23946408",
+   "licenziya": "Общественное достояние (открытка 1900-х годов) · Государственный исторический музей"
+  },
+  "000306": {
+   "put": "muzei/izobreteniya/img/day-04jan-harkov-universitet.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10227920",
+   "licenziya": "Общественное достояние (открытка 1904–1914 годов) · Выборгский объединённый музей-заповедник"
+  },
+  "000307": {
+   "put": "muzei/izobreteniya/day-05jan-shukhov-za-stolom-1933.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5969845",
+   "licenziya": "общественное достояние (анонимный снимок 1933 года) · Государственный центральный музей современной истории России, Госкаталог, рег. № 5793495"
+  },
+  "000308": {
+   "put": "muzei/izobreteniya/video/day-05jan-shukhov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000309": {
+   "put": "muzei/izobreteniya/img/day-05jan-kreking-baku-1932.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5572584",
+   "licenziya": "общественное достояние (фотохроника 1932 г., автор не указан) · Государственный центральный музей современной истории России"
+  },
+  "000310": {
+   "put": "muzei/izobreteniya/img/day-05jan-minaret-ulugbek.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=50372312",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный научно-исследовательский музей архитектуры имени А. В. Щусева"
+  },
+  "000311": {
+   "put": "muzei/izobreteniya/img/day-05jan-privilegiya-azhurnaya-bashnya.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19689326",
+   "licenziya": "общественное достояние (официальный документ, 1899 г., ст. 1259 ГК РФ) · Мытищинский историко-художественный музей · Госкаталог, рег. № 19559764"
+  },
+  "000312": {
+   "put": "muzei/izobreteniya/img/day-05jan-setchatye-pokrytiya.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=54417400",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный научно-исследовательский музей архитектуры имени А. В. Щусева"
+  },
+  "000313": {
+   "put": "muzei/izobreteniya/img/day-05jan-rezervuar-fragment.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16321636",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей геологии, нефти и газа (Ханты-Мансийск)"
+  },
+  "000314": {
+   "put": "muzei/izobreteniya/day-05jan-shukhov-shabolovka.jpg",
+   "istochnik": "https://goskatalog.ru/portal/",
+   "licenziya": "общественное достояние · Государственный музей архитектуры имени А. В. Щусева, Госкаталог музейного фонда РФ"
+  },
+  "000315": {
+   "put": "muzei/izobreteniya/img/day-05jan-bashnya-nn-1896.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14540491",
+   "licenziya": "общественное достояние (издание 1897 г.) · Государственный научно-исследовательский музей архитектуры имени А. В. Щусева"
+  },
+  "000316": {
+   "put": "muzei/izobreteniya/day-11jan-kostovich-motor-1883-cmvvs.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=25505972",
+   "licenziya": "общественное достояние (предмет 1883 года, автор О. С. Костович умер в 1916 году); фото музея — цитирование с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000317": {
+   "put": "muzei/izobreteniya/video/day-11jan-kostovich-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000318": {
+   "put": "muzei/izobreteniya/day-29jan-kostovich-motor-foto.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=58617506",
+   "licenziya": "общественное достояние (фотограф неизвестен, снято не позднее 1916 года)"
+  },
+  "000319": {
+   "put": "muzei/izobreteniya/day-29jan-rossiya-chertezh.jpg",
+   "istochnik": "https://rg.ru/2013/12/30/kostovich-site.html",
+   "licenziya": "общественное достояние (чертёж XIX века; О. С. Костович умер в 1916 году) · публикация: «Российская газета», 30.12.2013"
+  },
+  "000320": {
+   "put": "muzei/izobreteniya/img/01-11-goskatalog-54679006-opisanie.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=54679006",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000321": {
+   "put": "muzei/izobreteniya/img/01-11-cmvvs-motor-cilindry.jpg",
+   "istochnik": "https://cmvvs.ru/ekspozitsiya/dvigateli.html?view=article&id=449",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000322": {
+   "put": "muzei/izobreteniya/img/01-11-cmvvs-motor-tyagi.jpg",
+   "istochnik": "https://cmvvs.ru/ekspozitsiya/dvigateli.html?view=article&id=449",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000323": {
+   "put": "muzei/izobreteniya/video/day-12jan-r7-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000324": {
+   "put": "muzei/izobreteniya/img/01-12-dvigatel-rd-107.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38475511",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Государственный музей истории космонавтики им. К. Э. Циолковского (Калуга) · Госкаталог, рег. № 38255388"
+  },
+  "000325": {
+   "put": "muzei/izobreteniya/img/01-12-pusk-r7-sputnik.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13081673",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог, рег. № 12959709"
+  },
+  "000326": {
+   "put": "muzei/izobreteniya/img/01-12-model-8k71.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=60097021",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Музейное объединение «Музеи наукограда Королёв» · Госкаталог, рег. № 59800367"
+  },
+  "000327": {
+   "put": "muzei/izobreteniya/img/01-12-medal-2000-pusk.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69483522",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Государственный музей истории космонавтики им. К. Э. Циолковского (Калуга) · Госкаталог, рег. № 69213250"
+  },
+  "000328": {
+   "put": "muzei/izobreteniya/img/01-12-soobshchenie-tass-1957.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=58966187",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Мемориальный музей космонавтики (Москва) · Госкаталог, рег. № 58680673"
+  },
+  "000329": {
+   "put": "muzei/izobreteniya/img/01-12-glavnye-konstruktory-1957.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=27831030",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Мемориальный музей космонавтики (Москва) · Госкаталог, рег. № 27673157"
+  },
+  "000330": {
+   "put": "muzei/izobreteniya/video/day-13jan-k278-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000331": {
+   "put": "muzei/izobreteniya/img/01-13-furazhka-ispenkova.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=50873881",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000332": {
+   "put": "muzei/izobreteniya/img/01-13-pohorony-1989.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38186388",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000333": {
+   "put": "muzei/izobreteniya/img/01-13-spasennye-v-gospitale.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=26730186",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000334": {
+   "put": "muzei/izobreteniya/img/01-13-udostoverenie-vanina.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=68297793",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000335": {
+   "put": "muzei/izobreteniya/img/01-13-vint-na-dne-1991.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8146109",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000336": {
+   "put": "muzei/izobreteniya/img/01-13-medal-koordinaty-gibeli.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=64842363",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000337": {
+   "put": "muzei/izobreteniya/video/day-14jan-lira-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000338": {
+   "put": "muzei/izobreteniya/img/01-14-goskatalog-36317246.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36317246",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ); Госкаталог музейного фонда РФ"
+  },
+  "000339": {
+   "put": "muzei/izobreteniya/img/01-14-pastvu-zapadnaya-lica-705.jpg",
+   "istochnik": "https://pastvu.com/p/1073826",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · PastVu, фото № 1073826"
+  },
+  "000340": {
+   "put": "muzei/izobreteniya/img/01-14-goskatalog-38736860.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38736860",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000341": {
+   "put": "muzei/izobreteniya/img/01-14-goskatalog-10403812.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10403812",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000342": {
+   "put": "muzei/izobreteniya/img/01-14-goskatalog-3719439.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3719439",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000343": {
+   "put": "muzei/izobreteniya/img/01-14-goskatalog-10664324.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10664324",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000344": {
+   "put": "muzei/izobreteniya/img/01-15-goskatalog-86133712.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=67066060",
+   "licenziya": "общественное достояние (фотография 1880-х годов, ателье Dahllöf, Стокгольм; автор не указан, обнародована до 1918 года)"
+  },
+  "000345": {
+   "put": "muzei/izobreteniya/video/day-15jan-kovalevskaya-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000346": {
+   "put": "muzei/izobreteniya/img/01-15-lekcii-ostrogradskogo.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=31198905",
+   "licenziya": "общественное достояние (издание 1836 года, автор умер в 1862 году)"
+  },
+  "000347": {
+   "put": "muzei/izobreteniya/img/01-15-kovalevskiy-vo.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=39438460",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000348": {
+   "put": "muzei/izobreteniya/img/01-15-sbornik-1892.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23602442",
+   "licenziya": "общественное достояние (издание 1892 года, дозволено цензурой 28 ноября 1892 года)"
+  },
+  "000349": {
+   "put": "muzei/izobreteniya/img/01-15-rukopis-nigilistka.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=67066483",
+   "licenziya": "общественное достояние (рукопись С. В. Ковалевской, автор умерла в 1891 году)"
+  },
+  "000350": {
+   "put": "muzei/izobreteniya/img/01-15-plita-mogila.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=67066438",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000351": {
+   "put": "muzei/izobreteniya/img/01-15-polibino-dom.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=62386563",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000352": {
+   "put": "muzei/izobreteniya/video/day-16jan-soyuz45-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000353": {
+   "put": "muzei/izobreteniya/img/01-16-start-soyuz4.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5246743",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000354": {
+   "put": "muzei/izobreteniya/img/01-16-gazeta-17-yanvarya.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19840305",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000355": {
+   "put": "muzei/izobreteniya/img/01-16-skafandr-yastreb.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=490422",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000356": {
+   "put": "muzei/izobreteniya/img/01-16-blok-stanciya.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=198025",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000357": {
+   "put": "muzei/izobreteniya/img/01-16-vstrecha-zhurnalisty.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7629896",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000358": {
+   "put": "muzei/izobreteniya/img/01-16-goskatalog-36019112.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36019112",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000359": {
+   "put": "muzei/izobreteniya/img/01-16-goskatalog-13291282.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13291282",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000360": {
+   "put": "muzei/izobreteniya/img/01-17-goskatalog-5816870.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992150",
+   "licenziya": "Государственный центральный музей современной истории России · Госкаталог, рег. № 5816870"
+  },
+  "000361": {
+   "put": "muzei/izobreteniya/video/day-17jan-zhukovsky-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000362": {
+   "put": "muzei/izobreteniya/img/01-17-prisoedinennye-vikhri-1906.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1526942",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000363": {
+   "put": "muzei/izobreteniya/img/01-17-cagi-otchet-i-185.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59271146",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000364": {
+   "put": "muzei/izobreteniya/img/01-17-gidravlicheskiy-udar-1899.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1529419",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000365": {
+   "put": "muzei/izobreteniya/img/01-17-o-parenii-ptic.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1526214",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000366": {
+   "put": "muzei/izobreteniya/img/01-17-institut-inzhenerov-kvf.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=66032968",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000367": {
+   "put": "muzei/izobreteniya/img/01-17-kuchino-institut.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70405486",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000368": {
+   "put": "muzei/izobreteniya/img/01-17-vint-zhukovskogo-chertezh.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69842246",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000369": {
+   "put": "muzei/izobreteniya/img/01-17-ploskaya-truba-mvtu.jpg",
+   "istochnik": "https://zhukovskymuseum.ru/ploskaya-truba/",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000370": {
+   "put": "muzei/izobreteniya/img/01-17-goskatalog-5816845.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992175",
+   "licenziya": "Государственный центральный музей современной истории России · Госкаталог, рег. № 5816845"
+  },
+  "000371": {
+   "put": "muzei/izobreteniya/day-18jan-odner.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4798915",
+   "licenziya": "© Политехнический музей"
+  },
+  "000372": {
+   "put": "muzei/izobreteniya/video/day-18jan-odner-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000373": {
+   "put": "muzei/izobreteniya/img/01-18-udostoverenie-zavoda-odnera.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18500612",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000374": {
+   "put": "muzei/izobreteniya/img/01-18-nauka-i-zhizn-1890.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41367943",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000375": {
+   "put": "muzei/izobreteniya/img/01-18-artefakt-arifmometr-1890.jpg",
+   "istochnik": "https://ar.culture.ru/ru/subject/arifmometr-odnera",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000376": {
+   "put": "muzei/izobreteniya/img/01-18-artefakt-arifmometr-peterburg.jpg",
+   "istochnik": "https://ar.culture.ru/ru/subject/arifmometr-odnera-1",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000377": {
+   "put": "muzei/izobreteniya/img/01-18-goskatalog-20145786.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20145786",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000378": {
+   "put": "muzei/izobreteniya/img/01-18-goskatalog-28344308.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28344308",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000379": {
+   "put": "muzei/izobreteniya/day-19jan-kantorovich-diplom.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=57973402",
+   "licenziya": "Музей истории СПбГУ, Госкаталог № 57677767; цитирование, ст. 1274 ГК РФ"
+  },
+  "000380": {
+   "put": "muzei/izobreteniya/video/day-19jan-kantorovich-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000381": {
+   "put": "muzei/izobreteniya/img/01-19-ledovye-dorogi-ladogi.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=45343921",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000382": {
+   "put": "muzei/izobreteniya/img/01-19-optimalnoe-planirovanie-1964.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5853041",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000383": {
+   "put": "muzei/izobreteniya/img/01-19-arifmometr-feliks.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16104163",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000384": {
+   "put": "muzei/izobreteniya/img/01-19-nobelevskaya-lekciya-1975.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11812378",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000385": {
+   "put": "muzei/izobreteniya/img/01-19-portret-nobelevskogo-laureata.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=57973519",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000386": {
+   "put": "muzei/izobreteniya/img/01-19-vilnyus-1969.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=51576923",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000387": {
+   "put": "muzei/izobreteniya/img/01-19-raskroj-1971.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11812354",
+   "licenziya": "Госкаталог музейного фонда РФ; цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000388": {
+   "put": "muzei/izobreteniya/day-19jan-kantorovich-matrikul.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=57973269",
+   "licenziya": "Музей истории СПбГУ, Госкаталог № 57677795; цитирование, ст. 1274 ГК РФ"
+  },
+  "000389": {
+   "put": "muzei/izobreteniya/day-20jan-lunin-portret.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28753072",
+   "licenziya": "Госкаталог музейного фонда РФ · Государственный исторический музей"
+  },
+  "000390": {
+   "put": "muzei/izobreteniya/video/day-20jan-lunin-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000391": {
+   "put": "muzei/izobreteniya/img/01-20-dissertaciya-s15-vyvod.jpg",
+   "istochnik": "https://archive.org/details/IA40154018_0109",
+   "licenziya": "право: общественное достояние (издание 1880 г., автор умер в 1937 г.)"
+  },
+  "000392": {
+   "put": "muzei/izobreteniya/img/01-20-yurevskij-universitet-niva-1902.jpg",
+   "istochnik": "https://pastvu.com/p/174498",
+   "licenziya": "право: общественное достояние (издание 1902 г.) · pastvu.com"
+  },
+  "000393": {
+   "put": "muzei/izobreteniya/img/01-20-plakat-luk-kladovaya-vitaminov.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3844566",
+   "licenziya": "Госкаталог музейного фонда РФ · Государственный музей спорта"
+  },
+  "000394": {
+   "put": "muzei/izobreteniya/img/01-20-bolnica-oldenburgskogo-1869.jpg",
+   "istochnik": "https://pastvu.com/p/2474138",
+   "licenziya": "право: общественное достояние (снимок 1869 г.) · pastvu.com"
+  },
+  "000395": {
+   "put": "muzei/izobreteniya/img/01-20-korobka-vitaminy-1958.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10982348",
+   "licenziya": "Госкаталог музейного фонда РФ · Томский областной краеведческий музей им. М. Б. Шатилова"
+  },
+  "000396": {
+   "put": "muzei/izobreteniya/img/01-20-moskovskij-vitaminnyj-zavod-1936.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5980745",
+   "licenziya": "цитирование в информационных целях с указанием источника (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог"
+  },
+  "000397": {
+   "put": "muzei/izobreteniya/day-21jan-obninsk-pult.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69445465",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог, рег. № 69176047"
+  },
+  "000398": {
+   "put": "muzei/izobreteniya/video/day-21jan-obninsk-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000399": {
+   "put": "muzei/izobreteniya/img/01-21-lopatka-turbiny.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=288886",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Музей истории города Обнинска · Госкаталог, рег. № 2002982"
+  },
+  "000400": {
+   "put": "muzei/izobreteniya/img/01-21-tetrad-kurchatova-1954.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8239174",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог, рег. № 8129772"
+  },
+  "000401": {
+   "put": "muzei/izobreteniya/img/01-21-maket-razrez.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4358438",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Музей истории города Обнинска · Госкаталог, рег. № 4402089"
+  },
+  "000402": {
+   "put": "muzei/izobreteniya/img/01-21-krasin-kochetkov-pult.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7832131",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Музей истории города Обнинска · Госкаталог, рег. № 7718163"
+  },
+  "000403": {
+   "put": "muzei/izobreteniya/img/01-21-doklad-zheneva-1955.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8528308",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Музей истории города Обнинска · Госкаталог, рег. № 8420510"
+  },
+  "000404": {
+   "put": "muzei/izobreteniya/img/01-21-moskovskaya-pravda-1957.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16910298",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Музей истории города Обнинска · Госкаталог, рег. № 16786787"
+  },
+  "000405": {
+   "put": "muzei/izobreteniya/img/01-21-zdanie-1957.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=65038107",
+   "licenziya": "Госкаталог музейного фонда РФ · Центральный пограничный музей ФСБ России"
+  },
+  "000406": {
+   "put": "muzei/izobreteniya/img/01-22-kapica-filimonov-geliy.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28924319",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог"
+  },
+  "000407": {
+   "put": "muzei/izobreteniya/video/day-22jan-landau-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000408": {
+   "put": "muzei/izobreteniya/img/01-22-kapica-izvestiya-1941.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=50697272",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Национальный музей Республики Татарстан · Госкаталог, рег. № 50455788"
+  },
+  "000409": {
+   "put": "muzei/izobreteniya/img/01-22-landau-nobel-diplom.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=35682369",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог, рег. № 35487249"
+  },
+  "000410": {
+   "put": "muzei/izobreteniya/img/01-22-ifp-zdanie-1937.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=42606413",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог, рег. № 42382525"
+  },
+  "000411": {
+   "put": "muzei/izobreteniya/img/01-22-landau-kapica-ifp.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=64011714",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей истории Казанского университета · Госкаталог"
+  },
+  "000412": {
+   "put": "muzei/izobreteniya/day-22jan-landau-doma.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=35383289",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог"
+  },
+  "000413": {
+   "put": "muzei/izobreteniya/img/01-22-kreslo-landau.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=64521134",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Мемориальный кабинет-музей П. Л. Капицы ИФП РАН · Госкаталог"
+  },
+  "000414": {
+   "put": "muzei/izobreteniya/day-22jan-kapica-ozhizhitel.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69524694",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Мемориальный кабинет-музей П. Л. Капицы ИФП РАН · Госкаталог"
+  },
+  "000415": {
+   "put": "muzei/izobreteniya/day-23jan-umov-portret.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4978913",
+   "licenziya": "Госкаталог музейного фонда РФ · Государственный центральный музей современной истории России"
+  },
+  "000416": {
+   "put": "muzei/izobreteniya/video/day-23jan-umov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000417": {
+   "put": "muzei/izobreteniya/img/01-23-dissert-1874-plotnost.jpg",
+   "istochnik": "https://rusneb.ru/catalog/000199_000009_003605588/",
+   "licenziya": "общественное достояние (автор Н. А. Умов умер в 1915 году, издание 1874 года) · скан РГБ в НЭБ"
+  },
+  "000418": {
+   "put": "muzei/izobreteniya/img/01-23-novoross-universitet.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22530569",
+   "licenziya": "общественное достояние (издание до 1905 года, фотограф неизвестен) · Ростовский областной музей краеведения · Госкаталог, рег. № 22391503"
+  },
+  "000419": {
+   "put": "muzei/izobreteniya/img/01-23-ledentsov-blank-1912.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15508446",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Музей Москвы · Госкаталог, рег. № 15397024 (документ 1912 года, авторы-подписанты умерли до 1955)"
+  },
+  "000420": {
+   "put": "muzei/izobreteniya/img/01-23-vremennik-ledentsova-1910.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18185244",
+   "licenziya": "общественное достояние (издание 1910 года) · Музей Москвы · Госкаталог, рег. № 18058029"
+  },
+  "000421": {
+   "put": "muzei/izobreteniya/day-23jan-fizinstitut.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=46762123",
+   "licenziya": "Госкаталог музейного фонда РФ · Музей Москвы"
+  },
+  "000422": {
+   "put": "muzei/izobreteniya/day-23jan-umov-pismo-1911.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17010580",
+   "licenziya": "Госкаталог музейного фонда РФ · Музей Москвы"
+  },
+  "000423": {
+   "put": "muzei/izobreteniya/img/01-24-model-k162.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10664303",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный военно-морской музей им. Петра Великого · Госкаталог"
+  },
+  "000424": {
+   "put": "muzei/izobreteniya/video/day-24jan-anchar-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000425": {
+   "put": "muzei/izobreteniya/img/01-24-ametist-stend-shema.jpg",
+   "istochnik": "http://www.malachite-spb.ru/239/",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · АО «СПМБМ „Малахит“», официальный сайт"
+  },
+  "000426": {
+   "put": "muzei/izobreteniya/img/01-24-titan-slitok.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=25527763",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Ставропольский музей-заповедник им. Г. Н. Прозрителева и Г. К. Праве · Госкаталог, рег. № 25527763"
+  },
+  "000427": {
+   "put": "muzei/izobreteniya/img/01-24-sevmash-1965.jpg",
+   "istochnik": "https://pastvu.com/p/371313",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · PastVu, фото № 371313"
+  },
+  "000428": {
+   "put": "muzei/izobreteniya/img/01-24-k162-v-more.jpg",
+   "istochnik": "http://www.malachite-spb.ru/179/",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · АО «СПМБМ „Малахит“», официальный сайт"
+  },
+  "000429": {
+   "put": "muzei/izobreteniya/img/01-24-isanin-portret.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=44939149",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей истории подводных сил России им. А. И. Маринеско · Госкаталог"
+  },
+  "000430": {
+   "put": "muzei/izobreteniya/img/01-24-startovaya-komanda-ametist.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7869676",
+   "licenziya": "цитирование в информационных целях с указанием источника (ст. 1274 ГК РФ) · Музей истории подводных сил России им. А. И. Маринеско · Госкаталог"
+  },
+  "000431": {
+   "put": "muzei/izobreteniya/day-25jan-komparator-chertezh.jpg",
+   "istochnik": "https://www.computer-museum.ru/precomp/korsakov.htm",
+   "licenziya": "общественное достояние (чертёж из брошюры 1832 года; С. Н. Корсаков умер в 1853 году) · публикация: Виртуальный компьютерный музей"
+  },
+  "000432": {
+   "put": "muzei/izobreteniya/video/day-25jan-korsakov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000433": {
+   "put": "muzei/izobreteniya/img/01-25-ostrogradskij-portret.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7825101",
+   "licenziya": "общественное достояние (литография 1869 года; П. Ф. Борель умер в 1900 году) · Государственный литературный музей имени В. И. Даля · Госкаталог, рег. № 7711039"
+  },
+  "000434": {
+   "put": "muzei/izobreteniya/img/01-25-ideoskop-chertezh-1832.jpg",
+   "istochnik": "https://raai.robofob.ru/library/books/korsakov/korsakov_book.pdf",
+   "licenziya": "общественное достояние (издание 1832 года; С. Н. Корсаков умер в 1853 году) · воспроизведение: С. Н. Корсаков, «Начертание нового способа исследования…», под ред. А. С. Михайлова, М.: МИФИ, 2009"
+  },
+  "000435": {
+   "put": "muzei/izobreteniya/img/01-25-akademiya-nauk-1822.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18064199",
+   "licenziya": "общественное достояние (литография 1822 года) · Государственный музей истории Санкт-Петербурга · Госкаталог, рег. № 17934017"
+  },
+  "000436": {
+   "put": "muzei/izobreteniya/img/01-25-gomeoskop-nepodvizhnyj-1832.jpg",
+   "istochnik": "https://raai.robofob.ru/library/books/korsakov/korsakov_book.pdf",
+   "licenziya": "общественное достояние (издание 1832 года; С. Н. Корсаков умер в 1853 году) · воспроизведение: С. Н. Корсаков, «Начертание нового способа исследования…», под ред. А. С. Михайлова, М.: МИФИ, 2009"
+  },
+  "000437": {
+   "put": "muzei/izobreteniya/day-25jan-brosyura-1832.jpg",
+   "istochnik": "https://www.computer-museum.ru/precomp/korsakov.htm",
+   "licenziya": "общественное достояние (издание 1832 года) · публикация: Виртуальный компьютерный музей"
+  },
+  "000438": {
+   "put": "muzei/izobreteniya/day-25jan-korsakov-portret.jpg",
+   "istochnik": "https://www.computer-museum.ru/precomp/korsakov.htm",
+   "licenziya": "общественное достояние (гравюра XIX века; С. Н. Корсаков умер в 1853 году) · публикация: Виртуальный компьютерный музей"
+  },
+  "000439": {
+   "put": "muzei/izobreteniya/day-25jan-perfokarta-kraevaya.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7589697",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000440": {
+   "put": "muzei/izobreteniya/video/day-26jan-sreznevskiy-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000441": {
+   "put": "muzei/izobreteniya/img/01-26-sreznevskiy-spravochnaya-knizhka-1887.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=46906614",
+   "licenziya": "общественное достояние (издание до 1923 г.) · Музей-архив Д. И. Менделеева СПбГУ · Госкаталог, рег. № 46665036"
+  },
+  "000442": {
+   "put": "muzei/izobreteniya/img/01-26-kovanko-polet-novgorod-1885.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6236581",
+   "licenziya": "общественное достояние (издание до 1923 г.) · Государственный музей истории космонавтики им. К. Э. Циолковского · Госкаталог, рег. № 6031333"
+  },
+  "000443": {
+   "put": "muzei/izobreteniya/img/01-26-przhevalskiy-4-puteshestvie-1888.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=47592253",
+   "licenziya": "общественное достояние (издание до 1923 г.) · Смоленский государственный музей-заповедник · Госкаталог, рег. № 47349042"
+  },
+  "000444": {
+   "put": "muzei/izobreteniya/img/01-26-medal-sostyazanie-konkobezhcev-1896.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=44358226",
+   "licenziya": "общественное достояние (издание до 1923 г.) · Ярославский художественный музей · Госкаталог, рег. № 44121178"
+  },
+  "000445": {
+   "put": "muzei/izobreteniya/img/01-26-vodolaznaya-shkola-kronshtadt-1908.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=66071326",
+   "licenziya": "общественное достояние (издание до 1923 г.) · Центральный музей железнодорожного транспорта РФ · Госкаталог, рег. № 65787331"
+  },
+  "000446": {
+   "put": "muzei/izobreteniya/img/01-26-olbk-spisok-chlenov-sreznevskiy.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=69872577",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный музей спорта · Госкаталог, рег. № 69599558"
+  },
+  "000447": {
+   "put": "muzei/izobreteniya/day-26jan-aerofotoapparat.jpg",
+   "istochnik": "http://www.photohistory.ru/1207248167929303.html",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · публикация Г. Абрамова, photohistory.ru"
+  },
+  "000448": {
+   "put": "muzei/izobreteniya/day-26jan-sreznevskiy-portret.jpg",
+   "istochnik": "http://www.photohistory.ru/1207248167929303.html",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · публикация Г. Абрамова, photohistory.ru"
+  },
+  "000449": {
+   "put": "muzei/izobreteniya/day-27jan-elbrus2-prospekt.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12733546",
+   "licenziya": "Госкаталог музейного фонда РФ · Музей современной истории России"
+  },
+  "000450": {
+   "put": "muzei/izobreteniya/video/day-27jan-elbrus-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000451": {
+   "put": "muzei/izobreteniya/img/01-27-elbrus-1891vm4ya.jpg",
+   "istochnik": "http://www.mcst.ru/Elbrus",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · АО «МЦСТ», официальный сайт"
+  },
+  "000452": {
+   "put": "muzei/izobreteniya/day-27jan-elbrus2-plan.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12367222",
+   "licenziya": "Госкаталог музейного фонда РФ · Политехнический музей"
+  },
+  "000453": {
+   "put": "muzei/izobreteniya/day-27jan-burtsev-kniga.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11833033",
+   "licenziya": "Госкаталог музейного фонда РФ · Политехнический музей"
+  },
+  "000454": {
+   "put": "muzei/izobreteniya/day-27jan-elbrus2-shema.jpg",
+   "istochnik": "https://www.computer-museum.ru/histussr/elbrus12.htm",
+   "licenziya": "Виртуальный компьютерный музей"
+  },
+  "000455": {
+   "put": "muzei/izobreteniya/day-27jan-burtsev-uchsovet.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11833040",
+   "licenziya": "Госкаталог музейного фонда РФ · Политехнический музей"
+  },
+  "000456": {
+   "put": "muzei/izobreteniya/day-27jan-m40-yacheika.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70308829",
+   "licenziya": "Госкаталог музейного фонда РФ · Политехнический музей"
+  },
+  "000457": {
+   "put": "muzei/izobreteniya/day-27jan-pentkovsky-portret.jpg",
+   "istochnik": "https://megagrant.ru/labs/scientists/scientist_rus_112121/",
+   "licenziya": "Программа мегагрантов · megagrant.ru"
+  },
+  "000458": {
+   "put": "muzei/izobreteniya/day-27jan-lebedev-1956.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7629157",
+   "licenziya": "Госкаталог музейного фонда РФ · Музей современной истории России"
+  },
+  "000459": {
+   "put": "muzei/izobreteniya/day-28jan-holernaya-vakcina.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=29049270",
+   "licenziya": "Госкаталог музейного фонда РФ · Военно-медицинский музей Министерства обороны РФ"
+  },
+  "000460": {
+   "put": "muzei/izobreteniya/video/day-28jan-havkin-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000461": {
+   "put": "muzei/izobreteniya/day-28jan-havkin-portret.jpg",
+   "istochnik": "https://hij.ru/read/11413/",
+   "licenziya": "общественное достояние (фотография конца XIX века, фотограф неизвестен) · публикация — журнал «Химия и жизнь»"
+  },
+  "000462": {
+   "put": "muzei/izobreteniya/day-28jan-havkin-bengaliya-1896.jpg",
+   "istochnik": "https://historyrussia.org/tsekh-istorikov/vladimir-aronovich-khavkin-samyj-neizvestnyj-uchjonyj-rossii.html",
+   "licenziya": "общественное достояние (фотография 1896 года, фотограф неизвестен) · публикация — Российское историческое общество"
+  },
+  "000463": {
+   "put": "muzei/izobreteniya/img/01-28-kashkadamov-chuma-v-indii-1898.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=48853277",
+   "licenziya": "общественное достояние (издание 1898 г.) · Государственный музей истории российской литературы имени В. И. Даля · Госкаталог, рег. № 48622807"
+  },
+  "000464": {
+   "put": "muzei/izobreteniya/img/01-28-obyavlenie-holernaya-vakcina-1920e.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14965410",
+   "licenziya": "общественное достояние (официальное объявление 1921–1926 годов, ст. 1259 ГК РФ) · Саратовский областной музей краеведения · Госкаталог"
+  },
+  "000465": {
+   "put": "muzei/izobreteniya/img/01-28-odessa-novorossiyskiy-universitet.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23946408",
+   "licenziya": "общественное достояние (открытка 1900-х годов) · Государственный исторический музей · Госкаталог"
+  },
+  "000466": {
+   "put": "muzei/izobreteniya/img/01-28-barak-chumnye-bombei.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16918455",
+   "licenziya": "цитирование в информационных целях (ст. 1274 ГК РФ) · Рыбинский музей-заповедник · Госкаталог, рег. № 16794908"
+  },
+  "000467": {
+   "put": "muzei/izobreteniya/day-29jan-rossiya-nad-peterburgom.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=54679006",
+   "licenziya": "Госкаталог музейного фонда РФ · Научно-мемориальный музей Н. Е. Жуковского"
+  },
+  "000468": {
+   "put": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000469": {
+   "put": "muzei/izobreteniya/img/01-29-vozduhoplavatel-1881.jpg",
+   "istochnik": "https://rusneb.ru/catalog/000199_000009_013618127/",
+   "licenziya": "общественное достояние (издание 1881 года) · РГБ · НЭБ"
+  },
+  "000470": {
+   "put": "muzei/izobreteniya/img/01-29-niva-1882-vypiska.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=54679006",
+   "licenziya": "текст 1882 года — общественное достояние · Научно-мемориальный музей Н. Е. Жуковского · Госкаталог"
+  },
+  "000471": {
+   "put": "muzei/izobreteniya/img/01-29-gravyura-rossiya-1882.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=45770479",
+   "licenziya": "общественное достояние (Н. Н. Каразин умер в 1908 году) · ГМИИ им. А. С. Пушкина · Госкаталог"
+  },
+  "000472": {
+   "put": "muzei/izobreteniya/img/01-29-patent-ssha-1906.jpg",
+   "istochnik": "https://patents.google.com/patent/US830084A/en",
+   "licenziya": "общественное достояние (официальный документ федерального правительства США, 1906)"
+  },
+  "000473": {
+   "put": "muzei/izobreteniya/day-29jan-kostovich-portret.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59271130",
+   "licenziya": "Госкаталог музейного фонда РФ · Научно-мемориальный музей Н. Е. Жуковского"
+  },
+  "000474": {
+   "put": "muzei/izobreteniya/day-29jan-dvigatel-cmvvs.jpg",
+   "istochnik": "https://cmvvs.ru/ekspozitsiya/dvigateli.html?view=article&id=449",
+   "licenziya": "Центральный музей Военно-воздушных сил"
+  },
+  "000475": {
+   "put": "muzei/izobreteniya/img/01-30-plakat-kotelnikov.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18020792",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Геленджикский историко-краеведческий музей · Госкаталог"
+  },
+  "000476": {
+   "put": "muzei/izobreteniya/video/day-30jan-kotelnikov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000477": {
+   "put": "muzei/izobreteniya/img/01-30-posledniy-polet-matsievicha-1910.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23034178",
+   "licenziya": "общественное достояние (издание 1910 года) · Центральный военно-морской музей · Госкаталог, рег. № 22897431"
+  },
+  "000478": {
+   "put": "muzei/izobreteniya/img/01-30-glebov-kotelnikov-akter.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7774064",
+   "licenziya": "общественное достояние (снимок начала XX века, фотоателье В. Каспари) · Государственный музей истории Санкт-Петербурга · Госкаталог"
+  },
+  "000479": {
+   "put": "muzei/izobreteniya/img/01-30-ispytanie-maneken-salizi.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=57088835",
+   "licenziya": "общественное достояние (фотограф не указан, снимок 1910-х годов) · Музей истории ВДВ · Госкаталог, рег. № 56812128"
+  },
+  "000480": {
+   "put": "muzei/izobreteniya/img/01-30-parashyut-rk2-muzey-vdv.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=38055907",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей истории ВДВ · Госкаталог"
+  },
+  "000481": {
+   "put": "muzei/izobreteniya/img/01-30-patent-1607-kotelnikov.jpg",
+   "istochnik": "https://new.fips.ru/registers-doc-view/fips_servlet?DB=RUPAT&DocNumber=1607&TypeFile=html",
+   "licenziya": "официальный документ — не объект авторского права (ст. 1259 ч. 6 ГК РФ) · ФИПС, открытые реестры"
+  },
+  "000482": {
+   "put": "muzei/izobreteniya/img/01-30-salizi-s-aerostata.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4676295",
+   "licenziya": "общественное достояние (фотограф не указан, снимок начала XX века) · Белгородский государственный историко-краеведческий музей · Госкаталог, рег. № 4647479"
+  },
+  "000483": {
+   "put": "muzei/izobreteniya/img/01-30-anoshchenko-issledovanie-parashyutov-1918.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13851668",
+   "licenziya": "общественное достояние (издание 1918 года) · Белгородский государственный литературный музей · Госкаталог"
+  },
+  "000484": {
+   "put": "muzei/izobreteniya/img/01-30-kniga-kotelnikova.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=53555618",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Военно-исторический музей Тихоокеанского флота · Госкаталог"
+  },
+  "000485": {
+   "put": "muzei/izobreteniya/img/01-31-gaponov-grehov-1985.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36413762",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Нижегородский государственный историко-архитектурный музей-заповедник · Госкаталог"
+  },
+  "000486": {
+   "put": "muzei/izobreteniya/video/day-31jan-girotron-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000487": {
+   "put": "muzei/izobreteniya/img/01-31-megavattnyy-girotron.jpg",
+   "istochnik": "https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Институт прикладной физики РАН"
+  },
+  "000488": {
+   "put": "muzei/izobreteniya/img/01-31-shema-nagreva-plazmy.jpg",
+   "istochnik": "https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Институт прикладной физики РАН"
+  },
+  "000489": {
+   "put": "muzei/izobreteniya/img/01-31-iter-v-gikome.jpg",
+   "istochnik": "https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Институт прикладной физики РАН"
+  },
+  "000490": {
+   "put": "muzei/izobreteniya/img/01-31-girotronnaya-pech-keramika.jpg",
+   "istochnik": "https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Институт прикладной физики РАН"
+  },
+  "000491": {
+   "put": "muzei/izobreteniya/img/01-31-soveshchanie-po-girotronam-2000.jpg",
+   "istochnik": "https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf",
+   "licenziya": "цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Институт прикладной физики РАН"
+  },
+  "000492": {
+   "put": "muzei/izobreteniya/img/01-31-goskatalog-5378576.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5378576",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ); Госкаталог музейного фонда РФ"
+  },
+  "000493": {
+   "put": "muzei/ne-sdayutsya/video/day-01jan-kolovrat-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000494": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-12931201.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12931201",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000495": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-14903630.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14903630",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000496": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-47351224.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=47351224",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000497": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-9187534.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9187534",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000498": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-27696306.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=27696306",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000499": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-12730594.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12730594",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000500": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-7580053.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7580053",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000501": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-14903632.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14903632",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000502": {
+   "put": "muzei/ne-sdayutsya/img/01-01-goskatalog-15105810.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15105810",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000503": {
+   "put": "muzei/ne-sdayutsya/merkuriy-aivazovsky-1892.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=54675768",
+   "licenziya": "общественное достояние (автор умер в 1900 году)"
+  },
+  "000504": {
+   "put": "muzei/ne-sdayutsya/video/day-02jan-merkuriy-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000505": {
+   "put": "muzei/ne-sdayutsya/img/01-02-goskatalog-11974987.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11974987",
+   "licenziya": "общественное достояние (гравюра 1831 года); при публикации — цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000506": {
+   "put": "muzei/ne-sdayutsya/img/01-02-gk-10747353-medal.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10747353",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000507": {
+   "put": "muzei/ne-sdayutsya/img/01-02-goskatalog-24083009.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24083009",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000508": {
+   "put": "muzei/ne-sdayutsya/img/01-02-goskatalog-8825220.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8825220",
+   "licenziya": "общественное достояние (произведение середины XIX века); при публикации — цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000509": {
+   "put": "muzei/ne-sdayutsya/merkuriy-aivazovsky-1848.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20764039",
+   "licenziya": "общественное достояние (автор умер в 1900 году)"
+  },
+  "000510": {
+   "put": "muzei/ne-sdayutsya/img/01-02-gk-16117881-pamyatnik.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16117881",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000511": {
+   "put": "muzei/ne-sdayutsya/img/01-02-goskatalog-10488450.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10488450",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000512": {
+   "put": "muzei/ne-sdayutsya/img/01-02-goskatalog-4976575.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4976575",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000513": {
+   "put": "muzei/ne-sdayutsya/img/01-02-goskatalog-7186532.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7186532",
+   "licenziya": "общественное достояние (Тройницкий умер в 1948, Нарбут в 1920 году)"
+  },
+  "000514": {
+   "put": "muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000515": {
+   "put": "muzei/ne-sdayutsya/img/01-03-goskatalog-3743748.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3743748",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000516": {
+   "put": "muzei/ne-sdayutsya/img/01-03-goskatalog-13617029.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13617029",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000517": {
+   "put": "muzei/ne-sdayutsya/img/01-03-goskatalog-12025903.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12025903",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000518": {
+   "put": "muzei/ne-sdayutsya/img/01-03-camo-58-977531-39-l780.jpg",
+   "istochnik": "ЦАМО, ф. 58, оп. 977531, д. 39, л. 780 (копия из базы «Память народа»)",
+   "licenziya": "официальный документ — не объект авторского права (подп. 1 п. 6 ст. 1259 ГК РФ)"
+  },
+  "000519": {
+   "put": "muzei/ne-sdayutsya/img/01-03-camo-58-977531-39-l778.jpg",
+   "istochnik": "ЦАМО, ф. 58, оп. 977531, д. 39, л. 778 (копия из базы «Память народа»)",
+   "licenziya": "официальный документ — не объект авторского права (подп. 1 п. 6 ст. 1259 ГК РФ)"
+  },
+  "000520": {
+   "put": "muzei/ne-sdayutsya/img/01-03-goskatalog-40548452.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=40548452",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000521": {
+   "put": "muzei/ne-sdayutsya/img/01-03-goskatalog-12008284.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12008284",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000522": {
+   "put": "muzei/ne-sdayutsya/img/01-03-goskatalog-42657991.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=42657991",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000523": {
+   "put": "muzei/ne-sdayutsya/kozelsk-miniatura-1-zahvat.jpg",
+   "istochnik": "Российская национальная библиотека, Отдел рукописей, Голицынский том Лицевого летописного свода, F.IV.225",
+   "licenziya": "общественное достояние (рукопись 1560–1570-х годов)"
+  },
+  "000524": {
+   "put": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000525": {
+   "put": "muzei/ne-sdayutsya/img/01-04-goskatalog-18134111.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18126558",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000526": {
+   "put": "muzei/ne-sdayutsya/img/01-04-goskatalog-11592978.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13401696",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000527": {
+   "put": "muzei/ne-sdayutsya/kozelsk-miniatura-2-vylazka.jpg",
+   "istochnik": "Российская национальная библиотека, Отдел рукописей, Голицынский том Лицевого летописного свода, F.IV.225",
+   "licenziya": "общественное достояние (рукопись 1560–1570-х годов)"
+  },
+  "000528": {
+   "put": "muzei/ne-sdayutsya/img/01-04-goskatalog-50086505.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=50086505",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000529": {
+   "put": "muzei/ne-sdayutsya/kozelsk-miniatura-3-step.jpg",
+   "istochnik": "Российская национальная библиотека, Отдел рукописей, Голицынский том Лицевого летописного свода, F.IV.225",
+   "licenziya": "общественное достояние (рукопись 1560–1570-х годов)"
+  },
+  "000530": {
+   "put": "muzei/ne-sdayutsya/img/01-04-goskatalog-22975986.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21619457",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000531": {
+   "put": "muzei/ne-sdayutsya/img/01-04-goskatalog-14177108.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14381980",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000532": {
+   "put": "muzei/ne-sdayutsya/img/01-04-goskatalog-35853661.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=449929",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000533": {
+   "put": "muzei/ne-sdayutsya/video/day-05jan-brest-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000534": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-31681951.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7180344",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000535": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-31681972.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7180313",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000536": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-59825683.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=48247470",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000537": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-31681953.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7180298",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000538": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-31681949.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7180316",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000539": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-31681967.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7180311",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000540": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-88548301.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9633096",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000541": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-43515850.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36334617",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000542": {
+   "put": "muzei/ne-sdayutsya/img/01-05-goskatalog-18115190.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4329441",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000543": {
+   "put": "muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000544": {
+   "put": "muzei/ne-sdayutsya/img/01-11-goskatalog-29173461.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=26042283",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000545": {
+   "put": "muzei/ne-sdayutsya/img/01-11-goskatalog-7710714.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10558560",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000546": {
+   "put": "muzei/ne-sdayutsya/img/01-11-goskatalog-2716617.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6490366",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000547": {
+   "put": "muzei/ne-sdayutsya/img/01-11-goskatalog-12968454.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14414389",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000548": {
+   "put": "muzei/ne-sdayutsya/img/01-11-goskatalog-2250954.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6003340",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000549": {
+   "put": "muzei/ne-sdayutsya/img/01-11-goskatalog-9843981.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5624945",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000550": {
+   "put": "muzei/ne-sdayutsya/img/01-12-goskatalog-16614138.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17023834",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000551": {
+   "put": "muzei/ne-sdayutsya/video/day-12jan-matrosov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000552": {
+   "put": "muzei/ne-sdayutsya/img/01-12-goskatalog-72969011.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=57550601",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000553": {
+   "put": "muzei/ne-sdayutsya/img/01-12-goskatalog-27188459.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24627099",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000554": {
+   "put": "muzei/ne-sdayutsya/img/01-12-goskatalog-20282401.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19686787",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000555": {
+   "put": "muzei/ne-sdayutsya/img/01-12-goskatalog-23728670.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22129863",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000556": {
+   "put": "muzei/ne-sdayutsya/img/01-12-goskatalog-42348832.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18580185",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000557": {
+   "put": "muzei/ne-sdayutsya/video/day-13jan-rogozov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000558": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-70379047.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70379047",
+   "licenziya": "цитирование, ст. 1274 ГК РФ"
+  },
+  "000559": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-70379037.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70379037",
+   "licenziya": "цитирование, ст. 1274 ГК РФ, с указанием музея и Госкаталога"
+  },
+  "000560": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-70379039.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70379039",
+   "licenziya": "цитирование, ст. 1274 ГК РФ"
+  },
+  "000561": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-70379032.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70379032",
+   "licenziya": "цитирование, ст. 1274 ГК РФ, с указанием музея и Госкаталога"
+  },
+  "000562": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-18801358.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18801358",
+   "licenziya": "цитирование, ст. 1274 ГК РФ; автор Требин Ю. П.; дата съёмки в карточке не указана"
+  },
+  "000563": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-23405058.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23405058",
+   "licenziya": "цитирование, ст. 1274 ГК РФ; автор не указан"
+  },
+  "000564": {
+   "put": "muzei/ne-sdayutsya/img/01-13-goskatalog-70379030.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=70379030",
+   "licenziya": "цитирование, ст. 1274 ГК РФ, с указанием музея и Госкаталога"
+  },
+  "000565": {
+   "put": "muzei/ne-sdayutsya/video/day-14jan-vir-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000566": {
+   "put": "muzei/ne-sdayutsya/img/01-14-goskatalog-57423967.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=57423967",
+   "licenziya": "фотограф Романович Э. К.; ст. 1274 ГК РФ, с указанием автора и музея (водяной знак ГМИ СПб в кадре)"
+  },
+  "000567": {
+   "put": "muzei/ne-sdayutsya/img/01-14-goskatalog-49620809.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=49620809",
+   "licenziya": "автор снимка в карточке не указан; ст. 1274 ГК РФ, с указанием музея"
+  },
+  "000568": {
+   "put": "muzei/ne-sdayutsya/img/01-14-goskatalog-58065377.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=58065377",
+   "licenziya": "издание 1943 года; автор-составитель Лехнович умер в 1989 году, поэтому авторское право на текст формально действует до 2059 года, показ по ст. 1274 ГК РФ (цитирование в информационных целях) с указанием автора и музея; на кадре служебная шкала цвета и водяной знак ГМИ СПб — кадрировать не надо"
+  },
+  "000569": {
+   "put": "muzei/ne-sdayutsya/img/01-14-goskatalog-14842094.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=14842094",
+   "licenziya": "автор не указан; снимок 1947 года; ст. 1274 ГК РФ, с указанием музея (водяной знак «© ГМИ СПб»)"
+  },
+  "000570": {
+   "put": "muzei/ne-sdayutsya/img/01-14-goskatalog-23840781.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23840781",
+   "licenziya": "общественное достояние (служебная телеграмма 1944 года, текст без творческого характера; проверено по изображению — на бланке видны штемпель 25.1.44 и пометка «получено 27/I-44 г.»)"
+  },
+  "000571": {
+   "put": "muzei/ne-sdayutsya/img/01-14-goskatalog-11459132.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11459132",
+   "licenziya": "служебная переписка 1942 года; ст. 1274 ГК РФ, с указанием музея"
+  },
+  "000572": {
+   "put": "muzei/ne-sdayutsya/img/01-15-goskatalog-59271092.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59271092",
+   "licenziya": "автор неизвестен, 1934 — общественное достояние"
+  },
+  "000573": {
+   "put": "muzei/ne-sdayutsya/video/day-15jan-chelyuskincy-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000574": {
+   "put": "muzei/ne-sdayutsya/img/01-15-goskatalog-13500766.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13500766",
+   "licenziya": "автор неизвестен, 1934 — общественное достояние"
+  },
+  "000575": {
+   "put": "muzei/ne-sdayutsya/img/01-15-goskatalog-5567616.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5567616",
+   "licenziya": "«Союзфото», 1934, авторы не указаны — общественное достояние"
+  },
+  "000576": {
+   "put": "muzei/ne-sdayutsya/img/01-15-goskatalog-5567103.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5567103",
+   "licenziya": "«Союзфото», 1934, авторы не указаны — общественное достояние"
+  },
+  "000577": {
+   "put": "muzei/ne-sdayutsya/img/01-15-goskatalog-45213501.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=45213501",
+   "licenziya": "автор не указан, 1934 — общественное достояние"
+  },
+  "000578": {
+   "put": "muzei/ne-sdayutsya/img/01-15-goskatalog-17228307.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17466565",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000579": {
+   "put": "muzei/ne-sdayutsya/video/day-16jan-karbyshev-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000580": {
+   "put": "muzei/ne-sdayutsya/img/01-16-goskatalog-31774402.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=31774402",
+   "licenziya": "предмет, фото музея"
+  },
+  "000581": {
+   "put": "muzei/ne-sdayutsya/img/01-16-goskatalog-6008180.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6008180",
+   "licenziya": "автор не указан, 1975; цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000582": {
+   "put": "muzei/ne-sdayutsya/img/01-16-goskatalog-27354483.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=27354483",
+   "licenziya": "предмет, фото музея"
+  },
+  "000583": {
+   "put": "muzei/ne-sdayutsya/img/01-16-goskatalog-30367529.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30367529",
+   "licenziya": "автор не указан, 1957; цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000584": {
+   "put": "muzei/ne-sdayutsya/img/01-16-goskatalog-23853560.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23853560",
+   "licenziya": "фотограф не указан, снимок довоенный; цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000585": {
+   "put": "muzei/ne-sdayutsya/img/01-16-goskatalog-64945955.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=51945505",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000586": {
+   "put": "muzei/ne-sdayutsya/video/day-17jan-maresyev-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000587": {
+   "put": "muzei/ne-sdayutsya/img/01-17-goskatalog-6899878.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6899878",
+   "licenziya": "автор указан — И. Акуленко, годы жизни не установлены; цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000588": {
+   "put": "muzei/ne-sdayutsya/img/01-17-goskatalog-6004591.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6004591",
+   "licenziya": "автор не указан, 1943 — общественное достояние"
+  },
+  "000589": {
+   "put": "muzei/ne-sdayutsya/img/01-17-goskatalog-9691804.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9691804",
+   "licenziya": "автор не указан, 1968; цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000590": {
+   "put": "muzei/ne-sdayutsya/img/01-17-goskatalog-6898010.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=6898010",
+   "licenziya": "автор указан — Акуленко, годы жизни не установлены; цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  },
+  "000591": {
+   "put": "muzei/ne-sdayutsya/img/01-17-goskatalog-23769926.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22155888",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000592": {
+   "put": "muzei/ne-sdayutsya/img/01-17-goskatalog-26560702.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24192884",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000593": {
+   "put": "muzei/ne-sdayutsya/video/day-18jan-kuznetsov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000594": {
+   "put": "muzei/ne-sdayutsya/img/01-18-goskatalog-36593161.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36593161",
+   "licenziya": "неизвестный фотограф, 1940-е — общественное достояние"
+  },
+  "000595": {
+   "put": "muzei/ne-sdayutsya/img/01-18-goskatalog-43561179.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=43561179",
+   "licenziya": "автор не указан, 1980 — не общественное достояние по сроку; публикация с указанием музея, нужно проверить условия"
+  },
+  "000596": {
+   "put": "muzei/ne-sdayutsya/img/01-18-goskatalog-55403032.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=55403032",
+   "licenziya": "автор «неизвестно», дата не указана — права нужно проверить"
+  },
+  "000597": {
+   "put": "muzei/ne-sdayutsya/img/01-18-goskatalog-36593338.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36593338",
+   "licenziya": "неизвестный фотограф, 1940-е — общественное достояние"
+  },
+  "000598": {
+   "put": "muzei/ne-sdayutsya/img/01-18-goskatalog-41957086.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41957086",
+   "licenziya": "документ 1940-х — общественное достояние"
+  },
+  "000599": {
+   "put": "muzei/ne-sdayutsya/img/01-18-goskatalog-67326435.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=53516498",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000600": {
+   "put": "muzei/ne-sdayutsya/img/01-19-goskatalog-21822331.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21822331",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000601": {
+   "put": "muzei/ne-sdayutsya/video/day-19jan-k19-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000602": {
+   "put": "muzei/ne-sdayutsya/img/01-19-goskatalog-21493970.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21493970",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000603": {
+   "put": "muzei/ne-sdayutsya/img/01-19-goskatalog-10664312.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=10664312",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000604": {
+   "put": "muzei/ne-sdayutsya/img/01-19-goskatalog-51367656.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=51367656",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000605": {
+   "put": "muzei/ne-sdayutsya/img/01-19-goskatalog-15587629.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15587629",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000606": {
+   "put": "muzei/ne-sdayutsya/img/01-19-goskatalog-37249620.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=37249620",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000607": {
+   "put": "muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000608": {
+   "put": "muzei/ne-sdayutsya/img/01-20-goskatalog-1711815.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1711815",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000609": {
+   "put": "muzei/ne-sdayutsya/img/01-20-goskatalog-28058864.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28058864",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000610": {
+   "put": "muzei/ne-sdayutsya/img/01-20-goskatalog-18831642.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18831642",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000611": {
+   "put": "muzei/ne-sdayutsya/img/01-20-goskatalog-58797912.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=47488308",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000612": {
+   "put": "muzei/ne-sdayutsya/img/01-20-goskatalog-15769529.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16404425",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000613": {
+   "put": "muzei/ne-sdayutsya/img/01-20-goskatalog-18393903.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3975138",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000614": {
+   "put": "muzei/ne-sdayutsya/video/day-21jan-dubinin-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000615": {
+   "put": "muzei/ne-sdayutsya/img/01-21-goskatalog-30939166.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=30939166",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000616": {
+   "put": "muzei/ne-sdayutsya/img/01-21-goskatalog-18448984.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18448984",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000617": {
+   "put": "muzei/ne-sdayutsya/img/01-21-goskatalog-41803713.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41803713",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000618": {
+   "put": "muzei/ne-sdayutsya/img/01-21-goskatalog-17092755.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17092755",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000619": {
+   "put": "muzei/ne-sdayutsya/img/01-21-goskatalog-12199397.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12199397",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000620": {
+   "put": "muzei/ne-sdayutsya/img/01-21-goskatalog-20780144.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20021963",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000621": {
+   "put": "muzei/ne-sdayutsya/video/day-22jan-6-rota-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000622": {
+   "put": "muzei/ne-sdayutsya/img/01-22-goskatalog-15494891.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16203370",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000623": {
+   "put": "muzei/ne-sdayutsya/img/01-22-goskatalog-17762914.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17850119",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000624": {
+   "put": "muzei/ne-sdayutsya/img/01-22-goskatalog-17762936.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17850129",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000625": {
+   "put": "muzei/ne-sdayutsya/img/01-22-goskatalog-24872120.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20536278",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000626": {
+   "put": "muzei/ne-sdayutsya/img/01-22-goskatalog-24872152.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21341321",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000627": {
+   "put": "muzei/ne-sdayutsya/img/01-22-goskatalog-23329138.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=21843578",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000628": {
+   "put": "muzei/ne-sdayutsya/video/day-23jan-rodionov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000629": {
+   "put": "muzei/ne-sdayutsya/img/01-23-goskatalog-20078519.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=19529119",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000630": {
+   "put": "muzei/ne-sdayutsya/img/01-23-goskatalog-74425071.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=58555180",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000631": {
+   "put": "muzei/ne-sdayutsya/img/01-23-goskatalog-83071309.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=65037562",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000632": {
+   "put": "muzei/ne-sdayutsya/img/01-23-goskatalog-23907705.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22255102",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000633": {
+   "put": "muzei/ne-sdayutsya/img/01-23-goskatalog-27491718.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=24841834",
+   "licenziya": "ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника"
+  },
+  "000634": {
+   "put": "muzei/ne-sdayutsya/img/01-23-goskatalog-60921077.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=48958643",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000635": {
+   "put": "muzei/ne-sdayutsya/video/day-24jan-shipka-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000636": {
+   "put": "muzei/ne-sdayutsya/img/01-24-goskatalog-32451745.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=28330289",
+   "licenziya": "общественное достояние (произведение XIX века)"
+  },
+  "000637": {
+   "put": "muzei/ne-sdayutsya/img/01-24-goskatalog-17180247.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17428956",
+   "licenziya": "общественное достояние (произведение XIX века)"
+  },
+  "000638": {
+   "put": "muzei/ne-sdayutsya/img/01-24-goskatalog-17180148.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17428863",
+   "licenziya": "общественное достояние (произведение XIX века)"
+  },
+  "000639": {
+   "put": "muzei/ne-sdayutsya/img/01-24-goskatalog-82886216.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=64923827",
+   "licenziya": "общественное достояние (произведение XIX века)"
+  },
+  "000640": {
+   "put": "muzei/ne-sdayutsya/img/01-24-goskatalog-63495417.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=44463764",
+   "licenziya": "общественное достояние (произведение XIX века)"
+  },
+  "000641": {
+   "put": "muzei/ne-sdayutsya/img/01-24-goskatalog-87920360.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9390078",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000642": {
+   "put": "muzei/ne-sdayutsya/img/01-25-kremlin-6H6Ch6te.jpg",
+   "istochnik": "http://www.kremlin.ru/events/councils/52941",
+   "licenziya": "CC BY 4.0, «Фото: kremlin.ru»"
+  },
+  "000643": {
+   "put": "muzei/ne-sdayutsya/video/day-25jan-nurbagandov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000644": {
+   "put": "muzei/ne-sdayutsya/img/01-25-kremlin-OOj6r2wy.jpg",
+   "istochnik": "http://www.kremlin.ru/events/councils/52941",
+   "licenziya": "CC BY 4.0, «Фото: kremlin.ru»"
+  },
+  "000645": {
+   "put": "muzei/ne-sdayutsya/img/01-25-kremlin-VznZldCU.jpg",
+   "istochnik": "http://www.kremlin.ru/events/councils/52941",
+   "licenziya": "материалы kremlin.ru — CC BY 4.0, с указанием «Фото: kremlin.ru»"
+  },
+  "000646": {
+   "put": "muzei/ne-sdayutsya/img/01-25-kremlin-5ALGaqOu.jpg",
+   "istochnik": "http://www.kremlin.ru/events/councils/52941",
+   "licenziya": "CC BY 4.0, «Фото: kremlin.ru»"
+  },
+  "000647": {
+   "put": "muzei/ne-sdayutsya/img/01-25-kremlin-lBnQCP9w.jpg",
+   "istochnik": "http://www.kremlin.ru/events/president/news/52933",
+   "licenziya": "CC BY 4.0, «Фото: kremlin.ru»"
+  },
+  "000648": {
+   "put": "muzei/ne-sdayutsya/img/01-25-goskatalog-23511306.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=23511306",
+   "licenziya": "цитирование, ст. 1274 ГК РФ, с указанием музея"
+  },
+  "000649": {
+   "put": "muzei/ne-sdayutsya/video/day-26jan-leonov-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000650": {
+   "put": "muzei/ne-sdayutsya/img/01-26-goskatalog-36019420.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36019420",
+   "licenziya": "ст. 1274 ГК РФ"
+  },
+  "000651": {
+   "put": "muzei/ne-sdayutsya/img/01-26-goskatalog-57122082.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=57122082",
+   "licenziya": "ст. 1274 ГК РФ"
+  },
+  "000652": {
+   "put": "muzei/ne-sdayutsya/img/01-26-goskatalog-4973845.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=4973845",
+   "licenziya": "ст. 1274 ГК РФ"
+  },
+  "000653": {
+   "put": "muzei/ne-sdayutsya/img/01-26-goskatalog-12781470.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12781470",
+   "licenziya": "ст. 1274 ГК РФ; датировка в карточке «1960-е гг.»"
+  },
+  "000654": {
+   "put": "muzei/ne-sdayutsya/img/01-26-goskatalog-76017667.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59638031",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000655": {
+   "put": "muzei/ne-sdayutsya/img/01-26-goskatalog-18900665.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18655968",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000656": {
+   "put": "muzei/ne-sdayutsya/video/day-27jan-tuman-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000657": {
+   "put": "muzei/ne-sdayutsya/img/01-27-goskatalog-6463595.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=9728870",
+   "licenziya": "цитирование, ст. 1274 ГК РФ; скульптор в Госкаталоге «неизвестный»"
+  },
+  "000658": {
+   "put": "muzei/ne-sdayutsya/img/01-27-goskatalog-9866441.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7782304",
+   "licenziya": "цитирование, ст. 1274 ГК РФ, с указанием художника, музея и Госкаталога. Художник П. Павлинов: годы жизни не проверял, общественным достоянием не считать."
+  },
+  "000659": {
+   "put": "muzei/ne-sdayutsya/img/01-27-goskatalog-23850632.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=22213331",
+   "licenziya": "цитирование, ст. 1274 ГК РФ, с указанием музея и Госкаталога; автор не указан"
+  },
+  "000660": {
+   "put": "muzei/ne-sdayutsya/img/01-27-goskatalog-14641077.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15611564",
+   "licenziya": "цитирование, ст. 1274 ГК РФ; автор не указан"
+  },
+  "000661": {
+   "put": "muzei/ne-sdayutsya/img/01-27-goskatalog-14641038.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=15611528",
+   "licenziya": "цитирование, ст. 1274 ГК РФ; автор не указан"
+  },
+  "000662": {
+   "put": "muzei/ne-sdayutsya/img/01-27-goskatalog-58218142.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=47070825",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000663": {
+   "put": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000664": {
+   "put": "muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-slide13.jpg",
+   "istochnik": "https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/",
+   "licenziya": "ст. 1274 ГК РФ, с указанием музеев; документ 1942 г., авторы-подпольщики погибли в 1943 г."
+  },
+  "000665": {
+   "put": "muzei/ne-sdayutsya/img/01-28-victorymuseum-b1-slide31.jpg",
+   "istochnik": "https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/",
+   "licenziya": "ст. 1274 ГК РФ, с указанием музеев"
+  },
+  "000666": {
+   "put": "muzei/ne-sdayutsya/img/01-28-victorymuseum-b1-slide23.jpg",
+   "istochnik": "https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/",
+   "licenziya": "ст. 1274 ГК РФ; автор снимка не указан"
+  },
+  "000667": {
+   "put": "muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-pict1.jpg",
+   "istochnik": "https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/",
+   "licenziya": "цитирование в информационных целях с указанием Музея Победы и музея «Молодая гвардия» (ст. 1274 ГК РФ); автор снимка не указан"
+  },
+  "000668": {
+   "put": "muzei/ne-sdayutsya/img/01-28-victorymuseum-b3-slide12.jpg",
+   "istochnik": "https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/",
+   "licenziya": "ст. 1274 ГК РФ, с указанием музеев"
+  },
+  "000669": {
+   "put": "muzei/ne-sdayutsya/img/01-28-goskatalog-2237034.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992513",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000670": {
+   "put": "muzei/ne-sdayutsya/img/01-28-goskatalog-11494203.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=13331849",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000671": {
+   "put": "muzei/ne-sdayutsya/img/01-28-goskatalog-5159217.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=8767824",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000672": {
+   "put": "muzei/ne-sdayutsya/img/01-28-goskatalog-2236820.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992299",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000673": {
+   "put": "muzei/ne-sdayutsya/img/01-28-goskatalog-2236913.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992392",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000674": {
+   "put": "muzei/ne-sdayutsya/img/01-28-goskatalog-2237049.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5992528",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000675": {
+   "put": "muzei/ne-sdayutsya/video/day-29jan-susanin-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000676": {
+   "put": "muzei/ne-sdayutsya/img/01-29-goskatalog-75491963.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=59245648",
+   "licenziya": "фотография 1878 г., автор неизвестен — общественное достояние по сроку; Госкаталог лицензию не указывает"
+  },
+  "000677": {
+   "put": "muzei/ne-sdayutsya/img/01-29-goskatalog-731259.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=3910611",
+   "licenziya": "НЕ ЯСНЫ — год смерти А. Л. Соколовой не найден. Можно только цитировать с указанием музея (ст. 1274 ГК РФ). Если нужна замена — костромские фонды и pastvu не смотрел, не хватило вызовов"
+  },
+  "000678": {
+   "put": "muzei/ne-sdayutsya/img/01-29-goskatalog-15330002.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=16081533",
+   "licenziya": "общественное достояние (В. Ф. Тимм умер в 1895 г.)"
+  },
+  "000679": {
+   "put": "muzei/ne-sdayutsya/img/01-29-goskatalog-18541124.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=18406190",
+   "licenziya": "автор не указан, издание 1909–1917 гг. — общественное достояние по сроку; лицензии в Госкаталоге нет"
+  },
+  "000680": {
+   "put": "muzei/ne-sdayutsya/img/01-29-goskatalog-17148616.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17404495",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000681": {
+   "put": "muzei/ne-sdayutsya/img/01-29-goskatalog-9952937.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=12213578",
+   "licenziya": "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"
+  },
+  "000682": {
+   "put": "muzei/ne-sdayutsya/img/01-30-goskatalog-1413481.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=1413481",
+   "licenziya": "цитирование в информационных и учебных целях с указанием музея и Госкаталога (ст. 1274 ГК РФ); автор указан (Зуфаров В.А.), авторские права могут действовать — при крупном показе лучше получить разрешение музея"
+  },
+  "000683": {
+   "put": "muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000684": {
+   "put": "muzei/ne-sdayutsya/img/01-30-goskatalog-20046324.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20046324",
+   "licenziya": "цитирование с указанием музея и Госкаталога (ст. 1274 ГК РФ)"
+  },
+  "000685": {
+   "put": "muzei/ne-sdayutsya/img/01-30-goskatalog-41616672.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=41616672",
+   "licenziya": "цитирование с указанием музея и Госкаталога (ст. 1274 ГК РФ)"
+  },
+  "000686": {
+   "put": "muzei/ne-sdayutsya/img/01-30-goskatalog-17377493.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=17377493",
+   "licenziya": "цитирование с указанием музея и Госкаталога (ст. 1274 ГК РФ); автор снимка в Госкаталоге не указан"
+  },
+  "000687": {
+   "put": "muzei/ne-sdayutsya/img/01-30-goskatalog-11514652.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11514652",
+   "licenziya": "цитирование с указанием музея и Госкаталога (ст. 1274 ГК РФ); на картинке только обложка, разворота в карточке нет"
+  },
+  "000688": {
+   "put": "muzei/ne-sdayutsya/img/01-30-goskatalog-20103802.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=20103802",
+   "licenziya": "цитирование с указанием музея и Госкаталога (ст. 1274 ГК РФ)"
+  },
+  "000689": {
+   "put": "muzei/ne-sdayutsya/img/01-31-goskatalog-7736023.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=7736023",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ); автор — Фриц Кремер (немецкий скульптор, автор памятника в Бухенвальде)"
+  },
+  "000690": {
+   "put": "muzei/ne-sdayutsya/video/day-31jan-borzenko-poster.jpg",
+   "istochnik": "",
+   "licenziya": ""
+  },
+  "000691": {
+   "put": "muzei/ne-sdayutsya/img/01-31-goskatalog-5879068.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5879068",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ); автор — А. Н. Ханько"
+  },
+  "000692": {
+   "put": "muzei/ne-sdayutsya/img/01-31-goskatalog-36173291.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36173291",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ); автор — Р. Ф. Ефименко; на рисунке есть немецкая надпись ворот — в подписи её не повторяем"
+  },
+  "000693": {
+   "put": "muzei/ne-sdayutsya/img/01-31-goskatalog-36644928.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=36644928",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ); автор снимка в Госкаталоге не указан"
+  },
+  "000694": {
+   "put": "muzei/ne-sdayutsya/img/01-31-goskatalog-5878363.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=5878363",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ); автор — А. Н. Ханько"
+  },
+  "000695": {
+   "put": "muzei/ne-sdayutsya/img/01-31-goskatalog-11843876.jpg",
+   "istochnik": "https://goskatalog.ru/portal/#/collections?id=11843876",
+   "licenziya": "цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)"
+  }
+ }
+}
