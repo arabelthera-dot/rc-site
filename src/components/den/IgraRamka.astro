@@ -1,0 +1,11 @@
+---
+// Блок игры дня из поля igra карточки (Р635): рамка src/lib/igra-ramka.mjs + движок механики public/assets/igry/<mehanika>.js.
+// prefix — путь до public/assets от страницы (у страниц дня — ../../assets/). Нет igra — блока нет.
+import { ramkaHtml, skriptyRamki, RAMKA_CSS } from '../../lib/igra-ramka.mjs';
+import type { IgraDannymi } from '../../lib/igry-mehaniki';
+interface Props { igra?: IgraDannymi; prefix?: string }
+const { igra, prefix = '../../assets/' } = Astro.props;
+---
+{igra && <link rel="stylesheet" href={`${prefix}${RAMKA_CSS}.css`} />}
+{igra && <Fragment set:html={ramkaHtml(igra)} />}
+{igra && skriptyRamki(igra).map((s) => <script is:inline src={`${prefix}${s}`}></script>)}
