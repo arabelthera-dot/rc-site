@@ -1,5 +1,5 @@
 {
-  "zachem": "Форма карточки дня (Р631, Р635). na_stranicu — поле выводится на страницу; obyazatelno_dlya_gotov — без него день со status gotov не собирается. Схема — src/content.config.ts, образец — docs/forma-dnya-obrazec.json.",
+  "zachem": "Форма карточки дня (Р631, Р635). na_stranicu — поле выводится на страницу; obyazatelno_dlya_gotov — без него день со status gotov не собирается. Номера punkt — пункты стандарта дня docs/standart-dnya.md (Р660). Схема — src/content.config.ts и src/lib/forma-dnya.mjs, образец — docs/forma-dnya-obrazec.json.",
   "polya": [
     {
       "imya": "status",
@@ -41,7 +41,7 @@
       "chto": "дата по старому стилю, если событие до 1918 года",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "4"
+      "punkt": "5"
     },
     {
       "imya": "data_uslovnaya",
@@ -55,42 +55,42 @@
       "chto": "что случилось — одной строкой",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "5"
+      "punkt": "3"
     },
     {
       "imya": "god",
       "chto": "год события числом",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "6"
+      "punkt": "4"
     },
     {
       "imya": "god_tochnost",
       "chto": "точность года: точно, около, десятилетие, век",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "6"
+      "punkt": "4"
     },
     {
       "imya": "god_pokaza",
       "chto": "год, в который день показывается",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "8"
+      "punkt": "6"
     },
     {
       "imya": "ves",
       "chto": "вес дня: главное, второе, обычное",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "9"
+      "punkt": "8"
     },
     {
       "imya": "tyazhelaya_tema",
       "chto": "тяжёлая тема дня (война, казнь, голод, репрессии, катастрофа, гибель); пусто — нет",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "13"
+      "punkt": "9"
     },
     {
       "imya": "fakty",
@@ -104,7 +104,7 @@
       "chto": "номер факта внутри дня",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "14"
+      "punkt": "13"
     },
     {
       "imya": "fakty.tekst",
@@ -118,28 +118,28 @@
       "chto": "номер источника факта из istochniki",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "15"
+      "punkt": "14"
     },
     {
       "imya": "fakty.dlya_voprosa",
       "chto": "факт годится для вопроса игры",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "16"
+      "punkt": "18"
     },
     {
       "imya": "fakty.otvet",
       "chto": "ответ на вопрос по факту",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "16"
+      "punkt": "18"
     },
     {
       "imya": "fakty.otvet_edinstvennyj",
       "chto": "ответ единственный — проверено",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "16"
+      "punkt": "18"
     },
     {
       "imya": "istochniki",
@@ -153,63 +153,63 @@
       "chto": "база источника из списка разрешённых (Р136, Р469); Википедия запрещена (Р90)",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "17"
+      "punkt": "15"
     },
     {
       "imya": "citaty",
       "chto": "цитаты: кто, где, текст",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "18"
+      "punkt": "16"
     },
     {
       "imya": "velichina_chislo",
       "chto": "главное число дня",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "19"
+      "punkt": "17"
     },
     {
       "imya": "velichina_edinica",
       "chto": "единица главного числа",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "19"
+      "punkt": "17"
     },
     {
       "imya": "velichina_chto",
       "chto": "что измерено главным числом",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "19"
+      "punkt": "17"
     },
     {
       "imya": "voinskaya_chast",
       "chto": "воинская часть",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "20"
+      "punkt": "19"
     },
     {
       "imya": "operaciya",
       "chto": "военная операция",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "20"
+      "punkt": "19"
     },
     {
       "imya": "front",
       "chto": "фронт",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "20"
+      "punkt": "19"
     },
     {
       "imya": "etiketka_oblozhki",
       "chto": "этикетка обложки, от одной до трёх строк",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "21"
+      "punkt": "24"
     },
     {
       "imya": "images",
@@ -230,7 +230,7 @@
       "chto": "паспорт прав картинки: автор, годы, сделано машиной, откуда",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "24"
+      "punkt": "20"
     },
     {
       "imya": "images.prava.otkuda",
@@ -244,70 +244,70 @@
       "chto": "картинка сделана машиной; совпадает с generated",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
-      "punkt": "24"
+      "punkt": "20"
     },
     {
       "imya": "images.nomer_predmeta",
       "chto": "номер предмета в музее или Госкаталоге",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "27"
+      "punkt": "21"
     },
     {
       "imya": "images.nomer_snimka",
       "chto": "номер снимка в базе",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "27"
+      "punkt": "21"
     },
     {
       "imya": "images.hranitel",
       "chto": "кто хранит подлинник",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "28"
+      "punkt": "21"
     },
     {
       "imya": "images.podpis_chto",
       "chto": "подпись: что изображено",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "29"
+      "punkt": "23"
     },
     {
       "imya": "images.podpis_gde",
       "chto": "подпись: где",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "29"
+      "punkt": "23"
     },
     {
       "imya": "images.podpis_kogda",
       "chto": "подпись: когда",
       "na_stranicu": true,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "29"
+      "punkt": "23"
     },
     {
       "imya": "images.podlinnik",
       "chto": "где лежит подлинник файла и откуда скачан",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "27"
+      "punkt": "28"
     },
     {
       "imya": "images.simvolika_proverena",
       "chto": "символика на картинке проверена; в военном дне обязательно",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "28"
+      "punkt": "27"
     },
     {
       "imya": "images.svyashchennoe",
       "chto": "на картинке святыня — обращаться бережно",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
-      "punkt": "28"
+      "punkt": "29"
     },
     {
       "imya": "slovar",
