@@ -1,0 +1,922 @@
+{
+ "_chto": "Закрытый список баз для поля «baza» источника (пункт 15). Собран tools/spravochniki.py bazy из ~/projects/russian-civilization/docs/registries/sources.json; руками не править — добавлять базу в реестр.",
+ "razresheny": [
+  {
+   "id": "prlib",
+   "name": "Президентская библиотека",
+   "url": "https://www.prlib.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-25"
+  },
+  {
+   "id": "pastvu",
+   "name": "PastVu (архив исторических фото по координатам)",
+   "url": "https://pastvu.com/api2?method=photo.giveNearestPhotos&params=%7B%22geo%22%3A%5B55.75%2C37.62%5D%2C%22limit%22%3A1%7D",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rusneb",
+   "name": "НЭБ — Национальная электронная библиотека",
+   "url": "https://rusneb.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "goskatalog",
+   "name": "Госкаталог Музейного фонда РФ",
+   "url": "https://goskatalog.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "cyberleninka",
+   "name": "КиберЛенинка",
+   "url": "https://cyberleninka.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "shpl",
+   "name": "ГПИБ — Историческая библиотека (elib.shpl.ru)",
+   "url": "https://elib.shpl.ru/ru/nodes/1",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "nekrasovka",
+   "name": "Электронекрасовка",
+   "url": "https://electro.nekrasovka.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rsl",
+   "name": "РГБ — Российская государственная библиотека",
+   "url": "https://search.rsl.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "nlr",
+   "name": "РНБ, электронная библиотека «Вивальди»",
+   "url": "https://vivaldi.nlr.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "histrf",
+   "name": "История.РФ",
+   "url": "https://histrf.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "docs_rio",
+   "name": "Документы РИО (docs.historyrussia.org)",
+   "url": "https://docs.historyrussia.org/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "garf",
+   "name": "ГА РФ (statearchive.ru)",
+   "url": "https://statearchive.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "culture_rf",
+   "name": "Культура.РФ",
+   "url": "https://www.culture.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "vyatskoe_official",
+   "name": "Историко-культурный комплекс «Вятское»",
+   "url": "https://vyatskoe-selo.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-30"
+  },
+  {
+   "id": "visit_yaroslavia",
+   "name": "Туристический портал Ярославской области",
+   "url": "https://visityaroslavia.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-30"
+  },
+  {
+   "id": "museum_ru",
+   "name": "Музеи России (museum.ru)",
+   "url": "http://www.museum.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "fips",
+   "name": "ФИПС — реестры и образы патентов",
+   "url": "https://www1.fips.ru/iiss/",
+   "strana": "Россия",
+   "status": "robots_forbidden",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "polytech",
+   "name": "Политехнический музей, фонды",
+   "url": "https://polymus.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "cosmo_museum",
+   "name": "Музей космонавтики",
+   "url": "https://kosmo-museum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rgantd",
+   "name": "РГАНТД — архив научно-технической документации",
+   "url": "https://rgantd.ru/",
+   "strana": "Россия",
+   "status": "ru_cert",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rgo",
+   "name": "Русское географическое общество (rgo.ru)",
+   "url": "https://www.rgo.ru/ru",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "elib_rgo",
+   "name": "Библиотека РГО (elib.rgo.ru)",
+   "url": "https://elib.rgo.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "rgada",
+   "name": "РГАДА (rgada.info)",
+   "url": "http://rgada.info/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "tretyakov",
+   "name": "Третьяковская галерея (my.tretyakov.ru)",
+   "url": "https://my.tretyakov.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rusmuseum",
+   "name": "Русский музей",
+   "url": "https://rusmuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "pushkinskijdom",
+   "name": "Пушкинский Дом (ИРЛИ РАН)",
+   "url": "https://pushkinskijdom.ru/",
+   "strana": "Россия",
+   "status": "ru_cert",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "shm_catalog",
+   "name": "Каталог ГИМ (catalog.shm.ru)",
+   "url": "https://catalog.shm.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "muar",
+   "name": "МУАР — Музей архитектуры им. Щусева",
+   "url": "https://muar.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "kulturnoe_nasledie",
+   "name": "Реестр объектов культурного наследия (opendata Минкультуры)",
+   "url": "https://opendata.mkrf.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "arts_museum",
+   "name": "ГМИИ им. А.С. Пушкина",
+   "url": "https://www.arts-museum.ru/",
+   "strana": "Россия",
+   "status": "browser_only",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "pushkinmuseum_art",
+   "name": "ГМИИ — коллекция онлайн",
+   "url": "https://pushkinmuseum.art/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "shm",
+   "name": "Государственный исторический музей",
+   "url": "https://shm.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "kreml",
+   "name": "Музеи Московского Кремля",
+   "url": "https://www.kreml.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "gctm",
+   "name": "Театральный музей им. Бахрушина",
+   "url": "https://www.gctm.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "kunstkamera",
+   "name": "Кунсткамера (МАЭ РАН)",
+   "url": "https://kunstkamera.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "darwin_museum",
+   "name": "Дарвиновский музей",
+   "url": "https://www.darwinmuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "mmoma",
+   "name": "Московский музей современного искусства",
+   "url": "https://www.mmoma.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "tula_arms",
+   "name": "Тульский музей оружия",
+   "url": "https://www.museum-tula.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "rustelecom",
+   "name": "Музей связи им. Попова (Ростелеком)",
+   "url": "https://rustelecom-museum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "navalmuseum",
+   "name": "Центральный военно-морской музей",
+   "url": "https://www.navalmuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "ar_culture",
+   "name": "Артефакт / AR Культура",
+   "url": "https://ar.culture.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "hermitage",
+   "name": "Государственный Эрмитаж",
+   "url": "https://www.hermitagemuseum.org/",
+   "strana": "Россия",
+   "status": "ru_cert",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "wayback",
+   "name": "Веб-архив (Wayback Machine)",
+   "url": "https://web.archive.org/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rvio",
+   "name": "РВИО — Российское военно-историческое общество",
+   "url": "https://rvio.histrf.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rio",
+   "name": "РИО — Российское историческое общество",
+   "url": "https://historyrussia.org/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "victorymuseum",
+   "name": "Музей Победы (Поклонная гора)",
+   "url": "https://victorymuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "victory_faces",
+   "name": "«Лица Победы» — депозитарий Музея Победы",
+   "url": "https://historydepositarium.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "pamyat_naroda",
+   "name": "Память народа (Минобороны РФ)",
+   "url": "https://pamyat-naroda.ru/",
+   "strana": "Россия",
+   "status": "dead",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "obd_memorial",
+   "name": "ОБД Мемориал",
+   "url": "https://obd-memorial.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "podvig_naroda",
+   "name": "Подвиг народа",
+   "url": "https://podvignaroda.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "cmaf",
+   "name": "Центральный музей Вооружённых Сил",
+   "url": "http://cmaf.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "artillery_museum",
+   "name": "ВИМАИВиВС — Музей артиллерии, инженерных войск и войск связи",
+   "url": "https://museum-artillery.ru/ru/contact/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "navalarch_rgavmf",
+   "name": "РГАВМФ — Российский государственный архив ВМФ",
+   "url": "https://rgavmf.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "stalingrad",
+   "name": "Музей-заповедник «Сталинградская битва»",
+   "url": "https://stalingrad-battle.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "borodino",
+   "name": "Бородинский военно-исторический музей-заповедник",
+   "url": "https://www.borodino.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "kulpole",
+   "name": "Музей-заповедник «Куликово поле»",
+   "url": "https://kulpole.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "blokadamus",
+   "name": "Музей обороны и блокады Ленинграда",
+   "url": "https://blokadamus.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rgakfd",
+   "name": "РГАКФД — архив кинофотодокументов",
+   "url": "http://rgakfd.ru/",
+   "strana": "Россия",
+   "status": "ru_cert",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "sovdoc",
+   "name": "Документы советской эпохи (Росархив)",
+   "url": "https://sovdoc.rusarchives.ru/",
+   "strana": "Россия",
+   "status": "dead",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "gosfilmofond",
+   "name": "Госфильмофонд России",
+   "url": "https://gosfilmofond.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "arran",
+   "name": "Архив РАН",
+   "url": "http://www.arran.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rusarchives",
+   "name": "Архивы России — портал Росархива",
+   "url": "https://rusarchives.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "victory_arch",
+   "name": "«Победа. 1941–1945» — проект Росархива",
+   "url": "https://victory.rusarchives.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rgali",
+   "name": "РГАЛИ — архив литературы и искусства",
+   "url": "https://rgali.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "roscosmos",
+   "name": "Роскосмос",
+   "url": "https://www.roscosmos.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "mosmuseum",
+   "name": "Музей Москвы",
+   "url": "https://mosmuseum.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "kizhi",
+   "name": "Музей-заповедник «Кижи»",
+   "url": "https://kizhi.karelia.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "korely",
+   "name": "Музей «Малые Корелы»",
+   "url": "https://www.korely.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "vladmuseum",
+   "name": "Владимиро-Суздальский музей-заповедник",
+   "url": "https://vladmuseum.ru/",
+   "strana": "Россия",
+   "status": "dead",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "tzar",
+   "name": "ГМЗ «Царское Село»",
+   "url": "https://tzar.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "peterhof",
+   "name": "ГМЗ «Петергоф»",
+   "url": "https://peterhofmuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "bolshoi",
+   "name": "Большой театр",
+   "url": "https://bolshoi.ru/",
+   "strana": "Россия",
+   "status": "dead",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "museumot",
+   "name": "Музей игрушки, Сергиев Посад",
+   "url": "https://museumot.info/",
+   "strana": "Россия",
+   "status": "dead",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "russikona",
+   "name": "Музей русской иконы",
+   "url": "https://new.russikona.ru/",
+   "strana": "Россия",
+   "status": "dead",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "soyuzmult",
+   "name": "Союзмультфильм",
+   "url": "http://soyuzmult.ru/",
+   "strana": "Россия",
+   "status": "wrong_content",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "feb",
+   "name": "ФЭБ — Фундаментальная электронная библиотека",
+   "url": "http://feb-web.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "istmat",
+   "name": "Истмат",
+   "url": "https://istmat.org/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "ethnomuseum",
+   "name": "Российский этнографический музей",
+   "url": "https://ethnomuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "kuskovo",
+   "name": "Кусково — Музей керамики",
+   "url": "http://kuskovo.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "faberge",
+   "name": "Музей Фаберже",
+   "url": "https://fabergemuseum.ru/",
+   "strana": "Россия",
+   "status": "dead",
+   "proveren": "2026-11-08"
+  },
+  {
+   "id": "cbr",
+   "name": "Банк России",
+   "url": "https://www.cbr.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rublev",
+   "name": "Музей имени Андрея Рублёва",
+   "url": "https://www.rublev-museum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "patriarchia",
+   "name": "Патриархия.ru",
+   "url": "http://www.patriarchia.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "mamm",
+   "name": "МАММ / Мультимедиа Арт Музей",
+   "url": "https://mamm-mdf.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "russiainphoto",
+   "name": "История России в фотографиях",
+   "url": "https://russiainphoto.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "designmuseum",
+   "name": "Московский музей дизайна",
+   "url": "https://moscowdesignmuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "mariinsky",
+   "name": "Мариинский театр",
+   "url": "https://www.mariinsky.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "musicmuseum",
+   "name": "Российский национальный музей музыки",
+   "url": "https://music-museum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "puppet",
+   "name": "Театр кукол имени Образцова",
+   "url": "https://puppet.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "circus_spb",
+   "name": "Музей циркового искусства, СПб",
+   "url": "https://circus.spb.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "mosfilm",
+   "name": "Мосфильм — онлайн-кинотеатр",
+   "url": "https://cinema.mosfilm.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "polar",
+   "name": "Музей Арктики и Антарктики",
+   "url": "http://www.polarmuseum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rzdmuseum",
+   "name": "Музей железных дорог России",
+   "url": "https://rzd-museum.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "olympic",
+   "name": "Олимпийский комитет России",
+   "url": "https://olympic.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "abrau",
+   "name": "Абрау-Дюрсо",
+   "url": "https://abrau.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "goslitmuz",
+   "name": "Государственный литературный музей",
+   "url": "https://goslitmuz.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "rgia",
+   "name": "РГИА",
+   "url": "https://rgia.su/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "calligraphy",
+   "name": "Музей мировой каллиграфии",
+   "url": "https://calligraphy-museum.com/",
+   "strana": "Россия",
+   "status": "ru_cert",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "goznak",
+   "name": "Гознак",
+   "url": "https://goznak.ru/",
+   "strana": "Россия",
+   "status": "ru_only",
+   "proveren": "2026-08-24"
+  },
+  {
+   "id": "totalarch",
+   "name": "Totalarch / Деревянная архитектура",
+   "url": "https://wood.totalarch.com/",
+   "strana": "Россия",
+   "status": "legacy_unverified",
+   "proveren": null
+  },
+  {
+   "id": "sevmash_depth",
+   "name": "Севмаш: рекорд К-278",
+   "url": "https://sevmash.ru/rus/news/2975-2020-08-04-11-26-14.html",
+   "strana": "Россия",
+   "status": "unknown",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "rubin_depth",
+   "name": "Рубин: 125 лет",
+   "url": "https://ckb-rubin.ru/mediacentr/novosti_i_sobytija/novost/news/detail/News/125_let_strategicheskikh_reshenii/",
+   "strana": "Россия",
+   "status": "unknown",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "ippe_obninsk",
+   "name": "ФЭИ: Первая АЭС",
+   "url": "https://www.ippe.ru/history/1aes",
+   "strana": "Россия",
+   "status": "unknown",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "biblioatom_obninsk",
+   "name": "История Росатома: Обнинская АЭС",
+   "url": "https://www.biblioatom.ru/core-systems/nuclear-power-plants/obninskaya-aes/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "ostankino_official",
+   "name": "Официальный канал Останкинской башни",
+   "url": "https://t.me/s/ostankino_tvtower/1400",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "mai_aerodynamics",
+   "name": "МАИ: аэродинамические силы",
+   "url": "https://oat.mai.ru/book/glava05/5_7/5_7.html",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "kapitza_landau",
+   "name": "ИФП РАН: работы 1941 года",
+   "url": "https://www.kapitza.ras.ru/index.php?cont=journ&lang=ru&year=1941",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "ufn_film",
+   "name": "УФН: жидкий гелий, поверхностные плёнки",
+   "url": "https://ufn.ru/ru/articles/1955/9/b/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "lab_data_ufn",
+   "name": "УФН: перенос гелия по плёнке, §7.1",
+   "url": "https://ufn.ru/ufn55/ufn55_9/Russian/r559b.pdf",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "lab_data_glazkov",
+   "name": "МФТИ: сверхтекучесть, лекция Глазкова",
+   "url": "https://www.kapitza.ras.ru/~glazkov/students/6/6-08-superfluid-2022.pdf",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-09-22"
+  },
+  {
+   "id": "militera",
+   "name": "Милитера — библиотека военной литературы",
+   "url": "https://militera.lib.ru/",
+   "strana": "Россия",
+   "status": "ok",
+   "proveren": "2026-10-08"
+  },
+  {
+   "id": "warmuseum_by",
+   "name": "Белорусский государственный музей истории Великой Отечественной войны",
+   "url": "https://www.warmuseum.by/",
+   "strana": "Беларусь",
+   "osnovanie": "Р469"
+  }
+ ],
+ "vycherknuty": [
+  {
+   "id": "commons",
+   "name": "Wikimedia Commons",
+   "pochemu": "Р90"
+  },
+  {
+   "id": "wikidata",
+   "name": "Wikidata SPARQL",
+   "pochemu": "Р90"
+  },
+  {
+   "id": "europeana",
+   "name": "Europeana",
+   "pochemu": "не российская и не белорусская"
+  },
+  {
+   "id": "lab_data_ladson",
+   "name": "NACA 0012 — экспериментальная серия Ладсона 80 grit",
+   "pochemu": "не российская и не белорусская"
+  }
+ ]
+}
