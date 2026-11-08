@@ -1,0 +1,20 @@
+{
+  "_": "Тексты игры izobreteniya 01-08 для перевода (п. 164). Ключи — src/data/igry/stroki-igr.mjs. Языки, кроме ru, пишет только машина перевода (Р603).",
+  "ru": {
+    "izobreteniya.01-08.igra.kicker": "Играй",
+    "izobreteniya.01-08.igra.zagolovok": "🎮 Пробей арктический лёд — как «Ермак»",
+    "izobreteniya.01-08.igra.pravilo_ru": "Что сделать сейчас: нажимай на льдины, пока не разобьёшь все 10.",
+    "izobreteniya.01-08.igra.kak_igrat.zachem": "Ты ведёшь «Ермак» через лёд. Ледокол не режет лёд, а наползает на него и ломает весом — здесь каждый удар и есть такой нажим.",
+    "izobreteniya.01-08.igra.kak_igrat.shagi.0": "<b>Нажми на льдину</b> — один нажим = один удар ледокола.",
+    "izobreteniya.01-08.igra.kak_igrat.shagi.1": "<b>Смотри на подпись</b>: «тонкий» лёд ломается с 1 удара, «обычный» — с 2, «толстый» — с 3. Треснувшая льдина темнеет.",
+    "izobreteniya.01-08.igra.kak_igrat.shagi.2": "<b>Разбей все 10 льдин</b> — счётчик «Сломано» сверху покажет, сколько осталось.",
+    "izobreteniya.01-08.igra.kak_igrat.nyuans": "Нюансы: толщина льдин каждый раз новая, поэтому число ударов меняется. Разбитая льдина становится водой 💧 — нажимать на неё больше не нужно.",
+    "izobreteniya.01-08.igra.kak_igrat.final": "Десятая льдина — и путь открыт, как у «Ермака» в 1899 году: +15 баллов.",
+    "izobreteniya.01-08.igra.dannye.vidy.0.podpis": "тонкий",
+    "izobreteniya.01-08.igra.dannye.vidy.1.podpis": "обычный",
+    "izobreteniya.01-08.igra.dannye.vidy.2.podpis": "толстый",
+    "izobreteniya.01-08.igra.dannye.slomano_ru": "Сломано",
+    "izobreteniya.01-08.igra.dannye.udary_ru": "Удары",
+    "izobreteniya.01-08.igra.dannye.pobeda_ru": "🏆 Путь открыт! «Ермак» пробил арктический лёд — как в 1899!"
+  }
+}
