@@ -40,7 +40,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-24-goskatalog-5500810.jpg
+  src: kartinka:000242
   alt: В. В. Верещагин. «Скобелев под Шипкой» (уже на старой странице)
   data_source: https://goskatalog.ru/portal/#/collections?id=9039049
   license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -87,7 +87,7 @@ video:
   suffix: сек
   badge: 44 сек
   intro: Перевал держали в мороз — и не сошли
-  poster: /muzei/ne-sdayutsya/video/day-24jan-shipka-poster.jpg?v=1
+  poster: kartinka:000635?v=1
   mp4: /muzei/ne-sdayutsya/video/day-24jan-shipka.mp4?v=1
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns24jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -110,7 +110,7 @@ fakty:
         otryvok: «когда кончались патроны, ополченцы третьей роты 1-й дружины обрушивали на врага каменные глыбы, сметая его в ложбину»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-24-goskatalog-32451745.jpg
+          src: kartinka:000636
           alt: «Эпизод из обороны Шипки», по оригиналу А. Н. Попова, 1878
           data_source: https://goskatalog.ru/portal/#/collections?id=28330289
           license: общественное достояние (произведение XIX века)
@@ -128,7 +128,7 @@ fakty:
         otryvok: «Не найдете ли, ваше превосходительство, лучшим посадить на казачьих лошадей батальон стрелков»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-24-goskatalog-17180247.jpg
+          src: kartinka:000637
           alt: «Прибытие 4-й стрелковой бригады на Шипку 14 августа», XIX век
           data_source: https://goskatalog.ru/portal/#/collections?id=17428956
           license: общественное достояние (произведение XIX века)
@@ -200,7 +200,7 @@ fakty:
         otryvok: «до тысячи жителей и мальчиков габровских разносили под градом пуль воду нашим войскам и даже застрельщикам передовой цепи, а также и уносили раненых с полным самоотвержением»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-24-goskatalog-17180148.jpg
+          src: kartinka:000638
           alt: «Болгарское ополчение у воды после 9, 10, 11 и 12 августа под Шипкою», XIX век
           data_source: https://goskatalog.ru/portal/#/collections?id=17428863
           license: общественное достояние (произведение XIX века)
@@ -231,7 +231,7 @@ fakty:
         otryvok: «Пусть они падают тысячами — на их место станут другие. Из сигналов допускаются только „сбор“, „наступление“ и „командир убит“»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-24-goskatalog-82886216.jpg
+          src: kartinka:000639
           alt: Лубок «Оборона Шипки 9–15 августа 1877 г.», 1902
           data_source: https://goskatalog.ru/portal/#/collections?id=64923827
           license: общественное достояние (произведение XIX века)
@@ -361,7 +361,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-24-goskatalog-63495417.jpg
+  - src: kartinka:000640
     alt: Лубок «Взятие Шипкинского перевала», литография бр. Морозовых, Москва, 1891
     data_source: https://goskatalog.ru/portal/#/collections?id=44463764
     license: общественное достояние (произведение XIX века)
@@ -369,7 +369,7 @@ figures:
     credit: Госкаталог РФ, , Тобольский историко-архитектурный музей-заповедник
     width: 800
     height: 600
-  - src: /muzei/ne-sdayutsya/img/01-24-goskatalog-87920360.jpg
+  - src: kartinka:000641
     alt: "Кадр из музейного фонда: Фотография черно-белая. Космонавт Ю.А. Гагарин в кругу официальных лиц поднимается на вершину горы к памятнику русским воинам, героям обороны Шипки"
     data_source: https://goskatalog.ru/portal/#/collections?id=9390078
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

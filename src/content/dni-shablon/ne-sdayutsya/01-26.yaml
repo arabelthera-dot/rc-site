@@ -36,7 +36,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-26-goskatalog-2581383.jpg
+  src: kartinka:000244
   alt: Чёрно-белый портрет космонавта в гермошлеме с надписью «СССР».
   data_source: https://goskatalog.ru/portal/#/collections?id=6327635
   license: ст. 1274 ГК РФ
@@ -83,7 +83,7 @@ video:
   suffix: сек
   badge: 46 сек
   intro: Первый вышел в открытый космос — и едва не остался там навсегда
-  poster: /muzei/ne-sdayutsya/video/day-26jan-leonov-poster.jpg?v=1
+  poster: kartinka:000649?v=1
   mp4: /muzei/ne-sdayutsya/video/day-26jan-leonov.mp4?v=1
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns26jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -151,7 +151,7 @@ fakty:
         otryvok: «Понятия не имею, как это у меня получилось»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-26-goskatalog-36019420.jpg
+          src: kartinka:000650
           alt: "Чёрно-белое фото: космонавт в скафандре с ранцем парит в воздухе внутри салона самолёта."
           data_source: https://goskatalog.ru/portal/#/collections?id=36019420
           license: ст. 1274 ГК РФ
@@ -178,7 +178,7 @@ fakty:
         otryvok: «На борт „Восхода-2“ я взял с собой цветные карандаши, и мне удалось зарисовать виды, которые произвели на меня наибольшее впечатление. При этом меня вдохновляло сознание того, что в этой области живописи я был первым. Я рисовал Солнце и Землю»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-26-goskatalog-57122082.jpg
+          src: kartinka:000651
           alt: "Лист бумаги с наброском ручкой: человечек с ранцем парит горизонтально; рядом надпись «Рисунок Леонова во время разговора 08.04.65»."
           data_source: https://goskatalog.ru/portal/#/collections?id=57122082
           license: ст. 1274 ГК РФ
@@ -227,7 +227,7 @@ fakty:
         otryvok: «„Наверное, последний раз я тут с вами“, – невесело сказал Сергей Павлович Королёв утром 18 марта 1965 года, провожая экипаж «Восхода-2» в полёт.»
         pometka: один источник
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-26-goskatalog-4973845.jpg
+          src: kartinka:000652
           alt: "Чёрно-белое фото: четверо мужчин, трое в военной форме, за столом с бумагами; внизу рукописная надпись."
           data_source: https://goskatalog.ru/portal/#/collections?id=4973845
           license: ст. 1274 ГК РФ
@@ -245,7 +245,7 @@ fakty:
         otryvok: «Человек вышел в космическое пространство!»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-26-goskatalog-12781470.jpg
+          src: kartinka:000653
           alt: Космонавт в шлеме с надписью «СССР» крупным планом на тёмном фоне, поверх — подпись чернилами.
           data_source: https://goskatalog.ru/portal/#/collections?id=12781470
           license: ст. 1274 ГК РФ; датировка в карточке «1960-е гг.»
@@ -357,7 +357,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-26-goskatalog-76017667.jpg
+  - src: kartinka:000654
     alt: "Кадр из музейного фонда: Алексея Архиповича Леонова ( советский лётчик-космонавт, первый в мире человек, который вышел в открытый космос 18 марта 1965 года, дважды Герой Советского Союза, лауреат Госу"
     data_source: https://goskatalog.ru/portal/#/collections?id=59638031
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -365,7 +365,7 @@ figures:
     credit: 'Хранится: Муниципальное бюджетное учреждение "Комплексный музей города Нижнекамска". Госкаталог № 59638031'
     width: 585
     height: 800
-  - src: /muzei/ne-sdayutsya/img/01-26-goskatalog-18900665.jpg
+  - src: kartinka:000655
     alt: "Кадр из музейного фонда: Фотопортрет: Леонов Алексей Архипович, лётчик космонавт, трижды Герой Советского союза. Он первым вышел в открытый космос. На обороте автограф"
     data_source: https://goskatalog.ru/portal/#/collections?id=18655968
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

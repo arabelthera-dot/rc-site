@@ -30,7 +30,7 @@ head:
       name: Русская цивилизация
     image: https://russian-civilization.ru/muzei/izobreteniya/day-19jan-kantorovich-diplom.jpg
 oblozhka:
-  src: day-19jan-kantorovich-diplom.jpg
+  src: kartinka:000379
   width: 1200
   height: 800
   alt: "Нобелевский диплом Леонида Канторовича: лист в чёрной рамке с гербом, крупно имя учёного, внизу дата — 10 декабря 1975 года — и две подписи"
@@ -81,7 +81,7 @@ video:
   suffix: сек
   badge: 59 сек
   intro: Та же история коротким роликом — от фанерного треста и брошюры 1939 года до счётной машины «Вильнюс».
-  poster: video/day-19jan-kantorovich-poster.jpg?v=1
+  poster: kartinka:000380?v=1
   mp4: video/day-19jan-kantorovich.mp4?v=1
   note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Нобелевский диплом 1975 года и студенческий матрикул 1926 года (Музей истории СПбГУ); портрет Л. В. Канторовича, книги «Рациональный раскрой промышленных материалов» и «Экономический расчёт наилучшего использования ресурсов» (польское издание) (Новосибирский государственный краеведческий музей); академик Л. В. Канторович (Музейный центр «Площадь Мира», Красноярск); счётная машина «Вильнюс» (Политехнический музей). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
@@ -109,7 +109,7 @@ fakty:
     href: https://www.nkj.ru/archive/articles/3563/
     pometka: документ
     kadr:
-      src: "/muzei/izobreteniya/img/01-19-ledovye-dorogi-ladogi.jpg"
+      src: "kartinka:000381"
       width: 586
       height: 800
       klass: "portret"
@@ -128,7 +128,7 @@ fakty:
     href: https://www.mathnet.ru/rus/rm2433
     pometka: документ
     kadr:
-      src: "/muzei/izobreteniya/img/01-19-optimalnoe-planirovanie-1964.jpg"
+      src: "kartinka:000382"
       width: 550
       height: 800
       klass: "portret"
@@ -174,7 +174,7 @@ fakty:
     href: https://cyberleninka.ru/article/n/o-vklade-matematikov-pervoy-velichiny-v-atomnyy-proekt-sssr
     pometka: документ
     kadr:
-      src: "/muzei/izobreteniya/img/01-19-arifmometr-feliks.jpg"
+      src: "kartinka:000383"
       width: 1400
       height: 919
       alt: "Механический арифмометр «Феликс» в чёрном металлическом корпусе с рычажками и ручкой"
@@ -201,7 +201,7 @@ fakty:
     href: https://www.kommersant.ru/doc/9041818
     pometka: документ
     kadr:
-      src: "/muzei/izobreteniya/img/01-19-nobelevskaya-lekciya-1975.jpg"
+      src: "kartinka:000384"
       width: 554
       height: 800
       klass: "portret"
@@ -220,7 +220,7 @@ fakty:
     href: https://www.kommersant.ru/doc/9041818
     pometka: два источника
     kadr:
-      src: "/muzei/izobreteniya/img/01-19-portret-nobelevskogo-laureata.jpg"
+      src: "kartinka:000385"
       width: 592
       height: 800
       klass: "portret"
@@ -239,7 +239,7 @@ fakty:
     href: https://www.computer-museum.ru/galglory/21.htm
     pometka: документ
     kadr:
-      src: "/muzei/izobreteniya/img/01-19-vilnyus-1969.jpg"
+      src: "kartinka:000386"
       width: 800
       height: 601
       alt: "Три студентки за столами работают на клавишных вычислительных машинах «Вильнюс» у окна учебного кабинета"
@@ -288,7 +288,7 @@ fakty:
     href: https://www.biblioatom.ru/persons/kantorovich_leonid_vitalevich/
     pometka: два источника
     kadr:
-      src: "/muzei/izobreteniya/img/01-19-raskroj-1971.jpg"
+      src: "kartinka:000387"
       width: 548
       height: 799
       klass: "portret"
@@ -380,7 +380,7 @@ kalendar:
   h2: Выбери любой день года
   intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
-  - src: day-19jan-kantorovich-matrikul.jpg
+  - src: kartinka:000388
     alt: "Старый документ: слева наклеена фотография мальчика-подростка, справа печатный заголовок «Матрикул студента Ленинградского государственного университета», дело № 1175 и записи от руки"
     data_source: https://goskatalog.ru/portal/#/collections?id=57973269
     license: Музей истории СПбГУ, Госкаталог № 57677795; цитирование, ст. 1274 ГК РФ

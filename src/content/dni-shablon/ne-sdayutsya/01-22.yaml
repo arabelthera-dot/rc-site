@@ -41,7 +41,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-22-goskatalog-91503693.jpg
+  src: kartinka:000240
   alt: Памятная монета к 20-летию подвига 6-й роты (уже на старой странице)
   data_source: https://goskatalog.ru/portal/#/collections?id=69830317
   license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -88,7 +88,7 @@ video:
   suffix: сек
   badge: 47 сек
   intro: Девяносто против двух тысяч — выжили шестеро, не отступил никто
-  poster: /muzei/ne-sdayutsya/video/day-22jan-6-rota-poster.jpg?v=1
+  poster: kartinka:000621?v=1
   mp4: /muzei/ne-sdayutsya/video/day-22jan-6-rota.mp4?v=1
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -138,7 +138,7 @@ fakty:
         otryvok: "«„Ребята, вызываем огонь на себя?“ — он спросил у всех ребят, которые остались вот рядом с ним… Мы сказали: „Да, вызываем“»"
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-22-goskatalog-15494891.jpg
+          src: kartinka:000622
           alt: Партийный билет М. Н. Евтюхина, 11.03.1985
           data_source: https://goskatalog.ru/portal/#/collections?id=16203370
           license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -335,7 +335,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-22-goskatalog-17762914.jpg
+  - src: kartinka:000623
     alt: Удостоверение личности офицера М. Н. Евтюхина, 1983
     data_source: https://goskatalog.ru/portal/#/collections?id=17850119
     license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -343,7 +343,7 @@ figures:
     credit: Госкаталог РФ, , Музей-панорама «Бородинская битва»
     width: 800
     height: 546
-  - src: /muzei/ne-sdayutsya/img/01-22-goskatalog-17762936.jpg
+  - src: kartinka:000624
     alt: Пропуск командира роты М. Н. Евтюхина на военную базу, Босния, 30.11.1995
     data_source: https://goskatalog.ru/portal/#/collections?id=17850129
     license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -351,7 +351,7 @@ figures:
     credit: Госкаталог РФ, , Музей-панорама «Бородинская битва»
     width: 720
     height: 530
-  - src: /muzei/ne-sdayutsya/img/01-22-goskatalog-24872120.jpg
+  - src: kartinka:000625
     alt: Тельняшка ВДВ из личных вещей Героя России М. Н. Евтюхина, 1990-е
     data_source: https://goskatalog.ru/portal/#/collections?id=20536278
     license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -359,7 +359,7 @@ figures:
     credit: Госкаталог РФ, , Музей-панорама «Бородинская битва»
     width: 502
     height: 800
-  - src: /muzei/ne-sdayutsya/img/01-22-goskatalog-24872152.jpg
+  - src: kartinka:000626
     alt: "Кадр из музейного фонда: Шомпол к пистолету ПМ. Из личных вещей Героя Российской Федерации М.Н.Евтюхина"
     data_source: https://goskatalog.ru/portal/#/collections?id=21341321
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -367,7 +367,7 @@ figures:
     credit: 'Хранится: Государственное бюджетное учреждение культуры города Москвы "Музей-панорама "Бородинская битва". Госкаталог № 21341321'
     width: 600
     height: 396
-  - src: /muzei/ne-sdayutsya/img/01-22-goskatalog-23329138.jpg
+  - src: kartinka:000627
     alt: "Кадр из музейного фонда: Дементьев О., Клевцов В. Шаг в бессмертие. Подвигу 6-й роты 104-го гвардейского парашютно-десантного Краснознаменного полка посвящается. г.Псков, 2010 г"
     data_source: https://goskatalog.ru/portal/#/collections?id=21843578
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

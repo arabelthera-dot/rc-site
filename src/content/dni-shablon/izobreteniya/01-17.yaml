@@ -29,7 +29,7 @@ head:
       name: Русская цивилизация
     image: https://russian-civilization.ru/muzei/izobreteniya/day-17jan-zhukovsky-doska.jpg
 oblozhka:
-  src: /muzei/izobreteniya/img/01-17-goskatalog-5816870.jpg
+  src: kartinka:000360
   width: 603
   height: 800
   alt: Николай Жуковский, седой, с бородой, стоит у доски в аудитории; на доске мелом нарисованы профиль крыла, линии обтекания и формулы
@@ -78,7 +78,7 @@ video:
   suffix: сек
   badge: 55 сек
   intro: Та же история коротким роликом — от формулы подъёмной силы 1906 года до ЦАГИ и трубы Т-1-2, на момент постройки самой большой в мире.
-  poster: video/day-17jan-zhukovsky-poster.jpg?v=1
+  poster: kartinka:000361?v=1
   mp4: video/day-17jan-zhukovsky.mp4?v=1
   note: 'Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Н. Е. Жуковский читает лекцию, его рукопись, лётчик П. Н. Нестеров, здание аэродинамической лаборатории ЦАГИ (Государственный центральный музей современной истории России); брошюра к 60-летию труда Жуковского «О присоединённых вихрях» (Центральный музей ВВС); испытание самолёта в аэродинамической трубе Т-1-2 ЦАГИ (Научно-мемориальный музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.'
 story:
@@ -91,7 +91,7 @@ story:
         - 'В работе «О присоединённых вихрях» Жуковский доказал теорему: подъёмная сила равна произведению плотности воздуха, скорости потока и «присоединённого вихря» вокруг крыла. По этой теореме крыло считают на бумаге — до того, как его построят.'
       src: 'Источник: Математическая энциклопедия, «Жуковского теорема» — <a href="https://gufo.me/dict/mathematics_encyclopedia/Жуковского_Теорема" rel="noopener" target="_blank">gufo.me</a>; «Наука и жизнь», «Центр авиационной науки» — <a href="https://www.nkj.ru/archive/articles/14886/" rel="noopener" target="_blank">nkj.ru/archive/articles/14886</a>'
       kadr:
-        src: "/muzei/izobreteniya/img/01-17-prisoedinennye-vikhri-1906.jpg"
+        src: "kartinka:000362"
         width: 606
         height: 800
         klass: "portret"
@@ -109,7 +109,7 @@ story:
         - В 1940–1945 годах через большие трубы ЦАГИ прошли все опытные и серийные истребители советских КБ. В Т-101, самой большой дозвуковой трубе Европы (24×14 м), испытывали почти все советские и российские самолёты.
       src: 'Источник: ЦАГИ, «100-летие ЦАГИ в истории: аэродинамические трубы Т-101 и Т-104» — <a href="https://www.tsagi.ru/pressroom/news/4515/" rel="noopener" target="_blank">tsagi.ru/pressroom/news/4515</a>; «Российская газета», 01.03.2023 — <a href="https://rg.ru/2023/03/01/samaia-bolshaia-v-evrope-aerodinamicheskaia-truba-gde-ispytyvaiut-samolety-otkroetsia-dlia-turistov.html" rel="noopener" target="_blank">rg.ru</a>'
       kadr:
-        src: "/muzei/izobreteniya/img/01-17-cagi-otchet-i-185.jpg"
+        src: "kartinka:000363"
         width: 761
         height: 1024
         klass: "portret"
@@ -155,7 +155,7 @@ fakty:
         pometka: документ
         utverzhdeno: Р297
         kadr:
-          src: "/muzei/izobreteniya/img/01-17-gidravlicheskiy-udar-1899.jpg"
+          src: "kartinka:000364"
           width: 405
           height: 528
           klass: "portret"
@@ -203,7 +203,7 @@ fakty:
         href: https://zhukovskymuseum.ru/biography/
         pometka: два источника
         kadr:
-          src: "/muzei/izobreteniya/img/01-17-o-parenii-ptic.jpg"
+          src: "kartinka:000365"
           width: 541
           height: 800
           klass: "portret"
@@ -253,7 +253,7 @@ fakty:
         href: https://mai.ru/common/university/history/years/
         pometka: два источника
         kadr:
-          src: "/muzei/izobreteniya/img/01-17-institut-inzhenerov-kvf.jpg"
+          src: "kartinka:000366"
           width: 662
           height: 1024
           klass: "portret"
@@ -281,7 +281,7 @@ fakty:
         href: https://scientificrussia.ru/articles/mecty-o-nebe-bolee-100-let-so-dna-otkrytia-aerodinamiceskogo-instituta
         pometka: два источника
         kadr:
-          src: "/muzei/izobreteniya/img/01-17-kuchino-institut.jpg"
+          src: "kartinka:000367"
           width: 708
           height: 1024
           klass: "portret"
@@ -300,7 +300,7 @@ fakty:
         href: https://rostec.ru/media/news/akademik-neba-glavnye-otkrytiya-nikolaya-zhukovskogo/
         pometka: два источника
         kadr:
-          src: "/muzei/izobreteniya/img/01-17-vint-zhukovskogo-chertezh.jpg"
+          src: "kartinka:000368"
           width: 1280
           height: 587
           alt: "Синька чертежа лопасти воздушного винта с сечениями-профилями по длине"
@@ -397,7 +397,7 @@ quiz:
   intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
   noscript: 'Для викторины нужен JavaScript. Ответы: 1 — присоединённый вихрь; 2 — гидравлический удар; 3 — 1906; 4 — выставка; 5 — ЦАГИ.'
 figures:
-  - src: /muzei/izobreteniya/img/01-17-ploskaya-truba-mvtu.jpg
+  - src: kartinka:000369
     width: 1200
     height: 825
     alt: 'Аэродинамическая лаборатория Московского высшего технического училища: люди за работой у плоской трубы'
@@ -405,7 +405,7 @@ figures:
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
     podpis: Аэродинамическая лаборатория МВТУ — та самая, что выросла из труб студенческого кружка.
     credit: 'Фото: автор не указан, 1910-е. Хранится: Научно-мемориальный музей профессора Н. Е. Жуковского.'
-  - src: /muzei/izobreteniya/img/01-17-goskatalog-5816845.jpg
+  - src: kartinka:000370
     alt: Жуковский стоит у стены в строящейся аэродинамической трубе; рядом на станине большой вентилятор с двухлопастным пропеллером
     data_source: https://goskatalog.ru/portal/#/collections?id=5992175
     license: Государственный центральный музей современной истории России · Госкаталог, рег. № 5816845

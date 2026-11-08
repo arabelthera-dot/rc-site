@@ -30,7 +30,7 @@ head:
       name: Русская цивилизация
     image: https://russian-civilization.ru/muzei/izobreteniya/img/01-30-plakat-kotelnikov.jpg
 oblozhka:
-  src: /muzei/izobreteniya/img/01-30-plakat-kotelnikov.jpg
+  src: kartinka:000475
   width: 1400
   height: 1113
   alt: 'Цветной плакат: портрет Глеба Котельникова в золотом венке, вокруг купола парашютов, парашютисты и дирижабль'
@@ -84,7 +84,7 @@ video:
   suffix: сек
   badge: 67 сек
   intro: Та же история коротким роликом — от отказа великого князя и гибели Мациевича до французского патента и подарка стране в 1926 году.
-  poster: video/day-30jan-kotelnikov-poster.jpg?v=1
+  poster: kartinka:000476?v=1
   mp4: video/day-30jan-kotelnikov.mp4?v=1
   note: Кадр ролика — подлинная фотография Г. Е. Котельникова, Уральский государственный военно-исторический музей (Госкаталог № 12764542). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.
 story:
@@ -93,7 +93,7 @@ story:
   udary:
   - summary: Котельников придумал парашют, потому что на его глазах разбился лётчик Мациевич.
     kadr:
-      src: "/muzei/izobreteniya/img/01-30-posledniy-polet-matsievicha-1910.jpg"
+      src: "kartinka:000477"
       alt: "Журнальная страница дореформенной орфографией «Последній полетъ капитана Л. М. Мациевича»: вверху аэроплан-биплан с лётчиком, в центре портрет капитана в фуражке, слева обломки аэроплана с номером 20 и толпа, внизу надгробие"
       data_source: "https://goskatalog.ru/portal/#/collections?id=23034178"
       license: "общественное достояние (издание 1910 года) · Центральный военно-морской музей · Госкаталог, рег. № 22897431"
@@ -107,7 +107,7 @@ story:
     src: 'Источник: «АиФ — Петербург», «Небесный купол» — <a href="https://spb.aif.ru/society/science/-nebesnyy-kupol-kto-pridumal-nadyozhnoe-sredstvo-dlya-spaseniya-lyotchikov" rel="noopener" target="_blank">spb.aif.ru</a>; Г. Е. Котельников, «Парашют», Детгиз, 1943'
   - summary: 'Изобретатель парашюта был актёром: на сцене его звали Глебов-Котельников.'
     kadr:
-      src: /muzei/izobreteniya/img/01-30-glebov-kotelnikov-akter.jpg
+      src: kartinka:000478
       width: 564
       height: 900
       alt: 'Старая фотография-открытка: актёр в рыцарском шлеме и доспехах, в плаще, смотрит в сторону'
@@ -133,7 +133,7 @@ story:
     src: 'Источник: History.ru, «Спасительный ранец: история создания парашюта РК-1» — <a href="https://history.ru/read/articles/spasitelnyy-ranec-istoriya-sozdaniya-parashyuta-rk-1" rel="noopener" target="_blank">history.ru</a>'
   - summary: 6 (19) июня 1912 года РК-1 сработал с первого раза у деревни Сализи.
     kadr:
-      src: "/muzei/izobreteniya/img/01-30-ispytanie-maneken-salizi.jpg"
+      src: "kartinka:000479"
       alt: "Старая чёрно-белая фотография на листе с рваными краями: манекен в шлеме, затянутый в лямки парашюта, стоит у корзины аэростата; вокруг военные в фуражках, справа мужчина в канотье и костюме"
       data_source: "https://goskatalog.ru/portal/#/collections?id=57088835"
       license: "общественное достояние (фотограф не указан, снимок 1910-х годов) · Музей истории ВДВ · Госкаталог, рег. № 56812128"
@@ -158,7 +158,7 @@ story:
     src: 'Источник: Г. Е. Котельников, «История одного изобретения. Русский парашют», Детиздат, 1939, гл. VII'
   - summary: В 1923 году Котельников сделал РК-2 — с полумягким ранцем.
     kadr:
-      src: /muzei/izobreteniya/img/01-30-parashyut-rk2-muzey-vdv.jpg
+      src: kartinka:000480
       width: 800
       height: 600
       alt: 'Музейная витрина: ранец, верёвочные стропы и оранжевый купол парашюта РК-2 разложены под стеклом'
@@ -171,7 +171,7 @@ story:
     src: 'Источник: Г. Е. Котельников, «Парашют», Детгиз, 1943, гл. XII; «АиФ — Петербург», «Небесный купол» — <a href="https://spb.aif.ru/society/science/-nebesnyy-kupol-kto-pridumal-nadyozhnoe-sredstvo-dlya-spaseniya-lyotchikov" rel="noopener" target="_blank">spb.aif.ru</a>'
   - summary: Котельников сменил жёсткий ранец на мягкий — с сотами для строп.
     kadr:
-      src: "/muzei/izobreteniya/img/01-30-patent-1607-kotelnikov.jpg"
+      src: "kartinka:000481"
       alt: "Первая страница печатного описания изобретения: герб СССР, штамп библиотеки Комитета по изобретательству, «№ 1607», крупно «Патент на изобретение», ниже «Описание костюма с приспособлением для укладки парашюта. К патенту Г. Е. Котельникова, заявленному 4 июля 1924 г.» и текст в две колонки"
       data_source: "https://new.fips.ru/registers-doc-view/fips_servlet?DB=RUPAT&DocNumber=1607&TypeFile=html"
       license: "официальный документ — не объект авторского права (ст. 1259 ч. 6 ГК РФ) · ФИПС, открытые реестры"
@@ -271,7 +271,7 @@ fakty:
     utverzhdeno: к сайту по Р359, правки — ревизией месяца (Р358)
   - summary: <b>Деревня, где впервые испытали РК-1, с 1949 года носит имя Котельникова.</b>
     kadr:
-      src: "/muzei/izobreteniya/img/01-30-salizi-s-aerostata.jpg"
+      src: "kartinka:000482"
       alt: "Чёрно-белый снимок сверху: деревня среди леса, дома и улицы, справа длинные постройки, вдали поле и озеро"
       data_source: "https://goskatalog.ru/portal/#/collections?id=4676295"
       license: "общественное достояние (фотограф не указан, снимок начала XX века) · Белгородский государственный историко-краеведческий музей · Госкаталог, рег. № 4647479"
@@ -347,7 +347,7 @@ fakty:
     pometka: документ
   - summary: <b>В 1917 году парашют спас 42 человека из 62.</b>
     kadr:
-      src: /muzei/izobreteniya/img/01-30-anoshchenko-issledovanie-parashyutov-1918.jpg
+      src: kartinka:000483
       width: 300
       height: 448
       alt: 'Пожелтевшая обложка брошюры дореформенной орфографией: «Изследование парашютов системы Жюкмесса и Котельникова», Москва, 1918'
@@ -462,7 +462,7 @@ result:
   zvanie: '0 / 100 · звание: Гость дня'
   note: Пристегни лямки, прыгни вовремя, дёрни кольцо пониже и приземлись у своих, потом ответь на вопросы викторины.
 figures:
-- src: /muzei/izobreteniya/img/01-30-kniga-kotelnikova.jpg
+- src: kartinka:000484
   width: 545
   height: 800
   klass: portret

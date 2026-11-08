@@ -29,7 +29,7 @@ head:
       name: Русская цивилизация
     image: https://russian-civilization.ru/muzei/izobreteniya/day-07jan-kolesov-byust.jpg
 oblozhka:
-  src: day-07jan-kolesov-byust.jpg
+  src: kartinka:000018
   width: 900
   height: 600
   alt: Бюст хирурга Василия Колесова на высоком постаменте в сквере университета, у подножия цветы, рядом выступающие и почётный караул
@@ -83,7 +83,7 @@ video:
   suffix: сек
   badge: 45 сек
   intro: Та же история коротким роликом — от восьми минут с пережатой артерией до операции, которую сегодня делают по всему миру.
-  poster: video/day-07jan-kolesov-poster.jpg
+  poster: kartinka:000019
   mp4: video/day-07jan-kolesov.mp4?v=1
   note: "Кадры ролика — подлинные: открытие бюста В. И. Колесова и цветы к бюсту, фото 2021 года. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
@@ -97,7 +97,7 @@ story:
         - "Авторы статьи к 110-летию Колесова пишут прямо: «25 февраля 1964 г. В. И. Колесов выполнил первую в мире успешную операцию маммарно-коронарного анастомоза» и «С этой операции началась эпоха коронарного шунтирования». Через двадцать лет шунтирование стало самой выполняемой операцией в мире."
       src: "Источник: Седов В. М., Немков А. С. // Вестник хирургии им. И. И. Грекова. 2015. Т. 174, № 1. С. 90, 92; ПСПбГМУ им. И. П. Павлова, 30.08.2021."
       kadr:
-        src: /muzei/izobreteniya/img/01-07-broshyura-1965.jpg
+        src: kartinka:000020
         width: 534
         height: 800
         klass: portret
@@ -165,7 +165,7 @@ fakty:
         href: https://www.mediasphera.ru/issues/khirurgiya-zhurnal-im-n-i-pirogova/2016/8/1002312072016081094
         pometka: два источника
         kadr:
-          src: /muzei/izobreteniya/img/01-07-demihov-golova.jpg
+          src: kartinka:000021
           width: 799
           height: 532
           alt: Бронзовая скульптурная голова Владимира Демихова с зачёсанной назад шевелюрой на квадратной плите
@@ -211,7 +211,7 @@ fakty:
         href: https://www.vestnik-grekova.ru/jour/article/download/21/22
         pometka: документ
         kadr:
-          src: /muzei/izobreteniya/img/01-07-kolesov-operiruet.jpg
+          src: kartinka:000022
           width: 613
           height: 550
           alt: "Через стекло видна операционная: хирурги в белых халатах и шапочках плотно обступили операционный стол"
@@ -229,7 +229,7 @@ fakty:
         href: https://www.vestnik-grekova.ru/jour/article/download/21/22
         pometka: документ
         kadr:
-          src: /muzei/izobreteniya/img/01-07-asc-apparat.jpg
+          src: kartinka:000023
           width: 573
           height: 600
           alt: "Открытый деревянный футляр с бархатным ложем: в нём металлический сосудосшивающий аппарат, сменные диски и пинцет"
@@ -252,7 +252,7 @@ fakty:
         href: https://medportal.ru/enc/cardiology/ibs/5/
         pometka: два источника
         kadr:
-          src: /muzei/izobreteniya/img/01-07-kniga-1966.jpg
+          src: kartinka:000024
           width: 573
           height: 800
           klass: portret
@@ -532,7 +532,7 @@ kalendar:
   h2: Выбери любой день года
   intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
-  - src: /muzei/izobreteniya/img/01-07-klinika-korpus.jpg
+  - src: kartinka:000025
     width: 634
     height: 550
     alt: Четырёхэтажный корпус клиники с лоджиями на первом этаже, перед ним площадка с высокими голыми деревьями
