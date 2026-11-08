@@ -1,6 +1,7 @@
 """Р136: кадр фонда любого года — только с полной credit line (put --hranitsya): python3 -m unittest discover tests/py"""
-import json, sys, tempfile, unittest
+import io, json, sys, tempfile, unittest
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
 import kadr  # noqa: E402
@@ -9,10 +10,25 @@ GK = 'https://goskatalog.ru/portal/#/collections?id=28867095'
 
 
 class Atribuciya(unittest.TestCase):
+    def setUp(self):
+        # Р635: номер в подписи — regNumber карточки /exhibits/{id}, сеть в тестах подменена
+        p = mock.patch.object(kadr, 'gk_regnomer', lambda i: {'28867095': '28705300'}[i])
+        p.start(); self.addCleanup(p.stop)
+
     def test_stroka(self):
         s = kadr.atribuciya('автор не указан, 1961', 'Мемориальный музей космонавтики.', GK, 'Госкаталог Музейного фонда РФ')
         self.assertEqual(s, 'Фото: автор не указан, 1961. Хранится: Мемориальный музей космонавтики. '
-                            'Госкаталог музейного фонда РФ, № 28867095')
+                            'Госкаталог музейного фонда РФ, № 28705300')
+
+    def test_regnomer_iz_kartochki(self):
+        mock.patch.stopall()
+        otvet = lambda d: mock.Mock(open=lambda req, timeout: io.BytesIO(json.dumps(d).encode()))
+        with mock.patch.object(kadr, 'ru_proxy', lambda: 'http://127.0.0.1:8899'):
+            with mock.patch('urllib.request.build_opener', lambda *a: otvet({'id': None, 'regNumber': 4798482})):
+                self.assertEqual(kadr.gk_regnomer('4655496'), '4798482')
+            with mock.patch('urllib.request.build_opener', lambda *a: otvet({'regNumber': ''})):
+                with self.assertRaises(SystemExit):  # без regNumber id портала номером не ставится
+                    kadr.gk_regnomer('4655496')
 
     def test_drugoy_fond(self):
         s = kadr.atribuciya('Иванов И. И., 1975', 'Российская национальная библиотека', 'https://nlr.ru/x/1', 'РНБ')
@@ -32,7 +48,7 @@ class Atribuciya(unittest.TestCase):
         self.assertIsNone(kadr.LIC_OK.search(kadr.ATRIB_PRAVO))
 
     def test_vidno_v_polnuyu_stranicu(self):
-        cr = ('Фото: автор не указан, 1961. Хранится: Мемориальный музей космонавтики. Госкаталог музейного фонда РФ, № 28867095. '
+        cr = ('Фото: автор не указан, 1961. Хранится: Мемориальный музей космонавтики. Госкаталог музейного фонда РФ, № 28705300. '
               f'Источник: Госкаталог Музейного фонда РФ [goskatalog], {GK}. Права: {kadr.ATRIB_PRAVO}.')
         self.assertEqual(kadr.vidno(cr), cr.split(' Источник:')[0].rstrip('.'))
         self.assertEqual(kadr.vidno('И. Репин, 1891. Источник: ГТГ [tretyakov], https://x. Права: общественное достояние.'), '')
