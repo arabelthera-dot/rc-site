@@ -29,7 +29,10 @@ export const skhema = z.object({
   // разметка src/data/igry/<музей>/<имя>.html, скрипт public/muzei/<музей>/igry/<имя>.js; vtoraya — ещё одна 2D под ней,
   // dop — её второй скрипт <имя>-dop.js. Нет model3d и rc3d — блока игры нет вообще (ни 2D, ни css, ни скриптов).
   // pravila — шаги «Как играть» под 3D (проверка igra-pravila).
-  igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/), dop: z.boolean().optional(), vtoraya: z.string().regex(/^[a-z0-9-]+$/).optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]),
+  // С 02-01 игра — данными (Р660, пп. 76/88/89/164): mehanika из src/lib/igry-mehaniki.ts + рамка + dannye по её схеме;
+  // своя разметка imya у таких дней — ошибка. До 02-01 imya обязательно, как было.
+  igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/).optional(), mehanika: str.optional(), kicker: str.optional(), zagolovok: str.optional(),
+    pravilo_ru: str.optional(), kak_igrat: z.unknown().optional(), istochnik_ru: str.optional(), dannye: z.record(z.string(), z.unknown()).optional(), dop: z.boolean().optional(), vtoraya: z.string().regex(/^[a-z0-9-]+$/).optional(), css: z.array(z.string().regex(/^[\w-]+$/)).default([]),
     model3d: z.object({ glb: z.string().regex(/^[\w\/.-]+\.glb$/), kicker: str.default('Игра дня · 3D'), h2: str, lead: str, alt: str,
       razmer: str, pravila: z.array(str).min(1),
       // Части модели (r593): uzel — имя узла в .glb (extras.uzel); подпись — HTML рядом со сценой, не на 3D.
@@ -38,7 +41,8 @@ export const skhema = z.object({
       zastavka: z.enum(['rolik', 'kadr']).optional(), razmer: str.default('около 1 МБ'), pravila: z.array(str).min(1) }).optional() }),
   pervenstvo: z.object({ kicker: str, h2: str, granica: str, net: str, kolonki: z.array(str), stroki: z.array(z.array(str)) }),
 }).superRefine((d, ctx) => {
-  if (!fs.existsSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`) || !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.imya}.js`))
+  if (!d.igra.imya && d.key < '02-01') ctx.addIssue({ code: 'custom', path: ['igra', 'imya'], message: 'нет igra.imya' });
+  if (d.igra.imya && (!fs.existsSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`) || !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.imya}.js`)))
     ctx.addIssue({ code: 'custom', path: ['igra', 'imya'], message: `игры ${d.muzei}/${d.igra.imya} нет (html в src/data/igry, js в public/muzei/<музей>/igry)` });
   if (d.igra.vtoraya && (!fs.existsSync(`src/data/igry/${d.muzei}/${d.igra.vtoraya}.html`) || !fs.existsSync(`public/muzei/${d.muzei}/igry/${d.igra.vtoraya}.js`)))
     ctx.addIssue({ code: 'custom', path: ['igra', 'vtoraya'], message: `игры ${d.muzei}/${d.igra.vtoraya} нет (html в src/data/igry, js в public/muzei/<музей>/igry)` });
