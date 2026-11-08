@@ -89,8 +89,20 @@ def atribuciya(avtor, muzey, card, fond_name):
     if not (muzey or '').strip() or not re.match(r'https?://', card or ''):
         sys.exit('--hranitsya: нужны полное название музея и --card — адрес карточки предмета')
     m = GK_NOMER.search(card)
-    nomer = f'Госкаталог музейного фонда РФ, № {m[1]}' if m else f'{fond_name}, карточка {card}'
+    nomer = f'Госкаталог музейного фонда РФ, № {gk_regnomer(m[1])}' if m else f'{fond_name}, карточка {card}'
     return f'Фото: {avtor.strip().removeprefix("Фото:").strip()}. Хранится: {muzey.strip().rstrip(".")}. {nomer}'
+
+
+def gk_regnomer(card_id):
+    """Р635: номер Госкаталога — поле regNumber карточки /exhibits/{id}; id портала (collections?id=) — только адрес ссылки."""
+    px = ru_proxy()
+    op = urllib.request.build_opener(urllib.request.ProxyHandler({'https': px, 'http': px}))
+    req = urllib.request.Request(f'https://goskatalog.ru/muzfo-rest/rest/exhibits/{card_id}', headers={
+        'User-Agent': BROWSER['User-Agent'], 'Accept': 'application/json', 'Referer': 'https://goskatalog.ru/portal/'})
+    rn = str(json.loads(op.open(req, timeout=40).read()).get('regNumber') or '').strip()
+    if not rn:
+        sys.exit(f'--hranitsya: у карточки {card_id} нет номера Госкаталога (regNumber) — подпись не ставится')
+    return rn
 
 
 FREE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc[ -]by(-sa)?[ -]?\d|cc[ -]by(-sa)?$)', re.I)
@@ -213,7 +225,7 @@ def gk_pasport(opener, o):
         except Exception:
             GK_MUZEI[m] = ''
     data = k.get('periodStr') or (k.get('startDate') or '')[:4] or 'дата не указана'
-    return (f"паспорт: Госкаталог № {o['id']} (рег. {o.get('regNumber')}, инв. {o.get('invNumber') or '—'}) | {data} | "
+    return (f"паспорт: Госкаталог № {o.get('regNumber') or '— нет regNumber'} (карточка {o['id']}, инв. {o.get('invNumber') or '—'}) | {data} | "
             f"хранится: {GK_MUZEI[m] or 'музей ' + str(m)} | права: Р136 — подпись «Фото: автор, год. Хранится: музей. "
             f"Госкаталог № …», ст. 1274 ГК РФ")
 
