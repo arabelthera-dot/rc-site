@@ -36,5 +36,11 @@ proba('164: тексты kazhdomu-svoyo-mesto в перевод, коды и src
   return k.some((x) => x.endsWith('dannye.podpisi.0.tekst')) && k.some((x) => x.endsWith('dannye.mesta.0.verno_ru'))
     && !k.some((x) => /\.(kod|mesto|src)$/.test(x));
 })());
+// zvenya-pod-koleso (январь 01-09, данными): число звеньев 3–12, без шагов — отказ.
+const zv = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/zvenya-pod-koleso.json', import.meta.url), 'utf8'));
+const pravkaZv = (fn) => { const o = structuredClone(zv); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике zvenya-pod-koleso (01-09) приняты', igraDannymi.safeParse(zv).success);
+proba('76: zvenya-pod-koleso — звеньев 1 — отказ', !pravkaZv((d) => { d.zvenev = 1; }));
+proba('76: zvenya-pod-koleso — без шага «edet» — отказ', !pravkaZv((d) => { delete d.edet; }));
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);
