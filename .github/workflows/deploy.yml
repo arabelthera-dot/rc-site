@@ -77,6 +77,9 @@ jobs:
       PUBLIC_POCHTA: ${{ vars.PUBLIC_POCHTA }}
       PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}
       PUBLIC_POCHTA_SPISOK: ${{ vars.PUBLIC_POCHTA_SPISOK }}
+      # Выход по дате (Р686 п.7, src/lib/vyhod.mjs): '1' — день с god_pokaza выходит в свой день ночной пересборкой
+      # (schedule выше); пусто — выключено, все готовые дни на сайте сразу, как раньше.
+      RC_PO_DATE: ${{ vars.RC_PO_DATE }}
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
       # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.

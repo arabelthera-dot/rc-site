@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { zhurnal } from '../lib/redakciya.mjs';
 import { kadryXX } from '../lib/zakon.mjs';
 import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
+import { vyshel } from '../lib/vyhod.mjs';
 
 const read = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 const DAYS = 'src/content/days';
@@ -37,7 +38,7 @@ export function luchshieDni(root = '.') {
     for (const f of fs.readdirSync(path.join(root, DAYS, m)).filter((x) => x.endsWith('.json'))) {
       const d = read(path.join(root, DAYS, m, f));
       const id = `${m}/${d.key}`;
-      if ((d.legacy_page || d.body?.length) && d.hook && !waivers[m] && !waivers[id] && sKadrom.has(id) && !bezOsnovaniya.has(id)) out.add(id);
+      if ((d.legacy_page || d.body?.length) && d.hook && !waivers[m] && !waivers[id] && sKadrom.has(id) && !bezOsnovaniya.has(id) && vyshel({ museum: m, ...d })) out.add(id); // до своего дня — не в карте (src/lib/vyhod.mjs)
     }
   return out;
 }
