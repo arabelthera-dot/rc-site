@@ -163,6 +163,13 @@
       "punkt": "16"
     },
     {
+      "imya": "citaty.yazyk",
+      "chto": "язык цитаты, код BCP 47: be — белорусский, cu — церковнославянский; поля нет — русская (docs/perevod-standart.md)",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "16"
+    },
+    {
       "imya": "velichina_chislo",
       "chto": "главное число дня",
       "na_stranicu": true,
