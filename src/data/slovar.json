@@ -1,7 +1,52 @@
 {
+  "_roli": {
+    "_opisanie": "Закрытый список ролей связи дня со словарём (п. 31, Р664): что запись делает в этом дне. Роль ставится в карточке дня полем slovar_roli — { \"tip:slug\": \"rol\" }; связь без роли значит upomyanut. Другие роли не заводить — сначала дописать сюда. Подробно и пример — docs/spravochniki-standart.md, раздел 31.",
+    "geroy": {
+      "nazvanie": "герой дня",
+      "tipy": [
+        "lyudi",
+        "narod"
+      ],
+      "cidoc": "P11 had participant (главный)"
+    },
+    "izobrel": {
+      "nazvanie": "изобрёл, создал, построил, написал, открыл",
+      "tipy": [
+        "lyudi",
+        "narod"
+      ],
+      "cidoc": "P14 carried out by / P94 has created"
+    },
+    "uchastnik": {
+      "nazvanie": "участник события",
+      "tipy": [
+        "lyudi",
+        "narod"
+      ],
+      "cidoc": "P11 had participant"
+    },
+    "mesto": {
+      "nazvanie": "место, где это было",
+      "tipy": [
+        "mesto"
+      ],
+      "cidoc": "P7 took place at"
+    },
+    "upomyanut": {
+      "nazvanie": "упомянут в дне",
+      "tipy": [
+        "lyudi",
+        "mesto",
+        "narod",
+        "tema"
+      ],
+      "cidoc": "P67 refers to"
+    }
+  },
   "lyudi:aleksandr-benua": {
     "tip": "lyudi",
     "nazvanie": "Александр Бенуа",
+    "pol": "m",
     "kratko": "Художник, историк искусства, один из основателей «Мира искусства».",
     "normativ": {
       "baza": "LoC",
@@ -19,6 +64,7 @@
   "lyudi:aleksandr-deyneka": {
     "tip": "lyudi",
     "nazvanie": "Александр Дейнека",
+    "pol": "m",
     "kratko": "Советский живописец и график, автор «Обороны Севастополя».",
     "normativ": {
       "baza": "LoC",
@@ -36,6 +82,7 @@
   "lyudi:aleksandr-grinberg": {
     "tip": "lyudi",
     "nazvanie": "Александр Гринберг",
+    "pol": "m",
     "kratko": "Архитектор, строил в 1920-е.",
     "latinica": "Aleksandr Grinberg",
     "latinica_iz": "translit"
@@ -43,6 +90,7 @@
   "lyudi:aleksandr-ivanov": {
     "tip": "lyudi",
     "nazvanie": "Александр Иванов",
+    "pol": "m",
     "kratko": "Живописец, двадцать лет писал «Явление Христа народу».",
     "normativ": {
       "baza": "LoC",
@@ -60,6 +108,7 @@
   "lyudi:aleksandr-karpinskiy": {
     "tip": "lyudi",
     "nazvanie": "Александр Карпинский",
+    "pol": "m",
     "kratko": "Геолог, первый выборный президент Академии наук.",
     "normativ": {
       "baza": "LoC",
@@ -77,6 +126,7 @@
   "lyudi:aleksandr-laktionov": {
     "tip": "lyudi",
     "nazvanie": "Александр Лактионов",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Письма с фронта».",
     "normativ": {
       "baza": "LoC",
@@ -94,6 +144,7 @@
   "lyudi:aleksandr-pushkin": {
     "tip": "lyudi",
     "nazvanie": "Александр Пушкин",
+    "pol": "m",
     "kratko": "Поэт, создатель современного русского литературного языка.",
     "normativ": {
       "baza": "LoC",
@@ -111,6 +162,7 @@
   "lyudi:aleksandr-suvorov": {
     "tip": "lyudi",
     "nazvanie": "Александр Суворов",
+    "pol": "m",
     "kratko": "Полководец, генералиссимус, не проиграл ни одного сражения.",
     "normativ": {
       "baza": "LoC",
@@ -128,6 +180,7 @@
   "lyudi:aleksandr-turchevich": {
     "tip": "lyudi",
     "nazvanie": "Александр Турчевич",
+    "pol": "m",
     "kratko": "Пермский архитектор XIX века.",
     "normativ": {
       "baza": "LoC",
@@ -145,6 +198,7 @@
   "lyudi:aleksey-savrasov": {
     "tip": "lyudi",
     "nazvanie": "Алексей Саврасов",
+    "pol": "m",
     "kratko": "Пейзажист, автор «Грачи прилетели».",
     "normativ": {
       "baza": "LoC",
@@ -164,6 +218,7 @@
   "lyudi:aleksey-shchusev": {
     "tip": "lyudi",
     "nazvanie": "Алексей Щусев",
+    "pol": "m",
     "kratko": "Архитектор, автор Казанского вокзала в Москве.",
     "normativ": {
       "baza": "LoC",
@@ -181,6 +236,7 @@
   "lyudi:aleksey-urmanov": {
     "tip": "lyudi",
     "nazvanie": "Алексей Урманов",
+    "pol": "m",
     "kratko": "Фигурист, олимпийский чемпион.",
     "normativ": {
       "baza": "LoC",
@@ -197,6 +253,7 @@
   "lyudi:aleksey-venecianov": {
     "tip": "lyudi",
     "nazvanie": "Алексей Венецианов",
+    "pol": "m",
     "kratko": "Живописец, первым сделал крестьянскую жизнь главным сюжетом картины.",
     "normativ": {
       "baza": "LoC",
@@ -214,6 +271,7 @@
   "lyudi:anatoliy-karpov": {
     "tip": "lyudi",
     "nazvanie": "Анатолий Карпов",
+    "pol": "m",
     "kratko": "Шахматист, чемпион мира.",
     "normativ": {
       "baza": "LoC",
@@ -230,6 +288,7 @@
   "lyudi:andrey-bogolyubskiy": {
     "tip": "lyudi",
     "nazvanie": "Андрей Боголюбский",
+    "pol": "m",
     "kratko": "Князь владимирский XII века.",
     "normativ": {
       "baza": "LoC",
@@ -247,6 +306,7 @@
   "lyudi:andrey-rublev": {
     "tip": "lyudi",
     "nazvanie": "Андрей Рублёв",
+    "pol": "m",
     "kratko": "Иконописец, автор «Троицы».",
     "normativ": {
       "baza": "LoC",
@@ -264,6 +324,7 @@
   "lyudi:arhip-kuindzhi": {
     "tip": "lyudi",
     "nazvanie": "Архип Куинджи",
+    "pol": "m",
     "kratko": "Пейзажист, мастер света в живописи.",
     "normativ": {
       "baza": "LoC",
@@ -281,6 +342,7 @@
   "lyudi:boris-kustodiev": {
     "tip": "lyudi",
     "nazvanie": "Борис Кустодиев",
+    "pol": "m",
     "kratko": "Живописец и график, певец купеческой и ярмарочной России.",
     "normativ": {
       "baza": "LoC",
@@ -298,6 +360,7 @@
   "lyudi:daniil-zabolotnyy": {
     "tip": "lyudi",
     "nazvanie": "Даниил Заболотный",
+    "pol": "m",
     "kratko": "Эпидемиолог, исследователь чумы.",
     "normativ": {
       "baza": "LoC",
@@ -315,6 +378,7 @@
   "lyudi:elena-vyalbe": {
     "tip": "lyudi",
     "nazvanie": "Елена Вяльбе",
+    "pol": "zh",
     "kratko": "Лыжница, чемпионка мира.",
     "latinica": "Yelena Vyalbe",
     "latinica_iz": "translit"
@@ -322,6 +386,7 @@
   "lyudi:elizaveta-bykova": {
     "tip": "lyudi",
     "nazvanie": "Елизавета Быкова",
+    "pol": "zh",
     "kratko": "Шахматистка, чемпионка мира.",
     "normativ": {
       "baza": "LoC",
@@ -339,6 +404,7 @@
   "lyudi:erofey-habarov": {
     "tip": "lyudi",
     "nazvanie": "Ерофей Хабаров",
+    "pol": "m",
     "kratko": "Землепроходец, прошёл по Амуру в XVII веке.",
     "normativ": {
       "baza": "LoC",
@@ -355,6 +421,7 @@
   "lyudi:faddey-bellinsgauzen": {
     "tip": "lyudi",
     "nazvanie": "Фаддей Беллинсгаузен",
+    "pol": "m",
     "kratko": "Мореплаватель, начальник экспедиции, открывшей Антарктиду.",
     "normativ": {
       "baza": "LoC",
@@ -372,6 +439,7 @@
   "lyudi:fedor-konyuhov": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Конюхов",
+    "pol": "m",
     "kratko": "Путешественник, прошёл вокруг света в одиночку.",
     "normativ": {
       "baza": "LoC",
@@ -388,6 +456,7 @@
   "lyudi:fedor-reshetnikov": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Решетников",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Опять двойка».",
     "normativ": {
       "baza": "LoC",
@@ -405,6 +474,7 @@
   "lyudi:fedor-ushakov": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Ушаков",
+    "pol": "m",
     "kratko": "Флотоводец, адмирал Черноморского флота.",
     "normativ": {
       "baza": "LoC",
@@ -422,6 +492,7 @@
   "lyudi:fedor-vasilev": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Васильев",
+    "pol": "m",
     "kratko": "Пейзажист, автор «Оттепели» и «Мокрого луга».",
     "normativ": {
       "baza": "LoC",
@@ -439,6 +510,7 @@
   "lyudi:filipp-malyavin": {
     "tip": "lyudi",
     "nazvanie": "Филипп Малявин",
+    "pol": "m",
     "kratko": "Живописец, автор «Вихря».",
     "normativ": {
       "baza": "LoC",
@@ -456,6 +528,7 @@
   "lyudi:georgiy-sedov": {
     "tip": "lyudi",
     "nazvanie": "Георгий Седов",
+    "pol": "m",
     "kratko": "Полярный исследователь, шёл к Северному полюсу.",
     "normativ": {
       "baza": "LoC",
@@ -473,6 +546,7 @@
   "lyudi:german-titov": {
     "tip": "lyudi",
     "nazvanie": "Герман Титов",
+    "pol": "m",
     "kratko": "Лётчик-космонавт, первым провёл в космосе больше суток.",
     "normativ": {
       "baza": "LoC",
@@ -490,6 +564,7 @@
   "lyudi:grigoriy-myasoedov": {
     "tip": "lyudi",
     "nazvanie": "Григорий Мясоедов",
+    "pol": "m",
     "kratko": "Художник-передвижник, автор «Косцов».",
     "normativ": {
       "baza": "LoC",
@@ -507,6 +582,7 @@
   "lyudi:ilya-golosov": {
     "tip": "lyudi",
     "nazvanie": "Илья Голосов",
+    "pol": "m",
     "kratko": "Архитектор-конструктивист.",
     "normativ": {
       "baza": "LoC",
@@ -524,6 +600,7 @@
   "lyudi:ilya-repin": {
     "tip": "lyudi",
     "nazvanie": "Илья Репин",
+    "pol": "m",
     "kratko": "Живописец, автор «Бурлаков на Волге» и «Запорожцев».",
     "normativ": {
       "baza": "LoC",
@@ -541,6 +618,7 @@
   "lyudi:isaak-levitan": {
     "tip": "lyudi",
     "nazvanie": "Исаак Левитан",
+    "pol": "m",
     "kratko": "Пейзажист, автор «Над вечным покоем».",
     "normativ": {
       "baza": "LoC",
@@ -558,6 +636,7 @@
   "lyudi:ivan-ayvazovskiy": {
     "tip": "lyudi",
     "nazvanie": "Иван Айвазовский",
+    "pol": "m",
     "kratko": "Художник-маринист, автор «Девятого вала».",
     "normativ": {
       "baza": "LoC",
@@ -577,6 +656,7 @@
   "lyudi:ivan-bilibin": {
     "tip": "lyudi",
     "nazvanie": "Иван Билибин",
+    "pol": "m",
     "kratko": "Художник-иллюстратор русских сказок и былин.",
     "normativ": {
       "baza": "LoC",
@@ -594,6 +674,7 @@
   "lyudi:ivan-hrutskiy": {
     "tip": "lyudi",
     "nazvanie": "Иван Хруцкий",
+    "pol": "m",
     "kratko": "Живописец, мастер натюрморта.",
     "normativ": {
       "baza": "VIAF",
@@ -612,6 +693,7 @@
   "lyudi:ivan-kramskoy": {
     "tip": "lyudi",
     "nazvanie": "Иван Крамской",
+    "pol": "m",
     "kratko": "Живописец, один из основателей передвижников.",
     "normativ": {
       "baza": "LoC",
@@ -629,6 +711,7 @@
   "lyudi:ivan-papanin": {
     "tip": "lyudi",
     "nazvanie": "Иван Папанин",
+    "pol": "m",
     "kratko": "Полярник, начальник станции «Северный полюс-1».",
     "normativ": {
       "baza": "LoC",
@@ -646,6 +729,7 @@
   "lyudi:ivan-shishkin": {
     "tip": "lyudi",
     "nazvanie": "Иван Шишкин",
+    "pol": "m",
     "kratko": "Пейзажист, певец русского леса.",
     "normativ": {
       "baza": "LoC",
@@ -663,6 +747,7 @@
   "lyudi:karl-bryullov": {
     "tip": "lyudi",
     "nazvanie": "Карл Брюллов",
+    "pol": "m",
     "kratko": "Живописец, автор «Последнего дня Помпеи».",
     "normativ": {
       "baza": "LoC",
@@ -681,6 +766,7 @@
   "lyudi:karl-kebah": {
     "tip": "lyudi",
     "nazvanie": "Карл Кебах",
+    "pol": "m",
     "kratko": "Садовый мастер, создатель крымских парков.",
     "latinica": "Karl Kebakh",
     "latinica_iz": "translit"
@@ -688,6 +774,7 @@
   "lyudi:kazimir-malevich": {
     "tip": "lyudi",
     "nazvanie": "Казимир Малевич",
+    "pol": "m",
     "kratko": "Художник, создатель супрематизма и «Чёрного квадрата».",
     "normativ": {
       "baza": "LoC",
@@ -705,6 +792,7 @@
   "lyudi:konstantin-flavickiy": {
     "tip": "lyudi",
     "nazvanie": "Константин Флавицкий",
+    "pol": "m",
     "kratko": "Живописец, автор «Княжны Таракановой».",
     "normativ": {
       "baza": "LoC",
@@ -722,6 +810,7 @@
   "lyudi:konstantin-korovin": {
     "tip": "lyudi",
     "nazvanie": "Константин Коровин",
+    "pol": "m",
     "kratko": "Живописец и театральный художник, русский импрессионист.",
     "normativ": {
       "baza": "LoC",
@@ -739,6 +828,7 @@
   "lyudi:konstantin-makovskiy": {
     "tip": "lyudi",
     "nazvanie": "Константин Маковский",
+    "pol": "m",
     "kratko": "Живописец, автор «Боярской свадьбы».",
     "normativ": {
       "baza": "LoC",
@@ -756,6 +846,7 @@
   "lyudi:konstantin-melnikov": {
     "tip": "lyudi",
     "nazvanie": "Константин Мельников",
+    "pol": "m",
     "kratko": "Архитектор русского авангарда.",
     "normativ": {
       "baza": "LoC",
@@ -773,6 +864,7 @@
   "lyudi:konstantin-yuon": {
     "tip": "lyudi",
     "nazvanie": "Константин Юон",
+    "pol": "m",
     "kratko": "Живописец, пейзажист русской провинции.",
     "normativ": {
       "baza": "LoC",
@@ -790,6 +882,7 @@
   "lyudi:kuzma-petrov-vodkin": {
     "tip": "lyudi",
     "nazvanie": "Кузьма Петров-Водкин",
+    "pol": "m",
     "kratko": "Живописец, автор «Купания красного коня».",
     "normativ": {
       "baza": "LoC",
@@ -807,6 +900,7 @@
   "lyudi:mark-shagal": {
     "tip": "lyudi",
     "nazvanie": "Марк Шагал",
+    "pol": "m",
     "kratko": "Живописец родом из Витебска.",
     "normativ": {
       "baza": "LoC",
@@ -821,9 +915,15 @@
       "smert": "1985-03-28"
     }
   },
+  "lyudi:mihail-danilov": {
+    "tip": "lyudi",
+    "nazvanie": "Михаил Васильевич Данилов",
+    "kratko": "Русский артиллерист XVIII века, один из создателей «единорога», автор записок."
+  },
   "lyudi:mihail-larionov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Ларионов",
+    "pol": "m",
     "kratko": "Живописец русского авангарда, создатель лучизма.",
     "normativ": {
       "baza": "LoC",
@@ -841,6 +941,7 @@
   "lyudi:mihail-lazarev": {
     "tip": "lyudi",
     "nazvanie": "Михаил Лазарев",
+    "pol": "m",
     "kratko": "Мореплаватель, участник открытия Антарктиды.",
     "normativ": {
       "baza": "LoC",
@@ -858,6 +959,7 @@
   "lyudi:mihail-lermontov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Лермонтов",
+    "pol": "m",
     "kratko": "Поэт и прозаик, автор «Героя нашего времени».",
     "normativ": {
       "baza": "LoC",
@@ -875,6 +977,7 @@
   "lyudi:mihail-nesterov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Нестеров",
+    "pol": "m",
     "kratko": "Живописец, автор «Видения отроку Варфоломею».",
     "normativ": {
       "baza": "LoC",
@@ -893,6 +996,7 @@
   "lyudi:mihail-somov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Сомов",
+    "pol": "m",
     "kratko": "Океанолог, начальник первой советской антарктической экспедиции.",
     "latinica": "Mikhail Somov",
     "latinica_iz": "translit"
@@ -900,6 +1004,7 @@
   "lyudi:mihail-vodopyanov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Водопьянов",
+    "pol": "m",
     "kratko": "Полярный лётчик, первым посадил самолёт на Северном полюсе.",
     "normativ": {
       "baza": "LoC",
@@ -917,6 +1022,7 @@
   "lyudi:mihail-vrubel": {
     "tip": "lyudi",
     "nazvanie": "Михаил Врубель",
+    "pol": "m",
     "kratko": "Живописец, автор «Демона сидящего».",
     "normativ": {
       "baza": "LoC",
@@ -934,6 +1040,7 @@
   "lyudi:nikolay-belelyubskiy": {
     "tip": "lyudi",
     "nazvanie": "Николай Белелюбский",
+    "pol": "m",
     "kratko": "Инженер-мостостроитель.",
     "normativ": {
       "baza": "LoC",
@@ -951,6 +1058,7 @@
   "lyudi:nikolay-bogdanov-belskiy": {
     "tip": "lyudi",
     "nazvanie": "Николай Богданов-Бельский",
+    "pol": "m",
     "kratko": "Живописец, писал крестьянских детей и сельскую школу.",
     "normativ": {
       "baza": "LoC",
@@ -968,6 +1076,7 @@
   "lyudi:nikolay-ge": {
     "tip": "lyudi",
     "nazvanie": "Николай Ге",
+    "pol": "m",
     "kratko": "Живописец, автор «Тайной вечери» и «Что есть истина?».",
     "normativ": {
       "baza": "LoC",
@@ -985,6 +1094,7 @@
   "lyudi:nikolay-gogol": {
     "tip": "lyudi",
     "nazvanie": "Николай Гоголь",
+    "pol": "m",
     "kratko": "Писатель, автор «Мёртвых душ».",
     "normativ": {
       "baza": "LoC",
@@ -1002,6 +1112,7 @@
   "lyudi:nikolay-rerih": {
     "tip": "lyudi",
     "nazvanie": "Николай Рерих",
+    "pol": "m",
     "kratko": "Живописец, путешественник, исследователь Азии.",
     "normativ": {
       "baza": "LoC",
@@ -1019,6 +1130,7 @@
   "lyudi:nikolay-vavilov": {
     "tip": "lyudi",
     "nazvanie": "Николай Вавилов",
+    "pol": "m",
     "kratko": "Генетик и ботаник, собрал мировую коллекцию семян.",
     "normativ": {
       "baza": "LoC",
@@ -1036,6 +1148,7 @@
   "lyudi:nikolay-yaroshenko": {
     "tip": "lyudi",
     "nazvanie": "Николай Ярошенко",
+    "pol": "m",
     "kratko": "Художник-передвижник, автор «Всюду жизнь».",
     "normativ": {
       "baza": "LoC",
@@ -1053,6 +1166,7 @@
   "lyudi:orest-kiprenskiy": {
     "tip": "lyudi",
     "nazvanie": "Орест Кипренский",
+    "pol": "m",
     "kratko": "Портретист, автор портрета Пушкина.",
     "normativ": {
       "baza": "LoC",
@@ -1070,6 +1184,7 @@
   "lyudi:pavel-fedotov": {
     "tip": "lyudi",
     "nazvanie": "Павел Федотов",
+    "pol": "m",
     "kratko": "Живописец, автор «Сватовства майора».",
     "normativ": {
       "baza": "LoC",
@@ -1087,6 +1202,7 @@
   "lyudi:pavel-filonov": {
     "tip": "lyudi",
     "nazvanie": "Павел Филонов",
+    "pol": "m",
     "kratko": "Живописец русского авангарда.",
     "normativ": {
       "baza": "LoC",
@@ -1101,9 +1217,15 @@
       "smert": "1941"
     }
   },
+  "lyudi:pavel-i": {
+    "tip": "lyudi",
+    "nazvanie": "Павел I",
+    "kratko": "Российский император с 1796 по 1801 год; переустроил русскую артиллерию."
+  },
   "lyudi:pavel-nahimov": {
     "tip": "lyudi",
     "nazvanie": "Павел Нахимов",
+    "pol": "m",
     "kratko": "Адмирал, герой Синопа и обороны Севастополя.",
     "normativ": {
       "baza": "LoC",
@@ -1121,6 +1243,7 @@
   "lyudi:petr-i": {
     "tip": "lyudi",
     "nazvanie": "Пётр I",
+    "pol": "m",
     "kratko": "Первый российский император.",
     "normativ": {
       "baza": "LoC",
@@ -1135,9 +1258,15 @@
       "smert": "1725"
     }
   },
+  "lyudi:petr-shuvalov": {
+    "tip": "lyudi",
+    "nazvanie": "Пётр Иванович Шувалов",
+    "kratko": "Граф, генерал-фельдцейхмейстер — глава русской артиллерии при Елизавете Петровне; при нём создан «единорог»."
+  },
   "lyudi:semen-remezov": {
     "tip": "lyudi",
     "nazvanie": "Семён Ремезов",
+    "pol": "m",
     "kratko": "Тобольский картограф и зодчий, автор «Чертёжной книги Сибири».",
     "normativ": {
       "baza": "LoC",
@@ -1155,6 +1284,7 @@
   "lyudi:sergey-gerasimov": {
     "tip": "lyudi",
     "nazvanie": "Сергей Герасимов",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Матери партизана».",
     "normativ": {
       "baza": "LoC",
@@ -1172,6 +1302,7 @@
   "lyudi:sergey-prokudin-gorskiy": {
     "tip": "lyudi",
     "nazvanie": "Сергей Прокудин-Горский",
+    "pol": "m",
     "kratko": "Фотограф, снимал Россию в цвете в начале XX века.",
     "normativ": {
       "baza": "LoC",
@@ -1189,6 +1320,7 @@
   "lyudi:sergey-vinogradov": {
     "tip": "lyudi",
     "nazvanie": "Сергей Виноградов",
+    "pol": "m",
     "kratko": "Живописец, пейзажист Союза русских художников.",
     "normativ": {
       "baza": "LoC",
@@ -1206,6 +1338,7 @@
   "lyudi:silvestr-shchedrin": {
     "tip": "lyudi",
     "nazvanie": "Сильвестр Щедрин",
+    "pol": "m",
     "kratko": "Пейзажист, писал Италию с натуры.",
     "normativ": {
       "baza": "LoC",
@@ -1223,6 +1356,7 @@
   "lyudi:stanislav-zhukovskiy": {
     "tip": "lyudi",
     "nazvanie": "Станислав Жуковский",
+    "pol": "m",
     "kratko": "Пейзажист, мастер усадебного пейзажа.",
     "normativ": {
       "baza": "LoC",
@@ -1240,6 +1374,7 @@
   "lyudi:stepan-makarov": {
     "tip": "lyudi",
     "nazvanie": "Степан Макаров",
+    "pol": "m",
     "kratko": "Адмирал, океанограф, создатель ледокола «Ермак».",
     "normativ": {
       "baza": "LoC",
@@ -1257,6 +1392,7 @@
   "lyudi:tatyana-yablonskaya": {
     "tip": "lyudi",
     "nazvanie": "Татьяна Яблонская",
+    "pol": "zh",
     "kratko": "Советская живописица, автор «Хлеба».",
     "normativ": {
       "baza": "LoC",
@@ -1274,6 +1410,7 @@
   "lyudi:valentin-serov": {
     "tip": "lyudi",
     "nazvanie": "Валентин Серов",
+    "pol": "m",
     "kratko": "Живописец, портретист, автор «Девочки с персиками».",
     "normativ": {
       "baza": "LoC",
@@ -1291,6 +1428,7 @@
   "lyudi:valentin-voyno-yasenetskiy": {
     "tip": "lyudi",
     "nazvanie": "Валентин Войно-Ясенецкий (святитель Лука)",
+    "pol": "m",
     "kratko": "Хирург и архиепископ, автор «Очерков гнойной хирургии».",
     "normativ": {
       "baza": "LoC",
@@ -1308,6 +1446,7 @@
   "lyudi:vasilisa-kozhina": {
     "tip": "lyudi",
     "nazvanie": "Василиса Кожина",
+    "pol": "zh",
     "kratko": "Смоленская крестьянка, партизанка 1812 года.",
     "latinica": "Vasilisa Kozhina",
     "latinica_iz": "translit"
@@ -1315,6 +1454,7 @@
   "lyudi:vasiliy-kandinskiy": {
     "tip": "lyudi",
     "nazvanie": "Василий Кандинский",
+    "pol": "m",
     "kratko": "Живописец, один из создателей беспредметного искусства.",
     "normativ": {
       "baza": "LoC",
@@ -1333,6 +1473,7 @@
   "lyudi:vasiliy-maksimov": {
     "tip": "lyudi",
     "nazvanie": "Василий Максимов",
+    "pol": "m",
     "kratko": "Художник-передвижник, писал деревенскую жизнь.",
     "normativ": {
       "baza": "LoC",
@@ -1350,6 +1491,7 @@
   "lyudi:vasiliy-perov": {
     "tip": "lyudi",
     "nazvanie": "Василий Перов",
+    "pol": "m",
     "kratko": "Художник-передвижник, мастер жанровой картины и портрета.",
     "normativ": {
       "baza": "LoC",
@@ -1367,6 +1509,7 @@
   "lyudi:vasiliy-polenov": {
     "tip": "lyudi",
     "nazvanie": "Василий Поленов",
+    "pol": "m",
     "kratko": "Живописец, автор «Московского дворика».",
     "normativ": {
       "baza": "LoC",
@@ -1384,6 +1527,7 @@
   "lyudi:vasiliy-pukirev": {
     "tip": "lyudi",
     "nazvanie": "Василий Пукирев",
+    "pol": "m",
     "kratko": "Живописец, автор «Неравного брака».",
     "normativ": {
       "baza": "VIAF",
@@ -1402,6 +1546,7 @@
   "lyudi:vasiliy-smyslov": {
     "tip": "lyudi",
     "nazvanie": "Василий Смыслов",
+    "pol": "m",
     "kratko": "Шахматист, чемпион мира.",
     "normativ": {
       "baza": "LoC",
@@ -1419,6 +1564,7 @@
   "lyudi:vasiliy-surikov": {
     "tip": "lyudi",
     "nazvanie": "Василий Суриков",
+    "pol": "m",
     "kratko": "Исторический живописец, автор «Боярыни Морозовой».",
     "normativ": {
       "baza": "LoC",
@@ -1436,6 +1582,7 @@
   "lyudi:vasiliy-tropinin": {
     "tip": "lyudi",
     "nazvanie": "Василий Тропинин",
+    "pol": "m",
     "kratko": "Портретист, автор прижизненного портрета Пушкина.",
     "normativ": {
       "baza": "LoC",
@@ -1453,6 +1600,7 @@
   "lyudi:vasiliy-vereshchagin": {
     "tip": "lyudi",
     "nazvanie": "Василий Верещагин",
+    "pol": "m",
     "kratko": "Художник-баталист, писал войну без парадности.",
     "normativ": {
       "baza": "LoC",
@@ -1470,6 +1618,7 @@
   "lyudi:viktor-borisov-musatov": {
     "tip": "lyudi",
     "nazvanie": "Виктор Борисов-Мусатов",
+    "pol": "m",
     "kratko": "Живописец, автор «Водоёма».",
     "normativ": {
       "baza": "LoC",
@@ -1487,6 +1636,7 @@
   "lyudi:viktor-vasnecov": {
     "tip": "lyudi",
     "nazvanie": "Виктор Васнецов",
+    "pol": "m",
     "kratko": "Живописец, автор «Богатырей» и «Алёнушки».",
     "normativ": {
       "baza": "LoC",
@@ -1504,6 +1654,7 @@
   "lyudi:vitus-bering": {
     "tip": "lyudi",
     "nazvanie": "Витус Беринг",
+    "pol": "m",
     "kratko": "Мореплаватель, начальник Камчатских экспедиций.",
     "normativ": {
       "baza": "LoC",
@@ -1521,6 +1672,7 @@
   "lyudi:vladimir-borovikovskiy": {
     "tip": "lyudi",
     "nazvanie": "Владимир Боровиковский",
+    "pol": "m",
     "kratko": "Портретист XVIII века, автор портрета Лопухиной.",
     "normativ": {
       "baza": "LoC",
@@ -1538,6 +1690,7 @@
   "lyudi:vladimir-shuhov": {
     "tip": "lyudi",
     "nazvanie": "Владимир Шухов",
+    "pol": "m",
     "kratko": "Инженер, создатель сетчатых гиперболоидных башен.",
     "normativ": {
       "baza": "LoC",
@@ -1555,6 +1708,7 @@
   "lyudi:yuriy-dolgorukiy": {
     "tip": "lyudi",
     "nazvanie": "Юрий Долгорукий",
+    "pol": "m",
     "kratko": "Князь XII века, основатель Москвы.",
     "normativ": {
       "baza": "LoC",
@@ -1572,6 +1726,7 @@
   "lyudi:yuriy-gagarin": {
     "tip": "lyudi",
     "nazvanie": "Юрий Гагарин",
+    "pol": "m",
     "kratko": "Лётчик-космонавт, первый человек в космосе.",
     "normativ": {
       "baza": "LoC",
@@ -1589,6 +1744,7 @@
   "lyudi:yuriy-pimenov": {
     "tip": "lyudi",
     "nazvanie": "Юрий Пименов",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Новой Москвы».",
     "normativ": {
       "baza": "LoC",
@@ -1937,6 +2093,11 @@
     "tip": "narod",
     "nazvanie": "Юкагиры",
     "kratko": "Коренной народ северо-востока Якутии и Колымы."
+  },
+  "tema:artilleriya": {
+    "tip": "tema",
+    "nazvanie": "Артиллерия",
+    "kratko": "Пушки, гаубицы и другие орудия, а также войска, которые из них стреляют."
   },
   "tema:ikona": {
     "tip": "tema",
