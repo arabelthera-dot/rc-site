@@ -132,6 +132,8 @@ export const polyaDnya = (slovar) => ({
   voinskaya_chast: str.optional(),
   operaciya: str.optional(),
   front: str.optional(),
+  // п.41: шифры, номера, коды дословно как в тексте дня — на странице они в <span translate="no"> (src/lib/perevod.mjs).
+  ne_perevodit: z.array(str).optional(),
   shkola: shkola.optional(),
   etiketka_oblozhki: z.array(str).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
   pokazan_sergeyu: pokazanSergeyu.optional(),

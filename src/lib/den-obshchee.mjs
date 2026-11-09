@@ -9,6 +9,7 @@ import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
 import { polyaKartinki, polyaFakta, polyaDnya, status } from './forma-dnya.mjs';
 import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
+import { faktyIzUtverzhdeno } from './fakty-iz-utverzhdeno.mjs';
 import { stroka } from './yazyki.mjs';
 
 // Служебные подписи страницы (пункты меню, викторина, итог, аудиогид, ролик) — шаблоном из src/data/stroki.json (п. 54):
@@ -29,7 +30,8 @@ export const kartinka = z.object({ src: str, alt: str, data_source: str, license
 export const kadr = kartinka.extend({ width: z.number().int().positive().optional(), height: z.number().int().positive().optional(), klass: z.literal('portret').optional() });
 // kadr у факта (Р17, «очень много картинок»: каждая — у своего факта) — виден под строкой факта, вне «Подробнее».
 // utverzhden — дата «да» Сергея по факту (ГГГГ-ММ-ДД, Р166/Р176); шаблон его не выводит, замок музея решает, обязателен ли.
-export const udar = z.object({ summary: str, find: z.boolean().optional(), tag: str.optional(), podrobnee: str.optional(), det: z.array(str).min(1), src: str,
+// n — номер факта в утверждённом (src/data/utverzhdeno/<музей>/ММ-ДД.json): текст и порядок берутся оттуда (Р686, fakty-iz-utverzhdeno.mjs).
+export const udar = z.object({ n: z.number().int().positive().optional(), summary: str, find: z.boolean().optional(), tag: str.optional(), podrobnee: str.optional(), det: z.array(str).min(1), src: str,
   otryvok: str.optional(), stranica: str.optional(), href: z.string().url().optional(), pometka: z.enum([...POMETKI, ...POMETKI_SLUZHEBNYE]).optional(), kadr: kadr.optional(),
   utverzhden: z.string().regex(/^\d{4}-\d\d-\d\d$/, 'utverzhden — дата ГГГГ-ММ-ДД').optional(),
   // Поля формы Р635 у факта (id, istochnik, dlya_voprosa, otvet, otvet_edinstvennyj); с 02-01 обязательны (Р660).
@@ -223,7 +225,9 @@ export function zagruzitKartochki(DIR, skhemy) {
     if (files.length && !skhemy[muzei]) throw new Error(`${DIR}/${muzei}: у музея нет схемы карточки дня`);
     return files.flatMap((f) => {
       const file = path.join(DIR, muzei, f);
-      const syroe = YAML.parse(fs.readFileSync(file, 'utf8'));
+      const izUtv = faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(file, 'utf8')), muzei, f.slice(0, -5));
+      if (izUtv.oshibki.length) { oshibki.push(...izUtv.oshibki); return []; }
+      const syroe = izUtv.syroe;
       const r = skhemy[muzei].safeParse(syroe);
       if (!r.success) { oshibki.push(`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`); return []; }
       if (r.data.muzei !== muzei || r.data.key !== f.slice(0, -5)) { oshibki.push(`${file}: muzei/key карточки не совпадают с путём`); return []; }

@@ -3,14 +3,18 @@
 // Поля нет — строки нет.
 import InlineCss from '../InlineCss.astro';
 import { TIPY, zapis, adres } from '../../lib/slovar.mjs';
+// п.42: названия словаря русские — на странице другого языка у ссылки lang="ru"; на русской пометки нет.
+import { yazykVstavki } from '../../lib/perevod.mjs';
+import { razobratPut } from '../../lib/yazyki.mjs';
 const { ids = [] } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const yazykNazvaniya = yazykVstavki(razobratPut(Astro.url.pathname, base).code);
 const svyazi = TIPY.flatMap((t) => ids.filter((id) => id.startsWith(`${t.tip}:`))).map((id) => ({ href: adres(base, id), ...zapis(id) }));
 ---
 {svyazi.length > 0 && <>
   <InlineCss file="rc-slovar.css" />
   <nav class="slovar-stroka" aria-label="Связи дня">
     <span class="slovar-lbl">Связи:</span>
-    {svyazi.map((z) => <a href={z.href} title={z.kratko}>{z.nazvanie}</a>)}
+    {svyazi.map((z) => <a href={z.href} title={z.kratko} {...yazykNazvaniya}>{z.nazvanie}</a>)}
   </nav>
 </>}

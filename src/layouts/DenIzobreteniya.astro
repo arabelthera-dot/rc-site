@@ -9,6 +9,7 @@
 // Дальше страницу ведёт тот же конвейер, что и старый HTML (src/integrations/full-pages.mjs, job «den-shablon»):
 // полоса, подвал, шрифты, метрика, абсолютные адреса от <base>, соседи; noindex, вне карты сайта.
 import fs from 'node:fs';
+import { nePerevodit } from '../lib/perevod.mjs';
 import { q, json, chromeJs as chromeJsF, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml } from '../lib/den-razmetka.mjs';
 import { titleVkladki } from '../lib/title-vkladki.mjs';
 import IgraRamka from '../components/den/IgraRamka.astro';
@@ -78,7 +79,9 @@ const o = d.oblozhka;
 const faktyBloki = [d.fakty ?? []].flat();
 const kal = d.kalendar ?? { h2: 'Календарь изобретений', intro: 'Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.' };
 // Уникальные разделы дня (карточка razdely, Р286) — разметкой 1:1 сразу после своего блока; нет — пусто.
-const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
+// п.41: шифры и номера из поля ne_perevodit — в translate="no" (рассказ и факты; уникальные разделы razdely — 1:1, не трогаются).
+const faktyHtmlD = (b) => nePerevodit(faktyHtml(b), d.ne_perevodit);
+const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtmlD), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
 ---
 <!DOCTYPE html>
 <html lang="ru" data-museum={d.muzei} data-shablon="den-izobreteniya" data-lupa-vse>
@@ -170,12 +173,12 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
     <div class="kicker">{d.story.kicker}</div>
     <h2>{d.story.h2}</h2>
     {d.story.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>}
-    {d.story.udary && <Fragment set:html={udaryHtml(d.story.udary)} />}
+    {d.story.udary && <Fragment set:html={nePerevodit(udaryHtml(d.story.udary), d.ne_perevodit)} />}
     {d.story.abzacy && <Fragment set:html={d.story.abzacy.join('\n    ')} />}
   </div>
 </section><Fragment set:html={posle('story')} />
 
-<Fragment set:html={faktyBloki.filter((b) => !b.posle).map(faktyHtml).join('\n')} /><Fragment set:html={posle('fakty')} />
+<Fragment set:html={faktyBloki.filter((b) => !b.posle).map(faktyHtmlD).join('\n')} /><Fragment set:html={posle('fakty')} />
 
 <section class="wrap" id="dokument" data-proof-block aria-label="Документ первенства"></section><Fragment set:html={posle('dokument')} />
 

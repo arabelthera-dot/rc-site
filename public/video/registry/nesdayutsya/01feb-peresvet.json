@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "Инок Пересвет без доспеха вышел против богатыря в пять сажен — и с этого поединка началась победа на Куликовом поле",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42594532811) из сценария days/ns01feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 46.9,
+    "mb": 13.4
+  },
+  "vertical": {
+    "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 46.9,
+    "mb": 12.7
+  },
+  "poster": {
+    "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-9x16-poster.jpg",
+    "v": 1
+  }
+}
