@@ -78,7 +78,7 @@
       + '</div>'
       + '<audio id="agaudio" data-src="'+esc(CFG.audioSrc)+'" preload="none" controls style="width:100%;margin:14px 0 0;border-radius:10px;display:none"></audio>'
       + '<div class="agnav"><span class="lbl">Перейти к остановке:</span>'+stopsHtml+'</div>'
-      + (CFG.transcript && CFG.transcript.length ? '<details class="agtext"><summary>Текст экскурсии — читать глазами</summary>'+CFG.transcript.join('')+'</details>' : '')
+      + (CFG.transcript && CFG.transcript.length ? '<details class="agtext"><summary>Текст экскурсии — читать глазами</summary>'+CFG.transcript.map(function(t){return /^\s*</.test(t)?t:'<p>'+String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</p>';}).join('')+'</details>' : '')
       + (CFG.note ? '<p class="ag-note">'+esc(CFG.note)+'</p>' : '')
     + '</div>'
     + '</div>';
