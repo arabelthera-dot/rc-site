@@ -54,7 +54,15 @@ export const knopkiJs = `(function(){
   if ($('listenBtn')) $('listenBtn').onclick = function(){ $('audioguide').scrollIntoView({behavior:'smooth'}); };
 })();`;
 // Кадр у своего факта (Р17): виден всегда, под строкой факта; паспорт — в подписи и data-атрибутах, как в #kadry.
-export const kadrHtml = (f) => `<figure class="${f.klass ? `fig ${f.klass}` : 'fig'}"><img src="${f.src}"${f.width ? ` width="${f.width}" height="${f.height}"` : ''} loading="lazy" decoding="async" alt="${f.alt.replace(/"/g, '&quot;')}" data-source="${f.data_source}" data-license="${f.license.replace(/"/g, '&quot;')}"><figcaption>${f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis}</figcaption></figure>`;
+// Длинное описание схемы, карты, чертежа (п. 26, WAI complex images): раскрывающийся блок под картинкой,
+// картинка ссылается на него aria-describedby. Поля нет — ни атрибута, ни блока: разметка как раньше.
+const escHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+export const opisanieId = (src) => `opisanie-${String(src).replace(/^.*\//, '').replace(/\.[a-z0-9]+$/i, '').replace(/[^a-zA-Z0-9-]+/g, '-')}`;
+export const opisanieHtml = (im) => (im.opisanie_dlinnoe
+  ? `<details class="opisanie-dlinnoe"><summary>Подробное описание картинки</summary><p id="${opisanieId(im.src)}">${escHtml(im.opisanie_dlinnoe)}</p></details>`
+  : '');
+const opisanieAttr = (im) => (im.opisanie_dlinnoe ? ` aria-describedby="${opisanieId(im.src)}"` : '');
+export const kadrHtml = (f) => `<figure class="${f.klass ? `fig ${f.klass}` : 'fig'}"><img src="${f.src}"${f.width ? ` width="${f.width}" height="${f.height}"` : ''} loading="lazy" decoding="async" alt="${f.alt.replace(/"/g, '&quot;')}" data-source="${f.data_source}" data-license="${f.license.replace(/"/g, '&quot;')}"${opisanieAttr(f)}><figcaption>${f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis}</figcaption>${opisanieHtml(f)}</figure>`;
 export const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">${u.podrobnee ?? 'Узнать подробнее'}</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
 ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.tag}</span>` : ''}${p}</p>`).join('\n')}

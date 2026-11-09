@@ -1,0 +1,77 @@
+{
+ "o_fayle": "Связи между утверждёнными днями (пункт 36). tip — код из tipy.json/svyazi; ot → k читается «день ot <тип> день k»; cherez — номер карточки из kartochki.json, если связь через неё; pochemu — одной строкой, что общего.",
+ "svyazi": [
+  {
+   "ot": "izobreteniya/01-29",
+   "k": "izobreteniya/01-11",
+   "tip": "tot-zhe-geroy",
+   "pochemu": "Костович: двигатель 11 января сделан для его дирижабля 29 января"
+  },
+  {
+   "ot": "izobreteniya/01-29",
+   "k": "izobreteniya/01-11",
+   "tip": "tot-zhe-predmet",
+   "pochemu": "дирижабль «Россия» — в обоих днях (карточки predmet:rossiya и predmet:rossii)"
+  },
+  {
+   "ot": "izobreteniya/01-12",
+   "k": "izobreteniya/01-02",
+   "tip": "tot-zhe-geroy",
+   "pochemu": "Королёв — главный конструктор «семёрки» и «Луны-1»"
+  },
+  {
+   "ot": "izobreteniya/01-02",
+   "k": "izobreteniya/01-12",
+   "tip": "upominaet",
+   "pochemu": "в дне названа королёвская «семёрка» — ракета 12 января"
+  },
+  {
+   "ot": "ne-sdayutsya/01-04",
+   "k": "ne-sdayutsya/01-01",
+   "tip": "prodolzhenie",
+   "pochemu": "нашествие Батыя: после Рязани (1237) — Козельск (1238); в дне названа Рязань"
+  },
+  {
+   "ot": "izobreteniya/01-12",
+   "k": "ne-sdayutsya/01-26",
+   "tip": "upominaet",
+   "pochemu": "в семействе Р-7 назван «Восход» — корабль Леонова 26 января"
+  },
+  {
+   "ot": "izobreteniya/01-01",
+   "k": "izobreteniya/01-05",
+   "tip": "upominaet",
+   "pochemu": "Шуховская башня — Шухов, герой 5 января"
+  },
+  {
+   "ot": "izobreteniya/01-06",
+   "k": "izobreteniya/01-18",
+   "tip": "upominaet",
+   "pochemu": "завод Однера — создателя арифмометра 18 января"
+  },
+  {
+   "ot": "izobreteniya/01-04",
+   "k": "izobreteniya/01-23",
+   "tip": "upominaet",
+   "pochemu": "в дне назван Умов, герой 23 января"
+  },
+  {
+   "ot": "izobreteniya/01-14",
+   "k": "izobreteniya/01-21",
+   "tip": "upominaet",
+   "pochemu": "ФЭИ в Обнинске — место первой АЭС 21 января"
+  },
+  {
+   "ot": "ne-sdayutsya/01-16",
+   "k": "ne-sdayutsya/01-05",
+   "tip": "upominaet",
+   "pochemu": "Карбышев строил форты Брестской крепости"
+  },
+  {
+   "ot": "izobreteniya/01-24",
+   "k": "ne-sdayutsya/01-30",
+   "tip": "upominaet",
+   "pochemu": "сравнение с Чернобылем"
+  }
+ ]
+}
