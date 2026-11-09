@@ -108,6 +108,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «В этом же районе на красноармейца напали и окружили две автомашины в составе 50 германских солдат и 3-х офицеров.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: '53'
@@ -121,6 +122,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Выходя из машины германский офицер скомандовал красноармейцу поднять руки вверх, выбил из его рук винтовку и начал учинять ему допросы. У красноармейца Овчаренко в повозке лежал топор.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: топором
@@ -166,6 +168,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
   - id: ns-0202-golova-oficera
@@ -177,6 +180,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: наградной лист
@@ -190,6 +194,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: '21'
@@ -235,6 +240,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: в огороде
@@ -248,6 +254,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
   - id: ns-0202-dva-boya
@@ -259,6 +266,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «27 июля на высоте 239,8 ураганным огнем уничтожал противника. Его пулемет работал безотказно.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: 13 и 27 июля 1941 года
@@ -304,6 +312,7 @@ fakty:
     href: https://obd-memorial.ru/html/info.htm?id=56483295
     otryvok: «Последнее место службы 3 тбр Воинское звание рядовой Причина выбытия убит Дата выбытия 28.01.1945 Место выбытия Венгрия, варм. Фейер, ст. Шерегейеш»
     pometka: два источника
+    utverzhden: '2026-11-09'
     istochnik: n2
     dlya_voprosa: true
     otvet: рядовой
@@ -349,6 +358,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Повозку с боеприпасами и продуктами доставил вовремя своей роте…»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
 - id: fakty-dnya
@@ -364,6 +374,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Тов. Овчаренко не растерялся, забрал у всех убитых документы, у офицеров карты, планшеты, схему, записи и предоставил их в штаб полка.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
   - id: ns-0202-ne-poverili
@@ -375,6 +386,7 @@ fakty:
     href: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
     otryvok: «Однако политрук роты, посмотрев привезенные документы, присвистнул от изумления, и, взяв несколько бойцов, отправился на место событий. Когда подсчитали убитых, выяснилось, что Дмитрий Овчаренко в этой схватке уничтожил двух немецких офицеров и 21 солдата противника.»
     pometka: два источника
+    utverzhden: '2026-11-09'
     istochnik: n3
     dlya_voprosa: false
   - id: ns-0202-v-pulemetchiki
@@ -386,6 +398,7 @@ fakty:
     href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
     otryvok: «- Есть, товарищ капитан! - ответил повозочный. - Прошу вернуть меня в пулеметный взвод.»
     pometka: один источник
+    utverzhden: '2026-11-09'
     istochnik: n4
     dlya_voprosa: false
   - id: ns-0202-otec-plotnik
@@ -397,6 +410,7 @@ fakty:
     href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
     otryvok: «Когда он подрос, отец научил его владеть топором. … Один раз все село взялось за топоры. Сильно досадили кайзеровские вояки.»
     pometka: один источник
+    utverzhden: '2026-11-09'
     istochnik: n4
     dlya_voprosa: false
   - id: ns-0202-v-stroj-1944
@@ -408,6 +422,7 @@ fakty:
     href: https://obd-memorial.ru/html/info.htm?id=56483295
     otryvok: «Дата и место призыва __.__.1944, Чистяковский РВК, Украинская ССР, Сталинская обл., Чистяковский р-н / Последнее место службы 3 тбр / Воинское звание рядовой»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n2
     dlya_voprosa: false
 razdely: []
