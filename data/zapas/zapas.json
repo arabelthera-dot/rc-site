@@ -1,0 +1,7 @@
+{
+ "_chto": "Запас кандидатов на дату для второго года (пункт 7). Собран tools/zapas.py из kand.tsv помощников; руками не править. Формат — docs/vtoroy-god.md.",
+ "nado_na_datu": 7,
+ "potolok": 8,
+ "faylov_prochitano": 0,
+ "dni": {}
+}

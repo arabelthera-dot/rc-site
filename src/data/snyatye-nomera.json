@@ -1,0 +1,149 @@
+{
+ "_": "Снятые номера (п. 12, Р616): номер, который больше не живёт, — «снят, смотри такой-то». Образец — HTTP 301 (RFC 9110, 15.4.2) и перенаправления Wikidata при слиянии элементов. Снятый номер не выдаётся заново; smotri ведёт сразу на живой номер, без цепочек. Номера: день «музей/ММ-ДД», карточка «tip:slug» (src/data/spravochniki/kartochki.json, src/data/slovar.json), факт — постоянный номер факта (п. 13). kak: slit (слит с другим) или perenesen (перенесён). Старый адрес страницы дня, кроме этой записи, — строкой в src/data/redirects.json. Карточки по этой описи сливает tools/spravochniki/kartochki.py.",
+ "nomera": {
+  "lyudi:titov-gv": {
+   "smotri": "lyudi:german-titov",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "один человек: «Г. В. Титов» и «Герман Титов», космонавт (kartochki-dubli.json)"
+  },
+  "predmet:anchara": {
+   "smotri": "predmet:anchar",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:ancharu": {
+   "smotri": "predmet:anchar",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:elbrusa": {
+   "smotri": "predmet:elbrus",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:elbrusa-2": {
+   "smotri": "predmet:elbrus-2",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:ermaka": {
+   "smotri": "predmet:ermak",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:ermaku": {
+   "smotri": "predmet:ermak",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:felikse": {
+   "smotri": "predmet:feliks",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:feliksov": {
+   "smotri": "predmet:feliks",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:komsomolca": {
+   "smotri": "predmet:komsomolec",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:komsomolce": {
+   "smotri": "predmet:komsomolec",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:lire": {
+   "smotri": "predmet:lira",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:liru": {
+   "smotri": "predmet:lira",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:liry": {
+   "smotri": "predmet:lira",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:lunoy-1": {
+   "smotri": "predmet:luna-1",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:luny-1": {
+   "smotri": "predmet:luna-1",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:merkuriya": {
+   "smotri": "predmet:merkuriy",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:molodoy-gvardii": {
+   "smotri": "predmet:molodaya-gvardiya",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:paylota": {
+   "smotri": "predmet:paylot",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:paylotu": {
+   "smotri": "predmet:paylot",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:tumana": {
+   "smotri": "predmet:tuman",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:varyaga": {
+   "smotri": "predmet:varyag",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:varyage": {
+   "smotri": "predmet:varyag",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  },
+  "predmet:voshoda-2": {
+   "smotri": "predmet:voshod-2",
+   "kak": "slit",
+   "kogda": "2026-11-09",
+   "pochemu": "падеж того же названия в том же дне"
+  }
+ }
+}

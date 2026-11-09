@@ -1,4 +1,4 @@
-// Словарь связей дня (Р37, Сергей 20.10): src/data/slovar.json — id «tip:slug» → { tip, nazvanie, kratko }.
+// Словарь связей дня (Р37, Сергей 20.10): src/data/slovar.json — id «tip:slug» → { tip, nazvanie, pol (у людей: m | zh), kratko }.
 // Поле slovar карточки дня ссылается на эти id (проверка — схема src/content.config.ts). Страницы — /slovar/,
 // /slovar/<tip>/<slug>/; на странице дня — строка связей (src/components/den/DenSlovar.astro).
 import slovar from '../data/slovar.json' with { type: 'json' };
@@ -11,8 +11,12 @@ export const TIPY = [
   { tip: 'tema', nazvanie: 'Темы' },
 ];
 
+// Роли связи дня со словарём (п. 31, Р664): закрытый список в ключе _roli; поле дня slovar_roli —
+// docs/spravochniki-standart.md. Ключи с «_» — не записи словаря.
+export const ROLI = slovar._roli;
+
 // Запись словаря с адресом; tip в записи и приставка id расходятся — сборка падает.
-export const zapisi = Object.entries(slovar).map(([id, z]) => {
+export const zapisi = Object.entries(slovar).filter(([id]) => !id.startsWith('_')).map(([id, z]) => {
   const [tip, slug] = id.split(':');
   if (tip !== z.tip) throw new Error(`src/data/slovar.json: у «${id}» tip «${z.tip}», а приставка «${tip}»`);
   if (!TIPY.some((t) => t.tip === tip)) throw new Error(`src/data/slovar.json: «${id}» — неизвестный раздел ${tip}`);
