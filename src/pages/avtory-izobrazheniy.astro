@@ -35,7 +35,7 @@ const noLic = cards.filter((f) => !f.lic).length;
             <thead><tr><th>Кадр</th><th>Автор и источник</th><th>Лицензия</th><th>День</th></tr></thead>
             <tbody>{g.cards.map((f) => (
               <tr>
-                <td><img src={url(f.src)} alt={f.caption} loading="lazy" decoding="async" width="96" /><span class="podpis">{f.caption}</span></td>
+                <td><img src={url(f.src)} alt={f.alt ?? f.caption} loading="lazy" decoding="async" width="96" /><span class="podpis">{f.caption}</span></td>
                 <td><Credit text={f.credit} /></td>
                 <td>{licName(f.credit) || <span class="lic-net">не указана</span>}</td>
                 <td><a href={dayUrl(f.museum, f.key)}>{f.title || f.key}</a></td>

@@ -1,13 +1,13 @@
 // Стандарт дня (Р660): каждый день карточки страницы src/content/dni-shablon с ключом 02-01 и дальше, любой музей,
-// не собирается без любого из 29 пунктов. Что значит каждый пункт, поле и пример — docs/standart-dnya.md (единственный
+// не собирается без любого из 33 пунктов. Что значит каждый пункт, поле и пример — docs/standart-dnya.md (единственный
 // источник для помощников); поля и типы — src/lib/forma-dnya.mjs (форма Р635). Январь (ключ до 02-01) не проверяется.
 // Возвращает список строк «ММ-ДД музей: нет пункта N — …»; загрузчик (zagruzitKartochki) собирает их по всем карточкам.
 import { NET, wiki } from './forma-dnya.mjs';
 import { MEHANIKI, igraDannymi } from './igry-mehaniki.ts';
 
 export const STANDART_S = '02-01';
-// Пункты очереди Р660; 19 и 27 — только «Русские не сдаются», 76 — только изобретения (там игра дня).
-export const PUNKTY = [1, 2, 3, 4, 5, 6, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 40, 76, 88, 89, 164, 170];
+// Пункты очереди Р660 и состава Р676 (171–174); 19 и 27 — только «Русские не сдаются», 76 — только изобретения (там игра дня).
+export const PUNKTY = [1, 2, 3, 4, 5, 6, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 40, 76, 88, 89, 164, 170, 171, 172, 173, 174];
 // Переход на новый стиль: 1 (14) февраля 1918 г.; раньше — нужна дата по старому стилю (п. 5).
 const NOVYJ_STIL = '1918-02-14';
 const HTML = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
@@ -154,6 +154,17 @@ export function standartDnya(d, syroe = d) {
   const nfc = [];
   obojti(syroe, [], (s, put) => { if (s !== s.normalize('NFC') || KOMBINIRUEMYE.test(s)) nfc.push(imya(put)); });
   if (nfc.length) p(170, `текст не в NFC или с комбинируемыми знаками: ${kratko(nfc)}`);
+  // 174. Аудиогид и ролик — только после показа текста Сергею (pokazan_sergeyu.data), при любом статусе.
+  for (const k of ['audioguide', 'video']) if (d[k] && !d.pokazan_sergeyu) p(174, `${k} есть, а pokazan_sergeyu нет — озвучка и ролик только после показа Сергею`);
+  // 171–173 — состав дня (Р676); у заготовки (status: zagotovka) не проверяются.
+  if (d.status === 'zagotovka') return net;
+  // 171. Факты: «Десять фактов» (id fakty) — 10, «Ещё пять фактов» (id fakty-dnya) — 5.
+  const blok = (id) => [d.fakty ?? []].flat().find((b) => b.id === id)?.udary.length ?? 0;
+  if (blok('fakty') !== 10 || blok('fakty-dnya') !== 5) p(171, `фактов ${blok('fakty')} + «Ещё» ${blok('fakty-dnya')} — нужно 10 + 5 (блоки fakty и fakty-dnya)`);
+  // 172. Полухук у каждого факта — summary, заголовок-крючок над «Подробнее».
+  uFaktov(172, 'нет полухука (summary)', (u) => !String(u.summary ?? '').replace(/<[^>]+>/g, '').trim());
+  // 173. «Русские не сдаются»: визуализация (vizual, вид predmet | karta | dokument) вместо игры.
+  if (ns && !d.vizual) p(173, 'vizual (визуализация: predmet | karta | dokument)');
   return net;
 }
 
