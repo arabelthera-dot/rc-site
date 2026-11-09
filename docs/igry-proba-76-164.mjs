@@ -23,5 +23,18 @@ proba('164: игра на языке — каждый текст из файла
   && xx.mehanika === obrazec.mehanika && xx.dannye.chislo === obrazec.dannye.chislo);
 proba('164: нет перевода — остаётся русский текст', JSON.stringify(igraNaYazyke(obrazec, 'izobreteniya', '01-08', fayl, 'de')) === JSON.stringify(obrazec));
 proba('164: игра на языке по-прежнему проходит схему механики', igraDannymi.safeParse(xx).success);
+// kazhdomu-svoyo-mesto (02-01, 02-02): одна подпись на место, место подписи есть в mesta; с картинкой — у места x и y.
+const mesto = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/kazhdomu-svoyo-mesto.json', import.meta.url), 'utf8'));
+const pravka = (fn) => { const o = structuredClone(mesto); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике kazhdomu-svoyo-mesto приняты', igraDannymi.safeParse(mesto).success);
+proba('76: подпись на место, которого нет, — отказ', !pravka((d) => { d.podpisi[0].mesto = 'net-takogo'; }));
+proba('76: две подписи на одно место — отказ', !pravka((d) => { d.podpisi[1].mesto = d.podpisi[0].mesto; }));
+proba('76: картинка есть, у места нет x — отказ', !pravka((d) => { delete d.mesta[0].x; }));
+proba('76: без картинки места плитками — приняты', pravka((d) => { delete d.kartinka; d.mesta.forEach((m) => { delete m.x; delete m.y; }); }));
+proba('164: тексты kazhdomu-svoyo-mesto в перевод, коды и src — нет', (() => {
+  const k = Object.keys(vynutStroki(mesto, 'izobreteniya', '02-02'));
+  return k.some((x) => x.endsWith('dannye.podpisi.0.tekst')) && k.some((x) => x.endsWith('dannye.mesta.0.verno_ru'))
+    && !k.some((x) => /\.(kod|mesto|src)$/.test(x));
+})());
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);
