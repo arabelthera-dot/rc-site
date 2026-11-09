@@ -1,0 +1,98 @@
+# Машинный перевод дня (Р603, Р686 п.8, Р688): слилась новая или правленая карточка дня — машина сама переводит её
+# на языки src/data/yazyki.json (scripts/perevod-dnya.mjs, переводчик Argos Translate — бесплатный, офлайн, без ключа)
+# и сдаёт файл строк src/data/perevod/<музей>-<ММ-ДД>.json заявкой avto/perevod-… с автослиянием. Переводится заново
+# только то, что устарело (отпечатки, docs/perevod-standart.md). Это только данные: страницы на других языках не строятся,
+# вид сайта не меняется. Одобрение ждущих проверок заявки — как в rolik-na-sait.yml.
+# Как в мире: машинный перевод после слияния исходника — Weblate/Crowdin pre-translate (https://docs.weblate.org/en/latest/admin/machine.html),
+# переводчик — https://github.com/argosopentech/argos-translate . Заявку открывает последний шаг конвейера (gh pr create).
+# Выключатель — переменная RC_PEREVOD = '0' (слияния не переводятся, ручной пуск работает). Откат — удалить этот файл.
+# Ручной пуск: gh workflow run perevod.yml -f fayly="src/content/dni-shablon/izobreteniya/02-01.yaml …"
+name: perevod
+on:
+  push:
+    branches: [main]
+    paths: ['src/content/dni-shablon/**']
+  workflow_dispatch:
+    inputs:
+      fayly:
+        description: "карточки дня через пробел; пусто — изменённые последним слиянием"
+        required: false
+        default: ""
+concurrency:
+  group: perevod
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  perevesti:
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'push' || vars.RC_PEREVOD != '0')
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      FAYLY: ${{ inputs.fayly }}
+    steps:
+      # без public/: перевод читает карточку и пишет только src/data/perevod/
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 2
+          sparse-checkout: |
+            /scripts/
+            /src/
+            /package.json
+            /package-lock.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+      # модели Argos (~100 МБ на пару) — из кэша, нет — скачает perevod-argos.py
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            ~/.local/share/argos-translate
+            ~/stanza_resources
+          key: argos-${{ hashFiles('src/data/yazyki.json') }}
+      - run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          pip install -q --index-url https://download.pytorch.org/whl/cpu torch
+          pip install -q argostranslate
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          [ -n "$FAYLY" ] || FAYLY=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'src/content/dni-shablon/*/*.yaml')
+          [ -n "$FAYLY" ] || { echo "Новых карточек дня нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
+          VETKA="avto/perevod-${GITHUB_SHA::8}"
+          git switch -q -C "$VETKA"
+          vyvod=$(node scripts/perevod-dnya.mjs $FAYLY)
+          echo "$vyvod" | tee -a "$GITHUB_STEP_SUMMARY"
+          git add --sparse src/data/perevod/
+          git diff --cached --quiet && { echo "Переводы уже свежие."; exit 0; }
+          git commit -q -m "[avto] машинный перевод дня: $(echo $FAYLY | sed 's#src/content/dni-shablon/##g; s#\.yaml##g')"
+          git push -q -f origin "$VETKA"
+          telo="Машинный перевод дня (Р603, Р686 п.8): Argos Translate, бесплатно и офлайн.
+
+          \`\`\`
+          $vyvod
+          \`\`\`
+          Заявку открыла машина .github/workflows/perevod.yml; строки — scripts/perevod-dnya.mjs. Руками не правится."
+          nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
+          [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] машинный перевод дня" --body "$telo" | grep -o '[0-9]*$')
+          # автослияние — только у слияния дня; ручной пуск (проба, разбор) оставляет заявку человеку
+          [ "$GITHUB_EVENT_NAME" = push ] && gh pr merge "$nomer" --auto --squash
+          echo "- заявка https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
+          sha=$(git rev-parse HEAD)
+          zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
+          for i in $(seq 1 12); do
+            vsego=$(gh api "$zapros" -q '.total_count')
+            zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
+            for id in $zhdut; do gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/approve"; done
+            [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ] && { echo "Проверка заявки #$nomer идёт."; break; }
+            sleep 10
+          done

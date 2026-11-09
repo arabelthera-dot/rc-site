@@ -8,6 +8,7 @@ import { z } from 'astro/zod';
 import { existsSync } from 'node:fs';
 import { kartochkaUtv } from './lib/skhema-utverzhdeno.mjs';
 import { igraDannymi } from './lib/igry-mehaniki';
+import { vyshel } from './lib/vyhod.mjs';
 
 // Музеи — каталог platform/catalog/museums.json как есть; title_ru — единственное имя музея.
 const museums = defineCollection({
@@ -125,8 +126,15 @@ const doc = z.object({ prolog: z.string(), head_attrs: z.string(), head: z.strin
 // Игра дня данными (Р635, 08.11.2026): механика из src/lib/igry-mehaniki.ts + её данные; нет поля — дня не касается.
 const igra = igraDannymi;
 
+// Выход по дате (Р686 п.7, src/lib/vyhod.mjs): при RC_PO_DATE день с god_pokaza до своего дня в коллекцию не попадает —
+// его адрес собирается как «День готовится», в календарь, ленты и карту сайта он не идёт. Без переменной — как раньше.
+const poDate = (inner: ReturnType<typeof glob>) => ({ name: 'days-po-date', load: async (ctx: Parameters<typeof inner.load>[0]) => {
+  await inner.load(ctx);
+  for (const [id, e] of ctx.store.entries()) if (!vyshel(e.data)) ctx.store.delete(id);
+} });
+
 const days = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/days' }),
+  loader: poDate(glob({ pattern: '**/*.json', base: './src/content/days' })),
   schema: z.object({
     museum: z.string(),
     key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД')

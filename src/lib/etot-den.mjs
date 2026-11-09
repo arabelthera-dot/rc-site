@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { MUSEUMS, decode } from './imya-muzeya.mjs';
 import { zagolovok } from './sosedi-polnye.mjs';
+import { vyshel } from './vyhod.mjs';
 
 const FULL = 'src/data/full-pages';
 const DAYS = 'src/content/days';
@@ -40,7 +41,7 @@ export function gotovyeDni() {
       const card = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
       const html = path.join(FULL, museum, `${key}.html`);
       const polnaya = fs.existsSync(html);
-      if (!polnaya && !card.body) continue;
+      if ((!polnaya && !card.body) || !vyshel({ museum, key, ...card })) continue; // до своего дня — не в «этот день» (src/lib/vyhod.mjs)
       const first = (card.images ?? []).find((i) => i?.src && (/^https?:/.test(i.src) || fs.existsSync(path.join('public', i.src.replace(/^\//, '')))));
       const text = polnaya ? fs.readFileSync(html, 'utf8') : '';
       const title = (polnaya && zagolovok(text)) || decode(card.title ?? key);
