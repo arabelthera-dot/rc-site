@@ -658,57 +658,183 @@
   "mesto:alyaska": {
     "tip": "mesto",
     "nazvanie": "Аляска",
-    "kratko": "Полуостров в Северной Америке, до 1867 года — Русская Америка."
+    "kratko": "Полуостров в Северной Америке, до 1867 года — Русская Америка.",
+    "koordinaty": {
+      "shirota": 64.446,
+      "dolgota": -149.681,
+      "tochka": "середина штата Аляска",
+      "otkuda": "https://www.openstreetmap.org/relation/1116270"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Русская Америка",
+        "po": "1867-10-18"
+      },
+      {
+        "nazvanie": "Аляска",
+        "s": "1867-10-18"
+      }
+    ]
   },
   "mesto:amur": {
     "tip": "mesto",
     "nazvanie": "Амур",
-    "kratko": "Великая река Дальнего Востока."
+    "kratko": "Великая река Дальнего Востока.",
+    "koordinaty": {
+      "shirota": 47.749,
+      "dolgota": 132.017,
+      "tochka": "точка на русле у Хабаровска, российский берег",
+      "otkuda": "https://www.openstreetmap.org/way/217386511"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Амур"
+      }
+    ]
   },
   "mesto:antarktida": {
     "tip": "mesto",
     "nazvanie": "Антарктида",
-    "kratko": "Южный материк, открытый русской экспедицией в 1820 году."
+    "kratko": "Южный материк, открытый русской экспедицией в 1820 году.",
+    "koordinaty": {
+      "shirota": -79.406,
+      "dolgota": 0.315,
+      "tochka": "точка материка на карте",
+      "otkuda": "https://www.openstreetmap.org/node/36966060"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Антарктида"
+      }
+    ]
   },
   "mesto:baykal": {
     "tip": "mesto",
     "nazvanie": "Байкал",
-    "kratko": "Самое глубокое озеро мира."
+    "kratko": "Самое глубокое озеро мира.",
+    "koordinaty": {
+      "shirota": 53.617,
+      "dolgota": 108.131,
+      "tochka": "середина озера",
+      "otkuda": "https://www.openstreetmap.org/relation/555716"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Байкал"
+      }
+    ]
   },
   "mesto:chukotka": {
     "tip": "mesto",
     "nazvanie": "Чукотка",
-    "kratko": "Северо-восточный край России."
+    "kratko": "Северо-восточный край России.",
+    "koordinaty": {
+      "shirota": 66.001,
+      "dolgota": 169.49,
+      "tochka": "середина Чукотского автономного округа",
+      "otkuda": "https://www.openstreetmap.org/relation/151231"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Чукотка"
+      }
+    ]
   },
   "mesto:enisey": {
     "tip": "mesto",
     "nazvanie": "Енисей",
-    "kratko": "Великая река Сибири."
+    "kratko": "Великая река Сибири.",
+    "koordinaty": {
+      "shirota": 61.202,
+      "dolgota": 89.575,
+      "tochka": "середина реки по карте",
+      "otkuda": "https://www.openstreetmap.org/relation/181988"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Енисей"
+      }
+    ]
   },
   "mesto:irkutsk": {
     "tip": "mesto",
     "nazvanie": "Иркутск",
-    "kratko": "Город на Ангаре."
+    "kratko": "Город на Ангаре.",
+    "koordinaty": {
+      "shirota": 52.289,
+      "dolgota": 104.28,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/1430614"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Иркутск"
+      }
+    ]
   },
   "mesto:kamchatka": {
     "tip": "mesto",
     "nazvanie": "Камчатка",
-    "kratko": "Полуостров на северо-востоке России."
+    "kratko": "Полуостров на северо-востоке России.",
+    "koordinaty": {
+      "shirota": 55.868,
+      "dolgota": 158.803,
+      "tochka": "середина полуострова",
+      "otkuda": "https://www.openstreetmap.org/relation/7752000"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Камчатка"
+      }
+    ]
   },
   "mesto:kazan": {
     "tip": "mesto",
     "nazvanie": "Казань",
-    "kratko": "Столица Татарстана."
+    "kratko": "Столица Татарстана.",
+    "koordinaty": {
+      "shirota": 55.795,
+      "dolgota": 49.112,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/3437391"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Казань"
+      }
+    ]
   },
   "mesto:kizhi": {
     "tip": "mesto",
     "nazvanie": "Кижи",
-    "kratko": "Остров на Онежском озере с деревянным ансамблем."
+    "kratko": "Остров на Онежском озере с деревянным ансамблем.",
+    "koordinaty": {
+      "shirota": 62.085,
+      "dolgota": 35.212,
+      "tochka": "середина острова",
+      "otkuda": "https://www.openstreetmap.org/relation/3175099"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Кижи"
+      }
+    ]
   },
   "mesto:krym": {
     "tip": "mesto",
     "nazvanie": "Крым",
-    "kratko": "Полуостров на Чёрном море."
+    "kratko": "Полуостров на Чёрном море.",
+    "koordinaty": {
+      "shirota": 45.284,
+      "dolgota": 34.201,
+      "tochka": "середина полуострова",
+      "otkuda": "https://www.openstreetmap.org/relation/7750160"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Крым"
+      }
+    ]
   },
   "mesto:kulikovo-pole": {
     "tip": "mesto",
@@ -718,77 +844,291 @@
   "mesto:kurily": {
     "tip": "mesto",
     "nazvanie": "Курильские острова",
-    "kratko": "Цепь островов между Камчаткой и Хоккайдо."
+    "kratko": "Цепь островов между Камчаткой и Хоккайдо.",
+    "koordinaty": {
+      "shirota": 50.384,
+      "dolgota": 155.832,
+      "tochka": "середина гряды островов",
+      "otkuda": "https://www.openstreetmap.org/relation/7273443"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Курильские острова"
+      }
+    ]
   },
   "mesto:moskva": {
     "tip": "mesto",
     "nazvanie": "Москва",
-    "kratko": "Столица России."
+    "kratko": "Столица России.",
+    "koordinaty": {
+      "shirota": 55.751,
+      "dolgota": 37.617,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/2555133"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Москва"
+      }
+    ]
   },
   "mesto:nizhniy-novgorod": {
     "tip": "mesto",
     "nazvanie": "Нижний Новгород",
-    "kratko": "Город на слиянии Оки и Волги."
+    "kratko": "Город на слиянии Оки и Волги.",
+    "koordinaty": {
+      "shirota": 56.326,
+      "dolgota": 44.005,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/1752948"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Нижний Новгород",
+        "s": "1221",
+        "po": "1932-10-07"
+      },
+      {
+        "nazvanie": "Горький",
+        "s": "1932-10-07",
+        "po": "1990-10-22"
+      },
+      {
+        "nazvanie": "Нижний Новгород",
+        "s": "1990-10-22"
+      }
+    ]
   },
   "mesto:novaya-zemlya": {
     "tip": "mesto",
     "nazvanie": "Новая Земля",
-    "kratko": "Архипелаг в Северном Ледовитом океане."
+    "kratko": "Архипелаг в Северном Ледовитом океане.",
+    "koordinaty": {
+      "shirota": 75.117,
+      "dolgota": 58.693,
+      "tochka": "середина архипелага",
+      "otkuda": "https://www.openstreetmap.org/relation/4263184"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Новая Земля"
+      }
+    ]
   },
   "mesto:sahalin": {
     "tip": "mesto",
     "nazvanie": "Сахалин",
-    "kratko": "Остров на Дальнем Востоке."
+    "kratko": "Остров на Дальнем Востоке.",
+    "koordinaty": {
+      "shirota": 50.16,
+      "dolgota": 143.026,
+      "tochka": "середина острова",
+      "otkuda": "https://www.openstreetmap.org/relation/3987424"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Сахалин"
+      }
+    ]
   },
   "mesto:sankt-peterburg": {
     "tip": "mesto",
     "nazvanie": "Санкт-Петербург",
-    "kratko": "Город на Неве, в 1924–1991 годах — Ленинград."
+    "kratko": "Город на Неве, в 1924–1991 годах — Ленинград.",
+    "koordinaty": {
+      "shirota": 59.939,
+      "dolgota": 30.316,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/421007"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Санкт-Петербург",
+        "s": "1703-05-27",
+        "po": "1914-08-31"
+      },
+      {
+        "nazvanie": "Петроград",
+        "s": "1914-08-31",
+        "po": "1924-01-26"
+      },
+      {
+        "nazvanie": "Ленинград",
+        "s": "1924-01-26",
+        "po": "1991-09-06"
+      },
+      {
+        "nazvanie": "Санкт-Петербург",
+        "s": "1991-09-06"
+      }
+    ]
   },
   "mesto:sevastopol": {
     "tip": "mesto",
     "nazvanie": "Севастополь",
-    "kratko": "Город-крепость Черноморского флота."
+    "kratko": "Город-крепость Черноморского флота.",
+    "koordinaty": {
+      "shirota": 44.605,
+      "dolgota": 33.522,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/3030976"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Севастополь",
+        "s": "1784",
+        "po": "1797"
+      },
+      {
+        "nazvanie": "Ахтиар",
+        "s": "1797",
+        "po": "1826"
+      },
+      {
+        "nazvanie": "Севастополь",
+        "s": "1826"
+      }
+    ]
   },
   "mesto:severnaya-zemlya": {
     "tip": "mesto",
     "nazvanie": "Северная Земля",
-    "kratko": "Архипелаг, открытый в 1913 году."
+    "kratko": "Архипелаг, открытый в 1913 году.",
+    "koordinaty": {
+      "shirota": 79.469,
+      "dolgota": 97.105,
+      "tochka": "середина архипелага",
+      "otkuda": "https://www.openstreetmap.org/relation/3718999"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Земля Императора Николая II",
+        "s": "1913",
+        "po": "1926"
+      },
+      {
+        "nazvanie": "Северная Земля",
+        "s": "1926"
+      }
+    ]
   },
   "mesto:severnyy-polyus": {
     "tip": "mesto",
     "nazvanie": "Северный полюс",
-    "kratko": "Северная точка Земли."
+    "kratko": "Северная точка Земли.",
+    "koordinaty": {
+      "shirota": 90.0,
+      "dolgota": 0.0,
+      "tochka": "точка полюса",
+      "otkuda": "https://www.openstreetmap.org/node/269538499"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Северный полюс"
+      }
+    ]
   },
   "mesto:taymyr": {
     "tip": "mesto",
     "nazvanie": "Таймыр",
-    "kratko": "Самый северный полуостров Евразии."
+    "kratko": "Самый северный полуостров Евразии.",
+    "koordinaty": {
+      "shirota": 76.0,
+      "dolgota": 105.0,
+      "tochka": "точка полуострова на карте",
+      "otkuda": "https://www.openstreetmap.org/node/4883421521"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Таймыр"
+      }
+    ]
   },
   "mesto:tobolsk": {
     "tip": "mesto",
     "nazvanie": "Тобольск",
-    "kratko": "Первая столица Сибири."
+    "kratko": "Первая столица Сибири.",
+    "koordinaty": {
+      "shirota": 58.2,
+      "dolgota": 68.251,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/3348770"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Тобольск"
+      }
+    ]
   },
   "mesto:velikiy-novgorod": {
     "tip": "mesto",
     "nazvanie": "Великий Новгород",
-    "kratko": "Древний город на Волхове."
+    "kratko": "Древний город на Волхове.",
+    "koordinaty": {
+      "shirota": 58.561,
+      "dolgota": 31.281,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/3396084"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Новгород",
+        "po": "1999"
+      },
+      {
+        "nazvanie": "Великий Новгород",
+        "s": "1999"
+      }
+    ]
   },
   "mesto:vladivostok": {
     "tip": "mesto",
     "nazvanie": "Владивосток",
-    "kratko": "Город на Тихом океане."
+    "kratko": "Город на Тихом океане.",
+    "koordinaty": {
+      "shirota": 43.115,
+      "dolgota": 131.886,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/1704857"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Владивосток"
+      }
+    ]
   },
   "mesto:volga": {
     "tip": "mesto",
     "nazvanie": "Волга",
-    "kratko": "Главная река европейской России."
+    "kratko": "Главная река европейской России.",
+    "koordinaty": {
+      "shirota": 56.167,
+      "dolgota": 44.215,
+      "tochka": "середина реки по карте",
+      "otkuda": "https://www.openstreetmap.org/relation/1730417"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Волга"
+      }
+    ]
   },
   "mesto:yakutsk": {
     "tip": "mesto",
     "nazvanie": "Якутск",
-    "kratko": "Город на Лене, столица Якутии."
+    "kratko": "Город на Лене, столица Якутии.",
+    "koordinaty": {
+      "shirota": 62.027,
+      "dolgota": 129.732,
+      "tochka": "центр города",
+      "otkuda": "https://www.openstreetmap.org/relation/5325621"
+    },
+    "nazvaniya": [
+      {
+        "nazvanie": "Якутск"
+      }
+    ]
   },
   "narod:adygeycy": {
     "tip": "narod",
