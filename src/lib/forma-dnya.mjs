@@ -4,10 +4,10 @@
 // База источника и картинки — закрытый список: российские и белорусские да (Р469, Р136);
 // Википедии, Викисклада, Викитеки в нём нет и не будет (Р90).
 import { z } from 'astro/zod';
+import bazy from '../data/spravochniki/bazy.json' with { type: 'json' };
 
-export const BAZY = ['goskatalog', 'shm_catalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'rusneb', 'prlib',
-  'rsl', 'nlr', 'shpl', 'pamyat-naroda', 'podvig-naroda', 'fips', 'muzej-rf', 'muzej-by', 'arhiv-rf', 'arhiv-by',
-  'biblioteka-rf', 'biblioteka-by', 'kniga', 'periodika', 'gosorgan-rf', 'gosorgan-by', 'nauka', 'sajt-organizacii'];
+// Р676: список баз один — src/data/spravochniki/bazy.json (собирает tools/spravochniki.py bazy), здесь не перечислять.
+export const BAZY = bazy.razresheny.map((b) => b.id);
 export const VIDY = ['foto', 'chertezh', 'karta', 'kartina', 'risunok', 'plakat', 'dokument', 'predmet', 'skhema',
   'kadr-filma'];
 export const TYAZHELYE = ['vojna', 'kazn', 'golod', 'repressii', 'katastrofa', 'gibel'];
@@ -16,7 +16,7 @@ export const NET = 'net';
 export const wiki = /wiki|википеди|викитек/i;
 
 const str = z.string().min(1);
-export const baza = z.enum(BAZY, { message: 'база — из закрытого списка BAZY (Википедия, Викисклад, Викитека запрещены, Р90)' });
+export const baza = z.enum(BAZY, { message: 'база — из закрытого списка src/data/spravochniki/bazy.json (Википедия, Викисклад, Викитека запрещены, Р90)' });
 export const nomer = z.string().regex(/^[a-z0-9-]+$/, 'номер — латиница, цифры, дефис');
 export const god = z.union([z.number().int(), z.string().min(1)]);
 export const data = z.string().regex(/^\d{1,4}-\d\d-\d\d$/, 'дата — ГГГГ-ММ-ДД');

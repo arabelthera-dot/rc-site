@@ -895,6 +895,102 @@
    "url": "https://www.warmuseum.by/",
    "strana": "Беларусь",
    "osnovanie": "Р469"
+  },
+  {
+   "id": "muzej-rf",
+   "name": "Сайт российского музея",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "muzej-by",
+   "name": "Сайт белорусского музея",
+   "url": "",
+   "strana": "Беларусь",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "arhiv-rf",
+   "name": "Российский архив",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "arhiv-by",
+   "name": "Белорусский архив",
+   "url": "",
+   "strana": "Беларусь",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "biblioteka-rf",
+   "name": "Российская библиотека",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "biblioteka-by",
+   "name": "Белорусская библиотека",
+   "url": "",
+   "strana": "Беларусь",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "kniga",
+   "name": "Книга",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "periodika",
+   "name": "Газета или журнал",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "gosorgan-rf",
+   "name": "Сайт российского госоргана",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "gosorgan-by",
+   "name": "Сайт белорусского госоргана",
+   "url": "",
+   "strana": "Беларусь",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "nauka",
+   "name": "Научная статья или издание",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
+  },
+  {
+   "id": "sajt-organizacii",
+   "name": "Сайт организации",
+   "url": "",
+   "strana": "Россия",
+   "vid": "obshchij",
+   "osnovanie": "Р676"
   }
  ],
  "vycherknuty": [
