@@ -62,6 +62,8 @@ const image = z.object({
   credit: z.string().min(1, 'у картинки нет источника'),
   generated: z.boolean().default(false),
   text_on_image: z.literal(false, { message: 'текст на картинке запрещён' }).default(false),
+  // 25. Описание для незрячих (WCAG 1.1.1) — что видно на картинке, не копия подписи; нет поля — alt из caption, как раньше.
+  alt: z.string().min(1).optional(),
   // Р635 — поля формы картинки (смысл, страница или служебное — src/data/forma-dnya.json); нет поля — как раньше.
   ...polyaKartinki,
 });

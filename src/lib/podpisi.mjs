@@ -35,7 +35,7 @@ const DAYS = 'src/content/days';
 const FULL = 'src/data/full-pages';
 const ls = (dir) => (fs.existsSync(dir) ? fs.readdirSync(dir).sort() : []);
 
-/** Кадры карточек дней: { museum, key, title, src, caption, credit, lic } */
+/** Кадры карточек дней: { museum, key, title, src, caption, alt, credit, lic } */
 export function cardFrames(root = '.') {
   const out = [];
   for (const museum of ls(path.join(root, DAYS))) {
@@ -45,7 +45,7 @@ export function cardFrames(root = '.') {
       for (const e of d.more || []) ims.push(...(e.images || []), ...(e.detail_images || []));
       for (const im of ims) {
         const credit = String(im.credit || '').trim();
-        out.push({ museum, key: d.key || f.slice(0, -5), title: d.title || '', src: im.src || '', caption: im.caption || '',
+        out.push({ museum, key: d.key || f.slice(0, -5), title: d.title || '', src: im.src || '', caption: im.caption || '', alt: im.alt,
           credit, lic: LIC.test(credit), generated: !!im.generated });
       }
     }

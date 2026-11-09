@@ -296,6 +296,20 @@
       "punkt": "28"
     },
     {
+      "imya": "images.alt",
+      "chto": "описание картинки для незрячих (alt): что на ней видно, не копия подписи; нет — alt из подписи",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "25"
+    },
+    {
+      "imya": "images.opisanie_dlinnoe",
+      "chto": "длинное описание схемы, карты, чертежа для незрячих; выводится под картинкой раскрывающимся блоком",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "26"
+    },
+    {
       "imya": "images.simvolika_proverena",
       "chto": "символика на картинке проверена; в военном дне обязательно",
       "na_stranicu": false,
