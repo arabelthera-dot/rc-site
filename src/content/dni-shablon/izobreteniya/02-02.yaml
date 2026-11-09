@@ -154,6 +154,17 @@ daynav:
   label: Источники
 - id: calendar
   label: Календарь
+video:
+  h2: История в 47 секунд
+  klyuch: izobreteniya/02feb-edinorog
+  format: horizontal
+  pole: izobreteniya/02feb-edinorog:horizontal.sec
+  suffix: сек
+  badge: 47 сек
+  intro: Русский «единорог» первым в мире стрелял ядром, гранатой и картечью из одного ствола.
+  poster: video/day-02feb-edinorog-poster.jpg?v=1
+  mp4: video/day-02feb-edinorog.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42586241146) из сценария days/02feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения
   h2: Как появился «единорог»
