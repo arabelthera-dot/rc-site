@@ -36,5 +36,17 @@ proba('164: тексты kazhdomu-svoyo-mesto в перевод, коды и src
   return k.some((x) => x.endsWith('dannye.podpisi.0.tekst')) && k.some((x) => x.endsWith('dannye.mesta.0.verno_ru'))
     && !k.some((x) => /\.(kod|mesto|src)$/.test(x));
 })());
+// tri-usloviya-bulata (01-03): январская игра данными; верно и start — среди вариантов, узор от 0 до 1.
+const bulat = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/tri-usloviya-bulata.json', import.meta.url), 'utf8'));
+const pravkaB = (fn) => { const o = structuredClone(bulat); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике tri-usloviya-bulata приняты', igraDannymi.safeParse(bulat).success);
+proba('76: верный вариант не из списка — отказ', !pravkaB((d) => { d.usloviya[0].verno = 'net'; }));
+proba('76: сила узора больше 1 — отказ', !pravkaB((d) => { d.pobeda.vid.uzor = 2; }));
+proba('76: без «под микроскопом» — принято', pravkaB((d) => { delete d.blizhe; }));
+proba('164: тексты tri-usloviya-bulata в перевод, коды и числа — нет', (() => {
+  const k = Object.keys(vynutStroki(bulat, 'izobreteniya', '01-03'));
+  return k.some((x) => x.endsWith('dannye.blizhe.knopka_ru')) && k.some((x) => x.endsWith('dannye.usloviya.0.neudacha.kadr_ru'))
+    && !k.some((x) => /\.(kod|start|verno|ton|uzor|ochki)$/.test(x));
+})());
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);
