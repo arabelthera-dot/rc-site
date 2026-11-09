@@ -7,7 +7,7 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
-import { polyaKartinki, polyaFakta, polyaDnya } from './forma-dnya.mjs';
+import { polyaKartinki, polyaFakta, polyaDnya, status } from './forma-dnya.mjs';
 import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
 const SLOVAR = JSON.parse(fs.readFileSync('src/data/slovar.json', 'utf8'));
 
@@ -57,6 +57,8 @@ export const obshchiePolya = (BLOKI) => {
     // `den` — карточка рисует живой адрес den/ММ-ДД (Р286, den/[key].astro), старый HTML уходит на den/ММ-ДД/staraya/;
     // нет поля — проба на den-shablon/ММ-ДД.
     adres: z.literal('den').optional(),
+    // Р676: 'zagotovka' — день в работе, пункты состава (171–173 docs/standart-dnya.md) не обязательны; на адрес den не идёт.
+    status: status.optional(),
     key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД'),
     // sobytie + god — заголовок вкладки и og:title собирает шаблон: «16 января 1969: <событие> — <музей> — Русская цивилизация»
     // (Р286 п.4; событие — title карточки дня src/content/days, год — со старой страницы); нет их — title/og.title как есть.
@@ -145,6 +147,7 @@ const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message
 export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portrety = false } = {}) {
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) iss(ctx, ['quiz', 'voprosy', i, 'a'], 'номер ответа вне списка'); });
   if (d.adres !== 'den') return;
+  if (d.status === 'zagotovka') iss(ctx, ['status'], 'заготовка (status: zagotovka) на адрес den не идёт — сначала полный состав (Р676)');
   if (!d.head.sobytie || !d.head.god) iss(ctx, ['head'], 'на адресе den нужны head.sobytie и head.god (заголовок вкладки)');
   // Вид 13 янв. (Р302): обложка и кадры обязательны.
   if (!d.oblozhka) iss(ctx, ['oblozhka'], 'на адресе den нужна обложка (oblozhka), как у 13 янв.');
