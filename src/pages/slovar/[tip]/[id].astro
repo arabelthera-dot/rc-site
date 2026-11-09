@@ -22,12 +22,30 @@ const dni = (await getCollection('days')).filter((d) => d.data.slovar?.includes(
   return { title: d.data.title, year: d.data.year, museum: m.title_ru, slug: m.slug, key: d.data.key,
     when: dated(m.slug) ? `${dd} ${mesyacyR[mm - 1]}` : undefined, href: `${base}muzei/${m.slug}/den/${d.data.key}/` };
 }).sort((a, b) => god(a.year) - god(b.year) || a.slug.localeCompare(b.slug) || a.key.localeCompare(b.key));
+// Годы жизни (EDTF, LoC): «1111~» — около, «[1782,1783]» — один из, «1360/1370» — между; два стиля — «12 (24) мая 1830».
+const vek = (x: string) => `${['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX'][+x.slice(0, 2) + 1]} век`;
+const den = (x: string) => { const [y, m, d] = x.split('-'); return d ? `${+d} ${mesyacyR[+m - 1]}` : ''; };
+const edtf = (v?: string, ss?: string) => {
+  if (!v) return '';
+  if (/^\d\dXX$/.test(v)) return vek(v);
+  if (v.endsWith('~')) return `около ${v.slice(0, -1)}`;
+  if (v.endsWith('?')) return v;
+  if (v.startsWith('[')) return v.slice(1, -1).split(',').join(' или ');
+  if (v.includes('/')) return `между ${v.split('/').join(' и ')}`;
+  if (!ss) return [den(v), v.slice(0, 4)].filter(Boolean).join(' ');
+  const [a, b] = [den(ss), den(v)].map((t) => t.split(' '));
+  return a[1] === b[1] ? `${a[0]} (${b[0]}) ${b[1]} ${v.slice(0, 4)}` : `${den(ss)} (${den(v)}) ${v.slice(0, 4)}`;
+};
+const g = z.gody;
+const gody = g && (g.aktiven ? `годы деятельности — ${edtf(g.aktiven)}` : [edtf(g.rozhdenie, g.rozhdenie_ss) || '?', edtf(g.smert, g.smert_ss)].join(' — '));
 const razdel = TIPY.find((t) => t.tip === z.tip)!.nazvanie;
 ---
 <Base title={`${z.nazvanie} — словарь · Русская цивилизация`} description={`${z.kratko} Дни музеев «Русской цивилизации», связанные с записью «${z.nazvanie}».`} schema="page"
   crumbs={[{ href: `${base}slovar/`, label: 'Словарь' }, { href: `${base}slovar/#${z.tip}`, label: razdel }, { label: z.nazvanie }]}>
   <Fragment slot="head"><InlineCss file="rc-slovar.css" /></Fragment>
-  <header slot="header"><h1>{z.nazvanie}</h1><p>{z.kratko}</p></header>
+  <header slot="header"><h1>{z.nazvanie}</h1>
+    {(z.latinica || gody) && <p class="slovar-imya">{z.latinica && <span lang="ru-Latn" translate="no">{z.latinica}</span>}{z.latinica && gody && ' · '}{gody && <span>{gody}</span>}</p>}
+    <p>{z.kratko}</p></header>
   <div class="slovar">
     <h2>Дни музеев</h2>
     <ul class="slovar-dni">
