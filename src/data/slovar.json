@@ -1,487 +1,628 @@
 {
+  "_roli": {
+    "_opisanie": "Закрытый список ролей связи дня со словарём (п. 31, Р664): что запись делает в этом дне. Роль ставится в карточке дня полем slovar_roli — { \"tip:slug\": \"rol\" }; связь без роли значит upomyanut. Другие роли не заводить — сначала дописать сюда. Подробно и пример — docs/spravochniki-standart.md, раздел 31.",
+    "geroy": {
+      "nazvanie": "герой дня",
+      "tipy": [
+        "lyudi",
+        "narod"
+      ],
+      "cidoc": "P11 had participant (главный)"
+    },
+    "izobrel": {
+      "nazvanie": "изобрёл, создал, построил, написал, открыл",
+      "tipy": [
+        "lyudi",
+        "narod"
+      ],
+      "cidoc": "P14 carried out by / P94 has created"
+    },
+    "uchastnik": {
+      "nazvanie": "участник события",
+      "tipy": [
+        "lyudi",
+        "narod"
+      ],
+      "cidoc": "P11 had participant"
+    },
+    "mesto": {
+      "nazvanie": "место, где это было",
+      "tipy": [
+        "mesto"
+      ],
+      "cidoc": "P7 took place at"
+    },
+    "upomyanut": {
+      "nazvanie": "упомянут в дне",
+      "tipy": [
+        "lyudi",
+        "mesto",
+        "narod",
+        "tema"
+      ],
+      "cidoc": "P67 refers to"
+    }
+  },
   "lyudi:aleksandr-benua": {
     "tip": "lyudi",
     "nazvanie": "Александр Бенуа",
+    "pol": "m",
     "kratko": "Художник, историк искусства, один из основателей «Мира искусства»."
   },
   "lyudi:aleksandr-deyneka": {
     "tip": "lyudi",
     "nazvanie": "Александр Дейнека",
+    "pol": "m",
     "kratko": "Советский живописец и график, автор «Обороны Севастополя»."
   },
   "lyudi:aleksandr-grinberg": {
     "tip": "lyudi",
     "nazvanie": "Александр Гринберг",
+    "pol": "m",
     "kratko": "Архитектор, строил в 1920-е."
   },
   "lyudi:aleksandr-ivanov": {
     "tip": "lyudi",
     "nazvanie": "Александр Иванов",
+    "pol": "m",
     "kratko": "Живописец, двадцать лет писал «Явление Христа народу»."
   },
   "lyudi:aleksandr-karpinskiy": {
     "tip": "lyudi",
     "nazvanie": "Александр Карпинский",
+    "pol": "m",
     "kratko": "Геолог, первый выборный президент Академии наук."
   },
   "lyudi:aleksandr-laktionov": {
     "tip": "lyudi",
     "nazvanie": "Александр Лактионов",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Письма с фронта»."
   },
   "lyudi:aleksandr-pushkin": {
     "tip": "lyudi",
     "nazvanie": "Александр Пушкин",
+    "pol": "m",
     "kratko": "Поэт, создатель современного русского литературного языка."
   },
   "lyudi:aleksandr-suvorov": {
     "tip": "lyudi",
     "nazvanie": "Александр Суворов",
+    "pol": "m",
     "kratko": "Полководец, генералиссимус, не проиграл ни одного сражения."
   },
   "lyudi:aleksandr-turchevich": {
     "tip": "lyudi",
     "nazvanie": "Александр Турчевич",
+    "pol": "m",
     "kratko": "Пермский архитектор XIX века."
   },
   "lyudi:aleksey-savrasov": {
     "tip": "lyudi",
     "nazvanie": "Алексей Саврасов",
+    "pol": "m",
     "kratko": "Пейзажист, автор «Грачи прилетели»."
   },
   "lyudi:aleksey-shchusev": {
     "tip": "lyudi",
     "nazvanie": "Алексей Щусев",
+    "pol": "m",
     "kratko": "Архитектор, автор Казанского вокзала в Москве."
   },
   "lyudi:aleksey-urmanov": {
     "tip": "lyudi",
     "nazvanie": "Алексей Урманов",
+    "pol": "m",
     "kratko": "Фигурист, олимпийский чемпион."
   },
   "lyudi:aleksey-venecianov": {
     "tip": "lyudi",
     "nazvanie": "Алексей Венецианов",
+    "pol": "m",
     "kratko": "Живописец, первым сделал крестьянскую жизнь главным сюжетом картины."
   },
   "lyudi:anatoliy-karpov": {
     "tip": "lyudi",
     "nazvanie": "Анатолий Карпов",
+    "pol": "m",
     "kratko": "Шахматист, чемпион мира."
   },
   "lyudi:andrey-bogolyubskiy": {
     "tip": "lyudi",
     "nazvanie": "Андрей Боголюбский",
+    "pol": "m",
     "kratko": "Князь владимирский XII века."
   },
   "lyudi:andrey-rublev": {
     "tip": "lyudi",
     "nazvanie": "Андрей Рублёв",
+    "pol": "m",
     "kratko": "Иконописец, автор «Троицы»."
   },
   "lyudi:arhip-kuindzhi": {
     "tip": "lyudi",
     "nazvanie": "Архип Куинджи",
+    "pol": "m",
     "kratko": "Пейзажист, мастер света в живописи."
   },
   "lyudi:boris-kustodiev": {
     "tip": "lyudi",
     "nazvanie": "Борис Кустодиев",
+    "pol": "m",
     "kratko": "Живописец и график, певец купеческой и ярмарочной России."
   },
   "lyudi:daniil-zabolotnyy": {
     "tip": "lyudi",
     "nazvanie": "Даниил Заболотный",
+    "pol": "m",
     "kratko": "Эпидемиолог, исследователь чумы."
   },
   "lyudi:elena-vyalbe": {
     "tip": "lyudi",
     "nazvanie": "Елена Вяльбе",
+    "pol": "zh",
     "kratko": "Лыжница, чемпионка мира."
   },
   "lyudi:elizaveta-bykova": {
     "tip": "lyudi",
     "nazvanie": "Елизавета Быкова",
+    "pol": "zh",
     "kratko": "Шахматистка, чемпионка мира."
   },
   "lyudi:erofey-habarov": {
     "tip": "lyudi",
     "nazvanie": "Ерофей Хабаров",
+    "pol": "m",
     "kratko": "Землепроходец, прошёл по Амуру в XVII веке."
   },
   "lyudi:faddey-bellinsgauzen": {
     "tip": "lyudi",
     "nazvanie": "Фаддей Беллинсгаузен",
+    "pol": "m",
     "kratko": "Мореплаватель, начальник экспедиции, открывшей Антарктиду."
   },
   "lyudi:fedor-konyuhov": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Конюхов",
+    "pol": "m",
     "kratko": "Путешественник, прошёл вокруг света в одиночку."
   },
   "lyudi:fedor-reshetnikov": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Решетников",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Опять двойка»."
   },
   "lyudi:fedor-ushakov": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Ушаков",
+    "pol": "m",
     "kratko": "Флотоводец, адмирал Черноморского флота."
   },
   "lyudi:fedor-vasilev": {
     "tip": "lyudi",
     "nazvanie": "Фёдор Васильев",
+    "pol": "m",
     "kratko": "Пейзажист, автор «Оттепели» и «Мокрого луга»."
   },
   "lyudi:filipp-malyavin": {
     "tip": "lyudi",
     "nazvanie": "Филипп Малявин",
+    "pol": "m",
     "kratko": "Живописец, автор «Вихря»."
   },
   "lyudi:georgiy-sedov": {
     "tip": "lyudi",
     "nazvanie": "Георгий Седов",
+    "pol": "m",
     "kratko": "Полярный исследователь, шёл к Северному полюсу."
   },
   "lyudi:german-titov": {
     "tip": "lyudi",
     "nazvanie": "Герман Титов",
+    "pol": "m",
     "kratko": "Лётчик-космонавт, первым провёл в космосе больше суток."
   },
   "lyudi:grigoriy-myasoedov": {
     "tip": "lyudi",
     "nazvanie": "Григорий Мясоедов",
+    "pol": "m",
     "kratko": "Художник-передвижник, автор «Косцов»."
   },
   "lyudi:ilya-golosov": {
     "tip": "lyudi",
     "nazvanie": "Илья Голосов",
+    "pol": "m",
     "kratko": "Архитектор-конструктивист."
   },
   "lyudi:ilya-repin": {
     "tip": "lyudi",
     "nazvanie": "Илья Репин",
+    "pol": "m",
     "kratko": "Живописец, автор «Бурлаков на Волге» и «Запорожцев»."
   },
   "lyudi:isaak-levitan": {
     "tip": "lyudi",
     "nazvanie": "Исаак Левитан",
+    "pol": "m",
     "kratko": "Пейзажист, автор «Над вечным покоем»."
   },
   "lyudi:ivan-ayvazovskiy": {
     "tip": "lyudi",
     "nazvanie": "Иван Айвазовский",
+    "pol": "m",
     "kratko": "Художник-маринист, автор «Девятого вала»."
   },
   "lyudi:ivan-bilibin": {
     "tip": "lyudi",
     "nazvanie": "Иван Билибин",
+    "pol": "m",
     "kratko": "Художник-иллюстратор русских сказок и былин."
   },
   "lyudi:ivan-hrutskiy": {
     "tip": "lyudi",
     "nazvanie": "Иван Хруцкий",
+    "pol": "m",
     "kratko": "Живописец, мастер натюрморта."
   },
   "lyudi:ivan-kramskoy": {
     "tip": "lyudi",
     "nazvanie": "Иван Крамской",
+    "pol": "m",
     "kratko": "Живописец, один из основателей передвижников."
   },
   "lyudi:ivan-papanin": {
     "tip": "lyudi",
     "nazvanie": "Иван Папанин",
+    "pol": "m",
     "kratko": "Полярник, начальник станции «Северный полюс-1»."
   },
   "lyudi:ivan-shishkin": {
     "tip": "lyudi",
     "nazvanie": "Иван Шишкин",
+    "pol": "m",
     "kratko": "Пейзажист, певец русского леса."
   },
   "lyudi:karl-bryullov": {
     "tip": "lyudi",
     "nazvanie": "Карл Брюллов",
+    "pol": "m",
     "kratko": "Живописец, автор «Последнего дня Помпеи»."
   },
   "lyudi:karl-kebah": {
     "tip": "lyudi",
     "nazvanie": "Карл Кебах",
+    "pol": "m",
     "kratko": "Садовый мастер, создатель крымских парков."
   },
   "lyudi:kazimir-malevich": {
     "tip": "lyudi",
     "nazvanie": "Казимир Малевич",
+    "pol": "m",
     "kratko": "Художник, создатель супрематизма и «Чёрного квадрата»."
   },
   "lyudi:konstantin-flavickiy": {
     "tip": "lyudi",
     "nazvanie": "Константин Флавицкий",
+    "pol": "m",
     "kratko": "Живописец, автор «Княжны Таракановой»."
   },
   "lyudi:konstantin-korovin": {
     "tip": "lyudi",
     "nazvanie": "Константин Коровин",
+    "pol": "m",
     "kratko": "Живописец и театральный художник, русский импрессионист."
   },
   "lyudi:konstantin-makovskiy": {
     "tip": "lyudi",
     "nazvanie": "Константин Маковский",
+    "pol": "m",
     "kratko": "Живописец, автор «Боярской свадьбы»."
   },
   "lyudi:konstantin-melnikov": {
     "tip": "lyudi",
     "nazvanie": "Константин Мельников",
+    "pol": "m",
     "kratko": "Архитектор русского авангарда."
   },
   "lyudi:konstantin-yuon": {
     "tip": "lyudi",
     "nazvanie": "Константин Юон",
+    "pol": "m",
     "kratko": "Живописец, пейзажист русской провинции."
   },
   "lyudi:kuzma-petrov-vodkin": {
     "tip": "lyudi",
     "nazvanie": "Кузьма Петров-Водкин",
+    "pol": "m",
     "kratko": "Живописец, автор «Купания красного коня»."
   },
   "lyudi:mark-shagal": {
     "tip": "lyudi",
     "nazvanie": "Марк Шагал",
+    "pol": "m",
     "kratko": "Живописец родом из Витебска."
   },
   "lyudi:mihail-larionov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Ларионов",
+    "pol": "m",
     "kratko": "Живописец русского авангарда, создатель лучизма."
   },
   "lyudi:mihail-lazarev": {
     "tip": "lyudi",
     "nazvanie": "Михаил Лазарев",
+    "pol": "m",
     "kratko": "Мореплаватель, участник открытия Антарктиды."
   },
   "lyudi:mihail-lermontov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Лермонтов",
+    "pol": "m",
     "kratko": "Поэт и прозаик, автор «Героя нашего времени»."
   },
   "lyudi:mihail-nesterov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Нестеров",
+    "pol": "m",
     "kratko": "Живописец, автор «Видения отроку Варфоломею»."
   },
   "lyudi:mihail-somov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Сомов",
+    "pol": "m",
     "kratko": "Океанолог, начальник первой советской антарктической экспедиции."
   },
   "lyudi:mihail-vodopyanov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Водопьянов",
+    "pol": "m",
     "kratko": "Полярный лётчик, первым посадил самолёт на Северном полюсе."
   },
   "lyudi:mihail-vrubel": {
     "tip": "lyudi",
     "nazvanie": "Михаил Врубель",
+    "pol": "m",
     "kratko": "Живописец, автор «Демона сидящего»."
   },
   "lyudi:nikolay-belelyubskiy": {
     "tip": "lyudi",
     "nazvanie": "Николай Белелюбский",
+    "pol": "m",
     "kratko": "Инженер-мостостроитель."
   },
   "lyudi:nikolay-bogdanov-belskiy": {
     "tip": "lyudi",
     "nazvanie": "Николай Богданов-Бельский",
+    "pol": "m",
     "kratko": "Живописец, писал крестьянских детей и сельскую школу."
   },
   "lyudi:nikolay-ge": {
     "tip": "lyudi",
     "nazvanie": "Николай Ге",
+    "pol": "m",
     "kratko": "Живописец, автор «Тайной вечери» и «Что есть истина?»."
   },
   "lyudi:nikolay-gogol": {
     "tip": "lyudi",
     "nazvanie": "Николай Гоголь",
+    "pol": "m",
     "kratko": "Писатель, автор «Мёртвых душ»."
   },
   "lyudi:nikolay-rerih": {
     "tip": "lyudi",
     "nazvanie": "Николай Рерих",
+    "pol": "m",
     "kratko": "Живописец, путешественник, исследователь Азии."
   },
   "lyudi:nikolay-vavilov": {
     "tip": "lyudi",
     "nazvanie": "Николай Вавилов",
+    "pol": "m",
     "kratko": "Генетик и ботаник, собрал мировую коллекцию семян."
   },
   "lyudi:nikolay-yaroshenko": {
     "tip": "lyudi",
     "nazvanie": "Николай Ярошенко",
+    "pol": "m",
     "kratko": "Художник-передвижник, автор «Всюду жизнь»."
   },
   "lyudi:orest-kiprenskiy": {
     "tip": "lyudi",
     "nazvanie": "Орест Кипренский",
+    "pol": "m",
     "kratko": "Портретист, автор портрета Пушкина."
   },
   "lyudi:pavel-fedotov": {
     "tip": "lyudi",
     "nazvanie": "Павел Федотов",
+    "pol": "m",
     "kratko": "Живописец, автор «Сватовства майора»."
   },
   "lyudi:pavel-filonov": {
     "tip": "lyudi",
     "nazvanie": "Павел Филонов",
+    "pol": "m",
     "kratko": "Живописец русского авангарда."
   },
   "lyudi:pavel-nahimov": {
     "tip": "lyudi",
     "nazvanie": "Павел Нахимов",
+    "pol": "m",
     "kratko": "Адмирал, герой Синопа и обороны Севастополя."
   },
   "lyudi:petr-i": {
     "tip": "lyudi",
     "nazvanie": "Пётр I",
+    "pol": "m",
     "kratko": "Первый российский император."
   },
   "lyudi:semen-remezov": {
     "tip": "lyudi",
     "nazvanie": "Семён Ремезов",
+    "pol": "m",
     "kratko": "Тобольский картограф и зодчий, автор «Чертёжной книги Сибири»."
   },
   "lyudi:sergey-gerasimov": {
     "tip": "lyudi",
     "nazvanie": "Сергей Герасимов",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Матери партизана»."
   },
   "lyudi:sergey-prokudin-gorskiy": {
     "tip": "lyudi",
     "nazvanie": "Сергей Прокудин-Горский",
+    "pol": "m",
     "kratko": "Фотограф, снимал Россию в цвете в начале XX века."
   },
   "lyudi:sergey-vinogradov": {
     "tip": "lyudi",
     "nazvanie": "Сергей Виноградов",
+    "pol": "m",
     "kratko": "Живописец, пейзажист Союза русских художников."
   },
   "lyudi:silvestr-shchedrin": {
     "tip": "lyudi",
     "nazvanie": "Сильвестр Щедрин",
+    "pol": "m",
     "kratko": "Пейзажист, писал Италию с натуры."
   },
   "lyudi:stanislav-zhukovskiy": {
     "tip": "lyudi",
     "nazvanie": "Станислав Жуковский",
+    "pol": "m",
     "kratko": "Пейзажист, мастер усадебного пейзажа."
   },
   "lyudi:stepan-makarov": {
     "tip": "lyudi",
     "nazvanie": "Степан Макаров",
+    "pol": "m",
     "kratko": "Адмирал, океанограф, создатель ледокола «Ермак»."
   },
   "lyudi:tatyana-yablonskaya": {
     "tip": "lyudi",
     "nazvanie": "Татьяна Яблонская",
+    "pol": "zh",
     "kratko": "Советская живописица, автор «Хлеба»."
   },
   "lyudi:valentin-serov": {
     "tip": "lyudi",
     "nazvanie": "Валентин Серов",
+    "pol": "m",
     "kratko": "Живописец, портретист, автор «Девочки с персиками»."
   },
   "lyudi:valentin-voyno-yasenetskiy": {
     "tip": "lyudi",
     "nazvanie": "Валентин Войно-Ясенецкий (святитель Лука)",
+    "pol": "m",
     "kratko": "Хирург и архиепископ, автор «Очерков гнойной хирургии»."
   },
   "lyudi:vasilisa-kozhina": {
     "tip": "lyudi",
     "nazvanie": "Василиса Кожина",
+    "pol": "zh",
     "kratko": "Смоленская крестьянка, партизанка 1812 года."
   },
   "lyudi:vasiliy-kandinskiy": {
     "tip": "lyudi",
     "nazvanie": "Василий Кандинский",
+    "pol": "m",
     "kratko": "Живописец, один из создателей беспредметного искусства."
   },
   "lyudi:vasiliy-maksimov": {
     "tip": "lyudi",
     "nazvanie": "Василий Максимов",
+    "pol": "m",
     "kratko": "Художник-передвижник, писал деревенскую жизнь."
   },
   "lyudi:vasiliy-perov": {
     "tip": "lyudi",
     "nazvanie": "Василий Перов",
+    "pol": "m",
     "kratko": "Художник-передвижник, мастер жанровой картины и портрета."
   },
   "lyudi:vasiliy-polenov": {
     "tip": "lyudi",
     "nazvanie": "Василий Поленов",
+    "pol": "m",
     "kratko": "Живописец, автор «Московского дворика»."
   },
   "lyudi:vasiliy-pukirev": {
     "tip": "lyudi",
     "nazvanie": "Василий Пукирев",
+    "pol": "m",
     "kratko": "Живописец, автор «Неравного брака»."
   },
   "lyudi:vasiliy-smyslov": {
     "tip": "lyudi",
     "nazvanie": "Василий Смыслов",
+    "pol": "m",
     "kratko": "Шахматист, чемпион мира."
   },
   "lyudi:vasiliy-surikov": {
     "tip": "lyudi",
     "nazvanie": "Василий Суриков",
+    "pol": "m",
     "kratko": "Исторический живописец, автор «Боярыни Морозовой»."
   },
   "lyudi:vasiliy-tropinin": {
     "tip": "lyudi",
     "nazvanie": "Василий Тропинин",
+    "pol": "m",
     "kratko": "Портретист, автор прижизненного портрета Пушкина."
   },
   "lyudi:vasiliy-vereshchagin": {
     "tip": "lyudi",
     "nazvanie": "Василий Верещагин",
+    "pol": "m",
     "kratko": "Художник-баталист, писал войну без парадности."
   },
   "lyudi:viktor-borisov-musatov": {
     "tip": "lyudi",
     "nazvanie": "Виктор Борисов-Мусатов",
+    "pol": "m",
     "kratko": "Живописец, автор «Водоёма»."
   },
   "lyudi:viktor-vasnecov": {
     "tip": "lyudi",
     "nazvanie": "Виктор Васнецов",
+    "pol": "m",
     "kratko": "Живописец, автор «Богатырей» и «Алёнушки»."
   },
   "lyudi:vitus-bering": {
     "tip": "lyudi",
     "nazvanie": "Витус Беринг",
+    "pol": "m",
     "kratko": "Мореплаватель, начальник Камчатских экспедиций."
   },
   "lyudi:vladimir-borovikovskiy": {
     "tip": "lyudi",
     "nazvanie": "Владимир Боровиковский",
+    "pol": "m",
     "kratko": "Портретист XVIII века, автор портрета Лопухиной."
   },
   "lyudi:vladimir-shuhov": {
     "tip": "lyudi",
     "nazvanie": "Владимир Шухов",
+    "pol": "m",
     "kratko": "Инженер, создатель сетчатых гиперболоидных башен."
   },
   "lyudi:yuriy-dolgorukiy": {
     "tip": "lyudi",
     "nazvanie": "Юрий Долгорукий",
+    "pol": "m",
     "kratko": "Князь XII века, основатель Москвы."
   },
   "lyudi:yuriy-gagarin": {
     "tip": "lyudi",
     "nazvanie": "Юрий Гагарин",
+    "pol": "m",
     "kratko": "Лётчик-космонавт, первый человек в космосе."
   },
   "lyudi:yuriy-pimenov": {
     "tip": "lyudi",
     "nazvanie": "Юрий Пименов",
+    "pol": "m",
     "kratko": "Советский живописец, автор «Новой Москвы»."
   },
   "mesto:alyaska": {
