@@ -36,5 +36,15 @@ proba('164: тексты kazhdomu-svoyo-mesto в перевод, коды и src
   return k.some((x) => x.endsWith('dannye.podpisi.0.tekst')) && k.some((x) => x.endsWith('dannye.mesta.0.verno_ru'))
     && !k.some((x) => /\.(kod|mesto|src)$/.test(x));
 })());
+// ugol-v-koridor-luny (01-02): угол старта между min и max, удар меньше коридора; тексты исходов в перевод, цвета — нет.
+const luna = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/ugol-v-koridor-luny.json', import.meta.url), 'utf8'));
+const pravkaL = (fn) => { const o = structuredClone(luna); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике ugol-v-koridor-luny приняты', igraDannymi.safeParse(luna).success);
+proba('76: угол старта вне min–max — отказ', !pravkaL((d) => { d.ugol.start = 90; }));
+proba('76: удар не меньше коридора — отказ', !pravkaL((d) => { d.udar = d.koridor; }));
+proba('164: тексты ugol-v-koridor-luny в перевод, цвета — нет', (() => {
+  const k = Object.keys(vynutStroki(luna, 'izobreteniya', '01-02'));
+  return k.some((x) => x.endsWith('dannye.teksty.popal_ru')) && k.some((x) => x.endsWith('dannye.cel.podpis')) && !k.some((x) => /\.cvet\.\d$/.test(x));
+})());
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);
