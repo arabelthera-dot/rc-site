@@ -36,5 +36,16 @@ proba('164: тексты kazhdomu-svoyo-mesto в перевод, коды и src
   return k.some((x) => x.endsWith('dannye.podpisi.0.tekst')) && k.some((x) => x.endsWith('dannye.mesta.0.verno_ru'))
     && !k.some((x) => /\.(kod|mesto|src)$/.test(x));
 })());
+// nastroy-volnu-priyomnika (01-04): числа как в январской игре, цель внутри шкалы, счёт с {n}.
+const volna = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/nastroy-volnu-priyomnika.json', import.meta.url), 'utf8'));
+const pravkaV = (fn) => { const o = structuredClone(volna); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике nastroy-volnu-priyomnika приняты', igraDannymi.safeParse(volna).success);
+proba('76: цель «до» не больше «от» — отказ', !pravkaV((d) => { d.cel_do = d.cel_ot; }));
+proba('76: счёт без {n} — отказ', !pravkaV((d) => { d.schet_ru = 'Команд принято'; }));
+proba('164: тексты nastroy-volnu-priyomnika в перевод, числа — нет', (() => {
+  const k = Object.keys(vynutStroki(volna, 'izobreteniya', '01-04'));
+  return k.some((x) => x.endsWith('dannye.knopka_ru')) && k.some((x) => x.endsWith('dannye.pobeda.soobshchenie_ru'))
+    && !k.some((x) => /\.(komand|dopusk|cel_ot|polzunok_start)$/.test(x));
+})());
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);

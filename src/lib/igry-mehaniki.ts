@@ -66,11 +66,26 @@ const kazhdomuSvoyoMesto = z.object({
   });
 });
 
+// nastroy-volnu-priyomnika (01-04): совпасть с волной приёмника komand раз; |ползунок − цель| < dopusk (шкала 1–100).
+const nastroyVolnuPriyomnika = z.object({
+  komand: z.number().int().min(1).max(10).default(3),
+  dopusk: z.number().min(1).max(20).default(4),
+  cel_ot: z.number().min(1).max(100).default(20), cel_do: z.number().min(1).max(100).default(80),
+  polzunok_start: z.number().min(1).max(100).default(8),
+  polzunok_ru: str, knopka_ru: str,
+  schet_ru: str.regex(/\{n\}/, 'schet_ru — с {n}'),
+  prinyato_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(15) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны' },
   'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины' },
-  'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне' },
+  'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне', dvizhok: true, dannye: nastroyVolnuPriyomnika },
   'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету' },
   'odin-progon-orlova': { den: '01-06', igra: 'stanok-orlova', slovami: 'Печатаешь розетку старым способом в три прогона и станком Орлова в один, а потом отличаешь настоящий билет от подделки' },
   'stezhki-v-takt-serdca': { den: '01-07', igra: 'sshey-shunt', slovami: 'Пережимаешь сосуд и 8 секунд смотришь ЭКГ, затем тапаешь по золотым точкам, которые движутся в такт сердцу (8 стежков)' },
