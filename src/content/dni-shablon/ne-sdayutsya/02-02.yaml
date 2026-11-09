@@ -479,12 +479,12 @@ tyazhelaya_tema:
 - vojna
 istochniki:
 - id: n1
-  baza: pamyat-naroda
+  baza: pamyat_naroda
   nazvanie: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941)
   god: 1941
   ssylka: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
 - id: n2
-  baza: arhiv-rf
+  baza: obd_memorial
   nazvanie: 'ОБД «Мемориал». Донесение о безвозвратных потерях: рядовой Овчаренко Д. Р., 3 тбр, погиб 28.01.1945, Венгрия, ст. Шерегейеш. ЦАМО, ф. 58, оп. 18003, д. 325'
   god: 1945
   ssylka: https://obd-memorial.ru/html/info.htm?id=56483295

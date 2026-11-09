@@ -1,0 +1,59 @@
+{
+ "_chto": "Подлинники картинок (пункт 28), одна запись на картинку.",
+ "zapisi": [
+  {
+   "kopiya": "muzei/ne-sdayutsya/img/01-01-goskatalog-16583638.jpg",
+   "muzei": "ne-sdayutsya",
+   "den": "01-01",
+   "kartinka": 1,
+   "kopiya_sha256": "d628ff7d9abad1e45d3b31fdbea95f6f0e971d5e75ef27d00b0051f415ff0726",
+   "kopiya_bayt": 72838,
+   "kopiya_px": [
+    636,
+    800
+   ],
+   "baza": "goskatalog",
+   "otkuda_skachan": "https://goskatalog.ru/portal/#/collections?id=16999502",
+   "podlinnik_gde": "u_istochnika",
+   "podlinnik_fayl": null,
+   "podlinnik_sha256": null,
+   "oshibki": []
+  },
+  {
+   "kopiya": "muzei/izobreteniya/img/01-01-goskatalog-82999227-atp1.jpg",
+   "muzei": "izobreteniya",
+   "den": "01-01",
+   "kartinka": 1,
+   "kopiya_sha256": "df1f3596db09a4ff7bb68283b9a1300b026b894e027215b17607777f6636407d",
+   "kopiya_bayt": 44150,
+   "kopiya_px": [
+    514,
+    205
+   ],
+   "baza": "goskatalog",
+   "otkuda_skachan": "https://goskatalog.ru/portal/#/collections?id=105171",
+   "podlinnik_gde": "u_istochnika",
+   "podlinnik_fayl": null,
+   "podlinnik_sha256": null,
+   "oshibki": []
+  },
+  {
+   "kopiya": "muzei/izobreteniya/img/01-01-goskatalog-13319093.jpg",
+   "muzei": "izobreteniya",
+   "den": "01-01",
+   "kartinka": 2,
+   "kopiya_sha256": "b3702cf0607077912245534637191fd597ae2e0ce0249831367b6441e3ef712b",
+   "kopiya_bayt": 64016,
+   "kopiya_px": [
+    798,
+    800
+   ],
+   "baza": "goskatalog",
+   "otkuda_skachan": "https://goskatalog.ru/portal/#/collections?id=4731853",
+   "podlinnik_gde": "u_istochnika",
+   "podlinnik_fayl": null,
+   "podlinnik_sha256": null,
+   "oshibki": []
+  }
+ ]
+}
