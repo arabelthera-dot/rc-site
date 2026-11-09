@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import { q, json, chromeJs as chromeJsF, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml } from '../lib/den-razmetka.mjs';
 import { titleVkladki } from '../lib/title-vkladki.mjs';
+import IgraRamka from '../components/den/IgraRamka.astro';
 const { d, museum } = Astro.props;
 const muzeyName = museum.title_ru;
 // Заголовок вкладки и og:title — из даты, года и события карточки (Р286 п.4); у пробы без них — как в карточке.
@@ -23,6 +24,8 @@ const ogTitle = kogda || d.head.og.title;
 // лежит в <template id="igra2d"> и сама встаёт на место 3D на слабом устройстве (assets/igra-dnya.js). 3D — модель
 // предмета (igra.model3d, .glb) или сцена движка rc3d (igra.rc3d). Нет 3D — нет блока игры вообще: ни 2D, ни css, ни скриптов.
 const r3 = d.igra.rc3d, m3 = d.igra.model3d, est3d = !!(r3 || m3);
+// Игра на данных (Р635): механика с движком + данные карточки — блок той же рамки src/components/den/IgraRamka.astro.
+const dannymi = !!(d.igra.mehanika && d.igra.dannye);
 const e = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const pravilaHtml = (p: string[]) => `<div class="igra-pravila" data-igra-pravila><h2>Как играть</h2><ol class="igra-pravila-shagi">${p.map((x) => `<li>${x}</li>`).join('')}</ol></div>`;
 const rc3dHtml = r3 ? `<div class="igra-dnya" id="games" data-igra-dnya><div id="rc3d" data-s="${r3.scen}"${r3.zastavka ? ` data-zastavka="${r3.zastavka}"` : ''}>
@@ -64,8 +67,8 @@ const m3Html = m3 ? `<section class="block igra-dnya igd" id="games" data-igra-d
 const zapasSkripty = [d.igra.imya, d.igra.vtoraya, d.igra.dop && `${d.igra.imya}-dop`].filter(Boolean).map((i) => `igry/${i}.js`);
 const zapas2d = [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
 const igraHtml = est3d ? `${rc3dHtml}${m3Html}\n<template id="igra2d" data-skripty="${e(JSON.stringify(zapasSkripty))}">\n${zapas2d}\n</template>` : '';
-// Полоса разделов: пункт игры (#games…) — только у дня с 3D и всегда на блок наверху.
-const daynav = d.daynav.flatMap((n) => (/^games/.test(n.id) ? (est3d ? [{ ...n, id: 'games' }] : []) : [n]))
+// Полоса разделов: пункт игры (#games…) — только у дня с 3D или игрой на данных и всегда на блок наверху.
+const daynav = d.daynav.flatMap((n) => (/^games/.test(n.id) ? (est3d || dannymi ? [{ ...n, id: 'games' }] : []) : [n]))
   .filter((n, i, all) => all.findIndex((x) => x.id === n.id) === i);
 // Общие куски разметки дня (q, json, chromeJs, scoreJs, quizJs, knopkiJs, кадры, факты, «Куда дальше») — src/lib/den-razmetka.mjs (r602).
 const chromeJs = chromeJsF(d, muzeyName);
@@ -144,6 +147,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   </div>
 </header>
 <Fragment set:html={igraHtml} />
+{dannymi && <IgraRamka igra={d.igra} />}
 
 <div class="hero-under">
   <div class="wrap">
