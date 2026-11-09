@@ -3,6 +3,7 @@
 // что обязательно с февраля — docs/standart-dnya.md (Р660). Здесь — только типы; полнота — src/lib/standart-dnya.mjs.
 // База источника и картинки — закрытый список: российские и белорусские да (Р469, Р136);
 // Википедии, Викисклада, Викитеки в нём нет и не будет (Р90).
+import fs from 'node:fs';
 import { z } from 'astro/zod';
 
 export const BAZY = ['goskatalog', 'shm_catalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'rusneb', 'prlib',
@@ -21,6 +22,21 @@ export const nomer = z.string().regex(/^[a-z0-9-]+$/, 'номер — латин
 export const god = z.union([z.number().int(), z.string().min(1)]);
 export const data = z.string().regex(/^\d{1,4}-\d\d-\d\d$/, 'дата — ГГГГ-ММ-ДД');
 const chisloIliNet = z.union([z.number().int(), z.literal(NET)]);
+const chitaj = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
+// Школьный предмет и класс (п. 10) — закрытый список ФГОС: src/data/spravochniki/shkolnye-predmety.json.
+export const PREDMETY = chitaj('src/data/spravochniki/shkolnye-predmety.json').predmety;
+export const shkola = z.array(z.object({
+  predmet: z.enum(Object.keys(PREDMETY), { message: 'shkola.predmet — из src/data/spravochniki/shkolnye-predmety.json' }),
+  klass: z.number().int().min(1).max(11, 'shkola.klass — 1–11'),
+}).superRefine((s, ctx) => {
+  if (PREDMETY[s.predmet] && !PREDMETY[s.predmet].klassy.includes(s.klass))
+    ctx.addIssue({ code: 'custom', message: `shkola: «${PREDMETY[s.predmet].nazvanie}» в ${s.klass} классе нет (ФГОС: ${PREDMETY[s.predmet].klassy.join(', ')})` });
+})).min(1);
+// Кто и что на картинке (п. 22) — номера записей словаря src/data/slovar.json и карточек src/data/spravochniki/kartochki.json.
+export const ZAPISI = new Set([...Object.keys(chitaj('src/data/slovar.json')), ...Object.keys(chitaj('src/data/spravochniki/kartochki.json'))]);
+export const izobrazheno = z.array(z.string()
+  .regex(/^(lyudi|predmet|mesto|narod|sobytie):[a-z0-9-]+$/, 'izobrazheno — «tip:id», tip: lyudi|predmet|mesto|narod|sobytie')
+  .superRefine((id, ctx) => { if (!ZAPISI.has(id)) ctx.addIssue({ code: 'custom', message: `izobrazheno: «${id}» нет ни в slovar.json, ни в spravochniki/kartochki.json` }); })).min(1);
 
 // Источник — запись: на него ссылаются факты и цитаты по id.
 export const istochnik = z.object({
@@ -52,7 +68,7 @@ export const prava = z.object({
   baza: baza.optional(),
   ssylka: z.string().url('ссылка картинки — адрес http(s)').optional(),
 });
-// Поля формы у картинки (vid … svyashchennoe); нет поля — как раньше.
+// Поля формы у картинки (vid … izobrazheno); нет поля — как раньше.
 export const polyaKartinki = {
   vid: z.enum(VIDY, { message: `vid картинки — ${VIDY.join(' | ')}` }).optional(),
   prava: prava.optional(),
@@ -65,6 +81,7 @@ export const polyaKartinki = {
   simvolika_proverena: z.boolean().optional(),
   podlinnik: z.object({ gde: str, otkuda: str }).optional(),
   svyashchennoe: z.boolean().optional(),
+  izobrazheno: izobrazheno.optional(),
 };
 // Поля формы у факта (fakty.id … fakty.otvet_edinstvennyj): у карточки страницы факт — удар блока fakty.
 export const polyaFakta = {
@@ -94,6 +111,7 @@ export const polyaDnya = (slovar) => ({
   voinskaya_chast: str.optional(),
   operaciya: str.optional(),
   front: str.optional(),
+  shkola: shkola.optional(),
   etiketka_oblozhki: z.array(str).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
   slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
     .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
