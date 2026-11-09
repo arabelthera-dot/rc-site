@@ -377,6 +377,38 @@ fakty:
     utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-02-goskatalog-9132841.jpg
+      alt: Коричневая кожаная полевая сумка-планшет с клапаном, алюминиевой пряжкой и гнёздами для карандашей.
+      data_source: https://goskatalog.ru/portal/#/collections?id=9132841
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Планшет армейский немецкий образца 1935 года, трофейный, 1936–1943 годы. Такие планшеты Овчаренко забрал у немецких офицеров. Хранится в Ставропольском государственном музее-заповеднике имени Г. Н. Прозрителева и Г. К. Праве.
+      credit: ГБУК СК «Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве», Госкаталог № 9020395
+      width: 800
+      height: 800
+      vid: predmet
+      nomer_predmeta: net
+      nomer_snimka: '9132841'
+      hranitel: Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве
+      podpis_chto: Планшет армейский немецкий образца 1935 года, трофейный
+      podpis_gde: Германия
+      podpis_kogda: 1936–1943 годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве
+        otkuda: https://goskatalog.ru/portal/#/collections?id=9132841
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1936–1943
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 9020395
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 9020395
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=9132841
   - id: ns-0202-ne-poverili
     summary: В роте ему сначала не поверили и подняли на смех. Политрук съездил на место боя, и всё подтвердилось.
     det:
