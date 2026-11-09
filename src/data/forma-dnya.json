@@ -163,6 +163,13 @@
       "punkt": "16"
     },
     {
+      "imya": "citaty.yazyk",
+      "chto": "язык цитаты, код BCP 47: be — белорусский, cu — церковнославянский; поля нет — русская (docs/perevod-standart.md)",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "16"
+    },
+    {
       "imya": "velichina_chislo",
       "chto": "главное число дня",
       "na_stranicu": true,
@@ -296,6 +303,20 @@
       "punkt": "28"
     },
     {
+      "imya": "images.alt",
+      "chto": "описание картинки для незрячих (alt): что на ней видно, не копия подписи; нет — alt из подписи",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "25"
+    },
+    {
+      "imya": "images.opisanie_dlinnoe",
+      "chto": "длинное описание схемы, карты, чертежа для незрячих; выводится под картинкой раскрывающимся блоком",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "26"
+    },
+    {
       "imya": "images.simvolika_proverena",
       "chto": "символика на картинке проверена; в военном дне обязательно",
       "na_stranicu": false,
@@ -329,6 +350,41 @@
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
       "punkt": "40"
+    },
+    {
+      "imya": "status",
+      "chto": "zagotovka — день в работе, состав не обязателен; gotov — вся форма и весь состав (Р676)",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "171–173"
+    },
+    {
+      "imya": "fakty.poluhuk",
+      "chto": "полухук — заголовок-крючок факта над «Подробнее» (у карточки страницы — summary)",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "172"
+    },
+    {
+      "imya": "fakty.eshche",
+      "chto": "факт блока «Ещё пять фактов»; у готового дня основных 10 и таких 5",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "171"
+    },
+    {
+      "imya": "vizual",
+      "chto": "только «Русские не сдаются»: визуализация данными вместо игры — tip (dokument | karta | predmet) и dannye",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "173"
+    },
+    {
+      "imya": "pokazan_sergeyu",
+      "chto": "дата показа текста Сергею; без неё нет аудиогида и ролика",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "174"
     }
   ]
 }

@@ -7,7 +7,7 @@
 // первенства» нет (Р436/Р437: вместо игры — визуализация). Дальше страницу ведёт конвейер src/integrations/full-pages.mjs.
 import fs from 'node:fs';
 import { nePerevodit } from '../lib/perevod.mjs';
-import { q, json, chromeJs, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml } from '../lib/den-razmetka.mjs';
+import { q, json, chromeJs, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml } from '../lib/den-razmetka.mjs';
 import { titleVkladki } from '../lib/title-vkladki.mjs';
 const { d, museum } = Astro.props;
 const muzeyName = museum.title_ru;
@@ -68,14 +68,14 @@ const chrome = chromeJs(d, muzeyName);
 
 {o && (<figure class="hero-fig" id="hero">
 <div class={['hero-scene', o.klass, 'fit-full'].filter(Boolean).join(' ')} data-oblozhka={o.celikom ? 'celikom' : undefined}>
-  <img class="scene" src={o.src} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding="async" data-source={o.data_source} data-license={o.license}>
+  <img class="scene" src={o.src} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding="async" data-source={o.data_source} data-license={o.license} aria-describedby={o.opisanie_dlinnoe ? opisanieId(o.src) : undefined}>
 </div>
 <figcaption class="scene-caption">
   <div class="wrap">
     <div class="scene-cap"><Fragment set:html={o.credit ? `${o.podpis} <span class="credit">${o.credit}</span>` : o.podpis} /></div>
     <span class="scene-hint">{o.hint}</span>
   </div>
-</figcaption>
+</figcaption>{o.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(o)} />}
 </figure>)}
 
 <header class="hero-lead">
@@ -143,7 +143,7 @@ const chrome = chromeJs(d, muzeyName);
   </div>
 </section>)}<Fragment set:html={posle('vizual')} />
 
-{d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license}><figcaption><Fragment set:html={f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis} /></figcaption></figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
+{d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license} aria-describedby={f.opisanie_dlinnoe ? opisanieId(f.src) : undefined}><figcaption><Fragment set:html={f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis} /></figcaption>{f.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(f)} />}</figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
 
 <section class="block" id="quiz">
   <div class="wrap">
