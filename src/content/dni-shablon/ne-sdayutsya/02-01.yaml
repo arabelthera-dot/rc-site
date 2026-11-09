@@ -6,6 +6,8 @@ key: 02-01
 adres: den
 # Р676: gotov — «Ещё» 14–15 добавлены по Р683 (10 + «Ещё» 5); визуализация (vizual) — Р681.
 status: gotov
+pokazan_sergeyu:
+  data: '2026-11-09'
 nomer_dnya: ns-0201-peresvet
 data_sobytiya: '1380-09-08'
 data_staryj_stil: '1380-09-08'
