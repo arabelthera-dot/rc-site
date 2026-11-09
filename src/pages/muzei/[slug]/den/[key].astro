@@ -13,6 +13,7 @@ import DenZavtra from '../../../../components/den/DenZavtra.astro';
 import InlineCss from '../../../../components/InlineCss.astro';
 import { privychkaOn, blokZavtra } from '../../../../lib/privychka.mjs';
 import Credit from '../../../../components/den/Credit.astro';
+import { opisanieId, opisanieHtml } from '../../../../lib/den-razmetka.mjs';
 import DenAnketa from '../../../../components/den/DenAnketa.astro';
 import DenSlovar from '../../../../components/den/DenSlovar.astro';
 import DenIzobreteniya from '../../../../layouts/DenIzobreteniya.astro';
@@ -87,6 +88,9 @@ const cal = `${museumUrl}calendar/`;
 const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
 const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
 const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
+// П. 25–26: alt — описание для незрячих, нет — подпись, как раньше; длинное описание — к схемам и картам.
+const alt = (i: { alt?: string; caption: string }) => i.alt ?? i.caption;
+const opis = (i: { src: string; opisanie_dlinnoe?: string }) => (i.opisanie_dlinnoe ? opisanieId(i.src) : undefined);
 // Своего кадра нет у готового дня — своя карточка пересылки 1200×630 (дата, название, музей; og-den, 18.10).
 // SVG-кадр Telegram/ВК в превью не показывают — у такого дня тоже карточка (19.10).
 // WebP ВК в превью не берёт — JPG/PNG-двойник, нет его — карточка (ogRaster, 19.10, Б9).
@@ -158,8 +162,8 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
   <article class="dp">
     {cover && (
       <figure class="hero-scene">
-        <a href={cover.src} target="_blank" rel="noopener" aria-label="Открыть картинку целиком"><img src={cover.src} alt={cover.caption} /></a>
-        <figcaption class="scene-caption"><span class="cap">{cover.caption}</span> <Credit text={cover.credit} /></figcaption>
+        <a href={cover.src} target="_blank" rel="noopener" aria-label="Открыть картинку целиком"><img src={cover.src} alt={alt(cover)} aria-describedby={opis(cover)} /></a>
+        <figcaption class="scene-caption"><span class="cap">{cover.caption}</span> <Credit text={cover.credit} /></figcaption>{cover.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(cover)} />}
       </figure>
     )}
 
@@ -194,8 +198,8 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
         <h2>Суть</h2>
         {d.gist && <p>{cap(d.gist)}</p>}
         {rest.map((im) => (
-          <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
-            <figcaption>{im.caption} <Credit text={im.credit} /></figcaption></figure>))}
+          <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={alt(im)} aria-describedby={opis(im)} loading="lazy" /></a>
+            <figcaption>{im.caption} <Credit text={im.credit} /></figcaption>{im.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(im)} />}</figure>))}
       </section>
     )}
     <DenMedia video={d.video} audio={d.audio} where={`${m.slug}/${d.key}`} />
@@ -207,7 +211,7 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
             <article class="more-card">
               <figure class="more-pic">
                 {e.images.map((im) => (
-                  <a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>))}
+                  <a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={alt(im)} loading="lazy" /></a>))}
                 <figcaption title={`${e.images[0].caption} ${e.images[0].credit}`}>{e.images[0].caption} <span class="credit">{e.images[0].credit}</span></figcaption>
               </figure>
               <h3>{e.title}{e.year && <span class="more-year"> · {e.year}</span>}</h3>
@@ -216,8 +220,8 @@ const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, pa
                 <summary>Узнать подробнее</summary>
                 {e.detail.map((t) => <p>{t}</p>)}
                 {e.detail_images.map((im) => (
-                  <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={im.caption} loading="lazy" /></a>
-                    <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption></figure>))}
+                  <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={alt(im)} aria-describedby={opis(im)} loading="lazy" /></a>
+                    <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption>{im.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(im)} />}</figure>))}
                 {e.link && <p class="more-den">Подробно — в нашем календаре: <a href={e.link.href}>{e.link.label}</a></p>}
                 <p class="more-src">Источник: <Fragment set:html={srcHtml(e.source)} /></p>
               </details>
