@@ -1,7 +1,7 @@
 // Выход дня по дате (Р686 п.7, Р688): день, готовый заранее, появляется на сайте в свой день сам. Как в мире —
 // «scheduled publishing» статического сайта: запись с будущей датой не попадает в сборку, ночная пересборка по
-// расписанию (deploy.yml, schedule) выпускает её в свой день (Hugo buildFuture: https://gohugo.io/methods/page/publishdate/ ,
-// Jekyll future: https://jekyllrb.com/docs/configuration/options/ ).
+// расписанию (deploy.yml, schedule) выпускает её в свой день (Hugo — buildFuture и publishDate,
+// Jekyll — future: false).
 // Свой день — god_pokaza-ММ-ДД, 00:00 по Москве. Год — из самой записи, нет в ней — из карточки дня того же музея и ключа
 // (src/content/dni-shablon/<музей>/ММ-ДД.yaml): страница строится из записи days, а год показа часто стоит только в карточке.
 // Нет god_pokaza нигде — день вне расписания, выходит сразу, как раньше.
