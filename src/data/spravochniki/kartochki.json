@@ -289,9 +289,11 @@
   "tip": "lyudi",
   "nazvanie": "Герман Титов",
   "napisaniya": [
-   "Герман Титов"
+   "Герман Титов",
+   "Г. В. Титов"
   ],
   "dni": [
+   "ne-sdayutsya/01-07",
    "ne-sdayutsya/01-13"
   ],
   "iz": "slovar.json"
@@ -769,17 +771,6 @@
   ],
   "iz": "tekst"
  },
- "lyudi:titov-gv": {
-  "tip": "lyudi",
-  "nazvanie": "Г. В. Титов",
-  "napisaniya": [
-   "Г. В. Титов"
-  ],
-  "dni": [
-   "ne-sdayutsya/01-07"
-  ],
-  "iz": "tekst"
- },
  "lyudi:tkachenko-af": {
   "tip": "lyudi",
   "nazvanie": "А. Ф. Ткаченко",
@@ -905,18 +896,9 @@
   "tip": "predmet",
   "nazvanie": "Анчар",
   "napisaniya": [
-   "Анчар"
-  ],
-  "dni": [
-   "izobreteniya/01-24"
-  ],
-  "iz": "tekst"
- },
- "predmet:anchara": {
-  "tip": "predmet",
-  "nazvanie": "Анчара",
-  "napisaniya": [
-   "Анчара"
+   "Анчар",
+   "Анчара",
+   "Анчару"
   ],
   "dni": [
    "izobreteniya/01-24"
@@ -928,17 +910,6 @@
   "nazvanie": "Анчаров",
   "napisaniya": [
    "Анчаров"
-  ],
-  "dni": [
-   "izobreteniya/01-24"
-  ],
-  "iz": "tekst"
- },
- "predmet:ancharu": {
-  "tip": "predmet",
-  "nazvanie": "Анчару",
-  "napisaniya": [
-   "Анчару"
   ],
   "dni": [
    "izobreteniya/01-24"
@@ -1060,7 +1031,8 @@
   "tip": "predmet",
   "nazvanie": "Эльбрус",
   "napisaniya": [
-   "Эльбрус"
+   "Эльбрус",
+   "Эльбруса"
   ],
   "dni": [
    "izobreteniya/01-27"
@@ -1082,7 +1054,8 @@
   "tip": "predmet",
   "nazvanie": "Эльбрус-2",
   "napisaniya": [
-   "Эльбрус-2"
+   "Эльбрус-2",
+   "Эльбруса-2"
   ],
   "dni": [
    "izobreteniya/01-27"
@@ -1094,28 +1067,6 @@
   "nazvanie": "Эльбрус-3",
   "napisaniya": [
    "Эльбрус-3"
-  ],
-  "dni": [
-   "izobreteniya/01-27"
-  ],
-  "iz": "tekst"
- },
- "predmet:elbrusa": {
-  "tip": "predmet",
-  "nazvanie": "Эльбруса",
-  "napisaniya": [
-   "Эльбруса"
-  ],
-  "dni": [
-   "izobreteniya/01-27"
-  ],
-  "iz": "tekst"
- },
- "predmet:elbrusa-2": {
-  "tip": "predmet",
-  "nazvanie": "Эльбруса-2",
-  "napisaniya": [
-   "Эльбруса-2"
   ],
   "dni": [
    "izobreteniya/01-27"
@@ -1159,28 +1110,8 @@
   "tip": "predmet",
   "nazvanie": "Ермак",
   "napisaniya": [
-   "Ермак"
-  ],
-  "dni": [
-   "izobreteniya/01-08"
-  ],
-  "iz": "tekst"
- },
- "predmet:ermaka": {
-  "tip": "predmet",
-  "nazvanie": "Ермака",
-  "napisaniya": [
-   "Ермака"
-  ],
-  "dni": [
-   "izobreteniya/01-08"
-  ],
-  "iz": "tekst"
- },
- "predmet:ermaku": {
-  "tip": "predmet",
-  "nazvanie": "Ермаку",
-  "napisaniya": [
+   "Ермак",
+   "Ермака",
    "Ермаку"
   ],
   "dni": [
@@ -1214,28 +1145,8 @@
   "tip": "predmet",
   "nazvanie": "Феликс",
   "napisaniya": [
-   "Феликс"
-  ],
-  "dni": [
-   "izobreteniya/01-18"
-  ],
-  "iz": "tekst"
- },
- "predmet:felikse": {
-  "tip": "predmet",
-  "nazvanie": "Феликсе",
-  "napisaniya": [
-   "Феликсе"
-  ],
-  "dni": [
-   "izobreteniya/01-18"
-  ],
-  "iz": "tekst"
- },
- "predmet:feliksov": {
-  "tip": "predmet",
-  "nazvanie": "Феликсов",
-  "napisaniya": [
+   "Феликс",
+   "Феликсе",
    "Феликсов"
   ],
   "dni": [
@@ -1287,33 +1198,13 @@
   ],
   "iz": "tekst"
  },
- "predmet:komsomolca": {
-  "tip": "predmet",
-  "nazvanie": "Комсомольца",
-  "napisaniya": [
-   "Комсомольца"
-  ],
-  "dni": [
-   "izobreteniya/01-13"
-  ],
-  "iz": "tekst"
- },
- "predmet:komsomolce": {
-  "tip": "predmet",
-  "nazvanie": "Комсомольце",
-  "napisaniya": [
-   "Комсомольце"
-  ],
-  "dni": [
-   "izobreteniya/01-13"
-  ],
-  "iz": "tekst"
- },
  "predmet:komsomolec": {
   "tip": "predmet",
   "nazvanie": "Комсомолец",
   "napisaniya": [
-   "Комсомолец"
+   "Комсомолец",
+   "Комсомольца",
+   "Комсомольце"
   ],
   "dni": [
    "izobreteniya/01-13"
@@ -1357,39 +1248,9 @@
   "tip": "predmet",
   "nazvanie": "Лира",
   "napisaniya": [
-   "Лира"
-  ],
-  "dni": [
-   "izobreteniya/01-14"
-  ],
-  "iz": "tekst"
- },
- "predmet:lire": {
-  "tip": "predmet",
-  "nazvanie": "Лире",
-  "napisaniya": [
-   "Лире"
-  ],
-  "dni": [
-   "izobreteniya/01-14"
-  ],
-  "iz": "tekst"
- },
- "predmet:liru": {
-  "tip": "predmet",
-  "nazvanie": "Лиру",
-  "napisaniya": [
-   "Лиру"
-  ],
-  "dni": [
-   "izobreteniya/01-14"
-  ],
-  "iz": "tekst"
- },
- "predmet:liry": {
-  "tip": "predmet",
-  "nazvanie": "Лиры",
-  "napisaniya": [
+   "Лира",
+   "Лире",
+   "Лиру",
    "Лиры"
   ],
   "dni": [
@@ -1401,28 +1262,8 @@
   "tip": "predmet",
   "nazvanie": "Луна-1",
   "napisaniya": [
-   "Луна-1"
-  ],
-  "dni": [
-   "izobreteniya/01-02"
-  ],
-  "iz": "tekst"
- },
- "predmet:lunoy-1": {
-  "tip": "predmet",
-  "nazvanie": "Луной-1",
-  "napisaniya": [
-   "Луной-1"
-  ],
-  "dni": [
-   "izobreteniya/01-02"
-  ],
-  "iz": "tekst"
- },
- "predmet:luny-1": {
-  "tip": "predmet",
-  "nazvanie": "Луны-1",
-  "napisaniya": [
+   "Луна-1",
+   "Луной-1",
    "Луны-1"
   ],
   "dni": [
@@ -1434,17 +1275,7 @@
   "tip": "predmet",
   "nazvanie": "Меркурий",
   "napisaniya": [
-   "Меркурий"
-  ],
-  "dni": [
-   "ne-sdayutsya/01-02"
-  ],
-  "iz": "tekst"
- },
- "predmet:merkuriya": {
-  "tip": "predmet",
-  "nazvanie": "Меркурия",
-  "napisaniya": [
+   "Меркурий",
    "Меркурия"
   ],
   "dni": [
@@ -1467,17 +1298,7 @@
   "tip": "predmet",
   "nazvanie": "Молодая гвардия",
   "napisaniya": [
-   "Молодая гвардия"
-  ],
-  "dni": [
-   "ne-sdayutsya/01-28"
-  ],
-  "iz": "tekst"
- },
- "predmet:molodoy-gvardii": {
-  "tip": "predmet",
-  "nazvanie": "Молодой гвардии",
-  "napisaniya": [
+   "Молодая гвардия",
    "Молодой гвардии"
   ],
   "dni": [
@@ -1588,28 +1409,8 @@
   "tip": "predmet",
   "nazvanie": "Пайлот",
   "napisaniya": [
-   "Пайлот"
-  ],
-  "dni": [
-   "izobreteniya/01-10"
-  ],
-  "iz": "tekst"
- },
- "predmet:paylota": {
-  "tip": "predmet",
-  "nazvanie": "Пайлота",
-  "napisaniya": [
-   "Пайлота"
-  ],
-  "dni": [
-   "izobreteniya/01-10"
-  ],
-  "iz": "tekst"
- },
- "predmet:paylotu": {
-  "tip": "predmet",
-  "nazvanie": "Пайлоту",
-  "napisaniya": [
+   "Пайлот",
+   "Пайлота",
    "Пайлоту"
   ],
   "dni": [
@@ -2072,17 +1873,7 @@
   "tip": "predmet",
   "nazvanie": "Туман",
   "napisaniya": [
-   "Туман"
-  ],
-  "dni": [
-   "ne-sdayutsya/01-27"
-  ],
-  "iz": "tekst"
- },
- "predmet:tumana": {
-  "tip": "predmet",
-  "nazvanie": "Тумана",
-  "napisaniya": [
+   "Туман",
    "Тумана"
   ],
   "dni": [
@@ -2149,28 +1940,8 @@
   "tip": "predmet",
   "nazvanie": "Варяг",
   "napisaniya": [
-   "Варяг"
-  ],
-  "dni": [
-   "ne-sdayutsya/01-10"
-  ],
-  "iz": "tekst"
- },
- "predmet:varyaga": {
-  "tip": "predmet",
-  "nazvanie": "Варяга",
-  "napisaniya": [
-   "Варяга"
-  ],
-  "dni": [
-   "ne-sdayutsya/01-10"
-  ],
-  "iz": "tekst"
- },
- "predmet:varyage": {
-  "tip": "predmet",
-  "nazvanie": "Варяге",
-  "napisaniya": [
+   "Варяг",
+   "Варяга",
    "Варяге"
   ],
   "dni": [
@@ -2227,17 +1998,7 @@
   "tip": "predmet",
   "nazvanie": "Восход-2",
   "napisaniya": [
-   "Восход-2"
-  ],
-  "dni": [
-   "ne-sdayutsya/01-26"
-  ],
-  "iz": "tekst"
- },
- "predmet:voshoda-2": {
-  "tip": "predmet",
-  "nazvanie": "Восхода-2",
-  "napisaniya": [
+   "Восход-2",
    "Восхода-2"
   ],
   "dni": [
