@@ -94,6 +94,8 @@ export const polyaDnya = (slovar) => ({
   voinskaya_chast: str.optional(),
   operaciya: str.optional(),
   front: str.optional(),
+  // п.41: шифры, номера, коды дословно как в тексте дня — на странице они в <span translate="no"> (src/lib/perevod.mjs).
+  ne_perevodit: z.array(str).optional(),
   etiketka_oblozhki: z.array(str).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
   slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
     .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),

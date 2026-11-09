@@ -317,6 +317,13 @@
       "punkt": "30"
     },
     {
+      "imya": "ne_perevodit",
+      "chto": "шифры, номера, коды дословно как в тексте («ф. 1, оп. 2, д. 3») — на странице в translate=\"no\", переводчик их не трогает; поле дозаполняет машина",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "41"
+    },
+    {
       "imya": "chistyj_tekst",
       "chto": "правило: в полях нового дня нет вёрстки и слов «в этом году»",
       "na_stranicu": false,
