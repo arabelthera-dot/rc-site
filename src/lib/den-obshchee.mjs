@@ -7,8 +7,14 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
-import { polyaKartinki, polyaFakta, polyaDnya } from './forma-dnya.mjs';
+import { polyaKartinki, polyaFakta, polyaDnya, status } from './forma-dnya.mjs';
 import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
+import { stroka } from './yazyki.mjs';
+
+// Служебные подписи страницы (пункты меню, викторина, итог, аудиогид, ролик) — шаблоном из src/data/stroki.json (п. 54):
+// нет поля в карточке — берётся строка оттуда; есть — карточка как раньше. Своё имя пункта (игра, «Развилка») — в карточке.
+const S = (k) => stroka('ru', k);
+const NAV = S('denNav');
 const SLOVAR = JSON.parse(fs.readFileSync('src/data/slovar.json', 'utf8'));
 
 export const str = z.string().min(1);
@@ -57,6 +63,8 @@ export const obshchiePolya = (BLOKI) => {
     // `den` — карточка рисует живой адрес den/ММ-ДД (Р286, den/[key].astro), старый HTML уходит на den/ММ-ДД/staraya/;
     // нет поля — проба на den-shablon/ММ-ДД.
     adres: z.literal('den').optional(),
+    // Р676: 'zagotovka' — день в работе, пункты состава (171–173 docs/standart-dnya.md) не обязательны; на адрес den не идёт.
+    status: status.optional(),
     key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД'),
     // sobytie + god — заголовок вкладки и og:title собирает шаблон: «16 января 1969: <событие> — <музей> — Русская цивилизация»
     // (Р286 п.4; событие — title карточки дня src/content/days, год — со старой страницы); нет их — title/og.title как есть.
@@ -70,9 +78,13 @@ export const obshchiePolya = (BLOKI) => {
     kroshka: str,
     lead: z.object({ data: str, privyazka: str, kto: str, h1: str, hook: str }),
     stamp: z.array(z.object({ v: str, k: str })),
-    daynav: z.array(z.object({ id: str, label: str })),
+    daynav: z.array(z.object({ id: str, label: str.optional() }).transform((n, ctx) => {
+      const label = n.label ?? NAV[n.id];
+      if (!label) ctx.addIssue({ code: 'custom', path: ['label'], message: `у пункта меню «${n.id}» нет label, и в src/data/stroki.json (denNav) его нет` });
+      return { ...n, label };
+    })),
     // Секции, которых у дня нет, — не пишутся: нет video — нет блока (на adres: den ролик обязателен — замок ниже).
-    video: z.object({ h2: str, klyuch: str, format: str, pole: str, suffix: str, badge: str, intro: str, poster: str, mp4: str, note: str }).optional(),
+    video: z.object({ h2: str, klyuch: str, format: str, pole: str, suffix: str.default(S('denVideoSuffix')), badge: str, intro: str, poster: str, mp4: str, note: str }).optional(),
     // История — ударами (udary) или простыми абзацами разметкой 1:1 (abzacy, у старых страниц без ударов); intro необязателен.
     story: z.object({ kicker: str, h2: str, intro: str.optional(), udary: z.array(udar).min(1).optional(), abzacy: z.array(str).min(1).optional() })
       .refine((s) => s.udary || s.abzacy, 'у story нужны udary или abzacy'),
@@ -80,9 +92,9 @@ export const obshchiePolya = (BLOKI) => {
     // Уникальные разделы дня: готовая разметка 1:1 после блока posle (из BLOKI); несколько с одним posle — подряд, в порядке карточки.
     // Layout их не знает поимённо — новый день его не правит.
     razdely: z.array(z.object({ posle: z.enum(BLOKI), html: str })).default([]),
-    quiz: z.object({ kicker: str, h2: str, intro: str, noscript: str, ball: z.number().int().positive().default(10),
+    quiz: z.object({ kicker: str.default(S('denQuizKicker')), h2: str.default(S('denQuizH2')), intro: str.default(S('denQuizIntro')), noscript: str, ball: z.number().int().positive().default(10),
       voprosy: z.array(z.object({ q: str, o: z.array(str).min(2), a: z.number().int().min(0), e: str })).min(1) }),
-    result: z.object({ kicker: str.optional(), h2: str, intro: str, zvanie: str, note: str }),
+    result: z.object({ kicker: str.optional(), h2: str.default(S('denResultH2')), intro: str, zvanie: str, note: str }),
     // Подписи календаря; нет — подписи музея по умолчанию (шаблон).
     kalendar: z.object({ kicker: str.optional(), h2: str, intro: str }).optional(),
     figures: z.array(kadr).default([]),
@@ -99,7 +111,7 @@ export const obshchiePolya = (BLOKI) => {
     return: z.object({ q: str, a: str, src: str.optional() }),
     // Нет — нет блока, кнопки «Слушать» и скриптов гида (недоделка пробы, Р232); на adres: den обязателен — замок ниже.
     audioguide: z.object({ audioSrc: str, durationLabel: str, lead: str, stops: z.array(z.object({ t: z.number(), mark: str, title: str })),
-      transcript: z.array(str), note: str }).optional(),
+      transcript: z.array(str), note: str.default(S('denAudioNote')) }).optional(),
     proof: z.record(z.string(), z.unknown()),
     // Поля формы Р635 у дня (nomer_dnya … slovar) — src/lib/forma-dnya.mjs; с 02-01 обязательны (docs/standart-dnya.md, Р660).
     ...polyaDnya(SLOVAR),
@@ -145,6 +157,7 @@ const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message
 export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portrety = false } = {}) {
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) iss(ctx, ['quiz', 'voprosy', i, 'a'], 'номер ответа вне списка'); });
   if (d.adres !== 'den') return;
+  if (d.status === 'zagotovka') iss(ctx, ['status'], 'заготовка (status: zagotovka) на адрес den не идёт — сначала полный состав (Р676)');
   if (!d.head.sobytie || !d.head.god) iss(ctx, ['head'], 'на адресе den нужны head.sobytie и head.god (заголовок вкладки)');
   // Вид 13 янв. (Р302): обложка и кадры обязательны.
   if (!d.oblozhka) iss(ctx, ['oblozhka'], 'на адресе den нужна обложка (oblozhka), как у 13 янв.');

@@ -4,10 +4,10 @@
 // База источника и картинки — закрытый список: российские и белорусские да (Р469, Р136);
 // Википедии, Викисклада, Викитеки в нём нет и не будет (Р90).
 import { z } from 'astro/zod';
+import bazy from '../data/spravochniki/bazy.json' with { type: 'json' };
 
-export const BAZY = ['goskatalog', 'shm_catalog', 'rusmuseum', 'tretyakov', 'ar_culture', 'pastvu', 'rusneb', 'prlib',
-  'rsl', 'nlr', 'shpl', 'pamyat-naroda', 'podvig-naroda', 'fips', 'muzej-rf', 'muzej-by', 'arhiv-rf', 'arhiv-by',
-  'biblioteka-rf', 'biblioteka-by', 'kniga', 'periodika', 'gosorgan-rf', 'gosorgan-by', 'nauka', 'sajt-organizacii'];
+// Р676: список баз один — src/data/spravochniki/bazy.json (собирает tools/spravochniki.py bazy), здесь не перечислять.
+export const BAZY = bazy.razresheny.map((b) => b.id);
 export const VIDY = ['foto', 'chertezh', 'karta', 'kartina', 'risunok', 'plakat', 'dokument', 'predmet', 'skhema',
   'kadr-filma'];
 export const TYAZHELYE = ['vojna', 'kazn', 'golod', 'repressii', 'katastrofa', 'gibel'];
@@ -16,7 +16,7 @@ export const NET = 'net';
 export const wiki = /wiki|википеди|викитек/i;
 
 const str = z.string().min(1);
-export const baza = z.enum(BAZY, { message: 'база — из закрытого списка BAZY (Википедия, Викисклад, Викитека запрещены, Р90)' });
+export const baza = z.enum(BAZY, { message: 'база — из закрытого списка src/data/spravochniki/bazy.json (Википедия, Викисклад, Викитека запрещены, Р90)' });
 export const nomer = z.string().regex(/^[a-z0-9-]+$/, 'номер — латиница, цифры, дефис');
 export const god = z.union([z.number().int(), z.string().min(1)]);
 export const data = z.string().regex(/^\d{1,4}-\d\d-\d\d$/, 'дата — ГГГГ-ММ-ДД');
@@ -32,11 +32,15 @@ export const istochnik = z.object({
   ssylka: z.string().url('ссылка источника — адрес http(s)').optional(),
   mesto: str.optional(),
 });
+// Язык цитаты — код BCP 47 (п. 43): be — белорусский, cu — церковнославянский; поля нет — цитата русская.
+// Нужен, чтобы цитату не отдавали в машину перевода как русскую и чтобы шаблон мог поставить ей lang.
+export const YAZYKI_CITAT = ['ru', 'be', 'cu'];
 export const citata = z.object({
   kto: z.string().min(1, 'у цитаты нет автора'),
   gde: z.string().min(1, 'у цитаты нет места публикации'),
   tekst: z.string().min(1, 'у цитаты нет текста'),
   istochnik: nomer.optional(),
+  yazyk: z.enum(YAZYKI_CITAT, { message: `язык цитаты — ${YAZYKI_CITAT.join(' | ')} (BCP 47)` }).optional(),
 });
 // Паспорт прав картинки — одна запись; otkuda — откуда взята («Госкаталог, № предмета 4655496»).
 // Годы смерти автора и реабилитации — число или 'net' (автор жив, не репрессирован).
@@ -65,6 +69,9 @@ export const polyaKartinki = {
   simvolika_proverena: z.boolean().optional(),
   podlinnik: z.object({ gde: str, otkuda: str }).optional(),
   svyashchennoe: z.boolean().optional(),
+  // 26. Длинное описание схемы, карты, чертежа для незрячих (WAI, complex images): что и где на картинке, связи;
+  // выводится под картинкой раскрывающимся «Подробное описание» и связано с ней aria-describedby.
+  opisanie_dlinnoe: str.optional(),
 };
 // Поля формы у факта (fakty.id … fakty.otvet_edinstvennyj): у карточки страницы факт — удар блока fakty.
 export const polyaFakta = {
@@ -74,6 +81,20 @@ export const polyaFakta = {
   otvet: str.optional(),
   otvet_edinstvennyj: z.literal(true).optional(),
 };
+// Р676 (Сергей 09.11: «переводи их в автоматизацию»): состав дня — полями формы, а не только словами навыков.
+// status: 'zagotovka' — день в работе, состав не обязателен; 'gotov' — вся форма и весь состав (10 + «Ещё» 5, полухуки,
+// игра или визуализация). Нет поля — день как раньше.
+export const status = z.enum(['zagotovka', 'gotov'], { message: "status — 'zagotovka' или 'gotov'" });
+// Полухук факта — заголовок-крючок над «Подробнее» (museum-nesdayutsya: одно предложение).
+export const poluhuk = str;
+// Визуализация «Русских не сдаются» вместо игры (Р436): вид и данные, по которым её рисует движок.
+export const VIZUAL_TIPY = ['dokument', 'karta', 'predmet'];
+export const vizualDannymi = z.object({
+  tip: z.enum(VIZUAL_TIPY, { message: `vizual.tip — ${VIZUAL_TIPY.join(' | ')}` }),
+  dannye: z.record(z.string(), z.unknown()).refine((v) => Object.keys(v).length > 0, 'у визуализации нет данных (vizual.dannye)'),
+});
+// Показ Сергею до озвучки (museum-page-production, ход 2): аудиогид и ролик — только после «да» на текст.
+export const pokazanSergeyu = z.object({ data });
 // Поля формы у дня (nomer_dnya … slovar) — без fakty и images: у карточки страницы они свои (удары, кадры).
 export const polyaDnya = (slovar) => ({
   nomer_dnya: nomer.optional(),
@@ -95,6 +116,7 @@ export const polyaDnya = (slovar) => ({
   operaciya: str.optional(),
   front: str.optional(),
   etiketka_oblozhki: z.array(str).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
+  pokazan_sergeyu: pokazanSergeyu.optional(),
   slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
     .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
 });

@@ -1,7 +1,7 @@
 // Сторож ссылок и опасного JS (разбор безопасности 20.10.2026, b-cepochka-postavok.md п. 1, 2).
 // 1) Домены: каждый внешний адрес http(s):// в исходниках страниц — дни (src/content/days), полные страницы
 //    (src/data/full-pages), шаблоны (src/components, src/layouts, src/pages, src/lib, src/data), движки
-//    (public/assets) — сверяется с data/razreshennye-domeny.txt. Ловит и <a href>, которых не видит
+//    (public/assets) — сверяется с data/razreshennye-domeny.txt и доменами баз src/data/spravochniki/bazy.json. Ловит и <a href>, которых не видит
 //    vneshnie-hosty.mjs. Запись списка разрешает хост и его поддомены. Новый домен — код 1.
 // 2) Опасный JS в public/assets/**/*.js и <script> полных страниц: eval(, new Function, atob(, document.write,
 //    присвоение location внешнего адреса, склейка 'ht'+'tps'. На main 20.10.2026 — 0 нарушений, поэтому строгий.
@@ -11,6 +11,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const SPISOK = 'data/razreshennye-domeny.txt';
+// Р676: домены баз-источников — из src/data/spravochniki/bazy.json (один список), в SPISOK их не дублировать.
+const BAZY = 'src/data/spravochniki/bazy.json';
 const KORNI = ['src/content/days', 'src/data', 'src/components', 'src/layouts', 'src/pages', 'src/lib', 'public/assets'];
 const RASSH = /\.(?:md|mdx|json|ya?ml|html|astro|js|mjs|ts|css|svg)$/i;
 const URL_RE = /https?:\/\/([A-Za-z0-9.-]+)/g;
@@ -35,15 +37,19 @@ for (const k of KORNI) for (const f of faily(k)) {
   }
 }
 
+const domenyBaz = JSON.parse(fs.readFileSync(BAZY, 'utf8')).razresheny.filter((b) => b.url).map((b) => host(new URL(b.url).hostname));
+const vBazah = (h) => domenyBaz.some((r) => h === r || h.endsWith('.' + r));
+
 if (process.argv.includes('--sobrat')) {
   const shapka = '# Разрешённые внешние домены rc-site (storozh-ssylok.mjs). Запись разрешает домен и его поддомены.\n'
     + '# Собрано с main 20.10.2026. Новый домен добавляй, только если он законен (источник, музей, архив).\n';
-  fs.writeFileSync(SPISOK, shapka + [...vstrechi.keys()].sort().join('\n') + '\n');
+  fs.writeFileSync(SPISOK, shapka + [...vstrechi.keys()].filter((h) => !vBazah(h)).sort().join('\n') + '\n');
   console.log(`список доменов: ${vstrechi.size} → ${SPISOK}`);
   process.exit(0);
 }
 
-const razr = fs.readFileSync(SPISOK, 'utf8').split('\n').map((s) => s.trim()).filter((s) => s && !s.startsWith('#')).map(host);
+const razr = fs.readFileSync(SPISOK, 'utf8').split('\n').map((s) => s.trim()).filter((s) => s && !s.startsWith('#')).map(host)
+  .concat(domenyBaz);
 const razresheno = (h) => razr.some((r) => h === r || h.endsWith('.' + r));
 const narusheniya = [];
 for (const [h, f] of vstrechi) if (!razresheno(h)) narusheniya.push(`новый внешний домен ${h} в ${f} — добавь в ${SPISOK}, если законен`);
