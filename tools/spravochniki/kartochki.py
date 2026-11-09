@@ -7,6 +7,7 @@
 Люди: имя из словаря или «И. О. Фамилия» / «Имя Фамилия» из текста фактов.
 Предметы: название в кавычках-ёлочках из заголовков фактов.
 Дубли (один человек под двумя написаниями) — src/data/spravochniki/kartochki-dubli.json.
+Решённый дубль — запись в src/data/snyatye-nomera.json: снятый номер машина сливает в живой.
 Запуск: python3 tools/spravochniki/kartochki.py
 """
 import json, re, glob, os
@@ -59,6 +60,17 @@ for muzej in MUZEI:
                 vstrechi[nomer].add(gde)
 for nomer, dni in vstrechi.items():
     kart[nomer]['dni'] = sorted(dni)
+
+# Снятые номера (п. 12): карточка снятого номера сливается в живую, как перенаправление Wikidata.
+snyatye = json.load(open(f'{KOREN}/src/data/snyatye-nomera.json'))['nomera']
+for staryy, z in snyatye.items():
+    if z['smotri'] in snyatye: raise SystemExit(f'snyatye-nomera.json: {staryy} → {z["smotri"]}, а тот тоже снят — веди сразу на живой')
+    if staryy not in kart: continue
+    k = kart.pop(staryy)
+    if z['smotri'] not in kart: raise SystemExit(f'snyatye-nomera.json: {staryy} → {z["smotri"]}, а такой карточки нет')
+    cel = kart[z['smotri']]
+    cel['napisaniya'] += [x for x in k['napisaniya'] if x not in cel['napisaniya']]
+    cel['dni'] = sorted(set(cel['dni']) | set(k['dni']))
 
 # Дубли: одна фамилия под разными номерами (инициалы/полное имя), е/ё.
 po_fam = defaultdict(list)
