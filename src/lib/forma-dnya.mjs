@@ -65,6 +65,9 @@ export const polyaKartinki = {
   simvolika_proverena: z.boolean().optional(),
   podlinnik: z.object({ gde: str, otkuda: str }).optional(),
   svyashchennoe: z.boolean().optional(),
+  // 26. Длинное описание схемы, карты, чертежа для незрячих (WAI, complex images): что и где на картинке, связи;
+  // выводится под картинкой раскрывающимся «Подробное описание» и связано с ней aria-describedby.
+  opisanie_dlinnoe: str.optional(),
 };
 // Поля формы у факта (fakty.id … fakty.otvet_edinstvennyj): у карточки страницы факт — удар блока fakty.
 export const polyaFakta = {

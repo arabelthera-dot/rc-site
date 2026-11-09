@@ -41,7 +41,7 @@ const shkola = gruppa('6+', 3);
           <ul class="dt-dni">
             {dni.map((d) => (
               <li><a class="dt-den" href={`${base}muzei/${m.slug}/den/${d.key}/`}>
-                {d.images[0] && <img src={img(d.images[0].src)} alt={d.images[0].caption} loading="lazy" decoding="async" />}
+                {d.images[0] && <img src={img(d.images[0].src)} alt={d.images[0].alt ?? d.images[0].caption} loading="lazy" decoding="async" />}
                 <span class="dt-data">{whenOfKey(d.key)}</span>
                 <span class="dt-t">{d.title}</span>
                 {d.hook && <span class="dt-hook">{d.hook}</span>}
