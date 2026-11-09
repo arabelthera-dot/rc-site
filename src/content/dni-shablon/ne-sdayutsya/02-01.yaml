@@ -3,6 +3,8 @@
 
 muzei: ne-sdayutsya
 key: 02-01
+# Р676: заготовка — по составу не хватает «Ещё» (3 из 5) и визуализации (vizual); тексты не тронуты.
+status: zagotovka
 nomer_dnya: ns-0201-peresvet
 data_sobytiya: '1380-09-08'
 data_staryj_stil: '1380-09-08'

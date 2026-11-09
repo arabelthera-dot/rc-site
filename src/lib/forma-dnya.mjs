@@ -81,6 +81,20 @@ export const polyaFakta = {
   otvet: str.optional(),
   otvet_edinstvennyj: z.literal(true).optional(),
 };
+// Р676 (Сергей 09.11: «переводи их в автоматизацию»): состав дня — полями формы, а не только словами навыков.
+// status: 'zagotovka' — день в работе, состав не обязателен; 'gotov' — вся форма и весь состав (10 + «Ещё» 5, полухуки,
+// игра или визуализация). Нет поля — день как раньше.
+export const status = z.enum(['zagotovka', 'gotov'], { message: "status — 'zagotovka' или 'gotov'" });
+// Полухук факта — заголовок-крючок над «Подробнее» (museum-nesdayutsya: одно предложение).
+export const poluhuk = str;
+// Визуализация «Русских не сдаются» вместо игры (Р436): вид и данные, по которым её рисует движок.
+export const VIZUAL_TIPY = ['dokument', 'karta', 'predmet'];
+export const vizualDannymi = z.object({
+  tip: z.enum(VIZUAL_TIPY, { message: `vizual.tip — ${VIZUAL_TIPY.join(' | ')}` }),
+  dannye: z.record(z.string(), z.unknown()).refine((v) => Object.keys(v).length > 0, 'у визуализации нет данных (vizual.dannye)'),
+});
+// Показ Сергею до озвучки (museum-page-production, ход 2): аудиогид и ролик — только после «да» на текст.
+export const pokazanSergeyu = z.object({ data });
 // Поля формы у дня (nomer_dnya … slovar) — без fakty и images: у карточки страницы они свои (удары, кадры).
 export const polyaDnya = (slovar) => ({
   nomer_dnya: nomer.optional(),
@@ -102,6 +116,7 @@ export const polyaDnya = (slovar) => ({
   operaciya: str.optional(),
   front: str.optional(),
   etiketka_oblozhki: z.array(str).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
+  pokazan_sergeyu: pokazanSergeyu.optional(),
   slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
     .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
 });
