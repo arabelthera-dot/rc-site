@@ -95,7 +95,7 @@ story:
   - Овчаренко хватает топор и убивает офицера. Три гранаты летят к машине, 21 германский солдат убит, остальные бегут. Раненого офицера он догоняет в огороде. Через две недели, 27 июля, он снова за пулемётом на высоте 239,8. За оба боя указом 9 ноября 1941 года он становится Героем Советского Союза и воюет рядовым до гибели 28 января 1945 года в Венгрии.
 fakty:
 - id: fakty
-  kicker: Шесть фактов
+  kicker: Десять фактов
   h2: Дмитрий Овчаренко
   udary:
   - id: ns-0202-53-protiv-odnogo
@@ -156,6 +156,17 @@ fakty:
         otkuda: Госкаталог, № 37834468
         baza: goskatalog
         ssylka: https://goskatalog.ru/portal/#/collections?id=38052433
+  - id: ns-0202-pesec
+    summary: Немецкий отряд нарвался на него у местечка с говорящим названием Песец.
+    det:
+    - Бой 13 июля 1941 года начинается в районе местечка Песец. Это название стоит в наградном листе.
+    src: 'Источник: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941) — https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/'
+    stranica: наградной лист к званию Героя Советского Союза
+    href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
+    otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
+    pometka: документ
+    istochnik: n1
+    dlya_voprosa: false
   - id: ns-0202-golova-oficera
     summary: 'В наградном листе Героя так и написано: «отрубил голову германскому офицеру»'
     det:
@@ -238,10 +249,6 @@ fakty:
     pometka: документ
     istochnik: n1
     dlya_voprosa: false
-- id: fakty-dnya
-  kicker: Ещё два факта
-  h2: Ещё о подвиге
-  udary:
   - id: ns-0202-dva-boya
     summary: Звезду Героя он заслужил двумя боями за две недели — 13 и 27 июля 1941-го
     det:
@@ -332,6 +339,76 @@ fakty:
         otkuda: Госкаталог, № 8140897
         baza: goskatalog
         ssylka: https://goskatalog.ru/portal/#/collections?id=8249698
+  - id: ns-0202-boepripasy
+    summary: 'Немцы разбежались, а боеприпасы приехали к своим вовремя: ездовой выполнил то, за чем ехал.'
+    det:
+    - После боя Овчаренко не бросает повозку. Боеприпасы и продукты он довозит до своей роты вовремя, как и положено ездовому.
+    src: 'Источник: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941) — https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/'
+    stranica: наградной лист к званию Героя Советского Союза
+    href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
+    otryvok: «Повозку с боеприпасами и продуктами доставил вовремя своей роте…»
+    pometka: документ
+    istochnik: n1
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0202-karty-v-shtab
+    summary: 'Он не только отбился, но и привёз в штаб полка разведданные: карты, планшеты и схемы немецких офицеров.'
+    det:
+    - Овчаренко забирает документы у всех убитых, а у офицеров — карты, планшеты, схему и записи. Всё это он сдаёт в штаб полка.
+    src: 'Источник: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941) — https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/'
+    stranica: наградной лист к званию Героя Советского Союза
+    href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
+    otryvok: «Тов. Овчаренко не растерялся, забрал у всех убитых документы, у офицеров карты, планшеты, схему, записи и предоставил их в штаб полка.»
+    pometka: документ
+    istochnik: n1
+    dlya_voprosa: false
+  - id: ns-0202-ne-poverili
+    summary: В роте ему сначала не поверили и подняли на смех. Политрук съездил на место боя, и всё подтвердилось.
+    det:
+    - Рассказ ездового в роте принимают за выдумку. Политрук смотрит привезённые документы, берёт нескольких бойцов и едет на место боя. Там пересчитывают убитых — два офицера и 21 солдат.
+    src: 'Источник: «Аргументы и факты». «Песец» с топором. Как красноармеец Овчаренко в одиночку победил 50 фашистов — https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov; телеканал «Звезда» — https://tvzvezda.ru/news/2020491443-GVPpg.html'
+    stranica: «Аргументы и факты»; телеканал «Звезда»
+    href: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
+    otryvok: «Однако политрук роты, посмотрев привезенные документы, присвистнул от изумления, и, взяв несколько бойцов, отправился на место событий. Когда подсчитали убитых, выяснилось, что Дмитрий Овчаренко в этой схватке уничтожил двух немецких офицеров и 21 солдата противника.»
+    pometka: два источника
+    istochnik: n3
+    dlya_voprosa: false
+  - id: ns-0202-v-pulemetchiki
+    summary: 'Комбат спросил, какая у него просьба. Он попросил одного: вернуть его в пулемётчики.'
+    det:
+    - После боя командир благодарит Овчаренко и спрашивает, есть ли у него просьба. Ездовой просит вернуть его в пулемётный взвод, и дальше служит пулемётчиком.
+    src: 'Источник: М. Колосов, «Люди и подвиги», очерк «Поэма о топоре» — https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/'
+    stranica: М. Колосов, «Поэма о топоре»
+    href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
+    otryvok: «- Есть, товарищ капитан! - ответил повозочный. - Прошу вернуть меня в пулеметный взвод.»
+    pometka: один источник
+    istochnik: n4
+    dlya_voprosa: false
+  - id: ns-0202-otec-plotnik
+    summary: Топором его учил владеть отец, сельский плотник. Он же рассказывал, как в 1918 году всё село взялось за топоры против кайзеровских солдат.
+    det:
+    - Отец, сельский плотник, учит сына владеть топором. Долгими вечерами он рассказывает, как всё село взялось за топоры против кайзеровских солдат.
+    src: 'Источник: М. Колосов, «Люди и подвиги», очерк «Поэма о топоре» — https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/'
+    stranica: М. Колосов, «Поэма о топоре»
+    href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
+    otryvok: «Когда он подрос, отец научил его владеть топором. … Один раз все село взялось за топоры. Сильно досадили кайзеровские вояки.»
+    pometka: один источник
+    istochnik: n4
+    dlya_voprosa: false
+  - id: ns-0202-v-stroj-1944
+    summary: Герой 1941 года в 1944-м снова встал в строй через военкомат в Донбассе и дошёл с танковой бригадой до Венгрии.
+    det:
+    - В 1944 году Овчаренко призывает Чистяковский военкомат Сталинской области. Рядовым 3-й танковой бригады он погибает 28 января 1945 года у станции Шерегейеш в Венгрии.
+    src: 'Источник: ОБД «Мемориал». Донесение о безвозвратных потерях: рядовой Овчаренко Д. Р., 3 тбр, погиб 28.01.1945, Венгрия, ст. Шерегейеш. ЦАМО, ф. 58, оп. 18003, д. 325 — https://obd-memorial.ru/html/info.htm?id=56483295'
+    stranica: донесение о безвозвратных потерях
+    href: https://obd-memorial.ru/html/info.htm?id=56483295
+    otryvok: «Дата и место призыва __.__.1944, Чистяковский РВК, Украинская ССР, Сталинская обл., Чистяковский р-н / Последнее место службы 3 тбр / Воинское звание рядовой»
+    pometka: документ
+    istochnik: n2
+    dlya_voprosa: false
 razdely: []
 quiz:
   kicker: Проверь себя · 5 вопросов
@@ -424,10 +501,19 @@ figures:
 sources:
 - href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
   title: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941)
-  note: к фактам 1–8
+  note: к фактам 1–10 и 14
 - href: https://obd-memorial.ru/html/info.htm?id=56483295
   title: 'ОБД «Мемориал». Донесение о безвозвратных потерях: рядовой Овчаренко Д. Р., 3 тбр, погиб 28.01.1945, Венгрия, ст. Шерегейеш. ЦАМО, ф. 58, оп. 18003, д. 325'
-  note: к факту 8
+  note: к фактам 8 и 15
+- href: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
+  title: «Аргументы и факты». «Песец» с топором. Как красноармеец Овчаренко в одиночку победил 50 фашистов
+  note: к факту 11
+- href: https://tvzvezda.ru/news/2020491443-GVPpg.html
+  title: Телеканал «Звезда» — о подвиге Дмитрия Овчаренко
+  note: к факту 11
+- href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
+  title: М. Колосов. «Люди и подвиги», очерк «Поэма о топоре»
+  note: к фактам 12 и 13
 kuda:
 - lbl: Следующий день
   href: index.html
@@ -465,8 +551,8 @@ return:
   q: Сколько немцев вышло против одного солдата с топором?
   a: '53'
 proof:
-  status: ne_utverzhdeno
-  note: Факты взяты дословно из утверждённого списка (knowledge/utverzhdeno/nesdayutsya/02-02.fakty.txt, раздел «ОТОБРАНО», Р667). Ролика и аудиогида нет — следующий шаг; день на пробном адресе den-shablon.
+  status: utverzhdeno
+  note: 'Факты дня утверждены Сергеем (Р667, добор 9–15 — Р683, порядок «Песец» третьим — Р684, 09.11.2026), взяты дословно из src/data/utverzhdeno/ne-sdayutsya/02-02.json. Ролик и аудиогид — следующий шаг; adres: den — после них.'
 nomer_dnya: ns-0202-ovcharenko
 data_sobytiya: '1941-07-13'
 data_uslovnaya: 2 февраля — день музея; событие — бой ездового Дмитрия Овчаренко у местечка Песец 13 июля 1941 года.
@@ -489,6 +575,15 @@ istochniki:
   god: 1945
   ssylka: https://obd-memorial.ru/html/info.htm?id=56483295
   mesto: ЦАМО, ф. 58, оп. 18003, д. 325
+- id: n3
+  baza: periodika
+  nazvanie: «Аргументы и факты». «Песец» с топором. Как красноармеец Овчаренко в одиночку победил 50 фашистов
+  ssylka: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
+- id: n4
+  baza: kniga
+  nazvanie: М. Колосов. «Люди и подвиги», очерк «Поэма о топоре»
+  avtor: М. Колосов
+  ssylka: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
 citaty: []
 velichina_chislo: 53
 velichina_edinica: врага
