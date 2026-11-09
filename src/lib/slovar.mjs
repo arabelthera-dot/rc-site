@@ -21,3 +21,13 @@ export const zapisi = Object.entries(slovar).map(([id, z]) => {
 
 export const zapis = (id) => zapisi.find((z) => z.id === id);
 export const adres = (base, id) => { const [tip, slug] = id.split(':'); return `${base}slovar/${tip}/${slug}/`; };
+
+// Название места на дату (пункты 32, 33): одно обозначение mesto:slug на все годы, имя — из nazvaniya по дате.
+// data — «ГГГГ» или «ГГГГ-ММ-ДД»; s входит, po нет (Петроград s 1914-08-31 po 1924-01-26). Нет nazvaniya — nazvanie.
+export const nazvanieNa = (id, data) => {
+  const z = zapis(id);
+  if (!z) return undefined;
+  const d = String(data);
+  const n = (z.nazvaniya ?? []).find((x) => (!x.s || x.s.slice(0, d.length) <= d) && (!x.po || d < x.po.slice(0, d.length)));
+  return n?.nazvanie ?? z.nazvanie;
+};
