@@ -70,6 +70,8 @@ jobs:
     env:
       # Поиск по сайту (pagefind) — переменная репозитория RC_POISK ('1' — включён; src/integrations/poisk.mjs).
       RC_POISK: ${{ vars.RC_POISK }}
+      # Выход по дате (Р686 п.7) — переменная RC_VYHOD_S: дата запуска ГГГГ-ММ-ДД; пусто — видны все дни (src/lib/vyhod.mjs).
+      RC_VYHOD_S: ${{ vars.RC_VYHOD_S }}
       # «Поддержать проект» (Р31, 20.10.2026): пусто — выключен до работающего приёма денег, '1' — включён.
       PUBLIC_PODDERZHKA: ${{ vars.PUBLIC_PODDERZHKA }}
       PUBLIC_CSP: ${{ vars.PUBLIC_CSP }}

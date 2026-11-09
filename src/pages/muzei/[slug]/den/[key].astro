@@ -24,11 +24,13 @@ import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../.
 import { zhurnal, zhurnalHtml } from '../../../../lib/redakciya.mjs';
 import { podvalDnyaHtml } from '../../../../lib/podval-dnya.mjs';
 import { titleVkladki } from '../../../../lib/title-vkladki.mjs';
+import { vyshel } from '../../../../lib/vyhod.mjs';
 export async function getStaticPaths() {
   const museums = await getCollection('museums');
   const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
   // Карточка шаблона с `adres: den` (Р286, src/lib/dni-shablon.mjs) — день рисует общий layout музея, не Base/DenAnketa.
-  const shablony = kartochki().filter((k) => k.adres === 'den');
+  // Выход по дате (src/lib/vyhod.mjs): карточка, чей день не наступил, не рисуется — на адресе «День готовится».
+  const shablony = kartochki().filter((k) => k.adres === 'den' && vyshel(k.key));
   // Музеи с общим шаблоном дня (r602) — тот же список, что SHABLONY_DNYA ниже (getStaticPaths не видит переменных страницы).
   for (const k of shablony) if (!['izobreteniya', 'ne-sdayutsya'].includes(k.muzei)) throw new Error(`den: у музея ${k.muzei} нет шаблона дня`);
   const full = days.map((d) => {

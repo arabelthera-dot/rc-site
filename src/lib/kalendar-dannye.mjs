@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { vyshel } from './vyhod.mjs';
 
 const metaOf = (slug) => {
   const f = `src/data/calendar-meta-${slug}.json`;
@@ -32,7 +33,7 @@ export function kalendarMuzeya(slug, days, base) {
 export function zapisiMuzeya(slug) {
   const dir = path.join('src/content/days', slug);
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort().map((f) => {
+  return fs.readdirSync(dir).filter((f) => f.endsWith('.json') && vyshel(f.slice(0, -5))).sort().map((f) => {
     const d = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
     return { ...d, title: d.title || d.hook || '' };
   });

@@ -34,6 +34,7 @@ import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml, zhurnal, zhurnalHtml 
 import { kartochki } from '../lib/dni-shablon.mjs';
 import { ukorotitTitle } from '../lib/title-vkladki.mjs';
 import { stiliVKlassy, CELI_CSS } from '../lib/svoi-stili.mjs';
+import { vyshel } from '../lib/vyhod.mjs';
 
 // Подпись и лицензия в JSON-LD старой страницы (Р34, Р35): author/publisher-организация — сам сайт или его музей
 // («Русская цивилизация», «Музей русской карикатуры») → Редакция; чужие (издатель гравюры, Person) не трогаются.
@@ -504,14 +505,15 @@ export default function fullPages() {
           // с noindex, для сверки 1:1 и отката. Нет body — как раньше, старый HTML 1:1.
           const cardsDir = path.join('src/content/days', museum);
           const anketa = new Set((fs.existsSync(cardsDir) ? fs.readdirSync(cardsDir) : []).filter((f) => f.endsWith('.json'))
-            .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)));
+            .filter((f) => JSON.parse(fs.readFileSync(path.join(cardsDir, f), 'utf8')).body).map((f) => f.slice(0, -5)).filter((k) => vyshel(k)));
           // Карточка шаблона с `adres: den` (Р286): den/<ключ>/ уже собрал общий layout (den/[key].astro) — ведём как анкету.
           const h1Shablona = new Map();
-          for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den') {
+          for (const k of kartochki()) if (k.muzei === museum && k.adres === 'den' && vyshel(k.key)) {
             anketa.add(k.key);
             if (k.lead?.h1) h1Shablona.set(k.key, k.lead.h1.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
           }
-          const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)) : [];
+          const htmlKeys = fs.existsSync(path.join(SRC, museum)) ? fs.readdirSync(path.join(SRC, museum)).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)).filter((k) => vyshel(k)) : [];
+          // Выход по дате (src/lib/vyhod.mjs): день, чья дата не наступила, не ведётся — на его адресе «День готовится».
           const jobs = [...new Set([...htmlKeys, ...anketa])].sort().flatMap((key) => {
             const dayOut = path.join(root, 'muzei', museum, 'den', key, 'index.html');
             const day = `${base}muzei/${museum}/den/${key}/`;
