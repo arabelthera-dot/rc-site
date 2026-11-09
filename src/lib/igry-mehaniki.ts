@@ -38,6 +38,34 @@ const triUsloviyaLdoloma = z.object({
   if (!u.varianty.some((v) => v.kod === u[k as 'start' | 'verno'])) ctx.addIssue({ code: 'custom', path: ['usloviya', i, k], message: `${k}: «${u[k as 'start' | 'verno']}» нет среди variantov` });
 })));
 
+// «Поставь каждому своё место» (первые дни — 02-01 «подпиши участки на карте мозга», 02-02 «один ствол — четыре снаряда»):
+// выбираешь подпись и ставишь её на место схемы или к цели; верная загорается, все на месте — победа.
+// kartinka — фон-схема без надписей (Р18), места на ней по x/y в процентах; без kartinka места идут плитками.
+const kod = z.string().regex(/^[a-z0-9-]+$/);
+const kazhdomuSvoyoMesto = z.object({
+  kartinka: z.object({ src: str, alt: str, podpis_ru: str.optional() }).strict().optional(),
+  mesta: z.array(z.object({
+    kod, nazvanie: str.optional(),
+    x: z.number().min(0).max(100).optional(), y: z.number().min(0).max(100).optional(),
+    verno_ru: str,
+  }).strict()).min(2).max(8),
+  podpisi: z.array(z.object({ kod, tekst: str, mesto: kod, mimo_ru: str.optional() }).strict()).min(2).max(8),
+  vyberi_ru: str.default('Сначала выбери подпись, потом место.'),
+  mimo_ru: str.default('Не сюда — попробуй другое место.'),
+  ostalos_ru: str.regex(/\{n\}/, 'ostalos_ru — с {n}').default('Осталось поставить: {n}'),
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const mesta = new Set(d.mesta.map((m) => m.kod));
+  d.podpisi.forEach((p, i) => { if (!mesta.has(p.mesto)) ctx.addIssue({ code: 'custom', path: ['podpisi', i, 'mesto'], message: `места «${p.mesto}» нет в mesta` }); });
+  d.mesta.forEach((m, i) => {
+    const n = d.podpisi.filter((p) => p.mesto === m.kod).length;
+    if (n !== 1) ctx.addIssue({ code: 'custom', path: ['mesta', i], message: `у места «${m.kod}» подписей ${n}, нужна одна` });
+    if (d.kartinka && (m.x === undefined || m.y === undefined)) ctx.addIssue({ code: 'custom', path: ['mesta', i], message: 'есть kartinka — у места нужны x и y' });
+    if (!d.kartinka && !m.nazvanie) ctx.addIssue({ code: 'custom', path: ['mesta', i, 'nazvanie'], message: 'без kartinka у места нужно nazvanie' });
+  });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны' },
@@ -70,6 +98,8 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'dirizhabl-mezhdu-shpilyami': { den: '01-29', igra: 'kilometr-nad-peterburgom', slovami: 'Пальцем ведёшь дирижабль вверх-вниз между шпилями и тучами, по стрелке угадываешь порыв ветра и решаешь, когда давать полный ход' },
   'kolco-parashyuta': { den: '01-30', igra: 'spasis-aerostat', slovami: 'Застёгиваешь лямки, прыгаешь из горящей корзины, дёргаешь кольцо как можно ниже (но не ниже 25 м) и уходишь к своим окопам' },
   'rezonans-i-gody': { den: '01-31', igra: 'razgoni-girotron', slovami: 'Кнопками «Поле ±» ловишь резонанс, угадываешь срок и год за годом доводишь гиротрон от 6 ватт до мегаватта' },  // ── новые механики (февраль и дальше) — ниже, по строке на игру ──
+  // Февраль — новые механики, общие для нескольких дней.
+  'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
