@@ -204,7 +204,7 @@ def zapolnit():
     sl = json.loads(SLOVAR.read_text())
     schet = {}
     for k, z in sl.items():
-        if z['tip'] != 'lyudi': continue
+        if z.get('tip') != 'lyudi': continue  # _roli и прочие служебные записи без tip
         for pole in ('latinica', 'latinica_iz', 'gody'): z.pop(pole, None)
         nr = z.get('normativ')
         gody = {}

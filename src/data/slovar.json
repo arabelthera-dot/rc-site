@@ -918,7 +918,9 @@
   "lyudi:mihail-danilov": {
     "tip": "lyudi",
     "nazvanie": "Михаил Васильевич Данилов",
-    "kratko": "Русский артиллерист XVIII века, один из создателей «единорога», автор записок."
+    "kratko": "Русский артиллерист XVIII века, один из создателей «единорога», автор записок.",
+    "latinica": "Mikhail Vasilyevich Danilov",
+    "latinica_iz": "translit"
   },
   "lyudi:mihail-larionov": {
     "tip": "lyudi",
@@ -1220,7 +1222,9 @@
   "lyudi:pavel-i": {
     "tip": "lyudi",
     "nazvanie": "Павел I",
-    "kratko": "Российский император с 1796 по 1801 год; переустроил русскую артиллерию."
+    "kratko": "Российский император с 1796 по 1801 год; переустроил русскую артиллерию.",
+    "latinica": "Pavel I",
+    "latinica_iz": "translit"
   },
   "lyudi:pavel-nahimov": {
     "tip": "lyudi",
@@ -1261,7 +1265,9 @@
   "lyudi:petr-shuvalov": {
     "tip": "lyudi",
     "nazvanie": "Пётр Иванович Шувалов",
-    "kratko": "Граф, генерал-фельдцейхмейстер — глава русской артиллерии при Елизавете Петровне; при нём создан «единорог»."
+    "kratko": "Граф, генерал-фельдцейхмейстер — глава русской артиллерии при Елизавете Петровне; при нём создан «единорог».",
+    "latinica": "Pyotr Ivanovich Shuvalov",
+    "latinica_iz": "translit"
   },
   "lyudi:semen-remezov": {
     "tip": "lyudi",
