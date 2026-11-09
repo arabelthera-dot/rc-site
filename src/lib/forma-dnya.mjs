@@ -32,11 +32,15 @@ export const istochnik = z.object({
   ssylka: z.string().url('ссылка источника — адрес http(s)').optional(),
   mesto: str.optional(),
 });
+// Язык цитаты — код BCP 47 (п. 43): be — белорусский, cu — церковнославянский; поля нет — цитата русская.
+// Нужен, чтобы цитату не отдавали в машину перевода как русскую и чтобы шаблон мог поставить ей lang.
+export const YAZYKI_CITAT = ['ru', 'be', 'cu'];
 export const citata = z.object({
   kto: z.string().min(1, 'у цитаты нет автора'),
   gde: z.string().min(1, 'у цитаты нет места публикации'),
   tekst: z.string().min(1, 'у цитаты нет текста'),
   istochnik: nomer.optional(),
+  yazyk: z.enum(YAZYKI_CITAT, { message: `язык цитаты — ${YAZYKI_CITAT.join(' | ')} (BCP 47)` }).optional(),
 });
 // Паспорт прав картинки — одна запись; otkuda — откуда взята («Госкаталог, № предмета 4655496»).
 // Годы смерти автора и реабилитации — число или 'net' (автор жив, не репрессирован).
