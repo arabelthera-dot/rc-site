@@ -70,6 +70,12 @@ dubli = [{'familiya': f, 'nomera': sorted(n), 'napisaniya': sorted({x for i in n
          for f, n in sorted(po_fam.items()) if len(n) > 1]
 
 os.makedirs(f'{KOREN}/src/data/spravochniki', exist_ok=True)
+# Пункт 34: вид карточки из закрытого словаря tipy.json, разметка — kartochki-vid.json.
+vid_put = f'{KOREN}/src/data/spravochniki/kartochki-vid.json'
+if os.path.exists(vid_put):
+    vidy = json.load(open(vid_put))['vid']
+    for nomer, k in kart.items():
+        if nomer in vidy: k['vid'] = vidy[nomer]
 json.dump(dict(sorted(kart.items())), open(f'{KOREN}/src/data/spravochniki/kartochki.json', 'w'), ensure_ascii=False, indent=1)
 json.dump(dubli, open(f'{KOREN}/src/data/spravochniki/kartochki-dubli.json', 'w'), ensure_ascii=False, indent=1)
 from collections import Counter
