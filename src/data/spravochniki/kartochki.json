@@ -8,7 +8,8 @@
   "dni": [
    "izobreteniya/01-26"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:adashev-fp": {
   "tip": "lyudi",
@@ -19,7 +20,8 @@
   "dni": [
    "ne-sdayutsya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:andronova-si": {
   "tip": "lyudi",
@@ -30,7 +32,8 @@
   "dni": [
    "ne-sdayutsya/01-12"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:begma-va": {
   "tip": "lyudi",
@@ -41,7 +44,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:belokun-vi": {
   "tip": "lyudi",
@@ -52,7 +56,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:beloruckiy-nl": {
   "tip": "lyudi",
@@ -63,7 +68,8 @@
   "dni": [
    "ne-sdayutsya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:boguslavskogo-eya": {
   "tip": "lyudi",
@@ -74,7 +80,8 @@
   "dni": [
    "izobreteniya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:boldin-i": {
   "tip": "lyudi",
@@ -85,7 +92,8 @@
   "dni": [
    "ne-sdayutsya/01-04"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:breytbart-aya": {
   "tip": "lyudi",
@@ -96,7 +104,8 @@
   "dni": [
    "izobreteniya/01-01"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:chebotko-pi": {
   "tip": "lyudi",
@@ -107,7 +116,8 @@
   "dni": [
    "ne-sdayutsya/01-20"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:chernoshey-rr": {
   "tip": "lyudi",
@@ -118,7 +128,8 @@
   "dni": [
    "ne-sdayutsya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:chuykov-vi": {
   "tip": "lyudi",
@@ -129,7 +140,8 @@
   "dni": [
    "ne-sdayutsya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:dubinin-v": {
   "tip": "lyudi",
@@ -140,7 +152,8 @@
   "dni": [
    "ne-sdayutsya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:dubinkina-yue": {
   "tip": "lyudi",
@@ -151,7 +164,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:dukalskaya-m": {
   "tip": "lyudi",
@@ -162,7 +176,8 @@
   "dni": [
    "ne-sdayutsya/01-13"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:dzhivago-ft": {
   "tip": "lyudi",
@@ -173,7 +188,8 @@
   "dni": [
    "ne-sdayutsya/01-09"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:dzhons-d": {
   "tip": "lyudi",
@@ -184,7 +200,8 @@
   "dni": [
    "izobreteniya/01-07"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:efimov-p": {
   "tip": "lyudi",
@@ -195,7 +212,8 @@
   "dni": [
    "ne-sdayutsya/01-06"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:egis-sa": {
   "tip": "lyudi",
@@ -206,7 +224,8 @@
   "dni": [
    "ne-sdayutsya/01-14"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:elyasberga-pe": {
   "tip": "lyudi",
@@ -217,7 +236,8 @@
   "dni": [
    "izobreteniya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:eremenko-ai": {
   "tip": "lyudi",
@@ -228,7 +248,8 @@
   "dni": [
    "ne-sdayutsya/01-12"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:fomin-em": {
   "tip": "lyudi",
@@ -239,7 +260,8 @@
   "dni": [
    "ne-sdayutsya/01-05"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:fomina-em": {
   "tip": "lyudi",
@@ -250,7 +272,8 @@
   "dni": [
    "ne-sdayutsya/01-05"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:gastello-n": {
   "tip": "lyudi",
@@ -261,7 +284,8 @@
   "dni": [
    "ne-sdayutsya/01-07"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:gavrilov-pm": {
   "tip": "lyudi",
@@ -272,7 +296,8 @@
   "dni": [
    "ne-sdayutsya/01-05"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:georgiy-sedov": {
   "tip": "lyudi",
@@ -283,7 +308,8 @@
   "dni": [
    "izobreteniya/01-08"
   ],
-  "iz": "slovar.json"
+  "iz": "slovar.json",
+  "vid": "chelovek"
  },
  "lyudi:german-titov": {
   "tip": "lyudi",
@@ -296,7 +322,8 @@
    "ne-sdayutsya/01-07",
    "ne-sdayutsya/01-13"
   ],
-  "iz": "slovar.json"
+  "iz": "slovar.json",
+  "vid": "chelovek"
  },
  "lyudi:golovko-ag": {
   "tip": "lyudi",
@@ -307,7 +334,8 @@
   "dni": [
    "ne-sdayutsya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:hrushchev-ns": {
   "tip": "lyudi",
@@ -318,7 +346,8 @@
   "dni": [
    "ne-sdayutsya/01-19"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:ivan-papanin": {
   "tip": "lyudi",
@@ -329,7 +358,8 @@
   "dni": [
    "izobreteniya/01-08"
   ],
-  "iz": "slovar.json"
+  "iz": "slovar.json",
+  "vid": "chelovek"
  },
  "lyudi:ivanov-ds": {
   "tip": "lyudi",
@@ -340,7 +370,8 @@
   "dni": [
    "ne-sdayutsya/01-14"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:koshkarov-pp": {
   "tip": "lyudi",
@@ -351,7 +382,8 @@
   "dni": [
    "ne-sdayutsya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:kovalevskoy-sv": {
   "tip": "lyudi",
@@ -362,7 +394,8 @@
   "dni": [
    "izobreteniya/01-15"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:krisanov-nv": {
   "tip": "lyudi",
@@ -373,7 +406,8 @@
   "dni": [
    "ne-sdayutsya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:krivickiy-a": {
   "tip": "lyudi",
@@ -384,7 +418,8 @@
   "dni": [
    "ne-sdayutsya/01-09"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:krushinskiy-s": {
   "tip": "lyudi",
@@ -395,7 +430,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:kulik-pya": {
   "tip": "lyudi",
@@ -406,7 +442,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:kulik-va": {
   "tip": "lyudi",
@@ -417,7 +454,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:kulikov-v": {
   "tip": "lyudi",
@@ -428,7 +466,8 @@
   "dni": [
    "ne-sdayutsya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:landau-il": {
   "tip": "lyudi",
@@ -439,7 +478,8 @@
   "dni": [
    "izobreteniya/01-22"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:lavinskogo-n": {
   "tip": "lyudi",
@@ -450,7 +490,8 @@
   "dni": [
    "ne-sdayutsya/01-29"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:lavrova-ss": {
   "tip": "lyudi",
@@ -461,7 +502,8 @@
   "dni": [
    "izobreteniya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:lazarev-sm": {
   "tip": "lyudi",
@@ -472,7 +514,8 @@
   "dni": [
    "ne-sdayutsya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:lifshicem-em": {
   "tip": "lyudi",
@@ -483,7 +526,8 @@
   "dni": [
    "izobreteniya/01-22"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:lihachev-ds": {
   "tip": "lyudi",
@@ -494,7 +538,8 @@
   "dni": [
    "ne-sdayutsya/01-01"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:mamina-yav": {
   "tip": "lyudi",
@@ -505,7 +550,8 @@
   "dni": [
    "izobreteniya/01-09"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:markushevich-sa": {
   "tip": "lyudi",
@@ -516,7 +562,8 @@
   "dni": [
    "ne-sdayutsya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:massolitina-g": {
   "tip": "lyudi",
@@ -527,7 +574,8 @@
   "dni": [
    "ne-sdayutsya/01-04"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:matveeva-a": {
   "tip": "lyudi",
@@ -538,7 +586,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:melnikova-mf": {
   "tip": "lyudi",
@@ -549,7 +598,8 @@
   "dni": [
    "ne-sdayutsya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:moliboga-aya": {
   "tip": "lyudi",
@@ -560,7 +610,8 @@
   "dni": [
    "ne-sdayutsya/01-14"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:nitusov-a": {
   "tip": "lyudi",
@@ -571,7 +622,8 @@
   "dni": [
    "izobreteniya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:novoselova-vs": {
   "tip": "lyudi",
@@ -582,7 +634,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:obrazcov-a": {
   "tip": "lyudi",
@@ -593,7 +646,8 @@
   "dni": [
    "izobreteniya/01-19"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:ohocimskogo-de": {
   "tip": "lyudi",
@@ -604,7 +658,8 @@
   "dni": [
    "izobreteniya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:pilyugina-na": {
   "tip": "lyudi",
@@ -615,7 +670,8 @@
   "dni": [
    "izobreteniya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:popov-pn": {
   "tip": "lyudi",
@@ -626,7 +682,8 @@
   "dni": [
    "ne-sdayutsya/01-24"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:povarov-gn": {
   "tip": "lyudi",
@@ -637,7 +694,8 @@
   "dni": [
    "izobreteniya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:radovskiy-mi": {
   "tip": "lyudi",
@@ -648,7 +706,8 @@
   "dni": [
    "izobreteniya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:romanovskiy-iv": {
   "tip": "lyudi",
@@ -659,7 +718,8 @@
   "dni": [
    "izobreteniya/01-19"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:sergeev-k": {
   "tip": "lyudi",
@@ -670,7 +730,8 @@
   "dni": [
    "izobreteniya/01-12"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:shelepin-a": {
   "tip": "lyudi",
@@ -681,7 +742,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:simonovu-k": {
   "tip": "lyudi",
@@ -692,7 +754,8 @@
   "dni": [
    "ne-sdayutsya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:smirnov-s": {
   "tip": "lyudi",
@@ -703,7 +766,8 @@
   "dni": [
    "ne-sdayutsya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:smirnova-av": {
   "tip": "lyudi",
@@ -714,7 +778,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:solina-fv": {
   "tip": "lyudi",
@@ -725,7 +790,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:strutinskogo-n": {
   "tip": "lyudi",
@@ -736,7 +802,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:sviridov-sa": {
   "tip": "lyudi",
@@ -747,7 +814,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:terebinskiy-nn": {
   "tip": "lyudi",
@@ -758,7 +826,8 @@
   "dni": [
    "ne-sdayutsya/01-17"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:timofeev-pv": {
   "tip": "lyudi",
@@ -769,7 +838,8 @@
   "dni": [
    "izobreteniya/01-01"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:tkachenko-af": {
   "tip": "lyudi",
@@ -780,7 +850,8 @@
   "dni": [
    "izobreteniya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:tokarev-is": {
   "tip": "lyudi",
@@ -791,7 +862,8 @@
   "dni": [
    "ne-sdayutsya/01-12"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:torik-na": {
   "tip": "lyudi",
@@ -802,7 +874,8 @@
   "dni": [
    "ne-sdayutsya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:vlasov-v": {
   "tip": "lyudi",
@@ -813,7 +886,8 @@
   "dni": [
    "ne-sdayutsya/01-31"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:vodovozov-am": {
   "tip": "lyudi",
@@ -824,7 +898,8 @@
   "dni": [
    "ne-sdayutsya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:voronina-ap": {
   "tip": "lyudi",
@@ -835,7 +910,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:voznesenskogo-na": {
   "tip": "lyudi",
@@ -846,7 +922,8 @@
   "dni": [
    "izobreteniya/01-19"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:zubachev-in": {
   "tip": "lyudi",
@@ -857,7 +934,8 @@
   "dni": [
    "ne-sdayutsya/01-05"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "lyudi:zyabreva-af": {
   "tip": "lyudi",
@@ -868,7 +946,8 @@
   "dni": [
    "ne-sdayutsya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "predmet:95-iz-vas-pogibnut": {
   "tip": "predmet",
@@ -879,7 +958,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:am": {
   "tip": "predmet",
@@ -890,7 +970,8 @@
   "dni": [
    "izobreteniya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "reaktor"
  },
  "predmet:anchar": {
   "tip": "predmet",
@@ -903,7 +984,8 @@
   "dni": [
    "izobreteniya/01-24"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "podvodnaya-lodka"
  },
  "predmet:ancharov": {
   "tip": "predmet",
@@ -914,7 +996,8 @@
   "dni": [
    "izobreteniya/01-24"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "podvodnaya-lodka"
  },
  "predmet:bodrey-tovarishchi": {
   "tip": "predmet",
@@ -925,7 +1008,8 @@
   "dni": [
    "ne-sdayutsya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:boevaya-podruga": {
   "tip": "predmet",
@@ -936,7 +1020,8 @@
   "dni": [
    "ne-sdayutsya/01-20"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "tank"
  },
  "predmet:boevuyu-podrugu": {
   "tip": "predmet",
@@ -947,7 +1032,8 @@
   "dni": [
    "ne-sdayutsya/01-20"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "tank"
  },
  "predmet:boevye-podrugi": {
   "tip": "predmet",
@@ -958,7 +1044,8 @@
   "dni": [
    "ne-sdayutsya/01-20"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "tank"
  },
  "predmet:boy": {
   "tip": "predmet",
@@ -969,7 +1056,8 @@
   "dni": [
    "izobreteniya/01-10"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:chelyuskinym": {
   "tip": "predmet",
@@ -980,7 +1068,8 @@
   "dni": [
    "ne-sdayutsya/01-15"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:da": {
   "tip": "predmet",
@@ -992,7 +1081,8 @@
    "ne-sdayutsya/01-19",
    "ne-sdayutsya/01-22"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:dayte-valenki-dadim-patronov": {
   "tip": "predmet",
@@ -1003,7 +1093,8 @@
   "dni": [
    "ne-sdayutsya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:dobryney-nikitichem": {
   "tip": "predmet",
@@ -1014,7 +1105,8 @@
   "dni": [
    "izobreteniya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:dom-zanyat": {
   "tip": "predmet",
@@ -1025,7 +1117,8 @@
   "dni": [
    "ne-sdayutsya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:elbrus": {
   "tip": "predmet",
@@ -1037,7 +1130,8 @@
   "dni": [
    "izobreteniya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:elbrus-1": {
   "tip": "predmet",
@@ -1048,7 +1142,8 @@
   "dni": [
    "izobreteniya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:elbrus-2": {
   "tip": "predmet",
@@ -1060,7 +1155,8 @@
   "dni": [
    "izobreteniya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:elbrus-3": {
   "tip": "predmet",
@@ -1071,7 +1167,8 @@
   "dni": [
    "izobreteniya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:elbrusa-2000": {
   "tip": "predmet",
@@ -1082,7 +1179,8 @@
   "dni": [
    "izobreteniya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:elbrusov": {
   "tip": "predmet",
@@ -1093,7 +1191,8 @@
   "dni": [
    "izobreteniya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:elbrusy": {
   "tip": "predmet",
@@ -1104,7 +1203,8 @@
   "dni": [
    "izobreteniya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:ermak": {
   "tip": "predmet",
@@ -1117,7 +1217,8 @@
   "dni": [
    "izobreteniya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "ledokol"
  },
  "predmet:eto-vsya-operaciya": {
   "tip": "predmet",
@@ -1128,7 +1229,8 @@
   "dni": [
    "ne-sdayutsya/01-17"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:familiyu-pozorit-nelzya": {
   "tip": "predmet",
@@ -1139,7 +1241,8 @@
   "dni": [
    "ne-sdayutsya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:feliks": {
   "tip": "predmet",
@@ -1152,7 +1255,8 @@
   "dni": [
    "izobreteniya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:fokke-vulfa": {
   "tip": "predmet",
@@ -1163,7 +1267,8 @@
   "dni": [
    "ne-sdayutsya/01-17"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "samolet"
  },
  "predmet:gde-stalin": {
   "tip": "predmet",
@@ -1174,7 +1279,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:gorod-voinskoy-slavy": {
   "tip": "predmet",
@@ -1185,7 +1291,8 @@
   "dni": [
    "ne-sdayutsya/01-04"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "nagrada"
  },
  "predmet:hirosima": {
   "tip": "predmet",
@@ -1196,7 +1303,8 @@
   "dni": [
    "ne-sdayutsya/01-19"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "nadpis"
  },
  "predmet:komsomolec": {
   "tip": "predmet",
@@ -1209,7 +1317,8 @@
   "dni": [
    "izobreteniya/01-13"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "podvodnaya-lodka"
  },
  "predmet:koreyca": {
   "tip": "predmet",
@@ -1220,7 +1329,8 @@
   "dni": [
    "ne-sdayutsya/01-10"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:lenin": {
   "tip": "predmet",
@@ -1231,7 +1341,8 @@
   "dni": [
    "izobreteniya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "ledokol"
  },
  "predmet:levo-50-proshchayte-muzhiki": {
   "tip": "predmet",
@@ -1242,7 +1353,8 @@
   "dni": [
    "ne-sdayutsya/01-22"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:lira": {
   "tip": "predmet",
@@ -1256,7 +1368,8 @@
   "dni": [
    "izobreteniya/01-14"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "podvodnaya-lodka"
  },
  "predmet:luna-1": {
   "tip": "predmet",
@@ -1269,7 +1382,8 @@
   "dni": [
    "izobreteniya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "kosmicheskiy-apparat"
  },
  "predmet:merkuriy": {
   "tip": "predmet",
@@ -1281,7 +1395,8 @@
   "dni": [
    "ne-sdayutsya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:mne-bylo-zadanie-szhech-derevnyu": {
   "tip": "predmet",
@@ -1292,7 +1407,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:molodaya-gvardiya": {
   "tip": "predmet",
@@ -1304,7 +1420,8 @@
   "dni": [
    "ne-sdayutsya/01-28"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "gruppa"
  },
  "predmet:nashi-podhodyat": {
   "tip": "predmet",
@@ -1315,7 +1432,8 @@
   "dni": [
    "ne-sdayutsya/01-28"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:ne-sdadimsya": {
   "tip": "predmet",
@@ -1326,7 +1444,8 @@
   "dni": [
    "ne-sdayutsya/01-15"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "gazeta"
  },
  "predmet:ne-sdalis": {
   "tip": "predmet",
@@ -1337,7 +1456,8 @@
   "dni": [
    "ne-sdayutsya/01-15"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "gazeta"
  },
  "predmet:nezh": {
   "tip": "predmet",
@@ -1348,7 +1468,8 @@
   "dni": [
    "izobreteniya/01-17"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "nadpis"
  },
  "predmet:oboronyayut-tolko-kp": {
   "tip": "predmet",
@@ -1359,7 +1480,8 @@
   "dni": [
    "ne-sdayutsya/01-09"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:oryasinoy": {
   "tip": "predmet",
@@ -1370,7 +1492,8 @@
   "dni": [
    "izobreteniya/01-31"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "pribor"
  },
  "predmet:otstoim-tebya-rodnoy-stalingrad": {
   "tip": "predmet",
@@ -1381,7 +1504,8 @@
   "dni": [
    "ne-sdayutsya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "nadpis"
  },
  "predmet:pamyat-merkuriya": {
   "tip": "predmet",
@@ -1392,7 +1516,8 @@
   "dni": [
    "ne-sdayutsya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:partizany-ne-sdayutsya": {
   "tip": "predmet",
@@ -1403,7 +1528,8 @@
   "dni": [
    "ne-sdayutsya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:paylot": {
   "tip": "predmet",
@@ -1416,7 +1542,8 @@
   "dni": [
    "izobreteniya/01-10"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "ledokol"
  },
  "predmet:podrobnosti-dolozhu-po-vozvrashchenii": {
   "tip": "predmet",
@@ -1427,7 +1554,8 @@
   "dni": [
    "ne-sdayutsya/01-12"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:podvig-ivana-susanina-povtoril": {
   "tip": "predmet",
@@ -1438,7 +1566,8 @@
   "dni": [
    "ne-sdayutsya/01-29"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:pota-bylo-po-koleno": {
   "tip": "predmet",
@@ -1449,7 +1578,8 @@
   "dni": [
    "ne-sdayutsya/01-26"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:povest": {
   "tip": "predmet",
@@ -1460,7 +1590,8 @@
   "dni": [
    "ne-sdayutsya/01-01"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "proizvedenie"
  },
  "predmet:povest-o-nastoyashchem-cheloveke": {
   "tip": "predmet",
@@ -1471,7 +1602,8 @@
   "dni": [
    "ne-sdayutsya/01-17"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "proizvedenie"
  },
  "predmet:povtoril-podvig-ivana-susanina": {
   "tip": "predmet",
@@ -1482,7 +1614,8 @@
   "dni": [
    "ne-sdayutsya/01-29"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:pravda": {
   "tip": "predmet",
@@ -1493,7 +1626,8 @@
   "dni": [
    "izobreteniya/01-06"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "gazeta"
  },
  "predmet:propadat-tak-po-prisyage": {
   "tip": "predmet",
@@ -1504,7 +1638,8 @@
   "dni": [
    "ne-sdayutsya/01-24"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:pust-oni-padayut-tysyachami": {
   "tip": "predmet",
@@ -1515,7 +1650,8 @@
   "dni": [
    "ne-sdayutsya/01-24"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:rabotaem-brat": {
   "tip": "predmet",
@@ -1526,7 +1662,8 @@
   "dni": [
    "ne-sdayutsya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:rabotayte-bratya": {
   "tip": "predmet",
@@ -1537,7 +1674,8 @@
   "dni": [
    "ne-sdayutsya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:rafail": {
   "tip": "predmet",
@@ -1548,7 +1686,8 @@
   "dni": [
    "ne-sdayutsya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:rasstrelyat": {
   "tip": "predmet",
@@ -1559,7 +1698,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:real-beya": {
   "tip": "predmet",
@@ -1570,7 +1710,8 @@
   "dni": [
    "ne-sdayutsya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:rihard-baycen": {
   "tip": "predmet",
@@ -1581,7 +1722,8 @@
   "dni": [
    "ne-sdayutsya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:rossii": {
   "tip": "predmet",
@@ -1592,7 +1734,8 @@
   "dni": [
    "izobreteniya/01-29"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "dirizhabl"
  },
  "predmet:rossiya": {
   "tip": "predmet",
@@ -1603,7 +1746,8 @@
   "dni": [
    "izobreteniya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "dirizhabl"
  },
  "predmet:russ-sdavaysya": {
   "tip": "predmet",
@@ -1614,7 +1758,8 @@
   "dni": [
    "ne-sdayutsya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:russkie-ne-sdayutsya": {
   "tip": "predmet",
@@ -1625,7 +1770,8 @@
   "dni": [
    "ne-sdayutsya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:russkiy-traktor": {
   "tip": "predmet",
@@ -1636,7 +1782,8 @@
   "dni": [
    "izobreteniya/01-09"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "pribor"
  },
  "predmet:s-legkim-parom": {
   "tip": "predmet",
@@ -1647,7 +1794,8 @@
   "dni": [
    "izobreteniya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:sdavaysya": {
   "tip": "predmet",
@@ -1658,7 +1806,8 @@
   "dni": [
    "ne-sdayutsya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:selimie": {
   "tip": "predmet",
@@ -1669,7 +1818,8 @@
   "dni": [
    "ne-sdayutsya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:semi-smertyam-ne-byvat": {
   "tip": "predmet",
@@ -1680,7 +1830,8 @@
   "dni": [
    "ne-sdayutsya/01-22"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:sheffild-i-birmingem": {
   "tip": "predmet",
@@ -1691,7 +1842,8 @@
   "dni": [
    "izobreteniya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:silnye-duhom": {
   "tip": "predmet",
@@ -1702,7 +1854,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "proizvedenie"
  },
  "predmet:sirotina": {
   "tip": "predmet",
@@ -1713,7 +1866,8 @@
   "dni": [
    "ne-sdayutsya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:sirotkina": {
   "tip": "predmet",
@@ -1724,7 +1878,8 @@
   "dni": [
    "ne-sdayutsya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:sirotku": {
   "tip": "predmet",
@@ -1735,7 +1890,8 @@
   "dni": [
    "ne-sdayutsya/01-03"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:sivulf": {
   "tip": "predmet",
@@ -1746,7 +1902,8 @@
   "dni": [
    "izobreteniya/01-13"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "podvodnaya-lodka"
  },
  "predmet:sopernik": {
   "tip": "predmet",
@@ -1757,7 +1914,8 @@
   "dni": [
    "ne-sdayutsya/01-02"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:soyuza-5": {
   "tip": "predmet",
@@ -1768,7 +1926,8 @@
   "dni": [
    "izobreteniya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "kosmicheskiy-apparat"
  },
  "predmet:spasibo-batya-za-valenki": {
   "tip": "predmet",
@@ -1779,7 +1938,8 @@
   "dni": [
    "ne-sdayutsya/01-09"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "nadpis"
  },
  "predmet:spasibo-za-kashu": {
   "tip": "predmet",
@@ -1790,7 +1950,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:stalin-na-postu": {
   "tip": "predmet",
@@ -1801,7 +1962,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:svoih-patronov-hvatit": {
   "tip": "predmet",
@@ -1812,7 +1974,8 @@
   "dni": [
    "ne-sdayutsya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:tanyu": {
   "tip": "predmet",
@@ -1823,7 +1986,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:teper-horosho-poyavilas-ventilyaciya": {
   "tip": "predmet",
@@ -1834,7 +1998,8 @@
   "dni": [
    "ne-sdayutsya/01-11"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:teplyy": {
   "tip": "predmet",
@@ -1845,7 +2010,8 @@
   "dni": [
    "izobreteniya/01-16"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:topaz": {
   "tip": "predmet",
@@ -1856,7 +2022,8 @@
   "dni": [
    "izobreteniya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "reaktor"
  },
  "predmet:tretim-susaninym": {
   "tip": "predmet",
@@ -1867,7 +2034,8 @@
   "dni": [
    "ne-sdayutsya/01-29"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:tuman": {
   "tip": "predmet",
@@ -1879,7 +2047,8 @@
   "dni": [
    "ne-sdayutsya/01-27"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:ty-znaesh-na-chto-idesh": {
   "tip": "predmet",
@@ -1890,7 +2059,8 @@
   "dni": [
    "ne-sdayutsya/01-19"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:ukrytiem": {
   "tip": "predmet",
@@ -1901,7 +2071,8 @@
   "dni": [
    "ne-sdayutsya/01-30"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "sooruzhenie"
  },
  "predmet:umov": {
   "tip": "predmet",
@@ -1912,7 +2083,8 @@
   "dni": [
    "izobreteniya/01-23"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "chelovek"
  },
  "predmet:umrem-no-ne-uydem": {
   "tip": "predmet",
@@ -1923,7 +2095,8 @@
   "dni": [
    "ne-sdayutsya/01-05"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "nadpis"
  },
  "predmet:v-bamute-my-hozyaeva": {
   "tip": "predmet",
@@ -1934,7 +2107,8 @@
   "dni": [
    "ne-sdayutsya/01-23"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:varyag": {
   "tip": "predmet",
@@ -1947,7 +2121,8 @@
   "dni": [
    "ne-sdayutsya/01-10"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "korabl"
  },
  "predmet:vervolf": {
   "tip": "predmet",
@@ -1958,7 +2133,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "sooruzhenie"
  },
  "predmet:vilnyus": {
   "tip": "predmet",
@@ -1969,7 +2145,8 @@
   "dni": [
    "izobreteniya/01-19"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "vychislitelnaya-mashina"
  },
  "predmet:vityaz": {
   "tip": "predmet",
@@ -1981,7 +2158,11 @@
    "izobreteniya/01-08",
    "ne-sdayutsya/01-25"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": {
+   "izobreteniya/01-08": "korabl",
+   "ne-sdayutsya/01-25": "gruppa"
+  }
  },
  "predmet:vodolazy": {
   "tip": "predmet",
@@ -1992,7 +2173,8 @@
   "dni": [
    "ne-sdayutsya/01-30"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:voshod-2": {
   "tip": "predmet",
@@ -2004,7 +2186,8 @@
   "dni": [
    "ne-sdayutsya/01-26"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "kosmicheskiy-apparat"
  },
  "predmet:vsego-to-za-50-tysyach-rubley": {
   "tip": "predmet",
@@ -2015,7 +2198,8 @@
   "dni": [
    "ne-sdayutsya/01-20"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:vskryt-posle-moey-gibeli": {
   "tip": "predmet",
@@ -2026,7 +2210,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:vtorym-susaninym": {
   "tip": "predmet",
@@ -2037,7 +2222,8 @@
   "dni": [
    "ne-sdayutsya/01-29"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "imya"
  },
  "predmet:vy-mne-i-nuzhny": {
   "tip": "predmet",
@@ -2048,7 +2234,8 @@
   "dni": [
    "ne-sdayutsya/01-18"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:vyhodite-partizany": {
   "tip": "predmet",
@@ -2059,7 +2246,8 @@
   "dni": [
    "ne-sdayutsya/01-21"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:vyzyvaem-ogon-na-sebya": {
   "tip": "predmet",
@@ -2070,7 +2258,8 @@
   "dni": [
    "ne-sdayutsya/01-22"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:ya-drugoy-vyhod-naydu": {
   "tip": "predmet",
@@ -2081,7 +2270,8 @@
   "dni": [
    "ne-sdayutsya/01-07"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:yaka": {
   "tip": "predmet",
@@ -2092,7 +2282,8 @@
   "dni": [
    "ne-sdayutsya/01-17"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "samolet"
  },
  "predmet:yunkers": {
   "tip": "predmet",
@@ -2103,7 +2294,8 @@
   "dni": [
    "ne-sdayutsya/01-07"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "samolet"
  },
  "predmet:za-otvagu": {
   "tip": "predmet",
@@ -2114,7 +2306,8 @@
   "dni": [
    "ne-sdayutsya/01-23"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "nagrada"
  },
  "predmet:za-zoyu": {
   "tip": "predmet",
@@ -2125,7 +2318,8 @@
   "dni": [
    "ne-sdayutsya/01-08"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "tank"
  },
  "predmet:zashchishchatsya-budu-do-posledney-kraynosti": {
   "tip": "predmet",
@@ -2136,7 +2330,8 @@
   "dni": [
    "ne-sdayutsya/01-24"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:zdravstvuyte-nasha-mama": {
   "tip": "predmet",
@@ -2147,7 +2342,8 @@
   "dni": [
    "ne-sdayutsya/01-20"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "citata"
  },
  "predmet:zloumyshlennikom": {
   "tip": "predmet",
@@ -2158,6 +2354,7 @@
   "dni": [
    "izobreteniya/01-01"
   ],
-  "iz": "tekst"
+  "iz": "tekst",
+  "vid": "proizvedenie"
  }
 }
