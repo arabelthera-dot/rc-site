@@ -2,6 +2,9 @@
 
 muzei: ne-sdayutsya
 key: 02-02
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-09'
 head:
   title: Дмитрий Овчаренко — «Русские не сдаются» — Русская цивилизация
   description: Пятьдесят три немца против одного солдата с топором — бежали немцы
@@ -87,6 +90,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История в 53 секунды
+  klyuch: nesdayutsya/02feb-ovcharenko
+  format: horizontal
+  pole: nesdayutsya/02feb-ovcharenko:horizontal.sec
+  suffix: сек
+  badge: 53 сек
+  intro: Пятьдесят три немца против одного солдата с топором — бежали немцы
+  poster: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42614244018) из сценария days/ns02feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Дмитрий Овчаренко
@@ -107,6 +121,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «В этом же районе на красноармейца напали и окружили две автомашины в составе 50 германских солдат и 3-х офицеров.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: '53'
@@ -120,6 +135,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Выходя из машины германский офицер скомандовал красноармейцу поднять руки вверх, выбил из его рук винтовку и начал учинять ему допросы. У красноармейца Овчаренко в повозке лежал топор.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: топором
@@ -165,6 +181,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
   - id: ns-0202-golova-oficera
@@ -176,6 +193,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: наградной лист
@@ -189,6 +207,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: '21'
@@ -234,6 +253,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: в огороде
@@ -247,6 +267,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
   - id: ns-0202-dva-boya
@@ -258,6 +279,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «27 июля на высоте 239,8 ураганным огнем уничтожал противника. Его пулемет работал безотказно.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: true
     otvet: 13 и 27 июля 1941 года
@@ -303,6 +325,7 @@ fakty:
     href: https://obd-memorial.ru/html/info.htm?id=56483295
     otryvok: «Последнее место службы 3 тбр Воинское звание рядовой Причина выбытия убит Дата выбытия 28.01.1945 Место выбытия Венгрия, варм. Фейер, ст. Шерегейеш»
     pometka: два источника
+    utverzhden: '2026-11-09'
     istochnik: n2
     dlya_voprosa: true
     otvet: рядовой
@@ -348,6 +371,7 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Повозку с боеприпасами и продуктами доставил вовремя своей роте…»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
 - id: fakty-dnya
@@ -363,8 +387,41 @@ fakty:
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
     otryvok: «Тов. Овчаренко не растерялся, забрал у всех убитых документы, у офицеров карты, планшеты, схему, записи и предоставил их в штаб полка.»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n1
     dlya_voprosa: false
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-02-goskatalog-9132841.jpg
+      alt: Коричневая кожаная полевая сумка-планшет с клапаном, алюминиевой пряжкой и гнёздами для карандашей.
+      data_source: https://goskatalog.ru/portal/#/collections?id=9132841
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Планшет армейский немецкий образца 1935 года, трофейный, 1936–1943 годы. Такие планшеты Овчаренко забрал у немецких офицеров. Хранится в Ставропольском государственном музее-заповеднике имени Г. Н. Прозрителева и Г. К. Праве.
+      credit: ГБУК СК «Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве», Госкаталог № 9020395
+      width: 800
+      height: 800
+      vid: predmet
+      nomer_predmeta: net
+      nomer_snimka: '9132841'
+      hranitel: Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве
+      podpis_chto: Планшет армейский немецкий образца 1935 года, трофейный
+      podpis_gde: Германия
+      podpis_kogda: 1936–1943 годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве
+        otkuda: https://goskatalog.ru/portal/#/collections?id=9132841
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1936–1943
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 9020395
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 9020395
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=9132841
   - id: ns-0202-ne-poverili
     summary: В роте ему сначала не поверили и подняли на смех. Политрук съездил на место боя, и всё подтвердилось.
     det:
@@ -374,6 +431,7 @@ fakty:
     href: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
     otryvok: «Однако политрук роты, посмотрев привезенные документы, присвистнул от изумления, и, взяв несколько бойцов, отправился на место событий. Когда подсчитали убитых, выяснилось, что Дмитрий Овчаренко в этой схватке уничтожил двух немецких офицеров и 21 солдата противника.»
     pometka: два источника
+    utverzhden: '2026-11-09'
     istochnik: n3
     dlya_voprosa: false
   - id: ns-0202-v-pulemetchiki
@@ -385,6 +443,7 @@ fakty:
     href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
     otryvok: «- Есть, товарищ капитан! - ответил повозочный. - Прошу вернуть меня в пулеметный взвод.»
     pometka: один источник
+    utverzhden: '2026-11-09'
     istochnik: n4
     dlya_voprosa: false
   - id: ns-0202-otec-plotnik
@@ -396,6 +455,7 @@ fakty:
     href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
     otryvok: «Когда он подрос, отец научил его владеть топором. … Один раз все село взялось за топоры. Сильно досадили кайзеровские вояки.»
     pometka: один источник
+    utverzhden: '2026-11-09'
     istochnik: n4
     dlya_voprosa: false
   - id: ns-0202-v-stroj-1944
@@ -407,6 +467,7 @@ fakty:
     href: https://obd-memorial.ru/html/info.htm?id=56483295
     otryvok: «Дата и место призыва __.__.1944, Чистяковский РВК, Украинская ССР, Сталинская обл., Чистяковский р-н / Последнее место службы 3 тбр / Воинское звание рядовой»
     pometka: документ
+    utverzhden: '2026-11-09'
     istochnik: n2
     dlya_voprosa: false
 razdely: []
@@ -602,3 +663,28 @@ vizual:
   kicker: Документ
   h2: Наградной лист 1941 года
   lead: Пять строк из настоящего листа, по которому Дмитрий Овчаренко стал Героем Советского Союза. Нажми — и найди их в документе.
+audioguide:
+  audioSrc: audio-guide-ovcharenko-ru.mp3
+  durationLabel: 1 минута 55 секунд
+  lead: 'Голос ведёт от повозки ездового у местечка Песец через удар топором и три гранаты — к пулемёту и Звезде Героя: пять остановок.'
+  stops:
+    - t: 0
+      mark: '0:00'
+      title: 'Ездовой у местечка Песец'
+    - t: 22
+      mark: '0:22'
+      title: '«Руки вверх»'
+    - t: 44
+      mark: '0:44'
+      title: 'Топор и три гранаты'
+    - t: 68
+      mark: '1:08'
+      title: 'Довёз и доложил'
+    - t: 93
+      mark: '1:33'
+      title: 'Звезда Героя'
+  transcript:
+    - 'Тринадцатое июля тысяча девятьсот сорок первого года, Южный фронт, Молдавия. Пулемётчика Дмитрия Овчаренко после ранения отводят в тыл и ставят ездовым: он возит боеприпасы роте. У местечка Песец, в четырёх-пяти километрах от своих, его повозку окружают две немецкие машины. В них пятьдесят солдат и три офицера. Офицер выбивает у Овчаренко винтовку, кричит «руки вверх» и начинает допрос. Немцы уверены, что перед ними пленный. А в повозке лежит топор.'
+    - 'Топором его учил владеть отец, сельский плотник. Он рассказывал, как в тысяча девятьсот восемнадцатом году всё село взялось за топоры против кайзеровских солдат. Овчаренко хватает топор и бьёт офицера. В наградном листе Героя так и написано: «отрубил голову германскому офицеру». Три гранаты летят к машине — двадцать один немец убит, остальные бегут в панике. Раненый офицер пытается уйти, но солдат с топором догоняет его в огороде. Пятьдесят три немца против одного солдата — бежали немцы.'
+    - 'Овчаренко не бросает повозку: боеприпасы и продукты он довозит до роты вовремя, а в штаб полка сдаёт карты, планшеты и схемы немецких офицеров. В роте ему сначала не верят и поднимают на смех. Политрук едет на место боя, там пересчитывают убитых, и всё подтверждается. Комбат спрашивает, какая у него просьба. Он просит одного: вернуть его в пулемётчики. Через две недели, двадцать седьмого июля, на высоте двести тридцать девять и восемь он ведёт ураганный огонь. Указом девятого ноября тысяча девятьсот сорок первого года Дмитрий Овчаренко — Герой Советского Союза. Рядовым танковой бригады он дошёл до Венгрии. Ниже — викторина и источники. Спасибо, что были с нами.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
