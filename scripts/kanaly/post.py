@@ -108,6 +108,13 @@ def first_image(slug, key, day):
             f = local_image(slug, src)
             if f:
                 return f
+    # День на общем шаблоне (Р286): обложка карточки src/content/dni-shablon — та же, что на странице дня.
+    shablon = SHABLON / slug / f'{key}.yaml'
+    if shablon.is_file():
+        src = re.search(r'^oblozhka:\n  src: *[\'"]?([^\'"\n]+)', shablon.read_text(encoding='utf-8'), re.M)
+        f = src and local_image(slug, src.group(1).strip())
+        if f:
+            return f
     page = FULL / slug / f'{key}.html'
     if not page.is_file():
         return None
@@ -126,11 +133,31 @@ def tragicheskij(slug, key, vozrast):
 OTSEV = ('нет карточки дня', 'нет большой страницы', 'нет хука', 'трагический день', 'нет картинки')
 
 
-def collect(key, skipped=None, otsev=None):
-    """Музеи с хуком и большой страницей на день key — по номеру в каталоге. Трагический день — в skipped с причиной.
-    Большая страница — как у сайта (ADR 0001): анкета body в карточке дня ИЛИ HTML в src/data/full-pages
-    ИЛИ карточка общего шаблона src/content/dni-shablon/<музей>/<ММ-ДД>.yaml с `adres: den` (Р286).
-    otsev — счётчик причин отсева (dict причина → число музеев)."""
+def na_diske(f):
+    """Текст файла или None — чтение для gotov() по рабочему дереву."""
+    return f.read_text(encoding='utf-8') if f.is_file() else None
+
+
+def gotov(slug, key, read=na_diske):
+    """(причина отсева или None, карточка дня) — вышел ли день музея на живой адрес den/ММ-ДД, как у сайта (ADR 0001):
+    карточка с хуком и большая страница — анкета body ИЛИ src/data/full-pages/<музей>/<ММ-ДД>.html ИЛИ карточка
+    общего шаблона src/content/dni-shablon/<музей>/<ММ-ДД>.yaml с `adres: den` (Р286). read(путь) → текст или None:
+    по рабочему дереву или по прошлой версии (--novye-s), признак один."""
+    card = read(DAYS / slug / f'{key}.json')
+    if card is None:
+        return 'нет карточки дня', None
+    day = json.loads(card)
+    shablon = read(SHABLON / slug / f'{key}.yaml') or ''
+    if not day.get('body') and read(FULL / slug / f'{key}.html') is None and not re.search(r'^adres: den$', shablon, re.M):
+        return 'нет большой страницы', day
+    if not (day.get('hook') or '').strip():
+        return 'нет хука', day
+    return None, day
+
+
+def collect(key, skipped=None, otsev=None, only=None):
+    """Музеи с хуком и большой страницей на день key — по номеру в каталоге (признак — gotov). Трагический день —
+    в skipped с причиной. otsev — счётчик причин отсева (dict причина → число музеев). only — только этот музей."""
     museums = json.loads((ROOT / 'src/data/museums.json').read_text(encoding='utf-8'))['museums']
     vozrast = json.loads((ROOT / 'src/data/vozrast.json').read_text(encoding='utf-8'))
     skipped = [] if skipped is None else skipped
@@ -138,18 +165,11 @@ def collect(key, skipped=None, otsev=None):
     cut = lambda why: otsev.__setitem__(why, otsev.get(why, 0) + 1)
     out = []
     for m in sorted(museums, key=lambda m: m['number']):
-        card = DAYS / m['slug'] / f'{key}.json'
-        if not card.is_file():
-            cut('нет карточки дня')
+        if only and m['slug'] != only:
             continue
-        day = json.loads(card.read_text(encoding='utf-8'))
-        shablon = SHABLON / m['slug'] / f'{key}.yaml'
-        na_shablone = shablon.is_file() and re.search(r'^adres: den$', shablon.read_text(encoding='utf-8'), re.M)
-        if not day.get('body') and not (FULL / m['slug'] / f'{key}.html').is_file() and not na_shablone:
-            cut('нет большой страницы')
-            continue
-        if not (day.get('hook') or '').strip():
-            cut('нет хука')
+        why, day = gotov(m['slug'], key)
+        if why:
+            cut(why)
             continue
         if tragicheskij(m['slug'], key, vozrast):
             cut('трагический день')
@@ -157,6 +177,26 @@ def collect(key, skipped=None, otsev=None):
             continue
         out.append({'slug': m['slug'], 'number': m['number'], 'title': m['title_ru'], 'hook': day['hook'].strip(),
                     'image': first_image(m['slug'], key, day)})
+    return out
+
+
+DEN_RE = re.compile(r'^src/(?:content/days|data/full-pages|content/dni-shablon)/([a-z0-9-]+)/(\d\d-\d\d)\.(?:json|html|yaml)$')
+
+
+def novye(rev):
+    """Дни, вышедшие на живой адрес после версии rev: (музей, ММ-ДД), которые gotov() принимает сейчас и не
+    принимал в rev. Кандидаты — файлы дня, изменённые между rev и рабочим деревом (git diff)."""
+    names = subprocess.run(['git', 'diff', '--name-only', rev, '--', 'src/content/days', 'src/data/full-pages',
+                            'src/content/dni-shablon'], cwd=ROOT, capture_output=True, text=True, check=True).stdout
+
+    def v_rev(f):
+        r = subprocess.run(['git', 'show', f'{rev}:{f.relative_to(ROOT).as_posix()}'], cwd=ROOT, capture_output=True)
+        return r.stdout.decode('utf-8') if r.returncode == 0 else None
+
+    out = []
+    for slug, key in sorted({DEN_RE.match(n).groups() for n in names.splitlines() if DEN_RE.match(n)}):
+        if gotov(slug, key)[0] is None and gotov(slug, key, v_rev)[0] is not None:
+            out.append((slug, key))
     return out
 
 
@@ -170,8 +210,9 @@ def otsev_text(otsev):
     return ', '.join(f'{k} — {otsev[k]}' for k in OTSEV if otsev.get(k)) or '—'
 
 
-def build(date, otsev=None):
-    """Пост на дату или (None, key). otsev — счётчик причин отсева, заполняется для журнала."""
+def build(date, otsev=None, only=None):
+    """Пост на дату или (None, key). otsev — счётчик причин отсева, заполняется для журнала.
+    only — пост одного вышедшего дня музея (--muzei), без «Сегодня также»."""
     otsev = {} if otsev is None else otsev
     key = date.strftime('%m-%d')
     base = site_base()
@@ -179,7 +220,7 @@ def build(date, otsev=None):
     tgu = lambda m: utm(url(m), 'telegram', key)
     vku = lambda m: utm(url(m), 'vk', key)
     skipped = []
-    found = collect(key, skipped, otsev)
+    found = collect(key, skipped, otsev, only)
     for s in skipped:
         log(f'Пропуск: {s}.')
     if not found:
@@ -339,18 +380,25 @@ def main():
     ap.add_argument('--state', default='.kanaly', help='папка отметок «уже отправлено»')
     ap.add_argument('--json', action='store_true', help='напечатать пост JSON без проверки и отправки (пробы)')
     ap.add_argument('--bez-seti', action='store_true', help='в --dry-run не открывать ссылки')
+    ap.add_argument('--muzei', help='пост одного вышедшего дня этого музея (с --date), без «Сегодня также»')
+    ap.add_argument('--novye-s', metavar='REV', help='напечатать «музей ММ-ДД» дней, вышедших после версии REV, и выйти')
     a = ap.parse_args()
+
+    if a.novye_s:
+        for slug, key in novye(a.novye_s):
+            print(slug, key)
+        return 0
 
     today = dt.datetime.now(MSK).date()
     date = dt.date(today.year, *map(int, a.date.split('-'))) if a.date else today
     if a.json:
         global LOG
         LOG = sys.stderr
-        post, key = build(date, {})
+        post, key = build(date, {}, a.muzei)
         print(json.dumps(as_json(post) if post else None, ensure_ascii=False))
         return 0
     otsev = {}
-    post, key = build(date, otsev)
+    post, key = build(date, otsev, a.muzei)
     log(f'Каналы: день {key} ({date.isoformat()}), адрес сайта {site_base()}')
     log(f'Отсев музеев на {key}: {otsev_text(otsev)}.')
     if not post:
@@ -396,7 +444,7 @@ def main():
             log(f"{name}: пропуск — нет секрета {', '.join(missing)} (площадка выключена).")
             continue
         mark = Path(a.state) / code / 'sent'
-        if mark.is_file() and mark.read_text(encoding='utf-8').startswith(date.isoformat()):
+        if mark.is_file() and mark.read_text(encoding='utf-8').startswith(f"{date.isoformat()} {a.muzei or ''}".rstrip()):
             log(f'{name}: пропуск — сегодня уже отправлено ({mark.read_text(encoding="utf-8").strip()}).')
             continue
         try:

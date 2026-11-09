@@ -4,8 +4,7 @@
 // (det) берутся из копии, порядок — её «poryadok»; в yaml шаблона у факта остаётся только своё: n — номер факта
 // в утверждённом, источник, отрывок, кадр, пометка, поля формы. Блоки «Десять фактов» / «Ещё» сохраняют свои размеры.
 // Факты yaml без n идут по месту: i-й факт страницы — i-й номер poryadok (так их сопоставлял сверщик).
-// Образец — ссылка вместо копии, как reference() в Astro content collections
-// (https://docs.astro.build/en/guides/content-collections/#defining-collection-references).
+// Образец — ссылка вместо копии, как reference() в Astro content collections (документация Astro, раздел content collections).
 // Выключатель RC_FAKTY_IZ_UTVERZHDENO=0 — прежний путь: текст yaml главнее, из копии берётся только недостающий текст.
 // Откат — RC_FAKTY_IZ_UTVERZHDENO=0 или убрать вызовы faktyIzUtverzhdeno (den-obshchee, zakon, sverka/chitat-stranicu).
 import fs from 'node:fs';

@@ -26,7 +26,9 @@ permissions:
   contents: read
 jobs:
   zabrat:
-    if: github.ref == 'refs/heads/main' && (github.event_name != 'schedule' || vars.ROLIK_NA_SAIT != '0')
+    # r688: пустая переменная (null) в выражении GitHub приводится к 0, как и '0', — расписание с 04.11 всё «skipped».
+    # `|| '1'` даёт строку, сравнение строк без приведения.
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'schedule' || (vars.ROLIK_NA_SAIT || '1') != '0')
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
