@@ -8,9 +8,12 @@
 import fs from 'node:fs';
 import { nePerevodit } from '../lib/perevod.mjs';
 import { q, json, chromeJs, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml } from '../lib/den-razmetka.mjs';
+import { vspomniOn, vspomniHtml, vspomniCss, vspomniJs, vspomniDannye } from '../lib/istoriya.mjs';
+// «Вспомни» (п.503, Р745): блок над викториной и скрипт — только при флаге, выключено.
 import { titleVkladki } from '../lib/title-vkladki.mjs';
 import { rolikRyadom } from '../lib/rolik-ryadom.mjs';
 const { d, museum } = Astro.props;
+const vspomni = vspomniOn();
 const rolik = rolikRyadom(d.video);
 const muzeyName = museum.title_ru;
 const DEVIZ = 'И один в поле воин, если он по-русски скроен';
@@ -149,7 +152,7 @@ const chrome = chromeJs(d, muzeyName);
 
 {d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license} aria-describedby={f.opisanie_dlinnoe ? opisanieId(f.src) : undefined}><figcaption><Fragment set:html={f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis} /></figcaption>{f.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(f)} />}</figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
 
-<section class="block" id="quiz">
+{vspomni && <Fragment set:html={`<style>${vspomniCss}</style>${vspomniHtml}`} />}<section class="block" id="quiz">
   <div class="wrap">
     <div class="kicker">{d.quiz.kicker}</div>
     <h2>{d.quiz.h2}</h2>
@@ -207,7 +210,7 @@ const chrome = chromeJs(d, muzeyName);
 <script is:inline set:html={scoreJs(d)}></script>
 <script is:inline src="../../assets/museum-score.js"></script>
 <script is:inline set:html={knopkiJs}></script>
-<script is:inline set:html={quizJs(d)}></script>
+<script is:inline set:html={quizJs(d)}></script>{vspomni && <script type="application/json" id="rc-vspomni-dannye" is:inline set:html={vspomniDannye(d)}></script>}{vspomni && <script is:inline set:html={vspomniJs}></script>}
 {d.skripty.map((s) => 'src' in s ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.js}></script>)}
 {v && <script is:inline src={`vizual/${v.imya}.js`}></script>}
 <script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
