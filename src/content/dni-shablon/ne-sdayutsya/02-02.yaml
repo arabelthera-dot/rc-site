@@ -43,7 +43,7 @@ oblozhka:
   hint: Дмитрий Овчаренко
   celikom: true
   vid: predmet
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.12, y: 0.32, w: 0.8, h: 0.36}
   nomer_predmeta: 6178 ор
   nomer_snimka: '4710449'
   hranitel: Государственный исторический музей, Москва
@@ -153,7 +153,7 @@ fakty:
       width: 1200
       height: 535
       vid: predmet
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.05, y: 0.2, w: 0.88, h: 0.67}
       nomer_predmeta: Д-4607
       nomer_snimka: '38052433'
       hranitel: Костромской государственный историко-архитектурный и художественный музей-заповедник
@@ -229,7 +229,7 @@ fakty:
       width: 800
       height: 312
       vid: predmet
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.06, y: 0.1, w: 0.9, h: 0.8}
       nomer_predmeta: БО-1
       nomer_snimka: '494624'
       hranitel: Центральный музей Великой Отечественной войны 1941–1945 гг., Москва
@@ -305,7 +305,7 @@ fakty:
       width: 530
       height: 800
       vid: foto
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.15, y: 0.15, w: 0.82, h: 0.75}
       nomer_predmeta: net
       nomer_snimka: '5988414'
       hranitel: Государственный центральный музей современной истории России, Москва
@@ -353,7 +353,7 @@ fakty:
       width: 358
       height: 800
       vid: predmet
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.12, y: 0.57, w: 0.78, h: 0.41}
       nomer_predmeta: ДМ-1136
       nomer_snimka: '8249698'
       hranitel: Центральный музей Великой Отечественной войны 1941–1945 гг., Москва
@@ -416,7 +416,7 @@ fakty:
       width: 800
       height: 800
       vid: predmet
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.19, y: 0.08, w: 0.63, h: 0.83}
       nomer_predmeta: net
       nomer_snimka: '9132841'
       hranitel: Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве
@@ -558,7 +558,7 @@ figures:
   width: 500
   height: 800
   vid: predmet
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.11, y: 0.52, w: 0.79, h: 0.45}
   nomer_predmeta: ДМ-1177
   nomer_snimka: '8249717'
   hranitel: Центральный музей Великой Отечественной войны 1941–1945 гг., Москва
@@ -679,7 +679,7 @@ mesto_sobytiya:
   shirota: 48.783
   dolgota: 27.188
 podskazki_igry: net
-moj_ded: net
+moj_ded: net  # 10.11: pamyat-naroda.ru поиск «Овчаренко Дмитрий Романович» — капча «не робот» через rf-proxy, лист не открыт; повторить вручную
 togda_sejchas: net
 skvoznye_linii: net
 predmet_3d: net

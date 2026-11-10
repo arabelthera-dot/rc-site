@@ -85,7 +85,7 @@ oblozhka:
   width: 1600
   height: 1137
   vid: kartina
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.18, y: 0.3, w: 0.52, h: 0.5}
   prava:
     avtor: копиист не указан (копия картины М. И. Авилова)
     god_sozdaniya: 1952
@@ -186,7 +186,7 @@ fakty:
       width: 582
       height: 800
       vid: risunok
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.12, y: 0.3, w: 0.72, h: 0.6}
       prava:
         avtor: автор не указан
         god_sozdaniya: начало XX века
@@ -230,7 +230,7 @@ fakty:
       width: 498
       height: 800
       vid: predmet
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.25, y: 0.14, w: 0.55, h: 0.45}
       prava:
         avtor: автор не указан
         god_sozdaniya: 1980
@@ -326,7 +326,7 @@ fakty:
       width: 800
       height: 533
       vid: predmet
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.27, y: 0.15, w: 0.46, h: 0.45}
       prava:
         avtor: автор не указан
         god_sozdaniya: 1990-е годы
@@ -372,7 +372,7 @@ fakty:
       width: 598
       height: 1200
       vid: foto
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.35, y: 0.07, w: 0.34, h: 0.77}
       prava:
         avtor: автор не указан
         god_sozdaniya: 1890
@@ -465,7 +465,7 @@ fakty:
       width: 800
       height: 464
       vid: kartina
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.25, y: 0.2, w: 0.35, h: 0.68}
       prava:
         avtor: М. В. Фаюстов
         god_sozdaniya: 2009–2010
@@ -604,7 +604,7 @@ figures:
     width: 586
     height: 800
     vid: risunok
-    glavnoe_na_kartinke: net
+    glavnoe_na_kartinke: {x: 0.08, y: 0.14, w: 0.85, h: 0.7}
     prava:
       avtor: автор не указан
       god_sozdaniya: 1968
