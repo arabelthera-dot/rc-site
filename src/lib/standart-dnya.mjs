@@ -1,13 +1,19 @@
 // Стандарт дня (Р660): каждый день карточки страницы src/content/dni-shablon с ключом 02-01 и дальше, любой музей,
-// не собирается без любого из 33 пунктов. Что значит каждый пункт, поле и пример — docs/standart-dnya.md (единственный
+// не собирается без любого из 48 пунктов (33 + 15 Р733). Что значит каждый пункт, поле и пример — docs/standart-dnya.md (единственный
 // источник для помощников); поля и типы — src/lib/forma-dnya.mjs (форма Р635). Январь (ключ до 02-01) не проверяется.
 // Возвращает список строк «ММ-ДД музей: нет пункта N — …»; загрузчик (zagruzitKartochki) собирает их по всем карточкам.
+import fs from 'node:fs';
 import { NET, wiki } from './forma-dnya.mjs';
 import { MEHANIKI, igraDannymi } from './igry-mehaniki.ts';
 
 export const STANDART_S = '02-01';
 // Пункты очереди Р660 и состава Р676 (171–174); 19 и 27 — только «Русские не сдаются», 76 — только изобретения (там игра дня).
-export const PUNKTY = [1, 2, 3, 4, 5, 6, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 40, 76, 88, 89, 164, 170, 171, 172, 173, 174];
+export const PUNKTY = [1, 2, 3, 4, 5, 6, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 27, 28, 29, 30, 40, 76, 88, 89, 164, 170, 171, 172, 173, 174,
+  179, 182, 187, 197, 202, 227, 241, 255, 256, 257, 265, 275, 284, 285, 287];
+// Р733: пункты очередей 3 и 4 — у дней из долга src/data/polya-r733-dolg.json пока ::warning::, а не брак.
+const chitaj = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
+const DOLG_R733 = chitaj('src/data/polya-r733-dolg.json');
+const SLOVAR = chitaj('src/data/slovar.json');
 // Переход на новый стиль: 1 (14) февраля 1918 г.; раньше — нужна дата по старому стилю (п. 5).
 const NOVYJ_STIL = '1918-02-14';
 const HTML = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
@@ -156,8 +162,13 @@ export function standartDnya(d, syroe = d) {
   if (nfc.length) p(170, `текст не в NFC или с комбинируемыми знаками: ${kratko(nfc)}`);
   // 174. Аудиогид и ролик — только после показа текста Сергею (pokazan_sergeyu.data), при любом статусе.
   for (const k of ['audioguide', 'video']) if (d[k] && !d.pokazan_sergeyu) p(174, `${k} есть, а pokazan_sergeyu нет — озвучка и ролик только после показа Сергею`);
-  // 171–173 — состав дня (Р676); у заготовки (status: zagotovka) не проверяются.
+  // 171–173 и Р733 — состав дня (Р676); у заготовки (status: zagotovka) не проверяются.
   if (d.status === 'zagotovka') return net;
+  const dolg = DOLG_R733[d.muzei]?.includes(d.key), r733 = polyaR733(d, ns, izob, kart, fakty);
+  if (dolg) {
+    if (r733.length) console.log(`::warning::${d.muzei}/${d.key}: долг полей Р733 (${r733.length}) — ${r733.map((s) => s.replace(/^\S+ \S+ /, '')).join('; ')}`);
+    else console.log(`::warning::${d.muzei}/${d.key}: поля Р733 заполнены — снять из долга (src/data/polya-r733-dolg.json)`);
+  } else net.push(...r733);
   // 171. Факты: «Десять фактов» (id fakty) — 10, «Ещё пять фактов» (id fakty-dnya) — 5.
   const blok = (id) => [d.fakty ?? []].flat().find((b) => b.id === id)?.udary.length ?? 0;
   if (blok('fakty') !== 10 || blok('fakty-dnya') !== 5) p(171, `фактов ${blok('fakty')} + «Ещё» ${blok('fakty-dnya')} — нужно 10 + 5 (блоки fakty и fakty-dnya)`);
@@ -165,6 +176,31 @@ export function standartDnya(d, syroe = d) {
   uFaktov(172, 'нет полухука (summary)', (u) => !String(u.summary ?? '').replace(/<[^>]+>/g, '').trim());
   // 173. «Русские не сдаются»: визуализация (vizual, вид predmet | karta | dokument) вместо игры.
   if (ns && !d.vizual) p(173, 'vizual (визуализация: predmet | karta | dokument)');
+  return net;
+}
+
+// Р733 (очереди 3 и 4, docs/standart-dnya.md): поле есть — значение или 'net'.
+function polyaR733(d, ns, izob, kart, fakty) {
+  const net = [], p = (n, chto) => net.push(`${d.key} ${d.muzei}: нет пункта ${n} — ${chto}`);
+  const nado = (n, k, chto) => { if (!est(d[k])) p(n, `${k} (${chto}, или '${NET}')`); };
+  const uKartinok = (n, chto, plokho) => { const bez = kart.filter(([, k]) => plokho(k)).map(([put]) => put); if (bez.length) p(n, `${chto}: ${kratko(bez)}`); };
+  nado(179, 'podskazki_igry', '3 подсказки к игре дня');
+  uKartinok(182, `glavnoe_na_kartinke ({x, y} или {x, y, w, h} в долях 0–1, или '${NET}')`, (k) => !est(k.glavnoe_na_kartinke));
+  uKartinok(187, 'vid картинки (foto | chertezh | karta | dokument | kartina …)', (k) => !est(k.vid));
+  if (ns) nado(197, 'moj_ded', '«Мой дед был там»: {baza: pamyat-naroda | podvig-naroda, ssylka}');
+  uKartinok(202, 'prava.god_sozdaniya — год снимка', (k) => !est(k.prava?.god_sozdaniya));
+  nado(227, 'togda_sejchas', 'современный снимок того же места: {togda, sejchas, otkuda, god}');
+  nado(241, 'skvoznye_linii', 'nomer_dnya связанных дней');
+  if (!est(d.mesto_sobytiya)) p(255, 'mesto_sobytiya («mesto:id» словаря с koordinaty или {nazvanie, shirota, dolgota})');
+  else if (typeof d.mesto_sobytiya === 'string' && !SLOVAR[d.mesto_sobytiya]?.koordinaty)
+    p(256, `mesto_sobytiya «${d.mesto_sobytiya}»: в src/data/slovar.json нет koordinaty — добавить там или дать {nazvanie, shirota, dolgota}`);
+  const bez = fakty.filter(([, u]) => !est(u.sravnenie)).map(([put]) => put);
+  if (bez.length) p(257, `sravnenie у факта (с привычным, «как 12 этажей», или '${NET}'): ${kratko(bez)}`);
+  nado(265, 'predmet_3d', 'предмет для 3D: {chto, opory, razmery}');
+  nado(275, 'panorama_360', 'панорама места: {ssylka, otkuda}');
+  nado(284, 'staraya_karta', 'старая карта места и года: {nazvanie, god, otkuda}');
+  nado(285, 'marshrut', 'маршрут: [{mesto, shirota, dolgota, chto}] по порядку');
+  if (izob) nado(287, 'kak_rabotaet', '«как это работает», 3–5 шагов');
   return net;
 }
 

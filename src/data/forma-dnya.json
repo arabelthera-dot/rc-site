@@ -399,6 +399,90 @@
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
       "punkt": "174"
+    },
+    {
+      "imya": "podskazki_igry",
+      "chto": "Р733: три подсказки к игре дня или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "179"
+    },
+    {
+      "imya": "images.glavnoe_na_kartinke",
+      "chto": "Р733: главное на картинке — точка {x, y} или рамка {x, y, w, h} в долях 0–1 для наезда камеры, или net",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "182"
+    },
+    {
+      "imya": "moj_ded",
+      "chto": "Р733, «Русские не сдаются»: «Мой дед был там» — {baza: pamyat-naroda | podvig-naroda, ssylka} или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "197"
+    },
+    {
+      "imya": "togda_sejchas",
+      "chto": "Р733: «тогда и сейчас» — {togda, sejchas, otkuda, god} или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "227"
+    },
+    {
+      "imya": "skvoznye_linii",
+      "chto": "Р733: сквозные линии — nomer_dnya связанных дней или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "241"
+    },
+    {
+      "imya": "mesto_sobytiya",
+      "chto": "Р733: место события — «mesto:id» словаря с koordinaty или {nazvanie, shirota, dolgota}",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "255, 256"
+    },
+    {
+      "imya": "fakty.sravnenie",
+      "chto": "Р733: сравнение числа факта с привычным («как 12 этажей») или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "257"
+    },
+    {
+      "imya": "predmet_3d",
+      "chto": "Р733: предмет для 3D — {chto, opory, razmery} или net",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "265–268"
+    },
+    {
+      "imya": "panorama_360",
+      "chto": "Р733: панорама 360 места — {ssylka, otkuda} или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "275"
+    },
+    {
+      "imya": "staraya_karta",
+      "chto": "Р733: старая карта места и года — {nazvanie, god, otkuda, ssylka} или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "284"
+    },
+    {
+      "imya": "marshrut",
+      "chto": "Р733: маршрут — точки по порядку [{mesto, shirota, dolgota, chto}] или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "285, 294"
+    },
+    {
+      "imya": "kak_rabotaet",
+      "chto": "Р733, только изобретения: «как это работает» — 3–5 шагов или net",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "287"
     }
   ]
 }
