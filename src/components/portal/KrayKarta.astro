@@ -1,0 +1,38 @@
+---
+// Карта «Мой край» (п.505, Р746): 89 субъектов России квадратами (src/data/moy-kray.json, src/lib/moy-kray.mjs).
+// Область с днями — ссылка на /moy-kray/<код>/, без дней — серый квадрат без ссылки. Подписи — текст SVG, не картинка.
+import { kray, adresKraya } from '../../lib/moy-kray.mjs';
+import { plural } from '../../lib/kalendar';
+interface Props { tekushchiy?: number }
+const { tekushchiy } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const { oblasti } = kray();
+const S = 44, R = 40;
+const kol = Math.max(...oblasti.map((o) => o.kol)) + 1, ryad = Math.max(...oblasti.map((o) => o.ryad)) + 1;
+const dney = (n: number) => `${n} ${plural(n, 'день', 'дня', 'дней')}`;
+---
+<svg class="rc-kray-karta" viewBox={`0 0 ${kol * S} ${ryad * S}`} role="group" aria-label="Карта регионов России: область с днями музеев — ссылка">
+  {oblasti.map((o) => {
+    const x = o.kol * S, y = o.ryad * S;
+    const kvadrat = <>
+      <rect x={x} y={y} width={R} height={R} rx="5" />
+      <text x={x + R / 2} y={y + R / 2 + 4} text-anchor="middle">{o.kratko}</text>
+    </>;
+    return o.dni.length ? (
+      <a href={`${adresKraya(base)}${o.kod}/`} class:list={['rc-kray-est', { 'rc-kray-tut': o.kod === tekushchiy }]} aria-label={`${o.nazvanie}: ${dney(o.dni.length)}`} aria-current={o.kod === tekushchiy ? 'page' : undefined}>
+        <title>{o.nazvanie}: {dney(o.dni.length)}</title>{kvadrat}
+      </a>
+    ) : (<g class="rc-kray-net" aria-hidden="true"><title>{o.nazvanie}</title>{kvadrat}</g>);
+  })}
+</svg>
+<style>
+  .rc-kray-karta { display: block; width: 100%; max-width: 760px; height: auto; margin: 0 auto 20px; font: 600 11px var(--shrift-inter-system-ui-sans-serif); }
+  .rc-kray-karta rect { stroke-width: 1; }
+  .rc-kray-net rect { fill: var(--cvet-ffffff-a6); stroke: var(--cvet-ffffff-a12); }
+  .rc-kray-net text { fill: var(--cvet-ffffff-a35); }
+  .rc-kray-est rect { fill: var(--cvet-c9a84c-a35); stroke: var(--cvet-c9a84c); transition: fill .2s; }
+  .rc-kray-est text { fill: var(--cvet-ffffff); }
+  .rc-kray-est:hover rect, .rc-kray-est:focus-visible rect, .rc-kray-tut rect { fill: var(--cvet-c9a84c); }
+  .rc-kray-est:focus-visible { outline: 2px solid var(--cvet-e4c97a); }
+  .rc-kray-tut text, .rc-kray-est:hover text { fill: var(--cvet-0c1826); }
+</style>

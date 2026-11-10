@@ -1,0 +1,52 @@
+---
+// «Мой край» (п.505, Р746): /moy-kray/ — карта регионов, /moy-kray/<код>/ — все готовые дни всех музеев, связанные
+// с местами области. Данные — src/lib/moy-kray.mjs; только области с днями получают страницу, пустых ссылок нет.
+// Флаг выключен (krayOn) — страниц нет. Вид карточек — public/assets/rc-etot-den.css, как у /god/ и /tema/.
+import Base from '../../layouts/Base.astro';
+import InlineCss from '../../components/InlineCss.astro';
+import KrayKarta from '../../components/portal/KrayKarta.astro';
+import Kartochka from '../../components/portal/KrayKartochka.astro';
+import { krayOn, kray, adresKraya } from '../../lib/moy-kray.mjs';
+import { plural } from '../../lib/kalendar';
+export function getStaticPaths() {
+  if (!krayOn()) return [];
+  const { oblasti } = kray();
+  return [{ params: { kod: undefined }, props: {} }, ...oblasti.filter((o) => o.dni.length).map((o) => ({ params: { kod: String(o.kod) }, props: { o } }))];
+}
+const { o } = Astro.props as any;
+const base = import.meta.env.BASE_URL;
+const src = (s: string) => (/^https?:/.test(s) ? s : `${base}${s.replace(/^\//, '')}`);
+const { oblasti, zaKartoy, dney } = kray();
+const sDnyami = oblasti.filter((x) => x.dni.length).sort((a, b) => a.nazvanie.localeCompare(b.nazvanie, 'ru'));
+const muzeev = o ? new Set(o.dni.map((d: any) => d.museum)).size : 0;
+const pervaya = o?.dni.find((d: any) => d.img);
+const dn = (n: number) => `${n} ${plural(n, 'день', 'дня', 'дней')}`;
+---
+{o ? (
+<Base title={`${o.nazvanie} — мой край · Русская цивилизация`} description={`${o.nazvanie}: дни музеев «Русской цивилизации», связанные с этим краем.`} schema="page" image={pervaya && src(pervaya.img)} crumbs={[{ href: adresKraya(base), label: 'Мой край' }, { label: o.nazvanie }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>{o.nazvanie}</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">{dn(o.dni.length)} в {muzeev} {plural(muzeev, 'музее', 'музеях', 'музеях')} портала.</p>
+    <ul class="rc-uzel-list">{o.dni.map((d) => (<li><Kartochka d={d} /></li>))}</ul>
+    <KrayKarta tekushchiy={o.kod} />
+    <nav class="rc-uzel-nav" aria-label="Другие края"><a href={adresKraya(base)}>Все края</a></nav>
+  </div>
+</Base>
+) : (
+<Base title="Мой край · Русская цивилизация" description="Карта России: выберите свою область — и откройте дни музеев «Русской цивилизации», связанные с ней." schema="page" crumbs={[{ label: 'Мой край' }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>Мой край</h1><p>Выберите свою область — откроются дни всех музеев, связанные с ней</p></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">{sDnyami.length} {plural(sDnyami.length, 'край', 'края', 'краёв')} уже в музеях портала, {dn(dney)}. Золотой квадрат — область с днями.</p>
+    <KrayKarta />
+    <ul class="rc-uzel-daty">
+      {sDnyami.map((x) => (<li><a href={`${adresKraya(base)}${x.kod}/`}>{x.nazvanie}</a> <span>{x.dni.length}</span></li>))}
+    </ul>
+    {zaKartoy.map((z) => (<>
+      <h2 class="rc-uzel-lead">{z.nazvanie}</h2>
+      <ul class="rc-uzel-list">{z.dni.map((d) => (<li><Kartochka d={d} /></li>))}</ul>
+    </>))}
+  </div>
+</Base>
+)}
