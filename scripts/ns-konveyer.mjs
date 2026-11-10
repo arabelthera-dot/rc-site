@@ -220,6 +220,9 @@ for (const key of dni) {
       const r = spawnSync('node', [path.join(KOREN, 'scripts/ns-iz-utverzhdennyh.mjs'), key, ...UTV], { cwd: KOREN, encoding: 'utf8' });
       for (const s of `${r.stdout}${r.stderr}`.split('\n').filter((x) => x && !x.startsWith('  ·'))) console.log(`  ${s}`);
       if (r.status === 1) net.push('страница: ns-iz-utverzhdennyh остановилась (ОСТАНОВ выше)');
+      // п. 157: кадры дня — без GPS и лишнего, с происхождением по IPTC из карточки (не прошло — кадры как были)
+      const m = spawnSync('python3', [path.join(KOREN, 'scripts/kartinki-metki.py'), 'ne-sdayutsya', key, '--zapis'], { cwd: KOREN, encoding: 'utf8' });
+      for (const s of `${m.stdout}${m.stderr}`.split('\n').filter(Boolean)) console.log(`  метки: ${s}`);
     }
     net = net.concat(sverka(key, fail, dd, mes));
   }
