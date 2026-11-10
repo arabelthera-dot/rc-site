@@ -1,0 +1,49 @@
+# Открываемость из других стран (п.500, Р745, 10.11.2026): раз в сутки главная и страница дня — из Китая, Индии, Ирана,
+# Турции, ЕС и США через бесплатный открытый API Globalping (scripts/globalping.mjs, без ключа и аккаунта).
+# Отчёт — в журнал прогона (Summary) и файлом-приложением; не открылось хоть откуда — карточка (issue) «globalping», одна открытая.
+# Пять вопросов: задевает — ничего, только читает сайт; нужно — github.token (issues: write); без нужного — красный прогон
+# без карточки; проверка — ручной пуск workflow_dispatch; откат — удалить файл или переменная GLOBALPING = '0' (расписание спит).
+name: globalping
+on:
+  schedule:
+    - cron: '41 4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: globalping
+  cancel-in-progress: true
+jobs:
+  zamer:
+    if: github.event_name == 'workflow_dispatch' || vars.GLOBALPING != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: scripts/globalping.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - id: zamer
+        run: node scripts/globalping.mjs --out globalping.md
+      - if: always()
+        run: test -f globalping.md && cat globalping.md >> "$GITHUB_STEP_SUMMARY" || echo "Globalping не ответил" >> "$GITHUB_STEP_SUMMARY"
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: globalping
+          path: globalping.md
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: failure() && steps.zamer.outcome == 'failure' && hashFiles('globalping.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          N=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search 'in:title "Сайт не открылся из других стран"' --json number -q '.[0].number')
+          { cat globalping.md; echo; echo "Прогон: $RUN"; } > telo.md
+          if [ -n "$N" ]; then gh issue comment "$N" -R "$GITHUB_REPOSITORY" -F telo.md
+          else gh issue create -R "$GITHUB_REPOSITORY" -t "Сайт не открылся из других стран (Globalping)" -F telo.md; fi
