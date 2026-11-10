@@ -4,6 +4,8 @@
 // 'unsafe-inline' в script-src/style-src — вынужденно: инлайн-скрипты (slabovidHeadJs, обработчик a.oshibka
 // в Base.astro, инлайн полных страниц src/data/full-pages) и инлайн-стили. frame-ancestors в meta не работает —
 // его ставит nginx.
+import { createHash } from 'node:crypto';
+
 export const cspVkl = (env = process.env) => env.PUBLIC_CSP === '1';
 
 const w = (hs) => hs.flatMap((h) => [`https://${h}`, `https://*.${h}`]);
@@ -23,6 +25,20 @@ export const CSP = [
   "base-uri 'self'",
   "form-action 'self'",
   'upgrade-insecure-requests',
+].join('; ');
+
+// Строгая политика (п.501, Р745) — без 'unsafe-inline' в script-src и style-src, пока только наблюдение:
+// заголовок Content-Security-Policy-Report-Only ставит nginx (deploy/bezopasnost/nginx-csp-limit.conf — строка
+// оттуда сверяется с этой тестом tests/csp-strogiy.mjs). В <meta> Report-Only не работает (спецификация CSP3),
+// поэтому только заголовок. Нарушения — в /s/csp (204, журнал nginx). Неделя без нарушений — тогда настоящий запрет.
+// Разрешён по хешу один инлайн — RAMKA_JS (scripts/ramka-zerkala.mjs), остальные инлайны шаблонов покажет журнал.
+export const RAMKA_JS = "if(top!==self&&/\\.github\\.io$/.test(location.hostname)){document.documentElement.style.display='none';try{top.location=self.location.href}catch(e){}}";
+export const ramkaHash = () => `'sha256-${createHash('sha256').update(RAMKA_JS).digest('base64')}'`;
+export const CSP_STROGIY = () => [
+  ["script-src 'self'", ramkaHash(), ...METRIKA].join(' '),
+  "style-src 'self'",
+  ...CSP.split('; ').filter((d) => !/^(script-src|style-src|upgrade-insecure-requests)\b/.test(d)),
+  'report-uri /s/csp',
 ].join('; ');
 
 export const cspMeta = () => `<meta http-equiv="Content-Security-Policy" content="${CSP}">`;
