@@ -1,10 +1,10 @@
 {
-  "_": "Языки сайта (план сайта, раздел Г, «да» Сергея 19.10.2026). Русский — без приставки адреса, прочие — /<code>/. Язык добавляется строкой; ready:true включает его пометки hreflang и флаг в переключателе. locale — для og:locale (язык_СТРАНА).",
+  "_": "Языки сайта (план сайта, раздел Г, «да» Сергея 19.10.2026). Русский — без приставки адреса, прочие — /<code>/. Язык добавляется строкой; ready:true включает его пометки hreflang и флаг в переключателе. locale — для og:locale (язык_СТРАНА). code — тег BCP 47, письмо и страна — где без них неоднозначно (zh-Hans), docs/perevod-standart.md.",
   "poUmolchaniyu": "ru",
   "yazyki": [
     { "code": "ru", "locale": "ru_RU", "name": "Русский", "flag": "🇷🇺", "country": "RU", "dir": "ltr", "ready": true },
     { "code": "en", "locale": "en_GB", "name": "English", "flag": "🇬🇧", "country": "GB", "dir": "ltr", "ready": false },
-    { "code": "zh", "locale": "zh_CN", "name": "中文", "flag": "🇨🇳", "country": "CN", "dir": "ltr", "ready": false },
+    { "code": "zh-Hans", "locale": "zh_CN", "name": "中文", "flag": "🇨🇳", "country": "CN", "dir": "ltr", "ready": false },
     { "code": "es", "locale": "es_ES", "name": "Español", "flag": "🇪🇸", "country": "ES", "dir": "ltr", "ready": false },
     { "code": "ar", "locale": "ar_SA", "name": "العربية", "flag": "🇸🇦", "country": "SA", "dir": "rtl", "ready": false },
     { "code": "fr", "locale": "fr_FR", "name": "Français", "flag": "🇫🇷", "country": "FR", "dir": "ltr", "ready": false },
