@@ -1,0 +1,68 @@
+---
+// Курсы 7–10 дней с тестом (п.506, Р746): /kursy/ — все курсы, /kursy/<id>/ — дни курса и тест «N из M».
+// Состав и вопросы — src/lib/kursy.mjs; флаг выключен (kursyOn) — страниц нет. Отметки и тест — public/assets/rc-kursy.js;
+// вид карточек — public/assets/rc-etot-den.css (как страницы тем).
+import Base from '../../layouts/Base.astro';
+import InlineCss from '../../components/InlineCss.astro';
+import { kursyOn, kursy, adresKursa } from '../../lib/kursy.mjs';
+import { adresDnya, kogda } from '../../lib/etot-den.mjs';
+import { plural } from '../../lib/kalendar';
+export function getStaticPaths() {
+  if (!kursyOn()) return [];
+  const vse = kursy();
+  return [{ params: { id: undefined }, props: { vse } }, ...vse.map((k) => ({ params: { id: k.id }, props: { k, vse } }))];
+}
+const { k, vse } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const src = (s: string) => (/^https?:/.test(s) ? s : `${base}${s.replace(/^\//, '')}`);
+const muzeev = (dni: any[]) => new Set(dni.map((d) => d.museum)).size;
+const pervaya = k?.dni.find((d: any) => d.img);
+---
+{k ? (
+<Base title={`Курс «${k.nazvanie}» · Русская цивилизация`} description={`${k.kratko} Курс из ${k.dni.length} дней музеев «Русской цивилизации» и тест в конце.`} schema="page" image={pervaya && src(pervaya.img)} crumbs={[{ href: `${base}kursy/`, label: 'Курсы' }, { label: k.nazvanie }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>Курс «{k.nazvanie}»</h1></header>
+  <div class="rc-uzel" id="rc-kurs" data-kurs={k.id}>
+    <p class="rc-uzel-lead">{k.kratko} {k.dni.length} {plural(k.dni.length, 'день', 'дня', 'дней')} из {muzeev(k.dni)} {plural(muzeev(k.dni), 'музея', 'музеев', 'музеев')}: проходите по одному дню, в конце — тест из {k.voprosy.length} {plural(k.voprosy.length, 'вопроса', 'вопросов', 'вопросов')}.</p>
+    <p class="rc-kurs-proideno" data-proideno hidden></p>
+    <ol class="rc-uzel-list rc-kurs-dni">
+      {k.dni.map((d: any, i: number) => (
+        <li data-muzey={d.museum} data-den={d.key}><a class="rc-uzel-card" href={adresDnya(base, d.museum, d.key)}>
+          {d.img && <img src={src(d.img)} alt={d.alt ?? ''} loading="lazy" decoding="async" width="640" height="400" />}
+          <span class="rc-uzel-body"><span class="rc-uzel-muzey">День {i + 1} · {d.museumTitle} · {kogda(d.key)}<span class="rc-kurs-metka" hidden> · пройден</span></span><span class="rc-uzel-title">{d.title}</span>{d.hook && <span class="rc-uzel-hook">{d.hook}</span>}</span>
+        </a></li>))}
+    </ol>
+    <h2 class="rc-ed-h">Тест</h2>
+    <noscript><p>Для теста нужен JavaScript.</p></noscript>
+    <ol class="rc-kurs-test">
+      {k.voprosy.map((v: any, i: number) => (
+        <li class="rc-kurs-v" data-a={v.a}><p class="rc-kurs-q" set:html={v.q} />
+          <div class="rc-kurs-o">{v.o.map((o: string, j: number) => (<button type="button" data-o={j} set:html={o} />))}</div>
+          <p class="rc-kurs-e" hidden set:html={v.e} /></li>))}
+    </ol>
+    <p class="rc-kurs-itog" role="status" aria-live="polite" data-itog></p>
+    <nav class="rc-uzel-nav" aria-label="Другие курсы"><a href={`${base}kursy/`}>Все курсы</a><a href={`${base}tema/${k.id}/`}>Все дни темы</a></nav>
+  </div>
+  <script is:inline defer src={`${base}assets/rc-kursy.js`}></script>
+</Base>
+) : (
+<Base title="Курсы · Русская цивилизация" description="Курсы по темам: 7–10 дней разных музеев «Русской цивилизации» и тест в конце." schema="page" crumbs={[{ label: 'Курсы' }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>Курсы</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">Одна тема — дни разных музеев по порядку и тест в конце.</p>
+    <ul class="rc-uzel-daty">
+      {vse.map((x: any) => (<li><a href={adresKursa(base, x.id)}>{x.nazvanie}</a> <span>{x.dni.length} {plural(x.dni.length, 'день', 'дня', 'дней')}</span></li>))}
+    </ul>
+  </div>
+</Base>
+)}
+<style is:global>
+  .rc-kurs-test { padding-left: 1.4em; }
+  .rc-kurs-v { margin: 0 0 1.4em; }
+  .rc-kurs-o { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rc-kurs-o button { padding: 8px 14px; border: 1px solid currentColor; border-radius: 8px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+  .rc-kurs-o button[data-verno] { outline: 2px solid #2e7d32; }
+  .rc-kurs-o button[data-neverno] { outline: 2px solid #b71c1c; }
+  .rc-kurs-itog { font-weight: 600; }
+</style>
