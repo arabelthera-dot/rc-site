@@ -1,5 +1,9 @@
 /* Полные страницы дней — поправки доступности поверх стилей страницы (Б10, 20.10). Вписывается в <head> после них
    (src/integrations/full-pages.mjs). Подвал шаблона изобретений и первопроходцев — rgba(255,255,255,.2) на #060c17,
-   контраст 1,6–1,8; нужно ≥ 4,5 (WCAG 1.4.3). .62 даёт ≈ 7:1, вид тот же — приглушённый серый. */
-html:is([data-museum="izobreteniya"],[data-museum="pervoprohodcy"]) body>footer{color:var(--cvet-ffffff-a62)}
-html:is([data-museum="izobreteniya"],[data-museum="pervoprohodcy"]) body>footer .rc-lic{opacity:1}
+   контраст 1,6–1,8; нужно ≥ 4,5 (WCAG 1.4.3). .62 даёт ≈ 7:1, вид тот же — приглушённый серый.
+   «Русские не сдаются» — на том же шаблоне (izobreteniya-den.css), тот же подвал (r725, axe на 01-10). */
+html:is([data-museum="izobreteniya"],[data-museum="pervoprohodcy"],[data-museum="ne-sdayutsya"]) body>footer{color:var(--cvet-ffffff-a62)}
+html:is([data-museum="izobreteniya"],[data-museum="pervoprohodcy"],[data-museum="ne-sdayutsya"]) body>footer .rc-lic{opacity:1}
+/* Вторая строка шапки: --muted #7a9ab8 под opacity .62 из museum.css = #4e647b, контраст 3,2 (r725, axe на 01-05, 01-20, 01-10).
+   .85 — ≈ 5,1:1, строка остаётся приглушённой; свёрнутая шапка (.mc-shrink, opacity 0) не задета. */
+html:is([data-museum="izobreteniya"],[data-museum="pervoprohodcy"],[data-museum="ne-sdayutsya"]) header.top:not(.mc-shrink) .b2{opacity:.85}
