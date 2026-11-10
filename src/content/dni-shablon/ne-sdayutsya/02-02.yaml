@@ -680,12 +680,16 @@ mesto_sobytiya:
   dolgota: 27.188
 podskazki_igry: net
 moj_ded: net  # 10.11: pamyat-naroda.ru поиск «Овчаренко Дмитрий Романович» — капча «не робот» через rf-proxy, лист не открыт; повторить вручную
-togda_sejchas: net
+togda_sejchas: net  # искал: pastvu.com, снимки в радиусе 30 км от Песца (48.783, 27.188) — старых снимков самого села нет, ближайшие — Миньковцы, Шелестяны
 skvoznye_linii: net
 predmet_3d: net
-panorama_360: net
-staraya_karta: net
-marshrut: net
+panorama_360: net  # искал: Яндекс Панорамы по точке 48.783, 27.188 — панорамы нет (span 0)
+staraya_karta:
+  nazvanie: Карта РККА 1941 года, лист M-35-115 — село Песец у Ивашковцев
+  god: 1941
+  otkuda: Это Место — etomesto.com
+  ssylka: https://etomesto.com/map-atlas_rkka/?y=48.783&x=27.188
+marshrut: net  # искал: в карточке дня одна точка подвига — Песец; вторую точку открытым источником не подтвердил
 etiketka_oblozhki:
 - Модель армейской повозки
 - Государственный исторический музей, Москва
