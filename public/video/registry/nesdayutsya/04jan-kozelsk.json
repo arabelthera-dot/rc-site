@@ -1,11 +1,11 @@
 {
   "title": "История в 48 секунд",
   "intro": "Семь недель город держал орду — Батый назвал его злым",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41872879687) из сценария days/ns04jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41876737217) из сценария days/ns04jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk.mp4",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 47.5,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 47.5,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
