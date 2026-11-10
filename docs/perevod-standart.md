@@ -1,4 +1,4 @@
-# Язык цитаты и отпечаток русского текста у перевода (пп. 43, 44 очереди 0, Р669)
+# Язык цитаты и отпечаток русского текста у перевода (пп. 43, 44 очереди 0, Р669); коды и адреса переводов (пп. 145–150 очереди 2)
 
 Только устройство данных. Новых проверок сборки нет (Р627), готовые дни и файлы строк не меняются.
 
@@ -64,6 +64,28 @@ scripts/perevod-dnya.mjs печатает «длинно: <код> <ключ> <�
 места с кириллицей (src/data/igry/stroki-ruchnyh.mjs); `ruchnayaNaYazyke()` подставляет перевод на то же место.
 Русские строки пишет `node scripts/stroki-ruchnyh-igr.mjs`; `--proverit` — ru-подстановка байт в байт равна исходнику
 (31 из 31). Языки пишет машина перевода тем же проходом, что и день.
+## 145. Код языка — BCP 47, с письмом и страной, где нужно
+
+Один список языков — `src/data/yazyki.json`, поле `code` — тег BCP 47: он же приставка адреса, `lang`, `hreflang`,
+`inLanguage` и ключ раздела в `src/data/perevod/<музей>-<ММ-ДД>.json`. Китайский — `zh-Hans` (упрощённое письмо;
+у `zh` письмо не определено). Письмо и страна — только когда без них язык неоднозначен (`zh-Hans`, `pt-BR`);
+`ru`, `en`, `ar`, `hi` — без подтегов. Переводчику (`scripts/perevod-dnya.mjs`) передаётся основной подтег (`zh`).
+
+## 146. Хвост адреса не переводится
+
+Перевод дня — `/<код>/muzei/<музей>/den/<ММ-ДД>/`: приставка языка, остальное — как у русской страницы
+(`putNaYazyke` / `razobratPut` в `src/lib/yazyki.mjs`). Проверено разово, не шагом CI (10.11.2026): 35 музеев ×
+372 ключа × 4 языка = 52080 адресов, хвост тот же, разбор обратим, ошибок 0.
+
+## 149, 150. hreflang в карте сайта и связь перевода с оригиналом
+
+Язык у страницы дня есть, когда он `ready:true` и у дня есть его раздел в файле перевода. Тогда:
+- `<link rel="alternate" hreflang>` — русский, языки страницы и `x-default` (русская);
+- карта сайта — `<xhtml:link rel="alternate">` с теми же языками, только если переведённая страница собрана;
+- JSON-LD — `inLanguage`, у русской `workTranslation`, у перевода `translationOfWork` со ссылкой на русскую.
+Перевода нет — всё выключено, вывод прежний. Проба (10.11.2026, вне репозитория): день izobreteniya/01-02 с пробным
+машинным переводом хука (бесплатный MyMemory; en, ar, zh) — пометки, карта и связь появились только у этого дня.
+Китайский пробный перевод исказил смысл — машинный перевод только черновик для редактора.
 
 ## Как это делают в мире
 
@@ -76,3 +98,7 @@ scripts/perevod-dnya.mjs печатает «длинно: <код> <ключ> <�
 - Поиск по языкам — Pagefind: https://pagefind.app/docs/multilingual/
 - Рост текста при переводе — W3C: https://www.w3.org/International/articles/article-text-size ,
   ограничение длины у Weblate: https://docs.weblate.org/en/latest/admin/checks.html#maximum-length-of-translation
+- hreflang, x-default и `xhtml:link` в карте сайта (Google):
+  https://developers.google.com/search/docs/specialty/international/localized-versions
+- Выбор тега с письмом и страной (W3C): https://www.w3.org/International/articles/language-tags/
+- `translationOfWork` / `workTranslation`: https://schema.org/translationOfWork

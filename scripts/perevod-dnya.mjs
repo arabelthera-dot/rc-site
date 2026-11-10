@@ -19,6 +19,8 @@ import { dlinnye } from '../src/lib/potolok-dliny.mjs';
 
 const KODY = JSON.parse(fs.readFileSync('src/data/yazyki.json', 'utf8')).yazyki.map((y) => y.code).filter((c) => c !== 'ru');
 const KIR = /[а-яё]/i;
+// Код языка сайта — BCP 47 с письмом (zh-Hans, п. 145); переводчик знает только основной подтег (zh). Файл строк — под кодом сайта.
+const kodPerevodchika = (code) => code.split('-')[0];
 
 /** Русские строки карточки: { 'bloki.0.tekst': '…' } — каждая строка с кириллицей, кроме цитат не на русском. */
 export function russkieStroki(d) {
@@ -51,12 +53,13 @@ const dni = fayly.flatMap((f) => {
 });
 // одна задача на язык для всех дней — модель грузится один раз
 const zadachi = KODY.map((code) => ({ code, teksty: dni.flatMap((x) => x.nado[code].map((k) => x.fayl.ru[k])) })).filter((z) => z.teksty.length);
+const vPerevodchik = zadachi.map((z) => ({ ...z, code: kodPerevodchika(z.code) }));
 const gotovo = zadachi.length
-  ? JSON.parse(execFileSync('python3', ['scripts/perevod-argos.py'], { input: JSON.stringify({ zadachi }), maxBuffer: 1 << 28, stdio: ['pipe', 'pipe', 'inherit'] }).toString())
+  ? JSON.parse(execFileSync('python3', ['scripts/perevod-argos.py'], { input: JSON.stringify({ zadachi: vPerevodchik }), maxBuffer: 1 << 28, stdio: ['pipe', 'pipe', 'inherit'] }).toString())
   : {};
 for (const { code } of zadachi) {
   let i = 0;
-  for (const x of dni) for (const k of x.nado[code]) zapisatPerevod(x.fayl, code, k, gotovo[code][i++]);
+  for (const x of dni) for (const k of x.nado[code]) zapisatPerevod(x.fayl, code, k, gotovo[kodPerevodchika(code)][i++]);
 }
 fs.mkdirSync('src/data/perevod', { recursive: true });
 for (const x of dni) {
