@@ -1,0 +1,48 @@
+# п.494 плана (Р744, Р745): сторож смены хозяина внешних доменов — раз в неделю отпечатки (RDAP/whois,
+# заголовок и язык главной) сверяются с data/domeny-otpechatki.json; признаки смены → заявка-предупреждение
+# со списком и ссылками на web.archive.org. Ссылки на сайте не переписывает — решение глазами.
+# Пять вопросов: задевает — ничего на сайте, только читает чужие главные и пишет заявку; нужно — бесплатные
+# rdap.org и whois.tcinet.ru, GITHUB_TOKEN; без нужного — домен уходит в «не ответили», работа зелёная;
+# проверка — ручной пуск; откат — переменная DOMENY_VKL = '0' или удалить файл.
+# Новые отпечатки записываются только руками после проверки: node scripts/domeny-otpechatki.mjs --zapisat → заявка.
+name: domeny
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: domeny
+  cancel-in-progress: false
+jobs:
+  domeny:
+    if: github.event_name == 'workflow_dispatch' || vars.DOMENY_VKL != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: |
+            scripts/domeny-otpechatki.mjs
+            data/domeny-otpechatki.json
+            src/content
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+      - name: Сверка
+        id: sverka
+        run: node scripts/domeny-otpechatki.mjs
+      - name: Заявка-предупреждение
+        if: steps.sverka.outputs.trevoga != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          zag="Сторож доменов: возможная смена хозяина"
+          n=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search "\"$zag\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$n" ]; then gh issue comment "$n" -R "$GITHUB_REPOSITORY" --body-file domeny-otchet.md; exit 0; fi
+          gh issue create -R "$GITHUB_REPOSITORY" --title "$zag" --label agent:arabelthera-dot --body-file domeny-otchet.md
+      - run: cat domeny-otchet.md >> "$GITHUB_STEP_SUMMARY"
+        if: always()
