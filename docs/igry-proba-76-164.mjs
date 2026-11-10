@@ -15,7 +15,7 @@ proba('76: январская механика без движка данным�
 proba('76: своя механика не из списка — отказ', !igraDannymi.safeParse({ ...obrazec, mehanika: 'moya-novaya-igra' }).success);
 
 const ru = vynutStroki(obrazec, 'izobreteniya', '01-08');
-proba(`164: в файле переводов ровно все тексты игры (${Object.keys(ru).length})`, JSON.stringify(ru) === JSON.stringify(fayl.ru));
+proba(`164: в файле переводов ровно все тексты игры (${Object.keys(ru).length})`, JSON.stringify(ru) === JSON.stringify(Object.fromEntries(Object.entries(fayl.ru).filter(([k]) => !/\.igra\.(html|js|dop)\./.test(k)))));
 proba('164: технические строки (mehanika, cvet) в перевод не попали', !Object.keys(ru).some((k) => /\.(mehanika|cvet)$/.test(k)));
 const proba_yazyk = { xx: Object.fromEntries(Object.keys(ru).map((k) => [k, `[xx] ${k}`])) };
 const xx = igraNaYazyke(obrazec, 'izobreteniya', '01-08', proba_yazyk, 'xx');

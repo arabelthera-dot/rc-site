@@ -5,13 +5,25 @@
 // (нет <main> — на <body>) в копии HTML в памяти, файлы на диске те же. Идёт ПОСЛЕДНЕЙ, после minify.
 // Адрес в индексе — без base (/rc-site/): pagefind сам добавляет путь, где лежит его бандл (иначе /rc-site/rc-site/).
 // Ошибка pagefind — предупреждение, сборка не падает (поиск просто не появится).
+// Языки (п. 161): у каждой страницы в копии в памяти lang — язык её адреса (/zh-Hans/… → zh-Hans, без приставки — ru),
+// pagefind строит по индексу на язык и делит слова правилом языка: китайский и японский — сегментатором словаря
+// (сборка pagefind_extended), хинди и прочие — по пробелам и знакам. Поле поиска на странице берёт индекс её lang.
+// Пока готов один русский — индекс один и тот же, что был с forceLanguage 'ru'. Проба на 3 фразах — docs/perevod-standart.md, п. 161.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { razobratPut, yazyki } from '../lib/yazyki.mjs';
 
 export const poiskOn = () => process.env.RC_POISK === '1';
 
 const WANT = /^muzei\/[^/]+\/(?:den\/\d\d-\d\d\/)?index\.html$/;
+
+/** Метка языка страницы для pagefind: lang на <html> — язык адреса (rel — путь в dist без base). */
+export function langStranicy(html, rel) {
+  const code = razobratPut('/' + rel).code;
+  const bez = html.replace(/(<html\b[^>]*?)\s+lang=(?:"[^"]*"|'[^']*'|[^\s>]+)/i, '$1');
+  return bez.replace(/<html\b/i, `<html lang="${code}"`);
+}
 
 export default function poisk() {
   return {
@@ -23,21 +35,23 @@ export default function poisk() {
         const t0 = Date.now();
         try {
           const pagefind = await import('pagefind');
-          const { index, errors } = await pagefind.createIndex({ forceLanguage: 'ru' });
+          const { index, errors } = await pagefind.createIndex();
           if (!index) throw new Error(errors.join('; '));
           const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
             e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
           const ownNoindex = process.env.PUBLIC_NOINDEX !== '1';
           let n = 0, skip = 0;
-          for (const fp of walk(path.join(root, 'muzei'))) {
+          const papki = yazyki.map((y) => path.join(root, ...(y.code === 'ru' ? [] : [y.code]), 'muzei')).filter((d) => fs.existsSync(d));
+          for (const fp of papki.flatMap(walk)) {
             const rel = path.relative(root, fp).split(path.sep).join('/');
-            if (!WANT.test(rel)) continue;
+            if (!WANT.test(razobratPut('/' + rel).rest)) continue;
             let html = fs.readFileSync(fp, 'utf8');
             // Заглушка дня — noindex; в превью-сборке (PUBLIC_NOINDEX=1) noindex у всех, там отличаем по тексту.
             if ((ownNoindex && /<meta name="robots" content="noindex"/.test(html)) || /День готовится/.test(html)) { skip++; continue; }
             html = /<main\b/.test(html) ? html.replace(/<main\b/, '<main data-pagefind-body') : html.replace(/<body\b/, '<body data-pagefind-body');
             // Б9 (Р84): заголовок дня (имя героя, событие) весит больше слов текста — «Гагарин», «Попов» первыми.
             html = html.replace(/<h1\b(?![^>]*data-pagefind-weight)/, '<h1 data-pagefind-weight="10"');
+            html = langStranicy(html, rel);
             const r = await index.addHTMLFile({ url: '/' + rel.replace(/index\.html$/, ''), content: html });
             if (r.errors?.length) logger.warn(`${rel}: ${r.errors.join('; ')}`); else n++;
           }
