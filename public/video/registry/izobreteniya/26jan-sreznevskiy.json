@@ -1,32 +1,33 @@
 {
-  "title": "История в 48 секунд",
-  "note": "Кадры — подлинные: отчёт о полётах шара 1886 г. (Госкаталог), рисунок аэрофотоаппарата и портрет Срезневского из книги Г. Абрамова; два рисунка музея. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "title": "История в 50 секунд",
+  "intro": "Срезневский построил первую в мире камеру для съёмки с неба — в 1886-м с воздушного шара она сняла Кронштадт с 1100 метров.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42199882276) из сценария days/26jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy.mp4",
     "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 50.3,
-    "mb": 8.3
+    "mb": 7.9
   },
   "vertical": {
     "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 50.0,
-    "mb": 8.3
+    "sec": 50.3,
+    "mb": 8.7
   },
   "poster": {
     "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy-poster.jpg",
     "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy-poster.jpg",
-    "v": 1
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
