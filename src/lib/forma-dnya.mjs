@@ -72,6 +72,30 @@ export const prava = z.object({
   baza: baza.optional(),
   ssylka: z.string().url('ссылка картинки — адрес http(s)').optional(),
 });
+// Р733 (очереди 3 и 4): поля дня для игр, ролика, карты и 3D. 'net' — у дня этого нет, тоже ответ.
+const dolya = z.number().min(0).max(1);
+export const ramka = z.object({ x: dolya, y: dolya, w: dolya.optional(), h: dolya.optional() });
+const shirota = z.number().min(-90).max(90), dolgota = z.number().min(-180).max(180);
+// Место события (пп. 255, 256): id места словаря с koordinaty или своё место с координатами.
+export const mestoSobytiya = z.union([
+  z.string().regex(/^mesto:[a-z0-9-]+$/, 'mesto_sobytiya — «mesto:id» из src/data/slovar.json или {nazvanie, shirota, dolgota}'),
+  z.object({ nazvanie: str, shirota, dolgota }),
+]);
+const url = z.string().url('ссылка — адрес http(s)');
+// «Мой дед был там» (п. 197): база потомков — Память народа или Подвиг народа.
+export const BAZY_DEDA = ['pamyat-naroda', 'podvig-naroda'];
+export const polyaR733 = {
+  podskazki_igry: z.union([z.literal(NET), z.array(str).length(3, 'podskazki_igry — ровно 3 подсказки')]).optional(),
+  togda_sejchas: z.union([z.literal(NET), z.object({ togda: str, sejchas: str, otkuda: str, god: god })]).optional(),
+  moj_ded: z.union([z.literal(NET), z.object({ baza: z.enum(BAZY_DEDA, { message: `moj_ded.baza — ${BAZY_DEDA.join(' | ')}` }), ssylka: url })]).optional(),
+  skvoznye_linii: z.union([z.literal(NET), z.array(nomer).min(1)]).optional(),
+  mesto_sobytiya: mestoSobytiya.optional(),
+  predmet_3d: z.union([z.literal(NET), z.object({ chto: str, opory: z.array(str).min(1), razmery: str })]).optional(),
+  panorama_360: z.union([z.literal(NET), z.object({ ssylka: url, otkuda: str })]).optional(),
+  staraya_karta: z.union([z.literal(NET), z.object({ nazvanie: str, god, otkuda: str, ssylka: url.optional() })]).optional(),
+  marshrut: z.union([z.literal(NET), z.array(z.object({ mesto: str, shirota, dolgota, chto: str })).min(2, 'marshrut — не меньше 2 точек')]).optional(),
+  kak_rabotaet: z.union([z.literal(NET), z.array(str).min(3).max(5, 'kak_rabotaet — 3–5 шагов')]).optional(),
+};
 // Поля формы у картинки (vid … izobrazheno); нет поля — как раньше.
 export const polyaKartinki = {
   vid: z.enum(VIDY, { message: `vid картинки — ${VIDY.join(' | ')}` }).optional(),
@@ -89,6 +113,8 @@ export const polyaKartinki = {
   // 26. Длинное описание схемы, карты, чертежа для незрячих (WAI, complex images): что и где на картинке, связи;
   // выводится под картинкой раскрывающимся «Подробное описание» и связано с ней aria-describedby.
   opisanie_dlinnoe: str.optional(),
+  // Р733 п.182: главное на картинке — точка (x, y) или рамка (x, y, w, h) в долях кадра 0–1, туда наезжает камера ролика.
+  glavnoe_na_kartinke: z.union([z.literal(NET), ramka]).optional(),
 };
 // Поля формы у факта (fakty.id … fakty.otvet_edinstvennyj): у карточки страницы факт — удар блока fakty.
 export const polyaFakta = {
@@ -97,6 +123,8 @@ export const polyaFakta = {
   dlya_voprosa: z.boolean().optional(),
   otvet: str.optional(),
   otvet_edinstvennyj: z.literal(true).optional(),
+  // Р733 п.257: сравнение числа факта с привычным («как 12 этажей»); в факте нет числа — 'net'.
+  sravnenie: z.union([z.literal(NET), str]).optional(),
 };
 // Р676 (Сергей 09.11: «переводи их в автоматизацию»): состав дня — полями формы, а не только словами навыков.
 // status: 'zagotovka' — день в работе, состав не обязателен; 'gotov' — вся форма и весь состав (10 + «Ещё» 5, полухуки,
@@ -137,6 +165,7 @@ export const polyaDnya = (slovar) => ({
   shkola: shkola.optional(),
   etiketka_oblozhki: z.array(str).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
   pokazan_sergeyu: pokazanSergeyu.optional(),
+  ...polyaR733,
   slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
     .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
 });
