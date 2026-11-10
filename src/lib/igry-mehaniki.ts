@@ -76,6 +76,25 @@ const triUsloviyaBulata = z.object({
 }).strict().superRefine((d, ctx) => d.usloviya.forEach((u, i) => ['start', 'verno'].forEach((k) => {
   if (!u.varianty.some((v) => v.kod === u[k as 'start' | 'verno'])) ctx.addIssue({ code: 'custom', path: ['usloviya', i, k], message: `${k}: «${u[k as 'start' | 'verno']}» нет среди variantov` });
 })));
+// «Подложи звенья под колёса» (первый день — 01-09 «Проведи воз по грязи», Блинов): воз вязнет на колёсах,
+// посетитель кладёт под колёса zvenev звеньев, цепь замыкается, тот же воз идёт; финал — сравнение и лента лет.
+// Сцена — рисунок холста без надписей (Р18): все слова — вёрсткой из dannye.
+const zvenyaShag = z.object({ zadanie_ru: str, poyasnenie_ru: str, status_ru: str, do_ru: str, hod_ru: str, smotri_ru: str, posle_ru: str }).strict();
+const zvenyaPodKolesom = z.object({
+  zvenev: z.number().int().min(3).max(12),
+  scena: z.object({ alt: str, mesto_ru: str.optional() }).strict(),
+  knopka_ehat_ru: str.default('Поехали'), knopka_zveno_ru: str.default('Звено'), iz_ru: str.default('из'),
+  uvyaz: zvenyaShag.extend({ soobshchenie_ru: str }).strict(),
+  zvenya: z.object({ zadanie_ru: str, poyasnenie_ru: str, status_ru: str, zveno_ru: str, zamknulos_ru: str }).strict(),
+  edet: zvenyaShag.extend({ soobshchenie_ru: str }).strict(),
+  final: z.object({
+    zadanie_ru: str, poyasnenie_ru: str, glavnoe_ru: str,
+    sravnenie: z.array(z.object({ chislo: str, tekst: str }).strict()).max(3).default([]),
+    lenta: z.array(z.object({ god: str, tekst: str }).strict()).max(8).default([]),
+    ochki: z.number().int().min(0).default(15),
+  }).strict(),
+  bez_skripta_ru: str,
+}).strict();
 
 // «Поставь каждому своё место» (первые дни — 02-01 «подпиши участки на карте мозга», 02-02 «один ствол — четыре снаряда»):
 // выбираешь подпись и ставишь её на место схемы или к цели; верная загорается, все на месте — победа.
@@ -159,7 +178,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'odin-progon-orlova': { den: '01-06', igra: 'stanok-orlova', slovami: 'Печатаешь розетку старым способом в три прогона и станком Орлова в один, а потом отличаешь настоящий билет от подделки' },
   'stezhki-v-takt-serdca': { den: '01-07', igra: 'sshey-shunt', slovami: 'Пережимаешь сосуд и 8 секунд смотришь ЭКГ, затем тапаешь по золотым точкам, которые движутся в такт сердцу (8 стежков)' },
   'razbey-ldiny-po-prochnosti': { den: '01-08', igra: 'probey-led', slovami: 'Тапаешь по 10 льдинам, у каждой своя прочность (1–3 удара), пока путь не будет открыт; потом быстрая викторина', dvizhok: true, dannye: razbeyLdiny },
-  'zvenya-pod-koleso': { den: '01-09', igra: 'blinov-gusenica', slovami: 'Телега вязнет; кладёшь под колёса 8 звеньев гусеницы и снова трогаешься, после чего открывается лента лет' },
+  'zvenya-pod-koleso': { den: '01-09', igra: 'blinov-gusenica', slovami: 'Телега вязнет; кладёшь под колёса 8 звеньев гусеницы и снова трогаешься, после чего открывается лента лет', dvizhok: true, dannye: zvenyaPodKolesom },
   'tri-usloviya-ldoloma': { den: '01-10', igra: 'nos-paylota', slovami: 'Выбираешь форму носа, способ идти на лёд и время выхода и проверяешь, пройдёт ли буксир; неудачи показывают причины', dvizhok: true, dannye: triUsloviyaLdoloma },
   'tri-usloviya-motora': { den: '01-11', igra: 'podnyat-motor', slovami: 'Выбираешь топливо и конструкцию двигателя и смотришь, поднимет ли он аппарат' },
   'paket-stupeney': { den: '01-12', igra: 'soberi-r7', slovami: 'Выбираешь схему ракеты (тандем или пакет) и сброс блоков и смотришь анимацию полёта' },
