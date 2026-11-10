@@ -15,7 +15,7 @@ import sharp from 'sharp';
 import { metrikaHtml } from '../lib/metrika.mjs';
 import { igrySchetOn, igrySchetHtml } from '../lib/igry-schet.mjs';
 import { privychkaOn, privychkaJs, blokZavtra } from '../lib/privychka.mjs';
-import { hreflangi, stroka, poUmolchaniyu, yazyk } from '../lib/yazyki.mjs';
+import { hreflangi, stroka, poUmolchaniyu, yazyk, golovaYazyka } from '../lib/yazyki.mjs';
 import { sitebarHtml, sitebarAssets, whenOfKey, podpiskaHtml } from '../lib/sitebar.mjs';
 import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
 import { failKalendarya } from '../lib/kalendar-dannye.mjs';
@@ -746,6 +746,9 @@ export default function fullPages() {
             {
               const lang = /<html\b[^>]*\slang=["']?([\w-]+)/i.exec(html)?.[1]?.split('-')[0] ?? poUmolchaniyu;
               html = html.replace(/<html\b([^>]*?)\s+dir=["']?[^"'\s>]*["']?/i, '<html$1').replace(/<html\b/i, `<html dir="${yazyk(lang).dir}"`);
+              // шрифт письма и кавычки языка (п.148, п.163, r726) — как у шаблонов (Base.astro); русской странице — пусто
+              const golova = golovaYazyka(yazyk(lang), base);
+              if (golova) html = html.replace(/<\/head>/i, `${golova}\n</head>`);
             }
             if (bez) html = html.replace(/\s*За (?:каждый )?верный ответ — \d+ очк[а-яё]* из 100\./g, '') // \w без флага u кириллицу не ловит
               .replace(/Для викторины и счёта нужен JavaScript; без него очки не начисляются\./g, 'Для викторины нужен JavaScript.');

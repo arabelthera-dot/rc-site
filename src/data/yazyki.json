@@ -1,15 +1,17 @@
 {
-  "_": "Языки сайта (план сайта, раздел Г, «да» Сергея 19.10.2026). Русский — без приставки адреса, прочие — /<code>/. Язык добавляется строкой; ready:true включает его пометки hreflang и флаг в переключателе. locale — для og:locale (язык_СТРАНА). code — тег BCP 47, письмо и страна — где без них неоднозначно (zh-Hans), docs/perevod-standart.md.",
+  "_": "Языки сайта (план сайта, раздел Г, «да» Сергея 19.10.2026). Русский — без приставки адреса, прочие — /<code>/. Язык добавляется строкой; ready:true включает его пометки hreflang и флаг в переключателе. locale — для og:locale (язык_СТРАНА). kavychki — кавычки языка [открыть, закрыть, внутренние открыть, закрыть] для CSS quotes, по CLDR (п.163, r726); code — тег BCP 47, письмо и страна — где без них неоднозначно (zh-Hans), docs/perevod-standart.md; shrift — свой шрифт письма из public/assets/fonts/noto/<shrift>.css, грузится только на страницах этого языка (п.148).",
   "poUmolchaniyu": "ru",
   "yazyki": [
-    { "code": "ru", "locale": "ru_RU", "name": "Русский", "flag": "🇷🇺", "country": "RU", "dir": "ltr", "ready": true },
-    { "code": "en", "locale": "en_GB", "name": "English", "flag": "🇬🇧", "country": "GB", "dir": "ltr", "ready": false },
-    { "code": "zh-Hans", "locale": "zh_CN", "name": "中文", "flag": "🇨🇳", "country": "CN", "dir": "ltr", "ready": false },
-    { "code": "es", "locale": "es_ES", "name": "Español", "flag": "🇪🇸", "country": "ES", "dir": "ltr", "ready": false },
-    { "code": "ar", "locale": "ar_SA", "name": "العربية", "flag": "🇸🇦", "country": "SA", "dir": "rtl", "ready": false },
-    { "code": "fr", "locale": "fr_FR", "name": "Français", "flag": "🇫🇷", "country": "FR", "dir": "ltr", "ready": false },
-    { "code": "de", "locale": "de_DE", "name": "Deutsch", "flag": "🇩🇪", "country": "DE", "dir": "ltr", "ready": false },
-    { "code": "pt", "locale": "pt_BR", "name": "Português", "flag": "🇧🇷", "country": "BR", "dir": "ltr", "ready": false },
-    { "code": "hi", "locale": "hi_IN", "name": "हिन्दी", "flag": "🇮🇳", "country": "IN", "dir": "ltr", "ready": false }
+    { "code": "ru", "locale": "ru_RU", "name": "Русский", "flag": "🇷🇺", "country": "RU", "dir": "ltr", "ready": true, "kavychki": ["«", "»", "„", "“"] },
+    { "code": "en", "locale": "en_GB", "name": "English", "flag": "🇬🇧", "country": "GB", "dir": "ltr", "ready": false, "kavychki": ["“", "”", "‘", "’"] },
+    { "code": "zh-Hans", "locale": "zh_CN", "name": "中文", "flag": "🇨🇳", "country": "CN", "dir": "ltr", "ready": false, "kavychki": ["“", "”", "‘", "’"], "shrift": "noto-sans-sc" },
+    { "code": "es", "locale": "es_ES", "name": "Español", "flag": "🇪🇸", "country": "ES", "dir": "ltr", "ready": false, "kavychki": ["«", "»", "“", "”"] },
+    { "code": "ar", "locale": "ar_SA", "name": "العربية", "flag": "🇸🇦", "country": "SA", "dir": "rtl", "ready": false, "kavychki": ["«", "»", "“", "”"], "shrift": "noto-sans-arabic" },
+    { "code": "fr", "locale": "fr_FR", "name": "Français", "flag": "🇫🇷", "country": "FR", "dir": "ltr", "ready": false, "kavychki": ["« ", " »", "“", "”"] },
+    { "code": "de", "locale": "de_DE", "name": "Deutsch", "flag": "🇩🇪", "country": "DE", "dir": "ltr", "ready": false, "kavychki": ["„", "“", "‚", "‘"] },
+    { "code": "pt", "locale": "pt_BR", "name": "Português", "flag": "🇧🇷", "country": "BR", "dir": "ltr", "ready": false, "kavychki": ["“", "”", "‘", "’"] },
+    { "code": "hi", "locale": "hi_IN", "name": "हिन्दी", "flag": "🇮🇳", "country": "IN", "dir": "ltr", "ready": false, "kavychki": ["“", "”", "‘", "’"], "shrift": "noto-sans-devanagari" },
+    { "code": "he", "locale": "he_IL", "name": "עברית", "flag": "🇮🇱", "country": "IL", "dir": "rtl", "ready": false, "kavychki": ["”", "”", "’", "’"] },
+    { "code": "fa", "locale": "fa_IR", "name": "فارسی", "flag": "🇮🇷", "country": "IR", "dir": "rtl", "ready": false, "kavychki": ["«", "»", "‹", "›"], "shrift": "noto-sans-arabic" }
   ]
 }

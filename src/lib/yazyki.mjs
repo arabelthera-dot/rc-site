@@ -97,6 +97,18 @@ export function chislo(code, n, key) {
   return formy[kat] ?? formy.other;
 }
 
+/** CSS-строки кавычек всех языков (п.163): :lang(fr){quotes:"« " " »" "“" "”"} … — одно правило из поля kavychki. */
+export const kavychkiCss = () =>
+  yazyki.filter((y) => y.kavychki).map((y) => `:lang(${y.code}){quotes:${y.kavychki.map((k) => JSON.stringify(k)).join(' ')}}`).join('');
+
+/** Добавка в <head> страницы не на русском (п.148, п.163): свой шрифт письма (поле shrift) и кавычки по языку.
+ *  Русской странице — пусто: её вид и разметка не меняются. */
+export function golovaYazyka(y, base = '/') {
+  if (y.code === poUmolchaniyu) return '';
+  const shrift = y.shrift ? `<link rel="stylesheet" href="${sBase(base)}assets/fonts/noto/${y.shrift}.css" data-rc-shrift>` : '';
+  return `${shrift}<style data-rc-kavychki>${kavychkiCss()}</style>`;
+}
+
 /** Число записью языка (Intl.NumberFormat, без разбивки на разряды): у русского — как String(n),
  *  у арабского — свои цифры, если их даёт правило языка. */
 export const chisloZapisyu = (code, n) => new Intl.NumberFormat(code, { useGrouping: false }).format(n);

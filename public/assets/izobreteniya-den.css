@@ -27,7 +27,7 @@
   .logo .lt{font-family:var(--shrift-playfair-display-georgia-serif);font-weight:700;font-size:var(--razmer-16px)}
   .logo .lt small{display:block;font-size:var(--razmer-9px);font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:var(--shrift-inter-sans-serif)}
   .score{background:var(--gold-g);border:1px solid var(--cvet-c9a84c-a30);border-radius:var(--skruglenie-24px);padding:6px 16px;font-size:var(--razmer-13px);color:var(--gold-l);cursor:pointer;font-family:var(--shrift-inter-sans-serif)}
-  .score-info{position:absolute;right:12px;top:66px;max-width:260px;background:var(--cvet-0e1c30);color:var(--ink);border:1px solid var(--card-b);border-radius:var(--skruglenie-14px);padding:14px 16px;font-size:var(--razmer-13px);line-height:1.6;box-shadow:0 20px 60px var(--cvet-000000-a60);display:none;z-index:40}
+  .score-info{position:absolute;inset-inline-end:12px;top:66px;max-width:260px;background:var(--cvet-0e1c30);color:var(--ink);border:1px solid var(--card-b);border-radius:var(--skruglenie-14px);padding:14px 16px;font-size:var(--razmer-13px);line-height:1.6;box-shadow:0 20px 60px var(--cvet-000000-a60);display:none;z-index:40}
   .score-info.show{display:block}
 
   /* ── HERO — СТАНДАРТ (не менять): 3D-сцена сверху, текст отдельным блоком ниже ── */
@@ -35,7 +35,7 @@
   .hero-scene canvas.scene,.hero-scene img.scene{width:100%;height:100%;display:block;object-fit:cover}
   .scene-caption{background:var(--cvet-060d18);padding:11px 0 12px}
   .scene-caption .wrap{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-  .scene-cap{font-size:var(--razmer-13-5px);line-height:1.6;color:var(--muted);border-left:2px solid var(--cvet-c9a84c-a40);padding-left:14px;flex:1 1 420px}
+  .scene-cap{font-size:var(--razmer-13-5px);line-height:1.6;color:var(--muted);border-inline-start:2px solid var(--cvet-c9a84c-a40);padding-inline-start:14px;flex:1 1 420px}
   .scene-hint{flex:0 0 auto;font-family:var(--shrift-inter-sans-serif);font-size:var(--razmer-12-5px);letter-spacing:.4px;color:var(--cvet-e4c97a);
     background:var(--cvet-c9a84c-a10);border:1px solid var(--cvet-c9a84c-a34);border-radius:var(--skruglenie-24px);padding:7px 16px;font-weight:600}
   .hero-lead{background:linear-gradient(180deg,var(--cvet-0c1826) 0%,var(--cvet-060c17) 100%);color:var(--cvet-ffffff);padding:28px 0 38px}
@@ -64,7 +64,7 @@
   .kicker{font-size:var(--razmer-10px);text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);font-weight:700;font-family:var(--shrift-inter-sans-serif);margin-bottom:8px}
   section.block h2{font-size:var(--razmer-34px);color:var(--cvet-ffffff);margin-bottom:10px}
   p{margin:14px 0;color:var(--ink)}
-  .pull{background:var(--gold-g);border-left:3px solid var(--gold);padding:18px 22px;border-radius:var(--skruglenie-0-14px-14px-0);font-style:italic;color:var(--gold-l);font-family:var(--shrift-playfair-display-georgia-serif);font-size:var(--razmer-20px);line-height:1.5;margin:26px 0}
+  .pull{background:var(--gold-g);border-inline-start:3px solid var(--gold);padding:18px 22px;border-radius:0;border-start-end-radius:var(--skruglenie-14px);border-end-end-radius:var(--skruglenie-14px);font-style:italic;color:var(--gold-l);font-family:var(--shrift-playfair-display-georgia-serif);font-size:var(--razmer-20px);line-height:1.5;margin:26px 0}
 
   /* ── КНОПКИ ── */
   .btn{cursor:pointer;border:none;border-radius:var(--skruglenie-12px);padding:14px 26px;font-size:var(--razmer-15px);font-weight:600;font-family:var(--shrift-inter-sans-serif);background:var(--accent2);color:var(--cvet-ffffff);transition:.18s;letter-spacing:.2px}
@@ -82,7 +82,7 @@
 
   /* ── КВИЗ ── */
   .noscript-box{background:var(--cvet-ffffff-a4);border:1px dashed var(--card-b);border-radius:var(--skruglenie-12px);padding:12px 16px;font-size:var(--razmer-15px)}
-  .opt{display:block;width:100%;text-align:left;background:var(--cvet-ffffff-a4);border:1px solid var(--card-b);border-radius:var(--skruglenie-12px);padding:13px 16px;margin:8px 0;cursor:pointer;font-size:var(--razmer-15px);color:var(--ink);font-family:var(--shrift-inter-sans-serif);transition:.16s}
+  .opt{display:block;width:100%;text-align:start;background:var(--cvet-ffffff-a4);border:1px solid var(--card-b);border-radius:var(--skruglenie-12px);padding:13px 16px;margin:8px 0;cursor:pointer;font-size:var(--razmer-15px);color:var(--ink);font-family:var(--shrift-inter-sans-serif);transition:.16s}
   .opt:hover{border-color:var(--accent);background:var(--cvet-2d8cbf-a8)}
   .opt.correct{background:var(--cvet-28783c-a18);border-color:var(--cvet-3f9b52);color:var(--cvet-7ed4a0);font-weight:600}
   .opt.wrong{background:var(--cvet-b42828-a13);border-color:var(--cvet-c0453f);color:var(--cvet-f08080)}
@@ -99,7 +99,7 @@
 
   /* ── РЕКЛАМНЫЕ СЛОТЫ ── */
   .ad-slot{position:relative;margin:26px 0;background:var(--cvet-ffffff-a2);border:1px dashed var(--cvet-ffffff-a10);border-radius:var(--skruglenie-14px);min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
-  .ad-slot .lbl{position:absolute;top:7px;right:12px;font-size:var(--razmer-9px);letter-spacing:2px;text-transform:uppercase;color:var(--cvet-ffffff-a15);font-family:var(--shrift-inter-sans-serif)}
+  .ad-slot .lbl{position:absolute;top:7px;inset-inline-end:12px;font-size:var(--razmer-9px);letter-spacing:2px;text-transform:uppercase;color:var(--cvet-ffffff-a15);font-family:var(--shrift-inter-sans-serif)}
   .ad-slot .ph-txt{font-size:var(--razmer-12px);max-width:80%;color:var(--cvet-ffffff-a18)}
   .ad-slot.billboard{min-height:108px}
   .adband{background:transparent;border-bottom:none}
@@ -119,7 +119,7 @@
   header.top .b2{font-size:var(--razmer-11px);color:var(--muted);margin-top:2px}
   header.top .b3{font-size:var(--razmer-11px);letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px}
   header.top .b4{font-size:var(--razmer-12-5px);color:var(--gold-l);font-family:var(--shrift-playfair-display-georgia-serif);font-style:italic}
-  header.top .score{position:absolute;right:12px;top:10px}
+  header.top .score{position:absolute;inset-inline-end:12px;top:10px}
   .daynav{top:0}
   .hero-scene{background:var(--cvet-0e1c2c);height:38vh;min-height:250px;max-height:400px}
   @media(max-width:680px){.hero-lead h1{font-size:var(--razmer-31px)}}
@@ -128,11 +128,11 @@
   .hero-lead .hook{color:var(--cvet-c6d8e8);max-width:62ch}
   .hero-under{background:linear-gradient(180deg,var(--cvet-060d18),var(--cvet-060c17));padding:4px 0 22px}
   .stamp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--cvet-7dc8ff-a28);margin-top:14px}
-  .stamp>div{padding:11px 12px;border-left:1px solid var(--cvet-7dc8ff-a16);min-width:0}
-  .stamp>div:first-child{border-left:0}
+  .stamp>div{padding:11px 12px;border-inline-start:1px solid var(--cvet-7dc8ff-a16);min-width:0}
+  .stamp>div:first-child{border-inline-start:0}
   .stamp .v{font-size:var(--razmer-clamp-15px-3-4vw-21px);font-weight:700;color:var(--cvet-8fd3ff);line-height:1.1;overflow-wrap:anywhere}
   .stamp .k{font-size:var(--razmer-10px);letter-spacing:1.4px;text-transform:uppercase;color:var(--cvet-8fa5b9);margin-top:5px}
-  @media(max-width:600px){.stamp{grid-template-columns:repeat(2,minmax(0,1fr))}.stamp>div:nth-child(3){border-left:0}.stamp>div:nth-child(n+3){border-top:1px solid var(--cvet-7dc8ff-a16)}}
+  @media(max-width:600px){.stamp{grid-template-columns:repeat(2,minmax(0,1fr))}.stamp>div:nth-child(3){border-inline-start:0}.stamp>div:nth-child(n+3){border-top:1px solid var(--cvet-7dc8ff-a16)}}
 
   /* ── ЛЕНТА УДАРОВ (museum-inventions, вариант А; museum-core §5-бис) ── */
   .udary{list-style:none;margin:18px 0 0;padding:0;counter-reset:u}
@@ -146,17 +146,17 @@
   .udary details[open] .more-lbl .o{display:none}
   .udary details:not([open]) .more-lbl .c{display:none}
   .udary summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:var(--skruglenie-6px)}
-  .udary .det{margin:0 0 14px 44px;padding:12px 16px;background:var(--cvet-ffffff-a3-5);border-left:2px solid var(--cvet-c9a84c-a45);border-radius:var(--skruglenie-0-10px-10px-0);font-size:var(--razmer-15px);color:var(--cvet-d5e0ea)}
+  .udary .det{margin:0 0 14px;margin-inline-start:44px;padding:12px 16px;background:var(--cvet-ffffff-a3-5);border-inline-start:2px solid var(--cvet-c9a84c-a45);border-radius:0;border-start-end-radius:var(--skruglenie-10px);border-end-end-radius:var(--skruglenie-10px);font-size:var(--razmer-15px);color:var(--cvet-d5e0ea)}
   .udary .det p{margin:8px 0}
-  .udary .tag{display:inline-block;font-size:var(--razmer-11px);letter-spacing:1px;text-transform:uppercase;color:var(--cvet-1a0f00);background:var(--gold-l);border-radius:var(--skruglenie-6px);padding:1px 7px;margin-right:6px}
-  .udary .find{border-left:3px solid var(--gold);padding-left:8px}
+  .udary .tag{display:inline-block;font-size:var(--razmer-11px);letter-spacing:1px;text-transform:uppercase;color:var(--cvet-1a0f00);background:var(--gold-l);border-radius:var(--skruglenie-6px);padding:1px 7px;margin-inline-end:6px}
+  .udary .find{border-inline-start:3px solid var(--gold);padding-inline-start:8px}
   figure.fig{margin:18px 0}
   figure.fig img{max-width:100%;height:auto;border-radius:var(--skruglenie-10px);display:block}
   figure.fig figcaption{font-size:var(--razmer-13px);color:var(--muted);margin-top:6px;line-height:1.5}
   /* Кадр у своего факта (udary[].kadr, Р17): под строкой факта, с отступом номера; портретный — уже. */
-  .udary figure.fig{margin:4px 0 18px 44px;max-width:640px}
+  .udary figure.fig{margin:4px 0 18px;margin-inline-start:44px;max-width:640px}
   .udary figure.fig.portret{max-width:340px}
-  @media (max-width:600px){.udary figure.fig{margin-left:0}}
+  @media (max-width:600px){.udary figure.fig{margin-inline-start:0}}
   .src-note{font-size:var(--razmer-12px);color:var(--cvet-8fa5b9)}
 
   /* ── МОДЕЛЬ ДНЯ (главное предметное действие) ── */
@@ -165,12 +165,12 @@
   .border-box{background:var(--cvet-2d8cbf-a8);border:1px solid var(--cvet-2d8cbf-a30);border-radius:var(--skruglenie-14px);padding:16px 18px}
   .border-box b{color:var(--cvet-8fd3ff)}
   .ctx{width:100%;border-collapse:collapse;margin-top:14px;font-size:var(--razmer-14-5px)}
-  .ctx th,.ctx td{text-align:left;padding:9px 8px;border-top:1px solid var(--line);vertical-align:top}
+  .ctx th,.ctx td{text-align:start;padding:9px 8px;border-top:1px solid var(--line);vertical-align:top}
   .ctx th{color:var(--gold-l);font-weight:600;font-size:var(--razmer-12-5px);letter-spacing:.5px}
   .quiz-q{margin:18px 0 6px;font-weight:600}
   .sources a{color:var(--gold-l)}
   .sources li{margin:6px 0;font-size:var(--razmer-14px);color:var(--cvet-c8d6e2)}
-  @media(max-width:600px){header.top{padding:8px 64px 6px}header.top .score{top:8px;right:8px;padding:4px 10px;font-size:var(--razmer-12px)}header.top .b3{margin-top:3px}
+  @media(max-width:600px){header.top{padding:8px 64px 6px}header.top .score{top:8px;inset-inline-end:8px;padding:4px 10px;font-size:var(--razmer-12px)}header.top .b3{margin-top:3px}
     .hero-scene{height:26vh;min-height:200px;max-height:260px}.date-origin{font-size:var(--razmer-12px);margin:-8px 0 8px}.hero-lead{padding:18px 0 26px}.hero-lead .date-chip{margin-bottom:12px}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 
@@ -191,10 +191,10 @@
 .deepd[open] summary{margin-bottom:12px;opacity:.7}
 .deepd h3{font-family:var(--shrift-playfair-display-georgia-serif);color:var(--gold-l);font-size:var(--razmer-20px);margin:20px 0 6px}
 .src{font-size:var(--razmer-12px);color:var(--muted);opacity:.8;margin-top:14px}
-.chip{cursor:pointer;background:var(--cvet-ffffff-a5);border:1px solid var(--card-b);border-radius:var(--skruglenie-20px);padding:7px 16px;margin:4px 5px 4px 0;font-size:var(--razmer-13px);display:inline-block;color:var(--muted);font-family:var(--shrift-inter-sans-serif);transition:.16s}
+.chip{cursor:pointer;background:var(--cvet-ffffff-a5);border:1px solid var(--card-b);border-radius:var(--skruglenie-20px);padding:7px 16px;margin:4px 0;margin-inline-end:5px;font-size:var(--razmer-13px);display:inline-block;color:var(--muted);font-family:var(--shrift-inter-sans-serif);transition:.16s}
 .chip:hover{border-color:var(--gold);color:var(--gold)}
 .msg{margin:8px 0;padding:12px 16px;border-radius:var(--skruglenie-14px);max-width:88%;font-size:var(--razmer-15px)}
-.msg.you{background:var(--cvet-2d8cbf-a18);border:1px solid var(--cvet-2d8cbf-a28);margin-left:auto;text-align:right;color:var(--cvet-a8d4f0)}
+.msg.you{background:var(--cvet-2d8cbf-a18);border:1px solid var(--cvet-2d8cbf-a28);margin-inline-start:auto;text-align:end;color:var(--cvet-a8d4f0)}
 .msg.inv{background:var(--cvet-ffffff-a5);border:1px solid var(--card-b);color:var(--ink)}
 .fork-opt{background:var(--card);border:1px solid var(--card-b);border-radius:var(--skruglenie-14px);padding:16px 18px;margin:10px 0;cursor:pointer;transition:.18s;font-size:var(--razmer-15px)}
 .fork-opt:hover{border-color:var(--accent);background:var(--cvet-2d8cbf-a8)}
