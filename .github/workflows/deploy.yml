@@ -112,6 +112,8 @@ jobs:
       # Откат — убрать build-cmd и шаг «video-sajta», в msk — шаг «ролики обратно».
       # MEDIA_BASE (#2364, шаг 4): пусто — ролики со своего сервера, как раньше; https://media.russian-civilization.ru —
       # scripts/media-base.mjs переписывает ссылки mp4 на хранилище. Ставится переменной репо только после media.yml 108/108.
+      # Рамка зеркала (п.501, Р745): scripts/ramka-zerkala.mjs — копия на *.github.io не показывается внутри чужой
+      # страницы; на своём сервере скрипт молчит. Откат — убрать три строки ramka/csp из build-cmd.
       - uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
         env:
           MEDIA_BASE: ${{ vars.MEDIA_BASE }}
@@ -119,6 +121,9 @@ jobs:
           cache: false
           build-cmd: >-
             npm run build &&
+            node scripts/ramka-zerkala.mjs --proba &&
+            node tests/csp-strogiy.mjs &&
+            node scripts/ramka-zerkala.mjs dist &&
             mkdir -p video-sajta &&
             (cd dist && find . -type f -name '*.mp4' -print0 | xargs -0 -r cp --parents -p -t ../video-sajta) &&
             find dist -type f -name '*.mp4' -delete &&
