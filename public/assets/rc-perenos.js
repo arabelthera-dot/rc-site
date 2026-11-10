@@ -66,8 +66,29 @@
   function paket(tolkoGlavnoe) {
     return { sajt: 'russian-civilization.ru', v: 1, sohraneno: new Date().toISOString().slice(0, 10), dannye: sobrat(tolkoGlavnoe) };
   }
-  function b64(s) { return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
-  function izB64(s) { s = s.replace(/-/g, '+').replace(/_/g, '/'); return decodeURIComponent(escape(atob(s))); }
+  var AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+  // base64url своими руками: байты UTF-8 → 64 знака адреса, без '=' на конце
+  function b64(s) {
+    var b = new TextEncoder().encode(s), o = '', i, n;
+    for (i = 0; i < b.length; i += 3) {
+      n = (b[i] << 16) | ((b[i + 1] || 0) << 8) | (b[i + 2] || 0);
+      o += AZ[(n >> 18) & 63] + AZ[(n >> 12) & 63];
+      if (i + 1 < b.length) o += AZ[(n >> 6) & 63];
+      if (i + 2 < b.length) o += AZ[n & 63];
+    }
+    return o;
+  }
+  function izB64(s) {
+    s = s.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    var b = [], bit = 0, n = 0, i, v;
+    for (i = 0; i < s.length; i++) {
+      v = AZ.indexOf(s[i]);
+      if (v < 0) throw new Error('не base64');
+      n = ((n << 6) | v) & 0xffff; bit += 6;
+      if (bit >= 8) { bit -= 8; b.push((n >> bit) & 255); }
+    }
+    return new TextDecoder().decode(new Uint8Array(b));
+  }  // /izB64
 
   $('[data-fajl]').addEventListener('click', function () {
     var p = paket(false), blob = new Blob([JSON.stringify(p, null, 1)], { type: 'application/json' });
