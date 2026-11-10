@@ -14,7 +14,7 @@
 Установка без root (проверено 10.11.2026, Debian 12):
   ~/.venvs/agent311/bin/pip install tesserocr        # колесо уже содержит tesseract 5.5.3 + leptonica
   # словари tessdata_best (github.com/tesseract-ocr/tessdata_best) → ~/.local/share/tessdata/{rus,bel,eng}.traineddata
-  # pdf — нужен pymupdf (pip install pymupdf), иначе pdf пропускается с сообщением
+  # pdf — нужен pymupdf (pip install pymupdf), иначе выход с сообщением
 
   ~/.venvs/agent311/bin/python tools/skan-tekst.py public/muzei/izobreteniya/img/01-16-gazeta-17-yanvarya.jpg
   ~/.venvs/agent311/bin/python tools/skan-tekst.py papka/ --yazyki rus+eng --zanovo
