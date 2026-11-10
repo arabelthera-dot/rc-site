@@ -1,5 +1,5 @@
 {
-  "_": "Строки общего шаблона (подвал, «Подписаться») по языку, Г20. Нет строки у языка — берётся русская. Переводы не-русских языков — ПРОБА (черновые, не вычитаны), пока язык ready:false в yazyki.json. Формы числа (…Formy) — по категориям Intl.PluralRules языка (one/few/many/other…), выбирает chislo() в yazyki.mjs. den… — служебные подписи страницы дня dni-shablon (пункты меню по id, викторина, итог, аудиогид, ролик): нет поля в карточке — берётся отсюда (src/lib/den-obshchee.mjs, п. 54).",
+  "_": "Строки общего шаблона (подвал, «Подписаться») по языку, Г20. Нет строки у языка — берётся русская. Переводы не-русских языков — ПРОБА (черновые, не вычитаны), пока язык ready:false в yazyki.json. Формы числа (…Formy) — по категориям Intl.PluralRules языка (one/few/many/other…), выбирает chislo() в yazyki.mjs; строку с числом собирает sChislom() (число — Intl.NumberFormat языка, п. 143). mashinnyPerevod… — пометка на переведённой машиной странице (п. 151), переводы en/ar/zh — Argos Translate. den… — служебные подписи страницы дня dni-shablon (пункты меню по id, викторина, итог, аудиогид, ролик): нет поля в карточке — берётся отсюда (src/lib/den-obshchee.mjs, п. 54).",
   "ru": {
     "slogan": "Цивилизация первенств — что Россия дала миру раньше всех",
     "vGorod": "в город-музей",
@@ -91,6 +91,16 @@
       "many": "записей",
       "other": "записи"
     },
+    "nZapisey": "{n} {zapisey}",
+    "muzeevFormy": {
+      "one": "музей",
+      "few": "музея",
+      "many": "музеев",
+      "other": "музея"
+    },
+    "nMuzeev": "{n} {muzeev}",
+    "mashinnyPerevod": "Эта страница переведена машиной с русского языка.",
+    "mashinnyPerevodOriginal": "Оригинал на русском языке",
     "kalTitle": "Календарь музея · {t}",
     "kalOpisanie": "{t}: все дни года — дата, событие и короткий рассказ.",
     "kalZdes": "Календарь",
@@ -313,6 +323,16 @@
     "predKr": "السابق",
     "vseDni": "كل الأيام",
     "sledKr": "التالي",
-    "muzeyProdolzhaetsya": "المتحف يتواصل"
+    "muzeyProdolzhaetsya": "المتحف يتواصل",
+    "mashinnyPerevod": "هذه الصفحة ترجمت بواسطة آلة من الروسية",
+    "mashinnyPerevodOriginal": "الأصل بالروسية"
+  },
+  "en": {
+    "mashinnyPerevod": "This page was translated by machine from Russian.",
+    "mashinnyPerevodOriginal": "Original in Russian"
+  },
+  "zh": {
+    "mashinnyPerevod": "本页由机器翻译自俄文。",
+    "mashinnyPerevodOriginal": "原文为俄文"
   }
 }

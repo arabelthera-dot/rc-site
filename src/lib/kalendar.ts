@@ -5,10 +5,11 @@ import tlsNedoverie from '../data/tls-nedoverie.json';
 // длина месяцев невисокосного года: у недатированного музея «ДД» — номер записи в месяце
 export const YEAR = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-export const plural = (n: number, one: string, few: string, many: string) => {
-  const n10 = n % 10, n100 = n % 100;
-  return n10 === 1 && n100 !== 11 ? one : n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20) ? few : many;
-};
+// форма русского слова при числе — по правилу языка Intl.PluralRules (п. 143), а не своим счётом остатков;
+// страницам на других языках — chislo()/sChislom() из src/lib/yazyki.mjs со словарём src/data/stroki.json
+const PRAVILO_RU = new Intl.PluralRules('ru');
+export const plural = (n: number, one: string, few: string, many: string) =>
+  ({ one, few, many } as Record<string, string>)[PRAVILO_RU.select(n)] ?? few;
 
 // календарь датированный, если в calendar-meta не сказано dated:false (нет файла — датированный)
 export const isDated = (slug: string) => {
