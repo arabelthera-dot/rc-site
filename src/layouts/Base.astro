@@ -6,7 +6,7 @@ import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
 import Metrika from '../components/Metrika.astro';
 import Yazyki from '../components/Yazyki.astro';
-import { yazyk, razobratPut, hreflangi, ogLocale, stroka, strelkaVpered, poUmolchaniyu, putNaYazyke } from '../lib/yazyki.mjs';
+import { yazyk, razobratPut, hreflangi, svyazPerevoda, ogLocale, stroka, strelkaVpered, poUmolchaniyu, putNaYazyke } from '../lib/yazyki.mjs';
 import { estPerevod } from '../lib/gotovnost-perevoda.mjs';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles, razvernut } from '../lib/shrifty.mjs';
@@ -101,11 +101,14 @@ const vz = znak(museum ?? pv.museum, pv.key);
 const rod = roditelyu(museum ?? pv.museum, pv.key);
 const age = typicalAgeRange(vz);
 const ldVse = kind === 'article' && (sobytie || proizvedeniya.length) ? [ld, sobytie, ...proizvedeniya].filter(Boolean) : ld;
-const ldAge = Array.isArray(ldVse) ? ldVse.map((o) => (['WebSite', 'WebPage', 'Article'].includes(o['@type']) ? { ...o, typicalAgeRange: age } : o))
-  : { ...ldVse, typicalAgeRange: age };
+// Связь перевода с оригиналом (п. 150): translationOfWork у перевода, workTranslation у русской — у узла самой страницы
+// (url = адрес страницы); перевода у страницы нет — пусто, разметка прежняя (src/lib/yazyki.mjs, svyazPerevoda).
+const perevodLd = (o) => (o.url === url ? { ...o, ...svyazPerevoda(Astro.url.pathname, base, Astro.site, o['@type']) } : o);
+const ldAge = Array.isArray(ldVse) ? ldVse.map((o) => perevodLd(['WebSite', 'WebPage', 'Article'].includes(o['@type']) ? { ...o, typicalAgeRange: age } : o))
+  : perevodLd({ ...ldVse, typicalAgeRange: age });
 const ldJson = JSON.stringify(ldAge).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
-// hreflang — только готовые языки (ready:true) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
+// hreflang — русский, языки перевода страницы (src/lib/yazyki.mjs, yazykiStranicy) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
 // У страницы дня — ещё и только языки с готовым переводом этого дня (п. 147, src/lib/gotovnost-perevoda.mjs).
 const alternates = bezAdresa ? [] : hreflangi(Astro.url.pathname, base, Astro.site)
   .filter((a) => !(den && museum) || estPerevod(museum, den.key, a.hreflang));
