@@ -87,6 +87,23 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+      # Кэш сборки (Р737 п.7а) — тот же путь и ключ, что в proverka.yml: заявки берут кэш, сохранённый здесь на main.
+      # Кадры пересылки rc-og-den, картинки rc-kartinki, плитки лупы rc-dz и кэш Astro ключуются хешем содержимого.
+      # Восстанавливается до withastro/action: там npm install (не ci), папки на точку в node_modules он не трогает.
+      # Свой кэш Astro у withastro/action выключен (cache: false) — он лишь дублировал бы node_modules/.astro.
+      # Как в мире — docs.github.com «Caching dependencies». Откат — удалить шаг и строку cache: false.
+      - name: кэш сборки — og, картинки, лупа, Astro
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            node_modules/.astro
+            node_modules/.cache/rc-og-den
+            node_modules/.cache/rc-kartinki
+            node_modules/.cache/rc-dz
+          key: rc-sborka-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'public/**') }}
+          restore-keys: |
+            rc-sborka-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+            rc-sborka-${{ runner.os }}-
       # Ролики — только со своего сервера (Р263, Сергей 26.10.2026; заявка r284): Pages — 1 ГБ на сайт, сборка
       # с роликами упёрлась в 950 МБ. После сборки все *.mp4 переносятся (не удаляются) из dist/ в video-sajta/ с теми
       # же путями: в артефакт github-pages (выкладка Pages) уходит сборка без роликов, ролики — отдельным артефактом
@@ -99,6 +116,7 @@ jobs:
         env:
           MEDIA_BASE: ${{ vars.MEDIA_BASE }}
         with:
+          cache: false
           build-cmd: >-
             npm run build &&
             mkdir -p video-sajta &&

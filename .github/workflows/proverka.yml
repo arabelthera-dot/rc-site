@@ -17,6 +17,64 @@ concurrency:
 
 
 jobs:
+  # Фильтр заявки (Р737 п.7б, 10.11.2026): заявка, которая трогает только машины и документы, полную сборку не ждёт.
+  # paths-ignore нельзя — sborka-i-ssylki обязательна в защите main, и заявка повисла бы «ожидает»; поэтому задания
+  # сборки пропускаются, а итог sborka-i-ssylki зелёный (GitHub Docs «Handling skipped but required checks»).
+  # Без сборки — только scripts/, tools/, docs/, .github/ (кроме этого файла) и *.md вне src/; скрипт, который зовут
+  # сборка или эта проверка (package.json, astro.config.mjs, src/, proverka.yml), и то, что он подключает, — со сборкой.
+  # Ручной запуск и заявка больше 3000 файлов — всегда со сборкой. Откат — убрать задание filtr и строки needs/if с ним.
+  filtr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      sborka: ${{ steps.f.outputs.sborka }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            package.json
+            astro.config.mjs
+            src
+            scripts
+            .github
+      - id: f
+        env:
+          GH_TOKEN: ${{ github.token }}
+          N: ${{ github.event.pull_request.number }}
+        run: |
+          if [ "${{ github.event_name }}" != pull_request ]; then echo "sborka=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          gh api "repos/$GITHUB_REPOSITORY/pulls/$N/files" --paginate -q '.[].filename' > /tmp/fajly.txt
+          vsego=$(wc -l < /tmp/fajly.txt)
+          # Скрипты сборки и проверки: названные в package.json, astro.config.mjs, src/, proverka.yml, и всё, что они
+          # подключают относительным импортом (./ и ../, до неподвижной точки).
+          grep -rhoE 'scripts/[A-Za-z0-9_./-]+\.(mjs|cjs|js|py|sh)' package.json astro.config.mjs src .github/workflows/proverka.yml \
+            | sort -u > /tmp/nuzhnye.txt
+          while :; do
+            for f in $(cat /tmp/nuzhnye.txt); do
+              if [ -f "$f" ]; then
+                grep -hoE "(from|import\() *'\.\.?/[^']+'" "$f" | grep -oE "\.\.?/[^']+" \
+                  | while read -r i; do realpath -m --relative-to=. "$(dirname "$f")/$i"; done || true
+              fi
+            done | cat - /tmp/nuzhnye.txt | sort -u > /tmp/nuzhnye2.txt
+            if cmp -s /tmp/nuzhnye.txt /tmp/nuzhnye2.txt; then break; fi
+            mv /tmp/nuzhnye2.txt /tmp/nuzhnye.txt
+          done
+          sborka=false
+          if [ "$vsego" -ge 3000 ]; then sborka=true; fi
+          while IFS= read -r f; do
+            case "$f" in
+              .github/workflows/proverka.yml) sborka=true ;;
+              scripts/*) if grep -qxF "$f" /tmp/nuzhnye.txt; then sborka=true; fi ;;
+              tools/*|docs/*|.github/*) ;;
+              src/*) sborka=true ;;
+              *.md) ;;
+              *) sborka=true ;;
+            esac
+            if [ "$sborka" = true ]; then echo "со сборкой: $f"; break; fi
+          done < /tmp/fajly.txt
+          echo "Файлов в заявке: $vsego; полная сборка: $sborka" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "sborka=$sborka" >> "$GITHUB_OUTPUT"
   bez-sborki:
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -43,6 +101,8 @@ jobs:
         timeout-minutes: 1
         run: node scripts/innerhtml-opis.mjs
   sborka:
+    needs: filtr
+    if: needs.filtr.outputs.sborka == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -56,6 +116,22 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Кэш сборки (Р737 п.7а): кадры пересылки rc-og-den (4220 карточек — ~2 мин заново), картинки rc-kartinki,
+      # плитки лупы rc-dz и кэш Astro. Все ключуются хешем содержимого внутри, так что чужой кэш не портит сборку,
+      # только экономит. Восстановление — после npm ci (он стирает node_modules). Заявка берёт кэш main (deploy.yml
+      # кладёт тот же путь и ключ). Как в мире — docs.github.com «Caching dependencies». Откат — удалить шаг.
+      - name: кэш сборки — og, картинки, лупа, Astro
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            node_modules/.astro
+            node_modules/.cache/rc-og-den
+            node_modules/.cache/rc-kartinki
+            node_modules/.cache/rc-dz
+          key: rc-sborka-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'public/**') }}
+          restore-keys: |
+            rc-sborka-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+            rc-sborka-${{ runner.os }}-
       # Г20: проверочная сборка включает арабскую пробу /ar/ (RC_PROBA_RTL=1) — её ссылки, разметка и вид проверяются
       # в каждой заявке. На живой сайт проба не попадает: deploy.yml собирает без этой переменной.
       - run: npm run build
@@ -88,15 +164,18 @@ jobs:
             dist/_astro
           retention-days: 3
       # dist одним tar без сжатия: права и символьные ссылки целы, загрузка — один файл, а не десятки тысяч.
+      # 3 дня, не 1 (Р737 п.8): этот же dist берёт list-priemki.yml (workflow_run), второй сборки нет. Сжатие не ставим:
+      # dist ~2,4 ГБ, почти всё — png/webp/jpg/mp3/mp4, уже сжатые (gzip -1 на локальном dist — минус 18% за 19 с).
       - run: tar -cf /tmp/dist.tar dist
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: dist
           path: /tmp/dist.tar
           compression-level: 0
-          retention-days: 1
+          retention-days: 3
   proverki-dist:
-    needs: sborka
+    needs: [filtr, sborka]
+    if: needs.filtr.outputs.sborka == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -123,7 +202,8 @@ jobs:
         timeout-minutes: 2
         run: node scripts/polnota.mjs --dist dist
   brauzer:
-    needs: sborka
+    needs: [filtr, sborka]
+    if: needs.filtr.outputs.sborka == 'true'
     runs-on: ubuntu-latest
     # 25, не 15 (27.10.2026): oshibki-js ~3,5, glazami ~2,5, Lighthouse обрывался на 15-й минуте (#515, #516, #520).
     # 45, не 25 (r561, 06.11.2026): prohod-igr проходит все игры и съедает свои 10; oshibki-js обрывался на 25-й (#876).
@@ -184,7 +264,7 @@ jobs:
         timeout-minutes: 4
         run: node scripts/kartinki-dnya.mjs --proba && node scripts/kartinki-dnya.mjs --dist dist
   sborka-i-ssylki:
-    needs: [bez-sborki, sborka, proverki-dist, brauzer]
+    needs: [filtr, bez-sborki, sborka, proverki-dist, brauzer]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -194,6 +274,10 @@ jobs:
           ITOG: ${{ toJSON(needs) }}
         run: |
           echo "$ITOG" | node -e 'const n=JSON.parse(require("fs").readFileSync(0,"utf8"));let plokho=0;
-            for (const [k,v] of Object.entries(n)) { console.log(k+": "+v.result); if (v.result!=="success") plokho=1; }
+            const bezSborki=n.filtr.result==="success"&&n.filtr.outputs.sborka==="false";
+            for (const [k,v] of Object.entries(n)) { console.log(k+": "+v.result);
+              if (v.result==="skipped"&&bezSborki&&["sborka","proverki-dist","brauzer"].includes(k)) continue;
+              if (v.result!=="success") plokho=1; }
+            if (bezSborki) console.log("заявка без сборки — только машины и документы (filtr)");
             if (plokho) { console.log("::error::proverka: не все задания зелёные — смотри задание с красным итогом выше"); process.exit(1); }'
   # Таблица = запись (план ядра, шаг 2; 19.10.2026): утверждённые таблицы года лежат в data/tablicy/
