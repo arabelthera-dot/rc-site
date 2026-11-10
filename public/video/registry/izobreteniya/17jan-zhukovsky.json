@@ -1,32 +1,33 @@
 {
   "title": "История в 55 секунд",
-  "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: Н. Е. Жуковский читает лекцию, его рукопись, лётчик П. Н. Нестеров, здание аэродинамической лаборатории ЦАГИ (Государственный центральный музей современной истории России); брошюра к 60-летию труда Жуковского «О присоединённых вихрях» (Центральный музей ВВС); испытание самолёта «Ньюпор XVII» в аэродинамической трубе Т-1-2 ЦАГИ (Научно-мемориальный музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+  "intro": "Жуковский первым в мире вывел, откуда берётся подъёмная сила крыла, — и авиация из авантюры стала наукой.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42200315328) из сценария days/17jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky.mp4",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 55.4,
-    "mb": 12.5
+    "sec": 55.2,
+    "mb": 11.6
   },
   "vertical": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 55.4,
-    "mb": 10.3
+    "sec": 55.2,
+    "mb": 9.7
   },
   "poster": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-poster.jpg",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
