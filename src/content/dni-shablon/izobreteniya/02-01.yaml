@@ -776,6 +776,32 @@ proof:
     title: «Владимир Михайлович Бехтерев — основоположник клинической психоневрологии»
     holder: КиберЛенинка
     source_url: https://cyberleninka.ru/article/n/vladimir-mihaylovich-behterev-osnovopolozhnik-klinicheskoy-psihonevrologii
+gde_uvidet:
+- chto: Фотография В. М. Бехтерева, 1917
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=4961767
+- chto: Книга «Основы учения о функциях мозга», выпуск IV, 1905
+  muzej: Кировский областной краеведческий музей им. П. В. Алабина
+  gorod: Киров
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=66434151
+- chto: Портрет В. М. Бехтерева, цинкография
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=25026537
+chitat_dalshe:
+- nazvanie: В. М. Бехтерев. «Проводящие пути спинного и головного мозга», часть первая
+  gde: Национальная электронная библиотека
+  ssylka: https://rusneb.ru/catalog/000199_000009_003962164/
+- nazvanie: В. М. Бехтерев. «Проводящие пути спинного и головного мозга», часть вторая
+  gde: Национальная электронная библиотека
+  ssylka: https://rusneb.ru/catalog/000199_000009_003962165/
+- nazvanie: 'Статья «В. М. Бехтерев и XXI век: к 150-летию со дня рождения учёного»'
+  gde: КиберЛенинка
+  ssylka: https://cyberleninka.ru/article/n/v-m-behterev-i-xxi-vek-k-150-letiyu-so-dnya-rozhdeniya-uchenogo
+- nazvanie: Статья «Владимир Михайлович Бехтерев — основоположник клинической психоневрологии»
+  gde: КиберЛенинка
+  ssylka: https://cyberleninka.ru/article/n/vladimir-mihaylovich-behterev-osnovopolozhnik-klinicheskoy-psihonevrologii
 istochniki:
 - id: cl-xxi-vek
   baza: nauka

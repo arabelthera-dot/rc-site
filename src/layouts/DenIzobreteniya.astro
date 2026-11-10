@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import { nePerevodit } from '../lib/perevod.mjs';
 import { q, json, chromeJs as chromeJsF, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml } from '../lib/den-razmetka.mjs';
 import { titleVkladki } from '../lib/title-vkladki.mjs';
+import { podlinnikChitatHtml } from '../lib/podlinnik-chitat.mjs';
 import { rolikRyadom } from '../lib/rolik-ryadom.mjs';
 import IgraRamka from '../components/den/IgraRamka.astro';
 const { d, museum } = Astro.props;
@@ -250,6 +251,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 </section><Fragment set:html={posle('result')} />
 
 
+<Fragment set:html={podlinnikChitatHtml(d)} />
 <section class="block" id="sources">
   <div class="wrap">
     <div class="kicker">Источники</div>
