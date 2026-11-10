@@ -1,11 +1,11 @@
 {
   "title": "История в 51 секунду",
   "intro": "Костович создал первый в мире дирижабль на жёстком каркасе — крупнее всех кораблей до него — и посадил людей прямо внутрь.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42043337499) из сценария days/29jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42877930881) из сценария days/29jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya.mp4",
     "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 51.3,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 51.3,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya-poster.jpg",
     "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
