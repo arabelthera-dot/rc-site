@@ -58,11 +58,75 @@ const ugolVKoridorLuny = z.object({
   if (!(d.ugol.min <= d.ugol.start && d.ugol.start <= d.ugol.max)) ctx.addIssue({ code: 'custom', path: ['ugol', 'start'], message: 'ugol.start — между min и max' });
   if (!(d.udar < d.koridor)) ctx.addIssue({ code: 'custom', path: ['udar'], message: 'udar меньше koridor' });
 });
+// «Три условия булата» (первый день — 01-03 «Тигель Аносова»): три условия по два варианта, первое неверное —
+// своя неудача и свой вид поверхности (ton — серый тон, uzor — сила узора 0–1), все верные — узор; blizhe — по желанию «под микроскопом».
+const vidPoverhnosti = z.object({ ton: z.number().int().min(0).max(255).default(112), uzor: z.number().min(0).max(1) }).strict();
+const triUsloviyaBulata = z.object({
+  usloviya: z.array(z.object({
+    kod: z.string().regex(/^[a-z]+$/), nazvanie: str,
+    varianty: z.array(z.object({ kod: z.string().regex(/^[a-z]+$/), tekst: str })).length(2),
+    start: z.string(), verno: z.string(),
+    neudacha: z.object({ kadr_ru: str, soobshchenie_ru: str, vid: vidPoverhnosti, ochki: z.number().int().min(0).default(5) }).strict(),
+  }).strict()).length(3),
+  pusk_ru: str, start_ru: str, zanovo_ru: str,
+  naydeno_ru: str.regex(/\{n\}/, 'naydeno_ru — с {n}'), kadr_start_ru: str,
+  pobeda: z.object({ kadr_ru: str, soobshchenie_ru: str, vid: vidPoverhnosti, ochki: z.number().int().min(0).default(30) }).strict(),
+  blizhe: z.object({ knopka_ru: str, holst_alt: str, podpis_ru: str, ochki: z.number().int().min(0).default(5) }).strict().optional(),
+  holst_alt: str, podpis_holsta_ru: str, bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => d.usloviya.forEach((u, i) => ['start', 'verno'].forEach((k) => {
+  if (!u.varianty.some((v) => v.kod === u[k as 'start' | 'verno'])) ctx.addIssue({ code: 'custom', path: ['usloviya', i, k], message: `${k}: «${u[k as 'start' | 'verno']}» нет среди variantov` });
+})));
+// «Подложи звенья под колёса» (первый день — 01-09 «Проведи воз по грязи», Блинов): воз вязнет на колёсах,
+// посетитель кладёт под колёса zvenev звеньев, цепь замыкается, тот же воз идёт; финал — сравнение и лента лет.
+// Сцена — рисунок холста без надписей (Р18): все слова — вёрсткой из dannye.
+const zvenyaShag = z.object({ zadanie_ru: str, poyasnenie_ru: str, status_ru: str, do_ru: str, hod_ru: str, smotri_ru: str, posle_ru: str }).strict();
+const zvenyaPodKolesom = z.object({
+  zvenev: z.number().int().min(3).max(12),
+  scena: z.object({ alt: str, mesto_ru: str.optional() }).strict(),
+  knopka_ehat_ru: str.default('Поехали'), knopka_zveno_ru: str.default('Звено'), iz_ru: str.default('из'),
+  uvyaz: zvenyaShag.extend({ soobshchenie_ru: str }).strict(),
+  zvenya: z.object({ zadanie_ru: str, poyasnenie_ru: str, status_ru: str, zveno_ru: str, zamknulos_ru: str }).strict(),
+  edet: zvenyaShag.extend({ soobshchenie_ru: str }).strict(),
+  final: z.object({
+    zadanie_ru: str, poyasnenie_ru: str, glavnoe_ru: str,
+    sravnenie: z.array(z.object({ chislo: str, tekst: str }).strict()).max(3).default([]),
+    lenta: z.array(z.object({ god: str, tekst: str }).strict()).max(8).default([]),
+    ochki: z.number().int().min(0).default(15),
+  }).strict(),
+  bez_skripta_ru: str,
+}).strict();
 
 // «Поставь каждому своё место» (первые дни — 02-01 «подпиши участки на карте мозга», 02-02 «один ствол — четыре снаряда»):
 // выбираешь подпись и ставишь её на место схемы или к цели; верная загорается, все на месте — победа.
 // kartinka — фон-схема без надписей (Р18), места на ней по x/y в процентах; без kartinka места идут плитками.
 const kod = z.string().regex(/^[a-z0-9-]+$/);
+// smeta-truboprovoda (01-05): выход = koef × множители уровней ползунков (множитель 0 — «стоит»), смета = сумма стоимостей.
+const urovenSmety = z.object({ podpis: str, mnozhitel: z.number().min(0), stoimost: z.number().min(0) }).strict();
+const smetaTruboprovoda = z.object({
+  vvod_ru: str.optional(),
+  plashki: z.array(z.object({ podpis: str, znachenie: str }).strict()).max(4).default([]),
+  koef: z.number().positive(), cel: z.number().positive(), smeta: z.number().positive(),
+  polzunki: z.array(z.object({
+    kod: z.string().regex(/^[a-z]+$/), nazvanie: str, podskazka: str.optional(),
+    start: z.number().int().min(0), urovni: z.array(urovenSmety).min(2).max(8),
+  }).strict()).min(1).max(4),
+  vyhod: z.object({ nazvanie: str, edinica: str, okruglenie: z.number().positive().default(1), nol_ru: str }).strict(),
+  stoimost: z.object({ nazvanie: str, edinica: str }).strict(),
+  cena: z.object({ nazvanie: str, edinica: str, mnozhitel: z.number().positive(), znakov: z.number().int().min(0).max(4).default(2) }).strict().optional(),
+  // Сцена — знаки (эмодзи) концов, станции и обхода; tolshchina и stancii — номера ползунков, без надписей (Р18).
+  scena: z.object({ nachalo: z.string().optional(), konec: z.string().optional(), stanciya: z.string().optional(), obhod: z.string().optional(),
+    tolshchina: z.number().int().min(0).optional(), stancii: z.number().int().min(0).optional() }).strict().default({}),
+  pusk_ru: str, start_ru: str,
+  popytki_ru: str.regex(/\{n\}/, 'popytki_ru — с {n}'), luchshaya_ru: str.regex(/\{c\}/, 'luchshaya_ru — с {c}'),
+  ishody: z.object({ nehvat_delitel: z.number().positive().default(1), nol_ru: str, malo_ru: str, dorogo_ru: str, pobeda_ru: str }).strict(),
+  ochki: z.array(z.object({ do_popytki: z.number().int().min(1), ochki: z.number().int().min(0) }).strict()).default([]),
+  ochki_potom: z.number().int().min(0).default(10),
+  primechanie_ru: str.optional(), bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  d.polzunki.forEach((p, i) => { if (p.start >= p.urovni.length) ctx.addIssue({ code: 'custom', path: ['polzunki', i, 'start'], message: `start ${p.start} — нет такого уровня` }); });
+  (['tolshchina', 'stancii'] as const).forEach((k) => { const v = d.scena[k]; if (v != null && v >= d.polzunki.length) ctx.addIssue({ code: 'custom', path: ['scena', k], message: `ползунка №${v} нет` }); });
+});
+
 const kazhdomuSvoyoMesto = z.object({
   kartinka: z.object({ src: str, alt: str, podpis_ru: str.optional() }).strict().optional(),
   mesta: z.array(z.object({
@@ -87,16 +151,34 @@ const kazhdomuSvoyoMesto = z.object({
   });
 });
 
+// nastroy-volnu-priyomnika (01-04): совпасть с волной приёмника komand раз; |ползунок − цель| < dopusk (шкала 1–100).
+const nastroyVolnuPriyomnika = z.object({
+  komand: z.number().int().min(1).max(10).default(3),
+  dopusk: z.number().min(1).max(20).default(4),
+  cel_ot: z.number().min(1).max(100).default(20), cel_do: z.number().min(1).max(100).default(80),
+  polzunok_start: z.number().min(1).max(100).default(8),
+  polzunok_ru: str, knopka_ru: str,
+  schet_ru: str.regex(/\{n\}/, 'schet_ru — с {n}'),
+  prinyato_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(15) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
   'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины' },
+  'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне', dvizhok: true, dannye: nastroyVolnuPriyomnika },
+  'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны' },
+  'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины', dvizhok: true, dannye: triUsloviyaBulata },
   'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне' },
-  'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету' },
+  'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету', dvizhok: true, dannye: smetaTruboprovoda },
   'odin-progon-orlova': { den: '01-06', igra: 'stanok-orlova', slovami: 'Печатаешь розетку старым способом в три прогона и станком Орлова в один, а потом отличаешь настоящий билет от подделки' },
   'stezhki-v-takt-serdca': { den: '01-07', igra: 'sshey-shunt', slovami: 'Пережимаешь сосуд и 8 секунд смотришь ЭКГ, затем тапаешь по золотым точкам, которые движутся в такт сердцу (8 стежков)' },
   'razbey-ldiny-po-prochnosti': { den: '01-08', igra: 'probey-led', slovami: 'Тапаешь по 10 льдинам, у каждой своя прочность (1–3 удара), пока путь не будет открыт; потом быстрая викторина', dvizhok: true, dannye: razbeyLdiny },
-  'zvenya-pod-koleso': { den: '01-09', igra: 'blinov-gusenica', slovami: 'Телега вязнет; кладёшь под колёса 8 звеньев гусеницы и снова трогаешься, после чего открывается лента лет' },
+  'zvenya-pod-koleso': { den: '01-09', igra: 'blinov-gusenica', slovami: 'Телега вязнет; кладёшь под колёса 8 звеньев гусеницы и снова трогаешься, после чего открывается лента лет', dvizhok: true, dannye: zvenyaPodKolesom },
   'tri-usloviya-ldoloma': { den: '01-10', igra: 'nos-paylota', slovami: 'Выбираешь форму носа, способ идти на лёд и время выхода и проверяешь, пройдёт ли буксир; неудачи показывают причины', dvizhok: true, dannye: triUsloviyaLdoloma },
   'tri-usloviya-motora': { den: '01-11', igra: 'podnyat-motor', slovami: 'Выбираешь топливо и конструкцию двигателя и смотришь, поднимет ли он аппарат' },
   'paket-stupeney': { den: '01-12', igra: 'soberi-r7', slovami: 'Выбираешь схему ракеты (тандем или пакет) и сброс блоков и смотришь анимацию полёта' },
