@@ -110,7 +110,12 @@ def sert_napryamuyu(domen):
 def reestr(domeny):
     """Выгрузка реестра блокировок (antifilter.download, обновляется раз в сутки): домен, его поддомены
     и адреса домена (ip.lst — отдельные адреса и подсети)."""
-    spisok = set(zapros('https://antifilter.download/list/domains.lst', tajmaut=180).decode('utf-8', 'replace').split())
+    # построчно, без множества на 1,8 млн строк: на раннере память не тратим
+    v_reestre, vsego = set(), 0
+    for x in zapros('https://antifilter.download/list/domains.lst', tajmaut=180).decode('utf-8', 'replace').split():
+        vsego += 1
+        if any(x == d or x.endswith('.' + d) for d in domeny):
+            v_reestre.add(x)
     adresa = {a for d in domeny for a in {i[4][0] for i in socket.getaddrinfo(d, 443, socket.AF_INET)}}
     seti = []
     for stroka in zapros('https://antifilter.download/list/ip.lst', tajmaut=180).decode().split():
@@ -118,10 +123,9 @@ def reestr(domeny):
             seti.append(ipaddress.ip_network(stroka, strict=False))
         except ValueError:
             pass
-    v_reestre = sorted(x for x in spisok if any(x == d or x.endswith('.' + d) for d in domeny))
     adresa_v = sorted(a for a in adresa if any(ipaddress.ip_address(a) in n for n in seti))
-    return {'domeny_v_reestre': v_reestre, 'adresa': sorted(adresa), 'adresa_v_reestre': adresa_v,
-            'zapisey_v_vygruzke': len(spisok)}
+    return {'domeny_v_reestre': sorted(v_reestre), 'adresa': sorted(adresa), 'adresa_v_reestre': adresa_v,
+            'zapisey_v_vygruzke': vsego}
 
 
 def main():
