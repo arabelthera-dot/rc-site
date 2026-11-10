@@ -13,6 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { razobratPut, yazyki } from '../lib/yazyki.mjs';
+import { vremyaOn, filtryDnya, metkiFiltrov } from '../lib/vremya.mjs';
 
 export const poiskOn = () => process.env.RC_POISK === '1';
 
@@ -49,6 +50,9 @@ export default function poisk() {
             // Заглушка дня — noindex; в превью-сборке (PUBLIC_NOINDEX=1) noindex у всех, там отличаем по тексту.
             if ((ownNoindex && /<meta name="robots" content="noindex"/.test(html)) || /День готовится/.test(html)) { skip++; continue; }
             html = /<main\b/.test(html) ? html.replace(/<main\b/, '<main data-pagefind-body') : html.replace(/<body\b/, '<body data-pagefind-body');
+            // п.497 (Р745): фильтры дня — век, музей, что в дне, место (src/lib/vremya.mjs); выключено без PUBLIC_VREMYA=1.
+            const den = /^muzei\/([^/]+)\/den\/(\d\d-\d\d)\//.exec(razobratPut('/' + rel).rest);
+            if (den && vremyaOn()) html = html.replace(/<(main|body) data-pagefind-body[^>]*>/, (m) => m + metkiFiltrov(filtryDnya(den[1], den[2])));
             // Б9 (Р84): заголовок дня (имя героя, событие) весит больше слов текста — «Гагарин», «Попов» первыми.
             html = html.replace(/<h1\b(?![^>]*data-pagefind-weight)/, '<h1 data-pagefind-weight="10"');
             html = langStranicy(html, rel);
