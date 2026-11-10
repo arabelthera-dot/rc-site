@@ -143,6 +143,8 @@ jobs:
           PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}
           PUBLIC_POCHTA_SPISOK: ${{ vars.PUBLIC_POCHTA_SPISOK }}
           RC_PROBA_RTL: '1'
+          # п.497 (Р745): проверочная сборка — со страницами /god/, /vek/ и фильтрами поиска; живой сайт (deploy.yml) — без.
+          PUBLIC_VREMYA: '1'
       # Р531, аудит п.15: сборка не оставляет грязной копии — всё, что она пишет, либо в dist, либо в .gitignore.
       # Новый сгенерированный файл в git → красный здесь, а не тихий шум в чужих заявках.
       - name: сборка не оставила грязной копии

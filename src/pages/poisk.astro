@@ -3,8 +3,10 @@
 // страница честно говорит «поиск готовится» и закрыта от поисковиков. Индекс — src/integrations/poisk.mjs.
 import Base from '../layouts/Base.astro';
 import { poiskOn } from '../integrations/poisk.mjs';
+import { vremyaOn } from '../lib/vremya.mjs';
 const base = import.meta.env.BASE_URL;
 const on = poiskOn();
+const filtry = vremyaOn();
 ---
 <Base title="Поиск — Русская цивилизация" description="Поиск по дням и экспонатам музеев «Русской цивилизации»" noindex={!on} schema="page">
   {on && <link slot="head" rel="stylesheet" href={`${base}pagefind/pagefind-ui.css`} />}
@@ -13,14 +15,16 @@ const on = poiskOn();
     {on ? <>
       <p>Слово, имя или изобретение — например, «Шухов» или «Сусанин».</p>
       <div id="poisk-data" aria-live="polite"></div>
-      <div id="poisk" data-base={base}></div>
+      <div id="poisk" data-base={base} data-filtry={filtry ? '1' : undefined}></div>
       <script is:inline src={`${base}pagefind/pagefind-ui.js`}></script>
       <script is:inline>
         // ?q= — запрос с формы страницы 404 (Б8, Р84)
         // Б9 (Р84): точное слово выше обрывка основы («Попов» ≠ «поп»), длина страницы почти не штрафует.
         var ui = new PagefindUI({ element: '#poisk', showSubResults: true, showImages: false,
           ranking: { termSimilarity: 6.0, termSaturation: 1.6, pageLength: 0.3 },
-          translations: { placeholder: 'Что ищем?', zero_results: 'По запросу «[SEARCH_TERM]» ничего не нашлось' } });
+          translations: { placeholder: 'Что ищем?', zero_results: 'По запросу «[SEARCH_TERM]» ничего не нашлось', filters_label: 'Отобрать', clear_search: 'Очистить' },
+          // п.497 (Р745): фильтры век, музей, что в дне, место — панель слева; без PUBLIC_VREMYA=1 их нет в индексе.
+          showEmptyFilters: false, openFilters: document.getElementById('poisk').hasAttribute('data-filtry') ? ['век', 'музей'] : [] });
         try { var q = new URLSearchParams(location.search).get('q'); if (q) ui.triggerSearch(q); } catch (e) {}
         // Б9 (Р84): запрос «число + месяц» («12 апреля») — сразу дни всех музеев на эту дату (те же segodnya/ММ-ДД.json, что у главной).
         (function () {
