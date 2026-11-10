@@ -108,3 +108,15 @@ export function golovaYazyka(y, base = '/') {
   const shrift = y.shrift ? `<link rel="stylesheet" href="${sBase(base)}assets/fonts/noto/${y.shrift}.css" data-rc-shrift>` : '';
   return `${shrift}<style data-rc-kavychki>${kavychkiCss()}</style>`;
 }
+
+/** Число записью языка (Intl.NumberFormat, без разбивки на разряды): у русского — как String(n),
+ *  у арабского — свои цифры, если их даёт правило языка. */
+export const chisloZapisyu = (code, n) => new Intl.NumberFormat(code, { useGrouping: false }).format(n);
+
+/** Строка key словаря с числом n (п. 143): {n} — число записью языка, второе место в скобках ({dney}, {zapisey}…) —
+ *  форма слова formyKey при n (chislo). Порядок слов задаёт строка языка, а не склейка «n + ' ' + слово» в шаблоне.
+ *  formyKey не дан — только число («День {n}»). */
+export function sChislom(code, key, n, formyKey) {
+  const s = stroka(code, key).replace('{n}', chisloZapisyu(code, n));
+  return formyKey ? s.replace(/\{[a-z]+\}/i, chislo(code, n, formyKey)) : s;
+}

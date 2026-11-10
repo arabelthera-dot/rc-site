@@ -1,12 +1,13 @@
 ---
 import { CSP } from '../lib/csp.mjs';
-interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; ogDescription?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; den?: { key: string; year?: string | number; images?: { src: string; caption: string; credit: string; generated?: boolean }[]; dated?: boolean }; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page' }
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; ogDescription?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; den?: { key: string; year?: string | number; images?: { src: string; caption: string; credit: string; generated?: boolean }[]; dated?: boolean }; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page'; bezPlashkiPerevoda?: boolean }
 const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
 import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
 import Metrika from '../components/Metrika.astro';
 import Yazyki from '../components/Yazyki.astro';
-import { yazyk, razobratPut, hreflangi, svyazPerevoda, ogLocale, stroka, strelkaVpered, golovaYazyka } from '../lib/yazyki.mjs';
+import { yazyk, razobratPut, hreflangi, svyazPerevoda, ogLocale, stroka, strelkaVpered, poUmolchaniyu, putNaYazyke, golovaYazyka } from '../lib/yazyki.mjs';
+import { estPerevod } from '../lib/gotovnost-perevoda.mjs';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles, razvernut } from '../lib/shrifty.mjs';
 import nastroyki from '../data/nastroyki.json';
@@ -108,7 +109,13 @@ const ldAge = Array.isArray(ldVse) ? ldVse.map((o) => perevodLd(['WebSite', 'Web
 const ldJson = JSON.stringify(ldAge).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
 // hreflang — русский, языки перевода страницы (src/lib/yazyki.mjs, yazykiStranicy) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
-const alternates = bezAdresa ? [] : hreflangi(Astro.url.pathname, base, Astro.site);
+// У страницы дня — ещё и только языки с готовым переводом этого дня (п. 147, src/lib/gotovnost-perevoda.mjs).
+const alternates = bezAdresa ? [] : hreflangi(Astro.url.pathname, base, Astro.site)
+  .filter((a) => !(den && museum) || estPerevod(museum, den.key, a.hreflang));
+// «Переведено машиной» (п. 151) — на каждой странице не на русском, на языке страницы, со ссылкой на русский оригинал,
+// как у Европарламента и ООН; русский вид не меняется. Перевод людьми — пропс bezPlashkiPerevoda.
+const plashkaPerevoda = lang.code !== poUmolchaniyu && !Astro.props.bezPlashkiPerevoda;
+const original = putNaYazyke(razobratPut(Astro.url.pathname, base).rest, poUmolchaniyu, base);
 const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
 // «Нашли ошибку?» (Д6, Р84; пакет 3 описи 22.10.2026) — в подвале каждой страницы, кроме страниц дня: у них своя строка
 // «Нашли ошибку? Сообщите нам» в подвале дня (src/lib/podval-dnya.mjs), второй не нужно. Письмо на nastroyki.pochtaOshibka
@@ -206,7 +213,7 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
       {crumbs.map((c) => (<> › {c.href ? <a href={c.href}>{c.label}</a> : <span>{c.label}</span>}</>))}
     </nav>
   )}
-  <main><slot /></main>
+  <main>{plashkaPerevoda && <p class="mashinnyy-perevod" role="note">{s('mashinnyPerevod')} <a href={original} hreflang={poUmolchaniyu}>{s('mashinnyPerevodOriginal')}</a></p>}<slot /></main>
   <Fragment set:html={podpiskaHtml(s('podpisatsya'))} />
   <footer>
     <div class="slog">{s('slogan')}</div>

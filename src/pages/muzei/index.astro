@@ -8,10 +8,10 @@ import InlineCss from '../../components/InlineCss.astro';
 import '../../styles/portal-base.css';
 import Vitrina from '../../components/portal/Vitrina.astro';
 import { getCollection } from 'astro:content';
+import { yazyk, razobratPut, sChislom } from '../../lib/yazyki.mjs';
 const base = import.meta.env.BASE_URL;
 const n = (await getCollection('museums')).length;
-const formy: Record<string, string> = { one: 'музей', few: 'музея', many: 'музеев', other: 'музея' };
-const muzeev = `${n} ${formy[new Intl.PluralRules('ru').select(n)]}`;
+const muzeev = sChislom(yazyk(razobratPut(Astro.url.pathname, base).code).code, 'nMuzeev', n, 'muzeevFormy');
 ---
 <Base portal schema="page" title="Все музеи — Русская цивилизация" ogTitle="Все музеи «Русской цивилизации»"
   image={`${base}og/index.jpg`} description={`Все музеи «Русской цивилизации» на одной странице — ${muzeev}: выберите музей и откройте его дни.`}>

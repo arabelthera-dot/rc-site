@@ -10,7 +10,7 @@ import { kalendarMuzeya } from '../../../lib/kalendar-dannye.mjs';
 import { YEAR, beyondYear, stripSrcPrefix } from '../../../lib/kalendar';
 import { mskIso } from '../../../lib/msk.mjs';
 import MskData from '../../../components/MskData.astro';
-import { yazyk, razobratPut, stroka, chislo, strelkaVpered, strelkaNazad } from '../../../lib/yazyki.mjs';
+import { yazyk, razobratPut, stroka, sChislom, strelkaVpered, strelkaNazad } from '../../../lib/yazyki.mjs';
 export async function getStaticPaths() {
   const days = await getCollection('days');
   return (await getCollection('museums'))
@@ -27,7 +27,7 @@ const podderzhka = import.meta.env.PUBLIC_PODDERZHKA !== '0';
 // Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key: string): any => stroka(lang.code, key);
-const zapisey = (n: number) => chislo(lang.code, n, 'zapisFormy');
+const zapisey = (n: number) => sChislom(lang.code, 'nZapisey', n, 'zapisFormy');
 // Состав карточки — как у старого календаря этого музея: механика и источник только там, где они
 // были (поле card в calendar-meta); отображение «запись → календарь» — src/lib/kalendar-dannye.mjs (и для полных страниц).
 const { cal, conf } = kalendarMuzeya(m.slug, days.map((d) => d.data), base);
@@ -56,11 +56,11 @@ const months = MON.map((name, i) => {
   const cells = Array.from({ length: mLen[i] }, (_, j) => {
     const k = pad(i + 1) + '-' + pad(j + 1), it = data[k];
     let lbl = it ? it.t : s('zapisGotovitsya');
-    if (!dated) lbl = s('denN').replace('{n}', String(j + 1)) + (it ? ' — ' + it.t : '');
+    if (!dated) lbl = sChislom(lang.code, 'denN', j + 1) + (it ? ' — ' + it.t : '');
     return { d: j + 1, k: it ? k : undefined, today: dated && k === tk, title: lbl.replace(/"/g, '') };
   });
   const cnt = cells.filter((c) => c.k).length;
-  return { name, cnt: cnt ? cnt + ' ' + zapisey(cnt) : '—', cells };
+  return { name, cnt: cnt ? zapisey(cnt) : '—', cells };
 });
 const extra = beyond.map((k) => ({ k, dd: +k.slice(3), mon: MON[+k.slice(0, 2) - 1], t: data[k].t }));
 // какой день движок откроет первым: сегодняшний, иначе ближайший вперёд по кругу года; у недатированного — первый
@@ -74,7 +74,7 @@ if (!dated) open = allKeys[0];
 else if (data[tk]) open = tk;
 else if (allKeys.length) {
   open = allKeys.reduce((a, k) => (ahead(k) < ahead(a) ? k : a), allKeys[0]);
-  note = s('blizhayshayaZapis').replace('{n}', String(ahead(open))).replace('{dney}', chislo(lang.code, ahead(open), 'dneyFormy'));
+  note = sChislom(lang.code, 'blizhayshayaZapis', ahead(open), 'dneyFormy');
 }
 const it = open ? data[open] : undefined;
 const when = open && (dated ? +open.slice(3) + ' ' + MONR[+open.slice(0, 2) - 1] + (open === tk ? ' · <b>' + s('segodnyaMal') + '</b>' : '')
@@ -90,12 +90,12 @@ const cardHtml = it ? '<div class="cdate">' + (note ? note + ' · ' : '') + when
   <header slot="header"><div class="b1">{m.title_ru}</div><h1>{s('kalH1')}</h1></header>
   {podderzhka && <div class="cal-supslot" data-support-slot></div>}
   <div id="calcard" set:html={cardHtml}></div>
-  <div id="calyear"><div class="calstat">{s('zapolnenoDney')} <b>{filled}</b> {s('iz')} {total} {beyond.length > 0 && ` · ${s('sverhGodaEshche').replace('{n}', String(beyond.length)).replace('{zapisey}', zapisey(beyond.length))}`}</div>{months.map((mo) => (
+  <div id="calyear"><div class="calstat">{s('zapolnenoDney')} <b>{filled}</b> {s('iz')} {total} {beyond.length > 0 && ` · ${sChislom(lang.code, 'sverhGodaEshche', beyond.length, 'zapisFormy')}`}</div>{months.map((mo) => (
     <section class="cmon"><h2>{mo.name}<span class="cnt">{mo.cnt}</span></h2><div class="cgrid">{mo.cells.map((c) => (
       c.k && data[c.k].href
         ? <a class:list={['cday', { full: true, today: c.today, on: c.k === open }]} href={data[c.k].href} data-k={c.k} title={c.title}>{c.d}</a>
         : <button class:list={['cday', { full: c.k, today: c.today, on: c.k && c.k === open }]} data-k={c.k} disabled={!c.k} title={c.title}>{c.d}</button>))}</div></section>))}{extra.length > 0 && (
-    <section class="cmon beyond"><h2>{s('sverhGoda')}<span class="cnt">{extra.length} {zapisey(extra.length)}</span></h2><div class="cgrid cgrid-wide">{extra.map((x) => (
+    <section class="cmon beyond"><h2>{s('sverhGoda')}<span class="cnt">{zapisey(extra.length)}</span></h2><div class="cgrid cgrid-wide">{extra.map((x) => (
       data[x.k].href
         ? <a class="cday full cextra" href={data[x.k].href} data-k={x.k} title={`${s('denMesyac').replace('{d}', String(x.dd)).replace('{m}', x.mon)} — ${x.t}`.replace(/"/g, '')}>{x.dd} · {x.mon}</a>
         : <button class="cday full cextra" data-k={x.k} title={`${s('denMesyac').replace('{d}', String(x.dd)).replace('{m}', x.mon)} — ${x.t}`.replace(/"/g, '')}>{x.dd} · {x.mon}</button>))}</div></section>)}</div>

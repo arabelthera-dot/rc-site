@@ -348,6 +348,12 @@
     if(C.peak && anchor === doc.querySelector(C.peak)){
       (anchor.querySelector('.wrap') || anchor).appendChild(peakHolder);
     } else {
+      /* якорь — пункт списка (.udary > li): блок кладём внутрь пункта, а не между пунктами —
+         div прямым ребёнком <ol>/<ul> ломает список для чтецов экрана (WCAG 1.3.1, axe «list»; 01-20 изобретений) */
+      if(/^(UL|OL)$/.test(anchor.parentNode.nodeName)){
+        if(anchor.dataset.supBefore) anchor.insertBefore(peakHolder, anchor.firstChild); else anchor.appendChild(peakHolder);
+        return;
+      }
       var host = anchor.parentNode;
       host.insertBefore(peakHolder, anchor.dataset.supBefore ? anchor : anchor.nextSibling);
       /* секция оказалась длинной и блок уехал вниз — ставим его ПЕРЕД секцией,
