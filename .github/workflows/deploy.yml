@@ -22,13 +22,14 @@ on:
 # deploy, сборка (npm-пакеты, скрипты заявки) выложить сайт сама не может. Откат — вернуть три строки сюда.
 permissions:
   contents: read
-# Выкладки — очередью, без отмены (Р676, 09.11.2026). Без queue GitHub держит в группе один ожидающий запуск и при новом
-# вливании отменяет его (9.11: 3fb34f3c, 782ddde1 отменены, живой сайт отставал). queue: max — до 100 ожидающих по
-# порядку, каждое вливание выкладывается (GitHub Docs, «Queueing multiple pending runs»). Откат — убрать строку queue.
+# Выкладки (Р676 → Р727, 10.11.2026): в группе один работающий и один ожидающий — самый свежий; новое вливание заменяет
+# ожидающий, и тот выкладывает main целиком со всеми прошлыми вливаниями (стандарт GitHub concurrency). queue: max
+# (9.11) ставил каждое вливание отдельной полной сборкой по ~16 мин подряд — 10.11 очередь из 13 выкладок отстала на 2,5 ч.
+# Дыра 9.11 (3fb34f3c, 782ddde1 не дошли) была в «nado»: расписание вытесняло ожидающее вливание и выходило, раз сегодня
+# уже собирали. Теперь расписание выходит, только если сегодня собран именно этот коммит main. Откат — вернуть queue: max.
 concurrency:
   group: pages
   cancel-in-progress: false
-  queue: max
 jobs:
   # «Уже собрано сегодня — выйти» (Б11, задача L): для запуска по расписанию и для ночного вызова извне
   # (workflow_dispatch с nochnaya=true) — есть ли с московской полуночи запуск этого же deploy.yml с успешной
@@ -52,14 +53,14 @@ jobs:
           polnoch=$(date -u -d "$(TZ=Europe/Moscow date +%F) 00:00 +0300" +%FT%TZ)
           echo "московская полночь — $polnoch UTC"
           runs=$(gh api -X GET "repos/$GITHUB_REPOSITORY/actions/workflows/deploy.yml/runs" -f created=">=$polnoch" -f status=success -f per_page=100 \
-            --jq ".workflow_runs[] | select(.id != $GITHUB_RUN_ID) | .id") || { echo "::warning::список запусков недоступен — собираем"; echo "sobrat=true" >> "$GITHUB_OUTPUT"; exit 0; }
+            --jq ".workflow_runs[] | select(.id != $GITHUB_RUN_ID and .head_sha == \"$GITHUB_SHA\") | .id") || { echo "::warning::список запусков недоступен — собираем"; echo "sobrat=true" >> "$GITHUB_OUTPUT"; exit 0; }
           for id in $runs; do
             if [ "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id/jobs" --jq '[.jobs[] | select(.name == "build" and .conclusion == "success")] | length')" != 0 ]; then
-              echo "сегодня по Москве сайт уже собран: запуск $id — выходим"
+              echo "сегодня по Москве этот коммит main уже собран: запуск $id — выходим"
               echo "sobrat=false" >> "$GITHUB_OUTPUT"; exit 0
             fi
           done
-          echo "сегодня по Москве сборки ещё не было — собираем"
+          echo "сегодня по Москве этот коммит main ещё не собирали — собираем"
           echo "sobrat=true" >> "$GITHUB_OUTPUT"
   build:
     needs: nado

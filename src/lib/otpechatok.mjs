@@ -29,3 +29,15 @@ export function ustarevshie(fayl) {
   }
   return out;
 }
+
+/** Готовность перевода дня (п. 147): { "<код>": "ГГГГ-ММ-ДД" } — языки, где переведена каждая русская строка
+ *  и ни одна не устарела; дата — сегодня, если язык писался в этот проход, иначе прежняя. */
+export function gotovnost(fayl, kody, segodnya, pisalis = new Set()) {
+  const staroe = new Set(ustarevshie(fayl).map((u) => u.code));
+  const out = {};
+  for (const code of kody) {
+    if (staroe.has(code) || !Object.keys(fayl.ru).every((k) => k in (fayl[code] ?? {}))) continue;
+    out[code] = pisalis.has(code) || !fayl._gotovo?.[code] ? segodnya : fayl._gotovo[code];
+  }
+  return out;
+}

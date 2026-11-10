@@ -1,6 +1,6 @@
 // Ролик и аудиогид из облака — на сайт заявкой (r538, Р524/Р525/Р529; корень «забыл ролик»).
 // Пять вопросов до изменения (Сергей, 28.09.2026):
-// Что задевает — public/muzei/<музей>/video/ (ролики, обложки), public/muzei/<музей>/<audioSrc>.mp3 (гид) и файл
+// Что задевает — public/muzei/<музей>/video/ (ролики, обложки, субтитры .vtt и текст .txt, если есть в выпуске), public/muzei/<музей>/<audioSrc>.mp3 (гид) и файл
 //   выпуска public/video/registry/<реестр>/<imya>.json; страницу дня не трогает (ключ video в дне уже указывает на выпуск).
 // Что нужно — выпуски rc-rolik: render.yml публикует vypusk-<день>-<прогон> (по полю sajt в days/<день>.json),
 //   audiogid.yml — vypusk-ag-<музей>-<день>-<прогон> (по muzei и audioguide.audioSrc дня); в каждом vypusk.json.
@@ -99,6 +99,13 @@ function primenit(teg) {
     } else {
       const VIDEO = `muzei/${m.muzei}/video`, { imya, mesto: vypusk } = m;
       for (const suf of ['', '-9x16']) for (const x of ['.mp4', '-poster.jpg']) vzyat(`day-${imya}${suf}${x}`, `${VIDEO}/day-${imya}${suf}${x}`);
+      // Субтитры WebVTT и текст ролика (r725 п.131, п.138) — необязательны: старые выпуски их не несут, страница без них как раньше.
+      for (const x of ['.vtt', '.txt']) {
+        const ot = path.join(tmp, `day-${imya}${x}`);
+        if (!fs.existsSync(ot)) continue;
+        if (x === '.vtt' && !fs.readFileSync(ot, 'utf8').startsWith('WEBVTT')) throw new Error(`${teg}: day-${imya}.vtt — не WebVTT`);
+        vzyat(`day-${imya}${x}`, `${VIDEO}/day-${imya}${x}`);
+      }
       const est = chitat(PUB).releases?.[vypusk];
       const v = est ? (est.horizontal?.v ?? 1) + 1 : 1; // новая версия — сбросить кэш у зрителя
       const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });

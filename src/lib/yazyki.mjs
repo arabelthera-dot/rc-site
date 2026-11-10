@@ -96,3 +96,15 @@ export function chislo(code, n, key) {
   const kat = new Intl.PluralRules(code).select(n);
   return formy[kat] ?? formy.other;
 }
+
+/** Число записью языка (Intl.NumberFormat, без разбивки на разряды): у русского — как String(n),
+ *  у арабского — свои цифры, если их даёт правило языка. */
+export const chisloZapisyu = (code, n) => new Intl.NumberFormat(code, { useGrouping: false }).format(n);
+
+/** Строка key словаря с числом n (п. 143): {n} — число записью языка, второе место в скобках ({dney}, {zapisey}…) —
+ *  форма слова formyKey при n (chislo). Порядок слов задаёт строка языка, а не склейка «n + ' ' + слово» в шаблоне.
+ *  formyKey не дан — только число («День {n}»). */
+export function sChislom(code, key, n, formyKey) {
+  const s = stroka(code, key).replace('{n}', chisloZapisyu(code, n));
+  return formyKey ? s.replace(/\{[a-z]+\}/i, chislo(code, n, formyKey)) : s;
+}

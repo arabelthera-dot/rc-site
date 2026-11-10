@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
-import { zapisatPerevod, ustarevshie } from '../src/lib/otpechatok.mjs';
+import { zapisatPerevod, ustarevshie, gotovnost } from '../src/lib/otpechatok.mjs';
 import { dlinnye } from '../src/lib/potolok-dliny.mjs';
 
 const KODY = JSON.parse(fs.readFileSync('src/data/yazyki.json', 'utf8')).yazyki.map((y) => y.code).filter((c) => c !== 'ru');
@@ -63,6 +63,8 @@ for (const { code } of zadachi) {
 }
 fs.mkdirSync('src/data/perevod', { recursive: true });
 for (const x of dni) {
+  // готовность языков (п. 147) — только у файла дня; файл строк игры её не несёт
+  if (x.kuda.startsWith('src/data/perevod/')) x.fayl._gotovo = gotovnost(x.fayl, KODY, new Date().toISOString().slice(0, 10), new Set(KODY.filter((c) => x.nado[c].length)));
   fs.writeFileSync(x.kuda, JSON.stringify(x.fayl, null, x.otstup) + '\n');
   const n = Object.keys(x.fayl.ru).length;
   console.log(`${x.id}: строк ${n}, переведено ${KODY.filter((c) => Object.keys(x.fayl[c] ?? {}).length === n).length} из ${KODY.length} языков (${KODY.join(', ')})`);
