@@ -4,7 +4,7 @@
 // bezZagolovka — на /muzei/ заголовок раздела уже в шапке страницы (h1), свой h2 витрине не нужен.
 import { getCollection } from 'astro:content';
 import { beyondYear, isDated } from '../../lib/kalendar';
-import { yazyk, razobratPut, stroka, chislo, strelkaVpered } from '../../lib/yazyki.mjs';
+import { yazyk, razobratPut, stroka, sChislom, strelkaVpered } from '../../lib/yazyki.mjs';
 interface Props { bezZagolovka?: boolean }
 const { bezZagolovka = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
@@ -41,7 +41,7 @@ let eager = 2; // первые обложки — без ленивой загр
             <div class="p-body">
               <h3>{c.title_ru}</h3>
               {c.promise_ru && <p>{c.promise_ru}</p>}
-              {c.n > 0 && <div class="p-st">{s('vKalendare').replace('{n}', String(c.n)).replace('{dney}', chislo(lang.code, c.n, 'dneyFormy'))}</div>}
+              {c.n > 0 && <div class="p-st">{sChislom(lang.code, 'vKalendare', c.n, 'dneyFormy')}</div>}
               {c.href && <span class="p-go" aria-hidden="true">{`${s('voytiVMuzey')} ${strelkaVpered(lang.dir)}`}</span>}
             </div>
           </Tag>

@@ -25,10 +25,12 @@ export function licName(text = '') {
   return '';
 }
 
+// форма слова — по правилу языка Intl.PluralRules (п. 143), а не своим счётом остатков
+const PRAVILO_RU = new Intl.PluralRules('ru');
+
 /** «1 кадр», «2 кадра», «5 кадров». */
 export function kadrov(n) {
-  const a = n % 10, b = n % 100;
-  return `${n} ${a === 1 && b !== 11 ? 'кадр' : a >= 2 && a <= 4 && (b < 12 || b > 14) ? 'кадра' : 'кадров'}`;
+  return `${n} ${{ one: 'кадр', few: 'кадра', many: 'кадров' }[PRAVILO_RU.select(n)] ?? 'кадра'}`;
 }
 
 const DAYS = 'src/content/days';
