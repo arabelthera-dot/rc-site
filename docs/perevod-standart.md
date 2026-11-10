@@ -85,3 +85,12 @@
   https://developers.google.com/search/docs/specialty/international/localized-versions
 - Выбор тега с письмом и страной (W3C): https://www.w3.org/International/articles/language-tags/
 - `translationOfWork` / `workTranslation`: https://schema.org/translationOfWork
+
+## 165. Оценка качества перевода машиной — подсказка
+
+`scripts/ocenka-perevoda.mjs` после перевода проходит файлы `src/data/perevod/*.json` и печатает замечания
+к строкам: `kirillica`, `pusto`, `musor` (`&quot;`, `<unk>`), `chisla` (число потерялось), `dlina`, `povtor`,
+`punkt` (латинские «,.» в китайском), `imya` (имя из словаря `--slovar`, по умолчанию `tools/perevod-proba/glossary.tsv`,
+нет файла — имена не проверяются). Сходство обратного перевода с русским не считается: проба п.142 показала, что оно
+обманывает. Итог идёт в сводку прогона `perevod.yml` и в тело заявки; код выхода всегда 0 — ничего не останавливает (Р627).
+Проверка на пробе 01-01: en Argos 0 / модель 1, zh Argos 50 / модель 5 замечаний.
