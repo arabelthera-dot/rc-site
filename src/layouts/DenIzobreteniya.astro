@@ -12,8 +12,10 @@ import fs from 'node:fs';
 import { nePerevodit } from '../lib/perevod.mjs';
 import { q, json, chromeJs as chromeJsF, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml } from '../lib/den-razmetka.mjs';
 import { titleVkladki } from '../lib/title-vkladki.mjs';
+import { rolikRyadom } from '../lib/rolik-ryadom.mjs';
 import IgraRamka from '../components/den/IgraRamka.astro';
 const { d, museum } = Astro.props;
+const rolik = rolikRyadom(d.video);
 const muzeyName = museum.title_ru;
 // Заголовок вкладки и og:title — из даты, года и события карточки (Р286 п.4); у пробы без них — как в карточке.
 const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
@@ -191,9 +193,11 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
          Путь ниже — запасной, на случай недоступного реестра. -->
     <video controls playsinline preload="none" poster={d.video.poster} data-rc-video={d.video.klyuch} data-rc-format={d.video.format} style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
       <source src={d.video.mp4} type="video/mp4">
+      {rolik.subtitry && <track kind="subtitles" src={rolik.subtitry} srclang="ru" label="Русский">}
       Ваш браузер не поддерживает видео.
     </video>
     <p style="font-size:13px;color:var(--muted);margin-top:10px"><Fragment set:html={d.video.note} /></p>
+    {rolik.tekst && (<details class="deepd" style="margin-top:14px"><summary>Текст ролика</summary>{rolik.tekst.map((x) => <p>{x}</p>)}</details>)}
   </div>
 </section>)}<Fragment set:html={posle('video')} />
 
