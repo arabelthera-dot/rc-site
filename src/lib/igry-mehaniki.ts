@@ -81,6 +81,33 @@ const triUsloviyaBulata = z.object({
 // выбираешь подпись и ставишь её на место схемы или к цели; верная загорается, все на месте — победа.
 // kartinka — фон-схема без надписей (Р18), места на ней по x/y в процентах; без kartinka места идут плитками.
 const kod = z.string().regex(/^[a-z0-9-]+$/);
+// smeta-truboprovoda (01-05): выход = koef × множители уровней ползунков (множитель 0 — «стоит»), смета = сумма стоимостей.
+const urovenSmety = z.object({ podpis: str, mnozhitel: z.number().min(0), stoimost: z.number().min(0) }).strict();
+const smetaTruboprovoda = z.object({
+  vvod_ru: str.optional(),
+  plashki: z.array(z.object({ podpis: str, znachenie: str }).strict()).max(4).default([]),
+  koef: z.number().positive(), cel: z.number().positive(), smeta: z.number().positive(),
+  polzunki: z.array(z.object({
+    kod: z.string().regex(/^[a-z]+$/), nazvanie: str, podskazka: str.optional(),
+    start: z.number().int().min(0), urovni: z.array(urovenSmety).min(2).max(8),
+  }).strict()).min(1).max(4),
+  vyhod: z.object({ nazvanie: str, edinica: str, okruglenie: z.number().positive().default(1), nol_ru: str }).strict(),
+  stoimost: z.object({ nazvanie: str, edinica: str }).strict(),
+  cena: z.object({ nazvanie: str, edinica: str, mnozhitel: z.number().positive(), znakov: z.number().int().min(0).max(4).default(2) }).strict().optional(),
+  // Сцена — знаки (эмодзи) концов, станции и обхода; tolshchina и stancii — номера ползунков, без надписей (Р18).
+  scena: z.object({ nachalo: z.string().optional(), konec: z.string().optional(), stanciya: z.string().optional(), obhod: z.string().optional(),
+    tolshchina: z.number().int().min(0).optional(), stancii: z.number().int().min(0).optional() }).strict().default({}),
+  pusk_ru: str, start_ru: str,
+  popytki_ru: str.regex(/\{n\}/, 'popytki_ru — с {n}'), luchshaya_ru: str.regex(/\{c\}/, 'luchshaya_ru — с {c}'),
+  ishody: z.object({ nehvat_delitel: z.number().positive().default(1), nol_ru: str, malo_ru: str, dorogo_ru: str, pobeda_ru: str }).strict(),
+  ochki: z.array(z.object({ do_popytki: z.number().int().min(1), ochki: z.number().int().min(0) }).strict()).default([]),
+  ochki_potom: z.number().int().min(0).default(10),
+  primechanie_ru: str.optional(), bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  d.polzunki.forEach((p, i) => { if (p.start >= p.urovni.length) ctx.addIssue({ code: 'custom', path: ['polzunki', i, 'start'], message: `start ${p.start} — нет такого уровня` }); });
+  (['tolshchina', 'stancii'] as const).forEach((k) => { const v = d.scena[k]; if (v != null && v >= d.polzunki.length) ctx.addIssue({ code: 'custom', path: ['scena', k], message: `ползунка №${v} нет` }); });
+});
+
 const kazhdomuSvoyoMesto = z.object({
   kartinka: z.object({ src: str, alt: str, podpis_ru: str.optional() }).strict().optional(),
   mesta: z.array(z.object({
@@ -128,7 +155,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны' },
   'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины', dvizhok: true, dannye: triUsloviyaBulata },
   'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне' },
-  'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету' },
+  'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету', dvizhok: true, dannye: smetaTruboprovoda },
   'odin-progon-orlova': { den: '01-06', igra: 'stanok-orlova', slovami: 'Печатаешь розетку старым способом в три прогона и станком Орлова в один, а потом отличаешь настоящий билет от подделки' },
   'stezhki-v-takt-serdca': { den: '01-07', igra: 'sshey-shunt', slovami: 'Пережимаешь сосуд и 8 секунд смотришь ЭКГ, затем тапаешь по золотым точкам, которые движутся в такт сердцу (8 стежков)' },
   'razbey-ldiny-po-prochnosti': { den: '01-08', igra: 'probey-led', slovami: 'Тапаешь по 10 льдинам, у каждой своя прочность (1–3 удара), пока путь не будет открыт; потом быстрая викторина', dvizhok: true, dannye: razbeyLdiny },
