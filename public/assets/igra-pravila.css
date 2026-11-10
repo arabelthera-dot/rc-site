@@ -18,7 +18,7 @@
   margin:18px 0 20px;
   padding:16px 16px 18px;
   border:1px solid color-mix(in srgb,var(--igra-acc) 55%,transparent);
-  border-left-width:4px;
+  border-inline-start-width:4px;
   border-radius:var(--radius,14px);
   background:color-mix(in srgb,currentColor 5%,transparent);
   font-family:var(--font-b,inherit);
@@ -48,13 +48,14 @@
   counter-increment:igra-shag;
   position:relative;
   margin:0 0 8px;
-  padding:0 0 0 38px;
+  padding:0;
+  padding-inline-start:38px;
   min-height:28px;
 }
 .igra-pravila .igra-pravila-shagi li::before{
   content:counter(igra-shag);
   position:absolute;
-  left:0;top:0;
+  inset-inline-start:0;top:0;
   width:28px;height:28px;
   border-radius:var(--skruglenie-50pct);
   background:var(--igra-acc);

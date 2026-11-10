@@ -6,7 +6,7 @@ import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
 import Metrika from '../components/Metrika.astro';
 import Yazyki from '../components/Yazyki.astro';
-import { yazyk, razobratPut, hreflangi, ogLocale, stroka, strelkaVpered } from '../lib/yazyki.mjs';
+import { yazyk, razobratPut, hreflangi, ogLocale, stroka, strelkaVpered, golovaYazyka } from '../lib/yazyki.mjs';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles, razvernut } from '../lib/shrifty.mjs';
 import nastroyki from '../data/nastroyki.json';
@@ -184,6 +184,8 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
   {metrika && <Metrika />}
   <slot name="head" />
   {!portal && <link rel="stylesheet" href={museumCss} />}
+  {/* шрифт письма и кавычки языка (п.148, п.163, r726) — только не на русском, из src/data/yazyki.json */}
+  <Fragment set:html={golovaYazyka(lang, base)} />
 </head>
 <body>
   <Yazyki />
