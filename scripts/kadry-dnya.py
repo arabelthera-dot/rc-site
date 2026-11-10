@@ -174,14 +174,6 @@ def proba():
     return 1 if zhdali else 0
 
 
-def kadr_metki():
-    import importlib.util
-    spec = importlib.util.spec_from_file_location('kartinki_metki', KOREN / 'scripts/kartinki-metki.py')
-    m = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(m)
-    return m
-
-
 def dopisat_figures(tekst, novye):
     """Дописать кадры в конец списка figures, не трогая остальной текст карточки."""
     blok = ''.join('    ' + s if i else '  - ' + s for k in novye
@@ -329,9 +321,6 @@ def dobor(a):
                                'width': kadr.width, 'height': kadr.height})
             if vzyali:
                 f.write_text(dopisat_figures(tekst, vzyali), encoding='utf-8')
-                km = kadr_metki()
-                for v in vzyali:  # п. 157: происхождение по IPTC внутри файла, из той же записи
-                    km.podpisat(KOREN / 'public' / v['src'].lstrip('/'), v['credit'], v['data_source'], v['license'])
         mozhno = min(nado, len(vzyali) if a.zapis else len(nashli))
         ok = n + mozhno >= MIN_KADROV
         zakryto += ok
