@@ -16,3 +16,4 @@
 .rc-pv-knopka:hover,.rc-pv-knopka:focus-visible{background:color-mix(in srgb,currentColor 16%,transparent)}
 .rc-pv-status{font-size:var(--razmer-14px);opacity:.85;overflow-wrap:anywhere}
 .rc-pv-skryto{position:fixed;top:0;left:0;width:1px;height:1px;opacity:0}
+.rc-pv-perenos{margin:10px 0 0;font-size:var(--razmer-15px);line-height:1.45}
