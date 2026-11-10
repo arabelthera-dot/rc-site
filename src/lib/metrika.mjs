@@ -61,6 +61,8 @@ const celiJs = `
     })(window,document);
 `;
 export const POLITIKA_URL = '/politika-konfidencialnosti/';
+// Согласие — отдельный документ (156-ФЗ, с 01.09.2025; Р745 п.495), ссылка на плашке рядом с «Принять»
+export const SOGLASIE_URL = '/soglasie/';
 export const metrikaJs = `(function(w,d){
   var KEY="rc-cookie",ID=${METRIKA_ID},started=0;
   function get(){try{return w.localStorage.getItem(KEY)}catch(e){return null}}
@@ -97,7 +99,7 @@ ${celiJs}  }
     var b=d.createElement("div");b.className="rc-cookie";b.setAttribute("role","region");b.setAttribute("aria-label","Согласие на cookie");
     // Р383: текст короче — на телефоне плашка одной полосой (~60 px), не пятая часть экрана; смысл и ссылка те же
     b.innerHTML='<p>Cookie и Яндекс Метрика: «Принять» — согласие на обработку этих данных '
-      +'(<a href="${POLITIKA_URL}">политика</a>).</p>'
+      +'(<a href="${SOGLASIE_URL}">согласие</a>, <a href="${POLITIKA_URL}">политика</a>).</p>'
       +'<div class="rc-cookie-b"><button type="button" class="da">Принять</button><button type="button" class="net" aria-label="Отказаться от cookie и Метрики">Нет</button></div>';
     // пока плашка видна, под ней резервируется место (html.rc-cookie-on, --rc-cookie-h): низ страницы и подвал не закрыты
     var h=d.documentElement;
