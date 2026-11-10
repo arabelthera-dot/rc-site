@@ -13,6 +13,25 @@ god_pokaza: 2027
 ves: glavnoe
 tyazhelaya_tema:
 - vojna
+gde_uvidet:
+- chto: 12-фунтовый «единорог» Михаила Данилова, 1757
+  muzej: Военно-исторический музей артиллерии, инженерных войск и войск связи
+  gorod: Санкт-Петербург
+  ssylka: https://ar.culture.ru/ru/subject/12-funtovyy-edinorog-1757-g
+- chto: Портрет графа П. И. Шувалова
+  muzej: Нижегородский государственный художественный музей
+  gorod: Нижний Новгород
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=4888970
+chitat_dalshe:
+- nazvanie: '«Практика единорогов, изобретённых артиллерии генерал-фельдцейхмейстером графом Петром Ивановичем Шуваловым»'
+  gde: Национальная электронная библиотека
+  ssylka: https://rusneb.ru/catalog/000200_000018_RU_NLR_A1_22223/
+- nazvanie: Г. Р. Державин. «На гаубицы, графом Шуваловым, и на конную артиллерию князем Зубовым введённые»
+  gde: Национальная электронная библиотека
+  ssylka: https://rusneb.ru/catalog/000199_000009_003861487_1000181119/
+- nazvanie: '«Пётр Иванович Шувалов (1711–1762)»'
+  gde: Президентская библиотека имени Б. Н. Ельцина
+  ssylka: https://www.prlib.ru/Great_Russia/outstanding_scientists_XVIII/Shuvalov
 istochniki:
 - id: ar-edinorog-1757
   baza: ar_culture

@@ -646,6 +646,29 @@ god_pokaza: 2027
 ves: glavnoe
 tyazhelaya_tema:
 - vojna
+gde_uvidet:
+- chto: Модель армейской повозки
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=4710449
+- chto: Топор плотницкий
+  muzej: Костромской государственный историко-архитектурный и художественный музей-заповедник
+  gorod: Кострома
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=38052433
+- chto: Ручная граната РГД-33
+  muzej: Центральный музей Великой Отечественной войны 1941–1945 гг.
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=494624
+chitat_dalshe:
+- nazvanie: Донесение о безвозвратных потерях, рядовой Овчаренко Дмитрий Романович
+  gde: ОБД «Мемориал»
+  ssylka: https://obd-memorial.ru/html/info.htm?id=56483295
+- nazvanie: '«Как красноармеец Дмитрий Овчаренко топором фашистов зарубил»'
+  gde: История государства
+  ssylka: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
+- nazvanie: '«Песец с топором. Как красноармеец Овчаренко в одиночку победил 50 фашистов»'
+  gde: '«Аргументы и факты»'
+  ssylka: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
 istochniki:
 - id: n1
   baza: pamyat_naroda

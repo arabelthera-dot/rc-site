@@ -141,6 +141,21 @@ export const vizualDannymi = z.object({
 // Показ Сергею до озвучки (museum-page-production, ход 2): аудиогид и ролик — только после «да» на текст.
 export const pokazanSergeyu = z.object({ data });
 // Поля формы у дня (nomer_dnya … slovar) — без fakty и images: у карточки страницы они свои (удары, кадры).
+// п.498: где увидеть подлинник — музей-хранитель, город, запись Госкаталога (если есть) или страница музея.
+const neViki = (u) => !wiki.test(u);
+export const gdeUvidet = z.object({
+  chto: str,
+  muzej: str,
+  gorod: str,
+  goskatalog: z.string().url().regex(/^https:\/\/goskatalog\.ru\//, 'goskatalog — адрес https://goskatalog.ru/…').optional(),
+  ssylka: z.string().url('ссылка — адрес http(s)').refine(neViki, 'Википедия запрещена (Р90)').optional(),
+});
+// п.498: что почитать дальше — бесплатные библиотеки и архивы (НЭБ, Президентская библиотека, Росархив); Википедия запрещена (Р90).
+export const chitatDalshe = z.object({
+  nazvanie: str.refine(neViki, 'Википедия запрещена (Р90)'),
+  gde: str,
+  ssylka: z.string().url('ссылка — адрес http(s)').refine(neViki, 'Википедия запрещена (Р90)'),
+});
 export const polyaDnya = (slovar) => ({
   nomer_dnya: nomer.optional(),
   data_sobytiya: data.optional(),
@@ -165,6 +180,9 @@ export const polyaDnya = (slovar) => ({
   shkola: shkola.optional(),
   etiketka_oblozhki: z.array(str).min(1).max(3, 'этикетка обложки — 1–3 строки').optional(),
   pokazan_sergeyu: pokazanSergeyu.optional(),
+  // п.498 (Р745): «Где увидеть подлинник» и «Что почитать дальше» — необязательные; нет поля — нет блока.
+  gde_uvidet: z.array(gdeUvidet).min(1).optional(),
+  chitat_dalshe: z.array(chitatDalshe).min(3, 'что почитать — 3–5 ссылок').max(5, 'что почитать — 3–5 ссылок').optional(),
   ...polyaR733,
   slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
     .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
