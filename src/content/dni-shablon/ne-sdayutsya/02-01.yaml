@@ -35,12 +35,22 @@ mesto_sobytiya:
   dolgota: 38.672
 podskazki_igry: net
 moj_ded: net
-togda_sejchas: net
+togda_sejchas:
+  togda: https://pastvu.com/p/877293
+  sejchas: https://kulpole.ru/places/memorial-na-krasnom-holme
+  otkuda: 'тогда — PastVu, № 877293, памятник-колонна Дмитрию Донскому на Красном холме, около 1890 года (из «Наше наследие» № 29–30, 1994); сейчас — музей-заповедник «Куликово поле», страница «Мемориал на Красном холме»'
+  god: 1890
 skvoznye_linii: net
 predmet_3d: net
-panorama_360: net
-staraya_karta: net
-marshrut: net
+panorama_360:
+  ssylka: https://yandex.ru/maps/?l=stv%2Csta&ll=38.672000%2C53.609000&panorama%5Bdirection%5D=0.000000%2C10.000000&panorama%5Bfull%5D=true&panorama%5Bpoint%5D=38.672079%2C53.608406&z=17
+  otkuda: Яндекс Панорамы, 2022 год — дорожка к памятнику-колонне на Красном холме
+staraya_karta:
+  nazvanie: Карта Шуберта Тульской губернии (трёхверстовка) — на месте отмечен «Памятникъ 1380»
+  god: 1874
+  otkuda: Это Место — etomesto.com
+  ssylka: https://etomesto.com/map-tula_trehverstovka/?y=53.609&x=38.672
+marshrut: net  # искал: в открытых источниках за этот заход подтвердил одну точку дня (Красный холм); путь войска Москва — Коломна — переправа через Дон по карточке дня не утверждён, вторую точку не брал
 etiketka_oblozhki:
   - Поединок Пересвета с Челубеем
   - Копия картины М. И. Авилова, 1952 год
