@@ -58,6 +58,24 @@ const ugolVKoridorLuny = z.object({
   if (!(d.ugol.min <= d.ugol.start && d.ugol.start <= d.ugol.max)) ctx.addIssue({ code: 'custom', path: ['ugol', 'start'], message: 'ugol.start — между min и max' });
   if (!(d.udar < d.koridor)) ctx.addIssue({ code: 'custom', path: ['udar'], message: 'udar меньше koridor' });
 });
+// «Три условия булата» (первый день — 01-03 «Тигель Аносова»): три условия по два варианта, первое неверное —
+// своя неудача и свой вид поверхности (ton — серый тон, uzor — сила узора 0–1), все верные — узор; blizhe — по желанию «под микроскопом».
+const vidPoverhnosti = z.object({ ton: z.number().int().min(0).max(255).default(112), uzor: z.number().min(0).max(1) }).strict();
+const triUsloviyaBulata = z.object({
+  usloviya: z.array(z.object({
+    kod: z.string().regex(/^[a-z]+$/), nazvanie: str,
+    varianty: z.array(z.object({ kod: z.string().regex(/^[a-z]+$/), tekst: str })).length(2),
+    start: z.string(), verno: z.string(),
+    neudacha: z.object({ kadr_ru: str, soobshchenie_ru: str, vid: vidPoverhnosti, ochki: z.number().int().min(0).default(5) }).strict(),
+  }).strict()).length(3),
+  pusk_ru: str, start_ru: str, zanovo_ru: str,
+  naydeno_ru: str.regex(/\{n\}/, 'naydeno_ru — с {n}'), kadr_start_ru: str,
+  pobeda: z.object({ kadr_ru: str, soobshchenie_ru: str, vid: vidPoverhnosti, ochki: z.number().int().min(0).default(30) }).strict(),
+  blizhe: z.object({ knopka_ru: str, holst_alt: str, podpis_ru: str, ochki: z.number().int().min(0).default(5) }).strict().optional(),
+  holst_alt: str, podpis_holsta_ru: str, bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => d.usloviya.forEach((u, i) => ['start', 'verno'].forEach((k) => {
+  if (!u.varianty.some((v) => v.kod === u[k as 'start' | 'verno'])) ctx.addIssue({ code: 'custom', path: ['usloviya', i, k], message: `${k}: «${u[k as 'start' | 'verno']}» нет среди variantov` });
+})));
 
 // «Поставь каждому своё место» (первые дни — 02-01 «подпиши участки на карте мозга», 02-02 «один ствол — четыре снаряда»):
 // выбираешь подпись и ставишь её на место схемы или к цели; верная загорается, все на месте — победа.
@@ -107,6 +125,9 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
   'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины' },
   'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне', dvizhok: true, dannye: nastroyVolnuPriyomnika },
+  'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны' },
+  'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины', dvizhok: true, dannye: triUsloviyaBulata },
+  'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне' },
   'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету' },
   'odin-progon-orlova': { den: '01-06', igra: 'stanok-orlova', slovami: 'Печатаешь розетку старым способом в три прогона и станком Орлова в один, а потом отличаешь настоящий билет от подделки' },
   'stezhki-v-takt-serdca': { den: '01-07', igra: 'sshey-shunt', slovami: 'Пережимаешь сосуд и 8 секунд смотришь ЭКГ, затем тапаешь по золотым точкам, которые движутся в такт сердцу (8 стежков)' },
