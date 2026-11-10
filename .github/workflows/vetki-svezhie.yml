@@ -8,6 +8,16 @@
 # Пять вопросов: задевает — только ветки заявок с автослиянием; нужно — github.token, права ниже;
 # без нужного — спит, соседей не роняет; проверка — ручной пуск на живой заявке; откат — удалить файл
 # или переменную. Выключатель — переменная VETKI_SVEZHIE (≠ '1' — спит).
+# Конфликт в дописываемом списке (r735, 10.11.2026). Корень «руками разбирают конфликты»: две заявки дописали по строке
+# в конец одного списка — заявка встаёт DIRTY, update-branch её не берёт. Шаг soyuz: ветке заявки с автослиянием —
+# git merge origin/main, файлам-спискам из .gitattributes (merge=union, только построчные списки, .ts/.mjs/.json/.md/.yml —
+# никогда) git сам оставляет обе строки. Слилось чисто — пуш в ветку, проверки идут заново; нет — merge --abort,
+# комментарий со списком конфликтных файлов и метка konflikt (комментарий — один раз, пока метка стоит).
+# Как в мире: git «union» merge driver (https://git-scm.com/docs/gitattributes#_built_in_merge_drivers) — им же
+# разводят CHANGELOG и списки в больших проектах. Пять вопросов: задевает — только ветки своих заявок с автослиянием;
+# нужно — SLIYANIE_TOKEN (пуш, где в слиянии есть правки .github/workflows: github.token их не пушит), без него —
+# github.token; без нужного — пуш отказан, заявке комментарий; проверка — ручной пуск при живой DIRTY-заявке;
+# откат — переменная VETKI_SOYUZ ≠ '1' (выключатель шага) или убрать строку из .gitattributes.
 name: vetki-svezhie
 on:
   push:
@@ -34,12 +44,65 @@ jobs:
     steps:
       - name: обновить отставшие заявки с автослиянием
         run: |
+          : > "$RUNNER_TEMP/nomera"
           nomera=$(gh pr list --state open --limit 50 --json number,autoMergeRequest,mergeStateStatus \
             -q '.[] | select(.autoMergeRequest != null and .mergeStateStatus == "BEHIND") | .number')
-          [ -n "$nomera" ] || { echo "Отставших заявок с автослиянием нет."; exit 0; }
+          [ -n "$nomera" ] || echo "Отставших заявок с автослиянием нет."
           for n in $nomera; do
-            gh pr update-branch "$n" && echo "#$n обновлена" || echo "::warning::#$n не обновилась (конфликт?)"
+            gh pr update-branch "$n" && { echo "#$n обновлена"; echo "$n" >> "$RUNNER_TEMP/nomera"; } \
+              || echo "::warning::#$n не обновилась (конфликт?)"
           done
+      - name: заявки с конфликтом — есть ли
+        id: dirty
+        if: vars.VETKI_SOYUZ == '1'
+        run: |
+          gh pr list --state open --limit 50 --json number,headRefName,autoMergeRequest,mergeStateStatus,isCrossRepository,labels \
+            -q '.[] | select(.autoMergeRequest != null and .mergeStateStatus == "DIRTY" and .isCrossRepository == false)
+                | "\(.number) \(.headRefName) \([.labels[].name] | index("konflikt") != null)"' > "$RUNNER_TEMP/dirty"
+          cat "$RUNNER_TEMP/dirty"
+          [ -s "$RUNNER_TEMP/dirty" ] && echo "est=1" >> "$GITHUB_OUTPUT" || echo "Заявок с конфликтом нет."
+      - uses: actions/checkout@v4
+        if: steps.dirty.outputs.est == '1'
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/public/
+          sparse-checkout-cone-mode: false
+          token: ${{ secrets.SLIYANIE_TOKEN || github.token }}
+      - name: soyuz — слить main в ветку, списки дописываются union
+        if: steps.dirty.outputs.est == '1'
+        run: |
+          git config user.name github-actions
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          gh label create konflikt --color d93f0b --description 'конфликт с main, машина не развела' 2>/dev/null || true
+          git fetch -q origin main
+          # Драйвер union — из .gitattributes main: у старой ветки строки ещё нет.
+          git show origin/main:.gitattributes > .git/info/attributes 2>/dev/null || true
+          while read -r n vetka metka; do
+            git fetch -q origin "$vetka" && git checkout -q -B soyuz FETCH_HEAD || { echo "::warning::#$n: ветка $vetka не взялась"; continue; }
+            if git merge --no-edit -q origin/main -m "Слияние main в $vetka (vetki-svezhie: списки — union)"; then
+              if git push -q origin "HEAD:refs/heads/$vetka"; then
+                echo "#$n: конфликт разведён, ветка запушена"; echo "$n" >> "$RUNNER_TEMP/nomera"
+                [ "$metka" = true ] && gh pr edit "$n" --remove-label konflikt || true
+                continue
+              fi
+              faily="(слилось чисто, но пуш отказан — нужен ключ SLIYANIE_TOKEN)"
+            else
+              faily=$(git diff --name-only --diff-filter=U | sed 's/^/- /')
+              git merge --abort
+            fi
+            echo "::warning::#$n: конфликт не разведён"; echo "$faily"
+            if [ "$metka" != true ]; then
+              gh pr comment "$n" --body "$(printf 'Конфликт с main машина не развела (vetki-svezhie, union — только для списков из .gitattributes). Файлы:\n%s\n\nРазбери: git merge origin/main в ветке, пуш.' "$faily")"
+              gh pr edit "$n" --add-label konflikt || true
+            fi
+          done < "$RUNNER_TEMP/dirty"
+      - name: одобрить проверки обновлённых заявок
+        run: |
+          nomera=$(sort -u "$RUNNER_TEMP/nomera")
+          [ -n "$nomera" ] || exit 0
           # Одобрить проверки, которые встали в «ждёт одобрения» после пуша ключом конвейера.
           for i in $(seq 1 12); do
             ostalos=0

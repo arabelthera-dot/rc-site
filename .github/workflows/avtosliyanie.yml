@@ -1,0 +1,62 @@
+# Автослияние по умолчанию (r735, 10.11.2026). Корень «руками включают автослияние каждой заявке»: заявка из этого
+# репозитория при открытии и при выходе из черновика сама получает `gh pr merge --auto --squash`. Стоп-знак — «НЕ СЛИВАТЬ»
+# в заголовке или метка ne-slivat: автослияние не включается, а если уже включено — снимается (и при правке заголовка, и при метке).
+# Форки и dependabot — мимо. Опасные пути всё равно ждут st:gate-sergey: проверка opasnye-puti красная, GitHub не сольёт.
+# Ключ — SLIYANIE_TOKEN, не github.token: автослияние сливает от имени того, кто его включил, а пуш в main ключом
+# github.token не запускает deploy.yml и прочие on:push (GitHub Docs «Triggering a workflow from a workflow»;
+# замер 10.11: слияния #991–#993 от github-actions — в main ни одного прогона push, у #1033 и #1035 — deploy есть).
+# Как в мире: «auto-merge by default» — peter-evans/enable-pull-request-automerge, ключ — PAT, ровно из-за этого.
+# Пять вопросов: задевает — только флаг автослияния открытых заявок; нужно — секрет SLIYANIE_TOKEN (ключ arabelthera-dot
+# с правом Pull requests: write и Contents: write на rc-site, кладёт Михаил) и переменная AVTOSLIYANIE = '1';
+# без нужного — спит строкой в журнале, соседей не роняет; проверка — открыть пробную заявку после ключа и переменной;
+# откат — переменная ≠ '1' или удалить файл.
+name: avtosliyanie
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, edited, labeled]
+# Права — на уровне задания (Р63): верх — только чтение; ключ задания свой, github.token не пишет.
+permissions:
+  contents: read
+concurrency:
+  group: avtosliyanie-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+jobs:
+  vklyuchit:
+    if: >-
+      vars.AVTOSLIYANIE == '1' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login != 'dependabot[bot]' &&
+      !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ secrets.SLIYANIE_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      NOMER: ${{ github.event.pull_request.number }}
+      ZAGOLOVOK: ${{ github.event.pull_request.title }}
+      DEYSTVIE: ${{ github.event.action }}
+      VKLYUCHENO: ${{ github.event.pull_request.auto_merge != null }}
+    steps:
+      - name: включить автослияние или снять по стоп-знаку
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::нет секрета SLIYANIE_TOKEN (Михаил) — автослияние не включаю: слияние ключом github.token не запускает deploy"
+            exit 0
+          fi
+          stop=0
+          printf '%s' "$ZAGOLOVOK" | LC_ALL=C.UTF-8 grep -qiF 'НЕ СЛИВАТЬ' && stop=1
+          jq -r '.pull_request.labels[].name' "$GITHUB_EVENT_PATH" | grep -qx 'ne-slivat' && stop=1
+          if [ $stop -eq 1 ]; then
+            if [ "$VKLYUCHENO" = true ]; then gh pr merge "$NOMER" --disable-auto && echo "#$NOMER: стоп-знак — автослияние снято"
+            else echo "#$NOMER: стоп-знак — автослияние не включаю"; fi
+            exit 0
+          fi
+          # Включаем только при открытии и выходе из черновика: правка заголовка и метка не возвращают снятое руками.
+          case "$DEYSTVIE" in
+            opened|reopened|ready_for_review) ;;
+            *) echo "#$NOMER: $DEYSTVIE — включение только при открытии"; exit 0 ;;
+          esac
+          [ "$VKLYUCHENO" = true ] && { echo "#$NOMER: автослияние уже включено"; exit 0; }
+          gh pr merge "$NOMER" --auto --squash && echo "#$NOMER: автослияние включено"
