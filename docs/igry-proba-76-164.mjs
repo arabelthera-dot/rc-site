@@ -36,6 +36,17 @@ proba('164: тексты kazhdomu-svoyo-mesto в перевод, коды и src
   return k.some((x) => x.endsWith('dannye.podpisi.0.tekst')) && k.some((x) => x.endsWith('dannye.mesta.0.verno_ru'))
     && !k.some((x) => /\.(kod|mesto|src)$/.test(x));
 })());
+// nastroy-volnu-priyomnika (01-04): числа как в январской игре, цель внутри шкалы, счёт с {n}.
+const volna = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/nastroy-volnu-priyomnika.json', import.meta.url), 'utf8'));
+const pravkaV = (fn) => { const o = structuredClone(volna); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике nastroy-volnu-priyomnika приняты', igraDannymi.safeParse(volna).success);
+proba('76: цель «до» не больше «от» — отказ', !pravkaV((d) => { d.cel_do = d.cel_ot; }));
+proba('76: счёт без {n} — отказ', !pravkaV((d) => { d.schet_ru = 'Команд принято'; }));
+proba('164: тексты nastroy-volnu-priyomnika в перевод, числа — нет', (() => {
+  const k = Object.keys(vynutStroki(volna, 'izobreteniya', '01-04'));
+  return k.some((x) => x.endsWith('dannye.knopka_ru')) && k.some((x) => x.endsWith('dannye.pobeda.soobshchenie_ru'))
+    && !k.some((x) => /\.(komand|dopusk|cel_ot|polzunok_start)$/.test(x));
+})());
 // ugol-v-koridor-luny (01-02): угол старта между min и max, удар меньше коридора; тексты исходов в перевод, цвета — нет.
 const luna = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/ugol-v-koridor-luny.json', import.meta.url), 'utf8'));
 const pravkaL = (fn) => { const o = structuredClone(luna); fn(o.dannye); return igraDannymi.safeParse(o).success; };
@@ -46,5 +57,29 @@ proba('164: тексты ugol-v-koridor-luny в перевод, цвета — �
   const k = Object.keys(vynutStroki(luna, 'izobreteniya', '01-02'));
   return k.some((x) => x.endsWith('dannye.teksty.popal_ru')) && k.some((x) => x.endsWith('dannye.cel.podpis')) && !k.some((x) => /\.cvet\.\d$/.test(x));
 })());
+// tri-usloviya-bulata (01-03): январская игра данными; верно и start — среди вариантов, узор от 0 до 1.
+const bulat = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/tri-usloviya-bulata.json', import.meta.url), 'utf8'));
+const pravkaB = (fn) => { const o = structuredClone(bulat); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике tri-usloviya-bulata приняты', igraDannymi.safeParse(bulat).success);
+proba('76: верный вариант не из списка — отказ', !pravkaB((d) => { d.usloviya[0].verno = 'net'; }));
+proba('76: сила узора больше 1 — отказ', !pravkaB((d) => { d.pobeda.vid.uzor = 2; }));
+proba('76: без «под микроскопом» — принято', pravkaB((d) => { delete d.blizhe; }));
+proba('164: тексты tri-usloviya-bulata в перевод, коды и числа — нет', (() => {
+  const k = Object.keys(vynutStroki(bulat, 'izobreteniya', '01-03'));
+  return k.some((x) => x.endsWith('dannye.blizhe.knopka_ru')) && k.some((x) => x.endsWith('dannye.usloviya.0.neudacha.kadr_ru'))
+    && !k.some((x) => /\.(kod|start|verno|ton|uzor|ochki)$/.test(x));
+})());
+// smeta-truboprovoda (01-05): ползунки по уровням, start — существующий уровень, сцена ссылается на существующий ползунок.
+const smeta = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/smeta-truboprovoda.json', import.meta.url), 'utf8'));
+const pravkaS = (fn) => { const o = structuredClone(smeta); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике smeta-truboprovoda приняты', igraDannymi.safeParse(smeta).success);
+proba('76: start ползунка вне уровней — отказ', !pravkaS((d) => { d.polzunki[0].start = 9; }));
+proba('76: сцена на ползунок, которого нет, — отказ', !pravkaS((d) => { d.scena.stancii = 7; }));
+// zvenya-pod-koleso (январь 01-09, данными): число звеньев 3–12, без шагов — отказ.
+const zv = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/zvenya-pod-koleso.json', import.meta.url), 'utf8'));
+const pravkaZv = (fn) => { const o = structuredClone(zv); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике zvenya-pod-koleso (01-09) приняты', igraDannymi.safeParse(zv).success);
+proba('76: zvenya-pod-koleso — звеньев 1 — отказ', !pravkaZv((d) => { d.zvenev = 1; }));
+proba('76: zvenya-pod-koleso — без шага «edet» — отказ', !pravkaZv((d) => { delete d.edet; }));
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);

@@ -58,7 +58,7 @@ jobs:
           path: |
             ~/.local/share/argos-translate
             ~/stanza_resources
-          key: argos-${{ hashFiles('src/data/yazyki.json') }}
+          key: argos-obratno-${{ hashFiles('src/data/yazyki.json') }}
       - run: |
           npm ci --ignore-scripts --no-audit --no-fund
           pip install -q --index-url https://download.pytorch.org/whl/cpu torch
@@ -103,3 +103,12 @@ jobs:
             [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ] && { echo "Проверка заявки #$nomer идёт."; break; }
             sleep 10
           done
+      # Обратный перевод на русский (п.168): строки перевода X→ru сверяются с подлинником, подозрительные — в сводку прогона.
+      # Только подсказка: ошибка шага не красит прогон и не мешает заявке перевода. Строк на язык — OBRATNO_N (по умолчанию 40).
+      - name: obratno
+        if: always()
+        continue-on-error: true
+        run: |
+          fayly=$(git diff --name-only HEAD~1 HEAD -- 'src/data/perevod/*.json')
+          [ -n "$fayly" ] || { echo "Обратный перевод: новых переводов нет."; exit 0; }
+          python3 scripts/perevod-obratno.py $fayly | tee -a "$GITHUB_STEP_SUMMARY"
