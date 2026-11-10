@@ -41,7 +41,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-23-goskatalog-85090463.jpg
+  src: kartinka:000241
   alt: Икона святого мученика воина Евгения (Родионова) (уже на старой странице)
   data_source: https://goskatalog.ru/portal/#/collections?id=66338453
   license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -88,7 +88,7 @@ video:
   suffix: сек
   badge: 50 сек
   intro: Ему предложили снять крест — он не снял
-  poster: /muzei/ne-sdayutsya/video/day-23jan-rodionov-poster.jpg?v=1
+  poster: kartinka:000628?v=1
   mp4: /muzei/ne-sdayutsya/video/day-23jan-rodionov.mp4?v=1
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns23jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -241,7 +241,7 @@ fakty:
         otryvok: «Тем не менее синодальная комиссия по канонизации около 25 лет назад отказалась причислить Родионова к лику святых.»
         pometka: два источника
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-23-goskatalog-20078519.jpg
+          src: kartinka:000629
           alt: Памятная медаль «Мученик за Христа воин Евгений», 2007
           data_source: https://goskatalog.ru/portal/#/collections?id=19529119
           license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -335,7 +335,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-23-goskatalog-74425071.jpg
+  - src: kartinka:000630
     alt: Статья «Пограничники и Чечня», газета «На рубежах Родины» № 12, 1996
     data_source: https://goskatalog.ru/portal/#/collections?id=58555180
     license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -343,7 +343,7 @@ figures:
     credit: Госкаталог РФ, , Центральный пограничный музей ФСБ России
     width: 569
     height: 1024
-  - src: /muzei/ne-sdayutsya/img/01-23-goskatalog-83071309.jpg
+  - src: kartinka:000631
     alt: Пограничники на административной границе Чечни и Дагестана, 1995. Фото А. Аулова
     data_source: https://goskatalog.ru/portal/#/collections?id=65037562
     license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -351,7 +351,7 @@ figures:
     credit: Госкаталог РФ, , Центральный пограничный музей ФСБ России
     width: 1280
     height: 619
-  - src: /muzei/ne-sdayutsya/img/01-23-goskatalog-23907705.jpg
+  - src: kartinka:000632
     alt: Письмо солдата Юрия Ельчанинова родителям из Бамута, 8 июля 1996 (копия)
     data_source: https://goskatalog.ru/portal/#/collections?id=22255102
     license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -359,7 +359,7 @@ figures:
     credit: Госкаталог РФ, , Краеведческий музей г. Юрги
     width: 1200
     height: 1600
-  - src: /muzei/ne-sdayutsya/img/01-23-goskatalog-27491718.jpg
+  - src: kartinka:000633
     alt: О. А. Кислинских на БТРе в селении Бамут, Чечня
     data_source: https://goskatalog.ru/portal/#/collections?id=24841834
     license: ст. 1274 ГК РФ — цитирование в информационных и учебных целях с указанием источника
@@ -367,7 +367,7 @@ figures:
     credit: Госкаталог РФ, , Городской музей имени В. Н. Плотникова
     width: 1600
     height: 1053
-  - src: /muzei/ne-sdayutsya/img/01-23-goskatalog-60921077.jpg
+  - src: kartinka:000634
     alt: "Кадр из музейного фонда: Молитва воина с изображением святого мученика Евгения (Родионова)"
     data_source: https://goskatalog.ru/portal/#/collections?id=48958643
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

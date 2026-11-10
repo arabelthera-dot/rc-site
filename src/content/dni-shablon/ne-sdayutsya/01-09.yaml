@@ -39,7 +39,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-09-goskatalog-17023354.jpg
+  src: kartinka:000068
   alt: «Встали Дубосековские исполины…». С. А. Федоров, 1985.
   data_source: https://goskatalog.ru/portal/#/collections?id=17311201
   license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -86,7 +86,7 @@ video:
   suffix: сек
   badge: 46 сек
   intro: Тот же день роликом — от окопов у Дубосекова до рассказа раненого Ивана Натарова.
-  poster: /muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-poster.jpg
+  poster: kartinka:000069
   mp4: /muzei/ne-sdayutsya/video/day-09jan-panfilovtsy.mp4?v=1
   note: Визуальный ряд — предметы Музейного фонда РФ из Госкаталога, среди них картина Е. И. Комарова «Подвиг 28 героев-панфиловцев» (1942). Закадровый текст озвучен синтезом речи.
 story:
@@ -129,7 +129,7 @@ fakty:
         otryvok: «Политрук 4-й стрелк. роты тов. Клочков, узнав создавшееся опасное положение в районе второго взвода роты, направляется туда»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-09-goskatalog-5087514.jpg
+          src: kartinka:000070
           alt: «Подвиг 28 героев-панфиловцев». Е. И. Комаров, 1942.
           data_source: https://goskatalog.ru/portal/#/collections?id=8717367
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -174,7 +174,7 @@ fakty:
         otryvok: «против второго взвода двумя эшелонами шли до 50 танков противника. Неравный бой длился 4-5 часов… подбили и уничтожили 18 танков»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-09-goskatalog-19345257.jpg
+          src: kartinka:000071
           alt: «Дубосеково. Окоп героев-панфиловцев». С. А. Федоров, 1986.
           data_source: https://goskatalog.ru/portal/#/collections?id=18991450
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -210,7 +210,7 @@ fakty:
         otryvok: «Вдове Героя построили дом, в котором она жила с новым мужем»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-09-goskatalog-90949729.jpg
+          src: kartinka:000072
           alt: Письмо И. Д. Шадрина в музей, 1958 — о бое у Дубосеково 16 ноября 1941 и политруке Клочкове.
           data_source: https://goskatalog.ru/portal/#/collections?id=6939400
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -250,7 +250,7 @@ fakty:
         otryvok: «один из героев тов. Натаров Иван Мойсеевич, который, будучи тяжело раненым, попал в госпиталь и где умер последний из павших»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-09-goskatalog-27296206.jpg
+          src: kartinka:000009
           alt: 1942 год. У могилы героев-панфиловцев близ Нелидово, в центре — А. Кривицкий.
           data_source: https://goskatalog.ru/portal/#/collections?id=24706945
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -277,7 +277,7 @@ fakty:
         otryvok: "«информация одна: 16 ноября, высота 251, разъезд Дубосеково, деревня Петелино, начало боя — 9 утра, вначале идет пехота, потом две волны танков»"
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-09-goskatalog-25397183.jpg
+          src: kartinka:000073
           alt: «Станция Дубосеково». Ю. А. Цишевский, 1941.
           data_source: https://goskatalog.ru/portal/#/collections?id=23357898
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -371,7 +371,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-09-goskatalog-17486577.jpg
+  - src: kartinka:000074
     alt: "У Дубосеково после войны: фотокопия 1960-х годов (автор не указан)."
     data_source: https://goskatalog.ru/portal/#/collections?id=1215350
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

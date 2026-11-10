@@ -27,7 +27,7 @@ head:
       "@type": Organization
       name: Русская цивилизация
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-03-goskatalog-68536113.jpg
+  src: kartinka:000227
   width: 500
   height: 401
   alt: 76-мм дивизионная пушка Ф-22 образца 1936 года на фотографии 1942–1943 годов
@@ -75,7 +75,7 @@ video:
   suffix: сек
   badge: 50 сек
   intro: Один парень, одна пушка — и целая колонна встала
-  poster: /muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg?v=2
+  poster: kartinka:000514?v=2
   mp4: /muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4?v=2
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -133,7 +133,7 @@ fakty:
         otryvok: «Возьми этот документ и напиши родным. Пусть мать знает, каким героем был её сын и как он погиб».
         pometka: два источника
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-03-goskatalog-3743748.jpg
+          src: kartinka:000515
           alt: Чёрный восьмигранный пластмассовый смертный медальон РККА с отвинченной крышкой и резьбой
           data_source: https://goskatalog.ru/portal/#/collections?id=3743748
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -151,7 +151,7 @@ fakty:
         otryvok: «Когда на рассвете показались немецкие танки, Николай подорвал головную машину и ту, что замыкала колонну, образовав пробку на дороге. Выполнив задачу, он, наверное, мог уйти к своим. Но остался, ведь у него было еще около 60 снарядов!»
         pometka: два источника
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-03-goskatalog-13617029.jpg
+          src: kartinka:000516
           width: 800
           height: 600
           alt: Советская пушка времён Великой Отечественной войны со щитом и раздвижными станинами в музейном зале
@@ -205,7 +205,7 @@ fakty:
         otryvok: «не без восхищения»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-03-goskatalog-12025903.jpg
+          src: kartinka:000517
           width: 1200
           height: 1600
           klass: portret
@@ -246,7 +246,7 @@ fakty:
         otryvok: «Искали и Сиротина, и Сироткина, и Сиротку… Вариантов искажений подлинной фамилии было множество.»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-03-camo-58-977531-39-l780.jpg
+          src: kartinka:000518
           width: 1120
           height: 1684
           klass: portret
@@ -265,7 +265,7 @@ fakty:
         otryvok: «тогда страна впервые узнала»
         pometka: два источника
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-03-camo-58-977531-39-l778.jpg
+          src: kartinka:000519
           width: 1120
           height: 1700
           klass: portret
@@ -360,7 +360,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-03-goskatalog-40548452.jpg
+  - src: kartinka:000520
     alt: Подлинная 45-мм противотанковая пушка с ржавым щитом и колёсами на резиновом ходу в музейной экспозиции, вид спереди на дуло
     data_source: https://goskatalog.ru/portal/#/collections?id=40548452
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -368,7 +368,7 @@ figures:
     credit: "Пушка 45-мм противотанковая образца 1937 года, 1937–1943; Государственный мемориальный музей обороны и блокады Ленинграда; ГММОБЛ КП 16988, Госкаталог № 45302564; «Источник: goskatalog.ru»"
     width: 1600
     height: 1011
-  - src: /muzei/ne-sdayutsya/img/01-03-goskatalog-12008284.jpg
+  - src: kartinka:000521
     alt: Ржавый корпус артиллерийского снаряда калибра 45 мм стоит вертикально, внизу масштабная линейка
     data_source: https://goskatalog.ru/portal/#/collections?id=12008284
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -376,7 +376,7 @@ figures:
     credit: "Снаряд калибра 45 мм к противотанковой пушке «53-К» образца 1937 года, 1930–1940-е; Балезинский районный историко-краеведческий музей (Удмуртия); БРКМ-113, Госкаталог № 11889324; «Источник: goskatalog.ru»"
     width: 1200
     height: 1600
-  - src: /muzei/ne-sdayutsya/img/01-03-goskatalog-42657991.jpg
+  - src: kartinka:000522
     alt: Пожелтевший машинописный лист с заголовком «Я умираю за Родину!» и текстом о танках Гудериана у Кричева 17 июля 1941 года
     data_source: https://goskatalog.ru/portal/#/collections?id=42657991
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

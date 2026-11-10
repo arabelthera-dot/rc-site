@@ -33,7 +33,7 @@ head:
       "@type": Event
       name: Оборона Козельска, 1238
 oblozhka:
-  src: /muzei/ne-sdayutsya/kozelsk-miniatura-1-zahvat.jpg
+  src: kartinka:000523
   width: 1600
   height: 2100
   alt: "Миниатюра Лицевого летописного свода: татарское войско у стен малого города, за стенами — защитники"
@@ -83,7 +83,7 @@ video:
   suffix: сек
   badge: 48 сек
   intro: Семь недель город держал орду — Батый назвал его злым
-  poster: /muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg?v=2
+  poster: kartinka:000524?v=2
   mp4: /muzei/ne-sdayutsya/video/day-04jan-kozelsk.mp4?v=2
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 41872879687) из сценария days/ns04jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -133,7 +133,7 @@ fakty:
         otryvok: «Бату подошёл к городу Козельску и, осаждая его в течение двух месяцев, не мог овладеть им. Потом прибыли Кадан и Бури и взяли его в три дня»
         pometka: два источника
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-04-goskatalog-18134111.jpg
+          src: kartinka:000525
           alt: "Лаковая миниатюра: деревянная крепость Козельск с храмами, у стен — всадники"
           data_source: https://goskatalog.ru/portal/#/collections?id=18126558
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -151,7 +151,7 @@ fakty:
         otryvok: «разбившимъ граду стѣну, и возиидоша на валъ татаре. Козляне же ножи рѣзахуся с ними»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-04-goskatalog-11592978.jpg
+          src: kartinka:000526
           alt: "Рисунок тушью и акварелью: бревенчатая стена с башней, у стены идёт бой"
           data_source: https://goskatalog.ru/portal/#/collections?id=13401696
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -169,7 +169,7 @@ fakty:
         otryvok: «исѣкоша праща ихъ»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/kozelsk-miniatura-2-vylazka.jpg
+          src: kartinka:000527
           width: 1600
           height: 2216
           klass: portret
@@ -197,7 +197,7 @@ fakty:
         otryvok: «ву татарѣхъ не смѣють его нарещи град Козлескъ, но град злый, понеже бишася по семь недѣль»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-04-goskatalog-50086505.jpg
+          src: kartinka:000528
           width: 800
           height: 479
           alt: Памятная медаль «Героическая оборона Козельска в 1238 г.»
@@ -233,7 +233,7 @@ fakty:
         otryvok: «тогда они расположились в домах и отдохнули»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/kozelsk-miniatura-3-step.jpg
+          src: kartinka:000529
           width: 1600
           height: 2033
           klass: portret
@@ -292,7 +292,7 @@ fakty:
         otryvok: «за мужество, стойкость и массовый героизм, проявленные защитниками города в борьбе за свободу и независимость Отечества»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-04-goskatalog-22975986.jpg
+          src: kartinka:000530
           alt: Монета 10 рублей 2013 года с гербом Козельска и надписью «Города воинской славы»
           data_source: https://goskatalog.ru/portal/#/collections?id=21619457
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -366,7 +366,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-04-goskatalog-14177108.jpg
+  - src: kartinka:000531
     alt: Почтовая марка «Козельск. Город воинской славы», 15 рублей, 2013
     data_source: https://goskatalog.ru/portal/#/collections?id=14381980
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -374,7 +374,7 @@ figures:
     credit: "Хранится: Федеральное государственное бюджетное учреждение культуры «Центральный музей Великой Отечественной войны 1941–1945 гг.». Госкаталог № 14381980 (ЦМВОВ ОФ-88000)"
     width: 452
     height: 452
-  - src: /muzei/ne-sdayutsya/img/01-04-goskatalog-35853661.jpg
+  - src: kartinka:000532
     alt: "Лаковая шкатулка: битва конных воинов у стен города"
     data_source: https://goskatalog.ru/portal/#/collections?id=449929
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

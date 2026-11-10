@@ -38,7 +38,7 @@ head:
       url: https://russian-civilization.ru/
       logo: https://russian-civilization.ru/icon-512.png
 oblozhka:
-  src: day-04jan-pilchikov-portret-biront.jpg
+  src: kartinka:000299
   width: 600
   height: 744
   alt: "Живописный погрудный портрет Николая Пильчикова: седые усы и борода, пенсне, чёрный костюм и галстук, золочёная рама"
@@ -82,7 +82,7 @@ video:
   suffix: сек
   badge: 49 сек
   intro: Та же история коротким роликом — от взрыва без проводов до первого в мире публичного радиоуправления.
-  poster: video/day-04jan-pilchikov-poster.jpg
+  poster: kartinka:000300
   mp4: video/day-04jan-pilchikov.mp4?v=1
   note: "Кадры ролика — подлинные: портрет профессора Н. Д. Пильчикова (Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
@@ -115,7 +115,7 @@ fakty:
         href: https://rgo.ru/activity/redaction/articles/prityazhenie-anomalii-kak-nashli-samoe-krupnoe-v-mire-mestorozhdenie-zheleznykh-rud/
         pometka: документ
         kadr:
-          src: /muzei/izobreteniya/img/day-04jan-kma-pervaya-skvazhina.jpg
+          src: kartinka:000301
           width: 1600
           height: 1026
           alt: Группа геологов и руководителей стоит в поле у места первой скважины КМА; в центре И. М. Телегин.
@@ -133,7 +133,7 @@ fakty:
         href: https://www.cta.ru/articles/soel/2017/2017-5/112394/
         pometka: документ
         kadr:
-          src: /muzei/izobreteniya/img/day-04jan-popov-portret-1887.jpg
+          src: kartinka:000302
           width: 667
           height: 1024
           klass: portret
@@ -170,7 +170,7 @@ fakty:
         href: https://ufn.ru/ufn54/ufn54_5/Russian/r545f.pdf
         pometka: документ
         kadr:
-          src: /muzei/izobreteniya/img/day-04jan-harkov-tehnologicheskiy-institut.jpg
+          src: kartinka:000303
           width: 800
           height: 522
           alt: "Цветная открытка: краснокирпичный главный корпус Технологического института в Харькове за газоном с деревьями."
@@ -198,7 +198,7 @@ fakty:
         pometka: документ
       - summary: <b>Рентгеновский снимок шёл полчаса — Пильчиков сократил его до двух секунд.</b>
         kadr:
-          src: /muzei/izobreteniya/img/day-04jan-trubka-kruksa.jpg
+          src: kartinka:000304
           alt: "Стеклянная колба-шар с четырьмя отростками: в них металлические электроды, в центре — медная пластина под углом; рентгеновская трубка рубежа XIX–XX веков"
           data_source: "https://goskatalog.ru/portal/#/collections?id=12459060"
           license: "цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный военно-морской музей"
@@ -233,7 +233,7 @@ fakty:
         href: https://ufn.ru/ufn54/ufn54_5/Russian/r545f.pdf
         pometka: документ
         kadr:
-          src: /muzei/izobreteniya/img/day-04jan-odessa-novorossiyskiy-universitet.jpg
+          src: kartinka:000305
           width: 690
           height: 449
           alt: "Открытка: трёхэтажное здание Новороссийского университета в Одессе за рядом деревьев, у входа прохожие и городовой."
@@ -518,7 +518,7 @@ kalendar:
   h2: Выбери любой день года
   intro: Каждый подсвеченный день — изобретение, которое русские сделали первыми в мире.
 figures:
-  - src: /muzei/izobreteniya/img/day-04jan-harkov-universitet.jpg
+  - src: kartinka:000306
     width: 800
     height: 538
     alt: "Открытка: старое здание Харьковского университета (бывший губернаторский дворец), мостовая и прохожие."

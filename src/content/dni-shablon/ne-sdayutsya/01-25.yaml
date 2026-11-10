@@ -35,7 +35,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-25-kremlin-6H6Ch6te.jpg
+  src: kartinka:000642
   alt: Путин обнимает мужчину в тёмном костюме, рядом стоит женщина в чёрном платке, позади флаги.
   data_source: http://www.kremlin.ru/events/councils/52941
   license: "CC BY 4.0, «Фото: kremlin.ru»"
@@ -82,7 +82,7 @@ video:
   suffix: сек
   badge: 44 сек
   intro: «Работайте, братья» — сказал под стволом и остался собой
-  poster: /muzei/ne-sdayutsya/video/day-25jan-nurbagandov-poster.jpg?v=1
+  poster: kartinka:000643?v=1
   mp4: /muzei/ne-sdayutsya/video/day-25jan-nurbagandov.mp4?v=1
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 42202145069) из сценария days/ns25jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -105,7 +105,7 @@ fakty:
         otryvok: «Вот, поймали лейтенанта полиции Нурбагандова»
         pometka: один источник
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-25-goskatalog-89442929.jpg
+          src: kartinka:000243
           alt: Живописный портрет Магомеда Нурбагандова со Звездой Героя России.
           data_source: https://goskatalog.ru/portal/#/collections?id=68684480
           license: "цитирование, ст. 1274 ГК РФ, с указанием автора и музея. Внимание: в 01-25.json кредит «Фото: Скирченко» — по Госкаталогу это картина (холст, масло), не фото; исправить «Фото» на «Худ.»"
@@ -123,7 +123,7 @@ fakty:
         otryvok: «Уверяю Вас, если бы далась ему вторая жизнь, он поступил бы так же»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-25-kremlin-OOj6r2wy.jpg
+          src: kartinka:000644
           alt: Седой мужчина с усами, в очках и тёмном костюме говорит за белой трибуной с двумя микрофонами.
           data_source: http://www.kremlin.ru/events/councils/52941
           license: "CC BY 4.0, «Фото: kremlin.ru»"
@@ -244,7 +244,7 @@ fakty:
         otryvok: "«бывает так, что судьба отмеряет человеку лишь несколько минут… чтобы совершить настоящий поступок, сделать свой выбор: или струсить, или шагнуть в бессмертие. Говорю о лейтенанте полиции из Дагестана Магомеде Нурбагандове»"
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-25-kremlin-VznZldCU.jpg
+          src: kartinka:000645
           alt: Путин, женщина в чёрном платке с коробкой награды в руках и мужчина в тёмном костюме стоят на фоне флага.
           data_source: http://www.kremlin.ru/events/councils/52941
           license: "материалы kremlin.ru — CC BY 4.0, с указанием «Фото: kremlin.ru»"
@@ -347,7 +347,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-25-kremlin-5ALGaqOu.jpg
+  - src: kartinka:000646
     alt: "Парадный зал с флагами: слева стоит Путин, справа мужчина говорит за трибуной, на переднем плане зрители."
     data_source: http://www.kremlin.ru/events/councils/52941
     license: "CC BY 4.0, «Фото: kremlin.ru»"
@@ -355,7 +355,7 @@ figures:
     credit: Администрация Президента Российской Федерации, сайт «Президент России» (kremlin.ru)
     width: 1600
     height: 987
-  - src: /muzei/ne-sdayutsya/img/01-25-kremlin-lBnQCP9w.jpg
+  - src: kartinka:000647
     alt: Седой мужчина с усами в тёмном костюме сидит, сложив руки; справа женщина в чёрном платке.
     data_source: http://www.kremlin.ru/events/president/news/52933
     license: "CC BY 4.0, «Фото: kremlin.ru»"
@@ -363,7 +363,7 @@ figures:
     credit: Администрация Президента Российской Федерации, сайт «Президент России» (kremlin.ru)
     width: 1600
     height: 987
-  - src: /muzei/ne-sdayutsya/img/01-25-goskatalog-23511306.jpg
+  - src: kartinka:000648
     alt: "Почтовый конверт: слева портрет молодого полицейского в форме на фоне гор и Звезда Героя, справа строки для адреса."
     data_source: https://goskatalog.ru/portal/#/collections?id=23511306
     license: цитирование, ст. 1274 ГК РФ, с указанием музея

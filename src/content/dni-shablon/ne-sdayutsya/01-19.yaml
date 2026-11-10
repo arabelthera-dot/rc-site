@@ -35,7 +35,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-19-goskatalog-21822331.jpg
+  src: kartinka:000600
   alt: Групповой снимок десятков матросов в форме у колоннады здания, внизу надпись «1961 г. Ленинград»
   data_source: https://goskatalog.ru/portal/#/collections?id=21822331
   license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -82,7 +82,7 @@ video:
   suffix: сек
   badge: 48 сек
   intro: Экипаж вошёл в реактор, чтобы лодка не стала вторым Чернобылем
-  poster: /muzei/ne-sdayutsya/video/day-19jan-k19-poster.jpg?v=1
+  poster: kartinka:000601?v=1
   mp4: /muzei/ne-sdayutsya/video/day-19jan-k19.mp4?v=1
   note: Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns19jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
@@ -115,7 +115,7 @@ fakty:
         otryvok: «сам стал интенсивнейшим источником облучения»
         pometka: один источник
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-19-goskatalog-21493970.jpg
+          src: kartinka:000602
           alt: Чёрно-белый погрудный портрет юноши в матросской форме с гюйсом и тельняшкой
           data_source: https://goskatalog.ru/portal/#/collections?id=21493970
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -151,7 +151,7 @@ fakty:
         otryvok: «Им надо было отвернуть заглушку „воздушника“ на компенсирующей решётке и приварить медный трубопровод, который применяют для зарядки торпед воздухом высокого давления.»
         pometka: два источника
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-19-goskatalog-10664312.jpg
+          src: kartinka:000603
           alt: Модель чёрной атомной подводной лодки в профиль на подставке с синим бархатом
           data_source: https://goskatalog.ru/portal/#/collections?id=10664312
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -236,7 +236,7 @@ fakty:
         otryvok: «Мы за аварии не награждаем»
         pometka: мнение
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-19-goskatalog-51367656.jpg
+          src: kartinka:000604
           alt: Чёрная двубортная флотская шинель с золотыми пуговицами и погонами на вешалке
           data_source: https://goskatalog.ru/portal/#/collections?id=51367656
           license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -348,7 +348,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-19-goskatalog-15587629.jpg
+  - src: kartinka:000605
     alt: Портрет кудрявого молодого моряка в форменке с тремя нагрудными знаками
     data_source: https://goskatalog.ru/portal/#/collections?id=15587629
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -356,7 +356,7 @@ figures:
     credit: Троицкий краеведческий музей, ТКМ ОФ-12141/19
     width: 527
     height: 799
-  - src: /muzei/ne-sdayutsya/img/01-19-goskatalog-37249620.jpg
+  - src: kartinka:000606
     alt: Улыбающийся офицер в кителе в тесной каюте подводной лодки, рядом полотенце и лампа
     data_source: https://goskatalog.ru/portal/#/collections?id=37249620
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
@@ -364,7 +364,7 @@ figures:
     credit: Аткарский краеведческий музей, филиал Саратовского областного музея краеведения, АКМОФ 6485
     width: 737
     height: 600
-  - src: /muzei/ne-sdayutsya/img/01-19-goskatalog-26638282.jpg
+  - src: kartinka:000237
     alt: Атомная подводная лодка проекта 658 — того же типа, что К-19.
     data_source: https://goskatalog.ru/portal/#/collections?id=24243468
     license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)

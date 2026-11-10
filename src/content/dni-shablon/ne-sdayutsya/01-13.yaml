@@ -36,7 +36,7 @@ head:
       name: Русская цивилизация
       url: https://russian-civilization.ru/
 oblozhka:
-  src: /muzei/ne-sdayutsya/img/01-13-goskatalog-25463798.jpg
+  src: kartinka:000231
   alt: "Чёрно-белая панорама: низкие домики станции на снежной равнине у каменистых холмов."
   data_source: https://goskatalog.ru/portal/#/collections?id=23405080
   license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ); автор снимка в Госкаталоге не указан
@@ -83,7 +83,7 @@ video:
   suffix: сек
   badge: 55 сек
   intro: "Леонид Рогозов на станции Новолазаревская: единственный врач экспедиции сам удалил себе аппендицит — и через две недели вернулся в строй."
-  poster: /muzei/ne-sdayutsya/video/day-13jan-rogozov-poster.jpg?v=1
+  poster: kartinka:000557?v=1
   mp4: /muzei/ne-sdayutsya/video/day-13jan-rogozov.mp4?v=1
   note: Кадры ролика — подлинные снимки и предметы из Госкаталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.
 story:
@@ -106,7 +106,7 @@ fakty:
         otryvok: «чтобы лучше и красивее сделать шов»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-13-goskatalog-70379047.jpg
+          src: kartinka:000558
           alt: Хирургический скальпель с цельнометаллической ручкой на светлом фоне.
           data_source: https://goskatalog.ru/portal/#/collections?id=70379047
           license: цитирование, ст. 1274 ГК РФ
@@ -151,7 +151,7 @@ fakty:
         otryvok: «Зеркало помогает, но в то же время запутывает»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-13-goskatalog-70379037.jpg
+          src: kartinka:000559
           alt: Круглое зеркало в светлой металлической оправе на тёмном фоне, в нём отражается окно.
           data_source: https://goskatalog.ru/portal/#/collections?id=70379037
           license: цитирование, ст. 1274 ГК РФ, с указанием музея и Госкаталога
@@ -187,7 +187,7 @@ fakty:
         otryvok: «Мои бедные ассистенты! …они стояли в белых халатах и сами были белее белого»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-13-goskatalog-70379039.jpg
+          src: kartinka:000560
           alt: Стеклянный шприц с металлическими кольцами и маркировкой «58» рядом с масштабной линейкой на 10 см.
           data_source: https://goskatalog.ru/portal/#/collections?id=70379039
           license: цитирование, ст. 1274 ГК РФ
@@ -214,7 +214,7 @@ fakty:
         otryvok: «в холоде сам себе скальпелем»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-13-goskatalog-70379032.jpg
+          src: kartinka:000561
           alt: Металлический иглодержатель с длинными изогнутыми ручками на светлом фоне.
           data_source: https://goskatalog.ru/portal/#/collections?id=70379032
           license: цитирование, ст. 1274 ГК РФ, с указанием музея и Госкаталога
@@ -254,7 +254,7 @@ fakty:
         otryvok: «Два героя апреля 1961-го — Юрий Гагарин и Леонид Рогозов — родились в марте 1934 года. Первый космонавт Земли 9 марта, а будущий врач-полярник — 14 марта.»
         pometka: два источника
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-13-goskatalog-18801358.jpg
+          src: kartinka:000562
           alt: Чёрно-белый портрет юноши с зачёсанными назад волосами, в тёмной куртке и клетчатой рубашке.
           data_source: https://goskatalog.ru/portal/#/collections?id=18801358
           license: цитирование, ст. 1274 ГК РФ; автор Требин Ю. П.; дата съёмки в карточке не указана
@@ -272,7 +272,7 @@ fakty:
         otryvok: «Я же огорчён — испортил всем праздник. Завтра 1 Мая»
         pometka: документ
         kadr:
-          src: /muzei/ne-sdayutsya/img/01-13-goskatalog-23405058.jpg
+          src: kartinka:000563
           alt: Полярники в меховой одежде стоят у домика с флагами и колоколом на крыше, вокруг снег и камни.
           data_source: https://goskatalog.ru/portal/#/collections?id=23405058
           license: цитирование, ст. 1274 ГК РФ; автор не указан
@@ -375,7 +375,7 @@ kalendar:
   h2: Выбери любой день месяца
   intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
 figures:
-  - src: /muzei/ne-sdayutsya/img/01-13-goskatalog-70379030.jpg
+  - src: kartinka:000564
     alt: Четыре тонкие металлические иглы разной длины лежат на светлом фоне.
     data_source: https://goskatalog.ru/portal/#/collections?id=70379030
     license: цитирование, ст. 1274 ГК РФ, с указанием музея и Госкаталога
