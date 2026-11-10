@@ -36,7 +36,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       FAYLY: ${{ inputs.fayly }}
     steps:
-      # без public/: перевод читает карточку и пишет только src/data/perevod/
+      # без public/: перевод читает карточку и пишет только src/data/perevod/ и src/data/igry/stroki/
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 2
@@ -72,7 +72,7 @@ jobs:
           git switch -q -C "$VETKA"
           vyvod=$(node scripts/perevod-dnya.mjs $FAYLY)
           echo "$vyvod" | tee -a "$GITHUB_STEP_SUMMARY"
-          git add --sparse src/data/perevod/
+          git add --sparse src/data/perevod/ src/data/igry/stroki/
           git diff --cached --quiet && { echo "Переводы уже свежие."; exit 0; }
           git commit -q -m "[avto] машинный перевод дня: $(echo $FAYLY | sed 's#src/content/dni-shablon/##g; s#\.yaml##g')"
           git push -q -f origin "$VETKA"
