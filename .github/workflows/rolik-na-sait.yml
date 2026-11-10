@@ -1,18 +1,22 @@
 # Ролик и аудиогид из облака — на сайт заявкой (r538, Р524/Р525/Р529; корень «забыл ролик»).
 # rc-rolik публикует собранное как выпуск (render.yml — vypusk-<день>-<прогон>, audiogid.yml — vypusk-ag-…);
-# здесь машина каждые полчаса забирает новые выпуски (scripts/rolik-na-sait.mjs spisok), на каждый — своя ветка
+# здесь машина по сигналу rc-rolik (repository_dispatch rolik-gotov, Р737 п.15) и для страховки раз в 6 часов забирает новые выпуски (scripts/rolik-na-sait.mjs spisok), на каждый — своя ветка
 # avto/rolik-<тег>, файлы в public/muzei/<музей>/ и запись реестра public/video/registry/<реестр>/<imya>.json,
 # заявка (автослияние — только у расписания). Руками mp4 и mp3 на сайт никто не носит. Одобрение ждущих проверок — как glazami-hrapovik.
 # Как в мире: последний шаг конвейера открывает заявку с результатом (peter-evans/create-pull-request, gh pr create).
 # Выпуски rc-rolik открытые — ключ не нужен; пишет свой GITHUB_TOKEN. Выпуск, чья заявка закрыта без слияния, не повторяется.
 # Брак выпуска (нет файла, не mp4, нет длительности) — заявки нет, прогон красный (r544). Образцы брака — пререлизы rc-rolik,
 # расписание их не берёт: gh workflow run rolik-na-sait.yml -f teg=vypusk-proba-brak-…
-# Выключатель — переменная ROLIK_NA_SAIT = '0' (расписание спит, ручной пуск работает). Откат — удалить этот файл.
+# Сигнал: gh api repos/arabelthera-dot/rc-site/dispatches -f event_type=rolik-gotov (ключ с правом contents:write на rc-site;
+# своим GITHUB_TOKEN rc-rolik в чужое репо не стучится). Сигнал берёт все новые выпуски, как расписание.
+# Выключатель — переменная ROLIK_NA_SAIT = '0' (расписание и сигнал спят, ручной пуск работает). Откат — удалить этот файл.
 # Ручной пуск: gh workflow run rolik-na-sait.yml [-f teg=vypusk-…]
 name: rolik-na-sait
 on:
+  repository_dispatch:
+    types: [rolik-gotov]
   schedule:
-    - cron: '7,37 * * * *'
+    - cron: '7 */6 * * *'
   workflow_dispatch:
     inputs:
       teg:
@@ -28,7 +32,7 @@ jobs:
   zabrat:
     # r688: пустая переменная (null) в выражении GitHub приводится к 0, как и '0', — расписание с 04.11 всё «skipped».
     # `|| '1'` даёт строку, сравнение строк без приведения.
-    if: github.ref == 'refs/heads/main' && (github.event_name != 'schedule' || (vars.ROLIK_NA_SAIT || '1') != '0')
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || (vars.ROLIK_NA_SAIT || '1') != '0')
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
@@ -76,8 +80,8 @@ jobs:
           Заявку открыла машина .github/workflows/rolik-na-sait.yml; файлы и запись реестра — scripts/rolik-na-sait.mjs. Руками не правится: новый ролик — новый выпуск в rc-rolik."
             nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
             [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] $pervaya" --body "$telo" | grep -o '[0-9]*$')
-            # автослияние — только у расписания; ручной пуск (проба, разбор) оставляет заявку человеку
-            [ "$GITHUB_EVENT_NAME" = schedule ] && gh pr merge "$nomer" --auto --squash
+            # автослияние — только у расписания и сигнала rc-rolik; ручной пуск (проба, разбор) оставляет заявку человеку
+            case "$GITHUB_EVENT_NAME" in schedule|repository_dispatch) gh pr merge "$nomer" --auto --squash ;; esac
             echo "- $teg → https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
             sha=$(git rev-parse HEAD)
             zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
