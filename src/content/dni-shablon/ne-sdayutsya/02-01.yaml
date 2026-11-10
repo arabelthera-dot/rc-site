@@ -29,6 +29,18 @@ velichina_chto: было у Мамая против 15 тысяч русских
 voinskaya_chast: Войско великого князя Дмитрия Ивановича
 operaciya: Куликовская битва
 front: Куликово поле
+mesto_sobytiya:
+  nazvanie: Куликово поле, Красный холм
+  shirota: 53.609
+  dolgota: 38.672
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
 etiketka_oblozhki:
   - Поединок Пересвета с Челубеем
   - Копия картины М. И. Авилова, 1952 год
@@ -73,6 +85,7 @@ oblozhka:
   width: 1600
   height: 1137
   vid: kartina
+  glavnoe_na_kartinke: net
   prava:
     avtor: копиист не указан (копия картины М. И. Авилова)
     god_sozdaniya: 1952
@@ -157,6 +170,7 @@ fakty:
     otryvok: «пяти сажен высота его и трех сажен ширина его»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: пять сажен — около 10 метров, выше трёхэтажного дома
     id: ns-0201-f01
     istochnik: skazanie
     dlya_voprosa: true
@@ -172,6 +186,7 @@ fakty:
       width: 582
       height: 800
       vid: risunok
+      glavnoe_na_kartinke: net
       prava:
         avtor: автор не указан
         god_sozdaniya: начало XX века
@@ -201,6 +216,7 @@ fakty:
     otryvok: «И ударились крепко копьями, едва земля не проломилась под ними, и свалились оба с коней на землю и скончались.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f02
     istochnik: skazanie
     dlya_voprosa: false
@@ -214,6 +230,7 @@ fakty:
       width: 498
       height: 800
       vid: predmet
+      glavnoe_na_kartinke: net
       prava:
         avtor: автор не указан
         god_sozdaniya: 1980
@@ -243,6 +260,7 @@ fakty:
     otryvok: «Прежнего же коня своего отдал Михаилу Андреевичу Бренку и ту одежду на него надел, ибо любил он его сверх меры, и знамя свое багряное повелел оруженосцу своему над Бренком держать. Под тем знаменем и убит был вместо великого князя.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f03
     istochnik: skazanie
     dlya_voprosa: true
@@ -255,6 +273,7 @@ fakty:
     otryvok: «Чуть отошли от места битвы — набрели на великого князя, избитого и израненного всего и утомленного, лежал он в тени срубленного дерева березового.» Князя нашли Федор Сабур и Григорий Холопищев.
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f04
     istochnik: skazanie
     dlya_voprosa: true
@@ -267,6 +286,7 @@ fakty:
     otryvok: «И пришел Мамай в Кафу со множеством имения, золота и серебра. Кафинцы же, посовещавшись, решили обмануть Мамая, и тут он был ими убит. И так настал конец Мамаю.» Кафа — нынешняя Феодосия.
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f05
     istochnik: letopisnaya-povest
     dlya_voprosa: true
@@ -279,6 +299,7 @@ fakty:
     otryvok: «Но и от тех Бог избавил, ибо не поспели немного к сроку, на один день или меньше. … литовцы с Ягайлом поспешно повернули назад, не будучи никем гонимы. Не видели они тогда ни князя великого, ни рати его, ни оружия его…»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f06
     istochnik: letopisnaya-povest
     dlya_voprosa: false
@@ -289,6 +310,7 @@ fakty:
     otryvok: «в бой вступил Засадный полк»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f07
     istochnik: kulpole-hod-bitvy
     dlya_voprosa: true
@@ -304,6 +326,7 @@ fakty:
       width: 800
       height: 533
       vid: predmet
+      glavnoe_na_kartinke: net
       prava:
         avtor: автор не указан
         god_sozdaniya: 1990-е годы
@@ -333,6 +356,7 @@ fakty:
     otryvok: «Само сражение длилось три часа»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: три часа — как два футбольных матча подряд
     id: ns-0201-f08
     istochnik: kulpole-hod-bitvy
     dlya_voprosa: true
@@ -348,6 +372,7 @@ fakty:
       width: 598
       height: 1200
       vid: foto
+      glavnoe_na_kartinke: net
       prava:
         avtor: автор не указан
         god_sozdaniya: 1890
@@ -377,6 +402,7 @@ fakty:
     otryvok: '«И увидел его Александр Пересвет, монах, который был в полку Владимира Всеволодовича, и, выступив из рядов, сказал: «Этот человек ищет подобного себе, я хочу с ним переведаться!»»'
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f09
     istochnik: skazanie
     dlya_voprosa: false
@@ -387,6 +413,7 @@ fakty:
     otryvok: '«И сказал Пересвет-чернец великому князю Дмитрию Ивановичу: «Лучше нам убитым быть, нежели в плен попасть к поганым татарам!»»'
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f10
     istochnik: zadonshchina
     dlya_voprosa: false
@@ -402,6 +429,7 @@ fakty:
     otryvok: «Не следует тебе, великому князю, прежде всех самому в бою биться»
     pometka: два источника
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f11
     istochnik: skazanie
     dlya_voprosa: false
@@ -412,6 +440,7 @@ fakty:
     otryvok: «После схваток сторож ордынцы всей силой обрушились на Передовой полк, который практически полностью погиб, но ослабил наступательный порыв войск Мамая.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f12
     istochnik: kulpole-hod-bitvy
     dlya_voprosa: false
@@ -422,6 +451,7 @@ fakty:
     otryvok: '«Князь же великий сказал: «Дай мне, отче, двух воинов из своей братии — Пересвета Александра и брата его Андрея Ослябу, тем ты и сам нам поможешь». Старец же преподобный велел тем обоим быстро собраться идти с великим князем…»'
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f13
     istochnik: skazanie
     dlya_voprosa: false
@@ -435,6 +465,7 @@ fakty:
       width: 800
       height: 464
       vid: kartina
+      glavnoe_na_kartinke: net
       prava:
         avtor: М. В. Фаюстов
         god_sozdaniya: 2009–2010
@@ -463,6 +494,7 @@ fakty:
     otryvok: «И гнали их до реки до Мечи, и там бесчисленное множество бегущих побили.»
     pometka: два источника
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f14
     istochnik: letopisnaya-povest
     dlya_voprosa: false
@@ -473,6 +505,7 @@ fakty:
     otryvok: «Был захвачен стан Мамая со всем имуществом и стадами.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     id: ns-0201-f15
     istochnik: kulpole-hod-bitvy
     dlya_voprosa: false
@@ -571,6 +604,7 @@ figures:
     width: 586
     height: 800
     vid: risunok
+    glavnoe_na_kartinke: net
     prava:
       avtor: автор не указан
       god_sozdaniya: 1968

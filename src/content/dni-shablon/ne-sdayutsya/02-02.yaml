@@ -43,6 +43,7 @@ oblozhka:
   hint: Дмитрий Овчаренко
   celikom: true
   vid: predmet
+  glavnoe_na_kartinke: net
   nomer_predmeta: 6178 ор
   nomer_snimka: '4710449'
   hranitel: Государственный исторический музей, Москва
@@ -122,6 +123,7 @@ fakty:
     otryvok: «В этом же районе на красноармейца напали и окружили две автомашины в составе 50 германских солдат и 3-х офицеров.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: 53 человека — как два школьных класса
     istochnik: n1
     dlya_voprosa: true
     otvet: '53'
@@ -136,6 +138,7 @@ fakty:
     otryvok: «Выходя из машины германский офицер скомандовал красноармейцу поднять руки вверх, выбил из его рук винтовку и начал учинять ему допросы. У красноармейца Овчаренко в повозке лежал топор.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n1
     dlya_voprosa: true
     otvet: топором
@@ -150,6 +153,7 @@ fakty:
       width: 1200
       height: 535
       vid: predmet
+      glavnoe_na_kartinke: net
       nomer_predmeta: Д-4607
       nomer_snimka: '38052433'
       hranitel: Костромской государственный историко-архитектурный и художественный музей-заповедник
@@ -182,6 +186,7 @@ fakty:
     otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n1
     dlya_voprosa: false
   - id: ns-0202-golova-oficera
@@ -194,6 +199,7 @@ fakty:
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n1
     dlya_voprosa: true
     otvet: наградной лист
@@ -208,6 +214,7 @@ fakty:
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: 21 убитый — почти целый школьный класс
     istochnik: n1
     dlya_voprosa: true
     otvet: '21'
@@ -222,6 +229,7 @@ fakty:
       width: 800
       height: 312
       vid: predmet
+      glavnoe_na_kartinke: net
       nomer_predmeta: БО-1
       nomer_snimka: '494624'
       hranitel: Центральный музей Великой Отечественной войны 1941–1945 гг., Москва
@@ -254,6 +262,7 @@ fakty:
     otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n1
     dlya_voprosa: true
     otvet: в огороде
@@ -268,6 +277,7 @@ fakty:
     otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: 4–5 километров — час ходьбы пешком
     istochnik: n1
     dlya_voprosa: false
   - id: ns-0202-dva-boya
@@ -280,6 +290,7 @@ fakty:
     otryvok: «27 июля на высоте 239,8 ураганным огнем уничтожал противника. Его пулемет работал безотказно.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n1
     dlya_voprosa: true
     otvet: 13 и 27 июля 1941 года
@@ -294,6 +305,7 @@ fakty:
       width: 530
       height: 800
       vid: foto
+      glavnoe_na_kartinke: net
       nomer_predmeta: net
       nomer_snimka: '5988414'
       hranitel: Государственный центральный музей современной истории России, Москва
@@ -326,6 +338,7 @@ fakty:
     otryvok: «Последнее место службы 3 тбр Воинское звание рядовой Причина выбытия убит Дата выбытия 28.01.1945 Место выбытия Венгрия, варм. Фейер, ст. Шерегейеш»
     pometka: два источника
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n2
     dlya_voprosa: true
     otvet: рядовой
@@ -340,6 +353,7 @@ fakty:
       width: 358
       height: 800
       vid: predmet
+      glavnoe_na_kartinke: net
       nomer_predmeta: ДМ-1136
       nomer_snimka: '8249698'
       hranitel: Центральный музей Великой Отечественной войны 1941–1945 гг., Москва
@@ -372,6 +386,7 @@ fakty:
     otryvok: «Повозку с боеприпасами и продуктами доставил вовремя своей роте…»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n1
     dlya_voprosa: false
 - id: fakty-dnya
@@ -388,6 +403,7 @@ fakty:
     otryvok: «Тов. Овчаренко не растерялся, забрал у всех убитых документы, у офицеров карты, планшеты, схему, записи и предоставил их в штаб полка.»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n1
     dlya_voprosa: false
     kadr:
@@ -400,6 +416,7 @@ fakty:
       width: 800
       height: 800
       vid: predmet
+      glavnoe_na_kartinke: net
       nomer_predmeta: net
       nomer_snimka: '9132841'
       hranitel: Ставропольский государственный историко-культурный и природно-ландшафтный музей-заповедник имени Г. Н. Прозрителева и Г. К. Праве
@@ -432,6 +449,7 @@ fakty:
     otryvok: «Однако политрук роты, посмотрев привезенные документы, присвистнул от изумления, и, взяв несколько бойцов, отправился на место событий. Когда подсчитали убитых, выяснилось, что Дмитрий Овчаренко в этой схватке уничтожил двух немецких офицеров и 21 солдата противника.»
     pometka: два источника
     utverzhden: '2026-11-09'
+    sravnenie: 23 убитых — почти целый школьный класс
     istochnik: n3
     dlya_voprosa: false
   - id: ns-0202-v-pulemetchiki
@@ -444,6 +462,7 @@ fakty:
     otryvok: «- Есть, товарищ капитан! - ответил повозочный. - Прошу вернуть меня в пулеметный взвод.»
     pometka: один источник
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n4
     dlya_voprosa: false
   - id: ns-0202-otec-plotnik
@@ -456,6 +475,7 @@ fakty:
     otryvok: «Когда он подрос, отец научил его владеть топором. … Один раз все село взялось за топоры. Сильно досадили кайзеровские вояки.»
     pometka: один источник
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n4
     dlya_voprosa: false
   - id: ns-0202-v-stroj-1944
@@ -468,6 +488,7 @@ fakty:
     otryvok: «Дата и место призыва __.__.1944, Чистяковский РВК, Украинская ССР, Сталинская обл., Чистяковский р-н / Последнее место службы 3 тбр / Воинское звание рядовой»
     pometka: документ
     utverzhden: '2026-11-09'
+    sravnenie: net
     istochnik: n2
     dlya_voprosa: false
 razdely: []
@@ -537,6 +558,7 @@ figures:
   width: 500
   height: 800
   vid: predmet
+  glavnoe_na_kartinke: net
   nomer_predmeta: ДМ-1177
   nomer_snimka: '8249717'
   hranitel: Центральный музей Великой Отечественной войны 1941–1945 гг., Москва
@@ -652,6 +674,18 @@ velichina_chto: против одного солдата с топором
 voinskaya_chast: 389-й стрелковый полк 176-й стрелковой дивизии 9-й армии
 operaciya: Приграничное сражение в Молдавии
 front: Южный фронт
+mesto_sobytiya:
+  nazvanie: Песец
+  shirota: 48.783
+  dolgota: 27.188
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
 etiketka_oblozhki:
 - Модель армейской повозки
 - Государственный исторический музей, Москва
