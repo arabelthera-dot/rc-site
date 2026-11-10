@@ -11,6 +11,7 @@ import { polyaKartinki, polyaFakta, polyaDnya, status } from './forma-dnya.mjs';
 import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
 import { faktyIzUtverzhdeno } from './fakty-iz-utverzhdeno.mjs';
 import { stroka } from './yazyki.mjs';
+import { izmerit, razmeryIzFajla } from './kartinki-fajly.mjs';
 
 // Служебные подписи страницы (пункты меню, викторина, итог, аудиогид, ролик) — шаблоном из src/data/stroki.json (п. 54):
 // нет поля в карточке — берётся строка оттуда; есть — карточка как раньше. Своё имя пункта (игра, «Развилка») — в карточке.
@@ -25,7 +26,9 @@ export const POMETKI = ['документ', 'два источника', 'лег
 // Служебные пометки (Р504, r514h): замок их принимает, на страницу они не идут — оговорок в тексте страницы нет.
 export const POMETKI_SLUZHEBNYE = ['один источник', 'мнение', 'воспоминание'];
 // Поля формы Р635 у картинки (vid, prava … svyashchennoe) — src/lib/forma-dnya.mjs; с 02-01 обязательны (docs/standart-dnya.md, Р660).
-export const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional(), ...polyaKartinki });
+// fajl — не пишется руками: тип, sha256, байты и размеры по файлу в public/ при загрузке (src/lib/kartinki-fajly.mjs, п. 90).
+const fajl = z.object({ tip: str, sha256: z.string().regex(/^[0-9a-f]{64}$/), bayt: z.number().int().positive(), width: z.number().int().positive(), height: z.number().int().positive() });
+export const kartinka = z.object({ src: str, alt: str, data_source: str, license: str, podpis: str, credit: str.optional(), fajl: fajl.optional(), ...polyaKartinki });
 // Кадр дня (блок #kadry, как у 13 янв.): размеры — со старой страницы; klass: portret — портретный кадр уже (общее правило izobreteniya-den.css).
 export const kadr = kartinka.extend({ width: z.number().int().positive().optional(), height: z.number().int().positive().optional(), klass: z.literal('portret').optional() });
 // kadr у факта (Р17, «очень много картинок»: каждая — у своего факта) — виден под строкой факта, вне «Подробнее».
@@ -217,9 +220,13 @@ const DOLG_DYR = JSON.parse(fs.readFileSync('src/data/dyry-dolg.json', 'utf8'));
 // Все карточки: [{ muzei, key, ... }]. Схема — по папке музея (skhemy[<музей>]); нет схемы у музея — ошибка.
 // Имя файла и папки должны совпадать с key и muzei карточки. Дни с 02-01 — ещё и стандарт дня (Р660, src/lib/standart-dnya.mjs).
 // Ошибки собираются по всем карточкам и уходят одним списком: исполнитель видит все пробелы сразу, а не по одному.
+// Размеры, тип и sha256 картинок — из файла (src/lib/kartinki-fajly.mjs): меряются один раз на процесс и папку.
+const MERY_DIR = 'src/content/dni-shablon';
+const MERY = await izmerit(MERY_DIR, failPublic);
+let preduprezhdeno = false;
 export function zagruzitKartochki(DIR, skhemy) {
   if (!fs.existsSync(DIR)) return [];
-  const oshibki = [];
+  const oshibki = [], preduprezhdeniya = [];
   const vse = fs.readdirSync(DIR).sort().flatMap((muzei) => {
     const files = fs.readdirSync(path.join(DIR, muzei)).filter((f) => f.endsWith('.yaml')).sort();
     if (files.length && !skhemy[muzei]) throw new Error(`${DIR}/${muzei}: у музея нет схемы карточки дня`);
@@ -228,6 +235,7 @@ export function zagruzitKartochki(DIR, skhemy) {
       const izUtv = faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(file, 'utf8')), muzei, f.slice(0, -5));
       if (izUtv.oshibki.length) { oshibki.push(...izUtv.oshibki); return []; }
       const syroe = izUtv.syroe;
+      if (DIR === MERY_DIR) preduprezhdeniya.push(...razmeryIzFajla(syroe, muzei, MERY, failPublic, file));
       const r = skhemy[muzei].safeParse(syroe);
       if (!r.success) { oshibki.push(`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`); return []; }
       if (r.data.muzei !== muzei || r.data.key !== f.slice(0, -5)) { oshibki.push(`${file}: muzei/key карточки не совпадают с путём`); return []; }
@@ -235,6 +243,8 @@ export function zagruzitKartochki(DIR, skhemy) {
       return [r.data];
     });
   });
+  // Расхождение ручных размеров с файлом — в журнал один раз на процесс, не ошибка (п. 90).
+  if (preduprezhdeniya.length && !preduprezhdeno) { preduprezhdeno = true; console.warn(`[kartinki-fajly] размеры в карточке не совпали с файлом — ${preduprezhdeniya.length}:\n${preduprezhdeniya.join('\n')}`); }
   oshibki.push(...nomeraDnej(vse));
   if (oshibki.length) throw new Error(`карточки дней (${DIR}) — ошибок ${oshibki.length}:\n${oshibki.join('\n')}`);
   return vse;
