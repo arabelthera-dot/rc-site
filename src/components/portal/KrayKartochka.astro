@@ -1,0 +1,11 @@
+---
+// Карточка дня на /moy-kray/ (п.505): музей · дата · места, заголовок, хук. Вид — rc-etot-den.css.
+import { adresDnya, kogda } from '../../lib/etot-den.mjs';
+const { d } = Astro.props as { d: any };
+const base = import.meta.env.BASE_URL;
+const src = (s: string) => (/^https?:/.test(s) ? s : `${base}${s.replace(/^\//, '')}`);
+---
+<a class="rc-uzel-card" href={adresDnya(base, d.museum, d.key)}>
+  {d.img && <img src={src(d.img)} alt={d.alt ?? ''} loading="lazy" decoding="async" width="640" height="400" />}
+  <span class="rc-uzel-body"><span class="rc-uzel-muzey">{d.museumTitle} · {kogda(d.key)} · {d.mesta.join(', ')}</span><span class="rc-uzel-title">{d.title}</span>{d.hook && <span class="rc-uzel-hook">{d.hook}</span>}</span>
+</a>
