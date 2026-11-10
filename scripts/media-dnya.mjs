@@ -58,7 +58,7 @@ const vIgre = (html, at) => {
 export function proverit(html, muzey, root) {
   const ot = (ref) => decodeURIComponent(new URL(ref.split('#')[0], `http://x/muzei/${muzey}/`).pathname).slice(1);
   const fail = (rel) => { const f = path.join(root, rel); return fs.existsSync(f) && fs.statSync(f).isFile() ? f : null; };
-  const r = { ag: [], rolik: [], agSek: null, rolikSek: null };
+  const r = { ag: [], rolik: [], agSek: null, agFayl: null, rolikSek: null }; // agFayl — путь mp3 гида от корня (лента podkast.mjs)
 
   // 1) Аудиогид.
   const ist = [];
@@ -81,6 +81,7 @@ export function proverit(html, muzey, root) {
     if (!buf.length) { r.ag.push(`файл аудиогида пустой ${rel}`); continue; }
     const sek = mp3Sek(buf);
     r.agSek = sek;
+    r.agFayl ??= rel;
     if (sek === null) r.ag.push(`файл аудиогида не mp3 ${rel}`);
     else if (sek < MIN_SEK) r.ag.push(`аудиогид ${Math.round(sek)} с — меньше ${MIN_SEK} с (${rel})`);
   }
