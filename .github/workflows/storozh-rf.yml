@@ -1,0 +1,66 @@
+# Р721 пп.129, 130, 152, 153 (10.11.2026): ОДИН сторож доступности из России — раз в сутки, отдельно от сборки.
+# Проверяет (scripts/storozh-rf/storozh_rf.py): открываются ли сайт и медиа из сетей МТС, Билайна, Ростелекома
+# (Globalping, бесплатно; Мегафона среди проб нет — так и пишется в итоге) и с московских узлов check-host.net;
+# нет ли домена или адреса в реестре блокировок (выгрузка antifilter.download); сколько дней до конца сертификата
+# (тревога при < 20). Итог «сайт работает» — README.md и status.json в ветке storozh-rf (статус и время проверки).
+# Образец — Upptime (https://upptime.js.org): расписание на Actions, итог — файл в репозитории, сбой — карточка.
+# Пять вопросов: задевает — ничего, только читает сайт снаружи и пишет в ветку storozh-rf; нужно — секрет
+# AI_PROJECTS_TOKEN (право issues на arabelthera-dot/AI_Projects) — даёт Михаил; без нужного — карточка тревоги
+# идёт в rc-site через GITHUB_TOKEN; проверка — ручной пуск; откат — удалить этот файл.
+# Работа всегда зелёная: сборку и слияние не останавливает. Карточка — не чаще раза в сутки.
+name: storozh-rf
+on:
+  schedule:
+    - cron: '23 4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write   # итог — в ветку storozh-rf
+  issues: write     # тревога без секрета — карточкой в rc-site
+concurrency:
+  group: storozh-rf
+  cancel-in-progress: false
+jobs:
+  storozh-rf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: scripts/storozh-rf
+      - name: Проверка из России
+        env:
+          VYHOD: ${{ runner.temp }}/itog
+          TREVOGA: ${{ runner.temp }}/trevoga.txt
+        run: python3 scripts/storozh-rf/storozh_rf.py
+      - name: Итог — в ветку storozh-rf
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd "$RUNNER_TEMP" && git init -q vetka && cd vetka
+          git config user.name github-actions && git config user.email github-actions@users.noreply.github.com
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q --depth 1 origin storozh-rf; then git checkout -q -b storozh-rf FETCH_HEAD; else git checkout -q --orphan storozh-rf; fi
+          cp ../itog/README.md ../itog/status.json .
+          git add README.md status.json
+          git commit -q -m "сторож из России: $(date -u +%F)" && git push -q origin storozh-rf
+      - name: Тревога — карточка не чаще раза в сутки
+        env:
+          GH_TOKEN: ${{ secrets.AI_PROJECTS_TOKEN || github.token }}
+          KUDA: ${{ secrets.AI_PROJECTS_TOKEN && 'arabelthera-dot/AI_Projects' || github.repository }}
+        run: |
+          f="$RUNNER_TEMP/trevoga.txt"
+          [ -s "$f" ] || { echo "тревоги нет"; exit 0; }
+          zag='Сторож из России: трудности с сайтом'
+          telo="$(cat "$f")
+
+          Итог: https://github.com/${GITHUB_REPOSITORY}/blob/storozh-rf/README.md · запуск: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          n=$(gh issue list -R "$KUDA" --state open --search "\"$zag\" in:title" --json number,updatedAt \
+                -q '.[0] | "\(.number) \(.updatedAt)"')
+          if [ -z "$n" ]; then
+            gh issue create -R "$KUDA" --title "$zag" --label agent:arabelthera-dot --body "$telo"
+          elif [ "${n#* }" \< "$(date -u +%F)" ]; then
+            gh issue comment "${n%% *}" -R "$KUDA" --body "$telo"
+          else
+            echo "карточка №${n%% *} уже обновлялась сегодня — пропуск"
+          fi
