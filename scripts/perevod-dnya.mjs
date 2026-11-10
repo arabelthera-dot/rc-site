@@ -5,6 +5,9 @@
 // цитата на другом языке (citaty[].yazyk, п.43) — нет. Языки — src/data/yazyki.json (кроме ru): язык добавляется строкой там.
 // Переводчик — Argos Translate, бесплатно и офлайн (scripts/perevod-argos.py). Только данные: страницы на других языках
 // этим не строятся, вид сайта не меняется. Зовёт .github/workflows/perevod.yml; руками: node scripts/perevod-dnya.mjs <карточка.yaml>…
+// Файл строк игры дня src/data/igry/stroki/<музей>-<ММ-ДД>.json (игры-данными и ручные январские, п. 164), если есть,
+// переводится тем же проходом: его ru пишут stroki-igr / stroki-ruchnyh-igr, здесь — только языки. Узкие места (хук, подписи,
+// кнопки), где перевод длиннее потолка (src/lib/potolok-dliny.mjs, п. 162), печатаются строкой «длинно: …» — не ошибка.
 // Как в мире: машинный перевод после слияния исходника — Crowdin/Weblate «pre-translate»
 // (https://docs.weblate.org/en/latest/admin/machine.html), открытый переводчик — https://github.com/argosopentech/argos-translate .
 import fs from 'node:fs';
@@ -12,6 +15,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { zapisatPerevod, ustarevshie, gotovnost } from '../src/lib/otpechatok.mjs';
+import { dlinnye } from '../src/lib/potolok-dliny.mjs';
 import { pamyat, slovar, podskazki } from '../src/lib/perevod-pamyat.mjs';
 
 const KODY = JSON.parse(fs.readFileSync('src/data/yazyki.json', 'utf8')).yazyki.map((y) => y.code).filter((c) => c !== 'ru');
@@ -33,12 +37,7 @@ export function russkieStroki(d) {
 
 const PAMYAT = pamyat(); // п.141: готовый перевод той же строки из других дней
 const fayly = process.argv.slice(2).filter((f) => /dni-shablon\/[^/]+\/\d\d-\d\d\.yaml$/.test(f) && fs.existsSync(f));
-const dni = fayly.map((f) => {
-  const d = YAML.parse(fs.readFileSync(f, 'utf8'));
-  const kuda = `src/data/perevod/${d.muzei}-${d.key}.json`;
-  const fayl = fs.existsSync(kuda) ? JSON.parse(fs.readFileSync(kuda, 'utf8'))
-    : { _: `Машинный перевод дня ${d.muzei} ${d.key} (scripts/perevod-dnya.mjs, Argos Translate). Руками не правится.` };
-  fayl.ru = russkieStroki(d);
+const sobrat = (kuda, fayl, id, otstup) => {
   for (const { code, kluch, prichina } of ustarevshie(fayl)) if (prichina === 'net-ru') delete fayl[code][kluch];
   const staroe = new Set(ustarevshie(fayl).map((u) => `${u.code} ${u.kluch}`));
   const nado = Object.fromEntries(KODY.map((c) => [c, Object.keys(fayl.ru).filter((k) => !(k in (fayl[c] ?? {})) || staroe.has(`${c} ${k}`))]));
@@ -49,7 +48,17 @@ const dni = fayly.map((f) => {
     if (gotov === undefined) return true;
     zapisatPerevod(fayl, c, k, gotov); izPamyati++; pisalis.add(c); return false;
   });
-  return { kuda, fayl, nado, izPamyati, sdelano: new Set(KODY.filter((c) => nado[c].length || pisalis.has(c))), id: `${d.muzei}/${d.key}` };
+  return { kuda, fayl, nado, izPamyati, sdelano: new Set(KODY.filter((c) => nado[c].length || pisalis.has(c))), id, otstup };
+};
+const dni = fayly.flatMap((f) => {
+  const d = YAML.parse(fs.readFileSync(f, 'utf8'));
+  const kuda = `src/data/perevod/${d.muzei}-${d.key}.json`;
+  const fayl = fs.existsSync(kuda) ? JSON.parse(fs.readFileSync(kuda, 'utf8'))
+    : { _: `Машинный перевод дня ${d.muzei} ${d.key} (scripts/perevod-dnya.mjs, Argos Translate). Руками не правится.` };
+  fayl.ru = russkieStroki(d);
+  const igra = `src/data/igry/stroki/${d.muzei}-${d.key}.json`;
+  return [sobrat(kuda, fayl, `${d.muzei}/${d.key}`, 1),
+    ...(fs.existsSync(igra) ? [sobrat(igra, JSON.parse(fs.readFileSync(igra, 'utf8')), `${d.muzei}/${d.key} игра`, 2)] : [])];
 });
 // одна задача на язык для всех дней — модель грузится один раз
 const zadachi = KODY.map((code) => ({ code, teksty: dni.flatMap((x) => x.nado[code].map((k) => x.fayl.ru[k])) })).filter((z) => z.teksty.length);
@@ -63,10 +72,12 @@ for (const { code } of zadachi) {
 }
 fs.mkdirSync('src/data/perevod', { recursive: true });
 for (const x of dni) {
-  x.fayl._gotovo = gotovnost(x.fayl, KODY, new Date().toISOString().slice(0, 10), x.sdelano);
-  fs.writeFileSync(x.kuda, JSON.stringify(x.fayl, null, 1) + '\n');
+  // готовность языков (п. 147) — только у файла дня; файл строк игры её не несёт
+  if (x.kuda.startsWith('src/data/perevod/')) x.fayl._gotovo = gotovnost(x.fayl, KODY, new Date().toISOString().slice(0, 10), x.sdelano);
+  fs.writeFileSync(x.kuda, JSON.stringify(x.fayl, null, x.otstup) + '\n');
   const n = Object.keys(x.fayl.ru).length;
   console.log(`${x.id}: строк ${n}, переведено ${KODY.filter((c) => Object.keys(x.fayl[c] ?? {}).length === n).length} из ${KODY.length} языков (${KODY.join(', ')}), из памяти переводов ${x.izPamyati}`);
+  for (const u of dlinnye(x.fayl)) console.log(`длинно: ${u.code} ${u.kluch} ${u.dlina} > ${u.potolok}`);
 }
 // п.141, Р627: словарь терминов — только подсказка в журнал, ничего не останавливает
 const SLOVA = slovar();

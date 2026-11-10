@@ -43,6 +43,27 @@
 отпечатки не ставятся: неизвестно, с какого русского текста их переводили, запись «перевод свежий» была бы неправдой.
 Их отпечатает машина перевода при следующем проходе.
 
+## 161. Поиск на языке страницы — Pagefind по `<html lang>`
+
+Индекс поиска (src/integrations/poisk.mjs) строится без `forceLanguage`: Pagefind сам делает отдельный индекс на каждый
+язык по `<html lang>` страницы и режет слова по правилам языка (китайский — по словарю, хинди — по пробелам и знакам).
+Язык страницы ставит `langStranicy()` по коду из пути (`/<код>/muzei/…`); русские страницы и их индекс — как были.
+Проба: «导弹» в китайской странице — было 0 найденных, стало 1; индексы hi, ru, zh.
+
+## 162. Потолок длины перевода — src/lib/potolok-dliny.mjs
+
+Узкие места — хук и заголовок дня (`lead.hook`, `lead.h1`), заголовок игры, подписи (`*.podpis`), пункты меню дня,
+кнопки игр (`varianty.N.tekst`, `podpisi.N.tekst`, `*.knopka`). Перевод может быть длиннее русского на 30 %, для de, fr,
+es, pt, hi и для строк до 20 знаков — на 50 %. Знаки считаются графемами (Intl.Segmenter). Превышение — не ошибка:
+scripts/perevod-dnya.mjs печатает «длинно: <код> <ключ> <длина> > <потолок>», строка попадает в заявку avto/perevod-…
+Отдельного сторожа в CI нет.
+
+## 164. Тексты ручных январских игр — src/data/igry/stroki/<музей>-<ММ-ДД>.json
+
+Разметка и скрипты январских игр не меняются. Ключи `<музей>.<ММ-ДД>.igra.<html|js|dop>.<номер>[.knopka]` указывают на
+места с кириллицей (src/data/igry/stroki-ruchnyh.mjs); `ruchnayaNaYazyke()` подставляет перевод на то же место.
+Русские строки пишет `node scripts/stroki-ruchnyh-igr.mjs`; `--proverit` — ru-подстановка байт в байт равна исходнику
+(31 из 31). Языки пишет машина перевода тем же проходом, что и день.
 ## 145. Код языка — BCP 47, с письмом и страной, где нужно
 
 Один список языков — `src/data/yazyki.json`, поле `code` — тег BCP 47: он же приставка адреса, `lang`, `hreflang`,
@@ -81,6 +102,9 @@
   https://www.gnu.org/software/gettext/manual/gettext.html
 - Коды языков BCP 47 (`be`, `cu`) — реестр IANA: https://www.iana.org/assignments/language-subtag-registry ,
   атрибут `lang` в HTML: https://html.spec.whatwg.org/multipage/dom.html#the-lang-and-xml:lang-attributes
+- Поиск по языкам — Pagefind: https://pagefind.app/docs/multilingual/
+- Рост текста при переводе — W3C: https://www.w3.org/International/articles/article-text-size ,
+  ограничение длины у Weblate: https://docs.weblate.org/en/latest/admin/checks.html#maximum-length-of-translation
 - hreflang, x-default и `xhtml:link` в карте сайта (Google):
   https://developers.google.com/search/docs/specialty/international/localized-versions
 - Выбор тега с письмом и страной (W3C): https://www.w3.org/International/articles/language-tags/
