@@ -74,12 +74,19 @@ jobs:
           echo "$vyvod" | tee -a "$GITHUB_STEP_SUMMARY"
           git add --sparse src/data/perevod/
           git diff --cached --quiet && { echo "Переводы уже свежие."; exit 0; }
+          # оценка качества (п. 165) — только подсказка в сводку и заявку, ничего не останавливает (Р627)
+          ocenka=$(node scripts/ocenka-perevoda.mjs $(git diff --cached --name-only -- src/data/perevod/) 2>&1 || true)
+          echo "$ocenka" | tee -a "$GITHUB_STEP_SUMMARY"
           git commit -q -m "[avto] машинный перевод дня: $(echo $FAYLY | sed 's#src/content/dni-shablon/##g; s#\.yaml##g')"
           git push -q -f origin "$VETKA"
           telo="Машинный перевод дня (Р603, Р686 п.8): Argos Translate, бесплатно и офлайн.
 
           \`\`\`
           $vyvod
+          \`\`\`
+          Оценка качества машиной (подсказка, п. 165):
+          \`\`\`
+          $ocenka
           \`\`\`
           Заявку открыла машина .github/workflows/perevod.yml; строки — scripts/perevod-dnya.mjs. Руками не правится."
           nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
