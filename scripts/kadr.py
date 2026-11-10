@@ -488,6 +488,14 @@ def save(raw, museum, key, name):
     return rel, im
 
 
+def metki():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('kartinki_metki', ROOT / 'scripts/kartinki-metki.py')
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
 def write_day(day, rel, caption, credit):
     d = json.loads(day.read_text())
     imgs = d.get('images', [])
@@ -542,6 +550,7 @@ def put_fond(day, museum, key, fond, ref, caption, avtor, card, prava=None, hran
         sys.exit(f'{fond}: права не названы ({pravo or "нет"}) — посмотри карточку и дай --prava "общественное достояние (автор умер в ГГГГ)"')
     credit = f'{vidno or avtor}. Источник: {src["name"]} [{fond}], {card}. Права: {pravo}.'
     write_day(day, rel, caption, credit)
+    metki().podpisat(ROOT / 'public' / rel, credit, card, pravo)  # п. 157: происхождение по IPTC внутри файла
     print(f'{rel} {im.size[0]}×{im.size[1]} {fond}\n  {credit}')
     vernut(museum, True, tolko=key)  # Р132: на место вырезанного заменой #333 figure
     sinhron(museum, True, tolko=key)  # Р128: полная страница дня показывает кадр сразу
