@@ -46,6 +46,7 @@ proba('164: тексты nastroy-volnu-priyomnika в перевод, числа 
   const k = Object.keys(vynutStroki(volna, 'izobreteniya', '01-04'));
   return k.some((x) => x.endsWith('dannye.knopka_ru')) && k.some((x) => x.endsWith('dannye.pobeda.soobshchenie_ru'))
     && !k.some((x) => /\.(komand|dopusk|cel_ot|polzunok_start)$/.test(x));
+})());
 // ugol-v-koridor-luny (01-02): угол старта между min и max, удар меньше коридора; тексты исходов в перевод, цвета — нет.
 const luna = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/ugol-v-koridor-luny.json', import.meta.url), 'utf8'));
 const pravkaL = (fn) => { const o = structuredClone(luna); fn(o.dannye); return igraDannymi.safeParse(o).success; };
