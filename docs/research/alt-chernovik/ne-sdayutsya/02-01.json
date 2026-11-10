@@ -1,0 +1,53 @@
+{
+  "muzei": "ne-sdayutsya",
+  "den": "02-01",
+  "status": "черновик, на страницы не ставится",
+  "modeli": [
+    "Salesforce/blip-image-captioning-base",
+    "Helsinki-NLP/opus-mt-en-ru"
+  ],
+  "kartinki": [
+    {
+      "gde": "src/content/days/ne-sdayutsya/02-01.json images[0]",
+      "src": "muzei/ne-sdayutsya/img/02-01-goskatalog-8648350.jpg",
+      "podpis": "Поединок Пересвета с Челубеем на Куликовом поле, копия картины, 1952 год",
+      "iz_podpisi": "Картина: Поединок Пересвета с Челубеем на Куликовом поле",
+      "iz_modeli": "Картина, висящая на стене комнаты"
+    },
+    {
+      "gde": "src/content/days/ne-sdayutsya/02-01.json images[1]",
+      "src": "muzei/ne-sdayutsya/img/02-01-goskatalog-7116901.jpg",
+      "podpis": "Святой Сергий Радонежский благословляет Дмитрия Донского, гравюра, начало XX века",
+      "iz_podpisi": "Гравюра: Святой Сергий Радонежский благословляет Дмитрия Донского",
+      "iz_modeli": "рисунок человека в комнате с другими людьми"
+    },
+    {
+      "gde": "src/content/days/ne-sdayutsya/02-01.json images[2]",
+      "src": "muzei/ne-sdayutsya/img/02-01-goskatalog-28663932.jpg",
+      "podpis": "Значок «Пересвет и Челубей», 1980 год",
+      "iz_podpisi": "Значок «Пересвет и Челубей»",
+      "iz_modeli": "Золотая тарелка с изображением человека на лошади"
+    },
+    {
+      "gde": "src/content/days/ne-sdayutsya/02-01.json images[3]",
+      "src": "muzei/ne-sdayutsya/img/02-01-goskatalog-28647310.jpg",
+      "podpis": "Преподобный Сергий Радонежский благословляет князя Дмитрия Ивановича на битву, картина, 2009–2010 годы",
+      "iz_podpisi": "Картина: Преподобный Сергий Радонежский благословляет князя Дмитрия Ивановича на битву",
+      "iz_modeli": "рисунок группы людей в лесу"
+    },
+    {
+      "gde": "src/content/days/ne-sdayutsya/02-01.json images[4]",
+      "src": "muzei/ne-sdayutsya/img/02-01-goskatalog-28646869.jpg",
+      "podpis": "Храм-памятник Сергия Радонежского на Куликовом поле, рисунок, 1968 год",
+      "iz_podpisi": "Рисунок: Храм-памятник Сергия Радонежского на Куликовом поле",
+      "iz_modeli": "Водоцветный рисунок церкви"
+    },
+    {
+      "gde": "src/content/days/ne-sdayutsya/02-01.json images[5]",
+      "src": "muzei/ne-sdayutsya/img/02-01-goskatalog-19984529.jpg",
+      "podpis": "Куликовская битва, икона, 1990-е годы",
+      "iz_podpisi": "Икона: Куликовская битва",
+      "iz_modeli": "рисунок на белой стене с белым фоном"
+    }
+  ]
+}

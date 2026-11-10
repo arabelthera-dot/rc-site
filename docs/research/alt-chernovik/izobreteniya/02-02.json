@@ -1,0 +1,18 @@
+{
+  "muzei": "izobreteniya",
+  "den": "02-02",
+  "status": "черновик, на страницы не ставится",
+  "modeli": [
+    "Salesforce/blip-image-captioning-base",
+    "Helsinki-NLP/opus-mt-en-ru"
+  ],
+  "kartinki": [
+    {
+      "gde": "src/content/days/izobreteniya/02-02.json images[0]",
+      "src": "muzei/izobreteniya/img/02-02-edinorog-1757.jpg",
+      "podpis": "12-фунтовый «единорог» Михаила Данилова, бронза, 1757 год. Хранит Военно-исторический музей артиллерии, инженерных войск и войск связи, Санкт-Петербург.",
+      "iz_podpisi": "12-фунтовый «единорог» Михаила Данилова",
+      "iz_modeli": "старый медный телескоп на белом фоне"
+    }
+  ]
+}
