@@ -956,5 +956,68 @@
   "formy": [
    "космодемья́нская"
   ]
+ },
+ "lyudi:aleksandr-peresvet": {
+  "tip": "lyudi",
+  "nazvanie": "Александр Пересвет",
+  "formy": [
+   "пересве́т",
+   "пересве́та",
+   "пересве́ту",
+   "пересве́том"
+  ]
+ },
+ "lyudi:mihail-brenok": {
+  "tip": "lyudi",
+  "nazvanie": "Михаил Бренок",
+  "formy": [
+   "бре́нок",
+   "бре́нка",
+   "бре́нку",
+   "бре́нком"
+  ]
+ },
+ "lyudi:yagaylo": {
+  "tip": "lyudi",
+  "nazvanie": "Ягайло",
+  "formy": [
+   "яга́йло",
+   "яга́йла",
+   "яга́йлом"
+  ]
+ },
+ "lyudi:mamay": {
+  "tip": "lyudi",
+  "nazvanie": "Мамай",
+  "formy": [
+   "мама́й",
+   "мама́я",
+   "мама́ю"
+  ]
+ },
+ "lyudi:chelubey": {
+  "tip": "lyudi",
+  "nazvanie": "Челубей",
+  "formy": [
+   "челубе́й",
+   "челубе́я"
+  ]
+ },
+ "lyudi:andrey-oslyabya": {
+  "tip": "lyudi",
+  "nazvanie": "Андрей Ослябя",
+  "formy": [
+   "осля́бя",
+   "осля́бу"
+  ]
+ },
+ "mesto:kafa": {
+  "tip": "mesto",
+  "nazvanie": "Кафа",
+  "formy": [
+   "ка́фа",
+   "ка́фу",
+   "кафи́нцы"
+  ]
  }
 }
