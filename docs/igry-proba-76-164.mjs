@@ -69,14 +69,12 @@ proba('164: тексты tri-usloviya-bulata в перевод, коды и чи
   return k.some((x) => x.endsWith('dannye.blizhe.knopka_ru')) && k.some((x) => x.endsWith('dannye.usloviya.0.neudacha.kadr_ru'))
     && !k.some((x) => /\.(kod|start|verno|ton|uzor|ochki)$/.test(x));
 })());
-})());
 // smeta-truboprovoda (01-05): ползунки по уровням, start — существующий уровень, сцена ссылается на существующий ползунок.
 const smeta = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/smeta-truboprovoda.json', import.meta.url), 'utf8'));
 const pravkaS = (fn) => { const o = structuredClone(smeta); fn(o.dannye); return igraDannymi.safeParse(o).success; };
 proba('76: данные к механике smeta-truboprovoda приняты', igraDannymi.safeParse(smeta).success);
 proba('76: start ползунка вне уровней — отказ', !pravkaS((d) => { d.polzunki[0].start = 9; }));
 proba('76: сцена на ползунок, которого нет, — отказ', !pravkaS((d) => { d.scena.stancii = 7; }));
-})());
 // zvenya-pod-koleso (январь 01-09, данными): число звеньев 3–12, без шагов — отказ.
 const zv = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/zvenya-pod-koleso.json', import.meta.url), 'utf8'));
 const pravkaZv = (fn) => { const o = structuredClone(zv); fn(o.dannye); return igraDannymi.safeParse(o).success; };
