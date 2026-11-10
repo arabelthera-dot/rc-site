@@ -1,6 +1,7 @@
 // Языки сайта — каркас (план сайта, Г18–Г21, «да» Сергея 19.10.2026). Данные — src/data/yazyki.json.
 // Русский — без приставки адреса, прочие — /<code>/… . Язык с ready:false нигде не виден: ни пометок hreflang,
 // ни флага в переключателе — чтобы не было ссылок на несуществующие страницы.
+import fs from 'node:fs';
 import data from '../data/yazyki.json' with { type: 'json' };
 
 export const yazyki = data.yazyki;
@@ -29,12 +30,48 @@ export function yazyk(code) {
   return yazyki.find((y) => y.code === code) ?? yazyki.find((y) => y.code === poUmolchaniyu);
 }
 
-/** Пометки hreflang: только готовые языки + x-default (русский). */
-export function hreflangi(pathname, base, site) {
+// Перевод дня (пп. 149, 150 очереди 2): у страницы дня язык есть, когда он готов (ready:true) и в файле строк дня
+// src/data/perevod/<музей>-<ММ-ДД>.json (scripts/perevod-dnya.mjs) есть его раздел; прочие страницы — по ready:true.
+// Пока ни один язык, кроме русского, не готов — пусто: пометок и связей перевода нет, русский вывод прежний.
+const DEN_RE = /^muzei\/([^/]+)\/den\/(\d\d-\d\d)\/$/;
+const perevody = new Map();
+function perevodDnya(museum, key) {
+  const id = `${museum}-${key}`;
+  if (!perevody.has(id)) {
+    const f = `src/data/perevod/${id}.json`;
+    perevody.set(id, fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {});
+  }
+  return perevody.get(id);
+}
+
+/** Языки перевода страницы (кроме русского) по её «русскому» пути rest (muzei/x/den/01-02/). */
+export function yazykiStranicy(rest) {
+  const drugie = gotovye.filter((y) => y.code !== poUmolchaniyu);
+  if (!drugie.length) return [];
+  const den = DEN_RE.exec(rest);
+  if (!den) return drugie;
+  const fayl = perevodDnya(den[1], den[2]);
+  return drugie.filter((y) => Object.keys(fayl[y.code] ?? {}).length);
+}
+
+/** Пометки hreflang: русский, языки перевода страницы и x-default (русский). Код языка — BCP 47 (yazyki.json). */
+export function hreflangi(pathname, base, site, est = () => true) {
   const { rest } = razobratPut(pathname, base);
-  const links = gotovye.map((y) => ({ hreflang: y.code, href: new URL(putNaYazyke(rest, y.code, base), site).href }));
+  const ru = yazyk(poUmolchaniyu);
+  const links = [ru, ...yazykiStranicy(rest).filter((y) => est(putNaYazyke(rest, y.code, base)))]
+    .map((y) => ({ hreflang: y.code, href: new URL(putNaYazyke(rest, y.code, base), site).href }));
   links.push({ hreflang: 'x-default', href: new URL(putNaYazyke(rest, poUmolchaniyu, base), site).href });
   return links;
+}
+
+/** Связь перевода с оригиналом для JSON-LD (schema.org translationOfWork / workTranslation): у перевода — ссылка
+ *  на русскую страницу, у русской — на её переводы. Перевода нет — пустой объект, разметка прежняя. */
+export function svyazPerevoda(pathname, base, site, type) {
+  const { code, rest } = razobratPut(pathname, base);
+  const langs = yazykiStranicy(rest);
+  if (!langs.length) return {};
+  const work = (c) => ({ '@type': type, url: new URL(putNaYazyke(rest, c, base), site).href, inLanguage: c });
+  return code === poUmolchaniyu ? { workTranslation: langs.map((y) => work(y.code)) } : { translationOfWork: work(poUmolchaniyu) };
 }
 
 /** og:locale языка: поле locale из yazyki.json, иначе code_COUNTRY (ru → ru_RU). */
