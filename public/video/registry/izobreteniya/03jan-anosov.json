@@ -1,32 +1,33 @@
 {
   "title": "История в 51 секунду",
-  "note": "Кадры — подлинные: чертежи печей для варки булата из работы П. П. Аносова «О булатах», 1841 (Свердловский областной краеведческий музей, Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи (edge-tts).",
+  "intro": "Потерянный на века секрет булата вернул русский инженер, первым в мире разглядев под микроскопом, из чего сделана сталь.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42601826342) из сценария days/03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/03jan-anosov/day-03jan-anosov.mp4",
     "local": "muzei/izobreteniya/video/day-03jan-anosov.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 50.9,
+    "sec": 50.5,
     "mb": 12.2
   },
   "vertical": {
     "file": "izobreteniya/03jan-anosov/day-03jan-anosov-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-03jan-anosov-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 50.9,
-    "mb": 11.1
+    "sec": 50.5,
+    "mb": 11
   },
   "poster": {
     "file": "izobreteniya/03jan-anosov/day-03jan-anosov-poster.jpg",
     "local": "muzei/izobreteniya/video/day-03jan-anosov-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/03jan-anosov/day-03jan-anosov-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-03jan-anosov-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
