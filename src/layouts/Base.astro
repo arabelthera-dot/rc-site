@@ -6,7 +6,7 @@ import SiteBar from '../components/SiteBar.astro';
 import InlineCss from '../components/InlineCss.astro';
 import Metrika from '../components/Metrika.astro';
 import Yazyki from '../components/Yazyki.astro';
-import { yazyk, razobratPut, hreflangi, ogLocale, stroka, strelkaVpered } from '../lib/yazyki.mjs';
+import { yazyk, razobratPut, hreflangi, svyazPerevoda, ogLocale, stroka, strelkaVpered } from '../lib/yazyki.mjs';
 import { podpiskaHtml } from '../lib/sitebar.mjs';
 import { fontFiles, razvernut } from '../lib/shrifty.mjs';
 import nastroyki from '../data/nastroyki.json';
@@ -100,11 +100,14 @@ const vz = znak(museum ?? pv.museum, pv.key);
 const rod = roditelyu(museum ?? pv.museum, pv.key);
 const age = typicalAgeRange(vz);
 const ldVse = kind === 'article' && (sobytie || proizvedeniya.length) ? [ld, sobytie, ...proizvedeniya].filter(Boolean) : ld;
-const ldAge = Array.isArray(ldVse) ? ldVse.map((o) => (['WebSite', 'WebPage', 'Article'].includes(o['@type']) ? { ...o, typicalAgeRange: age } : o))
-  : { ...ldVse, typicalAgeRange: age };
+// Связь перевода с оригиналом (п. 150): translationOfWork у перевода, workTranslation у русской — у узла самой страницы
+// (url = адрес страницы); перевода у страницы нет — пусто, разметка прежняя (src/lib/yazyki.mjs, svyazPerevoda).
+const perevodLd = (o) => (o.url === url ? { ...o, ...svyazPerevoda(Astro.url.pathname, base, Astro.site, o['@type']) } : o);
+const ldAge = Array.isArray(ldVse) ? ldVse.map((o) => perevodLd(['WebSite', 'WebPage', 'Article'].includes(o['@type']) ? { ...o, typicalAgeRange: age } : o))
+  : perevodLd({ ...ldVse, typicalAgeRange: age });
 const ldJson = JSON.stringify(ldAge).replace(/</g, '\\u003c');
 // Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
-// hreflang — только готовые языки (ready:true) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
+// hreflang — русский, языки перевода страницы (src/lib/yazyki.mjs, yazykiStranicy) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
 const alternates = bezAdresa ? [] : hreflangi(Astro.url.pathname, base, Astro.site);
 const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
 // «Нашли ошибку?» (Д6, Р84; пакет 3 описи 22.10.2026) — в подвале каждой страницы, кроме страниц дня: у них своя строка
@@ -206,7 +209,7 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
   <footer>
     <div class="slog">{s('slogan')}</div>
     <slot name="footer"><a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></slot>
-    <div class="foot-links"><a href={`${base}detyam/`}>{s('podvalDetyam')}</a> · <a href={`${base}o-proekte/`}>{s('podvalOProekte')}</a> · <a href={`${base}kak-sdelan-muzey/`}>{s('podvalKakSdelan')}</a> · <a href={`${base}kontakty/`}>{s('podvalKontakty')}</a> · <a href={`${base}politika-konfidencialnosti/`}>{s('podvalPolitika')}</a>{lang.code === 'ru' && <> · <a href={`${base}ispravleniya/`}>{s('podvalIspravleniya')}</a></>}{oshibkaUrl && <> · <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">{s('podvalOshibka')}</a></>}</div>
+    <div class="foot-links"><a href={`${base}detyam/`}>{s('podvalDetyam')}</a> · <a href={`${base}o-proekte/`}>{s('podvalOProekte')}</a> · <a href={`${base}kak-sdelan-muzey/`}>{s('podvalKakSdelan')}</a> · <a href={`${base}kontakty/`}>{s('podvalKontakty')}</a> · <a href={`${base}politika-konfidencialnosti/`}>{s('podvalPolitika')}</a>{lang.code === 'ru' && <> · <a href={`${base}ispravleniya/`}>{s('podvalIspravleniya')}</a> · <a href={`${base}o-dostupnosti/`}>О доступности</a></>}{oshibkaUrl && <> · <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">{s('podvalOshibka')}</a></>}</div>
     {lang.code === 'ru' && <div class="foot-links">Официальный сайт — <a href={kanaly.sayt}>{kanaly.saytImya}</a>. Других сайтов, каналов и сборов у нас нет</div>}
     {lang.code === 'ru' && <div class="foot-links">Автор проекта — <a href={`${base}o-proekte/#osnovatel`}>Сергей Ефименко</a> · <a href={`mailto:${kanaly.pochta}`}>{kanaly.pochta}</a></div>}
     <Fragment set:html={licenziyaHtml(base, { code: lang.code })} />

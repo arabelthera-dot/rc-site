@@ -21,6 +21,16 @@
   "tyazhelaya_tema": [
     "gibel"
   ],
+  "shkola": [
+    {
+      "predmet": "istoriya",
+      "klass": 9
+    },
+    {
+      "predmet": "fizika",
+      "klass": 7
+    }
+  ],
   "velichina_chislo": 1027,
   "velichina_edinica": "м",
   "velichina_chto": "глубина погружения",
@@ -109,6 +119,9 @@
       "hranitel": "Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник",
       "nomer_predmeta": "4655496",
       "nomer_snimka": "42001363",
+      "izobrazheno": [
+        "predmet:komsomolec"
+      ],
       "prava": {
         "avtor": "автор не указан",
         "god_sozdaniya": 1989,

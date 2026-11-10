@@ -8,6 +8,7 @@ import { z } from 'astro/zod';
 import { existsSync } from 'node:fs';
 import { kartochkaUtv } from './lib/skhema-utverzhdeno.mjs';
 import { igraDannymi } from './lib/igry-mehaniki';
+import { vyshel } from './lib/vyhod.mjs';
 
 // Музеи — каталог platform/catalog/museums.json как есть; title_ru — единственное имя музея.
 const museums = defineCollection({
@@ -35,7 +36,7 @@ const museums = defineCollection({
 // 16.10 Сергей: «переноси как есть, дальше будем менять, улучшать» — переписанный день строку снимает.
 import waivers from './data/passport-waivers.json';
 import slovar from './data/slovar.json'; // slovar — словарь связей дня (Р37, Сергей 20.10)
-import { BAZY, VIDY, wiki, nomer, polyaKartinki, polyaDnya as polyaDnyaFormy } from './lib/forma-dnya.mjs';
+import { BAZY, VIDY, wiki, nomer, polyaKartinki, polyaDnya as polyaDnyaFormy, status, poluhuk, vizualDannymi } from './lib/forma-dnya.mjs';
 
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
 // Инициалы («А. К. Толстой») — не конец предложения: точка после одиночной заглавной буквы не считается.
@@ -54,6 +55,9 @@ const fakt = z.object({
   dlya_voprosa: z.boolean().optional(),
   otvet: z.string().min(1).optional(),
   otvet_edinstvennyj: z.literal(true).optional(),
+  // Р676: poluhuk — заголовок-крючок факта; eshche — факт блока «Ещё 5» (нет — один из 10 основных).
+  poluhuk: poluhuk.optional(),
+  eshche: z.literal(true).optional(),
 }).refine((f) => !f.dlya_voprosa || (f.otvet && f.otvet_edinstvennyj), { message: 'факт для вопроса — с ответом, и ответ единственный (otvet, otvet_edinstvennyj)' });
 
 const image = z.object({
@@ -62,6 +66,8 @@ const image = z.object({
   credit: z.string().min(1, 'у картинки нет источника'),
   generated: z.boolean().default(false),
   text_on_image: z.literal(false, { message: 'текст на картинке запрещён' }).default(false),
+  // 25. Описание для незрячих (WCAG 1.1.1) — что видно на картинке, не копия подписи; нет поля — alt из caption, как раньше.
+  alt: z.string().min(1).optional(),
   // Р635 — поля формы картинки (смысл, страница или служебное — src/data/forma-dnya.json); нет поля — как раньше.
   ...polyaKartinki,
 });
@@ -120,8 +126,15 @@ const doc = z.object({ prolog: z.string(), head_attrs: z.string(), head: z.strin
 // Игра дня данными (Р635, 08.11.2026): механика из src/lib/igry-mehaniki.ts + её данные; нет поля — дня не касается.
 const igra = igraDannymi;
 
+// Выход по дате (Р686 п.7, src/lib/vyhod.mjs): при RC_PO_DATE день с god_pokaza до своего дня в коллекцию не попадает —
+// его адрес собирается как «День готовится», в календарь, ленты и карту сайта он не идёт. Без переменной — как раньше.
+const poDate = (inner: ReturnType<typeof glob>) => ({ name: 'days-po-date', load: async (ctx: Parameters<typeof inner.load>[0]) => {
+  await inner.load(ctx);
+  for (const [id, e] of ctx.store.entries()) if (!vyshel(e.data)) ctx.store.delete(id);
+} });
+
 const days = defineCollection({
-  loader: glob({ pattern: '**/*.json', base: './src/content/days' }),
+  loader: poDate(glob({ pattern: '**/*.json', base: './src/content/days' })),
   schema: z.object({
     museum: z.string(),
     key: z.string().regex(/^\d\d-\d\d$/, 'ключ дня — ММ-ДД')
@@ -149,8 +162,10 @@ const days = defineCollection({
     // slovar — связи дня со словарём src/data/slovar.json (Р37, Сергей 20.10: одно поле-ссылка, снимает заморозку только для него):
     // slovar — «tip:id», tip — lyudi | mesto | narod | tema; id нет в словаре — сборка красная (страницы /slovar/)
     // Р635 — форма карточки дня (src/data/forma-dnya.json); поля без значения по умолчанию — старые дни не меняются.
-    status: z.enum(['zagotovka', 'gotov'], { message: "status — 'zagotovka' или 'gotov'" }).optional(),
+    status: status.optional(),
     ...polyaDnyaFormy(slovar),
+    // Р676: визуализация «Русских не сдаются» вместо игры — tip (dokument | karta | predmet) и данные.
+    vizual: vizualDannymi.optional(),
     fakty: z.array(fakt).optional(),
   }).superRefine((d, ctx) => {
     if (!!d.body !== !!d.doc)
@@ -232,6 +247,10 @@ function formaDnya(d: any, ctx: z.RefinementCtx) {
       net(['images', i, 'prava', 'sdelano_mashinoj'], 'sdelano_mashinoj не совпадает с generated');
   });
   if (!d.status) return;
+  // Р676: аудиогид и ролик — только после показа Сергею (museum-page-production, ход 2).
+  for (const k of ['audio', 'video'])
+    if (d[k] && !d.pokazan_sergeyu) net([k], `${k} есть, а pokazan_sergeyu нет — озвучка и ролик только после показа текста Сергею`);
+  if (d.museum === 'ne-sdayutsya' && d.igra) net(['igra'], 'у «Русских не сдаются» игры нет — вместо неё vizual (Р436)');
   if (!d.title) net(['title'], 'у дня нет названия');
   if (!d.hook) net(['hook'], 'у дня нет хука');
   const teksty: [(string | number)[], string][] = [[['title'], d.title], [['hook'], d.hook ?? ''],
@@ -255,6 +274,13 @@ function formaDnya(d: any, ctx: z.RefinementCtx) {
     if (!im.prava) net(['images', i, 'prava'], 'у картинки готового дня нет паспорта прав');
     if (voennyj && im.simvolika_proverena !== true) net(['images', i, 'simvolika_proverena'], 'военный день — символика картинки проверена человеком');
   });
+  // Р676 — состав готового дня: основных фактов 10 и «Ещё» 5, у каждого полухук; игра или визуализация по музею.
+  const fakty = d.fakty ?? [], eshche = fakty.filter((f: { eshche?: true }) => f.eshche).length;
+  if (fakty.length - eshche !== 10 || eshche !== 5)
+    net(['fakty'], `у готового дня основных фактов ${fakty.length - eshche} и «Ещё» ${eshche} — нужно 10 и 5 (eshche: true у пяти)`);
+  fakty.forEach((f: { poluhuk?: string }, i: number) => { if (!f.poluhuk) net(['fakty', i, 'poluhuk'], 'у факта готового дня нет полухука (poluhuk)'); });
+  if (d.museum === 'izobreteniya' && !d.igra) net(['igra'], 'у готового дня изобретений нет игры данными (igra)');
+  if (d.museum === 'ne-sdayutsya' && !d.vizual) net(['vizual'], 'у готового дня «Русских не сдаются» нет визуализации данными (vizual)');
 }
 
 // Копии утверждённых карточек (src/data/utverzhdeno/<музей>/ММ-ДД.json): «кадр без факта» — ошибка схемы (аудит 04.11, п. 5).

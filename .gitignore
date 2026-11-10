@@ -11,3 +11,5 @@ public/video/registry.json
 
 # Сайты с сертификатом не из мирового списка — выход scripts/proverka-tls.mjs при каждой сборке (Р531, п. 15 аудита)
 src/data/tls-nedoverie.json
+# Доска дней scripts/doska-dney.mjs — служебный вывод, не в git (Р531)
+data/doska-dney/

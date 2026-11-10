@@ -10,6 +10,7 @@
 //   ссылки       — только на адрес сайта (site из astro.config.mjs) и открываются с ответом 200 до отправки.
 import fs from 'node:fs';
 import path from 'node:path';
+import YAML from 'yaml';
 import { checkMuseumName, decode, MUSEUMS } from './imya-muzeya.mjs';
 import { sverkaTekstov, tekst, kadrXX, vedomostOsnovaniy } from './zakon.mjs';
 import { pageFrames } from './podpisi.mjs';
@@ -17,6 +18,7 @@ import { tragicheskij } from './vozrast.mjs';
 
 const DAYS = 'src/content/days';
 const FULL = 'src/data/full-pages';
+const SHABLON = 'src/content/dni-shablon';
 
 /** Схема записи дня — та же, что у сборки: src/content.config.ts через Vite (astro:content — заглушка defineCollection). */
 export async function shemaDnya(root = process.cwd()) {
@@ -55,7 +57,7 @@ const adresa = (post) => [...new Set([...(post.urls || []), post.url,
   ...[...String(post.tg || '').matchAll(/href="([^"]+)"/g)].map((m) => m[1].replace(/&amp;/g, '&')),
   ...[...String(post.vk || '').matchAll(/https?:\/\/[^\s<>"«»]+/g)].map((m) => m[0])].filter(Boolean).map(bezUtm))];
 
-/** Картинка поста: файл в public/, кадр карточки дня или полной страницы с подписью; XX век — с основанием прав. */
+/** Картинка поста: файл в public/, кадр карточки дня, полной страницы или обложка общего шаблона с подписью; XX век — с основанием прав. */
 function proverkaKartinki(post, root, karta, brak) {
   const { slug } = post.main;
   const key = post.key;
@@ -77,7 +79,16 @@ function proverkaKartinki(post, root, karta, brak) {
     const src = f.src.split(/[?#]/)[0];
     return path.resolve(pub, src.startsWith('/') ? src.slice(1) : `muzei/${slug}/${src}`) === file;
   });
-  if (!fr) return brak.push(`картинка ${rel} — нет среди кадров дня ${slug}/${key} (карточка или полная страница)`);
+  // День на общем шаблоне (Р286): обложка карточки src/content/dni-shablon — подпись alt, источник data_source.
+  const shablon = path.join(root, SHABLON, slug, `${key}.yaml`);
+  const ob = !fr && fs.existsSync(shablon) ? YAML.parse(fs.readFileSync(shablon, 'utf8'))?.oblozhka : null;
+  if (ob?.src && path.resolve(pub, String(ob.src).replace(/^\//, '')) === file) {
+    if (!ob.alt || !ob.data_source) brak.push(`картинка ${rel} — у обложки дня нет подписи (alt) или источника (data_source)`);
+    const xx = kadrXX({ museum: slug, key, src: ob.src, caption: ob.alt, credit: ob.data_source }, 'карточка', karta.year, ved);
+    if (xx && !xx.osnovanie) brak.push(`картинка ${rel} — кадр XX века без основания прав (подпись или data/reestry/osnovaniya.json)`);
+    return;
+  }
+  if (!fr) return brak.push(`картинка ${rel} — нет среди кадров дня ${slug}/${key} (карточка, полная страница или обложка шаблона)`);
   if (fr.state === 'none') brak.push(`картинка ${rel} — у кадра на полной странице нет ни подписи с источником, ни таблицы прав`);
   const xx = kadrXX({ museum: slug, key, ...fr }, 'полная страница', karta.year, ved);
   if (xx && !xx.osnovanie) brak.push(`картинка ${rel} — кадр XX века без основания прав (подпись или data/reestry/osnovaniya.json)`);

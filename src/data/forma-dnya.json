@@ -93,6 +93,13 @@
       "punkt": "9"
     },
     {
+      "imya": "shkola",
+      "chto": "школьный предмет и класс, к которым подходит день: список {predmet, klass}, предмет — из закрытого списка ФГОС src/data/spravochniki/shkolnye-predmety.json",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "10"
+    },
+    {
       "imya": "fakty",
       "chto": "факты дня, хотя бы один",
       "na_stranicu": true,
@@ -159,6 +166,13 @@
       "imya": "citaty",
       "chto": "цитаты: кто, где, текст",
       "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "16"
+    },
+    {
+      "imya": "citaty.yazyk",
+      "chto": "язык цитаты, код BCP 47: be — белорусский, cu — церковнославянский; поля нет — русская (docs/perevod-standart.md)",
+      "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
       "punkt": "16"
     },
@@ -296,6 +310,20 @@
       "punkt": "28"
     },
     {
+      "imya": "images.alt",
+      "chto": "описание картинки для незрячих (alt): что на ней видно, не копия подписи; нет — alt из подписи",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "25"
+    },
+    {
+      "imya": "images.opisanie_dlinnoe",
+      "chto": "длинное описание схемы, карты, чертежа для незрячих; выводится под картинкой раскрывающимся блоком",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "26"
+    },
+    {
       "imya": "images.simvolika_proverena",
       "chto": "символика на картинке проверена; в военном дне обязательно",
       "na_stranicu": false,
@@ -310,6 +338,13 @@
       "punkt": "29"
     },
     {
+      "imya": "images.izobrazheno",
+      "chto": "кто и что на картинке — номера записей словаря slovar.json или карточек spravochniki/kartochki.json («lyudi:…», «predmet:…», «mesto:…»)",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "22"
+    },
+    {
       "imya": "slovar",
       "chto": "словарь трудных слов дня",
       "na_stranicu": true,
@@ -317,11 +352,53 @@
       "punkt": "30"
     },
     {
+      "imya": "ne_perevodit",
+      "chto": "шифры, номера, коды дословно как в тексте («ф. 1, оп. 2, д. 3») — на странице в translate=\"no\", переводчик их не трогает; поле дозаполняет машина",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "41"
+    },
+    {
       "imya": "chistyj_tekst",
       "chto": "правило: в полях нового дня нет вёрстки и слов «в этом году»",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": true,
       "punkt": "40"
+    },
+    {
+      "imya": "status",
+      "chto": "zagotovka — день в работе, состав не обязателен; gotov — вся форма и весь состав (Р676)",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "171–173"
+    },
+    {
+      "imya": "fakty.poluhuk",
+      "chto": "полухук — заголовок-крючок факта над «Подробнее» (у карточки страницы — summary)",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "172"
+    },
+    {
+      "imya": "fakty.eshche",
+      "chto": "факт блока «Ещё пять фактов»; у готового дня основных 10 и таких 5",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "171"
+    },
+    {
+      "imya": "vizual",
+      "chto": "только «Русские не сдаются»: визуализация данными вместо игры — tip (dokument | karta | predmet) и dannye",
+      "na_stranicu": true,
+      "obyazatelno_dlya_gotov": true,
+      "punkt": "173"
+    },
+    {
+      "imya": "pokazan_sergeyu",
+      "chto": "дата показа текста Сергею; без неё нет аудиогида и ролика",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false,
+      "punkt": "174"
     }
   ]
 }

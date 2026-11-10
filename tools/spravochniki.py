@@ -20,6 +20,14 @@ ZAPRET_ADRES = re.compile(r'wiki(pedia|media|data|source)|kasparov|facebook\.com
 # Р469: белорусские музеи — союзники; в реестре sources.json их пока нет
 BELARUS = [{'id': 'warmuseum_by', 'name': 'Белорусский государственный музей истории Великой Отечественной войны',
             'url': 'https://www.warmuseum.by/', 'strana': 'Беларусь', 'osnovanie': 'Р469'}]
+# Р676: виды источника, у которых нет одной базы в реестре (книга, статья, сайт музея или архива) — те же id, что
+# раньше были руками в BAZY src/lib/forma-dnya.mjs; теперь BAZY читается из bazy.json, список один
+OBSHCHIE = [('muzej-rf', 'Сайт российского музея'), ('muzej-by', 'Сайт белорусского музея'),
+            ('arhiv-rf', 'Российский архив'), ('arhiv-by', 'Белорусский архив'),
+            ('biblioteka-rf', 'Российская библиотека'), ('biblioteka-by', 'Белорусская библиотека'),
+            ('kniga', 'Книга'), ('periodika', 'Газета или журнал'), ('gosorgan-rf', 'Сайт российского госоргана'),
+            ('gosorgan-by', 'Сайт белорусского госоргана'), ('nauka', 'Научная статья или издание'),
+            ('sajt-organizacii', 'Сайт организации')]
 POLYA = {'n': int, 'baza': str, 'nazvanie': str, 'ssylka': str}
 POLYA_MOZHNO = {'avtor': str, 'god': (int, str), 'nomer_v_baze': str, 'stranica': str, 'provereno': str}
 
@@ -34,6 +42,8 @@ def bazy():
         da.append({'id': x['id'], 'name': x['name'], 'url': x.get('url', ''), 'strana': 'Россия',
                    'status': x.get('status'), 'proveren': x.get('checked')})
     da += BELARUS
+    da += [{'id': i, 'name': n, 'url': '', 'strana': 'Беларусь' if i.endswith('-by') else 'Россия', 'vid': 'obshchij',
+            'osnovanie': 'Р676'} for i, n in OBSHCHIE]
     out = {'_chto': 'Закрытый список баз для поля «baza» источника (пункт 15). Собран tools/spravochniki.py bazy '
                     'из ~/projects/russian-civilization/docs/registries/sources.json; руками не править — добавлять базу в реестр.',
            'razresheny': da, 'vycherknuty': vycherknuto}

@@ -1,8 +1,12 @@
 ---
 // Подпись источника картинки со ссылками (Сергей 17.10): лицензия CC / общественное достояние —
 // ссылка на её текст на creativecommons.org; адрес в подписи — ссылка на страницу источника. Текст подписи выводится дословно, ссылками становятся только его куски.
+// п.41–42: номер Госкаталога — translate="no" (шифр не переводят); подпись русская — на странице другого языка lang="ru".
+import { NE_PEREVODIT, yazykVstavki } from '../../lib/perevod.mjs';
+import { razobratPut } from '../../lib/yazyki.mjs';
 interface Props { text: string }
 const { text } = Astro.props;
+const yazykPodpisi = yazykVstavki(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
 // Р136: «Госкаталог музейного фонда РФ, № N» — номер ссылкой на карточку предмета.
 const GKN = /(?<=Госкаталог музейного фонда РФ, № )\d+/g;
 const LIC = /\bCC[ -]?(BY(?:-SA)?|BY-NC(?:-SA)?|BY-ND|BY-NC-ND)[ -](\d\.\d)\b|\bCC0\b|\bpublic domain\b|общественное достояние/gi;
@@ -11,17 +15,17 @@ const licUrl = (m: RegExpExecArray) => {
   if (/^CC0$/i.test(m[0])) return 'https://creativecommons.org/publicdomain/zero/1.0/deed.ru';
   return 'https://creativecommons.org/publicdomain/mark/1.0/deed.ru';
 };
-const parts: { t: string; href?: string }[] = [];
+const parts: { t: string; href?: string; shifr?: boolean }[] = [];
 let last = 0;
 const hits = [...[...text.matchAll(LIC)].map((m) => ({ m, href: licUrl(m as RegExpExecArray) })),
-  ...[...text.matchAll(GKN)].map((m) => ({ m, href: `https://goskatalog.ru/portal/#/collections?id=${m[0]}` }))]
+  ...[...text.matchAll(GKN)].map((m) => ({ m, href: `https://goskatalog.ru/portal/#/collections?id=${m[0]}`, shifr: true }))]
   .sort((a, b) => a.m.index! - b.m.index!);
-for (const { m, href } of hits) {
-  parts.push({ t: text.slice(last, m.index) }, { t: m[0], href });
+for (const { m, href, shifr } of hits) {
+  parts.push({ t: text.slice(last, m.index) }, { t: m[0], href, shifr });
   last = m.index! + m[0].length;
 }
 parts.push({ t: text.slice(last) });
 const url = text.match(/https?:\/\/[^\s,;»)]+/)?.[0];
 const file = url;
 ---
-<span class="credit">{parts.map((p) => (p.href ? <a href={p.href} rel="license noopener" target="_blank">{p.t}</a> : p.t))}{file && <Fragment> · <a href={file} rel="noopener" target="_blank">страница файла</a></Fragment>}</span>
+<span class="credit" {...yazykPodpisi}>{parts.map((p) => (p.href ? <a href={p.href} rel="license noopener" target="_blank" {...(p.shifr ? NE_PEREVODIT : {})}>{p.t}</a> : p.t))}{file && <Fragment> · <a href={file} rel="noopener" target="_blank">страница файла</a></Fragment>}</span>

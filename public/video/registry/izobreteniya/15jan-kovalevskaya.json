@@ -1,32 +1,33 @@
 {
-  "title": "История в 59 секунд",
-  "note": "Кадры — подлинные, из Госкаталога музейного фонда РФ: фотографии С. В. Ковалевской из ателье Dahllöf, Стокгольм, 1880-е (Псковский музей-заповедник); гравюра И. И. Матюшина по фотографии С. Л. Левицкого, 1891 (ГМИИ им. А. С. Пушкина); М. В. Остроградский, литография П. Ф. Бореля, 1869 (ГЛМ им. В. И. Даля); фототипия конца XIX в. (Национальный музей Республики Татарстан); могила Ковалевской в Стокгольме, фото 1973 (Псковский музей-заповедник); модель волчка — со страницы дня. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+  "title": "История в 56 секунд",
+  "intro": "Ковалевской пришлось выйти замуж фиктивно, чтобы попасть в университет, — а кафедру она получила первой женщиной в мире.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42200315328) из сценария days/15jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya.mp4",
     "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 59.8,
-    "mb": 9.5
+    "sec": 56,
+    "mb": 8.6
   },
   "vertical": {
     "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 59.8,
-    "mb": 10.6
+    "sec": 56,
+    "mb": 9.4
   },
   "poster": {
     "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya-poster.jpg",
     "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

@@ -1,0 +1,1023 @@
+{
+ "_": "Ударения в именах и названиях — один словарь для всех роликов (п. 39, Р616). Ключ — «tip:slug», как в src/data/slovar.json: тот же человек или место — тот же ключ. formy — формы слова с ударением (знак U+0301 после ударной гласной). Читает озвучка rc-rolik (scripts/tts.py); простые слова без имён — в udareniya.json rc-rolik. Новое имя — запись сюда, не в ролик.",
+ "lyudi:vladimir-shuhov": {
+  "tip": "lyudi",
+  "nazvanie": "Владимир Шухов",
+  "formy": [
+   "шу́хов",
+   "шу́хова"
+  ]
+ },
+ "lyudi:stepan-makarov": {
+  "tip": "lyudi",
+  "nazvanie": "Степан Макаров",
+  "formy": [
+   "мака́ров",
+   "мака́рову"
+  ]
+ },
+ "mesto:moskva": {
+  "tip": "mesto",
+  "nazvanie": "Москва",
+  "formy": [
+   "москву́"
+  ]
+ },
+ "mesto:shabolovka": {
+  "tip": "mesto",
+  "nazvanie": "Шаболовка",
+  "formy": [
+   "ша́боловка",
+   "ша́боловке",
+   "ша́боловку",
+   "ша́боловки"
+  ]
+ },
+ "mesto:balahany": {
+  "tip": "mesto",
+  "nazvanie": "Балаханы",
+  "formy": [
+   "балаханы́",
+   "балаха́н"
+  ]
+ },
+ "mesto:baku": {
+  "tip": "mesto",
+  "nazvanie": "Баку",
+  "formy": [
+   "баку́"
+  ]
+ },
+ "lyudi:kolesov": {
+  "tip": "lyudi",
+  "nazvanie": "Колесов",
+  "formy": [
+   "колесо́в",
+   "колесо́ва",
+   "колесо́ву",
+   "колесо́вым"
+  ]
+ },
+ "lyudi:favaloro": {
+  "tip": "lyudi",
+  "nazvanie": "Фавалоро",
+  "formy": [
+   "фавало́ро"
+  ]
+ },
+ "lyudi:demihov": {
+  "tip": "lyudi",
+  "nazvanie": "Демихов",
+  "formy": [
+   "деми́хов",
+   "деми́хова"
+  ]
+ },
+ "mesto:chusovoy": {
+  "tip": "mesto",
+  "nazvanie": "Чусовой",
+  "formy": [
+   "чусово́й"
+  ]
+ },
+ "lyudi:nikolay-zhukovskiy": {
+  "tip": "lyudi",
+  "nazvanie": "Николай Жуковский",
+  "formy": [
+   "жуко́вский",
+   "жуко́вского",
+   "жуко́вским",
+   "жуко́вскому"
+  ]
+ },
+ "lyudi:kutta": {
+  "tip": "lyudi",
+  "nazvanie": "Кутта",
+  "formy": [
+   "ку́тта",
+   "ку́тты",
+   "ку́тту"
+  ]
+ },
+ "lyudi:nesterov": {
+  "tip": "lyudi",
+  "nazvanie": "Нестеров",
+  "formy": [
+   "не́стеров"
+  ]
+ },
+ "lyudi:tupolev": {
+  "tip": "lyudi",
+  "nazvanie": "Туполев",
+  "formy": [
+   "ту́полев"
+  ]
+ },
+ "lyudi:ryabushinskiy": {
+  "tip": "lyudi",
+  "nazvanie": "Рябушинский",
+  "formy": [
+   "рябуши́нский"
+  ]
+ },
+ "mesto:kuchino": {
+  "tip": "mesto",
+  "nazvanie": "Кучино",
+  "formy": [
+   "ку́чино",
+   "ку́чине"
+  ]
+ },
+ "predmet:cagi": {
+  "tip": "predmet",
+  "nazvanie": "ЦАГИ",
+  "formy": [
+   "цаги́"
+  ]
+ },
+ "lyudi:odner": {
+  "tip": "lyudi",
+  "nazvanie": "Однер",
+  "formy": [
+   "о́днер",
+   "о́днера",
+   "о́днеру",
+   "о́днером"
+  ]
+ },
+ "lyudi:vilgodt": {
+  "tip": "lyudi",
+  "nazvanie": "Вильгодт",
+  "formy": [
+   "ви́льгодт"
+  ]
+ },
+ "predmet:feliks": {
+  "tip": "predmet",
+  "nazvanie": "арифмометр «Феликс»",
+  "formy": [
+   "фе́ликс",
+   "фе́ликсов"
+  ]
+ },
+ "lyudi:dzerzhinskiy": {
+  "tip": "lyudi",
+  "nazvanie": "Дзержинский",
+  "formy": [
+   "дзержи́нского"
+  ]
+ },
+ "lyudi:boldvin": {
+  "tip": "lyudi",
+  "nazvanie": "Болдуин",
+  "formy": [
+   "бо́лдуин"
+  ]
+ },
+ "lyudi:kantorovich": {
+  "tip": "lyudi",
+  "nazvanie": "Канторович",
+  "formy": [
+   "канторо́вич",
+   "канторо́вича",
+   "канторо́вичу",
+   "канторо́вичем"
+  ]
+ },
+ "lyudi:dancig": {
+  "tip": "lyudi",
+  "nazvanie": "Данциг",
+  "formy": [
+   "да́нциг",
+   "да́нцига"
+  ]
+ },
+ "lyudi:kupmans": {
+  "tip": "lyudi",
+  "nazvanie": "Купманс",
+  "formy": [
+   "ку́пманс",
+   "ку́пмансом"
+  ]
+ },
+ "lyudi:monzh": {
+  "tip": "lyudi",
+  "nazvanie": "Монж",
+  "formy": [
+   "мо́нжа"
+  ]
+ },
+ "lyudi:zalgaller": {
+  "tip": "lyudi",
+  "nazvanie": "Залгаллер",
+  "formy": [
+   "залга́ллером"
+  ]
+ },
+ "lyudi:lunin": {
+  "tip": "lyudi",
+  "nazvanie": "Лунин",
+  "formy": [
+   "лу́нин",
+   "лу́нина",
+   "лу́нину",
+   "лу́ниным"
+  ]
+ },
+ "lyudi:bunge": {
+  "tip": "lyudi",
+  "nazvanie": "Бунге",
+  "formy": [
+   "бу́нге"
+  ]
+ },
+ "mesto:derpt": {
+  "tip": "mesto",
+  "nazvanie": "Дерпт",
+  "formy": [
+   "де́рпт",
+   "де́рпте",
+   "де́рптского",
+   "де́рптском"
+  ]
+ },
+ "mesto:tartu": {
+  "tip": "mesto",
+  "nazvanie": "Тарту",
+  "formy": [
+   "та́рту"
+  ]
+ },
+ "lyudi:hopkins": {
+  "tip": "lyudi",
+  "nazvanie": "Хопкинс",
+  "formy": [
+   "хо́пкинс"
+  ]
+ },
+ "lyudi:eykman": {
+  "tip": "lyudi",
+  "nazvanie": "Эйкман",
+  "formy": [
+   "э́йкман"
+  ]
+ },
+ "mesto:yava": {
+  "tip": "mesto",
+  "nazvanie": "Ява",
+  "formy": [
+   "я́ве"
+  ]
+ },
+ "mesto:obninsk": {
+  "tip": "mesto",
+  "nazvanie": "Обнинск",
+  "formy": [
+   "о́бнинск",
+   "о́бнинске",
+   "о́бнинска",
+   "о́бнинская"
+  ]
+ },
+ "lyudi:kurchatov": {
+  "tip": "lyudi",
+  "nazvanie": "Курчатов",
+  "formy": [
+   "курча́тов",
+   "курча́това"
+  ]
+ },
+ "lyudi:blohincev": {
+  "tip": "lyudi",
+  "nazvanie": "Блохинцев",
+  "formy": [
+   "блохи́нцев",
+   "блохи́нцева"
+  ]
+ },
+ "lyudi:dollezhal": {
+  "tip": "lyudi",
+  "nazvanie": "Доллежаль",
+  "formy": [
+   "доллежа́ль"
+  ]
+ },
+ "predmet:arko": {
+  "tip": "predmet",
+  "nazvanie": "АРКО",
+  "formy": [
+   "а́рко"
+  ]
+ },
+ "lyudi:landau": {
+  "tip": "lyudi",
+  "nazvanie": "Ландау",
+  "formy": [
+   "ланда́у"
+  ]
+ },
+ "lyudi:kapica": {
+  "tip": "lyudi",
+  "nazvanie": "Капица",
+  "formy": [
+   "капи́ца",
+   "капи́цы",
+   "капи́це",
+   "капи́цей"
+  ]
+ },
+ "mesto:dubna": {
+  "tip": "mesto",
+  "nazvanie": "Дубна",
+  "formy": [
+   "дубну́"
+  ]
+ },
+ "lyudi:nobel": {
+  "tip": "lyudi",
+  "nazvanie": "Нобель",
+  "formy": [
+   "нобе́ля",
+   "нобе́лей",
+   "нобе́левскую",
+   "нобе́левской"
+  ]
+ },
+ "predmet:elbrus": {
+  "tip": "predmet",
+  "nazvanie": "«Эльбрус»",
+  "formy": [
+   "эльбру́с",
+   "эльбру́са"
+  ]
+ },
+ "predmet:pentium": {
+  "tip": "predmet",
+  "nazvanie": "«Пентиум»",
+  "formy": [
+   "пе́нтиум",
+   "пе́нтиума"
+  ]
+ },
+ "predmet:intel": {
+  "tip": "predmet",
+  "nazvanie": "«Интел»",
+  "formy": [
+   "и́нтел"
+  ]
+ },
+ "lyudi:pentkovskiy": {
+  "tip": "lyudi",
+  "nazvanie": "Пентковский",
+  "formy": [
+   "пентко́вский"
+  ]
+ },
+ "lyudi:havkin": {
+  "tip": "lyudi",
+  "nazvanie": "Хавкин",
+  "formy": [
+   "ха́вкин",
+   "ха́вкина"
+  ]
+ },
+ "mesto:bombey": {
+  "tip": "mesto",
+  "nazvanie": "Бомбей",
+  "formy": [
+   "бомбе́е"
+  ]
+ },
+ "lyudi:mahatma-gandi": {
+  "tip": "lyudi",
+  "nazvanie": "Махатма Ганди",
+  "formy": [
+   "маха́тма"
+  ]
+ },
+ "lyudi:paster": {
+  "tip": "lyudi",
+  "nazvanie": "Пастер",
+  "formy": [
+   "пасте́ра"
+  ]
+ },
+ "mesto:oranienbaum": {
+  "tip": "mesto",
+  "nazvanie": "Ораниенбаум",
+  "formy": [
+   "ораниенба́ум",
+   "ораниенба́ума",
+   "ораниенба́уму",
+   "ораниенба́уме"
+  ]
+ },
+ "mesto:elba": {
+  "tip": "mesto",
+  "nazvanie": "Эльба",
+  "formy": [
+   "э́льба"
+  ]
+ },
+ "mesto:gamburg": {
+  "tip": "mesto",
+  "nazvanie": "Гамбург",
+  "formy": [
+   "га́мбурге"
+  ]
+ },
+ "mesto:kronshtadt": {
+  "tip": "mesto",
+  "nazvanie": "Кронштадт",
+  "formy": [
+   "кроншта́дт",
+   "кроншта́дта"
+  ]
+ },
+ "lyudi:britnev": {
+  "tip": "lyudi",
+  "nazvanie": "Бритнев",
+  "formy": [
+   "бри́тнев",
+   "бри́тнева",
+   "бри́тневу",
+   "бри́тневым"
+  ]
+ },
+ "predmet:paylot": {
+  "tip": "predmet",
+  "nazvanie": "«Пайлот»",
+  "formy": [
+   "па́йлот",
+   "па́йлота",
+   "па́йлоту",
+   "па́йлотом",
+   "па́йлоте"
+  ]
+ },
+ "lyudi:sofya-kovalevskaya": {
+  "tip": "lyudi",
+  "nazvanie": "Софья Ковалевская",
+  "formy": [
+   "ковале́вская",
+   "ковале́вской",
+   "ковале́вскую"
+  ]
+ },
+ "lyudi:veyershtrass": {
+  "tip": "lyudi",
+  "nazvanie": "Вейерштрасс",
+  "formy": [
+   "ве́йерштрасс",
+   "ве́йерштрасса"
+  ]
+ },
+ "lyudi:glushko": {
+  "tip": "lyudi",
+  "nazvanie": "Глушко",
+  "formy": [
+   "глу́шко"
+  ]
+ },
+ "mesto:baykonur": {
+  "tip": "mesto",
+  "nazvanie": "Байконур",
+  "formy": [
+   "байкону́р",
+   "байкону́ре",
+   "байкону́ра"
+  ]
+ },
+ "lyudi:kostovich": {
+  "tip": "lyudi",
+  "nazvanie": "Костович",
+  "formy": [
+   "косто́вич",
+   "косто́вича"
+  ]
+ },
+ "lyudi:daymler": {
+  "tip": "lyudi",
+  "nazvanie": "Даймлер",
+  "formy": [
+   "да́ймлер",
+   "да́ймлера"
+  ]
+ },
+ "mesto:monino": {
+  "tip": "mesto",
+  "nazvanie": "Монино",
+  "formy": [
+   "мо́нино"
+  ]
+ },
+ "lyudi:rusanov": {
+  "tip": "lyudi",
+  "nazvanie": "Русанов",
+  "formy": [
+   "ру́санов",
+   "ру́санова"
+  ]
+ },
+ "lyudi:abbasov": {
+  "tip": "lyudi",
+  "nazvanie": "Аббасов",
+  "formy": [
+   "абба́сов",
+   "абба́сова"
+  ]
+ },
+ "lyudi:ginness": {
+  "tip": "lyudi",
+  "nazvanie": "Гиннесс",
+  "formy": [
+   "ги́ннесса"
+  ]
+ },
+ "lyudi:shatalov": {
+  "tip": "lyudi",
+  "nazvanie": "Шаталов",
+  "formy": [
+   "шата́лов",
+   "шата́лову",
+   "шата́ловым"
+  ]
+ },
+ "lyudi:volynov": {
+  "tip": "lyudi",
+  "nazvanie": "Волынов",
+  "formy": [
+   "волы́нов"
+  ]
+ },
+ "lyudi:eliseev": {
+  "tip": "lyudi",
+  "nazvanie": "Елисеев",
+  "formy": [
+   "елисе́ев"
+  ]
+ },
+ "lyudi:hrunov": {
+  "tip": "lyudi",
+  "nazvanie": "Хрунов",
+  "formy": [
+   "хруно́в"
+  ]
+ },
+ "lyudi:kolmar": {
+  "tip": "lyudi",
+  "nazvanie": "Кольмар",
+  "formy": [
+   "кольма́ра"
+  ]
+ },
+ "lyudi:brunsvig": {
+  "tip": "lyudi",
+  "nazvanie": "Брунсвиг",
+  "formy": [
+   "брунсви́га"
+  ]
+ },
+ "lyudi:pavlov": {
+  "tip": "lyudi",
+  "nazvanie": "Павлов",
+  "formy": [
+   "па́влов"
+  ]
+ },
+ "lyudi:afanasev": {
+  "tip": "lyudi",
+  "nazvanie": "Афанасьев",
+  "formy": [
+   "афана́сьев"
+  ]
+ },
+ "predmet:atlas": {
+  "tip": "predmet",
+  "nazvanie": "ракета «Атлас»",
+  "formy": [
+   "а́тлас"
+  ]
+ },
+ "lyudi:anosov": {
+  "tip": "lyudi",
+  "nazvanie": "Аносов",
+  "formy": [
+   "ано́сов"
+  ]
+ },
+ "lyudi:balakov": {
+  "tip": "lyudi",
+  "nazvanie": "Балаков",
+  "formy": [
+   "бала́ковым"
+  ]
+ },
+ "lyudi:batyy": {
+  "tip": "lyudi",
+  "nazvanie": "Батый",
+  "formy": [
+   "баты́й"
+  ]
+ },
+ "lyudi:vavilov": {
+  "tip": "lyudi",
+  "nazvanie": "Вавилов",
+  "formy": [
+   "вави́лова"
+  ]
+ },
+ "predmet:varyag": {
+  "tip": "predmet",
+  "nazvanie": "крейсер «Варяг»",
+  "formy": [
+   "варя́г",
+   "варя́га"
+  ]
+ },
+ "predmet:koreec": {
+  "tip": "predmet",
+  "nazvanie": "канонерская лодка «Кореец»",
+  "formy": [
+   "коре́йца"
+  ]
+ },
+ "mesto:chemulpo": {
+  "tip": "mesto",
+  "nazvanie": "Чемульпо",
+  "formy": [
+   "чему́льпо"
+  ]
+ },
+ "lyudi:vitte": {
+  "tip": "lyudi",
+  "nazvanie": "Витте",
+  "formy": [
+   "ви́тте"
+  ]
+ },
+ "lyudi:gavrilov": {
+  "tip": "lyudi",
+  "nazvanie": "Гаврилов",
+  "formy": [
+   "гаври́лов"
+  ]
+ },
+ "lyudi:gastello": {
+  "tip": "lyudi",
+  "nazvanie": "Гастелло",
+  "formy": [
+   "гасте́лло",
+   "гастелло́вцами"
+  ]
+ },
+ "mesto:dubosekovo": {
+  "tip": "mesto",
+  "nazvanie": "Дубосеково",
+  "formy": [
+   "дубосе́ково"
+  ]
+ },
+ "predmet:ermak": {
+  "tip": "predmet",
+  "nazvanie": "ледокол «Ермак»",
+  "formy": [
+   "ерма́к"
+  ]
+ },
+ "lyudi:kameraz": {
+  "tip": "lyudi",
+  "nazvanie": "Камераз",
+  "formy": [
+   "камера́з"
+  ]
+ },
+ "lyudi:katerpiller": {
+  "tip": "lyudi",
+  "nazvanie": "Катерпиллер",
+  "formy": [
+   "катерпи́ллер"
+  ]
+ },
+ "lyudi:kizhevatov": {
+  "tip": "lyudi",
+  "nazvanie": "Кижеватов",
+  "formy": [
+   "кижева́тов"
+  ]
+ },
+ "lyudi:klochkov": {
+  "tip": "lyudi",
+  "nazvanie": "Клочков",
+  "formy": [
+   "клочко́в"
+  ]
+ },
+ "mesto:kozelsk": {
+  "tip": "mesto",
+  "nazvanie": "Козельск",
+  "formy": [
+   "козе́льск",
+   "козе́льском",
+   "козля́не"
+  ]
+ },
+ "lyudi:kotelnikov": {
+  "tip": "lyudi",
+  "nazvanie": "Котельников",
+  "formy": [
+   "коте́льников",
+   "коте́льникова"
+  ]
+ },
+ "lyudi:kotlinskiy": {
+  "tip": "lyudi",
+  "nazvanie": "Котлинский",
+  "formy": [
+   "котли́нский"
+  ]
+ },
+ "mesto:krichev": {
+  "tip": "mesto",
+  "nazvanie": "Кричев",
+  "formy": [
+   "кри́чевом"
+  ]
+ },
+ "mesto:kura": {
+  "tip": "mesto",
+  "nazvanie": "полигон Кура",
+  "formy": [
+   "кура́"
+  ]
+ },
+ "lyudi:lehnovich": {
+  "tip": "lyudi",
+  "nazvanie": "Лехнович",
+  "formy": [
+   "лехно́вич"
+  ]
+ },
+ "mesto:luna": {
+  "tip": "mesto",
+  "nazvanie": "Луна",
+  "formy": [
+   "луны́"
+  ]
+ },
+ "lyudi:markoni": {
+  "tip": "lyudi",
+  "nazvanie": "Маркони",
+  "formy": [
+   "марко́ни"
+  ]
+ },
+ "lyudi:macievich": {
+  "tip": "lyudi",
+  "nazvanie": "Мациевич",
+  "formy": [
+   "мацие́вича"
+  ]
+ },
+ "predmet:mechta": {
+  "tip": "predmet",
+  "nazvanie": "станция «Мечта»",
+  "formy": [
+   "мечто́й"
+  ]
+ },
+ "predmet:pioner": {
+  "tip": "predmet",
+  "nazvanie": "«Пионер»",
+  "formy": [
+   "пионе́р"
+  ]
+ },
+ "mesto:molodechno": {
+  "tip": "mesto",
+  "nazvanie": "Молодечно",
+  "formy": [
+   "молоде́чно"
+  ]
+ },
+ "lyudi:naganov": {
+  "tip": "lyudi",
+  "nazvanie": "Наганов",
+  "formy": [
+   "нага́нов"
+  ]
+ },
+ "lyudi:natarov": {
+  "tip": "lyudi",
+  "nazvanie": "Натаров",
+  "formy": [
+   "ната́ров"
+  ]
+ },
+ "mesto:novolazarevskaya": {
+  "tip": "mesto",
+  "nazvanie": "станция Новолазаревская",
+  "formy": [
+   "новолаза́ревская"
+  ]
+ },
+ "lyudi:orlov": {
+  "tip": "lyudi",
+  "nazvanie": "Орлов",
+  "formy": [
+   "орло́в",
+   "орло́ва",
+   "орло́вской"
+  ]
+ },
+ "lyudi:oryasin": {
+  "tip": "lyudi",
+  "nazvanie": "Орясин",
+  "formy": [
+   "оря́сина"
+  ]
+ },
+ "mesto:osovec": {
+  "tip": "mesto",
+  "nazvanie": "Осовец",
+  "formy": [
+   "осо́вца"
+  ]
+ },
+ "mesto:pensilvaniya": {
+  "tip": "mesto",
+  "nazvanie": "Пенсильвания",
+  "formy": [
+   "пенсильва́нии"
+  ]
+ },
+ "mesto:petrishchevo": {
+  "tip": "mesto",
+  "nazvanie": "Петрищево",
+  "formy": [
+   "петри́щеве"
+  ]
+ },
+ "mesto:petrovskiy-bulvar": {
+  "tip": "mesto",
+  "nazvanie": "Петровский бульвар",
+  "formy": [
+   "петро́вском"
+  ]
+ },
+ "mesto:radoshkovichi": {
+  "tip": "mesto",
+  "nazvanie": "Радошковичи",
+  "formy": [
+   "радошко́вичи"
+  ]
+ },
+ "lyudi:rogozov": {
+  "tip": "lyudi",
+  "nazvanie": "Рогозов",
+  "formy": [
+   "рого́зов"
+  ]
+ },
+ "lyudi:rudnev": {
+  "tip": "lyudi",
+  "nazvanie": "Руднев",
+  "formy": [
+   "рудне́в"
+  ]
+ },
+ "lyudi:sirotinin": {
+  "tip": "lyudi",
+  "nazvanie": "Сиротинин",
+  "formy": [
+   "сироти́нин"
+  ]
+ },
+ "lyudi:sorbi": {
+  "tip": "lyudi",
+  "nazvanie": "Генри Сорби",
+  "formy": [
+   "со́рби"
+  ]
+ },
+ "lyudi:suvorin": {
+  "tip": "lyudi",
+  "nazvanie": "Суворин",
+  "formy": [
+   "суво́рин"
+  ]
+ },
+ "lyudi:tesla": {
+  "tip": "lyudi",
+  "nazvanie": "Тесла",
+  "formy": [
+   "те́сла"
+  ]
+ },
+ "predmet:terespolskie-vorota": {
+  "tip": "predmet",
+  "nazvanie": "Тереспольские ворота",
+  "formy": [
+   "тере́спольскими"
+  ]
+ },
+ "lyudi:umov": {
+  "tip": "lyudi",
+  "nazvanie": "Умов",
+  "formy": [
+   "у́мов",
+   "у́мова"
+  ]
+ },
+ "lyudi:chernov": {
+  "tip": "lyudi",
+  "nazvanie": "Чернов",
+  "formy": [
+   "черно́в"
+  ]
+ },
+ "lyudi:shchukin": {
+  "tip": "lyudi",
+  "nazvanie": "Щукин",
+  "formy": [
+   "щу́кин"
+  ]
+ },
+ "lyudi:yunkers": {
+  "tip": "lyudi",
+  "nazvanie": "Юнкерс",
+  "formy": [
+   "ю́нкерс"
+  ]
+ },
+ "lyudi:zoya-kosmodemyanskaya": {
+  "tip": "lyudi",
+  "nazvanie": "Зоя Космодемьянская",
+  "formy": [
+   "космодемья́нская"
+  ]
+ },
+ "lyudi:aleksandr-peresvet": {
+  "tip": "lyudi",
+  "nazvanie": "Александр Пересвет",
+  "formy": [
+   "пересве́т",
+   "пересве́та",
+   "пересве́ту",
+   "пересве́том"
+  ]
+ },
+ "lyudi:mihail-brenok": {
+  "tip": "lyudi",
+  "nazvanie": "Михаил Бренок",
+  "formy": [
+   "бре́нок",
+   "бре́нка",
+   "бре́нку",
+   "бре́нком"
+  ]
+ },
+ "lyudi:yagaylo": {
+  "tip": "lyudi",
+  "nazvanie": "Ягайло",
+  "formy": [
+   "яга́йло",
+   "яга́йла",
+   "яга́йлом"
+  ]
+ },
+ "lyudi:mamay": {
+  "tip": "lyudi",
+  "nazvanie": "Мамай",
+  "formy": [
+   "мама́й",
+   "мама́я",
+   "мама́ю"
+  ]
+ },
+ "lyudi:chelubey": {
+  "tip": "lyudi",
+  "nazvanie": "Челубей",
+  "formy": [
+   "челубе́й",
+   "челубе́я"
+  ]
+ },
+ "lyudi:andrey-oslyabya": {
+  "tip": "lyudi",
+  "nazvanie": "Андрей Ослябя",
+  "formy": [
+   "осля́бя",
+   "осля́бу"
+  ]
+ },
+ "mesto:kafa": {
+  "tip": "mesto",
+  "nazvanie": "Кафа",
+  "formy": [
+   "ка́фа",
+   "ка́фу",
+   "кафи́нцы"
+  ]
+ }
+}

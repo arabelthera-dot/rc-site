@@ -1,11 +1,11 @@
 {
   "title": "История в 44 секунды",
   "intro": "«Работайте, братья» — сказал под стволом и остался собой",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42202145069) из сценария days/ns25jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42601823238) из сценария days/ns25jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/25jan-nurbagandov/day-25jan-nurbagandov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-25jan-nurbagandov.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 44.3,
@@ -14,20 +14,20 @@
   "vertical": {
     "file": "nesdayutsya/25jan-nurbagandov/day-25jan-nurbagandov-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-25jan-nurbagandov-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 44.3,
-    "mb": 13.5
+    "mb": 13.4
   },
   "poster": {
     "file": "nesdayutsya/25jan-nurbagandov/day-25jan-nurbagandov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-25jan-nurbagandov-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/25jan-nurbagandov/day-25jan-nurbagandov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-25jan-nurbagandov-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

@@ -38,6 +38,27 @@ const triUsloviyaLdoloma = z.object({
   if (!u.varianty.some((v) => v.kod === u[k as 'start' | 'verno'])) ctx.addIssue({ code: 'custom', path: ['usloviya', i, k], message: `${k}: «${u[k as 'start' | 'verno']}» нет среди variantov` });
 })));
 
+// 01-02 «Запусти „Луну-1“ к Луне»: ползунком угол запуска, полёт под притяжением к точке tyaga; в коридоре у цели — победа,
+// ближе udar — столкновение, дальше koridor — промах. Координаты x, y — доли поля, радиусы и расстояния — единицы поля.
+// Подписи start и cel идут вёрсткой под шарами, на холсте текста нет (Р18). В текстах исходов {km} — расстояние до цели.
+const dolya = z.number().min(0).max(1);
+const telo = z.object({ x: dolya, y: dolya, r: z.number().positive(), podpis: str, cvet: z.tuple([str, str]) }).strict();
+const ugolVKoridorLuny = z.object({
+  pole: z.object({ shirina: z.number().int().min(200), vysota: z.number().int().min(100) }).strict().default({ shirina: 680, vysota: 340 }),
+  start: telo, cel: telo,
+  tyaga: z.object({ x: dolya, y: dolya, sila: z.number().positive() }).strict(),
+  skorost: z.number().positive(),
+  ugol: z.object({ min: z.number().int(), max: z.number().int(), start: z.number().int(), podpis_ru: str }).strict(),
+  koridor: z.number().positive(), udar: z.number().positive(),
+  km_na_edinicu: z.number().positive(), prevyu_dlina: z.number().positive().default(180),
+  teksty: z.object({ popal_ru: str, udar_ru: str, mimo_ru: str }).strict(),
+  pusk_ru: str, start_ru: str, zanovo_ru: str, holst_alt: str, bez_skripta_ru: str,
+  ochki: z.number().int().min(0).default(12),
+}).strict().superRefine((d, ctx) => {
+  if (!(d.ugol.min <= d.ugol.start && d.ugol.start <= d.ugol.max)) ctx.addIssue({ code: 'custom', path: ['ugol', 'start'], message: 'ugol.start — между min и max' });
+  if (!(d.udar < d.koridor)) ctx.addIssue({ code: 'custom', path: ['udar'], message: 'udar меньше koridor' });
+});
+
 // «Поставь каждому своё место» (первые дни — 02-01 «подпиши участки на карте мозга», 02-02 «один ствол — четыре снаряда»):
 // выбираешь подпись и ставишь её на место схемы или к цели; верная загорается, все на месте — победа.
 // kartinka — фон-схема без надписей (Р18), места на ней по x/y в процентах; без kartinka места идут плитками.
@@ -83,7 +104,7 @@ const nastroyVolnuPriyomnika = z.object({
 
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
-  'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны' },
+  'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
   'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины' },
   'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне', dvizhok: true, dannye: nastroyVolnuPriyomnika },
   'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету' },

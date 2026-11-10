@@ -1,32 +1,33 @@
 {
   "title": "История в 51 секунду",
-  "note": "Кадры — подлинные: чертежи машин и титульный лист брошюры С. Н. Корсакова 1832 года, портрет С. Н. Корсакова (оцифровка Виртуального компьютерного музея). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.",
+  "intro": "Перфокарта ткала узоры, а Корсаков в 1832-м создал первые в мире машины, которые ищут по ней сведения — подбирают больному лекарство.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42199882276) из сценария days/25jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov.mp4",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 51.1,
-    "mb": 14.6
+    "sec": 51.3,
+    "mb": 14.1
   },
   "vertical": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 51.1,
-    "mb": 14.5
+    "sec": 51.3,
+    "mb": 13.9
   },
   "poster": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-poster.jpg",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }

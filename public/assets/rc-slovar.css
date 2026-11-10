@@ -13,3 +13,5 @@
 .slovar-dni li{padding:10px 0;border-bottom:1px solid var(--cvet-c9a84c-a18)}
 .slovar-dni a{color:var(--gold-l,var(--cvet-e2c675));font-size:var(--fs-body,17px)}
 .slovar-dni .slovar-muzey{display:block;font-family:var(--shrift-inter-sans-serif);font-size:var(--razmer-13-5px);opacity:.75;margin-top:2px}
+.slovar-imya{font-family:var(--shrift-inter-sans-serif);font-size:var(--razmer-14px);opacity:.8;letter-spacing:.3px}
+.slovar-imya,header h1{overflow-wrap:anywhere;hyphens:auto}

@@ -10,6 +10,9 @@
 // lastmod — правда, а не дата сборки: у дня — последняя правка карточки по журналу исправлений (Е5, src/lib/redakciya.mjs),
 // у музея, его календаря и таблицы — самая свежая правка его дней, у главной — всех дней, у прочих — git log шаблона.
 // Даты нет — lastmod не пишется (так разрешает протокол sitemaps.org).
+// Языки (п. 149): у адреса, у которого есть перевод (src/lib/yazyki.mjs, yazykiStranicy) и страница перевода собрана, —
+// пометки <xhtml:link rel="alternate" hreflang> на все языки страницы и x-default (русский). Перевода нет — пометок
+// и пространства имён xhtml нет, карта байт в байт прежняя.
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -17,6 +20,8 @@ import { fileURLToPath } from 'node:url';
 import { zhurnal } from '../lib/redakciya.mjs';
 import { kadryXX } from '../lib/zakon.mjs';
 import { cardFrames, fullFrames } from '../lib/podpisi.mjs';
+import { vyshel } from '../lib/vyhod.mjs';
+import { razobratPut, putNaYazyke, yazykiStranicy, poUmolchaniyu } from '../lib/yazyki.mjs';
 
 const read = (f) => JSON.parse(fs.readFileSync(f, 'utf8'));
 const DAYS = 'src/content/days';
@@ -37,7 +42,7 @@ export function luchshieDni(root = '.') {
     for (const f of fs.readdirSync(path.join(root, DAYS, m)).filter((x) => x.endsWith('.json'))) {
       const d = read(path.join(root, DAYS, m, f));
       const id = `${m}/${d.key}`;
-      if ((d.legacy_page || d.body?.length) && d.hook && !waivers[m] && !waivers[id] && sKadrom.has(id) && !bezOsnovaniya.has(id)) out.add(id);
+      if ((d.legacy_page || d.body?.length) && d.hook && !waivers[m] && !waivers[id] && sKadrom.has(id) && !bezOsnovaniya.has(id) && vyshel({ museum: m, ...d })) out.add(id); // до своего дня — не в карте (src/lib/vyhod.mjs)
     }
   return out;
 }
@@ -48,10 +53,23 @@ function gitDate(file) {
   try { return execFileSync('git', ['log', '-1', '--format=%cI', '--', file], { encoding: 'utf8' }).trim() || undefined; } catch { return undefined; }
 }
 
-function urlset(items) {
-  return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    + items.map((u) => `<url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')
+export function urlset(items) {
+  const xhtml = items.some((u) => u.alt?.length) ? ' xmlns:xhtml="http://www.w3.org/1999/xhtml"' : '';
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"${xhtml}>\n`
+    + items.map((u) => `<url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}`
+      + (u.alt ?? []).map((a) => `<xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${esc(a.href)}"/>`).join('') + '</url>').join('\n')
     + '\n</urlset>\n';
+}
+
+/** Пометки языков адреса p (/muzei/x/den/01-02/ или /en/muzei/x/den/01-02/) для карты: русский, собранные переводы,
+ *  x-default; перевода нет — пусто. sobrany — Set собранных путей /…/. */
+export function alternativyKarty(p, site, sobrany) {
+  const { rest } = razobratPut(p, '/');
+  const langs = yazykiStranicy(rest).filter((y) => sobrany.has(putNaYazyke(rest, y.code, '/')));
+  if (!langs.length) return [];
+  const href = (c) => new URL(putNaYazyke(rest, c, '/').slice(1), site).href;
+  return [poUmolchaniyu, ...langs.map((y) => y.code)].map((c) => ({ hreflang: c, href: href(c) }))
+    .concat({ hreflang: 'x-default', href: href(poUmolchaniyu) });
 }
 
 export default function kartaVolnami() {
@@ -87,6 +105,7 @@ export default function kartaVolnami() {
 
         const volny = new Map([['volna-1', []], ['volna-2', []], ...yazyki.map((y) => [y.code, []])]);
         let vne = 0;
+        const sobrany = new Set(pages.map(({ pathname }) => `/${pathname}`.replace(/\/?$/, '/').replace(/^\/+/, '/')));
         for (const { pathname } of pages) {
           const p = `/${pathname}`.replace(/\/?$/, '/').replace(/^\/+/, '/');
           const html = path.join(out, p, 'index.html');
@@ -102,7 +121,7 @@ export default function kartaVolnami() {
           const volna = yazyk ? yazyk.code
             : FLAGMANY.has(p) || (den && luchshie.has(`${den[1]}/${den[2]}`)) || (muzey && p === `/muzei/${muzey[1]}/` && sGotovymi.has(muzey[1])) ? 'volna-1'
             : 'volna-2';
-          volny.get(volna).push({ loc: new URL(p.slice(1), site).href, lastmod });
+          volny.get(volna).push({ loc: new URL(p.slice(1), site).href, lastmod, alt: alternativyKarty(p, site, sobrany) });
         }
 
         const index = [];
