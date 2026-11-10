@@ -85,3 +85,7 @@
   https://developers.google.com/search/docs/specialty/international/localized-versions
 - Выбор тега с письмом и страной (W3C): https://www.w3.org/International/articles/language-tags/
 - `translationOfWork` / `workTranslation`: https://schema.org/translationOfWork
+
+## Обратный перевод для проверки (п.168)
+
+После перевода машина переводит строки обратно на русский (scripts/perevod-obratno.py, Argos) и сверяет с подлинником: потерянные числа и мало общих слов — в сводку прогона perevod.yml. Это подсказка, она ничего не останавливает и файлы не меняет.
