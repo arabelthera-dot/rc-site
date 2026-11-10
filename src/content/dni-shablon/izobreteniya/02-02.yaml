@@ -96,7 +96,7 @@ head:
     image: https://russian-civilization.ru/muzei/izobreteniya/img/02-02-edinorog-1757.jpg
 oblozhka:
   src: /muzei/izobreteniya/img/02-02-edinorog-1757.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.08, y: 0.22, w: 0.83, h: 0.56}
   width: 1400
   height: 933
   alt: 'Бронзовый ствол «единорога» на деревянном лафете: ручки отлиты в виде двух скачущих зверей, на стволе гравированный картуш с вензелем и лучами'
@@ -268,7 +268,7 @@ fakty:
     sravnenie: net
     kadr:
       src: /muzei/izobreteniya/img/02-02-shuvalov-rotari-1761.jpg
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.28, y: 0.19, w: 0.4, h: 0.32}
       width: 331
       height: 448
       alt: 'Живописный портрет: граф Пётр Шувалов в напудренном парике и мундире с орденской лентой'
@@ -309,7 +309,7 @@ fakty:
     sravnenie: net
     kadr:
       src: /muzei/izobreteniya/img/02-02-edinorog-1757-speredi.jpg
-      glavnoe_na_kartinke: net
+      glavnoe_na_kartinke: {x: 0.05, y: 0.28, w: 0.9, h: 0.5}
       width: 1400
       height: 933
       alt: 'Тот же бронзовый ствол 1757 года в другом ракурсе: ручки в виде единорогов и растительный орнамент'
@@ -544,7 +544,7 @@ result:
   note: Баллы — за игру, ответы и викторину.
 figures:
 - src: /muzei/izobreteniya/img/02-02-edinorog-1757-speredi.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.05, y: 0.28, w: 0.9, h: 0.5}
   width: 1400
   height: 933
   alt: 'Тот же бронзовый ствол 1757 года в другом ракурсе: ручки в виде единорогов и растительный орнамент'
@@ -574,7 +574,7 @@ figures:
   podpis_gde: Санкт-Петербург, Военно-исторический музей артиллерии
   podpis_kogda: '1757'
 - src: /muzei/izobreteniya/img/02-02-edinorog-2-pudovyy.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.07, y: 0.2, w: 0.87, h: 0.5}
   width: 800
   height: 413
   alt: Огромный бронзовый ствол на подставке, ручки отлиты в виде фигур зверей-единорогов
@@ -605,7 +605,7 @@ figures:
   podpis_gde: Санкт-Петербург, Военно-исторический музей артиллерии
   podpis_kogda: вторая половина XVIII века
 - src: /muzei/izobreteniya/img/02-02-edinorog-polkovoy-1790.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.02, y: 0.46, w: 0.95, h: 0.46}
   width: 800
   height: 600
   alt: Бронзовый ствол, сплошь покрытый орнаментом, винград в виде головы зверя, ручки-дельфины
@@ -636,7 +636,7 @@ figures:
   podpis_gde: Санкт-Петербург, Военно-исторический музей артиллерии
   podpis_kogda: '1790'
 - src: /muzei/izobreteniya/img/02-02-edinorog-dvuhkanalnyy.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.03, y: 0.17, w: 0.96, h: 0.75}
   width: 800
   height: 441
   alt: Бронзовый ствол с двумя каналами в одной отливке, на стволе клеймо-монограмма
@@ -667,7 +667,7 @@ figures:
   podpis_gde: Санкт-Петербург, Военно-исторический музей артиллерии
   podpis_kogda: первая половина XIX века
 - src: /muzei/izobreteniya/img/02-02-edinorog-1840.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.08, y: 0.05, w: 0.86, h: 0.58}
   width: 800
   height: 427
   alt: Бронзовый ствол, позеленевший от патины, лежит под открытым небом
@@ -698,7 +698,7 @@ figures:
   podpis_gde: Санкт-Петербург, Военно-исторический музей артиллерии
   podpis_kogda: '1840'
 - src: /muzei/izobreteniya/img/02-02-edinorog-morskoy-1810.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.02, y: 0.08, w: 0.94, h: 0.85}
   width: 800
   height: 600
   alt: Бронзовый ствол корабельного единорога с музейной биркой
@@ -729,7 +729,7 @@ figures:
   podpis_gde: Санкт-Петербург, Военно-исторический музей артиллерии
   podpis_kogda: '1810'
 - src: /muzei/izobreteniya/img/02-02-model-osadnogo-edinoroga.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.16, y: 0.19, w: 0.79, h: 0.65}
   width: 800
   height: 533
   alt: Небольшая модель ствола осадного орудия на подставке
@@ -760,7 +760,7 @@ figures:
   podpis_gde: Санкт-Петербург, Военно-исторический музей артиллерии
   podpis_kogda: первая половина XIX века
 - src: /muzei/izobreteniya/img/02-02-shuvalov-rotari-1761.jpg
-  glavnoe_na_kartinke: net
+  glavnoe_na_kartinke: {x: 0.28, y: 0.19, w: 0.4, h: 0.32}
   width: 331
   height: 448
   alt: 'Живописный портрет: граф Пётр Шувалов в напудренном парике и мундире с орденской лентой'
@@ -905,7 +905,7 @@ podskazki_igry:
 - Сплошной тяжёлый шар бьёт в лоб — по самому крепкому
 - Через вал снаряд летит навесом
 - Подумай, чем стреляют по строю, а чем — по запасам
-togda_sejchas: net
+togda_sejchas: net  # на картинках дня — предметы, а не место; пары снимков одного места с открытыми правами за этот заход не нашёл (pastvu.com, museum-artillery.ru)
 skvoznye_linii: net
 mesto_sobytiya: mesto:sankt-peterburg
 predmet_3d:
@@ -913,9 +913,27 @@ predmet_3d:
   opory:
   - figures.1
   razmery: длина 216 см, калибр 245 мм
-panorama_360: net
-staraya_karta: net
-marshrut: net
+panorama_360:
+  ssylka: https://www.google.com/maps/@59.9540812,30.3143233,3a,75y,92.28h,86.79t/data=!3m7!1e1!3m5!1sgB5xHRipWY0PcYSJsek-ww!2e0!3e2!7i13312!8i6656
+  otkuda: Военно-исторический музей артиллерии, инженерных войск и войск связи, «Виртуальный тур по залам музея» — museum-artillery.ru/ru/virtualnyj-tur-po-muzeyu.html
+staraya_karta:
+  nazvanie: План Санкт-Петербурга 1753 года
+  god: 1753
+  otkuda: Это Место — etomesto.com
+  ssylka: https://etomesto.com/map-peterburg_1753/
+marshrut:
+- mesto: Цорндорф (ныне Сарбиново, Польша)
+  shirota: 52.6576
+  dolgota: 14.6753
+  chto: в Цорндорфском бою 1758 года пруссаки захватывают русские гаубицы
+- mesto: Кюстрин (ныне Костшин-над-Одрой, Польша)
+  shirota: 52.6163
+  dolgota: 14.6279
+  chto: трофеи свозят в крепость
+- mesto: Берлин
+  shirota: 52.5174
+  dolgota: 13.3951
+  chto: по приказу короля Фридриха трофейные гаубицы доставлены в Берлин
 kak_rabotaet:
 - Ствол длиннее гаубичного — ядро летит далеко, как из пушки, и разбивает стену
 - Ствол легче пушечного на 64 пуда — орудие быстрее везут за войском
