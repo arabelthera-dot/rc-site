@@ -160,6 +160,7 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
   {!bezAdresa && <link rel="canonical" href={url} />}
   {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
   <link rel="icon" href={`${base}favicon.ico`} sizes="any" />
+  {nastroyki.pwaManifest && <link rel="manifest" href={`${base}manifest.webmanifest`} />}
   <!-- Inter (шапка дня, крошки, блок «Поддержать») и PT Serif (основной текст вместо системного Georgia, 17.10) —
        оба объявлены в museum.css; файлы
        (кириллица + латиница с цифрами) — заранее, иначе после их загрузки страница перескакивает (CLS, приёмка
