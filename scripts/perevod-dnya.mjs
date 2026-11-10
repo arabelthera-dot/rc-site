@@ -12,6 +12,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { zapisatPerevod, ustarevshie, gotovnost } from '../src/lib/otpechatok.mjs';
+import { pamyat, slovar, podskazki } from '../src/lib/perevod-pamyat.mjs';
 
 const KODY = JSON.parse(fs.readFileSync('src/data/yazyki.json', 'utf8')).yazyki.map((y) => y.code).filter((c) => c !== 'ru');
 const KIR = /[а-яё]/i;
@@ -30,6 +31,7 @@ export function russkieStroki(d) {
   return out;
 }
 
+const PAMYAT = pamyat(); // п.141: готовый перевод той же строки из других дней
 const fayly = process.argv.slice(2).filter((f) => /dni-shablon\/[^/]+\/\d\d-\d\d\.yaml$/.test(f) && fs.existsSync(f));
 const dni = fayly.map((f) => {
   const d = YAML.parse(fs.readFileSync(f, 'utf8'));
@@ -40,7 +42,14 @@ const dni = fayly.map((f) => {
   for (const { code, kluch, prichina } of ustarevshie(fayl)) if (prichina === 'net-ru') delete fayl[code][kluch];
   const staroe = new Set(ustarevshie(fayl).map((u) => `${u.code} ${u.kluch}`));
   const nado = Object.fromEntries(KODY.map((c) => [c, Object.keys(fayl.ru).filter((k) => !(k in (fayl[c] ?? {})) || staroe.has(`${c} ${k}`))]));
-  return { kuda, fayl, nado, id: `${d.muzei}/${d.key}` };
+  let izPamyati = 0;
+  const pisalis = new Set();
+  for (const c of KODY) nado[c] = nado[c].filter((k) => {
+    const gotov = PAMYAT[c]?.get(fayl.ru[k]);
+    if (gotov === undefined) return true;
+    zapisatPerevod(fayl, c, k, gotov); izPamyati++; pisalis.add(c); return false;
+  });
+  return { kuda, fayl, nado, izPamyati, sdelano: new Set(KODY.filter((c) => nado[c].length || pisalis.has(c))), id: `${d.muzei}/${d.key}` };
 });
 // одна задача на язык для всех дней — модель грузится один раз
 const zadachi = KODY.map((code) => ({ code, teksty: dni.flatMap((x) => x.nado[code].map((k) => x.fayl.ru[k])) })).filter((z) => z.teksty.length);
@@ -54,8 +63,14 @@ for (const { code } of zadachi) {
 }
 fs.mkdirSync('src/data/perevod', { recursive: true });
 for (const x of dni) {
-  x.fayl._gotovo = gotovnost(x.fayl, KODY, new Date().toISOString().slice(0, 10), new Set(KODY.filter((c) => x.nado[c].length)));
+  x.fayl._gotovo = gotovnost(x.fayl, KODY, new Date().toISOString().slice(0, 10), x.sdelano);
   fs.writeFileSync(x.kuda, JSON.stringify(x.fayl, null, 1) + '\n');
   const n = Object.keys(x.fayl.ru).length;
-  console.log(`${x.id}: строк ${n}, переведено ${KODY.filter((c) => Object.keys(x.fayl[c] ?? {}).length === n).length} из ${KODY.length} языков (${KODY.join(', ')})`);
+  console.log(`${x.id}: строк ${n}, переведено ${KODY.filter((c) => Object.keys(x.fayl[c] ?? {}).length === n).length} из ${KODY.length} языков (${KODY.join(', ')}), из памяти переводов ${x.izPamyati}`);
+}
+// п.141, Р627: словарь терминов — только подсказка в журнал, ничего не останавливает
+const SLOVA = slovar();
+for (const x of dni) for (const c of KODY) for (const [k, ru] of Object.entries(x.fayl.ru)) {
+  const net = podskazki(SLOVA, ru, x.fayl[c]?.[k] ?? '', c);
+  if (net.length) console.log(`подсказка словаря: ${x.id} ${c} ${k} — нет «${net.join('», «')}»`);
 }
