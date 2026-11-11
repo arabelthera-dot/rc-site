@@ -1,0 +1,725 @@
+muzei: izobreteniya
+key: 02-03
+pokazan_sergeyu:
+  data: '2026-11-11'
+nomer_dnya: izob-0203-luna9
+data_sobytiya: '1966-02-03'
+chto_sluchilos: Советская станция «Луна-9» первой в мире совершила мягкую посадку на Луну и передала на Землю снимки лунной поверхности.
+god: 1966
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Модель автоматической лунной станции «Луна-9»
+  muzej: Музей космонавтики
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=3885816
+- chto: Модель станции «Луна-9», масштаб 1:1
+  muzej: Музей космонавтики
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=13693536
+chitat_dalshe:
+- nazvanie: Б. Е. Черток. «Ракеты и люди»
+  gde: famhist.ru
+  ssylka: http://www.famhist.ru/famhist/chertok/003c2c8a.htm
+- nazvanie: «Георгий Николаевич Бабакин»
+  gde: Российский государственный архив научно-технической документации
+  ssylka: https://rgantd.ru/korolev/constructors/georgiy-nikolaevich-babakin/
+- nazvanie: «55 лет назад совершена первая в мире мягкая посадка на Луну»
+  gde: НПО Лавочкина
+  ssylka: https://www.laspace.ru/ru/press/news/55-let-nazad-sovershena-pervaya-v-mire-myagkaya-posadka-na-lunu/
+istochniki:
+- id: rusmir-luna9
+  baza: periodika
+  nazvanie: «Русский мир», публикация о «Луне-9»
+  ssylka: https://russkiymir.ru/publications/343277/
+- id: chertok-rakety-i-lyudi
+  baza: kniga
+  avtor: Б. Е. Черток
+  nazvanie: «Ракеты и люди»
+  ssylka: http://www.famhist.ru/famhist/chertok/003c2c8a.htm
+- id: 3dnews-luna9
+  baza: periodika
+  nazvanie: '3DNews, «Луна-9»: первые панорамы лунной поверхности'
+  ssylka: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+- id: gmik-luna9
+  baza: muzej-rf
+  nazvanie: ГМИК им. К. Э. Циолковского, «60 лет первой мягкой посадке на Луну»
+  god: 2026
+  ssylka: https://gmik.ru/2026/02/03/60-let-pervoy-myagkoy-posadke-na-lunu/
+- id: laspace-luna9
+  baza: sajt-organizacii
+  nazvanie: НПО Лавочкина, «55 лет назад совершена первая в мире мягкая посадка на Луну»
+  ssylka: https://www.laspace.ru/ru/press/news/55-let-nazad-sovershena-pervaya-v-mire-myagkaya-posadka-na-lunu/
+- id: rgantd-babakin
+  baza: rgantd
+  nazvanie: РГАНТД, «Георгий Николаевич Бабакин»
+  ssylka: https://rgantd.ru/korolev/constructors/georgiy-nikolaevich-babakin/
+citaty:
+- kto: С. П. Королёв
+  gde: записка 1964 года; приводит «Русский мир»
+  tekst: Луна твёрдая
+  istochnik: rusmir-luna9
+velichina_chislo: 90
+velichina_edinica: кг
+velichina_chto: встали на лунный грунт из полутора тонн, летевших к Луне
+etiketka_oblozhki:
+- Снимок поверхности Луны, переданный «Луной-9»
+- '1966'
+slovar:
+- tema:kosmos
+- mesto:moskva
+head:
+  title: «Луна-9», 1966 — Музей «Что изобрели русские первыми в мире»
+  description: 'Учёные пугали: Луна в пыли, где утонет любая машина. «Луна-9» села — и не утонула'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-03/
+  sobytie: «Луна-9»
+  god: '1966'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: «Луна-9»
+    description: 'Учёные пугали: Луна в пыли, где утонет любая машина. «Луна-9» села — и не утонула'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-03/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-03-goskatalog-14641128.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: «Луна-9»
+    description: 'Учёные пугали: Луна в пыли, где утонет любая машина. «Луна-9» села — и не утонула'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-03/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-03-goskatalog-14641128.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-03-goskatalog-14641128.jpg
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.2
+    w: 1.0
+    h: 0.7
+  width: 800
+  height: 616
+  alt: 'Чёрно-белый снимок: каменистая поверхность Луны до горизонта'
+  data_source: https://goskatalog.ru/portal/#/collections?id=15611617
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Центральный военно-морской музей имени Петра Великого
+  podpis: Снимок поверхности Луны, переданный «Луной-9», 1966. Хранит Центральный военно-морской музей имени Петра Великого.
+  credit: 'Фото: автор не указан. Хранится: Центральный военно-морской музей имени Петра Великого (инв. в Госкаталоге не указан). Госкаталог музейного фонда РФ, рег. № 15611617.'
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1966'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=15611617
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 15611617
+  nomer_predmeta: инв. в Госкаталоге не указан; Госкаталог рег. № 15611617
+  nomer_snimka: '15611617'
+  hranitel: Центральный военно-морской музей имени Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=15611617
+  svyashchennoe: false
+  podpis_chto: Снимок поверхности Луны, переданный «Луной-9»
+  podpis_gde: Санкт-Петербург, Центральный военно-морской музей
+  podpis_kogda: '1966'
+  hint: Снимок с Луны · 1966
+kroshka: 3 февраля · «Луна-9»
+lead:
+  data: 1966 · Океан Бурь, Луна
+  privyazka: «Луна-9» села на Луну 3 февраля 1966 года.
+  kto: ОКБ С. П. Королёва, завод имени Лавочкина под руководством Г. Н. Бабакина
+  h1: «Луна-9»
+  hook: 'Учёные пугали: Луна в пыли, где утонет любая машина. «Луна-9» села — и не утонула'
+stamp:
+- v: '1966'
+  k: год посадки
+- v: 12-я
+  k: станция, которая села первой в мире
+- v: 90 кг
+  k: встали на лунный грунт
+- v: 3 панорамы
+  k: сняла станция
+daynav:
+- id: story
+  label: Изобретение
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+story:
+  kicker: История изобретения
+  h2: Как «Луна-9» села на Луну
+  udary:
+  - summary: «Луна твёрдая. С. Королёв» — одна записка 1964 года закрыла спор учёных о лунной пыли
+    det:
+    - 'Источник: «Русский мир».'
+    src: 'Источник: «Русский мир» — https://russkiymir.ru/publications/343277/'
+  - summary: 11 станций подряд не сумели сесть на Луну — двенадцатая, «Луна-9», села первой в мире
+    det:
+    - 'Источник: «Русский мир».'
+    src: 'Источник: «Русский мир» — https://russkiymir.ru/publications/343277/'
+  - summary: Щуп коснулся Луны — и станцию выстрелили вверх, чтобы она упала на надувные подушки
+    det:
+    - 'Источник: 3DNews по «Новостям космонавтики».'
+    src: 'Источник: 3DNews — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что изобрели
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: Русский мир — https://russkiymir.ru/publications/343277/'
+    href: https://russkiymir.ru/publications/343277/
+    pometka: документ
+    id: luna-tvyordaya
+    istochnik: rusmir-luna9
+    dlya_voprosa: false
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-03-goskatalog-88351354.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.8
+      width: 800
+      height: 589
+      alt: Модель посадочной капсулы с раскрытыми лепестками в музейном зале
+      data_source: https://goskatalog.ru/portal/#/collections?id=3885816
+      license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей космонавтики (Москва)
+      podpis: Модель автоматической лунной станции «Луна-9» с раскрытыми лепестками, 1960-е. Хранит Музей космонавтики (Москва).
+      credit: 'Фото: автор не указан. Хранится: Музей космонавтики (Москва) (ММК-VI-М-46). Госкаталог музейного фонда РФ, рег. № 4001744.'
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1960-е
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=3885816
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 4001744
+      nomer_predmeta: ММК-VI-М-46; Госкаталог рег. № 4001744
+      nomer_snimka: '3885816'
+      hranitel: Музей космонавтики (Москва)
+      podlinnik:
+        gde: Музей космонавтики (Москва)
+        otkuda: https://goskatalog.ru/portal/#/collections?id=3885816
+      svyashchennoe: false
+      podpis_chto: Модель автоматической лунной станции «Луна-9» с раскрытыми лепестками
+      podpis_gde: Музей космонавтики, Москва
+      podpis_kogda: 1960-е
+  - n: 3
+    sravnenie: net
+    src: 'Источник: Русский мир — https://russkiymir.ru/publications/343277/'
+    href: https://russkiymir.ru/publications/343277/
+    pometka: документ
+    id: dvenadcataya
+    istochnik: rusmir-luna9
+    dlya_voprosa: true
+    otvet: '12'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: Б. Е. Черток, «Ракеты и люди» — http://www.famhist.ru/famhist/chertok/003c2c8a.htm'
+    href: http://www.famhist.ru/famhist/chertok/003c2c8a.htm
+    pometka: документ
+    id: ne-utonula
+    istochnik: chertok-rakety-i-lyudi
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    src: 'Источник: 3DNews по «Новостям космонавтики» — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+    href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+    pometka: документ
+    id: angliyane-ranshe-pravdy
+    istochnik: 3dnews-luna9
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: 3DNews по «Новостям космонавтики» — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+    href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+    pometka: документ
+    id: razvedka-ssha
+    istochnik: 3dnews-luna9
+    dlya_voprosa: false
+  - n: 18
+    sravnenie: net
+    src: 'Источник: 3DNews по «Новостям космонавтики» — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+    href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+    pometka: документ
+    id: kren-75
+    istochnik: 3dnews-luna9
+    dlya_voprosa: false
+    kadr: *id001
+  - n: 9
+    sravnenie: net
+    src: 'Источник: Государственный музей истории космонавтики им. К. Э. Циолковского — https://gmik.ru/2026/02/03/60-let-pervoy-myagkoy-posadke-na-lunu/'
+    href: https://gmik.ru/2026/02/03/60-let-pervoy-myagkoy-posadke-na-lunu/
+    pometka: документ
+    id: serveyer
+    istochnik: gmik-luna9
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: НПО Лавочкина — https://www.laspace.ru/ru/press/news/55-let-nazad-sovershena-pervaya-v-mire-myagkaya-posadka-na-lunu/'
+    href: https://www.laspace.ru/ru/press/news/55-let-nazad-sovershena-pervaya-v-mire-myagkaya-posadka-na-lunu/
+    pometka: документ
+    id: vosem-kolyos
+    istochnik: laspace-luna9
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: 3DNews по «Новостям космонавтики» — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+    href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+    pometka: документ
+    id: shchup-i-podushki
+    istochnik: 3dnews-luna9
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: Б. Е. Черток, «Ракеты и люди» — http://www.famhist.ru/famhist/chertok/003c2c8a.htm'
+    href: http://www.famhist.ru/famhist/chertok/003c2c8a.htm
+    pometka: документ
+    id: korolyov-20-dney
+    istochnik: chertok-rakety-i-lyudi
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про «Луну-9»
+  udary:
+  - n: 6
+    sravnenie: net
+    src: 'Источник: 3DNews по «Новостям космонавтики» — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+    href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+    pometka: документ
+    id: faks-daily-express
+    istochnik: 3dnews-luna9
+    dlya_voprosa: false
+  - n: 11
+    sravnenie: net
+    src: 'Источник: 3DNews по «Новостям космонавтики» — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+    href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+    pometka: документ
+    id: 90-kg
+    istochnik: 3dnews-luna9
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    src: 'Источник: РГАНТД, «Георгий Николаевич Бабакин» — https://rgantd.ru/korolev/constructors/georgiy-nikolaevich-babakin/'
+    href: https://rgantd.ru/korolev/constructors/georgiy-nikolaevich-babakin/
+    pometka: документ
+    id: zavod-lavochkina
+    istochnik: rgantd-babakin
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    src: 'Источник: 3DNews по «Новостям космонавтики» — https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti'
+    href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+    pometka: документ
+    id: nomera-na-detali
+    istochnik: 3dnews-luna9
+    dlya_voprosa: false
+  - n: 26
+    sravnenie: net
+    src: 'Источник: РГАНТД, «Георгий Николаевич Бабакин» — https://rgantd.ru/korolev/constructors/georgiy-nikolaevich-babakin/'
+    href: https://rgantd.ru/korolev/constructors/georgiy-nikolaevich-babakin/
+    pometka: документ
+    id: luna-10
+    istochnik: rgantd-babakin
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Посади «Луну-9»
+  pravilo_ru: 'Что сделать сейчас: выбери шаг посадки и нажми на место на схеме, где он случился.'
+  kak_igrat:
+    zachem: '«Луна-9» села не так, как самолёт: щуп, выстрел вверх и надувные подушки.'
+    shagi:
+    - Выбери шаг посадки — кнопка под схемой загорится золотом.
+    - Нажми на место на схеме. Верный выбор загорится зелёным.
+    - Расставь все четыре шага — счётчик внизу покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок шагов каждый раз новый.'
+    final: Все четыре шага на своих местах — +20 баллов.
+  dannye:
+    kartinka:
+      src: /muzei/izobreteniya/img/02-03-shema-posadki.svg
+      alt: 'Схема посадки: аппарат с огнём двигателя в небе, аппарат со щупом у грунта, шар на подушках, раскрытая станция на краю кратера'
+      podpis_ru: Схема посадки — нажми на место после выбора шага.
+    mesta:
+    - kod: tormozhenie
+      nazvanie: Над Луной
+      x: 15
+      y: 15
+      verno_ru: Над Луной двигатель гасит скорость.
+    - kod: shchup
+      nazvanie: У грунта
+      x: 33
+      y: 60
+      verno_ru: Щуп коснулся Луны.
+    - kod: podushki
+      nazvanie: Удар о грунт
+      x: 53
+      y: 75
+      verno_ru: Станцию выстрелили вверх, и она упала на надувные подушки.
+    - kod: panorama
+      nazvanie: Край кратера
+      x: 83
+      y: 75
+      verno_ru: Села на краю 25-метрового кратера с креном 75° — и всё равно сняла три панорамы.
+    podpisi:
+    - kod: dvigatel
+      tekst: Торможение
+      mesto: tormozhenie
+      mimo_ru: Торможение — ещё высоко над Луной.
+    - kod: kasanie
+      tekst: Щуп
+      mesto: shchup
+      mimo_ru: Щуп — первым касается Луны.
+    - kod: vystrel
+      tekst: Подушки
+      mesto: podushki
+      mimo_ru: Подушки — в момент удара о грунт.
+    - kod: snimki
+      tekst: Панорамы
+      mesto: panorama
+      mimo_ru: Панорамы — когда станция уже стоит.
+    vyberi_ru: Сначала выбери шаг под схемой, потом нажми на место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все четыре шага на месте — так «Луна-9» первой в мире села на Луну.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: торможение — над Луной, щуп — у грунта, подушки — при ударе, панорамы — на краю кратера.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: 3 февраля 1966 года «Луна-9» первой в мире совершила мягкую посадку на Луну и передала снимки с её поверхности.'
+  net: 'Где граница: американский «Сервейер» повторил посадку через четыре месяца.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Луна, Океан Бурь
+    - «Луна-9» — первая мягкая посадка
+    - '1966'
+  - - Луна
+    - «Сервейер» (США)
+    - через четыре месяца
+  - - Орбита Луны
+    - «Луна-10» — первый спутник Луны
+    - '1966'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: «Луна твёрдая»; двенадцатая; надувные подушки; восемь колёс; через четыре месяца.'
+  ball: 8
+  voprosy:
+  - q: Что написал Королёв в записке 1964 года?
+    o:
+    - «Луна в пыли»
+    - «Луна твёрдая»
+    - «Луна жидкая»
+    a: 1
+    e: «Луна твёрдая. С. Королёв» — одна записка 1964 года закрыла спор учёных о лунной пыли
+  - q: Какой по счёту станцией была «Луна-9»?
+    o:
+    - Первой
+    - Пятой
+    - Двенадцатой
+    a: 2
+    e: 11 станций подряд не сумели сесть на Луну — двенадцатая, «Луна-9», села первой в мире
+  - q: На что упала станция после выстрела вверх?
+    o:
+    - На парашют
+    - На надувные подушки
+    - На опоры
+    a: 1
+    e: Щуп коснулся Луны — и станцию выстрелили вверх, чтобы она упала на надувные подушки
+  - q: Что получил луноход после снимков «Луны-9»?
+    o:
+    - Гусеницы
+    - Лыжи
+    - Восемь колёс
+    a: 2
+    e: 'После снимков «Луны-9» луноход переделали: вместо гусениц — восемь колёс'
+  - q: Когда «Сервейер» повторил посадку?
+    o:
+    - Через неделю
+    - Через четыре месяца
+    - Через пять лет
+    a: 1
+    e: Американский «Сервейер» смог повторить посадку «Луны-9» только через четыре месяца
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал «Луны-9».
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- *id002
+- src: /muzei/izobreteniya/img/02-03-goskatalog-92252297.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.1
+    w: 0.8
+    h: 0.8
+  width: 424
+  height: 638
+  alt: Золотистая модель станции целиком на чёрном фоне
+  data_source: https://goskatalog.ru/portal/#/collections?id=13693527
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей космонавтики (Москва)
+  podpis: Модель станции «Луна-9», масштаб 1:3, 1970. Хранит Музей космонавтики (Москва).
+  credit: 'Фото: автор не указан. Хранится: Музей космонавтики (Москва) (ММК-VI-М-455). Госкаталог музейного фонда РФ, рег. № 13567981.'
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1970'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=13693527
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 13567981
+  nomer_predmeta: ММК-VI-М-455; Госкаталог рег. № 13567981
+  nomer_snimka: '13693527'
+  hranitel: Музей космонавтики (Москва)
+  podlinnik:
+    gde: Музей космонавтики (Москва)
+    otkuda: https://goskatalog.ru/portal/#/collections?id=13693527
+  svyashchennoe: false
+  podpis_chto: Модель станции «Луна-9», масштаб 1:3
+  podpis_gde: Музей космонавтики, Москва
+  podpis_kogda: '1970'
+- src: /muzei/izobreteniya/img/02-03-goskatalog-92252296.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.1
+    w: 0.8
+    h: 0.8
+  width: 800
+  height: 599
+  alt: Модель станции в натуральную величину на тёмном фоне
+  data_source: https://goskatalog.ru/portal/#/collections?id=13693536
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей космонавтики (Москва)
+  podpis: Модель станции «Луна-9», масштаб 1:1, 1970. Хранит Музей космонавтики (Москва).
+  credit: 'Фото: автор не указан. Хранится: Музей космонавтики (Москва) (ММК-VI-М-512). Госкаталог музейного фонда РФ, рег. № 13567971.'
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1970'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=13693536
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 13567971
+  nomer_predmeta: ММК-VI-М-512; Госкаталог рег. № 13567971
+  nomer_snimka: '13693536'
+  hranitel: Музей космонавтики (Москва)
+  podlinnik:
+    gde: Музей космонавтики (Москва)
+    otkuda: https://goskatalog.ru/portal/#/collections?id=13693536
+  svyashchennoe: false
+  podpis_chto: Модель станции «Луна-9», масштаб 1:1
+  podpis_gde: Музей космонавтики, Москва
+  podpis_kogda: '1970'
+- src: /muzei/izobreteniya/img/02-03-goskatalog-81145207.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.1
+    w: 0.8
+    h: 0.8
+  width: 536
+  height: 800
+  alt: 'Цветной негатив: модель «Луны-9» в павильоне выставки'
+  data_source: https://goskatalog.ru/portal/#/collections?id=31690900
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Музей криминалистики, архитектуры и истории Москвы (МКАИ)
+  podpis: Модель «Луны-9» в павильоне ВДНХ СССР, 1966. Хранит Музей криминалистики, архитектуры и истории Москвы (МКАИ).
+  credit: 'Фото: Иван Михайлович Шагин. Хранится: Музей криминалистики, архитектуры и истории Москвы (МКАИ) (Н-24/1562). Госкаталог музейного фонда РФ, рег. № 31496068.'
+  vid: foto
+  prava:
+    avtor: Иван Михайлович Шагин
+    god_sozdaniya: '1966'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=31690900
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 31496068
+  nomer_predmeta: Н-24/1562; Госкаталог рег. № 31496068
+  nomer_snimka: '31690900'
+  hranitel: Музей криминалистики, архитектуры и истории Москвы (МКАИ)
+  podlinnik:
+    gde: Музей криминалистики, архитектуры и истории Москвы (МКАИ)
+    otkuda: https://goskatalog.ru/portal/#/collections?id=31690900
+  svyashchennoe: false
+  podpis_chto: Модель «Луны-9» в павильоне ВДНХ СССР
+  podpis_gde: Москва, ВДНХ СССР
+  podpis_kogda: '1966'
+- src: /muzei/izobreteniya/img/02-03-goskatalog-2581386.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.1
+    w: 0.8
+    h: 0.8
+  width: 799
+  height: 604
+  alt: 'Рисунок: станция стоит на лунной поверхности среди кратеров'
+  data_source: https://goskatalog.ru/portal/#/collections?id=6327638
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Государственный музей политической истории России
+  podpis: Схема полёта автоматической станции «Луна-9», 1966. Хранит Государственный музей политической истории России.
+  credit: 'Фото: автор не указан. Хранится: Государственный музей политической истории России (Ф.III-16345/3). Госкаталог музейного фонда РФ, рег. № 6106373.'
+  vid: risunok
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1966'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=6327638
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 6106373
+  nomer_predmeta: Ф.III-16345/3; Госкаталог рег. № 6106373
+  nomer_snimka: '6327638'
+  hranitel: Государственный музей политической истории России
+  podlinnik:
+    gde: Государственный музей политической истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=6327638
+  svyashchennoe: false
+  podpis_chto: Схема полёта автоматической станции «Луна-9»
+  podpis_gde: Санкт-Петербург, Музей политической истории России
+  podpis_kogda: '1966'
+sources:
+- href: https://russkiymir.ru/publications/343277/
+  title: Русский мир
+  note: luna-tvyordaya, dvenadcataya
+- href: http://www.famhist.ru/famhist/chertok/003c2c8a.htm
+  title: Б. Е. Черток, «Ракеты и люди»
+  note: ne-utonula, korolyov-20-dney
+- href: https://3dnews.ru/1030291/luna9-pervie-panorami-lunnoy-poverhnosti
+  title: 3DNews по «Новостям космонавтики»
+  note: angliyane-ranshe-pravdy, razvedka-ssha, kren-75, shchup-i-podushki, faks-daily-express, 90-kg, nomera-na-detali
+- href: https://gmik.ru/2026/02/03/60-let-pervoy-myagkoy-posadke-na-lunu/
+  title: Государственный музей истории космонавтики им. К. Э. Циолковского
+  note: serveyer
+- href: https://www.laspace.ru/ru/press/news/55-let-nazad-sovershena-pervaya-v-mire-myagkaya-posadka-na-lunu/
+  title: НПО Лавочкина
+  note: vosem-kolyos
+- href: https://rgantd.ru/korolev/constructors/georgiy-nikolaevich-babakin/
+  title: РГАНТД, «Георгий Николаевич Бабакин»
+  note: zavod-lavochkina, luna-10
+- href: https://goskatalog.ru/portal/#/collections?id=15611617
+  title: 'Госкаталог, инв. в Госкаталоге не указан; Госкаталог рег. № 15611617: Снимок поверхности Луны, переданный «Луной-9»'
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=3885816
+  title: 'Госкаталог, ММК-VI-М-46; Госкаталог рег. № 4001744: Модель автоматической лунной станции «Луна-9» с раскрытыми лепестками'
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=13693527
+  title: 'Госкаталог, ММК-VI-М-455; Госкаталог рег. № 13567981: Модель станции «Луна-9», масштаб 1:3'
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=13693536
+  title: 'Госкаталог, ММК-VI-М-512; Госкаталог рег. № 13567971: Модель станции «Луна-9», масштаб 1:1'
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=31690900
+  title: 'Госкаталог, Н-24/1562; Госкаталог рег. № 31496068: Модель «Луны-9» в павильоне ВДНХ СССР'
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=6327638
+  title: 'Госкаталог, Ф.III-16345/3; Госкаталог рег. № 6106373: Схема полёта автоматической станции «Луна-9»'
+  note: кадр
+kuda:
+- lbl: Следующий день
+  href: den/02-04/
+  title: 4 февраля
+  hook: Следующий день музея.
+  main: true
+- lbl: Предыдущий день
+  href: den/02-02/
+  title: 2 февраля — Гаубица «единорог»
+  hook: Русский «единорог» первым в мире стрелял ядром, гранатой и картечью из одного ствола.
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Главный конструктор
+  - - 70
+    - Инженер Бабакина
+  - - 40
+    - Оператор связи
+  - - 0
+    - Гость дня
+return:
+  q: Какой по счёту станцией была «Луна-9»?
+  a: 'Двенадцатой: 11 станций подряд не сумели сесть на Луну.'
+  src: «Русский мир», russkiymir.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-03-luna9:claim-1966
+  ours:
+    kind: museum-object
+    title: Модель автоматической лунной станции «Луна-9»
+    date: '1966'
+    holder: Музей космонавтики (Москва)
+    source_url: https://goskatalog.ru/portal/#/collections?id=3885816
+podskazki_igry:
+- Двигатель гасит скорость ещё высоко
+- Первым грунта касается тонкий щуп
+- Снимать можно, только когда станция уже стоит
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Океан Бурь, Луна
+  shirota: 7.13
+  dolgota: -64.37
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Двигатель у Луны гасит скорость
+- Щуп касается грунта
+- Станцию выстреливают вверх, она падает на надувные подушки
+- Раскрываются лепестки, камера снимает панораму
