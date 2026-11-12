@@ -1,4 +1,4 @@
-# Р759: день 5 февраля — Виктор Талалихин, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 14 фактов по правке Сергея.
+# Р759/Р760: день 5 февраля — Виктор Талалихин, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 14 фактов по правке Сергея.
 
 muzei: ne-sdayutsya
 key: 02-05
@@ -93,6 +93,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/05feb-talalihin
+  format: horizontal
+  pole: nesdayutsya/05feb-talalihin:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Патроны кончились — ночью Талалихин винтом отрубил хвост «Хейнкелю» и остался жив.
+  poster: /muzei/ne-sdayutsya/video/day-05feb-talalihin-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-05feb-talalihin.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/ns05feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Виктор Талалихин
@@ -179,6 +190,43 @@ fakty:
     dlya_voprosa: true
     otvet: '800'
     otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-05-goskatalog-34998107.jpg
+      alt: 'Старые лётные очки: два стекла в металлической оправе на потрескавшейся коричневой коже, сзади матерчатая лента с кольцами.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=34998107
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Лётные очки Героя Советского Союза Виктора Талалихина. Хранятся в Центральном музее Вооружённых Сил Российской Федерации, Москва.
+      credit: ФГБУК «Центральный музей Вооружённых Сил Российской Федерации», № 2/4014, Госкаталог № 34792777
+      width: 799
+      height: 418
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.03
+        w: 1.0
+        h: 0.94
+      nomer_predmeta: 2/4014
+      nomer_snimka: '34998107'
+      hranitel: Центральный музей Вооружённых Сил Российской Федерации, Москва
+      podpis_chto: Очки лётные Героя Советского Союза Талалихина Виктора Васильевича
+      podpis_gde: место создания не указано
+      podpis_kogda: первая половина XX века
+      simvolika_proverena: true
+      podlinnik:
+        gde: Центральный музей Вооружённых Сил Российской Федерации, Москва
+        otkuda: https://goskatalog.ru/portal/#/collections?id=34998107
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: первая половина XX века
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 34792777
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 34792777
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=34998107
   - id: ns-0205-pyatyj-v-plenu
     summary: Пятый немец успел выпрыгнуть, 20 дней пробирался к своим и попал в плен под Смоленском.
     det:
@@ -209,6 +257,43 @@ fakty:
     dlya_voprosa: true
     otvet: сотым
     otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-05-goskatalog-20014183.jpg
+      alt: 'Чёрно-белый фотопортрет: молодой лётчик с короткой стрижкой в гимнастёрке с петлицами и портупеей, на груди Золотая Звезда и два ордена.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=20014183
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Герой Советского Союза Виктор Талалихин. Фотография (копия), вторая половина XX века. Хранится в Музее памяти Лопасненского края, Московская область.
+      credit: МБУК «Музей памяти Лопасненского края», № МП оф 47, Госкаталог № 20102446
+      width: 592
+      height: 800
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.0
+        w: 0.8
+        h: 0.75
+      nomer_predmeta: МП оф 47
+      nomer_snimka: '20014183'
+      hranitel: Музей памяти Лопасненского края, Московская область
+      podpis_chto: Фотография «Виктор Талалихин Герой Советского Союза»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: вторая половина XX века
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей памяти Лопасненского края, Московская область
+        otkuda: https://goskatalog.ru/portal/#/collections?id=20014183
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: вторая половина XX века
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 20102446
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 20102446
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20014183
   - id: ns-0205-shest-protiv-devyati
     summary: 'Последний бой: шесть наших против девяти «мессеров», и он сбил одного сам, второго в паре.'
     det:
@@ -462,6 +547,78 @@ figures:
     otkuda: Госкаталог, № 21538845
     baza: goskatalog
     ssylka: https://goskatalog.ru/portal/#/collections?id=21670617
+- src: /muzei/ne-sdayutsya/img/02-05-goskatalog-22332900.jpg
+  alt: 'Тёмно-синяя суконная тужурка, вид со спины: отложной воротник и обшлага рукавов с голубым кантом.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=22332900
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Тужурка Героя Советского Союза Виктора Талалихина. Хранится в Центральном музее Вооружённых Сил Российской Федерации, Москва.
+  credit: ФГБУК «Центральный музей Вооружённых Сил Российской Федерации», № 2/4024, Госкаталог № 22190101
+  width: 592
+  height: 680
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.03
+    y: 0.03
+    w: 0.94
+    h: 0.97
+  nomer_predmeta: 2/4024
+  nomer_snimka: '22332900'
+  hranitel: Центральный музей Вооружённых Сил Российской Федерации, Москва
+  podpis_chto: Тужурка Героя Советского Союза Талалихина Виктора Васильевича
+  podpis_gde: место создания не указано
+  podpis_kogda: 1930–1940-е годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: Центральный музей Вооружённых Сил Российской Федерации, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=22332900
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1930–1940-е годы
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 22190101
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 22190101
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=22332900
+- src: /muzei/ne-sdayutsya/img/02-05-goskatalog-12097579.jpg
+  alt: 'Цветной снимок: бронзовая фигура лётчика в полный рост, в гимнастёрке с портупеей и планшетом, на фоне облачного неба и жилого дома.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=12097579
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Памятник лётчику Виктору Талалихину на улице его имени в Москве. Фотография 2001–2003 годов. Хранится в Музее Москвы.
+  credit: ГБУК г. Москвы «Музейное объединение «Музей Москвы», № ММ ОФ-32161/86, Госкаталог № 11978921
+  width: 533
+  height: 480
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.3
+    y: 0.1
+    w: 0.35
+    h: 0.9
+  nomer_predmeta: ММ ОФ-32161/86
+  nomer_snimka: '12097579'
+  hranitel: Музей Москвы, Москва
+  podpis_chto: Памятник лётчику Виктору Талалихину на улице его имени
+  podpis_gde: Москва
+  podpis_kogda: 2001–2003 годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей Москвы, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12097579
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 2001–2003 годы
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11978921
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 11978921
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12097579
 sources:
 - href: https://warheroes.ru/hero/hero.asp?Hero_id=230
   title: «Герои страны». Талалихин Виктор Васильевич
@@ -597,8 +754,8 @@ mesto_sobytiya:
   shirota: 55.214
   dolgota: 37.767
 podskazki_igry: net
-moj_ded: net  # 12.11: pamyat-naroda.ru — наградной лист не открыт за время наряда; повторить
-togda_sejchas: net  # не искал за время наряда (потолок 20 минут)
+moj_ded: net
+togda_sejchas: net
 skvoznye_linii: net
 predmet_3d: net
 panorama_360: net
@@ -607,7 +764,7 @@ staraya_karta:
   god: 1941
   otkuda: Это Место — etomesto.com
   ssylka: https://etomesto.com/map-atlas_rkka/?y=55.214&x=37.767
-marshrut: net  # в дне одна точка — Мансурово
+marshrut: net
 etiketka_oblozhki:
 - Вражеский самолёт, протараненный лётчиком Талалихиным
 - Государственный центральный музей современной истории России, Москва
@@ -619,3 +776,30 @@ vizual:
   kicker: Снимок под лупой
   h2: Обломки «Хейнкеля»
   lead: 'Так выглядел немецкий бомбардировщик, сбитый тараном Талалихина, на снимке августа 1941 года. Приближайте: смятые крылья и корпус, а впереди — купол парашюта.'
+audioguide:
+  audioSrc: audio-guide-talalihin-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от ночного неба над Подмосковьем через раненую руку и таран — к прыжку с восьмисот метров и Звезде Героя: пять остановок.'
+  stops:
+    - t: 0
+      mark: '0:00'
+      title: 'Ночь на 7 августа'
+    - t: 22
+      mark: '0:22'
+      title: 'Раненая рука'
+    - t: 42
+      mark: '0:42'
+      title: 'Таран'
+    - t: 64
+      mark: '1:04'
+      title: '800 метров вниз'
+    - t: 86
+      mark: '1:26'
+      title: 'Герой через сутки'
+  transcript:
+    - 'Ночь на седьмое августа тысяча девятьсот сорок первого года, небо над Подмосковьем. Младший лейтенант Виктор Талалихин на истребителе И-16 догоняет немецкий бомбардировщик «Хейнкель». С начала войны прошло полтора месяца. Ночной бой идёт тридцать три минуты.'
+    - 'Стрелок «Хейнкеля» прошивает ему руку с десяти-пятнадцати метров. Талалихин не отворачивает. Патроны кончились — и он идёт на таран.'
+    - 'Винтом он отрубает хвост «Хейнкелю». Бомбардировщиком командует сорокалетний подполковник с Железным крестом. Талалихину двадцать два. Пятый немец успевает выпрыгнуть, двадцать дней пробирается к своим и попадает в плен под Смоленском.'
+    - 'Раненый Талалихин выпадает из перевёрнутого самолёта и восемьсот метров летит вниз, не раскрывая парашюта. И остаётся жив. «Хейнкель» находят через несколько часов, с документами экипажа, — таран нельзя оспорить.'
+    - 'Восьмого августа, через сутки, Талалихин — Герой Советского Союза. Гитлер вёл «книгу личных врагов». Против фамилии Талалихин там стояло: «Уничтожен». Через семьдесят три года из земли подняли его И-16: стрелки часов стоят на одиннадцати тридцати, номер мотора совпал с архивом. Ниже — викторина и источники. Спасибо, что были с нами.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
