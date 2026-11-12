@@ -166,6 +166,17 @@ daynav:
   label: Источники
 - id: calendar
   label: Календарь
+video:
+  h2: История в 48 секунд
+  klyuch: izobreteniya/05feb-plenka
+  format: horizontal
+  pole: izobreteniya/05feb-plenka:horizontal.sec
+  suffix: сек
+  badge: 48 сек
+  intro: Болдырев показал миру гибкую фотоплёнку в рулоне за десять лет до Kodak и патента на неё так и не взял
+  poster: video/day-05feb-plenka-poster.jpg?v=1
+  mp4: video/day-05feb-plenka.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43168137232) из сценария days/05feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения
   h2: Как появилась гибкая плёнка
