@@ -98,6 +98,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История в 48 секунд
+  klyuch: nesdayutsya/03feb-troica
+  format: horizontal
+  pole: nesdayutsya/03feb-troica:horizontal.sec
+  suffix: сек
+  badge: 48 сек
+  intro: 16 месяцев — ворота не открыли
+  poster: /muzei/ne-sdayutsya/video/day-03feb-troica-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-03feb-troica.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43202190537) из сценария days/ns03feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Оборона Троице-Сергиевой лавры
@@ -517,6 +528,70 @@ figures:
       gde: Сергиево-Посадский государственный историко-художественный музей-заповедник
       otkuda: Госкаталог музейного фонда РФ, № 8212289, инв. 466/1-лит
     svyashchennoe: true
+  - src: /muzei/ne-sdayutsya/img/02-03-goskatalog-18895847.jpg
+    alt: В речной долине защитники монастыря на конях и пешими везут телегу с дровами и отбиваются от всадников, вдали на холме виден монастырь, над лесом поднимается дым.
+    data_source: https://goskatalog.ru/portal/#/collections?id=18651892
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: Осада Троице-Сергиева монастыря в 1608 году. Вылазка за дровами. Литография с акварелью неизвестного литографа, Сергиев Посад, 1865 г. Хранится в Сергиево-Посадском государственном историко-художественном музее-заповеднике.
+    credit: Сергиево-Посадский государственный историко-художественный музей-заповедник, инв. 634-лит, Госкаталог № 18512438
+    width: 620
+    height: 450
+    vid: risunok
+    glavnoe_na_kartinke: {x: 0.03, y: 0.35, w: 0.94, h: 0.62}
+    nomer_predmeta: 634-лит
+    nomer_snimka: '18895847'
+    hranitel: Сергиево-Посадский государственный историко-художественный музей-заповедник
+    podpis_chto: Литография «Осада Троице-Сергиева монастыря в 1608 году. Вылазка за дровами»
+    podpis_gde: Сергиев Посад
+    podpis_kogda: 1865 г.
+    simvolika_proverena: true
+    podlinnik:
+      gde: Сергиево-Посадский государственный историко-художественный музей-заповедник
+      otkuda: Госкаталог музейного фонда РФ, № 18512438, инв. 634-лит
+    svyashchennoe: false
+    prava:
+      avtor: неизвестный литограф
+      god_sozdaniya: 1865
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: true
+      pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 18512438
+      sdelano_mashinoj: false
+      otkuda: Госкаталог, № 18512438
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=18651892
+  - src: /muzei/ne-sdayutsya/img/02-03-goskatalog-29021437.jpg
+    alt: Ночью войско с лестницами штурмует высокую белую стену с башнями, сверху защитники сбрасывают нападающих, внизу стоят пушки, ядра и группа воинов в шапках и кафтанах.
+    data_source: https://goskatalog.ru/portal/#/collections?id=25942932
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: Осада поляками Троице-Сергиевой лавры в 1609 году — ночной штурм стен. Раскрашенная литография, 1865 г. Хранится в Калязинском краеведческом музее им. И.Ф. Никольского (филиал Тверского государственного объединённого музея).
+    credit: Калязинский краеведческий музей им. И.Ф. Никольского (филиал ТГОМ), инв. ТГОМ КзМ КП-1650, Госкаталог № 25797629
+    width: 738
+    height: 532
+    vid: risunok
+    glavnoe_na_kartinke: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}
+    nomer_predmeta: ТГОМ КзМ КП-1650
+    nomer_snimka: '29021437'
+    hranitel: Калязинский краеведческий музей им. И.Ф. Никольского — филиал Тверского государственного объединённого музея
+    podpis_chto: Литография «Осада поляками Троице-Сергиевой лавры в 1609 году»
+    podpis_gde: Россия
+    podpis_kogda: 1865 г.
+    simvolika_proverena: true
+    podlinnik:
+      gde: Калязинский краеведческий музей им. И.Ф. Никольского — филиал Тверского государственного объединённого музея
+      otkuda: Госкаталог музейного фонда РФ, № 25797629, инв. ТГОМ КзМ КП-1650
+    svyashchennoe: false
+    prava:
+      avtor: автор не указан
+      god_sozdaniya: 1865
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: true
+      pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 25797629
+      sdelano_mashinoj: false
+      otkuda: Госкаталог, № 25797629
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=25942932
 sources:
 - href: http://lib.pushkinskijdom.ru/Default.aspx?tabid=10874
   title: Авраамий Палицын. «Сказание» об осаде Троице-Сергиева монастыря, перевод, ИРЛИ РАН
