@@ -1,97 +1,13 @@
 {
   "museum": "izobreteniya",
   "key": "02-04",
-  "title": "Самовар",
-  "hook": "Первый самовар России попал в документы как контрабанда: таможня изъяла его в 1740-м",
-  "status": "zagotovka",
-  "istochniki": [
-    {
-      "id": "nkj-samovar",
-      "baza": "nauka",
-      "nazvanie": "Н. Корепанов, статья о первом самоваре, «Наука и жизнь» №9, 2002",
-      "god": 2002,
-      "ssylka": "https://www.nkj.ru/archive/articles/4746/"
-    },
-    {
-      "id": "samovarmuseum-lisicyny",
-      "baza": "muzej-rf",
-      "nazvanie": "Музей самоваров и бульоток (Тульская обл.): Лисицыны — первые самовары в Туле",
-      "ssylka": "https://www.samovarmuseum.ru/mastera-samovarschiki/lisitsini-pervie-samovary-v-tule/"
-    },
-    {
-      "id": "samovarmuseum-istoriya",
-      "baza": "muzej-rf",
-      "nazvanie": "Музей самоваров и бульоток (Тульская обл.): история самовара",
-      "ssylka": "https://www.samovarmuseum.ru/samovarhistory/"
-    },
-    {
-      "id": "samovarmuseum-rekordy",
-      "baza": "muzej-rf",
-      "nazvanie": "Музей самоваров и бульоток (Тульская обл.): самоварные рекорды",
-      "ssylka": "https://www.samovarmuseum.ru/mastera-samovarschiki/funsamovarratings/"
-    },
-    {
-      "id": "samovarmuseum-vystavki",
-      "baza": "muzej-rf",
-      "nazvanie": "Музей самоваров и бульоток (Тульская обл.): тульские самоварные фабриканты на международных выставках, ч. 2",
-      "ssylka": "https://www.samovarmuseum.ru/news/tulskie-samovarnye-fabrikanty-na-mezhdunarodnyh-vystavkah-ch-2/"
-    },
-    {
-      "id": "ar-culture-samovar",
-      "baza": "ar_culture",
-      "nazvanie": "«Артефакт», Минкультуры России: самовар фабрики Шемариных",
-      "ssylka": "https://ar.culture.ru/ru/subject/samovar-113"
-    }
-  ],
-  "fakty": [
-    {
-      "id": "kontrabanda",
-      "tekst": "Первый самовар России попал в документы как контрабанда: таможня изъяла его в 1740-м",
-      "istochnik": "nkj-samovar"
-    },
-    {
-      "id": "dorozhe-korovy",
-      "tekst": "Первый самовар таможня оценила в 4 рубля 80 копеек — дороже коровы",
-      "istochnik": "nkj-samovar"
-    },
-    {
-      "id": "klejmo",
-      "tekst": "Тульское клеймо стало таким знаменитым, что его подделывали даже на Урале — родине самовара",
-      "istochnik": "samovarmuseum-lisicyny"
-    },
-    {
-      "id": "ogon-v-vode",
-      "tekst": "Огонь горит прямо внутри воды — и вода его не гасит: всё тепло уходит в кипяток",
-      "istochnik": "samovarmuseum-istoriya"
-    },
-    {
-      "id": "shemarin",
-      "tekst": "Бывший крепостной Шемарин стал поставщиком двора шаха Персии",
-      "istochnik": "ar-culture-samovar"
-    },
-    {
-      "id": "kerosinovyj",
-      "tekst": "Керосиновый самовар 1920-х одним движением превращался в лампу",
-      "istochnik": "samovarmuseum-istoriya",
-      "eshche": true
-    },
-    {
-      "id": "450-litrov",
-      "tekst": "Самый большой действующий самовар — тульский: 450 литров и полтонны веса",
-      "istochnik": "samovarmuseum-rekordy",
-      "eshche": true
-    },
-    {
-      "id": "turin-1911",
-      "tekst": "Тульский самовар взял Гран-при в Турине-1911 — выставку видели 7,5 миллиона человек",
-      "istochnik": "samovarmuseum-vystavki",
-      "eshche": true
-    },
-    {
-      "id": "zapret",
-      "tekst": "Заводу велели прекратить делать медную посуду — а его котельники сделали первый самовар",
-      "istochnik": "nkj-samovar",
-      "eshche": true
-    }
-  ]
+  "title": "«Знамя-2» — первое в мире космическое зеркало",
+  "year": 1993,
+  "hook": "4 февраля. «Знамя-2» — русское зеркало в космосе впервые в мире зажгло ночь над Европой",
+  "nomer_dnya": "izob-0204-znamya-2",
+  "data_sobytiya": "1993-02-04",
+  "god": 1993,
+  "god_tochnost": "tochno",
+  "god_pokaza": 2027,
+  "ves": "glavnoe"
 }
