@@ -1,6 +1,5 @@
 muzei: izobreteniya
 key: 02-05
-adres: den
 pokazan_sergeyu:
   data: '2026-11-11'
 nomer_dnya: izob-0205-boldyrev
@@ -223,6 +222,42 @@ fakty:
     dlya_voprosa: false
   - n: 4
     sravnenie: как если бы фотоаппарат «Кодак» появился у нас на целое десятилетие раньше
+    kadr:
+      src: /muzei/izobreteniya/img/02-05-goskatalog-30555780.jpg
+      glavnoe_na_kartinke: &id001
+        x: 0.2
+        y: 0.25
+        w: 0.6
+        h: 0.6
+      width: 1600
+      height: 1106
+      alt: Конные казаки выстроены рядами на площади станицы, перед строем — атаман
+      data_source: https://goskatalog.ru/portal/#/collections?id=30555780
+      license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+      podpis: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская», 1876. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+      credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-10). Госкаталог музейного фонда РФ, рег. № 30383286.'
+      hint: Фото · снимок Болдырева
+      vid: foto
+      prava: &id002
+        avtor: Болдырев И. В.
+        god_sozdaniya: 1876 г.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=30555780
+      nomer_predmeta: '30383286'
+      nomer_snimka: ФН-10
+      hranitel: Волгодонский эколого-исторический музей
+      podlinnik: &id003
+        gde: Волгодонский эколого-исторический музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=30555780
+      svyashchennoe: false
+      podpis_chto: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская»
+      podpis_gde: станица Цымлянская, область Войска Донского
+      podpis_kogda: '1876'
     src: 'Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — sarkel61.ru'
     otryvok: Гибкая фотоплёнка была у донского казака за 10 лет до Kodak
     stranica: «Наше наследие», 1989
@@ -463,11 +498,7 @@ result:
   note: Баллы — за игру, ответы и викторину.
 figures:
 - src: /muzei/izobreteniya/img/02-05-goskatalog-30555780.jpg
-  glavnoe_na_kartinke:
-    x: 0.2
-    y: 0.25
-    w: 0.6
-    h: 0.6
+  glavnoe_na_kartinke: *id001
   width: 1600
   height: 1106
   alt: Конные казаки выстроены рядами на площади станицы, перед строем — атаман
@@ -477,22 +508,11 @@ figures:
   credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-10). Госкаталог музейного фонда РФ, рег. № 30383286.'
   hint: Фото · снимок Болдырева
   vid: foto
-  prava:
-    avtor: Болдырев И. В.
-    god_sozdaniya: 1876 г.
-    god_smerti_avtora: net
-    god_reabilitacii: net
-    anonim: false
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=30555780
+  prava: *id002
   nomer_predmeta: '30383286'
   nomer_snimka: ФН-10
   hranitel: Волгодонский эколого-исторический музей
-  podlinnik:
-    gde: Волгодонский эколого-исторический музей
-    otkuda: https://goskatalog.ru/portal/#/collections?id=30555780
+  podlinnik: *id003
   svyashchennoe: false
   podpis_chto: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская»
   podpis_gde: станица Цымлянская, область Войска Донского
