@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <!-- 02-03 «Луна-9»: схема посадки для игры kazhdomu-svoyo-mesto, без надписей (Р18), подписи ставит движок. -->
+  <rect width="800" height="400" fill="#0b1020"/>
+  <g fill="#fff" opacity=".7"><circle cx="60" cy="40" r="1.5"/><circle cx="210" cy="90" r="1"/><circle cx="380" cy="30" r="1.5"/><circle cx="520" cy="70" r="1"/><circle cx="700" cy="50" r="1.5"/></g>
+  <path d="M0 330 Q200 310 400 325 T800 320 V400 H0Z" fill="#8a8a8a"/>
+  <ellipse cx="560" cy="350" rx="70" ry="12" fill="#666"/>
+  <path d="M120 40 Q200 120 260 210" stroke="#d9b45a" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+  <!-- торможение: аппарат с факелом двигателя -->
+  <rect x="100" y="25" width="40" height="40" rx="6" fill="#c9c9c9"/><path d="M110 65 L120 100 L130 65Z" fill="#ff8a3d"/>
+  <!-- щуп касается -->
+  <rect x="245" y="200" width="30" height="30" rx="5" fill="#c9c9c9"/><line x1="260" y1="230" x2="260" y2="322" stroke="#e6e6e6" stroke-width="3"/>
+  <!-- капсула на подушках -->
+  <circle cx="420" cy="300" r="26" fill="#e6e6e6" opacity=".8"/><circle cx="420" cy="300" r="12" fill="#c9a24a"/>
+  <!-- раскрытые лепестки и антенны -->
+  <path d="M650 322 L630 300 L650 296 L660 280 L670 296 L690 300 L670 322Z" fill="#c9a24a"/><line x1="660" y1="280" x2="645" y2="250" stroke="#ddd" stroke-width="2"/><line x1="660" y1="280" x2="675" y2="250" stroke="#ddd" stroke-width="2"/>
+</svg>
