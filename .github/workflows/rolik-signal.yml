@@ -1,0 +1,36 @@
+# Сигнал «день вышел» в rc-rolik (Р763, 13.11.2026): push в main по путям дня → repository_dispatch den-vyshel,
+# rc-rolik avto.yml сразу запускает ролик и аудиогид, не ждёт своего крона (крон там — страховка, раз в 5 мин).
+# Как в мире — GitHub Docs «Create a repository dispatch event» (REST POST /repos/{owner}/{repo}/dispatches),
+# https://docs.github.com/en/rest/repos/repos#create-a-repository-dispatch-event : чужое репо будит только ключ,
+# github.token сюда не годится; пути — on.push.paths, тот же набор, что смотрит rc-rolik scripts/avto.py.
+# Пять вопросов: задевает — только один вызов API в rc-rolik; нужно — секрет ROLIK_SIGNAL (fine-grained ключ
+# arabelthera-dot, репо rc-rolik, Contents: write — так требует dispatches; кладёт Михаил); без нужного — спит строкой
+# в журнале, ролики идут кроном rc-rolik; проверка — после ключа слить день и увидеть прогон avto с событием
+# repository_dispatch; откат — удалить секрет или этот файл.
+name: rolik-signal
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/dni-shablon/**'
+      - 'src/content/days/ne-sdayutsya/**'
+      - 'src/data/utverzhdeno/ne-sdayutsya/**'
+permissions: {}
+concurrency:
+  group: rolik-signal
+  cancel-in-progress: false
+jobs:
+  signal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: den-vyshel в rc-rolik
+        env:
+          GH_TOKEN: ${{ secrets.ROLIK_SIGNAL }}
+          SHA: ${{ github.sha }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::нет секрета ROLIK_SIGNAL (Михаил) — сигнал не шлю, rc-rolik возьмёт день своим кроном"; exit 0
+          fi
+          gh api -X POST repos/arabelthera-dot/rc-rolik/dispatches \
+            -f event_type=den-vyshel -f "client_payload[sha]=$SHA"
