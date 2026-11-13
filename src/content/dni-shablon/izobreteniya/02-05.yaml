@@ -1,0 +1,851 @@
+muzei: izobreteniya
+key: 02-05
+pokazan_sergeyu:
+  data: '2026-11-11'
+nomer_dnya: izob-0205-boldyrev
+data_sobytiya: '1880-02-05'
+data_staryj_stil: '1880-01-24'
+chto_sluchilos: Донской казак Иван Болдырев показал Техническому обществу в Петербурге гибкую прозрачную фотоплёнку — за десять лет до плёнки Kodak.
+god: 1880
+god_tochnost: okolo
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: 'Фотонегативы И. В. Болдырева: станица Цымлянская, 1876'
+  muzej: Волгодонский эколого-исторический музей
+  gorod: Волгодонск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=30555813
+chitat_dalshe:
+- nazvanie: «Болдырев Иван Васильевич»
+  gde: Президентская библиотека имени Б. Н. Ельцина
+  ssylka: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev
+- nazvanie: Е. Бархатова. «Донские сюжеты Ивана Болдырева»
+  gde: «Наше наследие», 1989, IV(10)
+  ssylka: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
+- nazvanie: О. Майдельман. «Как казак-изобретатель фирму Kodak обошёл»
+  gde: журнал «Нация»
+  ssylka: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+istochniki:
+- id: prlib-boldyrev
+  baza: prlib
+  nazvanie: Болдырев Иван Васильевич — Президентская библиотека им. Б. Н. Ельцина
+  ssylka: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev
+- id: barhatova-1989
+  baza: periodika
+  avtor: Е. Бархатова
+  god: 1989
+  nazvanie: «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10)
+  ssylka: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
+- id: nacia-boldyrev
+  baza: periodika
+  avtor: О. Майдельман
+  nazvanie: «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация»
+  ssylka: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+- id: starocherkassk-2025
+  baza: periodika
+  god: 2025
+  nazvanie: «В Старочеркасском музее-заповеднике расскажут о донском фотографе И. В. Болдыреве», газета «Победа», 13.09.2025
+  ssylka: https://pobeda-aksay.ru/2025/09/13/v-starocherkasskom-muzee-zapovednike-rasskazhut-o-donskom-fotografe-i-v-boldyreve/
+- id: kg-rostov-boldyrev
+  baza: periodika
+  nazvanie: '«Иван Болдырев: судьба репортёра в России», «Кто главный»'
+  ssylka: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/
+- id: rosphoto-boldyrev
+  baza: muzej-rf
+  nazvanie: «Иван Болдырев. Фотограф и изобретатель» — РОСФОТО
+  ssylka: https://rosphoto.org/events/ivan-boldyrev-photographer-and-inventor/
+- id: gk-boldyrev
+  baza: goskatalog
+  nazvanie: Фотонегативы И. В. Болдырева, Волгодонский эколого-исторический музей, КП-1829 — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=30555813
+citaty:
+- kto: Иван Болдырев
+  gde: брошюра 1886 года; приводит журнал «Нация»
+  tekst: сохранить честь изобретения за Россией
+  istochnik: nacia-boldyrev
+velichina_chislo: 10
+velichina_edinica: лет
+velichina_chto: на столько гибкая плёнка Болдырева опередила Kodak
+etiketka_oblozhki:
+- И. В. Болдырев. Проводы донских казаков на службу, 1876
+- Волгодонский эколого-исторический музей
+slovar:
+- mesto:sankt-peterburg
+head:
+  title: Гибкая фотоплёнка Болдырева, 1880 — Музей «Что изобрели русские первыми в мире»
+  description: Донской казак Иван Болдырев сделал гибкую фотоплёнку за десять лет до Kodak.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-05/
+  sobytie: Гибкая фотоплёнка Болдырева
+  god: '1880'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Гибкая фотоплёнка Болдырева
+    description: Донской казак Иван Болдырев сделал гибкую фотоплёнку за десять лет до Kodak.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-05/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-05-goskatalog-30555813.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Гибкая фотоплёнка Болдырева
+    description: Донской казак Иван Болдырев сделал гибкую фотоплёнку за десять лет до Kodak.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-05/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-05-goskatalog-30555813.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-05-goskatalog-30555813.jpg
+  glavnoe_na_kartinke:
+    x: 0.35
+    y: 0.3
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1185
+  alt: Толпа казаков и провожающих у станичных домов, верховые кони, люди в праздничной одежде
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555813
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Проводы донских казаков на службу», 1876. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-13). Госкаталог музейного фонда РФ, рег. № 30383295.'
+  vid: foto
+  prava:
+    avtor: Болдырев И. В.
+    god_sozdaniya: Сентябрь, 1876 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30555813
+  nomer_predmeta: '30383295'
+  nomer_snimka: ФН-13
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30555813
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Проводы донских казаков на службу»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: '1876'
+  hint: Фото · снимок Болдырева, 1876
+kroshka: 5 февраля · Плёнка Болдырева
+lead:
+  data: 1880 · Санкт-Петербург, Техническое общество
+  privyazka: Плёнку показали Техническому обществу в 1880 году.
+  kto: Иван Васильевич Болдырев, донской казак и фотограф
+  h1: Гибкая фотоплёнка Болдырева
+  hook: Болдырев показал миру гибкую фотоплёнку в рулоне за десять лет до Kodak и патента на неё так и не взял
+stamp:
+- v: '1880'
+  k: плёнку показали Техническому обществу
+- v: 10 лет
+  k: раньше Kodak
+- v: 2 раза
+  k: отказался от патента
+- v: сутки
+  k: в воде — и плёнка цела
+daynav:
+- id: story
+  label: Изобретение
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+video:
+  h2: История в 48 секунд
+  klyuch: izobreteniya/05feb-plenka
+  format: horizontal
+  pole: izobreteniya/05feb-plenka:horizontal.sec
+  suffix: сек
+  badge: 48 сек
+  intro: Болдырев показал миру гибкую фотоплёнку в рулоне за десять лет до Kodak и патента на неё так и не взял
+  poster: video/day-05feb-plenka-poster.jpg?v=1
+  mp4: video/day-05feb-plenka.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43168137232) из сценария days/05feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+story:
+  kicker: История изобретения
+  h2: Как появилась гибкая плёнка
+  udary:
+  - summary: Разбитое стекло
+    det:
+    - Стеклянный негатив с портретом царя разбился в пути, и казак придумал плёнку, которая не бьётся.
+    src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+  - summary: Плёнка из смолы
+    det:
+    - Плёнку Болдырева на сутки положили в воду — она вышла такой же прозрачной и гибкой.
+    src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+  - summary: Без патента
+    det:
+    - 'Изобретатель первой гибкой плёнки дважды отказался от патента: не хватило денег на пошлину.'
+    src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — prlib.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что изобрели
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+    otryvok: Плёнку Болдырева на сутки положили в воду — она вышла такой же прозрачной и гибкой
+    stranica: журнал «Нация»
+    href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+    pometka: документ
+    id: ves-den-v-vode
+    istochnik: nacia-boldyrev
+    dlya_voprosa: true
+    otvet: сутки
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — prlib.ru'
+    otryvok: Плёнка американца Истмена уступала болдыревской
+    stranica: Президентская библиотека
+    href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev
+    pometka: документ
+    id: eastman-ustupal
+    istochnik: prlib-boldyrev
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+    otryvok: Стеклянный негатив с портретом царя разбился в пути, и казак придумал плёнку, которая не бьётся
+    stranica: «Кто главный»
+    href: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/
+    pometka: документ
+    id: razbityj-negativ
+    istochnik: kg-rostov-boldyrev
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: как если бы фотоаппарат «Кодак» появился у нас на целое десятилетие раньше
+    kadr:
+      src: /muzei/izobreteniya/img/02-05-goskatalog-30555780.jpg
+      glavnoe_na_kartinke: &id001
+        x: 0.2
+        y: 0.25
+        w: 0.6
+        h: 0.6
+      width: 1600
+      height: 1106
+      alt: Конные казаки выстроены рядами на площади станицы, перед строем — атаман
+      data_source: https://goskatalog.ru/portal/#/collections?id=30555780
+      license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+      podpis: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская», 1876. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+      credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-10). Госкаталог музейного фонда РФ, рег. № 30383286.'
+      hint: Фото · снимок Болдырева
+      vid: foto
+      prava: &id002
+        avtor: Болдырев И. В.
+        god_sozdaniya: 1876 г.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=30555780
+      nomer_predmeta: '30383286'
+      nomer_snimka: ФН-10
+      hranitel: Волгодонский эколого-исторический музей
+      podlinnik: &id003
+        gde: Волгодонский эколого-исторический музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=30555780
+      svyashchennoe: false
+      podpis_chto: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская»
+      podpis_gde: станица Цымлянская, область Войска Донского
+      podpis_kogda: '1876'
+    src: 'Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — sarkel61.ru'
+    otryvok: Гибкая фотоплёнка была у донского казака за 10 лет до Kodak
+    stranica: «Наше наследие», 1989
+    href: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
+    pometka: документ
+    id: za-10-let-do-kodak
+    istochnik: barhatova-1989
+    dlya_voprosa: true
+    otvet: 10 лет
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — prlib.ru'
+    otryvok: 'Изобретатель первой гибкой плёнки дважды отказался от патента: не хватило денег на пошлину'
+    stranica: Президентская библиотека
+    href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev
+    pometka: документ
+    id: dva-otkaza-ot-patenta
+    istochnik: prlib-boldyrev
+    dlya_voprosa: true
+    otvet: 2 раза
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    src: 'Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — sarkel61.ru'
+    otryvok: Казак придумал затвор, чтобы снимать прямо из окна мчащегося поезда
+    stranica: «Наше наследие», 1989
+    href: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
+    pometka: документ
+    id: zatvor-iz-poezda
+    istochnik: barhatova-1989
+    dlya_voprosa: true
+    otvet: из окна поезда
+    otvet_edinstvennyj: true
+  - n: 7
+    sravnenie: net
+    src: 'Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — sarkel61.ru'
+    otryvok: Его затвор Техническое общество признало «лучшим из всех, что есть в продаже»
+    stranica: «Наше наследие», 1989
+    href: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
+    pometka: документ
+    id: luchshij-zatvor
+    istochnik: barhatova-1989
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+    otryvok: 'Объектив собрал сам: ночами крутил стёкла в картонной трубке, «не имея понятия об оптике»'
+    stranica: журнал «Нация»
+    href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+    pometka: документ
+    id: obektiv-v-trubke
+    istochnik: nacia-boldyrev
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    src: 'Источник: Старочеркасский музей-заповедник, анонс лекции, газета «Победа» (Аксай), 13.09.2025 — pobeda-aksay.ru'
+    otryvok: Эксперты назвали его плёнку и затвор пустыми затеями, а через 10 лет мир снимал на гибкую плёнку
+    stranica: «Победа», 13.09.2025
+    href: https://pobeda-aksay.ru/2025/09/13/v-starocherkasskom-muzee-zapovednike-rasskazhut-o-donskom-fotografe-i-v-boldyreve/
+    pometka: документ
+    id: pustye-zatei
+    istochnik: starocherkassk-2025
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+    otryvok: Снимал ночью при свечах, керосинке и даже при свете луны
+    stranica: «Кто главный»
+    href: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/
+    pometka: документ
+    id: pri-lune
+    istochnik: kg-rostov-boldyrev
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про снимки Болдырева
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+    otryvok: 'Полез с камерой в угольную шахту: лампа под землёй гасла, а снимки всё равно вышли'
+    stranica: журнал «Нация»
+    href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+    pometka: документ
+    id: v-shahte
+    istochnik: nacia-boldyrev
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+    otryvok: 'Знаменитый фотограф Карелин сам подошёл к казаку на выставке: «Хочу быть как вы»'
+    stranica: журнал «Нация»
+    href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+    pometka: документ
+    id: karelin
+    istochnik: nacia-boldyrev
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+    otryvok: 'Придворный фотограф обвинил казака в краже способа и услышал: «Ни от кого не брал»'
+    stranica: журнал «Нация»
+    href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+    pometka: документ
+    id: ni-ot-kogo-ne-bral
+    istochnik: nacia-boldyrev
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+    otryvok: Золото выставки 1882 года ушло за семейные снимки, изобретателю плёнки дали бронзу
+    stranica: журнал «Нация»
+    href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+    pometka: документ
+    id: bronza-1882
+    istochnik: nacia-boldyrev
+    dlya_voprosa: true
+    otvet: бронза
+    otvet_edinstvennyj: true
+  - n: 15
+    sravnenie: net
+    src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+    otryvok: 'Разбитые стеклянные негативы он спасал: переносил снимок на свою плёнку'
+    stranica: «Кто главный»
+    href: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/
+    pometka: документ
+    id: spasal-negativy
+    istochnik: kg-rostov-boldyrev
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Три беды фотографа — три изобретения
+  pravilo_ru: 'Что сделать сейчас: выбери изобретение и нажми на беду, которую оно решает.'
+  kak_igrat:
+    zachem: 'Болдырев не покупал готовое: каждую трудность фотографа он решал своим изобретением.'
+    shagi:
+    - Выбери изобретение — кнопка загорится золотом.
+    - Нажми на беду, которую оно решает. Верный выбор загорится зелёным.
+    - Расставь все три — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все три изобретения на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: steklo
+      nazvanie: Стеклянный негатив разбился в пути
+      verno_ru: Стеклянный негатив с портретом царя разбился в пути, и казак придумал плёнку, которая не бьётся.
+    - kod: poezd
+      nazvanie: Снять из окна мчащегося поезда
+      verno_ru: Казак придумал затвор, чтобы снимать прямо из окна мчащегося поезда.
+    - kod: optika
+      nazvanie: Нет своего объектива
+      verno_ru: 'Объектив собрал сам: ночами крутил стёкла в картонной трубке, «не имея понятия об оптике».'
+    podpisi:
+    - kod: plenka
+      tekst: Гибкая плёнка
+      mesto: steklo
+      mimo_ru: Плёнка — против того, что бьётся.
+    - kod: zatvor
+      tekst: Затвор
+      mesto: poezd
+      mimo_ru: Затвор — для быстрого снимка на ходу.
+    - kod: obektiv
+      tekst: Объектив в картонной трубке
+      mesto: optika
+      mimo_ru: Объектив — когда нечем собирать свет.
+    vyberi_ru: Сначала выбери изобретение, потом беду.
+    mimo_ru: Не та беда — попробуй другую.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все три изобретения на месте — плёнка, затвор и объектив Болдырева.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: плёнка — против разбитого стекла, затвор — для поезда, объектив в картонной трубке — когда нет оптики.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Гибкая фотоплёнка была у донского казака за 10 лет до Kodak.'
+  net: 'Где граница: Плёнка американца Истмена уступала болдыревской; патента Болдырев не взял.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Санкт-Петербург
+    - гибкая плёнка Болдырева показана Техническому обществу
+    - '1880'
+  - - Москва
+    - бронза Всероссийской выставки изобретателю плёнки
+    - '1882'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: на 10 лет; дважды; сутки; бронзу; из окна поезда.'
+  ball: 8
+  voprosy:
+  - q: На сколько лет гибкая плёнка Болдырева опередила Kodak?
+    o:
+    - на 1 год
+    - на 10 лет
+    - на 50 лет
+    a: 1
+    e: Гибкая фотоплёнка была у донского казака за 10 лет до Kodak.
+  - q: Сколько раз Болдырев отказался от патента?
+    o:
+    - ни разу
+    - дважды
+    - пять раз
+    a: 1
+    e: 'Изобретатель первой гибкой плёнки дважды отказался от патента: не хватило денег на пошлину.'
+  - q: Сколько плёнка пролежала в воде и осталась гибкой?
+    o:
+    - минуту
+    - сутки
+    - год
+    a: 1
+    e: Плёнку Болдырева на сутки положили в воду — она вышла такой же прозрачной и гибкой.
+  - q: Какую награду выставки 1882 года дали изобретателю плёнки?
+    o:
+    - золото
+    - серебро
+    - бронзу
+    a: 2
+    e: Золото выставки 1882 года ушло за семейные снимки, изобретателю плёнки дали бронзу.
+  - q: Откуда можно было снимать с затвором Болдырева?
+    o:
+    - из окна поезда
+    - из-под воды
+    - с аэростата
+    a: 0
+    e: Казак придумал затвор, чтобы снимать прямо из окна мчащегося поезда.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал плёнки Болдырева.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-05-goskatalog-30555780.jpg
+  glavnoe_na_kartinke: *id001
+  width: 1600
+  height: 1106
+  alt: Конные казаки выстроены рядами на площади станицы, перед строем — атаман
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555780
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская», 1876. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-10). Госкаталог музейного фонда РФ, рег. № 30383286.'
+  hint: Фото · снимок Болдырева
+  vid: foto
+  prava: *id002
+  nomer_predmeta: '30383286'
+  nomer_snimka: ФН-10
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik: *id003
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: '1876'
+- src: /muzei/izobreteniya/img/02-05-goskatalog-30555781.jpg
+  glavnoe_na_kartinke:
+    x: 0.4
+    y: 0.1
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1264
+  alt: 'Многолюдный станичный базар: возы, лотки, покупатели'
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555781
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Базар в праздник в станице Цымлянской», 1870-е. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-8). Госкаталог музейного фонда РФ, рег. № 30383285.'
+  hint: Фото · снимок Болдырева
+  vid: foto
+  prava:
+    avtor: Болдырев И. В.
+    god_sozdaniya: XIX в.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30555781
+  nomer_predmeta: '30383285'
+  nomer_snimka: ФН-8
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30555781
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Базар в праздник в станице Цымлянской»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: 1870-е
+- src: /muzei/izobreteniya/img/02-05-goskatalog-30555783.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1187
+  alt: Казаки с ружьями и добычей идут по степной дороге
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555783
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Казаки, возвращающиеся с охоты», 1870-е. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-7). Госкаталог музейного фонда РФ, рег. № 30383284.'
+  hint: Фото · снимок Болдырева
+  vid: foto
+  prava:
+    avtor: Болдырев И. В.
+    god_sozdaniya: XIX в.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30555783
+  nomer_predmeta: '30383284'
+  nomer_snimka: ФН-7
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30555783
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Казаки, возвращающиеся с охоты»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: 1870-е
+- src: /muzei/izobreteniya/img/02-05-goskatalog-30555788.jpg
+  glavnoe_na_kartinke:
+    x: 0.42
+    y: 0.3
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1103
+  alt: Повозки и верховые казаки на дороге к станице
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555788
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Возвращение казаков с ярмарки в Цымлянскую станицу», 1870-е. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-4). Госкаталог музейного фонда РФ, рег. № 30383280.'
+  hint: Фото · снимок Болдырева
+  vid: foto
+  prava:
+    avtor: Болдырев И. В.
+    god_sozdaniya: XIX в.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30555788
+  nomer_predmeta: '30383280'
+  nomer_snimka: ФН-4
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30555788
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Возвращение казаков с ярмарки в Цымлянскую станицу»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: 1870-е
+- src: /muzei/izobreteniya/img/02-05-goskatalog-30555789.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.35
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1188
+  alt: Казаки стригут овец во дворе, вокруг стоят зрители
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555789
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Стрижка овец. Станица Цымлянская», 1870-е. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-5). Госкаталог музейного фонда РФ, рег. № 30383279.'
+  hint: Фото · снимок Болдырева
+  vid: foto
+  prava:
+    avtor: Болдырев И. В.
+    god_sozdaniya: XIX в.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30555789
+  nomer_predmeta: '30383279'
+  nomer_snimka: ФН-5
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30555789
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Стрижка овец. Станица Цымлянская»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: 1870-е
+- src: /muzei/izobreteniya/img/02-05-goskatalog-30555792.jpg
+  glavnoe_na_kartinke:
+    x: 0.32
+    y: 0.3
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1040
+  alt: Казак сидит во дворе и чинит седло
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555792
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Казак чинит седло», 1870-е. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-6). Госкаталог музейного фонда РФ, рег. № 30383277.'
+  hint: Фото · снимок Болдырева
+  vid: foto
+  prava:
+    avtor: Болдырев И. В.
+    god_sozdaniya: XIX в.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30555792
+  nomer_predmeta: '30383277'
+  nomer_snimka: ФН-6
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30555792
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Казак чинит седло»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: 1870-е
+- src: /muzei/izobreteniya/img/02-05-goskatalog-30555810.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.25
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1261
+  alt: Казачья семья в праздничной одежде у дома
+  data_source: https://goskatalog.ru/portal/#/collections?id=30555810
+  license: общественное достояние (автор работал в 1870-х) · Волгодонский эколого-исторический музей · Госкаталог
+  podpis: И. В. Болдырев. «Казачье семейство в праздник», 1870-е. Хранит Волгодонский эколого-исторический музей, Волгодонск.
+  credit: 'Фото: И. В. Болдырев. Хранится: Волгодонский эколого-исторический музей (ВЭИМ КП-1829, инв. № ФН-12). Госкаталог музейного фонда РФ, рег. № 30383297.'
+  hint: Фото · снимок Болдырева
+  vid: foto
+  prava:
+    avtor: Болдырев И. В.
+    god_sozdaniya: XIX в.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30555810
+  nomer_predmeta: '30383297'
+  nomer_snimka: ФН-12
+  hranitel: Волгодонский эколого-исторический музей
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30555810
+  svyashchennoe: false
+  podpis_chto: И. В. Болдырев. «Казачье семейство в праздник»
+  podpis_gde: станица Цымлянская, область Войска Донского
+  podpis_kogda: 1870-е
+sources:
+- href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
+  title: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация»
+  note: факты дня
+- href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev
+  title: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич»
+  note: факты дня
+- href: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
+  title: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10)
+  note: факты дня
+- href: https://pobeda-aksay.ru/2025/09/13/v-starocherkasskom-muzee-zapovednike-rasskazhut-o-donskom-fotografe-i-v-boldyreve/
+  title: Старочеркасский музей-заповедник, анонс лекции, газета «Победа» (Аксай), 13.09.2025
+  note: факты дня
+- href: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/
+  title: '«Иван Болдырев: судьба репортёра в России», «Кто главный»'
+  note: факты дня
+- href: https://rosphoto.org/events/ivan-boldyrev-photographer-and-inventor/
+  title: 'РОСФОТО: «Иван Болдырев. Фотограф и изобретатель»'
+  note: выставка снимков
+- href: https://goskatalog.ru/portal/#/collections?id=30555813
+  title: 'Госкаталог музейного фонда РФ: фотонегативы И. В. Болдырева, Волгодонский эколого-исторический музей'
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-06/
+  title: 6 февраля — Угольный противогаз
+  hook: 'Спасение от боевого газа нашлось в печке: прокалённый берёзовый уголь держал отраву лучше любой химии того времени'
+  main: true
+- lbl: Предыдущий день
+  href: den/02-04/
+  title: 4 февраля — Самовар
+  hook: 'Самовар — не про чай, а про инженерию: труба внутри воды греет её изнутри и кипятит вдвое быстрее плиты'
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Мастер плёнки Болдырева
+  - - 70
+    - Фотограф Технического общества
+  - - 40
+    - Ученик из Цымлянской
+  - - 0
+    - Гость дня
+return:
+  q: Почему Болдырев не взял патент на плёнку?
+  a: 'Изобретатель первой гибкой плёнки дважды отказался от патента: не хватило денег на пошлину.'
+  src: Президентская библиотека имени Б. Н. Ельцина, prlib.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-05-boldyrev:claim-1880
+  ours:
+    kind: publication
+    title: Е. Бархатова, «Донские сюжеты Ивана Болдырева»
+    date: '1989'
+    holder: «Наше наследие»
+    source_url: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
+audioguide:
+  audioSrc: audio-guide-boldyrev-ru.mp3
+  durationLabel: 1 минута 42 секунды
+  lead: 'Голос ведёт по залу Болдырева: от гибкой плёнки за десять лет до Kodak через разбитый негатив и затвор для поезда — к ночным снимкам и отказу от патента. Пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Плёнка за десять лет до Kodak
+  - t: 22
+    mark: 0:22
+    title: Плёнка, которая не бьётся
+  - t: 41
+    mark: 0:41
+    title: Затвор для поезда
+  - t: 59
+    mark: 0:59
+    title: Ночью и в шахте
+  - t: 80
+    mark: '1:20'
+    title: Без патента
+  transcript:
+  - Здравствуйте. Мы в зале Ивана Болдырева. Тысяча восемьсот восьмидесятый год, Петербург, Техническое общество. Донской казак и фотограф Иван Васильевич Болдырев показывает гибкую прозрачную фотоплёнку. Гибкая фотоплёнка была у донского казака за десять лет до Kodak. Плёнка американца Истмена уступала болдыревской.
+  - 'Началось всё с беды. Стеклянный негатив с портретом царя разбился в пути, и казак придумал плёнку, которая не бьётся. Плёнку Болдырева на сутки положили в воду — она вышла такой же прозрачной и гибкой. Разбитые стеклянные негативы он спасал: переносил снимок на свою плёнку.'
+  - 'Плёнкой дело не кончилось. Казак придумал затвор, чтобы снимать прямо из окна мчащегося поезда. Его затвор Техническое общество признало «лучшим из всех, что есть в продаже». Объектив собрал сам: ночами крутил стёкла в картонной трубке, «не имея понятия об оптике».'
+  - 'Снимал ночью при свечах, керосинке и даже при свете луны. Полез с камерой в угольную шахту: лампа под землёй гасла, а снимки всё равно вышли. Знаменитый фотограф Карелин сам подошёл к казаку на выставке: «Хочу быть как вы». Придворный фотограф обвинил казака в краже способа и услышал: «Ни от кого не брал».'
+  - 'Эксперты назвали его плёнку и затвор пустыми затеями, а через десять лет мир снимал на гибкую плёнку. Изобретатель первой гибкой плёнки дважды отказался от патента: не хватило денег на пошлину. Сам Болдырев писал, что хотел сохранить честь изобретения за Россией. Ниже — игра, викторина и источники. Спасибо, что были с нами.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+podskazki_igry:
+- Стекло бьётся — нужно то, что гнётся
+- Поезд мчится — снимок должен быть мгновенным
+- Нет оптики — собери её сам
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya: mesto:sankt-peterburg
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Светочувствительный слой лежит не на стекле, а на гибкой прозрачной плёнке
+- Плёнка гнётся и не бьётся — её можно свернуть в рулон
+- 'Её не размачивает вода: сутки в воде — и она та же'
+- Затвор открывает объектив на миг — снимок выходит даже из окна поезда
+data_uslovnaya: 5 февраля — день музея; точный день, когда Болдырев показал плёнку Техническому обществу в 1880 году, в источниках не назван.
