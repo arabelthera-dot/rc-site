@@ -45,5 +45,70 @@
       "caption": "И. В. Болдырев. «Казачье семейство в праздник», XIX в.",
       "credit": "Волгодонский эколого-исторический музей, Госкаталог"
     }
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Гибкая фотоплёнка",
+      "фотоплёнка"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Кассета для фотопленки. Состоит из: катушки и внутреннего корпуса из 2-х частей.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8840205",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14154000",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8724966 (карточка 8840205, инв. —) | 1940-е гг. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "фотоплёнка"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Кассета для фотопленки. Состоит из: катушки и внутреннего корпуса из 2-х частей.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8840223",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14153892",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8724949 (карточка 8840223, инв. —) | 1940-е гг. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "фотоплёнка"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Кассета для фотопленки. Состоит из: катушки и внутреннего корпуса из 2-х частей.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8840238",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14153806",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8724934 (карточка 8840238, инв. —) | 1940-е гг. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "фотоплёнка"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотопленка с черно-белыми негативами.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10286985",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8135988",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10179413 (карточка 10286985, инв. Фк-353) | 1943 год | хранится: МУК \"Ленино-Снегиревский музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "фотоплёнка"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотопленка с черно-белыми негативами.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10411701",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8169702",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10304006 (карточка 10411701, инв. Фк-456) | 1942 год. | хранится: МУК \"Ленино-Снегиревский музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "фотоплёнка"
+      }
+    ]
+  }
 }

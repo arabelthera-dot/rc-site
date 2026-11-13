@@ -2,5 +2,69 @@
   "museum": "izobreteniya",
   "key": "02-10",
   "title": "Аэросани (первые в мире)",
-  "hook": "Там, где есть только снег, Россия сделала машину без колёс и гусениц: пропеллер гонит сани по насту быстрее автомобиля"
+  "hook": "Там, где есть только снег, Россия сделала машину без колёс и гусениц: пропеллер гонит сани по насту быстрее автомобиля",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Аэросани"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Аэросани проходят через город Гжатск.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=5988999",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/2231713",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5812610 (карточка 5988999, инв. —) | 03.1943 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Аэросани"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Перед аэросанным пробегом Москва - Кольчугино.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7620942",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3578814",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7487833 (карточка 7620942, инв. —) | 1923 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Аэросани"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "\"Аэросани в Марковской тундре, 1969 год\". Фотография черно-белая",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10305157",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7359340",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10198903 (карточка 10305157, инв. Ф-1769) | 1969 | хранится: Музейный Центр \"Наследие Чукотки\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Аэросани"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "\"Аэросани Амфибия проходимы по снегу, воде, тонкому льду\". Фотография черно-белая",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10305180",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7359387",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10198880 (карточка 10305180, инв. Ф-1768) | 1966 | хранится: Музейный Центр \"Наследие Чукотки\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Аэросани"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "\"Новый вид транспорта - Аэросани \"Амфибия\"\". Фотография черно-белая",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10305181",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7359389",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10198879 (карточка 10305181, инв. Ф-1771) | 1966 | хранится: Музейный Центр \"Наследие Чукотки\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Аэросани"
+      }
+    ]
+  }
 }

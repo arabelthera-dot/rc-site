@@ -38,5 +38,70 @@
       "caption": "Куликовская битва, икона, 1990-е годы",
       "credit": "Фото: автор не указан, 1990-е. Хранится: ГБУК города Москвы «Музейное объединение „Музей Москвы“». Госкаталог музейного фонда РФ, № 19350830. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=19479393. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)."
     }
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Александр Пересвет",
+      "Пересвет"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Икона. Святые преподобные Андрей (Ослябя) и Александр (Пересвет)",
+        "avtor": "Земцов Юрий Викторович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=697559",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7058806",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 6513769 (карточка 697559, инв. И-672) | 2005 г. | хранится: Государственный музей-заповедник \"Куликово поле\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Пересвет"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Панно-чеканка. Александр Пересвет",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=698262",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7160381",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 6514051 (карточка 698262, инв. И-395) | 2000 г. | хранится: Государственный музей-заповедник \"Куликово поле\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Пересвет"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Брошюра. Александр Пересвет",
+        "avtor": "Королев А.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=714269",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7118621",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 6509461 (карточка 714269, инв. Пс-543) | 21.09.2002 | хранится: Государственный музей-заповедник \"Куликово поле\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Пересвет"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Линогравюра. Александр Пересвет",
+        "avtor": "Евграфов Валентин Григорьевич (1930-2002)",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12005966",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/75688256",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11886416 (карточка 12005966, инв. ГРФ 1722) | 1980 г. | хранится: ГАУК \"СИПК \"Музей боевой и трудовой славы\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Пересвет"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Картина. Перед битвой. Воин-схимонах Александр Пересвет.",
+        "avtor": "Ефошкин Сергей Николаевич",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=15608369",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14635509",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 15494222 (карточка 15608369, инв. И-1354) | 2017 г. | хранится: Государственный музей-заповедник \"Куликово поле\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Пересвет"
+      }
+    ]
+  }
 }

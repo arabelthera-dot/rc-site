@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-24",
   "title": "Первая в мире мощная радиовещательная станция (Коминтерн, 1922)",
-  "hook": "Двенадцати киловатт в эфире не было ни у кого в мире: Москву слушала Европа, а лампы для станции точили руками"
+  "hook": "Двенадцати киловатт в эфире не было ни у кого в мире: Москву слушала Европа, а лампы для станции точили руками",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "мощная радиовещательная станция",
+      "радиовещательная"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Контур к приемнику радиовещательному ПРТ-4",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7750499",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3750356",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7631795 (карточка 7750499, инв. РТТ) | 1932 г. | хранится: Политехнический музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиовещательная"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Приемник радиовещательный \"Латвия\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7751014",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3750831",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7632320 (карточка 7751014, инв. РТТ) | конец 1940-х - начало 1950-х гг. | хранится: Политехнический музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиовещательная"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Радиоприемник радиовещательный стационарный \"БЗРП РП-311\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20007143",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20757633",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19879642 (карточка 20007143, инв. —) | 90 -е годы 20 века | хранится: МКУ \"Отрадненский историко-археологический музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиовещательная"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо об учреждении приза Государственной Телевизионной и Радиовещательной компании «Куль",
+        "avtor": "Пономарев Александр Сергеевич",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=21630958",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/22992551",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 21500280 (карточка 21630958, инв. ДМ-16-241/34) | 16 мая 2002 г. | хранится: Музей-заповедник П.И.Чайковского | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиовещательная"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Благодарственное письмо Государственной Телевизионной и Радиовещательной компании «Культур",
+        "avtor": "Бутов Н. И., Хренников Тихон Николаевич",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=21630963",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/22992556",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 21500276 (карточка 21630963, инв. ДМ-16-241/36) | 23 мая 2002 г. | хранится: Музей-заповедник П.И.Чайковского | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиовещательная"
+      }
+    ]
+  }
 }

@@ -37,5 +37,71 @@
       "caption": "Схема полёта станции «Луна-9» и вымпел",
       "credit": "Фото: автор не указан, 1966. Хранится: Музей политической истории России. Госкаталог музейного фонда РФ, № 6106373. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=6327638. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)."
     }
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Луна-9",
+      "мягкая посадка на Луну",
+      "посадка"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Значок «Луна-9-1966»",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=30281312",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/35125569",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 30102830 (карточка 30281312, инв. ФЛ 63) | 1966 г. | хранится: КГБУК ТКМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Луна-9"
+      },
+      {
+        "baza": "tretyakov",
+        "nazvanie": "Луна и звезды",
+        "avtor": "Сергей Шаблавин",
+        "stranica": "https://my.tretyakov.ru/app/masterpiece/20137",
+        "fayl": "https://cdn.tretyakov.ru/mytretyakov/ee/716838f595c4cf618856a6f4dd27c9e4/df64909820ee06492b68ab46198afa23.jpg",
+        "pometka_prav": "nekommercheskoe-s-ukazaniem",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Луна-9"
+      },
+      {
+        "baza": "tretyakov",
+        "nazvanie": "Стога, луна и речка. Набросок",
+        "avtor": "Виктор Борисов-Мусатов",
+        "stranica": "https://my.tretyakov.ru/app/masterpiece/129920",
+        "fayl": "https://cdn.tretyakov.ru/mytretyakov/110/fad2a3bbdc3cf4161b81b26493e9c97b/52154b952a9e9cc86483521079ef9c85.jpg",
+        "pometka_prav": "nekommercheskoe-s-ukazaniem",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Луна-9"
+      },
+      {
+        "baza": "tretyakov",
+        "nazvanie": "Белая луна",
+        "avtor": "Николай Ульянов",
+        "stranica": "https://my.tretyakov.ru/app/masterpiece/154384",
+        "fayl": "https://cdn.tretyakov.ru/mytretyakov/30/d9f87413b2a838fe21a94cdfec6d08a5/ae9106a89d7c174c53b35b4734d0a4b1.jpg",
+        "pometka_prav": "nekommercheskoe-s-ukazaniem",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Луна-9"
+      },
+      {
+        "baza": "ar_culture",
+        "nazvanie": "Луна",
+        "avtor": "автор не указан",
+        "stranica": "https://ar.culture.ru/ru/subject/luna",
+        "fayl": "https://ar.culture.ru/attachments/attachment/original/60742f379eb28340d6a037e0-original.jpg",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Луна-9"
+      }
+    ]
+  }
 }
