@@ -1,0 +1,132 @@
+# Адрес дня — машиной (Р763): ролик и mp3 гида дня пришли на main — день получает adres: den своей заявкой с автослиянием.
+# Было: после заявки rolik-na-sait строку adres: den ставили руками (НС — node scripts/ns-konveyer.mjs ММ-ДД, изобретения — правкой).
+# Кто кандидат — scripts/adres-dnya.mjs spisok: карточка без adres: den, а выпуск реестра (16:9 и 9:16) и mp3 гида — в main.
+# Включает тот же штатный шаг: НС — scripts/ns-konveyer.mjs ММ-ДД (замки ns-zamki, схема дня), изобретения — схема и стандарт дня
+# сборки (scripts/adres-dnya.mjs vklyuchit). Замки не прошли — заявки нет, причина в сводке прогона. Сборка заявки — вторая проверка.
+# Когда: push в main по файлам роликов, гидов, реестра и карточек; по завершении rolik-na-sait; раз в час. Почему ещё и час:
+# заявки rolik-na-sait сливает GITHUB_TOKEN, а событие от GITHUB_TOKEN новых прогонов push не запускает (docs.github.com,
+# «Triggering a workflow from a workflow») — без расписания день ждал бы ручной правки.
+# Ветка дня — avto/adres-<музей>-<ММ-ДД>; открытая заявка не дублируется. Одобрение ждущих проверок — как rolik-na-sait.yml.
+# Выключатель — переменная ADRES_DNYA = '0' (push, расписание и rolik-na-sait спят, ручной пуск работает). Откат — удалить этот файл.
+# Ручной пуск: gh workflow run adres-dnya.yml [-f den='izobreteniya 02-03']
+name: adres-dnya
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/muzei/*/audio-guide-*'
+      - 'public/muzei/*/video/day-*'
+      - 'public/video/registry/**'
+      - 'src/content/dni-shablon/**'
+  workflow_run:
+    workflows: [rolik-na-sait]
+    types: [completed]
+  schedule:
+    - cron: '41 * * * *'
+  workflow_dispatch:
+    inputs:
+      den:
+        description: "один день «<музей> ММ-ДД»; пусто — все готовые"
+        required: false
+        default: ""
+concurrency:
+  group: adres-dnya
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  spisok:
+    # `|| '1'`: пустая переменная в выражении — строка, не 0 (r688, как rolik-na-sait.yml)
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || (vars.ADRES_DNYA || '1') != '0')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      dni: ${{ steps.s.outputs.dni }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      DEN: ${{ inputs.den }}
+    steps:
+      # без public/: файлы роликов и гидов смотрятся по дереву git
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          sparse-checkout: |
+            /*
+            !/public/
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - id: s
+        run: |
+          touch zhdut.txt
+          if [ -n "$DEN" ]; then dni="$DEN"; else dni=$(node scripts/adres-dnya.mjs spisok 2> zhdut.txt); fi
+          { echo "### Дни без адреса"; sed 's/^/- /' zhdut.txt; } >> "$GITHUB_STEP_SUMMARY"
+          echo "dni=$(printf '%s' "$dni" | paste -sd, -)" >> "$GITHUB_OUTPUT"
+          [ -n "$dni" ] && printf 'К включению:\n%s\n' "$dni" | tee -a "$GITHUB_STEP_SUMMARY" || echo "Готовых дней без адреса нет." | tee -a "$GITHUB_STEP_SUMMARY"
+  vklyuchit:
+    needs: spisok
+    if: needs.spisok.outputs.dni != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      DNI: ${{ needs.spisok.outputs.dni }}
+    steps:
+      # весь public/: замки читают файлы гида, ролика, игры и кадров, как сборка
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      # конвейер НС: ffprobe — гид из облака, PIL и yaml — метки кадров (scripts/kartinki-metki.py)
+      - run: |
+          command -v ffprobe >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; }
+          python3 -c 'import PIL, yaml' 2>/dev/null || pip install -q pillow pyyaml
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          IFS=, read -ra dni <<< "$DNI"
+          for den in "${dni[@]}"; do
+            read -r muzei key <<< "$den"
+            VETKA="avto/adres-$muzei-$key"
+            nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
+            [ -z "$nomer" ] || { echo "- $muzei $key — заявка #$nomer уже открыта" >> "$GITHUB_STEP_SUMMARY"; continue; }
+            git switch -q --detach origin/main && git switch -q -C "$VETKA"
+            vyvod=$(node scripts/adres-dnya.mjs vklyuchit "$muzei" "$key" 2>&1) && kod=0 || kod=$?
+            printf '%s\n' "$vyvod"
+            if [ "$kod" != 0 ] || ! grep -q '^adres: den$' "src/content/dni-shablon/$muzei/$key.yaml"; then
+              echo "- $muzei $key — замки не прошли, заявки нет" >> "$GITHUB_STEP_SUMMARY"
+              git reset -q --hard && git clean -qfd -- src public; continue
+            fi
+            git add -- src/content/dni-shablon public
+            git diff --cached --quiet && continue
+            git commit -q -m "[avto] адрес дня $muzei $key — ролик и гид на main, замки прошли (Р763)"
+            git push -q -f origin "$VETKA"
+            telo="Адрес дня машиной (Р763): у $muzei $key ролик 16:9 и 9:16 и mp3 гида уже на main — день получает adres: den.
+
+          \`\`\`
+          $(printf '%s\n' "$vyvod" | tail -40)
+          \`\`\`
+          Заявку открыла машина .github/workflows/adres-dnya.yml (scripts/adres-dnya.mjs). Сверка: node scripts/ns-konveyer.mjs $key --sverka (НС)."
+            nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] адрес дня $muzei $key" --body "$telo" | grep -o '[0-9]*$')
+            gh pr merge "$nomer" --auto --squash
+            echo "- $muzei $key → https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
+            sha=$(git rev-parse HEAD)
+            zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
+            ok=
+            for i in $(seq 1 12); do
+              vsego=$(gh api "$zapros" -q '.total_count')
+              zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
+              for id in $zhdut; do gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/approve"; done
+              [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ] && { echo "Проверка заявки #$nomer идёт."; ok=1; break; }
+              sleep 10
+            done
+            [ -n "$ok" ] || echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"
+          done
