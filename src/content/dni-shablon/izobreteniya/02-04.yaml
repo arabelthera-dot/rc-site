@@ -1,0 +1,685 @@
+muzei: izobreteniya
+key: 02-04
+adres: den
+nomer_dnya: izob-0204-znamya-2
+data_sobytiya: '1993-02-04'
+chto_sluchilos: С грузового корабля «Прогресс М-15» у станции «Мир» раскрыли двадцатиметровое плёночное зеркало «Знамя-2» — первое в мире космическое зеркало; его «солнечный зайчик» пробежал ночью по Европе.
+god: 1993
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Стыковочный агрегат станции «Мир», фото 1987 года
+  muzej: Мемориальный музей космонавтики
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=8680968
+- chto: Станция «Мир» с модулем «Квант» и кораблём «Союз ТМ-3», фото 1987 года
+  muzej: Бузулукский краеведческий музей
+  gorod: Бузулук
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7306820
+chitat_dalshe:
+- nazvanie: '«Новости космонавтики», 1993, №3: «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“»'
+  gde: Веб-архив
+  ssylka: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+- nazvanie: 'В. А. Гапонов, А. Б. Железняков. «Станция „Мир“: от триумфа до…», глава «Уникальные эксперименты, проведённые на ОК „Мир“»'
+  gde: astronaut.ru
+  ssylka: https://www.astronaut.ru/bookcase/books/stan_mir/text/10.htm
+- nazvanie: «История освоения космоса. 1993 год — эксперимент „Знамя-2“»
+  gde: Роскосмос
+  ssylka: https://www.roscosmos.ru/23203/
+istochniki:
+- id: roscosmos-znamya-2-2017
+  baza: roscosmos
+  nazvanie: Роскосмос, «История освоения космоса. 1993 год
+  ssylka: https://www.roscosmos.ru/23203/
+- id: nk-1993-3
+  baza: wayback
+  nazvanie: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“»
+  ssylka: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+- id: melnikov-2022
+  baza: cyberleninka
+  nazvanie: В. М. Мельников, В. П. Мельников, А. Г. Милованов, «Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом», 2022
+  ssylka: https://cyberleninka.ru/article/n/kosmicheskie-solnechnye-elektrostantsii-i-sistemy-osvescheniya-rayonov-zapolyarya-otrazhyonnym-s-orbity-solnechnym-svetom
+- id: starovojtov-mai-2017
+  baza: cyberleninka
+  nazvanie: Е. И. Старовойтов, «Выбор металлизации для отражателей космической системы орбитального освещения поверхности Земли», Труды МАИ, 2017
+  ssylka: https://cyberleninka.ru/article/n/vybor-metallizatsii-dlya-otrazhateley-kosmicheskoy-sistemy-orbitalnogo-osvescheniya-poverhnosti-zemli
+- id: kommersant-1999-02-05
+  baza: periodika
+  nazvanie: «Коммерсантъ», «Российское космическое зеркало разбилось о „Прогресс“», 05.02.1999
+  ssylka: https://www.kommersant.ru/doc/212468
+- id: nasa-ntrs-2014
+  baza: nauka
+  nazvanie: 'NASA, L. Johnson и др., «Solar and Drag Sail Propulsion: From Theory to Mission Implementation», 2014'
+  ssylka: https://ntrs.nasa.gov/api/citations/20140011073/downloads/20140011073.pdf
+citaty:
+- kto: Роскосмос
+  gde: «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 2017
+  tekst: Немецкие метеорологи измерили яркость светового пятна, и она оказалась сопоставимой по яркости с полной Луной
+  istochnik: roscosmos-znamya-2-2017
+- kto: «Новости космонавтики»
+  gde: 1993, №3, по материалам ЦУП
+  tekst: Время раскрытия паруса составляет порядка 3 минут
+  istochnik: nk-1993-3
+velichina_chislo: 5
+velichina_edinica: км
+velichina_chto: шириной было пятно света от зеркала, пробежавшее ночью по Европе
+etiketka_oblozhki:
+- Станция «Мир» с «Квантом» и «Союзом ТМ-3», 1987
+- Бузулукский краеведческий музей · Госкаталог
+slovar:
+- tema:kosmos
+head:
+  title: «Знамя-2», 1993 — Музей «Что изобрели русские первыми в мире»
+  description: Русское зеркало «Знамя-2» в космосе впервые в мире зажгло ночь над Европой.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-04/
+  sobytie: «Знамя-2»
+  god: '1993'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: «Знамя-2» — первое в мире космическое зеркало
+    description: Русское зеркало «Знамя-2» в космосе впервые в мире зажгло ночь над Европой.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-04/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-04-goskatalog-7306820-mir.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: «Знамя-2» — первое в мире космическое зеркало
+    description: Русское зеркало «Знамя-2» в космосе впервые в мире зажгло ночь над Европой.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-04/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-04-goskatalog-7306820-mir.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-04-goskatalog-7306820-mir.jpg
+  glavnoe_na_kartinke: &id001
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  width: 833
+  height: 1176
+  alt: 'Чёрно-белый снимок: орбитальная станция «Мир» с модулем «Квант» и кораблём «Союз ТМ-3» на фоне чёрного космоса, видны панели солнечных батарей и стыковочные узлы'
+  data_source: https://goskatalog.ru/portal/#/collections?id=7306820
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Госкаталог Музейного фонда РФ
+  podpis: Станция «Мир» с модулем «Квант» и кораблём «Союз ТМ-3» в полёте, 1987 год. Фотография хранится в Бузулукском краеведческом музее (Госкаталог № 7306820, инв. Ф 2218).
+  credit: 'Фото: автор не указан. Источник: Госкаталог Музейного фонда РФ, goskatalog.ru.'
+  vid: foto
+  prava: &id002
+    avtor: не указан
+    god_sozdaniya: 1987
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог Музейного фонда РФ, goskatalog.ru
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7306820
+  nomer_predmeta: 7306820
+  nomer_snimka: net
+  hranitel: Бузулукский краеведческий музей
+  podlinnik: &id003
+    gde: Бузулукский краеведческий музей (Оренбургская обл.), инв. Ф 2218
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7306820
+  svyashchennoe: false
+  podpis_chto: станция «Мир» с «Квантом» и «Союзом ТМ-3»
+  podpis_gde: околоземная орбита
+  podpis_kogda: '1987'
+  hint: Фото · станция «Мир», 1987
+kroshka: 4 февраля · «Знамя-2»
+lead:
+  data: 4 февраля 1993 · орбита, станция «Мир»
+  privyazka: «Знамя-2» раскрыли 4 февраля 1993 года.
+  kto: НПО «Энергия», Владимир Сыромятников · корабль «Прогресс М-15», станция «Мир»
+  h1: «Знамя-2» — первое в мире космическое зеркало
+  hook: Русское зеркало «Знамя-2» в космосе впервые в мире зажгло ночь над Европой.
+stamp:
+- v: '1993'
+  k: год опыта
+- v: 20 м
+  k: ширина паруса
+- v: 4 кг
+  k: вес паруса
+- v: 5 км
+  k: пятно света на Земле
+daynav:
+- id: story
+  label: Изобретение
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+story:
+  kicker: История изобретения
+  h2: Как раскрыли «Знамя-2»
+  udary:
+  - summary: Без каркаса
+    det:
+    - 'Без каркаса: барабан крутился, и плёнку растянула центробежная сила.'
+    - Двадцатиметровое зеркало раскрылось в космосе за три минуты.
+    src: 'Источник: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“» — копия в веб-архиве'
+  - summary: Зайчик над Европой
+    det:
+    - Пятно света шириной 5 км, яркое, как полная Луна, ночью пробежало по Европе до Белоруссии.
+    - «Солнечный зайчик» мчался по Земле со скоростью 8 км в секунду.
+    src: 'Источник: Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru; В. М. Мельников, В. П. Мельников, А. Г. Милованов, «Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом», 2022 — cyberleninka.ru'
+  - summary: Ровно через 6 лет
+    det:
+    - Ровно через 6 лет, 4 февраля 1999-го, второе зеркало зацепилось за антенну своего же корабля.
+    src: 'Источник: Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru; «Коммерсантъ», «Российское космическое зеркало разбилось о „Прогресс“», 05.02.1999 — kommersant.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Десять фактов о «Знамени-2»
+  h2: Факты дня
+  udary:
+  - n: 1
+    summary: 'NASA признало: первый в мире солнечный парус в космосе раскрыли русские, в 1993 году'
+    sravnenie: net
+    src: 'Источник: NASA, L. Johnson и др., «Solar and Drag Sail Propulsion: From Theory to Mission Implementation», 2014 — ntrs.nasa.gov; Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru'
+    otryvok: 'NASA в обзоре солнечных парусов 2014 года первым называет русский опыт: в 1993 году «Знамя-2» раскрылось в космосе. Роскосмос: «1993 год — эксперимент „Знамя-2“».'
+    stranica: обзор NASA, 2014
+    href: https://ntrs.nasa.gov/api/citations/20140011073/downloads/20140011073.pdf
+    pometka: два источника
+    id: obzor-nasa-2014
+    istochnik: nasa-ntrs-2014
+    dlya_voprosa: false
+  - n: 2
+    summary: Пятно света шириной 5 км, яркое, как полная Луна, ночью пробежало по Европе до Белоруссии
+    sravnenie: net
+    src: 'Источник: Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru; В. М. Мельников, В. П. Мельников, А. Г. Милованов, «Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом», 2022 — cyberleninka.ru'
+    otryvok: 'Роскосмос: «Световое пятно, созданное парусом, имело диаметр 5 километров, двигалось со скоростью 8 км/с и было видно в течение 6 минут. Оно прошло через ряд европейских городов». Мельников и соавторы, 2022: «Солнечный „зайчик“ фиксировался космонавтами на заснеженной территории Белоруссии».'
+    stranica: новость 04.02.2017
+    href: https://www.roscosmos.ru/23203/
+    pometka: два источника
+    id: pyatno-5-km
+    istochnik: roscosmos-znamya-2-2017
+    dlya_voprosa: true
+    otvet: '5'
+    otvet_edinstvennyj: true
+  - n: 3
+    summary: Ровно через 6 лет, 4 февраля 1999-го, второе зеркало зацепилось за антенну своего же корабля
+    sravnenie: net
+    src: 'Источник: Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru; «Коммерсантъ», «Российское космическое зеркало разбилось о „Прогресс“», 05.02.1999 — kommersant.ru'
+    otryvok: 'Роскосмос: «„Зеркало“ диаметром 25 м при раскрытии зацепилось за антенну транспортного грузового корабля „Прогресс М-40“». «Коммерсантъ», 05.02.1999: «пленка в момент развертывания намоталась на антенну системы стыковки „Курс“ „грузовика“».'
+    stranica: новость 04.02.2017
+    href: https://www.roscosmos.ru/23203/
+    pometka: два источника
+    id: zerkalo-1999
+    istochnik: roscosmos-znamya-2-2017
+    dlya_voprosa: true
+    otvet: '6'
+    otvet_edinstvennyj: true
+  - n: 4
+    summary: Раскрытие зеркала нельзя было проверить на Земле — узнали, сработает ли, только на орбите
+    sravnenie: net
+    src: 'Источник: Е. И. Старовойтов, «Выбор металлизации для отражателей космической системы орбитального освещения поверхности Земли», Труды МАИ, 2017 — cyberleninka.ru'
+    otryvok: 'Труды МАИ, 2017, о больших раскрывающихся конструкциях: «невозможность полномасштабной наземной отработки и учета всех воздействующих факторов на динамику процесса раскрытия». Бескаркасное «Знамя» проверили там, где ему работать, — на орбите.'
+    stranica: Труды МАИ, 2017
+    href: https://cyberleninka.ru/article/n/vybor-metallizatsii-dlya-otrazhateley-kosmicheskoy-sistemy-orbitalnogo-osvescheniya-poverhnosti-zemli
+    pometka: документ
+    id: ne-proverit-na-zemle
+    istochnik: starovojtov-mai-2017
+    dlya_voprosa: false
+  - n: 5
+    summary: 'Немецкие метеорологи сами замерили наш «зайчик»: ярок, как полная Луна'
+    sravnenie: net
+    src: 'Источник: Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru'
+    otryvok: 'Роскосмос: «Немецкие метеорологи измерили яркость светового пятна, и она оказалась сопоставимой по яркости с полной Луной».'
+    stranica: новость 04.02.2017
+    href: https://www.roscosmos.ru/23203/
+    pometka: документ
+    id: kak-polnaya-luna
+    istochnik: roscosmos-znamya-2-2017
+    dlya_voprosa: false
+  - n: 6
+    summary: Тучи закрыли пол-Европы, а вспышку из космоса всё равно увидели
+    sravnenie: net
+    src: 'Источник: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“» — копия в веб-архиве'
+    otryvok: '«Новости космонавтики», 1993, №3: «густая облачность, закрывшая небо, свела к минимуму ожидаемый эффект». Свет из космоса всё равно заметили: газета «Индепендент» привела свидетельства немецких метеорологов и наблюдателей в Тулузе.'
+    stranica: 1993, №3
+    href: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+    pometka: документ
+    id: tuchi-nad-evropoj
+    istochnik: nk-1993-3
+    dlya_voprosa: false
+  - n: 7
+    summary: Следующим шагом Падалка должен был водить луч по Земле, поворачивая весь корабль с пульта на «Мире»
+    sravnenie: net
+    src: 'Источник: «Коммерсантъ», «Российское космическое зеркало разбилось о „Прогресс“», 05.02.1999 — kommersant.ru'
+    otryvok: '«Коммерсантъ», 05.02.1999: «космонавтам, маневрируя „грузовиком“, предстояло „поймать“ солнечные лучи и направить их на Землю». Опыт «Знамя-2,5» должны были провести Геннадий Падалка и Сергей Авдеев.'
+    stranica: «Коммерсантъ», 05.02.1999
+    href: https://www.kommersant.ru/doc/212468
+    pometka: документ
+    id: luch-padalki
+    istochnik: kommersant-1999-02-05
+    dlya_voprosa: false
+  - n: 8
+    summary: Парус в 20 метров шириной весил всего 4 килограмма
+    sravnenie: net
+    src: 'Источник: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“» — копия в веб-архиве; В. М. Мельников, В. П. Мельников, А. Г. Милованов, «Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом», 2022 — cyberleninka.ru'
+    otryvok: '«Новости космонавтики», 1993, №3: «вес солнечного паруса без напыления рекламы составил всего 4,2 кг». Мельников и соавторы, 2022: «Центробежная конструкция из плёнки майлар была диаметром 20 м и весила 4 кг».'
+    stranica: 1993, №3
+    href: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+    pometka: два источника
+    id: 4-kilogramma
+    istochnik: nk-1993-3
+    dlya_voprosa: true
+    otvet: '4'
+    otvet_edinstvennyj: true
+  - n: 9
+    summary: «Солнечный зайчик» мчался по Земле со скоростью 8 км в секунду
+    sravnenie: net
+    src: 'Источник: Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru'
+    otryvok: 'Роскосмос: световое пятно «двигалось со скоростью 8 км/с и было видно в течение 6 минут».'
+    stranica: новость 04.02.2017
+    href: https://www.roscosmos.ru/23203/
+    pometka: документ
+    id: 8-km-v-sekundu
+    istochnik: roscosmos-znamya-2-2017
+    dlya_voprosa: true
+    otvet: '8'
+    otvet_edinstvennyj: true
+  - n: 10
+    summary: Двадцатиметровое зеркало раскрылось в космосе за три минуты
+    sravnenie: net
+    src: 'Источник: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“» — копия в веб-архиве'
+    otryvok: '«Новости космонавтики», 1993, №3, по материалам ЦУП: «Время раскрытия паруса составляет порядка 3 минут».'
+    stranica: 1993, №3
+    href: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+    pometka: документ
+    id: tri-minuty
+    istochnik: nk-1993-3
+    dlya_voprosa: true
+    otvet: '3'
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё четыре факта
+  h2: Над Канадой и в научном журнале
+  udary:
+  - n: 11
+    summary: 'Без каркаса: барабан крутился, и плёнку растянула центробежная сила'
+    sravnenie: net
+    src: 'Источник: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“» — копия в веб-архиве'
+    otryvok: '«Новости космонавтики», 1993, №3: раскрытие плёнки «осуществляется или с помощью электростатики (эксперимент „Знамя-1“), или за счет центробежных сил при вращении конструкции (эксперимент „Знамя-2“)».'
+    stranica: 1993, №3
+    href: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+    pometka: документ
+    id: bez-karkasa
+    istochnik: nk-1993-3
+    dlya_voprosa: false
+  - n: 12
+    summary: Уже отстреленное, зеркало ещё два витка сияло в небе над Канадой
+    sravnenie: net
+    src: 'Источник: Роскосмос, «История освоения космоса. 1993 год — эксперимент „Знамя-2“», 04.02.2017 — roscosmos.ru'
+    otryvok: 'Роскосмос: «Через два витка, когда отражатель уже был отстрелен от корабля, он все еще хорошо наблюдался в небе над Канадой».'
+    stranica: новость 04.02.2017
+    href: https://www.roscosmos.ru/23203/
+    pometka: документ
+    id: nad-kanadoj
+    istochnik: roscosmos-znamya-2-2017
+    dlya_voprosa: false
+  - n: 13
+    summary: 'Сыромятников успехом был недоволен: зеркало вышло «как помятая плёнка»'
+    sravnenie: net
+    src: 'Источник: В. М. Мельников, В. П. Мельников, А. Г. Милованов, «Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом», 2022 — cyberleninka.ru'
+    otryvok: 'Мельников и соавторы, 2022: отражатель «создавался как модель солнечного паруса и не требовал высоких отражающих свойств»; на снимке видна волнистость металлизированной плёнки.'
+    stranica: статья 2022 года
+    href: https://cyberleninka.ru/article/n/kosmicheskie-solnechnye-elektrostantsii-i-sistemy-osvescheniya-rayonov-zapolyarya-otrazhyonnym-s-orbity-solnechnym-svetom
+    pometka: документ
+    id: pomyataya-plenka
+    istochnik: melnikov-2022
+    dlya_voprosa: false
+  - n: 14
+    summary: Опыт описали сами разработчики в научном журнале «Космические исследования», 1994
+    sravnenie: net
+    src: 'Источник: Семёнов Ю. П., Бранец В. Н., Сыромятников В. С. и др. // Космические исследования. 1994. Т. 32, № 4–5. С. 186–193; статья названа в списке литературы — Е. И. Старовойтов, «Выбор металлизации для отражателей космической системы орбитального освещения поверхности Земли», Труды МАИ, 2017 — cyberleninka.ru'
+    otryvok: Семёнов Ю. П., Бранец В. Н., Сыромятников В. С. и др. «Космический эксперимент по развертыванию пленочного бескаркасного отражателя D = 20 м („Знамя-2“)» // Космические исследования. 1994. Т. 32, № 4–5. С. 186–193.
+    stranica: Труды МАИ, 2017
+    href: https://cyberleninka.ru/article/n/vybor-metallizatsii-dlya-otrazhateley-kosmicheskoy-sistemy-orbitalnogo-osvescheniya-poverhnosti-zemli
+    pometka: документ
+    id: kosmicheskie-issledovaniya-1994
+    istochnik: starovojtov-mai-2017
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Числа «Знамени-2»
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно измеряет.'
+  kak_igrat:
+    zachem: 'Зеркало «Знамя-2» — первое в мире космическое зеркало. Его числа удивляют: огромный парус и почти невесомая плёнка.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что это число измеряет. Верный выбор загорится зелёным.
+    - Расставь все шесть — счётчик внизу покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок чисел каждый раз новый.'
+    final: Все шесть чисел на своих местах — +20 баллов.
+  dannye:
+    mesta:
+    - kod: shirina
+      nazvanie: Ширина паруса
+      verno_ru: Парус в 20 метров шириной весил всего 4 килограмма.
+    - kod: ves
+      nazvanie: Вес паруса
+      verno_ru: Двадцатиметровый парус весил всего 4 килограмма.
+    - kod: pyatno
+      nazvanie: Пятно света
+      verno_ru: Пятно света шириной 5 км пробежало ночью по Европе.
+    - kod: skorost
+      nazvanie: Скорость «зайчика»
+      verno_ru: «Солнечный зайчик» мчался по Земле со скоростью 8 км в секунду.
+    - kod: raskrytie
+      nazvanie: Раскрытие
+      verno_ru: Двадцатиметровое зеркало раскрылось в космосе за три минуты.
+    - kod: vtoroe
+      nazvanie: До второго зеркала
+      verno_ru: Ровно через 6 лет, 4 февраля 1999-го, раскрывали второе зеркало.
+    podpisi:
+    - kod: c-shirina
+      tekst: 20 метров
+      mesto: shirina
+      mimo_ru: Парус в 20 метров шириной весил всего 4 килограмма.
+    - kod: c-ves
+      tekst: 4 килограмма
+      mesto: ves
+      mimo_ru: Двадцатиметровый парус весил всего 4 килограмма.
+    - kod: c-pyatno
+      tekst: 5 км
+      mesto: pyatno
+      mimo_ru: Пятно света шириной 5 км пробежало ночью по Европе.
+    - kod: c-skorost
+      tekst: 8 км в секунду
+      mesto: skorost
+      mimo_ru: «Солнечный зайчик» мчался по Земле со скоростью 8 км в секунду.
+    - kod: c-raskrytie
+      tekst: 3 минуты
+      mesto: raskrytie
+      mimo_ru: Двадцатиметровое зеркало раскрылось в космосе за три минуты.
+    - kod: c-vtoroe
+      tekst: 6 лет
+      mesto: vtoroe
+      mimo_ru: Ровно через 6 лет, 4 февраля 1999-го, раскрывали второе зеркало.
+    vyberi_ru: Сначала выбери число, потом нажми на место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все шесть чисел на местах. Так выглядело первое в мире космическое зеркало.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: ширина паруса — 20 метров, вес — 4 килограмма, пятно — 5 км, скорость — 8 км в секунду, раскрытие — 3 минуты, до второго зеркала — 6 лет.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: NASA признало: первый в мире солнечный парус в космосе раскрыли русские, в 1993 году.'
+  net: 'Где граница: Сыромятников успехом был недоволен: зеркало вышло «как помятая плёнка».'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Орбита, станция «Мир»
+    - «Знамя-2» раскрылось с «Прогресса М-15»
+    - 4 февраля 1993
+  - - Орбита, станция «Мир»
+    - второе зеркало зацепилось за антенну
+    - 4 февраля 1999
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 4 килограмма; 5 км; центробежная сила; за три минуты; с полной Луной.'
+  ball: 8
+  voprosy:
+  - q: Сколько весил двадцатиметровый парус?
+    o:
+    - 4 килограмма
+    - 40 килограммов
+    - 400 килограммов
+    a: 0
+    e: Парус в 20 метров шириной весил всего 4 килограмма.
+  - q: Какой ширины было пятно света на Земле?
+    o:
+    - 5 метров
+    - 5 км
+    - 500 км
+    a: 1
+    e: Пятно света шириной 5 км, яркое, как полная Луна, ночью пробежало по Европе до Белоруссии.
+  - q: Что растянуло плёнку зеркала?
+    o:
+    - Каркас из трубок
+    - Надувные баллоны
+    - Центробежная сила
+    a: 2
+    e: 'Без каркаса: барабан крутился, и плёнку растянула центробежная сила.'
+  - q: За сколько раскрылось зеркало?
+    o:
+    - За три минуты
+    - За три часа
+    - За три дня
+    a: 0
+    e: Двадцатиметровое зеркало раскрылось в космосе за три минуты.
+  - q: С кем сравнили яркость «зайчика» немецкие метеорологи?
+    o:
+    - С Солнцем
+    - С полной Луной
+    - С Венерой
+    a: 1
+    e: 'Немецкие метеорологи сами замерили наш «зайчик»: ярок, как полная Луна.'
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал «Знамени-2».
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-04-goskatalog-7306820-mir.jpg
+  glavnoe_na_kartinke: *id001
+  width: 833
+  height: 1176
+  alt: 'Чёрно-белый снимок: орбитальная станция «Мир» с модулем «Квант» и кораблём «Союз ТМ-3» на фоне чёрного космоса, видны панели солнечных батарей и стыковочные узлы'
+  data_source: https://goskatalog.ru/portal/#/collections?id=7306820
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Госкаталог Музейного фонда РФ
+  podpis: Станция «Мир» с модулем «Квант» и кораблём «Союз ТМ-3» в полёте, 1987 год. Фотография хранится в Бузулукском краеведческом музее (Госкаталог № 7306820, инв. Ф 2218).
+  credit: 'Фото: автор не указан. Источник: Госкаталог Музейного фонда РФ, goskatalog.ru.'
+  vid: foto
+  prava: *id002
+  nomer_predmeta: 7306820
+  nomer_snimka: net
+  hranitel: Бузулукский краеведческий музей
+  podlinnik: *id003
+  svyashchennoe: false
+  podpis_chto: станция «Мир» с «Квантом» и «Союзом ТМ-3»
+  podpis_gde: околоземная орбита
+  podpis_kogda: '1987'
+- src: /muzei/izobreteniya/img/02-04-progress-u-stancii.jpg
+  glavnoe_na_kartinke:
+    x: 0.07
+    y: 0.15
+    w: 0.88
+    h: 0.8
+  width: 1280
+  height: 560
+  alt: Грузовой корабль «Прогресс» с раскрытыми солнечными батареями и антенной на носу у орбитальной станции, на фоне звёздного неба; снимок сделан со станции
+  data_source: https://kosmo-museum.ru/kosmo_news/progress-v-sostave-mks
+  license: цитирование в информационных целях с указанием источника (ст. 1274 ГК РФ) · автор не указан · Музей космонавтики
+  podpis: Грузовой корабль «Прогресс» у орбитальной станции — корабль того же семейства, что «Прогресс М-15» и «Прогресс М-40», с которых раскрывали «Знамя-2» и «Знамя-2.5». Снимок опубликован Музеем космонавтики.
+  credit: 'Фото: автор не указан. Источник: Музей космонавтики, kosmo-museum.ru.'
+  vid: foto
+  prava:
+    avtor: не указан
+    god_sozdaniya: не указан
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Музей космонавтики, kosmo-museum.ru
+    baza: cosmo_museum
+    ssylka: https://kosmo-museum.ru/kosmo_news/progress-v-sostave-mks
+  nomer_predmeta: net
+  nomer_snimka: net
+  hranitel: net
+  podlinnik:
+    gde: Музей космонавтики (публикация на сайте)
+    otkuda: https://kosmo-museum.ru/kosmo_news/progress-v-sostave-mks
+  svyashchennoe: false
+  podpis_chto: грузовой корабль «Прогресс»
+  podpis_gde: околоземная орбита
+  podpis_kogda: не указан
+- src: /muzei/izobreteniya/img/02-04-goskatalog-8680968-stykovochnyj-agregat.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  width: 705
+  height: 472
+  alt: 'Цветной снимок: стыковочный отсек станции «Мир» в цеху, крупный круглый стыковочный узел с белым кольцом, поручни и теплоизоляция на корпусе'
+  data_source: https://goskatalog.ru/portal/#/collections?id=8680968
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · А. С. Моклецов · Госкаталог Музейного фонда РФ
+  podpis: Стыковочный агрегат станции «Мир» в ЦПК имени Ю. А. Гагарина, январь 1987 года. Цветной негатив А. С. Моклецова хранит Мемориальный музей космонавтики (Госкаталог № 8680968); кадр обрезан по краю плёнки.
+  credit: 'Фото: А. С. Моклецов. Источник: Госкаталог Музейного фонда РФ, goskatalog.ru.'
+  vid: foto
+  prava:
+    avtor: Моклецов Александр Степанович
+    god_sozdaniya: 1987
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог Музейного фонда РФ, goskatalog.ru
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=8680968
+  nomer_predmeta: 8680968
+  nomer_snimka: net
+  hranitel: Мемориальный музей космонавтики
+  podlinnik:
+    gde: Мемориальный музей космонавтики, Москва, инв. ММК-IV-Н-1241
+    otkuda: https://goskatalog.ru/portal/#/collections?id=8680968
+  svyashchennoe: false
+  podpis_chto: стыковочный агрегат станции «Мир»
+  podpis_gde: ЦПК им. Ю. А. Гагарина, Звёздный городок
+  podpis_kogda: '1987'
+- src: /muzei/izobreteniya/img/02-04-goskatalog-14152740-apas.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.1
+    w: 0.75
+    h: 0.85
+  width: 800
+  height: 519
+  alt: 'Андрогинно-периферийный стыковочный агрегат в музейном зале: металлическое кольцо с тремя направляющими лепестками, штоки и механизмы, корпус в зелёной ткани'
+  data_source: https://goskatalog.ru/portal/#/collections?id=14152740
+  license: цитирование в информационных целях с указанием источника (ст. 1274 ГК РФ) · автор снимка не указан · Госкаталог Музейного фонда РФ
+  podpis: Андрогинно-периферийный стыковочный агрегат (АПАС) корабля «Союз-19», 1975 год, созданный под руководством В. С. Сыромятникова. Хранится в Мемориальном музее космонавтики (Госкаталог № 14152740).
+  credit: 'Фото: автор не указан. Источник: Госкаталог Музейного фонда РФ, goskatalog.ru.'
+  vid: foto
+  prava:
+    avtor: не указан
+    god_sozdaniya: не указан
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог Музейного фонда РФ, goskatalog.ru
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=14152740
+  nomer_predmeta: 14152740
+  nomer_snimka: net
+  hranitel: Мемориальный музей космонавтики
+  podlinnik:
+    gde: Мемориальный музей космонавтики, Москва, инв. ММК-VI-М-113
+    otkuda: https://goskatalog.ru/portal/#/collections?id=14152740
+  svyashchennoe: false
+  podpis_chto: стыковочный агрегат АПАС корабля «Союз-19»
+  podpis_gde: Мемориальный музей космонавтики, Москва
+  podpis_kogda: '1975'
+sources:
+- href: https://www.roscosmos.ru/23203/
+  title: Роскосмос, «История освоения космоса. 1993 год
+  pometka: документ
+- href: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+  title: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“»
+  pometka: документ
+- href: https://cyberleninka.ru/article/n/kosmicheskie-solnechnye-elektrostantsii-i-sistemy-osvescheniya-rayonov-zapolyarya-otrazhyonnym-s-orbity-solnechnym-svetom
+  title: В. М. Мельников, В. П. Мельников, А. Г. Милованов, «Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом», 2022
+  pometka: документ
+- href: https://cyberleninka.ru/article/n/vybor-metallizatsii-dlya-otrazhateley-kosmicheskoy-sistemy-orbitalnogo-osvescheniya-poverhnosti-zemli
+  title: Е. И. Старовойтов, «Выбор металлизации для отражателей космической системы орбитального освещения поверхности Земли», Труды МАИ, 2017
+  pometka: документ
+- href: https://www.kommersant.ru/doc/212468
+  title: «Коммерсантъ», «Российское космическое зеркало разбилось о „Прогресс“», 05.02.1999
+  pometka: документ
+- href: https://ntrs.nasa.gov/api/citations/20140011073/downloads/20140011073.pdf
+  title: 'NASA, L. Johnson и др., «Solar and Drag Sail Propulsion: From Theory to Mission Implementation», 2014'
+  pometka: документ
+- href: https://www.astronaut.ru/bookcase/books/stan_mir/text/10.htm
+  title: 'В. А. Гапонов, А. Б. Железняков. «Станция „Мир“: от триумфа до…»'
+kuda:
+- lbl: Следующий день
+  href: den/02-05/
+  title: 5 февраля — Гибкая (рулонная) фотоплёнка (раньше Kodak)
+  hook: Болдырев показал миру гибкую фотоплёнку в рулоне за десять лет до Kodak и патента на неё так и не взял.
+  main: true
+- lbl: Предыдущий день
+  href: den/02-03/
+  title: 3 февраля — Первая в мире мягкая посадка на Луну («Луна-9»)
+  hook: Никто на Земле не знал, выдержит ли лунная пыль аппарат, — «Луна-9» села и прислала первый снимок с поверхности.
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Штурман «Знамени»
+  - - 70
+    - Оператор ЦУП
+  - - 40
+    - Ученик Сыромятникова
+  - - 0
+    - Гость дня
+return:
+  q: Сколько весил парус «Знамени-2» шириной 20 метров?
+  a: Всего 4 килограмма.
+  src: «Новости космонавтики», 1993, №3; В. М. Мельников и др., 2022
+podskazki_igry:
+- Плёнка почти ничего не весит
+- Пятно на Земле — шире паруса
+- Самое быстрое — «зайчик»
+mesto_sobytiya:
+  nazvanie: Центр управления полётами, Королёв
+  shirota: 55.9129
+  dolgota: 37.8103
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+togda_sejchas: net
+skvoznye_linii: net
+kak_rabotaet:
+- 'Без каркаса: барабан крутился, и плёнку растянула центробежная сила'
+- Двадцатиметровое зеркало раскрылось в космосе за три минуты
+- Пятно света шириной 5 км, яркое, как полная Луна, ночью пробежало по Европе до Белоруссии
+- Следующим шагом Падалка должен был водить луч по Земле, поворачивая весь корабль с пульта на «Мире»
