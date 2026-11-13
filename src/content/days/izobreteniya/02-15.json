@@ -2,5 +2,71 @@
   "museum": "izobreteniya",
   "key": "02-15",
   "title": "Первая в мире «мёртвая петля», рождение высшего пилотажа",
-  "hook": "Инженеры считали, что вверх колёсами самолёт развалится, — Нестеров замкнул петлю и сел под арест за риск казённым имуществом"
+  "hook": "Инженеры считали, что вверх колёсами самолёт развалится, — Нестеров замкнул петлю и сел под арест за риск казённым имуществом",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "мёртвая петля",
+      "мёртвая петля, рождение высшего пилотажа",
+      "рождение"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Самолет \"Моран-Ж\", на котором летчик Россинский делал первые мертвые петли в 1914 г., и ги",
+        "avtor": "Фото Кислова.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=5567429",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/1845511",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5433239 (карточка 5567429, инв. —) | 1934 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "мёртвая петля"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо  Нифонтовой Р.Д. от съемочной группы художественного фильма \"Мертвая петля\" Киевско",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=16798036",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/16286353",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 16675608 (карточка 16798036, инв. —) | 15 марта 1962. 1962 | хранится: Театральный музей им. А.А. Бахрушина, Бахрушинский театральный музей, Бахрушинский музей, БТМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "мёртвая петля"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Афиша с исполнителями. \"Мертвая петля\"; \"Если женщина решила, то поставит на своем\" (На аф",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=17558162",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/17361405",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 17425995 (карточка 17558162, инв. АфДП 3780) | 23 ноября 1901 г. 1901 | хранится: Театральный музей им. А.А. Бахрушина, Бахрушинский театральный музей, Бахрушинский музей, БТМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "мёртвая петля"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Авиатор Виля делает мертвую петлю из альбома карикатур Первой Мировой войны",
+        "avtor": "Лаврентьев Леонид Николаевич",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19008333",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/19373992",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 18868146 (карточка 19008333, инв. —) | 1914-1915 | хранится: ГБУК СОХМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "мёртвая петля"
+      },
+      {
+        "baza": "tretyakov",
+        "nazvanie": "Рождение жизни",
+        "avtor": "Алексей Сотников",
+        "stranica": "https://my.tretyakov.ru/app/masterpiece/21915",
+        "fayl": "https://cdn.tretyakov.ru/mytretyakov/3b/ab1eb9d0154998d20fda9125f9a7a5cd/5d16db39d01a51c3734cfa4b90a3db85.jpg",
+        "pometka_prav": "nekommercheskoe-s-ukazaniem",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "рождение"
+      }
+    ]
+  }
 }

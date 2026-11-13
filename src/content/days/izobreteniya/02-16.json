@@ -2,5 +2,69 @@
   "museum": "izobreteniya",
   "key": "02-16",
   "title": "Первый в мире радиозонд",
-  "hook": "Шар Молчанова поднялся на десять километров и сам рассказал по радио, что творится наверху, — так начался прогноз погоды"
+  "hook": "Шар Молчанова поднялся на десять километров и сам рассказал по радио, что творится наверху, — так начался прогноз погоды",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "радиозонд"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Испытание автоматической ионосферной станции сигналов радиозондов в обсерватории \"Дружный\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=6005056",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/2262086",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5828590 (карточка 6005056, инв. —) | 1958? | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиозонд"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Поселок Мирный. Аэрологи 1-й комплексной антарктической экспедиции запускают радиозонд.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=6005176",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/2262206",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5828131 (карточка 6005176, инв. —) | 1955 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиозонд"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Негатив. Наполнение водородом резиновой оболочки для выпуска радиозонда в свободную атмосф",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7435446",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3373924",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7289380 (карточка 7435446, инв. —) | 1955 г. | хранится: Музей-заповедник \"Музей Мирового океана\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиозонд"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Запуск радиозонда на АМЦ Молодежная.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20070191",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20845066",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19937872 (карточка 20070191, инв. —) | 1979 | хранится: ФГБУ \"РГМАА\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиозонд"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Запуск радиозонда на АМЦ Молодежная.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20070285",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20845224",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19937790 (карточка 20070285, инв. —) | 1979 | хранится: ФГБУ \"РГМАА\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "радиозонд"
+      }
+    ]
+  }
 }

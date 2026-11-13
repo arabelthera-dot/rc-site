@@ -2,5 +2,71 @@
   "museum": "izobreteniya",
   "key": "02-07",
   "title": "Первая в мире троичная ЭВМ «Сетунь»",
-  "hook": "Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц"
+  "hook": "Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Сетунь",
+      "троичная ЭВМ Сетунь",
+      "троичная"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Книга. Кунцово и древний Сетунский станъ.",
+        "avtor": "Забелин Иван Егорович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12140572",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/90711189",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 12020198 (карточка 12140572, инв. Рк-495) | 1873 г. | хранится: ГБУК г. Москвы \"ГМЗ \"Царицыно\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Сетунь"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Открытка художественная. В. В. Пукирев (1832 - 1890) Вид имения Давыдково вблизи р. Сетун",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19954252",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20665364",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19820975 (карточка 19954252, инв. ИМ 9443) | 1987 год | хранится: Псковский музей-заповедник | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Сетунь"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Элемент троичный малой ЭВМ \"Сетунь\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7589819",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3523091",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7456267 (карточка 7589819, инв. —) | 1960 год | хранится: Политехнический музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "троичная ЭВМ Сетунь"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Терминал автоматизированной системы обучения (АСО) троичной ЭЦВМ \"Сетунь-70\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7589739",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3523016",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7456208 (карточка 7589739, инв. ВТ 139) | 1970 г. | хранится: Политехнический музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "троичная"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Слово о троичности и единстве Божества",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=14300040",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/12810906",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 14177996 (карточка 14300040, инв. Барс. 383) | Начало XVII в. | хранится: Исторический музей; Государственный исторический музей; ГИМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "троичная"
+      }
+    ]
+  }
 }

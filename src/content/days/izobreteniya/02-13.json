@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-13",
   "title": "Гидросамолёты и амфибии «Бе»",
-  "hook": "Таганрогская школа Бериева единственная в мире: Бе-200 садится на воду и набирает двенадцать тонн за двенадцать секунд"
+  "hook": "Таганрогская школа Бериева единственная в мире: Бе-200 садится на воду и набирает двенадцать тонн за двенадцать секунд",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Гидросамолёты и амфибии Бе",
+      "Гидросамолёты"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фото черно-белое. Гидросамолет, построенный по заказу Петросовета.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=14812158",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/13522867",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 14682823 (карточка 14812158, инв. —) | Начало 1920-х годов. | хранится: ГОАУК \"МОКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Гидросамолёты"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фото черно-белое. Гидросамолет на Неве.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=14812190",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/13522908",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 14682793 (карточка 14812190, инв. —) | 1922 год. | хранится: ГОАУК \"МОКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Гидросамолёты"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Гидросамолет Ш-2 перед полетом на ледовую разведку. Экспедиция ГУСМП на л/п \"Ч",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=22973982",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/24862818",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 22836451 (карточка 22973982, инв. —) | 1933 г. | хранится: ФГБУ \"РГМАА\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Гидросамолёты"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Гидросамолет Ш-2 отправляется на ледовую разведку. Экспедиция на л/п \"Челюскин",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=22973986",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/24862822",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 22836447 (карточка 22973986, инв. —) | 1933 г. | хранится: ФГБУ \"РГМАА\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Гидросамолёты"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Гидросамолет Ш-2 затаскивают из воды на льдину после полета на ледовую разведк",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=22973997",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/24862832",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 22836437 (карточка 22973997, инв. —) | 1933 г. | хранится: ФГБУ \"РГМАА\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Гидросамолёты"
+      }
+    ]
+  }
 }
