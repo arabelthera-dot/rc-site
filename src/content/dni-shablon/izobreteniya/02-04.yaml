@@ -122,7 +122,7 @@ oblozhka:
     otkuda: Госкаталог Музейного фонда РФ, goskatalog.ru
     baza: goskatalog
     ssylka: https://goskatalog.ru/portal/#/collections?id=7306820
-  nomer_predmeta: 7306820
+  nomer_predmeta: '7306820'
   nomer_snimka: net
   hranitel: Бузулукский краеведческий музей
   podlinnik: &id003
@@ -497,7 +497,7 @@ figures:
   credit: 'Фото: автор не указан. Источник: Госкаталог Музейного фонда РФ, goskatalog.ru.'
   vid: foto
   prava: *id002
-  nomer_predmeta: 7306820
+  nomer_predmeta: '7306820'
   nomer_snimka: net
   hranitel: Бузулукский краеведческий музей
   podlinnik: *id003
@@ -563,7 +563,7 @@ figures:
     otkuda: Госкаталог Музейного фонда РФ, goskatalog.ru
     baza: goskatalog
     ssylka: https://goskatalog.ru/portal/#/collections?id=8680968
-  nomer_predmeta: 8680968
+  nomer_predmeta: '8680968'
   nomer_snimka: net
   hranitel: Мемориальный музей космонавтики
   podlinnik:
@@ -597,7 +597,7 @@ figures:
     otkuda: Госкаталог Музейного фонда РФ, goskatalog.ru
     baza: goskatalog
     ssylka: https://goskatalog.ru/portal/#/collections?id=14152740
-  nomer_predmeta: 14152740
+  nomer_predmeta: '14152740'
   nomer_snimka: net
   hranitel: Мемориальный музей космонавтики
   podlinnik:
@@ -611,23 +611,30 @@ sources:
 - href: https://www.roscosmos.ru/23203/
   title: Роскосмос, «История освоения космоса. 1993 год
   pometka: документ
+  note: 'официально: 4 февраля 1993 года, «Прогресс М-15», зеркало 20 метров, световое пятно над Европой'
 - href: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
   title: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“»
   pometka: документ
+  note: 'отчёт по горячим следам: раскрытие, вес плёнки, путь «зайчика» над Европой, погода'
 - href: https://cyberleninka.ru/article/n/kosmicheskie-solnechnye-elektrostantsii-i-sistemy-osvescheniya-rayonov-zapolyarya-otrazhyonnym-s-orbity-solnechnym-svetom
   title: В. М. Мельников, В. П. Мельников, А. Г. Милованов, «Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом», 2022
   pometka: документ
+  note: 'научная статья: «Знамя-2» — первое в мире раскрытое на орбите плёночное зеркало'
 - href: https://cyberleninka.ru/article/n/vybor-metallizatsii-dlya-otrazhateley-kosmicheskoy-sistemy-orbitalnogo-osvescheniya-poverhnosti-zemli
   title: Е. И. Старовойтов, «Выбор металлизации для отражателей космической системы орбитального освещения поверхности Земли», Труды МАИ, 2017
   pometka: документ
+  note: 'научная статья: плёнка отражателя и почему его нельзя было отработать на Земле'
 - href: https://www.kommersant.ru/doc/212468
   title: «Коммерсантъ», «Российское космическое зеркало разбилось о „Прогресс“», 05.02.1999
   pometka: документ
+  note: '4 февраля 1999 года: второе зеркало, «Знамя-2.5», зацепилось за антенну'
 - href: https://ntrs.nasa.gov/api/citations/20140011073/downloads/20140011073.pdf
   title: 'NASA, L. Johnson и др., «Solar and Drag Sail Propulsion: From Theory to Mission Implementation», 2014'
   pometka: документ
+  note: 'NASA о «Знамени-2» как о первом раскрытии плёночного паруса-зеркала в космосе'
 - href: https://www.astronaut.ru/bookcase/books/stan_mir/text/10.htm
   title: 'В. А. Гапонов, А. Б. Железняков. «Станция „Мир“: от триумфа до…»'
+  note: 'книга о станции «Мир»: эксперимент «Знамя-2» среди уникальных опытов на орбите'
 kuda:
 - lbl: Следующий день
   href: den/02-05/
@@ -660,6 +667,15 @@ score:
     - Ученик Сыромятникова
   - - 0
     - Гость дня
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-04-znamya-2:claim-1993
+  ours:
+    kind: научная статья
+    title: Космические солнечные электростанции и системы освещения районов Заполярья отражённым с орбиты солнечным светом
+    date: '2022'
+    holder: КиберЛенинка
+    source_url: https://cyberleninka.ru/article/n/kosmicheskie-solnechnye-elektrostantsii-i-sistemy-osvescheniya-rayonov-zapolyarya-otrazhyonnym-s-orbity-solnechnym-svetom
 return:
   q: Сколько весил парус «Знамени-2» шириной 20 метров?
   a: Всего 4 килограмма.
