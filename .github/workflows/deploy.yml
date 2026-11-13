@@ -37,7 +37,7 @@ jobs:
   # Запуски deploy.yml идут по одному (concurrency: pages), поэтому двух проверяющих одновременно не бывает.
   # Слияние в main и ручной запуск собирают всегда. Ошибка API — собираем (лишняя сборка лучше вчерашнего сайта).
   nado:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     permissions:
       actions: read
     outputs:
@@ -65,7 +65,7 @@ jobs:
   build:
     needs: nado
     if: needs.nado.outputs.sobrat == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     # Основной адрес https://russian-civilization.ru/ — сервер msk-new (nginx + Let's Encrypt, с 21.10.2026), задача msk ниже;
     # Pages этого репо — зеркало (свой домен с Pages снят). Индексируется основной адрес.
     env:
@@ -138,7 +138,7 @@ jobs:
           if-no-files-found: error
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     permissions:
       pages: write
       id-token: write
@@ -174,7 +174,7 @@ jobs:
   # как прежде. Откат — убрать эту задачу.
   msk:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     # Окружение msk-new (Р64): секрет RU_DEPLOY_KEY переносится сюда из секретов репо (Михаил) с правилом «только main».
     # Пока окружение без правил — поведение прежнее.
     environment: msk-new
@@ -314,7 +314,7 @@ jobs:
   zhivoy:
     needs: msk
     if: needs.msk.outputs.est == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 15
     permissions:
       actions: read
@@ -386,7 +386,7 @@ jobs:
   # выкладка уже прошла и не роняется. Откат — убрать эту задачу.
   indexnow:
     needs: deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     continue-on-error: true
     timeout-minutes: 5
     permissions:
