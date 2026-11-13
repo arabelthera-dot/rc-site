@@ -5,5 +5,71 @@
   "year": 1945,
   "hook": "В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой",
   "mechanic": "Получает то, о чём табличка молчит: Мать Мария пошла в газовую камеру вместо другой женщины.",
-  "gist": "монахиня и поэт спасала преследуемых, погибла в Равенсбрюке."
+  "gist": "монахиня и поэт спасала преследуемых, погибла в Равенсбрюке.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Мать Мария",
+      "Скобцова",
+      "Мария"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо фронтовое. Коростылева Е.П. матери Марии Семеновне.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8537937",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14174824",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8430077 (карточка 8537937, инв. ФП-4018) | 01.04.1944 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Мать Мария"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо фронтовое. Коростылева Е.П. матери Марии Семеновне.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8537980",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14174805",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8430034 (карточка 8537980, инв. ФП-4013) | 06.07.1943 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Мать Мария"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо фронтовое на бланке. Коростылева Е.П. матери Марии Семеновне.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8538004",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14174829",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8430010 (карточка 8538004, инв. ФП-4011) | 02.06.1943 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Мать Мария"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо фронтовое на бланке  \"Воинское\". Коростылева Е.П. матери Марии Семеновне.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8538011",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14174838",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8430003 (карточка 8538011, инв. ФП-4017) | 25.08.1943 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Мать Мария"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо фронтовое. Коростылева Е.П. матери Марии Семеновне.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8538019",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14174830",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8429995 (карточка 8538019, инв. ФП-4031) | 23.02.1945 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Мать Мария"
+      }
+    ]
+  }
 }

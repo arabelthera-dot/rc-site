@@ -5,5 +5,70 @@
   "year": 1989,
   "hook": "Экипаж боролся за лодку, пока она не ушла на дно — и не сдался",
   "mechanic": "Проходит отсеки «Комсомольца» на схеме: где начался пожар, где боролись и где люди оставались до конца.",
-  "gist": "при пожаре в Норвежском море моряки до конца боролись за живучесть корабля."
+  "gist": "при пожаре в Норвежском море моряки до конца боролись за живучесть корабля.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Комсомолец",
+      "подлодка К-278 Комсомолец"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Газета. \"Московский комсомолец\" № 12.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11171898",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14172265",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11052496 (карточка 11171898, инв. —) | 15.01.1941 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Комсомолец"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Газета. \"Московский комсомолец\" № 9.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11171918",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14172264",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11052478 (карточка 11171918, инв. —) | 11.01.1941 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Комсомолец"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Газета. \"Московский комсомолец\" № 15.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11171937",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14172299",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11052460 (карточка 11171937, инв. —) | 18.01.1941 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Комсомолец"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Газета. \"Московский комсомолец\" № 7.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11171965",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14172270",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11052432 (карточка 11171965, инв. —) | 09.01.1941 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Комсомолец"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Газета «Комсомолец Забайкалья» от 1 мая 1964 г. Статья о Жужжалкине И.П.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=14956905",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/13717381",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19804209 (карточка 14956905, инв. ДОК -44) | 1 мая 1964 г. | хранится: ГУК АНМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Комсомолец"
+      }
+    ]
+  }
 }

@@ -5,5 +5,70 @@
   "year": 2018,
   "hook": "«Это вам за пацанов!» — и граната в руке вместо плена",
   "mechanic": "Видит рядом со словами «Это вам за пацанов!» источник — запись переговоров и указ о награде.",
-  "gist": "сбитый в Сирии лётчик принял последний бой и подорвал себя гранатой. Герой России (посмертно)."
+  "gist": "сбитый в Сирии лётчик принял последний бой и подорвал себя гранатой. Герой России (посмертно).",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Роман Филипов",
+      "Филипов"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Трудовая книжка Полихова Филипа Романовича.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=24389903",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/26846257",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 24248363 (карточка 24389903, инв. —) | 17.12.1953 г. | хранится: МБУ \"Троицкий краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Роман Филипов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Поздравительная открытка Полихова Филиппа Романовича с 60-летием образования СССР от испол",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=24390684",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/26847332",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 24249218 (карточка 24390684, инв. —) | 1982 г. | хранится: МБУ \"Троицкий краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Роман Филипов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Грамота почетная Полихова Филиппа Романовича за добросовестный труд в ознаменование Дня По",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=24393291",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/26851792",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 24253292 (карточка 24393291, инв. —) | 09.05.1973 г. | хранится: МБУ \"Троицкий краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Роман Филипов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Поздравление Полихова Филиппа Романовича с 30-летием Победы советского народа и его ВС в В",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=24393507",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/26852024",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 24253291 (карточка 24393507, инв. —) | 1975 г. | хранится: МБУ \"Троицкий краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Роман Филипов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Поздравление Полихова Филиппа Романовича в честь 30-летия Победы советского народа в ВОВ о",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=24393711",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/26852299",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 24253290 (карточка 24393711, инв. —) | 1975 г. | хранится: МБУ \"Троицкий краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Роман Филипов"
+      }
+    ]
+  }
 }

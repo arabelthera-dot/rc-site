@@ -28,5 +28,70 @@
       "caption": "Пороховница. Россия, XVIII век",
       "credit": "Фото: автор не указан, XVIII век. Хранится: Курганский областной краеведческий музей, инв. О-279. Госкаталог музейного фонда РФ, № 28902741. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=29030648. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)."
     }
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "оборона Троице-Сергиевой лавры",
+      "Троице-Сергиевой"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Значок «Пивная башня» с изображением башни оборонительных сооружений Троице-Сергиевой лавр",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=6122635",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/73740491",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5932245 (карточка 6122635, инв. НЗ-3861) | 1960-1970-е гг. | хранится: Новгородский музей-заповедник | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "оборона Троице-Сергиевой лавры"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Открытка «Оборона Троице-Сергиевской Лавры\". Художник С.Милорадович.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=13593162",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/11860537",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 13463382 (карточка 13593162, инв. —) | 1910-е гг. | хранится: ГБУК НО НГИАМЗ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "оборона Троице-Сергиевой лавры"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Вид на Троице-Сергиеву Лавру.",
+        "avtor": "Хрустачев Николай Иванович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=9799695",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/6564211",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 9678717 (карточка 9799695, инв. АИЖ-6753) | 1930-е гг. | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Троице-Сергиевой"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Троице-Сергиева лавра. Пятницкая башня. Описание технического состояния и схематич. обмеры",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11825978",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/88564091",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11707937 (карточка 11825978, инв. —) | 1961 г. | хранится: Музей архитектуры им. А.В. Щусева | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Троице-Сергиевой"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Троице-Сергиева лавра. Сушильная башня. Проект реставрации. Т. 2. Графическая часть.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11826105",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/88596207",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11708103 (карточка 11826105, инв. —) | 1961 г. | хранится: Музей архитектуры им. А.В. Щусева | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Троице-Сергиевой"
+      }
+    ]
+  }
 }

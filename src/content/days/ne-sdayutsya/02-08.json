@@ -5,5 +5,70 @@
   "year": 1983,
   "hook": "Не поверил «сигналу ракетной атаки» — и спас мир от ядерной войны",
   "mechanic": "Запускает учебную модель пульта системы «Око»: тревога, «пуск ракет» — и решение, которое принял Петров, не нажав кнопку.",
-  "gist": "офицер распознал ложную тревогу и не доложил об «атаке», предотвратив ответный удар."
+  "gist": "офицер распознал ложную тревогу и не доложил об «атаке», предотвратив ответный удар.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Станислав Петров",
+      "Петров"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Книга «Богиня моя берегиня» ( в миниатюрном исполнении)  -автор Станислав Петрович Федотов",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=6836945",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/2915685",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10800699 (карточка 6836945, инв. К 633) | 2004 г. | хранится: МБУК \"Краеведческий музей Михайловского округа\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Станислав Петров"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Документ. Пригласительный билет РК КПСС -  Журавского Станислава Петровича.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10982918",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8323393",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10863822 (карточка 10982918, инв. —) | 1962г. | хранится: МБУК \"Приуральский РКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Станислав Петров"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Шкатулка деревянная. Изготовил - Игнатенко Станислав Петрович.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=25587254",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/28510591",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 25449146 (карточка 25587254, инв. —) | 1958 г. | хранится: МБУК \"Славгородский городской краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Станислав Петров"
+      },
+      {
+        "baza": "tretyakov",
+        "nazvanie": "Петр I допрашивает царевича Алексея Петровича в Петергофе",
+        "avtor": "Николай Ге",
+        "stranica": "https://my.tretyakov.ru/app/masterpiece/8455",
+        "fayl": "https://cdn.tretyakov.ru/mytretyakov/24/dcf4d455a03b0aabd80a6c2a3010fa3d/947b92fa7696b816f29b20620f870346.jpg",
+        "pometka_prav": "nekommercheskoe-s-ukazaniem",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Петров"
+      },
+      {
+        "baza": "tretyakov",
+        "nazvanie": "1918 год в Петрограде («Петроградская мадонна»)",
+        "avtor": "Кузьма Петров-Водкин",
+        "stranica": "https://my.tretyakov.ru/app/masterpiece/8846",
+        "fayl": "https://cdn.tretyakov.ru/mytretyakov/30/b7bd59cd9a0854fa0fb4ac681c55bf64/a56ee3f8fa330baccb166e4790b8b356.jpg",
+        "pometka_prav": "nekommercheskoe-s-ukazaniem",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Петров"
+      }
+    ]
+  }
 }

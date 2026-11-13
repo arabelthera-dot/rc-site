@@ -5,5 +5,70 @@
   "year": 2012,
   "hook": "Накрыл собой боевую гранату — и спас солдат",
   "mechanic": "Видит слово «накрыл гранату» рядом со снимком наградного документа и рассказом сослуживцев.",
-  "gist": "командир батальона связи накрыл неудачно брошенную гранату, погиб. Герой России."
+  "gist": "командир батальона связи накрыл неудачно брошенную гранату, погиб. Герой России.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Сергей Солнечников",
+      "Солнечников"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Автобиография  Героя России Солнечникова Сергея Александровича.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=65313672",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/83474631",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 65031186 (карточка 65313672, инв. Д ) | 2012 г. | хранится: МБУ \"БКМ им. Н.Г. Ельченинова\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Сергей Солнечников"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Звезда морская. Солнечник. Solaster",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=4578829",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/2482347",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 4573093 (карточка 4578829, инв. БП-73) | дата не указана | хранится: Музей-заповедник \"Музей Мирового океана\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Солнечников"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Картина \"Рыба-солнечник пятнобокий\"",
+        "avtor": "Лавелина В.В.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8814453",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/9381676",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8699804 (карточка 8814453, инв. 5) | март 1998г. | хранится: Отдел \"Музей природы Земли\" муниципального учреждения \"Музейный комплекс\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Солнечников"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Морское беспозвоночное. Кроссастер. Crossaster papposus (Мохнатый солнечник)",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10564354",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7718336",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10452294 (карточка 10564354, инв. ПБП-1) | Август 1997 г. | хранится: ГБУК \"Сахалинский областной краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Солнечников"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Этикетка спичечная. Рыболовная серия. Zonnevis. Солнечник",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20534825",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/21499133",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 20401661 (карточка 20534825, инв. —) | 1980-1985 гг. | хранится: ГБУК ЛО \"Выборгский объединенный музей-заповедник\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Солнечников"
+      }
+    ]
+  }
 }
