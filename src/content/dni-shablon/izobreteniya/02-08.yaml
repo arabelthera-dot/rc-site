@@ -1,0 +1,777 @@
+muzei: izobreteniya
+key: 02-08
+pokazan_sergeyu:
+  data: '2026-11-14'
+nomer_dnya: izob-0208-mendeleev
+data_sobytiya: '1869-03-01'
+data_staryj_stil: '1869-02-17'
+chto_sluchilos: Дмитрий Менделеев составил таблицу элементов с пустыми клетками и предсказал вещества, которых никто не видел; галлий, скандий и германий нашли ровно такими.
+god: 1869
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Таблица «Периодическая система элементов Д. И. Менделеева», 1969
+  muzej: Государственный музей политической истории России
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=8366315
+- chto: Брошюра «Таблица Менделеева», 1953
+  muzej: Музей-заповедник Д. И. Менделеева и А. А. Блока
+  gorod: Солнечногорск, Боблово
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=26067347
+chitat_dalshe:
+- nazvanie: Л. М. Сулименко. «Галлий»
+  gde: «Химия и жизнь», 1970, №6
+  ssylka: https://hij.ru/read/27523/
+- nazvanie: «Германий» — история открытия
+  gde: химический факультет МГУ
+  ssylka: https://www.chem.msu.ru/rus/history/element/Ge.html
+- nazvanie: «Скандий» — история открытия
+  gde: химический факультет МГУ
+  ssylka: https://www.chem.msu.ru/rus/history/element/Sc.html
+- nazvanie: О периодическом законе Менделеева
+  gde: «Наука и жизнь»
+  ssylka: https://www.nkj.ru/archive/articles/35498/
+istochniki:
+- id: xzh
+  baza: periodika
+  avtor: Л. М. Сулименко
+  god: 1970
+  nazvanie: «Галлий», «Химия и жизнь», 1970, №6
+  ssylka: https://hij.ru/read/27523/
+- id: ga
+  baza: nauka
+  nazvanie: '«Галлий: история открытия» — химфак МГУ'
+  ssylka: https://www.chem.msu.ru/rus/history/element/Ga.html
+- id: ge
+  baza: nauka
+  nazvanie: '«Германий: история открытия» — химфак МГУ'
+  ssylka: https://www.chem.msu.ru/rus/history/element/Ge.html
+- id: sc
+  baza: nauka
+  nazvanie: '«Скандий: история открытия» — химфак МГУ'
+  ssylka: https://www.chem.msu.ru/rus/history/element/Sc.html
+- id: md
+  baza: nauka
+  nazvanie: '«Менделевий: история открытия» — химфак МГУ'
+  ssylka: https://www.chem.msu.ru/rus/history/element/Md.html
+- id: a
+  baza: periodika
+  nazvanie: Статья о галлии и предсказаниях Менделеева — alhimik.ru
+  ssylka: https://www.alhimik.ru/read/venec01.html
+- id: be
+  baza: periodika
+  nazvanie: Статья «Бериллий» — khimiya.narod.ru
+  ssylka: https://khimiya.narod.ru/be.htm
+- id: pt
+  baza: kniga
+  avtor: И. В. Петрянов, Д. Н. Трифонов
+  god: 1976
+  nazvanie: «Великий закон», 1976
+  ssylka: http://chemlib.ru/books/item/f00/s00/z0000016/st005.shtml
+- id: ko
+  baza: periodika
+  nazvanie: Статья о технеции — «Коммерсантъ»
+  ssylka: https://www.kommersant.ru/doc/5434539
+- id: hf
+  baza: periodika
+  nazvanie: К. Хоффман, «Можно ли сделать золото»
+  ssylka: https://element114.narod.ru/Education/chem2-57.html
+- id: nzh
+  baza: periodika
+  nazvanie: Статья о Менделееве и открытии закона — «Наука и жизнь»
+  ssylka: https://www.nkj.ru/archive/articles/35498/
+- id: nt
+  baza: periodika
+  nazvanie: «Популярная библиотека химических элементов» — n-t.ru
+  ssylka: https://n-t.ru/ri/ps/pb032.htm
+- id: gk-tablica-1969
+  baza: goskatalog
+  nazvanie: Таблица «Периодическая система элементов Д. И. Менделеева», 1969, Музей политической истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=8366315
+citaty: []
+velichina_chislo: 72
+velichina_edinica: единицы атомного веса
+velichina_chto: вес экасилиция по Менделееву; германий взвесили — 72,32
+etiketka_oblozhki:
+- Портрет Д. И. Менделеева, гравюра, конец XIX века
+- Государственный исторический музей
+slovar:
+- mesto:sankt-peterburg
+head:
+  title: Периодическая система элементов, 1869 — Музей «Что изобрели русские первыми в мире»
+  description: Менделеев оставил в таблице пустые клетки и описал элементы, которых никто не видел, — галлий, скандий и германий нашли ровно такими.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-08/
+  sobytie: Периодическая система Менделеева
+  god: '1869'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Периодическая система Менделеева
+    description: Менделеев оставил в таблице пустые клетки и описал элементы, которых никто не видел, — галлий, скандий и германий нашли ровно такими.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-08/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-08-goskatalog-31786633.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Периодическая система Менделеева
+    description: Менделеев оставил в таблице пустые клетки и описал элементы, которых никто не видел, — галлий, скандий и германий нашли ровно такими.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-08/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-08-goskatalog-31786633.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-08-goskatalog-31786633.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.15
+    w: 0.6
+    h: 0.55
+  width: 523
+  height: 800
+  alt: 'Гравированный портрет Менделеева в овальной рамке: седые длинные волосы, борода, галстук-бабочка'
+  data_source: https://goskatalog.ru/portal/#/collections?id=31786633
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+  podpis: Портрет «Дмитрий Иванович Менделеев. Профессор», гравюра, конец XIX — начало XX века. Хранит Государственный исторический музей.
+  credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 31786633.'
+  hint: Гравюра · портрет Менделеева
+  vid: risunok
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: конец XIX — начало XX вв.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: не установлена; в Госкаталоге предмет датирован концом XIX — началом XX века
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=31786633
+  nomer_predmeta: '31786633'
+  nomer_snimka: net
+  hranitel: Государственный исторический музей
+  podlinnik:
+    gde: Государственный исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=31786633
+  svyashchennoe: false
+  podpis_chto: Портрет «Дмитрий Иванович Менделеев. Профессор», гравюра
+  podpis_gde: Москва
+  podpis_kogda: конец XIX — начало XX века
+  pometka_prav: citirovanie-1274
+kroshka: 8 февраля · Таблица Менделеева
+lead:
+  data: 1869 · Санкт-Петербург, университет
+  privyazka: Таблицу Менделеев составил 17 февраля 1869 года.
+  kto: Дмитрий Иванович Менделеев, химик, профессор Петербургского университета
+  h1: Периодическая система элементов
+  hook: Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими
+stamp:
+- v: '1869'
+  k: таблица составлена
+- v: '72'
+  k: вес экасилиция по Менделееву
+- v: 72,32
+  k: вес германия по опыту
+- v: '118'
+  k: элементов в таблице сегодня
+daynav:
+- id: story
+  label: Открытие
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-mendeleev-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу таблицы Менделеева: от пустых клеток 1869 года через галлий, скандий и германий к сто первому элементу. Четыре остановки.'
+  stops:
+  - t: 0
+    mark: '0:00'
+    title: Таблица с пустыми клетками
+  - t: 45
+    mark: '0:45'
+    title: Галлий и скандий
+  - t: 90
+    mark: '1:30'
+    title: Германий — экасилиций
+  - t: 117
+    mark: '1:57'
+    title: Сто первый элемент
+  transcript:
+  - 'Здравствуйте. Мы в зале периодической системы элементов. Тысяча восемьсот шестьдесят девятый год, Санкт-Петербург, университет. Дмитрий Иванович Менделеев, химик, профессор Петербургского университета, семнадцатого февраля составляет таблицу элементов. Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими. Элементы стоят по росту атомного веса, и похожие по свойствам оказываются в одном столбце. Там, где ряд ломается, Менделеев оставлял пустую клетку, а по соседям рассчитывал вес и свойства ненайденного элемента. О законе века объявил не автор: Менделеев в тот день уехал проверять сыроварни.'
+  - 'Первым нашли галлий — во Франции, в тысяча восемьсот семьдесят пятом году. Менделеев предсказал даже прибор: экаалюминий найдут спектроскопом. Так его и нашли. Француз, открывший галлий, узнал о законе Менделеева из письма самого Менделеева. Не держа в руках ни крупинки галлия, Менделеев поправил его первооткрывателя — и оказался прав. Все химики писали вес бериллия тринадцать с половиной. Менделеев зачеркнул и поставил девять — и мир исправился. Швед Нильсон спорил с Менделеевым о бериллии — и сам же нашёл предсказанный им экабор, скандий. Для скандия Менделеев заранее расписал вес, формулы окисла и хлорида, соли — сбылось через восемь лет.'
+  - 'Менделеев предсказал вес экасилиция: семьдесят два. Через пятнадцать лет германий взвесили — семьдесят две целых тридцать две сотых. Немец Винклер решил, что нашёл родню сурьмы, — спор кончился признанием: это экасилиций. Германий хотели назвать «нептуний»: как планету Нептун, найденную сперва на бумаге. Бунзен, создатель спектроскопа, сравнил таблицу с «биржевым листком» — его прибор её и доказал.'
+  - 'Клетку экамарганца не смогла заполнить природа — элемент пришлось сделать в циклотроне. Экамарганец «открывали» в Японии и Германии, давали имена — и всё оказалось ошибкой. Тысяча девятьсот пятьдесят пятый, холодная война — а американцы назвали сто первый элемент в честь русского Менделеева. Менделевий нашли всего по семнадцати атомам — и назвали в честь того, кто таблицу придумал. Сегодня в таблице сто восемнадцать элементов.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: История открытия
+  h2: Как пустые клетки оказались правдой
+  udary:
+  - summary: Галлий
+    det:
+    - Не держа в руках ни крупинки галлия, Менделеев поправил его первооткрывателя — и оказался прав.
+    src: 'Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — hij.ru'
+  - summary: Германий
+    det:
+    - 'Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32.'
+    src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
+  - summary: Скандий
+    det:
+    - Для скандия Менделеев заранее расписал вес, формулы окисла и хлорида, соли — сбылось через 8 лет.
+    src: 'Источник: химфак МГУ, «Скандий: история открытия» — chem.msu.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что открыли
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — hij.ru'
+    otryvok: Не держа в руках ни крупинки галлия, Менделеев поправил его первооткрывателя — и оказался прав
+    stranica: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6
+    href: https://hij.ru/read/27523/
+    pometka: документ
+    id: galliy-popravil
+    istochnik: xzh
+    dlya_voprosa: false
+  - n: 2
+    sravnenie: net
+    src: 'Источник: химфак МГУ, «Менделевий: история открытия» — chem.msu.ru'
+    otryvok: 1955-й, холодная война — а американцы назвали 101-й элемент в честь русского Менделеева
+    stranica: 'химфак МГУ, «Менделевий: история открытия»'
+    href: https://www.chem.msu.ru/rus/history/element/Md.html
+    pometka: документ
+    id: mendeleviy-1955
+    istochnik: md
+    dlya_voprosa: true
+    otvet: 101-й
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-08-goskatalog-8366315.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.2
+        w: 0.6
+        h: 0.6
+      width: 800
+      height: 561
+      alt: 'Цветная таблица элементов: клетки с символами и весами, справа портрет Менделеева'
+      data_source: https://goskatalog.ru/portal/#/collections?id=8366315
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей политической истории России · Госкаталог
+      podpis: Таблица «Периодическая система элементов Д. И. Менделеева», изданная к X Менделеевскому съезду, 1969. Хранит Государственный музей политической истории России.
+      credit: 'Хранится: Государственный музей политической истории России. Госкаталог музейного фонда РФ, № 8366315.'
+      hint: Таблица · издание 1969 года
+      vid: plakat
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1969 г.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1969'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=8366315
+      nomer_predmeta: '8366315'
+      nomer_snimka: net
+      hranitel: Государственный музей политической истории России
+      podlinnik:
+        gde: Государственный музей политической истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=8366315
+      svyashchennoe: false
+      podpis_chto: Таблица «Периодическая система элементов Д. И. Менделеева», изданная к X Менделеевскому съезду
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: '1969'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
+    otryvok: 'Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32'
+    stranica: 'химфак МГУ, «Германий: история открытия»'
+    href: https://www.chem.msu.ru/rus/history/element/Ge.html
+    pometka: документ
+    id: ekasiliciy-72
+    istochnik: ge
+    dlya_voprosa: true
+    otvet: '72'
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: net
+    src: 'Источник: alhimik.ru, статья о галлии и предсказаниях Менделеева — alhimik.ru'
+    otryvok: Бунзен, создатель спектроскопа, сравнил таблицу с «биржевым листком» — его прибор её и доказал
+    stranica: alhimik.ru, статья о галлии и предсказаниях Менделеева
+    href: https://www.alhimik.ru/read/venec01.html
+    pometka: документ
+    id: bunzen-birzha
+    istochnik: a
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    src: 'Источник: khimiya.narod.ru, статья «Бериллий» — khimiya.narod.ru'
+    otryvok: Все химики писали вес бериллия 13,5. Менделеев зачеркнул и поставил 9 — и мир исправился
+    stranica: khimiya.narod.ru, статья «Бериллий»
+    href: https://khimiya.narod.ru/be.htm
+    pometka: документ
+    id: berilliy-9
+    istochnik: be
+    dlya_voprosa: true
+    otvet: '9'
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    src: 'Источник: химфак МГУ, «Галлий: история открытия» — chem.msu.ru'
+    otryvok: 'Менделеев предсказал даже прибор: экаалюминий найдут спектроскопом. Так его и нашли'
+    stranica: 'химфак МГУ, «Галлий: история открытия»'
+    href: https://www.chem.msu.ru/rus/history/element/Ga.html
+    pometka: документ
+    id: pribor-spektroskop
+    istochnik: ga
+    dlya_voprosa: true
+    otvet: спектроскопом
+    otvet_edinstvennyj: true
+  - n: 7
+    sravnenie: net
+    src: 'Источник: химфак МГУ, «Скандий: история открытия» — chem.msu.ru'
+    otryvok: Швед Нильсон спорил с Менделеевым о бериллии — и сам же нашёл предсказанный им экабор
+    stranica: 'химфак МГУ, «Скандий: история открытия»'
+    href: https://www.chem.msu.ru/rus/history/element/Sc.html
+    pometka: документ
+    id: nilson-ekabor
+    istochnik: sc
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    src: 'Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — hij.ru'
+    otryvok: Француз, открывший галлий, узнал о законе Менделеева из письма самого Менделеева
+    stranica: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6
+    href: https://hij.ru/read/27523/
+    pometka: документ
+    id: pismo-buabodranu
+    istochnik: xzh
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
+    otryvok: 'Германий хотели назвать «нептуний»: как планету Нептун, найденную сперва на бумаге'
+    stranica: 'химфак МГУ, «Германий: история открытия»'
+    href: https://www.chem.msu.ru/rus/history/element/Ge.html
+    pometka: документ
+    id: neptuniy
+    istochnik: ge
+    dlya_voprosa: true
+    otvet: нептуний
+    otvet_edinstvennyj: true
+  - n: 10
+    sravnenie: net
+    src: 'Источник: «Коммерсантъ», статья о технеции — kommersant.ru'
+    otryvok: Клетку экамарганца не смогла заполнить природа — элемент пришлось сделать в циклотроне
+    stranica: «Коммерсантъ», статья о технеции
+    href: https://www.kommersant.ru/doc/5434539
+    pometka: документ
+    id: ciklotron
+    istochnik: ko
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про элементы Менделеева
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: И. В. Петрянов, Д. Н. Трифонов, «Великий закон», 1976 — chemlib.ru'
+    otryvok: Экамарганец «открывали» в Японии и Германии, давали имена — и всё оказалось ошибкой
+    stranica: И. В. Петрянов, Д. Н. Трифонов, «Великий закон», 1976
+    href: http://chemlib.ru/books/item/f00/s00/z0000016/st005.shtml
+    pometka: документ
+    id: lozhnye-otkrytiya
+    istochnik: pt
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: К. Хоффман, «Можно ли сделать золото» — element114.narod.ru'
+    otryvok: Менделевий нашли всего по 17 атомам — и назвали в честь того, кто таблицу придумал
+    stranica: К. Хоффман, «Можно ли сделать золото»
+    href: https://element114.narod.ru/Education/chem2-57.html
+    pometka: документ
+    id: 17-atomov
+    istochnik: hf
+    dlya_voprosa: true
+    otvet: '17'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    src: 'Источник: «Популярная библиотека химических элементов», n-t.ru — n-t.ru'
+    otryvok: 'О законе века объявил не автор: Менделеев в тот день уехал проверять сыроварни'
+    stranica: «Популярная библиотека химических элементов», n-t.ru
+    href: https://n-t.ru/ri/ps/pb032.htm
+    pometka: документ
+    id: syrovarni
+    istochnik: nt
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
+    otryvok: 'Немец Винклер решил, что нашёл родню сурьмы, — спор кончился признанием: это экасилиций'
+    stranica: 'химфак МГУ, «Германий: история открытия»'
+    href: https://www.chem.msu.ru/rus/history/element/Ge.html
+    pometka: документ
+    id: vinkler
+    istochnik: ge
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-08-goskatalog-26067347.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.3
+        w: 0.6
+        h: 0.5
+      width: 669
+      height: 800
+      alt: 'Обложка брошюры: Менделеев за столом пишет пером среди книжных полок'
+      data_source: https://goskatalog.ru/portal/#/collections?id=26067347
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-заповедник Д. И. Менделеева и А. А. Блока · Госкаталог
+      podpis: Брошюра «Таблица Менделеева», издательство Ленинградского университета, 1953. Хранит Музей-заповедник Д. И. Менделеева и А. А. Блока.
+      credit: 'Хранится: Музей-заповедник Д. И. Менделеева и А. А. Блока. Госкаталог музейного фонда РФ, № 26067347.'
+      hint: Брошюра · Менделеев за работой
+      vid: dokument
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1953'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1953'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=26067347
+      nomer_predmeta: '26067347'
+      nomer_snimka: net
+      hranitel: Музей-заповедник Д. И. Менделеева и А. А. Блока
+      podlinnik:
+        gde: Музей-заповедник Д. И. Менделеева и А. А. Блока
+        otkuda: https://goskatalog.ru/portal/#/collections?id=26067347
+      svyashchennoe: false
+      podpis_chto: Брошюра «Таблица Менделеева», издательство Ленинградского университета
+      podpis_gde: Солнечногорск, Боблово
+      podpis_kogda: '1953'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: химфак МГУ, «Скандий: история открытия» — chem.msu.ru'
+    otryvok: Для скандия Менделеев заранее расписал вес, формулы окисла и хлорида, соли — сбылось через 8 лет
+    stranica: 'химфак МГУ, «Скандий: история открытия»'
+    href: https://www.chem.msu.ru/rus/history/element/Sc.html
+    pometka: документ
+    id: skandiy-8-let
+    istochnik: sc
+    dlya_voprosa: true
+    otvet: 8 лет
+    otvet_edinstvennyj: true
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Пустые клетки — найденные элементы
+  pravilo_ru: 'Что сделать сейчас: выбери найденный элемент и нажми на клетку, которую Менделеев для него оставил.'
+  kak_igrat:
+    zachem: Менделеев дал пустым клеткам имена с приставкой «эка» — потом их нашли и назвали по-новому.
+    shagi:
+    - Выбери элемент — кнопка загорится золотом.
+    - Нажми на пустую клетку Менделеева. Верный выбор загорится зелёным.
+    - Расставь все три — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все три элемента на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: ekaal
+      nazvanie: Экаалюминий
+      verno_ru: 'Менделеев предсказал даже прибор: экаалюминий найдут спектроскопом. Так его и нашли.'
+    - kod: ekasi
+      nazvanie: Экасилиций
+      verno_ru: 'Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32.'
+    - kod: ekabor
+      nazvanie: Экабор
+      verno_ru: Швед Нильсон спорил с Менделеевым о бериллии — и сам же нашёл предсказанный им экабор.
+    podpisi:
+    - kod: ga
+      tekst: Галлий
+      mesto: ekaal
+      mimo_ru: Галлий нашли спектроскопом — ищи клетку под алюминием.
+    - kod: ge
+      tekst: Германий
+      mesto: ekasi
+      mimo_ru: Германий весит 72,32 — ищи клетку под кремнием.
+    - kod: sc
+      tekst: Скандий
+      mesto: ekabor
+      mimo_ru: Скандий нашёл Нильсон — ищи клетку под бором.
+    vyberi_ru: Сначала выбери элемент, потом клетку.
+    mimo_ru: Не та клетка — попробуй другую.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все три клетки заполнены — галлий, германий и скандий нашли ровно такими, как описал Менделеев.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: галлий — экаалюминий, германий — экасилиций, скандий — экабор.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Менделеев первым по закону предсказал элементы, которых никто не видел, — и их нашли ровно такими.'
+  net: 'Где граница: Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Санкт-Петербург
+    - Менделеев составил таблицу с пустыми клетками
+    - '1869'
+  - - Франция
+    - найден галлий — экаалюминий Менделеева
+    - '1875'
+  - - Швеция
+    - найден скандий — экабор Менделеева
+    - '1879'
+  - - Германия
+    - найден германий — экасилиций Менделеева
+    - '1886'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 72; 9; нептуний; 17 атомов; спектроскопом.'
+  ball: 8
+  voprosy:
+  - q: Какой вес экасилиция предсказал Менделеев?
+    o:
+    - '12'
+    - '72'
+    - '150'
+    a: 1
+    e: 'Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32.'
+  - q: Какой вес бериллия поставил Менделеев вместо 13,5?
+    o:
+    - '9'
+    - 13,5
+    - '27'
+    a: 0
+    e: Все химики писали вес бериллия 13,5. Менделеев зачеркнул и поставил 9 — и мир исправился.
+  - q: Как хотели назвать германий?
+    o:
+    - марсий
+    - нептуний
+    - уралий
+    a: 1
+    e: 'Германий хотели назвать «нептуний»: как планету Нептун, найденную сперва на бумаге.'
+  - q: По скольким атомам нашли менделевий?
+    o:
+    - по 17
+    - по тысяче
+    - по миллиону
+    a: 0
+    e: Менделевий нашли всего по 17 атомам — и назвали в честь того, кто таблицу придумал.
+  - q: Каким прибором, по Менделееву, найдут экаалюминий?
+    o:
+    - весами
+    - спектроскопом
+    - телескопом
+    a: 1
+    e: 'Менделеев предсказал даже прибор: экаалюминий найдут спектроскопом. Так его и нашли.'
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал таблицы Менделеева.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-08-goskatalog-8366315.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.2
+    w: 0.6
+    h: 0.6
+  width: 800
+  height: 561
+  alt: 'Цветная таблица элементов: клетки с символами и весами, справа портрет Менделеева'
+  data_source: https://goskatalog.ru/portal/#/collections?id=8366315
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей политической истории России · Госкаталог
+  podpis: Таблица «Периодическая система элементов Д. И. Менделеева», изданная к X Менделеевскому съезду, 1969. Хранит Государственный музей политической истории России.
+  credit: 'Хранится: Государственный музей политической истории России. Госкаталог музейного фонда РФ, № 8366315.'
+  hint: Таблица · издание 1969 года
+  vid: plakat
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1969 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1969'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=8366315
+  nomer_predmeta: '8366315'
+  nomer_snimka: net
+  hranitel: Государственный музей политической истории России
+  podlinnik:
+    gde: Государственный музей политической истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=8366315
+  svyashchennoe: false
+  podpis_chto: Таблица «Периодическая система элементов Д. И. Менделеева», изданная к X Менделеевскому съезду
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: '1969'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-08-goskatalog-26067347.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.3
+    w: 0.6
+    h: 0.5
+  width: 669
+  height: 800
+  alt: 'Обложка брошюры: Менделеев за столом пишет пером среди книжных полок'
+  data_source: https://goskatalog.ru/portal/#/collections?id=26067347
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-заповедник Д. И. Менделеева и А. А. Блока · Госкаталог
+  podpis: Брошюра «Таблица Менделеева», издательство Ленинградского университета, 1953. Хранит Музей-заповедник Д. И. Менделеева и А. А. Блока.
+  credit: 'Хранится: Музей-заповедник Д. И. Менделеева и А. А. Блока. Госкаталог музейного фонда РФ, № 26067347.'
+  hint: Брошюра · Менделеев за работой
+  vid: dokument
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1953'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1953'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=26067347
+  nomer_predmeta: '26067347'
+  nomer_snimka: net
+  hranitel: Музей-заповедник Д. И. Менделеева и А. А. Блока
+  podlinnik:
+    gde: Музей-заповедник Д. И. Менделеева и А. А. Блока
+    otkuda: https://goskatalog.ru/portal/#/collections?id=26067347
+  svyashchennoe: false
+  podpis_chto: Брошюра «Таблица Менделеева», издательство Ленинградского университета
+  podpis_gde: Солнечногорск, Боблово
+  podpis_kogda: '1953'
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://hij.ru/read/27523/
+  title: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6
+  note: факты дня
+- href: https://www.chem.msu.ru/rus/history/element/Ga.html
+  title: 'химфак МГУ, «Галлий: история открытия»'
+  note: факты дня
+- href: https://www.chem.msu.ru/rus/history/element/Ge.html
+  title: 'химфак МГУ, «Германий: история открытия»'
+  note: факты дня
+- href: https://www.chem.msu.ru/rus/history/element/Sc.html
+  title: 'химфак МГУ, «Скандий: история открытия»'
+  note: факты дня
+- href: https://www.chem.msu.ru/rus/history/element/Md.html
+  title: 'химфак МГУ, «Менделевий: история открытия»'
+  note: факты дня
+- href: https://www.alhimik.ru/read/venec01.html
+  title: alhimik.ru, статья о галлии и предсказаниях Менделеева
+  note: факты дня
+- href: https://khimiya.narod.ru/be.htm
+  title: khimiya.narod.ru, статья «Бериллий»
+  note: факты дня
+- href: http://chemlib.ru/books/item/f00/s00/z0000016/st005.shtml
+  title: И. В. Петрянов, Д. Н. Трифонов, «Великий закон», 1976
+  note: факты дня
+- href: https://www.kommersant.ru/doc/5434539
+  title: «Коммерсантъ», статья о технеции
+  note: факты дня
+- href: https://element114.narod.ru/Education/chem2-57.html
+  title: К. Хоффман, «Можно ли сделать золото»
+  note: факты дня
+- href: https://www.nkj.ru/archive/articles/35498/
+  title: «Наука и жизнь», статья о Менделееве и открытии закона
+  note: факты дня
+- href: https://n-t.ru/ri/ps/pb032.htm
+  title: «Популярная библиотека химических элементов», n-t.ru
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=8366315
+  title: 'Госкаталог музейного фонда РФ: таблица Менделеева 1969 года, Музей политической истории России'
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-09/
+  title: 9 февраля — Солнце и эпидемии
+  hook: Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры
+  main: true
+- lbl: Предыдущий день
+  href: den/02-07/
+  title: 7 февраля — Троичная ЭВМ «Сетунь»
+  hook: Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Мастер таблицы Менделеева
+  - - 70
+    - Химик Русского химического общества
+  - - 40
+    - Студент Петербургского университета
+  - - 0
+    - Гость дня
+return:
+  q: Какой вес германия предсказал Менделеев?
+  a: 'Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32.'
+  src: химфак МГУ, chem.msu.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-08-mendeleev:claim-1869
+  ours:
+    kind: publication
+    title: Л. М. Сулименко, «Галлий»
+    date: '1970'
+    holder: «Химия и жизнь»
+    source_url: https://hij.ru/read/27523/
+podskazki_igry:
+- Галлий нашли по спектру — он под алюминием
+- Германий весит 72 — он под кремнием
+- Скандий нашёл швед Нильсон — он под бором
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya: mesto:sankt-peterburg
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Элементы стоят по росту атомного веса
+- Похожие по свойствам элементы оказываются в одном столбце
+- Там, где ряд ломается, Менделеев оставлял пустую клетку
+- По соседям клетки он рассчитывал вес и свойства ненайденного элемента
+data_uslovnaya: 8 февраля — день музея; таблицу Менделеев составил 17 февраля (1 марта) 1869 года.
