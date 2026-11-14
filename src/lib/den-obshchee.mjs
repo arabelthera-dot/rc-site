@@ -9,7 +9,7 @@ import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
 import { polyaKartinki, polyaFakta, polyaDnya, status } from './forma-dnya.mjs';
 import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
-import { faktyIzUtverzhdeno } from './fakty-iz-utverzhdeno.mjs';
+import { faktyIzUtverzhdeno, S_DNYA } from './fakty-iz-utverzhdeno.mjs';
 import { stroka } from './yazyki.mjs';
 import { izmerit, razmeryIzFajla } from './kartinki-fajly.mjs';
 
@@ -161,8 +161,11 @@ const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message
 // аудиогид (файл есть, ≥30 с), ролик, у каждого источника ссылка (долг — src/data/dyry-dolg.json); portrety — портретов ≤ трети кадров. dolgKadrov / dolgVTekste — { 'ММ-ДД': N }: снимок долга, ниже N нельзя.
 export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portrety = false } = {}) {
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) iss(ctx, ['quiz', 'voprosy', i, 'a'], 'номер ответа вне списка'); });
-  if (d.adres !== 'den') return;
-  if (d.status === 'zagotovka') iss(ctx, ['status'], 'заготовка (status: zagotovka) на адрес den не идёт — сначала полный состав (Р676)');
+  // Р698 (09.11.2026): у дня с S_DNYA (02-01) страница проверяется целиком сразу, как только она не заготовка, — а не в конце,
+  // когда ей ставят adres: den вместе с роликом и аудиогидом. Ждут adres: den только ролик и аудиогид.
+  const den = d.adres === 'den';
+  if (!den && !(d.key >= S_DNYA && d.status !== 'zagotovka')) return;
+  if (den && d.status === 'zagotovka') iss(ctx, ['status'], 'заготовка (status: zagotovka) на адрес den не идёт — сначала полный состав (Р676)');
   if (!d.head.sobytie || !d.head.god) iss(ctx, ['head'], 'на адресе den нужны head.sobytie и head.god (заголовок вкладки)');
   // Вид 13 янв. (Р302): обложка и кадры обязательны.
   if (!d.oblozhka) iss(ctx, ['oblozhka'], 'на адресе den нужна обложка (oblozhka), как у 13 янв.');
@@ -193,7 +196,7 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portr
   else if (dolgT !== undefined && vTekste.size >= 1)
     console.log(`::warning::${d.muzei}/${d.key}: кадр в тексте есть — снять из долга «в тексте» (src/data/kadry-dolg.json)`);
   // ЗАМОК аудиогида (r602): есть, файл лежит в public и не короче AUDIO_MIN_SEK.
-  if (!d.audioguide) iss(ctx, ['audioguide'], 'на адресе den нужен аудиогид (audioguide)');
+  if (!d.audioguide) { if (den) iss(ctx, ['audioguide'], 'на адресе den нужен аудиогид (audioguide)'); }
   else {
     const f = failPublic(d.muzei, d.audioguide.audioSrc);
     if (!fs.existsSync(f)) iss(ctx, ['audioguide', 'audioSrc'], `нет файла аудиогида ${f}`);
@@ -204,7 +207,7 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portr
     }
   }
   // ЗАМОК ролика (r602): на живом адресе ролик обязателен.
-  if (!d.video) iss(ctx, ['video'], 'на адресе den нужен ролик (video)');
+  if (den && !d.video) iss(ctx, ['video'], 'на адресе den нужен ролик (video)');
   // ЗАМОК источников (Р550): у каждого пункта sources есть ссылка — href или <a href="http…"> в html. Долг — снимок
   // src/data/dyry-dolg.json на 05.11.2026: пунктов без ссылки не больше, чем в долге; стало меньше — снять строку.
   const bez = d.sources.filter((s) => !istochnikSoSsylkoy(s)), dolgI = DOLG_DYR['istochnik-bez-ssylki']?.[d.muzei]?.[d.key] ?? 0;

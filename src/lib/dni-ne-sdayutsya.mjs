@@ -3,6 +3,7 @@
 // полей igra и pervenstvo нет (strict), музей не про первенство. vizual — по имени: разметка src/data/vizual/ne-sdayutsya/<imya>.html,
 // скрипт public/muzei/ne-sdayutsya/vizual/<imya>.js; нет файла — сборка красная; нет vizual — нет блока (заглушек нет).
 import fs from 'node:fs';
+import { S_DNYA } from './fakty-iz-utverzhdeno.mjs';
 import { z } from 'astro/zod';
 import { str, obshchiePolya, zamokObshchiy } from './den-obshchee.mjs';
 
@@ -19,8 +20,10 @@ export const skhemaNeSdayutsya = z.object({
     const html = `src/data/vizual/ne-sdayutsya/${d.vizual.imya}.html`, js = `public/muzei/ne-sdayutsya/vizual/${d.vizual.imya}.js`;
     for (const f of [html, js]) if (!fs.existsSync(f)) ctx.addIssue({ code: 'custom', path: ['vizual', 'imya'], message: `визуализации ${d.vizual.imya} нет: ${f}` });
   }
-  // ЗАМОК (Р166/Р176): на живой адрес идут только утверждённые Сергеем факты.
-  if (d.adres === 'den') [d.fakty ?? []].flat().flatMap((b) => b.udary).forEach((u, i) => {
+  // ЗАМОК (Р166/Р176): на живой адрес идут только утверждённые Сергеем факты. Р698: у дня с S_DNYA факты берутся из копии
+  // утверждённого (src/data/utverzhdeno) — копия и есть отметка «утверждён», ручная пометка utverzhden у факта не нужна.
+  const izKopii = d.key >= S_DNYA && fs.existsSync(`src/data/utverzhdeno/ne-sdayutsya/${d.key}.json`);
+  if (d.adres === 'den' && !izKopii) [d.fakty ?? []].flat().flatMap((b) => b.udary).forEach((u, i) => {
     if (!u.utverzhden) ctx.addIssue({ code: 'custom', path: ['fakty', 'udary', i, 'utverzhden'], message: `ЗАМОК (Р166/Р176): факт «${u.summary.replace(/<[^>]+>/g, '').slice(0, 60)}» не утверждён Сергеем (utverzhden) — неутверждённые факты на живой адрес не идут` });
   });
   // ЗАМОК (Р436): вместо игры — визуализация; слова «игра» в карточке нет. Утверждённые факты (слово Сергея, «за игрой в казино»)
