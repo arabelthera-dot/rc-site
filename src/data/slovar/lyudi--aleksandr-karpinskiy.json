@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Александр Карпинский",
+  "pol": "m",
+  "kratko": "Геолог, первый выборный президент Академии наук.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n85825734",
+    "ssylka": "https://id.loc.gov/authorities/names/n85825734.html",
+    "zagolovok": "Karpinskiĭ, A. P. (Aleksandr Petrovich), 1846-1936"
+  },
+  "latinica": "Aleksandr Karpinskii",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1846",
+    "smert": "1936"
+  }
+}

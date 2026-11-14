@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Валентин Войно-Ясенецкий (святитель Лука)",
+  "pol": "m",
+  "kratko": "Хирург и архиепископ, автор «Очерков гнойной хирургии».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80061885",
+    "ssylka": "https://id.loc.gov/authorities/names/n80061885.html",
+    "zagolovok": "Voĭno-I︠A︡senet︠s︡kiĭ, Valentin Feliksovich, 1877-1961"
+  },
+  "latinica": "Valentin Voino-Iasenetskii",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1877",
+    "smert": "1961-06-11"
+  }
+}

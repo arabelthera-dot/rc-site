@@ -1,0 +1,27 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Севастополь",
+  "kratko": "Город-крепость Черноморского флота.",
+  "koordinaty": {
+    "shirota": 44.605,
+    "dolgota": 33.522,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/3030976"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Севастополь",
+      "s": "1784",
+      "po": "1797"
+    },
+    {
+      "nazvanie": "Ахтиар",
+      "s": "1797",
+      "po": "1826"
+    },
+    {
+      "nazvanie": "Севастополь",
+      "s": "1826"
+    }
+  ]
+}

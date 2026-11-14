@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Фёдор Ушаков",
+  "pol": "m",
+  "kratko": "Флотоводец, адмирал Черноморского флота.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82233609",
+    "ssylka": "https://id.loc.gov/authorities/names/n82233609.html",
+    "zagolovok": "Ushakov, Fedor Fedorovich, 1745-1817"
+  },
+  "latinica": "Fedor Ushakov",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1745",
+    "smert": "1817"
+  }
+}

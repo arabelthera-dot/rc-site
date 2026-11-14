@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Сильвестр Щедрин",
+  "pol": "m",
+  "kratko": "Пейзажист, писал Италию с натуры.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81103148",
+    "ssylka": "https://id.loc.gov/authorities/names/n81103148.html",
+    "zagolovok": "Shchedrin, Silʹvestr Fedoseevich, 1791-1830"
+  },
+  "latinica": "Silvestr Shchedrin",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1791",
+    "smert": "1830"
+  }
+}

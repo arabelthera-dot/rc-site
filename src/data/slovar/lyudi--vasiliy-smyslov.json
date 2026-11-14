@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Смыслов",
+  "pol": "m",
+  "kratko": "Шахматист, чемпион мира.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81149880",
+    "ssylka": "https://id.loc.gov/authorities/names/n81149880.html",
+    "zagolovok": "Smyslov, V. V. (Vasiliĭ Vasilʹevich), 1921-2010"
+  },
+  "latinica": "Vasiliy Smyslov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1921-03-24",
+    "smert": "2010-03-27"
+  }
+}

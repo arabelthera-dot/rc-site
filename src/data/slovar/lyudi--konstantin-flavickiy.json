@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Константин Флавицкий",
+  "pol": "m",
+  "kratko": "Живописец, автор «Княжны Таракановой».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n2024046738",
+    "ssylka": "https://id.loc.gov/authorities/names/n2024046738.html",
+    "zagolovok": "Flavit︠s︡kiĭ, Konstantin Dmitrievich, 1830-1866"
+  },
+  "latinica": "Konstantin Flavitskii",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1830",
+    "smert": "1866"
+  }
+}

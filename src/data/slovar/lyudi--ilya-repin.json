@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Илья Репин",
+  "pol": "m",
+  "kratko": "Живописец, автор «Бурлаков на Волге» и «Запорожцев».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n79075231",
+    "ssylka": "https://id.loc.gov/authorities/names/n79075231.html",
+    "zagolovok": "Repin, Ilʹi︠a︡ Efimovich, 1844-1930"
+  },
+  "latinica": "Ilya Repin",
+  "latinica_iz": "loc-istochnik",
+  "gody": {
+    "rozhdenie": "1844",
+    "smert": "1930"
+  }
+}

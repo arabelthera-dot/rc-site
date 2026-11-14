@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Иван Билибин",
+  "pol": "m",
+  "kratko": "Художник-иллюстратор русских сказок и былин.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n50018017",
+    "ssylka": "https://id.loc.gov/authorities/names/n50018017.html",
+    "zagolovok": "Bilibin, Ivan I︠A︡kovlevich, 1876-1942"
+  },
+  "latinica": "Ivan Bilibin",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1876",
+    "smert": "1942"
+  }
+}

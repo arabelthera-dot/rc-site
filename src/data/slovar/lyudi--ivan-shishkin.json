@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Иван Шишкин",
+  "pol": "m",
+  "kratko": "Пейзажист, певец русского леса.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82119235",
+    "ssylka": "https://id.loc.gov/authorities/names/n82119235.html",
+    "zagolovok": "Shishkin, Ivan Ivanovich, 1832-1898"
+  },
+  "latinica": "Ivan Shishkin",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1832",
+    "smert": "1898"
+  }
+}

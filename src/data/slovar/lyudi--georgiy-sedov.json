@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Георгий Седов",
+  "pol": "m",
+  "kratko": "Полярный исследователь, шёл к Северному полюсу.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n84047106",
+    "ssylka": "https://id.loc.gov/authorities/names/n84047106.html",
+    "zagolovok": "Si︠e︡dov, G. I︠A︡. (Georgīĭ I︠A︡kovlevich), 1877-1914"
+  },
+  "latinica": "Georgiy Siedov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1877",
+    "smert": "1914"
+  }
+}

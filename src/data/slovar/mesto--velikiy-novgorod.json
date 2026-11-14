@@ -1,0 +1,21 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Великий Новгород",
+  "kratko": "Древний город на Волхове.",
+  "koordinaty": {
+    "shirota": 58.561,
+    "dolgota": 31.281,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/3396084"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Новгород",
+      "po": "1999"
+    },
+    {
+      "nazvanie": "Великий Новгород",
+      "s": "1999"
+    }
+  ]
+}

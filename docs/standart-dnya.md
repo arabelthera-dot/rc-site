@@ -38,7 +38,7 @@
 | 27 | Только «Русские не сдаются»: символика на каждой картинке проверена человеком | `simvolika_proverena` | `simvolika_proverena: true` |
 | 28 | Где подлинник — у каждой картинки | `podlinnik` (`gde`, `otkuda`) | `gde: Военно-медицинский музей` |
 | 29 | Святыня ли — у каждой картинки (`false` тоже ответ); со святыней игры у дня нет | `svyashchennoe` | `svyashchennoe: false` |
-| 30 | Словарь людей, мест, народов, тем дня — id из `src/data/slovar.json` | `slovar` | `[lyudi:behterev]` |
+| 30 | Словарь людей, мест, народов, тем дня — id из `src/data/slovar/` | `slovar` | `[lyudi:behterev]` |
 | 40 | Чистый текст: нет HTML, `**`, `&…;` ни в одном текстовом поле (кроме `skripty` и `head.ld`) | все строки карточки | `<b>Что сделано:</b>` — нельзя |
 | 76 | Только изобретения: игра данными — механика и данные по её схеме | `igra.mehanika`, `igra.zagolovok`, `igra.pravilo_ru`, `igra.dannye` | `mehanika: <имя из src/lib/igry-mehaniki.ts>` |
 | 88 | У механики есть движок данными (`dvizhok`, схема `dannye`) | `src/lib/igry-mehaniki.ts` | — |

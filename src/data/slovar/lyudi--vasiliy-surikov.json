@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Суриков",
+  "pol": "m",
+  "kratko": "Исторический живописец, автор «Боярыни Морозовой».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80122702",
+    "ssylka": "https://id.loc.gov/authorities/names/n80122702.html",
+    "zagolovok": "Surikov, Vasiliĭ Ivanovich, 1848-1916"
+  },
+  "latinica": "Vasilii Surikov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1848",
+    "smert": "1916"
+  }
+}
