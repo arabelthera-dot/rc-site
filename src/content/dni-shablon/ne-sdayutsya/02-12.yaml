@@ -93,6 +93,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/12feb-voloshina
+  format: horizontal
+  pole: nesdayutsya/12feb-voloshina:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: 'Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»'
+  poster: /muzei/ne-sdayutsya/video/day-12feb-voloshina-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-12feb-voloshina.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/ns12feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Вера Волошина
