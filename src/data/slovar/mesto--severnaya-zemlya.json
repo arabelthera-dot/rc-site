@@ -1,0 +1,22 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Северная Земля",
+  "kratko": "Архипелаг, открытый в 1913 году.",
+  "koordinaty": {
+    "shirota": 79.469,
+    "dolgota": 97.105,
+    "tochka": "середина архипелага",
+    "otkuda": "https://www.openstreetmap.org/relation/3718999"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Земля Императора Николая II",
+      "s": "1913",
+      "po": "1926"
+    },
+    {
+      "nazvanie": "Северная Земля",
+      "s": "1926"
+    }
+  ]
+}

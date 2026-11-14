@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Кузьма Петров-Водкин",
+  "pol": "m",
+  "kratko": "Живописец, автор «Купания красного коня».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82082455",
+    "ssylka": "https://id.loc.gov/authorities/names/n82082455.html",
+    "zagolovok": "Petrov-Vodkin, Kuzʹma Sergeevich, 1878-1939"
+  },
+  "latinica": "Kuzma Petrov-Vodkin",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1878",
+    "smert": "1939"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Александр Пушкин",
+  "pol": "m",
+  "kratko": "Поэт, создатель современного русского литературного языка.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80036579",
+    "ssylka": "https://id.loc.gov/authorities/names/n80036579.html",
+    "zagolovok": "Pushkin, Aleksandr Sergeevich, 1799-1837"
+  },
+  "latinica": "Aleksandr Pushkin",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1799",
+    "smert": "1837"
+  }
+}

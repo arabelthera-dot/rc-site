@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Владимир Боровиковский",
+  "pol": "m",
+  "kratko": "Портретист XVIII века, автор портрета Лопухиной.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80104210",
+    "ssylka": "https://id.loc.gov/authorities/names/n80104210.html",
+    "zagolovok": "Borovikovskiĭ, Vladimir Lukich, 1757-1825"
+  },
+  "latinica": "Vladimir Borovikovskii",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1757",
+    "smert": "1825"
+  }
+}

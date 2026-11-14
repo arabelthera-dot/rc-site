@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Казань",
+  "kratko": "Столица Татарстана.",
+  "koordinaty": {
+    "shirota": 55.795,
+    "dolgota": 49.112,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/3437391"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Казань"
+    }
+  ]
+}

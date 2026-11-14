@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Максимов",
+  "pol": "m",
+  "kratko": "Художник-передвижник, писал деревенскую жизнь.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "no91021236",
+    "ssylka": "https://id.loc.gov/authorities/names/no91021236.html",
+    "zagolovok": "Maksimov, Vasiliĭ Maksimovich, 1844-1911"
+  },
+  "latinica": "Vasilii Maksimov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1844",
+    "smert": "1911"
+  }
+}

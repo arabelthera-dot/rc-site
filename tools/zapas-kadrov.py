@@ -26,6 +26,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'scripts'))
+sys.path.insert(0, str(ROOT / 'tools'))
+import slovar_dannye  # noqa: E402 — словарь: файл на запись (Р776)
 POLE = 'kandidaty_kadrov'
 NADO, POTOLOK = 3, 5
 FAYL = re.compile(r'^https?://\S+\.(?:jpe?g|png|tiff?|webp)$|/muzfo-imaginator/rest/images/', re.I)
@@ -128,7 +130,7 @@ def main():
             if k < NADO:
                 print(f'  {p.stem}: {k}')
         return
-    slovar = chitat(ROOT / 'src/data/slovar.json')
+    slovar = slovar_dannye.chitat()
     bazy = {b['id']: b for b in chitat(ROOT / 'src/data/spravochniki/bazy.json')['razresheny']}
     tablica = chitat(a.tablica) if Path(a.tablica).is_file() else None
     for p in puti:

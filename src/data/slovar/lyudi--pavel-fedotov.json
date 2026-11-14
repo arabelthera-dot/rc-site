@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Павел Федотов",
+  "pol": "m",
+  "kratko": "Живописец, автор «Сватовства майора».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n85208182",
+    "ssylka": "https://id.loc.gov/authorities/names/n85208182.html",
+    "zagolovok": "Fedotov, Pavel Andreevich, 1815-1852"
+  },
+  "latinica": "Pavel Fedotov",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1815",
+    "smert": "1852"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Сергей Прокудин-Горский",
+  "pol": "m",
+  "kratko": "Фотограф, снимал Россию в цвете в начале XX века.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80080272",
+    "ssylka": "https://id.loc.gov/authorities/names/n80080272.html",
+    "zagolovok": "Prokudin-Gorskiĭ, Sergeĭ Mikhaĭlovich, 1863-1944"
+  },
+  "latinica": "Sergei Prokudin-Gorsky",
+  "latinica_iz": "loc-variant",
+  "gody": {
+    "rozhdenie": "1863",
+    "smert": "1944-09-27"
+  }
+}

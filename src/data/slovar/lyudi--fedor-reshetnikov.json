@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Фёдор Решетников",
+  "pol": "m",
+  "kratko": "Советский живописец, автор «Опять двойка».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82210284",
+    "ssylka": "https://id.loc.gov/authorities/names/n82210284.html",
+    "zagolovok": "Reshetnikov, Fedor Pavlovich, 1906-1988"
+  },
+  "latinica": "Fedor Reshetnikov",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1906",
+    "smert": "1988"
+  }
+}

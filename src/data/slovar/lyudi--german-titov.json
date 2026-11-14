@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Герман Титов",
+  "pol": "m",
+  "kratko": "Лётчик-космонавт, первым провёл в космосе больше суток.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n83149291",
+    "ssylka": "https://id.loc.gov/authorities/names/n83149291.html",
+    "zagolovok": "Titov, G. S. (German Stepanovich), 1935-2000"
+  },
+  "latinica": "German Titov",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1935",
+    "smert": "2000"
+  }
+}

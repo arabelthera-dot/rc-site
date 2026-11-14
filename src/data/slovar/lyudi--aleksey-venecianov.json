@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Алексей Венецианов",
+  "pol": "m",
+  "kratko": "Живописец, первым сделал крестьянскую жизнь главным сюжетом картины.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81096270",
+    "ssylka": "https://id.loc.gov/authorities/names/n81096270.html",
+    "zagolovok": "Venet︠s︡ianov, Alekseĭ Gavrilovich, 1780-1847"
+  },
+  "latinica": "Aleksei Venetsianov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1780",
+    "smert": "1847"
+  }
+}

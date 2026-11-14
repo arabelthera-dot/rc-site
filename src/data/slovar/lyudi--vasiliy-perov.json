@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Перов",
+  "pol": "m",
+  "kratko": "Художник-передвижник, мастер жанровой картины и портрета.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n87939862",
+    "ssylka": "https://id.loc.gov/authorities/names/n87939862.html",
+    "zagolovok": "Perov, Vasiliĭ Grigorʹevich, 1834-1882"
+  },
+  "latinica": "Vasilii Perov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1834",
+    "smert": "1882"
+  }
+}
