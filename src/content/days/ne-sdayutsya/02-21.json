@@ -8,5 +8,70 @@
   "gist": "старостиха возглавила партизанский отряд крестьян против наполеоновских войск.",
   "slovar": [
     "lyudi:vasilisa-kozhina"
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Василиса Кожина",
+      "Кожина"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Монета  2 рубля \"Кожина Василиса\".",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7701403",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3729463",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7580144 (карточка 7701403, инв. —) | 2012 | хранится: ГБУК СК \"Пятигорский музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Василиса Кожина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Монета \"Василиса Кожина\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8726563",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/5099825",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8616874 (карточка 8726563, инв. Н 94) | 2012 | хранится: МБУК \"Историко-краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Василиса Кожина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Монета памятная. Василиса Кожина. 2 рубля. Серия: Полководцы и герои Отечественной войны 1",
+        "avtor": "Молостов А. И. (Скульптор),  Щаблыкин A. Д. (Художник) , Бакланов А. В. (Художник)",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=9270785",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/5806168",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 9156251 (карточка 9270785, инв. Н-1152) | 2012 г. | хранится: МБУ \"Музей истории и этнографии\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Василиса Кожина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Монета. 2 рубля. Банк России. 2012. \"Василиса Кожина\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10457015",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/41385734",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10907730 (карточка 10457015, инв. НМ ) | 2012 г. | хранится: ГБУК КК \"КГИАМЗ им. Е.Д. Фелицына\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Василиса Кожина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Монета памятная 2 рубля 2012г. «Организатор партизанского движения Василиса Кожина». Истор",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10961203",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8265405",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10842788 (карточка 10961203, инв. —) | 2012 г. | хранится: ОБУК \"Курский областной краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Василиса Кожина"
+      }
+    ]
+  }
 }

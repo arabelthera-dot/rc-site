@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-21",
   "title": "Медицинская микробиология, первая в России станция прививок от бешенства",
-  "hook": "Гамалея привёз от Пастера прививку от бешенства и открыл в Одессе станцию, куда везли укушенных со всей империи"
+  "hook": "Гамалея привёз от Пастера прививку от бешенства и открыл в Одессе станцию, куда везли укушенных со всей империи",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Медицинская микробиология, станция прививок от бешенства",
+      "микробиология"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Журнал. Мiкробiологiчный журнал= Микробиологический журнал. - т. XXIII, вып. 2, 1961. - Ки",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8731517",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/5108615",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8621633 (карточка 8731517, инв. К9 6024) | 1961 год | хранится: ГМИК им. К.Э. Циолковского | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "микробиология"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Значок \"Отличник микробиологической промышленности СССР\".",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8831157",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/5225661",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8716621 (карточка 8831157, инв. —) | 1966–1985 гг. | хранится: ОГБУК \"Государственный исторический музей Южного Урала\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "микробиология"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Портрет заслуженного деятеля науки, почетного академика, микробиолога Н. Ф. Гамалея.",
+        "avtor": "Художник П. Д. Корин.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=18539158",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/18740137",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 18400974 (карточка 18539158, инв. —) | 1964 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "микробиология"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Портрет заслуженного деятеля науки, почетного академика, микробиолога Н. Ф. Гамалея.",
+        "avtor": "Художник П. Д. Корин.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=18539204",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/18740183",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 18400952 (карточка 18539204, инв. —) | 1964 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "микробиология"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Проблемы технической микробиологии. Отд. отт. из: Микробиологические процессы и производст",
+        "avtor": "Кирхенштейн А.М.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19948248",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20657186",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19814507 (карточка 19948248, инв. —) | 1964 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "микробиология"
+      }
+    ]
+  }
 }

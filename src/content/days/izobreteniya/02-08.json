@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-08",
   "title": "Периодическая система элементов",
-  "hook": "Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими"
+  "hook": "Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Периодическая система элементов",
+      "Периодическая"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Брошюра:Фельдт В.В.Периодическая система химических элементов:Пособие.-3-е изд.,доп. и исп",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7181577",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3128990",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 6986935 (карточка 7181577, инв. —) | 1936 год | хранится: Политехнический музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Периодическая система элементов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Открытка почтовая ч/б \"Периодическая система элементов Д.И. Менделеева\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7294358",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3216751",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7136829 (карточка 7294358, инв. —) | 1906-1910 гг. | хранится: Политехнический музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Периодическая система элементов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Плакат \"Периодическая система химических элементов Д.И. Менделеева\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10568844",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7724862",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10456707 (карточка 10568844, инв. 1999) | 1970-1990-е гг. | хранится: МУК \"МИКС\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Периодическая система элементов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Зо́лото (Au от лат. Aurum)— элемент 11 группы , шестого периода периодической системы хими",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=32179693",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/37745903",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 31994170 (карточка 32179693, инв.  ) | - | хранится: ГБУК РА НМ РА | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Периодическая система элементов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Грамота. Соловьева К.А. за активное участие в пропаганде и распространении периодической п",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8839969",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14177638",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8724776 (карточка 8839969, инв. —) | 03.02.1969 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Периодическая"
+      }
+    ]
+  }
 }

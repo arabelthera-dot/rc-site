@@ -8,5 +8,70 @@
   "gist": "хирург и архиепископ, не отказался от веры, оперировал до конца жизни.",
   "slovar": [
     "lyudi:valentin-voyno-yasenetskiy"
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Валентин Войно-Ясенецкий (святитель Лука)",
+      "святитель Лука"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Святитель Лука Крымский (в миру Валентин Феликсович Войно-Ясенецкий). Икона",
+        "avtor": "Пивоварова Ирина Владимировна",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=38669796",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/62357082",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 38446126 (карточка 38669796, инв. ХОФ-7618) | 2010-е гг. | хранится: Военно-медицинский музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Валентин Войно-Ясенецкий (святитель Лука)"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Буклет \"Святитель Лука (В.Ф. Войно-Ясенецкий)\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=9159927",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/5650087",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 9046784 (карточка 9159927, инв. Д-19495) | 2005 г. | хранится: ГБУ РК \"ЦМТ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "святитель Лука"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Хоругвь с иконами Богородицы Владимирской и Святителя Луки Войно-Ясенецкого голубого цвета",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10227648",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7255672",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10126028 (карточка 10227648, инв. —) | 2000-е гг. | хранится: Филиал Тамбовского областного государственного бюджетного учреждения культуры \"Тамбовский областной краеведческий музей\" - \"Музейно-выставочный центр Тамбовской области\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "святитель Лука"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Буклет. \"Храм пяти святынь\". Храм во имя святителя Луки, архиепископа Крымского, исповедни",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12790032",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/10724477",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 12791235 (карточка 12790032, инв. Д-46584) | 2016-2017 гг. | хранится: ЕКМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "святитель Лука"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Открытка художественная \"Святитель Лука\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=21472866",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/22763247",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 21343321 (карточка 21472866, инв. ГРФ 673) | 2000 г. | хранится: ГУК \"СОМК\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "святитель Лука"
+      }
+    ]
+  }
 }

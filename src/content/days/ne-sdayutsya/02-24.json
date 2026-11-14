@@ -5,5 +5,70 @@
   "year": 1930,
   "hook": "Слепой и парализованный, он написал книгу, на которой выросло поколение",
   "mechanic": "Переключает «книга / документ / воспоминания»: какой Островский в романе, какой в письмах, какой у современников.",
-  "gist": "автор «Как закалялась сталь» писал, потеряв зрение и подвижность."
+  "gist": "автор «Как закалялась сталь» писал, потеряв зрение и подвижность.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Николай Островский",
+      "Островский"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Писатель Николай Алексеевич Островский.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=5572705",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/1851588",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5438044 (карточка 5572705, инв. —) | 1936 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Николай Островский"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Сазонов Николай Фёдорович. Письмо Островскому А. Н. делового содержания.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=18594847",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/18815661",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 18456759 (карточка 18594847, инв. —) | 25 июля 1874 г. 1874 | хранится: Театральный музей им. А.А. Бахрушина, Бахрушинский театральный музей, Бахрушинский музей, БТМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Николай Островский"
+      },
+      {
+        "baza": "ar_culture",
+        "nazvanie": "Остановка «Улица Николая Островского»",
+        "avtor": "автор не указан",
+        "stranica": "https://ar.culture.ru/ru/subject/ostanovka-ulica-n-ostrovskogo",
+        "fayl": "https://ar.culture.ru/attachments/attachment/original/617683078e189fa5c965df4e-original.jpg",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Николай Островский"
+      },
+      {
+        "baza": "ar_culture",
+        "nazvanie": "Островская О.О. с сыном Николаем",
+        "avtor": "автор не указан",
+        "stranica": "https://ar.culture.ru/ru/subject/fotografiya-ooostrovskaya-s-godovalym-nikolaem",
+        "fayl": "https://ar.culture.ru/attachments/attachment/original/622b05fed0ea3822a9924029-original.jpg",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Николай Островский"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Негатив. Портрет погрудный. Островский Иосиф Соломонович, начальник лаборатории испытаний",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7259868",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14166740",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7088424 (карточка 7259868, инв. —) | [1970-е гг.] | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Островский"
+      }
+    ]
+  }
 }

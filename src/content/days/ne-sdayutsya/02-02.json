@@ -11,7 +11,73 @@
     {
       "src": "muzei/ne-sdayutsya/img/02-02-goskatalog-4710449.jpg",
       "caption": "Модель армейской повозки, Государственный исторический музей",
-      "credit": "Модель армейской повозки, время создания не указано. Хранится: Государственный исторический музей, инв. 6178 ор. Госкаталог музейного фонда РФ, № 4662823. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=4710449. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)."
+      "credit": "Модель армейской повозки, время создания не указано. Хранится: Государственный исторический музей, инв. 6178 ор. Госкаталог музейного фонда РФ, № 4662823. Источник: Госкаталог Музейного фонда РФ [goskatalog], https://goskatalog.ru/portal/#/collections?id=4710449. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ).",
+      "pometka_prav": "citirovanie-1274"
     }
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Дмитрий Овчаренко",
+      "Овчаренко"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "фотография. Красноармеец Дмитрий Овчаренко в период ВОВ",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=35117887",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/41817393",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 34911433 (карточка 35117887, инв. Ф-7080) | 1941-1943 | хранится: Музей кино | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Дмитрий Овчаренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Г.С. Кутепов и М. Овчаренко, партизаны.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=4987284",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/1383246",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 4928201 (карточка 4987284, инв. —) | 1919 г. | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Овчаренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография:Команда Чаунского района по греко-римской борьбе с тренером Овчаренко Е.В. Изра",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=9980590",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/6843801",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 9862649 (карточка 9980590, инв. —) | Первая половина ХХI века | хранится: Чаунский краеведческий музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Овчаренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фото  Ивана Егоровича Овчаренко - участника войны с империалистической Японией.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10961251",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8265474",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10843169 (карточка 10961251, инв. Ф 580) | 1960-е годы. | хранится: МБУК \"Краеведческий музей Михайловского округа\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Овчаренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Сообщение уполномоченному ЦУНХУ по Кушвинскому району от В.М. Овчаренко, директора Кушвинс",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11749326",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/9316709",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11654997 (карточка 11749326, инв. Кушва м 2006/869/12) | год | хранится: Кушвинский краеведческий музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Овчаренко"
+      }
+    ]
+  }
 }

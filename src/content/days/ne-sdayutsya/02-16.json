@@ -5,5 +5,70 @@
   "year": 1944,
   "hook": "Юная подпольщица отравила офицеров и под пытками не выдала никого",
   "mechanic": "В подполье Оболи выбирает, как действовать в столовой для офицеров, — затем узнаёт, как поступила Зина Портнова.",
-  "gist": "разведчица подполья, казнена в 17 лет. Герой Советского Союза."
+  "gist": "разведчица подполья, казнена в 17 лет. Герой Советского Союза.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Зина Портнова",
+      "Портнова"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Зина Портнова. Открытка",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8502776",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/4792125",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8395722 (карточка 8502776, инв. ИЗО-1101) | 1990 г. | хранится: МБУК ВМО \"Вологодский краеведческий музей им. В.А. Гаврилина\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Зина Портнова"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Карточка, т/х \"Зина Портнова\" на рейде. (сух. ГДР - 1968, ДВМП)",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11294370",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8703856",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11177704 (карточка 11294370, инв. —) | 1970-1980-е гг. | хранится: ФБУ \"Музей морского и речного флота\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Зина Портнова"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Карточка, т/х \"Зина Портнова\" на рейде. (сухогруз, 1968 - ГДР, ДВМП)",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11294409",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8703959",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11177669 (карточка 11294409, инв. —) | 1970-1980-е гг. | хранится: ФБУ \"Музей морского и речного флота\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Зина Портнова"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Карточка, т/х \"Зина Портнова\" на рейде.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11294432",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8704033",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11177648 (карточка 11294432, инв. —) | 1970-1980-е гг. | хранится: ФБУ \"Музей морского и речного флота\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Зина Портнова"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Комплект открыток Женщины - герои Советского Союза. Выпуск 1: Зинаида Мартыновна Портнова.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=16404439",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/15769560",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 16273287 (карточка 16404439, инв. —) | 1976 год | хранится: МБУК ИКМ \"Самарская Лука\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Зина Портнова"
+      }
+    ]
+  }
 }

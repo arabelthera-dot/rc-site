@@ -2,5 +2,71 @@
   "museum": "izobreteniya",
   "key": "02-28",
   "title": "Первая в мире теория расчёта мостовых ферм · Д. И. Журавский, 1844–1855",
-  "hook": "До Журавского мосты рушились под поездами, пока он не сосчитал, какой брус тянет, а какой давит"
+  "hook": "До Журавского мосты рушились под поездами, пока он не сосчитал, какой брус тянет, а какой давит",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Журавский",
+      "теория расчёта мостовых ферм",
+      "мостовых"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фото \"На могиле А. В. Журавского в связи с 90-летием Опытной станции.\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10965909",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8273592",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10847434 (карточка 10965909, инв. —) | 2001 г. | хранится: МБУ \"Музей А.В.Журавского\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Журавский"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фото \" Дочь А. В. Журавского – Ольга с сыном. \"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10965911",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8273594",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10847432 (карточка 10965911, инв. —) | 1934 г. | хранится: МБУ \"Музей А.В.Журавского\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Журавский"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фото и негативы церквей Константиновского благочиния. Пересъёмка 1990 г., х.Нижне-Журавски",
+        "avtor": "Вьюнников А.Л., Горбунов В.В.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19940356",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20646779",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19806922 (карточка 19940356, инв. Фо-2042) | 1990 г. | хранится: ГБУК РО \"Старочеркасский музей-заповедник\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Журавский"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фото и негативы церквей Константиновского благочиния. Пересъёмка 1990 г., х.Нижне-Журавски",
+        "avtor": "Вьюнников А.Л., Горбунов В.В.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19940387",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20646799",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19806903 (карточка 19940387, инв. Фо-2041) | 1990 г. | хранится: ГБУК РО \"Старочеркасский музей-заповедник\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Журавский"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Журавская А.И.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=49101844",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/61105286",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 48866571 (карточка 49101844, инв. —) | 20 век | хранится: МКУ \"БРИМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Журавский"
+      }
+    ]
+  }
 }

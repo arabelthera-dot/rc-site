@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-22",
   "title": "Первый в мире промышленный индукционный нагрев токами высокой частоты",
-  "hook": "Вологдин научился калить металл без огня: ток высокой частоты греет деталь изнутри, так закаляют коленвалы до сих пор"
+  "hook": "Вологдин научился калить металл без огня: ток высокой частоты греет деталь изнутри, так закаляют коленвалы до сих пор",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "промышленный индукционный нагрев токами высокой частоты",
+      "промышленный"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Значок, нагрудный \"Отличник судостроительной промышленности\".",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8840313",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/45681510",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8725067 (карточка 8840313, инв. ФА-3611) | 1950 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "промышленный"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "План развития железорудной промышленности Урала и Башкирии на пятилетку 1933-1937 гг.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11727702",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/9287936",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11611929 (карточка 11727702, инв. Кушва М 2006/858) | год | хранится: Кушвинский краеведческий музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "промышленный"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Документальный фонд/ Лёгкая промышленность/ Обувная отрасль. Диплом лучшему по профессии.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=38051412",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/45832486",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 37833550 (карточка 38051412, инв. —) | 1981 | хранится: ГАУК РХ \"ХНКМ им. Л.Р. Кызласова\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "промышленный"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Документальный фонд/Лёгкая промышленность/Текстильная. Грамота почетная Зыковой Галины Анд",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=38051427",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/45832507",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 37833536 (карточка 38051427, инв. —) | 07.06.1985 г. | хранится: ГАУК РХ \"ХНКМ им. Л.Р. Кызласова\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "промышленный"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Документальный фонд/ Лёгкая промышленность/ Обувная отрасль. Грамота почетная за победу в",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=38051428",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/45832509",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 37833535 (карточка 38051428, инв. —) | XX век | хранится: ГАУК РХ \"ХНКМ им. Л.Р. Кызласова\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "промышленный"
+      }
+    ]
+  }
 }

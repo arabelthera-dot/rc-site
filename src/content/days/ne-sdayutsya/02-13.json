@@ -5,5 +5,70 @@
   "year": 1941,
   "hook": "Последний защитник Бреста — держался больше месяца, и плен его не сломал",
   "mechanic": "Кликает надпись на стене Брестской крепости и видит, кто мог её написать, — и путь майора Гаврилова до плена и после.",
-  "gist": "майор руководил обороной Восточного форта до конца; в плену не пошёл на сговор."
+  "gist": "майор руководил обороной Восточного форта до конца; в плену не пошёл на сговор.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Пётр Гаврилов",
+      "Гаврилов"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Рецензия Ф.Н.Петрова на рукопись К.Н.Гавриловой",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7615905",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3573700",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7483708 (карточка 7615905, инв. —) | 1958 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Пётр Гаврилов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо Ф.Н Петрову от Л.Гаврилова, члена главной редакции общественно-политической литерат",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7616853",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3574656",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7485134 (карточка 7616853, инв. —) | 1968 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Пётр Гаврилов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Синюткин Модест Фёдорович и Гаврилов Петр Васильевич среди коллег",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10697197",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/41576384",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10583384 (карточка 10697197, инв. ФФ-595) | 1970 г. | хранится: БУ \"Музей геологии, нефти и газа\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Пётр Гаврилов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Княгиня Анна Петровна Гагарина, 1777-1805. Князь Павел Гаврилович Гагарин, 1777-1805, Княз",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=16066035",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/15309135",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 15942417 (карточка 16066035, инв. К-688/8) | 1905 | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Пётр Гаврилов"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Степан Гаврилович Петрович (Скиталец).",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=18946237",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/19293215",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 18806935 (карточка 18946237, инв. Е-5067) | 1913 | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Пётр Гаврилов"
+      }
+    ]
+  }
 }

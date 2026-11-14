@@ -2,5 +2,69 @@
   "museum": "izobreteniya",
   "key": "02-04",
   "title": "Самовар",
-  "hook": "Самовар — не про чай, а про инженерию: труба внутри воды греет её изнутри и кипятит вдвое быстрее плиты"
+  "hook": "Самовар — не про чай, а про инженерию: труба внутри воды греет её изнутри и кипятит вдвое быстрее плиты",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Самовар"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Поднос под самовар",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=3987737",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/75489507",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 4074284 (карточка 3987737, инв. ИБ-1068) | Конец ХIХ - начало XX вв. | хранится: Вырский филиал Государственного бюджетного учреждения культуры Ленинградской области \"Музейное агентство\" - Музей \"Дом станционного смотрителя\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Самовар"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Самовар",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=3987753",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/75489505",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 4074268 (карточка 3987753, инв. ИБ-1067) | Начало ХХ века | хранится: Вырский филиал Государственного бюджетного учреждения культуры Ленинградской области \"Музейное агентство\" - Музей \"Дом станционного смотрителя\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Самовар"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Самовар",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11032054",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8359898",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11622027 (карточка 11032054, инв. МТ 102) | конец XIX - ХХ век | хранится: МАУК \"КИМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Самовар"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Самовар",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11733078",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/9294454",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11615983 (карточка 11733078, инв. 85) | 90-е г. ХХ в. | хранится: Усть-Вымский филиал \"Историко-этнографический музей села Усть-Вымь\" муниципального бюджетного учреждения \"Усть-Вымское межпоселенческое музейное объединение\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Самовар"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Никитин М.И. Натюрморт с самоваром",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11763015",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/9331302",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11645760 (карточка 11763015, инв. —) | - | хранится: Художественная галерея муниципального бюджетного учреждения культуры \"Истоpико-краеведческий музей\" муниципального района Белебеевский район Республики Башкортостан | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Самовар"
+      }
+    ]
+  }
 }

@@ -8,5 +8,71 @@
   "gist": "ледокольный пароход принял бой с тяжёлым крейсером и погиб, не сдавшись.",
   "slovar": [
     "tema:ledokoly"
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Ледоколы",
+      "Сибиряков",
+      "ледокол Сибиряков"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Негатив. Портрет парный. О.Ю. Шмидт и Храмов, начальник зимовки в Амдерме на борту ледокол",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8537762",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14166686",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8429843 (карточка 8537762, инв. —) | [1930-е гг.] | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Ледоколы"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Значок \"Ледокол \"Ленин\".",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11751762",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/73469833",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11664374 (карточка 11751762, инв.  ) | 1983 год | хранится: ФГБУК \"Музей-заповедник Ю.А. Гагарина\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Ледоколы"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Брошюра. «Советский Союз». Список телефонов внутренней связи атомного ледокола «Советский",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=14812351",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/13523077",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 14682895 (карточка 14812351, инв. —) | 22.11.1989 г. | хранится: ГОАУК \"МОКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Ледоколы"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Сахарница с крышкой с эмблемой атомного ледокола «Советский Союз».",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=14812361",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/13523083",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 14682890 (карточка 14812361, инв. —) | 1970-1980-е гг. | хранится: ГОАУК \"МОКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Ледоколы"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Свидетельство  №091865 Касьянова Андрея Борисовича, члена экипажа атомного ледокола «Аркти",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=14812369",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/13523087",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 14682886 (карточка 14812369, инв. —) | 2001 г. | хранится: ГОАУК \"МОКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Ледоколы"
+      }
+    ]
+  }
 }
