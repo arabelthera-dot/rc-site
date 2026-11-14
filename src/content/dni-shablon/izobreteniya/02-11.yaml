@@ -1,0 +1,896 @@
+muzei: izobreteniya
+key: 02-11
+nomer_dnya: izob-0211-m5
+data_sobytiya: '1915-04-25'
+data_staryj_stil: '1915-04-12'
+chto_sluchilos: 'Дмитрий Григорович построил летающую лодку М-5: корпус самолёта стал лодкой, машина взлетала прямо с морской волны, и 12 апреля 1915 года вылетела в бой.'
+god: 1915
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Фотография «Гидросамолёт системы Григоровича М-9 бис», 1910-е годы
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20783438
+- chto: Значок «История авиации в СССР. Григорович. М-5»
+  muzej: Хабаровский краевой музей имени Н. И. Гродекова
+  gorod: Хабаровск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20822037
+- chto: Фотография «Групповой портрет около летающей лодки», 1916–1918 годы
+  muzej: Государственный музей-заповедник «Царское Село»
+  gorod: Пушкин (Царское Село)
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=64516195
+chitat_dalshe:
+- nazvanie: Д. А. Бочинин. «Д. П. Григорович — пионер отечественного гидроавиастроения»
+  gde: Вестник ЛГУ им. А. С. Пушкина, 2010
+  ssylka: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
+- nazvanie: «Сделать летучий корабль»
+  gde: «Вокруг света»
+  ssylka: https://www.vokrugsveta.ru/articles/sdelat-letuchii-korabl-kak-dmitrii-grigorovich-razdvinul-granicy-aviastroeniya-id912917/
+- nazvanie: «Боевое крещение русских авианосцев»
+  gde: «Российская газета», 2020
+  ssylka: https://rg.ru/2020/02/06/boevoe-kreshchenie-russkih-avianoscev-kak-m-5-nanesli-udar-po-zonguldaku.html
+- nazvanie: «Летающая лодка М-5»
+  gde: «Российская авиация»
+  ssylka: http://xn--80aafy5bs.xn--p1ai/aviamuseum/aviatsiya/russkij-imperatorskij-voenno-vozdushnyj-flot/morskaya-aviatsiya/letayushhaya-lodka-m-5/
+istochniki:
+- id: ir
+  baza: periodika
+  nazvanie: '«Бомбардировка Зонгулдака: стратегия, давшая жизнь российской корабельной авиации» — «История.РФ»'
+  ssylka: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
+- id: rg
+  baza: periodika
+  god: 2020
+  nazvanie: '«Боевое крещение русских авианосцев: как М-5 нанесли удар по Зонгулдаку» — «Российская газета», 2020'
+  ssylka: https://rg.ru/2020/02/06/boevoe-kreshchenie-russkih-avianoscev-kak-m-5-nanesli-udar-po-zonguldaku.html
+- id: ar
+  baza: periodika
+  nazvanie: «Летающая лодка М-5» — «Российская авиация»
+  ssylka: http://xn--80aafy5bs.xn--p1ai/aviamuseum/aviatsiya/russkij-imperatorskij-voenno-vozdushnyj-flot/morskaya-aviatsiya/letayushhaya-lodka-m-5/
+- id: sh
+  baza: kniga
+  avtor: В. Б. Шавров, М. А. Маслов
+  nazvanie: 'Летающая лодка М-5: выдержки из книг В. Б. Шаврова и М. А. Маслова — flyingmachines.ru'
+  ssylka: https://flyingmachines.ru/Site2/Crafts/Craft25695.htm
+- id: ma
+  baza: kniga
+  avtor: М. А. Маслов
+  nazvanie: М. А. Маслов, «Русские самолёты Первой мировой» — flyingmachines.ru
+  ssylka: https://flyingmachines.ru/Site2/Arts/Art57508.htm
+- id: vs
+  baza: periodika
+  nazvanie: '«Сделать летучий корабль: как Дмитрий Григорович раздвинул границы авиастроения» — «Вокруг света»'
+  ssylka: https://www.vokrugsveta.ru/articles/sdelat-letuchii-korabl-kak-dmitrii-grigorovich-razdvinul-granicy-aviastroeniya-id912917/
+- id: tass
+  baza: periodika
+  avtor: В. Кучушев
+  god: 2021
+  nazvanie: 'В. Кучушев, «Первый русский гидроплан М-5: как инженер Григорович научил лодку летать и воевать» — ТАСС, 2021'
+  ssylka: https://news.rambler.ru/army/46832495-pervyy-russkiy-gidroplan-m-5-kak-inzhener-grigorovich-nauchil-lodku-letat-i-voevat/
+- id: pm
+  baza: periodika
+  nazvanie: '«Небесный флот Григоровича: гидросамолёты» — «Популярная механика»'
+  ssylka: https://www.techinsider.ru/technologies/8913-nebesnyy-flot-grigorovicha-gidrosamolety/
+- id: bo
+  baza: nauka
+  avtor: Д. А. Бочинин
+  god: 2010
+  nazvanie: Д. А. Бочинин, «Д. П. Григорович — пионер отечественного гидроавиастроения», Вестник ЛГУ им. А. С. Пушкина, 2010
+  ssylka: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
+- id: rt
+  baza: periodika
+  nazvanie: '«Дмитрий Григорович: летающая лодка авиаконструктора» — «Ратник»'
+  ssylka: https://ratnik.tv/articles/science/dmitriy-grigorovich-letayushchaya-lodka-aviakonstruktora/
+- id: fl
+  baza: periodika
+  nazvanie: «Григорович Дмитрий Павлович» — flot.com
+  ssylka: https://flot.com/history/b-grigorovich.htm
+- id: gk-m9bis
+  baza: goskatalog
+  nazvanie: Фотография «Гидросамолёт системы Григоровича М-9 бис», 1910-е, Центральный военно-морской музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=20783438
+citaty: []
+velichina_chislo: 7000
+velichina_edinica: тонн
+velichina_chto: пароход, который пустила на дно бомба в 23 кило с летающей лодки
+etiketka_oblozhki:
+- Летающая лодка Григоровича М-9 бис, фотография 1910-х годов
+- Центральный военно-морской музей имени императора Петра Великого
+slovar:
+- mesto:sankt-peterburg
+- mesto:sevastopol
+head:
+  title: Летающая лодка М-5, 1915 — Музей «Что изобрели русские первыми в мире»
+  description: 'Григорович превратил корпус самолёта в лодку: М-5 взлетала прямо с морской волны, без аэродрома, и в 1916 году с кораблей нанесла первый в мире авиаудар по вражескому порту.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-11/
+  sobytie: Летающая лодка М-5 Григоровича
+  god: '1915'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Летающая лодка М-5 Григоровича
+    description: 'Григорович превратил корпус самолёта в лодку: М-5 взлетала прямо с морской волны, без аэродрома, и в 1916 году с кораблей нанесла первый в мире авиаудар по вражескому порту.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-11/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-11-goskatalog-20783438.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Летающая лодка М-5 Григоровича
+    description: 'Григорович превратил корпус самолёта в лодку: М-5 взлетала прямо с морской волны, без аэродрома, и в 1916 году с кораблей нанесла первый в мире авиаудар по вражескому порту.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-11/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-11-goskatalog-20783438.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-11-goskatalog-20783438.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.25
+    w: 0.8
+    h: 0.45
+  width: 799
+  height: 595
+  alt: 'Летающая лодка-биплан стоит на деревянном настиле у воды: корпус-лодка, над ним крылья и мотор с винтом'
+  data_source: https://goskatalog.ru/portal/#/collections?id=20783438
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+  podpis: Гидросамолёт системы Григоровича М-9 бис на берегу, 1910-е годы. Хранит Центральный военно-морской музей имени императора Петра Великого.
+  credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 20651513.'
+  hint: Фото · лодка М-9 бис, наследница М-5
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1910-е гг.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: не установлена; в Госкаталоге снимок датирован 1910-ми годами
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20783438
+  nomer_predmeta: '20651513'
+  nomer_snimka: net
+  hranitel: Центральный военно-морской музей имени императора Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20783438
+  svyashchennoe: false
+  podpis_chto: Гидросамолёт системы Григоровича М-9 бис на берегу
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: 1910-е годы
+  pometka_prav: citirovanie-1274
+kroshka: 11 февраля · Летающая лодка М-5
+lead:
+  data: 1915 · Петроград — Чёрное море
+  privyazka: М-5 вылетела в бой 12 апреля 1915 года.
+  kto: Дмитрий Павлович Григорович, авиаконструктор
+  h1: Летающая лодка М-5
+  hook: Григорович превратил корпус самолёта в лодку, и машина стала взлетать прямо с черноморской волны, без аэродрома
+stamp:
+- v: '1915'
+  k: М-5 вылетела в бой
+- v: 23 кг
+  k: бомба с летающей лодки
+- v: 7000 т
+  k: пароход, пущенный на дно
+- v: 15 000
+  k: шурупов в одном корпусе
+daynav:
+- id: story
+  label: История
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+story:
+  kicker: История изобретения
+  h2: Как самолёт стал лодкой
+  udary:
+  - summary: Из чужого ремонта
+    det:
+    - Первую лодку Григорович придумал, пока чинил разбитый французский гидроплан.
+    src: 'Источник: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5» — news.rambler.ru'
+  - summary: Сразу в бой
+    det:
+    - М-5 построили весной 1915-го, и уже 12 апреля она вылетела в бой.
+    src: 'Источник: «Российская авиация», «Летающая лодка М-5» — авиару.рф'
+  - summary: Удар по порту
+    det:
+    - В 1916 году лодки М-5 нанесли с кораблей первый в мире авиаудар по вражескому порту.
+    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    otryvok: Бомба в 23 кило с русской летающей лодки пустила на дно пароход в 7 тысяч тонн
+    stranica: «История.РФ», «Бомбардировка Зонгулдака»
+    href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
+    pometka: документ
+    id: bomba-23-kilo
+    istochnik: ir
+    dlya_voprosa: true
+    otvet: 7 тысяч тонн
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    otryvok: Немецкая торпеда ткнулась в борт русского авианосца с лодками М-5 — и просто утонула
+    stranica: «История.РФ», «Бомбардировка Зонгулдака»
+    href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
+    pometka: документ
+    id: torpeda-utonula
+    istochnik: ir
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    src: 'Источник: «Российская авиация», «Летающая лодка М-5» — авиару.рф'
+    otryvok: Корпус М-5 склеивали творогом, разведённым в нашатыре, и клей держал морскую воду
+    stranica: «Российская авиация», «Летающая лодка М-5»
+    href: http://xn--80aafy5bs.xn--p1ai/aviamuseum/aviatsiya/russkij-imperatorskij-voenno-vozdushnyj-flot/morskaya-aviatsiya/letayushhaya-lodka-m-5/
+    pometka: документ
+    id: kley-tvorog
+    istochnik: ar
+    dlya_voprosa: true
+    otvet: творог
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: net
+    src: 'Источник: В. Б. Шавров и М. А. Маслов, выдержки о М-5 — flyingmachines.ru'
+    otryvok: 'Хозяин завода запретил делать днище М-5 прочнее: пусть школы ломают побольше'
+    stranica: В. Б. Шавров и М. А. Маслов, выдержки о М-5
+    href: https://flyingmachines.ru/Site2/Crafts/Craft25695.htm
+    pometka: документ
+    id: dnishche-slabee
+    istochnik: sh
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    otryvok: В 1916 году лодки М-5 нанесли с кораблей первый в мире авиаудар по вражескому порту
+    stranica: «История.РФ», «Бомбардировка Зонгулдака»
+    href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
+    pometka: документ
+    id: avia-udar-1916
+    istochnik: ir
+    dlya_voprosa: true
+    otvet: '1916'
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    src: 'Источник: «Вокруг света», «Сделать летучий корабль» — vokrugsveta.ru'
+    otryvok: Лётчик Фриде на испытаниях провёл М-5 под Троицким мостом в Петрограде
+    stranica: «Вокруг света», «Сделать летучий корабль»
+    href: https://www.vokrugsveta.ru/articles/sdelat-letuchii-korabl-kak-dmitrii-grigorovich-razdvinul-granicy-aviastroeniya-id912917/
+    pometka: документ
+    id: troickij-most
+    istochnik: vs
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-11-goskatalog-20783499.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.35
+        w: 0.8
+        h: 0.45
+      width: 800
+      height: 593
+      alt: Летающая лодка-биплан у ангара на деревянном настиле, рядом вода
+      data_source: https://goskatalog.ru/portal/#/collections?id=20783499
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+      podpis: Гидросамолёт системы Григоровича М-15 бис у ангара, 1910-е годы. Хранит Центральный военно-морской музей имени императора Петра Великого.
+      credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 20651486.'
+      hint: Фото · лодка Григоровича у ангара
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1910-е гг.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: не установлена; в Госкаталоге снимок датирован 1910-ми годами
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20783499
+      nomer_predmeta: '20651486'
+      nomer_snimka: net
+      hranitel: Центральный военно-морской музей имени императора Петра Великого
+      podlinnik:
+        gde: Центральный военно-морской музей имени императора Петра Великого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=20783499
+      svyashchennoe: false
+      podpis_chto: Гидросамолёт системы Григоровича М-15 бис у ангара
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: 1910-е годы
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010 — cyberleninka.ru'
+    otryvok: На М-9, наследнице М-5, Нагурский первым в мире сделал мёртвую петлю на лодке
+    stranica: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010
+    href: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
+    pometka: документ
+    id: mertvaya-petlya
+    istochnik: bo
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    src: 'Источник: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010 — cyberleninka.ru'
+    otryvok: Военное ведомство США закупило в России лодки Григоровича как образцы
+    stranica: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010
+    href: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
+    pometka: документ
+    id: ssha-obrazcy
+    istochnik: bo
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    otryvok: Пароход, потопленный бомбой с М-5, турки подняли — и его утопили второй раз
+    stranica: «История.РФ», «Бомбардировка Зонгулдака»
+    href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
+    pometka: документ
+    id: parohod-dvazhdy
+    istochnik: ir
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-11-goskatalog-20822037.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.2
+        w: 0.65
+        h: 0.5
+      width: 752
+      height: 438
+      alt: 'Голубой значок: золотая летающая лодка-биплан, фамилия Григорович и надпись «М-5 1914»'
+      data_source: https://goskatalog.ru/portal/#/collections?id=20822037
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Хабаровский краевой музей имени Н. И. Гродекова · Госкаталог
+      podpis: Значок «История авиации в СССР. Григорович. М-5», 1970-е годы. Хранит Хабаровский краевой музей имени Н. И. Гродекова.
+      credit: 'Хранится: Хабаровский краевой музей имени Н. И. Гродекова. Госкаталог музейного фонда РФ, № 20690878.'
+      hint: Значок · летающая лодка М-5
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1970-е гг.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1970-е
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20822037
+      nomer_predmeta: '20690878'
+      nomer_snimka: net
+      hranitel: Хабаровский краевой музей имени Н. И. Гродекова
+      podlinnik:
+        gde: Хабаровский краевой музей имени Н. И. Гродекова
+        otkuda: https://goskatalog.ru/portal/#/collections?id=20822037
+      svyashchennoe: false
+      podpis_chto: Значок «История авиации в СССР. Григорович. М-5»
+      podpis_gde: Хабаровск
+      podpis_kogda: 1970-е годы
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Российская авиация», «Летающая лодка М-5» — авиару.рф'
+    otryvok: М-5 построили весной 1915-го, и уже 12 апреля она вылетела в бой
+    stranica: «Российская авиация», «Летающая лодка М-5»
+    href: http://xn--80aafy5bs.xn--p1ai/aviamuseum/aviatsiya/russkij-imperatorskij-voenno-vozdushnyj-flot/morskaya-aviatsiya/letayushhaya-lodka-m-5/
+    pometka: документ
+    id: 12-aprelya
+    istochnik: ar
+    dlya_voprosa: true
+    otvet: 12 апреля
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про лодки Григоровича
+  udary:
+  - n: 11
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-11-goskatalog-25192541.jpg
+      glavnoe_na_kartinke:
+        x: 0.35
+        y: 0.1
+        w: 0.5
+        h: 0.5
+      width: 512
+      height: 800
+      alt: 'Портрет в овале: мужчина с усами в тёмном костюме и полосатом галстуке'
+      data_source: https://goskatalog.ru/portal/#/collections?id=25192541
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+      podpis: Дмитрий Павлович Григорович, конструктор самолётов, 1924 год. Хранит Центральный военно-морской музей имени императора Петра Великого.
+      credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 25042696.'
+      hint: Фото · Григорович, 1924
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1924 г.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1924'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=25192541
+      nomer_predmeta: '25042696'
+      nomer_snimka: net
+      hranitel: Центральный военно-морской музей имени императора Петра Великого
+      podlinnik:
+        gde: Центральный военно-морской музей имени императора Петра Великого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=25192541
+      svyashchennoe: false
+      podpis_chto: Дмитрий Павлович Григорович, конструктор самолётов
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: 1924 год
+      pometka_prav: citirovanie-1274
+    src: 'Источник: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5» — news.rambler.ru'
+    otryvok: Первую лодку Григорович придумал, пока чинил разбитый французский гидроплан
+    stranica: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5»
+    href: https://news.rambler.ru/army/46832495-pervyy-russkiy-gidroplan-m-5-kak-inzhener-grigorovich-nauchil-lodku-letat-i-voevat/
+    pometka: документ
+    id: francuzskij-gidroplan
+    istochnik: tass
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: «Ратник», «Дмитрий Григорович: летающая лодка авиаконструктора» — ratnik.tv'
+    otryvok: Из М-5 выросла М-11 — первый в мире морской истребитель с бронёй для лётчика
+    stranica: '«Ратник», «Дмитрий Григорович: летающая лодка авиаконструктора»'
+    href: https://ratnik.tv/articles/science/dmitriy-grigorovich-letayushchaya-lodka-aviakonstruktora/
+    pometka: документ
+    id: m-11-bronya
+    istochnik: rt
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: М. А. Маслов, «Русские самолёты Первой мировой» — flyingmachines.ru'
+    otryvok: 'Лондон и Париж слали телеграммы: вышлите чертежи русской лодки Григоровича'
+    stranica: М. А. Маслов, «Русские самолёты Первой мировой»
+    href: https://flyingmachines.ru/Site2/Arts/Art57508.htm
+    pometka: документ
+    id: telegrammy-chertezhi
+    istochnik: ma
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: «Российская авиация», «Летающая лодка М-5» — авиару.рф'
+    otryvok: В корпус одной М-5 рабочие вручную вкручивали до 15 тысяч шурупов
+    stranica: «Российская авиация», «Летающая лодка М-5»
+    href: http://xn--80aafy5bs.xn--p1ai/aviamuseum/aviatsiya/russkij-imperatorskij-voenno-vozdushnyj-flot/morskaya-aviatsiya/letayushhaya-lodka-m-5/
+    pometka: документ
+    id: 15-tysyach-shurupov
+    istochnik: ar
+    dlya_voprosa: true
+    otvet: 15 тысяч
+    otvet_edinstvennyj: true
+  - n: 15
+    sravnenie: net
+    src: 'Источник: В. Б. Шавров и М. А. Маслов, выдержки о М-5 — flyingmachines.ru'
+    otryvok: Хвост М-5 на вираже скручивался и дрожал, но ни разу не сломался
+    stranica: В. Б. Шавров и М. А. Маслов, выдержки о М-5
+    href: https://flyingmachines.ru/Site2/Crafts/Craft25695.htm
+    pometka: документ
+    id: hvost-na-virazhe
+    istochnik: sh
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Три лодки Григоровича
+  pravilo_ru: 'Что сделать сейчас: выбери подвиг и нажми на лодку, которая его совершила.'
+  kak_igrat:
+    zachem: Из М-5 выросли новые машины Григоровича — у каждой свой первый в мире подвиг.
+    shagi:
+    - Выбери подвиг — кнопка загорится золотом.
+    - Нажми на лодку. Верный выбор загорится зелёным.
+    - Расставь все три — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все три подвига на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: m5
+      nazvanie: М-5
+      verno_ru: В 1916 году лодки М-5 нанесли с кораблей первый в мире авиаудар по вражескому порту.
+    - kod: m9
+      nazvanie: М-9
+      verno_ru: На М-9, наследнице М-5, Нагурский первым в мире сделал мёртвую петлю на лодке.
+    - kod: m11
+      nazvanie: М-11
+      verno_ru: Из М-5 выросла М-11 — первый в мире морской истребитель с бронёй для лётчика.
+    podpisi:
+    - kod: udar
+      tekst: Удар с кораблей по вражескому порту
+      mesto: m5
+      mimo_ru: Удар по порту нанесла самая первая лодка — ищи старшую.
+    - kod: petlya
+      tekst: Мёртвая петля Нагурского
+      mesto: m9
+      mimo_ru: Петлю сделали на наследнице М-5 — ищи следующую по номеру.
+    - kod: bronya
+      tekst: Броня для лётчика
+      mesto: m11
+      mimo_ru: Броню получил морской истребитель — ищи самый большой номер.
+    vyberi_ru: Сначала выбери подвиг, потом лодку.
+    mimo_ru: Не та лодка — попробуй другую.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: '🏆 Все три подвига на месте: М-5 ударила по порту, на М-9 сделали петлю, М-11 получила броню.'
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: удар по порту — М-5, мёртвая петля — М-9, броня для лётчика — М-11.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: В 1916 году лодки М-5 нанесли с кораблей первый в мире авиаудар по вражескому порту.'
+  net: 'Где граница: Из М-5 выросла М-11 — первый в мире морской истребитель с бронёй для лётчика.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Петроград
+    - построена летающая лодка М-5
+    - весна 1915
+  - - Чёрное море
+    - М-5 вылетела в бой
+    - 12 апреля 1915
+  - - Чёрное море
+    - лодки М-5 с кораблей ударили по вражескому порту
+    - '1916'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: творогом; 7 тысяч тонн; 1916; под Троицким мостом; до 15 тысяч.'
+  ball: 8
+  voprosy:
+  - q: Чем склеивали корпус М-5?
+    o:
+    - смолой
+    - творогом в нашатыре
+    - рыбьим клеем
+    a: 1
+    e: Корпус М-5 склеивали творогом, разведённым в нашатыре, и клей держал морскую воду.
+  - q: Какой пароход пустила на дно бомба в 23 кило?
+    o:
+    - в 700 тонн
+    - в 7 тысяч тонн
+    - в 70 тысяч тонн
+    a: 1
+    e: Бомба в 23 кило с русской летающей лодки пустила на дно пароход в 7 тысяч тонн.
+  - q: В каком году лодки М-5 с кораблей ударили по вражескому порту?
+    o:
+    - '1912'
+    - '1916'
+    - '1920'
+    a: 1
+    e: В 1916 году лодки М-5 нанесли с кораблей первый в мире авиаудар по вражескому порту.
+  - q: Где Фриде провёл М-5 на испытаниях?
+    o:
+    - под Троицким мостом
+    - над Кремлём
+    - вдоль Невского
+    a: 0
+    e: Лётчик Фриде на испытаниях провёл М-5 под Троицким мостом в Петрограде.
+  - q: Сколько шурупов вкручивали в корпус одной М-5?
+    o:
+    - до 150
+    - до 1500
+    - до 15 тысяч
+    a: 2
+    e: В корпус одной М-5 рабочие вручную вкручивали до 15 тысяч шурупов.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал летающей лодки М-5.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-11-goskatalog-20822037.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.2
+    w: 0.65
+    h: 0.5
+  width: 752
+  height: 438
+  alt: 'Голубой значок: золотая летающая лодка-биплан, фамилия Григорович и надпись «М-5 1914»'
+  data_source: https://goskatalog.ru/portal/#/collections?id=20822037
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Хабаровский краевой музей имени Н. И. Гродекова · Госкаталог
+  podpis: Значок «История авиации в СССР. Григорович. М-5», 1970-е годы. Хранит Хабаровский краевой музей имени Н. И. Гродекова.
+  credit: 'Хранится: Хабаровский краевой музей имени Н. И. Гродекова. Госкаталог музейного фонда РФ, № 20690878.'
+  hint: Значок · летающая лодка М-5
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1970-е гг.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1970-е
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20822037
+  nomer_predmeta: '20690878'
+  nomer_snimka: net
+  hranitel: Хабаровский краевой музей имени Н. И. Гродекова
+  podlinnik:
+    gde: Хабаровский краевой музей имени Н. И. Гродекова
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20822037
+  svyashchennoe: false
+  podpis_chto: Значок «История авиации в СССР. Григорович. М-5»
+  podpis_gde: Хабаровск
+  podpis_kogda: 1970-е годы
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-11-goskatalog-20783499.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.35
+    w: 0.8
+    h: 0.45
+  width: 800
+  height: 593
+  alt: Летающая лодка-биплан у ангара на деревянном настиле, рядом вода
+  data_source: https://goskatalog.ru/portal/#/collections?id=20783499
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+  podpis: Гидросамолёт системы Григоровича М-15 бис у ангара, 1910-е годы. Хранит Центральный военно-морской музей имени императора Петра Великого.
+  credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 20651486.'
+  hint: Фото · лодка Григоровича у ангара
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1910-е гг.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: не установлена; в Госкаталоге снимок датирован 1910-ми годами
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20783499
+  nomer_predmeta: '20651486'
+  nomer_snimka: net
+  hranitel: Центральный военно-морской музей имени императора Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20783499
+  svyashchennoe: false
+  podpis_chto: Гидросамолёт системы Григоровича М-15 бис у ангара
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: 1910-е годы
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-11-goskatalog-25192541.jpg
+  glavnoe_na_kartinke:
+    x: 0.35
+    y: 0.1
+    w: 0.5
+    h: 0.5
+  width: 512
+  height: 800
+  alt: 'Портрет в овале: мужчина с усами в тёмном костюме и полосатом галстуке'
+  data_source: https://goskatalog.ru/portal/#/collections?id=25192541
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+  podpis: Дмитрий Павлович Григорович, конструктор самолётов, 1924 год. Хранит Центральный военно-морской музей имени императора Петра Великого.
+  credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 25042696.'
+  hint: Фото · Григорович, 1924
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1924 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1924'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=25192541
+  nomer_predmeta: '25042696'
+  nomer_snimka: net
+  hranitel: Центральный военно-морской музей имени императора Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=25192541
+  svyashchennoe: false
+  podpis_chto: Дмитрий Павлович Григорович, конструктор самолётов
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: 1924 год
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-11-goskatalog-64516195.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.25
+    w: 0.9
+    h: 0.6
+  width: 800
+  height: 567
+  alt: Одиннадцать моряков и лётчиков в бушлатах и кожанках стоят перед летающей лодкой
+  data_source: https://goskatalog.ru/portal/#/collections?id=64516195
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник «Царское Село» · Госкаталог
+  podpis: Групповой портрет около летающей лодки, 1916–1918 годы. Хранит Государственный музей-заповедник «Царское Село».
+  credit: 'Хранится: Государственный музей-заповедник «Царское Село». Госкаталог музейного фонда РФ, № 64221162.'
+  hint: Фото · экипажи у летающей лодки
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1916‒1918 (?)
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: не установлена; в Госкаталоге снимок датирован 1916–1918 годами
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=64516195
+  nomer_predmeta: '64221162'
+  nomer_snimka: net
+  hranitel: Государственный музей-заповедник «Царское Село»
+  podlinnik:
+    gde: Государственный музей-заповедник «Царское Село»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=64516195
+  svyashchennoe: false
+  podpis_chto: Групповой портрет около летающей лодки
+  podpis_gde: Царское Село
+  podpis_kogda: 1916–1918 годы
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-11-goskatalog-64516183.jpg
+  glavnoe_na_kartinke:
+    x: 0.3
+    y: 0.25
+    w: 0.45
+    h: 0.55
+  width: 800
+  height: 493
+  alt: Лётчик в меховом шлеме и кожаной куртке сидит в кабине летающей лодки между стойками крыла
+  data_source: https://goskatalog.ru/portal/#/collections?id=64516183
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник «Царское Село» · Госкаталог
+  podpis: Л. Мардеат в кабине летающей лодки, 3 октября 1917 года. Хранит Государственный музей-заповедник «Царское Село».
+  credit: 'Хранится: Государственный музей-заповедник «Царское Село». Госкаталог музейного фонда РФ, № 64221167.'
+  hint: Фото · лётчик в кабине лодки
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 3 октября 1917 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1917'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=64516183
+  nomer_predmeta: '64221167'
+  nomer_snimka: net
+  hranitel: Государственный музей-заповедник «Царское Село»
+  podlinnik:
+    gde: Государственный музей-заповедник «Царское Село»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=64516183
+  svyashchennoe: false
+  podpis_chto: Л. Мардеат в кабине летающей лодки
+  podpis_gde: Царское Село
+  podpis_kogda: 3 октября 1917 года
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
+  title: «История.РФ», «Бомбардировка Зонгулдака»
+  note: факты дня
+- href: https://rg.ru/2020/02/06/boevoe-kreshchenie-russkih-avianoscev-kak-m-5-nanesli-udar-po-zonguldaku.html
+  title: «Российская газета», 2020, «Боевое крещение русских авианосцев»
+  note: факты дня
+- href: http://xn--80aafy5bs.xn--p1ai/aviamuseum/aviatsiya/russkij-imperatorskij-voenno-vozdushnyj-flot/morskaya-aviatsiya/letayushhaya-lodka-m-5/
+  title: «Российская авиация», «Летающая лодка М-5»
+  note: факты дня
+- href: https://flyingmachines.ru/Site2/Crafts/Craft25695.htm
+  title: В. Б. Шавров и М. А. Маслов, выдержки о М-5
+  note: факты дня
+- href: https://flyingmachines.ru/Site2/Arts/Art57508.htm
+  title: М. А. Маслов, «Русские самолёты Первой мировой»
+  note: факты дня
+- href: https://www.vokrugsveta.ru/articles/sdelat-letuchii-korabl-kak-dmitrii-grigorovich-razdvinul-granicy-aviastroeniya-id912917/
+  title: «Вокруг света», «Сделать летучий корабль»
+  note: факты дня
+- href: https://news.rambler.ru/army/46832495-pervyy-russkiy-gidroplan-m-5-kak-inzhener-grigorovich-nauchil-lodku-letat-i-voevat/
+  title: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5»
+  note: факты дня
+- href: https://www.techinsider.ru/technologies/8913-nebesnyy-flot-grigorovicha-gidrosamolety/
+  title: «Популярная механика», «Небесный флот Григоровича»
+  note: факты дня
+- href: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
+  title: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010
+  note: факты дня
+- href: https://ratnik.tv/articles/science/dmitriy-grigorovich-letayushchaya-lodka-aviakonstruktora/
+  title: '«Ратник», «Дмитрий Григорович: летающая лодка авиаконструктора»'
+  note: факты дня
+- href: https://flot.com/history/b-grigorovich.htm
+  title: flot.com, «Григорович Дмитрий Павлович»
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=20783438
+  title: 'Госкаталог музейного фонда РФ: гидросамолёт системы Григоровича М-9 бис, Центральный военно-морской музей'
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-12/
+  title: 12 февраля — Закон Ленца
+  hook: Ленц первым записал формулой, что природа сопротивляется вмешательству, — на его правиле стоит каждый электродвигатель
+  main: true
+- lbl: Предыдущий день
+  href: den/02-10/
+  title: 10 февраля — Аэросани
+  hook: 'Там, где есть только снег, Россия сделала машину без колёс и гусениц: пропеллер гонит сани по насту быстрее автомобиля'
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Конструктор летающих лодок
+  - - 70
+    - Морской лётчик
+  - - 40
+    - Механик гидроавиации
+  - - 0
+    - Гость дня
+return:
+  q: Когда М-5 вылетела в бой?
+  a: М-5 построили весной 1915-го, и уже 12 апреля она вылетела в бой.
+  src: «Российская авиация»
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-11-m5:claim-1915
+  ours:
+    kind: publication
+    title: Д. А. Бочинин, «Д. П. Григорович — пионер отечественного гидроавиастроения»
+    date: '2010'
+    holder: Вестник ЛГУ им. А. С. Пушкина
+    source_url: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
+podskazki_igry:
+- По порту ударила самая первая лодка
+- Петлю сделали на наследнице М-5
+- Броню получил морской истребитель
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya: mesto:sevastopol
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Корпус самолёта сделан лодкой — машина садится и стоит на воде
+- Мотор с винтом поднят над корпусом, подальше от брызг
+- Лодка разгоняется по воде и отрывается от волны
+- Аэродром не нужен — хватает бухты
+data_uslovnaya: 11 февраля — день музея; в бой М-5 вылетела 12 апреля 1915 года.
