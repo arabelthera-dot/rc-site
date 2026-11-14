@@ -109,5 +109,56 @@
    "zagolovok": "Для скандия Менделеев заранее расписал вес, формулы окисла и хлорида, соли — сбылось через 8 лет",
    "podrobnee": "Полное описание вещества, которого никто не видел."
   }
- ]
+ ],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/02-08-goskatalog-31786633.jpg",
+   "gk": "31786633",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "oblozhka",
+   "privyazka": "нет (обложка дня)"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/izobreteniya/img/02-08-goskatalog-8366315.jpg",
+   "gk": "8366315",
+   "fakt": 3,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "3"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/02-08-goskatalog-26067347.jpg",
+   "gk": "26067347",
+   "fakt": 15,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "15"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/02-08-goskatalog-8366315.jpg",
+   "gk": "8366315",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/02-08-goskatalog-26067347.jpg",
+   "gk": "26067347",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)"
+  }
+ ],
+ "iz": {
+  "kartochka": "logs/r752/izobreteniya-02-08.md",
+  "material": "src/content/dni-shablon/izobreteniya/02-08.yaml"
+ }
 }
