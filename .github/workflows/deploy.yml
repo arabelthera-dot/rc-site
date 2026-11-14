@@ -326,7 +326,7 @@ jobs:
           sparse-checkout: |
             tests/smoke
             src/content/days
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
           cache: npm
@@ -398,7 +398,7 @@ jobs:
             scripts/indexnow.mjs
             src/data/karta-sayta.json
           sparse-checkout-cone-mode: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
       - run: node scripts/indexnow.mjs ${{ (github.event_name == 'schedule' || inputs.nochnaya) && '--tolko-svezhie' || '' }}
