@@ -1,0 +1,33 @@
+{
+  "title": "История в 39 секунд",
+  "intro": "1833 год. Ленц первым записал формулой, что природа сопротивляется вмешательству, — на его правиле стоит каждый электродвигатель.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43596301127) из сценария days/12feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/12feb-lenc/day-12feb-lenc.mp4",
+    "local": "muzei/izobreteniya/video/day-12feb-lenc.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 38.7,
+    "mb": 10.1
+  },
+  "vertical": {
+    "file": "izobreteniya/12feb-lenc/day-12feb-lenc-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-12feb-lenc-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 38.7,
+    "mb": 10.5
+  },
+  "poster": {
+    "file": "izobreteniya/12feb-lenc/day-12feb-lenc-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-12feb-lenc-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/12feb-lenc/day-12feb-lenc-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-12feb-lenc-9x16-poster.jpg",
+    "v": 1
+  }
+}

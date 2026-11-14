@@ -1,0 +1,33 @@
+{
+  "title": "История в 52 секунды",
+  "intro": "Ледокол против крейсера — бой приняли и флаг не спустили",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43596426956) из сценария days/ns11feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 51.5,
+    "mb": 12.8
+  },
+  "vertical": {
+    "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 51.5,
+    "mb": 11.6
+  },
+  "poster": {
+    "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-9x16-poster.jpg",
+    "v": 1
+  }
+}
