@@ -1,0 +1,845 @@
+muzei: ne-sdayutsya
+key: 02-12
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-14'
+head:
+  title: Вера Волошина — «Русские не сдаются» — Русская цивилизация
+  description: 'Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»'
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-12/
+  sobytie: Вера Волошина
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Вера Волошина — «Русские не сдаются» — Русская цивилизация
+    description: 'Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»'
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-12/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Вера Волошина — «Русские не сдаются»
+    description: 'Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»'
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-12/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1941'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-12-goskatalog-67250866.jpg
+  alt: 'Старая чёрно-белая фотография с волнистым краем: девушка с короткой стрижкой, в тёмной одежде, смотрит в объектив.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=67529841
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Партизанка-разведчица Вера Волошина. Фотокопия, 1930-е — начало 1940-х годов. Хранится в Музее «Новый Иерусалим», Московская область.
+  credit: ГБУК МО «Музей „Новый Иерусалим“», Госкаталог № 67250866
+  width: 595
+  height: 800
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.8
+  nomer_predmeta: —
+  nomer_snimka: '67529841'
+  hranitel: Музей «Новый Иерусалим», Истра, Московская область
+  podpis_chto: Партизанка-разведчица Вера Волошина
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1930-е — начало 1940-х годов
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей «Новый Иерусалим», Истра, Московская область
+    otkuda: https://goskatalog.ru/portal/#/collections?id=67529841
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1930-е — начало 1940-х годов
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 67250866
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 67250866
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=67529841
+  hint: Вера Волошина
+  celikom: true
+kroshka: День 12 · Вера Волошина
+lead:
+  data: День 12 · февраль · Головково под Наро-Фоминском, 29 ноября 1941 года
+  privyazka: 'Дата условная: 12 февраля — день музея; событие — казнь Веры Волошиной 29 ноября 1941 года.'
+  kto: Вера Волошина · разведчица войсковой части № 9903 штаба Западного фронта, Герой Российской Федерации
+  h1: Вера Волошина
+  hook: 'Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»'
+stamp:
+- v: '22'
+  k: года было Вере
+- v: '7'
+  k: раз ушла в тыл врага и вернулась
+- v: '10'
+  k: км между Головковом и Петрищевом
+- v: '53'
+  k: года до звания Героя
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+story:
+  kicker: Подвиг
+  h2: Вера Волошина
+  abzacy:
+  - Ноябрь 1941 года, немцы под Москвой. Вера Волошина, студентка из Кемерова, служит разведчицей в войсковой части № 9903 штаба Западного фронта. Семь раз она уходит в немецкий тыл и возвращается. 21 ноября группа уходит в восьмой раз — вместе с Зоей Космодемьянской.
+  - Группа попадает в засаду. Раненная в плечо Вера остаётся ближе всех к врагу и прикрывает отход товарищей огнём из автомата. Немцы берут её в плен. Всю ночь её пытают, а она называет себя чужой фамилией — Гора — и не выдаёт никого.
+  - 29 ноября 1941 года в деревне Головково Веру вешают. С петлёй на шее она поёт «Интернационал» и кричит своё настоящее имя. В тот же день в десяти километрах казнят Зою. Звание Героя Российской Федерации Вера Волошина получает посмертно, в 1994 году.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Вера Волошина
+  udary:
+  - n: 1
+    id: ns-0212-gora
+    summary: 'Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»'
+    det:
+    - На допросе в немецком штабе разведчица называет себя чужой фамилией — Гора. Под этой фамилией её и приговаривают. Но перед самой казнью, когда кузов грузовика уходит из-под ног, Вера успевает крикнуть своё настоящее имя.
+    src: 'Источник: Л. Максименко. «„Меня зовут Гора!“: стали известны последние часы советской разведчицы из Кузбасса Веры Волошиной перед казнью», «Комсомольская правда — Кузбасс», 28.11.2024 — https://www.kem.kp.ru/daily/27666/5017533/; «Плечо друга», «Комсомольская правда — Кузбасс» — https://www.kem.kp.ru/daily/27759/5189265/'
+    stranica: статья
+    href: https://www.kem.kp.ru/daily/27666/5017533/
+    otryvok: «- Я - Волошина! – успела крикнуть Вера, когда кузов грузовика – виселичный помост – ушел из-под ног.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: true
+    otvet: Волошина
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-12-goskatalog-37720774.jpg
+      alt: Чёрно-белый портрет девушки в светлой блузе с вязаным кружевным воротником.
+      data_source: https://goskatalog.ru/portal/#/collections?id=37938349
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Вера Даниловна Волошина, рядовая, комсорг разведывательно-диверсионной группы. Фотокопия, 1939–1941 годы. Хранится в Государственном музее обороны Москвы.
+      credit: ГБУК «ГМОМ», Госкаталог № 37720774
+      width: 624
+      height: 800
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.8
+      nomer_predmeta: —
+      nomer_snimka: '37938349'
+      hranitel: Государственный музей обороны Москвы, Москва
+      podpis_chto: Вера Даниловна Волошина, рядовая, комсорг разведывательно-диверсионной группы
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1939–1941 годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный музей обороны Москвы, Москва
+        otkuda: https://goskatalog.ru/portal/#/collections?id=37938349
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1939–1941 годы
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 37720774
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 37720774
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=37938349
+  - n: 2
+    id: ns-0212-statistka
+    summary: На допросе Вера выдумала для немцев, что она статистка со съёмок фильма.
+    det:
+    - 'Немцам нужно объяснить, кто она и откуда. Вера придумывает историю: будто она из группы статистов, снимавшихся в фильме, и к партизанам отношения не имеет.'
+    src: 'Источник: Л. Максименко. «„Меня зовут Гора!“: стали известны последние часы советской разведчицы из Кузбасса Веры Волошиной перед казнью», «Комсомольская правда — Кузбасс», 28.11.2024 — https://www.kem.kp.ru/daily/27666/5017533/; «Вера Волошина», «1941–1942: Московская битва» — https://1941-1942.ru/vera-voloshina/'
+    stranica: статья
+    href: https://www.kem.kp.ru/daily/27666/5017533/
+    otryvok: «В начале допроса Гора заявила, что относится к группе статистов, принимавшей участие в съемках… пропагандистского фильма.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: true
+    otvet: статистка со съёмок фильма
+    otvet_edinstvennyj: true
+  - n: 3
+    id: ns-0212-prikryla-othod
+    summary: Раненая в плечо, Вера осталась ближе всех к немцам и автоматом прикрыла отход своей группы.
+    det:
+    - Разведгруппа попадает в засаду и отходит к лесу. Вера остаётся ближе всех к врагу и, уже раненая в плечо, стреляет из автомата, пока товарищи уходят.
+    src: 'Источник: «К 100-летию разведчицы Веры Волошиной в Музее Победы открылась выставка», «Новости Москвы» (smi24.news) — https://smi24.news/k-100-letiyu-razvedchiczy-very-voloshinoj-v-muzee-pobedy-otkrylas-vystavka/; «„Наши все равно победят“: сила воли простой разведчицы Веры Волошиной», RuBaltic.ru, 02.11.2022 — https://www.rubaltic.ru/context/02112022-nashi-vse-ravno-pobedyat-sila-voli-prostoy-razvedchitsy-very-voloshinoy-ee-veli-na-kazn-a-ona-pela/; «Наро-Фоминский историко-краеведческий музей получил документ, рассказывающий о подвиге Веры Волошиной», «Регион. Наро-Фоминск» — https://regions.ru/naro-fominsk/obshchestvo/naro-fominskiy-istoriko-kraevedcheskiy-muzey-poluchil-dokument-rasskazyvayuschiy-o-podvige-very-voloshinoy'
+    stranica: статья
+    href: https://smi24.news/k-100-letiyu-razvedchiczy-very-voloshinoj-v-muzee-pobedy-otkrylas-vystavka/
+    otryvok: «Девушка оказалась ближе к немцам и прикрывала огнем из автомата отход группы.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n13
+    dlya_voprosa: true
+    otvet: в плечо
+    otvet_edinstvennyj: true
+  - n: 4
+    id: ns-0212-internacional
+    summary: В кузове немецкого грузовика, с петлёй на шее, она запела «Интернационал».
+    det:
+    - Казнь готовят на виду у согнанных жителей. Вера стоит в кузове грузовика, на шее уже петля, — и поёт.
+    src: 'Источник: «Герои страны». Волошина Вера Даниловна — https://warheroes.ru/hero/hero.asp?Hero_id=3289; Л. Максименко. «„Меня зовут Гора!“: стали известны последние часы советской разведчицы из Кузбасса Веры Волошиной перед казнью», «Комсомольская правда — Кузбасс», 28.11.2024 — https://www.kem.kp.ru/daily/27666/5017533/'
+    stranica: страница героя
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=3289
+    otryvok: '«Стоя в кузове немецкого грузовика с петлёй на шее, девушка пела «Интернационал», а когда автомашина тронулась, Вера успела крикнуть: «Прощайте, товарищи!».»'
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+  - n: 5
+    id: ns-0212-nashi-pobedyat
+    summary: 'Последние слова у виселицы — немцам: «Наши всё равно победят».'
+    det:
+    - Перед смертью Вера обращается не к своим, а к палачам. Её слова потом становятся заголовком рассказа о ней.
+    src: 'Источник: «„Наши все равно победят“: сила воли простой разведчицы Веры Волошиной», RuBaltic.ru, 02.11.2022 — https://www.rubaltic.ru/context/02112022-nashi-vse-ravno-pobedyat-sila-voli-prostoy-razvedchitsy-very-voloshinoy-ee-veli-na-kazn-a-ona-pela/'
+    stranica: статья
+    href: https://www.rubaltic.ru/context/02112022-nashi-vse-ravno-pobedyat-sila-voli-prostoy-razvedchitsy-very-voloshinoy-ee-veli-na-kazn-a-ona-pela/
+    otryvok: «Наши все равно победят.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: true
+    otvet: «Наши всё равно победят»
+    otvet_edinstvennyj: true
+  - n: 6
+    id: ns-0212-vsyu-noch
+    summary: Всю ночь немцы пытали её — и не услышали ни одного имени товарища.
+    det:
+    - Раненую разведчицу приводят в здание бывшей школы, где стоит немецкий штаб. Допрос с пытками идёт до утра, но Вера не называет никого из группы.
+    src: 'Источник: Л. Максименко. «„Меня зовут Гора!“: стали известны последние часы советской разведчицы из Кузбасса Веры Волошиной перед казнью», «Комсомольская правда — Кузбасс», 28.11.2024 — https://www.kem.kp.ru/daily/27666/5017533/; «Названая сестра Зои Космодемьянской», РИА Новости, 29.11.2011 — https://ria.ru/20111129/501268214.html'
+    stranica: статья
+    href: https://www.kem.kp.ru/daily/27666/5017533/
+    otryvok: «В здании бывшей школы, где находился немецкий штаб, ее допрашивали и пытали всю ночь.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: true
+    otvet: всю ночь
+    otvet_edinstvennyj: true
+  - n: 7
+    id: ns-0212-sem-raz
+    summary: За месяц Вера семь раз ушла в немецкий тыл и вернулась, восьмой раз стал последним.
+    det:
+    - В октябре 1941 года Вера становится бойцом войсковой части № 9903 разведотдела штаба Западного фронта. Семь раз она переходит линию фронта и возвращается. 21 ноября группа уходит в восьмой раз.
+    src: 'Источник: «Герои страны». Волошина Вера Даниловна — https://warheroes.ru/hero/hero.asp?Hero_id=3289'
+    stranica: страница героя
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=3289
+    otryvok: «На её боевом счету семь удачных засылок в тыл немецко-фашистских войск.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: семь раз за месяц — почти каждые четыре дня
+    istochnik: n1
+    dlya_voprosa: true
+    otvet: семь
+    otvet_edinstvennyj: true
+  - n: 8
+    id: ns-0212-nasha-partizanka
+    summary: Деревня, не зная имени, звала её «наша партизанка», а мать 15 лет считала пропавшей без вести.
+    det:
+    - Жители Головкова хоронят казнённую девушку, не зная, кто она. Дома, в Кемерове, мать ждёт письма, а дочь числится пропавшей без вести.
+    src: 'Источник: «Наша партизанка», «НЭП. Моя бытейская история» — https://www.nepsite.ru/articles/byt-history/nasha-partizanka/; «Не судьба Веры Волошиной», «Аргументы и факты» — https://aif.ru/society/history/29421; «Вера Волошина», «1941–1942: Московская битва» — https://1941-1942.ru/vera-voloshina/'
+    stranica: статья
+    href: https://www.nepsite.ru/articles/byt-history/nasha-partizanka/
+    otryvok: «А разведчица Вера Волошина 15 лет считалась пропавшей без вести, поэтому о её подвиге никто не знал.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 15 лет — столько, сколько учатся в школе и институте вместе
+    istochnik: n12
+    dlya_voprosa: true
+    otvet: 15 лет
+    otvet_edinstvennyj: true
+  - n: 9
+    id: ns-0212-arhiv-ssha
+    summary: Доклад немецкого полка о её допросе нашёлся в архиве США — через 83 года.
+    det:
+    - Немцы составляют о допросе пленной бумагу. Её копия попадает в американский архив, и в 2024 году историки находят и переводят этот доклад.
+    src: 'Источник: Л. Максименко. «Белое платье Веры Волошиной», «Комсомольская правда — Кузбасс», 13.05.2025 — https://www.kem.kp.ru/daily/27698/5087056/; «Вера Волошина», «1941–1942: Московская битва» — https://1941-1942.ru/vera-voloshina/'
+    stranica: статья
+    href: https://www.kem.kp.ru/daily/27698/5087056/
+    otryvok: «Копией допроса (из документов 292-й пехотной дивизии вермахта, из Национального управления архивов и документации США) в переводе историка Сергея Вершинина.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 83 года — дольше, чем живёт большинство людей
+    istochnik: n3
+    dlya_voprosa: true
+    otvet: '83'
+    otvet_edinstvennyj: true
+  - n: 10
+    id: ns-0212-zoya-10-km
+    summary: В один день и в 10 км друг от друга немцы казнили двух подруг — Веру и Зою Космодемьянскую.
+    det:
+    - Вера и Зоя служат в одной части и уходят на задание вместе. 29 ноября 1941 года Зою вешают в Петрищеве, Веру — в Головкове.
+    src: 'Источник: «К 100-летию разведчицы Веры Волошиной в Музее Победы открылась выставка», «Новости Москвы» (smi24.news) — https://smi24.news/k-100-letiyu-razvedchiczy-very-voloshinoj-v-muzee-pobedy-otkrylas-vystavka/; «„Наши все равно победят“: сила воли простой разведчицы Веры Волошиной», RuBaltic.ru, 02.11.2022 — https://www.rubaltic.ru/context/02112022-nashi-vse-ravno-pobedyat-sila-voli-prostoy-razvedchitsy-very-voloshinoy-ee-veli-na-kazn-a-ona-pela/'
+    stranica: статья
+    href: https://smi24.news/k-100-letiyu-razvedchiczy-very-voloshinoj-v-muzee-pobedy-otkrylas-vystavka/
+    otryvok: «Их повесили в один день, 29 ноября. Только Зою – в Петрищево, а Веру в десяти километрах от нее, в деревне Головково.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 10 км — около двух часов пешком
+    istochnik: n13
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - n: 11
+    id: ns-0212-malchishki
+    summary: Мальчишки 13 и 16 лет тайком срезали её тело с ивы под носом у немцев.
+    det:
+    - Тело казнённой не дают снять. Деревенские подростки ночью в снегопад срезают его и прячут в снегу в овраге.
+    src: 'Источник: Л. Максименко. «„Меня зовут Гора!“: стали известны последние часы советской разведчицы из Кузбасса Веры Волошиной перед казнью», «Комсомольская правда — Кузбасс», 28.11.2024 — https://www.kem.kp.ru/daily/27666/5017533/; Л. Максименко. «Вера сильнее смерти», «Комсомольская правда — Кузбасс», 29.11.2025 — https://www.kem.kp.ru/daily/27749.5/5177787/'
+    stranica: статья
+    href: https://www.kem.kp.ru/daily/27666/5017533/
+    otryvok: «они, мальчишки, через несколько дней в снегопад тайно срезали тело девушки и спрятали в снегу в овраге, рискуя жизнями…»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 13 лет — это седьмой класс
+    istochnik: n2
+    dlya_voprosa: false
+  - n: 12
+    id: ns-0212-foto-2015
+    summary: Немцы сами фотографировали её казнь, и эти снимки в 2015-м нашёл русский историк.
+    det:
+    - Немецкие солдаты снимают казнь на память. Через десятки лет эти кадры всплывают среди старых немецких фотографий на интернет-аукционах.
+    src: 'Источник: Л. Максименко. «Вера сильнее смерти», «Комсомольская правда — Кузбасс», 29.11.2025 — https://www.kem.kp.ru/daily/27749.5/5177787/'
+    stranica: статья
+    href: https://www.kem.kp.ru/daily/27749.5/5177787/
+    otryvok: «Тогда, в 2015-м Александр Никитин, историк из Рязани, нашел на международных интернет-аукционах в выкладке старых немецких фотографий кадры с неизвестной казненной фашистами девушкой.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: true
+    otvet: '2015'
+    otvet_edinstvennyj: true
+  - n: 13
+    id: ns-0212-frolov
+    summary: Журналист Георгий Фролов 15 лет шёл по её следу по деревням и нашёл свидетелей казни.
+    det:
+    - Журналист из Кемерова выясняет, что стало с землячкой. Он ездит по подмосковным деревням, опрашивает жителей и находит тех, кто видел казнь. Потом пишет о Вере книги.
+    src: 'Источник: «Названая сестра Зои Космодемьянской», РИА Новости, 29.11.2011 — https://ria.ru/20111129/501268214.html'
+    stranica: статья
+    href: https://ria.ru/20111129/501268214.html
+    otryvok: '«Он много лет вел поисковую работу, "шел по следам Веры": выезжал и опрашивал»'
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: true
+    otvet: Георгий Фролов
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-12-goskatalog-18333600.jpg
+      alt: Обложка книги с графическим портретом девушки и надписью «Наша Вера».
+      data_source: https://goskatalog.ru/portal/#/collections?id=18470800
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Георгий Фролов. «Наша Вера». Документальная повесть о комсомолке-партизанке Вере Волошиной, 1963 год. Хранится в Государственном историческом музее, Москва.
+      credit: ФГБУК «Государственный исторический музей», № ФЭ-2094, Госкаталог № 18333600
+      width: 612
+      height: 800
+      vid: dokument
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: ФЭ-2094
+      nomer_snimka: '18470800'
+      hranitel: Государственный исторический музей, Москва
+      podpis_chto: Книга Г. Фролова «Наша Вера»
+      podpis_gde: Кемерово
+      podpis_kogda: 1963 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный исторический музей, Москва
+        otkuda: https://goskatalog.ru/portal/#/collections?id=18470800
+      svyashchennoe: false
+      prava:
+        avtor: Фролов Г. Н.
+        god_sozdaniya: '1963'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 18333600
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 18333600
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=18470800
+  - n: 14
+    id: ns-0212-cherez-53-goda
+    summary: Героем её признали через 53 года — уже Героем России, страны, которой в 1941-м не было.
+    det:
+    - Указом Президента от 6 мая 1994 года Вере Волошиной посмертно присвоено звание Героя Российской Федерации, медаль № 77.
+    src: 'Источник: «Герои страны». Волошина Вера Даниловна — https://warheroes.ru/hero/hero.asp?Hero_id=3289'
+    stranica: страница героя
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=3289
+    otryvok: «Указом Президента Российской Федерации от 6 мая 1994 года … Волошиной Вере Даниловне присвоено звание Героя Российской Федерации (посмертно).»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 53 года — больше полувека
+    istochnik: n1
+    dlya_voprosa: true
+    otvet: '53'
+    otvet_edinstvennyj: true
+  - n: 15
+    id: ns-0212-shkola-12
+    summary: 'Из одной кемеровской школы №12 вышли два Героя: Вера и её жених комбат Юрий Двужильный.'
+    det:
+    - Вера и Юрий учатся в одном классе кемеровской школы. 21 июня 1941 года подруги покупают Вере свадебное платье. Юрий Двужильный погибнет комбатом и станет Героем Советского Союза.
+    src: 'Источник: «Наша партизанка», «НЭП. Моя бытейская история» — https://www.nepsite.ru/articles/byt-history/nasha-partizanka/; «Герои страны». Волошина Вера Даниловна — https://warheroes.ru/hero/hero.asp?Hero_id=3289; Л. Максименко. «Белое платье Веры Волошиной», «Комсомольская правда — Кузбасс», 13.05.2025 — https://www.kem.kp.ru/daily/27698/5087056/'
+    stranica: статья
+    href: https://www.nepsite.ru/articles/byt-history/nasha-partizanka/
+    otryvok: «ей сделал предложение одноклассник, Юрий Двужильный. Они учились вместе в кемеровской школе»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n12
+    dlya_voprosa: false
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — Гора; 2 — статисткой со съёмок фильма; 3 — семь; 4 — 10 км; 5 — через 53 года.'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: какой фамилией назвалась Вера на допросе у немцев?'
+    o:
+    - Иванова
+    - Гора
+    - Петрова
+    - Лесная
+    a: 1
+    e: 'На допросе Вера назвалась немцам «Верой Горой», а перед казнью крикнула: «Я — Волошина!»'
+  - q: Кем Вера назвалась немцам на допросе?
+    o:
+    - медсестрой
+    - учительницей
+    - статисткой со съёмок фильма
+    - почтальоном
+    a: 2
+    e: Вера выдумала для немцев, что она статистка со съёмок фильма.
+  - q: Сколько раз Вера ушла в немецкий тыл и вернулась?
+    o:
+    - два
+    - пять
+    - семь
+    - десять
+    a: 2
+    e: За месяц Вера семь раз ушла в немецкий тыл и вернулась, восьмой раз стал последним.
+  - q: Сколько километров было между местами казни Веры и Зои Космодемьянской?
+    o:
+    - 1 км
+    - 10 км
+    - 50 км
+    - 100 км
+    a: 1
+    e: В один день и в 10 км друг от друга немцы казнили двух подруг — Веру и Зою Космодемьянскую.
+  - q: Через сколько лет Веру признали Героем?
+    o:
+    - через 5 лет
+    - через 20 лет
+    - через 53 года
+    - через 100 лет
+    a: 2
+    e: Героем её признали через 53 года — уже Героем России, страны, которой в 1941-м не было.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-12-goskatalog-12198094.jpg
+  alt: Маленький фарфоровый петушок с ярким гребнем на зелёной подставке.
+  data_source: https://goskatalog.ru/portal/#/collections?id=12320708
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Фарфоровый петушок — детская игрушка Веры Волошиной, 1930-е годы. Хранится в Кузбасском государственном краеведческом музее, Кемерово.
+  credit: ГАУК «Кузбасский государственный краеведческий музей», № ВС 636, Госкаталог № 12198094
+  width: 1600
+  height: 2209
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.9
+  nomer_predmeta: ВС 636
+  nomer_snimka: '12320708'
+  hranitel: Кузбасский государственный краеведческий музей, Кемерово
+  podpis_chto: Скульптура «Петух». Детская игрушка Веры Даниловны Волошиной
+  podpis_gde: место создания не указано
+  podpis_kogda: 1930-е годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: Кузбасский государственный краеведческий музей, Кемерово
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12320708
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1930-е годы
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 12198094
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 12198094
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12320708
+- src: /muzei/ne-sdayutsya/img/02-12-goskatalog-65283538.jpg
+  alt: 'Орден Отечественной войны: красная звезда с серпом и молотом в центре и надписью «Отечественная война» по кругу.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=65568565
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Орден Отечественной войны I степени № 312183 Веры Волошиной. Хранится в Кузбасском государственном краеведческом музее, Кемерово.
+  credit: ГАУК «Кузбасский государственный краеведческий музей», Госкаталог № 65283538
+  width: 800
+  height: 566
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.9
+  nomer_predmeta: —
+  nomer_snimka: '65568565'
+  hranitel: Кузбасский государственный краеведческий музей, Кемерово
+  podpis_chto: Орден Отечественной войны I степени № 312183 Веры Даниловны Волошиной
+  podpis_gde: место создания не указано
+  podpis_kogda: 1965 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Кузбасский государственный краеведческий музей, Кемерово
+    otkuda: https://goskatalog.ru/portal/#/collections?id=65568565
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1965'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 65283538
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 65283538
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=65568565
+- src: /muzei/ne-sdayutsya/img/02-12-goskatalog-45653964.jpg
+  alt: 'Чёрно-белый снимок мемориальной доски: барельеф головы девушки, даты «1941 1945» и надпись «Героиня партизанка Вера Волошина».'
+  data_source: https://goskatalog.ru/portal/#/collections?id=45900792
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Мемориальная доска памяти героини-партизанки Веры Волошиной. Фотография, 1980-е годы. Хранится в Мытищинском историко-художественном музее.
+  credit: МБУК «Мытищинский историко-художественный музей», Госкаталог № 45653964
+  width: 565
+  height: 800
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.9
+  nomer_predmeta: —
+  nomer_snimka: '45900792'
+  hranitel: Мытищинский историко-художественный музей, Мытищи
+  podpis_chto: Мемориальная доска, посвящённая памяти героини-партизанки В. Волошиной
+  podpis_gde: Мытищи
+  podpis_kogda: 1980-е годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: Мытищинский историко-художественный музей, Мытищи
+    otkuda: https://goskatalog.ru/portal/#/collections?id=45900792
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1980-е годы
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 45653964
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 45653964
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=45900792
+- src: /muzei/ne-sdayutsya/img/02-12-goskatalog-14576955.jpg
+  alt: 'Обложка проспекта: снимок улыбающейся девушки в берете и пальто, сидящей в лесу, под ним надпись «80-летию со дня рождения Героя Российской Федерации Волошиной Веры Даниловны посвящается».'
+  data_source: https://goskatalog.ru/portal/#/collections?id=14705374
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Проспект к 80-летию со дня рождения Героя Российской Федерации Веры Волошиной. Средняя школа № 12 имени Веры Волошиной, Кемерово, 1999 год. Хранится в Военно-патриотическом музее Московской области.
+  credit: Военно-патриотический музей Московской области, № ПИ «П» 85, Госкаталог № 14576955
+  width: 1600
+  height: 2201
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.3
+    y: 0.1
+    w: 0.45
+    h: 0.4
+  nomer_predmeta: ПИ «П» 85
+  nomer_snimka: '14705374'
+  hranitel: Военно-патриотический музей Московской области, Москва
+  podpis_chto: Проспект «80-летию со дня рождения Героя Российской Федерации Волошиной Веры Даниловны»
+  podpis_gde: Кемерово
+  podpis_kogda: 1999 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Военно-патриотический музей Московской области, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=14705374
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1999'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 14576955
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 14576955
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=14705374
+sources:
+- href: https://warheroes.ru/hero/hero.asp?Hero_id=3289
+  title: «Герои страны». Волошина Вера Даниловна
+  note: к фактам 4, 7, 14 и 15
+- href: https://www.kem.kp.ru/daily/27666/5017533/
+  title: 'Л. Максименко. «„Меня зовут Гора!“: стали известны последние часы советской разведчицы из Кузбасса Веры Волошиной перед казнью», «Комсомольская правда — Кузбасс», 28.11.2024'
+  note: к фактам 1, 2, 4, 6 и 11
+- href: https://www.kem.kp.ru/daily/27698/5087056/
+  title: Л. Максименко. «Белое платье Веры Волошиной», «Комсомольская правда — Кузбасс», 13.05.2025
+  note: к фактам 9 и 15
+- href: https://www.kem.kp.ru/daily/27749.5/5177787/
+  title: Л. Максименко. «Вера сильнее смерти», «Комсомольская правда — Кузбасс», 29.11.2025
+  note: к фактам 11 и 12
+- href: https://www.kem.kp.ru/daily/27759/5189265/
+  title: «Плечо друга», «Комсомольская правда — Кузбасс»
+  note: к факту 1
+- href: https://regions.ru/naro-fominsk/obshchestvo/naro-fominskiy-istoriko-kraevedcheskiy-muzey-poluchil-dokument-rasskazyvayuschiy-o-podvige-very-voloshinoy
+  title: «Наро-Фоминский историко-краеведческий музей получил документ, рассказывающий о подвиге Веры Волошиной», «Регион. Наро-Фоминск»
+  note: к факту 3
+- href: https://www.rubaltic.ru/context/02112022-nashi-vse-ravno-pobedyat-sila-voli-prostoy-razvedchitsy-very-voloshinoy-ee-veli-na-kazn-a-ona-pela/
+  title: '«„Наши все равно победят“: сила воли простой разведчицы Веры Волошиной», RuBaltic.ru, 02.11.2022'
+  note: к фактам 3, 5 и 10
+- href: https://ria.ru/20111129/501268214.html
+  title: «Названая сестра Зои Космодемьянской», РИА Новости, 29.11.2011
+  note: к фактам 6 и 13
+- href: https://aif.ru/society/history/29421
+  title: «Не судьба Веры Волошиной», «Аргументы и факты»
+  note: к факту 8
+- href: https://www.nepsite.ru/articles/byt-history/nasha-partizanka/
+  title: «Наша партизанка», «НЭП. Моя бытейская история»
+  note: к фактам 8 и 15
+- href: https://smi24.news/k-100-letiyu-razvedchiczy-very-voloshinoj-v-muzee-pobedy-otkrylas-vystavka/
+  title: «К 100-летию разведчицы Веры Волошиной в Музее Победы открылась выставка», «Новости Москвы» (smi24.news)
+  note: к фактам 3 и 10
+- href: https://1941-1942.ru/vera-voloshina/
+  title: '«Вера Волошина», «1941–1942: Московская битва»'
+  note: к фактам 2, 8 и 9
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 13 февраля (запись готовится)
+  hook: Стойкость и подвиг день за днём.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Вера Волошина — Музей стойкости и подвига «Русские не сдаются»
+    text: 'Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»'
+  prev:
+    href: index.html
+    title: 11 февраля (запись готовится)
+  next:
+    href: index.html
+    title: 13 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Какое имя крикнула Вера перед казнью?
+  a: Волошина
+proof:
+  status: utverzhdeno
+  note: 'Факты дня утверждены Сергеем (Р752): 10 + 5, хук — факт 1. Взяты дословно из утверждённого списка дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0212-voloshina
+data_sobytiya: '1941-11-29'
+data_uslovnaya: 12 февраля — день музея; событие — казнь Веры Волошиной 29 ноября 1941 года.
+chto_sluchilos: Разведчица Вера Волошина, взятая в плен раненой, не выдала товарищей и была казнена немцами в деревне Головково.
+god: 1941
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Скульптура «Петух». Детская игрушка Веры Даниловны Волошиной
+  muzej: Кузбасский государственный краеведческий музей
+  gorod: Кемерово
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12320708
+- chto: Вера Даниловна Волошина, рядовая, комсорг разведывательно-диверсионной группы
+  muzej: Государственный музей обороны Москвы
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=37938349
+- chto: Партизанка-разведчица Вера Волошина
+  muzej: Музей «Новый Иерусалим»
+  gorod: Истра
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=67529841
+- chto: Мемориальная доска, посвящённая памяти героини-партизанки В. Волошиной
+  muzej: Мытищинский историко-художественный музей
+  gorod: Мытищи
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=45900792
+chitat_dalshe:
+- nazvanie: Г. Фролов. «Наша Вера»
+  gde: Национальная электронная библиотека
+  ssylka: https://rusneb.ru/catalog/005664_000048_039519/
+- nazvanie: Г. Фролов. «Юрий Двужильный. Вера Волошина»
+  gde: Национальная электронная библиотека
+  ssylka: https://rusneb.ru/catalog/000200_000018_GAK_3366686/
+- nazvanie: Волошина Вера Даниловна
+  gde: «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=3289
+- nazvanie: «Названая сестра Зои Космодемьянской»
+  gde: РИА Новости
+  ssylka: https://ria.ru/20111129/501268214.html
+istochniki:
+- id: n1
+  baza: sajt-organizacii
+  nazvanie: «Герои страны». Волошина Вера Даниловна
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=3289
+- id: n2
+  baza: periodika
+  nazvanie: 'Л. Максименко. «„Меня зовут Гора!“: стали известны последние часы советской разведчицы из Кузбасса Веры Волошиной перед казнью», «Комсомольская правда — Кузбасс», 28.11.2024'
+  ssylka: https://www.kem.kp.ru/daily/27666/5017533/
+- id: n3
+  baza: periodika
+  nazvanie: Л. Максименко. «Белое платье Веры Волошиной», «Комсомольская правда — Кузбасс», 13.05.2025
+  ssylka: https://www.kem.kp.ru/daily/27698/5087056/
+- id: n4
+  baza: periodika
+  nazvanie: Л. Максименко. «Вера сильнее смерти», «Комсомольская правда — Кузбасс», 29.11.2025
+  ssylka: https://www.kem.kp.ru/daily/27749.5/5177787/
+- id: n5
+  baza: periodika
+  nazvanie: «Плечо друга», «Комсомольская правда — Кузбасс»
+  ssylka: https://www.kem.kp.ru/daily/27759/5189265/
+- id: n6
+  baza: periodika
+  nazvanie: «Наро-Фоминский историко-краеведческий музей получил документ, рассказывающий о подвиге Веры Волошиной», «Регион. Наро-Фоминск»
+  ssylka: https://regions.ru/naro-fominsk/obshchestvo/naro-fominskiy-istoriko-kraevedcheskiy-muzey-poluchil-dokument-rasskazyvayuschiy-o-podvige-very-voloshinoy
+- id: n7
+  baza: periodika
+  nazvanie: '«„Наши все равно победят“: сила воли простой разведчицы Веры Волошиной», RuBaltic.ru, 02.11.2022'
+  ssylka: https://www.rubaltic.ru/context/02112022-nashi-vse-ravno-pobedyat-sila-voli-prostoy-razvedchitsy-very-voloshinoy-ee-veli-na-kazn-a-ona-pela/
+- id: n8
+  baza: periodika
+  nazvanie: «Названая сестра Зои Космодемьянской», РИА Новости, 29.11.2011
+  ssylka: https://ria.ru/20111129/501268214.html
+- id: n9
+  baza: periodika
+  nazvanie: «Не судьба Веры Волошиной», «Аргументы и факты»
+  ssylka: https://aif.ru/society/history/29421
+- id: n12
+  baza: periodika
+  nazvanie: «Наша партизанка», «НЭП. Моя бытейская история»
+  ssylka: https://www.nepsite.ru/articles/byt-history/nasha-partizanka/
+- id: n13
+  baza: periodika
+  nazvanie: «К 100-летию разведчицы Веры Волошиной в Музее Победы открылась выставка», «Новости Москвы» (smi24.news)
+  ssylka: https://smi24.news/k-100-letiyu-razvedchiczy-very-voloshinoj-v-muzee-pobedy-otkrylas-vystavka/
+- id: n14
+  baza: periodika
+  nazvanie: '«Вера Волошина», «1941–1942: Московская битва»'
+  ssylka: https://1941-1942.ru/vera-voloshina/
+citaty: []
+velichina_chislo: 7
+velichina_edinica: раз
+velichina_chto: ушла в немецкий тыл и вернулась
+voinskaya_chast: Войсковая часть № 9903 разведывательного отдела штаба Западного фронта
+operaciya: Битва за Москву
+front: Западный фронт
+mesto_sobytiya:
+  nazvanie: Головково
+  shirota: 55.48
+  dolgota: 36.69
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta:
+  nazvanie: Карта РККА 1941 года — деревня Головково под Наро-Фоминском
+  god: 1941
+  otkuda: Это Место — etomesto.com
+  ssylka: https://etomesto.com/map-atlas_rkka/?y=55.48&x=36.69
+marshrut: net
+etiketka_oblozhki:
+- Партизанка-разведчица Вера Волошина
+- Музей «Новый Иерусалим», Истра, Московская область
+slovar:
+- lyudi:vera-voloshina
+vizual:
+  imya: voloshina-foto
+  vid: dokument
+  kicker: Снимок под лупой
+  h2: Вера Волошина
+  lead: 'Старая фотокопия портрета Веры Волошиной из Музея «Новый Иерусалим»: её можно рассмотреть вблизи.'
+audioguide:
+  audioSrc: audio-guide-voloshina-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от разведки под Москвой через засаду и ночь допроса — к казни в Головкове и Звезде Героя: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Семь переходов
+  - t: 25
+    mark: 0:25
+    title: Засада
+  - t: 50
+    mark: 0:50
+    title: Ночь допроса
+  - t: 75
+    mark: '1:15'
+    title: Головково
+  - t: 100
+    mark: '1:40'
+    title: Герой через 53 года
+  transcript:
+  - Осень тысяча девятьсот сорок первого года, немцы под Москвой. Вера Волошина, студентка из Кемерова, служит разведчицей. За месяц она семь раз уходит в немецкий тыл и возвращается.
+  - Двадцать первого ноября группа уходит в восьмой раз. Попав в засаду, разведчики отходят к лесу. Раненная в плечо Вера остаётся ближе всех к немцам и прикрывает отход товарищей из автомата.
+  - Немцы берут её в плен. Всю ночь её пытают — и не слышат ни одного имени. Она называет себя Верой Горой и выдумывает, что она статистка со съёмок фильма.
+  - 'Двадцать девятого ноября в деревне Головково, с петлёй на шее, она поёт «Интернационал», говорит немцам: «Наши всё равно победят» — и кричит: «Я — Волошина!» В тот же день в десяти километрах казнят Зою Космодемьянскую.'
+  - Пятнадцать лет мать считает её пропавшей без вести. Журналист Георгий Фролов находит свидетелей казни. Через пятьдесят три года, в тысяча девятьсот девяносто четвёртом, Вера Волошина становится Героем Российской Федерации.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
