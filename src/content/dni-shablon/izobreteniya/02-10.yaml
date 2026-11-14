@@ -1,0 +1,820 @@
+muzei: izobreteniya
+key: 02-10
+pokazan_sergeyu:
+  data: '2026-11-14'
+nomer_dnya: izob-0210-aerosani
+data_sobytiya: '1904-02-10'
+data_staryj_stil: '1904-01-28'
+chto_sluchilos: Инженер С. С. Неждановский построил первые в мире аэросани — сани с воздушным винтом для передвижения по снегу.
+god: 1904
+god_tochnost: okolo
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: «Винт от аэросаней», 1930-е
+  muzej: Краеведческий музей г. Ломоносова
+  gorod: Ломоносов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18577978
+- chto: Фото «Аэросани конструкции Неждановского. Изучение работы пропеллеров»
+  muzej: Историко-краеведческий музей г. Балашихи
+  gorod: Балашиха
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=22769796
+chitat_dalshe:
+- nazvanie: М. Б. Саукке. «Аэросани в России»
+  gde: famhist.ru
+  ssylka: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+- nazvanie: Н. Г. Бодрихин. «Туполев»
+  gde: серия «Жизнь замечательных людей»
+  ssylka: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
+- nazvanie: «Снежные танки на лыжах — к победе»
+  gde: History.ru
+  ssylka: https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie
+- nazvanie: «Аэросани в боях за Родину»
+  gde: журнал «Моделист-конструктор»
+  ssylka: https://modelist-konstruktor.com/bronekollekcziya/aerosani-v-boyax-za-rodinu
+istochniki:
+- id: saukke-tupolev
+  baza: kniga
+  avtor: М. Б. Саукке
+  nazvanie: «Аэросани в России»
+  ssylka: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+- id: bodrihin-tupolev
+  baza: kniga
+  avtor: Н. Г. Бодрихин
+  nazvanie: «Туполев»
+  ssylka: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
+- id: rokossovskij-soldatskij-dolg
+  baza: militera
+  avtor: К. К. Рокоссовский
+  nazvanie: «Солдатский долг»
+  ssylka: http://militera.lib.ru/memo/russian/rokossovsky/09.html
+- id: bunakov-ladoga
+  baza: militera
+  avtor: С. Я. Бунаков
+  nazvanie: «На Ладоге»
+  ssylka: http://militera.lib.ru/memo/russian/bunakov_sy/02.html
+- id: kommersant-aerosani
+  baza: periodika
+  nazvanie: «Аэросани», «Коммерсантъ»
+  ssylka: https://www.kommersant.ru/doc/4802226
+- id: historyru-snezhnye-tanki
+  baza: periodika
+  nazvanie: «Снежные танки на лыжах — к победе», History.ru
+  ssylka: https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie
+- id: mk-aerosani-v-boyah
+  baza: periodika
+  nazvanie: «Аэросани в боях за Родину», «Моделист-конструктор»
+  ssylka: https://modelist-konstruktor.com/bronekollekcziya/aerosani-v-boyax-za-rodinu
+- id: gk-aerosani
+  baza: goskatalog
+  nazvanie: Фото «Аэросани конструкции Неждановского», Историко-краеведческий музей г. Балашихи, БИКМ КП-576 — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=22769796
+citaty:
+- kto: К. К. Рокоссовский
+  gde: «Солдатский долг»
+  tekst: они приняли аэросани за танки и были поражены, почему же машины как будто летят по глубокому снегу
+  istochnik: rokossovskij-soldatskij-dolg
+velichina_chislo: 70
+velichina_edinica: батальонов
+velichina_chto: столько аэросанных батальонов собрали за войну
+etiketka_oblozhki:
+- «Аэросани уходят в дозор», Ленинград, 1941–1944
+- Государственный мемориальный музей обороны и блокады Ленинграда
+slovar:
+- mesto:moskva
+head:
+  title: Аэросани, первые в мире · начало XX века — Музей «Что изобрели русские первыми в мире»
+  description: 'Инженер Неждановский в 1904 году построил первые в мире аэросани: пропеллер гонит сани по снегу без колёс и гусениц.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-10/
+  sobytie: Аэросани Неждановского
+  god: '1904'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Аэросани, первые в мире · начало XX века
+    description: 'Инженер Неждановский в 1904 году построил первые в мире аэросани: пропеллер гонит сани по снегу без колёс и гусениц.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-10/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-10-goskatalog-11457902.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Аэросани, первые в мире · начало XX века
+    description: 'Инженер Неждановский в 1904 году построил первые в мире аэросани: пропеллер гонит сани по снегу без колёс и гусениц.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-10/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-10-goskatalog-11457902.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-10-goskatalog-11457902.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.25
+    w: 0.6
+    h: 0.6
+  width: 1600
+  height: 1150
+  alt: Боевые аэросани с пропеллером сзади уходят по снегу в дозор
+  data_source: https://goskatalog.ru/portal/#/collections?id=11457902
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Государственный мемориальный музей обороны и блокады Ленинграда · Госкаталог
+  podpis: «Аэросани уходят в дозор» (Ленинград), 1941–1944. Хранит Государственный мемориальный музей обороны и блокады Ленинграда, Санкт-Петербург.
+  credit: 'Фото: автор не указан. Хранится: Государственный мемориальный музей обороны и блокады Ленинграда (ГММОБЛ КП 13711, инв. № ФФ 1681). Госкаталог музейного фонда РФ, рег. № 11348449.'
+  hint: Фото · аэросани под Ленинградом
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1941–1944
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 11348449
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11457902
+  nomer_predmeta: '11348449'
+  nomer_snimka: ФФ 1681
+  hranitel: Государственный мемориальный музей обороны и блокады Ленинграда
+  podlinnik:
+    gde: Государственный мемориальный музей обороны и блокады Ленинграда
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11457902
+  svyashchennoe: false
+  podpis_chto: «Аэросани уходят в дозор»
+  podpis_gde: Ленинград
+  podpis_kogda: 1941–1944
+kroshka: 10 февраля · Аэросани
+lead:
+  data: 1904 · Россия, инженер С. С. Неждановский
+  privyazka: Первые аэросани Неждановский построил в 1904 году.
+  kto: Сергей Сергеевич Неждановский, инженер
+  h1: Аэросани, первые в мире · начало XX века
+  hook: 'Там, где есть только снег, Россия сделала машину без колёс и гусениц: пропеллер гонит сани по насту быстрее автомобиля'
+stamp:
+- v: '1904'
+  k: первые в мире аэросани
+- v: 74,7 км/ч
+  k: сани Сикорского, 1910
+- v: '70'
+  k: аэросанных батальонов за войну
+- v: 2,1 тысячи
+  k: боевых и транспортных машин
+daynav:
+- id: story
+  label: Изобретение
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+story:
+  kicker: История изобретения
+  h2: Как появились аэросани
+  udary:
+  - summary: Сани с пропеллером
+    det:
+    - Первые в мире аэросани построил русский инженер Неждановский в 1904 году
+    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+  - summary: Студенческий рекорд
+    det:
+    - Студент Сикорский в 1910 разогнал сани до 74,7 км/ч на моторе в 30 сил
+    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+  - summary: Сани идут в бой
+    det:
+    - За войну собрали 70 аэросанных батальонов — 2,1 тысячи машин от Москвы до Сталинграда
+    src: 'Источник: «Аэросани», «Коммерсантъ» — kommersant.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что изобрели
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: как если бы горстка машин за минуты разогнала целый батальон
+    kadr:
+      src: /muzei/izobreteniya/img/02-10-goskatalog-16510607.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.1
+        w: 0.6
+        h: 0.8
+      width: 800
+      height: 303
+      alt: Командир стоит перед строем экипажей у аэросаней на снегу
+      data_source: https://goskatalog.ru/portal/#/collections?id=16510607
+      license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Музей современной истории России · Госкаталог
+      podpis: «Капитан Прохотилов ставит боевую задачу экипажам аэросаней», январь 1944. Хранит Музей современной истории России, Москва.
+      credit: 'Фото: автор не указан. Хранится: Музей современной истории России (ГЦМСИР ГИК 29778/62). Госкаталог музейного фонда РФ, рег. № 16378539.'
+      hint: Фото · экипажи аэросаней, 1944
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: январь 1944
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 16378539
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=16510607
+      nomer_predmeta: '16378539'
+      nomer_snimka: ГЦМСИР ГИК 29778/62
+      hranitel: Музей современной истории России
+      podlinnik:
+        gde: Музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=16510607
+      svyashchennoe: false
+      podpis_chto: «Капитан Прохотилов ставит боевую задачу экипажам аэросаней»
+      podpis_gde: фронт
+      podpis_kogda: январь 1944
+    src: 'Источник: К. К. Рокоссовский, «Солдатский долг» — militera.lib.ru'
+    otryvok: Рота моментально выдвинулась в район, занятый немецкими лыжниками, развернулась и с ходу атаковала, ведя огонь из четырнадцати своих пулеметов.
+    stranica: «Солдатский долг», глава 9
+    href: http://militera.lib.ru/memo/russian/rokossovsky/09.html
+    pometka: документ
+    id: rota-14-pulemyotov
+    istochnik: rokossovskij-soldatskij-dolg
+    dlya_voprosa: true
+    otvet: '14'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    otryvok: Третьи сани, которые вошли в Кронштадт, были награждены орденом Красного Знамени.
+    stranica: «Аэросани в России»
+    href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+    pometka: документ
+    id: orden-sanyam
+    istochnik: saukke-tupolev
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    src: 'Источник: К. К. Рокоссовский, «Солдатский долг» — militera.lib.ru'
+    otryvok: 'Взятые в этой стычке пленные в один голос говорили, что эта атака их ошеломила: они приняли аэросани за танки и были поражены, почему же машины как будто летят по глубокому снегу.'
+    stranica: «Солдатский долг», глава 9
+    href: http://militera.lib.ru/memo/russian/rokossovsky/09.html
+    pometka: документ
+    id: za-tanki
+    istochnik: rokossovskij-soldatskij-dolg
+    dlya_voprosa: true
+    otvet: за танки
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: как если бы автомобиль для снега придумали раньше, чем дороги для автомобиля
+    kadr:
+      src: /muzei/izobreteniya/img/02-10-goskatalog-22769796.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.2
+        w: 0.6
+        h: 0.6
+      width: 800
+      height: 727
+      alt: Ранние аэросани Неждановского с пропеллером на раме
+      data_source: https://goskatalog.ru/portal/#/collections?id=22769796
+      license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Историко-краеведческий музей г. Балашихи · Госкаталог
+      podpis: «Аэросани конструкции Неждановского. Изучение работы пропеллеров». Хранит Историко-краеведческий музей г. Балашихи, Балашиха.
+      credit: 'Фото: автор не указан. Хранится: Историко-краеведческий музей г. Балашихи (БИКМ КП-576, инв. № ФАВ-159). Госкаталог музейного фонда РФ, рег. № 22634758.'
+      hint: Фото · аэросани Неждановского
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: не указан
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 22634758
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=22769796
+      nomer_predmeta: '22634758'
+      nomer_snimka: ФАВ-159
+      hranitel: Историко-краеведческий музей г. Балашихи
+      podlinnik:
+        gde: Историко-краеведческий музей г. Балашихи
+        otkuda: https://goskatalog.ru/portal/#/collections?id=22769796
+      svyashchennoe: false
+      podpis_chto: «Аэросани конструкции Неждановского. Изучение работы пропеллеров»
+      podpis_gde: не указано
+      podpis_kogda: не указано
+    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    otryvok: В 1904 г. инженером С.С. Неждановским был сконструирован аппарат, ставший вскоре незаменимым транспортным средством для передвижения по снежным покровам.
+    stranica: «Аэросани в России»
+    href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+    pometka: документ
+    id: nezhdanovskij-1904
+    istochnik: saukke-tupolev
+    dlya_voprosa: true
+    otvet: '1904'
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    otryvok: И.И. Сикорский и Ф.И. Былинкин построили аэросани с авиационным двигателем воздушного охлаждения "Анзани" мощностью в 30 л. с., что позволило развить скорость до 74,7 км/ч.
+    stranica: «Аэросани в России»
+    href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+    pometka: документ
+    id: sikorskij-747
+    istochnik: saukke-tupolev
+    dlya_voprosa: true
+    otvet: 74,7 км/ч
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    otryvok: Аэросани АНТ-III стали первыми цельнометаллическими санями.
+    stranica: «Туполев»
+    href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
+    pometka: документ
+    id: ant-iii
+    istochnik: bodrihin-tupolev
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: С. Я. Бунаков, «На Ладоге» — militera.lib.ru'
+    otryvok: Вы должны провести в эту точку аэросанный батальон, посадить на сани разведчиков и пленных и возвратиться тем же маршрутом…
+    stranica: воспоминания, глава 2
+    href: http://militera.lib.ru/memo/russian/bunakov_sy/02.html
+    pometka: документ
+    id: ladoga-za-noch
+    istochnik: bunakov-ladoga
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: как если бы целый автопарк большого города встал на лыжи
+    kadr:
+      src: /muzei/izobreteniya/img/02-10-goskatalog-5988999.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.2
+        w: 0.6
+        h: 0.6
+      width: 800
+      height: 501
+      alt: Колонна аэросаней идёт по заснеженной улице города
+      data_source: https://goskatalog.ru/portal/#/collections?id=5988999
+      license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Музей современной истории России · Госкаталог
+      podpis: «Аэросани проходят через город Гжатск», март 1943. Хранит Музей современной истории России, Москва.
+      credit: 'Фото: автор не указан. Хранится: Музей современной истории России (18787/61). Госкаталог музейного фонда РФ, рег. № 5812610.'
+      hint: Фото · аэросани в Гжатске, 1943
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: март 1943
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 5812610
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=5988999
+      nomer_predmeta: '5812610'
+      nomer_snimka: 18787/61
+      hranitel: Музей современной истории России
+      podlinnik:
+        gde: Музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=5988999
+      svyashchennoe: false
+      podpis_chto: «Аэросани проходят через город Гжатск»
+      podpis_gde: Гжатск
+      podpis_kogda: март 1943
+    src: 'Источник: «Аэросани», «Коммерсантъ» — kommersant.ru'
+    otryvok: Всего в 1941–1944 гг. было сформировано 70 аэросанных боевых и транспортных батальонов — это 2,1 тыс. машин.
+    stranica: «Коммерсантъ»
+    href: https://www.kommersant.ru/doc/4802226
+    pometka: документ
+    id: 70-batalonov
+    istochnik: kommersant-aerosani
+    dlya_voprosa: true
+    otvet: '70'
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    otryvok: Двое саней погибли, попав в проруби. Третьи сани, которые вошли в Кронштадт, были награждены орденом Красного Знамени.
+    stranica: «Аэросани в России»
+    href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+    pometka: документ
+    id: dvoe-pod-lyod
+    istochnik: saukke-tupolev
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    otryvok: Еще 28 августа 1919 года Совет обороны предложил ЦАГИ построить серию аэросаней, подтвердив заказ не только революционной необходимостью, но и существенным пайком, так необходимым в голодной тогда стране.
+    stranica: «Туполев»
+    href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
+    pometka: документ
+    id: payok-1919
+    istochnik: bodrihin-tupolev
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про сани Туполева и войну
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    otryvok: Для проведения работы выделяется 9 миллионов рублей, из них один миллион - немедленно.
+    stranica: «Аэросани в России»
+    href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+    pometka: документ
+    id: kompas
+    istochnik: saukke-tupolev
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: «Снежные танки на лыжах — к победе», History.ru — history.ru'
+    otryvok: Боевая машина при необходимости могла тащить на буксире до двух десятков лыжников.
+    stranica: History.ru
+    href: https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie
+    pometka: документ
+    id: buksir-lyzhnikov
+    istochnik: historyru-snezhnye-tanki
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    otryvok: В 1926 году он принял участие в пробеге Москва — Ленинград — Москва за штурвалом аэросаней AHT-V.
+    stranica: «Туполев»
+    href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
+    pometka: документ
+    id: tupolev-za-rulyom
+    istochnik: bodrihin-tupolev
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    otryvok: Аэросани АНТ-IV экспонировались на международной выставке в Берлине в 1928 году.
+    stranica: «Туполев»
+    href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
+    pometka: документ
+    id: berlin-1928
+    istochnik: bodrihin-tupolev
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: как если бы танку поставили сердце от учебной «кукурузницы»
+    kadr:
+      src: /muzei/izobreteniya/img/02-10-goskatalog-18577978.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.8
+      width: 213
+      height: 800
+      alt: Чёрный двухлопастный деревянный винт от аэросаней
+      data_source: https://goskatalog.ru/portal/#/collections?id=18577978
+      license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Краеведческий музей г. Ломоносова · Госкаталог
+      podpis: «Винт от аэросаней» (Нижний Новгород), 1930-е. Хранит Краеведческий музей г. Ломоносова, Ломоносов.
+      credit: 'Фото предмета: автор не указан. Хранится: Краеведческий музей г. Ломоносова (ЛКМ КП 3770, инв. № ИТ ЛКМ-37). Госкаталог музейного фонда РФ, рег. № 18439400.'
+      hint: Предмет · винт от аэросаней
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1930-е
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 18439400
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=18577978
+      nomer_predmeta: '18439400'
+      nomer_snimka: ИТ ЛКМ-37
+      hranitel: Краеведческий музей г. Ломоносова
+      podlinnik:
+        gde: Краеведческий музей г. Ломоносова
+        otkuda: https://goskatalog.ru/portal/#/collections?id=18577978
+      svyashchennoe: false
+      podpis_chto: «Винт от аэросаней»
+      podpis_gde: Нижний Новгород
+      podpis_kogda: 1930-е
+    src: 'Источник: «Снежные танки на лыжах — к победе», History.ru — history.ru'
+    otryvok: Так вот, НКЛ это Наркомлес, Народный комиссариат лесной промышленности… Позади у него располагался авиамотор М-11 от учебного самолета У-2.
+    stranica: History.ru
+    href: https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie
+    pometka: документ
+    id: nkl-26
+    istochnik: historyru-snezhnye-tanki
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Трое саней — три первенства
+  pravilo_ru: 'Что сделать сейчас: выбери сани и нажми на то, чем они прославились.'
+  kak_igrat:
+    zachem: 'Аэросани прошли путь от первой модели до боевых машин: у каждых саней — своё первенство.'
+    shagi:
+    - Выбери сани — кнопка загорится золотом.
+    - Нажми на то, чем они прославились. Верный выбор загорится зелёным.
+    - Расставь все три — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все трое саней на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: pervye
+      nazvanie: Первые в мире аэросани
+      verno_ru: Первые в мире аэросани построил русский инженер Неждановский в 1904 году.
+    - kod: metall
+      nazvanie: Первые цельнометаллические сани
+      verno_ru: Туполев сделал цельнометаллические сани АНТ-III раньше, чем свои металлические самолёты.
+    - kod: u2
+      nazvanie: Боевые сани с мотором от У-2
+      verno_ru: Боевые сани НКЛ-26 придумал Наркомлес, а сердце им дал мотор учебного самолёта У-2.
+    podpisi:
+    - kod: nezhd
+      tekst: Сани Неждановского, 1904
+      mesto: pervye
+      mimo_ru: Неждановский — тот, кто начал первым.
+    - kod: ant3
+      tekst: АНТ-III Туполева
+      mesto: metall
+      mimo_ru: Туполев проверял на санях металл для будущих самолётов.
+    - kod: nkl26
+      tekst: НКЛ-26
+      mesto: u2
+      mimo_ru: НКЛ-26 — военные сани Наркомлеса.
+    vyberi_ru: Сначала выбери сани, потом первенство.
+    mimo_ru: Не то первенство — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все трое саней на месте — Неждановский, Туполев и Наркомлес.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: сани Неждановского — первые в мире, АНТ-III — первые цельнометаллические, НКЛ-26 — боевые сани с мотором от У-2.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Первые в мире аэросани построил русский инженер Неждановский в 1904 году.'
+  net: 'Где граница: первым стал аппарат Неждановского 1904 года; схема с толкающим винтом сзади стала главной в аэросаностроении позже.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Россия
+    - аэросани инженера С. С. Неждановского
+    - '1904'
+  - - Киев
+    - сани Сикорского и Былинкина — 74,7 км/ч
+    - '1910'
+  - - Москва
+    - цельнометаллические сани АНТ-III Туполева
+    - 1920-е
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: в 1904 году; 74,7 км/ч; за танки; 70; сами сани.'
+  ball: 8
+  voprosy:
+  - q: В каком году Неждановский построил первые в мире аэросани?
+    o:
+    - в 1904 году
+    - в 1924 году
+    - в 1941 году
+    a: 0
+    e: Первые в мире аэросани построил русский инженер Неждановский в 1904 году.
+  - q: До какой скорости Сикорский разогнал сани в 1910 году?
+    o:
+    - 20 км/ч
+    - 74,7 км/ч
+    - 200 км/ч
+    a: 1
+    e: Студент Сикорский в 1910 разогнал сани до 74,7 км/ч на моторе в 30 сил.
+  - q: За что пленные немцы приняли аэросани?
+    o:
+    - за самолёты
+    - за танки
+    - за грузовики
+    a: 1
+    e: Пленные немцы приняли аэросани за танки, летящие по глубокому снегу.
+  - q: Сколько аэросанных батальонов собрали за войну?
+    o:
+    - '7'
+    - '70'
+    - '700'
+    a: 1
+    e: За войну собрали 70 аэросанных батальонов — 2,1 тысячи машин от Москвы до Сталинграда.
+  - q: Кто получил орден Красного Знамени под Кронштадтом?
+    o:
+    - сами сани
+    - конструктор
+    - завод
+    a: 0
+    e: Орденом Красного Знамени наградили сами аэросани, прорвавшиеся по льду в Кронштадт.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал аэросаней.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-10-goskatalog-21997980.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.2
+    w: 0.6
+    h: 0.6
+  width: 800
+  height: 514
+  alt: Санитарные аэросани на снегу, привязанные тросом к грузовику
+  data_source: https://goskatalog.ru/portal/#/collections?id=21997980
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Г. И. Чертов · Государственный музей истории Санкт-Петербурга · Госкаталог
+  podpis: «Волховский фронт. Аэросани для транспортировки раненых бойцов», зима 1942. Хранит Государственный музей истории Санкт-Петербурга, Санкт-Петербург.
+  credit: 'Фото: Г. И. Чертов. Хранится: Государственный музей истории Санкт-Петербурга (ГМИ СПб 222148, инв. № II-А-1220 н). Госкаталог музейного фонда РФ, рег. № 21865376.'
+  hint: Фото · санитарные аэросани, 1942
+  vid: foto
+  prava:
+    avtor: Чертов Г. И.
+    god_sozdaniya: зима 1942
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=21997980
+  nomer_predmeta: '21865376'
+  nomer_snimka: II-А-1220 н
+  hranitel: Государственный музей истории Санкт-Петербурга
+  podlinnik:
+    gde: Государственный музей истории Санкт-Петербурга
+    otkuda: https://goskatalog.ru/portal/#/collections?id=21997980
+  svyashchennoe: false
+  podpis_chto: «Волховский фронт. Аэросани для транспортировки раненых бойцов»
+  podpis_gde: Волховский фронт
+  podpis_kogda: зима 1942
+- src: /muzei/izobreteniya/img/02-10-goskatalog-22486321.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.2
+    w: 0.6
+    h: 0.6
+  width: 1463
+  height: 929
+  alt: Люди в зимней одежде осматривают аэросани на льду Волги
+  data_source: https://goskatalog.ru/portal/#/collections?id=22486321
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · «Музеи города Юрьевца» · Госкаталог
+  podpis: «Участники Всесоюзного аэросанного пробега при осмотре аэросаней на р. Волге» (г. Юрьевец, река Волга), 1929. Хранит «Музеи города Юрьевца», Юрьевец.
+  credit: 'Фото: автор не указан. Хранится: «Музеи города Юрьевца» (ЮКМ 134/3, инв. № ДФ1 5). Госкаталог музейного фонда РФ, рег. № 22345725.'
+  hint: Фото · аэросанный пробег, 1929
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1929'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 22345725
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=22486321
+  nomer_predmeta: '22345725'
+  nomer_snimka: ДФ1 5
+  hranitel: «Музеи города Юрьевца»
+  podlinnik:
+    gde: «Музеи города Юрьевца»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=22486321
+  svyashchennoe: false
+  podpis_chto: «Участники Всесоюзного аэросанного пробега при осмотре аэросаней на р. Волге»
+  podpis_gde: г. Юрьевец, река Волга
+  podpis_kogda: '1929'
+- src: /muzei/izobreteniya/img/02-10-goskatalog-10305180.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.2
+    w: 0.6
+    h: 0.6
+  width: 800
+  height: 521
+  alt: Аэросани «Амфибия» с закрытой кабиной на снегу
+  data_source: https://goskatalog.ru/portal/#/collections?id=10305180
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Музейный центр «Наследие Чукотки» · Госкаталог
+  podpis: «Аэросани „Амфибия“ проходимы по снегу, воде, тонкому льду» (Чукотка), 1966. Хранит Музейный центр «Наследие Чукотки», Анадырь.
+  credit: 'Фото: автор не указан. Хранится: Музейный центр «Наследие Чукотки» (ЧОКМ-2755/741, инв. № Ф-1768). Госкаталог музейного фонда РФ, рег. № 10198880.'
+  hint: Фото · аэросани «Амфибия», 1966
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1966'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 10198880
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10305180
+  nomer_predmeta: '10198880'
+  nomer_snimka: Ф-1768
+  hranitel: Музейный центр «Наследие Чукотки»
+  podlinnik:
+    gde: Музейный центр «Наследие Чукотки»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10305180
+  svyashchennoe: false
+  podpis_chto: «Аэросани „Амфибия“ проходимы по снегу, воде, тонкому льду»
+  podpis_gde: Чукотка
+  podpis_kogda: '1966'
+sources:
+- href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+  title: М. Б. Саукке, «Аэросани в России»
+  note: факты дня
+- href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
+  title: Н. Г. Бодрихин, «Туполев»
+  note: факты дня
+- href: http://militera.lib.ru/memo/russian/rokossovsky/09.html
+  title: К. К. Рокоссовский, «Солдатский долг»
+  note: факты дня
+- href: http://militera.lib.ru/memo/russian/bunakov_sy/02.html
+  title: С. Я. Бунаков, «На Ладоге»
+  note: факты дня
+- href: https://www.kommersant.ru/doc/4802226
+  title: «Аэросани», «Коммерсантъ»
+  note: факты дня
+- href: https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie
+  title: «Снежные танки на лыжах — к победе», History.ru
+  note: факты дня
+- href: https://modelist-konstruktor.com/bronekollekcziya/aerosani-v-boyax-za-rodinu
+  title: «Аэросани в боях за Родину», «Моделист-конструктор»
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=22769796
+  title: 'Госкаталог музейного фонда РФ: фото и предметы об аэросанях'
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-11/
+  title: 11 февраля — Первый в мире морской гидросамолёт (летающая лодка М-5)
+  hook: Григорович превратил корпус самолёта в лодку, и машина стала взлетать прямо с черноморской волны, без аэродрома
+  main: true
+- lbl: Предыдущий день
+  href: den/02-09/
+  title: 9 февраля — Первая в мире связь солнечной активности с волнами эпидемий
+  hook: Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Мастер аэросаней
+  - - 70
+    - Водитель аэросанного батальона
+  - - 40
+    - Механик пропеллера
+  - - 0
+    - Гость дня
+return:
+  q: Почему пленные приняли аэросани за танки?
+  a: Пленные немцы приняли аэросани за танки, летящие по глубокому снегу.
+  src: К. К. Рокоссовский, «Солдатский долг», militera.lib.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-10-aerosani:claim-1904
+  ours:
+    kind: publication
+    title: «Сани с воздушным винтом для передвижения по снегу», журнал «Воздухоплаватель»
+    date: '1905'
+    holder: М. Б. Саукке, «Аэросани в России», famhist.ru
+    source_url: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
+podskazki_igry:
+- Кто начал первым — тот и первый в мире
+- Металл Туполев сначала проверял на санях
+- Наркомлес — это лесной наркомат военных лет
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya: mesto:moskva
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Сани стоят на лыжах — им не нужны ни колёса, ни гусеницы
+- Сзади на раме стоит мотор с воздушным винтом
+- Винт толкает воздух назад, и сани скользят вперёд по насту
+- Чем легче сани и сильнее мотор, тем быстрее они идут по снегу
+data_uslovnaya: 10 февраля — день музея; точный день, когда Неждановский построил аэросани в 1904 году, в источниках не назван.
