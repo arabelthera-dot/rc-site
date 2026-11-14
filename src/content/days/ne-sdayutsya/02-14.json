@@ -5,5 +5,70 @@
   "year": 1986,
   "hook": "Тушили реактор, зная, что идут на смерть — и не ушли",
   "mechanic": "Листает ночь 26 апреля 1986-го: час за часом, что делали пожарные первой смены и что в это время знал мир.",
-  "gist": "первая смена пожарных в ночь аварии приняла на себя смертельные дозы."
+  "gist": "первая смена пожарных в ночь аварии приняла на себя смертельные дозы.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "пожарные Чернобыля, первая смена",
+      "Чернобыля"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Футболка, с изображением монумента памяти погибшим в результате катастрофы на Чернобыльско",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8840394",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14172651",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8725195 (карточка 8840394, инв. —) | 2000-е - 2010-е гг. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Чернобыля"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Знак  президиума ЦС Союза \"Чернобыль России\", в память о ликвидации последствий катастрофы",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19859818",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20520006",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19809021 (карточка 19859818, инв. Н-525) | 2006 г. | хранится: МУ \"БКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Чернобыля"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Удостоверение к знаку \"В память о катастрофе  на Чернобыльской АЭС. 30 лет\" на имя Данилев",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19944242",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20652526",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19812317 (карточка 19944242, инв. —) | 2016 | хранится: МБУ \"Крымский краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Чернобыля"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Знак  \"В память о катастрофе на Чернобыльской АЭС. 20 лет\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19944356",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20652657",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19812314 (карточка 19944356, инв. —) | не  определено | хранится: МБУ \"Крымский краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Чернобыля"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Удостоверение к знаку \"В память о катастрофе на  Чернобыльской АЭС. 20 лет\" на имя Данилев",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19944460",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20652687",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19812313 (карточка 19944460, инв. —) | 2008 | хранится: МБУ \"Крымский краеведческий музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Чернобыля"
+      }
+    ]
+  }
 }

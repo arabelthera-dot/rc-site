@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-06",
   "title": "Угольный противогаз",
-  "hook": "Спасение от боевого газа нашлось в печке: прокалённый берёзовый уголь держал отраву лучше любой химии того времени"
+  "hook": "Спасение от боевого газа нашлось в печке: прокалённый берёзовый уголь держал отраву лучше любой химии того времени",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Угольный противогаз",
+      "противогаз"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Противогаз угольный (?) с маской.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=4698082",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/1780642",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 4675155 (карточка 4698082, инв. 6908 ор) | 1916-1917 гг. | хранится: Исторический музей; Государственный исторический музей; ГИМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Угольный противогаз"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Противогаз фильтрующий угольный М-VI 68-55Д II-6М.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10351240",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7426423",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10246184 (карточка 10351240, инв. —) | Апрель 1968 г. | хранится: МОГАУК \"МОКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Угольный противогаз"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фильтр (угольный) для противогаза",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=36487756",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/43723571",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 36275094 (карточка 36487756, инв. 1283) | 1978 г. | хранится: ОГБУК \"Смоленский государственный музей-заповедник\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Угольный противогаз"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "В. С. Садиков и изобретатели угольного противогаза Н. Д. Зелинский и Э. Л. Куммант с групп",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=47518210",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/58837333",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 47275856 (карточка 47518210, инв. ГМИ СПб Инв.№-II-А-16544 ф) | 1916 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Угольный противогаз"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "В. С. Садиков и изобретатели угольного противогаза Н. Д. Зелинский и Э. Л. Куммант с групп",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=47518235",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/58837342",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 47275847 (карточка 47518235, инв. ГМИ СПб Инв.№-II-А-16538 ф) | 1916 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Угольный противогаз"
+      }
+    ]
+  }
 }

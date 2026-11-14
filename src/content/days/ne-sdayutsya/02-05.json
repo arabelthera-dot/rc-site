@@ -5,5 +5,70 @@
   "year": 1941,
   "hook": "Первый ночной таран — в темноте пошёл на врага лоб в лоб",
   "mechanic": "Видит ночную трассу полёта Талалихина над Подмосковьем — точку тарана и место, где он приземлился.",
-  "gist": "лётчик сбил бомбардировщик тараном ночью и выжил. Герой Советского Союза."
+  "gist": "лётчик сбил бомбардировщик тараном ночью и выжил. Герой Советского Союза.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Виктор Талалихин",
+      "Талалихин"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Памятник летчику Виктору Талалихину на улице его имени в Москве. Фотография",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12097579",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/9779849",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11978921 (карточка 12097579, инв. —) | 2001-2003 гг. | хранится: ГБУК города Москвы \"Музейное объединение \"Музей Москвы\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Виктор Талалихин"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Книга. \"Виктор Талалихин\".",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12542191",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14171558",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 12419307 (карточка 12542191, инв. —) | 1961 г. | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Виктор Талалихин"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография \"Виктор Талалихин возле протараненного им фашистского бомбардировщика \"Хейнкель",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20011547",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20764578",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 20102447 (карточка 20011547, инв. —) | 2-я половина ХХ в. | хранится: МБУК \"МПЛК\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Виктор Талалихин"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография \"Виктор Талалихин Герой Советского Союза\"",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20014183",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20766033",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 20102446 (карточка 20014183, инв. —) | 2-я половина ХХ в. | хранится: МБУК \"МПЛК\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Виктор Талалихин"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Сумка полевая Героя Советского Союза Талалихина Виктора Васильевича.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=21670617",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/23058040",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 21538845 (карточка 21670617, инв. 2/4025) | Первая половина XX века | хранится: ФГБУ \"ЦМВС РФ\" Минобороны России | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Виктор Талалихин"
+      }
+    ]
+  }
 }

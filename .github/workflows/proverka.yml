@@ -24,7 +24,7 @@ jobs:
   # сборка или эта проверка (package.json, astro.config.mjs, src/, proverka.yml), и то, что он подключает, — со сборкой.
   # Ручной запуск и заявка больше 3000 файлов — всегда со сборкой. Откат — убрать задание filtr и строки needs/if с ним.
   filtr:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 3
     outputs:
       sborka: ${{ steps.f.outputs.sborka }}
@@ -76,7 +76,7 @@ jobs:
           echo "Файлов в заявке: $vsego; полная сборка: $sborka" | tee -a "$GITHUB_STEP_SUMMARY"
           echo "sborka=$sborka" >> "$GITHUB_OUTPUT"
   bez-sborki:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -108,7 +108,7 @@ jobs:
   sborka:
     needs: filtr
     if: needs.filtr.outputs.sborka == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 15
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
@@ -183,7 +183,7 @@ jobs:
   proverki-dist:
     needs: [filtr, sborka]
     if: needs.filtr.outputs.sborka == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -211,7 +211,7 @@ jobs:
   brauzer:
     needs: [filtr, sborka]
     if: needs.filtr.outputs.sborka == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     # 25, не 15 (27.10.2026): oshibki-js ~3,5, glazami ~2,5, Lighthouse обрывался на 15-й минуте (#515, #516, #520).
     # 45, не 25 (r561, 06.11.2026): prohod-igr проходит все игры и съедает свои 10; oshibki-js обрывался на 25-й (#876).
     timeout-minutes: 45
@@ -273,7 +273,7 @@ jobs:
   sborka-i-ssylki:
     needs: [filtr, bez-sborki, sborka, proverki-dist, brauzer]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 2
     steps:
       - name: итог — все задания зелёные

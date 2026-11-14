@@ -2,5 +2,69 @@
   "museum": "izobreteniya",
   "key": "02-14",
   "title": "Первый в мире монорельс",
-  "hook": "Крепостной мастер Эльманов пустил вагонетки по одному брусу на столбах за полвека до английских патентов"
+  "hook": "Крепостной мастер Эльманов пустил вагонетки по одному брусу на столбах за полвека до английских патентов",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "монорельс"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотокамера \"ОР-3000\" стереоскопическая, павильонная, монорельсовая штативная на форматную",
+        "avtor": "Бонне М. (1907 - 1997 ?)",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7360003",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3285468",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7209147 (карточка 7360003, инв. ФТ 147) | 1961 - 1965 гг. | хранится: Политехнический музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "монорельс"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Монорельсовая подвесная дорога, созданная юными радиотехниками.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=9064354",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/5535619",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8948655 (карточка 9064354, инв. —) | 1964 | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "монорельс"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Dresden - Loschwitz - Schwebebahn. (Дрезден - Лошвиц. Подвесная монорельсовая дорога).",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12417550",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/10241443",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 12294402 (карточка 12417550, инв. —) | После 1905 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "монорельс"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Loschwitz b. Dresden. Bergschwebebahn mit /…/. (Лошвиц у Дрездена. Горная подвесная моноре",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12417555",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/10241453",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 12294397 (карточка 12417555, инв. —) | После 1905 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "монорельс"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. «№ 2527.  9 июля 1932 г. Рацпредложение инженера  Власова Н.П. Монорельсовая д",
+        "avtor": "не установлен (Фотограф)",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=30298268",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/35150700",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 30119896 (карточка 30298268, инв. —) | 9 июля 1932 г. | хранится: БУ \"Национальный музей РК\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "монорельс"
+      }
+    ]
+  }
 }

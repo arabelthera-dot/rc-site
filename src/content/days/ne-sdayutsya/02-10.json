@@ -5,5 +5,70 @@
   "year": 2016,
   "hook": "Вызвал огонь на себя — «Вызываю огонь на себя»",
   "mechanic": "Слышит последние слова Прохоренко по рации — и что о них сказали его командиры.",
-  "gist": "офицер в Сирии в окружении навёл удар на свои координаты. Герой России (посмертно)."
+  "gist": "офицер в Сирии в окружении навёл удар на свои координаты. Герой России (посмертно).",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Александр Прохоренко",
+      "Прохоренко"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография цветная. Герой РФ Александр Прохоренко",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11109779",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8464488",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11019698 (карточка 11109779, инв. —) | - | хранится: МБУ МИО | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Прохоренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография цветная. Александр Прохоренко",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11137180",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8498265",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11019708 (карточка 11137180, инв. —) | первая половина 21 века | хранится: МБУ МИО | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Прохоренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография цветная. Александр Прохоренко  со своим классом",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11137298",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8498429",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11019707 (карточка 11137298, инв. —) | конец 20 начало 21 века | хранится: МБУ МИО | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Прохоренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография цветная. Александр Прохоренко со своими товарищами",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11137345",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8498484",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11019706 (карточка 11137345, инв. —) | 1997 год | хранится: МБУ МИО | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Прохоренко"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография цветная. Александр Прохоренко со своими товарищами",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11137515",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8498673",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11019705 (карточка 11137515, инв. —) | первая половина 21 века | хранится: МБУ МИО | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Александр Прохоренко"
+      }
+    ]
+  }
 }

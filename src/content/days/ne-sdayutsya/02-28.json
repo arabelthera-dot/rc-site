@@ -5,5 +5,70 @@
   "year": 1941,
   "hook": "Партизанка под пытками не выдала товарищей",
   "mechanic": "В тылу врага выбирает за Лизу Чайкину — уйти или выполнить задание до конца — и видит, как было.",
-  "gist": "разведчица и секретарь райкома, казнена. Герой Советского Союза."
+  "gist": "разведчица и секретарь райкома, казнена. Герой Советского Союза.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Лиза Чайкина",
+      "Чайкина"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Лиза Чайкина. Живописная работа",
+        "avtor": "Ильин Евгений Владимирович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7260754",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/14156272",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7089338 (карточка 7260754, инв. ЖВ-1139) | 1952 | хранится: Музей Победы | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Лиза Чайкина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Рисунок. Лиза Чайкина",
+        "avtor": "Голованов Леонид Федорович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10914002",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8202064",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10794463 (карточка 10914002, инв. СР-223) | 1942 г. | хранится: ГБУК г. Москвы \"Музей-панорама \"Бородинская битва\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Лиза Чайкина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Письмо Вере Тихоновне Бочкиной из музея комсомольской славы им. Лизы Чайкиной г. Калинина.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10952415",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8397249",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10943414 (карточка 10952415, инв. 7Д-1865) | 18 сентября 1980г. | хранится: МБУК ДХМ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Лиза Чайкина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Герой Советского Союза Клава Назарова и Герой Советского Союза Лиза Чайкина. Плакат",
+        "avtor": "Иванов К.,  Эльцуфен М.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20021932",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20780114",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19890889 (карточка 20021932, инв. Пл-2394) | 1954 | хранится: ГКБУК \"Пермская галерея\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Лиза Чайкина"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Открытка из  комплекта «Музей комсомольской славы имени Лизы Чайкиной». №6.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=21564765",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/22894755",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 21531955 (карточка 21564765, инв. —) | 1978 | хранится: МБУК \"ОМИКМ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Лиза Чайкина"
+      }
+    ]
+  }
 }

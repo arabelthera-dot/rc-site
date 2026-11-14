@@ -5,5 +5,70 @@
   "year": 1941,
   "hook": "Девять строк дневника — и ни одного слова о себе",
   "mechanic": "Листает девять листков из записной книжки Тани Савичевой — по одной строке, без пересказа, с голосом чтеца.",
-  "gist": "девочка записала гибель семьи в блокадном дневнике; сама не пережила эвакуацию."
+  "gist": "девочка записала гибель семьи в блокадном дневнике; сама не пережила эвакуацию.",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Таня Савичева",
+      "Савичева"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Дневник девочки Тани Савичевой, погибшей во время блокады г. Ленинграда.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=5997363",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/2242681",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5822058 (карточка 5997363, инв. —) | 1941-1942 ? | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Таня Савичева"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотографии семейные ленинградской школьницы Тани Савичевой 1935-1938гг.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=6979904",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3020915",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 6760080 (карточка 6979904, инв. Ф.III-23657/4) | дата не указана | хранится: Музей политической истории России | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Таня Савичева"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотографии семейные ленинградской школьницы Тани Савичевой 1935-1938гг.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=6979946",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3020955",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 6760038 (карточка 6979946, инв. Ф.III-23657/1) | дата не указана | хранится: Музей политической истории России | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Таня Савичева"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотографии семейные ленинградской школьницы Тани Савичевой 1935-1938гг.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=6979978",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3020986",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 6760006 (карточка 6979978, инв. Ф.III-23657/3) | дата не указана | хранится: Музей политической истории России | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Таня Савичева"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Ленинград. Мемориальная доска с надписью военных лет. Страницы дневника Тани Савичевой \"Цв",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=32196225",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/37770746",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 32010380 (карточка 32196225, инв. ГМИ СПб Инв.№-I-Б-4775 р) | 1977 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Таня Савичева"
+      }
+    ]
+  }
 }

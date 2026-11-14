@@ -1,0 +1,33 @@
+{
+  "title": "История в 48 секунд",
+  "intro": "Болдырев показал миру гибкую фотоплёнку в рулоне за десять лет до Kodak и патента на неё так и не взял",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43168137232) из сценария days/05feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/05feb-plenka/day-05feb-plenka.mp4",
+    "local": "muzei/izobreteniya/video/day-05feb-plenka.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.5,
+    "mb": 15.7
+  },
+  "vertical": {
+    "file": "izobreteniya/05feb-plenka/day-05feb-plenka-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-05feb-plenka-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.5,
+    "mb": 16.1
+  },
+  "poster": {
+    "file": "izobreteniya/05feb-plenka/day-05feb-plenka-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-05feb-plenka-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/05feb-plenka/day-05feb-plenka-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-05feb-plenka-9x16-poster.jpg",
+    "v": 1
+  }
+}
