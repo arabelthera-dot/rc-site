@@ -1,0 +1,697 @@
+# Р767: день 6 февраля — Матвей Кузьмин, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка (Р752); факт 13 списка заменён следующим кандидатом (повтор хука).
+# togda_sejchas, panorama_360, staraya_karta, marshrut — net: открытого снимка, панорамы и карты из разрешённых баз для Малкина не нашёл (14.11).
+
+muzei: ne-sdayutsya
+key: 02-06
+pokazan_sergeyu:
+  data: '2026-11-14'
+head:
+  title: Матвей Кузьмин — «Русские не сдаются» — Русская цивилизация
+  description: 83-летний крестьянин повторил Сусанина — вывел врага под огонь
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-06/
+  sobytie: Матвей Кузьмин
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Матвей Кузьмин — «Русские не сдаются» — Русская цивилизация
+    description: 83-летний крестьянин повторил Сусанина — вывел врага под огонь
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-06/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Матвей Кузьмин — «Русские не сдаются»
+    description: 83-летний крестьянин повторил Сусанина — вывел врага под огонь
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-06/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1942'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-06-goskatalog-21576613.jpg
+  alt: 'Картина: заснеженный холм в сумерках, седой бородатый старик в тулупе стоит прямо, рядом пригнулся немецкий офицер с пистолетом, позади солдаты в касках залегают и стреляют, на снегу убитый.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=21708839
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: А. И. Сизаск. «Последний день Матвея Кузьмина». 1964 год.
+  credit: Краеведческий музей города Великие Луки, Госкаталог № 21576613
+  width: 1897
+  height: 2616
+  vid: kartina
+  glavnoe_na_kartinke:
+    x: 0.4
+    y: 0.08
+    w: 0.5
+    h: 0.5
+  prava:
+    avtor: А. И. Сизаск
+    god_sozdaniya: '1964'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 21576613
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 21576613
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=21708839
+  nomer_predmeta: Госкаталог № 21576613
+  nomer_snimka: goskatalog id 21708839
+  hranitel: Краеведческий музей города Великие Луки
+  podpis_chto: Картина «Последний день Матвея Кузьмина»
+  podpis_gde: у деревни Малкино под Великими Луками
+  podpis_kogda: 1964 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Краеведческий музей города Великие Луки, Великие Луки
+    otkuda: https://goskatalog.ru/portal/#/collections?id=21708839
+  svyashchennoe: false
+  hint: Миноносец «Стерегущий»
+  celikom: true
+kroshka: День 6 · Матвей Кузьмин
+lead:
+  data: День 6 · февраль · деревня Малкино под Великими Луками, ночь на 14 февраля 1942 года
+  privyazka: 'Дата условная: 6 февраля — 6-й день февраля в музее; событие — подвиг Матвея Кузьмина в ночь на 14 февраля 1942 года.'
+  kto: Матвей Кузьмич Кузьмин · 83 года, крестьянин деревни Куракино
+  h1: Матвей Кузьмин
+  hook: 83-летний крестьянин повторил Сусанина — вывел врага под огонь
+stamp:
+- v: '83'
+  k: года было проводнику
+- v: '6'
+  k: километров до наших позиций
+- v: '250'
+  k: горных егерей убиты у Малкина
+- v: 100 000
+  k: экземпляров плаката летом 1942-го
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+story:
+  kicker: Подвиг
+  h2: Матвей Кузьмин
+  abzacy:
+  - Февраль 1942 года, деревня под Великими Луками. Батальону немецких горных егерей нужен проводник в тыл нашим войскам на Малкинских высотах. Немцы хотят взять 33-летнего Василия, сына Матвея Кузьмича Кузьмина. Отец выдаёт сына за дурачка и вызывается вести сам. За дорогу ему сулят деньги, муку, керосин и двустволку «Три кольца».
+  - 'Василий тем временем уходит к нашим и предупреждает полковника Горбунова: немцев выведут к деревне Малкино. Там занимает позицию 2-й батальон 31-й отдельной курсантской стрелковой бригады. А 83-летний старик всю ночь водит батальон по сугробам и оврагам.'
+  - На рассвете колонна выходит прямо под пулемёты. Командир егерей понимает, что старик его перехитрил, и стреляет. «Не жалей Матвея, секи их хлеще!» — кричит Кузьмин курсантам. Более 250 егерей остаются на снегу. В 1965 году Матвею Кузьмину посмертно присвоено звание Героя Советского Союза.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Матвей Кузьмин
+  udary:
+  - id: ns-0206-plata
+    summary: 'Немцы предложили плату за дорогу — старик ответил: «Мало. Дёшево купить хотите»'
+    det:
+    - 'Немецкий офицер сулит старику деньги за дорогу в тыл нашим. Кузьмин не спорит, а торгуется: «Мало. Дёшево купить хотите». Он тянет время и берётся вести.'
+    src: 'Источник: Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942) — https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/'
+    stranica: Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942)
+    href: https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/
+    otryvok: «— Мало. Дешево купить хотите. — Ну, полторы, ну, две тысячи. — Половину вперед, ваше благородие.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: polevoj
+    dlya_voprosa: false
+  - id: ns-0206-syn-durachok
+    summary: Взрослого сына, которого немцы хотели взять проводником, отец выдал за дурачка
+    det:
+    - 'Проводником немцы хотят взять 33-летнего сына Василия. Матвей Кузьмич крутит пальцем у виска: сын, мол, дурачок, потому и не в армии. И вызывается идти сам.'
+    src: 'Источник: Кузьмин Матвей Кузьмич. «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1913; «Самый старый Герой. Матвей Кузьмич». «Семейная реликвия», 2018 — https://relikvija.ru/blog/samyj_staryj_geroj_matvej_kuzmich_istorija_pervaja/2018-05-01-77'
+    stranica: Кузьмин Матвей Кузьмич. «Герои страны»
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=1913
+    otryvok: «Но дед схитрил, покрутил пальцем у виска, мол, сын-то у меня дурачок, потому и не в армии. И вызвался сам…»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: warheroes
+    dlya_voprosa: false
+  - id: ns-0206-starejshij
+    summary: Старейший Герой Советского Союза — 1858 года рождения, на 12 лет старше Ленина
+    det:
+    - Матвей Кузьмин родился 15 августа 1858 года, Ленин — в 1870-м. По году рождения Кузьмин — старейший Герой Советского Союза.
+    src: 'Источник: Кузьмин Матвей Кузьмич. «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1913'
+    stranica: Кузьмин Матвей Кузьмич. «Герои страны»
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=1913
+    otryvok: «Кузьмин Матвей Кузьмич 15.08.1858 - 14.02.1942… Стал старейшим (по году рождения) Героем Советского Союза.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: на 12 лет старше Ленина
+    istochnik: warheroes
+    dlya_voprosa: true
+    otvet: '1858'
+    otvet_edinstvennyj: true
+  - id: ns-0206-edinolichnik
+    summary: Последний единоличник района, деревенский «контрик» — стал Героем Советского Союза
+    det:
+    - В колхоз Кузьмин так и не вступил и остался последним единоличником во всём районе. В деревне его звали «контриком». А Героем Советского Союза стал именно он.
+    src: 'Источник: Кузьмин Матвей Кузьмич. «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1913; Кузьмин Матвей Кузьмич. «Псковиана» — https://pskoviana.ru/istoriya/istoriya-pskovskoj-oblasti/voennaya-istoriya/267-velikaya-otechestvennaya-vojna/geroi-velikoj-otechestvennoj-vojny/3567-kuzmin-matvej-kuzmich'
+    stranica: Кузьмин Матвей Кузьмич. «Герои страны»
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=1913
+    otryvok: «оставшись последним единоличником во всём районе»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: warheroes
+    dlya_voprosa: false
+  - id: ns-0206-poslednie-slova
+    summary: 'Последние слова под стволом немца: «Не жалей Матвея, секи их хлеще!»'
+    det:
+    - 'Пулемёты бьют в упор, немецкий офицер наводит на старика пистолет. Кузьмин кричит нашим пулемётчикам: «Не жалей Матвея, секи их хлеще!»'
+    src: 'Источник: Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942) — https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/'
+    stranica: Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942)
+    href: https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/
+    otryvok: «— Сынки! Не жалей Матвея, секи их хлеще, чтоб ни одна гадюка не уползла!»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: polevoj
+    dlya_voprosa: false
+  - id: ns-0206-major
+    summary: Немецкий майор понял, что 83-летний старик его перехитрил, — но было поздно
+    det:
+    - На рассвете батальон выходит прямо под пулемёты. Командир горных егерей понимает, что старик его перехитрил, и в ярости стреляет в него. Батальон уже под огнём.
+    src: 'Источник: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека — https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny; «80 лет подвигу 83-летнего Матвея Кузьмича Кузьмина». «Культура МГО» — https://www.kulturamgo.ru/pomnim-gordimsya/3503-80-let-podvigu-83-letnego-matveya-kuzmicha-kuzmina-geroj-sssr-posmertno-2'
+    stranica: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека
+    href: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+    otryvok: «Командир горных егерей понял, что старик его перехитрил, и в ярости выпустил в деда несколько пуль»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: pskovlib
+    dlya_voprosa: false
+  - id: ns-0206-6-km
+    summary: До наших 6 километров — старик всю ночь водил батальон по сугробам и оврагам
+    det:
+    - Малкинские высоты — в 6 километрах юго-восточнее Великих Лук. Кузьмин всю ночь водит батальон окольными дорогами, по сугробам и оврагам, и на рассвете выводит под огонь.
+    src: 'Источник: «Потомки героя Матвея Кузьмина рассказали правду о гибели своего деда». «Родина», 19.01.2017 — https://rodina-history.ru/2017/01/19/potomki-geroia-matveia-kuzmina-rasskazali-pravdu-o-gibeli-svoego-deda.html; Кузьмин Матвей Кузьмич. «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1913; Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942) — https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/'
+    stranica: «Потомки героя Матвея Кузьмина рассказали правду о гибели своего деда». «Родина», 19.01.2017
+    href: https://rodina-history.ru/2017/01/19/potomki-geroia-matveia-kuzmina-rasskazali-pravdu-o-gibeli-svoego-deda.html
+    otryvok: «на Малкинских высотах, в 6 километрах юго-восточнее г. Великие Луки»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 6 километров — час с небольшим пешком по дороге
+    istochnik: rodina
+    dlya_voprosa: true
+    otvet: '6'
+    otvet_edinstvennyj: true
+  - id: ns-0206-250
+    summary: 'Один старик против батальона: более 250 горных егерей убиты'
+    det:
+    - Пулемёты курсантов бьют по колонне в упор. У деревни Малкино остаются более 250 горных егерей.
+    src: 'Источник: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека — https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny; Плакат «Подвиг советского патриота Матвея Кузьмина». Челябинский государственный музей изобразительных искусств — https://chelmuseum.ru/science/articles/plakat-podvig-sovetskogo-patriota-matveya-kuzmina/'
+    stranica: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека
+    href: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+    otryvok: «более двухсот пятидесяти егерей были уничтожены»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 250 человек — восемь школьных классов
+    istochnik: pskovlib
+    dlya_voprosa: true
+    otvet: '250'
+    otvet_edinstvennyj: true
+  - id: ns-0206-svodka
+    summary: 'Сводка Совинформбюро «омолодила» семью: 33-летний сын стал 14-летним внуком'
+    det:
+    - В сводке Совинформбюро 33-летний сын Василий стал 14-летним внуком Васей. Так подвиг и пошёл по газетам и плакатам.
+    src: 'Источник: «Сусанин Великой Отечественной». «Русская семёрка» — https://russian7.ru/post/susanin-velikoy-otechestvennoy-skol/; Плакат «Подвиг советского патриота Матвея Кузьмина». Челябинский государственный музей изобразительных искусств — https://chelmuseum.ru/science/articles/plakat-podvig-sovetskogo-patriota-matveya-kuzmina/; «Потомки героя Матвея Кузьмина рассказали правду о гибели своего деда». «Родина», 19.01.2017 — https://rodina-history.ru/2017/01/19/potomki-geroia-matveia-kuzmina-rasskazali-pravdu-o-gibeli-svoego-deda.html'
+    stranica: «Сусанин Великой Отечественной». «Русская семёрка»
+    href: https://russian7.ru/post/susanin-velikoy-otechestvennoy-skol/
+    otryvok: «33-летний сын Василий… превратился в 14-летнего внука Васю»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: russian7
+    dlya_voprosa: true
+    otvet: '33'
+    otvet_edinstvennyj: true
+  - id: ns-0206-kursanty
+    summary: Засаду держали не ветераны, а курсанты — и разбили горных егерей
+    det:
+    - У Малкина немцев ждёт 2-й батальон 31-й отдельной курсантской стрелковой бригады. Вчерашние ученики военных училищ встречают горных егерей пулемётным огнём.
+    src: 'Источник: «80 лет подвигу 83-летнего Матвея Кузьмича Кузьмина». «Культура МГО» — https://www.kulturamgo.ru/pomnim-gordimsya/3503-80-let-podvigu-83-letnego-matveya-kuzmicha-kuzmina-geroj-sssr-posmertno-2; Кузьмин Матвей Кузьмич. «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1913'
+    stranica: «80 лет подвигу 83-летнего Матвея Кузьмича Кузьмина». «Культура МГО»
+    href: https://www.kulturamgo.ru/pomnim-gordimsya/3503-80-let-podvigu-83-letnego-matveya-kuzmicha-kuzmina-geroj-sssr-posmertno-2
+    otryvok: «вывел в Малкино, где уже занял позицию 2-й батальон 31-й отдельной курсантской стрелковой бригады»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: kulturamgo
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0206-tri-kolca
+    summary: Ему обещали мечту охотника — ружьё «Три кольца»; он привёл хозяев ружья под пулемёты
+    det:
+    - За дорогу немцы обещают денег, муки, керосина и двустволку «Зауэр» «Три кольца». Старый охотник ведёт хозяев ружья прямо под пулемёты.
+    src: 'Источник: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека — https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny; Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942) — https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/'
+    stranica: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека
+    href: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+    otryvok: «пообещали денег, муки, керосина, а также роскошное немецкое охотничье ружье-двустволку марки «Зауэр» «Три кольца»»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: pskovlib
+    dlya_voprosa: false
+  - id: ns-0206-syn-doshel
+    summary: Пока отец кружил по лесу, сын дошёл до наших — пулемёты ждали с ночи
+    det:
+    - Пока отец водит батальон кругами, Василий выходит к 31-й курсантской бригаде и предупреждает полковника Горбунова. Засада у Малкина ждёт немцев с ночи.
+    src: 'Источник: Кузьмин Матвей Кузьмич. «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1913; «Самый старый Герой. Матвей Кузьмич». «Семейная реликвия», 2018 — https://relikvija.ru/blog/samyj_staryj_geroj_matvej_kuzmich_istorija_pervaja/2018-05-01-77'
+    stranica: Кузьмин Матвей Кузьмич. «Герои страны»
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=1913
+    otryvok: «Василий же вышел в расположение 31-й отдельной курсантской стрелковой бригады и сообщил … полковнику Горбунову»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: warheroes
+    dlya_voprosa: false
+  - id: ns-0206-pershino
+    summary: Немцы шли в тыл нашей бригаде у Першино — дошли только до пулемётов
+    det:
+    - Немцы хотят зайти в тыл нашим войскам у деревни Першино. Кузьмин выводит их к деревне Малкино — прямо к пулемётам засады.
+    src: 'Источник: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека — https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny; Кузьмин Матвей Кузьмич. «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1913'
+    stranica: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека
+    href: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+    otryvok: «немцы хотят зайти в тыл к нашим войскам у деревни Першино, но отец выведет их к деревне Малкино, где и должна ждать засада»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: pskovlib
+    dlya_voprosa: false
+  - id: ns-0206-plakat
+    summary: Уже летом 1942-го подвиг старика разошёлся по стране плакатом в 100 000 экземпляров
+    det:
+    - Летом 1942 года издательство «Искусство» печатает плакат о подвиге Матвея Кузьмина стотысячным тиражом.
+    src: 'Источник: Плакат «Подвиг советского патриота Матвея Кузьмина». Челябинский государственный музей изобразительных искусств — https://chelmuseum.ru/science/articles/plakat-podvig-sovetskogo-patriota-matveya-kuzmina/'
+    stranica: Плакат «Подвиг советского патриота Матвея Кузьмина». Челябинский государственный музей изобразительных искусств
+    href: https://chelmuseum.ru/science/articles/plakat-podvig-sovetskogo-patriota-matveya-kuzmina/
+    otryvok: «летом 1942 г. плакат был отпечатан в издательстве «Искусство» стотысячным тиражом»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 100 000 — город размером с Великие Луки
+    istochnik: chelmuseum
+    dlya_voprosa: true
+    otvet: 100 000
+    otvet_edinstvennyj: true
+  - id: ns-0206-1965
+    summary: Героем его назвали через 23 года — в 1965-м ему исполнилось бы 106 лет
+    det:
+    - Указ о звании Героя Советского Союза выходит 8 мая 1965 года — через 23 года после подвига. Кузьмину в тот год исполнилось бы 106 лет.
+    src: 'Источник: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека — https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny; Плакат «Подвиг советского патриота Матвея Кузьмина». Челябинский государственный музей изобразительных искусств — https://chelmuseum.ru/science/articles/plakat-podvig-sovetskogo-patriota-matveya-kuzmina/'
+    stranica: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека
+    href: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+    otryvok: «Указом … от 8 мая 1965 г.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: pskovlib
+    dlya_voprosa: true
+    otvet: '1965'
+    otvet_edinstvennyj: true
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 18; 2 — 64; 3 — «Новик»; 4 — 45; 5 — компас и бинокли.'
+  ball: 10
+  voprosy:
+  - q: В каком году родился Матвей Кузьмин?
+    o:
+    - '1858'
+    - '1870'
+    - '1890'
+    - '1901'
+    a: 0
+    e: По «Героям страны», Кузьмин родился 15 августа 1858 года — на 12 лет раньше Ленина.
+  - q: Сколько километров было от деревни до позиций наших войск?
+    o:
+    - '2'
+    - '6'
+    - '20'
+    - '50'
+    a: 1
+    e: Малкинские высоты — в 6 километрах юго-восточнее Великих Лук, а старик водил батальон всю ночь.
+  - q: Сколько горных егерей погибло у Малкина?
+    o:
+    - около 30
+    - ровно 100
+    - более 250
+    - около 1000
+    a: 2
+    e: 'Псковская областная библиотека пишет: более двухсот пятидесяти егерей были уничтожены.'
+  - q: Каким тиражом вышел плакат о подвиге летом 1942 года?
+    o:
+    - 1 000
+    - 10 000
+    - 100 000
+    - 1 000 000
+    a: 2
+    e: Издательство «Искусство» отпечатало плакат стотысячным тиражом.
+  - q: В каком году Матвею Кузьмину присвоили звание Героя Советского Союза?
+    o:
+    - '1942'
+    - '1945'
+    - '1965'
+    - '1985'
+    a: 2
+    e: Указ вышел 8 мая 1965 года — через 23 года после подвига.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+figures:
+- src: /muzei/ne-sdayutsya/img/02-06-goskatalog-12277868.jpg
+  alt: 'Плакат из двух картин: вверху в избе старик в тулупе с палкой говорит с немецкими солдатами у стола; внизу в зимнем лесу старик стоит под пистолетом немецкого солдата, вокруг на снегу убитые.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=12401134
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Плакат «Героический подвиг советского патриота Матвея Матвеевича Кузьмина». 1942 год.
+  credit: Самарский областной историко-краеведческий музей имени П. В. Алабина, Госкаталог № 12277868
+  width: 596
+  height: 800
+  vid: plakat
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 0.65
+    h: 0.8
+  prava:
+    avtor: художник не указан в карточке (издательство «Искусство»)
+    god_sozdaniya: '1942'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 12277868
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 12277868
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12401134
+  nomer_predmeta: Госкаталог № 12277868
+  nomer_snimka: goskatalog id 12401134
+  hranitel: Самарский областной историко-краеведческий музей имени П. В. Алабина
+  podpis_chto: Плакат о подвиге Матвея Кузьмина
+  podpis_gde: Великие Луки, Калининский фронт
+  podpis_kogda: 1942 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Самарский областной историко-краеведческий музей имени П. В. Алабина, Самара
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12401134
+  svyashchennoe: false
+  hint: Миноносец «Стерегущий»
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-06-goskatalog-11691919.jpg
+  alt: 'Плакат из двух картин: в избе старик говорит с немецкими солдатами, в зимнем лесу старик стоит перед немцем с пистолетом.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11809390
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Тот же плакат 1942 года в Оренбургском губернаторском историко-краеведческом музее.
+  credit: Оренбургский губернаторский историко-краеведческий музей, Госкаталог № 11691919
+  width: 469
+  height: 367
+  vid: plakat
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 0.65
+    h: 0.8
+  prava:
+    avtor: художник не указан в карточке (издательство «Искусство»)
+    god_sozdaniya: '1942'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 11691919
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 11691919
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11809390
+  nomer_predmeta: Госкаталог № 11691919
+  nomer_snimka: goskatalog id 11809390
+  hranitel: Оренбургский губернаторский историко-краеведческий музей
+  podpis_chto: Плакат о подвиге Матвея Кузьмина
+  podpis_gde: Великие Луки, Калининский фронт
+  podpis_kogda: 1942 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Оренбургский губернаторский историко-краеведческий музей, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11809390
+  svyashchennoe: false
+  hint: Миноносец «Стерегущий»
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-06-goskatalog-23030422.jpg
+  alt: 'Фотография: в поле тёмный каменный памятник, у плиты много венков и цветов, за ним равнина и небо.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=23168266
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Памятник на месте подвига Матвея Кузьмина. Фотография 1974 года.
+  credit: Краеведческий музей города Великие Луки, Госкаталог № 23030422
+  width: 2947
+  height: 2300
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 0.65
+    h: 0.8
+  prava:
+    avtor: фотограф не указан
+    god_sozdaniya: '1974'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 23030422
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 23030422
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=23168266
+  nomer_predmeta: Госкаталог № 23030422
+  nomer_snimka: goskatalog id 23168266
+  hranitel: Краеведческий музей города Великие Луки
+  podpis_chto: Памятник на месте подвига Матвея Кузьмина
+  podpis_gde: у деревни Малкино под Великими Луками
+  podpis_kogda: 1974 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Краеведческий музей города Великие Луки, Великие Луки
+    otkuda: https://goskatalog.ru/portal/#/collections?id=23168266
+  svyashchennoe: false
+  hint: Миноносец «Стерегущий»
+  celikom: true
+sources:
+- href: https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/
+  title: Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942)
+  note: к фактам 1, 5, 7, 11
+- href: https://warheroes.ru/hero/hero.asp?Hero_id=1913
+  title: Кузьмин Матвей Кузьмич. «Герои страны»
+  note: к фактам 2, 3, 4, 7, 10, 12, 13
+- href: https://relikvija.ru/blog/samyj_staryj_geroj_matvej_kuzmich_istorija_pervaja/2018-05-01-77
+  title: «Самый старый Герой. Матвей Кузьмич». «Семейная реликвия», 2018
+  note: к фактам 2, 12
+- href: https://pskoviana.ru/istoriya/istoriya-pskovskoj-oblasti/voennaya-istoriya/267-velikaya-otechestvennaya-vojna/geroi-velikoj-otechestvennoj-vojny/3567-kuzmin-matvej-kuzmich
+  title: Кузьмин Матвей Кузьмич. «Псковиана»
+  note: к фактам 4
+- href: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+  title: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека
+  note: к фактам 6, 8, 11, 13, 15
+- href: https://www.kulturamgo.ru/pomnim-gordimsya/3503-80-let-podvigu-83-letnego-matveya-kuzmicha-kuzmina-geroj-sssr-posmertno-2
+  title: «80 лет подвигу 83-летнего Матвея Кузьмича Кузьмина». «Культура МГО»
+  note: к фактам 6, 10
+- href: https://rodina-history.ru/2017/01/19/potomki-geroia-matveia-kuzmina-rasskazali-pravdu-o-gibeli-svoego-deda.html
+  title: «Потомки героя Матвея Кузьмина рассказали правду о гибели своего деда». «Родина», 19.01.2017
+  note: к фактам 7, 9
+- href: https://chelmuseum.ru/science/articles/plakat-podvig-sovetskogo-patriota-matveya-kuzmina/
+  title: Плакат «Подвиг советского патриота Матвея Кузьмина». Челябинский государственный музей изобразительных искусств
+  note: к фактам 8, 9, 14, 15
+- href: https://russian7.ru/post/susanin-velikoy-otechestvennoy-skol/
+  title: «Сусанин Великой Отечественной». «Русская семёрка»
+  note: к фактам 9
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 7 февраля (запись готовится)
+  hook: Стойкость и подвиг день за днём.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+chrome:
+  share:
+    title: Матвей Кузьмин — «Русские не сдаются»
+    text: 83-летний крестьянин повторил Сусанина — вывел врага под огонь
+  prev:
+    href: /muzei/ne-sdayutsya/den/02-05/
+    title: 5 февраля
+  next:
+    href: index.html
+    title: 7 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько лет было Матвею Кузьмину, когда он повёл немецкий батальон под пулемёты?
+  a: '83'
+proof:
+  status: utverzhdeno
+  note: Факты дня утверждены Сергеем (Р752), взяты дословно из утверждённого списка; страница — Р767 (14.11.2026).
+nomer_dnya: ns-0206-kuzmin
+data_sobytiya: '1942-02-14'
+data_uslovnaya: 6 февраля — 6-й день февраля в музее; событие — подвиг Матвея Кузьмина в ночь на 14 февраля 1942 года.
+chto_sluchilos: 83-летний крестьянин Матвей Кузьмин всю ночь водил батальон немецких горных егерей по сугробам и вывел его под пулемёты курсантов у деревни Малкино.
+god: 1942
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Картина «Последний день Матвея Кузьмина» (1964 год)
+  muzej: Краеведческий музей города Великие Луки
+  gorod: Великие Луки
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=21708839
+- chto: Плакат о подвиге Матвея Кузьмина (1942 год)
+  muzej: Самарский областной историко-краеведческий музей имени П. В. Алабина
+  gorod: Самара
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12401134
+- chto: Плакат о подвиге Матвея Кузьмина (1942 год)
+  muzej: Оренбургский губернаторский историко-краеведческий музей
+  gorod: Оренбург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11809390
+- chto: Памятник на месте подвига Матвея Кузьмина (1974 год)
+  muzej: Краеведческий музей города Великие Луки
+  gorod: Великие Луки
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=23168266
+chitat_dalshe:
+- nazvanie: Б. Полевой. «Последний день Матвея Кузьмина»
+  gde: очерк из «Правды», 1942
+  ssylka: https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/
+- nazvanie: Памяти героя Матвея Кузьмина
+  gde: Псковская областная универсальная научная библиотека
+  ssylka: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+- nazvanie: А. И. Сизаск. «Последний день Матвея Кузьмина», 1964
+  gde: Госкаталог Музейного фонда России, Краеведческий музей города Великие Луки
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21708839
+- nazvanie: Плакат «Героический подвиг советского патриота Матвея Матвеевича Кузьмина», 1942
+  gde: Госкаталог Музейного фонда России, Самарский областной историко-краеведческий музей имени П. В. Алабина
+  ssylka: https://goskatalog.ru/portal/#/collections?id=12401134
+istochniki:
+- id: polevoj
+  baza: periodika
+  nazvanie: Б. Полевой. «Последний день Матвея Кузьмина» (очерк, «Правда», 1942)
+  ssylka: https://ruskazki.com/boris-polevoj-poslednij-den-matveya-kuzmina/
+- id: warheroes
+  baza: periodika
+  nazvanie: Кузьмин Матвей Кузьмич. «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=1913
+- id: relikvija
+  baza: periodika
+  nazvanie: «Самый старый Герой. Матвей Кузьмич». «Семейная реликвия», 2018
+  ssylka: https://relikvija.ru/blog/samyj_staryj_geroj_matvej_kuzmich_istorija_pervaja/2018-05-01-77
+- id: pskoviana
+  baza: periodika
+  nazvanie: Кузьмин Матвей Кузьмич. «Псковиана»
+  ssylka: https://pskoviana.ru/istoriya/istoriya-pskovskoj-oblasti/voennaya-istoriya/267-velikaya-otechestvennaya-vojna/geroi-velikoj-otechestvennoj-vojny/3567-kuzmin-matvej-kuzmich
+- id: pskovlib
+  baza: periodika
+  nazvanie: «Памяти героя Матвея Кузьмина, повторившего подвиг Ивана Сусанина». Псковская областная универсальная научная библиотека
+  ssylka: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+- id: kulturamgo
+  baza: periodika
+  nazvanie: «80 лет подвигу 83-летнего Матвея Кузьмича Кузьмина». «Культура МГО»
+  ssylka: https://www.kulturamgo.ru/pomnim-gordimsya/3503-80-let-podvigu-83-letnego-matveya-kuzmicha-kuzmina-geroj-sssr-posmertno-2
+- id: chelmuseum
+  baza: periodika
+  nazvanie: Плакат «Подвиг советского патриота Матвея Кузьмина». Челябинский государственный музей изобразительных искусств
+  ssylka: https://chelmuseum.ru/science/articles/plakat-podvig-sovetskogo-patriota-matveya-kuzmina/
+- id: russian7
+  baza: periodika
+  nazvanie: «Сусанин Великой Отечественной». «Русская семёрка»
+  ssylka: https://russian7.ru/post/susanin-velikoy-otechestvennoy-skol/
+- id: rodina
+  baza: periodika
+  nazvanie: «Потомки героя Матвея Кузьмина рассказали правду о гибели своего деда». «Родина», 19.01.2017
+  ssylka: https://rodina-history.ru/2017/01/19/potomki-geroia-matveia-kuzmina-rasskazali-pravdu-o-gibeli-svoego-deda.html
+citaty:
+- kto: Матвей Кузьмин
+  gde: у деревни Малкино, утро 14 февраля 1942 года
+  tekst: Сынки! Не жалей Матвея, секи их хлеще, чтоб ни одна гадюка не уползла!
+  istochnik: polevoj
+velichina_chislo: 250
+velichina_edinica: горных егерей
+velichina_chto: убиты у Малкина — против одного 83-летнего проводника
+voinskaya_chast: 2-й батальон 31-й отдельной курсантской стрелковой бригады
+operaciya: бои под Великими Луками, зима 1942 года
+front: Калининский фронт
+mesto_sobytiya:
+  nazvanie: деревня Малкино, Малкинские высоты под Великими Луками
+  shirota: 56.3
+  dolgota: 30.6
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- А. И. Сизаск. «Последний день Матвея Кузьмина», 1964
+- Краеведческий музей города Великие Луки
+slovar:
+- lyudi:matvej-kuzmin
+vizual:
+  imya: kuzmin-kartina
+  vid: dokument
+  kicker: Документ
+  h2: Картина 1964 года
+  lead: 'Картина А. И. Сизаска из музея Великих Лук: последние минуты Матвея Кузьмина. Нажми — и рассмотри лица вблизи.'
+audioguide:
+  audioSrc: audio-guide-kuzmin-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от немецкой платы за дорогу через ночь в сугробах и засаду курсантов — к плакату и звезде Героя: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: «Мало. Дёшево купить хотите»
+  - t: 25
+    mark: 0:25
+    title: Сын-«дурачок»
+  - t: 50
+    mark: 0:50
+    title: Ночь в сугробах
+  - t: 75
+    mark: '1:15'
+    title: «Секи их хлеще!»
+  - t: 100
+    mark: '1:40'
+    title: Звезда через 23 года
+  transcript:
+  - 'Февраль тысяча девятьсот сорок второго года, деревня под Великими Луками. Немецкий офицер предлагает старику Матвею Кузьмину плату за дорогу в тыл нашим. Старик отвечает: «Мало. Дёшево купить хотите».'
+  - 'Сначала проводником немцы хотели взять его тридцатитрёхлетнего сына Василия. Отец выдал сына за дурачка и вызвался идти сам. А Василий ушёл к нашим и предупредил: немцев выведут к деревне Малкино.'
+  - До наших — шесть километров. Восьмидесятитрёхлетний старик всю ночь водит батальон горных егерей по сугробам и оврагам. У Малкина немцев уже ждут курсанты с пулемётами.
+  - 'На рассвете колонна выходит прямо под огонь. Немецкий майор понимает, что старик его перехитрил, — но поздно. Последние слова Кузьмина: «Не жалей Матвея, секи их хлеще!» Более двухсот пятидесяти егерей остаются на снегу.'
+  - Летом сорок второго плакат о подвиге выходит тиражом сто тысяч. Звание Героя Советского Союза Матвею Кузьмину дают в шестьдесят пятом. 83-летний крестьянин повторил Сусанина — вывел врага под огонь.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
