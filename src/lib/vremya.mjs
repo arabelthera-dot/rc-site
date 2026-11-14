@@ -2,11 +2,11 @@
 // с этим годом или веком события, и фильтры поиска pagefind (век, музей, что в дне, место) на странице дня.
 // Один источник — готовые дни src/lib/etot-den.mjs (год — card.year, иначе пометка даты полной страницы, п.183);
 // год — только четыре цифры: «портрет народа», «без повода», пусто — не год, в страницы и фильтр века не идут.
-// Места — связи дня со словарём src/data/slovar.json (тип mesto). ВЫКЛЮЧЕНО: включает PUBLIC_VREMYA=1
+// Места — связи дня со словарём src/data/slovar/ (тип mesto). ВЫКЛЮЧЕНО: включает PUBLIC_VREMYA=1
 // (страниц /god/ и /vek/ нет, фильтров в индексе нет). Как в мире — pagefind.app/docs/filtering/.
 import fs from 'node:fs';
 import { gotovyeDni } from './etot-den.mjs';
-import slovar from '../data/slovar.json' with { type: 'json' };
+import slovar from './slovar-dannye.mjs';
 
 export const vremyaOn = () => process.env.PUBLIC_VREMYA === '1';
 

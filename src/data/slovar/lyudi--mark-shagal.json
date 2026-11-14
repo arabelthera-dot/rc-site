@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Марк Шагал",
+  "pol": "m",
+  "kratko": "Живописец родом из Витебска.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n79043105",
+    "ssylka": "https://id.loc.gov/authorities/names/n79043105.html",
+    "zagolovok": "Chagall, Marc, 1887-1985"
+  },
+  "latinica": "Marc Chagall",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1887",
+    "smert": "1985-03-28"
+  }
+}

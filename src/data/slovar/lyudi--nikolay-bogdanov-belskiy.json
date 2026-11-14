@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Николай Богданов-Бельский",
+  "pol": "m",
+  "kratko": "Живописец, писал крестьянских детей и сельскую школу.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "no2003124599",
+    "ssylka": "https://id.loc.gov/authorities/names/no2003124599.html",
+    "zagolovok": "Bogdanov-Belʹskiĭ, Nikolaĭ Petrovich, 1868-1945"
+  },
+  "latinica": "Nikolai Bogdanov-Belskii",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1868",
+    "smert": "1945"
+  }
+}

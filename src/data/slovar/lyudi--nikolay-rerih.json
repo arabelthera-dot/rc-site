@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Николай Рерих",
+  "pol": "m",
+  "kratko": "Живописец, путешественник, исследователь Азии.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n50049053",
+    "ssylka": "https://id.loc.gov/authorities/names/n50049053.html",
+    "zagolovok": "Roerich, Nicholas, 1874-1947"
+  },
+  "latinica": "Nicholas Roerich",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1874",
+    "smert": "1947-12-13"
+  }
+}

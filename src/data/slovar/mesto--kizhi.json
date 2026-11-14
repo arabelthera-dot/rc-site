@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Кижи",
+  "kratko": "Остров на Онежском озере с деревянным ансамблем.",
+  "koordinaty": {
+    "shirota": 62.085,
+    "dolgota": 35.212,
+    "tochka": "середина острова",
+    "otkuda": "https://www.openstreetmap.org/relation/3175099"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Кижи"
+    }
+  ]
+}

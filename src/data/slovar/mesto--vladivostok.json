@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Владивосток",
+  "kratko": "Город на Тихом океане.",
+  "koordinaty": {
+    "shirota": 43.115,
+    "dolgota": 131.886,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/1704857"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Владивосток"
+    }
+  ]
+}

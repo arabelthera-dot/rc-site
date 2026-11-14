@@ -1,0 +1,20 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Алексей Саврасов",
+  "pol": "m",
+  "kratko": "Пейзажист, автор «Грачи прилетели».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n84093117",
+    "ssylka": "https://id.loc.gov/authorities/names/n84093117.html",
+    "zagolovok": "Savrasov, Alekseĭ Kondratʹevich, 1830-1897"
+  },
+  "latinica": "Aleksei Savrasov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1830-05-24",
+    "rozhdenie_ss": "1830-05-12",
+    "smert": "1897-10-08",
+    "smert_ss": "1897-09-26"
+  }
+}

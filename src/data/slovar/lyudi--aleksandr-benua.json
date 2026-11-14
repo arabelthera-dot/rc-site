@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Александр Бенуа",
+  "pol": "m",
+  "kratko": "Художник, историк искусства, один из основателей «Мира искусства».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80159917",
+    "ssylka": "https://id.loc.gov/authorities/names/n80159917.html",
+    "zagolovok": "Benois, Alexandre, 1870-1960"
+  },
+  "latinica": "Alexandre Benois",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1870",
+    "smert": "1960-02-09"
+  }
+}

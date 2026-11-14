@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Николай Ярошенко",
+  "pol": "m",
+  "kratko": "Художник-передвижник, автор «Всюду жизнь».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82254652",
+    "ssylka": "https://id.loc.gov/authorities/names/n82254652.html",
+    "zagolovok": "I︠A︡roshenko, Nikolaĭ Aleksandrovich, 1846-1898"
+  },
+  "latinica": "Nikolai Iaroshenko",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1846",
+    "smert": "1898"
+  }
+}

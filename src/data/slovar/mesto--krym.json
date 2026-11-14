@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Крым",
+  "kratko": "Полуостров на Чёрном море.",
+  "koordinaty": {
+    "shirota": 45.284,
+    "dolgota": 34.201,
+    "tochka": "середина полуострова",
+    "otkuda": "https://www.openstreetmap.org/relation/7750160"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Крым"
+    }
+  ]
+}

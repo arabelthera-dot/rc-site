@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Казимир Малевич",
+  "pol": "m",
+  "kratko": "Художник, создатель супрематизма и «Чёрного квадрата».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80028265",
+    "ssylka": "https://id.loc.gov/authorities/names/n80028265.html",
+    "zagolovok": "Malevich, Kazimir Severinovich, 1878-1935"
+  },
+  "latinica": "Kazimir Malevich",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1878",
+    "smert": "1935-05-15"
+  }
+}

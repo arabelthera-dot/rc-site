@@ -12,12 +12,13 @@ import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
 import { faktyIzUtverzhdeno } from './fakty-iz-utverzhdeno.mjs';
 import { stroka } from './yazyki.mjs';
 import { izmerit, razmeryIzFajla } from './kartinki-fajly.mjs';
+import slovar from './slovar-dannye.mjs';
 
 // Служебные подписи страницы (пункты меню, викторина, итог, аудиогид, ролик) — шаблоном из src/data/stroki.json (п. 54):
 // нет поля в карточке — берётся строка оттуда; есть — карточка как раньше. Своё имя пункта (игра, «Развилка») — в карточке.
 const S = (k) => stroka('ru', k);
 const NAV = S('denNav');
-const SLOVAR = JSON.parse(fs.readFileSync('src/data/slovar.json', 'utf8'));
+const SLOVAR = slovar;
 
 export const str = z.string().min(1);
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка

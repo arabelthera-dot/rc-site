@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Фёдор Васильев",
+  "pol": "m",
+  "kratko": "Пейзажист, автор «Оттепели» и «Мокрого луга».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n85002258",
+    "ssylka": "https://id.loc.gov/authorities/names/n85002258.html",
+    "zagolovok": "Vasilʹev, Fedor Aleksandrovich, 1850-1873"
+  },
+  "latinica": "Fyodor Vasil'yev",
+  "latinica_iz": "loc-istochnik",
+  "gody": {
+    "rozhdenie": "1850",
+    "smert": "1873"
+  }
+}

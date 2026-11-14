@@ -1,0 +1,19 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Пукирев",
+  "pol": "m",
+  "kratko": "Живописец, автор «Неравного брака».",
+  "normativ": {
+    "baza": "VIAF",
+    "id": "2536159248164204870004",
+    "ssylka": "https://viaf.org/viaf/2536159248164204870004/",
+    "poisk": "Пукирев Василий",
+    "zagolovok": "Pukirev, Vasily (Russian painter, 1832-1890)"
+  },
+  "latinica": "Vasily Pukirev",
+  "latinica_iz": "viaf",
+  "gody": {
+    "rozhdenie": "1832",
+    "smert": "1890"
+  }
+}

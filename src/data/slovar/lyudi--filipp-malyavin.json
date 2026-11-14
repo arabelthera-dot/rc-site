@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Филипп Малявин",
+  "pol": "m",
+  "kratko": "Живописец, автор «Вихря».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n89615695",
+    "ssylka": "https://id.loc.gov/authorities/names/n89615695.html",
+    "zagolovok": "Mali︠a︡vin, Filipp Andreevich, 1869-1940"
+  },
+  "latinica": "Filipp Maliavin",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1869",
+    "smert": "1940-12-23"
+  }
+}

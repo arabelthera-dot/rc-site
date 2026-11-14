@@ -339,7 +339,7 @@
     },
     {
       "imya": "images.izobrazheno",
-      "chto": "кто и что на картинке — номера записей словаря slovar.json или карточек spravochniki/kartochki.json («lyudi:…», «predmet:…», «mesto:…»)",
+      "chto": "кто и что на картинке — номера записей словаря src/data/slovar/ или карточек spravochniki/kartochki.json («lyudi:…», «predmet:…», «mesto:…»)",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
       "punkt": "22"
