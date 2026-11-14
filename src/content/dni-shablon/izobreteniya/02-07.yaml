@@ -1,0 +1,827 @@
+muzei: izobreteniya
+key: 02-07
+nomer_dnya: izob-0207-setun
+data_sobytiya: '1958-02-07'
+chto_sluchilos: 'В МГУ заработала «Сетунь» Николая Брусенцова — первая в мире троичная ЭВМ: она считала тремя знаками −1, 0 и +1.'
+god: 1958
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Элемент троичный малой ЭВМ «Сетунь», 1960
+  muzej: Политехнический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7589819
+- chto: Стойка ЭВМ «Сетунь-70», 1970
+  muzej: Политехнический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7561978
+chitat_dalshe:
+- nazvanie: Б. Н. Малиновский, «Творец троичной ЭВМ»
+  gde: Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+- nazvanie: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»»
+  gde: Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/histussr/setun_b.htm
+- nazvanie: «Николай Петрович Брусенцов»
+  gde: ВМК МГУ, сайт о троичных ЭВМ
+  ssylka: https://ternarycomp.cs.msu.ru/Brusentsov/Brusentsov_v2.html
+istochniki:
+- id: malinovskij-tvorec
+  baza: kniga
+  avtor: Б. Н. Малиновский
+  nazvanie: «Творец троичной ЭВМ», глава книги о создателях вычислительной техники — Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+- id: brusencov-setun
+  baza: nauka
+  avtor: Н. П. Брусенцов
+  nazvanie: «Троичная ЭВМ «Сетунь»» — Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/histussr/setun_b.htm
+- id: kompmuzej-setun
+  baza: sajt-organizacii
+  nazvanie: Малая цифровая вычислительная машина «Сетунь» — Виртуальный компьютерный музей
+  ssylka: https://computer-museum.ru/histussr/12-6.htm
+- id: vmk-brusencov
+  baza: sajt-organizacii
+  nazvanie: Николай Петрович Брусенцов — ВМК МГУ
+  ssylka: https://ternarycomp.cs.msu.ru/Brusentsov/Brusentsov_v2.html
+- id: gk-setun
+  baza: goskatalog
+  nazvanie: Предметы ЭВМ «Сетунь» и «Сетунь-70» — Политехнический музей, Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=7589819
+citaty: []
+velichina_chislo: 98
+velichina_edinica: '%'
+velichina_chto: полезного времени показала «Сетунь» на испытаниях
+etiketka_oblozhki:
+- Элемент троичный малой ЭВМ «Сетунь», 1960
+- Политехнический музей, Москва
+slovar:
+- mesto:moskva
+head:
+  title: Троичная ЭВМ «Сетунь», 1958 — Музей «Что изобрели русские первыми в мире»
+  description: Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-07/
+  sobytie: Троичная ЭВМ «Сетунь»
+  god: '1958'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Троичная ЭВМ «Сетунь»
+    description: Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-07/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-07-goskatalog-7589819.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Троичная ЭВМ «Сетунь»
+    description: Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-07/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-07-goskatalog-7589819.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-07-goskatalog-7589819.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 259
+  height: 172
+  alt: Коричневая плата из гетинакса с двумя кольцами ферритовых сердечников, через которые пропущены провода
+  data_source: https://goskatalog.ru/portal/#/collections?id=7589819
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Элемент троичный малой ЭВМ «Сетунь», 1960. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 7456267'
+  hint: Фото · Элемент троичный малой ЭВМ «Сетунь»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1960'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7589819
+  nomer_predmeta: '7456267'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7589819
+  svyashchennoe: false
+  podpis_chto: Элемент троичный малой ЭВМ «Сетунь»
+  podpis_gde: Казань
+  podpis_kogda: '1960'
+kroshka: 7 февраля · Сетунь
+lead:
+  data: 1958 · Москва, МГУ
+  privyazka: «Сетунь» заработала в 1958 году.
+  kto: Николай Брусенцов и его лаборатория · МГУ, Москва
+  h1: Троичная ЭВМ «Сетунь»
+  hook: Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц
+stamp:
+- v: '1958'
+  k: год запуска
+- v: 3 знака
+  k: −1, 0 и +1 вместо 0 и 1
+- v: 98%
+  k: полезного времени на испытаниях
+- v: 50 машин
+  k: от Якутска до Ашхабада
+daynav:
+- id: story
+  label: Изобретение
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+story:
+  kicker: История изобретения
+  h2: Как появилась «Сетунь»
+  udary:
+  - summary: Свою машину вместо чужой
+    det:
+    - Машину МГУ не отдали из-за обиды на выборах в Академию — и Брусенцов построил свою. В чужой лаборатории до 90% ферритов шло в брак — Брусенцов нашёл схему, где работают все.
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+  - summary: Десятый день наладки
+    det:
+    - Первую троичную ЭВМ мира собрали 8 вчерашних выпускников и 12 техников. «Сетунь» заработала на десятый день наладки — такого у наладчиков тех лет ещё не бывало.
+    src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru; Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+  - summary: Слишком дешева
+    det:
+    - 'Комиссия министерства доказывала, что машина не работает. Испытания: 98% полезного времени. Завод снял «Сетунь» с выпуска: за 27,5 тыс. рублей она была «слишком дешева».'
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что изобрели
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: как школа от первого класса до выпуска и ещё шесть лет
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: 17 лет без ремонта — исправную машину разрезали на куски и выбросили на свалку
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: 17-let-bez-remonta
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: true
+    otvet: 17 лет
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: 'Завод снял «Сетунь» с выпуска: за 27,5 тыс. рублей она была «слишком дешева»'
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: slishkom-desheva
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: true
+    otvet: 27,5 тыс. рублей
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: почти все 24 часа суток из 24
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: 'Комиссия министерства доказывала, что машина не работает. Испытания: 98% полезного времени'
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: 98-procentov
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: true
+    otvet: 98%
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: net
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: На чердаке из спасённой «Сетуни-70» сделали «Наставник» — им на ВМК пользовались больше 30 лет
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: nastavnik-30-let
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: true
+    otvet: больше 30 лет
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: Чехословакия собиралась выпускать «Сетунь» большой серией — наши чиновники не дали
+    stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
+    href: https://www.computer-museum.ru/histussr/setun_b.htm
+    pometka: документ
+    id: chekhoslovakiya
+    istochnik: brusencov-setun
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: Машину МГУ не отдали из-за обиды на выборах в Академию — и Брусенцов построил свою
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: obida-na-vyborah
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: девять из десяти
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: В чужой лаборатории до 90% ферритов шло в брак — Брусенцов нашёл схему, где работают все
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: ferrity-bez-braka
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: true
+    otvet: 90%
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/izobreteniya/img/02-07-goskatalog-35958131.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.15
+        w: 0.7
+        h: 0.7
+      width: 284
+      height: 189
+      alt: Феррит-диодная ячейка вычислительной машины «Сетунь-70»
+      data_source: https://goskatalog.ru/portal/#/collections?id=35958131
+      license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+      podpis: Ячейка феррит-диодная ЭВМ «Сетунь-70», 1965. Хранит Политехнический музей, Москва.
+      credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 35757307'
+      hint: Фото · Ячейка феррит-диодная ЭВМ «Сетунь-70»
+      vid: foto
+      prava:
+        avtor: Политехнический музей
+        god_sozdaniya: '1965'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=35958131
+      nomer_predmeta: '35757307'
+      nomer_snimka: net
+      hranitel: Политехнический музей
+      podlinnik:
+        gde: Политехнический музей, Москва
+        otkuda: https://goskatalog.ru/portal/#/collections?id=35958131
+      svyashchennoe: false
+      podpis_chto: Ячейка феррит-диодная ЭВМ «Сетунь-70»
+      podpis_gde: СССР
+      podpis_kogda: '1965'
+  - n: 8
+    sravnenie: полторы недели
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: «Сетунь» заработала на десятый день наладки — такого у наладчиков тех лет ещё не бывало
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: desyatyj-den-naladki
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: true
+    otvet: на десятый день
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: В США на лекциях о советских ЭВМ спрашивали «почему-то только о Брусенцове и „Сетуни“»
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: voprosy-v-ssha
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: 'Лабораторию выгнали на чердак без дневного света: «ЭВМ — не дело университета»'
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: cherdak
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про снимки Болдырева
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: В Америке задумывались о троичной ЭВМ — построили её только у нас, в МГУ
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: zadumyvalis-v-amerike
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: как два школьных класса — по машине на ученика
+    src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: 50 «Сетуней» работали от Якутска до Ашхабада — без сервиса и почти без запчастей
+    stranica: Малиновский, «Творец троичной ЭВМ»
+    href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+    pometka: документ
+    id: 50-setunej
+    istochnik: malinovskij-tvorec
+    dlya_voprosa: true
+    otvet: '50'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: два учебных дня вместо полугода
+    src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: С «Наставником» студенты осваивали Фортран за 10–15 часов — и знали его лучше, чем после семестра
+    stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
+    href: https://www.computer-museum.ru/histussr/setun_b.htm
+    pometka: документ
+    id: fortran-za-chasy
+    istochnik: brusencov-setun
+    dlya_voprosa: true
+    otvet: за 10–15 часов
+    otvet_edinstvennyj: true
+  - n: 14
+    sravnenie: net
+    src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: '«Наставник» тоже не взяли: «слишком прост и дешев — без дисплея и мышки»'
+    stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
+    href: https://www.computer-museum.ru/histussr/setun_b.htm
+    pometka: документ
+    id: nastavnik-ne-vzyali
+    istochnik: brusencov-setun
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: как два школьных класса без половины
+    src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+    otryvok: Первую троичную ЭВМ мира собрали 8 вчерашних выпускников и 12 техников
+    stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
+    href: https://www.computer-museum.ru/histussr/setun_b.htm
+    pometka: документ
+    id: 8-vypusknikov
+    istochnik: brusencov-setun
+    dlya_voprosa: true
+    otvet: 8 выпускников и 12 техников
+    otvet_edinstvennyj: true
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Четыре числа «Сетуни»
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'Историю «Сетуни» можно рассказать числами: каждое — свой поворот её судьбы.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: ispytaniya
+      nazvanie: Испытания, где комиссия ждала провала
+      verno_ru: 'Комиссия министерства доказывала, что машина не работает. Испытания: 98% полезного времени.'
+    - kod: cena
+      nazvanie: Цена, за которую машину сняли с выпуска
+      verno_ru: 'Завод снял «Сетунь» с выпуска: за 27,5 тыс. рублей она была «слишком дешева».'
+    - kod: remont
+      nazvanie: Сколько лет машина прожила без ремонта
+      verno_ru: 17 лет без ремонта — исправную машину разрезали на куски и выбросили на свалку.
+    - kod: mashiny
+      nazvanie: Сколько машин работало по стране
+      verno_ru: 50 «Сетуней» работали от Якутска до Ашхабада — без сервиса и почти без запчастей.
+    podpisi:
+    - kod: p98
+      tekst: 98%
+      mesto: ispytaniya
+      mimo_ru: 98% — это доля времени, а не деньги и не годы.
+    - kod: p275
+      tekst: 27,5 тыс. рублей
+      mesto: cena
+      mimo_ru: Рубли — это цена.
+    - kod: p17
+      tekst: 17 лет
+      mesto: remont
+      mimo_ru: Годы — это срок службы.
+    - kod: p50
+      tekst: '50'
+      mesto: mashiny
+      mimo_ru: 50 — это счёт машин.
+    vyberi_ru: Сначала выбери число, потом место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все четыре числа на месте — 98%, 27,5 тыс. рублей, 17 лет и 50 машин.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 98% — испытания, 27,5 тыс. рублей — цена, 17 лет — без ремонта, 50 — машин по стране.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: первая в мире троичная ЭВМ — «Сетунь» Николая Брусенцова, МГУ.'
+  net: 'Где граница: в Америке задумывались о троичной ЭВМ — построили её только у нас, в МГУ.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Москва, МГУ
+    - «Сетунь» заработала на десятый день наладки
+    - '1958'
+  - - Москва, МГУ
+    - книга «Малая цифровая вычислительная машина „Сетунь“»
+    - '1965'
+  - - Москва, МГУ
+    - «Сетунь-70»
+    - '1970'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 98%; 27,5 тыс. рублей; 17 лет; 50; на десятый день.'
+  ball: 8
+  voprosy:
+  - q: Сколько полезного времени «Сетунь» показала на испытаниях?
+    o:
+    - 50%
+    - 75%
+    - 98%
+    a: 2
+    e: 'Комиссия министерства доказывала, что машина не работает. Испытания: 98% полезного времени.'
+  - q: За сколько рублей «Сетунь» сочли «слишком дешевой»?
+    o:
+    - 27,5 тыс.
+    - 275 тыс.
+    - 2,75 млн
+    a: 0
+    e: 'Завод снял «Сетунь» с выпуска: за 27,5 тыс. рублей она была «слишком дешева».'
+  - q: Сколько лет машина работала без ремонта?
+    o:
+    - 3 года
+    - 17 лет
+    - 40 лет
+    a: 1
+    e: 17 лет без ремонта — исправную машину разрезали на куски и выбросили на свалку.
+  - q: Сколько «Сетуней» работало от Якутска до Ашхабада?
+    o:
+    - '5'
+    - '50'
+    - '500'
+    a: 1
+    e: 50 «Сетуней» работали от Якутска до Ашхабада — без сервиса и почти без запчастей.
+  - q: На какой день наладки заработала «Сетунь»?
+    o:
+    - на десятый
+    - на сотый
+    - через год
+    a: 0
+    e: «Сетунь» заработала на десятый день наладки — такого у наладчиков тех лет ещё не бывало.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал «Сетуни» Брусенцова.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-07-goskatalog-7561978.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 262
+  height: 174
+  alt: Стойка вычислительной машины «Сетунь-70»
+  data_source: https://goskatalog.ru/portal/#/collections?id=7561978
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Стойка ЭВМ «Сетунь-70», 1970. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 7427594'
+  hint: Фото · Стойка ЭВМ «Сетунь-70»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1970'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7561978
+  nomer_predmeta: '7427594'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7561978
+  svyashchennoe: false
+  podpis_chto: Стойка ЭВМ «Сетунь-70»
+  podpis_gde: СССР
+  podpis_kogda: '1970'
+- src: /muzei/izobreteniya/img/02-07-goskatalog-7561874.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 259
+  height: 172
+  alt: Пульт управления вычислительной машины «Сетунь-70»
+  data_source: https://goskatalog.ru/portal/#/collections?id=7561874
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Пульт управления ЭВМ «Сетунь-70», 1970. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 7427883'
+  hint: Фото · Пульт управления ЭВМ «Сетунь-70»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1970'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7561874
+  nomer_predmeta: '7427883'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7561874
+  svyashchennoe: false
+  podpis_chto: Пульт управления ЭВМ «Сетунь-70»
+  podpis_gde: Москва
+  podpis_kogda: '1970'
+- src: /muzei/izobreteniya/img/02-07-goskatalog-7561862.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 174
+  height: 262
+  alt: Магнитный барабан вычислительной машины «Сетунь-70»
+  data_source: https://goskatalog.ru/portal/#/collections?id=7561862
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Магнитный барабан ЭВМ «Сетунь-70», 1970. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 7427895'
+  hint: Фото · Магнитный барабан ЭВМ «Сетунь-70»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1970'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7561862
+  nomer_predmeta: '7427895'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7561862
+  svyashchennoe: false
+  podpis_chto: Магнитный барабан ЭВМ «Сетунь-70»
+  podpis_gde: СССР
+  podpis_kogda: '1970'
+- src: /muzei/izobreteniya/img/02-07-goskatalog-7562011.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 262
+  height: 174
+  alt: Перфоратор вычислительной машины «Сетунь-70»
+  data_source: https://goskatalog.ru/portal/#/collections?id=7562011
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Перфоратор ЭВМ «Сетунь-70», 1970. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 7427561'
+  hint: Фото · Перфоратор ЭВМ «Сетунь-70»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1970'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7562011
+  nomer_predmeta: '7427561'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7562011
+  svyashchennoe: false
+  podpis_chto: Перфоратор ЭВМ «Сетунь-70»
+  podpis_gde: СССР
+  podpis_kogda: '1970'
+- src: /muzei/izobreteniya/img/02-07-goskatalog-35958131.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 284
+  height: 189
+  alt: Феррит-диодная ячейка вычислительной машины «Сетунь-70»
+  data_source: https://goskatalog.ru/portal/#/collections?id=35958131
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Ячейка феррит-диодная ЭВМ «Сетунь-70», 1965. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 35757307'
+  hint: Фото · Ячейка феррит-диодная ЭВМ «Сетунь-70»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1965'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=35958131
+  nomer_predmeta: '35757307'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=35958131
+  svyashchennoe: false
+  podpis_chto: Ячейка феррит-диодная ЭВМ «Сетунь-70»
+  podpis_gde: СССР
+  podpis_kogda: '1965'
+- src: /muzei/izobreteniya/img/02-07-goskatalog-7589739.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 259
+  height: 172
+  alt: Терминал АСО вычислительной машины «Сетунь-70»
+  data_source: https://goskatalog.ru/portal/#/collections?id=7589739
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Терминал АСО ЭВМ «Сетунь-70», 1970. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 7456208'
+  hint: Фото · Терминал АСО ЭВМ «Сетунь-70»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1970'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7589739
+  nomer_predmeta: '7456208'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7589739
+  svyashchennoe: false
+  podpis_chto: Терминал АСО ЭВМ «Сетунь-70»
+  podpis_gde: СССР
+  podpis_kogda: '1970'
+- src: /muzei/izobreteniya/img/02-07-goskatalog-9835555.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.15
+    w: 0.7
+    h: 0.7
+  width: 193
+  height: 287
+  alt: Книга Н. П. Брусенцова, С. П. Маслова, В. П. Розина, А. М. Тишулиной, МГУ
+  data_source: https://goskatalog.ru/portal/#/collections?id=9835555
+  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+  podpis: Книга «Малая цифровая вычислительная машина „Сетунь“», 1965. Хранит Политехнический музей, Москва.
+  credit: 'Фото: Политехнический музей. Хранится: Политехнический музей, Москва. Госкаталог № 9714462'
+  hint: Фото · Книга «Малая цифровая вычислительная машина „Сетунь“»
+  vid: foto
+  prava:
+    avtor: Политехнический музей
+    god_sozdaniya: '1965'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=9835555
+  nomer_predmeta: '9714462'
+  nomer_snimka: net
+  hranitel: Политехнический музей
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=9835555
+  svyashchennoe: false
+  podpis_chto: Книга «Малая цифровая вычислительная машина „Сетунь“»
+  podpis_gde: Москва
+  podpis_kogda: '1965'
+sources:
+- href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
+  title: Б. Н. Малиновский, «Творец троичной ЭВМ»
+  note: факты дня
+- href: https://www.computer-museum.ru/histussr/setun_b.htm
+  title: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»»
+  note: факты дня
+- href: https://computer-museum.ru/histussr/12-6.htm
+  title: Малая цифровая вычислительная машина «Сетунь» — Виртуальный компьютерный музей
+  note: устройство машины
+- href: https://ternarycomp.cs.msu.ru/Brusentsov/Brusentsov_v2.html
+  title: Николай Петрович Брусенцов — ВМК МГУ
+  note: о создателе
+- href: https://goskatalog.ru/portal/#/collections?id=7589819
+  title: 'Госкаталог музейного фонда РФ: предметы ЭВМ «Сетунь» и «Сетунь-70», Политехнический музей'
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-08/
+  title: 8 февраля — Периодическая система элементов
+  hook: Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими
+  main: true
+- lbl: Предыдущий день
+  href: den/02-06/
+  title: 6 февраля — Угольный противогаз
+  hook: 'Спасение от боевого газа нашлось в печке: прокалённый берёзовый уголь держал отраву лучше любой химии того времени'
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Мастер троичного счёта
+  - - 70
+    - Наладчик «Сетуни»
+  - - 40
+    - Техник лаборатории МГУ
+  - - 0
+    - Гость дня
+return:
+  q: Почему завод снял «Сетунь» с выпуска?
+  a: 'Завод снял «Сетунь» с выпуска: за 27,5 тыс. рублей она была «слишком дешева».'
+  src: Б. Н. Малиновский, «Творец троичной ЭВМ», computer-museum.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-07-setun:claim-1958
+  ours:
+    kind: publication
+    title: Н. П. Брусенцов, С. П. Маслов, В. П. Розин, А. М. Тишулина, «Малая цифровая вычислительная машина „Сетунь“»
+    date: '1965'
+    holder: Политехнический музей
+    source_url: https://goskatalog.ru/portal/#/collections?id=9835555
+podskazki_igry:
+- Проценты — это доля времени
+- Рубли — это цена
+- Годы — это срок службы
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya: mesto:moskva
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- 'Каждый разряд «Сетуни» принимает не два значения, а три: −1, 0 и +1'
+- Знак хранят ферритовые сердечники на плате троичного элемента
+- Ферриты и диоды заменяют лампы
+- Из таких элементов и собрана вся машина
+data_uslovnaya: 7 февраля — день музея; точный день, когда «Сетунь» заработала в 1958 году, в источниках не назван.
