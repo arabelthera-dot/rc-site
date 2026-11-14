@@ -94,6 +94,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/09feb-savicheva
+  format: horizontal
+  pole: nesdayutsya/09feb-savicheva:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+  poster: /muzei/ne-sdayutsya/video/day-09feb-savicheva-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-09feb-savicheva.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/ns09feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Таня Савичева
