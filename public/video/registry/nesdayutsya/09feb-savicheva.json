@@ -1,0 +1,33 @@
+{
+  "title": "История в 50 секунд",
+  "intro": "Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43606263615) из сценария days/ns09feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.8,
+    "mb": 12.8
+  },
+  "vertical": {
+    "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.8,
+    "mb": 11.8
+  },
+  "poster": {
+    "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva-9x16-poster.jpg",
+    "v": 1
+  }
+}
