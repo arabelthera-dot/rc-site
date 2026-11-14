@@ -295,16 +295,20 @@ export const putKadra = (museum, src) => {
   return p.startsWith('muzei/') ? p : `muzei/${museum}/${p}`;
 };
 
-export function kadryXX(root = '.') {
+// den — { museum, key }: только кадры этого дня (tools/proverka-dnya.mjs, Р776); без den — все (сборка).
+export function kadryXX(root = '.', den = null) {
   const vedomost = vedomostOsnovaniy(root);
+  const svoy = (fr) => !den || (fr.museum === den.museum && fr.key === den.key);
   const gody = {};
   for (const museum of ls(path.join(root, DAYS)))
     for (const f of ls(path.join(root, DAYS, museum)).filter((x) => x.endsWith('.json')))
       gody[`${museum}/${f.slice(0, -5)}`] = readJson(path.join(root, DAYS, museum, f), {}).year;
   const kadry = [];
   const add = (k) => { if (k) kadry.push(k); };
-  for (const fr of cardFrames(root)) add(kadrXX(fr, 'карточка', gody[`${fr.museum}/${fr.key}`], vedomost));
-  for (const fr of fullFrames(root)) add(kadrXX(fr, 'полная страница', gody[`${fr.museum}/${fr.key}`], vedomost));
+  for (const fr of cardFrames(root).filter(svoy)) add(kadrXX(fr, 'карточка', gody[`${fr.museum}/${fr.key}`], vedomost));
+  for (const fr of fullFrames(root).filter(svoy)) add(kadrXX(fr, 'полная страница', gody[`${fr.museum}/${fr.key}`], vedomost));
   const bez = kadry.filter((k) => !k.osnovanie);
   return { vsego: kadry.length, bez, kadry };
 }
+// Строка ошибки кадра без основания — одна для сборки (src/integrations/zakon.mjs) и tools/proverka-dnya.mjs.
+export const bezOsnovaniya = (k) => `${k.museum}/${k.key} ${k.gde}: ${k.put} — нет основания показа`;

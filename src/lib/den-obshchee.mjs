@@ -158,7 +158,7 @@ export const AUDIO_MIN_SEK = 30;
 const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message });
 // Общий замок дня (r602). На любом адресе: номер ответа викторины — в списке. На живом адресе (adres: den):
 // head.sobytie+god, обложка, факты 10 + 5 с отрывком/страницей/ссылкой/пометкой, кадры ≥ KADROV_MIN (долг — dolgKadrov),
-// аудиогид (файл есть, ≥30 с), ролик, у каждого источника ссылка (долг — src/data/dyry-dolg.json); portrety — портретов ≤ трети кадров. dolgKadrov / dolgVTekste — { 'ММ-ДД': N }: снимок долга, ниже N нельзя.
+// аудиогид (файл есть — mp3 ≥30 с; нет — bezMedia, Р776), ролик, у каждого источника ссылка (долг — src/data/dyry-dolg.json); portrety — портретов ≤ трети кадров. dolgKadrov / dolgVTekste — { 'ММ-ДД': N }: снимок долга, ниже N нельзя.
 export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portrety = false } = {}) {
   d.quiz.voprosy.forEach((v, i) => { if (v.a >= v.o.length) iss(ctx, ['quiz', 'voprosy', i, 'a'], 'номер ответа вне списка'); });
   if (d.adres !== 'den') return;
@@ -192,12 +192,12 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portr
   if (vTekste.size < porogT) iss(ctx, ['fakty'], 'ЗАМОК кадров: ни одного кадра в тексте (kadr у факта, <img> в razdely или dop)');
   else if (dolgT !== undefined && vTekste.size >= 1)
     console.log(`::warning::${d.muzei}/${d.key}: кадр в тексте есть — снять из долга «в тексте» (src/data/kadry-dolg.json)`);
-  // ЗАМОК аудиогида (r602): есть, файл лежит в public и не короче AUDIO_MIN_SEK.
+  // ЗАМОК аудиогида (r602): поле есть; файл в public — mp3 не короче AUDIO_MIN_SEK.
   if (!d.audioguide) iss(ctx, ['audioguide'], 'на адресе den нужен аудиогид (audioguide)');
   else {
+    // Нет файла — не ошибка: блок снимает bezMedia, гид придёт своей заявкой (Р776). Файл есть — должен быть mp3 ≥30 с.
     const f = failPublic(d.muzei, d.audioguide.audioSrc);
-    if (!fs.existsSync(f)) iss(ctx, ['audioguide', 'audioSrc'], `нет файла аудиогида ${f}`);
-    else {
+    if (fs.existsSync(f)) {
       const sek = mp3Sek(fs.readFileSync(f));
       if (sek === null) iss(ctx, ['audioguide', 'audioSrc'], `файл аудиогида не mp3: ${f}`);
       else if (sek < AUDIO_MIN_SEK) iss(ctx, ['audioguide', 'audioSrc'], `аудиогид ${Math.round(sek)} с — меньше ${AUDIO_MIN_SEK} с (${f})`);
@@ -213,6 +213,20 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portr
   else if (bez.length < dolgI)
     console.log(`::warning::${d.muzei}/${d.key}: пунктов источников без ссылки ${bez.length} < ${dolgI} — снять/уменьшить строку долга (src/data/dyry-dolg.json)`);
 }
+// Р776 п.3 (Р266): ролик и гид — отдельной заявкой после страницы, сборку не держат. Нет файла гида (audioSrc) или ролика
+// (mp4) в public — предупреждение в журнал, поле снимается, блок и кнопка не рисуются. Файл есть, но кривой — ошибка замка
+// выше (гид) и full-pages (ролик). Зовётся после стандарта дня, чтобы пункт 174 (pokazan_sergeyu) смотрел полную карточку.
+export function bezMedia(d) {
+  const out = { ...d };
+  for (const [pole, src, chto] of [['audioguide', d.audioguide?.audioSrc, 'аудиогида'], ['video', d.video?.mp4, 'ролика']]) {
+    if (!src) continue;
+    const f = failPublic(d.muzei, src);
+    if (fs.existsSync(f)) continue;
+    console.log(`::warning::${d.muzei}/${d.key}: нет файла ${chto} ${f} — блок не рисуется, медиа придут своей заявкой (Р776)`);
+    delete out[pole];
+  }
+  return out;
+}
 // Пункт источника со ссылкой: href или в разметке html есть <a href="http(s)://…">.
 export const istochnikSoSsylkoy = (s) => Boolean(s.href) || /href\s*=\s*["']?https?:\/\//i.test(s.html ?? '');
 const DOLG_DYR = JSON.parse(fs.readFileSync('src/data/dyry-dolg.json', 'utf8'));
@@ -224,6 +238,20 @@ const DOLG_DYR = JSON.parse(fs.readFileSync('src/data/dyry-dolg.json', 'utf8'));
 const MERY_DIR = 'src/content/dni-shablon';
 const MERY = await izmerit(MERY_DIR, failPublic);
 let preduprezhdeno = false;
+// Одна карточка — те же шаги, что у загрузчика (и у tools/proverka-dnya.mjs, Р776): факты из утверждённого, размеры
+// из файла, схема музея, путь, стандарт дня, bezMedia. { data | null, oshibki, preduprezhdeniya }.
+export function proveritKartochku(file, muzei, skhema) {
+  const key = path.basename(file, '.yaml'), oshibki = [], preduprezhdeniya = [];
+  const izUtv = faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(file, 'utf8')), muzei, key);
+  if (izUtv.oshibki.length) return { data: null, oshibki: izUtv.oshibki, preduprezhdeniya };
+  const syroe = izUtv.syroe;
+  if (path.dirname(path.dirname(file)) === MERY_DIR) preduprezhdeniya.push(...razmeryIzFajla(syroe, muzei, MERY, failPublic, file));
+  const r = skhema.safeParse(syroe);
+  if (!r.success) return { data: null, oshibki: [`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`], preduprezhdeniya };
+  if (r.data.muzei !== muzei || r.data.key !== key) return { data: null, oshibki: [`${file}: muzei/key карточки не совпадают с путём`], preduprezhdeniya };
+  oshibki.push(...standartDnya(r.data, syroe));
+  return { data: bezMedia(r.data), oshibki, preduprezhdeniya };
+}
 export function zagruzitKartochki(DIR, skhemy) {
   if (!fs.existsSync(DIR)) return [];
   const oshibki = [], preduprezhdeniya = [];
@@ -231,16 +259,9 @@ export function zagruzitKartochki(DIR, skhemy) {
     const files = fs.readdirSync(path.join(DIR, muzei)).filter((f) => f.endsWith('.yaml')).sort();
     if (files.length && !skhemy[muzei]) throw new Error(`${DIR}/${muzei}: у музея нет схемы карточки дня`);
     return files.flatMap((f) => {
-      const file = path.join(DIR, muzei, f);
-      const izUtv = faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(file, 'utf8')), muzei, f.slice(0, -5));
-      if (izUtv.oshibki.length) { oshibki.push(...izUtv.oshibki); return []; }
-      const syroe = izUtv.syroe;
-      if (DIR === MERY_DIR) preduprezhdeniya.push(...razmeryIzFajla(syroe, muzei, MERY, failPublic, file));
-      const r = skhemy[muzei].safeParse(syroe);
-      if (!r.success) { oshibki.push(`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`); return []; }
-      if (r.data.muzei !== muzei || r.data.key !== f.slice(0, -5)) { oshibki.push(`${file}: muzei/key карточки не совпадают с путём`); return []; }
-      oshibki.push(...standartDnya(r.data, syroe));
-      return [r.data];
+      const k = proveritKartochku(path.join(DIR, muzei, f), muzei, skhemy[muzei]);
+      oshibki.push(...k.oshibki); preduprezhdeniya.push(...k.preduprezhdeniya);
+      return k.data ? [k.data] : [];
     });
   });
   // Расхождение ручных размеров с файлом — в журнал один раз на процесс, не ошибка (п. 90).
