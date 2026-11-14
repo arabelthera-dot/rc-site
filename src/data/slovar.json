@@ -2509,5 +2509,23 @@
     "tip": "tema",
     "nazvanie": "Шахматы",
     "kratko": "Шахматная школа России."
+  },
+  "lyudi:musa-dzhalil": {
+    "tip": "lyudi",
+    "nazvanie": "Муса Джалиль",
+    "pol": "m",
+    "kratko": "Татарский поэт, подпольщик в плену, автор «Моабитской тетради».",
+    "normativ": {
+      "baza": "LoC",
+      "id": "n80050872",
+      "ssylka": "https://id.loc.gov/authorities/names/n80050872.html",
+      "zagolovok": "Jălil, Musa, 1906-1944"
+    },
+    "latinica": "Musa Jalil",
+    "latinica_iz": "loc",
+    "gody": {
+      "rozhdenie": "1906",
+      "smert": "1944"
+    }
   }
 }
