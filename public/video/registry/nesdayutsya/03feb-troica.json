@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "16 месяцев — ворота не открыли",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43576389251) из сценария days/ns03feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/03feb-troica/day-03feb-troica.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-03feb-troica.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.2,
+    "mb": 13.5
+  },
+  "vertical": {
+    "file": "nesdayutsya/03feb-troica/day-03feb-troica-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-03feb-troica-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.2,
+    "mb": 13.3
+  },
+  "poster": {
+    "file": "nesdayutsya/03feb-troica/day-03feb-troica-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-03feb-troica-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/03feb-troica/day-03feb-troica-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-03feb-troica-9x16-poster.jpg",
+    "v": 1
+  }
+}
