@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Михаил Лазарев",
+  "pol": "m",
+  "kratko": "Мореплаватель, участник открытия Антарктиды.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n92044287",
+    "ssylka": "https://id.loc.gov/authorities/names/n92044287.html",
+    "zagolovok": "Lazarev, Mikhail Petrovich, 1788-1851"
+  },
+  "latinica": "Mikhail Lazarev",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1788",
+    "smert": "1851"
+  }
+}

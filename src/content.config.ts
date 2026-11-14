@@ -35,7 +35,7 @@ const museums = defineCollection({
 // src/data/passport-waivers.json («музей» на весь музей или «музей/ключ»: «слово Сергея и дата»).
 // 16.10 Сергей: «переноси как есть, дальше будем менять, улучшать» — переписанный день строку снимает.
 import waivers from './data/passport-waivers.json';
-import slovar from './data/slovar.json'; // slovar — словарь связей дня (Р37, Сергей 20.10)
+import slovar from './lib/slovar-dannye.mjs'; // slovar — словарь связей дня (Р37, Сергей 20.10)
 import { BAZY, VIDY, wiki, nomer, polyaKartinki, polyaDnya as polyaDnyaFormy, status, poluhuk, vizualDannymi } from './lib/forma-dnya.mjs';
 
 const outsideQuotes = (t: string) => t.replace(/«[^«»]*»/g, '«»');
@@ -159,7 +159,7 @@ const days = defineCollection({
     igra: igra.optional(),
     doc: doc.optional(),
     body: z.array(blok).min(1).optional(),
-    // slovar — связи дня со словарём src/data/slovar.json (Р37, Сергей 20.10: одно поле-ссылка, снимает заморозку только для него):
+    // slovar — связи дня со словарём src/data/slovar/ (Р37, Сергей 20.10: одно поле-ссылка, снимает заморозку только для него):
     // slovar — «tip:id», tip — lyudi | mesto | narod | tema; id нет в словаре — сборка красная (страницы /slovar/)
     // Р635 — форма карточки дня (src/data/forma-dnya.json); поля без значения по умолчанию — старые дни не меняются.
     status: status.optional(),

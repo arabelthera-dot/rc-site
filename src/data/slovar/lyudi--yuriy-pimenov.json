@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Юрий Пименов",
+  "pol": "m",
+  "kratko": "Советский живописец, автор «Новой Москвы».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81037121",
+    "ssylka": "https://id.loc.gov/authorities/names/n81037121.html",
+    "zagolovok": "Pimenov, I︠U︡riĭ Ivanovich, 1903-1977"
+  },
+  "latinica": "Iurii Pimenov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1903",
+    "smert": "1977"
+  }
+}

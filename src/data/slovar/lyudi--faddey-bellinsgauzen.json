@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Фаддей Беллинсгаузен",
+  "pol": "m",
+  "kratko": "Мореплаватель, начальник экспедиции, открывшей Антарктиду.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n85242171",
+    "ssylka": "https://id.loc.gov/authorities/names/n85242171.html",
+    "zagolovok": "Bellinsgauzen, Faddeĭ Faddeevich, 1779-1852"
+  },
+  "latinica": "Faddei Bellinsgauzen",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1779",
+    "smert": "1852"
+  }
+}

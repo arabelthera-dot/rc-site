@@ -1,0 +1,20 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Иван Айвазовский",
+  "pol": "m",
+  "kratko": "Художник-маринист, автор «Девятого вала».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80103821",
+    "ssylka": "https://id.loc.gov/authorities/names/n80103821.html",
+    "zagolovok": "Aĭvazovskiĭ, Ivan Konstantinovich, 1817-1900"
+  },
+  "latinica": "Ivan Aivazovsky",
+  "latinica_iz": "loc-variant",
+  "gody": {
+    "rozhdenie": "1817-07-29",
+    "rozhdenie_ss": "1817-07-17",
+    "smert": "1900-05-02",
+    "smert_ss": "1900-04-19"
+  }
+}

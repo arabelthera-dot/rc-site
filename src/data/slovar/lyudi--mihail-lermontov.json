@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Михаил Лермонтов",
+  "pol": "m",
+  "kratko": "Поэт и прозаик, автор «Героя нашего времени».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81032540",
+    "ssylka": "https://id.loc.gov/authorities/names/n81032540.html",
+    "zagolovok": "Lermontov, Mikhail I︠U︡rʹevich, 1814-1841"
+  },
+  "latinica": "Mikhail Lermontov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1814",
+    "smert": "1841"
+  }
+}

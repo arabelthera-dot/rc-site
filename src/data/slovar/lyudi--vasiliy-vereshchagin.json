@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Верещагин",
+  "pol": "m",
+  "kratko": "Художник-баталист, писал войну без парадности.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n83148933",
+    "ssylka": "https://id.loc.gov/authorities/names/n83148933.html",
+    "zagolovok": "Vereshchagin, Vasiliĭ Vasilʹevich, 1842-1904"
+  },
+  "latinica": "Vasily Vereshchagin",
+  "latinica_iz": "loc-istochnik",
+  "gody": {
+    "rozhdenie": "1842",
+    "smert": "1904"
+  }
+}

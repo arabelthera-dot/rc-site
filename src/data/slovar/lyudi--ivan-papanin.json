@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Иван Папанин",
+  "pol": "m",
+  "kratko": "Полярник, начальник станции «Северный полюс-1».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81039019",
+    "ssylka": "https://id.loc.gov/authorities/names/n81039019.html",
+    "zagolovok": "Papanin, Ivan Dmitrievich, 1894-1986"
+  },
+  "latinica": "Ivan Papanin",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1894",
+    "smert": "1986"
+  }
+}

@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import { z } from 'astro/zod';
 import bazy from '../data/spravochniki/bazy.json' with { type: 'json' };
+import slovar from './slovar-dannye.mjs';
 
 // Р676: список баз один — src/data/spravochniki/bazy.json (собирает tools/spravochniki.py bazy), здесь не перечислять.
 export const BAZY = bazy.razresheny.map((b) => b.id);
@@ -32,11 +33,11 @@ export const shkola = z.array(z.object({
   if (PREDMETY[s.predmet] && !PREDMETY[s.predmet].klassy.includes(s.klass))
     ctx.addIssue({ code: 'custom', message: `shkola: «${PREDMETY[s.predmet].nazvanie}» в ${s.klass} классе нет (ФГОС: ${PREDMETY[s.predmet].klassy.join(', ')})` });
 })).min(1);
-// Кто и что на картинке (п. 22) — номера записей словаря src/data/slovar.json и карточек src/data/spravochniki/kartochki.json.
-export const ZAPISI = new Set([...Object.keys(chitaj('src/data/slovar.json')), ...Object.keys(chitaj('src/data/spravochniki/kartochki.json'))]);
+// Кто и что на картинке (п. 22) — номера записей словаря src/data/slovar/ и карточек src/data/spravochniki/kartochki.json.
+export const ZAPISI = new Set([...Object.keys(slovar), ...Object.keys(chitaj('src/data/spravochniki/kartochki.json'))]);
 export const izobrazheno = z.array(z.string()
   .regex(/^(lyudi|predmet|mesto|narod|sobytie):[a-z0-9-]+$/, 'izobrazheno — «tip:id», tip: lyudi|predmet|mesto|narod|sobytie')
-  .superRefine((id, ctx) => { if (!ZAPISI.has(id)) ctx.addIssue({ code: 'custom', message: `izobrazheno: «${id}» нет ни в slovar.json, ни в spravochniki/kartochki.json` }); })).min(1);
+  .superRefine((id, ctx) => { if (!ZAPISI.has(id)) ctx.addIssue({ code: 'custom', message: `izobrazheno: «${id}» нет ни в src/data/slovar/, ни в spravochniki/kartochki.json` }); })).min(1);
 
 // Источник — запись: на него ссылаются факты и цитаты по id.
 export const istochnik = z.object({
@@ -78,7 +79,7 @@ export const ramka = z.object({ x: dolya, y: dolya, w: dolya.optional(), h: doly
 const shirota = z.number().min(-90).max(90), dolgota = z.number().min(-180).max(180);
 // Место события (пп. 255, 256): id места словаря с koordinaty или своё место с координатами.
 export const mestoSobytiya = z.union([
-  z.string().regex(/^mesto:[a-z0-9-]+$/, 'mesto_sobytiya — «mesto:id» из src/data/slovar.json или {nazvanie, shirota, dolgota}'),
+  z.string().regex(/^mesto:[a-z0-9-]+$/, 'mesto_sobytiya — «mesto:id» из src/data/slovar/ или {nazvanie, shirota, dolgota}'),
   z.object({ nazvanie: str, shirota, dolgota }),
 ]);
 const url = z.string().url('ссылка — адрес http(s)');
@@ -187,5 +188,5 @@ export const polyaDnya = (slovar) => ({
   chitat_dalshe: z.array(chitatDalshe).min(3, 'что почитать — 3–5 ссылок').max(5, 'что почитать — 3–5 ссылок').optional(),
   ...polyaR733,
   slovar: z.array(z.string().regex(/^(lyudi|mesto|narod|tema):[a-z0-9-]+$/, 'slovar — «tip:id», tip: lyudi|mesto|narod|tema')
-    .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar.json` }); })).optional(),
+    .superRefine((id, ctx) => { if (!(id in slovar)) ctx.addIssue({ code: 'custom', message: `slovar: «${id}» нет в src/data/slovar/` }); })).optional(),
 });

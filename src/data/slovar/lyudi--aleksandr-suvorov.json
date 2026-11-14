@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Александр Суворов",
+  "pol": "m",
+  "kratko": "Полководец, генералиссимус, не проиграл ни одного сражения.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82019621",
+    "ssylka": "https://id.loc.gov/authorities/names/n82019621.html",
+    "zagolovok": "Suvorov, Aleksandr Vasilʹevich, kni︠a︡zʹ Italiĭskiĭ, 1730-1800"
+  },
+  "latinica": "Aleksandr Suvorov",
+  "latinica_iz": "loc-istochnik",
+  "gody": {
+    "rozhdenie": "1730",
+    "smert": "1800"
+  }
+}

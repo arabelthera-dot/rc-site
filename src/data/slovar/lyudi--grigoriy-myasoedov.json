@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Григорий Мясоедов",
+  "pol": "m",
+  "kratko": "Художник-передвижник, автор «Косцов».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n83068259",
+    "ssylka": "https://id.loc.gov/authorities/names/n83068259.html",
+    "zagolovok": "Mi︠a︡soedov, Grigoriĭ Grigorʹevich, 1834-1911"
+  },
+  "latinica": "Grigorii Miasoedov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1834",
+    "smert": "1911"
+  }
+}
