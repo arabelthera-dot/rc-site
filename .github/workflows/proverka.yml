@@ -267,8 +267,9 @@ jobs:
       - name: oshibki-js — на полных страницах дней нет ошибок JS
         timeout-minutes: 8
         run: node scripts/oshibki-js.mjs --proba && node scripts/oshibki-js.mjs --dist dist
+      # 20, не 4 (Р657, 08.11.2026): проба 14 картинок — 36 с; заявка на 135 дней (#906) обрывалась на 4-й минуте.
       - name: kartinki-dnya — обложка и картинки в тексте у дня
-        timeout-minutes: 4
+        timeout-minutes: 20
         run: node scripts/kartinki-dnya.mjs --proba && node scripts/kartinki-dnya.mjs --dist dist
   sborka-i-ssylki:
     needs: [filtr, bez-sborki, sborka, proverki-dist, brauzer]
