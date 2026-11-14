@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Степан Макаров",
+  "pol": "m",
+  "kratko": "Адмирал, океанограф, создатель ледокола «Ермак».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n86136083",
+    "ssylka": "https://id.loc.gov/authorities/names/n86136083.html",
+    "zagolovok": "Makarov, Stepan Osipovich, 1848-1904"
+  },
+  "latinica": "Stepan Makarov",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1848",
+    "smert": "1904"
+  }
+}

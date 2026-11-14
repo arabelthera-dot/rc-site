@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Иркутск",
+  "kratko": "Город на Ангаре.",
+  "koordinaty": {
+    "shirota": 52.289,
+    "dolgota": 104.28,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/1430614"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Иркутск"
+    }
+  ]
+}

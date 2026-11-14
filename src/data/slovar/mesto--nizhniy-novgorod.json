@@ -1,0 +1,27 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Нижний Новгород",
+  "kratko": "Город на слиянии Оки и Волги.",
+  "koordinaty": {
+    "shirota": 56.326,
+    "dolgota": 44.005,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/1752948"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Нижний Новгород",
+      "s": "1221",
+      "po": "1932-10-07"
+    },
+    {
+      "nazvanie": "Горький",
+      "s": "1932-10-07",
+      "po": "1990-10-22"
+    },
+    {
+      "nazvanie": "Нижний Новгород",
+      "s": "1990-10-22"
+    }
+  ]
+}

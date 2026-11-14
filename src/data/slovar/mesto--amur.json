@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Амур",
+  "kratko": "Великая река Дальнего Востока.",
+  "koordinaty": {
+    "shirota": 47.749,
+    "dolgota": 132.017,
+    "tochka": "точка на русле у Хабаровска, российский берег",
+    "otkuda": "https://www.openstreetmap.org/way/217386511"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Амур"
+    }
+  ]
+}

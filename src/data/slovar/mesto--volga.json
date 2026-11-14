@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Волга",
+  "kratko": "Главная река европейской России.",
+  "koordinaty": {
+    "shirota": 56.167,
+    "dolgota": 44.215,
+    "tochka": "середина реки по карте",
+    "otkuda": "https://www.openstreetmap.org/relation/1730417"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Волга"
+    }
+  ]
+}

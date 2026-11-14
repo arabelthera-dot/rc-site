@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Камчатка",
+  "kratko": "Полуостров на северо-востоке России.",
+  "koordinaty": {
+    "shirota": 55.868,
+    "dolgota": 158.803,
+    "tochka": "середина полуострова",
+    "otkuda": "https://www.openstreetmap.org/relation/7752000"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Камчатка"
+    }
+  ]
+}

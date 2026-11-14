@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Поленов",
+  "pol": "m",
+  "kratko": "Живописец, автор «Московского дворика».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81080642",
+    "ssylka": "https://id.loc.gov/authorities/names/n81080642.html",
+    "zagolovok": "Polenov, Vasiliĭ Dmitrievich, 1844-1927"
+  },
+  "latinica": "Vasilii Polenov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1844",
+    "smert": "1927"
+  }
+}

@@ -3,14 +3,14 @@
 
 Машина читает утверждённые дни (src/data/utverzhdeno/<музей>/01-*.json), дни не правит.
 Карточка — src/data/spravochniki/kartochki.json: постоянный номер «tip:slug» в той же
-форме, что словарь src/data/slovar.json (Р37), чтобы потом слить в одну базу.
+форме, что словарь src/data/slovar/ (Р37), чтобы потом слить в одну базу.
 Люди: имя из словаря или «И. О. Фамилия» / «Имя Фамилия» из текста фактов.
 Предметы: название в кавычках-ёлочках из заголовков фактов.
 Дубли (один человек под двумя написаниями) — src/data/spravochniki/kartochki-dubli.json.
 Решённый дубль — запись в src/data/snyatye-nomera.json: снятый номер машина сливает в живой.
 Запуск: python3 tools/spravochniki/kartochki.py
 """
-import json, re, glob, os
+import json, re, glob, os, sys
 from collections import defaultdict
 
 KOREN = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -22,7 +22,9 @@ def slug(s):
     s = ''.join(TR.get(c, c) for c in s.lower())
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
 
-slovar = json.load(open(f'{KOREN}/src/data/slovar.json'))
+sys.path.insert(0, f'{KOREN}/tools')
+import slovar_dannye  # noqa: E402 — словарь: файл на запись (Р776)
+slovar = slovar_dannye.chitat()
 po_imeni = {v['nazvanie']: k for k, v in slovar.items() if v.get('tip') == 'lyudi'}  # _roli — список ролей, не запись
 INIC = re.compile(r'\b([А-ЯЁ])\.\s?(?:([А-ЯЁ])\.\s?)?([А-ЯЁ][а-яё]{2,}(?:-[А-ЯЁ][а-яё]+)?)')
 PREDMET = re.compile(r'«([А-ЯЁ0-9][^«»]{1,40})»')

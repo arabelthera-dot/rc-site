@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Александр Иванов",
+  "pol": "m",
+  "kratko": "Живописец, двадцать лет писал «Явление Христа народу».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81041796",
+    "ssylka": "https://id.loc.gov/authorities/names/n81041796.html",
+    "zagolovok": "Ivanov, Aleksandr Andreevich, 1806-1858"
+  },
+  "latinica": "Aleksandr Ivanov",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1806",
+    "smert": "1858"
+  }
+}
