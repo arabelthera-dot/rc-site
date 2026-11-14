@@ -1,0 +1,861 @@
+muzei: izobreteniya
+key: 02-12
+pokazan_sergeyu:
+  data: '2026-11-14'
+adres: den
+nomer_dnya: izob-0212-lenc
+data_sobytiya: '1833-12-11'
+data_staryj_stil: '1833-11-29'
+chto_sluchilos: 'Эмилий Ленц доложил в Петербургской академии наук правило: индукционный ток всегда направлен так, чтобы мешать своей причине.'
+god: 1833
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: «Портрет физика Э. Х. Ленца», офорт И. К. Эйзенгардта, 1866
+  muzej: Нижегородский государственный художественный музей
+  gorod: Нижний Новгород
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=8495993
+- chto: Батометры и океанографические приборы
+  muzej: Музей Мирового океана
+  gorod: Калининград
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=6224492
+chitat_dalshe:
+- nazvanie: Э. Х. Ленц
+  gde: сборник «Люди русской науки», 1948
+  ssylka: https://library.istu.edu/hoe/personalia/lentz.pdf
+- nazvanie: «Ленц Эмилий Христианович»
+  gde: Русский биографический словарь, т. 10
+  ssylka: https://azbyka.ru/otechnik/Spravochniki/russkij-biograficheskij-slovar-tom-10/269
+- nazvanie: «Физик в океане»
+  gde: «Коммерсантъ», 03.11.2023, обзор печати РАН
+  ssylka: https://www.ras.ru/digest/showdnews.aspx?id=96d41f63-631a-418b-b39a-3ff6dcd481a7
+- nazvanie: И. Паша. «Ленц на Эльбрусе»
+  gde: Mountain.RU, 2015
+  ssylka: http://www.mountain.ru/article/mainarticle.php?article_id=7475
+istochniki:
+- id: lrn-1948
+  baza: kniga
+  god: 1948
+  nazvanie: Э. Х. Ленц, сборник «Люди русской науки», 1948
+  ssylka: https://library.istu.edu/hoe/personalia/lentz.pdf
+- id: rbs-lenc
+  baza: kniga
+  nazvanie: Ленц Эмилий Христианович, Русский биографический словарь, т. 10
+  ssylka: https://azbyka.ru/otechnik/Spravochniki/russkij-biograficheskij-slovar-tom-10/269
+- id: ran-fizik-v-okeane
+  baza: nauka
+  god: 2023
+  nazvanie: «Физик в океане», «Коммерсантъ», 03.11.2023, обзор печати РАН
+  ssylka: https://www.ras.ru/digest/showdnews.aspx?id=96d41f63-631a-418b-b39a-3ff6dcd481a7
+- id: sea-library
+  baza: periodika
+  nazvanie: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека
+  ssylka: http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html
+- id: mountain-lenc
+  baza: periodika
+  avtor: И. Паша
+  god: 2015
+  nazvanie: «Ленц на Эльбрусе», Mountain.RU, 2015
+  ssylka: http://www.mountain.ru/article/mainarticle.php?article_id=7475
+- id: casp-geo
+  baza: periodika
+  avtor: П. Бухарицин
+  nazvanie: П. Бухарицин, «К началу 2030-х годов уровень Каспия вновь будет на подъёме», «Каспийский вестник»
+  ssylka: https://casp-geo.ru/petr-buharitsin-k-nachalu-2030-h-godov-uroven-kaspiya-vnov-budet-na-podeme/
+- id: ruscable-lenc
+  baza: periodika
+  nazvanie: «Эмилий Христианович Ленц», RusCable.Ru
+  ssylka: https://www.ruscable.ru/article/any/Emilij_Xristianovich_Lents/
+- id: physics-ru
+  baza: kniga
+  nazvanie: «Открытая физика», § 1.20 «Электромагнитная индукция»
+  ssylka: https://physics.ru/textbook1/chapter1/section/paragraph20/
+- id: gk-lenc-portret
+  baza: goskatalog
+  nazvanie: «Портрет физика Э. Х. Ленца», Нижегородский государственный художественный музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=8495993
+- id: gk-predpriyatie
+  baza: goskatalog
+  nazvanie: «Шлюп „Предприятие“ О. Е. Коцебу. 1823 г.», Музей Мирового океана — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=3715243
+- id: gk-batometr-bm48
+  baza: goskatalog
+  nazvanie: батометр морской БМ-48, Музей Мирового океана — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=6224492
+- id: gk-dvigatel-yakobi
+  baza: goskatalog
+  nazvanie: «Электродвигатель Якоби, 1834 г.», Центральный музей связи имени А. С. Попова — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=70357920
+- id: gk-tablica-lenc-joule
+  baza: goskatalog
+  nazvanie: учебная таблица «Закон Ленца — Джоуля», Музей истории города Микунь — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=22255761
+- id: gk-batometr
+  baza: goskatalog
+  nazvanie: батометр гидрологический, Музей Мирового океана — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=10498987
+- id: gk-elbrus-plan
+  baza: goskatalog
+  nazvanie: «Фотокопия плана лагеря экспедиции на Эльбрус, 1829 г.», Ставропольский музей-заповедник — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=14390676
+citaty:
+- kto: Адмирал С. О. Макаров
+  gde: книга «„Витязь“ и Тихий океан»; приводит RusCable.Ru
+  tekst: Наблюдения Ленца не только первые в хронологическом отношении, но первые и в качественном, и я ставлю их выше своих наблюдений и выше наблюдений «Челленджера»
+  istochnik: ruscable-lenc
+velichina_chislo: 14
+velichina_edinica: лет
+velichina_chto: на столько правило Ленца опередило закон сохранения энергии
+etiketka_oblozhki:
+- И. К. Эйзенгардт. Портрет физика Э. Х. Ленца, 1866
+- Нижегородский государственный художественный музей
+slovar:
+- mesto:sankt-peterburg
+head:
+  title: Закон Ленца, 1833 — Музей «Что изобрели русские первыми в мире»
+  description: Эмилий Ленц записал правило, по которому индукционный ток всегда мешает своей причине, — за 14 лет до закона сохранения энергии.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-12/
+  sobytie: Закон Ленца
+  god: '1833'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Закон Ленца
+    description: Эмилий Ленц записал правило, по которому индукционный ток всегда мешает своей причине, — за 14 лет до закона сохранения энергии.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-12/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-12-goskatalog-8495993.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Закон Ленца
+    description: Эмилий Ленц записал правило, по которому индукционный ток всегда мешает своей причине, — за 14 лет до закона сохранения энергии.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-12/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-12-goskatalog-8495993.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-12-goskatalog-8495993.jpg
+  glavnoe_na_kartinke:
+    x: 0.3
+    y: 0.2
+    w: 0.5
+    h: 0.5
+  width: 336
+  height: 425
+  alt: Гравированный погрудный портрет немолодого мужчины в очках, сюртуке и шейном платке, под портретом — подпись-автограф
+  data_source: https://goskatalog.ru/portal/#/collections?id=8495993
+  license: общественное достояние (автор умер в 1896) · Нижегородский государственный художественный музей · Госкаталог
+  podpis: И. К. Эйзенгардт. «Портрет физика Э. Х. Ленца», офорт, 1866. Хранит Нижегородский государственный художественный музей, Нижний Новгород.
+  credit: 'Гравюра: И. К. Эйзенгардт. Хранится: Нижегородский государственный художественный музей (НГХМ КП-6790, инв. № НГХМ-Гр-347). Госкаталог музейного фонда РФ, рег. № 8392720.'
+  hint: Гравюра · портрет Ленца, 1866
+  vid: risunok
+  prava:
+    avtor: Эйзенгардт И. К.
+    god_sozdaniya: '1866'
+    god_smerti_avtora: 1896
+    god_reabilitacii: net
+    anonim: false
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=8495993
+  nomer_predmeta: '8392720'
+  nomer_snimka: НГХМ-Гр-347
+  hranitel: Нижегородский государственный художественный музей
+  podlinnik:
+    gde: Нижегородский государственный художественный музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=8495993
+  svyashchennoe: false
+  podpis_chto: И. К. Эйзенгардт. «Портрет физика Э. Х. Ленца»
+  podpis_gde: Германия
+  podpis_kogda: '1866'
+kroshka: 12 февраля · Закон Ленца
+lead:
+  data: 1833 · Санкт-Петербург, Академия наук
+  privyazka: 12 февраля 1804 года родился Ленц; правило он доложил 29 ноября 1833 года.
+  kto: Эмилий Христианович Ленц, физик, академик Петербургской академии наук
+  h1: Закон Ленца
+  hook: Ленц первым записал формулой, что природа сопротивляется вмешательству, — на его правиле стоит каждый электродвигатель
+stamp:
+- v: '1833'
+  k: правило доложено в Академии наук
+- v: 14 лет
+  k: раньше закона сохранения энергии
+- v: 30,5 м
+  k: Каспий ниже Чёрного моря
+- v: +2,2°
+  k: на глубине километра в тропиках
+daynav:
+- id: story
+  label: Изобретение
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/12feb-lenc
+  format: horizontal
+  pole: izobreteniya/12feb-lenc:horizontal.sec
+  suffix: сек
+  badge: 39 сек
+  intro: 1833 год. Ленц первым записал формулой, что природа сопротивляется вмешательству, — на его правиле стоит каждый электродвигатель.
+  poster: video/day-12feb-lenc-poster.jpg?v=1
+  mp4: video/day-12feb-lenc.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/12feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+audioguide:
+  audioSrc: audio-guide-lenc-ru.mp3
+  durationLabel: около минуты
+  lead: 'Голос ведёт по залу Эмилия Ленца: от правила 1833 года через двигатель Якоби к первым взглядам в глубину океана.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Правило 1833 года
+  - t: 25
+    mark: 0:25
+    title: Двигатель даёт ток
+  - t: 44
+    mark: 0:44
+    title: Физик в океане
+  transcript:
+  - 'Здравствуйте. Мы в зале Эмилия Ленца. Двенадцатого февраля тысяча восемьсот четвёртого года родился физик, который первым записал правилом, что природа сопротивляется вмешательству. Двадцать девятого ноября тысяча восемьсот тридцать третьего года он доложил в Петербургской академии наук: индукционный ток всегда направлен так, чтобы мешать своей причине. Это случилось за четырнадцать лет до закона сохранения энергии.'
+  - 'Тогда все считали индукционный ток особым. Ленц один опытом доказал, что он обычный. А потом показал: если крутить вал двигателя Якоби, двигатель сам даёт ток. Вместе с Якоби Ленц первым научился рассчитывать электромагниты для машин. На его правиле стоит каждый электродвигатель.'
+  - 'Но физик Ленц начинал в океане. Он первым в мире заглянул в его глубины, и отсюда началась океанография. В тропиках на глубине километра он намерил плюс два и две десятых градуса — рекордный холод того времени. Адмирал Макаров потом написал: наблюдения Ленца в океане первые и по времени, и по качеству.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: История изобретения
+  h2: Как физик из океана открыл правило тока
+  udary:
+  - summary: Физик в океане
+    det:
+    - Ленц первым в мире заглянул в глубины океана — отсюда началась океанография.
+    src: 'Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — sea-library.ru'
+  - summary: Правило 1833 года
+    det:
+    - Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии.
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+  - summary: Двигатель даёт ток
+    det:
+    - 'Ленц доказал: крутишь вал двигателя Якоби — и он сам даёт ток.'
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что изобрели
+  h2: Факты дня
+  udary:
+  - n: 1
+    summary: В 1838 году Ленц заморозил воду электрическим током
+    sravnenie: net
+    src: 'Источник: Русский биографический словарь, т. 10 — azbyka.ru'
+    otryvok: В 1838 году Ленц заморозил воду электрическим током
+    stranica: Русский биографический словарь
+    href: https://azbyka.ru/otechnik/Spravochniki/russkij-biograficheskij-slovar-tom-10/269
+    pometka: документ
+    id: zamorozil-vodu-tokom
+    istochnik: rbs-lenc
+    dlya_voprosa: true
+    otvet: заморозил воду
+    otvet_edinstvennyj: true
+  - n: 2
+    summary: Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии
+    sravnenie: net
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: za-14-let-do-zakona
+    istochnik: lrn-1948
+    dlya_voprosa: true
+    otvet: 14 лет
+    otvet_edinstvennyj: true
+  - n: 3
+    summary: Редактор главного физического журнала не сразу решился напечатать опыты Ленца
+    sravnenie: net
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: Редактор главного физического журнала не сразу решился напечатать опыты Ленца
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: redaktor-ne-reshilsya
+    istochnik: lrn-1948
+    dlya_voprosa: true
+    otvet: не сразу напечатал
+    otvet_edinstvennyj: true
+  - n: 4
+    summary: Ленц первым в мире заглянул в глубины океана — отсюда началась океанография
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-12-goskatalog-3715243.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.1
+        w: 0.6
+        h: 0.75
+      width: 800
+      height: 525
+      alt: Трёхмачтовый парусник под всеми парусами идёт по волнам, над ним чайки
+      data_source: https://goskatalog.ru/portal/#/collections?id=3715243
+      license: цитирование (ст. 1274 ГК) · Музей Мирового океана · Госкаталог
+      podpis: Б. М. Стародубцев, Е. В. Войшвилло. «Шлюп „Предприятие“ О. Е. Коцебу. 1823 г.», акварель, 1986. Хранит Музей Мирового океана, Калининград.
+      credit: 'Акварель: Б. М. Стародубцев, Е. В. Войшвилло. Хранится: Музей Мирового океана (ММО 1 № 263/11, инв. № Гр-94). Госкаталог музейного фонда РФ, рег. № 3730087.'
+      hint: Акварель · шлюп «Предприятие»
+      vid: risunok
+      prava:
+        avtor: Стародубцев Б. М., Войшвилло Е. В.
+        god_sozdaniya: '1986'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=3715243
+      nomer_predmeta: '3730087'
+      nomer_snimka: Гр-94
+      hranitel: Музей Мирового океана
+      podlinnik:
+        gde: Музей Мирового океана
+        otkuda: https://goskatalog.ru/portal/#/collections?id=3715243
+      svyashchennoe: false
+      podpis_chto: Б. М. Стародубцев, Е. В. Войшвилло. «Шлюп „Предприятие“ О. Е. Коцебу. 1823 г.»
+      podpis_gde: Ленинград
+      podpis_kogda: '1986'
+    src: 'Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — sea-library.ru'
+    otryvok: Ленц первым в мире заглянул в глубины океана — отсюда началась океанография
+    stranica: Морская библиотека
+    href: http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html
+    pometka: документ
+    id: glubiny-okeana
+    istochnik: sea-library
+    dlya_voprosa: false
+  - n: 5
+    summary: Его лебёдку и батометр мир потом знал под чужими именами — Томсона и Нансена
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-12-goskatalog-6224492.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.15
+        w: 0.8
+        h: 0.7
+      width: 800
+      height: 299
+      alt: Белый металлический цилиндр с затворами на обоих концах и рычагами
+      data_source: https://goskatalog.ru/portal/#/collections?id=6224492
+      license: цитирование (ст. 1274 ГК) · Музей Мирового океана · Госкаталог
+      podpis: Батометр морской БМ-48, 1950–1960-е. Хранит Музей Мирового океана, Калининград.
+      credit: 'Предмет: батометр морской БМ-48. Хранится: Музей Мирового океана (ММО 1 № 414/37). Госкаталог музейного фонда РФ, рег. № 6020511.'
+      hint: Предмет · батометр БМ-48
+      vid: predmet
+      prava:
+        avtor: net
+        god_sozdaniya: 1950–1960-е гг.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 6020511
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=6224492
+      nomer_predmeta: '6020511'
+      nomer_snimka: ММО 1 № 414/37
+      hranitel: Музей Мирового океана
+      podlinnik:
+        gde: Музей Мирового океана
+        otkuda: https://goskatalog.ru/portal/#/collections?id=6224492
+      svyashchennoe: false
+      podpis_chto: Батометр морской БМ-48
+      podpis_gde: СССР
+      podpis_kogda: 1950–1960-е
+    src: 'Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — sea-library.ru'
+    otryvok: Его лебёдку и батометр мир потом знал под чужими именами — Томсона и Нансена
+    stranica: Морская библиотека
+    href: http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html
+    pometka: документ
+    id: chuzhie-imena
+    istochnik: sea-library
+    dlya_voprosa: false
+  - n: 6
+    summary: 'Барометром Ленц выяснил: Каспий на 30,5 метра ниже Чёрного моря'
+    sravnenie: net
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: 'Барометром Ленц выяснил: Каспий на 30,5 метра ниже Чёрного моря'
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: kaspij-nizhe-chernogo
+    istochnik: lrn-1948
+    dlya_voprosa: true
+    otvet: 30,5 метра
+    otvet_edinstvennyj: true
+  - n: 7
+    summary: С 1 февраля 1837-го по просьбе Ленца в Баку мерят Каспий — отсюда счёт всех измерений
+    sravnenie: net
+    src: 'Источник: П. Бухарицин, «Каспийский вестник» — casp-geo.ru'
+    otryvok: С 1 февраля 1837-го по просьбе Ленца в Баку мерят Каспий — отсюда счёт всех измерений
+    stranica: «Каспийский вестник»
+    href: https://casp-geo.ru/petr-buharitsin-k-nachalu-2030-h-godov-uroven-kaspiya-vnov-budet-na-podeme/
+    pometka: документ
+    id: rejka-v-baku
+    istochnik: casp-geo
+    dlya_voprosa: false
+  - n: 8
+    summary: Ленц предсказал тёплую воду в глубине Ледовитого океана за 60 лет до Нансена
+    sravnenie: net
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: Ленц предсказал тёплую воду в глубине Ледовитого океана за 60 лет до Нансена
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: teplaya-voda-arktiki
+    istochnik: lrn-1948
+    dlya_voprosa: false
+  - n: 9
+    summary: 'Ленц доказал: крутишь вал двигателя Якоби — и он сам даёт ток'
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-12-goskatalog-70357920.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.85
+      width: 646
+      height: 640
+      alt: 'Гравюра машины: на деревянной раме вал с катушками-электромагнитами и диском, внизу — батарея пластин'
+      data_source: https://goskatalog.ru/portal/#/collections?id=70357920
+      license: цитирование (ст. 1274 ГК) · Центральный музей связи имени А. С. Попова · Госкаталог
+      podpis: Электродвигатель Якоби, 1834. Фотография с рисунка, 1970-е. Хранит Центральный музей связи имени А. С. Попова, Санкт-Петербург.
+      credit: 'Фото с рисунка. Хранится: Центральный музей связи имени А. С. Попова (ГКП-167064). Госкаталог музейного фонда РФ, рег. № 70087018.'
+      hint: Фото · двигатель Якоби
+      vid: foto
+      prava:
+        avtor: net
+        god_sozdaniya: 1970-е гг.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 70087018
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=70357920
+      nomer_predmeta: '70087018'
+      nomer_snimka: ГКП-167064
+      hranitel: Центральный музей связи имени А. С. Попова
+      podlinnik:
+        gde: Центральный музей связи имени А. С. Попова
+        otkuda: https://goskatalog.ru/portal/#/collections?id=70357920
+      svyashchennoe: false
+      podpis_chto: Электродвигатель Якоби, 1834 (фотография с рисунка)
+      podpis_gde: Ленинград
+      podpis_kogda: 1970-е
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: 'Ленц доказал: крутишь вал двигателя Якоби — и он сам даёт ток'
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: dvigatel-daet-tok
+    istochnik: lrn-1948
+    dlya_voprosa: false
+  - n: 10
+    summary: 'Ленц первым понял: глубинная вода течёт от полюсов к экватору'
+    sravnenie: net
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: 'Ленц первым понял: глубинная вода течёт от полюсов к экватору'
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: ot-polyusov-k-ekvatoru
+    istochnik: lrn-1948
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про ток и океан
+  udary:
+  - n: 11
+    summary: Все считали индукционный ток особым — Ленц один опытом доказал, что он обычный
+    sravnenie: net
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: Все считали индукционный ток особым — Ленц один опытом доказал, что он обычный
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: obychnyj-tok
+    istochnik: lrn-1948
+    dlya_voprosa: false
+  - n: 12
+    summary: Закон нагрева током Ленц нашёл сам, без Джоуля, — и измерил точнее него
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-12-goskatalog-22255761.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.4
+      width: 1200
+      height: 1788
+      alt: 'Учебная таблица: рисунки электрокамина, плиток, утюга, электросварщика и измерительных приборов с формулами'
+      data_source: https://goskatalog.ru/portal/#/collections?id=22255761
+      license: цитирование (ст. 1274 ГК) · Музей истории города Микунь · Госкаталог
+      podpis: Э. И. Расовский, худ. А. Меньшиков. Учебная таблица «Закон Ленца — Джоуля», 1952. Хранит Музей истории города Микунь, Республика Коми.
+      credit: 'Плакат: Э. И. Расовский, худ. А. Меньшиков. Хранится: Микуньский филиал «Музей истории города Микунь» Усть-Вымского межпоселенческого музейного объединения (инв. № 1045). Госкаталог музейного фонда РФ, рег. № 22114404.'
+      hint: Плакат · закон Ленца — Джоуля, 1952
+      vid: plakat
+      prava:
+        avtor: Расовский Э. И.
+        god_sozdaniya: '1952'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=22255761
+      nomer_predmeta: '22114404'
+      nomer_snimka: '1045'
+      hranitel: Музей истории города Микунь
+      podlinnik:
+        gde: Музей истории города Микунь
+        otkuda: https://goskatalog.ru/portal/#/collections?id=22255761
+      svyashchennoe: false
+      podpis_chto: Э. И. Расовский. Учебная таблица «Закон Ленца — Джоуля»
+      podpis_gde: СССР
+      podpis_kogda: '1952'
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: Закон нагрева током Ленц нашёл сам, без Джоуля, — и измерил точнее него
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: zakon-nagreva
+    istochnik: lrn-1948
+    dlya_voprosa: false
+  - n: 13
+    summary: В тропиках на глубине километра Ленц намерил +2,2° — рекордный холод того времени
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-12-goskatalog-10498987.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.8
+      width: 800
+      height: 308
+      alt: 'Жёлтый пробоотборник: прозрачная труба с металлическими крышками и рычагами'
+      data_source: https://goskatalog.ru/portal/#/collections?id=10498987
+      license: цитирование (ст. 1274 ГК) · Музей Мирового океана · Госкаталог
+      podpis: Батометр гидрологический, ГДР, 1980-е. Хранит Музей Мирового океана, Калининград.
+      credit: 'Предмет: батометр гидрологический. Хранится: Музей Мирового океана (ММО 1 № 8655, инв. № ПР-1029). Госкаталог музейного фонда РФ, рег. № 10388619.'
+      hint: Предмет · батометр
+      vid: predmet
+      prava:
+        avtor: net
+        god_sozdaniya: 1980-е гг.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 10388619
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=10498987
+      nomer_predmeta: '10388619'
+      nomer_snimka: ПР-1029
+      hranitel: Музей Мирового океана
+      podlinnik:
+        gde: Музей Мирового океана
+        otkuda: https://goskatalog.ru/portal/#/collections?id=10498987
+      svyashchennoe: false
+      podpis_chto: Батометр гидрологический
+      podpis_gde: ГДР
+      podpis_kogda: 1980-е
+    src: 'Источник: «Физик в океане», «Коммерсантъ», 03.11.2023, обзор печати РАН — ras.ru'
+    otryvok: В тропиках на глубине километра Ленц намерил +2,2° — рекордный холод того времени
+    stranica: обзор печати РАН
+    href: https://www.ras.ru/digest/showdnews.aspx?id=96d41f63-631a-418b-b39a-3ff6dcd481a7
+    pometka: документ
+    id: plyus-2-2
+    istochnik: ran-fizik-v-okeane
+    dlya_voprosa: true
+    otvet: +2,2°
+    otvet_edinstvennyj: true
+  - n: 14
+    summary: Ленц и Якоби первыми научились рассчитывать электромагниты для машин
+    sravnenie: net
+    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    otryvok: Ленц и Якоби первыми научились рассчитывать электромагниты для машин
+    stranica: «Люди русской науки», 1948
+    href: https://library.istu.edu/hoe/personalia/lentz.pdf
+    pometka: документ
+    id: raschet-elektromagnitov
+    istochnik: lrn-1948
+    dlya_voprosa: false
+  - n: 15
+    summary: 'Адмирал Макаров: наблюдения Ленца в океане первые и по времени, и по качеству'
+    sravnenie: net
+    src: 'Источник: «Эмилий Христианович Ленц», RusCable.Ru — ruscable.ru'
+    otryvok: 'Адмирал Макаров: наблюдения Ленца в океане первые и по времени, и по качеству'
+    stranica: RusCable.Ru
+    href: https://www.ruscable.ru/article/any/Emilij_Xristianovich_Lents/
+    pometka: документ
+    id: makarov
+    istochnik: ruscable-lenc
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Три прибора Ленца — три открытия
+  pravilo_ru: 'Что сделать сейчас: выбери прибор и нажми на открытие, которое он помог сделать.'
+  kak_igrat:
+    zachem: 'Ленц мерил всё сам: высоту — барометром, глубину — батометром, ток — машиной Якоби.'
+    shagi:
+    - Выбери прибор — кнопка загорится золотом.
+    - Нажми на открытие, которое он помог сделать. Верный выбор загорится зелёным.
+    - Расставь все три — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все три прибора на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: kaspij
+      nazvanie: Насколько Каспий ниже Чёрного моря
+      verno_ru: 'Барометром Ленц выяснил: Каспий на 30,5 метра ниже Чёрного моря.'
+    - kod: glubina
+      nazvanie: Какой холод в глубине тропиков
+      verno_ru: В тропиках на глубине километра Ленц намерил +2,2° — рекордный холод того времени.
+    - kod: tok
+      nazvanie: Откуда ток, если крутить вал
+      verno_ru: 'Ленц доказал: крутишь вал двигателя Якоби — и он сам даёт ток.'
+    podpisi:
+    - kod: barometr
+      tekst: Барометр
+      mesto: kaspij
+      mimo_ru: Барометр мерит давление воздуха — по нему считают высоту.
+    - kod: batometr
+      tekst: Батометр
+      mesto: glubina
+      mimo_ru: Батометр поднимает воду с глубины.
+    - kod: dvigatel
+      tekst: Двигатель Якоби
+      mesto: tok
+      mimo_ru: Двигатель Якоби работает от тока — и может сам его давать.
+    vyberi_ru: Сначала выбери прибор, потом открытие.
+    mimo_ru: Не то открытие — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все три прибора на месте — барометр, батометр и двигатель Якоби.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: барометр — к Каспию, батометр — к глубине тропиков, двигатель Якоби — к току.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии.'
+  net: 'Где граница: закон нагрева током носит два имени — Ленц нашёл его сам, без Джоуля.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - шлюп «Предприятие»
+    - первые измерения глубинной воды океана
+    - 1823–1826
+  - - Санкт-Петербург
+    - правило Ленца доложено в Академии наук
+    - '1833'
+  - - Баку
+    - по просьбе Ленца начаты измерения уровня Каспия
+    - '1837'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: на 14 лет; на 30,5 метра; заморозил воду; редактор главного физического журнала; +2,2°.'
+  ball: 8
+  voprosy:
+  - q: На сколько лет правило Ленца опередило закон сохранения энергии?
+    o:
+    - на 4 года
+    - на 14 лет
+    - на 40 лет
+    a: 1
+    e: Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии.
+  - q: Насколько Каспий ниже Чёрного моря по барометру Ленца?
+    o:
+    - на 3 метра
+    - на 30,5 метра
+    - на 300 метров
+    a: 1
+    e: 'Барометром Ленц выяснил: Каспий на 30,5 метра ниже Чёрного моря.'
+  - q: Что Ленц сделал электрическим током в 1838 году?
+    o:
+    - заморозил воду
+    - зажёг лампу
+    - расплавил стекло
+    a: 0
+    e: В 1838 году Ленц заморозил воду электрическим током.
+  - q: Кто не сразу решился напечатать опыты Ленца?
+    o:
+    - царь
+    - Академия наук
+    - редактор главного физического журнала
+    a: 2
+    e: Редактор главного физического журнала не сразу решился напечатать опыты Ленца.
+  - q: Сколько градусов Ленц намерил на глубине километра в тропиках?
+    o:
+    - +22°
+    - +12°
+    - +2,2°
+    a: 2
+    e: В тропиках на глубине километра Ленц намерил +2,2° — рекордный холод того времени.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал Эмилия Ленца.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-12-goskatalog-14390676.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.55
+  width: 768
+  height: 938
+  alt: 'Старинный гравированный план: горные хребты, река и значки палаток лагеря'
+  data_source: https://goskatalog.ru/portal/#/collections?id=14390676
+  license: общественное достояние (1829) · Ставропольский музей-заповедник · Госкаталог
+  podpis: План лагеря экспедиции на Эльбрус, 1829. Фотокопия из картографического фонда В. Г. Гниловского. Хранит Ставропольский музей-заповедник, Ставрополь.
+  credit: 'Фотокопия плана. Хранится: Ставропольский музей-заповедник (СГМЗ ОФ 22356/9). Госкаталог музейного фонда РФ, рег. № 14267999.'
+  hint: Карта · лагерь у Эльбруса, 1829
+  vid: karta
+  prava:
+    avtor: net
+    god_sozdaniya: 1829 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, рег. № 14267999
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=14390676
+  nomer_predmeta: '14267999'
+  nomer_snimka: СГМЗ ОФ 22356/9
+  hranitel: Ставропольский музей-заповедник
+  podlinnik:
+    gde: Ставропольский музей-заповедник
+    otkuda: https://goskatalog.ru/portal/#/collections?id=14390676
+  svyashchennoe: false
+  podpis_chto: План лагеря экспедиции на Эльбрус
+  podpis_gde: у подножия Эльбруса, на реке Малке
+  podpis_kogda: '1829'
+sources:
+- href: https://library.istu.edu/hoe/personalia/lentz.pdf
+  title: «Люди русской науки», 1948
+  note: факты дня
+- href: https://azbyka.ru/otechnik/Spravochniki/russkij-biograficheskij-slovar-tom-10/269
+  title: Русский биографический словарь, т. 10
+  note: факты дня
+- href: https://www.ras.ru/digest/showdnews.aspx?id=96d41f63-631a-418b-b39a-3ff6dcd481a7
+  title: «Физик в океане», «Коммерсантъ», 03.11.2023, обзор печати РАН
+  note: факты дня
+- href: http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html
+  title: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека
+  note: факты дня
+- href: https://casp-geo.ru/petr-buharitsin-k-nachalu-2030-h-godov-uroven-kaspiya-vnov-budet-na-podeme/
+  title: П. Бухарицин, «Каспийский вестник»
+  note: факты дня
+- href: https://www.ruscable.ru/article/any/Emilij_Xristianovich_Lents/
+  title: «Эмилий Христианович Ленц», RusCable.Ru
+  note: факты дня и цитата
+- href: http://www.mountain.ru/article/mainarticle.php?article_id=7475
+  title: И. Паша, «Ленц на Эльбрусе»
+  note: барометр на Эльбрусе
+- href: https://physics.ru/textbook1/chapter1/section/paragraph20/
+  title: «Открытая физика»
+  note: как работает правило
+- href: https://goskatalog.ru/portal/#/collections?id=8495993
+  title: 'Госкаталог музейного фонда РФ: портрет Ленца и предметы к фактам дня'
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-13/
+  title: 13 февраля — Гидросамолёты и амфибии «Бе»
+  hook: 'Таганрогская школа Бериева единственная в мире: Бе-200 садится на воду и набирает двенадцать тонн за двенадцать секунд'
+  main: true
+- lbl: Предыдущий день
+  href: den/02-11/
+  title: 11 февраля — Первый в мире морской гидросамолёт (летающая лодка М-5)
+  hook: Григорович превратил корпус самолёта в лодку, и машина стала взлетать прямо с черноморской волны, без аэродрома
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Знаток правила Ленца
+  - - 70
+    - Штурман шлюпа «Предприятие»
+  - - 40
+    - Ученик Ленца
+  - - 0
+    - Гость дня
+return:
+  q: Куда течёт глубинная вода океана?
+  a: 'Ленц первым понял: глубинная вода течёт от полюсов к экватору.'
+  src: «Люди русской науки», 1948, library.istu.edu
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-12-lenc:claim-1833
+  ours:
+    kind: publication
+    title: Э. Х. Ленц, сборник «Люди русской науки»
+    date: '1948'
+    holder: «Люди русской науки»
+    source_url: https://library.istu.edu/hoe/personalia/lentz.pdf
+podskazki_igry:
+- Высоту и глубину суши мерят давлением воздуха
+- Чтобы узнать воду на глубине, её надо оттуда поднять
+- Машину, что крутится от тока, можно крутить руками
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya: mesto:sankt-peterburg
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Магнит двигают к катушке — в катушке рождается ток
+- Ток делает катушку магнитом, и этот магнит отталкивает пришедший
+- Индукционный ток всегда мешает тому, что его вызвало
+- Поэтому вал генератора под нагрузкой крутить тяжело — сила рук уходит в ток
+data_uslovnaya: 12 февраля — день рождения Эмилия Христиановича Ленца (1804); правило Ленца он доложил в Академии наук 29 ноября 1833 года.
