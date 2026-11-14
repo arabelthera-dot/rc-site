@@ -3,6 +3,57 @@
   "key": "02-07",
   "title": "Первая в мире троичная ЭВМ «Сетунь»",
   "hook": "Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц",
+  "year": 1958,
+  "images": [
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-7589819.jpg",
+      "caption": "Элемент троичный малой ЭВМ «Сетунь», 1960 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    },
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-35958131.jpg",
+      "caption": "Ячейка феррит-диодная ЭВМ «Сетунь-70», 1965 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    },
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-7561978.jpg",
+      "caption": "Стойка ЭВМ «Сетунь-70», 1970 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    },
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-7561874.jpg",
+      "caption": "Пульт управления ЭВМ «Сетунь-70», 1970 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    },
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-7561862.jpg",
+      "caption": "Магнитный барабан ЭВМ «Сетунь-70», 1970 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    },
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-7562011.jpg",
+      "caption": "Перфоратор ЭВМ «Сетунь-70», 1970 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    },
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-7589739.jpg",
+      "caption": "Терминал АСО ЭВМ «Сетунь-70», 1970 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    },
+    {
+      "src": "muzei/izobreteniya/img/02-07-goskatalog-9835555.jpg",
+      "caption": "Книга «Малая цифровая вычислительная машина „Сетунь“», 1965 г.",
+      "credit": "Политехнический музей, Госкаталог",
+      "pometka_prav": "citirovanie-1274"
+    }
+  ],
   "kandidaty_kadrov": {
     "sobrano": "2026-11-13",
     "mashina": "tools/zapas-kadrov.py",

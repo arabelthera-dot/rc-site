@@ -1,0 +1,814 @@
+# Р773: день 11 февраля — ледокол «Сибиряков», стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка (Р752).
+# togda_sejchas, panorama_360, staraya_karta, marshrut — net: открытого снимка, панорамы и карты из разрешённых баз не нашёл (14.11).
+
+muzei: ne-sdayutsya
+key: 02-11
+pokazan_sergeyu:
+  data: 2026-11-14
+head:
+  title: Ледокол «Сибиряков» — «Русские не сдаются» — Русская цивилизация
+  description: Ледокол против крейсера — бой приняли и флаг не спустили
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-11/
+  sobytie: ледокол «Сибиряков»
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Ледокол «Сибиряков» — «Русские не сдаются» — Русская цивилизация
+    description: Ледокол против крейсера — бой приняли и флаг не спустили
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-11/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    "@context": https://schema.org
+    "@type": Article
+    headline: Ледокол «Сибиряков» — «Русские не сдаются»
+    description: Ледокол против крейсера — бой приняли и флаг не спустили
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-11/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      "@type": Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: "1942"
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-11-goskatalog-5976763.jpg
+  alt: "Фотография: тёмный силуэт парохода с двумя мачтами и трубой среди битого льда, над ним светлое небо."
+  data_source: https://goskatalog.ru/portal/#/collections?id=5976763
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Ледокол «Сибиряков» во льдах северных морей. 1934 год.
+  credit: Государственный центральный музей современной истории России, Госкаталог № 5801573
+  width: 800
+  height: 652
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.2
+    w: 0.7
+    h: 0.6
+  prava:
+    avtor: фотограф не указан в карточке
+    god_sozdaniya: "1934"
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 5801573
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 5801573
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=5976763
+  nomer_predmeta: Госкаталог № 5801573
+  nomer_snimka: goskatalog id 5976763
+  hranitel: Государственный центральный музей современной истории России
+  podpis_chto: Ледокол «Сибиряков» во льдах
+  podpis_gde: северные моря
+  podpis_kogda: 1934 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный центральный музей современной истории России, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=5976763
+  svyashchennoe: false
+  hint: Миноносец «Стерегущий»
+  celikom: true
+kroshka: День 11 · Ледокол «Сибиряков»
+lead:
+  data: День 11 · февраль · Карское море, у острова Белуха, 25 августа 1942 года
+  privyazka: "Дата условная: 11 февраля — 11-й день февраля в музее; событие — бой ледокольного парохода «Сибиряков» с крейсером «Адмирал Шеер» 25 августа 1942 года."
+  kto: Экипаж ледокольного парохода «Александр Сибиряков» · капитан Анатолий Качарава
+  h1: Ледокол «Сибиряков»
+  hook: Ледокол против крейсера — бой приняли и флаг не спустили
+stamp:
+  - v: "280"
+    k: мм — калибр пушек крейсера
+  - v: "4"
+    k: пушки у ледокола
+  - v: "34"
+    k: дня Вавилов один на острове
+  - v: "1965"
+    k: год приказа приспускать флаг
+daynav:
+  - id: story
+    label: Читать
+  - id: fakty
+    label: Факты
+  - id: quiz
+    label: Викторина
+  - id: calendar
+    label: Календарь
+story:
+  kicker: Подвиг
+  h2: Ледокол «Сибиряков»
+  abzacy:
+    - 25 августа 1942 года, Карское море. Ледокольный пароход «Александр Сибиряков» везёт груз и смену полярников на Северную Землю. На горизонте — большой военный корабль под американским флагом. Он по-русски спрашивает про лёд в проливе Вилькицкого. Капитан Анатолий Качарава не верит и поворачивает к острову Белуха.
+    - Это немецкий тяжёлый крейсер «Адмирал Шеер». Он требует спустить флаг и сдаться. У парохода 1909 года постройки — четыре пушчонки, у крейсера — шесть 280-мм орудий. Качарава командует открыть огонь, а радист открытым текстом передаёт на Диксон о рейдере.
+    - Пароход горит, но стреляет. Старший механик Николай Бочурко открывает кингстоны, и «Сибиряков» уходит на дно, не спустив флага. Немцы так и не получают сведений о льдах и конвоях, а Диксон успевает приготовиться к обороне. Операция «Вундерланд» срывается.
+fakty:
+  - id: fakty
+    kicker: Десять фактов
+    h2: Ледокол «Сибиряков»
+    udary:
+      - n: 1
+        id: ns-0211-flag
+        summary: Крейсер с 280-мм пушками велел спустить флаг. Ледокол с четырьмя пушчонками открыл огонь.
+        det:
+          - У «Адмирала Шеера» шесть 280-мм орудий главного калибра. У «Сибирякова» 1909 года постройки — четыре пушки калибра 76 и 45 миллиметров. Крейсер требует спустить флаг и сдаться, капитан Качарава командует открыть огонь.
+        src: "Источник: С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html; «Советский робинзон Павел Вавилов». Государственный научный краеведческий комплекс, Красноярск — https://gnkk.ru/articles/sovetskiy-robinzon-pavel-vavilov/; «Честь „Сибирякова“. История последнего боя северного „Варяга“». «АиФ» — https://aif.ru/society/history/chest_sibiryakova_istoriya_poslednego_boya_severnogo_varyaga"
+        stranica: С. Доморощенов. «Правда Севера», 19.08.2017
+        href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+        otryvok: «четыре пушчонки калибра 76 и 45 миллиметров, у «Шеера» же, введённого в строй в 1934 году»
+        pometka: два источника
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: pravdasevera
+        dlya_voprosa: true
+        otvet: 1909 года
+        otvet_edinstvennyj: true
+      - n: 2
+        id: ns-0211-paluba
+        summary: Немцы высыпали на палубу смотреть, как сдаётся русский пароход. После первого залпа палуба опустела.
+        det:
+          - "Капитан Качарава вспоминал: «…когда наша артиллерия открыла огонь по крейсеру, я сквозь клочья дыма увидел, что палуба его опустела»."
+        src: "Источник: С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html"
+        stranica: С. Доморощенов. «Правда Севера», 19.08.2017
+        href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+        otryvok: "«На фашистском рейдере палуба была полна зрителей: немцы вышли посмотреть, как будет сдаваться русское судно»"
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: pravdasevera
+        dlya_voprosa: false
+      - n: 3
+        id: ns-0211-trevoga
+        summary: «Сибиряков» погиб, но успел поднять тревогу, и вся арктическая операция «Шеера» сорвалась.
+        det:
+          - Операция «Вундерланд» должна была перерезать Северный морской путь. Предупреждённые «Сибиряковым» порты выиграли время на оборону, конвои ушли, и миссию крейсера признали проваленной.
+        src: "Источник: РИА Новости, 25.08.2017 — https://ria.ru/20170825/1500989319.html; «Годовщина подвига». Арктический морской институт имени В. И. Воронина, 27.08.2026 — https://ami-voronina.ru/2026/08/27/godovshhina-podviga/"
+        stranica: РИА Новости, 25.08.2017
+        href: https://ria.ru/20170825/1500989319.html
+        otryvok: «впоследствии его миссия была признана фактически проваленной»
+        pometka: два источника
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: ria
+        dlya_voprosa: false
+      - n: 4
+        id: ns-0211-radio
+        summary: Немцы глушили эфир и требовали молчать, а радист под огнём передавал на Диксон о рейдере.
+        det:
+          - "Радист открытым текстом передаёт: «Вижу неизвестный вспомогательный крейсер, который запрашивает обстановку». Немцы ставят помехи и требуют прекратить передачу, Качарава приказ не выполняет."
+        src: "Источник: РИА Новости, 25.08.2017 — https://ria.ru/20170825/1500989319.html; «80 лет героической гибели ледокольного парохода „Александр Сибиряков“». «Культура МГО» — https://kulturamgo.ru/pomnim-gordimsya/letopis-podvigov/9755-80-let-geroicheskoj-gibeli-ledokolnogo-parokhoda-aleksandr-sibiryakov-v-boyu-s-nemetskim-krejserom-admiral-sheer-2; «25 августа 1942 года в неравном бою с немецким тяжёлым крейсером». weural.info — https://weural.info/materials/6-25-avgusta-1942-goda-v-neravnom-boyu-s-nemetskim-tyazhelym-kreyserom-admiral-sheer-vozle-ostrova-bel/"
+        stranica: РИА Новости, 25.08.2017
+        href: https://ria.ru/20170825/1500989319.html
+        otryvok: «Не желая обнаруживать свое присутствие, немцы начали ставить помехи и потребовали прекратить радиопередачу, но Качарава проигнорировал приказ.»
+        pometka: два источника
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: ria
+        dlya_voprosa: false
+      - n: 5
+        id: ns-0211-voda
+        summary: Шлюпку взяли в плен, но несколько моряков прыгнули в ледяную воду, лишь бы не идти на крейсер.
+        det:
+          - Немецкий катер подходит к последней шлюпке. Часть моряков отказывается идти на крейсер и прыгает за борт, в воду Карского моря.
+        src: "Источник: «80 лет героической гибели ледокольного парохода „Александр Сибиряков“». «Культура МГО» — https://kulturamgo.ru/pomnim-gordimsya/letopis-podvigov/9755-80-let-geroicheskoj-gibeli-ledokolnogo-parokhoda-aleksandr-sibiryakov-v-boyu-s-nemetskim-krejserom-admiral-sheer-2"
+        stranica: «80 лет героической гибели ледокольного парохода „Александр Сибиряков“». «Культура МГО»
+        href: https://kulturamgo.ru/pomnim-gordimsya/letopis-podvigov/9755-80-let-geroicheskoj-gibeli-ledokolnogo-parokhoda-aleksandr-sibiryakov-v-boyu-s-nemetskim-krejserom-admiral-sheer-2
+        otryvok: «несколько человек отказалось от эвакуации на немецкий крейсер, выпрыгнули за борт и остались в воде»
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: kulturamgo
+        dlya_voprosa: false
+      - n: 6
+        id: ns-0211-kingstony
+        summary: Стармех Бочурко открыл кингстоны и не ушёл из машины. Пароход лёг на дно, не доставшись врагу.
+        det:
+          - «Открой, Николай, кингстоны!» — кричит капитан в переговорную трубку. Старший механик Николай Бочурко приказ выполняет и остаётся на посту до конца.
+        src: "Источник: «Годовщина подвига». Арктический морской институт имени В. И. Воронина, 27.08.2026 — https://ami-voronina.ru/2026/08/27/godovshhina-podviga/; «25 августа 1942 года в неравном бою с немецким тяжёлым крейсером». weural.info — https://weural.info/materials/6-25-avgusta-1942-goda-v-neravnom-boyu-s-nemetskim-tyazhelym-kreyserom-admiral-sheer-vozle-ostrova-bel/; С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html"
+        stranica: «Годовщина подвига». Арктический морской институт имени В. И. Воронина, 27.08.2026
+        href: https://ami-voronina.ru/2026/08/27/godovshhina-podviga/
+        otryvok: «По приказу капитана старший механик Николай Григорьевич Бочурко (выпускник Архангельского морского техникума) открыл кингстоны и не оставил свой пост, погибнув вместе с судном.»
+        pometka: два источника
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: amivoronina
+        dlya_voprosa: false
+      - n: 7
+        id: ns-0211-vavilov
+        summary: Кочегар Вавилов 34 дня прожил один на голом острове с белыми медведями и дождался своих.
+        det:
+          - Павел Вавилов добирается до скалистого острова Белуха и живёт там один, а всё ближе подбираются белые медведи — «хозяева Арктики». Его снимает гидросамолёт лётчика Черевичного.
+        src: "Источник: С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html; «Советский робинзон Павел Вавилов». Государственный научный краеведческий комплекс, Красноярск — https://gnkk.ru/articles/sovetskiy-robinzon-pavel-vavilov/"
+        stranica: С. Доморощенов. «Правда Севера», 19.08.2017
+        href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+        otryvok: «На скалистом острове Белуха он прожил 34 дня.»
+        pometka: два источника
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: pravdasevera
+        dlya_voprosa: true
+        otvet: "34"
+        otvet_edinstvennyj: true
+        kadr:
+          src: /muzei/ne-sdayutsya/img/02-11-goskatalog-55903996.jpg
+          alt: "Фотография: пожилой мужчина в тёмном костюме и галстуке, на груди звезда Героя Социалистического Труда."
+          data_source: https://goskatalog.ru/portal/#/collections?id=55903996
+          license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+          podpis: Павел Иванович Вавилов — кочегар ледокольного парохода «Сибиряков». Вторая половина XX века.
+          credit: Северный морской музей, Госкаталог № 55627829
+          width: 567
+          height: 800
+          vid: foto
+          glavnoe_na_kartinke:
+            x: 0.15
+            y: 0.05
+            w: 0.7
+            h: 0.6
+          prava:
+            avtor: фотограф не указан в карточке
+            god_sozdaniya: вторая половина XX века
+            god_smerti_avtora: net
+            god_reabilitacii: net
+            anonim: true
+            pervaya_publikaciya: Госкаталог музейного фонда РФ, № 55627829
+            sdelano_mashinoj: false
+            otkuda: Госкаталог, № предмета 55627829
+            baza: goskatalog
+            ssylka: https://goskatalog.ru/portal/#/collections?id=55903996
+          nomer_predmeta: Госкаталог № 55627829
+          nomer_snimka: goskatalog id 55903996
+          hranitel: Северный морской музей
+          podpis_chto: Портрет Павла Вавилова
+          podpis_gde: Архангельск
+          podpis_kogda: вторая половина XX века
+          simvolika_proverena: true
+          podlinnik:
+            gde: Северный морской музей, Архангельск
+            otkuda: https://goskatalog.ru/portal/#/collections?id=55903996
+          svyashchennoe: false
+          hint: Миноносец «Стерегущий»
+          celikom: true
+      - n: 8
+        id: ns-0211-ruge
+        summary: Немецкий адмирал Руге написал, что ледокол сопротивлялся «мужественно и искусно».
+        det:
+          - Немецкий адмирал и историк Фридрих Руге написал, что тяжёлый крейсер потопил «мужественно и искусно сопротивлявшийся большой ледокол».
+        src: "Источник: С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html"
+        stranica: С. Доморощенов. «Правда Севера», 19.08.2017
+        href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+        otryvok: «тяжёлый крейсер потопил «мужественно и искусно сопротивлявшийся большой ледокол»»
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: pravdasevera
+        dlya_voprosa: false
+      - n: 9
+        id: ns-0211-molchanie
+        summary: Командир, инженер и метеоролог попали в плен, но немцы так ничего и не узнали от них про льды.
+        det:
+          - Офицерам рейдера так и не удалось ничего добиться от пленных с «Сибирякова», хотя те владели ценной информацией, в том числе о ледовой обстановке в проливе.
+        src: "Источник: РИА Новости, 25.08.2017 — https://ria.ru/20170825/1500989319.html"
+        stranica: РИА Новости, 25.08.2017
+        href: https://ria.ru/20170825/1500989319.html
+        otryvok: «офицерам рейдера так и не удалось ничего добиться от пленных с "Сибирякова", хотя среди них оказались командир, инженер и метеоролог»
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: ria
+        dlya_voprosa: false
+      - n: 10
+        id: ns-0211-antenna
+        summary: Антенну сбило. Главстаршина Сараев полез на мачту под обстрелом и натянул её заново.
+        det:
+          - Пароход теряет связь с Диксоном. Михаил Сараев вскарабкивается на мачту и натягивает антенну, радист снова стучит ключом.
+        src: "Источник: С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html"
+        stranica: С. Доморощенов. «Правда Севера», 19.08.2017
+        href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+        otryvok: «Но главстаршина Михаил Сараев вскарабкался вверх по мачте и натянул антенну. Радист снова застучал ключом.»
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: pravdasevera
+        dlya_voprosa: false
+  - id: fakty-dnya
+    kicker: Ещё пять фактов
+    h2: Ещё о подвиге
+    udary:
+      - n: 11
+        id: ns-0211-benzin
+        summary: На палубе рвались бочки с бензином, пароход горел, а его пушки продолжали бить по крейсеру.
+        det:
+          - После второго залпа «Шеера» на корме взрываются бочки с бензином. Пароход в огне, а его орудия продолжают стрелять.
+        src: "Источник: «Независимое военное обозрение», 22.02.2013 — https://nvo.ng.ru/history/2013-02-22/15_sibiryakov.html; С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html"
+        stranica: «Независимое военное обозрение», 22.02.2013
+        href: https://nvo.ng.ru/history/2013-02-22/15_sibiryakov.html
+        otryvok: «После второго залпа «Шеера» на «Сибирякове» взорвались сложенные на корме бочки с бензином. Судно охватило пламя, но оно продолжало стрелять из всех орудий.»
+        pometka: два источника
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: nvo
+        dlya_voprosa: false
+      - n: 12
+        id: ns-0211-zapiska
+        summary: Самолёт не мог сесть в шторм и сбросил кочегару записку «Мы тебя видим». Сел на четвёртый день.
+        det:
+          - "Над островом кружит самолёт, но волна слишком большая. Вавилову сбрасывают записку: «Мы тебя видим, но сесть не можем». Самолёт прилетает ещё три дня, сесть удаётся только на четвёртый."
+        src: "Источник: «Советский робинзон Павел Вавилов». Государственный научный краеведческий комплекс, Красноярск — https://gnkk.ru/articles/sovetskiy-robinzon-pavel-vavilov/"
+        stranica: «Советский робинзон Павел Вавилов». Государственный научный краеведческий комплекс, Красноярск
+        href: https://gnkk.ru/articles/sovetskiy-robinzon-pavel-vavilov/
+        otryvok: "«И записка: «Мы тебя видим, но сесть не можем, очень большая волна. Завтра прилетим еще. Остерегайся медведей, на соседнем острове их много».»"
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: gnkk
+        dlya_voprosa: false
+      - n: 13
+        id: ns-0211-prikaz
+        summary: По приказу 1965 года каждый корабль у места боя приспускает флаг и даёт гудок.
+        det:
+          - "Приказ № 103 командующего Северным флотом от 28 апреля 1965 года: проходя в пятимильной зоне от места гибели «Сибирякова», приспустить флаг и дать звуковой сигнал."
+        src: "Источник: С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html"
+        stranica: С. Доморощенов. «Правда Севера», 19.08.2017
+        href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+        otryvok: "«по приказу №103 командующего Северным флотом от 28 апреля 1965 года: проходя в пятимильной зоне от места героической гибели «Сибирякова», приспустить флаг, произвести звуковой сигнал»"
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: pravdasevera
+        dlya_voprosa: true
+        otvet: "1965"
+        otvet_edinstvennyj: true
+      - n: 14
+        id: ns-0211-kapitan
+        summary: В плену матросы выдавали раненого капитана за простого полярника, чтобы немцы его не выпытали.
+        det:
+          - "Качарава вспоминал: моряки условились не говорить, что с ними капитан. Товарищи называли его профессиональным полярником."
+        src: "Источник: С. Доморощенов. «Правда Севера», 19.08.2017 — https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html"
+        stranica: С. Доморощенов. «Правда Севера», 19.08.2017
+        href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+        otryvok: «Мы условились не говорить, что с нами капитан.»
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: pravdasevera
+        dlya_voprosa: false
+      - n: 15
+        id: ns-0211-ssha
+        summary: Крейсер поднял флаг США и по-русски спросил про лёд. Качарава не поверил и пошёл к острову.
+        det:
+          - Крейсер вывешивает американский флаг и семафором по-русски спрашивает о льдах в проливе Вилькицкого. Качарава заподозрил неладное и уходит полным ходом к острову Белуха.
+        src: "Источник: РИА Новости, 25.08.2017 — https://ria.ru/20170825/1500989319.html"
+        stranica: РИА Новости, 25.08.2017
+        href: https://ria.ru/20170825/1500989319.html
+        otryvok: «крейсер вывесил американский флаг и семафором на русском языке запросил ледовую обстановку в проливе Вилькицкого»
+        pometka: один источник
+        utverzhden: 2026-11-14
+        sravnenie: net
+        istochnik: ria
+        dlya_voprosa: false
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: "Ответы: 1 — 280 мм; 2 — четыре; 3 — 34; 4 — американский; 5 — 1965."
+  ball: 10
+  voprosy:
+    - q: Какого калибра были главные пушки «Адмирала Шеера»?
+      o:
+        - 45 мм
+        - 76 мм
+        - 150 мм
+        - 280 мм
+      a: 3
+      e: У крейсера было шесть орудий главного калибра 280 мм («АиФ»).
+    - q: Сколько пушек было у «Сибирякова»?
+      o:
+        - одна
+        - четыре
+        - десять
+        - двадцать
+      a: 1
+      e: У парохода 1909 года постройки — четыре пушки калибра 76 и 45 миллиметров.
+    - q: Сколько дней кочегар Павел Вавилов прожил один на острове Белуха?
+      o:
+        - "3"
+        - "10"
+        - "34"
+        - "100"
+      a: 2
+      e: «На скалистом острове Белуха он прожил 34 дня» («Правда Севера»).
+    - q: Под каким флагом крейсер подошёл к «Сибирякову»?
+      o:
+        - американским
+        - британским
+        - шведским
+        - японским
+      a: 0
+      e: Крейсер вывесил американский флаг и семафором по-русски спросил про лёд (РИА Новости).
+    - q: В каком году вышел приказ приспускать флаг у места гибели «Сибирякова»?
+      o:
+        - "1942"
+        - "1945"
+        - "1965"
+        - "1991"
+      a: 2
+      e: Приказ № 103 командующего Северным флотом — от 28 апреля 1965 года.
+result:
+  h2: Итог дня
+  intro: "Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново."
+  zvanie: "0 / 50 · звание: Гость дня"
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+score:
+  awards:
+    q:
+      - 5
+      - 10
+  ranks:
+    - - 0
+      - Гость дня
+figures:
+  - src: /muzei/ne-sdayutsya/img/02-11-goskatalog-5982145.jpg
+    alt: "Фотография: моряки на палубе несут мешки с углём мимо высокой вентиляционной трубы."
+    data_source: https://goskatalog.ru/portal/#/collections?id=5982145
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: Угольный аврал на ледоколе «Сибиряков». Карское море, 1932 год.
+    credit: Государственный центральный музей современной истории России, Госкаталог № 5805983
+    width: 623
+    height: 800
+    vid: foto
+    glavnoe_na_kartinke:
+      x: 0.1
+      y: 0.1
+      w: 0.8
+      h: 0.8
+    prava:
+      avtor: фотограф не указан в карточке
+      god_sozdaniya: "1932"
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: true
+      pervaya_publikaciya: Госкаталог музейного фонда РФ, № 5805983
+      sdelano_mashinoj: false
+      otkuda: Госкаталог, № предмета 5805983
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=5982145
+    nomer_predmeta: Госкаталог № 5805983
+    nomer_snimka: goskatalog id 5982145
+    hranitel: Государственный центральный музей современной истории России
+    podpis_chto: Угольный аврал на «Сибирякове»
+    podpis_gde: Карское море
+    podpis_kogda: 1932 год
+    simvolika_proverena: true
+    podlinnik:
+      gde: Государственный центральный музей современной истории России, Москва
+      otkuda: https://goskatalog.ru/portal/#/collections?id=5982145
+    svyashchennoe: false
+    hint: Миноносец «Стерегущий»
+    celikom: true
+  - src: /muzei/ne-sdayutsya/img/02-11-goskatalog-5981873.jpg
+    alt: "Фотография: пароход среди ледяных торосов, его силуэт отражается в тихой воде."
+    data_source: https://goskatalog.ru/portal/#/collections?id=5981873
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: Ледокольный пароход «Александр Сибиряков» в походе 1932 года.
+    credit: Государственный центральный музей современной истории России, Госкаталог № 5806255
+    width: 800
+    height: 589
+    vid: foto
+    glavnoe_na_kartinke:
+      x: 0.1
+      y: 0.1
+      w: 0.8
+      h: 0.8
+    prava:
+      avtor: фотограф не указан в карточке
+      god_sozdaniya: "1932"
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: true
+      pervaya_publikaciya: Госкаталог музейного фонда РФ, № 5806255
+      sdelano_mashinoj: false
+      otkuda: Госкаталог, № предмета 5806255
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=5981873
+    nomer_predmeta: Госкаталог № 5806255
+    nomer_snimka: goskatalog id 5981873
+    hranitel: Государственный центральный музей современной истории России
+    podpis_chto: «Александр Сибиряков» среди льдов
+    podpis_gde: Северный морской путь
+    podpis_kogda: 1932 год
+    simvolika_proverena: true
+    podlinnik:
+      gde: Государственный центральный музей современной истории России, Москва
+      otkuda: https://goskatalog.ru/portal/#/collections?id=5981873
+    svyashchennoe: false
+    hint: Миноносец «Стерегущий»
+    celikom: true
+  - src: /muzei/ne-sdayutsya/img/02-11-goskatalog-5570809.jpg
+    alt: "Акварель: пароход идёт под серыми парусами среди плавучих льдин."
+    data_source: https://goskatalog.ru/portal/#/collections?id=5570809
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: В. Н. Пузанков. «Ледокольный пароход „Александр Сибиряков“ под парусами».
+    credit: Российский государственный музей Арктики и Антарктики, Госкаталог № 5436074
+    width: 800
+    height: 586
+    vid: risunok
+    glavnoe_na_kartinke:
+      x: 0.1
+      y: 0.1
+      w: 0.8
+      h: 0.8
+    prava:
+      avtor: В. Н. Пузанков
+      god_sozdaniya: XX век
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: false
+      pervaya_publikaciya: Госкаталог музейного фонда РФ, № 5436074
+      sdelano_mashinoj: false
+      otkuda: Госкаталог, № предмета 5436074
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=5570809
+    nomer_predmeta: Госкаталог № 5436074
+    nomer_snimka: goskatalog id 5570809
+    hranitel: Российский государственный музей Арктики и Антарктики
+    podpis_chto: Акварель «„Александр Сибиряков“ под парусами»
+    podpis_gde: Чукотское море, поход 1932 года
+    podpis_kogda: XX век
+    simvolika_proverena: true
+    podlinnik:
+      gde: Российский государственный музей Арктики и Антарктики, Санкт-Петербург
+      otkuda: https://goskatalog.ru/portal/#/collections?id=5570809
+    svyashchennoe: false
+    hint: Миноносец «Стерегущий»
+    celikom: true
+  - src: /muzei/ne-sdayutsya/img/02-11-goskatalog-12318492.jpg
+    alt: "Фотография: мужчина в меховой шапке, в профиль, стоит у борта судна."
+    data_source: https://goskatalog.ru/portal/#/collections?id=12318492
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: Анатолий Алексеевич Качарава на борту судна. 1940–1950-е годы.
+    credit: Архангельский краеведческий музей, Госкаталог № 12196487
+    width: 800
+    height: 502
+    vid: foto
+    glavnoe_na_kartinke:
+      x: 0.1
+      y: 0.1
+      w: 0.8
+      h: 0.8
+    prava:
+      avtor: фотограф не указан в карточке
+      god_sozdaniya: 1940–1950-е
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: true
+      pervaya_publikaciya: Госкаталог музейного фонда РФ, № 12196487
+      sdelano_mashinoj: false
+      otkuda: Госкаталог, № предмета 12196487
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=12318492
+    nomer_predmeta: Госкаталог № 12196487
+    nomer_snimka: goskatalog id 12318492
+    hranitel: Архангельский краеведческий музей
+    podpis_chto: Капитан Анатолий Качарава
+    podpis_gde: на борту судна
+    podpis_kogda: 1940–1950-е годы
+    simvolika_proverena: true
+    podlinnik:
+      gde: Архангельский краеведческий музей, Архангельск
+      otkuda: https://goskatalog.ru/portal/#/collections?id=12318492
+    svyashchennoe: false
+    hint: Миноносец «Стерегущий»
+    celikom: true
+  - src: /muzei/ne-sdayutsya/img/02-11-goskatalog-13148699.jpg
+    alt: "Фотография: группа моряков в форме на палубе, позади вода и горы."
+    data_source: https://goskatalog.ru/portal/#/collections?id=13148699
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: Бывший командир «Сибирякова» А. А. Качарава среди военных моряков Тихоокеанского флота. Фото В. Г. Реданского, сентябрь 1959 года.
+    credit: Центральный военно-морской музей, Госкаталог № 13025018
+    width: 800
+    height: 628
+    vid: foto
+    glavnoe_na_kartinke:
+      x: 0.1
+      y: 0.1
+      w: 0.8
+      h: 0.8
+    prava:
+      avtor: В. Г. Реданский
+      god_sozdaniya: "1959"
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: false
+      pervaya_publikaciya: Госкаталог музейного фонда РФ, № 13025018
+      sdelano_mashinoj: false
+      otkuda: Госкаталог, № предмета 13025018
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=13148699
+    nomer_predmeta: Госкаталог № 13025018
+    nomer_snimka: goskatalog id 13148699
+    hranitel: Центральный военно-морской музей
+    podpis_chto: Качарава среди моряков Тихоокеанского флота
+    podpis_gde: Тихоокеанский флот
+    podpis_kogda: сентябрь 1959 года
+    simvolika_proverena: true
+    podlinnik:
+      gde: Центральный военно-морской музей, Санкт-Петербург
+      otkuda: https://goskatalog.ru/portal/#/collections?id=13148699
+    svyashchennoe: false
+    hint: Миноносец «Стерегущий»
+    celikom: true
+sources:
+  - href: https://ria.ru/20170825/1500989319.html
+    title: РИА Новости, 25.08.2017
+    note: к фактам 3, 4, 9, 15
+  - href: https://aif.ru/society/history/chest_sibiryakova_istoriya_poslednego_boya_severnogo_varyaga
+    title: «Честь „Сибирякова“. История последнего боя северного „Варяга“». «АиФ»
+    note: к фактам 1
+  - href: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+    title: С. Доморощенов. «Правда Севера», 19.08.2017
+    note: к фактам 1, 2, 6, 7, 8, 10, 11, 13, 14
+  - href: https://gnkk.ru/articles/sovetskiy-robinzon-pavel-vavilov/
+    title: «Советский робинзон Павел Вавилов». Государственный научный краеведческий комплекс, Красноярск
+    note: к фактам 1, 7, 12
+  - href: https://kulturamgo.ru/pomnim-gordimsya/letopis-podvigov/9755-80-let-geroicheskoj-gibeli-ledokolnogo-parokhoda-aleksandr-sibiryakov-v-boyu-s-nemetskim-krejserom-admiral-sheer-2
+    title: «80 лет героической гибели ледокольного парохода „Александр Сибиряков“». «Культура МГО»
+    note: к фактам 4, 5
+  - href: https://ami-voronina.ru/2026/08/27/godovshhina-podviga/
+    title: «Годовщина подвига». Арктический морской институт имени В. И. Воронина, 27.08.2026
+    note: к фактам 3, 6
+  - href: https://weural.info/materials/6-25-avgusta-1942-goda-v-neravnom-boyu-s-nemetskim-tyazhelym-kreyserom-admiral-sheer-vozle-ostrova-bel/
+    title: «25 августа 1942 года в неравном бою с немецким тяжёлым крейсером». weural.info
+    note: к фактам 4, 6
+  - href: https://nvo.ng.ru/history/2013-02-22/15_sibiryakov.html
+    title: «Независимое военное обозрение», 22.02.2013
+    note: к фактам 11
+kuda:
+  - lbl: Следующий день
+    href: index.html
+    title: 12 февраля (запись готовится)
+    hook: Стойкость и подвиг день за днём.
+    main: true
+  - lbl: Весь музей
+    href: index.html
+    title: Музей стойкости и подвига «Русские не сдаются»
+    hook: Стойкость и подвиг день за днём.
+    main: false
+chrome:
+  share:
+    title: Ледокол «Сибиряков» — «Русские не сдаются»
+    text: Ледокол против крейсера — бой приняли и флаг не спустили
+  prev:
+    href: index.html
+    title: 10 февраля
+  next:
+    href: index.html
+    title: 12 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько дней кочегар Вавилов прожил один на острове Белуха?
+  a: "34"
+proof:
+  status: utverzhdeno
+  note: Факты дня утверждены Сергеем (Р752), взяты дословно из утверждённого списка; страница — Р773 (14.11.2026).
+nomer_dnya: ns-0211-sibiryakov
+data_sobytiya: 1942-08-25
+data_uslovnaya: 11 февраля — 11-й день февраля в музее; событие — бой «Сибирякова» с «Адмиралом Шеером» 25 августа 1942 года.
+chto_sluchilos: Ледокольный пароход «Александр Сибиряков» с четырьмя пушками принял бой с немецким тяжёлым крейсером «Адмирал Шеер», предупредил по радио Диксон и ушёл на дно, не спустив флага.
+god: 1942
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+  - vojna
+gde_uvidet:
+  - chto: Фотография «Ледокол „Сибиряков“ во льдах северных морей» (1934)
+    muzej: Государственный центральный музей современной истории России
+    gorod: Москва
+    goskatalog: https://goskatalog.ru/portal/#/collections?id=5976763
+  - chto: Акварель В. Н. Пузанкова «Ледокольный пароход „Александр Сибиряков“ под парусами»
+    muzej: Российский государственный музей Арктики и Антарктики
+    gorod: Санкт-Петербург
+    goskatalog: https://goskatalog.ru/portal/#/collections?id=5570809
+  - chto: Портрет Павла Вавилова, кочегара «Сибирякова»
+    muzej: Северный морской музей
+    gorod: Архангельск
+    goskatalog: https://goskatalog.ru/portal/#/collections?id=55903996
+  - chto: Фотография А. А. Качаравы на борту судна
+    muzej: Архангельский краеведческий музей
+    gorod: Архангельск
+    goskatalog: https://goskatalog.ru/portal/#/collections?id=12318492
+chitat_dalshe:
+  - nazvanie: «Открой, Николай, кингстоны!» — воспоминания капитана Качаравы
+    gde: «Правда Севера», 19.08.2017
+    ssylka: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+  - nazvanie: Советский робинзон Павел Вавилов
+    gde: Государственный научный краеведческий комплекс, Красноярск
+    ssylka: https://gnkk.ru/articles/sovetskiy-robinzon-pavel-vavilov/
+  - nazvanie: Как ледокол сорвал операцию «Вундерланд»
+    gde: РИА Новости, 25.08.2017
+    ssylka: https://ria.ru/20170825/1500989319.html
+  - nazvanie: Честь «Сибирякова». История последнего боя северного «Варяга»
+    gde: «АиФ»
+    ssylka: https://aif.ru/society/history/chest_sibiryakova_istoriya_poslednego_boya_severnogo_varyaga
+istochniki:
+  - id: ria
+    baza: periodika
+    nazvanie: РИА Новости, 25.08.2017
+    ssylka: https://ria.ru/20170825/1500989319.html
+  - id: aif
+    baza: periodika
+    nazvanie: «Честь „Сибирякова“. История последнего боя северного „Варяга“». «АиФ»
+    ssylka: https://aif.ru/society/history/chest_sibiryakova_istoriya_poslednego_boya_severnogo_varyaga
+  - id: pravdasevera
+    baza: periodika
+    nazvanie: С. Доморощенов. «Правда Севера», 19.08.2017
+    ssylka: https://pravdasevera.ru/2017/08/19/60b0a0d3b43ef52e7c67b966.html
+  - id: gnkk
+    baza: periodika
+    nazvanie: «Советский робинзон Павел Вавилов». Государственный научный краеведческий комплекс, Красноярск
+    ssylka: https://gnkk.ru/articles/sovetskiy-robinzon-pavel-vavilov/
+  - id: kulturamgo
+    baza: periodika
+    nazvanie: «80 лет героической гибели ледокольного парохода „Александр Сибиряков“». «Культура МГО»
+    ssylka: https://kulturamgo.ru/pomnim-gordimsya/letopis-podvigov/9755-80-let-geroicheskoj-gibeli-ledokolnogo-parokhoda-aleksandr-sibiryakov-v-boyu-s-nemetskim-krejserom-admiral-sheer-2
+  - id: amivoronina
+    baza: periodika
+    nazvanie: «Годовщина подвига». Арктический морской институт имени В. И. Воронина, 27.08.2026
+    ssylka: https://ami-voronina.ru/2026/08/27/godovshhina-podviga/
+  - id: weural
+    baza: periodika
+    nazvanie: «25 августа 1942 года в неравном бою с немецким тяжёлым крейсером». weural.info
+    ssylka: https://weural.info/materials/6-25-avgusta-1942-goda-v-neravnom-boyu-s-nemetskim-tyazhelym-kreyserom-admiral-sheer-vozle-ostrova-bel/
+  - id: nvo
+    baza: periodika
+    nazvanie: «Независимое военное обозрение», 22.02.2013
+    ssylka: https://nvo.ng.ru/history/2013-02-22/15_sibiryakov.html
+citaty:
+  - kto: Анатолий Качарава, капитан «Сибирякова»
+    gde: «Правда Севера», 19.08.2017
+    tekst: Открой, Николай, кингстоны!
+    istochnik: pravdasevera
+velichina_chislo: 280
+velichina_edinica: мм
+velichina_chto: калибр шести главных пушек крейсера — против четырёх пушчонок ледокола
+voinskaya_chast: ледокольный отряд Беломорской военной флотилии
+operaciya: отражение операции «Вундерланд», август 1942 года
+front: Северный флот, Арктика
+mesto_sobytiya:
+  nazvanie: у острова Белуха, Карское море
+  shirota: 76.3
+  dolgota: 91.5
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+  - Ледокол «Сибиряков» во льдах северных морей, 1934
+  - Государственный центральный музей современной истории России
+slovar:
+  - tema:ledokoly
+vizual:
+  imya: sibiryakov-ldy
+  vid: predmet
+  kicker: Снимок под лупой
+  h2: Пароход во льдах
+  lead: «Сибиряков» среди торосов в походе 1932 года — тот самый пароход, что через десять лет принял бой с крейсером. Нажми — и рассмотри вблизи.
+audioguide:
+  audioSrc: audio-guide-sibiryakov-ru.mp3
+  durationLabel: около 2 минут
+  lead: "Голос ведёт от американского флага на крейсере через бой и кингстоны — к острову Белуха и приказу 1965 года: пять остановок."
+  stops:
+    - t: 0
+      mark: 0:00
+      title: Флаг США на крейсере
+    - t: 25
+      mark: 0:25
+      title: Четыре пушчонки
+    - t: 50
+      mark: 0:50
+      title: Антенна под огнём
+    - t: 75
+      mark: 1:15
+      title: «Открой, Николай, кингстоны!»
+    - t: 100
+      mark: 1:40
+      title: 34 дня на Белухе
+  transcript:
+    - Двадцать пятое августа тысяча девятьсот сорок второго года, Карское море. К ледокольному пароходу «Сибиряков» подходит крейсер под американским флагом и по-русски спрашивает про лёд. Капитан Анатолий Качарава не верит и уходит к острову Белуха.
+    - Это немецкий тяжёлый крейсер «Адмирал Шеер». Он требует спустить флаг. У крейсера шесть пушек калибра двести восемьдесят миллиметров, у парохода — четыре пушчонки. Качарава командует открыть огонь.
+    - Немцы глушат эфир, а радист передаёт на Диксон о рейдере. Антенну сбивает — главстаршина Михаил Сараев лезет на мачту и натягивает её заново.
+    - Пароход горит. «Открой, Николай, кингстоны!» — кричит капитан. Старший механик Бочурко остаётся в машине, и «Сибиряков» уходит на дно, не спустив флага. Операция немцев в Арктике сорвана.
+    - Кочегар Павел Вавилов тридцать четыре дня живёт один на острове Белуха и дожидается самолёта. А с шестьдесят пятого года корабли у места боя приспускают флаг. Ледокол против крейсера — бой приняли и флаг не спустили.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
