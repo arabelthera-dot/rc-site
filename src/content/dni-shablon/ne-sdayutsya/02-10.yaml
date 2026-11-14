@@ -1,0 +1,964 @@
+# Р773: день 10 февраля — Александр Прохоренко, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов, у каждого n.
+
+muzei: ne-sdayutsya
+key: 02-10
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-14'
+head:
+  title: Александр Прохоренко — «Русские не сдаются» — Русская цивилизация
+  description: Вызвал огонь на себя — «Вызываю огонь на себя»
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-10/
+  sobytie: Александр Прохоренко
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Александр Прохоренко — «Русские не сдаются» — Русская цивилизация
+    description: Вызвал огонь на себя — «Вызываю огонь на себя»
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-10/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Александр Прохоренко — «Русские не сдаются»
+    description: Вызвал огонь на себя — «Вызываю огонь на себя»
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-10/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '2016'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-10-goskatalog-11137544.jpg
+  alt: 'Цветной снимок: молодой человек в камуфляже с автоматом стоит рядом с родителями и младшим братом.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11137544
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Александр Прохоренко с родителями и младшим братом. Фотография, первая половина XXI века. Хранится в Музее истории Оренбурга.
+  credit: МБУ «Музей истории Оренбурга», Госкаталог № 11019704
+  width: 1000
+  height: 540
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: не указан
+  nomer_snimka: '11137544'
+  hranitel: Музей истории Оренбурга, Оренбург
+  podpis_chto: Фотография «Герой РФ Александр Прохоренко с родителями и младшим братом»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: первая половина XXI века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей истории Оренбурга, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11137544
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: первая половина XXI века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11019704
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 11019704
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11137544
+  hint: Александр Прохоренко
+  celikom: true
+kroshka: День 10 · Александр Прохоренко
+lead:
+  data: День 10 · февраль · Пальмира, Сирия, 17 марта 2016 года
+  privyazka: 'Дата условная: 10 февраля — день музея; событие — последний бой Александра Прохоренко под Пальмирой 17 марта 2016 года.'
+  kto: Александр Прохоренко · старший лейтенант Сил специальных операций, авианаводчик, Герой Российской Федерации (посмертно)
+  h1: Александр Прохоренко
+  hook: Вызвал огонь на себя — «Вызываю огонь на себя»
+stamp:
+- v: '25'
+  k: лет было старшему лейтенанту
+- v: '7'
+  k: дней один в тылу врага
+- v: '100'
+  k: боевиков вокруг одного офицера
+- v: '3'
+  k: французские семьи отдали свои ордена
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/10feb-prohorenko
+  format: horizontal
+  pole: nesdayutsya/10feb-prohorenko:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Вызвал огонь на себя — «Вызываю огонь на себя»
+  poster: /muzei/ne-sdayutsya/video/day-10feb-prohorenko-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-10feb-prohorenko.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-10.json и кадров дня. Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Александр Прохоренко
+  abzacy:
+  - Март 2016 года, Сирия, окрестности древней Пальмиры. Старший лейтенант Сил специальных операций Александр Прохоренко, 25 лет, родом из Оренбуржья, уже неделю один в тылу врага. По рации он наводит российские самолёты на позиции боевиков. 17 марта боевики находят его укрытие и окружают — около ста человек. На русском языке ему предлагают сдаться.
+  - Вместо этого он вызывает огонь на себя, и российские бомбардировщики накрывают высоту. Когда её берут сирийские войска, там лежат больше сотни убитых боевиков, а среди них — он один. Через десять дней Пальмира свободна. 11 апреля 2016 года Александру Прохоренко присвоено звание Героя Российской Федерации посмертно, а три французские семьи отдают его родным ордена Почётного легиона своих отцов.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Александр Прохоренко
+  udary:
+  - n: 1
+    id: ns-0210-sdavajsya-po-russki
+    summary: Враги по-русски кричали ему «сдавайся» — он ответил авиаударом по своим координатам
+    det:
+    - 'Боевики находят укрытие Александра Прохоренко и на русском языке предлагают ему сдаться. Вместо этого он вызывает огонь на себя: российские бомбардировщики накрывают высоту, где стоит старший лейтенант.'
+    src: 'Источник: «Комсомольская правда». Подвиг Александра Прохоренко — https://www.kp.ru/daily/26515.5/3532203/'
+    stranica: статья
+    href: https://www.kp.ru/daily/26515.5/3532203/
+    otryvok: «Ему на русском языке предлагали сдаться. Но вместо этого Александр вызвал огонь на себя…»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: true
+    otvet: авиаударом по своим координатам
+    otvet_edinstvennyj: true
+  - n: 2
+    id: ns-0210-odin-protiv-sotni
+    summary: Около сотни боевиков ИГ окружили одного русского офицера — он не сдался
+    det:
+    - Боевики обнаруживают разведчика в укрытии и окружают. Вокруг одного российского офицера встаёт плотное огневое кольцо — около ста человек. Он принимает бой в одиночку и в плен не идёт.
+    src: 'Источник: «Комсомольская правда». Подвиг Александра Прохоренко — https://www.kp.ru/daily/26515.5/3532203/'
+    stranica: статья
+    href: https://www.kp.ru/daily/26515.5/3532203/
+    otryvok: «Так случилось, что боевики обнаружили его в укрытии и окружили. Около 100 бандитов устроили плотное «огневое кольцо» вокруг российского разведчика.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: сотня человек — как три-четыре школьных класса
+    istochnik: n2
+    dlya_voprosa: true
+    otvet: около сотни
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-10-goskatalog-25165965.jpg
+      alt: 'Почтовая марка: портрет офицера и Золотая Звезда, рядом солдат с рацией среди каменных руин.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=25165965
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Почтовая марка «Герои Российской Федерации. Прохоренко А. А. (1990–2016)», 8 ноября 2019 года, 27 рублей. Хранится в Центральном музее связи имени А. С. Попова, Санкт-Петербург.
+      credit: ФГБУК «Центральный музей связи имени А. С. Попова», Госкаталог № 25015293
+      width: 768
+      height: 287
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 1.0
+      nomer_predmeta: не указан
+      nomer_snimka: '25165965'
+      hranitel: Центральный музей связи имени А. С. Попова, Санкт-Петербург
+      podpis_chto: Марка почтовая «Прохоренко Александр Александрович (1990–2016). Герои Российской Федерации»
+      podpis_gde: Россия
+      podpis_kogda: 8 ноября 2019 года
+      simvolika_proverena: true
+      podlinnik:
+        gde: Центральный музей связи имени А. С. Попова, Санкт-Петербург
+        otkuda: https://goskatalog.ru/portal/#/collections?id=25165965
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 8 ноября 2019 года
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 25015293
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 25015293
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=25165965
+  - n: 3
+    id: ns-0210-sotnya-na-vysote
+    summary: Высоту взяли — там лежали больше сотни убитых боевиков, а среди них он один
+    det:
+    - Когда сирийские войска занимают высоту, они находят там больше сотни убитых боевиков. Среди них — тело Александра Прохоренко.
+    src: 'Источник: «Комсомольская правда». Подвиг Александра Прохоренко — https://www.kp.ru/daily/26515.5/3532203/'
+    stranica: статья
+    href: https://www.kp.ru/daily/26515.5/3532203/
+    otryvok: «Когда сирийские войска взяли ее, они обнаружили там более сотни трупов игиловцев. Среди них оказалось и тело Александра...»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: true
+    otvet: больше сотни
+    otvet_edinstvennyj: true
+  - n: 4
+    id: ns-0210-gazety-promolchali
+    summary: Французские газеты промолчали о нём — и французы сами отправили русским свои ордена
+    det:
+    - 'Пожилая французская пара возмущена: подвиг российского офицера, который воевал с международным терроризмом и в интересах Франции тоже, национальные газеты обходят молчанием. Тогда супруги сами отправляют семье героя свою награду.'
+    src: 'Источник: Lenta.ru. Французская чета передала семье Прохоренко орден Почётного легиона, 20 апреля 2016 года — https://lenta.ru/news/2016/04/20/orden/'
+    stranica: новость
+    href: https://lenta.ru/news/2016/04/20/orden/
+    otryvok: «пожилая пара была возмущена тем, что подвиг российского офицера, сражавшегося с международным терроризмом, в том числе в интересах Франции, был проигнорирован национальными СМИ.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: true
+    otvet: ордена
+    otvet_edinstvennyj: true
+  - n: 5
+    id: ns-0210-orden-buhenvald
+    summary: Француз отдал семье русского героя орден Почётного легиона отца — узника Бухенвальда
+    det:
+    - 'Французская семья отправляет вдове Александра орден Почётного легиона. Орден принадлежал отцу семейства: с 17 лет он был в Сопротивлении, попал в концлагерь Бухенвальд и вышел оттуда живым.'
+    src: 'Источник: Lenta.ru. Французская чета передала семье Прохоренко орден Почётного легиона, 20 апреля 2016 года — https://lenta.ru/news/2016/04/20/orden/'
+    stranica: новость
+    href: https://lenta.ru/news/2016/04/20/orden/
+    otryvok: «направить вдове погибшего спецназовца орден Почетного легиона. Он принадлежит отцу семейства, с 17 лет участвовавшему в Сопротивлении, попавшему в концлагерь Бухенвальд и потом освобожденному оттуда.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: true
+    otvet: Бухенвальда
+    otvet_edinstvennyj: true
+  - n: 6
+    id: ns-0210-mirovogo-urovnya
+    summary: 'Француз Жан-Поль Флок: «Это подвиг не национального, а мирового уровня»'
+    det:
+    - 'Француз Жан-Поль Флок передаёт родителям Александра семейные награды и объясняет: так он чтит память героя, чей подвиг в борьбе с терроризмом — мирового уровня.'
+    src: 'Источник: RT. «Подвиг мирового уровня»: ещё одна чета французов передала медали семье Прохоренко — https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov'
+    stranica: статья
+    href: https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov
+    otryvok: «Я делаю это для того, чтоб почтить память героя, который совершил в борьбе с терроризмом подвиг не национального даже, а мирового уровня», — рассказал Жан-Поль Флок.
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: true
+    otvet: мирового
+    otvet_edinstvennyj: true
+  - n: 7
+    id: ns-0210-svoih-ne-brosili
+    summary: Его тело у ИГ выменяли на шестерых пленных боевиков — своих не бросили
+    det:
+    - Россия не оставляет погибшего офицера на чужой земле. Через переговоры тело Александра возвращают, и 28 апреля 2016 года его передают российской стороне.
+    src: 'Источник: РИА Новости. Тело российского военного передано России, 28 апреля 2016 года — https://ria.ru/20160428/1421938652.html'
+    stranica: новость
+    href: https://ria.ru/20160428/1421938652.html
+    otryvok: «Отряды обороны курдского народа по просьбе правительства Российской Федерации сумели получить тело российского военного, убитого под Тадмором.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+  - n: 8
+    id: ns-0210-cherez-desyat-dnej
+    summary: Через десять дней после его гибели Пальмиру освободили полностью
+    det:
+    - Александр Прохоренко погибает 17 марта 2016 года. 27 марта сирийская армия при поддержке российских Воздушно-космических сил полностью освобождает древний город Пальмиру.
+    src: 'Источник: «Ведомости». Сирийская армия полностью освободила Пальмиру, 27 марта 2016 года — https://www.vedomosti.ru/politics/articles/2016/03/27/635228-siriiskaya-armiya'
+    stranica: новость
+    href: https://www.vedomosti.ru/politics/articles/2016/03/27/635228-siriiskaya-armiya
+    otryvok: «Сирийская арабская армия (САА) при поддержке отрядов ополчения… а также Воздушно-космических сил (ВКС) России освободила древний город Пальмира от боевиков…»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n9
+    dlya_voprosa: true
+    otvet: через десять дней
+    otvet_edinstvennyj: true
+  - n: 9
+    id: ns-0210-russkij-rembo
+    summary: Британская Daily Mirror назвала русского лейтенанта «русским Рэмбо»
+    det:
+    - О подвиге пишут за границей. Британская газета Daily Mirror посвящает Александру статью и называет его «русским Рэмбо».
+    src: 'Источник: RT. «Я на службе»: пять лет назад погиб Герой России Прохоренко — https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira'
+    stranica: статья
+    href: https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira
+    otryvok: «Британская Daily Mirror назвала Александра русским Рэмбо, а жители Франции даже стали присылать родственникам погибшего офицера свои семейные реликвии — награды отцов и дедов.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: true
+    otvet: «русским Рэмбо»
+    otvet_edinstvennyj: true
+  - n: 10
+    id: ns-0210-tri-semi
+    summary: Три французские семьи отдали русскому офицеру свои ордена Почётного легиона
+    det:
+    - Сначала супруги Жан-Клод и Мишлин Маге, потом Даниэль Кутюр, затем чета Флок передают родителям Александра орден Почётного легиона и другие семейные награды.
+    src: 'Источник: RT. «Подвиг мирового уровня»: ещё одна чета французов передала медали семье Прохоренко — https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov'
+    stranica: статья
+    href: https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov
+    otryvok: «Вслед за супругами Жан-Клодом и Мишлин Маге и Даниэлем Кутюром чета Флок передала родителям Александра орден Почётного легиона и другие ордена и медали»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: true
+    otvet: три
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - n: 11
+    id: ns-0210-nedelya-v-tylu
+    summary: Целую неделю один в тылу ИГ под Пальмирой по рации наводил русские самолёты
+    det:
+    - К 17 марта 2016 года старший лейтенант Сил специальных операций уже неделю работает в тылу врага под Пальмирой. По рации он наводит российскую авиацию и сирийские войска на позиции боевиков.
+    src: 'Источник: RT. «Я на службе»: пять лет назад погиб Герой России Прохоренко — https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira'
+    stranica: статья
+    href: https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira
+    otryvok: «К моменту своей гибели — 17 марта — Александр Прохоренко провёл в тылу врага целую неделю, координируя удары авиации по позициям боевиков.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: неделя — семь дней и ночей без смены
+    istochnik: n3
+    dlya_voprosa: true
+    otvet: неделю
+    otvet_edinstvennyj: true
+  - n: 12
+    id: ns-0210-mechta-podvig
+    summary: 'За два года до Пальмиры сказал другу: «Моя мечта — совершить подвиг»'
+    det:
+    - 'Школьный друг Григорий Шевченко вспоминает встречу за два года до Сирии: Саша в мундире, уже офицер, и говорит ему, что мечтает совершить подвиг.'
+    src: 'Источник: Lenta.ru. «Герой Пальмиры», 31 марта 2016 года — https://lenta.ru/articles/2016/03/31/geroy_palmiry/'
+    stranica: статья
+    href: https://lenta.ru/articles/2016/03/31/geroy_palmiry/
+    otryvok: '«Однокашник Григорий Шевченко вспомнил о встрече со школьным другом два года назад: «Саня в мундире, красивый, офицер — говорит мне: "Моя мечта — совершить подвиг"»»'
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: true
+    otvet: совершить подвиг
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-10-goskatalog-11137515.jpg
+      alt: 'Цветной снимок: подростки в камуфляже стоят у артиллерийского орудия.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=11137515
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Александр Прохоренко с товарищами у артиллерийской установки. Фотография, первая половина XXI века. Хранится в Музее истории Оренбурга.
+      credit: МБУ «Музей истории Оренбурга», Госкаталог № 11019705
+      width: 1000
+      height: 577
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 1.0
+      nomer_predmeta: не указан
+      nomer_snimka: '11137515'
+      hranitel: Музей истории Оренбурга, Оренбург
+      podpis_chto: Фотография «Герой РФ Александр Прохоренко со своими товарищами у артиллерийской установки»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: первая половина XXI века
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей истории Оренбурга, Оренбург
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11137515
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: первая половина XXI века
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11019705
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 11019705
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11137515
+  - n: 13
+    id: ns-0210-orden-letchika
+    summary: Француз Кутюр отдал русскому герою орден отца-лётчика, погибшего в 1940-м
+    det:
+    - Даниэль Кутюр отправляет в посольство России во Франции семейный орден Почётного легиона. Этим орденом посмертно наградили его отца, военного лётчика, погибшего в мае 1940 года в бою с наступавшими нацистами.
+    src: 'Источник: RT. «Подвиг мирового уровня»: ещё одна чета французов передала медали семье Прохоренко — https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov'
+    stranica: статья
+    href: https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov
+    otryvok: «Ранее Даниэль Кутюр направил принадлежавший его семье орден Почётного легиона в посольство РФ во Франции. Орден был вручён посмертно его отцу, военному лётчику, погибшему в мае 1940 года в сражении против наступавших войск нацистов.»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: true
+    otvet: '1940'
+    otvet_edinstvennyj: true
+  - n: 14
+    id: ns-0210-chetyre-tysyachi
+    summary: Пальмиру держали больше 4000 боевиков с танками — город взяли за три недели
+    det:
+    - К началу марта 2016 года вокруг Пальмиры стоят больше четырёх тысяч боевиков, не меньше 25 танков и боевых машин пехоты. Наступление сирийских войск с российской авиацией начинается 6 марта, а 27 марта город свободен.
+    src: 'Источник: NEWSru. Генштаб рассказал о деталях операции в Пальмире, 31 марта 2016 года — https://www.newsru.com/russia/31mar2016/detailes.html'
+    stranica: новость
+    href: https://www.newsru.com/russia/31mar2016/detailes.html
+    otryvok: «к началу марта в окрестностях города было сосредоточено более четырех тысяч боевиков, не менее 25 танков и БМП» … «наступление сирийских войск при поддержке российской авиации началось с 6 марта»
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 4000 человек — население небольшого посёлка
+    istochnik: n8
+    dlya_voprosa: true
+    otvet: больше 4000
+    otvet_edinstvennyj: true
+  - n: 15
+    id: ns-0210-ya-na-sluzhbe
+    summary: 'Последняя запись на его странице: «Я на службе»'
+    det:
+    - 'Последний статус, который Александр оставляет на своей странице в «Одноклассниках», — три слова: «Я на службе». После его гибели туда приходят тысячи писем.'
+    src: 'Источник: RT. «Я на службе»: пять лет назад погиб Герой России Прохоренко — https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira'
+    stranica: статья
+    href: https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira
+    otryvok: «"Я на службе", — таким был последний статус, который опубликовал у себя на странице в «Одноклассниках» старший лейтенант Александр Прохоренко.»
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: true
+    otvet: «Я на службе»
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-10-goskatalog-11137682.jpg
+      alt: 'Цветной снимок: мальчик дома рядом с мамой, она держит на руках младенца.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=11137682
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Александр Прохоренко дома с мамой и младшим братом. Фотография. Хранится в Музее истории Оренбурга.
+      credit: МБУ «Музей истории Оренбурга», Госкаталог № 11019702
+      width: 650
+      height: 1000
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 0.8
+      nomer_predmeta: не указан
+      nomer_snimka: '11137682'
+      hranitel: Музей истории Оренбурга, Оренбург
+      podpis_chto: Фотография «Герой РФ Александр Прохоренко дома рядом с мамой и младшим братом»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: дата не указана
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей истории Оренбурга, Оренбург
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11137682
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: дата не указана
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11019702
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 11019702
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11137682
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — вызвал огонь на себя; 2 — около сотни; 3 — неделю; 4 — «русским Рэмбо»; 5 — «Я на службе».'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: что сделал Прохоренко, когда враги по-русски предложили ему сдаться?'
+    o:
+    - Ушёл ночью
+    - Вызвал огонь на себя
+    - Сдался
+    - Спрятался в развалинах
+    a: 1
+    e: 'Вместо сдачи он вызвал авиаудар по своим координатам: российские бомбардировщики накрыли высоту.'
+  - q: Сколько боевиков окружили одного русского офицера?
+    o:
+    - Около десяти
+    - Около тридцати
+    - Около сотни
+    - Около тысячи
+    a: 2
+    e: Около ста бандитов устроили плотное огневое кольцо вокруг российского разведчика.
+  - q: Сколько времени Прохоренко один в тылу врага наводил самолёты?
+    o:
+    - Один день
+    - Целую неделю
+    - Месяц
+    - Полгода
+    a: 1
+    e: К 17 марта он провёл в тылу врага целую неделю, координируя удары авиации.
+  - q: Как его назвала британская газета Daily Mirror?
+    o:
+    - «Русским Рэмбо»
+    - «Русским медведем»
+    - «Сирийским львом»
+    - «Героем пустыни»
+    a: 0
+    e: Daily Mirror посвятила ему статью и назвала офицера «русским Рэмбо».
+  - q: Какой была последняя запись на его странице?
+    o:
+    - «Скоро домой»
+    - «Всё хорошо»
+    - «Я на службе»
+    - «Люблю вас»
+    a: 2
+    e: Последний статус в «Одноклассниках» — «Я на службе».
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-10-goskatalog-11109779.jpg
+  alt: 'Цветной снимок: школьник в зимней куртке и шапке.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11109779
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Александр Прохоренко в школьные годы, в зимней одежде. Фотография. Хранится в Музее истории Оренбурга.
+  credit: МБУ «Музей истории Оренбурга», Госкаталог № 11019698
+  width: 1000
+  height: 614
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: не указан
+  nomer_snimka: '11109779'
+  hranitel: Музей истории Оренбурга, Оренбург
+  podpis_chto: Фотография «Герой РФ Александр Прохоренко в период обучения в школе, в зимней одежде»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: дата не указана
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей истории Оренбурга, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11109779
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: дата не указана
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11019698
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 11019698
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11109779
+- src: /muzei/ne-sdayutsya/img/02-10-goskatalog-11137345.jpg
+  alt: 'Цветной снимок: дети в новогодних костюмах стоят у ёлки.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11137345
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Семилетний Александр Прохоренко с товарищами в новогодних костюмах у ёлки, 29 декабря 1997 года. Фотография. Хранится в Музее истории Оренбурга.
+  credit: МБУ «Музей истории Оренбурга», Госкаталог № 11019706
+  width: 1000
+  height: 666
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: не указан
+  nomer_snimka: '11137345'
+  hranitel: Музей истории Оренбурга, Оренбург
+  podpis_chto: Фотография «Герой РФ Александр Прохоренко со своими товарищами в новогодних костюмах у новогодней ёлки»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 29 декабря 1997 года
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей истории Оренбурга, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11137345
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 29 декабря 1997 года
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11019706
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 11019706
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11137345
+- src: /muzei/ne-sdayutsya/img/02-10-goskatalog-11137298.jpg
+  alt: 'Цветной снимок: школьный класс с учительницей на сцене на фоне нарисованных деревьев и солнца.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11137298
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Александр Прохоренко со своим классом и учительницей на школьной сцене. Фотография, конец XX — начало XXI века. Хранится в Музее истории Оренбурга.
+  credit: МБУ «Музей истории Оренбурга», Госкаталог № 11019707
+  width: 1000
+  height: 666
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: не указан
+  nomer_snimka: '11137298'
+  hranitel: Музей истории Оренбурга, Оренбург
+  podpis_chto: Фотография «Герой РФ Александр Прохоренко со своим классом и преподавателем на школьной сцене»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: конец XX — начало XXI века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей истории Оренбурга, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11137298
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: конец XX — начало XXI века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11019707
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 11019707
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11137298
+- src: /muzei/ne-sdayutsya/img/02-10-goskatalog-11137180.jpg
+  alt: 'Цветной снимок: мальчик на сцене у микрофонов рядом с Дедом Морозом.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11137180
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Александр Прохоренко на новогоднем выступлении у микрофонов рядом с Дедом Морозом. Фотография, первая половина XXI века. Хранится в Музее истории Оренбурга.
+  credit: МБУ «Музей истории Оренбурга», Госкаталог № 11019708
+  width: 1000
+  height: 666
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: не указан
+  nomer_snimka: '11137180'
+  hranitel: Музей истории Оренбурга, Оренбург
+  podpis_chto: Фотография «Александр Прохоренко на сцене у микрофонов рядом с Дедом Морозом во время новогоднего выступления»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: первая половина XXI века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей истории Оренбурга, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11137180
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: первая половина XXI века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11019708
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 11019708
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11137180
+- src: /muzei/ne-sdayutsya/img/02-10-goskatalog-10360686.jpg
+  alt: Обложка ученического дневника.
+  data_source: https://goskatalog.ru/portal/#/collections?id=10360686
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Ученический дневник Александра Прохоренко за 2003–2004 учебный год. Хранится в Оренбургском губернаторском историко-краеведческом музее.
+  credit: ГАУК «Оренбургский губернаторский историко-краеведческий музей», № Бб 9974, Госкаталог № 10255196
+  width: 354
+  height: 435
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: Бб 9974
+  nomer_snimka: '10360686'
+  hranitel: Оренбургский губернаторский историко-краеведческий музей, Оренбург
+  podpis_chto: Дневник ученический за 2003–2004 учебный год Прохоренко Александра
+  podpis_gde: село Городки Оренбургской области
+  podpis_kogda: 2003–2004 учебный год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Оренбургский губернаторский историко-краеведческий музей, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10360686
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 2003–2004 учебный год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 10255196
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 10255196
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10360686
+- src: /muzei/ne-sdayutsya/img/02-10-goskatalog-19718506.jpg
+  alt: Обложка буклета с портретом офицера.
+  data_source: https://goskatalog.ru/portal/#/collections?id=19718506
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Буклет «Герой России Александр Прохоренко», издание Оренбургского губернаторского историко-краеведческого музея, 2017 год. Хранится там же.
+  credit: ГАУК «Оренбургский губернаторский историко-краеведческий музей», № Бб 10254, Госкаталог № 19587711
+  width: 446
+  height: 421
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: Бб 10254
+  nomer_snimka: '19718506'
+  hranitel: Оренбургский губернаторский историко-краеведческий музей, Оренбург
+  podpis_chto: Буклет «Герой России Александр Прохоренко»
+  podpis_gde: Оренбург
+  podpis_kogda: 2017 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Оренбургский губернаторский историко-краеведческий музей, Оренбург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=19718506
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 2017 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19587711
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 19587711
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=19718506
+sources:
+- href: https://warheroes.ru/hero/hero.asp?Hero_id=22554
+  title: «Герои страны». Прохоренко Александр Александрович
+  note: к фактам 2, 8 и 11
+- href: https://www.kp.ru/daily/26515.5/3532203/
+  title: «Комсомольская правда». Подвиг Александра Прохоренко
+  note: к фактам 1, 2 и 3
+- href: https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira
+  title: 'RT. «Я на службе»: пять лет назад погиб Герой России Прохоренко'
+  note: к фактам 9, 11 и 15
+- href: https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov
+  title: 'RT. «Подвиг мирового уровня»: ещё одна чета французов передала медали семье Прохоренко'
+  note: к фактам 6, 10 и 13
+- href: https://lenta.ru/news/2016/04/20/orden/
+  title: Lenta.ru. Французская чета передала семье Прохоренко орден Почётного легиона, 20 апреля 2016 года
+  note: к фактам 4 и 5
+- href: https://lenta.ru/articles/2016/03/31/geroy_palmiry/
+  title: Lenta.ru. «Герой Пальмиры», 31 марта 2016 года
+  note: к факту 12
+- href: https://ria.ru/20160428/1421938652.html
+  title: РИА Новости. Тело российского военного передано России, 28 апреля 2016 года
+  note: к факту 7
+- href: https://www.newsru.com/russia/31mar2016/detailes.html
+  title: NEWSru. Генштаб рассказал о деталях операции в Пальмире, 31 марта 2016 года
+  note: к факту 14
+- href: https://www.vedomosti.ru/politics/articles/2016/03/27/635228-siriiskaya-armiya
+  title: «Ведомости». Сирийская армия полностью освободила Пальмиру, 27 марта 2016 года
+  note: к факту 8
+- href: https://www.ntv.ru/novosti/1617517
+  title: НТВ. «Русским Рэмбо» оказался 25-летний уроженец Оренбуржья
+  note: к факту 9
+- href: https://www.1tv.ru/news/2016-04-03/299679-imya_aleksandra_prohorenko_vyzvavshego_ogon_na_sebya_pod_palmiroy_stalo_izvestno_vsey_strane
+  title: Первый канал. Имя Александра Прохоренко стало известно всей стране, 3 апреля 2016 года
+  note: к фактам 11 и 15
+- href: https://www.gazeta.ru/army/2016/12/12/10421453.shtml
+  title: «Газета.Ru». Обмен тела Александра Прохоренко, 12 декабря 2016 года
+  note: к факту 7
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 11 февраля — ледокол «Сибиряков» (запись готовится)
+  hook: Ледокол против крейсера — бой приняли и флаг не спустили
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Александр Прохоренко — Музей стойкости и подвига «Русские не сдаются»
+    text: Вызвал огонь на себя — «Вызываю огонь на себя»
+  prev:
+    href: index.html
+    title: 9 февраля · Таня Савичева (запись готовится)
+  next:
+    href: index.html
+    title: 11 февраля · ледокол «Сибиряков» (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Что сделал Прохоренко, когда враги предложили ему сдаться?
+  a: вызвал огонь на себя
+proof:
+  status: utverzhdeno
+  note: 'Факты дня (Р773): 15 фактов взяты дословно из утверждённого списка дня (r752); хук — из карточки дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0210-prohorenko
+data_sobytiya: '2016-03-17'
+data_uslovnaya: 10 февраля — день музея; событие — последний бой Александра Прохоренко под Пальмирой 17 марта 2016 года.
+chto_sluchilos: Старший лейтенант Александр Прохоренко, окружённый боевиками под Пальмирой, не сдался и вызвал авиаудар на себя.
+god: 2016
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Фотография «Александр Прохоренко с родителями и младшим братом»
+  muzej: Музей истории Оренбурга
+  gorod: Оренбург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11137544
+- chto: Ученический дневник Александра Прохоренко за 2003–2004 учебный год
+  muzej: Оренбургский губернаторский историко-краеведческий музей
+  gorod: Оренбург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=10360686
+- chto: Почтовая марка «Герои Российской Федерации. Прохоренко А. А. (1990–2016)», 2019 год
+  muzej: Центральный музей связи имени А. С. Попова
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=25165965
+chitat_dalshe:
+- nazvanie: Прохоренко Александр Александрович
+  gde: «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=22554
+- nazvanie: «Герой Пальмиры»
+  gde: Lenta.ru
+  ssylka: https://lenta.ru/articles/2016/03/31/geroy_palmiry/
+- nazvanie: '«Я на службе»: пять лет назад погиб Герой России Прохоренко'
+  gde: RT
+  ssylka: https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira
+- nazvanie: Имя Александра Прохоренко стало известно всей стране
+  gde: Первый канал
+  ssylka: https://www.1tv.ru/news/2016-04-03/299679-imya_aleksandra_prohorenko_vyzvavshego_ogon_na_sebya_pod_palmiroy_stalo_izvestno_vsey_strane
+istochniki:
+- id: n1
+  baza: sajt-organizacii
+  nazvanie: «Герои страны». Прохоренко Александр Александрович
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=22554
+- id: n2
+  baza: periodika
+  nazvanie: «Комсомольская правда». Подвиг Александра Прохоренко
+  ssylka: https://www.kp.ru/daily/26515.5/3532203/
+- id: n3
+  baza: periodika
+  nazvanie: 'RT. «Я на службе»: пять лет назад погиб Герой России Прохоренко'
+  ssylka: https://russiatoday.ru/russia/article/837710-sluzhba-boi-gibel-geroi-palmira
+- id: n4
+  baza: periodika
+  nazvanie: 'RT. «Подвиг мирового уровня»: ещё одна чета французов передала медали семье Прохоренко'
+  ssylka: https://russiatoday.ru/article/302008-podvig-mirovogo-urovnya-eschyo-odna-cheta-francuzov
+- id: n5
+  baza: periodika
+  nazvanie: Lenta.ru. Французская чета передала семье Прохоренко орден Почётного легиона, 20 апреля 2016 года
+  ssylka: https://lenta.ru/news/2016/04/20/orden/
+- id: n6
+  baza: periodika
+  nazvanie: Lenta.ru. «Герой Пальмиры», 31 марта 2016 года
+  ssylka: https://lenta.ru/articles/2016/03/31/geroy_palmiry/
+- id: n7
+  baza: periodika
+  nazvanie: РИА Новости. Тело российского военного передано России, 28 апреля 2016 года
+  ssylka: https://ria.ru/20160428/1421938652.html
+- id: n8
+  baza: periodika
+  nazvanie: NEWSru. Генштаб рассказал о деталях операции в Пальмире, 31 марта 2016 года
+  ssylka: https://www.newsru.com/russia/31mar2016/detailes.html
+- id: n9
+  baza: periodika
+  nazvanie: «Ведомости». Сирийская армия полностью освободила Пальмиру, 27 марта 2016 года
+  ssylka: https://www.vedomosti.ru/politics/articles/2016/03/27/635228-siriiskaya-armiya
+- id: n10
+  baza: periodika
+  nazvanie: НТВ. «Русским Рэмбо» оказался 25-летний уроженец Оренбуржья
+  ssylka: https://www.ntv.ru/novosti/1617517
+- id: n11
+  baza: periodika
+  nazvanie: Первый канал. Имя Александра Прохоренко стало известно всей стране, 3 апреля 2016 года
+  ssylka: https://www.1tv.ru/news/2016-04-03/299679-imya_aleksandra_prohorenko_vyzvavshego_ogon_na_sebya_pod_palmiroy_stalo_izvestno_vsey_strane
+- id: n12
+  baza: periodika
+  nazvanie: «Газета.Ru». Обмен тела Александра Прохоренко, 12 декабря 2016 года
+  ssylka: https://www.gazeta.ru/army/2016/12/12/10421453.shtml
+citaty: []
+velichina_chislo: 100
+velichina_edinica: боевиков
+velichina_chto: окружили одного русского офицера
+voinskaya_chast: Силы специальных операций Вооружённых Сил Российской Федерации
+operaciya: Освобождение Пальмиры
+front: Сирия
+mesto_sobytiya:
+  nazvanie: Пальмира (Тадмор), Сирия
+  shirota: 34.55
+  dolgota: 38.27
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Александр Прохоренко с родителями и младшим братом
+- Музей истории Оренбурга, Оренбург
+slovar:
+- lyudi:aleksandr-prohorenko
+vizual:
+  imya: prohorenko-zarnica
+  vid: predmet
+  kicker: Снимок под лупой
+  h2: Школьник у орудия
+  lead: 'Так Саша Прохоренко стоит с товарищами у артиллерийской установки, ещё задолго до военной академии. Приближайте: лица ребят, камуфляж и ствол орудия.'
+audioguide:
+  audioSrc: audio-guide-prohorenko-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от недели в тылу врага под Пальмирой через кольцо окружения и огонь на себя — к освобождённому городу и орденам из Франции: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Неделя в тылу
+  - t: 22
+    mark: 0:22
+    title: Кольцо
+  - t: 42
+    mark: 0:42
+    title: Огонь на себя
+  - t: 64
+    mark: '1:04'
+    title: Пальмира свободна
+  - t: 86
+    mark: '1:26'
+    title: Ордена из Франции
+  transcript:
+  - Март две тысячи шестнадцатого года, Сирия, окрестности древней Пальмиры. Старший лейтенант Сил специальных операций Александр Прохоренко целую неделю один в тылу врага. По рации он наводит российские самолёты на позиции боевиков.
+  - 'Семнадцатого марта боевики находят его укрытие и окружают. Около сотни человек встают огневым кольцом вокруг одного русского офицера. На русском языке ему кричат: сдавайся.'
+  - Он не сдаётся. Он вызывает авиаудар по своим координатам, и российские бомбардировщики накрывают высоту. Когда её берут, там лежат больше сотни убитых боевиков, а среди них он один.
+  - 'Через десять дней после его гибели Пальмиру освобождают полностью. Последняя запись на его странице — три слова: «Я на службе». Александру Прохоренко присвоено звание Героя России посмертно.'
+  - 'Британская газета называет его «русским Рэмбо». А три французские семьи отдают его родным ордена Почётного легиона своих отцов. Француз Жан-Поль Флок говорит: это подвиг не национального, а мирового уровня.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
