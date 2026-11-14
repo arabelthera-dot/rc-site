@@ -1,0 +1,951 @@
+muzei: izobreteniya
+key: 02-13
+nomer_dnya: izob-0213-beriev
+data_sobytiya: '1961-08-07'
+chto_sluchilos: 'Таганрогское КБ Георгия Бериева строило летающие лодки и амфибии: Бе-10 в 1961 году разогнали до 912 км/ч, А-40 поставил 148 мировых рекордов, Бе-200 набирает 12 тонн воды за 12 секунд.'
+god: 1961
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Модель самолёта «Бе-10»
+  muzej: Центральный музей Военно-воздушных сил
+  gorod: Монино
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=16086409
+- chto: Модель лёгкого самолёта-амфибии «Бе-103», 1996
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11062994
+- chto: Модель самолёта Бе-6, 2006
+  muzej: Музей боевой славы воинов-сибиряков Дома офицеров Новосибирского гарнизона
+  gorod: Новосибирск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17193248
+chitat_dalshe:
+- nazvanie: Мировой рекорд скорости реактивного гидросамолёта Бе-10
+  gde: Центральный музей ВВС
+  ssylka: https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html
+- nazvanie: «Мировой пожарный»
+  gde: «Российская газета», 05.03.2025
+  ssylka: https://rg.ru/2025/03/05/mirovoj-pozharnyj.html
+- nazvanie: «Амбарчики»
+  gde: «Независимое военное обозрение», 27.04.2018
+  ssylka: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
+- nazvanie: '«У истоков гидроавиации: легендарные люди и машины ТАНТК им. Г. М. Бериева»'
+  gde: aviation21.ru
+  ssylka: https://aviation21.ru/u-istokov-gidroaviacii-legendarnye-lyudi-i-mashiny-tantk-im-g-m-berieva/
+istochniki:
+- id: cmvvs
+  baza: muzej-rf
+  nazvanie: «Мировой рекорд скорости реактивного гидросамолёта Бе-10» — Центральный музей ВВС
+  ssylka: https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html
+- id: tp10
+  baza: periodika
+  nazvanie: Бе-10 — testpilot.ru
+  ssylka: https://testpilot.ru/russia/beriev/be/10/
+- id: tpr
+  baza: periodika
+  nazvanie: Р-1 — testpilot.ru
+  ssylka: http://testpilot.ru/russia/beriev/r/
+- id: ver
+  baza: periodika
+  nazvanie: «Во время лётных испытаний на самолёте А-40 было установлено 148 мировых рекордов» — «Версия»
+  ssylka: https://versia.ru/vo-vremya-lyotnyx-ispytanij-na-samolete-a-40-bylo-ustanovleno-148-mirovyx-rekordov
+- id: cvmm
+  baza: muzej-rf
+  nazvanie: Новость об А-40 «Альбатрос» — Центральный военно-морской музей
+  ssylka: https://navalmuseum.ru/news?id=462
+- id: rg25
+  baza: periodika
+  god: 2025
+  nazvanie: «Мировой пожарный», «Российская газета», 05.03.2025
+  ssylka: https://rg.ru/2025/03/05/mirovoj-pozharnyj.html
+- id: otv
+  baza: periodika
+  nazvanie: «Прерванный взлёт «Альбатроса»» — «Отвага»
+  ssylka: https://otvaga2004.ru/atrina/atrina-air/prervannyj-vzlet-albatrosa/
+- id: ria
+  baza: periodika
+  god: 2016
+  nazvanie: Бе-200 в Израиле — РИА Новости, 25.11.2016
+  ssylka: https://ria.ru/20161125/1482139438.html
+- id: ap21
+  baza: periodika
+  god: 2021
+  nazvanie: Бе-200 в Греции — АвиаПорт, 2021
+  ssylka: https://www.aviaport.ru/news/684327/
+- id: tass21
+  baza: periodika
+  god: 2021
+  nazvanie: Бе-200 в Греции — ТАСС, 2021
+  ssylka: https://tass.ru/proisshestviya/12062761
+- id: mk
+  baza: periodika
+  nazvanie: «Лёгкий самолёт-амфибия Бе-103» — «Моделист-конструктор»
+  ssylka: https://modelist-konstruktor.com/aviacziya/lyogkij_samolyot_amfibiya_be_103
+- id: ap02
+  baza: periodika
+  god: 2002
+  nazvanie: Сертификаты Бе-200 и Бе-103 — АвиаПорт, 2002
+  ssylka: https://www.aviaport.ru/news/23064/
+- id: ap37
+  baza: periodika
+  nazvanie: Рекорды Полины Осипенко — АвиаПорт
+  ssylka: https://www.aviaport.ru/news/732263/
+- id: ap742
+  baza: periodika
+  nazvanie: История ТАНТК имени Г. М. Бериева — АвиаПорт
+  ssylka: http://www.aviaport.ru/news/742801/
+- id: nvoa
+  baza: periodika
+  god: 2018
+  nazvanie: «Амбарчики», «Независимое военное обозрение», 27.04.2018
+  ssylka: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
+- id: nvob
+  baza: periodika
+  god: 2018
+  nazvanie: Противолодочная амфибия Бе-12 — «Независимое военное обозрение», 27.07.2018
+  ssylka: https://nvo.ng.ru/realty/2018-07-27/1_1006_amphibian.html
+- id: vl
+  baza: kniga
+  avtor: С. Куликов
+  nazvanie: С. Куликов, «Авиация и ядерные испытания» — Военная литература
+  ssylka: http://militera.lib.ru/h/kulikov_sm/01.html
+- id: a21
+  baza: periodika
+  nazvanie: '«У истоков гидроавиации: легендарные люди и машины ТАНТК им. Г. М. Бериева» — aviation21.ru'
+  ssylka: https://aviation21.ru/u-istokov-gidroaviacii-legendarnye-lyudi-i-mashiny-tantk-im-g-m-berieva/
+- id: gk-be12-vzlet
+  baza: goskatalog
+  nazvanie: Негатив «Бе-12 на взлёте», 1972, Центральный военно-морской музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=35901322
+citaty: []
+velichina_chislo: 912
+velichina_edinica: км/ч
+velichina_chto: рекорд скорости Бе-10 в 1961 году — для летающих лодок не побит до сих пор
+etiketka_oblozhki:
+- Негатив «Бе-12 на взлёте», 1972
+- Центральный военно-морской музей имени императора Петра Великого
+head:
+  title: Гидросамолёты и амфибии «Бе», 1961 — Музей «Что изобрели русские первыми в мире»
+  description: 'Таганрогская школа Бериева: Бе-10 с рекордом 912 км/ч, А-40 со 148 мировыми рекордами и Бе-200, что набирает 12 тонн воды за 12 секунд.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-13/
+  sobytie: Летающие лодки и амфибии Бериева
+  god: '1961'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Летающие лодки и амфибии Бериева
+    description: 'Таганрогская школа Бериева: Бе-10 с рекордом 912 км/ч, А-40 со 148 мировыми рекордами и Бе-200, что набирает 12 тонн воды за 12 секунд.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-13/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-13-goskatalog-35901322.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Летающие лодки и амфибии Бериева
+    description: 'Таганрогская школа Бериева: Бе-10 с рекордом 912 км/ч, А-40 со 148 мировыми рекордами и Бе-200, что набирает 12 тонн воды за 12 секунд.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-13/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-13-goskatalog-35901322.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-13-goskatalog-35901322.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.25
+    w: 0.7
+    h: 0.5
+  width: 800
+  height: 540
+  alt: Самолёт-амфибия Бе-12 разбегается по воде на взлёте, за ним тянется белый пенный след
+  data_source: https://goskatalog.ru/portal/#/collections?id=35901322
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+  podpis: Негатив «Бе-12 на взлёте», 1972. Хранит Центральный военно-морской музей имени императора Петра Великого.
+  credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 35901322.'
+  hint: Фото · Бе-12 на взлёте
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1972'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1972'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=35901322
+  nomer_predmeta: '35901322'
+  nomer_snimka: net
+  hranitel: Центральный военно-морской музей имени императора Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=35901322
+  svyashchennoe: false
+  podpis_chto: Негатив «Бе-12 на взлёте»
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: '1972'
+  pometka_prav: citirovanie-1274
+kroshka: 13 февраля · Амфибии «Бе»
+lead:
+  data: 1961 · Таганрог, КБ Бериева
+  privyazka: Рекорд скорости Бе-10 поставили 7 августа 1961 года.
+  kto: Георгий Михайлович Бериев, конструктор летающих лодок, и его таганрогское КБ
+  h1: Гидросамолёты и амфибии «Бе»
+  hook: 'Таганрогская школа Бериева единственная в мире: Бе-200 садится на воду и набирает двенадцать тонн за двенадцать секунд'
+stamp:
+- v: '912'
+  k: км/ч — рекорд Бе-10
+- v: '148'
+  k: мировых рекордов А-40
+- v: '12'
+  k: тонн воды за 12 секунд у Бе-200
+- v: '29'
+  k: подлодок нашли Бе-12 за 1989 год
+daynav:
+- id: story
+  label: Машины
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+story:
+  kicker: Машины Бериева
+  h2: Как самолёт научился жить на воде
+  udary:
+  - summary: Бе-10
+    det:
+    - В 1961-м Бе-10 разогнали до 912 км/ч — рекорд летающих лодок не побит до сих пор.
+    src: 'Источник: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10» — cmvvs.ru'
+  - summary: А-40 «Альбатрос»
+    det:
+    - На А-40 «Альбатрос» поставили 148 мировых рекордов, а построили всего две машины.
+    src: 'Источник: «Версия», «На самолёте А-40 было установлено 148 мировых рекордов» — versia.ru'
+  - summary: Бе-200
+    det:
+    - Бе-200 набирает 12 тонн воды за 12 секунд — прямо на ходу, скользя по морю.
+    src: 'Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — rg.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-13-goskatalog-16086409.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.2
+        w: 0.8
+        h: 0.6
+      width: 800
+      height: 600
+      alt: Модель реактивной летающей лодки Бе-10 светлого цвета на подставке
+      data_source: https://goskatalog.ru/portal/#/collections?id=16086409
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей Военно-воздушных сил · Госкаталог
+      podpis: Модель самолёта «Бе-10», вторая половина XX века. Хранит Центральный музей Военно-воздушных сил.
+      credit: 'Хранится: Центральный музей Военно-воздушных сил. Госкаталог музейного фонда РФ, № 16086409.'
+      hint: Модель · Бе-10
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: вторая половина XX века
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: не установлена; в Госкаталоге предмет датирован второй половиной XX века
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=16086409
+      nomer_predmeta: '16086409'
+      nomer_snimka: net
+      hranitel: Центральный музей Военно-воздушных сил
+      podlinnik:
+        gde: Центральный музей Военно-воздушных сил
+        otkuda: https://goskatalog.ru/portal/#/collections?id=16086409
+      svyashchennoe: false
+      podpis_chto: Модель самолёта «Бе-10»
+      podpis_gde: Монино
+      podpis_kogda: вторая половина XX века
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10» — cmvvs.ru'
+    otryvok: В 1961-м Бе-10 разогнали до 912 км/ч — рекорд летающих лодок не побит до сих пор
+    stranica: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10»
+    href: https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html
+    pometka: документ
+    id: be10-912
+    istochnik: cmvvs
+    dlya_voprosa: true
+    otvet: 912 км/ч
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: «Версия», «На самолёте А-40 было установлено 148 мировых рекордов» — versia.ru'
+    otryvok: На А-40 «Альбатрос» поставили 148 мировых рекордов, а построили всего две машины
+    stranica: «Версия», «На самолёте А-40 было установлено 148 мировых рекордов»
+    href: https://versia.ru/vo-vremya-lyotnyx-ispytanij-na-samolete-a-40-bylo-ustanovleno-148-mirovyx-rekordov
+    pometka: документ
+    id: a40-148
+    istochnik: ver
+    dlya_voprosa: true
+    otvet: '148'
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    src: 'Источник: АвиаПорт, рекорды Осипенко — aviaport.ru'
+    otryvok: В 1937-м Осипенко на лодке Бериева побила рекорд итальянки сразу на 3310 метров
+    stranica: АвиаПорт, рекорды Осипенко
+    href: https://www.aviaport.ru/news/732263/
+    pometka: документ
+    id: osipenko-3310
+    istochnik: ap37
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    src: 'Источник: «НВО», 27.04.2018, «Амбарчики» — nvo.ng.ru'
+    otryvok: В 1943-м бомба с «амбарчика» подожгла немецкий пароход — немцы затопили его сами
+    stranica: «НВО», 27.04.2018, «Амбарчики»
+    href: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
+    pometka: документ
+    id: ambarchik-parohod
+    istochnik: nvoa
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    src: 'Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — rg.ru'
+    otryvok: 'На Западе Бе-200 прозвали «русским зверем»: он вдвое мощнее канадского соперника'
+    stranica: «Российская газета», 05.03.2025, «Мировой пожарный»
+    href: https://rg.ru/2025/03/05/mirovoj-pozharnyj.html
+    pometka: документ
+    id: russkij-zver
+    istochnik: rg25
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-13-goskatalog-17193248.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.2
+        w: 0.8
+        h: 0.6
+      width: 1025
+      height: 945
+      alt: Серая модель летающей лодки Бе-6 с красными звёздами на подставке
+      data_source: https://goskatalog.ru/portal/#/collections?id=17193248
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей боевой славы воинов-сибиряков Дома офицеров Новосибирского гарнизона · Госкаталог
+      podpis: Модель самолёта Бе-6, 2006. Хранит Музей боевой славы воинов-сибиряков Дома офицеров Новосибирского гарнизона.
+      credit: 'Хранится: Музей боевой славы воинов-сибиряков Дома офицеров Новосибирского гарнизона. Госкаталог музейного фонда РФ, № 17193248.'
+      hint: Модель · Бе-6
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '2006'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '2006'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=17193248
+      nomer_predmeta: '17193248'
+      nomer_snimka: net
+      hranitel: Музей боевой славы воинов-сибиряков Дома офицеров Новосибирского гарнизона
+      podlinnik:
+        gde: Музей боевой славы воинов-сибиряков Дома офицеров Новосибирского гарнизона
+        otkuda: https://goskatalog.ru/portal/#/collections?id=17193248
+      svyashchennoe: false
+      podpis_chto: Модель самолёта Бе-6
+      podpis_gde: Новосибирск
+      podpis_kogda: '2006'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: С. Куликов, «Авиация и ядерные испытания» — militera.lib.ru'
+    otryvok: Летающие лодки Бе-6 летали прямо сквозь облака ядерных взрывов над Новой Землёй
+    stranica: С. Куликов, «Авиация и ядерные испытания»
+    href: http://militera.lib.ru/h/kulikov_sm/01.html
+    pometka: документ
+    id: be6-yadernye-oblaka
+    istochnik: vl
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-13-goskatalog-11345520.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.2
+        w: 0.7
+        h: 0.6
+      width: 448
+      height: 336
+      alt: 'Цветная фотография в раме: Бе-200 летит низко над бухтой с яхтами'
+      data_source: https://goskatalog.ru/portal/#/collections?id=11345520
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского · Госкаталог
+      podpis: Фотография «Пожарный самолёт Бе-200», 1999. Хранит Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского.
+      credit: 'Хранится: Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского. Госкаталог музейного фонда РФ, № 11345520.'
+      hint: Фото · Бе-200 над бухтой
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1999'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1999'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11345520
+      nomer_predmeta: '11345520'
+      nomer_snimka: net
+      hranitel: Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского
+      podlinnik:
+        gde: Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11345520
+      svyashchennoe: false
+      podpis_chto: Фотография «Пожарный самолёт Бе-200»
+      podpis_gde: Иркутск
+      podpis_kogda: '1999'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — rg.ru'
+    otryvok: Бе-200 набирает 12 тонн воды за 12 секунд — прямо на ходу, скользя по морю
+    stranica: «Российская газета», 05.03.2025, «Мировой пожарный»
+    href: https://rg.ru/2025/03/05/mirovoj-pozharnyj.html
+    pometka: документ
+    id: be200-12-tonn
+    istochnik: rg25
+    dlya_voprosa: true
+    otvet: 12 секунд
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    src: 'Источник: «Отвага», «Прерванный взлёт «Альбатроса»» — otvaga2004.ru'
+    otryvok: В Ле-Бурже-1991 А-40 прозвали «Мисс Париж», на борт поднялся сам президент Миттеран
+    stranica: «Отвага», «Прерванный взлёт «Альбатроса»»
+    href: https://otvaga2004.ru/atrina/atrina-air/prervannyj-vzlet-albatrosa/
+    pometka: документ
+    id: miss-parizh
+    istochnik: otv
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-13-goskatalog-11062994.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.2
+        w: 0.8
+        h: 0.6
+      width: 800
+      height: 533
+      alt: Бело-сине-красная модель лёгкой амфибии Бе-103
+      data_source: https://goskatalog.ru/portal/#/collections?id=11062994
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+      podpis: Модель лёгкого самолёта-амфибии «Бе-103», 1996. Хранит Центральный военно-морской музей имени императора Петра Великого.
+      credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 11062994.'
+      hint: Модель · Бе-103
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1996'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1996'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11062994
+      nomer_predmeta: '11062994'
+      nomer_snimka: net
+      hranitel: Центральный военно-морской музей имени императора Петра Великого
+      podlinnik:
+        gde: Центральный военно-морской музей имени императора Петра Великого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11062994
+      svyashchennoe: false
+      podpis_chto: Модель лёгкого самолёта-амфибии «Бе-103»
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: '1996'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Моделист-конструктор», «Лёгкий самолёт-амфибия Бе-103» — modelist-konstruktor.com'
+    otryvok: Бе-103 получил сертификат США — три машины привезли на авиашоу в Ошкош на «Руслане»
+    stranica: «Моделист-конструктор», «Лёгкий самолёт-амфибия Бе-103»
+    href: https://modelist-konstruktor.com/aviacziya/lyogkij_samolyot_amfibiya_be_103
+    pometka: документ
+    id: be103-ssha
+    istochnik: mk
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-13-goskatalog-30936680.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.1
+        w: 0.6
+        h: 0.8
+      width: 522
+      height: 800
+      alt: Бе-12 летит низко над всплывшей атомной подводной лодкой
+      data_source: https://goskatalog.ru/portal/#/collections?id=30936680
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+      podpis: Негатив «Атомная ракетная подводная лодка проекта 667А и противолодочный самолёт-амфибия Бе-12», начало 1970-х. Хранит Центральный военно-морской музей имени императора Петра Великого.
+      credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 30936680.'
+      hint: Фото · Бе-12 над подлодкой
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: начало 1970-х
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: начало 1970-х
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=30936680
+      nomer_predmeta: '30936680'
+      nomer_snimka: net
+      hranitel: Центральный военно-морской музей имени императора Петра Великого
+      podlinnik:
+        gde: Центральный военно-морской музей имени императора Петра Великого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=30936680
+      svyashchennoe: false
+      podpis_chto: Негатив «Атомная ракетная подводная лодка проекта 667А и противолодочный самолёт-амфибия Бе-12»
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: начало 1970-х
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «НВО», 27.07.2018, о Бе-12 — nvo.ng.ru'
+    otryvok: За один 1989 год экипажи Бе-12 нашли 29 чужих подводных лодок
+    stranica: «НВО», 27.07.2018, о Бе-12
+    href: https://nvo.ng.ru/realty/2018-07-27/1_1006_amphibian.html
+    pometka: документ
+    id: be12-29-lodok
+    istochnik: nvob
+    dlya_voprosa: true
+    otvet: '29'
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про лодки Бериева
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: РИА Новости, 25.11.2016, Бе-200 в Израиле — ria.ru'
+    otryvok: 'Израиль сам попросил Бе-200: за сутки 14 сбросов, почти 170 тонн воды на огонь'
+    stranica: РИА Новости, 25.11.2016, Бе-200 в Израиле
+    href: https://ria.ru/20161125/1482139438.html
+    pometka: документ
+    id: izrail-14-sbrosov
+    istochnik: ria
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: АвиаПорт, Бе-200 в Греции, 2021 — aviaport.ru'
+    otryvok: В Греции сомневались в русском самолёте — Бе-200 сделал 18 сбросов за 2 часа
+    stranica: АвиаПорт, Бе-200 в Греции, 2021
+    href: https://www.aviaport.ru/news/684327/
+    pometka: документ
+    id: greciya-18-sbrosov
+    istochnik: ap21
+    dlya_voprosa: true
+    otvet: '18'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    src: 'Источник: «НВО», 27.04.2018, «Амбарчики» — nvo.ng.ru'
+    otryvok: В 1944-м «амбарчик» вывез из болот англичан, сбитых после удара по «Тирпицу»
+    stranica: «НВО», 27.04.2018, «Амбарчики»
+    href: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
+    pometka: документ
+    id: ambarchik-tirpic
+    istochnik: nvoa
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: «НВО», 27.04.2018, «Амбарчики» — nvo.ng.ru'
+    otryvok: Экипаж немецкой лодки BV-138 сдался в плен по наводке нашего МБР-2
+    stranica: «НВО», 27.04.2018, «Амбарчики»
+    href: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
+    pometka: документ
+    id: bv138-sdalsya
+    istochnik: nvoa
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: testpilot.ru, статья о Р-1 — testpilot.ru'
+    otryvok: Р-1 на посадке подпрыгивал на 4 метра и зарывался в воду — укротили за 215 пробежек
+    stranica: testpilot.ru, статья о Р-1
+    href: http://testpilot.ru/russia/beriev/r/
+    pometka: документ
+    id: r1-215-probezhek
+    istochnik: tpr
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чей это подвиг
+  pravilo_ru: 'Что сделать сейчас: выбери машину и нажми на подвиг, который она совершила.'
+  kak_igrat:
+    zachem: 'У каждой машины Бериева — свой подвиг: скорость, вода, подлодки.'
+    shagi:
+    - Выбери машину — кнопка загорится золотом.
+    - Нажми на её подвиг. Верный выбор загорится зелёным.
+    - Расставь все три — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все три машины на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: skorost
+      nazvanie: 912 км/ч
+      verno_ru: В 1961-м Бе-10 разогнали до 912 км/ч — рекорд летающих лодок не побит до сих пор.
+    - kod: voda
+      nazvanie: 12 тонн воды за 12 секунд
+      verno_ru: Бе-200 набирает 12 тонн воды за 12 секунд — прямо на ходу, скользя по морю.
+    - kod: lodki
+      nazvanie: 29 подлодок за год
+      verno_ru: За один 1989 год экипажи Бе-12 нашли 29 чужих подводных лодок.
+    podpisi:
+    - kod: be10
+      tekst: Бе-10
+      mesto: skorost
+      mimo_ru: Бе-10 — реактивная лодка, ищи рекорд скорости.
+    - kod: be200
+      tekst: Бе-200
+      mesto: voda
+      mimo_ru: Бе-200 тушит пожары — ищи подвиг с водой.
+    - kod: be12
+      tekst: Бе-12
+      mesto: lodki
+      mimo_ru: Бе-12 — противолодочная амфибия, ищи подлодки.
+    vyberi_ru: Сначала выбери машину, потом подвиг.
+    mimo_ru: Не тот подвиг — попробуй другой.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все три машины на месте — Бе-10 летит быстрее всех лодок, Бе-200 черпает море, Бе-12 находит подлодки.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: Бе-10 — 912 км/ч, Бе-200 — 12 тонн воды за 12 секунд, Бе-12 — 29 подлодок за год.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Бе-10 стал первым в мире серийным гидросамолётом с реактивными двигателями и стреловидным крылом — и поставил рекорд скорости летающих лодок.'
+  net: 'Где граница: В 1961-м Бе-10 разогнали до 912 км/ч — рекорд летающих лодок не побит до сих пор.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Таганрог
+    - первый полёт опытного Бе-10
+    - '1956'
+  - - СССР
+    - Бе-10 — рекорд скорости 912 км/ч
+    - '1961'
+  - - Ле-Бурже
+    - А-40 «Альбатрос» прозвали «Мисс Париж»
+    - '1991'
+  - - Израиль
+    - Бе-200 — 14 сбросов за сутки
+    - '2016'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 912 км/ч; 148; 12 секунд; 29; 18.'
+  ball: 8
+  voprosy:
+  - q: До какой скорости разогнали Бе-10 в 1961 году?
+    o:
+    - 512 км/ч
+    - 912 км/ч
+    - 1912 км/ч
+    a: 1
+    e: В 1961-м Бе-10 разогнали до 912 км/ч — рекорд летающих лодок не побит до сих пор.
+  - q: Сколько мировых рекордов поставили на А-40 «Альбатрос»?
+    o:
+    - '14'
+    - '48'
+    - '148'
+    a: 2
+    e: На А-40 «Альбатрос» поставили 148 мировых рекордов, а построили всего две машины.
+  - q: За сколько секунд Бе-200 набирает 12 тонн воды?
+    o:
+    - за 12 секунд
+    - за 2 минуты
+    - за 12 минут
+    a: 0
+    e: Бе-200 набирает 12 тонн воды за 12 секунд — прямо на ходу, скользя по морю.
+  - q: Сколько чужих подлодок нашли экипажи Бе-12 за 1989 год?
+    o:
+    - '2'
+    - '29'
+    - '290'
+    a: 1
+    e: За один 1989 год экипажи Бе-12 нашли 29 чужих подводных лодок.
+  - q: Сколько сбросов сделал Бе-200 в Греции за 2 часа?
+    o:
+    - '8'
+    - '18'
+    - '80'
+    a: 1
+    e: В Греции сомневались в русском самолёте — Бе-200 сделал 18 сбросов за 2 часа.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал летающих лодок Бериева.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-13-goskatalog-39087916.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.15
+    w: 0.6
+    h: 0.6
+  width: 800
+  height: 623
+  alt: Бе-12 летит над морем, внизу идут корабли
+  data_source: https://goskatalog.ru/portal/#/collections?id=39087916
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+  podpis: Негатив «Учение в море. Противолодочный самолёт-амфибия Бе-12», середина 1960-х. Хранит Центральный военно-морской музей имени императора Петра Великого.
+  credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 39087916.'
+  hint: Фото · Бе-12 на учении
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: середина 1960-х
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: середина 1960-х
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=39087916
+  nomer_predmeta: '39087916'
+  nomer_snimka: net
+  hranitel: Центральный военно-морской музей имени императора Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=39087916
+  svyashchennoe: false
+  podpis_chto: Негатив «Учение в море. Противолодочный самолёт-амфибия Бе-12»
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: середина 1960-х
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-13-goskatalog-30936680.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.1
+    w: 0.6
+    h: 0.8
+  width: 522
+  height: 800
+  alt: Бе-12 летит низко над всплывшей атомной подводной лодкой
+  data_source: https://goskatalog.ru/portal/#/collections?id=30936680
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+  podpis: Негатив «Атомная ракетная подводная лодка проекта 667А и противолодочный самолёт-амфибия Бе-12», начало 1970-х. Хранит Центральный военно-морской музей имени императора Петра Великого.
+  credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 30936680.'
+  hint: Фото · Бе-12 над подлодкой
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: начало 1970-х
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: начало 1970-х
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30936680
+  nomer_predmeta: '30936680'
+  nomer_snimka: net
+  hranitel: Центральный военно-морской музей имени императора Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30936680
+  svyashchennoe: false
+  podpis_chto: Негатив «Атомная ракетная подводная лодка проекта 667А и противолодочный самолёт-амфибия Бе-12»
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: начало 1970-х
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-13-goskatalog-11345520.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.2
+    w: 0.7
+    h: 0.6
+  width: 448
+  height: 336
+  alt: 'Цветная фотография в раме: Бе-200 летит низко над бухтой с яхтами'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11345520
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского · Госкаталог
+  podpis: Фотография «Пожарный самолёт Бе-200», 1999. Хранит Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского.
+  credit: 'Хранится: Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского. Госкаталог музейного фонда РФ, № 11345520.'
+  hint: Фото · Бе-200 над бухтой
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1999'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1999'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11345520
+  nomer_predmeta: '11345520'
+  nomer_snimka: net
+  hranitel: Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского
+  podlinnik:
+    gde: Иркутский областной краеведческий музей имени Н. Н. Муравьёва-Амурского
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11345520
+  svyashchennoe: false
+  podpis_chto: Фотография «Пожарный самолёт Бе-200»
+  podpis_gde: Иркутск
+  podpis_kogda: '1999'
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html
+  title: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10»
+  note: факты дня
+- href: https://testpilot.ru/russia/beriev/be/10/
+  title: testpilot.ru, статья о Бе-10
+  note: факты дня
+- href: http://testpilot.ru/russia/beriev/r/
+  title: testpilot.ru, статья о Р-1
+  note: факты дня
+- href: https://versia.ru/vo-vremya-lyotnyx-ispytanij-na-samolete-a-40-bylo-ustanovleno-148-mirovyx-rekordov
+  title: «Версия», «На самолёте А-40 было установлено 148 мировых рекордов»
+  note: факты дня
+- href: https://navalmuseum.ru/news?id=462
+  title: Центральный военно-морской музей, новость об А-40
+  note: факты дня
+- href: https://rg.ru/2025/03/05/mirovoj-pozharnyj.html
+  title: «Российская газета», 05.03.2025, «Мировой пожарный»
+  note: факты дня
+- href: https://otvaga2004.ru/atrina/atrina-air/prervannyj-vzlet-albatrosa/
+  title: «Отвага», «Прерванный взлёт «Альбатроса»»
+  note: факты дня
+- href: https://ria.ru/20161125/1482139438.html
+  title: РИА Новости, 25.11.2016, Бе-200 в Израиле
+  note: факты дня
+- href: https://www.aviaport.ru/news/684327/
+  title: АвиаПорт, Бе-200 в Греции, 2021
+  note: факты дня
+- href: https://tass.ru/proisshestviya/12062761
+  title: ТАСС, Бе-200 в Греции, 2021
+  note: факты дня
+- href: https://modelist-konstruktor.com/aviacziya/lyogkij_samolyot_amfibiya_be_103
+  title: «Моделист-конструктор», «Лёгкий самолёт-амфибия Бе-103»
+  note: факты дня
+- href: https://www.aviaport.ru/news/23064/
+  title: АвиаПорт, сертификаты Бе-200 и Бе-103, 2002
+  note: факты дня
+- href: https://www.aviaport.ru/news/732263/
+  title: АвиаПорт, рекорды Осипенко
+  note: факты дня
+- href: http://www.aviaport.ru/news/742801/
+  title: АвиаПорт, история ТАНТК имени Бериева
+  note: факты дня
+- href: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
+  title: «НВО», 27.04.2018, «Амбарчики»
+  note: факты дня
+- href: https://nvo.ng.ru/realty/2018-07-27/1_1006_amphibian.html
+  title: «НВО», 27.07.2018, о Бе-12
+  note: факты дня
+- href: http://militera.lib.ru/h/kulikov_sm/01.html
+  title: С. Куликов, «Авиация и ядерные испытания»
+  note: факты дня
+- href: https://aviation21.ru/u-istokov-gidroaviacii-legendarnye-lyudi-i-mashiny-tantk-im-g-m-berieva/
+  title: aviation21.ru, «У истоков гидроавиации»
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=35901322
+  title: 'Госкаталог музейного фонда РФ: негатив «Бе-12 на взлёте», 1972, Центральный военно-морской музей'
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-14/
+  title: 14 февраля — Первый в мире монорельс
+  hook: Крепостной мастер Эльманов пустил вагонетки по одному брусу на столбах за полвека до английских патентов
+  main: true
+- lbl: Предыдущий день
+  href: den/02-12/
+  title: 12 февраля — Закон Ленца (электромагнитная индукция)
+  hook: Ленц первым записал формулой, что природа сопротивляется вмешательству, — на его правиле стоит каждый электродвигатель
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Главный конструктор летающих лодок
+  - - 70
+    - Лётчик-испытатель Таганрога
+  - - 40
+    - Механик гидроаэродрома
+  - - 0
+    - Гость дня
+return:
+  q: Сколько воды набирает Бе-200 за 12 секунд?
+  a: Бе-200 набирает 12 тонн воды за 12 секунд — прямо на ходу, скользя по морю.
+  src: «Российская газета», rg.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-13-beriev:claim-1961
+  ours:
+    kind: publication
+    title: «Мировой рекорд скорости реактивного гидросамолёта Бе-10»
+    date: '1961'
+    holder: Центральный музей ВВС
+    source_url: https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html
+podskazki_igry:
+- Бе-10 — реактивная лодка, ему досталась скорость
+- Бе-200 — пожарный, ему досталась вода
+- Бе-12 — охотник за подлодками
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Таганрог
+  shirota: 47.2362
+  dolgota: 38.8969
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Днище самолёта сделано как лодка — с острым килем и уступом-реданом
+- На разбеге редан отрывает днище от воды, и самолёт глиссирует
+- Поплавки под крыльями не дают завалиться на волне
+- Бе-200 на скольжении опускает заборники и черпает воду в баки
+data_uslovnaya: 13 февраля — день музея; рекорд скорости Бе-10 поставлен 7 августа 1961 года.
+slovar:
+- mesto:novaya-zemlya
