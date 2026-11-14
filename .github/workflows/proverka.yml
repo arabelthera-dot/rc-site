@@ -105,6 +105,13 @@ jobs:
       - name: gitleaks — ключей в коммитах заявки нет
         timeout-minutes: 3
         run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.30.1 git /repo --redact --no-banner --log-opts="origin/main..HEAD"
+      # Права кадра по таблице «база → пометка» (Р764 п.2, 13.11.2026): в днях заявки кадр без пометки из закрытого
+      # списка и с базой не из таблицы называется. Как в мире — https://rightsstatements.org/page/1.0/ и
+      # https://pro.europeana.eu/page/available-rights-statements. Предупреждение; красная — "strogo": true
+      # в src/data/spravochniki/pometki-prav.json. Откат — удалить этот шаг.
+      - name: prava-pometki — права кадров по таблице баз
+        timeout-minutes: 1
+        run: node scripts/prava-pometki.mjs
   sborka:
     needs: filtr
     if: needs.filtr.outputs.sborka == 'true'

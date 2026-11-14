@@ -415,6 +415,12 @@
       "punkt": "182"
     },
     {
+      "imya": "images.pometka_prav",
+      "chto": "Р764 п.2: пометка прав кадра из закрытого списка src/data/spravochniki/pometki-prav.json; ставит машина scripts/prava-pometki.mjs по подписи и таблице «база → пометка»",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false
+    },
+    {
       "imya": "moj_ded",
       "chto": "Р733, «Русские не сдаются»: «Мой дед был там» — {baza: pamyat-naroda | podvig-naroda, ssylka} или net",
       "na_stranicu": true,

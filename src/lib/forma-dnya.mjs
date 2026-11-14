@@ -115,6 +115,8 @@ export const polyaKartinki = {
   opisanie_dlinnoe: str.optional(),
   // Р733 п.182: главное на картинке — точка (x, y) или рамка (x, y, w, h) в долях кадра 0–1, туда наезжает камера ролика.
   glavnoe_na_kartinke: z.union([z.literal(NET), ramka]).optional(),
+  // Р764 п.2: пометка прав из закрытого списка src/data/spravochniki/pometki-prav.json; ставит и проверяет scripts/prava-pometki.mjs.
+  pometka_prav: str.optional(),
 };
 // Поля формы у факта (fakty.id … fakty.otvet_edinstvennyj): у карточки страницы факт — удар блока fakty.
 export const polyaFakta = {
