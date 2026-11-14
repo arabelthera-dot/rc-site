@@ -413,7 +413,7 @@ fakty:
     otvet: '3'
     otvet_edinstvennyj: true
 - id: fakty-dnya
-  kicker: Ещё четыре факта
+  kicker: Ещё пять фактов
   h2: Над Канадой и в научном журнале
   udary:
   - n: 11
@@ -459,6 +459,16 @@ fakty:
     pometka: документ
     id: kosmicheskie-issledovaniya-1994
     istochnik: starovojtov-mai-2017
+    dlya_voprosa: false
+  - summary: 'Американское телевидение NBC в тот же вечер: русские с гигантским зеркалом снова лидируют в космосе'
+    sravnenie: net
+    src: 'Источник: «Новости космонавтики», 1993, №3, «Расстыковка КК „Прогресс М-15“ и эксперимент „Знамя-2“» — копия в веб-архиве'
+    otryvok: '«Новости космонавтики», 1993, №3: «В ходе вечерней программы теленовостей американской компании NBC ведущий Т.Брокау сообщил, что "русские космонавты с помощью гигантского зеркала вновь выходят на лидирующие позиции в деле освоения космоса"».'
+    stranica: 1993, №3
+    href: https://web.archive.org/web/2019id_/http://epizodsspace.airbase.ru/bibl/nk/1993/3/3-93.html
+    pometka: документ
+    id: nbc-lidery
+    istochnik: nk-1993-3
     dlya_voprosa: false
 razdely: []
 igra:
