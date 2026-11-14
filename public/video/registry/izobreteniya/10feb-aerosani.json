@@ -1,0 +1,33 @@
+{
+  "title": "История в 39 секунд",
+  "intro": "Там, где есть только снег, Россия сделала машину без колёс и гусениц: пропеллер гонит сани по насту быстрее автомобиля",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43596947575) из сценария days/10feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/10feb-aerosani/day-10feb-aerosani.mp4",
+    "local": "muzei/izobreteniya/video/day-10feb-aerosani.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 38.6,
+    "mb": 10.4
+  },
+  "vertical": {
+    "file": "izobreteniya/10feb-aerosani/day-10feb-aerosani-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-10feb-aerosani-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 38.6,
+    "mb": 10.7
+  },
+  "poster": {
+    "file": "izobreteniya/10feb-aerosani/day-10feb-aerosani-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-10feb-aerosani-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/10feb-aerosani/day-10feb-aerosani-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-10feb-aerosani-9x16-poster.jpg",
+    "v": 1
+  }
+}
