@@ -1,0 +1,779 @@
+# День 7 февраля музея «Русские не сдаются»: Муса Джалиль, «Моабитская тетрадь», 1944. Факты — Р752.
+muzei: ne-sdayutsya
+key: 02-07
+pokazan_sergeyu:
+  data: '2026-11-14'
+head:
+  title: Муса Джалиль — «Русские не сдаются» — Русская цивилизация
+  description: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-07/
+  sobytie: Муса Джалиль
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Муса Джалиль — «Русские не сдаются» — Русская цивилизация
+    description: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-07/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Муса Джалиль — «Русские не сдаются»
+    description: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-07/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1944'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-07-goskatalog-28712033.jpg
+  alt: 'Чёрно-белый портрет: мужчина с зачёсанными назад тёмными волосами, в тёмной косоворотке, смотрит в объектив.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=25733715
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Муса Джалиль в чёрной косоворотке. Негатив, середина XX века
+  credit: 'Фото: автор не указан, середина XX века. Хранится: Национальный музей Республики Татарстан. Госкаталог музейного фонда РФ, № 25587562'
+  width: 527
+  height: 800
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.05
+    w: 0.7
+    h: 0.6
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: середина XX века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 25587562
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 25587562
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=25733715
+  nomer_predmeta: Госкаталог № 25587562
+  nomer_snimka: goskatalog id 25733715
+  hranitel: Национальный музей Республики Татарстан
+  podpis_chto: Портрет поэта Мусы Джалиля (Залилова)
+  podpis_gde: Национальный музей Республики Татарстан, Казань
+  podpis_kogda: середина XX века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Национальный музей Республики Татарстан
+    otkuda: Госкаталог музейного фонда РФ, № 25587562
+  svyashchennoe: false
+  hint: Миноносец «Стерегущий»
+  celikom: true
+kroshka: День 7 · Муса Джалиль
+lead:
+  data: День 7 · февраль · Дрезден, 7 февраля 1944 года
+  privyazka: 7 февраля 1944 года в Дрездене начался суд над Мусой Джалилем и десятью его товарищами; заседания шли с 7 по 12 февраля.
+  kto: Муса Джалиль, татарский поэт, и десять его товарищей по подполью
+  h1: Муса Джалиль
+  hook: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
+stamp:
+- v: '116'
+  k: стихов в завещании из камеры
+- v: '93'
+  k: стихотворения дошли в двух тетрадях
+- v: '11'
+  k: подпольщиков взяли вину на себя
+- v: '3'
+  k: дня не хватило до восстания
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+story:
+  kicker: Подвиг
+  h2: Муса Джалиль
+  abzacy:
+  - 'Татарский поэт Муса Джалиль попал в плен в 1942 году. В лагерях он не сдался: немцы собирали из пленных легион, а Джалиль под видом набора певцов в хор объезжал лагеря и находил своих. В редакции легионной газеты подпольщики нарочно делали её «безвредной и скучной».'
+  - Восстание легиона назначили на 14 августа 1943 года. За три дня до него гестапо арестовало подпольщиков, собрав их под видом репетиции. 7 февраля 1944 года в Дрездене начался суд. Одиннадцать человек взяли всю вину на себя и отвели расправу от сотен легионеров.
+  - В тюрьме Моабит бумаги смертнику не давали. Джалиль срезал бритвой поля газет и сшивал из них крошечные блокноты, а на обложке писал по-немецки «Словарь». В августе 1944 года его казнили в Берлине. Две тетради с 93 стихотворениями вынесли из тюрьмы и сохранили — так «Моабитская тетрадь» вернула поэту честное имя.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Десять фактов о Мусе Джалиле
+  udary:
+  - id: ns-0207-spisok-13
+    n: 1
+    summary: 'В конце тетради — 12 имён арестованных, жирная черта и тринадцатое: имя предателя'
+    det:
+    - 'На последних страницах тетради Джалиль записал имена двенадцати арестованных товарищей. Под ними — жирная черта, а ниже — тринадцатое имя: того, кто их выдал. Из камеры смертника он оставил потомкам и список героев, и имя доносчика.'
+    otryvok: Затем он провел жирную черту и приписал фамилию тринадцатого — предателя, выдавшего подпольную организацию.
+    src: 'Источник: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию — https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf'
+    stranica: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию
+    href: https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 12 имён — почти полный футбольный состав с запасным
+    istochnik: orenlib-moabitskaya
+    dlya_voprosa: true
+    otvet: '13'
+    otvet_edinstvennyj: true
+  - id: ns-0207-zaveshchanie
+    n: 2
+    summary: 'Завещание в тетради: «Его присудят к смертной казни. Он умрёт. Но останется 116 стихов»'
+    det:
+    - 'В первой тетради Джалиль написал о себе в третьем лице: его приговорят к смерти, он умрёт, но останутся 116 стихов. Он просил того, кто найдёт тетрадь, переписать их и передать на родину. Спасал он не себя, а стихи.'
+    otryvok: Его присудят к смертной казни. Он умрет. Но у него останется 116 стихов, написанных в плену и в заточении.
+    src: 'Источник: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию — https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf'
+    stranica: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию
+    href: https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 116 стихов — больше, чем дней в трёх месяцах
+    istochnik: orenlib-moabitskaya
+    dlya_voprosa: true
+    otvet: '116'
+    otvet_edinstvennyj: true
+  - id: ns-0207-slovar
+    n: 3
+    summary: На обложке тетради смертник вывел по-немецки «Словарь» — и надзиратели не заглянули внутрь
+    det:
+    - Тетради были крошечные — с детскую ладошку. На обложке Джалиль написал по-немецки «Словарь». Надзиратели видели учебную тетрадку для слов и не заглядывали внутрь, а там были стихи.
+    otryvok: 'На обложке написано химическим карандашом по-немецки (для отвода глаз гитлеровских тюремщиков): «Словарь немецких, тюркских, русских слов и выражений. Муса Джалиль. 1943-44 г.»'
+    src: 'Источник: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию — https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf'
+    stranica: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию
+    href: https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: orenlib-moabitskaya
+    dlya_voprosa: true
+    otvet: Словарь
+    otvet_edinstvennyj: true
+  - id: ns-0207-rozysk
+    n: 4
+    summary: В 1946-м МГБ объявило его в розыск как изменника — а его казнили почти за два года до этого
+    det:
+    - 'После войны имя Джалиля считали именем предателя: в 1946 году МГБ завело на него розыскное дело как на изменника Родины. А его казнили в Берлине ещё в августе 1944 года. Правду открыли тетради.'
+    otryvok: В 1946 году Министерство госбезопасности СССР завело на него розыскное дело. Он обвинялся в измене родине и пособничестве врагу.
+    src: 'Источник: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf; «Пленный дух Моабита». «Совершенно секретно» — https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/'
+    stranica: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+    href: https://library.fa.ru/files/Dghalil.pdf
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: почти два года — 700 с лишним дней
+    istochnik: fa-tetrad-iz-moabita
+    dlya_voprosa: true
+    otvet: '1946'
+    otvet_edinstvennyj: true
+  - id: ns-0207-10-prigovorov
+    n: 5
+    summary: 'Следователь гестапо: «Того, что вы сделали, хватит на 10 смертных приговоров»'
+    det:
+    - Так следователь гестапо сказал Джалилю на допросе. Враг сам признал, как много успело сделать подполье.
+    otryvok: Следователь, ведший дело подпольщиков, на одном из допросов честно сказал Джалилю, что того, что они сделали, хватит на 10 смертных приговоров
+    src: 'Источник: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf'
+    stranica: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+    href: https://library.fa.ru/files/Dghalil.pdf
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: fa-tetrad-iz-moabita
+    dlya_voprosa: true
+    otvet: '10'
+    otvet_edinstvennyj: true
+  - id: ns-0207-zapiska
+    n: 6
+    summary: 'В 1945-м солдат нашёл в мусоре двора Моабита записку: «Я, татарский поэт Муса Джалиль…»'
+    det:
+    - 'Весной 1945 года в Берлин вошли советские войска. Во дворе тюрьмы Моабит солдат нашёл среди мусора листок: «Я, татарский поэт Муса Джалиль…». Весть о поэте дошла до своих через клочок бумаги.'
+    otryvok: 'И среди мусора во дворе тюрьмы кто-то из солдат случайно заметил листок с записью на русском языке: «Я, татарский поэт Муса Джалиль, заключен в Моабитскую тюрьму как пленный, которому предъявлены политические обвинения, и, наверное, буду скоро расстрелян.'
+    src: 'Источник: Национальная электронная библиотека Республики Татарстан. «История „Моабитской тетради“» — https://kitap.tatar.ru/ru/site/42217989-7/news/83841/; Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf'
+    stranica: Национальная электронная библиотека Республики Татарстан. «История „Моабитской тетради“»
+    href: https://kitap.tatar.ru/ru/site/42217989-7/news/83841/
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: kitap-tatar-istoriya
+    dlya_voprosa: true
+    otvet: '1945'
+    otvet_edinstvennyj: true
+  - id: ns-0207-s-pesnej
+    n: 7
+    summary: 'Надзиратель тюрьмы: «Не видел, чтобы на казнь шли с поднятой головой и пели»'
+    det:
+    - 'Так вспоминал тюремный надзиратель о Джалиле и его товарищах: они шли на казнь с поднятой головой и пели.'
+    otryvok: 'Помощник надзирателя Пауль Дюррхауер рассказывал: «Мне еще не приходилось видеть, чтобы люди шли на место казни с гордо поднятой головой и пели при этом какую-то песню».'
+    src: 'Источник: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf'
+    stranica: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+    href: https://library.fa.ru/files/Dghalil.pdf
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: fa-tetrad-iz-moabita
+    dlya_voprosa: true
+    otvet: пели
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-07-goskatalog-9423972.jpg
+      alt: 'Памятник: фигура человека, рвущего колючую проволоку.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=11835167
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Памятник Герою Советского Союза Мусе Джалилю в Казани. Фотография
+      credit: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр», Госкаталог № 11742864
+      width: 1162
+      height: 1600
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      prava:
+        avtor: автор неизвестен
+        god_sozdaniya: 1986 год
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 11742864
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № предмета 11742864
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11835167
+      nomer_predmeta: Госкаталог № 11742864
+      nomer_snimka: goskatalog id 11835167
+      hranitel: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр»
+      podpis_chto: Памятник Герою Советского Союза Мусе Джалилю в Казани
+      podpis_gde: Казань
+      podpis_kogda: 1986 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр»
+        otkuda: Госкаталог музейного фонда РФ, № 11742864
+      svyashchennoe: false
+  - id: ns-0207-gazeta
+    n: 8
+    summary: Газету немецкого легиона подпольщики нарочно делали «безвредной и скучной»
+    det:
+    - Немцы выпускали для татарского легиона газету, чтобы склонить пленных на свою сторону. Подпольщики, работавшие в редакции, нарочно делали её «безвредной и скучной» — пропаганда врага не работала.
+    otryvok: Среди подпольщиков были те, кто работал в татарской газете, выпускаемой немцами для легионеров, и перед ними стояла задача сделать работу газеты безвредной и скучной, препятствовать появлению антисоветских статей.
+    src: 'Источник: «Пленный дух Моабита». «Совершенно секретно» — https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/'
+    stranica: «Пленный дух Моабита». «Совершенно секретно»
+    href: https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: sovsekretno-plennyj-duh
+    dlya_voprosa: true
+    otvet: скучной
+    otvet_edinstvennyj: true
+  - id: ns-0207-hor
+    n: 9
+    summary: Под видом отбора певцов в хор легиона он объезжал лагеря и вербовал подпольщиков
+    det:
+    - Джалилю поручили набирать участников в хоровую капеллу легиона. Он ездил по лагерям военнопленных, под видом отбора певцов, а на деле находил надёжных людей и привлекал их в подполье.
+    otryvok: Джалиль, разъезжая по лагерям для военнопленных, устанавливал конспиративные связи и под видом отбора самодеятельных артистов для созданной в легионе хоровой капеллы вербовал новых членов подпольной организации.
+    src: 'Источник: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf'
+    stranica: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+    href: https://library.fa.ru/files/Dghalil.pdf
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: fa-tetrad-iz-moabita
+    dlya_voprosa: true
+    otvet: хор
+    otvet_edinstvennyj: true
+  - id: ns-0207-polya-gazet
+    n: 10
+    summary: Бумаги смертнику не давали — он срезал бритвой поля газет и сшивал из них блокноты
+    det:
+    - В тюрьме бумаги не было. Джалиль срезал бритвой чистые поля газет и сшивал из полосок крошечные блокноты. В двух таких тетрадях дошли до нас 93 стихотворения.
+    otryvok: Еще он отрывал чистые поля у газет, которые разрешались в тюрьме, и сшивал из них маленькие блокноты. В них он и записывал свои произведения.
+    src: 'Источник: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf; «Пленный дух Моабита». «Совершенно секретно» — https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/'
+    stranica: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+    href: https://library.fa.ru/files/Dghalil.pdf
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 93 стихотворения в двух тетрадях с ладонь
+    istochnik: fa-tetrad-iz-moabita
+    dlya_voprosa: true
+    otvet: бритвой
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0207-berlin
+    n: 11
+    summary: Избитых узников катали по Берлину, показывая мирную жизнь, — он никого не выдал
+    det:
+    - После допросов гестаповцы возили избитых подпольщиков по Берлину и показывали улицы, кафе, спокойную жизнь — чтобы сломать их желанием жить. Джалиль никого не выдал.
+    otryvok: Избитых и изувеченных людей иногда вывозили в Берлин, останавливаясь в людных местах. Заключенным показывали кусочек мирной жизни, а затем возвращали в тюрьму, где следователь предлагал выдать всех соучастников
+    src: 'Источник: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf; «Пленный дух Моабита». «Совершенно секретно» — https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/'
+    stranica: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+    href: https://library.fa.ru/files/Dghalil.pdf
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: fa-tetrad-iz-moabita
+    dlya_voprosa: true
+    otvet: Берлину
+    otvet_edinstvennyj: true
+  - id: ns-0207-odinnadcat
+    n: 12
+    summary: Одиннадцать взяли всю вину на себя — и отвели расправу от сотен легионеров
+    det:
+    - На суде Джалиль и десять его товарищей взяли всю вину на себя. Так они отвели расправу от сотен легионеров, которых гестапо тоже могло обвинить.
+    otryvok: В подпольной работе подозревались многие легионеры и военнопленные. Но всю вину на себя взяли 11 человек
+    src: 'Источник: «Пленный дух Моабита». «Совершенно секретно» — https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/'
+    stranica: «Пленный дух Моабита». «Совершенно секретно»
+    href: https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 11 человек — футбольная команда
+    istochnik: sovsekretno-plennyj-duh
+    dlya_voprosa: true
+    otvet: '11'
+    otvet_edinstvennyj: true
+  - id: ns-0207-rozenberg
+    n: 13
+    summary: Помилование подпольщику группы Джалиля запретил лично рейхсминистр Розенберг
+    det:
+    - Историк Искандер Гилязов нашёл в Федеральном архиве Берлина документы о деле группы. Просьбу о помиловании одного из подпольщиков отклонил лично рейхсминистр Альфред Розенберг. Их боялись на самом верху рейха.
+    otryvok: В случае с Симаевым имею очень серьезные сомнения по поводу дела о помиловании и прошу воздержаться от подобного шага
+    src: 'Источник: И. Гилязов о документах Федерального архива Берлина. «Казань Первый» — https://kazanfirst.ru/articles/591193'
+    stranica: И. Гилязов о документах Федерального архива Берлина. «Казань Первый»
+    href: https://kazanfirst.ru/articles/591193
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: kazanfirst-gilyazov
+    dlya_voprosa: true
+    otvet: Розенберг
+    otvet_edinstvennyj: true
+  - id: ns-0207-repeticiya
+    n: 14
+    summary: Гестапо взяло подполье на «репетиции» — за три дня до восстания легиона
+    det:
+    - Восстание легиона подпольщики назначили на 14 августа 1943 года. 11 августа участников собрали под видом репетиции — и там гестапо их арестовало.
+    otryvok: Восстание было намечено на 14 августа. Однако 11 августа всех «культурных пропагандистов» вызвали в солдатскую столовую
+    src: 'Источник: «Пленный дух Моабита». «Совершенно секретно» — https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/; Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля» — https://library.fa.ru/files/Dghalil.pdf'
+    stranica: «Пленный дух Моабита». «Совершенно секретно»
+    href: https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 3 дня — от понедельника до четверга
+    istochnik: sovsekretno-plennyj-duh
+    dlya_voprosa: true
+    otvet: '3'
+    otvet_edinstvennyj: true
+  - id: ns-0207-smeshnye
+    n: 15
+    summary: В камере смертников он писал и смешные стихи — среди 93 есть юмористические
+    det:
+    - В двух уцелевших тетрадях — 93 стихотворения. Среди них не только стихи о Родине и мужестве, но и юмористические. В камере смертников поэт не потерял способности смеяться.
+    otryvok: В сборнике 93 стихотворения, разных по содержанию и настроению – от обличающих преступления нацистов до юмористических зарисовок.
+    src: 'Источник: Национальный музей Республики Татарстан. «Подлинные „Моабитские тетради“ на один день станут доступны публике» — https://tatmuseum.ru/news/podlinnye-moabitskie-tetradi-na-odin-den-stanut-dostupny-publike/'
+    stranica: Национальный музей Республики Татарстан. «Подлинные „Моабитские тетради“ на один день станут доступны публике»
+    href: https://tatmuseum.ru/news/podlinnye-moabitskie-tetradi-na-odin-den-stanut-dostupny-publike/
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: tatmuseum-tetradi
+    dlya_voprosa: true
+    otvet: '93'
+    otvet_edinstvennyj: true
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 116; 2 — «Словарь»; 3 — отбор певцов в хор; 4 — из полей газет; 5 — 11.'
+  ball: 10
+  voprosy:
+  - q: Сколько стихов Джалиль назвал в завещании в тетради?
+    o:
+    - '93'
+    - '100'
+    - '116'
+    - '125'
+    a: 2
+    e: 'В завещании первой тетради: «Он умрёт. Но останется 116 стихов». До нас дошли 93 стихотворения.'
+  - q: Какое слово Джалиль написал по-немецки на обложке тетради?
+    o:
+    - «Дневник»
+    - «Словарь»
+    - «Песни»
+    - «Письма»
+    a: 1
+    e: 'Надпись «Словарь» обманула надзирателей: внутрь тетради они не заглядывали.'
+  - q: Под каким видом Джалиль объезжал лагеря и вербовал подпольщиков?
+    o:
+    - Отбор певцов в хор
+    - Набор переводчиков
+    - Проверка больных
+    - Раздача газет
+    a: 0
+    e: Он набирал участников в хор легиона и так находил надёжных людей для подполья.
+  - q: Из чего Джалиль сшивал блокноты в тюрьме?
+    o:
+    - Из обёрточной бумаги
+    - Из полей газет
+    - Из писем
+    - Из листов Библии
+    a: 1
+    e: 'Бумаги смертнику не давали: он срезал бритвой поля газет и сшивал из них блокноты.'
+  - q: Сколько подпольщиков взяли всю вину на себя?
+    o:
+    - '3'
+    - '7'
+    - '11'
+    - '13'
+    a: 2
+    e: Джалиль и десять товарищей — одиннадцать человек — взяли вину на себя и отвели расправу от сотен легионеров.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+figures:
+- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-17136265.jpg
+  alt: 'Книга в светлом переплёте: на обложке надпись «Моабитская тетрадь».'
+  data_source: https://goskatalog.ru/portal/#/collections?id=17396097
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Книга «Моабитская тетрадь», 1959 год
+  credit: Национальный музей Республики Татарстан, Госкаталог № 17263548
+  width: 548
+  height: 800
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  prava:
+    avtor: Джалиль М. М.
+    god_sozdaniya: '1959'
+    god_smerti_avtora: 1944
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 17263548
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 17263548
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=17396097
+  nomer_predmeta: Госкаталог № 17263548
+  nomer_snimka: goskatalog id 17396097
+  hranitel: Национальный музей Республики Татарстан
+  podpis_chto: Книга «Моабитская тетрадь»
+  podpis_gde: Национальный музей Республики Татарстан, Казань
+  podpis_kogda: 1959 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Национальный музей Республики Татарстан
+    otkuda: Госкаталог музейного фонда РФ, № 17263548
+  svyashchennoe: false
+- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-22990338.jpg
+  alt: Двухэтажный старый дом на углу двух улиц.
+  data_source: https://goskatalog.ru/portal/#/collections?id=3803022
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Дом на углу улиц Профсоюзной и Мусы Джалиля (бывшая Банковская). Негатив
+  credit: Национальный музей Республики Татарстан, Госкаталог № 3566486
+  width: 800
+  height: 592
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  prava:
+    avtor: автор неизвестен
+    god_sozdaniya: вторая половина XX века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 3566486
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 3566486
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=3803022
+  nomer_predmeta: Госкаталог № 3566486
+  nomer_snimka: goskatalog id 3803022
+  hranitel: Национальный музей Республики Татарстан
+  podpis_chto: Дом на углу улиц Профсоюзной и Мусы Джалиля (бывшая Банковская)
+  podpis_gde: Оренбург
+  podpis_kogda: вторая половина XX века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Национальный музей Республики Татарстан
+    otkuda: Госкаталог музейного фонда РФ, № 3566486
+  svyashchennoe: false
+- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-22990285.jpg
+  alt: Тот же старый дом с другой стороны улицы.
+  data_source: https://goskatalog.ru/portal/#/collections?id=3803030
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Дом на углу улиц Профсоюзной и Мусы Джалиля, другой вид. Негатив
+  credit: Национальный музей Республики Татарстан, Госкаталог № 3566478
+  width: 800
+  height: 592
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  prava:
+    avtor: автор неизвестен
+    god_sozdaniya: вторая половина XX века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 3566478
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 3566478
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=3803030
+  nomer_predmeta: Госкаталог № 3566478
+  nomer_snimka: goskatalog id 3803030
+  hranitel: Национальный музей Республики Татарстан
+  podpis_chto: Дом на углу улиц Профсоюзной и Мусы Джалиля, другой вид
+  podpis_gde: Оренбург
+  podpis_kogda: вторая половина XX века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Национальный музей Республики Татарстан
+    otkuda: Госкаталог музейного фонда РФ, № 3566478
+  svyashchennoe: false
+- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-9352007.jpg
+  alt: Бюст поэта на постаменте.
+  data_source: https://goskatalog.ru/portal/#/collections?id=11778774
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Бюст Героя Советского Союза Мусы Джалиля в Мустафине. Фотография
+  credit: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр», Госкаталог № 11681607
+  width: 1600
+  height: 1162
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  prava:
+    avtor: автор неизвестен
+    god_sozdaniya: XX век
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 11681607
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 11681607
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11778774
+  nomer_predmeta: Госкаталог № 11681607
+  nomer_snimka: goskatalog id 11778774
+  hranitel: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр»
+  podpis_chto: Бюст Героя Советского Союза Мусы Джалиля в Мустафине
+  podpis_gde: село Мустафино, Оренбургская область
+  podpis_kogda: XX век
+  simvolika_proverena: true
+  podlinnik:
+    gde: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр»
+    otkuda: Госкаталог музейного фонда РФ, № 11681607
+  svyashchennoe: false
+- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-9352445.jpg
+  alt: Группа людей в зале сельского музея.
+  data_source: https://goskatalog.ru/portal/#/collections?id=11779055
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Родные и соратники Мусы Джалиля в музее села Мустафино. Фотография
+  credit: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр», Госкаталог № 11681606
+  width: 1162
+  height: 1600
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  prava:
+    avtor: автор неизвестен
+    god_sozdaniya: 1986 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 11681606
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 11681606
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11779055
+  nomer_predmeta: Госкаталог № 11681606
+  nomer_snimka: goskatalog id 11779055
+  hranitel: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр»
+  podpis_chto: Родные и соратники Мусы Джалиля в музее села Мустафино
+  podpis_gde: село Мустафино, Оренбургская область
+  podpis_kogda: 1986 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр»
+    otkuda: Госкаталог музейного фонда РФ, № 11681606
+  svyashchennoe: false
+sources:
+- href: https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf
+  title: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию
+  note: к фактам 1, 2, 3
+- href: https://library.fa.ru/files/Dghalil.pdf
+  title: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+  note: к фактам 4, 5, 6, 7, 9, 10, 11, 14
+- href: https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/
+  title: «Пленный дух Моабита». «Совершенно секретно»
+  note: к фактам 4, 8, 10, 11, 12, 14
+- href: https://kitap.tatar.ru/ru/site/42217989-7/news/83841/
+  title: Национальная электронная библиотека Республики Татарстан. «История „Моабитской тетради“»
+  note: к фактам 6
+- href: https://kazanfirst.ru/articles/591193
+  title: И. Гилязов о документах Федерального архива Берлина. «Казань Первый»
+  note: к фактам 13
+- href: https://tatmuseum.ru/news/podlinnye-moabitskie-tetradi-na-odin-den-stanut-dostupny-publike/
+  title: Национальный музей Республики Татарстан. «Подлинные „Моабитские тетради“ на один день станут доступны публике»
+  note: к фактам 15
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 8 февраля (запись готовится)
+  hook: Стойкость и подвиг день за днём.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+chrome:
+  share:
+    title: Муса Джалиль — Музей стойкости и подвига «Русские не сдаются»
+    text: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
+  prev:
+    href: /muzei/ne-sdayutsya/den/02-04/
+    title: 4 · Миноносец «Стерегущий»
+  next:
+    href: index.html
+    title: 8 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Какое слово Джалиль написал на обложке тетради, чтобы надзиратели не заглянули внутрь?
+  a: Словарь
+proof:
+  status: utverzhdeno
+  note: Факты дня утверждены (Р752, 14.11.2026), взяты дословно из утверждённого списка.
+nomer_dnya: ns-0207-dzhalil
+data_sobytiya: '1944-02-07'
+data_uslovnaya: 7 февраля — день начала суда над Мусой Джалилем и его товарищами в Дрездене, 1944 год.
+chto_sluchilos: Муса Джалиль в плену создал подполье и готовил восстание легиона; в тюрьме Моабит он написал стихи, которые после его казни вынесли на волю.
+god: 1944
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Негатив «Поэт Залилов М. М. (Джалиль). Портрет в чёрной косоворотке»
+  muzej: Национальный музей Республики Татарстан
+  gorod: Казань
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=25733715
+- chto: Книга «Моабитская тетрадь», 1959 год
+  muzej: Национальный музей Республики Татарстан
+  gorod: Казань
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17396097
+- chto: Картина «Моабитская тетрадь»
+  muzej: Набережночелнинская картинная галерея
+  gorod: Набережные Челны
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=54613181
+chitat_dalshe:
+- nazvanie: Муса Джалиль. «Моабитская тетрадь»
+  gde: Оренбургская областная библиотека
+  ssylka: https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf
+- nazvanie: «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+  gde: Библиотека Финансового университета
+  ssylka: https://library.fa.ru/files/Dghalil.pdf
+- nazvanie: «История „Моабитской тетради“»
+  gde: Национальная электронная библиотека Республики Татарстан
+  ssylka: https://kitap.tatar.ru/ru/site/42217989-7/news/83841/
+- nazvanie: «Пленный дух Моабита»
+  gde: «Совершенно секретно»
+  ssylka: https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/
+istochniki:
+- id: orenlib-moabitskaya
+  baza: periodika
+  nazvanie: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию
+  ssylka: https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf
+- id: fa-tetrad-iz-moabita
+  baza: periodika
+  nazvanie: Библиотека Финансового университета. «Тетрадь из Моабита. Последний подвиг Мусы Джалиля»
+  ssylka: https://library.fa.ru/files/Dghalil.pdf
+- id: kazanfirst-gilyazov
+  baza: periodika
+  nazvanie: И. Гилязов о документах Федерального архива Берлина. «Казань Первый»
+  ssylka: https://kazanfirst.ru/articles/591193
+- id: sovsekretno-plennyj-duh
+  baza: periodika
+  nazvanie: «Пленный дух Моабита». «Совершенно секретно»
+  ssylka: https://www.sovsekretno.ru/articles/istoriya/plennyy-dukh-moabita/
+- id: kitap-tatar-istoriya
+  baza: periodika
+  nazvanie: Национальная электронная библиотека Республики Татарстан. «История „Моабитской тетради“»
+  ssylka: https://kitap.tatar.ru/ru/site/42217989-7/news/83841/
+- id: tatmuseum-tetradi
+  baza: periodika
+  nazvanie: Национальный музей Республики Татарстан. «Подлинные „Моабитские тетради“ на один день станут доступны публике»
+  ssylka: https://tatmuseum.ru/news/podlinnye-moabitskie-tetradi-na-odin-den-stanut-dostupny-publike/
+citaty:
+- kto: Муса Джалиль
+  gde: завещание в первой моабитской тетради
+  tekst: Его присудят к смертной казни. Он умрёт. Но останется 116 стихов
+  istochnik: orenlib-moabitskaya
+velichina_chislo: 116
+velichina_edinica: стихов
+velichina_chto: назвал Джалиль в завещании из камеры смертника
+voinskaya_chast: Подпольная группа Мусы Джалиля в татарском легионе
+operaciya: Подготовка восстания легиона, август 1943 года
+front: Плен, Германия
+mesto_sobytiya:
+  nazvanie: Дрезден, суд над группой Джалиля
+  shirota: 51.05
+  dolgota: 13.74
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Портрет Мусы Джалиля, негатив середины XX века
+- Национальный музей Республики Татарстан, Казань
+slovar:
+- lyudi:musa-dzhalil
+vizual:
+  imya: dzhalil-moabitskaya-tetrad
+  vid: predmet
+  kicker: Предмет
+  h2: «Моабитская тетрадь», 1959 год
+  lead: Книга со стихами, которые Джалиль написал в тюрьме Моабит. Нажми — и рассмотри её вблизи.
