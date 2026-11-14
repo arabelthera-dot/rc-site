@@ -1,0 +1,867 @@
+# День 9 февраля музея «Русские не сдаются»: Таня Савичева, блокадный дневник, 1941–1942. Факты — Р752.
+muzei: ne-sdayutsya
+key: 02-09
+pokazan_sergeyu:
+  data: '2026-11-14'
+head:
+  title: Таня Савичева — «Русские не сдаются» — Русская цивилизация
+  description: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-09/
+  sobytie: Таня Савичева
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Таня Савичева — «Русские не сдаются» — Русская цивилизация
+    description: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-09/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Таня Савичева — «Русские не сдаются»
+    description: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-09/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1941'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-09-goskatalog-45344992.jpg
+  alt: 'Разворот записной книжки: на правой странице карандашом крупно написано «Дядя Вася умер в 13 апр 2 ч ночь 1942 г», сбоку — алфавитные вкладки.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=45344992
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Записная книжка Тани Савичевой, разворот с записью о дяде Васе. Декабрь 1941 — май 1942
+  credit: 'Фото: автор не указан, декабрь 1941 — май 1942 года. Хранится: Государственный музей истории Санкт-Петербурга. Госкаталог музейного фонда РФ, № 45098114'
+  width: 713
+  height: 562
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.45
+    y: 0.05
+    w: 0.5
+    h: 0.9
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: декабрь 1941 — май 1942 года
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 45098114
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 45098114
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=45344992
+  nomer_predmeta: Госкаталог № 45098114
+  nomer_snimka: goskatalog id 45344992
+  hranitel: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+  podpis_chto: Дневниковые записи Тани Савичевой в записной книжке с алфавитом
+  podpis_gde: Ленинград
+  podpis_kogda: декабрь 1941 — май 1942 года
+  simvolika_proverena: true
+  podlinnik:
+    gde: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+    otkuda: Госкаталог музейного фонда РФ, № 45098114
+  svyashchennoe: false
+  hint: Таня Савичева
+  celikom: true
+kroshka: День 9 · Таня Савичева
+lead:
+  data: День 9 · февраль · Ленинград, 1941–1942 годы
+  privyazka: С 28 декабря 1941 по 13 мая 1942 года одиннадцатилетняя Таня Савичева записала в блокадном Ленинграде смерти родных — девять страниц в записной книжке сестры.
+  kto: Таня Савичева, ленинградская школьница
+  h1: Таня Савичева
+  hook: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+stamp:
+- v: '9'
+  k: страниц в записной книжке
+- v: '6'
+  k: смертей записано до часа
+- v: '124'
+  k: из 125 детей Красного Бора пережили войну
+- v: '11'
+  k: лет было Тане в начале дневника
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+story:
+  kicker: Подвиг
+  h2: Таня Савичева
+  abzacy:
+  - Таня Савичева жила с семьёй на Васильевском острове в Ленинграде. Летом 1941 года, когда началась война, ей было одиннадцать. Вместе с другими детьми она очищала чердаки от мусора и собирала бутылки для зажигательной смеси.
+  - 'Зимой начался голод. 28 декабря 1941 года умерла старшая сестра Женя, и Таня открыла записную книжку сестры Нины на букве «Ж». За пять месяцев она записала шесть смертей — каждую на свою букву, с днём и часом. 13 мая 1942 года умерла мама. Последние страницы: «Савичевы умерли. Умерли все. Осталась одна Таня».'
+  - Но умерли не все. Нину эвакуировали с завода через Ладогу, брат Миша воевал в партизанах. Таню вывезли с детским домом в Красный Бор; из 125 детей она одна не пережила войну и умерла 1 июля 1944 года. Нина вернулась в Ленинград и нашла книжку в Таниной шкатулке. Девять страниц ребёнка стали одним из главных документов блокады.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Десять фактов о Тане Савичевой
+  udary:
+  - id: ns-0209-ne-vse
+    n: 1
+    summary: «Умерли все. Осталась одна Таня» — а сестра Нина и брат Миша в это время были живы.
+    det:
+    - 'Последняя запись дневника — «Савичевы умерли. Умерли все. Осталась одна Таня». Но старшая сестра Нина была жива: её эвакуировали с завода. Брат Миша воевал в партизанах.'
+    otryvok: Сегодня мы знаем – старшая сестра Тани, Нина, осталась жива.
+    src: 'Источник: Пискарёвское мемориальное кладбище. «Савичевы умерли не все» — https://pmemorial.ru/tpost/8ulgyzid41-savichevi-umerli-ne-vse'
+    stranica: Пискарёвское мемориальное кладбище. «Савичевы умерли не все»
+    href: https://pmemorial.ru/tpost/8ulgyzid41-savichevi-umerli-ne-vse
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: pmemorial-savichevy
+    dlya_voprosa: false
+  - id: ns-0209-125-detej
+    n: 2
+    summary: Из 125 детей, вывезенных в Красный Бор, войну не пережила одна — Таня Савичева.
+    det:
+    - Летом 1942 года Таню вывезли с детским домом в посёлок Красный Бор Горьковской области. Из 125 детей войну пережили 124. Таня умерла 1 июля 1944 года.
+    otryvok: В посёлок Красный Бор приехали 125 юных пассажиров, 124 из них пережили войну.
+    src: 'Источник: RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике» — https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik'
+    stranica: 'RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике»'
+    href: https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 125 детей — четыре-пять школьных классов
+    istochnik: rt-blokadnye-stroki
+    dlya_voprosa: true
+    otvet: '124'
+    otvet_edinstvennyj: true
+  - id: ns-0209-krov
+    n: 3
+    summary: Женя, сама умирая от голода, сдавала кровь раненым и ходила на завод пешком по 7 км.
+    det:
+    - Старшая сестра Женя работала на заводе. Трамваи стояли, и она каждый день ходила пешком туда и обратно. Истощённая, она продолжала сдавать кровь для раненых. Женя умерла первой — 28 декабря 1941 года.
+    otryvok: Сестра, несмотря на сильное истощение, продолжала сдавать кровь для раненых и каждый день проходила семь километров до завода и обратно.
+    src: 'Источник: «Аргументы и факты». «9 строк о смерти. Таня Савичева написала самый страшный дневник войны» — https://aif.ru/society/history/9_strok_o_smerti_tanya_savicheva_napisala_samyy_strashnyy_dnevnik_voyny; Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда» — https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom'
+    stranica: «Аргументы и факты». «9 строк о смерти. Таня Савичева написала самый страшный дневник войны»
+    href: https://aif.ru/society/history/9_strok_o_smerti_tanya_savicheva_napisala_samyy_strashnyy_dnevnik_voyny
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: 7 км — около полутора часов пешком
+    istochnik: aif-9-strok
+    dlya_voprosa: true
+    otvet: '7'
+    otvet_edinstvennyj: true
+  - id: ns-0209-mama
+    n: 4
+    summary: 'В записи о маме нет слова «умерла»: «Мама в 13 мая в 7.30 час утра 1942 г.»'
+    det:
+    - Обо всех других Таня писала «умер» или «умерла». В записи о маме этого слова нет — только дата и час.
+    otryvok: Мама в 13 мая в 7.30 час утра 1942 г.
+    src: 'Источник: RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике» — https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik'
+    stranica: 'RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике»'
+    href: https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: rt-blokadnye-stroki
+    dlya_voprosa: true
+    otvet: умерла
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-09-goskatalog-16114667.jpg
+      alt: 'Чёрно-белый портрет: женщина с гладко зачёсанными волосами смотрит в объектив.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=16114667
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Мария Игнатьевна Савичева, мама Тани. Портрет 1920–1941 годов
+      credit: Государственный музей истории Санкт-Петербурга, Госкаталог № 15990772
+      width: 574
+      height: 764
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.7
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1920–1941 годы
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 15990772
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № предмета 15990772
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=16114667
+      nomer_predmeta: Госкаталог № 15990772
+      nomer_snimka: goskatalog id 16114667
+      hranitel: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+      podpis_chto: Портрет Марии Игнатьевны Савичевой, мамы Тани Савичевой
+      podpis_gde: Ленинград
+      podpis_kogda: 1920–1941 годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+        otkuda: Госкаталог музейного фонда РФ, № 15990772
+      svyashchennoe: false
+  - id: ns-0209-nina-ladoga
+    n: 5
+    summary: Нину увезли по Ладоге прямо с завода, предупредить родных не дали, — дома её сочли погибшей.
+    det:
+    - Нину вместе с заводом срочно эвакуировали через Ладожское озеро. Дать знать домой она не смогла. Нина не вернулась с работы — и родные решили, что её нет в живых.
+    otryvok: На самом деле Нину вместе с сотрудниками предприятия срочно эвакуировали через Ладожское озеро.
+    src: 'Источник: Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда» — https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom; «Аргументы и факты». «9 строк о смерти. Таня Савичева написала самый страшный дневник войны» — https://aif.ru/society/history/9_strok_o_smerti_tanya_savicheva_napisala_samyy_strashnyy_dnevnik_voyny'
+    stranica: 'Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда»'
+    href: https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: life-ostalas-odna
+    dlya_voprosa: true
+    otvet: Ладога
+    otvet_edinstvennyj: true
+  - id: ns-0209-shkatulka
+    n: 6
+    summary: 'Дневник спасла та, кого Таня считала погибшей: Нина вернулась и нашла книжку в шкатулке.'
+    det:
+    - После войны Нина вернулась в Ленинград. У родственницы Евдокии она увидела Танину шкатулку. В ней лежала её собственная записная книжка — с девятью страницами, исписанными рукой сестры.
+    otryvok: У Евдокии дома она увидела шкатулку, которая среди прочих вещей была у Тани перед эвакуацией. В ней лежала её же записная книжка, запечатлевшая скорбную летопись.
+    src: 'Источник: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой» — https://spb.aif.ru/society/people/1431308'
+    stranica: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой»
+    href: https://spb.aif.ru/society/people/1431308
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: spbaif-devyat-strochek
+    dlya_voprosa: true
+    otvet: Нина
+    otvet_edinstvennyj: true
+  - id: ns-0209-bukvy
+    n: 7
+    summary: 'Каждая смерть — на свою букву книжки: Ж — Женя, Б — бабушка, Л — Лёка, М — мама.'
+    det:
+    - Книжка была с алфавитом, как телефонная. Таня находила букву имени и на этой странице писала, кто и когда умер. О брате Лёке — на странице «Л».
+    otryvok: 'Найдя в записной книжке страницу с буквой «Л» Таня написала о 24-летнем брате: «Лёка умер 17 марта в 5 часов утра в 1942 г.»'
+    src: 'Источник: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой» — https://spb.aif.ru/society/people/1431308'
+    stranica: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой»
+    href: https://spb.aif.ru/society/people/1431308
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: spbaif-devyat-strochek
+    dlya_voprosa: true
+    otvet: Л
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-09-goskatalog-45344992.jpg
+      alt: 'Разворот записной книжки: на правой странице карандашом крупно написано «Дядя Вася умер в 13 апр 2 ч ночь 1942 г», сбоку — алфавитные вкладки.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=45344992
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Записная книжка Тани Савичевой, разворот с записью о дяде Васе. Декабрь 1941 — май 1942
+      credit: Государственный музей истории Санкт-Петербурга, Госкаталог № 45098114
+      width: 713
+      height: 562
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.45
+        y: 0.05
+        w: 0.5
+        h: 0.9
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: декабрь 1941 — май 1942 года
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 45098114
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № предмета 45098114
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=45344992
+      nomer_predmeta: Госкаталог № 45098114
+      nomer_snimka: goskatalog id 45344992
+      hranitel: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+      podpis_chto: Дневниковые записи Тани Савичевой в записной книжке с алфавитом
+      podpis_gde: Ленинград
+      podpis_kogda: декабрь 1941 — май 1942 года
+      simvolika_proverena: true
+      podlinnik:
+        gde: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+        otkuda: Госкаталог музейного фонда РФ, № 45098114
+      svyashchennoe: false
+  - id: ns-0209-butylki
+    n: 8
+    summary: Одиннадцатилетняя Таня лазила по чердакам и собирала бутылки для зажигательной смеси.
+    det:
+    - Таня вместе с другими детьми очищала чердаки от мусора, чтобы зажигалки не вызвали пожар. Ещё дети искали стеклянную тару для зажигательных бутылок.
+    otryvok: Маленькая Таня вместе со своими сверстниками очищала чердаки от мусора и искала стеклянную тару для зажигательных бутылок.
+    src: 'Источник: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой» — https://spb.aif.ru/society/people/1431308; «Аргументы и факты». «9 строк о смерти. Таня Савичева написала самый страшный дневник войны» — https://aif.ru/society/history/9_strok_o_smerti_tanya_savicheva_napisala_samyy_strashnyy_dnevnik_voyny'
+    stranica: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой»
+    href: https://spb.aif.ru/society/people/1431308
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: spbaif-devyat-strochek
+    dlya_voprosa: true
+    otvet: бутылки
+    otvet_edinstvennyj: true
+  - id: ns-0209-rakov
+    n: 9
+    summary: Создателю музея, где впервые показали дневник, дали 25 лет — за «порочную» экспозицию.
+    det:
+    - Дневник Тани впервые показали в Музее обороны Ленинграда. Его первым директором был Лев Львович Раков. В 1949 году музей разгромили, а Ракова арестовали за «порочную экспозицию».
+    otryvok: Его обвинили в создании «порочной экспозиции», хотя к тому моменту он уже не работал в музее и был директором Публичной библиотеки.
+    src: 'Источник: «Фонтанка.ру». Музей обороны и блокады Ленинграда рассказал историю своего разгрома в 1949-м и возрождения, 9 мая 2024 — https://www.fontanka.ru/2024/05/09/73560503/; Государственный мемориальный музей обороны и блокады Ленинграда. Сотрудники музея посетили могилу Л. Л. Ракова — https://blokadamus.ru/2024/10/09/%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8-%D0%B3%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D0%B8-2/'
+    stranica: «Фонтанка.ру». Музей обороны и блокады Ленинграда рассказал историю своего разгрома в 1949-м и возрождения, 9 мая 2024
+    href: https://www.fontanka.ru/2024/05/09/73560503/
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: fontanka-muzej-oborony
+    dlya_voprosa: false
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-09-goskatalog-5997363.jpg
+      alt: Листки блокадного дневника Тани Савичевой, разложенные в музейной витрине.
+      data_source: https://goskatalog.ru/portal/#/collections?id=5997363
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Листки дневника Тани Савичевой в витрине. 1941–1942
+      credit: Государственный центральный музей современной истории России, Госкаталог № 5822058
+      width: 800
+      height: 484
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1941–1942 годы
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 5822058
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № предмета 5822058
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=5997363
+      nomer_predmeta: Госкаталог № 5822058
+      nomer_snimka: goskatalog id 5997363
+      hranitel: Государственный центральный музей современной истории России
+      podpis_chto: Листки блокадного дневника Тани Савичевой
+      podpis_gde: Ленинград
+      podpis_kogda: 1941–1942 годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: Госкаталог музейного фонда РФ, № 5822058
+      svyashchennoe: false
+  - id: ns-0209-ni-zhaloby
+    n: 10
+    summary: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+    det:
+    - 'Девять страниц дневника — только имена, даты и часы. Ни жалобы, ни слова о голоде и холоде. О себе Таня написала одну строку: «Осталась одна Таня».'
+    otryvok: Девять страниц, на которых нет ни жалоб, ни слёз — только даты смерти близких.
+    src: 'Источник: Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда» — https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom'
+    stranica: 'Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда»'
+    href: https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: 9 страниц — меньше, чем в тонкой школьной тетради
+    istochnik: life-ostalas-odna
+    dlya_voprosa: true
+    otvet: '9'
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-09-goskatalog-33597418.jpg
+      alt: Каменная плита мемориала с высеченными строками дневника; внизу — «Осталась одна Таня».
+      data_source: https://goskatalog.ru/portal/#/collections?id=33597418
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Плита со строками дневника Тани Савичевой на мемориале «Цветок жизни». Фотография 1975 года
+      credit: Государственный мемориальный музей обороны и блокады Ленинграда, Госкаталог № 33402178
+      width: 800
+      height: 598
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      prava:
+        avtor: Лосин Б.
+        god_sozdaniya: 1975 год
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № предмета 33402178
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=33597418
+      nomer_predmeta: Госкаталог № 33402178
+      nomer_snimka: goskatalog id 33597418
+      hranitel: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный мемориальный музей обороны и блокады Ленинграда»
+      podpis_chto: Фрагмент памятника «Цветок жизни» — дневник Тани Савичевой
+      podpis_gde: Всеволожский район Ленинградской области, «Дорога жизни»
+      podpis_kogda: 1975 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный мемориальный музей обороны и блокады Ленинграда»
+        otkuda: Госкаталог музейного фонда РФ, № 33402178
+      svyashchennoe: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0209-shest-smertej
+    n: 11
+    summary: Шесть смертей в одной квартире меньше чем за пять месяцев — и каждая записана до часа.
+    det:
+    - 'С 28 декабря 1941 по 13 мая 1942 года Таня записала шесть смертей: Женя, бабушка, Лёка, дядя Вася, дядя Лёша, мама. При каждой — день и час: «в 2 ч ночь», «в 7.30 час утра».'
+    otryvok: Дядя Вася умер в 13 апр 2 ч ночь 1942 г.
+    src: 'Источник: RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике» — https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik'
+    stranica: 'RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике»'
+    href: https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: rt-blokadnye-stroki
+    dlya_voprosa: true
+    otvet: '6'
+    otvet_edinstvennyj: true
+  - id: ns-0209-bloknot-niny
+    n: 12
+    summary: Дневник написан в книжке сестры-конструктора — рядом с её чертежами труб и задвижек.
+    det:
+    - Записная книжка принадлежала Нине. Она работала конструктором и записывала туда сведения о трубах и клапанах. Таня писала на пустых страницах той же книжки.
+    otryvok: Старшая сестра Тани работала конструктором и заносила в неё технические сведения о трубах, клапанах и заводском оборудовании.
+    src: 'Источник: Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда» — https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom; «Комсомольская правда». «Когда слово „умер“ исчезает. История Тани Савичевой» — https://www.spb.kp.ru/daily/26990/4051007/'
+    stranica: 'Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда»'
+    href: https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: life-ostalas-odna
+    dlya_voprosa: false
+  - id: ns-0209-misha
+    n: 13
+    summary: Брат Миша уехал из Ленинграда 21 июня 1941-го, за день до войны, — и ушёл в партизаны.
+    det:
+    - Миша уехал из города 21 июня 1941 года — за день до начала войны. Блокада его не застала. Он ушёл к партизанам.
+    otryvok: Первым из города отправился Михаил — он сел на поезд 21 июня, за день до начала Великой Отечественной войны.
+    src: 'Источник: Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда» — https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom; RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике» — https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik'
+    stranica: 'Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда»'
+    href: https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom
+    pometka: два источника
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: life-ostalas-odna
+    dlya_voprosa: true
+    otvet: 21 июня
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-09-goskatalog-17398733.jpg
+      alt: 'Чёрно-белый портрет: мужчина в кителе смотрит в объектив.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=17398733
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Михаил Николаевич Савичев, брат Тани, в кителе. 1950–1960-е годы
+      credit: Государственный музей истории Санкт-Петербурга, Госкаталог № 17265710
+      width: 508
+      height: 764
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.7
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1950–1960-е годы
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 17265710
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № предмета 17265710
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=17398733
+      nomer_predmeta: Госкаталог № 17265710
+      nomer_snimka: goskatalog id 17398733
+      hranitel: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+      podpis_chto: Портрет Михаила Николаевича Савичева, брата Тани Савичевой
+      podpis_gde: Ленинград
+      podpis_kogda: 1950–1960-е годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
+        otkuda: Госкаталог музейного фонда РФ, № 17265710
+      svyashchennoe: false
+  - id: ns-0209-2024
+    n: 14
+    summary: Дневник ни разу не вывозили из Петербурга — впервые это случилось только в 2024 году.
+    det:
+    - Подлинник хранится в Музее истории Санкт-Петербурга. Весной 2024 года его впервые показали за пределами города — в Нижегородском кремле, на выставке «Я говорю с тобой из Ленинграда».
+    otryvok: Дневник Тани Савичевой из фондов Музея истории Санкт-Петербурга впервые представили за пределами северной столицы – на выставке "Я говорю с тобой из Ленинграда" в Манеже Нижегородского кремля, передает корреспондент РИА Новости.
+    src: 'Источник: РИА Новости. «Дневник Тани Савичевой впервые представили за пределами Петербурга», 26.04.2024 — https://ria.ru/20240426/dnevnik-1942595678.html'
+    stranica: РИА Новости. «Дневник Тани Савичевой впервые представили за пределами Петербурга», 26.04.2024
+    href: https://ria.ru/20240426/dnevnik-1942595678.html
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: ria-dnevnik-2024
+    dlya_voprosa: true
+    otvet: '2024'
+    otvet_edinstvennyj: true
+  - id: ns-0209-opis
+    n: 15
+    summary: 'В архиве Арзамаса нашлась ещё одна бумага рукой Тани: «Опись эмущества» — стол, стулья, «атаманка».'
+    det:
+    - В архиве Арзамаса нашли опись вещей, которую Таня составила сама. Детской рукой, с ошибками, она перечислила то, что осталось от семьи.
+    otryvok: 'Детская рука вывела с грамматическими ошибками: «Опись эмущества Савичевой Тани».'
+    src: 'Источник: «Вести Нижний Новгород». «Девочка и блокада. Откуда в архиве Арзамаса опись имущества Тани Савичевой» — https://nn.vesti.ru/news/vesti/242380/'
+    stranica: «Вести Нижний Новгород». «Девочка и блокада. Откуда в архиве Арзамаса опись имущества Тани Савичевой»
+    href: https://nn.vesti.ru/news/vesti/242380/
+    pometka: один источник
+    utverzhden: '2026-11-14'
+    sravnenie: net
+    istochnik: vesti-nn-opis
+    dlya_voprosa: true
+    otvet: Опись эмущества
+    otvet_edinstvennyj: true
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — «умерла»; 2 — 124; 3 — «Л»; 4 — сестре Нине; 5 — в Нижнем Новгороде.'
+  ball: 10
+  voprosy:
+  - q: Какого слова нет в записи Тани о маме?
+    o:
+    - «мама»
+    - «умерла»
+    - «мая»
+    - «утра»
+    a: 1
+    e: 'Запись о маме: «Мама в 13 мая в 7.30 час утра 1942 г.» Слова «умерла» в ней нет.'
+  - q: Сколько детей из 125, вывезенных в Красный Бор, пережили войну?
+    o:
+    - '100'
+    - '115'
+    - '124'
+    - '125'
+    a: 2
+    e: Из 125 детей войну пережили 124. Не пережила одна — Таня Савичева.
+  - q: На какой букве книжки Таня записала смерть брата Лёки?
+    o:
+    - «Б»
+    - «М»
+    - «Ж»
+    - «Л»
+    a: 3
+    e: 'Каждая смерть — на свою букву: Ж — Женя, Б — бабушка, Л — Лёка, М — мама.'
+  - q: Кому принадлежала записная книжка, в которой Таня вела дневник?
+    o:
+    - Маме
+    - Сестре Нине
+    - Брату Мише
+    - Учительнице
+    a: 1
+    e: 'Это была книжка Нины, конструктора: в ней были её записи о трубах и клапанах.'
+  - q: Где в 2024 году дневник впервые показали за пределами Петербурга?
+    o:
+    - В Москве
+    - В Нижнем Новгороде
+    - В Казани
+    - В Арзамасе
+    a: 1
+    e: Дневник показали в Манеже Нижегородского кремля на выставке «Я говорю с тобой из Ленинграда».
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+figures:
+- src: /muzei/ne-sdayutsya/img/02-09-goskatalog-15112734.jpg
+  alt: Семейная группа у венков; впереди — девочка в вязаной шапке.
+  data_source: https://goskatalog.ru/portal/#/collections?id=15112734
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Семейная фотография Савичевых, 1935–1938 годы
+  credit: Государственный музей политической истории России, Госкаталог № 14984966
+  width: 800
+  height: 572
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1935–1938 годы
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 14984966
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 14984966
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=15112734
+  nomer_predmeta: Госкаталог № 14984966
+  nomer_snimka: goskatalog id 15112734
+  hranitel: Государственный музей политической истории России
+  podpis_chto: Семейная фотография ленинградской школьницы Тани Савичевой
+  podpis_gde: Ленинград
+  podpis_kogda: 1935–1938 годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный музей политической истории России
+    otkuda: Госкаталог музейного фонда РФ, № 14984966
+  svyashchennoe: false
+- src: /muzei/ne-sdayutsya/img/02-09-goskatalog-6979904.jpg
+  alt: Пожилая женщина и девочка в платье с белым воротничком у бревенчатой стены.
+  data_source: https://goskatalog.ru/portal/#/collections?id=6979904
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Семейная фотография Савичевых: пожилая женщина и девочка у бревенчатой стены'
+  credit: Государственный музей политической истории России, Госкаталог № 6760080
+  width: 585
+  height: 799
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: дата съёмки не указана
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 6760080
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № предмета 6760080
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=6979904
+  nomer_predmeta: Госкаталог № 6760080
+  nomer_snimka: goskatalog id 6979904
+  hranitel: Государственный музей политической истории России
+  podpis_chto: Семейная фотография Тани Савичевой
+  podpis_gde: место съёмки не указано
+  podpis_kogda: дата съёмки не указана
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный музей политической истории России
+    otkuda: Госкаталог музейного фонда РФ, № 6760080
+  svyashchennoe: false
+sources:
+- href: https://pmemorial.ru/tpost/8ulgyzid41-savichevi-umerli-ne-vse
+  title: Пискарёвское мемориальное кладбище. «Савичевы умерли не все»
+  note: к фактам 1
+- href: https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik
+  title: 'RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике»'
+  note: к фактам 2, 4, 11, 13
+- href: https://aif.ru/society/history/9_strok_o_smerti_tanya_savicheva_napisala_samyy_strashnyy_dnevnik_voyny
+  title: «Аргументы и факты». «9 строк о смерти. Таня Савичева написала самый страшный дневник войны»
+  note: к фактам 3, 5, 8
+- href: https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom
+  title: 'Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда»'
+  note: к фактам 3, 5, 10, 12, 13
+- href: https://spb.aif.ru/society/people/1431308
+  title: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой»
+  note: к фактам 6, 7, 8
+- href: https://www.fontanka.ru/2024/05/09/73560503/
+  title: «Фонтанка.ру». Музей обороны и блокады Ленинграда рассказал историю своего разгрома в 1949-м и возрождения, 9 мая 2024
+  note: к фактам 9
+- href: https://blokadamus.ru/2024/10/09/%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8-%D0%B3%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D0%B8-2/
+  title: Государственный мемориальный музей обороны и блокады Ленинграда. Сотрудники музея посетили могилу Л. Л. Ракова
+  note: к фактам 9
+- href: https://www.spb.kp.ru/daily/26990/4051007/
+  title: «Комсомольская правда». «Когда слово „умер“ исчезает. История Тани Савичевой»
+  note: к фактам 12
+- href: https://ria.ru/20240426/dnevnik-1942595678.html
+  title: РИА Новости. «Дневник Тани Савичевой впервые представили за пределами Петербурга», 26.04.2024
+  note: к фактам 14
+- href: https://nn.vesti.ru/news/vesti/242380/
+  title: «Вести Нижний Новгород». «Девочка и блокада. Откуда в архиве Арзамаса опись имущества Тани Савичевой»
+  note: к фактам 15
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 10 февраля (запись готовится)
+  hook: Стойкость и подвиг день за днём.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+chrome:
+  share:
+    title: Таня Савичева — Музей стойкости и подвига «Русские не сдаются»
+    text: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+  prev:
+    href: index.html
+    title: 8 февраля (запись готовится)
+  next:
+    href: index.html
+    title: 10 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Какой строкой о себе Таня закончила дневник?
+  a: Осталась одна Таня
+proof:
+  status: utverzhdeno
+  note: Факты дня утверждены (Р752, 14.11.2026), взяты дословно из утверждённого списка.
+nomer_dnya: ns-0209-savicheva
+data_sobytiya: '1941-12-28'
+data_uslovnaya: '9 февраля — условный день в календаре музея: девять страниц дневника; первая запись сделана 28 декабря 1941 года, последняя — 13 мая 1942 года.'
+chto_sluchilos: Одиннадцатилетняя Таня Савичева в блокадном Ленинграде записала в книжку сестры смерти шести родных; её дневник стал одним из главных документов блокады.
+god: 1941
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Дневниковые записи Тани Савичевой (подлинник)
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=45344992
+- chto: Фрагмент памятника «Цветок жизни» — дневник Тани Савичевой, фотография
+  muzej: Государственный мемориальный музей обороны и блокады Ленинграда
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=33597418
+- chto: Листки дневника Тани Савичевой
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5997363
+chitat_dalshe:
+- nazvanie: «Савичевы умерли не все»
+  gde: Пискарёвское мемориальное кладбище
+  ssylka: https://pmemorial.ru/tpost/8ulgyzid41-savichevi-umerli-ne-vse
+- nazvanie: «Девять строчек. История семьи автора блокадного дневника Тани Савичевой»
+  gde: «АиФ Санкт-Петербург»
+  ssylka: https://spb.aif.ru/society/people/1431308
+- nazvanie: «Блокадные строки»
+  gde: RT
+  ssylka: https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik
+- nazvanie: '«„Осталась одна Таня“: что стало с семьёй девочки»'
+  gde: Life.ru
+  ssylka: https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom
+istochniki:
+- id: pmemorial-savichevy
+  baza: periodika
+  nazvanie: Пискарёвское мемориальное кладбище. «Савичевы умерли не все»
+  ssylka: https://pmemorial.ru/tpost/8ulgyzid41-savichevi-umerli-ne-vse
+- id: rt-blokadnye-stroki
+  baza: periodika
+  nazvanie: 'RT. «Блокадные строки: 75 лет назад Таня Савичева сделала последнюю запись в своём дневнике»'
+  ssylka: https://russiatoday.ru/science/article/389021-75-let-tanya-savicheva-blokadnyi-dnevnik
+- id: aif-9-strok
+  baza: periodika
+  nazvanie: «Аргументы и факты». «9 строк о смерти. Таня Савичева написала самый страшный дневник войны»
+  ssylka: https://aif.ru/society/history/9_strok_o_smerti_tanya_savicheva_napisala_samyy_strashnyy_dnevnik_voyny
+- id: life-ostalas-odna
+  baza: periodika
+  nazvanie: 'Life.ru. «„Осталась одна Таня“: что стало с семьёй девочки, чей дневник стал символом блокады Ленинграда»'
+  ssylka: https://life.ru/p/ostalas-odna-tanya-chto-stalo-s-semey-devochki-chey-dnevnik-stal-simvolom
+- id: spbaif-devyat-strochek
+  baza: periodika
+  nazvanie: «АиФ Санкт-Петербург». «Девять строчек. История семьи автора блокадного дневника Тани Савичевой»
+  ssylka: https://spb.aif.ru/society/people/1431308
+- id: fontanka-muzej-oborony
+  baza: periodika
+  nazvanie: «Фонтанка.ру». Музей обороны и блокады Ленинграда рассказал историю своего разгрома в 1949-м и возрождения, 9 мая 2024
+  ssylka: https://www.fontanka.ru/2024/05/09/73560503/
+- id: blokadamus-rakov
+  baza: periodika
+  nazvanie: Государственный мемориальный музей обороны и блокады Ленинграда. Сотрудники музея посетили могилу Л. Л. Ракова
+  ssylka: https://blokadamus.ru/2024/10/09/%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8-%D0%B3%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BC%D0%B5%D0%BC%D0%BE%D1%80%D0%B8-2/
+- id: kp-slovo-umer
+  baza: periodika
+  nazvanie: «Комсомольская правда». «Когда слово „умер“ исчезает. История Тани Савичевой»
+  ssylka: https://www.spb.kp.ru/daily/26990/4051007/
+- id: ria-dnevnik-2024
+  baza: periodika
+  nazvanie: РИА Новости. «Дневник Тани Савичевой впервые представили за пределами Петербурга», 26.04.2024
+  ssylka: https://ria.ru/20240426/dnevnik-1942595678.html
+- id: vesti-nn-opis
+  baza: periodika
+  nazvanie: «Вести Нижний Новгород». «Девочка и блокада. Откуда в архиве Арзамаса опись имущества Тани Савичевой»
+  ssylka: https://nn.vesti.ru/news/vesti/242380/
+citaty:
+- kto: Таня Савичева
+  gde: последние страницы блокадного дневника
+  tekst: Савичевы умерли. Умерли все. Осталась одна Таня
+  istochnik: rt-blokadnye-stroki
+velichina_chislo: 9
+velichina_edinica: страниц
+velichina_chto: занял блокадный дневник Тани Савичевой
+voinskaya_chast: Жители блокадного Ленинграда
+operaciya: Оборона и блокада Ленинграда
+front: Ленинградский фронт, блокада
+mesto_sobytiya:
+  nazvanie: Ленинград, 2-я линия Васильевского острова
+  shirota: 59.94
+  dolgota: 30.29
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Записная книжка Тани Савичевой, 1941–1942
+- Государственный музей истории Санкт-Петербурга
+slovar:
+- lyudi:tanya-savicheva
+vizual:
+  imya: savicheva-dnevnik
+  vid: dokument
+  kicker: Документ
+  h2: Записная книжка Тани Савичевой
+  lead: Разворот с алфавитными вкладками и записью о дяде Васе. Нажми на кнопку — место подсветится на самой странице.
+audioguide:
+  audioSrc: audio-guide-savicheva-ru.mp3
+  durationLabel: около 2 минут
+  lead: Послушайте историю дня — около двух минут.
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Девять страниц
+  - t: 25
+    mark: 0:25
+    title: Книжка с алфавитом
+  - t: 50
+    mark: 0:50
+    title: Мама
+  - t: 75
+    mark: '1:15'
+    title: Умерли не все
+  - t: 100
+    mark: '1:40'
+    title: Шкатулка
+  transcript:
+  - 'Девятое февраля. Ленинград, блокада. Одиннадцатилетняя Таня Савичева ведёт дневник. Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
+  - 'Дневник написан в записной книжке старшей сестры Нины. Книжка с алфавитом, как телефонная. Каждая смерть — на свою букву: Женя, бабушка, Лёка, дядя Вася, дядя Лёша. Шесть смертей меньше чем за пять месяцев — и каждая записана до часа.'
+  - 'Тринадцатого мая тысяча девятьсот сорок второго года умерла мама. В этой записи нет слова «умерла»: «Мама в тринадцать мая в семь тридцать час утра». Потом последние строки: «Савичевы умерли. Умерли все. Осталась одна Таня».'
+  - Но умерли не все. Нину эвакуировали с завода по Ладоге, и родным она дать знать не смогла. Брат Миша уехал за день до войны и ушёл в партизаны. Таню вывезли с детским домом в Красный Бор. Из ста двадцати пяти детей войну не пережила одна — Таня.
+  - Нина вернулась в Ленинград и нашла свою книжку в Таниной шкатулке. Так дневник спасла та, кого Таня считала погибшей. Ниже — викторина и источники. Спасибо, что были с нами.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
