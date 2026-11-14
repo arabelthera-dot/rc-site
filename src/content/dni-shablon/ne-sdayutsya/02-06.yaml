@@ -120,8 +120,6 @@ fakty:
     sravnenie: net
     istochnik: polevoj
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-syn-durachok
     summary: Взрослого сына, которого немцы хотели взять проводником, отец выдал за дурачка
     det:
@@ -135,8 +133,6 @@ fakty:
     sravnenie: net
     istochnik: warheroes
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-starejshij
     summary: Старейший Герой Советского Союза — 1858 года рождения, на 12 лет старше Ленина
     det:
@@ -165,8 +161,6 @@ fakty:
     sravnenie: net
     istochnik: warheroes
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-poslednie-slova
     summary: 'Последние слова под стволом немца: «Не жалей Матвея, секи их хлеще!»'
     det:
@@ -180,8 +174,6 @@ fakty:
     sravnenie: net
     istochnik: polevoj
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-major
     summary: Немецкий майор понял, что 83-летний старик его перехитрил, — но было поздно
     det:
@@ -195,8 +187,6 @@ fakty:
     sravnenie: net
     istochnik: pskovlib
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-6-km
     summary: До наших 6 километров — старик всю ночь водил батальон по сугробам и оврагам
     det:
@@ -255,8 +245,6 @@ fakty:
     sravnenie: net
     istochnik: kulturamgo
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
 - id: fakty-dnya
   kicker: Ещё пять фактов
   h2: Ещё о подвиге
@@ -274,8 +262,6 @@ fakty:
     sravnenie: net
     istochnik: pskovlib
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-syn-doshel
     summary: Пока отец кружил по лесу, сын дошёл до наших — пулемёты ждали с ночи
     det:
@@ -289,8 +275,6 @@ fakty:
     sravnenie: net
     istochnik: warheroes
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-pershino
     summary: Немцы шли в тыл нашей бригаде у Першино — дошли только до пулемётов
     det:
@@ -304,8 +288,6 @@ fakty:
     sravnenie: net
     istochnik: pskovlib
     dlya_voprosa: false
-    otvet: ''
-    otvet_edinstvennyj: false
   - id: ns-0206-plakat
     summary: Уже летом 1942-го подвиг старика разошёлся по стране плакатом в 100 000 экземпляров
     det:
@@ -446,8 +428,8 @@ figures:
   license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
   podpis: Тот же плакат 1942 года в Оренбургском губернаторском историко-краеведческом музее.
   credit: Оренбургский губернаторский историко-краеведческий музей, Госкаталог № 11691919
-  width: 367
-  height: 469
+  width: 469
+  height: 367
   vid: plakat
   glavnoe_na_kartinke:
     x: 0.0
@@ -609,6 +591,12 @@ chitat_dalshe:
 - nazvanie: Памяти героя Матвея Кузьмина
   gde: Псковская областная универсальная научная библиотека
   ssylka: https://portal.pskovlib.ru/pskov/27866-pamyati-geroya-matveya-kuzmina-povtorivshego-podvig-ivana-susanina-v-gody-velikoj-otechestvennoj-vojny
+- nazvanie: А. И. Сизаск. «Последний день Матвея Кузьмина», 1964
+  gde: Госкаталог Музейного фонда России, Краеведческий музей города Великие Луки
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21708839
+- nazvanie: Плакат «Героический подвиг советского патриота Матвея Матвеевича Кузьмина», 1942
+  gde: Госкаталог Музейного фонда России, Самарский областной историко-краеведческий музей имени П. В. Алабина
+  ssylka: https://goskatalog.ru/portal/#/collections?id=12401134
 istochniki:
 - id: polevoj
   baza: periodika
