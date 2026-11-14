@@ -1294,6 +1294,11 @@
     "latinica": "Pyotr Ivanovich Shuvalov",
     "latinica_iz": "translit"
   },
+  "lyudi:pyotr-gavrilov": {
+    "tip": "lyudi",
+    "nazvanie": "Пётр Гаврилов",
+    "kratko": "Майор, командир 44-го стрелкового полка, командир обороны Восточного форта Брестской крепости, Герой Советского Союза с 1957 года."
+  },
   "lyudi:semen-remezov": {
     "tip": "lyudi",
     "nazvanie": "Семён Ремезов",
