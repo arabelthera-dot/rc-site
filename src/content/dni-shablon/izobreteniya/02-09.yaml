@@ -1,0 +1,782 @@
+muzei: izobreteniya
+key: 02-09
+nomer_dnya: izob-0209-chizhevskij
+data_sobytiya: '1897-02-07'
+data_staryj_stil: '1897-01-26'
+chto_sluchilos: Александр Чижевский сверил циклы Солнца с летописями чумы и холеры и первым в мире связал солнечную активность с волнами эпидемий.
+god: 1897
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Ионизатор «Люстра Чижевского», 1997
+  muzej: Музей Зеленограда
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=24501250
+- chto: Книга А. Л. Чижевского «Земное эхо солнечных бурь», 1976
+  muzej: Музей-заповедник «Родина В. И. Ленина»
+  gorod: Ульяновск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=6263743
+- chto: Дом, где жил Чижевский
+  muzej: Дом-музей А. Л. Чижевского
+  gorod: Калуга
+  ssylka: https://chizhevsky.gmik.ru/
+chitat_dalshe:
+- nazvanie: 'Л. П. Чурилов. «Микроб и космос: Сергей Тимофеевич Вельховер»'
+  gde: КиберЛенинка, 2014
+  ssylka: https://cyberleninka.ru/article/n/mikrob-i-kosmos-sergey-timofeevich-velhover
+- nazvanie: Б. Владимирский, Л. Кисловский. «Чижевский был прав»
+  gde: «Наука и жизнь»
+  ssylka: https://www.nkj.ru/archive/articles/9463/
+- nazvanie: А. Петрукович, Л. Зелёный. О солнечной активности
+  gde: «Наука и жизнь», 2001, №7
+  ssylka: https://www.nkj.ru/archive/articles/6400/
+- nazvanie: «Гипотеза Чижевского получила новые аргументы»
+  gde: «Российская газета», 2018
+  ssylka: https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html
+- nazvanie: «Русский Леонардо да Винчи XX века»
+  gde: Владимирская областная научная библиотека
+  ssylka: https://library.vladimir.ru/vystavki-2/russkij-leonardo-da-vinchi-xx-veka.html
+istochniki:
+- id: ze
+  baza: kniga
+  avtor: А. Л. Чижевский
+  god: 1976
+  nazvanie: '«Земное эхо солнечных бурь», изд. 2-е, М.: Мысль, 1976'
+  ssylka: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+- id: kl
+  baza: nauka
+  avtor: Л. П. Чурилов
+  god: 2014
+  nazvanie: '«Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — КиберЛенинка'
+  ssylka: https://cyberleninka.ru/article/n/mikrob-i-kosmos-sergey-timofeevich-velhover
+- id: nzh
+  baza: periodika
+  avtor: Б. Владимирский, Л. Кисловский
+  nazvanie: «Чижевский был прав», «Наука и жизнь»
+  ssylka: https://www.nkj.ru/archive/articles/9463/
+- id: nzh2
+  baza: periodika
+  avtor: А. Петрукович, Л. Зелёный
+  god: 2001
+  nazvanie: Статья о солнечной активности, «Наука и жизнь», 2001, №7
+  ssylka: https://www.nkj.ru/archive/articles/6400/
+- id: rg
+  baza: periodika
+  god: 2018
+  nazvanie: «Гипотеза Чижевского получила новые аргументы», «Российская газета», 17.04.2018
+  ssylka: https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html
+- id: vb
+  baza: biblioteka-rf
+  nazvanie: «Русский Леонардо да Винчи XX века» — Владимирская областная научная библиотека
+  ssylka: https://library.vladimir.ru/vystavki-2/russkij-leonardo-da-vinchi-xx-veka.html
+- id: ob
+  baza: muzej-rf
+  nazvanie: Статья о Чижевском — музей «Обираловка»
+  ssylka: https://museum-obiralovka.ru/item/1794488
+- id: mk
+  baza: periodika
+  avtor: Л. Колодный
+  god: 2012
+  nazvanie: «Леонардо да Винчи ХХ века», «Московский комсомолец», 18.04.2012
+  ssylka: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
+- id: gm
+  baza: muzej-rf
+  nazvanie: Дом-музей А. Л. Чижевского — отдел Государственного музея истории космонавтики
+  ssylka: https://chizhevsky.gmik.ru/
+- id: gk-lyustra-1997
+  baza: goskatalog
+  nazvanie: Ионизатор «Люстра Чижевского», 1997, Музей Зеленограда — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=24501250
+citaty: []
+velichina_chislo: 2414
+velichina_edinica: лет
+velichina_chto: истории на пяти континентах перебрал Чижевский
+etiketka_oblozhki:
+- Обложка книги В. Н. Ягодинского «Александр Леонидович Чижевский. 1897–1964», 1987
+- Государственный музей истории космонавтики имени К. Э. Циолковского
+slovar:
+- mesto:moskva
+head:
+  title: Солнце и эпидемии, 1897 — Музей «Что изобрели русские первыми в мире»
+  description: Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-09/
+  sobytie: Солнечная активность и волны эпидемий
+  god: '1897'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Солнечная активность и волны эпидемий
+    description: Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-09/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-09-goskatalog-87193470.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Солнечная активность и волны эпидемий
+    description: Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-09/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-09-goskatalog-87193470.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-09-goskatalog-87193470.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.3
+    w: 0.7
+    h: 0.5
+  width: 695
+  height: 1024
+  alt: Бело-голубая обложка книги с графическим портретом Чижевского с бородой
+  data_source: https://goskatalog.ru/portal/#/collections?id=9518540
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей истории космонавтики имени К. Э. Циолковского · Госкаталог
+  podpis: Обложка книги В. Н. Ягодинского «Александр Леонидович Чижевский. 1897–1964», издательство «Наука», 1987. Хранит Государственный музей истории космонавтики имени К. Э. Циолковского.
+  credit: 'Хранится: Государственный музей истории космонавтики имени К. Э. Циолковского. Госкаталог музейного фонда РФ, № 9403449.'
+  hint: Книга · портрет Чижевского
+  vid: dokument
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1987 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1987'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=9518540
+  nomer_predmeta: '9403449'
+  nomer_snimka: net
+  hranitel: Государственный музей истории космонавтики имени К. Э. Циолковского
+  podlinnik:
+    gde: Государственный музей истории космонавтики имени К. Э. Циолковского
+    otkuda: https://goskatalog.ru/portal/#/collections?id=9518540
+  svyashchennoe: false
+  podpis_chto: Обложка книги В. Н. Ягодинского «Александр Леонидович Чижевский. 1897–1964», издательство «Наука»
+  podpis_gde: Калуга
+  podpis_kogda: '1987'
+  pometka_prav: citirovanie-1274
+kroshka: 9 февраля · Солнце и эпидемии
+lead:
+  data: 1897–1964 · Калуга, Москва
+  privyazka: Чижевский родился 26 января (7 февраля) 1897 года.
+  kto: Александр Леонидович Чижевский, учёный
+  h1: Солнечная активность и волны эпидемий
+  hook: Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры
+stamp:
+- v: 12 из 15
+  k: вспышек холеры на годы бурь
+- v: '2414'
+  k: лет истории перебрал
+- v: '200'
+  k: стран в проверке
+- v: '1939'
+  k: конгресс в Нью-Йорке
+daynav:
+- id: story
+  label: Открытие
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+story:
+  kicker: История открытия
+  h2: Как Солнце сверили с эпидемиями
+  udary:
+  - summary: Холера
+    det:
+    - За сто лет в России 12 из 15 вспышек холеры легли точно на годы бурь на Солнце.
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+  - summary: Микроб
+    det:
+    - При спокойном Солнце микроб синеет, при вспышке — краснеет.
+    src: 'Источник: Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — cyberleninka.ru'
+  - summary: Прогноз
+    det:
+    - 'В 1938 году Чижевский заранее назвал годы волн гриппа: 1939–40 и 1946–47.'
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что открыли
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-09-goskatalog-2510043.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.8
+      width: 637
+      height: 709
+      alt: Тёмно-синяя обложка книги с красным солнечным диском и названием «Земное эхо солнечных бурь»
+      data_source: https://goskatalog.ru/portal/#/collections?id=6263743
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-заповедник «Родина В. И. Ленина» · Госкаталог
+      podpis: Обложка книги А. Л. Чижевского «Земное эхо солнечных бурь», 1976. Хранит Музей-заповедник «Родина В. И. Ленина».
+      credit: 'Хранится: Музей-заповедник «Родина В. И. Ленина». Госкаталог музейного фонда РФ, № 6593743.'
+      hint: Книга · «Земное эхо солнечных бурь»
+      vid: dokument
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1976 г.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1976'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=6263743
+      nomer_predmeta: '6593743'
+      nomer_snimka: net
+      hranitel: Музей-заповедник «Родина В. И. Ленина»
+      podlinnik:
+        gde: Музей-заповедник «Родина В. И. Ленина»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=6263743
+      svyashchennoe: false
+      podpis_chto: Обложка книги А. Л. Чижевского «Земное эхо солнечных бурь»
+      podpis_gde: Ульяновск
+      podpis_kogda: '1976'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    otryvok: За сто лет в России 12 из 15 вспышек холеры легли точно на годы бурь на Солнце
+    stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
+    href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+    pometka: документ
+    id: holera-12-iz-15
+    istochnik: ze
+    dlya_voprosa: true
+    otvet: '12'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    otryvok: Микроб меняет окраску раньше, чем на Солнце грянет вспышка, — бактерия знает о буре заранее
+    stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
+    href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+    pometka: документ
+    id: mikrob-zaranee
+    istochnik: ze
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    otryvok: 'Сыворотка 1894 года разорвала связь дифтерии с Солнцем: врачи переспорили светило'
+    stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
+    href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+    pometka: документ
+    id: syvorotka-1894
+    istochnik: ze
+    dlya_voprosa: true
+    otvet: '1894'
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-09-goskatalog-37760717.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.8
+      width: 800
+      height: 522
+      alt: 'Две мемориальные доски на стене: А. Л. Чижевскому и Н. В. Тимофееву-Ресовскому'
+      data_source: https://goskatalog.ru/portal/#/collections?id=32189550
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · МАУ «Снежинский городской музей» · Госкаталог
+      podpis: Мемориальные доски А. Л. Чижевскому и Н. В. Тимофееву-Ресовскому, негатив, фото А. В. Попова, 2000. Хранит МАУ «Снежинский городской музей».
+      credit: 'Хранится: МАУ «Снежинский городской музей». Госкаталог музейного фонда РФ, № 32003501.'
+      hint: Фото · мемориальные доски
+      vid: foto
+      prava:
+        avtor: Попов Алексей Викторович
+        god_sozdaniya: 2000 г.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '2000'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=32189550
+      nomer_predmeta: '32003501'
+      nomer_snimka: net
+      hranitel: МАУ «Снежинский городской музей»
+      podlinnik:
+        gde: МАУ «Снежинский городской музей»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=32189550
+      svyashchennoe: false
+      podpis_chto: Мемориальные доски А. Л. Чижевскому и Н. В. Тимофееву-Ресовскому, негатив, фото А. В. Попова
+      podpis_gde: Снежинск
+      podpis_kogda: '2000'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: музей «Обираловка», статья о Чижевском — museum-obiralovka.ru'
+    otryvok: Заключённый Чижевский остановил в лагере эпидемию тифа
+    stranica: музей «Обираловка», статья о Чижевском
+    href: https://museum-obiralovka.ru/item/1794488
+    pometka: документ
+    id: lager-tif
+    istochnik: ob
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    otryvok: Грипп 1918 года вспыхнул в Австралии, которую обнесли карантинным кордоном
+    stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
+    href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+    pometka: документ
+    id: avstraliya-1918
+    istochnik: ze
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    otryvok: Журнал ЦК КПСС из-за Чижевского напечатал первое в своей истории опровержение
+    stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
+    href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
+    pometka: документ
+    id: ck-oproverzhenie
+    istochnik: mk
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    otryvok: 'В 1938 году Чижевский заранее назвал годы волн гриппа: 1939–40 и 1946–47'
+    stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
+    href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+    pometka: документ
+    id: prognoz-1938
+    istochnik: ze
+    dlya_voprosa: true
+    otvet: 1939–40 и 1946–47
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    otryvok: 'Герман Оберт написал ему из Берлина: «Вы зажгли огонь, и мы не дадим ему погаснуть»'
+    stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
+    href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
+    pometka: документ
+    id: obert-ogon
+    istochnik: mk
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    src: 'Источник: Владимирская областная научная библиотека, «Русский Леонардо да Винчи XX века» — library.vladimir.ru'
+    otryvok: 'Нью-Йорк, 1939: мировой конгресс назвал Чижевского «Леонардо да Винчи XX века»'
+    stranica: Владимирская областная научная библиотека, «Русский Леонардо да Винчи XX века»
+    href: https://library.vladimir.ru/vystavki-2/russkij-leonardo-da-vinchi-xx-veka.html
+    pometka: документ
+    id: leonardo-1939
+    istochnik: vb
+    dlya_voprosa: true
+    otvet: Леонардо да Винчи XX века
+    otvet_edinstvennyj: true
+  - n: 10
+    sravnenie: net
+    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    otryvok: Эпидемия вдруг вспыхивает на корабле, который давно идёт в открытом море
+    stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
+    href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+    pometka: документ
+    id: korabl-v-more
+    istochnik: ze
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про Чижевского и Солнце
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018 — rg.ru'
+    otryvok: 'Через сто лет проверка по 200 странам подтвердила: Чижевский был прав'
+    stranica: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018
+    href: https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html
+    pometka: документ
+    id: proverka-200-stran
+    istochnik: rg
+    dlya_voprosa: true
+    otvet: '200'
+    otvet_edinstvennyj: true
+  - n: 12
+    sravnenie: net
+    src: 'Источник: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018 — rg.ru'
+    otryvok: Чтобы поймать связь, он перебрал события истории за 2414 лет на пяти континентах
+    stranica: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018
+    href: https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html
+    pometka: документ
+    id: istoriya-2414-let
+    istochnik: rg
+    dlya_voprosa: true
+    otvet: '2414'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    otryvok: Конгресс выдвинул его на Нобелевскую — Чижевский отказался «по этическим соображениям»
+    stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
+    href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
+    pometka: документ
+    id: nobel-otkaz
+    istochnik: mk
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    otryvok: «Правда» назвала его «врагом под маской учёного», а мир — Леонардо да Винчи
+    stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
+    href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
+    pometka: документ
+    id: vrag-i-geniy
+    istochnik: mk
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-09-goskatalog-20885813.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.25
+        w: 0.7
+        h: 0.5
+      width: 539
+      height: 800
+      alt: 'Обложка сборника: солнце с лучами вокруг мозга, надпись Московского общества испытателей природы'
+      data_source: https://goskatalog.ru/portal/#/collections?id=20099623
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Дом-музей Марины Цветаевой · Госкаталог
+      podpis: Сборник «Солнце, электричество, жизнь» — материалы чтений памяти профессора А. Л. Чижевского, Москва, 1969. Хранит Дом-музей Марины Цветаевой.
+      credit: 'Хранится: Дом-музей Марины Цветаевой. Госкаталог музейного фонда РФ, № 19966196.'
+      hint: Сборник · солнце и жизнь
+      vid: dokument
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1969 г.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1969'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20099623
+      nomer_predmeta: '19966196'
+      nomer_snimka: net
+      hranitel: Дом-музей Марины Цветаевой
+      podlinnik:
+        gde: Дом-музей Марины Цветаевой
+        otkuda: https://goskatalog.ru/portal/#/collections?id=20099623
+      svyashchennoe: false
+      podpis_chto: Сборник «Солнце, электричество, жизнь» — материалы чтений памяти профессора А. Л. Чижевского, Москва
+      podpis_gde: Москва
+      podpis_kogda: '1969'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — cyberleninka.ru'
+    otryvok: При спокойном Солнце микроб синеет, при вспышке — краснеет
+    stranica: 'Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014'
+    href: https://cyberleninka.ru/article/n/mikrob-i-kosmos-sergey-timofeevich-velhover
+    pometka: документ
+    id: mikrob-svetofor
+    istochnik: kl
+    dlya_voprosa: true
+    otvet: краснеет
+    otvet_edinstvennyj: true
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Микроб и Солнце
+  pravilo_ru: 'Что сделать сейчас: выбери подпись и нажми на то, к чему она относится.'
+  kak_igrat:
+    zachem: Микроб меняет окраску вместе с Солнцем, а сыворотка 1894 года разорвала связь дифтерии со светилом.
+    shagi:
+    - Выбери подпись — кнопка загорится золотом.
+    - Нажми на подходящее место. Верный выбор загорится зелёным.
+    - Расставь все три — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все три подписи на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: spokojno
+      nazvanie: Спокойное Солнце
+      verno_ru: При спокойном Солнце микроб синеет, при вспышке — краснеет.
+    - kod: vspyshka
+      nazvanie: Вспышка на Солнце
+      verno_ru: При спокойном Солнце микроб синеет, при вспышке — краснеет.
+    - kod: god-1894
+      nazvanie: 1894 год
+      verno_ru: 'Сыворотка 1894 года разорвала связь дифтерии с Солнцем: врачи переспорили светило.'
+    podpisi:
+    - kod: sinij
+      tekst: Микроб синеет
+      mesto: spokojno
+      mimo_ru: Синий цвет — у микроба при спокойном Солнце.
+    - kod: krasnyj
+      tekst: Микроб краснеет
+      mesto: vspyshka
+      mimo_ru: Красный цвет — у микроба при вспышке.
+    - kod: syvorotka
+      tekst: Сыворотка разорвала связь дифтерии с Солнцем
+      mesto: god-1894
+      mimo_ru: Сыворотка против дифтерии — 1894 год.
+    vyberi_ru: Сначала выбери подпись, потом место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: '🏆 Всё на месте: при спокойном Солнце микроб синеет, при вспышке краснеет, а в 1894 году сыворотка разорвала связь дифтерии с Солнцем.'
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: спокойное Солнце — микроб синеет, вспышка — микроб краснеет, 1894 год — сыворотка разорвала связь дифтерии с Солнцем.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры.'
+  net: 'Где граница: ионизатор воздуха («люстра Чижевского») — не лекарство.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Россия
+    - 12 из 15 вспышек холеры легли на годы бурь на Солнце
+    - за сто лет
+  - - Россия
+    - 'Чижевский заранее назвал годы волн гриппа: 1939–40 и 1946–47'
+    - '1938'
+  - - Нью-Йорк
+    - мировой конгресс назвал Чижевского «Леонардо да Винчи XX века»
+    - '1939'
+  - - 200 стран
+    - 'проверка подтвердила: Чижевский был прав'
+    - через сто лет
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 12; 1939–40 и 1946–47; Леонардо да Винчи XX века; 2414; красной.'
+  ball: 8
+  voprosy:
+  - q: Сколько из 15 вспышек холеры легли на годы бурь на Солнце?
+    o:
+    - '3'
+    - '12'
+    - '15'
+    a: 1
+    e: За сто лет в России 12 из 15 вспышек холеры легли точно на годы бурь на Солнце.
+  - q: Какие годы волн гриппа Чижевский назвал заранее в 1938 году?
+    o:
+    - 1939–40 и 1946–47
+    - 1941–42 и 1950–51
+    - 1925–26 и 1930–31
+    a: 0
+    e: 'В 1938 году Чижевский заранее назвал годы волн гриппа: 1939–40 и 1946–47.'
+  - q: Как назвал Чижевского мировой конгресс в Нью-Йорке?
+    o:
+    - Ньютоном XX века
+    - Леонардо да Винчи XX века
+    - Галилеем XX века
+    a: 1
+    e: 'Нью-Йорк, 1939: мировой конгресс назвал Чижевского «Леонардо да Винчи XX века».'
+  - q: За сколько лет истории Чижевский перебрал события?
+    o:
+    - '214'
+    - '2414'
+    - '5000'
+    a: 1
+    e: Чтобы поймать связь, он перебрал события истории за 2414 лет на пяти континентах.
+  - q: Какой становится окраска микроба при вспышке на Солнце?
+    o:
+    - синей
+    - красной
+    - зелёной
+    a: 1
+    e: При спокойном Солнце микроб синеет, при вспышке — краснеет.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал Солнца и эпидемий.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-09-goskatalog-27005893.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 800
+  height: 642
+  alt: Серый блок питания с проводами и излучатель-«метёлка» из металлических стержней
+  data_source: https://goskatalog.ru/portal/#/collections?id=24501250
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей Зеленограда · Госкаталог
+  podpis: Ионизатор «Люстра Чижевского», 1997. Хранит Музей Зеленограда.
+  credit: 'Хранится: Музей Зеленограда. Госкаталог музейного фонда РФ, № 24357108.'
+  hint: Предмет · ионизатор
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1997 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1997'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=24501250
+  nomer_predmeta: '24357108'
+  nomer_snimka: net
+  hranitel: Музей Зеленограда
+  podlinnik:
+    gde: Музей Зеленограда
+    otkuda: https://goskatalog.ru/portal/#/collections?id=24501250
+  svyashchennoe: false
+  podpis_chto: Ионизатор «Люстра Чижевского»
+  podpis_gde: Москва
+  podpis_kogda: '1997'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-09-goskatalog-27073681.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.1
+    w: 0.8
+    h: 0.8
+  width: 629
+  height: 800
+  alt: Мраморный серо-чёрный переплёт книги, на корешке оборванная наклейка
+  data_source: https://goskatalog.ru/portal/#/collections?id=24547101
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · ГБУК ГДМ · Госкаталог
+  podpis: Переплёт экземпляра книги А. Л. Чижевского «Физические факторы исторического процесса», 1924. Хранит ГБУК ГДМ.
+  credit: 'Хранится: ГБУК ГДМ. Госкаталог музейного фонда РФ, № 24402832.'
+  hint: Книга · переплёт 1924 года
+  vid: dokument
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1924 г.
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1924'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=24547101
+  nomer_predmeta: '24402832'
+  nomer_snimka: net
+  hranitel: ГБУК ГДМ
+  podlinnik:
+    gde: ГБУК ГДМ
+    otkuda: https://goskatalog.ru/portal/#/collections?id=24547101
+  svyashchennoe: false
+  podpis_chto: Переплёт экземпляра книги А. Л. Чижевского «Физические факторы исторического процесса»
+  podpis_gde: Москва
+  podpis_kogda: '1924'
+  pometka_prav: citirovanie-1274
+sources:
+- href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+  title: 'А. Л. Чижевский, «Земное эхо солнечных бурь», изд. 2-е, М.: Мысль, 1976'
+  note: факты дня
+- href: https://cyberleninka.ru/article/n/mikrob-i-kosmos-sergey-timofeevich-velhover
+  title: 'Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — КиберЛенинка'
+  note: факты дня
+- href: https://www.nkj.ru/archive/articles/9463/
+  title: Б. Владимирский, Л. Кисловский, «Чижевский был прав», «Наука и жизнь»
+  note: факты дня
+- href: https://www.nkj.ru/archive/articles/6400/
+  title: А. Петрукович, Л. Зелёный, Статья о солнечной активности, «Наука и жизнь», 2001, №7
+  note: факты дня
+- href: https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html
+  title: «Гипотеза Чижевского получила новые аргументы», «Российская газета», 17.04.2018
+  note: факты дня
+- href: https://library.vladimir.ru/vystavki-2/russkij-leonardo-da-vinchi-xx-veka.html
+  title: «Русский Леонардо да Винчи XX века» — Владимирская областная научная библиотека
+  note: факты дня
+- href: https://museum-obiralovka.ru/item/1794488
+  title: Статья о Чижевском — музей «Обираловка»
+  note: факты дня
+- href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
+  title: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 18.04.2012
+  note: факты дня
+- href: https://chizhevsky.gmik.ru/
+  title: Дом-музей А. Л. Чижевского — отдел Государственного музея истории космонавтики
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=24501250
+  title: Ионизатор «Люстра Чижевского», 1997, Музей Зеленограда — Госкаталог музейного фонда РФ
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: den/02-10/
+  title: 10 февраля — Аэросани
+  hook: 'Там, где есть только снег, Россия сделала машину без колёс и гусениц: пропеллер гонит сани по насту быстрее автомобиля'
+  main: true
+- lbl: Предыдущий день
+  href: den/02-08/
+  title: 8 февраля — Таблица Менделеева
+  hook: Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Знаток солнечных бурь
+  - - 70
+    - Наблюдатель Солнца
+  - - 40
+    - Читатель «Земного эха»
+  - - 0
+    - Гость дня
+return:
+  q: По скольким странам проверили Чижевского через сто лет?
+  a: 'Через сто лет проверка по 200 странам подтвердила: Чижевский был прав.'
+  src: «Российская газета», rg.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-09-chizhevskij:claim-1897
+  ours:
+    kind: publication
+    title: А. Л. Чижевский, «Земное эхо солнечных бурь»
+    date: '1976'
+    holder: издательство «Мысль»
+    source_url: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
+podskazki_igry:
+- Спокойное Солнце — синий цвет
+- Вспышка — красный цвет
+- Сыворотку против дифтерии сделали в 1894 году
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya: mesto:moskva
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Чижевский выписывал годы бурь на Солнце
+- Рядом ставил летописи чумы, холеры и гриппа
+- Перебрал события истории за 2414 лет на пяти континентах
+- 'Совпадения сводил в счёт: 12 из 15 вспышек холеры легли на годы бурь'
+data_uslovnaya: 9 февраля — день музея; Чижевский родился 26 января (7 февраля) 1897 года.
