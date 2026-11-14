@@ -1,0 +1,33 @@
+{
+  "title": "История в 49 секунд",
+  "intro": "Вызвал огонь на себя — «Вызываю огонь на себя»",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43597220607) из сценария days/ns10feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.3,
+    "mb": 12.7
+  },
+  "vertical": {
+    "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.3,
+    "mb": 12.8
+  },
+  "poster": {
+    "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-9x16-poster.jpg",
+    "v": 1
+  }
+}
