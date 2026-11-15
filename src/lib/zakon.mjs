@@ -267,7 +267,13 @@ const godIz = (s) => [...String(s ?? '').matchAll(/(?<!\d)(1[0-9]\d\d|20\d\d)(?!
 /** Кадр XX века: год дня ≥ 1900 (первый год в поле year) или год ≥ 1900 в подписи. */
 export const vekXX = (godDnya, podpis) => (godIz(godDnya)[0] ?? 0) >= 1900 || godIz(podpis).some((g) => g >= 1900);
 
-export const vedomostOsnovaniy = (root = '.') => readJson(path.join(root, REESTRY, 'osnovaniya.json'), {});
+// Р783 (15.11): кроме общей ведомости — файл на день data/reestry/osnovaniya/<музей>--<ММ-ДД>.json той же формы;
+// параллельные дни пишут каждый в свой файл и не сталкиваются при слиянии.
+export const vedomostOsnovaniy = (root = '.') => {
+  const dir = path.join(root, REESTRY, 'osnovaniya');
+  return Object.assign({}, readJson(path.join(root, REESTRY, 'osnovaniya.json'), {}),
+    ...ls(dir).filter((f) => f.endsWith('.json')).map((f) => readJson(path.join(dir, f), {})));
+};
 
 /**
  * Е2 для одного кадра (сборка — все кадры, пост в каналы — его картинка). fr — кадр карточки (cardFrames: caption,

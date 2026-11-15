@@ -8,12 +8,15 @@
 // Утверждённое не меняется: дописывается только пустое поле pometka_prav, остальное в дне не трогается.
 //   node scripts/prava-pometki.mjs                       — проверка дней, изменённых в ветке (origin/main...HEAD)
 //   node scripts/prava-pometki.mjs --vse [музей] [ММ]    — проверка и счёт по всем дням (или музею, месяцу)
-//   node scripts/prava-pometki.mjs --zapisat <музей> <ММ> — проставить пустые pometka_prav и показать счёт
+//   node scripts/prava-pometki.mjs --zapisat <музей> <ММ> — проставить пустые pometka_prav и показать счёт;
+//     заодно у кадров XX века (vekXX) — строку основания в data/reestry/osnovaniya/<музей>--<ММ-ДД>.json той формы,
+//     что читает kadrXX в src/lib/zakon.mjs (Р784). Есть строка в ведомости — не трогает; нет ссылки на страницу
+//     файла (Госкаталог по номеру в имени файла, адрес в подписи или prava.ssylka) — не пишет, называет кадр.
 // strogo=false в справочнике — кадры называются предупреждением; true — ошибка, выход 1.
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
-import { osnovanieIz } from '../src/lib/zakon.mjs';
+import { osnovanieIz, vekXX, putKadra, vedomostOsnovaniy } from '../src/lib/zakon.mjs';
 
 const DNI = 'src/content/days';
 const sprav = JSON.parse(fs.readFileSync('src/data/spravochniki/pometki-prav.json', 'utf8'));
@@ -97,6 +100,45 @@ function dopisat(text, img, pometka) {
   throw new Error(`не найден кадр без пометки ${img.src}`);
 }
 
+// Р784: пометка → основание закона Е2 (OSNOVANIE в src/lib/zakon.mjs); «некоммерческое» основанием Е2 не является.
+const OSNOVANIE_PO_POMETKE = {
+  'obshchestvennoe-dostoyanie': 'общественное достояние', cc0: 'свободная лицензия', 'cc-by': 'свободная лицензия',
+  'cc-by-sa': 'свободная лицензия', 'ne-obekt-1259': 'не объект авторского права (ст. 1259 ГК)',
+  'citirovanie-1274': 'цитирование (ст. 1274 ГК)', 'razreshenie-vladelca': 'разрешение правообладателя',
+  'svoya-rabota': 'своя генерация проекта',
+};
+const godyIz = (s) => [...String(s ?? '').matchAll(/(?<!\d)(1[0-9]\d\d|20\d\d)(?!\d)/g)].map((m) => m[1]);
+// Ссылка на страницу файла: как назвал человек (prava.ssylka, адрес в подписи), иначе — Госкаталог по номеру в имени.
+function ssylkaKadra(img) {
+  const gk = /goskatalog-(\d+)(?=[.-])/.exec(img.src || '');
+  return img.prava?.ssylka || /https?:\/\/[^\s,;)»"]+[^\s,;)»".]/.exec(img.credit || '')?.[0]
+    || (gk ? `https://goskatalog.ru/portal/#/collections?id=${gk[1]}` : '');
+}
+// Кусок подписи после «Фото:», «Хранится:» — до следующего такого слова (сокращения «г.», «К.» не режут).
+const KLYUCHI = /(Фото:|Хранит(?:ся)?:?|Источник:|Права:|Госкаталог музейного фонда)/gi;
+const kusok = (t, klyuch) => {
+  const chasti = String(t || '').split(KLYUCHI);
+  const i = chasti.findIndex((c) => klyuch.test(c));
+  return i >= 0 ? chasti[i + 1].trim().replace(/[.\s]+$/, '') : '';
+};
+/** Строка ведомости оснований для кадра с пометкой: { osnovanie, avtor, gody, pravilo, ssylka } или { net: причина }. */
+export function strokaOsnovaniya(img, pometka) {
+  const osnovanie = OSNOVANIE_PO_POMETKE[pometka];
+  if (!osnovanie) return { net: `пометка «${pometka}» — не основание Е2` };
+  const ssylka = ssylkaKadra(img);
+  if (!ssylka) return { net: 'нет ссылки на страницу файла' };
+  const credit = String(img.credit || '');
+  const fotoPolno = kusok(credit, /^Фото:$/i);
+  const foto = fotoPolno.replace(/,\s*[\d–-]+(-е)?$/, '');
+  const derzhatel = kusok(credit, /^Хранит/i) || kusok(img.caption, /^Хранит/i)
+    || (KLYUCHI.test(credit) ? '' : credit.replace(/,?\s*Госкаталог\S*/i, '').trim());
+  KLYUCHI.lastIndex = 0;
+  const avtor = img.generated ? 'проект «Русская цивилизация»'
+    : `${foto || 'автор не указан'}${derzhatel ? `; держатель — ${derzhatel}` : ''}`;
+  return { osnovanie, avtor, gody: godyIz(`${img.caption || ''} ${fotoPolno}`).join(', ') || 'не указаны',
+    pravilo: sprav.pometki[pometka].nazvanie, ssylka };
+}
+
 const args = process.argv.slice(2);
 const zapisat = args[0] === '--zapisat';
 let fajly;
@@ -112,17 +154,32 @@ if (zapisat || args[0] === '--vse') {
 
 const schet = { podpis: 0, tablica: 0, chelovek: 0 };
 const nazvat = [];
+const vedomost = zapisat ? vedomostOsnovaniy('.') : {};
+let osnovanij = 0;
 for (const f of fajly.sort()) {
   let text = fs.readFileSync(f, 'utf8');
   const d = JSON.parse(text);
   let izm = false;
+  const muzejDnya = path.basename(path.dirname(f));
+  const fileOsn = `data/reestry/osnovaniya/${muzejDnya}--${path.basename(f, '.json')}.json`;
+  const svoi = fs.existsSync(fileOsn) ? JSON.parse(fs.readFileSync(fileOsn, 'utf8')) : {};
+  const novye = {};
+  // Р784: основание пишется вместе с пометкой — и для уже стоявшей, если строки в ведомости нет.
+  const osnovat = (put, img, pometka) => {
+    if (!zapisat || !vekXX(d.year, img.caption)) return;
+    const klyuch = putKadra(muzejDnya, img.src);
+    if (vedomost[klyuch]?.osnovanie && vedomost[klyuch]?.ssylka) return;
+    const s = strokaOsnovaniya(img, pometka);
+    if (s.net) { nazvat.push(`${f} ${put} (${img.src}): основание не записано — ${s.net}`); return; }
+    novye[klyuch] = s;
+  };
   for (const [put, img] of kadry(d)) {
     const kto = `${f} ${put} (${img.src})`;
     if (img.pometka_prav) {
       const p = sprav.pometki[img.pometka_prav];
       if (!p) { nazvat.push(`${kto}: пометка «${img.pometka_prav}» вне списка`); schet.chelovek++; }
       else if (p.chelovek) { nazvat.push(`${kto}: «${p.nazvanie}» — решает человек`); schet.chelovek++; }
-      else schet[pometkaKadra(img).put || 'tablica']++;
+      else { schet[pometkaKadra(img).put || 'tablica']++; osnovat(put, img, img.pometka_prav); }
       continue;
     }
     const r = pometkaKadra(img);
@@ -132,16 +189,22 @@ for (const f of fajly.sort()) {
       continue;
     }
     schet[r.put]++;
-    if (zapisat) { text = dopisat(text, img, r.pometka); izm = true; }
+    if (zapisat) { text = dopisat(text, img, r.pometka); izm = true; osnovat(put, img, r.pometka); }
   }
   if (izm) {
     JSON.parse(text);
     fs.writeFileSync(f, text);
   }
+  if (Object.keys(novye).length) {
+    fs.mkdirSync(path.dirname(fileOsn), { recursive: true });
+    fs.writeFileSync(fileOsn, JSON.stringify({ ...svoi, ...novye }, null, 2) + '\n');
+    osnovanij += Object.keys(novye).length;
+    for (const k of Object.keys(novye)) console.log(`основание: ${k} → ${novye[k].osnovanie} (${fileOsn})`);
+  }
 }
 
 const vsego = schet.podpis + schet.tablica + schet.chelovek;
-console.log(`prava-pometki: дней ${fajly.length}, кадров ${vsego}; по подписи ${schet.podpis}, по таблице ${schet.tablica}, человеку ${schet.chelovek}`);
+console.log(`prava-pometki: дней ${fajly.length}, кадров ${vsego}; по подписи ${schet.podpis}, по таблице ${schet.tablica}, человеку ${schet.chelovek}${zapisat ? `; строк оснований записано ${osnovanij}` : ''}`);
 const vid = sprav.strogo ? 'error' : 'warning';
 for (const s of nazvat) console.log(process.env.GITHUB_ACTIONS ? `::${vid}::${s}` : `${vid}: ${s}`);
 if (sprav.strogo && nazvat.length) process.exit(1);
