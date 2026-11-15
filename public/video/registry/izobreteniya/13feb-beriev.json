@@ -1,0 +1,33 @@
+{
+  "title": "История в 51 секунду",
+  "intro": "Таганрогская школа Бериева единственная в мире: Бе-200 садится на воду и набирает двенадцать тонн за двенадцать секунд",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43712680889) из сценария days/13feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/13feb-beriev/day-13feb-beriev.mp4",
+    "local": "muzei/izobreteniya/video/day-13feb-beriev.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 51,
+    "mb": 13.6
+  },
+  "vertical": {
+    "file": "izobreteniya/13feb-beriev/day-13feb-beriev-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-13feb-beriev-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 51,
+    "mb": 13
+  },
+  "poster": {
+    "file": "izobreteniya/13feb-beriev/day-13feb-beriev-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-13feb-beriev-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/13feb-beriev/day-13feb-beriev-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-13feb-beriev-9x16-poster.jpg",
+    "v": 1
+  }
+}
