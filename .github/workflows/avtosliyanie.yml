@@ -10,10 +10,12 @@
 # с правом Pull requests: write и Contents: write на rc-site, кладёт Михаил) и переменная AVTOSLIYANIE = '1';
 # без нужного — спит строкой в журнале, соседей не роняет; проверка — открыть пробную заявку после ключа и переменной;
 # откат — переменная ≠ '1' или удалить файл.
+# Р784 (15.11): и при каждом push в заявку (synchronize) — после rebase и push --force-with-lease автослияние слетало,
+# зелёная заявка висела открытой (brak-stranic п. 35, изоб 02-28, #1192). Снять насовсем — стоп-знак, не руками.
 name: avtosliyanie
 on:
   pull_request:
-    types: [opened, reopened, ready_for_review, edited, labeled]
+    types: [opened, reopened, ready_for_review, synchronize, edited, labeled]
 # Права — на уровне задания (Р63): верх — только чтение; ключ задания свой, github.token не пишет.
 permissions:
   contents: read
@@ -53,10 +55,10 @@ jobs:
             else echo "#$NOMER: стоп-знак — автослияние не включаю"; fi
             exit 0
           fi
-          # Включаем только при открытии и выходе из черновика: правка заголовка и метка не возвращают снятое руками.
+          # Включаем при открытии, выходе из черновика и каждом push; правка заголовка и метка не включают.
           case "$DEYSTVIE" in
-            opened|reopened|ready_for_review) ;;
-            *) echo "#$NOMER: $DEYSTVIE — включение только при открытии"; exit 0 ;;
+            opened|reopened|ready_for_review|synchronize) ;;
+            *) echo "#$NOMER: $DEYSTVIE — включение только при открытии и push"; exit 0 ;;
           esac
           [ "$VKLYUCHENO" = true ] && { echo "#$NOMER: автослияние уже включено"; exit 0; }
           gh pr merge "$NOMER" --auto --squash && echo "#$NOMER: автослияние включено"
