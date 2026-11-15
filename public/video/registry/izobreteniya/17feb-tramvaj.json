@@ -1,0 +1,33 @@
+{
+  "title": "История в 51 секунду",
+  "intro": "Пироцкий пустил вагон на электричестве по петербургским рельсам, денег не нашёл — и через год трамвай стал немецким",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43692158132) из сценария days/17feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj.mp4",
+    "local": "muzei/izobreteniya/video/day-17feb-tramvaj.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 50.5,
+    "mb": 14.7
+  },
+  "vertical": {
+    "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-17feb-tramvaj-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 50.5,
+    "mb": 14.3
+  },
+  "poster": {
+    "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-17feb-tramvaj-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-17feb-tramvaj-9x16-poster.jpg",
+    "v": 1
+  }
+}
