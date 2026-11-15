@@ -1,0 +1,33 @@
+{
+  "title": "История в 48 секунд",
+  "intro": "Старостиха крикнула пленным: «Уж я двадцати семи таким вашим озорникам сорвала головы!»",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43708773851) из сценария days/ns21feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/21feb-vasilisa-kozhina/day-21feb-vasilisa-kozhina.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-21feb-vasilisa-kozhina.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.9,
+    "mb": 12.7
+  },
+  "vertical": {
+    "file": "nesdayutsya/21feb-vasilisa-kozhina/day-21feb-vasilisa-kozhina-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-21feb-vasilisa-kozhina-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.9,
+    "mb": 12
+  },
+  "poster": {
+    "file": "nesdayutsya/21feb-vasilisa-kozhina/day-21feb-vasilisa-kozhina-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-21feb-vasilisa-kozhina-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/21feb-vasilisa-kozhina/day-21feb-vasilisa-kozhina-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-21feb-vasilisa-kozhina-9x16-poster.jpg",
+    "v": 1
+  }
+}
