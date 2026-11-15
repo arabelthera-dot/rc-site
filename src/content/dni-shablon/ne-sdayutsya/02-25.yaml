@@ -1,0 +1,854 @@
+# Р773: день 25 февраля — майор Сергей Солнечников, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-25
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Сергей Солнечников — «Русские не сдаются» — Русская цивилизация
+  description: Накрыл собой боевую гранату — и спас солдат
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-25/
+  sobytie: Сергей Солнечников
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Сергей Солнечников — «Русские не сдаются» — Русская цивилизация
+    description: Накрыл собой боевую гранату — и спас солдат
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-25/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Сергей Солнечников — «Русские не сдаются»
+    description: Накрыл собой боевую гранату — и спас солдат
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-25/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '2012'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-25-goskatalog-83474631.jpg
+  alt: 'Лист с биографией: слева вверху портрет офицера в форме, рядом и ниже — напечатанный текст, вверху крупно фамилия и годы жизни.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=65313672
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Автобиография Героя России майора Сергея Солнечникова, 2012 год: портрет и рассказ о жизни и подвиге. Хранится в Белогорском краеведческом музее имени Н. Г. Ельченинова.'
+  credit: Белогорский краеведческий музей имени Н. Г. Ельченинова, Госкаталог № 65031186
+  width: 728
+  height: 1024
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 0.6
+  nomer_predmeta: net
+  nomer_snimka: '83474631'
+  hranitel: Белогорский краеведческий музей имени Н. Г. Ельченинова, Белогорск, Амурская область
+  podpis_chto: Лист «Солнечников Сергей Александрович, Герой России» с портретом и биографией
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 2012 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Белогорский краеведческий музей имени Н. Г. Ельченинова, Белогорск, Амурская область
+    otkuda: https://goskatalog.ru/portal/#/collections?id=65313672
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '2012'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 65031186
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 65031186
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=65313672
+  hint: Сергей Солнечников
+  celikom: true
+kroshka: День 25 · Сергей Солнечников
+lead:
+  data: День 25 · февраль · полигон под Белогорском, Амурская область, 2012 год
+  privyazka: 'Дата условная: 25 февраля — день музея; событие — подвиг майора Сергея Солнечникова 28 марта 2012 года.'
+  kto: Сергей Солнечников · майор, командир батальона связи 54-й бригады управления, Герой России
+  h1: Сергей Солнечников
+  hook: Накрыл собой боевую гранату — и спас солдат.
+stamp:
+- v: '32'
+  k: осколка принял на себя
+- v: '4'
+  k: секунды на решение
+- v: '10'
+  k: солдат в окопе
+- v: '6'
+  k: дней до указа о Герое
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/25feb-solnechnikov
+  format: horizontal
+  pole: nesdayutsya/25feb-solnechnikov:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Накрыл собой боевую гранату — и спас солдат
+  poster: /muzei/ne-sdayutsya/video/day-25feb-solnechnikov-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-25feb-solnechnikov.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-25.json и кадров дня. Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Сергей Солнечников
+  abzacy:
+  - Сергей Солнечников родился в 1980 году в Потсдаме, в семье военного. С детства мечтал стать лётчиком, окончил военное училище связи. С 2004 года служил в части 53790 под Белогорском Амурской области. В 30 лет стал комбатом — командиром батальона связи. Солдаты звали его «Комбат Солнце».
+  - '28 марта 2012 года ребята-срочники впервые метали боевые гранаты. Рядовой Максим Журавлёв бросил РГД-5 неудачно: граната ударилась о край бруствера и скатилась в окоп, где стояло целое отделение. Майор оттолкнул солдата и накрыл гранату собой. В него попало 32 осколка. Через полтора часа он умер в госпитале. 3 апреля 2012 года ему присвоено звание Героя России посмертно.'
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Сергей Солнечников
+  udary:
+  - id: ns-0225-roditeli
+    summary: 'Родители героя заступились за солдата: «Если и ему жизнь перечеркнуть — зачем погиб наш сын?»'
+    det:
+    - Против рядового, чья граната отскочила в окоп, завели уголовное дело. Мать и отец погибшего комбата попросили не винить солдата.
+    src: 'Источник: «Комсомольская правда». Комбат по имени Солнце — https://www.kp.ru/daily/25867.3/2832618/; «Вести». Майор Солнечников накрыл гранату собой — https://www.vesti.ru/article/1960017'
+    stranica: статья
+    href: https://www.kp.ru/daily/25867.3/2832618/
+    otryvok: «Нельзя винить этого мальчишку. Он же не специально. Если еще и ему жизнь перечеркнуть, зачем же погиб наш сын?»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0225-oskolki
+    summary: В комбата попало 32 осколка — весь взрыв он принял на себя одного.
+    det:
+    - Майор лёг на гранату грудью. Осколки, которые разлетелись бы по окопу, остались в нём.
+    src: 'Источник: «Сегодня на Амуре», № 13, 2012 — http://www.tvs-media.ru/filings/2012/13/13_1.html'
+    stranica: статья
+    href: http://www.tvs-media.ru/filings/2012/13/13_1.html
+    otryvok: «В комбата попало 32 осколка, спасти офицера не удалось.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 2
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-25-goskatalog-29770297.jpg
+      alt: Чёрная ручная граната РГД-5 с запалом и прижатым к корпусу рычагом на белом фоне.
+      data_source: https://goskatalog.ru/portal/#/collections?id=26443820
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Ручная граната РГД-5, инертная, 1964 год. Такой гранатой на занятии и был ранен майор Солнечников. Хранится в Военно-историческом музее артиллерии, инженерных войск и войск связи.
+      credit: Военно-исторический музей артиллерии, инженерных войск и войск связи, Госкаталог № 26289610
+      width: 636
+      height: 800
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '29770297'
+      hranitel: Военно-исторический музей артиллерии, инженерных войск и войск связи, Санкт-Петербург
+      podpis_chto: Ручная граната РГД-5, инертная
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1964 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Военно-исторический музей артиллерии, инженерных войск и войск связи, Санкт-Петербург
+        otkuda: https://goskatalog.ru/portal/#/collections?id=26443820
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1964'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 26289610
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 26289610
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=26443820
+  - id: ns-0225-status
+    summary: 'Последний статус комбата: «Счастье — когда звезда упала, а загадать-то и нечего». Звезду дали ему.'
+    det:
+    - Эти слова Сергей Солнечников оставил на своей странице в соцсети. Солдаты звали его «Комбат Солнце».
+    src: 'Источник: «Комсомольская правда» — Амур. Последний статус комбата — https://www.amur.kp.ru/daily/25859.4/2826721/'
+    stranica: статья
+    href: https://www.amur.kp.ru/daily/25859.4/2826721/
+    otryvok: «Счастье - это когда звезда упала, а загадать-то и нечего». Это последний статус, который Сергей Солнечников… оставил на своей страничке в соцсети.
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 3
+  - id: ns-0225-sekundy
+    summary: На решение у него было четыре секунды — он не потратил ни одной на себя.
+    det:
+    - После того как отпущен рычаг, запал РГД-5 горит три-четыре секунды. Комбат успел оттолкнуть солдата и лечь на гранату.
+    src: 'Источник: «Сегодня на Амуре», № 13, 2012 — http://www.tvs-media.ru/filings/2012/13/13_1.html'
+    stranica: статья
+    href: http://www.tvs-media.ru/filings/2012/13/13_1.html
+    otryvok: «Всего четыре секунды было у майора Солнечникова для принятия решения.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 4
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-25-goskatalog-18885404.jpg
+      alt: Чёрная граната РГД-5 с запалом и красным рычагом, к кольцу привязан бумажный ярлык, под ней листок с номером.
+      data_source: https://goskatalog.ru/portal/#/collections?id=18644128
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Граната РГД-5, инертная, XX век. Хранится в Национальном музее Республики Дагестан имени А. Тахо-Годи.
+      credit: Национальный музей Республики Дагестан имени А. Тахо-Годи, Госкаталог № 18903378
+      width: 1600
+      height: 1067
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '18885404'
+      hranitel: Национальный музей Республики Дагестан имени А. Тахо-Годи, Махачкала
+      podpis_chto: Граната РГД-5, инертная
+      podpis_gde: место съёмки не указано
+      podpis_kogda: XX век
+      simvolika_proverena: true
+      podlinnik:
+        gde: Национальный музей Республики Дагестан имени А. Тахо-Годи, Махачкала
+        otkuda: https://goskatalog.ru/portal/#/collections?id=18644128
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: XX век
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 18903378
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 18903378
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=18644128
+  - id: ns-0225-ukaz
+    summary: 'Звание Героя России — через 6 дней после гибели: 28 марта погиб, 3 апреля указ.'
+    det:
+    - Указ Президента подписан 3 апреля 2012 года. Звание присвоено посмертно.
+    src: 'Источник: Автобиография Героя России С. А. Солнечникова, Госкаталог № 65031186 — https://goskatalog.ru/portal/#/collections?id=65313672; «Герои страны». Солнечников Сергей Александрович — https://warheroes.ru/hero/hero.asp?Hero_id=14690; Интерфакс. Солдатские матери просят представить майора к званию Героя — https://www.interfax.ru/russia/238311'
+    stranica: документ
+    href: https://goskatalog.ru/portal/#/collections?id=65313672
+    otryvok: «Указом Президента Российской Федерации от 3 апреля 2012 года… присвоено звание Героя Российской Федерации (посмертно)»
+    pometka: документ
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n15
+    dlya_voprosa: false
+    n: 5
+  - id: ns-0225-materi
+    summary: Звезду Героя для комбата попросили матери спасённых срочников.
+    det:
+    - Комитет солдатских матерей обратился с просьбой представить майора к званию Героя России.
+    src: 'Источник: «Русская семёрка». Ценой своей жизни спас солдат — https://russian7.ru/post/cenoy-svoey-zhizni-spas-soldat-kak-mayo/; Интерфакс. Солдатские матери просят представить майора к званию Героя — https://www.interfax.ru/russia/238311'
+    stranica: статья
+    href: https://russian7.ru/post/cenoy-svoey-zhizni-spas-soldat-kak-mayo/
+    otryvok: «…за присвоение высокого звания офицеру ходатайствовали матери срочников, которые остались невредимы лишь благодаря подвигу майора.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+    n: 6
+  - id: ns-0225-pervoe
+    summary: Первое в батальоне занятие с боевыми гранатами — и граната отскочила назад, в окоп.
+    det:
+    - 'Рядовой бросил гранату неудачно: она ударилась о край бруствера и скатилась обратно.'
+    src: 'Источник: «Комсомольская правда». Комбат по имени Солнце — https://www.kp.ru/daily/25867.3/2832618/; «Комсомольская правда» — Амур. Комбат накрыл собой гранату — https://www.amur.kp.ru/daily/25858/2825982/'
+    stranica: статья
+    href: https://www.kp.ru/daily/25867.3/2832618/
+    otryvok: «В роковой день 28 марта по плану боевой подготовки в батальоне Солнечникова - ребята-срочники первый раз метали боевые гранаты.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 7
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-25-goskatalog-22185013.jpg
+      alt: 'Ржавый корпус гранаты РГД-5 без запала: два полушария, перехваченные ободком, на песочном фоне.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21040158
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Корпус учебно-тренировочной гранаты РГД-5, XX век. Хранится в Самарском областном историко-краеведческом музее имени П. В. Алабина.
+      credit: Самарский областной историко-краеведческий музей имени П. В. Алабина, Госкаталог № 20910774
+      width: 800
+      height: 533
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '22185013'
+      hranitel: Самарский областной историко-краеведческий музей имени П. В. Алабина, Самара
+      podpis_chto: Корпус учебно-тренировочной гранаты РГД-5
+      podpis_gde: место съёмки не указано
+      podpis_kogda: XX век
+      simvolika_proverena: true
+      podlinnik:
+        gde: Самарский областной историко-краеведческий музей имени П. В. Алабина, Самара
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21040158
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: XX век
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 20910774
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 20910774
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21040158
+  - id: ns-0225-ne-uvideli
+    summary: Солдаты даже не увидели гранату — увидели, как комбат уже лежит на ней.
+    det:
+    - Так рассказал солдат срочной службы Рустам Хисамов, который был в том окопе.
+    src: 'Источник: «Вести». Майор Солнечников накрыл гранату собой — https://www.vesti.ru/article/1960017'
+    stranica: статья
+    href: https://www.vesti.ru/article/1960017
+    otryvok: «Мы обратили внимание, только когда наш комбат оттолкнул солдата и накрыл гранату собой»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 8
+  - id: ns-0225-delo
+    summary: Солдату грозило 5 лет — дело закрыли, и спасённый продолжил службу.
+    det:
+    - На рядового Максима Журавлёва завели дело о нарушении правил обращения с опасными предметами.
+    src: 'Источник: «Коммерсантъ». Спасённому рядовому грозит срок — https://www.kommersant.ru/doc/1903725; Амур.инфо. Дело рядового Журавлёва — https://www.amur.info/news/theme/58369'
+    stranica: статья
+    href: https://www.kommersant.ru/doc/1903725
+    otryvok: «Теперь спасенному рядовому Максиму Журавлеву грозит до пяти лет лишения свободы.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n9
+    dlya_voprosa: false
+    n: 9
+  - id: ns-0225-v-metre
+    summary: Граната упала в метре от солдат — в окопе стояло целое отделение, около десяти человек.
+    det:
+    - Рядом с солдатами в окопе был и сам комбат.
+    src: 'Источник: «Комсомольская правда» — Амур. Комбат накрыл собой гранату — https://www.amur.kp.ru/daily/25858/2825982/; «Вести». Майор Солнечников накрыл гранату собой — https://www.vesti.ru/article/1960017'
+    stranica: статья
+    href: https://www.amur.kp.ru/daily/25858/2825982/
+    otryvok: «…находилось целое отделение, то есть около 10 человек.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: false
+    n: 10
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-25-goskatalog-38087628.jpg
+      alt: Чёрная граната РГД-5 стоит запалом вверх на холщовом фоне; на светлом рычаге выбиты буквы и цифры.
+      data_source: https://goskatalog.ru/portal/#/collections?id=32422149
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Ручная граната РГД-5, учебная, 1990-е годы. Хранится в Музее боевой и трудовой славы.
+      credit: ГАУК «СИПК «Музей боевой и трудовой славы», Госкаталог № 32237348
+      width: 571
+      height: 1024
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '38087628'
+      hranitel: ГАУК «СИПК «Музей боевой и трудовой славы», Россия
+      podpis_chto: Ручная граната РГД-5, учебная
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1990-е годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: ГАУК «СИПК «Музей боевой и трудовой славы», Россия
+        otkuda: https://goskatalog.ru/portal/#/collections?id=32422149
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1990-е
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 32237348
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 32237348
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=32422149
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0225-batalon
+    summary: На полигоне в тот день был весь батальон — больше ста человек.
+    det:
+    - Так рассказал «Комсомольской правде» офицер Сергей Фролов из части, где служил комбат.
+    src: 'Источник: Православие.ру. Комбат Солнечников — https://www.pravoslavie.ru/52546.html'
+    stranica: статья
+    href: https://www.pravoslavie.ru/52546.html
+    otryvok: «Там же весь батальон был, больше ста человек»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n11
+    dlya_voprosa: false
+    n: 11
+  - id: ns-0225-chitateli
+    summary: 'Тысячи читателей «Комсомолки» написали: дайте комбату Героя.'
+    det:
+    - Газета присоединилась к просьбе сослуживцев, друзей и матерей солдат.
+    src: 'Источник: «Комсомольская правда» — Амур. Последний статус комбата — https://www.amur.kp.ru/daily/25859.4/2826721/'
+    stranica: статья
+    href: https://www.amur.kp.ru/daily/25859.4/2826721/
+    otryvok: «К вам присоединяется и «Комсомольская правда», тысячи наших читателей из разных уголков страны…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 12
+  - id: ns-0225-pravilnyj
+    summary: 'Солдат, чья граната его убила, до того говорил отцу: «Комбат у нас правильный».'
+    det:
+    - Рядовой Максим Журавлёв звонил домой и рассказывал о службе.
+    src: 'Источник: «Комсомольская правда». Комбат по имени Солнце — https://www.kp.ru/daily/25867.3/2832618/'
+    stranica: статья
+    href: https://www.kp.ru/daily/25867.3/2832618/
+    otryvok: «Не волнуйся. Комбат у нас правильный. Все могу ему рассказать.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 13
+  - id: ns-0225-devochka
+    summary: Первую жизнь он спас в 14 лет — вытащил тонущую шестилетнюю девочку из речной воронки.
+    det:
+    - 'Это было на Волге, в селе Пологое Займище: шестилетняя Маша прыгнула в воду и попала в яму.'
+    src: 'Источник: «Амурская правда». Мама Героя России Солнечникова — https://ampravda.ru/2018/11/15/085368.html'
+    stranica: статья
+    href: https://ampravda.ru/2018/11/15/085368.html
+    otryvok: «В первый раз Сережа спас человека в 14 лет.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n12
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0225-otec
+    summary: 'Отец: «Жил бы для себя… а он жил для других — и на гранату эту лёг».'
+    det:
+    - Эти слова отец Сергея Солнечникова сказал журналистам на следующий день после гибели сына.
+    src: 'Источник: РИА Новости. Отец майора Солнечникова — https://ria.ru/20120329/609345658.html; V102.ru. Волжанин Сергей Солнечников — https://v102.ru/news/32649.html'
+    stranica: статья
+    href: https://ria.ru/20120329/609345658.html
+    otryvok: «Готов на помощь, жил бы для себя... а он жил для других и на гранату эту, дурак, лег»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n13
+    dlya_voprosa: false
+    n: 15
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 4 секунды; 2 — 32 осколка; 3 — около 10 человек; 4 — 6 дней; 5 — в 14 лет.'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: сколько секунд было у комбата на решение?'
+    o:
+    - '4'
+    - '14'
+    - '40'
+    - '60'
+    a: 0
+    e: Всего четыре секунды — и ни одной он не потратил на себя.
+  - q: Сколько осколков попало в комбата?
+    o:
+    - '3'
+    - '12'
+    - '32'
+    - '100'
+    a: 2
+    e: 32 осколка — весь взрыв он принял на себя одного.
+  - q: Сколько человек стояло в окопе, куда скатилась граната?
+    o:
+    - Двое
+    - Около десяти
+    - Около тридцати
+    - Сто
+    a: 1
+    e: В окопе было целое отделение, около десяти человек.
+  - q: Через сколько дней после гибели вышел указ о звании Героя России?
+    o:
+    - '6'
+    - '16'
+    - '60'
+    - '365'
+    a: 0
+    e: Погиб 28 марта, указ — 3 апреля 2012 года.
+  - q: В каком возрасте Сергей Солнечников впервые спас человека?
+    o:
+    - В 10 лет
+    - В 14 лет
+    - В 18 лет
+    - В 25 лет
+    a: 1
+    e: В 14 лет он вытащил тонущую шестилетнюю девочку из речной воронки.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-25-goskatalog-38087776.jpg
+  alt: Оливковая ручная граната РГД-5 рычагом вверх на розовом каменном фоне.
+  data_source: https://goskatalog.ru/portal/#/collections?id=32422362
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Ручная граната РГД-5, учебная, 1976 год. Хранится в Музее боевой и трудовой славы.
+  credit: ГАУК «СИПК «Музей боевой и трудовой славы», Госкаталог № 32237461
+  width: 624
+  height: 1024
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '38087776'
+  hranitel: ГАУК «СИПК «Музей боевой и трудовой славы», Россия
+  podpis_chto: Ручная граната РГД-5, учебная
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1976 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: ГАУК «СИПК «Музей боевой и трудовой славы», Россия
+    otkuda: https://goskatalog.ru/portal/#/collections?id=32422362
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1976'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 32237461
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 32237461
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=32422362
+  hint: Граната РГД-5
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-25-goskatalog-24503844.jpg
+  alt: 'Оливковая граната РГД-5 лежит на светлом столе: виден запал с латунным кольцом и длинный рычаг.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=22698867
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Ручная осколочная граната РГД-5, учебная, 1990-е годы. Хранится в Музее истории города Кандалакша.
+  credit: МБУ «Музей истории города Кандалакша», Госкаталог № 22699720
+  width: 1600
+  height: 1088
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '24503844'
+  hranitel: МБУ «Музей истории города Кандалакша», Кандалакша
+  podpis_chto: Ручная осколочная граната РГД-5, учебная
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1990-е годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: МБУ «Музей истории города Кандалакша», Кандалакша
+    otkuda: https://goskatalog.ru/portal/#/collections?id=22698867
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1990-е
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 22699720
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 22699720
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=22698867
+  hint: Граната РГД-5
+  celikom: true
+sources:
+- href: https://www.kp.ru/daily/25867.3/2832618/
+  title: «Комсомольская правда». Комбат по имени Солнце
+  note: к фактам 1, 7, 13
+- href: https://www.vesti.ru/article/1960017
+  title: «Вести». Майор Солнечников накрыл гранату собой
+  note: к фактам 1, 8, 10
+- href: http://www.tvs-media.ru/filings/2012/13/13_1.html
+  title: «Сегодня на Амуре», № 13, 2012
+  note: к фактам 2, 4
+- href: https://www.amur.kp.ru/daily/25859.4/2826721/
+  title: «Комсомольская правда» — Амур. Последний статус комбата
+  note: к фактам 3, 12
+- href: https://warheroes.ru/hero/hero.asp?Hero_id=14690
+  title: «Герои страны». Солнечников Сергей Александрович
+  note: к факту 5
+- href: https://www.interfax.ru/russia/238311
+  title: Интерфакс. Солдатские матери просят представить майора к званию Героя
+  note: к фактам 5, 6
+- href: https://russian7.ru/post/cenoy-svoey-zhizni-spas-soldat-kak-mayo/
+  title: «Русская семёрка». Ценой своей жизни спас солдат
+  note: к факту 6
+- href: https://www.amur.kp.ru/daily/25858/2825982/
+  title: «Комсомольская правда» — Амур. Комбат накрыл собой гранату
+  note: к фактам 7, 10
+- href: https://www.kommersant.ru/doc/1903725
+  title: «Коммерсантъ». Спасённому рядовому грозит срок
+  note: к факту 9
+- href: https://www.amur.info/news/theme/58369
+  title: Амур.инфо. Дело рядового Журавлёва
+  note: к факту 9
+- href: https://www.pravoslavie.ru/52546.html
+  title: Православие.ру. Комбат Солнечников
+  note: к факту 11
+- href: https://ampravda.ru/2018/11/15/085368.html
+  title: «Амурская правда». Мама Героя России Солнечникова
+  note: к факту 14
+- href: https://ria.ru/20120329/609345658.html
+  title: РИА Новости. Отец майора Солнечникова
+  note: к факту 15
+- href: https://v102.ru/news/32649.html
+  title: V102.ru. Волжанин Сергей Солнечников
+  note: к факту 15
+- href: https://goskatalog.ru/portal/#/collections?id=65313672
+  title: Автобиография Героя России С. А. Солнечникова, Госкаталог № 65031186
+  note: к факту 5
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 26 февраля (запись готовится)
+  hook: Следующий день музея.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Сергей Солнечников — Музей стойкости и подвига «Русские не сдаются»
+    text: Накрыл собой боевую гранату — и спас солдат
+  prev:
+    href: index.html
+    title: 24 февраля
+  next:
+    href: index.html
+    title: 26 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько осколков принял на себя майор Солнечников?
+  a: 32 осколка
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0225-solnechnikov
+data_sobytiya: '2012-03-28'
+data_uslovnaya: 25 февраля — день музея; событие — подвиг майора Сергея Солнечникова 28 марта 2012 года.
+chto_sluchilos: На учебных стрельбах под Белогорском граната РГД-5, неудачно брошенная рядовым, отскочила в окоп с солдатами. Командир батальона майор Сергей Солнечников оттолкнул солдата и накрыл гранату собой, спас отделение и погиб; Герой России посмертно.
+god: 2012
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Автобиография Героя России Сергея Солнечникова с портретом, 2012
+  muzej: Белогорский краеведческий музей имени Н. Г. Ельченинова
+  gorod: Белогорск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=65313672
+- chto: Ручная граната РГД-5, инертная, 1964
+  muzej: Военно-исторический музей артиллерии, инженерных войск и войск связи
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=26443820
+- chto: Ручная осколочная граната РГД-5, учебная, 1990-е
+  muzej: Музей истории города Кандалакша
+  gorod: Кандалакша
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=22698867
+chitat_dalshe:
+- nazvanie: Комбат по имени Солнце
+  gde: «Комсомольская правда»
+  ssylka: https://www.kp.ru/daily/25867.3/2832618/
+- nazvanie: 'Мама Героя России Солнечникова: «Сережа в первый раз спас человека в 14 лет»'
+  gde: «Амурская правда»
+  ssylka: https://ampravda.ru/2018/11/15/085368.html
+- nazvanie: Майор Солнечников накрыл гранату собой
+  gde: «Вести»
+  ssylka: https://www.vesti.ru/article/1960017
+- nazvanie: Ценой своей жизни спас солдат
+  gde: «Русская семёрка»
+  ssylka: https://russian7.ru/post/cenoy-svoey-zhizni-spas-soldat-kak-mayo/
+istochniki:
+- id: n1
+  baza: periodika
+  nazvanie: «Комсомольская правда». Комбат по имени Солнце
+  ssylka: https://www.kp.ru/daily/25867.3/2832618/
+- id: n2
+  baza: periodika
+  nazvanie: «Вести». Майор Солнечников накрыл гранату собой
+  ssylka: https://www.vesti.ru/article/1960017
+- id: n3
+  baza: periodika
+  nazvanie: «Сегодня на Амуре», № 13, 2012
+  ssylka: http://www.tvs-media.ru/filings/2012/13/13_1.html
+- id: n4
+  baza: periodika
+  nazvanie: «Комсомольская правда» — Амур. Последний статус комбата
+  ssylka: https://www.amur.kp.ru/daily/25859.4/2826721/
+- id: n5
+  baza: sajt-organizacii
+  nazvanie: «Герои страны». Солнечников Сергей Александрович
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=14690
+- id: n6
+  baza: periodika
+  nazvanie: Интерфакс. Солдатские матери просят представить майора к званию Героя
+  ssylka: https://www.interfax.ru/russia/238311
+- id: n7
+  baza: periodika
+  nazvanie: «Русская семёрка». Ценой своей жизни спас солдат
+  ssylka: https://russian7.ru/post/cenoy-svoey-zhizni-spas-soldat-kak-mayo/
+- id: n8
+  baza: periodika
+  nazvanie: «Комсомольская правда» — Амур. Комбат накрыл собой гранату
+  ssylka: https://www.amur.kp.ru/daily/25858/2825982/
+- id: n9
+  baza: periodika
+  nazvanie: «Коммерсантъ». Спасённому рядовому грозит срок
+  ssylka: https://www.kommersant.ru/doc/1903725
+- id: n10
+  baza: periodika
+  nazvanie: Амур.инфо. Дело рядового Журавлёва
+  ssylka: https://www.amur.info/news/theme/58369
+- id: n11
+  baza: periodika
+  nazvanie: Православие.ру. Комбат Солнечников
+  ssylka: https://www.pravoslavie.ru/52546.html
+- id: n12
+  baza: periodika
+  nazvanie: «Амурская правда». Мама Героя России Солнечникова
+  ssylka: https://ampravda.ru/2018/11/15/085368.html
+- id: n13
+  baza: periodika
+  nazvanie: РИА Новости. Отец майора Солнечникова
+  ssylka: https://ria.ru/20120329/609345658.html
+- id: n14
+  baza: periodika
+  nazvanie: V102.ru. Волжанин Сергей Солнечников
+  ssylka: https://v102.ru/news/32649.html
+- id: n15
+  baza: goskatalog
+  nazvanie: Автобиография Героя России С. А. Солнечникова, Госкаталог № 65031186
+  ssylka: https://goskatalog.ru/portal/#/collections?id=65313672
+citaty: []
+velichina_chislo: 32
+velichina_edinica: осколка
+velichina_chto: принял на себя комбат
+voinskaya_chast: Отдельный батальон связи 54-й бригады управления 35-й общевойсковой армии, войсковая часть 53790
+operaciya: Учебные стрельбы с боевыми гранатами на полигоне
+front: Восточный военный округ, Амурская область, мирное время
+mesto_sobytiya:
+  nazvanie: Полигон под Белогорском, Амурская область
+  shirota: 50.92
+  dolgota: 128.47
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Автобиография Героя России Сергея Солнечникова, 2012
+- Белогорский краеведческий музей имени Н. Г. Ельченинова
+slovar:
+- lyudi:sergej-solnechnikov
+vizual:
+  imya: solnechnikov-avtobiografiya
+  vid: dokument
+  kicker: Снимок под лупой
+  h2: Лист о комбате
+  lead: 'Этот лист хранит Белогорский музей — город, где служил комбат. Приблизь снимок: портрет майора, даты жизни и рассказ о том, как он накрыл собой гранату.'
+audioguide:
+  audioSrc: audio-guide-solnechnikov-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от первого спасённого через учебные стрельбы и четыре секунды — к слову родителей: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Комбат Солнце
+  - t: 22
+    mark: 0:22
+    title: Первые гранаты
+  - t: 44
+    mark: 0:44
+    title: Четыре секунды
+  - t: 66
+    mark: '1:06'
+    title: Звезда
+  - t: 88
+    mark: '1:28'
+    title: Родители
+  transcript:
+  - Первую жизнь Сергей Солнечников спас в четырнадцать лет — вытащил тонущую шестилетнюю девочку из речной воронки. Через много лет он стал майором и командиром батальона связи под Белогорском.
+  - Двадцать восьмое марта две тысячи двенадцатого года. Первое в батальоне занятие с боевыми гранатами. Граната отскочила назад, в окоп. Она упала в метре от солдат — в окопе стояло целое отделение, около десяти человек.
+  - На решение у комбата было четыре секунды — он не потратил ни одной на себя. Солдаты даже не увидели гранату — увидели, как комбат уже лежит на ней. В комбата попало тридцать два осколка.
+  - 'Последний статус комбата: «Счастье — когда звезда упала, а загадать-то и нечего». Звезду Героя для комбата попросили матери спасённых срочников. Звание Героя России — через шесть дней после гибели.'
+  - 'Солдату грозило пять лет. Родители героя заступились за него: «Если и ему жизнь перечеркнуть — зачем погиб наш сын?» Отец сказал: «Жил бы для себя… а он жил для других — и на гранату эту лёг».'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
