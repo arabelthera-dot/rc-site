@@ -1,0 +1,757 @@
+# Р773: день 20 февраля — оборона Петропавловска-Камчатского, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-20
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Оборона Петропавловска-Камчатского — «Русские не сдаются» — Русская цивилизация
+  description: Крошечный гарнизон отразил эскадру — враг не высадился
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-20/
+  sobytie: Оборона Петропавловска-Камчатского
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Оборона Петропавловска-Камчатского — «Русские не сдаются» — Русская цивилизация
+    description: Крошечный гарнизон отразил эскадру — враг не высадился
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-20/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Оборона Петропавловска-Камчатского — «Русские не сдаются»
+    description: Крошечный гарнизон отразил эскадру — враг не высадился
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-20/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1854'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-20-goskatalog-56207442.jpg
+  alt: 'Чертёж парусного фрегата сбоку: три мачты без парусов, на корпусе и рангоуте цифрами отмечены места попаданий, внизу столбцы пояснений.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=45442537
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Фрегат «Аврора» после нападения англо-французской эскадры на Петропавловск в 1854 году: цифрами отмечены пробоины. Литография Р. Гундризера, чертил лейтенант Федоровский. Хранится в Музее Суворова.'
+  credit: Музей Суворова, Госкаталог № 45198010
+  width: 800
+  height: 462
+  vid: chertezh
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '56207442'
+  hranitel: Государственный мемориальный музей А. В. Суворова, Санкт-Петербург
+  podpis_chto: Чертёж «Фрегат Аврора после нападения англо-французской эскадры на Петропавловск в 1854 г.»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: вторая половина XIX века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный мемориальный музей А. В. Суворова, Санкт-Петербург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=45442537
+  svyashchennoe: false
+  prava:
+    avtor: лейтенант Федоровский (чертёж), Р. Гундризер (литография)
+    god_sozdaniya: вторая половина XIX века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 45198010
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 45198010
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=45442537
+  hint: Фрегат «Аврора» после боя
+  celikom: true
+kroshka: День 20 · Оборона Петропавловска-Камчатского
+lead:
+  data: День 20 · февраль · Петропавловский порт, Камчатка, 1854 год
+  privyazka: 'Дата условная: 20 февраля — день музея; событие — оборона Петропавловского порта от англо-французской эскадры 18–27 августа 1854 года.'
+  kto: Защитники Петропавловска · гарнизон порта, моряки фрегата «Аврора» и транспорта «Двина», камчатские добровольцы
+  h1: Оборона Петропавловска-Камчатского
+  hook: Крошечный гарнизон отразил эскадру — враг не высадился.
+stamp:
+- v: '900'
+  k: десантников сбросили с сопки
+- v: '290'
+  k: наших солдат в отрядах
+- v: '8'
+  k: часов держала огонь батарея
+- v: '80'
+  k: вражеских орудий против батареи
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/20feb-petropavlovsk
+  format: horizontal
+  pole: nesdayutsya/20feb-petropavlovsk:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Крошечный гарнизон отразил эскадру — враг не высадился
+  poster: /muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-20feb-petropavlovsk.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-20.json и кадров дня. Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Оборона Петропавловска-Камчатского
+  abzacy:
+  - 'В августе 1854 года, в Крымскую войну, к Петропавловскому порту на Камчатке подошла англо-французская эскадра. Весть о ней пришла заранее: Камчатку предупредил король Гавайских островов Камеамеа Третий. Фрегат «Аврора» успел прийти в порт — он ускользнул от английских и французских кораблей в тумане перуанского порта Кальяо.'
+  - Двадцатого августа батарея лейтенанта князя Дмитрия Максутова восемь часов держала огонь восьмидесяти орудий трёх фрегатов. Двадцать четвёртого августа враг высадил на Никольскую сопку около девятисот человек. Их сбросили с горы малые отряды, где было всего двести девяносто наших солдат. Пятидесятник Карандашев с раненой рукой вытащил пушку изо рва и выстрелил, боцман Спылихин с семнадцатью охотниками кинулся в самый центр десанта.
+  - 'Десант бежал к кораблям и бросил знамя британской морской пехоты. Через год двенадцать вражеских кораблей пришли мстить, но нашли пустой город: гарнизон Василия Завойко ушёл морем в Де-Кастри. Лондонская «Таймс» написала о двух чёрных пятнах на британском флаге.'
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Оборона Петропавловска-Камчатского
+  udary:
+  - id: ns-0220-prajs
+    summary: Английский адмирал Прайс застрелился перед штурмом — эскадру повёл француз
+    det:
+    - Объединённой эскадрой командовал английский контр-адмирал Прайс, французским отрядом — контр-адмирал Феврие де Пуант.
+    src: 'Источник: Рапорт В. С. Завойко об обороне Петропавловского порта, 1854 год. Сайт правительства Камчатского края — https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm; Военная литература. Тихоокеанский флот. Оборона Петропавловска-Камчатского — https://militera.lib.ru/h/tihookeanskiy_flot/02.html'
+    stranica: статья
+    href: https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm
+    otryvok: «…умер английский контр-адмирал Прайс, что будто бы он застрелился по неосторожности на верхней палубе в то время, когда наши батареи открыли огонь.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0220-udalov
+    summary: Пленный матрос Удалов прыгнул с вражеского брига в море, лишь бы не стрелять по своим
+    det:
+    - 'Это было в 1855 году: Семён Удалов, матрос 47-го флотского экипажа, не пошёл к пушке по зову командира-француза.'
+    src: 'Источник: Арбузов А. П. Оборона Петропавловского порта в 1854 году против англо-французской эскадры («Морской сборник», 1860) — http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html'
+    stranica: статья
+    href: http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html
+    otryvok: «…матрос 47-го флотского экипажа Семен Удалов бросается за борт неприятельского брига Obligado, чтобы не служить врагу против своих»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 2
+  - id: ns-0220-avrora
+    summary: «Аврора» ускользнула в тумане из Кальяо — мимо английской и французской эскадр
+    det:
+    - Весной 1854 года «Аврора» зашла в перуанский порт Кальяо — там стояли английский и французский фрегаты под адмиральскими флагами.
+    src: 'Источник: Стрелов. Тихоокеанский флот: ветераны. Фрегат «Аврора» — https://flot.com/publications/books/shelf/tofvets/7.htm'
+    stranica: статья
+    href: https://flot.com/publications/books/shelf/tofvets/7.htm
+    otryvok: «14 апреля раннее утро начиналось низовым туманом… в несколько минут матросы “Авроры” поставили паруса и быстро подняли якорь.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 3
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-20-goskatalog-14716587.jpg
+      alt: 'Круглый значок с белой и голубой эмалью: парусный фрегат на фоне крейсера, по кругу надпись.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=15666052
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Значок «Оборона Петропавловска-Камчатского 1854 года. Фрегат „Аврора“», 1974 год. Хранится в Камчатском краевом объединённом музее.
+      credit: Камчатский краевой объединённый музей, Госкаталог № 15551240
+      width: 800
+      height: 779
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '14716587'
+      hranitel: Камчатский краевой объединённый музей, Петропавловск-Камчатский
+      podpis_chto: Значок «Оборона Петропавловска-Камчатского 1854 года. Фрегат „Аврора“»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1974 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Камчатский краевой объединённый музей, Петропавловск-Камчатский
+        otkuda: https://goskatalog.ru/portal/#/collections?id=15666052
+      svyashchennoe: false
+      prava:
+        avtor: А. Ф. Винокуров
+        god_sozdaniya: '1974'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 15551240
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 15551240
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=15666052
+      hint: Значок фрегату «Аврора», 1974
+      celikom: true
+  - id: ns-0220-gavaji
+    summary: 'Король Гавайев за полгода предупредил Камчатку: летом придут англичане и французы'
+    det:
+    - Письмо короля Камеамеа Третьего пришло на Камчатку с попутным американским судном.
+    src: 'Источник: «Год литературы». Петропавловск в августе, или Крымская война на Камчатке — https://godliteratury.ru/articles/2019/07/18/petropavlovsk-v-avguste-ili-krymskaya; «Культура». «Велика сила идёт, но Бог за нас»: 170 лет назад малая русская рать отстояла Камчатку — https://portal-kultura.ru/articles/history/364240-velika-sila-idet-no-bog-za-nas-170-let-nazad-malaya-russkaya-rat-otstoyala-kamchatku/'
+    stranica: статья
+    href: https://godliteratury.ru/articles/2019/07/18/petropavlovsk-v-avguste-ili-krymskaya
+    otryvok: «…известие о возможном скором нападении англо-французских сил поступило к Завойко в мае 1854 года от гавайского короля Камеамеа Третьего…»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 4
+  - id: ns-0220-900
+    summary: Около 900 десантников сбросили с сопки отряды, где было всего 290 наших солдат
+    det:
+    - Так доносил о бое 24 августа 1854 года военный губернатор Камчатки Василий Завойко.
+    src: 'Источник: Рапорт В. С. Завойко об обороне Петропавловского порта, 1854 год. Сайт правительства Камчатского края — https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm'
+    stranica: статья
+    href: https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm
+    otryvok: «…всего же около 900 человек; десант этот был отражен и сброшен с горы малыми отдельными отрядами, в которых считалось 290 нижних чинов»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 5
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-20-goskatalog-17661143.jpg
+      alt: Погрудный портрет мужчины средних лет в мундире с эполетами и орденом на шее, волосы зачёсаны набок.
+      data_source: https://goskatalog.ru/portal/#/collections?id=17773886
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Василий Степанович Завойко, военный губернатор Камчатки и командир Петропавловского порта. Литография по рисунку Дейнерта, 1860 год. Хранится в музее-заповеднике Л. Н. Толстого.
+      credit: Музей-заповедник Л. Н. Толстого, Госкаталог № 17641062
+      width: 592
+      height: 800
+      vid: risunok
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '17661143'
+      hranitel: Государственный музей-заповедник Л. Н. Толстого «Ясная Поляна», Тульская область
+      podpis_chto: Портрет В. С. Завойко, литография по рисунку Дейнерта
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1860 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный музей-заповедник Л. Н. Толстого «Ясная Поляна», Тульская область
+        otkuda: https://goskatalog.ru/portal/#/collections?id=17773886
+      svyashchennoe: false
+      prava:
+        avtor: Дейнерт (рисунок)
+        god_sozdaniya: '1860'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 17641062
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 17641062
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=17773886
+      hint: Василий Завойко, 1860
+      celikom: true
+  - id: ns-0220-ernani
+    summary: У убитого английского капитана в кармане — план десанта на афише оперы «Эрнани»
+    det:
+    - Афишка была из театра в Сан-Франциско, план десанта набросан на ней карандашом.
+    src: 'Источник: Арбузов А. П. Оборона Петропавловского порта в 1854 году против англо-французской эскадры («Морской сборник», 1860) — http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html'
+    stranica: статья
+    href: http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html
+    otryvok: «…а в кармане — состав высаженного десанта, афишку из театра Франциско в Калифорнии об опере "Эрнани» и пометку на ней карандашом.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 6
+  - id: ns-0220-karandashev
+    summary: Пятидесятник Карандашев с раненой рукой один вытащил пушку изо рва и выстрелил
+    det:
+    - Выстрел рассеял первый взвод колонны, которая атаковала батарею.
+    src: 'Источник: «Камчадалы». Герои Петропавловской обороны — https://www.kamchadaly.ru/index.php/486-geroi-petropavlovskoj-oborony'
+    stranica: статья
+    href: https://www.kamchadaly.ru/index.php/486-geroi-petropavlovskoj-oborony
+    otryvok: «Он, тяжело раненный в руку, один вытащил наверх пушку, свалившуюся в ров, и выпалил по неприятелю.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+    n: 7
+  - id: ns-0220-suncov
+    summary: Новобранец из Забайкалья Сунцов одной пулей убил командира вражеского десанта
+    det:
+    - Иван Сунцов стал кавалером знака отличия военного ордена Святого Георгия Победоносца.
+    src: 'Источник: Арбузов А. П. Оборона Петропавловского порта в 1854 году против англо-французской эскадры («Морской сборник», 1860) — http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html; «Камчадалы». Георгиевские кавалеры — оборона Петропавловского порта 1854 года — http://kamchadaly.ru/index.php/487-georgievskie-kavalery-oborona-petropavlovskogo-porta-1854-goda'
+    stranica: статья
+    href: http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html
+    otryvok: «…Сунцов, подполз изпод горы и пулею прострелил — из-под бороды в череп — голову английского лейтенанта Паркера.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 8
+  - id: ns-0220-tajms
+    summary: '«Таймс» про уход Завойко: «Два чёрных пятна — их не смыть водами океанов»'
+    det:
+    - Весной 1855 года русские корабли ушли из Петропавловска в залив Де-Кастри, пока враг искал их в тумане у Авачинской губы.
+    src: 'Источник: Военная литература. Тихоокеанский флот. Оборона Петропавловска-Камчатского — https://militera.lib.ru/h/tihookeanskiy_flot/02.html'
+    stranica: статья
+    href: https://militera.lib.ru/h/tihookeanskiy_flot/02.html
+    otryvok: «…нанесла нашему британскому флагу два черных пятна, которые не могут быть смыты никакими водами океанов вовеки»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 9
+  - id: ns-0220-pustoj-gorod
+    summary: Через год 12 вражеских кораблей с 420 пушками пришли мстить — и нашли пустой город
+    det:
+    - В апреле 1855 года Петропавловск эвакуировали по приказу генерал-губернатора Николая Муравьёва.
+    src: 'Источник: Военная литература. Тихоокеанский флот. Оборона Петропавловска-Камчатского — https://militera.lib.ru/h/tihookeanskiy_flot/02.html; Президентская библиотека. Оборона Петропавловска-Камчатского — https://www.prlib.ru/history/619511'
+    stranica: статья
+    href: https://militera.lib.ru/h/tihookeanskiy_flot/02.html
+    otryvok: «…англо-французская эскадра из 12 кораблей, вооруженных в общей сложности 420 орудиями. Не найдя никого в городе, захватчики подожгли несколько зданий»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 10
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0220-obryv
+    summary: Враги сами прыгали с обрыва Никольской сопки — вниз падали уже мёртвыми
+    det:
+    - Так описал конец штыкового боя на Никольской сопке Василий Завойко.
+    src: 'Источник: Рапорт В. С. Завойко об обороне Петропавловского порта, 1854 год. Сайт правительства Камчатского края — https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm'
+    stranica: статья
+    href: https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm
+    otryvok: «…одни были сброшены с утеса штыками, другие сами бросались вниз, надеясь спуститься к берегу… на берег падали только обезображенные трупы.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 11
+  - id: ns-0220-maksutov
+    summary: Батарея князя Дмитрия Максутова восемь часов держала огонь 80 орудий трёх фрегатов
+    det:
+    - За бой 20 августа 1854 года лейтенант князь Дмитрий Максутов получил орден Святого Георгия 4-й степени.
+    src: 'Источник: «Камчадалы». Георгиевские кавалеры — оборона Петропавловского порта 1854 года — http://kamchadaly.ru/index.php/487-georgievskie-kavalery-oborona-petropavlovskogo-porta-1854-goda'
+    stranica: статья
+    href: http://kamchadaly.ru/index.php/487-georgievskie-kavalery-oborona-petropavlovskogo-porta-1854-goda
+    otryvok: «…командуемая им батарея № 2 выдерживала в продолжении 8 часов огонь 80 орудий трех фрегатов и бомбических орудий парохода»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: false
+    n: 12
+  - id: ns-0220-znamya
+    summary: Десант бежал и бросил знамя британской морской пехоты — трофей повезли в Петербург
+    det:
+    - Знамя взяли 24 августа 1854 года, по новому стилю — 5 сентября.
+    src: 'Источник: Центральный военно-морской музей. Выставка «Петропавловская оборона» — https://navalmuseum.ru/exhibition?id=306; Президентская библиотека. Оборона Петропавловска-Камчатского — https://www.prlib.ru/history/619511'
+    stranica: статья
+    href: https://navalmuseum.ru/exhibition?id=306
+    otryvok: «Это знамя было взято в качестве трофея защитниками Петропавловского порта 24 августа (5 сентября) 1854 года»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n10
+    dlya_voprosa: false
+    n: 13
+  - id: ns-0220-kandaly
+    summary: Английский капитан взял на десант кандалы для пленных — в плен попали англичане
+    det:
+    - Перед боем капитан Паркер набросал план десанта на обороте афиши и сделал записи на память.
+    src: 'Источник: «Рамблер». «Мы в крови, как в луже» — https://sport.rambler.ru/other/42778997-my-v-krovi-kak-v-luzhe/; Рапорт В. С. Завойко об обороне Петропавловского порта, 1854 год. Сайт правительства Камчатского края — https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm'
+    stranica: статья
+    href: https://sport.rambler.ru/other/42778997-my-v-krovi-kak-v-luzhe/
+    otryvok: «…напомнил себе захватить побольше кандалов для будущих пленных из Петропавловска.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n11
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0220-spylihin
+    summary: Боцман Спылихин с 17 охотниками кинулся в самый центр вражеского десанта
+    det:
+    - Так сказано в приказе камчатского военного губернатора № 97 от 5 марта 1855 года.
+    src: 'Источник: «Камчадалы». Герои Петропавловской обороны — https://www.kamchadaly.ru/index.php/486-geroi-petropavlovskoj-oborony'
+    stranica: статья
+    href: https://www.kamchadaly.ru/index.php/486-geroi-petropavlovskoj-oborony
+    otryvok: «…он первый вызвал в охотники 17-ти человек броситься в центр неприятеля, растянувшагося по горе…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+    n: 15
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — около 900; 2 — король Гавайских островов; 3 — опера «Эрнани»; 4 — восемь часов; 5 — пустой город.'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: сколько вражеских десантников сбросили с Никольской сопки отряды, где было всего 290 наших солдат?'
+    o:
+    - Около 100
+    - Около 300
+    - Около 900
+    - Около 5000
+    a: 2
+    e: Около 900 десантников сбросили с сопки отряды, где было всего 290 наших солдат.
+  - q: Кто за полгода предупредил Камчатку, что летом придут англичане и французы?
+    o:
+    - Король Гавайев
+    - Китайский император
+    - Японский сёгун
+    - Американский президент
+    a: 0
+    e: 'Король Гавайев за полгода предупредил Камчатку: летом придут англичане и французы.'
+  - q: На афише какой оперы был план десанта в кармане убитого английского капитана?
+    o:
+    - «Кармен»
+    - «Аида»
+    - «Эрнани»
+    - «Травиата»
+    a: 2
+    e: У убитого английского капитана в кармане — план десанта на афише оперы «Эрнани».
+  - q: Сколько часов батарея князя Дмитрия Максутова держала огонь 80 орудий трёх фрегатов?
+    o:
+    - Один час
+    - Три часа
+    - Восемь часов
+    - Сутки
+    a: 2
+    e: Батарея князя Дмитрия Максутова восемь часов держала огонь 80 орудий трёх фрегатов.
+  - q: Что нашли 12 вражеских кораблей, которые через год пришли мстить?
+    o:
+    - Новые батареи
+    - Пустой город
+    - Русскую эскадру
+    - Засаду в бухте
+    a: 1
+    e: Через год 12 вражеских кораблей с 420 пушками пришли мстить — и нашли пустой город.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-20-goskatalog-11243338.jpg
+  alt: Склон, поросший деревьями; на переднем плане старая пушка на постаменте, вокруг — цепи на столбиках.
+  data_source: https://goskatalog.ru/portal/#/collections?id=13149513
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Место батареи Александра Максутова, отличившейся при обороне Петропавловска-Камчатского, снимок 1959 года. Хранится в Центральном военно-морском музее.
+  credit: ЦВММ, Госкаталог № 13025702
+  width: 800
+  height: 549
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '11243338'
+  hranitel: Центральный военно-морской музей имени императора Петра Великого, Санкт-Петербург
+  podpis_chto: Фотография «Батарея А. Максутова, отличившаяся при обороне Петропавловска-Камчатского в 1854–1855 гг.»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1959 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого, Санкт-Петербург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=13149513
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1959'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 13025702
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 13025702
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=13149513
+  hint: Батарея Максутова, 1959
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-20-goskatalog-7807165.jpg
+  alt: 'Металлический значок с красным рисунком: крейсер под флагом и парусный фрегат на волнах.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=10629076
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Значок «Оборона Петропавловска-Камчатского 1854 г. Фрегат „Аврора“», 1970–1980-е годы. Хранится в Камчатском краевом объединённом музее.
+  credit: Камчатский краевой объединённый музей, Госкаталог № 10517525
+  width: 786
+  height: 800
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '7807165'
+  hranitel: Камчатский краевой объединённый музей, Петропавловск-Камчатский
+  podpis_chto: Значок «Оборона Петропавловска-Камчатского 1854 г. Фрегат „Аврора“»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1970–1980-е годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: Камчатский краевой объединённый музей, Петропавловск-Камчатский
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10629076
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1970–1980-е годы
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 10517525
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 10517525
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10629076
+  hint: Значок «Оборона Петропавловска»
+  celikom: true
+sources:
+- href: https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm
+  title: Рапорт В. С. Завойко об обороне Петропавловского порта, 1854 год. Сайт правительства Камчатского края
+  note: к фактам 1, 5, 11, 14
+- href: https://militera.lib.ru/h/tihookeanskiy_flot/02.html
+  title: Военная литература. Тихоокеанский флот. Оборона Петропавловска-Камчатского
+  note: к фактам 1, 9, 10
+- href: http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html
+  title: Арбузов А. П. Оборона Петропавловского порта в 1854 году против англо-французской эскадры («Морской сборник», 1860)
+  note: к фактам 2, 6, 8
+- href: https://flot.com/publications/books/shelf/tofvets/7.htm
+  title: 'Стрелов. Тихоокеанский флот: ветераны. Фрегат «Аврора»'
+  note: к факту 3
+- href: https://godliteratury.ru/articles/2019/07/18/petropavlovsk-v-avguste-ili-krymskaya
+  title: «Год литературы». Петропавловск в августе, или Крымская война на Камчатке
+  note: к факту 4
+- href: https://portal-kultura.ru/articles/history/364240-velika-sila-idet-no-bog-za-nas-170-let-nazad-malaya-russkaya-rat-otstoyala-kamchatku/
+  title: '«Культура». «Велика сила идёт, но Бог за нас»: 170 лет назад малая русская рать отстояла Камчатку'
+  note: к факту 4
+- href: https://www.kamchadaly.ru/index.php/486-geroi-petropavlovskoj-oborony
+  title: «Камчадалы». Герои Петропавловской обороны
+  note: к фактам 7, 15
+- href: http://kamchadaly.ru/index.php/487-georgievskie-kavalery-oborona-petropavlovskogo-porta-1854-goda
+  title: «Камчадалы». Георгиевские кавалеры — оборона Петропавловского порта 1854 года
+  note: к фактам 8, 12
+- href: https://www.prlib.ru/history/619511
+  title: Президентская библиотека. Оборона Петропавловска-Камчатского
+  note: к фактам 10, 13
+- href: https://navalmuseum.ru/exhibition?id=306
+  title: Центральный военно-морской музей. Выставка «Петропавловская оборона»
+  note: к факту 13
+- href: https://sport.rambler.ru/other/42778997-my-v-krovi-kak-v-luzhe/
+  title: «Рамблер». «Мы в крови, как в луже»
+  note: к факту 14
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 21 февраля (запись готовится)
+  hook: Следующий день музея.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Оборона Петропавловска-Камчатского — Музей стойкости и подвига «Русские не сдаются»
+    text: Крошечный гарнизон отразил эскадру — враг не высадился
+  prev:
+    href: index.html
+    title: 19 февраля
+  next:
+    href: index.html
+    title: 21 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько вражеских десантников сбросили с Никольской сопки защитники Петропавловска?
+  a: Около девятисот
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0220-petropavlovsk
+data_sobytiya: '1854-08-24'
+data_uslovnaya: 20 февраля — день музея; событие — оборона Петропавловского порта от англо-французской эскадры 18–27 августа 1854 года.
+chto_sluchilos: В августе 1854 года, в Крымскую войну, англо-французская эскадра напала на Петропавловский порт на Камчатке. Гарнизон Василия Завойко, моряки фрегата «Аврора» и камчатские добровольцы отбили обстрел батарей и сбросили с Никольской сопки около девятисот десантников; эскадра ушла.
+god: 1854
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Чертёж «Фрегат Аврора после нападения англо-французской эскадры на Петропавловск в 1854 г.», вторая половина XIX века
+  muzej: Государственный мемориальный музей А. В. Суворова
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=45442537
+- chto: Портрет В. С. Завойко, литография по рисунку Дейнерта, 1860
+  muzej: Государственный музей-заповедник Л. Н. Толстого «Ясная Поляна»
+  gorod: Тульская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17773886
+- chto: Значок «Оборона Петропавловска-Камчатского 1854 года. Фрегат „Аврора“», 1974
+  muzej: Камчатский краевой объединённый музей
+  gorod: Петропавловск-Камчатский
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=15666052
+chitat_dalshe:
+- nazvanie: Оборона Петропавловского порта в 1854 году против англо-французской эскадры
+  gde: А. П. Арбузов, «Морской сборник», 1860
+  ssylka: http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html
+- nazvanie: Рапорт В. С. Завойко об обороне Петропавловского порта
+  gde: Сайт правительства Камчатского края
+  ssylka: https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm
+- nazvanie: Петропавловск в августе, или Крымская война на Камчатке
+  gde: «Год литературы»
+  ssylka: https://godliteratury.ru/articles/2019/07/18/petropavlovsk-v-avguste-ili-krymskaya
+- nazvanie: Выставка «Петропавловская оборона»
+  gde: Центральный военно-морской музей
+  ssylka: https://navalmuseum.ru/exhibition?id=306
+istochniki:
+- id: n1
+  baza: gosorgan-rf
+  nazvanie: Рапорт В. С. Завойко об обороне Петропавловского порта, 1854 год. Сайт правительства Камчатского края
+  ssylka: https://www.kamchatsky-krai.ru/history/zavoiko_raport.htm
+- id: n2
+  baza: militera
+  nazvanie: Военная литература. Тихоокеанский флот. Оборона Петропавловска-Камчатского
+  ssylka: https://militera.lib.ru/h/tihookeanskiy_flot/02.html
+- id: n3
+  baza: periodika
+  nazvanie: Арбузов А. П. Оборона Петропавловского порта в 1854 году против англо-французской эскадры («Морской сборник», 1860)
+  ssylka: http://www.imha.ru/print:page,1,1144529617-oborona-petropavlovskogo-porta-v-1854-godu-protiv-anglo-francuzskoj-yeskadry.html
+- id: n4
+  baza: kniga
+  nazvanie: 'Стрелов. Тихоокеанский флот: ветераны. Фрегат «Аврора»'
+  ssylka: https://flot.com/publications/books/shelf/tofvets/7.htm
+- id: n5
+  baza: periodika
+  nazvanie: «Год литературы». Петропавловск в августе, или Крымская война на Камчатке
+  ssylka: https://godliteratury.ru/articles/2019/07/18/petropavlovsk-v-avguste-ili-krymskaya
+- id: n6
+  baza: periodika
+  nazvanie: '«Культура». «Велика сила идёт, но Бог за нас»: 170 лет назад малая русская рать отстояла Камчатку'
+  ssylka: https://portal-kultura.ru/articles/history/364240-velika-sila-idet-no-bog-za-nas-170-let-nazad-malaya-russkaya-rat-otstoyala-kamchatku/
+- id: n7
+  baza: sajt-organizacii
+  nazvanie: «Камчадалы». Герои Петропавловской обороны
+  ssylka: https://www.kamchadaly.ru/index.php/486-geroi-petropavlovskoj-oborony
+- id: n8
+  baza: sajt-organizacii
+  nazvanie: «Камчадалы». Георгиевские кавалеры — оборона Петропавловского порта 1854 года
+  ssylka: http://kamchadaly.ru/index.php/487-georgievskie-kavalery-oborona-petropavlovskogo-porta-1854-goda
+- id: n9
+  baza: prlib
+  nazvanie: Президентская библиотека. Оборона Петропавловска-Камчатского
+  ssylka: https://www.prlib.ru/history/619511
+- id: n10
+  baza: navalmuseum
+  nazvanie: Центральный военно-морской музей. Выставка «Петропавловская оборона»
+  ssylka: https://navalmuseum.ru/exhibition?id=306
+- id: n11
+  baza: periodika
+  nazvanie: «Рамблер». «Мы в крови, как в луже»
+  ssylka: https://sport.rambler.ru/other/42778997-my-v-krovi-kak-v-luzhe/
+citaty: []
+velichina_chislo: 900
+velichina_edinica: десантников
+velichina_chto: сбросили с Никольской сопки защитники Петропавловска
+voinskaya_chast: 'Гарнизон Петропавловского порта: 47-й флотский экипаж, Камчатский флотский экипаж, моряки фрегата «Аврора» и транспорта «Двина», добровольцы'
+operaciya: Оборона Петропавловского порта от англо-французской эскадры
+front: Крымская (Восточная) война, Тихий океан, август 1854 года
+mesto_sobytiya:
+  nazvanie: Петропавловск-Камчатский, Камчатский край
+  shirota: 53.02
+  dolgota: 158.65
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Чертёж «Фрегат Аврора после нападения англо-французской эскадры на Петропавловск в 1854 г.», вторая половина XIX века
+- Государственный мемориальный музей А. В. Суворова
+slovar:
+- lyudi:zavojko
+vizual:
+  imya: petropavlovsk-avrora-chertezh
+  vid: predmet
+  kicker: Чертёж под лупой
+  h2: Пробоины «Авроры»
+  lead: 'Этот чертёж составили после боя 1854 года. Приблизь корпус и мачты фрегата: цифрами отмечено каждое попадание вражеских ядер.'
+audioguide:
+  audioSrc: audio-guide-petropavlovsk-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от тумана Кальяо через батарею Максутова и Никольскую сопку — к пустому городу: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Предупреждение
+  - t: 22
+    mark: 0:22
+    title: Батарея
+  - t: 44
+    mark: 0:44
+    title: Никольская сопка
+  - t: 66
+    mark: '1:06'
+    title: Знамя
+  - t: 88
+    mark: '1:28'
+    title: Пустой город
+  transcript:
+  - 'Король Гавайев за полгода предупредил Камчатку: летом придут англичане и французы. «Аврора» ускользнула в тумане из Кальяо — мимо английской и французской эскадр. Английский адмирал Прайс застрелился перед штурмом — эскадру повёл француз.'
+  - Батарея князя Дмитрия Максутова восемь часов держала огонь восьмидесяти орудий трёх фрегатов.
+  - Около девятисот десантников сбросили с сопки отряды, где было всего двести девяносто наших солдат. Пятидесятник Карандашев с раненой рукой один вытащил пушку изо рва и выстрелил. Боцман Спылихин с семнадцатью охотниками кинулся в самый центр вражеского десанта. Новобранец из Забайкалья Сунцов одной пулей убил командира вражеского десанта.
+  - Десант бежал и бросил знамя британской морской пехоты — трофей повезли в Петербург. У убитого английского капитана в кармане — план десанта на афише оперы «Эрнани». Английский капитан взял на десант кандалы для пленных — в плен попали англичане.
+  - 'Через год двенадцать вражеских кораблей с четырьмястами двадцатью пушками пришли мстить — и нашли пустой город. «Таймс» про уход Завойко: «Два чёрных пятна — их не смыть водами океанов». Крошечный гарнизон отразил эскадру — враг не высадился.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
