@@ -1,0 +1,33 @@
+{
+  "title": "История в 52 секунды",
+  "intro": "Гамалея привёз от Пастера прививку от бешенства и открыл в Одессе станцию, куда везли укушенных со всей империи",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43705859529) из сценария days/21feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/21feb-gamaleya/day-21feb-gamaleya.mp4",
+    "local": "muzei/izobreteniya/video/day-21feb-gamaleya.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 52.2,
+    "mb": 14.6
+  },
+  "vertical": {
+    "file": "izobreteniya/21feb-gamaleya/day-21feb-gamaleya-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-21feb-gamaleya-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 52.2,
+    "mb": 13.9
+  },
+  "poster": {
+    "file": "izobreteniya/21feb-gamaleya/day-21feb-gamaleya-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-21feb-gamaleya-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/21feb-gamaleya/day-21feb-gamaleya-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-21feb-gamaleya-9x16-poster.jpg",
+    "v": 1
+  }
+}
