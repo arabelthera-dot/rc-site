@@ -1,0 +1,33 @@
+{
+  "title": "История в 50 секунд",
+  "intro": "Филатов вернул зрение тысячам слепых роговицей умерших: охлаждённая ткань приживалась лучше свежей",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43722397804) из сценария days/27feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/27feb-filatov/day-27feb-filatov.mp4",
+    "local": "muzei/izobreteniya/video/day-27feb-filatov.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 50,
+    "mb": 11.7
+  },
+  "vertical": {
+    "file": "izobreteniya/27feb-filatov/day-27feb-filatov-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-27feb-filatov-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 50,
+    "mb": 10.8
+  },
+  "poster": {
+    "file": "izobreteniya/27feb-filatov/day-27feb-filatov-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-27feb-filatov-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/27feb-filatov/day-27feb-filatov-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-27feb-filatov-9x16-poster.jpg",
+    "v": 1
+  }
+}
