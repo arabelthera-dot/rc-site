@@ -577,6 +577,44 @@ figures:
     ssylka: https://goskatalog.ru/portal/#/collections?id=18390740
   hint: Рубаха казака в походе
   celikom: true
+- src: /muzei/ne-sdayutsya/img/02-27-goskatalog-10335780.jpg
+  alt: 'Два листа с рисунками тушью: слева бородатый атаман в высокой меховой шапке и длинном кафтане с посохом, справа казак в халате с саблей.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=12489779
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Г. А. Ознобишин. «Войсковой донской атаман XVII века» и «Донской казак XVIII века», рисунки тушью, 1876 год. Хранятся в Новочеркасском музее истории донского казачества.'
+  credit: Новочеркасский музей истории донского казачества, Госкаталог № 12366332
+  width: 1600
+  height: 1200
+  vid: risunok
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.15
+    w: 0.4
+    h: 0.75
+  nomer_predmeta: net
+  nomer_snimka: '10335780'
+  hranitel: Новочеркасский музей истории донского казачества, Новочеркасск
+  podpis_chto: Рисунки Г. А. Ознобишина «Войсковой атаман XVII в., Донской казак XVIII в.»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1876 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Новочеркасский музей истории донского казачества, Новочеркасск
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12489779
+  svyashchennoe: false
+  prava:
+    avtor: Г. А. Ознобишин
+    god_sozdaniya: '1876'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 12366332
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 12366332
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12489779
+  hint: Донской атаман XVII века
+  celikom: true
 sources:
 - href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
   title: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15
@@ -633,8 +671,9 @@ proof:
   status: utverzhdeno
   note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
 nomer_dnya: ns-0227-azov
-data_sobytiya: '1641-09-26'
-data_uslovnaya: 27 февраля — день музея; событие — Азовское осадное сидение, 24 июня — 26 сентября 1641 года.
+data_sobytiya: '1641-10-06'
+data_staryj_stil: '1641-09-26'
+data_uslovnaya: 27 февраля — день музея; событие — Азовское осадное сидение, 24 июня — 26 сентября 1641 года по старому стилю (6 октября по новому).
 chto_sluchilos: Летом 1641 года войско султана и крымского хана осадило Азов, взятый донскими казаками в 1637 году. Около 5,5 тысячи казаков 93 дня отбивали приступы, вели подкопы и в ночь на 26 сентября заставили турок уйти.
 god: 1641
 god_tochnost: tochno
