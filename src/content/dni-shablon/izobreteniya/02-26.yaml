@@ -1,0 +1,851 @@
+muzei: izobreteniya
+key: 02-26
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0226-kauchuk
+data_sobytiya: '1932-07-07'
+chto_sluchilos: 'В 1932 году в Ярославле пошёл первый в мире завод синтетического каучука: Сергей Лебедев сделал каучук из спирта, и страна получила свою резину без колоний с гевеей.'
+god: 1932
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Первые изделия из синтетического каучука, 1930–1933
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5970856
+- chto: Фотография «С. В. Лебедев в лаборатории Военно-медицинской академии», 1927
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5981767
+- chto: Фотография «Воронежский завод синтетического каучука СК-2, готовящийся к пуску», 1932
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5564396
+chitat_dalshe:
+- nazvanie: «История каучука»
+  gde: Воронежская областная научная библиотека
+  ssylka: https://idea.vrnlib.ru/article/istoriya-kauchuka/
+- nazvanie: «Лебедев Сергей Васильевич (1874–1934 гг.)»
+  gde: «Вестник химической промышленности»
+  ssylka: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+- nazvanie: «Покатили на картошке»
+  gde: «Коммерсантъ»
+  ssylka: https://www.kommersant.ru/doc/8797767
+- nazvanie: лекция 4 «Лебедев С. В.»
+  gde: Санкт-Петербургское суворовское военное училище
+  ssylka: https://info.skspba.ru/assets/kadetam/doc/him/lekcziya-4.-lebedev-s.v..pdf
+istochniki:
+- id: vrnlib
+  baza: sajt-organizacii
+  nazvanie: «История каучука» — Воронежская областная научная библиотека
+  ssylka: https://idea.vrnlib.ru/article/istoriya-kauchuka/
+- id: vestkhimprom
+  baza: periodika
+  nazvanie: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
+  ssylka: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+- id: kommersant
+  baza: periodika
+  nazvanie: «Покатили на картошке» — «Коммерсантъ»
+  ssylka: https://www.kommersant.ru/doc/8797767
+- id: skspba
+  baza: sajt-organizacii
+  nazvanie: лекция 4 «Лебедев С. В.» — Санкт-Петербургское суворовское военное училище
+  ssylka: https://info.skspba.ru/assets/kadetam/doc/him/lekcziya-4.-lebedev-s.v..pdf
+- id: gk-5970856
+  baza: goskatalog
+  nazvanie: Фотография «Первые изделия из синтетического каучука, способ получения которого разработал С. В. Лебедев», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5970856
+- id: gk-5981767
+  baza: goskatalog
+  nazvanie: Фотография «Лебедев Сергей Васильевич, советский химик, профессор, в лаборатории Военно-медицинской академии», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5981767
+- id: gk-49104123
+  baza: goskatalog
+  nazvanie: Шина автомобильная, Невинномысский историко-краеведческий музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=49104123
+- id: gk-5982330
+  baza: goskatalog
+  nazvanie: Фотография «Лебедев Сергей Васильевич, советский химик, профессор Военно-медицинской академии РККА», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5982330
+- id: gk-5564396
+  baza: goskatalog
+  nazvanie: Фотография «Воронежский завод синтетического каучука СК-2, готовящийся к пуску», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5564396
+- id: gk-5565073
+  baza: goskatalog
+  nazvanie: Фотография «Первый завод синтетического каучука «СК-1»», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5565073
+- id: gk-5566237
+  baza: goskatalog
+  nazvanie: Фотография «Панорама Ефремовского завода синтетического каучука», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5566237
+citaty: []
+velichina_chislo: 500
+velichina_edinica: килограммов
+velichina_chto: столько отборного картофеля уходило на одну автомобильную шину
+etiketka_oblozhki:
+- Фотография. Первые изделия из синтетического каучука, 1930–1933
+- Государственный центральный музей современной истории России
+slovar:
+- mesto:sankt-peterburg
+head:
+  title: Первый в мире промышленный синтез синтетического каучука, 1932 — Музей «Что изобрели русские первыми в мире»
+  description: 'Эдисон называл синтетический каучук невозможным, а первый в мире завод пошёл у нас: Лебедев сделал каучук из спирта, Ярославский завод подняли за 11,5 месяцев.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-26/
+  sobytie: Первый в мире промышленный синтез синтетического каучука
+  god: '1932'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первый в мире промышленный синтез синтетического каучука, 1932
+    description: 'Эдисон называл синтетический каучук невозможным, а первый в мире завод пошёл у нас: Лебедев сделал каучук из спирта, Ярославский завод подняли за 11,5 месяцев.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-26/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-26-goskatalog-5970856.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первый в мире промышленный синтез синтетического каучука, 1932
+    description: 'Эдисон называл синтетический каучук невозможным, а первый в мире завод пошёл у нас: Лебедев сделал каучук из спирта, Ярославский завод подняли за 11,5 месяцев.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-26/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-26-goskatalog-5970856.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-26-goskatalog-5970856.jpg
+  glavnoe_na_kartinke:
+    x: 0.3
+    y: 0.05
+    w: 0.65
+    h: 0.6
+  width: 800
+  height: 591
+  alt: 'Старая фотография: витрина, над ней горой лежат автомобильные шины, в стеклянных шкафах — резиновые изделия'
+  data_source: https://goskatalog.ru/portal/#/collections?id=5970856
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+  podpis: Фотография «Первые изделия из синтетического каучука, способ получения которого разработал С. В. Лебедев», 1930–1933. Хранит Государственный центральный музей современной истории России.
+  credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5794853.'
+  hint: Фото · первые изделия
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1930–1933
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1930–1933
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=5970856
+  nomer_predmeta: '5794853'
+  nomer_snimka: net
+  hranitel: Государственный центральный музей современной истории России
+  podlinnik:
+    gde: Государственный центральный музей современной истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=5970856
+  svyashchennoe: false
+  podpis_chto: Фотография «Первые изделия из синтетического каучука, способ получения которого разработал С. В. Лебедев»
+  podpis_gde: Россия
+  podpis_kogda: 1930–1933
+  pometka_prav: citirovanie-1274
+kroshka: 26 февраля · Каучук Лебедева
+lead:
+  data: 1932 · Ярославль
+  privyazka: 26 февраля — день музея; в 1932 году в Ярославле пошёл первый в мире завод синтетического каучука по способу Сергея Лебедева.
+  kto: Сергей Лебедев, химик
+  h1: Первый в мире промышленный синтез синтетического каучука · 1932
+  hook: Своих колоний у страны не было, и Лебедев сделал каучук из спирта — первый в мире завод синтетической резины пошёл у нас
+stamp:
+- v: '2'
+  k: килограмма каучука — сдать к 1 января 1928 года
+- v: '500'
+  k: кг картофеля — на одну шину
+- v: 16 070
+  k: км прошла первая шина
+- v: 11,5
+  k: месяцев — стройка завода в Ярославле
+daynav:
+- id: story
+  label: Каучук
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-kauchuk-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу каучука Лебедева: от двух килограммов к полуночи через шину со справкой к первому в мире заводу.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: «Невозможно»
+  - t: 35
+    mark: 0:35
+    title: Гонка до полуночи
+  - t: 70
+    mark: '1:10'
+    title: Шина со справкой
+  - t: 105
+    mark: '1:45'
+    title: Завод за год
+  transcript:
+  - 'Эдисон говорил: синтетический каучук невозможен, вести из Советов — ложь. А первый в мире завод — у нас. Своих колоний с гевеей у нас не было — Лебедев сделал каучук из спирта.'
+  - Два килограмма каучука надо было сдать до полуночи 1 января 1928 года — Лебедев успел. Восемь человек работали с 9 утра до 11 вечера, без выходных и без зарплаты — и обогнали мир. Условий конкурса не выдержал ни один образец лабораторий мира — премию получил один Лебедев.
+  - Первую шину из синтетического каучука несли по городу со справкой, что она не краденая. Её надели на машину самого Лебедева — она прошла 16 070 километров.
+  - 'Ярославский завод подняли за одиннадцать с половиной месяцев — 500 комсомольцев с лопатами и тачками. За неполный год у нас пошли три завода синтетического каучука: Ярославль, Воронеж, Ефремов.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Каучук Лебедева
+  h2: Как резину сделали из спирта
+  udary:
+  - summary: Гонка до полуночи
+    det:
+    - Два килограмма каучука надо было сдать до полуночи 1 января 1928 года — Лебедев успел
+    src: 'Источник: Воронежская областная научная библиотека, «История каучука»'
+  - summary: Шина со справкой
+    det:
+    - Первую шину из синтетического каучука несли по городу со справкой, что она не краденая
+    src: 'Источник: Санкт-Петербургское суворовское военное училище, лекция 4 «Лебедев С. В.»'
+  - summary: Завод за 11,5 месяцев
+    det:
+    - Ярославский завод подняли за 11,5 месяцев — 500 комсомольцев с лопатами и тачками
+    src: 'Источник: «Коммерсантъ», «Покатили на картошке»'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr: *id001
+    src: 'Источник: Воронежская областная научная библиотека, «История каучука»'
+    otryvok: 'Эдисон: «синтетический каучук невозможен, вести из Советов — ложь». А первый в мире завод — у нас'
+    stranica: «История каучука» — Воронежская областная научная библиотека
+    href: https://idea.vrnlib.ru/article/istoriya-kauchuka/
+    pometka: документ
+    id: edison
+    istochnik: vrnlib
+    dlya_voprosa: false
+  - n: 2
+    sravnenie: net
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-26-goskatalog-5981767.jpg
+      glavnoe_na_kartinke:
+        x: 0.25
+        y: 0.3
+        w: 0.6
+        h: 0.65
+      width: 587
+      height: 800
+      alt: 'Старая фотография: мужчина с бородкой, в костюме и бабочке, сидит у лабораторного стола со стеклянными приборами'
+      data_source: https://goskatalog.ru/portal/#/collections?id=5981767
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фотография «Лебедев Сергей Васильевич, советский химик, профессор, в лаборатории Военно-медицинской академии», 1927. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5805761.'
+      hint: Фото · Лебедев в лаборатории
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1927'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1927'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=5981767
+      nomer_predmeta: '5805761'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=5981767
+      svyashchennoe: false
+      podpis_chto: Фотография «Лебедев Сергей Васильевич, советский химик, профессор, в лаборатории Военно-медицинской академии»
+      podpis_gde: Ленинград
+      podpis_kogda: '1927'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
+    otryvok: Условий конкурса не выдержал ни один образец лабораторий мира — премию получил один Лебедев
+    stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
+    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    pometka: документ
+    id: odin-lebedev
+    istochnik: vestkhimprom
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    src: 'Источник: Воронежская областная научная библиотека, «История каучука»'
+    otryvok: Восемь человек работали с 9 утра до 11 вечера, без выходных и без зарплаты — и обогнали мир
+    stranica: «История каучука» — Воронежская областная научная библиотека
+    href: https://idea.vrnlib.ru/article/istoriya-kauchuka/
+    pometka: документ
+    id: vosem-chelovek
+    istochnik: vrnlib
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    src: 'Источник: Воронежская областная научная библиотека, «История каучука»'
+    otryvok: Два килограмма каучука надо было сдать до полуночи 1 января 1928 года — Лебедев успел
+    stranica: «История каучука» — Воронежская областная научная библиотека
+    href: https://idea.vrnlib.ru/article/istoriya-kauchuka/
+    pometka: документ
+    id: dva-kilogramma
+    istochnik: vrnlib
+    dlya_voprosa: true
+    otvet: '2'
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    kadr: &id003
+      src: /muzei/izobreteniya/img/02-26-goskatalog-49104123.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.8
+      width: 1200
+      height: 900
+      alt: Старая автомобильная шина лежит на деревянном полу
+      data_source: https://goskatalog.ru/portal/#/collections?id=49104123
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Невинномысский историко-краеведческий музей · Госкаталог
+      podpis: Шина автомобильная, XX век. Хранит Невинномысский историко-краеведческий музей.
+      credit: 'Хранится: Невинномысский историко-краеведческий музей. Госкаталог музейного фонда РФ, № 49575080.'
+      hint: Предмет · шина
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: XX век
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: XX век
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=49104123
+      nomer_predmeta: '49575080'
+      nomer_snimka: net
+      hranitel: Невинномысский историко-краеведческий музей
+      podlinnik:
+        gde: Невинномысский историко-краеведческий музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=49104123
+      svyashchennoe: false
+      podpis_chto: Шина автомобильная
+      podpis_gde: Невинномысск
+      podpis_kogda: XX век
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
+    otryvok: На одну автомобильную шину уходило 500 кг отборного картофеля
+    stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
+    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    pometka: документ
+    id: 500-kg-kartofelya
+    istochnik: vestkhimprom
+    dlya_voprosa: true
+    otvet: '500'
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    src: 'Источник: Санкт-Петербургское суворовское военное училище, лекция 4 «Лебедев С. В.»'
+    otryvok: Первую шину из нашего каучука надели на машину самого Лебедева — она прошла 16 070 км
+    stranica: лекция 4 «Лебедев С. В.» — Санкт-Петербургское суворовское военное училище
+    href: https://info.skspba.ru/assets/kadetam/doc/him/lekcziya-4.-lebedev-s.v..pdf
+    pometka: документ
+    id: 16070-km
+    istochnik: skspba
+    dlya_voprosa: true
+    otvet: 16 070
+    otvet_edinstvennyj: true
+  - n: 7
+    sravnenie: net
+    src: 'Источник: Санкт-Петербургское суворовское военное училище, лекция 4 «Лебедев С. В.»'
+    otryvok: Первую шину из синтетического каучука несли по городу со справкой, что она не краденая
+    stranica: лекция 4 «Лебедев С. В.» — Санкт-Петербургское суворовское военное училище
+    href: https://info.skspba.ru/assets/kadetam/doc/him/lekcziya-4.-lebedev-s.v..pdf
+    pometka: документ
+    id: spravka
+    istochnik: skspba
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    src: 'Источник: «Коммерсантъ», «Покатили на картошке»'
+    otryvok: Своих колоний с гевеей у нас не было — Лебедев сделал каучук из спирта
+    stranica: «Покатили на картошке» — «Коммерсантъ»
+    href: https://www.kommersant.ru/doc/8797767
+    pometka: документ
+    id: iz-spirta
+    istochnik: kommersant
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    kadr: &id004
+      src: /muzei/izobreteniya/img/02-26-goskatalog-5565073.jpg
+      glavnoe_na_kartinke:
+        x: 0.25
+        y: 0.35
+        w: 0.65
+        h: 0.6
+      width: 755
+      height: 365
+      alt: 'Старая фотография: многоэтажный корпус и высокие колонны завода, впереди — стройплощадка и забор'
+      data_source: https://goskatalog.ru/portal/#/collections?id=5565073
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фотография «Первый завод синтетического каучука «СК-1»», 1932. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5430638.'
+      hint: Фото · завод СК-1
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1932'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1932'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=5565073
+      nomer_predmeta: '5430638'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=5565073
+      svyashchennoe: false
+      podpis_chto: Фотография «Первый завод синтетического каучука «СК-1»»
+      podpis_gde: Ярославль
+      podpis_kogda: '1932'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Коммерсантъ», «Покатили на картошке»'
+    otryvok: Ярославский завод подняли за 11,5 месяцев — 500 комсомольцев с лопатами и тачками
+    stranica: «Покатили на картошке» — «Коммерсантъ»
+    href: https://www.kommersant.ru/doc/8797767
+    pometka: документ
+    id: 11-mesyacev
+    istochnik: kommersant
+    dlya_voprosa: true
+    otvet: 11,5
+    otvet_edinstvennyj: true
+  - n: 10
+    sravnenie: net
+    kadr: &id005
+      src: /muzei/izobreteniya/img/02-26-goskatalog-5982330.jpg
+      glavnoe_na_kartinke:
+        x: 0.25
+        y: 0.15
+        w: 0.5
+        h: 0.75
+      width: 800
+      height: 579
+      alt: 'Старая фотография: мужчина с бородкой, в костюме и бабочке, сидит за столом, сложив руки'
+      data_source: https://goskatalog.ru/portal/#/collections?id=5982330
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фотография «Лебедев Сергей Васильевич, советский химик, профессор Военно-медицинской академии РККА», 1927. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5805428.'
+      hint: Фото · Лебедев
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1927'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1927'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=5982330
+      nomer_predmeta: '5805428'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=5982330
+      svyashchennoe: false
+      podpis_chto: Фотография «Лебедев Сергей Васильевич, советский химик, профессор Военно-медицинской академии РККА»
+      podpis_gde: Ленинград
+      podpis_kogda: '1927'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
+    otryvok: Лебедев обещал выход 20 %, экспертиза насчитала 22 % — сделал больше, чем заявил
+    stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
+    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    pometka: документ
+    id: 22-procenta
+    istochnik: vestkhimprom
+    dlya_voprosa: true
+    otvet: '22'
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о нашем каучуке
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: «Коммерсантъ», «Покатили на картошке»'
+    otryvok: 'Автопробег до Каракумов: шины из нашего каучука после «зверских дорог» — «в прекрасном состоянии»'
+    stranica: «Покатили на картошке» — «Коммерсантъ»
+    href: https://www.kommersant.ru/doc/8797767
+    pometka: документ
+    id: karakumy
+    istochnik: kommersant
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
+    otryvok: В 1909 году два года работы дали всего 19 граммов вещества и доклад на полчаса
+    stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
+    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    pometka: документ
+    id: 19-grammov
+    istochnik: vestkhimprom
+    dlya_voprosa: true
+    otvet: '19'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    src: 'Источник: «Коммерсантъ», «Покатили на картошке»'
+    otryvok: Премия — 100 000 рублей, когда зарплата была 40–50 рублей в месяц
+    stranica: «Покатили на картошке» — «Коммерсантъ»
+    href: https://www.kommersant.ru/doc/8797767
+    pometka: документ
+    id: premiya
+    istochnik: kommersant
+    dlya_voprosa: true
+    otvet: 100 000
+    otvet_edinstvennyj: true
+  - n: 14
+    sravnenie: net
+    src: 'Источник: «Коммерсантъ», «Покатили на картошке»'
+    otryvok: Тракторы на стройке завода работали по 20 часов в сутки — менялись только трактористы
+    stranica: «Покатили на картошке» — «Коммерсантъ»
+    href: https://www.kommersant.ru/doc/8797767
+    pometka: документ
+    id: traktory
+    istochnik: kommersant
+    dlya_voprosa: true
+    otvet: '20'
+    otvet_edinstvennyj: true
+  - n: 15
+    sravnenie: net
+    kadr: &id006
+      src: /muzei/izobreteniya/img/02-26-goskatalog-5564396.jpg
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.05
+        w: 1.0
+        h: 0.9
+      width: 800
+      height: 286
+      alt: 'Старая панорама: корпуса и трубы нового завода, перед ними — пустая стройплощадка'
+      data_source: https://goskatalog.ru/portal/#/collections?id=5564396
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фотография «Воронежский завод синтетического каучука СК-2, готовящийся к пуску», 1932. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5431099.'
+      hint: Фото · завод СК-2
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1932'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1932'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=5564396
+      nomer_predmeta: '5431099'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=5564396
+      svyashchennoe: false
+      podpis_chto: Фотография «Воронежский завод синтетического каучука СК-2, готовящийся к пуску»
+      podpis_gde: Воронеж
+      podpis_kogda: '1932'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Коммерсантъ», «Покатили на картошке»'
+    otryvok: 'За неполный год у нас пошли три завода синтетического каучука: Ярославль, Воронеж, Ефремов'
+    stranica: «Покатили на картошке» — «Коммерсантъ»
+    href: https://www.kommersant.ru/doc/8797767
+    pometka: документ
+    id: tri-zavoda
+    istochnik: kommersant
+    dlya_voprosa: true
+    otvet: '3'
+    otvet_edinstvennyj: true
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории каучука Лебедева — своё место: килограммы, километры и проценты.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: konkurs
+      nazvanie: Столько каучука надо было сдать к 1 января 1928 года
+      verno_ru: Два килограмма каучука надо было сдать до полуночи 1 января 1928 года — Лебедев успел
+    - kod: kartofel
+      nazvanie: Столько картофеля уходило на одну шину
+      verno_ru: На одну автомобильную шину уходило 500 кг отборного картофеля
+    - kod: probeg
+      nazvanie: Столько прошла первая шина на машине Лебедева
+      verno_ru: Первую шину из нашего каучука надели на машину самого Лебедева — она прошла 16 070 км
+    - kod: vyhod
+      nazvanie: Такой выход насчитала экспертиза
+      verno_ru: Лебедев обещал выход 20 %, экспертиза насчитала 22 % — сделал больше, чем заявил
+    podpisi:
+    - kod: n2
+      tekst: 2 кг
+      mesto: konkurs
+      mimo_ru: 2 килограмма — столько каучука надо было сдать на конкурс.
+    - kod: n500
+      tekst: 500 кг
+      mesto: kartofel
+      mimo_ru: 500 килограммов — столько картофеля уходило на одну шину.
+    - kod: n16070
+      tekst: 16 070 км
+      mesto: probeg
+      mimo_ru: 16 070 километров — столько прошла первая шина.
+    - kod: n22
+      tekst: 22 %
+      mesto: vyhod
+      mimo_ru: 22 % — такой выход насчитала экспертиза.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 2 килограмма к полуночи, 500 килограммов картофеля, 16 070 километров и 22 процента.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 2 кг — каучук на конкурс, 500 кг — картофель на одну шину, 16 070 км — пробег первой шины, 22 % — выход по экспертизе.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: в 1932 году в Ярославле пошёл первый в мире завод синтетического каучука по способу Сергея Лебедева.'
+  net: 'Как это работало дальше: за неполный год у нас пошли три завода синтетического каучука — Ярославль, Воронеж, Ефремов.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Ленинград
+    - 2 килограмма каучука Лебедева на конкурс
+    - '1928'
+  - - Ленинград
+    - опытный завод, первый блок
+    - '1931'
+  - - Ярославль
+    - первый в мире завод синтетического каучука
+    - '1932'
+  - - Воронеж и Ефремов
+    - ещё два завода
+    - 1932–1933
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 2 килограмма; 500 килограммов; 16 070 километров; 11,5 месяцев; 22 процента.'
+  ball: 8
+  voprosy:
+  - q: Сколько каучука надо было сдать до полуночи 1 января 1928 года?
+    o:
+    - 2 кг
+    - 20 кг
+    - 200 кг
+    a: 0
+    e: Два килограмма каучука надо было сдать до полуночи 1 января 1928 года — Лебедев успел
+  - q: Сколько картофеля уходило на одну автомобильную шину?
+    o:
+    - 5 кг
+    - 50 кг
+    - 500 кг
+    a: 2
+    e: На одну автомобильную шину уходило 500 кг отборного картофеля
+  - q: Сколько прошла первая шина из нашего каучука на машине Лебедева?
+    o:
+    - 160 км
+    - 1607 км
+    - 16 070 км
+    a: 2
+    e: Первую шину из нашего каучука надели на машину самого Лебедева — она прошла 16 070 км
+  - q: За сколько месяцев подняли Ярославский завод?
+    o:
+    - 11,5
+    - '24'
+    - '36'
+    a: 0
+    e: Ярославский завод подняли за 11,5 месяцев — 500 комсомольцев с лопатами и тачками
+  - q: Какой выход насчитала экспертиза у Лебедева?
+    o:
+    - 12 %
+    - 20 %
+    - 22 %
+    a: 2
+    e: Лебедев обещал выход 20 %, экспертиза насчитала 22 % — сделал больше, чем заявил
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал каучука Лебедева.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- *id001
+- *id002
+- *id003
+- *id004
+- *id005
+- *id006
+- src: /muzei/izobreteniya/img/02-26-goskatalog-5566237.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  width: 800
+  height: 406
+  alt: 'Старая панорама: заводские корпуса с высокими колоннами, перед ними дощатый забор'
+  data_source: https://goskatalog.ru/portal/#/collections?id=5566237
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+  podpis: Фотография «Панорама Ефремовского завода синтетического каучука», 1933. Хранит Государственный центральный музей современной истории России.
+  credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5431555.'
+  hint: Фото · Ефремовский завод
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1933'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1933'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=5566237
+  nomer_predmeta: '5431555'
+  nomer_snimka: net
+  hranitel: Государственный центральный музей современной истории России
+  podlinnik:
+    gde: Государственный центральный музей современной истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=5566237
+  svyashchennoe: false
+  podpis_chto: Фотография «Панорама Ефремовского завода синтетического каучука»
+  podpis_gde: Ефремов
+  podpis_kogda: '1933'
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://idea.vrnlib.ru/article/istoriya-kauchuka/
+  title: «История каучука» — Воронежская областная научная библиотека
+  note: факты дня
+- href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+  title: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
+  note: факты дня
+- href: https://www.kommersant.ru/doc/8797767
+  title: «Покатили на картошке» — «Коммерсантъ»
+  note: факты дня
+- href: https://info.skspba.ru/assets/kadetam/doc/him/lekcziya-4.-lebedev-s.v..pdf
+  title: лекция 4 «Лебедев С. В.» — Санкт-Петербургское суворовское военное училище
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  href: den/02-27/
+  title: 27 февраля — Пересадка роговицы и тканевая терапия
+  hook: 'Филатов вернул зрение тысячам слепых роговицей умерших: охлаждённая ткань приживалась лучше свежей'
+  main: true
+- lbl: Предыдущий день
+  href: den/02-25/
+  title: 25 февраля — Первый в мире токамак Т-1 · Л. А. Арцимович, 1958
+  hook: 'Слово «токамак» во всех языках мира русское: магнитную бутылку для звезды построили в Москве'
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Главный химик завода
+  - - 70
+    - Мастер каучука
+  - - 40
+    - Лаборант
+  - - 0
+    - Гость дня
+return:
+  q: Сколько картофеля уходило на одну автомобильную шину?
+  a: На одну автомобильную шину уходило 500 кг отборного картофеля
+  src: «Вестник химической промышленности», vestkhimprom.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-26-kauchuk:claim-1932
+  ours:
+    kind: publication
+    title: «Покатили на картошке»
+    date: '1932-07-07'
+    holder: «Коммерсантъ»
+    source_url: https://www.kommersant.ru/doc/8797767
+podskazki_igry:
+- 2 кг — это конкурс 1928 года
+- 500 кг — это картофель на одну шину
+- 16 070 км — это пробег первой шины
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Ярославль
+  shirota: 57.6261
+  dolgota: 39.8845
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Из картофеля получают спирт
+- Спирт пропускают через нагретый порошок-катализатор — выходит газ бутадиен
+- Бутадиен с натрием сцепляется в длинные цепочки — это и есть каучук
+- Каучук смешивают с серой и прогревают — выходит резина для шин
+data_uslovnaya: 26 февраля — день музея; в 1932 году в Ярославле пошёл первый в мире завод синтетического каучука по способу Сергея Лебедева.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/26feb-kauchuk
+  format: horizontal
+  pole: izobreteniya/26feb-kauchuk:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  intro: Как Лебедев сделал резину из спирта и обогнал мир.
+  poster: video/day-26feb-kauchuk-poster.jpg?v=1
+  mp4: video/day-26feb-kauchuk.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/26feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
