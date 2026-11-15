@@ -1,0 +1,33 @@
+{
+  "title": "История в 52 секунды",
+  "intro": "Накрыл собой боевую гранату — и спас солдат",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43691322769) из сценария days/ns25feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/25feb-solnechnikov/day-25feb-solnechnikov.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-25feb-solnechnikov.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 52.1,
+    "mb": 13.3
+  },
+  "vertical": {
+    "file": "nesdayutsya/25feb-solnechnikov/day-25feb-solnechnikov-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-25feb-solnechnikov-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 52.1,
+    "mb": 12.3
+  },
+  "poster": {
+    "file": "nesdayutsya/25feb-solnechnikov/day-25feb-solnechnikov-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-25feb-solnechnikov-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/25feb-solnechnikov/day-25feb-solnechnikov-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-25feb-solnechnikov-9x16-poster.jpg",
+    "v": 1
+  }
+}
