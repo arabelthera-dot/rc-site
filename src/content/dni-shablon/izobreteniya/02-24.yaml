@@ -1,0 +1,844 @@
+muzei: izobreteniya
+key: 02-24
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0224-komintern
+data_sobytiya: '1922-09-17'
+chto_sluchilos: Осенью 1922 года в Москве заработала радиостанция имени Коминтерна мощностью 12 киловатт — мощнее станций Нью-Йорка, Парижа и Берлина, вместе взятых.
+god: 1922
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Радиолампа «Двурогая» конструкции М. А. Бонч-Бруевича, 1920-е
+  muzej: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+  gorod: Нижний Новгород
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12899863
+- chto: Генераторная лампа «Г1», 1926–1927
+  muzej: Центральный музей связи имени А. С. Попова
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=10174924
+- chto: Генераторная лампа с водяным охлаждением, 1954
+  muzej: Центральный музей связи имени А. С. Попова
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=19458490
+chitat_dalshe:
+- nazvanie: «Нижегородская радиолаборатория»
+  gde: Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/connect/nnovlab.htm
+- nazvanie: «Инкубатор идей»
+  gde: Музей НРЛ ННГУ
+  ssylka: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+- nazvanie: '«Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче'
+  gde: МГТУ им. Н. Э. Баумана
+  ssylka: https://www.iu3.bmstu.ru/Content/img/opencw/im/pubs/bonchbruevich.pdf
+- nazvanie: примечания к тому 45
+  gde: В. И. Ленин, ПСС, т. 45
+  ssylka: https://leninism.su/works/84-tom-45/562-primechaniy-45.html
+istochniki:
+- id: cm
+  baza: sajt-organizacii
+  nazvanie: «Нижегородская радиолаборатория» — Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/connect/nnovlab.htm
+- id: nrl
+  baza: sajt-organizacii
+  nazvanie: «Инкубатор идей» — Музей НРЛ ННГУ
+  ssylka: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+- id: bmstu
+  baza: periodika
+  nazvanie: '«Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче — МГТУ им. Н. Э. Баумана'
+  ssylka: https://www.iu3.bmstu.ru/Content/img/opencw/im/pubs/bonchbruevich.pdf
+- id: lenin
+  baza: kniga
+  nazvanie: примечания к тому 45 — В. И. Ленин, ПСС, т. 45
+  ssylka: https://leninism.su/works/84-tom-45/562-primechaniy-45.html
+- id: gk-13106658
+  baza: goskatalog
+  nazvanie: Фотография «Бонч-Бруевич М. А. (1888–1940), основатель советской радиоламповой промышленности», Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=13106658
+- id: gk-12899863
+  baza: goskatalog
+  nazvanie: Радиолампа катодная генераторная ГБ-10 конструкции М. Бонч-Бруевича «Двурогая», Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=12899863
+- id: gk-19458490
+  baza: goskatalog
+  nazvanie: Генераторная лампа с водяным охлаждением, Центральный музей связи имени А. С. Попова — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=19458490
+- id: gk-10174924
+  baza: goskatalog
+  nazvanie: Генераторная лампа «Г1», Центральный музей связи имени А. С. Попова — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=10174924
+- id: gk-5562424
+  baza: goskatalog
+  nazvanie: Фотография «Монтаж радиостанций для испытания генераторных ламп на заводе «Светлана»», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5562424
+- id: gk-11061686
+  baza: goskatalog
+  nazvanie: Фотография радиолампы конструкции М. А. Бонч-Бруевича 1915–1917 годов «Катодное реле» для международных сношений, Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=11061686
+- id: gk-10174913
+  baza: goskatalog
+  nazvanie: Генераторная лампа «ГК-20», Центральный музей связи имени А. С. Попова — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=10174913
+citaty: []
+velichina_chislo: 12
+velichina_edinica: киловатт
+velichina_chto: столько давала станция имени Коминтерна — больше Нью-Йорка, Парижа и Берлина вместе
+etiketka_oblozhki:
+- Фотография. М. А. Бонч-Бруевич, 1918
+- Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+slovar:
+- mesto:moskva
+- mesto:nizhniy-novgorod
+head:
+  title: Первая в мире мощная радиовещательная станция «Коминтерн», 1922 — Музей «Что изобрели русские первыми в мире»
+  description: 'Станция имени Коминтерна в Москве была мощнее радио Нью-Йорка, Парижа и Берлина, вместе взятых: 12 киловатт, медные лампы с водой из Нижнего и рекорд в 1600 километров.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-24/
+  sobytie: Первая в мире мощная радиовещательная станция «Коминтерн»
+  god: '1922'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первая в мире мощная радиовещательная станция «Коминтерн», 1922
+    description: 'Станция имени Коминтерна в Москве была мощнее радио Нью-Йорка, Парижа и Берлина, вместе взятых: 12 киловатт, медные лампы с водой из Нижнего и рекорд в 1600 километров.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-24/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-24-goskatalog-13106658.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первая в мире мощная радиовещательная станция «Коминтерн», 1922
+    description: 'Станция имени Коминтерна в Москве была мощнее радио Нью-Йорка, Парижа и Берлина, вместе взятых: 12 киловатт, медные лампы с водой из Нижнего и рекорд в 1600 километров.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-24/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-24-goskatalog-13106658.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-24-goskatalog-13106658.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.05
+    w: 0.6
+    h: 0.9
+  width: 610
+  height: 540
+  alt: 'Старая фотография: мужчина в тёмном костюме с бабочкой, с усами и залысинами, смотрит в объектив'
+  data_source: https://goskatalog.ru/portal/#/collections?id=13106658
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского · Госкаталог
+  podpis: Фотография «Бонч-Бруевич М. А. (1888–1940), основатель советской радиоламповой промышленности», 1918. Хранит Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского.
+  credit: 'Хранится: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского. Госкаталог музейного фонда РФ, № 14077740.'
+  hint: Фото · Бонч-Бруевич
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1918'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1918'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=13106658
+  nomer_predmeta: '14077740'
+  nomer_snimka: net
+  hranitel: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+  podlinnik:
+    gde: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+    otkuda: https://goskatalog.ru/portal/#/collections?id=13106658
+  svyashchennoe: false
+  podpis_chto: Фотография «Бонч-Бруевич М. А. (1888–1940), основатель советской радиоламповой промышленности»
+  podpis_gde: Россия
+  podpis_kogda: '1918'
+  pometka_prav: citirovanie-1274
+kroshka: 24 февраля · Станция имени Коминтерна
+lead:
+  data: Сентябрь 1922 · Москва
+  privyazka: 24 февраля — день музея; осенью 1922 года в Москве заработала радиостанция имени Коминтерна мощностью 12 киловатт — самая мощная в мире.
+  kto: Михаил Бонч-Бруевич, радиоинженер
+  h1: Первая в мире мощная радиовещательная станция «Коминтерн» · 1922
+  hook: 'Двенадцати киловатт в эфире не было ни у кого в мире: Москву слушала Европа, а лампы для станции точили руками'
+stamp:
+- v: '12'
+  k: киловатт — станция в Москве
+- v: 1,5
+  k: киловатта — станция в Нью-Йорке
+- v: '25'
+  k: киловатт — лампы, которые увидел граф Арко
+- v: '1600'
+  k: километров — рекорд дальности переговоров
+daynav:
+- id: story
+  label: Станция
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-komintern-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу станции имени Коминтерна: от медной лампы с водой через рояль во дворе к удивлению «Телефункена».'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Сильнее трёх столиц
+  - t: 35
+    mark: 0:35
+    title: Медь и вода
+  - t: 70
+    mark: '1:10'
+    title: Рояль во дворе
+  - t: 105
+    mark: '1:45'
+    title: «Это невозможно»
+  transcript:
+  - Одна московская станция «Коминтерн» била мощнее Нью-Йорка, Парижа и Берлина, вместе взятых. В Нью-Йорке — полтора киловатта, в Париже и под Берлином — по пять. В Москве — двенадцать.
+  - Редких металлов для ламп в Нижнем не было — анод сделали из меди и остудили водой. Ленин дал на станцию два с половиной месяца — и дальность в две тысячи вёрст.
+  - Студия не успела — рояль вынесли во двор и положили на крышку телефонную трубку. По Москве ездил грузовик с громкоговорителем — радио слушали прямо на улице.
+  - 'Под Берлином инженеры «Телефункена» услышали «Говорит Москва!» и сказали: «Это невозможно». Немецкий «Телефункен» заказал наши лампы — чтобы разобрать и скопировать у себя.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Станция имени Коминтерна
+  h2: Как Москва заговорила на всю Европу
+  udary:
+  - summary: Медь вместо редких металлов
+    det:
+    - Редких металлов для ламп в Нижнем не было — анод сделали из меди и остудили водой
+    src: 'Источник: МГТУ им. Н. Э. Баумана, «Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче'
+  - summary: Рояль во дворе
+    det:
+    - Студия не успела — рояль вынесли во двор и положили на крышку телефонную трубку
+    src: 'Источник: МГТУ им. Н. Э. Баумана, «Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче'
+  - summary: «Это невозможно»
+    det:
+    - 'Под Берлином инженеры «Телефункена» услышали «Говорит Москва!» и сказали: «Это невозможно»'
+    src: 'Источник: МГТУ им. Н. Э. Баумана, «Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr: *id001
+    src: 'Источник: Виртуальный компьютерный музей, «Нижегородская радиолаборатория»'
+    otryvok: Одна московская станция «Коминтерн» била мощнее Нью-Йорка, Парижа и Берлина, вместе взятых
+    stranica: «Нижегородская радиолаборатория» — Виртуальный компьютерный музей
+    href: https://www.computer-museum.ru/connect/nnovlab.htm
+    pometka: документ
+    id: moshchnee-treh-stolic
+    istochnik: cm
+    dlya_voprosa: false
+  - n: 2
+    sravnenie: net
+    src: 'Источник: МГТУ им. Н. Э. Баумана, «Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче'
+    otryvok: 'Под Берлином инженеры «Телефункена» услышали «Говорит Москва!» и сказали: «Это невозможно»'
+    stranica: '«Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче — МГТУ им. Н. Э. Баумана'
+    href: https://www.iu3.bmstu.ru/Content/img/opencw/im/pubs/bonchbruevich.pdf
+    pometka: документ
+    id: eto-nevozmozhno
+    istochnik: bmstu
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-24-goskatalog-12899863.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.9
+      width: 172
+      height: 510
+      alt: Высокая стеклянная радиолампа с двумя выводами-рожками по бокам
+      data_source: https://goskatalog.ru/portal/#/collections?id=12899863
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского · Госкаталог
+      podpis: Радиолампа катодная генераторная ГБ-10 конструкции М. Бонч-Бруевича «Двурогая», 1920-е. Хранит Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского.
+      credit: 'Хранится: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского. Госкаталог музейного фонда РФ, № 13297423.'
+      hint: Предмет · лампа «Двурогая»
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1920-е
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1920-е
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=12899863
+      nomer_predmeta: '13297423'
+      nomer_snimka: net
+      hranitel: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+      podlinnik:
+        gde: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+        otkuda: https://goskatalog.ru/portal/#/collections?id=12899863
+      svyashchennoe: false
+      podpis_chto: Радиолампа катодная генераторная ГБ-10 конструкции М. Бонч-Бруевича «Двурогая»
+      podpis_gde: Нижний Новгород
+      podpis_kogda: 1920-е
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
+    otryvok: Немецкий «Телефункен» заказал наши лампы — чтобы разобрать и скопировать у себя
+    stranica: «Инкубатор идей» — Музей НРЛ ННГУ
+    href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+    pometka: документ
+    id: telefunken-zakazal
+    istochnik: nrl
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    src: 'Источник: МГТУ им. Н. Э. Баумана, «Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче'
+    otryvok: Студия не успела — рояль вынесли во двор и положили на крышку телефонную трубку
+    stranica: '«Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче — МГТУ им. Н. Э. Баумана'
+    href: https://www.iu3.bmstu.ru/Content/img/opencw/im/pubs/bonchbruevich.pdf
+    pometka: документ
+    id: royal-vo-dvore
+    istochnik: bmstu
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    kadr: &id003
+      src: /muzei/izobreteniya/img/02-24-goskatalog-19458490.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.9
+      width: 634
+      height: 800
+      alt: 'Разобранная генераторная лампа: медный цилиндр анода и стеклянный баллон рядом'
+      data_source: https://goskatalog.ru/portal/#/collections?id=19458490
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог
+      podpis: Генераторная лампа с водяным охлаждением, 1954. Хранит Центральный музей связи имени А. С. Попова.
+      credit: 'Хранится: Центральный музей связи имени А. С. Попова. Госкаталог музейного фонда РФ, № 19327746.'
+      hint: Предмет · лампа с водой
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1954'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1954'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=19458490
+      nomer_predmeta: '19327746'
+      nomer_snimka: net
+      hranitel: Центральный музей связи имени А. С. Попова
+      podlinnik:
+        gde: Центральный музей связи имени А. С. Попова
+        otkuda: https://goskatalog.ru/portal/#/collections?id=19458490
+      svyashchennoe: false
+      podpis_chto: Генераторная лампа с водяным охлаждением
+      podpis_gde: Россия
+      podpis_kogda: '1954'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: МГТУ им. Н. Э. Баумана, «Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче'
+    otryvok: Редких металлов для ламп в Нижнем не было — анод сделали из меди и остудили водой
+    stranica: '«Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче — МГТУ им. Н. Э. Баумана'
+    href: https://www.iu3.bmstu.ru/Content/img/opencw/im/pubs/bonchbruevich.pdf
+    pometka: документ
+    id: med-i-voda
+    istochnik: bmstu
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
+    otryvok: Москва вызвала Берлин голосом — немцы услышали, но ответить так же было нечем
+    stranica: «Инкубатор идей» — Музей НРЛ ННГУ
+    href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+    pometka: документ
+    id: vyzov-berlina
+    istochnik: nrl
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    kadr: &id004
+      src: /muzei/izobreteniya/img/02-24-goskatalog-10174924.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.9
+      width: 517
+      height: 800
+      alt: 'Генераторная радиолампа «Г1»: стеклянный баллон с металлическим анодом внутри'
+      data_source: https://goskatalog.ru/portal/#/collections?id=10174924
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог
+      podpis: Генераторная лампа «Г1», 1926–1927. Хранит Центральный музей связи имени А. С. Попова.
+      credit: 'Хранится: Центральный музей связи имени А. С. Попова. Госкаталог музейного фонда РФ, № 10060952.'
+      hint: Предмет · лампа «Г1»
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1926–1927
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1926–1927
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=10174924
+      nomer_predmeta: '10060952'
+      nomer_snimka: net
+      hranitel: Центральный музей связи имени А. С. Попова
+      podlinnik:
+        gde: Центральный музей связи имени А. С. Попова
+        otkuda: https://goskatalog.ru/portal/#/collections?id=10174924
+      svyashchennoe: false
+      podpis_chto: Генераторная лампа «Г1»
+      podpis_gde: Россия
+      podpis_kogda: 1926–1927
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
+    otryvok: 'Граф Арко уверял: ламп мощнее 6 киловатт не бывает. Увидел наши на 25 — и передумал'
+    stranica: «Инкубатор идей» — Музей НРЛ ННГУ
+    href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+    pometka: документ
+    id: graf-arko
+    istochnik: nrl
+    dlya_voprosa: true
+    otvet: '6'
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    kadr: &id005
+      src: /muzei/izobreteniya/img/02-24-goskatalog-5562424.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      width: 800
+      height: 564
+      alt: 'Старая фотография: рабочий у испытательного стенда с изоляторами и большими лампами'
+      data_source: https://goskatalog.ru/portal/#/collections?id=5562424
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фотография «Монтаж радиостанций для испытания генераторных ламп на заводе «Светлана»», 1931. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5428955.'
+      hint: Фото · завод «Светлана»
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1931'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1931'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=5562424
+      nomer_predmeta: '5428955'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=5562424
+      svyashchennoe: false
+      podpis_chto: Фотография «Монтаж радиостанций для испытания генераторных ламп на заводе «Светлана»»
+      podpis_gde: Ленинград
+      podpis_kogda: '1931'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
+    otryvok: В Нью-Йорке — 1,5 киловатта, в Париже и под Берлином — по 5. В Москве — 12
+    stranica: «Инкубатор идей» — Музей НРЛ ННГУ
+    href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+    pometka: документ
+    id: 12-kilovatt
+    istochnik: nrl
+    dlya_voprosa: true
+    otvet: '12'
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    kadr: &id006
+      src: /muzei/izobreteniya/img/02-24-goskatalog-11061686.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.9
+      width: 252
+      height: 440
+      alt: 'Фотография радиолампы: стеклянный баллон с сеткой и нитью внутри на тёмном фоне'
+      data_source: https://goskatalog.ru/portal/#/collections?id=11061686
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского · Госкаталог
+      podpis: Фотография радиолампы конструкции М. А. Бонч-Бруевича 1915–1917 годов «Катодное реле» для международных сношений, 1974–1975. Хранит Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского.
+      credit: 'Хранится: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского. Госкаталог музейного фонда РФ, № 13297434.'
+      hint: Фото · «Катодное реле»
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1974–1975
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1974–1975
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11061686
+      nomer_predmeta: '13297434'
+      nomer_snimka: net
+      hranitel: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+      podlinnik:
+        gde: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11061686
+      svyashchennoe: false
+      podpis_chto: Фотография радиолампы конструкции М. А. Бонч-Бруевича 1915–1917 годов «Катодное реле» для международных сношений
+      podpis_gde: Нижний Новгород
+      podpis_kogda: 1974–1975
+      pometka_prav: citirovanie-1274
+    src: 'Источник: В. И. Ленин, ПСС, т. 45, примечания к тому 45'
+    otryvok: В 1922 году деньги на радиолабораторию Ленин велел дать из золотого запаса
+    stranica: примечания к тому 45 — В. И. Ленин, ПСС, т. 45
+    href: https://leninism.su/works/84-tom-45/562-primechaniy-45.html
+    pometka: документ
+    id: zolotoj-zapas
+    istochnik: lenin
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: В. И. Ленин, ПСС, т. 45, примечания к тому 45'
+    otryvok: Ленин дал на станцию два с половиной месяца — и дальность в две тысячи вёрст
+    stranica: примечания к тому 45 — В. И. Ленин, ПСС, т. 45
+    href: https://leninism.su/works/84-tom-45/562-primechaniy-45.html
+    pometka: документ
+    id: dve-tysyachi-verst
+    istochnik: lenin
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о Москве в эфире
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
+    otryvok: По Москве ездил грузовик с громкоговорителем — радио слушали прямо на улице
+    stranica: «Инкубатор идей» — Музей НРЛ ННГУ
+    href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+    pometka: документ
+    id: gruzovik
+    istochnik: nrl
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: Виртуальный компьютерный музей, «Нижегородская радиолаборатория»'
+    otryvok: Москва пела по радио в сентябре 1922-го. Франция начала в декабре, Германия — через год
+    stranica: «Нижегородская радиолаборатория» — Виртуальный компьютерный музей
+    href: https://www.computer-museum.ru/connect/nnovlab.htm
+    pometka: документ
+    id: obognali-evropu
+    istochnik: cm
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
+    otryvok: В первый же день восторженные письма пришли из Ташкента, Иркутска и Обдорска
+    stranica: «Инкубатор идей» — Музей НРЛ ННГУ
+    href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+    pometka: документ
+    id: pisma
+    istochnik: nrl
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    kadr: &id007
+      src: /muzei/izobreteniya/img/02-24-goskatalog-10174913.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.9
+      width: 494
+      height: 800
+      alt: 'Генераторная радиолампа «ГК-20»: стеклянный баллон с металлическими электродами на чёрном цоколе с четырьмя штырьками'
+      data_source: https://goskatalog.ru/portal/#/collections?id=10174913
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог
+      podpis: Генераторная лампа «ГК-20», 1938–1940. Хранит Центральный музей связи имени А. С. Попова.
+      credit: 'Хранится: Центральный музей связи имени А. С. Попова. Госкаталог музейного фонда РФ, № 10060963.'
+      hint: Предмет · лампа «ГК-20»
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1938–1940
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1938–1940
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=10174913
+      nomer_predmeta: '10060963'
+      nomer_snimka: net
+      hranitel: Центральный музей связи имени А. С. Попова
+      podlinnik:
+        gde: Центральный музей связи имени А. С. Попова
+        otkuda: https://goskatalog.ru/portal/#/collections?id=10174913
+      svyashchennoe: false
+      podpis_chto: Генераторная лампа «ГК-20»
+      podpis_gde: Россия
+      podpis_kogda: 1938–1940
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
+    otryvok: Лампа имени Ленина на 100 киловатт вызвала в Стокгольме всеобщее восхищение
+    stranica: «Инкубатор идей» — Музей НРЛ ННГУ
+    href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+    pometka: документ
+    id: stokgolm
+    istochnik: nrl
+    dlya_voprosa: true
+    otvet: '100'
+    otvet_edinstvennyj: true
+  - n: 15
+    sravnenie: net
+    src: 'Источник: Виртуальный компьютерный музей, «Нижегородская радиолаборатория»'
+    otryvok: Голоса узнавали за 1600 километров — мировой рекорд дальности переговоров
+    stranica: «Нижегородская радиолаборатория» — Виртуальный компьютерный музей
+    href: https://www.computer-museum.ru/connect/nnovlab.htm
+    pometka: документ
+    id: rekord-1600
+    istochnik: cm
+    dlya_voprosa: true
+    otvet: '1600'
+    otvet_edinstvennyj: true
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории станции имени Коминтерна — своё место: киловатты и километры.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: moskva
+      nazvanie: Столько киловатт давала станция в Москве
+      verno_ru: 'В Москве — 12 киловатт: больше Нью-Йорка, Парижа и Берлина, вместе взятых'
+    - kod: nyu-jork
+      nazvanie: Столько киловатт давала станция в Нью-Йорке
+      verno_ru: В Нью-Йорке — 1,5 киловатта, в восемь раз меньше Москвы
+    - kod: arko
+      nazvanie: Лампы на столько киловатт увидел граф Арко
+      verno_ru: 'Граф Арко уверял: ламп мощнее 6 киловатт не бывает. Увидел наши на 25 — и передумал'
+    - kod: rekord
+      nazvanie: За столько километров узнавали голоса
+      verno_ru: Голоса узнавали за 1600 километров — мировой рекорд дальности переговоров
+    podpisi:
+    - kod: n12
+      tekst: 12 кВт
+      mesto: moskva
+      mimo_ru: 12 киловатт — столько давала станция в Москве.
+    - kod: n1-5
+      tekst: 1,5 кВт
+      mesto: nyu-jork
+      mimo_ru: 1,5 киловатта — столько давала станция в Нью-Йорке.
+    - kod: n25
+      tekst: 25 кВт
+      mesto: arko
+      mimo_ru: 25 киловатт — такие лампы увидел граф Арко.
+    - kod: n1600
+      tekst: 1600 км
+      mesto: rekord
+      mimo_ru: 1600 километров — рекорд дальности переговоров.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 12 киловатт Москвы, 1,5 Нью-Йорка, лампы на 25 и рекорд в 1600 километров.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 12 кВт — Москва, 1,5 кВт — Нью-Йорк, 25 кВт — лампы, которые увидел граф Арко, 1600 км — рекорд дальности.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: осенью 1922 года в Москве заработала станция имени Коминтерна на 12 киловатт — мощнее Нью-Йорка, Парижа и Берлина, вместе взятых.'
+  net: 'Как это работало дальше: лампа имени Ленина на 100 киловатт вызвала в Стокгольме всеобщее восхищение.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Нью-Йорк
+    - радиостанция на 1,5 киловатта
+    - '1922'
+  - - Париж и под Берлином
+    - радиостанции по 5 киловатт
+    - '1922'
+  - - Москва
+    - станция имени Коминтерна на 12 киловатт
+    - '1922'
+  - - Нижний Новгород
+    - лампы на 25 киловатт
+    - '1923'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 12 киловатт; 1,5 киловатта; 6 киловатт; 1600 километров; 100 киловатт.'
+  ball: 8
+  voprosy:
+  - q: Сколько киловатт давала станция имени Коминтерна в Москве?
+    o:
+    - '5'
+    - '12'
+    - '50'
+    a: 1
+    e: В Нью-Йорке — 1,5 киловатта, в Париже и под Берлином — по 5. В Москве — 12
+  - q: Сколько киловатт давала радиостанция в Нью-Йорке?
+    o:
+    - 1,5
+    - '15'
+    - '150'
+    a: 0
+    e: В Нью-Йорке — 1,5 киловатта, в Париже и под Берлином — по 5. В Москве — 12
+  - q: Мощнее скольких киловатт, по словам графа Арко, ламп не бывает?
+    o:
+    - '2'
+    - '6'
+    - '60'
+    a: 1
+    e: 'Граф Арко уверял: ламп мощнее 6 киловатт не бывает. Увидел наши на 25 — и передумал'
+  - q: За сколько километров узнавали голоса — мировой рекорд?
+    o:
+    - '160'
+    - '1600'
+    - 16 000
+    a: 1
+    e: Голоса узнавали за 1600 километров — мировой рекорд дальности переговоров
+  - q: На сколько киловатт была лампа имени Ленина, которой восхищались в Стокгольме?
+    o:
+    - '10'
+    - '100'
+    - '1000'
+    a: 1
+    e: Лампа имени Ленина на 100 киловатт вызвала в Стокгольме всеобщее восхищение
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал станции имени Коминтерна.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- *id001
+- *id002
+- *id003
+- *id004
+- *id005
+- *id006
+- *id007
+sources:
+- href: https://www.computer-museum.ru/connect/nnovlab.htm
+  title: «Нижегородская радиолаборатория» — Виртуальный компьютерный музей
+  note: факты дня
+- href: https://nrl.unn.ru/wp-content/uploads/sites/36/2022/01/BOOK_NRL-19-48-1-30.pdf
+  title: «Инкубатор идей» — Музей НРЛ ННГУ
+  note: факты дня
+- href: https://www.iu3.bmstu.ru/Content/img/opencw/im/pubs/bonchbruevich.pdf
+  title: '«Технологии и техника» № 2, 2013: о М. А. Бонч-Бруевиче — МГТУ им. Н. Э. Баумана'
+  note: факты дня
+- href: https://leninism.su/works/84-tom-45/562-primechaniy-45.html
+  title: примечания к тому 45 — В. И. Ленин, ПСС, т. 45
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  href: den/02-25/
+  title: 25 февраля — Первый в мире токамак Т-1 · Л. А. Арцимович, 1958
+  hook: 'Слово «токамак» во всех языках мира русское: магнитную бутылку для звезды построили в Москве'
+  main: true
+- lbl: Предыдущий день
+  href: den/02-23/
+  title: 23 февраля — Первые в мире реактивные снаряды залпового огня «Катюша» (полигонные испытания)
+  hook: Идея была простая и страшная — не один точный выстрел, а залп по квадрату, и на полигоне это проверили за два года до войны
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Начальник радиолаборатории
+  - - 70
+    - Мастер ламп
+  - - 40
+    - Радиолюбитель
+  - - 0
+    - Гость дня
+return:
+  q: Во сколько раз станция в Москве была мощнее станции в Нью-Йорке?
+  a: В Нью-Йорке — 1,5 киловатта, в Париже и под Берлином — по 5. В Москве — 12
+  src: Музей НРЛ ННГУ, nrl.unn.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-24-komintern:claim-1922
+  ours:
+    kind: publication
+    title: «Нижегородская радиолаборатория»
+    date: '1922-09-17'
+    holder: Виртуальный компьютерный музей
+    source_url: https://www.computer-museum.ru/connect/nnovlab.htm
+podskazki_igry:
+- 12 кВт — это Москва
+- 1,5 кВт — это Нью-Йорк
+- 1600 км — это рекорд дальности
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Москва
+  shirota: 55.7558
+  dolgota: 37.6173
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Нить в лампе раскаляется и выпускает электроны
+- Электроны летят к аноду — медному цилиндру лампы
+- Анод греется, и снаружи его омывает проточная вода
+- Холодная медь держит большую мощность — ток лампы уходит в антенну
+data_uslovnaya: 24 февраля — день музея; осенью 1922 года в Москве заработала радиостанция имени Коминтерна мощностью 12 киловатт — самая мощная в мире.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/24feb-komintern
+  format: horizontal
+  pole: izobreteniya/24feb-komintern:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  intro: Как Москва заговорила на всю Европу с медными лампами из Нижнего.
+  poster: video/day-24feb-komintern-poster.jpg?v=1
+  mp4: video/day-24feb-komintern.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/24feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
