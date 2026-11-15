@@ -30,6 +30,8 @@ const obojti = (v, put, fn) => {
 };
 const imya = (put) => put.join('.');
 const kratko = (spisok, n = 4) => spisok.length > n ? `${spisok.slice(0, n).join(', ')} и ещё ${spisok.length - n}` : spisok.join(', ');
+// Слова текста без знаков, регистра и «ё» — как norm у проверки живого сайта (сверка хука страницы с карточкой).
+const slova = (s) => String(s ?? '').toLowerCase().replace(/ё/g, 'е').replace(/[^0-9a-zа-я]+/g, ' ').trim();
 // Одно предложение: после конца предложения не идёт новое с заглавной; цитата в «» — внутри предложения.
 const predlozhenij = (s) => s.replace(/«[^»]*»/g, '«»').split(/[.!?…]+\s+(?=[А-ЯЁA-Z])/).length;
 const godDaty = (d) => Number(d.split('-')[0]);
@@ -69,6 +71,12 @@ export function standartDnya(d, syroe = d) {
     if (predlozhenij(hook) > 1) p(2, 'lead.hook — одно предложение, сейчас больше');
     if (hook.length > 200) p(2, `lead.hook — не длиннее 200 знаков, сейчас ${hook.length}`);
     if (hook.includes('?')) p(2, 'lead.hook — без вопроса «?»');
+    // Хук дословно везде: страница = карточка календаря src/content/days/<музей>/ММ-ДД.json, сравнение — как у проверки
+    // живого сайта (tests/smoke/dni.spec.mjs, norm: слова без знаков и регистра). Брак 15.11.2026 (izobreteniya 02-04,
+    // прогон 43677016930): карточка получила утверждённый хук, lead.hook остался старым — увидела только проверка после выкладки.
+    const kal = `src/content/days/${d.muzei}/${d.key}.json`;
+    const kalHook = fs.existsSync(kal) ? chitaj(kal).hook : null;
+    if (kalHook && slova(hook) !== slova(kalHook)) p(2, `lead.hook — дословно как hook в ${kal}: на странице «${hook}», в карточке «${kalHook}»`);
   }
   // 3. Дата и что случилось; у изобретений дата события — день страницы (или data_uslovnaya — почему другой).
   if (!est(d.data_sobytiya)) p(3, 'data_sobytiya (ГГГГ-ММ-ДД)');
