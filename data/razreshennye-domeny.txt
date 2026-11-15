@@ -1,6 +1,7 @@
 # Разрешённые внешние домены rc-site (storozh-ssylok.mjs). Запись разрешает домен и его поддомены.
 # Собрано с main 20.10.2026. Новый домен добавляй, только если он законен (источник, музей, архив). Домены баз-источников — не здесь, а в src/data/spravochniki/bazy.json (Р676).
 1812.nsad.ru
+1rodina.ru
 admship.ru
 aif.ru
 akhmatova.spb.ru
@@ -58,6 +59,7 @@ encyclopedia.mil.ru
 energia.ru
 fantlab.ru
 fgos.ru
+foma.ru
 github.com
 gmik.ru
 gnkk.ru
@@ -88,6 +90,7 @@ kp.ru
 kronvestnik.ru
 kulturamgo.ru
 lastmile.su
+lavkapisateley.spb.ru
 lib.tstu.tver.ru
 library.istu.edu
 library.stanford.edu
@@ -99,7 +102,9 @@ mail.russkiymir.ru
 mathshistory.st-andrews.ac.uk
 may9.ru
 mc.yandex.ru
+md.spb.ru
 mephi.ru
+mere-marie.com
 mfr.ru
 mgomz.ru
 michpravda.ru
@@ -108,6 +113,7 @@ mm.museum-online.moscow
 mo-balakovo.ru
 moe-online.ru
 molodguard.ru
+monastery.ru
 mos.ru
 mospravda.ru
 msk.guide
@@ -117,6 +123,7 @@ atomic-energy.ru
 jinr.ru
 openstreetmap.org
 portal.pskovlib.ru
+pravmir.ru
 relikvija.ru
 ruskazki.com
 russian7.ru
