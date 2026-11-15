@@ -1,0 +1,886 @@
+# Р773: день 28 февраля — Лиза Чайкина, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-28
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Лиза Чайкина — «Русские не сдаются» — Русская цивилизация
+  description: Партизанка под пытками не выдала товарищей
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-28/
+  sobytie: Лиза Чайкина
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Лиза Чайкина — «Русские не сдаются» — Русская цивилизация
+    description: Партизанка под пытками не выдала товарищей
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-28/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Лиза Чайкина — «Русские не сдаются»
+    description: Партизанка под пытками не выдала товарищей
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-28/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1941'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-28-goskatalog-8202064.jpg
+  alt: Портрет молодой женщины в тёмном пальто и красном шарфе, в руке свёрнутые бумаги; за ней зимняя деревня и месяц в небе.
+  data_source: https://goskatalog.ru/portal/#/collections?id=10914002
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Леонид Голованов. Лиза Чайкина, 1942 год. Хранится в музее-панораме «Бородинская битва».
+  credit: Музей-панорама «Бородинская битва», Госкаталог № 10794463
+  width: 447
+  height: 600
+  vid: risunok
+  glavnoe_na_kartinke: &id001
+    x: 0.1
+    y: 0.0
+    w: 0.8
+    h: 0.6
+  nomer_predmeta: net
+  nomer_snimka: '8202064'
+  hranitel: Музей-панорама «Бородинская битва», Москва
+  podpis_chto: Портрет Лизы Чайкиной
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1942 год
+  simvolika_proverena: true
+  podlinnik: &id002
+    gde: Музей-панорама «Бородинская битва», Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10914002
+  svyashchennoe: false
+  prava: &id003
+    avtor: Голованов Леонид Федорович
+    god_sozdaniya: '1942'
+    god_smerti_avtora: 1980
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 10794463
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 10794463
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10914002
+  hint: Лиза Чайкина
+  celikom: true
+kroshka: День 28 · Лиза Чайкина
+lead:
+  data: День 28 · февраль · Пено, Калининская область, 1941 год
+  privyazka: 'Дата условная: 28 февраля — день музея; событие — казнь Лизы Чайкиной в Пено 23 ноября 1941 года.'
+  kto: Лиза Чайкина · секретарь Пеновского райкома комсомола, партизанка, Герой Советского Союза
+  h1: Лиза Чайкина
+  hook: Партизанка под пытками не выдала товарищей.
+stamp:
+- v: '14'
+  k: деревень с докладом
+- v: '10'
+  k: дней в тылу врага
+- v: '23'
+  k: года было Лизе
+- v: '2'
+  k: дня до расплаты с предателями
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/28feb-chajkina
+  format: horizontal
+  pole: nesdayutsya/28feb-chajkina:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Партизанка под пытками не выдала товарищей
+  poster: /muzei/ne-sdayutsya/video/day-28feb-chajkina-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-28feb-chajkina.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-28.json и кадров дня. Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Лиза Чайкина
+  abzacy:
+  - Елизавета Чайкина родилась 28 августа 1918 года в деревне Руно на Тверской земле. Она стала секретарём Пеновского райкома комсомола. Когда осенью 1941 года пришли немцы, истребительный батальон из 70 бойцов стал партизанским отрядом, и Лиза ушла в лес вместе с ним. Она ходила в разведку и несла по захваченным деревням листовки с докладом Сталина.
+  - 22 ноября 1941 года Лиза пошла в Пено и заночевала у подруги Маруси Купоровой на хуторе Красное Покатище. Её выдали. Семью подруги расстреляли, а Лизу допрашивали и пытали. Она не назвала ни товарищей, ни своего имени. 23 ноября 1941 года её расстреляли. Посмертно Лизе Чайкиной присвоено звание Героя Советского Союза с вручением ордена Ленина.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Лиза Чайкина
+  udary:
+  - id: ns-0228-zhanna
+    summary: 'Немецкий офицер сказал о ней: «Погибла, как Жанна д''Арк»'
+    det:
+    - Так рассказывал о Лизе главный офицер немецкой части, стоявшей в пеновской школе. Борис Полевой записал это и назвал очерк «Жанна д'Арк верхневолжских лесов».
+    src: 'Источник: «Герои страны». Чайкина Елизавета Ивановна; Борис Полевой. «Жанна д''Арк верхневолжских лесов» — https://warheroes.ru/hero/hero.asp?Hero_id=296'
+    stranica: статья
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=296
+    otryvok: «"Погибла, как Жанна д'Арк", - говорил этот сорб.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0228-internacional
+    summary: Идти она уже не могла, на расстрел её несли — у стены встала и запела «Интернационал»
+    det:
+    - После допросов она не держалась на ногах. Её поставили у стены сарая, она собрала силы, выпрямилась и запела.
+    src: 'Источник: «Герои страны». Чайкина Елизавета Ивановна; Борис Полевой. «Жанна д''Арк верхневолжских лесов» — https://warheroes.ru/hero/hero.asp?Hero_id=296'
+    stranica: статья
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=296
+    otryvok: «понесли, потому что после допросов она идти не могла, на расстрел. Поставили у стенки сарая. Она набралась сил, встала, выпрямилась и запела "Интернационал".»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 2
+  - id: ns-0228-imya
+    summary: 'Под пытками не назвала даже своего имени — твердила: «Иванова из Ленинграда»'
+    det:
+    - Её пытали, но она не выдала ни партизан, ни себя. На вопрос, кто она, отвечала одно и то же.
+    src: 'Источник: Тверская областная библиотека им. А. М. Горького. Лиза Чайкина — https://asplib.ru/images/dokum/tverbud/chayka.pdf; Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле — https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/'
+    stranica: статья
+    href: https://asplib.ru/images/dokum/tverbud/chayka.pdf
+    otryvok: '«не назвав своего настоящего имени. На вопрос «Кто она?» Лиза отвечала: «Иванова из Ленинграда».»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 3
+  - id: ns-0228-frejlen
+    summary: 'Немецкие солдаты после допроса повторяли с уважением: «Фрейлен не рассказала ничего»'
+    det:
+    - Об этом рассказывали солдаты, жившие в школе, где её допрашивали.
+    src: 'Источник: «Герои страны». Чайкина Елизавета Ивановна; Борис Полевой. «Жанна д''Арк верхневолжских лесов» — https://warheroes.ru/hero/hero.asp?Hero_id=296'
+    stranica: статья
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=296
+    otryvok: '«они прямо-таки с уважением о ней говорили: дескать, фрейлен не рассказала ничего...»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 4
+  - id: ns-0228-rejkhstag
+    summary: 'Комсорг полка, бравшего Рейхстаг, написал на его стене: «Наша Лиза»'
+    det:
+    - Так солдаты Победы помнили партизанку из Пено.
+    src: 'Источник: Блог «Вокруг книг». Лиза Чайкина — https://vokrugknig.blogspot.com/2023/08/blog-post_26.html'
+    stranica: статья
+    href: https://vokrugknig.blogspot.com/2023/08/blog-post_26.html
+    otryvok: «на стене Рейхстага «Наша Лиза» в память о Лизе Чайкиной»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n9
+    dlya_voprosa: false
+    n: 5
+  - id: ns-0228-brigada
+    summary: Чтобы спасти одну девушку, сформировали целую партизанскую бригаду
+    det:
+    - На помощь Лизе Чайкиной создали 2-ю особую партизанскую бригаду комбрига Литвиненко.
+    src: 'Источник: «Караван+Я» (Тверь). Лиза Чайкина — https://karavantver.ru/gazeta-2434/'
+    stranica: статья
+    href: https://karavantver.ru/gazeta-2434/
+    otryvok: «Специально на помощь Лизе Чайкиной была сформирована 2-я особая партизанская бригада комбрига Литвиненко.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 6
+  - id: ns-0228-derevnya
+    summary: Её допрашивали при всей деревне — никто не выдал, крикнула только одна
+    det:
+    - Жители молчали. Из толпы выкрикнула одна предательница — что это «комсомольский вожак».
+    src: 'Источник: Тверская областная библиотека им. А. М. Горького. Лиза Чайкина — https://asplib.ru/images/dokum/tverbud/chayka.pdf'
+    stranica: статья
+    href: https://asplib.ru/images/dokum/tverbud/chayka.pdf
+    otryvok: «Когда партизанку допрашивали на глазах жителей деревни, никто из них не выдал девушку - все молчали, и только одна предательница выкрикнула из толпы, что это «комсомольский вожак».»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 7
+  - id: ns-0228-derevni
+    summary: За 10 дней в тылу врага обошла 14 деревень с докладом Сталина от 7 ноября
+    det:
+    - Она несла листовки с докладом по захваченным деревням.
+    src: 'Источник: РГДБ. «Летопись мужества». Лиза Чайкина — https://letopis-muzhestva.rgdb.ru/liza-chajkina'
+    stranica: статья
+    href: https://letopis-muzhestva.rgdb.ru/liza-chajkina
+    otryvok: «распространявшая листовки с докладом Сталина от 7 ноября… За десять дней своего похода Лиза побывала в 14 деревнях.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 8
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-28-goskatalog-14156272.jpg
+      alt: Зимняя деревня; толпа людей обступила девушку в белом, она подняла руку и говорит.
+      data_source: https://goskatalog.ru/portal/#/collections?id=7260754
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Евгений Ильин. Лиза Чайкина, 1952 год. Девушка говорит с жителями деревни. Хранится в Музее Победы.
+      credit: Музей Победы, Госкаталог № 7089338
+      width: 800
+      height: 510
+      vid: kartina
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.1
+        w: 0.6
+        h: 0.8
+      nomer_predmeta: net
+      nomer_snimka: '14156272'
+      hranitel: Музей Победы, Москва
+      podpis_chto: Живописная работа «Лиза Чайкина»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1952 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей Победы, Москва
+        otkuda: https://goskatalog.ru/portal/#/collections?id=7260754
+      svyashchennoe: false
+      prava:
+        avtor: Ильин Евгений Владимирович
+        god_sozdaniya: '1952'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 7089338
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 7089338
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=7260754
+  - id: ns-0228-shkola
+    summary: Немцы рядом, райвоенком уже уехал — она с комсомольцами отстояла горящую школу
+    det:
+    - Вместе с ребятами она тушила пожар и спасла школу в Пено.
+    src: 'Источник: «Герои страны». Чайкина Елизавета Ивановна; Борис Полевой. «Жанна д''Арк верхневолжских лесов» — https://warheroes.ru/hero/hero.asp?Hero_id=296'
+    stranica: статья
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=296
+    otryvok: «как она с ребятами школу от огня отстаивала? Ты ж видел.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 9
+  - id: ns-0228-agronom
+    summary: Написала Сталину — арестованного агронома выпустили и перед ним извинились
+    det:
+    - Она заступилась за невиновного человека и написала письмо в Москву.
+    src: 'Источник: «Герои страны». Чайкина Елизавета Ивановна; Борис Полевой. «Жанна д''Арк верхневолжских лесов» — https://warheroes.ru/hero/hero.asp?Hero_id=296'
+    stranica: статья
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=296
+    otryvok: «она самому товарищу Сталину письмо написала… только вдруг выпустили этого агронома. Выпустили да ещё извинились.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 10
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0228-eskadrilya
+    summary: 'На кабинах лучшей эскадрильи истребителей писали: «За Лизу Чайкину»'
+    det:
+    - Лётчики шли в бой с её именем на самолётах.
+    src: 'Источник: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле — https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/'
+    stranica: статья
+    href: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+    otryvok: '«На кабинах машин лучшей в полку эскадрильи было написано: «За Лизу Чайкину».»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 11
+  - id: ns-0228-predateli
+    summary: Через два дня после казни партизаны пришли в деревню и расстреляли её предателей
+    det:
+    - 'Приговор вынесли тем, кто выдал девушку: Арине Кругловой и полицаям Колосовым, отцу и сыну.'
+    src: 'Источник: «В фокусе» (Mail). Лиза Чайкина: как партизанка стала символом мужества и героизма — https://vfokuse.mail.ru/articles/65149526-liza-chajkina-kak-partizanka-stala-simvolom-muzhestva-i-geroizma/'
+    stranica: статья
+    href: https://vfokuse.mail.ru/articles/65149526-liza-chajkina-kak-partizanka-stala-simvolom-muzhestva-i-geroizma/
+    otryvok: «Смертные приговоры были вынесены тем, кто свидетельствовал против девушки — Арине Кругловой… а также полицаям отцу и сыну Колосовым… 25 ноября 1941 года партизаны выкрали предателей из тверского села и расстреляли их по законам военного времени в лесу.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+    n: 12
+  - id: ns-0228-slova
+    summary: С её словами «Наши придут. Победа будет за нами!» бойцы поднимались в атаку
+    det:
+    - Последние слова Лизы облетели всю страну.
+    src: 'Источник: «Караван+Я» (Тверь). Лиза Чайкина — https://karavantver.ru/gazeta-2434/'
+    stranica: статья
+    href: https://karavantver.ru/gazeta-2434/
+    otryvok: '«Последние её слова облетели Россию: «Наши придут. Победа будет за нами!»»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 13
+  - id: ns-0228-karty
+    summary: В бою захватила у немецкого офицера карты и ценные документы
+    det:
+    - Лиза ходила в разведку и воевала в партизанском отряде наравне со всеми.
+    src: 'Источник: «Русская команда». Чайкина Елизавета Ивановна — https://rus.team/people/chajkina-elizaveta-ivanovna'
+    stranica: статья
+    href: https://rus.team/people/chajkina-elizaveta-ivanovna
+    otryvok: «В одном из боев Лиза захватила у немецкого офицера очень ценные документы и карты.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0228-parokhod
+    summary: Немецкий пароход «Генрих Арп» после войны стал советским «Лизой Чайкиной»
+    det:
+    - В 1946 году судно передали Советскому Союзу по репатриации и назвали её именем.
+    src: 'Источник: «Русская команда». Чайкина Елизавета Ивановна — https://rus.team/people/chajkina-elizaveta-ivanovna'
+    stranica: статья
+    href: https://rus.team/people/chajkina-elizaveta-ivanovna
+    otryvok: «Судно фашистской Германии «Heinrich Arp» … передано … Советскому Союзу по репатриации и переименовано в пароход «Лиза Чайкина», 1946 год.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: false
+    n: 15
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 14 деревень; 2 — «Иванова из Ленинграда»; 3 — «Интернационал»; 4 — «Наша Лиза»; 5 — «Лиза Чайкина».'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: сколько деревень обошла Лиза за 10 дней в тылу врага?'
+    o:
+    - '3'
+    - '7'
+    - '14'
+    - '40'
+    a: 2
+    e: 14 деревень — с листовками о докладе Сталина от 7 ноября.
+  - q: Как Лиза называла себя на допросах?
+    o:
+    - Партизанка Лиза
+    - «Иванова из Ленинграда»
+    - Никак — молчала
+    - Маруся Купорова
+    a: 1
+    e: 'Она не назвала даже своего имени и твердила: «Иванова из Ленинграда».'
+  - q: Что запела Лиза у стены сарая перед расстрелом?
+    o:
+    - «Катюшу»
+    - «Священную войну»
+    - «Интернационал»
+    - «Тёмную ночь»
+    a: 2
+    e: Идти она не могла, но встала, выпрямилась и запела «Интернационал».
+  - q: Что написал комсорг полка на стене Рейхстага?
+    o:
+    - «Наша Лиза»
+    - «Мы дошли»
+    - «За Родину»
+    - «Помним»
+    a: 0
+    e: «Наша Лиза» — в память о Лизе Чайкиной.
+  - q: Как назвали немецкий пароход «Генрих Арп» после войны?
+    o:
+    - «Победа»
+    - «Лиза Чайкина»
+    - «Калинин»
+    - «Пено»
+    a: 1
+    e: В 1946 году судно стало советским пароходом «Лиза Чайкина».
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-28-goskatalog-8202064.jpg
+  alt: Портрет молодой женщины в тёмном пальто и красном шарфе, в руке свёрнутые бумаги; за ней зимняя деревня и месяц в небе.
+  data_source: https://goskatalog.ru/portal/#/collections?id=10914002
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Леонид Голованов. Лиза Чайкина, 1942 год. Хранится в музее-панораме «Бородинская битва».
+  credit: Музей-панорама «Бородинская битва», Госкаталог № 10794463
+  width: 447
+  height: 600
+  vid: risunok
+  glavnoe_na_kartinke: *id001
+  nomer_predmeta: net
+  nomer_snimka: '8202064'
+  hranitel: Музей-панорама «Бородинская битва», Москва
+  podpis_chto: Портрет Лизы Чайкиной
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1942 год
+  simvolika_proverena: true
+  podlinnik: *id002
+  svyashchennoe: false
+  prava: *id003
+  hint: Лиза Чайкина
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-28-goskatalog-14156272.jpg
+  alt: Зимняя деревня; толпа людей обступила девушку в белом, она подняла руку и говорит.
+  data_source: https://goskatalog.ru/portal/#/collections?id=7260754
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Евгений Ильин. Лиза Чайкина, 1952 год. Девушка говорит с жителями деревни. Хранится в Музее Победы.
+  credit: Музей Победы, Госкаталог № 7089338
+  width: 800
+  height: 510
+  vid: kartina
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.1
+    w: 0.6
+    h: 0.8
+  nomer_predmeta: net
+  nomer_snimka: '14156272'
+  hranitel: Музей Победы, Москва
+  podpis_chto: Живописная работа «Лиза Чайкина»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1952 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей Победы, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7260754
+  svyashchennoe: false
+  prava:
+    avtor: Ильин Евгений Владимирович
+    god_sozdaniya: '1952'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 7089338
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 7089338
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7260754
+  hint: Лиза говорит с жителями деревни
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-28-goskatalog-20780114.jpg
+  alt: 'Плакат: два овальных портрета девушек в лавровых рамках, под ними тексты, сверху трубы со знамёнами.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=20021932
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Плакат «Герой Советского Союза Клава Назарова и Герой Советского Союза Лиза Чайкина», 1954 год. Художники К. Иванов и М. Эльцуфен. Хранится в Пермской художественной галерее.
+  credit: Пермская художественная галерея, Госкаталог № 19890889
+  width: 533
+  height: 800
+  vid: plakat
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.6
+  nomer_predmeta: net
+  nomer_snimka: '20780114'
+  hranitel: Пермская художественная галерея, Пермь
+  podpis_chto: Плакат «Герой Советского Союза Клава Назарова и Герой Советского Союза Лиза Чайкина»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1954 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Пермская художественная галерея, Пермь
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20021932
+  svyashchennoe: false
+  prava:
+    avtor: Иванов К., Эльцуфен М.
+    god_sozdaniya: '1954'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19890889
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 19890889
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20021932
+  hint: Плакат 1954 года
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-28-goskatalog-22894755.jpg
+  alt: Слева могила за голубой оградкой у берёзы; справа пионеры у памятника-бюсту девушки, с венками и знаменем.
+  data_source: https://goskatalog.ru/portal/#/collections?id=21564765
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Открытка из комплекта «Музей комсомольской славы имени Лизы Чайкиной», 1978 год: могила и памятник Лизе Чайкиной, пионеры с венками.'
+  credit: Объединённый музей истории и культуры (МБУК «ОМИКМ»), Госкаталог № 21531955
+  width: 1600
+  height: 740
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: net
+  nomer_snimka: '22894755'
+  hranitel: Объединённый музей истории и культуры (МБУК «ОМИКМ»), Россия
+  podpis_chto: Открытка № 6 из комплекта «Музей комсомольской славы имени Лизы Чайкиной»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1978 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Объединённый музей истории и культуры (МБУК «ОМИКМ»), Россия
+    otkuda: https://goskatalog.ru/portal/#/collections?id=21564765
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1978'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 21531955
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 21531955
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=21564765
+  hint: Могила и памятник
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-28-goskatalog-8397249.jpg
+  alt: 'Письмо на бланке: вверху напечатано название обкома комсомола и музея, ниже машинописный текст и подпись.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=10952415
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Письмо В. Т. Бочкиной из Музея комсомольской славы имени Лизы Чайкиной в Калинине, 18 сентября 1980 года. Хранится в МБУК ДХМ.
+  credit: МБУК ДХМ, Госкаталог № 10943414
+  width: 1122
+  height: 1600
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 0.35
+  nomer_predmeta: net
+  nomer_snimka: '8397249'
+  hranitel: МБУК ДХМ, Россия
+  podpis_chto: Письмо из Музея комсомольской славы имени Лизы Чайкиной г. Калинина
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 18 сентября 1980 года
+  simvolika_proverena: true
+  podlinnik:
+    gde: МБУК ДХМ, Россия
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10952415
+  svyashchennoe: false
+  prava:
+    avtor: Козырева Г., заместитель директора музея
+    god_sozdaniya: '1980'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 10943414
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 10943414
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10952415
+  hint: Письмо из музея Лизы Чайкиной
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-28-goskatalog-854649.jpg
+  alt: Зимний лес, снег; слева девушка в коричневом пальто стоит, подняв голову; вдали между берёзами солдаты целятся в неё из винтовок.
+  data_source: https://goskatalog.ru/portal/#/collections?id=4093621
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Кондратий Белов. Расстрел Лизы Чайкиной, 1946 год. Хранится в Омском музее Кондратия Белова.
+  credit: Омский музей Кондратия Белова, Госкаталог № 4447179
+  width: 1600
+  height: 1138
+  vid: kartina
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.1
+    w: 0.6
+    h: 0.85
+  nomer_predmeta: net
+  nomer_snimka: '854649'
+  hranitel: Омский музей Кондратия Белова, Омск
+  podpis_chto: Живописная работа «Расстрел Лизы Чайкиной»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1946 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Омский музей Кондратия Белова, Омск
+    otkuda: https://goskatalog.ru/portal/#/collections?id=4093621
+  svyashchennoe: false
+  prava:
+    avtor: Белов Кондратий Петрович
+    god_sozdaniya: '1946'
+    god_smerti_avtora: 1988
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 4447179
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 4447179
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=4093621
+  hint: Картина Кондратия Белова
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-28-goskatalog-15334784.jpg
+  alt: 'Почтовая открытка: портрет девушки с короткой стрижкой в рамке, за ним красное знамя и лавровая ветвь; внизу подпись «Героиня отечественной войны Лиза Чайкина».'
+  data_source: https://goskatalog.ru/portal/#/collections?id=16084965
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Открытка «Героиня отечественной войны Лиза Чайкина», 1942 год, издательство ЦК ВЛКСМ «Молодая гвардия». Хранится в МБУК «СИМ».
+  credit: МБУК «СИМ», Госкаталог № 15961104
+  width: 810
+  height: 1200
+  vid: plakat
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.15
+    w: 0.8
+    h: 0.6
+  nomer_predmeta: net
+  nomer_snimka: '15334784'
+  hranitel: МБУК «СИМ», Россия
+  podpis_chto: Почтовая карточка «Героиня отечественной войны Лиза Чайкина»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1942 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: МБУК «СИМ», Россия
+    otkuda: https://goskatalog.ru/portal/#/collections?id=16084965
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1942'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 15961104
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 15961104
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=16084965
+  hint: Открытка 1942 года
+  celikom: true
+sources:
+- href: https://warheroes.ru/hero/hero.asp?Hero_id=296
+  title: «Герои страны». Чайкина Елизавета Ивановна; Борис Полевой. «Жанна д'Арк верхневолжских лесов»
+  note: к фактам 1, 2, 4, 9, 10
+- href: https://letopis-muzhestva.rgdb.ru/liza-chajkina
+  title: РГДБ. «Летопись мужества». Лиза Чайкина
+  note: к фактам 8
+- href: https://asplib.ru/images/dokum/tverbud/chayka.pdf
+  title: Тверская областная библиотека им. А. М. Горького. Лиза Чайкина
+  note: к фактам 3, 7
+- href: https://karavantver.ru/gazeta-2434/
+  title: «Караван+Я» (Тверь). Лиза Чайкина
+  note: к фактам 6, 13
+- href: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+  title: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле
+  note: к фактам 3, 11
+- href: https://tvervov.tverlib.ru/person/tv-0064-chajkina.htm
+  title: Тверская библиотека. «Тверичи в годы войны». Чайкина Елизавета Ивановна
+  note: к рассказу о подвиге
+- href: https://vfokuse.mail.ru/articles/65149526-liza-chajkina-kak-partizanka-stala-simvolom-muzhestva-i-geroizma/
+  title: '«В фокусе» (Mail). Лиза Чайкина: как партизанка стала символом мужества и героизма'
+  note: к фактам 12
+- href: https://rus.team/people/chajkina-elizaveta-ivanovna
+  title: «Русская команда». Чайкина Елизавета Ивановна
+  note: к фактам 14, 15
+- href: https://vokrugknig.blogspot.com/2023/08/blog-post_26.html
+  title: Блог «Вокруг книг». Лиза Чайкина
+  note: к фактам 5
+- href: https://goskatalog.ru/portal/
+  title: Госкаталог Музейного фонда РФ
+  note: кадры дня
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 1 марта (запись готовится)
+  hook: Следующий день музея.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Лиза Чайкина — Музей стойкости и подвига «Русские не сдаются»
+    text: Партизанка под пытками не выдала товарищей
+  prev:
+    href: index.html
+    title: 27 февраля
+  next:
+    href: index.html
+    title: 1 марта (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Как Лиза Чайкина называла себя на допросах?
+  a: «Иванова из Ленинграда»
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0228-chajkina
+data_sobytiya: '1941-11-23'
+data_uslovnaya: 28 февраля — день музея; событие — казнь Лизы Чайкиной в Пено 23 ноября 1941 года.
+chto_sluchilos: Секретарь Пеновского райкома комсомола, партизанка Лиза Чайкина пошла в занятое немцами Пено и была выдана. Под пытками она не назвала ни товарищей, ни своего имени и 23 ноября 1941 года была расстреляна; Герой Советского Союза посмертно.
+god: 1941
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+- kazn
+gde_uvidet:
+- chto: Евгений Ильин. Лиза Чайкина, живописная работа, 1952
+  muzej: Музей Победы
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7260754
+- chto: Леонид Голованов. Портрет Лизы Чайкиной, 1942
+  muzej: Музей-панорама «Бородинская битва»
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=10914002
+- chto: Плакат «Герой Советского Союза Клава Назарова и Герой Советского Союза Лиза Чайкина», 1954
+  muzej: Пермская художественная галерея
+  gorod: Пермь
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20021932
+chitat_dalshe:
+- nazvanie: Жанна д'Арк верхневолжских лесов
+  gde: «Герои страны» (очерк Бориса Полевого)
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=296
+- nazvanie: Лиза Чайкина
+  gde: РГДБ, «Летопись мужества»
+  ssylka: https://letopis-muzhestva.rgdb.ru/liza-chajkina
+- nazvanie: Лиза Чайкина
+  gde: «Караван+Я»
+  ssylka: https://karavantver.ru/gazeta-2434/
+- nazvanie: Подвиг комсомолки и зверства фашистов на калининской земле
+  gde: Тверь24
+  ssylka: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+- nazvanie: 'Лиза Чайкина: как партизанка стала символом мужества и героизма'
+  gde: «В фокусе»
+  ssylka: https://vfokuse.mail.ru/articles/65149526-liza-chajkina-kak-partizanka-stala-simvolom-muzhestva-i-geroizma/
+istochniki:
+- id: n1
+  baza: sajt-organizacii
+  nazvanie: «Герои страны». Чайкина Елизавета Ивановна; Борис Полевой. «Жанна д'Арк верхневолжских лесов»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=296
+- id: n2
+  baza: biblioteka-rf
+  nazvanie: РГДБ. «Летопись мужества». Лиза Чайкина
+  ssylka: https://letopis-muzhestva.rgdb.ru/liza-chajkina
+- id: n3
+  baza: biblioteka-rf
+  nazvanie: Тверская областная библиотека им. А. М. Горького. Лиза Чайкина
+  ssylka: https://asplib.ru/images/dokum/tverbud/chayka.pdf
+- id: n4
+  baza: periodika
+  nazvanie: «Караван+Я» (Тверь). Лиза Чайкина
+  ssylka: https://karavantver.ru/gazeta-2434/
+- id: n5
+  baza: periodika
+  nazvanie: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле
+  ssylka: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+- id: n6
+  baza: biblioteka-rf
+  nazvanie: Тверская библиотека. «Тверичи в годы войны». Чайкина Елизавета Ивановна
+  ssylka: https://tvervov.tverlib.ru/person/tv-0064-chajkina.htm
+- id: n7
+  baza: periodika
+  nazvanie: '«В фокусе» (Mail). Лиза Чайкина: как партизанка стала символом мужества и героизма'
+  ssylka: https://vfokuse.mail.ru/articles/65149526-liza-chajkina-kak-partizanka-stala-simvolom-muzhestva-i-geroizma/
+- id: n8
+  baza: sajt-organizacii
+  nazvanie: «Русская команда». Чайкина Елизавета Ивановна
+  ssylka: https://rus.team/people/chajkina-elizaveta-ivanovna
+- id: n9
+  baza: sajt-organizacii
+  nazvanie: Блог «Вокруг книг». Лиза Чайкина
+  ssylka: https://vokrugknig.blogspot.com/2023/08/blog-post_26.html
+- id: n10
+  baza: goskatalog
+  nazvanie: Госкаталог Музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/
+citaty: []
+velichina_chislo: 14
+velichina_edinica: деревень
+velichina_chto: обошла Лиза за 10 дней в тылу врага
+voinskaya_chast: Пеновский партизанский отряд (из истребительного батальона)
+operaciya: Партизанская борьба в тылу врага, Пеновский район
+front: Калининский фронт, тыл врага, Калининская область
+mesto_sobytiya:
+  nazvanie: Пено, Калининская (Тверская) область
+  shirota: 57.05
+  dolgota: 32.72
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Леонид Голованов. Лиза Чайкина, 1942
+- Музей-панорама «Бородинская битва»
+slovar:
+- lyudi:liza-chajkina
+vizual:
+  imya: chajkina-pismo-muzeya
+  vid: dokument
+  kicker: Снимок под лупой
+  h2: Письмо из музея Лизы
+  lead: 'В Калинине был Музей комсомольской славы имени Лизы Чайкиной. Приблизь снимок: бланк обкома комсомола, название музея, текст письма и подпись.'
+audioguide:
+  audioSrc: audio-guide-chajkina-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от комсомольского райкома через рейд по деревням и допрос — к стене сарая и слову, облетевшему страну: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Комсорг из Пено
+  - t: 22
+    mark: 0:22
+    title: Четырнадцать деревень
+  - t: 44
+    mark: 0:44
+    title: Иванова из Ленинграда
+  - t: 66
+    mark: '1:06'
+    title: У стены сарая
+  - t: 88
+    mark: '1:28'
+    title: Наши придут
+  transcript:
+  - Лиза Чайкина родилась в 1918 году в деревне Руно. Она стала секретарём Пеновского райкома комсомола. Когда немцы подошли, она с комсомольцами отстояла горящую школу.
+  - Осенью 1941 года Лиза ушла к партизанам. За 10 дней в тылу врага она обошла 14 деревень с докладом Сталина от 7 ноября.
+  - 'В ноябре её выдали. Лизу допрашивали при всей деревне — никто не выдал. Под пытками она не назвала даже своего имени и твердила: «Иванова из Ленинграда».'
+  - 'Идти она уже не могла, на расстрел её несли. У стены сарая она встала и запела «Интернационал». Немецкий офицер сказал о ней: «Погибла, как Жанна д''Арк».'
+  - 'Её слова «Наши придут. Победа будет за нами!» облетели страну. Комсорг полка, бравшего Рейхстаг, написал на его стене: «Наша Лиза».'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
