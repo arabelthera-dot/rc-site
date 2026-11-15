@@ -1,0 +1,859 @@
+# Р773: день 16 февраля — Зина Портнова и «Юные мстители» Оболи, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-16
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Зина Портнова — «Русские не сдаются» — Русская цивилизация
+  description: Немцы заставили её саму есть отравленный суп, и она ела, не моргнув
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-16/
+  sobytie: Зина Портнова
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Зина Портнова — «Русские не сдаются» — Русская цивилизация
+    description: Немцы заставили её саму есть отравленный суп, и она ела, не моргнув
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-16/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Зина Портнова — «Русские не сдаются»
+    description: Немцы заставили её саму есть отравленный суп, и она ела, не моргнув
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-16/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1944'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-16-goskatalog-14518963.jpg
+  alt: Чёрно-белый портрет девочки с тёмными волосами, убранными назад, и бантом; она чуть улыбается, на воротнике тёмного платья — светлая брошь.
+  data_source: https://goskatalog.ru/portal/#/collections?id=14518963
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Зина Портнова, член Обольской подпольной комсомольской организации. Фотокопия довоенного снимка, 1970-е годы. Хранится в Мемориальном музее А. П. Гайдара — филиале Курского областного краеведческого музея.
+  credit: Мемориальный музей А. П. Гайдара, Госкаталог № 14392149
+  width: 598
+  height: 800
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.1
+    w: 0.7
+    h: 0.6
+  nomer_predmeta: net
+  nomer_snimka: '14518963'
+  hranitel: Мемориальный музей А. П. Гайдара — филиал Курского областного краеведческого музея, Льгов
+  podpis_chto: Фотокопия портрета Героя Советского Союза Зины Портновой, члена Обольской подпольной комсомольской организации
+  podpis_gde: место съёмки не указано
+  podpis_kogda: фотокопия 1970-х годов
+  simvolika_proverena: true
+  podlinnik:
+    gde: Мемориальный музей А. П. Гайдара — филиал Курского областного краеведческого музея, Льгов
+    otkuda: https://goskatalog.ru/portal/#/collections?id=14518963
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1970-е
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 14392149
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 14392149
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=14518963
+  hint: Зина Портнова
+  celikom: true
+kroshka: День 16 · Зина Портнова
+lead:
+  data: День 16 · февраль · Оболь, Витебская область, 1942–1944 годы
+  privyazka: 'Дата условная: 16 февраля — день музея; событие — борьба подпольной организации «Юные мстители» в Оболи и гибель Зины Портновой 10 января 1944 года.'
+  kto: Зина Портнова · подпольная комсомольская организация «Юные мстители», разведчица партизанского отряда имени К. Е. Ворошилова, Герой Советского Союза
+  h1: Зина Портнова
+  hook: Немцы заставили её саму есть отравленный суп, и она ела, не моргнув.
+stamp:
+- v: '605'
+  k: дней немцы не могли выйти на след
+- v: '38'
+  k: школьников в подполье Оболи
+- v: '2000'
+  k: тонн льна сожгли подпольщики
+- v: '3'
+  k: эшелона от одной мины
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/16feb-portnova
+  format: horizontal
+  pole: nesdayutsya/16feb-portnova:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Немцы заставили её саму есть отравленный суп, и она ела, не моргнув
+  poster: /muzei/ne-sdayutsya/video/day-16feb-portnova-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-16feb-portnova.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-16.json и кадров дня. Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Зина Портнова
+  abzacy:
+  - Летом 1941 года ленинградская школьница Зина Портнова с младшей сестрой Галей приезжает на каникулы к бабушке в деревню Зуя под Оболью. Через несколько дней приходят немцы. В 1942 году в Оболи появляется подпольная организация «Юные мстители» — 38 школьников. Они взрывают эшелоны, водокачку, льнозавод, сжигают 2000 тонн льна. 605 дней немцы не могут выйти на их след.
+  - Зина моет посуду в столовой для немецких офицеров и подсыпает в суп яд. Немцы заставляют её саму есть этот суп, и она ест, не моргнув. Летом 1943 года предатель выдаёт подполье, из 38 схвачены 34. Зина идёт узнать, кто их выдал, и попадает в гестапо. На допросе она хватает пистолет следователя и стреляет. Под пытками она седеет, но не называет ни одного имени. 10 января 1944 года Зину расстреливают. В 1958 году ей присвоено звание Героя Советского Союза.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Зина Портнова
+  udary:
+  - id: ns-0216-sup
+    summary: Немцы заставили её саму есть отравленный суп, и она ела, не моргнув
+    det:
+    - Когда офицеры стали падать от яда, немцы ворвались в столовую и сунули посудомойке Зине тарелку того же супа. Откажись она — выдала бы себя. Зина спокойно съела несколько ложек.
+    src: 'Источник: «Ратник». Зина Портнова: «Юные мстители» в тылу врага — https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/; БелТА — https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/'
+    stranica: статья
+    href: https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/
+    otryvok: «…взяла ложку, зачерпнула супа и проглотила, потом снова и снова.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+  - id: ns-0216-pistolet
+    summary: На допросе в гестапо она схватила пистолет следователя и застрелила троих врагов
+    det:
+    - Следователь отвлёкся на машины во дворе. Зина схватила со стола его пистолет, застрелила следователя и ещё двух гитлеровцев и бросилась бежать.
+    src: 'Источник: «Герои страны». Портнова Зинаида Мартыновна — https://warheroes.ru/hero/hero.asp?Hero_id=1966'
+    stranica: страница героя
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=1966
+    otryvok: «Во время допроса отважная девушка схватила со стола пистолет фашистского следователя, застрелила его и ещё двух гитлеровцев…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-16-goskatalog-1169085.jpg
+      alt: "Сцена спектакля: двое мужчин в немецкой военной форме стоят у стола, справа у стены девушка в пальто и платке."
+      data_source: https://goskatalog.ru/portal/#/collections?id=1169085
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: "Сцена из спектакля «Юные мстители», 1957 год: Э. Овчинникова в роли Зины Портновой. Снимок хранится в Театральном музее имени А. А. Бахрушина."
+      credit: "Государственный центральный театральный музей имени А. А. Бахрушина, Госкаталог № 2890281"
+      width: 800
+      height: 540
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.1
+        w: 1.0
+        h: 0.85
+      nomer_predmeta: net
+      nomer_snimka: '1169085'
+      hranitel: "Государственный центральный театральный музей имени А. А. Бахрушина, Москва"
+      podpis_chto: "Сцена из спектакля «Юные мстители»"
+      podpis_gde: "Белоруссия"
+      podpis_kogda: "1957 год"
+      simvolika_proverena: true
+      podlinnik:
+        gde: "Государственный центральный театральный музей имени А. А. Бахрушина, Москва"
+        otkuda: https://goskatalog.ru/portal/#/collections?id=1169085
+      svyashchennoe: false
+      prava:
+        avtor: "фотограф не указан"
+        god_sozdaniya: "1957"
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: "Госкаталог Музейного фонда РФ, № 2890281"
+        sdelano_mashinoj: false
+        otkuda: "Госкаталог, № 2890281"
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=1169085
+  - id: ns-0216-stolovaya
+    summary: Зина отравила суп в столовой немецких офицеров, и погибло около сотни врагов
+    det:
+    - Зина работала посудомойкой в столовой курсов немецких офицеров в Оболи. Она подсыпала крысиный яд в кастрюлю с супом, приготовленным на обед.
+    src: 'Источник: «Наше общее отечество». Портнова Зина — https://www.noo-journal.ru/oborona/istoriya/portnova-zina/; БелТА — https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/'
+    stranica: статья
+    href: https://www.noo-journal.ru/oborona/istoriya/portnova-zina/
+    otryvok: «…отравила пищу, приготовленную на обед. В результате диверсии погибло около сотни гитлеровцев.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+  - id: ns-0216-syvorotka
+    summary: 'Она проглотила свой же яд и выжила: бабушка отпоила её молочной сывороткой'
+    det:
+    - Зина добралась до дома с болью в животе. Бабушка отпаивала внучку молочной сывороткой и отварами трав, и девушка выжила.
+    src: 'Источник: «Ратник» — https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/; Г. М. Мельникова-Портнова, «Я помню» — https://iremember.ru/memoirs/grazhdanskie/melnikova-portnova-galina-martynovna/'
+    stranica: статья
+    href: https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/
+    otryvok: «Бабушка бросилась отпаивать внучку молочной сывороткой и отварами трав.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: true
+    otvet: молочной сывороткой
+    otvet_edinstvennyj: true
+  - id: ns-0216-provery
+    summary: Из 38 подпольщиков схватили 34, и Зина одна пошла туда узнать, кто их выдал
+    det:
+    - Летом 1943 года подполье выдал предатель. На свободе остались четверо. Партизаны поручили Зине выяснить, почему провалилась организация, и восстановить связь с теми, кто уцелел.
+    src: 'Источник: «Герои страны» — https://warheroes.ru/hero/hero.asp?Hero_id=1966; БелТА — https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/'
+    stranica: страница героя
+    href: https://warheroes.ru/hero/hero.asp?Hero_id=1966
+    otryvok: «…получила задание выявить причины провала организации «Юные мстители» и наладить связь с подпольем.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: true
+    otvet: '34'
+    otvet_edinstvennyj: true
+  - id: ns-0216-sedaya
+    summary: После пыток семнадцатилетняя Зина стала совсем седой, но не назвала ни одного имени
+    det:
+    - Больше месяца Зину пытали, чтобы узнать имена партизан. Она не выдала никого. Утром 10 января 1944 года её расстреляли.
+    src: 'Источник: «Санкт-Петербургские ведомости» — https://spbvedomosti.ru/news/nasledie/rodilas-v-leningrade-geroy-sovetskogo-soyuza-yunaya-partizanka-zinaida-portnova/; «Ратник» — https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/'
+    stranica: статья
+    href: https://spbvedomosti.ru/news/nasledie/rodilas-v-leningrade-geroy-sovetskogo-soyuza-yunaya-partizanka-zinaida-portnova/
+    otryvok: «По свидетельству очевидцев она была полностью седой после перенесенных мучений.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-16-goskatalog-17422200.jpg
+      alt: "Рисунок на красном фоне: портрет девушки с гладко зачёсанными волосами и пионерским галстуком."
+      data_source: https://goskatalog.ru/portal/#/collections?id=17422200
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: "Открытка «Зина Портнова» из комплекта «Пионеры-герои», Киев, издательство «Мистецтво», 1976 год. Хранится в Военно-историческом музее «Юные защитники Родины» в Курске."
+      credit: "Военно-исторический музей «Юные защитники Родины» — филиал Курского областного краеведческого музея, Госкаталог № 17288392"
+      width: 398
+      height: 600
+      vid: risunok
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.1
+        w: 1.0
+        h: 0.75
+      nomer_predmeta: net
+      nomer_snimka: '17422200'
+      hranitel: "Военно-исторический музей «Юные защитники Родины» — филиал Курского областного краеведческого музея, Курск"
+      podpis_chto: "Открытка «Зина Портнова» из комплекта «Пионеры-герои»"
+      podpis_gde: "Киев"
+      podpis_kogda: "1976 год"
+      simvolika_proverena: true
+      podlinnik:
+        gde: "Военно-исторический музей «Юные защитники Родины» — филиал Курского областного краеведческого музея, Курск"
+        otkuda: https://goskatalog.ru/portal/#/collections?id=17422200
+      svyashchennoe: false
+      prava:
+        avtor: "художник не указан"
+        god_sozdaniya: "1976"
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: "Госкаталог Музейного фонда РФ, № 17288392"
+        sdelano_mashinoj: false
+        otkuda: "Госкаталог, № 17288392"
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=17422200
+  - id: ns-0216-reka
+    summary: Раненная в ноги, она бежала к реке, чтобы переплыть к партизанам
+    det:
+    - После выстрелов на допросе Зина выскочила во двор и побежала к реке. Пуля попала ей в ногу, у реки её схватили.
+    src: 'Источник: «Бессмертный полк». День рождения Зины Портновой — https://polk.press/history-days/den-rozhdeniya-ziny-portnovoj; «Наше общее отечество» — https://www.noo-journal.ru/oborona/istoriya/portnova-zina/'
+    stranica: статья
+    href: https://polk.press/history-days/den-rozhdeniya-ziny-portnovoj
+    otryvok: «…застрелила его и ещё двух гитлеровцев, пыталась бежать, но около реки была схвачена.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+  - id: ns-0216-cvety
+    summary: Немцы велели девушкам с цветами провожать зондерфюрера, а в его машине уже стояла мина
+    det:
+    - Немцы устроили проводы важного начальника и велели девушкам прийти к школе в национальных костюмах, с венками и букетами. Ночью подпольщик Володя Езовитов пробрался в гараж комендатуры и подложил под машину гостя мину.
+    src: 'Источник: Е. Зенькова. «За тебя, Беларусь!» (сб. «Нам не забыть вас, ребята») — https://www.molodguard.ru/heroes445.htm'
+    stranica: глава книги
+    href: https://www.molodguard.ru/heroes445.htm
+    otryvok: «…надеть белорусские национальные костюмы, венки на голову, принести букеты цветов.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-16-goskatalog-43745483.jpg
+      alt: "Белая наволочка с вязаной ажурной прошивкой, сложенная на светлом фоне."
+      data_source: https://goskatalog.ru/portal/#/collections?id=43745483
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: "Наволочка с прошивкой, которую связала Зинаида Лузгина — член Обольской подпольной организации «Юные мстители». Хранится в Центральном музее Вооружённых Сил."
+      credit: "Федеральное государственное бюджетное учреждение культуры и искусства «Центральный музей Вооружённых Сил Российской Федерации» Министерства обороны РФ, Госкаталог № 43505513"
+      width: 705
+      height: 800
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '43745483'
+      hranitel: "Федеральное государственное бюджетное учреждение культуры и искусства «Центральный музей Вооружённых Сил Российской Федерации» Министерства обороны РФ"
+      podpis_chto: "Наволочка, связанная З. Д. Лузгиной"
+      podpis_gde: "Оболь"
+      podpis_kogda: "первая половина XX века"
+      simvolika_proverena: true
+      podlinnik:
+        gde: "Федеральное государственное бюджетное учреждение культуры и искусства «Центральный музей Вооружённых Сил Российской Федерации» Министерства обороны РФ"
+        otkuda: https://goskatalog.ru/portal/#/collections?id=43745483
+      svyashchennoe: false
+      prava:
+        avtor: "З. Д. Лузгина"
+        god_sozdaniya: "первая половина XX века"
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: "Госкаталог Музейного фонда РФ, № 43505513"
+        sdelano_mashinoj: false
+        otkuda: "Госкаталог, № 43505513"
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=43745483
+  - id: ns-0216-605
+    summary: 605 дней немцы не могли выйти на след 38 школьников из Оболи
+    det:
+    - Станция Оболь охранялась особо. Подростки вели там диверсии у немцев под носом, и всё это время их не заподозрили.
+    src: 'Источник: «СБ. Беларусь сегодня». Идут по войне девчата — https://www.sb.by/articles/idut-po-voyne-devchata-ee-zvali-fruza.html; БелТА — https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/'
+    stranica: статья
+    href: https://www.sb.by/articles/idut-po-voyne-devchata-ee-zvali-fruza.html
+    otryvok: '«Юные подпольщики долгое время были неуловимыми: 605 дней фашисты не могли напасть на их след.»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: true
+    otvet: '605'
+    otvet_edinstvennyj: true
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-16-goskatalog-43745332.jpg
+      alt: "Перьевая авторучка с зелёным мраморным корпусом и красной вставкой у пера."
+      data_source: https://goskatalog.ru/portal/#/collections?id=43745332
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: "Авторучка Дмитрия Хребтенко — члена Обольской подпольной организации «Юные мстители». Хранится в Центральном музее Вооружённых Сил."
+      credit: "Федеральное государственное бюджетное учреждение культуры и искусства «Центральный музей Вооружённых Сил Российской Федерации» Министерства обороны РФ, Госкаталог № 43505577"
+      width: 800
+      height: 251
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.2
+        w: 1.0
+        h: 0.6
+      nomer_predmeta: net
+      nomer_snimka: '43745332'
+      hranitel: "Федеральное государственное бюджетное учреждение культуры и искусства «Центральный музей Вооружённых Сил Российской Федерации» Министерства обороны РФ"
+      podpis_chto: "Авторучка Д. А. Хребтенко"
+      podpis_gde: "Оболь"
+      podpis_kogda: "первая половина XX века"
+      simvolika_proverena: true
+      podlinnik:
+        gde: "Федеральное государственное бюджетное учреждение культуры и искусства «Центральный музей Вооружённых Сил Российской Федерации» Министерства обороны РФ"
+        otkuda: https://goskatalog.ru/portal/#/collections?id=43745332
+      svyashchennoe: false
+      prava:
+        avtor: "мастер не указан"
+        god_sozdaniya: "первая половина XX века"
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: "Госкаталог Музейного фонда РФ, № 43505577"
+        sdelano_mashinoj: false
+        otkuda: "Госкаталог, № 43505577"
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=43745332
+  - id: ns-0216-berezonka
+    summary: 'Её сестра Галя стояла в дозоре: увидит полицая, поёт «Во поле берёзонька»'
+    det:
+    - У Зины собирались подпольщики. Младшую сестру Галю сажали на завалинку, и она песней предупреждала, если подходил полицай.
+    src: 'Источник: Г. М. Мельникова-Портнова. Воспоминания, «Я помню» — https://iremember.ru/memoirs/grazhdanskie/melnikova-portnova-galina-martynovna/'
+    stranica: статья
+    href: https://iremember.ru/memoirs/grazhdanskie/melnikova-portnova-galina-martynovna/
+    otryvok: '«Галка, у нас вечеринка, если увидишь полицая или кого-то подозрительного, пой: „Во поле берёзонька стояла“. И я пела.»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: true
+    otvet: «Во поле берёзонька»
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0216-seno
+    summary: На платформе загорелось сено, под ним показался танк, и назавтра наши разбомбили четыре эшелона
+    det:
+    - Через Оболь шли эшелоны с сеном. От паровозной искры одна платформа вспыхнула, немцы стали сбрасывать сено, и под ним показался танк. Подпольщики это заметили и передали партизанам.
+    src: 'Источник: Lenta.ru. Дети войны — https://lenta.ru/articles/2025/03/15/deti/; БелТА+ — https://beltaplus.by/ru/human-ru/view/kogda-nachalas-vojna-ej-bylo-15-let-kakie-podvigi-sovershila-zina-portnova-s-otrjadom-16018-2023/'
+    stranica: статья
+    href: https://lenta.ru/articles/2025/03/15/deti/
+    otryvok: «На следующий день советская авиация бомбила станцию. Четыре эшелона с танками были уничтожены.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n9
+    dlya_voprosa: false
+  - id: ns-0216-strelochnik
+    summary: Стрелочник поставил одну мину, и на воздух взлетели сразу три эшелона
+    det:
+    - Подпольщик Николай Алексеев работал на станции. Он поставил мину с часовым механизмом, а к моменту взрыва на станции стояли три эшелона.
+    src: 'Источник: БелТА+. Когда началась война, ей было 15 лет (к. и. н. Е. Павлова) — https://beltaplus.by/ru/human-ru/view/kogda-nachalas-vojna-ej-bylo-15-let-kakie-podvigi-sovershila-zina-portnova-s-otrjadom-16018-2023/'
+    stranica: статья
+    href: https://beltaplus.by/ru/human-ru/view/kogda-nachalas-vojna-ej-bylo-15-let-kakie-podvigi-sovershila-zina-portnova-s-otrjadom-16018-2023/
+    otryvok: «Прогремел взрыв, было очень много разрушений, уничтожены все три эшелона…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n10
+    dlya_voprosa: true
+    otvet: три эшелона
+    otvet_edinstvennyj: true
+  - id: ns-0216-vedro
+    summary: Мины для взрыва льнозавода несли мимо немцев в ведре с молоком
+    det:
+    - Руководительница подполья Ефросинья Зенькова несла три магнитные мины для электростанции и льнозавода. Мины лежали в ведре с молоком, капсюли — в платке.
+    src: 'Источник: Е. Зенькова. «За тебя, Беларусь!» (сб. «Нам не забыть вас, ребята») — https://www.molodguard.ru/heroes445.htm'
+    stranica: глава книги
+    href: https://www.molodguard.ru/heroes445.htm
+    otryvok: «Мины я опустила в ведро с молоком, а капсюли спрятала в платке.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+  - id: ns-0216-len
+    summary: Школьники сожгли 2000 тонн льна, который немцы готовили к отправке в Германию
+    det:
+    - За неполные два года «Юные мстители» совершили 21 диверсию. Один из пожаров уничтожил весь лён, приготовленный к вывозу в Германию.
+    src: 'Источник: БелТА — https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/; «Наше общее отечество» — https://www.noo-journal.ru/oborona/istoriya/portnova-zina/'
+    stranica: статья
+    href: https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/
+    otryvok: «Так, были уничтожены огнем 2 тыс. т льна, приготовленного для отправки в Германию.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n11
+    dlya_voprosa: true
+    otvet: 2000 тонн
+    otvet_edinstvennyj: true
+  - id: ns-0216-vodokachka
+    summary: Подпольщики взорвали водокачку, и паровозы к фронту две недели не могли набрать воду
+    det:
+    - Летом 1943 года Нина Азолина пронесла на охраняемую станцию угольную мину в маленькой красной сумочке и подбросила её в уголь у котельной. Через двое суток водокачка взлетела на воздух.
+    src: 'Источник: БелТА — https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/; Е. Зенькова — https://www.molodguard.ru/heroes445.htm'
+    stranica: статья
+    href: https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/
+    otryvok: «…водокачка была уничтожена, немцы смогли восстановить ее работу только через две недели.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n11
+    dlya_voprosa: false
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 605 дней; 2 — 34; 3 — 2000 тонн; 4 — три эшелона; 5 — «Во поле берёзонька».'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: сколько дней немцы не могли выйти на след «Юных мстителей»?'
+    o:
+    - '60'
+    - '160'
+    - '605'
+    - '1000'
+    a: 2
+    e: 605 дней школьники вели диверсии у немцев под носом, на особо охраняемой станции.
+  - q: Сколько подпольщиков из 38 схватили после предательства?
+    o:
+    - '4'
+    - '14'
+    - '24'
+    - '34'
+    a: 3
+    e: На свободе остались четверо, и Зина пошла узнать, кто выдал товарищей.
+  - q: Сколько льна, готового к отправке в Германию, сожгли школьники?
+    o:
+    - 20 тонн
+    - 200 тонн
+    - 2000 тонн
+    - 20 000 тонн
+    a: 2
+    e: Две тысячи тонн льна сгорели вместе с льнозаводом.
+  - q: Сколько эшелонов взлетело на воздух от одной мины стрелочника?
+    o:
+    - Один
+    - Два
+    - Три
+    - Пять
+    a: 2
+    e: Мину ставили под один эшелон, а к взрыву на станции оказались три.
+  - q: Какую песню пела Галя, если видела полицая?
+    o:
+    - «Катюша»
+    - «Во поле берёзонька»
+    - «Калинка»
+    - «Священная война»
+    a: 1
+    e: Младшая сестра Зины сидела на завалинке и песней предупреждала подпольщиков.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-16-goskatalog-8502776.jpg
+  alt: 'Рисунок: девушка в светлой кофте с верёвкой на шее тянется к пистолету на столе, рядом спиной к ней сидит немец с повязкой со свастикой и смотрит в окно.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=8502776
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Открытка из серии «Пионеры-герои» «Зина Портнова», 1990 год. На рисунке — допрос в гестапо. Хранится в Вологодском краеведческом музее имени В. А. Гаврилина.
+  credit: Вологодский краеведческий музей имени В. А. Гаврилина, Госкаталог № 8395722
+  width: 429
+  height: 531
+  vid: risunok
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.15
+    w: 0.9
+    h: 0.65
+  nomer_predmeta: net
+  nomer_snimka: '8502776'
+  hranitel: Вологодский краеведческий музей имени В. А. Гаврилина, Вологодский округ
+  podpis_chto: Открытка «Зина Портнова» из серии «Пионеры-герои»
+  podpis_gde: Москва
+  podpis_kogda: 1990 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Вологодский краеведческий музей имени В. А. Гаврилина, Вологодский округ
+    otkuda: https://goskatalog.ru/portal/#/collections?id=8502776
+  svyashchennoe: false
+  prava:
+    avtor: художник не указан
+    god_sozdaniya: '1990'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 8395722
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 8395722
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=8502776
+- src: /muzei/ne-sdayutsya/img/02-16-goskatalog-16404439.jpg
+  alt: Цветной рисованный портрет девушки с тёмными косами и белым воротником; под ним напечатан рассказ о её жизни.
+  data_source: https://goskatalog.ru/portal/#/collections?id=16404439
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Открытка «Зинаида Мартыновна Портнова» из комплекта «Женщины — Герои Советского Союза», выпуск 1, 1976 год. Хранится в историко-краеведческом музее «Самарская Лука».
+  credit: Историко-краеведческий музей «Самарская Лука», Госкаталог № 16273287
+  width: 396
+  height: 800
+  vid: risunok
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.02
+    w: 0.8
+    h: 0.42
+  nomer_predmeta: net
+  nomer_snimka: '16404439'
+  hranitel: Историко-краеведческий музей «Самарская Лука», Самарская область
+  podpis_chto: Открытка из комплекта «Женщины — Герои Советского Союза»
+  podpis_gde: Москва
+  podpis_kogda: 1976 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Историко-краеведческий музей «Самарская Лука», Самарская область
+    otkuda: https://goskatalog.ru/portal/#/collections?id=16404439
+  svyashchennoe: false
+  prava:
+    avtor: художник не указан
+    god_sozdaniya: '1976'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 16273287
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 16273287
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=16404439
+- src: /muzei/ne-sdayutsya/img/02-16-goskatalog-15058306.jpg
+  alt: 'Обложка детской книги: девочка с косичками и пистолетом в руке бежит между белыми стволами деревьев по траве.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=15058306
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Обложка книги Г. Набатова «Зина Портнова» из серии «Пионеры-герои», художник В. Юдин, издательство «Малыш», 1979 год. Хранится в Музее истории станицы Полтавской.
+  credit: Музей истории станицы Полтавской, Госкаталог № 14931185
+  width: 479
+  height: 615
+  vid: risunok
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.28
+    w: 0.9
+    h: 0.65
+  nomer_predmeta: net
+  nomer_snimka: '15058306'
+  hranitel: Музей истории станицы Полтавской, Краснодарский край
+  podpis_chto: Книга Г. Набатова «Зина Портнова» для младшего школьного возраста
+  podpis_gde: Москва, издательство «Малыш»
+  podpis_kogda: 1979 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей истории станицы Полтавской, Краснодарский край
+    otkuda: https://goskatalog.ru/portal/#/collections?id=15058306
+  svyashchennoe: false
+  prava:
+    avtor: художник В. Юдин
+    god_sozdaniya: '1979'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Г. Набатов. «Зина Портнова». М.:«Малыш», 1979
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 14931185
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=15058306
+sources:
+- href: https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/
+  title: '«Ратник». Зина Портнова: «Юные мстители» в тылу врага'
+  note: к фактам 1, 4, 6
+- href: https://iremember.ru/memoirs/grazhdanskie/melnikova-portnova-galina-martynovna/
+  title: Г. М. Мельникова-Портнова. Воспоминания, «Я помню»
+  note: к фактам 4, 10
+- href: https://warheroes.ru/hero/hero.asp?Hero_id=1966
+  title: «Герои страны». Портнова Зинаида Мартыновна
+  note: к фактам 2, 5
+- href: https://www.noo-journal.ru/oborona/istoriya/portnova-zina/
+  title: «Наше общее отечество». Портнова Зина
+  note: к фактам 3, 7, 14
+- href: https://spbvedomosti.ru/news/nasledie/rodilas-v-leningrade-geroy-sovetskogo-soyuza-yunaya-partizanka-zinaida-portnova/
+  title: «Санкт-Петербургские ведомости». Родилась в Ленинграде
+  note: к факту 6
+- href: https://polk.press/history-days/den-rozhdeniya-ziny-portnovoj
+  title: «Бессмертный полк». День рождения Зины Портновой
+  note: к факту 7
+- href: https://www.molodguard.ru/heroes445.htm
+  title: Е. Зенькова. «За тебя, Беларусь!» (сб. «Нам не забыть вас, ребята»)
+  note: к фактам 8, 13, 15
+- href: https://www.sb.by/articles/idut-po-voyne-devchata-ee-zvali-fruza.html
+  title: «СБ. Беларусь сегодня». Идут по войне девчата
+  note: к факту 9
+- href: https://lenta.ru/articles/2025/03/15/deti/
+  title: Lenta.ru. Дети войны
+  note: к факту 11
+- href: https://beltaplus.by/ru/human-ru/view/kogda-nachalas-vojna-ej-bylo-15-let-kakie-podvigi-sovershila-zina-portnova-s-otrjadom-16018-2023/
+  title: БелТА+. Когда началась война, ей было 15 лет
+  note: к фактам 11, 12
+- href: https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/
+  title: 'БелТА. Подсыпала в кастрюлю с супом крысиный яд: судьба «Юных мстителей» из Оболи'
+  note: к фактам 1, 3, 5, 9, 14, 15
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 17 февраля (запись готовится)
+  hook: Следующий день музея.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Зина Портнова — Музей стойкости и подвига «Русские не сдаются»
+    text: Немцы заставили её саму есть отравленный суп, и она ела, не моргнув
+  prev:
+    href: index.html
+    title: 15 февраля · Ольга Берггольц
+  next:
+    href: index.html
+    title: 17 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько дней немцы не могли выйти на след «Юных мстителей» из Оболи?
+  a: 605 дней
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — факт 1. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0216-portnova
+data_sobytiya: '1944-01-10'
+data_uslovnaya: 16 февраля — день музея; событие — борьба «Юных мстителей» в Оболи в 1942–1943 годах и гибель Зины Портновой 10 января 1944 года.
+chto_sluchilos: Ленинградская школьница Зина Портнова в подпольной организации «Юные мстители» в Оболи отравила обед немецких офицеров, после провала подполья на допросе застрелила следователя и двух гитлеровцев и под пытками не выдала никого.
+god: 1944
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Фотокопия портрета Героя Советского Союза Зины Портновой
+  muzej: Мемориальный музей А. П. Гайдара — филиал Курского областного краеведческого музея
+  gorod: Льгов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=14518963
+- chto: Открытка «Зина Портнова» из серии «Пионеры-герои», 1990
+  muzej: Вологодский краеведческий музей имени В. А. Гаврилина
+  gorod: Вологодский округ
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=8502776
+- chto: Открытка «Зинаида Мартыновна Портнова» из комплекта «Женщины — Герои Советского Союза», 1976
+  muzej: Историко-краеведческий музей «Самарская Лука»
+  gorod: Самарская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=16404439
+chitat_dalshe:
+- nazvanie: «За тебя, Беларусь!»
+  gde: Е. Зенькова, сб. «Нам не забыть вас, ребята»
+  ssylka: https://www.molodguard.ru/heroes445.htm
+- nazvanie: Воспоминания сестры Зины Портновой
+  gde: Г. М. Мельникова-Портнова, «Я помню»
+  ssylka: https://iremember.ru/memoirs/grazhdanskie/melnikova-portnova-galina-martynovna/
+- nazvanie: 'Подсыпала в кастрюлю с супом крысиный яд: судьба «Юных мстителей» из Оболи'
+  gde: БелТА
+  ssylka: https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/
+- nazvanie: 'Зина Портнова: «Юные мстители» в тылу врага'
+  gde: «Ратник»
+  ssylka: https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/
+istochniki:
+- id: n1
+  baza: periodika
+  nazvanie: '«Ратник». Зина Портнова: «Юные мстители» в тылу врага'
+  ssylka: https://ratnik.tv/articles/heroes/zina-portnova-yunye-mstiteli-v-tylu-vraga/
+- id: n2
+  baza: kniga
+  nazvanie: Г. М. Мельникова-Портнова. Воспоминания, «Я помню»
+  ssylka: https://iremember.ru/memoirs/grazhdanskie/melnikova-portnova-galina-martynovna/
+- id: n3
+  baza: sajt-organizacii
+  nazvanie: «Герои страны». Портнова Зинаида Мартыновна
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=1966
+- id: n4
+  baza: periodika
+  nazvanie: «Наше общее отечество». Портнова Зина
+  ssylka: https://www.noo-journal.ru/oborona/istoriya/portnova-zina/
+- id: n5
+  baza: periodika
+  nazvanie: «Санкт-Петербургские ведомости». Родилась в Ленинграде
+  ssylka: https://spbvedomosti.ru/news/nasledie/rodilas-v-leningrade-geroy-sovetskogo-soyuza-yunaya-partizanka-zinaida-portnova/
+- id: n6
+  baza: sajt-organizacii
+  nazvanie: «Бессмертный полк». День рождения Зины Портновой
+  ssylka: https://polk.press/history-days/den-rozhdeniya-ziny-portnovoj
+- id: n7
+  baza: kniga
+  nazvanie: Е. Зенькова. «За тебя, Беларусь!» (сб. «Нам не забыть вас, ребята»)
+  ssylka: https://www.molodguard.ru/heroes445.htm
+- id: n8
+  baza: periodika
+  nazvanie: «СБ. Беларусь сегодня». Идут по войне девчата
+  ssylka: https://www.sb.by/articles/idut-po-voyne-devchata-ee-zvali-fruza.html
+- id: n9
+  baza: periodika
+  nazvanie: Lenta.ru. Дети войны
+  ssylka: https://lenta.ru/articles/2025/03/15/deti/
+- id: n10
+  baza: periodika
+  nazvanie: БелТА+. Когда началась война, ей было 15 лет
+  ssylka: https://beltaplus.by/ru/human-ru/view/kogda-nachalas-vojna-ej-bylo-15-let-kakie-podvigi-sovershila-zina-portnova-s-otrjadom-16018-2023/
+- id: n11
+  baza: periodika
+  nazvanie: 'БелТА. Подсыпала в кастрюлю с супом крысиный яд: судьба «Юных мстителей» из Оболи'
+  ssylka: https://belta.by/socium/view/podsypala-v-kastrjulju-s-supom-krysinyj-jad-sudba-junyh-mstitelej-iz-oboli-696658-2025/
+citaty: []
+velichina_chislo: 605
+velichina_edinica: дней
+velichina_chto: немцы не могли выйти на след «Юных мстителей»
+voinskaya_chast: Подпольная комсомольская организация «Юные мстители», партизанский отряд имени К. Е. Ворошилова
+operaciya: Подпольная борьба «Юных мстителей» на станции Оболь
+front: Оккупированная Витебская область, станция Оболь
+mesto_sobytiya:
+  nazvanie: Оболь, Шумилинский район Витебской области
+  shirota: 55.381
+  dolgota: 29.297
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta:
+  nazvanie: Карта РККА — район станции Оболь
+  god: 1941
+  otkuda: Это Место — etomesto.com
+  ssylka: https://etomesto.com/map-atlas_rkka/?y=55.381&x=29.297
+marshrut: net
+etiketka_oblozhki:
+- Зина Портнова, член Обольской подпольной комсомольской организации, фотокопия 1970-х
+- Мемориальный музей А. П. Гайдара
+slovar:
+- lyudi:zina-portnova
+vizual:
+  imya: portnova-portret
+  vid: dokument
+  kicker: Снимок под лупой
+  h2: Лицо разведчицы
+  lead: 'Такой Зина Портнова была до войны: ленинградская школьница, приехавшая на каникулы к бабушке. Приблизь снимок — через два года эта девочка будет мыть посуду в столовой немецких офицеров и подсыпать яд в их суп.'
+audioguide:
+  audioSrc: audio-guide-portnova-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от каникул в Оболи через отравленный суп и предательство — к допросу в гестапо: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Каникулы
+  - t: 22
+    mark: 0:22
+    title: 605 дней
+  - t: 44
+    mark: 0:44
+    title: Суп
+  - t: 66
+    mark: '1:06'
+    title: Предательство
+  - t: 88
+    mark: '1:28'
+    title: Допрос
+  transcript:
+  - Лето тысяча девятьсот сорок первого года. Ленинградская школьница Зина Портнова с младшей сестрой Галей приезжает на каникулы к бабушке, под станцию Оболь в Витебской области. Через несколько дней приходят немцы.
+  - В Оболи тридцать восемь школьников создают подполье «Юные мстители». Они взрывают эшелоны и водокачку, сжигают две тысячи тонн льна. Шестьсот пять дней немцы не могут выйти на их след. Сестра Галя сидит на завалинке и поёт «Во поле берёзонька», если видит полицая.
+  - Зина моет посуду в столовой немецких офицеров и подсыпает яд в суп. Когда офицеры начинают падать, немцы заставляют её саму есть этот суп. Она ест, не моргнув. Дома бабушка отпаивает её молочной сывороткой, и Зина выживает.
+  - Летом сорок третьего предатель выдаёт подполье. Из тридцати восьми схвачены тридцать четыре. Зина одна идёт узнать, кто их выдал, и попадает в гестапо.
+  - На допросе она хватает пистолет следователя и стреляет. Раненная, бежит к реке, но её хватают. Под пытками семнадцатилетняя Зина седеет, но не называет ни одного имени. Десятого января тысяча девятьсот сорок четвёртого года её расстреливают. Зина Портнова — Герой Советского Союза.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
