@@ -1,0 +1,798 @@
+muzei: ne-sdayutsya
+key: 02-24
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Николай Островский — «Русские не сдаются» — Русская цивилизация
+  description: Слепой и парализованный, он написал книгу, на которой выросло поколение
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-24/
+  sobytie: Николай Островский
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Николай Островский — «Русские не сдаются» — Русская цивилизация
+    description: Слепой и парализованный, он написал книгу, на которой выросло поколение
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-24/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Николай Островский — «Русские не сдаются»
+    description: Слепой и парализованный, он написал книгу, на которой выросло поколение
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-24/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1930'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-24-goskatalog-1851588.jpg
+  alt: 'Чёрно-белый портрет молодого мужчины с тёмными волнистыми волосами: лицо повёрнуто вполоборота, глаза полуприкрыты, на нём тёмная одежда.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=5572705
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Писатель Николай Алексеевич Островский. Фотография 1936 года, Москва. Хранится в Государственном центральном музее современной истории России.
+  credit: ГЦМСИР, Госкаталог № 5438044
+  width: 622
+  height: 800
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '1851588'
+  hranitel: Государственный центральный музей современной истории России, Москва
+  podpis_chto: Писатель Н. А. Островский
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1936 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный центральный музей современной истории России, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=5572705
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1936 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 5438044
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 5438044
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=5572705
+  hint: Николай Островский, 1936
+  celikom: true
+kroshka: День 24 · Николай Островский
+lead:
+  data: День 24 · февраль · Сочи — Москва, 1930–1936 годы
+  privyazka: 'Дата условная: 24 февраля — день музея; событие — работа слепого и неподвижного Николая Островского над романом «Как закалялась сталь» (1930–1934) и его последние годы (до 22 декабря 1936 года).'
+  kto: Николай Алексеевич Островский · писатель, автор романа «Как закалялась сталь»
+  h1: Николай Островский
+  hook: Слепой и парализованный, он написал книгу, на которой выросло поколение.
+stamp:
+- v: '19'
+  k: почерков в рукописи романа
+- v: 53 млн
+  k: общий тираж к 1991 году
+- v: 10 000
+  k: книг в блокаду раскупили за два часа
+- v: 15 млн
+  k: тираж на китайском языке
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/24feb-ostrovskij
+  format: horizontal
+  pole: nesdayutsya/24feb-ostrovskij:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Слепой и парализованный, он написал книгу, на которой выросло поколение
+  poster: /muzei/ne-sdayutsya/video/day-24feb-ostrovskij-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-24feb-ostrovskij.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-24.json и кадров дня. Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Николай Островский
+  abzacy:
+  - 'Николай Островский подростком ушёл на фронт Гражданской войны и был ранен. Потом работал на стройке узкоколейки по колено в ледяной воде и тяжело заболел. Болезнь приковала его к постели: он был разбит параличом и почти полностью ослеп.'
+  - 'Ровно тогда, в 1930 году, он начал писать роман «Как закалялась сталь». Сначала писал от руки. Когда глаза перестали видеть, ассистентка прорезала в картонной папке полосы размером в строку, и он писал по этому трафарету. Потом отказала рука, и он стал диктовать. Рукопись записана 19 разными почерками. Журнал «Молодая гвардия» ответил разгромной рецензией: «выведенные типы нереальны».'
+  - Первую часть читатели раскупили мгновенно. В 1935 году его наградили орденом Ленина, в 1936-м армия взяла его на учёт бригадным комиссаром. 22 декабря 1936 года он умер. Его книгу потом читали в блокадном Ленинграде, под Сталинградом и в партизанских отрядах, а к 1991 году её общий тираж составил 53 миллиона.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Николай Островский
+  udary:
+  - id: ns-0224-komissar
+    summary: Слепого и неподвижного Островского армия взяла на учёт бригадным комиссаром
+    det:
+    - В январе 1936 года его взяли на воинский учёт как политработника. Ему сшили форму, и в ней он с тех пор фотографировался.
+    src: 'Источник: Основные даты жизни и работы Н. А. Островского (по книге М. В. Ширяева, В. И. Тимофеева «Величие подвига Николая Островского») — Кольчугинская межпоселенческая библиотека — https://www.kmslib.ru/sites/default/files/kcfinder/files/virtualnye-vystavki/osnovnye-daty-zhizni-i-raboty.pdf; В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020 — http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm'
+    stranica: документ
+    href: https://www.kmslib.ru/sites/default/files/kcfinder/files/virtualnye-vystavki/osnovnye-daty-zhizni-i-raboty.pdf
+    otryvok: «…1936 г., январь. Взят на воинский учет как политработник с присвоением звания бригадного комиссара…»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0224-sanitarka
+    summary: Санитарка без рук и ног листала «Как закалялась сталь» губами
+    det:
+    - Девушка-солдат потеряла на войне руки и ноги. Книгу Островского она читала сама, переворачивая страницы губами.
+    src: 'Источник: Т. Г. Доступова. Вторая жизнь Павла Корчагина — https://lit.wikireading.ru/48486'
+    stranica: книга
+    href: https://lit.wikireading.ru/48486
+    otryvok: «…девушка-солдат не без труда, но все же приспособилась переворачивать страницы книги… губами…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 2
+  - id: ns-0224-moryak
+    summary: Моряк с оторванной рукой зубами сбросил горящие шашки с бомб, а в бушлате был роман
+    det:
+    - 25 марта 1943 года катер атаковали 30 самолётов. Старшина зубами перегрыз концы горящих шашек и сбросил их за борт. В кармане его бушлата нашли залитую кровью книгу «Как закалялась сталь».
+    src: 'Источник: Т. Г. Доступова. Вторая жизнь Павла Корчагина — https://lit.wikireading.ru/48486'
+    stranica: книга
+    href: https://lit.wikireading.ru/48486
+    otryvok: «…старшина зубами перегрызает найтовые концы шашек, бросает их за борт… в кармане бушлата нашли залитую кровью книгу «Как закалялась сталь»…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 3
+  - id: ns-0224-pereklichka
+    summary: Партизаны записали Островского в отряд, и на перекличке за него отвечали
+    det:
+    - 'Командир вызывал: «Правофланговый Николай Островский». Партизан Афанасий Козлов отвечал за него: «Погиб на боевом посту!»'
+    src: 'Источник: Т. Г. Доступова. Вторая жизнь Павла Корчагина — https://lit.wikireading.ru/48486'
+    stranica: книга
+    href: https://lit.wikireading.ru/48486
+    otryvok: '«…когда командир вызывал: «Правофланговый Николай Островский», Афанасий Козлов громко отвечал: «Погиб на боевом посту!»…»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 4
+  - id: ns-0224-zhid
+    summary: 'Андре Жид, ругавший СССР, сказал у постели Островского: «Это святой»'
+    det:
+    - Французский писатель приехал в СССР в 1936 году и вернулся с резкой книгой о стране. Об Островском он в этой книге написал с глубочайшим уважением.
+    src: 'Источник: А. Жид. Возвращение из СССР (1936) — https://kprf.ru/library/classics/memo/5703.html'
+    stranica: книга
+    href: https://kprf.ru/library/classics/memo/5703.html
+    otryvok: '«Я не могу говорить об Островском, не испытывая чувства глубочайшего уважения. Если бы мы не были в СССР, я бы сказал: "Это святой". Религия не создала более прекрасного лица.»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 5
+  - id: ns-0224-blokada
+    summary: В блокадном Ленинграде роман напечатали вручную, и 10 000 книг раскупили за два часа
+    det:
+    - Это было в 1942 году, в голодном и холодном осаждённом городе.
+    src: 'Источник: В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020 — http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm; Новосибирская государственная областная научная библиотека: о романе «Как закалялась сталь» — https://ngounb.ru/?p=22453'
+    stranica: статья
+    href: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+    otryvok: «В осажденном голодном и холодном Ленинграде в 1942 года книга Островского была напечатана вручную, и ее десятитысячный тираж был распродан за два часа.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 6
+  - id: ns-0224-stalingrad
+    summary: Под Сталинградом одну книгу на весь полк разорвали на листы и читали по очереди
+    det:
+    - 'Писатель Борис Полевой ночью застал бойцов передового батальона у костра: они слушали «Как закалялась сталь». Листы передавали друг другу в редкие часы отдыха.'
+    src: 'Источник: В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020 — http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm'
+    stranica: статья
+    href: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+    otryvok: «…бойцы пожаловались, что книга эта одна на весь полк. Для удобства чтения её разорвали на несколько частей и в редкие часы боевого отдыха читали, передавая друг другу листы по мере прочтения».
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 7
+  - id: ns-0224-radio
+    summary: 'В 1935-м он сказал по радио: «Когда грянет гром… рубайте за Павку Корчагина»'
+    det:
+    - Осенью 1935 года комсомол Украины устроил радиоперекличку городов Сочи — Киев — Шепетовка. Островский говорил из Сочи о будущей войне.
+    src: 'Источник: Т. Г. Доступова. Вторая жизнь Павла Корчагина — https://lit.wikireading.ru/48486'
+    stranica: книга
+    href: https://lit.wikireading.ru/48486
+    otryvok: «…Осенью 1935 года комсомол Украины попросил Николая Островского выступить на радиоперекличке городов Сочи — Киев — Шепетовка… «Когда грянет гром, — сказал писатель, — и настанет кровопролитная ночь…»»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 8
+  - id: ns-0224-cenzura
+    summary: Харьковская цензура назвала роман антисоветским и потребовала изъять
+    det:
+    - Читатели раскупили первую часть мгновенно, а критики молчали. Слава пришла в 1935 году, после очерка Михаила Кольцова в «Правде».
+    src: 'Источник: В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020 — http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm'
+    stranica: статья
+    href: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+    otryvok: «…харьковский цензурный Обллит вообще назвал роман «Как закалялась сталь» антисоветским и потребовал его «немедленно изъять».»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 9
+  - id: ns-0224-tirazh
+    summary: 'Журнал отказал: «типы нереальны». Потом роман вышел тиражом больше 53 миллионов'
+    det:
+    - Рукопись отправили в журнал «Молодая гвардия» в 1932 году. К 1991 году роман переиздали 773 раза и перевели больше чем на сто языков.
+    src: 'Источник: В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020 — http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm; Стальной характер автора романа «Как закалялась сталь» Николая Островского — журнал «Родина» — https://rodina-history.ru/2024/09/29/stalnoj-harakter-avtora-romana-kak-zakalialas-stal-nikolaia-ostrovskogo.html'
+    stranica: статья
+    href: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+    otryvok: «…Островский получил в ответ разгромную рецензию, будто в его книге «выведенные типы нереальны»… к 1991 году ее переиздавали 773 раза, общий тираж составил фантастические 53 миллиона.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 10
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-24-goskatalog-17554819.jpg
+      alt: Жёлтая обложка книги с рисунком юноши; на обложке — имя автора и название романа по-венгерски.
+      data_source: https://goskatalog.ru/portal/#/collections?id=15031950
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Роман «Как закалялась сталь» на венгерском языке, Будапешт, 1956 год. Хранится в музее «Интеграция» имени Н. А. Островского.
+      credit: Музей «Интеграция» им. Н. А. Островского, Госкаталог № 14904220
+      width: 535
+      height: 800
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '17554819'
+      hranitel: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+      podpis_chto: Книга «Как закалялась сталь» на венгерском языке
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1956 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+        otkuda: https://goskatalog.ru/portal/#/collections?id=15031950
+      svyashchennoe: false
+      prava:
+        avtor: Н. А. Островский (текст); оформление — автор не указан
+        god_sozdaniya: 1956 год
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 14904220
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 14904220
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=15031950
+      hint: Роман на венгерском, 1956
+      celikom: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0224-pocherki
+    summary: 'Рукопись романа записана 19 разными почерками: автор не видел и не мог держать перо'
+    det:
+    - Островский диктовал роман родным, друзьям и соседям. Фотокопии этих почерков хранятся в Российском государственном архиве литературы и искусства.
+    src: 'Источник: Стальной характер автора романа «Как закалялась сталь» Николая Островского — журнал «Родина» — https://rodina-history.ru/2024/09/29/stalnoj-harakter-avtora-romana-kak-zakalialas-stal-nikolaia-ostrovskogo.html'
+    stranica: статья
+    href: https://rodina-history.ru/2024/09/29/stalnoj-harakter-avtora-romana-kak-zakalialas-stal-nikolaia-ostrovskogo.html
+    otryvok: «В Российском государственном архиве литературы и искусства хранятся фотокопии 19 разных почерков.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 11
+  - id: ns-0224-desant
+    summary: 'Десантники Новороссийска вписали в его роман: «Уничтожено 500 немцев»'
+    det:
+    - Книга принадлежала участникам морского десанта под Новороссийском. Между строк карандашом записан их боевой счёт.
+    src: 'Источник: Т. Г. Доступова. Вторая жизнь Павла Корчагина — https://lit.wikireading.ru/48486'
+    stranica: книга
+    href: https://lit.wikireading.ru/48486
+    otryvok: '«…Между строк книги карандашом от руки написано: «Наш боевой счет за прошедшие бои: 1) Уничтожено 500 немцев, 2) Отбито шесть танковых атак».»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 12
+  - id: ns-0224-kitaj
+    summary: В Китае роман издан тиражом 15 миллионов, и Павка до сих пор их любимый герой
+    det:
+    - Тираж на китайском языке превышает 15 миллионов экземпляров.
+    src: 'Источник: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского — https://ostrovsky-museum.ru/page/518aa5580cc2; В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020 — http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm'
+    stranica: статья
+    href: https://ostrovsky-museum.ru/page/518aa5580cc2
+    otryvok: «…тираж романа « Как закалялась сталь» на китайском языке превышает 15 млн. экземпляров.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 13
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-24-goskatalog-20016331.jpg
+      alt: 'Серая мягкая обложка книги: красный силуэт профиля и красная надпись арабским письмом.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=19503286
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Роман «Как закалялась сталь» на персидском языке, Иран, 1951 год. Хранится в музее «Интеграция» имени Н. А. Островского.
+      credit: Музей «Интеграция» им. Н. А. Островского, Госкаталог № 19375105
+      width: 607
+      height: 800
+      vid: predmet
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '20016331'
+      hranitel: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+      podpis_chto: Книга «Как закалялась сталь» на персидском языке
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1951 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+        otkuda: https://goskatalog.ru/portal/#/collections?id=19503286
+      svyashchennoe: false
+      prava:
+        avtor: Н. А. Островский (текст); оформление — автор не указан
+        god_sozdaniya: 1951 год
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19375105
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 19375105
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=19503286
+      hint: Роман на персидском, 1951
+      celikom: true
+  - id: ns-0224-rejhstag
+    summary: 'На стене рейхстага штыком было написано: «Дошёл до Берлина. Павел Корчагин»'
+    det:
+    - Эти слова ветераны видели на одной из полуразрушенных стен рейхстага.
+    src: 'Источник: Т. Г. Доступова. Вторая жизнь Павла Корчагина — https://lit.wikireading.ru/48486'
+    stranica: книга
+    href: https://lit.wikireading.ru/48486
+    otryvok: '«…они видели на одной из полуразрушенных стен рейхстага нацарапанные штыком слова: «Дошел до Берлина. Павел Корчагин»…»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0224-povest
+    summary: Его первая повесть пропала на почте, и почти слепой он начал писать заново
+    det:
+    - В 1927–1928 годах он написал повесть о котовцах. Рукопись потерялась, когда её пересылали в редакцию.
+    src: 'Источник: В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020 — http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm'
+    stranica: статья
+    href: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+    otryvok: «В 1927-1928 гг. по просьбе друзей Островский написал повесть о котовцах — «Рожденные бурей», но рукопись при пересылке в редакцию потерялась.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 15
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 19; 2 — за два часа; 3 — губами; 4 — «выведенные типы нереальны»; 5 — бригадного комиссара.'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: сколько разных почерков в рукописи романа «Как закалялась сталь»?'
+    o:
+    - '3'
+    - '7'
+    - '19'
+    - '40'
+    a: 2
+    e: Островский не видел и не мог держать перо, он диктовал. Фотокопии 19 почерков хранятся в РГАЛИ.
+  - q: За сколько раскупили 10 000 экземпляров романа, напечатанного вручную в блокадном Ленинграде?
+    o:
+    - За два часа
+    - За неделю
+    - За месяц
+    - За год
+    a: 0
+    e: Это было в 1942 году, в голодном и холодном городе.
+  - q: Как санитарка без рук и ног перелистывала «Как закалялась сталь»?
+    o:
+    - Ей читали вслух
+    - Губами
+    - Плечом
+    - Никак, только слушала радио
+    a: 1
+    e: Девушка-солдат сама приспособилась переворачивать страницы губами.
+  - q: Что ответил журнал «Молодая гвардия» на рукопись романа?
+    o:
+    - «Печатаем немедленно»
+    - «Слишком длинно»
+    - «Выведенные типы нереальны»
+    - «Пришлите вторую часть»
+    a: 2
+    e: Это была разгромная рецензия. Потом роман вышел общим тиражом 53 миллиона.
+  - q: Какое звание дала армия в 1936 году слепому и неподвижному писателю?
+    o:
+    - Рядового
+    - Лейтенанта
+    - Бригадного комиссара
+    - Маршала
+    a: 2
+    e: В январе 1936 года его взяли на воинский учёт как политработника со званием бригадного комиссара.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-24-goskatalog-9288760.jpg
+  alt: 'Рукописный лист на пожелтевшей бумаге: вверху заглавие и дата, ниже — строки стихотворения, написанные от руки.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=11728358
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Стихи об Островском, написанные его матерью Ольгой Осиповной Островской, 1938 год: «Колыбельная сыну». Хранится в Литературно-мемориальном музее Н. А. Островского в Сочи.'
+  credit: Литературно-мемориальный музей Н. А. Островского (Сочи), Госкаталог № 12458803
+  width: 1000
+  height: 1239
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '9288760'
+  hranitel: Литературно-мемориальный музей Н. А. Островского, Сочи
+  podpis_chto: Стихи О. О. Островской о сыне
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1938 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Литературно-мемориальный музей Н. А. Островского, Сочи
+    otkuda: https://goskatalog.ru/portal/#/collections?id=11728358
+  svyashchennoe: false
+  prava:
+    avtor: О. О. Островская
+    god_sozdaniya: 1938 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 12458803
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 12458803
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=11728358
+  hint: Колыбельная матери, 1938
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-24-goskatalog-5347738.jpg
+  alt: 'Красная суперобложка книги с рисунком: бойцы с лопатами и ломами за работой.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=8919718
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Роман «Как закалялась сталь» на языке гуджарати, Индия, 1987 год. Хранится в музее «Интеграция» имени Н. А. Островского.
+  credit: Музей «Интеграция» им. Н. А. Островского, Госкаталог № 8805328
+  width: 535
+  height: 800
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '5347738'
+  hranitel: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+  podpis_chto: Книга «Как закалялась сталь» на языке гуджарати
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1987 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=8919718
+  svyashchennoe: false
+  prava:
+    avtor: Н. А. Островский (текст); оформление — автор не указан
+    god_sozdaniya: 1987 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 8805328
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 8805328
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=8919718
+  hint: Роман на гуджарати, 1987
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-24-goskatalog-20016336.jpg
+  alt: Красная суперобложка книги с чёрным рисунком скачущих всадников; внизу белыми буквами имя автора и название романа по-эстонски.
+  data_source: https://goskatalog.ru/portal/#/collections?id=19503292
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Роман «Как закалялась сталь» на эстонском языке, 1973 год. Хранится в музее «Интеграция» имени Н. А. Островского.
+  credit: Музей «Интеграция» им. Н. А. Островского, Госкаталог № 19375102
+  width: 535
+  height: 800
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '20016336'
+  hranitel: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+  podpis_chto: Книга «Как закалялась сталь» на эстонском языке
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1973 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=19503292
+  svyashchennoe: false
+  prava:
+    avtor: Н. А. Островский (текст); оформление — автор не указан
+    god_sozdaniya: 1973 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19375102
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 19375102
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=19503292
+  hint: Роман на эстонском, 1973
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-24-goskatalog-6031449.jpg
+  alt: Машинописный лист с заголовком «Отзыв», с рукописными пометками и номерами.
+  data_source: https://goskatalog.ru/portal/#/collections?id=9438978
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Отзыв профессора И. Г. Клабуновского о книге В. Тимофеева и М. Ширяевой «Бессмертный подвиг Николая Островского», 13 января 1963 года. Хранится в Музее Москвы.
+  credit: Музей Москвы, Госкаталог № 9325090
+  width: 578
+  height: 800
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '6031449'
+  hranitel: Музейное объединение «Музей Москвы», Москва
+  podpis_chto: Отзыв И. Г. Клабуновского о книге про Н. Островского
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1963 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музейное объединение «Музей Москвы», Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=9438978
+  svyashchennoe: false
+  prava:
+    avtor: И. Г. Клабуновский
+    god_sozdaniya: 1963 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 9325090
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 9325090
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=9438978
+  hint: Отзыв о книге, 1963
+  celikom: true
+sources:
+- href: https://www.kmslib.ru/sites/default/files/kcfinder/files/virtualnye-vystavki/osnovnye-daty-zhizni-i-raboty.pdf
+  title: Основные даты жизни и работы Н. А. Островского (по книге М. В. Ширяева, В. И. Тимофеева «Величие подвига Николая Островского») — Кольчугинская межпоселенческая библиотека
+  note: к фактам 1
+- href: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+  title: В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020
+  note: к фактам 1, 6, 7, 9, 10, 13, 15
+- href: https://lit.wikireading.ru/48486
+  title: Т. Г. Доступова. Вторая жизнь Павла Корчагина
+  note: к фактам 2, 3, 4, 8, 12, 14
+- href: https://kprf.ru/library/classics/memo/5703.html
+  title: А. Жид. Возвращение из СССР (1936)
+  note: к фактам 5
+- href: https://rodina-history.ru/2024/09/29/stalnoj-harakter-avtora-romana-kak-zakalialas-stal-nikolaia-ostrovskogo.html
+  title: Стальной характер автора романа «Как закалялась сталь» Николая Островского — журнал «Родина»
+  note: к фактам 10, 11
+- href: https://ostrovsky-museum.ru/page/518aa5580cc2
+  title: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского
+  note: к фактам 13
+- href: https://ngounb.ru/?p=22453
+  title: 'Новосибирская государственная областная научная библиотека: о романе «Как закалялась сталь»'
+  note: к фактам 6
+kuda:
+- lbl: Следующий день
+  href: index.html
+  title: 25 февраля (запись готовится)
+  hook: Следующий день музея.
+  main: true
+- lbl: Весь музей
+  href: index.html
+  title: Музей стойкости и подвига «Русские не сдаются»
+  hook: Стойкость и подвиг день за днём.
+  main: false
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Николай Островский — Музей стойкости и подвига «Русские не сдаются»
+    text: Слепой и парализованный, он написал книгу, на которой выросло поколение
+  prev:
+    href: index.html
+    title: 23 февраля
+  next:
+    href: index.html
+    title: 25 февраля (запись готовится)
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько разных почерков в рукописи «Как закалялась сталь»?
+  a: '19: автор не видел и диктовал'
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0224-ostrovskij
+data_uslovnaya: 24 февраля — день музея; событие — работа Николая Островского над романом «Как закалялась сталь» с 1930 года и его последние годы до 22 декабря 1936 года.
+chto_sluchilos: 'Парализованный и почти ослепший Николай Островский в 1930 году начал писать роман «Как закалялась сталь»: сначала по картонному трафарету, потом диктуя. Журнал отверг рукопись, цензура требовала изъять книгу, но роман вышел общим тиражом 53 миллиона и шёл с бойцами по всей войне.'
+god: 1930
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: []
+gde_uvidet:
+- chto: Фотография «Писатель Николай Алексеевич Островский», 1936
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5572705
+- chto: Стихи О. О. Островской о сыне, 1938
+  muzej: Литературно-мемориальный музей Н. А. Островского
+  gorod: Сочи
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11728358
+- chto: «Как закалялась сталь» на венгерском языке, 1956
+  muzej: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=15031950
+chitat_dalshe:
+- nazvanie: Тайны романа «Как закалялась сталь»
+  gde: В. Малышев, «Столетие»
+  ssylka: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+- nazvanie: О романе «Как закалялась сталь»
+  gde: Новосибирская государственная областная научная библиотека
+  ssylka: https://ngounb.ru/?p=22453
+- nazvanie: Стальной характер автора романа «Как закалялась сталь»
+  gde: журнал «Родина»
+  ssylka: https://rodina-history.ru/2024/09/29/stalnoj-harakter-avtora-romana-kak-zakalialas-stal-nikolaia-ostrovskogo.html
+istochniki:
+- id: n1
+  baza: biblioteka-rf
+  nazvanie: Основные даты жизни и работы Н. А. Островского (по книге М. В. Ширяева, В. И. Тимофеева «Величие подвига Николая Островского») — Кольчугинская межпоселенческая библиотека
+  ssylka: https://www.kmslib.ru/sites/default/files/kcfinder/files/virtualnye-vystavki/osnovnye-daty-zhizni-i-raboty.pdf
+- id: n2
+  baza: periodika
+  nazvanie: В. Малышев. Тайны романа «Как закалялась сталь» — «Столетие», 29.09.2020
+  ssylka: http://www.stoletie.ru/kultura/tajny_romana_kak_zakalalas_stal_944.htm
+- id: n3
+  baza: kniga
+  nazvanie: Т. Г. Доступова. Вторая жизнь Павла Корчагина
+  ssylka: https://lit.wikireading.ru/48486
+- id: n4
+  baza: kniga
+  nazvanie: А. Жид. Возвращение из СССР (1936)
+  ssylka: https://kprf.ru/library/classics/memo/5703.html
+- id: n5
+  baza: periodika
+  nazvanie: Стальной характер автора романа «Как закалялась сталь» Николая Островского — журнал «Родина»
+  ssylka: https://rodina-history.ru/2024/09/29/stalnoj-harakter-avtora-romana-kak-zakalialas-stal-nikolaia-ostrovskogo.html
+- id: n6
+  baza: sajt-organizacii
+  nazvanie: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского
+  ssylka: https://ostrovsky-museum.ru/page/518aa5580cc2
+- id: n7
+  baza: biblioteka-rf
+  nazvanie: 'Новосибирская государственная областная научная библиотека: о романе «Как закалялась сталь»'
+  ssylka: https://ngounb.ru/?p=22453
+citaty: []
+velichina_chislo: 19
+velichina_edinica: почерков
+velichina_chto: 'в рукописи романа «Как закалялась сталь»: автор не видел и диктовал'
+voinskaya_chast: net
+operaciya: net
+front: net
+mesto_sobytiya:
+  nazvanie: Сочи, дом Н. А. Островского
+  shirota: 43.5855
+  dolgota: 39.7231
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Фотография «Писатель Николай Алексеевич Островский», 1936
+- Государственный центральный музей современной истории России
+slovar:
+- lyudi:nikolaj-ostrovskij
+vizual:
+  imya: ostrovskij-kolybelnaya
+  vid: dokument
+  kicker: Рукопись под лупой
+  h2: «Колыбельная сыну»
+  lead: Стихи, которые мать Николая Островского, Ольга Осиповна, написала о сыне в 1938 году, через два года после его смерти. Приблизь лист и прочти строки, написанные её рукой.
+audioguide:
+  audioSrc: audio-guide-ostrovskij-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от постели в Сочи через трафарет и девятнадцать почерков к блокадному Ленинграду: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Постель
+  - t: 14
+    mark: 0:14
+    title: Трафарет
+  - t: 34
+    mark: 0:34
+    title: Отказ журнала
+  - t: 52
+    mark: 0:52
+    title: Война
+  - t: 72
+    mark: '1:12'
+    title: Тираж
+  transcript:
+  - 'В 1930 году Николай Островский лежал прикованный к постели: паралич и почти полная слепота. Именно тогда он начал писать роман «Как закалялась сталь».'
+  - Сначала он писал от руки. Когда глаза перестали видеть, ассистентка прорезала в картонной папке полосы размером в строку, и он писал по трафарету. Потом отказала рука, и он стал диктовать. В рукописи 19 разных почерков.
+  - 'Журнал «Молодая гвардия» ответил: «выведенные типы нереальны». Харьковская цензура назвала роман антисоветским и потребовала изъять. Но первую часть читатели раскупили мгновенно.'
+  - В 1942 году в блокадном Ленинграде роман напечатали вручную, и десять тысяч книг раскупили за два часа. Под Сталинградом одну книгу на весь полк разорвали на листы и читали по очереди.
+  - Островский умер 22 декабря 1936 года. К 1991 году роман вышел общим тиражом 53 миллиона. В Китае его тираж больше 15 миллионов, и Павка Корчагин там до сих пор любимый герой.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
