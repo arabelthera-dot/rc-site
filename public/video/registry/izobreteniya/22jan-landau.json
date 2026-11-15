@@ -1,33 +1,33 @@
 {
-  "title": "История в 44 секунды",
+  "title": "История в 45 секунд",
   "intro": "Жидкий гелий сам ползёт вверх по стенке и убегает из сосуда — Ландау объяснил почему, а Нобеля получал в больнице.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42200315328) из сценария days/22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43676924101) из сценария days/22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau.mp4",
     "local": "muzei/izobreteniya/video/day-22jan-landau.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 43.5,
-    "mb": 9.1
+    "sec": 44.5,
+    "mb": 9.2
   },
   "vertical": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-22jan-landau-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 43.5,
-    "mb": 8.9
+    "sec": 44.5,
+    "mb": 9
   },
   "poster": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau-poster.jpg",
     "local": "muzei/izobreteniya/video/day-22jan-landau-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-22jan-landau-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
