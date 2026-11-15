@@ -15,7 +15,10 @@ export const VIDY = ['foto', 'chertezh', 'karta', 'kartina', 'risunok', 'plakat'
 export const TYAZHELYE = ['vojna', 'kazn', 'golod', 'repressii', 'katastrofa', 'gibel'];
 // «Нет» в полях, где ответ «нет» — тоже ответ (пп. 9, 20, 21, 29): поле есть, значение 'net'.
 export const NET = 'net';
-export const wiki = /wiki|википеди|викитек/i;
+// Р784 (brak-stranic п. 29): не любое «wiki» в адресе — lit.wikireading.ru и прочие книжные сайты не Википедия.
+// Ловит проекты Викимедиа (wikipedia/wikimedia/wikisource/wikidata… .org), их зеркала (wikiwand, wiki2.org, ruwiki.ru,
+// любой адрес с /wiki/) и слова «Википедия», «Викитека», «Викисклад».
+export const wiki = /wikipedia|wikimedia|wikisource|wiki(?:data|quote|books|news|versity|voyage|species)\b|wiktionary|wikiwand|\/wiki\/|(?:^|[\s/.@(])(?:ru)?wiki\d*\.[a-z]|википеди|викитек|викисклад/i;
 
 const str = z.string().min(1);
 export const baza = z.enum(BAZY, { message: 'база — из закрытого списка src/data/spravochniki/bazy.json (Википедия, Викисклад, Викитека запрещены, Р90)' });
