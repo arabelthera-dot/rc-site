@@ -1,0 +1,33 @@
+{
+  "title": "История в 46 секунд",
+  "intro": "Экипаж боролся за лодку, пока она не ушла на дно — и не сдался",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43715895558) из сценария days/ns23feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 46.4,
+    "mb": 11.8
+  },
+  "vertical": {
+    "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 46.4,
+    "mb": 11.9
+  },
+  "poster": {
+    "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec-9x16-poster.jpg",
+    "v": 1
+  }
+}
