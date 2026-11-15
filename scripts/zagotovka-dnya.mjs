@@ -2,7 +2,7 @@
 // Форма — с двух последних готовых дней того же музея: что у них совпадает (подписи, заголовки разделов, служебные
 // поля) — остаётся, что различается (текст, факты, кадры, источники, даты) — пусто. Число фактов и кадров — как у
 // последнего дня. Пишет src/content/dni-shablon/<музей>/<ММ-ДД>.yaml и src/data/utverzhdeno/<музей>/<ММ-ДД>.json,
-// существующие не трогает. Новых проверок нет: пустое ловит обычная сборка и tools/proverka-dnya.mjs.
+// существующие не трогает; в конце — scripts/zapolnit-dnya.mjs (размеры картинок, старый стиль, Р784). Новых проверок нет: пустое ловит обычная сборка и tools/proverka-dnya.mjs.
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
@@ -68,3 +68,8 @@ zapisat(`${UT}/${den}.json`, JSON.stringify(u, null, 2) + '\n');
 console.log(`образец: ${b} (сверено с ${a}); пустых полей: yaml ${nYaml}, утверждённое ${pustyh.length - nYaml}`);
 for (const p of pustyh.slice(0, 30)) console.log(`  пусто: ${p}`);
 if (pustyh.length > 30) console.log(`  … и ещё ${pustyh.length - 30}`);
+
+// Р784: то, что машина знает сама, — сразу (размеры картинок из файлов, старый стиль). Повторный запуск по готовому
+// дню ничего не перезаписывает, кроме этого.
+const { zapolnitDen } = await import('./zapolnit-dnya.mjs');
+await zapolnitDen(muzei, den);
