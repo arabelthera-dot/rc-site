@@ -240,6 +240,45 @@ fakty:
     istochnik: n1
     dlya_voprosa: false
     n: 6
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-19-goskatalog-13359988.jpg
+      alt: Портрет мужчины средних лет в светлом пиджаке, на груди медаль «Золотая Звезда».
+      data_source: https://goskatalog.ru/portal/#/collections?id=14684616
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Герой Советского Союза Иван Вернигоренко, бывший моряк Тихоокеанского флота, командир отделения во взводе Широнина. Снимок 1960-х годов. Хранится в Центральном военно-морском музее.
+      credit: Центральный военно-морской музей, Госкаталог № 14555410
+      width: 598
+      height: 800
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '13359988'
+      hranitel: Центральный военно-морской музей, Санкт-Петербург
+      podpis_chto: Герой Советского Союза Иван Вернигоренко
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1960-е годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Центральный военно-морской музей, Санкт-Петербург
+        otkuda: https://goskatalog.ru/portal/#/collections?id=14684616
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1960-е годы
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 14555410
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 14555410
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=14684616
+      hint: Иван Вернигоренко
+      celikom: true
   - id: ns-0219-shkodin
     summary: Шкодин одной гранатой сбросил штурмовое орудие с насыпи
     det:
@@ -504,6 +543,44 @@ figures:
     baza: goskatalog
     ssylka: https://goskatalog.ru/portal/#/collections?id=51149434
   hint: Широнин с Золотой Звездой
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-19-goskatalog-14148306.jpg
+  alt: Мужчина в тёмном кителе стоит у большой схемы боя и рассказывает сидящим слушателям; справа за столом сидит пожилой человек с наградами на пиджаке.
+  data_source: https://goskatalog.ru/portal/#/collections?id=8743684
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Гвардии лейтенант Пётр Широнин рассказывает о бое своего взвода у Тарановки, справа за столом — гвардии полковник Константин Билютин. Снимок 1963 года. Хранится в Музее Победы.
+  credit: Музей Победы, Госкаталог № 8633540
+  width: 800
+  height: 483
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '14148306'
+  hranitel: Музей Победы, Москва
+  podpis_chto: Пётр Широнин рассказывает о бое взвода у Тарановки
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1963 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей Победы, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=8743684
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1963 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 8633540
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 8633540
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=8743684
+  hint: Широнин рассказывает о бое
   celikom: true
 - src: /muzei/ne-sdayutsya/img/02-19-goskatalog-6780670.jpg
   alt: Прозрачный контейнер из оргстекла с тёмной землёй, на нём бумажная этикетка «Земля со станции Тарановка».
