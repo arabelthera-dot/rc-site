@@ -1,0 +1,33 @@
+{
+  "title": "История в 47 секунд",
+  "intro": "Григорович превратил корпус самолёта в лодку, и машина стала взлетать прямо с черноморской волны, без аэродрома",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43712678260) из сценария days/11feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/11feb-m5/day-11feb-m5.mp4",
+    "local": "muzei/izobreteniya/video/day-11feb-m5.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 46.7,
+    "mb": 13.4
+  },
+  "vertical": {
+    "file": "izobreteniya/11feb-m5/day-11feb-m5-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-11feb-m5-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 46.7,
+    "mb": 12.6
+  },
+  "poster": {
+    "file": "izobreteniya/11feb-m5/day-11feb-m5-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-11feb-m5-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/11feb-m5/day-11feb-m5-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-11feb-m5-9x16-poster.jpg",
+    "v": 1
+  }
+}
