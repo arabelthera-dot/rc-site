@@ -114,7 +114,7 @@ story:
   - 'В 1937 году его снова арестовали в Ташкенте: тринадцать суток допроса «конвейером», требования признаться в шпионаже и отречься от сана. Он не признал вину. 13 февраля 1940 года вынесли приговор — пять лет ссылки в Красноярский край. В Большой Мурте он оперировал в районной больнице, а с войной стал хирургом эвакогоспиталя в Красноярске. В 1946 году за «Очерки гнойной хирургии» получил Сталинскую премию.'
 fakty:
 - id: fakty
-  kicker: Пятнадцать фактов
+  kicker: Десять фактов
   h2: Святитель Лука
   udary:
   - id: ns-0226-bog
@@ -296,6 +296,10 @@ fakty:
     istochnik: n1
     dlya_voprosa: false
     n: 10
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
   - id: ns-0226-bazar
     summary: Хирурга уволили — вылеченный им слепой поднял базар, и толпа пошла громить управу.
     det:
@@ -539,6 +543,82 @@ figures:
     ssylka: https://goskatalog.ru/portal/#/collections?id=64534120
   hint: Святитель Лука
   celikom: true
+- src: /muzei/ne-sdayutsya/img/02-26-goskatalog-5864677.jpg
+  alt: 'Живописный портрет: седой старик в очках с длинной белой бородой, в светлом халате, с крестом на груди стоит у деревянного дома с голубым наличником, рядом тонкое дерево.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=9315929
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Картина Р. Г. Назмутдинова «Портрет Валентина Феликсовича Войно-Ясенецкого в Большой Мурте», 2008 год. Хранится в Большемуртинском краеведческом музее — в посёлке, куда хирурга сослали.
+  credit: МБУК «Большемуртинский краеведческий музей», Госкаталог № 9200722
+  width: 821
+  height: 1198
+  vid: kartina
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.15
+    w: 0.7
+    h: 0.6
+  nomer_predmeta: net
+  nomer_snimka: '5864677'
+  hranitel: МБУК «Большемуртинский краеведческий музей», Большая Мурта, Красноярский край
+  podpis_chto: Портрет В. Ф. Войно-Ясенецкого в Большой Мурте
+  podpis_gde: Большая Мурта
+  podpis_kogda: 2008 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: МБУК «Большемуртинский краеведческий музей», Большая Мурта, Красноярский край
+    otkuda: https://goskatalog.ru/portal/#/collections?id=9315929
+  svyashchennoe: false
+  prava:
+    avtor: Назмутдинов Равиль Геннадьевич
+    god_sozdaniya: '2008'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 9200722
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 9200722
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=9315929
+  hint: Святитель Лука в Большой Мурте
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-26-goskatalog-83211671.jpg
+  alt: Книга в серой обложке с двойной рамкой; на обложке напечатаны имя автора, название и издательство.
+  data_source: https://goskatalog.ru/portal/#/collections?id=65129260
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Книга «Очерки гнойной хирургии», третье издание, Медгиз, 1956 год. Хранится в Красноярском краевом краеведческом музее.
+  credit: КГАУК «Красноярский краевой краеведческий музей», Госкаталог № 64842706
+  width: 510
+  height: 800
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '83211671'
+  hranitel: КГАУК «Красноярский краевой краеведческий музей», Красноярск
+  podpis_chto: Книга В. Ф. Войно-Ясенецкого «Очерки гнойной хирургии», третье издание
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1956 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: КГАУК «Красноярский краевой краеведческий музей», Красноярск
+    otkuda: https://goskatalog.ru/portal/#/collections?id=65129260
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1956'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 64842706
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 64842706
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=65129260
+  hint: Очерки гнойной хирургии, 1956
+  celikom: true
 sources:
 - href: https://azbyka.ru/otechnik/Luka_Vojno-Jasenetskij/ja-poljubil-stradanie-avtobiografija/
   title: Азбука веры. Святитель Лука (Войно-Ясенецкий). «Я полюбил страдание». Автобиография
@@ -564,6 +644,12 @@ sources:
 - href: https://goskatalog.ru/portal/#/collections?id=10087328
   title: «Очерки гнойной хирургии», 1934, Госкаталог № 9973024
   note: к факту 13
+- href: https://goskatalog.ru/portal/#/collections?id=9315929
+  title: Р. Г. Назмутдинов. Портрет В. Ф. Войно-Ясенецкого в Большой Мурте, 2008, Госкаталог № 9200722
+  note: галерея
+- href: https://goskatalog.ru/portal/#/collections?id=65129260
+  title: «Очерки гнойной хирургии», 3-е издание, 1956, Госкаталог № 64842706
+  note: галерея
 kuda:
 - lbl: Следующий день
   href: index.html
@@ -626,6 +712,14 @@ gde_uvidet:
   muzej: Музей истории Тетюшского края
   gorod: Тетюши
   goskatalog: https://goskatalog.ru/portal/#/collections?id=10087328
+- chto: Портрет В. Ф. Войно-Ясенецкого в Большой Мурте, картина Р. Г. Назмутдинова, 2008
+  muzej: Большемуртинский краеведческий музей
+  gorod: Большая Мурта
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=9315929
+- chto: «Очерки гнойной хирургии», 3-е издание, 1956
+  muzej: Красноярский краевой краеведческий музей
+  gorod: Красноярск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=65129260
 chitat_dalshe:
 - nazvanie: Святитель Лука (Войно-Ясенецкий). «Я полюбил страдание». Автобиография
   gde: Азбука веры
