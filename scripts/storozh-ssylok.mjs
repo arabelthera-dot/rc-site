@@ -48,11 +48,13 @@ if (process.argv.includes('--sobrat')) {
   process.exit(0);
 }
 
-const razr = fs.readFileSync(SPISOK, 'utf8').split('\n').map((s) => s.trim()).filter((s) => s && !s.startsWith('#')).map(host)
+// Р783 (15.11): кроме общего списка — файл на день data/razreshennye-domeny/<музей>--<ММ-ДД>.txt, по домену в строке.
+const DNI = 'data/razreshennye-domeny';
+const razr = [SPISOK, ...(fs.existsSync(DNI) ? fs.readdirSync(DNI).filter((f) => f.endsWith('.txt')).map((f) => `${DNI}/${f}`) : [])].map((f) => fs.readFileSync(f, 'utf8')).join('\n').split('\n').map((s) => s.trim()).filter((s) => s && !s.startsWith('#')).map(host)
   .concat(domenyBaz);
 const razresheno = (h) => razr.some((r) => h === r || h.endsWith('.' + r));
 const narusheniya = [];
-for (const [h, f] of vstrechi) if (!razresheno(h)) narusheniya.push(`новый внешний домен ${h} в ${f} — добавь в ${SPISOK}, если законен`);
+for (const [h, f] of vstrechi) if (!razresheno(h)) narusheniya.push(`новый внешний домен ${h} в ${f} — добавь в ${DNI}/<музей>--<ММ-ДД>.txt своего дня, если законен`);
 
 // Опасный JS
 const OPASNO = [
