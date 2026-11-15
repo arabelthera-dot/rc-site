@@ -1,0 +1,926 @@
+muzei: izobreteniya
+key: 02-20
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0220-stanciya-mir
+data_sobytiya: '1986-02-20'
+chto_sluchilos: 20 февраля 1986 года с Байконура вывели на орбиту базовый блок станции «Мир» — первой в мире станции, которую собирали на орбите по модулю; она пролетала 15 лет вместо пяти.
+god: 1986
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Пульт контрольной сигнализации (ПКС-1) базового блока орбитального комплекса «Мир»
+  muzej: Музейно-выставочный центр Тамбовской области
+  gorod: Тамбов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=27385625
+- chto: Элемент системы орбитального оптического наблюдения станции «Мир», 1990-е
+  muzej: Музейно-выставочный центр Тамбовской области
+  gorod: Тамбов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=27385429
+- chto: Кронштейн из комплектации базового блока орбитальной станции «Мир», 1980-е
+  muzej: ГБУК г. Москвы «Музей Москвы»
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=32691672
+chitat_dalshe:
+- nazvanie: «Как создавали и как топили советскую орбитальную станцию «Мир»»
+  gde: «Российская газета», 2025
+  ssylka: https://rg.ru/2025/01/02/kak-sozdavali-i-kak-topili-sovetskuiu-orbitalnuiu-stanciiu-mir.html
+- nazvanie: «35 лет назад был выведен на орбиту базовый блок станции «Мир»»
+  gde: «Российская газета», 2021
+  ssylka: https://rg.ru/2021/02/20/35-let-nazad-byl-vyveden-na-orbitu-bazovyj-blok-stancii-mir.html
+- nazvanie: «437 суток на орбите. Не стало космонавта Валерия Полякова, установившего мировой рекорд по длительности космического полёта»
+  gde: журнал «Родина»
+  ssylka: https://rodina-history.ru/2022/09/19/437-sutok-na-orbite-ne-stalo-kosmonavta-valeriia-poliakova-ustanovivshego-mirovoj-rekord-po-dlitelnosti-kosmicheskogo-poleta.html
+- nazvanie: «Соловьёв Анатолий Яковлевич. Космонавт № 65/205»
+  gde: Объединённый мемориальный музей Ю. А. Гагарина
+  ssylka: https://museumgagarin.ru/news/solovev_anatoliy_yakovlevich_kosmonavt_65_205/
+istochniki:
+- id: kalm
+  baza: sajt-organizacii
+  nazvanie: '«Межорбитальный прорыв: страницы истории» — Национальная библиотека имени А. М. Амур-Санана'
+  ssylka: https://www.kalmnlib.ru/articles/4013-40-let.html
+- id: nr
+  baza: periodika
+  nazvanie: '«Центрифуга, инкубатор, 48 яиц: зачем землянам космический эксперимент «Перепел»» — «Научная Россия»'
+  ssylka: https://scientificrussia.ru/articles/centrifuga-inkubator-48-aic-zacem-zemlanam-kosmiceskij-eksperiment-perepel
+- id: kult
+  baza: periodika
+  nazvanie: «Чем напугало Европу космическое зеркало «Знамя», которое ракета из СССР вывела на орбиту» — «Культурология»
+  ssylka: https://kulturologia.ru/blogs/050625/64344/
+- id: rodina
+  baza: periodika
+  nazvanie: «437 суток на орбите. Не стало космонавта Валерия Полякова, установившего мировой рекорд по длительности космического полёта» — журнал «Родина»
+  ssylka: https://rodina-history.ru/2022/09/19/437-sutok-na-orbite-ne-stalo-kosmonavta-valeriia-poliakova-ustanovivshego-mirovoj-rekord-po-dlitelnosti-kosmicheskogo-poleta.html
+- id: mk
+  baza: periodika
+  nazvanie: '«Космонавт Валерий Поляков: „Я уже на Марс слетал!“» — «Московский комсомолец»'
+  ssylka: https://www.mk.ru/science/2017/04/27/kosmonavt-valeriy-polyakov-ya-uzhe-na-mars-sletal.html
+- id: ria25
+  baza: periodika
+  nazvanie: «Распад СССР встретил на орбите. Невероятная история космонавта Крикалёва» — РИА Новости, 2025
+  ssylka: https://ria.ru/20251014/kosmos-2047600755.html
+- id: rg25
+  baza: periodika
+  nazvanie: «Как создавали и как топили советскую орбитальную станцию «Мир»» — «Российская газета», 2025
+  ssylka: https://rg.ru/2025/01/02/kak-sozdavali-i-kak-topili-sovetskuiu-orbitalnuiu-stanciiu-mir.html
+- id: rg21
+  baza: periodika
+  nazvanie: «35 лет назад был выведен на орбиту базовый блок станции «Мир»» — «Российская газета», 2021
+  ssylka: https://rg.ru/2021/02/20/35-let-nazad-byl-vyveden-na-orbitu-bazovyj-blok-stancii-mir.html
+- id: kp
+  baza: periodika
+  nazvanie: '«Утечка ядовитого этиленгликоля, столкновение с «Прогрессом» и пожар: космонавт Александр Лазуткин подробно о самом сложном полёте в истории» — «Комсомольская правда»'
+  ssylka: https://www.kp.ru/daily/27771.5/5231641/
+- id: mg
+  baza: sajt-organizacii
+  nazvanie: «Соловьёв Анатолий Яковлевич. Космонавт № 65/205» — Объединённый мемориальный музей Ю. А. Гагарина
+  ssylka: https://museumgagarin.ru/news/solovev_anatoliy_yakovlevich_kosmonavt_65_205/
+- id: gctc
+  baza: sajt-organizacii
+  nazvanie: '«Год в космосе: 25 лет с начала первого годового полёта» — Центр подготовки космонавтов имени Ю. А. Гагарина'
+  ssylka: https://www.gctc.ru/print.php?id=1791
+- id: hij
+  baza: periodika
+  nazvanie: '«Эксперименты на станции «Мир»: космическая пшеница» — «Химия и жизнь», 2000, № 4'
+  ssylka: https://www.hij.ru/read/4526/
+- id: ria21
+  baza: periodika
+  nazvanie: «История космического туризма» — РИА Новости, 2021
+  ssylka: https://ria.ru/20211208/turizm-1762400660.html
+- id: energia
+  baza: sajt-organizacii
+  nazvanie: Служебный модуль «Звезда» — РКК «Энергия» имени С. П. Королёва
+  ssylka: https://www.energia.ru/ru/iss/rs/zvezda.html
+- id: gk-9436701
+  baza: goskatalog
+  nazvanie: Фотография «Международная космическая станция „Мир“», 1991, КГБУ «Государственный мемориальный музей Г. С. Титова» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=9436701
+- id: gk-7305826
+  baza: goskatalog
+  nazvanie: Фото. Первый экипаж станции «Мир» — Л. Д. Кизим и В. А. Соловьёв, 1986, Бузулукский краеведческий музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=7305826
+- id: gk-7306668
+  baza: goskatalog
+  nazvanie: Фото. С. К. Крикалёв и В. В. Поляков на борту станции «Мир», 1988, Бузулукский краеведческий музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=7306668
+- id: gk-25644938
+  baza: goskatalog
+  nazvanie: Фото цветное. Вид Земли через большой иллюминатор базового блока «Мира», 1991, ГБУК «Бийский городской краеведческий музей» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=25644938
+- id: gk-25644915
+  baza: goskatalog
+  nazvanie: Фото цветное. Вид Земли через большой иллюминатор базового блока «Мира», 1991, ГБУК «Бийский городской краеведческий музей» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=25644915
+- id: gk-27385625
+  baza: goskatalog
+  nazvanie: Пульт контрольной сигнализации (ПКС-1) базового блока ОК «Мир», Музейно-выставочный центр Тамбовской области — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=27385625
+- id: gk-27385429
+  baza: goskatalog
+  nazvanie: Элемент системы орбитального оптического наблюдения станции «Мир», Музейно-выставочный центр Тамбовской области — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=27385429
+- id: gk-32691672
+  baza: goskatalog
+  nazvanie: Кронштейн из комплектации базового блока ОС «Мир», ГБУК г. Москвы «Музей Москвы» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=32691672
+citaty: []
+velichina_chislo: 437
+velichina_edinica: суток
+velichina_chto: прожил на «Мире» Валерий Поляков — мировой рекорд
+etiketka_oblozhki:
+- Фотография «Международная космическая станция „Мир“», 1991
+- КГБУ «Государственный мемориальный музей Г. С. Титова»
+slovar:
+- tema:kosmos
+head:
+  title: Первая в мире модульная орбитальная станция «Мир», 1986 — Музей «Что изобрели русские первыми в мире»
+  description: '«Мир» собирали на орбите по модулю: 437 суток Полякова, первый птенец, рождённый в космосе, и 15 лет полёта вместо пяти.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-20/
+  sobytie: Первая в мире модульная орбитальная станция «Мир»
+  god: '1986'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первая в мире модульная орбитальная станция «Мир»
+    description: '«Мир» собирали на орбите по модулю: 437 суток Полякова, первый птенец, рождённый в космосе, и 15 лет полёта вместо пяти.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-20/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-20-goskatalog-9436701.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первая в мире модульная орбитальная станция «Мир»
+    description: '«Мир» собирали на орбите по модулю: 437 суток Полякова, первый птенец, рождённый в космосе, и 15 лет полёта вместо пяти.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-20/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-20-goskatalog-9436701.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-20-goskatalog-9436701.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.8
+  width: 1020
+  height: 1110
+  alt: 'Цветной рисунок в раме: орбитальная станция из нескольких белых модулей с крыльями солнечных батарей на фоне звёздного неба'
+  data_source: https://goskatalog.ru/portal/#/collections?id=9436701
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · КГБУ «Государственный мемориальный музей Г. С. Титова» · Госкаталог
+  podpis: Фотография «Международная космическая станция „Мир“», 1991. Хранит КГБУ «Государственный мемориальный музей Г. С. Титова».
+  credit: 'Хранится: КГБУ «Государственный мемориальный музей Г. С. Титова». Госкаталог музейного фонда РФ, № 9450147.'
+  hint: Фото · Станция «Мир» из модулей
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1991'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1991'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=9436701
+  nomer_predmeta: '9450147'
+  nomer_snimka: net
+  hranitel: КГБУ «Государственный мемориальный музей Г. С. Титова»
+  podlinnik:
+    gde: КГБУ «Государственный мемориальный музей Г. С. Титова»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=9436701
+  svyashchennoe: false
+  podpis_chto: Фотография «Международная космическая станция „Мир“», 1991
+  podpis_gde: Россия
+  podpis_kogda: '1991'
+  pometka_prav: citirovanie-1274
+kroshka: 20 февраля · Станция «Мир»
+lead:
+  data: 20 февраля 1986 · Байконур
+  privyazka: 20 февраля 1986 года на орбиту вывели базовый блок станции «Мир».
+  kto: Советская космонавтика
+  h1: Первая в мире модульная орбитальная станция «Мир» · 1986
+  hook: 'Станцию «Мир» собирали на орбите по модулю, и пятнадцать лет полёта доказали: человек может жить в космосе годами'
+stamp:
+- v: '437'
+  k: суток Полякова — мировой рекорд
+- v: '15'
+  k: лет полёта вместо пяти
+- v: '16'
+  k: выходов в открытый космос у Соловьёва
+- v: '1990'
+  k: первый птенец, рождённый в космосе
+daynav:
+- id: story
+  label: Станция
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-stanciya-mir-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу станции «Мир»: от перелёта на «Салют-7» через рекорд Полякова к спасению пробитой станции.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Перелёт на «Салют-7»
+  - t: 35
+    mark: 0:35
+    title: Птенец и зеркало
+  - t: 70
+    mark: '1:10'
+    title: Четыреста тридцать семь суток
+  - t: 105
+    mark: '1:45'
+    title: Пятнадцать лет вместо пяти
+  transcript:
+  - В тысяча девятьсот восемьдесят шестом Кизим и Соловьёв слетали с «Мира» на «Салют-7» и вернулись — такого больше не было.
+  - Двадцать второго марта тысяча девятьсот девяностого года на «Мире» вылупился первый в мире птенец, рождённый в космосе. В тысяча девятьсот девяносто третьем зеркало с «Мира» ночью пустило над Европой «солнечный зайчик» ярче полной Луны.
+  - 'Поляков пробыл на «Мире» четыреста тридцать семь суток — мировой рекорд держится больше тридцати лет. После этого он держался на ногах и шутил: «Я уже на Марс слетал».'
+  - «Мир» строили на пять лет, а он пролетал пятнадцать. Стотридцатитонный «Мир» впервые свели с орбиты управляемо — точно в заданный район океана.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Дом на орбите
+  h2: Как «Мир» доказал, что в космосе можно жить
+  udary:
+  - summary: Перелёт между станциями
+    det:
+    - В 1986-м Кизим и Соловьёв слетали с «Мира» на «Салют-7» и вернулись — такого больше не было
+    src: 'Источник: Национальная библиотека имени А. М. Амур-Санана, «Межорбитальный прорыв: страницы истории»'
+  - summary: 437 суток
+    det:
+    - Поляков пробыл на «Мире» 437 суток — мировой рекорд держится больше 30 лет
+    src: 'Источник: журнал «Родина», «437 суток на орбите. Не стало космонавта Валерия Полякова, установившего мировой рекорд по длительности космического полёта»'
+  - summary: 15 лет вместо пяти
+    det:
+    - «Мир» строили на 5 лет, а он пролетал 15
+    src: 'Источник: «Российская газета», 2025, «Как создавали и как топили советскую орбитальную станцию «Мир»»'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-20-goskatalog-7305826.jpg
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 0.9
+      width: 1161
+      height: 943
+      alt: 'Чёрно-белый снимок: двое мужчин в лётных шлемах с гарнитурами смотрят в одну сторону'
+      data_source: https://goskatalog.ru/portal/#/collections?id=7305826
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Бузулукский краеведческий музей · Госкаталог
+      podpis: Фото. Первый экипаж станции «Мир» — Л. Д. Кизим (командир) и В. А. Соловьёв (бортинженер), 1986. Хранит Бузулукский краеведческий музей.
+      credit: 'Хранится: Бузулукский краеведческий музей. Госкаталог музейного фонда РФ, № 7546552.'
+      hint: Фото · Первый экипаж «Мира»
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1986'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1986'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=7305826
+      nomer_predmeta: '7546552'
+      nomer_snimka: net
+      hranitel: Бузулукский краеведческий музей
+      podlinnik:
+        gde: Бузулукский краеведческий музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=7305826
+      svyashchennoe: false
+      podpis_chto: Фото. Первый экипаж станции «Мир» — Л. Д. Кизим (командир) и В. А. Соловьёв (бортинженер), 1986
+      podpis_gde: СССР
+      podpis_kogda: '1986'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Национальная библиотека имени А. М. Амур-Санана, «Межорбитальный прорыв: страницы истории»'
+    otryvok: В 1986-м Кизим и Соловьёв слетали с «Мира» на «Салют-7» и вернулись — такого больше не было
+    stranica: '«Межорбитальный прорыв: страницы истории» — Национальная библиотека имени А. М. Амур-Санана'
+    href: https://www.kalmnlib.ru/articles/4013-40-let.html
+    pometka: документ
+    id: mir-salyut-7
+    istochnik: kalm
+    dlya_voprosa: true
+    otvet: '1986'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: «Научная Россия», «Центрифуга, инкубатор, 48 яиц: зачем землянам космический эксперимент «Перепел»»'
+    otryvok: 22 марта 1990 года на «Мире» вылупился первый в мире птенец, рождённый в космосе
+    stranica: '«Центрифуга, инкубатор, 48 яиц: зачем землянам космический эксперимент «Перепел»» — «Научная Россия»'
+    href: https://scientificrussia.ru/articles/centrifuga-inkubator-48-aic-zacem-zemlanam-kosmiceskij-eksperiment-perepel
+    pometka: документ
+    id: ptenec-1990
+    istochnik: nr
+    dlya_voprosa: true
+    otvet: '1990'
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    src: 'Источник: «Культурология», «Чем напугало Европу космическое зеркало «Знамя», которое ракета из СССР вывела на орбиту»'
+    otryvok: В 1993-м зеркало с «Мира» ночью пустило над Европой «солнечный зайчик» ярче полной Луны
+    stranica: «Чем напугало Европу космическое зеркало «Знамя», которое ракета из СССР вывела на орбиту» — «Культурология»
+    href: https://kulturologia.ru/blogs/050625/64344/
+    pometka: документ
+    id: zerkalo-1993
+    istochnik: kult
+    dlya_voprosa: true
+    otvet: '1993'
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: net
+    kadr: &id003
+      src: /muzei/izobreteniya/img/02-20-goskatalog-7306668.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.85
+        h: 0.85
+      width: 1171
+      height: 933
+      alt: 'Чёрно-белый снимок: двое в лётных костюмах у иллюминатора внутри станции, вокруг кабели и приборы'
+      data_source: https://goskatalog.ru/portal/#/collections?id=7306668
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Бузулукский краеведческий музей · Госкаталог
+      podpis: Фото. С. К. Крикалёв и В. В. Поляков на борту станции «Мир» проводят наблюдения за поверхностью, 1988. Хранит Бузулукский краеведческий музей.
+      credit: 'Хранится: Бузулукский краеведческий музей. Госкаталог музейного фонда РФ, № 7546520.'
+      hint: Фото · Поляков на борту «Мира»
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1988'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1988'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=7306668
+      nomer_predmeta: '7546520'
+      nomer_snimka: net
+      hranitel: Бузулукский краеведческий музей
+      podlinnik:
+        gde: Бузулукский краеведческий музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=7306668
+      svyashchennoe: false
+      podpis_chto: Фото. С. К. Крикалёв и В. В. Поляков на борту станции «Мир» проводят наблюдения за поверхностью, 1988
+      podpis_gde: станция «Мир»
+      podpis_kogda: '1988'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: журнал «Родина», «437 суток на орбите. Не стало космонавта Валерия Полякова, установившего мировой рекорд по длительности космического полёта»'
+    otryvok: Поляков пробыл на «Мире» 437 суток — мировой рекорд держится больше 30 лет
+    stranica: «437 суток на орбите. Не стало космонавта Валерия Полякова, установившего мировой рекорд по длительности космического полёта» — журнал «Родина»
+    href: https://rodina-history.ru/2022/09/19/437-sutok-na-orbite-ne-stalo-kosmonavta-valeriia-poliakova-ustanovivshego-mirovoj-rekord-po-dlitelnosti-kosmicheskogo-poleta.html
+    pometka: документ
+    id: polyakov-437
+    istochnik: rodina
+    dlya_voprosa: true
+    otvet: 437 суток
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    src: 'Источник: «Московский комсомолец», «Космонавт Валерий Поляков: „Я уже на Марс слетал!“»'
+    otryvok: 'После 437 суток на орбите Поляков держался на ногах и шутил: «Я уже на Марс слетал»'
+    stranica: '«Космонавт Валерий Поляков: „Я уже на Марс слетал!“» — «Московский комсомолец»'
+    href: https://www.mk.ru/science/2017/04/27/kosmonavt-valeriy-polyakov-ya-uzhe-na-mars-sletal.html
+    pometka: документ
+    id: na-mars-sletal
+    istochnik: mk
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: РИА Новости, 2025, «Распад СССР встретил на орбите. Невероятная история космонавта Крикалёва»'
+    otryvok: Крикалёв улетел на «Мир» из СССР, а вернулся через 311 суток уже в Россию
+    stranica: «Распад СССР встретил на орбите. Невероятная история космонавта Крикалёва» — РИА Новости, 2025
+    href: https://ria.ru/20251014/kosmos-2047600755.html
+    pometka: документ
+    id: krikalyov-311
+    istochnik: ria25
+    dlya_voprosa: true
+    otvet: 311 суток
+    otvet_edinstvennyj: true
+  - n: 7
+    sravnenie: net
+    kadr: &id004
+      src: /muzei/izobreteniya/img/02-20-goskatalog-25644938.jpg
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 1.0
+      width: 795
+      height: 1200
+      alt: 'Цветной снимок: белый модуль станции слева, внизу — облака над Землёй и тонкая голубая полоска атмосферы'
+      data_source: https://goskatalog.ru/portal/#/collections?id=25644938
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · ГБУК «Бийский городской краеведческий музей» · Госкаталог
+      podpis: Фото цветное. Вид Земли из космоса через большой иллюминатор базового блока комплекса «Мир», 1991. Хранит ГБУК «Бийский городской краеведческий музей».
+      credit: 'Хранится: ГБУК «Бийский городской краеведческий музей». Госкаталог музейного фонда РФ, № 25501241.'
+      hint: Фото · Земля с «Мира»
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1991'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1991'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=25644938
+      nomer_predmeta: '25501241'
+      nomer_snimka: net
+      hranitel: ГБУК «Бийский городской краеведческий музей»
+      podlinnik:
+        gde: ГБУК «Бийский городской краеведческий музей»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=25644938
+      svyashchennoe: false
+      podpis_chto: Фото цветное. Вид Земли из космоса через большой иллюминатор базового блока комплекса «Мир», 1991
+      podpis_gde: станция «Мир»
+      podpis_kogda: '1991'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Российская газета», 2025, «Как создавали и как топили советскую орбитальную станцию «Мир»»'
+    otryvok: «Мир» строили на 5 лет, а он пролетал 15
+    stranica: «Как создавали и как топили советскую орбитальную станцию «Мир»» — «Российская газета», 2025
+    href: https://rg.ru/2025/01/02/kak-sozdavali-i-kak-topili-sovetskuiu-orbitalnuiu-stanciiu-mir.html
+    pometka: документ
+    id: 5-i-15-let
+    istochnik: rg25
+    dlya_voprosa: true
+    otvet: 15 лет
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    kadr: &id005
+      src: /muzei/izobreteniya/img/02-20-goskatalog-25644915.jpg
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 1.0
+      width: 1200
+      height: 800
+      alt: 'Цветной снимок: облака и синий океан под станцией, слева край модуля'
+      data_source: https://goskatalog.ru/portal/#/collections?id=25644915
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · ГБУК «Бийский городской краеведческий музей» · Госкаталог
+      podpis: Фото цветное. Вид Земли из космоса через большой иллюминатор базового блока комплекса «Мир», 1991. Хранит ГБУК «Бийский городской краеведческий музей».
+      credit: 'Хранится: ГБУК «Бийский городской краеведческий музей». Госкаталог музейного фонда РФ, № 25501243.'
+      hint: Фото · Океан под «Миром»
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1991'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1991'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=25644915
+      nomer_predmeta: '25501243'
+      nomer_snimka: net
+      hranitel: ГБУК «Бийский городской краеведческий музей»
+      podlinnik:
+        gde: ГБУК «Бийский городской краеведческий музей»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=25644915
+      svyashchennoe: false
+      podpis_chto: Фото цветное. Вид Земли из космоса через большой иллюминатор базового блока комплекса «Мир», 1991
+      podpis_gde: станция «Мир»
+      podpis_kogda: '1991'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Российская газета», 2021, «35 лет назад был выведен на орбиту базовый блок станции «Мир»»'
+    otryvok: 130-тонный «Мир» впервые свели с орбиты управляемо — точно в заданный район океана
+    stranica: «35 лет назад был выведен на орбиту базовый блок станции «Мир»» — «Российская газета», 2021
+    href: https://rg.ru/2021/02/20/35-let-nazad-byl-vyveden-na-orbitu-bazovyj-blok-stancii-mir.html
+    pometka: документ
+    id: svod-s-orbity
+    istochnik: rg21
+    dlya_voprosa: true
+    otvet: 130 тонн
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    kadr: &id006
+      src: /muzei/izobreteniya/img/02-20-goskatalog-27385625.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.15
+        w: 0.9
+        h: 0.75
+      width: 1200
+      height: 800
+      alt: Белый приборный блок из десятков одинаковых ячеек с лампами стоит на столе
+      data_source: https://goskatalog.ru/portal/#/collections?id=27385625
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музейно-выставочный центр Тамбовской области · Госкаталог
+      podpis: Пульт контрольной сигнализации (ПКС-1) базового блока орбитального комплекса «Мир», XX век. Хранит Музейно-выставочный центр Тамбовской области.
+      credit: 'Хранится: Музейно-выставочный центр Тамбовской области. Госкаталог музейного фонда РФ, № 27556219.'
+      hint: Предмет · Пульт базового блока
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: XX век
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: XX век
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=27385625
+      nomer_predmeta: '27556219'
+      nomer_snimka: net
+      hranitel: Музейно-выставочный центр Тамбовской области
+      podlinnik:
+        gde: Музейно-выставочный центр Тамбовской области
+        otkuda: https://goskatalog.ru/portal/#/collections?id=27385625
+      svyashchennoe: false
+      podpis_chto: Пульт контрольной сигнализации (ПКС-1) базового блока орбитального комплекса «Мир», XX век
+      podpis_gde: станция «Мир»
+      podpis_kogda: XX век
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Комсомольская правда», «Утечка ядовитого этиленгликоля, столкновение с «Прогрессом» и пожар: космонавт Александр Лазуткин подробно о самом сложном полёте в истории»'
+    otryvok: В 1997-м Лазуткин перочинным ножом резал кабели под током — и спас пробитый «Мир»
+    stranica: '«Утечка ядовитого этиленгликоля, столкновение с «Прогрессом» и пожар: космонавт Александр Лазуткин подробно о самом сложном полёте в истории» — «Комсомольская правда»'
+    href: https://www.kp.ru/daily/27771.5/5231641/
+    pometka: документ
+    id: lazutkin-1997
+    istochnik: kp
+    dlya_voprosa: true
+    otvet: '1997'
+    otvet_edinstvennyj: true
+  - n: 10
+    sravnenie: net
+    src: 'Источник: Объединённый мемориальный музей Ю. А. Гагарина, «Соловьёв Анатолий Яковлевич. Космонавт № 65/205»'
+    otryvok: Соловьёв вышел в открытый космос 16 раз — мировой рекорд не побит до сих пор
+    stranica: «Соловьёв Анатолий Яковлевич. Космонавт № 65/205» — Объединённый мемориальный музей Ю. А. Гагарина
+    href: https://museumgagarin.ru/news/solovev_anatoliy_yakovlevich_kosmonavt_65_205/
+    pometka: документ
+    id: solovyov-16
+    istochnik: mg
+    dlya_voprosa: true
+    otvet: '16'
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о станции «Мир»
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: Национальная библиотека имени А. М. Амур-Санана, «Межорбитальный прорыв: страницы истории»'
+    otryvok: К «Салюту-7» Соловьёв подходил вручную, а расстояние мерил милицейским радаром
+    stranica: '«Межорбитальный прорыв: страницы истории» — Национальная библиотека имени А. М. Амур-Санана'
+    href: https://www.kalmnlib.ru/articles/4013-40-let.html
+    pometka: документ
+    id: radar
+    istochnik: kalm
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: Центр подготовки космонавтов имени Ю. А. Гагарина, «Год в космосе: 25 лет с начала первого годового полёта»'
+    otryvok: Титов и Манаров первыми в мире прожили в космосе целый год — 365 суток 22 часа
+    stranica: '«Год в космосе: 25 лет с начала первого годового полёта» — Центр подготовки космонавтов имени Ю. А. Гагарина'
+    href: https://www.gctc.ru/print.php?id=1791
+    pometka: документ
+    id: god-na-orbite
+    istochnik: gctc
+    dlya_voprosa: true
+    otvet: 365 суток
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    src: 'Источник: «Химия и жизнь», 2000, № 4, «Эксперименты на станции «Мир»: космическая пшеница»'
+    otryvok: На «Мире» впервые вырастили пшеницу из космических зёрен — второе поколение
+    stranica: '«Эксперименты на станции «Мир»: космическая пшеница» — «Химия и жизнь», 2000, № 4'
+    href: https://www.hij.ru/read/4526/
+    pometka: документ
+    id: pshenica
+    istochnik: hij
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: РИА Новости, 2021, «История космического туризма»'
+    otryvok: Первый журналист в космосе, японец, вёл репортажи с нашего «Мира»
+    stranica: «История космического туризма» — РИА Новости, 2021
+    href: https://ria.ru/20211208/turizm-1762400660.html
+    pometka: документ
+    id: zhurnalist
+    istochnik: ria21
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: РКК «Энергия» имени С. П. Королёва, Служебный модуль «Звезда»'
+    otryvok: «Звезда» — сердце МКС — строилась как базовый блок для «Мира-2»
+    stranica: Служебный модуль «Звезда» — РКК «Энергия» имени С. П. Королёва
+    href: https://www.energia.ru/ru/iss/rs/zvezda.html
+    pometka: документ
+    id: zvezda-mir-2
+    istochnik: energia
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории «Мира» — своё место: сутки, годы, выходы, тонны.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: polyakov
+      nazvanie: Столько суток Поляков пробыл на «Мире»
+      verno_ru: Поляков пробыл на «Мире» 437 суток — мировой рекорд держится больше 30 лет.
+    - kod: gody
+      nazvanie: Столько лет пролетал «Мир»
+      verno_ru: «Мир» строили на 5 лет, а он пролетал 15.
+    - kod: vyhody
+      nazvanie: Столько раз Соловьёв выходил в открытый космос
+      verno_ru: Соловьёв вышел в открытый космос 16 раз — мировой рекорд не побит до сих пор.
+    - kod: krikalyov
+      nazvanie: Через столько суток Крикалёв вернулся уже в Россию
+      verno_ru: Крикалёв улетел на «Мир» из СССР, а вернулся через 311 суток уже в Россию.
+    podpisi:
+    - kod: n437
+      tekst: 437 суток
+      mesto: polyakov
+      mimo_ru: 437 суток — это рекорд Полякова на «Мире».
+    - kod: n15
+      tekst: 15 лет
+      mesto: gody
+      mimo_ru: 15 лет — столько пролетал «Мир», построенный на 5.
+    - kod: n16
+      tekst: 16 раз
+      mesto: vyhody
+      mimo_ru: 16 раз — столько Соловьёв выходил в открытый космос.
+    - kod: n311
+      tekst: 311 суток
+      mesto: krikalyov
+      mimo_ru: 311 суток — полёт Крикалёва из СССР в Россию.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 437 суток Полякова, 15 лет «Мира», 16 выходов Соловьёва, 311 суток Крикалёва.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 437 суток — рекорд Полякова, 15 лет — полёт «Мира», 16 раз — выходы Соловьёва, 311 суток — полёт Крикалёва.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: «Мир» строили на 5 лет, а он пролетал 15.'
+  net: 'Как это работало дальше: «Звезда» — сердце МКС — строилась как базовый блок для «Мира-2».'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - СССР, Байконур
+    - базовый блок станции «Мир» на орбите
+    - '1986'
+  - - станция «Мир»
+    - перелёт экипажа с «Мира» на «Салют-7» и обратно
+    - '1986'
+  - - станция «Мир»
+    - первый птенец, рождённый в космосе
+    - '1990'
+  - - станция «Мир»
+    - 437 суток Полякова на орбите
+    - '1995'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 437 суток; 15 лет; 16 раз; 1990 год; 311 суток.'
+  ball: 8
+  voprosy:
+  - q: Сколько суток Валерий Поляков пробыл на «Мире»?
+    o:
+    - '43'
+    - '437'
+    - '4370'
+    a: 1
+    e: Поляков пробыл на «Мире» 437 суток — мировой рекорд держится больше 30 лет
+  - q: Сколько лет пролетал «Мир», построенный на 5 лет?
+    o:
+    - '5'
+    - '15'
+    - '50'
+    a: 1
+    e: «Мир» строили на 5 лет, а он пролетал 15
+  - q: Сколько раз Анатолий Соловьёв выходил в открытый космос?
+    o:
+    - '6'
+    - '16'
+    - '60'
+    a: 1
+    e: Соловьёв вышел в открытый космос 16 раз — мировой рекорд не побит до сих пор
+  - q: В каком году на «Мире» вылупился первый птенец, рождённый в космосе?
+    o:
+    - '1970'
+    - '1990'
+    - '2010'
+    a: 1
+    e: 22 марта 1990 года на «Мире» вылупился первый в мире птенец, рождённый в космосе
+  - q: Через сколько суток Крикалёв вернулся с «Мира» уже в Россию?
+    o:
+    - '31'
+    - '311'
+    - '3110'
+    a: 1
+    e: Крикалёв улетел на «Мир» из СССР, а вернулся через 311 суток уже в Россию
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал станции «Мир».
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- *id001
+- *id002
+- *id003
+- *id004
+- *id005
+- *id006
+- src: /muzei/izobreteniya/img/02-20-goskatalog-27385429.jpg
+  glavnoe_na_kartinke:
+    x: 0.3
+    y: 0.05
+    w: 0.55
+    h: 0.9
+  width: 1200
+  height: 800
+  alt: Чёрный цилиндр объектива с рёбрами и металлическими кольцами на подставке в музейном зале
+  data_source: https://goskatalog.ru/portal/#/collections?id=27385429
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музейно-выставочный центр Тамбовской области · Госкаталог
+  podpis: Элемент системы орбитального оптического наблюдения орбитальной станции «Мир», 1990-е. Хранит Музейно-выставочный центр Тамбовской области.
+  credit: 'Хранится: Музейно-выставочный центр Тамбовской области. Госкаталог музейного фонда РФ, № 27556221.'
+  hint: Предмет · Оптика «Мира»
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1990-е
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1990-е
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=27385429
+  nomer_predmeta: '27556221'
+  nomer_snimka: net
+  hranitel: Музейно-выставочный центр Тамбовской области
+  podlinnik:
+    gde: Музейно-выставочный центр Тамбовской области
+    otkuda: https://goskatalog.ru/portal/#/collections?id=27385429
+  svyashchennoe: false
+  podpis_chto: Элемент системы орбитального оптического наблюдения орбитальной станции «Мир», 1990-е
+  podpis_gde: станция «Мир»
+  podpis_kogda: 1990-е
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://www.kalmnlib.ru/articles/4013-40-let.html
+  title: '«Межорбитальный прорыв: страницы истории» — Национальная библиотека имени А. М. Амур-Санана'
+  note: факты дня
+- href: https://scientificrussia.ru/articles/centrifuga-inkubator-48-aic-zacem-zemlanam-kosmiceskij-eksperiment-perepel
+  title: '«Центрифуга, инкубатор, 48 яиц: зачем землянам космический эксперимент «Перепел»» — «Научная Россия»'
+  note: факты дня
+- href: https://kulturologia.ru/blogs/050625/64344/
+  title: «Чем напугало Европу космическое зеркало «Знамя», которое ракета из СССР вывела на орбиту» — «Культурология»
+  note: факты дня
+- href: https://rodina-history.ru/2022/09/19/437-sutok-na-orbite-ne-stalo-kosmonavta-valeriia-poliakova-ustanovivshego-mirovoj-rekord-po-dlitelnosti-kosmicheskogo-poleta.html
+  title: «437 суток на орбите. Не стало космонавта Валерия Полякова, установившего мировой рекорд по длительности космического полёта» — журнал «Родина»
+  note: факты дня
+- href: https://www.mk.ru/science/2017/04/27/kosmonavt-valeriy-polyakov-ya-uzhe-na-mars-sletal.html
+  title: '«Космонавт Валерий Поляков: „Я уже на Марс слетал!“» — «Московский комсомолец»'
+  note: факты дня
+- href: https://ria.ru/20251014/kosmos-2047600755.html
+  title: «Распад СССР встретил на орбите. Невероятная история космонавта Крикалёва» — РИА Новости, 2025
+  note: факты дня
+- href: https://rg.ru/2025/01/02/kak-sozdavali-i-kak-topili-sovetskuiu-orbitalnuiu-stanciiu-mir.html
+  title: «Как создавали и как топили советскую орбитальную станцию «Мир»» — «Российская газета», 2025
+  note: факты дня
+- href: https://rg.ru/2021/02/20/35-let-nazad-byl-vyveden-na-orbitu-bazovyj-blok-stancii-mir.html
+  title: «35 лет назад был выведен на орбиту базовый блок станции «Мир»» — «Российская газета», 2021
+  note: факты дня
+- href: https://www.kp.ru/daily/27771.5/5231641/
+  title: '«Утечка ядовитого этиленгликоля, столкновение с «Прогрессом» и пожар: космонавт Александр Лазуткин подробно о самом сложном полёте в истории» — «Комсомольская правда»'
+  note: факты дня
+- href: https://museumgagarin.ru/news/solovev_anatoliy_yakovlevich_kosmonavt_65_205/
+  title: «Соловьёв Анатолий Яковлевич. Космонавт № 65/205» — Объединённый мемориальный музей Ю. А. Гагарина
+  note: факты дня
+- href: https://www.gctc.ru/print.php?id=1791
+  title: '«Год в космосе: 25 лет с начала первого годового полёта» — Центр подготовки космонавтов имени Ю. А. Гагарина'
+  note: факты дня
+- href: https://www.hij.ru/read/4526/
+  title: '«Эксперименты на станции «Мир»: космическая пшеница» — «Химия и жизнь», 2000, № 4'
+  note: факты дня
+- href: https://ria.ru/20211208/turizm-1762400660.html
+  title: «История космического туризма» — РИА Новости, 2021
+  note: факты дня
+- href: https://www.energia.ru/ru/iss/rs/zvezda.html
+  title: Служебный модуль «Звезда» — РКК «Энергия» имени С. П. Королёва
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  href: den/02-21/
+  title: 21 февраля — Медицинская микробиология, первая в России станция прививок от бешенства
+  hook: Гамалея привёз от Пастера прививку от бешенства и открыл в Одессе станцию, куда везли укушенных со всей империи
+  main: true
+- lbl: Предыдущий день
+  href: den/02-19/
+  title: 19 февраля — Цветная фотография России
+  hook: Прокудин-Горский снимал одно и то же через три фильтра подряд, поэтому Россию 1910 года мы видим в настоящем цвете
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Командир станции
+  - - 70
+    - Бортинженер «Мира»
+  - - 40
+    - Курсант Звёздного городка
+  - - 0
+    - Гость дня
+return:
+  q: Сколько суток Валерий Поляков пробыл на «Мире»?
+  a: Поляков пробыл на «Мире» 437 суток — мировой рекорд держится больше 30 лет.
+  src: журнал «Родина», rodina-history.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-20-stanciya-mir:claim-1986
+  ours:
+    kind: publication
+    title: «35 лет назад был выведен на орбиту базовый блок станции «Мир»»
+    date: '2021-02-20'
+    holder: «Российская газета»
+    source_url: https://rg.ru/2021/02/20/35-let-nazad-byl-vyveden-na-orbitu-bazovyj-blok-stancii-mir.html
+podskazki_igry:
+- 437 суток — это рекорд Полякова
+- 15 лет — это полёт «Мира»
+- 16 раз — это выходы Соловьёва
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Байконур
+  shirota: 45.92
+  dolgota: 63.342
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Сначала на орбиту выводят базовый блок — в нём живут и управляют станцией
+- К его стыковочным узлам один за другим причаливают новые модули
+- 'Каждый модуль добавляет своё: лаборатории, приборы, солнечные батареи'
+- Станция растёт прямо в полёте, как конструктор, и живёт дольше задуманного
+data_uslovnaya: net
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/20feb-stanciya-mir
+  format: horizontal
+  pole: izobreteniya/20feb-stanciya-mir:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  intro: Как собирали на орбите станцию «Мир».
+  poster: video/day-20feb-stanciya-mir-poster.jpg?v=1
+  mp4: video/day-20feb-stanciya-mir.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/20feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
