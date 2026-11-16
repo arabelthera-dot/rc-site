@@ -10,6 +10,8 @@
 // Запуск: node scripts/rolik-na-sait.mjs spisok — новые выпуски (по одному последнему на место), тег в строке;
 //   node scripts/rolik-na-sait.mjs primenit <тег> — разложить выпуск в public/ и записать реестр; путь — в выводе.
 // Записи реестра — как у ns-konveyer (rolikVReestr): тот же note «прогон N)» — по нему видно, что выпуск уже на сайте.
+// Ролик и гид одного дня — одна заявка (Р790 п.6): строка spisok — «<ветка> <тег> [<тег>…]» по дню (музей + ММ-ДД);
+//   есть открытая заявка этого дня — ветка её, выпуск дописывается в неё, иначе ветка avto/rolik-<первый тег>.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -55,21 +57,40 @@ function gidNaSaite(m, teg) {
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 }
 
+// день выпуска: «музей/ММ-ДД» (ролик — den 25feb или ns25feb, гид — den 02-25)
+const MES = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+function denVypuska(m) {
+  const x = m.vid === 'rolik' && /^(?:ns)?(\d\d)([a-z]{3})$/.exec(m.den ?? '');
+  return `${m.muzei}/${x ? `${String(MES.indexOf(x[2]) + 1).padStart(2, '0')}-${x[1]}` : m.den}`;
+}
+
 function spisok() {
   // новые сначала: «дата тег» по строке
   const tegi = gh('api', '--paginate', `repos/${ROLIK}/releases?per_page=100`, '-q', '.[] | select((.tag_name | startswith("vypusk-")) and (.prerelease | not)) | "\\(.created_at) \\(.tag_name)"')
     .split('\n').filter(Boolean).sort().reverse().map((s) => s.split(' ')[1]);
-  const reestr = chitat(PUB).releases ?? {}, vzyato = new Set();
+  // все заявки выпусков одним запросом: тег взят, если он в имени ветки или в ссылке тела заявки
+  const zayavki = JSON.parse(gh('pr', 'list', '-R', SAIT, '--state', 'all', '-L', '2000', '--search', 'head:avto/rolik-', '--json', 'headRefName,state,body,isCrossRepository'))
+    .filter((z) => z.headRefName.startsWith('avto/rolik-') && !z.isCrossRepository)
+    .map((z) => ({ ...z, tegi: new Set([...z.headRefName.slice('avto/rolik-'.length).split('--'),
+      ...[...(z.body ?? '').matchAll(/releases\/tag\/(vypusk-[a-z0-9-]+)/g)].map((x) => x[1])]) }));
+  const otkrytaya = new Map(); // день → ветка открытой заявки
+  for (const z of zayavki.filter((z) => z.state === 'OPEN')) for (const t of z.tegi) {
+    try { otkrytaya.set(denVypuska(manifest(t)), z.headRefName); } catch { /* брак старого выпуска — не мешает */ }
+  }
+  const reestr = chitat(PUB).releases ?? {}, vzyato = new Set(), dni = new Map();
   for (const teg of tegi) {
     let m;
     try { m = manifest(teg); } catch (e) { console.error(`::error::${e.message}`); process.exitCode = 1; continue; }
     if (vzyato.has(m.mesto)) continue; // на это место есть выпуск новее
     vzyato.add(m.mesto);
     if (m.vid === 'rolik' && reestr[m.mesto]?.note?.includes(`прогон ${m.run})`)) continue;
-    if (gh('pr', 'list', '-R', SAIT, '--head', vetka(teg), '--state', 'all', '--json', 'number', '-q', 'length').trim() !== '0') continue;
+    if (zayavki.some((z) => z.tegi.has(teg))) continue;
     if (m.vid === 'audiogid' && gidNaSaite(m, teg)) continue;
-    console.log(teg);
+    const den = denVypuska(m);
+    if (!dni.has(den)) dni.set(den, { vetka: otkrytaya.get(den) ?? vetka(teg), tegi: [] });
+    dni.get(den).tegi.push(teg);
   }
+  for (const { vetka: v, tegi: t } of dni.values()) console.log(`${v} ${t.join(' ')}`);
 }
 
 function primenit(teg) {
