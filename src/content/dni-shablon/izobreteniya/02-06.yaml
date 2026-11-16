@@ -1,0 +1,1145 @@
+# Заготовка дня 02-06 (Р783): форма с 02-28 и 02-27; пустое — заполнить.
+
+muzei: izobreteniya
+key: 02-06
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-16'
+nomer_dnya: izob-0206-zelinskij
+data_sobytiya: '1916-02-05'
+data_staryj_stil: '1916-01-23'
+chto_sluchilos: 'Николай Зелинский первым в мире создал угольный противогаз: 5 февраля 1916 года в Петрограде солдат в нём 66 минут дышал в камере с газом, и противогаз взяли в армию.'
+god: 1916
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Противогаз угольный с маской
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=4698082
+- chto: 'Снимок: Зелинский и Куммант с группой, 1916'
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=47518210
+- chto: Стереонегатив полевых испытаний противогаза, 1916
+  muzej: Рыбинский музей-заповедник
+  gorod: Рыбинск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=43299999
+chitat_dalshe:
+- nazvanie: «Зелинский не оформил патент на свой противогаз из благородства»
+  gde: «Родина»
+  ssylka: https://rodina-history.ru/2026/02/03/zelinskij-ne-oformil-patent-na-svoj-protivogaz-iz-blagorodstva.html
+- nazvanie: «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии»
+  gde: Институт органической химии имени Н. Д. Зелинского РАН
+  ssylka: https://zioc.ru/events/news-announcements/2016/155-let-so-dnya-rozhdeniya-akademika-nd-zelinskogo-osnovatelya-instituta-organicheskoj-ximii
+- nazvanie: «Отец солдата. История активированного угля»
+  gde: «Медпортал»
+  ssylka: https://medportal.ru/enc/aid/reading/17/
+- nazvanie: «Противогаз в подарок. Как химик Зелинский повлиял на ход войны и экономику»
+  gde: «Аргументы и факты»
+  ssylka: https://aif.ru/society/people/protivogaz-v-podarok-kak-himik-zelinskiy-povliyal-na-hod-voyny-i-ekonomiku
+- nazvanie: «Защита Зелинского»
+  gde: «Совершенно секретно»
+  ssylka: https://www.sovsekretno.ru/articles/istoriya/zashchita-zelinskogo/
+istochniki:
+- id: rodina
+  baza: periodika
+  nazvanie: «Зелинский не оформил патент на свой противогаз из благородства» — «Родина»
+  ssylka: https://rodina-history.ru/2026/02/03/zelinskij-ne-oformil-patent-na-svoj-protivogaz-iz-blagorodstva.html
+- id: zioc
+  baza: sajt-organizacii
+  nazvanie: «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии» — Институт органической химии имени Н. Д. Зелинского РАН
+  ssylka: https://zioc.ru/events/news-announcements/2016/155-let-so-dnya-rozhdeniya-akademika-nd-zelinskogo-osnovatelya-instituta-organicheskoj-ximii
+- id: figurovskij
+  baza: militera
+  nazvanie: «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.» — Н. А. Фигуровский, Издательство Академии наук СССР, 1942
+  ssylka: http://militera.lib.ru/tw/figurovsky_na/07.html
+- id: supotnickij
+  baza: kniga
+  nazvanie: «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора» — М. В. Супотницкий
+  ssylka: https://www.supotnitskiy.ru/book/book5_kommentarii44.htm
+- id: medportal
+  baza: periodika
+  nazvanie: «Отец солдата. История активированного угля» — «Медпортал»
+  ssylka: https://medportal.ru/enc/aid/reading/17/
+- id: aif
+  baza: periodika
+  nazvanie: «Противогаз в подарок. Как химик Зелинский повлиял на ход войны и экономику» — «Аргументы и факты»
+  ssylka: https://aif.ru/society/people/protivogaz-v-podarok-kak-himik-zelinskiy-povliyal-na-hod-voyny-i-ekonomiku
+- id: sovsekretno
+  baza: periodika
+  nazvanie: «Защита Зелинского» — «Совершенно секретно»
+  ssylka: https://www.sovsekretno.ru/articles/istoriya/zashchita-zelinskogo/
+- id: gk-4698082
+  baza: goskatalog
+  nazvanie: Противогаз угольный с маской, Государственный исторический музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=4698082
+- id: gk-43299999
+  baza: goskatalog
+  nazvanie: Полевые испытания противогаза Зелинского-Кумманта. Стереонегатив, Рыбинский музей-заповедник — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=43299999
+- id: gk-47518210
+  baza: goskatalog
+  nazvanie: В. С. Садиков и изобретатели угольного противогаза Н. Д. Зелинский и Э. Л. Куммант с группой, Государственный музей истории Санкт-Петербурга — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=47518210
+- id: gk-4701934
+  baza: goskatalog
+  nazvanie: Противогаз Зелинского-Куманта, 1-го образца, Государственный исторический музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=4701934
+- id: gk-4697105
+  baza: goskatalog
+  nazvanie: Противогаз Зелинского-Куманта (московский образец), обр. 1916 г., Государственный исторический музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=4697105
+- id: gk-56431365
+  baza: goskatalog
+  nazvanie: Противогаз системы Зелинского-Кумманта (угольный фильтр), Пермский краеведческий музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=56431365
+citaty: []
+velichina_chislo: 66
+velichina_edinica: минут
+velichina_chto: держал газ противогаз Зелинского — английский шлем 25 секунд
+etiketka_oblozhki:
+- Противогаз угольный с маской
+- Государственный исторический музей
+slovar:
+- mesto:sankt-peterburg
+head:
+  title: Первый в мире угольный противогаз, 1916 — Музей «Что изобрели русские первыми в мире»
+  description: Зелинский первым в мире поставил в противогаз уголь. В испытании солдат 66 минут дышал в камере с газом, а за войну на фронт ушло больше 11 миллионов таких противогазов.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-06/
+  sobytie: Первый в мире угольный противогаз
+  god: '1916'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первый в мире угольный противогаз, 1916
+    description: Зелинский первым в мире поставил в противогаз уголь. В испытании солдат 66 минут дышал в камере с газом, а за войну на фронт ушло больше 11 миллионов таких противогазов.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-06/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-06-goskatalog-4698082.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первый в мире угольный противогаз, 1916
+    description: Зелинский первым в мире поставил в противогаз уголь. В испытании солдат 66 минут дышал в камере с газом, а за войну на фронт ушло больше 11 миллионов таких противогазов.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-06/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-06-goskatalog-4698082.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-06-goskatalog-4698082.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 533
+  height: 800
+  alt: Резиновая маска с круглыми очками надета на жестяную коробку с углём
+  data_source: https://goskatalog.ru/portal/#/collections?id=4698082
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+  podpis: Противогаз угольный с маской, 1916–1917. Хранит Государственный исторический музей.
+  credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 4675155.'
+  hint: Предмет · угольный противогаз
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1916–1917
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1916–1917
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=4698082
+  nomer_predmeta: '4675155'
+  nomer_snimka: net
+  hranitel: Государственный исторический музей
+  podlinnik:
+    gde: Государственный исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=4698082
+  svyashchennoe: false
+  podpis_chto: Противогаз угольный с маской
+  podpis_gde: Россия
+  podpis_kogda: 1916–1917
+  pometka_prav: citirovanie-1274
+kroshka: 6 февраля · Противогаз Зелинского
+lead:
+  data: 1916 · Петроград
+  privyazka: 6 февраля — день рождения Зелинского; главное испытание противогаза прошло накануне, 5 февраля 1916 года (23 января по старому стилю), в Петрограде.
+  kto: Николай Зелинский, химик
+  h1: Первый в мире угольный противогаз · Н. Д. Зелинский, 1916
+  hook: Английский шлем держал газ 25 секунд, противогаз Зелинского — 66 минут, и вышли по приказу
+stamp:
+- v: '66'
+  k: минут дышал в газе солдат в противогазе Зелинского
+- v: '25'
+  k: секунд держал газ английский шлем
+- v: 11 млн
+  k: противогазов Зелинского ушло на фронт
+- v: 1,5%
+  k: потери от газа с противогазом — было 20%
+daynav:
+- id: story
+  label: Противогаз
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-zelinskij-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу Зелинского: от спиртового угля через газовую камеру к противогазу без патента.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Уголь от спирта
+  - t: 35
+    mark: 0:35
+    title: 66 минут в камере
+  - t: 70
+    mark: '1:10'
+    title: Уголь у немцев
+  - t: 105
+    mark: '1:45'
+    title: Ни копейки
+  transcript:
+  - 'Противогаз родился на спиртовом деле: уголь, которым чистили спирт, остановил хлор. В газовой атаке выживали те, кто дышал через землю и шинель, — так солдаты подсказали фильтр.'
+  - Английский шлем держал газ 25 секунд, противогаз Зелинского — 66 минут, и вышли по приказу. 5 октября 1916-го с фронта велели убрать все маски, кроме противогаза Зелинского.
+  - В 1916-м в немецком противогазе вдруг появился уголь — немцы делали его по русским трофеям. Англичане искали в русском угле тайную пропитку — а нашли чистый берёзовый уголь.
+  - Куммант брал 50 копеек с каждой маски, Зелинский за противогаз не взял ни копейки. Русские химики тайком переправили противогаз и рецепт угля в Англию — даром, без патента.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Противогаз Зелинского
+  h2: Как русский химик спас солдат от газа
+  udary:
+  - summary: Приказ с фронта
+    det:
+    - 5 октября 1916-го с фронта велели убрать все маски, кроме противогаза Зелинского
+    src: 'Источник: М. В. Супотницкий, «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора»'
+  - summary: Потери упали
+    det:
+    - С противогазом Зелинского потери от газовых атак упали с 20% до 1,5%
+    src: 'Источник: М. В. Супотницкий, «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора»'
+  - summary: Миллионы противогазов
+    det:
+    - За войну на фронт ушло больше 11 миллионов противогазов Зелинского
+    src: 'Источник: Институт органической химии имени Н. Д. Зелинского РАН, «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии»'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-06-goskatalog-43299999.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 800
+      height: 682
+      alt: 'Старый снимок: люди в противогазах стоят в поле, над землёй стелется облако газа'
+      data_source: https://goskatalog.ru/portal/#/collections?id=43299999
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Рыбинский музей-заповедник · Госкаталог
+      podpis: Полевые испытания противогаза Зелинского-Кумманта. Стереонегатив, 1916. Хранит Рыбинский музей-заповедник.
+      credit: 'Хранится: Рыбинский музей-заповедник. Госкаталог музейного фонда РФ, № 43064203.'
+      hint: Снимок · испытания противогаза
+      vid: foto
+      prava:
+        avtor: Г. А. Сигсон
+        god_sozdaniya: '1916'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1916'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=43299999
+      nomer_predmeta: '43064203'
+      nomer_snimka: net
+      hranitel: Рыбинский музей-заповедник
+      podlinnik:
+        gde: Рыбинский музей-заповедник
+        otkuda: https://goskatalog.ru/portal/#/collections?id=43299999
+      svyashchennoe: false
+      podpis_chto: Полевые испытания противогаза Зелинского-Кумманта. Стереонегатив
+      podpis_gde: Россия
+      podpis_kogda: '1916'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Н. А. Фигуровский, Издательство Академии наук СССР, 1942, «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.»'
+    otryvok: Английский шлем держал газ 25 секунд, противогаз Зелинского — 66 минут, и вышли по приказу
+    stranica: «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.» — Н. А. Фигуровский, Издательство Академии наук СССР, 1942
+    href: http://militera.lib.ru/tw/figurovsky_na/07.html
+    pometka: документ
+    id: 66-minut
+    istochnik: figurovskij
+    dlya_voprosa: false
+  - n: 2
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-06-goskatalog-47518210.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 800
+      height: 549
+      alt: 'Старый снимок: мужчины в костюмах и мундирах сидят за длинным столом'
+      data_source: https://goskatalog.ru/portal/#/collections?id=47518210
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей истории Санкт-Петербурга · Госкаталог
+      podpis: В. С. Садиков и изобретатели угольного противогаза Н. Д. Зелинский и Э. Л. Куммант с группой, 1916. Хранит Государственный музей истории Санкт-Петербурга.
+      credit: 'Хранится: Государственный музей истории Санкт-Петербурга. Госкаталог музейного фонда РФ, № 47275856.'
+      hint: Снимок · Зелинский и Куммант
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1916'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1916'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=47518210
+      nomer_predmeta: '47275856'
+      nomer_snimka: net
+      hranitel: Государственный музей истории Санкт-Петербурга
+      podlinnik:
+        gde: Государственный музей истории Санкт-Петербурга
+        otkuda: https://goskatalog.ru/portal/#/collections?id=47518210
+      svyashchennoe: false
+      podpis_chto: В. С. Садиков и изобретатели угольного противогаза Н. Д. Зелинский и Э. Л. Куммант с группой
+      podpis_gde: Петроград
+      podpis_kogda: '1916'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Родина», «Зелинский не оформил патент на свой противогаз из благородства»'
+    otryvok: Молодой Зелинский первым в мире получил иприт — и первым от него пострадал
+    stranica: «Зелинский не оформил патент на свой противогаз из благородства» — «Родина»
+    href: https://rodina-history.ru/2026/02/03/zelinskij-ne-oformil-patent-na-svoj-protivogaz-iz-blagorodstva.html
+    pometka: один источник
+    id: iprit
+    istochnik: rodina
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-06-goskatalog-4701934.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 652
+      height: 800
+      alt: Резиновая маска со стёклами для глаз и металлическая коробка фильтра
+      data_source: https://goskatalog.ru/portal/#/collections?id=4701934
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+      podpis: Противогаз Зелинского-Куманта, 1-го образца, 1915–1917. Хранит Государственный исторический музей.
+      credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 4671335.'
+      hint: Предмет · противогаз 1-го образца
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1915–1917
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1915–1917
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=4701934
+      nomer_predmeta: '4671335'
+      nomer_snimka: net
+      hranitel: Государственный исторический музей
+      podlinnik:
+        gde: Государственный исторический музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=4701934
+      svyashchennoe: false
+      podpis_chto: Противогаз Зелинского-Куманта, 1-го образца
+      podpis_gde: Россия
+      podpis_kogda: 1915–1917
+      pometka_prav: citirovanie-1274
+    src: 'Источник: М. В. Супотницкий, «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора»'
+    otryvok: В 1916-м в немецком противогазе вдруг появился уголь — немцы делали его по русским трофеям
+    stranica: «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора» — М. В. Супотницкий
+    href: https://www.supotnitskiy.ru/book/book5_kommentarii44.htm
+    pometka: два источника
+    id: nemeckij-ugol
+    istochnik: supotnickij
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-06-goskatalog-4697105.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 800
+      height: 533
+      alt: 'Части противогаза разложены рядом: маска, коробка с углём и крышки'
+      data_source: https://goskatalog.ru/portal/#/collections?id=4697105
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+      podpis: Противогаз Зелинского-Куманта (московский образец), обр. 1916 г., 1916. Хранит Государственный исторический музей.
+      credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 4676164.'
+      hint: Предмет · московский образец
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1916'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1916'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=4697105
+      nomer_predmeta: '4676164'
+      nomer_snimka: net
+      hranitel: Государственный исторический музей
+      podlinnik:
+        gde: Государственный исторический музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=4697105
+      svyashchennoe: false
+      podpis_chto: Противогаз Зелинского-Куманта (московский образец), обр. 1916 г.
+      podpis_gde: Москва
+      podpis_kogda: '1916'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: М. В. Супотницкий, «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора»'
+    otryvok: Англичане искали в русском угле тайную пропитку — а нашли чистый берёзовый уголь
+    stranica: «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора» — М. В. Супотницкий
+    href: https://www.supotnitskiy.ru/book/book5_kommentarii44.htm
+    pometka: два источника
+    id: berezovyj-ugol
+    istochnik: supotnickij
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-06-goskatalog-56431365.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 800
+      height: 540
+      alt: Металлическая коробка угольного фильтра с горлышком для маски
+      data_source: https://goskatalog.ru/portal/#/collections?id=56431365
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Пермский краеведческий музей · Госкаталог
+      podpis: Противогаз системы Зелинского-Кумманта (угольный фильтр), 1916. Хранит Пермский краеведческий музей.
+      credit: 'Хранится: Пермский краеведческий музей. Госкаталог музейного фонда РФ, № 56151643.'
+      hint: Предмет · угольный фильтр
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1916'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1916'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=56431365
+      nomer_predmeta: '56151643'
+      nomer_snimka: net
+      hranitel: Пермский краеведческий музей
+      podlinnik:
+        gde: Пермский краеведческий музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=56431365
+      svyashchennoe: false
+      podpis_chto: Противогаз системы Зелинского-Кумманта (угольный фильтр)
+      podpis_gde: Россия
+      podpis_kogda: '1916'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: М. В. Супотницкий, «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора»'
+    otryvok: Куммант брал 50 копеек с каждой маски, Зелинский за противогаз не взял ни копейки
+    stranica: «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора» — М. В. Супотницкий
+    href: https://www.supotnitskiy.ru/book/book5_kommentarii44.htm
+    pometka: два источника
+    id: ni-kopejki
+    istochnik: supotnickij
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: М. В. Супотницкий, «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора»'
+    otryvok: 5 октября 1916-го с фронта велели убрать все маски, кроме противогаза Зелинского
+    stranica: «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора» — М. В. Супотницкий
+    href: https://www.supotnitskiy.ru/book/book5_kommentarii44.htm
+    pometka: один источник
+    id: prikaz-1916
+    istochnik: supotnickij
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: Институт органической химии имени Н. Д. Зелинского РАН, «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии»'
+    otryvok: За войну на фронт ушло больше 11 миллионов противогазов Зелинского
+    stranica: «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии» — Институт органической химии имени Н. Д. Зелинского РАН
+    href: https://zioc.ru/events/news-announcements/2016/155-let-so-dnya-rozhdeniya-akademika-nd-zelinskogo-osnovatelya-instituta-organicheskoj-ximii
+    pometka: два источника
+    id: 11-millionov
+    istochnik: zioc
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    src: 'Источник: Н. А. Фигуровский, Издательство Академии наук СССР, 1942, «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.»'
+    otryvok: 'Противогаз родился на спиртовом деле: уголь, которым чистили спирт, остановил хлор'
+    stranica: «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.» — Н. А. Фигуровский, Издательство Академии наук СССР, 1942
+    href: http://militera.lib.ru/tw/figurovsky_na/07.html
+    pometka: два источника
+    id: spirtovoe-delo
+    istochnik: figurovskij
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    src: 'Источник: М. В. Супотницкий, «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора»'
+    otryvok: С противогазом Зелинского потери от газовых атак упали с 20% до 1,5%
+    stranica: «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора» — М. В. Супотницкий
+    href: https://www.supotnitskiy.ru/book/book5_kommentarii44.htm
+    pometka: один источник
+    id: poteri
+    istochnik: supotnickij
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-06-goskatalog-9135834.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 527
+      height: 716
+      alt: Жестяная коробка для противогаза с бумажной наклейкой
+      data_source: https://goskatalog.ru/portal/#/collections?id=9135834
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Дом-музей Марины Цветаевой · Госкаталог
+      podpis: Коробка для противогаза Зелинского-Кумманта Петроградского образца, обр. 1915 г., 1915–1917. Хранит Дом-музей Марины Цветаевой.
+      credit: 'Хранится: Дом-музей Марины Цветаевой. Госкаталог музейного фонда РФ, № 9023416.'
+      hint: Предмет · коробка противогаза
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1915–1917
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1915–1917
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=9135834
+      nomer_predmeta: '9023416'
+      nomer_snimka: net
+      hranitel: Дом-музей Марины Цветаевой
+      podlinnik:
+        gde: Дом-музей Марины Цветаевой
+        otkuda: https://goskatalog.ru/portal/#/collections?id=9135834
+      svyashchennoe: false
+      podpis_chto: Коробка для противогаза Зелинского-Кумманта Петроградского образца, обр. 1915 г.
+      podpis_gde: Петроград
+      podpis_kogda: 1915–1917
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Медпортал», «Отец солдата. История активированного угля»'
+    otryvok: В газовой атаке выживали те, кто дышал через землю и шинель, — так солдаты подсказали фильтр
+    stranica: «Отец солдата. История активированного угля» — «Медпортал»
+    href: https://medportal.ru/enc/aid/reading/17/
+    pometka: два источника
+    id: shinel
+    istochnik: medportal
+    dlya_voprosa: false
+- id: fakty-dnya
+  nav: Ещё факты
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о противогазе и бензине Зелинского
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: «Медпортал», «Отец солдата. История активированного угля»'
+    otryvok: Русские химики тайком переправили противогаз и рецепт угля в Англию — даром, без патента
+    stranica: «Отец солдата. История активированного угля» — «Медпортал»
+    href: https://medportal.ru/enc/aid/reading/17/
+    pometka: два источника
+    id: v-angliyu
+    istochnik: medportal
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: Н. А. Фигуровский, Издательство Академии наук СССР, 1942, «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.»'
+    otryvok: Чиновники заказали 3,5 млн масок, не державших газ, а противогазов Зелинского — 200 тысяч
+    stranica: «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.» — Н. А. Фигуровский, Издательство Академии наук СССР, 1942
+    href: http://militera.lib.ru/tw/figurovsky_na/07.html
+    pometka: документ
+    id: chinovniki
+    istochnik: figurovskij
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: Институт органической химии имени Н. Д. Зелинского РАН, «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии»'
+    otryvok: В Великую Отечественную Зелинский делал из мазута бензин и авиатопливо для фронта
+    stranica: «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии» — Институт органической химии имени Н. Д. Зелинского РАН
+    href: https://zioc.ru/events/news-announcements/2016/155-let-so-dnya-rozhdeniya-akademika-nd-zelinskogo-osnovatelya-instituta-organicheskoj-ximii
+    pometka: один источник
+    id: iz-mazuta
+    istochnik: zioc
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-06-goskatalog-10351240.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 800
+      height: 523
+      alt: Противогаз с маской и угольной коробкой на шланге
+      data_source: https://goskatalog.ru/portal/#/collections?id=10351240
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мурманский областной краеведческий музей · Госкаталог
+      podpis: Противогаз фильтрующий угольный М-VI, 1968. Хранит Мурманский областной краеведческий музей.
+      credit: 'Хранится: Мурманский областной краеведческий музей. Госкаталог музейного фонда РФ, № 10246184.'
+      hint: Предмет · угольный противогаз М-VI
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1968'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1968'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=10351240
+      nomer_predmeta: '10246184'
+      nomer_snimka: net
+      hranitel: Мурманский областной краеведческий музей
+      podlinnik:
+        gde: Мурманский областной краеведческий музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=10351240
+      svyashchennoe: false
+      podpis_chto: Противогаз фильтрующий угольный М-VI
+      podpis_gde: СССР
+      podpis_kogda: '1968'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Совершенно секретно», «Защита Зелинского»'
+    otryvok: Тот же уголь, что спасал от газа, у Зелинского превращал ацетилен в бензол
+    stranica: «Защита Зелинского» — «Совершенно секретно»
+    href: https://www.sovsekretno.ru/articles/istoriya/zashchita-zelinskogo/
+    pometka: один источник
+    id: acetilen-benzol
+    istochnik: sovsekretno
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: «Совершенно секретно», «Защита Зелинского»'
+    otryvok: В голодном 1918-м Зелинский научился делать бензин из солярового масла
+    stranica: «Защита Зелинского» — «Совершенно секретно»
+    href: https://www.sovsekretno.ru/articles/istoriya/zashchita-zelinskogo/
+    pometka: один источник
+    id: benzin-1918
+    istochnik: sovsekretno
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории противогаза Зелинского — своё место: минуты, миллионы, проценты и копейки.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: minuty
+      nazvanie: Столько минут держал газ противогаз Зелинского
+      verno_ru: 66 минут в камере с газом — английский шлем держал 25 секунд
+    - kod: shtuki
+      nazvanie: Столько противогазов Зелинского ушло на фронт
+      verno_ru: Больше 11 миллионов противогазов за войну
+    - kod: poteri
+      nazvanie: Столько потерь осталось от газовых атак
+      verno_ru: С противогазом потери упали с 20% до 1,5%
+    - kod: kopejki
+      nazvanie: Столько брал Куммант с каждой маски
+      verno_ru: 50 копеек с маски брал Куммант — Зелинский не взял ни копейки
+    podpisi:
+    - kod: n66
+      tekst: 66 мин
+      mesto: minuty
+      mimo_ru: 66 минут — столько держал газ противогаз.
+    - kod: n11
+      tekst: 11 млн
+      mesto: shtuki
+      mimo_ru: 11 миллионов — столько противогазов ушло на фронт.
+    - kod: n15
+      tekst: 1,5%
+      mesto: poteri
+      mimo_ru: 1,5% — столько потерь осталось от газа.
+    - kod: n50
+      tekst: 50 коп.
+      mesto: kopejki
+      mimo_ru: 50 копеек — столько брал Куммант с маски.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 'Все числа на месте: противогаз Зелинского держит газ.'
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 66 мин — столько держал газ противогаз, 11 млн — противогазов на фронте, 1,5% — потери от газа, 50 коп. — плата Кумманту с маски.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Зелинский первым в мире поставил в противогаз уголь — газ оседал в угле, и солдат дышал чистым воздухом.'
+  net: 'Как это работало дальше: в 1916-м уголь появился и в немецком противогазе, а противогаз и рецепт угля русские химики даром переправили в Англию.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Петроград
+    - Зелинский берёт уголь, которым чистили спирт
+    - '1915'
+  - - Петроград
+    - солдат 66 минут дышит в камере с газом
+    - '1916'
+  - - Фронт
+    - приказ оставить только противогаз Зелинского
+    - '1916'
+  - - Германия
+    - уголь в немецком противогазе по русским трофеям
+    - '1916'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 66 минут; берёзовый; ни копейки; больше 11 миллионов; 1,5%.'
+  ball: 8
+  voprosy:
+  - q: Сколько минут держал газ противогаз Зелинского в испытании?
+    o:
+    - '25'
+    - '66'
+    - '11'
+    a: 1
+    e: Английский шлем держал газ 25 секунд, противогаз Зелинского — 66 минут, и вышли по приказу
+  - q: Какой уголь нашли англичане в русском противогазе?
+    o:
+    - берёзовый
+    - каменный
+    - торфяной
+    a: 0
+    e: Англичане искали в русском угле тайную пропитку — а нашли чистый берёзовый уголь
+  - q: Сколько взял Зелинский за свой противогаз?
+    o:
+    - 50 копеек с маски
+    - тысячу рублей
+    - ни копейки
+    a: 2
+    e: Куммант брал 50 копеек с каждой маски, Зелинский за противогаз не взял ни копейки
+  - q: Сколько противогазов Зелинского ушло на фронт за войну?
+    o:
+    - 200 тысяч
+    - больше 11 миллионов
+    - 3,5 миллиона
+    a: 1
+    e: За войну на фронт ушло больше 11 миллионов противогазов Зелинского
+  - q: До скольких упали потери от газовых атак с противогазом?
+    o:
+    - 20%
+    - 1,5%
+    - 10%
+    a: 1
+    e: С противогазом Зелинского потери от газовых атак упали с 20% до 1,5%
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал противогаза Зелинского.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-06-goskatalog-43299999.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 800
+  height: 682
+  alt: 'Старый снимок: люди в противогазах стоят в поле, над землёй стелется облако газа'
+  data_source: https://goskatalog.ru/portal/#/collections?id=43299999
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Рыбинский музей-заповедник · Госкаталог
+  podpis: Полевые испытания противогаза Зелинского-Кумманта. Стереонегатив, 1916. Хранит Рыбинский музей-заповедник.
+  credit: 'Хранится: Рыбинский музей-заповедник. Госкаталог музейного фонда РФ, № 43064203.'
+  hint: Снимок · испытания противогаза
+  vid: foto
+  prava:
+    avtor: Г. А. Сигсон
+    god_sozdaniya: '1916'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: '1916'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=43299999
+  nomer_predmeta: '43064203'
+  nomer_snimka: net
+  hranitel: Рыбинский музей-заповедник
+  podlinnik:
+    gde: Рыбинский музей-заповедник
+    otkuda: https://goskatalog.ru/portal/#/collections?id=43299999
+  svyashchennoe: false
+  podpis_chto: Полевые испытания противогаза Зелинского-Кумманта. Стереонегатив
+  podpis_gde: Россия
+  podpis_kogda: '1916'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-06-goskatalog-47518210.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 800
+  height: 549
+  alt: 'Старый снимок: мужчины в костюмах и мундирах сидят за длинным столом'
+  data_source: https://goskatalog.ru/portal/#/collections?id=47518210
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей истории Санкт-Петербурга · Госкаталог
+  podpis: В. С. Садиков и изобретатели угольного противогаза Н. Д. Зелинский и Э. Л. Куммант с группой, 1916. Хранит Государственный музей истории Санкт-Петербурга.
+  credit: 'Хранится: Государственный музей истории Санкт-Петербурга. Госкаталог музейного фонда РФ, № 47275856.'
+  hint: Снимок · Зелинский и Куммант
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1916'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1916'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=47518210
+  nomer_predmeta: '47275856'
+  nomer_snimka: net
+  hranitel: Государственный музей истории Санкт-Петербурга
+  podlinnik:
+    gde: Государственный музей истории Санкт-Петербурга
+    otkuda: https://goskatalog.ru/portal/#/collections?id=47518210
+  svyashchennoe: false
+  podpis_chto: В. С. Садиков и изобретатели угольного противогаза Н. Д. Зелинский и Э. Л. Куммант с группой
+  podpis_gde: Петроград
+  podpis_kogda: '1916'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-06-goskatalog-4701934.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 652
+  height: 800
+  alt: Резиновая маска со стёклами для глаз и металлическая коробка фильтра
+  data_source: https://goskatalog.ru/portal/#/collections?id=4701934
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+  podpis: Противогаз Зелинского-Куманта, 1-го образца, 1915–1917. Хранит Государственный исторический музей.
+  credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 4671335.'
+  hint: Предмет · противогаз 1-го образца
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1915–1917
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1915–1917
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=4701934
+  nomer_predmeta: '4671335'
+  nomer_snimka: net
+  hranitel: Государственный исторический музей
+  podlinnik:
+    gde: Государственный исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=4701934
+  svyashchennoe: false
+  podpis_chto: Противогаз Зелинского-Куманта, 1-го образца
+  podpis_gde: Россия
+  podpis_kogda: 1915–1917
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-06-goskatalog-4697105.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 800
+  height: 533
+  alt: 'Части противогаза разложены рядом: маска, коробка с углём и крышки'
+  data_source: https://goskatalog.ru/portal/#/collections?id=4697105
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+  podpis: Противогаз Зелинского-Куманта (московский образец), обр. 1916 г., 1916. Хранит Государственный исторический музей.
+  credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 4676164.'
+  hint: Предмет · московский образец
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1916'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1916'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=4697105
+  nomer_predmeta: '4676164'
+  nomer_snimka: net
+  hranitel: Государственный исторический музей
+  podlinnik:
+    gde: Государственный исторический музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=4697105
+  svyashchennoe: false
+  podpis_chto: Противогаз Зелинского-Куманта (московский образец), обр. 1916 г.
+  podpis_gde: Москва
+  podpis_kogda: '1916'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-06-goskatalog-56431365.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 800
+  height: 540
+  alt: Металлическая коробка угольного фильтра с горлышком для маски
+  data_source: https://goskatalog.ru/portal/#/collections?id=56431365
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Пермский краеведческий музей · Госкаталог
+  podpis: Противогаз системы Зелинского-Кумманта (угольный фильтр), 1916. Хранит Пермский краеведческий музей.
+  credit: 'Хранится: Пермский краеведческий музей. Госкаталог музейного фонда РФ, № 56151643.'
+  hint: Предмет · угольный фильтр
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1916'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1916'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=56431365
+  nomer_predmeta: '56151643'
+  nomer_snimka: net
+  hranitel: Пермский краеведческий музей
+  podlinnik:
+    gde: Пермский краеведческий музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=56431365
+  svyashchennoe: false
+  podpis_chto: Противогаз системы Зелинского-Кумманта (угольный фильтр)
+  podpis_gde: Россия
+  podpis_kogda: '1916'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-06-goskatalog-9135834.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 527
+  height: 716
+  alt: Жестяная коробка для противогаза с бумажной наклейкой
+  data_source: https://goskatalog.ru/portal/#/collections?id=9135834
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Дом-музей Марины Цветаевой · Госкаталог
+  podpis: Коробка для противогаза Зелинского-Кумманта Петроградского образца, обр. 1915 г., 1915–1917. Хранит Дом-музей Марины Цветаевой.
+  credit: 'Хранится: Дом-музей Марины Цветаевой. Госкаталог музейного фонда РФ, № 9023416.'
+  hint: Предмет · коробка противогаза
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1915–1917
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1915–1917
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=9135834
+  nomer_predmeta: '9023416'
+  nomer_snimka: net
+  hranitel: Дом-музей Марины Цветаевой
+  podlinnik:
+    gde: Дом-музей Марины Цветаевой
+    otkuda: https://goskatalog.ru/portal/#/collections?id=9135834
+  svyashchennoe: false
+  podpis_chto: Коробка для противогаза Зелинского-Кумманта Петроградского образца, обр. 1915 г.
+  podpis_gde: Петроград
+  podpis_kogda: 1915–1917
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-06-goskatalog-10351240.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.8
+  width: 800
+  height: 523
+  alt: Противогаз с маской и угольной коробкой на шланге
+  data_source: https://goskatalog.ru/portal/#/collections?id=10351240
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мурманский областной краеведческий музей · Госкаталог
+  podpis: Противогаз фильтрующий угольный М-VI, 1968. Хранит Мурманский областной краеведческий музей.
+  credit: 'Хранится: Мурманский областной краеведческий музей. Госкаталог музейного фонда РФ, № 10246184.'
+  hint: Предмет · угольный противогаз М-VI
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1968'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1968'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10351240
+  nomer_predmeta: '10246184'
+  nomer_snimka: net
+  hranitel: Мурманский областной краеведческий музей
+  podlinnik:
+    gde: Мурманский областной краеведческий музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10351240
+  svyashchennoe: false
+  podpis_chto: Противогаз фильтрующий угольный М-VI
+  podpis_gde: СССР
+  podpis_kogda: '1968'
+  pometka_prav: citirovanie-1274
+sources:
+- href: http://militera.lib.ru/tw/figurovsky_na/07.html
+  title: «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.» — Н. А. Фигуровский, Издательство Академии наук СССР, 1942
+  note: факты дня
+- href: https://www.supotnitskiy.ru/book/book5_kommentarii44.htm
+  title: «Химическое оружие на фронтах Мировой войны 1914–1918 гг. Комментарии научного редактора» — М. В. Супотницкий
+  note: факты дня
+- href: https://rodina-history.ru/2026/02/03/zelinskij-ne-oformil-patent-na-svoj-protivogaz-iz-blagorodstva.html
+  title: «Зелинский не оформил патент на свой противогаз из благородства» — «Родина»
+  note: факты дня
+- href: https://zioc.ru/events/news-announcements/2016/155-let-so-dnya-rozhdeniya-akademika-nd-zelinskogo-osnovatelya-instituta-organicheskoj-ximii
+  title: «155 лет со дня рождения академика Н.Д. Зелинского, основателя Института органической химии» — Институт органической химии имени Н. Д. Зелинского РАН
+  note: факты дня
+- href: https://medportal.ru/enc/aid/reading/17/
+  title: «Отец солдата. История активированного угля» — «Медпортал»
+  note: факты дня
+- href: https://aif.ru/society/people/protivogaz-v-podarok-kak-himik-zelinskiy-povliyal-na-hod-voyny-i-ekonomiku
+  title: «Противогаз в подарок. Как химик Зелинский повлиял на ход войны и экономику» — «Аргументы и факты»
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  href: den/02-07/
+  title: 7 февраля — Троичная ЭВМ «Сетунь»
+  hook: Весь мир считает нулями и единицами, а машина Брусенцова считала тремя знаками и выходила экономичнее ровесниц
+  main: true
+- lbl: Предыдущий день
+  href: den/02-05/
+  title: 5 февраля — Гибкая фотоплёнка Болдырева
+  hook: Болдырев показал миру гибкую фотоплёнку в рулоне за десять лет до Kodak и патента на неё так и не взял
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Академик-химик
+  - - 70
+    - Химик лаборатории
+  - - 40
+    - Лаборант
+  - - 0
+    - Гость дня
+return:
+  q: Сколько держал газ английский шлем — и сколько противогаз Зелинского?
+  a: Английский шлем держал газ 25 секунд, противогаз Зелинского — 66 минут, и вышли по приказу
+  src: Н. А. Фигуровский, militera.lib.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-06-zelinskij:claim-1916
+  ours:
+    kind: publication
+    title: «Очерк развития русского противогаза во время империалистической войны 1914–1918 гг.»
+    date: '1916-02-05'
+    holder: Военная литература (militera.lib.ru)
+    source_url: http://militera.lib.ru/tw/figurovsky_na/07.html
+podskazki_igry:
+- 66 мин — это время в камере с газом
+- 11 млн — это противогазы на фронте
+- 50 коп. — это плата Кумманту с маски
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Петроград (Санкт-Петербург)
+  shirota: 59.939
+  dolgota: 30.316
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Воздух идёт к лицу через коробку с углём
+- Уголь весь в мельчайших порах
+- Газ оседает в порах угля и остаётся там
+- К маске доходит воздух без газа
+data_uslovnaya: 6 февраля — день рождения Зелинского; главное испытание противогаза прошло накануне, 5 февраля 1916 года (23 января по старому стилю), в Петрограде.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/06feb-zelinskij
+  format: horizontal
+  pole: izobreteniya/06feb-zelinskij:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  intro: Как Зелинский спас солдат от газа — от спиртового угля до противогаза без патента.
+  poster: video/day-06feb-zelinskij-poster.jpg?v=1
+  mp4: video/day-06feb-zelinskij.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/06feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
