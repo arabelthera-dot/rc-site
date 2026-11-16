@@ -325,26 +325,42 @@ fakty:
     istochnik: n8
     dlya_voprosa: false
     kadr:
-      src: /muzei/ne-sdayutsya/img/02-05-goskatalog-5988049.jpg
-      alt: 'Чёрно-белый снимок: на траве лежат смятые обломки самолёта, на переднем плане скомканный купол парашюта.'
-      data_source: https://goskatalog.ru/portal/#/collections?id=5988049
+      src: /muzei/ne-sdayutsya/img/02-05-goskatalog-59299544.jpg
+      alt: 'Тёмный чёрно-белый снимок: лётчик стоит слева, рядом — обломки сбитого самолёта.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=59299544
       license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-      podpis: Вражеский самолёт, протараненный лётчиком Талалихиным под Москвой. Фотография, август 1941 года. Хранится в Государственном центральном музее современной истории России, Москва.
-      credit: ФГБУК «Государственный центральный музей современной истории России», № ГИК 19112/53, Госкаталог № 5811101
-      width: 604
-      height: 800
+      podpis: В. Талалихин у сбитого им фашистского самолёта. Диапозитив, XX век. Хранится в Аликовском литературно-краеведческом музее.
+      credit: МБУК «Аликовский литературно-краеведческий музей», Госкаталог № 59017254
+      width: 300
+      height: 455
       vid: foto
-      glavnoe_na_kartinke: *id001
-      nomer_predmeta: ГИК 19112/53
-      nomer_snimka: '5988049'
-      hranitel: Государственный центральный музей современной истории России, Москва
-      podpis_chto: Вражеский самолёт, протараненный лётчиком Талалихиным
-      podpis_gde: под Москвой
-      podpis_kogda: август 1941 года
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 0.6
+      nomer_predmeta: net
+      nomer_snimka: '59299544'
+      hranitel: МБУК «Аликовский литературно-краеведческий музей»
+      podpis_chto: В. Талалихин у сбитого им фашистского самолёта
+      podpis_gde: net
+      podpis_kogda: XX век
       simvolika_proverena: true
-      podlinnik: *id002
+      podlinnik:
+        gde: МБУК «Аликовский литературно-краеведческий музей»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=59299544
       svyashchennoe: false
-      prava: *id003
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: XX век
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 59017254
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 59017254
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=59299544
   - id: ns-0205-geroj-cherez-sutki
     summary: Таран был в ночь на 7 августа, а 8-го он уже Герой Советского Союза.
     det:
@@ -417,7 +433,7 @@ fakty:
   - id: ns-0205-33-minuty
     summary: Ночной бой с «Хейнкелем» шёл 33 минуты, и решил его таран.
     det:
-    - Талалихин ударяет «Хейнкель» корпусом своего истребителя, и бомбардировщик падает на землю. Вся схватка в ночном небе длится 33 минуты.
+    - Талалихин таранит «Хейнкель», и бомбардировщик падает на землю. Вся схватка в ночном небе длится 33 минуты.
     src: 'Источник: «Узнай Москву». Виктор Талалихин — https://um.mos.ru/personalities/talalikhin/'
     stranica: страница персоны
     href: https://um.mos.ru/personalities/talalikhin/
@@ -658,8 +674,8 @@ sources:
   note: к фактам 9 и 14
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 6 февраля — Матвей Кузьмин (запись готовится)
+  href: /muzei/ne-sdayutsya/den/02-06/
+  title: 6 февраля — Матвей Кузьмин
   hook: 83-летний крестьянин повторил Сусанина — вывел врага под огонь
   main: true
 - lbl: Весь музей
@@ -680,11 +696,11 @@ chrome:
     title: Виктор Талалихин — Музей стойкости и подвига «Русские не сдаются»
     text: Патроны кончились — ночью Талалихин винтом отрубил хвост «Хейнкелю» и остался жив.
   prev:
-    href: index.html
-    title: 4 февраля · миноносец «Стерегущий» (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-04/
+    title: 4 · Миноносец «Стерегущий»
   next:
-    href: index.html
-    title: 6 февраля · Матвей Кузьмин (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-06/
+    title: 6 · Матвей Кузьмин
   all:
     href: index.html
     label: Все подвиги
