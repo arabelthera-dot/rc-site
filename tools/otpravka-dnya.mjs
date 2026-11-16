@@ -10,6 +10,7 @@
 //   6) ролик render.yml с веткой rc-rolik, где лежит days/<id>.json, и vetka_sajta = ветка заявки (п. 13, 23);
 //      аудиогид audiogid.yml с той же веткой сайта, если в очереди нет чужого ждущего (п. 7, 17);
 //      имя прогона с тем же ключом, что считает avto.py rc-rolik, — avto.yml второй раз их не ставит (r763);
+//      ролик НС — только при adres: den в yaml (кадры на месте), ключ без блока video: (Р790 п.5);
 //   7) avto.yml rc-rolik по этому дню сразу (Р789): сигнал rolik-signal.yml не доходит (нет секрета ROLIK_SIGNAL),
 //      а расписание «раз в 5 мин» GitHub пускает раз в 4–8 ч; avto.py доставит то, что шаг 6 не поставил;
 //   8) итог: номер заявки и ссылки на прогоны. Прогоны не ждёт (Р686 п.3).
@@ -182,12 +183,16 @@ const zapusk = (wf, imya, args) => {
   console.log(`  ✓ запущен ${url}`);
   ssylki.push(url);
 };
-// ключ ролика — как kluch_ns / kluch в scripts/avto.py rc-rolik
+// ключ ролика — как kluch_ns / kluch в scripts/avto.py rc-rolik; у НС yaml без верхнего блока video: (Р790 п.5)
 const chasti = [`src/content/days/${muzei}/${key}.json`, `src/content/dni-shablon/${muzei}/${key}.yaml`, `src/data/utverzhdeno/${muzei}/${key}.json`];
+const bezVideo = (f, b) => (f.endsWith('.yaml') ? Buffer.from(b.toString('latin1').replace(/^video:.*\n(?:(?:[ \t-].*)?\n)*/gm, ''), 'latin1') : b);
 const kluchRolika = muzei === 'ne-sdayutsya'
-  ? sha10(Buffer.concat(chasti.filter((f) => fs.existsSync(f)).map((f) => Buffer.concat([Buffer.from(`${f}\0`), fs.readFileSync(f)]))))
+  ? sha10(Buffer.concat(chasti.filter((f) => fs.existsSync(f)).map((f) => Buffer.concat([Buffer.from(`${f}\0`), bezVideo(f, fs.readFileSync(f))]))))
   : sha10(scenarij);
-zapusk('render.yml', `render ${zadacha} ${kluchRolika}`,
+// ролик НС ждёт кадры: только при adres: den — с ним сайт уже держит замок кадров дня (zamokObshchiy), как в avto.py (Р790 п.5)
+if (muzei === 'ne-sdayutsya' && !/^adres:[ \t]*['"]?den['"]?[ \t]*$/m.test(fs.readFileSync(chasti[1], 'utf8')))
+  console.log(`  ролик ждёт: в ${chasti[1]} нет adres: den — кадры не на месте; avto.py rc-rolik соберёт после adres: den`);
+else zapusk('render.yml', `render ${zadacha} ${kluchRolika}`,
   ['--ref', vetkaRolika, '-f', `zadacha=${zadacha}`, '-f', 'format=oba', '-f', `vetka_sajta=${vetka}`, '-f', `klyuch=${kluchRolika}`]);
 // гид — если в yaml дня есть audioguide.transcript и audioSrc; ключ — как в avto.py (sha1 json.dumps текста, Python)
 const put = chasti[1];
