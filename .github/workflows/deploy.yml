@@ -27,6 +27,9 @@ permissions:
 # (9.11) ставил каждое вливание отдельной полной сборкой по ~16 мин подряд — 10.11 очередь из 13 выкладок отстала на 2,5 ч.
 # Дыра 9.11 (3fb34f3c, 782ddde1 не дошли) была в «nado»: расписание вытесняло ожидающее вливание и выходило, раз сегодня
 # уже собирали. Теперь расписание выходит, только если сегодня собран именно этот коммит main. Откат — вернуть queue: max.
+# cancel-in-progress: true не ставим (r790, 16.11.2026): при слияниях каждые 5–10 минут каждая выкладка рубила бы
+# предыдущую, и сайт не обновлялся бы весь поток; оборванный посреди rsync сервер остался бы с частью новых файлов.
+# Нынешнее «один работает, ждёт один самый свежий» и даёт из 10 слияний подряд не больше двух выкладок.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -174,11 +177,16 @@ jobs:
   # как прежде. Откат — убрать эту задачу.
   msk:
     needs: build
-    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
+    # Исполнитель внутри России (r790, 16.11.2026; выключено): переменная репо RC_RUNNER_RF = '1' — задачи msk и zhivoy
+    # идут на свой исполнитель с метками self-hosted, rf (сервер в России, ставит Михаил — docs/vykladka-rf-runner.md);
+    # пусто — облако GitHub, как прежде. Нужен, когда msk-new закрыт из-за границы (с 13.11.2026 22/443 — timeout).
+    # Как в мире — docs.github.com «Choosing the runner for a job» (fromJSON-список меток). Откат — переменную очистить.
+    runs-on: ${{ vars.RC_RUNNER_RF == '1' && fromJSON('["self-hosted","rf"]') || 'ubuntu-24.04' }}
     # Окружение msk-new (Р64): секрет RU_DEPLOY_KEY переносится сюда из секретов репо (Михаил) с правилом «только main».
     # Пока окружение без правил — поведение прежнее.
     environment: msk-new
-    timeout-minutes: 20
+    # 40, а не 20 (r790): первая выкладка после закрытия везёт всё слитое с 13.11 разом; обычная с --checksum — минуты.
+    timeout-minutes: 40
     permissions:
       contents: read
     outputs:
@@ -224,12 +232,15 @@ jobs:
         run: |
           set -uo pipefail
           if [ -z "$MEDIA_KLYUCH" ]; then echo "::notice::нет секрета MEDIA_SSH_KEY — ролики в хранилище не докладываются"; exit 0; fi
-          umask 077; mkdir -p ~/.ssh
-          printf '%s\n' "$MEDIA_KLYUCH" > ~/.ssh/media
-          printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
-          SSH="ssh -i $HOME/.ssh/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes"
-          rsync -rltz --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' -e "$SSH" video-sajta/ rcmedia@185.149.145.227: | tail -n 6
-          kod=$?; rm -f ~/.ssh/media
+          # Ключ — в RUNNER_TEMP (GitHub чистит её в конце каждой задачи), а не в ~/.ssh: на своём исполнителе дом не стирается.
+          umask 077; S="$RUNNER_TEMP/ssh-media"; mkdir -p "$S"
+          printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"
+          printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
+          SSH="ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30"
+          # --checksum (r790): ролики после скачивания артефакта — с новым временем, без него rsync перечитывал и
+          # переписывал все 163 файла (13.11: 2 мин 15 с); со сверкой содержимого уходят только новые и изменённые.
+          rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' -e "$SSH" video-sajta/ rcmedia@185.149.145.227: | tail -n 6
+          kod=$?; rm -rf "$S"
           if [ "$kod" != 0 ]; then
             if [ -n "$MEDIA_BASE" ]; then echo "::error::ролики не доложены в хранилище (rsync $kod), а ссылки ведут туда — выкладка остановлена"; exit 1; fi
             echo "::warning::ролики не доложены в хранилище (rsync $kod); MEDIA_BASE пуст — сайт берёт ролики с себя"
@@ -265,12 +276,16 @@ jobs:
           [ "$sayt" -le "${RU_SAYT_MAX_MB:-1000}" ] || { echo "::error::msk-new: сайт без роликов $sayt МБ больше бюджета ${RU_SAYT_MAX_MB:-1000} МБ"; exit 1; }
           bolshie=$(find dist -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
           if [ -n "$bolshie" ]; then echo "::error::msk-new: ролики больше ${RU_ROLIK_MAX_MB:-50} МБ:"; echo "$bolshie"; exit 1; fi
-          umask 077; mkdir -p ~/.ssh
-          printf '%s\n' "$KLYUCH" > ~/.ssh/klyuch
-          printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
-          SSH="ssh -i $HOME/.ssh/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes"
-          rsync -rlptz --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$KUDA:" | tail -n 15
-          rm -f ~/.ssh/klyuch
+          umask 077; S="$RUNNER_TEMP/ssh-sayt"; mkdir -p "$S"
+          printf '%s\n' "$KLYUCH" > "$S/klyuch"
+          printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
+          SSH="ssh -i $S/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30"
+          # --checksum (r790): сборка каждый раз новая, у всех файлов новое время — без сверки содержимого rsync гнал
+          # все 18 313 файлов (2,5 ГБ, 13.11: «regular files transferred 18,313», 4 мин 50 с), хотя менялось ~28 МБ.
+          # Со сверкой уходят и подменяются только изменённые; у остальных лишь обновится время. Как в мире — man rsync,
+          # --checksum: «skip based on checksum, not mod-time & size». Откат — убрать --checksum.
+          rsync -rlptz --checksum --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$KUDA:" | tail -n 15
+          rm -rf "$S"
           echo "msk-new: выложено в $KUDA — $(find dist -type f | wc -l) файлов"
           if [ -n "$ADRES" ]; then
             kod=$(curl -s -o /dev/null -w '%{http_code}' "$ADRES") || kod=нет
@@ -314,7 +329,8 @@ jobs:
   zhivoy:
     needs: msk
     if: needs.msk.outputs.est == 'true'
-    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
+    # Свой исполнитель в России при RC_RUNNER_RF = '1' (r790, см. задачу msk): из облака закрытый сервер не открыть.
+    runs-on: ${{ vars.RC_RUNNER_RF == '1' && fromJSON('["self-hosted","rf"]') || 'ubuntu-24.04' }}
     timeout-minutes: 15
     permissions:
       actions: read
