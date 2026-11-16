@@ -1,6 +1,7 @@
 # День 7 февраля музея «Русские не сдаются»: Муса Джалиль, «Моабитская тетрадь», 1944. Факты — Р752.
 muzei: ne-sdayutsya
 key: 02-07
+adres: den
 pokazan_sergeyu:
   data: '2026-11-14'
 head:
@@ -93,6 +94,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/07feb-dzhalil
+  format: horizontal
+  pole: nesdayutsya/07feb-dzhalil:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
+  poster: /muzei/ne-sdayutsya/video/day-07feb-dzhalil-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-07feb-dzhalil.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43607250995) из сценария days/ns07feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Муса Джалиль
