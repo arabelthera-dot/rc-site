@@ -10,7 +10,10 @@
 //   6) ролик render.yml с веткой rc-rolik, где лежит days/<id>.json, и vetka_sajta = ветка заявки (п. 13, 23);
 //      аудиогид audiogid.yml с той же веткой сайта, если в очереди нет чужого ждущего (п. 7, 17);
 //      имя прогона с тем же ключом, что считает avto.py rc-rolik, — avto.yml второй раз их не ставит (r763);
-//   7) итог: номер заявки и ссылки на прогоны. Прогоны не ждёт (Р686 п.3).
+//   7) avto.yml rc-rolik по этому дню сразу (Р789): сигнал rolik-signal.yml не доходит (нет секрета ROLIK_SIGNAL),
+//      а расписание «раз в 5 мин» GitHub пускает раз в 4–8 ч; avto.py доставит то, что шаг 6 не поставил;
+//   8) итог: номер заявки и ссылки на прогоны. Прогоны не ждёт (Р686 п.3).
+// День уже влит в main (шаги 1–6 не нужны): node tools/otpravka-dnya.mjs <музей> <ММ-ДД> --avto — только шаг 7.
 // Новых проверок нет: только существующие шаги в правильном порядке (заморозка Р783).
 // --proba — без rebase, push, заявки и запусков: шаги 2–4 выполняет, остальное печатает «сделал бы».
 // Откат: удалить файл; шаги снова делаются руками по brak-stranic.md.
@@ -27,7 +30,7 @@ const argi = process.argv.slice(2);
 const PROBA = argi.includes('--proba');
 const [muzei, key] = argi.filter((a) => !a.startsWith('--'));
 if (!muzei || !/^\d\d-\d\d$/.test(key ?? '')) {
-  console.error('запуск: node tools/otpravka-dnya.mjs <музей> <ММ-ДД> [--proba]');
+  console.error('запуск: node tools/otpravka-dnya.mjs <музей> <ММ-ДД> [--proba] [--avto]');
   process.exit(1);
 }
 
@@ -36,6 +39,15 @@ const vyvod = (cmd, args) => { const r = run(cmd, args); return r.status === 0 ?
 const stop = (shag, tekst) => { console.error(`\n✗ СТОП на шаге ${shag}: ${tekst}`); process.exit(1); };
 const shag = (n, tekst) => console.log(`\n— ${n}. ${tekst}`);
 const proba = (komanda) => console.log(`  [проба] сделал бы: ${komanda}`);
+// 7. avto.yml rc-rolik по дню (Р789): ключ помощника пускает workflow_dispatch, секрет не нужен
+const avto = () => {
+  const komanda = ['workflow', 'run', 'avto.yml', '-R', ROLIK, '-f', `dni=${muzei}/${key}`];
+  if (PROBA) { proba(`gh ${komanda.join(' ')}`); return; }
+  const r = run('gh', komanda);
+  if (r.status !== 0) console.error(`  ✗ gh ${komanda.join(' ')}: ${r.stderr.trim()}`);
+  else console.log(`  ✓ avto.yml запущен по ${muzei}/${key}: gh run list -R ${ROLIK} --workflow avto.yml --event workflow_dispatch`);
+};
+if (argi.includes('--avto')) { shag(7, `avto.yml rc-rolik по ${muzei}/${key} (день уже в main)`); avto(); process.exit(0); }
 
 const vetka = vyvod('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
 if (!vetka || vetka === 'HEAD') stop(0, 'не на ветке (detached HEAD) — перейди в ветку дня');
@@ -192,6 +204,9 @@ else {
   else zapusk('audiogid.yml', imya, ['-f', `put=${put}`, '-f', `vetka_sajta=${vetka}`, '-f', `klyuch=${kluchGida}`]);
 }
 
-// 7. итог
+shag(7, 'avto.yml rc-rolik по дню');
+avto();
+
+// 8. итог
 console.log(`\nИТОГ ${muzei}/${key}${PROBA ? ' (проба)' : ''}: заявка ${pr ? `№${pr.number} ${pr.url}` : 'ещё нет'}; прогоны: ${ssylki.length ? ssylki.join(' ') : 'нет'}`);
 console.log('Прогоны не жду (Р686 п.3): ролик и гид на сайт приносит rolik-na-sait.yml. Проверки заявки — gh pr checks один раз.');
