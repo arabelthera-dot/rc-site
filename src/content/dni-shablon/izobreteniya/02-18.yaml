@@ -253,7 +253,7 @@ story:
   udary:
   - summary: Пешком по чернозёму
     det:
-    - Для «Русского чернозёма» прошёл 10 тысяч вёрст за два лета, большей частью пешком.
+    - Для «Русского чернозёма» Докучаев прошёл 10 тысяч вёрст за два лета, большей частью пешком.
     src: 'Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — aif.ru'
   - summary: Менделеев за Докучаева
     det:
@@ -329,7 +329,7 @@ fakty:
       alt: 'Старый снимок: лысеющий мужчина с длинной седой бородой, в тёмном сюртуке'
       data_source: https://goskatalog.ru/portal/#/collections?id=4345262
       license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Смоленский государственный музей-заповедник · Госкаталог
-      podpis: Фотография «Докучаев Василий Васильевич», конец XIX в.. Хранит Смоленский государственный музей-заповедник.
+      podpis: Фотография «Докучаев Василий Васильевич», конец XIX в. Хранит Смоленский государственный музей-заповедник.
       credit: 'Хранится: Смоленский государственный музей-заповедник. Госкаталог музейного фонда РФ, № 4390428.'
       hint: Фото · Василий Докучаев
       vid: foto
@@ -416,7 +416,7 @@ fakty:
       podpis_kogda: '1983'
       pometka_prav: citirovanie-1274
     src: 'Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — aif.ru'
-    otryvok: Для «Русского чернозёма» прошёл 10 тысяч вёрст за два лета, большей частью пешком
+    otryvok: Для «Русского чернозёма» Докучаев прошёл 10 тысяч вёрст за два лета, большей частью пешком
     stranica: '«Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — «Аргументы и факты»'
     href: https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy
     pometka: документ
@@ -478,7 +478,7 @@ fakty:
       podpis_kogda: '1892'
       pometka_prav: citirovanie-1274
     src: 'Источник: bibliotekar.ru, «Наши степи прежде и теперь» — bibliotekar.ru'
-    otryvok: После голода 1891 года написал первую в мире книгу об экологическом кризисе степей
+    otryvok: После голода 1891 года Докучаев написал первую в мире книгу об экологическом кризисе степей
     stranica: «Наши степи прежде и теперь» — bibliotekar.ru
     href: https://bibliotekar.ru/2-7-43-dokuchaev/38.htm
     pometka: документ
@@ -575,7 +575,7 @@ fakty:
       alt: Стеклянная бутыль с гранёной пробкой, внутри чёрная земля, на стекле рукописная этикетка
       data_source: https://goskatalog.ru/portal/#/collections?id=9824788
       license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей почвоведения имени В. В. Докучаева · Госкаталог
-      podpis: 'Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.», конец XIX в.. Хранит Центральный музей почвоведения имени В. В. Докучаева.'
+      podpis: 'Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.», конец XIX в. Хранит Центральный музей почвоведения имени В. В. Докучаева.'
       credit: 'Хранится: Центральный музей почвоведения имени В. В. Докучаева. Госкаталог музейного фонда РФ, № 9761857.'
       hint: Предмет · Бутыль с чернозёмом Докучаева
       vid: predmet
@@ -623,7 +623,7 @@ fakty:
       alt: Картонная коробка с открытой застеклённой крышкой, внутри комки тёмной земли с корнями
       data_source: https://goskatalog.ru/portal/#/collections?id=13598484
       license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей почвоведения имени В. В. Докучаева · Госкаталог
-      podpis: Образец почвы «Разрез № 316. Девственный чернозём», конец XIX в.. Хранит Центральный музей почвоведения имени В. В. Докучаева.
+      podpis: Образец почвы «Разрез № 316. Девственный чернозём», конец XIX в. Хранит Центральный музей почвоведения имени В. В. Докучаева.
       credit: 'Хранится: Центральный музей почвоведения имени В. В. Докучаева. Госкаталог музейного фонда РФ, № 13558793.'
       hint: Предмет · Образец чернозёма
       vid: predmet
@@ -827,228 +827,6 @@ figures:
   podpis_chto: Почвенный монолит «Чернозём типичный тучный»
   podpis_gde: Самара
   podpis_kogda: net
-  pometka_prav: citirovanie-1274
-- src: /muzei/izobreteniya/img/02-18-goskatalog-9824788.jpg
-  glavnoe_na_kartinke:
-    x: 0.1
-    y: 0.2
-    w: 0.8
-    h: 0.7
-  width: 639
-  height: 1276
-  alt: Стеклянная бутыль с гранёной пробкой, внутри чёрная земля, на стекле рукописная этикетка
-  data_source: https://goskatalog.ru/portal/#/collections?id=9824788
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей почвоведения имени В. В. Докучаева · Госкаталог
-  podpis: 'Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.», конец XIX в.. Хранит Центральный музей почвоведения имени В. В. Докучаева.'
-  credit: 'Хранится: Центральный музей почвоведения имени В. В. Докучаева. Госкаталог музейного фонда РФ, № 9761857.'
-  hint: Предмет · Бутыль с чернозёмом Докучаева
-  vid: predmet
-  prava:
-    avtor: Докучаев В. В. и ученики
-    god_sozdaniya: конец XIX в.
-    god_smerti_avtora: 1903
-    god_reabilitacii: net
-    anonim: false
-    pervaya_publikaciya: конец XIX в.
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=9824788
-  nomer_predmeta: '9761857'
-  nomer_snimka: net
-  hranitel: Центральный музей почвоведения имени В. В. Докучаева
-  podlinnik:
-    gde: Центральный музей почвоведения имени В. В. Докучаева
-    otkuda: https://goskatalog.ru/portal/#/collections?id=9824788
-  svyashchennoe: false
-  podpis_chto: 'Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.»'
-  podpis_gde: Санкт-Петербург
-  podpis_kogda: конец XIX в.
-  pometka_prav: citirovanie-1274
-- src: /muzei/izobreteniya/img/02-18-goskatalog-13598484.jpg
-  glavnoe_na_kartinke:
-    x: 0.1
-    y: 0.15
-    w: 0.8
-    h: 0.75
-  width: 1600
-  height: 1067
-  alt: Картонная коробка с открытой застеклённой крышкой, внутри комки тёмной земли с корнями
-  data_source: https://goskatalog.ru/portal/#/collections?id=13598484
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей почвоведения имени В. В. Докучаева · Госкаталог
-  podpis: Образец почвы «Разрез № 316. Девственный чернозём», конец XIX в.. Хранит Центральный музей почвоведения имени В. В. Докучаева.
-  credit: 'Хранится: Центральный музей почвоведения имени В. В. Докучаева. Госкаталог музейного фонда РФ, № 13558793.'
-  hint: Предмет · Образец чернозёма
-  vid: predmet
-  prava:
-    avtor: Докучаев В. В.
-    god_sozdaniya: конец XIX в.
-    god_smerti_avtora: 1903
-    god_reabilitacii: net
-    anonim: false
-    pervaya_publikaciya: конец XIX в.
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=13598484
-  nomer_predmeta: '13558793'
-  nomer_snimka: net
-  hranitel: Центральный музей почвоведения имени В. В. Докучаева
-  podlinnik:
-    gde: Центральный музей почвоведения имени В. В. Докучаева
-    otkuda: https://goskatalog.ru/portal/#/collections?id=13598484
-  svyashchennoe: false
-  podpis_chto: Образец почвы «Разрез № 316. Девственный чернозём»
-  podpis_gde: Санкт-Петербург
-  podpis_kogda: конец XIX в.
-  pometka_prav: citirovanie-1274
-- src: /muzei/izobreteniya/img/02-18-goskatalog-49107678.jpg
-  glavnoe_na_kartinke:
-    x: 0.1
-    y: 0.1
-    w: 0.85
-    h: 0.8
-  width: 570
-  height: 800
-  alt: 'Цветная карта губернии: пятна коричневых и жёлтых оттенков, слева столбец условных знаков'
-  data_source: https://goskatalog.ru/portal/#/collections?id=49107678
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
-  podpis: Почвенная карта Нижегородской губернии под общей редакцией В. Докучаева, 1886. Хранит Государственный исторический музей.
-  credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 48872599.'
-  hint: Карта · Почвы Нижегородской губернии
-  vid: karta
-  prava:
-    avtor: Докучаев В. В. (редактор)
-    god_sozdaniya: '1886'
-    god_smerti_avtora: 1903
-    god_reabilitacii: net
-    anonim: false
-    pervaya_publikaciya: '1886'
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=49107678
-  nomer_predmeta: '48872599'
-  nomer_snimka: net
-  hranitel: Государственный исторический музей
-  podlinnik:
-    gde: Государственный исторический музей
-    otkuda: https://goskatalog.ru/portal/#/collections?id=49107678
-  svyashchennoe: false
-  podpis_chto: Почвенная карта Нижегородской губернии под общей редакцией В. Докучаева
-  podpis_gde: Нижний Новгород
-  podpis_kogda: '1886'
-  pometka_prav: citirovanie-1274
-- src: /muzei/izobreteniya/img/02-18-goskatalog-8377722.jpg
-  glavnoe_na_kartinke:
-    x: 0.05
-    y: 0.05
-    w: 0.9
-    h: 0.9
-  width: 800
-  height: 578
-  alt: 'Раскрытая старая книга: слева гравюра со степной птицей, справа титульный лист'
-  data_source: https://goskatalog.ru/portal/#/collections?id=8377722
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Тобольский историко-архитектурный музей-заповедник · Госкаталог
-  podpis: Книга В. В. Докучаева «Наши степи прежде и теперь», издание в пользу пострадавших от неурожая, 1892. Хранит Тобольский историко-архитектурный музей-заповедник.
-  credit: 'Хранится: Тобольский историко-архитектурный музей-заповедник. Госкаталог музейного фонда РФ, № 8270806.'
-  hint: Книга · «Наши степи прежде и теперь»
-  vid: dokument
-  prava:
-    avtor: Докучаев В. В.
-    god_sozdaniya: '1892'
-    god_smerti_avtora: 1903
-    god_reabilitacii: net
-    anonim: false
-    pervaya_publikaciya: '1892'
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=8377722
-  nomer_predmeta: '8270806'
-  nomer_snimka: net
-  hranitel: Тобольский историко-архитектурный музей-заповедник
-  podlinnik:
-    gde: Тобольский историко-архитектурный музей-заповедник
-    otkuda: https://goskatalog.ru/portal/#/collections?id=8377722
-  svyashchennoe: false
-  podpis_chto: Книга В. В. Докучаева «Наши степи прежде и теперь», издание в пользу пострадавших от неурожая
-  podpis_gde: Санкт-Петербург
-  podpis_kogda: '1892'
-  pometka_prav: citirovanie-1274
-- src: /muzei/izobreteniya/img/02-18-goskatalog-4345262.jpg
-  glavnoe_na_kartinke:
-    x: 0.2
-    y: 0.05
-    w: 0.6
-    h: 0.8
-  width: 600
-  height: 525
-  alt: 'Старый снимок: лысеющий мужчина с длинной седой бородой, в тёмном сюртуке'
-  data_source: https://goskatalog.ru/portal/#/collections?id=4345262
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Смоленский государственный музей-заповедник · Госкаталог
-  podpis: Фотография «Докучаев Василий Васильевич», конец XIX в.. Хранит Смоленский государственный музей-заповедник.
-  credit: 'Хранится: Смоленский государственный музей-заповедник. Госкаталог музейного фонда РФ, № 4390428.'
-  hint: Фото · Василий Докучаев
-  vid: foto
-  prava:
-    avtor: автор не указан
-    god_sozdaniya: конец XIX в.
-    god_smerti_avtora: net
-    god_reabilitacii: net
-    anonim: true
-    pervaya_publikaciya: конец XIX в.
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=4345262
-  nomer_predmeta: '4390428'
-  nomer_snimka: net
-  hranitel: Смоленский государственный музей-заповедник
-  podlinnik:
-    gde: Смоленский государственный музей-заповедник
-    otkuda: https://goskatalog.ru/portal/#/collections?id=4345262
-  svyashchennoe: false
-  podpis_chto: Фотография «Докучаев Василий Васильевич»
-  podpis_gde: Россия
-  podpis_kogda: конец XIX в.
-  pometka_prav: citirovanie-1274
-- src: /muzei/izobreteniya/img/02-18-goskatalog-15143922.jpg
-  glavnoe_na_kartinke:
-    x: 0.05
-    y: 0.05
-    w: 0.9
-    h: 0.9
-  width: 382
-  height: 395
-  alt: 'Бронзовая медаль: на ней обложка книги «Русский чернозём», колосья и год 1883'
-  data_source: https://goskatalog.ru/portal/#/collections?id=15143922
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Ярославский художественный музей · Госкаталог
-  podpis: Медаль «100 лет со дня выхода книги В. В. Докучаева «Русский чернозём»», 1983. Хранит Ярославский художественный музей.
-  credit: 'Хранится: Ярославский художественный музей. Госкаталог музейного фонда РФ, № 15015900.'
-  hint: Медаль · 100 лет «Русскому чернозёму»
-  vid: predmet
-  prava:
-    avtor: Шабанов Александр Борисович
-    god_sozdaniya: '1983'
-    god_smerti_avtora: net
-    god_reabilitacii: net
-    anonim: false
-    pervaya_publikaciya: '1983'
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=15143922
-  nomer_predmeta: '15015900'
-  nomer_snimka: net
-  hranitel: Ярославский художественный музей
-  podlinnik:
-    gde: Ярославский художественный музей
-    otkuda: https://goskatalog.ru/portal/#/collections?id=15143922
-  svyashchennoe: false
-  podpis_chto: Медаль «100 лет со дня выхода книги В. В. Докучаева «Русский чернозём»»
-  podpis_gde: Ярославль
-  podpis_kogda: '1983'
   pometka_prav: citirovanie-1274
 sources:
 - href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
