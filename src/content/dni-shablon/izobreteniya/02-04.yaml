@@ -454,7 +454,7 @@ fakty:
     sravnenie: net
     src: 'Источник: Семёнов Ю. П., Бранец В. Н., Сыромятников В. С. и др. // Космические исследования. 1994. Т. 32, № 4–5. С. 186–193; статья названа в списке литературы — Е. И. Старовойтов, «Выбор металлизации для отражателей космической системы орбитального освещения поверхности Земли», Труды МАИ, 2017 — cyberleninka.ru'
     otryvok: Семёнов Ю. П., Бранец В. Н., Сыромятников В. С. и др. «Космический эксперимент по развертыванию пленочного бескаркасного отражателя D = 20 м („Знамя-2“)» // Космические исследования. 1994. Т. 32, № 4–5. С. 186–193.
-    stranica: Труды МАИ, 2017
+    stranica: «Космические исследования», 1994
     href: https://cyberleninka.ru/article/n/vybor-metallizatsii-dlya-otrazhateley-kosmicheskoy-sistemy-orbitalnogo-osvescheniya-poverhnosti-zemli
     pometka: документ
     id: kosmicheskie-issledovaniya-1994
@@ -601,8 +601,6 @@ result:
   zvanie: '0 / 100 · звание: Гость дня'
   note: Баллы — за игру, ответы и викторину.
 figures:
-- *id101
-- *id102
 - src: /muzei/izobreteniya/img/02-04-goskatalog-87952707.jpg
   glavnoe_na_kartinke:
     x: 0.1
@@ -638,25 +636,6 @@ figures:
   podpis_chto: вымпел «Грузовой космический корабль „Прогресс-М“»
   podpis_gde: Москва
   podpis_kogda: 'не указан'
-- src: /muzei/izobreteniya/img/02-04-goskatalog-7306820-mir.jpg
-  glavnoe_na_kartinke: *id001
-  width: 833
-  height: 1176
-  alt: 'Чёрно-белый снимок: орбитальная станция «Мир» с модулем «Квант» и кораблём «Союз ТМ-3» на фоне чёрного космоса, видны панели солнечных батарей и стыковочные узлы'
-  data_source: https://goskatalog.ru/portal/#/collections?id=7306820
-  license: цитирование в информационных целях с указанием автора и источника (ст. 1274 ГК РФ) · автор не указан · Госкаталог Музейного фонда РФ
-  podpis: Станция «Мир» с модулем «Квант» и кораблём «Союз ТМ-3» в полёте, 1987 год. Фотография хранится в Бузулукском краеведческом музее (Госкаталог № 7306820, инв. Ф 2218).
-  credit: 'Фото: автор не указан. Источник: Госкаталог Музейного фонда РФ, goskatalog.ru.'
-  vid: foto
-  prava: *id002
-  nomer_predmeta: '7306820'
-  nomer_snimka: net
-  hranitel: Бузулукский краеведческий музей
-  podlinnik: *id003
-  svyashchennoe: false
-  podpis_chto: станция «Мир» с «Квантом» и «Союзом ТМ-3»
-  podpis_gde: околоземная орбита
-  podpis_kogda: '1987'
 - src: /muzei/izobreteniya/img/02-04-progress-u-stancii.jpg
   glavnoe_na_kartinke:
     x: 0.07
