@@ -95,6 +95,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/06feb-kuzmin
+  format: horizontal
+  pole: nesdayutsya/06feb-kuzmin:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: 83-летний крестьянин повторил Сусанина — вывел врага под огонь
+  poster: /muzei/ne-sdayutsya/video/day-06feb-kuzmin-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-06feb-kuzmin.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43609691439) из сценария days/ns06feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Матвей Кузьмин

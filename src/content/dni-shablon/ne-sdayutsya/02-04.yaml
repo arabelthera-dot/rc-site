@@ -3,6 +3,7 @@
 
 muzei: ne-sdayutsya
 key: 02-04
+adres: den
 pokazan_sergeyu:
   data: '2026-11-11'
 head:
@@ -95,6 +96,17 @@ daynav:
   label: Викторина
 - id: calendar
   label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/04feb-steregushchij
+  format: horizontal
+  pole: nesdayutsya/04feb-steregushchij:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Японцы взяли „Стерегущий“ на буксир — он ушёл на дно, но врагу не достался
+  poster: /muzei/ne-sdayutsya/video/day-04feb-steregushchij-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-04feb-steregushchij.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43689937082) из сценария days/ns04feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Миноносец «Стерегущий»
