@@ -173,9 +173,9 @@ fakty:
     dlya_voprosa: false
     n: 4
   - id: ns-0224-zhid
-    summary: 'Андре Жид, ругавший СССР, сказал у постели Островского: «Это святой»'
+    summary: 'Андре Жид, ругавший СССР, написал об Островском в своей книге: «Это святой»'
     det:
-    - Французский писатель приехал в СССР в 1936 году и вернулся с резкой книгой о стране. Об Островском он в этой книге написал с глубочайшим уважением.
+    - 'Французский писатель приехал в СССР в 1936 году и вернулся с резкой книгой о стране. Об Островском он написал в ней: «Я не могу говорить об Островском, не испытывая чувства глубочайшего уважения». И добавил: «Религия не создала более прекрасного лица».'
     src: 'Источник: А. Жид. Возвращение из СССР (1936) — https://kprf.ru/library/classics/memo/5703.html'
     stranica: книга
     href: https://kprf.ru/library/classics/memo/5703.html
@@ -342,13 +342,13 @@ fakty:
     dlya_voprosa: false
     n: 13
     kadr:
-      src: /muzei/ne-sdayutsya/img/02-24-goskatalog-20016331.jpg
-      alt: 'Серая мягкая обложка книги: красный силуэт профиля и красная надпись арабским письмом.'
-      data_source: https://goskatalog.ru/portal/#/collections?id=19503286
+      src: /muzei/ne-sdayutsya/img/02-24-goskatalog-20025124.jpg
+      alt: 'Светлая мягкая обложка книги: звезда вверху и красное название китайскими иероглифами.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=19505204
       license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-      podpis: Роман «Как закалялась сталь» на персидском языке, Иран, 1951 год. Хранится в музее «Интеграция» имени Н. А. Островского.
-      credit: Музей «Интеграция» им. Н. А. Островского, Госкаталог № 19375105
-      width: 607
+      podpis: Роман «Как закалялась сталь» на китайском языке, 1952 год. Хранится в музее «Интеграция» имени Н. А. Островского.
+      credit: Музей «Интеграция» им. Н. А. Островского, Госкаталог № 19377454
+      width: 582
       height: 800
       vid: predmet
       glavnoe_na_kartinke:
@@ -357,28 +357,28 @@ fakty:
         w: 0.9
         h: 0.9
       nomer_predmeta: net
-      nomer_snimka: '20016331'
+      nomer_snimka: '20025124'
       hranitel: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
-      podpis_chto: Книга «Как закалялась сталь» на персидском языке
+      podpis_chto: Книга «Как закалялась сталь» на китайском языке
       podpis_gde: место съёмки не указано
-      podpis_kogda: 1951 год
+      podpis_kogda: 1952 год
       simvolika_proverena: true
       podlinnik:
         gde: Государственный музей — культурный центр «Интеграция» имени Н. А. Островского, Москва
-        otkuda: https://goskatalog.ru/portal/#/collections?id=19503286
+        otkuda: https://goskatalog.ru/portal/#/collections?id=19505204
       svyashchennoe: false
       prava:
         avtor: Н. А. Островский (текст); оформление — автор не указан
-        god_sozdaniya: 1951 год
+        god_sozdaniya: 1952 год
         god_smerti_avtora: net
         god_reabilitacii: net
         anonim: false
-        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19375105
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19377454
         sdelano_mashinoj: false
-        otkuda: Госкаталог, № 19375105
+        otkuda: Госкаталог, № 19377454
         baza: goskatalog
-        ssylka: https://goskatalog.ru/portal/#/collections?id=19503286
-      hint: Роман на персидском, 1951
+        ssylka: https://goskatalog.ru/portal/#/collections?id=19505204
+      hint: Роман на китайском, 1952
       celikom: true
   - id: ns-0224-rejhstag
     summary: 'На стене рейхстага штыком было написано: «Дошёл до Берлина. Павел Корчагин»'
@@ -642,9 +642,9 @@ sources:
   note: к фактам 6
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 25 февраля (запись готовится)
-  hook: Следующий день музея.
+  href: /muzei/ne-sdayutsya/den/02-25/
+  title: 25 февраля — Сергей Солнечников
+  hook: Накрыл собой боевую гранату — и спас солдат
   main: true
 - lbl: Весь музей
   href: index.html
@@ -664,11 +664,11 @@ chrome:
     title: Николай Островский — Музей стойкости и подвига «Русские не сдаются»
     text: Слепой и парализованный, он написал книгу, на которой выросло поколение
   prev:
-    href: index.html
-    title: 23 февраля
+    href: /muzei/ne-sdayutsya/den/02-23/
+    title: 23 февраля · Подлодка К-278 «Комсомолец»
   next:
-    href: index.html
-    title: 25 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-25/
+    title: 25 февраля · Сергей Солнечников
   all:
     href: index.html
     label: Все подвиги
