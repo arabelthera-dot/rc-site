@@ -249,7 +249,6 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    kadr: *id001
     src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
     otryvok: До 1969 года токамаки в мире строили только в одной стране — у нас
     stranica: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
@@ -576,44 +575,6 @@ fakty:
     otvet_edinstvennyj: true
   - n: 13
     sravnenie: net
-    kadr: &id007
-      src: /muzei/izobreteniya/img/02-25-goskatalog-12710850.jpg
-      glavnoe_na_kartinke:
-        x: 0.02
-        y: 0.05
-        w: 0.96
-        h: 0.9
-      width: 800
-      height: 284
-      alt: Металлическая деталь-дуга с рядом блестящих пластин и двумя стержнями по концам
-      data_source: https://goskatalog.ru/portal/#/collections?id=12710850
-      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
-      podpis: Деталь диафрагмы в форме дуги от установки «Токамак Ц 3» («Т-3»), 1960. Хранит Государственный центральный музей современной истории России.
-      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 12591555.'
-      hint: Предмет · диафрагма Т-3
-      vid: predmet
-      prava:
-        avtor: автор не указан
-        god_sozdaniya: '1960'
-        god_smerti_avtora: net
-        god_reabilitacii: net
-        anonim: true
-        pervaya_publikaciya: '1960'
-        sdelano_mashinoj: false
-        otkuda: Госкаталог музейного фонда РФ
-        baza: goskatalog
-        ssylka: https://goskatalog.ru/portal/#/collections?id=12710850
-      nomer_predmeta: '12591555'
-      nomer_snimka: net
-      hranitel: Государственный центральный музей современной истории России
-      podlinnik:
-        gde: Государственный центральный музей современной истории России
-        otkuda: https://goskatalog.ru/portal/#/collections?id=12710850
-      svyashchennoe: false
-      podpis_chto: Деталь диафрагмы в форме дуги от установки «Токамак Ц 3» («Т-3»)
-      podpis_gde: Москва
-      podpis_kogda: '1960'
-      pometka_prav: citirovanie-1274
     src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
     otryvok: В 1969 году наш Т-3 первым в мире поймал нейтроны настоящего термоядерного синтеза
     stranica: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
@@ -764,13 +725,43 @@ result:
   zvanie: '0 / 100 · звание: Гость дня'
   note: Баллы — за игру, ответы и викторину.
 figures:
-- *id001
-- *id002
-- *id003
-- *id004
-- *id005
-- *id006
-- *id007
+- src: /muzei/izobreteniya/img/02-25-goskatalog-12710850.jpg
+  glavnoe_na_kartinke:
+    x: 0.02
+    y: 0.05
+    w: 0.96
+    h: 0.9
+  width: 800
+  height: 284
+  alt: Металлическая деталь-дуга с рядом блестящих пластин и двумя стержнями по концам
+  data_source: https://goskatalog.ru/portal/#/collections?id=12710850
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+  podpis: Деталь диафрагмы в форме дуги от установки «Токамак Ц 3» («Т-3»), 1960. Хранит Государственный центральный музей современной истории России.
+  credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 12591555.'
+  hint: Предмет · диафрагма Т-3
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1960'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1960'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12710850
+  nomer_predmeta: '12591555'
+  nomer_snimka: net
+  hranitel: Государственный центральный музей современной истории России
+  podlinnik:
+    gde: Государственный центральный музей современной истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12710850
+  svyashchennoe: false
+  podpis_chto: Деталь диафрагмы в форме дуги от установки «Токамак Ц 3» («Т-3»)
+  podpis_gde: Москва
+  podpis_kogda: '1960'
+  pometka_prav: citirovanie-1274
 sources:
 - href: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
   title: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
@@ -796,7 +787,7 @@ sources:
 kuda:
 - lbl: Следующий день
   href: den/02-26/
-  title: 26 февраля — Первый в мире промышленный синтез синтетического каучука
+  title: 26 февраля — Первый в мире промышленный синтетический каучук
   hook: Своих колоний у страны не было, и Лебедев сделал каучук из спирта — первый в мире завод синтетической резины пошёл у нас
   main: true
 - lbl: Предыдущий день
