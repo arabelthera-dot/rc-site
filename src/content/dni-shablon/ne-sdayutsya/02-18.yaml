@@ -697,9 +697,9 @@ sources:
   note: к фактам 14, 15
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 19 февраля (запись готовится)
-  hook: Следующий день музея.
+  href: /muzei/ne-sdayutsya/den/02-19/
+  title: 19 февраля — Взвод Широнина
+  hook: Переезд держали двое раненых — враг не знал, что взвода больше нет
   main: true
 - lbl: Весь музей
   href: index.html
@@ -719,11 +719,11 @@ chrome:
     title: Подольские курсанты — Музей стойкости и подвига «Русские не сдаются»
     text: Три с половиной тысячи мальчишек задержали танки у Москвы
   prev:
-    href: index.html
-    title: 17 февраля
+    href: /muzei/ne-sdayutsya/den/02-17/
+    title: 17 · Роман Филипов
   next:
-    href: index.html
-    title: 19 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-19/
+    title: 19 · Взвод Широнина
   all:
     href: index.html
     label: Все подвиги
