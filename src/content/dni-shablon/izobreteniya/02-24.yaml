@@ -564,44 +564,6 @@ fakty:
     dlya_voprosa: false
   - n: 14
     sravnenie: net
-    kadr: &id007
-      src: /muzei/izobreteniya/img/02-24-goskatalog-10174913.jpg
-      glavnoe_na_kartinke:
-        x: 0.1
-        y: 0.05
-        w: 0.8
-        h: 0.9
-      width: 494
-      height: 800
-      alt: 'Генераторная радиолампа «ГК-20»: стеклянный баллон с металлическими электродами на чёрном цоколе с четырьмя штырьками'
-      data_source: https://goskatalog.ru/portal/#/collections?id=10174913
-      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог
-      podpis: Генераторная лампа «ГК-20», 1938–1940. Хранит Центральный музей связи имени А. С. Попова.
-      credit: 'Хранится: Центральный музей связи имени А. С. Попова. Госкаталог музейного фонда РФ, № 10060963.'
-      hint: Предмет · лампа «ГК-20»
-      vid: predmet
-      prava:
-        avtor: автор не указан
-        god_sozdaniya: 1938–1940
-        god_smerti_avtora: net
-        god_reabilitacii: net
-        anonim: true
-        pervaya_publikaciya: 1938–1940
-        sdelano_mashinoj: false
-        otkuda: Госкаталог музейного фонда РФ
-        baza: goskatalog
-        ssylka: https://goskatalog.ru/portal/#/collections?id=10174913
-      nomer_predmeta: '10060963'
-      nomer_snimka: net
-      hranitel: Центральный музей связи имени А. С. Попова
-      podlinnik:
-        gde: Центральный музей связи имени А. С. Попова
-        otkuda: https://goskatalog.ru/portal/#/collections?id=10174913
-      svyashchennoe: false
-      podpis_chto: Генераторная лампа «ГК-20»
-      podpis_gde: Россия
-      podpis_kogda: 1938–1940
-      pometka_prav: citirovanie-1274
     src: 'Источник: Музей НРЛ ННГУ, «Инкубатор идей»'
     otryvok: Лампа имени Ленина на 100 киловатт вызвала в Стокгольме всеобщее восхищение
     stranica: «Инкубатор идей» — Музей НРЛ ННГУ
@@ -746,13 +708,43 @@ result:
   zvanie: '0 / 100 · звание: Гость дня'
   note: Баллы — за игру, ответы и викторину.
 figures:
-- *id001
-- *id002
-- *id003
-- *id004
-- *id005
-- *id006
-- *id007
+- src: /muzei/izobreteniya/img/02-24-goskatalog-10174913.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.9
+  width: 494
+  height: 800
+  alt: 'Генераторная радиолампа «ГК-20»: стеклянный баллон с металлическими электродами на чёрном цоколе с четырьмя штырьками'
+  data_source: https://goskatalog.ru/portal/#/collections?id=10174913
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог
+  podpis: Генераторная лампа «ГК-20», 1938–1940. Хранит Центральный музей связи имени А. С. Попова.
+  credit: 'Хранится: Центральный музей связи имени А. С. Попова. Госкаталог музейного фонда РФ, № 10060963.'
+  hint: Предмет · лампа «ГК-20»
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1938–1940
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1938–1940
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10174913
+  nomer_predmeta: '10060963'
+  nomer_snimka: net
+  hranitel: Центральный музей связи имени А. С. Попова
+  podlinnik:
+    gde: Центральный музей связи имени А. С. Попова
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10174913
+  svyashchennoe: false
+  podpis_chto: Генераторная лампа «ГК-20»
+  podpis_gde: Россия
+  podpis_kogda: 1938–1940
+  pometka_prav: citirovanie-1274
 sources:
 - href: https://www.computer-museum.ru/connect/nnovlab.htm
   title: «Нижегородская радиолаборатория» — Виртуальный компьютерный музей
@@ -800,7 +792,7 @@ score:
     - Гость дня
 return:
   q: Во сколько раз станция в Москве была мощнее станции в Нью-Йорке?
-  a: В Нью-Йорке — 1,5 киловатта, в Париже и под Берлином — по 5. В Москве — 12
+  a: 'В восемь раз: 12 киловатт против 1,5'
   src: Музей НРЛ ННГУ, nrl.unn.ru
 proof:
   status: found
