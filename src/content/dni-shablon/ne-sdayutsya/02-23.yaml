@@ -659,9 +659,9 @@ sources:
   note: к фактам 15
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 24 февраля (запись готовится)
-  hook: Следующий день музея.
+  href: /muzei/ne-sdayutsya/den/02-24/
+  title: 24 февраля — Николай Островский
+  hook: Слепой и парализованный, он написал книгу, на которой выросло поколение.
   main: true
 - lbl: Весь музей
   href: index.html
@@ -681,11 +681,11 @@ chrome:
     title: Подлодка К-278 «Комсомолец» — Музей стойкости и подвига «Русские не сдаются»
     text: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
   prev:
-    href: index.html
-    title: 22 февраля
+    href: /muzei/ne-sdayutsya/den/02-22/
+    title: 22 февраля · Мать Мария (Скобцова)
   next:
-    href: index.html
-    title: 24 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-24/
+    title: 24 февраля · Николай Островский
   all:
     href: index.html
     label: Все подвиги
