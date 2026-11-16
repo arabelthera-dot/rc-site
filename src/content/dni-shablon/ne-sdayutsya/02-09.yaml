@@ -264,43 +264,6 @@ fakty:
     dlya_voprosa: true
     otvet: Л
     otvet_edinstvennyj: true
-    kadr:
-      src: /muzei/ne-sdayutsya/img/02-09-goskatalog-45344992.jpg
-      alt: 'Разворот записной книжки: на правой странице карандашом крупно написано «Дядя Вася умер в 13 апр 2 ч ночь 1942 г», сбоку — алфавитные вкладки.'
-      data_source: https://goskatalog.ru/portal/#/collections?id=45344992
-      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-      podpis: Записная книжка Тани Савичевой, разворот с записью о дяде Васе. Декабрь 1941 — май 1942
-      credit: Государственный музей истории Санкт-Петербурга, Госкаталог № 45098114
-      width: 713
-      height: 562
-      vid: foto
-      glavnoe_na_kartinke:
-        x: 0.45
-        y: 0.05
-        w: 0.5
-        h: 0.9
-      prava:
-        avtor: автор не указан
-        god_sozdaniya: декабрь 1941 — май 1942 года
-        god_smerti_avtora: net
-        god_reabilitacii: net
-        anonim: true
-        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 45098114
-        sdelano_mashinoj: false
-        otkuda: Госкаталог, № предмета 45098114
-        baza: goskatalog
-        ssylka: https://goskatalog.ru/portal/#/collections?id=45344992
-      nomer_predmeta: Госкаталог № 45098114
-      nomer_snimka: goskatalog id 45344992
-      hranitel: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
-      podpis_chto: Дневниковые записи Тани Савичевой в записной книжке с алфавитом
-      podpis_gde: Ленинград
-      podpis_kogda: декабрь 1941 — май 1942 года
-      simvolika_proverena: true
-      podlinnik:
-        gde: Санкт-Петербургское государственное бюджетное учреждение культуры «Государственный музей истории Санкт-Петербурга»
-        otkuda: Госкаталог музейного фонда РФ, № 45098114
-      svyashchennoe: false
   - id: ns-0209-butylki
     n: 8
     summary: Одиннадцатилетняя Таня лазила по чердакам и собирала бутылки для зажигательной смеси.
@@ -710,9 +673,9 @@ sources:
   note: к фактам 15
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 10 февраля (запись готовится)
-  hook: Стойкость и подвиг день за днём.
+  href: /muzei/ne-sdayutsya/den/02-10/
+  title: 10 февраля — Александр Прохоренко
+  hook: Окружённый сотней боевиков, по-русски услышал «сдавайся» — и вызвал авиаудар на свои координаты
   main: true
 - lbl: Весь музей
   href: index.html
@@ -724,11 +687,11 @@ chrome:
     title: Таня Савичева — Музей стойкости и подвига «Русские не сдаются»
     text: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
   prev:
-    href: index.html
-    title: 8 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-08/
+    title: 8 февраля · Станислав Петров
   next:
-    href: index.html
-    title: 10 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-10/
+    title: 10 февраля · Александр Прохоренко
   all:
     href: index.html
     label: Все подвиги
