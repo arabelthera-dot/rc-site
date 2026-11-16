@@ -1,11 +1,11 @@
 {
   "title": "История в 47 секунд",
   "intro": "Двенадцати киловатт в эфире не было ни у кого в мире: Москву слушала Европа, а лампы для станции точили руками",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43715081211) из сценария days/24feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43903950067) из сценария days/24feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern.mp4",
     "local": "muzei/izobreteniya/video/day-24feb-komintern.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 46.8,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 46.8,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-poster.jpg",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
