@@ -1,0 +1,33 @@
+{
+  "title": "История в 49 секунд",
+  "intro": "Слепой и парализованный, он написал книгу, на которой выросло поколение",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43862012059) из сценария days/ns24feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.3,
+    "mb": 13.3
+  },
+  "vertical": {
+    "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.3,
+    "mb": 11.5
+  },
+  "poster": {
+    "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-9x16-poster.jpg",
+    "v": 1
+  }
+}
