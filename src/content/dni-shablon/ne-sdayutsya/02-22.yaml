@@ -696,9 +696,9 @@ sources:
   note: к фактам 11, 13, 14, 15
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 23 февраля (запись готовится)
-  hook: Следующий день музея.
+  href: /muzei/ne-sdayutsya/den/02-23/
+  title: 23 февраля — Подлодка К-278 «Комсомолец»
+  hook: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
   main: true
 - lbl: Весь музей
   href: index.html
@@ -718,11 +718,11 @@ chrome:
     title: Мать Мария (Скобцова) — Музей стойкости и подвига «Русские не сдаются»
     text: В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой
   prev:
-    href: index.html
-    title: 21 февраля
+    href: /muzei/ne-sdayutsya/den/02-21/
+    title: 21 февраля · Василиса Кожина
   next:
-    href: index.html
-    title: 23 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-23/
+    title: 23 февраля · Подлодка К-278 «Комсомолец»
   all:
     href: index.html
     label: Все подвиги
