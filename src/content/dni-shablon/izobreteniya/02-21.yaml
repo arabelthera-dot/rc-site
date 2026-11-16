@@ -251,7 +251,6 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    kadr: *id001
     src: 'Источник: журнал «КлеверЛаб», «Николай Гамалея: микробиолог, победивший эпидемии»'
     otryvok: В 85 лет Гамалея заразил себя туберкулёзом, чтобы проверить своё лекарство
     stranica: '«Николай Гамалея: микробиолог, победивший эпидемии» — журнал «КлеверЛаб»'
@@ -650,9 +649,6 @@ result:
   zvanie: '0 / 100 · звание: Гость дня'
   note: Баллы — за игру, ответы и викторину.
 figures:
-- *id001
-- *id002
-- *id003
 - src: /muzei/izobreteniya/img/02-21-goskatalog-29377580.jpg
   glavnoe_na_kartinke:
     x: 0.1
@@ -727,7 +723,6 @@ figures:
   podpis_gde: Самара
   podpis_kogda: '1887'
   pometka_prav: citirovanie-1274
-- *id004
 - src: /muzei/izobreteniya/img/02-21-goskatalog-31993224.jpg
   glavnoe_na_kartinke:
     x: 0.1
