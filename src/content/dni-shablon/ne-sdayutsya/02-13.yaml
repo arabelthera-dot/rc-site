@@ -581,42 +581,42 @@ kalendar:
   h2: Выбери любой день месяца
   intro: 'Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.'
 figures:
-  - src: /muzei/ne-sdayutsya/img/02-13-goskatalog-31681949.jpg
-    alt: 'Фотокопия рукописного текста на разорванных обрывках бумаги, сложенных вместе.'
-    data_source: 'https://goskatalog.ru/portal/#/collections?id=31681949'
+  - src: /muzei/ne-sdayutsya/img/02-13-goskatalog-7180313.jpg
+    alt: 'Чёрно-белый портрет: молодой командир с зачёсанными назад волосами, в гимнастёрке с петлицами; сверху подпись чернилами.'
+    data_source: 'https://goskatalog.ru/portal/#/collections?id=7180313'
     license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-    podpis: Фотокопия приказа № 1 по гарнизону Брестской крепости. Хранится в Магаданском областном краеведческом музее.
-    credit: 'Магаданский областной краеведческий музей, Госкаталог № 6984201'
-    width: 799
-    height: 553
-    vid: dokument
+    podpis: Фотокопия портрета майора Петра Михайловича Гаврилова, командира 44-го стрелкового полка. Хранится в Магаданском областном краеведческом музее.
+    credit: 'Магаданский областной краеведческий музей, Госкаталог № 6984204'
+    width: 543
+    height: 800
+    vid: foto
     glavnoe_na_kartinke:
-      x: 0.05
+      x: 0.1
       'y': 0.05
-      w: 0.9
+      w: 0.8
       h: 0.9
     nomer_predmeta: net
-    nomer_snimka: '31681949'
+    nomer_snimka: '7180313'
     hranitel: 'Магаданский областной краеведческий музей, Магадан'
-    podpis_chto: Фотокопия. Приказ № 1 по гарнизону Брестской крепости
+    podpis_chto: Фотокопия. Майор П. М. Гаврилов, командир 44-го стрелкового полка
     podpis_gde: место создания не указано
-    podpis_kogda: дата не указана
+    podpis_kogda: 1941 год
     simvolika_proverena: true
     podlinnik:
       gde: 'Магаданский областной краеведческий музей, Магадан'
-      otkuda: 'https://goskatalog.ru/portal/#/collections?id=31681949'
+      otkuda: 'https://goskatalog.ru/portal/#/collections?id=7180313'
     svyashchennoe: false
     prava:
       avtor: автор не указан
-      god_sozdaniya: дата не указана
+      god_sozdaniya: '1941'
       god_smerti_avtora: net
       god_reabilitacii: net
       anonim: true
-      pervaya_publikaciya: 'Госкаталог Музейного фонда РФ, № 6984201'
+      pervaya_publikaciya: 'Госкаталог Музейного фонда РФ, № 6984204'
       sdelano_mashinoj: false
-      otkuda: 'Госкаталог, № 6984201'
+      otkuda: 'Госкаталог, № 6984204'
       baza: goskatalog
-      ssylka: 'https://goskatalog.ru/portal/#/collections?id=31681949'
+      ssylka: 'https://goskatalog.ru/portal/#/collections?id=7180313'
   - src: /muzei/ne-sdayutsya/img/02-13-goskatalog-26988375.jpg
     alt: 'Чёрно-белый снимок: в зале с плакатом на стене за столом с цветами в горшках сидят двое, справа стоит пожилой мужчина в тёмном костюме и говорит.'
     data_source: 'https://goskatalog.ru/portal/#/collections?id=26988375'
@@ -728,9 +728,9 @@ sources:
     note: к факту 10
 kuda:
   - lbl: Следующий день
-    href: index.html
-    title: 14 февраля (запись готовится)
-    hook: Следующий день музея.
+    href: /muzei/ne-sdayutsya/den/02-14/
+    title: 14 февраля — Пожарные Чернобыля
+    hook: Прибор показал 3,6 рентгена в час, а на крыше было до 15 000
     main: true
   - lbl: Весь музей
     href: index.html
@@ -750,11 +750,11 @@ chrome:
     title: Пётр Гаврилов — Музей стойкости и подвига «Русские не сдаются»
     text: 'Немцы дали час: выдайте майора Гаврилова. Форт ответил: драться до конца'
   prev:
-    href: index.html
-    title: 12 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-12/
+    title: 12 февраля · Вера Волошина
   next:
-    href: index.html
-    title: 14 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-14/
+    title: 14 февраля · Пожарные Чернобыля
   all:
     href: index.html
     label: Все подвиги
