@@ -1,5 +1,6 @@
 muzei: izobreteniya
 key: 02-08
+adres: den
 pokazan_sergeyu:
   data: '2026-11-14'
 nomer_dnya: izob-0208-mendeleev
@@ -218,6 +219,17 @@ audioguide:
   - 'Менделеев предсказал вес экасилиция: семьдесят два. Через пятнадцать лет германий взвесили — семьдесят две целых тридцать две сотых. Немец Винклер решил, что нашёл родню сурьмы, — спор кончился признанием: это экасилиций. Германий хотели назвать «нептуний»: как планету Нептун, найденную сперва на бумаге. Бунзен, создатель спектроскопа, сравнил таблицу с «биржевым листком» — его прибор её и доказал.'
   - 'Клетку экамарганца не смогла заполнить природа — элемент пришлось сделать в циклотроне. Экамарганец «открывали» в Японии и Германии, давали имена — и всё оказалось ошибкой. Тысяча девятьсот пятьдесят пятый, холодная война — а американцы назвали сто первый элемент в честь русского Менделеева. Менделевий нашли всего по семнадцати атомам — и назвали в честь того, кто таблицу придумал. Сегодня в таблице сто восемнадцать элементов.'
   note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+video:
+  h2: История в 42 секунды
+  klyuch: izobreteniya/08feb-mendeleev
+  format: horizontal
+  pole: izobreteniya/08feb-mendeleev:horizontal.sec
+  suffix: сек
+  badge: 42 сек
+  intro: 1869 год. Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими.
+  poster: video/day-08feb-mendeleev-poster.jpg?v=2
+  mp4: video/day-08feb-mendeleev.mp4?v=2
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43676922319) из сценария days/08feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: История открытия
   h2: Как пустые клетки оказались правдой
@@ -242,6 +254,44 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-08-goskatalog-26901692.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.3
+        w: 0.8
+        h: 0.4
+      width: 800
+      height: 350
+      alt: Стеклянный пикнометр со шкалой и тремя трубками в бархатном ложе футляра
+      data_source: https://goskatalog.ru/portal/#/collections?id=26901692
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета · Госкаталог
+      podpis: Пикнометр — прибор для измерения плотности — конструкции Д. И. Менделеева, 1859. Хранит Музей-архив Д. И. Менделеева СПбГУ.
+      credit: 'Хранится: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета. Госкаталог музейного фонда РФ, № 26901692.'
+      hint: Прибор · пикнометр Менделеева
+      vid: predmet
+      prava:
+        avtor: Д. И. Менделеев (автор идеи), мастер Гейслер
+        god_sozdaniya: '1859'
+        god_smerti_avtora: 1907
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1859'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=26901692
+      nomer_predmeta: '26901692'
+      nomer_snimka: net
+      hranitel: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
+      podlinnik:
+        gde: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
+        otkuda: https://goskatalog.ru/portal/#/collections?id=26901692
+      svyashchennoe: false
+      podpis_chto: Пикнометр конструкции Д. И. Менделеева
+      podpis_gde: Гейдельберг
+      podpis_kogda: '1859'
+      pometka_prav: citirovanie-1274
     src: 'Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — hij.ru'
     otryvok: Не держа в руках ни крупинки галлия, Менделеев поправил его первооткрывателя — и оказался прав
     stranica: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6
@@ -324,6 +374,44 @@ fakty:
     dlya_voprosa: false
   - n: 5
     sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-08-goskatalog-46905582.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.15
+        w: 0.8
+        h: 0.7
+      width: 800
+      height: 338
+      alt: Печатная таблица элементов в рамке с пустыми клетками и пометками чернилами
+      data_source: https://goskatalog.ru/portal/#/collections?id=46905582
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета · Госкаталог
+      podpis: Таблица «Естественная система элементов Д. Менделеева» со свободными местами, 10 февраля 1871. Хранит Музей-архив Д. И. Менделеева СПбГУ.
+      credit: 'Хранится: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета. Госкаталог музейного фонда РФ, № 46905582.'
+      hint: Таблица · второй вариант, 1871
+      vid: dokument
+      prava:
+        avtor: Менделеев Дмитрий Иванович
+        god_sozdaniya: '10 февраля 1871 г.'
+        god_smerti_avtora: 1907
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1871'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=46905582
+      nomer_predmeta: '46905582'
+      nomer_snimka: net
+      hranitel: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
+      podlinnik:
+        gde: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
+        otkuda: https://goskatalog.ru/portal/#/collections?id=46905582
+      svyashchennoe: false
+      podpis_chto: Таблица «Естественная система элементов Д. Менделеева»
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: '1871'
+      pometka_prav: citirovanie-1274
     src: 'Источник: khimiya.narod.ru, статья «Бериллий» — khimiya.narod.ru'
     otryvok: Все химики писали вес бериллия 13,5. Менделеев зачеркнул и поставил 9 — и мир исправился
     stranica: khimiya.narod.ru, статья «Бериллий»
@@ -336,6 +424,44 @@ fakty:
     otvet_edinstvennyj: true
   - n: 6
     sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-08-goskatalog-11283048.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.15
+        w: 0.9
+        h: 0.7
+      width: 800
+      height: 437
+      alt: Латунная трубка карманного спектроскопа рядом с чёрным кожаным футляром и крышкой
+      data_source: https://goskatalog.ru/portal/#/collections?id=11283048
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный Эрмитаж · Госкаталог
+      podpis: Карманный спектроскоп Броунинга в футляре, конец XIX — начало XX века. Хранит Государственный Эрмитаж.
+      credit: 'Хранится: Государственный Эрмитаж. Госкаталог музейного фонда РФ, № 11283048.'
+      hint: Прибор · карманный спектроскоп
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 'кон. XIX — нач. XX в.'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: net
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11283048
+      nomer_predmeta: '11283048'
+      nomer_snimka: net
+      hranitel: Государственный Эрмитаж
+      podlinnik:
+        gde: Государственный Эрмитаж
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11283048
+      svyashchennoe: false
+      podpis_chto: Карманный спектроскоп Броунинга в футляре
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: 'конец XIX — начало XX века'
+      pometka_prav: citirovanie-1274
     src: 'Источник: химфак МГУ, «Галлий: история открытия» — chem.msu.ru'
     otryvok: 'Менделеев предсказал даже прибор: экаалюминий найдут спектроскопом. Так его и нашли'
     stranica: 'химфак МГУ, «Галлий: история открытия»'
@@ -416,6 +542,44 @@ fakty:
     otvet_edinstvennyj: true
   - n: 13
     sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-08-goskatalog-21765961.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.05
+        w: 0.7
+        h: 0.8
+      width: 600
+      height: 800
+      alt: Пожелтевший титульный лист книги «Основы химии» Менделеева со штампами
+      data_source: https://goskatalog.ru/portal/#/collections?id=21765961
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета · Госкаталог
+      podpis: Книга Д. И. Менделеева «Основы химии», 3-е издание, Санкт-Петербург, 1877. Хранит Музей-архив Д. И. Менделеева СПбГУ.
+      credit: 'Хранится: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета. Госкаталог музейного фонда РФ, № 21765961.'
+      hint: Книга · «Основы химии», 1877
+      vid: dokument
+      prava:
+        avtor: Менделеев Дмитрий Иванович
+        god_sozdaniya: '1877'
+        god_smerti_avtora: 1907
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1877'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21765961
+      nomer_predmeta: '21765961'
+      nomer_snimka: net
+      hranitel: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
+      podlinnik:
+        gde: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21765961
+      svyashchennoe: false
+      podpis_chto: Книга Д. И. Менделеева «Основы химии», 3-е издание
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: '1877'
+      pometka_prav: citirovanie-1274
     src: 'Источник: «Популярная библиотека химических элементов», n-t.ru — n-t.ru'
     otryvok: 'О законе века объявил не автор: Менделеев в тот день уехал проверять сыроварни'
     stranica: «Популярная библиотека химических элементов», n-t.ru
@@ -426,6 +590,44 @@ fakty:
     dlya_voprosa: false
   - n: 14
     sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-08-goskatalog-12708719.jpg
+      glavnoe_na_kartinke:
+        x: 0.3
+        y: 0.6
+        w: 0.25
+        h: 0.35
+      width: 800
+      height: 478
+      alt: Маленький металлический цилиндр транзистора с тремя тонкими проволочными выводами
+      data_source: https://goskatalog.ru/portal/#/collections?id=12708719
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Транзистор из германия, сделанный в лаборатории полупроводников Физического института АН СССР, 1954. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 12708719.'
+      hint: Предмет · германиевый транзистор, 1954
+      vid: predmet
+      prava:
+        avtor: автор не указан; лаборатория полупроводников ФИАН
+        god_sozdaniya: '1954'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1954'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=12708719
+      nomer_predmeta: '12708719'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=12708719
+      svyashchennoe: false
+      podpis_chto: Транзистор из германия, лаборатория полупроводников ФИАН
+      podpis_gde: Москва
+      podpis_kogda: '1954'
+      pometka_prav: citirovanie-1274
     src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
     otryvok: 'Немец Винклер решил, что нашёл родню сурьмы, — спор кончился признанием: это экасилиций'
     stranica: 'химфак МГУ, «Германий: история открытия»'
@@ -599,79 +801,42 @@ result:
   zvanie: '0 / 100 · звание: Гость дня'
   note: Баллы — за игру, ответы и викторину.
 figures:
-- src: /muzei/izobreteniya/img/02-08-goskatalog-8366315.jpg
+- src: /muzei/izobreteniya/img/02-08-goskatalog-23904080.jpg
   glavnoe_na_kartinke:
-    x: 0.2
-    y: 0.2
-    w: 0.6
-    h: 0.6
-  width: 800
-  height: 561
-  alt: 'Цветная таблица элементов: клетки с символами и весами, справа портрет Менделеева'
-  data_source: https://goskatalog.ru/portal/#/collections?id=8366315
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей политической истории России · Госкаталог
-  podpis: Таблица «Периодическая система элементов Д. И. Менделеева», изданная к X Менделеевскому съезду, 1969. Хранит Государственный музей политической истории России.
-  credit: 'Хранится: Государственный музей политической истории России. Госкаталог музейного фонда РФ, № 8366315.'
-  hint: Таблица · издание 1969 года
-  vid: plakat
-  prava:
-    avtor: автор не указан
-    god_sozdaniya: 1969 г.
-    god_smerti_avtora: net
-    god_reabilitacii: net
-    anonim: true
-    pervaya_publikaciya: '1969'
-    sdelano_mashinoj: false
-    otkuda: Госкаталог музейного фонда РФ
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=8366315
-  nomer_predmeta: '8366315'
-  nomer_snimka: net
-  hranitel: Государственный музей политической истории России
-  podlinnik:
-    gde: Государственный музей политической истории России
-    otkuda: https://goskatalog.ru/portal/#/collections?id=8366315
-  svyashchennoe: false
-  podpis_chto: Таблица «Периодическая система элементов Д. И. Менделеева», изданная к X Менделеевскому съезду
-  podpis_gde: Санкт-Петербург
-  podpis_kogda: '1969'
-  pometka_prav: citirovanie-1274
-- src: /muzei/izobreteniya/img/02-08-goskatalog-26067347.jpg
-  glavnoe_na_kartinke:
-    x: 0.2
-    y: 0.3
-    w: 0.6
-    h: 0.5
-  width: 669
+    x: 0.15
+    y: 0.15
+    w: 0.75
+    h: 0.65
+  width: 615
   height: 800
-  alt: 'Обложка брошюры: Менделеев за столом пишет пером среди книжных полок'
-  data_source: https://goskatalog.ru/portal/#/collections?id=26067347
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-заповедник Д. И. Менделеева и А. А. Блока · Госкаталог
-  podpis: Брошюра «Таблица Менделеева», издательство Ленинградского университета, 1953. Хранит Музей-заповедник Д. И. Менделеева и А. А. Блока.
-  credit: 'Хранится: Музей-заповедник Д. И. Менделеева и А. А. Блока. Госкаталог музейного фонда РФ, № 26067347.'
-  hint: Брошюра · Менделеев за работой
-  vid: dokument
+  alt: Латунные весы с двумя чашками под стеклянным колпаком в деревянном футляре на ножках
+  data_source: https://goskatalog.ru/portal/#/collections?id=23904080
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета · Госкаталог
+  podpis: «Малые весы» конструкции Д. И. Менделеева, мастер Саллерон, 1874. Хранит Музей-архив Д. И. Менделеева СПбГУ.
+  credit: 'Хранится: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета. Госкаталог музейного фонда РФ, № 23904080.'
+  hint: Прибор · весы Менделеева
+  vid: predmet
   prava:
-    avtor: автор не указан
-    god_sozdaniya: '1953'
-    god_smerti_avtora: net
+    avtor: Д. И. Менделеев (конструкция), мастер Саллерон
+    god_sozdaniya: '1874'
+    god_smerti_avtora: 1907
     god_reabilitacii: net
-    anonim: true
-    pervaya_publikaciya: '1953'
+    anonim: false
+    pervaya_publikaciya: '1874'
     sdelano_mashinoj: false
     otkuda: Госкаталог музейного фонда РФ
     baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=26067347
-  nomer_predmeta: '26067347'
+    ssylka: https://goskatalog.ru/portal/#/collections?id=23904080
+  nomer_predmeta: '23904080'
   nomer_snimka: net
-  hranitel: Музей-заповедник Д. И. Менделеева и А. А. Блока
+  hranitel: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
   podlinnik:
-    gde: Музей-заповедник Д. И. Менделеева и А. А. Блока
-    otkuda: https://goskatalog.ru/portal/#/collections?id=26067347
+    gde: Музей-архив Д. И. Менделеева Санкт-Петербургского государственного университета
+    otkuda: https://goskatalog.ru/portal/#/collections?id=23904080
   svyashchennoe: false
-  podpis_chto: Брошюра «Таблица Менделеева», издательство Ленинградского университета
-  podpis_gde: Солнечногорск, Боблово
-  podpis_kogda: '1953'
+  podpis_chto: «Малые весы» конструкции Д. И. Менделеева
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: '1874'
   pometka_prav: citirovanie-1274
 sources:
 - href: https://hij.ru/read/27523/
