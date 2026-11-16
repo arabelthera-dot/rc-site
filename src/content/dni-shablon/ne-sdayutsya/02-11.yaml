@@ -3,6 +3,7 @@
 
 muzei: ne-sdayutsya
 key: 02-11
+adres: den
 pokazan_sergeyu:
   data: 2026-11-14
 head:
@@ -95,6 +96,17 @@ daynav:
     label: Викторина
   - id: calendar
     label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/11feb-sibiryakov
+  format: horizontal
+  pole: nesdayutsya/11feb-sibiryakov:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  intro: Ледокол против крейсера — бой приняли и флаг не спустили
+  poster: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov-poster.jpg?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov.mp4?v=1
+  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43596426956) из сценария days/ns11feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Ледокол «Сибиряков»
