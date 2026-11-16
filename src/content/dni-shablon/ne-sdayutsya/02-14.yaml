@@ -178,7 +178,7 @@ fakty:
   - id: ns-0214-520-ber
     summary: Майор получил 520 бэр, практически смертельную дозу, и выжил
     det:
-    - Майор Леонид Телятников руководил тушением на крыше и получил дозу облучения в 520 бэр. Такая доза считается практически смертельной. Майор выжил, стал Героем Советского Союза и генералом.
+    - Майор Леонид Телятников руководил тушением на крыше и получил дозу облучения в 520 бэр. Это практически смертельная доза. Майор выжил, стал Героем Советского Союза и генералом.
     src: 'Источник: ГУ МЧС России по Москве. Герои Чернобыля: генерал Л. П. Телятников (перепечатка «Вестник Урала») — https://weural.info/materials/geroi-chernobylya-general-l-p-telyatnikov/'
     stranica: статья
     href: https://weural.info/materials/geroi-chernobylya-general-l-p-telyatnikov/
@@ -645,10 +645,10 @@ sources:
   note: к фактам 1, 2, 3, 7, 9, 11, 13, 14, 15
 - href: https://xn--b1ae4ad.xn--p1ai/enc/chernobylskaya-katastrofa
   title: 'ВДПО. «Энциклопедия пожарной безопасности»: Чернобыльская катастрофа'
-  note: к фактам 3, 8
+  note: к факту 8
 - href: https://dan-news.ru/stories/kak-prostye-sovetskie-parni-kibenok-i-pravik-stali-gerojami-chernobylja-vspominaet-doneckij-pozharnyj/
   title: ДАН. Как простые советские парни Кибенок и Правик стали героями Чернобыля
-  note: к фактам 10, 11
+  note: к факту 10
 - href: https://weural.info/materials/geroi-chernobylya-general-l-p-telyatnikov/
   title: 'ГУ МЧС России по Москве. Герои Чернобыля: генерал Л. П. Телятников (перепечатка «Вестник Урала»)'
   note: к факту 5
@@ -660,9 +660,9 @@ sources:
   note: к фактам 4, 12
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 15 февраля (запись готовится)
-  hook: Следующий день музея.
+  href: /muzei/ne-sdayutsya/den/02-15/
+  title: 15 февраля — Ольга Берггольц
+  hook: Немцы внесли её в список на расстрел сразу после взятия города — за стихи по радио.
   main: true
 - lbl: Весь музей
   href: index.html
@@ -682,11 +682,11 @@ chrome:
     title: Пожарные Чернобыля — Музей стойкости и подвига «Русские не сдаются»
     text: Прибор показал 3,6 рентгена в час, а на крыше было до 15 000
   prev:
-    href: index.html
+    href: /muzei/ne-sdayutsya/den/02-13/
     title: 13 февраля · Пётр Гаврилов
   next:
-    href: index.html
-    title: 15 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-15/
+    title: 15 февраля · Ольга Берггольц
   all:
     href: index.html
     label: Все подвиги
