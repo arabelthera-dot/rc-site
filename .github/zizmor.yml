@@ -5,3 +5,6 @@ rules:
     ignore:
       - kanaly-novyy-den.yml:9
       - smoke.yml:11
+      # 16.11 (Р792): тот же шаблон — только свой репозиторий, код заявки не запускается
+      - adres-dnya.yml:21
+      - prevyu.yml:17
