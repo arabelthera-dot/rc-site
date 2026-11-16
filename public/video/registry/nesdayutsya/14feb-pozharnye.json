@@ -1,0 +1,33 @@
+{
+  "title": "История в 52 секунды",
+  "intro": "Прибор показал 3,6 рентгена в час, а на крыше было до 15 000",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43618399208) из сценария days/ns14feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/14feb-pozharnye/day-14feb-pozharnye.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-14feb-pozharnye.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 51.7,
+    "mb": 15.2
+  },
+  "vertical": {
+    "file": "nesdayutsya/14feb-pozharnye/day-14feb-pozharnye-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-14feb-pozharnye-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 51.7,
+    "mb": 15
+  },
+  "poster": {
+    "file": "nesdayutsya/14feb-pozharnye/day-14feb-pozharnye-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-14feb-pozharnye-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/14feb-pozharnye/day-14feb-pozharnye-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-14feb-pozharnye-9x16-poster.jpg",
+    "v": 1
+  }
+}
