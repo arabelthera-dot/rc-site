@@ -1,0 +1,33 @@
+{
+  "title": "История в 48 секунд",
+  "intro": "Английский шлем держал газ 25 секунд, противогаз Зелинского — 66 минут, и вышли по приказу",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43855431083) из сценария days/06feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/06feb-zelinskij/day-06feb-zelinskij.mp4",
+    "local": "muzei/izobreteniya/video/day-06feb-zelinskij.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 48.1,
+    "mb": 12
+  },
+  "vertical": {
+    "file": "izobreteniya/06feb-zelinskij/day-06feb-zelinskij-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-06feb-zelinskij-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 48.1,
+    "mb": 11.3
+  },
+  "poster": {
+    "file": "izobreteniya/06feb-zelinskij/day-06feb-zelinskij-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-06feb-zelinskij-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/06feb-zelinskij/day-06feb-zelinskij-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-06feb-zelinskij-9x16-poster.jpg",
+    "v": 1
+  }
+}
