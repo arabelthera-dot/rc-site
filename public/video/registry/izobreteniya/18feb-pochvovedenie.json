@@ -1,11 +1,11 @@
 {
   "title": "История в 50 секунд",
   "intro": "Докучаев доказал, что чернозём — живое тело со своей историей, и русский эталон почвы увезли в Париж",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43693807131) из сценария days/18feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43904740958) из сценария days/18feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/18feb-pochvovedenie/day-18feb-pochvovedenie.mp4",
     "local": "muzei/izobreteniya/video/day-18feb-pochvovedenie.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 49.7,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "izobreteniya/18feb-pochvovedenie/day-18feb-pochvovedenie-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-18feb-pochvovedenie-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 49.7,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "izobreteniya/18feb-pochvovedenie/day-18feb-pochvovedenie-poster.jpg",
     "local": "muzei/izobreteniya/video/day-18feb-pochvovedenie-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/18feb-pochvovedenie/day-18feb-pochvovedenie-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-18feb-pochvovedenie-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
