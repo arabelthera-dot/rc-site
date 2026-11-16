@@ -644,9 +644,9 @@ sources:
   note: к факту 12
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 20 февраля (запись готовится)
-  hook: Следующий день музея.
+  href: /muzei/ne-sdayutsya/den/02-20/
+  title: 20 февраля — Оборона Петропавловска-Камчатского
+  hook: Крошечный гарнизон отразил эскадру — десант сбросили с сопки
   main: true
 - lbl: Весь музей
   href: index.html
@@ -666,11 +666,11 @@ chrome:
     title: Взвод Широнина — Музей стойкости и подвига «Русские не сдаются»
     text: Переезд держали двое раненых — враг не знал, что взвода больше нет
   prev:
-    href: index.html
-    title: 18 февраля
+    href: /muzei/ne-sdayutsya/den/02-18/
+    title: 18 · Подольские курсанты
   next:
-    href: index.html
-    title: 20 февраля (запись готовится)
+    href: /muzei/ne-sdayutsya/den/02-20/
+    title: 20 · Оборона Петропавловска-Камчатского
   all:
     href: index.html
     label: Все подвиги
