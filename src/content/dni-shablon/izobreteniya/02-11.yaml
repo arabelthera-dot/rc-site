@@ -1,5 +1,6 @@
 muzei: izobreteniya
 key: 02-11
+adres: den
 pokazan_sergeyu:
   data: '2026-11-14'
 nomer_dnya: izob-0211-m5
@@ -724,6 +725,14 @@ figures:
   podpis_gde: Царское Село
   podpis_kogda: 3 октября 1917 года
   pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-11-goskatalog-91563887.jpg
+  alt: 'Кадр из музейного фонда: Модель летающей лодки М-5. 1914 г'
+  data_source: https://goskatalog.ru/portal/#/collections?id=69866241
+  license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
+  podpis: Модель летающей лодки М-5. 1914 г.
+  credit: 'Хранится: Филиал Федерального государственного бюджетного учреждения культуры "Государственный музей истории космонавтики имени К.Э. Циолковского" в городе Москве - "Научно-мемориальный музей профессора Н.Е. Жуковского". Госкаталог № 69592465'
+  width: 1280
+  height: 765
 sources:
 - href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
   title: «История.РФ», «Бомбардировка Зонгулдака»

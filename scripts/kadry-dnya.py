@@ -183,13 +183,14 @@ def kadr_metki():
 
 
 def dopisat_figures(tekst, novye):
-    """Дописать кадры в конец списка figures, не трогая остальной текст карточки."""
-    blok = ''.join('    ' + s if i else '  - ' + s for k in novye
-                   for i, s in enumerate(yaml.safe_dump(k, allow_unicode=True, sort_keys=False, width=10 ** 6).splitlines(True)))
+    """Дописать кадры в конец списка figures, не трогая остальной текст карточки; отступ — как у списка («- » с 0 или 2 пробелов)."""
     m = re.search(r'^figures:[ \t]*(\[\])?[ \t]*\n', tekst, re.M)
+    ots = '' if m and re.match(r'- ', tekst[m.end():]) else '  '
+    blok = ''.join(ots + '  ' + s if i else ots + '- ' + s for k in novye
+                   for i, s in enumerate(yaml.safe_dump(k, allow_unicode=True, sort_keys=False, width=10 ** 6).splitlines(True)))
     if not m:
         return tekst.rstrip('\n') + '\nfigures:\n' + blok
-    sled = re.compile(r'^\S', re.M).search(tekst, m.end())
+    sled = re.compile(r'^(?!- )\S' if not ots else r'^\S', re.M).search(tekst, m.end())
     konec = sled.start() if sled else len(tekst)
     return tekst[:m.start()] + 'figures:\n' + tekst[m.end():konec] + blok + tekst[konec:]
 
