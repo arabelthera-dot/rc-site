@@ -666,8 +666,8 @@ sources:
   note: к фактам 4, 5, 6, 7, 8, 10, 11, 13, 14
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: Зина Портнова
+  href: /muzei/ne-sdayutsya/den/02-16/
+  title: 16 февраля — Зина Портнова
   hook: "Немцы заставили её саму есть отравленный суп, и она ела, не моргнув"
   main: true
 - lbl: Весь музей
@@ -688,10 +688,10 @@ chrome:
     title: Ольга Берггольц — Музей стойкости и подвига «Русские не сдаются»
     text: Немцы внесли её в список на расстрел сразу после взятия города — за стихи по радио
   prev:
-    href: index.html
+    href: /muzei/ne-sdayutsya/den/02-14/
     title: 14 февраля · Пожарные Чернобыля
   next:
-    href: index.html
+    href: /muzei/ne-sdayutsya/den/02-16/
     title: 16 февраля · Зина Портнова
   all:
     href: index.html
