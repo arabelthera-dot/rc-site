@@ -1,33 +1,33 @@
 {
-  "title": "История в 50 секунд",
+  "title": "История в 45 секунд",
   "intro": "Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43609694109) из сценария days/ns12feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43904543728) из сценария days/ns12feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina.mp4",
     "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 49.9,
-    "mb": 14.6
+    "sec": 45.4,
+    "mb": 13.8
   },
   "vertical": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 49.9,
-    "mb": 14.1
+    "sec": 45.4,
+    "mb": 13.3
   },
   "poster": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

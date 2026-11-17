@@ -1,20 +1,20 @@
 {
   "title": "История в 54 секунды",
   "intro": "83-летний крестьянин повторил Сусанина — вывел врага под огонь",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43863866549) из сценария days/ns06feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43886702803) из сценария days/ns06feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin.mp4",
     "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 53.6,
-    "mb": 14.7
+    "mb": 14.6
   },
   "vertical": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 53.6,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }

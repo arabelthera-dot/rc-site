@@ -1,11 +1,11 @@
 {
   "title": "История в 48 секунд",
   "intro": "Журавский проверял мост смычком: у опор проволоки модели пели выше — значит, тянут сильнее",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43722156907) из сценария days/28feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43906690106) из сценария days/28feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/28feb-zhuravskij/day-28feb-zhuravskij.mp4",
     "local": "muzei/izobreteniya/video/day-28feb-zhuravskij.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 48.3,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "izobreteniya/28feb-zhuravskij/day-28feb-zhuravskij-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-28feb-zhuravskij-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 48.3,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "izobreteniya/28feb-zhuravskij/day-28feb-zhuravskij-poster.jpg",
     "local": "muzei/izobreteniya/video/day-28feb-zhuravskij-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/28feb-zhuravskij/day-28feb-zhuravskij-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-28feb-zhuravskij-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

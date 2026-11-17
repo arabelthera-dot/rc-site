@@ -1,33 +1,33 @@
 {
-  "title": "История в 39 секунд",
+  "title": "История в 50 секунд",
   "intro": "Хирург-архиепископ: в ссылках продолжал оперировать и не отрёкся",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43720237558) из сценария days/ns26feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43906322475) из сценария days/ns26feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka.mp4",
     "local": "muzei/ne-sdayutsya/video/day-26feb-luka.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 38.7,
-    "mb": 8.7
+    "sec": 49.7,
+    "mb": 12.4
   },
   "vertical": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-26feb-luka-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 38.7,
-    "mb": 7.4
+    "sec": 49.7,
+    "mb": 10.9
   },
   "poster": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-26feb-luka-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-26feb-luka-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
