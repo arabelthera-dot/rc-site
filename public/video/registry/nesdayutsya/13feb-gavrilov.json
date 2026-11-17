@@ -1,33 +1,33 @@
 {
   "title": "История в 53 секунды",
   "intro": "Немцы дали час на выдачу майора Гаврилова, а форт ответил драться до конца.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43606776427) из сценария days/ns13feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/13feb-gavrilov/day-13feb-gavrilov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-13feb-gavrilov.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 52.9,
-    "mb": 14.8
+    "sec": 52.8,
+    "mb": 15.1
   },
   "vertical": {
     "file": "nesdayutsya/13feb-gavrilov/day-13feb-gavrilov-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-13feb-gavrilov-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 52.9,
-    "mb": 14.6
+    "sec": 52.8,
+    "mb": 14.8
   },
   "poster": {
     "file": "nesdayutsya/13feb-gavrilov/day-13feb-gavrilov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-13feb-gavrilov-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/13feb-gavrilov/day-13feb-gavrilov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-13feb-gavrilov-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

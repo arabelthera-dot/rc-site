@@ -1,20 +1,20 @@
 {
   "title": "История в 47 секунд",
   "intro": "Партизанка под пытками не выдала товарищей",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43723546432) из сценария days/ns28feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina.mp4",
     "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 46.5,
-    "mb": 13.8
+    "mb": 13.7
   },
   "vertical": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 46.5,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

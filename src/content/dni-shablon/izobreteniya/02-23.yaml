@@ -850,4 +850,4 @@ video:
   intro: Как «Катюшу» проверили на полигоне и как она дала первый залп.
   poster: video/day-23feb-katyusha-poster.jpg?v=1
   mp4: video/day-23feb-katyusha.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/23feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.

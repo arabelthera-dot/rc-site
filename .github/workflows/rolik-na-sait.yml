@@ -3,6 +3,8 @@
 # здесь машина по сигналу rc-rolik (repository_dispatch rolik-gotov, Р737 п.15) и для страховки раз в час забирает новые выпуски (scripts/rolik-na-sait.mjs spisok), на каждый — своя ветка
 # avto/rolik-<тег>, файлы в public/muzei/<музей>/ и запись реестра public/video/registry/<реестр>/<imya>.json,
 # заявка (автослияние — только у расписания). Руками mp4 и mp3 на сайт никто не носит. Одобрение ждущих проверок — как glazami-hrapovik.
+# Ролик и гид одного дня — одна заявка (Р790 п.6): spisok даёт строку «<ветка> <тег>…» на день; есть открытая заявка
+# этого дня — новый выпуск дописывается в её ветку (обычный push), ссылка на выпуск — в тело; одна проверка вместо двух.
 # Как в мире: последний шаг конвейера открывает заявку с результатом (peter-evans/create-pull-request, gh pr create).
 # Выпуски rc-rolik открытые — ключ не нужен; пишет свой GITHUB_TOKEN. Выпуск, чья заявка закрыта без слияния, не повторяется.
 # Брак выпуска (нет файла, не mp4, нет длительности) — заявки нет, прогон красный (r544). Образцы брака — пререлизы rc-rolik,
@@ -63,29 +65,48 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           # брак выпуска (нет файла, не mp4, чужой музей) — прогон красный в конце, не молча (r544)
           brak=0
-          if [ -n "$TEG" ]; then tegi="$TEG"; else tegi=$(node scripts/rolik-na-sait.mjs spisok) || brak=1; fi
-          [ -n "$tegi" ] || { echo "Новых выпусков нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit "$brak"; }
-          for teg in $tegi; do
-            VETKA="avto/rolik-$teg"
-            git switch -q --detach origin/main && git sparse-checkout reapply
-            git switch -q -C "$VETKA"
-            vyvod=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился — на сайт не идёт"; echo "- $teg — брак, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; continue; }
-            git add --sparse public/
-            git diff --cached --quiet && { echo "$teg: на сайте уже то же самое"; continue; }
-            pervaya=$(printf '%s\n' "$vyvod" | head -1)
-            git commit -q -m "[avto] $pervaya ($teg)"
-            git push -q -f origin "$VETKA"
-            telo="Выпуск облака на сайт (r538): https://github.com/arabelthera-dot/rc-rolik/releases/tag/$teg
-
-          \`\`\`
-          $vyvod
-          \`\`\`
-          Заявку открыла машина .github/workflows/rolik-na-sait.yml; файлы и запись реестра — scripts/rolik-na-sait.mjs. Руками не правится: новый ролик — новый выпуск в rc-rolik."
+          if [ -n "$TEG" ]; then spisok="avto/rolik-$TEG $TEG"; else spisok=$(node scripts/rolik-na-sait.mjs spisok) || brak=1; fi
+          [ -n "$spisok" ] || { echo "Новых выпусков нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit "$brak"; }
+          # stdin цикла — fd 3: gh и node внутри не съедят строки списка
+          while read -r VETKA tegi <&3; do
+            [ -n "$VETKA" ] || continue
             nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
-            [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] $pervaya" --body "$telo" | grep -o '[0-9]*$')
+            if [ -n "$nomer" ] && git fetch -q origin "+refs/heads/$VETKA:refs/remotes/origin/$VETKA"; then
+              git switch -q --detach "origin/$VETKA"   # открытая заявка дня — дописать в неё (Р790 п.6)
+            else
+              nomer=; git switch -q --detach origin/main
+            fi
+            git sparse-checkout reapply
+            git switch -q -C "$VETKA"
+            vyvod=; ssylki=; pervaya=
+            for teg in $tegi; do
+              v=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился — на сайт не идёт"; echo "- $teg — брак, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; continue; }
+              git add --sparse public/
+              git diff --cached --quiet && { echo "$teg: на сайте уже то же самое"; continue; }
+              p1=$(printf '%s\n' "$v" | head -1)
+              git commit -q -m "[avto] $p1 ($teg)"
+              pervaya="${pervaya:+$pervaya + }$p1"
+              vyvod="$vyvod$v
+          "
+              ssylki="${ssylki}https://github.com/arabelthera-dot/rc-rolik/releases/tag/$teg
+          "
+            done
+            [ -n "$pervaya" ] || continue
+            if [ -n "$nomer" ]; then git push -q origin "$VETKA"; else git push -q -f origin "$VETKA"; fi
+            telo="Выпуск облака на сайт (r538): $ssylki
+          \`\`\`
+          $vyvod\`\`\`
+          Заявку открыла машина .github/workflows/rolik-na-sait.yml; файлы и запись реестра — scripts/rolik-na-sait.mjs. Руками не правится: новый ролик — новый выпуск в rc-rolik."
+            if [ -n "$nomer" ]; then
+              gh pr edit "$nomer" --body "$(gh pr view "$nomer" --json body -q .body)
+
+          Дописано в эту заявку (ролик и гид дня — одна заявка, Р790 п.6): $telo"
+            else
+              nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] $pervaya" --body "$telo" | grep -o '[0-9]*$')
+            fi
             # автослияние — только у расписания и сигнала rc-rolik; ручной пуск (проба, разбор) оставляет заявку человеку
             case "$GITHUB_EVENT_NAME" in schedule|repository_dispatch) gh pr merge "$nomer" --auto --squash ;; esac
-            echo "- $teg → https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
+            echo "- $tegi → https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
             sha=$(git rev-parse HEAD)
             zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
             ok=
@@ -97,5 +118,5 @@ jobs:
               sleep 10
             done
             [ -n "$ok" ] || echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"
-          done
+          done 3<<< "$spisok"
           exit "$brak"

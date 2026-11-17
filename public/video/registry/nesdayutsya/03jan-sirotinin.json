@@ -1,7 +1,7 @@
 {
   "title": "История в 50 секунд",
   "intro": "Один парень, одна пушка — и целая колонна встала",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/03jan-sirotinin/day-03jan-sirotinin.mp4",
     "local": "muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4",

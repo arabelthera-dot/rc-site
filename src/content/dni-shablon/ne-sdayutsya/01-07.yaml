@@ -89,7 +89,7 @@ video:
   intro: Самолёт стал последним снарядом экипажа
   poster: /muzei/ne-sdayutsya/video/day-07jan-gastello-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-07jan-gastello.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41877564547) из сценария days/ns07jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Четвёртый день войны, дорога на Минск

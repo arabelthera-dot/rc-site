@@ -105,7 +105,7 @@ video:
   intro: Прибор показал 3,6 рентгена в час, а на крыше было до 15 000
   poster: /muzei/ne-sdayutsya/video/day-14feb-pozharnye-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-14feb-pozharnye.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-14.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Пожарные Чернобыля

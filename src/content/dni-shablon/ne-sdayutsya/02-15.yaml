@@ -105,7 +105,7 @@ video:
   intro: Немцы внесли её в список на расстрел сразу после взятия города — за стихи по радио
   poster: /muzei/ne-sdayutsya/video/day-15feb-berggolc-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-15feb-berggolc.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-15.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Ольга Берггольц

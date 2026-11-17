@@ -1,11 +1,11 @@
 {
   "title": "История в 37 секунд",
   "intro": "Шар Молчанова поднялся на десять километров и сам рассказал по радио, что творится наверху, — так начался прогноз погоды.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43615338326) из сценария days/16feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond.mp4",
     "local": "muzei/izobreteniya/video/day-16feb-radiozond.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 37,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-16feb-radiozond-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 37,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond-poster.jpg",
     "local": "muzei/izobreteniya/video/day-16feb-radiozond-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-16feb-radiozond-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

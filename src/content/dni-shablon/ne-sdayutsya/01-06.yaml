@@ -81,7 +81,7 @@ video:
   intro: Отравленные газом защитники Осовца поднялись в контратаку — и немцы бежали от тех, кто по всем законам уже не мог подняться.
   poster: /muzei/ne-sdayutsya/video/day-06jan-osovets-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-06jan-osovets.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41876731468) из сценария days/ns06jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Контратака, которую назвали «атакой мертвецов»

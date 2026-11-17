@@ -1,7 +1,7 @@
 {
   "title": "История в 48 секунд",
   "intro": "Немецкий офицер, который на самом деле был русским",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns18jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/18jan-kuznetsov/day-18jan-kuznetsov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-18jan-kuznetsov.mp4",

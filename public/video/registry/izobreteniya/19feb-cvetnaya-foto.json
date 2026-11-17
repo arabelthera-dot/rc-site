@@ -1,11 +1,11 @@
 {
   "title": "История в 48 секунд",
   "intro": "Прокудин-Горский снимал одно и то же через три фильтра подряд, поэтому Россию 1910 года мы видим в настоящем цвете",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43697311997) из сценария days/19feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto.mp4",
     "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 47.9,
@@ -14,20 +14,20 @@
   "vertical": {
     "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 47.9,
-    "mb": 13.9
+    "mb": 13.8
   },
   "poster": {
     "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto-poster.jpg",
     "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

@@ -833,4 +833,4 @@ video:
   intro: Как Москва заговорила на всю Европу с медными лампами из Нижнего.
   poster: video/day-24feb-komintern-poster.jpg?v=1
   mp4: video/day-24feb-komintern.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/24feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.

@@ -891,4 +891,4 @@ video:
   intro: Как Прокудин-Горский снял Россию в цвете.
   poster: video/day-19feb-cvetnaya-foto-poster.jpg?v=1
   mp4: video/day-19feb-cvetnaya-foto.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/19feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.

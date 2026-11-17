@@ -84,7 +84,7 @@ video:
   intro: Экипаж вошёл в реактор, чтобы лодка не стала вторым Чернобылем
   poster: /muzei/ne-sdayutsya/video/day-19jan-k19-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-19jan-k19.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns19jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Первый ракетоносец и учения «Полярный круг»

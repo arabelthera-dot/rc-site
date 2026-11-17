@@ -1,7 +1,7 @@
 {
   "title": "История в 44 секунды",
   "intro": "«Работайте, братья» — сказал под стволом и остался собой",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42601823238) из сценария days/ns25jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/25jan-nurbagandov/day-25jan-nurbagandov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-25jan-nurbagandov.mp4",

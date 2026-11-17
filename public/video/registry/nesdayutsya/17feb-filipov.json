@@ -1,7 +1,7 @@
 {
   "title": "История в 46 секунд",
   "intro": "«Это вам за пацанов!» — и граната в руке вместо плена",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43705949195) из сценария days/ns17feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/17feb-filipov/day-17feb-filipov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-17feb-filipov.mp4",

@@ -1,7 +1,7 @@
 {
   "title": "История в 45 секунд",
   "intro": "Учёные пугали: Луна в пыли, где утонет любая машина. «Луна-9» села — и не утонула",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43166077983) из сценария days/03feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/03feb-luna9/day-03feb-luna9.mp4",
     "local": "muzei/izobreteniya/video/day-03feb-luna9.mp4",

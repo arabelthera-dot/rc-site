@@ -1,7 +1,7 @@
 {
   "title": "История в 51 секунду",
   "intro": "Переезд держали двое раненых — враг не знал, что взвода больше нет",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905359830) из сценария days/ns19feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/19feb-vzvod-shironina/day-19feb-vzvod-shironina.mp4",
     "local": "muzei/ne-sdayutsya/video/day-19feb-vzvod-shironina.mp4",

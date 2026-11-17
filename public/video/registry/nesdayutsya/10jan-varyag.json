@@ -1,7 +1,7 @@
 {
   "title": "История в 45 секунд",
   "intro": "Крейсер затопили свои — но флаг не спустили",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038844720) из сценария days/ns10jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/10jan-varyag/day-10jan-varyag.mp4",
     "local": "muzei/ne-sdayutsya/video/day-10jan-varyag.mp4",

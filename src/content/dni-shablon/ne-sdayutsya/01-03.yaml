@@ -77,7 +77,7 @@ video:
   intro: Один парень, одна пушка — и целая колонна встала
   poster: /muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg?v=2
   mp4: /muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4?v=2
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг · 5 ударов
   h2: Два часа, которые задержали колонну

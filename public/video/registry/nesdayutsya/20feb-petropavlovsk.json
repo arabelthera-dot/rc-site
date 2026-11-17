@@ -1,33 +1,33 @@
 {
-  "title": "История в 44 секунды",
+  "title": "История в 43 секунды",
   "intro": "Крошечный гарнизон отразил эскадру — враг не высадился",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43863871002) из сценария days/ns20feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk.mp4",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 43.9,
-    "mb": 12
+    "sec": 43.2,
+    "mb": 12.1
   },
   "vertical": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 43.9,
-    "mb": 11.5
+    "sec": 43.2,
+    "mb": 11.4
   },
   "poster": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

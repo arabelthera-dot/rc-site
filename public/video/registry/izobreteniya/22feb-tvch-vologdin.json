@@ -1,11 +1,11 @@
 {
   "title": "История в 50 секунд",
   "intro": "Вологдин научился калить металл без огня: ток высокой частоты греет деталь изнутри, так закаляют коленвалы до сих пор",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43708444402) из сценария days/22feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/22feb-tvch-vologdin/day-22feb-tvch-vologdin.mp4",
     "local": "muzei/izobreteniya/video/day-22feb-tvch-vologdin.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 50.1,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "izobreteniya/22feb-tvch-vologdin/day-22feb-tvch-vologdin-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-22feb-tvch-vologdin-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 50.1,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "izobreteniya/22feb-tvch-vologdin/day-22feb-tvch-vologdin-poster.jpg",
     "local": "muzei/izobreteniya/video/day-22feb-tvch-vologdin-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/22feb-tvch-vologdin/day-22feb-tvch-vologdin-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-22feb-tvch-vologdin-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
