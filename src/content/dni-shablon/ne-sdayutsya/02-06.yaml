@@ -483,7 +483,7 @@ quiz:
   kicker: Проверь себя · 5 вопросов
   h2: Викторина
   intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
-  noscript: 'Ответы: 1 — 18; 2 — 64; 3 — «Новик»; 4 — 45; 5 — компас и бинокли.'
+  noscript: 'Ответы: 1 — 1858; 2 — 6; 3 — более 250; 4 — 100 000; 5 — 1965.'
   ball: 10
   voprosy:
   - q: В каком году родился Матвей Кузьмин?
@@ -581,41 +581,41 @@ figures:
     otkuda: https://goskatalog.ru/portal/#/collections?id=12401134
   svyashchennoe: false
   celikom: true
-- src: /muzei/ne-sdayutsya/img/02-06-goskatalog-11691919.jpg
-  alt: 'Плакат из двух картин: в избе старик говорит с немецкими солдатами, в зимнем лесу старик стоит перед немцем с пистолетом.'
-  data_source: https://goskatalog.ru/portal/#/collections?id=11809390
+- src: /muzei/ne-sdayutsya/img/02-06-goskatalog-54589954.jpg
+  alt: 'Пожелтевший печатный лист: вверху лозунг «Смерть немецким оккупантам!», ниже обращение к советскому населению оккупированных областей и крупный заголовок «Подвиг Матвея Кузьмина», под ним сплошной текст в два столбца.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=54855202
   license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-  podpis: Тот же плакат 1942 года в Оренбургском губернаторском историко-краеведческом музее.
-  credit: Оренбургский губернаторский историко-краеведческий музей, Госкаталог № 11691919
-  width: 469
-  height: 367
-  vid: plakat
+  podpis: Листовка «Подвиг Матвея Кузьмина» для жителей оккупированных областей. 1942 год.
+  credit: Государственный музей истории российской литературы имени В. И. Даля, Госкаталог № 54589954
+  width: 300
+  height: 400
+  vid: dokument
   glavnoe_na_kartinke:
-    x: 0.0
-    y: 0.0
-    w: 0.65
-    h: 0.8
+    x: 0.15
+    y: 0.08
+    w: 0.7
+    h: 0.2
   prava:
-    avtor: художник не указан в карточке (издательство «Искусство»)
+    avtor: автор не указан в карточке (Главное политическое управление Красной армии)
     god_sozdaniya: '1942'
     god_smerti_avtora: net
     god_reabilitacii: net
     anonim: true
-    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 11691919
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 54589954
     sdelano_mashinoj: false
-    otkuda: Госкаталог, № предмета 11691919
+    otkuda: Госкаталог, № предмета 54589954
     baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=11809390
-  nomer_predmeta: Госкаталог № 11691919
-  nomer_snimka: goskatalog id 11809390
-  hranitel: Оренбургский губернаторский историко-краеведческий музей
-  podpis_chto: Плакат о подвиге Матвея Кузьмина
+    ssylka: https://goskatalog.ru/portal/#/collections?id=54855202
+  nomer_predmeta: Госкаталог № 54589954
+  nomer_snimka: goskatalog id 54855202
+  hranitel: Государственный музей истории российской литературы имени В. И. Даля
+  podpis_chto: Листовка ГПУ Красной армии о подвиге Матвея Кузьмина
   podpis_gde: Великие Луки, Калининский фронт
   podpis_kogda: 1942 год
   simvolika_proverena: true
   podlinnik:
-    gde: Оренбургский губернаторский историко-краеведческий музей, Оренбург
-    otkuda: https://goskatalog.ru/portal/#/collections?id=11809390
+    gde: Государственный музей истории российской литературы имени В. И. Даля, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=54855202
   svyashchennoe: false
   celikom: true
 - src: /muzei/ne-sdayutsya/img/02-06-goskatalog-23030422.jpg

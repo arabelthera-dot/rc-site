@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl.mp4",
     "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 42.4,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 42.4,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/30jan-chernobyl/day-30jan-chernobyl-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-30jan-chernobyl-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

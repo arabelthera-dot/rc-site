@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/10jan-varyag/day-10jan-varyag.mp4",
     "local": "muzei/ne-sdayutsya/video/day-10jan-varyag.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 45.4,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/10jan-varyag/day-10jan-varyag-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-10jan-varyag-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 45.4,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/10jan-varyag/day-10jan-varyag-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/10jan-varyag/day-10jan-varyag-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-10jan-varyag-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
