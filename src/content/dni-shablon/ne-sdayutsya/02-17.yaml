@@ -651,9 +651,9 @@ sources:
   note: к факту 15
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 18 февраля
-  hook: Подольские курсанты.
+  href: "/muzei/ne-sdayutsya/den/02-18/"
+  title: "18 февраля — Подольские курсанты"
+  hook: "Три с половиной тысячи мальчишек задержали танки у Москвы"
   main: true
 - lbl: Весь музей
   href: index.html
@@ -673,11 +673,11 @@ chrome:
     title: Роман Филипов — Музей стойкости и подвига «Русские не сдаются»
     text: «Это вам за пацанов!» — и граната в руке вместо плена
   prev:
-    href: index.html
-    title: 16 февраля
+    href: "/muzei/ne-sdayutsya/den/02-16/"
+    title: "16 · Зина Портнова"
   next:
-    href: index.html
-    title: 18 февраля
+    href: "/muzei/ne-sdayutsya/den/02-18/"
+    title: "18 · Подольские курсанты"
   all:
     href: index.html
     label: Все подвиги
