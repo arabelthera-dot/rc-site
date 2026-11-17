@@ -190,7 +190,14 @@ const chasti = [`src/content/days/${muzei}/${key}.json`, `src/content/dni-shablo
 const bezVideo = (f, b) => (f.endsWith('.yaml') ? Buffer.from(b.toString('latin1').replace(/^video:.*\n(?:(?:[ \t-].*)?\n)*/gm, ''), 'latin1') : b);
 const kluchRolika = muzei === 'ne-sdayutsya'
   ? sha10(Buffer.concat(chasti.filter((f) => fs.existsSync(f)).map((f) => Buffer.concat([Buffer.from(`${f}\0`), bezVideo(f, fs.readFileSync(f))]))))
-  : sha10(scenarij);
+  : kluchIzob();
+// у изобретений хук ставит карточка (huk-iz-kartochki): хука нет в сценарии — он в ключе, как kluch_izob в avto.py,
+// иначе правка хука в карточке даёт то же имя прогона и рендер не ставится (r807)
+function kluchIzob() {
+  const h = (JSON.parse(fs.readFileSync(chasti[0], 'utf8')).hook ?? '').trim();
+  const norm = (t) => t.split(/\s+/).filter(Boolean).join(' ');
+  return !h || norm(scenarij.toString('utf8')).includes(norm(h)) ? sha10(scenarij) : sha10(Buffer.concat([scenarij, Buffer.from(h)]));
+}
 // ролик НС ждёт кадры: только при adres: den — с ним сайт уже держит замок кадров дня (zamokObshchiy), как в avto.py (Р790 п.5)
 if (muzei === 'ne-sdayutsya' && !/^adres:[ \t]*['"]?den['"]?[ \t]*$/m.test(fs.readFileSync(chasti[1], 'utf8')))
   console.log(`  ролик ждёт: в ${chasti[1]} нет adres: den — кадры не на месте; avto.py rc-rolik соберёт после adres: den`);
