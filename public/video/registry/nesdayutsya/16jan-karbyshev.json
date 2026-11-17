@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev.mp4",
     "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 49.2,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 49.2,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/16jan-karbyshev/day-16jan-karbyshev-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-16jan-karbyshev-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
