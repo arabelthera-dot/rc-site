@@ -158,6 +158,8 @@ if (!pr) {
 }
 if (pr) console.log(`  заявка №${pr.number} ${pr.url}`);
 if (pr?.autoMergeRequest?.mergeMethod) console.log(`  ✓ автослияние уже включено: ${pr.autoMergeRequest.mergeMethod}`);
+// Р798 п.3: день, отправленный помощником, до слияния читает второй помощник — автослияние включает Джарвис после чтения.
+else if (process.env.RC_POMOSHCHNIK === '1') console.log(`  ⏸ автослияние не включено: заявку №${pr?.number} читает второй помощник (Р798 п.3)`);
 else if (PROBA) proba(`gh pr merge ${pr?.number ?? '<N>'} --auto --squash -R ${SITE}`);
 else {
   const r = run('gh', ['pr', 'merge', String(pr.number), '--auto', '--squash', '-R', SITE]);

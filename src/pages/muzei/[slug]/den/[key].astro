@@ -55,6 +55,23 @@ const { d, m, prev, next, keys, own, empty = false, shablon } = Astro.props;
 // Общий шаблон дня по музею (r602): карточка с `adres: den` рисуется им.
 const SHABLONY_DNYA = { izobreteniya: DenIzobreteniya, 'ne-sdayutsya': DenNeSdayutsya };
 const ShablonDnya = shablon && SHABLONY_DNYA[shablon.muzei];
+// Р798 п.4: ссылки на соседние дни у шаблонного дня — машиной из карточек соседей (руками в карточке устаревали:
+// «запись готовится», старый хук соседа). Название — из крошки соседа, хук — из его подводки, адрес — свой.
+const sosed = (x) => { if (!x) return undefined;
+  const k = kartochki().find((c) => c.muzei === shablon.muzei && c.key === x.key && c.adres === 'den');
+  const imya = (k?.kroshka ?? '').split(' · ').slice(1).join(' · ') || k?.lead?.h1 || x.title;
+  return { key: x.key, imya, hook: k?.lead?.hook ?? x.hook ?? '' }; };
+const navDnya = (sh) => { if (!sh) return sh;
+  const nazad = sosed(prev), vpered = sosed(next), u = (k) => `${import.meta.env.BASE_URL}muzei/${sh.muzei}/den/${k}/`;
+  const whenS = (k) => `${parseInt(k.slice(3))} ${['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][parseInt(k.slice(0, 2)) - 1]}`;
+  const kuda = (sh.kuda ?? []).flatMap((e) => { const s = /^Следующий/.test(e.lbl) ? vpered : /^Предыдущий/.test(e.lbl) ? nazad : null;
+    if (s === null) return [e]; if (!s) return [];
+    return [{ ...e, href: u(s.key), title: `${whenS(s.key)} — ${s.imya}`, hook: s.hook }]; });
+  const ch = sh.chrome ? { ...sh.chrome,
+    prev: nazad ? { href: u(nazad.key), title: `${whenS(nazad.key)} · ${nazad.imya}` } : undefined,
+    next: vpered ? { href: u(vpered.key), title: `${whenS(vpered.key)} · ${vpered.imya}` } : undefined } : sh.chrome;
+  return { ...sh, kuda, chrome: ch }; };
+const shablonNav = navDnya(shablon);
 const base = import.meta.env.BASE_URL;
 // «Поддержать проект» — на всех страницах (Р88, 21.10.2026, заменяет Р31); выключение — PUBLIC_PODDERZHKA=0.
 const podderzhka = import.meta.env.PUBLIC_PODDERZHKA !== '0';
@@ -138,7 +155,7 @@ const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`pub
 const fontCss = faceCss([...new Set([...denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), 'Playfair Display'])], base);
 const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
 ---
-{shablon ? <ShablonDnya d={shablon} museum={m} /> : d.body ? <DenAnketa d={d} /> : (
+{shablon ? <ShablonDnya d={shablonNav} museum={m} /> : d.body ? <DenAnketa d={d} /> : (
 <Base ownStyle title={titleVkladki(`${dateTitle}: ${title}`, m.title_ru)} ogTitle={`${dateTitle}: ${title}`}
   description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
   image={ogCover?.src ?? ogCard} imageAlt={ogCover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
