@@ -548,7 +548,7 @@ sources:
   note: к фактам 13, 14
 kuda:
 - lbl: Следующий день
-  href: index.html
+  href: /muzei/ne-sdayutsya/den/02-09/
   title: 9 февраля — Таня Савичева
   hook: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
   main: true
@@ -562,10 +562,10 @@ chrome:
     title: Станислав Петров — Музей стойкости и подвига «Русские не сдаются»
     text: Не поверил «сигналу ракетной атаки» — и спас мир от ядерной войны
   prev:
-    href: index.html
+    href: /muzei/ne-sdayutsya/den/02-07/
     title: 7 февраля · Муса Джалиль
   next:
-    href: index.html
+    href: /muzei/ne-sdayutsya/den/02-09/
     title: 9 февраля · Таня Савичева
   all:
     href: index.html
