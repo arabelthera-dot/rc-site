@@ -112,6 +112,15 @@ jobs:
       - name: prava-pometki — права кадров по таблице баз
         timeout-minutes: 1
         run: node scripts/prava-pometki.mjs
+      # Замок кадров дня (Р408, Р90, Р536 п. 4; возвращён из архива Р627 по Р801, 17.11.2026): по карточкам
+      # src/content/dni-shablon/<музей>/ — разных кадров ≥ 6, повтор по pHash (Хэмминг ≤ 8) и тот же файл дважды — брак,
+      # адрес Википедии или Викисклада — брак, кадра нет в public/ — брак. Недобор лечит машина:
+      # scripts/kadry-dnya.py dobor ДНИ --zapis (кадры и паспорт из Госкаталога). Откат — удалить этот шаг.
+      - name: kadry-dnya — кадров ≥ 6, без повторов (pHash), без Википедии
+        timeout-minutes: 3
+        run: |
+          python3 -m venv /tmp/kd && /tmp/kd/bin/pip install -q --disable-pip-version-check pillow imagehash pyyaml
+          /tmp/kd/bin/python scripts/kadry-dnya.py zamok --proba && /tmp/kd/bin/python scripts/kadry-dnya.py zamok все
   sborka:
     needs: filtr
     if: needs.filtr.outputs.sborka == 'true'
