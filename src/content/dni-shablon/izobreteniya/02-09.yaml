@@ -1,5 +1,6 @@
 muzei: izobreteniya
 key: 02-09
+adres: den
 pokazan_sergeyu:
   data: '2026-11-14'
 nomer_dnya: izob-0209-chizhevskij
@@ -688,6 +689,43 @@ figures:
   podpis_chto: Переплёт экземпляра книги А. Л. Чижевского «Физические факторы исторического процесса»
   podpis_gde: Москва
   podpis_kogda: '1924'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-09-goskatalog-90503785.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.5
+  width: 738
+  height: 1024
+  alt: Пожелтевшая бумажная обложка, крупно напечатано «Эпидемические катастрофы и периодическая деятельность Солнца», вверху английский заголовок
+  data_source: https://goskatalog.ru/portal/#/collections?id=12965197
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей истории космонавтики имени К. Э. Циолковского · Госкаталог
+  podpis: Обложка книги А. Л. Чижевского «Эпидемические катастрофы и периодическая деятельность Солнца», Москва, 1930. Хранит Государственный музей истории космонавтики имени К. Э. Циолковского.
+  credit: 'Хранится: Государственный музей истории космонавтики имени К. Э. Циолковского. Госкаталог музейного фонда РФ, № 12846782.'
+  hint: Книга · обложка 1930 года
+  vid: dokument
+  prava:
+    avtor: А. Л. Чижевский
+    god_sozdaniya: 1930 г.
+    god_smerti_avtora: 1964
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: '1930'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12965197
+  nomer_predmeta: '12846782'
+  nomer_snimka: net
+  hranitel: Государственный музей истории космонавтики имени К. Э. Циолковского
+  podlinnik:
+    gde: Государственный музей истории космонавтики имени К. Э. Циолковского
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12965197
+  svyashchennoe: false
+  podpis_chto: Обложка книги А. Л. Чижевского «Эпидемические катастрофы и периодическая деятельность Солнца»
+  podpis_gde: Москва
+  podpis_kogda: '1930'
   pometka_prav: citirovanie-1274
 sources:
 - href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198

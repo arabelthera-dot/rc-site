@@ -1,5 +1,6 @@
 muzei: ne-sdayutsya
 key: 02-08
+adres: den
 pokazan_sergeyu:
   data: '2026-11-14'
 head:
@@ -479,7 +480,44 @@ fakty:
     istochnik: n1
     dlya_voprosa: false
 razdely: []
-figures: []
+figures:
+  - src: /muzei/ne-sdayutsya/img/02-08-goskatalog-35089915.jpg
+    alt: Погрудный портрет мужчины средних лет в клетчатом пиджаке и галстуке в горошек, чёрно-белая фотография.
+    data_source: https://goskatalog.ru/portal/#/collections?id=30258403
+    license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+    podpis: 'Анатолий Чесноков — главный конструктор спутников системы предупреждения о ракетном нападении, фотография 1998 года. Хранит Музей войск ПВО.'
+    credit: Музей войск ПВО, инв. № ф./267, Госкаталог № 30079966
+    width: 600
+    height: 800
+    vid: foto
+    glavnoe_na_kartinke:
+      x: 0.2
+      y: 0.08
+      w: 0.47
+      h: 0.47
+    nomer_predmeta: ф./267
+    nomer_snimka: '35089915'
+    hranitel: Музей войск ПВО — филиал Центрального музея Вооружённых Сил, Балашиха
+    podpis_chto: Анатолий Григорьевич Чесноков, главный конструктор космических аппаратов для системы предупреждения о ракетном нападении в НПО имени С. А. Лавочкина, погрудный портрет
+    podpis_gde: место съёмки не указано
+    podpis_kogda: '1998'
+    simvolika_proverena: true
+    podlinnik:
+      gde: Музей войск ПВО — филиал Центрального музея Вооружённых Сил, Балашиха
+      otkuda: https://goskatalog.ru/portal/#/collections?id=30258403
+    svyashchennoe: false
+    prava:
+      avtor: автор не указан
+      god_sozdaniya: '1998'
+      otkuda: Госкаталог, № 30079966
+      baza: goskatalog
+      ssylka: https://goskatalog.ru/portal/#/collections?id=30258403
+      sdelano_mashinoj: false
+      god_smerti_avtora: net
+      god_reabilitacii: net
+      anonim: true
+      pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 30079966
+    hint: Анатолий Чесноков
 sources:
 - href: https://www.kp.ru/daily/26139.3/3028054/
   title: 'КП, 2013 — Офицер Станислав Петров, предотвративший ядерную войну: Я спас мир? Это был рабочий эпизод'

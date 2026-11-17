@@ -1,5 +1,6 @@
 muzei: izobreteniya
 key: 02-16
+adres: den
 pokazan_sergeyu:
   data: '2026-11-14'
 nomer_dnya: izob-0216-radiozond
@@ -685,7 +686,49 @@ result:
   intro: Ты прошёл зал первого радиозонда.
   zvanie: '0 / 100 · звание: Гость дня'
   note: Баллы — за игру, ответы и викторину.
-figures: []
+figures:
+  - src: /muzei/izobreteniya/img/02-16-goskatalog-22479943.jpg
+    glavnoe_na_kartinke: {x: 0.1, y: 0.06, w: 0.8, h: 0.9}
+    alt: Пожелтевшая бумажная обложка в чёрной рамке с пятнами; красным — «Воздушный океан», над заглавием — «П. А. Молчанов, заведывающий Павловской аэрологической обсерваторией», внизу — «Молодая гвардия, Москва — Петроград, 1924»
+    data_source: https://goskatalog.ru/portal/#/collections?id=21261750
+    license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
+    podpis: Книга П. А. Молчанова «Воздушный океан», 1924. Хранит Долгопрудненский историко-художественный музей.
+    credit: 'Молчанов П. А.. Хранится: Муниципальное бюджетное учреждение "Долгопрудненский историко-художественный музей". Госкаталог № 21221195'
+    width: 1600
+    height: 2078
+    hint: Предмет · книга
+    vid: predmet
+    prava: {avtor: Молчанов П. А., god_sozdaniya: 1924 г., god_smerti_avtora: 1941, god_reabilitacii: 1954, anonim: false, pervaya_publikaciya: '1924', sdelano_mashinoj: false, otkuda: 'Госкаталог музейного фонда РФ, № 21221195', baza: goskatalog, ssylka: 'https://goskatalog.ru/portal/#/collections?id=21261750'}
+    nomer_predmeta: '21221195'
+    nomer_snimka: net
+    hranitel: Долгопрудненский историко-художественный музей
+    podlinnik: {gde: Долгопрудненский историко-художественный музей, otkuda: 'https://goskatalog.ru/portal/#/collections?id=21261750'}
+    svyashchennoe: false
+    podpis_chto: Книга П. А. Молчанова «Воздушный океан»
+    podpis_gde: Москва — Петроград
+    podpis_kogda: '1924'
+    pometka_prav: citirovanie-1274
+  - src: /muzei/izobreteniya/img/02-16-goskatalog-84161975.jpg
+    glavnoe_na_kartinke: {x: 0.05, y: 0.05, w: 0.9, h: 0.9}
+    alt: Светло-зелёная обложка с синей рамкой и завитками по углам; крупно — «П. А. Молчанов, выдающийся советский аэролог», внизу — флюгер-эмблема и «Гидрометеоиздат, 1958»
+    data_source: https://goskatalog.ru/portal/#/collections?id=65730125
+    license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
+    podpis: Книга Е. С. Селезнёвой и Е. А. Тудоровской «П. А. Молчанов — выдающийся советский аэролог», 1958. Хранит Интинский краеведческий музей.
+    credit: 'Хранится: Муниципальное бюджетное учреждение культуры "Интинский краеведческий музей". Госкаталог № 65447085'
+    width: 1280
+    height: 1958
+    hint: Предмет · книга
+    vid: predmet
+    prava: {avtor: 'Селезнёва Е. С., Тудоровская Е. А.', god_sozdaniya: 1958 г., god_smerti_avtora: net, god_reabilitacii: net, anonim: false, pervaya_publikaciya: '1958', sdelano_mashinoj: false, otkuda: 'Госкаталог музейного фонда РФ, № 65447085', baza: goskatalog, ssylka: 'https://goskatalog.ru/portal/#/collections?id=65730125'}
+    nomer_predmeta: '65447085'
+    nomer_snimka: net
+    hranitel: Интинский краеведческий музей
+    podlinnik: {gde: Интинский краеведческий музей, otkuda: 'https://goskatalog.ru/portal/#/collections?id=65730125'}
+    svyashchennoe: false
+    podpis_chto: Книга Е. С. Селезнёвой и Е. А. Тудоровской «П. А. Молчанов — выдающийся советский аэролог»
+    podpis_gde: Ленинград
+    podpis_kogda: '1958'
+    pometka_prav: citirovanie-1274
 sources:
 - href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
   title: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
