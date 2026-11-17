@@ -84,7 +84,7 @@ video:
   intro: Ему предлагали чужую форму — он выбрал ледяную стену
   poster: /muzei/ne-sdayutsya/video/day-16jan-karbyshev-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-16jan-karbyshev.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns16jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Генерал, которого хотели купить

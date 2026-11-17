@@ -860,4 +860,4 @@ video:
   intro: Как Гамалея привёз прививку от бешенства в Одессу.
   poster: video/day-21feb-gamaleya-poster.jpg?v=1
   mp4: video/day-21feb-gamaleya.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/21feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.

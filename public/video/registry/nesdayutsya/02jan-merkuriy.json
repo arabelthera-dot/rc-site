@@ -1,7 +1,7 @@
 {
   "title": "История в 58 секунд",
   "intro": "Двое против 184 пушек — и турки бросили погоню",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41843577134) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/02jan-merkuriy/day-02jan-merkuriy.mp4",
     "local": "muzei/ne-sdayutsya/video/day-02jan-merkuriy.mp4",

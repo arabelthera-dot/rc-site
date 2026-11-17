@@ -1,7 +1,7 @@
 {
   "title": "История в 52 секунды",
   "intro": "Гамалея привёз от Пастера прививку от бешенства и открыл в Одессе станцию, куда везли укушенных со всей империи",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43906189479) из сценария days/21feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/21feb-gamaleya/day-21feb-gamaleya.mp4",
     "local": "muzei/izobreteniya/video/day-21feb-gamaleya.mp4",

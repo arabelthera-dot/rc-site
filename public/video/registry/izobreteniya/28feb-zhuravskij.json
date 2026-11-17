@@ -1,7 +1,7 @@
 {
   "title": "История в 48 секунд",
   "intro": "Журавский проверял мост смычком: у опор проволоки модели пели выше — значит, тянут сильнее",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43906690106) из сценария days/28feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/28feb-zhuravskij/day-28feb-zhuravskij.mp4",
     "local": "muzei/izobreteniya/video/day-28feb-zhuravskij.mp4",

@@ -1,7 +1,7 @@
 {
   "title": "История в 47 секунд",
   "intro": "16 месяцев — ворота не открыли",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43576389251) из сценария days/ns03feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/03feb-troica/day-03feb-troica.mp4",
     "local": "muzei/ne-sdayutsya/video/day-03feb-troica.mp4",

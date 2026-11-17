@@ -1,7 +1,7 @@
 {
   "title": "История в 50 секунд",
   "intro": "Филатов вернул зрение тысячам слепых роговицей умерших: охлаждённая ткань приживалась лучше свежей",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43906724849) из сценария days/27feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/27feb-filatov/day-27feb-filatov.mp4",
     "local": "muzei/izobreteniya/video/day-27feb-filatov.mp4",

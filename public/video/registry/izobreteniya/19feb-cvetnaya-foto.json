@@ -1,7 +1,7 @@
 {
   "title": "История в 48 секунд",
   "intro": "Прокудин-Горский снимал одно и то же через три фильтра подряд, поэтому Россию 1910 года мы видим в настоящем цвете",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905182902) из сценария days/19feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto.mp4",
     "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto.mp4",

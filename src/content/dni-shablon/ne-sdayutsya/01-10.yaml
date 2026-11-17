@@ -83,7 +83,7 @@ video:
   intro: Крейсер затопили свои — но флаг не спустили
   poster: /muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg?v=2
   mp4: /muzei/ne-sdayutsya/video/day-10jan-varyag.mp4?v=2
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42038844720) из сценария days/ns10jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Команда
   h2: 570 человек на одном крейсере

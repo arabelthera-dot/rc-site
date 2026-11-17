@@ -1,7 +1,7 @@
 {
   "title": "История в 53 секунды",
   "intro": "Немцы дали час на выдачу майора Гаврилова, а форт ответил драться до конца.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905440719) из сценария days/ns13feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/13feb-gavrilov/day-13feb-gavrilov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-13feb-gavrilov.mp4",

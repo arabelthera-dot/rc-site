@@ -1,7 +1,7 @@
 {
   "title": "История в 49 секунд",
   "intro": "Старостиха крикнула пленным: «Уж я двадцати семи таким вашим озорникам сорвала головы!»",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905162501) из сценария days/ns21feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/21feb-vasilisa-kozhina/day-21feb-vasilisa-kozhina.mp4",
     "local": "muzei/ne-sdayutsya/video/day-21feb-vasilisa-kozhina.mp4",

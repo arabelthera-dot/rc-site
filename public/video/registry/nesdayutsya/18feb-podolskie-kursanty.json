@@ -1,7 +1,7 @@
 {
   "title": "История в 47 секунд",
   "intro": "Три с половиной тысячи мальчишек задержали танки у Москвы",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905168916) из сценария days/ns18feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/18feb-podolskie-kursanty/day-18feb-podolskie-kursanty.mp4",
     "local": "muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty.mp4",

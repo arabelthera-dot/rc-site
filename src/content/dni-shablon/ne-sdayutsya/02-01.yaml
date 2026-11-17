@@ -159,7 +159,7 @@ video:
   intro: Инок Пересвет без доспеха вышел против богатыря в пять сажен — и с этого поединка началась победа на Куликовом поле
   poster: /muzei/ne-sdayutsya/video/day-01feb-peresvet-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-01feb-peresvet.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42601819834) из сценария days/ns01feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Александр Пересвет

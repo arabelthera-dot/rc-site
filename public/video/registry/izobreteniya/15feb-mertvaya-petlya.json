@@ -1,7 +1,7 @@
 {
   "title": "История в 43 секунды",
   "intro": "Инженеры считали, что вверх колёсами самолёт развалится, — Нестеров замкнул петлю и сел под арест за риск казённым имуществом",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905325074) из сценария days/15feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya.mp4",
     "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya.mp4",

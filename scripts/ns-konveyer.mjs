@@ -142,7 +142,7 @@ function rolikVReestr(key, karta, dd, mes) {
   zapisatVypusk(PUB, vypusk, {
     title: `История в ${sekund(Math.round(fajly['16x9'].sec))}`,
     intro: hook,
-    note: `Ролик собран в облаке rc-rolik (render.yml, прогон ${run}) из сценария days/${id}.json и кадров дня. Закадровый текст озвучен синтезом речи.`,
+    note: `Закадровый текст озвучен синтезом речи.`,
     horizontal: fail('', 1920, 1080, fajly['16x9']),
     vertical: fail('-9x16', 1080, 1920, fajly['9x16']),
     poster: { file: `${vypusk}/day-${imya}-poster.jpg`, local: `${VIDEO}/day-${imya}-poster.jpg`, v },

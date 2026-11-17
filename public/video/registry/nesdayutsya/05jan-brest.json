@@ -1,7 +1,7 @@
 {
   "title": "История в 59 секунд",
   "intro": "«Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41872718715) из сценария days/ns05jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest.mp4",

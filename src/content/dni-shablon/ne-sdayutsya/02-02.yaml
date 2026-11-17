@@ -101,7 +101,7 @@ video:
   intro: Пятьдесят три немца против одного солдата с топором — бежали немцы
   poster: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42614244018) из сценария days/ns02feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Дмитрий Овчаренко

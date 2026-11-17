@@ -108,7 +108,7 @@ video:
   intro: 16 месяцев — ворота не открыли
   poster: /muzei/ne-sdayutsya/video/day-03feb-troica-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-03feb-troica.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43202190537) из сценария days/ns03feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Оборона Троице-Сергиевой лавры

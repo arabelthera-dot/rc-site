@@ -851,4 +851,4 @@ video:
   intro: Как ток Вологдина закалил танки.
   poster: video/day-22feb-tvch-vologdin-poster.jpg?v=1
   mp4: video/day-22feb-tvch-vologdin.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/22feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.

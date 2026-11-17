@@ -93,7 +93,7 @@ video:
   intro: Володя Дубинин днём прошёл вражеские посты и спас отряд от затопления
   poster: /muzei/ne-sdayutsya/video/day-21jan-dubinin-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-21jan-dubinin.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns21jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Подземный отряд

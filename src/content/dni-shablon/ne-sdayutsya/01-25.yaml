@@ -84,7 +84,7 @@ video:
   intro: «Работайте, братья» — сказал под стволом и остался собой
   poster: /muzei/ne-sdayutsya/video/day-25jan-nurbagandov-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-25jan-nurbagandov.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42202145069) из сценария days/ns25jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Сергокала

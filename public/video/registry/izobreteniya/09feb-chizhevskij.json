@@ -1,7 +1,7 @@
 {
   "title": "История в 47 секунд",
   "intro": "Чижевский первым в мире связал солнечную активность с волнами эпидемий, сверив циклы Солнца с летописями чумы и холеры",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43901282254) из сценария days/09feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/09feb-chizhevskij/day-09feb-chizhevskij.mp4",
     "local": "muzei/izobreteniya/video/day-09feb-chizhevskij.mp4",

@@ -1,7 +1,7 @@
 {
   "title": "История в 50 секунд",
   "intro": "Докучаев доказал, что чернозём — живое тело со своей историей, и русский эталон почвы увезли в Париж",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43904740958) из сценария days/18feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/18feb-pochvovedenie/day-18feb-pochvovedenie.mp4",
     "local": "muzei/izobreteniya/video/day-18feb-pochvovedenie.mp4",

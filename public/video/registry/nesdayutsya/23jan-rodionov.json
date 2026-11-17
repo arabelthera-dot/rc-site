@@ -1,7 +1,7 @@
 {
   "title": "История в 50 секунд",
   "intro": "Ему предложили снять крест — он не снял",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns23jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/23jan-rodionov/day-23jan-rodionov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-23jan-rodionov.mp4",

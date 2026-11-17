@@ -217,7 +217,7 @@ video:
   intro: 1833 год. Ленц первым записал формулой, что природа сопротивляется вмешательству, — на его правиле стоит каждый электродвигатель.
   poster: video/day-12feb-lenc-poster.jpg?v=1
   mp4: video/day-12feb-lenc.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/12feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 audioguide:
   audioSrc: audio-guide-lenc-ru.mp3
   durationLabel: около минуты

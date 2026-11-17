@@ -1,7 +1,7 @@
 {
   "title": "История в 48 секунд",
   "intro": "Без обеих ног он вернулся в небо — и сбивал тех, кто его списал",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43635105785) из сценария days/ns17jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/17jan-maresyev/day-17jan-maresyev.mp4",
     "local": "muzei/ne-sdayutsya/video/day-17jan-maresyev.mp4",

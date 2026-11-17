@@ -839,7 +839,7 @@ video:
   intro: Как Нестеров первым в мире замкнул «мёртвую петлю».
   poster: video/day-15feb-mertvaya-petlya-poster.jpg?v=1
   mp4: video/day-15feb-mertvaya-petlya.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/15feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 audioguide:
   audioSrc: audio-guide-mertvaya-petlya-ru.mp3
   durationLabel: около полутора минут

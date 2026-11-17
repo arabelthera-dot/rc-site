@@ -1,7 +1,7 @@
 {
   "title": "История в 49 секунд",
   "intro": "Бехтерев описал столько участков мозга, что семь из них носят его имя, и спорил с Фрейдом на равных.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42596442001) из сценария days/01feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/01feb-behterev/day-01feb-behterev.mp4",
     "local": "muzei/izobreteniya/video/day-01feb-behterev.mp4",

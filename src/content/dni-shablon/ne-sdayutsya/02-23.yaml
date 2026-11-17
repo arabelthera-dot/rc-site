@@ -105,7 +105,7 @@ video:
   intro: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
   poster: /muzei/ne-sdayutsya/video/day-23feb-komsomolec-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-23feb-komsomolec.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-23.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Подлодка К-278 «Комсомолец»

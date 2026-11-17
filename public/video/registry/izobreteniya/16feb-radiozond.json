@@ -1,7 +1,7 @@
 {
   "title": "История в 37 секунд",
   "intro": "Шар Молчанова поднялся на десять километров и сам рассказал по радио, что творится наверху, — так начался прогноз погоды.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43903808725) из сценария days/16feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond.mp4",
     "local": "muzei/izobreteniya/video/day-16feb-radiozond.mp4",

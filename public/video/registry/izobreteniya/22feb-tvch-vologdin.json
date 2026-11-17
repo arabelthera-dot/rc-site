@@ -1,7 +1,7 @@
 {
   "title": "История в 50 секунд",
   "intro": "Вологдин научился калить металл без огня: ток высокой частоты греет деталь изнутри, так закаляют коленвалы до сих пор",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43903045439) из сценария days/22feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/22feb-tvch-vologdin/day-22feb-tvch-vologdin.mp4",
     "local": "muzei/izobreteniya/video/day-22feb-tvch-vologdin.mp4",

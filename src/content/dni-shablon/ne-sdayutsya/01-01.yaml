@@ -82,7 +82,7 @@ video:
   intro: Батый сжёг Рязань — но запомнил имя того, кто рубился на пепелище
   poster: /muzei/ne-sdayutsya/video/day-01jan-kolovrat-poster.jpg?v=2
   mp4: /muzei/ne-sdayutsya/video/day-01jan-kolovrat.mp4?v=2
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41872778013) из сценария days/ns01jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг · 6 ударов
   h2: Бой, который не мог быть выигран

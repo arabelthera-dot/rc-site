@@ -1,7 +1,7 @@
 {
   "title": "История в 47 секунд",
   "intro": "Партизанка под пытками не выдала товарищей",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43906239344) из сценария days/ns28feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina.mp4",
     "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina.mp4",

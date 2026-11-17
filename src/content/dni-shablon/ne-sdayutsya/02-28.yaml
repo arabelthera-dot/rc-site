@@ -105,7 +105,7 @@ video:
   intro: Партизанка под пытками не выдала товарищей
   poster: /muzei/ne-sdayutsya/video/day-28feb-chajkina-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-28feb-chajkina.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-28.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Лиза Чайкина

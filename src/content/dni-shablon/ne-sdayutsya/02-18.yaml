@@ -105,7 +105,7 @@ video:
   intro: Три с половиной тысячи мальчишек задержали танки у Москвы
   poster: /muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-18.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Подольские курсанты

@@ -859,4 +859,4 @@ video:
   intro: Как Москва построила магнитную бутылку для звезды и как её скопировал весь мир.
   poster: video/day-25feb-tokamak-poster.jpg?v=1
   mp4: video/day-25feb-tokamak.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/25feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
