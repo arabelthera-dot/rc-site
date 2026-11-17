@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota.mp4",
     "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 47.3,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 47.3,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
