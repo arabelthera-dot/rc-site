@@ -5,29 +5,29 @@
   "horizontal": {
     "file": "nesdayutsya/05feb-talalihin/day-05feb-talalihin.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05feb-talalihin.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 48,
-    "mb": 12.5
+    "mb": 12.1
   },
   "vertical": {
     "file": "nesdayutsya/05feb-talalihin/day-05feb-talalihin-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05feb-talalihin-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 48,
-    "mb": 11.5
+    "mb": 11.1
   },
   "poster": {
     "file": "nesdayutsya/05feb-talalihin/day-05feb-talalihin-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-05feb-talalihin-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/05feb-talalihin/day-05feb-talalihin-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-05feb-talalihin-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
