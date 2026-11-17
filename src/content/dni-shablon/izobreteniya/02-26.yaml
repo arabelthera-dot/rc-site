@@ -30,7 +30,7 @@ chitat_dalshe:
   ssylka: https://idea.vrnlib.ru/article/istoriya-kauchuka/
 - nazvanie: «Лебедев Сергей Васильевич (1874–1934 гг.)»
   gde: «Вестник химической промышленности»
-  ssylka: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+  ssylka: https://web.archive.org/web/20250617072751/http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
 - nazvanie: «Покатили на картошке»
   gde: «Коммерсантъ»
   ssylka: https://www.kommersant.ru/doc/8797767
@@ -45,7 +45,7 @@ istochniki:
 - id: vestkhimprom
   baza: periodika
   nazvanie: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
-  ssylka: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+  ssylka: https://web.archive.org/web/20250617072751/http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
 - id: kommersant
   baza: periodika
   nazvanie: «Покатили на картошке» — «Коммерсантъ»
@@ -285,7 +285,7 @@ fakty:
     src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
     otryvok: Условий конкурса не выдержал ни один образец лабораторий мира — премию получил один Лебедев
     stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
-    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    href: https://web.archive.org/web/20250617072751/http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
     pometka: документ
     id: odin-lebedev
     istochnik: vestkhimprom
@@ -355,7 +355,7 @@ fakty:
     src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
     otryvok: На одну автомобильную шину уходило 500 кг отборного картофеля
     stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
-    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    href: https://web.archive.org/web/20250617072751/http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
     pometka: документ
     id: 500-kg-kartofelya
     istochnik: vestkhimprom
@@ -487,7 +487,7 @@ fakty:
     src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
     otryvok: Лебедев обещал выход 20 %, экспертиза насчитала 22 % — сделал больше, чем заявил
     stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
-    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    href: https://web.archive.org/web/20250617072751/http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
     pometka: документ
     id: 22-procenta
     istochnik: vestkhimprom
@@ -513,7 +513,7 @@ fakty:
     src: 'Источник: «Вестник химической промышленности», «Лебедев Сергей Васильевич (1874–1934 гг.)»'
     otryvok: В 1909 году два года работы дали всего 19 граммов вещества и доклад на полчаса
     stranica: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
-    href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+    href: https://web.archive.org/web/20250617072751/http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
     pometka: документ
     id: 19-grammov
     istochnik: vestkhimprom
@@ -756,7 +756,7 @@ sources:
 - href: https://idea.vrnlib.ru/article/istoriya-kauchuka/
   title: «История каучука» — Воронежская областная научная библиотека
   note: факты дня
-- href: http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
+- href: https://web.archive.org/web/20250617072751/http://vestkhimprom.ru/posts/lebedev-sergej-vasilevich-1874-1934-gg
   title: «Лебедев Сергей Васильевич (1874–1934 гг.)» — «Вестник химической промышленности»
   note: факты дня
 - href: https://www.kommersant.ru/doc/8797767
@@ -768,7 +768,7 @@ sources:
 kuda:
 - lbl: Следующий день
   href: den/02-27/
-  title: 27 февраля — Пересадка роговицы и тканевая терапия
+  title: 27 февраля — Первая в мире пересадка роговицы от умершего человека · В. П. Филатов, 1931
   hook: 'Филатов вернул зрение тысячам слепых роговицей умерших: охлаждённая ткань приживалась лучше свежей'
   main: true
 - lbl: Предыдущий день

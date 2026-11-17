@@ -113,21 +113,19 @@ fakty:
   kicker: Десять фактов
   h2: Дмитрий Овчаренко
   udary:
-  - id: ns-0202-53-protiv-odnogo
-    summary: Пятьдесят три немца против одного солдата с топором — бежали немцы
+  - id: ns-0202-okruzhili
+    summary: Немцы окружили его в 4–5 километрах от своих — звать на помощь было некого
     det:
-    - 13 июля 1941 года у местечка Песец у границы с Молдавией две немецкие машины окружают повозку красноармейца Дмитрия Овчаренко. В машинах 50 солдат и 3 офицера. Против них один человек, и бегут в итоге они.
+    - 13 июля 1941 года ездовой Дмитрий Овчаренко один везёт боеприпасы пулемётной роте. До своих — 4–5 километров. Здесь его повозку окружают две немецкие машины, и помощи ждать неоткуда.
     src: 'Источник: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941) — https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/'
     stranica: наградной лист к званию Героя Советского Союза
     href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
-    otryvok: «В этом же районе на красноармейца напали и окружили две автомашины в составе 50 германских солдат и 3-х офицеров.»
+    otryvok: «…находясь от своего подразделения в 4-5 километрах. В этом же районе на красноармейца напали и окружили две автомашины в составе 50 германских солдат и 3-х офицеров.»
     pometka: документ
     utverzhden: '2026-11-09'
-    sravnenie: 53 человека — как два школьных класса
+    sravnenie: net
     istochnik: n1
-    dlya_voprosa: true
-    otvet: '53'
-    otvet_edinstvennyj: true
+    dlya_voprosa: false
   - id: ns-0202-ruki-vverh
     summary: Немцы выбили у него винтовку и крикнули «руки вверх» — он ответил топором
     det:
@@ -256,14 +254,14 @@ fakty:
     summary: Раненый немецкий офицер побежал — солдат с топором догнал его в огороде
     det:
     - Раненый офицер пытается уйти. Овчаренко с топором бежит за ним и настигает его в огороде.
-    src: 'Источник: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941) — https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/'
-    stranica: наградной лист к званию Героя Советского Союза
-    href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
-    otryvok: «Взяв этот топор, красноармеец отрубил голову германскому офицеру, бросил три гранаты вблизи стоящей машины. 21 германский солдат был убит, остальные в панике бежали.»
-    pometka: документ
+    src: 'Источник: «Аргументы и факты». «Песец» с топором. Как красноармеец Овчаренко в одиночку победил 50 фашистов — https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov'
+    stranica: «Аргументы и факты»
+    href: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
+    otryvok: «…одного из двух оставшихся офицеров, пытавшегося удрать через огороды, красноармеец настиг, и вновь пустил в ход топор…»
+    pometka: один источник
     utverzhden: '2026-11-09'
     sravnenie: net
-    istochnik: n1
+    istochnik: n3
     dlya_voprosa: true
     otvet: в огороде
     otvet_edinstvennyj: true
@@ -271,14 +269,14 @@ fakty:
     summary: Раненым его убрали из боя в тыл — в тылу на него вышли 53 немца
     det:
     - 'После ранения пулемётчика Овчаренко отводят в тыл и ставят ездовым: возить боеприпасы роте. Именно там, в 4–5 километрах от своих, на него выходит отряд из 53 немцев.'
-    src: 'Источник: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941) — https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/'
-    stranica: наградной лист к званию Героя Советского Союза
-    href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
-    otryvok: «13 июля 1941 года из района Песец, красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»
-    pometka: документ
+    src: 'Источник: М. Колосов, «Люди и подвиги», очерк «Поэма о топоре» — https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/; «Память народа», наградной лист — https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/'
+    stranica: М. Колосов, «Поэма о топоре»; наградной лист
+    href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
+    otryvok: '«…после ранения его временно перевели повозочным на склад боеприпасов.» Наградной лист: «красноармеец Овчаренко вез боеприпасы для 3-й пульроты, находясь от своего подразделения в 4-5 километрах.»'
+    pometka: два источника
     utverzhden: '2026-11-09'
     sravnenie: 4–5 километров — час ходьбы пешком
-    istochnik: n1
+    istochnik: n4
     dlya_voprosa: false
   - id: ns-0202-dva-boya
     summary: Звезду Героя он заслужил двумя боями за две недели — 13 и 27 июля 1941-го
@@ -584,19 +582,19 @@ figures:
 sources:
 - href: https://pamyat-naroda.ru/heroes/podvig-chelovek_nagrazhdenie2020230/
   title: «Память народа». Овчаренко Дмитрий Романович — наградной лист к званию Героя Советского Союза (подвиги 13.07 и 27.07.1941, указ 09.11.1941)
-  note: к фактам 1–10 и 14
+  note: к фактам 1–5, 7–11
 - href: https://obd-memorial.ru/html/info.htm?id=56483295
   title: 'ОБД «Мемориал». Донесение о безвозвратных потерях: рядовой Овчаренко Д. Р., 3 тбр, погиб 28.01.1945, Венгрия, ст. Шерегейеш. ЦАМО, ф. 58, оп. 18003, д. 325'
-  note: к фактам 8 и 15
+  note: к фактам 9 и 15
 - href: https://aif.ru/society/history/pesec_s_toporom_kak_krasnoarmeec_ovcharenko_v_odinochku_pobedil_50_fashistov
   title: «Аргументы и факты». «Песец» с топором. Как красноармеец Овчаренко в одиночку победил 50 фашистов
-  note: к факту 11
+  note: к фактам 6 и 12
 - href: https://tvzvezda.ru/news/2020491443-GVPpg.html
   title: Телеканал «Звезда» — о подвиге Дмитрия Овчаренко
-  note: к факту 11
+  note: к факту 12
 - href: https://statehistory.ru/701/Kak-krasnarmeets-Dmitriy-Ovcharenko-toporom-fashistov-zarubil/
   title: М. Колосов. «Люди и подвиги», очерк «Поэма о топоре»
-  note: к фактам 12 и 13
+  note: к фактам 7, 13 и 14
 kuda:
 - lbl: Следующий день
   href: index.html

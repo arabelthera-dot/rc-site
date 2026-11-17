@@ -1,33 +1,33 @@
 {
-  "title": "История в 47 секунд",
+  "title": "История в 46 секунд",
   "intro": "На эшафоте — восемнадцать лет и: «Всех не перевешаете, нас 170 миллионов»",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya.mp4",
     "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 47.1,
-    "mb": 13.2
+    "sec": 46.4,
+    "mb": 12.9
   },
   "vertical": {
     "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 47.1,
-    "mb": 12.8
+    "sec": 46.4,
+    "mb": 12.6
   },
   "poster": {
     "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/08jan-kosmodemyanskaya/day-08jan-kosmodemyanskaya-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
