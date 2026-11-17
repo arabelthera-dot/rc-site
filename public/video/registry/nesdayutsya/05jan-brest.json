@@ -1,33 +1,33 @@
 {
-  "title": "История в 59 секунд",
+  "title": "История в 49 секунд",
   "intro": "«Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 59.3,
-    "mb": 13.6
+    "sec": 49,
+    "mb": 13.1
   },
   "vertical": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 59.3,
-    "mb": 13.8
+    "sec": 49,
+    "mb": 12.4
   },
   "poster": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
