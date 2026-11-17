@@ -726,13 +726,42 @@ figures:
   podpis_kogda: 3 октября 1917 года
   pometka_prav: citirovanie-1274
 - src: /muzei/izobreteniya/img/02-11-goskatalog-91563887.jpg
-  alt: 'Кадр из музейного фонда: Модель летающей лодки М-5. 1914 г'
-  data_source: https://goskatalog.ru/portal/#/collections?id=69866241
-  license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
-  podpis: Модель летающей лодки М-5. 1914 г.
-  credit: 'Хранится: Филиал Федерального государственного бюджетного учреждения культуры "Государственный музей истории космонавтики имени К.Э. Циолковского" в городе Москве - "Научно-мемориальный музей профессора Н.Е. Жуковского". Госкаталог № 69592465'
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.8
   width: 1280
   height: 765
+  alt: Деревянная модель биплана-лодки на белом столе, крылья обтянуты светлой тканью, между ними стойки и тонкие растяжки, у лодки открытая кабина
+  data_source: https://goskatalog.ru/portal/#/collections?id=69866241
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Научно-мемориальный музей профессора Н. Е. Жуковского (филиал ГМИК им. К. Э. Циолковского, Москва) · Госкаталог
+  podpis: Модель летающей лодки М-5 Григоровича (сама лодка — 1914 год). Хранит Научно-мемориальный музей профессора Н. Е. Жуковского (филиал ГМИК им. К. Э. Циолковского, Москва).
+  credit: 'Хранится: Научно-мемориальный музей профессора Н. Е. Жуковского (филиал ГМИК им. К. Э. Циолковского, Москва). Госкаталог музейного фонда РФ, № 69592465.'
+  hint: Предмет · модель лодки М-5
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: net
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: net
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=69866241
+  nomer_predmeta: '69592465'
+  nomer_snimka: net
+  hranitel: Научно-мемориальный музей профессора Н. Е. Жуковского (филиал ГМИК им. К. Э. Циолковского, Москва)
+  podlinnik:
+    gde: Научно-мемориальный музей профессора Н. Е. Жуковского (филиал ГМИК им. К. Э. Циолковского, Москва)
+    otkuda: https://goskatalog.ru/portal/#/collections?id=69866241
+  svyashchennoe: false
+  podpis_chto: Модель летающей лодки М-5
+  podpis_gde: Москва, музей Н. Е. Жуковского
+  podpis_kogda: '1914'
+  pometka_prav: citirovanie-1274
 sources:
 - href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
   title: «История.РФ», «Бомбардировка Зонгулдака»
