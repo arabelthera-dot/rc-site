@@ -333,41 +333,41 @@ fakty:
     otvet: компас и бинокли
     otvet_edinstvennyj: true
     kadr:
-      src: /muzei/ne-sdayutsya/img/02-04-goskatalog-18554531.jpg
-      alt: 'Фотография: низкий тёмный миноносец с четырьмя трубами и мачтой идёт по спокойному морю, на мачте флаг.'
-      data_source: https://goskatalog.ru/portal/#/collections?id=18694575
+      src: /muzei/ne-sdayutsya/img/02-04-goskatalog-20119347.jpg
+      alt: 'Макет: длинный тёмный миноносец с четырьмя трубами и двумя мачтами стоит на подставке, на корме флаг.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=20151651
       license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-      podpis: Эскадренный миноносец «Стерегущий». Фотокопия со старой открытки.
-      credit: Щигровский краеведческий музей — филиал Курского областного краеведческого музея, Госкаталог № 18554531
-      width: 1600
-      height: 1086
-      vid: foto
+      podpis: Макет миноносца «Стерегущий». Дерево, стекло, 1970 год.
+      credit: Музей боевой славы воинов-сибиряков ФГБУ «Дом офицеров Новосибирского гарнизона» Министерства обороны Российской Федерации, Госкаталог № 20119347
+      width: 800
+      height: 242
+      vid: predmet
       glavnoe_na_kartinke:
-        x: 0.08
-        y: 0.25
-        w: 0.84
-        h: 0.5
+        x: 0.07
+        y: 0.0
+        w: 0.88
+        h: 0.65
       prava:
-        avtor: фотограф не указан (с открытки издания Н. Апостоли)
-        god_sozdaniya: снимок начала XX века, копия 1990-х годов
+        avtor: автор макета не указан
+        god_sozdaniya: 1970
         god_smerti_avtora: net
         god_reabilitacii: net
         anonim: true
-        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 18554531
+        pervaya_publikaciya: Госкаталог музейного фонда РФ, № 20119347
         sdelano_mashinoj: false
-        otkuda: Госкаталог, № предмета 18554531
+        otkuda: Госкаталог, № предмета 20119347
         baza: goskatalog
-        ssylka: https://goskatalog.ru/portal/#/collections?id=18694575
-      nomer_predmeta: Госкаталог № 18554531
-      nomer_snimka: goskatalog id 18694575
-      hranitel: Щигровский краеведческий музей — филиал Курского областного краеведческого музея
-      podpis_chto: Эскадренный миноносец «Стерегущий»
-      podpis_gde: море
-      podpis_kogda: начало XX века
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20151651
+      nomer_predmeta: Госкаталог № 20119347
+      nomer_snimka: goskatalog id 20151651
+      hranitel: Музей боевой славы воинов-сибиряков ФГБУ «Дом офицеров Новосибирского гарнизона» Министерства обороны Российской Федерации
+      podpis_chto: Макет миноносца «Стерегущий»
+      podpis_gde: Новосибирск, Музей боевой славы воинов-сибиряков
+      podpis_kogda: 1970 год
       simvolika_proverena: true
       podlinnik:
-        gde: Щигровский краеведческий музей — филиал Курского областного краеведческого музея
-        otkuda: Госкаталог музейного фонда РФ, № 18554531
+        gde: Музей боевой славы воинов-сибиряков ФГБУ «Дом офицеров Новосибирского гарнизона» Министерства обороны Российской Федерации
+        otkuda: Госкаталог музейного фонда РФ, № 20119347
       svyashchennoe: false
 - id: fakty-dnya
   kicker: Ещё пять фактов
