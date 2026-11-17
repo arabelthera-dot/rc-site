@@ -344,7 +344,7 @@ fakty:
     summary: Солдату грозило 5 лет — дело закрыли, и спасённый продолжил службу.
     det:
     - На рядового Максима Журавлёва завели дело о нарушении правил обращения с опасными предметами.
-    src: 'Источник: «Коммерсантъ». Спасённому рядовому грозит срок — https://www.kommersant.ru/doc/1903725; Амур.инфо. Дело рядового Журавлёва — https://www.amur.info/news/theme/58369'
+    src: 'Источник: «Коммерсантъ». Спасённому рядовому грозит срок — https://www.kommersant.ru/doc/1903725; Амур.инфо. Дело рядового Журавлёва — https://web.archive.org/web/20181207194524/http://www.amur.info/news/2012/04/24/58369'
     stranica: статья
     href: https://www.kommersant.ru/doc/1903725
     otryvok: «Теперь спасенному рядовому Максиму Журавлеву грозит до пяти лет лишения свободы.»
@@ -641,7 +641,7 @@ sources:
 - href: https://www.kommersant.ru/doc/1903725
   title: «Коммерсантъ». Спасённому рядовому грозит срок
   note: к факту 9
-- href: https://www.amur.info/news/theme/58369
+- href: https://web.archive.org/web/20181207194524/http://www.amur.info/news/2012/04/24/58369
   title: Амур.инфо. Дело рядового Журавлёва
   note: к факту 9
 - href: https://www.pravoslavie.ru/52546.html
@@ -774,7 +774,7 @@ istochniki:
 - id: n10
   baza: periodika
   nazvanie: Амур.инфо. Дело рядового Журавлёва
-  ssylka: https://www.amur.info/news/theme/58369
+  ssylka: https://web.archive.org/web/20181207194524/http://www.amur.info/news/2012/04/24/58369
 - id: n11
   baza: periodika
   nazvanie: Православие.ру. Комбат Солнечников
