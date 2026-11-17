@@ -536,42 +536,6 @@ figures:
     gde: Национальный музей Республики Татарстан
     otkuda: Госкаталог музейного фонда РФ, № 3566486
   svyashchennoe: false
-- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-22990285.jpg
-  alt: Тот же старый дом с другой стороны улицы.
-  data_source: https://goskatalog.ru/portal/#/collections?id=3803030
-  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-  podpis: Дом на углу улиц Профсоюзной и Мусы Джалиля, другой вид. Негатив
-  credit: Национальный музей Республики Татарстан, Госкаталог № 3566478
-  width: 800
-  height: 592
-  vid: foto
-  glavnoe_na_kartinke:
-    x: 0.05
-    y: 0.05
-    w: 0.9
-    h: 0.9
-  prava:
-    avtor: автор неизвестен
-    god_sozdaniya: вторая половина XX века
-    god_smerti_avtora: net
-    god_reabilitacii: net
-    anonim: true
-    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 3566478
-    sdelano_mashinoj: false
-    otkuda: Госкаталог, № предмета 3566478
-    baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=3803030
-  nomer_predmeta: Госкаталог № 3566478
-  nomer_snimka: goskatalog id 3803030
-  hranitel: Национальный музей Республики Татарстан
-  podpis_chto: Дом на углу улиц Профсоюзной и Мусы Джалиля, другой вид
-  podpis_gde: Оренбург
-  podpis_kogda: вторая половина XX века
-  simvolika_proverena: true
-  podlinnik:
-    gde: Национальный музей Республики Татарстан
-    otkuda: Госкаталог музейного фонда РФ, № 3566478
-  svyashchennoe: false
 - src: /muzei/ne-sdayutsya/img/02-07-goskatalog-9352007.jpg
   alt: Бюст поэта на постаменте.
   data_source: https://goskatalog.ru/portal/#/collections?id=11778774
@@ -644,6 +608,38 @@ figures:
     gde: Шарлыкский районный историко-краеведческий музей муниципального автономного учреждения культуры «Культурно-досуговый центр»
     otkuda: Госкаталог музейного фонда РФ, № 11681606
   svyashchennoe: false
+- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-62899620.jpg
+  alt: Тёмно-вишнёвая обложка книги с золотым тиснением — имя Мусы Джалиля и название «Моабитская тетрадь» на татарском и украинском, ниже абстрактный золотой рисунок
+  data_source: https://goskatalog.ru/portal/#/collections?id=50416879
+  license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
+  podpis: «Моабитская тетрадь» Мусы Джалиля — стихи, написанные в берлинской тюрьме Моабит в ожидании казни; издание на татарском и украинском языках, 1986 год. Хранит литературно-мемориальный комплекс Габдуллы Тукая, Казань.
+  credit: 'Джалиль М.. Хранится: Государственное бюджетное учреждение культуры "Государственный литературно-мемориальный музейный комплекс Габдуллы Тукая". Госкаталог № 50179865'
+  width: 450
+  height: 800
+  vid: dokument
+  glavnoe_na_kartinke: net
+  nomer_predmeta: К-107
+  nomer_snimka: '62899620'
+  hranitel: Государственное бюджетное учреждение культуры "Государственный литературно-мемориальный музейный комплекс Габдуллы Тукая"
+  podpis_chto: 'Книга. Моабит дәфтәре. Муса Джаліль. Моабітський зошит. Составитель украинских текстов Б.П.Степанюк; художник Р.З.Масаутов. «Моабитская тетрадь» — книга стихотворений выдающегося татарского поэта-антифашиста Муссы Джалиля (1906-1944), написанная им в гестаповских застенках в ожидании смертного приговора и казни. Книга в твёрдом переплёте. Страницы бумажные. Книга на тат. и укр.яз, 306стр. Коллекция: книги'
+  podpis_gde: net
+  podpis_kogda: '1986'
+  podlinnik:
+    gde: Государственное бюджетное учреждение культуры "Государственный литературно-мемориальный музейный комплекс Габдуллы Тукая"
+    otkuda: https://goskatalog.ru/portal/#/collections?id=50416879
+  svyashchennoe: false
+  prava:
+    avtor: Джалиль М.
+    god_sozdaniya: '1986'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=50416879
+    sdelano_mashinoj: false
+  hint: Книга · «Моабитская тетрадь», 1986
+  simvolika_proverena: true
 sources:
 - href: https://www.orenlib.ru/up/knigi_o_vojne/doc/Dzhalil_Moabitskaya_tetrad.pdf
   title: Оренбургская областная библиотека. «Моабитская тетрадь», предисловие к изданию
