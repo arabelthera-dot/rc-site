@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/29jan-susanin/day-29jan-susanin.mp4",
     "local": "muzei/ne-sdayutsya/video/day-29jan-susanin.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 46.5,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/29jan-susanin/day-29jan-susanin-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-29jan-susanin-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 46.5,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/29jan-susanin/day-29jan-susanin-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-29jan-susanin-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "nesdayutsya/29jan-susanin/day-29jan-susanin-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-29jan-susanin-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
