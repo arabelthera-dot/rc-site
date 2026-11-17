@@ -791,42 +791,42 @@ result:
   zvanie: '0 / 100 · звание: Гость дня'
   note: Баллы — за игру, ответы и викторину.
 figures:
-- src: /muzei/izobreteniya/img/02-18-goskatalog-20363657.jpg
+- src: /muzei/izobreteniya/img/02-18-goskatalog-40596646.jpg
   glavnoe_na_kartinke:
     x: 0.05
-    y: 0.2
+    y: 0.05
     w: 0.9
-    h: 0.6
-  width: 800
-  height: 533
-  alt: Длинный деревянный ящик, в нём вертикальный срез тёмной земли в трещинах, внизу цветная шкала
-  data_source: https://goskatalog.ru/portal/#/collections?id=20363657
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Самарский областной историко-краеведческий музей имени П. В. Алабина · Госкаталог
-  podpis: Почвенный монолит «Чернозём типичный тучный». Хранит Самарский областной историко-краеведческий музей имени П. В. Алабина.
-  credit: 'Хранится: Самарский областной историко-краеведческий музей имени П. В. Алабина. Госкаталог музейного фонда РФ, № 20226439.'
-  hint: Предмет · Почвенный монолит
-  vid: predmet
+    h: 0.9
+  width: 1600
+  height: 2282
+  alt: Серо-зелёный переплёт книги, наверху портрет бородатого человека, внизу надпись «В. В. Докучаев. Русский чернозём»
+  data_source: https://goskatalog.ru/portal/#/collections?id=40596646
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Семикаракорский историко-краеведческий музей · Госкаталог
+  podpis: Книга В. В. Докучаева «Русский чернозём. Отчёт Вольному экономическому обществу», издание 1936 года. Хранит Семикаракорский историко-краеведческий музей.
+  credit: 'Хранится: Семикаракорский историко-краеведческий музей. Госкаталог музейного фонда РФ, № 40372345.'
+  hint: Книга · «Русский чернозём», 1936
+  vid: dokument
   prava:
-    avtor: автор не указан
-    god_sozdaniya: net
-    god_smerti_avtora: net
+    avtor: Докучаев В. В.
+    god_sozdaniya: '1936'
+    god_smerti_avtora: 1903
     god_reabilitacii: net
-    anonim: true
-    pervaya_publikaciya: net
+    anonim: false
+    pervaya_publikaciya: '1883'
     sdelano_mashinoj: false
     otkuda: Госкаталог музейного фонда РФ
     baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=20363657
-  nomer_predmeta: '20226439'
+    ssylka: https://goskatalog.ru/portal/#/collections?id=40596646
+  nomer_predmeta: '40372345'
   nomer_snimka: net
-  hranitel: Самарский областной историко-краеведческий музей имени П. В. Алабина
+  hranitel: Семикаракорский историко-краеведческий музей
   podlinnik:
-    gde: Самарский областной историко-краеведческий музей имени П. В. Алабина
-    otkuda: https://goskatalog.ru/portal/#/collections?id=20363657
+    gde: Семикаракорский историко-краеведческий музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=40596646
   svyashchennoe: false
-  podpis_chto: Почвенный монолит «Чернозём типичный тучный»
-  podpis_gde: Самара
-  podpis_kogda: net
+  podpis_chto: Книга В. В. Докучаева «Русский чернозём. Отчёт Вольному экономическому обществу»
+  podpis_gde: Москва
+  podpis_kogda: '1936'
   pometka_prav: citirovanie-1274
 sources:
 - href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
@@ -882,6 +882,9 @@ sources:
   note: кадр
 - href: https://goskatalog.ru/portal/#/collections?id=15143922
   title: Госкаталог музейного фонда РФ, Медаль «100 лет со дня выхода книги В. В. Докучаева «Русский чернозём»»
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=40596646
+  title: Госкаталог музейного фонда РФ, Книга В. В. Докучаева «Русский чернозём. Отчёт Вольному экономическому обществу», 1936
   note: кадр
 kuda:
 - lbl: Следующий день
