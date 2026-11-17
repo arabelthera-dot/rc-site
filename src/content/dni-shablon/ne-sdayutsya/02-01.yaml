@@ -180,12 +180,10 @@ fakty:
     otryvok: «прикажи за Дон перейти, чтобы не было ни у одного мысли об отступлении»
     pometka: документ
     utverzhden: '2026-11-09'
-    sravnenie: пять сажен — около 10 метров, выше трёхэтажного дома
+    sravnenie: net
     id: ns-0201-f01
     istochnik: skazanie
-    dlya_voprosa: true
-    otvet: В схиме, без доспеха
-    otvet_edinstvennyj: true
+    dlya_voprosa: false
     kadr:
       src: /muzei/ne-sdayutsya/img/02-01-goskatalog-7116901.jpg
       alt: 'Гравюра: в храме святой в монашеском облачении благословляет коленопреклонённого князя, вокруг иноки и иконы.'
