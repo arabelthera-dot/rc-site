@@ -1,33 +1,33 @@
 {
-  "title": "История в 43 секунды",
+  "title": "История в 44 секунды",
   "intro": "Крошечный гарнизон отразил эскадру — враг не высадился",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk.mp4",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 43.2,
-    "mb": 12.1
+    "sec": 44.2,
+    "mb": 12
   },
   "vertical": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 43.2,
-    "mb": 11.4
+    "sec": 44.2,
+    "mb": 11.5
   },
   "poster": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
