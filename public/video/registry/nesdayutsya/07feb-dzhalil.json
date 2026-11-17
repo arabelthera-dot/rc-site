@@ -5,29 +5,29 @@
   "horizontal": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil.mp4",
     "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 52,
-    "mb": 9.8
+    "mb": 10.3
   },
   "vertical": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 52,
-    "mb": 9.6
+    "mb": 9.7
   },
   "poster": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
