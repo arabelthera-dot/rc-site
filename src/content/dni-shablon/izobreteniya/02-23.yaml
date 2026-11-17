@@ -61,6 +61,10 @@ istochniki:
   baza: periodika
   nazvanie: «Почему немцы так и не смогли скопировать советскую «Катюшу»» — журнал «Родина»
   ssylka: https://rodina-history.ru/2026/07/14/pochemu-nemcy-tak-i-ne-smogli-skopirovat-sovetskuiu-katiushu-raskryt-niuans.html
+- id: gk-37833501
+  baza: goskatalog
+  nazvanie: Фотография сюжетная «Залп гвардейских минометов», ГБУК РО «Раздорский этнографический музей-заповедник» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=37833501
 - id: gk-24410933
   baza: goskatalog
   nazvanie: Фотография «Артиллерийские реактивные установки "Катюша" РСМ-13 19-го Гвардейского минометного полка во время огневых залпов», МКУК «Музей истории и краеведения имени Ф.И. Моисеенко» — Госкаталог музейного фонда РФ
@@ -94,8 +98,8 @@ velichina_chislo: 40
 velichina_edinica: установок
 velichina_chto: столько «Катюш» заказали на весь 1941 год
 etiketka_oblozhki:
-- Фотография «Артиллерийские реактивные установки "Катюша" РСМ-13 во время огневых залпов»
-- МКУК «Музей истории и краеведения имени Ф.И. Моисеенко»
+- Залп гвардейских минометов, Украинский фронт, 1944–1945
+- ГБУК РО «Раздорский этнографический музей-заповедник»
 slovar:
 - tema:artilleriya
 head:
@@ -110,7 +114,7 @@ head:
     title: Первые в мире реактивные снаряды залпового огня «Катюша»
     description: 'Залп по квадрату вместо одного выстрела: из трёх установок на полигоне 1939 года выдержала одна, выпуск утвердили 21 июня 1941-го, а первая батарея накрыла Оршу.'
     url: https://russian-civilization.ru/muzei/izobreteniya/den/02-23/
-    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-23-goskatalog-24410933.jpg
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-23-goskatalog-45526995.jpg
   ld:
     '@context': https://schema.org
     '@type': Article
@@ -124,44 +128,44 @@ head:
     publisher:
       '@type': Organization
       name: Русская цивилизация
-    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-23-goskatalog-24410933.jpg
-oblozhka: &id001
-  src: /muzei/izobreteniya/img/02-23-goskatalog-24410933.jpg
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-23-goskatalog-45526995.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-23-goskatalog-45526995.jpg
   glavnoe_na_kartinke:
-    x: 0.2
-    y: 0.05
-    w: 0.75
-    h: 0.9
-  width: 658
-  height: 491
-  alt: 'Старая фотография: реактивная установка даёт залп в клубах дыма, слева со спины стоит солдат в шинели'
-  data_source: https://goskatalog.ru/portal/#/collections?id=24410933
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · МКУК «Музей истории и краеведения имени Ф.И. Моисеенко» · Госкаталог
-  podpis: Фотография «Артиллерийские реактивные установки "Катюша" РСМ-13 19-го Гвардейского минометного полка во время огневых залпов», XX век. Хранит МКУК «Музей истории и краеведения имени Ф.И. Моисеенко».
-  credit: 'Хранится: МКУК «Музей истории и краеведения имени Ф.И. Моисеенко». Госкаталог музейного фонда РФ, № 24268904.'
-  hint: Фото · Залп «Катюши»
+    x: 0.0
+    y: 0.2
+    w: 1.0
+    h: 0.75
+  width: 800
+  height: 506
+  alt: 'Старая фотография: три машины с реактивными установками, от первой уходит белая полоса снаряда, дым закрывает две другие машины'
+  data_source: https://goskatalog.ru/portal/#/collections?id=37833501
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · ГБУК РО «Раздорский этнографический музей-заповедник» · Госкаталог
+  podpis: Фотография сюжетная «Залп гвардейских минометов», Украинский фронт, 1944–1945. Хранит ГБУК РО «Раздорский этнографический музей-заповедник».
+  credit: 'Хранится: ГБУК РО «Раздорский этнографический музей-заповедник». Госкаталог музейного фонда РФ, № 37619898.'
+  hint: Фото · Залп гвардейских минометов, 1944–1945
   vid: foto
   prava:
     avtor: автор не указан
-    god_sozdaniya: XX век
+    god_sozdaniya: 1944–1945
     god_smerti_avtora: net
     god_reabilitacii: net
     anonim: true
-    pervaya_publikaciya: XX век
+    pervaya_publikaciya: net
     sdelano_mashinoj: false
     otkuda: Госкаталог музейного фонда РФ
     baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=24410933
-  nomer_predmeta: '24268904'
-  nomer_snimka: net
-  hranitel: МКУК «Музей истории и краеведения имени Ф.И. Моисеенко»
+    ssylka: https://goskatalog.ru/portal/#/collections?id=37833501
+  nomer_predmeta: РЭМЗ КП-10492
+  nomer_snimka: '45526995'
+  hranitel: ГБУК РО «Раздорский этнографический музей-заповедник»
   podlinnik:
-    gde: МКУК «Музей истории и краеведения имени Ф.И. Моисеенко»
-    otkuda: https://goskatalog.ru/portal/#/collections?id=24410933
+    gde: ГБУК РО «Раздорский этнографический музей-заповедник»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=37833501
   svyashchennoe: false
-  podpis_chto: Фотография «Артиллерийские реактивные установки "Катюша" РСМ-13 19-го Гвардейского минометного полка во время огневых залпов»
-  podpis_gde: СССР
-  podpis_kogda: XX век
+  podpis_chto: Фотография сюжетная «Залп гвардейских минометов»
+  podpis_gde: Украинский фронт
+  podpis_kogda: 1944–1945
   pometka_prav: citirovanie-1274
 kroshka: 23 февраля · «Катюша»
 lead:
@@ -303,7 +307,44 @@ fakty:
     otvet_edinstvennyj: true
   - n: 3
     sravnenie: net
-    kadr: *id001
+    kadr:
+      src: /muzei/izobreteniya/img/02-23-goskatalog-24410933.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.05
+        w: 0.75
+        h: 0.9
+      width: 658
+      height: 491
+      alt: 'Старая фотография: реактивная установка даёт залп в клубах дыма, слева со спины стоит солдат в шинели'
+      data_source: https://goskatalog.ru/portal/#/collections?id=24410933
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · МКУК «Музей истории и краеведения имени Ф.И. Моисеенко» · Госкаталог
+      podpis: Фотография «Артиллерийские реактивные установки "Катюша" РСМ-13 19-го Гвардейского минометного полка во время огневых залпов», XX век. Хранит МКУК «Музей истории и краеведения имени Ф.И. Моисеенко».
+      credit: 'Хранится: МКУК «Музей истории и краеведения имени Ф.И. Моисеенко». Госкаталог музейного фонда РФ, № 24268904.'
+      hint: Фото · Залп «Катюши»
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: XX век
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: XX век
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=24410933
+      nomer_predmeta: '24268904'
+      nomer_snimka: net
+      hranitel: МКУК «Музей истории и краеведения имени Ф.И. Моисеенко»
+      podlinnik:
+        gde: МКУК «Музей истории и краеведения имени Ф.И. Моисеенко»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=24410933
+      svyashchennoe: false
+      podpis_chto: Фотография «Артиллерийские реактивные установки "Катюша" РСМ-13 19-го Гвардейского минометного полка во время огневых залпов»
+      podpis_gde: СССР
+      podpis_kogda: XX век
+      pometka_prav: citirovanie-1274
     src: 'Источник: «Военно-исторический журнал», «Новые данные о действиях батареи реактивной артиллерии под командованием капитана И. А. Флёрова в Смоленском сражении 1941 года»'
     otryvok: Немцы приняли залп «Катюши» за химическое оружие и советовали солдатам защитные накидки
     stranica: «Новые данные о действиях батареи реактивной артиллерии под командованием капитана И. А. Флёрова в Смоленском сражении 1941 года» — «Военно-исторический журнал»
