@@ -87,8 +87,8 @@ velichina_chislo: 12
 velichina_edinica: киловатт
 velichina_chto: столько давала станция имени Коминтерна — больше Нью-Йорка, Парижа и Берлина вместе
 etiketka_oblozhki:
-- Фотография. М. А. Бонч-Бруевич, 1918
-- Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+- Передатчик станции имени Коминтерна, 1922
+- Центральный музей связи имени А. С. Попова
 slovar:
 - mesto:moskva
 - mesto:nizhniy-novgorod
@@ -104,7 +104,7 @@ head:
     title: Первая в мире мощная радиовещательная станция «Коминтерн», 1922
     description: 'Станция имени Коминтерна в Москве была мощнее радио Нью-Йорка, Парижа и Берлина, вместе взятых: 12 киловатт, медные лампы с водой из Нижнего и рекорд в 1600 километров.'
     url: https://russian-civilization.ru/muzei/izobreteniya/den/02-24/
-    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-24-goskatalog-13106658.jpg
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-24-goskatalog-51028252.jpg
   ld:
     '@context': https://schema.org
     '@type': Article
@@ -118,44 +118,44 @@ head:
     publisher:
       '@type': Organization
       name: Русская цивилизация
-    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-24-goskatalog-13106658.jpg
-oblozhka: &id001
-  src: /muzei/izobreteniya/img/02-24-goskatalog-13106658.jpg
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-24-goskatalog-51028252.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-24-goskatalog-51028252.jpg
   glavnoe_na_kartinke:
     x: 0.2
-    y: 0.05
-    w: 0.6
-    h: 0.9
-  width: 610
-  height: 540
-  alt: 'Старая фотография: мужчина в тёмном костюме с бабочкой, с усами и залысинами, смотрит в объектив'
-  data_source: https://goskatalog.ru/portal/#/collections?id=13106658
-  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского · Госкаталог
-  podpis: Фотография «Бонч-Бруевич М. А. (1888–1940), основатель советской радиоламповой промышленности», 1918. Хранит Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского.
-  credit: 'Хранится: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского. Госкаталог музейного фонда РФ, № 14077740.'
-  hint: Фото · Бонч-Бруевич
+    y: 0.2
+    w: 0.5
+    h: 0.3
+  width: 800
+  height: 599
+  alt: 'Старая фотография: длинный деревянный щит, на полке в ряд стоят большие стеклянные радиолампы, над ними провода'
+  data_source: https://goskatalog.ru/portal/#/collections?id=51028252
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог
+  podpis: Передатчик радиостанции имени Коминтерна 1922 года в экспозиции Музея народной связи, Ленинград, 1932. Хранит Центральный музей связи имени А. С. Попова.
+  credit: 'Хранится: Центральный музей связи имени А. С. Попова. Госкаталог музейного фонда РФ, № 50781046.'
+  hint: Фото · Передатчик станции Коминтерна
   vid: foto
   prava:
     avtor: автор не указан
-    god_sozdaniya: '1918'
+    god_sozdaniya: '1932'
     god_smerti_avtora: net
     god_reabilitacii: net
     anonim: true
-    pervaya_publikaciya: '1918'
-    sdelano_mashinoj: false
+    pervaya_publikaciya: '1932'
     otkuda: Госкаталог музейного фонда РФ
     baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=13106658
-  nomer_predmeta: '14077740'
-  nomer_snimka: net
-  hranitel: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+    ssylka: https://goskatalog.ru/portal/#/collections?id=51028252
+    sdelano_mashinoj: false
+  nomer_predmeta: '50781046'
+  nomer_snimka: '63744386'
+  hranitel: Центральный музей связи имени А. С. Попова
   podlinnik:
-    gde: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
-    otkuda: https://goskatalog.ru/portal/#/collections?id=13106658
+    gde: Центральный музей связи имени А. С. Попова
+    otkuda: https://goskatalog.ru/portal/#/collections?id=51028252
   svyashchennoe: false
-  podpis_chto: Фотография «Бонч-Бруевич М. А. (1888–1940), основатель советской радиоламповой промышленности»
-  podpis_gde: Россия
-  podpis_kogda: '1918'
+  podpis_chto: Фотография «Экспозиция отдела радио и телевидения Музея народной связи. Передатчик для радиостанции им. Коминтерна 1922 года»
+  podpis_gde: Ленинград
+  podpis_kogda: '1932'
   pometka_prav: citirovanie-1274
 kroshka: 24 февраля · Станция имени Коминтерна
 lead:
@@ -235,7 +235,44 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    kadr: *id001
+    kadr:
+      src: /muzei/izobreteniya/img/02-24-goskatalog-13106658.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.05
+        w: 0.6
+        h: 0.9
+      width: 610
+      height: 540
+      alt: 'Старая фотография: мужчина в тёмном костюме с бабочкой, с усами и залысинами, смотрит в объектив'
+      data_source: https://goskatalog.ru/portal/#/collections?id=13106658
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского · Госкаталог
+      podpis: Фотография «Бонч-Бруевич М. А. (1888–1940), основатель советской радиоламповой промышленности», 1918. Хранит Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского.
+      credit: 'Хранится: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского. Госкаталог музейного фонда РФ, № 14077740.'
+      hint: Фото · Бонч-Бруевич
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1918'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1918'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=13106658
+      nomer_predmeta: '14077740'
+      nomer_snimka: net
+      hranitel: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+      podlinnik:
+        gde: Музей «Нижегородская радиолаборатория» ННГУ им. Н. И. Лобачевского
+        otkuda: https://goskatalog.ru/portal/#/collections?id=13106658
+      svyashchennoe: false
+      podpis_chto: Фотография «Бонч-Бруевич М. А. (1888–1940), основатель советской радиоламповой промышленности»
+      podpis_gde: Россия
+      podpis_kogda: '1918'
+      pometka_prav: citirovanie-1274
     src: 'Источник: Виртуальный компьютерный музей, «Нижегородская радиолаборатория»'
     otryvok: Одна московская станция «Коминтерн» била мощнее Нью-Йорка, Парижа и Берлина, вместе взятых
     stranica: «Нижегородская радиолаборатория» — Виртуальный компьютерный музей
