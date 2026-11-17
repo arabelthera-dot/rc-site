@@ -1,7 +1,7 @@
 {
   "title": "История в 52 секунды",
   "intro": "Накрыл собой боевую гранату — и спас солдат",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43906013092) из сценария days/ns25feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/25feb-solnechnikov/day-25feb-solnechnikov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-25feb-solnechnikov.mp4",

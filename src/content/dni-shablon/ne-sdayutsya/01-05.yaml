@@ -77,7 +77,7 @@ video:
   intro: «Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе
   poster: /muzei/ne-sdayutsya/video/day-05jan-brest-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-05jan-brest.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41872718715) из сценария days/ns05jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Бой, который крепость приняла в первый час

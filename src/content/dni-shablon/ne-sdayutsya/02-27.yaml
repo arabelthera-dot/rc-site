@@ -105,7 +105,7 @@ video:
   intro: Казаки выдержали «осадное сидение» против армии — и не сдали крепость
   poster: /muzei/ne-sdayutsya/video/day-27feb-azov-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-27feb-azov.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-27.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Азовское осадное сидение

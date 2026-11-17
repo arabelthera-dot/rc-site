@@ -1,7 +1,7 @@
 {
   "title": "История в 47 секунд",
   "intro": "Девяносто против двух тысяч — выжили шестеро, не отступил никто",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/22jan-6-rota/day-22jan-6-rota.mp4",
     "local": "muzei/ne-sdayutsya/video/day-22jan-6-rota.mp4",

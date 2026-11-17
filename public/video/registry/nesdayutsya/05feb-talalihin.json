@@ -1,7 +1,7 @@
 {
   "title": "История в 48 секунд",
   "intro": "Патроны кончились — ночью Талалихин винтом отрубил хвост «Хейнкелю» и остался жив.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43689939210) из сценария days/ns05feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/05feb-talalihin/day-05feb-talalihin.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05feb-talalihin.mp4",

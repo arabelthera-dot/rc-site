@@ -90,7 +90,7 @@ video:
   intro: Ему предложили снять крест — он не снял
   poster: /muzei/ne-sdayutsya/video/day-23jan-rodionov-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-23jan-rodionov.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns23jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Застава на чеченской границе

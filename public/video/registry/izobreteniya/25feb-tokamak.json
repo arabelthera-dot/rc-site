@@ -1,7 +1,7 @@
 {
   "title": "История в 54 секунды",
   "intro": "Слово «токамак» во всех языках мира русское: магнитную бутылку для звезды построили в Москве",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43853031068) из сценария days/25feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/25feb-tokamak/day-25feb-tokamak.mp4",
     "local": "muzei/izobreteniya/video/day-25feb-tokamak.mp4",

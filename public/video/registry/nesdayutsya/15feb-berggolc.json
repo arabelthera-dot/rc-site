@@ -1,7 +1,7 @@
 {
   "title": "История в 54 секунды",
   "intro": "Немцы внесли её в список на расстрел сразу после взятия города — за стихи по радио.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905046173) из сценария days/ns15feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc.mp4",
     "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc.mp4",

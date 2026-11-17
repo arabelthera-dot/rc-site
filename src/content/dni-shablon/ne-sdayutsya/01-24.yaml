@@ -89,7 +89,7 @@ video:
   intro: Перевал держали в мороз — и не сошли
   poster: /muzei/ne-sdayutsya/video/day-24jan-shipka-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-24jan-shipka.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns24jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Запертые двери Балкан

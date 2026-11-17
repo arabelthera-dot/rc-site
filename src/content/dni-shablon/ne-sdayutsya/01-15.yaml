@@ -85,7 +85,7 @@ video:
   intro: Лёд раздавил корабль — и 104 человека со льдины вынесли лётчики, всех до одного
   poster: /muzei/ne-sdayutsya/video/day-15jan-chelyuskincy-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-15jan-chelyuskincy.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns15jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Пройти Север за одну навигацию

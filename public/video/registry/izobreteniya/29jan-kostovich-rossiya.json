@@ -1,7 +1,7 @@
 {
   "title": "История в 52 секунды",
   "intro": "Костович создал первый в мире дирижабль на жёстком каркасе — крупнее всех кораблей до него — и посадил людей прямо внутрь.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43712683352) из сценария days/29jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/29jan-kostovich-rossiya/day-29jan-kostovich-rossiya.mp4",
     "local": "muzei/izobreteniya/video/day-29jan-kostovich-rossiya.mp4",

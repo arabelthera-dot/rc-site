@@ -1,7 +1,7 @@
 {
   "title": "История в 50 секунд",
   "intro": "В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905384801) из сценария days/ns22feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/22feb-mat-mariya/day-22feb-mat-mariya.mp4",
     "local": "muzei/ne-sdayutsya/video/day-22feb-mat-mariya.mp4",

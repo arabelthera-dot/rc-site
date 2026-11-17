@@ -1,7 +1,7 @@
 {
   "title": "История в 41 секунду",
   "intro": "4 февраля 1993 года. «Знамя-2» — русское зеркало в космосе — впервые в мире зажгло ночь над Европой.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43676920713) из сценария days/04feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/04feb-znamya/day-04feb-znamya.mp4",
     "local": "muzei/izobreteniya/video/day-04feb-znamya.mp4",

@@ -1,7 +1,7 @@
 {
   "title": "История в 49 секунд",
   "intro": "Рыбацкий траулер против трёх эсминцев — флаг не спустили",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns27jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/27jan-tuman/day-27jan-tuman.mp4",
     "local": "muzei/ne-sdayutsya/video/day-27jan-tuman.mp4",

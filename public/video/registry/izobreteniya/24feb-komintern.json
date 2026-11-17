@@ -1,7 +1,7 @@
 {
   "title": "История в 47 секунд",
   "intro": "Двенадцати киловатт в эфире не было ни у кого в мире: Москву слушала Европа, а лампы для станции точили руками",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43903950067) из сценария days/24feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern.mp4",
     "local": "muzei/izobreteniya/video/day-24feb-komintern.mp4",

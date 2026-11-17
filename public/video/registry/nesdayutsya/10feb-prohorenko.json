@@ -1,7 +1,7 @@
 {
   "title": "История в 46 секунд",
   "intro": "Вызвал огонь на себя — «Вызываю огонь на себя»",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43904739195) из сценария days/ns10feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko.mp4",
     "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko.mp4",

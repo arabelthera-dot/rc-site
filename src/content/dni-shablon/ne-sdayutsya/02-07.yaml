@@ -104,7 +104,7 @@ video:
   intro: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
   poster: /muzei/ne-sdayutsya/video/day-07feb-dzhalil-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-07feb-dzhalil.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43607250995) из сценария days/ns07feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Муса Джалиль

@@ -1,7 +1,7 @@
 {
   "title": "История в 49 секунд",
   "intro": "Крепостной мастер Эльманов пустил вагонетки по одному брусу на столбах за полвека до английских патентов",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905054444) из сценария days/14feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/14feb-elmanov/day-14feb-elmanov.mp4",
     "local": "muzei/izobreteniya/video/day-14feb-elmanov.mp4",

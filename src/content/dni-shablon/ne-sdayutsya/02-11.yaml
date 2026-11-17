@@ -106,7 +106,7 @@ video:
   intro: Ледокол против крейсера — бой приняли и флаг не спустили
   poster: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 43596426956) из сценария days/ns11feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Ледокол «Сибиряков»

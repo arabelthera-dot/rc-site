@@ -1,7 +1,7 @@
 {
   "title": "История в 42 секунды",
   "intro": "1869 год. Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43858827929) из сценария days/08feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev.mp4",
     "local": "muzei/izobreteniya/video/day-08feb-mendeleev.mp4",

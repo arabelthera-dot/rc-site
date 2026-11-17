@@ -1,7 +1,7 @@
 {
   "title": "История в 51 секунду",
   "intro": "Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43904280727) из сценария days/ns09feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva.mp4",
     "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva.mp4",

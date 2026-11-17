@@ -1,7 +1,7 @@
 {
   "title": "История в 52 секунды",
   "intro": "Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43899337861) из сценария days/ns07feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil.mp4",
     "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil.mp4",

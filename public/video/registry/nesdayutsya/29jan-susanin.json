@@ -1,7 +1,7 @@
 {
   "title": "История в 47 секунд",
   "intro": "Завёл отряд в лес — и не вывел",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns29jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/29jan-susanin/day-29jan-susanin.mp4",
     "local": "muzei/ne-sdayutsya/video/day-29jan-susanin.mp4",

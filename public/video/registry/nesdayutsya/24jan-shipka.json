@@ -1,7 +1,7 @@
 {
   "title": "История в 44 секунды",
   "intro": "Перевал держали в мороз — и не сошли",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns24jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/24jan-shipka/day-24jan-shipka.mp4",
     "local": "muzei/ne-sdayutsya/video/day-24jan-shipka.mp4",

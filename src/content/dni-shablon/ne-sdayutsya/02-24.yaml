@@ -103,7 +103,7 @@ video:
   intro: Слепой и парализованный, он написал книгу, на которой выросло поколение
   poster: /muzei/ne-sdayutsya/video/day-24feb-ostrovskij-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-24feb-ostrovskij.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-24.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Николай Островский

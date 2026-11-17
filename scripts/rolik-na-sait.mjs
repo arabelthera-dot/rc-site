@@ -133,7 +133,7 @@ function primenit(teg) {
       fajly.push(path.relative(KOREN, zapisatVypusk(PUB, vypusk, {
         title: `История в ${sekund(Math.round(m.fajly['16x9'].sec))}`,
         intro: est?.intro || m.hook, // крючок страницы главнее: день один, хук один
-        note: `Ролик собран в облаке rc-rolik (render.yml, прогон ${m.run}) из сценария days/${m.den}.json и кадров дня. Закадровый текст озвучен синтезом речи.`,
+        note: 'Закадровый текст озвучен синтезом речи.',
         horizontal: fail('', 1920, 1080, m.fajly['16x9']),
         vertical: fail('-9x16', 1080, 1920, m.fajly['9x16']),
         poster: { file: `${vypusk}/day-${imya}-poster.jpg`, local: `${VIDEO}/day-${imya}-poster.jpg`, v },

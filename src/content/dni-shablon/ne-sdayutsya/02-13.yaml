@@ -105,7 +105,7 @@ video:
   intro: 'Немцы дали час: выдайте майора Гаврилова. Форт ответил: драться до конца'
   poster: /muzei/ne-sdayutsya/video/day-13feb-gavrilov-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-13feb-gavrilov.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/02-13.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Пётр Гаврилов

@@ -1,7 +1,7 @@
 {
   "title": "История в 46 секунд",
   "intro": "Экипаж боролся за лодку, пока она не ушла на дно — и не сдался",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43905549160) из сценария days/ns23feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec.mp4",
     "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec.mp4",

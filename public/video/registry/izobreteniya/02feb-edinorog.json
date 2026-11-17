@@ -1,7 +1,7 @@
 {
   "title": "История в 45 секунд",
   "intro": "Русский «единорог» первым в мире стрелял ядром, гранатой и картечью из одного ствола.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 43676918911) из сценария days/02feb.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/02feb-edinorog/day-02feb-edinorog.mp4",
     "local": "muzei/izobreteniya/video/day-02feb-edinorog.mp4",

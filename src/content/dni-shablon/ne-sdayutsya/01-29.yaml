@@ -86,7 +86,7 @@ video:
   intro: Завёл отряд в лес — и не вывел
   poster: /muzei/ne-sdayutsya/video/day-29jan-susanin-poster.jpg?v=1
   mp4: /muzei/ne-sdayutsya/video/day-29jan-susanin.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns29jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Смута, новый царь и костромская глушь

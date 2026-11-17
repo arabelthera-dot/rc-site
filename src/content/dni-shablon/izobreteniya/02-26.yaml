@@ -840,4 +840,4 @@ video:
   intro: Как Лебедев сделал резину из спирта и обогнал мир.
   poster: video/day-26feb-kauchuk-poster.jpg?v=1
   mp4: video/day-26feb-kauchuk.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml) из сценария days/26feb.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
