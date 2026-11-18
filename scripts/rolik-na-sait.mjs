@@ -1,11 +1,13 @@
 // Ролик и аудиогид из облака — на сайт заявкой (r538, Р524/Р525/Р529; корень «забыл ролик»).
 // Пять вопросов до изменения (Сергей, 28.09.2026):
-// Что задевает — public/muzei/<музей>/video/ (ролики, обложки, субтитры .vtt и текст .txt, если есть в выпуске), public/muzei/<музей>/<audioSrc>.mp3 (гид) и файл
+// Что задевает — public/muzei/<музей>/video/ (обложки, субтитры .vtt и текст .txt, если есть в выпуске), public/muzei/<музей>/<audioSrc>.mp3 (гид) и файл
 //   выпуска public/video/registry/<реестр>/<imya>.json; страницу дня не трогает (ключ video в дне уже указывает на выпуск).
+//   mp4 (Р825) — не в public/, а в папку $MEDIA_VYHOD (путь от корня сайта) и строкой в src/data/hranilishche-rolikov.sha256;
+//   rolik-na-sait.yml докладывает папку в хранилище media.russian-civilization.ru до push заявки.
 // Что нужно — выпуски rc-rolik: render.yml публикует vypusk-<день>-<прогон> (по полю sajt в days/<день>.json),
 //   audiogid.yml — vypusk-ag-<музей>-<день>-<прогон> (по muzei и audioguide.audioSrc дня); в каждом vypusk.json.
 // Что будет без нужного — ролик лежит в артефакте облака 14 дней и на сайт не приходит, пока его не перенесут руками.
-// Проверка до слияния — заявка бота проходит сборку (DenMedia требует файл ролика) и все проверки сайта.
+// Проверка до слияния — заявка бота проходит сборку (DenMedia требует ролик в public/ или в манифесте) и все проверки сайта.
 // Откат — revert заявки выпуска; выключить машину — удалить .github/workflows/rolik-na-sait.yml.
 // Запуск: node scripts/rolik-na-sait.mjs spisok — новые выпуски (по одному последнему на место), тег в строке;
 //   node scripts/rolik-na-sait.mjs primenit <тег> — разложить выпуск в public/ и записать реестр; путь — в выводе.
@@ -18,6 +20,7 @@ import os from 'node:os';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
+import { dopisat, MANIFEST } from './hranilishche-rolikov.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const PUB = path.join(KOREN, 'public');
@@ -106,6 +109,15 @@ function primenit(teg) {
       fs.copyFileSync(ot, path.join(PUB, kuda));
       fajly.push(`public/${kuda}`);
     };
+    // ролик — в папку для хранилища и в манифест (Р825): в public/ и git mp4 больше нет
+    const vHranilishche = (imya, kuda) => {
+      if (!process.env.MEDIA_VYHOD) throw new Error(`${teg}: нет MEDIA_VYHOD — куда класть ролик для хранилища`);
+      const ot = path.join(tmp, imya), v = path.join(process.env.MEDIA_VYHOD, kuda);
+      fs.mkdirSync(path.dirname(v), { recursive: true });
+      fs.copyFileSync(ot, v);
+      dopisat(kuda, ot, path.join(KOREN, MANIFEST));
+      fajly.push(`хранилище ${kuda}`);
+    };
     if (m.vid === 'rolik') for (const f of ['16x9', '9x16']) {
       const x = m.fajly?.[f], mp4 = path.join(tmp, `day-${m.imya}${f === '9x16' ? '-9x16' : ''}.mp4`);
       if (!(x?.sec > 0 && x?.mb > 0)) throw new Error(`${teg}: в vypusk.json нет длительности или размера ${f}`);
@@ -119,7 +131,10 @@ function primenit(teg) {
       console.log(`гид ${m.muzei} ${m.den} → public/muzei/${m.muzei}/${m.fajl}, ${m.sec} с, прогон ${m.run}`);
     } else {
       const VIDEO = `muzei/${m.muzei}/video`, { imya, mesto: vypusk } = m;
-      for (const suf of ['', '-9x16']) for (const x of ['.mp4', '-poster.jpg']) vzyat(`day-${imya}${suf}${x}`, `${VIDEO}/day-${imya}${suf}${x}`);
+      for (const suf of ['', '-9x16']) {
+        vHranilishche(`day-${imya}${suf}.mp4`, `${VIDEO}/day-${imya}${suf}.mp4`);
+        vzyat(`day-${imya}${suf}-poster.jpg`, `${VIDEO}/day-${imya}${suf}-poster.jpg`);
+      }
       // Субтитры WebVTT и текст ролика (r725 п.131, п.138) — необязательны: старые выпуски их не несут, страница без них как раньше.
       for (const x of ['.vtt', '.txt']) {
         const ot = path.join(tmp, `day-${imya}${x}`);
@@ -130,7 +145,7 @@ function primenit(teg) {
       const est = chitat(PUB).releases?.[vypusk];
       const v = est ? (est.horizontal?.v ?? 1) + 1 : 1; // новая версия — сбросить кэш у зрителя
       const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
-      fajly.push(path.relative(KOREN, zapisatVypusk(PUB, vypusk, {
+      fajly.push(MANIFEST, path.relative(KOREN, zapisatVypusk(PUB, vypusk, {
         title: `История в ${sekund(Math.round(m.fajly['16x9'].sec))}`,
         note: 'Закадровый текст озвучен синтезом речи.',
         horizontal: fail('', 1920, 1080, m.fajly['16x9']),

@@ -2,6 +2,7 @@
 # rc-rolik публикует собранное как выпуск (render.yml — vypusk-<день>-<прогон>, audiogid.yml — vypusk-ag-…);
 # здесь машина по сигналу rc-rolik (repository_dispatch rolik-gotov, Р737 п.15) и для страховки раз в час забирает новые выпуски (scripts/rolik-na-sait.mjs spisok), на каждый — своя ветка
 # avto/rolik-<тег>, файлы в public/muzei/<музей>/ и запись реестра public/video/registry/<реестр>/<imya>.json,
+# mp4 — не в public/, а в хранилище media.russian-civilization.ru (до push) и строкой в src/data/hranilishche-rolikov.sha256 (Р825),
 # заявка (автослияние — только у расписания). Руками mp4 и mp3 на сайт никто не носит. Одобрение ждущих проверок — как glazami-hrapovik.
 # Ролик и гид одного дня — одна заявка (Р790 п.6): spisok даёт строку «<ветка> <тег>…» на день; есть открытая заявка
 # этого дня — новый выпуск дописывается в её ветку (обычный push), ссылка на выпуск — в тело; одна проверка вместо двух.
@@ -50,6 +51,11 @@ jobs:
       # deploy.yml (GitHub Docs «Triggering a workflow from a workflow»; #1574, 18.11 — сайт не выложился). Нет секрета — github.token.
       SLIYANIE_TOKEN: ${{ secrets.SLIYANIE_TOKEN || github.token }}
       TEG: ${{ inputs.teg }}
+      # Р825: хранилище роликов — те же ключ, сервер и проходы, что у шага «ролики в хранилище» deploy.yml
+      MEDIA_KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
+      IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+      MOST: ${{ vars.RU_MOST }}
+      MOST2: ${{ vars.RU_MOST2 }}
     steps:
       # без public/ целиком: скрипт пишет только файлы выпуска (git add --sparse)
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -58,6 +64,7 @@ jobs:
             /scripts/
             /public/video/registry/
             /src/data/museums.json
+            /src/data/hranilishche-rolikov.sha256
             /package.json
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -70,6 +77,20 @@ jobs:
           # push не видит общего коммита и шлёт всё дерево с дозагрузкой всех роликов: 10 мин и HTTP 500 (Р820).
           # push.negotiate — сервер сам называет общие коммиты; свежий main перед push — запас, если переговоры не пройдут.
           git config push.negotiate true
+          # Ролики выпуска копятся здесь (путь от корня сайта) и уходят в хранилище перед push ветки (Р825).
+          export MEDIA_VYHOD="$RUNNER_TEMP/media-vyhod"
+          v_hranilishche() {
+            find "$MEDIA_VYHOD" -name '*.mp4' 2>/dev/null | grep -q . || return 0
+            [ -n "$MEDIA_KLYUCH" ] || { echo "::error::нет секрета MEDIA_SSH_KEY — ролик не в хранилище, заявки нет"; return 1; }
+            most=$(scripts/prohod-v-rossiyu.sh) || return 1
+            S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
+            # без --delete — только докладываем; --checksum — как в deploy.yml (r790)
+            rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' \
+              -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $most" \
+              "$MEDIA_VYHOD/" rcmedia@185.149.145.227: | tail -n 4
+            kod=${PIPESTATUS[0]}; rm -rf "$S"; [ "$kod" = 0 ] || { echo "::error::ролики не доложены в хранилище (rsync $kod) — заявки нет"; return 1; }
+            rm -rf "$MEDIA_VYHOD"
+          }
           # брак выпуска (нет файла, не mp4, чужой музей) — прогон красный в конце, не молча (r544)
           brak=0
           if [ -n "$TEG" ]; then spisok="avto/rolik-$TEG $TEG"; else spisok=$(node scripts/rolik-na-sait.mjs spisok) || brak=1; fi
@@ -88,7 +109,7 @@ jobs:
             vyvod=; ssylki=; pervaya=
             for teg in $tegi; do
               v=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился — на сайт не идёт"; echo "- $teg — брак, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; continue; }
-              git add --sparse public/
+              git add --sparse public/ src/data/hranilishche-rolikov.sha256
               git diff --cached --quiet && { echo "$teg: на сайте уже то же самое"; continue; }
               p1=$(printf '%s\n' "$v" | head -1)
               git commit -q -m "[avto] $p1 ($teg)"
@@ -99,6 +120,7 @@ jobs:
           "
             done
             [ -n "$pervaya" ] || continue
+            v_hranilishche || { echo "- $tegi — ролик не в хранилище, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; rm -rf "$MEDIA_VYHOD"; continue; }
             git fetch -q --depth=1 --filter=blob:none origin main
             if [ -n "$nomer" ]; then git push -q origin "$VETKA"; else git push -q -f origin "$VETKA"; fi
             telo="Выпуск облака на сайт (r538): $ssylki
