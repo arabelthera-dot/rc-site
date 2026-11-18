@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc.mp4",
     "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 54.3,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 54.3,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
