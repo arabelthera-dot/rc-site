@@ -380,6 +380,7 @@ jobs:
       - name: сайт в релиз
         run: |
           set -euo pipefail
+          mkdir -p paket
           tar -czf paket/sayt.tar.gz -C dist .
           (cd paket && sha256sum sayt.tar.gz > sayt.sha256)
           echo "paket: sayt.tar.gz $(du -m paket/sayt.tar.gz | cut -f1) МБ, $(cat paket/sayt.sha256)"
