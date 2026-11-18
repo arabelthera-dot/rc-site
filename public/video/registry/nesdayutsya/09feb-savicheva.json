@@ -1,33 +1,33 @@
 {
-  "title": "История в 51 секунду",
+  "title": "История в 55 секунд",
   "intro": "Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva.mp4",
     "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 50.6,
-    "mb": 12.9
+    "sec": 54.7,
+    "mb": 13.6
   },
   "vertical": {
     "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 50.6,
-    "mb": 12.1
+    "sec": 54.7,
+    "mb": 12.5
   },
   "poster": {
     "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/09feb-savicheva/day-09feb-savicheva-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-09feb-savicheva-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }

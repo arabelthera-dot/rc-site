@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova.mp4",
     "local": "muzei/ne-sdayutsya/video/day-16feb-portnova.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 49.7,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 49.7,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
