@@ -198,6 +198,11 @@ jobs:
       ADRES: ${{ vars.RU_DEPLOY_URL }}
       RU_SAYT_MAX_MB: ${{ vars.RU_SAYT_MAX_MB }}
       RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
+      # Проход в Россию (18.11.2026, без Михаила): msk-new с 13.11 закрыт из-за границы, а изнутри РФ открыт. vars.RU_MOST —
+      # адрес туннеля Cloudflare (trycloudflare.com) до нашего сервера, где узкий проход ведёт только на 185.149.145.227:22
+      # через РФ-выход (~/tools/rf-most). ssh идёт сквозь туннель как через ProxyJump: ключ RU_DEPLOY_KEY из облака не
+      # выходит, сервер сверяется по IZVESTNYE — подмена по пути невозможна. Пусто — прямой путь, как прежде (откат).
+      MOST: ${{ vars.RU_MOST }}
     steps:
       - id: est
         run: |
@@ -207,6 +212,18 @@ jobs:
           else
             echo "est=true" >> "$GITHUB_OUTPUT"
           fi
+      - name: проход в Россию
+        if: steps.est.outputs.est == 'true' && env.MOST != ''
+        run: |
+          set -euo pipefail
+          # Версия и контрольная сумма закреплены: чужой файл не запустится.
+          curl -fsSL -o "$RUNNER_TEMP/cloudflared" https://github.com/cloudflare/cloudflared/releases/download/2026.11.1/cloudflared-linux-amd64
+          echo "97bb3b02d23a5980fc9c15a1a270e692da1923f103f920d5b16d4931d5ab55e7  $RUNNER_TEMP/cloudflared" | sha256sum -c -
+          chmod +x "$RUNNER_TEMP/cloudflared"
+          printf '#!/bin/sh\nexec "%s" access tcp --hostname "%s"\n' "$RUNNER_TEMP/cloudflared" "$MOST" > "$RUNNER_TEMP/most.sh"
+          chmod +x "$RUNNER_TEMP/most.sh"
+          echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most.sh" >> "$GITHUB_ENV"
+          echo "msk-new: выкладка через проход $MOST"
       - if: steps.est.outputs.est == 'true'
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
@@ -236,7 +253,7 @@ jobs:
           umask 077; S="$RUNNER_TEMP/ssh-media"; mkdir -p "$S"
           printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"
           printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
-          SSH="ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30"
+          SSH="ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30 ${SSH_MOST:-}"
           # --checksum (r790): ролики после скачивания артефакта — с новым временем, без него rsync перечитывал и
           # переписывал все 163 файла (13.11: 2 мин 15 с); со сверкой содержимого уходят только новые и изменённые.
           rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' -e "$SSH" video-sajta/ rcmedia@185.149.145.227: | tail -n 6
@@ -279,7 +296,7 @@ jobs:
           umask 077; S="$RUNNER_TEMP/ssh-sayt"; mkdir -p "$S"
           printf '%s\n' "$KLYUCH" > "$S/klyuch"
           printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
-          SSH="ssh -i $S/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30"
+          SSH="ssh -i $S/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30 ${SSH_MOST:-}"
           # --checksum (r790): сборка каждый раз новая, у всех файлов новое время — без сверки содержимого rsync гнал
           # все 18 313 файлов (2,5 ГБ, 13.11: «regular files transferred 18,313», 4 мин 50 с), хотя менялось ~28 МБ.
           # Со сверкой уходят и подменяются только изменённые; у остальных лишь обновится время. Как в мире — man rsync,
@@ -287,7 +304,7 @@ jobs:
           rsync -rlptz --checksum --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$KUDA:" | tail -n 15
           rm -rf "$S"
           echo "msk-new: выложено в $KUDA — $(find dist -type f | wc -l) файлов"
-          if [ -n "$ADRES" ]; then
+          if [ -n "$ADRES" ] && [ -z "$MOST" ]; then
             kod=$(curl -s -o /dev/null -w '%{http_code}' "$ADRES") || kod=нет
             echo "проверка $ADRES — код $kod"
             [ "$kod" = 200 ] || echo "::warning::msk-new: $ADRES ответил $kod"
@@ -328,7 +345,8 @@ jobs:
   # прогон без карточки; проверка — zhivoy-sayt.yml на заявке; откат — убрать эту задачу.
   zhivoy:
     needs: msk
-    if: needs.msk.outputs.est == 'true'
+    # С проходом (vars.RU_MOST) облако до https сервера не достаёт — живой сайт проверяется с нашего сервера через РФ-выход.
+    if: needs.msk.outputs.est == 'true' && vars.RU_MOST == ''
     # Свой исполнитель в России при RC_RUNNER_RF = '1' (r790, см. задачу msk): из облака закрытый сервер не открыть.
     runs-on: ${{ vars.RC_RUNNER_RF == '1' && fromJSON('["self-hosted","rf"]') || 'ubuntu-24.04' }}
     timeout-minutes: 15
