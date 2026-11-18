@@ -132,7 +132,6 @@ function primenit(teg) {
       const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
       fajly.push(path.relative(KOREN, zapisatVypusk(PUB, vypusk, {
         title: `История в ${sekund(Math.round(m.fajly['16x9'].sec))}`,
-        intro: est?.intro || m.hook, // крючок страницы главнее: день один, хук один
         note: 'Закадровый текст озвучен синтезом речи.',
         horizontal: fail('', 1920, 1080, m.fajly['16x9']),
         vertical: fail('-9x16', 1080, 1920, m.fajly['9x16']),
