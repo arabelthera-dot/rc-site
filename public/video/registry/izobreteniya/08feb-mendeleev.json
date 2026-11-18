@@ -1,33 +1,33 @@
 {
-  "title": "История в 42 секунды",
+  "title": "История в 54 секунды",
   "intro": "1869 год. Менделеев оставил в таблице пустые клетки и описал вещества, которых никто не видел, — их нашли ровно такими.",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev.mp4",
     "local": "muzei/izobreteniya/video/day-08feb-mendeleev.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 41.6,
-    "mb": 11.8
+    "sec": 54.3,
+    "mb": 14.1
   },
   "vertical": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-08feb-mendeleev-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 41.6,
-    "mb": 11.7
+    "sec": 54.3,
+    "mb": 13.6
   },
   "poster": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev-poster.jpg",
     "local": "muzei/izobreteniya/video/day-08feb-mendeleev-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-08feb-mendeleev-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }

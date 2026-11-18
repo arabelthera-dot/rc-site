@@ -1,33 +1,33 @@
 {
   "title": "История в 43 секунды",
-  "intro": "Инженеры считали, что вверх колёсами самолёт развалится, — Нестеров замкнул петлю и сел под арест за риск казённым имуществом",
+  "intro": "Нестеров первым в мире замкнул «мёртвую петлю» — за неё профессор-полковник сулил ему 30 суток ареста, а в том же году дали золотую медаль",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya.mp4",
     "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 42.9,
-    "mb": 12.8
+    "mb": 12.5
   },
   "vertical": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 42.9,
-    "mb": 12.2
+    "mb": 12.1
   },
   "poster": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya-poster.jpg",
     "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }

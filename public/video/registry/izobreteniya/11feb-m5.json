@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "izobreteniya/11feb-m5/day-11feb-m5.mp4",
     "local": "muzei/izobreteniya/video/day-11feb-m5.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1920,
     "h": 1080,
     "sec": 46.7,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "izobreteniya/11feb-m5/day-11feb-m5-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-11feb-m5-9x16.mp4",
-    "v": 1,
+    "v": 2,
     "w": 1080,
     "h": 1920,
     "sec": 46.7,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "izobreteniya/11feb-m5/day-11feb-m5-poster.jpg",
     "local": "muzei/izobreteniya/video/day-11feb-m5-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/11feb-m5/day-11feb-m5-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-11feb-m5-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }

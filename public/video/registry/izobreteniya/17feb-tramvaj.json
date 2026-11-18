@@ -1,33 +1,33 @@
 {
-  "title": "История в 51 секунду",
+  "title": "История в 46 секунд",
   "intro": "Пироцкий пустил вагон на электричестве по петербургским рельсам, денег не нашёл — и через год трамвай стал немецким",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj.mp4",
     "local": "muzei/izobreteniya/video/day-17feb-tramvaj.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 51.3,
-    "mb": 14.6
+    "sec": 46.2,
+    "mb": 14.7
   },
   "vertical": {
     "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-17feb-tramvaj-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 51.3,
-    "mb": 14.3
+    "sec": 46.2,
+    "mb": 14.5
   },
   "poster": {
     "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj-poster.jpg",
     "local": "muzei/izobreteniya/video/day-17feb-tramvaj-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/17feb-tramvaj/day-17feb-tramvaj-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-17feb-tramvaj-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }

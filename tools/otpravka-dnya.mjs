@@ -190,12 +190,28 @@ const chasti = [`src/content/days/${muzei}/${key}.json`, `src/content/dni-shablo
 const bezVideo = (f, b) => (f.endsWith('.yaml') ? Buffer.from(b.toString('latin1').replace(/^video:.*\n(?:(?:[ \t-].*)?\n)*/gm, ''), 'latin1') : b);
 const kluchRolika = muzei === 'ne-sdayutsya'
   ? sha10(Buffer.concat(chasti.filter((f) => fs.existsSync(f)).map((f) => Buffer.concat([Buffer.from(`${f}\0`), bezVideo(f, fs.readFileSync(f))]))))
-  : sha10(scenarij);
+  : kluchIzob();
+// у изобретений хук ставит карточка (huk-iz-kartochki): хука нет в сценарии — он в ключе, как kluch_izob в avto.py,
+// иначе правка хука в карточке даёт то же имя прогона и рендер не ставится (r807)
+function kluchIzob() {
+  const h = (JSON.parse(fs.readFileSync(chasti[0], 'utf8')).hook ?? '').trim();
+  const norm = (t) => t.split(/\s+/).filter(Boolean).join(' ');
+  return !h || norm(scenarij.toString('utf8')).includes(norm(h)) ? sha10(scenarij) : sha10(Buffer.concat([scenarij, Buffer.from(h)]));
+}
 // ролик НС ждёт кадры: только при adres: den — с ним сайт уже держит замок кадров дня (zamokObshchiy), как в avto.py (Р790 п.5)
 if (muzei === 'ne-sdayutsya' && !/^adres:[ \t]*['"]?den['"]?[ \t]*$/m.test(fs.readFileSync(chasti[1], 'utf8')))
   console.log(`  ролик ждёт: в ${chasti[1]} нет adres: den — кадры не на месте; avto.py rc-rolik соберёт после adres: den`);
-else zapusk('render.yml', `render ${zadacha} ${kluchRolika}`,
+else {
+  // workflow_dispatch берёт render.yml с той же ветки, что --ref: старая ветка сценария (r759, r760) без main —
+  // без входа vetka_sajta, 422 (r807). Ветку догоняет main, как кнопка «Update branch» (POST /repos/{o}/{r}/merges).
+  if (vetkaRolika !== 'main' && !PROBA) {
+    const r = run('gh', ['api', '-X', 'POST', `repos/${ROLIK}/merges`, '-f', `base=${vetkaRolika}`, '-f', 'head=main',
+      '-f', `commit_message=Merge main into ${vetkaRolika}: свежий render.yml (r807)`]);
+    if (r.status !== 0) console.error(`  ✗ main в ${vetkaRolika} не влился: ${(r.stderr || r.stdout).trim()} — ролик соберётся старым render.yml`);
+  }
+  zapusk('render.yml', `render ${zadacha} ${kluchRolika}`,
   ['--ref', vetkaRolika, '-f', `zadacha=${zadacha}`, '-f', 'format=oba', '-f', `vetka_sajta=${vetka}`, '-f', `klyuch=${kluchRolika}`]);
+}
 // гид — если в yaml дня есть audioguide.transcript и audioSrc; ключ — как в avto.py (sha1 json.dumps текста, Python)
 const put = chasti[1];
 const kluchGida = fs.existsSync(put) ? vyvod('python3', ['-c', `import json,sys,yaml,hashlib
