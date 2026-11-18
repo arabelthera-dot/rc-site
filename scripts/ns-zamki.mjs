@@ -78,7 +78,6 @@ export function zamki(y, kal, utv) {
   else {
     if (y.lead?.hook !== kal.hook) o.push(`хук: на странице «${y.lead?.hook}», в карточке календаря «${kal.hook}»`);
     if (y.head?.sobytie !== kal.title) o.push(`название: на странице «${y.head?.sobytie}», в карточке календаря «${kal.title}»`);
-    if (y.video && y.video.intro !== kal.hook) o.push(`ролик: подпись «${y.video.intro}», в карточке календаря «${kal.hook}»`);
   }
   // б) оговорки
   o.push(...ogovorki(y));

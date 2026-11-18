@@ -90,7 +90,8 @@ export const obshchiePolya = (BLOKI) => {
       return { ...n, label };
     })),
     // Секции, которых у дня нет, — не пишутся: нет video — нет блока (на adres: den ролик обязателен — замок ниже).
-    video: z.object({ h2: str, klyuch: str, format: str, pole: str, suffix: str.default(S('denVideoSuffix')), badge: str, intro: str, poster: str, mp4: str, note: str }).optional(),
+    // Подписи ролика здесь нет (Р819): страница выводит её из lead.hook при сборке; strict — копия intro не вернётся.
+    video: z.object({ h2: str, klyuch: str, format: str, pole: str, suffix: str.default(S('denVideoSuffix')), badge: str, poster: str, mp4: str, note: str }).strict().optional(),
     // История — ударами (udary) или простыми абзацами разметкой 1:1 (abzacy, у старых страниц без ударов); intro необязателен.
     story: z.object({ kicker: str, h2: str, intro: str.optional(), udary: z.array(udar).min(1).optional(), abzacy: z.array(str).min(1).optional() })
       .refine((s) => s.udary || s.abzacy, 'у story нужны udary или abzacy'),
