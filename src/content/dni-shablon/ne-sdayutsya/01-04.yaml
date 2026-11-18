@@ -397,16 +397,6 @@ sources:
 kuda:
   - lbl: Следующий день
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
-  - lbl: Город-музей
-    href: ../../index.html
-    title: Русская цивилизация
-    hook: Все музеи проекта на одной карте.
-    main: false
 score:
   awards:
     q: [ 5, 10 ]

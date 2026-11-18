@@ -783,11 +783,6 @@ sources:
 kuda:
 - lbl: Следующий день
   main: true
-- lbl: Весь музей
-  href: index.html
-  title: Музей стойкости и подвига «Русские не сдаются»
-  hook: Стойкость и подвиг день за днём.
-  main: false
 score:
   awards:
     q:
