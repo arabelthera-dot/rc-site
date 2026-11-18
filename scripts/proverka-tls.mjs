@@ -31,14 +31,14 @@ for (const f of files) for (const m of fs.readFileSync(f, 'utf8').matchAll(RE)) 
 
 const CERT = /CERT|SELF_SIGNED|UNABLE_TO|VERIFY|ERR_TLS|HOSTNAME/i;
 const check = (host) => new Promise((res) => {
-  const s = tls.connect({ host, port: 443, servername: host, timeout: 8000 }, () => { s.destroy(); res({ host, ok: true }); });
+  const s = tls.connect({ host, port: 443, servername: host, timeout: 8000 }, () => { s.end(); res({ host, ok: true }); });
   s.on('timeout', () => { s.destroy(); res({ host, ok: null, error: 'timeout' }); });
   s.on('error', (e) => res({ host, ok: CERT.test(e.code || '') ? false : null, error: e.code || e.message }));
 });
 // Кто выдал сертификат: российский госцентр (НУЦ Минцифры) — Яндекс Браузер его знает, остальные браузеры нет.
 const issuer = (host) => new Promise((res) => {
   const s = tls.connect({ host, port: 443, servername: host, timeout: 8000, rejectUnauthorized: false }, () => {
-    const c = s.getPeerCertificate(); s.destroy(); res((c && c.issuer && (c.issuer.CN || c.issuer.O)) || ''); });
+    const c = s.getPeerCertificate(); s.end(); res((c && c.issuer && (c.issuer.CN || c.issuer.O)) || ''); });
   s.on('timeout', () => { s.destroy(); res(''); }); s.on('error', () => res(''));
 });
 
@@ -59,6 +59,3 @@ const list = Object.keys(out.hosts).filter((h) => out.hosts[h].kind === 'ru-ca')
 const other = Object.keys(out.hosts).filter((h) => out.hosts[h].kind !== 'ru-ca');
 console.log(`proverka-tls: сайтов ${hosts.size}; сертификат НУЦ Минцифры — ${list.length}${list.length ? ': ' + list.join(', ') : ''}`);
 if (other.length) console.log(`proverka-tls: ВНИМАНИЕ, сертификат не проходит по другой причине: ${other.map((h) => `${h} (${out.hosts[h].error})`).join(', ')}`);
-// Итог записан. Незавершённые поиски имён (dns.lookup в пуле потоков) таймаут сокета не отменяет — в CI процесс
-// висел после итога 2–3 минуты (прогон 44323712445); выходим явно, как велит документация Node для CLI.
-process.exit(0);

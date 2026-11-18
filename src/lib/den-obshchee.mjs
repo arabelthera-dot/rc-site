@@ -253,18 +253,7 @@ export function proveritKartochku(file, muzei, skhema) {
   oshibki.push(...standartDnya(r.data, syroe));
   return { data: bezMedia(r.data), oshibki, preduprezhdeniya };
 }
-// Карточки читаются и проверяются один раз на процесс сборки: страница дня зовёт загрузчик для себя и соседей,
-// повтор стоил ~1 с × 2 на страницу — сборка упиралась в лимит 15 мин (Р819). В astro dev (import.meta.env.DEV) —
-// без кэша, правка YAML видна сразу. Карточки только читаются — вызывающие их не меняют.
-const KESH = new Map();
 export function zagruzitKartochki(DIR, skhemy) {
-  if (import.meta.env?.DEV) return zagruzit(DIR, skhemy);
-  if (!KESH.has(DIR)) { try { KESH.set(DIR, { vse: zagruzit(DIR, skhemy) }); } catch (oshibka) { KESH.set(DIR, { oshibka }); } }
-  const { vse, oshibka } = KESH.get(DIR);
-  if (oshibka) throw oshibka;
-  return vse;
-}
-function zagruzit(DIR, skhemy) {
   if (!fs.existsSync(DIR)) return [];
   const oshibki = [], preduprezhdeniya = [];
   const vse = fs.readdirSync(DIR).sort().flatMap((muzei) => {
