@@ -46,6 +46,9 @@ jobs:
       actions: write
     env:
       GH_TOKEN: ${{ github.token }}
+      # Р825: автослияние включает SLIYANIE_TOKEN (ключ arabelthera-dot), не github.token: слияние от github.token не запускает
+      # deploy.yml (GitHub Docs «Triggering a workflow from a workflow»; #1574, 18.11 — сайт не выложился). Нет секрета — github.token.
+      SLIYANIE_TOKEN: ${{ secrets.SLIYANIE_TOKEN || github.token }}
       TEG: ${{ inputs.teg }}
     steps:
       # без public/ целиком: скрипт пишет только файлы выпуска (git add --sparse)
@@ -110,7 +113,7 @@ jobs:
               nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] $pervaya" --body "$telo" | grep -o '[0-9]*$')
             fi
             # автослияние — только у расписания и сигнала rc-rolik; ручной пуск (проба, разбор) оставляет заявку человеку
-            case "$GITHUB_EVENT_NAME" in schedule|repository_dispatch) gh pr merge "$nomer" --auto --squash ;; esac
+            case "$GITHUB_EVENT_NAME" in schedule|repository_dispatch) GH_TOKEN="$SLIYANIE_TOKEN" gh pr merge "$nomer" --auto --squash ;; esac
             echo "- $tegi → https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
             sha=$(git rev-parse HEAD)
             zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
