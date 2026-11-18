@@ -406,11 +406,6 @@ kuda:
     main: true
   - lbl: Предыдущий день
     main: false
-  - lbl: Весь музей
-    href: index.html
-    title: «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     why0: 20
