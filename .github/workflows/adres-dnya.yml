@@ -92,6 +92,8 @@ jobs:
       - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # клон частичный: ушёл main — push без переговоров шлёт всё дерево, HTTP 500 (Р820, как в rolik-na-sait.yml)
+          git config push.negotiate true
           IFS=, read -ra dni <<< "$DNI"
           for den in "${dni[@]}"; do
             read -r muzei key <<< "$den"
