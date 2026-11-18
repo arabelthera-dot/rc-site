@@ -7,6 +7,7 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { z } from 'astro/zod';
 import { mp3Sek } from './mp3-sek.mjs';
+import { rolikEst } from '../../scripts/hranilishche-rolikov.mjs';
 import { polyaKartinki, polyaFakta, polyaDnya, status } from './forma-dnya.mjs';
 import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
 import { faktyIzUtverzhdeno } from './fakty-iz-utverzhdeno.mjs';
@@ -223,14 +224,14 @@ export function zamokObshchiy(d, ctx, { dolgKadrov = {}, dolgVTekste = {}, portr
     console.log(`::warning::${d.muzei}/${d.key}: пунктов источников без ссылки ${bez.length} < ${dolgI} — снять/уменьшить строку долга (src/data/dyry-dolg.json)`);
 }
 // Р776 п.3 (Р266): ролик и гид — отдельной заявкой после страницы, сборку не держат. Нет файла гида (audioSrc) или ролика
-// (mp4) в public — предупреждение в журнал, поле снимается, блок и кнопка не рисуются. Файл есть, но кривой — ошибка замка
+// (mp4) ни в public, ни в хранилище (scripts/hranilishche-rolikov.mjs, Р825) — предупреждение в журнал, поле снимается, блок и кнопка не рисуются. Файл есть, но кривой — ошибка замка
 // выше (гид) и full-pages (ролик). Зовётся после стандарта дня, чтобы пункт 174 (pokazan_sergeyu) смотрел полную карточку.
 export function bezMedia(d) {
   const out = { ...d };
   for (const [pole, src, chto] of [['audioguide', d.audioguide?.audioSrc, 'аудиогида'], ['video', d.video?.mp4, 'ролика']]) {
     if (!src) continue;
     const f = failPublic(d.muzei, src);
-    if (fs.existsSync(f)) continue;
+    if (pole === 'video' ? rolikEst(f) : fs.existsSync(f)) continue;
     console.log(`::warning::${d.muzei}/${d.key}: нет файла ${chto} ${f} — блок не рисуется, медиа придут своей заявкой (Р776)`);
     delete out[pole];
   }

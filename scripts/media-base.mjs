@@ -1,6 +1,7 @@
 // Ролики — из хранилища media.russian-civilization.ru (#2364, Михаил «да» 04.11.2026): 108 mp4 (~1 ГБ) ехали в dist
 // и на msk-new с каждой выкладкой. Шаг после astro build: при заданном MEDIA_BASE каждый src="….mp4" страниц dist
-// (<source>, <video>; src, data-src ленивой загрузки, <a href> на вертикальный ролик), если файл лежит в dist, становится MEDIA_BASE + путь от корня (?v= и #t= сохраняются);
+// (<source>, <video>; src, data-src ленивой загрузки, <a href> на вертикальный ролик), если файл лежит в dist или в хранилище
+// (манифест src/data/hranilishche-rolikov.sha256, Р825 — mp4 в public/ нет), становится MEDIA_BASE + путь от корня (?v= и #t= сохраняются);
 // в video/registry.json пишется hosting.media — по нему public/assets/museum-video.js строит адрес ролика из реестра.
 // Один шаг на все страницы: 41 карточку дня (два макета) и 21 старую full-pages — без правки каждой.
 // MEDIA_BASE пустой — шаг спит, dist как был (откат = пустой MEDIA_BASE). Файлы mp4 в dist не удаляются (шаг 5 — отдельно).
@@ -8,6 +9,7 @@
 // Запуск: node scripts/media-base.mjs --proba && node scripts/media-base.mjs --dist dist
 import fs from 'node:fs';
 import path from 'node:path';
+import { vHranilishche } from './hranilishche-rolikov.mjs';
 const args = process.argv.slice(2);
 const DIST = args.includes('--dist') ? args[args.indexOf('--dist') + 1] : 'dist';
 const BASE = (process.env.MEDIA_BASE || '').replace(/\/+$/, '');
@@ -62,7 +64,7 @@ let stranic = 0, zamen = 0; const netFaila = [];
   if (e.isDirectory()) walk(p);
   else if (e.name.endsWith('.html')) {
     const rel = path.relative(DIST, p), html = fs.readFileSync(p, 'utf8');
-    const [out, n, net] = zamenit(html, rel, BASE, (x) => fs.existsSync(path.join(DIST, x)));
+    const [out, n, net] = zamenit(html, rel, BASE, (x) => fs.existsSync(path.join(DIST, x)) || vHranilishche(x));
     if (n) { fs.writeFileSync(p, out); stranic++; zamen += n; }
     for (const s of net) netFaila.push(`${rel}: ${s}`);
   }
@@ -73,5 +75,5 @@ if (fs.existsSync(REG)) {
   reg.hosting = { ...(reg.hosting || {}), media: BASE };
   fs.writeFileSync(REG, JSON.stringify(reg, null, 2) + '\n');
 }
-for (const s of netFaila) console.log(`::warning::media-base: ролика нет в dist — ссылка оставлена: ${s}`);
+for (const s of netFaila) console.log(`::warning::media-base: ролика нет ни в dist, ни в хранилище — ссылка оставлена: ${s}`);
 console.log(`media-base: ${zamen} ссылок на ${BASE} в ${stranic} страницах; реестр ${fs.existsSync(REG) ? 'с hosting.media' : 'не найден'}; без файла — ${netFaila.length}`);
