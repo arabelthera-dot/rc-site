@@ -202,7 +202,10 @@ jobs:
       # адрес туннеля Cloudflare (trycloudflare.com) до нашего сервера, где узкий проход ведёт только на 185.149.145.227:22
       # через РФ-выход (~/tools/rf-most). ssh идёт сквозь туннель как через ProxyJump: ключ RU_DEPLOY_KEY из облака не
       # выходит, сервер сверяется по IZVESTNYE — подмена по пути невозможна. Пусто — прямой путь, как прежде (откат).
+      # Запасные (Р813): пути по порядку — прямой (если фильтр сняли), Cloudflare (RU_MOST), bore.pub (RU_MOST2, host:port);
+      # берётся первый, где сервер ответил баннером SSH. Адреса держит смотритель ~/tools/rf-most/smotritel.py.
       MOST: ${{ vars.RU_MOST }}
+      MOST2: ${{ vars.RU_MOST2 }}
     steps:
       - id: est
         run: |
@@ -213,17 +216,33 @@ jobs:
             echo "est=true" >> "$GITHUB_OUTPUT"
           fi
       - name: проход в Россию
-        if: steps.est.outputs.est == 'true' && env.MOST != ''
+        if: steps.est.outputs.est == 'true' && (env.MOST != '' || env.MOST2 != '')
         run: |
           set -euo pipefail
+          otvet() { timeout 25 bash -c "exec 3<>/dev/tcp/$1/$2 && head -c 7 <&3" 2>/dev/null | grep -q '^SSH-2.0'; }
+          if otvet 185.149.145.227 22; then echo "msk-new: прямой путь открыт — без прохода"; exit 0; fi
           # Версия и контрольная сумма закреплены: чужой файл не запустится.
-          curl -fsSL -o "$RUNNER_TEMP/cloudflared" https://github.com/cloudflare/cloudflared/releases/download/2026.11.1/cloudflared-linux-amd64
-          echo "97bb3b02d23a5980fc9c15a1a270e692da1923f103f920d5b16d4931d5ab55e7  $RUNNER_TEMP/cloudflared" | sha256sum -c -
-          chmod +x "$RUNNER_TEMP/cloudflared"
-          printf '#!/bin/sh\nexec "%s" access tcp --hostname "%s"\n' "$RUNNER_TEMP/cloudflared" "$MOST" > "$RUNNER_TEMP/most.sh"
-          chmod +x "$RUNNER_TEMP/most.sh"
-          echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most.sh" >> "$GITHUB_ENV"
-          echo "msk-new: выкладка через проход $MOST"
+          # Не скачался cloudflared — не беда, дальше запасной bore (ему в облаке ставить нечего: nc есть в образе).
+          if [ -n "$MOST" ] && curl -fsSL -o "$RUNNER_TEMP/cloudflared" https://github.com/cloudflare/cloudflared/releases/download/2026.11.1/cloudflared-linux-amd64 \
+             && echo "97bb3b02d23a5980fc9c15a1a270e692da1923f103f920d5b16d4931d5ab55e7  $RUNNER_TEMP/cloudflared" | sha256sum -c -; then
+            chmod +x "$RUNNER_TEMP/cloudflared"
+            printf '#!/bin/sh\nexec "%s" access tcp --hostname "%s"\n' "$RUNNER_TEMP/cloudflared" "$MOST" > "$RUNNER_TEMP/most.sh"
+            chmod +x "$RUNNER_TEMP/most.sh"
+            "$RUNNER_TEMP/cloudflared" access tcp --hostname "$MOST" --url 127.0.0.1:2222 >/dev/null 2>&1 &
+            cf=$!
+            est=0; for i in $(seq 1 15); do sleep 2; if otvet 127.0.0.1 2222; then est=1; break; fi; done
+            kill "$cf" || true
+            if [ "$est" = 1 ]; then
+              echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most.sh" >> "$GITHUB_ENV"; echo "msk-new: выкладка через проход $MOST"; exit 0
+            fi
+            echo "::warning::msk-new: проход Cloudflare $MOST не ответил — пробую запасной"
+          fi
+          if [ -n "$MOST2" ] && otvet "${MOST2%:*}" "${MOST2##*:}"; then
+            printf '#!/bin/sh\nexec nc %s %s\n' "${MOST2%:*}" "${MOST2##*:}" > "$RUNNER_TEMP/most2.sh"; chmod +x "$RUNNER_TEMP/most2.sh"
+            echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most2.sh" >> "$GITHUB_ENV"
+            echo "msk-new: выкладка через запасной проход $MOST2"; exit 0
+          fi
+          echo "::error::msk-new: ни прямой путь, ни проходы ($MOST, $MOST2) не отвечают — смотритель ~/tools/rf-most"; exit 1
       - if: steps.est.outputs.est == 'true'
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
