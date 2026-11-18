@@ -1,33 +1,33 @@
 {
-  "title": "История в 46 секунд",
+  "title": "История в 45 секунд",
   "intro": "Вызвал огонь на себя — «Вызываю огонь на себя»",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko.mp4",
     "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 46.1,
-    "mb": 11.8
+    "sec": 45.3,
+    "mb": 11.5
   },
   "vertical": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 46.1,
+    "sec": 45.3,
     "mb": 11.6
   },
   "poster": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
