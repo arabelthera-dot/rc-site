@@ -105,8 +105,8 @@ video:
   pole: nesdayutsya/03feb-troica:horizontal.sec
   suffix: сек
   badge: 48 сек
-  poster: /muzei/ne-sdayutsya/video/day-03feb-troica-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-03feb-troica.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-03feb-troica-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-03feb-troica.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

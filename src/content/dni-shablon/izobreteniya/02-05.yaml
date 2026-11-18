@@ -174,8 +174,8 @@ video:
   pole: izobreteniya/05feb-plenka:horizontal.sec
   suffix: сек
   badge: 48 сек
-  poster: video/day-05feb-plenka-poster.jpg?v=1
-  mp4: video/day-05feb-plenka.mp4?v=1
+  poster: video/day-05feb-plenka-poster.jpg
+  mp4: video/day-05feb-plenka.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения

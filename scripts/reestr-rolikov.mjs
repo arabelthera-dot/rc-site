@@ -57,6 +57,10 @@ export function chitat(pub = 'public') {
   return reestr;
 }
 
+// Адрес файла выпуска для страницы (Р820): путь и ?v= — только из реестра (cache busting из одного источника);
+// в файлах дней и разметке версии руками нет. e — horizontal/vertical/poster/poster_vertical выпуска или файл рядом с роликом.
+export const adres = (e, base = '/') => `${base}${e.local}${e.v ? `?v=${e.v}` : ''}`;
+
 // Для писателей: один выпуск — один файл, общий реестр не трогается.
 export function zapisatVypusk(pub, klyuch, zapis) {
   if (!KLYUCH.test(klyuch)) throw new Error(`ключ выпуска «${klyuch}» не вида <музей>/<id>`);

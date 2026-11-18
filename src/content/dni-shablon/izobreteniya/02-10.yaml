@@ -186,8 +186,8 @@ video:
   pole: izobreteniya/10feb-aerosani:horizontal.sec
   suffix: сек
   badge: 39 сек
-  poster: video/day-10feb-aerosani-poster.jpg?v=1
-  mp4: video/day-10feb-aerosani.mp4?v=1
+  poster: video/day-10feb-aerosani-poster.jpg
+  mp4: video/day-10feb-aerosani.mp4
   note: Ролик собран из кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения

@@ -195,8 +195,8 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
     <p style="color:var(--muted);margin-top:0"><Fragment set:html={d.lead.hook} /></p>
     <!-- Адрес ролика подставляет ../../assets/museum-video.js из video/registry.json (16:9 на компьютере, 9:16 на телефоне).
          Путь ниже — запасной, на случай недоступного реестра. -->
-    <video controls playsinline preload="none" poster={d.video.poster} data-rc-video={d.video.klyuch} data-rc-format={d.video.format} style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
-      <source src={d.video.mp4} type="video/mp4">
+    <video controls playsinline preload="none" poster={rolik.poster} data-rc-video={d.video.klyuch} data-rc-format={d.video.format} style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
+      <source src={rolik.mp4} type="video/mp4">
       {rolik.subtitry && <track kind="subtitles" src={rolik.subtitry} srclang="ru" label="Русский">}
       Ваш браузер не поддерживает видео.
     </video>

@@ -833,8 +833,8 @@ video:
   pole: izobreteniya/09feb-chizhevskij:horizontal.sec
   suffix: сек
   badge: 47 сек
-  poster: video/day-09feb-chizhevskij-poster.jpg?v=1
-  mp4: video/day-09feb-chizhevskij.mp4?v=1
+  poster: video/day-09feb-chizhevskij-poster.jpg
+  mp4: video/day-09feb-chizhevskij.mp4
   note: Закадровый текст озвучен синтезом речи.
 podskazki_igry:
 - Спокойное Солнце — синий цвет

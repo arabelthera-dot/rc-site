@@ -82,8 +82,8 @@ video:
   pole: nesdayutsya/14jan-vir:horizontal.sec
   suffix: сек
   badge: 55 сек
-  poster: /muzei/ne-sdayutsya/video/day-14jan-vir-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-14jan-vir.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-14jan-vir-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-14jan-vir.mp4
   note: Кадры ролика — подлинные предметы из Госкаталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига

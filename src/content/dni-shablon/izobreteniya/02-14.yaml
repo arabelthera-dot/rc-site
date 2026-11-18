@@ -240,8 +240,8 @@ video:
   pole: izobreteniya/14feb-elmanov:horizontal.sec
   suffix: сек
   badge: 49 сек
-  poster: video/day-14feb-elmanov-poster.jpg?v=1
-  mp4: video/day-14feb-elmanov.mp4?v=1
+  poster: video/day-14feb-elmanov-poster.jpg
+  mp4: video/day-14feb-elmanov.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Дороги на одном рельсе

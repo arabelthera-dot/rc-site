@@ -83,8 +83,8 @@ video:
   pole: izobreteniya/23jan-umov:horizontal.sec
   suffix: сек
   badge: 50 сек
-  poster: video/day-23jan-umov-poster.jpg?v=2
-  mp4: video/day-23jan-umov.mp4?v=2
+  poster: video/day-23jan-umov-poster.jpg
+  mp4: video/day-23jan-umov.mp4
   note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: два портрета Н. А. Умова (Государственный центральный музей современной истории России); Физический институт Московского университета, 1936 год (Музей Москвы). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История открытия

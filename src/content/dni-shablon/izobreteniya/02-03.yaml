@@ -173,8 +173,8 @@ video:
   pole: izobreteniya/03feb-luna9:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-03feb-luna9-poster.jpg?v=1
-  mp4: video/day-03feb-luna9.mp4?v=1
+  poster: video/day-03feb-luna9-poster.jpg
+  mp4: video/day-03feb-luna9.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения

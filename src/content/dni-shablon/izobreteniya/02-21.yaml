@@ -857,6 +857,6 @@ video:
   pole: izobreteniya/21feb-gamaleya:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-21feb-gamaleya-poster.jpg?v=1
-  mp4: video/day-21feb-gamaleya.mp4?v=1
+  poster: video/day-21feb-gamaleya-poster.jpg
+  mp4: video/day-21feb-gamaleya.mp4
   note: Закадровый текст озвучен синтезом речи.

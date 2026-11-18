@@ -840,6 +840,6 @@ video:
   pole: izobreteniya/28feb-zhuravskij:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-28feb-zhuravskij-poster.jpg?v=1
-  mp4: video/day-28feb-zhuravskij.mp4?v=1
+  poster: video/day-28feb-zhuravskij-poster.jpg
+  mp4: video/day-28feb-zhuravskij.mp4
   note: Закадровый текст озвучен синтезом речи.

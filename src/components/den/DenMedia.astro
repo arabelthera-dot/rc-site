@@ -4,7 +4,7 @@
 // в разметке — запасной путь без JS (как на полных страницах). Озвучка — движок museum-audioguide.js.
 // Ключа нет в реестре или файла нет в public/ — сборка падает: битый плеер не выкладывается.
 import fs from 'node:fs';
-import { chitat } from '../../../scripts/reestr-rolikov.mjs';
+import { chitat, adres } from '../../../scripts/reestr-rolikov.mjs';
 interface Props { video?: string; audio?: { src: string; heading?: string; lead?: string; note?: string }; where: string }
 const { video, audio, where } = Astro.props;
 const base = import.meta.env.BASE_URL;
@@ -16,7 +16,7 @@ if (video) {
   if (!fs.existsSync(pub(rel.horizontal.local))) throw new Error(`${where}: нет файла ролика ${rel.horizontal.local}`);
 }
 if (audio && !fs.existsSync(pub(audio.src))) throw new Error(`${where}: нет файла озвучки ${audio.src}`);
-const ver = (e: { local: string; v?: number }) => `${base}${e.local}${e.v ? `?v=${e.v}` : ''}`;
+const ver = (e: { local: string; v?: number }) => adres(e, base);
 const ag = audio && `window.MUSEUM_AUDIOGUIDE=${JSON.stringify({ heading: 'Послушать историю', ...audio, audioSrc: `${base}${audio.src.replace(/^\//, '')}`, src: undefined })};`;
 ---
 {rel && (

@@ -78,8 +78,8 @@ video:
   pole: nesdayutsya/06jan-osovets:horizontal.sec
   suffix: сек
   badge: 57 сек
-  poster: /muzei/ne-sdayutsya/video/day-06jan-osovets-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-06jan-osovets.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-06jan-osovets-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-06jan-osovets.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

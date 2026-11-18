@@ -914,6 +914,6 @@ video:
   pole: izobreteniya/20feb-stanciya-mir:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-20feb-stanciya-mir-poster.jpg?v=1
-  mp4: video/day-20feb-stanciya-mir.mp4?v=1
+  poster: video/day-20feb-stanciya-mir-poster.jpg
+  mp4: video/day-20feb-stanciya-mir.mp4
   note: Закадровый текст озвучен синтезом речи.

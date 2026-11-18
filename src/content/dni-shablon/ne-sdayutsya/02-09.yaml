@@ -101,8 +101,8 @@ video:
   pole: nesdayutsya/09feb-savicheva:horizontal.sec
   suffix: сек
   badge: 1 мин
-  poster: /muzei/ne-sdayutsya/video/day-09feb-savicheva-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-09feb-savicheva.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-09feb-savicheva-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-09feb-savicheva.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

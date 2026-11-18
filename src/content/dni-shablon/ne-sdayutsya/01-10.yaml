@@ -80,8 +80,8 @@ video:
   pole: nesdayutsya/10jan-varyag:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: /muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg?v=2
-  mp4: /muzei/ne-sdayutsya/video/day-10jan-varyag.mp4?v=2
+  poster: /muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-10jan-varyag.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Команда

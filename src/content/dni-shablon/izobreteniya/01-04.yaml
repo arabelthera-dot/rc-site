@@ -82,7 +82,7 @@ video:
   suffix: сек
   badge: 49 сек
   poster: video/day-04jan-pilchikov-poster.jpg
-  mp4: video/day-04jan-pilchikov.mp4?v=1
+  mp4: video/day-04jan-pilchikov.mp4
   note: "Кадры ролика — подлинные: портрет профессора Н. Д. Пильчикова (Госкаталог). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История изобретения

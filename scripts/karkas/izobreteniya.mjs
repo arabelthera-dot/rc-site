@@ -123,7 +123,8 @@ export function razobrat(html, json, den) {
     const p = [...vid.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => tekst(m[1]));
     karta.video = chisto({ h2: h2(vid), klyuch, format, pole: klyuch && `${klyuch}:${format}.sec`, suffix: 'сек',
       badge: tekst(vid.match(/<span[^>]*data-rc-video-field[^>]*>([\s\S]*?)<\/span>/)?.[1]) || undefined,
-      poster: atr(video, 'poster'), mp4: atr(vid.match(/<source[^>]*>/)?.[0], 'src'), note: p.length > 1 ? p.at(-1) : undefined });
+      poster: atr(video, 'poster')?.replace(/[?#].*$/, ''), mp4: atr(vid.match(/<source[^>]*>/)?.[0], 'src')?.replace(/[?#].*$/, ''), // ?v= ставит реестр (Р820)
+      note: p.length > 1 ? p.at(-1) : undefined });
   } else net('ролик (video)');
 
   const ag = okno.MUSEUM_AUDIOGUIDE;

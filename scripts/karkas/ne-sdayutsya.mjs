@@ -37,15 +37,15 @@ const put = (src) => `/${String(src).replace(/^\//, '')}`;
 
 // Размер кадра из файла (JPEG — маркер SOF, PNG — IHDR), если в материале его нет.
 // Ролик дня из реестра public/video/registry/<музей>/<id>.json (scripts/reestr-rolikov.mjs) — выпуск nesdayutsya/ДДmon-… (ролик rc-rolik к дню без ролика на старой
-// странице, 10 янв., r521). Пути — абсолютные, с версией выпуска.
+// странице, 10 янв., r521). Пути — абсолютные, без версии: ?v= на страницу ставит реестр при сборке (Р820).
 export function rolikIzReestra(dd, mes) {
   const vse = chitat(path.join(KOREN, 'public')).releases;
   const klyuch = Object.keys(vse).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
   const r = klyuch && vse[klyuch];
   if (!r?.horizontal?.local || !r.poster?.local) return null;
   return { h2: r.title, klyuch, format: 'horizontal', pole: `${klyuch}:horizontal.sec`, suffix: 'сек',
-    badge: `${Math.round(r.horizontal.sec)} сек`, poster: `/${r.poster.local}?v=${r.poster.v ?? 1}`,
-    mp4: `/${r.horizontal.local}?v=${r.horizontal.v ?? 1}`, note: r.note ?? '' };
+    badge: `${Math.round(r.horizontal.sec)} сек`, poster: `/${r.poster.local}`,
+    mp4: `/${r.horizontal.local}`, note: r.note ?? '' };
 }
 
 function razmer(src) {
@@ -259,11 +259,12 @@ export function razobrat(html, json, den) {
     { id: 'fakty', label: 'Факты' }, voprosy.length && { id: 'quiz', label: 'Викторина' }, kal && { id: 'calendar', label: 'Календарь' }].filter(Boolean);
   // Пути ролика на старой странице — от папки музея; на адресе /den/ММ-ДД/ относительные сломаются.
   const ot = (u) => (u && !/^(\/|https?:)/.test(u) ? `/muzei/ne-sdayutsya/${u}` : u);
+  const bezV = (u) => u?.replace(/[?#].*$/, ''); // версию ролика ставит реестр (Р820)
   if (video) {
     const klyuch = atr(video, 'data-rc-video'), format = atr(video, 'data-rc-format') ?? 'horizontal', p = abzacy(vid);
     karta.video = { h2: tekst(h2(vid)), klyuch, format, pole: `${klyuch}:${format}.sec`, suffix: 'сек',
       badge: tekst(vid.match(/<\/h2>\s*<span[^>]*>([\s\S]*?)<\/span>/)?.[1]) || 'ролик',
-      poster: ot(atr(video, 'poster')), mp4: ot(atr(vid.match(/<source[^>]*>/)?.[0], 'src')), note: tekst(p.at(-1)) };
+      poster: bezV(ot(atr(video, 'poster'))), mp4: bezV(ot(atr(vid.match(/<source[^>]*>/)?.[0], 'src'))), note: tekst(p.at(-1)) };
   } else if (rolik) {
     karta.video = rolik;
     nety.push(`video — ролика на старой странице нет, взят выпуск реестра ${rolik.klyuch}`);

@@ -80,8 +80,8 @@ video:
   pole: nesdayutsya/11jan-dom-pavlova:horizontal.sec
   suffix: сек
   badge: 40 сек
-  poster: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova.mp4
   note: Кадры ролика — подлинные фотографии из Государственного каталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Сержант

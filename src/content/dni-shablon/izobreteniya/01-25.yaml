@@ -86,8 +86,8 @@ video:
   pole: izobreteniya/25jan-korsakov:horizontal.sec
   suffix: сек
   badge: 51 сек
-  poster: video/day-25jan-korsakov-poster.jpg?v=2
-  mp4: video/day-25jan-korsakov.mp4?v=2
+  poster: video/day-25jan-korsakov-poster.jpg
+  mp4: video/day-25jan-korsakov.mp4
   note: "Кадры ролика — подлинные: чертежи машин и титульный лист брошюры С. Н. Корсакова 1832 года, портрет С. Н. Корсакова (оцифровка Виртуального компьютерного музея). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: Пять фактов о Корсакове

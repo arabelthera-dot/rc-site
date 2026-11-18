@@ -864,6 +864,6 @@ video:
   pole: izobreteniya/27feb-filatov:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-27feb-filatov-poster.jpg?v=1
-  mp4: video/day-27feb-filatov.mp4?v=1
+  poster: video/day-27feb-filatov-poster.jpg
+  mp4: video/day-27feb-filatov.mp4
   note: Закадровый текст озвучен синтезом речи.

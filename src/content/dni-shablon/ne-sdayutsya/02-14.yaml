@@ -102,8 +102,8 @@ video:
   pole: nesdayutsya/14feb-pozharnye:horizontal.sec
   suffix: сек
   badge: 1 мин
-  poster: /muzei/ne-sdayutsya/video/day-14feb-pozharnye-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-14feb-pozharnye.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-14feb-pozharnye-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-14feb-pozharnye.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

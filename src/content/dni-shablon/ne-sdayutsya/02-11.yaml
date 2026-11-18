@@ -103,8 +103,8 @@ video:
   pole: nesdayutsya/11feb-sibiryakov:horizontal.sec
   suffix: сек
   badge: 1 мин
-  poster: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

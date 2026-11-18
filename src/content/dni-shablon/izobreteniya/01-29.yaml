@@ -75,8 +75,8 @@ video:
   pole: izobreteniya/29jan-kostovich-rossiya:horizontal.sec
   suffix: сек
   badge: 51 сек
-  poster: video/day-29jan-kostovich-rossiya-poster.jpg?v=2
-  mp4: video/day-29jan-kostovich-rossiya.mp4?v=2
+  poster: video/day-29jan-kostovich-rossiya-poster.jpg
+  mp4: video/day-29jan-kostovich-rossiya.mp4
   note: "Кадры ролика — подлинные: рисунок «Россия» над Петербургом, фотографии Костовича в мастерской и в пожилом возрасте (Госкаталог, Научно-мемориальный музей Н. Е. Жуковского). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История корабля · 4 удара
