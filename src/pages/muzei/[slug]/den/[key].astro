@@ -64,7 +64,7 @@ const sosed = (x) => { if (!x) return undefined;
 const navDnya = (sh) => { if (!sh) return sh;
   const nazad = sosed(prev), vpered = sosed(next), u = (k) => `${import.meta.env.BASE_URL}muzei/${sh.muzei}/den/${k}/`;
   const whenS = (k) => `${parseInt(k.slice(3))} ${['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][parseInt(k.slice(0, 2)) - 1]}`;
-  const kuda = (sh.kuda ?? []).flatMap((e) => { const s = /^Следующий/.test(e.lbl) ? vpered : /^Предыдущий/.test(e.lbl) ? nazad : null;
+  const kuda = (sh.kuda ?? []).flatMap((e) => { const s = /^Следующ/.test(e.lbl) ? vpered : /^Предыдущ/.test(e.lbl) ? nazad : null;
     if (s === null) return [e]; if (!s) return [];
     return [{ ...e, href: u(s.key), title: `${whenS(s.key)} — ${s.imya}`, hook: s.hook }]; });
   const ch = sh.chrome ? { ...sh.chrome,
