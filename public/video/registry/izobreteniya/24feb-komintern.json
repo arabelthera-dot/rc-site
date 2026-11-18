@@ -1,32 +1,32 @@
 {
-  "title": "История в 47 секунд",
+  "title": "История в 49 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern.mp4",
     "local": "muzei/izobreteniya/video/day-24feb-komintern.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 46.8,
-    "mb": 11.4
+    "sec": 48.8,
+    "mb": 12.2
   },
   "vertical": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 46.8,
-    "mb": 10.5
+    "sec": 48.8,
+    "mb": 11.2
   },
   "poster": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-poster.jpg",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
