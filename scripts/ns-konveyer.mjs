@@ -116,7 +116,7 @@ function gidIzOblaka(key, fail) {
 // Шаг 1: ролик из облака в public/ и реестр. Возвращает причину отказа или null.
 function rolikVReestr(key, karta, dd, mes) {
   const reestr = chitat(PUB);
-  const id = idRolika(dd, mes), hook = kartochkaDnya(key).hook ?? '';
+  const id = idRolika(dd, mes);
   const est = Object.keys(reestr.releases).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
   const run = artefakty(id);
   // Выпуск уже в реестре — перекачиваем, только если в облаке ролик новее (сценарий поправили и пересобрали, r533).
@@ -141,7 +141,6 @@ function rolikVReestr(key, karta, dd, mes) {
   const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
   zapisatVypusk(PUB, vypusk, {
     title: `История в ${sekund(Math.round(fajly['16x9'].sec))}`,
-    intro: hook,
     note: `Закадровый текст озвучен синтезом речи.`,
     horizontal: fail('', 1920, 1080, fajly['16x9']),
     vertical: fail('-9x16', 1080, 1920, fajly['9x16']),
