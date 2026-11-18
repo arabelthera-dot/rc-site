@@ -19,6 +19,8 @@ import os from 'node:os';
 
 const KLYUCH = /^[a-z0-9-]+\/[a-z0-9-]+$/;
 const papka = (pub) => path.join(pub, 'video/registry');
+// Р819: подпись ролика на странице — lead.hook файла дня; копии текста в выпуске этих музеев нет (только файлы и размеры).
+const BEZ_PODPISI = new Set(['izobreteniya', 'nesdayutsya']);
 
 // Собрать реестр из файлов выпусков. Возвращает { reestr, oshibki }; при ошибках reestr всё равно собран из целых.
 export function sobrat(pub = 'public') {
@@ -40,6 +42,7 @@ export function sobrat(pub = 'public') {
       try { z = JSON.parse(fs.readFileSync(path.join(dir, m, f), 'utf8')); } catch (e) { oshibki.push(`${klyuch}: не JSON — ${e.message}`); continue; }
       if (!z || typeof z !== 'object' || Array.isArray(z)) { oshibki.push(`${klyuch}: запись выпуска — не объект`); continue; }
       if (!z.horizontal?.file && !z.horizontal?.local) oshibki.push(`${klyuch}: нет horizontal (file/local)`);
+      if (BEZ_PODPISI.has(m) && 'intro' in z) oshibki.push(`${klyuch}: поле intro — копия хука; подпись берётся из lead.hook файла дня (Р819), убрать`);
       releases[klyuch] = z;
     }
   }
@@ -103,6 +106,7 @@ if (zapusk && process.argv.includes('--proba')) {
   proba('битый JSON', { [`${R}p/01jan-a.json`]: '{"horizontal":' }, true);
   proba('повтор id по регистру', { [`${R}p/01jan-a.json`]: v, [`${R}p/01JAN-a.json`]: v }, true);
   proba('без horizontal', { [`${R}p/01jan-a.json`]: '{"title":"x"}' }, true);
+  proba('копия подписи в выпуске изобретений', { [`${R}izobreteniya/01jan-a.json`]: JSON.stringify({ intro: 'x', ...JSON.parse(v) }) }, true);
   // Разрезать и собрать обратно — те же выпуски.
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'reestr-proba-'));
   const star = { _: 'x', version: 2, updated: '2026-01-01', hosting: { base: '' }, releases: { 'p/01jan-a': JSON.parse(v), 'q/02jan-b': JSON.parse(v) } };

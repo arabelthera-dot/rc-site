@@ -122,7 +122,7 @@ export function razobrat(html, json, den) {
     const klyuch = atr(video, 'data-rc-video'), format = atr(video, 'data-rc-format') ?? 'horizontal';
     const p = [...vid.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => tekst(m[1]));
     karta.video = chisto({ h2: h2(vid), klyuch, format, pole: klyuch && `${klyuch}:${format}.sec`, suffix: 'сек',
-      badge: tekst(vid.match(/<span[^>]*data-rc-video-field[^>]*>([\s\S]*?)<\/span>/)?.[1]) || undefined, intro: p[0],
+      badge: tekst(vid.match(/<span[^>]*data-rc-video-field[^>]*>([\s\S]*?)<\/span>/)?.[1]) || undefined,
       poster: atr(video, 'poster'), mp4: atr(vid.match(/<source[^>]*>/)?.[0], 'src'), note: p.length > 1 ? p.at(-1) : undefined });
   } else net('ролик (video)');
 

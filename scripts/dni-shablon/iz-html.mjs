@@ -94,7 +94,7 @@ const card = {
   dokument: sec('dokument') ? 'verh' : /<\/footer>\n\n<section data-proof-block><\/section>/.test(src) ? 'podval' : 'net',
   ...(video ? { video: { h2: one(/<h2 style="margin:0">([^<]*)<\/h2>/, video), klyuch: one(/data-rc-video="([^"]*)"/, video), format: one(/data-rc-format="([^"]*)"/, video),
     pole: one(/data-rc-video-field="([^"]*)"/, video), suffix: one(/data-rc-video-suffix="([^"]*)"/, video), badge: one(/data-rc-video-suffix="[^"]*">([^<]*)<\/span>/, video),
-    intro: one(/<p style="color:var\(--muted\);margin-top:0">([\s\S]*?)<\/p>/, video), poster: one(/poster="([^"]*)"/, video), mp4: one(/<source src="([^"]*)"/, video),
+    poster: one(/poster="([^"]*)"/, video), mp4: one(/<source src="([^"]*)"/, video),
     note: one(/<p style="font-size:13px;color:var\(--muted\);margin-top:10px">([\s\S]*?)<\/p>/, video) } } : {}),
   story: { kicker: one(/<div class="kicker">([^<]*)<\/div>/, story), h2: one(/<h2>([^<]*)<\/h2>/, story), ...(/<p style="color:var\(--muted\);max-width:62ch">/.test(story) ? { intro: one(/<p style="color:var\(--muted\);max-width:62ch">([\s\S]*?)<\/p>/, story) } : {}), udary: proverUdary(story, udary(story)) },
   ...(fakty ? { fakty: { kicker: one(/<div class="kicker">([^<]*)<\/div>/, fakty), h2: one(/<h2>([^<]*)<\/h2>/, fakty), udary: proverUdary(fakty, udary(fakty)) } } : {}),

@@ -44,7 +44,7 @@ export function rolikIzReestra(dd, mes) {
   const r = klyuch && vse[klyuch];
   if (!r?.horizontal?.local || !r.poster?.local) return null;
   return { h2: r.title, klyuch, format: 'horizontal', pole: `${klyuch}:horizontal.sec`, suffix: 'сек',
-    badge: `${Math.round(r.horizontal.sec)} сек`, intro: r.intro ?? '', poster: `/${r.poster.local}?v=${r.poster.v ?? 1}`,
+    badge: `${Math.round(r.horizontal.sec)} сек`, poster: `/${r.poster.local}?v=${r.poster.v ?? 1}`,
     mp4: `/${r.horizontal.local}?v=${r.horizontal.v ?? 1}`, note: r.note ?? '' };
 }
 
@@ -262,7 +262,7 @@ export function razobrat(html, json, den) {
   if (video) {
     const klyuch = atr(video, 'data-rc-video'), format = atr(video, 'data-rc-format') ?? 'horizontal', p = abzacy(vid);
     karta.video = { h2: tekst(h2(vid)), klyuch, format, pole: `${klyuch}:${format}.sec`, suffix: 'сек',
-      badge: tekst(vid.match(/<\/h2>\s*<span[^>]*>([\s\S]*?)<\/span>/)?.[1]) || 'ролик', intro: tekst(p[0]),
+      badge: tekst(vid.match(/<\/h2>\s*<span[^>]*>([\s\S]*?)<\/span>/)?.[1]) || 'ролик',
       poster: ot(atr(video, 'poster')), mp4: ot(atr(vid.match(/<source[^>]*>/)?.[0], 'src')), note: tekst(p.at(-1)) };
   } else if (rolik) {
     karta.video = rolik;
