@@ -2,7 +2,7 @@
 // сделал, страница /slovar/<tip>/<slug>/ берёт из файла его дня: карточка src/content/dni-shablon/<музей>/ММ-ДД.yaml
 // с adres: den (head.sobytie, lead.hook — то, что стоит на живой странице дня), иначе — запись src/content/days/<музей>/ММ-ДД.json
 // (title, hook). Связь — поле slovar дня; у дня с живой карточкой связи читаются из карточки, а не из копии в days.
-// Как в мире: ссылка вместо копии — reference() в коллекциях Astro, https://docs.astro.build/en/guides/content-collections/#defining-collection-references
+// Как в мире: ссылка вместо копии — reference() в коллекциях Astro
 
 // days — элементы коллекции days ({ data }), kartochki — карточки дней (src/lib/dni-shablon.mjs: kartochki()).
 // Ответ — [{ museum, key, title, year, hook }] всех дней со связью id, без повторов «музей/день».
