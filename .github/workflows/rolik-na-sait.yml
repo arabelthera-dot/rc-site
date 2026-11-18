@@ -56,6 +56,8 @@ jobs:
       IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
       MOST: ${{ vars.RU_MOST }}
       MOST2: ${{ vars.RU_MOST2 }}
+      # бюджет ролика — перенесён из deploy.yml (Р536 п. 9): лимит на файл у статических хостингов, Pages 100 МБ
+      RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
     steps:
       # без public/ целиком: скрипт пишет только файлы выпуска (git add --sparse)
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -82,6 +84,8 @@ jobs:
           v_hranilishche() {
             find "$MEDIA_VYHOD" -name '*.mp4' 2>/dev/null | grep -q . || return 0
             [ -n "$MEDIA_KLYUCH" ] || { echo "::error::нет секрета MEDIA_SSH_KEY — ролик не в хранилище, заявки нет"; return 1; }
+            bolshie=$(find "$MEDIA_VYHOD" -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
+            [ -z "$bolshie" ] || { echo "::error::ролики больше ${RU_ROLIK_MAX_MB:-50} МБ — заявки нет:"; echo "$bolshie"; return 1; }
             most=$(scripts/prohod-v-rossiyu.sh) || return 1
             S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
             # без --delete — только докладываем; --checksum — как в deploy.yml (r790)
