@@ -413,9 +413,6 @@ sources:
     note: к факту 9
 kuda:
   - lbl: Следующий день
-    href: podvig-vir.html
-    title: 14 — сотрудники ВИР и коллекция семян
-    hook: Учёные умирали от голода рядом с семенами, которые могли их спасти.
     main: true
   - lbl: Весь музей
     href: index.html

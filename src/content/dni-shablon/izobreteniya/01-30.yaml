@@ -507,14 +507,8 @@ sources:
 - html: 'Изображения: <a href="https://goskatalog.ru/portal/#/collections?id=18020792" rel="noopener" target="_blank">Госкаталог — плакат «Глеб Евгеньевич Котельников»</a>, <a href="https://goskatalog.ru/portal/#/collections?id=39225585" rel="noopener" target="_blank">скульптура «Г. Е. Котельников и лётчик-парашютист»</a>, <a href="https://goskatalog.ru/portal/#/collections?id=53555618" rel="noopener" target="_blank">книга «История одного изобретения»</a>.'
 kuda:
 - lbl: Следующий день
-  href: den/01-31/
-  title: 31 января — Гиротрон
-  hook: 'Горьковские физики первыми в мире построили гиротрон: в 1964-м он дал 6 ватт, а через девять лет — мегаватт, в 170 тысяч раз больше.'
   main: true
 - lbl: Предыдущий день
-  href: den/01-29/
-  title: 29 января — Первый в мире дирижабль на жёстком каркасе
-  hook: Костович создал первый в мире дирижабль на жёстком каркасе — и для него первую в мире фанеру.
   main: false
 score:
   awards:

@@ -411,9 +411,6 @@ sources:
     note: к факту 9
 kuda:
   - lbl: Следующий день
-    href: podvig-rogozov.html
-    title: 13 — Леонид Рогозов
-    hook: Врач, которому пришлось оперировать самого себя — за полярным кругом.
     main: true
   - lbl: Весь музей
     href: index.html

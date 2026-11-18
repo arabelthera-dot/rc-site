@@ -548,9 +548,6 @@ sources:
   note: к фактам 13, 14
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-09/
-  title: 9 февраля — Таня Савичева
-  hook: 'Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'
   main: true
 - lbl: Весь музей
   href: index.html

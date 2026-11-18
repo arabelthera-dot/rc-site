@@ -387,9 +387,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-molodaya-gvardiya.html
-    title: 29 — «Молодая гвардия»
-    hook: "Подполье Краснодона: школьники, которые не выдали никого — даже под пытками."
     main: true
   - lbl: Весь музей
     href: index.html

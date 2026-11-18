@@ -642,9 +642,6 @@ sources:
   note: к фактам 6
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-25/
-  title: 25 февраля — Сергей Солнечников
-  hook: Накрыл собой боевую гранату — и спас солдат
   main: true
 - lbl: Весь музей
   href: index.html

@@ -649,9 +649,6 @@ sources:
   note: кадры дня
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 1 марта (запись готовится)
-  hook: Следующий день музея.
   main: true
 - lbl: Весь музей
   href: index.html

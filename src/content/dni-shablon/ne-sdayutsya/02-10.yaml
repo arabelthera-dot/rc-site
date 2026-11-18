@@ -783,9 +783,6 @@ sources:
   note: к факту 7
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-11/
-  title: 11 февраля — ледокол «Сибиряков»
-  hook: Ледокол против крейсера — бой приняли и флаг не спустили
   main: true
 - lbl: Весь музей
   href: index.html

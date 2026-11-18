@@ -667,9 +667,6 @@ sources:
   note: к фактам 2, 8 и 9
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-13/
-  title: 13 февраля — Пётр Гаврилов
-  hook: Немцы дали час на выдачу майора Гаврилова, а форт ответил драться до конца.
   main: true
 - lbl: Весь музей
   href: index.html

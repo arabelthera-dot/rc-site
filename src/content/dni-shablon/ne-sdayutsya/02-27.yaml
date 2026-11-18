@@ -633,9 +633,6 @@ sources:
   note: к факту 9
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-28/
-  title: 28 февраля — Лиза Чайкина
-  hook: Партизанка под пытками не выдала товарищей.
   main: true
 - lbl: Весь музей
   href: index.html

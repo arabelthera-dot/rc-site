@@ -631,14 +631,8 @@ sources:
   - html: <a href="https://rodina-history.ru/2024/11/15/90-let-nazad-sovetskie-radiozriteli-posmotreli-pervuiu-zvukovuiu-teleperedachu.html" rel="noopener" target="_blank">Е. Зайцева, «90 лет назад советские „радиозрители“ посмотрели первую звуковую телепередачу», «Родина», 15.11.2024</a>
 kuda:
   - lbl: Следующий день
-    href: day-02jan-luna1.html
-    title: 2 января — Первая в мире межпланетная станция «Луна-1»
-    hook: Она должна была упасть на Луну — но промахнулась.
     main: true
   - lbl: Предыдущий день
-    href: day-14dec-laser.html
-    title: 14 декабря — Мазер и принципы лазера
-    hook: "Два советских физика в начале 1950-х поняли: можно заставить атомы излучать свет строго согласованно — один за…"
     main: false
 score:
   awards:

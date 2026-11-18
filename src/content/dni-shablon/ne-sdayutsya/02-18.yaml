@@ -697,9 +697,6 @@ sources:
   note: к фактам 14, 15
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-19/
-  title: 19 февраля — Взвод Широнина
-  hook: Переезд держали двое раненых — враг не знал, что взвода больше нет
   main: true
 - lbl: Весь музей
   href: index.html

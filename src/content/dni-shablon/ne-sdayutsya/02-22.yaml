@@ -696,9 +696,6 @@ sources:
   note: к фактам 11, 13, 14, 15
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-23/
-  title: 23 февраля — Подлодка К-278 «Комсомолец»
-  hook: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
   main: true
 - lbl: Весь музей
   href: index.html

@@ -644,9 +644,6 @@ sources:
   note: к факту 12
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-20/
-  title: 20 февраля — Оборона Петропавловска-Камчатского
-  hook: Крошечный гарнизон отразил эскадру — десант сбросили с сопки
   main: true
 - lbl: Весь музей
   href: index.html

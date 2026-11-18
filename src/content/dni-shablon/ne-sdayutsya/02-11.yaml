@@ -662,9 +662,6 @@ sources:
     note: к факту 11
 kuda:
   - lbl: Следующий день
-    href: /muzei/ne-sdayutsya/den/02-12/
-    title: 12 февраля — Вера Волошина
-    hook: "Под пытками назвалась немцам «Верой Горой», а с петлёй на шее крикнула: «Я — Волошина!»"
     main: true
   - lbl: Весь музей
     href: index.html

@@ -607,9 +607,6 @@ sources:
   note: к рассказу об осаде
 kuda:
 - lbl: Следующий день
-  href: index.html
-  title: 4 февраля (запись готовится)
-  hook: Стойкость и подвиг день за днём.
   main: true
 - lbl: Весь музей
   href: index.html

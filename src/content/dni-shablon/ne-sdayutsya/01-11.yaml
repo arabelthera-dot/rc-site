@@ -412,9 +412,6 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-matrosov.html
-    title: 12 — Александр Матросов
-    hook: Закрыл пулемёт собой — и рота поднялась из снега.
     main: true
   - lbl: Весь музей
     href: index.html

@@ -409,14 +409,8 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-varyag.html
-    title: 10 — крейсер «Варяг»
-    hook: Крейсер затопили свои — но флаг не спустили.
     main: true
   - lbl: Предыдущий день
-    href: podvig-kosmodemyanskaya.html
-    title: 8 — Зоя Космодемьянская
-    hook: На эшафоте — восемнадцать лет.
     main: false
   - lbl: Весь музей
     href: index.html

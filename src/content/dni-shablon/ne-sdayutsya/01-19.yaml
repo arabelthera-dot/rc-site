@@ -408,9 +408,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-oktyabrskaya.html
-    title: 21 — Мария Октябрьская
-    hook: "Стойкость тыла: продала всё и купила танк — а потом сама села за его рычаги."
     main: true
   - lbl: Весь музей
     href: index.html

@@ -661,9 +661,6 @@ sources:
   note: к факту 5
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-26/
-  title: 26 февраля — Святитель Лука (Войно-Ясенецкий)
-  hook: 'Хирург-архиепископ: в ссылках продолжал оперировать и не отрёкся'
   main: true
 - lbl: Весь музей
   href: index.html

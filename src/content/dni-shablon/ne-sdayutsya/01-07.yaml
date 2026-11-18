@@ -424,9 +424,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-kosmodemyanskaya.html
-    title: 8 — Зоя Космодемьянская
-    hook: Восемнадцатилетняя разведчица не выдала никого даже перед казнью.
     main: true
   - lbl: Весь музей
     href: index.html

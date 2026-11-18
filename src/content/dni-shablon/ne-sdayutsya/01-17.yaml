@@ -420,9 +420,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-kuznetsov.html
-    title: 19 — Николай Кузнецов
-    hook: "Другой род стойкости: не бой с небом, а разведка под чужим именем во вражеском тылу."
     main: true
   - lbl: Весь музей
     href: index.html

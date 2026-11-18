@@ -660,9 +660,6 @@ sources:
   note: к фактам 4, 12
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-15/
-  title: 15 февраля — Ольга Берггольц
-  hook: Немцы внесли её в список на расстрел сразу после взятия города — за стихи по радио.
   main: true
 - lbl: Весь музей
   href: index.html

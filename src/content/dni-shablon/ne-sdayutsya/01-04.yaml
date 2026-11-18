@@ -397,9 +397,6 @@ sources:
   - html: "Памятная медаль «Героическая оборона Козельска в 1238 г.» — музей-заповедник «Куликово поле», <a href=\"https://goskatalog.ru/portal/#/collections?id=50086505\">Госкаталог № 50086505</a>."
 kuda:
   - lbl: Следующий день
-    href: podvig-brest.html
-    title: 5 — Брестская крепость
-    hook: «Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе.
     main: true
   - lbl: Весь музей
     href: index.html

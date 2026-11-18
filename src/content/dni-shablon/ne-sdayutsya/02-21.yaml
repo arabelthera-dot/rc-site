@@ -643,9 +643,6 @@ sources:
   note: к факту 9
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-22/
-  title: 22 февраля — Мать Мария (Скобцова)
-  hook: В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой.
   main: true
 - lbl: Весь музей
   href: index.html

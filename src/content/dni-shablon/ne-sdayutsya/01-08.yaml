@@ -423,9 +423,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-panfilovtsy.html
-    title: 9 — 28 панфиловцев
-    hook: Двадцать восемь против полусотни танков — и «отступать некуда».
     main: true
   - lbl: Весь музей
     href: index.html

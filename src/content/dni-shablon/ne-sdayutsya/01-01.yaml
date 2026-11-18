@@ -410,9 +410,6 @@ sources:
   - html: "Госкаталог музейного фонда РФ: <a href=\"https://goskatalog.ru/portal/#/collections?id=16999502\">Старорязанский клад</a>, <a href=\"https://goskatalog.ru/portal/#/collections?id=12931201\">шлем древнерусского воина</a>, <a href=\"https://goskatalog.ru/portal/#/collections?id=47351224\">наконечник стрелы «срезень»</a>."
 kuda:
   - lbl: Следующий день
-    href: /muzei/ne-sdayutsya/den-shablon/01-02/
-    title: 2 января — бриг «Меркурий»
-    hook: Двое против трёхсот пушек — и турки бросили погоню.
     main: true
 score:
   awards:

@@ -426,9 +426,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-6-rota.html
-    title: 23 — 6-я рота, высота 776
-    hook: "Стойкость ратника: девяносто против двух тысяч — не отступил никто."
     main: true
   - lbl: Весь музей
     href: index.html

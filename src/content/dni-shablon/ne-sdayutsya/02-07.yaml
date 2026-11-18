@@ -661,9 +661,6 @@ sources:
   note: к фактам 15
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-08/
-  title: 8 февраля — Станислав Петров
-  hook: Не поверил «сигналу ракетной атаки» — и спас мир от ядерной войны
   main: true
 - lbl: Весь музей
   href: index.html

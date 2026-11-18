@@ -557,14 +557,8 @@ sources:
   - html: 'Изображение: <a href="https://www.1spbgmu.ru/universitet/media/novosti/5535-30-avgusta-2021-goda-proshla-torzhestvennaya-tseremoniya-otkrytiya-byusta-vydayushchemusya-khirurgu-v-i-kolesovu" rel="noopener" target="_blank">ПСПбГМУ им. И. П. Павлова · открытие бюста В. И. Колесову, 30.08.2021</a>.'
 kuda:
   - lbl: Следующая страница
-    href: day-08jan-icebreaker.html
-    title: 8 января — Ледокол «Ермак»
-    hook: Первый в мире ледокол арктического плавания.
     main: true
   - lbl: Предыдущий день
-    href: day-06jan-orlov.html
-    title: 6 января — Орловская печать
-    hook: Первая в мире печать всех красок банкноты за один прогон.
     main: false
 score:
   awards:

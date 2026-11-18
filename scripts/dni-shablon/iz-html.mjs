@@ -114,7 +114,8 @@ const card = {
   // Строка источника не по образцу «<a>название</a>: пояснение» (01-17: «Изображения: <a>…</a> и <a>…</a>») — { html } как есть.
   sources: all(/<li>([\s\S]*?)<\/li>/g, sec('sources')).map((li) => { const m = /^<a href="([^"]*)" rel="noopener" target="_blank">([\s\S]*?)<\/a>( \([^)]*\))?: ([\s\S]*)$/.exec(li[1]);
     return m ? { href: m[1], title: m[2], ...(m[3] ? { pometka: m[3].trim() } : {}), note: m[4] } : { html: li[1] }; }),
-  kuda: kd.filter((m) => /Следующ|Предыдущ/.test(m[2])).map((m) => ({ lbl: m[2], href: m[3], title: m[4], hook: m[5], main: !!m[1] })),
+  // Р819: адрес, название и хук соседа — не копией; страница берёт их из файла соседа (sosed в den/[key].astro).
+  kuda: kd.filter((m) => /Следующ|Предыдущ/.test(m[2])).map((m) => ({ lbl: m[2], main: !!m[1] })),
   score: W.MUSEUM_SCORE,
   ...(chrome ? { chrome: { share: chrome.share, prev: chrome.prev, next: chrome.next, all: chrome.all, random: chrome.random } } : {}),
   return: RET.riddle,
