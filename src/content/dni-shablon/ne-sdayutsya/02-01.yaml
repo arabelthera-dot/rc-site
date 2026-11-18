@@ -156,8 +156,8 @@ video:
   pole: nesdayutsya/01feb-peresvet:horizontal.sec
   suffix: сек
   badge: 47 сек
-  poster: /muzei/ne-sdayutsya/video/day-01feb-peresvet-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-01feb-peresvet.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-01feb-peresvet-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-01feb-peresvet.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

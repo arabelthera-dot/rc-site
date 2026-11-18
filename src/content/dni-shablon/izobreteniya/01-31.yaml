@@ -82,8 +82,8 @@ video:
   pole: izobreteniya/31jan-girotron:horizontal.sec
   suffix: сек
   badge: 59 сек
-  poster: video/day-31jan-girotron-poster.jpg?v=2
-  mp4: video/day-31jan-girotron.mp4?v=2
+  poster: video/day-31jan-girotron-poster.jpg
+  mp4: video/day-31jan-girotron.mp4
   note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: А. В. Гапонов-Грехов на снимках 1969 и 1985 годов (Нижегородский государственный историко-архитектурный музей-заповедник), юбилейная медаль 1987 года (РОСИЗО). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История изобретения

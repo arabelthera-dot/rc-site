@@ -214,8 +214,8 @@ video:
   pole: izobreteniya/12feb-lenc:horizontal.sec
   suffix: сек
   badge: 39 сек
-  poster: video/day-12feb-lenc-poster.jpg?v=1
-  mp4: video/day-12feb-lenc.mp4?v=1
+  poster: video/day-12feb-lenc-poster.jpg
+  mp4: video/day-12feb-lenc.mp4
   note: Закадровый текст озвучен синтезом речи.
 audioguide:
   audioSrc: audio-guide-lenc-ru.mp3

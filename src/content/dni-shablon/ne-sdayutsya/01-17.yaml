@@ -81,8 +81,8 @@ video:
   pole: nesdayutsya/17jan-maresyev:horizontal.sec
   suffix: сек
   badge: 48 сек
-  poster: /muzei/ne-sdayutsya/video/day-17jan-maresyev-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-17jan-maresyev.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-17jan-maresyev-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-17jan-maresyev.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига

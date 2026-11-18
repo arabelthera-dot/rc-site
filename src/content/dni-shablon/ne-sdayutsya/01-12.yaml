@@ -81,8 +81,8 @@ video:
   pole: nesdayutsya/12jan-matrosov:horizontal.sec
   suffix: сек
   badge: 40 сек
-  poster: /muzei/ne-sdayutsya/video/day-12jan-matrosov-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-12jan-matrosov.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-12jan-matrosov-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-12jan-matrosov.mp4
   note: "Кадры ролика — подлинные предметы и снимки из Госкаталога музейного фонда России: Центральный музей Великой Отечественной войны, Государственный исторический музей, Краеведческий музей города Великие Луки, Якутский государственный объединённый музей истории и культуры народов Севера, Мультимедийный комплекс актуальных искусств. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: Среда подвига

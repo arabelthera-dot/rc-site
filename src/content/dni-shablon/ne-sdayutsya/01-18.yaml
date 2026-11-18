@@ -82,8 +82,8 @@ video:
   pole: nesdayutsya/18jan-kuznetsov:horizontal.sec
   suffix: сек
   badge: 48 сек
-  poster: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига

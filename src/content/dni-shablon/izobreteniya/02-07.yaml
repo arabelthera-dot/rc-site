@@ -163,8 +163,8 @@ video:
   pole: izobreteniya/07feb-setun:horizontal.sec
   suffix: сек
   badge: 54 сек
-  poster: video/day-07feb-setun-poster.jpg?v=1
-  mp4: video/day-07feb-setun.mp4?v=1
+  poster: video/day-07feb-setun-poster.jpg
+  mp4: video/day-07feb-setun.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения

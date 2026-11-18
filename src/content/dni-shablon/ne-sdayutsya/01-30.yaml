@@ -77,8 +77,8 @@ video:
   pole: nesdayutsya/30jan-chernobyl:horizontal.sec
   suffix: сек
   badge: 42 сек
-  poster: /muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-30jan-chernobyl.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-30jan-chernobyl.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

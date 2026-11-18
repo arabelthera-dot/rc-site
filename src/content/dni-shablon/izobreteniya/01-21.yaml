@@ -79,8 +79,8 @@ video:
   pole: izobreteniya/21jan-obninsk:horizontal.sec
   suffix: сек
   badge: 48 сек
-  poster: video/day-21jan-obninsk-poster.jpg?v=1
-  mp4: video/day-21jan-obninsk.mp4?v=2
+  poster: video/day-21jan-obninsk-poster.jpg
+  mp4: video/day-21jan-obninsk.mp4
   note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: пульт управления Первой АЭС в Обнинске, 1966 (Государственный исторический музей, рег. № 69176047); Юрий Гагарин у здания Первой АЭС, 31 мая 1966 (Музей истории города Обнинска, рег. № 2335970). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История пуска

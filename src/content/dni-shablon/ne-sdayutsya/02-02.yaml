@@ -98,8 +98,8 @@ video:
   pole: nesdayutsya/02feb-ovcharenko:horizontal.sec
   suffix: сек
   badge: 53 сек
-  poster: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг

@@ -235,8 +235,8 @@ video:
   pole: izobreteniya/11feb-m5:horizontal.sec
   suffix: сек
   badge: 47 сек
-  poster: video/day-11feb-m5-poster.jpg?v=1
-  mp4: video/day-11feb-m5.mp4?v=1
+  poster: video/day-11feb-m5-poster.jpg
+  mp4: video/day-11feb-m5.mp4
   note: Ролик собран из кадров дня. Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения

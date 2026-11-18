@@ -222,8 +222,8 @@ video:
   pole: izobreteniya/17feb-tramvaj:horizontal.sec
   suffix: сек
   badge: 51 сек
-  poster: video/day-17feb-tramvaj-poster.jpg?v=1
-  mp4: video/day-17feb-tramvaj.mp4?v=1
+  poster: video/day-17feb-tramvaj-poster.jpg
+  mp4: video/day-17feb-tramvaj.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Вагон без лошади

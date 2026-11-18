@@ -173,8 +173,8 @@ video:
   pole: izobreteniya/04feb-znamya:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-04feb-znamya-poster.jpg?v=1
-  mp4: video/day-04feb-znamya.mp4?v=1
+  poster: video/day-04feb-znamya-poster.jpg
+  mp4: video/day-04feb-znamya.mp4
   note: Закадровый текст озвучен синтезом речи.
 audioguide:
   audioSrc: audio-guide-znamya-2-ru.mp3

@@ -183,8 +183,8 @@ video:
   pole: izobreteniya/02feb-edinorog:horizontal.sec
   suffix: сек
   badge: 47 сек
-  poster: video/day-02feb-edinorog-poster.jpg?v=1
-  mp4: video/day-02feb-edinorog.mp4?v=1
+  poster: video/day-02feb-edinorog-poster.jpg
+  mp4: video/day-02feb-edinorog.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения

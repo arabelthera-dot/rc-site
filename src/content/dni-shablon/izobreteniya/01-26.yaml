@@ -75,8 +75,8 @@ video:
   pole: izobreteniya/26jan-sreznevskiy:horizontal.sec
   suffix: сек
   badge: 50 сек
-  poster: video/day-26jan-sreznevskiy-poster.jpg?v=2
-  mp4: video/day-26jan-sreznevskiy.mp4?v=3
+  poster: video/day-26jan-sreznevskiy-poster.jpg
+  mp4: video/day-26jan-sreznevskiy.mp4
   note: "Кадры ролика — подлинные: отчёт о полётах воздушного шара 1886 года (Госкаталог), рисунок аэрофотоаппарата и портрет Срезневского из книги Г. Абрамова; два рисунка музея. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История изобретения · 5 ударов

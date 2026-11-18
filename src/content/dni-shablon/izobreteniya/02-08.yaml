@@ -226,8 +226,8 @@ video:
   pole: izobreteniya/08feb-mendeleev:horizontal.sec
   suffix: сек
   badge: 42 сек
-  poster: video/day-08feb-mendeleev-poster.jpg?v=2
-  mp4: video/day-08feb-mendeleev.mp4?v=2
+  poster: video/day-08feb-mendeleev-poster.jpg
+  mp4: video/day-08feb-mendeleev.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: История открытия

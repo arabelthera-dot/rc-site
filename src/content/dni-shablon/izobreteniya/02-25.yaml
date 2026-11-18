@@ -850,6 +850,6 @@ video:
   pole: izobreteniya/25feb-tokamak:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-25feb-tokamak-poster.jpg?v=1
-  mp4: video/day-25feb-tokamak.mp4?v=1
+  poster: video/day-25feb-tokamak-poster.jpg
+  mp4: video/day-25feb-tokamak.mp4
   note: Закадровый текст озвучен синтезом речи.

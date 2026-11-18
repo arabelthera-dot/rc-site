@@ -83,8 +83,8 @@ video:
   pole: izobreteniya/22jan-landau:horizontal.sec
   suffix: сек
   badge: 42 сек
-  poster: video/day-22jan-landau-poster.jpg?v=1
-  mp4: video/day-22jan-landau.mp4?v=1
+  poster: video/day-22jan-landau-poster.jpg
+  mp4: video/day-22jan-landau.mp4
   note: "Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: Л. Д. Ландау за работой дома; гелиевый ожижитель П. Л. Капицы; Нобелевский диплом Ландау 1962 года. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История открытия

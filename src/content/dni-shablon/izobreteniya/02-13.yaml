@@ -259,8 +259,8 @@ video:
   pole: izobreteniya/13feb-beriev:horizontal.sec
   suffix: сек
   badge: 51 сек
-  poster: video/day-13feb-beriev-poster.jpg?v=1
-  mp4: video/day-13feb-beriev.mp4?v=1
+  poster: video/day-13feb-beriev-poster.jpg
+  mp4: video/day-13feb-beriev.mp4
   note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Машины Бериева

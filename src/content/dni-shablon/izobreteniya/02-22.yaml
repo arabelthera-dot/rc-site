@@ -842,6 +842,6 @@ video:
   pole: izobreteniya/22feb-tvch-vologdin:horizontal.sec
   suffix: сек
   badge: 45 сек
-  poster: video/day-22feb-tvch-vologdin-poster.jpg?v=1
-  mp4: video/day-22feb-tvch-vologdin.mp4?v=1
+  poster: video/day-22feb-tvch-vologdin-poster.jpg
+  mp4: video/day-22feb-tvch-vologdin.mp4
   note: Закадровый текст озвучен синтезом речи.
