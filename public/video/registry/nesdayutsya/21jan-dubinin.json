@@ -5,7 +5,7 @@
   "horizontal": {
     "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin.mp4",
     "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 47.4,
@@ -14,7 +14,7 @@
   "vertical": {
     "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 47.4,
@@ -23,11 +23,11 @@
   "poster": {
     "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/21jan-dubinin/day-21jan-dubinin-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-21jan-dubinin-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
