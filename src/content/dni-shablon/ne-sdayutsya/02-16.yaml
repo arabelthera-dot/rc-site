@@ -677,9 +677,6 @@ sources:
   note: к фактам 1, 3, 5, 9, 14, 15
 kuda:
 - lbl: Следующий день
-  href: "/muzei/ne-sdayutsya/den/02-17/"
-  title: "17 февраля — Роман Филипов"
-  hook: "«Это вам за пацанов!» — и граната в руке вместо плена"
   main: true
 - lbl: Весь музей
   href: index.html

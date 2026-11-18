@@ -433,9 +433,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-leonov.html
-    title: 27 — Алексей Леонов
-    hook: "Стойкость в космосе: первый вышел в открытый космос — и едва не остался там навсегда."
     main: true
   - lbl: Весь музей
     href: index.html

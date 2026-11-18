@@ -727,9 +727,6 @@ sources:
     note: к факту 10
 kuda:
   - lbl: Следующий день
-    href: /muzei/ne-sdayutsya/den/02-14/
-    title: 14 февраля — Пожарные Чернобыля
-    hook: Прибор показал 3,6 рентгена в час, а на крыше было до 15 000
     main: true
   - lbl: Весь музей
     href: index.html

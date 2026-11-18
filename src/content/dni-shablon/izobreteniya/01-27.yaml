@@ -370,14 +370,8 @@ sources:
 - html: 'Изображения: <a href="https://goskatalog.ru/portal/#/collections?id=12733546" rel="noopener" target="_blank">Госкаталог музейного фонда РФ · проспект «Эльбрус-2», Музей современной истории России</a> и <a href="https://goskatalog.ru/portal/#/collections?id=12367222" rel="noopener" target="_blank">«План-график отладки МВК „Эльбрус-2“», Политехнический музей</a>; фотографии и предметы Политехнического музея и Музея современной истории России — Госкаталог музейного фонда РФ; схема «Эльбрус-2» — <a href="https://www.computer-museum.ru/histussr/elbrus12.htm" rel="noopener" target="_blank">Виртуальный компьютерный музей</a>; портрет В. М. Пентковского — <a href="https://megagrant.ru/labs/scientists/scientist_rus_112121/" rel="noopener" target="_blank">megagrant.ru</a>.'
 kuda:
 - lbl: Следующий день
-  href: den/01-28/
-  title: 28 января — Вакцины Хавкина
-  hook: Первая в мире прививка от холеры и от чумы.
   main: true
 - lbl: Предыдущий день
-  href: den/01-26/
-  title: 26 января — Аэрофотоаппарат Срезневского
-  hook: 'Первая в мире камера для съёмки с неба: Кронштадт с 1100 метров.'
   main: false
 score:
   awards:

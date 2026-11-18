@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { KUDA_SOSED } from '../../src/lib/den-obshchee.mjs';
 
 const MUZEI = 'izobreteniya', IMYA = 'Музей «Что изобрели русские первыми в мире»', SAYT = 'https://russian-civilization.ru';
 const STARYE = `src/data/full-pages/${MUZEI}`, ZAPISI = `src/content/days/${MUZEI}`;
@@ -201,7 +202,8 @@ export function razobrat(html, json, den) {
 
   karta.kuda = [...h.matchAll(/<div class="kd-card( main)?">\s*<span class="kd-lbl">([\s\S]*?)<\/span>\s*<a href="([^"]+)">([\s\S]*?)<\/a>\s*(?:<p>([\s\S]*?)<\/p>)?\s*<\/div>/g)]
     .filter((m) => m[3] !== 'index.html' && !m[3].startsWith('../')) // «Весь музей» и «Город-музей» — в образце не переносятся
-    .map((m) => chisto({ lbl: tekst(m[2]), href: m[3], title: tekst(m[4].replace(/<span class="kd-arr">[\s\S]*?<\/span>/, '')), hook: tekst(m[5]) || undefined, main: !!m[1] }));
+    .map((m) => KUDA_SOSED.test(tekst(m[2])) ? { lbl: tekst(m[2]), main: !!m[1] } // Р819: соседа даёт машина
+      : chisto({ lbl: tekst(m[2]), href: m[3], title: tekst(m[4].replace(/<span class="kd-arr">[\s\S]*?<\/span>/, '')), hook: tekst(m[5]) || undefined, main: !!m[1] }));
   if (!karta.kuda.length) net('куда дальше (kd-card)');
 
   if (okno.MUSEUM_SCORE) karta.score = chisto({ awards: okno.MUSEUM_SCORE.awards, ranks: okno.MUSEUM_SCORE.ranks });

@@ -399,9 +399,6 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-maresyev.html
-    title: 18 — Алексей Маресьев
-    hook: Тот же лётчик из «Повести о настоящем человеке» — теперь без книги, только его собственная судьба.
     main: true
   - lbl: Весь музей
     href: index.html

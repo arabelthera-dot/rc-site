@@ -650,9 +650,6 @@ sources:
   note: к факту 15
 kuda:
 - lbl: Следующий день
-  href: "/muzei/ne-sdayutsya/den/02-18/"
-  title: "18 февраля — Подольские курсанты"
-  hook: "Три с половиной тысячи мальчишек задержали танки у Москвы"
   main: true
 - lbl: Весь музей
   href: index.html

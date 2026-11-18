@@ -11,7 +11,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { IGRA } from '../../src/lib/dni-ne-sdayutsya.mjs';
-import { POMETKI as VIDNYE, POMETKI_SLUZHEBNYE } from '../../src/lib/den-obshchee.mjs';
+import { POMETKI as VIDNYE, POMETKI_SLUZHEBNYE, KUDA_SOSED } from '../../src/lib/den-obshchee.mjs';
 import { chitat } from '../reestr-rolikov.mjs';
 
 const POMETKI = [...VIDNYE, ...POMETKI_SLUZHEBNYE];
@@ -309,7 +309,8 @@ export function razobrat(html, json, den) {
   if (!karta.sources.length) nety.push('источники (#sources-rights) — машина фактов соберёт из утверждённых');
   karta.kuda = [...h.matchAll(/<div class="ncard( main)?"><span class="lbl">([\s\S]*?)<\/span><a href="([^"]+)">([\s\S]*?)<\/a><br>([\s\S]*?)<\/div>/g)]
     .filter((m) => !m[3].startsWith('../')) // «Город-музей» — у r602 тоже не переносится
-    .map((m) => ({ lbl: tekst(m[2]), href: m[3], title: tekst(m[4]).replace(/\s*→$/, ''), hook: tekst(m[5]), main: !!m[1] }));
+    .map((m) => KUDA_SOSED.test(tekst(m[2])) ? { lbl: tekst(m[2]), main: !!m[1] } // Р819: соседа даёт машина
+      : { lbl: tekst(m[2]), href: m[3], title: tekst(m[4]).replace(/\s*→$/, ''), hook: tekst(m[5]), main: !!m[1] });
   karta.score = { awards: { q: [voprosy.length, 10] }, ranks: [[0, 'Гость дня']] };
   const ch = okno.MUSEUM_CHROME;
   if (ch) { const { museum, city, ...ost } = ch; karta.chrome = { ...ost, random: ost.random ?? [] }; } else nety.push('chrome (MUSEUM_CHROME)');

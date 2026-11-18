@@ -395,9 +395,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-shipka.html
-    title: 25 — оборона Шипки
-    hook: "Стойкость крепости: перевал держали в мороз — и не сошли."
     main: true
   - lbl: Весь музей
     href: index.html

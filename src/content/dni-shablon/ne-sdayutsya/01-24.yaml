@@ -406,9 +406,6 @@ sources:
     note: к факту 7
 kuda:
   - lbl: Следующий день
-    href: podvig-nurbagandov.html
-    title: 26 — Магомед Нурбагандов
-    hook: "Стойкость под стволом: «Работайте, братья» — и остался собой."
     main: true
   - lbl: Весь музей
     href: index.html

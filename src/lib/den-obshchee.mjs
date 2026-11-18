@@ -22,6 +22,8 @@ const SLOVAR = slovar;
 
 export const str = z.string().min(1);
 const bezVersii = str.regex(/^[^?#]+$/, 'путь без ?v= — версию ролика и обложки ставит реестр при сборке (Р820)');
+// Пункт «куда дальше» про соседний день (Р819) — тот же признак, что у navDnya.
+export const KUDA_SOSED = /^(Следующ|Предыдущ)/;
 // У факта дня на обычном адресе (adres: den) — ещё отрывок-цитата, место в источнике, адрес источника и пометка
 // достоверности (замок ниже); у пробы den-shablon эти поля необязательны.
 export const POMETKI = ['документ', 'два источника', 'легенда'];
@@ -109,7 +111,10 @@ export const obshchiePolya = (BLOKI) => {
     figures: z.array(kadr).default([]),
     // Строка не по образцу «название: пояснение» — { html } (содержимое <li> как есть).
     sources: z.array(istochnik).min(1),
-    kuda: z.array(z.object({ lbl: str, href: str, title: str, hook: str, main: z.boolean() })),
+    // Р819: «Следующий…/Предыдущий…» (и «…страница») — только lbl и main; адрес, название и хук соседа даёт машина (navDnya в den/[key].astro).
+    // Копия в файле дня запрещена — у текста одно место; остальные пункты — целиком.
+    kuda: z.array(z.union([z.object({ lbl: str.regex(KUDA_SOSED), main: z.boolean() }).strict(),
+      z.object({ lbl: str.refine((l) => !KUDA_SOSED.test(l), 'у «Следующий/Предыдущий» нет href/title/hook — их даёт машина (Р819)'), href: str, title: str, hook: str, main: z.boolean() })])),
     score: z.object({ awards: z.record(z.string(), z.union([z.number(), z.array(z.number())])), ranks: z.array(z.tuple([z.number(), str])) }),
     // Нет chrome — нет window.MUSEUM_CHROME (museum-chrome.js без настроек, как на части старых страниц).
     chrome: z.object({ share: z.object({ title: str, text: str }), prev: z.object({ href: str, title: str }).optional(),

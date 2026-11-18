@@ -408,9 +408,6 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: podvig-nastoyaschiy-chelovek.html
-    title: 16 — «Повесть о настоящем человеке»
-    hook: Без обеих ног лётчик вернулся в небо — и сбивал тех, кто его списал.
     main: true
   - lbl: Весь музей
     href: index.html
