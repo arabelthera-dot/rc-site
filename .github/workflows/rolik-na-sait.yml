@@ -63,6 +63,10 @@ jobs:
       - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Клон частичный (--depth=1 --filter=blob:none), снимок — на момент события. Ушёл main, пока прогон ждал очереди, —
+          # push не видит общего коммита и шлёт всё дерево с дозагрузкой всех роликов: 10 мин и HTTP 500 (Р820).
+          # push.negotiate — сервер сам называет общие коммиты; свежий main перед push — запас, если переговоры не пройдут.
+          git config push.negotiate true
           # брак выпуска (нет файла, не mp4, чужой музей) — прогон красный в конце, не молча (r544)
           brak=0
           if [ -n "$TEG" ]; then spisok="avto/rolik-$TEG $TEG"; else spisok=$(node scripts/rolik-na-sait.mjs spisok) || brak=1; fi
@@ -92,6 +96,7 @@ jobs:
           "
             done
             [ -n "$pervaya" ] || continue
+            git fetch -q --depth=1 --filter=blob:none origin main
             if [ -n "$nomer" ]; then git push -q origin "$VETKA"; else git push -q -f origin "$VETKA"; fi
             telo="Выпуск облака на сайт (r538): $ssylki
           \`\`\`

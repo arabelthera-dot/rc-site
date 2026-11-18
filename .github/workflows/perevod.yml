@@ -66,6 +66,8 @@ jobs:
       - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # клон частичный: ушёл main — push без переговоров шлёт всё дерево, HTTP 500 (Р820, как в rolik-na-sait.yml)
+          git config push.negotiate true
           [ -n "$FAYLY" ] || FAYLY=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'src/content/dni-shablon/*/*.yaml')
           [ -n "$FAYLY" ] || { echo "Новых карточек дня нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
           VETKA="avto/perevod-${GITHUB_SHA::8}"
