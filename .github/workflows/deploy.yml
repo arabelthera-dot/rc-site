@@ -355,6 +355,103 @@ jobs:
               --data-urlencode "chat_id=${TG_STOROZH_CHAT}" \
               --data-urlencode "text=${tekst}" || true)
           echo "Telegram: код $kod"
+  # Пакет для забора сервером (Р815, 18.11.2026, Сергей «да»): msk-new с 13.11 закрыт из-за границы, и толкать сборку
+  # rsync-ом по ssh приходится через туннели (RU_MOST/RU_MOST2) — заплатка. По мировой практике сервер сам забирает
+  # готовую сборку (pull): эта задача кладёт её ассетами в релиз с постоянным тегом vykladka, а scripts/server/zabrat-sayt.sh
+  # на сервере раз в 5 минут сверяет sayt.sha256 и при новом хэше скачивает, сверяет, раскладывает (docs/zabor-na-servere.md).
+  # Входящие соединения серверу больше не нужны. Задача msk не тронута: пока Михаил не включил забор, выкладка прежняя.
+  # Ассеты: sayt.tar.gz (сайт без роликов) + sayt.sha256 (последним — по нему сервер видит новую сборку); ролики —
+  # roliki-NN.tar частями до 1800 МБ (лимит GitHub — файл релиза меньше 2 ГиБ, а роликов 3 ГБ) + roliki.sha256 и манифест
+  # roliki.txt (путь<TAB>размер), части перезаливаются только при смене манифеста.
+  # Пять вопросов: задевает — только релиз vykladka (сайт, Pages и msk не меняет); нужно — github.token с contents: write
+  # (только этой задаче); без нужного — красная задача, сайт и Pages прежние; проверка — прогон на main, ассеты в релизе;
+  # откат — убрать задачу; релиз vykladka можно оставить (сервер без забора его не читает).
+  # Как в мире — docs.github.com «About releases» (ассет меньше 2 GiB) и pull-выкладка (сервер забирает сам).
+  paket:
+    needs: build
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TEG: vykladka
+      RU_SAYT_MAX_MB: ${{ vars.RU_SAYT_MAX_MB }}
+      RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: github-pages
+          path: artefakt
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: video-sajta
+          path: video-sajta
+      # Те же проверки, что в msk перед rsync (Р63, Р536 п. 9): ролики есть, обязательные файлы есть, секретов нет, размер.
+      - name: проверка сборки
+        run: |
+          set -euo pipefail
+          mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
+          vsego=$(find video-sajta -type f -name '*.mp4' | wc -l)
+          [ "$vsego" -gt 0 ] || { echo "::error::paket: артефакт video-sajta пуст — пакет не собран"; exit 1; }
+          v_dist=$(find dist -type f -name '*.mp4' | wc -l)
+          [ "$v_dist" = 0 ] || { echo "::error::paket: в сборке без роликов $v_dist mp4 — пакет не собран"; exit 1; }
+          for f in index.html 404.html robots.txt; do
+            test -f "dist/$f" || { echo "::error::paket: в сборке нет $f — пакет не собран"; exit 1; }
+          done
+          lishnie=$(find dist video-sajta \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '*.pfx' \
+            -o -name 'id_rsa*' -o -name 'id_ed25519*' -o -name 'id_ecdsa*' -o -name 'id_dsa*' -o -name '.git' -o -name '.npmrc' \) -print)
+          if [ -n "$lishnie" ]; then echo "::error::paket: в сборке файлы, похожие на секреты:"; echo "$lishnie"; exit 1; fi
+          if grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist >/dev/null; then
+            echo "::error::paket: в сборке закрытый ключ"; grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist; exit 1
+          fi
+          sayt=$(du -sm dist | cut -f1); echo "paket: сайт без роликов $sayt МБ, ролики $vsego mp4, $(du -sm video-sajta | cut -f1) МБ"
+          [ "$sayt" -le "${RU_SAYT_MAX_MB:-1000}" ] || { echo "::error::paket: сайт без роликов $sayt МБ больше бюджета ${RU_SAYT_MAX_MB:-1000} МБ"; exit 1; }
+          bolshie=$(find video-sajta -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
+          if [ -n "$bolshie" ]; then echo "::error::paket: ролики больше ${RU_ROLIK_MAX_MB:-50} МБ:"; echo "$bolshie"; exit 1; fi
+      - name: релиз vykladka
+        run: |
+          set -euo pipefail
+          gh release view "$TEG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$TEG" -R "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" --latest=false --title "Выкладка для сервера" \
+            --notes "Постоянный релиз для забора сервером (Р815): sayt.tar.gz + sayt.sha256, ролики roliki-NN.tar + roliki.sha256 + roliki.txt. Перезаливает задача paket в deploy.yml."
+      # Ролики раньше сайта (как в msk: сначала хранилище, потом страницы). Манифест прежний — части не трогаем.
+      - name: ролики в релиз
+        run: |
+          set -euo pipefail
+          mkdir -p paket
+          (cd video-sajta && find . -type f -name '*.mp4' -printf '%P\t%s\n') | LC_ALL=C sort > paket/roliki.txt
+          if gh release download "$TEG" -R "$GITHUB_REPOSITORY" -p roliki.txt -O staryy-roliki.txt 2>/dev/null && cmp -s staryy-roliki.txt paket/roliki.txt; then
+            echo "paket: манифест роликов прежний ($(wc -l < paket/roliki.txt) mp4) — части не перезаливаются"; exit 0
+          fi
+          # Части до 1800 МБ из целых роликов, по порядку путей.
+          awk -F'\t' -v predel=$((1800*1024*1024)) 'BEGIN{n=0; s=0} { if (s>0 && s+$2>predel) {n++; s=0} s+=$2; print $1 > sprintf("paket/chast-%02d.spisok", n) }' paket/roliki.txt
+          : > paket/roliki.sha256
+          for sp in paket/chast-*.spisok; do
+            nn=${sp##*/chast-}; nn=${nn%.spisok}
+            tar -cf "paket/roliki-$nn.tar" -C video-sajta -T "$sp"
+            (cd paket && sha256sum "roliki-$nn.tar" >> roliki.sha256)
+          done
+          cat paket/roliki.sha256
+          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/roliki-*.tar
+          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/roliki.sha256
+          # Манифест — последним: сервер берёт ролики, только когда части и их хэши уже на месте.
+          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/roliki.txt
+          # Части сверх списка (роликов стало меньше) остаются в релизе и не мешают: сервер берёт только перечисленные в roliki.sha256.
+      - name: сайт в релиз
+        run: |
+          set -euo pipefail
+          tar -czf paket/sayt.tar.gz -C dist .
+          (cd paket && sha256sum sayt.tar.gz > sayt.sha256)
+          echo "paket: sayt.tar.gz $(du -m paket/sayt.tar.gz | cut -f1) МБ, $(cat paket/sayt.sha256)"
+          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/sayt.tar.gz
+          # sayt.sha256 — последним: сервер видит новый хэш, только когда архив уже на месте.
+          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/sayt.sha256
+          {
+            echo "### 📦 Пакет для забора сервером"
+            echo "Релиз \`$TEG\`: sayt.tar.gz $(du -m paket/sayt.tar.gz | cut -f1) МБ, роликов $(wc -l < paket/roliki.txt)."
+          } >> "$GITHUB_STEP_SUMMARY"
   # Живой сайт после выкладки в Россию (Р536, п. 9) — post-deploy smoke на Playwright, как smoke.yml: машина открывает
   # https://russian-civilization.ru как посетитель — страницы дней, изменённых этой выкладкой (git diff от прошлой
   # успешной выкладки), а нет таких — выборку (tests/smoke/dni.spec.mjs). Страница 200 и равна выложенной сборке, хук
