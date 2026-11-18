@@ -143,6 +143,7 @@ jobs:
     needs: build
     runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
@@ -152,10 +153,33 @@ jobs:
     # reached»), сайт ждал ручного перезапуска. Образец — docs.github.com, контекст steps: первая попытка с
     # continue-on-error, вторая — только при steps.deployment.outcome == 'failure', после паузы; та же сборка (артефакт
     # github-pages). Вторая тоже упала — прогон красный, как прежде. Откат — убрать шаги pauza и povtor.
+    # Зеркало для заграницы (Р815, 18.11.2026): Pages живёт в подпапке /rc-site/, сборка — под корень домена, поэтому
+    # на копии артефакта пути переписываются scripts/zerkalo-podpapka.mjs и выкладывается артефакт github-pages-zerkalo.
+    # Артефакт github-pages (его берут msk и paket для .ru) не меняется. Откат — убрать три шага zerkalo и artifact_name.
     steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: scripts/zerkalo-podpapka.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: github-pages
+          path: artefakt
+      - name: zerkalo — пути под подпапку /rc-site/
+        run: |
+          set -euo pipefail
+          mkdir -p zerkalo && tar -xf artefakt/artifact.tar -C zerkalo && rm -rf artefakt
+          node scripts/zerkalo-podpapka.mjs zerkalo /rc-site
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: zerkalo
+          name: github-pages-zerkalo
+          retention-days: 1
       - id: deployment
         continue-on-error: true
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        with:
+          artifact_name: github-pages-zerkalo
       - name: pauza — Pages отказал, вторая попытка через минуту
         if: steps.deployment.outcome == 'failure'
         run: |
@@ -164,6 +188,8 @@ jobs:
       - id: povtor
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        with:
+          artifact_name: github-pages-zerkalo
   # Российская площадка msk-new (Р6; решение Михаила 20.10.2026: сайт на своём сервере nginx + Let's Encrypt, Облако
   # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages), плюс ролики (артефакт
   # video-sajta, Р263) уходит rsync по ssh на
