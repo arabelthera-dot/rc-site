@@ -406,9 +406,6 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: /muzei/ne-sdayutsya/den/01-31/
-    title: 31 — Андрей Борзенко
-    hook: Его выводили биться против сильнейших — он выигрывал и не сдавался
     main: true
   - lbl: Весь музей
     href: index.html

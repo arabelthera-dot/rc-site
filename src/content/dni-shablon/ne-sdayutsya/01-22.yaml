@@ -434,9 +434,6 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: podvig-rodionov.html
-    title: 24 — Евгений Родионов
-    hook: "Стойкость в плену: ему предложили снять крест — он не снял."
     main: true
   - lbl: Весь музей
     href: index.html

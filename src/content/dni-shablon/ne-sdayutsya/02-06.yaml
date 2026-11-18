@@ -684,9 +684,6 @@ sources:
   note: к фактам 9
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-07/
-  title: 7 февраля — Муса Джалиль
-  hook: Поэт в плену писал стихи и готовил восстание — «Моабитская тетрадь»
   main: true
 - lbl: Весь музей
   href: index.html

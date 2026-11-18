@@ -394,14 +394,8 @@ sources:
   - html: 'Изображения: <a href="https://goskatalog.ru/portal/#/collections?id=4978913" rel="noopener" target="_blank">Госкаталог, рег. № 4978913 — портрет Н. А. Умова</a> (держатель — Государственный центральный музей современной истории России) и <a href="https://goskatalog.ru/portal/#/collections?id=60062098" rel="noopener" target="_blank">рег. № 59767659 — Н. А. Умов с женой Еленой Леонардовной</a> (держатель — Государственный исторический музей); кадры дня — <a href="https://goskatalog.ru/portal/#/collections?id=4978641" rel="noopener" target="_blank">рег. № 4978641 — Н. А. Умов в молодости</a> (ГЦМСИР), <a href="https://goskatalog.ru/portal/#/collections?id=46762123" rel="noopener" target="_blank">рег. № 46762123 — Физический институт МГУ, 1936</a> и <a href="https://goskatalog.ru/portal/#/collections?id=17010580" rel="noopener" target="_blank">рег. № 17010580 — письмо Умова, 28.III.1911</a> (Музей Москвы).'
 kuda:
   - lbl: Следующий день
-    href: den/01-24/
-    title: 24 января — Первая в мире подлодка из титана К-162
-    hook: На испытаниях подлодка обогнала корабли сопровождения — её рекорд скорости под водой не побит до сих пор.
     main: true
   - lbl: Предыдущий день
-    href: den/01-22/
-    title: 22 января — Теория сверхтекучести (Нобель)
-    hook: Ландау создал первую в мире теорию сверхтекучести — объяснил, почему жидкий гелий сам ползёт вверх по стенке, а Нобеля получал в больнице.
     main: false
 score:
   awards:

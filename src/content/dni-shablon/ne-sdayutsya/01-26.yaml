@@ -399,9 +399,6 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-tuman.html
-    title: 28 — сторожевой корабль «Туман»
-    hook: "Стойкость флота: рыбацкий траулер против трёх эсминцев — флаг не спустили."
     main: true
   - lbl: Весь музей
     href: index.html

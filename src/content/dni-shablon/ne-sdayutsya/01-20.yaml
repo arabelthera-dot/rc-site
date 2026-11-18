@@ -411,9 +411,6 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-dubinin.html
-    title: 22 — Володя Дубинин
-    hook: "Стойкость ребёнка: пионер-разведчик партизанского отряда в Керчи."
     main: true
   - lbl: Весь музей
     href: index.html

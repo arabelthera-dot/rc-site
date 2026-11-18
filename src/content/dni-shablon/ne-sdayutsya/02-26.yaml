@@ -651,9 +651,6 @@ sources:
   note: галерея
 kuda:
 - lbl: Следующий день
-  href: /muzei/ne-sdayutsya/den/02-27/
-  title: 27 февраля — Азовское осадное сидение
-  hook: Казаки выдержали «осадное сидение» против армии — и не сдали крепость
   main: true
 - lbl: Весь музей
   href: index.html

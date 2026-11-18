@@ -409,9 +409,6 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: podvig-chelyuskincy.html
-    title: 15 — Челюскинцы
-    hook: Лёд раздавил корабль — и 104 человека со льдины вынесли лётчики, всех до одного.
     main: true
   - lbl: Весь музей
     href: index.html
