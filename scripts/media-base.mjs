@@ -4,15 +4,15 @@
 // (манифест src/data/hranilishche-rolikov.sha256, Р825 — mp4 в public/ нет), становится MEDIA_BASE + путь от корня (?v= и #t= сохраняются);
 // в video/registry.json пишется hosting.media — по нему public/assets/museum-video.js строит адрес ролика из реестра.
 // Один шаг на все страницы: 41 карточку дня (два макета) и 21 старую full-pages — без правки каждой.
-// MEDIA_BASE пустой — шаг спит, dist как был (откат = пустой MEDIA_BASE). Файлы mp4 в dist не удаляются (шаг 5 — отдельно).
-// Файлы на хранилище кладёт и сверяет .github/workflows/media.yml; ссылка ставится только на то, что там уже лежит.
+// MEDIA_BASE не задан — хранилище media.russian-civilization.ru (Р825 шаг 5: mp4 в public/ нет, другого места у роликов нет,
+// и пустой MEDIA_BASE больше не откат). Новые ролики кладёт в хранилище rolik-na-sait.yml; ссылка — только на то, что в манифесте.
 // Запуск: node scripts/media-base.mjs --proba && node scripts/media-base.mjs --dist dist
 import fs from 'node:fs';
 import path from 'node:path';
 import { vHranilishche } from './hranilishche-rolikov.mjs';
 const args = process.argv.slice(2);
 const DIST = args.includes('--dist') ? args[args.indexOf('--dist') + 1] : 'dist';
-const BASE = (process.env.MEDIA_BASE || '').replace(/\/+$/, '');
+const BASE = (process.env.MEDIA_BASE || 'https://media.russian-civilization.ru').replace(/\/+$/, '');
 
 // Путь ролика от корня dist для src со страницы rel (null — не наш mp4: чужой адрес, data:, не .mp4).
 export function putOtKornya(src, rel) {
@@ -57,7 +57,6 @@ if (args.includes('--proba')) {
   process.exit(0);
 }
 
-if (!BASE) { console.log('media-base: MEDIA_BASE пустой — спит, ролики с сайта как раньше'); process.exit(0); }
 let stranic = 0, zamen = 0; const netFaila = [];
 (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) {
   const p = path.join(d, e.name);

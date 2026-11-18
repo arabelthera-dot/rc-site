@@ -109,14 +109,11 @@ jobs:
           restore-keys: |
             rc-sborka-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
             rc-sborka-${{ runner.os }}-
-      # Ролики — только со своего сервера (Р263, Сергей 26.10.2026; заявка r284): Pages — 1 ГБ на сайт, сборка
-      # с роликами упёрлась в 950 МБ. После сборки все *.mp4 переносятся (не удаляются) из dist/ в video-sajta/ с теми
-      # же путями: в артефакт github-pages (выкладка Pages) уходит сборка без роликов, ролики — отдельным артефактом
-      # video-sajta, задача msk складывает их обратно в полную сборку для сервера. На копии Pages ролика нет (там и так
-      # не грузятся стили: base '/', адрес …/rc-site/) — тег <video> с постером, проигрывание — 404.
-      # Откат — убрать build-cmd и шаг «video-sajta», в msk — шаг «ролики обратно».
-      # MEDIA_BASE (#2364, шаг 4): пусто — ролики со своего сервера, как раньше; https://media.russian-civilization.ru —
-      # scripts/media-base.mjs переписывает ссылки mp4 на хранилище. Ставится переменной репо только после media.yml 108/108.
+      # Ролики — только в хранилище media.russian-civilization.ru (Р825 задача A, 18.11.2026): mp4 в public/ нет, их
+      # кладёт туда rolik-na-sait.yml, список — src/data/hranilishche-rolikov.sha256. Сборка выходит без роликов, и
+      # прежний перенос mp4 в артефакт video-sajta (Р263, r284) убран вместе с ним из msk и paket.
+      # MEDIA_BASE=https://media.russian-civilization.ru обязателен: scripts/media-base.mjs ставит ссылки mp4 на хранилище.
+      # Пустой MEDIA_BASE больше не откат — роликов на сайте нет; откат — revert заявки Р825 шаг 5.
       # Рамка зеркала (п.501, Р745): scripts/ramka-zerkala.mjs — копия на *.github.io не показывается внутри чужой
       # страницы; на своём сервере скрипт молчит. Откат — убрать три строки ramka/csp из build-cmd.
       - uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
@@ -129,18 +126,7 @@ jobs:
             node scripts/ramka-zerkala.mjs --proba &&
             node tests/csp-strogiy.mjs &&
             node scripts/ramka-zerkala.mjs dist &&
-            mkdir -p video-sajta &&
-            (cd dist && find . -type f -name '*.mp4' -print0 | xargs -0 -r cp --parents -p -t ../video-sajta) &&
-            find dist -type f -name '*.mp4' -delete &&
-            echo "ролики вынесены из сборки Pages: $(find video-sajta -type f -name '*.mp4' | wc -l) mp4, $(du -sm video-sajta | cut -f1) МБ; сборка Pages $(du -sm dist | cut -f1) МБ"
-      - name: video-sajta — ролики отдельным артефактом для своего сервера
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2 (та же, что в withastro/action)
-        with:
-          name: video-sajta
-          path: video-sajta
-          retention-days: 1
-          compression-level: 0
-          if-no-files-found: error
+            echo "сборка $(du -sm dist | cut -f1) МБ, mp4 в ней: $(find dist -type f -name '*.mp4' | wc -l)"
   deploy:
     needs: build
     runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
@@ -193,8 +179,8 @@ jobs:
         with:
           artifact_name: github-pages-zerkalo
   # Российская площадка msk-new (Р6; решение Михаила 20.10.2026: сайт на своём сервере nginx + Let's Encrypt, Облако
-  # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages), плюс ролики (артефакт
-  # video-sajta, Р263) уходит rsync по ssh на
+  # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages; роликов
+  # в ней нет — они в хранилище media.russian-civilization.ru, Р825) уходит rsync по ssh на
   # rcdeploy@185.149.145.227. На сервере ключ ограничен rrsync -wo с корнем /srv/rc-site/www — путь в команде не пишется.
   # Ключ хоста — строкой ниже (не секрет, данные Михаила 20.10), StrictHostKeyChecking=yes: подменённый сервер сайт не
   # получит. --delay-updates + --delete-after: новые файлы подменяются разом в конце, старые удаляются после — посетитель
@@ -225,7 +211,6 @@ jobs:
       IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
       ADRES: ${{ vars.RU_DEPLOY_URL }}
       RU_SAYT_MAX_MB: ${{ vars.RU_SAYT_MAX_MB }}
-      RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
       # Проход в Россию (18.11.2026, без Михаила): msk-new с 13.11 закрыт из-за границы, а изнутри РФ открыт. vars.RU_MOST —
       # адрес туннеля Cloudflare (trycloudflare.com) до нашего сервера, где узкий проход ведёт только на 185.149.145.227:22
       # через РФ-выход (~/tools/rf-most). ssh идёт сквозь туннель как через ProxyJump: ключ RU_DEPLOY_KEY из облака не
@@ -276,50 +261,11 @@ jobs:
         with:
           name: github-pages
           path: artefakt
-      # Ролики обратно в сборку (Р263, r284): Pages получил сборку без *.mp4, сервер — полную. Роликов в сборке должно
-      # стать ровно столько, сколько в video-sajta, иначе выкладка останавливается: --delete-after стёр бы ролики с сервера.
-      - name: ролики обратно
-        if: steps.est.outputs.est == 'true'
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        with:
-          name: video-sajta
-          path: video-sajta
-      # Новые ролики — в хранилище media.russian-civilization.ru до выкладки страниц (#2364, шаг 3, поправка Михаила 2):
-      # rcmedia (rrsync -wo, корень /srv/rc-media), без --delete — только докладываем, путь тот же, что от корня сайта.
-      # Ссылки на хранилище ставит scripts/media-base.mjs при vars.MEDIA_BASE; задан — сбой докладки останавливает
-      # выкладку (иначе 404 на роликах), пуст — только предупреждение. Нет MEDIA_SSH_KEY — шаг спит.
-      - name: ролики в хранилище
-        if: steps.est.outputs.est == 'true'
-        env:
-          MEDIA_KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
-          MEDIA_BASE: ${{ vars.MEDIA_BASE }}
-        run: |
-          set -uo pipefail
-          if [ -z "$MEDIA_KLYUCH" ]; then echo "::notice::нет секрета MEDIA_SSH_KEY — ролики в хранилище не докладываются"; exit 0; fi
-          # Ключ — в RUNNER_TEMP (GitHub чистит её в конце каждой задачи), а не в ~/.ssh: на своём исполнителе дом не стирается.
-          umask 077; S="$RUNNER_TEMP/ssh-media"; mkdir -p "$S"
-          printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"
-          printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
-          SSH="ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30 ${SSH_MOST:-}"
-          # --checksum (r790): ролики после скачивания артефакта — с новым временем, без него rsync перечитывал и
-          # переписывал все 163 файла (13.11: 2 мин 15 с); со сверкой содержимого уходят только новые и изменённые.
-          rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' -e "$SSH" video-sajta/ rcmedia@185.149.145.227: | tail -n 6
-          kod=$?; rm -rf "$S"
-          if [ "$kod" != 0 ]; then
-            if [ -n "$MEDIA_BASE" ]; then echo "::error::ролики не доложены в хранилище (rsync $kod), а ссылки ведут туда — выкладка остановлена"; exit 1; fi
-            echo "::warning::ролики не доложены в хранилище (rsync $kod); MEDIA_BASE пуст — сайт берёт ролики с себя"
-          fi
       - name: выкладка на msk-new
         if: steps.est.outputs.est == 'true'
         run: |
           set -euo pipefail
           mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
-          vsego=$(find video-sajta -type f -name '*.mp4' | wc -l)
-          [ "$vsego" -gt 0 ] || { echo "::error::msk-new: артефакт video-sajta пуст — выкладка остановлена"; exit 1; }
-          cp -a video-sajta/. dist/
-          v_dist=$(find dist -type f -name '*.mp4' | wc -l)
-          [ "$v_dist" = "$vsego" ] || { echo "::error::msk-new: роликов в сборке $v_dist, а вынесено $vsego — выкладка остановлена"; exit 1; }
-          echo "msk-new: роликов $v_dist из $vsego, $(du -sm video-sajta | cut -f1) МБ"
           # Проверка содержимого до выкладки (Р63): обязательные файлы есть, секретов и ключей нет, размер разумный.
           for f in index.html 404.html robots.txt; do
             test -f "dist/$f" || { echo "::error::msk-new: в сборке нет $f — выкладка остановлена"; exit 1; }
@@ -333,13 +279,10 @@ jobs:
           # Бюджет размера (Р536, п. 9) — как в мире, по частям, а не одним числом на всё (прежний RU_DEPLOY_MAX_MB от
           # du -sm dist рос вместе с роликами, 04.11 его подняли руками до 3000 — заплатка). Сайт без роликов — не больше
           # RU_SAYT_MAX_MB (1000: лимит опубликованного сайта GitHub Pages 1 ГБ, на Pages уходит эта же сборка —
-          # https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits); каждый ролик — не
-          # больше RU_ROLIK_MAX_MB (50; лимит на файл у статических хостингов: Cloudflare Pages 25 МБ, Pages 100 МБ).
-          # Общий объём роликов меряет не порог, а диск сервера: место кончилось — rsync падает, прогон красный (Михаил, М83).
-          sayt=$(du -sm --exclude='*.mp4' dist | cut -f1); echo "msk-new: сайт без роликов $sayt МБ, ролики $(du -sm video-sajta | cut -f1) МБ"
+          # https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits). Бюджет ролика
+          # RU_ROLIK_MAX_MB (Р825) — в rolik-na-sait.yml: ролики идут в хранилище оттуда, в сборке их нет.
+          sayt=$(du -sm --exclude='*.mp4' dist | cut -f1); echo "msk-new: сайт без роликов $sayt МБ"
           [ "$sayt" -le "${RU_SAYT_MAX_MB:-1000}" ] || { echo "::error::msk-new: сайт без роликов $sayt МБ больше бюджета ${RU_SAYT_MAX_MB:-1000} МБ"; exit 1; }
-          bolshie=$(find dist -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
-          if [ -n "$bolshie" ]; then echo "::error::msk-new: ролики больше ${RU_ROLIK_MAX_MB:-50} МБ:"; echo "$bolshie"; exit 1; fi
           umask 077; S="$RUNNER_TEMP/ssh-sayt"; mkdir -p "$S"
           printf '%s\n' "$KLYUCH" > "$S/klyuch"
           printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
@@ -388,9 +331,8 @@ jobs:
   # готовую сборку (pull): эта задача кладёт её ассетами в релиз с постоянным тегом vykladka, а scripts/server/zabrat-sayt.sh
   # на сервере раз в 5 минут сверяет sayt.sha256 и при новом хэше скачивает, сверяет, раскладывает (docs/zabor-na-servere.md).
   # Входящие соединения серверу больше не нужны. Задача msk не тронута: пока Михаил не включил забор, выкладка прежняя.
-  # Ассеты: sayt.tar.gz (сайт без роликов) + sayt.sha256 (последним — по нему сервер видит новую сборку); ролики —
-  # roliki-NN.tar частями до 1800 МБ (лимит GitHub — файл релиза меньше 2 ГиБ, а роликов 3 ГБ) + roliki.sha256 и манифест
-  # roliki.txt (путь<TAB>размер), части перезаливаются только при смене манифеста.
+  # Ассеты: sayt.tar.gz (сайт без роликов) + sayt.sha256 (последним — по нему сервер видит новую сборку). Ролики в релиз
+  # больше не идут (Р825): их кладёт в хранилище media.russian-civilization.ru rolik-na-sait.yml.
   # Пять вопросов: задевает — только релиз vykladka (сайт, Pages и msk не меняет); нужно — github.token с contents: write
   # (только этой задаче); без нужного — красная задача, сайт и Pages прежние; проверка — прогон на main, ассеты в релизе;
   # откат — убрать задачу; релиз vykladka можно оставить (сервер без забора его не читает).
@@ -406,67 +348,35 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       TEG: vykladka
       RU_SAYT_MAX_MB: ${{ vars.RU_SAYT_MAX_MB }}
-      RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
     steps:
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: github-pages
           path: artefakt
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        with:
-          name: video-sajta
-          path: video-sajta
-      # Те же проверки, что в msk перед rsync (Р63, Р536 п. 9): ролики есть, обязательные файлы есть, секретов нет, размер.
+      # Те же проверки, что в msk перед rsync (Р63, Р536 п. 9): обязательные файлы есть, секретов нет, размер.
       - name: проверка сборки
         run: |
           set -euo pipefail
           mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
-          vsego=$(find video-sajta -type f -name '*.mp4' | wc -l)
-          [ "$vsego" -gt 0 ] || { echo "::error::paket: артефакт video-sajta пуст — пакет не собран"; exit 1; }
           v_dist=$(find dist -type f -name '*.mp4' | wc -l)
           [ "$v_dist" = 0 ] || { echo "::error::paket: в сборке без роликов $v_dist mp4 — пакет не собран"; exit 1; }
           for f in index.html 404.html robots.txt; do
             test -f "dist/$f" || { echo "::error::paket: в сборке нет $f — пакет не собран"; exit 1; }
           done
-          lishnie=$(find dist video-sajta \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '*.pfx' \
+          lishnie=$(find dist \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '*.pfx' \
             -o -name 'id_rsa*' -o -name 'id_ed25519*' -o -name 'id_ecdsa*' -o -name 'id_dsa*' -o -name '.git' -o -name '.npmrc' \) -print)
           if [ -n "$lishnie" ]; then echo "::error::paket: в сборке файлы, похожие на секреты:"; echo "$lishnie"; exit 1; fi
           if grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist >/dev/null; then
             echo "::error::paket: в сборке закрытый ключ"; grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist; exit 1
           fi
-          sayt=$(du -sm dist | cut -f1); echo "paket: сайт без роликов $sayt МБ, ролики $vsego mp4, $(du -sm video-sajta | cut -f1) МБ"
+          sayt=$(du -sm dist | cut -f1); echo "paket: сайт без роликов $sayt МБ"
           [ "$sayt" -le "${RU_SAYT_MAX_MB:-1000}" ] || { echo "::error::paket: сайт без роликов $sayt МБ больше бюджета ${RU_SAYT_MAX_MB:-1000} МБ"; exit 1; }
-          bolshie=$(find video-sajta -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
-          if [ -n "$bolshie" ]; then echo "::error::paket: ролики больше ${RU_ROLIK_MAX_MB:-50} МБ:"; echo "$bolshie"; exit 1; fi
       - name: релиз vykladka
         run: |
           set -euo pipefail
           gh release view "$TEG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$TEG" -R "$GITHUB_REPOSITORY" \
             --target "$GITHUB_SHA" --latest=false --title "Выкладка для сервера" \
-            --notes "Постоянный релиз для забора сервером (Р815): sayt.tar.gz + sayt.sha256, ролики roliki-NN.tar + roliki.sha256 + roliki.txt. Перезаливает задача paket в deploy.yml."
-      # Ролики раньше сайта (как в msk: сначала хранилище, потом страницы). Манифест прежний — части не трогаем.
-      - name: ролики в релиз
-        run: |
-          set -euo pipefail
-          mkdir -p paket
-          (cd video-sajta && find . -type f -name '*.mp4' -printf '%P\t%s\n') | LC_ALL=C sort > paket/roliki.txt
-          if gh release download "$TEG" -R "$GITHUB_REPOSITORY" -p roliki.txt -O staryy-roliki.txt 2>/dev/null && cmp -s staryy-roliki.txt paket/roliki.txt; then
-            echo "paket: манифест роликов прежний ($(wc -l < paket/roliki.txt) mp4) — части не перезаливаются"; exit 0
-          fi
-          # Части до 1800 МБ из целых роликов, по порядку путей.
-          awk -F'\t' -v predel=$((1800*1024*1024)) 'BEGIN{n=0; s=0} { if (s>0 && s+$2>predel) {n++; s=0} s+=$2; print $1 > sprintf("paket/chast-%02d.spisok", n) }' paket/roliki.txt
-          : > paket/roliki.sha256
-          for sp in paket/chast-*.spisok; do
-            nn=${sp##*/chast-}; nn=${nn%.spisok}
-            tar -cf "paket/roliki-$nn.tar" -C video-sajta -T "$sp"
-            (cd paket && sha256sum "roliki-$nn.tar" >> roliki.sha256)
-          done
-          cat paket/roliki.sha256
-          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/roliki-*.tar
-          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/roliki.sha256
-          # Манифест — последним: сервер берёт ролики, только когда части и их хэши уже на месте.
-          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/roliki.txt
-          # Части сверх списка (роликов стало меньше) остаются в релизе и не мешают: сервер берёт только перечисленные в roliki.sha256.
+            --notes "Постоянный релиз для забора сервером (Р815): sayt.tar.gz + sayt.sha256 (ролики — в хранилище media.russian-civilization.ru, Р825). Перезаливает задача paket в deploy.yml."
       - name: сайт в релиз
         run: |
           set -euo pipefail
@@ -478,7 +388,7 @@ jobs:
           gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/sayt.sha256
           {
             echo "### 📦 Пакет для забора сервером"
-            echo "Релиз \`$TEG\`: sayt.tar.gz $(du -m paket/sayt.tar.gz | cut -f1) МБ, роликов $(wc -l < paket/roliki.txt)."
+            echo "Релиз \`$TEG\`: sayt.tar.gz $(du -m paket/sayt.tar.gz | cut -f1) МБ, ролики — в хранилище media.russian-civilization.ru."
           } >> "$GITHUB_STEP_SUMMARY"
   # Живой сайт после выкладки в Россию (Р536, п. 9) — post-deploy smoke на Playwright, как smoke.yml: машина открывает
   # https://russian-civilization.ru как посетитель — страницы дней, изменённых этой выкладкой (git diff от прошлой

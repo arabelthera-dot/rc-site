@@ -2,8 +2,8 @@
 
 Как теперь: сборка на GitHub кладёт готовый сайт в релиз `vykladka` (задача `paket` в `.github/workflows/deploy.yml`).
 Сервер msk-new (185.149.145.227) раз в 5 минут сам проверяет релиз и, если там новая сборка, скачивает её, сверяет
-хэш и раскладывает в `/srv/rc-site/www`. Ролики раскладываются в `/srv/rc-media` и, пока `MEDIA_BASE` пуст, ещё и в
-папку сайта. Входящие соединения из-за границы серверу больше не нужны, туннели RU_MOST/RU_MOST2 для выкладки не нужны.
+хэш и раскладывает в `/srv/rc-site/www`. Роликов в сборке нет (Р825): они в хранилище `/srv/rc-media`, туда их кладёт
+`rolik-na-sait.yml`. Входящие соединения из-за границы серверу больше не нужны, туннели RU_MOST/RU_MOST2 для выкладки не нужны.
 
 Если что-то сломалось (обрыв, битый архив, нет места), сайт остаётся прежним, в журнале появляется запись «ОШИБКА», а
 через 5 минут будет новая попытка.
@@ -22,24 +22,23 @@ curl -fsSLo /usr/local/bin/zabrat-sayt.sh https://raw.githubusercontent.com/arab
 echo '*/5 * * * * root /usr/local/bin/zabrat-sayt.sh' > /etc/cron.d/zabrat-sayt
 ```
 
-3. Проверить (первый запуск длинный — скачивается около 4 ГБ):
+3. Проверить (скачивается сайт без роликов, около 1 ГБ):
 
 ```
 /usr/local/bin/zabrat-sayt.sh; tail -20 /var/log/zabrat-sayt.log
 ```
 
-В журнале должно быть «ролики: готово» и «сайт: выложено N файлов», а слова «ОШИБКА» быть не должно.
+В журнале должно быть «сайт: выложено N файлов», а слова «ОШИБКА» быть не должно.
 
-Что нужно на сервере: `curl`, `tar`, `sha256sum`, `rsync`, `flock` (есть в Debian/Ubuntu); около 4 ГБ свободного
-места в `/var/tmp` при смене роликов (обычно меньше 1 ГБ). Доступ наружу — к github.com и
+Что нужно на сервере: `curl`, `tar`, `sha256sum`, `rsync`, `flock` (есть в Debian/Ubuntu); около 2 ГБ свободного
+места в `/var/tmp` (архив и распакованный сайт). Доступ наружу — к github.com и
 *.githubusercontent.com (туда GitHub переадресует скачивание) по 443.
 
 ## Как выключить и откатить
 
 - Выключить забор: `rm /etc/cron.d/zabrat-sayt`. Сайт остаётся как есть, задача `msk` в deploy.yml продолжает
   выкладывать по-старому (её не трогали).
-- Заставить забрать заново: `rm /var/lib/zabrat-sayt/sayt.sha256` (только сайт) или `rm -r /var/lib/zabrat-sayt`
-  (сайт и ролики), потом команда 3.
+- Заставить забрать заново: `rm /var/lib/zabrat-sayt/sayt.sha256`, потом команда 3.
 - Убрать со стороны GitHub: удалить задачу `paket` из deploy.yml. Релиз `vykladka` можно оставить — без забора его
   никто не читает.
 
@@ -51,7 +50,6 @@ echo '*/5 * * * * root /usr/local/bin/zabrat-sayt.sh' > /etc/cron.d/zabrat-sayt
 
 ## Настройки
 
-Все пути — переменные окружения, по умолчанию стоят боевые значения: `ZABOR_ADRES`, `ZABOR_SAYT`, `ZABOR_MEDIA`,
-`ZABOR_ROLIKI_V_SAYT` (1 — ролики ещё и в папку сайта), `ZABOR_SOSTOYANIE`, `ZABOR_VREMENNAYA`, `ZABOR_ZHURNAL`,
-`ZABOR_ZAMOK`, `ZABOR_VLADELEC_SAYT`, `ZABOR_VLADELEC_MEDIA`. Список с пояснениями — в начале
+Все пути — переменные окружения, по умолчанию стоят боевые значения: `ZABOR_ADRES`, `ZABOR_SAYT`,
+`ZABOR_SOSTOYANIE`, `ZABOR_VREMENNAYA`, `ZABOR_ZHURNAL`, `ZABOR_ZAMOK`, `ZABOR_VLADELEC_SAYT`. Список с пояснениями — в начале
 `scripts/server/zabrat-sayt.sh`.
