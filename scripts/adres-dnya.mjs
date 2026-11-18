@@ -11,6 +11,7 @@
 // Откат: удалить этот файл и .github/workflows/adres-dnya.yml (или выключатель — переменная ADRES_DNYA = '0').
 import fs from 'node:fs';
 import path from 'node:path';
+import { vHranilishche } from './hranilishche-rolikov.mjs';
 import { execFileSync, spawnSync } from 'node:child_process';
 
 const DIR = 'src/content/dni-shablon';
@@ -47,8 +48,8 @@ async function spisok() {
         ? [...derevo].find((x) => x.startsWith(`${papka}${dd}${MES_KL[+mm - 1]}-`) && x.endsWith('.json'))
         : k.video?.klyuch && `public/video/registry/${k.video.klyuch}.json`;
       if (!vypusk || !est(vypusk)) net.push('ролика нет в реестре');
-      else { const r = reestr(vypusk); for (const s of [r.horizontal, r.vertical]) if (!s?.local || !est(`public/${s.local}`)) net.push(`нет файла ролика ${s?.local}`); }
-      if (muzei === 'izobreteniya' && (!k.video?.mp4 || !est(vPublic(muzei, k.video.mp4)))) net.push(`нет файла ролика ${k.video?.mp4}`);
+      else { const r = reestr(vypusk); for (const s of [r.horizontal, r.vertical]) if (!s?.local || !(est(`public/${s.local}`) || vHranilishche(s.local))) net.push(`нет файла ролика ${s?.local}`); }
+      if (muzei === 'izobreteniya' && (!k.video?.mp4 || !(est(vPublic(muzei, k.video.mp4)) || vHranilishche(vPublic(muzei, k.video.mp4))))) net.push(`нет файла ролика ${k.video?.mp4}`);
       // Гид: mp3 по audioSrc карточки, у НС без блока audioguide — по audiogid/ns-ММ-ДД.yaml облака (его кладёт rolik-na-sait).
       let ag = k.audioguide?.audioSrc;
       if (!ag && muzei === 'ne-sdayutsya') {

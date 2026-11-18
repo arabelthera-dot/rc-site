@@ -10,6 +10,8 @@ export const cspVkl = (env = process.env) => env.PUBLIC_CSP === '1';
 
 const w = (hs) => hs.flatMap((h) => [`https://${h}`, `https://*.${h}`]);
 const METRIKA = w(['yandex.ru', 'yandex.com', 'yandex.net', 'yastatic.net']);
+// Хранилище роликов (Р825): mp4 страниц — с media.russian-civilization.ru (scripts/media-base.mjs).
+const MEDIA = ['https://media.russian-civilization.ru'];
 const VIDEO = w(['vk.com', 'vk.ru', 'vkvideo.ru', 'userapi.com', 'vkuser.net', 'mycdn.me', 'okcdn.ru', 'rutube.ru', 'rtbcdn.ru']);
 
 export const CSP = [
@@ -17,7 +19,7 @@ export const CSP = [
   ["script-src 'self' 'unsafe-inline'", ...METRIKA].join(' '),
   "style-src 'self' 'unsafe-inline'",
   ["img-src 'self' data: blob:", ...METRIKA, ...VIDEO].join(' '),
-  ["media-src 'self' data: blob:", ...VIDEO].join(' '),
+  ["media-src 'self' data: blob:", ...MEDIA, ...VIDEO].join(' '),
   ["frame-src 'self'", ...METRIKA, ...VIDEO].join(' '),
   ["connect-src 'self'", ...METRIKA].join(' '),
   "font-src 'self' data:",

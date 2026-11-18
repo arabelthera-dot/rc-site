@@ -24,6 +24,7 @@ import { rolikIzReestra } from './karkas/ne-sdayutsya.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
 import { failPublic } from '../src/lib/den-obshchee.mjs';
 import { proveritDen } from './ns-zamki.mjs';
+import { rolikEst, MANIFEST } from './hranilishche-rolikov.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const VYHOD = path.join(KOREN, 'src/content/dni-shablon/ne-sdayutsya');
@@ -189,7 +190,7 @@ function sverka(key, fail, dd, mes) {
   else if (!fs.existsSync(path.join(KOREN, failPublic('ne-sdayutsya', ag)))) net.push(`аудиогид: нет файла ${ag}`);
   const v = k.video?.mp4?.split('?')[0];
   if (!v) net.push('ролик: нет блока video');
-  else for (const f of [v, v.replace(/\.mp4$/, '-9x16.mp4')]) if (!fs.existsSync(path.join(KOREN, failPublic('ne-sdayutsya', f)))) net.push(`ролик: нет файла ${f}`);
+  else for (const f of [v, v.replace(/\.mp4$/, '-9x16.mp4')]) if (!rolikEst(failPublic('ne-sdayutsya', f), { pub: path.join(KOREN, 'public'), manifest: path.join(KOREN, MANIFEST) })) net.push(`ролик: нет файла ${f}`);
   const id = idRolika(dd, mes);
   if (!(id in scenarii)) {
     try { scenarii[id] = JSON.parse(gh('api', `repos/${ROLIK}/contents/days/${id}.json`, '-H', 'Accept: application/vnd.github.raw')); }
