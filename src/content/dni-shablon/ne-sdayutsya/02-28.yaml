@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 47 секунд
   klyuch: nesdayutsya/28feb-chajkina
   format: horizontal
   pole: nesdayutsya/28feb-chajkina:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 47 сек
   poster: /muzei/ne-sdayutsya/video/day-28feb-chajkina-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-28feb-chajkina.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -794,19 +794,19 @@ audioguide:
   lead: 'Голос ведёт от комсомольского райкома через рейд по деревням и допрос — к стене сарая и слову, облетевшему страну: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Комсорг из Пено
-  - t: 22
-    mark: 0:22
+  - t: 13
+    mark: '0:13'
     title: Четырнадцать деревень
-  - t: 44
-    mark: 0:44
+  - t: 23
+    mark: '0:23'
     title: Иванова из Ленинграда
-  - t: 66
-    mark: '1:06'
+  - t: 35
+    mark: '0:35'
     title: У стены сарая
-  - t: 88
-    mark: '1:28'
+  - t: 47
+    mark: '0:47'
     title: Наши придут
   transcript:
   - Лиза Чайкина родилась в 1918 году в деревне Руно. Она стала секретарём Пеновского райкома комсомола. Когда немцы подошли, она с комсомольцами отстояла горящую школу.

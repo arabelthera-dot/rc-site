@@ -97,12 +97,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 54 секунды
   klyuch: nesdayutsya/06feb-kuzmin
   format: horizontal
   pole: nesdayutsya/06feb-kuzmin:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 54 сек
   poster: /muzei/ne-sdayutsya/video/day-06feb-kuzmin-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-06feb-kuzmin.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -822,19 +822,19 @@ audioguide:
   lead: 'Голос ведёт от немецкой платы за дорогу через ночь в сугробах и засаду курсантов — к плакату и звезде Героя: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: «Мало. Дёшево купить хотите»
-  - t: 25
-    mark: 0:25
+  - t: 15
+    mark: '0:15'
     title: Сын-«дурачок»
-  - t: 50
-    mark: 0:50
+  - t: 29
+    mark: '0:29'
     title: Ночь в сугробах
-  - t: 75
-    mark: '1:15'
+  - t: 41
+    mark: '0:41'
     title: «Секи их хлеще!»
-  - t: 100
-    mark: '1:40'
+  - t: 56
+    mark: '0:56'
     title: Звезда через 23 года
   transcript:
   - 'Февраль тысяча девятьсот сорок второго года, деревня под Великими Луками. Немецкий офицер предлагает старику Матвею Кузьмину плату за дорогу в тыл нашим. Старик отвечает: «Мало. Дёшево купить хотите».'

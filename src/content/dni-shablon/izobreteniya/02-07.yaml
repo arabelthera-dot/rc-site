@@ -775,7 +775,7 @@ proof:
   status: found
   claim_id: rc:izobreteniya:02-07-setun:claim-1958
   ours:
-    kind: publication
+    kind: публикация
     title: Н. П. Брусенцов, С. П. Маслов, В. П. Розин, А. М. Тишулина, «Малая цифровая вычислительная машина „Сетунь“»
     date: '1965'
     holder: Политехнический музей

@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 46 секунд
   klyuch: nesdayutsya/27feb-azov
   format: horizontal
   pole: nesdayutsya/27feb-azov:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 46 сек
   poster: /muzei/ne-sdayutsya/video/day-27feb-azov-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-27feb-azov.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -763,19 +763,19 @@ audioguide:
   lead: 'Голос ведёт от взятия Азова через подкопы и отказ от выкупа — к ночному бегству турок: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Своеволие
-  - t: 22
-    mark: 0:22
+  - t: 11
+    mark: '0:11'
     title: Против армии
-  - t: 44
-    mark: 0:44
+  - t: 21
+    mark: '0:21'
     title: Подкопы
-  - t: 66
-    mark: '1:06'
+  - t: 35
+    mark: '0:35'
     title: Не продаём
-  - t: 88
-    mark: '1:28'
+  - t: 48
+    mark: '0:48'
     title: Бегство
   transcript:
   - 'В тысяча шестьсот тридцать седьмом году донские казаки взяли турецкую крепость Азов — сами, без царского указа. Москва объявила султану: это их «своеволие».'

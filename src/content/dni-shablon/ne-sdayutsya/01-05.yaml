@@ -109,12 +109,12 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История в 59 секунд
+  h2: История в 49 секунд
   klyuch: nesdayutsya/05jan-brest
   format: horizontal
   pole: nesdayutsya/05jan-brest:horizontal.sec
   suffix: сек
-  badge: 59 сек
+  badge: 49 сек
   poster: /muzei/ne-sdayutsya/video/day-05jan-brest-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-05jan-brest.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -453,19 +453,19 @@ audioguide:
   lead: "Голос ведёт от первого удара войны до надписи на кирпиче: пять остановок. Слушать можно фоном, пока читаешь историю ниже."
   stops:
     - t: 0
-      mark: "0:00"
+      mark: '0:00'
       title: Крепость на границе
-    - t: 18
-      mark: "0:18"
+    - t: 14
+      mark: '0:14'
       title: Первый удар
-    - t: 38
-      mark: "0:38"
+    - t: 27
+      mark: '0:27'
       title: Без воды
-    - t: 60
-      mark: "1:00"
+    - t: 41
+      mark: '0:41'
       title: Очаги
-    - t: 78
-      mark: "1:18"
+    - t: 55
+      mark: '0:55'
       title: «Умираю, но не сдаюсь»
   transcript:
     - "«Мы входим в зал, и перед нами — крепость на западной границе, у слияния рек Мухавец и Западный Буг. Это Брест, 22 июня 1941 года. До мирного утра — считанные минуты."

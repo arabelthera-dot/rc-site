@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 54 секунды
   klyuch: nesdayutsya/15feb-berggolc
   format: horizontal
   pole: nesdayutsya/15feb-berggolc:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 54 сек
   poster: /muzei/ne-sdayutsya/video/day-15feb-berggolc-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-15feb-berggolc.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -820,19 +820,19 @@ audioguide:
   lead: 'Голос ведёт от первого эфира через голодную зиму и «Февральский дневник» — к прорыву блокады: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Первый эфир
-  - t: 22
-    mark: 0:22
+  - t: 15
+    mark: '0:15'
     title: 125 граммов
-  - t: 44
-    mark: 0:44
+  - t: 28
+    mark: '0:28'
     title: Февральский дневник
-  - t: 66
-    mark: '1:06'
+  - t: 41
+    mark: '0:41'
     title: Письма без адреса
-  - t: 88
-    mark: '1:28'
+  - t: 53
+    mark: '0:53'
     title: Блокада прорвана
   transcript:
   - Ленинград, блокада. До войны Ольга Берггольц ни разу не выступала по радио. Она сама приходит в Радиокомитет и предлагает помощь. С тех пор её голос звучит в эфире почти каждый день.

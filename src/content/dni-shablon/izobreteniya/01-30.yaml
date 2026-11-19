@@ -115,7 +115,7 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 67 секунд
   klyuch: izobreteniya/30jan-kotelnikov
   format: horizontal
   pole: izobreteniya/30jan-kotelnikov:horizontal.sec

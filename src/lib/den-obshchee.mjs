@@ -164,6 +164,19 @@ export function failPublic(muzei, src) {
   return path.posix.join('public', u.startsWith('/') ? path.posix.normalize(u) : path.posix.join(`/muzei/${muzei}/`, u));
 }
 export const AUDIO_MIN_SEK = 30;
+// «Весь зал за …» (Р830): длительность — по самому mp3, винительный падеж («за 1 минуту 49 секунд»), без «около».
+// Нет файла в public (лёгкая копия) — подпись из шаблона как есть.
+const forma = (n, [odin, dva, pyat]) => (n % 10 === 1 && n % 100 !== 11 ? odin : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? dva : pyat);
+export function zaVremya(sek) {
+  const vse = Math.floor(sek), m = Math.floor(vse / 60), s = vse % 60;
+  return [m && `${m} ${forma(m, ['минуту', 'минуты', 'минут'])}`, s && `${s} ${forma(s, ['секунду', 'секунды', 'секунд'])}`].filter(Boolean).join(' ');
+}
+export function audiogidDnya(d) {
+  if (!d.audioguide) return d.audioguide;
+  const f = failPublic(d.muzei, d.audioguide.audioSrc);
+  const sek = fs.existsSync(f) ? mp3Sek(fs.readFileSync(f)) : null;
+  return sek ? { ...d.audioguide, durationLabel: zaVremya(sek) } : d.audioguide;
+}
 
 const iss = (ctx, p, message) => ctx.addIssue({ code: 'custom', path: p, message });
 // Общий замок дня (r602). На любом адресе: номер ответа викторины — в списке. На живом адресе (adres: den):

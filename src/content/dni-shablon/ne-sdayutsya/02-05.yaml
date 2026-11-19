@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 48 секунд
   klyuch: nesdayutsya/05feb-talalihin
   format: horizontal
   pole: nesdayutsya/05feb-talalihin:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 48 сек
   poster: /muzei/ne-sdayutsya/video/day-05feb-talalihin-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-05feb-talalihin.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -806,17 +806,17 @@ audioguide:
     - t: 0
       mark: '0:00'
       title: 'Ночь на 7 августа'
-    - t: 22
-      mark: '0:22'
+    - t: 18
+      mark: '0:18'
       title: 'Раненая рука'
-    - t: 42
-      mark: '0:42'
+    - t: 28
+      mark: '0:28'
       title: 'Таран'
-    - t: 64
-      mark: '1:04'
+    - t: 43
+      mark: '0:43'
       title: '800 метров вниз'
-    - t: 86
-      mark: '1:26'
+    - t: 57
+      mark: '0:57'
       title: 'Герой через сутки'
   transcript:
     - 'Ночь на седьмое августа тысяча девятьсот сорок первого года, небо над Подмосковьем. Младший лейтенант Виктор Талалихин на истребителе И-16 догоняет немецкий бомбардировщик «Хейнкель». С начала войны прошло полтора месяца. Ночной бой идёт тридцать три минуты.'

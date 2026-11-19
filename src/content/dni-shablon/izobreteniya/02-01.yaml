@@ -130,12 +130,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История в 50 секунд
+  h2: История в 49 секунд
   klyuch: izobreteniya/01feb-behterev
   format: horizontal
   pole: izobreteniya/01feb-behterev:horizontal.sec
   suffix: сек
-  badge: 50 сек
+  badge: 49 сек
   poster: video/day-01feb-behterev-poster.jpg
   mp4: video/day-01feb-behterev.mp4
   note: 'Кадры ролика — подлинные, из Госкаталога музейного фонда РФ: снимок В. М. Бехтерева 1917 года, его печатный портрет начала XX века, книга «Основы учения о функциях мозга», выпуск IV, 1905 год, открытие памятника Бехтереву в Институте мозга, 1928 год, студенческий билет Психоневрологического института. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.'

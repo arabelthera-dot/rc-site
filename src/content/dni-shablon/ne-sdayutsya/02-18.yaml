@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 47 секунд
   klyuch: nesdayutsya/18feb-podolskie-kursanty
   format: horizontal
   pole: nesdayutsya/18feb-podolskie-kursanty:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 47 сек
   poster: /muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -846,19 +846,19 @@ audioguide:
   lead: 'Голос ведёт от колонны танков через Ильинский рубеж и налёты — к двенадцати дням: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Колонна
-  - t: 22
-    mark: 0:22
+  - t: 13
+    mark: '0:13'
     title: Музейные пушки
-  - t: 44
-    mark: 0:44
+  - t: 23
+    mark: '0:23'
     title: Оживающий дот
-  - t: 66
-    mark: '1:06'
+  - t: 35
+    mark: '0:35'
     title: Руки есть
-  - t: 88
-    mark: '1:28'
+  - t: 50
+    mark: '0:50'
     title: Двенадцать дней
   transcript:
   - Двести пятьдесят курсантов с одной пушкой вышли навстречу колонне немецких танков длиной двадцать пять километров. Сотни курсантов и десантников не ждали удара — сами атаковали немецкий полк и отбросили к Угре.

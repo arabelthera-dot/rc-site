@@ -94,12 +94,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 45 секунд
   klyuch: nesdayutsya/12feb-voloshina
   format: horizontal
   pole: nesdayutsya/12feb-voloshina:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 45 сек
   poster: /muzei/ne-sdayutsya/video/day-12feb-voloshina-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-12feb-voloshina.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -824,19 +824,19 @@ audioguide:
   lead: 'Голос ведёт от разведки под Москвой через засаду и ночь допроса — к казни в Головкове и Звезде Героя: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Семь переходов
-  - t: 25
-    mark: 0:25
+  - t: 13
+    mark: '0:13'
     title: Засада
-  - t: 50
-    mark: 0:50
+  - t: 25
+    mark: '0:25'
     title: Ночь допроса
-  - t: 75
-    mark: '1:15'
+  - t: 36
+    mark: '0:36'
     title: Головково
-  - t: 100
-    mark: '1:40'
+  - t: 50
+    mark: '0:50'
     title: Герой через 53 года
   transcript:
   - Осень тысяча девятьсот сорок первого года, немцы под Москвой. Вера Волошина, студентка из Кемерова, служит разведчицей. За месяц она семь раз уходит в немецкий тыл и возвращается.

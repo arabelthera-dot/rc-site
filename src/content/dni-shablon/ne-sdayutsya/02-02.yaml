@@ -92,12 +92,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История в 53 секунды
+  h2: История в 47 секунд
   klyuch: nesdayutsya/02feb-ovcharenko
   format: horizontal
   pole: nesdayutsya/02feb-ovcharenko:horizontal.sec
   suffix: сек
-  badge: 53 сек
+  badge: 47 сек
   poster: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-02feb-ovcharenko.mp4
   note: Закадровый текст озвучен синтезом речи.

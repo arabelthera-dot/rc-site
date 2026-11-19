@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 53 секунды
   klyuch: nesdayutsya/14feb-pozharnye
   format: horizontal
   pole: nesdayutsya/14feb-pozharnye:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 53 сек
   poster: /muzei/ne-sdayutsya/video/day-14feb-pozharnye-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-14feb-pozharnye.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -789,19 +789,19 @@ audioguide:
   lead: 'Голос ведёт от взрыва на четвёртом блоке через крышу машзала и третий блок — к Героям: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Вызов № 3
-  - t: 22
-    mark: 0:22
+  - t: 18
+    mark: '0:18'
     title: Прибор на 3,6
-  - t: 44
-    mark: 0:44
+  - t: 33
+    mark: '0:33'
     title: Третий блок
-  - t: 66
-    mark: '1:06'
+  - t: 46
+    mark: '0:46'
     title: До победы
-  - t: 88
-    mark: '1:28'
+  - t: 61
+    mark: '1:01'
     title: Герои
   transcript:
   - 'Двадцать шестое апреля тысяча девятьсот восемьдесят шестого года, ночь, Чернобыльская АЭС. Взрыв на четвёртом энергоблоке, горит крыша машинного зала. Лейтенант Владимир Правик, ему двадцать три года, передаёт по рации вызов номер три: все пожарные машины Киевской области — к станции.'

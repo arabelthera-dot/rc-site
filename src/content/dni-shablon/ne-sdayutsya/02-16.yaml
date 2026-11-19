@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 50 секунд
   klyuch: nesdayutsya/16feb-portnova
   format: horizontal
   pole: nesdayutsya/16feb-portnova:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 50 сек
   poster: /muzei/ne-sdayutsya/video/day-16feb-portnova-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-16feb-portnova.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -827,19 +827,19 @@ audioguide:
   lead: 'Голос ведёт от каникул в Оболи через отравленный суп и предательство — к допросу в гестапо: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Каникулы
-  - t: 22
-    mark: 0:22
+  - t: 13
+    mark: '0:13'
     title: 605 дней
-  - t: 44
-    mark: 0:44
+  - t: 32
+    mark: '0:32'
     title: Суп
-  - t: 66
-    mark: '1:06'
+  - t: 48
+    mark: '0:48'
     title: Предательство
-  - t: 88
-    mark: '1:28'
+  - t: 59
+    mark: '0:59'
     title: Допрос
   transcript:
   - Лето тысяча девятьсот сорок первого года. Ленинградская школьница Зина Портнова с младшей сестрой Галей приезжает на каникулы к бабушке, под станцию Оболь в Витебской области. Через несколько дней приходят немцы.

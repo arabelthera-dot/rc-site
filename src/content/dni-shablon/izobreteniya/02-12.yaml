@@ -208,12 +208,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История в 39 секунд
+  h2: История в 36 секунд
   klyuch: izobreteniya/12feb-lenc
   format: horizontal
   pole: izobreteniya/12feb-lenc:horizontal.sec
   suffix: сек
-  badge: 39 сек
+  badge: 36 сек
   poster: video/day-12feb-lenc-poster.jpg
   mp4: video/day-12feb-lenc.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -830,7 +830,7 @@ proof:
   status: found
   claim_id: rc:izobreteniya:02-12-lenc:claim-1833
   ours:
-    kind: publication
+    kind: публикация
     title: Э. Х. Ленц, сборник «Люди русской науки»
     date: '1948'
     holder: «Люди русской науки»

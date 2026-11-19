@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 45 секунд
   klyuch: nesdayutsya/10feb-prohorenko
   format: horizontal
   pole: nesdayutsya/10feb-prohorenko:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 45 сек
   poster: /muzei/ne-sdayutsya/video/day-10feb-prohorenko-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-10feb-prohorenko.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -932,19 +932,19 @@ audioguide:
   lead: 'Голос ведёт от недели в тылу врага под Пальмирой через кольцо окружения и огонь на себя — к освобождённому городу и орденам из Франции: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Неделя в тылу
-  - t: 22
-    mark: 0:22
+  - t: 15
+    mark: '0:15'
     title: Кольцо
-  - t: 42
-    mark: 0:42
+  - t: 27
+    mark: '0:27'
     title: Огонь на себя
-  - t: 64
-    mark: '1:04'
+  - t: 40
+    mark: '0:40'
     title: Пальмира свободна
-  - t: 86
-    mark: '1:26'
+  - t: 53
+    mark: '0:53'
     title: Ордена из Франции
   transcript:
   - Март две тысячи шестнадцатого года, Сирия, окрестности древней Пальмиры. Старший лейтенант Сил специальных операций Александр Прохоренко целую неделю один в тылу врага. По рации он наводит российские самолёты на позиции боевиков.

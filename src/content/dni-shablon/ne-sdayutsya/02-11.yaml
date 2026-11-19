@@ -97,12 +97,12 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 52 секунды
   klyuch: nesdayutsya/11feb-sibiryakov
   format: horizontal
   pole: nesdayutsya/11feb-sibiryakov:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 52 сек
   poster: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-11feb-sibiryakov.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -795,19 +795,19 @@ audioguide:
   lead: "Голос ведёт от американского флага на крейсере через бой и кингстоны — к острову Белуха и приказу 1965 года: пять остановок."
   stops:
     - t: 0
-      mark: 0:00
+      mark: '0:00'
       title: Флаг США на крейсере
-    - t: 25
-      mark: 0:25
+    - t: 15
+      mark: '0:15'
       title: Четыре пушчонки
-    - t: 50
-      mark: 0:50
+    - t: 30
+      mark: '0:30'
       title: Антенна под огнём
-    - t: 75
-      mark: 1:15
+    - t: 40
+      mark: '0:40'
       title: «Открой, Николай, кингстоны!»
-    - t: 100
-      mark: 1:40
+    - t: 56
+      mark: '0:56'
       title: 34 дня на Белухе
   transcript:
     - Двадцать пятое августа тысяча девятьсот сорок второго года, Карское море. К ледокольному пароходу «Сибиряков» подходит крейсер под американским флагом и по-русски спрашивает про лёд. Капитан Анатолий Качарава не верит и уходит к острову Белуха.
