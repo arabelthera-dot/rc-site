@@ -60,7 +60,7 @@ const rc3dHtml = r3 ? `<div class="igra-dnya" id="games" data-igra-dnya><div id=
   </div>
 </section>
 </div></div>` : '';
-const m3Html = m3 ? `<section class="block igra-dnya igd" id="games" data-igra-dnya data-glb="${m3.glb}">
+const m3Html = m3 ? `<div class="igra-dnya" id="games" data-igra-dnya data-glb="${m3.glb}"><section class="block igd" id="games-3d">
   <div class="wrap">
     <div class="kicker">${m3.kicker}</div>
     <h2>${m3.h2}</h2>
@@ -72,7 +72,7 @@ const m3Html = m3 ? `<section class="block igra-dnya igd" id="games" data-igra-d
     ${pravilaHtml(m3.pravila)}
     <noscript><div class="noscript-box">Для 3D нужен JavaScript.</div></noscript>
   </div>
-</section>` : '';
+</section></div>` : '';
 // Скрипты 2D-запаса — по порядку, как раньше на странице: игра, вторая игра, её -dop.
 const zapasSkripty = [d.igra.imya, d.igra.vtoraya, d.igra.dop && `${d.igra.imya}-dop`].filter(Boolean).map((i) => `igry/${i}.js`);
 const zapas2d = [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
