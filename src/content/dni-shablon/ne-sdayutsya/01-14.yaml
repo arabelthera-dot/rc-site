@@ -446,6 +446,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: vir-isaakievskaya
+  vid: dokument
+  kicker: Рисунок под лупой
+  h2: Исаакиевская площадь, март 1942
+  lead: 'Сюда, к подвалу с картофелем коллекции, дважды в день ходил Вадим Лехнович. Так площадь нарисовал Николай Быльев-Протопопов. Приближайте: санки, вёдра, памятник Николаю I.'
 audioguide:
   audioSrc: audio-guide-vir-ru.mp3
   durationLabel: 1 минута 32 секунды
