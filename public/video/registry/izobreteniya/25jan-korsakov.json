@@ -1,32 +1,32 @@
 {
-  "title": "История в 51 секунду",
+  "title": "История в 49 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov.mp4",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 51.3,
-    "mb": 14.1
+    "sec": 49.1,
+    "mb": 14.7
   },
   "vertical": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 51.3,
+    "sec": 49.1,
     "mb": 13.9
   },
   "poster": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-poster.jpg",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "izobreteniya/25jan-korsakov/day-25jan-korsakov-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-25jan-korsakov-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
