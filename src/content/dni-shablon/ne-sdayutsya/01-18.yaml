@@ -403,6 +403,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: kuznecov-prava
+  vid: dokument
+  kicker: Документ под лупой
+  h2: Права на имя Пауля Зиберта
+  lead: 'Немецкие водительские права выданы в Берлине в июле 1941 года на имя Пауля Зиберта. Под этим именем Кузнецов жил в Ровно. Приближайте: на фотографии — сам Кузнецов в немецкой форме, рядом марки сбора и подпись владельца.'
 audioguide:
   audioSrc: audio-guide-kuznetsov-ru.mp3
   durationLabel: 1 минута 22 секунды

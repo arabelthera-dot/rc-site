@@ -402,6 +402,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: maresyev-partbilet
+  vid: dokument
+  kicker: Документ под лупой
+  h2: Партийный билет Маресьева
+  lead: 'Билет выдан в июне 1974 года. Приближайте: в графе о вступлении в партию — апрель 1944-го, когда Маресьев уже воевал на протезах. Рядом его фотография и подпись, справа — взносы за 1974 год.'
 audioguide:
   audioSrc: audio-guide-maresyev-ru.mp3
   durationLabel: 1 минута 17 секунд
