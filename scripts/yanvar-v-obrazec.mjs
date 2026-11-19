@@ -39,7 +39,7 @@ const zametki = [];
 
 // --- текст без разметки
 const HTML = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
-const SUSHCHNOSTI = { nbsp: ' ', laquo: '«', raquo: '»', mdash: '—', ndash: '–', quot: '"', hellip: '…', amp: '&' };
+const SUSHCHNOSTI = { nbsp: ' ', lt: '<', gt: '>', laquo: '«', raquo: '»', mdash: '—', ndash: '–', quot: '"', hellip: '…', amp: '&' };
 const raskryt = (t) => t.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&([a-z]+);/gi, (m, n) => SUSHCHNOSTI[n.toLowerCase()] ?? m);
 const adres = (u) => u.replace(/^https?:\/\//, '').replace(/\/$/, '');
 const SSYLKA = /<a\b[^>]*?href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;

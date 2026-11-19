@@ -1,0 +1,11 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Северодвинск",
+  "kratko": "Город «Севмаша», где построили К-162 «Анчар».",
+  "koordinaty": {
+    "shirota": 64.563,
+    "dolgota": 39.824,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/2064358"
+  }
+}
