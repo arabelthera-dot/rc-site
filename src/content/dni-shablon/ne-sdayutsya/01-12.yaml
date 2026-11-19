@@ -402,6 +402,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: matrosov-medal
+  vid: predmet
+  kicker: Предмет под лупой
+  h2: Памятная медаль Матросова
+  lead: 'Бронзовая медаль хранится в Великих Луках, где похоронен Александр Матросов. Приближайте: профиль в каске, надпись по краю и годы жизни 1924–1943.'
 audioguide:
   audioSrc: audio-guide-matrosov-ru.mp3
   durationLabel: 1 минута 21 секунда

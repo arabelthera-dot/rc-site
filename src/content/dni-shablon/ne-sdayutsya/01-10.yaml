@@ -404,6 +404,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: varyag-chemulpo-otkrytka
+  vid: dokument
+  kicker: Документ
+  h2: Бой у Чемульпо на французской открытке
+  lead: 'Так бой «Варяга» и «Корейца» нарисовали на парижской открытке. Приближайте: разрыв снаряда, матросы у орудий, шлюпки на рейде и подпись внизу, где названы оба русских корабля.'
 audioguide:
   audioSrc: audio-guide-varyag-ru.mp3
   durationLabel: 1 минута 25 секунд
