@@ -596,3 +596,29 @@ proof:
     doc_title: стыковка командного и лунного модулей с внутренним люком для перехода экипажа
     date: 1969-03-03
   gap_years: 0
+gde_uvidet:
+- chto: Скафандр «Ястреб» для выхода космонавта из «Союза-4» и «Союза-5» в открытый космос
+  muzej: Мемориальный музей космонавтики
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=490422
+- chto: 'Фотография В. И. Фрумсона: старт «Союза-4» 14 января 1969'
+  muzej: Государственный музей истории космонавтики им. К. Э. Циолковского
+  gorod: Калуга
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5246743
+- chto: Почтовый блок 1969 года об «экспериментальной космической станции»
+  muzej: Государственный музей политической истории России
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=198025
+chitat_dalshe:
+- nazvanie: «Есть рукопожатие!»
+  gde: Музей космонавтики
+  ssylka: https://kosmo-museum.ru/news/est-rukopozhatie
+- nazvanie: «Первая в мире стыковка космических кораблей»
+  gde: Российский государственный архив научно-технической документации (РГАНТД)
+  ssylka: https://rgantd.ru/news/pamyatnye-daty/pervaya-v-mire-stykovka-kosmicheskikh-korabley-k-55-letiyu-vazhneyshego-sobytiya-v-mirovoy-kosmonavt/
+- nazvanie: «55 лет первой в мире стыковке в космосе пилотируемых кораблей»
+  gde: Государственный музей истории космонавтики им. К. Э. Циолковского
+  ssylka: https://gmik.ru/2024/01/16/55-let-pervoy-v-mire-styikovke-v-kosmose-pilotiruemyih-korabley/
+- nazvanie: Н. Ячменникова. «Первая стыковка кораблей на орбите могла закончиться трагически» (интервью Б. В. Волынова)
+  gde: «Российская газета», 15.01.2019
+  ssylka: https://rg.ru/2019/01/15/pervaia-stykovka-korablej-na-orbite-mogla-zakonchitsia-tragicheski.html

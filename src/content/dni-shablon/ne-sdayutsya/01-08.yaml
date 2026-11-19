@@ -451,3 +451,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Сарай в деревне Петрищево, который подожгла Зоя Космодемьянская, снимок 1941 года
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5992212
+- chto: Открытка с фотографией Зои Космодемьянской, 1943 год
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=38326477
+- chto: Л. Ф. Голованов, рисунок «Подвиг Зои Космодемьянской», 1942 год
+  muzej: Переславский музей-заповедник
+  gorod: Переславль-Залесский
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=22927992
+chitat_dalshe:
+- nazvanie: М. М. Горинов. «Зоя Космодемьянская (1923–1941)»
+  gde: «Отечественная история», 2003, № 1 (текст на VIVOS VOCO)
+  ssylka: http://vivovoco.astronet.ru/VV/JOURNAL/RUHIST/ZOYA.HTM
+- nazvanie: «„Смерть Тани“…» — подвиг Зои Космодемьянской на рисунке советского школьника
+  gde: «Родина», 13.09.2023
+  ssylka: https://rodina-history.ru/2023/09/13/smert-tani-podvig-zoi-kosmodemianskoj-na-risunke-sovetskogo-shkolnika.html
+- nazvanie: «Герой без срока давности…»
+  gde: «Российская газета», 13.09.2023
+  ssylka: https://rg.ru/2023/09/13/geroj-bez-sroka-davnosti-zoe-kosmodemianskoj-ispolniaetsia-100-let.html
+- nazvanie: '«Мягков: подвиг Космодемьянской вызвал у солдат святой порыв…»'
+  gde: РИА Новости, 13.09.2023
+  ssylka: https://ria.ru/20230913/poryv-1896002196.html
+- nazvanie: Д. В. Ильченко. «Подвиг Зои Космодемьянской — правда и вымысел»
+  gde: КиберЛенинка
+  ssylka: https://cyberleninka.ru/article/n/podvig-zoi-kosmodemyanskoy-pravda-i-vymysel

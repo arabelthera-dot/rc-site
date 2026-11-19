@@ -435,3 +435,32 @@ proof:
     date: '1910'
     holder: Политехнический музей
     source_url: https://goskatalog.ru/portal/#/collections?id=4798915
+gde_uvidet:
+- chto: Арифмометр «Оригинал-Однер», Петербург, 1910–1912
+  muzej: Политехнический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=4798915
+- chto: Заметка об арифмометре В. Т. Однера в журнале «Наука и жизнь», 1890
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=41367943
+- chto: Арифмометр «Оригинал-Однер» 1920-х годов
+  muzej: Новосибирский государственный краеведческий музей
+  gorod: Новосибирск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20145786
+chitat_dalshe:
+- nazvanie: О. А. Ананьева. «Арифмометры В. Т. Однера»
+  gde: Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/precomp/odner.htm
+- nazvanie: А. Понятов. «Рождение легенды»
+  gde: «Наука и жизнь», 2020, № 6
+  ssylka: https://www.nkj.ru/archive/articles/38885/
+- nazvanie: Объявление «Арифмометр В. Т. Однера» (перепечатка)
+  gde: «Наука и жизнь», № 45, 1890
+  ssylka: https://www.nkj.ru/archive/articles/38884/
+- nazvanie: 'А. И. Басов. «История с вычислениями. Эпизод третий: империя арифмометров»'
+  gde: IQ.HSE, 26.06.2024
+  ssylka: https://iq-media.ru/archive/936485878
+- nazvanie: «Арифмометр Феликс»
+  gde: «Огонёк», № 34, 29.08.2004
+  ssylka: https://www.kommersant.ru/doc/2294058

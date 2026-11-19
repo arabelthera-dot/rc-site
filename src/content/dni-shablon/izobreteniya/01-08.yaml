@@ -661,3 +661,29 @@ proof:
     date: "1901"
     holder: Президентская библиотека (электронная копия)
     source_url: https://www.prlib.ru/item/1709180
+gde_uvidet:
+- chto: Государственный флаг СССР ледокола «Ермак»
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=43976540
+- chto: Ледокол «Ермакъ», фотопозитив начала XX века
+  muzej: Северный морской музей
+  gorod: Архангельск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=41192160
+- chto: Фотопортрет С. О. Макарова работы К. К. Буллы, начало XX века
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=34748422
+chitat_dalshe:
+- nazvanie: «На воду спущен первый в мире ледокол „Ермак“»
+  gde: Президентская библиотека имени Б. Н. Ельцина
+  ssylka: https://www.prlib.ru/history/619672
+- nazvanie: В. Г. Смирнов. «С. О. Макаров, Ф. Ф. Врангель и „Ермак“»
+  gde: «Полярные чтения на ледоколе „Красин“», 2014
+  ssylka: https://cyberleninka.ru/article/n/s-o-makarov-f-f-vrangel-i-ermak
+- nazvanie: Е. В. Овсянникова. «Реликвии освоения Арктики»
+  gde: «Военно-исторический журнал», 2018
+  ssylka: https://cyberleninka.ru/article/n/relikvii-osvoeniya-arktiki
+- nazvanie: '«Прошлое и будущее Северного морского пути»: от «Ермака» до атомоходов'
+  gde: ТАСС, спецпроект
+  ssylka: https://icebreakers.tass.ru/dolgij-put-na-sever/ot-ermaka-do-sovremennyh-atomohodov

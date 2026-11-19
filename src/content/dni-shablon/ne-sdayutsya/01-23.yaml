@@ -424,3 +424,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Икона святого мученика воина Евгения (Родионова)
+  muzej: Центральный пограничный музей ФСБ России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=66338453
+- chto: Памятная медаль «Мученик за Христа воин Евгений», 2007 год
+  muzej: Пензенский государственный краеведческий музей
+  gorod: Пенза
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=19529119
+- chto: Молитва воина с изображением святого мученика Евгения (Родионова)
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=48958643
+chitat_dalshe:
+- nazvanie: Родионов Евгений Александрович
+  gde: История.РФ (РВИО)
+  ssylka: https://history.ru/read/biographies/rodionov-ievghienii-alieksandrovich
+- nazvanie: Т. Медведева. «Подвиг и слава Евгения Родионова»
+  gde: «Культура», 2016
+  ssylka: https://portal-kultura.ru/articles/history/134451-podvig-i-slava-evgeniya-rodionova/
+- nazvanie: Беседа с Л. В. Родионовой, матерью Евгения
+  gde: Православие.Ru, 2016
+  ssylka: https://pravoslavie.ru/93541.html
+- nazvanie: «Десантники почтили память воина-мученика Евгения Родионова»
+  gde: Минобороны России, 2012
+  ssylka: https://old.mil.ru/ec/info/more.htm?id=11141928@egNews
+- nazvanie: Экспонаты Центрального пограничного музея
+  gde: Пограничная служба ФСБ России
+  ssylka: http://ps.fsb.ru/fps/history/museum/ekspozitsiya/eksponaty.htm

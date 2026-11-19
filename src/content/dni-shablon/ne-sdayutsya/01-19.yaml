@@ -436,3 +436,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Сувенирная модель атомной подводной лодки проекта 658 «К-19»
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=10664312
+- chto: Шинель инженер-лейтенанта Бориса Корчилова, командира группы дистанционного управления «К-19»
+  muzej: Военно-морской музей Северного флота
+  gorod: Мурманск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=51367656
+- chto: Погрудный портрет Бориса Корчилова, 1961 год
+  muzej: Городской историко-краеведческий музей г. Полярного
+  gorod: Полярный, Мурманская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=21493970
+chitat_dalshe:
+- nazvanie: 'А. Емельяненков. «Авария на К-19: как это было 60 лет назад и что открылось сегодня»'
+  gde: «Российская газета», 04.07.2021
+  ssylka: https://rg.ru/2021/07/04/avariia-na-k-19-kak-eto-bylo-60-let-nazad-i-chto-otkrylos-segodnia.html
+- nazvanie: Н. А. Черкашин. «Чрезвычайные происшествия на советском флоте»
+  gde: Военная литература (militera.lib.ru)
+  ssylka: https://militera.lib.ru/research/cherkashin_na01/cherkashin_na01.html
+- nazvanie: '«К-19: символ мужества и стойкости»'
+  gde: История.РФ (РВИО)
+  ssylka: https://histrf.ru/read/articles/k-19-simvol-muzhiestva-i-stoikosti
+- nazvanie: '«23 дня в темноте: как спасали экипаж К-19»'
+  gde: «Российская газета», 2020
+  ssylka: https://rg.ru/2020/02/24/reg-szfo/23-dnia-v-temnote-kak-spasali-ekipazh-k-19.html
+- nazvanie: «„Спасите наши души“. Подлинная история аварии на подлодке „К-19“»
+  gde: «Аргументы и факты», № 27, 2016
+  ssylka: https://aif.ru/society/history/cpasite_nashi_dushi_podlinnaya_istoriya_avarii_na_podlodke_k-19

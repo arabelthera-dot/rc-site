@@ -438,3 +438,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Ходатайство 1943–1944 годов в Совнарком СССР о награждении сотрудников Института растениеводства
+  muzej: Государственный мемориальный музей обороны и блокады Ленинграда
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=23841193
+- chto: Открытое письмо директора ВИР И. Г. Эйхфельда из Свердловска в блокадный Ленинград
+  muzej: Государственный мемориальный музей обороны и блокады Ленинграда
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11459132
+- chto: Плакат «Выращивание картофеля» из серии «В помощь огороднику», составитель В. С. Лехнович, 1943 год
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=58065377
+chitat_dalshe:
+- nazvanie: В. Черенева. «В блокаду сотрудники Всесоюзного института растениеводства умирали от голода в кабинетах, заставленных элитными семенами»
+  gde: «Родина», 27.01.2019
+  ssylka: https://rodina-history.ru/2019/01/27/rodina-blokada-semena.html
+- nazvanie: М. Кунина. «Как учёные блокадного Ленинграда умирали, сберегая потенциальный урожай»
+  gde: «Коммерсантъ», 27.01.2025
+  ssylka: https://www.kommersant.ru/doc/7459501
+- nazvanie: И. Г. Лоскутов. «Всероссийский НИИ растениеводства им. Н. И. Вавилова и блокада Ленинграда»
+  gde: Сайт ВИР, 2018
+  ssylka: https://www.vir.nw.ru/wp-content/uploads/2018/09/blokada3.pdf
+- nazvanie: '«Умереть от голода, но сохранить уникальную коллекцию семян: подвиг сотрудников НИИ Вавилова»'
+  gde: «Наука ТВ»
+  ssylka: https://naukatv.ru/articles/umeret_ot_goloda_no_spasti_semena
+- nazvanie: «110 лет А. Я. Камеразу»
+  gde: Сайт ВИР
+  ssylka: http://vir.nw.ru/test/vir.nw/index.php?option=com_content&view=article&id=368&catid=69&lang=ru

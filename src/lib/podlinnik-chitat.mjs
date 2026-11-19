@@ -1,6 +1,7 @@
 // п.498 (Р745): блоки страницы дня «Где увидеть подлинник» и «Что почитать дальше» из полей карточки
-// gde_uvidet и chitat_dalshe (src/lib/forma-dnya.mjs). Выключено, пока нет PUBLIC_PODLINNIK_CHITAT=1: страница как раньше.
-export const podlinnikChitatVkl = (env = process.env) => env.PUBLIC_PODLINNIK_CHITAT === '1';
+// gde_uvidet и chitat_dalshe (src/lib/forma-dnya.mjs). Включено (Р751, Р826: записи января и февраля готовы);
+// PUBLIC_PODLINNIK_CHITAT=0 — выключить, страница как раньше. День без этих полей блоков не получает.
+export const podlinnikChitatVkl = (env = process.env) => env.PUBLIC_PODLINNIK_CHITAT !== '0';
 const e = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const a = (href, t) => `<a href="${e(href)}" rel="noopener" target="_blank">${t}</a>`;
 

@@ -429,3 +429,29 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Родина Ивана Сусанина, село Коробово Костромской губернии, фото 1878 года
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=59245648
+- chto: Ариадна Соколова, рисунок «Село Домнино», 1944 год
+  muzej: Ярославский историко-архитектурный и художественный музей-заповедник
+  gorod: Ярославль
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=3910611
+- chto: Памятник Царю Михаилу Фёдоровичу и Ивану Сусанину в Костроме, лист В. Тимма
+  muzej: Государственный музей-заповедник Л. Н. Толстого «Ясная Поляна»
+  gorod: Ясная Поляна, Тульская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=16081533
+chitat_dalshe:
+- nazvanie: Л. А. Поросятковская. «Белопашцы — потомки Сусанина»
+  gde: Портал Росархива «Преодоление Смуты»
+  ssylka: https://portal.rusarchives.ru/smuta/09-1-belopashcy-statya.shtml
+- nazvanie: С. Емельянов. «Потомки 83-летнего Матвея Кузьмина рассказали правду о гибели своего деда-героя»
+  gde: «Родина», 2017, № 1
+  ssylka: https://rodina-history.ru/2017/01/19/potomki-geroia-matveia-kuzmina-rasskazali-pravdu-o-gibeli-svoego-deda.html
+- nazvanie: В. Бурт. «Сусанины»
+  gde: «Столетие», 2018
+  ssylka: https://www.stoletie.ru/territoriya_istorii/susaniny_550.htm
+- nazvanie: К. Кудряшов. «Сусанин без лесов и болот. Почему несомненен подвиг костромского мужика?»
+  gde: «Аргументы и факты», 2023
+  ssylka: https://aif.ru/society/history/susanin_bez_lesov_i_bolot_pochemu_nesomnenen_podvig_kostromskogo_muzhika

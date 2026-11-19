@@ -439,3 +439,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Е. И. Комаров, «Подвиг 28 героев-панфиловцев», 1942 год
+  muzej: Государственный музей обороны Москвы
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=8717367
+- chto: Письмо И. Д. Шадрина в музей о бое у Дубосеково, 1958 год
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=6939400
+- chto: С. А. Федоров, «Встали Дубосековские исполины…», 1985 год
+  muzej: Тамбовская областная картинная галерея
+  gorod: Тамбов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17311201
+chitat_dalshe:
+- nazvanie: «„Смерш“ подтвердил подвиг панфиловцев»
+  gde: «Российская газета», 02.12.2018
+  ssylka: https://rg.ru/2018/12/02/medinskij-nazval-sensaciej-novye-dokumenty-o-geroiah-panfilovcah.html
+- nazvanie: К. Дроздов. «Ноябрь 1941 года. Отступать некуда — позади Москва»
+  gde: «Родина», № 9, 2015
+  ssylka: https://rodina-history.ru/2015/09/07/rodina-panfilovtsy.html
+- nazvanie: 'М. Мягков. «Подвиг панфиловцев: новые документы и факты»'
+  gde: «Военно-исторический журнал»
+  ssylka: https://history.milportal.ru/podvig-panfilovcev-novye-dokumenty-i-fakty/
+- nazvanie: Е. Кириченко. «Политрук Клочков. Подвиг без ретуши»
+  gde: «Родина», 12.04.2023
+  ssylka: https://rodina-history.ru/2023/04/12/politruk-klochkov-podvig-bez-retushi.html
+- nazvanie: Шадрин Иван Демидович
+  gde: «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=5962

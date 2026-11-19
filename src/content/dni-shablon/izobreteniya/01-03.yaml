@@ -541,3 +541,29 @@ proof:
     doc_title: доклад о строении стали под микроскопом
     date: "1864"
   gap_years: 23
+gde_uvidet:
+- chto: Портрет П. П. Аносова, фотография с портрета первой половины XIX века
+  muzej: Музей истории и культуры города Златоуста
+  gorod: Златоуст
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=14979168
+- chto: Чертежи печей для варки булата из работы П. П. Аносова «О булатах», 1841 (негатив)
+  muzej: Свердловский областной краеведческий музей имени О. Е. Клера
+  gorod: Екатеринбург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=41847319
+- chto: «Горный журнал», 1841, кн. II–III с работой Аносова «О булатах»
+  muzej: Томский областной краеведческий музей им. М. Б. Шатилова
+  gorod: Томск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=42985362
+chitat_dalshe:
+- nazvanie: М. Главацкий, Л. Дашкевич. «Павел Аносов — известный и неизвестный»
+  gde: «Наука и жизнь», 2005, № 9
+  ssylka: https://www.nkj.ru/archive/articles/1695/
+- nazvanie: «Павел Петрович Аносов (1796–1851)»
+  gde: Президентская библиотека, проект «Великая Россия»
+  ssylka: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Anosov
+- nazvanie: «Аносов Павел Петрович»
+  gde: Горная энциклопедия
+  ssylka: http://www.mining-enc.ru/a/anosov/
+- nazvanie: С. В. Истомин. «Самые знаменитые изобретатели России», глава об Аносове
+  gde: 'М.: Вече, 2000 (PDF, библиотека ИРНИТУ)'
+  ssylka: https://library.istu.edu/hoe/personalia/anosov.pdf

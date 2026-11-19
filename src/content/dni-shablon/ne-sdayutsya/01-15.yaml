@@ -437,3 +437,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Начальник экспедиции О. Ю. Шмидт и его заместитель А. Н. Бобров в дрейфующем лагере, 1934 год
+  muzej: Российский государственный музей Арктики и Антарктики
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17466565
+- chto: «Лагерь Шмидта. Расчистка ледового аэродрома», 1934 год
+  muzej: Музейный центр «Наследие Чукотки»
+  gorod: Анадырь
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=13960299
+- chto: Радиостанция в Уэлене, поддерживавшая связь с лагерем Шмидта, и радист «Челюскина» Э. Кренкель, лист фотовыставки «Союзфото»
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5567616
+chitat_dalshe:
+- nazvanie: «„Через два часа всё было кончено“. 90 лет назад затонул легендарный ледокол „Челюскин“»
+  gde: Лента.ру, 13.02.2024
+  ssylka: https://lenta.ru/articles/2024/02/13/cheluskin/
+- nazvanie: «Спасение экипажа „Челюскина“»
+  gde: «Коммерсантъ», 13.04.2024
+  ssylka: https://www.kommersant.ru/doc/6634455
+- nazvanie: М. Иванов. «Не ставшие героями»
+  gde: «История» («Первое сентября»), № 19, 2004
+  ssylka: https://his.1sept.ru/2004/19/11.htm
+- nazvanie: «Челюскинская эпопея»
+  gde: «Вокруг света»
+  ssylka: https://www.vokrugsveta.ru/vs/article/338/
+- nazvanie: '«„Воздушный каюр“: 125 лет со дня рождения полярного лётчика Михаила Водопьянова»'
+  gde: Русское географическое общество, 18.11.2024
+  ssylka: https://rgo.ru/activity/redaction/articles/vozdushnyy-kayur-125-let-so-dnya-rozhdeniya-polyarnogo-letchika-mikhaila-vodopyanova/

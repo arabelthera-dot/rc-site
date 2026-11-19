@@ -461,3 +461,29 @@ proof:
     date: "1874"
     holder: НТБ ИРНИТУ, биографический очерк «Николай Алексеевич Умов (1846–1915)»
     source_url: https://library.istu.edu/hoe/personalia/umov.pdf
+gde_uvidet:
+- chto: Фотопортрет Н. А. Умова работы К. А. Фишера
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=4978913
+- chto: «Временник» Общества Леденцова за 1910 год
+  muzej: Музей Москвы
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18185244
+- chto: Письмо Н. А. Умова декану К. А. Андрееву, 28 марта 1911
+  muzej: Музей Москвы
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17010580
+chitat_dalshe:
+- nazvanie: «Николай Алексеевич Умов (1846–1915)»
+  gde: НТБ Иркутского национального исследовательского технического университета, серия «Персоналии»
+  ssylka: https://library.istu.edu/hoe/personalia/umov.pdf
+- nazvanie: «Николай Алексеевич Умов»
+  gde: «Советский физик» (газета физфака МГУ), 2005, № 1(43)
+  ssylka: https://phys.msu.ru/rus/about/sovphys/ISSUES-2005/1(43)-2005/umov/
+- nazvanie: '«Общество Леденцова: первый фонд поддержки научных исследований в России»'
+  gde: ИОНХ РАН, раздел «История института»
+  ssylka: https://igic.ras.ru/docs/History_Institute/obshestvo_ledentcova_1_fond_podderzhki_ni.pdf
+- nazvanie: С. Г. Морозова. «Друзья человечества, или Два миллиона золотом на российскую науку»
+  gde: «Химия и жизнь», 2013, № 4
+  ssylka: https://www.hij.ru/read/articles/earth-science/2536/

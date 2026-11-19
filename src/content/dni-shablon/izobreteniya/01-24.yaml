@@ -451,3 +451,29 @@ proof:
     date: 2006-12-01
     holder: «Наука и жизнь», 2006, № 12
     source_url: https://www.nkj.ru/archive/articles/8335/
+gde_uvidet:
+- chto: Модель титановой атомной подводной лодки проекта 661 «Анчар»
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=10664303
+- chto: Портрет академика Н. Н. Исанина, главного конструктора «Анчара»
+  muzej: Музей истории подводных сил России им. А. И. Маринеско
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=44939149
+- chto: Фотография стартовой команды подлодки проекта 661 на испытаниях ракеты П-70 «Аметист»
+  muzej: Музей истории подводных сил России им. А. И. Маринеско
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7869676
+chitat_dalshe:
+- nazvanie: В. Зайцев. «„Золотая рыбка“ из титана»
+  gde: «Наука и жизнь», 2006, № 12
+  ssylka: https://www.nkj.ru/archive/articles/8335/
+- nazvanie: А. Трофимов. «Самая быстрая в мире „Золотая рыбка“»
+  gde: Российское историческое общество, 15.04.2022
+  ssylka: https://history.ru/read/articles/samaya-bystraya-v-mire-zolotaya-rybka
+- nazvanie: С. Птичкин. «„Золотая рыбка“ и золотые рекорды, о которых мало кто знал»
+  gde: «Российская газета», 17.12.2013
+  ssylka: https://rg.ru/2013/12/17/anchar-site.html
+- nazvanie: Н. Черкашин. «„Золотая рыбка“, она же „Серебряный кит“, она же „Папа“»
+  gde: «Военно-промышленный курьер» — FLOT, 30.03.2010
+  ssylka: https://flot.com/history/branches/sub/plark_anchar.htm

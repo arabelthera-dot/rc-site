@@ -428,3 +428,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Фуражка генерал-лейтенанта инженерных войск Д. М. Карбышева
+  muzej: Центральный музей Вооружённых Сил Российской Федерации
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=31774402
+- chto: Очки генерал-лейтенанта Д. М. Карбышева
+  muzej: Центральный музей Вооружённых Сил Российской Федерации
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=27354483
+- chto: 'Открытие памятника Карбышеву в бывшем лагере Маутхаузен: дочь генерала Елена Дмитриевна и М. Ф. Лукин, 1957 год'
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=30367529
+chitat_dalshe:
+- nazvanie: А. Емельяненков. «Прививка от нацизма»
+  gde: «Родина», № 2, 2020
+  ssylka: https://rodina-history.ru/2020/02/17/semdesiat-piat-let-nazad-oborvalas-zhizn-generala-karbysheva.html
+- nazvanie: Карбышев Дмитрий Михайлович
+  gde: «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=413
+- nazvanie: «Две звезды генерала Карбышева»
+  gde: «Армейский сборник»
+  ssylka: https://army.ric.mil.ru/Stati/item/291875/
+- nazvanie: Е. Решин. «Генерал Карбышев»
+  gde: Сайт molodguard.ru
+  ssylka: https://www.molodguard.ru/heroes19.htm
+- nazvanie: Подвиг генерала Карбышева
+  gde: «Вечерняя Москва», 19.02.2015
+  ssylka: https://vm.ru/society/613278-podvig-generala-karbysheva

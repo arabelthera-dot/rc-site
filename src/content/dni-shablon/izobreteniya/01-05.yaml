@@ -772,3 +772,29 @@ proof:
     date: "1884"
     holder: РГАНТД, проект «Шухов»
     source_url: https://rgantd.ru/shuhov/biography/
+gde_uvidet:
+- chto: Фрагмент нефтяного резервуара конструкции В. Г. Шухова, конец XIX — начало XX века
+  muzej: Музей геологии, нефти и газа
+  gorod: Ханты-Мансийск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=16321636
+- chto: Копия привилегии В. Г. Шухова на «ажурную башню», 1896
+  muzej: Мытищинский историко-художественный музей
+  gorod: Мытищи
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=19689326
+- chto: Фотография «Академик В. Г. Шухов за рабочим столом», Москва, 1933
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5969845
+chitat_dalshe:
+- nazvanie: «Первый российский трубопровод»
+  gde: ТАСС, спецпроект об истории трубопроводного транспорта
+  ssylka: https://transnefthistory.tass.ru/tube-1.html
+- nazvanie: Н. Лескова. «Человек-фабрика»
+  gde: «Наука и жизнь», 2013, № 12
+  ssylka: https://www.nkj.ru/archive/articles/23482/
+- nazvanie: Биография В. Г. Шухова
+  gde: Российский государственный архив научно-технической документации
+  ssylka: https://rgantd.ru/shuhov/biography/
+- nazvanie: «Владимир Шухов»
+  gde: Культура.РФ
+  ssylka: https://www.culture.ru/persons/8469/vladimir-shukhov

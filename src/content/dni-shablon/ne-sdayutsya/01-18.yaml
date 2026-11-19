@@ -443,3 +443,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Николай Кузнецов в форме обер-лейтенанта вермахта
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36593128
+- chto: Николай Кузнецов и другие партизаны-разведчики среди гестаповцев
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36593338
+- chto: Николай Кузнецов с товарищами-разведчиками перед уходом на задание
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36593161
+chitat_dalshe:
+- nazvanie: Д. Н. Медведев. «Это было под Ровно», глава «Лучше настоящих»
+  gde: Военная литература (militera.lib.ru)
+  ssylka: http://militera.lib.ru/memo/russian/medvedev/15.html
+- nazvanie: Д. Н. Медведев. «Сильные духом», часть 3
+  gde: Военная литература (militera.lib.ru)
+  ssylka: http://militera.lib.ru/prose/russian/medvedev_dn/03.html
+- nazvanie: «Как погиб советский разведчик Николай Кузнецов»
+  gde: «Российская газета», 29.03.2017
+  ssylka: https://rg.ru/2017/03/29/kak-pogib-razvedchik-nikolaj-kuznecov.html
+- nazvanie: Н. Долгополов. «Смерть рядом»
+  gde: «Аргументы и факты», 2021, на сайте СВР России
+  ssylka: http://svr.gov.ru/smi/2021/07/smert-ryadom-kogda-rassekretyat-biografiyu-razvedchika-nikolaya-kuznetsova.htm
+- nazvanie: «Рассекречен архив о легендарном советском разведчике Кузнецове»
+  gde: РИА Новости, 2024
+  ssylka: https://ria.ru/20241104/kuznetsov-1981743583.html

@@ -440,3 +440,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Экипаж танка «Боевая подруга» 26-й гвардейской танковой бригады, 1943 год
+  muzej: Государственный военно-исторический музей-заповедник «Прохоровское поле»
+  gorod: Прохоровка, Белгородская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=3975113
+- chto: Монтажный лист кинооператоров Центральной студии кинохроники А. Крылова и Е. Лозовского к сюжету «Боевая подруга»
+  muzej: Государственный центральный музей кино
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=28058864
+- chto: Грамота Президиума Верховного Совета СССР Герою Советского Союза М. В. Октябрьской, 1952 год
+  muzej: Томский областной краеведческий музей имени М. Б. Шатилова
+  gorod: Томск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18831642
+chitat_dalshe:
+- nazvanie: «Купила танк и била фашистов. 80 лет назад умерла от ран Мария Октябрьская»
+  gde: «Родина», 15.03.2024
+  ssylka: https://rodina-history.ru/2024/03/15/kupila-tank-i-bila-fashistov-80-let-nazad-umerla-ot-ran-mariia-oktiabrskaia.html
+- nazvanie: «„Тов. Октябрьская — смелый, отважный воин“»
+  gde: «Правда», 2025
+  ssylka: https://gazeta-pravda.ru/issue/88-31725-1518-avgusta-2025-goda/tov-oktyabrskaya-smelyy-otvazhnyy-voin/
+- nazvanie: «Минобороны рассекретило танкисток»
+  gde: «Российская газета», 09.09.2018
+  ssylka: https://rg.ru/2018/09/09/minoborony-rassekretilo-tankistok.html
+- nazvanie: «Как „Боевая подруга“ отомстила фашистам»
+  gde: История.РФ
+  ssylka: https://histrf.ru/biblioteka/b/kak-boievaia-podrugha-otomstila-fashistam
+- nazvanie: Октябрьская Мария Васильевна
+  gde: «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=358

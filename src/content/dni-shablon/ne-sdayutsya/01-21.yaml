@@ -454,3 +454,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Фотография «Володя Дубинин — Герой Советского Союза, пионер-партизан», автор Н. Науменков
+  muzej: Государственный музей политической истории России
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=6979677
+- chto: Вход в Старокарантинские каменоломни
+  muzej: Восточно-Крымский историко-культурный музей-заповедник
+  gorod: Керчь
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=30939166
+- chto: Телеграмма Евдокии Тимофеевны и Вали Дубининых из Керчи Льву Кассилю, 18 ноября 1955 года
+  muzej: Музей Л. А. Кассиля — филиал Государственного музея К. А. Федина
+  gorod: Энгельс, Саратовская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12199397
+chitat_dalshe:
+- nazvanie: 'А. Д. Попов, Е. А. Попова. «Память о пионере-герое Володе Дубинине: формирование исторического образа и формы мемориализации»'
+  gde: «Наука. Общество. Оборона», 2024
+  ssylka: https://www.noo-journal.ru/vak/2024-2-39/popov-popova-pamyat-o-pionere-geroe-volode-dubinine-formirovanie-istoricheskogo-obraza/
+- nazvanie: «Володя Дубинин»
+  gde: «Летопись мужества», Российская государственная детская библиотека
+  ssylka: https://letopis-muzhestva.rgdb.ru/volodya-dubinin
+- nazvanie: Л. Кассиль, М. Поляновский. «Улица младшего сына»
+  gde: Военная литература (militera.lib.ru)
+  ssylka: http://militera.lib.ru/prose/russian/kassil_la01/text.html
+- nazvanie: Н. Дремова. «Пятнадцать лет и вечность. Как Кассиль написал „Улицу младшего сына“»
+  gde: «АиФ-Крым», 2026
+  ssylka: https://krym.aif.ru/society/pyatnadcat-let-i-vechnost-kak-kassil-napisal-ulicu-mladshego-syna
+- nazvanie: И. Н. Втюрина. «Организация партизанской деятельности на территории Керченского полуострова в ноябре – декабре 1941 г.»
+  gde: «Ноябрьские историко-архивные чтения» 2019, Пермский государственный архив социально-политической истории
+  ssylka: https://www.permgaspi.ru/deyatelnost/november-readings/noyabrskie-istoriko-arhivnye-chteniya-v-permskom-partarhive-v-2019-godu/materialy-nauchnoj-konferentsiii-noyabrskie-istoriko-arhivnye-chteniya-2019-g/organizatsiya-partizanskoj-deyatelnosti-na-territorii-kerchenskogo-poluostrova-v-noyabre-dekabre-1941-g.html

@@ -440,3 +440,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Сержант Яков Павлов на фоне разрушенного дома, который он защищал
+  muzej: Государственный историко-мемориальный музей-заповедник «Сталинградская битва»
+  gorod: Волгоград
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=14414389
+- chto: Муляж медали «Золотая Звезда» Героя Советского Союза Якова Павлова, 1945 год
+  muzej: Государственный историко-мемориальный музей-заповедник «Сталинградская битва»
+  gorod: Волгоград
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5624945
+- chto: Дом гвардии сержанта Павлова в 1945 году, на стене — имена защитников
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=6490366
+chitat_dalshe:
+- nazvanie: В. Рощупкин. «Дом Павлова без легенд и мифов»
+  gde: «Независимое военное обозрение», 14.02.2014
+  ssylka: https://nvo.ng.ru/history/2014-02-14/15_pavlov.html
+- nazvanie: «Дочка из Дома Павлова»
+  gde: «Родина», 30.01.2018
+  ssylka: https://rodina-history.ru/2018/01/30/rodina-stalingrad-zina.html
+- nazvanie: «Сидели в осаде, но жили весело…» (интервью с Ю. Я. Павловым)
+  gde: История.РФ
+  ssylka: https://histrf.ru/biblioteka/b/sidieli-v-osadie-no-zhili-viesielo-s-fashistami-pierierughivalis
+- nazvanie: «Герою Сталинграда сержанту Павлову исполнилось сто лет»
+  gde: «Российская газета», 17.10.2017
+  ssylka: https://rg.ru/2017/10/17/reg-ufo/geroiu-stalingrada-serzhantu-pavlovu-ispolnilos-sto-let.html
+- nazvanie: '«„Лично истребил более 90 немцев“: рассекречены донесения из Сталинграда»'
+  gde: РИА Новости, 02.02.2018
+  ssylka: https://ria.ru/20180202/1513851423.html

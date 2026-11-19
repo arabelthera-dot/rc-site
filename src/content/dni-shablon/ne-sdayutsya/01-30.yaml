@@ -435,3 +435,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Сотрудники ВНИИЭФ, группа дозиметрического контроля, на сооружении саркофага над четвёртым блоком, 1987 год
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17377493
+- chto: Дозиметрический контроль четвёртого энергоблока Чернобыльской АЭС, 1986 год, фото В. Зуфарова
+  muzej: Владимиро-Суздальский музей-заповедник
+  gorod: Владимир
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=1413481
+- chto: Куртка от костюма ликвидатора последствий аварии на ЧАЭС С. С. Климченко, 1986 год
+  muzej: Музей боевой и трудовой славы
+  gorod: Саратов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20046324
+chitat_dalshe:
+- nazvanie: «Авария в 1986 году на Чернобыльской АЭС. Историческая справка»
+  gde: МЧС России
+  ssylka: https://mchs.gov.ru/deyatelnost/press-centr/informacionnye-proekty/30-letie-katastrofy-na-chernobylskoy-aes/avariya-v-1986-godu-na-chernobylskoy-aes-istoricheskaya-spravka
+- nazvanie: Е. Сажнева. «Живой герой мёртвого города»
+  gde: «Культура», 2016
+  ssylka: https://portal-kultura.ru/articles/history/129184-zhivoy-geroy-mertvogo-gorodasazh/
+- nazvanie: '«Чернобыльская авария: что произошло на АЭС 26 апреля 1986»'
+  gde: РИА Новости, 2026
+  ssylka: https://ria.ru/20260425/avariya-na-chernobylskoy-aes-2088934431.html
+- nazvanie: «Их было 28 — пожарные Чернобыля»
+  gde: ГУ МЧС России по Ивановской области, 2022
+  ssylka: https://37.mchs.gov.ru/deyatelnost/press-centr/novosti/4730715
+- nazvanie: «Истории пожарных, первыми прибывших к месту аварии на ЧАЭС»
+  gde: РИА Новости, 2026
+  ssylka: https://ria.ru/20260425/pozharnye-2088393161.html

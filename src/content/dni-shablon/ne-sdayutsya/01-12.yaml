@@ -439,3 +439,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Фотокопия комсомольского билета Александра Матросова
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=24627099
+- chto: Листовка 1943 года с приказом наркома обороны № 269 о вечном зачислении Матросова в списки роты
+  muzej: Центральный музей Великой Отечественной войны 1941–1945 гг.
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18580182
+- chto: Первый памятник на могиле Александра Матросова в Великих Луках, 25 июля 1948 года
+  muzej: Краеведческий музей города Великие Луки
+  gorod: Великие Луки
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=19686787
+chitat_dalshe:
+- nazvanie: С. Экштут. «Километры и секунды Александра Матросова. Полная реконструкция подвига»
+  gde: «Родина», 2018, № 2
+  ssylka: https://rodina-history.ru/2018/02/22/rodina-matrosov.html
+- nazvanie: П. Базанов. «Век Александра Матросова»
+  gde: «Родина», № 2, 2024
+  ssylka: https://rodina-history.ru/2024/02/05/vek-aleksandra-matrosova.html
+- nazvanie: А. И. Ерёменко. «Годы возмездия. 1943–1945»
+  gde: Военная литература (militera.lib.ru)
+  ssylka: https://militera.lib.ru/memo/russian/eremenko_ai3/01.html
+- nazvanie: «Ни в одной другой армии мира»
+  gde: Журнал «Историк», № 25, январь 2017
+  ssylka: https://историк.рф/journal/post/6273
+- nazvanie: «Бессмертный рядовой»
+  gde: «Столетие»
+  ssylka: https://www.stoletie.ru/territoriya_istorii/bessmertnyj_radovoj_903.htm

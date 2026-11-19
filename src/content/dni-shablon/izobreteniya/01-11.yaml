@@ -593,3 +593,29 @@ proof:
     date: 1892-11-04
     holder: Департамент торговли и мануфактур
     source_url: https://web.archive.org/web/20260614135058/http://xn--80aafy5bs.xn--p1ai/aviamuseum/dvigateli-i-vooruzhenie/aviamotorostroenie/aviamotory-rossijskoj-imperii/dvigatel-vnutrennego-sgoraniya-dlya-dirizhablya-o-s-kostovicha/
+gde_uvidet:
+- chto: Восьмицилиндровый бензиновый мотор О. С. Костовича для дирижабля «Россия», 1883
+  muzej: Центральный музей Военно-воздушных сил
+  gorod: Монино
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=25505972
+- chto: Рукописное техническое описание мотора Костовича
+  muzej: Научно-мемориальный музей профессора Н. Е. Жуковского
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=54679006
+- chto: Фотография О. С. Костовича в пожилом возрасте, не позднее 1916
+  muzej: Научно-мемориальный музей профессора Н. Е. Жуковского
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=59271130
+chitat_dalshe:
+- nazvanie: «Костович Огнеслав (Игнатий) Степанович»
+  gde: Большая советская энциклопедия, 3-е изд.
+  ssylka: https://www.booksite.ru/fulltext/1/001/008/065/241.htm
+- nazvanie: «Пять самых важных изобретений Огнеслава Костовича»
+  gde: «Российская газета», 30.12.2013
+  ssylka: https://rg.ru/2013/12/30/kostovich-site.html
+- nazvanie: «Двигатель внутреннего сгорания для дирижабля О. С. Костовича»
+  gde: «Российская авиация» (Авиамузей)
+  ssylka: http://xn--80aafy5bs.xn--p1ai/aviamuseum/dvigateli-i-vooruzhenie/aviamotorostroenie/aviamotory-rossijskoj-imperii/dvigatel-vnutrennego-sgoraniya-dlya-dirizhablya-o-s-kostovicha/
+- nazvanie: «Двигатель для дирижабля „Россия“»
+  gde: журнал «Воздухоплаватель»
+  ssylka: http://ballooning-magazine.ru/91

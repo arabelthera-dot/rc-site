@@ -420,3 +420,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Александр Ханько, «Восстание 11 апреля 1945 года», из серии «Лагерь смерти Бухенвальд», 1945 год
+  muzej: Государственный музей политической истории России
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5879068
+- chto: Фриц Кремер, литография «Восстание в Бухенвальде»
+  muzej: Государственный музей изобразительных искусств имени А. С. Пушкина
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7736023
+- chto: Рисунок бывшего узника Бухенвальда Романа Ефименко «Восстание узников концлагеря „Бухенвальд“» (фотокопия)
+  muzej: Музей «Набат памяти»
+  gorod: Можга, Удмуртская Республика
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36173291
+chitat_dalshe:
+- nazvanie: 'Е. Зайцева. «Бухенвальдский набат: 80 лет назад узники концлагеря подняли восстание»'
+  gde: «Родина», 11.04.2025
+  ssylka: https://rodina-history.ru/2025/04/11/buhenvaldskij-nabat-80-let-nazad-uzniki-konclageria-podniali-vosstanie.html
+- nazvanie: С. Перемутов. «Красный гладиатор Бухенвальда. Как советский боксёр побил более 80 фашистов в концлагере»
+  gde: «Советский спорт», 2023
+  ssylka: https://www.sovsport.ru/boxing/articles/2:1065038
+- nazvanie: П. Садков. «Правда и мифы о русском боксере в Бухенвальде»
+  gde: «Комсомольская правда», 2022
+  ssylka: https://www.kp.ru/sports/boks/pravda-i-mify-o-russkom-boksere-v-buhenvalde/
+- nazvanie: А. Сидорчик. «Победители. Концлагерь Бухенвальд освободили его узники»
+  gde: «Аргументы и факты», 2014
+  ssylka: https://aif.ru/society/history/pobediteli_konclager_buhenvald_osvobodili_ego_uzniki
+- nazvanie: «„Он налетел на немца, как зверь“…»
+  gde: Лента.ру, 26.10.2025
+  ssylka: https://lenta.ru/articles/2025/10/26/on-naletel-kak-zver/

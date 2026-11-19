@@ -688,3 +688,29 @@ proof:
     doc_title: патент США на гусеничный трактор
     date: "1907"
   gap_years: 28
+gde_uvidet:
+- chto: Картина К. П. Белова «Первый гусеничный трактор Блинова», 1947
+  muzej: Омский музей Кондратия Белова
+  gorod: Омск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=3908682
+- chto: Памятный медальон «Фёдор Абрамович Блинов 1832–1902»
+  muzej: Музей истории г. Балаково (филиал Саратовского областного музея краеведения)
+  gorod: Балаково
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36935038
+- chto: Пожарный насос завода Ф. А. Блинова, 1880-е
+  muzej: Музей истории г. Балаково (филиал Саратовского областного музея краеведения)
+  gorod: Балаково
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=30117127
+chitat_dalshe:
+- nazvanie: «„Вагон с бесконечными рельсами“ Федора Блинова»
+  gde: «Научная Россия»
+  ssylka: https://scientificrussia.ru/articles/beskonecnye-relsy-fedora-blinova
+- nazvanie: «Кулибинцы. 20 русских умельцев, чьи изобретения вошли в историю цивилизации»
+  gde: «Родина» (на сайте «Российской газеты»), 2016
+  ssylka: https://rg.ru/2016/03/03/rodina-kulibincy.html
+- nazvanie: Р. В. Салтыков, Н. В. Пейпорт. «Из истории изобретения трактора»
+  gde: «Образование. Карьера. Общество», 2013, № 1
+  ssylka: https://cyberleninka.ru/article/n/iz-istorii-izobreteniya-traktora
+- nazvanie: Документальный фильм «Первые в мире. Самоход Блинова»
+  gde: Российское историческое общество, histrf.ru
+  ssylka: https://histrf.ru/watch/lectures/dokumentalnye-filmy-na-telekanale-kultura-pervye-v-mire-samohod-blinova

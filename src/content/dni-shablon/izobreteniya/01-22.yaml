@@ -525,3 +525,29 @@ proof:
     date: "1941"
     holder: Успехи физических наук (перепечатка 1967)
     source_url: https://ufn.ru/ru/articles/1967/11/j/
+gde_uvidet:
+- chto: Статья П. Л. Капицы «О свойствах жидкого гелия», 1941
+  muzej: Национальный музей Республики Татарстан
+  gorod: Казань
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=50697272
+- chto: Гелиевый ожижитель Капицы
+  muzej: Мемориальный кабинет-музей П. Л. Капицы ИФП РАН
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=69524694
+- chto: Фотография Нобелевского диплома Л. Д. Ландау, 1962
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=35682369
+chitat_dalshe:
+- nazvanie: Л. Д. Ландау. «Теория сверхтекучести гелия II» (перепечатка из ЖЭТФ, 1941)
+  gde: «Успехи физических наук», 1967
+  ssylka: https://ufn.ru/ru/articles/1967/11/j/
+- nazvanie: П. Л. Капица. «Свойства жидкого гелия»
+  gde: 'журнал «Природа», перепечатка: RELGA.RU, 2011, № 18'
+  ssylka: https://relga.ru/articles/3046/
+- nazvanie: Хронология жизни П. Л. Капицы
+  gde: Мемориальный музей-кабинет П. Л. Капицы ИФП РАН
+  ssylka: http://ns.kapitza.ras.ru/museum/timeline.htm
+- nazvanie: Электронная выставка «Ландау»
+  gde: ГПНТБ СО РАН
+  ssylka: https://www.prometeus.nsc.ru/archives/exhibits/landau/pagelif6.ssi
