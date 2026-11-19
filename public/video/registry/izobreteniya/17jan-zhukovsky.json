@@ -1,32 +1,32 @@
 {
-  "title": "История в 55 секунд",
+  "title": "История в 50 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky.mp4",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 55.2,
-    "mb": 11.6
+    "sec": 49.5,
+    "mb": 13.7
   },
   "vertical": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 55.2,
-    "mb": 9.7
+    "sec": 49.5,
+    "mb": 12.8
   },
   "poster": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-poster.jpg",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
