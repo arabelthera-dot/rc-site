@@ -402,6 +402,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: k19-kniga
+  vid: predmet
+  kicker: Вещь под лупой
+  h2: Книга о первом экипаже
+  lead: 'Эту книгу выпустили в 2011 году, к 50-летию аварии реактора, — о первом экипаже К-19, о Корчилове и моряках, что пошли к реактору. Приближайте: ржавый металл, красная звезда, буквы «К-19».'
 audioguide:
   audioSrc: audio-guide-k19-ru.mp3
   durationLabel: 1 минута 29 секунд
