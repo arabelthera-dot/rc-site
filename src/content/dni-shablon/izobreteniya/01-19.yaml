@@ -493,3 +493,29 @@ proof:
     date: "1939"
     holder: Л. В. Канторович, Ленинградский государственный университет
     source_url: http://old.math.nsc.ru/LBRT/u2/nauka/kant.html
+gde_uvidet:
+- chto: Диплом лауреата Нобелевской премии по экономике Л. В. Канторовича, 1975
+  muzej: Музей истории СПбГУ
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=57973402
+- chto: Студенческий матрикул Л. В. Канторовича, 1926
+  muzej: Музей истории СПбГУ
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=57973269
+- chto: Сборник «Оптимальное планирование. Алгорифмы» под редакцией Л. В. Канторовича, Новосибирск, 1964
+  muzej: Новосибирский государственный краеведческий музей
+  gorod: Новосибирск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5853041
+chitat_dalshe:
+- nazvanie: А. Образцов. «Юность математика»
+  gde: «Наука и жизнь», 2004, № 5
+  ssylka: https://www.nkj.ru/archive/articles/3563/
+- nazvanie: Л. В. Канторович. «Мой путь в науке»
+  gde: «Успехи математических наук», 1987, т. 42, вып. 2
+  ssylka: https://www.mathnet.ru/rus/rm2433
+- nazvanie: «Леонид Витальевич Канторович (1912–1986)»
+  gde: Институт математики им. С. Л. Соболева СО РАН
+  ssylka: http://old.math.nsc.ru/LBRT/u2/nauka/kant.html
+- nazvanie: 'Е. Голубев. «Л. В. Канторович: „Не всё должно быть в каждом блюде…“»'
+  gde: журнал «Санкт-Петербургский университет», 2012, № 1
+  ssylka: https://journal.spbu.ru/?p=6167

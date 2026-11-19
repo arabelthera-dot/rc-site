@@ -452,3 +452,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Форменный сапог Николая Гастелло, 1935–1941 годы
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=19947982
+- chto: Портрет капитана Николая Гастелло, конец 1930-х — начало 1940-х годов
+  muzej: Владимиро-Суздальский музей-заповедник
+  gorod: Владимир
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=1484031
+- chto: Экипаж самолёта Н. Ф. Гастелло, лист из буклета
+  muzej: Брянский государственный краеведческий музей
+  gorod: Брянск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=49213693
+chitat_dalshe:
+- nazvanie: Гастелло Николай Францевич
+  gde: «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=275
+- nazvanie: «Огненный таран экипажа Н. Ф. Гастелло»
+  gde: Белорусский государственный музей истории Великой Отечественной войны
+  ssylka: https://www.warmuseum.by/news/hronika_pobedy/ognennyy-taran-ekipazha-n-f-gastello/
+- nazvanie: '«Огненный таран: как лётчик Гастелло совершил свой подвиг»'
+  gde: «Российская газета», 26.06.2020
+  ssylka: https://rg.ru/2020/06/26/ognennyj-taran-letchik-gastello-sovershil-podvig-79-let-nazad.html
+- nazvanie: «85 лет назад Николай Гастелло совершил свой знаменитый подвиг»
+  gde: «Родина», 26.06.2026
+  ssylka: https://rodina-history.ru/2026/06/26/85-let-nazad-nikolaj-gastello-sovershil-svoj-znamenityj-podvig.html
+- nazvanie: «Подвиг Гастелло»
+  gde: История.РФ (РВИО)
+  ssylka: https://history.ru/read/articles/podvigh-gastiello-event

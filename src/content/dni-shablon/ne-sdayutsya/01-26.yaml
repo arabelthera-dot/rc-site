@@ -428,3 +428,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Лётчик-космонавт Алексей Леонов в гермошлеме с надписью «СССР»
+  muzej: Государственный музей политической истории России
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=6327635
+- chto: Леонов в скафандре «Беркут» на тренировке невесомости в самолёте Ту-104, 1965 год
+  muzej: Мемориальный музей космонавтики
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36019420
+- chto: Рисунок Алексея Леонова «Парящий в космосе космонавт», 8 апреля 1965 года
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=57122082
+chitat_dalshe:
+- nazvanie: «„Понесся на «Восход»…“ Как 60 лет назад Алексей Леонов в открытый космос выходил»
+  gde: «Российская газета», 18.03.2025
+  ssylka: https://rg.ru/2025/03/18/60-let-nazad-kosmonavt-aleksej-leonov-pervym-v-istorii-shagnul-v-otkrytyj-kosmos.html
+- nazvanie: «Космический Микеланджело»
+  gde: «Российская газета», 11.04.2025
+  ssylka: https://rg.ru/2025/04/11/kosmicheskij-mikelandzhelo.html
+- nazvanie: «„А Земля-то круглая“. 60 лет назад человек впервые вышел в открытый космос»
+  gde: «Родина», 18.03.2025
+  ssylka: https://rodina-history.ru/2025/03/18/a-zemlia-to-kruglaia-60-let-nazad-chelovek-vpervye-vyshel-v-otkrytyj-kosmos.html
+- nazvanie: «Шаг за край. 45 лет выходу человека в открытый космос»
+  gde: РИА Новости, 18.03.2010
+  ssylka: https://ria.ru/20100318/215081522.html
+- nazvanie: «Как космонавта Леонова спасали в тайге — секретный архив показали его дочери»
+  gde: «Родина», 24.07.2026
+  ssylka: https://rodina-history.ru/2026/07/24/kak-kosmonavta-leonova-spasali-v-tajge-sekretnyj-arhiv-pokazali-ego-docheri.html

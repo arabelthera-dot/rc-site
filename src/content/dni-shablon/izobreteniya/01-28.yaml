@@ -428,3 +428,29 @@ proof:
     date: "1897"
     holder: В. А. Хавкин
     source_url: https://hij.ru/read/11413/
+gde_uvidet:
+- chto: Бутыль «Холерная вакцина», СССР, до 1943 года
+  muzej: Военно-медицинский музей Министерства обороны РФ
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=29049270
+- chto: Книга В. П. Кашкадамова «Чума в Индии за 1896–1898 гг.», 1898
+  muzej: Государственный музей истории российской литературы имени В. И. Даля
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=48853277
+- chto: Объявление «Граждане! Идите прививать себе холерную вакцину!», 1921–1926
+  muzej: Саратовский областной музей краеведения
+  gorod: Саратов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=14965410
+chitat_dalshe:
+- nazvanie: В. А. Острогорская. «Непопулярный в России»
+  gde: «Химия и жизнь», 2018, № 3
+  ssylka: https://hij.ru/read/11413/
+- nazvanie: «Война с „чёрной смертью“»
+  gde: «Наука и жизнь»
+  ssylka: https://www.nkj.ru/archive/articles/6364/
+- nazvanie: «Владимир Аронович Хавкин. Самый неизвестный учёный России»
+  gde: Российское историческое общество
+  ssylka: https://historyrussia.org/tsekh-istorikov/vladimir-aronovich-khavkin-samyj-neizvestnyj-uchjonyj-rossii.html
+- nazvanie: 'М. Сорокина. «Между верой и разумом: великий бактериолог Владимир Хавкин»'
+  gde: «Природа», 2020, № 4; «Элементы»
+  ssylka: https://elementy.ru/nauchno-populyarnaya_biblioteka/435658/Mezhdu_veroy_i_razumom_velikiy_bakteriolog_Vladimir_Khavkin

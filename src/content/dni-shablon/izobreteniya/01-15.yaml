@@ -563,3 +563,29 @@ proof:
     date: 1884-06-24
     holder: Стокгольмский университет
     source_url: https://um.mos.ru/personalities/kovalevskaya/
+gde_uvidet:
+- chto: Рукопись повести «Нигилистка», автограф С. В. Ковалевской
+  muzej: Псковский государственный объединённый историко-архитектурный и художественный музей-заповедник
+  gorod: Псков
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=67066483
+- chto: Фотопортрет С. В. Ковалевской, ателье Dahllöf, Стокгольм
+  muzej: Псковский государственный объединённый историко-архитектурный и художественный музей-заповедник
+  gorod: Псков
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=67066060
+- chto: Посмертный сборник литературных произведений Ковалевской, Петербург, 1892
+  muzej: Краснодарский государственный историко-археологический музей-заповедник им. Е. Д. Фелицына
+  gorod: Краснодар
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=23602442
+chitat_dalshe:
+- nazvanie: «175 лет назад родилась Софья Ковалевская»
+  gde: журнал «Родина», 15.01.2025
+  ssylka: https://rodina-history.ru/2025/01/15/175-let-nazad-rodilas-sofia-kovalevskaia-pervaia-v-mire-zhenshchina-professor-matematiki.html
+- nazvanie: «Софья Ковалевская. Жизнь как уравнение»
+  gde: «Русский мир»
+  ssylka: https://russkiymir.ru/publications/332224/
+- nazvanie: «Ковалевская Софья Васильевна»
+  gde: «Узнай Москву»
+  ssylka: https://um.mos.ru/personalities/kovalevskaya/
+- nazvanie: «Ковалевская Софья Васильевна»
+  gde: «Псковиана»
+  ssylka: https://pskoviana.ru/istoriya/persony/uchenye/4017-kovalevskaya-sofya-vasilevna-1

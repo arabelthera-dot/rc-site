@@ -443,3 +443,32 @@ audioguide:
 proof:
   status: ne_utverzhdeno
   note: "Проба den-shablon: факты собраны со старой страницы podvig-kozelsk.html, Сергеем не утверждены (utverzhden нет)."
+gde_uvidet:
+- chto: Лаковая миниатюра «Оборона Козельска», 2013 год
+  muzej: Музейно-краеведческий центр «Дом Цыплаковых» — филиал Калужского объединённого музея-заповедника
+  gorod: Козельск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18126558
+- chto: И. А. Фомичёв, шкатулка «Героическая защита города Козельска от татар в 1238 году», 1945 год
+  muzej: Всероссийский музей декоративно-прикладного и народного искусства
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=449929
+- chto: Н. Ф. Калинин, рисунок «Защита Козельска», 1930–1940-е годы
+  muzej: Национальный музей Республики Татарстан
+  gorod: Казань
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=13401696
+chitat_dalshe:
+- nazvanie: '«Почему Козельск — это злой город: история про Батыя и осаду»'
+  gde: «Вокруг света»
+  ssylka: https://www.vokrugsveta.ru/articles/pochemu-kozelsk-zloi-gorod-id6208344/
+- nazvanie: Ипатьевская летопись
+  gde: ИРЛИ РАН, «Библиотека литературы Древней Руси»
+  ssylka: http://lib.pushkinskijdom.ru/default.aspx?tabid=4961
+- nazvanie: «Какой русский город враги прозвали злым»
+  gde: История.РФ (РВИО)
+  ssylka: https://histrf.ru/biblioteka/b/kakoi-russkii-ghorod-vraghi-prozvali-zlym
+- nazvanie: Материал о раскопках в Козельске
+  gde: «Российская газета», 19.06.2015
+  ssylka: https://rg.ru/2015/06/19/reg-cfo/raskopki.html
+- nazvanie: Рашид ад-Дин. «Сборник летописей», т. 2, ч. 2
+  gde: Древняя литература (drevlit.ru)
+  ssylka: https://drevlit.ru/texts/r/rashid_sb_let_t2_ch2.php

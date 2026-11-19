@@ -435,3 +435,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: В. В. Верещагин, «Скобелев под Шипкой»
+  muzej: Музей-заповедник «Абрамцево»
+  gorod: Абрамцево, Московская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=9039049
+- chto: «Эпизод из обороны Шипки», по оригиналу А. Н. Попова, 1878 год
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=28330289
+- chto: Лубок «Оборона Шипки 9–15 августа 1877 г.», 1902 год
+  muzej: Военно-исторический музей артиллерии, инженерных войск и войск связи
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=64923827
+chitat_dalshe:
+- nazvanie: Ю. Совцов. «Шипка»
+  gde: «Родина», 2016
+  ssylka: https://rodina-history.ru/2016/04/05/rodina-shipka.html
+- nazvanie: «Оборона Шипки»
+  gde: История.РФ (РВИО)
+  ssylka: https://history.ru/read/articles/oborona-shipki-event
+- nazvanie: Ц. Генов. «Русско-турецкая война 1877–1878 гг. и подвиг освободителей», глава III
+  gde: Военная литература (militera.lib.ru), София, 1979
+  ssylka: http://militera.lib.ru/h/genov/03.html
+- nazvanie: Н. П. Игнатьев. «Походные письма 1877 года»
+  gde: Военная литература (militera.lib.ru), РОССПЭН, 1999
+  ssylka: http://militera.lib.ru/db/ignatyev_np/02.html
+- nazvanie: 'В. В. Верещагин. «На войне: Воспоминания о русско-турецкой войне 1877 года»'
+  gde: Вологодская областная научная библиотека (booksite.ru), издание 1902 года
+  ssylka: https://www.booksite.ru/vereschagin/6_28.html

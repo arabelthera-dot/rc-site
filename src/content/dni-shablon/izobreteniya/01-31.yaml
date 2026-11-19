@@ -476,3 +476,22 @@ proof:
     date: '2016'
     holder: «Троицкий вариант — Наука»
     source_url: https://www.trv-science.ru/2016/03/kak-vyshli-v-mir-girotrony-iz-gorkogo/
+gde_uvidet:
+- chto: Фотография А. В. Гапонова-Грехова, директора Института прикладной физики АН СССР, 1985
+  muzej: Нижегородский государственный историко-архитектурный музей-заповедник
+  gorod: Нижний Новгород
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36413762
+- chto: 'Фотография: А. В. Гапонов-Грехов и В. И. Таланов на первых «Сахаровских чтениях», 27 января 1990'
+  muzej: Музей А. Д. Сахарова
+  gorod: Нижний Новгород
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5378576
+chitat_dalshe:
+- nazvanie: А. Г. Литвак. «Как вышли в мир гиротроны из Горького» (интервью)
+  gde: «Троицкий вариант — Наука», 2016
+  ssylka: https://www.trv-science.ru/2016/03/kak-vyshli-v-mir-girotrony-iz-gorkogo/
+- nazvanie: «А. В. Гапонов-Грехов. К 100-летию со дня рождения»
+  gde: Институт прикладной физики РАН, Нижний Новгород, 2026
+  ssylka: https://ipfran.ru/api/elibrary/21893/Gaponov-Grekhov_2026.pdf
+- nazvanie: «На реакторе ИТЭР установили первые российские гиротроны»
+  gde: «Страна Росатом», 16.06.2026
+  ssylka: https://strana-rosatom.ru/2026/06/16/na-reaktore-iter-ustanovili-pervye-ro/

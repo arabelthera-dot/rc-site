@@ -552,3 +552,29 @@ proof:
     date: 1954-06-26
     holder: ГНЦ РФ — ФЭИ им. А. И. Лейпунского
     source_url: https://www.ippe.ru/history/1aes
+gde_uvidet:
+- chto: Лопатка турбины Первой в мире АЭС
+  muzej: Музей истории города Обнинска
+  gorod: Обнинск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=288886
+- chto: Макет Первой в мире АЭС в разрезе
+  muzej: Музей истории города Обнинска
+  gorod: Обнинск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=4358438
+- chto: Тетрадь И. В. Курчатова с записями во время пуска станции, июнь 1954
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=8239174
+chitat_dalshe:
+- nazvanie: «Первая в мире АЭС»
+  gde: ГНЦ РФ — ФЭИ им. А. И. Лейпунского
+  ssylka: https://www.ippe.ru/history/1aes
+- nazvanie: '«Обнинская АЭС: история и фото первой в мире атомной электростанции»'
+  gde: ТАСС, спецпроект
+  ssylka: https://spec.tass.ru/aes1/obninsk-nuclear/
+- nazvanie: «70 лет назад, 27 июня 1954 года, состоялся пуск первой в мире атомной электростанции»
+  gde: Российское историческое общество
+  ssylka: https://historyrussia.org/sobytiya/70-let-nazad-27-iyunya-1954-goda-sostoyalsya-pusk-pervoj-v-mire-atomnoj-elektrostantsii.html
+- nazvanie: 'И. Дорохова. «70 лет с мирным атомом: какие эксперименты проводили на Обнинской АЭС»'
+  gde: «Страна Росатом», 16.07.2024
+  ssylka: https://strana-rosatom.ru/2024/07/16/70-let-s-mirnym-atomom-kakie-eksperimen/

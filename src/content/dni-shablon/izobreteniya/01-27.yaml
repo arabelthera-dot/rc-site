@@ -432,3 +432,29 @@ proof:
     date: 1978–1979
     holder: ИТМиВТ АН СССР
     source_url: https://old.computerra.ru/hitech/205267/
+gde_uvidet:
+- chto: Проспект «Эльбрус-2. Многопроцессорный вычислительный комплекс», ИТМиВТ АН СССР, 1982
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12733546
+- chto: «План-график отладки МВК „Эльбрус-2“», 1980, с подписью В. С. Бурцева
+  muzej: Политехнический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12367222
+- chto: Книга В. С. Бурцева «Параллелизм вычислительных процессов и развитие архитектуры супер-ЭВМ. МВК „Эльбрус“», 1998
+  muzej: Политехнический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11833033
+chitat_dalshe:
+- nazvanie: «МВК „Эльбрус-1“ и „Эльбрус-2“»
+  gde: Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/histussr/elbrus12.htm
+- nazvanie: В. Тучков. «Восхождение на „Эльбрус“. Суперкомпьютер академика Бурцева»
+  gde: журнал «Суперкомпьютеры», № 6/2011; Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/galglory/burtcev_supercomp.htm
+- nazvanie: «От „Эльбруса-3“ — к „Эльбрусу-2000“»
+  gde: Computerworld Россия (изд-во «Открытые системы»), 20.07.2000
+  ssylka: https://www.osp.ru/cw/2000/27-28/6016
+- nazvanie: Ф. Груздов и др. «„Эльбрус“ сегодня»
+  gde: журнал «Открытые системы», 2009, № 2
+  ssylka: https://www.osp.ru/os/2009/02/7314081

@@ -442,3 +442,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Факты дня перенесены со старой страницы и Сергеем не утверждены; отрывков и адресов страниц источников в материале нет.
+gde_uvidet:
+- chto: Кусок штукатурки со стены крепости с надписью «Я умираю, но не сдаюсь. Прощай, Родина. 20/VII-41», фотография
+  muzej: Центральный музей Вооружённых Сил Российской Федерации
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=48247470
+- chto: Оплавленный кирпич с места казармы 44-го стрелкового полка
+  muzej: Краеведческий музей города Рубцовска
+  gorod: Рубцовск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=36334617
+- chto: А. И. Хамцов, «Тереспольские ворота Брестской крепости»
+  muzej: Государственный научно-исследовательский музей архитектуры имени А. В. Щусева
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=9633096
+chitat_dalshe:
+- nazvanie: Материал о последних защитниках Брестской крепости
+  gde: «Родина», 02.10.2024
+  ssylka: https://rodina-history.ru/2024/10/02/brestskaia-krepost-poslednie-geroi.html
+- nazvanie: Минобороны рассекретило документы о защите Брестской крепости
+  gde: «Российская газета», 22.06.2019
+  ssylka: https://rg.ru/2019/06/22/minoborony-rassekretilo-dokumenty-o-zashchite-brestskoj-kreposti.html
+- nazvanie: Оборона Брестской крепости, лента времени
+  gde: История.РФ
+  ssylka: https://histrf.ru/lenta-vremeni/event/view/oborona-briestskoi-krieposti
+- nazvanie: «Оборона Брестской крепости во время Великой Отечественной войны»
+  gde: РИА Новости
+  ssylka: https://ria.ru/20210622/oborona-1737945933.html
+- nazvanie: Как писатель С. С. Смирнов, автор «Брестской крепости», разыскивал её защитников
+  gde: «Аргументы и факты»
+  ssylka: https://aif.ru/society/history/chtoby-mir-uznal-kak-sergey-smirnov-razyskival-zashchitnikov-brestskoy-kreposti

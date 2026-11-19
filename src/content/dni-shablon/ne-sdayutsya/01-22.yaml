@@ -463,3 +463,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Памятная монета к 20-летию подвига 6-й роты
+  muzej: Псковский военно-исторический музей-заповедник
+  gorod: Псков
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=69830317
+- chto: Партийный билет М. Н. Евтюхина, 1985 год
+  muzej: Музей-панорама «Бородинская битва»
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=16203370
+- chto: Тельняшка ВДВ из личных вещей Героя России М. Н. Евтюхина
+  muzej: Музей-панорама «Бородинская битва»
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20536278
+chitat_dalshe:
+- nazvanie: Е. Василькова. «Как жили и погибали псковские десантники»
+  gde: «Российская газета», 2020
+  ssylka: https://rg.ru/2020/02/26/kak-zhili-i-pogibali-pskovskie-desantniki.html
+- nazvanie: '«Погибнуть, но не сдаться: подвиг шестой роты»'
+  gde: История.РФ (РВИО), 2020
+  ssylka: https://history.ru/read/articles/poghibnut-no-nie-sdatsia-podvigh-shiestoi-roty
+- nazvanie: «Ушедшая рота. Как псковские десантники шагнули в бессмертие»
+  gde: РИА Новости, 2020
+  ssylka: https://ria.ru/20200229/1565330664.html
+- nazvanie: «Рота, ушедшая в бессмертие»
+  gde: «Красная звезда», 2020
+  ssylka: http://redstar.ru/rota-ushedshaya-v-bessmertie/
+- nazvanie: '«Бились до последнего: подвиг десантников 6-й роты у высоты 776»'
+  gde: Телеканал «Звезда», 2020
+  ssylka: https://tvzvezda.ru/news/202034126-GymhB.html

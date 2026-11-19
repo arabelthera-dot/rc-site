@@ -479,3 +479,29 @@ proof:
     date: "1832"
     holder: Виртуальный компьютерный музей; переиздание — МИФИ, 2009
     source_url: https://www.computer-museum.ru/precomp/korsakov.htm
+gde_uvidet:
+- chto: Литографический портрет М. В. Остроградского, председателя академической комиссии 1832 года
+  muzej: Государственный музей истории российской литературы имени В. И. Даля
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7825101
+- chto: Литография «Императорская Академия наук на Васильевском острове», 1822
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18064199
+- chto: Перфокарта с краевой перфорацией
+  muzej: Политехнический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7589697
+chitat_dalshe:
+- nazvanie: А. Нитусов. «Семен Корсаков и „машина для сравнения идей“»
+  gde: Виртуальный компьютерный музей
+  ssylka: https://www.computer-museum.ru/precomp/korsakov.htm
+- nazvanie: С. Н. Корсаков. «Начертание нового способа исследования…» (переиздание)
+  gde: МИФИ, 2009
+  ssylka: https://raai.robofob.ru/library/books/korsakov/korsakov_book.pdf
+- nazvanie: А. Нитусов. «Семен Корсаков и его „машина для сравнения идей“»
+  gde: газета «Информатика» (ИД «Первое сентября»), № 8/2009
+  ssylka: https://inf.1sept.ru/view_article.php?ID=200900805
+- nazvanie: Д. Кузнецов. «Идейные машины советника Корсакова»
+  gde: IQ.Media НИУ ВШЭ, 20.10.2023
+  ssylka: https://iq-media.ru/archive/867027146.html

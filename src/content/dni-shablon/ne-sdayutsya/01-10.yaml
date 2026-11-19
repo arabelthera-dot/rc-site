@@ -422,3 +422,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: «Варяг» и «Кореец» выходят из порта Чемульпо на бой 27 января 1904 года
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5541971
+- chto: Командир «Варяга» Всеволод Руднев, фотооткрытка 1900–1904 годов
+  muzej: Государственный объединённый музей-заповедник истории Дальнего Востока имени В. К. Арсеньева
+  gorod: Владивосток
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20039821
+- chto: Матросы крейсера «Варяг» в фотоателье, 1902 год
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=30284937
+chitat_dalshe:
+- nazvanie: «Родился командир легендарного крейсера „Варяг“…»
+  gde: Президентская библиотека
+  ssylka: https://www.prlib.ru/history/619499
+- nazvanie: «Врагу не сдаётся наш гордый „Варяг“…»
+  gde: «Родина», 31.10.2024
+  ssylka: https://rodina-history.ru/2024/10/31/vragu-ne-sdaetsia-nash-gordyj-variag-125-let-nazad-na-vodu-spushchen-legendarnyj-krejser.html
+- nazvanie: 'А. А. Подшивалов, И. А. Подшивалов. «Крейсер „Варяг“: пропагандистский символ эпохи»'
+  gde: «Военно-исторический журнал»
+  ssylka: https://history.milportal.ru/krejser-varyag-propagandistskij-simvol-epoxi/
+- nazvanie: '«Бой у Чемульпо: история легендарного сражения»'
+  gde: «Коммерсантъ», 09.02.2024
+  ssylka: https://www.kommersant.ru/doc/6495968
+- nazvanie: «Южная Корея передала России флаг легендарного крейсера „Варяг“»
+  gde: РИА Новости, 11.11.2010
+  ssylka: https://ria.ru/20101111/294907441.html

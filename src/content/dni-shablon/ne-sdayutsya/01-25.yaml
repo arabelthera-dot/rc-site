@@ -462,3 +462,28 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: С. В. Скирченко, «Герой России Нурбагандов Магомед Нурбагандович», 2023 год
+  muzej: Национальный музей Республики Дагестан имени А. Тахо-Годи
+  gorod: Махачкала
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=68684480
+- chto: Художественный маркированный конверт «Республика Дагестан. М. Н. Нурбагандов (1985–2016)»
+  muzej: Центральный музей связи имени А. С. Попова
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=23511306
+chitat_dalshe:
+- nazvanie: «Вручение государственных наград»
+  gde: Президент России, 22.09.2016
+  ssylka: http://www.kremlin.ru/events/councils/52941
+- nazvanie: «Встреча с родителями Магомеда Нурбагандова»
+  gde: Президент России, 21.09.2016
+  ssylka: http://www.kremlin.ru/events/president/news/52933
+- nazvanie: «Путин назвал лейтенанта полиции Нурбагандова настоящим героем»
+  gde: «Российская газета», 21.09.2016
+  ssylka: https://rg.ru/2016/09/21/putin-nazval-lejtenanta-policii-nurbagandova-nastoiashchim-geroem.html
+- nazvanie: «„Работайте, братья“. Пять лет назад боевики казнили лейтенанта Нурбагандова»
+  gde: Лента.ру, 10.07.2021
+  ssylka: https://lenta.ru/articles/2021/07/10/bratia/
+- nazvanie: «„Работайте, братья!“ Как живёт семья убитого 10 лет назад героя Нурбагандова»
+  gde: «АиФ-Дагестан»
+  ssylka: https://dag.aif.ru/society/persona/-rabotayte-bratya-kak-zhivyot-semya-ubitogo-10-let-nazad-geroya-nurbagandova

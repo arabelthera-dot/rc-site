@@ -448,3 +448,32 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Алексей Маресьев за креплением протезов, 1948 год, фото И. Акуленко
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=6899878
+- chto: Алексей Маресьев в Москве у стен Кремля, 1948 год
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5994024
+- chto: Встреча в Советском комитете ветеранов войны, за столом — А. Маресьев
+  muzej: Центральный музей Великой Отечественной войны 1941–1945 гг.
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=9691804
+chitat_dalshe:
+- nazvanie: «Настоящий Маресьев»
+  gde: «Родина», 2016
+  ssylka: https://rodina-history.ru/2016/05/27/rodina-nastoiashchij-maresev.html
+- nazvanie: «Алексей Маресьев. Первое интервью»
+  gde: «Российская газета», 04.04.2022
+  ssylka: https://rg.ru/2022/04/04/aleksej-maresev-pervoe-interviu.html
+- nazvanie: «Поисковики нашли точное место падения самолёта Алексея Маресьева»
+  gde: «Родина», № 5, 2017
+  ssylka: https://rodina-history.ru/2017/05/17/rodina-poiskoviki-mesto-padeniia-samoleta-mareseva.html
+- nazvanie: Маресьев Алексей Петрович
+  gde: «Герои страны»
+  ssylka: https://warheroes.ru/hero/hero.asp?Hero_id=353
+- nazvanie: С. Дюпин, Ю. Сенаторов. «Торжественный вечер стал поминальным»
+  gde: «Коммерсантъ», 2001
+  ssylka: https://www.kommersant.ru/doc/267213

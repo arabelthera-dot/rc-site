@@ -549,3 +549,29 @@ proof:
     - "Президентская библиотека, «Великая Россия» — биография Бритнева: переделка «Пайлота» 1864 г. описана, привилегии или иного документа нет"
     - Портрет-миниатюра 1845 года (Госкаталог) — не документ первенства
     - "«Деловой Петербург», «Сноб», Korabel.ru: на документ не ссылаются; архивное дело о «Пайлоте» в открытых описях не найдено"
+gde_uvidet:
+- chto: Портрет-миниатюра М. О. Бритнева, 1845, масло по металлу
+  muzej: Государственный Эрмитаж
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11107922
+- chto: Модель поморского карбаса XIX века
+  muzej: Северный морской музей
+  gorod: Архангельск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17170436
+- chto: 'Картина В. В. Игнациуса: Кронштадтская гавань зимой, 1870–1880-е'
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18159468
+chitat_dalshe:
+- nazvanie: «Михаил Осипович Бритнев (1822–1889)»
+  gde: Президентская библиотека, проект «Великая Россия. Выдающиеся учёные XIX века»
+  ssylka: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Britnev
+- nazvanie: И. Хлебов. «„Пайлот“ Первый»
+  gde: «Деловой Петербург», 22.04.2019
+  ssylka: https://www.dp.ru/a/2019/04/21/Pajlot_Pervij
+- nazvanie: «Михаил Осипович Бритнев. Служение родному городу»
+  gde: «Кронштадтский вестник»
+  ssylka: https://kronvestnik.ru/history/16467
+- nazvanie: «Путь прокладывает лоцман. Михаил Бритнев — создатель первого судна для работы во льдах»
+  gde: «Санкт-Петербургские ведомости», 2023
+  ssylka: https://spbvedomosti.ru/news/nasledie/put-prokladyvaet-lotsman-mikhail-britnev-sozdatel-pervogo-sudna-dlya-raboty-vo-ldakh/

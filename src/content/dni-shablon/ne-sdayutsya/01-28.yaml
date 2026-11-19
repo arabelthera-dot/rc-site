@@ -447,3 +447,29 @@ return:
 proof:
   status: ne_utverzhdeno
   note: Карточка собрана машиной из старой страницы; факты — утверждённые Сергеем, цитаты и кадры — из материала дня, остальное перенесено со старой страницы без правки.
+gde_uvidet:
+- chto: Сергей Тюленин, Герой Советского Союза, член штаба «Молодой гвардии»
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5992513
+- chto: Могила членов подпольной комсомольской организации «Молодая гвардия» в Краснодоне
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5992528
+- chto: Портрет Сергея Тюленина, художник А. Соколов
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=13331849
+chitat_dalshe:
+- nazvanie: «Молодая гвардия», электронная выставка
+  gde: Музей Победы
+  ssylka: https://victorymuseum.ru/electronic-exhibitions/molodaja-gvardija/
+- nazvanie: А. Дружинина. «„Молодая гвардия“ — некоторые факты»
+  gde: «Наука и жизнь», 2003, № 1
+  ssylka: https://www.nkj.ru/archive/articles/2464/
+- nazvanie: «Олег Кошевой»
+  gde: Сайт molodguard.ru
+  ssylka: https://molodguard.ru/guardian1.htm
+- nazvanie: «Сергей Тюленин»
+  gde: Сайт molodguard.ru
+  ssylka: https://molodguard.ru/guardian4.htm

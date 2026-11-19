@@ -704,3 +704,32 @@ proof:
   claim_id: rc:ne-sdayutsya:merkuriy:claim-boi
   searched:
     - 'Для пробы документ боя на страницу не ставился: сканы рапорта А. С. Грейга (РГАВМФ, ф. 283, оп. 1, д. 1153, лл. 3–5) есть в подборке, но без записанного адреса источника.'
+gde_uvidet:
+- chto: Медаль «Подвиг брига „Меркурий“», 1829 год
+  muzej: Центральный военно-морской музей имени императора Петра Великого
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=10747353
+- chto: И. К. Айвазовский, «Бриг „Меркурий“, атакованный двумя турецкими кораблями», 1892 год
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=54675768
+- chto: И. Логинов, гравюра «Храбрый Александр Иванович Казарский», 1831 год
+  muzej: Государственный Эрмитаж
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11974987
+chitat_dalshe:
+- nazvanie: А. Валагин. «Бриг „Меркурий“ в шестичасовом бою победил два турецких линкора»
+  gde: «Родина», 26.05.2025
+  ssylka: https://rodina-history.ru/2025/05/26/brig-merkurij-v-shestichasovom-boiu-pobedil-dva-tureckih-linkora.html
+- nazvanie: «Кто и за что отравил командира легендарного брига „Меркурий“ Казарского»
+  gde: «Российская газета», 15.06.2021
+  ssylka: https://rg.ru/2021/06/15/kto-i-za-chto-otravil-komandira-legendarnogo-briga-merkurij-kazarskogo.html
+- nazvanie: «Бой брига „Меркурий“»
+  gde: Центральный военно-морской музей, 27.05.2016
+  ssylka: https://navalmuseum.ru/news?id=711
+- nazvanie: «Десять „Меркуриев“ русского флота»
+  gde: История.РФ (РВИО)
+  ssylka: https://history.ru/read/articles/v-pamyat-o-merkurii
+- nazvanie: «Подвиг и бесчестье»
+  gde: «Независимое военное обозрение», 05.02.2016
+  ssylka: https://nvo.ng.ru/history/2016-02-05/12_podvig.html

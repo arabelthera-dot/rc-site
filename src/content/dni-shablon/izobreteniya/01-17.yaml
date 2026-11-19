@@ -588,3 +588,29 @@ chrome:
     - day-25nov-pirogov.html
     - day-01dec-lobachevsky.html
     - day-14dec-laser.html
+gde_uvidet:
+- chto: Брошюра Н. Е. Жуковского «О присоединённых вихрях», 1906
+  muzej: Государственный Владимиро-Суздальский историко-архитектурный и художественный музей-заповедник
+  gorod: Владимир
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=1526942
+- chto: Чертёж винта системы Н. Е. Жуковского для аэропланов «Ньюпор», 1918
+  muzej: Научно-мемориальный музей профессора Н. Е. Жуковского
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=69842246
+- chto: 'Фотография: Н. Е. Жуковский в строящейся аэродинамической трубе МВТУ'
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=5992175
+chitat_dalshe:
+- nazvanie: «Центр авиационной науки»
+  gde: журнал «Наука и жизнь»
+  ssylka: https://www.nkj.ru/archive/articles/14886/
+- nazvanie: «Пять главных открытий „отца русской авиации“»
+  gde: журнал «Родина», 16.03.2014
+  ssylka: https://rodina-history.ru/2014/03/16/zukovskiy-site.html
+- nazvanie: «Биография Н. Е. Жуковского»
+  gde: Научно-мемориальный музей профессора Н. Е. Жуковского
+  ssylka: https://zhukovskymuseum.ru/biography/
+- nazvanie: «Мечты о небе. Более 100 лет со дня открытия Аэродинамического института»
+  gde: «Научная Россия», 06.05.2023
+  ssylka: https://scientificrussia.ru/articles/mecty-o-nebe-bolee-100-let-so-dna-otkrytia-aerodinamiceskogo-instituta

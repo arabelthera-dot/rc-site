@@ -565,3 +565,29 @@ proof:
     doc_title: первый удачный полёт на межконтинентальную дальность
     date: 1958-11-28
   gap_years: 1
+gde_uvidet:
+- chto: Четырёхкамерный двигатель РД-107 бокового блока Р-7 (копия, 1960-е)
+  muzej: Государственный музей истории космонавтики им. К. Э. Циолковского
+  gorod: Калуга
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=38475511
+- chto: Модель-копия межконтинентальной ракеты 8К71 (Р-7)
+  muzej: Музейное объединение «Музеи наукограда Королёв»
+  gorod: Королёв
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=60097021
+- chto: Машинописный текст сообщения ТАСС о запуске сверхдальней ракеты, 27 августа 1957
+  muzej: Мемориальный музей космонавтики
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=58966187
+chitat_dalshe:
+- nazvanie: «Состоялся запуск первой советской межконтинентальной баллистической ракеты Р-7»
+  gde: Президентская библиотека
+  ssylka: https://www.prlib.ru/history/619478
+- nazvanie: «К первому пуску легендарной „Семёрки“. Из истории советской космонавтики»
+  gde: Российский государственный архив научно-технической документации
+  ssylka: https://rgantd.ru/news/pamyatnye-daty/k-pervomu-pusku-legendarnoy-semyerki-iz-istorii-sovetskoy-kosmonavtiki/
+- nazvanie: «Ракета Р-7. Основные характеристики»
+  gde: РКК «Энергия»
+  ssylka: https://www.energia.ru/ru/history/systems/rockets/r7.html
+- nazvanie: Н. Ячменникова. «Что стоит за 2000-м пуском ракеты семейства Р-7»
+  gde: «Российская газета», 26.12.2024
+  ssylka: https://rg.ru/2024/12/26/chto-stoit-za-2000-m-puskom-rakety-semejstva-r-7.html
