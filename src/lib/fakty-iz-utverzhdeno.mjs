@@ -44,7 +44,8 @@ export function faktyIzUtverzhdeno(syroe, muzei, key, koren = '.') {
   const glavnee = vklyucheno();
   const sTekstom = vPoryadke.map((u) => {
     const x = poNomeru.get(u.n);
-    return glavnee || !u.summary ? { ...u, summary: x.zagolovok, det: [x.podrobnee] } : u;
+    // Разрыв абзаца в утверждённом «Подробнее» записан как «</p><p>» (01-14 izob) — это абзацы det, страница ставит <p> сама.
+    return glavnee || !u.summary ? { ...u, summary: x.zagolovok, det: x.podrobnee.split('</p><p>') } : u;
   });
   let i = 0;
   const novye = bloki.map((b) => ({ ...b, udary: (b.udary ?? []).map(() => sTekstom[i++]) }));
