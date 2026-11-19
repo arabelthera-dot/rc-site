@@ -429,6 +429,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: kosmodemyanskaya-znachok
+  vid: predmet
+  kicker: Вещь под лупой
+  h2: Значок с Зоей
+  lead: 'Такие значки с портретом Зои Космодемьянской носили в Советском Союзе в 1970–1980-е годы. Приближайте: рельеф лица, звезда в углу, ржавчина по краям.'
 audioguide:
   audioSrc: audio-guide-kosmodemyanskaya-ru.mp3
   durationLabel: 1 минута 27 секунд

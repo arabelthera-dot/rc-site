@@ -473,6 +473,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: gastello-portret
+  vid: predmet
+  kicker: Рисунок под лупой
+  h2: Портрет Гастелло 1943 года
+  lead: 'Этот портрет капитана Николая Гастелло художник нарисовал в 1943 году, через два года после тарана. Приближайте: петлицы, штрихи карандаша, подпись и год в углу.'
 audioguide:
   audioSrc: audio-guide-gastello-ru.mp3
   durationLabel: 1 минута 46 секунд
