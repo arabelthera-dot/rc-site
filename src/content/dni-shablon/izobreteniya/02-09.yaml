@@ -799,7 +799,7 @@ proof:
     source_url: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
 audioguide:
   audioSrc: audio-guide-chizhevskij-ru.mp3
-  durationLabel: 1 минута 52 секунды
+  durationLabel: 1 минута 38 секунд
   lead: 'Голос ведёт по залу Чижевского: от летописей за две тысячи четыреста лет через холеру и бури на Солнце и микроб, который знает о вспышке заранее, — к лагерю и Нью-Йорку. Четыре остановки.'
   stops:
     - t: 0
