@@ -3,8 +3,8 @@
 // Текст, факты и состав дня не меняются (утверждённое — src/data/utverzhdeno): машина дописывает поля формы февраля
 // (docs/standart-dnya.md) и снимает разметку из текстовых полей. Без --zapisat печатает, что изменит, и пробелы стандарта.
 //   1. Разметка: <a>текст</a> → текст (ссылка, если текст — сам адрес), остальные теги снять, <br> и </p> — пробел, сущности
-//      раскрыть. Не трогает: skripty, head.ld, razdely и story.abzacy (своя разметка января, Р627), summary и det фактов
-//      (на странице они из утверждённого).
+//      раскрыть. Не трогает: skripty, head.ld, razdely и story.abzacy (своя разметка января, Р627).
+//      summary и det фактов тоже без разметки — как в утверждённом (src/data/utverzhdeno) и в феврале.
 //   2. sources с html и ссылками — по пункту на ссылку: title — текст ссылки, note — текст пункта без ссылок (пусто — хост).
 //   3. Механически: nomer_dnya, god_pokaza, citaty [], id/sravnenie/dlya_voprosa/istochnik фактов, istochniki из ссылок
 //      дня (baza — по хосту src/data/spravochniki/bazy.json), podlinnik и hranitel картинки из credit «Хранится: …»,
@@ -69,7 +69,7 @@ const vVerh = (k, v) => { if (d[k] === undefined && !novoeVverhu.some(([x]) => x
 
 // 1. Разметка в строках.
 const NE_TROGAT = (put) => put[0] === 'skripty' || (put[0] === 'head' && put[1] === 'ld') || put[0] === 'razdely'
-  || (put[0] === 'story' && put[1] === 'abzacy') || (put[0] === 'fakty' && ['summary', 'det'].includes(put[3]))
+  || (put[0] === 'story' && put[1] === 'abzacy')
   || (put[0] === 'sources' && isMap(doc.getIn(put.slice(0, 2), true)) && doc.getIn([...put.slice(0, 2), 'html']) !== undefined);
 const obojti = (uzel, put) => {
   if (isScalar(uzel)) {
