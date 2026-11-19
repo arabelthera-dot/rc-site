@@ -144,13 +144,20 @@ for (const put of kartinki) {
   const hranitsya = credit.match(/Хранится:\s*(.+?)(?:;\s|\.\s+(?:Госкаталог|Права)|\.?$)/)?.[1];
   const inv = hranitsya?.match(/,\s*((?:инв\.|КП|ГИК)[\s-].*)$/)?.[1];
   const hranitel = inv ? hranitsya.slice(0, hranitsya.lastIndexOf(inv)).replace(/,\s*$/, '') : hranitsya;
-  const reg = credit.match(/Госкаталог[^.;]*?№\s*(\d+)/)?.[1];
+  const reg = credit.match(/Госкаталог[^;№]*№\s*(\d+)/)?.[1];
   const mash = {
     ...(hranitel ? { hranitel } : {}),
     ...(reg ? { nomer_snimka: reg, nomer_predmeta: `${inv ?? 'инв. в Госкаталоге не указан'}; Госкаталог рег. № ${reg}` } : {}),
     ...(hranitel || k.data_source ? { podlinnik: { gde: hranitel ?? NET, otkuda: k.data_source ?? NET } } : {}),
   };
-  for (const [pole, v] of Object.entries({ ...mash, ...iz })) if (k[pole] === undefined) dobavit(uzel, pole, v);
+  // Паспорт прав — по образцу февраля: Госкаталог из credit, остальное (автор, год, anonim) из polya.
+  if (iz.prava) mash.prava = {
+    god_smerti_avtora: NET, god_reabilitacii: NET, sdelano_mashinoj: false,
+    ...(reg ? { otkuda: 'Госкаталог музейного фонда РФ', baza: 'goskatalog', pervaya_publikaciya: `Госкаталог музейного фонда РФ, рег. № ${reg}` } : {}),
+    ...(k.data_source ? { ssylka: k.data_source } : {}),
+    ...iz.prava,
+  };
+  for (const [pole, v] of Object.entries({ ...mash, ...iz, ...(mash.prava ? { prava: mash.prava } : {}) })) if (k[pole] === undefined) dobavit(uzel, pole, v);
 }
 
 // 5. Верх дня.
