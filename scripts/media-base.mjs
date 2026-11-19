@@ -10,7 +10,9 @@
 // public/ в хранилище и только при удаче ставит MEDIA_KARTINKI — тогда <img src|data-src|srcset> и <source srcset> страниц,
 // чей файл лежит в public/ (значит, уже в хранилище), ведут на MEDIA_BASE. MEDIA_KARTINKI: пусто — выключено (откат),
 // '*' — все страницы, иначе пути страниц от корня dist через запятую (порядок «одна страница → проверка → все»).
-// Картинки, которые собирают шаблоны (их нет в public/), не трогаются.
+// Картинки шаблона rc-kartinki (dist/_k/, их нет в public/) — только при MEDIA_K_DOLOZHENY=1: его ставит
+// scripts/kartinki-k-v-hranilishche.sh, когда dist/_k/ доложен в хранилище под тем же адресом /_k/… (Р825 задача G).
+// Без него /_k/ не трогаются. Второй проход по готовому dist безопасен: адреса хранилища уже не относительные.
 // Запуск: node scripts/media-base.mjs --proba && node scripts/media-base.mjs --dist dist
 import fs from 'node:fs';
 import path from 'node:path';
@@ -18,6 +20,7 @@ import { vHranilishche } from './hranilishche-rolikov.mjs';
 const args = process.argv.slice(2);
 const DIST = args.includes('--dist') ? args[args.indexOf('--dist') + 1] : 'dist';
 const BASE = (process.env.MEDIA_BASE || 'https://media.russian-civilization.ru').replace(/\/+$/, '');
+const K_DOLOZHENY = process.env.MEDIA_K_DOLOZHENY === '1';
 const KARTINKI = (process.env.MEDIA_KARTINKI || '').split(',').map((x) => x.trim().replace(/^\/+/, '')).filter(Boolean);
 export const KARTINKA = /\.(?:jpe?g|png|webp|avif|gif|svg)$/i;
 
@@ -85,6 +88,8 @@ if (args.includes('--proba')) {
     ['<picture><source srcset="../i/a.avif" type="image/avif"><img src="../i/a.jpg?v=3"></picture>', 'muzei/arh/den/x.html',
       `<picture><source srcset="${B}/muzei/arh/i/a.avif" type="image/avif"><img src="${B}/muzei/arh/i/a.jpg?v=3"></picture>`],
     ['<img src="/_astro/net.jpg">', 'x.html', '<img src="/_astro/net.jpg">'],
+    ['<img src="/muzei/a/b.jpg" srcset="/_k/0a1b-480.webp 480w, /_k/0a1b-960.webp 960w">', 'muzei/a/den/02-02/index.html',
+      `<img src="${B}/muzei/a/b.jpg" srcset="${B}/_k/0a1b-480.webp 480w, ${B}/_k/0a1b-960.webp 960w">`],
     ['<img src="https://example.com/a.jpg">', 'x.html', '<img src="https://example.com/a.jpg">'],
     ['<img src="data:image/png;base64,AAA">', 'x.html', '<img src="data:image/png;base64,AAA">'],
     ['<source src="video/a.mp4">', 'x.html', '<source src="video/a.mp4">'],
@@ -93,7 +98,7 @@ if (args.includes('--proba')) {
   const neK = kartinki.filter(([h, r, nado]) => zamenitKartinki(h, r, B, est)[0] !== nado);
   if (neK.length) { console.error('media-base --proba: ошибка в картинках на', neK.map(([h, r]) => [h, zamenitKartinki(h, r, B, est)[0]])); process.exit(1); }
   console.log(`media-base --proba: ${sluchai.length} случаев верно (относительный, ../, от корня, чужой, не mp4, не тег, нет файла, data-src, a href, не ролик)`);
-  console.log(`media-base --proba: картинки — ${kartinki.length} случаев верно (относительный, srcset, picture и ?v=, нет в public/, чужой, data:, ролик, a href)`);
+  console.log(`media-base --proba: картинки — ${kartinki.length} случаев верно (относительный, srcset, picture и ?v=, нет в public/, srcset /_k/, чужой, data:, ролик, a href)`);
   process.exit(0);
 }
 
@@ -107,7 +112,8 @@ const kartinkiNa = (rel) => KARTINKI.includes('*') || KARTINKI.some((x) => rel =
     let [out, n, net] = zamenit(html, rel, BASE, (x) => fs.existsSync(path.join(DIST, x)) || vHranilishche(x));
     if (n) { stranic++; zamen += n; }
     let k = 0;
-    if (kartinkiNa(rel.split(path.sep).join('/'))) [out, k] = zamenitKartinki(out, rel, BASE, (x) => fs.existsSync(path.join('public', x)));
+    if (kartinkiNa(rel.split(path.sep).join('/'))) [out, k] = zamenitKartinki(out, rel, BASE, (x) => fs.existsSync(path.join('public', x))
+      || (K_DOLOZHENY && x.startsWith('_k/') && fs.existsSync(path.join(DIST, x))));
     if (k) { kStranic++; kZamen += k; }
     if (n || k) fs.writeFileSync(p, out);
     for (const s of net) netFaila.push(`${rel}: ${s}`);
