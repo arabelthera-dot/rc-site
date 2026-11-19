@@ -16,6 +16,7 @@ import YAML from 'yaml';
 import { opisat, kartinkiKartochki } from '../src/lib/kartinki-fajly.mjs';
 
 const NOVYJ_STIL = '1918-02-14'; // как в src/lib/standart-dnya.mjs
+const GRIGORIANSKIJ = '1582-10-15'; // до него старый стиль не считается
 const MESYACY = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 const dd = (n, w = 2) => String(n).padStart(w, '0');
 
@@ -96,7 +97,7 @@ export async function zapolnitDen(muzei, den) {
   let staryj = '';
   const ds = k.data_sobytiya == null ? '' : String(k.data_sobytiya);
   const pusto = k.data_staryj_stil == null || String(k.data_staryj_stil).trim() === '';
-  if (/^\d{3,4}-\d\d-\d\d$/.test(ds) && ds.padStart(10, '0') < NOVYJ_STIL && pusto) {
+  if (/^\d{3,4}-\d\d-\d\d$/.test(ds) && ds.padStart(10, '0') < NOVYJ_STIL && ds.padStart(10, '0') >= GRIGORIANSKIJ && pusto) {
     const raschet = staryjStil(ds);
     const yavnye = yavnyeStarye(tekst, +raschet.slice(0, 4));
     if (yavnye.length && !yavnye.includes(raschet.padStart(10, '0'))) {
