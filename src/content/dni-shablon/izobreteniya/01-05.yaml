@@ -1,6 +1,33 @@
 muzei: izobreteniya
 key: 01-05
 adres: den
+istochniki: [{"id":"transnefthistory-tass","baza":"sajt-organizacii","nazvanie":"ТАСС · «Первый российский трубопровод»","ssylka":"https://transnefthistory.tass.ru/tube-1.html"},{"id":"nkj","baza":"sajt-organizacii","nazvanie":"«Наука и жизнь» · «Человек-фабрика»","ssylka":"https://www.nkj.ru/archive/articles/23482/"},{"id":"rg","baza":"sajt-organizacii","nazvanie":"«Российская газета» · «Главный русский инженер»","ssylka":"https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html"},{"id":"culture","baza":"culture_rf","nazvanie":"Культура.РФ · биография Владимира Шухова","ssylka":"https://www.culture.ru/persons/8469/vladimir-shukhov"},{"id":"aif","baza":"sajt-organizacii","nazvanie":"«Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012","ssylka":"https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova"},{"id":"polymus","baza":"polytech","nazvanie":"«Владимир Григорьевич Шухов и его последователи», Политехнический музей","ssylka":"https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf"},{"id":"mag-russpass","baza":"sajt-organizacii","nazvanie":"«Шуховская башня в Москве — история и интересные факты», RUSSPASS Журнал","ssylka":"https://mag.russpass.ru/rubric/moskva/shuhovskaya-bashnya-v-moskve"}]
+nomer_dnya: "izob-0105-shuhov"
+god_pokaza: 2027
+pokazan_sergeyu: {"data":"2026-11-04"}
+citaty: []
+podskazki_igry: "net"
+togda_sejchas: "net"
+skvoznye_linii: "net"
+predmet_3d: "net"
+panorama_360: "net"
+staraya_karta: "net"
+marshrut: "net"
+kak_rabotaet: "net"
+data_sobytiya: "1878-01-05"
+data_uslovnaya: "5 января — день календаря музея; нефтепровод Балаханы — Чёрный город построили осенью — в начале зимы 1878 года."
+god: 1878
+god_tochnost: "tochno"
+ves: "glavnoe"
+tyazhelaya_tema: "net"
+chto_sluchilos: "Инженер Владимир Шухов построил под Баку первый в России нефтепровод — от Балаханских промыслов до заводов Чёрного города"
+velichina_chislo: 10
+velichina_edinica: "км"
+velichina_chto: "трёхдюймовой трубы в первом нефтепроводе Балаханы — Чёрный город"
+etiketka_oblozhki: ["Академик В. Г. Шухов за рабочим столом","1933"]
+slovar: ["lyudi:vladimir-shuhov","mesto:baku"]
+mesto_sobytiya: {"nazvanie":"Баку","shirota":40.41,"dolgota":49.87}
+data_staryj_stil: "1878-01-05"
 head:
   title: Первый в мире расчётный нефтепровод — Шухов — Русские первые в мире
   description: "Первый в мире расчётный нефтепровод: 25-летний Шухов создал его в Баку в 1878 году — и оставил без работы десять тысяч возчиков."
@@ -48,11 +75,22 @@ oblozhka:
   podpis: Академик В. Г. Шухов за рабочим столом. Москва, 1933 год.
   credit: "Автор не указан. Хранится: Государственный центральный музей современной истории России; Госкаталог музейного фонда РФ, рег. № 5793495. Права: общественное достояние (анонимный снимок 1933 года)."
   hint: Фото · 1933
+  glavnoe_na_kartinke: "net"
+  podpis_kogda: "1933"
+  podpis_gde: "Москва, ГЦМСИР"
+  podpis_chto: "Академик В. Г. Шухов за рабочим столом"
+  svyashchennoe: false
+  vid: "foto"
+  prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 5793495","ssylka":"https://goskatalog.ru/portal/#/collections?id=5969845","avtor":"автор не указан","god_sozdaniya":"1933","anonim":true}
+  podlinnik: {"gde":"Государственный центральный музей современной истории России","otkuda":"https://goskatalog.ru/portal/#/collections?id=5969845"}
+  nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 5793495"
+  nomer_snimka: "5793495"
+  hranitel: "Государственный центральный музей современной истории России"
 kroshka: 5 января · Шухов
 lead:
   data: 1878 · Баку
   privyazka: 5 января — день календаря музея; нефтепровод Балаханы — Чёрный город построили осенью — в начале зимы 1878 года.
-  kto: Владимир Шухов <i>· инженер, 25 лет</i>
+  kto: "Владимир Шухов · инженер, 25 лет"
   h1: Первый в мире расчётный нефтепровод — Владимир Шухов
   hook: 25-летний Шухов создал первый в мире расчётный нефтепровод — и оставил без работы десять тысяч возчиков, чья перевозка стоила дороже самой нефти.
 stamp:
@@ -120,7 +158,7 @@ fakty:
     kicker: Десять фактов о Шухове
     h2: Инженер, которого боялись возчики
     udary:
-      - summary: <b>Американцы приехали разбираться — и Шухов доказал, что их бензин делают по его патенту.</b>
+      - summary: "Американцы приехали разбираться — и Шухов доказал, что их бензин делают по его патенту."
         kadr:
           src: "/muzei/izobreteniya/img/day-05jan-kreking-baku-1932.jpg"
           alt: "Лист фотохроники «Первый советский крекинг»: высокая решётчатая этажерка с колоннами крекинг-установки системы Шухова и Капелюшникова в Баку"
@@ -131,48 +169,76 @@ fakty:
           width: 1189
           height: 1600
           klass: portret
+          hint: "Крекинг-установка в Баку · 1932"
+          glavnoe_na_kartinke: "net"
+          podpis_kogda: "1932"
+          podpis_gde: "ГЦМСИР"
+          podpis_chto: "Крекинг-установка в Баку"
+          svyashchennoe: false
+          vid: "foto"
+          prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 5438212","ssylka":"https://goskatalog.ru/portal/#/collections?id=5572584","avtor":"автор не указан","god_sozdaniya":"1932","anonim":true}
+          podlinnik: {"gde":"Государственный центральный музей современной истории России","otkuda":"https://goskatalog.ru/portal/#/collections?id=5572584"}
+          nomer_predmeta: "ГИК 15880/16; Госкаталог рег. № 5438212"
+          nomer_snimka: "5438212"
+          hranitel: "Государственный центральный музей современной истории России"
         det:
           - "Американские нефтяники приехали в Москву выяснять, чей способ делать бензин, и Шухов доказал: их заводы повторяют его патент 1891 года."
           - 27 ноября 1891 года Шухов вместе с Сергеем Гавриловым получил патент на установку, которая непрерывно разлагает тяжёлую нефть и мазут на лёгкие части. Так из отходов получают бензин. Тогда бензин был почти никому не нужен, и в России патент долго лежал без дела.
           - Его заметили американцы и стали пользоваться им без разрешения. Когда американские инженеры приехали в Москву, Шухов показал, что их установки повторяют его патент и своего в них нет. Комиссия американской компании «Синклер» оценила один этот патент в несколько десятков тысяч долларов.
           - "Шухов денег не взял: «Я работаю на государство и ни в чем не нуждаюсь». Дома его способ впервые применили только в 1931 году, на бакинском заводе «Советский крекинг»."
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>; «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012 — <a href="https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova" rel="noopener">aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf; «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012 — https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova."
         otryvok: «…один только патент на крекинг-процесс в США комиссия Синклера, — конкурента Рокфеллера по нефтяному бизнесу, — оценила в несколько десятков тысяч долларов (по сегодняшнему курсу — несколько миллионов), которые Шухов принять категорически отказался…» («Аргументы и факты»)
         stranica: «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012
         href: https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova
         pometka: два источника
-      - summary: <b>Шухову вынесли «условный расстрел» — а он всё равно достроил башню на Шаболовке.</b>
+        istochnik: "aif"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f01"
+      - summary: "Шухову вынесли «условный расстрел» — а он всё равно достроил башню на Шаболовке."
         det:
           - Шухову вынесли приговор «условный расстрел», и он достроил башню на Шаболовке, зная, что любая новая авария может стоить ему жизни.
           - 29 июня 1921 года, когда поднимали четвёртую секцию башни, сломалась третья. Четвёртая упала и повредила вторую и первую. Комиссия решила, что виновата «усталость металла», а проект безупречен.
           - "Шухова всё равно вызывали на допросы. 30 июля 1921 года он записал в дневнике: «Приговор Шухову — условный расстрел». Заменить его было некем, поэтому он продолжил стройку, хотя при малейшей ошибке приговор мог стать настоящим."
           - Башня заработала 19 марта 1922 года. После этого обвинение сняли, условный расстрел отменили.
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>; Д. Чижов, «Главный русский инженер: 170 лет со дня рождения Владимира Шухова», «Российская газета», 28.08.2023 — <a href="https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html" rel="noopener">rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf; Д. Чижов, «Главный русский инженер: 170 лет со дня рождения Владимира Шухова», «Российская газета», 28.08.2023 — https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html."
         otryvok: "«30 июля 1921 года он записал в дневнике: „Приговор Шухову — условный расстрел“» (Политехнический музей). — «В марте 1922 года башню сдали в эксплуатацию. С Шухова сняли обвинение и отменили условный расстрел» («Российская газета»)."
         stranica: «Владимир Григорьевич Шухов и его последователи», Политехнический музей
         href: https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf
         pometka: два источника
-      - summary: "<b>Шухов рассчитал башню выше Эйфелевой — и втрое легче: 2200 тонн против 7300.</b>"
+        istochnik: "polymus"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f02"
+      - summary: "Шухов рассчитал башню выше Эйфелевой — и втрое легче: 2200 тонн против 7300."
         det:
           - "Шухов рассчитал башню выше Эйфелевой, 350 метров против 300, а железа в ней втрое меньше: 2200 тонн против 7300."
           - По первому проекту радиобашня должна была подняться на 350 метров и обогнать Эйфелеву башню. Та до 2010 года была высотой 300 метров. По расчётам, шуховская башня весила бы всего 2200 тонн, а парижская весит 7300 тонн.
           - В разорённой стране на рекорд не хватило металла. С трудом нашли 240 тонн железа, и построили башню высотой 160 метров.
-        src: 'Источник: «Шуховская башня в Москве — история и интересные факты», RUSSPASS Журнал — <a href="https://mag.russpass.ru/rubric/moskva/shuhovskaya-bashnya-v-moskve" rel="noopener">mag.russpass.ru/rubric/moskva/shuhovskaya-bashnya-v-moskve</a>; «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>.'
+        src: "Источник: «Шуховская башня в Москве — история и интересные факты», RUSSPASS Журнал — https://mag.russpass.ru/rubric/moskva/shuhovskaya-bashnya-v-moskve; «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf."
         otryvok: «Согласно первоначальному проекту, башня должна была быть высотой 350 метров — предполагалось, что она обгонит Эйфелеву (300 метров). При этом вес высокой Шуховской башни, по расчетам, составил бы всего 2200 тонн — против 7300 тонн парижской.»
         stranica: «Шуховская башня в Москве — история и интересные факты», RUSSPASS Журнал
         href: https://mag.russpass.ru/rubric/moskva/shuhovskaya-bashnya-v-moskve
         pometka: два источника
-      - summary: <b>Форсунку студента Шухова Менделеев поместил на обложку книги, а Нобель тут же купил патент.</b>
+        istochnik: "mag-russpass"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f03"
+      - summary: "Форсунку студента Шухова Менделеев поместил на обложку книги, а Нобель тут же купил патент."
         det:
           - Форсунку студента Шухова Менделеев поместил на обложку своей книги, а Людвиг Нобель сразу купил у него патент.
           - В 1876 году студент Шухов откликнулся на призыв Менделеева беречь нефть. Он придумал паровую форсунку, которая распыляет мазут в топке и сжигает его. До этого мазут считали отходом.
           - Опытный образец он сам сделал и испытал в мастерских училища. Изобретение высоко оценил Менделеев, и рисунок форсунки появился на обложке его книги «Основы фабрично-заводской промышленности» (1897). Людвиг Нобель, глава огромного нефтяного концерна и брат основателя премии, сразу купил у Шухова патент на её производство.
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>; Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — <a href="https://www.nkj.ru/archive/articles/23482/" rel="noopener">www.nkj.ru/archive/articles/23482</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf; Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — https://www.nkj.ru/archive/articles/23482/."
         otryvok: «Впоследствии это изделие высоко оценил Менделеев, и изображение форсунки Шухова украсило обложку книги великого химика „Основы фабрично-заводской промышленности“ (1897)» (Политехнический музей). — «А Людвиг Нобель, глава громадного нефтяного концерна и брат основателя престижной премии, сразу приобрёл у Владимира патент на её производство» («Наука и жизнь»).
         stranica: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013
         href: https://www.nkj.ru/archive/articles/23482/
         pometka: два источника
-      - summary: <b>Почти в 80 лет Шухов выпрямил падающий пятисотлетний минарет весом 2500 тонн.</b>
+        istochnik: "nkj"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f04"
+      - summary: "Почти в 80 лет Шухов выпрямил падающий пятисотлетний минарет весом 2500 тонн."
         kadr:
           src: "/muzei/izobreteniya/img/day-05jan-minaret-ulugbek.jpg"
           alt: "Высокий узорчатый минарет медресе Улугбека в Самарканде рядом со стеной с порталом, снимок 1930-х годов"
@@ -183,17 +249,33 @@ fakty:
           width: 420
           height: 555
           klass: portret
+          hint: "Выпрямление минарета медресе Улугбека в Самарканде · 1930-е"
+          glavnoe_na_kartinke: "net"
+          podpis_kogda: "1930-е"
+          podpis_gde: "ГНИМА им. А. В. Щусева"
+          podpis_chto: "Выпрямление минарета медресе Улугбека в Самарканде"
+          svyashchennoe: false
+          vid: "foto"
+          prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 50135359","ssylka":"https://goskatalog.ru/portal/#/collections?id=50372312","avtor":"Г. Н. Томаев","god_sozdaniya":"1930-е","anonim":false}
+          podlinnik: {"gde":"Государственный научно-исследовательский музей архитектуры имени А. В. Щусева, ГНИМА ОФ-1643/928","otkuda":"https://goskatalog.ru/portal/#/collections?id=50372312"}
+          nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 50135359"
+          nomer_snimka: "50135359"
+          hranitel: "Государственный научно-исследовательский музей архитектуры имени А. В. Щусева, ГНИМА ОФ-1643/928"
         det:
           - "Почти в восемьдесят лет Шухов выпрямил падающий пятисотлетний минарет в Самарканде: кирпичную громаду весом 2,5 тысячи тонн."
           - Минарет медресе Улугбека построили в XV веке. После землетрясения он накренился и мог упасть. В 1932 году объявили конкурс проектов, как его спасти.
           - Шухов выиграл конкурс и сам руководил работами. Для этого он придумал механизм, который работает как коромысло. Тросы и клинья осторожно подняли кирпичную башню весом 2,5 тысячи тонн в отвесное положение.
           - За четыре дня минарет выпрямили на 1,5 метра и поставили на прочное основание. Это была последняя большая работа Шухова.
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>; Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — <a href="https://www.nkj.ru/archive/articles/23482/" rel="noopener">www.nkj.ru/archive/articles/23482</a>; «Биография В. Г. Шухова», РГАНТД (Российский государственный архив научно-технической документации) — <a href="https://rgantd.ru/shuhov/biography/" rel="noopener">rgantd.ru/shuhov/biography</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf; Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — https://www.nkj.ru/archive/articles/23482/; «Биография В. Г. Шухова», РГАНТД (Российский государственный архив научно-технической документации) — https://rgantd.ru/shuhov/biography/."
         otryvok: «Остроумно устроенная система тросов и клиньев позволила осторожно поднять в отвесное положение кирпичную громаду весом в 2,5 тысячи тонн. За четыре дня минарет выпрямили на 1,5 метра и поставили на прочное основание.»
         stranica: «Владимир Григорьевич Шухов и его последователи», Политехнический музей
         href: https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf
         pometka: два источника
-      - summary: <b>Шухов создал первую в мире гиперболоидную башню — после выставки её купили и увезли в имение.</b>
+        istochnik: "polymus"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f05"
+      - summary: "Шухов создал первую в мире гиперболоидную башню — после выставки её купили и увезли в имение."
         kadr:
           src: "/muzei/izobreteniya/img/day-05jan-privilegiya-azhurnaya-bashnya.jpg"
           alt: "Печатный лист с двуглавым орлом: «Привилегия, выданная 1899 года. Описание ажурной башни. К привилегии инженер-механика В. Шухова, заявленной 11 января 1896 года», текст в две колонки, штемпель и рукописные пометки"
@@ -204,15 +286,31 @@ fakty:
           width: 390
           height: 568
           klass: portret
+          hint: "Привилегия на ажурную башню В. Г. Шухова · 1899"
+          glavnoe_na_kartinke: "net"
+          podpis_kogda: "1899"
+          podpis_gde: "Мытищинский историко-художественный музей"
+          podpis_chto: "Привилегия на ажурную башню В. Г. Шухова"
+          svyashchennoe: false
+          vid: "dokument"
+          prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 19559764","ssylka":"https://goskatalog.ru/portal/#/collections?id=19689326","avtor":"автор не указан","god_sozdaniya":"1899","anonim":true}
+          podlinnik: {"gde":"Мытищинский историко-художественный музей, МИХМ КП-6473","otkuda":"https://goskatalog.ru/portal/#/collections?id=19689326"}
+          nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 19559764"
+          nomer_snimka: "19559764"
+          hranitel: "Мытищинский историко-художественный музей, МИХМ КП-6473"
         det:
           - "В 1896 году на Всероссийской выставке в Нижнем Новгороде Шухов поставил водонапорную башню невиданного вида: сетку из прямых стальных стержней. Наверху, на высоте 25,6 метра, стоял бак на 114 000 литров — он поил водой всю выставку."
           - Когда выставка закрылась, башню купил помещик Нечаев-Мальцов и перевёз в своё имение Полибино под Липецком. Она стоит там до сих пор.
-        src: 'Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — <a href="https://www.nkj.ru/archive/articles/23482/" rel="noopener">www.nkj.ru/archive/articles/23482</a>; Д. Чижов, «Главный русский инженер: 170 лет со дня рождения Владимира Шухова», «Российская газета», 28.08.2023 — <a href="https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html" rel="noopener">rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html</a>.'
+        src: "Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — https://www.nkj.ru/archive/articles/23482/; Д. Чижов, «Главный русский инженер: 170 лет со дня рождения Владимира Шухова», «Российская газета», 28.08.2023 — https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html."
         otryvok: «Эта первая гиперболоидная башня осталась одним из самых красивых строительных сооружений Шухова. После завершения выставки её купил богатый помещик Нечаев-Мальцев и установил в своём поместье Полибино под Липецком. Башня стоит там и сегодня.» («Наука и жизнь»). — «…первая в истории водонапорная башня гиперболоидной формы, созданные по чертежам Шухова, были впервые продемонстрированы на Всероссийской промышленной выставке 1896 года в Нижнем Новгороде» («Российская газета»).
         stranica: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013
         href: https://www.nkj.ru/archive/articles/23482/
         pometka: два источника
-      - summary: <b>Шухов создал первые в мире сетчатые оболочки и висячую стальную крышу-мембрану.</b>
+        istochnik: "nkj"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f06"
+      - summary: "Шухов создал первые в мире сетчатые оболочки и висячую стальную крышу-мембрану."
         kadr:
           src: "/muzei/izobreteniya/img/day-05jan-setchatye-pokrytiya.jpg"
           alt: "Чертёж висячего сетчатого покрытия: круглый павильон с провисающей сеткой, план сетки из пересекающихся полос и узлы крепления"
@@ -223,82 +321,126 @@ fakty:
           width: 390
           height: 425
           klass: portret
+          hint: "Сетчатые покрытия Шухова, чертёж · 1950-е — 1962"
+          glavnoe_na_kartinke: "net"
+          podpis_kogda: "1950-е — 1962"
+          podpis_gde: "ГНИМА им. А. В. Щусева"
+          podpis_chto: "Сетчатые покрытия Шухова, чертёж"
+          svyashchennoe: false
+          vid: "chertezh"
+          prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 54158474","ssylka":"https://goskatalog.ru/portal/#/collections?id=54417400","avtor":"репродукция из книги М. Г. Милославского","god_sozdaniya":"1950-е — 1962","anonim":false}
+          podlinnik: {"gde":"Государственный научно-исследовательский музей архитектуры имени А. В. Щусева, ГНИМА ОФ-1638/511","otkuda":"https://goskatalog.ru/portal/#/collections?id=54417400"}
+          nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 54158474"
+          nomer_snimka: "54158474"
+          hranitel: "Государственный научно-исследовательский музей архитектуры имени А. В. Щусева, ГНИМА ОФ-1638/511"
         det:
           - "На той же выставке 1896 года Шухов построил восемь павильонов общей площадью около 27 000 квадратных метров. Пять из них, площадью около 20 000 квадратных метров, накрыл сетчатыми арочными сводами."
           - В центре одного павильона крыша висела, как натянутая тонкая сетка-мембрана. Такого в строительстве ещё не делал никто — павильон прозвали «ротондой Шухова».
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf."
         otryvok: "«Здесь Шуховым было построено восемь выставочных павильонов общей площадью около 27 000 м2. Над пятью из них, с пролётами от 12,8 до 32 метров и общей площадью около 20 000 м2, были сделаны сетчатые арочные покрытия. Это были первые в мире перекрытия в виде сетчатых оболочек и первое в мире перекрытие в виде висячей стальной мембраны — так называемая „ротонда Шухова“» (Политехнический музей)."
         stranica: «Владимир Григорьевич Шухов и его последователи», Политехнический музей
         href: https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf
         pometka: документ
-      - summary: <b>Мазут сливали в озёра, и он травил землю, — Шухов первым в мире стал жечь его в топках.</b>
+        istochnik: "polymus"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f07"
+      - summary: "Мазут сливали в озёра, и он травил землю, — Шухов первым в мире стал жечь его в топках."
         det:
           - Мазут — то, что остаётся от нефти после перегонки, — тогда считали отходом. Его сливали в огромные озёра у нефтяных заводов, и они отравляли почву.
           - "В 1880 году Шухов первым в мире наладил промышленное сжигание мазута: его форсунка распыляла мазут паром прямо в топке. Отход стал топливом."
-        src: 'Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — <a href="https://www.nkj.ru/archive/articles/23482/" rel="noopener">www.nkj.ru/archive/articles/23482</a>; «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>.'
+        src: "Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — https://www.nkj.ru/archive/articles/23482/; «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf."
         otryvok: «…В. Г. Шухов впервые в мире осуществил промышленное факельное сжигание жидкого топлива с помощью изобретённой им форсунки, позволявшей эффективно сжигать мазут, который считался отходом нефтепереработки; его огромные озёра в окрестностях нефтеперерабатывающих заводов отравляли почву.»
         stranica: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013
         href: https://www.nkj.ru/archive/articles/23482/
         pometka: два источника
-      - summary: <b>В Америке молодой Шухов так увлёк инженера Бари, что тот бросил всё и открыл дело в России.</b>
+        istochnik: "nkj"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f08"
+      - summary: "В Америке молодой Шухов так увлёк инженера Бари, что тот бросил всё и открыл дело в России."
         det:
           - В 1876 году Шухова как лучшего выпускника училища отправили в США — на Всемирную выставку в Филадельфии. Там он познакомился с Александром Бари, американцем русского происхождения.
           - Разговоры с молодым инженером убедили Бари вернуться в Россию. Он открыл здесь свою контору и сразу позвал туда Шухова ведущим инженером. От этой конторы Шухов и поехал строить нефтепровод в Баку.
-        src: 'Источник: «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012 — <a href="https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova" rel="noopener">aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova</a>; Д. Чижов, «Главный русский инженер: 170 лет со дня рождения Владимира Шухова», «Российская газета», 28.08.2023 — <a href="https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html" rel="noopener">rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html</a>.'
+        src: "Источник: «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012 — https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova; Д. Чижов, «Главный русский инженер: 170 лет со дня рождения Владимира Шухова», «Российская газета», 28.08.2023 — https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html."
         otryvok: «С Шуховым он познакомился еще в США, в Филадельфии, и именно разговоры с молодым инженером заставили Бари вернуться на родину предков. Основав в России собственное конструкторское бюро он тут же зазвал туда своего знакомого.»
         stranica: «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012
         href: https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova
         pometka: два источника
-      - summary: <b>Шуховские баржи для нефти так прижились, что во всём мире их звали «русским речным флотом».</b>
+        istochnik: "aif"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f09"
+      - summary: "Шуховские баржи для нефти так прижились, что во всём мире их звали «русским речным флотом»."
         det:
           - "Шухов придумал стальные баржи для нефти: лёгкие на ходу, послушные рулю, дешёвые и прочные. По его проектам построили 90 таких барж."
           - Возить нефть по рекам в таких баржах во всём мире стали называть способом «русского речного флота».
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf."
         otryvok: «Перевозку нефти в баржах во всём мире называли способом „русского речного флота“.»
         stranica: «Владимир Григорьевич Шухов и его последователи», Политехнический музей
         href: https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf
         pometka: документ
+        istochnik: "polymus"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f10"
   - id: fakty-dnya
     kicker: Ещё пять фактов
     h2: Мосты, баки и Академия
     udary:
-      - summary: <b>После 1917 года Шухов отказался уезжать из России — и остался строить.</b>
+      - summary: "После 1917 года Шухов отказался уезжать из России — и остался строить."
         det:
           - "После революции многие инженеры уехали за границу. Шухов к новой власти относился настороженно, но эмигрировать отказался: считал своим долгом служить своей стране."
           - Он остался — и уже в 1919 году начал строить башню на Шаболовке.
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf."
         otryvok: «К революционным событиям 1917 года отношение Шухова было неоднозначным, но он отказался эмигрировать, считая своим долгом служение Отечеству.»
         stranica: «Владимир Григорьевич Шухов и его последователи», Политехнический музей
         href: https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf
         pometka: документ
-      - summary: <b>В Академию наук брали теоретиков — а Шухова избрали за постройки, и в академики он идти отказался.</b>
+        istochnik: "polymus"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f11"
+      - summary: "В Академию наук брали теоретиков — а Шухова избрали за постройки, и в академики он идти отказался."
         det:
           - В 1927 году Шухова избрали членом-корреспондентом Академии наук СССР. Раньше туда выбирали учёных-теоретиков, а не инженеров, которые строят башни и трубы.
           - Выдвинули его академики Алексей Крылов и Пётр Лазарев. А стать действительным академиком 80-летний Шухов наотрез отказался.
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>; «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012 — <a href="https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova" rel="noopener">aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf; «Универсальный гений. Гиперболоиды инженера Шухова», «Аргументы и факты», 14.03.2012 — https://aif.ru/society/people/universalnyy_geniy_giperboloidy_inzhenera_shuhova."
         otryvok: «В 1927 году впервые в истории российской академической науки не учёный-теоретик, а инженер-практик Владимир Шухов был избран членом-корреспондентом Академии наук СССР по представлению академиков Алексея Крылова и Петра Лазарева» (Политехнический музей). — «Баллотироваться в действительные члены 80-летний уже инженер категорически отказывался по принципиальным соображениям» («Аргументы и факты»).
         stranica: «Владимир Григорьевич Шухов и его последователи», Политехнический музей
         href: https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf
         pometka: два источника
-      - summary: <b>Через Оку Шухов перекинул провода на 1800 метров — на ажурных башнях высотой до 128 метров.</b>
+        istochnik: "polymus"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f12"
+      - summary: "Через Оку Шухов перекинул провода на 1800 метров — на ажурных башнях высотой до 128 метров."
         det:
           - В конце 1920-х под Нижним Новгородом нужно было провести линию электропередачи через Оку. Шухов поставил три пары сетчатых башен — 20, 69 и 128 метров; длина перехода — 1800 метров.
           - Башни держали многотонные провода даже с намёрзшим льдом — и всё равно вышли легче и стройнее его первой башни.
-        src: 'Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — <a href="https://www.nkj.ru/archive/articles/23482/" rel="noopener">www.nkj.ru/archive/articles/23482</a>.'
+        src: "Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — https://www.nkj.ru/archive/articles/23482/."
         otryvok: «…Шухов превзошёл свою первую башенную конструкцию, построив три пары сетчатых многоярусных гиперболоидных опор перехода длиной 1800 м высоковольтных линий электропередачи через Оку под Нижним Новгородом высотой 20, 69 и 128 м.»
         stranica: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013
         href: https://www.nkj.ru/archive/articles/23482/
         pometka: документ
-      - summary: <b>По проектам Шухова построили 417 мостов — почти все стоят до сих пор.</b>
+        istochnik: "nkj"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f13"
+      - summary: "По проектам Шухова построили 417 мостов — почти все стоят до сих пор."
         det:
           - С 1892 года Шухов проектировал железнодорожные мосты — типовые, с пролётами от 25 до 100 метров.
           - По ним построили 417 мостов через Оку, Волгу, Енисей и другие реки. Почти все они стоят и сейчас.
-        src: 'Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — <a href="https://www.nkj.ru/archive/articles/23482/" rel="noopener">www.nkj.ru/archive/articles/23482</a>.'
+        src: "Источник: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013 — https://www.nkj.ru/archive/articles/23482/."
         otryvok: «На основе этих типовых решений под его руководством было построено 417 мостов через Оку, Волгу, Енисей и другие реки. Почти все они стоят и сейчас.»
         stranica: Н. Лескова, «Человек-фабрика», «Наука и жизнь», № 12, 2013
         href: https://www.nkj.ru/archive/articles/23482/
         pometka: документ
-      - summary: <b>Больше 10 000 нефтяных баков и 1600 километров труб — всё это построили по проектам Шухова.</b>
+        istochnik: "nkj"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f14"
+      - summary: "Больше 10 000 нефтяных баков и 1600 километров труб — всё это построили по проектам Шухова."
         kadr:
           src: "/muzei/izobreteniya/img/day-05jan-rezervuar-fragment.jpg"
           alt: "Ржавый стальной лист нефтяного резервуара с рядами заклёпочных отверстий вдоль двух кромок"
@@ -308,14 +450,30 @@ fakty:
           credit: "Предмет: фрагмент нефтяного резервуара, конструкция В. Г. Шухова, конец XIX — начало XX вв. Хранится: Музей геологии, нефти и газа, Ханты-Мансийск, МГНГ-ОФ-5889. Госкаталог музейного фонда РФ, № 16194627. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)."
           width: 680
           height: 575
+          hint: "Фрагмент нефтяного резервуара · конец XIX — начало XX века"
+          glavnoe_na_kartinke: "net"
+          podpis_kogda: "конец XIX — начало XX века"
+          podpis_gde: "Ханты-Мансийск, Музей геологии, нефти и газа"
+          podpis_chto: "Фрагмент нефтяного резервуара"
+          svyashchennoe: false
+          vid: "predmet"
+          prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 16194627","ssylka":"https://goskatalog.ru/portal/#/collections?id=16321636","avtor":"автор не указан","god_sozdaniya":"конец XIX — начало XX века","anonim":true}
+          podlinnik: {"gde":"Музей геологии, нефти и газа, Ханты-Мансийск, МГНГ-ОФ-5889","otkuda":"https://goskatalog.ru/portal/#/collections?id=16321636"}
+          nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 16194627"
+          nomer_snimka: "16194627"
+          hranitel: "Музей геологии, нефти и газа, Ханты-Мансийск, МГНГ-ОФ-5889"
         det:
           - С 1878 по 1939 год по проектам Шухова построили около 1600 километров трубопроводов для нефти, больше 10 000 стальных баков для её хранения и больше 8 000 паровых котлов.
           - А началось всё с одной десятикилометровой трубы в Баку.
-        src: 'Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — <a href="https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf" rel="noopener">polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf</a>.'
+        src: "Источник: «Владимир Григорьевич Шухов и его последователи», Политехнический музей — https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf."
         otryvok: «С 1878 по 1939 года на территории Российской империи и Советского Союза по проектам академика было построено около 1600 километров трубопроводов для транспортировки нефти и нефтепродуктов; более 10 000 стальных цилиндрических резервуаров для хранения нефти и нефтепродуктов…; более 8 000 паровых котлов системы Шухова…»
         stranica: «Владимир Григорьевич Шухов и его последователи», Политехнический музей
         href: https://polymus.ru/upload/medialibrary/1d4/cxgp13qppxxtlgbohitb9q1q2ix137st/Vladimir-Grigorevich-SHukhov-i-ego-posledovateli.pdf
         pometka: документ
+        istochnik: "polymus"
+        dlya_voprosa: false
+        sravnenie: "net"
+        id: "f15"
 razdely:
   - posle: daynav
     html: |-
@@ -586,14 +744,14 @@ igra:
 pervenstvo:
   kicker: Проверка факта
   h2: Что именно здесь первое в мире
-  granica: "<b>Граница первенства. Первый в мире расчётный нефтепровод.</b> Балаханы — Чёрный город, Баку, 1878 год. Десять километров трёхдюймовой трубы, и всё посчитано заранее: какой диаметр держит нужный поток, какое давление дают насосы, где ставить перекачечные станции, как густеет нефть на холоде. Свои формулы Шухов опубликовал — по ним трубы проектируют до сих пор."
-  net: "<b>Чего здесь нет. Саму трубу для нефти придумал не Шухов.</b> Нефть по трубам качали и до него — но на глаз, пробой и ошибкой. Первенство Шухова — в расчёте: нефтепровод перестал быть удачей и стал задачей с решением."
+  granica: "Граница первенства. Первый в мире расчётный нефтепровод. Балаханы — Чёрный город, Баку, 1878 год. Десять километров трёхдюймовой трубы, и всё посчитано заранее: какой диаметр держит нужный поток, какое давление дают насосы, где ставить перекачечные станции, как густеет нефть на холоде. Свои формулы Шухов опубликовал — по ним трубы проектируют до сих пор."
+  net: "Чего здесь нет. Саму трубу для нефти придумал не Шухов. Нефть по трубам качали и до него — но на глаз, пробой и ошибкой. Первенство Шухова — в расчёте: нефтепровод перестал быть удачей и стал задачей с решением."
   kolonki:
     - Документ
     - Ещё первые в мире
   stroki:
-    - - "<b>Статья Шухова «Нефтепроводы».</b> Журнал «Вестник промышленности», 1884, № 7. Хранится: РГАНТД, проект «Шухов»."
-      - <b>Что ещё Шухов создал первым в мире.</b> Первое в мире промышленное сжигание мазута форсункой (1880). Первая в мире гиперболоидная башня, первые в мире сетчатые перекрытия и первое в мире висячее стальное перекрытие (Нижний Новгород, 1896). Первая в мире установка непрерывного крекинга нефти (патент 1891).
+    - - "Статья Шухова «Нефтепроводы». Журнал «Вестник промышленности», 1884, № 7. Хранится: РГАНТД, проект «Шухов»."
+      - "Что ещё Шухов создал первым в мире. Первое в мире промышленное сжигание мазута форсункой (1880). Первая в мире гиперболоидная башня, первые в мире сетчатые перекрытия и первое в мире висячее стальное перекрытие (Нижний Новгород, 1896). Первая в мире установка непрерывного крекинга нефти (патент 1891)."
 quiz:
   kicker: Проверь себя
   h2: Викторина
@@ -622,14 +780,7 @@ result:
   h2: Сколько баллов ты собрал?
   intro: Читай статью, играй, отвечай в викторине и спрашивай изобретателя — за всё начисляются баллы. Собери все 100 и стань Первым инженером империи.
   zvanie: "0 / 100 · звание: Гость музея"
-  note: |-
-    <div class="diploma" id="dipl" style="display:none">
-          <span class="dl">Музей «Что изобрели русские первыми в мире»</span>
-          <b>Грамота участника пуска 1878 года</b>
-          <span class="dp">Десять километров от Балахан до Чёрного города пройдены — по статье, по чертежу, по игре и по вопросам музея. Баллов: <i id="dpts">0</i> из 100.</span>
-          <span class="ds">Цивилизация первенств</span>
-        </div>
-        <p id="diplnote" style="display:none;color:var(--muted);max-width:62ch">Для сравнения: Шухову было двадцать пять лет, свой патент на крекинг он ждал признания тридцать два года, а гонорар за большинство проектов не брал вовсе.</p>
+  note: "Музей «Что изобрели русские первыми в мире» Грамота участника пуска 1878 года Десять километров от Балахан до Чёрного города пройдены — по статье, по чертежу, по игре и по вопросам музея. Баллов: 0 из 100. Цивилизация первенств Для сравнения: Шухову было двадцать пять лет, свой патент на крекинг он ждал признания тридцать два года, а гонорар за большинство проектов не брал вовсе."
 kalendar:
   kicker: Календарь изобретений
   h2: Выбери любой день года
@@ -643,6 +794,18 @@ figures:
     data_source: https://goskatalog.ru/portal/
     license: общественное достояние · Государственный музей архитектуры имени А. В. Щусева, Госкаталог музейного фонда РФ
     podpis: "Шаболовская башня, 160 метров: шесть секций, ни одной гнутой детали. Открытка 1925 года. Фото: Государственный музей архитектуры имени А.В. Щусева, Госкаталог музейного фонда РФ. Общественное достояние."
+    nomer_snimka: "net"
+    nomer_predmeta: "net"
+    hranitel: "Государственный музей архитектуры имени А. В. Щусева"
+    hint: "Шуховская башня на Шаболовке, открытка · 1925"
+    glavnoe_na_kartinke: "net"
+    podpis_kogda: "1925"
+    podpis_gde: "ГНИМА им. А. В. Щусева"
+    podpis_chto: "Шуховская башня на Шаболовке, открытка"
+    svyashchennoe: false
+    vid: "foto"
+    prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"ssylka":"https://goskatalog.ru/portal/","avtor":"автор не указан","god_sozdaniya":"1925","anonim":true,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ"}
+    podlinnik: {"gde":"net","otkuda":"https://goskatalog.ru/portal/"}
   - src: img/01-05-goskatalog-1828920.jpg
     width: 800
     height: 585
@@ -651,6 +814,18 @@ figures:
     license: общественное достояние (фотограф не указан, 1904)
     podpis: "Нефтяной промысел в Балаханах под Баку, 1904 год: отсюда в 1878 году ушла к Чёрному городу первая шуховская труба. Государственный центральный музей современной истории России."
     credit: "фотограф не указан. Хранится: Федеральное государственное бюджетное учреждение культуры «Государственный центральный музей современной истории России». Госкаталог музейного фонда РФ, № 5548354."
+    hint: "Фотография 1904 года из собрания ГЦМСИР · 1904"
+    glavnoe_na_kartinke: "net"
+    podpis_kogda: "1904"
+    podpis_gde: "ГЦМСИР"
+    podpis_chto: "Фотография 1904 года из собрания ГЦМСИР"
+    svyashchennoe: false
+    vid: "foto"
+    prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 5548354","ssylka":"https://goskatalog.ru/portal/#/collections?id=5548354","avtor":"автор не указан","god_sozdaniya":"1904","anonim":true}
+    podlinnik: {"gde":"Федеральное государственное бюджетное учреждение культуры «Государственный центральный музей современной истории России»","otkuda":"https://goskatalog.ru/portal/#/collections?id=5548354"}
+    nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 5548354"
+    nomer_snimka: "5548354"
+    hranitel: "Федеральное государственное бюджетное учреждение культуры «Государственный центральный музей современной истории России»"
   - src: img/day-05jan-bashnya-nn-1896.jpg
     width: 397
     height: 545
@@ -660,11 +835,23 @@ figures:
     license: "общественное достояние (издание 1897 г.) · Государственный научно-исследовательский музей архитектуры имени А. В. Щусева"
     podpis: "Водонапорная башня Всероссийской выставки 1896 года в Нижнем Новгороде — страница из альбома «Здания и сооружения выставки» (1897) с подписью «Проектъ инженера Шухова». Это та самая башня, которую потом увезли в Полибино."
     credit: "Репродукция из издания «Здания и сооружения Всероссийской промышленной и художественной выставки 1896 г.», СПб., 1897; пересъёмка М. М. Чураков, 1981. Хранится: Государственный научно-исследовательский музей архитектуры имени А. В. Щусева, ГНИМА ОФ-6330/64 (РС-324). Госкаталог музейного фонда РФ, № 14412123. Права: изображение — общественное достояние (издание 1897 г.); пересъёмка — цитирование в информационных и учебных целях (ст. 1274 ГК РФ)."
+    hint: "Башня Шухова на Всероссийской выставке 1896 года в Нижнем Новгороде · 1897"
+    glavnoe_na_kartinke: "net"
+    podpis_kogda: "1897"
+    podpis_gde: "ГНИМА им. А. В. Щусева"
+    podpis_chto: "Башня Шухова на Всероссийской выставке 1896 года в Нижнем Новгороде"
+    svyashchennoe: false
+    vid: "foto"
+    prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 14412123","ssylka":"https://goskatalog.ru/portal/#/collections?id=14540491","avtor":"автор не указан; пересъёмка М. М. Чуракова, 1981","god_sozdaniya":"1897","anonim":true}
+    podlinnik: {"gde":"Государственный научно-исследовательский музей архитектуры имени А. В. Щусева, ГНИМА ОФ-6330/64 (РС-324)","otkuda":"https://goskatalog.ru/portal/#/collections?id=14540491"}
+    nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 14412123"
+    nomer_snimka: "14412123"
+    hranitel: "Государственный научно-исследовательский музей архитектуры имени А. В. Щусева, ГНИМА ОФ-6330/64 (РС-324)"
 sources:
-  - html: <a href="https://transnefthistory.tass.ru/tube-1.html" target="_blank" rel="noopener">ТАСС · «Первый российский трубопровод»</a> — хронология стройки Балаханы — Чёрный город
-  - html: <a href="https://www.nkj.ru/archive/articles/23482/" target="_blank" rel="noopener">«Наука и жизнь» · «Человек-фабрика»</a> — инженерная биография и крекинг 1891 года
-  - html: <a href="https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html" target="_blank" rel="noopener">«Российская газета» · «Главный русский инженер»</a> — к 170-летию Шухова
-  - html: <a href="https://www.culture.ru/persons/8469/vladimir-shukhov" target="_blank" rel="noopener">Культура.РФ · биография Владимира Шухова</a> — работы, даты жизни, судьба построек
+  - {"href":"https://transnefthistory.tass.ru/tube-1.html","title":"ТАСС · «Первый российский трубопровод»","note":"хронология стройки Балаханы — Чёрный город"}
+  - {"href":"https://www.nkj.ru/archive/articles/23482/","title":"«Наука и жизнь» · «Человек-фабрика»","note":"инженерная биография и крекинг 1891 года"}
+  - {"href":"https://rg.ru/2023/08/28/glavnyj-russkij-inzhener-170-let-so-dnia-rozhdeniia-vladimira-shuhova.html","title":"«Российская газета» · «Главный русский инженер»","note":"к 170-летию Шухова"}
+  - {"href":"https://www.culture.ru/persons/8469/vladimir-shukhov","title":"Культура.РФ · биография Владимира Шухова","note":"работы, даты жизни, судьба построек"}
   - html: "Фотографии: архивные снимки Балаханских промыслов и Баку 1880–1890-х годов, авторы неизвестны, общественное достояние."
 kuda:
   - lbl: Следующий день
@@ -755,13 +942,13 @@ audioguide:
       mark: 5:50
       title: Что мы отсюда берём
   transcript:
-    - "<p>Здравствуйте. Мы входим в зал чёрного золота — и первое, что я попрошу, посмотрите на большую фотографию слева. Баку, конец тысяча восемьсот семидесятых. Деревянные вышки до горизонта, земля чёрная от нефти, а между вышками — арбы, бочки, верблюды, лошади. Это не хаос стройки. Это транспорт. Так нефть возили везде в мире: наливали в деревянную бочку, ставили на телегу и везли с промысла на завод. Теперь цифра, ради которой мы здесь остановились. Перевозка бочки стоила дороже, чем нефть, которая в этой бочке была. Добывать научились, а доставить — нет. Сотни возчиков держали монополию и держали цену, и промышленники платили, потому что другого способа не существовало.</p>"
-    - "<p>А теперь повернитесь к портрету у окна. Этому молодому человеку двадцать пять лет. Владимир Григорьевич Шухов, выпускник Императорского технического училища, только что приехал в Баку от конторы инженера Бари. Одна деталь про него, которая объясняет всё дальнейшее. Ему предлагал остаться на кафедре сам Пафнутий Чебышёв — великий математик. Шухов отказался. Не потому, что не тянул: потому что не хотел чистой математики, хотел строить. Всю жизнь он делал одно и то же — брал задачу, которую до него решали на глазок, и решал её расчётом. Нефть, вода, котлы, мосты, башни. Около двухсот изобретений. Он смотрит на тот же караван, что и мы с вами. И видит не хаос, а задачу по гидравлике.</p>"
-    - "<p>Пройдём к витрине с чертежами. Здесь начинается то, за что этот зал носит его имя. В Америке к тому времени уже пробовали качать нефть по коротким трубам. Пробовали — ключевое слово: методом проб и ошибок, без теории. Трубу клали, насос ставили, смотрели, что получится. Шухов сделал иначе. Он вывел формулы: какой диаметр трубы нужен под заданный поток, какое давление должны создавать насосы, на каком расстоянии друг от друга эти насосы ставить, как меняется вязкость нефти с температурой. Посмотрите на эти четыре величины на схеме — диаметр, давление, вязкость, расстояние. До Шухова их подбирали. После Шухова их считают. Это и есть разница между ремеслом и наукой, и произошла она вот здесь, в Баку, в голове двадцатипятилетнего инженера.</p>"
-    - "<p>Центральный экспонат зала — перед вами. Макет первой нитки: Балаханы — Чёрный город. Конец тысяча восемьсот семьдесят восьмого года. На промысле запускают паровой насос. Нефть уходит в стальную трубу диаметром три дюйма — это меньше ладони — и впервые в истории промышленности течёт сама. Десять километров. До восьмидесяти тысяч пудов в сутки. Ни бочек, ни подвод, ни возчиков. Заказ, кстати, оплатило «Товарищество братьев Нобель» — та самая семья, чьё имя носит знаменитая премия. И была ещё одна часть этой истории, о которой редко пишут. Возчики, потерявшие заработок, грозились разрушить трубу. Её пришлось охранять казакам. Но спор решили не казаки, а арифметика: перекачка оказалась в разы дешевле бочки. Через несколько лет Шухов строил в Баку новые нитки, а через десятилетие труба стала мировым стандартом. В тысяча девятьсот седьмом по его проекту заработал керосинопровод Баку — Батум, восемьсот тридцать пять километров, крупнейший в мире на тот момент.</p>"
-    - "<p>Теперь подойдите к дальней витрине. Под стеклом — документ тысяча восемьсот девяносто первого года. Патент на крекинг: разложение тяжёлой нефти на лёгкие фракции нагревом под давлением. Проще говоря — способ получать бензин. Запомните дату: тысяча восемьсот девяносто первый. Россия этот патент не использовала — бензин тогда никому не был нужен, автомобилей ещё не было. В тысяча девятьсот тринадцатом американец Уильям Бартон патентует в США почти то же самое. Америка становится бензиновой державой. А в двадцать третьем году в Москву приезжает делегация фирмы «Синклер» — разбираться в патентном споре. Шухов кладёт перед ними свой патент. Американцы признают: русский был первым. Признание он получил. Промышленность и деньги остались за океаном. В этом зале мы не будем делать вид, что это справедливо, — но и забывать, что первенство доказано документом, тоже не будем.</p>"
-    - "<p>Поднимите голову — над нами модель гиперболоидной башни, и я попрошу вас проделать одну вещь. Выберите глазами любой стержень в этой ажурной сетке и проследите за ним сверху донизу. Он прямой. Все до единого — прямые. Круглая, изогнутая, летящая форма собрана целиком из прямых железных полос, поставленных под углом друг к другу. Кривизна тут не выковывается в кузнице, а возникает сама, из геометрии. Поэтому башню и мог собрать обычный клепальщик из типового проката — гнуть было нечего. Самая известная такая башня стоит на Шаболовке в Москве, сто шестьдесят метров. Задумывалась она в триста пятьдесят — выше Эйфелевой. Металла в стране в двадцатом году не нашлось. И строили её без лесов и без высоких кранов: секции собирали внизу, внутри уже стоящей части, и поднимали лебёдками сквозь неё — как подзорную трубу, только наоборот.</p>"
-    - "<p>И последнее, прежде чем мы перейдём в следующий зал. Всё, что течёт сегодня по миллионам километров труб планеты — нефть, газ, бензин, — течёт по формулам, выведенным в тысяча восемьсот семьдесят восьмом году. Они опубликованы, по ним проектируют до сих пор, во всём мире. А про самого Шухова — три факта, которые я оставлю вам на память. Он работал до восьмидесяти пяти лет. От гонораров за многие проекты отказывался, говоря, что инженер обязан стране. И умер нелепо: опрокинул на себя свечу, получил ожоги и через пять дней скончался — в тридцать девятом году, всемирно признанным классиком инженерии. Двадцать пять лет было ему, когда нефть впервые потекла сама. Спасибо, что прошли этот зал со мной.</p>"
+    - "Здравствуйте. Мы входим в зал чёрного золота — и первое, что я попрошу, посмотрите на большую фотографию слева. Баку, конец тысяча восемьсот семидесятых. Деревянные вышки до горизонта, земля чёрная от нефти, а между вышками — арбы, бочки, верблюды, лошади. Это не хаос стройки. Это транспорт. Так нефть возили везде в мире: наливали в деревянную бочку, ставили на телегу и везли с промысла на завод. Теперь цифра, ради которой мы здесь остановились. Перевозка бочки стоила дороже, чем нефть, которая в этой бочке была. Добывать научились, а доставить — нет. Сотни возчиков держали монополию и держали цену, и промышленники платили, потому что другого способа не существовало."
+    - "А теперь повернитесь к портрету у окна. Этому молодому человеку двадцать пять лет. Владимир Григорьевич Шухов, выпускник Императорского технического училища, только что приехал в Баку от конторы инженера Бари. Одна деталь про него, которая объясняет всё дальнейшее. Ему предлагал остаться на кафедре сам Пафнутий Чебышёв — великий математик. Шухов отказался. Не потому, что не тянул: потому что не хотел чистой математики, хотел строить. Всю жизнь он делал одно и то же — брал задачу, которую до него решали на глазок, и решал её расчётом. Нефть, вода, котлы, мосты, башни. Около двухсот изобретений. Он смотрит на тот же караван, что и мы с вами. И видит не хаос, а задачу по гидравлике."
+    - "Пройдём к витрине с чертежами. Здесь начинается то, за что этот зал носит его имя. В Америке к тому времени уже пробовали качать нефть по коротким трубам. Пробовали — ключевое слово: методом проб и ошибок, без теории. Трубу клали, насос ставили, смотрели, что получится. Шухов сделал иначе. Он вывел формулы: какой диаметр трубы нужен под заданный поток, какое давление должны создавать насосы, на каком расстоянии друг от друга эти насосы ставить, как меняется вязкость нефти с температурой. Посмотрите на эти четыре величины на схеме — диаметр, давление, вязкость, расстояние. До Шухова их подбирали. После Шухова их считают. Это и есть разница между ремеслом и наукой, и произошла она вот здесь, в Баку, в голове двадцатипятилетнего инженера."
+    - "Центральный экспонат зала — перед вами. Макет первой нитки: Балаханы — Чёрный город. Конец тысяча восемьсот семьдесят восьмого года. На промысле запускают паровой насос. Нефть уходит в стальную трубу диаметром три дюйма — это меньше ладони — и впервые в истории промышленности течёт сама. Десять километров. До восьмидесяти тысяч пудов в сутки. Ни бочек, ни подвод, ни возчиков. Заказ, кстати, оплатило «Товарищество братьев Нобель» — та самая семья, чьё имя носит знаменитая премия. И была ещё одна часть этой истории, о которой редко пишут. Возчики, потерявшие заработок, грозились разрушить трубу. Её пришлось охранять казакам. Но спор решили не казаки, а арифметика: перекачка оказалась в разы дешевле бочки. Через несколько лет Шухов строил в Баку новые нитки, а через десятилетие труба стала мировым стандартом. В тысяча девятьсот седьмом по его проекту заработал керосинопровод Баку — Батум, восемьсот тридцать пять километров, крупнейший в мире на тот момент."
+    - "Теперь подойдите к дальней витрине. Под стеклом — документ тысяча восемьсот девяносто первого года. Патент на крекинг: разложение тяжёлой нефти на лёгкие фракции нагревом под давлением. Проще говоря — способ получать бензин. Запомните дату: тысяча восемьсот девяносто первый. Россия этот патент не использовала — бензин тогда никому не был нужен, автомобилей ещё не было. В тысяча девятьсот тринадцатом американец Уильям Бартон патентует в США почти то же самое. Америка становится бензиновой державой. А в двадцать третьем году в Москву приезжает делегация фирмы «Синклер» — разбираться в патентном споре. Шухов кладёт перед ними свой патент. Американцы признают: русский был первым. Признание он получил. Промышленность и деньги остались за океаном. В этом зале мы не будем делать вид, что это справедливо, — но и забывать, что первенство доказано документом, тоже не будем."
+    - "Поднимите голову — над нами модель гиперболоидной башни, и я попрошу вас проделать одну вещь. Выберите глазами любой стержень в этой ажурной сетке и проследите за ним сверху донизу. Он прямой. Все до единого — прямые. Круглая, изогнутая, летящая форма собрана целиком из прямых железных полос, поставленных под углом друг к другу. Кривизна тут не выковывается в кузнице, а возникает сама, из геометрии. Поэтому башню и мог собрать обычный клепальщик из типового проката — гнуть было нечего. Самая известная такая башня стоит на Шаболовке в Москве, сто шестьдесят метров. Задумывалась она в триста пятьдесят — выше Эйфелевой. Металла в стране в двадцатом году не нашлось. И строили её без лесов и без высоких кранов: секции собирали внизу, внутри уже стоящей части, и поднимали лебёдками сквозь неё — как подзорную трубу, только наоборот."
+    - "И последнее, прежде чем мы перейдём в следующий зал. Всё, что течёт сегодня по миллионам километров труб планеты — нефть, газ, бензин, — течёт по формулам, выведенным в тысяча восемьсот семьдесят восьмом году. Они опубликованы, по ним проектируют до сих пор, во всём мире. А про самого Шухова — три факта, которые я оставлю вам на память. Он работал до восьмидесяти пяти лет. От гонораров за многие проекты отказывался, говоря, что инженер обязан стране. И умер нелепо: опрокинул на себя свечу, получил ожоги и через пять дней скончался — в тридцать девятом году, всемирно признанным классиком инженерии. Двадцать пять лет было ему, когда нефть впервые потекла сама. Спасибо, что прошли этот зал со мной."
   note: Озвучено синтезом речи — временно, до записи голосом автора музея.
 proof:
   status: found
