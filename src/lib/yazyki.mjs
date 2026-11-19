@@ -2,6 +2,7 @@
 // Русский — без приставки адреса, прочие — /<code>/… . Язык с ready:false нигде не виден: ни пометок hreflang,
 // ни флага в переключателе — чтобы не было ссылок на несуществующие страницы.
 import fs from 'node:fs';
+import { PAPKA_DNYA, chitat } from './perevod-papki.mjs';
 import data from '../data/yazyki.json' with { type: 'json' };
 
 export const yazyki = data.yazyki;
@@ -31,15 +32,14 @@ export function yazyk(code) {
 }
 
 // Перевод дня (пп. 149, 150 очереди 2): у страницы дня язык есть, когда он готов (ready:true) и в файле строк дня
-// src/data/perevod/<музей>-<ММ-ДД>.json (scripts/perevod-dnya.mjs) есть его раздел; прочие страницы — по ready:true.
+// src/data/perevod/<код>/<музей>-<ММ-ДД>.json (scripts/perevod-dnya.mjs, папка на язык — perevod-papki.mjs) есть его раздел; прочие страницы — по ready:true.
 // Пока ни один язык, кроме русского, не готов — пусто: пометок и связей перевода нет, русский вывод прежний.
 const DEN_RE = /^muzei\/([^/]+)\/den\/(\d\d-\d\d)\/$/;
 const perevody = new Map();
 function perevodDnya(museum, key) {
   const id = `${museum}-${key}`;
   if (!perevody.has(id)) {
-    const f = `src/data/perevod/${id}.json`;
-    perevody.set(id, fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {});
+    perevody.set(id, chitat(PAPKA_DNYA, id) ?? {});
   }
   return perevody.get(id);
 }
@@ -77,8 +77,12 @@ export function svyazPerevoda(pathname, base, site, type) {
 /** og:locale языка: поле locale из yazyki.json, иначе code_COUNTRY (ru → ru_RU). */
 export const ogLocale = (y) => y.locale ?? `${y.code}_${y.country}`;
 
-// Строки общего шаблона по языку (src/data/stroki.json); нет строки — русская (язык по умолчанию).
-import stroki from '../data/stroki.json' with { type: 'json' };
+// Строки общего шаблона по языку — файл на язык src/data/stroki/<код>.json (папка на язык, Р649); нет строки — русская
+// (язык по умолчанию). Файл языка: { "_", "<код>": { ключ: текст } }.
+const PAPKA_STROK = 'src/data/stroki';
+const stroki = Object.assign({}, ...fs.readdirSync(PAPKA_STROK).filter((f) => f.endsWith('.json'))
+  .map((f) => JSON.parse(fs.readFileSync(`${PAPKA_STROK}/${f}`, 'utf8'))));
+delete stroki._;
 export function stroka(code, key) {
   return stroki[code]?.[key] ?? stroki[poUmolchaniyu][key];
 }

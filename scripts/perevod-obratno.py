@@ -3,7 +3,7 @@
 # слов) в stdout — perevod.yml кладёт её в сводку прогона; ничего не останавливает и ничего не меняет в файлах.
 # Как в мире: обратный перевод (back-translation) — обычная сверка машинного перевода; переводчик — https://github.com/argosopentech/argos-translate ,
 # похожая сверка с подлинником — BLEU/chrF в https://github.com/mjpost/sacrebleu .
-# Руками: python3 scripts/perevod-obratno.py src/data/perevod/<музей>-<ММ-ДД>.json …   OBRATNO_N=40 — строк на язык (0 — все).
+# Руками: python3 scripts/perevod-obratno.py src/data/perevod/<код>/<музей>-<ММ-ДД>.json …  (папка на язык; русский — из perevod/ru/)   OBRATNO_N=40 — строк на язык (0 — все).
 import json, os, re, sys
 from difflib import SequenceMatcher
 import argostranslate.package as pak, argostranslate.translate as tr
@@ -39,6 +39,10 @@ if not fayly:
     print('Обратный перевод: файлов перевода нет.')
     sys.exit(0)
 dannye = {f: json.load(open(f, encoding='utf-8')) for f in fayly}
+for f, d in dannye.items():
+    if 'ru' not in d:  # файл языка: русский подлинник — в соседней папке ru/ (src/lib/perevod-papki.mjs)
+        ru = os.path.join(os.path.dirname(os.path.dirname(f)), 'ru', os.path.basename(f))
+        d['ru'] = json.load(open(ru, encoding='utf-8')).get('ru', {}) if os.path.exists(ru) else {}
 kody = sorted({k for d in dannye.values() for k in d if not k.startswith('_') and k != 'ru'})
 ustanovit({('en', 'ru')} | {(k.split('-')[0], 'en') for k in kody if k.split('-')[0] != 'en'})
 print('### Обратный перевод на русский (подсказка, ничего не останавливает)\n')

@@ -75,14 +75,14 @@ const shablonNav = navDnya(shablon);
 const base = import.meta.env.BASE_URL;
 // «Поддержать проект» — на всех страницах (Р88, 21.10.2026, заменяет Р31); выключение — PUBLIC_PODDERZHKA=0.
 const podderzhka = import.meta.env.PUBLIC_PODDERZHKA !== '0';
-// Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+// Строки подвала — по языку страницы (Г20, src/data/stroki/<код>.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key) => stroka(lang.code, key);
 const fs = await import('node:fs');
 const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
 // Подпись дня: у датированного музея — дата, у недатированного — номер записи «День N · месяц»
 // (ключ там не дата: у первопроходцев есть 12-32, 12-33); одно правило для шапки дня и стрелок соседей.
-// Месяцы и «День N · месяц» — из словаря языка (Г20, src/data/stroki.json).
+// Месяцы и «День N · месяц» — из словаря языка (Г20, src/data/stroki/<код>.json).
 const whenOf = (key: string) => { const mm = parseInt(key.slice(0, 2)), dd = parseInt(key.slice(3));
   return dated ? `${dd} ${s('mesyacyR')[mm - 1]}` : s('denMesyac').replace('{d}', String(dd)).replace('{m}', s('mesyacy')[mm - 1]); };
 const when = whenOf(d.key);

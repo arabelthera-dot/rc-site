@@ -15,7 +15,7 @@ export const redakciyaLd = (home) => ({ '@type': 'Organization', name: REDAKCIYA
 
 // Строка подвала всех страниц: лицензия + ссылки «О проекте», «Как сделан музей», «Политика конфиденциальности» (у шаблонов они в .foot-links).
 export function licenziyaHtml(base, { links = false, code = 'ru' } = {}) {
-  const s = (k) => stroka(code, k); // строки — из словаря языка (Г20, src/data/stroki.json)
+  const s = (k) => stroka(code, k); // строки — из словаря языка (Г20, src/data/stroki/<код>.json)
   return `<div class="rc-lic">${s('licTeksty')} <a href="${LICENZIYA}" rel="license noopener" target="_blank">CC BY 4.0</a>`
     // «(авторы изображений).» — одной неразрывной связкой: иначе «(» остаётся висеть в конце строки (Г20, 1280 px)
     + `${s('licMozhno')} <span class="rc-lic-n">(<a href="${base}avtory-izobrazheniy/">${s('licAvtory')}</a>).</span>`
