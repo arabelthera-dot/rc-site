@@ -90,7 +90,7 @@ const sources = doc.get('sources', true);
   if (!ssylki.length) { if (HTML.test(h)) zamenit(uzel.get('html', true), zn(snyat(h))); return; }
   // «A и B: …», «… — A.» — связка и тире при ссылке уходят вместе с ней (изоб 01-07, НС 01-06).
   const ostatok = snyat(h.replace(SSYLKA, '\u0000')).replace(/\u0000(?:\s*(?:и|,|;)\s*\u0000)+/g, '\u0000')
-    .replace(/\s*[,;—–]?\s*\u0000\s*/g, ' ').replace(/[:,;]\s*\./g, '.').replace(/\s+([.,:;])/g, '$1')
+    .replace(/\s*[,;—–]?\s*\u0000\s*[,;]?/g, ' ').replace(/[:,;]\s*\./g, '.').replace(/\s+([.,:;])/g, '$1')
     .replace(/\s{2,}/g, ' ').replace(/^[\s,;:—.]+|[\s,;:—]+$/g, '').trim();
   const punkty = ssylki.map(([, href, x]) => {
     istSsylki.push([href, snyat(x)]);
