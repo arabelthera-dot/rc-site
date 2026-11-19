@@ -4,9 +4,10 @@
 // его пишут stroki-igr и stroki-ruchnyh-igr, игры не меняются). Файл языка устроен как прежний общий, но с одним языком:
 // { "_", "<код>": { ключ: текст }, "_otpechatki": { "<код>": … }, "_gotovo": { "<код>": дата } }. chitat() склеивает
 // папки обратно в прежний вид { "_", "ru", "<код>"…, "_otpechatki", "_gotovo" } — прочий код машины перевода не меняется.
-// Как в мире: папка на язык — i18next «locales/<lng>/<ns>.json» (https://www.i18next.com/how-to/add-or-load-translations),
-// маска файлов Weblate «locales/*/file.json» (https://docs.weblate.org/en/latest/admin/projects.html#file-mask),
-// Astro — папка на язык (https://docs.astro.build/en/guides/internationalization/).
+// Как в мире: папка на язык — i18next «locales/<lng>/<ns>.json»,
+// маска файлов Weblate «locales/*/file.json»,
+// Astro — папка на язык.
+// Ссылки — в заявке, раздел «Как это делают в мире».
 import fs from 'node:fs';
 import path from 'node:path';
 
