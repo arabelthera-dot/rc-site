@@ -106,8 +106,6 @@ daynav:
     label: Спросить
   - id: calendar
     label: Календарь
-  - id: catalog
-    label: База
 video:
   h2: История в 49 секунд
   klyuch: izobreteniya/01jan-cabletv
@@ -602,64 +600,6 @@ razdely:
       </script>
   - posle: story
     html: |-
-      <section class="block" id="more">
-        <div class="wrap">
-          <div class="kicker">Подробности</div>
-          <h2>Как это было устроено</h2>
-          <p style="color:var(--muted);margin-top:0">Первая кабельная сеть мира — в деталях.</p>
-          <div style="text-align:center;margin:10px 0 2px">
-            <button class="btn gold" id="moreInv2">🔎 Раскрыть подробности</button>
-          </div>
-
-          <div id="moreInvBody" style="display:none;margin-top:18px">
-
-            <div class="card">
-              <h3 style="font-size:20px;color:var(--gold-l);margin-bottom:6px">АТП-1 — телевизор-«блюдце»
-                <span style="display:inline-block;background:#e7f5e9;color:#1f5b2c;border:1px solid #3f9b52;border-radius:20px;padding:1px 9px;font-size:12px;font-weight:600;vertical-align:middle">✓ факт</span></h3>
-              <p>«Абонентский телевизионный приёмник» — специально упрощённая модель: круглый кинескоп диаметром <b>18 сантиметров</b>, никакой антенны и эфирной настройки — только кабель. Серийно выпускался Александровским радиозаводом. По сути — первый в мире телевизор, задуманный именно как абонентское устройство кабельной сети.</p>
-            </div>
-
-            <div class="card">
-              <h3 style="font-size:20px;color:var(--gold-l);margin-bottom:6px">Кто построил узел
-                <span style="display:inline-block;background:#e7f5e9;color:#1f5b2c;border:1px solid #3f9b52;border-radius:20px;padding:1px 9px;font-size:12px;font-weight:600;vertical-align:middle">✓ факт</span></h3>
-              <p>Проект делали два института: <b>НИИ телевидения (Ленинград)</b> и <b>ЦНИИ связи (Москва)</b>. Схема на десятилетия вперёд: один качественный приёмный пункт на здание — кабельная разводка — простые приёмники в квартирах. Так сегодня устроена любая кабельная сеть мира.</p>
-              <p class="pull">Схема 1938 года совпадает с современной кабельной сетью один в один.</p>
-            </div>
-
-            <div class="card">
-              <h3 style="font-size:20px;color:var(--gold-l);margin-bottom:6px">17 лет службы
-                <span style="display:inline-block;background:#e7f5e9;color:#1f5b2c;border:1px solid #3f9b52;border-radius:20px;padding:1px 9px;font-size:12px;font-weight:600;vertical-align:middle">✓ факт</span></h3>
-              <p>Узел приняли в эксплуатацию <b>1 января 1939 года</b>. Работал до 1941-го, замолчал на войну — и снова ожил в 1946-м. Окончательно выключен только в <b>1956 году</b>, когда телевизоры уже стояли в сотнях тысяч советских квартир.</p>
-            </div>
-
-            <div class="card">
-              <h3 style="font-size:20px;color:var(--gold-l);margin-bottom:6px">А что же Америка?
-                <span style="display:inline-block;background:#e7f5e9;color:#1f5b2c;border:1px solid #3f9b52;border-radius:20px;padding:1px 9px;font-size:12px;font-weight:600;vertical-align:middle">✓ факт</span></h3>
-              <p>Первая кабельная телесеть США появилась в <b>1948 году</b> в Пенсильвании — торговец телевизорами Джон Уолсон тянул кабель, чтобы продавать приёмники в городке, до которого не добивал эфир. Это на <b>9 лет позже</b> московского узла. Но американская сеть была коммерческой и открытой — потому мир запомнил её.</p>
-            </div>
-
-            <div class="card" style="border-color:var(--gold);background:var(--gold-g)">
-              <h3 style="font-size:20px;color:var(--gold-l);margin-bottom:6px">Почему первенство осталось в тени
-                <span style="display:inline-block;background:#e7f5e9;color:#1f5b2c;border:1px solid #3f9b52;border-radius:20px;padding:1px 9px;font-size:12px;font-weight:600;vertical-align:middle">✓ факт</span></h3>
-              <p>Дом на Петровском бульваре был закрытым — о его «телевизионном чуде» не написала ни одна газета. Сделали первыми, рассказали последними: типичная судьба многих наших первенств, и одна из причин, почему существует этот музей.</p>
-            </div>
-
-            <div class="card" style="border-color:var(--gold);background:var(--gold-g)">
-              <h3 style="font-size:20px;color:var(--gold-l);margin-bottom:10px">А что ещё русские изобрели в телевидении?</h3>
-              <ol style="margin:0;padding-left:20px;line-height:2;color:var(--ink)">
-                <li><b>Электронное телевидение</b> — Борис Розинг в 1907 году подал заявку на передачу изображения с помощью электронно-лучевой трубки; патенты он получил в Великобритании (1908), Германии (1909) и России (1910).</li>
-                <li><b>Первый телевизионный фильм</b> — в 1931 году СССР снял первый в мире телевизионный игровой фильм «Глаза, которые видят».</li>
-                <li><b>Спутниковое телевидение</b> — советский спутник «Молния-1» (1965) стал первым в мире спутником для трансляции телевидения на всю страну. Система «Орбита» охватила самые отдалённые районы планеты.</li>
-                <li><b>Цветное телевидение через спутник</b> — первая в мире трансляция цветного ТВ через спутник состоялась в СССР в 1967 году.</li>
-                <li><b>Негорючая плёнка</b> — советские инженеры первыми разработали безопасную негорючую киноплёнку для телевизионного вещания, заменив опасный целлулоид.</li>
-              </ol>
-            </div>
-
-          </div>
-        </div>
-      </section>
-  - posle: story
-    html: |-
       <section class="block" id="fork" style="background:rgba(45,140,191,.04)">
         <div class="wrap">
           <h2 style="margin-bottom:8px">А как поступил бы ты?</h2>
@@ -684,15 +624,6 @@ razdely:
             <input id="cin" placeholder="Спроси изобретателя…" style="flex:1;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:15px">
             <button class="btn" id="csend">Спросить</button>
           </div>
-        </div>
-      </section>
-  - posle: calendar
-    html: |-
-      <section class="block" id="catalog" style="background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none">
-        <div class="wrap" style="text-align:center">
-          <h2 style="margin-bottom:6px;color:#fff">У нас много изобретений</h2>
-          <p style="color:var(--muted);margin:0 auto 16px;max-width:60ch">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
-          <a class="btn gold" href="index.html" style="display:inline-block;text-decoration:none">Вернуться в музей →</a>
         </div>
       </section>
 igra:
