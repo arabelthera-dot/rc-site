@@ -82,9 +82,8 @@ video:
   pole: nesdayutsya/14jan-vir:horizontal.sec
   suffix: сек
   badge: 55 сек
-  intro: "Учёные умирали от голода рядом с семенами, которые могли их спасти"
-  poster: /muzei/ne-sdayutsya/video/day-14jan-vir-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-14jan-vir.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-14jan-vir-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-14jan-vir.mp4
   note: Кадры ролика — подлинные предметы из Госкаталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
@@ -410,15 +409,7 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: podvig-chelyuskincy.html
-    title: 15 — Челюскинцы
-    hook: Лёд раздавил корабль — и 104 человека со льдины вынесли лётчики, всех до одного.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

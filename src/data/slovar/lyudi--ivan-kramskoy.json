@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Иван Крамской",
+  "pol": "m",
+  "kratko": "Живописец, один из основателей передвижников.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81024486",
+    "ssylka": "https://id.loc.gov/authorities/names/n81024486.html",
+    "zagolovok": "Kramskoĭ, Ivan Nikolaevich, 1837-1887"
+  },
+  "latinica": "Ivan Kramskoi",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1837",
+    "smert": "1887"
+  }
+}

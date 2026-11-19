@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Андрей Рублёв",
+  "pol": "m",
+  "kratko": "Иконописец, автор «Троицы».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82073069",
+    "ssylka": "https://id.loc.gov/authorities/names/n82073069.html",
+    "zagolovok": "Rublev, Andreĭ, Saint, -approximately 1430"
+  },
+  "latinica": "Andrey Rublyov",
+  "latinica_iz": "loc-istochnik",
+  "gody": {
+    "rozhdenie": "1360/1370",
+    "smert": "1430~"
+  }
+}

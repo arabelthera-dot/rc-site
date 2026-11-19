@@ -77,10 +77,9 @@ video:
   pole: nesdayutsya/31jan-borzenko:horizontal.sec
   suffix: сек
   badge: 47 сек
-  intro: Его выводили биться против сильнейших — он выигрывал и не сдавался
-  poster: /muzei/ne-sdayutsya/video/day-31jan-borzenko-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-31jan-borzenko.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42086799346) из сценария days/ns31jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-31jan-borzenko-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-31jan-borzenko.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Андрей Борзенко
@@ -179,8 +178,8 @@ fakty:
           license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ); автор — Р. Ф. Ефименко; на рисунке есть немецкая надпись ворот — в подписи её не повторяем
           podpis: Рисунок бывшего узника Бухенвальда Романа Ефименко «Восстание узников концлагеря „Бухенвальд“» (фотокопия из музея).
           credit: МБУК «Музей „Набат памяти“» города Можги, Госкаталог № 36173291
-          width: 1420
-          height: 2148
+          width: 1058
+          height: 1600
         utverzhden: 2026-11-03
       - summary: <b>Подполковник Смирнов повёл советских пленных на охрану Бухенвальда — они взяли склад оружия.</b>
         det:
@@ -392,15 +391,7 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: index.html
-    title: 1 февраля — Александр Пересвет (запись готовится)
-    hook: Монах вышел на поединок перед битвой — оба бойца не доехали до своих рядов
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

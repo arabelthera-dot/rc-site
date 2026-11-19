@@ -82,10 +82,9 @@ video:
   pole: nesdayutsya/15jan-chelyuskincy:horizontal.sec
   suffix: сек
   badge: 49 сек
-  intro: Лёд раздавил корабль — и 104 человека со льдины вынесли лётчики, всех до одного
-  poster: /muzei/ne-sdayutsya/video/day-15jan-chelyuskincy-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-15jan-chelyuskincy.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns15jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-15jan-chelyuskincy-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-15jan-chelyuskincy.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Пройти Север за одну навигацию
@@ -409,15 +408,7 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: podvig-nastoyaschiy-chelovek.html
-    title: 16 — «Повесть о настоящем человеке»
-    hook: Без обеих ног лётчик вернулся в небо — и сбивал тех, кто его списал.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

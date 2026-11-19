@@ -78,10 +78,9 @@ video:
   pole: nesdayutsya/06jan-osovets:horizontal.sec
   suffix: сек
   badge: 57 сек
-  intro: Отравленные газом защитники Осовца поднялись в контратаку — и немцы бежали от тех, кто по всем законам уже не мог подняться.
-  poster: /muzei/ne-sdayutsya/video/day-06jan-osovets-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-06jan-osovets.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41876731468) из сценария days/ns06jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-06jan-osovets-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-06jan-osovets.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Контратака, которую назвали «атакой мертвецов»
@@ -379,15 +378,7 @@ sources:
   - html: 'Снимок 1915 года: лес и равнина у крепости Осовец во время обстрела — <a href="https://goskatalog.ru/portal/#/collections?id=4975631" rel="noopener">Государственный центральный музей современной истории России, Госкаталог музейного фонда</a>. Общественное достояние: автор неизвестен, снимок сделан до 1917 года.'
 kuda:
   - lbl: Следующий день
-    href: podvig-gastello.html
-    title: 7 — Николай Гастелло
-    hook: Капитан Гастелло развернул горящий бомбардировщик на колонну врага — и никто из четверых не покинул машину.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

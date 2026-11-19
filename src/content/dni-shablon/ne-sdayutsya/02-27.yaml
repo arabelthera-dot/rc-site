@@ -1,0 +1,786 @@
+# Р773: день 27 февраля — Азовское осадное сидение, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-27
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Азовское осадное сидение — «Русские не сдаются» — Русская цивилизация
+  description: Казаки выдержали «осадное сидение» против армии — и не сдали крепость
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-27/
+  sobytie: Азовское осадное сидение
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Азовское осадное сидение — «Русские не сдаются» — Русская цивилизация
+    description: Казаки выдержали «осадное сидение» против армии — и не сдали крепость
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-27/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Азовское осадное сидение — «Русские не сдаются»
+    description: Казаки выдержали «осадное сидение» против армии — и не сдали крепость
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-27/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1641'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-27-goskatalog-62833567.jpg
+  alt: 'Обложка старой книги: слева вверху библиотечная наклейка, ниже — имя автора, название, слово «Тексты» и внизу «Москва. Синодальная типография».'
+  data_source: https://goskatalog.ru/portal/#/collections?id=50364706
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Книга А. Орлова «Исторические и поэтические повести об Азове», Москва, 1906 год: тексты повестей о взятии Азова и осадном сидении. Хранится в Азовском музее-заповеднике.'
+  credit: Азовский музей-заповедник, Госкаталог № 50127538
+  width: 607
+  height: 800
+  vid: dokument
+  glavnoe_na_kartinke:
+    x: 0.0
+    y: 0.0
+    w: 1.0
+    h: 1.0
+  nomer_predmeta: net
+  nomer_snimka: '62833567'
+  hranitel: Азовский музей-заповедник, Азов
+  podpis_chto: Книга А. Орлова «Исторические и поэтические повести об Азове (взятие 1637 г. и осадное сидение 1641 г.). Тексты»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1906 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Азовский музей-заповедник, Азов
+    otkuda: https://goskatalog.ru/portal/#/collections?id=50364706
+  svyashchennoe: false
+  prava:
+    avtor: А. С. Орлов (составитель)
+    god_sozdaniya: '1906'
+    god_smerti_avtora: 1947
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 50127538
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 50127538
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=50364706
+  hint: Азовское осадное сидение
+  celikom: true
+kroshka: День 27 · Азовское осадное сидение
+lead:
+  data: День 27 · февраль · Азов, 1641 год
+  privyazka: 'Дата условная: 27 февраля — день музея; событие — Азовское осадное сидение, 24 июня — 26 сентября 1641 года.'
+  kto: Донские казаки · гарнизон Азова
+  h1: Азовское осадное сидение
+  hook: Казаки выдержали «осадное сидение» против армии — и не сдали крепость.
+stamp:
+- v: '93'
+  k: дня в осаде
+- v: '28'
+  k: подкопов под турецкий лагерь
+- v: '1500'
+  k: янычар закинуло взрывом в город
+- v: '6000'
+  k: наёмных солдат из Европы
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/27feb-azov
+  format: horizontal
+  pole: nesdayutsya/27feb-azov:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  poster: /muzei/ne-sdayutsya/video/day-27feb-azov-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-27feb-azov.mp4
+  note: Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Азовское осадное сидение
+  abzacy:
+  - В июне 1637 года донские казаки взяли турецкую крепость Азов в устье Дона. Взяли сами, без царского указа. Четыре года крепость стояла казачьей.
+  - 24 июня 1641 года к Азову подошло войско султана и крымского хана — по росписи казаков, 256 тысяч человек. В крепости сидели около 5,5 тысячи донцов, среди них 800 женщин. Стены рушились от пушек — казаки уходили под землю, вели подкопы и отбивали приступы. 93 дня и 93 ночи они держались, и в ночь на 26 сентября турецкое войско ушло.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Азовское осадное сидение
+  udary:
+  - id: ns-0227-gora
+    summary: Турки насыпали гору выше стен — казаки взорвали её подкопом и закинули в город 1500 янычар живьём.
+    det:
+    - Турки насыпали у стен земляной вал выше крепости. Казаки подвели под него подкоп и взорвали турецким же порохом.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «Их же побило ею многия тысящи, и к нам их янычаня тем нашим подкопом живых их в город кинуло тысячу пятьсот человек!»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0227-protiv-armii
+    summary: 5,5 тысячи казаков 93 дня держали Азов против армии в 256 тысяч — и турки ушли ни с чем.
+    det:
+    - Среди защитников было 800 женщин. Осада шла с июня до конца сентября 1641 года.
+    src: 'Источник: Большая советская энциклопедия. Азовское сидение — https://www.booksite.ru/fulltext/1/001/008/003/554.htm; «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://www.booksite.ru/fulltext/1/001/008/003/554.htm
+    otryvok: «донцы (около 5,5 тыс. человек, в том числе 800 женщин) проявили исключительную стойкость и искусство в его обороне»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 2
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-27-goskatalog-8582393.jpg
+      alt: 'Обложка брошюры: рисунок казачьей шапки с пером и сабли, сбоку библиотечный штамп.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=11202566
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Брошюра Б. В. Лунина «300-летие Азовского сидения», Ростовский областной музей краеведения, 1941 год. Хранится в Таганрогском музее-заповеднике.
+      credit: Таганрогский музей-заповедник, Госкаталог № 11085666
+      width: 800
+      height: 600
+      vid: dokument
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 1.0
+      nomer_predmeta: net
+      nomer_snimka: '8582393'
+      hranitel: Таганрогский музей-заповедник, Таганрог
+      podpis_chto: Брошюра «300-летие Азовского сидения (1641–1941)»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1941 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Таганрогский музей-заповедник, Таганрог
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11202566
+      svyashchennoe: false
+      prava:
+        avtor: Б. В. Лунин
+        god_sozdaniya: '1941'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 11085666
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 11085666
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11202566
+  - id: ns-0227-nevmoch
+    summary: «Сидеть невмочь — взорвём стены вместе с собой, а живыми не дадимся», — ответили казаки туркам.
+    det:
+    - Так записаны расспросные речи казаков в Посольском приказе. «Зелье» — порох.
+    src: 'Источник: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 4 — https://ruhistor.ru/azovskoe_sidenie004.html'
+    stranica: текст
+    href: https://ruhistor.ru/azovskoe_sidenie004.html
+    otryvok: «А будет де им, донским казаком, сидеть в Азове невмочь, и они де донские казаки наставят в городе под стенами бочки [з] зельем, и те бочки запалят, и городовые де стены взорвут»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 3
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-27-goskatalog-20644864.jpg
+      alt: Кирпичный арочный свод, под ним ступени ведут вверх; на стене процарапанные надписи; снимок наклеен на тёмный картон.
+      data_source: https://goskatalog.ru/portal/#/collections?id=19939373
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Азовские крепостные ворота и пороховой погреб, фотокопия 1960–1970-х годов. Хранится в Старочеркасском музее-заповеднике.
+      credit: Старочеркасский музей-заповедник, Госкаталог № 19806125
+      width: 800
+      height: 583
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '20644864'
+      hranitel: Старочеркасский музей-заповедник, Старочеркасская
+      podpis_chto: Фотокопия «Азовские крепостные ворота и пороховой погреб»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1960–1970-е годы
+      simvolika_proverena: true
+      podlinnik:
+        gde: Старочеркасский музей-заповедник, Старочеркасская
+        otkuda: https://goskatalog.ru/portal/#/collections?id=19939373
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1960–1970-е
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19806125
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 19806125
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=19939373
+  - id: ns-0227-chervonec
+    summary: 'Турки за каждую голову янычара давали червонец — казаки: «Не продаём мы трупа мёртвого».'
+    det:
+    - Турки предлагали выкуп за тела своих убитых. Казаки денег не взяли.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «А давали нам за всякую убитую яныческу голову по золотому червонному… „Не продаем мы никогда трупу мертвого, но дорога нам слава вечная.“»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 4
+  - id: ns-0227-kamyshinka
+    summary: Подмога плыла в осаждённый Азов под водой Дона, дыша через камышинку, — по 500–600 за ночь.
+    det:
+    - Об этом написал турецкий путешественник Эвлия Челеби — он сам был под Азовом.
+    src: 'Источник: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 4 — https://ruhistor.ru/azovskoe_sidenie004.html'
+    stranica: текст
+    href: https://ruhistor.ru/azovskoe_sidenie004.html
+    otryvok: «каждую ночь в крепость стали переправляться, по словам Эвлии, по 500-600 казаков, которые, раздевшись и погрузившись в воды реки Дон, плыли, дыша с помощью взятой в рот камышинки.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 5
+  - id: ns-0227-vykup
+    summary: Каждому казаку сулили 300 талеров серебра и 200 золота за «пустое место» — казаки отказали.
+    det:
+    - Грамоты с предложением турки забрасывали в крепость на стрелах. Казаки отказали.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «А в них оне пишут к нам, просят у нас пустого места азовского. А дают за него нам выкупу на всякого молодца по триста тарелей сребра чистого да по двести тарелей золота красного.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 6
+  - id: ns-0227-iisus
+    summary: Казаки расписали стены крестами и кричали «Иисус!» — турки решили, что пришли 10 тысяч свежих.
+    det:
+    - Турки решили, что к казакам по Дону пришла подмога.
+    src: 'Источник: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 3 — https://www.ruwords.ru/azovskoe_sidenie003.html'
+    stranica: текст
+    href: https://www.ruwords.ru/azovskoe_sidenie003.html
+    otryvok: «Казаки наполнили крепость криками „Иисус! Иисус!“, разукрасив крестами крепостные стены и башни. Оказывается, продолжает Эвлия, к осажденным „в ту мрачную ночь по реке Дон прибыло на помощь десять тысяч кяфиров“»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 7
+  - id: ns-0227-otchayalos
+    summary: «Войско отчаялось завоевать крепость», — записал о казаках турецкий летописец Эвлия Челеби.
+    det:
+    - 'Это слова врага: Эвлия Челеби был в турецком войске под Азовом.'
+    src: 'Источник: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 4 — https://ruhistor.ru/azovskoe_sidenie004.html'
+    stranica: текст
+    href: https://ruhistor.ru/azovskoe_sidenie004.html
+    otryvok: «В конце концов войско отчаялось завоевать крепость»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 8
+  - id: ns-0227-svoevolie
+    summary: 'В 1637 году казаки взяли Азов без царского указа — Москва объявила султану: их «своеволие».'
+    det:
+    - Казаки взяли Азов в июне 1637 года. Через четыре года к нему пришло войско султана.
+    src: 'Источник: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 1 — https://ruhistor.ru/azovskoe_sidenie001.html'
+    stranica: текст
+    href: https://ruhistor.ru/azovskoe_sidenie001.html
+    otryvok: «заявили турецкой стороне о своей непричастности к взятию Азова, привычно сославшись на „своеволие“ донских казаков и их неподчинение Москве.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 9
+  - id: ns-0227-podkopy
+    summary: Из нор под турецким валом казаки повели 28 подкопов — прямо под вражеский лагерь.
+    det:
+    - Казаки жили под землёй, под самым валом, и по ночам выходили на вылазки.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «И с тех мы потайных дворов своих под них повели 28 подкопов, под их таборы.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 10
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё об Азовском сидении
+  udary:
+  - id: ns-0227-iskandera
+    summary: За ночь казаки чинили всё разбитое за день — «как новая Стена Искандера», писал турок.
+    det:
+    - Искандер — так на Востоке называют Александра Македонского.
+    src: 'Источник: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 4 — https://ruhistor.ru/azovskoe_sidenie004.html'
+    stranica: текст
+    href: https://ruhistor.ru/azovskoe_sidenie004.html
+    otryvok: «Они восстановили тайники для засад и бойницы, воздвигнув, по словам автора, „как бы новую Стену Искандера“»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 11
+  - id: ns-0227-naemniki
+    summary: Султан нанял против казаков 6000 европейских солдат и подкопных мастеров из Венеции и Испании.
+    det:
+    - «Немцами» тогда звали всех европейцев. «Опанея» — Испания.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «Да с ними ж, пашами, было наемных людей и у них немецких два полковника, а с ними солдат 6000. Да с ними ж, пашами, было для промыслов над нами многие немецкие люди городоимцы, приступные и подкопные мудрые вымышленники многих государств из Решеллинских и Опанеи великия, Венецеи великие…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 12
+  - id: ns-0227-96-tysyach
+    summary: Казаки насчитали 96 тысяч убитых врагов — в 17 раз больше, чем было защитников Азова.
+    det:
+    - Счёт казаки вели со слов пленных турок.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «побито однех у них мурз и татар, янычен их, девяносто шесть тысящ… А нас всех казаков в осаде село в Азове толко 7367-м человек.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 13
+  - id: ns-0227-begstvo
+    summary: Турецкая армия бежала из-под Азова ночью, за четыре часа до рассвета, — никем не гонимая.
+    det:
+    - Казаки держались 93 дня и 93 ночи. Турки ушли в ночь на 26 сентября 1641 года.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «А сентября в 26 день в нощи от Азова-города турецкие паши с турки и крымской царь со всеми силами за четыре часа до свету, возмятясь окаянные и вострепетась, побежали, никем нами гоними.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0227-vstrechnye
+    summary: Турки повели семь встречных подкопов — казаки устерегли все и взорвали вместе с врагом.
+    det:
+    - После этого турки перестали рыть подкопы.
+    src: 'Источник: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15 — https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20'
+    stranica: текст
+    href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+    otryvok: «повели уже к нам напротиву из своего табору семь подкопов своих… И мы милостию Божиею устерегли все те подкопы их, порохом всех их взорвало»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 15
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 93 дня; 2 — 28 подкопов; 3 — 800 женщин; 4 — через камышинку; 5 — ночью, до рассвета.'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: сколько дней казаки держали Азов?'
+    o:
+    - '9'
+    - '39'
+    - '93'
+    - '193'
+    a: 2
+    e: 93 дня и 93 ночи — с 24 июня до 26 сентября 1641 года.
+  - q: Сколько подкопов казаки повели под турецкий лагерь?
+    o:
+    - '2'
+    - '8'
+    - '28'
+    - '280'
+    a: 2
+    e: Из нор под турецким валом казаки повели 28 подкопов.
+  - q: Сколько женщин было среди защитников Азова?
+    o:
+    - Ни одной
+    - '80'
+    - '800'
+    - '8000'
+    a: 2
+    e: Около 5,5 тысячи донцов, в том числе 800 женщин.
+  - q: Как подмога пробиралась в крепость под водой Дона?
+    o:
+    - В лодках
+    - Дыша через камышинку
+    - По мосту
+    - На плотах
+    a: 1
+    e: По 500–600 казаков за ночь плыли под водой, дыша через камышинку.
+  - q: Когда турецкая армия ушла из-под Азова?
+    o:
+    - Днём, после боя
+    - Ночью, до рассвета
+    - Весной
+    - Через год
+    a: 1
+    e: За четыре часа до рассвета — никем не гонимая.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-27-goskatalog-18519124.jpg
+  alt: Шапка из красной парчи с золотым цветочным узором, отороченная мехом, с двумя перьями.
+  data_source: https://goskatalog.ru/portal/#/collections?id=18390757
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Шапка донского казака, вернувшегося из похода, XVI — начала XVII века: реконструкция 2008 года. Хранится в Волгодонском эколого-историческом музее.'
+  credit: Волгодонский эколого-исторический музей, Госкаталог № 18257894
+  width: 741
+  height: 963
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '18519124'
+  hranitel: Волгодонский эколого-исторический музей, Волгодонск
+  podpis_chto: Шапка из костюма донского казака, вернувшегося из похода, XVI — начала XVII века, реконструкция
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 2008 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей, Волгодонск
+    otkuda: https://goskatalog.ru/portal/#/collections?id=18390757
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '2008'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 18257894
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 18257894
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=18390757
+  hint: Шапка донского казака
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-27-goskatalog-18519125.jpg
+  alt: Красная атласная рубаха с семью золотыми нашивками из галуна на груди.
+  data_source: https://goskatalog.ru/portal/#/collections?id=18390758
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Рубаха донского казака, вернувшегося из похода, XVI — начала XVII века: реконструкция 2008 года. Хранится в Волгодонском эколого-историческом музее.'
+  credit: Волгодонский эколого-исторический музей, Госкаталог № 18257893
+  width: 1199
+  height: 1184
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '18519125'
+  hranitel: Волгодонский эколого-исторический музей, Волгодонск
+  podpis_chto: Рубаха из костюма донского казака, вернувшегося из похода, XVI — начала XVII века, реконструкция
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 2008 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей, Волгодонск
+    otkuda: https://goskatalog.ru/portal/#/collections?id=18390758
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '2008'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 18257893
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 18257893
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=18390758
+  hint: Рубаха донского казака
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-27-goskatalog-18519100.jpg
+  alt: Песочного цвета льняная рубаха с длинными рукавами и завязками у ворота, разложенная на светлой ткани.
+  data_source: https://goskatalog.ru/portal/#/collections?id=18390740
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Рубаха донского казака в походе «за зипунами», XVI — начала XVII века: реконструкция 2008 года. Хранится в Волгодонском эколого-историческом музее.'
+  credit: Волгодонский эколого-исторический музей, Госкаталог № 18257841
+  width: 1599
+  height: 927
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '18519100'
+  hranitel: Волгодонский эколого-исторический музей, Волгодонск
+  podpis_chto: Рубаха из костюма донского казака в походе «за зипунами», XVI — начала XVII века, реконструкция
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 2008 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Волгодонский эколого-исторический музей, Волгодонск
+    otkuda: https://goskatalog.ru/portal/#/collections?id=18390740
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '2008'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 18257841
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 18257841
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=18390740
+  hint: Рубаха казака в походе
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-27-goskatalog-10335780.jpg
+  alt: 'Два листа с рисунками тушью: слева бородатый атаман в высокой меховой шапке и длинном кафтане с посохом, справа казак в халате с саблей.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=12489779
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Г. А. Ознобишин. «Войсковой донской атаман XVII века» и «Донской казак XVIII века», рисунки тушью, 1876 год. Хранятся в Новочеркасском музее истории донского казачества.'
+  credit: Новочеркасский музей истории донского казачества, Госкаталог № 12366332
+  width: 1600
+  height: 1200
+  vid: risunok
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.15
+    w: 0.4
+    h: 0.75
+  nomer_predmeta: net
+  nomer_snimka: '10335780'
+  hranitel: Новочеркасский музей истории донского казачества, Новочеркасск
+  podpis_chto: Рисунки Г. А. Ознобишина «Войсковой атаман XVII в., Донской казак XVIII в.»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1876 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Новочеркасский музей истории донского казачества, Новочеркасск
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12489779
+  svyashchennoe: false
+  prava:
+    avtor: Г. А. Ознобишин
+    god_sozdaniya: '1876'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 12366332
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 12366332
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12489779
+  hint: Донской атаман XVII века
+  celikom: true
+sources:
+- href: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+  title: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15
+  note: к фактам 1, 2, 4, 6, 10, 12, 13, 14, 15
+- href: https://www.booksite.ru/fulltext/1/001/008/003/554.htm
+  title: Большая советская энциклопедия. Азовское сидение
+  note: к факту 2
+- href: https://ruhistor.ru/azovskoe_sidenie004.html
+  title: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 4
+  note: к фактам 3, 5, 8, 11
+- href: https://www.ruwords.ru/azovskoe_sidenie003.html
+  title: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 3
+  note: к факту 7
+- href: https://ruhistor.ru/azovskoe_sidenie001.html
+  title: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 1
+  note: к факту 9
+kuda:
+- lbl: Следующий день
+  main: true
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Азовское осадное сидение — Музей стойкости и подвига «Русские не сдаются»
+    text: Казаки выдержали «осадное сидение» против армии — и не сдали крепость
+  prev:
+    href: /muzei/ne-sdayutsya/den/02-26/
+    title: 26 февраля · Святитель Лука
+  next:
+    href: /muzei/ne-sdayutsya/den/02-28/
+    title: 28 февраля · Лиза Чайкина
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько дней донские казаки держали Азов?
+  a: 93 дня
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0227-azov
+data_sobytiya: '1641-10-06'
+data_staryj_stil: '1641-09-26'
+data_uslovnaya: 27 февраля — день музея; событие — Азовское осадное сидение, 24 июня — 26 сентября 1641 года по старому стилю (6 октября по новому).
+chto_sluchilos: Летом 1641 года войско султана и крымского хана осадило Азов, взятый донскими казаками в 1637 году. Около 5,5 тысячи казаков 93 дня отбивали приступы, вели подкопы и в ночь на 26 сентября заставили турок уйти.
+god: 1641
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Книга А. Орлова «Исторические и поэтические повести об Азове (взятие 1637 г. и осадное сидение 1641 г.). Тексты», 1906
+  muzej: Азовский музей-заповедник
+  gorod: Азов
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=50364706
+- chto: Брошюра «300-летие Азовского сидения (1641–1941)», 1941
+  muzej: Таганрогский музей-заповедник
+  gorod: Таганрог
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=11202566
+- chto: Фотокопия «Азовские крепостные ворота и пороховой погреб», 1960–1970-е
+  muzej: Старочеркасский музей-заповедник
+  gorod: Старочеркасская
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=19939373
+- chto: Шапка из костюма донского казака, вернувшегося из похода, XVI — начала XVII века, реконструкция, 2008
+  muzej: Волгодонский эколого-исторический музей
+  gorod: Волгодонск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18390757
+chitat_dalshe:
+- nazvanie: Повесть об Азовском осадном сидении донских казаков
+  gde: Библиотека литературы Древней Руси, т. 15
+  ssylka: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+- nazvanie: Азовское осадное сидение 1641 г. Взятие Азова
+  gde: О. Ю. Куц, «Ратное дело»
+  ssylka: https://ruhistor.ru/azovskoe_sidenie001.html
+- nazvanie: Азовское осадное сидение 1641 г. Начало осады
+  gde: О. Ю. Куц, «Ратное дело»
+  ssylka: https://www.ruwords.ru/azovskoe_sidenie003.html
+- nazvanie: Азовское осадное сидение 1641 г. Подкопная война
+  gde: О. Ю. Куц, «Ратное дело»
+  ssylka: https://ruhistor.ru/azovskoe_sidenie004.html
+istochniki:
+- id: n1
+  baza: kniga
+  nazvanie: «Повесть об Азовском осадном сидении донских казаков». Библиотека литературы Древней Руси, т. 15
+  ssylka: https://azbyka.ru/otechnik/Istorija_Tserkvi/biblioteka-literatury-drevnej-rusi-tom-15/20
+- id: n2
+  baza: kniga
+  nazvanie: Большая советская энциклопедия. Азовское сидение
+  ssylka: https://www.booksite.ru/fulltext/1/001/008/003/554.htm
+- id: n3
+  baza: kniga
+  nazvanie: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 1
+  ssylka: https://ruhistor.ru/azovskoe_sidenie001.html
+- id: n4
+  baza: kniga
+  nazvanie: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 3
+  ssylka: https://www.ruwords.ru/azovskoe_sidenie003.html
+- id: n5
+  baza: kniga
+  nazvanie: О. Ю. Куц. Азовское осадное сидение 1641 г. Глава 4
+  ssylka: https://ruhistor.ru/azovskoe_sidenie004.html
+- id: n6
+  baza: goskatalog
+  nazvanie: Госкаталог Музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=50364706
+citaty: []
+velichina_chislo: 93
+velichina_edinica: дня
+velichina_chto: держали Азов казаки
+voinskaya_chast: Войско Донское — гарнизон Азова
+operaciya: Оборона Азова от турецко-крымского войска
+front: Устье Дона, Азов, 1641
+mesto_sobytiya:
+  nazvanie: Азов, устье Дона
+  shirota: 47.11
+  dolgota: 39.42
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Книга А. Орлова «Исторические и поэтические повести об Азове», 1906
+- Азовский музей-заповедник
+slovar:
+- lyudi:azovskie-sidelcy
+vizual:
+  imya: azov-povesti-orlov
+  vid: dokument
+  kicker: Книга под лупой
+  h2: Повесть об Азовском сидении
+  lead: 'Эту книгу 2003 года хранит музей в Таганроге. Приблизь снимок: на обложке казак с саблей рубится в гуще боя, внизу на ленте — название повести.'
+audioguide:
+  audioSrc: audio-guide-azov-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от взятия Азова через подкопы и отказ от выкупа — к ночному бегству турок: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Своеволие
+  - t: 22
+    mark: 0:22
+    title: Против армии
+  - t: 44
+    mark: 0:44
+    title: Подкопы
+  - t: 66
+    mark: '1:06'
+    title: Не продаём
+  - t: 88
+    mark: '1:28'
+    title: Бегство
+  transcript:
+  - 'В тысяча шестьсот тридцать седьмом году донские казаки взяли турецкую крепость Азов — сами, без царского указа. Москва объявила султану: это их «своеволие».'
+  - Летом тысяча шестьсот сорок первого года к Азову пришла армия султана. Пять с половиной тысяч казаков девяносто три дня держали Азов — и турки ушли ни с чем.
+  - Стены рушились — казаки ушли под землю. Из нор под турецким валом они повели двадцать восемь подкопов. Турки насыпали гору выше стен — казаки взорвали её и закинули в город полторы тысячи янычар.
+  - 'Турки сулили каждому казаку триста талеров серебра и двести золота за «пустое место». За каждую голову янычара давали червонец. Казаки ответили: «Не продаём мы трупа мёртвого».'
+  - В ночь на двадцать шестое сентября, за четыре часа до рассвета, турецкая армия бежала из-под Азова — никем не гонимая.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.

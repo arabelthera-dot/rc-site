@@ -27,6 +27,9 @@ permissions:
 # (9.11) ставил каждое вливание отдельной полной сборкой по ~16 мин подряд — 10.11 очередь из 13 выкладок отстала на 2,5 ч.
 # Дыра 9.11 (3fb34f3c, 782ddde1 не дошли) была в «nado»: расписание вытесняло ожидающее вливание и выходило, раз сегодня
 # уже собирали. Теперь расписание выходит, только если сегодня собран именно этот коммит main. Откат — вернуть queue: max.
+# cancel-in-progress: true не ставим (r790, 16.11.2026): при слияниях каждые 5–10 минут каждая выкладка рубила бы
+# предыдущую, и сайт не обновлялся бы весь поток; оборванный посреди rsync сервер остался бы с частью новых файлов.
+# Нынешнее «один работает, ждёт один самый свежий» и даёт из 10 слияний подряд не больше двух выкладок.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -37,7 +40,7 @@ jobs:
   # Запуски deploy.yml идут по одному (concurrency: pages), поэтому двух проверяющих одновременно не бывает.
   # Слияние в main и ручной запуск собирают всегда. Ошибка API — собираем (лишняя сборка лучше вчерашнего сайта).
   nado:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     permissions:
       actions: read
     outputs:
@@ -65,7 +68,7 @@ jobs:
   build:
     needs: nado
     if: needs.nado.outputs.sobrat == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     # Основной адрес https://russian-civilization.ru/ — сервер msk-new (nginx + Let's Encrypt, с 21.10.2026), задача msk ниже;
     # Pages этого репо — зеркало (свой домен с Pages снят). Индексируется основной адрес.
     env:
@@ -83,10 +86,12 @@ jobs:
       RC_PO_DATE: ${{ vars.RC_PO_DATE }}
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
-      # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.
+      # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату. История — без старых версий файлов
+      # (частичный клон blob:none, Р819): git log по путям читает только коммиты и деревья, старые ролики не качаются.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          filter: blob:none
       # Кэш сборки (Р737 п.7а) — тот же путь и ключ, что в proverka.yml: заявки берут кэш, сохранённый здесь на main.
       # Кадры пересылки rc-og-den, картинки rc-kartinki, плитки лупы rc-dz и кэш Astro ключуются хешем содержимого.
       # Восстанавливается до withastro/action: там npm install (не ci), папки на точку в node_modules он не трогает.
@@ -104,37 +109,63 @@ jobs:
           restore-keys: |
             rc-sborka-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
             rc-sborka-${{ runner.os }}-
-      # Ролики — только со своего сервера (Р263, Сергей 26.10.2026; заявка r284): Pages — 1 ГБ на сайт, сборка
-      # с роликами упёрлась в 950 МБ. После сборки все *.mp4 переносятся (не удаляются) из dist/ в video-sajta/ с теми
-      # же путями: в артефакт github-pages (выкладка Pages) уходит сборка без роликов, ролики — отдельным артефактом
-      # video-sajta, задача msk складывает их обратно в полную сборку для сервера. На копии Pages ролика нет (там и так
-      # не грузятся стили: base '/', адрес …/rc-site/) — тег <video> с постером, проигрывание — 404.
-      # Откат — убрать build-cmd и шаг «video-sajta», в msk — шаг «ролики обратно».
-      # MEDIA_BASE (#2364, шаг 4): пусто — ролики со своего сервера, как раньше; https://media.russian-civilization.ru —
-      # scripts/media-base.mjs переписывает ссылки mp4 на хранилище. Ставится переменной репо только после media.yml 108/108.
+      # Картинки — и в хранилище media.russian-civilization.ru (Р825 задача F, 19.11.2026): картинки остаются в git и в
+      # dist, этот шаг докладывает их из public/ в хранилище, как rolik-na-sait.yml ролики. vars.MEDIA_KARTINKI: пусто —
+      # выключено; путь страницы от корня dist (muzei/…/den/02-02) или список через запятую — только они; '*' — все.
+      # MEDIA_KARTINKI попадает в сборку, только если закачка удалась: тогда scripts/media-base.mjs ставит img/srcset
+      # прямых ссылок на хранилище. Не удалась — предупреждение, картинки берутся из dist, как раньше.
+      # Откат — опустошить vars.MEDIA_KARTINKI.
+      # Картинки шаблона (dist/_k/) рождаются только в сборке — их докладывает scripts/kartinki-k-v-hranilishche.sh
+      # в build-cmd ниже (Р825 задача G); ключ хранилища поэтому есть и в env шага сборки.
+      - name: картинки в хранилище
+        if: vars.MEDIA_KARTINKI != ''
+        env:
+          MEDIA_KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
+          IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+          MOST: ${{ vars.RU_MOST }}
+          MOST2: ${{ vars.RU_MOST2 }}
+          KARTINKI: ${{ vars.MEDIA_KARTINKI }}
+        run: |
+          [ -n "$MEDIA_KLYUCH" ] || { echo "::warning::нет секрета MEDIA_SSH_KEY — картинки из dist"; exit 0; }
+          most=$(scripts/prohod-v-rossiyu.sh) || { echo "::warning::нет прохода в Россию — картинки из dist"; exit 0; }
+          S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
+          # без --delete — только докладываем; --checksum — как у роликов (r790)
+          rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' \
+            --include='*.jpg' --include='*.jpeg' --include='*.png' --include='*.webp' --include='*.avif' --include='*.gif' --include='*.svg' \
+            --exclude='*' --prune-empty-dirs \
+            -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $most" \
+            public/ rcmedia@185.149.145.227: | tail -n 4
+          kod=${PIPESTATUS[0]}; rm -rf "$S"
+          [ "$kod" = 0 ] || { echo "::warning::картинки не доложены в хранилище (rsync $kod) — картинки из dist"; exit 0; }
+          echo "MEDIA_KARTINKI=$KARTINKI" >> "$GITHUB_ENV"
+      # Ролики — только в хранилище media.russian-civilization.ru (Р825 задача A, 18.11.2026): mp4 в public/ нет, их
+      # кладёт туда rolik-na-sait.yml, список — src/data/hranilishche-rolikov.sha256. Сборка выходит без роликов, и
+      # прежний перенос mp4 в артефакт video-sajta (Р263, r284) убран вместе с ним из msk и paket.
+      # MEDIA_BASE=https://media.russian-civilization.ru обязателен: scripts/media-base.mjs ставит ссылки mp4 на хранилище.
+      # Пустой MEDIA_BASE больше не откат — роликов на сайте нет; откат — revert заявки Р825 шаг 5.
+      # Рамка зеркала (п.501, Р745): scripts/ramka-zerkala.mjs — копия на *.github.io не показывается внутри чужой
+      # страницы; на своём сервере скрипт молчит. Откат — убрать три строки ramka/csp из build-cmd.
       - uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
         env:
           MEDIA_BASE: ${{ vars.MEDIA_BASE }}
+          MEDIA_KLYUCH: ${{ vars.MEDIA_KARTINKI != '' && secrets.MEDIA_SSH_KEY || '' }}
+          IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+          MOST: ${{ vars.RU_MOST }}
+          MOST2: ${{ vars.RU_MOST2 }}
         with:
           cache: false
           build-cmd: >-
             npm run build &&
-            mkdir -p video-sajta &&
-            (cd dist && find . -type f -name '*.mp4' -print0 | xargs -0 -r cp --parents -p -t ../video-sajta) &&
-            find dist -type f -name '*.mp4' -delete &&
-            echo "ролики вынесены из сборки Pages: $(find video-sajta -type f -name '*.mp4' | wc -l) mp4, $(du -sm video-sajta | cut -f1) МБ; сборка Pages $(du -sm dist | cut -f1) МБ"
-      - name: video-sajta — ролики отдельным артефактом для своего сервера
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2 (та же, что в withastro/action)
-        with:
-          name: video-sajta
-          path: video-sajta
-          retention-days: 1
-          compression-level: 0
-          if-no-files-found: error
+            bash scripts/kartinki-k-v-hranilishche.sh &&
+            node scripts/ramka-zerkala.mjs --proba &&
+            node tests/csp-strogiy.mjs &&
+            node scripts/ramka-zerkala.mjs dist &&
+            echo "сборка $(du -sm dist | cut -f1) МБ, mp4 в ней: $(find dist -type f -name '*.mp4' | wc -l)"
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
@@ -144,10 +175,33 @@ jobs:
     # reached»), сайт ждал ручного перезапуска. Образец — docs.github.com, контекст steps: первая попытка с
     # continue-on-error, вторая — только при steps.deployment.outcome == 'failure', после паузы; та же сборка (артефакт
     # github-pages). Вторая тоже упала — прогон красный, как прежде. Откат — убрать шаги pauza и povtor.
+    # Зеркало для заграницы (Р815, 18.11.2026): Pages живёт в подпапке /rc-site/, сборка — под корень домена, поэтому
+    # на копии артефакта пути переписываются scripts/zerkalo-podpapka.mjs и выкладывается артефакт github-pages-zerkalo.
+    # Артефакт github-pages (его берут msk и paket для .ru) не меняется. Откат — убрать три шага zerkalo и artifact_name.
     steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: scripts/zerkalo-podpapka.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: github-pages
+          path: artefakt
+      - name: zerkalo — пути под подпапку /rc-site/
+        run: |
+          set -euo pipefail
+          mkdir -p zerkalo && tar -xf artefakt/artifact.tar -C zerkalo && rm -rf artefakt
+          node scripts/zerkalo-podpapka.mjs zerkalo /rc-site
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: zerkalo
+          name: github-pages-zerkalo
+          retention-days: 1
       - id: deployment
         continue-on-error: true
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        with:
+          artifact_name: github-pages-zerkalo
       - name: pauza — Pages отказал, вторая попытка через минуту
         if: steps.deployment.outcome == 'failure'
         run: |
@@ -156,9 +210,11 @@ jobs:
       - id: povtor
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        with:
+          artifact_name: github-pages-zerkalo
   # Российская площадка msk-new (Р6; решение Михаила 20.10.2026: сайт на своём сервере nginx + Let's Encrypt, Облако
-  # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages), плюс ролики (артефакт
-  # video-sajta, Р263) уходит rsync по ssh на
+  # не делаем — задача yandex снята): та же сборка, что ушла на Pages (артефакт github-pages; роликов
+  # в ней нет — они в хранилище media.russian-civilization.ru, Р825) уходит rsync по ssh на
   # rcdeploy@185.149.145.227. На сервере ключ ограничен rrsync -wo с корнем /srv/rc-site/www — путь в команде не пишется.
   # Ключ хоста — строкой ниже (не секрет, данные Михаила 20.10), StrictHostKeyChecking=yes: подменённый сервер сайт не
   # получит. --delay-updates + --delete-after: новые файлы подменяются разом в конце, старые удаляются после — посетитель
@@ -169,11 +225,16 @@ jobs:
   # как прежде. Откат — убрать эту задачу.
   msk:
     needs: build
-    runs-on: ubuntu-latest
+    # Исполнитель внутри России (r790, 16.11.2026; выключено): переменная репо RC_RUNNER_RF = '1' — задачи msk и zhivoy
+    # идут на свой исполнитель с метками self-hosted, rf (сервер в России, ставит Михаил — docs/vykladka-rf-runner.md);
+    # пусто — облако GitHub, как прежде. Нужен, когда msk-new закрыт из-за границы (с 13.11.2026 22/443 — timeout).
+    # Как в мире — docs.github.com «Choosing the runner for a job» (fromJSON-список меток). Откат — переменную очистить.
+    runs-on: ${{ vars.RC_RUNNER_RF == '1' && fromJSON('["self-hosted","rf"]') || 'ubuntu-24.04' }}
     # Окружение msk-new (Р64): секрет RU_DEPLOY_KEY переносится сюда из секретов репо (Михаил) с правилом «только main».
     # Пока окружение без правил — поведение прежнее.
     environment: msk-new
-    timeout-minutes: 20
+    # 40, а не 20 (r790): первая выкладка после закрытия везёт всё слитое с 13.11 разом; обычная с --checksum — минуты.
+    timeout-minutes: 40
     permissions:
       contents: read
     outputs:
@@ -184,7 +245,14 @@ jobs:
       IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
       ADRES: ${{ vars.RU_DEPLOY_URL }}
       RU_SAYT_MAX_MB: ${{ vars.RU_SAYT_MAX_MB }}
-      RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
+      # Проход в Россию (18.11.2026, без Михаила): msk-new с 13.11 закрыт из-за границы, а изнутри РФ открыт. vars.RU_MOST —
+      # адрес туннеля Cloudflare (trycloudflare.com) до нашего сервера, где узкий проход ведёт только на 185.149.145.227:22
+      # через РФ-выход (~/tools/rf-most). ssh идёт сквозь туннель как через ProxyJump: ключ RU_DEPLOY_KEY из облака не
+      # выходит, сервер сверяется по IZVESTNYE — подмена по пути невозможна. Пусто — прямой путь, как прежде (откат).
+      # Запасные (Р813): пути по порядку — прямой (если фильтр сняли), Cloudflare (RU_MOST), bore.pub (RU_MOST2, host:port);
+      # берётся первый, где сервер ответил баннером SSH. Адреса держит смотритель ~/tools/rf-most/smotritel.py.
+      MOST: ${{ vars.RU_MOST }}
+      MOST2: ${{ vars.RU_MOST2 }}
     steps:
       - id: est
         run: |
@@ -194,52 +262,44 @@ jobs:
           else
             echo "est=true" >> "$GITHUB_OUTPUT"
           fi
+      - name: проход в Россию
+        if: steps.est.outputs.est == 'true' && (env.MOST != '' || env.MOST2 != '')
+        run: |
+          set -euo pipefail
+          otvet() { timeout 25 bash -c "exec 3<>/dev/tcp/$1/$2 && head -c 7 <&3" 2>/dev/null | grep -q '^SSH-2.0'; }
+          if otvet 185.149.145.227 22; then echo "msk-new: прямой путь открыт — без прохода"; exit 0; fi
+          # Версия и контрольная сумма закреплены: чужой файл не запустится.
+          # Не скачался cloudflared — не беда, дальше запасной bore (ему в облаке ставить нечего: nc есть в образе).
+          if [ -n "$MOST" ] && curl -fsSL -o "$RUNNER_TEMP/cloudflared" https://github.com/cloudflare/cloudflared/releases/download/2026.11.1/cloudflared-linux-amd64 \
+             && echo "97bb3b02d23a5980fc9c15a1a270e692da1923f103f920d5b16d4931d5ab55e7  $RUNNER_TEMP/cloudflared" | sha256sum -c -; then
+            chmod +x "$RUNNER_TEMP/cloudflared"
+            printf '#!/bin/sh\nexec "%s" access tcp --hostname "%s"\n' "$RUNNER_TEMP/cloudflared" "$MOST" > "$RUNNER_TEMP/most.sh"
+            chmod +x "$RUNNER_TEMP/most.sh"
+            "$RUNNER_TEMP/cloudflared" access tcp --hostname "$MOST" --url 127.0.0.1:2222 >/dev/null 2>&1 &
+            cf=$!
+            est=0; for i in $(seq 1 15); do sleep 2; if otvet 127.0.0.1 2222; then est=1; break; fi; done
+            kill "$cf" || true
+            if [ "$est" = 1 ]; then
+              echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most.sh" >> "$GITHUB_ENV"; echo "msk-new: выкладка через проход $MOST"; exit 0
+            fi
+            echo "::warning::msk-new: проход Cloudflare $MOST не ответил — пробую запасной"
+          fi
+          if [ -n "$MOST2" ] && otvet "${MOST2%:*}" "${MOST2##*:}"; then
+            printf '#!/bin/sh\nexec nc %s %s\n' "${MOST2%:*}" "${MOST2##*:}" > "$RUNNER_TEMP/most2.sh"; chmod +x "$RUNNER_TEMP/most2.sh"
+            echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most2.sh" >> "$GITHUB_ENV"
+            echo "msk-new: выкладка через запасной проход $MOST2"; exit 0
+          fi
+          echo "::error::msk-new: ни прямой путь, ни проходы ($MOST, $MOST2) не отвечают — смотритель ~/tools/rf-most"; exit 1
       - if: steps.est.outputs.est == 'true'
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: github-pages
           path: artefakt
-      # Ролики обратно в сборку (Р263, r284): Pages получил сборку без *.mp4, сервер — полную. Роликов в сборке должно
-      # стать ровно столько, сколько в video-sajta, иначе выкладка останавливается: --delete-after стёр бы ролики с сервера.
-      - name: ролики обратно
-        if: steps.est.outputs.est == 'true'
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        with:
-          name: video-sajta
-          path: video-sajta
-      # Новые ролики — в хранилище media.russian-civilization.ru до выкладки страниц (#2364, шаг 3, поправка Михаила 2):
-      # rcmedia (rrsync -wo, корень /srv/rc-media), без --delete — только докладываем, путь тот же, что от корня сайта.
-      # Ссылки на хранилище ставит scripts/media-base.mjs при vars.MEDIA_BASE; задан — сбой докладки останавливает
-      # выкладку (иначе 404 на роликах), пуст — только предупреждение. Нет MEDIA_SSH_KEY — шаг спит.
-      - name: ролики в хранилище
-        if: steps.est.outputs.est == 'true'
-        env:
-          MEDIA_KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
-          MEDIA_BASE: ${{ vars.MEDIA_BASE }}
-        run: |
-          set -uo pipefail
-          if [ -z "$MEDIA_KLYUCH" ]; then echo "::notice::нет секрета MEDIA_SSH_KEY — ролики в хранилище не докладываются"; exit 0; fi
-          umask 077; mkdir -p ~/.ssh
-          printf '%s\n' "$MEDIA_KLYUCH" > ~/.ssh/media
-          printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
-          SSH="ssh -i $HOME/.ssh/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes"
-          rsync -rltz --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' -e "$SSH" video-sajta/ rcmedia@185.149.145.227: | tail -n 6
-          kod=$?; rm -f ~/.ssh/media
-          if [ "$kod" != 0 ]; then
-            if [ -n "$MEDIA_BASE" ]; then echo "::error::ролики не доложены в хранилище (rsync $kod), а ссылки ведут туда — выкладка остановлена"; exit 1; fi
-            echo "::warning::ролики не доложены в хранилище (rsync $kod); MEDIA_BASE пуст — сайт берёт ролики с себя"
-          fi
       - name: выкладка на msk-new
         if: steps.est.outputs.est == 'true'
         run: |
           set -euo pipefail
           mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
-          vsego=$(find video-sajta -type f -name '*.mp4' | wc -l)
-          [ "$vsego" -gt 0 ] || { echo "::error::msk-new: артефакт video-sajta пуст — выкладка остановлена"; exit 1; }
-          cp -a video-sajta/. dist/
-          v_dist=$(find dist -type f -name '*.mp4' | wc -l)
-          [ "$v_dist" = "$vsego" ] || { echo "::error::msk-new: роликов в сборке $v_dist, а вынесено $vsego — выкладка остановлена"; exit 1; }
-          echo "msk-new: роликов $v_dist из $vsego, $(du -sm video-sajta | cut -f1) МБ"
           # Проверка содержимого до выкладки (Р63): обязательные файлы есть, секретов и ключей нет, размер разумный.
           for f in index.html 404.html robots.txt; do
             test -f "dist/$f" || { echo "::error::msk-new: в сборке нет $f — выкладка остановлена"; exit 1; }
@@ -253,21 +313,22 @@ jobs:
           # Бюджет размера (Р536, п. 9) — как в мире, по частям, а не одним числом на всё (прежний RU_DEPLOY_MAX_MB от
           # du -sm dist рос вместе с роликами, 04.11 его подняли руками до 3000 — заплатка). Сайт без роликов — не больше
           # RU_SAYT_MAX_MB (1000: лимит опубликованного сайта GitHub Pages 1 ГБ, на Pages уходит эта же сборка —
-          # https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits); каждый ролик — не
-          # больше RU_ROLIK_MAX_MB (50; лимит на файл у статических хостингов: Cloudflare Pages 25 МБ, Pages 100 МБ).
-          # Общий объём роликов меряет не порог, а диск сервера: место кончилось — rsync падает, прогон красный (Михаил, М83).
-          sayt=$(du -sm --exclude='*.mp4' dist | cut -f1); echo "msk-new: сайт без роликов $sayt МБ, ролики $(du -sm video-sajta | cut -f1) МБ"
+          # https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits). Бюджет ролика
+          # RU_ROLIK_MAX_MB (Р825) — в rolik-na-sait.yml: ролики идут в хранилище оттуда, в сборке их нет.
+          sayt=$(du -sm --exclude='*.mp4' dist | cut -f1); echo "msk-new: сайт без роликов $sayt МБ"
           [ "$sayt" -le "${RU_SAYT_MAX_MB:-1000}" ] || { echo "::error::msk-new: сайт без роликов $sayt МБ больше бюджета ${RU_SAYT_MAX_MB:-1000} МБ"; exit 1; }
-          bolshie=$(find dist -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
-          if [ -n "$bolshie" ]; then echo "::error::msk-new: ролики больше ${RU_ROLIK_MAX_MB:-50} МБ:"; echo "$bolshie"; exit 1; fi
-          umask 077; mkdir -p ~/.ssh
-          printf '%s\n' "$KLYUCH" > ~/.ssh/klyuch
-          printf '%s\n' "$IZVESTNYE" > ~/.ssh/known_hosts
-          SSH="ssh -i $HOME/.ssh/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -o BatchMode=yes"
-          rsync -rlptz --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$KUDA:" | tail -n 15
-          rm -f ~/.ssh/klyuch
+          umask 077; S="$RUNNER_TEMP/ssh-sayt"; mkdir -p "$S"
+          printf '%s\n' "$KLYUCH" > "$S/klyuch"
+          printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
+          SSH="ssh -i $S/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30 ${SSH_MOST:-}"
+          # --checksum (r790): сборка каждый раз новая, у всех файлов новое время — без сверки содержимого rsync гнал
+          # все 18 313 файлов (2,5 ГБ, 13.11: «regular files transferred 18,313», 4 мин 50 с), хотя менялось ~28 МБ.
+          # Со сверкой уходят и подменяются только изменённые; у остальных лишь обновится время. Как в мире — man rsync,
+          # --checksum: «skip based on checksum, not mod-time & size». Откат — убрать --checksum.
+          rsync -rlptz --checksum --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$KUDA:" | tail -n 15
+          rm -rf "$S"
           echo "msk-new: выложено в $KUDA — $(find dist -type f | wc -l) файлов"
-          if [ -n "$ADRES" ]; then
+          if [ -n "$ADRES" ] && [ -z "$MOST" ]; then
             kod=$(curl -s -o /dev/null -w '%{http_code}' "$ADRES") || kod=нет
             echo "проверка $ADRES — код $kod"
             [ "$kod" = 200 ] || echo "::warning::msk-new: $ADRES ответил $kod"
@@ -299,6 +360,71 @@ jobs:
               --data-urlencode "chat_id=${TG_STOROZH_CHAT}" \
               --data-urlencode "text=${tekst}" || true)
           echo "Telegram: код $kod"
+  # Пакет для забора сервером (Р815, 18.11.2026, Сергей «да»): msk-new с 13.11 закрыт из-за границы, и толкать сборку
+  # rsync-ом по ssh приходится через туннели (RU_MOST/RU_MOST2) — заплатка. По мировой практике сервер сам забирает
+  # готовую сборку (pull): эта задача кладёт её ассетами в релиз с постоянным тегом vykladka, а scripts/server/zabrat-sayt.sh
+  # на сервере раз в 5 минут сверяет sayt.sha256 и при новом хэше скачивает, сверяет, раскладывает (docs/zabor-na-servere.md).
+  # Входящие соединения серверу больше не нужны. Задача msk не тронута: пока Михаил не включил забор, выкладка прежняя.
+  # Ассеты: sayt.tar.gz (сайт без роликов) + sayt.sha256 (последним — по нему сервер видит новую сборку). Ролики в релиз
+  # больше не идут (Р825): их кладёт в хранилище media.russian-civilization.ru rolik-na-sait.yml.
+  # Пять вопросов: задевает — только релиз vykladka (сайт, Pages и msk не меняет); нужно — github.token с contents: write
+  # (только этой задаче); без нужного — красная задача, сайт и Pages прежние; проверка — прогон на main, ассеты в релизе;
+  # откат — убрать задачу; релиз vykladka можно оставить (сервер без забора его не читает).
+  # Как в мире — docs.github.com «About releases» (ассет меньше 2 GiB) и pull-выкладка (сервер забирает сам).
+  paket:
+    needs: build
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TEG: vykladka
+      RU_SAYT_MAX_MB: ${{ vars.RU_SAYT_MAX_MB }}
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: github-pages
+          path: artefakt
+      # Те же проверки, что в msk перед rsync (Р63, Р536 п. 9): обязательные файлы есть, секретов нет, размер.
+      - name: проверка сборки
+        run: |
+          set -euo pipefail
+          mkdir -p dist && tar -xf artefakt/artifact.tar -C dist
+          v_dist=$(find dist -type f -name '*.mp4' | wc -l)
+          [ "$v_dist" = 0 ] || { echo "::error::paket: в сборке без роликов $v_dist mp4 — пакет не собран"; exit 1; }
+          for f in index.html 404.html robots.txt; do
+            test -f "dist/$f" || { echo "::error::paket: в сборке нет $f — пакет не собран"; exit 1; }
+          done
+          lishnie=$(find dist \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '*.pfx' \
+            -o -name 'id_rsa*' -o -name 'id_ed25519*' -o -name 'id_ecdsa*' -o -name 'id_dsa*' -o -name '.git' -o -name '.npmrc' \) -print)
+          if [ -n "$lishnie" ]; then echo "::error::paket: в сборке файлы, похожие на секреты:"; echo "$lishnie"; exit 1; fi
+          if grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist >/dev/null; then
+            echo "::error::paket: в сборке закрытый ключ"; grep -rIl -E -- '-----BEGIN [A-Z ]*PRIVATE KEY-----' dist; exit 1
+          fi
+          sayt=$(du -sm dist | cut -f1); echo "paket: сайт без роликов $sayt МБ"
+          [ "$sayt" -le "${RU_SAYT_MAX_MB:-1000}" ] || { echo "::error::paket: сайт без роликов $sayt МБ больше бюджета ${RU_SAYT_MAX_MB:-1000} МБ"; exit 1; }
+      - name: релиз vykladka
+        run: |
+          set -euo pipefail
+          gh release view "$TEG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create "$TEG" -R "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" --latest=false --title "Выкладка для сервера" \
+            --notes "Постоянный релиз для забора сервером (Р815): sayt.tar.gz + sayt.sha256 (ролики — в хранилище media.russian-civilization.ru, Р825). Перезаливает задача paket в deploy.yml."
+      - name: сайт в релиз
+        run: |
+          set -euo pipefail
+          mkdir -p paket
+          tar -czf paket/sayt.tar.gz -C dist .
+          (cd paket && sha256sum sayt.tar.gz > sayt.sha256)
+          echo "paket: sayt.tar.gz $(du -m paket/sayt.tar.gz | cut -f1) МБ, $(cat paket/sayt.sha256)"
+          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/sayt.tar.gz
+          # sayt.sha256 — последним: сервер видит новый хэш, только когда архив уже на месте.
+          gh release upload "$TEG" -R "$GITHUB_REPOSITORY" --clobber paket/sayt.sha256
+          {
+            echo "### 📦 Пакет для забора сервером"
+            echo "Релиз \`$TEG\`: sayt.tar.gz $(du -m paket/sayt.tar.gz | cut -f1) МБ, ролики — в хранилище media.russian-civilization.ru."
+          } >> "$GITHUB_STEP_SUMMARY"
   # Живой сайт после выкладки в Россию (Р536, п. 9) — post-deploy smoke на Playwright, как smoke.yml: машина открывает
   # https://russian-civilization.ru как посетитель — страницы дней, изменённых этой выкладкой (git diff от прошлой
   # успешной выкладки), а нет таких — выборку (tests/smoke/dni.spec.mjs). Страница 200 и равна выложенной сборке, хук
@@ -308,8 +434,10 @@ jobs:
   # прогон без карточки; проверка — zhivoy-sayt.yml на заявке; откат — убрать эту задачу.
   zhivoy:
     needs: msk
-    if: needs.msk.outputs.est == 'true'
-    runs-on: ubuntu-latest
+    # С проходом (vars.RU_MOST) облако до https сервера не достаёт — живой сайт проверяется с нашего сервера через РФ-выход.
+    if: needs.msk.outputs.est == 'true' && vars.RU_MOST == ''
+    # Свой исполнитель в России при RC_RUNNER_RF = '1' (r790, см. задачу msk): из облака закрытый сервер не открыть.
+    runs-on: ${{ vars.RC_RUNNER_RF == '1' && fromJSON('["self-hosted","rf"]') || 'ubuntu-24.04' }}
     timeout-minutes: 15
     permissions:
       actions: read
@@ -381,7 +509,7 @@ jobs:
   # выкладка уже прошла и не роняется. Откат — убрать эту задачу.
   indexnow:
     needs: deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     continue-on-error: true
     timeout-minutes: 5
     permissions:

@@ -1,0 +1,44 @@
+{
+  "_opisanie": "Закрытый список ролей связи дня со словарём (п. 31, Р664): что запись делает в этом дне. Роль ставится в карточке дня полем slovar_roli — { \"tip:slug\": \"rol\" }; связь без роли значит upomyanut. Другие роли не заводить — сначала дописать сюда. Подробно и пример — docs/spravochniki-standart.md, раздел 31.",
+  "geroy": {
+    "nazvanie": "герой дня",
+    "tipy": [
+      "lyudi",
+      "narod"
+    ],
+    "cidoc": "P11 had participant (главный)"
+  },
+  "izobrel": {
+    "nazvanie": "изобрёл, создал, построил, написал, открыл",
+    "tipy": [
+      "lyudi",
+      "narod"
+    ],
+    "cidoc": "P14 carried out by / P94 has created"
+  },
+  "uchastnik": {
+    "nazvanie": "участник события",
+    "tipy": [
+      "lyudi",
+      "narod"
+    ],
+    "cidoc": "P11 had participant"
+  },
+  "mesto": {
+    "nazvanie": "место, где это было",
+    "tipy": [
+      "mesto"
+    ],
+    "cidoc": "P7 took place at"
+  },
+  "upomyanut": {
+    "nazvanie": "упомянут в дне",
+    "tipy": [
+      "lyudi",
+      "mesto",
+      "narod",
+      "tema"
+    ],
+    "cidoc": "P67 refers to"
+  }
+}

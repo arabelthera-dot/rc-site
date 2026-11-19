@@ -58,8 +58,9 @@ export const skhema = z.object({
 
 // Все карточки: [{ muzei, key, ... }]; схема — по папке музея. Имя файла и папки должны совпадать с key и muzei карточки.
 // Выход по дате (src/lib/vyhod.mjs): при RC_PO_DATE карточка до своего дня не отдаётся — как и её запись days.
+export const SKHEMY = { izobreteniya: skhema, 'ne-sdayutsya': skhemaNeSdayutsya };
 export function kartochki() {
-  return zagruzitKartochki(DIR, { izobreteniya: skhema, 'ne-sdayutsya': skhemaNeSdayutsya }).filter(vyshel);
+  return zagruzitKartochki(DIR, SKHEMY).filter(vyshel);
 }
 
 // ── Приёмка выборкой (Р288: вариант 1 + разметка риска из варианта 2) ─────────────────────────────────────────────

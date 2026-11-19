@@ -1,7 +1,6 @@
 {
   "title": "История в 56 секунд",
-  "intro": "Ковалевской пришлось выйти замуж фиктивно, чтобы попасть в университет, — а кафедру она получила первой женщиной в мире.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42200315328) из сценария days/15jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/15jan-kovalevskaya/day-15jan-kovalevskaya.mp4",
     "local": "muzei/izobreteniya/video/day-15jan-kovalevskaya.mp4",

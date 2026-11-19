@@ -1,0 +1,19 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Кандинский",
+  "pol": "m",
+  "kratko": "Живописец, один из создателей беспредметного искусства.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n79059310",
+    "ssylka": "https://id.loc.gov/authorities/names/n79059310.html",
+    "zagolovok": "Kandinsky, Wassily, 1866-1944"
+  },
+  "latinica": "Wassily Kandinsky",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1866-12-04",
+    "rozhdenie_ss": "1866-11-22",
+    "smert": "1944-12-13"
+  }
+}

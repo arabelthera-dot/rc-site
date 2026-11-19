@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Даниил Заболотный",
+  "pol": "m",
+  "kratko": "Эпидемиолог, исследователь чумы.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81147336",
+    "ssylka": "https://id.loc.gov/authorities/names/n81147336.html",
+    "zagolovok": "Zabolotnyĭ, Danylo Kyrylovych, 1866-1929"
+  },
+  "latinica": "Danylo Zabolotnyi",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1866",
+    "smert": "1929"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Михаил Врубель",
+  "pol": "m",
+  "kratko": "Живописец, автор «Демона сидящего».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80136311",
+    "ssylka": "https://id.loc.gov/authorities/names/n80136311.html",
+    "zagolovok": "Vrubelʹ, Mikhail Aleksandrovich, 1856-1910"
+  },
+  "latinica": "Mikhail Vrubel",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1856",
+    "smert": "1910"
+  }
+}

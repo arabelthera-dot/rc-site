@@ -1,0 +1,17 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Ерофей Хабаров",
+  "pol": "m",
+  "kratko": "Землепроходец, прошёл по Амуру в XVII веке.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n96016875",
+    "ssylka": "https://id.loc.gov/authorities/names/n96016875.html",
+    "zagolovok": "Khabarov, Erofeĭ Pavlovich, active 17th century"
+  },
+  "latinica": "Erofei Khabarov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "aktiven": "16XX"
+  }
+}

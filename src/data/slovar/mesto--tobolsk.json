@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Тобольск",
+  "kratko": "Первая столица Сибири.",
+  "koordinaty": {
+    "shirota": 58.2,
+    "dolgota": 68.251,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/3348770"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Тобольск"
+    }
+  ]
+}

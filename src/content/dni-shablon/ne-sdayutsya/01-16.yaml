@@ -81,10 +81,9 @@ video:
   pole: nesdayutsya/16jan-karbyshev:horizontal.sec
   suffix: сек
   badge: 49 сек
-  intro: Ему предлагали чужую форму — он выбрал ледяную стену
-  poster: /muzei/ne-sdayutsya/video/day-16jan-karbyshev-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-16jan-karbyshev.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns16jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-16jan-karbyshev-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-16jan-karbyshev.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Генерал, которого хотели купить
@@ -400,15 +399,7 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-maresyev.html
-    title: 18 — Алексей Маресьев
-    hook: Тот же лётчик из «Повести о настоящем человеке» — теперь без книги, только его собственная судьба.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

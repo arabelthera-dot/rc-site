@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Андрей Боголюбский",
+  "pol": "m",
+  "kratko": "Князь владимирский XII века.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "nr95012161",
+    "ssylka": "https://id.loc.gov/authorities/names/nr95012161.html",
+    "zagolovok": "Andrew I, Grand Prince of Vladimir, approximately 1111-1174"
+  },
+  "latinica": "Andrew I",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1111~",
+    "smert": "1174"
+  }
+}

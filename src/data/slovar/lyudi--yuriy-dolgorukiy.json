@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Юрий Долгорукий",
+  "pol": "m",
+  "kratko": "Князь XII века, основатель Москвы.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "no95044263",
+    "ssylka": "https://id.loc.gov/authorities/names/no95044263.html",
+    "zagolovok": "Yury Vladimirovich, Grand Duke of Kyïv, 1090-1157"
+  },
+  "latinica": "Yury Vladimirovich",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1090",
+    "smert": "1157"
+  }
+}

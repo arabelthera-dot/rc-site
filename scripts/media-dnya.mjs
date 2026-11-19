@@ -3,7 +3,7 @@
 //   1) аудиогид — блок (section#audioguide, window.MUSEUM_AUDIOGUIDE или <audio> гида) и mp3 гида в public/:
 //      файл есть, не пустой и звучит не меньше 30 с (длительность — из самого mp3: Xing/VBRI или по битрейту);
 //   2) ролик — <video> вне игры с файлом mp4 в public/ (data-rc-video — через video/registry.json, иначе src/<source>):
-//      файл есть и не пустой. Секция «Видео создаётся» без <video> — заглушка, не ролик.
+//      файл есть и не пустой или ролик в хранилище (src/data/hranilishche-rolikov.sha256, Р825). Секция «Видео создаётся» без <video> — заглушка, не ролик.
 // Пути — как у браузера: страница дня стоит с <base href="/muzei/<музей>/"> (src/integrations/full-pages.mjs).
 // Аудиогид — СТРОГО: нарушение — код 1 и ::error::. Ролик здесь — только строка таблицы, без жёлтого и красного:
 // строгость ролика — у судьи рамки scripts/ramka-proverki.mjs, только для дней data/rabochie-dni.json (Р558, 05.11.2026).
@@ -19,6 +19,7 @@ import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 import { mp3Sek } from '../src/lib/mp3-sek.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
+import { vHranilishche } from './hranilishche-rolikov.mjs';
 
 const FULL = 'src/data/full-pages';
 const DAYS = 'src/content/days';
@@ -109,6 +110,7 @@ export function proverit(html, muzey, root) {
   for (const v of rolik) {
     if (v.net) { r.rolik.push(v.net); continue; }
     const f = fail(v.rel);
+    if (!f && vHranilishche(v.rel)) continue;
     if (!f) { r.rolik.push(`нет файла ролика ${v.rel}${v.kto ? ` (${v.kto})` : ''}`); continue; }
     const buf = fs.readFileSync(f);
     if (!buf.length) { r.rolik.push(`файл ролика пустой ${v.rel}`); continue; }

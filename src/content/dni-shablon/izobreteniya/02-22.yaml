@@ -1,0 +1,847 @@
+muzei: izobreteniya
+key: 02-22
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0222-tvch-vologdin
+data_sobytiya: '1936-02-22'
+chto_sluchilos: 'Вологдин придумал калить сталь током высокой частоты: в 1936 году вышел приказ о закалке «по методу проф. Вологдина», и танковую деталь стали калить за 37 секунд вместо 30 часов.'
+god: 1936
+god_tochnost: okolo
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Фрагмент-вырезка муфтового соединения двигателя танка ИС, 1944
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7448213
+- chto: Фрагмент-вырезка шлицевого вала коробки передач танка ИС, 1944
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7448294
+- chto: Фото высокочастотной закалочной установки на Орском «Южуралмашзаводе», 1956
+  muzej: Оренбургский губернаторский историко-краеведческий музей
+  gorod: Оренбург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=41534504
+chitat_dalshe:
+- nazvanie: «Энтузиаст высокочастотной техники»
+  gde: журнал «В мире радио», 1954
+  ssylka: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+- nazvanie: «Валентин Вологдин — пионер высокочастотного машиностроения»
+  gde: Госкорпорация «Ростех»
+  ssylka: https://rostec.ru/media/news/valentin-vologdin-pioner-vysokochastotnogo-mashinostroeniya/
+- nazvanie: «Высокая творческая частота»
+  gde: журнал «Стимул»
+  ssylka: https://stimul.online/historical-dates/vysokaya-tvorcheskaya-chastota/
+- nazvanie: «140 лет основоположнику техники высоких частот В. П. Вологдину»
+  gde: Музей СПбГЭТУ «ЛЭТИ»
+  ssylka: https://etu.ru/ru/muzej/novosti/140-let-osnovopolozhniku-tehniki-vysokih-chastot-v-p-vologdinu
+- nazvanie: «Апрель 1943»
+  gde: Государственный исторический музей Южного Урала
+  ssylka: https://chelmuseum.ru/science/articles/aprel-1943/
+istochniki:
+- id: rostec
+  baza: sajt-organizacii
+  nazvanie: «Валентин Вологдин — пионер высокочастотного машиностроения» — Госкорпорация «Ростех»
+  ssylka: https://rostec.ru/media/news/valentin-vologdin-pioner-vysokochastotnogo-mashinostroeniya/
+- id: radiolamp
+  baza: periodika
+  nazvanie: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+  ssylka: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+- id: etu
+  baza: sajt-organizacii
+  nazvanie: «В. П. Вологдин — основатель научной школы техники высоких частот» — СПбГЭТУ «ЛЭТИ»
+  ssylka: https://etu.ru/ru/universitet/novosti-i-obyavleniya/v-p-vologdin-osnovatel-nauchnoj-shkoly-tehniki-vysokih-chastot
+- id: stimul
+  baza: periodika
+  nazvanie: «Высокая творческая частота» — журнал «Стимул»
+  ssylka: https://stimul.online/historical-dates/vysokaya-tvorcheskaya-chastota/
+- id: gulk
+  baza: periodika
+  nazvanie: '«Метод Вологдина: высокочастотная закалка танковых узлов» — «Гулькевичи»'
+  ssylka: https://gulkevichi.com/exclusive/78086-metod-vologdina-vysokochastotnaja-zakalka-tankovyh-uzlov.html
+- id: etu140
+  baza: sajt-organizacii
+  nazvanie: «140 лет основоположнику техники высоких частот В. П. Вологдину» — Музей СПбГЭТУ «ЛЭТИ»
+  ssylka: https://etu.ru/ru/muzej/novosti/140-let-osnovopolozhniku-tehniki-vysokih-chastot-v-p-vologdinu
+- id: gk-5996999
+  baza: goskatalog
+  nazvanie: Фото. Член-корреспондент АН СССР В. П. Вологдин разрабатывает новый метод термообработки крупных деталей турбин, апрель 1951, Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=5996999
+- id: gk-7448213
+  baza: goskatalog
+  nazvanie: Фрагмент-вырезка муфтового соединения двигателя танка ИС, 1944, Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=7448213
+- id: gk-12677671
+  baza: goskatalog
+  nazvanie: Фото. Вертикальный станок для закалки крупногабаритных деталей нагревом токами высокой частоты, 1960, Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=12677671
+- id: gk-55653196
+  baza: goskatalog
+  nazvanie: Фото. Профессор В. П. Вологдин и научный сотрудник С. Н. Перовский в машинном зале у мощного генератора высокой частоты системы профессора Вологдина, декабрь 1947, Государственный музей истории Санкт-Петербурга — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=55653196
+- id: gk-41534504
+  baza: goskatalog
+  nazvanie: Фото. Высокочастотная закалочная установка для закалки роликов рольганов на Орском «Южуралмашзаводе», апрель 1956, Оренбургский губернаторский историко-краеведческий музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=41534504
+- id: gk-21493177
+  baza: goskatalog
+  nazvanie: Фотография закалки током высокой частоты деталей машин и инструментов завода имени Калинина, 1955, Клинцовский краеведческий музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21493177
+- id: gk-10824852
+  baza: goskatalog
+  nazvanie: Фотография. Горячая высадка болтов с применением высокочастотного электронагрева, 1960-е годы, Государственный исторический музей Южного Урала — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=10824852
+citaty: []
+velichina_chislo: 37
+velichina_edinica: секунд
+velichina_chto: вместо 30 часов калили танковую деталь током Вологдина
+etiketka_oblozhki:
+- Фото. В. П. Вологдин разрабатывает новый метод термообработки, 1951
+- Государственный центральный музей современной истории России
+slovar:
+- tema:vysokie-chastoty
+head:
+  title: Первый в мире промышленный индукционный нагрев токами высокой частоты, 1936 — Музей «Что изобрели русские первыми в мире»
+  description: 'Ток высокой частоты Вологдина калил танковую деталь за 37 секунд вместо 30 часов: сверху твёрдая, внутри упругая, из простой стали вместо легированной.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-22/
+  sobytie: Первый в мире промышленный индукционный нагрев токами высокой частоты
+  god: '1936'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первый в мире промышленный индукционный нагрев токами высокой частоты
+    description: 'Ток высокой частоты Вологдина калил танковую деталь за 37 секунд вместо 30 часов: сверху твёрдая, внутри упругая, из простой стали вместо легированной.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-22/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-22-goskatalog-5996999.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первый в мире промышленный индукционный нагрев токами высокой частоты
+    description: 'Ток высокой частоты Вологдина калил танковую деталь за 37 секунд вместо 30 часов: сверху твёрдая, внутри упругая, из простой стали вместо легированной.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-22/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-22-goskatalog-5996999.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-22-goskatalog-5996999.jpg
+  glavnoe_na_kartinke:
+    x: 0.3
+    y: 0.05
+    w: 0.6
+    h: 0.9
+  width: 800
+  height: 670
+  alt: 'Чёрно-белый снимок: пожилой мужчина с большой седой бородой и мужчина в костюме склонились над установкой с гибкими шлангами; за ними щит с круглыми приборами'
+  data_source: https://goskatalog.ru/portal/#/collections?id=5996999
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+  podpis: Фото. Член-корреспондент АН СССР В. П. Вологдин разрабатывает новый метод термообработки крупных деталей турбин, апрель 1951. Хранит Государственный центральный музей современной истории России.
+  credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 5820542.'
+  hint: Фото · Вологдин у установки
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1951'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1951'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=5996999
+  nomer_predmeta: '5820542'
+  nomer_snimka: net
+  hranitel: Государственный центральный музей современной истории России
+  podlinnik:
+    gde: Государственный центральный музей современной истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=5996999
+  svyashchennoe: false
+  podpis_chto: Фото. Член-корреспондент АН СССР В. П. Вологдин разрабатывает новый метод термообработки крупных деталей турбин, апрель 1951
+  podpis_gde: СССР
+  podpis_kogda: '1951'
+  pometka_prav: citirovanie-1274
+kroshka: 22 февраля · Закалка током Вологдина
+lead:
+  data: 22 февраля · Ленинград
+  privyazka: В 1936 году вышел приказ о закалке «по методу проф. Вологдина» — метод назвали его именем.
+  kto: Валентин Петрович Вологдин
+  h1: Первый в мире промышленный индукционный нагрев токами высокой частоты · 1936
+  hook: 'Вологдин научился калить металл без огня: ток высокой частоты за секунды раскаляет только поверхность детали, а сердцевина остаётся мягкой и упругой'
+stamp:
+- v: '37'
+  k: секунд вместо 30 часов
+- v: '7'
+  k: тысяч рублей вместо 200 у «Сименс»
+- v: 12 000
+  k: вольт вместо 4000
+- v: '1936'
+  k: приказ «по методу проф. Вологдина»
+daynav:
+- id: story
+  label: Закалка
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-tvch-vologdin-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу Вологдина: от сгоревшей машины 1912 года через генератор дешевле сименсовского к танкам, закалённым за секунды.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Пожар и новая машина
+  - t: 35
+    mark: 0:35
+    title: Дешевле «Сименс»
+  - t: 70
+    mark: '1:10'
+    title: Тридцать семь секунд
+  - t: 105
+    mark: '1:45'
+    title: Танки и Курск
+  transcript:
+  - Пожар тысяча девятьсот двенадцатого года сжёг первую машину Вологдина — в тот же год он построил её заново.
+  - '«Сименс» запросила за генератор двести тысяч рублей. Вологдин насчитал семь тысяч — и построил сам. Французский профессор написал: генератор Вологдина «работать не будет». Генератор работал.'
+  - Танковую деталь калили тридцать часов — ток Вологдина сделал это за тридцать семь секунд. Сверху деталь твёрдая, а внутри мягкая и упругая — поэтому почти не лопается.
+  - Тысячи танков, закалённых током Вологдина, прошли Сталинград, Орёл и Киев. Вологдин не был под Курском, но во многом благодаря ему мы там победили.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Сталь без огня
+  h2: Как ток Вологдина закалил танки
+  udary:
+  - summary: Дешевле «Сименс»
+    det:
+    - «Сименс» запросила за генератор 200 тысяч рублей. Вологдин насчитал 7 тысяч — и построил сам
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+  - summary: 37 секунд
+    det:
+    - Танковую деталь калили 30 часов — ток Вологдина сделал это за 37 секунд
+    src: 'Источник: Госкорпорация «Ростех», «Валентин Вологдин — пионер высокочастотного машиностроения»'
+  - summary: Под Курском
+    det:
+    - Вологдин не был под Курском, но во многом благодаря ему мы там победили
+    src: 'Источник: СПбГЭТУ «ЛЭТИ», «В. П. Вологдин — основатель научной школы техники высоких частот»'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-22-goskatalog-7448213.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.1
+        w: 0.75
+        h: 0.8
+      width: 800
+      height: 672
+      alt: Тёмный стальной обломок шестерни в форме трапеции с выступами-зубьями и резьбовым отверстием на белом фоне
+      data_source: https://goskatalog.ru/portal/#/collections?id=7448213
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фрагмент-вырезка муфтового соединения двигателя танка ИС, 1944. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 7303478.'
+      hint: Предмет · Деталь танка ИС
+      vid: predmet
+      prava:
+        avtor: Вологдин В. П.
+        god_sozdaniya: '1944'
+        god_smerti_avtora: 1953
+        god_reabilitacii: net
+        anonim: false
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=7448213
+      nomer_predmeta: '7303478'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=7448213
+      svyashchennoe: false
+      podpis_chto: Фрагмент-вырезка муфтового соединения двигателя танка ИС, 1944
+      podpis_gde: СССР
+      podpis_kogda: '1944'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Госкорпорация «Ростех», «Валентин Вологдин — пионер высокочастотного машиностроения»'
+    otryvok: Танковую деталь калили 30 часов — ток Вологдина сделал это за 37 секунд
+    stranica: «Валентин Вологдин — пионер высокочастотного машиностроения» — Госкорпорация «Ростех»
+    href: https://rostec.ru/media/news/valentin-vologdin-pioner-vysokochastotnogo-mashinostroeniya/
+    pometka: документ
+    id: 37-sekund
+    istochnik: rostec
+    dlya_voprosa: true
+    otvet: 37 секунд
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: «Сименс» запросила за генератор 200 тысяч рублей. Вологдин насчитал 7 тысяч — и построил сам
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: siemens-7-tysyach
+    istochnik: radiolamp
+    dlya_voprosa: true
+    otvet: 7 тысяч рублей
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    src: 'Источник: СПбГЭТУ «ЛЭТИ», «В. П. Вологдин — основатель научной школы техники высоких частот»'
+    otryvok: Вологдин не был под Курском, но во многом благодаря ему мы там победили
+    stranica: «В. П. Вологдин — основатель научной школы техники высоких частот» — СПбГЭТУ «ЛЭТИ»
+    href: https://etu.ru/ru/universitet/novosti-i-obyavleniya/v-p-vologdin-osnovatel-nauchnoj-shkoly-tehniki-vysokih-chastot
+    pometka: документ
+    id: kursk
+    istochnik: etu
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: 'Французский профессор написал: генератор Вологдина «работать не будет». Генератор работал'
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: francuz
+    istochnik: radiolamp
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    kadr: &id003
+      src: /muzei/izobreteniya/img/02-22-goskatalog-12677671.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.0
+        w: 0.9
+        h: 1.0
+      width: 533
+      height: 800
+      alt: 'Чёрно-белый снимок цеха: высокий вертикальный станок с длинным блестящим валом, внизу клубится пар, справа рабочий в кепке у пульта с приборами'
+      data_source: https://goskatalog.ru/portal/#/collections?id=12677671
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фото. Вертикальный станок для закалки крупногабаритных деталей нагревом токами высокой частоты, 1960. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 12557493.'
+      hint: Фото · Станок для закалки
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1960'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1960'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=12677671
+      nomer_predmeta: '12557493'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=12677671
+      svyashchennoe: false
+      podpis_chto: Фото. Вертикальный станок для закалки крупногабаритных деталей нагревом токами высокой частоты, 1960
+      podpis_gde: СССР
+      podpis_kogda: '1960'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: журнал «Стимул», «Высокая творческая частота»'
+    otryvok: Коленвал ЗИС калили часами — станок-автомат Вологдина справлялся за 2 минуты 15 секунд
+    stranica: «Высокая творческая частота» — журнал «Стимул»
+    href: https://stimul.online/historical-dates/vysokaya-tvorcheskaya-chastota/
+    pometka: документ
+    id: kolenval-zis
+    istochnik: stimul
+    dlya_voprosa: true
+    otvet: 2 минуты 15 секунд
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: 'За границей считали: выше 4000 вольт выпрямитель не работает. Вологдин сделал на 12 000'
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: 12000-volt
+    istochnik: radiolamp
+    dlya_voprosa: true
+    otvet: 12 000 вольт
+    otvet_edinstvennyj: true
+  - n: 7
+    sravnenie: net
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: Тысячи танков, закалённых током Вологдина, прошли Сталинград, Орёл и Киев
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: tysyachi-tankov
+    istochnik: radiolamp
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    src: 'Источник: «Гулькевичи», «Метод Вологдина: высокочастотная закалка танковых узлов»'
+    otryvok: Ток Вологдина позволил делать танковые детали из простой стали вместо дефицитной легированной
+    stranica: '«Метод Вологдина: высокочастотная закалка танковых узлов» — «Гулькевичи»'
+    href: https://gulkevichi.com/exclusive/78086-metod-vologdina-vysokochastotnaja-zakalka-tankovyh-uzlov.html
+    pometka: документ
+    id: prostaya-stal
+    istochnik: gulk
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    kadr: &id004
+      src: /muzei/izobreteniya/img/02-22-goskatalog-55653196.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.85
+        h: 0.85
+      width: 752
+      height: 427
+      alt: 'Чёрно-белый снимок машинного зала: большой гладкий цилиндрический генератор за металлическим ограждением, рядом стоят седобородый старик в тёмном и мужчина в гимнастёрке'
+      data_source: https://goskatalog.ru/portal/#/collections?id=55653196
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей истории Санкт-Петербурга · Госкаталог
+      podpis: Фото. Профессор В. П. Вологдин и научный сотрудник С. Н. Перовский в машинном зале у мощного генератора высокой частоты системы профессора Вологдина, декабрь 1947. Хранит Государственный музей истории Санкт-Петербурга.
+      credit: 'Хранится: Государственный музей истории Санкт-Петербурга. Госкаталог музейного фонда РФ, № 55381923.'
+      hint: Фото · Генератор Вологдина
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1947'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1947'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=55653196
+      nomer_predmeta: '55381923'
+      nomer_snimka: net
+      hranitel: Государственный музей истории Санкт-Петербурга
+      podlinnik:
+        gde: Государственный музей истории Санкт-Петербурга
+        otkuda: https://goskatalog.ru/portal/#/collections?id=55653196
+      svyashchennoe: false
+      podpis_chto: Фото. Профессор В. П. Вологдин и научный сотрудник С. Н. Перовский в машинном зале у мощного генератора высокой частоты системы профессора Вологдина, декабрь 1947
+      podpis_gde: Ленинград
+      podpis_kogda: '1947'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: Пожар 1912 года сжёг первую машину Вологдина — в тот же год он построил её заново
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: pozhar-1912
+    istochnik: radiolamp
+    dlya_voprosa: true
+    otvet: '1912'
+    otvet_edinstvennyj: true
+  - n: 10
+    sravnenie: net
+    kadr: &id005
+      src: /muzei/izobreteniya/img/02-22-goskatalog-41534504.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.05
+        w: 0.6
+        h: 0.85
+      width: 751
+      height: 1024
+      alt: 'Старый снимок цеха: высокая закалочная установка с длинным блестящим роликом внутри, на лестнице рядом рабочий, на полу лежат готовые ролики'
+      data_source: https://goskatalog.ru/portal/#/collections?id=41534504
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Оренбургский губернаторский историко-краеведческий музей · Госкаталог
+      podpis: Фото. Высокочастотная закалочная установка для закалки роликов рольганов на Орском «Южуралмашзаводе», апрель 1956. Хранит Оренбургский губернаторский историко-краеведческий музей.
+      credit: 'Хранится: Оренбургский губернаторский историко-краеведческий музей. Госкаталог музейного фонда РФ, № 41311106.'
+      hint: Фото · Закалка роликов
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1956'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1956'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=41534504
+      nomer_predmeta: '41311106'
+      nomer_snimka: net
+      hranitel: Оренбургский губернаторский историко-краеведческий музей
+      podlinnik:
+        gde: Оренбургский губернаторский историко-краеведческий музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=41534504
+      svyashchennoe: false
+      podpis_chto: Фото. Высокочастотная закалочная установка для закалки роликов рольганов на Орском «Южуралмашзаводе», апрель 1956
+      podpis_gde: Орск
+      podpis_kogda: '1956'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: Сверху деталь твёрдая, а внутри мягкая и упругая — поэтому почти не лопается
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: tverdaya-myagkaya
+    istochnik: radiolamp
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о токе Вологдина
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: Печь Вологдина плавила металл без огня, дыма и копоти
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: bez-ognya
+    istochnik: radiolamp
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: «Гулькевичи», «Метод Вологдина: высокочастотная закалка танковых узлов»'
+    otryvok: В Танкограде родилась профессия «высокочастотник» — её не было ни в одном перечне
+    stranica: '«Метод Вологдина: высокочастотная закалка танковых узлов» — «Гулькевичи»'
+    href: https://gulkevichi.com/exclusive/78086-metod-vologdina-vysokochastotnaja-zakalka-tankovyh-uzlov.html
+    pometka: документ
+    id: vysokochastotnik
+    istochnik: gulk
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: журнал «Стимул», «Высокая творческая частота»'
+    otryvok: Маловеры твердили «не выйдет» — а закалка Вологдина прочно встала в танкостроение
+    stranica: «Высокая творческая частота» — журнал «Стимул»
+    href: https://stimul.online/historical-dates/vysokaya-tvorcheskaya-chastota/
+    pometka: документ
+    id: malovery
+    istochnik: stimul
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: Музей СПбГЭТУ «ЛЭТИ», «140 лет основоположнику техники высоких частот В. П. Вологдину»'
+    otryvok: В 1936 году вышел приказ о закалке «по методу проф. Вологдина» — метод назвали его именем
+    stranica: «140 лет основоположнику техники высоких частот В. П. Вологдину» — Музей СПбГЭТУ «ЛЭТИ»
+    href: https://etu.ru/ru/muzej/novosti/140-let-osnovopolozhniku-tehniki-vysokih-chastot-v-p-vologdinu
+    pometka: документ
+    id: prikaz-1936
+    istochnik: etu140
+    dlya_voprosa: true
+    otvet: '1936'
+    otvet_edinstvennyj: true
+  - n: 15
+    sravnenie: net
+    kadr: &id006
+      src: /muzei/izobreteniya/img/02-22-goskatalog-21493177.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.9
+      width: 1200
+      height: 1306
+      alt: 'Старая чёрно-белая фотография на деревянном столе: рабочий в спецовке и кепке стоит у высокой установки с приборами и открытой дверцей'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21493177
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Клинцовский краеведческий музей · Госкаталог
+      podpis: Фотография закалки током высокой частоты деталей машин и инструментов завода имени Калинина, 1955. Хранит Клинцовский краеведческий музей.
+      credit: 'Хранится: Клинцовский краеведческий музей. Госкаталог музейного фонда РФ, № 21377340.'
+      hint: Фото · Закалка на заводе
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1955'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1955'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21493177
+      nomer_predmeta: '21377340'
+      nomer_snimka: net
+      hranitel: Клинцовский краеведческий музей
+      podlinnik:
+        gde: Клинцовский краеведческий музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21493177
+      svyashchennoe: false
+      podpis_chto: Фотография закалки током высокой частоты деталей машин и инструментов завода имени Калинина, 1955
+      podpis_gde: СССР
+      podpis_kogda: '1955'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: журнал «В мире радио», 1954 (radiolamp.net), «Энтузиаст высокочастотной техники»'
+    otryvok: Один и тот же ток закаливал и коленвалы, и рельсы, и швейные иголки
+    stranica: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+    href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+    pometka: документ
+    id: igolki
+    istochnik: radiolamp
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории Вологдина — своё место: секунды, рубли, вольты, год.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: sekundy
+      nazvanie: За столько секунд ток Вологдина калил танковую деталь
+      verno_ru: Танковую деталь калили 30 часов — ток Вологдина сделал это за 37 секунд.
+    - kod: rubli
+      nazvanie: Столько рублей насчитал Вологдин за свой генератор
+      verno_ru: «Сименс» запросила за генератор 200 тысяч рублей. Вологдин насчитал 7 тысяч — и построил сам.
+    - kod: volty
+      nazvanie: На столько вольт Вологдин сделал выпрямитель
+      verno_ru: 'За границей считали: выше 4000 вольт выпрямитель не работает. Вологдин сделал на 12 000.'
+    - kod: prikaz
+      nazvanie: В таком году вышел приказ «по методу проф. Вологдина»
+      verno_ru: В 1936 году вышел приказ о закалке «по методу проф. Вологдина» — метод назвали его именем.
+    podpisi:
+    - kod: n37
+      tekst: 37 секунд
+      mesto: sekundy
+      mimo_ru: 37 секунд — за столько калили танковую деталь током Вологдина.
+    - kod: n7000
+      tekst: 7 тысяч рублей
+      mesto: rubli
+      mimo_ru: 7 тысяч рублей — столько насчитал Вологдин вместо 200 тысяч у «Сименс».
+    - kod: n12000
+      tekst: 12 000 вольт
+      mesto: volty
+      mimo_ru: 12 000 вольт — выпрямитель Вологдина, а за границей не верили и в 4000.
+    - kod: n1936
+      tekst: 1936 год
+      mesto: prikaz
+      mimo_ru: 1936 год — приказ о закалке «по методу проф. Вологдина».
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 37 секунд закалки, 7 тысяч рублей за генератор, 12 000 вольт, приказ 1936 года.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 37 секунд — закалка танковой детали, 7 тысяч рублей — генератор Вологдина, 12 000 вольт — его выпрямитель, 1936 — приказ «по методу проф. Вологдина».'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Вологдин первым в мире применил индукционный нагрев токами высокой частоты в промышленности — в 1936 году вышел приказ о закалке «по методу проф. Вологдина».'
+  net: 'Как это работало дальше: Один и тот же ток закаливал и коленвалы, и рельсы, и швейные иголки.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Вологдин
+    - машина высокой частоты, построенная заново после пожара на заводе Глебова
+    - '1912'
+  - - СССР
+    - приказ о закалке «по методу проф. Вологдина»
+    - '1936'
+  - - Танкоград
+    - цех высокочастотной закалки и профессия «высокочастотник»
+    - '1942'
+  - - СССР
+    - детали танка ИС, закалённые током Вологдина
+    - '1944'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 37 секунд; 7 тысяч рублей; 12 000 вольт; 2 минуты 15 секунд; 1936 год.'
+  ball: 8
+  voprosy:
+  - q: За сколько ток Вологдина калил танковую деталь, которую раньше калили 30 часов?
+    o:
+    - 37 секунд
+    - 37 минут
+    - 3 часа
+    a: 0
+    e: Танковую деталь калили 30 часов — ток Вологдина сделал это за 37 секунд
+  - q: Сколько рублей насчитал Вологдин за генератор, за который «Сименс» просила 200 тысяч?
+    o:
+    - 70 тысяч
+    - 7 тысяч
+    - 700 рублей
+    a: 1
+    e: «Сименс» запросила за генератор 200 тысяч рублей. Вологдин насчитал 7 тысяч — и построил сам
+  - q: На сколько вольт Вологдин сделал выпрямитель, хотя за границей не верили и в 4000?
+    o:
+    - '5000'
+    - 12 000
+    - 120 000
+    a: 1
+    e: 'За границей считали: выше 4000 вольт выпрямитель не работает. Вологдин сделал на 12 000'
+  - q: За сколько станок-автомат Вологдина калил коленвал ЗИС?
+    o:
+    - 2 минуты 15 секунд
+    - 2 часа 15 минут
+    - 2 дня
+    a: 0
+    e: Коленвал ЗИС калили часами — станок-автомат Вологдина справлялся за 2 минуты 15 секунд
+  - q: В каком году вышел приказ о закалке «по методу проф. Вологдина»?
+    o:
+    - '1912'
+    - '1936'
+    - '1953'
+    a: 1
+    e: В 1936 году вышел приказ о закалке «по методу проф. Вологдина» — метод назвали его именем
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал закалки Вологдина.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-22-goskatalog-10824852.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.3
+    w: 0.7
+    h: 0.65
+  width: 800
+  height: 572
+  alt: 'Чёрно-белый снимок крупным планом: массивный пресс с болтами, под ним зажимы и шланги, в центре заготовка болта'
+  data_source: https://goskatalog.ru/portal/#/collections?id=10824852
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей Южного Урала · Госкаталог
+  podpis: Фотография. Горячая высадка болтов с применением высокочастотного электронагрева, 1960-е годы. Хранит Государственный исторический музей Южного Урала.
+  credit: 'Хранится: Государственный исторический музей Южного Урала. Госкаталог музейного фонда РФ, № 10706382.'
+  hint: Фото · Нагрев током для болтов
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1960'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1960'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10824852
+  nomer_predmeta: '10706382'
+  nomer_snimka: net
+  hranitel: Государственный исторический музей Южного Урала
+  podlinnik:
+    gde: Государственный исторический музей Южного Урала
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10824852
+  svyashchennoe: false
+  podpis_chto: Фотография. Горячая высадка болтов с применением высокочастотного электронагрева, 1960-е годы
+  podpis_gde: Челябинск
+  podpis_kogda: '1960'
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://rostec.ru/media/news/valentin-vologdin-pioner-vysokochastotnogo-mashinostroeniya/
+  title: «Валентин Вологдин — пионер высокочастотного машиностроения» — Госкорпорация «Ростех»
+  note: факты дня
+- href: https://radiolamp.net/news/272-yentuziast-vysokochastotnoj-texniki.html
+  title: «Энтузиаст высокочастотной техники» — журнал «В мире радио», 1954 (radiolamp.net)
+  note: факты дня
+- href: https://etu.ru/ru/universitet/novosti-i-obyavleniya/v-p-vologdin-osnovatel-nauchnoj-shkoly-tehniki-vysokih-chastot
+  title: «В. П. Вологдин — основатель научной школы техники высоких частот» — СПбГЭТУ «ЛЭТИ»
+  note: факты дня
+- href: https://stimul.online/historical-dates/vysokaya-tvorcheskaya-chastota/
+  title: «Высокая творческая частота» — журнал «Стимул»
+  note: факты дня
+- href: https://gulkevichi.com/exclusive/78086-metod-vologdina-vysokochastotnaja-zakalka-tankovyh-uzlov.html
+  title: '«Метод Вологдина: высокочастотная закалка танковых узлов» — «Гулькевичи»'
+  note: факты дня
+- href: https://etu.ru/ru/muzej/novosti/140-let-osnovopolozhniku-tehniki-vysokih-chastot-v-p-vologdinu
+  title: «140 лет основоположнику техники высоких частот В. П. Вологдину» — Музей СПбГЭТУ «ЛЭТИ»
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  main: true
+- lbl: Предыдущий день
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Главный высокочастотник
+  - - 70
+    - Мастер закалки
+  - - 40
+    - Ученик Вологдина
+  - - 0
+    - Гость дня
+return:
+  q: За сколько ток Вологдина калил танковую деталь, которую раньше калили 30 часов?
+  a: Танковую деталь калили 30 часов — ток Вологдина сделал это за 37 секунд.
+  src: Госкорпорация «Ростех», rostec.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-22-tvch-vologdin:claim-1936
+  ours:
+    kind: publication
+    title: «140 лет основоположнику техники высоких частот В. П. Вологдину»
+    date: '2021-03-22'
+    holder: Музей СПбГЭТУ «ЛЭТИ»
+    source_url: https://etu.ru/ru/muzej/novosti/140-let-osnovopolozhniku-tehniki-vysokih-chastot-v-p-vologdinu
+podskazki_igry:
+- 37 секунд — это закалка танковой детали
+- 7 тысяч рублей — это генератор Вологдина
+- 12 000 вольт — это его выпрямитель
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Ленинград, ЛЭТИ
+  shirota: 59.9719
+  dolgota: 30.3215
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Деталь ставят внутрь медного витка — индуктора
+- По витку пускают ток высокой частоты
+- Ток наводится в самой детали и за секунды раскаляет её поверхность
+- 'Деталь сразу остужают водой: сверху она твёрдая, а внутри мягкая и упругая'
+data_uslovnaya: 22 февраля — день музея; точный день приказа 1936 года о закалке «по методу проф. Вологдина» в источниках не назван.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/22feb-tvch-vologdin
+  format: horizontal
+  pole: izobreteniya/22feb-tvch-vologdin:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  poster: video/day-22feb-tvch-vologdin-poster.jpg
+  mp4: video/day-22feb-tvch-vologdin.mp4
+  note: Закадровый текст озвучен синтезом речи.

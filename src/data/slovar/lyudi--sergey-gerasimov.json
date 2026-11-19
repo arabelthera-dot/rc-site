@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Сергей Герасимов",
+  "pol": "m",
+  "kratko": "Советский живописец, автор «Матери партизана».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80146123",
+    "ssylka": "https://id.loc.gov/authorities/names/n80146123.html",
+    "zagolovok": "Gerasimov, Sergeĭ Vasilʹevich, 1885-1964"
+  },
+  "latinica": "Sergei Gerasimov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1885",
+    "smert": "1964"
+  }
+}

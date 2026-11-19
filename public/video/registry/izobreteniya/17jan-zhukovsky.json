@@ -1,7 +1,6 @@
 {
   "title": "История в 55 секунд",
-  "intro": "Жуковский первым в мире вывел, откуда берётся подъёмная сила крыла, — и авиация из авантюры стала наукой.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42200315328) из сценария days/17jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/17jan-zhukovsky/day-17jan-zhukovsky.mp4",
     "local": "muzei/izobreteniya/video/day-17jan-zhukovsky.mp4",

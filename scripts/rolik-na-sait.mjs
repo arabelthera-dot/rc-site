@@ -1,21 +1,26 @@
 // Ролик и аудиогид из облака — на сайт заявкой (r538, Р524/Р525/Р529; корень «забыл ролик»).
 // Пять вопросов до изменения (Сергей, 28.09.2026):
-// Что задевает — public/muzei/<музей>/video/ (ролики, обложки, субтитры .vtt и текст .txt, если есть в выпуске), public/muzei/<музей>/<audioSrc>.mp3 (гид) и файл
+// Что задевает — public/muzei/<музей>/video/ (обложки, субтитры .vtt и текст .txt, если есть в выпуске), public/muzei/<музей>/<audioSrc>.mp3 (гид) и файл
 //   выпуска public/video/registry/<реестр>/<imya>.json; страницу дня не трогает (ключ video в дне уже указывает на выпуск).
+//   mp4 (Р825) — не в public/, а в папку $MEDIA_VYHOD (путь от корня сайта) и строкой в src/data/hranilishche-rolikov.sha256;
+//   rolik-na-sait.yml докладывает папку в хранилище media.russian-civilization.ru до push заявки.
 // Что нужно — выпуски rc-rolik: render.yml публикует vypusk-<день>-<прогон> (по полю sajt в days/<день>.json),
 //   audiogid.yml — vypusk-ag-<музей>-<день>-<прогон> (по muzei и audioguide.audioSrc дня); в каждом vypusk.json.
 // Что будет без нужного — ролик лежит в артефакте облака 14 дней и на сайт не приходит, пока его не перенесут руками.
-// Проверка до слияния — заявка бота проходит сборку (DenMedia требует файл ролика) и все проверки сайта.
+// Проверка до слияния — заявка бота проходит сборку (DenMedia требует ролик в public/ или в манифесте) и все проверки сайта.
 // Откат — revert заявки выпуска; выключить машину — удалить .github/workflows/rolik-na-sait.yml.
 // Запуск: node scripts/rolik-na-sait.mjs spisok — новые выпуски (по одному последнему на место), тег в строке;
 //   node scripts/rolik-na-sait.mjs primenit <тег> — разложить выпуск в public/ и записать реестр; путь — в выводе.
 // Записи реестра — как у ns-konveyer (rolikVReestr): тот же note «прогон N)» — по нему видно, что выпуск уже на сайте.
+// Ролик и гид одного дня — одна заявка (Р790 п.6): строка spisok — «<ветка> <тег> [<тег>…]» по дню (музей + ММ-ДД);
+//   есть открытая заявка этого дня — ветка её, выпуск дописывается в неё, иначе ветка avto/rolik-<первый тег>.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
+import { dopisat, MANIFEST } from './hranilishche-rolikov.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const PUB = path.join(KOREN, 'public');
@@ -55,21 +60,40 @@ function gidNaSaite(m, teg) {
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 }
 
+// день выпуска: «музей/ММ-ДД» (ролик — den 25feb или ns25feb, гид — den 02-25)
+const MES = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+function denVypuska(m) {
+  const x = m.vid === 'rolik' && /^(?:ns)?(\d\d)([a-z]{3})$/.exec(m.den ?? '');
+  return `${m.muzei}/${x ? `${String(MES.indexOf(x[2]) + 1).padStart(2, '0')}-${x[1]}` : m.den}`;
+}
+
 function spisok() {
   // новые сначала: «дата тег» по строке
   const tegi = gh('api', '--paginate', `repos/${ROLIK}/releases?per_page=100`, '-q', '.[] | select((.tag_name | startswith("vypusk-")) and (.prerelease | not)) | "\\(.created_at) \\(.tag_name)"')
     .split('\n').filter(Boolean).sort().reverse().map((s) => s.split(' ')[1]);
-  const reestr = chitat(PUB).releases ?? {}, vzyato = new Set();
+  // все заявки выпусков одним запросом: тег взят, если он в имени ветки или в ссылке тела заявки
+  const zayavki = JSON.parse(gh('pr', 'list', '-R', SAIT, '--state', 'all', '-L', '2000', '--search', 'head:avto/rolik-', '--json', 'headRefName,state,body,isCrossRepository'))
+    .filter((z) => z.headRefName.startsWith('avto/rolik-') && !z.isCrossRepository)
+    .map((z) => ({ ...z, tegi: new Set([...z.headRefName.slice('avto/rolik-'.length).split('--'),
+      ...[...(z.body ?? '').matchAll(/releases\/tag\/(vypusk-[a-z0-9-]+)/g)].map((x) => x[1])]) }));
+  const otkrytaya = new Map(); // день → ветка открытой заявки
+  for (const z of zayavki.filter((z) => z.state === 'OPEN')) for (const t of z.tegi) {
+    try { otkrytaya.set(denVypuska(manifest(t)), z.headRefName); } catch { /* брак старого выпуска — не мешает */ }
+  }
+  const reestr = chitat(PUB).releases ?? {}, vzyato = new Set(), dni = new Map();
   for (const teg of tegi) {
     let m;
     try { m = manifest(teg); } catch (e) { console.error(`::error::${e.message}`); process.exitCode = 1; continue; }
     if (vzyato.has(m.mesto)) continue; // на это место есть выпуск новее
     vzyato.add(m.mesto);
     if (m.vid === 'rolik' && reestr[m.mesto]?.note?.includes(`прогон ${m.run})`)) continue;
-    if (gh('pr', 'list', '-R', SAIT, '--head', vetka(teg), '--state', 'all', '--json', 'number', '-q', 'length').trim() !== '0') continue;
+    if (zayavki.some((z) => z.tegi.has(teg))) continue;
     if (m.vid === 'audiogid' && gidNaSaite(m, teg)) continue;
-    console.log(teg);
+    const den = denVypuska(m);
+    if (!dni.has(den)) dni.set(den, { vetka: otkrytaya.get(den) ?? vetka(teg), tegi: [] });
+    dni.get(den).tegi.push(teg);
   }
+  for (const { vetka: v, tegi: t } of dni.values()) console.log(`${v} ${t.join(' ')}`);
 }
 
 function primenit(teg) {
@@ -85,6 +109,15 @@ function primenit(teg) {
       fs.copyFileSync(ot, path.join(PUB, kuda));
       fajly.push(`public/${kuda}`);
     };
+    // ролик — в папку для хранилища и в манифест (Р825): в public/ и git mp4 больше нет
+    const vHranilishche = (imya, kuda) => {
+      if (!process.env.MEDIA_VYHOD) throw new Error(`${teg}: нет MEDIA_VYHOD — куда класть ролик для хранилища`);
+      const ot = path.join(tmp, imya), v = path.join(process.env.MEDIA_VYHOD, kuda);
+      fs.mkdirSync(path.dirname(v), { recursive: true });
+      fs.copyFileSync(ot, v);
+      dopisat(kuda, ot, path.join(KOREN, MANIFEST));
+      fajly.push(`хранилище ${kuda}`);
+    };
     if (m.vid === 'rolik') for (const f of ['16x9', '9x16']) {
       const x = m.fajly?.[f], mp4 = path.join(tmp, `day-${m.imya}${f === '9x16' ? '-9x16' : ''}.mp4`);
       if (!(x?.sec > 0 && x?.mb > 0)) throw new Error(`${teg}: в vypusk.json нет длительности или размера ${f}`);
@@ -98,7 +131,10 @@ function primenit(teg) {
       console.log(`гид ${m.muzei} ${m.den} → public/muzei/${m.muzei}/${m.fajl}, ${m.sec} с, прогон ${m.run}`);
     } else {
       const VIDEO = `muzei/${m.muzei}/video`, { imya, mesto: vypusk } = m;
-      for (const suf of ['', '-9x16']) for (const x of ['.mp4', '-poster.jpg']) vzyat(`day-${imya}${suf}${x}`, `${VIDEO}/day-${imya}${suf}${x}`);
+      for (const suf of ['', '-9x16']) {
+        vHranilishche(`day-${imya}${suf}.mp4`, `${VIDEO}/day-${imya}${suf}.mp4`);
+        vzyat(`day-${imya}${suf}-poster.jpg`, `${VIDEO}/day-${imya}${suf}-poster.jpg`);
+      }
       // Субтитры WebVTT и текст ролика (r725 п.131, п.138) — необязательны: старые выпуски их не несут, страница без них как раньше.
       for (const x of ['.vtt', '.txt']) {
         const ot = path.join(tmp, `day-${imya}${x}`);
@@ -109,10 +145,9 @@ function primenit(teg) {
       const est = chitat(PUB).releases?.[vypusk];
       const v = est ? (est.horizontal?.v ?? 1) + 1 : 1; // новая версия — сбросить кэш у зрителя
       const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
-      fajly.push(path.relative(KOREN, zapisatVypusk(PUB, vypusk, {
+      fajly.push(MANIFEST, path.relative(KOREN, zapisatVypusk(PUB, vypusk, {
         title: `История в ${sekund(Math.round(m.fajly['16x9'].sec))}`,
-        intro: est?.intro || m.hook, // крючок страницы главнее: день один, хук один
-        note: `Ролик собран в облаке rc-rolik (render.yml, прогон ${m.run}) из сценария days/${m.den}.json и кадров дня. Закадровый текст озвучен синтезом речи.`,
+        note: 'Закадровый текст озвучен синтезом речи.',
         horizontal: fail('', 1920, 1080, m.fajly['16x9']),
         vertical: fail('-9x16', 1080, 1920, m.fajly['9x16']),
         poster: { file: `${vypusk}/day-${imya}-poster.jpg`, local: `${VIDEO}/day-${imya}-poster.jpg`, v },

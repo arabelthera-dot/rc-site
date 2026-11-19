@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Якутск",
+  "kratko": "Город на Лене, столица Якутии.",
+  "koordinaty": {
+    "shirota": 62.027,
+    "dolgota": 129.732,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/5325621"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Якутск"
+    }
+  ]
+}

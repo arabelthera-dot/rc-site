@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Байкал",
+  "kratko": "Самое глубокое озеро мира.",
+  "koordinaty": {
+    "shirota": 53.617,
+    "dolgota": 108.131,
+    "tochka": "середина озера",
+    "otkuda": "https://www.openstreetmap.org/relation/555716"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Байкал"
+    }
+  ]
+}

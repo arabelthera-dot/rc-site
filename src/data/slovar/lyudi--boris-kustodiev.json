@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Борис Кустодиев",
+  "pol": "m",
+  "kratko": "Живописец и график, певец купеческой и ярмарочной России.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81125914",
+    "ssylka": "https://id.loc.gov/authorities/names/n81125914.html",
+    "zagolovok": "Kustodiev, Boris Mikhaĭlovich, 1878-1927"
+  },
+  "latinica": "Boris Kustodiev",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1878",
+    "smert": "1927"
+  }
+}

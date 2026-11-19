@@ -1,0 +1,869 @@
+# Р773: день 18 февраля — подольские курсанты, стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-18
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Подольские курсанты — «Русские не сдаются» — Русская цивилизация
+  description: Три с половиной тысячи мальчишек задержали танки у Москвы
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-18/
+  sobytie: Подольские курсанты
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Подольские курсанты — «Русские не сдаются» — Русская цивилизация
+    description: Три с половиной тысячи мальчишек задержали танки у Москвы
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-18/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Подольские курсанты — «Русские не сдаются»
+    description: Три с половиной тысячи мальчишек задержали танки у Москвы
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-18/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1941'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-18-goskatalog-45687202.jpg
+  alt: 'Металлический значок: три солдата в касках с винтовками на фоне знамени, сверху надпись «Октябрь 1941 г.», по красной ленте внизу — «Памятник подольским курсантам».'
+  data_source: https://goskatalog.ru/portal/#/collections?id=7260822
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Значок «Памятник подольским курсантам. Октябрь 1941 г.», 1970–1980-е годы. Хранится в Музее Победы.
+  credit: Музей Победы, Госкаталог № 7089471
+  width: 304
+  height: 434
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: 'net'
+  nomer_snimka: '45687202'
+  hranitel: Музей Победы, Москва
+  podpis_chto: Значок «Памятник подольским курсантам. Октябрь 1941 г.»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1970–1980-е годы
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей Победы, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=7260822
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1970–1980-е годы
+    god_smerti_avtora: 'net'
+    god_reabilitacii: 'net'
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 7089471
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 7089471
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=7260822
+  hint: Значок подольским курсантам
+  celikom: true
+kroshka: День 18 · Подольские курсанты
+lead:
+  data: День 18 · февраль · Ильинский рубеж под Малоярославцем, Калужская область, 1941 год
+  privyazka: 'Дата условная: 18 февраля — день музея; событие — оборона Ильинского рубежа подольскими курсантами 5–17 октября 1941 года.'
+  kto: Подольские курсанты · курсанты Подольского пехотного и Подольского артиллерийского училищ
+  h1: Подольские курсанты
+  hook: Три с половиной тысячи мальчишек задержали танки у Москвы.
+stamp:
+- v: '3500'
+  k: курсантов вышли на рубеж
+- v: '12'
+  k: дней держали рубеж
+- v: '25'
+  k: километров — колонна танков
+- v: '14'
+  k: налётов за один день
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/18feb-podolskie-kursanty
+  format: horizontal
+  pole: nesdayutsya/18feb-podolskie-kursanty:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  poster: /muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty.mp4
+  note: Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Подольские курсанты
+  abzacy:
+  - В начале октября 1941 года у Юхнова лётчики нашли колонну немецких танков и мотопехоты длиной 25 километров. Дорога на Москву была открыта. Навстречу подняли курсантов Подольского пехотного и Подольского артиллерийского училищ — три с половиной тысячи почти мальчишек, многим по 18–19 лет. Самые младшие проучились всего две недели.
+  - 'Курсанты заняли Ильинский рубеж на Варшавском шоссе под Малоярославцем. Их просили продержаться пять дней — они стояли двенадцать. По двое суток без еды, в рваной обуви, под налётами, с учебными и даже музейными пушками они жгли танки и поднимались в атаку по пять-семь раз за день. Немцы назвали эти бои самыми тяжёлыми за всю русскую кампанию. 17 октября курсанты получили приказ отойти за реку Нару: за эти дни у Москвы успели выстроить оборону.'
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Подольские курсанты
+  udary:
+  - id: ns-0218-listovki
+    summary: 'Немцы сбрасывали курсантам листовки: «Доблестные красные юнкера, мы уважаем ваш героизм»'
+    det:
+    - Листовки звали курсантов перейти на сторону врага. Курсанты остались на рубеже.
+    src: 'Источник: «Аргументы и факты». Подвиг «красных юнкеров». Как подольские курсанты спасли Москву — https://aif.ru/society/history/podvig_krasnyh_yunkerov_kak_podolskie_kursanty_spasli_moskvu; «Весть». Ильинские рубежи: история оживает — https://vest-news.ru/article/25105'
+    stranica: статья
+    href: https://aif.ru/society/history/podvig_krasnyh_yunkerov_kak_podolskie_kursanty_spasli_moskvu
+    otryvok: '«Доблестные красные юнкера! Вы мужественно сражались… Вы настоящие солдаты. Мы уважаем ваш героизм.»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0218-tyazhelye
+    summary: Немецкое командование назвало бои с курсантами у Ильинского самыми тяжёлыми за всю русскую кампанию
+    det:
+    - Так записано в оперативных сводках немецкой группы армий «Центр» за октябрь 1941 года.
+    src: 'Источник: РИА Новости. Минобороны рассекретило документы о подвиге подольских курсантов — https://ria.ru/20210930/podvig-1752417192.html'
+    stranica: статья
+    href: https://ria.ru/20210930/podvig-1752417192.html
+    otryvok: '«…эти бои, по мнению командующего генерала и командира дивизии, являются самыми тяжелыми за всю русскую кампанию»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n3
+    dlya_voprosa: false
+    n: 2
+  - id: ns-0218-12-dnej
+    summary: Курсантов просили продержаться пять дней — они стояли двенадцать
+    det:
+    - Двенадцать дней на Ильинском рубеже дали время построить оборону по реке Наре.
+    src: 'Источник: «Историк», № 22, 2016. Двенадцать дней одного года — https://историк.рф/journal/post/5828; «Дорога памяти». Подвиг подольских курсантов — https://dorogapamyati.ru/ilinskie-rubezhi/podvig-podolskih-kursantov'
+    stranica: статья
+    href: https://историк.рф/journal/post/5828
+    otryvok: '«Командование рассчитывало, что они продержатся против немцев хотя бы дней пять. А они продержались там, на Ильинском рубеже, целых 12 дней»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n4
+    dlya_voprosa: false
+    n: 3
+  - id: ns-0218-kolonna
+    summary: 250 курсантов с одной пушкой вышли навстречу колонне немецких танков длиной 25 километров
+    det:
+    - Лётчики обнаружили колонну танков и мотопехоты у Юхнова. Навстречу ей выслали передовой отряд подольских училищ.
+    src: 'Источник: Телеканал «Звезда». «Никто, кроме нас»: как отряд Старчака задержал немцев на подходе к Москве в 1941 году — https://tvzvezda.ru/news/2019930139-m7KKb.html; RT. Подольские курсанты в 1941 году: подвиг спасителей Москвы — https://russian.rt.com/science/article/1689589-podolskie-kursanty-godovschina'
+    stranica: статья
+    href: https://tvzvezda.ru/news/2019930139-m7KKb.html
+    otryvok: '«Колонна растянулась на 25 километров… 250 человек с единственной пушкой.»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n6
+    dlya_voprosa: false
+    n: 4
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-18-goskatalog-23254963.jpg
+      alt: 'Рисованная карта на листе в клетку: зелёные пятна лесов, синяя река, деревни Ильинское, Малоярославец, Детчино; чёрные и красные стрелки показывают удары немцев и позиции курсантов.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21796021
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Схема боёв подольских курсантов на Ильинском и Детчинском рубежах 14–18 октября 1941 года. Хранится в музее «Подолье».
+      credit: Музей «Подолье», Госкаталог № 21668725
+      width: 425
+      height: 595
+      vid: karta
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: 'net'
+      nomer_snimka: '23254963'
+      hranitel: Музей «Подолье»
+      podpis_chto: Схема боевых действий подольских курсантов на Ильинском и Детчинском рубежах
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 14–18 октября 1941 года
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей «Подолье»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21796021
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1941'
+        god_smerti_avtora: 'net'
+        god_reabilitacii: 'net'
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 21668725
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 21668725
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21796021
+      hint: Схема боёв на Ильинском рубеже
+      celikom: true
+  - id: ns-0218-flagi
+    summary: Немецкие танки зашли в тыл под красными флагами — курсанты раскусили обман и разбили колонну за полчаса
+    det:
+    - Около пятнадцати танков и бронемашин подошли к рубежу с тыла под советским флагом.
+    src: 'Источник: «Калужские новости». «Они были крайне нужны, эти дни»: директор калужского музея «Ильинские рубежи» рассказала о подвиге подольских курсантов — https://kaluganews.ru/fn_1487071.html; «Весть». Ильинские рубежи: история оживает — https://vest-news.ru/article/25105'
+    stranica: статья
+    href: https://kaluganews.ru/fn_1487071.html
+    otryvok: '«Она шла под советским красным флагом на головном танке… И вдруг, совершенно неожиданно, эта колонна была разбита, буквально в течение 20 - 30 минут.»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n8
+    dlya_voprosa: false
+    n: 5
+  - id: ns-0218-dot
+    summary: 'Немцы прозвали дот курсантов «оживающим»: его разбивали, а он снова открывал огонь'
+    det:
+    - Курсанты закатывали пушку в разбитый дот и снова стреляли по танкам.
+    src: 'Источник: Музей Отечественной войны 1812 года (Малоярославец). Памяти подвига подольских курсантов. Алешкинский дот — https://museum-1812.ru/2019/07/16/памяти-подвига-подольских-курсантов/; «Историк», № 22, 2016. Двенадцать дней одного года — https://историк.рф/journal/post/5828'
+    stranica: статья
+    href: https://museum-1812.ru/2019/07/16/памяти-подвига-подольских-курсантов/
+    otryvok: '«…немцы были ошеломлены Алешкинским дотом. Они его прозвали «Оживающий дот».»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n9
+    dlya_voprosa: false
+    n: 6
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-18-goskatalog-23501254.jpg
+      alt: 'Разбитый бетонный дот: из развороченного потолка торчат гнутые прутья арматуры, у тёмной амбразуры лежат обломки бетона.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21969550
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Дот на Ильинских рубежах после боёв 1941 года, снимок 1980 года. Хранится в музее «Подолье».
+      credit: Музей «Подолье», Госкаталог № 21838581
+      width: 425
+      height: 275
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: 'net'
+      nomer_snimka: '23501254'
+      hranitel: Музей «Подолье»
+      podpis_chto: Фотография дота на Ильинских рубежах после боёв 1941 года
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1980 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей «Подолье»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21969550
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1980'
+        god_smerti_avtora: 'net'
+        god_reabilitacii: 'net'
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 21838581
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 21838581
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21969550
+      hint: Разбитый дот на Ильинском рубеже
+      celikom: true
+  - id: ns-0218-pushki
+    summary: В бой против танков курсанты взяли музейные пушки времён русско-турецкой войны
+    det:
+    - 'Орудий не хватало: в дело пошли и восстановленные учебные пушки.'
+    src: 'Источник: «Дорога памяти». Подвиг подольских курсантов — https://dorogapamyati.ru/ilinskie-rubezhi/podvig-podolskih-kursantov; «Историк», № 22, 2016. Двенадцать дней одного года — https://историк.рф/journal/post/5828'
+    stranica: статья
+    href: https://dorogapamyati.ru/ilinskie-rubezhi/podvig-podolskih-kursantov
+    otryvok: '«…использовались восстановленные учебные орудия и даже безоткатные музейные пушки времен русско-турецкой войны.»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n5
+    dlya_voprosa: false
+    n: 7
+  - id: ns-0218-leytenant
+    summary: Лейтенант сам починил заклинившую пушку, встал за наводчика и подбил шесть танков
+    det:
+    - Это лейтенант Ирадион Мусеридзе.
+    src: 'Источник: RT. «Красные юнкера»: Министерство обороны рассекретило документы о подвигах подольских курсантов — https://russian.rt.com/science/article/912301-minoborony-dokumenty-podolskii-kursant'
+    stranica: статья
+    href: https://russian.rt.com/science/article/912301-minoborony-dokumenty-podolskii-kursant
+    otryvok: '«Широко известен подвиг курсанта Юрия Добрынина, который… подбил шесть танков и две бронемашины. Столько же танков смог уничтожить и лейтенант Ирадион Мусеридзе.»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n10
+    dlya_voprosa: false
+    n: 8
+  - id: ns-0218-dobrynin
+    summary: Один курсант под миномётным огнём подбил шесть танков и две бронемашины
+    det:
+    - Это командир орудия курсант Юрий Добрынин.
+    src: 'Источник: Lenta.ru. Рассекречены документы о подвиге подольских курсантов — https://lenta.ru/news/2021/09/30/podvig/'
+    stranica: статья
+    href: https://lenta.ru/news/2021/09/30/podvig/
+    otryvok: '«…подвиг командира орудия курсанта Юрия Добрынина, который, находясь под сильным минометным и пулеметным огнем, подбил шесть танков и две бронемашины противника.»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n11
+    dlya_voprosa: false
+    n: 9
+  - id: ns-0218-nalety
+    summary: В один день немцы 14 раз бомбили рубеж, больше 20 самолётов в налёте, — курсанты не ушли
+    det:
+    - 'Зениток почти не было: их ставили против танков.'
+    src: 'Источник: «Калужские новости». «Они были крайне нужны, эти дни»: директор калужского музея «Ильинские рубежи» рассказала о подвиге подольских курсантов — https://kaluganews.ru/fn_1487071.html'
+    stranica: статья
+    href: https://kaluganews.ru/fn_1487071.html
+    otryvok: '«До нас дошли цифры - 14 налетов в один из дней, в каждом вылете участвовало более 20 боевых машин.»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n8
+    dlya_voprosa: false
+    n: 10
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0218-dve-nedeli
+    summary: Некоторые курсанты проучились всего две недели — и встали против танкового корпуса
+    det:
+    - Против рубежа наступал 57-й моторизованный корпус вермахта.
+    src: 'Источник: «Калужские новости». «Они были крайне нужны, эти дни»: директор калужского музея «Ильинские рубежи» рассказала о подвиге подольских курсантов — https://kaluganews.ru/fn_1487071.html'
+    stranica: статья
+    href: https://kaluganews.ru/fn_1487071.html
+    otryvok: '«Самые старшие ребята… имели срок обучения около 5 месяцев, самые младшие - две недели (последнее поступление).»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n8
+    dlya_voprosa: false
+    n: 11
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-18-goskatalog-20745200.jpg
+      alt: 'Старая карточка: слева молодой солдат в пилотке и гимнастёрке с портупеей, за ним девушка с кудрявыми волосами, справа мужчина в шляпе и пиджаке.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=20000156
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Василий Петрович Баранов, бывший курсант Подольского артиллерийского училища, апрель 1945 года. Хранится в военно-историческом музее «Ильинские рубежи».
+      credit: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, Госкаталог № 19868043
+      width: 1012
+      height: 688
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: 'net'
+      nomer_snimka: '20745200'
+      hranitel: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+      podpis_chto: Фотография Василия Петровича Баранова, бывшего курсанта Подольского артиллерийского училища
+      podpis_gde: место съёмки не указано
+      podpis_kogda: апрель 1945 года
+      simvolika_proverena: true
+      podlinnik:
+        gde: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+        otkuda: https://goskatalog.ru/portal/#/collections?id=20000156
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1945'
+        god_smerti_avtora: 'net'
+        god_reabilitacii: 'net'
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19868043
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 19868043
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20000156
+      hint: Василий Баранов, 1945
+      celikom: true
+  - id: ns-0218-bez-edy
+    summary: По двое суток без еды, у 60% рваная обувь — и курсанты держали рубеж
+    det:
+    - Так докладывал в боевом донесении 17 октября 1941 года генерал-майор Василий Смирнов.
+    src: 'Источник: RT. «Красные юнкера»: Министерство обороны рассекретило документы о подвигах подольских курсантов — https://russian.rt.com/science/article/912301-minoborony-dokumenty-podolskii-kursant'
+    stranica: статья
+    href: https://russian.rt.com/science/article/912301-minoborony-dokumenty-podolskii-kursant
+    otryvok: '«…без шапок (в фуражках), у 60% рваная обувь. По двое суток не питаются»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n10
+    dlya_voprosa: false
+    n: 12
+  - id: ns-0218-ataki
+    summary: Курсанты поднимались в атаку по пять-семь раз за день
+    det:
+    - Так несколько дней они сдерживали наступление на рубеже от Лукьянова через Ильинское до Малой Шубинки.
+    src: 'Источник: «Весть». Ильинские рубежи: история оживает — https://vest-news.ru/article/25105'
+    stranica: статья
+    href: https://vest-news.ru/article/25105
+    otryvok: '«Юные бойцы проявили мужество и героизм, поднимаясь в атаку по 5-7 раз в день.»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n2
+    dlya_voprosa: false
+    n: 13
+  - id: ns-0218-ruki
+    summary: Ослепший от контузии курсант сказал «руки-то у меня есть» и набивал диски пулемётам
+    det:
+    - Это курсант Яков Гаврилов.
+    src: 'Источник: ВДПО. День памяти подольских курсантов — https://вдпо.рф/calendar/1941-10-5_den-pamyati-podolskikh-kursantov'
+    stranica: статья
+    href: https://вдпо.рф/calendar/1941-10-5_den-pamyati-podolskikh-kursantov
+    otryvok: '«Яков Гаврилов, потерявший зрение от полученной контузии… обратился к своим товарищам: «Дайте мне дело. Руки-то у меня есть». Ему поручили набивать патронами пулемётные диски.»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n12
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0218-ugra
+    summary: Сотни курсантов и десантников не ждали удара — сами атаковали немецкий полк и отбросили к Угре
+    det:
+    - Бой был утром 6 октября 1941 года. Рядом с курсантами дрались десантники капитана Ивана Старчака.
+    src: 'Источник: RT. Подольские курсанты в 1941 году: подвиг спасителей Москвы — https://russian.rt.com/science/article/1689589-podolskie-kursanty-godovschina; ВДПО. День памяти подольских курсантов — https://вдпо.рф/calendar/1941-10-5_den-pamyati-podolskikh-kursantov'
+    stranica: статья
+    href: https://russian.rt.com/science/article/1689589-podolskie-kursanty-godovschina
+    otryvok: '«Утром 6 октября сводный отряд из нескольких сотен десантников и курсантов атаковал полк немецкого 57-го моторизованного корпуса и роту танков, обратив нацистов в бегство.»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: 'net'
+    istochnik: n7
+    dlya_voprosa: false
+    n: 15
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — двенадцать дней; 2 — 25 километров; 3 — «красные юнкера»; 4 — 14 налётов; 5 — по пять-семь раз.'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: курсантов просили продержаться пять дней. Сколько они простояли?'
+    o:
+    - 3 дня
+    - 5 дней
+    - 12 дней
+    - 30 дней
+    a: 2
+    e: Курсантов просили продержаться пять дней — они стояли двенадцать.
+  - q: Какой длины была колонна немецких танков, которую встретили курсанты?
+    o:
+    - 250 метров
+    - 2 километра
+    - 25 километров
+    - 250 километров
+    a: 2
+    e: 250 курсантов с одной пушкой вышли навстречу колонне немецких танков длиной 25 километров.
+  - q: Как немцы называли курсантов в своих листовках?
+    o:
+    - '«Красные юнкера»'
+    - '«Гусары»'
+    - '«Гренадеры»'
+    - '«Кадеты»'
+    a: 0
+    e: 'Немцы сбрасывали курсантам листовки: «Доблестные красные юнкера, мы уважаем ваш героизм».'
+  - q: Сколько раз за один день немецкие самолёты бомбили рубеж?
+    o:
+    - '2'
+    - '6'
+    - '14'
+    - '40'
+    a: 2
+    e: В один день немцы 14 раз бомбили рубеж, больше 20 самолётов в налёте.
+  - q: Сколько раз за день курсанты поднимались в атаку?
+    o:
+    - Ни разу
+    - Один раз
+    - По пять-семь раз
+    - По сто раз
+    a: 2
+    e: Курсанты поднимались в атаку по пять-семь раз за день.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-18-goskatalog-20524971.jpg
+  alt: 'Три пожилых человека стоят у стены дома: слева мужчина с орденской планкой на пиджаке, в центре женщина в вышитой кофте, справа мужчина в полосатом пиджаке с наградами.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=19863966
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Николай Игнатьевич Волков (слева), бывший курсант Подольского пехотного училища, около 1988 года. Хранится в военно-историческом музее «Ильинские рубежи».
+  credit: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, Госкаталог № 19868046
+  width: 1488
+  height: 1040
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: 'net'
+  nomer_snimka: '20524971'
+  hranitel: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+  podpis_chto: Фотография Николая Игнатьевича Волкова, бывшего курсанта Подольского пехотного училища
+  podpis_gde: место съёмки не указано
+  podpis_kogda: около 1988 года
+  simvolika_proverena: true
+  podlinnik:
+    gde: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+    otkuda: https://goskatalog.ru/portal/#/collections?id=19863966
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1988'
+    god_smerti_avtora: 'net'
+    god_reabilitacii: 'net'
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19868046
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 19868046
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=19863966
+  hint: Николай Волков
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-18-goskatalog-20744572.jpg
+  alt: Портрет мужчины средних лет в плаще, белой рубашке и галстуке на фоне деревянных построек.
+  data_source: https://goskatalog.ru/portal/#/collections?id=19999787
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Василий Петрович Баранов, бывший курсант Подольского артиллерийского училища, 1978 год. Хранится в военно-историческом музее «Ильинские рубежи».
+  credit: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, Госкаталог № 19868045
+  width: 1304
+  height: 1812
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: 'net'
+  nomer_snimka: '20744572'
+  hranitel: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+  podpis_chto: Фотография Василия Петровича Баранова, бывшего курсанта Подольского артиллерийского училища
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1978 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+    otkuda: https://goskatalog.ru/portal/#/collections?id=19999787
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1978'
+    god_smerti_avtora: 'net'
+    god_reabilitacii: 'net'
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19868045
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 19868045
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=19999787
+  hint: Василий Баранов, 1978
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-18-goskatalog-20745139.jpg
+  alt: 'Портрет пожилого мужчины в тёмном костюме и галстуке: на груди слева ордена, справа ряды медалей.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=19999838
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Василий Петрович Баранов, бывший курсант Подольского артиллерийского училища, 2002 год. Хранится в военно-историческом музее «Ильинские рубежи».
+  credit: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, Госкаталог № 19868044
+  width: 1452
+  height: 2124
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: 'net'
+  nomer_snimka: '20745139'
+  hranitel: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+  podpis_chto: Фотография Василия Петровича Баранова, бывшего курсанта Подольского артиллерийского училища
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 2002 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника, село Ильинское, Калужская область
+    otkuda: https://goskatalog.ru/portal/#/collections?id=19999838
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '2002'
+    god_smerti_avtora: 'net'
+    god_reabilitacii: 'net'
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 19868044
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 19868044
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=19999838
+  hint: Василий Баранов, 2002
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-18-goskatalog-27036108.jpg
+  alt: 'Круглая медаль светлого металла: солдат в каске с автоматом поднимает знамя, по краю надписи «Ильинские рубежи», «Калужская область», «Октябрь 1941».'
+  data_source: https://goskatalog.ru/portal/#/collections?id=289235
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Медаль «Ильинские рубежи. Калужская область. Октябрь. 1941» к 30-летию Победы, 1971 год. Хранится в Музее истории города Обнинска.
+  credit: Музей истории города Обнинска, Госкаталог № 2018631
+  width: 800
+  height: 531
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: 'net'
+  nomer_snimka: '27036108'
+  hranitel: Музей истории города Обнинска, Калужская область
+  podpis_chto: Медаль «Ильинские рубежи. Калужская область. Октябрь. 1941»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1971 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей истории города Обнинска, Калужская область
+    otkuda: https://goskatalog.ru/portal/#/collections?id=289235
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1971'
+    god_smerti_avtora: 'net'
+    god_reabilitacii: 'net'
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 2018631
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 2018631
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=289235
+  hint: Медаль «Ильинские рубежи»
+  celikom: true
+sources:
+- href: https://aif.ru/society/history/podvig_krasnyh_yunkerov_kak_podolskie_kursanty_spasli_moskvu
+  title: '«Аргументы и факты». Подвиг «красных юнкеров». Как подольские курсанты спасли Москву'
+  note: к факту 1
+- href: https://vest-news.ru/article/25105
+  title: '«Весть». Ильинские рубежи: история оживает'
+  note: к фактам 1, 5, 13
+- href: https://ria.ru/20210930/podvig-1752417192.html
+  title: РИА Новости. Минобороны рассекретило документы о подвиге подольских курсантов
+  note: к факту 2
+- href: https://историк.рф/journal/post/5828
+  title: '«Историк», № 22, 2016. Двенадцать дней одного года'
+  note: к фактам 3, 6, 7
+- href: https://dorogapamyati.ru/ilinskie-rubezhi/podvig-podolskih-kursantov
+  title: '«Дорога памяти». Подвиг подольских курсантов'
+  note: к фактам 3, 7
+- href: https://tvzvezda.ru/news/2019930139-m7KKb.html
+  title: 'Телеканал «Звезда». «Никто, кроме нас»: как отряд Старчака задержал немцев на подходе к Москве в 1941 году'
+  note: к факту 4
+- href: https://russian.rt.com/science/article/1689589-podolskie-kursanty-godovschina
+  title: 'RT. Подольские курсанты в 1941 году: подвиг спасителей Москвы'
+  note: к фактам 4, 15
+- href: https://kaluganews.ru/fn_1487071.html
+  title: '«Калужские новости». «Они были крайне нужны, эти дни»: директор калужского музея «Ильинские рубежи» рассказала о подвиге подольских курсантов'
+  note: к фактам 5, 10, 11
+- href: https://museum-1812.ru/2019/07/16/памяти-подвига-подольских-курсантов/
+  title: Музей Отечественной войны 1812 года (Малоярославец). Памяти подвига подольских курсантов. Алешкинский дот
+  note: к факту 6
+- href: https://russian.rt.com/science/article/912301-minoborony-dokumenty-podolskii-kursant
+  title: 'RT. «Красные юнкера»: Министерство обороны рассекретило документы о подвигах подольских курсантов'
+  note: к фактам 8, 12
+- href: https://lenta.ru/news/2021/09/30/podvig/
+  title: Lenta.ru. Рассекречены документы о подвиге подольских курсантов
+  note: к факту 9
+- href: https://вдпо.рф/calendar/1941-10-5_den-pamyati-podolskikh-kursantov
+  title: ВДПО. День памяти подольских курсантов
+  note: к фактам 14, 15
+kuda:
+- lbl: Следующий день
+  main: true
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Подольские курсанты — Музей стойкости и подвига «Русские не сдаются»
+    text: Три с половиной тысячи мальчишек задержали танки у Москвы
+  prev:
+    href: /muzei/ne-sdayutsya/den/02-17/
+    title: 17 · Роман Филипов
+  next:
+    href: /muzei/ne-sdayutsya/den/02-19/
+    title: 19 · Взвод Широнина
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько дней подольские курсанты держали Ильинский рубеж?
+  a: Двенадцать дней
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0218-podolskie-kursanty
+data_sobytiya: '1941-10-05'
+data_uslovnaya: 18 февраля — день музея; событие — оборона Ильинского рубежа подольскими курсантами 5–17 октября 1941 года.
+chto_sluchilos: В октябре 1941 года курсанты Подольского пехотного и Подольского артиллерийского училищ заняли Ильинский рубеж на Варшавском шоссе под Малоярославцем и двенадцать дней сдерживали наступление немецких танков на Москву, пока за их спиной строили оборону по реке Наре.
+god: 1941
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Значок «Памятник подольским курсантам. Октябрь 1941 г.», 1970–1980-е
+  muzej: Музей Победы
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7260822
+- chto: Фотография бывшего курсанта Подольского артиллерийского училища Василия Баранова, апрель 1945
+  muzej: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника
+  gorod: село Ильинское, Калужская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20000156
+- chto: Фотография бывшего курсанта Подольского пехотного училища Николая Волкова, около 1988
+  muzej: Военно-исторический музей «Ильинские рубежи» — филиал Калужского объединённого музея-заповедника
+  gorod: село Ильинское, Калужская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=19863966
+chitat_dalshe:
+- nazvanie: Двенадцать дней одного года
+  gde: '«Историк», № 22, 2016'
+  ssylka: https://историк.рф/journal/post/5828
+- nazvanie: Подвиг «красных юнкеров». Как подольские курсанты спасли Москву
+  gde: '«Аргументы и факты»'
+  ssylka: https://aif.ru/society/history/podvig_krasnyh_yunkerov_kak_podolskie_kursanty_spasli_moskvu
+- nazvanie: '«Красные юнкера»: Министерство обороны рассекретило документы о подвигах подольских курсантов'
+  gde: RT
+  ssylka: https://russian.rt.com/science/article/912301-minoborony-dokumenty-podolskii-kursant
+- nazvanie: Подвиг подольских курсантов
+  gde: '«Дорога памяти»'
+  ssylka: https://dorogapamyati.ru/ilinskie-rubezhi/podvig-podolskih-kursantov
+istochniki:
+- id: n1
+  baza: periodika
+  nazvanie: '«Аргументы и факты». Подвиг «красных юнкеров». Как подольские курсанты спасли Москву'
+  ssylka: https://aif.ru/society/history/podvig_krasnyh_yunkerov_kak_podolskie_kursanty_spasli_moskvu
+- id: n2
+  baza: periodika
+  nazvanie: '«Весть». Ильинские рубежи: история оживает'
+  ssylka: https://vest-news.ru/article/25105
+- id: n3
+  baza: periodika
+  nazvanie: РИА Новости. Минобороны рассекретило документы о подвиге подольских курсантов
+  ssylka: https://ria.ru/20210930/podvig-1752417192.html
+- id: n4
+  baza: periodika
+  nazvanie: '«Историк», № 22, 2016. Двенадцать дней одного года'
+  ssylka: https://историк.рф/journal/post/5828
+- id: n5
+  baza: sajt-organizacii
+  nazvanie: '«Дорога памяти». Подвиг подольских курсантов'
+  ssylka: https://dorogapamyati.ru/ilinskie-rubezhi/podvig-podolskih-kursantov
+- id: n6
+  baza: periodika
+  nazvanie: 'Телеканал «Звезда». «Никто, кроме нас»: как отряд Старчака задержал немцев на подходе к Москве в 1941 году'
+  ssylka: https://tvzvezda.ru/news/2019930139-m7KKb.html
+- id: n7
+  baza: periodika
+  nazvanie: 'RT. Подольские курсанты в 1941 году: подвиг спасителей Москвы'
+  ssylka: https://russian.rt.com/science/article/1689589-podolskie-kursanty-godovschina
+- id: n8
+  baza: periodika
+  nazvanie: '«Калужские новости». «Они были крайне нужны, эти дни»: директор калужского музея «Ильинские рубежи» рассказала о подвиге подольских курсантов'
+  ssylka: https://kaluganews.ru/fn_1487071.html
+- id: n9
+  baza: sajt-organizacii
+  nazvanie: Музей Отечественной войны 1812 года (Малоярославец). Памяти подвига подольских курсантов. Алешкинский дот
+  ssylka: https://museum-1812.ru/2019/07/16/памяти-подвига-подольских-курсантов/
+- id: n10
+  baza: periodika
+  nazvanie: 'RT. «Красные юнкера»: Министерство обороны рассекретило документы о подвигах подольских курсантов'
+  ssylka: https://russian.rt.com/science/article/912301-minoborony-dokumenty-podolskii-kursant
+- id: n11
+  baza: periodika
+  nazvanie: Lenta.ru. Рассекречены документы о подвиге подольских курсантов
+  ssylka: https://lenta.ru/news/2021/09/30/podvig/
+- id: n12
+  baza: sajt-organizacii
+  nazvanie: ВДПО. День памяти подольских курсантов
+  ssylka: https://вдпо.рф/calendar/1941-10-5_den-pamyati-podolskikh-kursantov
+citaty: []
+velichina_chislo: 12
+velichina_edinica: дней
+velichina_chto: держали курсанты Ильинский рубеж
+voinskaya_chast: Сводный отряд Подольского пехотного и Подольского артиллерийского училищ
+operaciya: 'Оборона Можайской линии: Ильинский боевой участок Малоярославецкого укрепрайона'
+front: Битва за Москву, Варшавское шоссе, октябрь 1941 года
+mesto_sobytiya:
+  nazvanie: Ильинское, Малоярославецкий район, Калужская область
+  shirota: 54.94
+  dolgota: 36.04
+podskazki_igry: 'net'
+moj_ded: 'net'
+togda_sejchas: 'net'
+skvoznye_linii: 'net'
+predmet_3d: 'net'
+panorama_360: 'net'
+staraya_karta: 'net'
+marshrut: 'net'
+etiketka_oblozhki:
+- Значок «Памятник подольским курсантам. Октябрь 1941 г.», 1970–1980-е
+- Музей Победы
+slovar:
+- lyudi:podolskie-kursanty
+vizual:
+  imya: podolskie-kursanty-baranov
+  vid: predmet
+  kicker: Снимок под лупой
+  h2: Награды курсанта
+  lead: 'Этот снимок хранит музей «Ильинские рубежи» — на том самом рубеже. Приблизь портрет бывшего курсанта Василия Баранова: ордена и медали на его пиджаке.'
+audioguide:
+  audioSrc: audio-guide-podolskie-kursanty-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от колонны танков через Ильинский рубеж и налёты — к двенадцати дням: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Колонна
+  - t: 22
+    mark: 0:22
+    title: Музейные пушки
+  - t: 44
+    mark: 0:44
+    title: Оживающий дот
+  - t: 66
+    mark: '1:06'
+    title: Руки есть
+  - t: 88
+    mark: '1:28'
+    title: Двенадцать дней
+  transcript:
+  - Двести пятьдесят курсантов с одной пушкой вышли навстречу колонне немецких танков длиной двадцать пять километров. Сотни курсантов и десантников не ждали удара — сами атаковали немецкий полк и отбросили к Угре.
+  - В бой против танков курсанты взяли музейные пушки времён русско-турецкой войны. Некоторые курсанты проучились всего две недели — и встали против танкового корпуса.
+  - 'Немцы прозвали дот курсантов «оживающим»: его разбивали, а он снова открывал огонь. Немецкие танки зашли в тыл под красными флагами — курсанты раскусили обман и разбили колонну за полчаса.'
+  - 'В один день немцы четырнадцать раз бомбили рубеж. По двое суток без еды, у шестидесяти процентов рваная обувь — и курсанты держали рубеж. Ослепший от контузии курсант сказал: «Руки-то у меня есть» — и набивал диски пулемётам.'
+  - 'Немцы сбрасывали курсантам листовки: «Доблестные красные юнкера, мы уважаем ваш героизм». Немецкое командование назвало бои у Ильинского самыми тяжёлыми за всю русскую кампанию. Курсантов просили продержаться пять дней — они стояли двенадцать.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.

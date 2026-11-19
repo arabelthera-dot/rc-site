@@ -1,0 +1,32 @@
+{
+  "title": "История в 54 секунды",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/07feb-setun/day-07feb-setun.mp4",
+    "local": "muzei/izobreteniya/video/day-07feb-setun.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 53.8,
+    "mb": 11
+  },
+  "vertical": {
+    "file": "izobreteniya/07feb-setun/day-07feb-setun-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-07feb-setun-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 53.8,
+    "mb": 10.9
+  },
+  "poster": {
+    "file": "izobreteniya/07feb-setun/day-07feb-setun-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-07feb-setun-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/07feb-setun/day-07feb-setun-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-07feb-setun-9x16-poster.jpg",
+    "v": 2
+  }
+}

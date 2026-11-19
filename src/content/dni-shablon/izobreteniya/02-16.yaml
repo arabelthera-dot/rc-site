@@ -1,0 +1,829 @@
+muzei: izobreteniya
+key: 02-16
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-14'
+nomer_dnya: izob-0216-radiozond
+data_sobytiya: '1930-01-30'
+chto_sluchilos: 'Павел Молчанов выпустил в Павловске под Ленинградом первый в мире радиозонд: шар с приборами и передатчиком поднялся на 7,8 км и сам передал по радио давление и температуру. Через 32 минуты сводка ушла в Москву.'
+god: 1930
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Гребенчатый радиозонд конструкции П. А. Молчанова, 1939
+  muzej: Ледокол «Красин» — филиал Музея Мирового океана
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=9624853
+- chto: Датчик радиозонда системы профессора Молчанова, 1938
+  muzej: Центральный музей связи имени А. С. Попова
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=21073072
+- chto: Радиозонд РЗ-049 с передатчиком (зонд Молчанова), 1950-е
+  muzej: Политехнический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7536326
+chitat_dalshe:
+- nazvanie: «К 90-летию запуска первого радиозонда»
+  gde: ГГО им. А. И. Воейкова
+  ssylka: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+- nazvanie: «Первопроходец высоких слоёв атмосферы»
+  gde: Ростех
+  ssylka: https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/
+- nazvanie: «Молчанов Павел Александрович»
+  gde: «Бессмертный барак»
+  ssylka: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+- nazvanie: «Первые автоматические метеорологические станции для Арктики»
+  gde: «Проблемы Арктики и Антарктики» (ААНИИ)
+  ssylka: https://www.aaresearch.science/jour/article/view/767
+istochniki:
+- id: ggo
+  baza: sajt-organizacii
+  nazvanie: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
+  ssylka: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+- id: rgm
+  baza: sajt-organizacii
+  nazvanie: Новость о первом радиозонде Молчанова — Росгидромет
+  ssylka: https://www.meteorf.gov.ru/press/news/20429/
+- id: rostec
+  baza: sajt-organizacii
+  nazvanie: «Первопроходец высоких слоёв атмосферы» — Ростех
+  ssylka: https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/
+- id: bb
+  baza: sajt-organizacii
+  nazvanie: «Молчанов Павел Александрович» — «Бессмертный барак»
+  ssylka: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+- id: cao
+  baza: sajt-organizacii
+  nazvanie: История ЦАО — Центральная аэрологическая обсерватория
+  ssylka: http://cao-rhms.ru/full_history.html
+- id: aanii
+  baza: nauka
+  nazvanie: «Первые автоматические метеорологические станции для Арктики» — «Проблемы Арктики и Антарктики» (ААНИИ)
+  ssylka: https://www.aaresearch.science/jour/article/view/767
+- id: ratnik
+  baza: periodika
+  nazvanie: «Павел Молчанов — отец мировой метеорологии» — ratnik.tv
+  ssylka: https://ratnik.tv/articles/science/pavel-molchanov-otets-mirovoy-meteorologii/
+- id: rusteam
+  baza: periodika
+  nazvanie: «В России запущен первый в мире метеорологический радиозонд» — rus.team
+  ssylka: https://rus.team/events/v-rossii-zapuschen-pervyy-v-mire-meteorologicheskiy-radiozond
+- id: gk-30458020
+  baza: goskatalog
+  nazvanie: Фотография «Подъём радиозонда системы профессора Молчанова», 1930-е, Центральный военно-морской музей имени императора Петра Великого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=30458020
+- id: gk-9624853
+  baza: goskatalog
+  nazvanie: Гребенчатый радиозонд конструкции профессора П. А. Молчанова, 1939, Ледокол «Красин» — филиал Музея Мирового океана — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=9624853
+- id: gk-21073072
+  baza: goskatalog
+  nazvanie: Датчик радиозонда системы профессора Молчанова, 1938, Центральный музей связи имени А. С. Попова — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21073072
+- id: gk-7536326
+  baza: goskatalog
+  nazvanie: Радиозонд РЗ-049 с передатчиком (зонд Молчанова), 1950-е, Политехнический музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=7536326
+- id: gk-20377464
+  baza: goskatalog
+  nazvanie: Фотография «Дирижабль «Граф Цеппелин» в районе острова Новая Земля», 1931, Центральный военно-морской музей имени императора Петра Великого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=20377464
+citaty: []
+velichina_chislo: 800
+velichina_edinica: радиозондов
+velichina_chto: выпускает мир каждый день — потомков зонда из Павловска
+etiketka_oblozhki:
+- Фотография «Подъём радиозонда системы профессора Молчанова», 1930-е
+- Центральный военно-морской музей имени императора Петра Великого
+slovar:
+- mesto:sankt-peterburg
+- mesto:novaya-zemlya
+head:
+  title: Первый в мире радиозонд, 1930 — Музей «Что изобрели русские первыми в мире»
+  description: 'Молчанов выпустил в Павловске первый в мире радиозонд: шар сам передал по радио погоду с высоты, и через 32 минуты сводка ушла в Москву.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-16/
+  sobytie: Первый в мире радиозонд
+  god: '1930'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первый в мире радиозонд
+    description: 'Молчанов выпустил в Павловске первый в мире радиозонд: шар сам передал по радио погоду с высоты, и через 32 минуты сводка ушла в Москву.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-16/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-16-goskatalog-30458020.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первый в мире радиозонд
+    description: 'Молчанов выпустил в Павловске первый в мире радиозонд: шар сам передал по радио погоду с высоты, и через 32 минуты сводка ушла в Москву.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-16/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-16-goskatalog-30458020.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-16-goskatalog-30458020.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.0
+    w: 0.8
+    h: 0.7
+  width: 594
+  height: 800
+  alt: 'Старый снимок: над палубой судна поднимается связка из десятка резиновых шаров, внизу люди и матрос в тельняшке, за ними гавань с лодками'
+  data_source: https://goskatalog.ru/portal/#/collections?id=30458020
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+  podpis: Фотография «Подъём радиозонда системы профессора Молчанова», 1930-е. Хранит Центральный военно-морской музей имени императора Петра Великого.
+  credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 30288364.'
+  hint: Фото · Подъём радиозонда
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1930-е
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1930-е
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=30458020
+  nomer_predmeta: '30288364'
+  nomer_snimka: net
+  hranitel: Центральный военно-морской музей имени императора Петра Великого
+  podlinnik:
+    gde: Центральный военно-морской музей имени императора Петра Великого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=30458020
+  svyashchennoe: false
+  podpis_chto: Фотография «Подъём радиозонда системы профессора Молчанова»
+  podpis_gde: Санкт-Петербург
+  podpis_kogda: 1930-е
+  pometka_prav: citirovanie-1274
+kroshka: 16 февраля · Первый в мире радиозонд
+lead:
+  data: 30 января 1930 · Павловск
+  privyazka: 16 февраля — день музея; первый в мире радиозонд Молчанов выпустил в Павловске 30 января 1930 года.
+  kto: Павел Молчанов, аэролог из Павловска
+  h1: Первый в мире радиозонд
+  hook: Шар Молчанова поднялся на 7,8 километра и сам рассказал по радио, что творится наверху, — так начался прогноз погоды
+stamp:
+- v: '32'
+  k: минуты — и сводка с высоты ушла в Москву
+- v: −40,7 °C
+  k: передал первый зонд с высоты 7,8 км
+- v: '27'
+  k: станций поднимали зонды к 1937 году
+- v: '800'
+  k: радиозондов в день выпускает мир сегодня
+daynav:
+- id: story
+  label: Зонд
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-radiozond-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу радиозонда: от шара над Павловском через дирижабль над Арктикой к восьмистам зондам в день. Четыре остановки.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Шар над Павловском
+  - t: 40
+    mark: 0:40
+    title: Гребёнка и цифровой код
+  - t: 75
+    mark: '1:15'
+    title: Зонды с «Графа Цеппелина»
+  - t: 110
+    mark: '1:50'
+    title: Сеть станций и потомки
+  transcript:
+  - 'Здравствуйте. Мы в зале первого в мире радиозонда. Тысяча девятьсот тридцатый год, тридцатое января, Павловск под Ленинградом. Павел Александрович Молчанов выпускает в небо шар с приборами. Передатчик для этого зонда он собрал своими руками. Шар поднялся на семь и восемь десятых километра и сам сообщил по радио: за бортом минус сорок и семь десятых градуса. Через тридцать две минуты после старта в Москву ушла первая в мире сводка погоды с высоты.'
+  - 'Как зонд говорил с землёй? Он передавал погоду уже цифровым кодом: стрелка прыгала по зубцам гребёнки, и каждый зубец давал свой сигнал. Самые первые зонды Молчанова мерили почти так же точно, как нынешние. Зонд почти тридцать лет работал без переделок, а сменщика по имени «Волна» пришлось переделывать.'
+  - 'Зонды Молчанова пускали с дирижабля «Граф Цеппелин» над Арктикой, а шар надували водородом самого дирижабля. Чтобы зонд не попал в винт, его сначала роняли вниз, а груз отрезала гильотина с часами. С дирижабля зонд уходил на пятнадцать — двадцать километров, а его голос слушали до пятидесяти минут. Эти зонды показали: над всей Арктикой стратосфера начинается на десяти с половиной километрах. Кренкель назвал зонд Молчанова прекрасным даром человечеству.'
+  - Летом тысяча девятьсот тридцать третьего года в бухте Тихой заработала первая в мире автоматическая метеостанция — тоже Молчанова. К тысяча девятьсот тридцать седьмому году его зонды поднимали двадцать семь станций страны — первая в мире сеть. Десятки радиозондов разных стран построены на его принципах. И сегодня мир каждый день выпускает около восьмисот радиозондов — потомков зонда из Павловска.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+video:
+  h2: История в 37 секунд
+  klyuch: izobreteniya/16feb-radiozond
+  format: horizontal
+  pole: izobreteniya/16feb-radiozond:horizontal.sec
+  suffix: сек
+  badge: 37 сек
+  poster: video/day-16feb-radiozond-poster.jpg
+  mp4: video/day-16feb-radiozond.mp4
+  note: Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Шар с радио
+  h2: Как шар заговорил с землёй
+  udary:
+  - summary: Старт в Павловске
+    det:
+    - Передатчик для первого в мире радиозонда Молчанов собрал своими руками.
+    - 'Первый зонд сам сообщил по радио с высоты 7,8 км: за бортом −40,7 °C.'
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+  - summary: Сводка в Москву
+    det:
+    - Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты.
+    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+  - summary: Над Арктикой
+    det:
+    - Зонды Молчанова пускали с «Графа Цеппелина» над Арктикой, а шар надували водородом дирижабля.
+    - 'Зонды с «Графа Цеппелина» показали: над всей Арктикой стратосфера начинается на 10,5 км.'
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что придумали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    otryvok: Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты
+    stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
+    href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+    pometka: документ
+    id: svodka-32
+    istochnik: ggo
+    dlya_voprosa: true
+    otvet: '32'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-16-goskatalog-20377464.jpg
+      glavnoe_na_kartinke:
+        x: 0.45
+        y: 0.3
+        w: 0.45
+        h: 0.45
+      width: 800
+      height: 585
+      alt: 'Старый снимок: дирижабль низко висит над тихой арктической водой и отражается в ней, слева тёмная скала, вдали заснеженный берег'
+      data_source: https://goskatalog.ru/portal/#/collections?id=20377464
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный военно-морской музей имени императора Петра Великого · Госкаталог
+      podpis: Фотография «Дирижабль «Граф Цеппелин» в районе острова Новая Земля», 1931. Хранит Центральный военно-морской музей имени императора Петра Великого.
+      credit: 'Хранится: Центральный военно-морской музей имени императора Петра Великого. Госкаталог музейного фонда РФ, № 20240019.'
+      hint: Фото · «Граф Цеппелин» в Арктике
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1931'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1931'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20377464
+      nomer_predmeta: '20240019'
+      nomer_snimka: net
+      hranitel: Центральный военно-морской музей имени императора Петра Великого
+      podlinnik:
+        gde: Центральный военно-морской музей имени императора Петра Великого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=20377464
+      svyashchennoe: false
+      podpis_chto: Фотография «Дирижабль «Граф Цеппелин» в районе острова Новая Земля»
+      podpis_gde: Новая Земля
+      podpis_kogda: '1931'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: Зонды Молчанова пускали с «Графа Цеппелина» над Арктикой, а шар надували водородом дирижабля
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: cepelin
+    istochnik: bb
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: Летом 1933-го в бухте Тихой заработала первая в мире автоматическая метеостанция — Молчанова
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: tihaya
+    istochnik: bb
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: Чтобы зонд не попал в винт дирижабля, его сначала роняли вниз, а груз отрезала гильотина с часами
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: gilotina
+    istochnik: bb
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-16-goskatalog-7536326.jpg
+      glavnoe_na_kartinke:
+        x: 0.0
+        y: 0.0
+        w: 1.0
+        h: 1.0
+      width: 233
+      height: 300
+      alt: Раскрытый белый картонный корпус радиозонда, внутри металлическая рамка, катушка и цилиндр
+      data_source: https://goskatalog.ru/portal/#/collections?id=7536326
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Политехнический музей · Госкаталог
+      podpis: Радиозонд РЗ-049 с передатчиком (зонд Молчанова), 1950-е. Хранит Политехнический музей.
+      credit: 'Хранится: Политехнический музей. Госкаталог музейного фонда РФ, № 7398864.'
+      hint: Прибор · Радиозонд РЗ-049
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1950-е
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1950-е
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=7536326
+      nomer_predmeta: '7398864'
+      nomer_snimka: net
+      hranitel: Политехнический музей
+      podlinnik:
+        gde: Политехнический музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=7536326
+      svyashchennoe: false
+      podpis_chto: Радиозонд РЗ-049 с передатчиком (зонд Молчанова)
+      podpis_gde: Москва
+      podpis_kogda: 1950-е
+      pometka_prav: citirovanie-1274
+    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    otryvok: Зонд Молчанова почти 30 лет работал без переделок, а сменщика «Волну» пришлось переделывать
+    stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
+    href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+    pometka: документ
+    id: tridcat-let
+    istochnik: ggo
+    dlya_voprosa: true
+    otvet: '30'
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    src: 'Источник: Росгидромет, Новость о первом радиозонде Молчанова — meteorf.gov.ru'
+    otryvok: Каждый день мир выпускает около 800 радиозондов — потомков зонда из Павловска
+    stranica: Новость о первом радиозонде Молчанова — Росгидромет
+    href: https://www.meteorf.gov.ru/press/news/20429/
+    pometka: документ
+    id: vosemsot
+    istochnik: rgm
+    dlya_voprosa: true
+    otvet: '800'
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    otryvok: Десятки радиозондов разных стран построены на принципах Молчанова
+    stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
+    href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+    pometka: документ
+    id: desyatki
+    istochnik: ggo
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-16-goskatalog-21073072.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.0
+        w: 0.8
+        h: 1.0
+      width: 752
+      height: 800
+      alt: Прямоугольная коробка с алюминиевым верхом и корпусом из слюды, над ней крест из стержней с четырьмя круглыми металлическими лопастями
+      data_source: https://goskatalog.ru/portal/#/collections?id=21073072
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей связи имени А. С. Попова · Госкаталог
+      podpis: Датчик радиозонда системы профессора Молчанова, 1938. Хранит Центральный музей связи имени А. С. Попова.
+      credit: 'Хранится: Центральный музей связи имени А. С. Попова. Госкаталог музейного фонда РФ, № 20943767.'
+      hint: Прибор · Датчик радиозонда
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1938'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1938'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21073072
+      nomer_predmeta: '20943767'
+      nomer_snimka: net
+      hranitel: Центральный музей связи имени А. С. Попова
+      podlinnik:
+        gde: Центральный музей связи имени А. С. Попова
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21073072
+      svyashchennoe: false
+      podpis_chto: Датчик радиозонда системы профессора Молчанова
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: '1938'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Ростех, «Первопроходец высоких слоёв атмосферы» — rostec.ru'
+    otryvok: Самые первые зонды Молчанова мерили почти так же точно, как нынешние
+    stranica: «Первопроходец высоких слоёв атмосферы» — Ростех
+    href: https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/
+    pometka: документ
+    id: tochnost
+    istochnik: rostec
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: Передатчик для первого в мире радиозонда Молчанов собрал своими руками
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: peredatchik
+    istochnik: bb
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-16-goskatalog-9624853.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.0
+        w: 0.7
+        h: 1.0
+      width: 593
+      height: 420
+      alt: 'Прибор: над алюминиевой коробкой с прозрачной янтарной стенкой стоит стержень с четырьмя квадратными лопастями, внутри видны шестерёнки и изогнутая пластина-гребёнка'
+      data_source: https://goskatalog.ru/portal/#/collections?id=9624853
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Ледокол «Красин» — филиал Музея Мирового океана · Госкаталог
+      podpis: Гребенчатый радиозонд конструкции профессора П. А. Молчанова, 1939. Хранит Ледокол «Красин» — филиал Музея Мирового океана.
+      credit: 'Хранится: Ледокол «Красин» — филиал Музея Мирового океана. Госкаталог музейного фонда РФ, № 9506998.'
+      hint: Прибор · Гребенчатый радиозонд
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1939'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1939'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=9624853
+      nomer_predmeta: '9506998'
+      nomer_snimka: net
+      hranitel: Ледокол «Красин» — филиал Музея Мирового океана
+      podlinnik:
+        gde: Ледокол «Красин» — филиал Музея Мирового океана
+        otkuda: https://goskatalog.ru/portal/#/collections?id=9624853
+      svyashchennoe: false
+      podpis_chto: Гребенчатый радиозонд конструкции профессора П. А. Молчанова
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: '1939'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: 'Зонд 1930 года передавал погоду уже цифровым кодом: стрелка прыгала по зубцам гребёнки'
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: grebenka
+    istochnik: bb
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про зонды над Арктикой
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: Ростех, «Первопроходец высоких слоёв атмосферы» — rostec.ru'
+    otryvok: 'Первый зонд сам сообщил по радио с высоты 7,8 км: за бортом −40,7 °C'
+    stranica: «Первопроходец высоких слоёв атмосферы» — Ростех
+    href: https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/
+    pometka: документ
+    id: minus-40
+    istochnik: rostec
+    dlya_voprosa: true
+    otvet: 7,8
+    otvet_edinstvennyj: true
+  - n: 12
+    sravnenie: net
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: 'Зонды с «Графа Цеппелина» показали: над всей Арктикой стратосфера начинается на 10,5 км'
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: stratosfera
+    istochnik: bb
+    dlya_voprosa: true
+    otvet: 10,5
+    otvet_edinstvennyj: true
+  - n: 14
+    sravnenie: net
+    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    otryvok: К 1937-му зонды Молчанова поднимали 27 станций страны — первая в мире сеть
+    stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
+    href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+    pometka: документ
+    id: set-27
+    istochnik: ggo
+    dlya_voprosa: true
+    otvet: '27'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: С дирижабля зонд уходил на 15–20 км, а его голос слушали до 50 минут
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: golos-50
+    istochnik: bb
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    otryvok: Кренкель назвал зонд Молчанова «прекрасным даром человечеству»
+    stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
+    href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+    pometka: документ
+    id: krenkel
+    istochnik: bb
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории зонда — своё место: минуты, станции, зонды в день.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все три числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все три числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: minuty
+      nazvanie: Через столько минут сводка ушла в Москву
+      verno_ru: Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты.
+    - kod: stancii
+      nazvanie: Столько станций поднимали зонды к 1937 году
+      verno_ru: К 1937-му зонды Молчанова поднимали 27 станций страны — первая в мире сеть.
+    - kod: zondy
+      nazvanie: Столько радиозондов мир выпускает каждый день
+      verno_ru: Каждый день мир выпускает около 800 радиозондов — потомков зонда из Павловска.
+    podpisi:
+    - kod: n32
+      tekst: '32'
+      mesto: minuty
+      mimo_ru: '32 — это минуты: столько ждала Москва первую в мире сводку.'
+    - kod: n27
+      tekst: '27'
+      mesto: stancii
+      mimo_ru: '27 — это станции: первая в мире сеть к 1937 году.'
+    - kod: n800
+      tekst: около 800
+      mesto: zondy
+      mimo_ru: Около 800 — это зонды, которые мир выпускает каждый день.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 32 минуты до первой в мире сводки, 27 станций к 1937 году, около 800 зондов в день сегодня.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 32 — минуты до первой в мире сводки, 27 — станций к 1937 году, около 800 — зондов в день.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты.'
+  net: 'Как это работало дальше: К 1937-му зонды Молчанова поднимали 27 станций страны — первая в мире сеть.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Павловск
+    - первый в мире радиозонд Молчанова
+    - '1930'
+  - - Арктика
+    - зонды с «Графа Цеппелина»
+    - '1931'
+  - - Бухта Тихая
+    - первая в мире автоматическая метеостанция
+    - '1933'
+  - - СССР
+    - сеть из 27 станций
+    - '1937'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 32 минуты; −40,7 °C; 27; 10,5 км; около 800.'
+  ball: 8
+  voprosy:
+  - q: Через сколько минут после старта в Москву ушла первая в мире сводка с высоты?
+    o:
+    - 3 минуты
+    - 32 минуты
+    - 3 часа
+    a: 1
+    e: Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты.
+  - q: Какую температуру передал первый зонд с высоты 7,8 км?
+    o:
+    - −4,07 °C
+    - −40,7 °C
+    - +40,7 °C
+    a: 1
+    e: 'Первый зонд сам сообщил по радио с высоты 7,8 км: за бортом −40,7 °C.'
+  - q: Сколько станций поднимали зонды Молчанова к 1937 году?
+    o:
+    - '7'
+    - '27'
+    - '270'
+    a: 1
+    e: К 1937-му зонды Молчанова поднимали 27 станций страны — первая в мире сеть.
+  - q: На какой высоте над Арктикой начинается стратосфера по зондам с «Графа Цеппелина»?
+    o:
+    - 1,5 км
+    - 10,5 км
+    - 105 км
+    a: 1
+    e: 'Зонды с «Графа Цеппелина» показали: над всей Арктикой стратосфера начинается на 10,5 км.'
+  - q: Сколько радиозондов мир выпускает каждый день?
+    o:
+    - около 8
+    - около 800
+    - около 80 000
+    a: 1
+    e: Каждый день мир выпускает около 800 радиозондов — потомков зонда из Павловска.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал первого в мире радиозонда.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+  - src: /muzei/izobreteniya/img/02-16-goskatalog-22479943.jpg
+    glavnoe_na_kartinke: {x: 0.1, y: 0.06, w: 0.8, h: 0.9}
+    alt: Пожелтевшая бумажная обложка в чёрной рамке с пятнами; красным — «Воздушный океан», над заглавием — «П. А. Молчанов, заведывающий Павловской аэрологической обсерваторией», внизу — «Молодая гвардия, Москва — Петроград, 1924»
+    data_source: https://goskatalog.ru/portal/#/collections?id=21261750
+    license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
+    podpis: Книга П. А. Молчанова «Воздушный океан», 1924. Хранит Долгопрудненский историко-художественный музей.
+    credit: 'Молчанов П. А.. Хранится: Муниципальное бюджетное учреждение "Долгопрудненский историко-художественный музей". Госкаталог № 21221195'
+    width: 1600
+    height: 2078
+    hint: Предмет · книга
+    vid: predmet
+    prava: {avtor: Молчанов П. А., god_sozdaniya: 1924 г., god_smerti_avtora: 1941, god_reabilitacii: 1954, anonim: false, pervaya_publikaciya: '1924', sdelano_mashinoj: false, otkuda: 'Госкаталог музейного фонда РФ, № 21221195', baza: goskatalog, ssylka: 'https://goskatalog.ru/portal/#/collections?id=21261750'}
+    nomer_predmeta: '21221195'
+    nomer_snimka: net
+    hranitel: Долгопрудненский историко-художественный музей
+    podlinnik: {gde: Долгопрудненский историко-художественный музей, otkuda: 'https://goskatalog.ru/portal/#/collections?id=21261750'}
+    svyashchennoe: false
+    podpis_chto: Книга П. А. Молчанова «Воздушный океан»
+    podpis_gde: Москва — Петроград
+    podpis_kogda: '1924'
+    pometka_prav: citirovanie-1274
+  - src: /muzei/izobreteniya/img/02-16-goskatalog-84161975.jpg
+    glavnoe_na_kartinke: {x: 0.05, y: 0.05, w: 0.9, h: 0.9}
+    alt: Светло-зелёная обложка с синей рамкой и завитками по углам; крупно — «П. А. Молчанов, выдающийся советский аэролог», внизу — флюгер-эмблема и «Гидрометеоиздат, 1958»
+    data_source: https://goskatalog.ru/portal/#/collections?id=65730125
+    license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
+    podpis: Книга Е. С. Селезнёвой и Е. А. Тудоровской «П. А. Молчанов — выдающийся советский аэролог», 1958. Хранит Интинский краеведческий музей.
+    credit: 'Хранится: Муниципальное бюджетное учреждение культуры "Интинский краеведческий музей". Госкаталог № 65447085'
+    width: 1280
+    height: 1958
+    hint: Предмет · книга
+    vid: predmet
+    prava: {avtor: 'Селезнёва Е. С., Тудоровская Е. А.', god_sozdaniya: 1958 г., god_smerti_avtora: net, god_reabilitacii: net, anonim: false, pervaya_publikaciya: '1958', sdelano_mashinoj: false, otkuda: 'Госкаталог музейного фонда РФ, № 65447085', baza: goskatalog, ssylka: 'https://goskatalog.ru/portal/#/collections?id=65730125'}
+    nomer_predmeta: '65447085'
+    nomer_snimka: net
+    hranitel: Интинский краеведческий музей
+    podlinnik: {gde: Интинский краеведческий музей, otkuda: 'https://goskatalog.ru/portal/#/collections?id=65730125'}
+    svyashchennoe: false
+    podpis_chto: Книга Е. С. Селезнёвой и Е. А. Тудоровской «П. А. Молчанов — выдающийся советский аэролог»
+    podpis_gde: Ленинград
+    podpis_kogda: '1958'
+    pometka_prav: citirovanie-1274
+sources:
+- href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+  title: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
+  note: факты дня
+- href: https://www.meteorf.gov.ru/press/news/20429/
+  title: Новость о первом радиозонде Молчанова — Росгидромет
+  note: факты дня
+- href: https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/
+  title: «Первопроходец высоких слоёв атмосферы» — Ростех
+  note: факты дня
+- href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
+  title: «Молчанов Павел Александрович» — «Бессмертный барак»
+  note: факты дня
+- href: http://cao-rhms.ru/full_history.html
+  title: История ЦАО — Центральная аэрологическая обсерватория
+  note: факты дня
+- href: https://www.aaresearch.science/jour/article/view/767
+  title: «Первые автоматические метеорологические станции для Арктики» — «Проблемы Арктики и Антарктики» (ААНИИ)
+  note: факты дня
+- href: https://ratnik.tv/articles/science/pavel-molchanov-otets-mirovoy-meteorologii/
+  title: «Павел Молчанов — отец мировой метеорологии» — ratnik.tv
+  note: факты дня
+- href: https://rus.team/events/v-rossii-zapuschen-pervyy-v-mire-meteorologicheskiy-radiozond
+  title: «В России запущен первый в мире метеорологический радиозонд» — rus.team
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=30458020
+  title: Госкаталог музейного фонда РФ, Фотография «Подъём радиозонда системы профессора Молчанова»
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=9624853
+  title: Госкаталог музейного фонда РФ, Гребенчатый радиозонд конструкции профессора П. А. Молчанова
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=21073072
+  title: Госкаталог музейного фонда РФ, Датчик радиозонда системы профессора Молчанова
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=7536326
+  title: Госкаталог музейного фонда РФ, Радиозонд РЗ-049 с передатчиком (зонд Молчанова)
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=20377464
+  title: Госкаталог музейного фонда РФ, Фотография «Дирижабль «Граф Цеппелин» в районе острова Новая Земля»
+  note: кадр
+kuda:
+- lbl: Следующий день
+  main: true
+- lbl: Предыдущий день
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Главный аэролог
+  - - 70
+    - Радист зонда
+  - - 40
+    - Наблюдатель станции
+  - - 0
+    - Гость дня
+return:
+  q: Через сколько минут после старта зонда в Москву ушла первая в мире сводка с высоты?
+  a: Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты.
+  src: ГГО им. А. И. Воейкова, voeikovmgo.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-16-radiozond:claim-1930
+  ours:
+    kind: publication
+    title: «К 90-летию запуска первого радиозонда»
+    date: '1930-01-30'
+    holder: Главная геофизическая обсерватория им. А. И. Воейкова
+    source_url: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
+podskazki_igry:
+- 32 — это минуты до первой в мире сводки
+- 27 — это станции первой в мире сети
+- Около 800 — это зонды в день сегодня
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Павловск
+  shirota: 59.686
+  dolgota: 30.432
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Резиновый шар надувают и подвешивают к нему лёгкий ящик с приборами и передатчиком
+- Шар поднимается, а датчики меряют давление и температуру воздуха
+- Стрелка прибора скользит по зубцам гребёнки, и каждый зубец даёт свой радиосигнал
+- На земле сигналы принимают по радио и пересчитывают в сводку погоды на высоте
+data_uslovnaya: 16 февраля — день музея; первый в мире радиозонд Молчанов выпустил в Павловске 30 января 1930 года.
+predmet_3d: net
+panorama_360: net

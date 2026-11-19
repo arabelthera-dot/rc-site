@@ -4,6 +4,7 @@
 // ВКЛЮЧЕН 27.10 (r302-privychka-vkl): VKLYUCHENO = true — заявкой после снимков
 // 390/1440 на трёх днях; проба у себя — PUBLIC_PRIVYCHKA=1 npm run build. Откат — VKLYUCHENO = false.
 import { gotovyeDni, kogda } from './etot-den.mjs';
+import { perenosOn, ssylkaPerenos } from './perenos.mjs';
 
 const VKLYUCHENO = true;
 export const privychkaOn = () => VKLYUCHENO || process.env.PUBLIC_PRIVYCHKA === '1';
@@ -34,12 +35,14 @@ export function zavtra(key) {
 // из localStorage посетителя; без JS блок — только анонс завтрашнего дня.
 export function blokZavtra(base, key) {
   const z = zavtra(key);
-  const seriya = '<p class="rc-pv-seriya" hidden></p>';
-  if (!z) return `<section class="rc-privychka rc-pv-tolko-seriya" data-rc-den="${key}" hidden>${seriya}</section>`;
+  const pr = perenosOn();
+  const seriya = '<p class="rc-pv-seriya" hidden></p>' + (pr ? ssylkaPerenos(base) : '');
+  const persist = pr ? ' data-rc-persist' : '';
+  if (!z) return `<section class="rc-privychka rc-pv-tolko-seriya" data-rc-den="${key}"${persist} hidden>${seriya}</section>`;
   const kogdaTxt = z.zavtra ? `Откроется завтра, ${kogda(z.key)}` : `Следующий день откроется ${kogda(z.key)}`;
   const li = z.dni.map((d) => `<li class="rc-pv-item"><span class="rc-pv-muzey">${esc(d.museumTitle)}</span>`
     + (d.hook ? `<span class="rc-pv-hook">${esc(d.hook)}</span>` : `<span class="rc-pv-hook">${esc(d.title)}</span>`) + '</li>').join('');
-  return `<section class="rc-privychka" data-rc-den="${key}" aria-labelledby="rc-pv-h">`
+  return `<section class="rc-privychka" data-rc-den="${key}"${persist} aria-labelledby="rc-pv-h">`
     + `<h2 class="rc-pv-h" id="rc-pv-h">${z.zavtra ? 'Завтра в музеях' : 'Дальше в музеях'}</h2>`
     + `<p class="rc-pv-kogda">${kogdaTxt}</p><ul class="rc-pv-list">${li}</ul>${seriya}</section>`;
 }

@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Пётр I",
+  "pol": "m",
+  "kratko": "Первый российский император.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80126171",
+    "ssylka": "https://id.loc.gov/authorities/names/n80126171.html",
+    "zagolovok": "Peter I, Emperor of Russia, 1672-1725"
+  },
+  "latinica": "Peter I",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1672",
+    "smert": "1725"
+  }
+}

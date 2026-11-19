@@ -1,0 +1,897 @@
+muzei: izobreteniya
+key: 02-19
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0219-cvetnaya-foto
+data_sobytiya: '1863-08-30'
+data_staryj_stil: '1863-08-18'
+chto_sluchilos: 'Сергей Прокудин-Горский, химик и фотограф 1863 года рождения, снял Россию в цвете: снимал одно и то же через три цветных фильтра подряд, и до нас дошли 1902 стеклянные пластины с цветной Россией начала XX века.'
+god: 1863
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Открытка «Л. Н. Толстой» — цветное фото с натуры С. М. Прокудина-Горского, 1908
+  muzej: Государственный музей-заповедник Л.Н. Толстого
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=10975112
+- chto: 'Стереоснимок П. Е. Кулакова: Толстые, гости и С. М. Прокудин-Горский в зале яснополянского дома, 1908'
+  muzej: Государственный музей-заповедник Л.Н. Толстого
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=16105887
+chitat_dalshe:
+- nazvanie: «Дорогами Сергея Прокудина-Горского»
+  gde: Русское географическое общество
+  ssylka: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
+- nazvanie: «Цветные фотографии Сергея Прокудина-Горского»
+  gde: РОСФОТО
+  ssylka: https://rosphoto.com/history/color_photography_prokudin-gorsky-1453
+- nazvanie: «Сергей Михайлович Прокудин-Горский (1863–1944)»
+  gde: Президентская библиотека имени Б. Н. Ельцина
+  ssylka: https://www.prlib.ru/Great_Russia/outstanding_scientists_XX/Prokudin-Gorsky
+- nazvanie: «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков»
+  gde: «Вокруг света»
+  ssylka: https://www.vokrugsveta.ru/vs/article/299/
+- nazvanie: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого»
+  gde: az.lib.ru
+  ssylka: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
+istochniki:
+- id: rgo
+  baza: sajt-organizacii
+  nazvanie: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
+  ssylka: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
+- id: rosphoto
+  baza: sajt-organizacii
+  nazvanie: «Цветные фотографии Сергея Прокудина-Горского» — РОСФОТО
+  ssylka: https://rosphoto.com/history/color_photography_prokudin-gorsky-1453
+- id: azlib
+  baza: sajt-organizacii
+  nazvanie: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru
+  ssylka: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
+- id: hron
+  baza: sajt-organizacii
+  nazvanie: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
+  ssylka: http://prokudin-gorskiy.ru/hron.php
+- id: prlib
+  baza: sajt-organizacii
+  nazvanie: «Сергей Михайлович Прокудин-Горский (1863–1944)» — Президентская библиотека имени Б. Н. Ельцина
+  ssylka: https://www.prlib.ru/Great_Russia/outstanding_scientists_XX/Prokudin-Gorsky
+- id: uraloved
+  baza: periodika
+  nazvanie: «С. М. Прокудин-Горский — пионер цветной фотографии в России и на Урале» — «Ураловед»
+  ssylka: https://uraloved.ru/prokudin-gorskij
+- id: vokrugsveta
+  baza: periodika
+  nazvanie: «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков» — «Вокруг света»
+  ssylka: https://www.vokrugsveta.ru/vs/article/299/
+- id: alpina
+  baza: periodika
+  nazvanie: '«„Пожалуйста, не двигайтесь“: как сегодня снимают с помощью технологии Прокудина-Горского» — блог «Альпины»'
+  ssylka: https://alpinabook.ru/blog/pozhaluysta-ne-dvigaytes/
+- id: laspace-venera13
+  baza: sajt-organizacii
+  nazvanie: «35 лет первым цветным панорамам поверхности Венеры» — НПО имени С. А. Лавочкина
+  ssylka: https://www.laspace.ru/ru/press/news/35-let-pervym-tsvetnym-panoramam-poverkhnosti-venery/
+- id: gk-10975112
+  baza: goskatalog
+  nazvanie: Открытка «Л. Н. Толстой». Фото с натуры С. М. Прокудина-Горского, 1908, Государственный музей-заповедник Л.Н. Толстого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=10975112
+- id: gk-12346237
+  baza: goskatalog
+  nazvanie: Открытка. Репродукция фотографии Л. Н. Толстого работы С. М. Прокудина-Горского, Государственный музей-заповедник Л.Н. Толстого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=12346237
+- id: gk-17769689
+  baza: goskatalog
+  nazvanie: Юноша в тёмной фуражке, П. А. Сергеенко и С. М. Прокудин-Горский на фоне дома Л. Н. Толстого, Государственный музей-заповедник Л.Н. Толстого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=17769689
+- id: gk-16105887
+  baza: goskatalog
+  nazvanie: Л. Н. и С. А. Толстые, гости, Д. П. Маковицкий и С. М. Прокудин-Горский в зале яснополянского дома, Государственный музей-заповедник Л.Н. Толстого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=16105887
+- id: gk-17769735
+  baza: goskatalog
+  nazvanie: Ю. И. Игумнова и С. М. Прокудин-Горский на скамейке за столом, Государственный музей-заповедник Л.Н. Толстого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=17769735
+- id: gk-17769713
+  baza: goskatalog
+  nazvanie: Л. Н. и С. А. Толстые, Д. П. Маковицкий, С. М. Прокудин-Горский и американский гость в столовой яснополянского дома, Государственный музей-заповедник Л.Н. Толстого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=17769713
+- id: gk-16405987
+  baza: goskatalog
+  nazvanie: Бланк открытого письма. Репродукция фотографии Л. Н. Толстого, фото С. М. Прокудина-Горского, Государственный музей-заповедник Л.Н. Толстого — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=16405987
+citaty: []
+velichina_chislo: 1902
+velichina_edinica: пластины
+velichina_chto: стеклянных пластин с цветной Россией дошли до нас
+etiketka_oblozhki:
+- Открытка «Л. Н. Толстой». Фото с натуры С. М. Прокудина-Горского, 1908
+- Государственный музей-заповедник Л.Н. Толстого
+slovar:
+- lyudi:sergey-prokudin-gorskiy
+head:
+  title: Цветная фотография России, 1863 — Музей «Что изобрели русские первыми в мире»
+  description: 'Прокудин-Горский снял Россию в цвете: вагон-лаборатория от царя, единственный цветной портрет живого Толстого и 1902 стеклянные пластины, дошедшие до нас. «Венера-13» первой в мире сняла поверхность Венеры в цвете.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-19/
+  sobytie: Цветная фотография России
+  god: '1863'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Цветная фотография России
+    description: 'Прокудин-Горский снял Россию в цвете: вагон-лаборатория от царя, единственный цветной портрет живого Толстого и 1902 стеклянные пластины, дошедшие до нас. «Венера-13» первой в мире сняла поверхность Венеры в цвете.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-19/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-19-goskatalog-10975112.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Цветная фотография России
+    description: 'Прокудин-Горский снял Россию в цвете: вагон-лаборатория от царя, единственный цветной портрет живого Толстого и 1902 стеклянные пластины, дошедшие до нас. «Венера-13» первой в мире сняла поверхность Венеры в цвете.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-19/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-19-goskatalog-10975112.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-19-goskatalog-10975112.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.15
+    w: 0.8
+    h: 0.75
+  width: 509
+  height: 800
+  alt: 'Цветной снимок: седой старик с длинной белой бородой в светлой рубахе сидит в плетёном кресле под деревьями'
+  data_source: https://goskatalog.ru/portal/#/collections?id=10975112
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник Л.Н. Толстого · Госкаталог
+  podpis: Открытка «Л. Н. Толстой». Фото с натуры С. М. Прокудина-Горского, 1908. Хранит Государственный музей-заповедник Л.Н. Толстого.
+  credit: 'Хранится: Государственный музей-заповедник Л.Н. Толстого. Госкаталог музейного фонда РФ, № 10855831.'
+  hint: Фото · Лев Толстой в цвете
+  vid: foto
+  prava:
+    avtor: Прокудин-Горский Сергей Михайлович
+    god_sozdaniya: '1908'
+    god_smerti_avtora: 1944
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: '1908'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=10975112
+  nomer_predmeta: '10855831'
+  nomer_snimka: net
+  hranitel: Государственный музей-заповедник Л.Н. Толстого
+  podlinnik:
+    gde: Государственный музей-заповедник Л.Н. Толстого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=10975112
+  svyashchennoe: false
+  podpis_chto: Открытка «Л. Н. Толстой». Фото с натуры С. М. Прокудина-Горского, 1908
+  podpis_gde: Ясная Поляна
+  podpis_kogda: '1908'
+  pometka_prav: citirovanie-1274
+kroshka: 19 февраля · Цветная фотография
+lead:
+  data: 1863 · Россия
+  privyazka: 19 февраля — день музея; Сергей Прокудин-Горский родился в 1863 году.
+  kto: Сергей Прокудин-Горский, химик и фотограф
+  h1: Цветная фотография России · С. М. Прокудин-Горский, р. 1863
+  hook: Прокудин-Горский снимал одно и то же через три фильтра подряд, поэтому Россию 1910 года мы видим в настоящем цвете
+stamp:
+- v: '1902'
+  k: стеклянные пластины дошли до нас
+- v: 10 руб.
+  k: стоил один цветной снимок
+- v: '5'
+  k: стран — патент на цветное кино
+- v: '1982'
+  k: первые в мире цветные снимки Венеры
+daynav:
+- id: story
+  label: В цвете
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-cvetnaya-foto-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу цветной фотографии: от царского вагона-лаборатории через Ясную Поляну к пластинам, которые дошли до нас.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Вагон-лаборатория
+  - t: 40
+    mark: 0:40
+    title: Толстой в цвете
+  - t: 75
+    mark: '1:15'
+    title: Тысяча девятьсот две пластины
+  - t: 110
+    mark: '1:50'
+    title: Цветное кино
+  transcript:
+  - 'Царь дал фотографу вагон-лабораторию: цепляй к любому поезду и снимай Россию в цвете. Царский указ: пускать фотографа с камерой в любой храм и монастырь России.'
+  - Единственный цветной портрет живого Льва Толстого снял он — в Ясной Поляне в тысяча девятьсот восьмом году. Цветной Толстой вышел на обложке «Огонька» тиражом больше двух миллионов.
+  - 'Прокудин-Горский задумал десять тысяч цветных снимков России за десять лет — до нас дошли тысяча девятьсот две стеклянные пластины. Вода и облака на его снимках — цветные призраки: три кадра, по одной–три секунды каждый.'
+  - В тысяча девятьсот тринадцатом году Прокудин-Горский запатентовал цветное кино сразу в пяти странах. В тысяча девятьсот шестнадцатом снял цветное кино о турецких городах, которые взяла русская армия.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Россия в цвете
+  h2: Как Россия стала цветной
+  udary:
+  - summary: Вагон от царя
+    det:
+    - 'Царь дал фотографу вагон-лабораторию: цепляй к любому поезду и снимай Россию в цвете'
+    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+  - summary: Толстой в цвете
+    det:
+    - Единственный цветной портрет живого Льва Толстого снял он — в Ясной Поляне в 1908-м
+    src: 'Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru'
+  - summary: Пластины дошли до нас
+    det:
+    - Прокудин-Горский задумал 10 000 цветных снимков России за 10 лет — до нас дошли 1902 стеклянные пластины
+    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделал
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-19-goskatalog-17769735.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.15
+        w: 0.9
+        h: 0.7
+      width: 800
+      height: 487
+      alt: 'Стереоснимок: у белого дома с верандой двое сидят за столом в саду'
+      data_source: https://goskatalog.ru/portal/#/collections?id=17769735
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник Л.Н. Толстого · Госкаталог
+      podpis: Ю. И. Игумнова и С. М. Прокудин-Горский на скамейке за столом. Хранит Государственный музей-заповедник Л.Н. Толстого.
+      credit: 'Хранится: Государственный музей-заповедник Л.Н. Толстого. Госкаталог музейного фонда РФ, № 17636925.'
+      hint: Фото · Прокудин-Горский в саду
+      vid: foto
+      prava:
+        avtor: Кулаков Пётр Ефимович
+        god_sozdaniya: '1908'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1908'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=17769735
+      nomer_predmeta: '17636925'
+      nomer_snimka: net
+      hranitel: Государственный музей-заповедник Л.Н. Толстого
+      podlinnik:
+        gde: Государственный музей-заповедник Л.Н. Толстого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=17769735
+      svyashchennoe: false
+      podpis_chto: Ю. И. Игумнова и С. М. Прокудин-Горский на скамейке за столом
+      podpis_gde: Ясная Поляна
+      podpis_kogda: '1908'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    otryvok: 'Царь дал фотографу вагон-лабораторию: цепляй к любому поезду и снимай Россию в цвете'
+    stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
+    pometka: документ
+    id: vagon-laboratoriya
+    istochnik: rgo
+    dlya_voprosa: false
+  - n: 2
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-19-goskatalog-12346237.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.15
+        w: 0.8
+        h: 0.7
+      width: 463
+      height: 800
+      alt: 'Цветная открытка: Толстой в голубой рубахе сидит в кресле в саду'
+      data_source: https://goskatalog.ru/portal/#/collections?id=12346237
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник Л.Н. Толстого · Госкаталог
+      podpis: Открытка. Репродукция фотографии Л. Н. Толстого работы С. М. Прокудина-Горского. Хранит Государственный музей-заповедник Л.Н. Толстого.
+      credit: 'Хранится: Государственный музей-заповедник Л.Н. Толстого. Госкаталог музейного фонда РФ, № 12223251.'
+      hint: Фото · Толстой в Ясной Поляне
+      vid: foto
+      prava:
+        avtor: Прокудин-Горский Сергей Михайлович
+        god_sozdaniya: '1908'
+        god_smerti_avtora: 1944
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1908'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=12346237
+      nomer_predmeta: '12223251'
+      nomer_snimka: net
+      hranitel: Государственный музей-заповедник Л.Н. Толстого
+      podlinnik:
+        gde: Государственный музей-заповедник Л.Н. Толстого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=12346237
+      svyashchennoe: false
+      podpis_chto: Открытка. Репродукция фотографии Л. Н. Толстого работы С. М. Прокудина-Горского
+      podpis_gde: Ясная Поляна
+      podpis_kogda: '1908'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru'
+    otryvok: Единственный цветной портрет живого Льва Толстого снял он — в Ясной Поляне в 1908-м
+    stranica: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru
+    href: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
+    pometka: документ
+    id: portret-tolstogo-1908
+    istochnik: azlib
+    dlya_voprosa: true
+    otvet: '1908'
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    otryvok: Прокудин-Горский задумал 10 000 цветных снимков России за 10 лет — до нас дошли 1902 стеклянные пластины
+    stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
+    pometka: документ
+    id: plastiny-1902
+    istochnik: rgo
+    dlya_voprosa: true
+    otvet: '1902'
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: net
+    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    otryvok: Царское шествие по Невскому снято в цвете в 1913-м — и плёнка исчезла
+    stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
+    pometka: документ
+    id: nevskij-1913
+    istochnik: rgo
+    dlya_voprosa: true
+    otvet: '1913'
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    otryvok: Один его цветной снимок стоил 10 рублей — полкоровы
+    stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
+    pometka: документ
+    id: snimok-10-rublej
+    istochnik: rgo
+    dlya_voprosa: true
+    otvet: 10 рублей
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    otryvok: Правительство решило купить его коллекцию — убийство Столыпина всё остановило
+    stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
+    href: http://prokudin-gorskiy.ru/hron.php
+    pometka: документ
+    id: stolypin
+    istochnik: hron
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    otryvok: В 1916-м снял цветное кино о турецких городах, которые взяла русская армия
+    stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
+    href: http://prokudin-gorskiy.ru/hron.php
+    pometka: документ
+    id: kino-1916
+    istochnik: hron
+    dlya_voprosa: true
+    otvet: '1916'
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Сергей Михайлович Прокудин-Горский (1863–1944)» — prlib.ru'
+    otryvok: Его цветную Россию купила Библиотека Конгресса США — за 5000 долларов в 1948-м
+    stranica: «Сергей Михайлович Прокудин-Горский (1863–1944)» — Президентская библиотека имени Б. Н. Ельцина
+    href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XX/Prokudin-Gorsky
+    pometka: документ
+    id: 5000-dollarov
+    istochnik: prlib
+    dlya_voprosa: true
+    otvet: 5000 долларов
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    src: 'Источник: «Вокруг света», «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков» — vokrugsveta.ru'
+    otryvok: 'Вода и облака на его снимках — цветные призраки: три кадра, по 1–3 секунды каждый'
+    stranica: «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков» — «Вокруг света»
+    href: https://www.vokrugsveta.ru/vs/article/299/
+    pometka: документ
+    id: tri-kadra
+    istochnik: vokrugsveta
+    dlya_voprosa: true
+    otvet: три
+    otvet_edinstvennyj: true
+  - n: 10
+    sravnenie: net
+    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    otryvok: Прокудин-Горский придумал свой состав, и пластинка стала видеть все цвета — быстрее заграничных
+    stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
+    href: http://prokudin-gorskiy.ru/hron.php
+    pometka: документ
+    id: svoj-sostav
+    istochnik: hron
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о цветной России
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: РОСФОТО, «Цветные фотографии Сергея Прокудина-Горского» — rosphoto.com'
+    otryvok: 'Царский указ: пускать фотографа с камерой в любой храм и монастырь России'
+    stranica: «Цветные фотографии Сергея Прокудина-Горского» — РОСФОТО
+    href: https://rosphoto.com/history/color_photography_prokudin-gorsky-1453
+    pometka: документ
+    id: ukaz-hramy
+    istochnik: rosphoto
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-19-goskatalog-17769689.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.75
+      width: 800
+      height: 487
+      alt: 'Стереоснимок: двор усадьбы, белый дом за деревьями, перед ним три фигуры'
+      data_source: https://goskatalog.ru/portal/#/collections?id=17769689
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник Л.Н. Толстого · Госкаталог
+      podpis: Юноша в тёмной фуражке, П. А. Сергеенко и С. М. Прокудин-Горский на фоне дома Л. Н. Толстого. Хранит Государственный музей-заповедник Л.Н. Толстого.
+      credit: 'Хранится: Государственный музей-заповедник Л.Н. Толстого. Госкаталог музейного фонда РФ, № 17636962.'
+      hint: Фото · Прокудин-Горский в Ясной Поляне
+      vid: foto
+      prava:
+        avtor: Кулаков Пётр Ефимович
+        god_sozdaniya: май 1908
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: май 1908
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=17769689
+      nomer_predmeta: '17636962'
+      nomer_snimka: net
+      hranitel: Государственный музей-заповедник Л.Н. Толстого
+      podlinnik:
+        gde: Государственный музей-заповедник Л.Н. Толстого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=17769689
+      svyashchennoe: false
+      podpis_chto: Юноша в тёмной фуражке, П. А. Сергеенко и С. М. Прокудин-Горский на фоне дома Л. Н. Толстого
+      podpis_gde: Ясная Поляна
+      podpis_kogda: май 1908
+      pometka_prav: citirovanie-1274
+    src: 'Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru'
+    otryvok: 'Толстой бросил болтливого репортёра: «Давайте сейчас сниматься — я так и останусь»'
+    stranica: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru
+    href: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
+    pometka: документ
+    id: reporter
+    istochnik: azlib
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-19-goskatalog-16105887.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.75
+      width: 800
+      height: 392
+      alt: 'Стереоснимок: светлый зал, за длинным столом с самоваром сидят люди'
+      data_source: https://goskatalog.ru/portal/#/collections?id=16105887
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник Л.Н. Толстого · Госкаталог
+      podpis: Л. Н. и С. А. Толстые, гости, Д. П. Маковицкий и С. М. Прокудин-Горский в зале яснополянского дома. Хранит Государственный музей-заповедник Л.Н. Толстого.
+      credit: 'Хранится: Государственный музей-заповедник Л.Н. Толстого. Госкаталог музейного фонда РФ, № 15982164.'
+      hint: Фото · Обед в зале Ясной Поляны
+      vid: foto
+      prava:
+        avtor: Кулаков Пётр Ефимович
+        god_sozdaniya: 23 мая 1908
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: 23 мая 1908
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=16105887
+      nomer_predmeta: '15982164'
+      nomer_snimka: net
+      hranitel: Государственный музей-заповедник Л.Н. Толстого
+      podlinnik:
+        gde: Государственный музей-заповедник Л.Н. Толстого
+        otkuda: https://goskatalog.ru/portal/#/collections?id=16105887
+      svyashchennoe: false
+      podpis_chto: Л. Н. и С. А. Толстые, гости, Д. П. Маковицкий и С. М. Прокудин-Горский в зале яснополянского дома
+      podpis_gde: Ясная Поляна
+      podpis_kogda: 23 мая 1908
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    otryvok: Цветной Толстой вышел на обложке «Огонька» тиражом больше 2 миллионов
+    stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
+    href: http://prokudin-gorskiy.ru/hron.php
+    pometka: документ
+    id: ogonek-2-mln
+    istochnik: hron
+    dlya_voprosa: true
+    otvet: 2 миллиона
+    otvet_edinstvennyj: true
+  - n: 14
+    sravnenie: 2 часа 7 минут на раскалённой Венере — дольше двух школьных уроков
+    src: 'Источник: «35 лет первым цветным панорамам поверхности Венеры» — НПО имени С. А. Лавочкина'
+    otryvok: «Венера-13» первой в мире сняла поверхность Венеры в цвете — 1 марта 1982 года
+    stranica: «35 лет первым цветным панорамам поверхности Венеры» — НПО имени С. А. Лавочкина
+    href: https://www.laspace.ru/ru/press/news/35-let-pervym-tsvetnym-panoramam-poverkhnosti-venery/
+    pometka: документ
+    id: venera-13-cvet
+    istochnik: laspace-venera13
+    dlya_voprosa: true
+    otvet: '1982'
+    otvet_edinstvennyj: true
+  - n: 15
+    sravnenie: net
+    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    otryvok: В 1913-м Прокудин-Горский запатентовал цветное кино сразу в пяти странах
+    stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
+    href: http://prokudin-gorskiy.ru/hron.php
+    pometka: документ
+    id: patent-5-stran
+    istochnik: hron
+    dlya_voprosa: true
+    otvet: '5'
+    otvet_edinstvennyj: true
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории Прокудина-Горского — своё место: пластины, рубли, доллары, тираж.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: plastiny
+      nazvanie: Столько стеклянных пластин дошло до нас
+      verno_ru: Прокудин-Горский задумал 10 000 цветных снимков России за 10 лет — до нас дошли 1902 стеклянные пластины.
+    - kod: cena
+      nazvanie: Столько стоил один цветной снимок
+      verno_ru: Один его цветной снимок стоил 10 рублей — полкоровы.
+    - kod: kongress
+      nazvanie: За столько Библиотека Конгресса купила его цветную Россию
+      verno_ru: Его цветную Россию купила Библиотека Конгресса США — за 5000 долларов в 1948-м.
+    - kod: tirazh
+      nazvanie: Таким тиражом цветной Толстой вышел на обложке «Огонька»
+      verno_ru: Цветной Толстой вышел на обложке «Огонька» тиражом больше 2 миллионов.
+    podpisi:
+    - kod: n1902
+      tekst: '1902'
+      mesto: plastiny
+      mimo_ru: 1902 — это стеклянные пластины, которые дошли до нас.
+    - kod: n10r
+      tekst: 10 рублей
+      mesto: cena
+      mimo_ru: 10 рублей — это цена одного цветного снимка.
+    - kod: n5000
+      tekst: 5000 долларов
+      mesto: kongress
+      mimo_ru: 5000 долларов — столько заплатила Библиотека Конгресса в 1948-м.
+    - kod: n2m
+      tekst: больше 2 миллионов
+      mesto: tirazh
+      mimo_ru: Больше 2 миллионов — это тираж «Огонька» с цветным Толстым.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 1902 пластины, 10 рублей за снимок, 5000 долларов от Библиотеки Конгресса, больше 2 миллионов «Огонька».
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 1902 — пластины, 10 рублей — цена снимка, 5000 долларов — покупка 1948 года, больше 2 миллионов — тираж «Огонька».'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: «Венера-13» первой в мире сняла поверхность Венеры в цвете — 1 марта 1982 года.'
+  net: 'Как это работало дальше: В 1913-м Прокудин-Горский запатентовал цветное кино сразу в пяти странах.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - СССР, «Венера-13»
+    - первые в мире цветные снимки поверхности Венеры
+    - '1982'
+  - - Россия, Ясная Поляна
+    - цветной портрет живого Льва Толстого
+    - '1908'
+  - - Россия, Петербург
+    - царское шествие по Невскому в цвете
+    - '1913'
+  - - Россия
+    - патент на цветное кино в пяти странах
+    - '1913'
+  - - Россия
+    - цветное кино о турецких городах
+    - '1916'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 1902 пластины; 10 рублей; 1982 год; 5000 долларов; пять стран.'
+  ball: 8
+  voprosy:
+  - q: Сколько стеклянных пластин Прокудина-Горского дошло до нас?
+    o:
+    - '192'
+    - '1902'
+    - 19 020
+    a: 1
+    e: Прокудин-Горский задумал 10 000 цветных снимков России за 10 лет — до нас дошли 1902 стеклянные пластины
+  - q: Сколько стоил один цветной снимок Прокудина-Горского?
+    o:
+    - 10 копеек
+    - 10 рублей
+    - 1000 рублей
+    a: 1
+    e: Один его цветной снимок стоил 10 рублей — полкоровы
+  - q: В каком году «Венера-13» первой в мире сняла поверхность Венеры в цвете?
+    o:
+    - '1962'
+    - '1982'
+    - '2002'
+    a: 1
+    e: «Венера-13» первой в мире сняла поверхность Венеры в цвете — 1 марта 1982 года
+  - q: За сколько Библиотека Конгресса купила его цветную Россию в 1948-м?
+    o:
+    - 50 долларов
+    - 5000 долларов
+    - 5 миллионов долларов
+    a: 1
+    e: Его цветную Россию купила Библиотека Конгресса США — за 5000 долларов в 1948-м
+  - q: В скольких странах он запатентовал цветное кино в 1913-м?
+    o:
+    - в одной
+    - в пяти
+    - в пятидесяти
+    a: 1
+    e: В 1913-м Прокудин-Горский запатентовал цветное кино сразу в пяти странах
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал цветной фотографии.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-19-goskatalog-17769713.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.2
+    w: 0.85
+    h: 0.7
+  width: 800
+  height: 487
+  alt: 'Стереоснимок: столовая с портретами на стенах, за длинным столом с самоваром сидят гости'
+  data_source: https://goskatalog.ru/portal/#/collections?id=17769713
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник Л.Н. Толстого · Госкаталог
+  podpis: Л. Н. и С. А. Толстые, Д. П. Маковицкий, С. М. Прокудин-Горский и американский гость в столовой яснополянского дома. Хранит Государственный музей-заповедник Л.Н. Толстого.
+  credit: 'Хранится: Государственный музей-заповедник Л.Н. Толстого. Госкаталог музейного фонда РФ, № 17636943.'
+  hint: Фото · Гости Толстого за столом
+  vid: foto
+  prava:
+    avtor: Кулаков Пётр Ефимович
+    god_sozdaniya: 22 мая 1908
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: 22 мая 1908
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=17769713
+  nomer_predmeta: '17636943'
+  nomer_snimka: net
+  hranitel: Государственный музей-заповедник Л.Н. Толстого
+  podlinnik:
+    gde: Государственный музей-заповедник Л.Н. Толстого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=17769713
+  svyashchennoe: false
+  podpis_chto: Л. Н. и С. А. Толстые, Д. П. Маковицкий, С. М. Прокудин-Горский и американский гость в столовой яснополянского дома
+  podpis_gde: Ясная Поляна
+  podpis_kogda: 22 мая 1908
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-19-goskatalog-16405987.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.15
+    w: 0.9
+    h: 0.75
+  width: 470
+  height: 800
+  alt: 'Цветная открытка: Толстой с белой бородой в голубой рубахе и сапогах сидит на плетёной скамье под деревьями'
+  data_source: https://goskatalog.ru/portal/#/collections?id=16405987
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный музей-заповедник Л.Н. Толстого · Госкаталог
+  podpis: Бланк открытого письма. Репродукция фотографии Л. Н. Толстого, фото С. М. Прокудина-Горского. Хранит Государственный музей-заповедник Л.Н. Толстого.
+  credit: 'Хранится: Государственный музей-заповедник Л.Н. Толстого. Госкаталог музейного фонда РФ, № 16274603.'
+  hint: Фото · Толстой на скамье
+  vid: foto
+  prava:
+    avtor: Прокудин-Горский Сергей Михайлович
+    god_sozdaniya: начало XX века
+    god_smerti_avtora: 1944
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: начало XX века
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=16405987
+  nomer_predmeta: '16274603'
+  nomer_snimka: net
+  hranitel: Государственный музей-заповедник Л.Н. Толстого
+  podlinnik:
+    gde: Государственный музей-заповедник Л.Н. Толстого
+    otkuda: https://goskatalog.ru/portal/#/collections?id=16405987
+  svyashchennoe: false
+  podpis_chto: Бланк открытого письма. Репродукция фотографии Л. Н. Толстого, фото С. М. Прокудина-Горского
+  podpis_gde: Ясная Поляна
+  podpis_kogda: начало XX века
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
+  title: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
+  note: факты дня
+- href: https://rosphoto.com/history/color_photography_prokudin-gorsky-1453
+  title: «Цветные фотографии Сергея Прокудина-Горского» — РОСФОТО
+  note: факты дня
+- href: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
+  title: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru
+  note: факты дня
+- href: http://prokudin-gorskiy.ru/hron.php
+  title: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
+  note: факты дня
+- href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XX/Prokudin-Gorsky
+  title: «Сергей Михайлович Прокудин-Горский (1863–1944)» — Президентская библиотека имени Б. Н. Ельцина
+  note: факты дня
+- href: https://uraloved.ru/prokudin-gorskij
+  title: «С. М. Прокудин-Горский — пионер цветной фотографии в России и на Урале» — «Ураловед»
+  note: факты дня
+- href: https://www.vokrugsveta.ru/vs/article/299/
+  title: «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков» — «Вокруг света»
+  note: факты дня
+- href: https://alpinabook.ru/blog/pozhaluysta-ne-dvigaytes/
+  title: '«„Пожалуйста, не двигайтесь“: как сегодня снимают с помощью технологии Прокудина-Горского» — блог «Альпины»'
+  note: факты дня
+- href: https://www.laspace.ru/ru/press/news/35-let-pervym-tsvetnym-panoramam-poverkhnosti-venery/
+  title: «35 лет первым цветным панорамам поверхности Венеры» — НПО имени С. А. Лавочкина
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=10975112
+  title: Госкаталог музейного фонда РФ, Открытка «Л. Н. Толстой». Фото с натуры С. М. Прокудина-Горского, 1908
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=12346237
+  title: Госкаталог музейного фонда РФ, Открытка. Репродукция фотографии Л. Н. Толстого работы С. М. Прокудина-Горского
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=17769689
+  title: Госкаталог музейного фонда РФ, Юноша в тёмной фуражке, П. А. Сергеенко и С. М. Прокудин-Горский на фоне дома Л. Н. Толстого
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=16105887
+  title: Госкаталог музейного фонда РФ, Л. Н. и С. А. Толстые, гости, Д. П. Маковицкий и С. М. Прокудин-Горский в зале яснополянского дома
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=17769735
+  title: Госкаталог музейного фонда РФ, Ю. И. Игумнова и С. М. Прокудин-Горский на скамейке за столом
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=17769713
+  title: Госкаталог музейного фонда РФ, Л. Н. и С. А. Толстые, Д. П. Маковицкий, С. М. Прокудин-Горский и американский гость в столовой яснополянского дома
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=16405987
+  title: Госкаталог музейного фонда РФ, Бланк открытого письма. Репродукция фотографии Л. Н. Толстого, фото С. М. Прокудина-Горского
+  note: кадр
+kuda:
+- lbl: Следующий день
+  main: true
+- lbl: Предыдущий день
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Главный фотограф
+  - - 70
+    - Хранитель пластин
+  - - 40
+    - Ученик в вагоне-лаборатории
+  - - 0
+    - Гость дня
+return:
+  q: Сколько стеклянных пластин Прокудина-Горского дошло до нас?
+  a: Прокудин-Горский задумал 10 000 цветных снимков России за 10 лет — до нас дошли 1902 стеклянные пластины.
+  src: Русское географическое общество, rgo.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-19-cvetnaya-foto:claim-1908
+  ours:
+    kind: publication
+    title: «Неделя в Ясной Поляне у Л. Н. Толстого»
+    date: '1908-05-23'
+    holder: С. М. Прокудин-Горский
+    source_url: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
+podskazki_igry:
+- 1902 — это пластины, дошедшие до нас
+- 10 рублей — это цена одного снимка
+- 5000 долларов — это покупка 1948 года
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Ясная Поляна
+  shirota: 54.073
+  dolgota: 37.526
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Камера снимает один и тот же вид три раза подряд — через синее, зелёное и красное стекло
+- На стеклянной пластине получаются три чёрно-белых кадра, каждый хранит свой цвет
+- При показе три кадра проецируют через те же три цветных стекла и совмещают
+- Цвета складываются — и на экране появляется настоящая цветная картина
+data_uslovnaya: 19 февраля — день музея; Прокудин-Горский родился 30 (18) августа 1863 года.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/19feb-cvetnaya-foto
+  format: horizontal
+  pole: izobreteniya/19feb-cvetnaya-foto:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  poster: video/day-19feb-cvetnaya-foto-poster.jpg
+  mp4: video/day-19feb-cvetnaya-foto.mp4
+  note: Закадровый текст озвучен синтезом речи.

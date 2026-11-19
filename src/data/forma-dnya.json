@@ -339,7 +339,7 @@
     },
     {
       "imya": "images.izobrazheno",
-      "chto": "кто и что на картинке — номера записей словаря slovar.json или карточек spravochniki/kartochki.json («lyudi:…», «predmet:…», «mesto:…»)",
+      "chto": "кто и что на картинке — номера записей словаря src/data/slovar/ или карточек spravochniki/kartochki.json («lyudi:…», «predmet:…», «mesto:…»)",
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
       "punkt": "22"
@@ -413,6 +413,12 @@
       "na_stranicu": false,
       "obyazatelno_dlya_gotov": false,
       "punkt": "182"
+    },
+    {
+      "imya": "images.pometka_prav",
+      "chto": "Р764 п.2: пометка прав кадра из закрытого списка src/data/spravochniki/pometki-prav.json; ставит машина scripts/prava-pometki.mjs по подписи и таблице «база → пометка»",
+      "na_stranicu": false,
+      "obyazatelno_dlya_gotov": false
     },
     {
       "imya": "moj_ded",

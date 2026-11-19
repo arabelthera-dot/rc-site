@@ -5,5 +5,72 @@
   "hook": "Прокудин-Горский снимал одно и то же через три фильтра подряд, поэтому Россию 1910 года мы видим в настоящем цвете",
   "slovar": [
     "lyudi:sergey-prokudin-gorskiy"
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Сергей Прокудин-Горский",
+      "Прокудин-",
+      "Цветная фотография России",
+      "фотография"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Юноша в темной фуражке, П.А.Сергеенко и С.М.Прокудин-Горский на фоне дома Л.Н.Толстого со",
+        "avtor": "Кулаков Петр Ефимович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=17769689",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/17656241",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 17636962 (карточка 17769689, инв. Ф-27512) | май 1908 | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Сергей Прокудин-Горский"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Открытка. Репродукция с фотографии. Л.Н.Толстой. Фото с натуры С.М.Прокудина-Горского 1908",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10975112",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8729922",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10855831 (карточка 10975112, инв. Е-6421) | Начало ХХ века | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Прокудин-"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Открытка. Репродукция с фотографии Л.Н.Толстого работы С.М.Прокудина-Горского.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12346237",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/10135598",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 12223251 (карточка 12346237, инв. Е-2619) | Первая половина XX века | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Прокудин-"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Л.Н. и С.А. Толстые, Дж. Реймонд с супругой, Д.П. Маковицкий и С.М. Прокудин-Горский в зал",
+        "avtor": "Кулаков Петр Ефимович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=16105887",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/15361010",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 15982164 (карточка 16105887, инв. Ф-26738) | 23 мая 1908. | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Прокудин-"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Бланк открытого письма. Репродукция фотографии Л.Н.Толстого Фото С.М. Прокудина-Горского 1",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=16405987",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/15771873",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 16274603 (карточка 16405987, инв. ПП-165/6) | Начало ХХ века | хранится: Государственный музей-заповедник Л.Н. Толстого | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Прокудин-"
+      }
+    ]
+  }
 }

@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-18",
   "title": "Почвоведение как наука, первое в мире",
-  "hook": "Докучаев доказал, что чернозём — живое тело со своей историей, и русский эталон почвы увезли в Париж"
+  "hook": "Докучаев доказал, что чернозём — живое тело со своей историей, и русский эталон почвы увезли в Париж",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Почвоведение как наука",
+      "Почвоведение"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Брошюра. Сборник работ Центрального музея почвоведения имени В.В. Докучаева. Выпуск II. От",
+        "avtor": "Н.Н. Соколов.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=7843399",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/3875003",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 7729985 (карточка 7843399, инв. ПК-751) | 1957 г. | хранится: ГБУК РО \"Волгодонский эколого-исторический музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Почвоведение"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Научные работники кафедры почвоведения Московской сельскохозяйственной академии: заведующи",
+        "avtor": "Шаровский В.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=10829984",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8087156",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10711454 (карточка 10829984, инв. —) | 11.10.1950 г. | хранится: ГБУК города Москвы \"Музейное объединение \"Музей Москвы\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Почвоведение"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Книга. Краткий указатель группы почвоведения Казанского городского музея",
+        "avtor": "Ризположенский Р.,Сиклер Л.О.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=16695673",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/16150492",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 16564340 (карточка 16695673, инв. —) | 1897 | хранится: НМ РТ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Почвоведение"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "ПРОГРАММА КУРСА \"ПОЧВОВЕДЕНИЕ\".",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19836979",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20487596",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19703006 (карточка 19836979, инв. ДФ ) | 20 в. | хранится: БУ \"Чувашский национальный музей\" Минкультуры Чувашии | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Почвоведение"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Книга \"Почвоведение\". Учебник для лесохозяйственных вузов",
+        "avtor": "Роде А.А., Смирнов В.Н.",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=20046800",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20814766",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19914508 (карточка 20046800, инв. ПИК 6257) | 1972 г. | хранится: ГБУК КК \"НИМЗ\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Почвоведение"
+      }
+    ]
+  }
 }

@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Константин Коровин",
+  "pol": "m",
+  "kratko": "Живописец и театральный художник, русский импрессионист.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n85264878",
+    "ssylka": "https://id.loc.gov/authorities/names/n85264878.html",
+    "zagolovok": "Korovin, Konstantin Alekseevich, 1861-1939"
+  },
+  "latinica": "Konstantin Korovin",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1861",
+    "smert": "1939"
+  }
+}

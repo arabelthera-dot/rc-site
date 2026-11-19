@@ -80,10 +80,9 @@ video:
   pole: nesdayutsya/10jan-varyag:horizontal.sec
   suffix: сек
   badge: 45 сек
-  intro: Крейсер затопили свои — но флаг не спустили
-  poster: /muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg?v=2
-  mp4: /muzei/ne-sdayutsya/video/day-10jan-varyag.mp4?v=2
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42038844720) из сценария days/ns10jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-10jan-varyag-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-10jan-varyag.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Команда
   h2: 570 человек на одном крейсере
@@ -394,15 +393,7 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: podvig-dom-pavlova.html
-    title: 11 — дом Павлова
-    hook: Обычный дом держал улицу пятьдесят восемь дней.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

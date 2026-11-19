@@ -2889,7 +2889,7 @@
    "muzei": "izobreteniya",
    "den": "01-29",
    "sec": 51.3,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42043337499) из сценария days/29jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/29jan.json",
    "golos": {
     "vid": "синтез",
@@ -3179,7 +3179,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-01",
    "sec": 45.7,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41872778013) из сценария days/ns01jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns01jan.json",
    "golos": {
     "vid": "синтез",
@@ -3288,7 +3288,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-02",
    "sec": 58,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41843577134) из сценария days/ns02jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns02jan.json",
    "golos": {
     "vid": "синтез",
@@ -3410,7 +3410,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-03",
    "sec": 49.7,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns03jan.json",
    "golos": {
     "vid": "синтез",
@@ -3519,7 +3519,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-04",
    "sec": 47.5,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41872879687) из сценария days/ns04jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns04jan.json",
    "golos": {
     "vid": "синтез",
@@ -3628,7 +3628,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-05",
    "sec": 59.3,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41872718715) из сценария days/ns05jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns05jan.json",
    "golos": {
     "vid": "синтез",
@@ -3757,7 +3757,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-06",
    "sec": 56.6,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41876731468) из сценария days/ns06jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns06jan.json",
    "golos": {
     "vid": "синтез",
@@ -3879,7 +3879,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-07",
    "sec": 51.7,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41877564547) из сценария days/ns07jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns07jan.json",
    "golos": {
     "vid": "синтез",
@@ -3988,7 +3988,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-08",
    "sec": 47.1,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 41876918133) из сценария days/ns08jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns08jan.json",
    "golos": {
     "vid": "синтез",
@@ -4206,7 +4206,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-10",
    "sec": 45.4,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038844720) из сценария days/ns10jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns10jan.json",
    "golos": {
     "vid": "синтез",
@@ -4679,7 +4679,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-15",
    "sec": 49.1,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns15jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns15jan.json",
    "golos": {
     "vid": "синтез",
@@ -4801,7 +4801,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-16",
    "sec": 49.2,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns16jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns16jan.json",
    "golos": {
     "vid": "синтез",
@@ -4923,7 +4923,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-17",
    "sec": 47.8,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42033871018) из сценария days/ns17jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns17jan.json",
    "golos": {
     "vid": "синтез",
@@ -5045,7 +5045,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-18",
    "sec": 47.9,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns18jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns18jan.json",
    "golos": {
     "vid": "синтез",
@@ -5167,7 +5167,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-19",
    "sec": 48.4,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns19jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns19jan.json",
    "golos": {
     "vid": "синтез",
@@ -5289,7 +5289,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-20",
    "sec": 46.8,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns20jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns20jan.json",
    "golos": {
     "vid": "синтез",
@@ -5411,7 +5411,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-21",
    "sec": 47.4,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns21jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns21jan.json",
    "golos": {
     "vid": "синтез",
@@ -5533,7 +5533,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-22",
    "sec": 47.3,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns22jan.json",
    "golos": {
     "vid": "синтез",
@@ -5636,7 +5636,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-23",
    "sec": 49.5,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns23jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns23jan.json",
    "golos": {
     "vid": "синтез",
@@ -5765,7 +5765,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-24",
    "sec": 43.9,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns24jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns24jan.json",
    "golos": {
     "vid": "синтез",
@@ -5887,7 +5887,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-25",
    "sec": 44.3,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42202145069) из сценария days/ns25jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns25jan.json",
    "golos": {
     "vid": "синтез",
@@ -5996,7 +5996,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-26",
    "sec": 46.2,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns26jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns26jan.json",
    "golos": {
     "vid": "синтез",
@@ -6118,7 +6118,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-27",
    "sec": 48.8,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns27jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns27jan.json",
    "golos": {
     "vid": "синтез",
@@ -6240,7 +6240,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-28",
    "sec": 42,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns28jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns28jan.json",
    "golos": {
     "vid": "синтез",
@@ -6349,7 +6349,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-29",
    "sec": 46.5,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns29jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns29jan.json",
    "golos": {
     "vid": "синтез",
@@ -6458,7 +6458,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-30",
    "sec": 42.4,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42086799346) из сценария days/ns30jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns30jan.json",
    "golos": {
     "vid": "синтез",
@@ -6567,7 +6567,7 @@
    "muzei": "ne-sdayutsya",
    "den": "01-31",
    "sec": 46.6,
-   "pometka_kadrov": "Ролик собран в облаке rc-rolik (render.yml, прогон 42086799346) из сценария days/ns31jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+   "pometka_kadrov": "Закадровый текст озвучен синтезом речи.",
    "scenariy": "rc-rolik days/ns31jan.json",
    "golos": {
     "vid": "синтез",

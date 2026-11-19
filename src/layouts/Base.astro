@@ -160,6 +160,7 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
   {!bezAdresa && <link rel="canonical" href={url} />}
   {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
   <link rel="icon" href={`${base}favicon.ico`} sizes="any" />
+  {nastroyki.pwaManifest && <link rel="manifest" href={`${base}manifest.webmanifest`} />}
   <!-- Inter (шапка дня, крошки, блок «Поддержать») и PT Serif (основной текст вместо системного Georgia, 17.10) —
        оба объявлены в museum.css; файлы
        (кириллица + латиница с цифрами) — заранее, иначе после их загрузки страница перескакивает (CLS, приёмка
@@ -222,7 +223,7 @@ const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: вы�
     {lang.code === 'ru' && <div class="foot-links">Официальный сайт — <a href={kanaly.sayt}>{kanaly.saytImya}</a>. Других сайтов, каналов и сборов у нас нет</div>}
     {lang.code === 'ru' && <div class="foot-links">Автор проекта — <a href={`${base}o-proekte/#osnovatel`}>Сергей Ефименко</a> · <a href={`mailto:${kanaly.pochta}`}>{kanaly.pochta}</a></div>}
     <Fragment set:html={licenziyaHtml(base, { code: lang.code })} />
-    {oshibkaMailto && <script is:inline>(function(){var a=document.querySelector('a.oshibka[data-pochta]');if(!a)return;var v='';function z(){v=String(window.getSelection?window.getSelection():'').trim().slice(0,1500)}a.addEventListener('pointerdown',z,true);a.addEventListener('click',function(){if(!v)z();var u=a.dataset.stranica,b='Страница: '+u+'\n\n'+(v?'Выделенный текст:\n«'+v+'»\n\n':'')+'Что не так:\n\n';a.href='mailto:'+a.dataset.pochta+'?subject='+encodeURIComponent('Ошибка на странице '+u)+'&body='+encodeURIComponent(b);v=''})})();</script>}
+    {oshibkaMailto && <script src="../scripts/oshibka.js"></script>}
   </footer>
   <script is:inline defer src={`${base}assets/analytics.js`}></script>
 </body>

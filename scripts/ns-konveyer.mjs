@@ -24,6 +24,7 @@ import { rolikIzReestra } from './karkas/ne-sdayutsya.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
 import { failPublic } from '../src/lib/den-obshchee.mjs';
 import { proveritDen } from './ns-zamki.mjs';
+import { rolikEst, MANIFEST } from './hranilishche-rolikov.mjs';
 
 const KOREN = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const VYHOD = path.join(KOREN, 'src/content/dni-shablon/ne-sdayutsya');
@@ -116,7 +117,7 @@ function gidIzOblaka(key, fail) {
 // Шаг 1: ролик из облака в public/ и реестр. Возвращает причину отказа или null.
 function rolikVReestr(key, karta, dd, mes) {
   const reestr = chitat(PUB);
-  const id = idRolika(dd, mes), hook = kartochkaDnya(key).hook ?? '';
+  const id = idRolika(dd, mes);
   const est = Object.keys(reestr.releases).find((k) => k.startsWith(`nesdayutsya/${dd}${MES_KL[mes]}-`));
   const run = artefakty(id);
   // Выпуск уже в реестре — перекачиваем, только если в облаке ролик новее (сценарий поправили и пересобрали, r533).
@@ -141,8 +142,7 @@ function rolikVReestr(key, karta, dd, mes) {
   const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
   zapisatVypusk(PUB, vypusk, {
     title: `История в ${sekund(Math.round(fajly['16x9'].sec))}`,
-    intro: hook,
-    note: `Ролик собран в облаке rc-rolik (render.yml, прогон ${run}) из сценария days/${id}.json и кадров дня. Закадровый текст озвучен синтезом речи.`,
+    note: `Закадровый текст озвучен синтезом речи.`,
     horizontal: fail('', 1920, 1080, fajly['16x9']),
     vertical: fail('-9x16', 1080, 1920, fajly['9x16']),
     poster: { file: `${vypusk}/day-${imya}-poster.jpg`, local: `${VIDEO}/day-${imya}-poster.jpg`, v },
@@ -190,7 +190,7 @@ function sverka(key, fail, dd, mes) {
   else if (!fs.existsSync(path.join(KOREN, failPublic('ne-sdayutsya', ag)))) net.push(`аудиогид: нет файла ${ag}`);
   const v = k.video?.mp4?.split('?')[0];
   if (!v) net.push('ролик: нет блока video');
-  else for (const f of [v, v.replace(/\.mp4$/, '-9x16.mp4')]) if (!fs.existsSync(path.join(KOREN, failPublic('ne-sdayutsya', f)))) net.push(`ролик: нет файла ${f}`);
+  else for (const f of [v, v.replace(/\.mp4$/, '-9x16.mp4')]) if (!rolikEst(failPublic('ne-sdayutsya', f), { pub: path.join(KOREN, 'public'), manifest: path.join(KOREN, MANIFEST) })) net.push(`ролик: нет файла ${f}`);
   const id = idRolika(dd, mes);
   if (!(id in scenarii)) {
     try { scenarii[id] = JSON.parse(gh('api', `repos/${ROLIK}/contents/days/${id}.json`, '-H', 'Accept: application/vnd.github.raw')); }

@@ -1,0 +1,19 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Карл Брюллов",
+  "pol": "m",
+  "kratko": "Живописец, автор «Последнего дня Помпеи».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82263271",
+    "ssylka": "https://id.loc.gov/authorities/names/n82263271.html",
+    "zagolovok": "Bri︠u︡llov, Karl Pavlovich, 1799-1852"
+  },
+  "latinica": "Karl Briullov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1799",
+    "smert": "1852-06-23",
+    "smert_ss": "1852-06-11"
+  }
+}
