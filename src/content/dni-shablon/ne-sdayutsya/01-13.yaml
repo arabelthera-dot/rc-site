@@ -468,6 +468,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: rogozov-qsl
+  vid: dokument
+  kicker: Документ под лупой
+  h2: Позывной Новолазаревской
+  lead: 'Такой карточкой станция Новолазаревская подтверждала радиосвязь в 1962 году. Приближайте: Антарктида, звезда станции и позывной UA1KAE.'
 audioguide:
   audioSrc: audio-guide-rogozov-ru.mp3
   durationLabel: 1 минута 22 секунды

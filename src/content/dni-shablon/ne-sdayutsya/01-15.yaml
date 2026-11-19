@@ -424,6 +424,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: chelyuskin-lager-karta
+  vid: karta
+  kicker: Карта под лупой
+  h2: Лагерь на льдине
+  lead: 'Рукописная карта лагеря челюскинцев, 1934 год. Приближайте: трещины во льду и пронумерованные значки построек.'
 audioguide:
   audioSrc: audio-guide-chelyuskincy-ru.mp3
   durationLabel: 1 минута 30 секунд
