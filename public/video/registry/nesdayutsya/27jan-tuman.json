@@ -4,29 +4,29 @@
   "horizontal": {
     "file": "nesdayutsya/27jan-tuman/day-27jan-tuman.mp4",
     "local": "muzei/ne-sdayutsya/video/day-27jan-tuman.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 48.8,
-    "mb": 13.6
+    "mb": 13.5
   },
   "vertical": {
     "file": "nesdayutsya/27jan-tuman/day-27jan-tuman-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-27jan-tuman-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 48.8,
-    "mb": 12.7
+    "mb": 12.6
   },
   "poster": {
     "file": "nesdayutsya/27jan-tuman/day-27jan-tuman-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-27jan-tuman-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/27jan-tuman/day-27jan-tuman-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-27jan-tuman-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
