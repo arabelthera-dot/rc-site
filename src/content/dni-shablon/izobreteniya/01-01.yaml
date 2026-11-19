@@ -457,7 +457,7 @@ razdely:
   - posle: daynav
     html: |-
       <!-- живая сцена дня (была сверху; обложка — фото выше, Р231) -->
-      <div class="hero-scene" id="hero">
+      <div class="hero-scene">
         <canvas id="hero3d" class="scene" aria-label="3D-визуализация телевизора АТП-1"></canvas>
       </div>
 
