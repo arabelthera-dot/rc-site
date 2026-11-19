@@ -15,6 +15,7 @@ staraya_karta: "net"
 marshrut: "net"
 kak_rabotaet: "net"
 data_sobytiya: "1831-01-03"
+data_staryj_stil: '1830-12-22'
 data_uslovnaya: "Дата условная: у открытия нет одного дня. Микроскоп — 1831, книга «О булатах» — 1841."
 god: 1831
 god_tochnost: "tochno"
@@ -27,7 +28,6 @@ velichina_chto: "раньше англичанина Генри Сорби Ан�
 etiketka_oblozhki: ["Павел Петрович Аносов. Фотография с портрета","1-я половина XIX века"]
 slovar: ["lyudi:pavel-anosov","mesto:zlatoust"]
 mesto_sobytiya: {"nazvanie":"Златоуст","shirota":55.17,"dolgota":59.67}
-data_staryj_stil: "1831-01-03"
 head:
   title: Аносов первым в мире посмотрел на сталь в микроскоп — Музей «Что изобрели русские первыми в мире»
   description: Потерянный на века секрет булата вернул русский инженер, первым в мире разглядев под микроскопом, из чего сделана сталь.

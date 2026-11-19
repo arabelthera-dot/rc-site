@@ -20,6 +20,7 @@ const DOLG_R733 = chitaj('src/data/polya-r733-dolg.json');
 const SLOVAR = slovar;
 // Переход на новый стиль: 1 (14) февраля 1918 г.; раньше — нужна дата по старому стилю (п. 5).
 const NOVYJ_STIL = '1918-02-14';
+const GRIGORIANSKIJ = '1582-10-15'; // до введения григорианского календаря даты пишутся по юлианскому, пересчёта нет
 const HTML = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
 const KOMBINIRUEMYE = /[̀-ͯ]/;
 // Не текст страницы: код скриптов и разметка поисковиков (п. 40 их не проверяет; п. 170 — проверяет).
@@ -93,10 +94,11 @@ export function standartDnya(d, syroe = d) {
   if (!Number.isInteger(d.god)) p(4, 'god (год события числом)');
   else if (est(d.data_sobytiya) && godDaty(d.data_sobytiya) !== d.god) p(4, `god ${d.god} не совпадает с годом data_sobytiya ${d.data_sobytiya}`);
   if (!est(d.god_tochnost)) p(4, 'god_tochnost (tochno | okolo | desyatiletie | vek)');
-  // 5. Старый стиль: до 14.02.1918 — обязателен, после — не ставится.
+  // 5. Старый стиль: с 15.10.1582 до 14.02.1918 — обязателен, после — не ставится; до 1582 — не нужен.
   if (est(d.data_sobytiya)) {
     const do1918 = polnayaData(d.data_sobytiya) < NOVYJ_STIL;
-    if (do1918 && !est(d.data_staryj_stil)) p(5, `data_staryj_stil — событие до ${NOVYJ_STIL}, нужна дата по старому стилю`);
+    const razniza = polnayaData(d.data_sobytiya) >= GRIGORIANSKIJ;
+    if (do1918 && razniza && !est(d.data_staryj_stil)) p(5, `data_staryj_stil — событие до ${NOVYJ_STIL}, нужна дата по старому стилю`);
     if (!do1918 && est(d.data_staryj_stil)) p(5, `data_staryj_stil стоит у события после ${NOVYJ_STIL} — убрать`);
   }
   // 6. Год показа; «в этом году» в тексте нет (через год страница соврёт).
