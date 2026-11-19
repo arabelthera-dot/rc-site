@@ -15,6 +15,7 @@ staraya_karta: "net"
 marshrut: "net"
 kak_rabotaet: "net"
 data_sobytiya: "1878-01-05"
+data_staryj_stil: '1877-12-24'
 data_uslovnaya: "5 января — день календаря музея; нефтепровод Балаханы — Чёрный город построили осенью — в начале зимы 1878 года."
 god: 1878
 god_tochnost: "tochno"
@@ -27,7 +28,6 @@ velichina_chto: "трёхдюймовой трубы в первом нефте�
 etiketka_oblozhki: ["Академик В. Г. Шухов за рабочим столом","1933"]
 slovar: ["lyudi:vladimir-shuhov","mesto:baku"]
 mesto_sobytiya: {"nazvanie":"Баку","shirota":40.41,"dolgota":49.87}
-data_staryj_stil: "1878-01-05"
 head:
   title: Первый в мире расчётный нефтепровод — Шухов — Русские первые в мире
   description: "Первый в мире расчётный нефтепровод: 25-летний Шухов создал его в Баку в 1878 году — и оставил без работы десять тысяч возчиков."
