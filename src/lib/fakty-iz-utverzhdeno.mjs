@@ -11,13 +11,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const S_DNYA = '02-01';
+// День на образце февраля: ключ с 02-01 или январский день, переведённый машиной scripts/yanvar-v-obrazec.mjs (Р656):
+// признак перевода — nomer_dnya в карточке. Непереведённый январь живёт по-старому, пока машина до него не дойдёт.
+export const naObrazce = (key, d) => key >= S_DNYA || (d?.nomer_dnya != null && d.nomer_dnya !== '');
 const vklyucheno = () => process.env.RC_FAKTY_IZ_UTVERZHDENO !== '0';
 
 // syroe — разобранный yaml дня; koren — корень сайта. Возвращает { syroe, oshibki }: syroe с подставленным текстом
 // (новый объект, исходный не меняется), oshibki — строки для общего списка ошибок карточек.
 export function faktyIzUtverzhdeno(syroe, muzei, key, koren = '.') {
   const f = path.join(koren, 'src/data/utverzhdeno', muzei, `${key}.json`);
-  if (!syroe?.fakty || key < S_DNYA || !fs.existsSync(f)) return { syroe, oshibki: [] };
+  if (!syroe?.fakty || !naObrazce(key, syroe) || !fs.existsSync(f)) return { syroe, oshibki: [] };
   const utv = JSON.parse(fs.readFileSync(f, 'utf8'));
   const poNomeru = new Map(utv.fakty.map((x) => [x.n, x]));
   const poryadok = utv.poryadok?.length ? utv.poryadok : utv.fakty.map((x) => x.n);
