@@ -88,7 +88,9 @@ const sources = doc.get('sources', true);
   if (typeof h !== 'string') { if (uzel.get?.('href')) istSsylki.push([uzel.get('href'), snyat(uzel.get('title') ?? '')]); return; }
   const ssylki = [...h.matchAll(SSYLKA)];
   if (!ssylki.length) { if (HTML.test(h)) zamenit(uzel.get('html', true), zn(snyat(h))); return; }
-  const ostatok = snyat(h.replace(SSYLKA, '\u0000')).replace(/\s*[,;]?\s*\u0000\s*/g, ' ').replace(/[:,;]\s*\./g, '.')
+  // «A и B: …», «… — A.» — связка и тире при ссылке уходят вместе с ней (изоб 01-07, НС 01-06).
+  const ostatok = snyat(h.replace(SSYLKA, '\u0000')).replace(/\u0000(?:\s*(?:и|,|;)\s*\u0000)+/g, '\u0000')
+    .replace(/\s*[,;—–]?\s*\u0000\s*/g, ' ').replace(/[:,;]\s*\./g, '.').replace(/\s+([.,:;])/g, '$1')
     .replace(/\s{2,}/g, ' ').replace(/^[\s,;:—.]+|[\s,;:—]+$/g, '').trim();
   const punkty = ssylki.map(([, href, x]) => {
     istSsylki.push([href, snyat(x)]);
@@ -133,6 +135,7 @@ const kartinki = [
   ...(d.oblozhka ? [['oblozhka']] : []),
   ...(d.figures ?? []).map((_, i) => ['figures', i]),
   ...udary.filter(([u]) => u.kadr).map(([, put]) => [...put, 'kadr']),
+  ...(d.story?.udary ?? []).flatMap((u, i) => (u.kadr ? [['story', 'udary', i, 'kadr']] : [])), // как standart-dnya.mjs (изоб 01-06, 01-07)
 ];
 for (const put of kartinki) {
   const k = doc.getIn(put).toJSON?.() ?? doc.getIn(put);
