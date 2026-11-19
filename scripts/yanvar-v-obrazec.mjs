@@ -106,7 +106,7 @@ const bazaPoHostu = (u) => bazy.find((b) => host(b.url || '') && (host(u) === ho
 const udary = [d.fakty ?? []].flat().flatMap((b, bi) => b.udary.map((u, ui) => [u, ['fakty', bi, 'udary', ui]]));
 for (const [u] of udary) {
   const url = u.href ?? snyat(u.src ?? '').match(/https?:\/\/\S+?(?=[\s;,]|\.?$)/)?.[0];
-  if (url) istSsylki.push([url, u.stranica ?? snyat(u.src ?? '').replace(/^Источник:\s*/, '').split(' — ')[0]]);
+  if (url) istSsylki.push([url, (u.stranica != null ? snyat(String(u.stranica)) : null) ?? snyat(u.src ?? '').replace(/^Источник:\s*/, '').split(' — ')[0]]);
 }
 const istochniki = [], idPoUrl = new Map();
 for (const [url, nazvanie] of istSsylki) {
