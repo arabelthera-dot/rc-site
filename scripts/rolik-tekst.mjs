@@ -22,12 +22,17 @@ const imena = execFileSync('git', ['ls-tree', '--name-only', 'HEAD', `public/vid
 for (const imya of imena) {
   const h = JSON.parse(fs.readFileSync(path.join(papka, `${imya}.json`), 'utf8')).horizontal;
   if (!h?.local?.endsWith('.mp4')) { console.log(`${imya}: нет mp4 в реестре — пропуск`); continue; }
-  const id = `${reestr === 'nesdayutsya' ? 'ns' : ''}${imya.slice(0, 5)}`;
-  let den, pravka;
-  try {
-    den = JSON.parse(Buffer.from(JSON.parse(gh('api', `repos/${ROLIK}/contents/days/${id}.json`)).content, 'base64').toString('utf8'));
-    pravka = JSON.parse(gh('api', `repos/${ROLIK}/commits?path=days/${id}.json&per_page=1`))[0].commit.committer.date;
-  } catch { console.log(`${imya}: нет сценария days/${id}.json — пропуск`); continue; }
+  // Сценарий НС лежит как ns<ДД><мес>; старый 01-09 — как 9jan (без ns и нуля, r831).
+  const ids = reestr === 'nesdayutsya' ? [`ns${imya.slice(0, 5)}`, imya.slice(0, 5).replace(/^0/, '')] : [imya.slice(0, 5)];
+  let den, pravka, id;
+  for (const i of ids) {
+    try {
+      den = JSON.parse(Buffer.from(JSON.parse(gh('api', `repos/${ROLIK}/contents/days/${i}.json`)).content, 'base64').toString('utf8'));
+      pravka = JSON.parse(gh('api', `repos/${ROLIK}/commits?path=days/${i}.json&per_page=1`))[0].commit.committer.date;
+      id = i; break;
+    } catch { /* следующее имя */ }
+  }
+  if (!id) { console.log(`${imya}: нет сценария days/${ids.join('|')}.json — пропуск`); continue; }
   const prishel = execFileSync('git', ['log', '-1', '--format=%cI', 'HEAD', '--', `public/${h.local}`], { encoding: 'utf8' }).trim();
   if (!prishel) { console.log(`${imya}: ролика нет в истории сайта — пропуск`); continue; }
   if (new Date(pravka) > new Date(prishel)) { console.log(`${imya}: сценарий правлен ${pravka} после ролика ${prishel} — пропуск`); continue; }
