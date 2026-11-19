@@ -109,6 +109,33 @@ jobs:
           restore-keys: |
             rc-sborka-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
             rc-sborka-${{ runner.os }}-
+      # Картинки — и в хранилище media.russian-civilization.ru (Р825 задача F, 19.11.2026): картинки остаются в git и в
+      # dist, этот шаг докладывает их из public/ в хранилище, как rolik-na-sait.yml ролики. vars.MEDIA_KARTINKI: пусто —
+      # выключено; путь страницы от корня dist (muzei/…/den/02-02) или список через запятую — только они; '*' — все.
+      # MEDIA_KARTINKI попадает в сборку, только если закачка удалась: тогда scripts/media-base.mjs ставит img/srcset
+      # прямых ссылок на хранилище. Не удалась — предупреждение, картинки берутся из dist, как раньше.
+      # Откат — опустошить vars.MEDIA_KARTINKI.
+      - name: картинки в хранилище
+        if: vars.MEDIA_KARTINKI != ''
+        env:
+          MEDIA_KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
+          IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+          MOST: ${{ vars.RU_MOST }}
+          MOST2: ${{ vars.RU_MOST2 }}
+          KARTINKI: ${{ vars.MEDIA_KARTINKI }}
+        run: |
+          [ -n "$MEDIA_KLYUCH" ] || { echo "::warning::нет секрета MEDIA_SSH_KEY — картинки из dist"; exit 0; }
+          most=$(scripts/prohod-v-rossiyu.sh) || { echo "::warning::нет прохода в Россию — картинки из dist"; exit 0; }
+          S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
+          # без --delete — только докладываем; --checksum — как у роликов (r790)
+          rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' \
+            --include='*.jpg' --include='*.jpeg' --include='*.png' --include='*.webp' --include='*.avif' --include='*.gif' --include='*.svg' \
+            --exclude='*' --prune-empty-dirs \
+            -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $most" \
+            public/ rcmedia@185.149.145.227: | tail -n 4
+          kod=${PIPESTATUS[0]}; rm -rf "$S"
+          [ "$kod" = 0 ] || { echo "::warning::картинки не доложены в хранилище (rsync $kod) — картинки из dist"; exit 0; }
+          echo "MEDIA_KARTINKI=$KARTINKI" >> "$GITHUB_ENV"
       # Ролики — только в хранилище media.russian-civilization.ru (Р825 задача A, 18.11.2026): mp4 в public/ нет, их
       # кладёт туда rolik-na-sait.yml, список — src/data/hranilishche-rolikov.sha256. Сборка выходит без роликов, и
       # прежний перенос mp4 в артефакт video-sajta (Р263, r284) убран вместе с ним из msk и paket.
