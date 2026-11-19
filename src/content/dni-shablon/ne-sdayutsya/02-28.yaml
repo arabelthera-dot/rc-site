@@ -148,7 +148,7 @@ fakty:
     summary: 'Под пытками не назвала даже своего имени — твердила: «Иванова из Ленинграда»'
     det:
     - Её пытали, но она не выдала ни партизан, ни себя. На вопрос, кто она, отвечала одно и то же.
-    src: 'Источник: Тверская областная библиотека им. А. М. Горького. Лиза Чайкина — https://asplib.ru/images/dokum/tverbud/chayka.pdf; Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле — https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/'
+    src: 'Источник: Тверская областная библиотека им. А. М. Горького. Лиза Чайкина — https://asplib.ru/images/dokum/tverbud/chayka.pdf; Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле (копия в web.archive.org от 07.08.2024) — https://web.archive.org/web/20240807223912/https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/'
     stranica: статья
     href: https://asplib.ru/images/dokum/tverbud/chayka.pdf
     otryvok: '«не назвав своего настоящего имени. На вопрос «Кто она?» Лиза отвечала: «Иванова из Ленинграда».»'
@@ -301,9 +301,9 @@ fakty:
     summary: 'На кабинах лучшей эскадрильи истребителей писали: «За Лизу Чайкину»'
     det:
     - Лётчики шли в бой с её именем на самолётах.
-    src: 'Источник: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле — https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/'
+    src: 'Источник: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле (копия в web.archive.org от 07.08.2024) — https://web.archive.org/web/20240807223912/https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/'
     stranica: статья
-    href: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+    href: https://web.archive.org/web/20240807223912/https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
     otryvok: '«На кабинах машин лучшей в полку эскадрильи было написано: «За Лизу Чайкину».»'
     pometka: один источник
     utverzhden: '2026-11-15'
@@ -628,8 +628,8 @@ sources:
 - href: https://karavantver.ru/gazeta-2434/
   title: «Караван+Я» (Тверь). Лиза Чайкина
   note: к фактам 6, 13
-- href: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
-  title: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле
+- href: https://web.archive.org/web/20240807223912/https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+  title: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле (копия в web.archive.org)
   note: к фактам 3, 11
 - href: https://tvervov.tverlib.ru/person/tv-0064-chajkina.htm
   title: Тверская библиотека. «Тверичи в годы войны». Чайкина Елизавета Ивановна
@@ -713,7 +713,7 @@ chitat_dalshe:
   ssylka: https://karavantver.ru/gazeta-2434/
 - nazvanie: Подвиг комсомолки и зверства фашистов на калининской земле
   gde: Тверь24
-  ssylka: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+  ssylka: https://web.archive.org/web/20240807223912/https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
 - nazvanie: 'Лиза Чайкина: как партизанка стала символом мужества и героизма'
   gde: «В фокусе»
   ssylka: https://vfokuse.mail.ru/articles/65149526-liza-chajkina-kak-partizanka-stala-simvolom-muzhestva-i-geroizma/
@@ -737,7 +737,7 @@ istochniki:
 - id: n5
   baza: periodika
   nazvanie: Тверь24. Подвиг комсомолки и зверства фашистов на калининской земле
-  ssylka: https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
+  ssylka: https://web.archive.org/web/20240807223912/https://tver24.com/2023/11/podvig-komsomolki-i-zverstva-fashistov-na-kalininskoj-zemle/
 - id: n6
   baza: biblioteka-rf
   nazvanie: Тверская библиотека. «Тверичи в годы войны». Чайкина Елизавета Ивановна

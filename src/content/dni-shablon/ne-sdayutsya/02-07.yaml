@@ -463,41 +463,41 @@ score:
   - - 0
     - Гость дня
 figures:
-- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-17136265.jpg
-  alt: 'Книга в светлом переплёте: на обложке надпись «Моабитская тетрадь».'
-  data_source: https://goskatalog.ru/portal/#/collections?id=17396097
-  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
-  podpis: Книга «Моабитская тетрадь», 1959 год
-  credit: Национальный музей Республики Татарстан, Госкаталог № 17263548
-  width: 548
-  height: 800
+- src: /muzei/ne-sdayutsya/img/02-07-goskatalog-20700697.jpg
+  alt: 'Круглая тёмная медаль: золотая фигура Мусы Джалиля в разорванной колючей проволоке на камне, позади — башня Сююмбике и мост в Казани.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=19973506
+  license: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)
+  podpis: Медаль «Муса Джалиль (1906–1944)», 1972 год
+  credit: Военно-патриотический музей Московской области, Госкаталог № 19844148
+  width: 1163
+  height: 1600
   vid: predmet
   glavnoe_na_kartinke:
-    x: 0.05
-    y: 0.05
-    w: 0.9
-    h: 0.9
+    x: 0.35
+    y: 0.34
+    w: 0.42
+    h: 0.3
   prava:
-    avtor: Джалиль М. М.
-    god_sozdaniya: '1959'
-    god_smerti_avtora: 1944
+    avtor: автор не указан
+    god_sozdaniya: '1972'
+    god_smerti_avtora: net
     god_reabilitacii: net
-    anonim: false
-    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 17263548
+    anonim: true
+    pervaya_publikaciya: Госкаталог музейного фонда РФ, № 19844148
     sdelano_mashinoj: false
-    otkuda: Госкаталог, № предмета 17263548
+    otkuda: Госкаталог, № предмета 19844148
     baza: goskatalog
-    ssylka: https://goskatalog.ru/portal/#/collections?id=17396097
-  nomer_predmeta: Госкаталог № 17263548
-  nomer_snimka: goskatalog id 17396097
-  hranitel: Национальный музей Республики Татарстан
-  podpis_chto: Книга «Моабитская тетрадь»
-  podpis_gde: Национальный музей Республики Татарстан, Казань
-  podpis_kogda: 1959 год
+    ssylka: https://goskatalog.ru/portal/#/collections?id=19973506
+  nomer_predmeta: Госкаталог № 19844148
+  nomer_snimka: goskatalog id 19973506
+  hranitel: Военно-патриотический музей Московской области
+  podpis_chto: Медаль «Муса Джалиль (1906–1944)»
+  podpis_gde: net
+  podpis_kogda: 1972 год
   simvolika_proverena: true
   podlinnik:
-    gde: Национальный музей Республики Татарстан
-    otkuda: Госкаталог музейного фонда РФ, № 17263548
+    gde: Военно-патриотический музей Московской области
+    otkuda: Госкаталог музейного фонда РФ, № 19844148
   svyashchennoe: false
 - src: /muzei/ne-sdayutsya/img/02-07-goskatalog-22990338.jpg
   alt: Двухэтажный старый дом на углу двух улиц.

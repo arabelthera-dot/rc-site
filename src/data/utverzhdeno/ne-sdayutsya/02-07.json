@@ -158,8 +158,8 @@
     },
     {
       "n": 6,
-      "fajl": "muzei/ne-sdayutsya/img/02-07-goskatalog-22990285.jpg",
-      "gk": "3566478",
+      "fajl": "muzei/ne-sdayutsya/img/02-07-goskatalog-62899620.jpg",
+      "gk": "50179865",
       "fakt": null,
       "takzhe": [],
       "mesto": "galereya",
@@ -173,6 +173,15 @@
       "takzhe": [],
       "mesto": "fakt",
       "privyazka": "к факту 7"
+    },
+    {
+      "n": 8,
+      "fajl": "muzei/ne-sdayutsya/img/02-07-goskatalog-20700697.jpg",
+      "gk": "19844148",
+      "fakt": null,
+      "takzhe": [],
+      "mesto": "galereya",
+      "privyazka": "галерея дня"
     }
   ],
   "ne_povtory": []
