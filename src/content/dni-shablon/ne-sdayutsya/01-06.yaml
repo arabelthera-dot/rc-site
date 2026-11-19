@@ -424,6 +424,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: osovec-etyud
+  vid: predmet
+  kicker: Этюд под лупой
+  h2: Осовец в 1915 году
+  lead: 'Этот этюд художник Пётр Котов написал в 1915 году, когда крепость ещё держала оборону. Приближайте: разбитый мост, настил на сваях над водой, двое солдат у каменной опоры.'
 audioguide:
   audioSrc: audio-guide-osovets-ru.mp3
   durationLabel: 1 минута 4 секунды

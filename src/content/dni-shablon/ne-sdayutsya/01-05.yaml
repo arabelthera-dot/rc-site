@@ -441,6 +441,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: brest-flyaga
+  vid: predmet
+  kicker: Предмет под лупой
+  h2: Фляга защитника крепости
+  lead: 'Эта фляга принадлежала участнику обороны Брестской крепости. За водой защитникам приходилось пробираться к реке под огнём. Приближайте: вмятины, рыжие пятна, буквы, процарапанные на алюминии.'
 audioguide:
   audioSrc: audio-guide-brest-ru.mp3
   durationLabel: 1 минута 30 секунд
