@@ -91,6 +91,7 @@ RCIgry.dvizhok('smeta-truboprovoda', function(ctx){
     tries++;
     if (r.q >= d.cel && (!best || r.c < best)) best = r.c;
     popytki();
+    if (r.q < d.cel || r.c > d.smeta) ctx.ishod('proigral');
     if (r.q === 0) return ctx.itog(sub(d.ishody.nol_ru, o), 'bad');
     if (r.q < d.cel) return ctx.itog(sub(d.ishody.malo_ru, o), 'bad');
     if (r.c > d.smeta) return ctx.itog(sub(d.ishody.dorogo_ru, o), 'bad');

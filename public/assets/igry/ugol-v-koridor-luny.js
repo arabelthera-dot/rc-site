@@ -72,8 +72,8 @@ RCIgry.dvizhok('ugol-v-koridor-luny', function(ctx){
       if (idx < put.length){ animId = requestAnimationFrame(kadr); return; }
       animId = null; risuy = ris;
       if (blizhe <= d.koridor && blizhe > d.udar){ ctx.itog(d.teksty.popal_ru.replace('{km}', km), 'ok'); ctx.ochki('popal', d.ochki); }
-      else if (blizhe <= d.udar) ctx.itog(d.teksty.udar_ru.replace('{km}', km), 'bad');
-      else ctx.itog(d.teksty.mimo_ru.replace('{km}', km), 'bad');
+      else if (blizhe <= d.udar) { ctx.itog(d.teksty.udar_ru.replace('{km}', km), 'bad'); ctx.ishod('proigral'); }
+      else { ctx.itog(d.teksty.mimo_ru.replace('{km}', km), 'bad'); ctx.ishod('proigral'); }
     }
     kadr();
   }
