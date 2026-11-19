@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import { stroka, poUmolchaniyu } from './yazyki.mjs';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-// Дата «17 октября» по языку: месяцы в родительном падеже — из словаря (Г20, src/data/stroki.json).
+// Дата «17 октября» по языку: месяцы в родительном падеже — из словаря (Г20, src/data/stroki/<код>.json).
 export const whenOfKey = (key, code = poUmolchaniyu) => `${parseInt(key.slice(3), 10)} ${stroka(code, 'mesyacyR')[parseInt(key.slice(0, 2), 10) - 1]}`;
 
 // Ссылка «Поиск» — только при RC_POISK=1 (выключатель поиска, src/integrations/poisk.mjs); иначе пусто.
@@ -15,7 +15,7 @@ const poiskLink = (base, code) => (globalThis.process?.env?.RC_POISK === '1'
 
 // here — «где ты» (дата, «Календарь»); нет here — страница музея: второй уровень без ссылки.
 // vozrast — готовый знак 436-ФЗ (src/lib/vozrast.mjs znakHtml), последним пунктом справа.
-// code — язык страницы: подписи полосы из словаря (Г20, src/data/stroki.json); по умолчанию русский.
+// code — язык страницы: подписи полосы из словаря (Г20, src/data/stroki/<код>.json); по умолчанию русский.
 export function sitebarHtml({ base, slug, title, here, vozrast = '', code = poUmolchaniyu }) {
   const t = esc(title);
   const s = (k) => esc(stroka(code, k));
@@ -32,7 +32,7 @@ export function sitebarHtml({ base, slug, title, here, vozrast = '', code = poUm
 export const TG_CHANNEL = 'https://t.me/russian_civilization_ru';
 
 // Подписка на канал — одна разметка: подвал всех шаблонных страниц (Base.astro) и полные страницы дней (rc-sitebar.js).
-// label — подпись кнопки на языке страницы (Base.astro, src/data/stroki.json); по умолчанию русская.
+// label — подпись кнопки на языке страницы (Base.astro, src/data/stroki/<код>.json); по умолчанию русская.
 export const podpiskaHtml = (label = 'Подписаться в Telegram') =>
   `<div class="rc-sub"><a href="${TG_CHANNEL}" target="_blank" rel="noopener"><span aria-hidden="true">✈</span>${esc(label)}</a>${pochtaHtml()}</div>`;
 

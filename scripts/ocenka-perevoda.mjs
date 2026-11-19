@@ -1,13 +1,14 @@
 // Оценка качества машинного перевода (п. 165, Р603, Р627): только подсказка — сообщает подозрительные строки
-// файлов src/data/perevod/<музей>-<ММ-ДД>.json и ничего не останавливает (код выхода всегда 0).
+// файлов src/data/perevod/<код>/<музей>-<ММ-ДД>.json (папка на язык; русский берётся из perevod/ru/) и ничего не останавливает (код выхода всегда 0).
 // Признаки взяты из пробы п.142 (docs/research/perevod-proba-01-01/): обратный перевод Argos сам искажает имена,
 // поэтому сходство с русским не считаем, а проверяем то, что проверяется без переводчика:
 //   kirillica — русские буквы в переводе; pusto — пустой перевод; musor — &quot; &amp; <unk>;
 //   chisla — число из русской строки потерялось; dlina — длина вне разумных пределов; povtor — слово 4 раза подряд;
 //   punkt — латинские «,.» в китайском; imya — имя из словаря не передано (словарь: ru-регулярка, колонки языков).
 // Как в мире: QE-проверки Weblate (https://docs.weblate.org/en/latest/user/checks.html) и Okapi CheckMate.
-// Запуск: node scripts/ocenka-perevoda.mjs [--slovar путь.tsv] src/data/perevod/izobreteniya-01-01.json …
+// Запуск: node scripts/ocenka-perevoda.mjs [--slovar путь.tsv] src/data/perevod/ar/izobreteniya-01-01.json …
 import fs from 'node:fs';
+import { chitat, razobrat } from '../src/lib/perevod-papki.mjs';
 
 const args = process.argv.slice(2);
 const i = args.indexOf('--slovar');
@@ -51,7 +52,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const slovar = prochestSlovar(slovarPut);
   let vsego = 0;
   for (const f of fayly) {
+    const { papka, id } = razobrat(f);
     const fayl = JSON.parse(fs.readFileSync(f, 'utf8'));
+    fayl.ru ??= chitat(papka, id)?.ru ?? {};
     for (const [code, stroki] of Object.entries(fayl)) {
       if (code === 'ru' || code.startsWith('_')) continue;
       const svod = [];

@@ -417,7 +417,7 @@ function staticHero(html) {
 function sosediHtml(base, museum, keys, key, code = poUmolchaniyu) {
   const i = keys.indexOf(key);
   if (!keys[i - 1] && !keys[i + 1]) return ''; // единственный день музея — соседей нет
-  const s = (k) => stroka(code, k); // подписи — из словаря языка (Г20, src/data/stroki.json)
+  const s = (k) => stroka(code, k); // подписи — из словаря языка (Г20, src/data/stroki/<код>.json)
   const link = (k, rel, text) => k ? `<a class="rc-sosed rc-sosed-${rel}" rel="${rel}" href="${base}muzei/${museum}/den/${k}/">${text}</a>` : '<span></span>';
   return `<nav class="rc-sosedi" aria-label="${s('sosediDni')}">${link(keys[i - 1], 'prev', `← ${s('predDen')}, ${whenOfKey(keys[i - 1] || '01-01', code)}`)}`
     + `${link(keys[i + 1], 'next', `${s('sledDen')}, ${whenOfKey(keys[i + 1] || '01-01', code)} →`)}</nav>`;

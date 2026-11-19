@@ -1,32 +1,32 @@
 {
-  "title": "История в 47 секунд",
+  "title": "История в 46 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/23feb-katyusha/day-23feb-katyusha.mp4",
     "local": "muzei/izobreteniya/video/day-23feb-katyusha.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 46.9,
-    "mb": 12.5
+    "sec": 46.3,
+    "mb": 11.8
   },
   "vertical": {
     "file": "izobreteniya/23feb-katyusha/day-23feb-katyusha-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-23feb-katyusha-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 46.9,
-    "mb": 12
+    "sec": 46.3,
+    "mb": 10.9
   },
   "poster": {
     "file": "izobreteniya/23feb-katyusha/day-23feb-katyusha-poster.jpg",
     "local": "muzei/izobreteniya/video/day-23feb-katyusha-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/23feb-katyusha/day-23feb-katyusha-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-23feb-katyusha-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }

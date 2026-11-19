@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 const { m, days } = Astro.props;
 const base = import.meta.env.BASE_URL;
-// Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+// Строки подвала — по языку страницы (Г20, src/data/stroki/<код>.json); русский вывод не меняется.
 const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
 const s = (key: string): any => stroka(lang.code, key);
 const MONR: string[] = s('mesyacyR');

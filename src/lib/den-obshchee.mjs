@@ -15,7 +15,7 @@ import { stroka } from './yazyki.mjs';
 import { izmerit, razmeryIzFajla } from './kartinki-fajly.mjs';
 import slovar from './slovar-dannye.mjs';
 
-// Служебные подписи страницы (пункты меню, викторина, итог, аудиогид, ролик) — шаблоном из src/data/stroki.json (п. 54):
+// Служебные подписи страницы (пункты меню, викторина, итог, аудиогид, ролик) — шаблоном из src/data/stroki/<код>.json (п. 54):
 // нет поля в карточке — берётся строка оттуда; есть — карточка как раньше. Своё имя пункта (игра, «Развилка») — в карточке.
 const S = (k) => stroka('ru', k);
 const NAV = S('denNav');
@@ -90,7 +90,7 @@ export const obshchiePolya = (BLOKI) => {
     stamp: z.array(z.object({ v: str, k: str })),
     daynav: z.array(z.object({ id: str, label: str.optional() }).transform((n, ctx) => {
       const label = n.label ?? NAV[n.id];
-      if (!label) ctx.addIssue({ code: 'custom', path: ['label'], message: `у пункта меню «${n.id}» нет label, и в src/data/stroki.json (denNav) его нет` });
+      if (!label) ctx.addIssue({ code: 'custom', path: ['label'], message: `у пункта меню «${n.id}» нет label, и в src/data/stroki/<код>.json (denNav) его нет` });
       return { ...n, label };
     })),
     // Секции, которых у дня нет, — не пишутся: нет video — нет блока (на adres: den ролик обязателен — замок ниже).
