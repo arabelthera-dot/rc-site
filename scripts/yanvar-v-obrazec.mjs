@@ -48,6 +48,7 @@ const snyat = (t) => raskryt(t
   .replace(SSYLKA, (_, h, x) => (adres(x.trim()) === adres(h) ? h : x))
   .replace(/<\/?[a-z][^>]*>/gi, '').replace(/\*\*/g, ''))
   .replace(/\s{2,}/g, ' ').replace(/\s+([.,;:])/g, '$1').trim();
+const BUKVA = /[A-Za-zА-Яа-яЁё0-9]/;
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
 
 // --- правка по range
@@ -92,9 +93,12 @@ const sources = doc.get('sources', true);
   const ostatok = snyat(h.replace(SSYLKA, '\u0000')).replace(/\u0000(?:\s*(?:и|,|;)\s*\u0000)+/g, '\u0000')
     .replace(/\s*[,;—–]?\s*\u0000\s*[,;]?/g, ' ').replace(/[:,;]\s*\./g, '.').replace(/\s+([.,:;])/g, '$1')
     .replace(/\s{2,}/g, ' ').replace(/^[\s,;:—.]+|[\s,;:—]+$/g, '').trim();
+  // ссылка внутри фразы (слова и до неё, и после): вырезать её — рвать текст («Изображения: и ; схема — .»), пункт берётся целиком
+  const kuski = h.replace(SSYLKA, '\u0000').split('\u0000');
+  const vnutri = kuski.slice(1).some((posle, i) => BUKVA.test(snyat(kuski[i])) && BUKVA.test(snyat(posle)));
   const punkty = ssylki.map(([, href, x]) => {
     istSsylki.push([href, snyat(x)]);
-    return { href, title: snyat(x), note: ostatok || host(href) };
+    return { href, title: snyat(x), note: (vnutri ? snyat(h) : ostatok) || host(href) };
   });
   const otstup = ' '.repeat(stolbec(uzel.range[0]) - 2);
   pravki.push([uzel.range[0], konecStroki(uzel.range[1]), punkty.map(zn).join(`\n${otstup}- `)]);
