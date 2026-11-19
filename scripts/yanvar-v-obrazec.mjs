@@ -155,7 +155,8 @@ for (const put of kartinki) {
   if (iz.prava) mash.prava = {
     god_smerti_avtora: NET, god_reabilitacii: NET, sdelano_mashinoj: false,
     ...(reg ? { otkuda: 'Госкаталог музейного фонда РФ', baza: 'goskatalog', pervaya_publikaciya: `Госкаталог музейного фонда РФ, рег. № ${reg}` } : {}),
-    ...(k.data_source ? { ssylka: k.data_source } : {}),
+    // ssylka — только адрес: у архивных листов data_source — шифр («ЦАМО, ф. 58, …»), он уходит в podlinnik.otkuda.
+    ...(/^https?:\/\//.test(k.data_source ?? '') ? { ssylka: k.data_source } : {}),
     ...iz.prava,
   };
   for (const [pole, v] of Object.entries({ ...mash, ...iz, ...(mash.prava ? { prava: mash.prava } : {}) })) if (k[pole] === undefined) dobavit(uzel, pole, v);
