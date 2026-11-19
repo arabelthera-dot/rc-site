@@ -79,9 +79,8 @@ video:
   pole: izobreteniya/01jan-cabletv:horizontal.sec
   suffix: сек
   badge: 49 сек
-  intro: Та же история коротким роликом — от кабельного узла на Петровском бульваре до семнадцати лет его службы.
   poster: video/day-01jan-cabletv-poster.jpg
-  mp4: video/day-01jan-cabletv.mp4?v=2
+  mp4: video/day-01jan-cabletv.mp4
   note: "Кадры ролика — подлинные: телевизор «Б-2» (1935–1936) и брошюра «Телевизор Б-2» (1936) из Госкаталога музейного фонда РФ. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи."
 story:
   kicker: История изобретения
@@ -631,14 +630,8 @@ sources:
   - html: <a href="https://rodina-history.ru/2024/11/15/90-let-nazad-sovetskie-radiozriteli-posmotreli-pervuiu-zvukovuiu-teleperedachu.html" rel="noopener" target="_blank">Е. Зайцева, «90 лет назад советские „радиозрители“ посмотрели первую звуковую телепередачу», «Родина», 15.11.2024</a>
 kuda:
   - lbl: Следующий день
-    href: day-02jan-luna1.html
-    title: 2 января — Первая в мире межпланетная станция «Луна-1»
-    hook: Она должна была упасть на Луну — но промахнулась.
     main: true
   - lbl: Предыдущий день
-    href: day-14dec-laser.html
-    title: 14 декабря — Мазер и принципы лазера
-    hook: "Два советских физика в начале 1950-х поняли: можно заставить атомы излучать свет строго согласованно — один за…"
     main: false
 score:
   awards:

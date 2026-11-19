@@ -1,0 +1,863 @@
+muzei: izobreteniya
+key: 02-27
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0227-filatov
+data_sobytiya: '1931-05-06'
+chto_sluchilos: 6 мая 1931 года в Одессе Владимир Филатов первым в мире вернул слепому зрение роговицей умершего человека.
+god: 1931
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Книга В. П. Филатова «Оптическая пересадка роговицы и тканевая терапия», 1945
+  muzej: Российский музей медицины НИИ общественного здоровья имени Н. А. Семашко
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=38803454
+- chto: Фото «Академик В. П. Филатов в операционной», 1950
+  muzej: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+  gorod: Саранск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=21701131
+- chto: Фото «Академик В. П. Филатов в кабинете», 1930-е
+  muzej: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+  gorod: Саранск
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=21701151
+chitat_dalshe:
+- nazvanie: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов»'
+  gde: журнал «Родина»
+  ssylka: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+- nazvanie: «150 лет со дня рождения офтальмолога В. П. Филатова»
+  gde: Российская государственная библиотека для слепых
+  ssylka: http://rgbs.ru/news/27-fevralya-150-let-so-dnya-rozhdeniya-oftalmologa-vladimira-petrovicha-filatova-1875-1956/
+- nazvanie: '«Офтальмолог Владимир Филатов: подвиг аполитичности»'
+  gde: «Милосердие.ru»
+  ssylka: https://www.miloserdie.ru/article/oftalmolog-vladimir-filatov-podvig-apolitichnosti/
+- nazvanie: «100 лет стебельчатой кожной пластике по методу В. П. Филатова»
+  gde: научная статья, КиберЛенинка
+  ssylka: https://cyberleninka.ru/article/n/100-let-stebelchatoy-kozhnoy-plastike-po-metodu-v-p-filatova
+istochniki:
+- id: r
+  baza: periodika
+  nazvanie: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+  ssylka: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+- id: rgbs
+  baza: sajt-organizacii
+  nazvanie: «150 лет со дня рождения офтальмолога В. П. Филатова» — Российская государственная библиотека для слепых
+  ssylka: http://rgbs.ru/news/27-fevralya-150-let-so-dnya-rozhdeniya-oftalmologa-vladimira-petrovicha-filatova-1875-1956/
+- id: km
+  baza: periodika
+  nazvanie: «Академик Владимир Петрович Филатов» — «Кто есть кто в медицине», 2025, № 1
+  ssylka: https://ktovmedicine.ru/2025/1/akademik-vladimir-petrovich-filatov.html
+- id: aif
+  baza: periodika
+  nazvanie: «Одарённые светом. Врач Филатов доказал, что и слепым можно вернуть зрение» — «Аргументы и факты»
+  ssylka: https://aif.ru/health/life/odaryonnye-svetom-vrach-filatov-dokazal-chto-i-slepym-mozhno-vernut-zrenie
+- id: aifu
+  baza: periodika
+  nazvanie: «Хирург от Бога» — «АиФ — Ульяновск»
+  ssylka: https://ul.aif.ru/legends/1447686
+- id: m
+  baza: periodika
+  nazvanie: '«Офтальмолог Владимир Филатов: подвиг аполитичности» — «Милосердие.ru»'
+  ssylka: https://www.miloserdie.ru/article/oftalmolog-vladimir-filatov-podvig-apolitichnosti/
+- id: kl
+  baza: periodika
+  nazvanie: «100 лет стебельчатой кожной пластике по методу В. П. Филатова» — научная статья, КиберЛенинка
+  ssylka: https://cyberleninka.ru/article/n/100-let-stebelchatoy-kozhnoy-plastike-po-metodu-v-p-filatova
+- id: l
+  baza: periodika
+  nazvanie: Статья о пластической хирургии — «Лента.ру», 28.02.2015
+  ssylka: https://lenta.ru/articles/2015/02/28/sergery/
+- id: bse
+  baza: kniga
+  nazvanie: «Тканевая терапия» — Большая советская энциклопедия
+  ssylka: https://dic.academic.ru/dic.nsf/bse/139980/
+- id: pme
+  baza: kniga
+  nazvanie: «Тканевая терапия» — Популярная медицинская энциклопедия
+  ssylka: http://medbooka.ru/tkanevaya-terapiya
+- id: gk-21701131
+  baza: goskatalog
+  nazvanie: Фото «Академик В. П. Филатов в операционной», Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21701131
+- id: gk-21701151
+  baza: goskatalog
+  nazvanie: Фото «Академик В. П. Филатов в кабинете за изучением глазных впадин на черепах», Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21701151
+- id: gk-38803454
+  baza: goskatalog
+  nazvanie: Книга В. П. Филатова «Оптическая пересадка роговицы и тканевая терапия», Российский музей медицины НИИ общественного здоровья имени Н. А. Семашко — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=38803454
+- id: gk-21701313
+  baza: goskatalog
+  nazvanie: Фотопортрет «Владимир Петрович Филатов — ассистент глазной клиники Новороссийского университета», Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21701313
+- id: gk-21701144
+  baza: goskatalog
+  nazvanie: Фото «Вид из конференц-зала Института имени академика В. П. Филатова на Пролетарский бульвар», Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21701144
+- id: gk-21701148
+  baza: goskatalog
+  nazvanie: Фото «Академик В. П. Филатов читает лекцию в Союзе писателей», Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21701148
+- id: gk-21701128
+  baza: goskatalog
+  nazvanie: Фото «Академик В. П. Филатов за трибуной с микрофоном», Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=21701128
+citaty: []
+velichina_chislo: 9000
+velichina_edinica: слепых
+velichina_chto: стольким слепым вернул зрение один одесский врач
+etiketka_oblozhki:
+- Фото. Академик В. П. Филатов в операционной, 1950
+- Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+slovar:
+- lyudi:filatov-vladimir
+head:
+  title: Первая в мире пересадка роговицы от умершего человека, 1931 — Музей «Что изобрели русские первыми в мире»
+  description: 'Филатов первым в мире вернул слепому зрение роговицей умершего человека: два провала, арест, 16 дней — и прозрение, а следом тканевая терапия.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-27/
+  sobytie: Первая в мире пересадка роговицы от умершего человека
+  god: '1931'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первая в мире пересадка роговицы от умершего человека, 1931
+    description: 'Филатов первым в мире вернул слепому зрение роговицей умершего человека: два провала, арест, 16 дней — и прозрение, а следом тканевая терапия.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-27/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-27-goskatalog-21701131.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первая в мире пересадка роговицы от умершего человека, 1931
+    description: 'Филатов первым в мире вернул слепому зрение роговицей умершего человека: два провала, арест, 16 дней — и прозрение, а следом тканевая терапия.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-27/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-27-goskatalog-21701131.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-27-goskatalog-21701131.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.1
+    w: 0.9
+    h: 0.85
+  width: 448
+  height: 297
+  alt: 'Старая фотография: хирурги в масках и белых шапочках склонились над больным в операционной, один держит лампу на проводе'
+  data_source: https://goskatalog.ru/portal/#/collections?id=21701131
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина · Госкаталог
+  podpis: Фото «Академик В. П. Филатов в операционной», 1950. Хранит Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина.
+  credit: 'Хранится: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина. Госкаталог музейного фонда РФ, № 21568472.'
+  hint: Фото · в операционной
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1950'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1950'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=21701131
+  nomer_predmeta: '21568472'
+  nomer_snimka: net
+  hranitel: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+  podlinnik:
+    gde: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+    otkuda: https://goskatalog.ru/portal/#/collections?id=21701131
+  svyashchennoe: false
+  podpis_chto: Фото «Академик В. П. Филатов в операционной»
+  podpis_gde: Одесса
+  podpis_kogda: '1950'
+  pometka_prav: citirovanie-1274
+kroshka: 27 февраля · Пересадка роговицы
+lead:
+  data: 6 мая 1931 · Одесса
+  privyazka: 27 февраля — день музея; 6 мая 1931 года в Одессе Владимир Филатов первым в мире вернул слепому зрение роговицей умершего человека.
+  kto: Владимир Филатов, глазной хирург
+  h1: Первая в мире пересадка роговицы от умершего человека · 1931
+  hook: 'Филатов вернул зрение девяти тысячам слепых — и первым в мире взял для этого роговицу умершего'
+stamp:
+- v: '1931'
+  k: год — слепой прозрел с роговицей умершего
+- v: '16'
+  k: дней — от освобождения из-под ареста до мирового первенства
+- v: '9000'
+  k: слепых — вернул зрение один врач
+- v: '40'
+  k: см — трубка из кожи шагала к ране
+daynav:
+- id: story
+  label: Роговица
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-filatov-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу Филатова: от двух неудачных пересадок через арест к слепому, который прозрел, и к японцам, приехавшим учиться.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Слепой прозрел
+  - t: 35
+    mark: 0:35
+    title: Арест и 16 дней
+  - t: 70
+    mark: '1:10'
+    title: Бельмо светлеет
+  - t: 105
+    mark: '1:45'
+    title: Учиться у Филатова
+  transcript:
+  - Филатов первым в мире вернул слепому зрение роговицей умершего человека — 6 мая 1931-го. Две пересадки, в 1912-м и 1914-м, провалились — Филатов не бросил, и слепой прозрел.
+  - В апреле 1931-го Филатова выпустили из-под ареста, а через 16 дней он сделал мировое первенство. Коллеги пугали «трупным заражением» — Филатов всё равно пересадил роговицу умершего, и всё обошлось.
+  - 'Вокруг роговицы умершего у слепого начало светлеть бельмо — так родилась тканевая терапия. Филатов открыл: ткань на грани жизни и смерти сама копит лекарство.'
+  - После Хиросимы японские учёные приехали учиться у Филатова — в 1946 году. 23 депутата парламента Японии приехали к Филатову и открыли у себя общество его имени.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Пересадка роговицы
+  h2: Как слепой увидел свет чужими глазами
+  udary:
+  - summary: Две неудачи
+    det:
+    - Две пересадки, в 1912-м и 1914-м, провалились — Филатов не бросил, и слепой прозрел
+    src: 'Источник: журнал «Родина», «Он дарил людям свет»'
+  - summary: «Трупное заражение»
+    det:
+    - Коллеги пугали «трупным заражением» — Филатов всё равно пересадил роговицу умершего, и всё обошлось
+    src: 'Источник: «Милосердие.ru», «Офтальмолог Владимир Филатов: подвиг аполитичности»'
+  - summary: Бельмо светлеет
+    det:
+    - Вокруг роговицы умершего у слепого начало светлеть бельмо — так родилась тканевая терапия
+    src: 'Источник: Популярная медицинская энциклопедия, «Тканевая терапия»'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: журнал «Родина», «Он дарил людям свет»'
+    otryvok: Филатов первым в мире вернул слепому зрение роговицей умершего человека — 6 мая 1931-го
+    stranica: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+    href: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+    pometka: документ
+    id: pervyj-v-mire
+    istochnik: r
+    dlya_voprosa: false
+  - n: 2
+    sravnenie: net
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-27-goskatalog-21701151.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.8
+        h: 0.85
+      width: 448
+      height: 327
+      alt: 'Старая фотография: врач с бородкой в белом халате и шапочке сидит в плетёном кресле, рядом на столе черепа и книги'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21701151
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина · Госкаталог
+      podpis: Фото «Академик В. П. Филатов в кабинете за изучением глазных впадин на черепах», 1930-е. Хранит Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина.
+      credit: 'Хранится: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина. Госкаталог музейного фонда РФ, № 21568454.'
+      hint: Фото · в кабинете
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1930-е
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1930-е
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21701151
+      nomer_predmeta: '21568454'
+      nomer_snimka: net
+      hranitel: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+      podlinnik:
+        gde: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21701151
+      svyashchennoe: false
+      podpis_chto: Фото «Академик В. П. Филатов в кабинете за изучением глазных впадин на черепах»
+      podpis_gde: Одесса
+      podpis_kogda: 1930-е
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Милосердие.ru», «Офтальмолог Владимир Филатов: подвиг аполитичности»'
+    otryvok: В апреле 1931-го Филатова выпустили из-под ареста, а через 16 дней он сделал мировое первенство
+    stranica: '«Офтальмолог Владимир Филатов: подвиг аполитичности» — «Милосердие.ru»'
+    href: https://www.miloserdie.ru/article/oftalmolog-vladimir-filatov-podvig-apolitichnosti/
+    pometka: документ
+    id: arest-16-dnej
+    istochnik: m
+    dlya_voprosa: true
+    otvet: '16'
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    src: 'Источник: КиберЛенинка, «100 лет стебельчатой кожной пластике по методу В. П. Филатова»'
+    otryvok: Англичанин Гиллис придумал кожный стебель позже — и сам признал первенство Филатова
+    stranica: «100 лет стебельчатой кожной пластике по методу В. П. Филатова» — научная статья, КиберЛенинка
+    href: https://cyberleninka.ru/article/n/100-let-stebelchatoy-kozhnoy-plastike-po-metodu-v-p-filatova
+    pometka: документ
+    id: gillis-priznal
+    istochnik: kl
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    kadr: &id006
+      src: /muzei/izobreteniya/img/02-27-goskatalog-21701148.jpg
+      glavnoe_na_kartinke:
+        x: 0.3
+        y: 0.15
+        w: 0.4
+        h: 0.8
+      width: 448
+      height: 312
+      alt: 'Старая фотография: пожилой лысый человек с бородкой стоит у кафедры с раскрытой папкой перед полным залом'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21701148
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина · Госкаталог
+      podpis: Фото «Академик В. П. Филатов читает лекцию в Союзе писателей», 1952. Хранит Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина.
+      credit: 'Хранится: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина. Госкаталог музейного фонда РФ, № 21568456.'
+      hint: Фото · лекция
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1952'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1952'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21701148
+      nomer_predmeta: '21568456'
+      nomer_snimka: net
+      hranitel: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+      podlinnik:
+        gde: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21701148
+      svyashchennoe: false
+      podpis_chto: Фото «Академик В. П. Филатов читает лекцию в Союзе писателей»
+      podpis_gde: Одесса
+      podpis_kogda: '1952'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Кто есть кто в медицине», 2025, № 1, «Академик Владимир Петрович Филатов»'
+    otryvok: После Хиросимы японские учёные приехали учиться у Филатова — в 1946 году
+    stranica: «Академик Владимир Петрович Филатов» — «Кто есть кто в медицине», 2025, № 1
+    href: https://ktovmedicine.ru/2025/1/akademik-vladimir-petrovich-filatov.html
+    pometka: документ
+    id: yaponcy-1946
+    istochnik: km
+    dlya_voprosa: true
+    otvet: '1946'
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    kadr: &id003
+      src: /muzei/izobreteniya/img/02-27-goskatalog-38803454.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.4
+      width: 800
+      height: 1185
+      alt: 'Обложка старой книги: тёмная ткань, сверху золотыми буквами имя академика и название, внизу год 1945'
+      data_source: https://goskatalog.ru/portal/#/collections?id=38803454
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Российский музей медицины НИИ общественного здоровья имени Н. А. Семашко · Госкаталог
+      podpis: Книга В. П. Филатова «Оптическая пересадка роговицы и тканевая терапия», 1945. Хранит Российский музей медицины НИИ общественного здоровья имени Н. А. Семашко.
+      credit: 'Хранится: Российский музей медицины НИИ общественного здоровья имени Н. А. Семашко. Госкаталог музейного фонда РФ, № 38581357.'
+      hint: Книга · 1945
+      vid: predmet
+      prava:
+        avtor: Филатов Владимир Петрович
+        god_sozdaniya: '1945'
+        god_smerti_avtora: 1956
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1945'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=38803454
+      nomer_predmeta: '38581357'
+      nomer_snimka: net
+      hranitel: Российский музей медицины НИИ общественного здоровья имени Н. А. Семашко
+      podlinnik:
+        gde: Российский музей медицины НИИ общественного здоровья имени Н. А. Семашко
+        otkuda: https://goskatalog.ru/portal/#/collections?id=38803454
+      svyashchennoe: false
+      podpis_chto: Книга В. П. Филатова «Оптическая пересадка роговицы и тканевая терапия»
+      podpis_gde: Москва
+      podpis_kogda: '1945'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Популярная медицинская энциклопедия, «Тканевая терапия»'
+    otryvok: Вокруг роговицы умершего у слепого начало светлеть бельмо — так родилась тканевая терапия
+    stranica: «Тканевая терапия» — Популярная медицинская энциклопедия
+    href: http://medbooka.ru/tkanevaya-terapiya
+    pometka: документ
+    id: belmo-svetleet
+    istochnik: pme
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: «Милосердие.ru», «Офтальмолог Владимир Филатов: подвиг аполитичности»'
+    otryvok: Коллеги пугали «трупным заражением» — Филатов всё равно пересадил роговицу умершего, и всё обошлось
+    stranica: '«Офтальмолог Владимир Филатов: подвиг аполитичности» — «Милосердие.ru»'
+    href: https://www.miloserdie.ru/article/oftalmolog-vladimir-filatov-podvig-apolitichnosti/
+    pometka: документ
+    id: trupnoe-zarazhenie
+    istochnik: m
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: «АиФ — Ульяновск», «Хирург от Бога»'
+    otryvok: Один одесский врач вернул зрение девяти тысячам слепых
+    stranica: «Хирург от Бога» — «АиФ — Ульяновск»
+    href: https://ul.aif.ru/legends/1447686
+    pometka: документ
+    id: devyat-tysyach
+    istochnik: aifu
+    dlya_voprosa: false
+  - n: 8
+    sravnenie: net
+    kadr: &id005
+      src: /muzei/izobreteniya/img/02-27-goskatalog-21701144.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.85
+        h: 0.9
+      width: 268
+      height: 448
+      alt: 'Старая фотография: высокое окно с аркой распахнуто в сад, у стола сидят люди в белом, в углу бюст на полке'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21701144
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина · Госкаталог
+      podpis: Фото «Вид из конференц-зала Института имени академика В. П. Филатова на Пролетарский бульвар», 1956. Хранит Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина.
+      credit: 'Хранится: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина. Госкаталог музейного фонда РФ, № 21568460.'
+      hint: Фото · институт Филатова
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1956'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1956'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21701144
+      nomer_predmeta: '21568460'
+      nomer_snimka: net
+      hranitel: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+      podlinnik:
+        gde: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21701144
+      svyashchennoe: false
+      podpis_chto: Фото «Вид из конференц-зала Института имени академика В. П. Филатова на Пролетарский бульвар»
+      podpis_gde: Одесса
+      podpis_kogda: '1956'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: журнал «Родина», «Он дарил людям свет»'
+    otryvok: Филатов оперировал Сталину глаукому — и получил в подарок целый институт
+    stranica: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+    href: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+    pometka: документ
+    id: institut-v-podarok
+    istochnik: r
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    src: 'Источник: журнал «Родина», «Он дарил людям свет»'
+    otryvok: «Филатовский стебель» вернул миллионы губ, щёк и носов раненым двух мировых войн
+    stranica: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+    href: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+    pometka: документ
+    id: milliony-ranenyh
+    istochnik: r
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: Большая советская энциклопедия, «Тканевая терапия»'
+    otryvok: 'Филатов открыл: ткань на грани жизни и смерти сама копит лекарство'
+    stranica: «Тканевая терапия» — Большая советская энциклопедия
+    href: https://dic.academic.ru/dic.nsf/bse/139980/
+    pometka: документ
+    id: tkan-kopit-lekarstvo
+    istochnik: bse
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о стебле и признании
+  udary:
+  - n: 11
+    sravnenie: net
+    kadr: &id007
+      src: /muzei/izobreteniya/img/02-27-goskatalog-21701128.jpg
+      glavnoe_na_kartinke:
+        x: 0.15
+        y: 0.15
+        w: 0.75
+        h: 0.75
+      width: 301
+      height: 448
+      alt: 'Старая фотография: седой бородатый человек в очках и тёмной шапочке говорит в микрофон за трибуной'
+      data_source: https://goskatalog.ru/portal/#/collections?id=21701128
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина · Госкаталог
+      podpis: Фото «Академик В. П. Филатов за трибуной с микрофоном», 1955. Хранит Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина.
+      credit: 'Хранится: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина. Госкаталог музейного фонда РФ, № 21568475.'
+      hint: Фото · за трибуной
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1955'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1955'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=21701128
+      nomer_predmeta: '21568475'
+      nomer_snimka: net
+      hranitel: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+      podlinnik:
+        gde: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+        otkuda: https://goskatalog.ru/portal/#/collections?id=21701128
+      svyashchennoe: false
+      podpis_chto: Фото «Академик В. П. Филатов за трибуной с микрофоном»
+      podpis_gde: Одесса
+      podpis_kogda: '1955'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Кто есть кто в медицине», 2025, № 1, «Академик Владимир Петрович Филатов»'
+    otryvok: 23 депутата парламента Японии приехали к Филатову и открыли у себя общество его имени
+    stranica: «Академик Владимир Петрович Филатов» — «Кто есть кто в медицине», 2025, № 1
+    href: https://ktovmedicine.ru/2025/1/akademik-vladimir-petrovich-filatov.html
+    pometka: документ
+    id: 23-deputata
+    istochnik: km
+    dlya_voprosa: true
+    otvet: '23'
+    otvet_edinstvennyj: true
+  - n: 12
+    sravnenie: net
+    src: 'Источник: журнал «Родина», «Он дарил людям свет»'
+    otryvok: 'Сталинскую премию Филатов себе не взял: раздал детским домам и храму'
+    stranica: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+    href: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+    pometka: документ
+    id: premiya-detyam
+    istochnik: r
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: журнал «Родина», «Он дарил людям свет»'
+    otryvok: Две пересадки, в 1912-м и 1914-м, провалились — Филатов не бросил, и слепой прозрел
+    stranica: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+    href: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+    pometka: документ
+    id: dve-neudachi
+    istochnik: r
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: журнал «Родина», «Он дарил людям свет»'
+    otryvok: Кожный «филатовский стебель» хирурги шьют до сих пор — больше ста лет
+    stranica: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+    href: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+    pometka: документ
+    id: sto-let-stebel
+    istochnik: r
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: «Лента.ру», статья о пластической хирургии, 28.02.2015'
+    otryvok: Трубка из кожи длиной до 40 см «шагала» по телу раненого к ране на лице
+    stranica: Статья о пластической хирургии — «Лента.ру», 28.02.2015
+    href: https://lenta.ru/articles/2015/02/28/sergery/
+    pometka: документ
+    id: trubka-40-sm
+    istochnik: l
+    dlya_voprosa: true
+    otvet: '40'
+    otvet_edinstvennyj: true
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории Филатова — своё место: дни, годы, люди и сантиметры.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: arest
+      nazvanie: Столько дней прошло от освобождения из-под ареста до мирового первенства
+      verno_ru: В апреле 1931-го Филатова выпустили из-под ареста, а через 16 дней он сделал мировое первенство
+    - kod: yaponcy
+      nazvanie: Год, когда японские учёные приехали учиться у Филатова
+      verno_ru: После Хиросимы японские учёные приехали учиться у Филатова — в 1946 году
+    - kod: deputaty
+      nazvanie: Столько депутатов парламента Японии приехали к Филатову
+      verno_ru: 23 депутата парламента Японии приехали к Филатову и открыли у себя общество его имени
+    - kod: trubka
+      nazvanie: До стольких сантиметров бывала трубка из кожи
+      verno_ru: Трубка из кожи длиной до 40 см «шагала» по телу раненого к ране на лице
+    podpisi:
+    - kod: n16
+      tekst: 16 дней
+      mesto: arest
+      mimo_ru: 16 дней — от освобождения из-под ареста до мирового первенства.
+    - kod: n1946
+      tekst: '1946'
+      mesto: yaponcy
+      mimo_ru: 1946 — год, когда японские учёные приехали учиться.
+    - kod: n23
+      tekst: '23'
+      mesto: deputaty
+      mimo_ru: 23 — столько депутатов парламента Японии приехали к Филатову.
+    - kod: n40
+      tekst: 40 см
+      mesto: trubka
+      mimo_ru: 40 см — такой длины бывала трубка из кожи.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 16 дней после освобождения из-под ареста, японцы в 1946-м, 23 депутата и трубка из кожи до 40 см.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 16 дней — от освобождения из-под ареста до первенства, 1946 — японские учёные, 23 — депутаты Японии, 40 см — трубка из кожи.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: 6 мая 1931 года Филатов первым в мире вернул слепому зрение роговицей умершего человека.'
+  net: 'Как это работало дальше: вокруг роговицы умершего у слепого начало светлеть бельмо — так родилась тканевая терапия.'
+  kolonki:
+  - Когда
+  - Что
+  - Итог
+  stroki:
+  - - '1912'
+    - пересадка роговицы
+    - провал
+  - - '1914'
+    - пересадка роговицы
+    - провал
+  - - '1931'
+    - роговица умершего человека
+    - слепой прозрел
+  - - '1946'
+    - японские учёные
+    - приехали учиться
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 16 дней; 1946 год; 23 депутата; до 40 сантиметров; девяти тысячам слепых.'
+  ball: 8
+  voprosy:
+  - q: Через сколько дней после освобождения из-под ареста Филатов сделал мировое первенство?
+    o:
+    - '6'
+    - '16'
+    - '60'
+    a: 1
+    e: В апреле 1931-го Филатова выпустили из-под ареста, а через 16 дней он сделал мировое первенство
+  - q: В каком году японские учёные приехали учиться у Филатова?
+    o:
+    - '1936'
+    - '1946'
+    - '1956'
+    a: 1
+    e: После Хиросимы японские учёные приехали учиться у Филатова — в 1946 году
+  - q: Сколько депутатов парламента Японии приехали к Филатову?
+    o:
+    - '3'
+    - '23'
+    - '230'
+    a: 1
+    e: 23 депутата парламента Японии приехали к Филатову и открыли у себя общество его имени
+  - q: До скольких сантиметров бывала трубка из кожи — «филатовский стебель»?
+    o:
+    - '4'
+    - '40'
+    - '400'
+    a: 1
+    e: Трубка из кожи длиной до 40 см «шагала» по телу раненого к ране на лице
+  - q: Скольким слепым вернул зрение один одесский врач?
+    o:
+    - '900'
+    - '9000'
+    - 90 000
+    a: 1
+    e: Один одесский врач вернул зрение девяти тысячам слепых
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал Владимира Филатова.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-27-goskatalog-21701313.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.1
+    w: 0.75
+    h: 0.8
+  width: 312
+  height: 448
+  alt: 'Выцветший портрет: мужчина с бородкой в пиджаке и галстуке смотрит в сторону'
+  data_source: https://goskatalog.ru/portal/#/collections?id=21701313
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина · Госкаталог
+  podpis: Фотопортрет «Владимир Петрович Филатов — ассистент глазной клиники Новороссийского университета», 1910–1911. Хранит Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина.
+  credit: 'Хранится: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина. Госкаталог музейного фонда РФ, № 21568633.'
+  hint: Фото · молодой Филатов
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1910–1911
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1910–1911
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=21701313
+  nomer_predmeta: '21568633'
+  nomer_snimka: net
+  hranitel: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+  podlinnik:
+    gde: Мордовский республиканский объединённый краеведческий музей им. И. Д. Воронина
+    otkuda: https://goskatalog.ru/portal/#/collections?id=21701313
+  svyashchennoe: false
+  podpis_chto: Фотопортрет «Владимир Петрович Филатов — ассистент глазной клиники Новороссийского университета»
+  podpis_gde: Одесса
+  podpis_kogda: 1910–1911
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://rodina-history.ru/2025/02/27/on-daril-liudiam-svet-150-let-nazad-rodilsia-vrach-oftalmolog-vladimir-filatov.html
+  title: '«Он дарил людям свет: 150 лет назад родился врач-офтальмолог Владимир Филатов» — журнал «Родина»'
+  note: факты дня
+- href: https://www.miloserdie.ru/article/oftalmolog-vladimir-filatov-podvig-apolitichnosti/
+  title: '«Офтальмолог Владимир Филатов: подвиг аполитичности» — «Милосердие.ru»'
+  note: факты дня
+- href: https://cyberleninka.ru/article/n/100-let-stebelchatoy-kozhnoy-plastike-po-metodu-v-p-filatova
+  title: «100 лет стебельчатой кожной пластике по методу В. П. Филатова» — научная статья, КиберЛенинка
+  note: факты дня
+- href: https://ktovmedicine.ru/2025/1/akademik-vladimir-petrovich-filatov.html
+  title: «Академик Владимир Петрович Филатов» — «Кто есть кто в медицине», 2025, № 1
+  note: факты дня
+- href: http://medbooka.ru/tkanevaya-terapiya
+  title: «Тканевая терапия» — Популярная медицинская энциклопедия
+  note: факты дня
+- href: https://ul.aif.ru/legends/1447686
+  title: «Хирург от Бога» — «АиФ — Ульяновск»
+  note: факты дня
+- href: https://dic.academic.ru/dic.nsf/bse/139980/
+  title: «Тканевая терапия» — Большая советская энциклопедия
+  note: факты дня
+- href: https://lenta.ru/articles/2015/02/28/sergery/
+  title: Статья о пластической хирургии — «Лента.ру», 28.02.2015
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  main: true
+- lbl: Предыдущий день
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Академик глазной клиники
+  - - 70
+    - Глазной хирург
+  - - 40
+    - Ассистент клиники
+  - - 0
+    - Гость дня
+return:
+  q: Через сколько дней после освобождения из-под ареста Филатов сделал мировое первенство?
+  a: В апреле 1931-го Филатова выпустили из-под ареста, а через 16 дней он сделал мировое первенство
+  src: «Милосердие.ru», miloserdie.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-27-filatov:claim-1931
+  ours:
+    kind: publication
+    title: '«Офтальмолог Владимир Филатов: подвиг аполитичности»'
+    date: '1931-05-06'
+    holder: «Милосердие.ru»
+    source_url: https://www.miloserdie.ru/article/oftalmolog-vladimir-filatov-podvig-apolitichnosti/
+podskazki_igry:
+- 16 дней — это от освобождения из-под ареста до первенства
+- 1946 — это японские учёные
+- 40 см — это трубка из кожи
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Одесса
+  shirota: 46.4825
+  dolgota: 30.7233
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- У слепого глаз закрыт мутным бельмом — свет не проходит
+- Острым краем трепана в бельме вырезают круглое отверстие
+- В отверстие вставляют кусочек здоровой роговицы умершего человека
+- Роговица приживается — и свет снова проходит в глаз
+data_uslovnaya: 27 февраля — день музея; 6 мая 1931 года в Одессе Владимир Филатов первым в мире вернул слепому зрение роговицей умершего человека.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/27feb-filatov
+  format: horizontal
+  pole: izobreteniya/27feb-filatov:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  poster: video/day-27feb-filatov-poster.jpg
+  mp4: video/day-27feb-filatov.mp4
+  note: Закадровый текст озвучен синтезом речи.

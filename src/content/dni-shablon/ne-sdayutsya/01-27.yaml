@@ -81,10 +81,9 @@ video:
   pole: nesdayutsya/27jan-tuman:horizontal.sec
   suffix: сек
   badge: 49 сек
-  intro: Рыбацкий траулер против трёх эсминцев — флаг не спустили
-  poster: /muzei/ne-sdayutsya/video/day-27jan-tuman-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-27jan-tuman.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns27jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-27jan-tuman-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-27jan-tuman.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Траулер, который стал кораблём
@@ -387,15 +386,7 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-molodaya-gvardiya.html
-    title: 29 — «Молодая гвардия»
-    hook: "Подполье Краснодона: школьники, которые не выдали никого — даже под пытками."
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

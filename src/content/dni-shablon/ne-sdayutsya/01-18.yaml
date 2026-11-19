@@ -82,10 +82,9 @@ video:
   pole: nesdayutsya/18jan-kuznetsov:horizontal.sec
   suffix: сек
   badge: 48 сек
-  intro: Немецкий офицер, который на самом деле был русским
-  poster: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns18jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-18jan-kuznetsov.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Инженер, который стал легендой
@@ -415,15 +414,7 @@ sources:
     note: к факту 12
 kuda:
   - lbl: Следующий день
-    href: podvig-k19.html
-    title: 20 — Подлодка К-19
-    hook: "Другой род стойкости: не бой и не разведка, а добровольный спуск в реакторный отсек."
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

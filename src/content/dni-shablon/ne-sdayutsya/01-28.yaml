@@ -80,10 +80,9 @@ video:
   pole: nesdayutsya/28jan-molodaya-gvardiya:horizontal.sec
   suffix: сек
   badge: 42 сек
-  intro: Школьники, которые не выдали никого — даже под пытками
-  poster: /muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050938334) из сценария days/ns28jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Шахтёрский город под оккупацией
@@ -419,15 +418,7 @@ sources:
   - html: 'Портрет Сергея Тюленина, 1941–1943 — <a href="https://goskatalog.ru/portal/#/collections?id=5986146" rel="noopener">Государственный центральный музей современной истории России, Госкаталог музейного фонда</a>. Общественное достояние: автор неизвестен, снимок 1941–1943 годов.'
 kuda:
   - lbl: Следующий день
-    href: podvig-susanin.html
-    title: 30 — Иван Сусанин
-    hook: Крестьянин, который завёл отряд в лес — и не вывел.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

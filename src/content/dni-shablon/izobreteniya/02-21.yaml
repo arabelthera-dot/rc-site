@@ -1,0 +1,856 @@
+muzei: izobreteniya
+key: 02-21
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0221-gamaleya
+data_sobytiya: '1886-06-24'
+data_staryj_stil: '1886-06-12'
+chto_sluchilos: 12 июня 1886 года в Одессе открылась Пастеровская станция Гамалеи — здесь прививали от бешенства по методу Пастера.
+god: 1886
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: П. Д. Корин. Портрет микробиолога Н. Ф. Гамалеи, 1964
+  muzej: Государственный музей истории Санкт-Петербурга
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=18539158
+- chto: «Отчет о деятельности Одесской Бактериологической станции за 1893 г.», 1894
+  muzej: Российский музей медицины
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=29443611
+- chto: Фотография «Пензенская Пастеровская станция», 1914
+  muzej: Пензенский краеведческий музей
+  gorod: Пенза
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=23958588
+chitat_dalshe:
+- nazvanie: «Н. Ф. Гамалея. Биография»
+  gde: НИЦЭМ им. Н. Ф. Гамалеи
+  ssylka: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+- nazvanie: «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями»
+  gde: Российское историческое общество
+  ssylka: https://historyrussia.org/tsekh-istorikov/bojtsy-nevidimogo-fronta.html
+- nazvanie: «Бешенство. История поисков вслепую»
+  gde: телеканал «Наука»
+  ssylka: https://naukatv.ru/articles/beshenstvo_istoriya_poiskov_vslepuyu
+- nazvanie: «Ликвидация оспы – триумф отечественной медицины»
+  gde: ЦГОН Роспотребнадзора
+  ssylka: https://cgon.rospotrebnadzor.ru/istoriya/istoriya-sanitarnogo-prosveshcheniya/istoriya-v-litsakh-/likvidatsiya-ospy-triumf-otechestvennoy-meditsiny/
+istochniki:
+- id: gam
+  baza: sajt-organizacii
+  nazvanie: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+  ssylka: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+- id: rpn
+  baza: sajt-organizacii
+  nazvanie: «Николай Федорович Гамалея – основоположник учения об иммунитете» — ЦГОН Роспотребнадзора
+  ssylka: https://cgon.rospotrebnadzor.ru/istoriya/istoriya-sanitarnogo-prosveshcheniya/vydayushchiesya-gigienisty-i-epidemiologi-rossii-/nikolai-fedorovic-gamaleya-osnovopoloznik-uceniya-ob-immunitete/
+- id: rio
+  baza: sajt-organizacii
+  nazvanie: «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями» — Российское историческое общество
+  ssylka: https://historyrussia.org/tsekh-istorikov/bojtsy-nevidimogo-fronta.html
+- id: sg
+  baza: periodika
+  nazvanie: «Луи Пастер и антипрививочники XIX века. Часть 2» — «Самарская газета»
+  ssylka: https://sgpress.ru/news/330382
+- id: nauka
+  baza: periodika
+  nazvanie: «Бешенство. История поисков вслепую» — телеканал «Наука»
+  ssylka: https://naukatv.ru/articles/beshenstvo_istoriya_poiskov_vslepuyu
+- id: clever
+  baza: periodika
+  nazvanie: '«Николай Гамалея: микробиолог, победивший эпидемии» — журнал «КлеверЛаб»'
+  ssylka: https://news.clever-lab.pro/nikolaj-gamaleja-mikrobiolog-pobedivshij-jepidemii/
+- id: ikb
+  baza: sajt-organizacii
+  nazvanie: «Вклад Николая Федоровича Гамалеи в отечественную науку» — ИКБ № 1 ДЗМ
+  ssylka: https://ikb1.ru/vklad-nikolaya-fedorovicha-gamalei-v-ot/
+- id: ospa
+  baza: sajt-organizacii
+  nazvanie: «Ликвидация оспы – триумф отечественной медицины» — ЦГОН Роспотребнадзора
+  ssylka: https://cgon.rospotrebnadzor.ru/istoriya/istoriya-sanitarnogo-prosveshcheniya/istoriya-v-litsakh-/likvidatsiya-ospy-triumf-otechestvennoy-meditsiny/
+- id: gk-18539158
+  baza: goskatalog
+  nazvanie: П. Д. Корин, «Портрет заслуженного деятеля науки, почетного академика, микробиолога Н. Ф. Гамалея», СПб ГБУК «Государственный музей истории Санкт-Петербурга» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=18539158
+- id: gk-11846959
+  baza: goskatalog
+  nazvanie: Открытка «Одесса. Здание бактериологической станции. Главный вход», фототипия Шерер, Набгольц и К°, ФГБУК «Государственный научно-исследовательский музей архитектуры имени А. В. Щусева» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=11846959
+- id: gk-29443611
+  baza: goskatalog
+  nazvanie: Книга «Отчет о деятельности Одесской Бактериологической станции за 1893 г.», Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=29443611
+- id: gk-29377580
+  baza: goskatalog
+  nazvanie: Черновик письма на бланке Одесской бактериологической станции, 26 октября, Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=29377580
+- id: gk-20695990
+  baza: goskatalog
+  nazvanie: Фотография «Хардин — один из врачей, основавших Пастеровскую станцию», фотограф А. Васильев, ГБУК «Самарский областной историко-краеведческий музей имени П. В. Алабина» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=20695990
+- id: gk-23958588
+  baza: goskatalog
+  nazvanie: Фотография «Пензенская Пастеровская станция», ГБУК «Пензенский краеведческий музей» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=23958588
+- id: gk-31993224
+  baza: goskatalog
+  nazvanie: Фотография «Гернгросс Олимпиада Георгиевна проводит вакцинацию на пастеровской станции», Музей-заповедник истории Дальнего Востока — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=31993224
+citaty: []
+velichina_chislo: 12
+velichina_edinica: дней
+velichina_chto: за столько Гамалея очистил чумную Одессу от крыс
+etiketka_oblozhki:
+- П. Д. Корин. Портрет микробиолога Н. Ф. Гамалеи, 1964
+- СПб ГБУК «Государственный музей истории Санкт-Петербурга»
+slovar:
+- lyudi:nikolay-gamaleya
+head:
+  title: Гамалея первым в мире назвал вошь виновницей сыпного тифа, 1908 — Музей «Что изобрели русские первыми в мире»
+  description: 'Гамалея первым в мире назвал вошь виновницей сыпного тифа, а до того привёз из Парижа прививку Пастера и открыл станцию в Одессе: 7 умерших из 44 укушенных волком и чума, побеждённая за 12 дней.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-21/
+  sobytie: Гамалея первым в мире назвал вошь виновницей сыпного тифа
+  god: '1886'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Гамалея первым в мире назвал вошь виновницей сыпного тифа
+    description: 'Гамалея первым в мире назвал вошь виновницей сыпного тифа, а до того привёз из Парижа прививку Пастера и открыл станцию в Одессе: 7 умерших из 44 укушенных волком и чума, побеждённая за 12 дней.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-21/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-21-goskatalog-18539158.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Гамалея первым в мире назвал вошь виновницей сыпного тифа
+    description: 'Гамалея первым в мире назвал вошь виновницей сыпного тифа, а до того привёз из Парижа прививку Пастера и открыл станцию в Одессе: 7 умерших из 44 укушенных волком и чума, побеждённая за 12 дней.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-21/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-21-goskatalog-18539158.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-21-goskatalog-18539158.jpg
+  glavnoe_na_kartinke:
+    x: 0.25
+    y: 0.03
+    w: 0.55
+    h: 0.94
+  width: 900
+  height: 646
+  alt: 'Живописный портрет: пожилой учёный в очках и белом халате сидит в кресле, слева на столе микроскоп'
+  data_source: https://goskatalog.ru/portal/#/collections?id=18539158
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · СПб ГБУК «Государственный музей истории Санкт-Петербурга» · Госкаталог
+  podpis: П. Д. Корин, «Портрет заслуженного деятеля науки, почетного академика, микробиолога Н. Ф. Гамалея», 1964. Хранит СПб ГБУК «Государственный музей истории Санкт-Петербурга».
+  credit: 'Хранится: СПб ГБУК «Государственный музей истории Санкт-Петербурга». Госкаталог музейного фонда РФ, № 18400974.'
+  hint: Картина · Гамалея кисти Корина
+  vid: kartina
+  prava:
+    avtor: Корин Павел Дмитриевич
+    god_sozdaniya: '1964'
+    god_smerti_avtora: 1967
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: '1964'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=18539158
+  nomer_predmeta: '18400974'
+  nomer_snimka: net
+  hranitel: СПб ГБУК «Государственный музей истории Санкт-Петербурга»
+  podlinnik:
+    gde: СПб ГБУК «Государственный музей истории Санкт-Петербурга»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=18539158
+  svyashchennoe: false
+  podpis_chto: П. Д. Корин, «Портрет заслуженного деятеля науки, почетного академика, микробиолога Н. Ф. Гамалея»
+  podpis_gde: Россия
+  podpis_kogda: '1964'
+  pometka_prav: citirovanie-1274
+kroshka: 21 февраля · Гамалея и Одесская станция
+lead:
+  data: 12 июня 1886 · Одесса
+  privyazka: 21 февраля — день музея; в феврале 1886 года Гамалея приехал в Париж к Пастеру, а 12 июня 1886 года по старому стилю в Одессе открылась Пастеровская станция Гамалеи.
+  kto: Николай Гамалея, микробиолог
+  h1: Гамалея первым в мире назвал вошь виновницей сыпного тифа · 1908
+  hook: Гамалея привёз от Пастера прививку от бешенства и открыл в Одессе станцию, куда везли укушенных со всей империи
+stamp:
+- v: '85'
+  k: лет — заразил себя, чтобы проверить лекарство
+- v: '12'
+  k: дней — Одесса очищена от крыс
+- v: 7 из 44
+  k: укушенных волком умерли — вчетверо меньше
+- v: '2020'
+  k: первая в мире вакцина от ковида
+daynav:
+- id: story
+  label: Станция
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-gamaleya-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу Гамалеи: от кроликов Пастера через Одесскую станцию и чуму к опыту на себе в восемьдесят пять лет.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Два кролика в дорогу
+  - t: 35
+    mark: 0:35
+    title: Станция в Одессе
+  - t: 70
+    mark: '1:10'
+    title: Двенадцать дней чумы
+  - t: 105
+    mark: '1:45'
+    title: Опыт на себе
+  transcript:
+  - Пастер дал в дорогу двух заражённых кроликов — так прививка приехала в Россию.
+  - 'Пастер звал Гамалею остаться в Париже — тот уехал работать в Одессу. Укушенных бешеным волком у Гамалеи умирало вчетверо меньше: семь из сорока четырёх.'
+  - 'Чума в Одессе: за двенадцать дней Гамалея очистил город от крыс — даже сорок два парохода. В тысяча девятьсот восьмом Гамалея первым в мире назвал вошь виновницей сыпного тифа.'
+  - Холерную вакцину Гамалея выпил сам — и жена выпила вместе с ним. В восемьдесят пять лет Гамалея заразил себя туберкулёзом, чтобы проверить своё лекарство.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Станция в Одессе
+  h2: Как прививка от бешенства приехала в Россию
+  udary:
+  - summary: Два кролика от Пастера
+    det:
+    - Пастер дал в дорогу двух заражённых кроликов — так прививка приехала в Россию
+    src: 'Источник: телеканал «Наука», «Бешенство. История поисков вслепую»'
+  - summary: Работа в Одессе
+    det:
+    - Пастер звал Гамалею остаться в Париже — тот уехал работать в Одессу
+    src: 'Источник: Российское историческое общество, «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями»'
+  - summary: Укушенные волком
+    det:
+    - 'Укушенных бешеным волком у Гамалеи умирало вчетверо меньше: 7 из 44'
+    src: 'Источник: «Самарская газета», «Луи Пастер и антипрививочники XIX века. Часть 2»'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: журнал «КлеверЛаб», «Николай Гамалея: микробиолог, победивший эпидемии»'
+    otryvok: В 85 лет Гамалея заразил себя туберкулёзом, чтобы проверить своё лекарство
+    stranica: '«Николай Гамалея: микробиолог, победивший эпидемии» — журнал «КлеверЛаб»'
+    href: https://news.clever-lab.pro/nikolaj-gamaleja-mikrobiolog-pobedivshij-jepidemii/
+    pometka: документ
+    id: tuberkulez-85
+    istochnik: clever
+    dlya_voprosa: true
+    otvet: '85'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    kadr: &id003
+      src: /muzei/izobreteniya/img/02-21-goskatalog-29443611.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.85
+      width: 970
+      height: 1400
+      alt: 'Обложка старой книги: «Отчет о деятельности Одесской Бактериологической станции за 1893 г.»'
+      data_source: https://goskatalog.ru/portal/#/collections?id=29443611
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко» · Госкаталог
+      podpis: Книга «Отчет о деятельности Одесской Бактериологической станции за 1893 г.», 1894. Хранит Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко».
+      credit: 'Хранится: Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко». Госкаталог музейного фонда РФ, № 29272326.'
+      hint: Документ · Отчёт Одесской станции
+      vid: dokument
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1894'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1894'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=29443611
+      nomer_predmeta: '29272326'
+      nomer_snimka: net
+      hranitel: Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко»
+      podlinnik:
+        gde: Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=29443611
+      svyashchennoe: false
+      podpis_chto: Книга «Отчет о деятельности Одесской Бактериологической станции за 1893 г.»
+      podpis_gde: Одесса
+      podpis_kogda: '1894'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: НИЦЭМ им. Н. Ф. Гамалеи, «Н. Ф. Гамалея. Биография»'
+    otryvok: 'Пастер считал: миру хватит одного института. 27-летний Гамалея его переспорил'
+    stranica: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+    href: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+    pometka: документ
+    id: pereporil-pastera
+    istochnik: gam
+    dlya_voprosa: true
+    otvet: '27'
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    src: 'Источник: ЦГОН Роспотребнадзора, «Николай Федорович Гамалея – основоположник учения об иммунитете»'
+    otryvok: Холерную вакцину Гамалея выпил сам — и жена выпила вместе с ним
+    stranica: «Николай Федорович Гамалея – основоположник учения об иммунитете» — ЦГОН Роспотребнадзора
+    href: https://cgon.rospotrebnadzor.ru/istoriya/istoriya-sanitarnogo-prosveshcheniya/vydayushchiesya-gigienisty-i-epidemiologi-rossii-/nikolai-fedorovic-gamaleya-osnovopoloznik-uceniya-ob-immunitete/
+    pometka: документ
+    id: holernaya-vakcina
+    istochnik: rpn
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    src: 'Источник: НИЦЭМ им. Н. Ф. Гамалеи, «Н. Ф. Гамалея. Биография»'
+    otryvok: В 1908-м Гамалея первым в мире назвал вошь виновницей сыпного тифа
+    stranica: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+    href: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+    pometka: документ
+    id: vosh-tif-1908
+    istochnik: gam
+    dlya_voprosa: true
+    otvet: '1908'
+    otvet_edinstvennyj: true
+  - n: 5
+    sravnenie: net
+    src: 'Источник: ИКБ № 1 ДЗМ, «Вклад Николая Федоровича Гамалеи в отечественную науку»'
+    otryvok: Институт имени Гамалеи в 2020-м выпустил первую в мире вакцину от ковида
+    stranica: «Вклад Николая Федоровича Гамалеи в отечественную науку» — ИКБ № 1 ДЗМ
+    href: https://ikb1.ru/vklad-nikolaya-fedorovicha-gamalei-v-ot/
+    pometka: документ
+    id: vakcina-kovid-2020
+    istochnik: ikb
+    dlya_voprosa: true
+    otvet: '2020'
+    otvet_edinstvennyj: true
+  - n: 6
+    sravnenie: net
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-21-goskatalog-11846959.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.85
+      width: 800
+      height: 450
+      alt: 'Старая открытка: одноэтажное здание с куполом и колоннами среди деревьев, у главного входа стоят люди'
+      data_source: https://goskatalog.ru/portal/#/collections?id=11846959
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · ФГБУК «Государственный научно-исследовательский музей архитектуры имени А. В. Щусева» · Госкаталог
+      podpis: Открытка «Одесса. Здание бактериологической станции. Главный вход», фототипия Шерер, Набгольц и К°, 1902. Хранит ФГБУК «Государственный научно-исследовательский музей архитектуры имени А. В. Щусева».
+      credit: 'Хранится: ФГБУК «Государственный научно-исследовательский музей архитектуры имени А. В. Щусева». Госкаталог музейного фонда РФ, № 11728623.'
+      hint: Фото · Одесская бактериологическая станция
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1902'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1902'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=11846959
+      nomer_predmeta: '11728623'
+      nomer_snimka: net
+      hranitel: ФГБУК «Государственный научно-исследовательский музей архитектуры имени А. В. Щусева»
+      podlinnik:
+        gde: ФГБУК «Государственный научно-исследовательский музей архитектуры имени А. В. Щусева»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=11846959
+      svyashchennoe: false
+      podpis_chto: Открытка «Одесса. Здание бактериологической станции. Главный вход», фототипия Шерер, Набгольц и К°
+      podpis_gde: Одесса
+      podpis_kogda: '1902'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Российское историческое общество, «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями»'
+    otryvok: Пастер звал Гамалею остаться в Париже — тот уехал работать в Одессу
+    stranica: «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями» — Российское историческое общество
+    href: https://historyrussia.org/tsekh-istorikov/bojtsy-nevidimogo-fronta.html
+    pometka: документ
+    id: uehal-v-odessu
+    istochnik: rio
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    src: 'Источник: НИЦЭМ им. Н. Ф. Гамалеи, «Н. Ф. Гамалея. Биография»'
+    otryvok: 'Чума в Одессе: за 12 дней Гамалея очистил город от крыс — даже 42 парохода'
+    stranica: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+    href: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+    pometka: документ
+    id: chuma-krysy-12
+    istochnik: gam
+    dlya_voprosa: true
+    otvet: '12'
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    kadr: &id004
+      src: /muzei/izobreteniya/img/02-21-goskatalog-23958588.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.85
+      width: 800
+      height: 576
+      alt: 'Старая фотография: врачи в белых халатах в лаборатории делают прививку мужчине'
+      data_source: https://goskatalog.ru/portal/#/collections?id=23958588
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · ГБУК «Пензенский краеведческий музей» · Госкаталог
+      podpis: Фотография «Пензенская Пастеровская станция», 1914. Хранит ГБУК «Пензенский краеведческий музей».
+      credit: 'Хранится: ГБУК «Пензенский краеведческий музей». Госкаталог музейного фонда РФ, № 23824637.'
+      hint: Фото · Прививка на Пастеровской станции
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1914'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1914'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=23958588
+      nomer_predmeta: '23824637'
+      nomer_snimka: net
+      hranitel: ГБУК «Пензенский краеведческий музей»
+      podlinnik:
+        gde: ГБУК «Пензенский краеведческий музей»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=23958588
+      svyashchennoe: false
+      podpis_chto: Фотография «Пензенская Пастеровская станция»
+      podpis_gde: Пенза
+      podpis_kogda: '1914'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: телеканал «Наука», «Бешенство. История поисков вслепую»'
+    otryvok: Пастер дал в дорогу двух заражённых кроликов — так прививка приехала в Россию
+    stranica: «Бешенство. История поисков вслепую» — телеканал «Наука»
+    href: https://naukatv.ru/articles/beshenstvo_istoriya_poiskov_vslepuyu
+    pometka: документ
+    id: dva-krolika
+    istochnik: nauka
+    dlya_voprosa: false
+  - n: 9
+    sravnenie: net
+    src: 'Источник: «Самарская газета», «Луи Пастер и антипрививочники XIX века. Часть 2»'
+    otryvok: 'Укушенных бешеным волком у Гамалеи умирало вчетверо меньше: 7 из 44'
+    stranica: «Луи Пастер и антипрививочники XIX века. Часть 2» — «Самарская газета»
+    href: https://sgpress.ru/news/330382
+    pometka: документ
+    id: volk-7-iz-44
+    istochnik: sg
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: Российское историческое общество, «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями»'
+    otryvok: В 1918-м Гамалея привил от оспы весь Петроград — к 1936-му оспа в СССР исчезла
+    stranica: «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями» — Российское историческое общество
+    href: https://historyrussia.org/tsekh-istorikov/bojtsy-nevidimogo-fronta.html
+    pometka: документ
+    id: ospa-petrograd
+    istochnik: rio
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о Гамалее и Пастере
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: НИЦЭМ им. Н. Ф. Гамалеи, «Н. Ф. Гамалея. Биография»'
+    otryvok: В 1898-м Гамалея первым в мире увидел, как невидимки растворяют микробов, — это бактериофаг
+    stranica: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+    href: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+    pometka: документ
+    id: bakteriofag-1898
+    istochnik: gam
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: «Самарская газета», «Луи Пастер и антипрививочники XIX века. Часть 2»'
+    otryvok: 'Пастер позвал Гамалею в Академию: «Нужно выдвигаться вперёд, чтобы говорить правду»'
+    stranica: «Луи Пастер и антипрививочники XIX века. Часть 2» — «Самарская газета»
+    href: https://sgpress.ru/news/330382
+    pometka: документ
+    id: paster-akademiya
+    istochnik: sg
+    dlya_voprosa: false
+  - n: 13
+    sravnenie: net
+    src: 'Источник: журнал «КлеверЛаб», «Николай Гамалея: микробиолог, победивший эпидемии»'
+    otryvok: 'Мечников — Пастеру о Гамалее: «В Одессе трудно будет найти такого бактериолога»'
+    stranica: '«Николай Гамалея: микробиолог, победивший эпидемии» — журнал «КлеверЛаб»'
+    href: https://news.clever-lab.pro/nikolaj-gamaleja-mikrobiolog-pobedivshij-jepidemii/
+    pometka: документ
+    id: paster-o-gamalee
+    istochnik: clever
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: НИЦЭМ им. Н. Ф. Гамалеи, «Н. Ф. Гамалея. Биография»'
+    otryvok: Слово «дезинсекция» в язык ввёл Гамалея — им пользуются до сих пор
+    stranica: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+    href: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+    pometka: документ
+    id: dezinsekciya
+    istochnik: gam
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: НИЦЭМ им. Н. Ф. Гамалеи, «Н. Ф. Гамалея. Биография»'
+    otryvok: Рассадник холеры в Баку и Эривани Гамалея нашёл в турецких банях
+    stranica: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+    href: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+    pometka: документ
+    id: holera-bani
+    istochnik: gam
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из жизни Гамалеи — своё место: годы, дни, люди.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: tuberkulez
+      nazvanie: В столько лет Гамалея заразил себя туберкулёзом
+      verno_ru: В 85 лет Гамалея заразил себя туберкулёзом, чтобы проверить своё лекарство
+    - kod: krysy
+      nazvanie: За столько дней Гамалея очистил Одессу от крыс
+      verno_ru: 'Чума в Одессе: за 12 дней Гамалея очистил город от крыс — даже 42 парохода'
+    - kod: volk
+      nazvanie: Столько укушенных волком умерли у Гамалеи
+      verno_ru: 'Укушенных бешеным волком у Гамалеи умирало вчетверо меньше: 7 из 44'
+    - kod: vosh
+      nazvanie: Год, когда Гамалея назвал вошь виновницей тифа
+      verno_ru: В 1908-м Гамалея первым в мире назвал вошь виновницей сыпного тифа
+    podpisi:
+    - kod: n85
+      tekst: 85 лет
+      mesto: tuberkulez
+      mimo_ru: 85 лет — столько было Гамалее, когда он заразил себя туберкулёзом.
+    - kod: n12
+      tekst: 12 дней
+      mesto: krysy
+      mimo_ru: 12 дней — за столько Гамалея очистил Одессу от крыс.
+    - kod: n7iz44
+      tekst: 7 из 44
+      mesto: volk
+      mimo_ru: 7 из 44 — столько укушенных волком умерли у Гамалеи.
+    - kod: n1908
+      tekst: '1908'
+      mesto: vosh
+      mimo_ru: 1908 — год, когда Гамалея назвал вошь виновницей сыпного тифа.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 85 лет опыта на себе, 12 дней против чумы, 7 из 44 укушенных и 1908 год.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 85 лет — опыт с туберкулёзом, 12 дней — Одесса без крыс, 7 из 44 — укушенные волком, 1908 — вошь и сыпной тиф.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: в 1908 году Гамалея первым в мире назвал платяную вошь виновницей сыпного тифа — француз Шарль Николль подтвердил это только через год.'
+  net: 'Как это работало дальше: институт имени Гамалеи в 2020-м выпустил первую в мире вакцину от ковида.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Одесса
+    - Пастеровская станция Гамалеи
+    - '1886'
+  - - Одесса
+    - вошь названа виновницей сыпного тифа
+    - '1908'
+  - - Петроград
+    - прививка от оспы всего города
+    - '1918'
+  - - Москва, институт имени Гамалеи
+    - первая в мире вакцина от ковида
+    - '2020'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 85 лет; 12 дней; 1908 год; 2020 год; 27 лет.'
+  ball: 8
+  voprosy:
+  - q: Во сколько лет Гамалея заразил себя туберкулёзом, чтобы проверить лекарство?
+    o:
+    - '65'
+    - '85'
+    - '95'
+    a: 1
+    e: В 85 лет Гамалея заразил себя туберкулёзом, чтобы проверить своё лекарство
+  - q: За сколько дней Гамалея очистил чумную Одессу от крыс?
+    o:
+    - '2'
+    - '12'
+    - '120'
+    a: 1
+    e: 'Чума в Одессе: за 12 дней Гамалея очистил город от крыс — даже 42 парохода'
+  - q: В каком году Гамалея назвал вошь виновницей сыпного тифа?
+    o:
+    - '1808'
+    - '1908'
+    - '1958'
+    a: 1
+    e: В 1908-м Гамалея первым в мире назвал вошь виновницей сыпного тифа
+  - q: В каком году институт имени Гамалеи выпустил первую в мире вакцину от ковида?
+    o:
+    - '2010'
+    - '2020'
+    - '2024'
+    a: 1
+    e: Институт имени Гамалеи в 2020-м выпустил первую в мире вакцину от ковида
+  - q: Сколько лет было Гамалее, когда он переспорил Пастера?
+    o:
+    - '17'
+    - '27'
+    - '47'
+    a: 1
+    e: 'Пастер считал: миру хватит одного института. 27-летний Гамалея его переспорил'
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал Гамалеи и Одесской станции.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-21-goskatalog-29377580.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.05
+    w: 0.8
+    h: 0.85
+  width: 1096
+  height: 1400
+  alt: Рукописное письмо на бланке с печатным заголовком «Одесская бактериологическая станция»
+  data_source: https://goskatalog.ru/portal/#/collections?id=29377580
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко» · Госкаталог
+  podpis: Черновик письма на бланке Одесской бактериологической станции, 26 октября, 1895. Хранит Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко».
+  credit: 'Хранится: Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко». Госкаталог музейного фонда РФ, № 29209248.'
+  hint: Документ · Бланк Одесской станции
+  vid: dokument
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1895'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1895'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=29377580
+  nomer_predmeta: '29209248'
+  nomer_snimka: net
+  hranitel: Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко»
+  podlinnik:
+    gde: Отдел «Российский музей медицины» ФГБНУ «Национальный НИИ общественного здоровья имени Н. А. Семашко»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=29377580
+  svyashchennoe: false
+  podpis_chto: Черновик письма на бланке Одесской бактериологической станции, 26 октября
+  podpis_gde: Одесса
+  podpis_kogda: '1895'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-21-goskatalog-20695990.jpg
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.1
+    w: 0.7
+    h: 0.8
+  width: 614
+  height: 800
+  alt: Овальный фотопортрет бородатого мужчины в сюртуке
+  data_source: https://goskatalog.ru/portal/#/collections?id=20695990
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · ГБУК «Самарский областной историко-краеведческий музей имени П. В. Алабина» · Госкаталог
+  podpis: Фотография «Хардин — один из врачей, основавших Пастеровскую станцию», фотограф А. Васильев, 1887. Хранит ГБУК «Самарский областной историко-краеведческий музей имени П. В. Алабина».
+  credit: 'Хранится: ГБУК «Самарский областной историко-краеведческий музей имени П. В. Алабина». Госкаталог музейного фонда РФ, № 20565503.'
+  hint: Фото · Врач Пастеровской станции
+  vid: foto
+  prava:
+    avtor: Васильев А.
+    god_sozdaniya: '1887'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: '1887'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20695990
+  nomer_predmeta: '20565503'
+  nomer_snimka: net
+  hranitel: ГБУК «Самарский областной историко-краеведческий музей имени П. В. Алабина»
+  podlinnik:
+    gde: ГБУК «Самарский областной историко-краеведческий музей имени П. В. Алабина»
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20695990
+  svyashchennoe: false
+  podpis_chto: Фотография «Хардин — один из врачей, основавших Пастеровскую станцию», фотограф А. Васильев
+  podpis_gde: Самара
+  podpis_kogda: '1887'
+  pometka_prav: citirovanie-1274
+- src: /muzei/izobreteniya/img/02-21-goskatalog-31993224.jpg
+  glavnoe_na_kartinke:
+    x: 0.1
+    y: 0.0
+    w: 0.8
+    h: 0.95
+  width: 800
+  height: 596
+  alt: 'Старая фотография: женщина в белом халате делает укол мужчине в ватнике у окна'
+  data_source: https://goskatalog.ru/portal/#/collections?id=31993224
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музей-заповедник истории Дальнего Востока · Госкаталог
+  podpis: Фотография «Гернгросс Олимпиада Георгиевна проводит вакцинацию на пастеровской станции», 1943. Хранит Музей-заповедник истории Дальнего Востока.
+  credit: 'Хранится: Музей-заповедник истории Дальнего Востока. Госкаталог музейного фонда РФ, № 31809426.'
+  hint: Фото · Прививка на пастеровской станции
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1943'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1943'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=31993224
+  nomer_predmeta: '31809426'
+  nomer_snimka: net
+  hranitel: Музей-заповедник истории Дальнего Востока
+  podlinnik:
+    gde: Музей-заповедник истории Дальнего Востока
+    otkuda: https://goskatalog.ru/portal/#/collections?id=31993224
+  svyashchennoe: false
+  podpis_chto: Фотография «Гернгросс Олимпиада Георгиевна проводит вакцинацию на пастеровской станции»
+  podpis_gde: Россия
+  podpis_kogda: '1943'
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+  title: «Н. Ф. Гамалея. Биография» — НИЦЭМ им. Н. Ф. Гамалеи
+  note: факты дня
+- href: https://cgon.rospotrebnadzor.ru/istoriya/istoriya-sanitarnogo-prosveshcheniya/vydayushchiesya-gigienisty-i-epidemiologi-rossii-/nikolai-fedorovic-gamaleya-osnovopoloznik-uceniya-ob-immunitete/
+  title: «Николай Федорович Гамалея – основоположник учения об иммунитете» — ЦГОН Роспотребнадзора
+  note: факты дня
+- href: https://historyrussia.org/tsekh-istorikov/bojtsy-nevidimogo-fronta.html
+  title: «Бойцы невидимого фронта. История борьбы человечества с инфекционными заболеваниями» — Российское историческое общество
+  note: факты дня
+- href: https://sgpress.ru/news/330382
+  title: «Луи Пастер и антипрививочники XIX века. Часть 2» — «Самарская газета»
+  note: факты дня
+- href: https://naukatv.ru/articles/beshenstvo_istoriya_poiskov_vslepuyu
+  title: «Бешенство. История поисков вслепую» — телеканал «Наука»
+  note: факты дня
+- href: https://news.clever-lab.pro/nikolaj-gamaleja-mikrobiolog-pobedivshij-jepidemii/
+  title: '«Николай Гамалея: микробиолог, победивший эпидемии» — журнал «КлеверЛаб»'
+  note: факты дня
+- href: https://ikb1.ru/vklad-nikolaya-fedorovicha-gamalei-v-ot/
+  title: «Вклад Николая Федоровича Гамалеи в отечественную науку» — ИКБ № 1 ДЗМ
+  note: факты дня
+- href: https://cgon.rospotrebnadzor.ru/istoriya/istoriya-sanitarnogo-prosveshcheniya/istoriya-v-litsakh-/likvidatsiya-ospy-triumf-otechestvennoy-meditsiny/
+  title: «Ликвидация оспы – триумф отечественной медицины» — ЦГОН Роспотребнадзора
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  main: true
+- lbl: Предыдущий день
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Директор станции
+  - - 70
+    - Бактериолог Гамалеи
+  - - 40
+    - Ученик Пастера
+  - - 0
+    - Гость дня
+return:
+  q: За сколько дней Гамалея очистил чумную Одессу от крыс?
+  a: 'Чума в Одессе: за 12 дней Гамалея очистил город от крыс — даже 42 парохода'
+  src: НИЦЭМ им. Н. Ф. Гамалеи, gamaleya.org
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-21-gamaleya:claim-1886
+  ours:
+    kind: publication
+    title: «Н. Ф. Гамалея. Биография»
+    date: '1886-06-12'
+    holder: НИЦЭМ им. Н. Ф. Гамалеи
+    source_url: https://gamaleya.org/about/elektronnaya-biblioteka/istoriya-nauchnykh-dostizheniy/1364/
+podskazki_igry:
+- 85 лет — это опыт с туберкулёзом
+- 12 дней — это Одесса без крыс
+- 1908 — это вошь и тиф
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Одесса
+  shirota: 46.4825
+  dolgota: 30.7233
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Вирус бешенства выращивают в мозге заражённого кролика
+- Мозг кролика сушат — с каждым днём вирус слабеет
+- Укушенному вводят сначала самый слабый вирус, потом всё сильнее
+- Защита успевает созреть раньше, чем болезнь дойдёт до мозга
+data_uslovnaya: 21 февраля — день музея; в феврале 1886 года Гамалея приехал в Париж к Пастеру, а 12 июня 1886 года по старому стилю в Одессе открылась Пастеровская станция Гамалеи.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/21feb-gamaleya
+  format: horizontal
+  pole: izobreteniya/21feb-gamaleya:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  poster: video/day-21feb-gamaleya-poster.jpg
+  mp4: video/day-21feb-gamaleya.mp4
+  note: Закадровый текст озвучен синтезом речи.

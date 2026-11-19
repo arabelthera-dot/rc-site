@@ -27,9 +27,17 @@
     if (dni.indexOf(today) < 0) dni.push(today);
     dni.sort(); dni = dni.slice(-60);
     try { localStorage.setItem(KEY, JSON.stringify({ dni: dni })); } catch (e) { return 0; }
+    prosimNeStirat();
     var n = 1;
     for (var i = dni.length - 1; i > 0; i--) { if (dniMezhdu(dni[i], dni[i - 1]) <= 2) n++; else break; }
     return n;
+  }
+  // Перенос прогресса (п.496, src/lib/perenos.mjs): блок с data-rc-persist — один раз просим браузер
+  // не стирать данные сайта (Safari чистит localStorage через 7 дней без захода). Флага нет — не зовём.
+  function prosimNeStirat() {
+    if (!d.querySelector('[data-rc-persist]') || !navigator.storage || !navigator.storage.persist) return;
+    try { if (localStorage.getItem('rc-persist')) return; localStorage.setItem('rc-persist', '1'); } catch (e) { return; }
+    navigator.storage.persist().catch(function () {});
   }
   function pokazatSeriyu() {
     var n = seriya(), p = d.querySelector('.rc-pv-seriya');

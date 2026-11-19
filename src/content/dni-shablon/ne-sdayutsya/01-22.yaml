@@ -87,10 +87,9 @@ video:
   pole: nesdayutsya/22jan-6-rota:horizontal.sec
   suffix: сек
   badge: 47 сек
-  intro: Девяносто против двух тысяч — выжили шестеро, не отступил никто
-  poster: /muzei/ne-sdayutsya/video/day-22jan-6-rota-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-22jan-6-rota.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns22jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-22jan-6-rota-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-22jan-6-rota.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Высота над ущельем
@@ -435,15 +434,7 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: podvig-rodionov.html
-    title: 24 — Евгений Родионов
-    hook: "Стойкость в плену: ему предложили снять крест — он не снял."
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

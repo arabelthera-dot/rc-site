@@ -1,7 +1,6 @@
 {
   "title": "История в 50 секунд",
-  "intro": "Срезневский построил первую в мире камеру для съёмки с неба — в 1886-м с воздушного шара она сняла Кронштадт с 1100 метров.",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42199882276) из сценария days/26jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/26jan-sreznevskiy/day-26jan-sreznevskiy.mp4",
     "local": "muzei/izobreteniya/video/day-26jan-sreznevskiy.mp4",

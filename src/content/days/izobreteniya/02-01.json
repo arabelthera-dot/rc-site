@@ -21,5 +21,72 @@
     "lyudi:vladimir-behterev",
     "mesto:kazan",
     "mesto:sankt-peterburg"
-  ]
+  ],
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Владимир Бехтерев",
+      "Бехтерев",
+      "Основы неврологии и психоневрологии",
+      "психоневрологии"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Бехтерев Владимир Михайлович (1875-1927 гг.).",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=5553862",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/1832406",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 5420588 (карточка 5553862, инв. —) | дата не указана | хранится: ГЦМСИР | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Владимир Бехтерев"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Документ. Фотография черно-белая Владимира Михайловича Бехтерева.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=12016929",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/29383492",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 11897350 (карточка 12016929, инв. —) | Первая половина XX века | хранится: ГБУК РТ ЕГИАИХМЗ | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Владимир Бехтерев"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Документ. Фотография черно-белая. Институт музея им. Бехтерева  [1940-е гг.]",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8215523",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/7250884",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8106632 (карточка 8215523, инв. Ф.281ТСР, № 17) | [1940-е.гг.] | хранится: ГБУК города Москвы \"Музейное объединение \"Музей Москвы\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Бехтерев"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Корепанов Г.А., Радионов Л.Е., Бехтерев Г.Н., музыкальные деятели Удмуртии, на",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8724209",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/5097137",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8614467 (карточка 8724209, инв. —) | 1970-е гг. | хранится: БУК УР \"Национальный музей УР\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Бехтерев"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография. Сюжетная.  Бехтерев Михаил Анатольевич – участник Всесоюзных соревнований в г.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19943081",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/20650864",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19818363 (карточка 19943081, инв. —) | - | хранится: МБУК Шарканский музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Бехтерев"
+      }
+    ]
+  }
 }

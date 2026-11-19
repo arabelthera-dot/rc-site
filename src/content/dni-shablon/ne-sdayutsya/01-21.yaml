@@ -90,10 +90,9 @@ video:
   pole: nesdayutsya/21jan-dubinin:horizontal.sec
   suffix: сек
   badge: 47 сек
-  intro: Володя Дубинин днём прошёл вражеские посты и спас отряд от затопления
-  poster: /muzei/ne-sdayutsya/video/day-21jan-dubinin-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-21jan-dubinin.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42049201809) из сценария days/ns21jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-21jan-dubinin-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-21jan-dubinin.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Подземный отряд
@@ -426,15 +425,7 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-6-rota.html
-    title: 23 — 6-я рота, высота 776
-    hook: "Стойкость ратника: девяносто против двух тысяч — не отступил никто."
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

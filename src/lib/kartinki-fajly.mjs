@@ -15,7 +15,7 @@ const TIP = { jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'im
 const KARTINKA = /^\s*-?\s*src:\s*['"]?(\/?[^\s'"#?]+\.(?:jpe?g|png|webp|gif|svg|avif))/gim;
 export const IZ_FAJLA = process.env.RC_RAZMERY_IZ_FAJLA === '1';
 
-async function opisat(file) {
+export async function opisat(file) {
   try {
     const b = fs.readFileSync(file);
     const m = await sharp(b).metadata();
@@ -41,7 +41,7 @@ export async function izmerit(DIR, failPublic) {
 }
 
 // Картинки сырой карточки: [объект, обязательны ли размеры по схеме].
-function kartinkiKartochki(k) {
+export function kartinkiKartochki(k) {
   const kadry = [...(k.figures ?? []), ...(k.story?.udary ?? []).map((u) => u?.kadr), ...[k.fakty ?? []].flat().flatMap((b) => b?.udary ?? []).map((u) => u?.kadr)];
   return [...(k.oblozhka ? [[k.oblozhka, true]] : []), ...kadry.filter((x) => x && typeof x === 'object').map((x) => [x, false])];
 }

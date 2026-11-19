@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { KUDA_SOSED } from '../../src/lib/den-obshchee.mjs';
 
 const MUZEI = 'izobreteniya', IMYA = 'Музей «Что изобрели русские первыми в мире»', SAYT = 'https://russian-civilization.ru';
 const STARYE = `src/data/full-pages/${MUZEI}`, ZAPISI = `src/content/days/${MUZEI}`;
@@ -122,8 +123,9 @@ export function razobrat(html, json, den) {
     const klyuch = atr(video, 'data-rc-video'), format = atr(video, 'data-rc-format') ?? 'horizontal';
     const p = [...vid.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => tekst(m[1]));
     karta.video = chisto({ h2: h2(vid), klyuch, format, pole: klyuch && `${klyuch}:${format}.sec`, suffix: 'сек',
-      badge: tekst(vid.match(/<span[^>]*data-rc-video-field[^>]*>([\s\S]*?)<\/span>/)?.[1]) || undefined, intro: p[0],
-      poster: atr(video, 'poster'), mp4: atr(vid.match(/<source[^>]*>/)?.[0], 'src'), note: p.length > 1 ? p.at(-1) : undefined });
+      badge: tekst(vid.match(/<span[^>]*data-rc-video-field[^>]*>([\s\S]*?)<\/span>/)?.[1]) || undefined,
+      poster: atr(video, 'poster')?.replace(/[?#].*$/, ''), mp4: atr(vid.match(/<source[^>]*>/)?.[0], 'src')?.replace(/[?#].*$/, ''), // ?v= ставит реестр (Р820)
+      note: p.length > 1 ? p.at(-1) : undefined });
   } else net('ролик (video)');
 
   const ag = okno.MUSEUM_AUDIOGUIDE;
@@ -200,7 +202,8 @@ export function razobrat(html, json, den) {
 
   karta.kuda = [...h.matchAll(/<div class="kd-card( main)?">\s*<span class="kd-lbl">([\s\S]*?)<\/span>\s*<a href="([^"]+)">([\s\S]*?)<\/a>\s*(?:<p>([\s\S]*?)<\/p>)?\s*<\/div>/g)]
     .filter((m) => m[3] !== 'index.html' && !m[3].startsWith('../')) // «Весь музей» и «Город-музей» — в образце не переносятся
-    .map((m) => chisto({ lbl: tekst(m[2]), href: m[3], title: tekst(m[4].replace(/<span class="kd-arr">[\s\S]*?<\/span>/, '')), hook: tekst(m[5]) || undefined, main: !!m[1] }));
+    .map((m) => KUDA_SOSED.test(tekst(m[2])) ? { lbl: tekst(m[2]), main: !!m[1] } // Р819: соседа даёт машина
+      : chisto({ lbl: tekst(m[2]), href: m[3], title: tekst(m[4].replace(/<span class="kd-arr">[\s\S]*?<\/span>/, '')), hook: tekst(m[5]) || undefined, main: !!m[1] }));
   if (!karta.kuda.length) net('куда дальше (kd-card)');
 
   if (okno.MUSEUM_SCORE) karta.score = chisto({ awards: okno.MUSEUM_SCORE.awards, ranks: okno.MUSEUM_SCORE.ranks });

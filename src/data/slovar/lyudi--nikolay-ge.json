@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Николай Ге",
+  "pol": "m",
+  "kratko": "Живописец, автор «Тайной вечери» и «Что есть истина?».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n84184039",
+    "ssylka": "https://id.loc.gov/authorities/names/n84184039.html",
+    "zagolovok": "Ge, N. N. (Nikolaĭ Nikolaevich), 1831-1894"
+  },
+  "latinica": "Nikolay Ge",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1831",
+    "smert": "1894"
+  }
+}

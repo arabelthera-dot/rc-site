@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Сахалин",
+  "kratko": "Остров на Дальнем Востоке.",
+  "koordinaty": {
+    "shirota": 50.16,
+    "dolgota": 143.026,
+    "tochka": "середина острова",
+    "otkuda": "https://www.openstreetmap.org/relation/3987424"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Сахалин"
+    }
+  ]
+}

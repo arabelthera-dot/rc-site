@@ -1,0 +1,832 @@
+# Р773: день 23 февраля — подлодка К-278 «Комсомолец», стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-23
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Подлодка К-278 «Комсомолец» — «Русские не сдаются» — Русская цивилизация
+  description: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-23/
+  sobytie: Подлодка К-278 «Комсомолец»
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Подлодка К-278 «Комсомолец» — «Русские не сдаются» — Русская цивилизация
+    description: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-23/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Подлодка К-278 «Комсомолец» — «Русские не сдаются»
+    description: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-23/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1989'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-23-goskatalog-6649102.jpg
+  alt: Чёрная модель подводной лодки на синей бархатной подставке в светлой раме.
+  data_source: https://goskatalog.ru/portal/#/collections?id=9860261
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Модель атомной подводной лодки проекта 685 К-278 «Комсомолец», 2002 год. Хранится в Центральном военно-морском музее.
+  credit: Центральный военно-морской музей, Госкаталог № 9740661
+  width: 800
+  height: 600
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '6649102'
+  hranitel: Центральный военно-морской музей, Санкт-Петербург
+  podpis_chto: Модель атомной ракетно-торпедной подводной лодки пр. 685 «К-278» «Комсомолец»
+  podpis_gde: место изготовления не указано
+  podpis_kogda: '2002'
+  simvolika_proverena: true
+  podlinnik:
+    gde: Центральный военно-морской музей, Санкт-Петербург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=9860261
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '2002'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 9740661
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 9740661
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=9860261
+  hint: Чёрная модель подводной лодки на синей бархатной подставке в светлой раме.
+  celikom: true
+kroshka: День 23 · Подлодка К-278 «Комсомолец»
+lead:
+  data: День 23 · февраль · Норвежское море, 1985–1989 годы
+  privyazka: 'Дата условная: 23 февраля — день музея; событие — гибель К-278 «Комсомолец» 7 апреля 1989 года в Норвежском море.'
+  kto: Экипаж атомной подводной лодки К-278 «Комсомолец» · командир капитан 1-го ранга Евгений Ванин
+  h1: Подлодка К-278 «Комсомолец»
+  hook: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
+stamp:
+- v: '1027'
+  k: метров — рекорд глубины
+- v: '69'
+  k: человек на борту в последнем походе
+- v: '30'
+  k: моряков подняли живыми
+- v: '68'
+  k: спусков «Миров» к лодке
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/23feb-komsomolec
+  format: horizontal
+  pole: nesdayutsya/23feb-komsomolec:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  poster: /muzei/ne-sdayutsya/video/day-23feb-komsomolec-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-23feb-komsomolec.mp4
+  note: Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Подлодка К-278 «Комсомолец»
+  abzacy:
+  - К-278 была единственной лодкой проекта 685 «Плавник». Её корпус впервые в мире целиком сделали из титана. 4 августа 1985 года она ушла на 1027 метров. Корпус скрипел так, что железную койку штурмана выгнуло луком, а срезанные болты летели как пули. Лодка выдержала, выстрелила из торпедных аппаратов с 800 метров и всплыла.
+  - 7 апреля 1989 года в Норвежском море в седьмом отсеке начался пожар. Огонь разогнал отсек до 1000 градусов. Лодка всплыла, и экипаж шесть часов боролся за неё. Капитан 3-го ранга Анатолий Испенков остался у дизель-генератора, чтобы у товарищей были свет и время. В 17:08 «Комсомолец» ушёл на дно.
+  - Моряки ждали помощи в ледяной воде и пели «Варяга». Командир Евгений Ванин вернулся в лодку за людьми и погиб. Из всплывшей спасательной камеры выбрался один мичман Виктор Слюсаренко. Рыбацкая плавбаза «Алексей Хлобыстов» подняла из воды 30 живых. Потом обитаемые аппараты «Мир» 68 раз спускались к лодке на 1700 метров.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Подлодка К-278 «Комсомолец»
+  udary:
+  - id: ns-0223-rekord
+    summary: «Комсомолец» ушёл на 1027 метров — глубже не опускалась ни одна подводная лодка мира до сих пор
+    det:
+    - 4 августа 1985 года К-278 погрузилась на 1027 метров. Обычная атомная лодка работает на глубине не больше 600 метров.
+    src: 'Источник: АПЛ «Комсомолец» установила рекорд глубины погружения 35 лет назад — «Российская газета», 04.08.2020 — https://rg.ru/2020/08/04/apl-komsomolec-ustanovila-rekord-glubiny-pogruzheniia-35-let-nazad.html; АПЛ К-278 — Общество памяти АПЛ «Комсомолец» — https://opaplkomsomolec.ru/apl-k-278/'
+    stranica: статья
+    href: https://rg.ru/2020/08/04/apl-komsomolec-ustanovila-rekord-glubiny-pogruzheniia-35-let-nazad.html
+    otryvok: «4 августа 1985 года она установила абсолютный рекорд по глубине погружения среди субмарин - 1027 метров.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0223-slyusarenko
+    summary: Мичман Слюсаренко — единственный в мире, кто спасся из лодки, ушедшей на полтора километра
+    det:
+    - Когда лодка тонула, пятеро были во всплывающей спасательной камере. Камера поднялась, люк выбило давлением, и наружу выбрался один мичман Виктор Слюсаренко.
+    src: 'Источник: Конец «Комсомольца». Как погибла лучшая советская подлодка — А. Сидорчик, «Аргументы и факты» — https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka; Мичман Виктор Слюсаренко: «Я всплыл с 1000 метров…» — журнал «Родина», № 4, 2019 — https://rodina-history.ru/2019/04/07/rodina-podlodka-komsomolets.html'
+    stranica: статья
+    href: https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka
+    otryvok: «Виктор Фёдорович Слюсаренко — единственный человек в мире, спасшийся из подводной лодки, затонувшей на полуторакилометровой глубине.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 2
+  - id: ns-0223-vanin
+    summary: Командир Ванин уже был наверху — и вернулся в тонущую лодку за людьми
+    det:
+    - Командир Евгений Ванин услышал внутри лодки голоса и бросился обратно. Он погиб вместе с теми, за кем вернулся, его тело осталось в море.
+    src: 'Источник: Конец «Комсомольца». Как погибла лучшая советская подлодка — А. Сидорчик, «Аргументы и факты» — https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka'
+    stranica: статья
+    href: https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka
+    otryvok: «Капитан Ванин бросился внутрь лодки, услышав в ней голоса людей.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 3
+  - id: ns-0223-ispenkov
+    summary: Испенков до последней минуты держал дизель, чтобы у товарищей были свет и время уйти
+    det:
+    - Капитан 3-го ранга Анатолий Испенков остался внутри прочного корпуса у дизель-генератора и ушёл на дно вместе с лодкой.
+    src: 'Источник: АПЛ К-278 — Общество памяти АПЛ «Комсомолец» — https://opaplkomsomolec.ru/apl-k-278/; Д. Панкратов. Гибель АПЛ К-278 «Комсомолец» — https://d-pankratov.ru/archives/646'
+    stranica: статья
+    href: https://opaplkomsomolec.ru/apl-k-278/
+    otryvok: «Внутри прочного корпуса подводной лодки остался капитан 3-го ранга А. М. Испенков, до последних минут обеспечивавший работу дизель-генератора.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 4
+  - id: ns-0223-kojka
+    summary: На рекорде давление сжало корпус так, что железную койку штурмана выгнуло луком
+    det:
+    - На километре корпус стонал и скрежетал. Наверху, на корабле обеспечения, слушали этот скрип и седели, а корпус выдержал.
+    src: 'Источник: Н. Черкашин. Хождение за три глубины — FLOT.com — https://flot.com/history/branches/sub/k278/index.php?print=Y'
+    stranica: статья
+    href: https://flot.com/history/branches/sub/k278/index.php?print=Y
+    otryvok: «Но наш прочный корпус выдержал. Обжатие его было таким, что мою железную койку выгнуло, как лук...»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 5
+  - id: ns-0223-bolty
+    summary: Титановые болты, срезанные глубиной, летели как пули — боцман сидел на рулях в каске
+    det:
+    - На рулях глубины в день рекорда сидел боцман мичман Вадим Полухин. Это его руки увели лодку на 1027 метров.
+    src: 'Источник: Н. Черкашин. Хождение за три глубины — FLOT.com — https://flot.com/history/branches/sub/k278/index.php?print=Y'
+    stranica: статья
+    href: https://flot.com/history/branches/sub/k278/index.php?print=Y
+    otryvok: «Он сидел в каске, чтобы, не дай бог, какой-нибудь срезанный давлением болт не угодил в голову.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 6
+  - id: ns-0223-varyag
+    summary: В ледяной воде тонущие моряки запели «Варяга» — и продержались до спасения
+    det:
+    - 'Моряки ждали помощи на плотах и в ледяной воде. Командир гидроакустической группы Юрий Парамонов вспоминал: песня дала им сил дождаться.'
+    src: 'Источник: Выживший подводник «Комсомольца»: «Мы запели «Варяга», это дало нам заряд энергии» — телеканал «Санкт-Петербург», 07.04.2014 — https://tvspb.ru/news/2014/04/7/vyizhivshij-podvodnik-komsomoltsa-myi-zapeli-varyaga-eto-dalo-nam-zaryad-energii/'
+    stranica: статья
+    href: https://tvspb.ru/news/2014/04/7/vyizhivshij-podvodnik-komsomoltsa-myi-zapeli-varyaga-eto-dalo-nam-zaryad-energii/
+    otryvok: «Но в этот момент мы запели «Варяга», что дало нам ещё определённый заряд энергии, и мы дождались помощи».
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+    n: 7
+  - id: ns-0223-ogon
+    summary: Огонь разогнал отсек до 1000 градусов, а лодка всплыла и шесть часов держалась на плаву
+    det:
+    - Пожар начался около 11 часов утра в седьмом отсеке. Лодка всплыла, экипаж боролся за неё, и только в 17:08 она ушла на дно.
+    src: 'Источник: Гибель атомной подводной лодки К-278 «Комсомолец». Справка — РИА Новости, 07.04.2009 — https://ria.ru/20090407/167349950.html; Конец «Комсомольца». Как погибла лучшая советская подлодка — А. Сидорчик, «Аргументы и факты» — https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka'
+    stranica: статья
+    href: https://ria.ru/20090407/167349950.html
+    otryvok: «Температура в 7-м отсеке достигала 1000 градусов, огонь проник и в 6-й отсек, где погиб мичман Владимир Колотилин.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: false
+    n: 8
+  - id: ns-0223-miry
+    summary: «Миры» 68 раз спускались к лодке на 1700 метров — такой работы в мире не делал никто
+    det:
+    - Два обитаемых аппарата «Мир» семь лет работали у лежащей на дне лодки и пробыли под водой больше 800 часов.
+    src: 'Источник: «Миры» у «Комсомольца» — журнал «Вокруг света» — https://www.vokrugsveta.ru/vs/article/897/; Анатолий Сагалевич: «Простых погружений не бывает…» — FLOT.com — https://flot.com/history/interesting/sagalevich.htm'
+    stranica: статья
+    href: https://www.vokrugsveta.ru/vs/article/897/
+    otryvok: '«Невозможно описать все погружения аппаратов «Мир-1» и «Мир-2»: за семь лет их было 68, а суммарное время нашего пребывания под водой составило более 800 часов.»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n9
+    dlya_voprosa: false
+    n: 9
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-23-goskatalog-22121721.jpg
+      alt: Двое в голубых комбинезонах у открытого люка оранжевого аппарата на палубе судна, позади море.
+      data_source: https://goskatalog.ru/portal/#/collections?id=20997906
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Анатолий Сагалевич и финский инженер перед спуском аппарата «Мир», 1987 год. Снимок И. Ф. Макаренко, Музей Мирового океана.
+      credit: Музей Мирового океана, Госкаталог № 20868776
+      width: 800
+      height: 313
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '22121721'
+      hranitel: Музей Мирового океана, Калининград
+      podpis_chto: Негатив «Сагалевич А. М. и финский инженер перед спуском ПОА "Мир"», 14 рейс «АМК»
+      podpis_gde: палуба судна, 14 рейс «Академика Мстислава Келдыша»
+      podpis_kogda: '1987'
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей Мирового океана, Калининград
+        otkuda: https://goskatalog.ru/portal/#/collections?id=20997906
+      svyashchennoe: false
+      prava:
+        avtor: Макаренко И. Ф.
+        god_sozdaniya: '1987'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 20868776
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 20868776
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=20997906
+      hint: Двое в голубых комбинезонах у открытого люка оранжевого аппарата на палубе судна, позади море.
+      celikom: true
+  - id: ns-0223-titan
+    summary: Первый в мире корпус атомной лодки целиком из титана
+    det:
+    - Лодка состояла из двух титановых корпусов. Титан не магнитится и делает лодку тише.
+    src: 'Источник: АПЛ «Комсомолец» установила рекорд глубины погружения 35 лет назад — «Российская газета», 04.08.2020 — https://rg.ru/2020/08/04/apl-komsomolec-ustanovila-rekord-glubiny-pogruzheniia-35-let-nazad.html'
+    stranica: статья
+    href: https://rg.ru/2020/08/04/apl-komsomolec-ustanovila-rekord-glubiny-pogruzheniia-35-let-nazad.html
+    otryvok: «Это был первый целиком созданный из титана корпус АПЛ.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 10
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0223-40-minut
+    summary: В воде +2 человек живёт 15–20 минут — Слюсаренко продержался 40
+    det:
+    - До ближайшей земли было больше 700 километров. Спасатели заметили мичмана в волнах по оранжевому мешку погибшего товарища.
+    src: 'Источник: Мичман Виктор Слюсаренко: «Я всплыл с 1000 метров…» — журнал «Родина», № 4, 2019 — https://rodina-history.ru/2019/04/07/rodina-podlodka-komsomolets.html'
+    stranica: статья
+    href: https://rodina-history.ru/2019/04/07/rodina-podlodka-komsomolets.html
+    otryvok: «В ледяной воде люди умирают через 15-20 минут. Я продержался 40...»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n4
+    dlya_voprosa: false
+    n: 11
+  - id: ns-0223-neuyazvim
+    summary: Вражеские торпеды раздавило бы на полпути к «Комсомольцу» — он был неуязвим
+    det:
+    - 'Так говорил командовавший рекордным погружением адмирал Евгений Чернов: с такой глубины лодка могла стрелять сама.'
+    src: 'Источник: Н. Черкашин. Хождение за три глубины — FLOT.com — https://flot.com/history/branches/sub/k278/index.php?print=Y'
+    stranica: статья
+    href: https://flot.com/history/branches/sub/k278/index.php?print=Y
+    otryvok: «…он мог стрелять из этой бездны, оставаясь неуязвимым для глубинных бомб и торпед противника, которые были бы раздавлены на полпути к цели.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 12
+  - id: ns-0223-30-sekund
+    summary: С 800 метров лодка «вознеслась» на поверхность за 30 секунд — на силе пороховых газов
+    det:
+    - Сжатым воздухом с такой глубины цистерны не продуть. На рекорде проверили пороховую систему продувания.
+    src: 'Источник: Н. Черкашин. Хождение за три глубины — FLOT.com — https://flot.com/history/branches/sub/k278/index.php?print=Y'
+    stranica: статья
+    href: https://flot.com/history/branches/sub/k278/index.php?print=Y
+    otryvok: «Всплыли, точнее, вознеслись с глубины 800 метров за 30 секунд.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 13
+  - id: ns-0223-torpeda
+    summary: С глубины 800 метров «Комсомолец» выстрелил из торпедных аппаратов — и торпеда вышла
+    det:
+    - При всплытии с рекордной глубины лодка проверила торпедные аппараты учебными болванками.
+    src: 'Источник: К-278 «Комсомолец» — хроника, сайт Deepstorm.ru — https://www.deepstorm.ru/DeepStorm.files/45-92/nts/685/k-278/k-278.htm; Н. Черкашин. Хождение за три глубины — FLOT.com — https://flot.com/history/branches/sub/k278/index.php?print=Y'
+    stranica: статья
+    href: https://www.deepstorm.ru/DeepStorm.files/45-92/nts/685/k-278/k-278.htm
+    otryvok: «При всплытии на 800 метрах выполнила прострелку торпедных аппаратов болванками.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n11
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0223-hlobystov
+    summary: Рыбацкая плавбаза «Алексей Хлобыстов» примчалась на час раньше расчёта и подняла 30 живых
+    det:
+    - Рыбаки шли к месту беды на всех парах. Из воды подняли тридцать моряков.
+    src: 'Источник: «Комсомолец»: подводный Чернобыль — «Русская планета» — https://rusplt.ru/society/komsomolets-podvodnii-chernobil-s-5e8c3.html; Конец «Комсомольца». Как погибла лучшая советская подлодка — А. Сидорчик, «Аргументы и факты» — https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka'
+    stranica: статья
+    href: https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka
+    otryvok: «К этому времени на помощь «Комсомольцу» на всех парах шла плавбаза «Алексей Хлобыстов», которая должна была прибыть на место к 18:00.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n3
+    dlya_voprosa: false
+    n: 15
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-23-goskatalog-90897392.jpg
+      alt: 'Групповой чёрно-белый снимок: около семидесяти моряков, офицеры и матросы, у здания с решётками на окнах.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=69516072
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Экипаж подводной лодки К-278 «Комсомолец». Фотография хранится в музее «Радогощ».
+      credit: Музей «Радогощ», Госкаталог № 69248450
+      width: 1600
+      height: 874
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '90897392'
+      hranitel: Музей «Радогощ», Брянская область
+      podpis_chto: Фотография «Экипаж подводной лодки К-278 "Комсомолец"»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: дата не указана
+      simvolika_proverena: true
+      podlinnik:
+        gde: Музей «Радогощ», Брянская область
+        otkuda: https://goskatalog.ru/portal/#/collections?id=69516072
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: дата не указана
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 69248450
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 69248450
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=69516072
+      hint: 'Групповой чёрно-белый снимок: около семидесяти моряков, офицеры и матросы, у здания с решётками на окнах.'
+      celikom: true
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 1027 метров; 2 — из титана; 3 — «Варяга»; 4 — 40 минут; 5 — аппараты «Мир».'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: на какую глубину ушёл «Комсомолец» 4 августа 1985 года?'
+    o:
+    - 300 метров
+    - 600 метров
+    - 1027 метров
+    - 3000 метров
+    a: 2
+    e: 1027 метров — глубже не опускалась ни одна подводная лодка мира.
+  - q: Из чего был сделан корпус К-278?
+    o:
+    - Из стали
+    - Из титана
+    - Из алюминия
+    - Из меди
+    a: 1
+    e: Это первый в мире корпус атомной лодки целиком из титана.
+  - q: Какую песню запели моряки в ледяной воде?
+    o:
+    - «Катюшу»
+    - «Варяга»
+    - «Священную войну»
+    - «Яблочко»
+    a: 1
+    e: «Мы запели «Варяга», что дало нам ещё определённый заряд энергии», — вспоминал Юрий Парамонов.
+  - q: Сколько минут продержался в ледяной воде мичман Слюсаренко?
+    o:
+    - '5'
+    - '15'
+    - '40'
+    - '120'
+    a: 2
+    e: В такой воде человек живёт 15–20 минут, Слюсаренко продержался 40.
+  - q: Кто 68 раз спускался к лодке на дно?
+    o:
+    - Водолазы
+    - Аппараты «Мир»
+    - Батискаф «Триест»
+    - Роботы с берега
+    a: 1
+    e: Обитаемые аппараты «Мир-1» и «Мир-2» работали у лодки семь лет.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-23-goskatalog-22121732.jpg
+  alt: Двое в голубых комбинезонах готовят оранжевый аппарат на палубе судна.
+  data_source: https://goskatalog.ru/portal/#/collections?id=20997916
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Игорь Михальцев и Анатолий Сагалевич перед спуском аппарата «Мир», 1987 год. Снимок И. Ф. Макаренко, Музей Мирового океана.
+  credit: Музей Мирового океана, Госкаталог № 20868766
+  width: 800
+  height: 315
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '22121732'
+  hranitel: Музей Мирового океана, Калининград
+  podpis_chto: Негатив «Михальцев И. В. и Сагалевич А. М. перед спуском ПОА «Мир»», 14 рейс «АМК»
+  podpis_gde: палуба судна, 14 рейс «Академика Мстислава Келдыша»
+  podpis_kogda: '1987'
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей Мирового океана, Калининград
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20997916
+  svyashchennoe: false
+  prava:
+    avtor: Макаренко И. Ф.
+    god_sozdaniya: '1987'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 20868766
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 20868766
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20997916
+  hint: Двое в голубых комбинезонах готовят оранжевый аппарат на палубе судна.
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-23-goskatalog-21118958.jpg
+  alt: 'Подводная съёмка: манипулятор и трубы аппарата у тёмного дна в мутной воде.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=20273057
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Глубоководный обитаемый аппарат «Мир» под водой, 1992 год. Фотография из Политехнического музея.
+  credit: Политехнический музей, Госкаталог № 20133646
+  width: 216
+  height: 285
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '21118958'
+  hranitel: Политехнический музей, Москва
+  podpis_chto: Фотография цв. «Аппарат глубоководный обитаемый "Мир"»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: '1992'
+  simvolika_proverena: true
+  podlinnik:
+    gde: Политехнический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20273057
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1992'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 20133646
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 20133646
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20273057
+  hint: 'Подводная съёмка: манипулятор и трубы аппарата у тёмного дна в мутной воде.'
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-23-goskatalog-28637043.jpg
+  alt: Металлический глобус, над ним на дуге бело-красный подводный аппарат.
+  data_source: https://goskatalog.ru/portal/#/collections?id=25683595
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Сувенир «Глубоководный обитаемый аппарат "Мир" покоряет мир», 2005 год. Музей Мирового океана.
+  credit: Музей Мирового океана, Госкаталог № 25539799
+  width: 769
+  height: 800
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '28637043'
+  hranitel: Музей Мирового океана, Калининград
+  podpis_chto: Сувенир «Глубоководный обитаемый аппарат «Мир» покоряет мир»
+  podpis_gde: место изготовления не указано
+  podpis_kogda: '2005'
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей Мирового океана, Калининград
+    otkuda: https://goskatalog.ru/portal/#/collections?id=25683595
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '2005'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 25539799
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 25539799
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=25683595
+  hint: Металлический глобус, над ним на дуге бело-красный подводный аппарат.
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-23-goskatalog-2490817.jpg
+  alt: Белое научное судно «Академик Мстислав Келдыш» у причала рядом с высоким зданием.
+  data_source: https://goskatalog.ru/portal/#/collections?id=4337074
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Научно-исследовательское судно «Академик Мстислав Келдыш» у причала, 1981 год. Музей Мирового океана.
+  credit: Музей Мирового океана, Госкаталог № 4383347
+  width: 800
+  height: 550
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.15
+    y: 0.3
+    w: 0.75
+    h: 0.55
+  nomer_predmeta: net
+  nomer_snimka: '2490817'
+  hranitel: Музей Мирового океана, Калининград
+  podpis_chto: Научно-исследовательское судно «Академик Мстислав Келдыш» у причала
+  podpis_gde: место съёмки не указано
+  podpis_kogda: '1981'
+  simvolika_proverena: true
+  podlinnik:
+    gde: Музей Мирового океана, Калининград
+    otkuda: https://goskatalog.ru/portal/#/collections?id=4337074
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1981'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 4383347
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 4383347
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=4337074
+  hint: Белое научное судно «Академик Мстислав Келдыш» у причала рядом с высоким зданием.
+  celikom: true
+sources:
+- href: https://rg.ru/2020/08/04/apl-komsomolec-ustanovila-rekord-glubiny-pogruzheniia-35-let-nazad.html
+  title: АПЛ «Комсомолец» установила рекорд глубины погружения 35 лет назад — «Российская газета», 04.08.2020
+  note: к фактам 1, 10
+- href: https://opaplkomsomolec.ru/apl-k-278/
+  title: АПЛ К-278 — Общество памяти АПЛ «Комсомолец»
+  note: к фактам 1, 4
+- href: https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka
+  title: Конец «Комсомольца». Как погибла лучшая советская подлодка — А. Сидорчик, «Аргументы и факты»
+  note: к фактам 2, 3, 8, 15
+- href: https://rodina-history.ru/2019/04/07/rodina-podlodka-komsomolets.html
+  title: 'Мичман Виктор Слюсаренко: «Я всплыл с 1000 метров…» — журнал «Родина», № 4, 2019'
+  note: к фактам 2, 11
+- href: https://d-pankratov.ru/archives/646
+  title: Д. Панкратов. Гибель АПЛ К-278 «Комсомолец»
+  note: к фактам 4
+- href: https://flot.com/history/branches/sub/k278/index.php?print=Y
+  title: Н. Черкашин. Хождение за три глубины — FLOT.com
+  note: к фактам 5, 6, 12, 13, 14
+- href: https://tvspb.ru/news/2014/04/7/vyizhivshij-podvodnik-komsomoltsa-myi-zapeli-varyaga-eto-dalo-nam-zaryad-energii/
+  title: 'Выживший подводник «Комсомольца»: «Мы запели «Варяга», это дало нам заряд энергии» — телеканал «Санкт-Петербург», 07.04.2014'
+  note: к фактам 7
+- href: https://ria.ru/20090407/167349950.html
+  title: Гибель атомной подводной лодки К-278 «Комсомолец». Справка — РИА Новости, 07.04.2009
+  note: к фактам 8
+- href: https://www.vokrugsveta.ru/vs/article/897/
+  title: «Миры» у «Комсомольца» — журнал «Вокруг света»
+  note: к фактам 9
+- href: https://flot.com/history/interesting/sagalevich.htm
+  title: 'Анатолий Сагалевич: «Простых погружений не бывает…» — FLOT.com'
+  note: к фактам 9
+- href: https://www.deepstorm.ru/DeepStorm.files/45-92/nts/685/k-278/k-278.htm
+  title: К-278 «Комсомолец» — хроника, сайт Deepstorm.ru
+  note: к фактам 14
+- href: https://rusplt.ru/society/komsomolets-podvodnii-chernobil-s-5e8c3.html
+  title: '«Комсомолец»: подводный Чернобыль — «Русская планета»'
+  note: к фактам 15
+kuda:
+- lbl: Следующий день
+  main: true
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Подлодка К-278 «Комсомолец» — Музей стойкости и подвига «Русские не сдаются»
+    text: Экипаж боролся за лодку, пока она не ушла на дно — и не сдался
+  prev:
+    href: /muzei/ne-sdayutsya/den/02-22/
+    title: 22 февраля · Мать Мария (Скобцова)
+  next:
+    href: /muzei/ne-sdayutsya/den/02-24/
+    title: 24 февраля · Николай Островский
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: На какую глубину ушёл «Комсомолец» в 1985 году?
+  a: На 1027 метров — рекорд для подводных лодок
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0223-komsomolec
+data_sobytiya: '1989-04-07'
+data_uslovnaya: 23 февраля — день музея; событие — гибель К-278 «Комсомолец» 7 апреля 1989 года в Норвежском море
+chto_sluchilos: 7 апреля 1989 года на атомной подводной лодке К-278 «Комсомолец» в Норвежском море начался пожар. Экипаж шесть часов боролся за всплывшую лодку, пока она не ушла на дно. Из 69 человек живыми подняли 30.
+god: 1989
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- katastrofa
+- gibel
+gde_uvidet:
+- chto: Модель атомной подводной лодки пр. 685 К-278 «Комсомолец», 2002
+  muzej: Центральный военно-морской музей
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=9860261
+- chto: Фотография «Экипаж подводной лодки К-278 "Комсомолец"»
+  muzej: Музей «Радогощ»
+  gorod: Брянская область
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=69516072
+- chto: Негатив «Сагалевич А. М. перед спуском ПОА "Мир"», 1987
+  muzej: Музей Мирового океана
+  gorod: Калининград
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20997906
+chitat_dalshe:
+- nazvanie: Хождение за три глубины
+  gde: Н. Черкашин, FLOT.com
+  ssylka: https://flot.com/history/branches/sub/k278/index.php?print=Y
+- nazvanie: 'Мичман Виктор Слюсаренко: «Я всплыл с 1000 метров…»'
+  gde: журнал «Родина»
+  ssylka: https://rodina-history.ru/2019/04/07/rodina-podlodka-komsomolets.html
+- nazvanie: АПЛ К-278
+  gde: Общество памяти АПЛ «Комсомолец»
+  ssylka: https://opaplkomsomolec.ru/apl-k-278/
+- nazvanie: «Миры» у «Комсомольца»
+  gde: журнал «Вокруг света»
+  ssylka: https://www.vokrugsveta.ru/vs/article/897/
+istochniki:
+- id: n1
+  baza: periodika
+  nazvanie: АПЛ «Комсомолец» установила рекорд глубины погружения 35 лет назад — «Российская газета», 04.08.2020
+  ssylka: https://rg.ru/2020/08/04/apl-komsomolec-ustanovila-rekord-glubiny-pogruzheniia-35-let-nazad.html
+- id: n2
+  baza: sajt-organizacii
+  nazvanie: АПЛ К-278 — Общество памяти АПЛ «Комсомолец»
+  ssylka: https://opaplkomsomolec.ru/apl-k-278/
+- id: n3
+  baza: periodika
+  nazvanie: Конец «Комсомольца». Как погибла лучшая советская подлодка — А. Сидорчик, «Аргументы и факты»
+  ssylka: https://aif.ru/society/history/konec_komsomolca_kak_pogibla_luchshaya_sovetskaya_podlodka
+- id: n4
+  baza: periodika
+  nazvanie: 'Мичман Виктор Слюсаренко: «Я всплыл с 1000 метров…» — журнал «Родина», № 4, 2019'
+  ssylka: https://rodina-history.ru/2019/04/07/rodina-podlodka-komsomolets.html
+- id: n5
+  baza: sajt-organizacii
+  nazvanie: Д. Панкратов. Гибель АПЛ К-278 «Комсомолец»
+  ssylka: https://d-pankratov.ru/archives/646
+- id: n6
+  baza: kniga
+  nazvanie: Н. Черкашин. Хождение за три глубины — FLOT.com
+  ssylka: https://flot.com/history/branches/sub/k278/index.php?print=Y
+- id: n7
+  baza: periodika
+  nazvanie: 'Выживший подводник «Комсомольца»: «Мы запели «Варяга», это дало нам заряд энергии» — телеканал «Санкт-Петербург», 07.04.2014'
+  ssylka: https://tvspb.ru/news/2014/04/7/vyizhivshij-podvodnik-komsomoltsa-myi-zapeli-varyaga-eto-dalo-nam-zaryad-energii/
+- id: n8
+  baza: periodika
+  nazvanie: Гибель атомной подводной лодки К-278 «Комсомолец». Справка — РИА Новости, 07.04.2009
+  ssylka: https://ria.ru/20090407/167349950.html
+- id: n9
+  baza: periodika
+  nazvanie: «Миры» у «Комсомольца» — журнал «Вокруг света»
+  ssylka: https://www.vokrugsveta.ru/vs/article/897/
+- id: n10
+  baza: sajt-organizacii
+  nazvanie: 'Анатолий Сагалевич: «Простых погружений не бывает…» — FLOT.com'
+  ssylka: https://flot.com/history/interesting/sagalevich.htm
+- id: n11
+  baza: sajt-organizacii
+  nazvanie: К-278 «Комсомолец» — хроника, сайт Deepstorm.ru
+  ssylka: https://www.deepstorm.ru/DeepStorm.files/45-92/nts/685/k-278/k-278.htm
+- id: n12
+  baza: periodika
+  nazvanie: '«Комсомолец»: подводный Чернобыль — «Русская планета»'
+  ssylka: https://rusplt.ru/society/komsomolets-podvodnii-chernobil-s-5e8c3.html
+citaty: []
+velichina_chislo: 1027
+velichina_edinica: метров
+velichina_chto: глубина рекордного погружения К-278 4 августа 1985 года
+voinskaya_chast: Атомная подводная лодка К-278 «Комсомолец», Северный флот
+operaciya: net
+front: Северный флот, Норвежское море, 1989 год
+mesto_sobytiya:
+  nazvanie: Норвежское море, место гибели К-278
+  shirota: 73.72
+  dolgota: 13.27
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Модель атомной подводной лодки пр. 685 К-278 «Комсомолец», 2002 год
+- Центральный военно-морской музей
+slovar:
+- lyudi:ekipazh-k-278
+vizual:
+  imya: komsomolec-model
+  vid: predmet
+  kicker: Модель под лупой
+  h2: Модель К-278 «Комсомолец»
+  lead: 'Модель единственной лодки проекта 685 из Центрального военно-морского музея. Приблизь корпус: он целиком из титана — первый такой в мире.'
+audioguide:
+  audioSrc: audio-guide-komsomolec-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от рекордной глубины через пожар и ледяную воду — к «Мирам» на дне: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Рекорд
+  - t: 22
+    mark: 0:22
+    title: Пожар
+  - t: 44
+    mark: 0:44
+    title: Испенков и Ванин
+  - t: 66
+    mark: '1:06'
+    title: Ледяная вода
+  - t: 88
+    mark: '1:28'
+    title: «Миры»
+  transcript:
+  - 4 августа 1985 года атомная подводная лодка К-278 ушла на 1027 метров. Глубже не опускалась ни одна подводная лодка мира. Её корпус впервые в мире сделали целиком из титана.
+  - 7 апреля 1989 года в Норвежском море в седьмом отсеке начался пожар. Огонь разогнал отсек до тысячи градусов. Лодка всплыла, и экипаж шесть часов боролся за неё.
+  - Капитан третьего ранга Анатолий Испенков до последней минуты держал дизель, чтобы у товарищей были свет и время. Командир Евгений Ванин вернулся в тонущую лодку за людьми.
+  - Моряки ждали помощи в ледяной воде и запели «Варяга». Мичман Виктор Слюсаренко продержался в воде сорок минут. Плавбаза «Алексей Хлобыстов» подняла тридцать живых.
+  - Потом обитаемые аппараты «Мир» шестьдесят восемь раз спускались к лодке на глубину тысяча семьсот метров. Экипаж боролся за лодку, пока она не ушла на дно, и не сдался.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Пункт 48 (очередь 0, Р616): досье дня собирает машина до ИИ.
 
-Даёшь музей, дату ММ-ДД и (не обязательно) героев — id записей src/data/slovar.json. Машина собирает
+Даёшь музей, дату ММ-ДД и (не обязательно) героев — id записей src/data/slovar/. Машина собирает
 в один файл всё, что уже есть в наших базах по этой дате и этим героям, и печатает это помощнику:
 
   запись дня src/content/days/<музей>/ММ-ДД.json, утверждённый текст src/data/utverzhdeno/,
@@ -19,6 +19,8 @@
 """
 import argparse, glob, json, os, re, sys
 from datetime import date
+
+import slovar_dannye
 
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ZNANIYA = os.path.expanduser('~/workspace/knowledge')
@@ -52,7 +54,7 @@ def main():
     ap = argparse.ArgumentParser(description='Досье дня из наших баз — до ИИ (пункт 48).')
     ap.add_argument('muzei')
     ap.add_argument('den', help='ММ-ДД')
-    ap.add_argument('geroi', nargs='*', help='id записей src/data/slovar.json; без них — из slovar записи дня')
+    ap.add_argument('geroi', nargs='*', help='id записей src/data/slovar/; без них — из slovar записи дня')
     ap.add_argument('--v', help='записать в файл (не в src/, существующий не перезаписывается)')
     a = ap.parse_args()
 
@@ -68,7 +70,7 @@ def main():
         sys.exit(f'нет такого дня: {a.den}')
     m, k = a.muzei, a.den
     mk = f'{m}/{k}'
-    slovar = zagruzit('src/data/slovar.json')
+    slovar = slovar_dannye.chitat()
     out, net = [], []
 
     def razdel(z):
@@ -78,7 +80,7 @@ def main():
     geroi = a.geroi or [s for s in (den or {}).get('slovar', []) if s.split(':')[0] in slovar['_roli']['geroy']['tipy']]
     for g in geroi:
         if g not in slovar:
-            sys.exit(f'нет «{g}» в src/data/slovar.json')
+            sys.exit(f'нет «{g}» в src/data/slovar/')
 
     out.append(f'# Досье: {muzei[m]["title_ru"]}, {dd} {MESYACY[mm - 1]}')
     spisok = ', '.join(slovar[g]['nazvanie'] + f' ({g})' for g in geroi) or 'не заданы'

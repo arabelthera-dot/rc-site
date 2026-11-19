@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Чукотка",
+  "kratko": "Северо-восточный край России.",
+  "koordinaty": {
+    "shirota": 66.001,
+    "dolgota": 169.49,
+    "tochka": "середина Чукотского автономного округа",
+    "otkuda": "https://www.openstreetmap.org/relation/151231"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Чукотка"
+    }
+  ]
+}

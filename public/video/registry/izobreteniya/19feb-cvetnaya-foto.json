@@ -1,0 +1,32 @@
+{
+  "title": "История в 48 секунд",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto.mp4",
+    "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.9,
+    "mb": 14.1
+  },
+  "vertical": {
+    "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.9,
+    "mb": 13.8
+  },
+  "poster": {
+    "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/19feb-cvetnaya-foto/day-19feb-cvetnaya-foto-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-19feb-cvetnaya-foto-9x16-poster.jpg",
+    "v": 2
+  }
+}

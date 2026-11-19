@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Пункт 47 (очередь 0, Р616): заготовку файла дня делает машина — из записи словаря и даты.
 
-Даёшь музей, дату ММ-ДД и героя (id записи src/data/slovar.json) — машина печатает пустую запись дня
+Даёшь музей, дату ММ-ДД и героя (id записи src/data/slovar/) — машина печатает пустую запись дня
 в форме src/content/days/<музей>/ММ-ДД.json (поля и их порядок — src/data/forma-dnya.json, типы —
 src/lib/forma-dnya.mjs). Заполнено только то, что машина знает точно:
 
@@ -19,6 +19,8 @@ src/lib/forma-dnya.mjs). Заполнено только то, что машин
 """
 import argparse, glob, json, os, re, sys
 from datetime import date
+
+import slovar_dannye
 
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GRANICA_STILEJ = date(1918, 2, 14)  # с этого дня в России новый стиль (декрет СНК от 24.01.1918)
@@ -64,7 +66,7 @@ def main():
     ap = argparse.ArgumentParser(description='Заготовка записи дня из записи словаря и даты (пункт 47).')
     ap.add_argument('muzei')
     ap.add_argument('den', help='ММ-ДД')
-    ap.add_argument('geroy', help='id записи src/data/slovar.json, «tip:slug»')
+    ap.add_argument('geroy', help='id записи src/data/slovar/, «tip:slug»')
     ap.add_argument('--god', type=int, help='год события; дата события = год + ММ-ДД')
     ap.add_argument('--god-pokaza', type=int, help='год, в который день показывается')
     ap.add_argument('--v', help='записать в файл (не в src/, существующий не перезаписывается)')
@@ -79,9 +81,9 @@ def main():
         date(2028, *map(int, a.den.split('-')))  # 2028 — високосный, 02-29 законна
     except ValueError:
         sys.exit(f'нет такого дня: {a.den}')
-    slovar = zagruzit('src/data/slovar.json')
+    slovar = slovar_dannye.chitat()
     if a.geroy.startswith('_') or a.geroy not in slovar:
-        sys.exit(f'нет «{a.geroy}» в src/data/slovar.json — сначала запись словаря')
+        sys.exit(f'нет «{a.geroy}» в src/data/slovar/ — сначала запись словаря')
     tip, slug = a.geroy.split(':', 1)
     if tip not in slovar['_roli']['geroy']['tipy']:
         sys.exit(f'«{a.geroy}»: роль geroy только у {", ".join(slovar["_roli"]["geroy"]["tipy"])}')

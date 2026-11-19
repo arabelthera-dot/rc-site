@@ -1,0 +1,19 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Иван Хруцкий",
+  "pol": "m",
+  "kratko": "Живописец, мастер натюрморта.",
+  "normativ": {
+    "baza": "VIAF",
+    "id": "313570138",
+    "ssylka": "https://viaf.org/viaf/313570138/",
+    "poisk": "Хруцкий Иван",
+    "zagolovok": "Hrutskì, Ìvan Famič, 1810-1885"
+  },
+  "latinica": "Ivan Hrutski",
+  "latinica_iz": "viaf",
+  "gody": {
+    "rozhdenie": "1810",
+    "smert": "1885"
+  }
+}

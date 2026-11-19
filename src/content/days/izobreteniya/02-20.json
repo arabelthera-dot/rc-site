@@ -2,5 +2,71 @@
   "museum": "izobreteniya",
   "key": "02-20",
   "title": "Первая в мире модульная орбитальная станция «Мир»",
-  "hook": "Станцию «Мир» собирали на орбите по модулю, и пятнадцать лет полёта доказали: человек может жить в космосе годами"
+  "hook": "Станцию «Мир» собирали на орбите по модулю, и пятнадцать лет полёта доказали: человек может жить в космосе годами",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Мир",
+      "модульная орбитальная станция Мир",
+      "орбитальная"
+    ],
+    "kadry": [
+      {
+        "baza": "tretyakov",
+        "nazvanie": "Богоматерь Владимирская. Престол с орудиями Страстей. Двусторонняя икона",
+        "avtor": "автор не указан",
+        "stranica": "https://my.tretyakov.ru/app/masterpiece/9198",
+        "fayl": "https://cdn.tretyakov.ru/mytretyakov/2c/686def2578ab9b6fac2d09a674e90172/38121aeeeff806db30330557966e07eb.jpg",
+        "pometka_prav": "nekommercheskoe-s-ukazaniem",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Мир"
+      },
+      {
+        "baza": "ar_culture",
+        "nazvanie": "Миром",
+        "avtor": "Сидоров В.М.",
+        "stranica": "https://ar.culture.ru/ru/subject/mirom",
+        "fayl": "https://ar.culture.ru/attachments/attachment/original/5f5a2ce2d441302c48711c08-original.jpg",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Мир"
+      },
+      {
+        "baza": "ar_culture",
+        "nazvanie": "Мир",
+        "avtor": "Бурганов А.Н.",
+        "stranica": "https://ar.culture.ru/ru/subject/mir",
+        "fayl": "https://ar.culture.ru/attachments/attachment/original/6756cb9e4162b910a9bf22db-original.jpg",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Мир"
+      },
+      {
+        "baza": "ar_culture",
+        "nazvanie": "Два мира",
+        "avtor": "Пелевин В.Н.",
+        "stranica": "https://ar.culture.ru/ru/subject/dva-mira",
+        "fayl": "https://ar.culture.ru/attachments/attachment/original/5f112a26f54b8139518ae741-original.jpg",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Мир"
+      },
+      {
+        "baza": "ar_culture",
+        "nazvanie": "Мир Европе",
+        "avtor": "Менцов Н.",
+        "stranica": "https://ar.culture.ru/ru/subject/mir-evrope",
+        "fayl": "https://ar.culture.ru/attachments/attachment/original/5eb3d860b54e4a48b27f7b4f-original.JPG",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "по карточке",
+        "zapros": "Мир"
+      }
+    ]
+  }
 }

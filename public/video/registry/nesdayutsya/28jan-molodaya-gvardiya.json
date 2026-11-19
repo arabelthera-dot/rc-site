@@ -1,7 +1,6 @@
 {
   "title": "История в 42 секунды",
-  "intro": "Школьники, которые не выдали никого — даже под пытками",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 42696288918) из сценария days/ns28jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya.mp4",
     "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya.mp4",

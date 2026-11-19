@@ -83,10 +83,9 @@ video:
   pole: nesdayutsya/20jan-oktyabrskaya:horizontal.sec
   suffix: сек
   badge: 47 сек
-  intro: Продала всё и купила танк — за мужа
-  poster: /muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42038751204) из сценария days/ns20jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-20jan-oktyabrskaya.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Жена командира
@@ -412,15 +411,7 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-dubinin.html
-    title: 22 — Володя Дубинин
-    hook: "Стойкость ребёнка: пионер-разведчик партизанского отряда в Керчи."
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

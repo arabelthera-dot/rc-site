@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Витус Беринг",
+  "pol": "m",
+  "kratko": "Мореплаватель, начальник Камчатских экспедиций.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n50007501",
+    "ssylka": "https://id.loc.gov/authorities/names/n50007501.html",
+    "zagolovok": "Bering, Vitus Jonassen, 1681-1741"
+  },
+  "latinica": "Vitus Bering",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1681",
+    "smert": "1741"
+  }
+}

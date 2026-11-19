@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Константин Маковский",
+  "pol": "m",
+  "kratko": "Живописец, автор «Боярской свадьбы».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n93011871",
+    "ssylka": "https://id.loc.gov/authorities/names/n93011871.html",
+    "zagolovok": "Makovskiĭ, Konstantin Egorovich, 1839-1915"
+  },
+  "latinica": "Konstantin Makovsky",
+  "latinica_iz": "loc-istochnik",
+  "gody": {
+    "rozhdenie": "1839",
+    "smert": "1915"
+  }
+}

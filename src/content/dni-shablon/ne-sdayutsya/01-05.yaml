@@ -74,10 +74,9 @@ video:
   pole: nesdayutsya/05jan-brest:horizontal.sec
   suffix: сек
   badge: 59 сек
-  intro: «Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе
-  poster: /muzei/ne-sdayutsya/video/day-05jan-brest-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-05jan-brest.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41872718715) из сценария days/ns05jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-05jan-brest-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-05jan-brest.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Бой, который крепость приняла в первый час
@@ -407,15 +406,7 @@ sources:
   - html: С. С. Смирнов, «Брестская крепость» — документальная повесть.
 kuda:
   - lbl: Следующий день
-    href: podvig-osovets.html
-    title: 6 — Осовец, «атака мертвецов»
-    hook: Немцы бежали от тех, кто уже умер, — а они поднялись и пошли.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

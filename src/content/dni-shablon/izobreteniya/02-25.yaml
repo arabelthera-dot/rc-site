@@ -1,0 +1,855 @@
+muzei: izobreteniya
+key: 02-25
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0225-tokamak
+data_sobytiya: '1958-02-25'
+chto_sluchilos: В Москве, в Институте атомной энергии, работал первый в мире токамак Т-1 — машина, которая держит раскалённую плазму магнитным полем.
+god: 1958
+god_tochnost: okolo
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Деталь диафрагмы в форме дуги от установки «Т-3», 1960
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12710850
+- chto: Диагностический фланец установки «Т-3», 1960
+  muzej: Государственный центральный музей современной истории России
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=12711394
+- chto: Фотография установки «Токамак-6», 1969–1970
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=7724032
+chitat_dalshe:
+- nazvanie: доклад П. П. Хвостенко о токамаках
+  gde: НИЦ «Курчатовский институт»
+  ssylka: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+- nazvanie: «Укрощение плазмы»
+  gde: Вокруг света
+  ssylka: https://www.vokrugsveta.ru/vs/ukroshenie-plazmy-id583469/
+- nazvanie: статья о токамаке Т-3
+  gde: Научная Россия
+  ssylka: https://scientificrussia.ru/articles/tokamak-t-3-tretij-no-pervyj
+- nazvanie: «Не позволял душе лениться»
+  gde: Физфак МГУ, кафедра физики плазмы
+  ssylka: https://affp.phys.msu.ru/index.php/halloffame/artsimovich/artsimovich-article
+- nazvanie: '«От Ф-1 до токамака: девять дней из жизни академика Курчатова», 12.01.2023'
+  gde: Российская газета
+  ssylka: https://rg.ru/2023/01/12/ot-f-1-do-tokamaka-deviat-dnej-iz-zhizni-akademika-kurchatova.html
+istochniki:
+- id: hv
+  baza: sajt-organizacii
+  nazvanie: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
+  ssylka: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+- id: vs
+  baza: periodika
+  nazvanie: «Укрощение плазмы» — Вокруг света
+  ssylka: https://www.vokrugsveta.ru/vs/ukroshenie-plazmy-id583469/
+- id: nr
+  baza: periodika
+  nazvanie: статья о токамаке Т-3 — Научная Россия
+  ssylka: https://scientificrussia.ru/articles/tokamak-t-3-tretij-no-pervyj
+- id: msu
+  baza: sajt-organizacii
+  nazvanie: «Не позволял душе лениться» — Физфак МГУ, кафедра физики плазмы
+  ssylka: https://affp.phys.msu.ru/index.php/halloffame/artsimovich/artsimovich-article
+- id: rg
+  baza: periodika
+  nazvanie: '«От Ф-1 до токамака: девять дней из жизни академика Курчатова», 12.01.2023 — Российская газета'
+  ssylka: https://rg.ru/2023/01/12/ot-f-1-do-tokamaka-deviat-dnej-iz-zhizni-akademika-kurchatova.html
+- id: lenta
+  baza: periodika
+  nazvanie: статья о токамаке, 17.11.2024 — Лента.ру
+  ssylka: https://lenta.ru/articles/2024/11/17/tokamak/
+- id: ae
+  baza: periodika
+  nazvanie: новость 13.09.2022 — Атомная энергия 2.0
+  ssylka: https://www.atomic-energy.ru/news/2022/09/13/128170
+- id: gk-8239316
+  baza: goskatalog
+  nazvanie: Фотография «Академики И. В. Курчатов и Л. А. Арцимович (слева)», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=8239316
+- id: gk-7724032
+  baza: goskatalog
+  nazvanie: Фотография «Установка «Токамак-6» для магнитного удержания плазмы в Институте атомной энергии имени И. В. Курчатова», Государственный исторический музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=7724032
+- id: gk-62083170
+  baza: goskatalog
+  nazvanie: Фотография «Институт ВНИИЛ им. Ефремова. Токамак-15», Музейный центр «Площадь Мира» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=62083170
+- id: gk-62117692
+  baza: goskatalog
+  nazvanie: Фотография «Токамак-10» — крупнейшая энергетическая термоядерная установка, Музейный центр «Площадь Мира» — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=62117692
+- id: gk-12711394
+  baza: goskatalog
+  nazvanie: Деталь установки «Токамак Ц 3» («Т-3») — диагностический фланец (вводное устройство), Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=12711394
+- id: gk-8238664
+  baza: goskatalog
+  nazvanie: Фотография «Ф. Жолио-Кюри, И. В. Курчатов, Д. В. Скобельцын, Л. А. Арцимович, А. И. Алиханов», Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=8238664
+- id: gk-12710850
+  baza: goskatalog
+  nazvanie: Деталь диафрагмы в форме дуги от установки «Токамак Ц 3» («Т-3»), Государственный центральный музей современной истории России — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=12710850
+citaty: []
+velichina_chislo: 100
+velichina_edinica: миллионов градусов
+velichina_chto: до стольких первым в мире разогрел плазму наш Т-10
+etiketka_oblozhki:
+- Фотография. Академики И. В. Курчатов и Л. А. Арцимович, 1958–1959
+- Государственный центральный музей современной истории России
+slovar:
+- mesto:moskva
+head:
+  title: Первый в мире токамак Т-1 · Л. А. Арцимович, 1958 — Музей «Что изобрели русские первыми в мире»
+  description: 'Первый в мире токамак построили в Москве: слово «токамак» стало мировым, англичане проверили наши цифры своими приборами, а американцы скопировали советскую машину.'
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-25/
+  sobytie: Первый в мире токамак Т-1
+  god: '1958'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Первый в мире токамак Т-1 · Л. А. Арцимович, 1958
+    description: 'Первый в мире токамак построили в Москве: слово «токамак» стало мировым, англичане проверили наши цифры своими приборами, а американцы скопировали советскую машину.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-25/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-25-goskatalog-8239316.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Первый в мире токамак Т-1 · Л. А. Арцимович, 1958
+    description: 'Первый в мире токамак построили в Москве: слово «токамак» стало мировым, англичане проверили наши цифры своими приборами, а американцы скопировали советскую машину.'
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-25/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-25-goskatalog-8239316.jpg
+oblozhka: &id001
+  src: /muzei/izobreteniya/img/02-25-goskatalog-8239316.jpg
+  glavnoe_na_kartinke:
+    x: 0.2
+    y: 0.15
+    w: 0.6
+    h: 0.75
+  width: 800
+  height: 596
+  alt: 'Старая фотография: двое мужчин в пальто сидят на скамейке в зимнем парке, один в шляпе, другой с бородой, в меховой шапке и с тростью'
+  data_source: https://goskatalog.ru/portal/#/collections?id=8239316
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+  podpis: Фотография «Академики И. В. Курчатов и Л. А. Арцимович (слева)», 1958–1959. Хранит Государственный центральный музей современной истории России.
+  credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 8129630.'
+  hint: Фото · Курчатов и Арцимович
+  vid: foto
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: 1958–1959
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: 1958–1959
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=8239316
+  nomer_predmeta: '8129630'
+  nomer_snimka: net
+  hranitel: Государственный центральный музей современной истории России
+  podlinnik:
+    gde: Государственный центральный музей современной истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=8239316
+  svyashchennoe: false
+  podpis_chto: Фотография «Академики И. В. Курчатов и Л. А. Арцимович (слева)»
+  podpis_gde: Москва
+  podpis_kogda: 1958–1959
+  pometka_prav: citirovanie-1274
+kroshka: 25 февраля · Токамак
+lead:
+  data: 1958 · Москва
+  privyazka: 25 февраля — день музея; в 1958 году в Москве уже работал первый в мире токамак Т-1.
+  kto: Лев Арцимович, физик
+  h1: Первый в мире токамак Т-1 · 1958
+  hook: 'Слово «токамак» во всех языках мира русское: магнитную бутылку для звезды построили в Москве'
+stamp:
+- v: '1969'
+  k: до этого года токамаки строили только у нас
+- v: '200'
+  k: примерно столько токамаков сегодня в мире
+- v: 100 млн
+  k: градусов — рекорд нашего Т-10
+- v: 10 млн
+  k: градусов — Т-3, в десять раз горячее соперников
+daynav:
+- id: story
+  label: Токамак
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-tokamak-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу токамака: от рекорда Т-3 через проверку англичан к слову, которое знает весь мир.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Только у нас
+  - t: 35
+    mark: 0:35
+    title: Проверка из Англии
+  - t: 70
+    mark: '1:10'
+    title: Нейтроны отражались
+  - t: 105
+    mark: '1:45'
+    title: Русское слово
+  transcript:
+  - До 1969 года токамаки в мире строили только в одной стране — у нас. Т-3 нагрел плазму до десяти миллионов градусов — в десять раз горячее лучших машин соперников.
+  - Англичане не поверили нашим цифрам, привезли в Москву свои приборы — и намерили ещё больше. Проверив нас, американцы бросили свои установки и построили точную копию советской.
+  - 'США объявили о термоядерной реакции — Арцимович доказал: нейтроны просто отражались от предметов. В разгар холодной войны губернатор Техаса сделал Арцимовича почётным гражданином штата.'
+  - «Токамак» — русское слово, и так эту машину называют на всех языках мира. Сегодня в мире около двухсот токамаков — и лишь несколько машин другой схемы.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Токамак
+  h2: Как Москва построила магнитную бутылку для звезды
+  udary:
+  - summary: Англичане проверили
+    det:
+    - Англичане не поверили нашим цифрам, привезли в Москву свои приборы — и намерили ещё больше
+    src: 'Источник: Вокруг света, «Укрощение плазмы»'
+  - summary: Американцы скопировали
+    det:
+    - Проверив нас, американцы бросили свои установки и построили точную копию советской
+    src: 'Источник: Вокруг света, «Укрощение плазмы»'
+  - summary: Слово для всего мира
+    det:
+    - «Токамак» — русское слово, и так эту машину называют на всех языках мира
+    src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что сделали
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
+    otryvok: До 1969 года токамаки в мире строили только в одной стране — у нас
+    stranica: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
+    href: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+    pometka: документ
+    id: tolko-u-nas
+    istochnik: hv
+    dlya_voprosa: true
+    otvet: '1969'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: Вокруг света, «Укрощение плазмы»'
+    otryvok: Англичане не поверили нашим цифрам, привезли в Москву свои приборы — и намерили ещё больше
+    stranica: «Укрощение плазмы» — Вокруг света
+    href: https://www.vokrugsveta.ru/vs/ukroshenie-plazmy-id583469/
+    pometka: документ
+    id: anglichane-proverili
+    istochnik: vs
+    dlya_voprosa: false
+  - n: 3
+    sravnenie: net
+    src: 'Источник: Вокруг света, «Укрощение плазмы»'
+    otryvok: Проверив нас, американцы бросили свои установки и построили точную копию советской
+    stranica: «Укрощение плазмы» — Вокруг света
+    href: https://www.vokrugsveta.ru/vs/ukroshenie-plazmy-id583469/
+    pometka: документ
+    id: kopiya-v-ssha
+    istochnik: vs
+    dlya_voprosa: false
+  - n: 4
+    sravnenie: net
+    kadr: &id002
+      src: /muzei/izobreteniya/img/02-25-goskatalog-7724032.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.8
+        h: 0.8
+      width: 800
+      height: 614
+      alt: 'Старая фотография: круглая установка-бублик в обмотках посреди большого зала с пультами'
+      data_source: https://goskatalog.ru/portal/#/collections?id=7724032
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+      podpis: Фотография «Установка «Токамак-6» для магнитного удержания плазмы в Институте атомной энергии имени И. В. Курчатова», 1969–1970. Хранит Государственный исторический музей.
+      credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 7599603.'
+      hint: Фото · Токамак-6
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: 1969–1970
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: 1969–1970
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=7724032
+      nomer_predmeta: '7599603'
+      nomer_snimka: net
+      hranitel: Государственный исторический музей
+      podlinnik:
+        gde: Государственный исторический музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=7724032
+      svyashchennoe: false
+      podpis_chto: Фотография «Установка «Токамак-6» для магнитного удержания плазмы в Институте атомной энергии имени И. В. Курчатова»
+      podpis_gde: Москва
+      podpis_kogda: 1969–1970
+      pometka_prav: citirovanie-1274
+    src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
+    otryvok: «Токамак» — русское слово, и так эту машину называют на всех языках мира
+    stranica: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
+    href: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+    pometka: документ
+    id: russkoe-slovo
+    istochnik: hv
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    src: 'Источник: Физфак МГУ, кафедра физики плазмы, «Не позволял душе лениться»'
+    otryvok: В разгар холодной войны губернатор Техаса сделал Арцимовича почётным гражданином штата
+    stranica: «Не позволял душе лениться» — Физфак МГУ, кафедра физики плазмы
+    href: https://affp.phys.msu.ru/index.php/halloffame/artsimovich/artsimovich-article
+    pometka: документ
+    id: pochetnyj-tehasec
+    istochnik: msu
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: Физфак МГУ, кафедра физики плазмы, «Не позволял душе лениться»'
+    otryvok: 'США объявили о термоядерной реакции — Арцимович доказал: нейтроны просто отражались от предметов'
+    stranica: «Не позволял душе лениться» — Физфак МГУ, кафедра физики плазмы
+    href: https://affp.phys.msu.ru/index.php/halloffame/artsimovich/artsimovich-article
+    pometka: документ
+    id: nejtrony-otrazhalis
+    istochnik: msu
+    dlya_voprosa: false
+  - n: 7
+    sravnenie: net
+    kadr: &id003
+      src: /muzei/izobreteniya/img/02-25-goskatalog-62083170.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      width: 598
+      height: 800
+      alt: 'Рисунок в разрезе: огромная установка с кольцевыми магнитами вокруг камеры, сверху и по бокам трубы и подводы'
+      data_source: https://goskatalog.ru/portal/#/collections?id=62083170
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музейный центр «Площадь Мира» · Госкаталог
+      podpis: Фотография «Институт ВНИИЛ им. Ефремова. Токамак-15», вторая половина XX века. Хранит Музейный центр «Площадь Мира».
+      credit: 'Хранится: Музейный центр «Площадь Мира». Госкаталог музейного фонда РФ, № 61786916.'
+      hint: Фото · Токамак-15
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: вторая половина XX века
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: вторая половина XX века
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=62083170
+      nomer_predmeta: '61786916'
+      nomer_snimka: net
+      hranitel: Музейный центр «Площадь Мира»
+      podlinnik:
+        gde: Музейный центр «Площадь Мира»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=62083170
+      svyashchennoe: false
+      podpis_chto: Фотография «Институт ВНИИЛ им. Ефремова. Токамак-15»
+      podpis_gde: Ленинград
+      podpis_kogda: вторая половина XX века
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Вокруг света, «Укрощение плазмы»'
+    otryvok: Сегодня в мире около 200 токамаков — и лишь несколько машин другой схемы
+    stranica: «Укрощение плазмы» — Вокруг света
+    href: https://www.vokrugsveta.ru/vs/ukroshenie-plazmy-id583469/
+    pometka: документ
+    id: 200-tokamakov
+    istochnik: vs
+    dlya_voprosa: true
+    otvet: '200'
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    kadr: &id004
+      src: /muzei/izobreteniya/img/02-25-goskatalog-62117692.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.1
+        w: 0.9
+        h: 0.8
+      width: 790
+      height: 800
+      alt: 'Цветная фотография: исследователь в белом халате на галерее над огромной установкой, обвитой трубами и кабелями'
+      data_source: https://goskatalog.ru/portal/#/collections?id=62117692
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Музейный центр «Площадь Мира» · Госкаталог
+      podpis: Фотография «Токамак-10» — крупнейшая энергетическая термоядерная установка, 1986. Хранит Музейный центр «Площадь Мира».
+      credit: 'Хранится: Музейный центр «Площадь Мира». Госкаталог музейного фонда РФ, № 61821078.'
+      hint: Фото · Токамак-10
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1986'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1986'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=62117692
+      nomer_predmeta: '61821078'
+      nomer_snimka: net
+      hranitel: Музейный центр «Площадь Мира»
+      podlinnik:
+        gde: Музейный центр «Площадь Мира»
+        otkuda: https://goskatalog.ru/portal/#/collections?id=62117692
+      svyashchennoe: false
+      podpis_chto: Фотография «Токамак-10» — крупнейшая энергетическая термоядерная установка
+      podpis_gde: Москва
+      podpis_kogda: '1986'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Лента.ру, статья о токамаке, 17.11.2024'
+    otryvok: Наш Т-10 первым в мире разогрел плазму до 100 млн градусов — в 6 с лишним раз горячее центра Солнца
+    stranica: статья о токамаке, 17.11.2024 — Лента.ру
+    href: https://lenta.ru/articles/2024/11/17/tokamak/
+    pometka: документ
+    id: t10-100-mln
+    istochnik: lenta
+    dlya_voprosa: true
+    otvet: '100'
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    kadr: &id005
+      src: /muzei/izobreteniya/img/02-25-goskatalog-12711394.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.05
+        w: 0.8
+        h: 0.9
+      width: 543
+      height: 800
+      alt: Металлический фланец с пучком медных трубок, изогнутых волной
+      data_source: https://goskatalog.ru/portal/#/collections?id=12711394
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Деталь установки «Токамак Ц 3» («Т-3») — диагностический фланец (вводное устройство), 1960. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 12591270.'
+      hint: Предмет · фланец Т-3
+      vid: predmet
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: '1960'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: '1960'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=12711394
+      nomer_predmeta: '12591270'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=12711394
+      svyashchennoe: false
+      podpis_chto: Деталь установки «Токамак Ц 3» («Т-3») — диагностический фланец (вводное устройство)
+      podpis_gde: Москва
+      podpis_kogda: '1960'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Научная Россия, статья о токамаке Т-3'
+    otryvok: Т-3 нагрел плазму до 10 млн градусов — в десять раз горячее лучших машин соперников
+    stranica: статья о токамаке Т-3 — Научная Россия
+    href: https://scientificrussia.ru/articles/tokamak-t-3-tretij-no-pervyj
+    pometka: документ
+    id: t3-10-mln
+    istochnik: nr
+    dlya_voprosa: true
+    otvet: '10'
+    otvet_edinstvennyj: true
+  - n: 10
+    sravnenie: net
+    src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
+    otryvok: Первый в мире токамак на сверхпроводящих магнитах — наш Т-7; потом его передали Китаю
+    stranica: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
+    href: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+    pometka: документ
+    id: t7-sverhprovodyashchij
+    istochnik: hv
+    dlya_voprosa: true
+    otvet: Т-7
+    otvet_edinstvennyj: true
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — о плазме и мировом реакторе
+  udary:
+  - n: 11
+    sravnenie: net
+    kadr: &id006
+      src: /muzei/izobreteniya/img/02-25-goskatalog-8238664.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.15
+        w: 0.9
+        h: 0.75
+      width: 800
+      height: 593
+      alt: 'Старая фотография: пятеро мужчин в пальто стоят в ряд на дорожке среди деревьев'
+      data_source: https://goskatalog.ru/portal/#/collections?id=8238664
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+      podpis: Фотография «Ф. Жолио-Кюри, И. В. Курчатов, Д. В. Скобельцын, Л. А. Арцимович, А. И. Алиханов», май 1958. Хранит Государственный центральный музей современной истории России.
+      credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 8129939.'
+      hint: Фото · академики, 1958
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: май 1958
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: май 1958
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=8238664
+      nomer_predmeta: '8129939'
+      nomer_snimka: net
+      hranitel: Государственный центральный музей современной истории России
+      podlinnik:
+        gde: Государственный центральный музей современной истории России
+        otkuda: https://goskatalog.ru/portal/#/collections?id=8238664
+      svyashchennoe: false
+      podpis_chto: Фотография «Ф. Жолио-Кюри, И. В. Курчатов, Д. В. Скобельцын, Л. А. Арцимович, А. И. Алиханов»
+      podpis_gde: Москва
+      podpis_kogda: май 1958
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Российская газета, «От Ф-1 до токамака: девять дней из жизни академика Курчатова», 12.01.2023'
+    otryvok: Газеты Англии ждали, что Курчатов будет «выкачивать информацию», а он сам раскрыл наши работы
+    stranica: '«От Ф-1 до токамака: девять дней из жизни академика Курчатова», 12.01.2023 — Российская газета'
+    href: https://rg.ru/2023/01/12/ot-f-1-do-tokamaka-deviat-dnej-iz-zhizni-akademika-kurchatova.html
+    pometka: документ
+    id: kurchatov-raskryl
+    istochnik: rg
+    dlya_voprosa: false
+  - n: 12
+    sravnenie: net
+    src: 'Источник: Вокруг света, «Укрощение плазмы»'
+    otryvok: В 1951 году на термоядерную электростанцию дали всего два года
+    stranica: «Укрощение плазмы» — Вокруг света
+    href: https://www.vokrugsveta.ru/vs/ukroshenie-plazmy-id583469/
+    pometka: документ
+    id: dva-goda
+    istochnik: vs
+    dlya_voprosa: true
+    otvet: '2'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
+    otryvok: В 1969 году наш Т-3 первым в мире поймал нейтроны настоящего термоядерного синтеза
+    stranica: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
+    href: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+    pometka: документ
+    id: t3-nejtrony
+    istochnik: hv
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    src: 'Источник: НИЦ «Курчатовский институт», доклад П. П. Хвостенко о токамаках'
+    otryvok: Форму плазмы, по которой строят мировой реактор ИТЭР, нашли на наших Т-8 и Т-9 в 1972 году
+    stranica: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
+    href: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+    pometka: документ
+    id: forma-dlya-iter
+    istochnik: hv
+    dlya_voprosa: false
+  - n: 15
+    sravnenie: net
+    src: 'Источник: Атомная энергия 2.0, новость 13.09.2022'
+    otryvok: Треть СВЧ-нагревателей плазмы для мирового ИТЭР — из Нижнего Новгорода; без них реактор не зажечь
+    stranica: новость 13.09.2022 — Атомная энергия 2.0
+    href: https://www.atomic-energy.ru/news/2022/09/13/128170
+    pometka: документ
+    id: nagrevateli-iter
+    istochnik: ae
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории токамака — своё место: градусы, годы и машины.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: mir
+      nazvanie: Столько токамаков сегодня в мире
+      verno_ru: Сегодня в мире около 200 токамаков — и лишь несколько машин другой схемы
+    - kod: t10
+      nazvanie: До стольких градусов первым в мире разогрел плазму Т-10
+      verno_ru: Наш Т-10 первым в мире разогрел плазму до 100 млн градусов — в 6 с лишним раз горячее центра Солнца
+    - kod: t3
+      nazvanie: До стольких градусов нагрел плазму Т-3
+      verno_ru: Т-3 нагрел плазму до 10 млн градусов — в десять раз горячее лучших машин соперников
+    - kod: srok
+      nazvanie: Столько лет в 1951 году дали на термоядерную электростанцию
+      verno_ru: В 1951 году на термоядерную электростанцию дали всего два года
+    podpisi:
+    - kod: n200
+      tekst: '200'
+      mesto: mir
+      mimo_ru: Около 200 — столько токамаков сегодня в мире.
+    - kod: n100
+      tekst: 100 млн °
+      mesto: t10
+      mimo_ru: 100 млн градусов — рекорд Т-10.
+    - kod: n10
+      tekst: 10 млн °
+      mesto: t3
+      mimo_ru: 10 млн градусов — плазма Т-3.
+    - kod: n2
+      tekst: 2 года
+      mesto: srok
+      mimo_ru: 2 года — столько дали в 1951 году на термоядерную электростанцию.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — около 200 токамаков мира, 100 млн градусов Т-10, 10 млн градусов Т-3 и два года срока 1951-го.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: около 200 — токамаки мира, 100 млн градусов — Т-10, 10 млн градусов — Т-3, 2 года — срок 1951 года.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: первый в мире токамак Т-1 построили в Москве. До 1969 года токамаки в мире строили только в одной стране — у нас.'
+  net: 'Как это работало дальше: форму плазмы, по которой строят мировой реактор ИТЭР, нашли на наших Т-8 и Т-9 в 1972 году.'
+  kolonki:
+  - Машина
+  - Что сделала первой
+  - Где
+  stroki:
+  - - Т-1
+    - первый в мире токамак
+    - Москва
+  - - Т-3
+    - первым в мире поймал нейтроны настоящего термоядерного синтеза, 1969
+    - Москва
+  - - Т-7
+    - первый в мире токамак на сверхпроводящих магнитах
+    - Москва
+  - - Т-10
+    - первым в мире разогрел плазму до 100 млн градусов
+    - Москва
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: около 200; 100 млн градусов; в десять раз; до 1969 года; Т-7.'
+  ball: 8
+  voprosy:
+  - q: Сколько токамаков сегодня в мире?
+    o:
+    - около 20
+    - около 200
+    - около 2000
+    a: 1
+    e: Сегодня в мире около 200 токамаков — и лишь несколько машин другой схемы
+  - q: До скольких градусов первым в мире разогрел плазму наш Т-10?
+    o:
+    - 1 млн
+    - 10 млн
+    - 100 млн
+    a: 2
+    e: Наш Т-10 первым в мире разогрел плазму до 100 млн градусов — в 6 с лишним раз горячее центра Солнца
+  - q: Во сколько раз плазма Т-3 была горячее, чем у лучших машин соперников?
+    o:
+    - в два
+    - в десять
+    - в сто
+    a: 1
+    e: Т-3 нагрел плазму до 10 млн градусов — в десять раз горячее лучших машин соперников
+  - q: До какого года токамаки в мире строили только у нас?
+    o:
+    - '1959'
+    - '1969'
+    - '1989'
+    a: 1
+    e: До 1969 года токамаки в мире строили только в одной стране — у нас
+  - q: Какой наш токамак первым в мире получил сверхпроводящие магниты?
+    o:
+    - Т-1
+    - Т-7
+    - Т-10
+    a: 1
+    e: Первый в мире токамак на сверхпроводящих магнитах — наш Т-7; потом его передали Китаю
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал токамака.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-25-goskatalog-12710850.jpg
+  glavnoe_na_kartinke:
+    x: 0.02
+    y: 0.05
+    w: 0.96
+    h: 0.9
+  width: 800
+  height: 284
+  alt: Металлическая деталь-дуга с рядом блестящих пластин и двумя стержнями по концам
+  data_source: https://goskatalog.ru/portal/#/collections?id=12710850
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный центральный музей современной истории России · Госкаталог
+  podpis: Деталь диафрагмы в форме дуги от установки «Токамак Ц 3» («Т-3»), 1960. Хранит Государственный центральный музей современной истории России.
+  credit: 'Хранится: Государственный центральный музей современной истории России. Госкаталог музейного фонда РФ, № 12591555.'
+  hint: Предмет · диафрагма Т-3
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: '1960'
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: '1960'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=12710850
+  nomer_predmeta: '12591555'
+  nomer_snimka: net
+  hranitel: Государственный центральный музей современной истории России
+  podlinnik:
+    gde: Государственный центральный музей современной истории России
+    otkuda: https://goskatalog.ru/portal/#/collections?id=12710850
+  svyashchennoe: false
+  podpis_chto: Деталь диафрагмы в форме дуги от установки «Токамак Ц 3» («Т-3»)
+  podpis_gde: Москва
+  podpis_kogda: '1960'
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+  title: доклад П. П. Хвостенко о токамаках — НИЦ «Курчатовский институт»
+  note: факты дня
+- href: https://www.vokrugsveta.ru/vs/ukroshenie-plazmy-id583469/
+  title: «Укрощение плазмы» — Вокруг света
+  note: факты дня
+- href: https://scientificrussia.ru/articles/tokamak-t-3-tretij-no-pervyj
+  title: статья о токамаке Т-3 — Научная Россия
+  note: факты дня
+- href: https://affp.phys.msu.ru/index.php/halloffame/artsimovich/artsimovich-article
+  title: «Не позволял душе лениться» — Физфак МГУ, кафедра физики плазмы
+  note: факты дня
+- href: https://rg.ru/2023/01/12/ot-f-1-do-tokamaka-deviat-dnej-iz-zhizni-akademika-kurchatova.html
+  title: '«От Ф-1 до токамака: девять дней из жизни академика Курчатова», 12.01.2023 — Российская газета'
+  note: факты дня
+- href: https://lenta.ru/articles/2024/11/17/tokamak/
+  title: статья о токамаке, 17.11.2024 — Лента.ру
+  note: факты дня
+- href: https://www.atomic-energy.ru/news/2022/09/13/128170
+  title: новость 13.09.2022 — Атомная энергия 2.0
+  note: факты дня
+kuda:
+- lbl: Следующий день
+  main: true
+- lbl: Предыдущий день
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Начальник термоядерной лаборатории
+  - - 70
+    - Укротитель плазмы
+  - - 40
+    - Лаборант
+  - - 0
+    - Гость дня
+return:
+  q: Во сколько раз горячее центра Солнца разогрел плазму наш Т-10?
+  a: Наш Т-10 первым в мире разогрел плазму до 100 млн градусов — в 6 с лишним раз горячее центра Солнца
+  src: Лента.ру, lenta.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-25-tokamak:claim-1958
+  ours:
+    kind: publication
+    title: доклад П. П. Хвостенко о токамаках
+    date: '1958-02-25'
+    holder: НИЦ «Курчатовский институт»
+    source_url: https://fusion.rosatom.ru/upload/iblock/6e8/6e85516e722ddca77d214616f63d3884.pdf
+podskazki_igry:
+- Около 200 — это токамаки мира
+- 100 млн градусов — это Т-10
+- 2 года — срок 1951 года
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Москва, Курчатовский институт
+  shirota: 55.8007
+  dolgota: 37.4769
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Камеру-бублик наполняют водородом
+- Ток в газе разогревает его до миллионов градусов — газ становится плазмой
+- Кольцевые магниты держат плазму полем и не дают ей коснуться стенок
+- В горячей плазме ядра сливаются — и выделяется энергия
+data_uslovnaya: 25 февраля — день музея; в 1958 году в Москве уже работал первый в мире токамак Т-1.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/25feb-tokamak
+  format: horizontal
+  pole: izobreteniya/25feb-tokamak:horizontal.sec
+  suffix: сек
+  badge: 45 сек
+  poster: video/day-25feb-tokamak-poster.jpg
+  mp4: video/day-25feb-tokamak.mp4
+  note: Закадровый текст озвучен синтезом речи.

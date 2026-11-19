@@ -61,7 +61,7 @@ jobs:
                 | "\(.number) \(.headRefName) \([.labels[].name] | index("konflikt") != null)"' > "$RUNNER_TEMP/dirty"
           cat "$RUNNER_TEMP/dirty"
           [ -s "$RUNNER_TEMP/dirty" ] && echo "est=1" >> "$GITHUB_OUTPUT" || echo "Заявок с конфликтом нет."
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         if: steps.dirty.outputs.est == '1'
         with:
           fetch-depth: 0

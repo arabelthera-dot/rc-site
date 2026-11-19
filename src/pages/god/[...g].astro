@@ -1,0 +1,51 @@
+---
+// Страницы года (п.497, Р745): /god/ — все годы, /god/<ГГГГ>/ — все готовые дни всех музеев с этим годом события.
+// Дни и год — src/lib/vremya.mjs (один источник с «Этим днём», src/lib/etot-den.mjs). Флаг выключен (vremyaOn) —
+// страниц нет. Вид — public/assets/rc-etot-den.css (карточки узла даты), как у /tema/.
+import Base from '../../layouts/Base.astro';
+import InlineCss from '../../components/InlineCss.astro';
+import { vremyaOn, dniSGodom, gody, adresGoda, adresVeka, nazvanieVeka, vekGoda } from '../../lib/vremya.mjs';
+import { adresDnya, kogda } from '../../lib/etot-den.mjs';
+import { plural } from '../../lib/kalendar';
+export function getStaticPaths() {
+  if (!vremyaOn()) return [];
+  const vse = gody();
+  return [{ params: { g: undefined }, props: { vse } }, ...vse.map((g) => ({ params: { g: String(g) }, props: { g, vse } }))];
+}
+const { g, vse } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const src = (s: string) => (/^https?:/.test(s) ? s : `${base}${s.replace(/^\//, '')}`);
+const dni = g ? dniSGodom().filter((d: any) => d.god === g) : [];
+const muzeev = new Set(dni.map((d: any) => d.museum)).size;
+const pervaya = dni.find((d: any) => d.img);
+const skolko = (g: number) => dniSGodom().filter((d: any) => d.god === g).length;
+---
+{g ? (
+<Base title={`${g} год во всех музеях · Русская цивилизация`} description={`Что было в ${g} году: дни музеев «Русской цивилизации».`} schema="page" image={pervaya && src(pervaya.img)} crumbs={[{ href: `${base}god/`, label: 'Годы' }, { label: `${g}` }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>{g} год</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">{dni.length} {plural(dni.length, 'день', 'дня', 'дней')} в {muzeev} {plural(muzeev, 'музее', 'музеях', 'музеях')} портала. <a href={adresVeka(base, vekGoda(g))}>{nazvanieVeka(vekGoda(g))}</a></p>
+    <ul class="rc-uzel-list">
+      {dni.map((d: any) => (
+        <li><a class="rc-uzel-card" href={adresDnya(base, d.museum, d.key)}>
+          {d.img && <img src={src(d.img)} alt={d.alt ?? ''} loading="lazy" decoding="async" width="640" height="400" />}
+          <span class="rc-uzel-body"><span class="rc-uzel-muzey">{d.museumTitle} · {kogda(d.key)}</span><span class="rc-uzel-title">{d.title}</span>{d.hook && <span class="rc-uzel-hook">{d.hook}</span>}</span>
+        </a></li>))}
+    </ul>
+    <nav class="rc-uzel-nav" aria-label="Другие годы"><a href={`${base}god/`}>Все годы</a><a href={`${base}vek/`}>Все века</a></nav>
+  </div>
+</Base>
+) : (
+<Base title="Годы во всех музеях · Русская цивилизация" description="Годы событий в музеях «Русской цивилизации»: что было в каждом году." schema="page" crumbs={[{ label: 'Годы' }]}>
+  <Fragment slot="head"><InlineCss file="rc-etot-den.css" /></Fragment>
+  <header slot="header"><h1>Годы во всех музеях</h1></header>
+  <div class="rc-uzel">
+    <p class="rc-uzel-lead">Один год — дни из разных музеев портала.</p>
+    <ul class="rc-uzel-daty">
+      {vse.map((x: number) => (<li><a href={adresGoda(base, x)}>{x}</a> <span>{skolko(x)}</span></li>))}
+    </ul>
+    <nav class="rc-uzel-nav" aria-label="Века"><a href={`${base}vek/`}>Все века</a></nav>
+  </div>
+</Base>
+)}

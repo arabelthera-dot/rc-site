@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Константин Юон",
+  "pol": "m",
+  "kratko": "Живописец, пейзажист русской провинции.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n83231112",
+    "ssylka": "https://id.loc.gov/authorities/names/n83231112.html",
+    "zagolovok": "I︠U︡on, Konstantin Fedorovich, 1875-1958"
+  },
+  "latinica": "Konstantin Yuon",
+  "latinica_iz": "loc-variant",
+  "gody": {
+    "rozhdenie": "1875",
+    "smert": "1958"
+  }
+}

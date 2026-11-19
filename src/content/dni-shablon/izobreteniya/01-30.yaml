@@ -83,9 +83,8 @@ video:
   pole: izobreteniya/30jan-kotelnikov:horizontal.sec
   suffix: сек
   badge: 67 сек
-  intro: Та же история коротким роликом — от отказа великого князя и гибели Мациевича до французского патента и подарка стране в 1926 году.
-  poster: video/day-30jan-kotelnikov-poster.jpg?v=1
-  mp4: video/day-30jan-kotelnikov.mp4?v=1
+  poster: video/day-30jan-kotelnikov-poster.jpg
+  mp4: video/day-30jan-kotelnikov.mp4
   note: Кадр ролика — подлинная фотография Г. Е. Котельникова, Уральский государственный военно-исторический музей (Госкаталог № 12764542). Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения
@@ -507,14 +506,8 @@ sources:
 - html: 'Изображения: <a href="https://goskatalog.ru/portal/#/collections?id=18020792" rel="noopener" target="_blank">Госкаталог — плакат «Глеб Евгеньевич Котельников»</a>, <a href="https://goskatalog.ru/portal/#/collections?id=39225585" rel="noopener" target="_blank">скульптура «Г. Е. Котельников и лётчик-парашютист»</a>, <a href="https://goskatalog.ru/portal/#/collections?id=53555618" rel="noopener" target="_blank">книга «История одного изобретения»</a>.'
 kuda:
 - lbl: Следующий день
-  href: den/01-31/
-  title: 31 января — Гиротрон
-  hook: 'Горьковские физики первыми в мире построили гиротрон: в 1964-м он дал 6 ватт, а через девять лет — мегаватт, в 170 тысяч раз больше.'
   main: true
 - lbl: Предыдущий день
-  href: den/01-29/
-  title: 29 января — Первый в мире дирижабль на жёстком каркасе
-  hook: Костович создал первый в мире дирижабль на жёстком каркасе — и для него первую в мире фанеру.
   main: false
 score:
   awards:

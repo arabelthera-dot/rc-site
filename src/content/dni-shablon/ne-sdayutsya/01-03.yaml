@@ -74,10 +74,9 @@ video:
   pole: nesdayutsya/03jan-sirotinin:horizontal.sec
   suffix: сек
   badge: 50 сек
-  intro: Один парень, одна пушка — и целая колонна встала
-  poster: /muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg?v=2
-  mp4: /muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4?v=2
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41823053637) из сценария days/ns03jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-03jan-sirotinin-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-03jan-sirotinin.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг · 5 ударов
   h2: Два часа, которые задержали колонну
@@ -404,19 +403,8 @@ sources:
   - html: ЦАМО, ф. 58, оп. 977531, д. 39, лл. 778, 780 — розыск Н. В. Сиротинина Орловским горвоенкоматом, 1958 (копии из базы «Память народа»).
 kuda:
   - lbl: Следующий день
-    href: podvig-kozelsk.html
-    title: 4 — оборона Козельска
-    hook: Семь недель город держал орду — Батый назвал его злым.
     main: true
   - lbl: Предыдущий день
-    href: podvig-merkuriy.html
-    title: 2 — бриг «Меркурий»
-    hook: Маленький бриг против двух линейных кораблей.
-    main: false
-  - lbl: Весь музей
-    href: index.html
-    title: «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
     main: false
 score:
   awards:

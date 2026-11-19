@@ -2,5 +2,70 @@
   "museum": "izobreteniya",
   "key": "02-25",
   "title": "Первый в мире токамак Т-1 · Л. А. Арцимович, 1958",
-  "hook": "Слово «токамак» во всех языках мира русское: магнитную бутылку для звезды построили в Москве"
+  "hook": "Слово «токамак» во всех языках мира русское: магнитную бутылку для звезды построили в Москве",
+  "kandidaty_kadrov": {
+    "sobrano": "2026-11-13",
+    "mashina": "tools/zapas-kadrov.py",
+    "zaprosy": [
+      "Арцимович",
+      "токамак Т-1"
+    ],
+    "kadry": [
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Книга. Виктор Антонович Арцимович: Воспоминания. Характеристики: С портр. В. А.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=8619425",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/4954093",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 8511196 (карточка 8619425, инв. 3725-РКН) | 1904 | хранится: ГБУК города Москвы \"Музейное объединение \"Музей Москвы\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Арцимович"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Академики Ф. Жолио-Кюри, И.В. Курчатов, Д.В. Скобельцын, Л.А. Арцимович и Д.И. Алиханов (с",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=11068668",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/8408078",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 10948369 (карточка 11068668, инв. —) | 1973 г. | хранится: СПБ ГБУК \"Государственный музей истории Санкт-Петербурга\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Арцимович"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Телеграмма Арцимовича директору Московского археологического института Успенскому А.И.",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=19205710",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/19623574",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 19068177 (карточка 19205710, инв. —) | 1920-е гг.-1930-е гг.(?) | хранится: ОГБУК \"Смоленский государственный музей-заповедник\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Арцимович"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Фотография «Ф.Жолио-Кюри, академик И.В. Курчатов, Д.В. Скобельцын, Л.А. Арцимович, А.И. Ал",
+        "avtor": "автор не указан",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=25630326",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/28567566",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 25486705 (карточка 25630326, инв. Ф - 1269) | Май 1958 г. | хранится: МБУК \"Городской музей\" | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Арцимович"
+      },
+      {
+        "baza": "goskatalog",
+        "nazvanie": "Н.А. Тенце, Б.Ш. Окуджава, О.В. Окуджава (Арцимович) и Л.З. Копелев в гостях у В.П. Некрас",
+        "avtor": "Кондырев Виктор Леонидович",
+        "stranica": "https://goskatalog.ru/portal/#/collections?id=27809171",
+        "fayl": "https://goskatalog.ru/muzfo-imaginator/rest/images/original/31708393",
+        "pometka_prav": "citirovanie-1274",
+        "prava_iz": "pometki-prav.json",
+        "pasport": "Госкаталог № 27652178 (карточка 27809171, инв. —) | 1981 | хранится: Государственный литературный музей | права: Р136 — подпись «Фото: автор, год. Хранится: музей. Госкаталог № …», ст. 1274 ГК РФ",
+        "zapros": "Арцимович"
+      }
+    ]
+  }
 }

@@ -1,0 +1,864 @@
+# Р773: день 22 февраля — мать Мария (Скобцова), стандарт дня (docs/standart-dnya.md). Факты — дословно из утверждённого списка, 15 фактов.
+
+muzei: ne-sdayutsya
+key: 02-22
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+head:
+  title: Мать Мария (Скобцова) — «Русские не сдаются» — Русская цивилизация
+  description: В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой
+  canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-22/
+  sobytie: Мать Мария (Скобцова)
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Мать Мария (Скобцова) — «Русские не сдаются» — Русская цивилизация
+    description: В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-22/
+    image: https://russian-civilization.ru/og/og-default.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Мать Мария (Скобцова) — «Русские не сдаются»
+    description: В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой
+    url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/02-22/
+    image: https://russian-civilization.ru/og/og-default.jpg
+    inLanguage: ru-RU
+    isAccessibleForFree: true
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+      url: https://russian-civilization.ru/
+  god: '1945'
+oblozhka:
+  src: /muzei/ne-sdayutsya/img/02-22-goskatalog-55736919.jpg
+  alt: 'Живописный портрет молодой женщины в тёмном пальто и серой шляпке: она стоит у моря, задумчиво подперев подбородок рукой, позади — белая церковь на берегу. Картина в тёмной резной раме.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=45215623
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Елизавета Юрьевна Пиленко, будущая мать Мария, на берегу моря. Портрет работы В. В. Котлярова, XX век. Хранится в Краснодарском музее-заповеднике имени Е. Д. Фелицына.
+  credit: Музей-заповедник им. Е. Д. Фелицына, Госкаталог № 44969907
+  width: 684
+  height: 1024
+  vid: kartina
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '55736919'
+  hranitel: Краснодарский государственный историко-археологический музей-заповедник им. Е. Д. Фелицына, Краснодар
+  podpis_chto: Портрет Е. Ю. Пиленко
+  podpis_gde: место съёмки не указано
+  podpis_kogda: XX век
+  simvolika_proverena: true
+  podlinnik:
+    gde: Краснодарский государственный историко-археологический музей-заповедник им. Е. Д. Фелицына, Краснодар
+    otkuda: https://goskatalog.ru/portal/#/collections?id=45215623
+  svyashchennoe: false
+  prava:
+    avtor: В. В. Котляров
+    god_sozdaniya: XX век
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 44969907
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 44969907
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=45215623
+  hint: Портрет Елизаветы Пиленко
+  celikom: true
+kroshka: День 22 · Мать Мария (Скобцова)
+lead:
+  data: День 22 · февраль · Париж — Равенсбрюк, 1942–1945 годы
+  privyazka: 'Дата условная: 22 февраля — день музея; событие — подвиг матери Марии в оккупированном Париже и её гибель в Равенсбрюке 31 марта 1945 года.'
+  kto: Мать Мария (Елизавета Юрьевна Скобцова, урождённая Пиленко) · поэтесса, городская голова Анапы, монахиня, участница французского Сопротивления
+  h1: Мать Мария (Скобцова)
+  hook: В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой.
+stamp:
+- v: 13 000
+  k: евреев согнали на велодром
+- v: '4'
+  k: ребёнка вывезла в мусорных ящиках
+- v: '19263'
+  k: её номер узницы в Равенсбрюке
+- v: '1985'
+  k: год советского ордена посмертно
+daynav:
+- id: story
+  label: Читать
+- id: fakty
+  label: Факты
+- id: quiz
+  label: Викторина
+- id: calendar
+  label: Календарь
+video:
+  h2: История за минуту
+  klyuch: nesdayutsya/22feb-mat-mariya
+  format: horizontal
+  pole: nesdayutsya/22feb-mat-mariya:horizontal.sec
+  suffix: сек
+  badge: 1 мин
+  poster: /muzei/ne-sdayutsya/video/day-22feb-mat-mariya-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-22feb-mat-mariya.mp4
+  note: Закадровый текст озвучен синтезом речи.
+story:
+  kicker: Подвиг
+  h2: Мать Мария (Скобцова)
+  abzacy:
+  - 'Елизавета Пиленко выросла у Чёрного моря, в Анапе. В 1918 году поэтесса стала первой женщиной — городским головой Анапы. Она защищала горожан от арестов и расстрелов, а за «комиссарство» белые её арестовали, и ей грозила смертная казнь. Потом была эмиграция: Грузия, Константинополь, Сербия, Париж. Она приняла постриг с именем Мария и открыла в доме 77 на улице Лурмель приют для бездомных, больных и одиноких. При нём были церковь в гараже и столовая.'
+  - 'В 1940 году Францию оккупировали. Мать Мария записала свою богадельню муниципальной столовой и стала получать продукты в мэрии. Её дом стал одним из штабов Сопротивления: здесь прятали беглецов и советских военнопленных, а отец Димитрий Клепинин выдавал евреям свидетельства о крещении. В ночь с 4 на 5 июля 1942 года на зимний велодром согнали 13 тысяч евреев. Монахиня пробралась туда, провела там три дня и вывезла четверых детей в ящиках для мусора.'
+  - В феврале 1943 года гестапо арестовало её сына, потом её саму. Дальше были форт Роменвиль, лагерь Компьень и вагон для скота до Равенсбрюка. В лагере она делилась едой, утешала узниц, вышивала, переводила песни. Больной её перевели в Югендлагерь — лагерь смерти для ослабевших. 31 марта 1945 года она поменялась одеждой с молодой матерью, которую загнали в строй, и пошла в газовую камеру вместо неё.
+fakty:
+- id: fakty
+  kicker: Десять фактов
+  h2: Мать Мария (Скобцова)
+  udary:
+  - id: ns-0222-velodrom-deti
+    summary: Монахиня вывезла с оцепленного немцами велодрома четверых детей — в мусорных баках
+    det:
+    - 'Мать Мария пробралась на зимний велодром благодаря монашескому одеянию. Музей Достоевского добавляет: детей спасли от отправки в Освенцим.'
+    src: 'Источник: Мать Мария (Скобцова): как богемная дива стала монахиней, в честь которой теперь названа улица в Париже — журнал «Фома» — https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html; Мать Мария — Литературно-мемориальный музей Ф. М. Достоевского в Санкт-Петербурге (раздел «Достоеведы в годы Великой Отечественной войны») — https://www.md.spb.ru/muzej/dostoevedy_2020/mat_mariya/'
+    stranica: статья
+    href: https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html
+    otryvok: «…Она провела там три дня, утешая подругу-еврейку, помогая добровольцам из Красного Креста оказывать помощь больным, поддерживая взрослых и детей, распределяя провизию... И сумела спасти четверых детей, спрятав их в ящики для мусора…»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 1
+  - id: ns-0222-gestapo-mat
+    summary: 'Гестаповец: «Дочь помогает только евреям». Её мать: «Она помогла бы и вам»'
+    det:
+    - 'Это слова матери, Софьи Борисовны Пиленко, при аресте дочери. Мать Мария улыбнулась и сказала: «Пожалуй, помогла бы».'
+    src: 'Источник: Мать Мария (Скобцова): Горячее сердце — Правмир — https://www.pravmir.ru/bodrstvujte-molites-obo-mne/; Мать Мария (Скобцова): как богемная дива стала монахиней, в честь которой теперь названа улица в Париже — журнал «Фома» — https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html'
+    stranica: статья
+    href: https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html
+    otryvok: '«…а ее маме, Софии Борисовне, бросил упрек: «Вы дурно воспитывали вашу дочь, она только жидам помогает!» Но та спокойно ответила: «Моя дочь настоящая христианка, и для нее нет ни эллина, ни иудея, а есть несчастный человек. Если бы и вам грозила беда, она и вам помогла». И мать Мария улыбнулась: «Пожалуй, помогла бы».»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 2
+  - id: ns-0222-orden
+    summary: СССР наградил парижскую монахиню-эмигрантку боевым орденом Отечественной войны
+    det:
+    - Указ Президиума Верховного Совета СССР от 7 мая 1985 года, награда посмертная. В 2004 году её причислили к лику святых.
+    src: 'Источник: Мать Мария (Скобцова): подвижница Второй мировой войны — журнал портала monastery.ru — https://monastery.ru/zhurnal/svyatye/mat-mariya-skobtsova-podvizhnitsa-vtoroy-mirovoy-voyny/; Кузьмина-Караваева Елизавета Юрьевна — энциклопедия «Лавка писателей» (Санкт-Петербург) — https://lavkapisateley.spb.ru/enciklopediya/k/kuzminakaravaeva-'
+    stranica: статья
+    href: https://monastery.ru/zhurnal/svyatye/mat-mariya-skobtsova-podvizhnitsa-vtoroy-mirovoy-voyny/
+    otryvok: «…Седьмого мая 1985 года Президиумом Верховного Совета СССР монахиня Мария (Скобцова) посмертно была награждена орденом Отечественной войны II степени.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n5
+    dlya_voprosa: false
+    n: 3
+  - id: ns-0222-pesni
+    summary: В лагере смерти она переводила советские военные песни — их тайком пел весь барак
+    det:
+    - В Равенсбрюке она устраивала беседы на исторические и литературные темы, пробуждала в узницах достоинство и патриотическое чувство.
+    src: 'Источник: К 25-летию со дня кончины Матери Марии (Скобцовой) — сайт «Мать Мария, Mère Marie» (И. А. Кривошеин) — https://mere-marie.com/life/mat-mariya/'
+    stranica: статья
+    href: https://mere-marie.com/life/mat-mariya/
+    otryvok: «…Мать Мария переводила на французский язык советские военные и патриотические песни, и их потом тайком пели все заключенные.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 4
+  - id: ns-0222-dym
+    summary: 'Глядя на дым крематория, говорила узницам: выше он становится всё прозрачнее и чище'
+    det:
+    - В лагере непрерывно дымили трубы крематория, а по ночам полыхало их зарево. Она умела находить утешение даже в самых страшных образах лагерного быта.
+    src: 'Источник: К 25-летию со дня кончины Матери Марии (Скобцовой) — сайт «Мать Мария, Mère Marie» (И. А. Кривошеин) — https://mere-marie.com/life/mat-mariya/; Мать Мария (Скобцова). Красота спасающая — К. И. Кривошеина, «Азбука веры» — https://azbyka.ru/fiction/mat-mariya-skobcova-krasota-spasayushhaya/'
+    stranica: статья
+    href: https://mere-marie.com/life/mat-mariya/
+    otryvok: '«…показывая на этот тяжелый дым, говорила: “Он такой только вначале, около земли, а дальше, выше делается всё прозрачнее и чище и, наконец, сливается с небом. Так и в смерти…”»'
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 5
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-22-goskatalog-3013177.jpg
+      alt: 'Старая фотография: кирпичная стена с открытыми железными дверцами печей, перед ними на полу деревянный лоток-носилки.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=6973026
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Печи крематория в концлагере Равенсбрюк в момент освобождения лагеря Советской армией. Фотография хранится в Музее политической истории России.
+      credit: Музей политической истории России, Госкаталог № 6752915
+      width: 800
+      height: 567
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '3013177'
+      hranitel: Государственный музей политической истории России, Санкт-Петербург
+      podpis_chto: Фотография «Печи крематория в концлагере Равенсбрюк в момент освобождения лагеря Советской армией»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: дата не указана
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный музей политической истории России, Санкт-Петербург
+        otkuda: https://goskatalog.ru/portal/#/collections?id=6973026
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: дата не указана
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 6752915
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 6752915
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=6973026
+      hint: Печи Равенсбрюка
+      celikom: true
+  - id: ns-0222-bezumec
+    summary: 'В 1941-м, под оккупантами, написала: во главе «расы господ» — «безумец, параноик», место ему в сумасшедшем доме'
+    det:
+    - 'Дальше в цитате: он «нуждается в смирительной рубашке, чтобы его звериный вой не потрясал вселенной». Мать Мария никогда не скрывала взглядов и была под надзором гестапо.'
+    src: 'Источник: Жертвенный подвиг матушки Марии — Нил Кольцов, «Первая Родина» (1rodina.ru) — https://www.1rodina.ru/article/zhertvennyy-podvig-matushki-marii'
+    stranica: статья
+    href: https://www.1rodina.ru/article/zhertvennyy-podvig-matushki-marii
+    otryvok: '«…В 1941 году живущая во Франции матушка Мария (в миру Елизавета Юрьевна Скобцова) написала пророческие слова: “Во главе избранной расы господ стоит безумец, параноик, место которому в палате сумасшедшего дома…”»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n8
+    dlya_voprosa: false
+    n: 6
+  - id: ns-0222-rossiya-pobedit
+    summary: 'В оккупированном Париже: «Я не боюсь за Россию. Я знаю, что она победит»'
+    det:
+    - В 1941 году она слушала советские сводки и булавками с красной шерстинкой отмечала линию фронтов на большой карте СССР в комнате для собраний.
+    src: 'Источник: К 25-летию со дня кончины Матери Марии (Скобцовой) — сайт «Мать Мария, Mère Marie» (И. А. Кривошеин) — https://mere-marie.com/life/mat-mariya/'
+    stranica: статья
+    href: https://mere-marie.com/life/mat-mariya/
+    otryvok: '«…Она говорила своим друзьям: “Я не боюсь за Россию. Я знаю, что она победит.”»'
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 7
+  - id: ns-0222-13-tysyach
+    summary: Немцы согнали на велодром 13 тысяч человек — монахиня сама вошла за оцепление на три дня
+    det:
+    - Там она утешала подругу-еврейку, помогала добровольцам Красного Креста, поддерживала взрослых и детей, распределяла провизию.
+    src: 'Источник: Мать Мария (Скобцова): как богемная дива стала монахиней, в честь которой теперь названа улица в Париже — журнал «Фома» — https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html'
+    stranica: статья
+    href: https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html
+    otryvok: «…В ночь с 4 на 5 июля 1942 года во Франции арестовали 13 тысяч евреев. Их свезли на зимний велодром рядом с улицей Лурмель. Благодаря монашескому одеянию, матери Марии удалось пробраться туда. Она провела там три дня…»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n1
+    dlya_voprosa: false
+    n: 8
+  - id: ns-0222-anapa
+    summary: В 26 лет поэтесса стала первой женщиной — городским головой Анапы
+    det:
+    - Она родилась в Риге 8 декабря 1891 года. Главой города стала, когда прежний градоначальник оставил пост, а власть переходила от «белых» к «красным» и обратно.
+    src: 'Источник: Как поэтесса из Петербурга стала мэром Анапы, парижской монахиней и святой — «Год литературы» — https://godliteratury.ru/articles/2021/12/21/kak-poetessa-iz-peterburga-stala-merom-anapy-parizhskoj-monahinej-i-sviatoj'
+    stranica: статья
+    href: https://godliteratury.ru/articles/2021/12/21/kak-poetessa-iz-peterburga-stala-merom-anapy-parizhskoj-monahinej-i-sviatoj
+    otryvok: «…В 1918 году Кузьмина-Караваева “доросла” до должности главы города. … Хрупкая поэтесса не побоялась ответственности и согласилась стать первой женщиной - головой Анапы.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n9
+    dlya_voprosa: false
+    n: 9
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-22-goskatalog-55733214.jpg
+      alt: 'Старая фотография в деревянной рамке: двухэтажный каменный дом с балюстрадой на крыше и арочными окнами, вокруг — строительный двор.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=45212982
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Джеметинская усадьба Д. В. Пиленко под Анапой на стадии строительства — имение семьи, где выросла Елизавета Пиленко. Хранится в Краснодарском музее-заповеднике имени Е. Д. Фелицына.
+      credit: Музей-заповедник им. Е. Д. Фелицына, Госкаталог № 44967300
+      width: 1280
+      height: 912
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '55733214'
+      hranitel: Краснодарский государственный историко-археологический музей-заповедник им. Е. Д. Фелицына, Краснодар
+      podpis_chto: Фотография «Джеметинская усадьба Д. В. Пиленко на стадии строительства»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: XX век
+      simvolika_proverena: true
+      podlinnik:
+        gde: Краснодарский государственный историко-археологический музей-заповедник им. Е. Д. Фелицына, Краснодар
+        otkuda: https://goskatalog.ru/portal/#/collections?id=45212982
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: XX век
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 44967300
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 44967300
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=45212982
+      hint: Усадьба Пиленко под Анапой
+      celikom: true
+  - id: ns-0222-anapa-teror
+    summary: Городская голова Анапы защитила горожан от большевистского террора — от арестов и расстрелов
+    det:
+    - После этого ей пришлось эмигрировать в Париж.
+    src: 'Источник: Анапа. Елизавета Кузьмина-Караваева — Радио ВЕРА — https://radiovera.ru/anapa-elizaveta-kuzmina-karavaeva.html'
+    stranica: статья
+    href: https://radiovera.ru/anapa-elizaveta-kuzmina-karavaeva.html
+    otryvok: «…Анапчане знали поэтессу как честного человека и избрали её городским главой. Во время большевистского террора Елизавета Юрьевна многих горожан защитила от арестов и расстрелов.»
+    pometka: один источник
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n10
+    dlya_voprosa: false
+    n: 10
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё о подвиге
+  udary:
+  - id: ns-0222-voennoplennye
+    summary: В её приюте прятались советские военнопленные, бежавшие из немецких лагерей
+    det:
+    - Дома на Лурмель и в Нуази стали важнейшими пунктами укрытия и отправки беглецов, этим занималось Сопротивление.
+    src: 'Источник: К 25-летию со дня кончины Матери Марии (Скобцовой) — сайт «Мать Мария, Mère Marie» (И. А. Кривошеин) — https://mere-marie.com/life/mat-mariya/; Святая из Равенсбрюка — Татьяна Кутаренкова, журнал «Историк» (историк.рф) — https://xn--h1aagokeh.xn--p1ai/news/510'
+    stranica: статья
+    href: https://mere-marie.com/life/mat-mariya/
+    otryvok: «…Одно время у матери Марии укрывались двое советских военнопленных, бежавших из фашистских лагерей.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 11
+  - id: ns-0222-akademiya
+    summary: В духовную академию принимали только мужчин — ей разрешили сдавать экзамены профессорам на дому
+    det:
+    - Так вспоминала её мать, С. Б. Пиленко. Елизавета Юрьевна сдавала экзамены экстерном профессорам Петербургской духовной академии.
+    src: 'Источник: Мать Мария (Скобцова). Красота спасающая — К. И. Кривошеина, «Азбука веры» — https://azbyka.ru/fiction/mat-mariya-skobcova-krasota-spasayushhaya/; Кузьмина-Караваева Елизавета Юрьевна — энциклопедия «Лавка писателей» (Санкт-Петербург) — https://lavkapisateley.spb.ru/enciklopediya/k/kuzminakaravaeva-'
+    stranica: статья
+    href: https://azbyka.ru/fiction/mat-mariya-skobcova-krasota-spasayushhaya/
+    otryvok: «она как‑то пошла в Александро–Невскую Лавру к ректору Духовной Академии, он сказал, что не может принять её как слушательницу, так как у них принимают только мужчин, но что он будет присылать ей лекции, а она, подготовившись, может сдавать экзамены на дому у каждого профессора».
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n7
+    dlya_voprosa: false
+    n: 12
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-22-goskatalog-33405068.jpg
+      alt: 'Карандашный набросок на бежевой бумаге: лицо молодой девушки с гладко зачёсанными волосами; внизу подпись художницы.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=29033198
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Портрет Е. Ю. Пиленко (Кузьминой-Караваевой) в юности. Рисунок Н. С. Войтинской, 1909 год. Хранится в Государственном музее истории Санкт-Петербурга.
+      credit: Государственный музей истории Санкт-Петербурга, Госкаталог № 28869390
+      width: 490
+      height: 558
+      vid: risunok
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '33405068'
+      hranitel: Государственный музей истории Санкт-Петербурга
+      podpis_chto: Портрет Е. Ю. Пиленко (Кузьминой-Караваевой в юности)
+      podpis_gde: место съёмки не указано
+      podpis_kogda: 1909 год
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный музей истории Санкт-Петербурга
+        otkuda: https://goskatalog.ru/portal/#/collections?id=29033198
+      svyashchennoe: false
+      prava:
+        avtor: Н. С. Войтинская
+        god_sozdaniya: 1909 год
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 28869390
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 28869390
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=29033198
+      hint: Пиленко в юности, рисунок 1909
+      celikom: true
+  - id: ns-0222-kreshchenie
+    summary: Священник её общины выписывал евреям ложные свидетельства о крещении — и спасал от вагонов
+    det:
+    - Евреев сгоняли на велодром и отправляли вагонами в лагерь Дранси, а оттуда в Аушвиц. Справки о крещении помогали избежать ареста и отправки в лагерь.
+    src: 'Источник: Святая из Равенсбрюка — Татьяна Кутаренкова, журнал «Историк» (историк.рф) — https://xn--h1aagokeh.xn--p1ai/news/510; Мать Мария (Скобцова): подвижница Второй мировой войны — журнал портала monastery.ru — https://monastery.ru/zhurnal/svyatye/mat-mariya-skobtsova-podvizhnitsa-vtoroy-mirovoy-voyny/'
+    stranica: статья
+    href: https://xn--h1aagokeh.xn--p1ai/news/510
+    otryvok: «…А верный друг Марии, священник Димитрий Клепинин, выдавал евреям фиктивные свидетельства о православном крещении, и многим это спасло жизни.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n11
+    dlya_voprosa: false
+    n: 13
+  - id: ns-0222-lurmel-shtab
+    summary: Монашеский приют на улице Лурмель работал тайным штабом французского Сопротивления
+    det:
+    - '«Историк» пишет: квартира на улице Лурмель стала одним из тайных штабов Сопротивления, как и дом отдыха в Нуази-ле-Гран.'
+    src: 'Источник: Мать Мария — Литературно-мемориальный музей Ф. М. Достоевского в Санкт-Петербурге (раздел «Достоеведы в годы Великой Отечественной войны») — https://www.md.spb.ru/muzej/dostoevedy_2020/mat_mariya/; Святая из Равенсбрюка — Татьяна Кутаренкова, журнал «Историк» (историк.рф) — https://xn--h1aagokeh.xn--p1ai/news/510'
+    stranica: статья
+    href: https://www.md.spb.ru/muzej/dostoevedy_2020/mat_mariya/
+    otryvok: «…С началом нацистской оккупации общежитие монахини Марии стало одним из штабов Французского Сопротивления.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n2
+    dlya_voprosa: false
+    n: 14
+  - id: ns-0222-molodezhnyj-lager
+    summary: Её отправили в «Молодёжный лагерь» — так в Равенсбрюке звали барак, откуда везли на газ
+    det:
+    - Туда попадали получившие розовую карточку, будто бы освобождавшую от работы, а на деле означавшую смертный приговор.
+    src: 'Источник: К 25-летию со дня кончины Матери Марии (Скобцовой) — сайт «Мать Мария, Mère Marie» (И. А. Кривошеин) — https://mere-marie.com/life/mat-mariya/; Святая из Равенсбрюка — Татьяна Кутаренкова, журнал «Историк» (историк.рф) — https://xn--h1aagokeh.xn--p1ai/news/510'
+    stranica: статья
+    href: https://mere-marie.com/life/mat-mariya/
+    otryvok: «…Мать Мария была переведена в так называемый Молодежный лагерь, куда направляли всех безнадежных инвалидов, в первую голову предназначенных для газирования.»
+    pometka: два источника
+    utverzhden: '2026-11-15'
+    sravnenie: net
+    istochnik: n6
+    dlya_voprosa: false
+    n: 15
+    kadr:
+      src: /muzei/ne-sdayutsya/img/02-22-goskatalog-3013273.jpg
+      alt: 'Старая фотография: двор концлагеря с земляным полом, усыпанным мусором; у кирпичной стены распахнуты тёмные ворота, перед ними свалены ящики и тачка.'
+      data_source: https://goskatalog.ru/portal/#/collections?id=6973122
+      license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+      podpis: Концлагерь Равенсбрюк после освобождения Советской армией. Фотография хранится в Музее политической истории России.
+      credit: Музей политической истории России, Госкаталог № 6752819
+      width: 799
+      height: 576
+      vid: foto
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      nomer_predmeta: net
+      nomer_snimka: '3013273'
+      hranitel: Государственный музей политической истории России, Санкт-Петербург
+      podpis_chto: Фотография «Концлагерь Равенсбрюк после освобождения Советской армией»
+      podpis_gde: место съёмки не указано
+      podpis_kogda: дата не указана
+      simvolika_proverena: true
+      podlinnik:
+        gde: Государственный музей политической истории России, Санкт-Петербург
+        otkuda: https://goskatalog.ru/portal/#/collections?id=6973122
+      svyashchennoe: false
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: дата не указана
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 6752819
+        sdelano_mashinoj: false
+        otkuda: Госкаталог, № 6752819
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=6973122
+      hint: Равенсбрюк после освобождения
+      celikom: true
+razdely: []
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Ответы: 1 — 13 тысяч; 2 — в ящиках для мусора; 3 — Анапа; 4 — орден Отечественной войны II степени; 5 — советские военные песни.'
+  ball: 10
+  voprosy:
+  - q: 'Ставка до ответа: сколько евреев немцы согнали на зимний велодром в Париже в июле 1942 года?'
+    o:
+    - Около 500
+    - Около 2 тысяч
+    - 13 тысяч
+    - 100 тысяч
+    a: 2
+    e: В ночь на 5 июля 1942 года на зимний велодром свезли 13 тысяч человек. Мать Мария провела там три дня.
+  - q: Как мать Мария вывезла четверых детей с оцепленного велодрома?
+    o:
+    - В ящиках для мусора
+    - В санитарной машине
+    - Под монашеской рясой
+    - В бочках из-под вина
+    a: 0
+    e: Она спрятала четверых детей в ящики для мусора и спасла их от отправки в Освенцим.
+  - q: Каким городом в 1918 году руководила Елизавета Кузьмина-Караваева?
+    o:
+    - Ялтой
+    - Анапой
+    - Новороссийском
+    - Ригой
+    a: 1
+    e: В 26 лет она стала первой женщиной — городским головой Анапы.
+  - q: Какой наградой СССР в 1985 году посмертно отметил мать Марию?
+    o:
+    - Медалью «За отвагу»
+    - Орденом Красной Звезды
+    - Орденом Отечественной войны II степени
+    - Орденом Ленина
+    a: 2
+    e: Указом Президиума Верховного Совета СССР от 7 мая 1985 года — орден Отечественной войны II степени.
+  - q: Что мать Мария переводила на французский в Равенсбрюке?
+    o:
+    - Молитвы
+    - Советские военные песни
+    - Письма узниц
+    - Немецкие приказы
+    a: 1
+    e: Она переводила советские военные и патриотические песни — их потом тайком пели все заключённые.
+result:
+  h2: Итог дня
+  intro: 'Викторина даёт баллы. Прогресс не сохраняется: перезагрузка страницы начинает день заново.'
+  zvanie: '0 / 50 · звание: Гость дня'
+  note: Ответь на вопросы викторины.
+kalendar:
+  kicker: Календарь подвига
+  h2: Выбери любой день месяца
+  intro: Каждый подсвеченный день — человек или отряд, который не сдался. Нажми на число — увидишь имя и хук.
+figures:
+- src: /muzei/ne-sdayutsya/img/02-22-goskatalog-48486424.jpg
+  alt: 'Красная бумажная обложка тонкой книжки: чёрными буквами имя автора и название, ниже нарисована лира, внизу — название издательства.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=39931745
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: Первая книга стихов Елизаветы Кузьминой-Караваевой «Скифские черепки», издательство «Цех поэтов», 1912 год. Хранится в Государственном литературном музее.
+  credit: Государственный литературный музей, Госкаталог № 39706367
+  width: 559
+  height: 800
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '48486424'
+  hranitel: Государственный литературный музей, Москва
+  podpis_chto: Книга Е. Кузьминой-Караваевой «Скифские черепки»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: 1912 год
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный литературный музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=39931745
+  svyashchennoe: false
+  prava:
+    avtor: Е. Ю. Кузьмина-Караваева
+    god_sozdaniya: 1912 год
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 39706367
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 39706367
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=39931745
+  hint: Книга «Скифские черепки», 1912
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-22-goskatalog-1874600.jpg
+  alt: 'Чёрно-белая фотография у деревянного забора в листве: сидят двое молодых людей в светлых рубахах, за ними стоят юноша и две девушки.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=5623156
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Слева направо стоят: Борис Кузьмин-Караваев, Елизавета Кузьмина-Караваева, Анна Ахматова; сидят Дмитрий Пиленко и Дмитрий Бушен. Июнь 1911 года. Фото О. А. Кузьминой-Караваевой. Хранится в Музее Анны Ахматовой в Фонтанном Доме.'
+  credit: Музей Анны Ахматовой в Фонтанном Доме, Госкаталог № 5483730
+  width: 518
+  height: 800
+  vid: foto
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '1874600'
+  hranitel: Государственный литературно-мемориальный музей Анны Ахматовой в Фонтанном Доме, Санкт-Петербург
+  podpis_chto: 'Фотография: Е. Ю. Кузьмина-Караваева, А. А. Ахматова и др.'
+  podpis_gde: место съёмки не указано
+  podpis_kogda: июнь 1911 года
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный литературно-мемориальный музей Анны Ахматовой в Фонтанном Доме, Санкт-Петербург
+    otkuda: https://goskatalog.ru/portal/#/collections?id=5623156
+  svyashchennoe: false
+  prava:
+    avtor: О. А. Кузьмина-Караваева
+    god_sozdaniya: июнь 1911 года
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 5483730
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 5483730
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=5623156
+  hint: С Ахматовой, 1911
+  celikom: true
+- src: /muzei/ne-sdayutsya/img/02-22-goskatalog-16743905.jpg
+  alt: 'Серебристая круглая медаль: в центре памятник — фигура на высоком постаменте среди деревьев, по кругу рельефная надпись, внизу лавровая ветвь.'
+  data_source: https://goskatalog.ru/portal/#/collections?id=17113686
+  license: цитирование в информационных и учебных целях с указанием источника (ст. 1274 ГК РФ)
+  podpis: 'Медаль «Памятник узникам Равенсбрюка», вторая половина XX века: на ней мемориал женщинам — узницам лагеря. Хранится в Государственном историческом музее.'
+  credit: Государственный исторический музей, Госкаталог № 16983859
+  width: 728
+  height: 701
+  vid: predmet
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  nomer_predmeta: net
+  nomer_snimka: '16743905'
+  hranitel: Государственный исторический музей, Москва
+  podpis_chto: Медаль «Памятник узникам Равенсбрюка»
+  podpis_gde: место съёмки не указано
+  podpis_kogda: вторая половина XX века
+  simvolika_proverena: true
+  podlinnik:
+    gde: Государственный исторический музей, Москва
+    otkuda: https://goskatalog.ru/portal/#/collections?id=17113686
+  svyashchennoe: false
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: вторая половина XX века
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: Госкаталог Музейного фонда РФ, № 16983859
+    sdelano_mashinoj: false
+    otkuda: Госкаталог, № 16983859
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=17113686
+  hint: Медаль узницам Равенсбрюка
+  celikom: true
+sources:
+- href: https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html
+  title: 'Мать Мария (Скобцова): как богемная дива стала монахиней, в честь которой теперь названа улица в Париже — журнал «Фома»'
+  note: к фактам 1, 2, 8
+- href: https://www.md.spb.ru/muzej/dostoevedy_2020/mat_mariya/
+  title: Мать Мария — Литературно-мемориальный музей Ф. М. Достоевского в Санкт-Петербурге (раздел «Достоеведы в годы Великой Отечественной войны»)
+  note: к фактам 1, 14
+- href: https://www.pravmir.ru/bodrstvujte-molites-obo-mne/
+  title: 'Мать Мария (Скобцова): Горячее сердце — Правмир'
+  note: к факту 2
+- href: https://lavkapisateley.spb.ru/enciklopediya/k/kuzminakaravaeva-
+  title: Кузьмина-Караваева Елизавета Юрьевна — энциклопедия «Лавка писателей» (Санкт-Петербург)
+  note: к фактам 3, 12
+- href: https://monastery.ru/zhurnal/svyatye/mat-mariya-skobtsova-podvizhnitsa-vtoroy-mirovoy-voyny/
+  title: 'Мать Мария (Скобцова): подвижница Второй мировой войны — журнал портала monastery.ru'
+  note: к фактам 3, 13
+- href: https://mere-marie.com/life/mat-mariya/
+  title: К 25-летию со дня кончины Матери Марии (Скобцовой) — сайт «Мать Мария, Mère Marie» (И. А. Кривошеин)
+  note: к фактам 4, 5, 7, 11, 15
+- href: https://azbyka.ru/fiction/mat-mariya-skobcova-krasota-spasayushhaya/
+  title: Мать Мария (Скобцова). Красота спасающая — К. И. Кривошеина, «Азбука веры»
+  note: к фактам 5, 12
+- href: https://www.1rodina.ru/article/zhertvennyy-podvig-matushki-marii
+  title: Жертвенный подвиг матушки Марии — Нил Кольцов, «Первая Родина» (1rodina.ru)
+  note: к факту 6
+- href: https://godliteratury.ru/articles/2021/12/21/kak-poetessa-iz-peterburga-stala-merom-anapy-parizhskoj-monahinej-i-sviatoj
+  title: Как поэтесса из Петербурга стала мэром Анапы, парижской монахиней и святой — «Год литературы»
+  note: к факту 9
+- href: https://radiovera.ru/anapa-elizaveta-kuzmina-karavaeva.html
+  title: Анапа. Елизавета Кузьмина-Караваева — Радио ВЕРА
+  note: к факту 10
+- href: https://xn--h1aagokeh.xn--p1ai/news/510
+  title: Святая из Равенсбрюка — Татьяна Кутаренкова, журнал «Историк» (историк.рф)
+  note: к фактам 11, 13, 14, 15
+kuda:
+- lbl: Следующий день
+  main: true
+score:
+  awards:
+    q:
+    - 5
+    - 10
+  ranks:
+  - - 0
+    - Гость дня
+chrome:
+  share:
+    title: Мать Мария (Скобцова) — Музей стойкости и подвига «Русские не сдаются»
+    text: В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой
+  prev:
+    href: /muzei/ne-sdayutsya/den/02-21/
+    title: 21 февраля · Василиса Кожина
+  next:
+    href: /muzei/ne-sdayutsya/den/02-23/
+    title: 23 февраля · Подлодка К-278 «Комсомолец»
+  all:
+    href: index.html
+    label: Все подвиги
+  random: []
+return:
+  q: Сколько детей вывезла с оцепленного велодрома мать Мария?
+  a: Четверых — в ящиках для мусора
+proof:
+  status: utverzhdeno
+  note: 'Факты дня — дословно из утверждённого списка дня (Р773): 15 фактов, хук — событие дня. Ролик и аудиогид отданы в облако rc-rolik.'
+nomer_dnya: ns-0222-mat-mariya
+data_sobytiya: '1945-03-31'
+data_uslovnaya: 22 февраля — день музея; событие — подвиг матери Марии в оккупированном Париже (1940–1943) и её гибель в Равенсбрюке 31 марта 1945 года.
+chto_sluchilos: Русская монахиня-эмигрантка мать Мария (Скобцова) в оккупированном Париже превратила свой приют на улице Лурмель в штаб Сопротивления, прятала беглецов и советских военнопленных, спасала евреев, вывезла с велодрома четверых детей. Её арестовало гестапо; 31 марта 1945 года в Равенсбрюке она пошла в газовую камеру вместо другой узницы.
+god: 1945
+god_tochnost: tochno
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema:
+- vojna
+gde_uvidet:
+- chto: Портрет Е. Ю. Пиленко, художник В. В. Котляров, XX век
+  muzej: Краснодарский государственный историко-археологический музей-заповедник им. Е. Д. Фелицына
+  gorod: Краснодар
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=45215623
+- chto: Книга Е. Кузьминой-Караваевой «Скифские черепки», 1912
+  muzej: Государственный литературный музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=39931745
+- chto: Медаль «Памятник узникам Равенсбрюка», вторая половина XX века
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=17113686
+chitat_dalshe:
+- nazvanie: Мать Мария
+  gde: И. А. Кривошеин, сайт «Мать Мария (Скобцова)»
+  ssylka: https://mere-marie.com/life/mat-mariya/
+- nazvanie: Мать Мария (Скобцова). Красота спасающая
+  gde: К. Кривошеина, «Азбука веры»
+  ssylka: https://azbyka.ru/fiction/mat-mariya-skobcova-krasota-spasayushhaya/
+- nazvanie: Мать Мария
+  gde: Литературно-мемориальный музей Ф. М. Достоевского
+  ssylka: https://www.md.spb.ru/muzej/dostoevedy_2020/mat_mariya/
+- nazvanie: Как поэтесса из Петербурга стала мэром Анапы, парижской монахиней и святой
+  gde: «Год литературы»
+  ssylka: https://godliteratury.ru/articles/2021/12/21/kak-poetessa-iz-peterburga-stala-merom-anapy-parizhskoj-monahinej-i-sviatoj
+istochniki:
+- id: n1
+  baza: periodika
+  nazvanie: 'Мать Мария (Скобцова): как богемная дива стала монахиней, в честь которой теперь названа улица в Париже — журнал «Фома»'
+  ssylka: https://foma.ru/mat-marija-skobcova-kak-bogemnaja-diva-stala-monahinej-v-chest-kotoroj-teper-nazvana-ulica-v-parizhe.html
+- id: n2
+  baza: muzej-rf
+  nazvanie: Мать Мария — Литературно-мемориальный музей Ф. М. Достоевского в Санкт-Петербурге (раздел «Достоеведы в годы Великой Отечественной войны»)
+  ssylka: https://www.md.spb.ru/muzej/dostoevedy_2020/mat_mariya/
+- id: n3
+  baza: periodika
+  nazvanie: 'Мать Мария (Скобцова): Горячее сердце — Правмир'
+  ssylka: https://www.pravmir.ru/bodrstvujte-molites-obo-mne/
+- id: n4
+  baza: sajt-organizacii
+  nazvanie: Кузьмина-Караваева Елизавета Юрьевна — энциклопедия «Лавка писателей» (Санкт-Петербург)
+  ssylka: https://lavkapisateley.spb.ru/enciklopediya/k/kuzminakaravaeva-
+- id: n5
+  baza: sajt-organizacii
+  nazvanie: 'Мать Мария (Скобцова): подвижница Второй мировой войны — журнал портала monastery.ru'
+  ssylka: https://monastery.ru/zhurnal/svyatye/mat-mariya-skobtsova-podvizhnitsa-vtoroy-mirovoy-voyny/
+- id: n6
+  baza: sajt-organizacii
+  nazvanie: К 25-летию со дня кончины Матери Марии (Скобцовой) — сайт «Мать Мария, Mère Marie» (И. А. Кривошеин)
+  ssylka: https://mere-marie.com/life/mat-mariya/
+- id: n7
+  baza: kniga
+  nazvanie: Мать Мария (Скобцова). Красота спасающая — К. И. Кривошеина, «Азбука веры»
+  ssylka: https://azbyka.ru/fiction/mat-mariya-skobcova-krasota-spasayushhaya/
+- id: n8
+  baza: periodika
+  nazvanie: Жертвенный подвиг матушки Марии — Нил Кольцов, «Первая Родина» (1rodina.ru)
+  ssylka: https://www.1rodina.ru/article/zhertvennyy-podvig-matushki-marii
+- id: n9
+  baza: periodika
+  nazvanie: Как поэтесса из Петербурга стала мэром Анапы, парижской монахиней и святой — «Год литературы»
+  ssylka: https://godliteratury.ru/articles/2021/12/21/kak-poetessa-iz-peterburga-stala-merom-anapy-parizhskoj-monahinej-i-sviatoj
+- id: n10
+  baza: periodika
+  nazvanie: Анапа. Елизавета Кузьмина-Караваева — Радио ВЕРА
+  ssylka: https://radiovera.ru/anapa-elizaveta-kuzmina-karavaeva.html
+- id: n11
+  baza: periodika
+  nazvanie: Святая из Равенсбрюка — Татьяна Кутаренкова, журнал «Историк» (историк.рф)
+  ssylka: https://xn--h1aagokeh.xn--p1ai/news/510
+citaty: []
+velichina_chislo: 4
+velichina_edinica: ребёнка
+velichina_chto: вывезла мать Мария с оцепленного велодрома в ящиках для мусора
+voinskaya_chast: 'Французское Сопротивление: приют на улице Лурмель'
+operaciya: net
+front: Оккупированная Франция, 1940–1945 годы
+mesto_sobytiya:
+  nazvanie: Париж, улица Лурмель, 77
+  shirota: 48.842
+  dolgota: 2.296
+podskazki_igry: net
+moj_ded: net
+togda_sejchas: net
+skvoznye_linii: net
+predmet_3d: net
+panorama_360: net
+staraya_karta: net
+marshrut: net
+etiketka_oblozhki:
+- Портрет Е. Ю. Пиленко, художник В. В. Котляров, XX век
+- Краснодарский государственный историко-археологический музей-заповедник им. Е. Д. Фелицына
+slovar:
+- lyudi:mat-mariya
+vizual:
+  imya: skobcova-skifskie-cherepki
+  vid: predmet
+  kicker: Книга под лупой
+  h2: «Скифские черепки»
+  lead: 'Первая книга стихов Елизаветы Кузьминой-Караваевой, 1912 год. Приблизь обложку: лира и марка «Цеха поэтов» — кружка, где она встречалась с Ахматовой и Гумилёвым.'
+audioguide:
+  audioSrc: audio-guide-mat-mariya-ru.mp3
+  durationLabel: около 2 минут
+  lead: 'Голос ведёт от Анапы через приют на Лурмель и зимний велодром — к лагерю Равенсбрюк: пять остановок.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Анапа
+  - t: 22
+    mark: 0:22
+    title: Улица Лурмель
+  - t: 44
+    mark: 0:44
+    title: Велодром
+  - t: 66
+    mark: '1:06'
+    title: Арест
+  - t: 88
+    mark: '1:28'
+    title: Равенсбрюк
+  transcript:
+  - В 1918 году двадцатишестилетняя поэтесса Елизавета Кузьмина-Караваева стала первой женщиной — городским головой Анапы. Во время большевистского террора она многих горожан защитила от арестов и расстрелов.
+  - 'В Париже она приняла постриг с именем Мария и открыла приют в доме семьдесят семь на улице Лурмель. В оккупацию приют стал одним из штабов французского Сопротивления: здесь прятались советские военнопленные, бежавшие из немецких лагерей, а священник общины выписывал евреям свидетельства о крещении.'
+  - В ночь на пятое июля 1942 года немцы согнали на зимний велодром тринадцать тысяч евреев. Монахиня сама вошла за оцепление на три дня — и вывезла четверых детей в ящиках для мусора.
+  - 'При аресте дочери гестаповец крикнул её матери, что дочь помогает только евреям. Софья Борисовна ответила: если бы и вам грозила беда, она помогла бы и вам. В оккупированном Париже мать Мария говорила: «Я не боюсь за Россию. Я знаю, что она победит».'
+  - 'В Равенсбрюке узница номер девятнадцать тысяч двести шестьдесят три переводила советские военные песни — их тайком пел весь барак. Глядя на дым крематория, говорила: выше он становится всё прозрачнее и чище. В оккупированном Париже спасала людей — и вошла в газовую камеру вместо другой.'
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.

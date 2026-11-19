@@ -1,0 +1,33 @@
+---
+// Перенос прогресса посетителя (п.496 плана, Р745): файл JSON и QR-код, без сервера. Флаг — src/lib/perenos.mjs:
+// выключено — страница собирается с noindex, ссылок на неё с сайта нет.
+import Base from '../layouts/Base.astro';
+import { perenosOn } from '../lib/perenos.mjs';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const noindex = !perenosOn();
+---
+<Base title="Сохранить мой прогресс · Русская цивилизация" description="Как сохранить открытые дни музеев и серию посещений и перенести их на другой телефон или компьютер." schema="page" noindex={noindex} crumbs={[{ label: 'Мой прогресс' }]}>
+  <header slot="header"><h1>Сохранить мой прогресс</h1></header>
+  <div class="rc-tekst" id="rc-perenos">
+    <p>Открытые дни в коллекциях музеев и серия ваших посещений хранятся только в этом браузере. Браузер может их стереть — например, если долго не заходить. Сохраните прогресс, чтобы не потерять его или перенести на другое устройство.</p>
+    <p data-skolko></p>
+    <h2>Сохранить</h2>
+    <p><button type="button" class="rc-perenos-knopka" data-fajl>Сохранить в файл</button></p>
+    <p><button type="button" class="rc-perenos-knopka" data-qr>Показать QR-код для телефона</button></p>
+    <div class="rc-perenos-qr" data-qr-mesto hidden></div>
+    <h2>Вернуть</h2>
+    <p><label class="rc-perenos-knopka">Загрузить из файла<input type="file" accept="application/json,.json" data-vybor class="rc-perenos-skryt" /></label></p>
+    <p>С QR-кодом проще: наведите камеру телефона на код на другом устройстве и откройте ссылку.</p>
+    <p role="status" aria-live="polite" data-status></p>
+    <p>Ничего не уходит на сервер: файл остаётся у вас, а данные в ссылке QR-кода читает только ваш браузер.</p>
+  </div>
+  <script is:inline defer src={`${base}assets/vendor/qrcode-generator.js`}></script>
+  <script is:inline defer src={`${base}assets/rc-perenos.js`}></script>
+</Base>
+<style>
+  .rc-perenos-knopka { position: relative; display: inline-block; padding: 10px 18px; border: 1px solid currentColor; border-radius: 8px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+  .rc-perenos-knopka:focus-within, .rc-perenos-knopka:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .rc-perenos-skryt { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+  .rc-perenos-qr { max-width: 280px; background: #fff; padding: 8px; }
+  .rc-perenos-qr :global(svg) { display: block; width: 100%; height: auto; }
+</style>

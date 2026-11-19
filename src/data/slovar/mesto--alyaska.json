@@ -1,0 +1,21 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Аляска",
+  "kratko": "Полуостров в Северной Америке, до 1867 года — Русская Америка.",
+  "koordinaty": {
+    "shirota": 64.446,
+    "dolgota": -149.681,
+    "tochka": "середина штата Аляска",
+    "otkuda": "https://www.openstreetmap.org/relation/1116270"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Русская Америка",
+      "po": "1867-10-18"
+    },
+    {
+      "nazvanie": "Аляска",
+      "s": "1867-10-18"
+    }
+  ]
+}

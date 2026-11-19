@@ -82,10 +82,9 @@ video:
   pole: nesdayutsya/26jan-leonov:horizontal.sec
   suffix: сек
   badge: 46 сек
-  intro: Первый вышел в открытый космос — и едва не остался там навсегда
-  poster: /muzei/ne-sdayutsya/video/day-26jan-leonov-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-26jan-leonov.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42050502303) из сценария days/ns26jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-26jan-leonov-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-26jan-leonov.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Среда подвига
   h2: Корабль с надувной дверью
@@ -400,15 +399,7 @@ sources:
     note: к факту 14
 kuda:
   - lbl: Следующий день
-    href: podvig-tuman.html
-    title: 28 — сторожевой корабль «Туман»
-    hook: "Стойкость флота: рыбацкий траулер против трёх эсминцев — флаг не спустили."
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

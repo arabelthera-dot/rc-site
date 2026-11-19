@@ -80,9 +80,8 @@ video:
   pole: nesdayutsya/11jan-dom-pavlova:horizontal.sec
   suffix: сек
   badge: 40 сек
-  intro: "Обычный дом держал улицу пятьдесят восемь дней"
-  poster: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova.mp4?v=1
+  poster: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-11jan-dom-pavlova.mp4
   note: Кадры ролика — подлинные фотографии из Государственного каталога музейного фонда России. Сгенерированных нейросетью кадров нет. Закадровый текст озвучен синтезом речи.
 story:
   kicker: Сержант
@@ -412,15 +411,7 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-matrosov.html
-    title: 12 — Александр Матросов
-    hook: Закрыл пулемёт собой — и рота поднялась из снега.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

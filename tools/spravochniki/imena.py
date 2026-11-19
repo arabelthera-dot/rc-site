@@ -17,7 +17,8 @@ from datetime import date, timedelta
 from pathlib import Path
 
 KOREN = Path(__file__).resolve().parents[2]
-SLOVAR = KOREN / 'src/data/slovar.json'
+sys.path.insert(0, str(KOREN / 'tools'))
+import slovar_dannye  # noqa: E402 — словарь: файл на запись (Р776)
 KESH = Path.home() / '.cache/rc-imena'
 M = 'http://www.loc.gov/mads/rdf/v1#'
 VIKI = re.compile(r'wiki|vikiped', re.I)
@@ -201,7 +202,8 @@ def latinica_loc(g, i, zag):
 
 
 def zapolnit():
-    sl = json.loads(SLOVAR.read_text())
+    sl = slovar_dannye.chitat()
+    bylo = json.loads(json.dumps(sl))
     schet = {}
     for k, z in sl.items():
         if z.get('tip') != 'lyudi': continue  # _roli и прочие служебные записи без tip
@@ -243,12 +245,13 @@ def zapolnit():
         if gody: z['gody'] = gody
         schet[z['latinica_iz']] = schet.get(z['latinica_iz'], 0) + 1
         print(f"{k:38} {z['latinica']:28} {z['latinica_iz']:15} {json.dumps(gody, ensure_ascii=False)}")
-    SLOVAR.write_text(json.dumps(sl, ensure_ascii=False, indent=2) + '\n')
+    for k, z in sl.items():
+        if z != bylo[k]: slovar_dannye.zapisat(k, z)  # пишется только файл изменённой записи
     print('итого:', schet)
 
 
 def svyazat(slug, ssylka):
-    sl = json.loads(SLOVAR.read_text())
+    sl = slovar_dannye.chitat()
     baza, i = ssylka.split(':', 1)
     z = sl[f'lyudi:{slug}']
     if baza == 'loc':
@@ -257,7 +260,7 @@ def svyazat(slug, ssylka):
         p = z['nazvanie'].split(' (')[0].split()
         nr = {'baza': 'VIAF', 'id': i, 'ssylka': f'https://viaf.org/viaf/{i}/', 'poisk': ' '.join(p[1:] + p[:1])}
     z['normativ'] = nr
-    SLOVAR.write_text(json.dumps(sl, ensure_ascii=False, indent=2) + '\n')
+    slovar_dannye.zapisat(f'lyudi:{slug}', z)
 
 
 if __name__ == '__main__':

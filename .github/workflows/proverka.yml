@@ -24,7 +24,7 @@ jobs:
   # сборка или эта проверка (package.json, astro.config.mjs, src/, proverka.yml), и то, что он подключает, — со сборкой.
   # Ручной запуск и заявка больше 3000 файлов — всегда со сборкой. Откат — убрать задание filtr и строки needs/if с ним.
   filtr:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 3
     outputs:
       sborka: ${{ steps.f.outputs.sborka }}
@@ -76,17 +76,18 @@ jobs:
           echo "Файлов в заявке: $vsego; полная сборка: $sborka" | tee -a "$GITHUB_STEP_SUMMARY"
           echo "sborka=$sborka" >> "$GITHUB_OUTPUT"
   bez-sborki:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          filter: blob:none
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --ignore-scripts
       # Сторож ссылок и опасного JS (разбор безопасности 20.10.2026, п. 1-2): каждый внешний домен в днях, полных
       # страницах, шаблонах и движках — из data/razreshennye-domeny.txt (206 с main); eval/new Function/atob/
       # document.write/location= на чужой адрес/склейка 'ht'+'tps' — запрещены. На main 0 нарушений — строгий сразу.
@@ -100,22 +101,45 @@ jobs:
       - name: innerhtml-opis — новые небезопасные вставки HTML
         timeout-minutes: 1
         run: node scripts/innerhtml-opis.mjs
+      # Ключи и пароли в коммитах заявки (п.502 плана, Р745, 10.11.2026): gitleaks — только коммиты сверх main.
+      # Как в мире — https://github.com/gitleaks/gitleaks#docker. Откат — удалить этот шаг.
+      - name: gitleaks — ключей в коммитах заявки нет
+        timeout-minutes: 3
+        run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.30.1 git /repo --redact --no-banner --log-opts="origin/main..HEAD"
+      # Права кадра по таблице «база → пометка» (Р764 п.2, 13.11.2026): в днях заявки кадр без пометки из закрытого
+      # списка и с базой не из таблицы называется. Как в мире — https://rightsstatements.org/page/1.0/ и
+      # https://pro.europeana.eu/page/available-rights-statements. Предупреждение; красная — "strogo": true
+      # в src/data/spravochniki/pometki-prav.json. Откат — удалить этот шаг.
+      - name: prava-pometki — права кадров по таблице баз
+        timeout-minutes: 1
+        run: node scripts/prava-pometki.mjs
+      # Замок кадров дня (Р408, Р90, Р536 п. 4; возвращён из архива Р627 по Р801, 17.11.2026): по карточкам
+      # src/content/dni-shablon/<музей>/ — разных кадров ≥ 6, повтор по pHash (Хэмминг ≤ 8) и тот же файл дважды — брак,
+      # адрес Википедии или Викисклада — брак, кадра нет в public/ — брак. Недобор лечит машина:
+      # scripts/kadry-dnya.py dobor ДНИ --zapis (кадры и паспорт из Госкаталога). Откат — удалить этот шаг.
+      - name: kadry-dnya — кадров ≥ 6, без повторов (pHash), без Википедии
+        timeout-minutes: 3
+        run: |
+          python3 -m venv /tmp/kd && /tmp/kd/bin/pip install -q --disable-pip-version-check pillow imagehash pyyaml
+          /tmp/kd/bin/python scripts/kadry-dnya.py zamok --proba && /tmp/kd/bin/python scripts/kadry-dnya.py zamok все
   sborka:
     needs: filtr
     if: needs.filtr.outputs.sborka == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 15
     steps:
       # Вся история git: «Проверено» и журнал исправлений дня берутся из git log карточки (Е5, src/lib/redakciya.mjs);
-      # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату.
+      # мелкий клон в CI роняет сборку, а не показывает всем дням одну дату. История — без старых версий файлов
+      # (частичный клон blob:none, Р819): git log по путям читает только коммиты и деревья, старые ролики не качаются.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          filter: blob:none
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --ignore-scripts
       # Кэш сборки (Р737 п.7а): кадры пересылки rc-og-den (4220 карточек — ~2 мин заново), картинки rc-kartinki,
       # плитки лупы rc-dz и кэш Astro. Все ключуются хешем содержимого внутри, так что чужой кэш не портит сборку,
       # только экономит. Восстановление — после npm ci (он стирает node_modules). Заявка берёт кэш main (deploy.yml
@@ -143,6 +167,8 @@ jobs:
           PUBLIC_POCHTA_FORMA: ${{ vars.PUBLIC_POCHTA_FORMA }}
           PUBLIC_POCHTA_SPISOK: ${{ vars.PUBLIC_POCHTA_SPISOK }}
           RC_PROBA_RTL: '1'
+          # п.497 (Р745): проверочная сборка — со страницами /god/, /vek/ и фильтрами поиска; живой сайт (deploy.yml) — без.
+          PUBLIC_VREMYA: '1'
       # Р531, аудит п.15: сборка не оставляет грязной копии — всё, что она пишет, либо в dist, либо в .gitignore.
       # Новый сгенерированный файл в git → красный здесь, а не тихий шум в чужих заявках.
       - name: сборка не оставила грязной копии
@@ -176,7 +202,7 @@ jobs:
   proverki-dist:
     needs: [filtr, sborka]
     if: needs.filtr.outputs.sborka == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -186,7 +212,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --ignore-scripts
       # Сборка одна — на всё задание (Р531, аудит п.16): dist приходит из задания sborka, не собирается заново.
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
@@ -204,7 +230,7 @@ jobs:
   brauzer:
     needs: [filtr, sborka]
     if: needs.filtr.outputs.sborka == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     # 25, не 15 (27.10.2026): oshibki-js ~3,5, glazami ~2,5, Lighthouse обрывался на 15-й минуте (#515, #516, #520).
     # 45, не 25 (r561, 06.11.2026): prohod-igr проходит все игры и съедает свои 10; oshibki-js обрывался на 25-й (#876).
     timeout-minutes: 45
@@ -213,11 +239,12 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          filter: blob:none
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --ignore-scripts
       # Сборка одна — на всё задание (Р531, аудит п.16): dist приходит из задания sborka, не собирается заново.
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
@@ -266,7 +293,7 @@ jobs:
   sborka-i-ssylki:
     needs: [filtr, bez-sborki, sborka, proverki-dist, brauzer]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 2
     steps:
       - name: итог — все задания зелёные

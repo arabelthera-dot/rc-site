@@ -82,10 +82,9 @@ video:
   pole: nesdayutsya/04jan-kozelsk:horizontal.sec
   suffix: сек
   badge: 48 сек
-  intro: Семь недель город держал орду — Батый назвал его злым
-  poster: /muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg?v=2
-  mp4: /muzei/ne-sdayutsya/video/day-04jan-kozelsk.mp4?v=2
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 41872879687) из сценария days/ns04jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-04jan-kozelsk.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг · 6 ударов
   h2: Семь недель, которых не должно было быть
@@ -397,20 +396,7 @@ sources:
   - html: "Памятная медаль «Героическая оборона Козельска в 1238 г.» — музей-заповедник «Куликово поле», <a href=\"https://goskatalog.ru/portal/#/collections?id=50086505\">Госкаталог № 50086505</a>."
 kuda:
   - lbl: Следующий день
-    href: podvig-brest.html
-    title: 5 — Брестская крепость
-    hook: «Умираю, но не сдаюсь» — надпись на кирпиче, а не в приказе.
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
-  - lbl: Город-музей
-    href: ../../index.html
-    title: Русская цивилизация
-    hook: Все музеи проекта на одной карте.
-    main: false
 score:
   awards:
     q: [ 5, 10 ]

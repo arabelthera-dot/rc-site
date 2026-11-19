@@ -77,10 +77,9 @@ video:
   pole: nesdayutsya/30jan-chernobyl:horizontal.sec
   suffix: сек
   badge: 42 сек
-  intro: Трое нырнули в смертельную воду, чтобы не взорвался второй реактор
-  poster: /muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg?v=1
-  mp4: /muzei/ne-sdayutsya/video/day-30jan-chernobyl.mp4?v=1
-  note: Ролик собран в облаке rc-rolik (render.yml, прогон 42086799346) из сценария days/ns30jan.json и кадров дня. Закадровый текст озвучен синтезом речи.
+  poster: /muzei/ne-sdayutsya/video/day-30jan-chernobyl-poster.jpg
+  mp4: /muzei/ne-sdayutsya/video/day-30jan-chernobyl.mp4
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: Подвиг
   h2: Ликвидаторы Чернобыля
@@ -407,15 +406,7 @@ sources:
     note: к факту 13
 kuda:
   - lbl: Следующий день
-    href: /muzei/ne-sdayutsya/den/01-31/
-    title: 31 — Андрей Борзенко
-    hook: Его выводили биться против сильнейших — он выигрывал и не сдавался
     main: true
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
-    main: false
 score:
   awards:
     q:

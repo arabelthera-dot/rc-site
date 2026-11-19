@@ -34,6 +34,9 @@ jobs:
       actions: write
     env:
       GH_TOKEN: ${{ github.token }}
+      # Р825: автослияние включает SLIYANIE_TOKEN (ключ arabelthera-dot), не github.token: слияние от github.token не запускает
+      # deploy.yml (GitHub Docs «Triggering a workflow from a workflow»; #1574, 18.11 — сайт не выложился). Нет секрета — github.token.
+      SLIYANIE_TOKEN: ${{ secrets.SLIYANIE_TOKEN || github.token }}
       FAYLY: ${{ inputs.fayly }}
     steps:
       # без public/: перевод читает карточку и пишет только src/data/perevod/ и src/data/igry/stroki/
@@ -66,6 +69,8 @@ jobs:
       - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # клон частичный: ушёл main — push без переговоров шлёт всё дерево, HTTP 500 (Р820, как в rolik-na-sait.yml)
+          git config push.negotiate true
           [ -n "$FAYLY" ] || FAYLY=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'src/content/dni-shablon/*/*.yaml')
           [ -n "$FAYLY" ] || { echo "Новых карточек дня нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
           VETKA="avto/perevod-${GITHUB_SHA::8}"
@@ -92,7 +97,7 @@ jobs:
           nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
           [ -n "$nomer" ] || nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] машинный перевод дня" --body "$telo" | grep -o '[0-9]*$')
           # автослияние — только у слияния дня; ручной пуск (проба, разбор) оставляет заявку человеку
-          [ "$GITHUB_EVENT_NAME" = push ] && gh pr merge "$nomer" --auto --squash
+          [ "$GITHUB_EVENT_NAME" = push ] && GH_TOKEN="$SLIYANIE_TOKEN" gh pr merge "$nomer" --auto --squash
           echo "- заявка https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
           sha=$(git rev-parse HEAD)
           zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"

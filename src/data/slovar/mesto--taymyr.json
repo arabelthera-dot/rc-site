@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Таймыр",
+  "kratko": "Самый северный полуостров Евразии.",
+  "koordinaty": {
+    "shirota": 76.0,
+    "dolgota": 105.0,
+    "tochka": "точка полуострова на карте",
+    "otkuda": "https://www.openstreetmap.org/node/4883421521"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Таймыр"
+    }
+  ]
+}

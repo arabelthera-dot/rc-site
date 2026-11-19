@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Сергей Виноградов",
+  "pol": "m",
+  "kratko": "Живописец, пейзажист Союза русских художников.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "no2002065273",
+    "ssylka": "https://id.loc.gov/authorities/names/no2002065273.html",
+    "zagolovok": "Vinogradov, Sergeĭ, 1869-1938"
+  },
+  "latinica": "Sergei Vinogradov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1869",
+    "smert": "1938"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Михаил Нестеров",
+  "pol": "m",
+  "kratko": "Живописец, автор «Видения отроку Варфоломею».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n83145723",
+    "ssylka": "https://id.loc.gov/authorities/names/n83145723.html",
+    "zagolovok": "Nesterov, Mikhail Vasilʹevich, 1862-1942"
+  },
+  "latinica": "Mikhail Nesterov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1862-05-31",
+    "rozhdenie_ss": "1862-05-19",
+    "smert": "1942-10-18"
+  }
+}

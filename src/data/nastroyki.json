@@ -5,5 +5,7 @@
   "pochtaProverka": "info@russian-civilization.ru",
   "_pochtaProverka": "Куда приходят ответы проверяющих со страницы /proverka/ (Р46). Строка «Нашли ошибку? Сообщите нам» на страницах дней с 20.10.2026 (решение Сергея) шлёт уже на pochtaOshibka. У домена russian-civilization.ru на 20.10.2026 нет почтового сервера (MX), письмо на pochtaOshibka вернётся. Появится почта проекта — заменить здесь.",
   "podkast": false,
-  "_podkast": "Подкаст-лента /podkast.xml из аудиогидов дней (п.504, Р746): true — scripts/podkast.mjs после сборки кладёт в dist ленту и обложку 3000×3000; false — ленты нет."
+  "_podkast": "Подкаст-лента /podkast.xml из аудиогидов дней (п.504, Р746): true — scripts/podkast.mjs после сборки кладёт в dist ленту и обложку 3000×3000; false — ленты нет.",
+  "pwaManifest": false,
+  "_pwaManifest": "Ссылка <link rel=\"manifest\"> на /manifest.webmanifest в <head> всех страниц Base.astro (п.507, Р746: приложение RuStore через Bubblewrap). Выключено: с ней Chrome на Android предлагает «Установить приложение» — меняется вид для посетителя. Файл манифеста лежит и без ссылки, сборке Bubblewrap хватает адреса файла. Включить — true."
 }

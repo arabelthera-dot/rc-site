@@ -85,9 +85,8 @@ video:
   pole: nesdayutsya/09jan-panfilovtsy:horizontal.sec
   suffix: сек
   badge: 46 сек
-  intro: "Двадцать восемь против полусотни танков — и «отступать некуда»"
   poster: /muzei/ne-sdayutsya/video/day-09jan-panfilovtsy-poster.jpg
-  mp4: /muzei/ne-sdayutsya/video/day-09jan-panfilovtsy.mp4?v=1
+  mp4: /muzei/ne-sdayutsya/video/day-09jan-panfilovtsy.mp4
   note: Визуальный ряд — предметы Музейного фонда РФ из Госкаталога, среди них картина Е. И. Комарова «Подвиг 28 героев-панфиловцев» (1942). Закадровый текст озвучен синтезом речи.
 story:
   kicker: Люди
@@ -409,19 +408,8 @@ sources:
     note: к факту 15
 kuda:
   - lbl: Следующий день
-    href: podvig-varyag.html
-    title: 10 — крейсер «Варяг»
-    hook: Крейсер затопили свои — но флаг не спустили.
     main: true
   - lbl: Предыдущий день
-    href: podvig-kosmodemyanskaya.html
-    title: 8 — Зоя Космодемьянская
-    hook: На эшафоте — восемнадцать лет.
-    main: false
-  - lbl: Весь музей
-    href: index.html
-    title: Музей стойкости и подвига «Русские не сдаются»
-    hook: Стойкость и подвиг день за днём.
     main: false
 score:
   awards:

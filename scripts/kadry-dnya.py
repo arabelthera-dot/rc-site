@@ -13,7 +13,8 @@ pHash (imagehash, https://github.com/JohannesBuchner/imagehash), Хэмминг 
                             сухой прогон: «добрал бы». С --zapis — качает кадр в public/muzei/<музей>/img/ММ-ДД-goskatalog-ID.jpg
                             (не шире 1600), сверяет pHash с кадрами дня и дописывает в figures карточки.
                             Википедия и Викисклад не запрашиваются (Р90): фонд — только Госкаталог.
-Откат — удалить файл и шаг kadry-dnya в .github/workflows/proverka.yml.
+В проверке сайта не стоит с 08.11 (Р627); добор пишет и паспорт кадра (пп. 20–29, 182, 187, 202), символику — человек.
+Откат паспорта — убрать вызов pasport() в dobor.
 """
 import argparse
 import collections
@@ -33,6 +34,7 @@ MIN_KADROV = 6
 POROG = 8
 VIKI = re.compile(r'wiki(pedia|media)\.org|wikimedia|викисклад|википеди', re.I)
 KART = re.compile(r'\.(jpe?g|png|webp|avif)$', re.I)
+NET = 'net'  # «значения нет» — как src/lib/forma-dnya.mjs
 LICENZIYA = 'цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)'
 
 
@@ -54,8 +56,11 @@ def kadry(karta):
     return out
 
 
-def fail_kadra(src, public):
-    return public / src.lstrip('/') if src.startswith('/') else None
+def fail_kadra(src, public, muzei=None):
+    """Файл кадра; путь без «/» — от папки музея, как его кладёт сборка (январь изобретений: «day-02jan-….jpg»)."""
+    if src.startswith('/'):
+        return public / src.lstrip('/')
+    return public / 'muzei' / muzei / src if muzei and not re.match(r'\w+:', src) else None
 
 
 def phash(put):
@@ -63,7 +68,7 @@ def phash(put):
         return imagehash.phash(im)
 
 
-def proverit(tekst, public, imya='?'):
+def proverit(tekst, public, imya='?', muzei=None):
     """Список браков карточки (строки). Пусто — день прошёл."""
     brak = []
     for m in sorted({m.group(0) for m in VIKI.finditer(tekst)}):
@@ -73,7 +78,7 @@ def proverit(tekst, public, imya='?'):
     raznye = list(dict.fromkeys(src for _, src in kk))
     hesh = []
     for src in raznye:
-        f = fail_kadra(src, public)
+        f = fail_kadra(src, public, muzei)
         if f is None or not f.is_file():
             brak.append(f'нет файла кадра {src}')
             continue
@@ -121,7 +126,7 @@ def zamok(a):
         if not f.exists():
             print(f'  {d}: карточки нет — пропуск')
             continue
-        brak, n = proverit(f.read_text(encoding='utf-8'), public, d)
+        brak, n = proverit(f.read_text(encoding='utf-8'), public, d, a.muzei)
         print(f'{"✗" if brak else "✓"} {a.muzei} {d}: разных кадров {n}' + ''.join(f'\n    ✗ {b}' for b in brak))
         plohih += bool(brak)
     if plohih:
@@ -183,15 +188,49 @@ def kadr_metki():
 
 
 def dopisat_figures(tekst, novye):
-    """Дописать кадры в конец списка figures, не трогая остальной текст карточки."""
-    blok = ''.join('    ' + s if i else '  - ' + s for k in novye
-                   for i, s in enumerate(yaml.safe_dump(k, allow_unicode=True, sort_keys=False, width=10 ** 6).splitlines(True)))
+    """Дописать кадры в конец списка figures, не трогая остальной текст карточки; отступ — как у списка («- » с 0 или 2 пробелов)."""
     m = re.search(r'^figures:[ \t]*(\[\])?[ \t]*\n', tekst, re.M)
+    ots = '' if m and re.match(r'- ', tekst[m.end():]) else '  '
+    blok = ''.join(ots + '  ' + s if i else ots + '- ' + s for k in novye
+                   for i, s in enumerate(yaml.safe_dump(k, allow_unicode=True, sort_keys=False, width=10 ** 6).splitlines(True)))
     if not m:
         return tekst.rstrip('\n') + '\nfigures:\n' + blok
-    sled = re.compile(r'^\S', re.M).search(tekst, m.end())
+    sled = re.compile(r'^(?!- )\S' if not ots else r'^\S', re.M).search(tekst, m.end())
     konec = sled.start() if sled else len(tekst)
     return tekst[:m.start()] + 'figures:\n' + tekst[m.end():konec] + blok + tekst[konec:]
+
+
+VIDY = [(r'^(фото|негатив|диапозитив|слайд|открытка фото)', 'foto', 'Фото'), (r'^(плакат|афиша)', 'plakat', 'Плакат'),
+        (r'^(карта|план мест|схема)', 'karta', 'Карта'), (r'^(черт[её]ж|эскиз техн)', 'chertezh', 'Чертёж'),
+        (r'^(картина|этюд|живопис)', 'kartina', 'Картина'), (r'^(рисунок|гравюра|литография|акварель|эскиз|набросок)', 'risunok', 'Рисунок'),
+        (r'^(книга|брошюра|газета|журнал|документ|письмо|удостоверение|грамота|приказ|листовка|рукопись|справка|телеграмма|билет|диплом|альбом)',
+         'dokument', 'Документ')]
+SVYATOE = re.compile(r'\b(икона|образ|крест|складень|антиминс|плащаница|потир|мощ)', re.I)
+
+
+def pasport(o, gk, data_source):
+    """Паспорт кадра (пп. 20, 21, 23, 28, 29, 182, 187, 202 src/lib/standart-dnya.mjs) из полной карточки Госкаталога.
+    Чего в карточке нет — net, как в 371 из 390 кадров корпуса; символику (п. 27) ставит человек, не машина."""
+    try:
+        p = gk._open(f'/muzfo-rest/rest/exhibits/{o["id"]}', timeout=40)
+    except Exception:
+        p = {}
+    nazv = nazvanie(p or o).rstrip('.')
+    vid, slovo = next(((v, s) for r, v, s in VIDY if re.match(r, nazv, re.I)), ('predmet', 'Предмет'))
+    kogda = str(p.get('periodStr') or '').strip() or NET
+    avtory = ', '.join(x.get('name', '') for x in (p.get('authors') or o.get('authors') or []) if isinstance(x, dict) and x.get('name'))
+    hran = gk.muzey(o.get('museumId')) or NET
+    chasti = [c for c in re.split(r'[.:;]\s', nazv) if c.strip()]  # «Книга. Моабит дәфтәре. …» → «Моабит дәфтәре»
+    kratko = (chasti[1] if len(chasti) > 1 and re.fullmatch(r'[\w -]+', chasti[0]) and len(chasti[0]) < 30 else chasti[0])
+    kratko = kratko if len(kratko) <= 50 else kratko[:50].rsplit(' ', 1)[0]
+    return {'vid': vid, 'glavnoe_na_kartinke': NET,
+            'nomer_predmeta': str(o.get('invNumber') or o.get('gikNumber') or NET).strip(), 'nomer_snimka': str(o['mainImage']['id']),
+            'hranitel': hran, 'podpis_chto': nazv, 'podpis_gde': str(p.get('productionPlace') or '').strip() or NET, 'podpis_kogda': kogda,
+            'podlinnik': {'gde': hran, 'otkuda': data_source}, 'svyashchennoe': bool(SVYATOE.search(nazv)),
+            'prava': {'avtor': avtory or 'автор не указан', 'god_sozdaniya': kogda, 'god_smerti_avtora': NET, 'god_reabilitacii': NET,
+                      'anonim': not avtory, **({} if avtory else {'pervaya_publikaciya': NET}),
+                      'otkuda': 'Госкаталог музейного фонда РФ', 'baza': 'goskatalog', 'ssylka': data_source, 'sdelano_mashinoj': False},
+            'hint': f'{slovo} · {kratko}' + (f', {kogda}' if kogda != NET and kogda not in kratko else '')}
 
 
 def nazvanie(o):
@@ -273,7 +312,7 @@ def dobor(a):
         f = papka / f'{d}.yaml'
         tekst = f.read_text(encoding='utf-8') if f.exists() else ''
         karta = yaml.safe_load(tekst) or {} if tekst else {}
-        brak, n = proverit(tekst, public, d) if tekst else ([], 0)
+        brak, n = proverit(tekst, public, d, a.muzei) if tekst else ([], 0)
         nado = max(0, MIN_KADROV - n)
         if not nado:
             print(f'✓ {d}: кадров {n} — добирать не нужно')
@@ -295,8 +334,8 @@ def dobor(a):
         nashli.sort(key=lambda x: -ochki(x[1], osn))
         vzyali = []
         if a.zapis and f.exists():
-            heshi = [phash(fail_kadra(s, public)) for s in dict.fromkeys(x for _, x in kadry(karta))
-                     if fail_kadra(s, public) and fail_kadra(s, public).is_file()]
+            heshi = [phash(fail_kadra(s, public, a.muzei)) for s in dict.fromkeys(x for _, x in kadry(karta))
+                     if fail_kadra(s, public, a.muzei) and fail_kadra(s, public, a.muzei).is_file()]
             for s, o in nashli:
                 if len(vzyali) >= nado:
                     break
@@ -327,11 +366,14 @@ def dobor(a):
                                'podpis': f'{nazv}.',
                                'credit': f'{avt + ". " if avt else ""}Хранится: {gk.muzey(o.get("museumId"))}. Госкаталог № {str(o["regNumber"]).strip()}',
                                'width': kadr.width, 'height': kadr.height})
+                vzyali[-1].update(pasport(o, gk, vzyali[-1]['data_source']))
             if vzyali:
                 f.write_text(dopisat_figures(tekst, vzyali), encoding='utf-8')
                 km = kadr_metki()
                 for v in vzyali:  # п. 157: происхождение по IPTC внутри файла, из той же записи
                     km.podpisat(KOREN / 'public' / v['src'].lstrip('/'), v['credit'], v['data_source'], v['license'])
+                if a.muzei == 'ne-sdayutsya':  # п. 27: символику проверяет человек — машина «да» не ставит
+                    print(f'    {d}: глазами — символика {len(vzyali)} новых кадров, затем simvolika_proverena: true', file=sys.stderr)
         mozhno = min(nado, len(vzyali) if a.zapis else len(nashli))
         ok = n + mozhno >= MIN_KADROV
         zakryto += ok

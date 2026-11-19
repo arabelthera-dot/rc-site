@@ -1,0 +1,109 @@
+# Превью заявки дня — свой адрес до слияния (Р764 п.1): https://pr-N--<сайт>.netlify.app, обновляется с каждым коммитом.
+# Образец — deploy preview Netlify (https://docs.netlify.com/site-deploys/deploy-previews/, команда
+# https://cli.netlify.com/commands/deploy/ --alias) и тот же файл rc-museum-preview/.github/workflows/netlify-preview.yml
+# (там работает с 14.10, *.netlify.app открывается из РФ). Второй сборки нет: берётся dist, который уже собрала
+# proverka.yml (задание sborka, артефакт dist). Секреты — только здесь, в workflow_run: код заявки собирается без
+# секретов, сюда приходит лишь готовая сборка (GitHub Security Lab, «Preventing pwn requests»,
+# https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/). Из сборки ничего не исполняется.
+# Закрыто от поисковиков: robots.txt Disallow: /, заголовок X-Robots-Tag (_headers Netlify), <meta name="robots"
+# content="noindex"> в каждой странице. Ролики (*.mp4) не выкладываются — как на Pages (Р263).
+# Чьи заявки: из этого репо, меняющие день — src/content/dni-shablon/**, src/content/days/**, src/pages/muzei/**.
+# Пять вопросов: задевает — только сайт превью на Netlify и комментарий в заявке; main, Pages, msk-new не трогает;
+# нужно — секреты NETLIFY_AUTH_TOKEN, NETLIFY_SITE_ID (Михаил); без них — спит с пометкой, заявку не держит
+# (в защите main не стоит); проверка — первая заявка дня после включения; откат — переменная PREVYU не '1'
+# (по умолчанию выключено; включить: gh variable set PREVYU -b 1) или удалить этот файл.
+name: prevyu
+on:
+  workflow_run:
+    workflows: [proverka]
+    types: [completed]
+permissions:
+  contents: read
+concurrency:
+  group: prevyu-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+jobs:
+  vylozhit:
+    if: >-
+      vars.PREVYU == '1' && github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion != 'cancelled' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      actions: read
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      RUN_ID: ${{ github.event.workflow_run.id }}
+      SHA: ${{ github.event.workflow_run.head_sha }}
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    steps:
+      - name: заявка, день, сборка, ключи
+        id: k
+        run: |
+          echo ok=0 >> "$GITHUB_OUTPUT"
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::notice::нет секретов NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID — превью спит"; exit 0; fi
+          PR=$(gh api "repos/$REPO/commits/$SHA/pulls" --jq '[.[]|select(.state=="open")][0].number // empty')
+          [ -n "$PR" ] || { echo "::notice::открытой заявки на $SHA нет"; exit 0; }
+          gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[]|select(.status!="removed")|.filename' > faily.txt
+          grep -E '^src/(content/(dni-shablon|days)|pages/muzei)/' faily.txt > den.txt || { echo "::notice::заявка #$PR день не меняет"; exit 0; }
+          N=$(gh api "repos/$REPO/actions/runs/$RUN_ID/artifacts" --jq '[.artifacts[]|select(.name=="dist" and (.expired|not))]|length')
+          [ "$N" = 1 ] || { echo "::notice::в прогоне proverka $RUN_ID нет сборки dist — превью нет"; exit 0; }
+          { echo ok=1; echo "pr=$PR"; } >> "$GITHUB_OUTPUT"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        if: steps.k.outputs.ok == '1'
+        with:
+          name: dist
+          path: /tmp/a
+          run-id: ${{ env.RUN_ID }}
+          github-token: ${{ github.token }}
+      - name: сборка — закрыть от поисковиков
+        if: steps.k.outputs.ok == '1'
+        run: |
+          mkdir -p site && tar -xf /tmp/a/dist.tar -C site && rm -rf /tmp/a
+          cd site/dist
+          rm -rf netlify.toml netlify _redirects
+          find . -name '*.mp4' -delete
+          printf 'User-agent: *\nDisallow: /\n' > robots.txt
+          printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > _headers
+          # meta noindex — сразу после <head>; где уже стоит, второй не ставится
+          find . -name '*.html' -print0 | xargs -0 -r grep -L 'name="robots"' -Z | xargs -0 -r sed -i '0,/<head>/s##<head><meta name="robots" content="noindex, nofollow">#'
+          echo "сборка превью: $(du -sm . | cut -f1) МБ, $(find . -type f | wc -l) файлов" >> "$GITHUB_STEP_SUMMARY"
+      - name: выкладка на Netlify
+        id: d
+        if: steps.k.outputs.ok == '1'
+        env:
+          PR: ${{ steps.k.outputs.pr }}
+        run: |
+          mkdir -p /tmp/pusto && cd /tmp/pusto
+          npx -y netlify-cli@27.12.1 deploy --dir="$GITHUB_WORKSPACE/site/dist" --no-build --alias="pr-$PR" \
+            --site="$NETLIFY_SITE_ID" --message="заявка #$PR ${SHA:0:7}" --json > deploy.json
+          URL=$(jq -r '.deploy_url' deploy.json | sed -E 's#^https://[0-9a-f]+--#https://pr-'"$PR"'--#')
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          echo "Превью: $URL" >> "$GITHUB_STEP_SUMMARY"
+      - name: адрес в заявке
+        if: steps.k.outputs.ok == '1'
+        env:
+          PR: ${{ steps.k.outputs.pr }}
+          URL: ${{ steps.d.outputs.url }}
+        run: |
+          MARK='<!-- prevyu -->'
+          {
+            echo "$MARK"
+            echo "**Превью заявки** — сайт, как будет после слияния (коммит ${SHA:0:7}); закрыт от поисковиков:"
+            echo
+            sed -nE 's#^src/content/(dni-shablon|days)/([a-z-]+)/([0-9]{2}-[0-9]{2})\.(yaml|json)$#\2 \3#p' den.txt | sort -u |
+              while read -r m k; do
+                for p in den den-shablon; do
+                  if [ -f "site/dist/muzei/$m/$p/$k/index.html" ]; then echo "- $URL/muzei/$m/$p/$k/"; break; fi
+                done
+              done
+            echo "- $URL/"
+          } > body.md
+          ID=$(gh api --paginate "repos/$REPO/issues/$PR/comments" --jq ".[]|select(.body|startswith(\"$MARK\"))|.id" | head -1)
+          if [ -n "$ID" ]; then gh api -X PATCH "repos/$REPO/issues/comments/$ID" -F body=@body.md >/dev/null
+          else gh api -X POST "repos/$REPO/issues/$PR/comments" -F body=@body.md >/dev/null; fi

@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Владимир Шухов",
+  "pol": "m",
+  "kratko": "Инженер, создатель сетчатых гиперболоидных башен.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81110397",
+    "ssylka": "https://id.loc.gov/authorities/names/n81110397.html",
+    "zagolovok": "Shukhov, V. G. (Vladimir Grigorʹevich), 1853-1939"
+  },
+  "latinica": "Vladimir Shukhov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1853",
+    "smert": "1939"
+  }
+}

@@ -20,7 +20,7 @@ concurrency:
 jobs:
   sait:
     if: github.event_name == 'workflow_dispatch' || vars.SMOKE_TEST == '1'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Р761: на ubuntu-latest (26.04) Playwright не ставит chromium
     timeout-minutes: 10
     steps:
       # sparse-checkout в режиме cone берёт и файлы корня — package.json и package-lock.json:

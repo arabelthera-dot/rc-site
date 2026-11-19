@@ -1,7 +1,6 @@
 {
   "title": "История в 46 секунд",
-  "intro": "Батый сжёг Рязань — но запомнил имя того, кто рубился на пепелище",
-  "note": "Ролик собран в облаке rc-rolik (render.yml, прогон 41872778013) из сценария days/ns01jan.json и кадров дня. Закадровый текст озвучен синтезом речи.",
+  "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/01jan-kolovrat/day-01jan-kolovrat.mp4",
     "local": "muzei/ne-sdayutsya/video/day-01jan-kolovrat.mp4",

@@ -1,0 +1,957 @@
+muzei: izobreteniya
+key: 02-18
+adres: den
+pokazan_sergeyu:
+  data: '2026-11-15'
+nomer_dnya: izob-0218-pochvovedenie
+data_sobytiya: '1883-02-18'
+data_staryj_stil: '1883-02-06'
+chto_sluchilos: 'Василий Докучаев выпустил книгу «Русский чернозём» и доказал: почва — особое живое природное тело со своей историей, а не просто рыхлая порода. Так в России родилась первая в мире наука о почве — почвоведение.'
+god: 1883
+god_tochnost: okolo
+god_pokaza: 2027
+ves: glavnoe
+tyazhelaya_tema: net
+gde_uvidet:
+- chto: Бутыль с образцом чернозёма, отобранным В. В. Докучаевым, конец XIX века
+  muzej: Центральный музей почвоведения имени В. В. Докучаева
+  gorod: Санкт-Петербург
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=9824788
+- chto: Почвенный монолит «Чернозём типичный тучный»
+  muzej: Самарский областной историко-краеведческий музей имени П. В. Алабина
+  gorod: Самара
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=20363657
+- chto: Почвенная карта Нижегородской губернии под редакцией В. В. Докучаева, 1886
+  muzej: Государственный исторический музей
+  gorod: Москва
+  goskatalog: https://goskatalog.ru/portal/#/collections?id=49107678
+chitat_dalshe:
+- nazvanie: «Дороже золота
+  gde: Русское географическое общество
+  ssylka: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+- nazvanie: '«Василий Докучаев: масштаб личности (к 175-летию В. В. Докучаева)»'
+  gde: Бюллетень Почвенного института им. В. В. Докучаева
+  ssylka: https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva
+- nazvanie: '«Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы»'
+  gde: «Аргументы и факты»
+  ssylka: https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy
+- nazvanie: «Докучаев Василий Васильевич»
+  gde: Биографический словарь СПбГУ
+  ssylka: https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html
+- nazvanie: «От истоков до наших дней»
+  gde: Центральный музей почвоведения им. В. В. Докучаева
+  ssylka: https://soil-museum.ru/o-muzee/istoriya-muzeya/ot-istokov-do-nashikh-dney/
+istochniki:
+- id: rgo
+  baza: sajt-organizacii
+  nazvanie: '«Дороже золота — русский чернозём: 180 лет назад родился основоположник почвоведения Василий Докучаев» — Русское географическое общество'
+  ssylka: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+- id: rusakova
+  baza: nauka
+  nazvanie: '«Василий Докучаев: масштаб личности (к 175-летию В. В. Докучаева)» — Бюллетень Почвенного института им. В. В. Докучаева'
+  ssylka: https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva
+- id: rodina
+  baza: periodika
+  nazvanie: «Почему западный агробизнес готов вывозить его эшелонами с бывших колхозных полей» — журнал «Родина»
+  ssylka: https://rodina-history.ru/2020/10/09/pochemu-zapadnyj-agrobiznes-gotov-vyvozit-ego-eshelonami-s-byvshih-kolhoznyh-polej.html
+- id: aif
+  baza: periodika
+  nazvanie: '«Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — «Аргументы и факты»'
+  ssylka: https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy
+- id: spbgu
+  baza: sajt-organizacii
+  nazvanie: «Докучаев Василий Васильевич» — Биографический словарь СПбГУ
+  ssylka: https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html
+- id: vestivrn
+  baza: periodika
+  nazvanie: '«Он спас воронежские земли от засухи: 180 лет назад родился учёный Василий Докучаев» — «Вести-Воронеж»'
+  ssylka: https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/
+- id: jbks
+  baza: nauka
+  nazvanie: Хитров, Чевердин, о лесных полосах Каменной степи — «Бюллетень Почвенного института»
+  ssylka: https://jbks.ru/archive/issue-16/article-2
+- id: muzej
+  baza: sajt-organizacii
+  nazvanie: «От истоков до наших дней» — Центральный музей почвоведения им. В. В. Докучаева
+  ssylka: https://soil-museum.ru/o-muzee/istoriya-muzeya/ot-istokov-do-nashikh-dney/
+- id: sibircev
+  baza: nauka
+  nazvanie: «Н. М. Сибирцев — создатель единой науки о почве как природном теле и среде обитания» — к 155-летию
+  ssylka: https://cyberleninka.ru/article/n/n-m-sibirtsev-sozdatel-edinoy-nauki-o-pochve-kak-prirodnom-tele-i-srede-obitaniya-k-155-letiyu-so-dnya-rozhdeniya
+- id: stepi
+  baza: sajt-organizacii
+  nazvanie: В. В. Докучаев, «Наши степи прежде и теперь» (1892) — bibliotekar.ru
+  ssylka: https://bibliotekar.ru/2-7-43-dokuchaev/38.htm
+- id: neb
+  baza: sajt-organizacii
+  nazvanie: В. В. Докучаев, «Наши степи прежде и теперь», 1892 — Национальная электронная библиотека
+  ssylka: https://rusneb.ru/catalog/000199_000009_003630944/
+- id: moe
+  baza: periodika
+  nazvanie: О К. Д. Глинке и Международном конгрессе почвоведов — газета «Моё!»
+  ssylka: https://moe-online.ru/pro/pomnim/article/1160/comment/161
+- id: gk-20363657
+  baza: goskatalog
+  nazvanie: Почвенный монолит «Чернозём типичный тучный», Самарский областной историко-краеведческий музей имени П. В. Алабина — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=20363657
+- id: gk-9824788
+  baza: goskatalog
+  nazvanie: 'Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.», конец XIX в., Центральный музей почвоведения имени В. В. Докучаева — Госкаталог музейного фонда РФ'
+  ssylka: https://goskatalog.ru/portal/#/collections?id=9824788
+- id: gk-13598484
+  baza: goskatalog
+  nazvanie: Образец почвы «Разрез № 316. Девственный чернозём», конец XIX в., Центральный музей почвоведения имени В. В. Докучаева — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=13598484
+- id: gk-49107678
+  baza: goskatalog
+  nazvanie: Почвенная карта Нижегородской губернии под общей редакцией В. Докучаева, 1886, Государственный исторический музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=49107678
+- id: gk-8377722
+  baza: goskatalog
+  nazvanie: Книга В. В. Докучаева «Наши степи прежде и теперь», издание в пользу пострадавших от неурожая, 1892, Тобольский историко-архитектурный музей-заповедник — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=8377722
+- id: gk-4345262
+  baza: goskatalog
+  nazvanie: Фотография «Докучаев Василий Васильевич», конец XIX в., Смоленский государственный музей-заповедник — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=4345262
+- id: gk-15143922
+  baza: goskatalog
+  nazvanie: Медаль «100 лет со дня выхода книги В. В. Докучаева «Русский чернозём»», 1983, Ярославский художественный музей — Госкаталог музейного фонда РФ
+  ssylka: https://goskatalog.ru/portal/#/collections?id=15143922
+citaty: []
+velichina_chislo: 32
+velichina_edinica: миллиона
+velichina_chto: человек увидели русский чернозём в Париже
+etiketka_oblozhki:
+- Почвенный монолит «Чернозём типичный тучный»
+- Самарский областной историко-краеведческий музей имени П. В. Алабина
+slovar:
+- mesto:sankt-peterburg
+- mesto:nizhniy-novgorod
+head:
+  title: Почвоведение как наука, первое в мире, 1883 — Музей «Что изобрели русские первыми в мире»
+  description: Докучаев доказал, что почва — живое природное тело со своей историей, и создал первую в мире науку о почве. Русский чернозём 68 лет стоял в Сорбонне.
+  canonical: https://russian-civilization.ru/muzei/izobreteniya/den/02-18/
+  sobytie: Почвоведение как наука, первое в мире
+  god: '1883'
+  og:
+    type: article
+    site_name: Русская цивилизация
+    title: Почвоведение как наука, первое в мире
+    description: Докучаев доказал, что почва — живое природное тело со своей историей, и создал первую в мире науку о почве. Русский чернозём 68 лет стоял в Сорбонне.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-18/
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-18-goskatalog-20363657.jpg
+  ld:
+    '@context': https://schema.org
+    '@type': Article
+    headline: Почвоведение как наука, первое в мире
+    description: Докучаев доказал, что почва — живое природное тело со своей историей, и создал первую в мире науку о почве. Русский чернозём 68 лет стоял в Сорбонне.
+    url: https://russian-civilization.ru/muzei/izobreteniya/den/02-18/
+    inLanguage: ru
+    isPartOf:
+      '@type': WebSite
+      name: Музей «Что изобрели русские первыми в мире»
+    publisher:
+      '@type': Organization
+      name: Русская цивилизация
+    image: https://russian-civilization.ru/muzei/izobreteniya/img/02-18-goskatalog-20363657.jpg
+oblozhka:
+  src: /muzei/izobreteniya/img/02-18-goskatalog-20363657.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.2
+    w: 0.9
+    h: 0.6
+  width: 800
+  height: 533
+  alt: Длинный деревянный ящик, в нём вертикальный срез тёмной земли в трещинах, внизу цветная шкала
+  data_source: https://goskatalog.ru/portal/#/collections?id=20363657
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Самарский областной историко-краеведческий музей имени П. В. Алабина · Госкаталог
+  podpis: Почвенный монолит «Чернозём типичный тучный». Хранит Самарский областной историко-краеведческий музей имени П. В. Алабина.
+  credit: 'Хранится: Самарский областной историко-краеведческий музей имени П. В. Алабина. Госкаталог музейного фонда РФ, № 20226439.'
+  hint: Предмет · Почвенный монолит
+  vid: predmet
+  prava:
+    avtor: автор не указан
+    god_sozdaniya: net
+    god_smerti_avtora: net
+    god_reabilitacii: net
+    anonim: true
+    pervaya_publikaciya: net
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=20363657
+  nomer_predmeta: '20226439'
+  nomer_snimka: net
+  hranitel: Самарский областной историко-краеведческий музей имени П. В. Алабина
+  podlinnik:
+    gde: Самарский областной историко-краеведческий музей имени П. В. Алабина
+    otkuda: https://goskatalog.ru/portal/#/collections?id=20363657
+  svyashchennoe: false
+  podpis_chto: Почвенный монолит «Чернозём типичный тучный»
+  podpis_gde: Самара
+  podpis_kogda: net
+  pometka_prav: citirovanie-1274
+kroshka: 18 февраля · Почвоведение
+lead:
+  data: 1883 · Санкт-Петербург
+  privyazka: 18 февраля — день музея; книгу «Русский чернозём» Докучаев выпустил в 1883 году.
+  kto: Василий Докучаев, геолог и почвовед из Петербургского университета
+  h1: Почвоведение как наука, первое в мире
+  hook: Докучаев доказал, что чернозём — живое тело со своей историей, и русский эталон почвы увезли в Париж
+stamp:
+- v: '68'
+  k: лет стоял русский чернозём в Сорбонне
+- v: 32 млн
+  k: человек увидели русский чернозём в Париже
+- v: 10 000
+  k: вёрст прошёл Докучаев для «Русского чернозёма»
+- v: '47'
+  k: лесополос 1892 года растут до сих пор
+daynav:
+- id: story
+  label: Чернозём
+- id: fakty
+  label: Факты
+- id: kadry
+  label: Кадры
+- id: pervenstvo
+  label: Что сделано
+- id: quiz
+  label: Викторина
+- id: sources
+  label: Источники
+- id: calendar
+  label: Календарь
+audioguide:
+  audioSrc: audio-guide-pochvovedenie-ru.mp3
+  durationLabel: около двух минут
+  lead: 'Голос ведёт по залу почвоведения: от пешего пути по чернозёму через Париж и Сорбонну к лесополосам, которые растут до сих пор.'
+  stops:
+  - t: 0
+    mark: 0:00
+    title: Десять тысяч вёрст пешком
+  - t: 40
+    mark: 0:40
+    title: Живое тело земли
+  - t: 75
+    mark: '1:15'
+    title: Чернозём в Париже
+  - t: 110
+    mark: '1:50'
+    title: Лесополосы в степи
+  transcript:
+  - Для книги «Русский чернозём» Василий Докучаев прошёл десять тысяч вёрст за два лета, большей частью пешком. Оппонентом его докторской был Менделеев — и встал на его сторону целиком.
+  - Докучаев доказал, что чернозём — живое тело со своей историей. В тысяча восемьсот восемьдесят шестом году появилась первая в мире классификация почв по происхождению — русская. «Дороже нефти, угля и золота» — так Докучаев оценил русский чернозём.
+  - Русский чернозём в Париже увидели тридцать два миллиона человек, Европа назвала его «чёрным бриллиантом». Кубометры русского чернозёма стояли в Сорбонне шестьдесят восемь лет — разбили только студенты в тысяча девятьсот шестьдесят восьмом году.
+  - После голода тысяча восемьсот девяносто первого года Докучаев написал первую в мире книгу об экологическом кризисе степей. Сорок семь лесополос Докучаева тысяча восемьсот девяносто второго года растут до сих пор — в степи, где гибли хлеба.
+  note: Озвучено синтезом речи — временно, до записи голосом автора музея.
+story:
+  kicker: Живая земля
+  h2: Как чернозём стал наукой
+  udary:
+  - summary: Пешком по чернозёму
+    det:
+    - Для «Русского чернозёма» Докучаев прошёл 10 тысяч вёрст за два лета, большей частью пешком.
+    src: 'Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — aif.ru'
+  - summary: Менделеев за Докучаева
+    det:
+    - Оппонентом его докторской был Менделеев — и встал на его сторону целиком.
+    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+  - summary: Первая в мире классификация
+    det:
+    - Первая в мире классификация почв по происхождению — русская, 1886.
+    src: 'Источник: Бюллетень Почвенного института им. В. В. Докучаева, «Василий Докучаев: масштаб личности» — cyberleninka.ru'
+fakty:
+- id: fakty
+  nav: Факты
+  kicker: Что открыли
+  h2: Факты дня
+  udary:
+  - n: 1
+    sravnenie: net
+    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    otryvok: Кубометры русского чернозёма стояли в Сорбонне 68 лет — разбили только студенты в 1968
+    stranica: «Дороже золота — русский чернозём» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+    pometka: документ
+    id: sorbonna-68
+    istochnik: rgo
+    dlya_voprosa: true
+    otvet: '68'
+    otvet_edinstvennyj: true
+  - n: 2
+    sravnenie: net
+    src: 'Источник: журнал «Родина», «Почему западный агробизнес готов вывозить его эшелонами с бывших колхозных полей» — rodina-history.ru'
+    otryvok: Русский чернозём в Париже увидели 32 миллиона человек — Европа назвала его «чёрным бриллиантом»
+    stranica: «Почему западный агробизнес готов вывозить его эшелонами с бывших колхозных полей» — журнал «Родина»
+    href: https://rodina-history.ru/2020/10/09/pochemu-zapadnyj-agrobiznes-gotov-vyvozit-ego-eshelonami-s-byvshih-kolhoznyh-polej.html
+    pometka: документ
+    id: paryzh-32-mln
+    istochnik: rodina
+    dlya_voprosa: true
+    otvet: 32 миллиона
+    otvet_edinstvennyj: true
+  - n: 3
+    sravnenie: net
+    src: 'Источник: «Вести-Воронеж», «Он спас воронежские земли от засухи» — vestivrn.ru'
+    otryvok: 47 лесополос Докучаева 1892 года растут до сих пор — в степи, где гибли хлеба
+    stranica: «Он спас воронежские земли от засухи» — «Вести-Воронеж»
+    href: https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/
+    pometka: документ
+    id: lesopolosy-47
+    istochnik: vestivrn
+    dlya_voprosa: true
+    otvet: '47'
+    otvet_edinstvennyj: true
+  - n: 4
+    sravnenie: net
+    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    otryvok: Французы наградили Докучаева орденом «За заслуги по земледелию» — за русскую землю
+    stranica: «Дороже золота — русский чернозём» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+    pometka: документ
+    id: orden-franciya
+    istochnik: rgo
+    dlya_voprosa: false
+  - n: 5
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-18-goskatalog-4345262.jpg
+      glavnoe_na_kartinke:
+        x: 0.2
+        y: 0.05
+        w: 0.6
+        h: 0.8
+      width: 600
+      height: 525
+      alt: 'Старый снимок: лысеющий мужчина с длинной седой бородой, в тёмном сюртуке'
+      data_source: https://goskatalog.ru/portal/#/collections?id=4345262
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Смоленский государственный музей-заповедник · Госкаталог
+      podpis: Фотография «Докучаев Василий Васильевич», конец XIX в. Хранит Смоленский государственный музей-заповедник.
+      credit: 'Хранится: Смоленский государственный музей-заповедник. Госкаталог музейного фонда РФ, № 4390428.'
+      hint: Фото · Василий Докучаев
+      vid: foto
+      prava:
+        avtor: автор не указан
+        god_sozdaniya: конец XIX в.
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: true
+        pervaya_publikaciya: конец XIX в.
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=4345262
+      nomer_predmeta: '4390428'
+      nomer_snimka: net
+      hranitel: Смоленский государственный музей-заповедник
+      podlinnik:
+        gde: Смоленский государственный музей-заповедник
+        otkuda: https://goskatalog.ru/portal/#/collections?id=4345262
+      svyashchennoe: false
+      podpis_chto: Фотография «Докучаев Василий Васильевич»
+      podpis_gde: Россия
+      podpis_kogda: конец XIX в.
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    otryvok: Оппонентом его докторской был Менделеев — и встал на его сторону целиком
+    stranica: «Дороже золота — русский чернозём» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+    pometka: документ
+    id: mendeleev
+    istochnik: rgo
+    dlya_voprosa: false
+  - n: 6
+    sravnenie: net
+    src: 'Источник: «Вести-Воронеж», «Он спас воронежские земли от засухи» — vestivrn.ru'
+    otryvok: Осадков в Каменной степи при Докучаеве — 370 мм, теперь — 520–540
+    stranica: «Он спас воронежские земли от засухи» — «Вести-Воронеж»
+    href: https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/
+    pometka: документ
+    id: osadki-370
+    istochnik: vestivrn
+    dlya_voprosa: true
+    otvet: '370'
+    otvet_edinstvennyj: true
+  - n: 7
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-18-goskatalog-15143922.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      width: 382
+      height: 395
+      alt: 'Бронзовая медаль: на ней обложка книги «Русский чернозём», колосья и год 1883'
+      data_source: https://goskatalog.ru/portal/#/collections?id=15143922
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Ярославский художественный музей · Госкаталог
+      podpis: Медаль «100 лет со дня выхода книги В. В. Докучаева «Русский чернозём»», 1983. Хранит Ярославский художественный музей.
+      credit: 'Хранится: Ярославский художественный музей. Госкаталог музейного фонда РФ, № 15015900.'
+      hint: Медаль · 100 лет «Русскому чернозёму»
+      vid: predmet
+      prava:
+        avtor: Шабанов Александр Борисович
+        god_sozdaniya: '1983'
+        god_smerti_avtora: net
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1983'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=15143922
+      nomer_predmeta: '15015900'
+      nomer_snimka: net
+      hranitel: Ярославский художественный музей
+      podlinnik:
+        gde: Ярославский художественный музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=15143922
+      svyashchennoe: false
+      podpis_chto: Медаль «100 лет со дня выхода книги В. В. Докучаева «Русский чернозём»»
+      podpis_gde: Ярославль
+      podpis_kogda: '1983'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — aif.ru'
+    otryvok: Для «Русского чернозёма» Докучаев прошёл 10 тысяч вёрст за два лета, большей частью пешком
+    stranica: '«Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — «Аргументы и факты»'
+    href: https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy
+    pometka: документ
+    id: 10-tysyach-vyorst
+    istochnik: aif
+    dlya_voprosa: true
+    otvet: 10 тысяч
+    otvet_edinstvennyj: true
+  - n: 8
+    sravnenie: net
+    src: 'Источник: Биографический словарь СПбГУ, «Докучаев Василий Васильевич» — bioslovhist.spbu.ru'
+    otryvok: Первая в мире кафедра почвоведения открылась у нас в 1894 году
+    stranica: «Докучаев Василий Васильевич» — Биографический словарь СПбГУ
+    href: https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html
+    pometka: документ
+    id: kafedra-1894
+    istochnik: spbgu
+    dlya_voprosa: true
+    otvet: '1894'
+    otvet_edinstvennyj: true
+  - n: 9
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-18-goskatalog-8377722.jpg
+      glavnoe_na_kartinke:
+        x: 0.05
+        y: 0.05
+        w: 0.9
+        h: 0.9
+      width: 800
+      height: 578
+      alt: 'Раскрытая старая книга: слева гравюра со степной птицей, справа титульный лист'
+      data_source: https://goskatalog.ru/portal/#/collections?id=8377722
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Тобольский историко-архитектурный музей-заповедник · Госкаталог
+      podpis: Книга В. В. Докучаева «Наши степи прежде и теперь», издание в пользу пострадавших от неурожая, 1892. Хранит Тобольский историко-архитектурный музей-заповедник.
+      credit: 'Хранится: Тобольский историко-архитектурный музей-заповедник. Госкаталог музейного фонда РФ, № 8270806.'
+      hint: Книга · «Наши степи прежде и теперь»
+      vid: dokument
+      prava:
+        avtor: Докучаев В. В.
+        god_sozdaniya: '1892'
+        god_smerti_avtora: 1903
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1892'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=8377722
+      nomer_predmeta: '8270806'
+      nomer_snimka: net
+      hranitel: Тобольский историко-архитектурный музей-заповедник
+      podlinnik:
+        gde: Тобольский историко-архитектурный музей-заповедник
+        otkuda: https://goskatalog.ru/portal/#/collections?id=8377722
+      svyashchennoe: false
+      podpis_chto: Книга В. В. Докучаева «Наши степи прежде и теперь», издание в пользу пострадавших от неурожая
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: '1892'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: bibliotekar.ru, «Наши степи прежде и теперь» — bibliotekar.ru'
+    otryvok: После голода 1891 года Докучаев написал первую в мире книгу об экологическом кризисе степей
+    stranica: «Наши степи прежде и теперь» — bibliotekar.ru
+    href: https://bibliotekar.ru/2-7-43-dokuchaev/38.htm
+    pometka: документ
+    id: nashi-stepi
+    istochnik: stepi
+    dlya_voprosa: false
+  - n: 10
+    sravnenie: net
+    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    otryvok: «Дороже нефти, угля и золота» — так Докучаев оценил русский чернозём
+    stranica: «Дороже золота — русский чернозём» — Русское географическое общество
+    href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+    pometka: документ
+    id: dorozhe-zolota
+    istochnik: rgo
+    dlya_voprosa: false
+- id: fakty-dnya
+  kicker: Ещё пять фактов
+  h2: Ещё 5 — про науку о почве
+  udary:
+  - n: 11
+    sravnenie: net
+    src: 'Источник: Бюллетень Почвенного института им. В. В. Докучаева, «Василий Докучаев: масштаб личности» — cyberleninka.ru'
+    otryvok: Первый в мире научный журнал о почве — русский «Почвоведение», 1899
+    stranica: '«Василий Докучаев: масштаб личности» — Бюллетень Почвенного института им. В. В. Докучаева'
+    href: https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva
+    pometka: документ
+    id: zhurnal-1899
+    istochnik: rusakova
+    dlya_voprosa: true
+    otvet: '1899'
+    otvet_edinstvennyj: true
+  - n: 12
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-18-goskatalog-49107678.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.1
+        w: 0.85
+        h: 0.8
+      width: 570
+      height: 800
+      alt: 'Цветная карта губернии: пятна коричневых и жёлтых оттенков, слева столбец условных знаков'
+      data_source: https://goskatalog.ru/portal/#/collections?id=49107678
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Государственный исторический музей · Госкаталог
+      podpis: Почвенная карта Нижегородской губернии под общей редакцией В. Докучаева, 1886. Хранит Государственный исторический музей.
+      credit: 'Хранится: Государственный исторический музей. Госкаталог музейного фонда РФ, № 48872599.'
+      hint: Карта · Почвы Нижегородской губернии
+      vid: karta
+      prava:
+        avtor: Докучаев В. В. (редактор)
+        god_sozdaniya: '1886'
+        god_smerti_avtora: 1903
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: '1886'
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=49107678
+      nomer_predmeta: '48872599'
+      nomer_snimka: net
+      hranitel: Государственный исторический музей
+      podlinnik:
+        gde: Государственный исторический музей
+        otkuda: https://goskatalog.ru/portal/#/collections?id=49107678
+      svyashchennoe: false
+      podpis_chto: Почвенная карта Нижегородской губернии под общей редакцией В. Докучаева
+      podpis_gde: Нижний Новгород
+      podpis_kogda: '1886'
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Биографический словарь СПбГУ, «Докучаев Василий Васильевич» — bioslovhist.spbu.ru'
+    otryvok: Нижегородское земство брало земельный налог по его оценке — 14 томов замеров
+    stranica: «Докучаев Василий Васильевич» — Биографический словарь СПбГУ
+    href: https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html
+    pometka: документ
+    id: nizhegorodskaya-ocenka
+    istochnik: spbgu
+    dlya_voprosa: true
+    otvet: '14'
+    otvet_edinstvennyj: true
+  - n: 13
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-18-goskatalog-9824788.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.2
+        w: 0.8
+        h: 0.7
+      width: 639
+      height: 1276
+      alt: Стеклянная бутыль с гранёной пробкой, внутри чёрная земля, на стекле рукописная этикетка
+      data_source: https://goskatalog.ru/portal/#/collections?id=9824788
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей почвоведения имени В. В. Докучаева · Госкаталог
+      podpis: 'Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.», конец XIX в. Хранит Центральный музей почвоведения имени В. В. Докучаева.'
+      credit: 'Хранится: Центральный музей почвоведения имени В. В. Докучаева. Госкаталог музейного фонда РФ, № 9761857.'
+      hint: Предмет · Бутыль с чернозёмом Докучаева
+      vid: predmet
+      prava:
+        avtor: Докучаев В. В. и ученики
+        god_sozdaniya: конец XIX в.
+        god_smerti_avtora: 1903
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: конец XIX в.
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=9824788
+      nomer_predmeta: '9761857'
+      nomer_snimka: net
+      hranitel: Центральный музей почвоведения имени В. В. Докучаева
+      podlinnik:
+        gde: Центральный музей почвоведения имени В. В. Докучаева
+        otkuda: https://goskatalog.ru/portal/#/collections?id=9824788
+      svyashchennoe: false
+      podpis_chto: 'Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.»'
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: конец XIX в.
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Центральный музей почвоведения им. В. В. Докучаева, «От истоков до наших дней» — soil-museum.ru'
+    otryvok: Первый в мире музей почв — открыт в Петербурге по замыслу Докучаева
+    stranica: «От истоков до наших дней» — Центральный музей почвоведения им. В. В. Докучаева
+    href: https://soil-museum.ru/o-muzee/istoriya-muzeya/ot-istokov-do-nashikh-dney/
+    pometka: документ
+    id: muzej-pochv
+    istochnik: muzej
+    dlya_voprosa: false
+  - n: 14
+    sravnenie: net
+    kadr:
+      src: /muzei/izobreteniya/img/02-18-goskatalog-13598484.jpg
+      glavnoe_na_kartinke:
+        x: 0.1
+        y: 0.15
+        w: 0.8
+        h: 0.75
+      width: 1600
+      height: 1067
+      alt: Картонная коробка с открытой застеклённой крышкой, внутри комки тёмной земли с корнями
+      data_source: https://goskatalog.ru/portal/#/collections?id=13598484
+      license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Центральный музей почвоведения имени В. В. Докучаева · Госкаталог
+      podpis: Образец почвы «Разрез № 316. Девственный чернозём», конец XIX в. Хранит Центральный музей почвоведения имени В. В. Докучаева.
+      credit: 'Хранится: Центральный музей почвоведения имени В. В. Докучаева. Госкаталог музейного фонда РФ, № 13558793.'
+      hint: Предмет · Образец чернозёма
+      vid: predmet
+      prava:
+        avtor: Докучаев В. В.
+        god_sozdaniya: конец XIX в.
+        god_smerti_avtora: 1903
+        god_reabilitacii: net
+        anonim: false
+        pervaya_publikaciya: конец XIX в.
+        sdelano_mashinoj: false
+        otkuda: Госкаталог музейного фонда РФ
+        baza: goskatalog
+        ssylka: https://goskatalog.ru/portal/#/collections?id=13598484
+      nomer_predmeta: '13558793'
+      nomer_snimka: net
+      hranitel: Центральный музей почвоведения имени В. В. Докучаева
+      podlinnik:
+        gde: Центральный музей почвоведения имени В. В. Докучаева
+        otkuda: https://goskatalog.ru/portal/#/collections?id=13598484
+      svyashchennoe: false
+      podpis_chto: Образец почвы «Разрез № 316. Девственный чернозём»
+      podpis_gde: Санкт-Петербург
+      podpis_kogda: конец XIX в.
+      pometka_prav: citirovanie-1274
+    src: 'Источник: Бюллетень Почвенного института им. В. В. Докучаева, «Василий Докучаев: масштаб личности» — cyberleninka.ru'
+    otryvok: Первая в мире классификация почв по происхождению — русская, 1886
+    stranica: '«Василий Докучаев: масштаб личности» — Бюллетень Почвенного института им. В. В. Докучаева'
+    href: https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva
+    pometka: документ
+    id: klassifikaciya-1886
+    istochnik: rusakova
+    dlya_voprosa: true
+    otvet: '1886'
+    otvet_edinstvennyj: true
+  - n: 15
+    sravnenie: net
+    src: 'Источник: газета «Моё!», «Помним: Константин Глинка» — moe-online.ru'
+    otryvok: Ученик Докучаева Глинка стал президентом Международного конгресса почвоведов
+    stranica: '«Помним: Константин Глинка» — газета «Моё!»'
+    href: https://moe-online.ru/pro/pomnim/article/1160/comment/161
+    pometka: документ
+    id: glinka-kongress
+    istochnik: moe
+    dlya_voprosa: false
+razdely: []
+igra:
+  mehanika: kazhdomu-svoyo-mesto
+  kicker: Играй
+  zagolovok: 🎮 Чьё это число
+  pravilo_ru: 'Что сделать сейчас: выбери число и нажми на то, что оно значит.'
+  kak_igrat:
+    zachem: 'У каждого числа из истории Докучаева — своё место: годы, люди, вёрсты, лесополосы.'
+    shagi:
+    - Выбери число — кнопка загорится золотом.
+    - Нажми на то, что оно значит. Верный выбор загорится зелёным.
+    - Расставь все четыре числа — счётчик покажет, сколько осталось.
+    nyuans: 'Нюансы: с клавиатуры — Tab до кнопки и Enter. Порядок каждый раз новый.'
+    final: Все четыре числа на месте — +20 баллов.
+  dannye:
+    mesta:
+    - kod: gody
+      nazvanie: Столько лет русский чернозём стоял в Сорбонне
+      verno_ru: Кубометры русского чернозёма стояли в Сорбонне 68 лет — разбили только студенты в 1968.
+    - kod: zriteli
+      nazvanie: Столько человек увидели русский чернозём в Париже
+      verno_ru: Русский чернозём в Париже увидели 32 миллиона человек — Европа назвала его «чёрным бриллиантом».
+    - kod: versty
+      nazvanie: Столько вёрст прошёл Докучаев для «Русского чернозёма»
+      verno_ru: Для «Русского чернозёма» прошёл 10 тысяч вёрст за два лета, большей частью пешком.
+    - kod: lesopolosy
+      nazvanie: Столько лесополос Докучаева растут до сих пор
+      verno_ru: 47 лесополос Докучаева 1892 года растут до сих пор — в степи, где гибли хлеба.
+    podpisi:
+    - kod: n68
+      tekst: '68'
+      mesto: gody
+      mimo_ru: '68 — это годы: столько чернозём стоял в Сорбонне.'
+    - kod: n32m
+      tekst: 32 миллиона
+      mesto: zriteli
+      mimo_ru: 32 миллиона — это люди, которые увидели чернозём в Париже.
+    - kod: n10t
+      tekst: 10 тысяч
+      mesto: versty
+      mimo_ru: 10 тысяч — это вёрсты, которые Докучаев прошёл за два лета.
+    - kod: n47
+      tekst: '47'
+      mesto: lesopolosy
+      mimo_ru: 47 — это лесополосы 1892 года, которые растут до сих пор.
+    vyberi_ru: Сначала выбери число, потом его место.
+    mimo_ru: Не то место — попробуй другое.
+    ostalos_ru: 'Осталось расставить: {n}'
+    pobeda:
+      soobshchenie_ru: 🏆 Все числа на месте — 68 лет в Сорбонне, 32 миллиона зрителей в Париже, 10 тысяч вёрст пешком, 47 лесополос до сих пор.
+      ochki: 20
+    bez_skripta_ru: 'Игра работает с включённым JavaScript: 68 — лет в Сорбонне, 32 миллиона — зрителей в Париже, 10 тысяч — вёрст пешком, 47 — лесополос до сих пор.'
+pervenstvo:
+  kicker: Проверка факта
+  h2: Что именно здесь первое в мире
+  granica: 'Что сделано: Первая в мире классификация почв по происхождению — русская, 1886.'
+  net: 'Как это работало дальше: Первая в мире кафедра почвоведения открылась у нас в 1894 году.'
+  kolonki:
+  - Где
+  - Что
+  - Когда
+  stroki:
+  - - Россия
+    - книга «Русский чернозём»
+    - '1883'
+  - - Россия
+    - классификация почв по происхождению
+    - '1886'
+  - - Россия
+    - кафедра почвоведения
+    - '1894'
+  - - Россия
+    - журнал «Почвоведение»
+    - '1899'
+quiz:
+  kicker: Проверь себя · 5 вопросов
+  h2: Викторина
+  intro: На каждый вопрос — одна попытка. После ответа покажем объяснение.
+  noscript: 'Для викторины нужен JavaScript. Ответы: 68 лет; 32 миллиона; 10 тысяч вёрст; 1894; 370 мм.'
+  ball: 8
+  voprosy:
+  - q: Сколько лет кубометры русского чернозёма стояли в Сорбонне?
+    o:
+    - 8 лет
+    - 68 лет
+    - 168 лет
+    a: 1
+    e: Кубометры русского чернозёма стояли в Сорбонне 68 лет — разбили только студенты в 1968.
+  - q: Сколько человек увидели русский чернозём в Париже?
+    o:
+    - 32 тысячи
+    - 32 миллиона
+    - 3 миллиарда
+    a: 1
+    e: Русский чернозём в Париже увидели 32 миллиона человек — Европа назвала его «чёрным бриллиантом».
+  - q: Сколько вёрст прошёл Докучаев для «Русского чернозёма»?
+    o:
+    - 100 вёрст
+    - 10 тысяч вёрст
+    - 1 миллион вёрст
+    a: 1
+    e: Для «Русского чернозёма» прошёл 10 тысяч вёрст за два лета, большей частью пешком.
+  - q: В каком году у нас открылась первая в мире кафедра почвоведения?
+    o:
+    - '1794'
+    - '1894'
+    - '1994'
+    a: 1
+    e: Первая в мире кафедра почвоведения открылась у нас в 1894 году.
+  - q: Сколько осадков было в Каменной степи при Докучаеве?
+    o:
+    - 37 мм
+    - 370 мм
+    - 3700 мм
+    a: 1
+    e: Осадков в Каменной степи при Докучаеве — 370 мм, теперь — 520–540.
+result:
+  h2: Итог дня
+  intro: Ты прошёл зал почвоведения.
+  zvanie: '0 / 100 · звание: Гость дня'
+  note: Баллы — за игру, ответы и викторину.
+figures:
+- src: /muzei/izobreteniya/img/02-18-goskatalog-40596646.jpg
+  glavnoe_na_kartinke:
+    x: 0.05
+    y: 0.05
+    w: 0.9
+    h: 0.9
+  width: 1600
+  height: 2282
+  alt: Серо-зелёный переплёт книги, наверху портрет бородатого человека, внизу надпись «В. В. Докучаев. Русский чернозём»
+  data_source: https://goskatalog.ru/portal/#/collections?id=40596646
+  license: цитирование в научных и учебных целях (ст. 1274 ГК РФ) · Семикаракорский историко-краеведческий музей · Госкаталог
+  podpis: Книга В. В. Докучаева «Русский чернозём. Отчёт Вольному экономическому обществу», издание 1936 года. Хранит Семикаракорский историко-краеведческий музей.
+  credit: 'Хранится: Семикаракорский историко-краеведческий музей. Госкаталог музейного фонда РФ, № 40372345.'
+  hint: Книга · «Русский чернозём», 1936
+  vid: dokument
+  prava:
+    avtor: Докучаев В. В.
+    god_sozdaniya: '1936'
+    god_smerti_avtora: 1903
+    god_reabilitacii: net
+    anonim: false
+    pervaya_publikaciya: '1883'
+    sdelano_mashinoj: false
+    otkuda: Госкаталог музейного фонда РФ
+    baza: goskatalog
+    ssylka: https://goskatalog.ru/portal/#/collections?id=40596646
+  nomer_predmeta: '40372345'
+  nomer_snimka: net
+  hranitel: Семикаракорский историко-краеведческий музей
+  podlinnik:
+    gde: Семикаракорский историко-краеведческий музей
+    otkuda: https://goskatalog.ru/portal/#/collections?id=40596646
+  svyashchennoe: false
+  podpis_chto: Книга В. В. Докучаева «Русский чернозём. Отчёт Вольному экономическому обществу»
+  podpis_gde: Москва
+  podpis_kogda: '1936'
+  pometka_prav: citirovanie-1274
+sources:
+- href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+  title: '«Дороже золота — русский чернозём: 180 лет назад родился основоположник почвоведения Василий Докучаев» — Русское географическое общество'
+  note: факты дня
+- href: https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva
+  title: '«Василий Докучаев: масштаб личности (к 175-летию В. В. Докучаева)» — Бюллетень Почвенного института им. В. В. Докучаева'
+  note: факты дня
+- href: https://rodina-history.ru/2020/10/09/pochemu-zapadnyj-agrobiznes-gotov-vyvozit-ego-eshelonami-s-byvshih-kolhoznyh-polej.html
+  title: «Почему западный агробизнес готов вывозить его эшелонами с бывших колхозных полей» — журнал «Родина»
+  note: факты дня
+- href: https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy
+  title: '«Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — «Аргументы и факты»'
+  note: факты дня
+- href: https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html
+  title: «Докучаев Василий Васильевич» — Биографический словарь СПбГУ
+  note: факты дня
+- href: https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/
+  title: '«Он спас воронежские земли от засухи: 180 лет назад родился учёный Василий Докучаев» — «Вести-Воронеж»'
+  note: факты дня
+- href: https://jbks.ru/archive/issue-16/article-2
+  title: Хитров, Чевердин, о лесных полосах Каменной степи — «Бюллетень Почвенного института»
+  note: факты дня
+- href: https://soil-museum.ru/o-muzee/istoriya-muzeya/ot-istokov-do-nashikh-dney/
+  title: «От истоков до наших дней» — Центральный музей почвоведения им. В. В. Докучаева
+  note: факты дня
+- href: https://cyberleninka.ru/article/n/n-m-sibirtsev-sozdatel-edinoy-nauki-o-pochve-kak-prirodnom-tele-i-srede-obitaniya-k-155-letiyu-so-dnya-rozhdeniya
+  title: «Н. М. Сибирцев — создатель единой науки о почве как природном теле и среде обитания» — к 155-летию
+  note: факты дня
+- href: https://bibliotekar.ru/2-7-43-dokuchaev/38.htm
+  title: В. В. Докучаев, «Наши степи прежде и теперь» (1892) — bibliotekar.ru
+  note: факты дня
+- href: https://moe-online.ru/pro/pomnim/article/1160/comment/161
+  title: О К. Д. Глинке и Международном конгрессе почвоведов — газета «Моё!»
+  note: факты дня
+- href: https://goskatalog.ru/portal/#/collections?id=20363657
+  title: Госкаталог музейного фонда РФ, Почвенный монолит «Чернозём типичный тучный»
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=9824788
+  title: 'Госкаталог музейного фонда РФ, Бутыль с образцом почвы, отобранным В. В. Докучаевым: «Суглинистый чернозём, Самарская губ.»'
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=13598484
+  title: Госкаталог музейного фонда РФ, Образец почвы «Разрез № 316. Девственный чернозём»
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=49107678
+  title: Госкаталог музейного фонда РФ, Почвенная карта Нижегородской губернии под общей редакцией В. Докучаева
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=8377722
+  title: Госкаталог музейного фонда РФ, Книга В. В. Докучаева «Наши степи прежде и теперь», издание в пользу пострадавших от неурожая
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=4345262
+  title: Госкаталог музейного фонда РФ, Фотография «Докучаев Василий Васильевич»
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=15143922
+  title: Госкаталог музейного фонда РФ, Медаль «100 лет со дня выхода книги В. В. Докучаева «Русский чернозём»»
+  note: кадр
+- href: https://goskatalog.ru/portal/#/collections?id=40596646
+  title: Госкаталог музейного фонда РФ, Книга В. В. Докучаева «Русский чернозём. Отчёт Вольному экономическому обществу», 1936
+  note: кадр
+kuda:
+- lbl: Следующий день
+  main: true
+- lbl: Предыдущий день
+  main: false
+score:
+  awards:
+    lab: 30
+    why0: 10
+    why1: 10
+    why2: 10
+    q:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+  ranks:
+  - - 100
+    - Главный почвовед
+  - - 70
+    - Хранитель монолитов
+  - - 40
+    - Полевой разведчик
+  - - 0
+    - Гость дня
+return:
+  q: Сколько лет кубометры русского чернозёма стояли в Сорбонне?
+  a: Кубометры русского чернозёма стояли в Сорбонне 68 лет — разбили только студенты в 1968.
+  src: Русское географическое общество, rgo.ru
+proof:
+  status: found
+  claim_id: rc:izobreteniya:02-18-pochvovedenie:claim-1883
+  ours:
+    kind: publication
+    title: '«Дороже золота — русский чернозём: 180 лет назад родился основоположник почвоведения Василий Докучаев»'
+    date: '1883-02-18'
+    holder: Русское географическое общество
+    source_url: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
+podskazki_igry:
+- 68 — это годы в Сорбонне
+- 32 миллиона — это зрители в Париже
+- 10 тысяч — это вёрсты пешком
+togda_sejchas: net
+skvoznye_linii: net
+mesto_sobytiya:
+  nazvanie: Санкт-Петербург
+  shirota: 59.939
+  dolgota: 30.316
+staraya_karta: net
+marshrut: net
+kak_rabotaet:
+- Почвовед копает яму-разрез до материнской породы и смотрит стенку сверху вниз
+- В стенке видны слои — каждый со своим цветом, плотностью и корнями
+- По слоям, климату, растениям и рельефу видно, как почва родилась и жила
+- Так почвы делят на типы по происхождению и рисуют почвенные карты
+data_uslovnaya: 18 февраля — день музея; точный день, когда вышел «Русский чернозём» в 1883 году, в источниках не назван.
+predmet_3d: net
+panorama_360: net
+video:
+  h2: История в ролике
+  klyuch: izobreteniya/18feb-pochvovedenie
+  format: horizontal
+  pole: izobreteniya/18feb-pochvovedenie:horizontal.sec
+  suffix: сек
+  badge: 50 сек
+  poster: video/day-18feb-pochvovedenie-poster.jpg
+  mp4: video/day-18feb-pochvovedenie.mp4
+  note: Закадровый текст озвучен синтезом речи.

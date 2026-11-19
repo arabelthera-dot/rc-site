@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Павел Нахимов",
+  "pol": "m",
+  "kratko": "Адмирал, герой Синопа и обороны Севастополя.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "nr88000370",
+    "ssylka": "https://id.loc.gov/authorities/names/nr88000370.html",
+    "zagolovok": "Nakhimov, Pavel Stepanovich, 1803-1855"
+  },
+  "latinica": "Pavel Nakhimov",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1803",
+    "smert": "1855"
+  }
+}
