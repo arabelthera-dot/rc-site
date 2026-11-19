@@ -82,7 +82,6 @@ const YANVAR_BEZ_VIZUALA = new Set([
   '01-28',
   '01-29',
   '01-30',
-  '01-31',
 ]);
 
 export function standartDnya(d, syroe = d) {
