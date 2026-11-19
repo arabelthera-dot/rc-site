@@ -108,8 +108,6 @@ daynav:
     label: Игры
   - id: pervenstvo
     label: Первенство
-  - id: excursion
-    label: Экскурсия
   - id: result
     label: Итог
 video:
@@ -461,114 +459,6 @@ razdely:
           <button type="button" class="scene-hint cta-pulse" id="heroHint" onclick="var c=document.getElementById('heroCvs');if(c)c.click()">⚡ тапни по сцене — отправь сигнал</button>
         </div>
       </div>
-  - posle: story
-    html: |-
-      <section class="block" id="theme-inventions" style="background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.15)">
-        <div class="wrap">
-          <div class="kicker">Связь · Русские первенства</div>
-          <h2 style="margin-bottom:6px">Что ещё русские изобрели первыми в теме «связь»</h2>
-          <p style="color:var(--muted);margin-top:0;margin-bottom:16px;max-width:62ch">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
-          <div style="text-align:center;margin:14px 0 4px">
-            <button class="btn gold" id="themeInvBtn">Показать 18 изобретений →</button>
-          </div>
-          <div id="themeInvBody" style="display:none;margin-top:20px">
-            <div class="card" style="padding:0;overflow:hidden">
-              <div style="padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15)">
-                <span style="color:var(--gold-l);font-weight:600;font-size:14px;letter-spacing:.5px">18 ИЗОБРЕТЕНИЙ · СВЯЗЬ</span>
-              </div>
-              <div style="padding:4px 20px 12px">
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">1 янв</span>
-                <span><a href="day-01jan-cabletv.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Первая в мире сеть кабельного телевидения (Москва, 30 абонентов) →</a></span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">16 фев 1893</span>
-                <span>Первый в мире радиозонд</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">24 фев 1922</span>
-                <span>Первая в мире мощная радиовещательная станция (Коминтерн, 1922)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">16 мар</span>
-                <span>Радио</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">25 мар</span>
-                <span>Радиоуправление, первые в мире опыты</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">26 мар</span>
-                <span>Первые в мире опыты по радиолокации (РЛС)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">28 мар</span>
-                <span>Первые в мире опыты по передаче электроэнергии на расстояние</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">3 апр</span>
-                <span>Первый в мире переносной радиоприёмник</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">23 апр</span>
-                <span>Первая в мире система спутникового телевещания</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">7 мая</span>
-                <span>Первая демонстрация радиоприёмника (День радио)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">9 мая</span>
-                <span>Первая в мире передача изображения на ЭЛТ (электронное ТВ)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">12 мая 1880</span>
-                <span>Телефонная трубка (микрофон+телефон вместе) и АТС</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">23 мая</span>
-                <span>Первая в мире передача речи по радио (Попов)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">26 июл</span>
-                <span>Первая в мире передача движущегося изображения (электронное ТВ)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">30 июл</span>
-                <span>Электронное телевидение и иконоскоп</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">7 сен</span>
-                <span>Первый в мире телеграф в Зимнем дворце (между дворцами Петербурга)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">21 сен</span>
-                <span>Электродвигатель, гальванопластика, телеграф</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">5 окт</span>
-                <span>Первый в мире Центральный телеграф и Киевский вокзал (ж/б конструкции)</span>
-              </div>
-              </div>
-            </div>
-            <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:12px">Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
-          </div>
-        </div>
-      </section>
-  - posle: pervenstvo
-    html: |-
-      <section class="block" id="excursion">
-        <div class="wrap">
-          <div class="kicker">Аудиогид</div>
-          <h2>Фрагмент экскурсии</h2>
-          <div class="card" style="border-left:3px solid var(--gold);border-radius:0 16px 16px 0">
-            <p>«Заходим в зал невидимых волн. Посмотрите на эту афишу — Одесса, 1898 год, публичная лекция профессора Пильчикова. Билеты раскуплены: город слышал, что профессор показывает чудеса. Вот здесь, на столе, — реконструкция его установки. Слева передатчик с ключом, справа — приёмник, между ними ничего. Совсем ничего. И вот в этом "ничего" — вся суть.</p>
-      <p>Пильчиков нажимал ключ — и через весь зал, по воздуху, летела команда. Лампа зажигалась. Семафор поворачивался. Заряд гремел. Заметьте: не сообщение для человека — команда для машины. Этого не делал до него никто в мире.</p>
-      <p>А теперь взгляните на витрину справа. Это протектор — его вторая идея, фильтр от чужих сигналов. Чтобы машина слушалась только своего хозяина. Сегодня это называется кодированием канала — и без него не летал бы ни один дрон.</p>
-      <p>И последнее, самое тяжёлое. Фотография харьковской лечебницы, май 1908 года. Здесь профессора нашли застреленным. Револьвер рядом, записи военных опытов исчезли, дело закрыли за несколько дней. Самоубийство? Коллеги не верили. Ответа нет до сих пор. Переходим к следующему экспонату».</p>
-          </div>
-        </div>
-      </section>
   - posle: quiz
     html: |2-
           <div class="gm" id="gm_tm">
@@ -616,15 +506,6 @@ razdely:
             <button class="btn gold" onclick="sendChat()">Отправить</button>
           </div>
           <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы — пересказ по источникам дня.</p>
-        </div>
-      </section>
-  - posle: calendar
-    html: |-
-      <section class="block" id="catalog" style="background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none">
-        <div class="wrap" style="text-align:center">
-          <h2 style="margin-bottom:6px;color:#fff">У нас много изобретений</h2>
-          <p style="color:var(--muted);margin:0 auto 16px;max-width:60ch">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
-          <a class="btn gold" href="index.html" style="display:inline-block;text-decoration:none">Вернуться в музей →</a>
         </div>
       </section>
 igra:
