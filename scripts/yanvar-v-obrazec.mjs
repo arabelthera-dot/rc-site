@@ -133,6 +133,7 @@ const kartinki = [
   ...(d.oblozhka ? [['oblozhka']] : []),
   ...(d.figures ?? []).map((_, i) => ['figures', i]),
   ...udary.filter(([u]) => u.kadr).map(([, put]) => [...put, 'kadr']),
+  ...(d.story?.udary ?? []).flatMap((u, i) => (u.kadr ? [['story', 'udary', i, 'kadr']] : [])), // как standart-dnya.mjs (изоб 01-06, 01-07)
 ];
 for (const put of kartinki) {
   const k = doc.getIn(put).toJSON?.() ?? doc.getIn(put);
