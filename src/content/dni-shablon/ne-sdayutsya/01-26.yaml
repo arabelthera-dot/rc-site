@@ -2,7 +2,6 @@
 # НЕТ: video (ролика нет ни на старой странице, ни в реестре public/video/registry/)
 # НЕТ: история — из раздела #korabl (#istoriya нет)
 # НЕТ: выброшено (в шаблоне нет; визуализацию дня — перенести человеку, Р436): trudno-poverit, dokument, chat-sec
-# НЕТ: кадр /muzei/ne-sdayutsya/img/01-26-goskatalog-8941182.jpg: файла нет в public
 # НЕТ: источники (#sources-rights) — машина фактов соберёт из утверждённых
 # НЕТ: MUSEUM_RETURN — вопрос возврата из первого вопроса викторины
 
@@ -40,7 +39,7 @@ operaciya: "Полёт корабля «Восход-2», 18–19 марта 196
 front: "Орбита Земли, корабль «Восход-2»"
 head:
   title: Алексей Леонов — «Русские не сдаются» — Русская цивилизация
-  description: "Первый вышел в открытый космос — и едва не остался там навсегда. Пролистай сцену: 18 марта 1965 года, минута за минутой, по хронике выхода Алексея Леонова."
+  description: Первый вышел в открытый космос — и едва не остался там навсегда
   canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-26/
   sobytie: Алексей Леонов
   god: "1965"
@@ -48,14 +47,14 @@ head:
     type: article
     site_name: Русская цивилизация
     title: Алексей Леонов — «Русские не сдаются» — Русская цивилизация
-    description: "Первый вышел в открытый космос — и едва не остался там навсегда. Пролистай сцену: 18 марта 1965 года, минута за минутой, по хронике выхода Алексея Леонова."
+    description: Первый вышел в открытый космос — и едва не остался там навсегда
     url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-26/
     image: https://russian-civilization.ru/og/og-default.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Алексей Леонов — «Русские не сдаются»
-    description: "Первый вышел в открытый космос — и едва не остался там навсегда. Пролистай сцену: 18 марта 1965 года, минута за минутой, по хронике выхода Алексея Леонова."
+    description: Первый вышел в открытый космос — и едва не остался там навсегда
     url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-26/
     image: https://russian-civilization.ru/og/og-default.jpg
     inLanguage: ru-RU
@@ -145,6 +144,28 @@ fakty:
         href: https://ria.ru/20100318/215081522.html
         otryvok: «пальцы вышли из перчаток, а ноги из сапог»
         pometka: один источник
+        kadr:
+          src: /muzei/ne-sdayutsya/img/01-26-goskatalog-8941182.jpg
+          alt: "Белый скафандр с гермошлемом в полный рост, на груди и поясе разъёмы и шланги."
+          data_source: https://goskatalog.ru/portal/#/collections?id=8941182
+          license: ст. 1274 ГК РФ
+          podpis: Скафандр «Беркут» для работы вне корабля — в таком Леонов вышел в открытый космос, 1963–1964 годы.
+          credit: ГБУК г. Москвы «Мемориальный музей космонавтики», Госкаталог № 8826706
+          width: 353
+          height: 800
+          hranitel: "ГБУК г. Москвы «Мемориальный музей космонавтики»"
+          simvolika_proverena: true
+          hint: "Скафандр «Беркут» для внекорабельной деятельности · 1963–1964"
+          glavnoe_na_kartinke: "net"
+          podpis_kogda: "1963–1964"
+          podpis_gde: "Москва, Мемориальный музей космонавтики"
+          podpis_chto: "Скафандр «Беркут» для внекорабельной деятельности"
+          svyashchennoe: false
+          vid: "predmet"
+          prava: {"god_smerti_avtora":"net","god_reabilitacii":"net","sdelano_mashinoj":false,"otkuda":"Госкаталог музейного фонда РФ","baza":"goskatalog","pervaya_publikaciya":"Госкаталог музейного фонда РФ, рег. № 8826706","ssylka":"https://goskatalog.ru/portal/#/collections?id=8941182","avtor":"автор в карточке Госкаталога не указан","god_sozdaniya":"1963–1964","anonim":true}
+          podlinnik: {"gde":"net","otkuda":"https://goskatalog.ru/portal/#/collections?id=8941182"}
+          nomer_predmeta: "net"
+          nomer_snimka: "8941182"
         utverzhden: 2026-11-03
         istochnik: "ria-2"
         dlya_voprosa: false
@@ -424,6 +445,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: leonov-pult
+  vid: predmet
+  kicker: Предмет под лупой
+  h2: Пульт фотоаппарата Леонова
+  lead: 'Рукоятка на проводе спускала затвор фотоаппарата на груди скафандра Леонова. Приближайте: рычаг на винтах, пружина тросика и провод к камере.'
 audioguide:
   audioSrc: audio-guide-leonov-ru.mp3
   durationLabel: 1 минута 17 секунд
