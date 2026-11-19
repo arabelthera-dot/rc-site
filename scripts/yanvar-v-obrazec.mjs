@@ -54,7 +54,8 @@ const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } 
 const konecStroki = (i) => { let j = i; while (j > 0 && /\s/.test(s[j - 1])) j--; const n = s.indexOf('\n', j); return n < 0 ? s.length : n; };
 const stolbec = (i) => i - (s.lastIndexOf('\n', i - 1) + 1);
 const zn = (v) => JSON.stringify(v);
-const zamenit = (uzel, tekst) => pravki.push([uzel.range[0], uzel.range[1], tekst]);
+// range блочного скаляра (|-, >) захватывает хвостовой перевод строки — его оставляем, иначе следующий ключ склеится.
+const zamenit = (uzel, tekst) => pravki.push([uzel.range[0], uzel.range[1], tekst + s.slice(uzel.range[0], uzel.range[1]).match(/\s*$/)[0]]);
 // Новая пара в блочную карту: после её последней строки, с отступом первого ключа.
 const dobavit = (karta, k, v) => {
   if (karta.flow) throw new Error(`карта в строку — не дописать ${k}`);
@@ -154,7 +155,8 @@ for (const put of kartinki) {
   if (iz.prava) mash.prava = {
     god_smerti_avtora: NET, god_reabilitacii: NET, sdelano_mashinoj: false,
     ...(reg ? { otkuda: 'Госкаталог музейного фонда РФ', baza: 'goskatalog', pervaya_publikaciya: `Госкаталог музейного фонда РФ, рег. № ${reg}` } : {}),
-    ...(k.data_source ? { ssylka: k.data_source } : {}),
+    // ssylka — только адрес: у архивных листов data_source — шифр («ЦАМО, ф. 58, …»), он уходит в podlinnik.otkuda.
+    ...(/^https?:\/\//.test(k.data_source ?? '') ? { ssylka: k.data_source } : {}),
     ...iz.prava,
   };
   for (const [pole, v] of Object.entries({ ...mash, ...iz, ...(mash.prava ? { prava: mash.prava } : {}) })) if (k[pole] === undefined) dobavit(uzel, pole, v);
