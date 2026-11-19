@@ -1,0 +1,156 @@
+# Ролик и аудиогид из облака — на сайт заявкой (r538, Р524/Р525/Р529; корень «забыл ролик»).
+# rc-rolik публикует собранное как выпуск (render.yml — vypusk-<день>-<прогон>, audiogid.yml — vypusk-ag-…);
+# здесь машина по сигналу rc-rolik (repository_dispatch rolik-gotov, Р737 п.15) и для страховки раз в час забирает новые выпуски (scripts/rolik-na-sait.mjs spisok), на каждый — своя ветка
+# avto/rolik-<тег>, файлы в public/muzei/<музей>/ и запись реестра public/video/registry/<реестр>/<imya>.json,
+# mp4 — не в public/, а в хранилище media.russian-civilization.ru (до push) и строкой в src/data/hranilishche-rolikov.sha256 (Р825),
+# заявка (автослияние — только у расписания). Руками mp4 и mp3 на сайт никто не носит. Одобрение ждущих проверок — как glazami-hrapovik.
+# Ролик и гид одного дня — одна заявка (Р790 п.6): spisok даёт строку «<ветка> <тег>…» на день; есть открытая заявка
+# этого дня — новый выпуск дописывается в её ветку (обычный push), ссылка на выпуск — в тело; одна проверка вместо двух.
+# Как в мире: последний шаг конвейера открывает заявку с результатом (peter-evans/create-pull-request, gh pr create).
+# Выпуски rc-rolik открытые — ключ не нужен; пишет свой GITHUB_TOKEN. Выпуск, чья заявка закрыта без слияния, не повторяется.
+# Брак выпуска (нет файла, не mp4, нет длительности) — заявки нет, прогон красный (r544). Образцы брака — пререлизы rc-rolik,
+# расписание их не берёт: gh workflow run rolik-na-sait.yml -f teg=vypusk-proba-brak-…
+# Сигнал: gh api repos/arabelthera-dot/rc-site/dispatches -f event_type=rolik-gotov (ключ с правом contents:write на rc-site;
+# своим GITHUB_TOKEN rc-rolik в чужое репо не стучится). Сигнал берёт все новые выпуски, как расписание.
+# Выключатель — переменная ROLIK_NA_SAIT = '0' (расписание и сигнал спят, ручной пуск работает). Откат — удалить этот файл.
+# Ручной пуск: gh workflow run rolik-na-sait.yml [-f teg=vypusk-…]
+name: rolik-na-sait
+on:
+  repository_dispatch:
+    types: [rolik-gotov]
+  schedule:
+    # Р789 (16.11.2026): раз в час, а не в 6 ч — сигнал rolik-gotov без ключа Михаила не доходит, выпуск лежал до 6 ч.
+    # Пустой прогон — ~30 с (новых выпусков нет — выход). Минута :37, не :00 — в начале часа GitHub задерживает крон.
+    # Откат в одну строку: '7 */6 * * *'.
+    - cron: '37 * * * *'
+  workflow_dispatch:
+    inputs:
+      teg:
+        description: "один выпуск rc-rolik (vypusk-…); пусто — все новые"
+        required: false
+        default: ""
+concurrency:
+  group: rolik-na-sait
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  zabrat:
+    # r688: пустая переменная (null) в выражении GitHub приводится к 0, как и '0', — расписание с 04.11 всё «skipped».
+    # `|| '1'` даёт строку, сравнение строк без приведения.
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || (vars.ROLIK_NA_SAIT || '1') != '0')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      # Р825: автослияние включает SLIYANIE_TOKEN (ключ arabelthera-dot), не github.token: слияние от github.token не запускает
+      # deploy.yml (GitHub Docs «Triggering a workflow from a workflow»; #1574, 18.11 — сайт не выложился). Нет секрета — github.token.
+      SLIYANIE_TOKEN: ${{ secrets.SLIYANIE_TOKEN || github.token }}
+      TEG: ${{ inputs.teg }}
+      # Р825: хранилище роликов — те же ключ, сервер и проходы, что у шага «ролики в хранилище» deploy.yml
+      MEDIA_KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
+      IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+      MOST: ${{ vars.RU_MOST }}
+      MOST2: ${{ vars.RU_MOST2 }}
+      # бюджет ролика — перенесён из deploy.yml (Р536 п. 9): лимит на файл у статических хостингов, Pages 100 МБ
+      RU_ROLIK_MAX_MB: ${{ vars.RU_ROLIK_MAX_MB }}
+    steps:
+      # без public/ целиком: скрипт пишет только файлы выпуска (git add --sparse)
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          sparse-checkout: |
+            /scripts/
+            /public/video/registry/
+            /src/data/museums.json
+            /src/data/hranilishche-rolikov.sha256
+            /package.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Клон частичный (--depth=1 --filter=blob:none), снимок — на момент события. Ушёл main, пока прогон ждал очереди, —
+          # push не видит общего коммита и шлёт всё дерево с дозагрузкой всех роликов: 10 мин и HTTP 500 (Р820).
+          # push.negotiate — сервер сам называет общие коммиты; свежий main перед push — запас, если переговоры не пройдут.
+          git config push.negotiate true
+          # Ролики выпуска копятся здесь (путь от корня сайта) и уходят в хранилище перед push ветки (Р825).
+          export MEDIA_VYHOD="$RUNNER_TEMP/media-vyhod"
+          v_hranilishche() {
+            find "$MEDIA_VYHOD" -name '*.mp4' 2>/dev/null | grep -q . || return 0
+            [ -n "$MEDIA_KLYUCH" ] || { echo "::error::нет секрета MEDIA_SSH_KEY — ролик не в хранилище, заявки нет"; return 1; }
+            bolshie=$(find "$MEDIA_VYHOD" -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
+            [ -z "$bolshie" ] || { echo "::error::ролики больше ${RU_ROLIK_MAX_MB:-50} МБ — заявки нет:"; echo "$bolshie"; return 1; }
+            most=$(scripts/prohod-v-rossiyu.sh) || return 1
+            S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
+            # без --delete — только докладываем; --checksum — как в deploy.yml (r790)
+            rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' \
+              -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $most" \
+              "$MEDIA_VYHOD/" rcmedia@185.149.145.227: | tail -n 4
+            kod=${PIPESTATUS[0]}; rm -rf "$S"; [ "$kod" = 0 ] || { echo "::error::ролики не доложены в хранилище (rsync $kod) — заявки нет"; return 1; }
+            rm -rf "$MEDIA_VYHOD"
+          }
+          # брак выпуска (нет файла, не mp4, чужой музей) — прогон красный в конце, не молча (r544)
+          brak=0
+          if [ -n "$TEG" ]; then spisok="avto/rolik-$TEG $TEG"; else spisok=$(node scripts/rolik-na-sait.mjs spisok) || brak=1; fi
+          [ -n "$spisok" ] || { echo "Новых выпусков нет." | tee -a "$GITHUB_STEP_SUMMARY"; exit "$brak"; }
+          # stdin цикла — fd 3: gh и node внутри не съедят строки списка
+          while read -r VETKA tegi <&3; do
+            [ -n "$VETKA" ] || continue
+            nomer=$(gh pr list --head "$VETKA" --state open --json number -q '.[0].number')
+            if [ -n "$nomer" ] && git fetch -q origin "+refs/heads/$VETKA:refs/remotes/origin/$VETKA"; then
+              git switch -q --detach "origin/$VETKA"   # открытая заявка дня — дописать в неё (Р790 п.6)
+            else
+              nomer=; git switch -q --detach origin/main
+            fi
+            git sparse-checkout reapply
+            git switch -q -C "$VETKA"
+            vyvod=; ssylki=; pervaya=
+            for teg in $tegi; do
+              v=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился — на сайт не идёт"; echo "- $teg — брак, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; continue; }
+              git add --sparse public/ src/data/hranilishche-rolikov.sha256
+              git diff --cached --quiet && { echo "$teg: на сайте уже то же самое"; continue; }
+              p1=$(printf '%s\n' "$v" | head -1)
+              git commit -q -m "[avto] $p1 ($teg)"
+              pervaya="${pervaya:+$pervaya + }$p1"
+              vyvod="$vyvod$v
+          "
+              ssylki="${ssylki}https://github.com/arabelthera-dot/rc-rolik/releases/tag/$teg
+          "
+            done
+            [ -n "$pervaya" ] || continue
+            v_hranilishche || { echo "- $tegi — ролик не в хранилище, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; rm -rf "$MEDIA_VYHOD"; continue; }
+            git fetch -q --depth=1 --filter=blob:none origin main
+            if [ -n "$nomer" ]; then git push -q origin "$VETKA"; else git push -q -f origin "$VETKA"; fi
+            telo="Выпуск облака на сайт (r538): $ssylki
+          \`\`\`
+          $vyvod\`\`\`
+          Заявку открыла машина .github/workflows/rolik-na-sait.yml; файлы и запись реестра — scripts/rolik-na-sait.mjs. Руками не правится: новый ролик — новый выпуск в rc-rolik."
+            if [ -n "$nomer" ]; then
+              gh pr edit "$nomer" --body "$(gh pr view "$nomer" --json body -q .body)
+
+          Дописано в эту заявку (ролик и гид дня — одна заявка, Р790 п.6): $telo"
+            else
+              nomer=$(gh pr create --head "$VETKA" --base main --title "[avto] $pervaya" --body "$telo" | grep -o '[0-9]*$')
+            fi
+            # автослияние — только у расписания и сигнала rc-rolik; ручной пуск (проба, разбор) оставляет заявку человеку
+            case "$GITHUB_EVENT_NAME" in schedule|repository_dispatch) GH_TOKEN="$SLIYANIE_TOKEN" gh pr merge "$nomer" --auto --squash ;; esac
+            echo "- $tegi → https://github.com/$GITHUB_REPOSITORY/pull/$nomer" >> "$GITHUB_STEP_SUMMARY"
+            sha=$(git rev-parse HEAD)
+            zapros="repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$sha&event=pull_request"
+            ok=
+            for i in $(seq 1 12); do
+              vsego=$(gh api "$zapros" -q '.total_count')
+              zhdut=$(gh api "$zapros" -q '.workflow_runs[] | select(.conclusion=="action_required") | .id')
+              for id in $zhdut; do gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/approve"; done
+              [ "${vsego:-0}" -gt 0 ] && [ -z "$zhdut" ] && { echo "Проверка заявки #$nomer идёт."; ok=1; break; }
+              sleep 10
+            done
+            [ -n "$ok" ] || echo "::warning::проверка заявки #$nomer не запустилась за 2 мин"
+          done 3<<< "$spisok"
+          exit "$brak"

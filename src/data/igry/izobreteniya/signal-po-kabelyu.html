@@ -1,0 +1,52 @@
+<section class="block" id="games" style="background:rgba(6,12,23,.6)">
+  <div class="wrap">
+    <h2>Игра 1 · Дотяни сигнал до квартиры</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:64ch">Сигнал телецентра падает с антенны. Поймай его и направь по кабелю к нужной квартире — той, что мигает. Ветровые помехи сносят сигнал в сторону.</p>
+    <div style="text-align:center">
+      <div id="windLbl" style="font-size:13px;color:var(--gold-l);font-weight:600;min-height:18px;margin-bottom:6px"></div>
+      <canvas id="game" width="800" height="330" style="width:100%;max-width:800px;background:linear-gradient(#cfe6f7,#eaf4fb);border-radius:14px;border:1px solid var(--line);touch-action:none"></canvas>
+      <div style="margin:12px 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <button class="btn gold" id="startG">▶ Включить трансляцию</button>
+        <button class="btn gold pulse" id="drop" style="display:none;font-size:20px;padding:16px 32px;letter-spacing:.5px">📡 УСИЛИТЬ СИГНАЛ</button>
+        <button class="btn ghost" id="steerL" style="display:none;touch-action:none;user-select:none;-webkit-user-select:none;font-size:20px;min-width:66px">◀</button>
+        <button class="btn ghost" id="steerR" style="display:none;touch-action:none;user-select:none;-webkit-user-select:none;font-size:20px;min-width:66px">▶</button>
+        <button class="btn ghost" id="rs" style="display:none">Заново</button>
+      </div>
+      <div id="gm" style="font-weight:600;min-height:24px;color:var(--gold-l)"></div>
+    </div>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты — инженер телецентра. Доведи сигнал с антенны до квартиры, где мигает окно, — там ждут передачу.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Нажми «Включить трансляцию»</b> — синий сигнал поплывёт от антенны вниз.</li>
+        <li><b>Тапни по полю</b> (или жми «Усилить сигнал»), чтобы поймать сигнал: чем выше поймаешь, тем больше времени на наведение.</li>
+        <li><b>Веди пальцем или мышью</b> по полю (или держи ◀ / ▶) — направь сигнал на мигающее золотое окно.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: надпись над полем («Ветер ◀ влево · сильный» и т. п.) — это помехи, они сносят сигнал в сторону, бери поправку. Не успеешь усилить — сигнал поймается сам у самой крыши, и навести почти не выйдет. «Заново» даёт новую квартиру и новые помехи.</p>
+      <p class="igra-pravila-final">Сигнал лёг в мигающую квартиру или рядом с ней — передача дошла, игра засчитана.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="assemble">
+  <div class="wrap">
+    <h2>Игра 2 · Собери кабельный тракт</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:64ch">Нажимай элементы в правильном порядке — от антенны до телевизора. Именно так инженеры 1938 года выстраивали первую кабельную сеть в мире. Ошибёшься — подскажу.</p>
+    <div id="asmSlots" style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0"></div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Детали — нажимай по порядку:</div>
+    <div id="asmParts" style="display:flex;gap:10px;flex-wrap:wrap"></div>
+    <div id="asmMsg" style="font-weight:600;min-height:24px;color:var(--gold-l);margin-top:12px"></div>
+    <button class="btn ghost" id="asmReset" style="display:none;margin-top:6px">Собрать заново</button>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты — инженер 1938 года. Собери кабельный тракт по порядку — от антенны на крыше до телевизора в квартире.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Посмотри на детали</b> внизу — они перемешаны; под названием каждой написано, где она стоит.</li>
+        <li><b>Нажми ту, что идёт первой</b> по пути сигнала, — она встанет в ячейку «1», а подсказка спросит, что идёт следующим.</li>
+        <li><b>Нажимай дальше по порядку</b>, пока не заполнишь все пять ячеек — до телевизора АТП-1.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: нажмёшь не ту деталь — она дрогнет, а подсказка напомнит, какой номер нужен сейчас; штрафа нет, пробуй дальше. Кнопка «Собрать заново» появится в конце и перемешает детали.</p>
+      <p class="igra-pravila-final">Все пять ячеек заполнены — тракт собран, сигнал дошёл до экрана, игра засчитана.</p>
+    </div>
+  </div>
+</section>

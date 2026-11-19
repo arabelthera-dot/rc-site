@@ -1,0 +1,26 @@
+{
+ "_": "Реестр музыки и звука роликов (пункт 45). Чужой музыки нет; новый звук — строкой в MUZYKA скрипта. Собрано tools/spravochniki/media.py из карточек дней, реестра роликов и rc-rolik; руками не править.",
+ "muzyka": [
+  {
+   "id": "sfx-gul",
+   "nazvanie": "Гул-подложка под всем роликом",
+   "gde": "rc-rolik scripts/sfx.py, drone()",
+   "avtor": "своя работа",
+   "licenziya": "CC0"
+  },
+  {
+   "id": "sfx-udar",
+   "nazvanie": "Удар на смене сцены",
+   "gde": "rc-rolik scripts/sfx.py, boom()",
+   "avtor": "своя работа",
+   "licenziya": "CC0"
+  },
+  {
+   "id": "sfx-vzhuh",
+   "nazvanie": "«Вжух» на переходе",
+   "gde": "rc-rolik scripts/sfx.py, whoosh()",
+   "avtor": "своя работа",
+   "licenziya": "CC0"
+  }
+ ]
+}

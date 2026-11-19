@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Виктор Васнецов",
+  "pol": "m",
+  "kratko": "Живописец, автор «Богатырей» и «Алёнушки».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n88081971",
+    "ssylka": "https://id.loc.gov/authorities/names/n88081971.html",
+    "zagolovok": "Vasnet︠s︡ov, Viktor Mikhaĭlovich, 1848-1926"
+  },
+  "latinica": "Viktor Vasnetsov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1848",
+    "smert": "1926"
+  }
+}

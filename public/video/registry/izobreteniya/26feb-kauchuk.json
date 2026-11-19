@@ -1,0 +1,32 @@
+{
+  "title": "История в 44 секунды",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/26feb-kauchuk/day-26feb-kauchuk.mp4",
+    "local": "muzei/izobreteniya/video/day-26feb-kauchuk.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 44,
+    "mb": 10.6
+  },
+  "vertical": {
+    "file": "izobreteniya/26feb-kauchuk/day-26feb-kauchuk-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-26feb-kauchuk-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 44,
+    "mb": 10.2
+  },
+  "poster": {
+    "file": "izobreteniya/26feb-kauchuk/day-26feb-kauchuk-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-26feb-kauchuk-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/26feb-kauchuk/day-26feb-kauchuk-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-26feb-kauchuk-9x16-poster.jpg",
+    "v": 2
+  }
+}

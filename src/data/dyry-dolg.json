@@ -1,0 +1,8 @@
+{
+  "_shapka": "Долг дыр дня на 05.11.2026 (Р550). «istochnik-bez-ssylki» — сколько пунктов sources без ссылки у дня сейчас (замок zamokObshchiy в src/lib/den-obshchee.mjs): больше — красный, меньше — снять или уменьшить строку. «9x16-bez-reestra» — выпуски, у которых файл *-9x16.mp4 лежит, а в реестре нет vertical (замок scripts/proporcii-rolika.mjs). Пополнять нельзя, только убирать.",
+  "istochnik-bez-ssylki": {
+    "izobreteniya": { "01-04": 1, "01-05": 1, "01-08": 4, "01-09": 6, "01-24": 1, "01-25": 1, "01-30": 1 },
+    "ne-sdayutsya": { "01-01": 1, "01-03": 2, "01-04": 2, "01-05": 1 }
+  },
+  "9x16-bez-reestra": ["izobreteniya/26jan-sreznevskiy"]
+}

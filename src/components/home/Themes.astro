@@ -1,0 +1,21 @@
+---
+import { yazyk, razobratPut, stroka } from '../../lib/yazyki.mjs';
+// Второй вход «по темам»: тем и залов в данных музея нет — честная группировка открытых дней по месяцам.
+interface Props { groups: { name: string; days: { title: string; href: string }[] }[] }
+const { groups } = Astro.props;
+const lang = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
+const s = (key: string): any => stroka(lang.code, key);
+---
+<section class="mh-sec" id="temy">
+  <h2 class="mh-h">{s('poTemam')}</h2>
+  {groups.length ? (<>
+    <p class="mh-note">{s('zalyNeRazmecheny')}</p>
+    <div class="mh-themes">
+      {groups.map((g) => (
+        <details class="mh-theme"><summary>{g.name} <span class="cnt">{g.days.length}</span></summary>
+          <ul>{g.days.map((d) => <li><a href={d.href}>{d.title}</a></li>)}</ul>
+        </details>
+      ))}
+    </div>
+  </>) : <p class="mh-empty">{s('zalyPoyavyatsya')}</p>}
+</section>

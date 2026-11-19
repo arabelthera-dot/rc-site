@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Александр Дейнека",
+  "pol": "m",
+  "kratko": "Советский живописец и график, автор «Обороны Севастополя».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n81097707",
+    "ssylka": "https://id.loc.gov/authorities/names/n81097707.html",
+    "zagolovok": "Deĭneka, Aleksandr Aleksandrovich, 1899-1969"
+  },
+  "latinica": "Aleksandr Deineka",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1899",
+    "smert": "1969"
+  }
+}

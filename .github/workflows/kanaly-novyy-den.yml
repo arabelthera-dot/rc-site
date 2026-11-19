@@ -1,0 +1,94 @@
+# Каналы: новый день — в каналы в час выхода (Р686 п.10). После удачного deploy с main скрипт сравнивает
+# эту версию с прошлой удачно выложенной: день, который сейчас gotov() принимает (карточка, хук, большая
+# страница), а в прошлой версии — нет, получает свой пост (хук, ссылка, картинка дня) в Telegram и VK.
+# Пост проходит ту же проверку Е8 (scripts/kanaly/proverka.mjs), что пост 9:00; брак — пост не уходит.
+# Выключено по умолчанию: пока переменная репо KANALY_NOVYY_DEN не равна '1', пост только печатается в
+# журнал и сводку (--dry-run), ничего не отправляется. Откат — удалить переменную или выключить этот workflow.
+name: kanaly-novyy-den
+on:
+  workflow_run:
+    workflows: [deploy]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      s:
+        description: 'Версия, с которой искать вышедшие дни (пусто — прошлый удачный deploy); запуск всегда пробный'
+        type: string
+        default: ''
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: kanaly
+  cancel-in-progress: false
+jobs:
+  post:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    environment: kanaly
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+          filter: blob:none
+      - id: s
+        name: Вышедшие дни
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD: ${{ github.event.workflow_run.head_sha || github.sha }}
+          S: ${{ inputs.s }}
+        run: |
+          if [ -z "$S" ]; then
+            S=$(gh run list -R "$GITHUB_REPOSITORY" -w deploy -b main -s success -L 20 --json headSha \
+                -q "[.[].headSha | select(. != \"$HEAD\")][0]")
+          fi
+          [ -n "$S" ] || { echo "нет прошлого удачного deploy — сравнивать не с чем"; exit 0; }
+          dni=$(python scripts/kanaly/post.py --novye-s "$S")
+          echo "с $S: ${dni:-новых дней нет}"
+          { echo 'dni<<EOF'; echo "$dni"; echo EOF; } >> "$GITHUB_OUTPUT"
+      - if: steps.s.outputs.dni != ''
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.s.outputs.dni != ''
+        run: npm ci --no-audit --no-fund
+      - if: steps.s.outputs.dni != ''
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - if: steps.s.outputs.dni != ''
+        run: pip install --quiet pillow
+      # Отметки «уже отправлено» — по дню музея: повторный deploy той же версии поста не дублирует.
+      - if: steps.s.outputs.dni != ''
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .kanaly-novyy
+          key: kanaly-novyy-${{ github.run_id }}
+          restore-keys: kanaly-novyy-
+      - if: steps.s.outputs.dni != ''
+        name: Посты вышедших дней
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHANNEL: ${{ secrets.TG_CHANNEL }}
+          VK_TOKEN: ${{ secrets.VK_TOKEN }}
+          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+          VKL: ${{ github.event_name == 'workflow_run' && vars.KANALY_NOVYY_DEN == '1' }}
+          DNI: ${{ steps.s.outputs.dni }}
+        run: |
+          kod=0
+          while read -r slug key; do
+            [ -n "$slug" ] || continue
+            args=(--muzei "$slug" --date "$key" --state ".kanaly-novyy/$slug-$key")
+            [ "$VKL" = "true" ] || args+=(--dry-run)
+            echo "== $slug $key"
+            python scripts/kanaly/post.py "${args[@]}" || kod=1
+          done <<< "$DNI"
+          exit $kod
+      - if: always() && steps.s.outputs.dni != '' && hashFiles('.kanaly-novyy/**/sent') != ''
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .kanaly-novyy
+          key: kanaly-novyy-${{ github.run_id }}

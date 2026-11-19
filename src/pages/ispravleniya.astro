@@ -1,0 +1,33 @@
+---
+// «Исправления» (Р290, Сергей 27.10.2026): что на сайте было неверно, что стало, когда исправили и на каком дне.
+// Данные — src/data/ispravleniya.json (новая запись — сверху, в день правки). Вид — public/assets/rc-ispravleniya.css.
+import Base from '../layouts/Base.astro';
+import dannye from '../data/ispravleniya.json';
+import { getCollection } from 'astro:content';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const den = (key: string) => { const [m, d] = key.split('-').map(Number); return `${d} ${MES[m - 1]}`; };
+const data = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MES[m - 1]} ${y}`; };
+const museums = (await getCollection('museums')).map((m) => m.data);
+const imya = (slug: string) => museums.find((m) => m.slug === slug)?.title_ru ?? slug;
+const zapisi = [...dannye.zapisi].sort((a, b) => b.kogda.localeCompare(a.kogda));
+---
+<Base title="Исправления · Русская цивилизация" description="Какие неточности мы нашли и исправили на страницах «Русской цивилизации»: что было, что стало, когда и на каком дне." schema="page" crumbs={[{ label: 'Исправления' }]}>
+  <link slot="head" rel="stylesheet" href={`${base}assets/rc-ispravleniya.css`} />
+  <header slot="header"><h1>Исправления</h1><p>Что было неверно, что стало и когда исправили</p></header>
+  <div class="rc-tekst ispravleniya">
+    <p>Мы ошибаемся и не прячем этого. Каждую исправленную неточность записываем сюда: что было написано, что стало,
+      когда поправили и на какой странице. Как мы проверяем факты — на странице <a href={`${base}kak-sdelan-muzey/`}>«Как сделан музей»</a>.</p>
+    <p>Нашли ошибку — нажмите «Нашли ошибку?» внизу любой страницы: проверим по источникам, исправим и запишем здесь.</p>
+    <ol class="isp-spisok">
+      {zapisi.map((z) => (
+        <li class="isp">
+          <div class="isp-shapka"><time datetime={z.kogda}>{data(z.kogda)}</time> · <a href={`${base}muzei/${z.museum}/den/${z.key}/`}>{imya(z.museum)}, {den(z.key)}</a></div>
+          <p class="isp-bylo"><span class="isp-metka">Было:</span> {z.bylo}</p>
+          <p class="isp-stalo"><span class="isp-metka">Стало:</span> {z.stalo}</p>
+          {z.istochnik && <p class="isp-ist">Источник: {z.istochnik}</p>}
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>

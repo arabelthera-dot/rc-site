@@ -1,0 +1,10 @@
+# Михаил: docker compose up -d --build  (из папки tg-bot/)
+services:
+  rc-tg-bot:
+    build: .
+    restart: unless-stopped
+    env_file: /opt/agents/rc-tg-bot.env   # RC_TG_BOT_TOKEN=...
+    volumes:
+      - rc-tg-bot-data:/data
+volumes:
+  rc-tg-bot-data:

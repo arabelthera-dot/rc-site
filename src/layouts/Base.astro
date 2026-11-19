@@ -1,0 +1,230 @@
+---
+import { CSP } from '../lib/csp.mjs';
+interface Props { title: string; rss?: { href: string; title: string }; ogTitle?: string; description?: string; ogDescription?: string; image?: string; imageAlt?: string; type?: 'website' | 'article'; museum?: string; crumbs?: { href?: string; label: string }[]; museumTitle?: string; here?: string; back?: { href: string; label: string }; ownStyle?: boolean; noindex?: boolean; ogFallback?: string; about?: string; temporal?: string; modified?: string; published?: string; portal?: boolean; bezAdresa?: boolean; den?: { key: string; year?: string | number; images?: { src: string; caption: string; credit: string; generated?: boolean }[]; dated?: boolean }; schema?: 'home' | 'museum' | 'calendar' | 'article' | 'page'; bezPlashkiPerevoda?: boolean }
+const { title, ogTitle, description, image, imageAlt, type = 'website', museum, crumbs = [], museumTitle, here, back, ownStyle = false, rss, portal = false } = Astro.props;
+import SiteBar from '../components/SiteBar.astro';
+import InlineCss from '../components/InlineCss.astro';
+import Metrika from '../components/Metrika.astro';
+import Yazyki from '../components/Yazyki.astro';
+import { yazyk, razobratPut, hreflangi, svyazPerevoda, ogLocale, stroka, strelkaVpered, poUmolchaniyu, putNaYazyke, golovaYazyka } from '../lib/yazyki.mjs';
+import { estPerevod } from '../lib/gotovnost-perevoda.mjs';
+import { podpiskaHtml } from '../lib/sitebar.mjs';
+import { fontFiles, razvernut } from '../lib/shrifty.mjs';
+import nastroyki from '../data/nastroyki.json';
+import kanaly from '../data/kanaly.json';
+import { slabovidHeadJs, slabovidButtonHtml, slabovidCssHtml } from '../lib/slabovid.mjs';
+import { ogRaster } from '../lib/og-den.mjs';
+import { REDAKCIYA, LICENZIYA, redakciyaLd, licenziyaHtml } from '../lib/redakciya.mjs';
+import { kadrLd, TEKSTY_NOTICE } from '../lib/prava-ld.mjs';
+import { sobytieLd, proizvedeniyaLd } from '../lib/razmetka.mjs';
+import { znak, poPuti, znakHtml, roditelyu, roditelyuHtml, bezOchkov, typicalAgeRange } from '../lib/vozrast.mjs';
+// museum.css — ссылкой, а не импортом: главная портала (portal) его не грузит, у неё своя выписка
+// src/styles/portal-base.css (AI_Projects#2004 п.7). Ссылка стоит там же, где Astro ставил общий стиль, — после слота head.
+import museumCss from '../styles/museum.css?url';
+const base = import.meta.env.BASE_URL;
+// Свой стиль музея переносится из старого сайта как есть (public/muzei/<slug>/*-style.css, план шаг 4);
+// нет файла — страница на общем museum.css. Как на старом сайте — только у страниц дня (ownStyle):
+// календарь и главная музея там на своём общем стиле.
+const fs = await import('node:fs');
+const own = ownStyle && museum && fs.existsSync(`public/muzei/${museum}`)
+  ? fs.readdirSync(`public/muzei/${museum}`).find((f: string) => f.endsWith('-style.css')) : undefined;
+// Паспорт для поиска и пересылки (Open Graph, «да» Сергея 16.10): картинка превью — своя у страницы,
+// иначе обложка музея со старого сайта (public/og/<музей>_index.jpg), иначе общая og-default.jpg.
+// Шрифт заголовков из своего стиля музея (--font-h) набирает название музея в шапке и h1 дня: его файлы
+// (кириллица + латиница, 700) — заранее, иначе Georgia до загрузки переносит название иначе и страница
+// прыгает (CLS 0,19 у «Не сдаются», P1 16.10). Файлы — из fonts.css, руками не перечисляются.
+const headFont = own && /--font-h:\s*'([^']+)'/.exec(razvernut(fs.readFileSync(`public/muzei/${museum}/${own}`, 'utf8')))?.[1];
+const headFiles = headFont ? fontFiles([headFont], ['700']) : [];
+const url = new URL(Astro.url.pathname, Astro.site).href;
+// Описание для пересылки (og/twitter) отдельно от описания для поисковиков (20.10, #290): главная кладёт сюда хук
+// вещи дня, meta description остаётся постоянным описанием сайта. По умолчанию — то же description.
+const ogDescription = Astro.props.ogDescription ?? description;
+// У страницы без своего адреса (404 — её отдают на любой несуществующий путь) нет canonical, og:url и hreflang:
+// иначе они ведут на /404/, которого нет, и спорят с noindex (обход сайта 20.10, задача OB).
+const bezAdresa = Astro.props.bezAdresa === true;
+// Нет обложки музея — первая настоящая растровая картинка его дней (ogFallback, главная и календарь музея, 19.10):
+// иначе у 30 из 33 музеев пересылка главной и календаря шла общей og-default.jpg. SVG Telegram/ВК не показывают.
+// WebP ВК в превью не показывает — только JPG/PNG/GIF, WebP меняется на двойник .jpg/.png (ogRaster, Б9 19.10).
+const fb = ogRaster(Astro.props.ogFallback);
+const fallback = fb ? fb.replace(/^(?!https?:)\/?/, base) : undefined;
+const ogFile = museum && fs.existsSync(`public/og/${museum}_index.jpg`) ? `${base}og/${museum}_index.jpg` : fallback ?? `${base}og/og-default.jpg`;
+// Превью-сборка не для поисковиков: PUBLIC_NOINDEX=1 (deploy.yml, задача build) → noindex; по умолчанию индексируем.
+// Своя страница может попросить noindex (заглушка «День готовится»).
+const noindex = Astro.props.noindex || import.meta.env.PUBLIC_NOINDEX === '1';
+const ogImage = new URL(ogRaster(image) ?? ogFile, Astro.site).href;
+// Разметка schema.org (JSON-LD, пункт «schema» замера glazami): тип — из пропса schema, иначе по пропсам:
+// главная — WebSite + Organization, главная музея — Museum, календарь — CollectionPage, день — Article, прочее — WebPage.
+// У дня about — предмет дня (его title), temporalCoverage — год события (поле year); нет поля — ключа нет (JSON.stringify
+// выбрасывает undefined). SearchAction у WebSite нет: поиск (интеграция poisk) по умолчанию выключен (Д5 плана сайта, 19.10).
+const home = new URL(base, Astro.site).href;
+const org = { '@type': 'Organization', name: 'Русская цивилизация', url: home };
+// Подпись текстов — «Редакция „Русской цивилизации“» (Р34), лицензия текстов — CC BY 4.0 (Р35): у всех страниц-произведений.
+const red = redakciyaLd(home);
+const museumLd = museum && museumTitle ? { '@type': 'Museum', name: museumTitle, url: new URL(`${base}muzei/${museum}/`, Astro.site).href } : undefined;
+// isPartOf у schema.org — только CreativeWork или URL; Museum — место (CivicStructure), validator.schema.org: INVALID_OBJECT.
+// Поэтому день и календарь входят в страницу музея (WebPage), а сам музей — её about (Д5, 20.10).
+const museumPageLd = museumLd ? { '@type': 'WebPage', name: museumLd.name, url: museumLd.url, about: museumLd } : undefined;
+// Язык страницы — по приставке адреса (/en/… и т.п., src/data/yazyki.json); русский — без приставки.
+// og:locale, inLanguage, строки подвала и «Подписаться» — от него (Г20; русский вывод не меняется).
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key: string) => stroka(lang.code, key);
+const kind = Astro.props.schema ?? (Astro.url.pathname.replace(/\/?$/, '/') === base.replace(/\/?$/, '/') ? 'home' : type === 'article' && museumLd ? 'article'
+  : museumLd && here ? 'calendar' : museumLd ? 'museum' : 'page');
+const ldName = ogTitle ?? title;
+// Событие и произведения дня (Д5, пакет 3, 22.10): у страницы дня (пропс den) — Event (дата — ключ ММ-ДД у датированного
+// музея и год) и VisualArtwork настоящих кадров живописи и карикатуры; Article ссылается на них по @id (src/lib/razmetka.mjs).
+const den = Astro.props.den;
+const absolyut = (src: string) => new URL(/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`, Astro.site).href;
+const sobytie = kind === 'article' && den?.dated ? sobytieLd({ title: Astro.props.about, year: den.year, key: den.key, url, image: ogImage }) : undefined;
+const proizvedeniya = kind === 'article' && den && museum ? proizvedeniyaLd({ museum, images: den.images, url, absolyut }) : [];
+// Р396 п.2: CC BY 4.0 — только тексты; у каждого кадра дня — своя лицензия и держатель из паспорта (credit, подпись).
+const kadryLd = kind === 'article' && den ? (den.images ?? []).map((i) => kadrLd({ src: absolyut(i.src), license: i.license ?? '', text: `${i.caption ?? ''}. ${i.credit ?? ''}` })) : [];
+const ogLd = ogImage && !kadryLd.some((k) => k.contentUrl.split('/').pop() === String(ogImage).split('/').pop())
+  ? [kadrLd({ src: ogImage, license: /\/og\//.test(ogImage) ? 'Русская цивилизация, CC BY 4.0' : '' })] : [];
+const ld = kind === 'home'
+  ? [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Русская цивилизация', url: home, inLanguage: lang.code, description, publisher: red, license: LICENZIYA },
+     { '@context': 'https://schema.org', ...org, logo: new URL(`${base}og/index.jpg`, Astro.site).href }]
+  // Museum — не произведение (license у него не бывает): лицензия и подпись — у его страницы WebPage.
+  // parentOrganization есть у Organization, не у Museum-места: узел — сразу Museum и Organization (мультитип schema.org).
+  : kind === 'museum' ? [{ '@context': 'https://schema.org', ...museumLd, '@type': ['Museum', 'Organization'], description, image: ogImage, parentOrganization: org },
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, about: museumLd, author: red, publisher: red, license: LICENZIYA }]
+  : kind === 'calendar' ? { '@context': 'https://schema.org', '@type': 'CollectionPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA }
+  : kind === 'article' ? { '@context': 'https://schema.org', '@type': 'Article', headline: ldName, url, inLanguage: lang.code, description, image: [...kadryLd, ...ogLd].length ? [...kadryLd, ...ogLd] : undefined, isPartOf: museumPageLd, author: red, publisher: red, license: LICENZIYA, copyrightNotice: TEKSTY_NOTICE,
+      about: sobytie ? { '@id': sobytie['@id'] } : Astro.props.about ? { '@type': 'Thing', name: Astro.props.about } : undefined,
+      mentions: proizvedeniya.length ? proizvedeniya.map((p) => ({ '@id': p['@id'] })) : undefined, temporalCoverage: Astro.props.temporal, datePublished: Astro.props.published, dateModified: Astro.props.modified }
+  : { '@context': 'https://schema.org', '@type': 'WebPage', name: ldName, url, inLanguage: lang.code, description, isPartOf: { '@type': 'WebSite', name: 'Русская цивилизация', url: home }, author: red, publisher: red, license: LICENZIYA };
+// Знак 436-ФЗ (Р87, 21.10: сайт 6+, сказки 0+): музей и день — из адреса, данные — src/data/vozrast.json. В JSON-LD — typicalAgeRange
+// (свойство CreativeWork: у главной — WebSite, у музея — его WebPage). Трагический день (Р40) — data-rc-bez-ochkov на <html>:
+// движки счёта (museum-score.js, museum-quiz.js) и rc-vozrast.css прячут очки, баллы и звания, интерактив работает.
+const pv = poPuti(Astro.url.pathname, base);
+const vz = znak(museum ?? pv.museum, pv.key);
+const rod = roditelyu(museum ?? pv.museum, pv.key);
+const age = typicalAgeRange(vz);
+const ldVse = kind === 'article' && (sobytie || proizvedeniya.length) ? [ld, sobytie, ...proizvedeniya].filter(Boolean) : ld;
+// Связь перевода с оригиналом (п. 150): translationOfWork у перевода, workTranslation у русской — у узла самой страницы
+// (url = адрес страницы); перевода у страницы нет — пусто, разметка прежняя (src/lib/yazyki.mjs, svyazPerevoda).
+const perevodLd = (o) => (o.url === url ? { ...o, ...svyazPerevoda(Astro.url.pathname, base, Astro.site, o['@type']) } : o);
+const ldAge = Array.isArray(ldVse) ? ldVse.map((o) => perevodLd(['WebSite', 'WebPage', 'Article'].includes(o['@type']) ? { ...o, typicalAgeRange: age } : o))
+  : perevodLd({ ...ldVse, typicalAgeRange: age });
+const ldJson = JSON.stringify(ldAge).replace(/</g, '\\u003c');
+// Яндекс Метрика — на всех страницах, кроме служебной доски (/doska/).
+// hreflang — русский, языки перевода страницы (src/lib/yazyki.mjs, yazykiStranicy) + x-default, чтобы не ссылаться на несуществующие страницы (план сайта Г19).
+// У страницы дня — ещё и только языки с готовым переводом этого дня (п. 147, src/lib/gotovnost-perevoda.mjs).
+const alternates = bezAdresa ? [] : hreflangi(Astro.url.pathname, base, Astro.site)
+  .filter((a) => !(den && museum) || estPerevod(museum, den.key, a.hreflang));
+// «Переведено машиной» (п. 151) — на каждой странице не на русском, на языке страницы, со ссылкой на русский оригинал,
+// как у Европарламента и ООН; русский вид не меняется. Перевод людьми — пропс bezPlashkiPerevoda.
+const plashkaPerevoda = lang.code !== poUmolchaniyu && !Astro.props.bezPlashkiPerevoda;
+const original = putNaYazyke(razobratPut(Astro.url.pathname, base).rest, poUmolchaniyu, base);
+const metrika = !Astro.url.pathname.startsWith(`${base}doska`);
+// «Нашли ошибку?» (Д6, Р84; пакет 3 описи 22.10.2026) — в подвале каждой страницы, кроме страниц дня: у них своя строка
+// «Нашли ошибку? Сообщите нам» в подвале дня (src/lib/podval-dnya.mjs), второй не нужно. Письмо на nastroyki.pochtaOshibka
+// с адресом страницы и выделенным текстом — без ключей и сервера. Ссылка на новую карточку GitHub не годится: доска
+// AI_Projects закрытая, посетителю она не откроется. Письмо → карточка с меткой oshibka-na-sayte — после ящика (М45).
+// Рядом — «Исправления» (/ispravleniya/, Р290): что уже исправили; только на русских страницах, страница одна, русская.
+const oshibkaMailto = type !== 'article' && !bezAdresa && nastroyki.pochtaOshibka;
+const oshibkaUrl = oshibkaMailto
+  ? `mailto:${nastroyki.pochtaOshibka}?subject=${encodeURIComponent(`Ошибка на странице ${url}`)}&body=${encodeURIComponent(`Страница: ${url}\n\nЧто не так:\n\n`)}`
+  : undefined;
+const csp = import.meta.env.PUBLIC_CSP === '1' ? CSP : undefined; // Р64: выключено без PUBLIC_CSP=1
+---
+<!doctype html>
+<html lang={lang.code} dir={lang.dir} data-museum={museum} data-rc-vozrast={vz} data-rc-bez-ochkov={bezOchkov(museum ?? pv.museum, pv.key) ? '' : undefined}>
+<head>
+  <meta charset="utf-8" />
+  {csp && <meta http-equiv="Content-Security-Policy" content={csp} />}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {/* версия для слабовидящих (Д7) — класс на <html> до первой отрисовки, без мигания */}
+  <script is:inline set:html={slabovidHeadJs(base)} />
+  <title>{title}</title>
+  {noindex && <meta name="robots" content="noindex" />}
+  {description && <meta name="description" content={description} />}
+  <meta name="author" content={REDAKCIYA} />
+  <link rel="license" href={LICENZIYA} />
+  <meta property="og:site_name" content="Русская цивилизация" />
+  <meta property="og:locale" content={ogLocale(lang)} />
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={ogTitle ?? title} />
+  {ogDescription && <meta property="og:description" content={ogDescription} />}
+  {!bezAdresa && <meta property="og:url" content={url} />}
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:alt" content={imageAlt ?? title} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ogTitle ?? title} />
+  {ogDescription && <meta name="twitter:description" content={ogDescription} />}
+  <meta name="twitter:image" content={ogImage} />
+  <link rel="sitemap" href={`${base}sitemap-index.xml`} />
+  <link rel="alternate" type="application/rss+xml" title="Русская цивилизация — новые дни музеев" href={`${base}rss.xml`} />
+  {rss && <link rel="alternate" type="application/rss+xml" title={rss.title} href={rss.href} />}
+  <meta name="theme-color" content="#060d18" />
+  {!bezAdresa && <link rel="canonical" href={url} />}
+  {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+  <link rel="icon" href={`${base}favicon.ico`} sizes="any" />
+  {nastroyki.pwaManifest && <link rel="manifest" href={`${base}manifest.webmanifest`} />}
+  <!-- Inter (шапка дня, крошки, блок «Поддержать») и PT Serif (основной текст вместо системного Georgia, 17.10) —
+       оба объявлены в museum.css; файлы
+       (кириллица + латиница с цифрами) — заранее, иначе после их загрузки страница перескакивает (CLS, приёмка
+       M1 16.10). На главной портала Inter нет — там не качаем. -->
+  {museum && <>
+    <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/ptserif-EJRVQgYoZZY2vCFuvAFSzr-tdg.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${base}assets/fonts/ptserif-EJRVQgYoZZY2vCFuvAFWzr8.woff2`} as="font" type="font/woff2" crossorigin />
+  </>}
+  {headFiles.map((f) => <link rel="preload" href={`${base}assets/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
+  {/* одна таблица дизайна (dizayn/tablica.json → rc-dizayn.css, Р649): переменные --cvet-/--razmer-/--shrift-… */}
+  <link rel="stylesheet" href={`${base}assets/rc-dizayn.css`} />
+  {own && <link rel="stylesheet" href={`${base}muzei/${museum}/${own}`} />}
+  {/* блок «Поддержать» внизу каждой страницы — 1,7 КБ, внутрь <head> вместо блокирующего запроса (18.10) */}
+  <InlineCss file="rc-podpiska.css" />
+  <InlineCss file="rc-podval.css" />
+  {/* знак возраста и строка «Родителю» — 1 КБ, внутрь <head>, как подписка */}
+  <InlineCss file="rc-vozrast.css" />
+  {/* режим слабовидящих — 21 КБ: файлом, не инлайном (инлайн × ~3600 страниц = +80 МБ сборки, 20.10) и без блокировки
+       отрисовки (Б10): у включивших режим скрипт в начале <head> пишет блокирующую ссылку — мигания нет. Кнопка — 1 КБ, внутрь. */}
+  <InlineCss file="rc-slabovid-knopka.css" />
+  <Fragment set:html={slabovidCssHtml(base)} />
+  {/* верхняя полоса — первый экран, 5 КБ: внутрь <head> вместо блокирующего запроса (Б10, 20.10) */}
+  {museum && museumTitle && <>
+    <InlineCss file="rc-sitebar.css" />
+    <script is:inline defer src={`${base}assets/rc-sitebar.js`}></script>
+  </>}
+  {/* печать урока (Б22) — только для бумаги, отрисовку экрана не держит; лупу на кадр (Р178) ставит сборка — src/integrations/lupa.mjs */}
+  <link rel="stylesheet" media="print" href={`${base}assets/rc-pechat.css`} />
+  <script type="application/ld+json" set:html={ldJson} />
+  {metrika && <Metrika />}
+  <slot name="head" />
+  {!portal && <link rel="stylesheet" href={museumCss} />}
+  {/* шрифт письма и кавычки языка (п.148, п.163, r726) — только не на русском, из src/data/yazyki.json */}
+  <Fragment set:html={golovaYazyka(lang, base)} />
+</head>
+<body>
+  <Yazyki />
+  <Fragment set:html={slabovidButtonHtml()} />
+  {/* Страницы музеев — единая верхняя полоса (Сергей 17.10) вместо крошек и кнопки «назад» */}
+  {museum && museumTitle && <SiteBar slug={museum} title={museumTitle} here={here} vozrast={znakHtml(vz)} />}
+  {/* Знак 436-ФЗ: на страницах музеев — в полосе, на прочих — в верхнем углу (absolute, без сдвига вёрстки) */}
+  {!(museum && museumTitle) && <div class="rc-vozrast-ugol"><Fragment set:html={znakHtml(vz)} /></div>}
+  {rod && <Fragment set:html={roditelyuHtml(rod)} />}
+  {!(museum && museumTitle) && back && <a class="backbtn" href={back.href}><span class="ar">←</span>{back.label}</a>}
+  <slot name="header" />
+  {!(museum && museumTitle) && crumbs.length > 0 && (
+    <nav class="crumbs">
+      <a href={base}>{s('portalImya')}</a>
+      {crumbs.map((c) => (<> › {c.href ? <a href={c.href}>{c.label}</a> : <span>{c.label}</span>}</>))}
+    </nav>
+  )}
+  <main>{plashkaPerevoda && <p class="mashinnyy-perevod" role="note">{s('mashinnyPerevod')} <a href={original} hreflang={poUmolchaniyu}>{s('mashinnyPerevodOriginal')}</a></p>}<slot /></main>
+  <Fragment set:html={podpiskaHtml(s('podpisatsya'))} />
+  <footer>
+    <div class="slog">{s('slogan')}</div>
+    <slot name="footer"><a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a></slot>
+    <div class="foot-links"><a href={`${base}detyam/`}>{s('podvalDetyam')}</a> · <a href={`${base}o-proekte/`}>{s('podvalOProekte')}</a> · <a href={`${base}kak-sdelan-muzey/`}>{s('podvalKakSdelan')}</a> · <a href={`${base}kontakty/`}>{s('podvalKontakty')}</a> · <a href={`${base}politika-konfidencialnosti/`}>{s('podvalPolitika')}</a>{lang.code === 'ru' && <> · <a href={`${base}ispravleniya/`}>{s('podvalIspravleniya')}</a> · <a href={`${base}o-dostupnosti/`}>О доступности</a></>}{oshibkaUrl && <> · <a class="oshibka" href={oshibkaUrl} data-pochta={nastroyki.pochtaOshibka} data-stranica={url} rel="nofollow">{s('podvalOshibka')}</a></>}</div>
+    {lang.code === 'ru' && <div class="foot-links">Официальный сайт — <a href={kanaly.sayt}>{kanaly.saytImya}</a>. Других сайтов, каналов и сборов у нас нет</div>}
+    {lang.code === 'ru' && <div class="foot-links">Автор проекта — <a href={`${base}o-proekte/#osnovatel`}>Сергей Ефименко</a> · <a href={`mailto:${kanaly.pochta}`}>{kanaly.pochta}</a></div>}
+    <Fragment set:html={licenziyaHtml(base, { code: lang.code })} />
+    {oshibkaMailto && <script src="../scripts/oshibka.js"></script>}
+  </footer>
+  <script is:inline defer src={`${base}assets/analytics.js`}></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "muzei": "ne-sdayutsya",
+  "den": "02-02",
+  "status": "черновик, на страницы не ставится",
+  "modeli": [
+    "Salesforce/blip-image-captioning-base",
+    "Helsinki-NLP/opus-mt-en-ru"
+  ],
+  "kartinki": [
+    {
+      "gde": "src/content/days/ne-sdayutsya/02-02.json images[0]",
+      "src": "muzei/ne-sdayutsya/img/02-02-goskatalog-4710449.jpg",
+      "podpis": "Модель армейской повозки, Государственный исторический музей",
+      "iz_podpisi": "Модель армейской повозки",
+      "iz_modeli": "старая игрушечная пушка на белом фоне"
+    }
+  ]
+}

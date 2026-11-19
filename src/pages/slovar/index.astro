@@ -1,0 +1,28 @@
+---
+// Словарь (Р37, Сергей 20.10): люди, места, народы, темы — по четырём разделам; у записи — число дней всех музеев.
+import Base from '../../layouts/Base.astro';
+import InlineCss from '../../components/InlineCss.astro';
+import { getCollection } from 'astro:content';
+import { TIPY, zapisi, adres } from '../../lib/slovar.mjs';
+import { plural } from '../../lib/kalendar';
+const base = import.meta.env.BASE_URL;
+const days = await getCollection('days');
+const chislo = (id: string) => days.filter((d) => d.data.slovar?.includes(id)).length;
+const razdely = TIPY.map((t) => ({ ...t, zapisi: zapisi.filter((z) => z.tip === t.tip).map((z) => ({ ...z, n: chislo(z.id) }))
+  .sort((a, b) => a.nazvanie.localeCompare(b.nazvanie, 'ru')) })).filter((r) => r.zapisi.length > 0);
+---
+<Base title="Словарь: люди, места, народы, темы · Русская цивилизация" description="Люди, места, народы и темы, которые связывают дни всех музеев «Русской цивилизации»." schema="page" crumbs={[{ label: 'Словарь' }]}>
+  <Fragment slot="head"><InlineCss file="rc-slovar.css" /></Fragment>
+  <header slot="header"><h1>Словарь</h1></header>
+  <div class="slovar">
+    <p class="slovar-lead">Люди, места, народы и темы, которые встречаются в днях разных музеев. Откройте запись — увидите все её дни.</p>
+    <nav class="slovar-razdely" aria-label="Разделы словаря">{razdely.map((r, i) => <>{i > 0 && ' · '}<a href={`#${r.tip}`}>{r.nazvanie}</a></>)}</nav>
+    {razdely.map((r) => (
+      <section id={r.tip}>
+        <h2>{r.nazvanie}</h2>
+        <ul class="slovar-razdel">
+          {r.zapisi.map((z) => <li><a href={adres(base, z.id)}>{z.nazvanie}</a> <span class="slovar-n">{z.n} {plural(z.n, 'день', 'дня', 'дней')}</span></li>)}
+        </ul>
+      </section>))}
+  </div>
+</Base>

@@ -1,0 +1,164 @@
+---
+import InlineCss from '../InlineCss.astro';
+// «Сегодня в Русской цивилизации» — первый экран главной портала (Р9, 17.10; Е7, 20.10): одна «вещь дня»,
+// ниже (после слота — «День по дате») «Ещё сегодня в музеях» — карточки остальных музеев на эту дату.
+// Вещь дня выбирает src/lib/segodnya.ts (cards[0], чередование музеев по дню года) — один и тот же весь день.
+// Сайт статический, ночная пересборка опаздывает (Б11, deploy.yml): при сборке рисуются карточки даты сборки (по Москве),
+// встроенный скрипт сверяет московскую дату в браузере и при расхождении берёт segodnya/<ММ-ДД>.json.
+// Схема обложки (rc-hero): картинка → подпись к кадру → этикетка (полное имя музея, title_ru) → событие → хук →
+// «Открыть день». Текст никогда не поверх картинки. Стили — только public/assets/portal-today.css.
+// width/height картинок = рамка 16:10 (object-fit: cover): место держится до загрузки (17.10).
+import { today, KEYS, whenOf } from '../../lib/segodnya';
+import { mskKlyuch } from '../../lib/msk.mjs';
+import MskData from '../MskData.astro';
+import { yazyk, razobratPut, stroka, strelkaVpered } from '../../lib/yazyki.mjs';
+const langS = yazyk(razobratPut(Astro.url.pathname, import.meta.env.BASE_URL).code);
+const s = (key: string): any => stroka(langS.code, key);
+const otkrytDen = `${s('otkrytDenKr')} ${strelkaVpered(langS.dir)}`;
+const base = import.meta.env.BASE_URL;
+const t = await today(mskKlyuch(), langS.code);
+const [v, ...rest] = t.cards;
+// «Завтра» строкой под вещью дня (опись Р84 Б7, взгляд 18.1, 21.10): главная вещь завтрашней даты — без ссылки,
+// повод вернуться. Нет своих карточек у завтрашней даты (today() ушёл дальше) — строки нет. Скрипт ниже при
+// расхождении даты браузера с датой сборки берёт завтрашнюю из segodnya/<ММ-ДД>.json так же.
+const zKey = KEYS[(KEYS.indexOf(t.key) + 1) % KEYS.length];
+const zt = await today(zKey, langS.code);
+const z = zt.shown === zKey ? zt.cards[0] : undefined;
+const zPre = s('zavtraStroka');
+// sizes по сетке: колонка .p-wrap > .p-today ≤860 px (portal.css), поля 18 + clamp(16px,4vw,48px) (portal-today.css).
+// Вещь дня: ≥900 px картинка — 56% (~430 px), уже — во всю ширину. Остальные: ≥1100 — 3 колонки по ~245,
+// 561–1100 — 2, телефон — одна. srcset дописывает kartinki.mjs (#2004, 17.10).
+const SIZES_LEAD = '(min-width: 900px) 430px, calc(100vw - 68px)';
+const SIZES_CARD = '(min-width: 1100px) 245px, (min-width: 561px) 45vw, calc(100vw - 68px)';
+---
+{/* инлайн на прежнем месте — порядок каскада после стиля главной (portal-base) тот же; без запроса (18.10) */}
+<InlineCss file="portal-today.css" />
+<section id="segodnya" class="p-today p-today--vesch" data-zavtra={zPre} data-go={otkrytDen} data-takzhe={s('eschyoVMuzee')} data-vesch={s('veschDnya')} data-key={t.key} data-base={base} data-sizes-lead={SIZES_LEAD} data-sizes-card={SIZES_CARD} aria-labelledby="p-today-h">
+  <div class="p-today__head">
+    <h2 class="p-today__h" id="p-today-h" data-t="heading">{t.heading}</h2>
+    <p class="p-today__date" data-t="when">{t.when}</p>
+  </div>
+  <div data-t="vesch">
+    {v && (
+      <article class:list={['p-vesch', !v.img && 'p-vesch--noimg']}>
+        {v.img && (
+          <figure class="p-vesch__scene">
+            <div class="p-vesch__pic"><img src={v.img} alt={v.alt} width="1600" height="1000" sizes={SIZES_LEAD} loading="eager" fetchpriority="high" decoding="async" /></div>
+            {(v.alt || v.credit) && <figcaption class="p-vesch__cap">{v.alt}{v.credit && <span class="p-vesch__credit">{v.credit}</span>}</figcaption>}
+          </figure>
+        )}
+        <div class="p-vesch__lead">
+          <p class="p-vesch__kicker">{s('veschDnya')}</p>
+          <p class="p-vesch__museum">{v.museumTitle}</p>
+          <h3 class="p-vesch__title">{v.title}</h3>
+          {v.hook && <p class="p-vesch__hook">{v.hook}</p>}
+          <a class="p-vesch__go" href={v.href}>{otkrytDen}</a>
+          {v.takzhe && <p class="p-today__takzhe">{s('eschyoVMuzee')} {v.takzhe.map((x, i) => <>{i > 0 && ', '}<a href={x.href}>{x.museumTitle}</a></>)}</p>}
+        </div>
+      </article>
+    )}
+  </div>
+  <p class="p-zavtra" data-t="zavtra" hidden={!z}>{z && <>{zPre.replace('{d}', whenOf(zKey, langS.code))} <b>{z.title}</b> — {z.museumTitle}</>}</p>
+</section>
+<slot />
+<section class="p-today p-today--rest" id="segodnya-vse" aria-labelledby="p-today-rest-h" hidden={!rest.length}>
+  <h2 class="p-today__sub" id="p-today-rest-h">{s('eschyoSegodnya')}</h2>
+  <div class="p-today__list" data-t="list">
+    {rest.map((c) => (
+      <article class:list={['p-today__card', !c.img && 'p-today__card--noimg']}>
+        {c.img && <div class="p-today__pic"><img src={c.img} alt={c.alt} width="1600" height="1000" sizes={SIZES_CARD} loading="lazy" decoding="async" /></div>}
+        <div class="p-today__body">
+          <p class="p-today__museum">{c.museumTitle}</p>
+          <h3 class="p-today__title">{c.title}</h3>
+          {c.hook && <p class="p-today__hook">{c.hook}</p>}
+          <a class="p-today__go" href={c.href}>{otkrytDen}</a>
+          {c.takzhe && <p class="p-today__takzhe">{s('eschyoVMuzee')} {c.takzhe.map((x, i) => <>{i > 0 && ', '}<a href={x.href}>{x.museumTitle}</a></>)}</p>}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+<MskData />
+<script is:inline>
+(function () {
+  var box = document.getElementById('segodnya'), restBox = document.getElementById('segodnya-vse');
+  if (!box || !restBox || !window.fetch) return;
+  var p = window.rcMsk();
+  var key = p.month + '-' + p.day;
+  if (key === box.getAttribute('data-key')) return;
+  // строка «Завтра» (опись Р84 Б7): следующая дата года, тот же список дат, что KEYS в src/lib/segodnya.ts
+  var zBox = box.querySelector('[data-t="zavtra"]');
+  if (zBox) {
+    var d = new Date(Date.UTC(2024, +p.month - 1, +p.day + 1));
+    var zk = ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + d.getUTCDate()).slice(-2);
+    zBox.hidden = true;
+    fetch(box.getAttribute('data-base') + 'segodnya/' + zk + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (z) {
+      if (!z || z.shown !== zk || !z.cards || !z.cards.length) return;
+      var c = z.cards[0], b = document.createElement('b');
+      zBox.textContent = box.getAttribute('data-zavtra').replace('{d}', z.when) + ' ';
+      b.textContent = c.title; zBox.appendChild(b);
+      zBox.appendChild(document.createTextNode(' — ' + c.museumTitle));
+      zBox.hidden = false;
+    }).catch(function () {});
+  }
+  // без сдвига: до подмены блоки скрыты (visibility — место остаётся), высота старых держится
+  var vesch = box.querySelector('[data-t="vesch"]'), list = restBox.querySelector('[data-t="list"]');
+  vesch.style.minHeight = vesch.offsetHeight + 'px';
+  list.style.minHeight = list.offsetHeight + 'px';
+  box.classList.add('p-today--swap'); restBox.classList.add('p-today--swap');
+  var done = function () { box.classList.remove('p-today--swap'); restBox.classList.remove('p-today--swap'); vesch.style.minHeight = ''; };
+  fetch(box.getAttribute('data-base') + 'segodnya/' + key + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (t) {
+    if (!t || !t.cards || !t.cards.length) return done();
+    var go = box.getAttribute('data-go');
+    var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+    var pic = function (c, wrapCls, lead) {
+      var w = el('div', wrapCls), img = el('img');
+      if (c.srcset) { img.sizes = box.getAttribute(lead ? 'data-sizes-lead' : 'data-sizes-card'); img.srcset = c.srcset; }
+      img.src = c.img; img.alt = c.alt || ''; img.width = 1600; img.height = 1000; img.decoding = 'async';
+      if (lead) img.fetchPriority = 'high'; else img.loading = 'lazy';
+      w.appendChild(img); return w;
+    };
+    var link = function (cls, href) { var a = el('a', cls, go); a.href = href; return a; };
+    // двойники (src/lib/segodnya.ts): «Ещё в музее …» со ссылками на те же истории в других музеях
+    var takzhe = function (c) {
+      var p = el('p', 'p-today__takzhe', box.getAttribute('data-takzhe') + ' ');
+      c.takzhe.forEach(function (x, i) { if (i) p.appendChild(document.createTextNode(', ')); var a = el('a', '', x.museumTitle); a.href = x.href; p.appendChild(a); });
+      return p;
+    };
+    box.querySelector('[data-t="heading"]').textContent = t.heading;
+    box.querySelector('[data-t="when"]').textContent = t.when;
+    box.setAttribute('data-key', t.key);
+    // вещь дня — cards[0] (src/lib/segodnya.ts)
+    var v = t.cards[0], art = el('article', 'p-vesch' + (v.img ? '' : ' p-vesch--noimg'));
+    if (v.img) {
+      var fig = el('figure', 'p-vesch__scene'); fig.appendChild(pic(v, 'p-vesch__pic', true));
+      if (v.alt || v.credit) { var cap = el('figcaption', 'p-vesch__cap', v.alt); if (v.credit) cap.appendChild(el('span', 'p-vesch__credit', v.credit)); fig.appendChild(cap); }
+      art.appendChild(fig);
+    }
+    var ld = el('div', 'p-vesch__lead');
+    ld.appendChild(el('p', 'p-vesch__kicker', box.getAttribute('data-vesch')));
+    ld.appendChild(el('p', 'p-vesch__museum', v.museumTitle));
+    ld.appendChild(el('h3', 'p-vesch__title', v.title));
+    if (v.hook) ld.appendChild(el('p', 'p-vesch__hook', v.hook));
+    ld.appendChild(link('p-vesch__go', v.href));
+    if (v.takzhe && v.takzhe.length) ld.appendChild(takzhe(v));
+    art.appendChild(ld);
+    vesch.textContent = ''; vesch.appendChild(art);
+    // остальные музеи этой даты
+    list.textContent = '';
+    t.cards.slice(1).forEach(function (c) {
+      var a = el('article', 'p-today__card' + (c.img ? '' : ' p-today__card--noimg'));
+      if (c.img) a.appendChild(pic(c, 'p-today__pic', false));
+      var b = el('div', 'p-today__body');
+      b.appendChild(el('p', 'p-today__museum', c.museumTitle));
+      b.appendChild(el('h3', 'p-today__title', c.title));
+      if (c.hook) b.appendChild(el('p', 'p-today__hook', c.hook));
+      b.appendChild(link('p-today__go', c.href));
+      if (c.takzhe && c.takzhe.length) b.appendChild(takzhe(c));
+      a.appendChild(b); list.appendChild(a);
+    });
+    restBox.hidden = t.cards.length < 2;
+    done();
+  }).catch(done);
+})();
+</script>

@@ -1,0 +1,24 @@
+/* Noto Sans Devanagari (Noto, лицензия OFL — ../OFL.txt; файлы — Fontsource, @fontsource-variable/noto-sans-devanagari).
+   Подключается только на страницах языка с этим shrift: поле shrift в src/data/yazyki.json (п.148, r726).
+   Буквы своего письма — из Noto по unicode-range, остальное — прежними шрифтами: Noto Sans Devanagari встаёт
+   в каждый --shrift-* из rc-dizayn.css перед общим семейством. */
+@font-face{font-family:'Noto Sans Devanagari';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/noto/noto-sans-devanagari-devanagari-wght-normal.woff2) format('woff2');unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09}
+html:root{
+  --shrift-arial-sans-serif:Arial, 'Noto Sans Devanagari', sans-serif;
+  --shrift-georgia-serif:Georgia, 'Noto Sans Devanagari', serif;
+  --shrift-georgia-times-new-roman-serif:Georgia, 'Times New Roman', 'Noto Sans Devanagari', serif;
+  --shrift-inter-sans-serif:'Inter', 'Noto Sans Devanagari', sans-serif;
+  --shrift-inter-segoe-ui-sans-serif:'Inter', 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
+  --shrift-inter-segoe-ui-system-ui-sans-serif:'Inter', 'Segoe UI', system-ui, 'Noto Sans Devanagari', sans-serif;
+  --shrift-inter-system-ui-apple-system-94d390:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, 'Noto Sans Devanagari', sans-serif;
+  --shrift-inter-system-ui-apple-system-eada5d:Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
+  --shrift-inter-system-ui-sans-serif:'Inter', system-ui, 'Noto Sans Devanagari', sans-serif;
+  --shrift-lora-georgia-serif:'Lora', Georgia, 'Noto Sans Devanagari', serif;
+  --shrift-old-standard-tt-georgia-serif:'Old Standard TT', Georgia, 'Noto Sans Devanagari', serif;
+  --shrift-playfair-display-georgia-serif:'Playfair Display', Georgia, 'Noto Sans Devanagari', serif;
+  --shrift-playfair-display-serif:'Playfair Display', 'Noto Sans Devanagari', serif;
+  --shrift-pt-serif-georgia-serif:'PT Serif', Georgia, 'Noto Sans Devanagari', serif;
+  --shrift-system-ui-apple-system-segoe-8383af:system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif;
+  --shrift-system-ui-apple-system-segoe-a40773:system-ui, -apple-system, 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
+  --shrift-system-ui-sans-serif:system-ui, 'Noto Sans Devanagari', sans-serif
+}

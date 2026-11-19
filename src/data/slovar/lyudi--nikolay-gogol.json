@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Николай Гоголь",
+  "pol": "m",
+  "kratko": "Писатель, автор «Мёртвых душ».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n79056736",
+    "ssylka": "https://id.loc.gov/authorities/names/n79056736.html",
+    "zagolovok": "Gogolʹ, Nikolaĭ Vasilʹevich, 1809-1852"
+  },
+  "latinica": "Nikolai Gogol",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1809",
+    "smert": "1852"
+  }
+}

@@ -1,0 +1,77 @@
+# Каналы (вариант А, Сергей 18.10.2026): каждый день в 9:00 МСК — пост дня в Telegram-канал и сообщество VK.
+# Скрипт — scripts/kanaly/post.py, описание — docs/kanaly.md. Новое выключено: нет секрета — площадка
+# пропускается, работа зелёная. Перед отправкой пост проходит scripts/kanaly/proverka.mjs (Е8): брак — пост
+# не уходит, работа красная, причины — в журнале и сводке. Откат — выключить этот workflow (Actions → kanaly → Disable workflow).
+name: kanaly
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Пробный запуск — собрать пост и напечатать, ничего не отправлять'
+        type: boolean
+        default: true
+      date:
+        description: 'ММ-ДД для пробного запуска (пусто — сегодня)'
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: kanaly
+  cancel-in-progress: false
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    # Окружение kanaly (Р64): ключи TG/VK заводятся секретами окружения с правилом «только main», не секретами репо.
+    environment: kanaly
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # Проверка поста (Е8) — на Node теми же модулями, что у сборки: схема дня грузится через Vite из node_modules.
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pillow
+      - id: d
+        run: echo "today=$(TZ=Europe/Moscow date +%F)" >> "$GITHUB_OUTPUT"
+      # Отметки «уже отправлено» — по площадке на дату: повторный запуск в тот же день не дублирует пост.
+      - id: tg
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .kanaly/tg
+          key: kanaly-tg-${{ steps.d.outputs.today }}
+      - id: vk
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .kanaly/vk
+          key: kanaly-vk-${{ steps.d.outputs.today }}
+      - name: Пост дня
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHANNEL: ${{ secrets.TG_CHANNEL }}
+          VK_TOKEN: ${{ secrets.VK_TOKEN }}
+          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+          DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          DATE: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && inputs.date || '' }}
+        run: |
+          args=(--state .kanaly)
+          [ "$DRY" = "true" ] && args+=(--dry-run)
+          [ -n "$DATE" ] && args+=(--date "$DATE")
+          python scripts/kanaly/post.py "${args[@]}"
+      - if: always() && steps.tg.outputs.cache-hit != 'true' && hashFiles('.kanaly/tg/sent') != ''
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .kanaly/tg
+          key: kanaly-tg-${{ steps.d.outputs.today }}
+      - if: always() && steps.vk.outputs.cache-hit != 'true' && hashFiles('.kanaly/vk/sent') != ''
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .kanaly/vk
+          key: kanaly-vk-${{ steps.d.outputs.today }}

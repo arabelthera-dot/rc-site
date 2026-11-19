@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Новая Земля",
+  "kratko": "Архипелаг в Северном Ледовитом океане.",
+  "koordinaty": {
+    "shirota": 75.117,
+    "dolgota": 58.693,
+    "tochka": "середина архипелага",
+    "otkuda": "https://www.openstreetmap.org/relation/4263184"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Новая Земля"
+    }
+  ]
+}

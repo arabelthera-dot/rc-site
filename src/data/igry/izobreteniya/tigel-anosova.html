@@ -1,0 +1,51 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · модель</div>
+    <h2>Тигель Аносова: сварить булат с узором</h2>
+    <p style="max-width:62ch">Три условия из десяти, которые Аносов напечатал в 1841 году. Выбери, что положить в тигель, как ему остывать и как ковать слиток. Узор выйдет только при верном сочетании. На каждый неверный ход объясним, что пошло не так.</p>
+    <div class="lab" id="lab">
+      <div class="lab-row" role="group" aria-labelledby="lg1"><span class="lbl" id="lg1">1. Что добавить к железу в тигель</span>
+        <button class="seg" type="button" data-k="add" data-v="none" aria-pressed="true">Ничего</button>
+        <button class="seg" type="button" data-k="add" data-v="graphite" aria-pressed="false">Чистый графит</button>
+      </div>
+      <div class="lab-row" role="group" aria-labelledby="lg2"><span class="lbl" id="lg2">2. Как остывает тигель</span>
+        <button class="seg" type="button" data-k="cool" data-v="fast" aria-pressed="true">Быстро — вынуть из печи</button>
+        <button class="seg" type="button" data-k="cool" data-v="slow" aria-pressed="false">Медленно — вместе с печью</button>
+      </div>
+      <div class="lab-row" role="group" aria-labelledby="lg3"><span class="lbl" id="lg3">3. Как ковать слиток</span>
+        <button class="seg" type="button" data-k="forge" data-v="hot" aria-pressed="true">Добела — так мягче</button>
+        <button class="seg" type="button" data-k="forge" data-v="low" aria-pressed="false">Наименьшим жаром</button>
+      </div>
+      <div class="lab-btns">
+        <button class="btn gold" type="button" id="labGo">Сварить и выковать</button>
+        <button class="btn ghost" type="button" id="labReset">Начать заново</button>
+      </div>
+      <div class="lab-stage">
+        <canvas id="labCv" width="640" height="220" role="img" aria-label="Поверхность протравленного слитка"></canvas>
+        <div class="lab-cap">Модель, а не снимок: рисунок строится программой по правилам из книги Аносова.</div>
+      </div>
+      <div class="lab-msg" id="labMsg" aria-live="polite">Слиток ещё не сварен. Выбери три условия и нажми «Сварить и выковать».</div>
+      <div class="lab-found" id="labFound">Найдено причин неудачи: 0 из 3.</div>
+      <div class="micro" id="micro">
+        <button class="btn ghost" type="button" id="microBtn">🔬 Посмотреть, как Аносов, — под микроскопом</button>
+        <div id="microView" hidden>
+          <canvas id="microCv" width="280" height="280" role="img" aria-label="Узор булата при увеличении"></canvas>
+          <p class="lab-cap">Увеличенный участок того же слитка. Светлые извилистые полосы — то, что Аносов назвал строением стали.</p>
+        </div>
+      </div>
+      <noscript><div class="noscript-box">Для тигля нужен JavaScript. Текстовая версия опыта: без графита углероду неоткуда взяться, выйдет мягкое железо без узора. Если тигель остынет быстро, строение металла не успеет сложиться в рисунок. Если ковать добела, узор, по словам Аносова, «теряется». Узорчатый булат выходит только так: графит, медленное остывание вместе с печью, ковка наименьшим жаром.</div></noscript>
+    </div>
+    <div class="igra-pravila" data-igra-pravila>
+      <h2 class="igra-pravila-h">Как играть</h2>
+      <p class="igra-pravila-zachem">Ты — Аносов в Златоусте. Подбери три условия плавки так, чтобы на слитке проступил узор булата.</p>
+      <ol class="igra-pravila-shagi">
+        <li><b>Выбери по одному варианту в каждой строке</b>: что добавить в тигель, как ему остывать, как ковать слиток.</li>
+        <li><b>Нажми «Сварить и выковать»</b> — на картинке появится протравленный слиток, а под ней — что получилось и почему.</li>
+        <li><b>Не вышло — поменяй одно условие</b> и вари снова, пока не проступит светлый извилистый узор.</li>
+      </ol>
+      <p class="igra-pravila-nyuans">Нюансы: за каждую найденную причину неудачи тоже дают баллы — счётчик «Найдено причин неудачи» дойдёт до 3 из 3. «Начать заново» очищает тигель, полученные баллы сохраняются. Когда булат выйдет, откроется кнопка «под микроскопом».</p>
+      <p class="igra-pravila-final">Узор на слитке — ты сварил булат по правилам Аносова.</p>
+    </div>
+    <p class="src-note" style="margin-top:10px">Правила модели — условия 5, 9 и 10 из книги «О булатах» (1841). Объяснение, почему медленное остывание рождает узор, дано по современной металловедческой трактовке, изложенной у С. В. Истомина: узор — кристаллическое строение металла, которое зависит от условий затвердевания.</p>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+{
+  "title": "История в 49 секунд",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/02feb-edinorog/day-02feb-edinorog.mp4",
+    "local": "muzei/izobreteniya/video/day-02feb-edinorog.mp4",
+    "v": 4,
+    "w": 1920,
+    "h": 1080,
+    "sec": 49.3,
+    "mb": 10.1
+  },
+  "vertical": {
+    "file": "izobreteniya/02feb-edinorog/day-02feb-edinorog-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-02feb-edinorog-9x16.mp4",
+    "v": 4,
+    "w": 1080,
+    "h": 1920,
+    "sec": 49.3,
+    "mb": 8.9
+  },
+  "poster": {
+    "file": "izobreteniya/02feb-edinorog/day-02feb-edinorog-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-02feb-edinorog-poster.jpg",
+    "v": 4
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/02feb-edinorog/day-02feb-edinorog-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-02feb-edinorog-9x16-poster.jpg",
+    "v": 4
+  }
+}

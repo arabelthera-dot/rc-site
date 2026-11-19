@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Курильские острова",
+  "kratko": "Цепь островов между Камчаткой и Хоккайдо.",
+  "koordinaty": {
+    "shirota": 50.384,
+    "dolgota": 155.832,
+    "tochka": "середина гряды островов",
+    "otkuda": "https://www.openstreetmap.org/relation/7273443"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Курильские острова"
+    }
+  ]
+}

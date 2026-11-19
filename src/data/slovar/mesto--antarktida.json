@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Антарктида",
+  "kratko": "Южный материк, открытый русской экспедицией в 1820 году.",
+  "koordinaty": {
+    "shirota": -79.406,
+    "dolgota": 0.315,
+    "tochka": "точка материка на карте",
+    "otkuda": "https://www.openstreetmap.org/node/36966060"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Антарктида"
+    }
+  ]
+}

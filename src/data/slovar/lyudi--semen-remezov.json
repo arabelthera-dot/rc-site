@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Семён Ремезов",
+  "pol": "m",
+  "kratko": "Тобольский картограф и зодчий, автор «Чертёжной книги Сибири».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "no96060701",
+    "ssylka": "https://id.loc.gov/authorities/names/no96060701.html",
+    "zagolovok": "Remezov, Semën Ulʹi︠a︡novich, 1642-approximately 1720"
+  },
+  "latinica": "Semen Remezov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1642",
+    "smert": "1720~"
+  }
+}

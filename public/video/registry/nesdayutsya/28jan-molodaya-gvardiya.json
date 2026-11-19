@@ -1,0 +1,32 @@
+{
+  "title": "История в 42 секунды",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 42,
+    "mb": 10.3
+  },
+  "vertical": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 42,
+    "mb": 10.2
+  },
+  "poster": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/28jan-molodaya-gvardiya/day-28jan-molodaya-gvardiya-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-28jan-molodaya-gvardiya-9x16-poster.jpg",
+    "v": 2
+  }
+}

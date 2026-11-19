@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Михаил Водопьянов",
+  "pol": "m",
+  "kratko": "Полярный лётчик, первым посадил самолёт на Северном полюсе.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "no99013098",
+    "ssylka": "https://id.loc.gov/authorities/names/no99013098.html",
+    "zagolovok": "Vodopʹi︠a︡nov, Mikhail Vasilʹevich, 1889-1980"
+  },
+  "latinica": "Mikhail Vodopianov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1889",
+    "smert": "1980"
+  }
+}

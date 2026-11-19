@@ -1,0 +1,8 @@
+# Ритм: фраза длиннее 40 слов — кандидат на разбивку. Долю фраз в «коридоре 12–20 слов»
+# (главный признак text-metrics) Vale посчитать не умеет — см. rc-text.md.
+extends: occurrence
+message: "Фраза длиннее 40 слов — разбей."
+level: suggestion
+scope: sentence
+max: 40
+token: '[^\s]+'

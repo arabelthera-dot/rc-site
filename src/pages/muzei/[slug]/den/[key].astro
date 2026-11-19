@@ -1,0 +1,290 @@
+---
+// Страница дня (экспоната дня) — порядок блоков по 04-build.md §6/§6-бис:
+// шапка top (4 строки) → крошки → обложка-сцена + этикетка (если есть картинка) → подводка hero-lead
+// (дата, h1, хук как есть, кнопки) → «Поддержать проект» (museum-support.js, первая треть) →
+// суть + прочие картинки → доп. карточки героя дня (3–5, museum-core §5-кватер п.5) → источник → связи со словарём (Р37) → навигация дней → «Куда дальше» (дубль поддержки) → подвал.
+// Нет поля в карточке — блока нет; тексты карточки выводятся дословно.
+import Base from '../../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { queueOgDen, ogRaster, ogSmall } from '../../../../lib/og-den.mjs';
+import { denFamilies, faceCss } from '../../../../lib/shrifty.mjs';
+import DenMedia from '../../../../components/den/DenMedia.astro';
+import DenZavtra from '../../../../components/den/DenZavtra.astro';
+import InlineCss from '../../../../components/InlineCss.astro';
+import { privychkaOn, blokZavtra } from '../../../../lib/privychka.mjs';
+import Credit from '../../../../components/den/Credit.astro';
+import { opisanieId, opisanieHtml } from '../../../../lib/den-razmetka.mjs';
+import DenAnketa from '../../../../components/den/DenAnketa.astro';
+import DenSlovar from '../../../../components/den/DenSlovar.astro';
+import DenIzobreteniya from '../../../../layouts/DenIzobreteniya.astro';
+import DenNeSdayutsya from '../../../../layouts/DenNeSdayutsya.astro';
+import { kartochki } from '../../../../lib/dni-shablon.mjs';
+import { YEAR_KEYS, isDated, isReady, nearestReady, srcHtml } from '../../../../lib/kalendar';
+import { yazyk, razobratPut, stroka, strelkaVpered, strelkaNazad } from '../../../../lib/yazyki.mjs';
+import { zhurnal, zhurnalHtml } from '../../../../lib/redakciya.mjs';
+import { podvalDnyaHtml } from '../../../../lib/podval-dnya.mjs';
+import { titleVkladki } from '../../../../lib/title-vkladki.mjs';
+export async function getStaticPaths() {
+  const museums = await getCollection('museums');
+  const days = (await getCollection('days')).sort((a, b) => a.data.key.localeCompare(b.data.key));
+  // Карточка шаблона с `adres: den` (Р286, src/lib/dni-shablon.mjs) — день рисует общий layout музея, не Base/DenAnketa.
+  const shablony = kartochki().filter((k) => k.adres === 'den');
+  // Музеи с общим шаблоном дня (r602) — тот же список, что SHABLONY_DNYA ниже (getStaticPaths не видит переменных страницы).
+  for (const k of shablony) if (!['izobreteniya', 'ne-sdayutsya'].includes(k.muzei)) throw new Error(`den: у музея ${k.muzei} нет шаблона дня`);
+  const full = days.map((d) => {
+    const own = days.filter((x) => x.data.museum === d.data.museum);
+    const i = own.indexOf(d);
+    return { params: { slug: d.data.museum, key: d.data.key },
+      props: { d: d.data, m: museums.find((x) => x.id === d.data.museum)!.data, prev: own[i - 1]?.data, next: own[i + 1]?.data,
+        keys: own.map((x) => x.data.key), own: own.map((x) => x.data),
+        shablon: shablony.find((k) => k.muzei === d.data.museum && k.key === d.data.key) } };
+  });
+  // Дата года без карточки у датированного музея — страница «День готовится» (не 404): шапка и крошки дня,
+  // ниже — ближайший готовый день этого музея. Только для музеев, у которых уже есть дни.
+  const empty = museums.filter((m) => isDated(m.id) && days.some((x) => x.data.museum === m.id)).flatMap((m) => {
+    const own = days.filter((x) => x.data.museum === m.id);
+    return YEAR_KEYS.filter((k) => !own.some((x) => x.data.key === k)).map((key) => ({
+      params: { slug: m.id, key },
+      props: { d: { museum: m.id, key, title: '', images: [] }, m: m.data, empty: true,
+        prev: own.filter((x) => x.data.key < key).at(-1)?.data, next: own.find((x) => x.data.key > key)?.data,
+        keys: own.map((x) => x.data.key), own: own.map((x) => x.data) } }));
+  });
+  return [...full, ...empty];
+}
+const { d, m, prev, next, keys, own, empty = false, shablon } = Astro.props;
+// Общий шаблон дня по музею (r602): карточка с `adres: den` рисуется им.
+const SHABLONY_DNYA = { izobreteniya: DenIzobreteniya, 'ne-sdayutsya': DenNeSdayutsya };
+const ShablonDnya = shablon && SHABLONY_DNYA[shablon.muzei];
+// Р798 п.4: ссылки на соседние дни у шаблонного дня — машиной из карточек соседей (руками в карточке устаревали:
+// «запись готовится», старый хук соседа). Название — из крошки соседа, хук — из его подводки, адрес — свой.
+const sosed = (x) => { if (!x) return undefined;
+  const k = kartochki().find((c) => c.muzei === shablon.muzei && c.key === x.key && c.adres === 'den');
+  const imya = (k?.kroshka ?? '').split(' · ').slice(1).join(' · ') || k?.lead?.h1 || x.title;
+  return { key: x.key, imya, hook: k?.lead?.hook ?? x.hook ?? '' }; };
+const navDnya = (sh) => { if (!sh) return sh;
+  const nazad = sosed(prev), vpered = sosed(next), u = (k) => `${import.meta.env.BASE_URL}muzei/${sh.muzei}/den/${k}/`;
+  const whenS = (k) => `${parseInt(k.slice(3))} ${['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][parseInt(k.slice(0, 2)) - 1]}`;
+  const kuda = (sh.kuda ?? []).flatMap((e) => { const s = /^Следующ/.test(e.lbl) ? vpered : /^Предыдущ/.test(e.lbl) ? nazad : null;
+    if (s === null) return [e]; if (!s) return [];
+    return [{ ...e, href: u(s.key), title: `${whenS(s.key)} — ${s.imya}`, hook: s.hook }]; });
+  const ch = sh.chrome ? { ...sh.chrome,
+    prev: nazad ? { href: u(nazad.key), title: `${whenS(nazad.key)} · ${nazad.imya}` } : undefined,
+    next: vpered ? { href: u(vpered.key), title: `${whenS(vpered.key)} · ${vpered.imya}` } : undefined } : sh.chrome;
+  return { ...sh, kuda, chrome: ch }; };
+const shablonNav = navDnya(shablon);
+const base = import.meta.env.BASE_URL;
+// «Поддержать проект» — на всех страницах (Р88, 21.10.2026, заменяет Р31); выключение — PUBLIC_PODDERZHKA=0.
+const podderzhka = import.meta.env.PUBLIC_PODDERZHKA !== '0';
+// Строки подвала — по языку страницы (Г20, src/data/stroki.json); русский вывод не меняется.
+const lang = yazyk(razobratPut(Astro.url.pathname, base).code);
+const s = (key) => stroka(lang.code, key);
+const fs = await import('node:fs');
+const dated = JSON.parse(fs.readFileSync(`src/data/calendar-meta-${m.slug}.json`, 'utf8')).dated;
+// Подпись дня: у датированного музея — дата, у недатированного — номер записи «День N · месяц»
+// (ключ там не дата: у первопроходцев есть 12-32, 12-33); одно правило для шапки дня и стрелок соседей.
+// Месяцы и «День N · месяц» — из словаря языка (Г20, src/data/stroki.json).
+const whenOf = (key: string) => { const mm = parseInt(key.slice(0, 2)), dd = parseInt(key.slice(3));
+  return dated ? `${dd} ${s('mesyacyR')[mm - 1]}` : s('denMesyac').replace('{d}', String(dd)).replace('{m}', s('mesyacy')[mm - 1]); };
+const when = whenOf(d.key);
+// «День готовится» (Сергей 17.10): даты без карточки и карточки с одним названием (без хука и текста) —
+// строка-заглушка и ближайший готовый день музея вперёд по году; такие страницы не для поисковиков (noindex).
+const soon = empty || !isReady(d);
+// Ежедневная привычка (Р289 п.1): «Завтра в музеях» и серия — только у готового дня и при включённом флаге.
+const privychka = !soon && privychkaOn() ? blokZavtra(base, d.key) : '';
+const near = soon ? nearestReady(own, d.key) : undefined;
+// «Проверено: дата» и журнал исправлений (Е5) — из истории git карточки, не из её полей (схема заморожена).
+const zh = soon ? undefined : zhurnal(m.slug, d.key);
+const title = empty ? 'День готовится' : d.title;
+// Общий подвал дня (А2+Б6, Р84): «Сообщите об ошибке», «Детям», контакты, автор, источники картинок — src/lib/podval-dnya.mjs.
+const stranicaUrl = new URL(Astro.url.pathname, Astro.site).href;
+const podvalDnya = podvalDnyaHtml({ base, title, url: stranicaUrl, code: lang.code });
+// Дата в <title> и карточке пересылки: «17 октября 1944: …» (п.2 очереди 1, 17.10).
+const dateTitle = d.year ? (dated ? `${when} ${d.year}` : `${when} · ${d.year}`) : when;
+const museumUrl = `${base}muzei/${m.slug}/`;
+const cal = `${museumUrl}calendar/`;
+const dayUrl = (k: string) => `${museumUrl}den/${k}/`;
+const url = (src: string) => (/^https?:/.test(src) ? src : `${base}${src.replace(/^\//, '')}`);
+const [cover, ...rest] = d.images.map((i) => ({ ...i, src: url(i.src) }));
+// П. 25–26: alt — описание для незрячих, нет — подпись, как раньше; длинное описание — к схемам и картам.
+const alt = (i: { alt?: string; caption: string }) => i.alt ?? i.caption;
+const opis = (i: { src: string; opisanie_dlinnoe?: string }) => (i.opisanie_dlinnoe ? opisanieId(i.src) : undefined);
+// Своего кадра нет у готового дня — своя карточка пересылки 1200×630 (дата, название, музей; og-den, 18.10).
+// SVG-кадр Telegram/ВК в превью не показывают — у такого дня тоже карточка (19.10).
+// WebP ВК в превью не берёт — JPG/PNG-двойник, нет его — карточка (ogRaster, 19.10, Б9).
+// Кадр меньше 600×315 Telegram/ВК показывают крошечным — у такого дня тоже своя карточка 1200×630 (ogSmall, 20.10, Б9).
+const ogRasterSrc = cover && ogRaster(cover.src);
+const ogCoverSrc = ogRasterSrc && !(await ogSmall(ogRasterSrc)) ? ogRasterSrc : undefined;
+const ogCover = ogCoverSrc ? { ...cover, src: ogCoverSrc } : undefined;
+const ogCard = !ogCover && !soon ? `${base}${queueOgDen({ museum: m.slug, key: d.key, date: dateTitle, title, museumTitle: m.title_ru })}` : undefined;
+const more = (d.more ?? []).map((e) => {
+  // Ссылка на свой день, где тема разобрана подробно; дня нет в календаре музея — сборка падает.
+  const target = e.day ? own.find((x: { key: string }) => x.key === e.day) : undefined;
+  if (e.day && !target) throw new Error(`${m.slug}/${d.key}: доп. карточка «${e.title}» ссылается на день ${e.day}, его нет в календаре`);
+  return { ...e, images: e.images.map((i) => ({ ...i, src: url(i.src) })),
+    detail_images: e.detail_images.map((i) => ({ ...i, src: url(i.src) })),
+    link: target && { href: dayUrl(target.key), label: `${whenOf(target.key)} · ${target.title}` } };
+});
+// Заголовок — из карточки дня, с именем героя («Что ещё изобрёл Шухов»): карточки про героя, не про дату.
+const moreTitle = d.more_title;
+// Поле mechanic — описание задачи для разработки (след черновика, 04-build «Заголовок и подписи»);
+// посетителю его не показываем, интерактив придёт движком при переносе (шаг 4 плана).
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+const legacy = d.legacy_page ? `${base}${d.legacy_page}` : undefined;
+// museum-chrome.js (движок старого сайта, как есть): «Поделиться», липкие стрелки, строка «Случайное».
+// Случайный день — адресом с index.html: движок сравнивает последний кусок адреса, а у нас он пустой.
+const dayName = (x: { key: string; title: string }) => `${whenOf(x.key)} · ${x.title}`;
+const chrome = `window.MUSEUM_CHROME=${JSON.stringify({
+  museum: { title: m.title_ru, href: museumUrl },
+  share: { title: `${title} — ${m.title_ru}`, text: d.hook ?? title },
+  prev: prev && { href: dayUrl(prev.key), title: dayName(prev) },
+  next: next && { href: dayUrl(next.key), title: dayName(next) },
+  all: { href: cal, label: 'Все дни календаря' },
+  city: base,
+  // «Поделиться» даёт блок поддержки (data-support-slot) — одна строка на страницу, glazami п.16;
+  // поддержка выключена (Р31) — строку «Поделиться» ставит museum-chrome.js
+  shareRow: !podderzhka,
+})};` +
+// Список «Случайное» — ключами дат, адреса собирает эта же строка: 364 полных адреса в каждой из ~4300 страниц
+// весили 69 МБ сборки (задача T, Р49, 20.10); движок получает тот же массив random, что и раньше.
+`window.MUSEUM_CHROME.random=${JSON.stringify(keys.filter((k: string) => k !== d.key).join(' '))}.split(' ').filter(Boolean)` +
+`.map(function(k){return ${JSON.stringify(`${museumUrl}den/`)}+k+'/index.html'});`;
+// Шрифты — только семейства темы и своего стиля музея, вписанные в <head> (вместо всего fonts.css, замер 18.10).
+const ownCssFile = fs.existsSync(`public/muzei/${m.slug}`) ? fs.readdirSync(`public/muzei/${m.slug}`).find((f: string) => f.endsWith('-style.css')) : undefined;
+// + Playfair Display: им museum-support.js набирает блок «Поддержать» на гротескных днях (Inter — в museum.css);
+// без объявления движок докачивал весь fonts.css после загрузки (18.10).
+const fontCss = faceCss([...new Set([...denFamilies(m.slug, ownCssFile ? fs.readFileSync(`public/muzei/${m.slug}/${ownCssFile}`, 'utf8') : ''), 'Playfair Display'])], base);
+const support = `window.MUSEUM_SUPPORT=${JSON.stringify({ museum: m.title_ru, page: `странице «${title}»`})};`;
+---
+{shablon ? <ShablonDnya d={shablonNav} museum={m} /> : d.body ? <DenAnketa d={d} /> : (
+<Base ownStyle title={titleVkladki(`${dateTitle}: ${title}`, m.title_ru)} ogTitle={`${dateTitle}: ${title}`}
+  description={d.hook ?? `${title} — ${m.title_ru}`} museum={m.slug}
+  image={ogCover?.src ?? ogCard} imageAlt={ogCover?.caption ?? (ogCard && `${dateTitle}: ${title} — ${m.title_ru}`)} type="article"
+  museumTitle={m.title_ru} here={when} noindex={soon} schema={soon ? 'page' : undefined}
+  about={soon ? undefined : d.title} modified={zh?.modified} published={zh?.published} temporal={!soon && d.year != null && d.year !== '' ? String(d.year) : undefined}
+  den={soon ? undefined : { key: d.key, year: d.year, images: d.images, dated }}>
+  <Fragment slot="head">
+    {privychka && <><InlineCss file="rc-privychka.css" /><script is:inline defer src={`${base}assets/rc-privychka.js`}></script></>}
+    {fontCss && <style data-rc-fonts set:html={fontCss} />}
+    <link rel="stylesheet" href={`${base}assets/museum-theme.css`} />
+  </Fragment>
+
+  <header slot="header" class="top">
+    <div class="b1">Русская цивилизация</div>
+    <div class="b2">Первый цифровой музей достижений России · Цивилизация первенств — что Россия дала миру раньше всех</div>
+    <div class="top-sep"></div>
+    <div class="museum">{m.title_ru}</div>
+    {m.slogan_ru && <div class="museum-slog">{m.slogan_ru}</div>}
+  </header>
+
+  <article class="dp">
+    {cover && (
+      <figure class="hero-scene">
+        <a href={cover.src} target="_blank" rel="noopener" aria-label="Открыть картинку целиком"><img src={cover.src} alt={alt(cover)} aria-describedby={opis(cover)} /></a>
+        <figcaption class="scene-caption"><span class="cap">{cover.caption}</span> <Credit text={cover.credit} /></figcaption>{cover.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(cover)} />}
+      </figure>
+    )}
+
+    <header class="hero-lead">
+      <div class="date-chip">{when}{d.year && ` · ${d.year}`}</div>
+      <h1>{title}</h1>
+      {d.hook && <p class="hook">{d.hook}</p>}
+      {soon && (
+        <div class="den-soon">
+          {!empty && <p class="den-soon-line">День готовится</p>}
+          {near && (
+            <a class="den-soon-card" href={dayUrl(near.key)}>
+              <span class="den-soon-lbl">Ближайший готовый день</span>
+              <span class="den-soon-t">{whenOf(near.key)} · {near.title}</span>
+              {near.hook && <span class="den-soon-hook">{near.hook}</span>}
+            </a>
+          )}
+          <a class="den-soon-all" href={cal}>Весь календарь →</a>
+        </div>
+      )}
+      <div class="hero-btns">
+        {d.gist && <a class="btn gold" href="#sut">Читать историю ↓</a>}
+        {legacy && <a class="btn ghost" href={legacy}>Полная страница экспоната</a>}
+        {!d.gist && !legacy && !soon && <a class="btn ghost" href={cal}>Календарь музея</a>}
+      </div>
+    </header>
+
+    {podderzhka && <div class="dp-sup" data-support-slot></div>}
+
+    {(d.gist || rest.length > 0) && (
+      <section class="block" id="sut">
+        <h2>Суть</h2>
+        {d.gist && <p>{cap(d.gist)}</p>}
+        {rest.map((im) => (
+          <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={alt(im)} aria-describedby={opis(im)} loading="lazy" /></a>
+            <figcaption>{im.caption} <Credit text={im.credit} /></figcaption>{im.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(im)} />}</figure>))}
+      </section>
+    )}
+    <DenMedia video={d.video} audio={d.audio} where={`${m.slug}/${d.key}`} />
+    {more.length > 0 && (
+      <section class="block" id="eshchyo-geroy">
+        <h2>{moreTitle}</h2>
+        <div class="more-grid">
+          {more.map((e) => (
+            <article class="more-card">
+              <figure class="more-pic">
+                {e.images.map((im) => (
+                  <a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={alt(im)} loading="lazy" /></a>))}
+                <figcaption title={`${e.images[0].caption} ${e.images[0].credit}`}>{e.images[0].caption} <span class="credit">{e.images[0].credit}</span></figcaption>
+              </figure>
+              <h3>{e.title}{e.year && <span class="more-year"> · {e.year}</span>}</h3>
+              <p class="more-short">{e.short}</p>
+              <details class="more-open">
+                <summary>Узнать подробнее</summary>
+                {e.detail.map((t) => <p>{t}</p>)}
+                {e.detail_images.map((im) => (
+                  <figure class="fig"><a href={im.src} target="_blank" rel="noopener"><img src={im.src} alt={alt(im)} aria-describedby={opis(im)} loading="lazy" /></a>
+                    <figcaption>{im.caption} <span class="credit">{im.credit}</span></figcaption>{im.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(im)} />}</figure>))}
+                {e.link && <p class="more-den">Подробно — в нашем календаре: <a href={e.link.href}>{e.link.label}</a></p>}
+                <p class="more-src">Источник: <Fragment set:html={srcHtml(e.source)} /></p>
+              </details>
+            </article>))}
+        </div>
+      </section>
+    )}
+    {d.source && (
+      <section class="block" id="istochnik">
+        <h2>Источник</h2>
+        <p set:html={srcHtml(d.source)} />
+      </section>
+    )}
+    <DenSlovar ids={d.slovar} />
+  </article>
+
+  <Fragment set:html={zhurnalHtml(zh)} />
+
+  <nav class="dp-nav" aria-label={s('sosediDni')}>
+    {prev ? <a href={dayUrl(prev.key)}>{`${strelkaNazad(lang.dir)} ${s('predKr')}`}</a> : <span></span>}
+    <a href={cal}>{s('vseDni')}</a>
+    {next ? <a href={dayUrl(next.key)}>{`${s('sledKr')} ${strelkaVpered(lang.dir)}`}</a> : <span></span>}
+  </nav>
+
+  <DenZavtra museum={m.slug} day={d.key} dated={dated} days={own} when={whenOf} mark={!empty} />
+  {privychka && <Fragment set:html={privychka} />}
+
+  <section class="block" id="kuda-dalshe">
+    <h2>{s('muzeyProdolzhaetsya')}</h2>
+    <div class="dp-links">
+      <a href={museumUrl}>{m.title_ru}</a>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <div class="dp-foot">
+      <a href={museumUrl}>{`${strelkaNazad(lang.dir)} ${m.title_ru}`}</a> · <a href={base}>{`${s('vGorod')} ${strelkaVpered(lang.dir)}`}</a>
+    </div>
+    <Fragment set:html={podvalDnya} />
+  </Fragment>
+
+  <script is:inline set:html={chrome}></script>
+  <script is:inline defer src={`${base}assets/museum-chrome.js`}></script>
+  {podderzhka && <>
+  <script is:inline set:html={support}></script>
+  <script is:inline defer src={`${base}assets/museum-support.js`}></script>
+  </>}
+</Base>
+)}

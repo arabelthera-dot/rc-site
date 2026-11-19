@@ -1,0 +1,98 @@
+# Карточка доски агентов (финал переезда 19.10.2026: доска — Issues публичного rc-site).
+# Пять вопросов до изменения (Сергей, 28.09.2026) — обязательные поля: без ответов форма не отправляется.
+# Из консоли — шаблон kartochka-cli.md (те же заголовки); проверка .github/workflows/kartochka.yml
+# ставит метку net-pyati-otvetov, если раздел пуст.
+# Метки agent:<подпись> и museum:<slug> ставит автор карточки (форма поставить не может).
+# Статус — меткой: st:vzyal (взял), st:sdano (сдал), st:vopros (вопрос одной фразой с вариантами),
+# st:gate-sergey (ждёт слова Сергея). Сдача — заявка с «Closes #N».
+name: Карточка
+description: Задание агенту — адресат, музей, пять вопросов, «готово значит…»
+title: "<№ наряда>: <суть>"
+body:
+  - type: dropdown
+    id: adresat
+    attributes:
+      label: Адресат
+      description: Подпись агента (docs/agents/zones.json в AI_Projects); та же метка agent:<подпись>
+      options:
+        - arabelthera-dot
+        - claude2
+        - claude3
+        - claude4
+        - codex-bot
+    validations:
+      required: true
+  - type: dropdown
+    id: muzey
+    attributes:
+      label: Музей
+      description: Та же метка museum:<slug>; общие инструменты — «—»
+      options:
+        - "—"
+        - arhitektura
+        - iskusstvo
+        - izobreteniya
+        - kalendar-pobed
+        - karikatura
+        - kostyum-narodov
+        - literatura
+        - narodnyy-kostyum
+        - ne-sdayutsya
+        - pervoprohodcy
+        - skazki
+        - sport
+    validations:
+      required: true
+  - type: textarea
+    id: chto
+    attributes:
+      label: Что сделать
+    validations:
+      required: true
+  - type: textarea
+    id: gotovo
+    attributes:
+      label: Готово значит
+      description: Проверяемо машиной или глазом за минуту — команда, тест, прямая ссылка https://…
+    validations:
+      required: true
+  - type: textarea
+    id: zadevaet
+    attributes:
+      label: Что задевает
+      description: Соседи по docs/agents/karta-zavisimostey.md — файлы, программы, проверки, люди
+    validations:
+      required: true
+  - type: textarea
+    id: nuzhno
+    attributes:
+      label: Что нужно
+      description: Токен, доступ, сеть, права
+    validations:
+      required: true
+  - type: textarea
+    id: bez-nuzhnogo
+    attributes:
+      label: Что будет без нужного
+      description: Новое спит и не роняет соседей; ставится выключенным
+    validations:
+      required: true
+  - type: textarea
+    id: proverka
+    attributes:
+      label: Проверка до слияния
+      description: Чем проверено до слияния; «сердце» — только после зелёного сквозного пробника
+    validations:
+      required: true
+  - type: textarea
+    id: otkat
+    attributes:
+      label: Как откатить
+      description: Команда или шаг отката — продуманы до работы
+    validations:
+      required: true
+  - type: textarea
+    id: stop
+    attributes:
+      label: Где остановиться и спросить
+      description: Развилки, на которых исполнитель ставит st:vopros с вариантами

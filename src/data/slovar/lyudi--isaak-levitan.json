@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Исаак Левитан",
+  "pol": "m",
+  "kratko": "Пейзажист, автор «Над вечным покоем».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82001658",
+    "ssylka": "https://id.loc.gov/authorities/names/n82001658.html",
+    "zagolovok": "Levitan, Isaak Ilʹich, 1860-1900"
+  },
+  "latinica": "Isaak Levitan",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1860",
+    "smert": "1900"
+  }
+}

@@ -1,0 +1,228 @@
+{
+ "_kak": "Музей → адаптер утверждённых таблиц. fayly — маски имён в папке papka (порядок = старшинство: позже — сильнее); rang — доп. ключи сортировки (подстрока → вес, первая совпавшая); kolonki — начало заголовка колонки; tip: tablica | bloki. ~ = домашняя папка. todo — адаптер ещё не описан, музей пропускается. mesyac_iz_imeni — карта «начало имени файла → месяц», тогда в колонке даты — номер дня. zagolovki — файлы, разбираемые заголовками «## D месяца» и полем **Крючок:**.",
+ "izobreteniya": {
+  "tip": "tablica",
+  "papka": "data/tablicy/izobreteniya",
+  "fayly": [
+   [
+    "*-na-utverzhdenie.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "istochnik": "AI_Projects/russian-civilization/pilot-izobreteniya"
+ },
+ "sport": {
+  "tip": "tablica",
+  "papka": "data/tablicy/sport",
+  "fayly": [
+   [
+    "*-na-utverzhdenie.md",
+    "korotkiy-god-*.md"
+   ]
+  ],
+  "rang": [
+   {
+    "korotkiy": 2
+   },
+   {
+    "-v3-": 3,
+    "-v2-": 2,
+    "": 1
+   }
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "istochnik": "AI_Projects/russian-civilization/pilot-sport"
+ },
+ "literatura": {
+  "tip": "tablica",
+  "papka": "data/tablicy/literatura",
+  "fayly": [
+   [
+    "*-peresborka-5050.md"
+   ],
+   [
+    "*-na-utverzhdenie.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "istochnik": "AI_Projects/russian-civilization/pilot-literatura"
+ },
+ "karikatura": {
+  "tip": "tablica",
+  "papka": "data/tablicy/karikatura",
+  "fayly": [
+   [
+    "*-na-utverzhdenie.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "zagolovki": [
+   "january-31-na-utverzhdenie.md"
+  ],
+  "_prim": "январь — не таблица, а заголовки «## 1 января · …» + **Хук.** (zagolovki); january-31-days.md — черновик, не утверждён",
+  "istochnik": "AI_Projects/russian-civilization/pilot-karikatura"
+ },
+ "ne-sdayutsya": {
+  "tip": "bloki",
+  "papka": "data/tablicy/ne-sdayutsya",
+  "fayly": [
+   [
+    "calendar-[01][0-9]-*.md"
+   ]
+  ],
+  "_prim": "дни — блоки «## День N — …», месяц — из имени файла calendar-ММ-*.md",
+  "istochnik": "AI_Projects/russian-civilization/pilot-nesdayutsya"
+ },
+ "arhitektura": {
+  "tip": "tablica",
+  "papka": "data/tablicy/arhitektura",
+  "fayly": [
+   [
+    "calendar-*.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Тема дня",
+   "hook": "Хук",
+   "mehanika": "Привязка"
+  },
+  "_prim": "calendar-january-supplement.json и манифест calendar-approved-v1.json пока не читаются — остаток",
+  "istochnik": "AI_Projects/russian-civilization/pilot-arhitektura"
+ },
+ "iskusstvo": {
+  "tip": "tablica",
+  "papka": "data/tablicy/iskusstvo",
+  "fayly": [
+   [
+    "calendar-*.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "istochnik": "AI_Projects/russian-civilization/pilot-iskusstvo"
+ },
+ "kalendar-pobed": {
+  "tip": "tablica",
+  "papka": "data/tablicy/kalendar-pobed",
+  "fayly": [
+   [
+    "calendar-*.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Событие",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "istochnik": "AI_Projects/russian-civilization/pilot-kalendar-pobed"
+ },
+ "kostyum-narodov": {
+  "tip": "tablica",
+  "papka": "data/tablicy/kostyum-narodov",
+  "fayly": [
+   [
+    "god-2027-*.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Народ",
+   "hook": "Хук"
+  },
+  "_prim": "god-2027 утверждён Сергеем 15.10; korotkiy-god — черновик",
+  "istochnik": "AI_Projects/russian-civilization/pilot-kostyum-narodov"
+ },
+ "pervoprohodcy": {
+  "tip": "tablica",
+  "papka": "data/tablicy/pervoprohodcy",
+  "fayly": [
+   [
+    "*-na-utverzhdenie.md"
+   ]
+  ],
+  "mesyac_iz_imeni": {
+   "january": 1,
+   "february": 2,
+   "march": 3,
+   "aprel": 4,
+   "april": 4,
+   "may": 5,
+   "june": 6,
+   "july": 7,
+   "august": 8,
+   "september": 9,
+   "october": 10,
+   "november": 11,
+   "december": 12
+  },
+  "kolonki": {
+   "data": "№",
+   "nazvanie": "Экспонат",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "_prim": "колонка даты — номер дня, месяц — из начала имени файла (mesyac_iz_imeni)",
+  "istochnik": "AI_Projects/russian-civilization/pilot-pervoprohodcy/_wip"
+ },
+ "skazki": {
+  "tip": "tablica",
+  "papka": "data/tablicy/skazki",
+  "fayly": [
+   [
+    "korotkiy-god-*.md"
+   ],
+   [
+    "*-na-utverzhdenie.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук",
+   "mehanika": "Механика"
+  },
+  "istochnik": "AI_Projects/russian-civilization/pilot-skazki"
+ },
+ "narodnyy-kostyum": {
+  "tip": "tablica",
+  "papka": "data/tablicy/narodnyy-kostyum",
+  "fayly": [
+   [
+    "god-*.md"
+   ]
+  ],
+  "kolonki": {
+   "data": "Дата",
+   "nazvanie": "Экспонат",
+   "hook": "Хук"
+  },
+  "_prim": "god-ММ утверждён Сергеем 15.10; korotkiy-god и russkiy-yanvar-* — черновики",
+  "istochnik": "AI_Projects/russian-civilization/pilot-kostyum-russkiy/kalendar"
+ }
+}

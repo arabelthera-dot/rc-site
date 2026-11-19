@@ -1,0 +1,5 @@
+/* Проба письма справа налево /ar/ (Г20; src/pages/ar/[...proba].astro). Только логические свойства:
+   отступы и выравнивание идут по ходу строки и сами зеркалятся в dir="rtl". */
+.rc-proba{max-inline-size:720px;margin-inline:auto;padding-inline:16px}
+.rc-proba-shapka{padding-block-start:24px}
+.rc-proba-tekst{padding-block-end:24px}

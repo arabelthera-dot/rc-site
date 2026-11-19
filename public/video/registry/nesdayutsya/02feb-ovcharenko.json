@@ -1,0 +1,32 @@
+{
+  "title": "История в 47 секунд",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/02feb-ovcharenko/day-02feb-ovcharenko.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-02feb-ovcharenko.mp4",
+    "v": 8,
+    "w": 1920,
+    "h": 1080,
+    "sec": 46.5,
+    "mb": 11.7
+  },
+  "vertical": {
+    "file": "nesdayutsya/02feb-ovcharenko/day-02feb-ovcharenko-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-02feb-ovcharenko-9x16.mp4",
+    "v": 8,
+    "w": 1080,
+    "h": 1920,
+    "sec": 46.5,
+    "mb": 11.4
+  },
+  "poster": {
+    "file": "nesdayutsya/02feb-ovcharenko/day-02feb-ovcharenko-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-02feb-ovcharenko-poster.jpg",
+    "v": 8
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/02feb-ovcharenko/day-02feb-ovcharenko-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-02feb-ovcharenko-9x16-poster.jpg",
+    "v": 8
+  }
+}

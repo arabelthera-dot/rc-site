@@ -1,0 +1,7 @@
+/* Рамка игры дня (Р635): строка правила, общий низ — «Ещё раз» и итог. Вид механики — в css её игры. */
+.igra-ramka-pravilo{max-width:62ch;margin-bottom:14px}
+.igra-ramka-niz{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;margin:12px 0 4px}
+.igra-ramka-itog{flex:1 1 260px;font-size:var(--razmer-15-5px);padding:12px 14px;border-radius:var(--skruglenie-10px);background:var(--cvet-ffffff-a4);border-left:3px solid var(--card-b);color:var(--gold-l);font-weight:600}
+.igra-ramka-itog.ok{border-left-color:var(--cvet-3f9b52);background:var(--cvet-28783c-a14);color:var(--ink);font-weight:400}
+.igra-ramka-itog.bad{border-left-color:var(--cvet-c0453f);background:var(--cvet-b42828-a10);color:var(--ink);font-weight:400}
+.igra-ramka-itog:empty{display:none}

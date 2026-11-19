@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Василий Тропинин",
+  "pol": "m",
+  "kratko": "Портретист, автор прижизненного портрета Пушкина.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n83035723",
+    "ssylka": "https://id.loc.gov/authorities/names/n83035723.html",
+    "zagolovok": "Tropinin, Vasiliĭ Andreevich, 1776-1857"
+  },
+  "latinica": "Vasilii Tropinin",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1776",
+    "smert": "1857"
+  }
+}

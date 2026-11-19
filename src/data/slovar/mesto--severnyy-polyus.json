@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Северный полюс",
+  "kratko": "Северная точка Земли.",
+  "koordinaty": {
+    "shirota": 90.0,
+    "dolgota": 0.0,
+    "tochka": "точка полюса",
+    "otkuda": "https://www.openstreetmap.org/node/269538499"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Северный полюс"
+    }
+  ]
+}

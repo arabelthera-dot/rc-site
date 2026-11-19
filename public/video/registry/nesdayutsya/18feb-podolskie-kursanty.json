@@ -1,0 +1,32 @@
+{
+  "title": "История в 47 секунд",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "nesdayutsya/18feb-podolskie-kursanty/day-18feb-podolskie-kursanty.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty.mp4",
+    "v": 3,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.3,
+    "mb": 13.7
+  },
+  "vertical": {
+    "file": "nesdayutsya/18feb-podolskie-kursanty/day-18feb-podolskie-kursanty-9x16.mp4",
+    "local": "muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty-9x16.mp4",
+    "v": 3,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.3,
+    "mb": 13.5
+  },
+  "poster": {
+    "file": "nesdayutsya/18feb-podolskie-kursanty/day-18feb-podolskie-kursanty-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty-poster.jpg",
+    "v": 3
+  },
+  "poster_vertical": {
+    "file": "nesdayutsya/18feb-podolskie-kursanty/day-18feb-podolskie-kursanty-9x16-poster.jpg",
+    "local": "muzei/ne-sdayutsya/video/day-18feb-podolskie-kursanty-9x16-poster.jpg",
+    "v": 3
+  }
+}

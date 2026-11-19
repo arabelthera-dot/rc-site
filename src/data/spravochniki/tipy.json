@@ -1,0 +1,224 @@
+{
+ "o_fayle": "Закрытый словарь типов (пункты 34 и 36). Тип предмета, человека и события дня — из раздела vidy, тип связи между днями — из раздела svyazi. Своих слов не писать: нужного нет — добавить сюда строку с классом CIDOC-CRM. Описание — docs/spravochniki-standart.md.",
+ "obrazcy": {
+  "cidoc_crm": "https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html",
+  "aat": "https://www.getty.edu/research/tools/vocabularies/aat/",
+  "skos": "https://www.w3.org/TR/skos-reference/"
+ },
+ "aat_nomer": "Поле aat_termin — английский предпочтительный термин AAT. Номер AAT не проставлен: vocab.getty.edu 09.11.2026 отвечал 403 из нашей сети, номера по памяти не пишем.",
+ "vidy": {
+  "chelovek": {
+   "nazvanie": "человек",
+   "dlya": "lyudi",
+   "crm": "E21 Person",
+   "aat_termin": "persons"
+  },
+  "gruppa": {
+   "nazvanie": "отряд, экипаж, подполье, организация",
+   "dlya": "lyudi",
+   "crm": "E74 Group",
+   "aat_termin": "organizations"
+  },
+  "korabl": {
+   "nazvanie": "корабль, судно",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "ships"
+  },
+  "podvodnaya-lodka": {
+   "nazvanie": "подводная лодка",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "submarines (vessels)"
+  },
+  "ledokol": {
+   "nazvanie": "ледокол",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "icebreakers"
+  },
+  "samolet": {
+   "nazvanie": "самолёт",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "airplanes"
+  },
+  "dirizhabl": {
+   "nazvanie": "дирижабль",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "airships"
+  },
+  "tank": {
+   "nazvanie": "танк",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "tanks (armored vehicles)"
+  },
+  "kosmicheskiy-apparat": {
+   "nazvanie": "космический корабль, станция",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "spacecraft"
+  },
+  "vychislitelnaya-mashina": {
+   "nazvanie": "вычислительная машина, арифмометр",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "computers"
+  },
+  "reaktor": {
+   "nazvanie": "ядерный реактор",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "nuclear reactors"
+  },
+  "pribor": {
+   "nazvanie": "прибор, машина, механизм",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "instruments (tools)"
+  },
+  "sooruzhenie": {
+   "nazvanie": "сооружение, здание, ставка",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "structures (single built works)"
+  },
+  "nagrada": {
+   "nazvanie": "награда, медаль, почётное звание",
+   "dlya": "predmet",
+   "crm": "E22 Human-Made Object",
+   "aat_termin": "medals"
+  },
+  "nadpis": {
+   "nazvanie": "надпись на стене, борту, теле",
+   "dlya": "predmet",
+   "crm": "E34 Inscription",
+   "aat_termin": "inscriptions"
+  },
+  "proizvedenie": {
+   "nazvanie": "книга, рассказ, повесть",
+   "dlya": "predmet",
+   "crm": "E33 Linguistic Object",
+   "aat_termin": "literary works"
+  },
+  "gazeta": {
+   "nazvanie": "газета, стенгазета",
+   "dlya": "predmet",
+   "crm": "E33 Linguistic Object",
+   "aat_termin": "newspapers"
+  },
+  "citata": {
+   "nazvanie": "сказанные или написанные слова: фраза, приказ, записка",
+   "dlya": "predmet",
+   "crm": "E33 Linguistic Object",
+   "aat_termin": "quotations"
+  },
+  "imya": {
+   "nazvanie": "имя, прозвище, псевдоним, отвергнутое название",
+   "dlya": "predmet",
+   "crm": "E41 Appellation",
+   "aat_termin": "proper names"
+  },
+  "izobretenie": {
+   "nazvanie": "создание первой в мире вещи",
+   "dlya": "sobytie",
+   "crm": "E12 Production",
+   "aat_termin": "inventions"
+  },
+  "otkrytie": {
+   "nazvanie": "научное открытие, теория, опыт",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "discoveries"
+  },
+  "medicinskaya-operaciya": {
+   "nazvanie": "операция, первое лечение, испытание вакцины",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "surgery (medical procedure)"
+  },
+  "kosmicheskiy-polet": {
+   "nazvanie": "космический полёт",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "space flight"
+  },
+  "boy": {
+   "nazvanie": "бой, сражение",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "battles"
+  },
+  "oborona": {
+   "nazvanie": "оборона крепости, города, дома",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "sieges"
+  },
+  "podvig": {
+   "nazvanie": "подвиг одного человека: таран, амбразура, отказ сдаться",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": null
+  },
+  "plen": {
+   "nazvanie": "плен, пытки, казнь",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": null
+  },
+  "podpolye": {
+   "nazvanie": "подполье, разведка в тылу врага",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "resistance movements"
+  },
+  "ekspediciya": {
+   "nazvanie": "экспедиция, зимовка, дрейф",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "expeditions"
+  },
+  "avariya": {
+   "nazvanie": "авария и её ликвидация",
+   "dlya": "sobytie",
+   "crm": "E5 Event",
+   "aat_termin": "accidents"
+  },
+  "spasenie": {
+   "nazvanie": "спасение людей или ценностей",
+   "dlya": "sobytie",
+   "crm": "E7 Activity",
+   "aat_termin": "rescues"
+  }
+ },
+ "svyazi": {
+  "prodolzhenie": {
+   "nazvanie": "продолжение",
+   "znachit": "день «ot» продолжает историю дня «k»: следующий шаг того же события",
+   "crm": "P134 continued (was continued by)"
+  },
+  "tot-zhe-geroy": {
+   "nazvanie": "тот же герой",
+   "znachit": "один человек — герой или создатель в обоих днях; поле cherez — номер его карточки",
+   "crm": "P11 had participant (participated in)"
+  },
+  "tot-zhe-predmet": {
+   "nazvanie": "тот же предмет",
+   "znachit": "одна вещь в обоих днях; поле cherez — номер карточки",
+   "crm": "P12 occurred in the presence of (was present at)"
+  },
+  "otvet-na": {
+   "nazvanie": "ответ на",
+   "znachit": "день «ot» — ответ на событие дня «k»: месть, повтор подвига, отклик",
+   "crm": "P17 was motivated by (motivated)"
+  },
+  "upominaet": {
+   "nazvanie": "упоминает",
+   "znachit": "в дне «ot» назван герой или предмет дня «k», но сам день о другом",
+   "crm": "P67 refers to (is referred to by)"
+  }
+ }
+}

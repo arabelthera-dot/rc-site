@@ -1,0 +1,32 @@
+{
+  "title": "История в 54 секунды",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/20feb-stanciya-mir/day-20feb-stanciya-mir.mp4",
+    "local": "muzei/izobreteniya/video/day-20feb-stanciya-mir.mp4",
+    "v": 2,
+    "w": 1920,
+    "h": 1080,
+    "sec": 54.2,
+    "mb": 14.6
+  },
+  "vertical": {
+    "file": "izobreteniya/20feb-stanciya-mir/day-20feb-stanciya-mir-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-20feb-stanciya-mir-9x16.mp4",
+    "v": 2,
+    "w": 1080,
+    "h": 1920,
+    "sec": 54.2,
+    "mb": 13.7
+  },
+  "poster": {
+    "file": "izobreteniya/20feb-stanciya-mir/day-20feb-stanciya-mir-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-20feb-stanciya-mir-poster.jpg",
+    "v": 2
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/20feb-stanciya-mir/day-20feb-stanciya-mir-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-20feb-stanciya-mir-9x16-poster.jpg",
+    "v": 2
+  }
+}

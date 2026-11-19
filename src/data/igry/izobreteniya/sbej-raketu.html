@@ -1,0 +1,52 @@
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="kicker">Главное действие · «Эльбрус-2» в щите Москвы</div>
+    <section class="sr-igra igra-ruka-zona" data-sr-igra aria-label="Игра: сбей ракету">
+      <h2 class="sr-h">Сбей ракету</h2>
+      <div class="sr-head">
+        <p class="sr-task igra-seychas" aria-live="polite"><b>Что сделать сейчас:</b> Нажми «Начать дежурство»</p>
+        <p class="sr-sub igra-poyasnenie" aria-live="polite">Три цели летят к Москве. Каждая быстрее прежней.</p>
+      </div>
+      <div class="sr-tablo">
+        <div>Цель<b class="sr-cel">1 из 3</b></div>
+        <div>Сбито<b class="sr-sbito">0</b></div>
+        <div>До Москвы<b class="sr-vremya">—</b></div>
+      </div>
+      <div class="sr-ekran">
+        <canvas class="sr-radar" width="360" height="360" aria-label="Экран радара: сверху летит цель, внизу Москва. Нажми на путь цели, чтобы поставить точку встречи."></canvas>
+        <div class="sr-avaria" hidden>
+          <p class="sr-avaria-h">Сгорел блок!</p>
+          <p class="sr-avaria-txt">Экран погас, а цель летит. Выдерни красный блок — встанет запасной.</p>
+          <div class="sr-stoyka" role="group" aria-label="Стойка машины"></div>
+          <button type="button" class="sr-restart" disabled>Перезапуск</button>
+        </div>
+      </div>
+      <div class="sr-hod">
+        <button type="button" class="sr-pusk">Начать дежурство</button>
+      </div>
+      <div class="sr-finale" hidden>
+        <p class="sr-fin-h"></p>
+        <p class="sr-fin-txt"></p>
+        <ul class="sr-zvezdy"></ul>
+        <button type="button" class="sr-again">Ещё раз</button>
+        <div class="sr-spravka">
+          <p class="sr-spravka-h">Как было на самом деле</p>
+          <p>С 1991 года комплексы «Эльбрус-2» работали в системе противоракетной обороны А-135 вокруг Москвы. Обычная машина выполняет команды по одной, а «Эльбрус» брал в один шаг несколько команд сразу — поэтому успевал считать путь цели и точку встречи.</p>
+          <p class="sr-src">Источник: И. Карташев, «„Эльбрус“. История легенды», «Компьютерра», 01.07.2004 — <a href="https://old.computerra.ru/hitech/205267/" target="_blank" rel="noopener">computerra.ru</a>.</p>
+        </div>
+      </div>
+      <div class="igra-pravila" data-igra-pravila>
+        <h3 class="igra-pravila-h">Как играть</h3>
+        <p class="igra-pravila-zachem">Ты — дежурный расчёт щита Москвы. Машина считает, ты решаешь: куда навести и когда пускать.</p>
+        <ol class="igra-pravila-shagi">
+          <li><b>Нажми на радар</b> на пути цели, впереди неё — там встанет точка встречи.</li>
+          <li><b>«Пуск»</b> — противоракета летит к точке. Пусти так, чтобы цель и противоракета пришли туда вместе.</li>
+          <li><b>Сгорел блок</b> — экран гаснет. Выдерни красный блок и нажми «Перезапуск», пока цель не долетела.</li>
+        </ol>
+        <p class="igra-pravila-nyuans">Промах больше чем на километр — мимо. На каждую цель одна противоракета.</p>
+        <p class="igra-pravila-final">Три звезды: сбиты все три цели, ни одного промаха, блок сменён быстрее трёх секунд.</p>
+      </div>
+      <p class="sr-cap">Модель, не съёмка: скорости и расстояния упрощены.</p>
+    </section>
+  </div>
+</section>

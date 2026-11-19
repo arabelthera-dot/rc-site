@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Орест Кипренский",
+  "pol": "m",
+  "kratko": "Портретист, автор портрета Пушкина.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n82011745",
+    "ssylka": "https://id.loc.gov/authorities/names/n82011745.html",
+    "zagolovok": "Kiprenskiĭ, Orest Adamovich, 1782 or 1783-1836"
+  },
+  "latinica": "Orest Kiprensky",
+  "latinica_iz": "loc-variant",
+  "gody": {
+    "rozhdenie": "[1782,1783]",
+    "smert": "1836"
+  }
+}

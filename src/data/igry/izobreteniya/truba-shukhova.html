@@ -1,0 +1,82 @@
+<section class="block" id="games" style="background:rgba(6,12,23,.6)">
+  <div class="wrap">
+    <div class="kicker">Играй</div>
+    <h2>Игры дня</h2>
+<!-- ── ИГРЫ ── -->
+
+<div class="gm" id="gm_shukhov">
+<h3>🛢 Игра 1 · Посчитай трубу, как Шухов</h3>
+<p class="pipe-lead">Баку, 1878 год. «Товарищество братьев Нобель» требует: перегнать <b>80 000 пудов</b> нефти в сутки из Балахан в Чёрный город — десять километров — и не разорить контору на смете. Крути три ручки, как крутил их в расчётах Шухов: труба, насосы, вязкость нефти. Приборы считают вживую.</p>
+
+<div class="pipe-goal">
+  <div><span>норма</span><b>80 000 пуд/сут</b></div>
+  <div><span>смета</span><b>≤ 90 тыс. руб.</b></div>
+  <div><span>длина</span><b>10 км</b></div>
+</div>
+
+<div class="pipe-ctl">
+  <label>Диаметр трубы <span class="lv" id="pDv">3″</span>
+    <input type="range" id="pD" min="0" max="3" step="1" value="1">
+    <div class="sub" id="pDs">Толще труба — меньше сопротивление, но дороже сталь.</div>
+  </label>
+  <label>Насосных станций <span class="lv" id="pNv">1</span>
+    <input type="range" id="pN" min="0" max="3" step="1" value="1">
+    <div class="sub" id="pNs">Каждая добавляет напор и 18 тыс. руб. к смете.</div>
+  </label>
+  <label>Подогрев нефти <span class="lv" id="pHv">+10 °C</span>
+    <input type="range" id="pH" min="0" max="2" step="1" value="1">
+    <div class="sub" id="pHs">Тёплая нефть жиже и течёт легче — но топливо тоже деньги.</div>
+  </label>
+</div>
+
+<div class="pipe-stage" data-igra-scena>
+  <div class="pipe-end" style="left:0">🛢️</div>
+  <div class="pipe-end" style="right:0">🏭</div>
+  <div class="pipe-tube" id="pTube"><div class="pipe-flow" id="pFlow"></div></div>
+  <div id="pPumps"></div>
+  <div class="pipe-cart" id="pCarts" style="left:38%">🐎🛒🛒</div>
+</div>
+
+<div class="pipe-gauge">
+  <div><span>расход</span><b id="pQ" class="g-n">—</b></div>
+  <div><span>смета</span><b id="pC" class="g-n">—</b></div>
+  <div><span>цена доставки пуда</span><b id="pP" class="g-n">—</b></div>
+</div>
+
+<div class="pipe-try" id="pTry">Попыток: 0</div>
+<button class="btn gold" id="pGo" style="width:100%">Построить и пустить нефть →</button>
+<div id="pRes" style="margin-top:12px;font-size:14px;line-height:1.6;min-height:20px"></div>
+<div class="igra-pravila" data-igra-pravila>
+  <h2 class="igra-pravila-h">Как играть</h2>
+  <p class="igra-pravila-zachem">Ты — Шухов в Баку, 1878 год. Построй нефтепровод, который перегонит 80 000 пудов в сутки и уложится в смету 90 тысяч рублей.</p>
+  <ol class="igra-pravila-shagi">
+    <li><b>Двигай три ползунка</b>: диаметр трубы, число насосных станций, подогрев нефти. Картинка трубы и цифры «расход» и «смета» меняются сразу.</li>
+    <li><b>Смотри на цвет цифр</b>: зелёный — норма выполнена или смета уложилась, красный — нет.</li>
+    <li><b>Нажми «Построить и пустить нефть»</b> — под кнопкой появится, что вышло и что поправить.</li>
+  </ol>
+  <p class="igra-pravila-nyuans">Нюансы: без насосов нефть стоит в трубе. Толще труба, больше насосов и подогрев — расход выше, но и смета дороже: ищи самое дешёвое решение, которое даёт норму. Чем меньше попыток, тем больше баллов.</p>
+  <p class="igra-pravila-final">Норма взята и смета не больше 90 тысяч — ты нашёл решение Шухова.</p>
+</div>
+<div class="pipe-note">Модель упрощена: расход считается по формуле сопротивления трубы (диаметр в степени 2,6, напор — под корнем), смета — в условных рублях 1878 года. Историческое решение — три дюйма и одна насосная станция.</div>
+</div>
+<div class="gm" id="gm_quiz2">
+  <h3>⏱ Игра 2 · Быстрый ответ</h3>
+  <div class="gm-score">Чем быстрее ответишь — тем больше очков. Осталось: <b id="gm_quiz2_t">15</b> сек</div>
+  <p style="font-weight:600;font-size:16px;margin:0 0 12px">Сколько нефти качала труба Шухова в сутки?</p>
+  <div id="gm_quiz2_opts"><button class="gm-btn" onclick="gm_quiz2_ans(0)">А) До 800 пудов</button><button class="gm-btn" onclick="gm_quiz2_ans(1)">Б) До 80 000 пудов</button><button class="gm-btn" onclick="gm_quiz2_ans(2)">В) До 8 000 пудов</button><button class="gm-btn" onclick="gm_quiz2_ans(3)">Г) До миллиона пудов</button></div>
+  <div class="gm-exp" id="gm_quiz2_exp">До 80 000 пудов (примерно 1300 тонн) в сутки — при диаметре трубы всего три дюйма, 76 мм. Вот что значит рассчитать, а не пробовать.</div>
+  <div class="igra-pravila" data-igra-pravila>
+    <h2 class="igra-pravila-h">Как играть</h2>
+    <p class="igra-pravila-zachem">Проверь себя: один вопрос про нефтепровод Шухова и 15 секунд на ответ.</p>
+    <ol class="igra-pravila-shagi">
+      <li><b>Прочитай вопрос</b> — над ним идёт отсчёт «Осталось: … сек».</li>
+      <li><b>Нажми один из ответов А–Г</b> — выбрать можно только один раз.</li>
+      <li><b>Посмотри подсветку</b>: верный ответ станет зелёным, ошибочный — красным, ниже откроется объяснение.</li>
+    </ol>
+    <p class="igra-pravila-nyuans">Нюансы: чем быстрее ответишь верно, тем больше баллов — от 5 до 15. Отсчёт идёт с открытия страницы: если время уже вышло, верный ответ подсвечен — прочитай объяснение.</p>
+    <p class="igra-pravila-final">Ответ дан — под вопросом объяснение; верный ответ приносит баллы дня.</p>
+  </div>
+</div>
+
+  </div>
+</section>

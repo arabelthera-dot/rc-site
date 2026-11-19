@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Москва",
+  "kratko": "Столица России.",
+  "koordinaty": {
+    "shirota": 55.751,
+    "dolgota": 37.617,
+    "tochka": "центр города",
+    "otkuda": "https://www.openstreetmap.org/relation/2555133"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Москва"
+    }
+  ]
+}

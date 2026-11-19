@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Алексей Щусев",
+  "pol": "m",
+  "kratko": "Архитектор, автор Казанского вокзала в Москве.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n87940561",
+    "ssylka": "https://id.loc.gov/authorities/names/n87940561.html",
+    "zagolovok": "Shchusev, Alekseĭ Viktorovich, 1873-1949"
+  },
+  "latinica": "Aleksei Shchusev",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1873",
+    "smert": "1949"
+  }
+}

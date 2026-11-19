@@ -1,0 +1,51 @@
+# Зеркало вне GitHub (Р63, разбор «налив и захват»): раз в сутки main (история и теги) уходит в чужой
+# git-хостинг — бан аккаунта или захват GitHub не уносит исходники сайта.
+# Пять вопросов: задевает — только удалённое зеркало, этот репозиторий не трогает (права — чтение);
+# нужно — секреты MIRROR_GIT_URL (https-адрес пустого репозитория, без логина в адресе) и MIRROR_TOKEN
+# (токен с правом записи только в этот репозиторий), их кладёт Михаил; без нужного — спит строкой в журнале,
+# соседей не роняет; проверка — ручной пуск (workflow_dispatch) после того, как секреты положены;
+# откат — удалить этот файл или секреты.
+# Пуск без перезаписи: если историю зеркала кто-то подменил, пуск упадёт красным, а не затрёт следы.
+name: zerkalo
+on:
+  schedule:
+    - cron: '41 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: zerkalo
+  cancel-in-progress: false
+jobs:
+  zerkalo:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      URL: ${{ secrets.MIRROR_GIT_URL }}
+      TOKEN: ${{ secrets.MIRROR_TOKEN }}
+    steps:
+      - id: est
+        run: |
+          if [ -z "$URL" ] || [ -z "$TOKEN" ]; then
+            echo "::notice::zerkalo: нет секретов MIRROR_GIT_URL / MIRROR_TOKEN (Михаил) — зеркало спит"
+            echo "est=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "est=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.est.outputs.est == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: отправка в зеркало
+        if: steps.est.outputs.est == 'true'
+        run: |
+          set -euo pipefail
+          case "$URL" in https://*) ;; *) echo "::error::MIRROR_GIT_URL должен начинаться с https://"; exit 1;; esac
+          # Токен — заголовком, не в адресе: не попадает в .git/config и журнал.
+          auth=$(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          git -c http.extraHeader="Authorization: Basic $auth" push "$URL" HEAD:refs/heads/main
+          git -c http.extraHeader="Authorization: Basic $auth" push "$URL" --tags
+          echo "zerkalo: $(git rev-parse --short HEAD) отправлен"

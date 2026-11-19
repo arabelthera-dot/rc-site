@@ -1,0 +1,53 @@
+{
+  "$description": "Р713 п.94: цвет музея — одна запись здесь; раскладывает по сайту и роликам node dizayn/cvet-muzeya.mjs <slug>|--vse [--rolik <папка rc-rolik>] [--suho]. Значения — нынешние, вид не меняется. «akcent@14» — тот же цвет с прозрачностью 0,14. Утверждённые дни (src/data/full-pages, izobreteniya-den-<дата>.css, lunin-page.css) сюда не входят и командой не меняются.",
+  "muzei": {
+    "izobreteniya": {
+      "cveta": { "akcent": "#c9a84c", "akcent_svetlyy": "#e4c97a", "akcent_dnya": "#2d8cbf", "akcent_dnya2": "#1f6f8b" },
+      "mesta": [
+        { "fayl": "public/assets/museum-theme.css", "blok": ":root[data-museum=\"inventions\"]",
+          "peremennye": { "--acc": "akcent", "--acc-soft": "akcent@14" } },
+        { "fayl": "public/assets/izobreteniya-den.css", "blok": ":root",
+          "peremennye": { "--gold": "akcent", "--gold-l": "akcent_svetlyy", "--gold-g": "akcent@13", "--accent": "akcent_dnya", "--accent2": "akcent_dnya2" } }
+      ]
+    },
+    "pervoprohodcy": {
+      "cveta": { "akcent": "#a8341f", "akcent_svetlyy": "#7a2415" },
+      "mesta": [
+        { "fayl": "public/assets/museum-theme.css", "blok": ":root[data-museum=\"explorers\"]",
+          "peremennye": { "--gold": "akcent", "--acc": "akcent", "--acc-soft": "akcent@12", "--gold-l": "akcent_svetlyy", "--gold-g": "akcent@10" } }
+      ]
+    },
+    "iskusstvo": {
+      "cveta": { "akcent": "#e8873a", "akcent_svetlyy": "#f0a765" },
+      "mesta": [
+        { "fayl": "public/assets/museum-theme.css", "blok": ":root[data-museum=\"art\"]",
+          "peremennye": { "--gold-l": "akcent_svetlyy", "--gold-g": "akcent@12" } }
+      ]
+    },
+    "literatura": {
+      "cveta": { "akcent": "#c9a84c", "akcent_svetlyy": "#e4c97a", "akcent2": "#8f6a2a" },
+      "mesta": [
+        { "fayl": "public/assets/museum-theme.css", "blok": ":root[data-museum=\"literatura\"]",
+          "peremennye": { "--gold": "akcent", "--gold-l": "akcent_svetlyy", "--gold-g": "akcent@13", "--acc": "akcent", "--acc-soft": "akcent@14", "--sheet-line": "akcent@20" } },
+        { "fayl": "public/assets/museum-literatura.css", "blok": ":root",
+          "peremennye": { "--gold": "akcent", "--gold-l": "akcent_svetlyy", "--gold-g": "akcent@13", "--accent": "akcent", "--accent2": "akcent2" } }
+      ]
+    },
+    "ne-sdayutsya": {
+      "cveta": { "akcent": "#c9a84c", "akcent_svetlyy": "#e2c878" },
+      "mesta": [
+        { "fayl": "public/muzei/ne-sdayutsya/nesdayutsya-style.css", "blok": ":root",
+          "peremennye": { "--gold": "akcent", "--gold-l": "akcent_svetlyy", "--gold-g": "akcent@12", "--accent": "akcent" } },
+        { "fayl": "public/muzei/ne-sdayutsya/nesdayutsya-style.css", "blok": "html[data-museum=\"ne-sdayutsya\"]",
+          "peremennye": { "--acc": "akcent", "--acc-soft": "akcent@14" } }
+      ]
+    }
+  },
+  "roliki": {
+    "$description": "Ролики rc-rolik сейчас одного цвета для всех музеев (src/Video.tsx, константы AMBER и INK); свой цвет ролика по музею — отдельной работой с хозяином src/ (r713b-anim), под флагом.",
+    "cveta": { "akcent": "#f2b84b", "fon": "#0c0b09" },
+    "mesta": [
+      { "fayl": "src/Video.tsx", "konstanty": { "AMBER": "akcent", "INK": "fon" } }
+    ]
+  }
+}

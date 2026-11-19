@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Виктор Борисов-Мусатов",
+  "pol": "m",
+  "kratko": "Живописец, автор «Водоёма».",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n80117376",
+    "ssylka": "https://id.loc.gov/authorities/names/n80117376.html",
+    "zagolovok": "Borisov-Musatov, Viktor Ėlʹpidiforovich, 1870-1905"
+  },
+  "latinica": "Viktor Borisov-Musatov",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1870",
+    "smert": "1905"
+  }
+}

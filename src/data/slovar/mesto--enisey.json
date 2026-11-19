@@ -1,0 +1,16 @@
+{
+  "tip": "mesto",
+  "nazvanie": "Енисей",
+  "kratko": "Великая река Сибири.",
+  "koordinaty": {
+    "shirota": 61.202,
+    "dolgota": 89.575,
+    "tochka": "середина реки по карте",
+    "otkuda": "https://www.openstreetmap.org/relation/181988"
+  },
+  "nazvaniya": [
+    {
+      "nazvanie": "Енисей"
+    }
+  ]
+}

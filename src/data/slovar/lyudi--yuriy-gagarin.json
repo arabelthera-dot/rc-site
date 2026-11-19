@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Юрий Гагарин",
+  "pol": "m",
+  "kratko": "Лётчик-космонавт, первый человек в космосе.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n50015443",
+    "ssylka": "https://id.loc.gov/authorities/names/n50015443.html",
+    "zagolovok": "Gagarin, Yuri Alekseyevich, 1934-1968"
+  },
+  "latinica": "Yuri Gagarin",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1934-03-09",
+    "smert": "1968-03-27"
+  }
+}

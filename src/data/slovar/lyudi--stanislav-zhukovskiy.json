@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Станислав Жуковский",
+  "pol": "m",
+  "kratko": "Пейзажист, мастер усадебного пейзажа.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n83173332",
+    "ssylka": "https://id.loc.gov/authorities/names/n83173332.html",
+    "zagolovok": "Zhukovskiĭ, Stanislav I︠U︡lianovich"
+  },
+  "latinica": "Stanislav Zhukovskii",
+  "latinica_iz": "loc-bez-znakov",
+  "gody": {
+    "rozhdenie": "1875",
+    "smert": "1944"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "tip": "lyudi",
+  "nazvanie": "Александр Турчевич",
+  "pol": "m",
+  "kratko": "Пермский архитектор XIX века.",
+  "normativ": {
+    "baza": "LoC",
+    "id": "n2003034933",
+    "ssylka": "https://id.loc.gov/authorities/names/n2003034933.html",
+    "zagolovok": "Turchevich, A. B. (Aleksandr Bonaventurovich), 1855-1909"
+  },
+  "latinica": "Aleksandr Turchevich",
+  "latinica_iz": "loc",
+  "gody": {
+    "rozhdenie": "1855",
+    "smert": "1909"
+  }
+}
