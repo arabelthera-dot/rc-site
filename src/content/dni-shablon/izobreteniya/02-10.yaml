@@ -188,7 +188,7 @@ video:
   badge: 39 сек
   poster: video/day-10feb-aerosani-poster.jpg
   mp4: video/day-10feb-aerosani.mp4
-  note: Ролик собран из кадров дня. Закадровый текст озвучен синтезом речи.
+  note: Закадровый текст озвучен синтезом речи.
 story:
   kicker: История изобретения
   h2: Как появились аэросани
@@ -808,7 +808,7 @@ proof:
     source_url: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
 audioguide:
   audioSrc: audio-guide-aerosani-ru.mp3
-  durationLabel: 1 минута 42 секунды
+  durationLabel: 1 минута 30 секунд
   lead: 'Голос ведёт по залу аэросаней: от первых в мире саней Неждановского через рекорд студента Сикорского и лёд Кронштадта — к семидесяти батальонам войны. Четыре остановки.'
   stops:
     - t: 0
