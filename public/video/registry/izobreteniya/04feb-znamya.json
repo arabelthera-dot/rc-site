@@ -1,32 +1,32 @@
 {
-  "title": "История в 41 секунду",
+  "title": "История в 49 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/04feb-znamya/day-04feb-znamya.mp4",
     "local": "muzei/izobreteniya/video/day-04feb-znamya.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 41.4,
-    "mb": 9.6
+    "sec": 49.3,
+    "mb": 14.6
   },
   "vertical": {
     "file": "izobreteniya/04feb-znamya/day-04feb-znamya-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-04feb-znamya-9x16.mp4",
-    "v": 2,
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 41.4,
-    "mb": 9.3
+    "sec": 49.3,
+    "mb": 13.4
   },
   "poster": {
     "file": "izobreteniya/04feb-znamya/day-04feb-znamya-poster.jpg",
     "local": "muzei/izobreteniya/video/day-04feb-znamya-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/04feb-znamya/day-04feb-znamya-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-04feb-znamya-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
