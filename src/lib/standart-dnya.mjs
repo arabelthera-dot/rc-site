@@ -1,11 +1,14 @@
 // Стандарт дня (Р660): каждый день карточки страницы src/content/dni-shablon с ключом 02-01 и дальше, любой музей,
 // не собирается без любого из 48 пунктов (33 + 15 Р733). Что значит каждый пункт, поле и пример — docs/standart-dnya.md (единственный
-// источник для помощников); поля и типы — src/lib/forma-dnya.mjs (форма Р635). Январь (ключ до 02-01) не проверяется.
+// источник для помощников); поля и типы — src/lib/forma-dnya.mjs (форма Р635). Январь (ключ до 02-01) проверяется, только когда
+// переведён на образец машиной scripts/yanvar-v-obrazec.mjs (есть nomer_dnya, Р656); у него не проверяются 76/88/89/164 —
+// январская игра изобретений своей разметкой остаётся (Р627: игры не трогаем) — и 173 (визуализации января нет в утверждённом).
 // Возвращает список строк «ММ-ДД музей: нет пункта N — …»; загрузчик (zagruzitKartochki) собирает их по всем карточкам.
 import fs from 'node:fs';
 import { NET, wiki } from './forma-dnya.mjs';
 import { MEHANIKI, igraDannymi } from './igry-mehaniki.ts';
 import slovar from './slovar-dannye.mjs';
+import { naObrazce } from './fakty-iz-utverzhdeno.mjs';
 
 export const STANDART_S = '02-01';
 // Пункты очереди Р660 и состава Р676 (171–174); 19 и 27 — только «Русские не сдаются», 76 — только изобретения (там игра дня).
@@ -20,7 +23,9 @@ const NOVYJ_STIL = '1918-02-14';
 const HTML = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
 const KOMBINIRUEMYE = /[̀-ͯ]/;
 // Не текст страницы: код скриптов и разметка поисковиков (п. 40 их не проверяет; п. 170 — проверяет).
-const NE_TEKST = (put) => put[0] === 'skripty' || (put[0] === 'head' && put[1] === 'ld');
+// У переведённого января ещё разделы и абзацы истории: своя разметка января (Р627), их машина перевода не трогает.
+const NE_TEKST = (put, yanvar) => put[0] === 'skripty' || (put[0] === 'head' && put[1] === 'ld')
+  || (yanvar && (put[0] === 'razdely' || (put[0] === 'story' && put[1] === 'abzacy')));
 
 const est = (v) => v !== undefined && v !== null && v !== '';
 const obojti = (v, put, fn) => {
@@ -47,7 +52,8 @@ const kartinki = (d) => [
 const udaryFaktov = (d) => [d.fakty ?? []].flat().flatMap((b) => b.udary.map((u, i) => [`${b.id}.udary.${i}`, u]));
 
 export function standartDnya(d, syroe = d) {
-  if (d.key < STANDART_S) return [];
+  if (!naObrazce(d.key, d)) return [];
+  const yanvar = d.key < STANDART_S;
   const net = [];
   const p = (n, chto) => net.push(`${d.key} ${d.muzei}: нет пункта ${n} — ${chto}`);
   const ns = d.muzei === 'ne-sdayutsya', izob = d.muzei === 'izobreteniya';
@@ -146,10 +152,10 @@ export function standartDnya(d, syroe = d) {
   if (!d.slovar?.length) p(30, 'slovar (люди, места, народы, темы дня: «tip:id»)');
   // 40. Чистый текст: без HTML, ** и &-сущностей в текстовых полях.
   const html = [];
-  obojti(syroe, [], (s, put) => { if (!NE_TEKST(put) && HTML.test(s)) html.push(imya(put)); });
+  obojti(syroe, [], (s, put) => { if (!NE_TEKST(put, yanvar) && HTML.test(s)) html.push(imya(put)); });
   if (html.length) p(40, `HTML или разметка в тексте (${html.length}): ${kratko(html)}`);
   // 76, 88, 89, 164. Игра изобретений — данными по механике.
-  if (izob) {
+  if (izob && !yanvar) {
     const g = d.igra ?? {};
     if (g.imya || g.vtoraya) p(164, `своя разметка игры (igra.${g.imya ? 'imya' : 'vtoraya'}) — с ${STANDART_S} игра только данными (igra.mehanika)`);
     if (!est(g.mehanika) || !g.dannye) p(76, 'igra.mehanika и igra.dannye (игра данными по механике)');
@@ -184,7 +190,7 @@ export function standartDnya(d, syroe = d) {
   // 172. Полухук у каждого факта — summary, заголовок-крючок над «Подробнее».
   uFaktov(172, 'нет полухука (summary)', (u) => !String(u.summary ?? '').replace(/<[^>]+>/g, '').trim());
   // 173. «Русские не сдаются»: визуализация (vizual, вид predmet | karta | dokument) вместо игры.
-  if (ns && !d.vizual) p(173, 'vizual (визуализация: predmet | karta | dokument)');
+  if (ns && !yanvar && !d.vizual) p(173, 'vizual (визуализация: predmet | karta | dokument)');
   return net;
 }
 
@@ -213,11 +219,11 @@ function polyaR733(d, ns, izob, kart, fakty) {
   return net;
 }
 
-// 1. Номер дня не повторяется у карточек с 02-01 (по всем музеям).
+// 1. Номер дня не повторяется у карточек на образце (с 02-01 и переведённый январь, по всем музеям).
 export function nomeraDnej(vse) {
   const byl = new Map(), net = [];
   for (const d of vse) {
-    if (d.key < STANDART_S || !est(d.nomer_dnya)) continue;
+    if (!naObrazce(d.key, d) || !est(d.nomer_dnya)) continue;
     if (byl.has(d.nomer_dnya)) net.push(`${d.key} ${d.muzei}: нет пункта 1 — nomer_dnya «${d.nomer_dnya}» уже у ${byl.get(d.nomer_dnya)}`);
     else byl.set(d.nomer_dnya, `${d.key} ${d.muzei}`);
   }
