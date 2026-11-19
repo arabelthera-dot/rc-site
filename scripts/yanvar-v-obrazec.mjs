@@ -42,10 +42,12 @@ const HTML = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
 const SUSHCHNOSTI = { nbsp: ' ', lt: '<', gt: '>', laquo: '«', raquo: '»', mdash: '—', ndash: '–', quot: '"', hellip: '…', amp: '&' };
 const raskryt = (t) => t.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&([a-z]+);/gi, (m, n) => SUSHCHNOSTI[n.toLowerCase()] ?? m);
 const adres = (u) => u.replace(/^https?:\/\//, '').replace(/\/$/, '');
+// «сайт/путь/…» — адрес, сокращённый для глаз: в текст идёт полный адрес.
+const sokrashchen = (x, h) => { const t = raskryt(x.trim()); return /…$/.test(t) && adres(raskryt(h)).startsWith(adres(t.slice(0, -1))); };
 const SSYLKA = /<a\b[^>]*?href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;
 const snyat = (t) => raskryt(t
   .replace(/<br\s*\/?>|<\/p>/gi, ' ')
-  .replace(SSYLKA, (_, h, x) => (adres(x.trim()) === adres(h) ? h : x))
+  .replace(SSYLKA, (_, h, x) => (adres(x.trim()) === adres(h) || sokrashchen(x, h) ? h : x))
   .replace(/<\/?[a-z][^>]*>/gi, '').replace(/\*\*/g, ''))
   .replace(/\s{2,}/g, ' ').replace(/\s+([.,;:])/g, '$1').trim();
 const BUKVA = /[A-Za-zА-Яа-яЁё0-9]/;
