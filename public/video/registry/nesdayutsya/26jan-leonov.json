@@ -4,7 +4,7 @@
   "horizontal": {
     "file": "nesdayutsya/26jan-leonov/day-26jan-leonov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-26jan-leonov.mp4",
-    "v": 2,
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 46.2,
@@ -13,7 +13,7 @@
   "vertical": {
     "file": "nesdayutsya/26jan-leonov/day-26jan-leonov-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-26jan-leonov-9x16.mp4",
-    "v": 2,
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 46.2,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "nesdayutsya/26jan-leonov/day-26jan-leonov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-26jan-leonov-poster.jpg",
-    "v": 2
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/26jan-leonov/day-26jan-leonov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-26jan-leonov-9x16-poster.jpg",
-    "v": 2
+    "v": 4
   }
 }
