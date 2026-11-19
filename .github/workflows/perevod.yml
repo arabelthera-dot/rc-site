@@ -1,6 +1,6 @@
 # Машинный перевод дня (Р603, Р686 п.8, Р688): слилась новая или правленая карточка дня — машина сама переводит её
 # на языки src/data/yazyki.json (scripts/perevod-dnya.mjs, переводчик Argos Translate — бесплатный, офлайн, без ключа)
-# и сдаёт файл строк src/data/perevod/<музей>-<ММ-ДД>.json заявкой avto/perevod-… с автослиянием. Переводится заново
+# и сдаёт файлы строк src/data/perevod/<код>/<музей>-<ММ-ДД>.json (папка на язык) заявкой avto/perevod-… с автослиянием. Переводится заново
 # только то, что устарело (отпечатки, docs/perevod-standart.md). Это только данные: страницы на других языках не строятся,
 # вид сайта не меняется. Одобрение ждущих проверок заявки — как в rolik-na-sait.yml.
 # Как в мире: машинный перевод после слияния исходника — Weblate/Crowdin pre-translate (https://docs.weblate.org/en/latest/admin/machine.html),
@@ -114,6 +114,6 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-          fayly=$(git diff --name-only HEAD~1 HEAD -- 'src/data/perevod/*.json')
+          fayly=$(git diff --name-only HEAD~1 HEAD -- 'src/data/perevod/*/*.json' ':!src/data/perevod/ru/')
           [ -n "$fayly" ] || { echo "Обратный перевод: новых переводов нет."; exit 0; }
           python3 scripts/perevod-obratno.py $fayly | tee -a "$GITHUB_STEP_SUMMARY"

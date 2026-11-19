@@ -6,7 +6,7 @@ import tlsNedoverie from '../data/tls-nedoverie.json';
 export const YEAR = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 // форма русского слова при числе — по правилу языка Intl.PluralRules (п. 143), а не своим счётом остатков;
-// страницам на других языках — chislo()/sChislom() из src/lib/yazyki.mjs со словарём src/data/stroki.json
+// страницам на других языках — chislo()/sChislom() из src/lib/yazyki.mjs со словарём src/data/stroki/<код>.json
 const PRAVILO_RU = new Intl.PluralRules('ru');
 export const plural = (n: number, one: string, few: string, many: string) =>
   ({ one, few, many } as Record<string, string>)[PRAVILO_RU.select(n)] ?? few;

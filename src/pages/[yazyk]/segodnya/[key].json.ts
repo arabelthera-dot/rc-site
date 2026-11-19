@@ -1,5 +1,5 @@
 // «Сегодня в Русской цивилизации» на других языках: /<code>/segodnya/<ММ-ДД>.json, строки — из словаря
-// src/data/stroki.json (stroka/chislo, Г20). ВЫКЛЮЧЕНО: файлы собираются только для языков с ready:true
+// src/data/stroki/<код>.json (stroka/chislo, Г20). ВЫКЛЮЧЕНО: файлы собираются только для языков с ready:true
 // в src/data/yazyki.json, кроме русского (он — segodnya/[key].json.ts без приставки). Сейчас готов только
 // русский — эта страница не создаёт ни одного файла. Откат — удалить этот файл.
 import type { APIRoute } from 'astro';
