@@ -99,12 +99,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История в 48 секунд
+  h2: История в 47 секунд
   klyuch: nesdayutsya/03feb-troica
   format: horizontal
   pole: nesdayutsya/03feb-troica:horizontal.sec
   suffix: сек
-  badge: 48 сек
+  badge: 47 сек
   poster: /muzei/ne-sdayutsya/video/day-03feb-troica-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-03feb-troica.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -724,17 +724,17 @@ audioguide:
     - t: 0
       mark: '0:00'
       title: 'Ворота закрыты'
-    - t: 25
-      mark: '0:25'
+    - t: 16
+      mark: '0:16'
       title: 'Подкоп'
-    - t: 50
-      mark: '0:50'
+    - t: 24
+      mark: '0:24'
       title: 'Слуги с луками'
-    - t: 75
-      mark: '1:15'
+    - t: 38
+      mark: '0:38'
       title: 'Порох и пушки'
-    - t: 100
-      mark: '1:40'
+    - t: 51
+      mark: '0:51'
       title: 'Последний штурм'
   transcript:
     - 'Смутное время. Под стенами Троице-Сергиева монастыря тридцать тысяч Сапеги и Лисовского. В крепости около двух тысяч воинов. На приказ сдаться защитники отвечают: «Десятилетний отрок у Троицы посмеётся вашему безумству».'

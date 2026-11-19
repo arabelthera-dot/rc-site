@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 44 секунды
   klyuch: nesdayutsya/20feb-petropavlovsk
   format: horizontal
   pole: nesdayutsya/20feb-petropavlovsk:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 44 сек
   poster: /muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-20feb-petropavlovsk.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -801,19 +801,19 @@ audioguide:
   lead: 'Голос ведёт от тумана Кальяо через батарею Максутова и Никольскую сопку — к пустому городу: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Предупреждение
-  - t: 22
-    mark: 0:22
+  - t: 16
+    mark: '0:16'
     title: Батарея
-  - t: 44
-    mark: 0:44
+  - t: 22
+    mark: '0:22'
     title: Никольская сопка
-  - t: 66
-    mark: '1:06'
+  - t: 43
+    mark: '0:43'
     title: Знамя
-  - t: 88
-    mark: '1:28'
+  - t: 59
+    mark: '0:59'
     title: Пустой город
   transcript:
   - 'Король Гавайев за полгода предупредил Камчатку: летом придут англичане и французы. «Аврора» ускользнула в тумане из Кальяо — мимо английской и французской эскадр. Английский адмирал Прайс застрелился перед штурмом — эскадру повёл француз.'

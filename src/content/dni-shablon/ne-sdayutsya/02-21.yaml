@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 49 секунд
   klyuch: nesdayutsya/21feb-vasilisa-kozhina
   format: horizontal
   pole: nesdayutsya/21feb-vasilisa-kozhina:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 49 сек
   poster: /muzei/ne-sdayutsya/video/day-21feb-vasilisa-kozhina-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-21feb-vasilisa-kozhina.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -773,19 +773,19 @@ audioguide:
   lead: 'Голос ведёт от убитого мужа через колонну пленных и косу — к лубкам, азбуке и «Войне и миру»: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Хутор
-  - t: 22
-    mark: 0:22
+  - t: 14
+    mark: '0:14'
     title: Пленные
-  - t: 44
-    mark: 0:44
+  - t: 27
+    mark: '0:27'
     title: Коса
-  - t: 66
-    mark: '1:06'
+  - t: 42
+    mark: '0:42'
     title: Лубки
-  - t: 88
-    mark: '1:28'
+  - t: 57
+    mark: '0:57'
     title: Слава
   transcript:
   - "Лето тысяча восемьсот двенадцатого года. Хутор Горшково Сычёвского уезда Смоленской губернии. Французы убили старосту Кожина, мужики ушли в армию. Сход решил — быть Василисе старостихой."

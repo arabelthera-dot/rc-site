@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 50 секунд
   klyuch: nesdayutsya/26feb-luka
   format: horizontal
   pole: nesdayutsya/26feb-luka:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 50 сек
   poster: /muzei/ne-sdayutsya/video/day-26feb-luka-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-26feb-luka.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -781,19 +781,19 @@ audioguide:
   lead: 'Голос ведёт от суда в Ташкенте через тюрьму и ссылки — к госпиталю и премии: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Суд
-  - t: 22
-    mark: 0:22
+  - t: 19
+    mark: '0:19'
     title: Икона
-  - t: 44
-    mark: 0:44
+  - t: 31
+    mark: '0:31'
     title: Тюрьма
-  - t: 66
-    mark: '1:06'
+  - t: 47
+    mark: '0:47'
     title: Ссылка и госпиталь
-  - t: 88
-    mark: '1:28'
+  - t: 62
+    mark: '1:02'
     title: Премия
   transcript:
   - 'Ташкент, суд. Чекист спросил хирурга: «Вы видели Бога?» Ответ: «Бога я действительно не видел. Но я много оперировал на мозге и, открывая черепную коробку, никогда не видел там также и ума». Зал хохотал. Показательный суд провалился.'

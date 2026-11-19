@@ -9,6 +9,9 @@ import path from 'node:path';
 import { adres } from '../../scripts/reestr-rolikov.mjs';
 
 const PUB = path.join(process.cwd(), 'public');
+// Длина ролика на странице (Р830/Р831): заголовок «История в N секунд» и бейдж — от horizontal.sec записи выпуска,
+// как title в scripts/rolik-na-sait.mjs и бейдж в museum-video.js (Math.round). Число в yaml дня отставало при замене ролика.
+const sekund = (n) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? 'секунду' : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100) ? 'секунды' : 'секунд'}`;
 
 export function rolikRyadom(video) {
   if (!video) return {};
@@ -19,7 +22,10 @@ export function rolikRyadom(video) {
   const ryadom = (x) => ({ local: h.local.replace(/\.mp4$/, x), v: h.v });
   const vtt = ryadom('.vtt'), txt = path.join(PUB, ryadom('.txt').local);
   const vttFail = path.join(PUB, vtt.local);
+  const n = Number.isFinite(h.sec) ? Math.round(h.sec) : null;
   return {
+    h2: n && /^История (в|за) /.test(video.h2 || '') ? `История в ${sekund(n)}` : video.h2,
+    badge: n && video.suffix ? `${n} ${video.suffix}` : video.badge,
     mp4: adres(h),
     poster: poster?.local ? adres(poster) : null,
     subtitry: fs.existsSync(vttFail) && fs.readFileSync(vttFail, 'utf8').startsWith('WEBVTT') ? adres(vtt) : null,

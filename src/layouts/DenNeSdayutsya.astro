@@ -7,7 +7,8 @@
 // первенства» нет (Р436/Р437: вместо игры — визуализация). Дальше страницу ведёт конвейер src/integrations/full-pages.mjs.
 import fs from 'node:fs';
 import { nePerevodit } from '../lib/perevod.mjs';
-import { q, json, chromeJs, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml } from '../lib/den-razmetka.mjs';
+import { audiogidDnya } from '../lib/den-obshchee.mjs';
+import { q, json, chromeJs, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml, podpisHtml } from '../lib/den-razmetka.mjs';
 import { vspomniOn, vspomniHtml, vspomniCss, vspomniJs, vspomniDannye } from '../lib/istoriya.mjs';
 // «Вспомни» (п.503, Р745): блок над викториной и скрипт — только при флаге, выключено.
 import { titleVkladki } from '../lib/title-vkladki.mjs';
@@ -78,7 +79,7 @@ const chrome = chromeJs(d, muzeyName);
 </div>
 <figcaption class="scene-caption">
   <div class="wrap">
-    <div class="scene-cap"><Fragment set:html={o.credit ? `${o.podpis} <span class="credit">${o.credit}</span>` : o.podpis} /></div>
+    <div class="scene-cap"><Fragment set:html={podpisHtml(o)} /></div>
     <span class="scene-hint">{o.hint}</span>
   </div>
 </figcaption>{o.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(o)} />}
@@ -128,7 +129,7 @@ const chrome = chromeJs(d, muzeyName);
 {d.video && (<section class="block" id="video">
   <div class="wrap">
     <div class="kicker">Видео дня</div>
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">{d.video.h2}</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field={d.video.pole} data-rc-video-suffix={d.video.suffix}>{d.video.badge}</span></div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">{rolik.h2}</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field={d.video.pole} data-rc-video-suffix={d.video.suffix}>{rolik.badge}</span></div>
     <p style="color:var(--muted);margin-top:0"><Fragment set:html={d.lead.hook} /></p>
     <video controls playsinline preload="none" poster={rolik.poster} data-rc-video={d.video.klyuch} data-rc-format={d.video.format} style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
       <source src={rolik.mp4} type="video/mp4">
@@ -151,7 +152,7 @@ const chrome = chromeJs(d, muzeyName);
   </div>
 </section>)}<Fragment set:html={posle('vizual')} />
 
-{d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license} aria-describedby={f.opisanie_dlinnoe ? opisanieId(f.src) : undefined}><figcaption><Fragment set:html={f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis} /></figcaption>{f.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(f)} />}</figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
+{d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license} aria-describedby={f.opisanie_dlinnoe ? opisanieId(f.src) : undefined}><figcaption><Fragment set:html={podpisHtml(f)} /></figcaption>{f.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(f)} />}</figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
 
 {vspomni && <Fragment set:html={`<style>${vspomniCss}</style>${vspomniHtml}`} />}<section class="block" id="quiz">
   <div class="wrap">
@@ -227,7 +228,7 @@ const chrome = chromeJs(d, muzeyName);
 <script is:inline src="../../assets/museum-return.js" data-museum={d.muzei} data-day={d.key}></script>
 <script is:inline defer src="../../assets/analytics.js"></script>
 
-{d.audioguide && <script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(d.audioguide, null, 2).replace(/</g, '\\u003c')};`}></script>}
+{d.audioguide && <script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(audiogidDnya(d), null, 2).replace(/</g, '\\u003c')};`}></script>}
 {d.video && <script is:inline src="../../assets/museum-video.js"></script>}
 {d.audioguide && <script is:inline src="../../assets/museum-audioguide.js"></script>}
 </body>

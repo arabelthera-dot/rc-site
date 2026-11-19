@@ -116,12 +116,12 @@ daynav:
   - id: result
     label: Итог
 video:
-  h2: История в 48 секунд
+  h2: История в 49 секунд
   klyuch: izobreteniya/08jan-ermak
   format: horizontal
   pole: izobreteniya/08jan-ermak:horizontal.sec
   suffix: сек
-  badge: 48 сек
+  badge: 49 сек
   poster: video/day-08jan-ermak-poster.jpg
   mp4: video/day-08jan-ermak.mp4
   note: "Кадры ролика — подлинные: фотография ледокола «Ермак» начала XX века (Северный морской музей, Госкаталог № 41192160); крупные планы — фрагменты того же снимка. Закадровый текст озвучен синтезом речи."

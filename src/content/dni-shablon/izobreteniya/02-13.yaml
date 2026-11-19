@@ -253,12 +253,12 @@ audioguide:
   - И последняя остановка — война. Летающая лодка МБР-2, которую звали «амбарчиком», в тысяча девятьсот сорок четвёртом году вывезла из болот англичан, сбитых после удара по линкору «Тирпиц». Спасибо, что прошли зал с нами.
   note: Озвучено синтезом речи — временно, до записи голосом автора музея.
 video:
-  h2: История в 51 секунду
+  h2: История в 54 секунды
   klyuch: izobreteniya/13feb-beriev
   format: horizontal
   pole: izobreteniya/13feb-beriev:horizontal.sec
   suffix: сек
-  badge: 51 сек
+  badge: 54 сек
   poster: video/day-13feb-beriev-poster.jpg
   mp4: video/day-13feb-beriev.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -882,7 +882,7 @@ proof:
   status: found
   claim_id: rc:izobreteniya:02-13-beriev:claim-1961
   ours:
-    kind: publication
+    kind: публикация
     title: «Мировой рекорд скорости реактивного гидросамолёта Бе-10»
     date: '1961'
     holder: Центральный музей ВВС

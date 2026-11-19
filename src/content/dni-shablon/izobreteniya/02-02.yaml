@@ -177,12 +177,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История в 47 секунд
+  h2: История в 49 секунд
   klyuch: izobreteniya/02feb-edinorog
   format: horizontal
   pole: izobreteniya/02feb-edinorog:horizontal.sec
   suffix: сек
-  badge: 47 сек
+  badge: 49 сек
   poster: video/day-02feb-edinorog-poster.jpg
   mp4: video/day-02feb-edinorog.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -823,7 +823,7 @@ proof:
   status: found
   claim_id: rc:izobreteniya:02-02-edinorog:claim-1757
   ours:
-    kind: museum-object
+    kind: экспонат
     title: 12-фунтовый единорог, 1757 г.
     date: '1757'
     holder: Военно-исторический музей артиллерии, инженерных войск и войск связи

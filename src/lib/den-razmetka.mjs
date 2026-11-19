@@ -62,7 +62,15 @@ export const opisanieHtml = (im) => (im.opisanie_dlinnoe
   ? `<details class="opisanie-dlinnoe"><summary>Подробное описание картинки</summary><p id="${opisanieId(im.src)}">${escHtml(im.opisanie_dlinnoe)}</p></details>`
   : '');
 const opisanieAttr = (im) => (im.opisanie_dlinnoe ? ` aria-describedby="${opisanieId(im.src)}"` : '');
-export const kadrHtml = (f) => `<figure class="${f.klass ? `fig ${f.klass}` : 'fig'}"><img src="${f.src}"${f.width ? ` width="${f.width}" height="${f.height}"` : ''} loading="lazy" decoding="async" alt="${f.alt.replace(/"/g, '&quot;')}" data-source="${f.data_source}" data-license="${f.license.replace(/"/g, '&quot;')}"${opisanieAttr(f)}><figcaption>${f.credit ? `${f.podpis} <span class="credit">${f.credit}</span>` : f.podpis}</figcaption>${opisanieHtml(f)}</figure>`;
+// Подпись кадра с выходными данными (Р830, брак «Хранит X. Хранится: X.»): если держатель уже назван в credit
+// («Хранится: …»), хвостовая фраза «Хранит …» из подписи не повторяется.
+const reHranit = /(^|(?<=[.!?»)]\s+))Хранит\s[^]*$/;
+export const podpisHtml = (f) => {
+  if (!f.credit) return f.podpis;
+  const podpis = /Хранится:/.test(f.credit) ? f.podpis.replace(reHranit, '').trim() : f.podpis;
+  return `${podpis} <span class="credit">${f.credit}</span>`;
+};
+export const kadrHtml = (f) => `<figure class="${f.klass ? `fig ${f.klass}` : 'fig'}"><img src="${f.src}"${f.width ? ` width="${f.width}" height="${f.height}"` : ''} loading="lazy" decoding="async" alt="${f.alt.replace(/"/g, '&quot;')}" data-source="${f.data_source}" data-license="${f.license.replace(/"/g, '&quot;')}"${opisanieAttr(f)}><figcaption>${podpisHtml(f)}</figcaption>${opisanieHtml(f)}</figure>`;
 export const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">${u.podrobnee ?? 'Узнать подробнее'}</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
 ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.tag}</span>` : ''}${p}</p>`).join('\n')}

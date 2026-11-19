@@ -122,12 +122,12 @@ daynav:
   - id: result
     label: Итог
 video:
-  h2: История в 82 секунды
+  h2: История в 47 секунд
   klyuch: izobreteniya/05jan-shukhov
   format: horizontal
   pole: izobreteniya/05jan-shukhov:horizontal.sec
   suffix: сек
-  badge: 82 сек
+  badge: 47 сек
   poster: video/day-05jan-shukhov-poster.jpg
   mp4: video/day-05jan-shukhov.mp4
   note: "Визуальный ряд ролика — архивные фотографии Балахан 1880-х годов и чертёжная анимация: счётчик возчиков, линия первого нефтепровода, решётка гиперболоида. Часть кадров сгенерирована нейросетью (Genosai) — это не архивная съёмка. Закадровый текст озвучен синтезом речи."

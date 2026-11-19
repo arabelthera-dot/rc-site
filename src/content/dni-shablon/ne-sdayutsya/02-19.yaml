@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 51 секунду
   klyuch: nesdayutsya/19feb-vzvod-shironina
   format: horizontal
   pole: nesdayutsya/19feb-vzvod-shironina:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 51 сек
   poster: /muzei/ne-sdayutsya/video/day-19feb-vzvod-shironina-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-19feb-vzvod-shironina.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -777,19 +777,19 @@ audioguide:
   lead: 'Голос ведёт от утренней атаки танков через бой у пушки и рукопашную — к двум раненым на переезде: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Переезд
-  - t: 22
-    mark: 0:22
+  - t: 14
+    mark: '0:14'
     title: Танки
-  - t: 44
-    mark: 0:44
+  - t: 30
+    mark: '0:30'
     title: Пушка
-  - t: 66
-    mark: '1:06'
+  - t: 46
+    mark: '0:46'
     title: Двое раненых
-  - t: 88
-    mark: '1:28'
+  - t: 65
+    mark: '1:05'
     title: Звёзды
   transcript:
   - Второе марта тысяча девятьсот сорок третьего года. Железнодорожный переезд у посёлка Тарановка под Харьковом. Здесь окопался взвод гвардии лейтенанта Петра Широнина — двадцать пять человек и одна пушка.

@@ -96,12 +96,12 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 53 секунды
   klyuch: nesdayutsya/13feb-gavrilov
   format: horizontal
   pole: 'nesdayutsya/13feb-gavrilov:horizontal.sec'
   suffix: сек
-  badge: 1 мин
+  badge: 53 сек
   poster: /muzei/ne-sdayutsya/video/day-13feb-gavrilov-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-13feb-gavrilov.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -880,17 +880,17 @@ audioguide:
     - t: 0
       mark: '0:00'
       title: Час на ответ
-    - t: 22
-      mark: '0:22'
+    - t: 17
+      mark: '0:17'
       title: «Майор застрелился»
-    - t: 44
-      mark: '0:44'
+    - t: 33
+      mark: '0:33'
       title: Последний бой
-    - t: 66
-      mark: '1:06'
+    - t: 47
+      mark: '0:47'
       title: Плен и тиф
-    - t: 88
-      mark: '1:28'
+    - t: 58
+      mark: '0:58'
       title: Признание
   transcript:
     - 'Двадцать девятое июня тысяча девятьсот сорок первого года, Восточный форт Брестской крепости. Немцы дают защитникам час: выдать майора Гаврилова и сложить оружие. На всю крепость они отводили восемь часов. Форт отвечает: драться до конца.'

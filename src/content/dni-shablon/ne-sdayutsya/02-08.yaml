@@ -700,12 +700,12 @@ audioguide:
     - 'К ордену Петрова так и не представляют, зато объявляют выговор: он не заполнил боевой журнал, ведь в одной руке у него была трубка, в другой — микрофон. В две тысячи шестом году в штаб-квартире ООН ему вручают награду «Человеку, который предотвратил ядерную войну». Русские не сдаются.'
   note: Озвучено синтезом речи — временно, до записи голосом автора музея.
 video:
-  h2: История за минуту
+  h2: История в 50 секунд
   klyuch: nesdayutsya/08feb-petrov
   format: horizontal
   pole: nesdayutsya/08feb-petrov:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 50 сек
   poster: /muzei/ne-sdayutsya/video/day-08feb-petrov-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-08feb-petrov.mp4
   note: Закадровый текст озвучен синтезом речи.

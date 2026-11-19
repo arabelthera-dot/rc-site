@@ -95,12 +95,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 52 секунды
   klyuch: nesdayutsya/07feb-dzhalil
   format: horizontal
   pole: nesdayutsya/07feb-dzhalil:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 52 сек
   poster: /muzei/ne-sdayutsya/video/day-07feb-dzhalil-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-07feb-dzhalil.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -784,17 +784,17 @@ audioguide:
     - t: 0
       mark: '0:00'
       title: 'Тетрадь под видом словаря'
-    - t: 25
-      mark: '0:25'
+    - t: 22
+      mark: '0:22'
       title: 'Хор вместо штаба'
-    - t: 50
-      mark: '0:50'
+    - t: 37
+      mark: '0:37'
       title: 'Блокноты из газетных полей'
-    - t: 75
-      mark: '1:15'
+    - t: 53
+      mark: '0:53'
       title: 'Одиннадцать против рейха'
-    - t: 100
-      mark: '1:40'
+    - t: 74
+      mark: '1:14'
       title: 'Весть из тюремного двора'
   transcript:
     - 'Седьмое февраля тысяча девятьсот сорок четвёртого года, Дрезден: начинается суд над поэтом Мусой Джалилем и десятью его товарищами. На обложке тетради смертник вывел по-немецки «Словарь» — и надзиратели не заглянули внутрь. Завещание в тетради: «Его присудят к смертной казни. Он умрёт. Но останется сто шестнадцать стихов».'

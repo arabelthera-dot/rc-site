@@ -22,7 +22,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import YAML from 'yaml';
 import { rolikIzReestra } from './karkas/ne-sdayutsya.mjs';
 import { chitat, zapisatVypusk } from './reestr-rolikov.mjs';
-import { failPublic } from '../src/lib/den-obshchee.mjs';
+import { failPublic, zaVremya } from '../src/lib/den-obshchee.mjs';
 import { proveritDen } from './ns-zamki.mjs';
 import { rolikEst, MANIFEST } from './hranilishche-rolikov.mjs';
 
@@ -67,8 +67,8 @@ const ffprobeSec = (f) => +(+execFileSync('ffprobe', ['-v', 'error', '-show_entr
 const obsozhka = (mp4, jpg) => execFileSync('ffmpeg', ['-v', 'error', '-y', '-ss', '1', '-i', mp4, '-frames:v', '1', '-q:v', '3', jpg]);
 
 const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.round(t % 60)).padStart(2, '0')}`;
-const dlit = (t) => { const m = Math.floor(Math.round(t) / 60), c = Math.round(t) % 60;
-  return [m ? `${m} ${m % 10 === 1 && m % 100 !== 11 ? 'минута' : [2, 3, 4].includes(m % 10) && ![12, 13, 14].includes(m % 100) ? 'минуты' : 'минут'}` : '', c ? sekund(c).replace(/секунду$/, 'секунда') : ''].filter(Boolean).join(' '); };
+// Подпись «Весь зал за …» — общая со страницей (Р830): винительный падеж, src/lib/den-obshchee.mjs zaVremya.
+const dlit = zaVremya;
 
 // Шаг 0: аудиогид из облака в public/ и карточку. Возвращает причину отказа или null.
 function gidIzOblaka(key, fail) {

@@ -95,12 +95,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 55 секунд
   klyuch: nesdayutsya/09feb-savicheva
   format: horizontal
   pole: nesdayutsya/09feb-savicheva:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 55 сек
   poster: /muzei/ne-sdayutsya/video/day-09feb-savicheva-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-09feb-savicheva.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -810,19 +810,19 @@ audioguide:
   lead: Послушайте историю дня — около двух минут.
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Девять страниц
-  - t: 25
-    mark: 0:25
+  - t: 14
+    mark: '0:14'
     title: Книжка с алфавитом
-  - t: 50
-    mark: 0:50
+  - t: 31
+    mark: '0:31'
     title: Мама
-  - t: 75
-    mark: '1:15'
+  - t: 49
+    mark: '0:49'
     title: Умерли не все
-  - t: 100
-    mark: '1:40'
+  - t: 66
+    mark: '1:06'
     title: Шкатулка
   transcript:
   - 'Девятое февраля. Ленинград, блокада. Одиннадцатилетняя Таня Савичева ведёт дневник. Девять страниц — ни одной жалобы; о себе одна строка: «Осталась одна Таня».'

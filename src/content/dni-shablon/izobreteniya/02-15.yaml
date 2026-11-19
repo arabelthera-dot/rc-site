@@ -793,7 +793,7 @@ proof:
   status: found
   claim_id: rc:izobreteniya:02-15-mertvaya-petlya:claim-1913
   ours:
-    kind: document
+    kind: документ
     title: Телеграмма Нестерову из Петербурга с поздравлением с «мёртвой петлёй», 28 августа 1913
     date: '1913-08-28'
     holder: Нижегородский государственный историко-архитектурный музей-заповедник
@@ -824,12 +824,12 @@ adres: den
 pokazan_sergeyu:
   data: '2026-11-14'
 video:
-  h2: История в ролике
+  h2: История в 44 секунды
   klyuch: izobreteniya/15feb-mertvaya-petlya
   format: horizontal
   pole: izobreteniya/15feb-mertvaya-petlya:horizontal.sec
   suffix: сек
-  badge: 45 сек
+  badge: 44 сек
   poster: video/day-15feb-mertvaya-petlya-poster.jpg
   mp4: video/day-15feb-mertvaya-petlya.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -839,13 +839,13 @@ audioguide:
   lead: Полторы минуты о том, как Нестеров замкнул в небе первую петлю.
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Расчёт на земле
-  - t: 30
-    mark: 0:30
+  - t: 12
+    mark: '0:12'
     title: Петля и арест
-  - t: 60
-    mark: '1:00'
+  - t: 24
+    mark: '0:24'
     title: Соперник признал
   transcript:
   - 'Петлю сначала «начертил» на земле: вписал круг между двумя вешками в 45 метрах. Указателя скорости не было: Нестеров ловил её щекой — с какой стороны ветер бьёт в лицо.'

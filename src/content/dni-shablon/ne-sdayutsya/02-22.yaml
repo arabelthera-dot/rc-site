@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 50 секунд
   klyuch: nesdayutsya/22feb-mat-mariya
   format: horizontal
   pole: nesdayutsya/22feb-mat-mariya:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 50 сек
   poster: /muzei/ne-sdayutsya/video/day-22feb-mat-mariya-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-22feb-mat-mariya.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -841,19 +841,19 @@ audioguide:
   lead: 'Голос ведёт от Анапы через приют на Лурмель и зимний велодром — к лагерю Равенсбрюк: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Анапа
-  - t: 22
-    mark: 0:22
+  - t: 13
+    mark: '0:13'
     title: Улица Лурмель
-  - t: 44
-    mark: 0:44
+  - t: 30
+    mark: '0:30'
     title: Велодром
-  - t: 66
-    mark: '1:06'
+  - t: 42
+    mark: '0:42'
     title: Арест
-  - t: 88
-    mark: '1:28'
+  - t: 59
+    mark: '0:59'
     title: Равенсбрюк
   transcript:
   - В 1918 году двадцатишестилетняя поэтесса Елизавета Кузьмина-Караваева стала первой женщиной — городским головой Анапы. Во время большевистского террора она многих горожан защитила от арестов и расстрелов.

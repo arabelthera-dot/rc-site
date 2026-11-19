@@ -770,7 +770,7 @@ proof:
   status: found
   claim_id: rc:izobreteniya:02-03-luna9:claim-1966
   ours:
-    kind: museum-object
+    kind: экспонат
     title: Модель автоматической лунной станции «Луна-9»
     date: 1960-е
     holder: Музей космонавтики (Москва)

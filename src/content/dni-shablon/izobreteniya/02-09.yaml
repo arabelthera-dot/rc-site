@@ -792,7 +792,7 @@ proof:
   status: found
   claim_id: rc:izobreteniya:02-09-chizhevskij:claim-1897
   ours:
-    kind: publication
+    kind: публикация
     title: А. Л. Чижевский, «Земное эхо солнечных бурь»
     date: '1976'
     holder: издательство «Мысль»

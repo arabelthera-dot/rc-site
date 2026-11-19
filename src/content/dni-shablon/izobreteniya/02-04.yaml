@@ -167,12 +167,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История в ролике
+  h2: История в 41 секунду
   klyuch: izobreteniya/04feb-znamya
   format: horizontal
   pole: izobreteniya/04feb-znamya:horizontal.sec
   suffix: сек
-  badge: 45 сек
+  badge: 41 сек
   poster: video/day-04feb-znamya-poster.jpg
   mp4: video/day-04feb-znamya.mp4
   note: Закадровый текст озвучен синтезом речи.

@@ -119,12 +119,12 @@ daynav:
   - id: calendar
     label: Календарь
 video:
-  h2: История в 47 секунд
+  h2: История в 46 секунд
   klyuch: nesdayutsya/08jan-kosmodemyanskaya
   format: horizontal
   pole: nesdayutsya/08jan-kosmodemyanskaya:horizontal.sec
   suffix: сек
-  badge: 47 сек
+  badge: 46 сек
   poster: /muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-08jan-kosmodemyanskaya.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -140,7 +140,7 @@ story:
 fakty:
   - id: fakty
     kicker: Десять фактов
-    h2: Зоя Космодемьянская — «Русские не сдаются» — Русская цивилизация
+    h2: Зоя Космодемьянская
     udary:
       - summary: "С ящика под виселицей Зоя крикнула немцам: «Всех не перевешаете, нас 170 миллионов»."
         det:

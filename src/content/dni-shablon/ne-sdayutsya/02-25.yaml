@@ -96,12 +96,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 52 секунды
   klyuch: nesdayutsya/25feb-solnechnikov
   format: horizontal
   pole: nesdayutsya/25feb-solnechnikov:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 52 сек
   poster: /muzei/ne-sdayutsya/video/day-25feb-solnechnikov-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-25feb-solnechnikov.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -822,19 +822,19 @@ audioguide:
   lead: 'Голос ведёт от первого спасённого через учебные стрельбы и четыре секунды — к слову родителей: пять остановок.'
   stops:
   - t: 0
-    mark: 0:00
+    mark: '0:00'
     title: Комбат Солнце
-  - t: 22
-    mark: 0:22
+  - t: 12
+    mark: '0:12'
     title: Первые гранаты
-  - t: 44
-    mark: 0:44
+  - t: 27
+    mark: '0:27'
     title: Четыре секунды
-  - t: 66
-    mark: '1:06'
+  - t: 40
+    mark: '0:40'
     title: Звезда
-  - t: 88
-    mark: '1:28'
+  - t: 54
+    mark: '0:54'
     title: Родители
   transcript:
   - Первую жизнь Сергей Солнечников спас в четырнадцать лет — вытащил тонущую шестилетнюю девочку из речной воронки. Через много лет он стал майором и командиром батальона связи под Белогорском.

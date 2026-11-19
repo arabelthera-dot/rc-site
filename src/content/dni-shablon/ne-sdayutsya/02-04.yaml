@@ -97,12 +97,12 @@ daynav:
 - id: calendar
   label: Календарь
 video:
-  h2: История за минуту
+  h2: История в 49 секунд
   klyuch: nesdayutsya/04feb-steregushchij
   format: horizontal
   pole: nesdayutsya/04feb-steregushchij:horizontal.sec
   suffix: сек
-  badge: 1 мин
+  badge: 49 сек
   poster: /muzei/ne-sdayutsya/video/day-04feb-steregushchij-poster.jpg
   mp4: /muzei/ne-sdayutsya/video/day-04feb-steregushchij.mp4
   note: Закадровый текст озвучен синтезом речи.
@@ -751,17 +751,17 @@ audioguide:
     - t: 0
       mark: '0:00'
       title: '64 орудия против четырёх'
-    - t: 25
-      mark: '0:25'
+    - t: 17
+      mark: '0:17'
       title: 'Тридцать снарядов в «Акебоно»'
-    - t: 50
-      mark: '0:50'
+    - t: 34
+      mark: '0:34'
       title: 'Секретные книги на дно'
-    - t: 75
-      mark: '1:15'
+    - t: 52
+      mark: '0:52'
       title: 'Макаров на «Новике»'
-    - t: 100
-      mark: '1:40'
+    - t: 64
+      mark: '1:04'
       title: 'Буксир и письмо министра'
   transcript:
     - 'Тысяча девятьсот четвёртый год, Жёлтое море у Порт-Артура. Шестьдесят четыре японских орудия против четырёх — «Стерегущий» стрелял, пока не замолчала последняя пушка. Смертельно раненный командир, лейтенант Александр Сергеев, приказал драться до конца — и сдачи не было.'
