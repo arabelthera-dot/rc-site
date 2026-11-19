@@ -42,10 +42,12 @@ const HTML = /<\/?[a-z][^>]*>|\*\*|&[a-z]+;/i;
 const SUSHCHNOSTI = { nbsp: ' ', lt: '<', gt: '>', laquo: '«', raquo: '»', mdash: '—', ndash: '–', quot: '"', hellip: '…', amp: '&' };
 const raskryt = (t) => t.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&([a-z]+);/gi, (m, n) => SUSHCHNOSTI[n.toLowerCase()] ?? m);
 const adres = (u) => u.replace(/^https?:\/\//, '').replace(/\/$/, '');
+// «сайт/путь/…» — адрес, сокращённый для глаз: в текст идёт полный адрес.
+const sokrashchen = (x, h) => { const t = raskryt(x.trim()); return /…$/.test(t) && adres(raskryt(h)).startsWith(adres(t.slice(0, -1))); };
 const SSYLKA = /<a\b[^>]*?href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;
 const snyat = (t) => raskryt(t
   .replace(/<br\s*\/?>|<\/p>/gi, ' ')
-  .replace(SSYLKA, (_, h, x) => (adres(x.trim()) === adres(h) ? h : x))
+  .replace(SSYLKA, (_, h, x) => (adres(x.trim()) === adres(h) || sokrashchen(x, h) ? h : x))
   .replace(/<\/?[a-z][^>]*>/gi, '').replace(/\*\*/g, ''))
   .replace(/\s{2,}/g, ' ').replace(/\s+([.,;:])/g, '$1').trim();
 const BUKVA = /[A-Za-zА-Яа-яЁё0-9]/;
@@ -113,7 +115,9 @@ for (const [u] of udary) {
   if (url) istSsylki.push([url, (u.stranica != null ? snyat(String(u.stranica)) : null) ?? snyat(u.src ?? '').replace(/^Источник:\s*/, '').split(' — ')[0]]);
 }
 const istochniki = [], idPoUrl = new Map();
-for (const [url, nazvanie] of istSsylki) {
+// Адрес с &amp; (сущность из html января) — в istochniki раскрытым, иначе пункт 40 (izob 01-11, cmvvs.ru).
+for (const [syroj, nazvanie] of istSsylki) {
+  const url = raskryt(syroj);
   if (idPoUrl.has(url) || !host(url)) continue;
   const osnova = host(url).replace(/\.(ru|su|com|org|net|рф)$/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   let id = osnova, n = 2;
@@ -124,7 +128,7 @@ for (const [url, nazvanie] of istSsylki) {
 if (!d.istochniki) vVerh('istochniki', istochniki);
 udary.forEach(([u, put], i) => {
   const uzel = doc.getIn(put, true);
-  const url = u.href ?? [...idPoUrl.keys()].find((x) => (u.src ?? '').includes(x));
+  const url = u.href ? raskryt(u.href) : [...idPoUrl.keys()].find((x) => raskryt(u.src ?? '').includes(x));
   if (u.id === undefined) dobavit(uzel, 'id', `f${String(i + 1).padStart(2, '0')}`);
   if (u.sravnenie === undefined) dobavit(uzel, 'sravnenie', NET);
   if (u.dlya_voprosa === undefined) dobavit(uzel, 'dlya_voprosa', false);
