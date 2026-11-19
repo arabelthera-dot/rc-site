@@ -366,6 +366,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: dubinin-plakat
+  vid: predmet
+  kicker: Вещь под лупой
+  h2: Пионер-герой
+  lead: 'Этот плакат выпустили в 1979 году в серии «Пионеры-герои». Приближайте: штрихи карандаша, красный галстук, подпись художника и имя внизу — «Володя Дубинин».'
 audioguide:
   audioSrc: audio-guide-dubinin-ru.mp3
   durationLabel: 1 минута 22 секунды
