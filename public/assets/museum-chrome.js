@@ -57,57 +57,57 @@
      у #secnav и у аудиогида. */
   + 'html,body{overflow-x:clip}'
   + '.backbtn{position:static;margin:12px 0 0 12px;display:inline-flex;align-items:center;gap:7px;'
-  + 'background:rgba(11,13,17,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);'
-  + 'border:1px solid var(--gold,#c8a24a);color:var(--gold,#c8a24a);border-radius:22px;padding:9px 15px;'
-  + 'font-family:Georgia,serif;font-size:13.5px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.5);transition:background .2s}'
-  + '.backbtn:hover{background:rgba(200,162,74,.18)}'
-  + '.backbtn .ar{font-size:16px;line-height:1}'
-  + '@media (max-width:520px){.backbtn{font-size:12.5px;padding:8px 13px}}'
+  + 'background:var(--cvet-0b0d11-a86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);'
+  + 'border:1px solid var(--gold,#c8a24a);color:var(--gold,#c8a24a);border-radius:var(--skruglenie-22px);padding:9px 15px;'
+  + 'font-family:var(--shrift-georgia-serif);font-size:var(--razmer-13-5px);text-decoration:none;box-shadow:0 4px 16px var(--cvet-000000-a50);transition:background .2s}'
+  + '.backbtn:hover{background:var(--cvet-c8a24a-a18)}'
+  + '.backbtn .ar{font-size:var(--razmer-16px);line-height:1}'
+  + '@media (max-width:520px){.backbtn{font-size:var(--razmer-12-5px);padding:8px 13px}}'
   + '.sharerow{text-align:center;padding:10px 16px 0}'
-  + '.sharebtn{background:rgba(18,21,28,.9);border:1px solid var(--line,rgba(255,255,255,.14));'
-  + 'color:var(--gold,#c8a24a);border-radius:22px;padding:8px 18px;font-family:inherit;font-size:13.5px;cursor:pointer}'
+  + '.sharebtn{background:var(--cvet-12151c-a90);border:1px solid var(--line,rgba(255,255,255,.14));'
+  + 'color:var(--gold,#c8a24a);border-radius:var(--skruglenie-22px);padding:8px 18px;font-family:inherit;font-size:var(--razmer-13-5px);cursor:pointer}'
   + '.sharebtn span{margin-right:7px}'
-  + '.sharehint{font-size:12.5px;opacity:.85;margin-left:10px;display:none}'
-  + '#secnav{position:sticky;top:0;z-index:55;background:rgba(11,13,17,.94);'
+  + '.sharehint{font-size:var(--razmer-12-5px);opacity:.85;margin-left:10px;display:none}'
+  + '#secnav{position:sticky;top:0;z-index:55;background:var(--cvet-0b0d11-a94);'
   + '-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);border-bottom:1px solid var(--line,rgba(255,255,255,.14))}'
   + '#secnav .row{display:flex;gap:6px;overflow-x:auto;padding:9px 12px;scrollbar-width:none;-ms-overflow-style:none}'
   + '#secnav .row::-webkit-scrollbar{display:none}'
-  + '#secnav a{flex:none;font-size:12.5px;padding:6px 12px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:16px;'
+  + '#secnav a{flex:none;font-size:var(--razmer-12-5px);padding:6px 12px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:var(--skruglenie-16px);'
   + 'color:var(--txt,#e8e6e1);opacity:.7;text-decoration:none;white-space:nowrap;transition:opacity .2s,border-color .2s,background .2s}'
   + '#secnav a:hover{opacity:1;border-color:var(--gold,#c8a24a)}'
-  + '#secnav a.on{opacity:1;color:var(--gold,#c8a24a);border-color:var(--gold,#c8a24a);background:rgba(200,162,74,.13)}'
-  + '#secnav a.home{color:var(--gold,#c8a24a);opacity:.85;border-color:rgba(200,162,74,.45)}'
-  + '#secnav .prog{height:2px;width:0;background:var(--gold,#c8a24a);box-shadow:0 0 8px rgba(200,162,74,.6)}'
+  + '#secnav a.on{opacity:1;color:var(--gold,#c8a24a);border-color:var(--gold,#c8a24a);background:var(--cvet-c8a24a-a13)}'
+  + '#secnav a.home{color:var(--gold,#c8a24a);opacity:.85;border-color:var(--cvet-c8a24a-a45)}'
+  + '#secnav .prog{height:2px;width:0;background:var(--gold,#c8a24a);box-shadow:0 0 8px var(--cvet-c8a24a-a60)}'
   + 'section[id]{scroll-margin-top:56px}'
-  + '@media (max-width:520px){#secnav a{font-size:12px;padding:5px 10px}#secnav .row{padding:8px 10px}}'
+  + '@media (max-width:520px){#secnav a{font-size:var(--razmer-12px);padding:5px 10px}#secnav .row{padding:8px 10px}}'
   + '#secnav.sv .row{box-sizing:border-box;flex-wrap:wrap;overflow:hidden;max-height:var(--sv-h,44px);padding-right:84px}#secnav.sv:not(.open) .row{row-gap:24px}#secnav.sv.open .row{max-height:none}'
-  + '#secnav .vse{position:absolute;top:0;right:0;height:var(--sv-h,44px);padding:0 12px 0 14px;border:0;border-left:1px solid var(--line,rgba(255,255,255,.14));background:rgba(11,13,17,.98);color:var(--gold,#c8a24a);font:600 12.5px/1 Inter,system-ui,sans-serif;cursor:pointer}'
+  + '#secnav .vse{position:absolute;top:0;right:0;height:var(--sv-h,44px);padding:0 12px 0 14px;border:0;border-left:1px solid var(--line,rgba(255,255,255,.14));background:var(--cvet-0b0d11-a98);color:var(--gold,#c8a24a);font:600 var(--razmer-12-5px)/1 var(--shrift-inter-system-ui-sans-serif);cursor:pointer}'
   /* стрелки «пред/след» */
   + '.mcnav{position:fixed;top:50%;transform:translateY(-50%);z-index:54;display:flex;align-items:center;gap:8px;'
-  + 'max-width:min(38vw,300px);background:rgba(11,13,17,.9);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);'
+  + 'max-width:min(38vw,300px);background:var(--cvet-0b0d11-a90);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);'
   + 'border:1px solid var(--line,rgba(255,255,255,.14));color:var(--txt,#e8e6e1);text-decoration:none;'
-  + 'font-family:inherit;font-size:12.5px;line-height:1.3;padding:10px 13px;opacity:0;pointer-events:none;transition:opacity .3s,border-color .2s}'
+  + 'font-family:inherit;font-size:var(--razmer-12-5px);line-height:1.3;padding:10px 13px;opacity:0;pointer-events:none;transition:opacity .3s,border-color .2s}'
   + '.mcnav.show{opacity:.92;pointer-events:auto}'
   + '.mcnav:hover{opacity:1;border-color:var(--gold,#c8a24a)}'
-  + '.mcnav .ar{color:var(--gold,#c8a24a);font-size:19px;line-height:1;flex:none}'
+  + '.mcnav .ar{color:var(--gold,#c8a24a);font-size:var(--razmer-19px);line-height:1;flex:none}'
   /* Название соседней страницы раскрывается ТОЛЬКО когда поля шире самой подписи:
      контент музеев ≤ 840 px, подпись ≤ 300 px → 840 + 2×320 ≈ 1480 px.
      Уже — компактная стрелка 44 px, иначе она садится на заголовки секций (аудит 05.08). */
   + '.mcnav .tx{display:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'
   + '@media (min-width:1480px){.mcnav .tx{display:block}}'
   + '.mcnav{min-width:44px;min-height:44px;justify-content:center;padding:12px 11px}'
-  + '.mcnav.prev{left:0;border-left:none;border-radius:0 22px 22px 0}'
-  + '.mcnav.next{right:0;border-right:none;border-radius:22px 0 0 22px;text-align:right}'
+  + '.mcnav.prev{left:0;border-left:none;border-radius:var(--skruglenie-0-22px-22px-0)}'
+  + '.mcnav.next{right:0;border-right:none;border-radius:var(--skruglenie-22px-0-0-22px);text-align:right}'
   /* До 1024 px свободных полей нет вовсе — стрелки уходят в нижние углы.
      Правая поднята над сердечком поддержки (#heart: bottom 82 px, высота 46 px). */
   + '@media (max-width:1023px){.mcnav{padding:12px 10px}'
   + '.mcnav.prev{bottom:74px;top:auto;transform:none}.mcnav.next{bottom:136px;top:auto;transform:none}}'
   /* строка «Случайное · Все · В город-музей» */
   + '.wayrow{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:18px auto 4px;padding:0 14px}'
-  + '.wayrow a{font-size:13px;padding:9px 16px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:20px;'
+  + '.wayrow a{font-size:var(--razmer-13px);padding:9px 16px;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:var(--skruglenie-20px);'
   + 'color:var(--txt,#e8e6e1);opacity:.82;text-decoration:none;transition:opacity .2s,border-color .2s,background .2s}'
-  + '.wayrow a:hover{opacity:1;border-color:var(--gold,#c8a24a);background:rgba(200,162,74,.1)}'
-  + '.wayrow a.dice{color:var(--gold,#c8a24a);border-color:rgba(200,162,74,.45);opacity:1}'
+  + '.wayrow a:hover{opacity:1;border-color:var(--gold,#c8a24a);background:var(--cvet-c8a24a-a10)}'
+  + '.wayrow a.dice{color:var(--gold,#c8a24a);border-color:var(--cvet-c8a24a-a45);opacity:1}'
   + '@media (prefers-reduced-motion:reduce){.mcnav,#secnav a,.wayrow a{transition:none}}'
   /* ── обложка обязана уместиться в первый экран ВМЕСТЕ с заголовком (04.08, разбор Шухова) ──
      Было: шапка 200/265 px + сцена 48vh → h1 начинался на 880 px, на мобиле первый экран =
@@ -127,7 +127,7 @@
      Слоган стоял руками только у эталона Шухова, у остальных 15 страниц января его не было
      (аудит 08.09.2026). Повторяющийся блок отдан движку, а не размножен копией по файлам
      (договор о приёмке, п. 10). Кегль и прозрачность — как в эталоне. */
-  + 'header.top .b2,header.site .b2{display:block;text-align:center;font-size:11px;opacity:.62;'
+  + 'header.top .b2,header.site .b2{display:block;text-align:center;font-size:var(--razmer-11px);opacity:.62;'
   + 'line-height:1.45;max-width:760px;margin-left:auto;margin-right:auto;padding:2px 16px 7px;'
   + 'overflow:hidden;max-height:64px;transition:max-height .25s,opacity .2s,padding .25s}'
   /* липкая шапка со слоганом занимала на мобиле 122 px вместо 64 и висела над всей страницей:
@@ -137,9 +137,9 @@
   + '@media (prefers-reduced-motion:reduce){header.top .b2,header.site .b2{transition:none}}'
   /* на мобиле до заголовка стояли: подзаголовок музея (2 строки), этикетка сцены крупным
      кеглем и щедрый отступ обложки — вместе больше половины экрана */
-  + '@media (max-width:600px){header.top .b2,header.site .b2{display:block!important;font-size:11.5px;line-height:1.4;max-width:94%}'
+  + '@media (max-width:600px){header.top .b2,header.site .b2{display:block!important;font-size:var(--razmer-11-5px);line-height:1.4;max-width:94%}'
   + '.scene-caption{padding:10px 0 12px!important}'
-  + '.scene-caption .scene-cap{font-size:12.5px;line-height:1.45}'
+  + '.scene-caption .scene-cap{font-size:var(--razmer-12-5px);line-height:1.45}'
   /* подсказка про интерактив стояла последней и уезжала под этикетку на 780 px —
      ставим её первой строкой сразу под сценой (разбор Шухова, 04.08) */
   + '.scene-caption .scene-hint{order:-1;width:100%;margin-bottom:6px;padding:5px 10px!important}'
@@ -151,8 +151,8 @@
      шапка со слоганом 118 · крошки 28 · строка «поделиться» 42 · этикетка 140 ·
      подводка до h1 99 · h1 55 · хук 119 · кнопки 104 */
   + 'header.top{padding-top:30px!important}'
-  + 'header.top .b2,header.site .b2{font-size:11px;line-height:1.35;padding-bottom:5px}'
-  + '.crumbs{font-size:11px!important;line-height:1.3;padding:2px 10px 4px!important}'
+  + 'header.top .b2,header.site .b2{font-size:var(--razmer-11px);line-height:1.35;padding-bottom:5px}'
+  + '.crumbs{font-size:var(--razmer-11px)!important;line-height:1.3;padding:2px 10px 4px!important}'
   /* крошки «Русская цивилизация › Что изобрели русские первыми в мире › 1 января» вставали
      в ТРИ строки и съедали 82 px первого экрана (замер cabletv 08.09.2026). Одна строка
      с горизонтальной прокруткой — тот же приём, что у .daynav; навигация не теряется. */
@@ -169,16 +169,16 @@
      содержимым, тач-цель 44 px сохраняется. */
   + 'header.top .wrap,header.site .wrap{height:auto!important;min-height:44px}'
   + 'header.top .logo svg,header.site .logo svg{width:26px!important;height:26px!important}'
-  + 'header.top .logo .lt,header.site .logo .lt{font-size:12.5px;line-height:1.25}'
+  + 'header.top .logo .lt,header.site .logo .lt{font-size:var(--razmer-12-5px);line-height:1.25}'
   /* строка .museum в подводке — третий повтор названия музея (оно уже в шапке и в крошках)
      и её нет среди пяти элементов подводки (museum-core, 6-бис п.5). На телефоне убираем. */
   + '.hero-lead .museum,.hero-text .museum{display:none!important}'
   + '.hero-lead .date-chip,.hero-text .date-chip{margin-bottom:8px!important}'
   /* строка «поделиться» стояла между крошками и обложкой и съедала 42 px первого экрана */
   + '.sharerow{padding:2px 0!important}'
-  + '.sharerow .sharebtn{padding:5px 11px!important;font-size:11.5px!important}'
+  + '.sharerow .sharebtn{padding:5px 11px!important;font-size:var(--razmer-11-5px)!important}'
   + '.scene-caption{padding:4px 0 6px!important}'
-  + '.scene-caption .scene-cap{font-size:12px;line-height:1.4}'
+  + '.scene-caption .scene-cap{font-size:var(--razmer-12px);line-height:1.4}'
   /* добор последних 14 px у cabletv (замер 08.09.2026): подсказка, отступ подводки и низ
      заголовка. Высота кнопок не трогается — 44 px это тач-цель, а не украшение. */
   + '.scene-caption .scene-hint{margin-bottom:2px!important}'
@@ -188,16 +188,16 @@
   + '.hero-scene,.hero-visual,.hero .bg,.hero.mc-cover{min-height:0!important}'
   /* заголовок обложки: на cabletv кегль оставался 34 px и h1 занимал 106 px в две строки.
      Обложечные заголовки других раскладок (.bp-over, .bp-title) не трогаются. */
-  + '.hero-lead h1,header.hero-lead h1{font-size:25px!important;line-height:1.1;margin-bottom:6px!important}'
-  + '.hero-lead .hook{font-size:14.5px;line-height:1.45;margin:8px 0 12px!important}'
+  + '.hero-lead h1,header.hero-lead h1{font-size:var(--razmer-25px)!important;line-height:1.1;margin-bottom:6px!important}'
+  + '.hero-lead .hook{font-size:var(--razmer-14-5px);line-height:1.45;margin:8px 0 12px!important}'
   /* кнопки: две по 46 px в столбик + зазор 12 = 104 px; при трёх кнопках было 169 */
   + '.hero-btns{gap:8px!important}'
-  + '.hero-btns>a,.hero-btns>button{padding:11px 15px!important;font-size:13.5px!important}}'
+  + '.hero-btns>a,.hero-btns>button{padding:11px 15px!important;font-size:var(--razmer-13-5px)!important}}'
   /* запасная форма для блока, который движок строит сам (раздел 0-тер): у страницы свои .btn
      почти всегда есть, но голая кнопка без формы — тоже брак. :where даёт нулевую
      специфичность, поэтому любое правило страницы перебивает эти значения молча. */
   + ':where(.hero-btns){display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}'
-  + ':where(.hero-btns .btn){cursor:pointer;font:inherit;font-size:15px;border-radius:12px;'
+  + ':where(.hero-btns .btn){cursor:pointer;font:inherit;font-size:var(--razmer-15px);border-radius:var(--skruglenie-12px);'
   + 'padding:13px 24px;border:1px solid currentColor;background:transparent;color:inherit}';
 
   var st = doc.createElement('style'); st.textContent = css; doc.head.appendChild(st);
