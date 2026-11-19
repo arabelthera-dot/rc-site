@@ -115,6 +115,8 @@ jobs:
       # MEDIA_KARTINKI попадает в сборку, только если закачка удалась: тогда scripts/media-base.mjs ставит img/srcset
       # прямых ссылок на хранилище. Не удалась — предупреждение, картинки берутся из dist, как раньше.
       # Откат — опустошить vars.MEDIA_KARTINKI.
+      # Картинки шаблона (dist/_k/) рождаются только в сборке — их докладывает scripts/kartinki-k-v-hranilishche.sh
+      # в build-cmd ниже (Р825 задача G); ключ хранилища поэтому есть и в env шага сборки.
       - name: картинки в хранилище
         if: vars.MEDIA_KARTINKI != ''
         env:
@@ -146,10 +148,15 @@ jobs:
       - uses: withastro/action@15aa0a5a1e067940253e3b259413ab2ae882a740 # v5
         env:
           MEDIA_BASE: ${{ vars.MEDIA_BASE }}
+          MEDIA_KLYUCH: ${{ vars.MEDIA_KARTINKI != '' && secrets.MEDIA_SSH_KEY || '' }}
+          IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+          MOST: ${{ vars.RU_MOST }}
+          MOST2: ${{ vars.RU_MOST2 }}
         with:
           cache: false
           build-cmd: >-
             npm run build &&
+            bash scripts/kartinki-k-v-hranilishche.sh &&
             node scripts/ramka-zerkala.mjs --proba &&
             node tests/csp-strogiy.mjs &&
             node scripts/ramka-zerkala.mjs dist &&
