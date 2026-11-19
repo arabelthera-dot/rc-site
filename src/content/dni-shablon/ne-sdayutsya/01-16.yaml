@@ -445,6 +445,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: karbyshev-chernilnica
+  vid: predmet
+  kicker: Предмет под лупой
+  h2: Чернильница генерала Карбышева
+  lead: 'Стеклянная чернильница генерала — военного инженера, профессора и доктора военных наук. Приближайте: на горлышке и гранях остались следы чернил.'
 audioguide:
   audioSrc: audio-guide-karbyshev-ru.mp3
   durationLabel: 1 минута 27 секунд
