@@ -1,32 +1,32 @@
 {
-  "title": "История в 48 секунд",
+  "title": "История в 49 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk.mp4",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk.mp4",
-    "v": 4,
+    "v": 5,
     "w": 1920,
     "h": 1080,
-    "sec": 47.7,
-    "mb": 15.2
+    "sec": 48.8,
+    "mb": 15.3
   },
   "vertical": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16.mp4",
-    "v": 4,
+    "v": 5,
     "w": 1080,
     "h": 1920,
-    "sec": 47.7,
-    "mb": 14.6
+    "sec": 48.8,
+    "mb": 14.8
   },
   "poster": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "nesdayutsya/04jan-kozelsk/day-04jan-kozelsk-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-04jan-kozelsk-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }
