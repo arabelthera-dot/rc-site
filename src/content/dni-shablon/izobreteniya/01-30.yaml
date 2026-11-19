@@ -731,7 +731,7 @@ return:
   a: 20 из 20 — ни одной осечки.
   src: сайт «Российская авиация», «Парашют Котельникова»
 audioguide:
-  audioSrc: /muzei/izobreteniya/audio-guide-kotelnikov-ru.mp3
+  audioSrc: audio-guide-kotelnikov-ru.mp3
   durationLabel: 2 минуты 59 секунд
   lead: "Голос ведёт по залу парашюта: от двадцати раскрытий из двадцати и куклы под потолком министра до ленточки на удачу. Шесть остановок."
   stops:
