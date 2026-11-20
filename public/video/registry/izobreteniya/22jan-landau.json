@@ -1,32 +1,32 @@
 {
-  "title": "История в 45 секунд",
+  "title": "История в 43 секунды",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau.mp4",
     "local": "muzei/izobreteniya/video/day-22jan-landau.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 44.5,
-    "mb": 9.2
+    "sec": 43,
+    "mb": 12
   },
   "vertical": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16.mp4",
     "local": "muzei/izobreteniya/video/day-22jan-landau-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 44.5,
-    "mb": 9
+    "sec": 43,
+    "mb": 11.1
   },
   "poster": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau-poster.jpg",
     "local": "muzei/izobreteniya/video/day-22jan-landau-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "izobreteniya/22jan-landau/day-22jan-landau-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-22jan-landau-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }

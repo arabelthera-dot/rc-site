@@ -419,6 +419,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: likvidator-kepi
+  vid: predmet
+  kicker: Вещь под лупой
+  h2: Кепи ликвидатора
+  lead: 'Через Чернобыль прошли больше 600 тысяч ликвидаторов, из них 340 тысяч военных. Такое хлопковое кепи носил один из них. Приближайте: шторки закрывали шею и уши, застёгивались на пуговицы.'
 audioguide:
   audioSrc: audio-guide-chernobyl-ru.mp3
   durationLabel: 1 минута 50 секунд
