@@ -1,32 +1,32 @@
 {
-  "title": "История в 44 секунды",
+  "title": "История в 45 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk.mp4",
-    "v": 5,
+    "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-v6.mp4",
+    "v": 6,
     "w": 1920,
     "h": 1080,
-    "sec": 44.2,
-    "mb": 12
+    "sec": 45.4,
+    "mb": 12.2
   },
   "vertical": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-9x16.mp4",
-    "v": 5,
+    "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-9x16-v6.mp4",
+    "v": 6,
     "w": 1080,
     "h": 1920,
-    "sec": 44.2,
-    "mb": 11.5
+    "sec": 45.4,
+    "mb": 11.7
   },
   "poster": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-poster.jpg",
-    "v": 5
+    "v": 6
   },
   "poster_vertical": {
     "file": "nesdayutsya/20feb-petropavlovsk/day-20feb-petropavlovsk-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-20feb-petropavlovsk-9x16-poster.jpg",
-    "v": 5
+    "v": 6
   }
 }
