@@ -86,13 +86,12 @@ jobs:
             [ -n "$MEDIA_KLYUCH" ] || { echo "::error::нет секрета MEDIA_SSH_KEY — ролик не в хранилище, заявки нет"; return 1; }
             bolshie=$(find "$MEDIA_VYHOD" -type f -name '*.mp4' -size +"${RU_ROLIK_MAX_MB:-50}"M -printf '%s\t%P\n')
             [ -z "$bolshie" ] || { echo "::error::ролики больше ${RU_ROLIK_MAX_MB:-50} МБ — заявки нет:"; echo "$bolshie"; return 1; }
-            most=$(scripts/prohod-v-rossiyu.sh) || return 1
-            S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
-            # без --delete — только докладываем; --checksum — как в deploy.yml (r790)
-            rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' --include='*.mp4' --exclude='*' \
-              -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $most" \
-              "$MEDIA_VYHOD/" rcmedia@185.149.145.227: | tail -n 4
-            kod=${PIPESTATUS[0]}; rm -rf "$S"; [ "$kod" = 0 ] || { echo "::error::ролики не доложены в хранилище (rsync $kod) — заявки нет"; return 1; }
+            export S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
+            # без --delete — только докладываем; --checksum — как в deploy.yml (r790); путь упал — следующий (r833)
+            kod=0; scripts/prohod-v-rossiyu.sh -- bash -c 'rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include="*/" --include="*.mp4" --exclude="*" \
+              -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $SSH_MOST" \
+              "$MEDIA_VYHOD/" rcmedia@185.149.145.227: | tail -n 4; exit "${PIPESTATUS[0]}"' || kod=$?
+            rm -rf "$S"; [ "$kod" = 0 ] || { echo "::error::ролики не доложены в хранилище (rsync $kod) — заявки нет"; return 1; }
             rm -rf "$MEDIA_VYHOD"
           }
           # брак выпуска (нет файла, не mp4, чужой музей) — прогон красный в конце, не молча (r544)

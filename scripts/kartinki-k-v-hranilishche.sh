@@ -11,11 +11,11 @@ echo "картинки /_k/: $(du -sm dist/_k 2>/dev/null | cut -f1) МБ, $(fin
 [ -n "${MEDIA_KARTINKI:-}" ] || { echo "картинки /_k/: выключены (MEDIA_KARTINKI пуст) — из dist"; exit 0; }
 [ -d dist/_k ] || { echo "::warning::нет dist/_k — нечего докладывать"; exit 0; }
 [ -n "${MEDIA_KLYUCH:-}" ] || { echo "::warning::нет секрета MEDIA_SSH_KEY — картинки /_k/ из dist"; exit 0; }
-most=$(scripts/prohod-v-rossiyu.sh) || { echo "::warning::нет прохода в Россию — картинки /_k/ из dist"; exit 0; }
-S="${RUNNER_TEMP:-/tmp}/ssh-media-k"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
-rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='/_k/***' --exclude='*' \
-  -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $most" \
-  dist/ rcmedia@185.149.145.227: | tail -n 4
-kod=${PIPESTATUS[0]}; rm -rf "$S"
+export S="${RUNNER_TEMP:-/tmp}/ssh-media-k"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
+# путь упал — следующий (r833, scripts/prohod-v-rossiyu.sh --)
+kod=0; scripts/prohod-v-rossiyu.sh -- bash -c 'rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include="/_k/***" --exclude="*" \
+  -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $SSH_MOST" \
+  dist/ rcmedia@185.149.145.227: | tail -n 4; exit "${PIPESTATUS[0]}"' || kod=$?
+rm -rf "$S"
 [ "$kod" = 0 ] || { echo "::warning::картинки /_k/ не доложены в хранилище (rsync $kod) — из dist"; exit 0; }
 MEDIA_K_DOLOZHENY=1 node scripts/media-base.mjs --dist dist
