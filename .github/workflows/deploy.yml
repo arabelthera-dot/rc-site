@@ -127,15 +127,14 @@ jobs:
           KARTINKI: ${{ vars.MEDIA_KARTINKI }}
         run: |
           [ -n "$MEDIA_KLYUCH" ] || { echo "::warning::нет секрета MEDIA_SSH_KEY — картинки из dist"; exit 0; }
-          most=$(scripts/prohod-v-rossiyu.sh) || { echo "::warning::нет прохода в Россию — картинки из dist"; exit 0; }
-          S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
-          # без --delete — только докладываем; --checksum — как у роликов (r790)
-          rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include='*/' \
-            --include='*.jpg' --include='*.jpeg' --include='*.png' --include='*.webp' --include='*.avif' --include='*.gif' --include='*.svg' \
-            --exclude='*' --prune-empty-dirs \
-            -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $most" \
-            public/ rcmedia@185.149.145.227: | tail -n 4
-          kod=${PIPESTATUS[0]}; rm -rf "$S"
+          export S="$RUNNER_TEMP/ssh-media"; (umask 077; mkdir -p "$S"; printf '%s\n' "$MEDIA_KLYUCH" > "$S/media"; printf '%s\n' "$IZVESTNYE" > "$S/known_hosts")
+          # без --delete — только докладываем; --checksum — как у роликов (r790); путь упал — следующий (r833)
+          kod=0; scripts/prohod-v-rossiyu.sh -- bash -c 'rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include="*/" \
+            --include="*.jpg" --include="*.jpeg" --include="*.png" --include="*.webp" --include="*.avif" --include="*.gif" --include="*.svg" \
+            --exclude="*" --prune-empty-dirs \
+            -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $SSH_MOST" \
+            public/ rcmedia@185.149.145.227: | tail -n 4; exit "${PIPESTATUS[0]}"' || kod=$?
+          rm -rf "$S"
           [ "$kod" = 0 ] || { echo "::warning::картинки не доложены в хранилище (rsync $kod) — картинки из dist"; exit 0; }
           echo "MEDIA_KARTINKI=$KARTINKI" >> "$GITHUB_ENV"
       # Ролики — только в хранилище media.russian-civilization.ru (Р825 задача A, 18.11.2026): mp4 в public/ нет, их
@@ -262,34 +261,14 @@ jobs:
           else
             echo "est=true" >> "$GITHUB_OUTPUT"
           fi
-      - name: проход в Россию
-        if: steps.est.outputs.est == 'true' && (env.MOST != '' || env.MOST2 != '')
-        run: |
-          set -euo pipefail
-          otvet() { timeout 25 bash -c "exec 3<>/dev/tcp/$1/$2 && head -c 7 <&3" 2>/dev/null | grep -q '^SSH-2.0'; }
-          if otvet 185.149.145.227 22; then echo "msk-new: прямой путь открыт — без прохода"; exit 0; fi
-          # Версия и контрольная сумма закреплены: чужой файл не запустится.
-          # Не скачался cloudflared — не беда, дальше запасной bore (ему в облаке ставить нечего: nc есть в образе).
-          if [ -n "$MOST" ] && curl -fsSL -o "$RUNNER_TEMP/cloudflared" https://github.com/cloudflare/cloudflared/releases/download/2026.11.1/cloudflared-linux-amd64 \
-             && echo "97bb3b02d23a5980fc9c15a1a270e692da1923f103f920d5b16d4931d5ab55e7  $RUNNER_TEMP/cloudflared" | sha256sum -c -; then
-            chmod +x "$RUNNER_TEMP/cloudflared"
-            printf '#!/bin/sh\nexec "%s" access tcp --hostname "%s"\n' "$RUNNER_TEMP/cloudflared" "$MOST" > "$RUNNER_TEMP/most.sh"
-            chmod +x "$RUNNER_TEMP/most.sh"
-            "$RUNNER_TEMP/cloudflared" access tcp --hostname "$MOST" --url 127.0.0.1:2222 >/dev/null 2>&1 &
-            cf=$!
-            est=0; for i in $(seq 1 15); do sleep 2; if otvet 127.0.0.1 2222; then est=1; break; fi; done
-            kill "$cf" || true
-            if [ "$est" = 1 ]; then
-              echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most.sh" >> "$GITHUB_ENV"; echo "msk-new: выкладка через проход $MOST"; exit 0
-            fi
-            echo "::warning::msk-new: проход Cloudflare $MOST не ответил — пробую запасной"
-          fi
-          if [ -n "$MOST2" ] && otvet "${MOST2%:*}" "${MOST2##*:}"; then
-            printf '#!/bin/sh\nexec nc %s %s\n' "${MOST2%:*}" "${MOST2##*:}" > "$RUNNER_TEMP/most2.sh"; chmod +x "$RUNNER_TEMP/most2.sh"
-            echo "SSH_MOST=-o ProxyCommand=$RUNNER_TEMP/most2.sh" >> "$GITHUB_ENV"
-            echo "msk-new: выкладка через запасной проход $MOST2"; exit 0
-          fi
-          echo "::error::msk-new: ни прямой путь, ни проходы ($MOST, $MOST2) не отвечают — смотритель ~/tools/rf-most"; exit 1
+      # Выбор пути и повтор другим путём — scripts/prohod-v-rossiyu.sh (r833): прямой, Cloudflare, bore.pub по порядку;
+      # rsync упал на ответившем пути — идёт следующим. Прежде путь выбирался здесь один раз по баннеру SSH, и ложный
+      # «прямой путь открыт» ронял выкладку при живом проходе (#2432–#2434).
+      - if: steps.est.outputs.est == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          sparse-checkout: scripts/prohod-v-rossiyu.sh
+          sparse-checkout-cone-mode: false
       - if: steps.est.outputs.est == 'true'
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
@@ -320,12 +299,13 @@ jobs:
           umask 077; S="$RUNNER_TEMP/ssh-sayt"; mkdir -p "$S"
           printf '%s\n' "$KLYUCH" > "$S/klyuch"
           printf '%s\n' "$IZVESTNYE" > "$S/known_hosts"
-          SSH="ssh -i $S/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30 ${SSH_MOST:-}"
+          export SSH="ssh -i $S/klyuch -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 -o ServerAliveInterval=30"
           # --checksum (r790): сборка каждый раз новая, у всех файлов новое время — без сверки содержимого rsync гнал
           # все 18 313 файлов (2,5 ГБ, 13.11: «regular files transferred 18,313», 4 мин 50 с), хотя менялось ~28 МБ.
           # Со сверкой уходят и подменяются только изменённые; у остальных лишь обновится время. Как в мире — man rsync,
           # --checksum: «skip based on checksum, not mod-time & size». Откат — убрать --checksum.
-          rsync -rlptz --checksum --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH" dist/ "$KUDA:" | tail -n 15
+          # Путь — scripts/prohod-v-rossiyu.sh: опция пути в $SSH_MOST, упал — следующий путь (r833).
+          scripts/prohod-v-rossiyu.sh -- bash -c 'rsync -rlptz --checksum --delete-after --delay-updates --chmod=D755,F644 --stats -e "$SSH $SSH_MOST" dist/ "$KUDA:" | tail -n 15; exit "${PIPESTATUS[0]}"'
           rm -rf "$S"
           echo "msk-new: выложено в $KUDA — $(find dist -type f | wc -l) файлов"
           if [ -n "$ADRES" ] && [ -z "$MOST" ]; then
