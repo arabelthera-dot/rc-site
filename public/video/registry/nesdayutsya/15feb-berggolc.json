@@ -1,32 +1,32 @@
 {
-  "title": "История в 54 секунды",
+  "title": "История в 55 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-v5.mp4",
+    "v": 5,
     "w": 1920,
     "h": 1080,
-    "sec": 54.3,
-    "mb": 14.7
+    "sec": 55.1,
+    "mb": 15
   },
   "vertical": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-9x16.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-9x16-v5.mp4",
+    "v": 5,
     "w": 1080,
     "h": 1920,
-    "sec": 54.3,
-    "mb": 13.6
+    "sec": 55.1,
+    "mb": 13.9
   },
   "poster": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "nesdayutsya/15feb-berggolc/day-15feb-berggolc-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-15feb-berggolc-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }
