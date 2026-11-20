@@ -4,7 +4,7 @@
   "horizontal": {
     "file": "nesdayutsya/18jan-kuznetsov/day-18jan-kuznetsov.mp4",
     "local": "muzei/ne-sdayutsya/video/day-18jan-kuznetsov.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 47.9,
@@ -13,7 +13,7 @@
   "vertical": {
     "file": "nesdayutsya/18jan-kuznetsov/day-18jan-kuznetsov-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-18jan-kuznetsov-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 47.9,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "nesdayutsya/18jan-kuznetsov/day-18jan-kuznetsov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-18jan-kuznetsov-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/18jan-kuznetsov/day-18jan-kuznetsov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-18jan-kuznetsov-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
