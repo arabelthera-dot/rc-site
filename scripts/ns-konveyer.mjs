@@ -97,7 +97,7 @@ function gidIzOblaka(key, fail) {
       lead: ag.lead,
       stops: ag.stops.map((s, i) => ({ t: Math.round(zamer.abzacy[i].start), mark: mmss(zamer.abzacy[i].start), title: s.title ?? s })),
       transcript: ag.transcript,
-      note: 'Озвучено синтезом речи — временно, до записи голосом автора музея.',
+      note: 'Озвучено синтезом речи.',
     };
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
   const items = doc.contents.items;

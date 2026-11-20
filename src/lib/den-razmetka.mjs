@@ -26,9 +26,17 @@ export const scoreJs = (d) => `window.MUSEUM_SCORE = ${json(d.score).replace(/"(
 // Викторина дня: вопросы — из карточки, вёрстка ответов — общая (была в одном inline-скрипте с игрой).
 // Событие rc-igra (Р286 п.3, Р289 п.1): первый ответ — «nachal», последний — исход (верно не меньше половины —
 // «vyigral»). Его ловят rc-privychka.js (кнопка «Поделиться итогом» под викториной) и выключенный счёт rc-igra-schet.js.
+// Варианты ответа перемешиваются при сборке (r833): порядок — от текста вопроса, одинаковый при каждой сборке,
+// верный ответ не стоит всегда на одном месте; a переводится на новое место верного.
+const zerno = (s) => { let h = 2166136261; for (const c of s) h = Math.imul(h ^ c.codePointAt(0), 16777619) >>> 0; return h; };
+const peremeshat = (v) => {
+  let h = zerno(v.q); const idx = v.o.map((_, i) => i);
+  for (let i = idx.length - 1; i > 0; i--) { h = Math.imul(h, 1103515245) + 12345 >>> 0; const j = h % (i + 1); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+  return { ...v, o: idx.map((i) => v.o[i]), a: idx.indexOf(v.a) };
+};
 export const quizJs = (d) => `(function(){
   var $ = function(id){return document.getElementById(id);};
-  var Q = ${json(d.quiz.voprosy)};
+  var Q = ${json(d.quiz.voprosy.map(peremeshat))};
   var box = $('quizBox');
   var otv = 0, ver = 0;
   var igra = function(e){ document.dispatchEvent(new CustomEvent('rc-igra', {detail: {e: e, igra: 'viktorina', el: $('quiz') || box}})); };

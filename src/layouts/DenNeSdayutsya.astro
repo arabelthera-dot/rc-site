@@ -122,7 +122,7 @@ const chrome = chromeJs(d, muzeyName);
     <h2>{d.story.h2}</h2>
     {d.story.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>}
     {d.story.udary && <Fragment set:html={nePerevodit(udaryHtml(d.story.udary), d.ne_perevodit)} />}
-    {d.story.abzacy && <Fragment set:html={d.story.abzacy.join('\n    ')} />}
+    {d.story.abzacy && <Fragment set:html={d.story.abzacy.map((a) => (/^\s*</.test(a) ? a : `<p>${a}</p>`)).join('\n    ')} />}
   </div>
 </section><Fragment set:html={posle('story')} />
 

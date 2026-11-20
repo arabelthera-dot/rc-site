@@ -85,7 +85,8 @@ const chromeJs = chromeJsF(d, muzeyName);
 const o = d.oblozhka;
 // Блоки фактов (один или несколько, Р302): без posle — на своём месте сразу после story, с posle — после указанного блока.
 // nav — подпись чипа в полосе разделов (#secnav берёт data-nav); без nav чипа нет, как раньше.
-const faktyBloki = [d.fakty ?? []].flat();
+// r833: у первого блока на своём месте без nav чип «Факты» — как в утверждённом феврале.
+const faktyBloki = [d.fakty ?? []].flat().map((b, i, v) => (!b.nav && !b.posle && v.findIndex((x) => !x.posle) === i ? { ...b, nav: 'Факты' } : b));
 const kal = d.kalendar ?? { h2: 'Календарь изобретений', intro: 'Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.' };
 // Уникальные разделы дня (карточка razdely, Р286) — разметкой 1:1 сразу после своего блока; нет — пусто.
 // п.41: шифры и номера из поля ne_perevodit — в translate="no" (рассказ и факты; уникальные разделы razdely — 1:1, не трогаются).
@@ -224,12 +225,12 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
       <p style="margin-top:0"><Fragment set:html={d.pervenstvo.granica} /></p>
       <p style="margin-bottom:0"><Fragment set:html={d.pervenstvo.net} /></p>
     </div>
-    <table class="ctx">
+    {d.pervenstvo.stroki.length > 0 && <table class="ctx">
       <thead><tr>{d.pervenstvo.kolonki.map((k) => <th scope="col">{k}</th>)}</tr></thead>
       <tbody>
         {d.pervenstvo.stroki.map((r) => <tr>{r.map((t) => <td><Fragment set:html={t} /></td>)}</tr>)}
       </tbody>
-    </table>
+    </table>}
   </div>
 </section><Fragment set:html={posle('pervenstvo')} />
 
