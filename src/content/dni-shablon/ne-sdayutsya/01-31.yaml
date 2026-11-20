@@ -419,6 +419,12 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
+vizual:
+  imya: borzenko-loskut
+  vid: predmet
+  kicker: Вещь под лупой
+  h2: Лагерный номер узника Бухенвальда
+  lead: 'Лоскут полосатой лагерной ткани бывшего узника Бухенвальда А. В. Иваницкого. Приближайте: красный треугольник с буквой R, номер 24667, набитый по трафарету, и чёрные стежки, которыми нашивки пришиты к ткани.'
 audioguide:
   audioSrc: audio-guide-borzenko-ru.mp3
   durationLabel: 1 минута 31 секунда

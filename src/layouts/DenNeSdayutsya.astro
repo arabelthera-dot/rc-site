@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 import { nePerevodit } from '../lib/perevod.mjs';
 import { audiogidDnya } from '../lib/den-obshchee.mjs';
-import { q, json, chromeJs, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml, podpisHtml } from '../lib/den-razmetka.mjs';
+import { q, json, chromeJs, scoreJs, itogDnya, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml, podpisHtml } from '../lib/den-razmetka.mjs';
 import { vspomniOn, vspomniHtml, vspomniCss, vspomniJs, vspomniDannye } from '../lib/istoriya.mjs';
 // «Вспомни» (п.503, Р745): блок над викториной и скрипт — только при флаге, выключено.
 import { titleVkladki } from '../lib/title-vkladki.mjs';
@@ -26,6 +26,8 @@ const kogda = d.head.sobytie && `${d.head.god}: ${d.head.sobytie}`;
 const title = kogda ? titleVkladki(kogda, muzeyName) : d.head.title;
 const ogTitle = kogda || d.head.og.title;
 const v = d.vizual;
+// «Итог дня»: игры в музее нет — текст без игры, не из карточки (Р831).
+const itog = itogDnya(d.result, false);
 const vizualHtml = v ? fs.readFileSync(`src/data/vizual/ne-sdayutsya/${v.imya}.html`, 'utf8').replace(/\n$/, '') : '';
 const faktyBloki = [d.fakty ?? []].flat();
 const kal = d.kalendar ?? { h2: 'Календарь стойкости', intro: 'Выбери любой день — узнаешь, кто в этот день не сдался. Листай месяцы стрелками.' };
@@ -168,11 +170,11 @@ const chrome = chromeJs(d, muzeyName);
   <div class="wrap">
     {d.result.kicker && <div class="kicker">{d.result.kicker}</div>}
     <h2 style="margin-bottom:6px">{d.result.h2}</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={d.result.intro} /></p>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={itog.intro} /></p>
     <div class="day-result">
       <div class="dr-score" id="dayTxt">{d.result.zvanie}</div>
       <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
-      <div class="dr-note"><Fragment set:html={d.result.note} /></div>
+      <div class="dr-note"><Fragment set:html={itog.note} /></div>
     </div>
   </div>
 </section><Fragment set:html={posle('result')} />

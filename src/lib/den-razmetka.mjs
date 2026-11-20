@@ -3,6 +3,7 @@
 // JS-строка в одинарных кавычках — как в старых страницах: конвейер (src/lib/sosedi-polnye.mjs) ищет
 // prev/next в window.MUSEUM_CHROME именно в таком виде и переписывает на ближайшие полные страницы.
 import { POMETKI } from './den-obshchee.mjs';
+import { stroka } from './yazyki.mjs';
 
 export const q = (s) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/</g, '\\u003c')}'`;
 export const json = (x) => JSON.stringify(x).replace(/</g, '\\u003c');
@@ -16,6 +17,10 @@ export const chromeJs = (d, muzeyName) => { const c = d.chrome; return c && `win
   city:'../../index.html',
   random:[${c.random.map(q).join(',')}]
 };` };
+// «Итог дня» (Р831): intro и note — из того, что есть на странице. Есть игра — как в карточке; нет игры — текст
+// утверждённого февраля без игры (src/data/stroki/ru.json), карточка, обещающая игру или опыт, на вывод не влияет.
+export const itogDnya = (result, estIgra) => (estIgra ? result
+  : { ...result, intro: stroka('ru', 'denResultIntroBezIgry'), note: stroka('ru', 'denResultNoteBezIgry') });
 // Ключи без кавычек — как в старых страницах: проверка счёта (scripts/staroe-pravilo.py) ищет реестр «awards:{…}».
 export const scoreJs = (d) => `window.MUSEUM_SCORE = ${json(d.score).replace(/"(\w+)":/g, '$1:')};`;
 // Викторина дня: вопросы — из карточки, вёрстка ответов — общая (была в одном inline-скрипте с игрой).

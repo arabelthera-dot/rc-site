@@ -128,7 +128,7 @@ story:
   h2: Человек, создавший первую в мире гусеницу
   abzacy:
     - |-
-      <div class="article collapsed" id="article">
+      <div class="article" id="article">
             <div class="body" id="articleBody">
       <p><b>Саратовская губерния, 1870-е.</b> Фёдор Блинов смотрит на поле после дождя. Телега с грузом зарылась в грязь по ступицу — лошади тянут из последних сил. Он видел это тысячи раз. Но впервые задаётся вопросом не «как вытащить», а «почему вообще колесо проваливается». И придумывает ответ, который изменит мир.</p>
     - "<p><b>Кто этот человек.</b> Фёдор Абрамович Блинов родился в 1827 году (по другим данным — в 1831-м) в селе Никольском Вольского уезда Саратовской губернии — в крепостной семье. Грамоте выучился сам. Был грузчиком и бурлаком, потом почти четверть века служил на волжском пароходе «Геркулес» кочегаром, помощником машиниста и машинистом. Осенью 1881 года перебрался в Балаково — тогда село Самарской губернии — и завёл там собственные мастерские. Про таких говорят «самородок»: не имея образования, он понимал механику интуитивно — и строил то, что образованные инженеры считали невозможным.</p>"
@@ -136,12 +136,11 @@ story:
     - "<p><b>Как родилась идея.</b> Блинов рассуждал просто: если колесо проваливается, потому что давит в одну точку — значит, надо распределить вес по большей площади. Что если под колёса подложить бесконечную цепь из звеньев, которая расстилается перед машиной и собирается за ней? Вес равномерно ложится на полосу грунта — и машина идёт там, где колесо застряло бы намертво.</p>"
     - "<p><b>Что он построил.</b> В 1879 году Блинов получил патент №2245 — на «вагон с бесконечными рельсами». Следующим шагом стал самодвижущийся трактор: в 1888 году Блинов поставил паровую машину на гусеничное шасси и испытал его под Балаковым. Первый в мире гусеничный трактор мог ехать по пашне, по грязи, по целине — там, где колёсная техника была беспомощна.</p>"
     - "<p><b>Демонстрация.</b> В 1896 году Блинов привёз трактор на Нижегородскую промышленно-художественную выставку. Машина прошла своим ходом, повернула, развернулась. Серебряную медаль Блинову присудили за пожарный насос, а за трактор — только похвальную грамоту. Серийного производства не последовало: у Блинова не было ни капиталистов за спиной, ни связей в министерствах.</p><figure class=\"fig\"><img src=\"/muzei/izobreteniya/img/day-09jan-nn-1896.jpg\" width=\"800\" height=\"620\" loading=\"lazy\" decoding=\"async\" alt=\"Застеклённый арочный фасад главного здания Машинного отдела Нижегородской выставки 1896 года, перед ним дорожки и рельсы\" data-source=\"https://goskatalog.ru/portal/#/collections?id=12685218\" data-license=\"общественное достояние (фотография 1896 года, автор не установлен)\"><figcaption>Вход в главное здание Машинного отдела Всероссийской выставки в Нижнем Новгороде, 1896 год. <span class=\"credit\">Фотограф не установлен, 1896 (лист из альбома выставки). Хранится: Государственный музей А. М. Горького (Нижний Новгород), КП-15942/67. Госкаталог музейного фонда РФ, № 12685218. Права: общественное достояние.</span></figcaption></figure>"
-    - <p><b>Горькая часть.</b> Блинов умер в 1902 году — не увидев, что произойдёт дальше. В 1904 году американец Бенджамин Холт испытал гусеничный трактор в США. В 1906-м — начал серийное производство под маркой «Caterpillar». Сегодня «Caterpillar» — один из крупнейших концернов мира, его жёлтые машины работают на всех стройках планеты. В учебниках по всему миру написано имя Холта. Патент Блинова на 25 лет старше — но Россия так и не запустила его в производство при жизни изобретателя.</p>
-    - "<p><b>Финал.</b> Гусеница Блинова стала основой двух революций XX века: промышленной (тракторы, экскаваторы, краны, бульдозеры) и военной (танки Первой и Второй мировых). Каждый танк — это воплощённый патент крестьянина из Саратовской губернии. В Балакове в 2024 году ему открыли памятную доску. «Caterpillar» об этом не упоминает.</p>"
+    - <p><b>Горькая часть.</b> Блинов умер в 1902 году — не увидев, что произойдёт дальше. В 1904 году американец Бенджамин Холт испытал гусеничный трактор в США. В 1906-м — начал серийное производство под маркой «Катерпиллер». Сегодня «Катерпиллер» — один из крупнейших концернов мира, его жёлтые машины работают на всех стройках планеты. В учебниках по всему миру написано имя Холта. Патент Блинова на 25 лет старше — но Россия так и не запустила его в производство при жизни изобретателя.</p>
+    - "<p><b>Финал.</b> Гусеница Блинова стала основой двух революций XX века: промышленной (тракторы, экскаваторы, краны, бульдозеры) и военной (танки Первой и Второй мировых). Каждый танк — это воплощённый патент крестьянина из Саратовской губернии. В Балакове в 2024 году ему открыли памятную доску. «Катерпиллер» об этом не упоминает.</p>"
     - |-
       <p><b>Человек.</b> Фёдор Абрамович Блинов (1827–1902; по другим данным родился в 1831 году) — бывший крепостной, самоучка, механик. Говорил мало, работал руками. Современники отмечали: объяснить, почему та или иная конструкция будет работать, он не мог — но машина работала. Последние годы жил в Балакове, в своих мастерских, продолжал изобретать до последнего дня.</p><figure class="fig portret"><img src="/muzei/izobreteniya/img/day-09jan-dom-doska.jpg" width="577" height="800" loading="lazy" decoding="async" alt="Трое пожилых людей у угла деревянного дома с мемориальной доской с профилем Блинова" data-source="https://goskatalog.ru/portal/#/collections?id=32769785" data-license="цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ)"><figcaption>Дом Блинова в Балакове с мемориальной доской: у дома краевед А. А. Деревянченко и старожилы, 1986 год. <span class="credit">Автор фото не указан, 21.09.1986. Хранится: Музей истории г. Балаково (филиал Саратовского областного музея краеведения), БМКОФ 4287. Госкаталог музейного фонда РФ, № 32578043. Права: цитирование в информационных и учебных целях с указанием автора и источника (ст. 1274 ГК РФ).</span></figcaption></figure>
             </div>
-            <div class="more"><button class="btn ghost" id="moreBtn">Читать дальше ↓</button></div>
           </div>
 fakty:
   - id: fakty
@@ -454,180 +453,8 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
-razdely:
-  - posle: fakty
-    html: |-
-      <section class="block" id="more">
-        <div class="wrap">
-          <div class="kicker">Гусеница изменила мир</div>
-          <h2>Что выросло из изобретения Блинова</h2>
-          <div class="card"><b style="color:var(--gold-l)">Сельскохозяйственный трактор</b><p style="margin:6px 0 0">Гусеничные тракторы пришли в поля в 1910-х и сделали возможной механизацию сельского хозяйства — на переувлажнённых почвах, торфяниках и целине, куда колёсная техника не доходила.</p></div>
-          <div class="card"><b style="color:var(--gold-l)">Танк</b><p style="margin:6px 0 0">Первые танки Первой мировой (британские Mark I, 1916) были гусеничными — только так они могли преодолевать окопы и рвы. Без принципа Блинова не было бы ни одного танка в обеих мировых войнах.</p></div>
-          <div class="card"><b style="color:var(--gold-l)">Строительная и горная техника</b><p style="margin:6px 0 0">Экскаваторы, бульдозеры, краны на гусеничном ходу — весь парк тяжёлой техники, без которого невозможно ни одно крупное строительство.</p></div>
-          <div class="card"><b style="color:var(--gold-l)">«Caterpillar»</b><p style="margin:6px 0 0">Компания основана в 1925-м (слияние Холта и Беста), сегодня №1 в мире по строительной и горной технике. На логотипе — гусеница. О Блинове — ни слова.</p></div>
-        </div>
-      </section>
-  - posle: pervenstvo
-    html: |-
-      <section class="block" id="theme-inventions" style="background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.15)">
-        <div class="wrap">
-          <div class="kicker">Транспорт · Русские первенства</div>
-          <h2 style="margin-bottom:6px">Что ещё русские изобрели первыми в теме «транспорт»</h2>
-          <p style="color:var(--muted);margin-top:0;margin-bottom:16px;max-width:62ch">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
-          <div style="text-align:center;margin:14px 0 4px">
-            <button class="btn gold" id="themeInvBtn" data-label="Показать 19 изобретений →">Показать 19 изобретений →</button>
-          </div>
-          <div id="themeInvBody" style="display:none;margin-top:20px">
-            <div class="card" style="padding:0;overflow:hidden">
-              <div style="padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15)">
-                <span style="color:var(--gold-l);font-weight:600;font-size:14px;letter-spacing:.5px">19 ИЗОБРЕТЕНИЙ · ТРАНСПОРТ</span>
-              </div>
-              <div style="padding:4px 20px 12px">
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">3 янв</span>
-                <span><a href="day-03feb-luna9.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Первый в мире атомный ледокол-речник «Обь» и атомный флот →</a></span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">5 янв</span>
-                <span><a href="day-05jan-shukhov.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Первый в мире расчётный нефтепровод Балаханы–Черный город →</a></span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">10 янв</span>
-                <span>Первый в мире ледокол «Пайлот»</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">16 янв</span>
-                <span>Первая стыковка кораблей и переход через открытый космос («Союз-4/5»)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">26 янв</span>
-                <span>Первый в мире серийный реактивный пассажирский самолёт Ту-104</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">28 янв</span>
-                <span>Открытие Антарктиды</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">10 фев</span>
-                <span>Аэросани (первые в мире)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">11 фев</span>
-                <span>Первый в мире морской гидросамолёт (летающая лодка М-5)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">13 фев</span>
-                <span>Гидросамолёты и амфибии «Бе»</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">17 фев</span>
-                <span>Первый в мире электрический трамвай</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">10 мар</span>
-                <span>Открытие пролива между Азией и Америкой</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">19 мар</span>
-                <span>Первый в мире военный ледокол «Вайгач» — исследование Арктики</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">20 мар</span>
-                <span>Первый в мире магистральный тепловоз</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">21 мар</span>
-                <span>Самолёт Можайского, один из первых в мире</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">30 мар</span>
-                <span>Штурмовик Ил-2 и самолёты Ильюшина</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">1 апр</span>
-                <span>Самолёты «Як»</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">2 апр</span>
-                <span>Первый в мире бензиновый двигатель (для дирижабля)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">7 апр</span>
-                <span>Первая в мире подводная лодка «Дельфин» с двигателем внутреннего сгорания</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">9 апр</span>
-                <span>Первый в мире дизельный теплоход «Вандал»</span>
-              </div>
-              </div>
-            </div>
-            <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:12px">Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
-          </div>
-        </div>
-      </section>
-  - posle: quiz
-    html: |-
-      <div class="wrap">
-          <div class="gm" id="gm_tm">
-            <h3>⚖️ Правда или миф</h3>
-            <p style="font-weight:600;margin:0 0 12px">«Слово Caterpillar никак не связано с русским изобретением»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="tmAns(this,true)">Правда</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="tmAns(this,false)">Миф</button></div>
-            <div class="gm-exp" id="tmExp">Формально правда: Холт назвал компанию сам, не зная о Блинове. Но принцип, запатентованный под этим именем, был придуман в России на 25 лет раньше.</div>
-          </div>
-          <div class="gm" id="gm_vb">
-            <h3>🤔 Верю — не верю</h3>
-            <p style="font-weight:600;margin:0 0 12px">«Без гусеницы Блинова не было бы ни одного танка в Первой мировой войне»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="vbAns(this,true)">Верю</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="vbAns(this,false)">Не верю</button></div>
-            <div class="gm-exp" id="vbExp">Верю — правильно. Первые танки 1916 года шли именно на гусеничном ходу: только так можно преодолевать окопы и рвы. Без этого принципа танка не существовало бы.</div>
-          </div>
-          <div class="gm" id="gm_char">
-            <h3>🧩 Шарада</h3>
-            <p style="font-style:italic;line-height:1.8;margin:0 0 12px">«Не колесо я и не сани,<br>но еду там, где те застряли;<br>я цепь, что стелется под ход —<br>крестьянский ум меня создал».</p>
-            <button class="gm-btn" style="width:auto" id="charBtn" onclick="charShow()">Показать ответ</button>
-            <div class="gm-exp" id="charExp">Гусеница Блинова — «бесконечные рельсы».</div>
-          </div>
-      </div>
-  - posle: quiz
-    html: |-
-      <section class="block" id="fork" style="background:rgba(45,140,191,.04)">
-        <div class="wrap">
-          <div class="kicker">Твой выбор</div>
-          <h2>А как поступил бы ты?</h2>
-          <p style="color:var(--muted);margin-top:0;max-width:62ch">1896 год. Выставка в Нижнем Новгороде прошла хорошо. Медаль дали за пожарный насос, за трактор — похвальную грамоту. Но серийного завода по-прежнему нет — ни инвесторов, ни государственного заказа. Тебе 65 лет. Ты на месте Блинова — что делаешь?</p>
-          <div class="fork-opt">🏭 Ищу промышленника, продаю лицензию — пусть сам строит завод</div>
-          <div class="fork-opt">📜 Подаю прошение в министерство земледелия — трактор нужен крестьянам</div>
-          <div class="fork-opt">🔧 Продолжаю совершенствовать машину в мастерских — пока не появится покупатель</div>
-          <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Блинов продолжал работать в балаковских мастерских до смерти в 1902 году — завод так и не появился. Через два года Бенджамин Холт в США испытал то же самое и за несколько лет построил империю «Caterpillar». Разница была не в идее — а в том, кто стоял за спиной изобретателя.</div>
-        </div>
-      </section>
-  - posle: quiz
-    html: |-
-      <section class="block" id="chat-sec">
-        <div class="wrap">
-          <div class="kicker">Поговори с изобретателем</div>
-          <h2>Спроси Фёдора Блинова</h2>
-          <p style="color:var(--muted)">Задай вопрос — программа ответит пересказом по источникам дня.</p>
-          <div id="starters"></div>
-          <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
-          <div style="display:flex;gap:10px;margin-top:12px">
-            <input id="chatInput" type="text" placeholder="Написать вопрос..." style="flex:1;padding:12px 16px;font-size:15px">
-            <button class="btn gold" onclick="sendChat()">Отправить</button>
-          </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы — пересказ по источникам дня.</p>
-        </div>
-      </section>
-  - posle: calendar
-    html: |-
-      <section class="block" id="catalog" style="background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none">
-        <div class="wrap" style="text-align:center">
-          <h2 style="margin-bottom:6px;color:#fff">У нас много изобретений</h2>
-          <p style="color:var(--muted);margin:0 auto 16px;max-width:60ch">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
-          <a class="btn gold" href="index.html" style="display:inline-block;text-decoration:none">Вернуться в музей →</a>
-        </div>
-      </section>
 igra:
   imya: blinov-gusenica
-  dop: true
   css:
     - blinov-gusenica
     - igra-blinov-gusenica
@@ -667,7 +494,7 @@ pervenstvo:
   kicker: Проверка факта
   h2: Что именно Блинов сделал первым
   granica: "Граница первенства: гусеничный ход — «вагон с бесконечными рельсами», патент (привилегия) № 2245 1879 года. А в 1888 году Блинов поставил паровую машину на гусеничное шасси и испытал под Балаковым первый в мире гусеничный трактор."
-  net: "Чего здесь нет: запатентованный «вагон» 1879 года сам не ездил — это был прицеп на гусеницах, его тянули лошади. Своим ходом на гусеницах пошёл только «самоход» 1888 года. Завод при жизни Блинова так и не появился: серийный выпуск в 1906 году начал уже американец Холт — под маркой «Caterpillar»."
+  net: "Чего здесь нет: запатентованный «вагон» 1879 года сам не ездил — это был прицеп на гусеницах, его тянули лошади. Своим ходом на гусеницах пошёл только «самоход» 1888 года. Завод при жизни Блинова так и не появился: серийный выпуск в 1906 году начал уже американец Холт — под маркой «Катерпиллер»."
   kolonki:
     - Кто
     - Что
@@ -683,7 +510,7 @@ pervenstvo:
       - Испытание гусеничного трактора
       - "1904"
     - - Бенджамин Холт, США
-      - Серийный выпуск под маркой «Caterpillar»
+      - Серийный выпуск под маркой «Катерпиллер»
       - "1906"
 quiz:
   kicker: Проверь себя
@@ -709,15 +536,13 @@ quiz:
       a: 2
       e: Блинов — патент 1879, Холт — испытания 1904. Двадцать пять лет. За это время Блинов успел построить самодвижущийся трактор и показать его на выставке.
 result:
-  kicker: Итог дня
-  h2: Сколько баллов ты собрал?
-  intro: Читай, играй, отвечай и спрашивай изобретателя — за всё начисляются баллы.
+  h2: Итог дня
+  intro: "Игра с возом по грязи, быстрый ответ и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново."
   zvanie: "0 / 100 · звание: Гость музея"
-  note: Собери все 100 и стань "Первопроходец Арктики".
+  note: Проведи воз по грязи, ответь на быстрые вопросы и на викторину.
 kalendar:
-  kicker: Календарь изобретений
-  h2: Выбери любой день года
-  intro: Каждый подсвеченный день — изобретение, которое русские сделали первыми в мире.
+  h2: Календарь изобретений
+  intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
   - src: /muzei/izobreteniya/img/day-09jan-russkiy-traktor.jpg
     width: 1454
@@ -765,18 +590,11 @@ kuda:
     main: false
 score:
   awards:
-    tm: 5
-    vb: 5
-    char: 10
     gm_blinov: 15
     gm_quiz2: 15
-    read: 5
     q:
       - 2
       - 10
-    fork: 10
-    chat: 5
-    theme: 5
   ranks:
     - - 100
       - Первый по целине

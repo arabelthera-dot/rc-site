@@ -11,7 +11,7 @@
 import fs from 'node:fs';
 import { nePerevodit } from '../lib/perevod.mjs';
 import { audiogidDnya } from '../lib/den-obshchee.mjs';
-import { q, json, chromeJs as chromeJsF, scoreJs, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml, podpisHtml } from '../lib/den-razmetka.mjs';
+import { q, json, chromeJs as chromeJsF, scoreJs, itogDnya, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml, podpisHtml } from '../lib/den-razmetka.mjs';
 import { vspomniOn, vspomniHtml, vspomniCss, vspomniJs, vspomniDannye } from '../lib/istoriya.mjs';
 // «Вспомни» (п.503, Р745): блок над викториной и скрипт — только при флаге, выключено.
 import { titleVkladki } from '../lib/title-vkladki.mjs';
@@ -34,6 +34,8 @@ const ogTitle = kogda || d.head.og.title;
 const r3 = d.igra.rc3d, m3 = d.igra.model3d, est3d = !!(r3 || m3);
 // Игра на данных (Р635): механика с движком + данные карточки — блок той же рамки src/components/den/IgraRamka.astro.
 const dannymi = !!(d.igra.mehanika && d.igra.dannye);
+// «Итог дня» — по тому, есть ли на странице игра (3D или на данных), а не по словам карточки (Р831).
+const itog = itogDnya(d.result, est3d || dannymi);
 const e = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 const pravilaHtml = (p: string[]) => `<div class="igra-pravila" data-igra-pravila><h2>Как играть</h2><ol class="igra-pravila-shagi">${p.map((x) => `<li>${x}</li>`).join('')}</ol></div>`;
 const rc3dHtml = r3 ? `<div class="igra-dnya" id="games" data-igra-dnya><div id="rc3d" data-s="${r3.scen}"${r3.zastavka ? ` data-zastavka="${r3.zastavka}"` : ''}>
@@ -58,7 +60,7 @@ const rc3dHtml = r3 ? `<div class="igra-dnya" id="games" data-igra-dnya><div id=
   </div>
 </section>
 </div></div>` : '';
-const m3Html = m3 ? `<section class="block igra-dnya igd" id="games" data-igra-dnya data-glb="${m3.glb}">
+const m3Html = m3 ? `<div class="igra-dnya" id="games" data-igra-dnya data-glb="${m3.glb}"><section class="block igd" id="games-3d">
   <div class="wrap">
     <div class="kicker">${m3.kicker}</div>
     <h2>${m3.h2}</h2>
@@ -70,7 +72,7 @@ const m3Html = m3 ? `<section class="block igra-dnya igd" id="games" data-igra-d
     ${pravilaHtml(m3.pravila)}
     <noscript><div class="noscript-box">Для 3D нужен JavaScript.</div></noscript>
   </div>
-</section>` : '';
+</section></div>` : '';
 // Скрипты 2D-запаса — по порядку, как раньше на странице: игра, вторая игра, её -dop.
 const zapasSkripty = [d.igra.imya, d.igra.vtoraya, d.igra.dop && `${d.igra.imya}-dop`].filter(Boolean).map((i) => `igry/${i}.js`);
 const zapas2d = [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
@@ -245,11 +247,11 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
   <div class="wrap">
     {d.result.kicker && <div class="kicker">{d.result.kicker}</div>}
     <h2 style="margin-bottom:6px">{d.result.h2}</h2>
-    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={d.result.intro} /></p>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={itog.intro} /></p>
     <div class="day-result">
       <div class="dr-score" id="dayTxt">{d.result.zvanie}</div>
       <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
-      <div class="dr-note"><Fragment set:html={d.result.note} /></div>
+      <div class="dr-note"><Fragment set:html={itog.note} /></div>
     </div>
   </div>
 </section><Fragment set:html={posle('result')} />

@@ -130,7 +130,7 @@ story:
   h2: «К Северному полюсу — напролом!»
   abzacy:
     - |-
-      <div class="article collapsed" id="article">
+      <div class="article" id="article">
             <div class="body" id="articleBody">
       <p><b>30 марта 1897 года, Петербург.</b> Мраморный дворец, экстренное заседание Географического общества; в зале — члены императорской фамилии и сановники. Первую часть лекции читает Ф. Ф. Врангель, вторую — вице-адмирал Степан Макаров, и название у неё дерзкое: «К Северному полюсу — напролом!» Идея, которую он вбивает в головы чиновников: не обходить полярные льды, а ломать их специально построенным кораблём и идти напрямик, через макушку планеты. Зал аплодирует. Министерства — отказывают.</p>
     - "<p><b>Кто этот человек.</b> Макаров родился 8 января 1849 года в Николаеве, в небогатой семье — отец выслужился из простых матросов, знатной родословной за сыном не стояло. Всего добился головой и трудом, за что его звали «Леонардо русского флота»: боевой адмирал, учёный-океанограф и изобретатель в одном лице. Любил повторять: «В море я у себя дома, а на берегу — в гостях». Флоту оставил завет, ставший крылатым: «Помни войну» — будь готов даже в самый мирный день.</p>"
@@ -143,7 +143,6 @@ story:
     - |-
       <p><b>Человек — и это ещё не всё.</b> Ледокол — лишь одно из дел Макарова. Он создал первый в мире пластырь для заделки пробоин (флот пользуется принципом до сих пор) и вывел теорию непотопляемости корабля. Создал «макаровский колпачок» — мягкий наконечник бронебойного снаряда; его приняли на вооружение уже после гибели адмирала. Провёл первую в мире успешную торпедную атаку — в русско-турецкую войну, с парохода «Великий князь Константин». Доказал, что в Босфоре два течения — верхнее и нижнее. Обошёл вокруг света на корвете «Витязь» с океанографическими наблюдениями.</p>
             </div>
-            <div class="more"><button class="btn ghost" id="moreBtn">Читать дальше ↓</button></div>
           </div>
 fakty:
   - id: fakty
@@ -456,177 +455,6 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
-razdely:
-  - posle: fakty
-    html: |-
-      <section class="block" id="more">
-        <div class="wrap">
-          <div class="kicker">Не только «Ермак»</div>
-          <h2>Другие изобретения Макарова</h2>
-          <div class="card"><b style="color:var(--gold-l)">Первая успешная торпедная атака в истории</b><p style="margin:6px 0 0">Ночь на 14 (26) января 1878 года, русско-турецкая война. Катера «Чесма» и «Синоп» с парохода Макарова «Великий князь Константин» торпедами потопили у Батума турецкий сторожевой корабль «Интибах» — первое в истории успешное боевое применение торпеды.</p></div>
-          <div class="card"><b style="color:var(--gold-l)">Пластырь для заделки пробоин</b><p style="margin:6px 0 0">Сворачивался в рулон, заводился снаружи борта. Принцип используется в флоте до сих пор.</p></div>
-          <div class="card"><b style="color:var(--gold-l)">«Макаровский колпачок»</b><p style="margin:6px 0 0">Мягкий наконечник бронебойного снаряда — снижает рикошет. Принят на вооружение уже после гибели адмирала.</p></div>
-          <div class="card"><b style="color:var(--gold-l)">Батометр и теория непотопляемости</b><p style="margin:6px 0 0">Прибор для взятия проб воды на глубине + фундаментальный труд по непотопляемости кораблей. Плюс открытие двух течений в Босфоре.</p></div>
-        </div>
-      </section>
-  - posle: pervenstvo
-    html: |-
-      <section class="block" id="theme-inventions" style="background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.15)">
-        <div class="wrap">
-          <div class="kicker">Транспорт · Русские первенства</div>
-          <h2 style="margin-bottom:6px">Что ещё русские изобрели первыми в теме «транспорт»</h2>
-          <p style="color:var(--muted);margin-top:0;margin-bottom:16px;max-width:62ch">Этот день — не единственный. Вот другие изобретения русских в этой теме.</p>
-          <div style="text-align:center;margin:14px 0 4px">
-            <button class="btn gold" id="themeInvBtn">Показать 19 изобретений →</button>
-          </div>
-          <div id="themeInvBody" style="display:none;margin-top:20px">
-            <div class="card" style="padding:0;overflow:hidden">
-              <div style="padding:14px 20px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.15)">
-                <span style="color:var(--gold-l);font-weight:600;font-size:14px;letter-spacing:.5px">19 ИЗОБРЕТЕНИЙ · ТРАНСПОРТ</span>
-              </div>
-              <div style="padding:4px 20px 12px">
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">3 янв</span>
-                <span><a href="day-03feb-luna9.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Первый в мире атомный ледокол-речник «Обь» и атомный флот →</a></span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">5 янв</span>
-                <span><a href="day-05jan-shukhov.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);transition:.15s" onmouseover="this.style.color='var(--gold-l)'" onmouseout="this.style.color='inherit'">Первый в мире расчётный нефтепровод Балаханы–Черный город →</a></span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">10 янв</span>
-                <span>Первый в мире ледокол «Пайлот»</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">16 янв</span>
-                <span>Первая стыковка кораблей и переход через открытый космос («Союз-4/5»)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">26 янв</span>
-                <span>Первый в мире серийный реактивный пассажирский самолёт Ту-104</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">28 янв</span>
-                <span>Открытие Антарктиды</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">10 фев</span>
-                <span>Аэросани (первые в мире)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">11 фев</span>
-                <span>Первый в мире морской гидросамолёт (летающая лодка М-5)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">13 фев</span>
-                <span>Гидросамолёты и амфибии «Бе»</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">17 фев</span>
-                <span>Первый в мире электрический трамвай</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">10 мар</span>
-                <span>Открытие пролива между Азией и Америкой</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">19 мар</span>
-                <span>Первый в мире военный ледокол «Вайгач» — исследование Арктики</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">20 мар</span>
-                <span>Первый в мире магистральный тепловоз</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">21 мар</span>
-                <span>Самолёт Можайского, один из первых в мире</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">30 мар</span>
-                <span>Штурмовик Ил-2 и самолёты Ильюшина</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">1 апр</span>
-                <span>Самолёты «Як»</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">2 апр</span>
-                <span>Первый в мире бензиновый двигатель (для дирижабля)</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">7 апр</span>
-                <span>Первая в мире подводная лодка «Дельфин» с двигателем внутреннего сгорания</span>
-              </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;align-items:baseline">
-                <span style="color:var(--gold);font-weight:700;font-size:13px;white-space:nowrap">9 апр</span>
-                <span>Первый в мире дизельный теплоход «Вандал»</span>
-              </div>
-              </div>
-            </div>
-            <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:12px">Каждое — отдельный день музея. <a href="index.html">Весь музей →</a></p>
-          </div>
-        </div>
-      </section>
-  - posle: quiz
-    html: |-
-      <div class="wrap">
-          <div class="gm" id="gm_tm">
-            <h3>⚖️ Правда или миф</h3>
-            <p style="font-weight:600;margin:0 0 12px">«"Ермак" прослужил всего несколько лет и был списан»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="tmAns(this,false)">Правда</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="tmAns(this,true)">Миф</button></div>
-            <div class="gm-exp" id="tmExp">Миф. Он служил больше шестидесяти лет — до 1964 года, пережил три войны, ходил в экспедицию за папанинцами и был списан, когда уже ходил атомный ледокол «Ленин».</div>
-          </div>
-          <div class="gm" id="gm_vb">
-            <h3>🤔 Верю — не верю</h3>
-            <p style="font-weight:600;margin:0 0 12px">«Первый арктический ледокол построили в Англии по русскому заказу»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="vbAns(this,true)">Верю</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="vbAns(this,false)">Не верю</button></div>
-            <div class="gm-exp" id="vbExp">Верю — правильно. Своих мощностей под такой корпус в России тогда не было: строили в Ньюкасле, на верфи Армстронга — по проекту Макарова и под надзором русских инженеров.</div>
-          </div>
-          <div class="gm" id="gm_char">
-            <h3>🧩 Шарада</h3>
-            <p style="font-style:italic;line-height:1.8;margin:0 0 12px">«Я не рублю, а вползаю на лёд,<br>весом своим пробивая проход;<br>купцы меня в честь покорителя<br>Сибири назвали — угадай, кто плывёт?»</p>
-            <button class="gm-btn" style="width:auto" id="charBtn" onclick="charShow()">Показать ответ</button>
-            <div class="gm-exp" id="charExp">Ледокол «Ермак».</div>
-          </div>
-      </div>
-  - posle: quiz
-    html: |-
-      <section class="block" id="fork" style="background:rgba(45,140,191,.04)">
-        <div class="wrap">
-          <div class="kicker">Твой выбор</div>
-          <h2>А как поступил бы ты?</h2>
-          <p style="color:var(--muted);margin-top:0;max-width:62ch">1897 год. Чиновники снова отказали в деньгах на ледокол. Проект считают фантазией. Менделеев готов поддержать, но нужно убедить лично министра финансов Витте на встрече через неделю. Ты на месте Макарова:</p>
-          <div class="fork-opt">🗣 Иду к Витте сам и кладу на стол расчёты</div>
-          <div class="fork-opt">📜 Прошу Менделеева выступить первым — его имя убедительнее</div>
-          <div class="fork-opt">🌐 Публикую статью в газетах — пусть общество давит на министерство</div>
-          <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Менделеев и Макаров действовали вместе: авторитет химика открыл двери, точные расчёты адмирала убедили министерство. Витте дал деньги. «Ермак» построили в Ньюкасле и в 1899 году он уже спасал суда из ледового плена Финского залива. Союз учёного и практика сработал там, где одиночные обращения терпели неудачу.</div>
-        </div>
-      </section>
-  - posle: quiz
-    html: |-
-      <section class="block" id="chat-sec">
-        <div class="wrap">
-          <div class="kicker">Поговори с изобретателем</div>
-          <h2>Спроси адмирала Макарова</h2>
-          <p style="color:var(--muted)">Задай вопрос — программа ответит пересказом по источникам дня.</p>
-          <div id="starters"></div>
-          <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
-          <div style="display:flex;gap:10px;margin-top:12px">
-            <input id="chatInput" type="text" placeholder="Написать вопрос..." style="flex:1;padding:12px 16px;font-size:15px">
-            <button class="btn gold" onclick="sendChat()">Отправить</button>
-          </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы — пересказ по источникам дня.</p>
-        </div>
-      </section>
-  - posle: calendar
-    html: |-
-      <section class="block" id="catalog" style="background:linear-gradient(135deg,#16294a,#0f1e33);border-bottom:none">
-        <div class="wrap" style="text-align:center">
-          <h2 style="margin-bottom:6px;color:#fff">У нас много изобретений</h2>
-          <p style="color:var(--muted);margin:0 auto 16px;max-width:60ch">Русские сделали первыми в мире сотни вещей. Открой полную базу и выбери по алфавиту то, что интересно именно тебе.</p>
-          <a class="btn gold" href="index.html" style="display:inline-block;text-decoration:none">Вернуться в музей →</a>
-        </div>
-      </section>
 igra:
   model3d:
     glb: modeli/ermak-1899.glb
@@ -639,7 +467,6 @@ igra:
       - Найди нос — он не режет лёд, а лежит на нём сверху и давит весом корабля.
       - Обойди ледокол сзади — посмотри на канал чистой воды, который он оставляет за кормой.
   imya: probey-led
-  dop: true
   css: [igra-probey-led]
 pervenstvo:
   kicker: Проверка факта
@@ -687,15 +514,13 @@ quiz:
       a: 3
       e: два метра арктического льда — до «Ермака» такого не умел ни один корабль мира. Секрет — скошенный нос, вползающий на лёд, и вес судна, продавливающий поле.
 result:
-  kicker: Итог дня
-  h2: Сколько баллов ты собрал?
-  intro: Читай, играй, отвечай и спрашивай изобретателя — за всё начисляются баллы.
+  h2: Итог дня
+  intro: "Игра «Пробей лёд», быстрый ответ и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново."
   zvanie: "0 / 100 · звание: Гость музея"
-  note: Собери все 100 и стань "Первопроходец Арктики".
+  note: Проведи ледокол через лёд, ответь на быстрые вопросы и на викторину.
 kalendar:
-  kicker: Календарь изобретений
-  h2: Выбери любой день года
-  intro: Каждый подсвеченный день — изобретение, которое русские сделали первыми в мире.
+  h2: Календарь изобретений
+  intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
   - src: /muzei/izobreteniya/img/01-08-goskatalog-41298564.jpg
     alt: "Фотопортрет Степана Осиповича Макарова: погрудно, в тёмном адмиральском сюртуке с погонами, с длинной окладистой бородой, на груди орден Святого Георгия"
@@ -744,18 +569,11 @@ kuda:
     main: false
 score:
   awards:
-    tm: 5
-    vb: 5
-    char: 10
     gm_ermak: 15
     gm_quiz2: 15
-    read: 5
     q:
       - 2
       - 10
-    fork: 10
-    chat: 5
-    theme: 5
   ranks:
     - - 100
       - Первопроходец Арктики
