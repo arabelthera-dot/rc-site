@@ -120,7 +120,9 @@
       stage.appendChild(bar);
       var hint = document.createElement('div');
       hint.className = 'dz-hint';
-      hint.textContent = ('ontouchstart' in window) ? 'Разведите пальцы — до мазка' : 'Колесо или двойной щелчок — до мазка';
+      // r833: «до мазка» — только для картин; на днях по шаблону (снимки, открытки, обложки, модели) — «рассмотреть вблизи».
+      var vblizi = /^den-/.test(document.documentElement.getAttribute('data-shablon') || '') ? 'рассмотреть вблизи' : 'до мазка';
+      hint.textContent = ('ontouchstart' in window) ? 'Разведите пальцы — ' + vblizi : 'Колесо или двойной щелчок — ' + vblizi;
       stage.appendChild(hint);
       viewer.addOnceHandler('zoom', function () { hint.style.opacity = '0'; });
       stage.addEventListener('keydown', function (e) {

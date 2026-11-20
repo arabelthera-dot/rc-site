@@ -493,6 +493,9 @@
       return u.split('/').pop() !== location.pathname.split('/').pop();
     });
     var row = el('div','wayrow');
+    /* r833: в «Куда дальше» с карточками «Весь музей» и «Город-музей» те же ссылки второй раз не ставим — только кубик */
+    var inside = doc.getElementById('kuda-dalshe');
+    var kartochki = !!(inside && inside.querySelector('.kd-grid'));
     if(pool.length){
       var d = el('a','dice', T.dice || '🎲 Случайное');
       d.href = '#';
@@ -502,14 +505,13 @@
       });
       row.appendChild(d);
     }
-    if(all && all.href){var a2 = el('a', null, all.label || T.all || 'Все экспонаты'); a2.href = all.href; row.appendChild(a2);}
+    if(!kartochki && all && all.href){var a2 = el('a', null, all.label || T.all || 'Все экспонаты'); a2.href = all.href; row.appendChild(a2);}
     var city = C.city || '../../index.html';
-    var a3 = el('a', null, T.city || 'В город-музей'); a3.href = city; row.appendChild(a3);
-    if(row.children.length < 2) return;
+    if(!kartochki){var a3 = el('a', null, T.city || 'В город-музей'); a3.href = city; row.appendChild(a3);}
+    if(row.children.length < (kartochki ? 1 : 2)) return;
 
     /* по стандарту строка живёт в блоке «Куда дальше»; где его нет —
        ставим её после последнего смыслового блока, а не внутрь чужой секции */
-    var inside = doc.getElementById('kuda-dalshe');
     var after = doc.getElementById('catalog') || doc.getElementById('calendar');
     if(inside) inside.appendChild(row);
     else if(after && after.parentNode) after.parentNode.insertBefore(row, after.nextSibling);
