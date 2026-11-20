@@ -131,8 +131,13 @@ function primenit(teg) {
       console.log(`гид ${m.muzei} ${m.den} → public/muzei/${m.muzei}/${m.fajl}, ${m.sec} с, прогон ${m.run}`);
     } else {
       const VIDEO = `muzei/${m.muzei}/video`, { imya, mesto: vypusk } = m;
+      const est = chitat(PUB).releases?.[vypusk];
+      const v = est ? (est.horizontal?.v ?? 1) + 1 : 1; // новая версия — сбросить кэш у зрителя
+      // Замена ролика — mp4 под новым именем -v<N> (r833): хранилище заливается до слияния, и прежнее имя переписывало
+      // живой файл раньше заявки, а старая заливка — новый. Первый выпуск — без -v1, как путь mp4 в карточке дня.
+      const mp4 = (suf) => `${VIDEO}/day-${imya}${suf}${v > 1 ? `-v${v}` : ''}.mp4`;
       for (const suf of ['', '-9x16']) {
-        vHranilishche(`day-${imya}${suf}.mp4`, `${VIDEO}/day-${imya}${suf}.mp4`);
+        vHranilishche(`day-${imya}${suf}.mp4`, mp4(suf));
         vzyat(`day-${imya}${suf}-poster.jpg`, `${VIDEO}/day-${imya}${suf}-poster.jpg`);
       }
       // Субтитры WebVTT и текст ролика (r725 п.131, п.138) — необязательны: старые выпуски их не несут, страница без них как раньше.
@@ -142,9 +147,7 @@ function primenit(teg) {
         if (x === '.vtt' && !fs.readFileSync(ot, 'utf8').startsWith('WEBVTT')) throw new Error(`${teg}: day-${imya}.vtt — не WebVTT`);
         vzyat(`day-${imya}${x}`, `${VIDEO}/day-${imya}${x}`);
       }
-      const est = chitat(PUB).releases?.[vypusk];
-      const v = est ? (est.horizontal?.v ?? 1) + 1 : 1; // новая версия — сбросить кэш у зрителя
-      const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: `${VIDEO}/day-${imya}${suf}.mp4`, v, w, h, sec: x.sec, mb: x.mb });
+      const fail = (suf, w, h, x) => ({ file: `${vypusk}/day-${imya}${suf}.mp4`, local: mp4(suf), v, w, h, sec: x.sec, mb: x.mb });
       fajly.push(MANIFEST, path.relative(KOREN, zapisatVypusk(PUB, vypusk, {
         title: `История в ${sekund(Math.round(m.fajly['16x9'].sec))}`,
         note: 'Закадровый текст озвучен синтезом речи.',

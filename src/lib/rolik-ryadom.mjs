@@ -19,7 +19,7 @@ export function rolikRyadom(video) {
   if (!fs.existsSync(f)) throw new Error(`ролика «${video.klyuch}» нет в public/video/registry/ (файл ${video.klyuch}.json)`);
   const { horizontal: h, poster } = JSON.parse(fs.readFileSync(f, 'utf8'));
   if (!h?.local?.endsWith('.mp4')) throw new Error(`${video.klyuch}: у выпуска нет horizontal.local *.mp4`);
-  const ryadom = (x) => ({ local: h.local.replace(/\.mp4$/, x), v: h.v });
+  const ryadom = (x) => ({ local: h.local.replace(/(-v\d+)?\.mp4$/, x), v: h.v }); // day-<imya>-v5.mp4 → day-<imya>.vtt
   const vtt = ryadom('.vtt'), txt = path.join(PUB, ryadom('.txt').local);
   const vttFail = path.join(PUB, vtt.local);
   const n = Number.isFinite(h.sec) ? Math.round(h.sec) : null;
