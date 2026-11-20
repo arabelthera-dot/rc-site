@@ -105,10 +105,20 @@ const opisanieAttr = (im) => (im.opisanie_dlinnoe ? ` aria-describedby="${opisan
 // Подпись кадра с выходными данными (Р830, брак «Хранит X. Хранится: X.»): если держатель уже назван в credit
 // («Хранится: …»), хвостовая фраза «Хранит …» из подписи не повторяется.
 const reHranit = /(^|(?<=[.!?»)]\s+))Хранит\s[^]*$/;
+// Склейка без типографского брака (Р833, строки 28, 41, 56 журнала Р832): «П. Н.. Хранит», «Эльцуфен М..» — одна точка,
+// без пробела перед точкой и запятой и без двойных пробелов; credit после законченной фразы — с заглавной буквы.
+const chisto = (s) => s.replace(/(?<!\.)\.\.(?=\s|<|$)/g, '.').replace(/[ \u00a0]+(?=[.,])/g, '').replace(/ {2,}/g, ' ');
+// Адрес «goskatalog.ru» латиницей в credit (строка 66): каталог уже назван «Госкаталог № …» — хвост «Источник: goskatalog.ru»
+// не нужен; где номера нет — каталог называется по-русски.
+const reGkAdres = /[.;,]?\s*«?Источник: goskatalog\.ru»?\.?$/;
+const bezAdresa = (c) => c.replace(/,\s*goskatalog\.ru(?![/#\w])/g, '')
+  .replace(reGkAdres, /Госкаталог №/.test(c) ? '' : '. Источник: Госкаталог Музейного фонда РФ');
 export const podpisHtml = (f) => {
-  if (!f.credit) return f.podpis;
-  const podpis = /Хранится:/.test(f.credit) ? f.podpis.replace(reHranit, '').trim() : f.podpis;
-  return `${podpis} <span class="credit">${f.credit}</span>`;
+  if (!f.credit) return chisto(f.podpis);
+  f = { ...f, credit: bezAdresa(f.credit) };
+  const podpis = chisto(/Хранится:/.test(f.credit) ? f.podpis.replace(reHranit, '').trim() : f.podpis);
+  const credit = chisto(/[.!?»]$/.test(podpis) ? f.credit.replace(/^\p{Ll}/u, (b) => b.toUpperCase()) : f.credit);
+  return `${podpis} <span class="credit">${credit}</span>`;
 };
 export const kadrHtml = (f) => `<figure class="${f.klass ? `fig ${f.klass}` : 'fig'}"><img src="${f.src}"${f.width ? ` width="${f.width}" height="${f.height}"` : ''} loading="lazy" decoding="async" alt="${f.alt.replace(/"/g, '&quot;')}" data-source="${f.data_source}" data-license="${f.license.replace(/"/g, '&quot;')}"${opisanieAttr(f)}><figcaption>${podpisHtml(f)}</figcaption>${opisanieHtml(f)}</figure>`;
 export const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">${u.podrobnee ?? 'Узнать подробнее'}</span><span class="c">Свернуть</span></span></span></summary>
