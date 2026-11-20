@@ -1,32 +1,32 @@
 {
-  "title": "История в 52 секунды",
+  "title": "История в 53 секунды",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-v5.mp4",
+    "v": 5,
     "w": 1920,
     "h": 1080,
-    "sec": 52,
-    "mb": 10.3
+    "sec": 52.5,
+    "mb": 9.9
   },
   "vertical": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-9x16.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-9x16-v5.mp4",
+    "v": 5,
     "w": 1080,
     "h": 1920,
-    "sec": 52,
-    "mb": 9.7
+    "sec": 52.5,
+    "mb": 9.1
   },
   "poster": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "nesdayutsya/07feb-dzhalil/day-07feb-dzhalil-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-07feb-dzhalil-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }
