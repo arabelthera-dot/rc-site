@@ -12,7 +12,7 @@
 //  · описание страницы для поисковиков не прошло — берётся заголовок первого утверждённого факта (хук дня).
 // Слова утверждённого не меняются: машина только выбрасывает лишнее и берёт готовые предложения утверждённого.
 // Образец — извлекающее (extractive) реферирование: в выдаче только предложения источника, ничего от себя
-// (Nenkova, McKeown, «Automatic Summarization», 2011, https://www.cs.columbia.edu/~kathy/papers/Nenkova-McKeown-FTIR.pdf);
+// (Nenkova, McKeown, «Automatic Summarization», Foundations and Trends in IR, 2011; ссылка — в заявке r833);
 // подключено, как факты, — преобразование карточки при загрузке коллекции (Astro content collections).
 // Выключатель RC_RASSKAZ_IZ_UTVERZHDENO=0 — прежний путь. Откат — убрать вызов в den-obshchee.mjs (proveritKartochku).
 import fs from 'node:fs';
