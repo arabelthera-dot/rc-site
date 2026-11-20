@@ -67,6 +67,7 @@ jobs:
             /public/video/registry/
             /src/data/museums.json
             /src/data/hranilishche-rolikov.sha256
+            /src/content/dni-shablon/
             /package.json
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -112,7 +113,7 @@ jobs:
             vyvod=; ssylki=; pervaya=
             for teg in $tegi; do
               v=$(node scripts/rolik-na-sait.mjs primenit "$teg") || { echo "::error::$teg не разложился — на сайт не идёт"; echo "- $teg — брак, заявки нет" >> "$GITHUB_STEP_SUMMARY"; brak=1; continue; }
-              git add --sparse public/ src/data/hranilishche-rolikov.sha256
+              git add --sparse public/ src/data/hranilishche-rolikov.sha256 src/content/dni-shablon/
               git diff --cached --quiet && { echo "$teg: на сайте уже то же самое"; continue; }
               p1=$(printf '%s\n' "$v" | head -1)
               git commit -q -m "[avto] $p1 ($teg)"
