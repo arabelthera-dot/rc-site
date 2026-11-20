@@ -1,32 +1,32 @@
 {
-  "title": "История в 47 секунд",
+  "title": "История в 48 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/03feb-troica/day-03feb-troica.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-03feb-troica.mp4",
-    "v": 2,
+    "local": "muzei/ne-sdayutsya/video/day-03feb-troica-v3.mp4",
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 47.2,
-    "mb": 13.5
+    "sec": 47.6,
+    "mb": 13.9
   },
   "vertical": {
     "file": "nesdayutsya/03feb-troica/day-03feb-troica-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-03feb-troica-9x16.mp4",
-    "v": 2,
+    "local": "muzei/ne-sdayutsya/video/day-03feb-troica-9x16-v3.mp4",
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 47.2,
+    "sec": 47.6,
     "mb": 13.3
   },
   "poster": {
     "file": "nesdayutsya/03feb-troica/day-03feb-troica-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-03feb-troica-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "nesdayutsya/03feb-troica/day-03feb-troica-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-03feb-troica-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
