@@ -110,9 +110,70 @@
    "podrobnee": "Три тома «Объективной психологии» вышли в 1907–1910 годах, «Общие основания рефлексологии» — в 1918-м."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/02-01-goskatalog-66150086.jpg",
+   "gk": "66434151",
+   "fakt": 13,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "13",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/izobreteniya/img/02-01-goskatalog-24878749.jpg",
+   "gk": "25026537",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/02-01-goskatalog-17392585.jpg",
+   "gk": "17525967",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/02-01-goskatalog-34916745.jpg",
+   "gk": "35123319",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/02-01-goskatalog-4968218.jpg",
+   "gk": "5032613",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/02-01-goskatalog-5793834.jpg",
+   "gk": "5969502",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  }
+ ],
  "iz": {
-  "kartochka": "knowledge/utverzhdeno/izobreteniya/02-01.md",
+  "kartochka": "logs/r646-fakty-0201-utverzhdeny.md",
   "material": null
  }
 }
