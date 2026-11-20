@@ -705,8 +705,8 @@ audioguide:
     - t: 55
       mark: 0:55
       title: Пар без угля
-    - t: 100
-      mark: 1:40
+    - t: 99
+      mark: 1:39
       title: Задвижка открыта
     - t: 144
       mark: 2:24
@@ -714,8 +714,8 @@ audioguide:
     - t: 177
       mark: 2:57
       title: Где граница
-    - t: 198
-      mark: 3:18
+    - t: 197
+      mark: 3:17
       title: Факты дня
     - t: 233
       mark: 3:53

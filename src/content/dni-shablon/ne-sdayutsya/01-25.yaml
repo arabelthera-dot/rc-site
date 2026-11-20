@@ -412,11 +412,11 @@ audioguide:
     - t: 23
       mark: 0:23
       title: Два слова
-    - t: 71
-      mark: 1:11
+    - t: 70
+      mark: 1:10
       title: Правда и возмездие
-    - t: 97
-      mark: 1:37
+    - t: 96
+      mark: 1:36
       title: Кремль
     - t: 124
       mark: 2:04

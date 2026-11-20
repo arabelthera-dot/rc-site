@@ -487,11 +487,11 @@ audioguide:
     - t: 0
       mark: 0:00
       title: Аэродром
-    - t: 21
-      mark: 0:21
+    - t: 20
+      mark: 0:20
       title: Звено
-    - t: 42
-      mark: 0:42
+    - t: 41
+      mark: 0:41
       title: Таран
     - t: 63
       mark: 1:03
