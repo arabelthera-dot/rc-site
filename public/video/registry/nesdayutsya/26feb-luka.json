@@ -3,8 +3,8 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-26feb-luka.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-26feb-luka-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 49.7,
@@ -12,8 +12,8 @@
   },
   "vertical": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-26feb-luka-9x16.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-26feb-luka-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 49.7,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-26feb-luka-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/26feb-luka/day-26feb-luka-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-26feb-luka-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
