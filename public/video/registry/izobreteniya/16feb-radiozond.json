@@ -1,32 +1,32 @@
 {
-  "title": "История в 44 секунды",
+  "title": "История в 46 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond.mp4",
-    "local": "muzei/izobreteniya/video/day-16feb-radiozond.mp4",
-    "v": 3,
+    "local": "muzei/izobreteniya/video/day-16feb-radiozond-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 44.1,
-    "mb": 10.7
+    "sec": 45.8,
+    "mb": 10.9
   },
   "vertical": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-16feb-radiozond-9x16.mp4",
-    "v": 3,
+    "local": "muzei/izobreteniya/video/day-16feb-radiozond-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 44.1,
-    "mb": 9.7
+    "sec": 45.8,
+    "mb": 10
   },
   "poster": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond-poster.jpg",
     "local": "muzei/izobreteniya/video/day-16feb-radiozond-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "izobreteniya/16feb-radiozond/day-16feb-radiozond-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-16feb-radiozond-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
