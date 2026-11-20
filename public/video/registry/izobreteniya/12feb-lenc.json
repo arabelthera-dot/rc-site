@@ -1,32 +1,32 @@
 {
-  "title": "История в 36 секунд",
+  "title": "История в 53 секунды",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/12feb-lenc/day-12feb-lenc.mp4",
-    "local": "muzei/izobreteniya/video/day-12feb-lenc.mp4",
-    "v": 3,
+    "local": "muzei/izobreteniya/video/day-12feb-lenc-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 36.2,
-    "mb": 9.7
+    "sec": 52.7,
+    "mb": 14.2
   },
   "vertical": {
     "file": "izobreteniya/12feb-lenc/day-12feb-lenc-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-12feb-lenc-9x16.mp4",
-    "v": 3,
+    "local": "muzei/izobreteniya/video/day-12feb-lenc-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 36.2,
-    "mb": 10.4
+    "sec": 52.7,
+    "mb": 14
   },
   "poster": {
     "file": "izobreteniya/12feb-lenc/day-12feb-lenc-poster.jpg",
     "local": "muzei/izobreteniya/video/day-12feb-lenc-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "izobreteniya/12feb-lenc/day-12feb-lenc-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-12feb-lenc-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
