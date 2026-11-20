@@ -1,32 +1,32 @@
 {
-  "title": "История в 50 секунд",
+  "title": "История в 51 секунду",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-16feb-portnova.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 49.7,
-    "mb": 13.3
+    "sec": 50.5,
+    "mb": 13.4
   },
   "vertical": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-9x16.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 49.7,
-    "mb": 12.7
+    "sec": 50.5,
+    "mb": 12.8
   },
   "poster": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/16feb-portnova/day-16feb-portnova-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-16feb-portnova-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
