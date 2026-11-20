@@ -3,30 +3,30 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-v5.mp4",
+    "v": 5,
     "w": 1920,
     "h": 1080,
-    "sec": 49.6,
+    "sec": 49.9,
     "mb": 13.3
   },
   "vertical": {
     "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-9x16.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-9x16-v5.mp4",
+    "v": 5,
     "w": 1080,
     "h": 1920,
-    "sec": 49.6,
-    "mb": 11.5
+    "sec": 49.9,
+    "mb": 11.6
   },
   "poster": {
     "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "nesdayutsya/24feb-ostrovskij/day-24feb-ostrovskij-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-24feb-ostrovskij-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }
