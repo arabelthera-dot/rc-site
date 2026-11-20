@@ -1,32 +1,32 @@
 {
-  "title": "История в 47 секунд",
+  "title": "История в 46 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-v5.mp4",
+    "v": 5,
     "w": 1920,
     "h": 1080,
-    "sec": 46.5,
-    "mb": 13.8
+    "sec": 46.3,
+    "mb": 13.7
   },
   "vertical": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-9x16.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-9x16-v5.mp4",
+    "v": 5,
     "w": 1080,
     "h": 1920,
-    "sec": 46.5,
-    "mb": 13.3
+    "sec": 46.3,
+    "mb": 13.4
   },
   "poster": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "nesdayutsya/28feb-chajkina/day-28feb-chajkina-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-28feb-chajkina-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }
