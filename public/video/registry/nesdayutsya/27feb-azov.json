@@ -3,17 +3,17 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/27feb-azov/day-27feb-azov.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-27feb-azov.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-27feb-azov-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 45.7,
-    "mb": 13.6
+    "mb": 13.7
   },
   "vertical": {
     "file": "nesdayutsya/27feb-azov/day-27feb-azov-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-27feb-azov-9x16.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-27feb-azov-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 45.7,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "nesdayutsya/27feb-azov/day-27feb-azov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-27feb-azov-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/27feb-azov/day-27feb-azov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-27feb-azov-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
