@@ -1,0 +1,32 @@
+{
+  "title": "История в 48 секунд",
+  "note": "Закадровый текст озвучен синтезом речи.",
+  "horizontal": {
+    "file": "izobreteniya/05feb-boldyrev/day-05feb-boldyrev.mp4",
+    "local": "muzei/izobreteniya/video/day-05feb-boldyrev.mp4",
+    "v": 1,
+    "w": 1920,
+    "h": 1080,
+    "sec": 47.8,
+    "mb": 15.9
+  },
+  "vertical": {
+    "file": "izobreteniya/05feb-boldyrev/day-05feb-boldyrev-9x16.mp4",
+    "local": "muzei/izobreteniya/video/day-05feb-boldyrev-9x16.mp4",
+    "v": 1,
+    "w": 1080,
+    "h": 1920,
+    "sec": 47.8,
+    "mb": 16.1
+  },
+  "poster": {
+    "file": "izobreteniya/05feb-boldyrev/day-05feb-boldyrev-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-05feb-boldyrev-poster.jpg",
+    "v": 1
+  },
+  "poster_vertical": {
+    "file": "izobreteniya/05feb-boldyrev/day-05feb-boldyrev-9x16-poster.jpg",
+    "local": "muzei/izobreteniya/video/day-05feb-boldyrev-9x16-poster.jpg",
+    "v": 1
+  }
+}
