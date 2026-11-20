@@ -3,30 +3,30 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/09feb-chizhevskij/day-09feb-chizhevskij.mp4",
-    "local": "muzei/izobreteniya/video/day-09feb-chizhevskij.mp4",
-    "v": 2,
+    "local": "muzei/izobreteniya/video/day-09feb-chizhevskij-v3.mp4",
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 46.7,
-    "mb": 15.1
+    "mb": 14.4
   },
   "vertical": {
     "file": "izobreteniya/09feb-chizhevskij/day-09feb-chizhevskij-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-09feb-chizhevskij-9x16.mp4",
-    "v": 2,
+    "local": "muzei/izobreteniya/video/day-09feb-chizhevskij-9x16-v3.mp4",
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 46.7,
-    "mb": 14.2
+    "mb": 13.5
   },
   "poster": {
     "file": "izobreteniya/09feb-chizhevskij/day-09feb-chizhevskij-poster.jpg",
     "local": "muzei/izobreteniya/video/day-09feb-chizhevskij-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/09feb-chizhevskij/day-09feb-chizhevskij-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-09feb-chizhevskij-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
