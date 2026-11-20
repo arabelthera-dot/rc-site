@@ -766,11 +766,11 @@ etiketka_oblozhki:
 slovar:
 - lyudi:vzvod-shironina
 vizual:
-  imya: shironin-zemlya-taranovki
+  imya: shironin-taranovka-risunok
   vid: predmet
-  kicker: Снимок под лупой
-  h2: Земля Тарановки
-  lead: 'Эту землю со станции Тарановка жена Петра Широнина привезла в музей в 1983 году. Приблизь контейнер: это земля со станции, где стоял взвод.'
+  kicker: Рисунок под лупой
+  h2: Тарановка, рисунок с натуры
+  lead: 'Приблизь рисунок Ростислава Горелова: он сделан с натуры в 1943 году у железнодорожной станции под Тарановкой, где у переезда стоял взвод Широнина. Видны столбы с проводами, разбитая будка на насыпи и дым над посёлком.'
 audioguide:
   audioSrc: audio-guide-vzvod-shironina-ru.mp3
   durationLabel: около 2 минут

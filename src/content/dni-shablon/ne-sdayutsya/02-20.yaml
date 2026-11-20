@@ -790,11 +790,11 @@ etiketka_oblozhki:
 slovar:
 - lyudi:zavojko
 vizual:
-  imya: petropavlovsk-avrora-chertezh
+  imya: petropavlovsk-krest-kartech
   vid: predmet
-  kicker: Чертёж под лупой
-  h2: Пробоины «Авроры»
-  lead: 'Этот чертёж составили после боя 1854 года. Приблизь корпус и мачты фрегата: цифрами отмечено каждое попадание вражеских ядер.'
+  kicker: Предмет под лупой
+  h2: Крест из картечи
+  lead: 'Приблизь крест: он сложен из картечи, собранной там, где в 1854 году шли бои за Петропавловск. Внизу лежит горка той же картечи на треугольной подставке.'
 audioguide:
   audioSrc: audio-guide-petropavlovsk-ru.mp3
   durationLabel: около 2 минут
