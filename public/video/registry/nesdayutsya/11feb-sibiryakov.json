@@ -3,8 +3,8 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 51.5,
@@ -12,21 +12,21 @@
   },
   "vertical": {
     "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-9x16.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 51.5,
-    "mb": 11.6
+    "mb": 11.7
   },
   "poster": {
     "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/11feb-sibiryakov/day-11feb-sibiryakov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-11feb-sibiryakov-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
