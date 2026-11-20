@@ -9,6 +9,7 @@
 // Откат — RC_FAKTY_IZ_UTVERZHDENO=0 или убрать вызовы faktyIzUtverzhdeno (den-obshchee, zakon, sverka/chitat-stranicu).
 import fs from 'node:fs';
 import path from 'node:path';
+import { poIstochniku } from './istochnik-fakta.mjs';
 
 export const S_DNYA = '02-01';
 // День на образце февраля: ключ с 02-01 или январский день, переведённый машиной scripts/yanvar-v-obrazec.mjs (Р656):
@@ -19,6 +20,12 @@ const vklyucheno = () => process.env.RC_FAKTY_IZ_UTVERZHDENO !== '0';
 // syroe — разобранный yaml дня; koren — корень сайта. Возвращает { syroe, oshibki }: syroe с подставленным текстом
 // (новый объект, исходный не меняется), oshibki — строки для общего списка ошибок карточек.
 export function faktyIzUtverzhdeno(syroe, muzei, key, koren = '.') {
+  const r = tekstIzUtverzhdeno(syroe, muzei, key, koren);
+  // плашка, подпись ссылки и «На чём стоит страница» — по строке «Источник» факта (src/lib/istochnik-fakta.mjs)
+  return r.syroe?.fakty && vklyucheno() ? { ...r, syroe: poIstochniku(r.syroe) } : r;
+}
+
+function tekstIzUtverzhdeno(syroe, muzei, key, koren) {
   const f = path.join(koren, 'src/data/utverzhdeno', muzei, `${key}.json`);
   if (!syroe?.fakty || !naObrazce(key, syroe) || !fs.existsSync(f)) return { syroe, oshibki: [] };
   const utv = JSON.parse(fs.readFileSync(f, 'utf8'));

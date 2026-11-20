@@ -5,7 +5,7 @@
 //   1. Разметка: <a>текст</a> → текст (ссылка, если текст — сам адрес), остальные теги снять, <br> и </p> — пробел, сущности
 //      раскрыть. Не трогает: skripty, head.ld, razdely и story.abzacy (своя разметка января, Р627).
 //      summary и det фактов тоже без разметки — как в утверждённом (src/data/utverzhdeno) и в феврале.
-//   2. sources с html и ссылками — по пункту на ссылку: title — текст ссылки, note — текст пункта без ссылок (пусто — хост).
+//   2. sources с html и ссылками — по пункту на ссылку: title — текст ссылки, note — у ссылки внутри фразы её пояснение (scripts/lib/punkty-frazy.mjs), иначе текст пункта без ссылок (пусто — хост).
 //   3. Механически: nomer_dnya, god_pokaza, citaty [], id/sravnenie/dlya_voprosa/istochnik фактов, istochniki из ссылок
 //      дня (baza — по хосту src/data/spravochniki/bazy.json), podlinnik и hranitel картинки из credit «Хранится: …»,
 //      pokazan_sergeyu — дата «Утверждено Сергеем» из карточки утверждённого (поле iz), 'net' у полей Р733 без данных.
@@ -19,6 +19,7 @@ import path from 'node:path';
 import YAML, { isMap, isSeq, isScalar } from 'yaml';
 import { faktyIzUtverzhdeno } from '../src/lib/fakty-iz-utverzhdeno.mjs';
 import { standartDnya } from '../src/lib/standart-dnya.mjs';
+import { punktyFrazy } from './lib/punkty-frazy.mjs';
 
 const [muzei, key] = process.argv.slice(2);
 const arg = (k) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : undefined; };
@@ -92,15 +93,18 @@ const sources = doc.get('sources', true);
   const ssylki = [...h.matchAll(SSYLKA)];
   if (!ssylki.length) { if (HTML.test(h)) zamenit(uzel.get('html', true), zn(snyat(h))); return; }
   // «A и B: …», «… — A.» — связка и тире при ссылке уходят вместе с ней (изоб 01-07, НС 01-06).
-  const ostatok = snyat(h.replace(SSYLKA, '\u0000')).replace(/\u0000(?:\s*(?:и|,|;)\s*\u0000)+/g, '\u0000')
+  // «<a>A</a> (<a>дубль</a>): …» — скобка вокруг ссылки уходит с ней, иначе note «( ): …» (изоб 01-21, Р832)
+  const ostatok = snyat(h.replace(SSYLKA, '\u0000')).replace(/\(\s*\u0000\s*\)/g, '\u0000').replace(/\u0000(?:\s*(?:и|,|;)\s*\u0000)+/g, '\u0000')
     .replace(/\s*[,;—–]?\s*\u0000\s*[,;]?/g, ' ').replace(/[:,;]\s*\./g, '.').replace(/\s+([.,:;])/g, '$1')
     .replace(/\s{2,}/g, ' ').replace(/^[\s,;:—.]+|[\s,;:—]+$/g, '').trim();
-  // ссылка внутри фразы (слова и до неё, и после): вырезать её — рвать текст («Изображения: и ; схема — .»), пункт берётся целиком
+  // ссылка внутри фразы (слова и до неё, и после): вырезать её — рвать текст («Изображения: и ; схема — .»)
   const kuski = h.replace(SSYLKA, '\u0000').split('\u0000');
   const vnutri = kuski.slice(1).some((posle, i) => BUKVA.test(snyat(kuski[i])) && BUKVA.test(snyat(posle)));
-  const punkty = ssylki.map(([, href, x]) => {
+  // внутри фразы — у каждой ссылки своё пояснение (scripts/lib/punkty-frazy.mjs), не вся фраза без названий ссылок
+  const poFraze = vnutri ? punktyFrazy(h, snyat) : [];
+  const punkty = ssylki.map(([, href, x], i) => {
     istSsylki.push([href, snyat(x)]);
-    return { href, title: snyat(x), note: (vnutri ? snyat(h) : ostatok) || host(href) };
+    return { href, title: snyat(x), note: (vnutri ? poFraze[i].note : ostatok) || host(href) };
   });
   const otstup = ' '.repeat(stolbec(uzel.range[0]) - 2);
   pravki.push([uzel.range[0], konecStroki(uzel.range[1]), punkty.map(zn).join(`\n${otstup}- `)]);
