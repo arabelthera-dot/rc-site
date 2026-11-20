@@ -359,7 +359,7 @@ def dobor(a):
                 put = img / f'{d}-goskatalog-{im}.jpg'
                 kadr.save(put, quality=85)
                 heshi.append(h)
-                avt = ', '.join(x.get('name', '') for x in o.get('authors') or [] if isinstance(x, dict))
+                avt = ', '.join(x.get('name', '') for x in o.get('authors') or [] if isinstance(x, dict)).rstrip('.')
                 nazv = nazvanie(o).rstrip('.')
                 vzyali.append({'src': f'/muzei/{a.muzei}/img/{put.name}', 'alt': f'Кадр из музейного фонда: {nazv}'[:200],
                                'data_source': f'{gk.GK}/portal/#/collections?id={o["id"]}', 'license': LICENZIYA,
