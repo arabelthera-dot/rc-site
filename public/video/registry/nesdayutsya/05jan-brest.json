@@ -4,7 +4,7 @@
   "horizontal": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 49.9,
@@ -13,20 +13,20 @@
   "vertical": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 49.9,
-    "mb": 12.6
+    "mb": 12.7
   },
   "poster": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/05jan-brest/day-05jan-brest-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-05jan-brest-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
