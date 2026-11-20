@@ -1,32 +1,32 @@
 {
-  "title": "История в 54 секунды",
+  "title": "История в 55 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev.mp4",
-    "local": "muzei/izobreteniya/video/day-08feb-mendeleev.mp4",
-    "v": 4,
+    "local": "muzei/izobreteniya/video/day-08feb-mendeleev-v5.mp4",
+    "v": 5,
     "w": 1920,
     "h": 1080,
-    "sec": 54.3,
+    "sec": 54.6,
     "mb": 14.1
   },
   "vertical": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-08feb-mendeleev-9x16.mp4",
-    "v": 4,
+    "local": "muzei/izobreteniya/video/day-08feb-mendeleev-9x16-v5.mp4",
+    "v": 5,
     "w": 1080,
     "h": 1920,
-    "sec": 54.3,
-    "mb": 13.6
+    "sec": 54.6,
+    "mb": 13.7
   },
   "poster": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev-poster.jpg",
     "local": "muzei/izobreteniya/video/day-08feb-mendeleev-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "izobreteniya/08feb-mendeleev/day-08feb-mendeleev-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-08feb-mendeleev-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }
