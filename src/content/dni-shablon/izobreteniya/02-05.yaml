@@ -184,15 +184,15 @@ story:
     - summary: Разбитое стекло
       det:
         - Стеклянный негатив с портретом царя разбился в пути, и казак придумал плёнку, которая не бьётся.
-      src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+      src: "Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/"
     - summary: Сутки в воде
       det:
         - Плёнку Болдырева на сутки положили в воду — она вышла такой же прозрачной и гибкой.
-      src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+      src: "Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/"
     - summary: Без патента
       det:
         - 'Изобретатель первой гибкой плёнки дважды отказался от патента: не хватило денег на пошлину.'
-      src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — prlib.ru'
+      src: "Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev"
 fakty:
   - id: fakty
     nav: Факты
@@ -201,7 +201,7 @@ fakty:
     udary:
       - n: 1
         sravnenie: net
-        src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+        src: "Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/"
         otryvok: Плёнку Болдырева на сутки положили в воду — она вышла такой же прозрачной и гибкой
         stranica: журнал «Нация»
         href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
@@ -213,7 +213,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 2
         sravnenie: net
-        src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — prlib.ru'
+        src: "Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev"
         otryvok: Плёнка американца Истмена уступала болдыревской
         stranica: Президентская библиотека
         href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev
@@ -223,7 +223,7 @@ fakty:
         dlya_voprosa: false
       - n: 3
         sravnenie: net
-        src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+        src: "Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/"
         otryvok: Стеклянный негатив с портретом царя разбился в пути, и казак придумал плёнку, которая не бьётся
         stranica: «Кто главный»
         href: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/
@@ -269,7 +269,7 @@ fakty:
           podpis_chto: И. В. Болдырев. «Смотр казаков атаманом отдела. Станица Цымлянская»
           podpis_gde: станица Цымлянская, область Войска Донского
           podpis_kogda: '1876'
-        src: 'Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — sarkel61.ru'
+        src: "Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/"
         otryvok: Гибкая фотоплёнка была у донского казака за 10 лет до Kodak
         stranica: «Наше наследие», 1989
         href: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
@@ -281,7 +281,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 5
         sravnenie: net
-        src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — prlib.ru'
+        src: "Источник: Президентская библиотека имени Б. Н. Ельцина, «Болдырев Иван Васильевич» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev"
         otryvok: 'Изобретатель первой гибкой плёнки дважды отказался от патента: не хватило денег на пошлину'
         stranica: Президентская библиотека
         href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Boldyrev
@@ -293,7 +293,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 6
         sravnenie: net
-        src: 'Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — sarkel61.ru'
+        src: "Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/"
         otryvok: Казак придумал затвор, чтобы снимать прямо из окна мчащегося поезда
         stranica: «Наше наследие», 1989
         href: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
@@ -305,7 +305,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 7
         sravnenie: net
-        src: 'Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — sarkel61.ru'
+        src: "Источник: Е. Бархатова, «Донские сюжеты Ивана Болдырева», «Наше наследие», 1989, IV(10) — https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/"
         otryvok: Его затвор Техническое общество признало «лучшим из всех, что есть в продаже»
         stranica: «Наше наследие», 1989
         href: https://sarkel61.ru/istoriya/donskie_syuzhety_ivana_boldyreva_e_barhatova/
@@ -315,7 +315,7 @@ fakty:
         dlya_voprosa: false
       - n: 8
         sravnenie: net
-        src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+        src: "Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/"
         otryvok: 'Объектив собрал сам: ночами крутил стёкла в картонной трубке, «не имея понятия об оптике»'
         stranica: журнал «Нация»
         href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
@@ -325,7 +325,7 @@ fakty:
         dlya_voprosa: false
       - n: 9
         sravnenie: net
-        src: 'Источник: Старочеркасский музей-заповедник, анонс лекции, газета «Победа» (Аксай), 13.09.2025 — pobeda-aksay.ru'
+        src: "Источник: Старочеркасский музей-заповедник, анонс лекции, газета «Победа» (Аксай), 13.09.2025 — https://pobeda-aksay.ru/2025/09/13/v-starocherkasskom-muzee-zapovednike-rasskazhut-o-donskom-fotografe-i-v-boldyreve/"
         otryvok: Эксперты назвали его плёнку и затвор пустыми затеями, а через 10 лет мир снимал на гибкую плёнку
         stranica: «Победа», 13.09.2025
         href: https://pobeda-aksay.ru/2025/09/13/v-starocherkasskom-muzee-zapovednike-rasskazhut-o-donskom-fotografe-i-v-boldyreve/
@@ -335,7 +335,7 @@ fakty:
         dlya_voprosa: false
       - n: 10
         sravnenie: net
-        src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+        src: "Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/"
         otryvok: Снимал ночью при свечах, керосинке и даже при свете луны
         stranica: «Кто главный»
         href: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/
@@ -349,7 +349,7 @@ fakty:
     udary:
       - n: 11
         sravnenie: net
-        src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+        src: "Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/"
         otryvok: 'Полез с камерой в угольную шахту: лампа под землёй гасла, а снимки всё равно вышли'
         stranica: журнал «Нация»
         href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
@@ -359,7 +359,7 @@ fakty:
         dlya_voprosa: false
       - n: 12
         sravnenie: net
-        src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+        src: "Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/"
         otryvok: 'Знаменитый фотограф Карелин сам подошёл к казаку на выставке: «Хочу быть как вы»'
         stranica: журнал «Нация»
         href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
@@ -369,7 +369,7 @@ fakty:
         dlya_voprosa: false
       - n: 13
         sravnenie: net
-        src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+        src: "Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/"
         otryvok: 'Придворный фотограф обвинил казака в краже способа и услышал: «Ни от кого не брал»'
         stranica: журнал «Нация»
         href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
@@ -379,7 +379,7 @@ fakty:
         dlya_voprosa: false
       - n: 14
         sravnenie: net
-        src: 'Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — nationmagazine.ru'
+        src: "Источник: О. Майдельман, «Как казак-изобретатель фирму Kodak обошёл», журнал «Нация» — https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/"
         otryvok: Золото выставки 1882 года ушло за семейные снимки, изобретателю плёнки дали бронзу
         stranica: журнал «Нация»
         href: https://nationmagazine.ru/people/kak-kazak-izobretatel-firmu-kodak-oboshel/
@@ -391,7 +391,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 15
         sravnenie: net
-        src: 'Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — kg-rostov.ru'
+        src: "Источник: «Иван Болдырев: судьба репортёра в России», «Кто главный» — https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/"
         otryvok: 'Разбитые стеклянные негативы он спасал: переносил снимок на свою плёнку'
         stranica: «Кто главный»
         href: https://kg-rostov.ru/history/histori_cult_person/ivan-boldyrev-sudba-reportera-v-rossii/

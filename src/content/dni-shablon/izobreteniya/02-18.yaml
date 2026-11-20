@@ -254,11 +254,11 @@ story:
   - summary: Пешком по чернозёму
     det:
     - Для «Русского чернозёма» Докучаев прошёл 10 тысяч вёрст за два лета, большей частью пешком.
-    src: 'Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — aif.ru'
+    src: "Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy"
   - summary: Менделеев за Докучаева
     det:
     - Оппонентом его докторской был Менделеев — и встал на его сторону целиком.
-    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дороже золота — русский чернозём» — https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/"
   - summary: Первая в мире классификация
     det:
     - Первая в мире классификация почв по происхождению — русская, 1886.
@@ -271,7 +271,7 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дороже золота — русский чернозём» — https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/"
     otryvok: Кубометры русского чернозёма стояли в Сорбонне 68 лет — разбили только студенты в 1968
     stranica: «Дороже золота — русский чернозём» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
@@ -283,7 +283,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 2
     sravnenie: net
-    src: 'Источник: журнал «Родина», «Почему западный агробизнес готов вывозить его эшелонами с бывших колхозных полей» — rodina-history.ru'
+    src: "Источник: журнал «Родина», «Почему западный агробизнес готов вывозить его эшелонами с бывших колхозных полей» — https://rodina-history.ru/2020/10/09/pochemu-zapadnyj-agrobiznes-gotov-vyvozit-ego-eshelonami-s-byvshih-kolhoznyh-polej.html"
     otryvok: Русский чернозём в Париже увидели 32 миллиона человек — Европа назвала его «чёрным бриллиантом»
     stranica: «Почему западный агробизнес готов вывозить его эшелонами с бывших колхозных полей» — журнал «Родина»
     href: https://rodina-history.ru/2020/10/09/pochemu-zapadnyj-agrobiznes-gotov-vyvozit-ego-eshelonami-s-byvshih-kolhoznyh-polej.html
@@ -295,7 +295,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 3
     sravnenie: net
-    src: 'Источник: «Вести-Воронеж», «Он спас воронежские земли от засухи» — vestivrn.ru'
+    src: "Источник: «Вести-Воронеж», «Он спас воронежские земли от засухи» — https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/"
     otryvok: 47 лесополос Докучаева 1892 года растут до сих пор — в степи, где гибли хлеба
     stranica: «Он спас воронежские земли от засухи» — «Вести-Воронеж»
     href: https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/
@@ -307,7 +307,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 4
     sravnenie: net
-    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дороже золота — русский чернозём» — https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/"
     otryvok: Французы наградили Докучаева орденом «За заслуги по земледелию» — за русскую землю
     stranica: «Дороже золота — русский чернозём» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
@@ -355,7 +355,7 @@ fakty:
       podpis_gde: Россия
       podpis_kogda: конец XIX в.
       pometka_prav: citirovanie-1274
-    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дороже золота — русский чернозём» — https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/"
     otryvok: Оппонентом его докторской был Менделеев — и встал на его сторону целиком
     stranica: «Дороже золота — русский чернозём» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
@@ -365,7 +365,7 @@ fakty:
     dlya_voprosa: false
   - n: 6
     sravnenie: net
-    src: 'Источник: «Вести-Воронеж», «Он спас воронежские земли от засухи» — vestivrn.ru'
+    src: "Источник: «Вести-Воронеж», «Он спас воронежские земли от засухи» — https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/"
     otryvok: Осадков в Каменной степи при Докучаеве — 370 мм, теперь — 520–540
     stranica: «Он спас воронежские земли от засухи» — «Вести-Воронеж»
     href: https://vestivrn.ru/news/2026/03/12/on-spas-voronezhskie-zemli-ot-zasukhi-180-let-nazad-rodilsya-uchyonyi-vasilii-dokuchaev/
@@ -415,7 +415,7 @@ fakty:
       podpis_gde: Ярославль
       podpis_kogda: '1983'
       pometka_prav: citirovanie-1274
-    src: 'Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — aif.ru'
+    src: "Источник: «Аргументы и факты», «Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy"
     otryvok: Для «Русского чернозёма» Докучаев прошёл 10 тысяч вёрст за два лета, большей частью пешком
     stranica: '«Дороже нефти: учёный Василий Докучаев на весь мир прославил российские почвы» — «Аргументы и факты»'
     href: https://aif.ru/society/science/dorozhe-nefti-uchyonyy-vasiliy-dokuchaev-na-ves-mir-proslavil-rossiyskie-pochvy
@@ -427,7 +427,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 8
     sravnenie: net
-    src: 'Источник: Биографический словарь СПбГУ, «Докучаев Василий Васильевич» — bioslovhist.spbu.ru'
+    src: "Источник: Биографический словарь СПбГУ, «Докучаев Василий Васильевич» — https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html"
     otryvok: Первая в мире кафедра почвоведения открылась у нас в 1894 году
     stranica: «Докучаев Василий Васильевич» — Биографический словарь СПбГУ
     href: https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html
@@ -477,7 +477,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1892'
       pometka_prav: citirovanie-1274
-    src: 'Источник: bibliotekar.ru, «Наши степи прежде и теперь» — bibliotekar.ru'
+    src: "Источник: bibliotekar.ru, «Наши степи прежде и теперь» — https://bibliotekar.ru/2-7-43-dokuchaev/38.htm"
     otryvok: После голода 1891 года Докучаев написал первую в мире книгу об экологическом кризисе степей
     stranica: «Наши степи прежде и теперь» — bibliotekar.ru
     href: https://bibliotekar.ru/2-7-43-dokuchaev/38.htm
@@ -487,7 +487,7 @@ fakty:
     dlya_voprosa: false
   - n: 10
     sravnenie: net
-    src: 'Источник: Русское географическое общество, «Дороже золота — русский чернозём» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дороже золота — русский чернозём» — https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/"
     otryvok: «Дороже нефти, угля и золота» — так Докучаев оценил русский чернозём
     stranica: «Дороже золота — русский чернозём» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/articles/dorozhe-zolota-russkiy-chernozem-180-let-nazad-rodilsya-osnovopolozhnik-pochvovedeniya-vasiliy/
@@ -501,7 +501,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: Бюллетень Почвенного института им. В. В. Докучаева, «Василий Докучаев: масштаб личности» — cyberleninka.ru'
+    src: "Источник: Бюллетень Почвенного института им. В. В. Докучаева, «Василий Докучаев: масштаб личности» — https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva"
     otryvok: Первый в мире научный журнал о почве — русский «Почвоведение», 1899
     stranica: '«Василий Докучаев: масштаб личности» — Бюллетень Почвенного института им. В. В. Докучаева'
     href: https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva
@@ -551,7 +551,7 @@ fakty:
       podpis_gde: Нижний Новгород
       podpis_kogda: '1886'
       pometka_prav: citirovanie-1274
-    src: 'Источник: Биографический словарь СПбГУ, «Докучаев Василий Васильевич» — bioslovhist.spbu.ru'
+    src: "Источник: Биографический словарь СПбГУ, «Докучаев Василий Васильевич» — https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html"
     otryvok: Нижегородское земство брало земельный налог по его оценке — 14 томов замеров
     stranica: «Докучаев Василий Васильевич» — Биографический словарь СПбГУ
     href: https://bioslovhist.spbu.ru/person/637-dokuchayev-vasiliy-vasil-yevich.html
@@ -601,7 +601,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: конец XIX в.
       pometka_prav: citirovanie-1274
-    src: 'Источник: Центральный музей почвоведения им. В. В. Докучаева, «От истоков до наших дней» — soil-museum.ru'
+    src: "Источник: Центральный музей почвоведения им. В. В. Докучаева, «От истоков до наших дней» — https://soil-museum.ru/o-muzee/istoriya-muzeya/ot-istokov-do-nashikh-dney/"
     otryvok: Первый в мире музей почв — открыт в Петербурге по замыслу Докучаева
     stranica: «От истоков до наших дней» — Центральный музей почвоведения им. В. В. Докучаева
     href: https://soil-museum.ru/o-muzee/istoriya-muzeya/ot-istokov-do-nashikh-dney/
@@ -649,7 +649,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: конец XIX в.
       pometka_prav: citirovanie-1274
-    src: 'Источник: Бюллетень Почвенного института им. В. В. Докучаева, «Василий Докучаев: масштаб личности» — cyberleninka.ru'
+    src: "Источник: Бюллетень Почвенного института им. В. В. Докучаева, «Василий Докучаев: масштаб личности» — https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva"
     otryvok: Первая в мире классификация почв по происхождению — русская, 1886
     stranica: '«Василий Докучаев: масштаб личности» — Бюллетень Почвенного института им. В. В. Докучаева'
     href: https://cyberleninka.ru/article/n/vasiliy-dokuchaev-masshtab-lichnosti-k-175-letiyu-v-v-dokuchaeva
@@ -661,7 +661,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 15
     sravnenie: net
-    src: 'Источник: газета «Моё!», «Помним: Константин Глинка» — moe-online.ru'
+    src: "Источник: газета «Моё!», «Помним: Константин Глинка» — https://moe-online.ru/pro/pomnim/article/1160/comment/161"
     otryvok: Ученик Докучаева Глинка стал президентом Международного конгресса почвоведов
     stranica: '«Помним: Константин Глинка» — газета «Моё!»'
     href: https://moe-online.ru/pro/pomnim/article/1160/comment/161

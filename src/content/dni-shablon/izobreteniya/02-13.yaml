@@ -269,15 +269,15 @@ story:
   - summary: Бе-10
     det:
     - В 1961-м Бе-10 разогнали до 912 км/ч — рекорд летающих лодок не побит до сих пор.
-    src: 'Источник: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10» — cmvvs.ru'
+    src: "Источник: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10» — https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html"
   - summary: А-40 «Альбатрос»
     det:
     - На А-40 «Альбатрос» поставили 148 мировых рекордов, а построили всего две машины.
-    src: "Источник: «Версия», «Во время лётных испытаний на самолёте А-40 было установлено 148 мировых рекордов» — versia.ru"
+    src: "Источник: «Версия», «Во время лётных испытаний на самолёте А-40 было установлено 148 мировых рекордов» — https://versia.ru/vo-vremya-lyotnyx-ispytanij-na-samolete-a-40-bylo-ustanovleno-148-mirovyx-rekordov"
   - summary: Бе-200
     det:
     - Бе-200 набирает 12 тонн воды за 12 секунд — прямо на ходу, скользя по морю.
-    src: 'Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — rg.ru'
+    src: "Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — https://rg.ru/2025/03/05/mirovoj-pozharnyj.html"
 fakty:
 - id: fakty
   nav: Факты
@@ -324,7 +324,7 @@ fakty:
       podpis_gde: Монино
       podpis_kogda: вторая половина XX века
       pometka_prav: citirovanie-1274
-    src: 'Источник: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10» — cmvvs.ru'
+    src: "Источник: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10» — https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html"
     otryvok: В 1961-м Бе-10 разогнали до 912 км/ч — рекорд летающих лодок не побит до сих пор
     stranica: Центральный музей ВВС, «Мировой рекорд скорости реактивного гидросамолёта Бе-10»
     href: https://www.cmvvs.ru/muzejnaya-deyatelnost/znamenatelnye-daty/mirovoj-rekord-skorosti-reaktivnogo-gidrosamoljota-be-10.html
@@ -336,7 +336,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 2
     sravnenie: net
-    src: "Источник: «Версия», «Во время лётных испытаний на самолёте А-40 было установлено 148 мировых рекордов» — versia.ru"
+    src: "Источник: «Версия», «Во время лётных испытаний на самолёте А-40 было установлено 148 мировых рекордов» — https://versia.ru/vo-vremya-lyotnyx-ispytanij-na-samolete-a-40-bylo-ustanovleno-148-mirovyx-rekordov"
     otryvok: На А-40 «Альбатрос» поставили 148 мировых рекордов, а построили всего две машины
     stranica: "«Версия», «Во время лётных испытаний на самолёте А-40 было установлено 148 мировых рекордов»"
     href: https://versia.ru/vo-vremya-lyotnyx-ispytanij-na-samolete-a-40-bylo-ustanovleno-148-mirovyx-rekordov
@@ -348,7 +348,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 3
     sravnenie: net
-    src: 'Источник: АвиаПорт, рекорды Осипенко — aviaport.ru'
+    src: "Источник: АвиаПорт, рекорды Осипенко — https://www.aviaport.ru/news/732263/"
     otryvok: В 1937-м Осипенко на лодке Бериева побила рекорд итальянки сразу на 3310 метров
     stranica: АвиаПорт, рекорды Осипенко
     href: https://www.aviaport.ru/news/732263/
@@ -358,7 +358,7 @@ fakty:
     dlya_voprosa: false
   - n: 4
     sravnenie: net
-    src: 'Источник: «НВО», 27.04.2018, «Амбарчики» — nvo.ng.ru'
+    src: "Источник: «НВО», 27.04.2018, «Амбарчики» — https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html"
     otryvok: В 1943-м бомба с «амбарчика» подожгла немецкий пароход — немцы затопили его сами
     stranica: «НВО», 27.04.2018, «Амбарчики»
     href: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
@@ -368,7 +368,7 @@ fakty:
     dlya_voprosa: false
   - n: 5
     sravnenie: net
-    src: 'Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — rg.ru'
+    src: "Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — https://rg.ru/2025/03/05/mirovoj-pozharnyj.html"
     otryvok: 'На Западе Бе-200 прозвали «русским зверем»: он вдвое мощнее канадского соперника'
     stranica: «Российская газета», 05.03.2025, «Мировой пожарный»
     href: https://rg.ru/2025/03/05/mirovoj-pozharnyj.html
@@ -416,7 +416,7 @@ fakty:
       podpis_gde: Новосибирск
       podpis_kogda: '2006'
       pometka_prav: citirovanie-1274
-    src: 'Источник: С. Куликов, «Авиация и ядерные испытания» — militera.lib.ru'
+    src: "Источник: С. Куликов, «Авиация и ядерные испытания» — http://militera.lib.ru/h/kulikov_sm/01.html"
     otryvok: Летающие лодки Бе-6 летали прямо сквозь облака ядерных взрывов над Новой Землёй
     stranica: С. Куликов, «Авиация и ядерные испытания»
     href: http://militera.lib.ru/h/kulikov_sm/01.html
@@ -464,7 +464,7 @@ fakty:
       podpis_gde: Иркутск
       podpis_kogda: '1999'
       pometka_prav: citirovanie-1274
-    src: 'Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — rg.ru'
+    src: "Источник: «Российская газета», 05.03.2025, «Мировой пожарный» — https://rg.ru/2025/03/05/mirovoj-pozharnyj.html"
     otryvok: Бе-200 набирает 12 тонн воды за 12 секунд — прямо на ходу, скользя по морю
     stranica: «Российская газета», 05.03.2025, «Мировой пожарный»
     href: https://rg.ru/2025/03/05/mirovoj-pozharnyj.html
@@ -476,7 +476,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 8
     sravnenie: net
-    src: 'Источник: «Отвага», «Прерванный взлёт «Альбатроса»» — otvaga2004.ru'
+    src: "Источник: «Отвага», «Прерванный взлёт «Альбатроса»» — https://otvaga2004.ru/atrina/atrina-air/prervannyj-vzlet-albatrosa/"
     otryvok: В Ле-Бурже-1991 А-40 прозвали «Мисс Париж», на борт поднялся сам президент Миттеран
     stranica: «Отвага», «Прерванный взлёт «Альбатроса»»
     href: https://otvaga2004.ru/atrina/atrina-air/prervannyj-vzlet-albatrosa/
@@ -524,7 +524,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1996'
       pometka_prav: citirovanie-1274
-    src: 'Источник: «Моделист-конструктор», «Лёгкий самолёт-амфибия Бе-103» — modelist-konstruktor.com'
+    src: "Источник: «Моделист-конструктор», «Лёгкий самолёт-амфибия Бе-103» — https://modelist-konstruktor.com/aviacziya/lyogkij_samolyot_amfibiya_be_103"
     otryvok: Бе-103 получил сертификат США — три машины привезли на авиашоу в Ошкош на «Руслане»
     stranica: «Моделист-конструктор», «Лёгкий самолёт-амфибия Бе-103»
     href: https://modelist-konstruktor.com/aviacziya/lyogkij_samolyot_amfibiya_be_103
@@ -572,7 +572,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: начало 1970-х
       pometka_prav: citirovanie-1274
-    src: 'Источник: «НВО», 27.07.2018, о Бе-12 — nvo.ng.ru'
+    src: "Источник: «НВО», 27.07.2018, о Бе-12 — https://nvo.ng.ru/realty/2018-07-27/1_1006_amphibian.html"
     otryvok: За один 1989 год экипажи Бе-12 нашли 29 чужих подводных лодок
     stranica: «НВО», 27.07.2018, о Бе-12
     href: https://nvo.ng.ru/realty/2018-07-27/1_1006_amphibian.html
@@ -588,7 +588,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: РИА Новости, 25.11.2016, Бе-200 в Израиле — ria.ru'
+    src: "Источник: РИА Новости, 25.11.2016, Бе-200 в Израиле — https://ria.ru/20161125/1482139438.html"
     otryvok: 'Израиль сам попросил Бе-200: за сутки 14 сбросов, почти 170 тонн воды на огонь'
     stranica: РИА Новости, 25.11.2016, Бе-200 в Израиле
     href: https://ria.ru/20161125/1482139438.html
@@ -598,7 +598,7 @@ fakty:
     dlya_voprosa: false
   - n: 12
     sravnenie: net
-    src: 'Источник: АвиаПорт, Бе-200 в Греции, 2021 — aviaport.ru'
+    src: "Источник: АвиаПорт, Бе-200 в Греции, 2021 — https://www.aviaport.ru/news/684327/"
     otryvok: В Греции сомневались в русском самолёте — Бе-200 сделал 18 сбросов за 2 часа
     stranica: АвиаПорт, Бе-200 в Греции, 2021
     href: https://www.aviaport.ru/news/684327/
@@ -610,7 +610,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 13
     sravnenie: net
-    src: 'Источник: «НВО», 27.04.2018, «Амбарчики» — nvo.ng.ru'
+    src: "Источник: «НВО», 27.04.2018, «Амбарчики» — https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html"
     otryvok: В 1944-м «амбарчик» вывез из болот англичан, сбитых после удара по «Тирпицу»
     stranica: «НВО», 27.04.2018, «Амбарчики»
     href: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
@@ -620,7 +620,7 @@ fakty:
     dlya_voprosa: false
   - n: 14
     sravnenie: net
-    src: 'Источник: «НВО», 27.04.2018, «Амбарчики» — nvo.ng.ru'
+    src: "Источник: «НВО», 27.04.2018, «Амбарчики» — https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html"
     otryvok: Экипаж немецкой лодки BV-138 сдался в плен по наводке нашего МБР-2
     stranica: «НВО», 27.04.2018, «Амбарчики»
     href: https://nvo.ng.ru/armament/2018-04-27/1_994_ambarchiki.html
@@ -630,7 +630,7 @@ fakty:
     dlya_voprosa: false
   - n: 15
     sravnenie: net
-    src: 'Источник: testpilot.ru, статья о Р-1 — testpilot.ru'
+    src: "Источник: testpilot.ru, статья о Р-1 — http://testpilot.ru/russia/beriev/r/"
     otryvok: Р-1 на посадке подпрыгивал на 4 метра и зарывался в воду — укротили за 215 пробежек
     stranica: testpilot.ru, статья о Р-1
     href: http://testpilot.ru/russia/beriev/r/

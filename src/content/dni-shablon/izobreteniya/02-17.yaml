@@ -238,12 +238,12 @@ story:
     det:
     - Карл Сименс перечертил схемы Пироцкого — и через 9 месяцев Берлин пустил «свой» трамвай.
     - Сименс звал Пироцкого работать в Германию — русский инженер отказался.
-    src: 'Источник: Парламентская газета, «Сименс „изобрёл“ трамвай по русскому образцу» — pnp.ru'
+    src: "Источник: Парламентская газета, «Сименс „изобрёл“ трамвай по русскому образцу» — https://www.pnp.ru/social/simens-izobryol-tramvay-po-russkomu-obrazcu.html"
   - summary: По льду Невы
     det:
     - Запрет конки касался улиц, а не реки — и трамвай пустили по льду Невы.
     - Петербургский трамвай по льду Невы — единственный в мире, ходил 16 зим.
-    src: 'Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — fontanka.ru'
+    src: "Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — https://www.fontanka.ru/2026/02/20/76276172/"
 fakty:
 - id: fakty
   nav: Факты
@@ -252,7 +252,7 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    src: 'Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — prlib.ru'
+    src: "Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky"
     otryvok: Вагон конки № 114 с 40 пассажирами поехал по Петербургу без единой лошади
     stranica: «Фёдор Аполлонович Пироцкий (1845–1898)» — Президентская библиотека
     href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky
@@ -264,7 +264,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 2
     sravnenie: net
-    src: 'Источник: Парламентская газета, «Сименс „изобрёл“ трамвай по русскому образцу» — pnp.ru'
+    src: "Источник: Парламентская газета, «Сименс „изобрёл“ трамвай по русскому образцу» — https://www.pnp.ru/social/simens-izobryol-tramvay-po-russkomu-obrazcu.html"
     otryvok: Карл Сименс перечертил схемы Пироцкого — и через 9 месяцев Берлин пустил «свой» трамвай
     stranica: «Сименс „изобрёл“ трамвай по русскому образцу» — Парламентская газета
     href: https://www.pnp.ru/social/simens-izobryol-tramvay-po-russkomu-obrazcu.html
@@ -276,7 +276,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 3
     sravnenie: net
-    src: 'Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — prlib.ru'
+    src: "Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky"
     otryvok: 'Проводов над первым трамваем не было: ток бежал по самим рельсам'
     stranica: «Фёдор Аполлонович Пироцкий (1845–1898)» — Президентская библиотека
     href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky
@@ -324,7 +324,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: начало XX века
       pometka_prav: citirovanie-1274
-    src: 'Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — fontanka.ru'
+    src: "Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — https://www.fontanka.ru/2026/02/20/76276172/"
     otryvok: Запрет конки касался улиц, а не реки — и трамвай пустили по льду Невы
     stranica: «Ледовый трамвай в Петербурге 1895 года» — Фонтанка
     href: https://www.fontanka.ru/2026/02/20/76276172/
@@ -334,7 +334,7 @@ fakty:
     dlya_voprosa: false
   - n: 5
     sravnenie: net
-    src: 'Источник: «Живая история науки», «Первый в мире трамвай» — sciencehistory.online'
+    src: "Источник: «Живая история науки», «Первый в мире трамвай» — https://sciencehistory.online/nauka10-pirozky/"
     otryvok: Город, где родился трамвай, получил его только 27-м в стране — через 27 лет
     stranica: «Первый в мире трамвай» — «Живая история науки»
     href: https://sciencehistory.online/nauka10-pirozky/
@@ -346,7 +346,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 6
     sravnenie: net
-    src: 'Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — fontanka.ru'
+    src: "Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — https://www.fontanka.ru/2026/02/20/76276172/"
     otryvok: Петербургский трамвай по льду Невы — единственный в мире, ходил 16 зим
     stranica: «Ледовый трамвай в Петербурге 1895 года» — Фонтанка
     href: https://www.fontanka.ru/2026/02/20/76276172/
@@ -358,7 +358,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 7
     sravnenie: net
-    src: 'Источник: газета «Поиск», «Во всём виновата конка» — poisknews.ru'
+    src: "Источник: газета «Поиск», «Во всём виновата конка» — https://poisknews.ru/ponyatno/vo-vsem-vinovata-konka-kak-rossiya-upustila-vozmozhnost-stat-rodinoj-tramvajnyh-perevozok/"
     otryvok: Сименс звал Пироцкого работать в Германию — русский инженер отказался
     stranica: «Во всём виновата конка» — газета «Поиск»
     href: https://poisknews.ru/ponyatno/vo-vsem-vinovata-konka-kak-rossiya-upustila-vozmozhnost-stat-rodinoj-tramvajnyh-perevozok/
@@ -368,7 +368,7 @@ fakty:
     dlya_voprosa: false
   - n: 8
     sravnenie: net
-    src: 'Источник: RusCable, «Электропередача на большие расстояния» — ruscable.ru'
+    src: "Источник: RusCable, «Электропередача на большие расстояния» — https://www.ruscable.ru/article/energy/Elektroperedacha_na_bolshie_rasstoyaniya_1/"
     otryvok: В 1877-м Пироцкий предложил гнать силу водопадов в города по рельсам — на любое расстояние
     stranica: «Электропередача на большие расстояния» — RusCable
     href: https://www.ruscable.ru/article/energy/Elektroperedacha_na_bolshie_rasstoyaniya_1/
@@ -378,7 +378,7 @@ fakty:
     dlya_voprosa: false
   - n: 9
     sravnenie: net
-    src: 'Источник: газета «Поиск», «Во всём виновата конка» — poisknews.ru'
+    src: "Источник: газета «Поиск», «Во всём виновата конка» — https://poisknews.ru/ponyatno/vo-vsem-vinovata-konka-kak-rossiya-upustila-vozmozhnost-stat-rodinoj-tramvajnyh-perevozok/"
     otryvok: Комиссия назвала трамвай Пироцкого «бесперспективным» — а он покорил весь мир
     stranica: «Во всём виновата конка» — газета «Поиск»
     href: https://poisknews.ru/ponyatno/vo-vsem-vinovata-konka-kak-rossiya-upustila-vozmozhnost-stat-rodinoj-tramvajnyh-perevozok/
@@ -388,7 +388,7 @@ fakty:
     dlya_voprosa: false
   - n: 10
     sravnenie: net
-    src: 'Источник: «Санкт-Петербургские ведомости», «По льду — с ветерком» — spbvedomosti.ru'
+    src: "Источник: «Санкт-Петербургские ведомости», «По льду — с ветерком» — https://spbvedomosti.ru/news/nasledie/po-ldu-s-veterkom-kak-po-zamerzshey-neve-v-peterburge-ezdili-tramvai/"
     otryvok: За одну зиму трамвай по льду перевёз почти миллион человек
     stranica: «По льду — с ветерком» — «Санкт-Петербургские ведомости»
     href: https://spbvedomosti.ru/news/nasledie/po-ldu-s-veterkom-kak-po-zamerzshey-neve-v-peterburge-ezdili-tramvai/
@@ -402,7 +402,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: «Санкт-Петербургские ведомости», «По льду — с ветерком» — spbvedomosti.ru'
+    src: "Источник: «Санкт-Петербургские ведомости», «По льду — с ветерком» — https://spbvedomosti.ru/news/nasledie/po-ldu-s-veterkom-kak-po-zamerzshey-neve-v-peterburge-ezdili-tramvai/"
     otryvok: Столбы для проводов ледового трамвая вмораживали прямо в лёд Невы
     stranica: «По льду — с ветерком» — «Санкт-Петербургские ведомости»
     href: https://spbvedomosti.ru/news/nasledie/po-ldu-s-veterkom-kak-po-zamerzshey-neve-v-peterburge-ezdili-tramvai/
@@ -412,7 +412,7 @@ fakty:
     dlya_voprosa: false
   - n: 12
     sravnenie: net
-    src: 'Источник: RusCable, «Электропередача на большие расстояния» — ruscable.ru'
+    src: "Источник: RusCable, «Электропередача на большие расстояния» — https://www.ruscable.ru/article/energy/Elektroperedacha_na_bolshie_rasstoyaniya_1/"
     otryvok: Заявку на привилегию Пироцкий подал 24 июня 1874-го — за 7 лет до трамвая Сименса
     stranica: «Электропередача на большие расстояния» — RusCable
     href: https://www.ruscable.ru/article/energy/Elektroperedacha_na_bolshie_rasstoyaniya_1/
@@ -422,7 +422,7 @@ fakty:
     dlya_voprosa: false
   - n: 13
     sravnenie: net
-    src: 'Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — prlib.ru'
+    src: "Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky"
     otryvok: В 1881-м Пироцкий проложил в Петербурге первый подземный электрокабель
     stranica: «Фёдор Аполлонович Пироцкий (1845–1898)» — Президентская библиотека
     href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky
@@ -432,7 +432,7 @@ fakty:
     dlya_voprosa: false
   - n: 14
     sravnenie: net
-    src: 'Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — fontanka.ru'
+    src: "Источник: Фонтанка, «Ледовый трамвай в Петербурге 1895 года» — https://www.fontanka.ru/2026/02/20/76276172/"
     otryvok: По льду Невы трамвай мчал до 20 км/ч — почти втрое быстрее конки
     stranica: «Ледовый трамвай в Петербурге 1895 года» — Фонтанка
     href: https://www.fontanka.ru/2026/02/20/76276172/
@@ -444,7 +444,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 15
     sravnenie: net
-    src: 'Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — prlib.ru'
+    src: "Источник: Президентская библиотека, «Фёдор Аполлонович Пироцкий (1845–1898)» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky"
     otryvok: 6,5 тонны вагона и 40 человек тянул один электромотор вместо упряжки лошадей
     stranica: «Фёдор Аполлонович Пироцкий (1845–1898)» — Президентская библиотека
     href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XIX/Pirotsky

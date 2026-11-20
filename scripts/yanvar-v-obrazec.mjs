@@ -2,7 +2,7 @@
 // Машина перевода января на образец февраля (Р656, Р440): node scripts/yanvar-v-obrazec.mjs <музей> <ММ-ДД> [--polya <файл.json>] [--zapisat]
 // Текст, факты и состав дня не меняются (утверждённое — src/data/utverzhdeno): машина дописывает поля формы февраля
 // (docs/standart-dnya.md) и снимает разметку из текстовых полей. Без --zapisat печатает, что изменит, и пробелы стандарта.
-//   1. Разметка: <a>текст</a> → текст (ссылка, если текст — сам адрес), остальные теги снять, <br> и </p> — пробел, сущности
+//   1. Разметка: <a>текст</a> → текст (ссылка, если текст — сам адрес или его домен), остальные теги снять, <br> и </p> — пробел, сущности
 //      раскрыть. Не трогает: skripty, head.ld, razdely и story.abzacy (своя разметка января, Р627).
 //      summary и det фактов тоже без разметки — как в утверждённом (src/data/utverzhdeno) и в феврале.
 //   2. sources с html и ссылками — по пункту на ссылку: title — текст ссылки, note — у ссылки внутри фразы её пояснение (scripts/lib/punkty-frazy.mjs), иначе текст пункта без ссылок (пусто — хост).
@@ -45,10 +45,12 @@ const raskryt = (t) => t.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)
 const adres = (u) => u.replace(/^https?:\/\//, '').replace(/\/$/, '');
 // «сайт/путь/…» — адрес, сокращённый для глаз: в текст идёт полный адрес.
 const sokrashchen = (x, h) => { const t = raskryt(x.trim()); return /…$/.test(t) && adres(raskryt(h)).startsWith(adres(t.slice(0, -1))); };
+// «<a href="https://ngregion.ru/…">ngregion.ru</a>» — текст ссылки = домен адреса: в текст идёт полный адрес, иначе он теряется (Р833).
+const domenAdresa = (x, h) => { const t = adres(raskryt(x.trim())).replace(/^www\./, ''); return /^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}(\/\S*)?$/i.test(t) && adres(raskryt(h)).replace(/^www\./, '').startsWith(t); };
 const SSYLKA = /<a\b[^>]*?href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;
 const snyat = (t) => raskryt(t
   .replace(/<br\s*\/?>|<\/p>/gi, ' ')
-  .replace(SSYLKA, (_, h, x) => (adres(x.trim()) === adres(h) || sokrashchen(x, h) ? h : x))
+  .replace(SSYLKA, (_, h, x) => (adres(x.trim()) === adres(h) || sokrashchen(x, h) || domenAdresa(x, h) ? h : x))
   .replace(/<\/?[a-z][^>]*>/gi, '').replace(/\*\*/g, ''))
   .replace(/\s{2,}/g, ' ').replace(/\s+([.,;:])/g, '$1').trim();
 const BUKVA = /[A-Za-zА-Яа-яЁё0-9]/;

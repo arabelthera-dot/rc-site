@@ -245,7 +245,7 @@ story:
   - summary: Из чужого ремонта
     det:
     - Первую лодку Григорович придумал, пока чинил разбитый французский гидроплан.
-    src: 'Источник: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5» — news.rambler.ru'
+    src: "Источник: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5» — https://news.rambler.ru/army/46832495-pervyy-russkiy-gidroplan-m-5-kak-inzhener-grigorovich-nauchil-lodku-letat-i-voevat/"
   - summary: Сразу в бой
     det:
     - М-5 построили весной 1915-го, и уже 12 апреля она вылетела в бой.
@@ -253,7 +253,7 @@ story:
   - summary: Удар по порту
     det:
     - В 1916 году лодки М-5 нанесли с кораблей первый в мире авиаудар по вражескому порту.
-    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    src: "Источник: «История.РФ», «Бомбардировка Зонгулдака» — https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii"
 fakty:
 - id: fakty
   nav: Факты
@@ -262,7 +262,7 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    src: "Источник: «История.РФ», «Бомбардировка Зонгулдака» — https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii"
     otryvok: Бомба в 23 кило с русской летающей лодки пустила на дно пароход в 7 тысяч тонн
     stranica: «История.РФ», «Бомбардировка Зонгулдака»
     href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
@@ -274,7 +274,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 2
     sravnenie: net
-    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    src: "Источник: «История.РФ», «Бомбардировка Зонгулдака» — https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii"
     otryvok: Немецкая торпеда ткнулась в русскую летающую лодку у борта авианосца — и просто утонула
     stranica: «История.РФ», «Бомбардировка Зонгулдака»
     href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
@@ -296,7 +296,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 4
     sravnenie: net
-    src: 'Источник: В. Б. Шавров и М. А. Маслов, выдержки о М-5 — flyingmachines.ru'
+    src: "Источник: В. Б. Шавров и М. А. Маслов, выдержки о М-5 — https://flyingmachines.ru/Site2/Crafts/Craft25695.htm"
     otryvok: 'Хозяин завода запретил делать днище М-5 прочнее: пусть школы ломают побольше'
     stranica: В. Б. Шавров и М. А. Маслов, выдержки о М-5
     href: https://flyingmachines.ru/Site2/Crafts/Craft25695.htm
@@ -306,7 +306,7 @@ fakty:
     dlya_voprosa: false
   - n: 5
     sravnenie: net
-    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    src: "Источник: «История.РФ», «Бомбардировка Зонгулдака» — https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii"
     otryvok: В 1916 году лодки М-5 нанесли с кораблей первый в мире авиаудар по вражескому порту
     stranica: «История.РФ», «Бомбардировка Зонгулдака»
     href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
@@ -318,7 +318,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 6
     sravnenie: net
-    src: 'Источник: «Вокруг света», «Сделать летучий корабль» — vokrugsveta.ru'
+    src: "Источник: «Вокруг света», «Сделать летучий корабль» — https://www.vokrugsveta.ru/articles/sdelat-letuchii-korabl-kak-dmitrii-grigorovich-razdvinul-granicy-aviastroeniya-id912917/"
     otryvok: Лётчик Фриде на испытаниях провёл М-5 под Троицким мостом в Петрограде
     stranica: «Вокруг света», «Сделать летучий корабль»
     href: https://www.vokrugsveta.ru/articles/sdelat-letuchii-korabl-kak-dmitrii-grigorovich-razdvinul-granicy-aviastroeniya-id912917/
@@ -366,7 +366,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: 1910-е годы
       pometka_prav: citirovanie-1274
-    src: 'Источник: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010 — cyberleninka.ru'
+    src: "Источник: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010 — https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya"
     otryvok: На М-9, наследнице М-5, Нагурский первым в мире сделал мёртвую петлю на лодке
     stranica: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010
     href: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
@@ -376,7 +376,7 @@ fakty:
     dlya_voprosa: false
   - n: 8
     sravnenie: net
-    src: 'Источник: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010 — cyberleninka.ru'
+    src: "Источник: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010 — https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya"
     otryvok: Военное ведомство США закупило в России лодки Григоровича как образцы
     stranica: Д. А. Бочинин, Вестник ЛГУ им. А. С. Пушкина, 2010
     href: https://cyberleninka.ru/article/n/d-p-grigorovich-pioner-otechestvennogo-gidroaviastroeniya
@@ -386,7 +386,7 @@ fakty:
     dlya_voprosa: false
   - n: 9
     sravnenie: net
-    src: 'Источник: «История.РФ», «Бомбардировка Зонгулдака» — history.ru'
+    src: "Источник: «История.РФ», «Бомбардировка Зонгулдака» — https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii"
     otryvok: Пароход, потопленный бомбой с М-5, турки подняли — и его утопили второй раз
     stranica: «История.РФ», «Бомбардировка Зонгулдака»
     href: https://history.ru/read/articles/bombardirovka-zonghuldaka-stratieghiia-davshaia-zhizn-rossiiskoi-korabielnoi-aviatsii
@@ -488,7 +488,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: 1924 год
       pometka_prav: citirovanie-1274
-    src: 'Источник: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5» — news.rambler.ru'
+    src: "Источник: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5» — https://news.rambler.ru/army/46832495-pervyy-russkiy-gidroplan-m-5-kak-inzhener-grigorovich-nauchil-lodku-letat-i-voevat/"
     otryvok: Первую лодку Григорович придумал, пока чинил разбитый французский гидроплан
     stranica: В. Кучушев (ТАСС), 2021, «Первый русский гидроплан М-5»
     href: https://news.rambler.ru/army/46832495-pervyy-russkiy-gidroplan-m-5-kak-inzhener-grigorovich-nauchil-lodku-letat-i-voevat/
@@ -498,7 +498,7 @@ fakty:
     dlya_voprosa: false
   - n: 12
     sravnenie: net
-    src: 'Источник: «Ратник», «Дмитрий Григорович: летающая лодка авиаконструктора» — ratnik.tv'
+    src: "Источник: «Ратник», «Дмитрий Григорович: летающая лодка авиаконструктора» — https://ratnik.tv/articles/science/dmitriy-grigorovich-letayushchaya-lodka-aviakonstruktora/"
     otryvok: Из М-5 выросла М-11 — первый в мире морской истребитель с бронёй для лётчика
     stranica: '«Ратник», «Дмитрий Григорович: летающая лодка авиаконструктора»'
     href: https://ratnik.tv/articles/science/dmitriy-grigorovich-letayushchaya-lodka-aviakonstruktora/
@@ -508,7 +508,7 @@ fakty:
     dlya_voprosa: false
   - n: 13
     sravnenie: net
-    src: 'Источник: М. А. Маслов, «Русские самолёты Первой мировой» — flyingmachines.ru'
+    src: "Источник: М. А. Маслов, «Русские самолёты Первой мировой» — https://flyingmachines.ru/Site2/Arts/Art57508.htm"
     otryvok: 'Лондон и Париж слали телеграммы: вышлите чертежи русской лодки Григоровича'
     stranica: М. А. Маслов, «Русские самолёты Первой мировой»
     href: https://flyingmachines.ru/Site2/Arts/Art57508.htm
@@ -530,7 +530,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 15
     sravnenie: net
-    src: 'Источник: В. Б. Шавров и М. А. Маслов, выдержки о М-5 — flyingmachines.ru'
+    src: "Источник: В. Б. Шавров и М. А. Маслов, выдержки о М-5 — https://flyingmachines.ru/Site2/Crafts/Craft25695.htm"
     otryvok: Хвост М-5 на вираже скручивался и дрожал, но ни разу не сломался
     stranica: В. Б. Шавров и М. А. Маслов, выдержки о М-5
     href: https://flyingmachines.ru/Site2/Crafts/Craft25695.htm

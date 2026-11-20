@@ -237,15 +237,15 @@ story:
   - summary: Вагон от царя
     det:
     - 'Царь дал фотографу вагон-лабораторию: цепляй к любому поезду и снимай Россию в цвете'
-    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/"
   - summary: Толстой в цвете
     det:
     - Единственный цветной портрет живого Льва Толстого снял он — в Ясной Поляне в 1908-м
-    src: 'Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru'
+    src: "Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml"
   - summary: Пластины дошли до нас
     det:
     - Прокудин-Горский задумал 10 000 цветных снимков России за 10 лет — до нас дошли 1902 стеклянные пластины
-    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/"
 fakty:
 - id: fakty
   nav: Факты
@@ -292,7 +292,7 @@ fakty:
       podpis_gde: Ясная Поляна
       podpis_kogda: '1908'
       pometka_prav: citirovanie-1274
-    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/"
     otryvok: 'Царь дал фотографу вагон-лабораторию: цепляй к любому поезду и снимай Россию в цвете'
     stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
@@ -340,7 +340,7 @@ fakty:
       podpis_gde: Ясная Поляна
       podpis_kogda: '1908'
       pometka_prav: citirovanie-1274
-    src: 'Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru'
+    src: "Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml"
     otryvok: Единственный цветной портрет живого Льва Толстого снял он — в Ясной Поляне в 1908-м
     stranica: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru
     href: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
@@ -352,7 +352,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 3
     sravnenie: net
-    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/"
     otryvok: Прокудин-Горский задумал 10 000 цветных снимков России за 10 лет — до нас дошли 1902 стеклянные пластины
     stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
@@ -364,7 +364,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 4
     sravnenie: net
-    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/"
     otryvok: Царское шествие по Невскому снято в цвете в 1913-м — и плёнка исчезла
     stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
@@ -376,7 +376,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 5
     sravnenie: net
-    src: 'Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — rgo.ru'
+    src: "Источник: Русское географическое общество, «Дорогами Сергея Прокудина-Горского» — https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/"
     otryvok: Один его цветной снимок стоил 10 рублей — полкоровы
     stranica: «Дорогами Сергея Прокудина-Горского» — Русское географическое общество
     href: https://rgo.ru/activity/redaction/news/dorogami-sergeya-prokudina-gorskogo/
@@ -388,7 +388,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 6
     sravnenie: net
-    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    src: "Источник: «Прокудин-Горский. Хронология событий» — http://prokudin-gorskiy.ru/hron.php"
     otryvok: Правительство решило купить его коллекцию — убийство Столыпина всё остановило
     stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
     href: http://prokudin-gorskiy.ru/hron.php
@@ -398,7 +398,7 @@ fakty:
     dlya_voprosa: false
   - n: 7
     sravnenie: net
-    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    src: "Источник: «Прокудин-Горский. Хронология событий» — http://prokudin-gorskiy.ru/hron.php"
     otryvok: В 1916-м снял цветное кино о турецких городах, которые взяла русская армия
     stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
     href: http://prokudin-gorskiy.ru/hron.php
@@ -410,7 +410,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 8
     sravnenie: net
-    src: 'Источник: Президентская библиотека имени Б. Н. Ельцина, «Сергей Михайлович Прокудин-Горский (1863–1944)» — prlib.ru'
+    src: "Источник: Президентская библиотека имени Б. Н. Ельцина, «Сергей Михайлович Прокудин-Горский (1863–1944)» — https://www.prlib.ru/Great_Russia/outstanding_scientists_XX/Prokudin-Gorsky"
     otryvok: Его цветную Россию купила Библиотека Конгресса США — за 5000 долларов в 1948-м
     stranica: «Сергей Михайлович Прокудин-Горский (1863–1944)» — Президентская библиотека имени Б. Н. Ельцина
     href: https://www.prlib.ru/Great_Russia/outstanding_scientists_XX/Prokudin-Gorsky
@@ -422,7 +422,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 9
     sravnenie: net
-    src: 'Источник: «Вокруг света», «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков» — vokrugsveta.ru'
+    src: "Источник: «Вокруг света», «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков» — https://www.vokrugsveta.ru/vs/article/299/"
     otryvok: 'Вода и облака на его снимках — цветные призраки: три кадра, по 1–3 секунды каждый'
     stranica: «Биография фотографа Сергея Прокудина-Горского и секреты его цветных снимков» — «Вокруг света»
     href: https://www.vokrugsveta.ru/vs/article/299/
@@ -434,7 +434,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 10
     sravnenie: net
-    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    src: "Источник: «Прокудин-Горский. Хронология событий» — http://prokudin-gorskiy.ru/hron.php"
     otryvok: Прокудин-Горский придумал свой состав, и пластинка стала видеть все цвета — быстрее заграничных
     stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
     href: http://prokudin-gorskiy.ru/hron.php
@@ -448,7 +448,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: РОСФОТО, «Цветные фотографии Сергея Прокудина-Горского» — rosphoto.com'
+    src: "Источник: РОСФОТО, «Цветные фотографии Сергея Прокудина-Горского» — https://rosphoto.com/history/color_photography_prokudin-gorsky-1453"
     otryvok: 'Царский указ: пускать фотографа с камерой в любой храм и монастырь России'
     stranica: «Цветные фотографии Сергея Прокудина-Горского» — РОСФОТО
     href: https://rosphoto.com/history/color_photography_prokudin-gorsky-1453
@@ -496,7 +496,7 @@ fakty:
       podpis_gde: Ясная Поляна
       podpis_kogda: май 1908
       pometka_prav: citirovanie-1274
-    src: 'Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru'
+    src: "Источник: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml"
     otryvok: 'Толстой бросил болтливого репортёра: «Давайте сейчас сниматься — я так и останусь»'
     stranica: С. М. Прокудин-Горский, «Неделя в Ясной Поляне у Л. Н. Толстого» — az.lib.ru
     href: http://az.lib.ru/p/prokudingorskij_s_m/text_1936_nedelya_u_tolstogo.shtml
@@ -544,7 +544,7 @@ fakty:
       podpis_gde: Ясная Поляна
       podpis_kogda: 23 мая 1908
       pometka_prav: citirovanie-1274
-    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    src: "Источник: «Прокудин-Горский. Хронология событий» — http://prokudin-gorskiy.ru/hron.php"
     otryvok: Цветной Толстой вышел на обложке «Огонька» тиражом больше 2 миллионов
     stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
     href: http://prokudin-gorskiy.ru/hron.php
@@ -568,7 +568,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 15
     sravnenie: net
-    src: 'Источник: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru'
+    src: "Источник: «Прокудин-Горский. Хронология событий» — http://prokudin-gorskiy.ru/hron.php"
     otryvok: В 1913-м Прокудин-Горский запатентовал цветное кино сразу в пяти странах
     stranica: «Прокудин-Горский. Хронология событий» — prokudin-gorskiy.ru
     href: http://prokudin-gorskiy.ru/hron.php

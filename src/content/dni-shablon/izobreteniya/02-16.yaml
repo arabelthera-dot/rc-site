@@ -237,16 +237,16 @@ story:
     det:
     - Передатчик для первого в мире радиозонда Молчанов собрал своими руками.
     - 'Первый зонд сам сообщил по радио с высоты 7,8 км: за бортом −40,7 °C.'
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
   - summary: Сводка в Москву
     det:
     - Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты.
-    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    src: "Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article"
   - summary: Над Арктикой
     det:
     - Зонды Молчанова пускали с «Графа Цеппелина» над Арктикой, а шар надували водородом дирижабля.
     - 'Зонды с «Графа Цеппелина» показали: над всей Арктикой стратосфера начинается на 10,5 км.'
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
 fakty:
 - id: fakty
   nav: Факты
@@ -255,7 +255,7 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    src: "Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article"
     otryvok: Через 32 минуты после старта зонда в Москву ушла первая в мире сводка погоды с высоты
     stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
     href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
@@ -305,7 +305,7 @@ fakty:
       podpis_gde: Новая Земля
       podpis_kogda: '1931'
       pometka_prav: citirovanie-1274
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: Зонды Молчанова пускали с «Графа Цеппелина» над Арктикой, а шар надували водородом дирижабля
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
@@ -315,7 +315,7 @@ fakty:
     dlya_voprosa: false
   - n: 4
     sravnenie: net
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: Летом 1933-го в бухте Тихой заработала первая в мире автоматическая метеостанция — Молчанова
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
@@ -325,7 +325,7 @@ fakty:
     dlya_voprosa: false
   - n: 3
     sravnenie: net
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: Чтобы зонд не попал в винт дирижабля, его сначала роняли вниз, а груз отрезала гильотина с часами
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
@@ -373,7 +373,7 @@ fakty:
       podpis_gde: Москва
       podpis_kogda: 1950-е
       pometka_prav: citirovanie-1274
-    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    src: "Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article"
     otryvok: Зонд Молчанова почти 30 лет работал без переделок, а сменщика «Волну» пришлось переделывать
     stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
     href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
@@ -385,7 +385,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 9
     sravnenie: net
-    src: 'Источник: Росгидромет, Новость о первом радиозонде Молчанова — meteorf.gov.ru'
+    src: "Источник: Росгидромет, Новость о первом радиозонде Молчанова — https://www.meteorf.gov.ru/press/news/20429/"
     otryvok: Каждый день мир выпускает около 800 радиозондов — потомков зонда из Павловска
     stranica: Новость о первом радиозонде Молчанова — Росгидромет
     href: https://www.meteorf.gov.ru/press/news/20429/
@@ -397,7 +397,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 8
     sravnenie: net
-    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    src: "Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article"
     otryvok: Десятки радиозондов разных стран построены на принципах Молчанова
     stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
     href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
@@ -445,7 +445,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1938'
       pometka_prav: citirovanie-1274
-    src: 'Источник: Ростех, «Первопроходец высоких слоёв атмосферы» — rostec.ru'
+    src: "Источник: Ростех, «Первопроходец высоких слоёв атмосферы» — https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/"
     otryvok: Самые первые зонды Молчанова мерили почти так же точно, как нынешние
     stranica: «Первопроходец высоких слоёв атмосферы» — Ростех
     href: https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/
@@ -455,7 +455,7 @@ fakty:
     dlya_voprosa: false
   - n: 7
     sravnenie: net
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: Передатчик для первого в мире радиозонда Молчанов собрал своими руками
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
@@ -503,7 +503,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1939'
       pometka_prav: citirovanie-1274
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: 'Зонд 1930 года передавал погоду уже цифровым кодом: стрелка прыгала по зубцам гребёнки'
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
@@ -517,7 +517,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: Ростех, «Первопроходец высоких слоёв атмосферы» — rostec.ru'
+    src: "Источник: Ростех, «Первопроходец высоких слоёв атмосферы» — https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/"
     otryvok: 'Первый зонд сам сообщил по радио с высоты 7,8 км: за бортом −40,7 °C'
     stranica: «Первопроходец высоких слоёв атмосферы» — Ростех
     href: https://rostec.ru/media/news/pervoprokhodets-vysokikh-sloev-atmosfery/
@@ -529,7 +529,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 12
     sravnenie: net
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: 'Зонды с «Графа Цеппелина» показали: над всей Арктикой стратосфера начинается на 10,5 км'
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
@@ -541,7 +541,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 14
     sravnenie: net
-    src: 'Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — voeikovmgo.ru'
+    src: "Источник: ГГО им. А. И. Воейкова, «К 90-летию запуска первого радиозонда» — http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article"
     otryvok: К 1937-му зонды Молчанова поднимали 27 станций страны — первая в мире сеть
     stranica: «К 90-летию запуска первого радиозонда» — ГГО им. А. И. Воейкова
     href: http://voeikovmgo.ru/?catid=27&id=994%3Ak-90letiju-zapuska-pervogo-radiozonda&lang=ru&option=com_content&view=article
@@ -553,7 +553,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 13
     sravnenie: net
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: С дирижабля зонд уходил на 15–20 км, а его голос слушали до 50 минут
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/
@@ -563,7 +563,7 @@ fakty:
     dlya_voprosa: false
   - n: 15
     sravnenie: net
-    src: 'Источник: «Бессмертный барак», «Молчанов Павел Александрович» — bessmertnybarak.ru'
+    src: "Источник: «Бессмертный барак», «Молчанов Павел Александрович» — https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/"
     otryvok: Кренкель назвал зонд Молчанова «прекрасным даром человечеству»
     stranica: «Молчанов Павел Александрович» — «Бессмертный барак»
     href: https://bessmertnybarak.ru/Molchanov_Pavel_Aleksandrovich/

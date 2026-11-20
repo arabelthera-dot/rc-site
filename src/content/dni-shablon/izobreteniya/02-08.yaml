@@ -236,7 +236,7 @@ story:
   - summary: Галлий
     det:
     - Не держа в руках ни крупинки галлия, Менделеев поправил его первооткрывателя — и оказался прав.
-    src: 'Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — hij.ru'
+    src: "Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — https://hij.ru/read/27523/"
   - summary: Германий
     det:
     - 'Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32.'
@@ -291,7 +291,7 @@ fakty:
       podpis_gde: Гейдельберг
       podpis_kogda: '1859'
       pometka_prav: citirovanie-1274
-    src: 'Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — hij.ru'
+    src: "Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — https://hij.ru/read/27523/"
     otryvok: Не держа в руках ни крупинки галлия, Менделеев поправил его первооткрывателя — и оказался прав
     stranica: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6
     href: https://hij.ru/read/27523/
@@ -301,7 +301,7 @@ fakty:
     dlya_voprosa: false
   - n: 2
     sravnenie: net
-    src: 'Источник: химфак МГУ, «Менделевий: история открытия» — chem.msu.ru'
+    src: "Источник: химфак МГУ, «Менделевий: история открытия» — https://www.chem.msu.ru/rus/history/element/Md.html"
     otryvok: 1955-й, холодная война — а американцы назвали 101-й элемент в честь русского Менделеева
     stranica: 'химфак МГУ, «Менделевий: история открытия»'
     href: https://www.chem.msu.ru/rus/history/element/Md.html
@@ -351,7 +351,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1969'
       pometka_prav: citirovanie-1274
-    src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
+    src: "Источник: химфак МГУ, «Германий: история открытия» — https://www.chem.msu.ru/rus/history/element/Ge.html"
     otryvok: 'Менделеев предсказал вес экасилиция: 72. Через 15 лет германий взвесили — 72,32'
     stranica: 'химфак МГУ, «Германий: история открытия»'
     href: https://www.chem.msu.ru/rus/history/element/Ge.html
@@ -363,7 +363,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 4
     sravnenie: net
-    src: 'Источник: alhimik.ru, статья о галлии и предсказаниях Менделеева — alhimik.ru'
+    src: "Источник: alhimik.ru, статья о галлии и предсказаниях Менделеева — https://www.alhimik.ru/read/venec01.html"
     otryvok: Бунзен, создатель спектроскопа, сравнил таблицу с «биржевым листком» — его прибор её и доказал
     stranica: alhimik.ru, статья о галлии и предсказаниях Менделеева
     href: https://www.alhimik.ru/read/venec01.html
@@ -411,7 +411,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1871'
       pometka_prav: citirovanie-1274
-    src: 'Источник: khimiya.narod.ru, статья «Бериллий» — khimiya.narod.ru'
+    src: "Источник: khimiya.narod.ru, статья «Бериллий» — https://khimiya.narod.ru/be.htm"
     otryvok: Все химики писали вес бериллия 13,5. Менделеев зачеркнул и поставил 9 — и мир исправился
     stranica: khimiya.narod.ru, статья «Бериллий»
     href: https://khimiya.narod.ru/be.htm
@@ -461,7 +461,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: 'конец XIX — начало XX века'
       pometka_prav: citirovanie-1274
-    src: 'Источник: химфак МГУ, «Галлий: история открытия» — chem.msu.ru'
+    src: "Источник: химфак МГУ, «Галлий: история открытия» — https://www.chem.msu.ru/rus/history/element/Ga.html"
     otryvok: 'Менделеев предсказал даже прибор: экаалюминий найдут спектроскопом. Так его и нашли'
     stranica: 'химфак МГУ, «Галлий: история открытия»'
     href: https://www.chem.msu.ru/rus/history/element/Ga.html
@@ -473,7 +473,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 7
     sravnenie: net
-    src: 'Источник: химфак МГУ, «Скандий: история открытия» — chem.msu.ru'
+    src: "Источник: химфак МГУ, «Скандий: история открытия» — https://www.chem.msu.ru/rus/history/element/Sc.html"
     otryvok: Швед Нильсон спорил с Менделеевым о бериллии — и сам же нашёл предсказанный им экабор
     stranica: 'химфак МГУ, «Скандий: история открытия»'
     href: https://www.chem.msu.ru/rus/history/element/Sc.html
@@ -483,7 +483,7 @@ fakty:
     dlya_voprosa: false
   - n: 8
     sravnenie: net
-    src: 'Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — hij.ru'
+    src: "Источник: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6 — https://hij.ru/read/27523/"
     otryvok: Француз, открывший галлий, узнал о законе Менделеева из письма самого Менделеева
     stranica: Л. М. Сулименко, «Галлий», «Химия и жизнь», 1970, №6
     href: https://hij.ru/read/27523/
@@ -493,7 +493,7 @@ fakty:
     dlya_voprosa: false
   - n: 9
     sravnenie: net
-    src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
+    src: "Источник: химфак МГУ, «Германий: история открытия» — https://www.chem.msu.ru/rus/history/element/Ge.html"
     otryvok: 'Германий хотели назвать «нептуний»: как планету Нептун, найденную сперва на бумаге'
     stranica: 'химфак МГУ, «Германий: история открытия»'
     href: https://www.chem.msu.ru/rus/history/element/Ge.html
@@ -505,7 +505,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 10
     sravnenie: net
-    src: 'Источник: «Коммерсантъ», статья о технеции — kommersant.ru'
+    src: "Источник: «Коммерсантъ», статья о технеции — https://www.kommersant.ru/doc/5434539"
     otryvok: Клетку экамарганца не смогла заполнить природа — элемент пришлось сделать в циклотроне
     stranica: «Коммерсантъ», статья о технеции
     href: https://www.kommersant.ru/doc/5434539
@@ -519,7 +519,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: И. В. Петрянов, Д. Н. Трифонов, «Великий закон», 1976 — chemlib.ru'
+    src: "Источник: И. В. Петрянов, Д. Н. Трифонов, «Великий закон», 1976 — http://chemlib.ru/books/item/f00/s00/z0000016/st005.shtml"
     otryvok: Экамарганец «открывали» в Японии и Германии, давали имена — и всё оказалось ошибкой
     stranica: И. В. Петрянов, Д. Н. Трифонов, «Великий закон», 1976
     href: http://chemlib.ru/books/item/f00/s00/z0000016/st005.shtml
@@ -529,7 +529,7 @@ fakty:
     dlya_voprosa: false
   - n: 12
     sravnenie: net
-    src: 'Источник: К. Хоффман, «Можно ли сделать золото» — element114.narod.ru'
+    src: "Источник: К. Хоффман, «Можно ли сделать золото» — https://element114.narod.ru/Education/chem2-57.html"
     otryvok: Менделевий нашли всего по 17 атомам — и назвали в честь того, кто таблицу придумал
     stranica: К. Хоффман, «Можно ли сделать золото»
     href: https://element114.narod.ru/Education/chem2-57.html
@@ -579,7 +579,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1877'
       pometka_prav: citirovanie-1274
-    src: 'Источник: «Популярная библиотека химических элементов», n-t.ru — n-t.ru'
+    src: "Источник: «Популярная библиотека химических элементов», n-t.ru — https://n-t.ru/ri/ps/pb032.htm"
     otryvok: 'О законе века объявил не автор: Менделеев в тот день уехал проверять сыроварни'
     stranica: «Популярная библиотека химических элементов», n-t.ru
     href: https://n-t.ru/ri/ps/pb032.htm
@@ -627,7 +627,7 @@ fakty:
       podpis_gde: Москва
       podpis_kogda: '1954'
       pometka_prav: citirovanie-1274
-    src: 'Источник: химфак МГУ, «Германий: история открытия» — chem.msu.ru'
+    src: "Источник: химфак МГУ, «Германий: история открытия» — https://www.chem.msu.ru/rus/history/element/Ge.html"
     otryvok: 'Немец Винклер решил, что нашёл родню сурьмы, — спор кончился признанием: это экасилиций'
     stranica: 'химфак МГУ, «Германий: история открытия»'
     href: https://www.chem.msu.ru/rus/history/element/Ge.html
@@ -675,7 +675,7 @@ fakty:
       podpis_gde: Солнечногорск, Боблово
       podpis_kogda: '1953'
       pometka_prav: citirovanie-1274
-    src: 'Источник: химфак МГУ, «Скандий: история открытия» — chem.msu.ru'
+    src: "Источник: химфак МГУ, «Скандий: история открытия» — https://www.chem.msu.ru/rus/history/element/Sc.html"
     otryvok: Для скандия Менделеев заранее расписал вес, формулы окисла и хлорида, соли — сбылось через 8 лет
     stranica: 'химфак МГУ, «Скандий: история открытия»'
     href: https://www.chem.msu.ru/rus/history/element/Sc.html
