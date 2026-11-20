@@ -1,32 +1,32 @@
 {
-  "title": "История в 45 секунд",
+  "title": "История в 51 секунду",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/03feb-luna9/day-03feb-luna9.mp4",
-    "local": "muzei/izobreteniya/video/day-03feb-luna9.mp4",
-    "v": 1,
+    "local": "muzei/izobreteniya/video/day-03feb-luna9-v2.mp4",
+    "v": 2,
     "w": 1920,
     "h": 1080,
-    "sec": 45.2,
-    "mb": 11.6
+    "sec": 51.2,
+    "mb": 13.7
   },
   "vertical": {
     "file": "izobreteniya/03feb-luna9/day-03feb-luna9-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-03feb-luna9-9x16.mp4",
-    "v": 1,
+    "local": "muzei/izobreteniya/video/day-03feb-luna9-9x16-v2.mp4",
+    "v": 2,
     "w": 1080,
     "h": 1920,
-    "sec": 45.2,
-    "mb": 11.6
+    "sec": 51.2,
+    "mb": 12.8
   },
   "poster": {
     "file": "izobreteniya/03feb-luna9/day-03feb-luna9-poster.jpg",
     "local": "muzei/izobreteniya/video/day-03feb-luna9-poster.jpg",
-    "v": 1
+    "v": 2
   },
   "poster_vertical": {
     "file": "izobreteniya/03feb-luna9/day-03feb-luna9-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-03feb-luna9-9x16-poster.jpg",
-    "v": 1
+    "v": 2
   }
 }
