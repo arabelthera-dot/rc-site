@@ -3,30 +3,30 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya.mp4",
-    "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya.mp4",
-    "v": 5,
+    "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-v6.mp4",
+    "v": 6,
     "w": 1920,
     "h": 1080,
-    "sec": 43.6,
-    "mb": 12.7
+    "sec": 44.3,
+    "mb": 12.9
   },
   "vertical": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-9x16.mp4",
-    "v": 5,
+    "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-9x16-v6.mp4",
+    "v": 6,
     "w": 1080,
     "h": 1920,
-    "sec": 43.6,
+    "sec": 44.3,
     "mb": 12.2
   },
   "poster": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya-poster.jpg",
     "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-poster.jpg",
-    "v": 5
+    "v": 6
   },
   "poster_vertical": {
     "file": "izobreteniya/15feb-mertvaya-petlya/day-15feb-mertvaya-petlya-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-15feb-mertvaya-petlya-9x16-poster.jpg",
-    "v": 5
+    "v": 6
   }
 }
