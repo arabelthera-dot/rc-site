@@ -4,16 +4,16 @@
   "horizontal": {
     "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec.mp4",
     "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 46.4,
-    "mb": 11.9
+    "mb": 11.8
   },
   "vertical": {
     "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec-9x16.mp4",
-    "v": 3,
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 46.4,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/23feb-komsomolec/day-23feb-komsomolec-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-23feb-komsomolec-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
