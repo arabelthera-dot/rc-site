@@ -24,7 +24,13 @@ const rolik = rolikRyadom(d.video);
 const muzeyName = museum.title_ru;
 // Заголовок вкладки и og:title — из даты, года и события карточки (Р286 п.4); у пробы без них — как в карточке.
 const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-const kogda = d.head.sobytie && `${parseInt(d.key.slice(3))} ${MES[parseInt(d.key.slice(0, 2)) - 1]} ${d.head.god}: ${d.head.sobytie}`;
+// День и месяц — дата события, а не день музея (Р831): у дня с data_uslovnaya — data_sobytiya, если она другая
+// и того же года; совпала с днём музея (условная) — только год. Год уже в конце события («… (1879)») — не дважды.
+const dm = (k: string) => `${parseInt(k.slice(3))} ${MES[parseInt(k.slice(0, 2)) - 1]} `;
+const ds = d.data_sobytiya, usl = !!d.data_uslovnaya && d.data_uslovnaya !== 'net';
+const den = !usl ? dm(d.key) : ds && ds.slice(5) !== d.key && ds.startsWith(`${d.head.god}-`) ? dm(ds.slice(5)) : '';
+const sobytie = d.head.sobytie?.replace(new RegExp(`(?:,\\s*| \\()${d.head.god}(?:–\\d{4})?\\)?$`), '');
+const kogda = sobytie && `${den}${d.head.god}: ${sobytie}`;
 // заголовок вкладки ≤60 (Р560): режется служебный хвост, не название дня
 const title = kogda ? titleVkladki(kogda, muzeyName) : d.head.title;
 const ogTitle = kogda || d.head.og.title;
