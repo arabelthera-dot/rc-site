@@ -4,7 +4,7 @@
   "horizontal": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet.mp4",
     "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet.mp4",
-    "v": 9,
+    "v": 10,
     "w": 1920,
     "h": 1080,
     "sec": 46.1,
@@ -13,7 +13,7 @@
   "vertical": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-9x16.mp4",
     "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-9x16.mp4",
-    "v": 9,
+    "v": 10,
     "w": 1080,
     "h": 1920,
     "sec": 46.1,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-poster.jpg",
-    "v": 9
+    "v": 10
   },
   "poster_vertical": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-9x16-poster.jpg",
-    "v": 9
+    "v": 10
   }
 }
