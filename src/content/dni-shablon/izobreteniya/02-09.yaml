@@ -204,15 +204,15 @@ story:
   - summary: Холера
     det:
     - За сто лет в России 12 из 15 вспышек холеры легли точно на годы бурь на Солнце.
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
   - summary: Микроб
     det:
     - При спокойном Солнце микроб синеет, при вспышке — краснеет.
-    src: 'Источник: Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — cyberleninka.ru'
+    src: "Источник: Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — https://cyberleninka.ru/article/n/mikrob-i-kosmos-sergey-timofeevich-velhover"
   - summary: Прогноз
     det:
     - 'В 1938 году Чижевский заранее назвал годы волн гриппа: 1939–40 и 1946–47.'
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
 fakty:
 - id: fakty
   nav: Факты
@@ -259,7 +259,7 @@ fakty:
       podpis_gde: Ульяновск
       podpis_kogda: '1976'
       pometka_prav: citirovanie-1274
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
     otryvok: За сто лет в России 12 из 15 вспышек холеры легли точно на годы бурь на Солнце
     stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
     href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
@@ -271,7 +271,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 2
     sravnenie: net
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
     otryvok: Микроб меняет окраску раньше, чем на Солнце грянет вспышка, — бактерия знает о буре заранее
     stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
     href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
@@ -281,7 +281,7 @@ fakty:
     dlya_voprosa: false
   - n: 3
     sravnenie: net
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
     otryvok: 'Сыворотка 1894 года разорвала связь дифтерии с Солнцем: врачи переспорили светило'
     stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
     href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
@@ -331,7 +331,7 @@ fakty:
       podpis_gde: Снежинск
       podpis_kogda: '2000'
       pometka_prav: citirovanie-1274
-    src: 'Источник: музей «Обираловка», статья о Чижевском — museum-obiralovka.ru'
+    src: "Источник: музей «Обираловка», статья о Чижевском — https://museum-obiralovka.ru/item/1794488"
     otryvok: Заключённый Чижевский остановил в лагере эпидемию тифа
     stranica: музей «Обираловка», статья о Чижевском
     href: https://museum-obiralovka.ru/item/1794488
@@ -341,7 +341,7 @@ fakty:
     dlya_voprosa: false
   - n: 5
     sravnenie: net
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
     otryvok: Грипп 1918 года вспыхнул в Австралии, которую обнесли карантинным кордоном
     stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
     href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
@@ -351,7 +351,7 @@ fakty:
     dlya_voprosa: false
   - n: 6
     sravnenie: net
-    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    src: "Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html"
     otryvok: Журнал ЦК КПСС из-за Чижевского напечатал первое в своей истории опровержение
     stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
     href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
@@ -361,7 +361,7 @@ fakty:
     dlya_voprosa: false
   - n: 7
     sravnenie: net
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
     otryvok: 'В 1938 году Чижевский заранее назвал годы волн гриппа: 1939–40 и 1946–47'
     stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
     href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
@@ -373,7 +373,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 8
     sravnenie: net
-    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    src: "Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html"
     otryvok: 'Герман Оберт написал ему из Берлина: «Вы зажгли огонь, и мы не дадим ему погаснуть»'
     stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
     href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
@@ -383,7 +383,7 @@ fakty:
     dlya_voprosa: false
   - n: 9
     sravnenie: net
-    src: 'Источник: Владимирская областная научная библиотека, «Русский Леонардо да Винчи XX века» — library.vladimir.ru'
+    src: "Источник: Владимирская областная научная библиотека, «Русский Леонардо да Винчи XX века» — https://library.vladimir.ru/vystavki-2/russkij-leonardo-da-vinchi-xx-veka.html"
     otryvok: 'Нью-Йорк, 1939: мировой конгресс назвал Чижевского «Леонардо да Винчи XX века»'
     stranica: Владимирская областная научная библиотека, «Русский Леонардо да Винчи XX века»
     href: https://library.vladimir.ru/vystavki-2/russkij-leonardo-da-vinchi-xx-veka.html
@@ -395,7 +395,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 10
     sravnenie: net
-    src: 'Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — templeofthepeople.ru'
+    src: "Источник: А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976 — http://www.templeofthepeople.ru/ftpgetfile.php?id=198"
     otryvok: Эпидемия вдруг вспыхивает на корабле, который давно идёт в открытом море
     stranica: 'А. Л. Чижевский, «Земное эхо солнечных бурь», М.: Мысль, 1976'
     href: http://www.templeofthepeople.ru/ftpgetfile.php?id=198
@@ -409,7 +409,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018 — rg.ru'
+    src: "Источник: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018 — https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html"
     otryvok: 'Через сто лет проверка по 200 странам подтвердила: Чижевский был прав'
     stranica: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018
     href: https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html
@@ -421,7 +421,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 12
     sravnenie: net
-    src: 'Источник: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018 — rg.ru'
+    src: "Источник: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018 — https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html"
     otryvok: Чтобы поймать связь, он перебрал события истории за 2414 лет на пяти континентах
     stranica: «Российская газета», «Гипотеза Чижевского получила новые аргументы», 2018
     href: https://rg.ru/2018/04/17/gipoteza-chizhevskogo-poluchila-novye-argumenty.html
@@ -433,7 +433,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 13
     sravnenie: net
-    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    src: "Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html"
     otryvok: Конгресс выдвинул его на Нобелевскую — Чижевский отказался «по этическим соображениям»
     stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
     href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
@@ -443,7 +443,7 @@ fakty:
     dlya_voprosa: false
   - n: 14
     sravnenie: net
-    src: 'Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — mk.ru'
+    src: "Источник: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012 — https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html"
     otryvok: «Правда» назвала его «врагом под маской учёного», а мир — Леонардо да Винчи
     stranica: Л. Колодный, «Леонардо да Винчи ХХ века», «Московский комсомолец», 2012
     href: https://www.mk.ru/social/2012/04/18/694852-leonardo-davinchi-hh-veka.html
@@ -491,7 +491,7 @@ fakty:
       podpis_gde: Москва
       podpis_kogda: '1969'
       pometka_prav: citirovanie-1274
-    src: 'Источник: Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — cyberleninka.ru'
+    src: "Источник: Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014 — https://cyberleninka.ru/article/n/mikrob-i-kosmos-sergey-timofeevich-velhover"
     otryvok: При спокойном Солнце микроб синеет, при вспышке — краснеет
     stranica: 'Л. П. Чурилов, «Микроб и космос: Сергей Тимофеевич Вельховер», 2014'
     href: https://cyberleninka.ru/article/n/mikrob-i-kosmos-sergey-timofeevich-velhover

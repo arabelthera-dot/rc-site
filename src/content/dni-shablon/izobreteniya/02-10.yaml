@@ -196,15 +196,15 @@ story:
   - summary: Сани с пропеллером
     det:
     - Первые в мире аэросани построил русский инженер Неждановский в 1904 году
-    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    src: "Источник: М. Б. Саукке, «Аэросани в России» — http://www.famhist.ru/famhist/tupol_n/0004b895.htm"
   - summary: Студенческий рекорд
     det:
     - Студент Сикорский в 1910 разогнал сани до 74,7 км/ч на моторе в 30 сил
-    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    src: "Источник: М. Б. Саукке, «Аэросани в России» — http://www.famhist.ru/famhist/tupol_n/0004b895.htm"
   - summary: Сани идут в бой
     det:
     - За войну собрали 70 аэросанных батальонов — 2,1 тысячи машин от Москвы до Сталинграда
-    src: 'Источник: «Аэросани», «Коммерсантъ» — kommersant.ru'
+    src: "Источник: «Аэросани», «Коммерсантъ» — https://www.kommersant.ru/doc/4802226"
 fakty:
 - id: fakty
   nav: Факты
@@ -250,7 +250,7 @@ fakty:
       podpis_chto: «Капитан Прохотилов ставит боевую задачу экипажам аэросаней»
       podpis_gde: фронт
       podpis_kogda: январь 1944
-    src: 'Источник: К. К. Рокоссовский, «Солдатский долг» — militera.lib.ru'
+    src: "Источник: К. К. Рокоссовский, «Солдатский долг» — http://militera.lib.ru/memo/russian/rokossovsky/09.html"
     otryvok: Рота моментально выдвинулась в район, занятый немецкими лыжниками, развернулась и с ходу атаковала, ведя огонь из четырнадцати своих пулеметов.
     stranica: «Солдатский долг», глава 9
     href: http://militera.lib.ru/memo/russian/rokossovsky/09.html
@@ -262,7 +262,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 2
     sravnenie: net
-    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    src: "Источник: М. Б. Саукке, «Аэросани в России» — http://www.famhist.ru/famhist/tupol_n/0004b895.htm"
     otryvok: Третьи сани, которые вошли в Кронштадт, были награждены орденом Красного Знамени.
     stranica: «Аэросани в России»
     href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
@@ -272,7 +272,7 @@ fakty:
     dlya_voprosa: false
   - n: 3
     sravnenie: net
-    src: 'Источник: К. К. Рокоссовский, «Солдатский долг» — militera.lib.ru'
+    src: "Источник: К. К. Рокоссовский, «Солдатский долг» — http://militera.lib.ru/memo/russian/rokossovsky/09.html"
     otryvok: 'Взятые в этой стычке пленные в один голос говорили, что эта атака их ошеломила: они приняли аэросани за танки и были поражены, почему же машины как будто летят по глубокому снегу.'
     stranica: «Солдатский долг», глава 9
     href: http://militera.lib.ru/memo/russian/rokossovsky/09.html
@@ -321,7 +321,7 @@ fakty:
       podpis_chto: «Аэросани конструкции Неждановского. Изучение работы пропеллеров»
       podpis_gde: не указано
       podpis_kogda: не указано
-    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    src: "Источник: М. Б. Саукке, «Аэросани в России» — http://www.famhist.ru/famhist/tupol_n/0004b895.htm"
     otryvok: В 1904 г. инженером С.С. Неждановским был сконструирован аппарат, ставший вскоре незаменимым транспортным средством для передвижения по снежным покровам.
     stranica: «Аэросани в России»
     href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
@@ -333,7 +333,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 5
     sravnenie: net
-    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    src: "Источник: М. Б. Саукке, «Аэросани в России» — http://www.famhist.ru/famhist/tupol_n/0004b895.htm"
     otryvok: И.И. Сикорский и Ф.И. Былинкин построили аэросани с авиационным двигателем воздушного охлаждения "Анзани" мощностью в 30 л. с., что позволило развить скорость до 74,7 км/ч.
     stranica: «Аэросани в России»
     href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
@@ -345,7 +345,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 6
     sravnenie: net
-    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    src: "Источник: Н. Г. Бодрихин, «Туполев» — https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read"
     otryvok: Аэросани АНТ-III стали первыми цельнометаллическими санями.
     stranica: «Туполев»
     href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
@@ -355,7 +355,7 @@ fakty:
     dlya_voprosa: false
   - n: 7
     sravnenie: net
-    src: 'Источник: С. Я. Бунаков, «На Ладоге» — militera.lib.ru'
+    src: "Источник: С. Я. Бунаков, «На Ладоге» — http://militera.lib.ru/memo/russian/bunakov_sy/02.html"
     otryvok: Вы должны провести в эту точку аэросанный батальон, посадить на сани разведчиков и пленных и возвратиться тем же маршрутом…
     stranica: воспоминания, глава 2
     href: http://militera.lib.ru/memo/russian/bunakov_sy/02.html
@@ -402,7 +402,7 @@ fakty:
       podpis_chto: «Аэросани проходят через город Гжатск»
       podpis_gde: Гжатск
       podpis_kogda: март 1943
-    src: 'Источник: «Аэросани», «Коммерсантъ» — kommersant.ru'
+    src: "Источник: «Аэросани», «Коммерсантъ» — https://www.kommersant.ru/doc/4802226"
     otryvok: Всего в 1941–1944 гг. было сформировано 70 аэросанных боевых и транспортных батальонов — это 2,1 тыс. машин.
     stranica: «Коммерсантъ»
     href: https://www.kommersant.ru/doc/4802226
@@ -414,7 +414,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 9
     sravnenie: net
-    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    src: "Источник: М. Б. Саукке, «Аэросани в России» — http://www.famhist.ru/famhist/tupol_n/0004b895.htm"
     otryvok: Двое саней погибли, попав в проруби.
     stranica: «Аэросани в России»
     href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
@@ -424,7 +424,7 @@ fakty:
     dlya_voprosa: false
   - n: 10
     sravnenie: net
-    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    src: "Источник: Н. Г. Бодрихин, «Туполев» — https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read"
     otryvok: Еще 28 августа 1919 года Совет обороны предложил ЦАГИ построить серию аэросаней, подтвердив заказ не только революционной необходимостью, но и существенным пайком, так необходимым в голодной тогда стране.
     stranica: «Туполев»
     href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
@@ -438,7 +438,7 @@ fakty:
   udary:
   - n: 11
     sravnenie: net
-    src: 'Источник: М. Б. Саукке, «Аэросани в России» — famhist.ru'
+    src: "Источник: М. Б. Саукке, «Аэросани в России» — http://www.famhist.ru/famhist/tupol_n/0004b895.htm"
     otryvok: Для проведения работы выделяется 9 миллионов рублей, из них один миллион - немедленно.
     stranica: «Аэросани в России»
     href: http://www.famhist.ru/famhist/tupol_n/0004b895.htm
@@ -448,7 +448,7 @@ fakty:
     dlya_voprosa: false
   - n: 12
     sravnenie: net
-    src: 'Источник: «Снежные танки на лыжах — к победе», History.ru — history.ru'
+    src: "Источник: «Снежные танки на лыжах — к победе», History.ru — https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie"
     otryvok: Боевая машина при необходимости могла тащить на буксире до двух десятков лыжников.
     stranica: History.ru
     href: https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie
@@ -458,7 +458,7 @@ fakty:
     dlya_voprosa: false
   - n: 13
     sravnenie: net
-    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    src: "Источник: Н. Г. Бодрихин, «Туполев» — https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read"
     otryvok: В 1926 году он принял участие в пробеге Москва — Ленинград — Москва за штурвалом аэросаней АНТ-V.
     stranica: «Туполев»
     href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
@@ -468,7 +468,7 @@ fakty:
     dlya_voprosa: false
   - n: 14
     sravnenie: net
-    src: 'Источник: Н. Г. Бодрихин, «Туполев» — coollib.net'
+    src: "Источник: Н. Г. Бодрихин, «Туполев» — https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read"
     otryvok: Аэросани АНТ-IV экспонировались на международной выставке в Берлине в 1928 году.
     stranica: «Туполев»
     href: https://coollib.net/b/183499-nikolay-georgievich-bodrihin-tupolev/read
@@ -515,7 +515,7 @@ fakty:
       podpis_chto: «Винт от аэросаней»
       podpis_gde: Нижний Новгород
       podpis_kogda: 1930-е
-    src: 'Источник: «Снежные танки на лыжах — к победе», History.ru — history.ru'
+    src: "Источник: «Снежные танки на лыжах — к победе», History.ru — https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie"
     otryvok: Так вот, НКЛ это Наркомлес, Народный комиссариат лесной промышленности… Позади у него располагался авиамотор М-11 от учебного самолета У-2.
     stranica: History.ru
     href: https://history.ru/read/articles/sniezhnyie-tanki-na-lyzhakh-k-pobiedie

@@ -190,7 +190,7 @@ fakty:
     udary:
       - n: 1
         sravnenie: как школа от первого класса до выпуска и ещё шесть лет
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: 17 лет без ремонта — исправную машину разрезали на куски и выбросили на свалку
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -202,7 +202,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 2
         sravnenie: net
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: 'Завод снял «Сетунь» с выпуска: за 27,5 тыс. рублей она была «слишком дешева»'
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -214,7 +214,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 3
         sravnenie: почти все 24 часа суток из 24
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: 'Комиссия министерства доказывала, что машина не работает. Испытания: 98% полезного времени'
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -226,7 +226,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 4
         sravnenie: net
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: На чердаке из спасённой «Сетуни-70» сделали «Наставник» — им на ВМК пользовались больше 30 лет
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -238,7 +238,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 5
         sravnenie: net
-        src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — https://www.computer-museum.ru/histussr/setun_b.htm"
         otryvok: Чехословакия собиралась выпускать «Сетунь» большой серией — наши чиновники не дали
         stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
         href: https://www.computer-museum.ru/histussr/setun_b.htm
@@ -248,7 +248,7 @@ fakty:
         dlya_voprosa: false
       - n: 6
         sravnenie: net
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: Машину МГУ не отдали из-за обиды на выборах в Академию — и Брусенцов построил свою
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -258,7 +258,7 @@ fakty:
         dlya_voprosa: false
       - n: 7
         sravnenie: девять из десяти
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: В чужой лаборатории до 90% ферритов шло в брак — Брусенцов нашёл схему, где работают все
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -306,7 +306,7 @@ fakty:
           podpis_kogda: '1965'
       - n: 8
         sravnenie: полторы недели
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: «Сетунь» заработала на десятый день наладки — такого у наладчиков тех лет ещё не бывало
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -318,7 +318,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 9
         sravnenie: net
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: В США на лекциях о советских ЭВМ спрашивали «почему-то только о Брусенцове и „Сетуни“»
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -328,7 +328,7 @@ fakty:
         dlya_voprosa: false
       - n: 10
         sravnenie: net
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: 'Лабораторию выгнали на чердак без дневного света: «ЭВМ — не дело университета»'
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -342,7 +342,7 @@ fakty:
     udary:
       - n: 11
         sravnenie: net
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: В Америке задумывались о троичной ЭВМ — построили её только у нас, в МГУ
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -352,7 +352,7 @@ fakty:
         dlya_voprosa: false
       - n: 12
         sravnenie: как два школьных класса — по машине на ученика
-        src: 'Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Б. Н. Малиновский, «Творец троичной ЭВМ», Виртуальный компьютерный музей — https://www.computer-museum.ru/books/vt_face/7_brusencov.htm"
         otryvok: 50 «Сетуней» работали от Якутска до Ашхабада — без сервиса и почти без запчастей
         stranica: Малиновский, «Творец троичной ЭВМ»
         href: https://www.computer-museum.ru/books/vt_face/7_brusencov.htm
@@ -364,7 +364,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 13
         sravnenie: два учебных дня вместо полугода
-        src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — https://www.computer-museum.ru/histussr/setun_b.htm"
         otryvok: С «Наставником» студенты осваивали Фортран за 10–15 часов — и знали его лучше, чем после семестра
         stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
         href: https://www.computer-museum.ru/histussr/setun_b.htm
@@ -376,7 +376,7 @@ fakty:
         otvet_edinstvennyj: true
       - n: 14
         sravnenie: net
-        src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — https://www.computer-museum.ru/histussr/setun_b.htm"
         otryvok: '«Наставник» тоже не взяли: «слишком прост и дешев — без дисплея и мышки»'
         stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
         href: https://www.computer-museum.ru/histussr/setun_b.htm
@@ -386,7 +386,7 @@ fakty:
         dlya_voprosa: false
       - n: 15
         sravnenie: как два школьных класса без половины
-        src: 'Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — computer-museum.ru'
+        src: "Источник: Н. П. Брусенцов, «Троичная ЭВМ «Сетунь»», Виртуальный компьютерный музей — https://www.computer-museum.ru/histussr/setun_b.htm"
         otryvok: Первую троичную ЭВМ мира собрали 8 вчерашних выпускников и 12 техников
         stranica: Брусенцов, «Троичная ЭВМ «Сетунь»»
         href: https://www.computer-museum.ru/histussr/setun_b.htm

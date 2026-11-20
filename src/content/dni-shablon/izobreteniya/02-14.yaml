@@ -251,7 +251,7 @@ story:
     det:
     - Повозка Эльманова — три яруса и 21 метр длины, и всё на одном брусе.
     - На модели Эльманова повозку с десятью пудами гирь катали одним пальцем.
-    src: 'Источник: «Москва. Прогулка», «Эльмановская дорожка на столбах» — mosprogulka.ru'
+    src: "Источник: «Москва. Прогулка», «Эльмановская дорожка на столбах» — https://mosprogulka.ru/mag/elmanovskaja_dorozhka_na_stolbah"
   - summary: Гирокар Шиловского
     det:
     - В 1914 году в Лондоне двухколёсная машина Шиловского в 2,75 тонны стояла и не падала.
@@ -260,7 +260,7 @@ story:
   - summary: Аэропоезд Вальднера
     det:
     - Аэропоезд придумал музыкант-самоучка, его модель неслась в парке Горького 120 км/ч.
-    src: 'Источник: «За рулём», «Аэропоезд из 1933-го» — zr.ru'
+    src: "Источник: «За рулём», «Аэропоезд из 1933-го» — https://www.zr.ru/content/articles/931819-aehropoezd-iz-1933/"
 fakty:
 - id: fakty
   nav: Факты
@@ -269,7 +269,7 @@ fakty:
   udary:
   - n: 1
     sravnenie: net
-    src: 'Источник: «Сноб», «Инструкция по борьбе с плохими дорогами: кто придумал монорельс» — snob.ru'
+    src: "Источник: «Сноб», «Инструкция по борьбе с плохими дорогами: кто придумал монорельс» — https://snob.ru/history/instrukciya-po-borbe-s-plohimi-dorogami-kto-pridumal-monorels/"
     otryvok: На модели Эльманова повозку с десятью пудами гирь катали одним пальцем
     stranica: '«Инструкция по борьбе с плохими дорогами: кто придумал монорельс» — «Сноб»'
     href: https://snob.ru/history/instrukciya-po-borbe-s-plohimi-dorogami-kto-pridumal-monorels/
@@ -301,7 +301,7 @@ fakty:
     dlya_voprosa: false
   - n: 4
     sravnenie: net
-    src: 'Источник: В. Измеров, «Монорельс в России», часть 1 — izmerov.narod.ru'
+    src: "Источник: В. Измеров, «Монорельс в России», часть 1 — https://izmerov.narod.ru/monor/index.html"
     otryvok: В 1905 году Романов предложил монорельс Аляска — Сибирь с тоннелем под Беринговым проливом
     stranica: В. Измеров, «Монорельс в России», часть 1
     href: https://izmerov.narod.ru/monor/index.html
@@ -311,7 +311,7 @@ fakty:
     dlya_voprosa: false
   - n: 5
     sravnenie: net
-    src: 'Источник: В. Измеров, «Монорельс в России», часть 2 — izmerov.narod.ru'
+    src: "Источник: В. Измеров, «Монорельс в России», часть 2 — https://izmerov.narod.ru/monor/monor2.html"
     otryvok: В 1934 году в нижегородской тайге пустили монорельс на 50 км, и он возил лес 15 лет
     stranica: В. Измеров, «Монорельс в России», часть 2
     href: https://izmerov.narod.ru/monor/monor2.html
@@ -323,7 +323,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 6
     sravnenie: net
-    src: 'Источник: «Москва. Прогулка», «Эльмановская дорожка на столбах» — mosprogulka.ru'
+    src: "Источник: «Москва. Прогулка», «Эльмановская дорожка на столбах» — https://mosprogulka.ru/mag/elmanovskaja_dorozhka_na_stolbah"
     otryvok: 'В 1835 году посчитали: на дороге Эльманова одна лошадь тянет за шестнадцать'
     stranica: «Эльмановская дорожка на столбах» — «Москва. Прогулка»
     href: https://mosprogulka.ru/mag/elmanovskaja_dorozhka_na_stolbah
@@ -373,7 +373,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1934'
       pometka_prav: citirovanie-1274
-    src: 'Источник: «За рулём», «Аэропоезд из 1933-го» — zr.ru'
+    src: "Источник: «За рулём», «Аэропоезд из 1933-го» — https://www.zr.ru/content/articles/931819-aehropoezd-iz-1933/"
     otryvok: Аэропоезд придумал музыкант-самоучка, его модель неслась в парке Горького 120 км/ч
     stranica: «Аэропоезд из 1933-го» — «За рулём»
     href: https://www.zr.ru/content/articles/931819-aehropoezd-iz-1933/
@@ -385,7 +385,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 8
     sravnenie: net
-    src: 'Источник: «Техинсайдер», «Эпоха акробатов: однорельсовые железные дороги» — techinsider.ru'
+    src: "Источник: «Техинсайдер», «Эпоха акробатов: однорельсовые железные дороги» — https://www.techinsider.ru/technologies/9138-epokha-akrobatov-odnorelsovye-zheleznye-dorogi/"
     otryvok: В 1921 году за четыре месяца под Петроградом проложили 12 км пути для гиропоезда
     stranica: '«Эпоха акробатов: однорельсовые железные дороги» — «Техинсайдер»'
     href: https://www.techinsider.ru/technologies/9138-epokha-akrobatov-odnorelsovye-zheleznye-dorogi/
@@ -435,7 +435,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1905'
       pometka_prav: citirovanie-1274
-    src: 'Источник: В. Измеров, «Монорельс в России», часть 1 — izmerov.narod.ru'
+    src: "Источник: В. Измеров, «Монорельс в России», часть 1 — https://izmerov.narod.ru/monor/index.html"
     otryvok: В 1904 году Романов обещал поезд Петербург — Москва на 200 км/ч, и министерство одобрило
     stranica: В. Измеров, «Монорельс в России», часть 1
     href: https://izmerov.narod.ru/monor/index.html
@@ -447,7 +447,7 @@ fakty:
     otvet_edinstvennyj: true
   - n: 10
     sravnenie: net
-    src: 'Источник: В. Измеров, «Монорельс в России», часть 3 — izmerov.narod.ru'
+    src: "Источник: В. Измеров, «Монорельс в России», часть 3 — https://izmerov.narod.ru/monor/monor3.html"
     otryvok: В 1954 году на Камчатке задумали самый длинный монорельс в мире — 511 км
     stranica: В. Измеров, «Монорельс в России», часть 3
     href: https://izmerov.narod.ru/monor/monor3.html
@@ -501,7 +501,7 @@ fakty:
       podpis_gde: Калуга
       podpis_kogda: '1929'
       pometka_prav: citirovanie-1274
-    src: 'Источник: В. Измеров, «Монорельс в России», часть 2 — izmerov.narod.ru'
+    src: "Источник: В. Измеров, «Монорельс в России», часть 2 — https://izmerov.narod.ru/monor/monor2.html"
     otryvok: "Циолковский придумал поезд без колёс на 720 км/ч и первым в мире предложил ему «юбку»"
     stranica: В. Измеров, «Монорельс в России», часть 2
     href: https://izmerov.narod.ru/monor/monor2.html
@@ -511,7 +511,7 @@ fakty:
     dlya_voprosa: false
   - n: 12
     sravnenie: net
-    src: 'Источник: В. Измеров, «Монорельс в России», часть 1 — izmerov.narod.ru'
+    src: "Источник: В. Измеров, «Монорельс в России», часть 1 — https://izmerov.narod.ru/monor/index.html"
     otryvok: В 1911 году в Томске Вайнберг возил вагончик на магнитах и мечтал о 1000 км/ч в трубе
     stranica: В. Измеров, «Монорельс в России», часть 1
     href: https://izmerov.narod.ru/monor/index.html
@@ -559,7 +559,7 @@ fakty:
       podpis_gde: Санкт-Петербург
       podpis_kogda: '1905'
       pometka_prav: citirovanie-1274
-    src: 'Источник: В. Измеров, «Монорельс в России», часть 1 — izmerov.narod.ru'
+    src: "Источник: В. Измеров, «Монорельс в России», часть 1 — https://izmerov.narod.ru/monor/index.html"
     otryvok: В 1900 году вагон Романова при торможении возвращал ток обратно в сеть
     stranica: В. Измеров, «Монорельс в России», часть 1
     href: https://izmerov.narod.ru/monor/index.html
@@ -569,7 +569,7 @@ fakty:
     dlya_voprosa: false
   - n: 14
     sravnenie: net
-    src: 'Источник: «Техинсайдер», «Эпоха акробатов: однорельсовые железные дороги» — techinsider.ru'
+    src: "Источник: «Техинсайдер», «Эпоха акробатов: однорельсовые железные дороги» — https://www.techinsider.ru/technologies/9138-epokha-akrobatov-odnorelsovye-zheleznye-dorogi/"
     otryvok: Гиропоезд Шиловского рассчитывал Жуковский — сам отец русской авиации
     stranica: '«Эпоха акробатов: однорельсовые железные дороги» — «Техинсайдер»'
     href: https://www.techinsider.ru/technologies/9138-epokha-akrobatov-odnorelsovye-zheleznye-dorogi/
@@ -579,7 +579,7 @@ fakty:
     dlya_voprosa: false
   - n: 15
     sravnenie: net
-    src: 'Источник: «Москва. Прогулка», «Эльмановская дорожка на столбах» — mosprogulka.ru'
+    src: "Источник: «Москва. Прогулка», «Эльмановская дорожка на столбах» — https://mosprogulka.ru/mag/elmanovskaja_dorozhka_na_stolbah"
     otryvok: Повозка Эльманова — три яруса и 21 метр длины, и всё на одном брусе
     stranica: «Эльмановская дорожка на столбах» — «Москва. Прогулка»
     href: https://mosprogulka.ru/mag/elmanovskaja_dorozhka_na_stolbah

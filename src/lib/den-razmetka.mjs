@@ -76,10 +76,29 @@ export const podpisHtml = (f) => {
   return `${podpis} <span class="credit">${f.credit}</span>`;
 };
 export const kadrHtml = (f) => `<figure class="${f.klass ? `fig ${f.klass}` : 'fig'}"><img src="${f.src}"${f.width ? ` width="${f.width}" height="${f.height}"` : ''} loading="lazy" decoding="async" alt="${f.alt.replace(/"/g, '&quot;')}" data-source="${f.data_source}" data-license="${f.license.replace(/"/g, '&quot;')}"${opisanieAttr(f)}><figcaption>${podpisHtml(f)}</figcaption>${opisanieHtml(f)}</figure>`;
+// «Источник: Название — https://…» (Р833): адрес в строке источника — живой ссылкой с коротким текстом-доменом, как в
+// утверждённом (<a href>…>ngregion.ru</a>). Адрес без https, но с путём («sm2.bmstu.ru/o-kafedre/…») — тоже ссылка; строка
+// с готовой разметкой <a> не трогается.
+const reAdres = /(^|[\s(])((?:https?:\/\/)[^\s<>"«»]+|(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}\/[^\s<>"«»]+)/gi;
+// Два адреса и больше — «Источники:» (строка 104 журнала Р832).
+const skobki = (t, z) => t.split(z).length - 1;
+export const istochnikHtml = (src) => {
+  if (/<a\s/i.test(src)) return src;
+  let n = 0;
+  const html = String(src).replace(reAdres, (_, pered, syroj) => {
+    let adres = syroj.replace(/[.,;:]+$/, '');
+    while (adres.endsWith(')') && skobki(adres, ')') > skobki(adres, '(')) adres = adres.slice(0, -1).replace(/[.,;:]+$/, '');
+    const href = /^https?:\/\//i.test(adres) ? adres : `https://${adres}`;
+    const tekst = href.replace(/^https?:\/\/(?:www\.)?/i, '').replace(/[/?#].*$/, '');
+    n += 1;
+    return `${pered}<a href="${href.replace(/"/g, '&quot;')}" rel="noopener" target="_blank">${tekst}</a>${syroj.slice(adres.length)}`;
+  });
+  return n > 1 ? html.replace(/^Источник:/, 'Источники:') : html;
+};
 export const udarHtml = (u) => `<li${u.find ? ' class="find"' : ''}><details><summary><span>${u.summary}<span class="more-lbl"><span class="o">${u.podrobnee ?? 'Узнать подробнее'}</span><span class="c">Свернуть</span></span></span></summary>
         <div class="det">
 ${u.det.map((p, i) => `          <p>${i === 0 && u.tag ? `<span class="tag">${u.tag}</span>` : ''}${p}</p>`).join('\n')}
-          <p class="src-note">${u.src}</p>${u.otryvok ? `
+          <p class="src-note">${istochnikHtml(u.src)}</p>${u.otryvok ? `
           <blockquote class="fakt-otryvok">${u.otryvok}</blockquote>` : ''}
         </div></details>${u.pometka ? `<p class="fakt-ist">${POMETKI.includes(u.pometka) ? `<span class="fakt-pometka">${u.pometka}</span> ` : ''}<a href="${u.href}" rel="noopener" target="_blank">${u.stranica}</a></p>` : ''}${u.kadr ? kadrHtml(u.kadr) : ''}</li>`;
 export const udaryHtml = (list) => `<ol class="udary">\n${list.map((u) => `      ${udarHtml(u)}`).join('\n')}\n    </ol>`;

@@ -243,15 +243,15 @@ story:
   - summary: Физик в океане
     det:
     - Ленц первым в мире заглянул в глубины океана — отсюда началась океанография.
-    src: 'Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — sea-library.ru'
+    src: "Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html"
   - summary: Правило 1833 года
     det:
     - Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии.
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
   - summary: Двигатель даёт ток
     det:
     - 'Ленц доказал: крутишь вал двигателя Якоби — и он сам даёт ток.'
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
 fakty:
 - id: fakty
   nav: Факты
@@ -261,7 +261,7 @@ fakty:
   - n: 1
     summary: В 1838 году Ленц заморозил воду электрическим током
     sravnenie: net
-    src: 'Источник: Русский биографический словарь, т. 10 — azbyka.ru'
+    src: "Источник: Русский биографический словарь, т. 10 — https://azbyka.ru/otechnik/Spravochniki/russkij-biograficheskij-slovar-tom-10/269"
     otryvok: В 1838 году Ленц заморозил воду электрическим током
     stranica: Русский биографический словарь
     href: https://azbyka.ru/otechnik/Spravochniki/russkij-biograficheskij-slovar-tom-10/269
@@ -274,7 +274,7 @@ fakty:
   - n: 2
     summary: Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии
     sravnenie: net
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: Правило Ленца появилось в 1833-м — за 14 лет до закона сохранения энергии
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -287,7 +287,7 @@ fakty:
   - n: 3
     summary: Редактор главного физического журнала не сразу решился напечатать опыты Ленца
     sravnenie: net
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: Редактор главного физического журнала не сразу решился напечатать опыты Ленца
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -336,7 +336,7 @@ fakty:
       podpis_chto: Б. М. Стародубцев, Е. В. Войшвилло. «Шлюп „Предприятие“ О. Е. Коцебу. 1823 г.»
       podpis_gde: Ленинград
       podpis_kogda: '1986'
-    src: 'Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — sea-library.ru'
+    src: "Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html"
     otryvok: Ленц первым в мире заглянул в глубины океана — отсюда началась океанография
     stranica: Морская библиотека
     href: http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html
@@ -384,7 +384,7 @@ fakty:
       podpis_chto: Батометр морской БМ-48
       podpis_gde: СССР
       podpis_kogda: 1950–1960-е
-    src: 'Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — sea-library.ru'
+    src: "Источник: «Вклад русских учёных и моряков в изучение морей и океанов», Морская библиотека — http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html"
     otryvok: Его лебёдку и батометр мир потом знал под чужими именами — Томсона и Нансена
     stranica: Морская библиотека
     href: http://sea-library.ru/morskie-stati/615-izuchenie-morej-i-okeanov.html
@@ -395,7 +395,7 @@ fakty:
   - n: 6
     summary: 'Барометром Ленц выяснил: Каспий на 30,5 метра ниже Чёрного моря'
     sravnenie: net
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: 'Барометром Ленц выяснил: Каспий на 30,5 метра ниже Чёрного моря'
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -408,7 +408,7 @@ fakty:
   - n: 7
     summary: С 1 февраля 1837-го по просьбе Ленца в Баку мерят Каспий — отсюда счёт всех измерений
     sravnenie: net
-    src: 'Источник: П. Бухарицин, «Каспийский вестник» — casp-geo.ru'
+    src: "Источник: П. Бухарицин, «Каспийский вестник» — https://casp-geo.ru/petr-buharitsin-k-nachalu-2030-h-godov-uroven-kaspiya-vnov-budet-na-podeme/"
     otryvok: С 1 февраля 1837-го по просьбе Ленца в Баку мерят Каспий — отсюда счёт всех измерений
     stranica: «Каспийский вестник»
     href: https://casp-geo.ru/petr-buharitsin-k-nachalu-2030-h-godov-uroven-kaspiya-vnov-budet-na-podeme/
@@ -419,7 +419,7 @@ fakty:
   - n: 8
     summary: Ленц предсказал тёплую воду в глубине Ледовитого океана за 60 лет до Нансена
     sravnenie: net
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: Ленц предсказал тёплую воду в глубине Ледовитого океана за 60 лет до Нансена
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -467,7 +467,7 @@ fakty:
       podpis_chto: Электродвигатель Якоби, 1834 (фотография с рисунка)
       podpis_gde: Ленинград
       podpis_kogda: 1970-е
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: 'Ленц доказал: крутишь вал двигателя Якоби — и он сам даёт ток'
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -478,7 +478,7 @@ fakty:
   - n: 10
     summary: 'Ленц первым в мире понял: глубинная вода течёт от полюсов к экватору'
     sravnenie: net
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: 'Ленц первым в мире понял: глубинная вода течёт от полюсов к экватору'
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -493,7 +493,7 @@ fakty:
   - n: 11
     summary: Все считали индукционный ток особым — Ленц один опытом доказал, что он обычный
     sravnenie: net
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: Все считали индукционный ток особым — Ленц один опытом доказал, что он обычный
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -540,7 +540,7 @@ fakty:
       podpis_chto: Э. И. Расовский. Учебная таблица «Закон Ленца — Джоуля»
       podpis_gde: СССР
       podpis_kogda: '1952'
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: Закон нагрева током Ленц нашёл сам, без Джоуля, — и измерил точнее него
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -588,7 +588,7 @@ fakty:
       podpis_chto: Батометр гидрологический
       podpis_gde: ГДР
       podpis_kogda: 1980-е
-    src: 'Источник: «Физик в океане», «Коммерсантъ», 03.11.2023, обзор печати РАН — ras.ru'
+    src: "Источник: «Физик в океане», «Коммерсантъ», 03.11.2023, обзор печати РАН — https://www.ras.ru/digest/showdnews.aspx?id=96d41f63-631a-418b-b39a-3ff6dcd481a7"
     otryvok: В тропиках на глубине километра Ленц намерил +2,2° — рекордный холод того времени
     stranica: обзор печати РАН
     href: https://www.ras.ru/digest/showdnews.aspx?id=96d41f63-631a-418b-b39a-3ff6dcd481a7
@@ -601,7 +601,7 @@ fakty:
   - n: 14
     summary: Ленц и Якоби первыми в мире научились рассчитывать электромагниты для машин
     sravnenie: net
-    src: 'Источник: «Люди русской науки», 1948 — library.istu.edu'
+    src: "Источник: «Люди русской науки», 1948 — https://library.istu.edu/hoe/personalia/lentz.pdf"
     otryvok: Ленц и Якоби первыми в мире научились рассчитывать электромагниты для машин
     stranica: «Люди русской науки», 1948
     href: https://library.istu.edu/hoe/personalia/lentz.pdf
@@ -612,7 +612,7 @@ fakty:
   - n: 15
     summary: 'Адмирал Макаров: наблюдения Ленца в океане первые и по времени, и по качеству'
     sravnenie: net
-    src: 'Источник: «Эмилий Христианович Ленц», RusCable.Ru — ruscable.ru'
+    src: "Источник: «Эмилий Христианович Ленц», RusCable.Ru — https://www.ruscable.ru/article/any/Emilij_Xristianovich_Lents/"
     otryvok: 'Адмирал Макаров: наблюдения Ленца в океане первые и по времени, и по качеству'
     stranica: RusCable.Ru
     href: https://www.ruscable.ru/article/any/Emilij_Xristianovich_Lents/
