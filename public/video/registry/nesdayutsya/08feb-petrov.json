@@ -1,32 +1,32 @@
 {
-  "title": "История в 50 секунд",
+  "title": "История в 51 секунду",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/08feb-petrov/day-08feb-petrov.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-08feb-petrov.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-08feb-petrov-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 50.4,
-    "mb": 14.6
+    "sec": 51.2,
+    "mb": 14.7
   },
   "vertical": {
     "file": "nesdayutsya/08feb-petrov/day-08feb-petrov-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-08feb-petrov-9x16.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-08feb-petrov-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 50.4,
-    "mb": 13.2
+    "sec": 51.2,
+    "mb": 13.3
   },
   "poster": {
     "file": "nesdayutsya/08feb-petrov/day-08feb-petrov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-08feb-petrov-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/08feb-petrov/day-08feb-petrov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-08feb-petrov-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
