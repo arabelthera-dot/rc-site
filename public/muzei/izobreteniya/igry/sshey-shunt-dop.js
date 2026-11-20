@@ -50,12 +50,15 @@ function sendChat(){
   inp.value='';
   setTimeout(()=>{addMsg(findAnswer(q),'inv');award('chat',5);},600);
 }
-document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
+// чата шаблон на этой странице не рисует — без него скрипт не падает
+const chatInput=document.getElementById('chatInput');
+if(chatInput)chatInput.addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
 
 // стартовые вопросы + приветствие (без прокрутки при загрузке)
 (function(){
   const qs=['Почему вы не остановили сердце?','Что сделал Демихов до вас?','Как американский журнал принял вашу статью?'];
   const box=document.getElementById('starters');
+  if(!box)return;
   qs.forEach(q=>{const c=document.createElement('span');c.className='chip';c.textContent=q;
     c.onclick=()=>{document.getElementById('chatInput').value=q;sendChat();};box.appendChild(c);});
   const w=document.createElement('div');w.className='msg inv';
