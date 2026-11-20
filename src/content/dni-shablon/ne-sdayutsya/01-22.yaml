@@ -45,7 +45,7 @@ etiketka_oblozhki: ["Памятная монета к 20-летию подвиг
 slovar: ["lyudi:6-rota-vdv"]
 head:
   title: 6-я рота, высота 776 — «Русские не сдаются» — Русская цивилизация
-  description: Девяносто против двух тысяч — выжили шестеро, не отступил никто. Открой карточку каждого из 84 погибших десантников 6-й роты.
+  description: Девяносто против двух тысяч — выжили шестеро, не отступил никто
   canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-22/
   sobytie: 6-я рота, высота 776
   god: "776"
@@ -53,14 +53,14 @@ head:
     type: article
     site_name: Русская цивилизация
     title: 6-я рота, высота 776 — «Русские не сдаются» — Русская цивилизация
-    description: Девяносто против двух тысяч — выжили шестеро, не отступил никто. Открой карточку каждого из 84 погибших десантников 6-й роты.
+    description: Девяносто против двух тысяч — выжили шестеро, не отступил никто
     url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-22/
     image: https://russian-civilization.ru/og/og-default.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: 6-я рота, высота 776 — «Русские не сдаются»
-    description: Девяносто против двух тысяч — выжили шестеро, не отступил никто. Открой карточку каждого из 84 погибших десантников 6-й роты.
+    description: Девяносто против двух тысяч — выжили шестеро, не отступил никто
     url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-22/
     image: https://russian-civilization.ru/og/og-default.jpg
     inLanguage: ru-RU
@@ -78,7 +78,7 @@ oblozhka:
   credit: "Псковский военно-исторический музей-заповедник, Госкаталог № 69557183"
   width: 1600
   height: 1444
-  hint: Условная схема · рисунок проекта
+  hint: Аргунское ущелье, Чечня · высота 776,0 · 29 февраля — 1 марта 2000
   celikom: true
   nomer_snimka: "69830317"
   nomer_predmeta: "инв. в Госкаталоге не указан; Госкаталог рег. № 69557183"
