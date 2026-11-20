@@ -7,7 +7,7 @@
 //   — адрес href факта, которого нет в «На чём стоит страница», дописывается пунктом (подпись — как у дня: «к факту N» или сайт);
 //   — пункт «старой страницы», на который не ссылается ни один факт, снимается.
 // «документ» и «легенда» не трогаются. Образец — шаг transform у схемы Zod в Astro content collections: данные
-// приводятся при загрузке, файл не переписывается (https://docs.astro.build/en/guides/content-collections/).
+// приводятся при загрузке, файл не переписывается (документация Astro, раздел content collections).
 // Вызов — из faktyIzUtverzhdeno (src/lib/fakty-iz-utverzhdeno.mjs), выключатель тот же: RC_FAKTY_IZ_UTVERZHDENO=0.
 
 import { domainToUnicode } from 'node:url';
