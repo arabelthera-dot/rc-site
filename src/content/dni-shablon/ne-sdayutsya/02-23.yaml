@@ -798,11 +798,11 @@ etiketka_oblozhki:
 slovar:
 - lyudi:ekipazh-k-278
 vizual:
-  imya: komsomolec-model
+  imya: komsomolec-vyzhivshie
   vid: predmet
-  kicker: Модель под лупой
-  h2: Модель К-278 «Комсомолец»
-  lead: 'Модель единственной лодки проекта 685 из Центрального военно-морского музея. Приблизь корпус: он целиком из титана — первый такой в мире.'
+  kicker: Снимок под лупой
+  h2: Выжившие, 1989 год
+  lead: 'Приблизь лица: это моряки «Комсомольца», выжившие после катастрофы, в госпитале в Североморске. Среди них мичман Виктор Слюсаренко.'
 audioguide:
   audioSrc: audio-guide-komsomolec-ru.mp3
   durationLabel: около 2 минут

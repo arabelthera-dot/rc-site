@@ -830,11 +830,11 @@ etiketka_oblozhki:
 slovar:
 - lyudi:mat-mariya
 vizual:
-  imya: skobcova-skifskie-cherepki
-  vid: predmet
-  kicker: Книга под лупой
-  h2: «Скифские черепки»
-  lead: 'Первая книга стихов Елизаветы Кузьминой-Караваевой, 1912 год. Приблизь обложку: лира и марка «Цеха поэтов» — кружка, где она встречалась с Ахматовой и Гумилёвым.'
+  imya: skobcova-delo-1919
+  vid: dokument
+  kicker: Газета под лупой
+  h2: Дело Кузьминой-Караваевой
+  lead: 'Приблизь заметку из ростовской газеты 1919 года: в ней пишут о суде над Елизаветой Кузьминой-Караваевой. Вместо смертной казни суд дал ей две недели ареста.'
 audioguide:
   audioSrc: audio-guide-mat-mariya-ru.mp3
   durationLabel: около 2 минут

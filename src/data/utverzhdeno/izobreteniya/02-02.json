@@ -122,7 +122,7 @@
   },
   {
    "n": 2,
-   "fajl": "/muzei/izobreteniya/img/02-02-shuvalov-rotari-1761.jp; Президентская библиотека им. Б. Н. Ельцина, «Шувалов Пётр Иванович» — <a href=\"https://www.prlib.ru/Great_Russia/outstanding_scientists_XVIII/Shuvalov\" rel=\"noopener\" target=\"_blank\">prlib.ru</a>'",
+   "fajl": "/muzei/izobreteniya/img/02-02-shuvalov-rotari-1761.jpg",
    "gk": "4888970",
    "fakt": 8,
    "takzhe": [],
@@ -203,7 +203,7 @@
   },
   {
    "n": 11,
-   "fajl": "/muzei/izobreteniya/img/02-02-shuvalov-rotari-1761.jp; Президентская библиотека им. Б. Н. Ельцина, «Шувалов Пётр Иванович» — <a href=\"https://www.prlib.ru/Great_Russia/outstanding_scientists_XVIII/Shuvalov\" rel=\"noopener\" target=\"_blank\">prlib.ru</a>'",
+   "fajl": "/muzei/izobreteniya/img/02-02-shuvalov-rotari-1761.jpg",
    "gk": "4888970",
    "fakt": null,
    "takzhe": [],
@@ -212,7 +212,7 @@
   }
  ],
  "iz": {
-  "kartochka": "knowledge/utverzhdeno/izobreteniya/02-02.md",
-  "material": "knowledge/utverzhdeno/izobreteniya/02-02.kadry.md"
+  "kartochka": "logs/r647-fakty-0202-utverzhdeny.md",
+  "material": null
  }
 }

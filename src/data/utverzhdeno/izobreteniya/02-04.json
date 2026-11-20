@@ -110,7 +110,68 @@
    "podrobnee": "«Новости космонавтики», 1993, №3: «В ходе вечерней программы теленовостей американской компании NBC ведущий Т.Брокау сообщил, что \"русские космонавты с помощью гигантского зеркала вновь выходят на лидирующие позиции в деле освоения космоса\"»."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/02-04-goskatalog-88364782.jpg",
+   "gk": "36018828",
+   "fakt": 4,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "4",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/izobreteniya/img/02-04-goskatalog-16907031.jpg",
+   "gk": "15422551",
+   "fakt": 7,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "7",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/02-04-goskatalog-87952707.jpg",
+   "gk": "29869866",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/02-04-progress-u-stancii.jpg",
+   "gk": "",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/02-04-goskatalog-8680968-stykovochnyj-agregat.jpg",
+   "gk": "8680968",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/02-04-goskatalog-14152740-apas.jpg",
+   "gk": "14152740",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  }
+ ],
  "iz": {
   "kartochka": "knowledge/utverzhdeno/izobreteniya/02-04.md",
   "material": null

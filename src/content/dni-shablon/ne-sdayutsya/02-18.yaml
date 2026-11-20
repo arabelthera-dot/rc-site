@@ -835,11 +835,11 @@ etiketka_oblozhki:
 slovar:
 - lyudi:podolskie-kursanty
 vizual:
-  imya: podolskie-kursanty-baranov
-  vid: predmet
-  kicker: Снимок под лупой
-  h2: Награды курсанта
-  lead: 'Этот снимок хранит музей «Ильинские рубежи» — на том самом рубеже. Приблизь портрет бывшего курсанта Василия Баранова: ордена и медали на его пиджаке.'
+  imya: podolskie-kursanty-prikaz-257
+  vid: dokument
+  kicker: Документ под лупой
+  h2: Боевой приказ училищу
+  lead: 'Приблизь машинописный лист от 5 октября 1941 года: в нём сказано, что училище выбыло из Подольска на фронт, на Малоярославецкое направление. Внизу видны подписи начальника училища и комиссара.'
 audioguide:
   audioSrc: audio-guide-podolskie-kursanty-ru.mp3
   durationLabel: около 2 минут

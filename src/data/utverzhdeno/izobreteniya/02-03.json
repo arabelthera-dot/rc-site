@@ -110,7 +110,68 @@
    "podrobnee": "3 апреля 1966 года на орбите Луны заработала «Луна-10». Наши специалисты на четыре месяца опередили американцев и в мягкой посадке, и в выведении спутника Луны."
   }
  ],
- "kadry": [],
+ "kadry": [
+  {
+   "n": 1,
+   "fajl": "/muzei/izobreteniya/img/02-03-goskatalog-88351354.jpg",
+   "gk": "3885816",
+   "fakt": 1,
+   "takzhe": [],
+   "mesto": "fakt",
+   "privyazka": "1",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 2,
+   "fajl": "/muzei/izobreteniya/img/02-03-goskatalog-92252297.jpg",
+   "gk": "13693527",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 3,
+   "fajl": "/muzei/izobreteniya/img/02-03-goskatalog-92252296.jpg",
+   "gk": "13693536",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 4,
+   "fajl": "/muzei/izobreteniya/img/02-03-goskatalog-81145207.jpg",
+   "gk": "31690900",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 5,
+   "fajl": "/muzei/izobreteniya/img/02-03-goskatalog-2581386.jpg",
+   "gk": "6327638",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  },
+  {
+   "n": 6,
+   "fajl": "/muzei/izobreteniya/img/02-03-goskatalog-92763299.jpg",
+   "gk": "70410545",
+   "fakt": null,
+   "takzhe": [],
+   "mesto": "galereya",
+   "privyazka": "нет (галерея)",
+   "utverzhdeno": "Р837"
+  }
+ ],
  "iz": {
   "kartochka": "logs/r752/izobreteniya-02-03.md",
   "material": "logs/r752/UTVERZHDENO.md"

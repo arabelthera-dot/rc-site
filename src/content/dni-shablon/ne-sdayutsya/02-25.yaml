@@ -811,11 +811,11 @@ etiketka_oblozhki:
 slovar:
 - lyudi:sergej-solnechnikov
 vizual:
-  imya: solnechnikov-avtobiografiya
-  vid: predmet
-  kicker: Снимок под лупой
-  h2: Граната РГД-5
-  lead: 'Такой гранатой на занятии и был ранен комбат. Приблизь снимок: рычаг, кольцо и запал — после того как отпущен рычаг, запал горит три-четыре секунды.'
+  imya: solnechnikov-stela-gazeta
+  vid: dokument
+  kicker: Газета под лупой
+  h2: Стела в честь героя
+  lead: 'Приблизь правую колонку белогорской газеты от 25 апреля 2012 года: в ней рассказано, как 24 апреля в городе открыли памятную стелу в честь майора Сергея Солнечникова. Наверху колонки приведены слова указа о звании Героя России.'
 audioguide:
   audioSrc: audio-guide-solnechnikov-ru.mp3
   durationLabel: около 2 минут
