@@ -811,14 +811,14 @@ audioguide:
   - t: 0
     mark: '0:00'
     title: Рекорд
-  - t: 16
-    mark: '0:16'
+  - t: 15
+    mark: '0:15'
     title: Пожар
   - t: 29
     mark: '0:29'
     title: Испенков и Ванин
-  - t: 40
-    mark: '0:40'
+  - t: 39
+    mark: '0:39'
     title: Ледяная вода
   - t: 52
     mark: '0:52'

@@ -1,7 +1,7 @@
 // Ролик и аудиогид из облака — на сайт заявкой (r538, Р524/Р525/Р529; корень «забыл ролик»).
 // Пять вопросов до изменения (Сергей, 28.09.2026):
 // Что задевает — public/muzei/<музей>/video/ (обложки, субтитры .vtt и текст .txt, если есть в выпуске), public/muzei/<музей>/<audioSrc>.mp3 (гид) и файл
-//   выпуска public/video/registry/<реестр>/<imya>.json; страницу дня не трогает (ключ video в дне уже указывает на выпуск).
+//   выпуска public/video/registry/<реестр>/<imya>.json; в дне — только остановки гида (audioguide.stops[].t, mark; r833), ключ video уже указывает на выпуск.
 //   mp4 (Р825) — не в public/, а в папку $MEDIA_VYHOD (путь от корня сайта) и строкой в src/data/hranilishche-rolikov.sha256;
 //   rolik-na-sait.yml докладывает папку в хранилище media.russian-civilization.ru до push заявки.
 // Что нужно — выпуски rc-rolik: render.yml публикует vypusk-<день>-<прогон> (по полю sajt в days/<день>.json),
@@ -14,6 +14,10 @@
 // Записи реестра — как у ns-konveyer (rolikVReestr): тот же note «прогон N)» — по нему видно, что выпуск уже на сайте.
 // Ролик и гид одного дня — одна заявка (Р790 п.6): строка spisok — «<ветка> <тег> [<тег>…]» по дню (музей + ММ-ДД);
 //   есть открытая заявка этого дня — ветка её, выпуск дописывается в неё, иначе ветка avto/rolik-<первый тег>.
+// Остановки гида (r833): новый mp3 — новые начала абзацев (abzacy в vypusk.json от audiogid.yml); primenit ставит их
+//   в audioguide.stops[].t и mark дня src/content/dni-shablon/<музей>/<ММ-ДД>.yaml, остановка i — абзац i. Остановок не столько,
+//   сколько абзацев, или старый выпуск без abzacy — остановки как были, предупреждение в выводе. Заголовки остановок не трогает.
+//   Разово по готовым начала: node scripts/rolik-na-sait.mjs ostanovki <музей> <ММ-ДД> <начало,начало,…>
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -65,6 +69,30 @@ const MES = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct
 function denVypuska(m) {
   const x = m.vid === 'rolik' && /^(?:ns)?(\d\d)([a-z]{3})$/.exec(m.den ?? '');
   return `${m.muzei}/${x ? `${String(MES.indexOf(x[2]) + 1).padStart(2, '0')}-${x[1]}` : m.den}`;
+}
+
+const metka = (t) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`;
+// Остановки гида дня — по началам абзацев в mp3, с; строки yaml правятся на месте (кавычки и вид записи — как были).
+function ostanovki(muzei, den, nachala) {
+  const f = path.join(KOREN, 'src/content/dni-shablon', muzei, `${den}.yaml`);
+  if (!IMYA.test(muzei) || !/^\d\d-\d\d$/.test(den) || !fs.existsSync(f)) return `::warning::${muzei}/${den}: нет src/content/dni-shablon/${muzei}/${den}.yaml — остановки гида не пересчитаны`;
+  const stroki = fs.readFileSync(f, 'utf8').split('\n'), otstup = (x) => x.length - x.trimStart().length;
+  const ag = stroki.findIndex((x) => /^audioguide:\s*$/.test(x));
+  const st = stroki.findIndex((x, i) => i > ag && ag >= 0 && /^\s+stops:\s*$/.test(x));
+  if (st < 0) return `::warning::${muzei}/${den}: в дне нет audioguide.stops — остановки гида не пересчитаны`;
+  const o = otstup(stroki[st]), PUNKT = /^(\s*-\s+(?:\{\s*)?t:\s*)[\d.]+/, METKA = /(mark:\s*)(['"]?)\d+:\d\d\2/;
+  let kon = st + 1;
+  while (kon < stroki.length && (!stroki[kon].trim() || otstup(stroki[kon]) > o || (otstup(stroki[kon]) === o && stroki[kon].trimStart().startsWith('- ')))) kon++;
+  const punkty = stroki.slice(st + 1, kon).filter((x) => PUNKT.test(x)).length;
+  if (punkty !== nachala.length) return `::warning::${muzei}/${den}: остановок ${punkty}, абзацев в mp3 ${nachala.length} — остановки гида не пересчитаны`;
+  const t = nachala.map((x, i) => (i ? Math.floor(x) : 0));
+  let k = -1;
+  for (let i = st + 1; i < kon; i++) {
+    if (PUNKT.test(stroki[i])) stroki[i] = stroki[i].replace(PUNKT, `$1${t[++k]}`);
+    if (k >= 0) stroki[i] = stroki[i].replace(METKA, (_, a, q) => `${a}${q}${metka(t[k])}${q}`);
+  }
+  fs.writeFileSync(f, stroki.join('\n'));
+  return `остановки гида ${muzei}/${den}: ${t.map(metka).join(', ')}`;
 }
 
 function spisok() {
@@ -129,6 +157,7 @@ function primenit(teg) {
     if (m.vid === 'audiogid') {
       vzyat(m.fajl, `muzei/${m.muzei}/${m.fajl}`);
       console.log(`гид ${m.muzei} ${m.den} → public/muzei/${m.muzei}/${m.fajl}, ${m.sec} с, прогон ${m.run}`);
+      console.log(Array.isArray(m.abzacy) ? ostanovki(m.muzei, m.den, m.abzacy) : `::warning::${teg}: в выпуске нет начал абзацев (abzacy) — остановки гида не пересчитаны`);
     } else {
       const VIDEO = `muzei/${m.muzei}/video`, { imya, mesto: vypusk } = m;
       const est = chitat(PUB).releases?.[vypusk];
@@ -165,4 +194,5 @@ function primenit(teg) {
 const [cmd, teg] = process.argv.slice(2);
 if (cmd === 'spisok') spisok();
 else if (cmd === 'primenit' && /^vypusk-[a-z0-9-]+$/.test(teg ?? '')) primenit(teg);
+else if (cmd === 'ostanovki' && process.argv[5]) console.log(ostanovki(teg, process.argv[4], process.argv[5].split(',').map(Number)));
 else { console.error('запуск: node scripts/rolik-na-sait.mjs spisok | primenit <тег vypusk-…>'); process.exit(2); }
