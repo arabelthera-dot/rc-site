@@ -4,7 +4,9 @@
     node scripts/voprosy-iz-faktov.mjs ne-sdayutsya 01-06,01-15 --sverka # плюс сверка с викториной карточки дня
     node scripts/voprosy-iz-faktov.mjs ne-sdayutsya 01-06 --suho         # только напечатать
 
-Ручной инструмент, не в CI и не в сборке. Берёт 15 фактов (10 + 5) из `src/data/utverzhdeno/<музей>/ММ-ДД.json`
+Ручной инструмент, не в CI. Сам генератор — `src/lib/voprosy-iz-faktov.mjs` (r833): им же сборка добирает
+викторину «Русские не сдаются» до пяти вопросов, когда вопросы старой страницы не прошли сверку с утверждённым
+(`src/lib/rasskaz-iz-utverzhdeno.mjs`). Берёт 15 фактов (10 + 5) из `src/data/utverzhdeno/<музей>/ММ-ДД.json`
 и пишет файл-предложение `data/predlozheniya/voprosy/<музей>/ММ-ДД.json`. Утверждённое и `src/content/dni-shablon`
 не трогает: вопросы в карточку переносит редактор.
 

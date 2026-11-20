@@ -11,6 +11,7 @@ import { rolikEst } from '../../scripts/hranilishche-rolikov.mjs';
 import { polyaKartinki, polyaFakta, polyaDnya, status } from './forma-dnya.mjs';
 import { standartDnya, nomeraDnej } from './standart-dnya.mjs';
 import { faktyIzUtverzhdeno } from './fakty-iz-utverzhdeno.mjs';
+import { rasskazIzUtverzhdeno } from './rasskaz-iz-utverzhdeno.mjs';
 import { stroka } from './yazyki.mjs';
 import { izmerit, razmeryIzFajla } from './kartinki-fajly.mjs';
 import slovar from './slovar-dannye.mjs';
@@ -267,7 +268,8 @@ export function proveritKartochku(file, muzei, skhema) {
   const key = path.basename(file, '.yaml'), oshibki = [], preduprezhdeniya = [];
   const izUtv = faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(file, 'utf8')), muzei, key);
   if (izUtv.oshibki.length) return { data: null, oshibki: izUtv.oshibki, preduprezhdeniya };
-  const syroe = izUtv.syroe;
+  // Рассказ и викторина — только из утверждённого (r833, rasskaz-iz-utverzhdeno.mjs).
+  const syroe = rasskazIzUtverzhdeno(izUtv.syroe, muzei, key).syroe;
   if (path.dirname(path.dirname(file)) === MERY_DIR) preduprezhdeniya.push(...razmeryIzFajla(syroe, muzei, MERY, failPublic, file));
   const r = skhema.safeParse(syroe);
   if (!r.success) return { data: null, oshibki: [`${file}: карточка не прошла схему:\n${r.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n')}`], preduprezhdeniya };

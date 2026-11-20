@@ -32,6 +32,7 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { cardFrames, fullFrames } from './podpisi.mjs';
 import { faktyIzUtverzhdeno } from './fakty-iz-utverzhdeno.mjs';
+import { rasskazIzUtverzhdeno } from './rasskaz-iz-utverzhdeno.mjs';
 
 const REESTRY = 'data/reestry';
 const DAYS = 'src/content/days';
@@ -96,7 +97,7 @@ export function teksty(root = '.') {
         else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) obhod(x, p ? `${p}.${k}` : k);
       };
       // Текст фактов дня с 02-01 приходит из копии утверждённого (Р686) — проверяется вместе с карточкой.
-      obhod(faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(path.join(root, SHABLON, museum, f), 'utf8')), museum, f.slice(0, -5), root).syroe, '');
+      obhod(rasskazIzUtverzhdeno(faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(path.join(root, SHABLON, museum, f), 'utf8')), museum, f.slice(0, -5), root).syroe, museum, f.slice(0, -5), root).syroe, '');
     }
   }
   for (const museum of ls(path.join(root, FULL))) {

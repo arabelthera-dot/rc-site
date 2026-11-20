@@ -25,6 +25,7 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { razobrat, obhod, elementy, chistyj, klassy } from './derevo.mjs';
 import { faktyIzUtverzhdeno } from '../../src/lib/fakty-iz-utverzhdeno.mjs';
+import { rasskazIzUtverzhdeno } from '../../src/lib/rasskaz-iz-utverzhdeno.mjs';
 
 const KOREN = new URL('../..', import.meta.url).pathname;
 const SHABLON = 'src/content/dni-shablon';
@@ -173,7 +174,7 @@ export function izHtml(html) {
 
 export function chitatStranicu(muzey, key, koren = KOREN) {
   const y = path.join(koren, SHABLON, muzey, `${key}.yaml`);
-  if (fs.existsSync(y)) return izYaml(faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(y, 'utf8')), muzey, key, koren).syroe);
+  if (fs.existsSync(y)) return izYaml(rasskazIzUtverzhdeno(faktyIzUtverzhdeno(YAML.parse(fs.readFileSync(y, 'utf8')), muzey, key, koren).syroe, muzey, key, koren).syroe);
   const h = path.join(koren, FULL, muzey, `${key}.html`);
   if (fs.existsSync(h)) return izHtml(fs.readFileSync(h, 'utf8'));
   return null;
