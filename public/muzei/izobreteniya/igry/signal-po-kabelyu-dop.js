@@ -6,9 +6,11 @@
   document.getElementById('readBtn').onclick=()=>document.getElementById('story').scrollIntoView({behavior:'smooth'});
   document.getElementById('moreBtn').onclick=()=>{document.getElementById('article').classList.remove('collapsed');document.getElementById('moreBtn').style.display='none';};
   // раздел «Другие изобретения»
-  function openMore(){document.getElementById('moreInvBody').style.display='block';document.getElementById('moreInv2').textContent='▲ Свернуть';}
-  document.getElementById('moreInv2').onclick=function(){const b=document.getElementById('moreInvBody');const open=b.style.display==='none';b.style.display=open?'block':'none';this.textContent=open?'▲ Свернуть':'🔎 Хочешь узнать о других изобретениях?';};
-  document.getElementById('toMore').onclick=()=>{openMore();document.getElementById('more').scrollIntoView({behavior:'smooth'});};
+  function openMore(){if(!document.getElementById('moreInvBody'))return;document.getElementById('moreInvBody').style.display='block';document.getElementById('moreInv2').textContent='▲ Свернуть';}
+  // «Другие изобретения» шаблон не рисует (рисует календарь) — без них скрипт не падает, чат и развилка ниже работают
+  const moreInv2=document.getElementById('moreInv2');
+  if(moreInv2)moreInv2.onclick=function(){const b=document.getElementById('moreInvBody');const open=b.style.display==='none';b.style.display=open?'block':'none';this.textContent=open?'▲ Свернуть':'🔎 Хочешь узнать о других изобретениях?';};
+  document.getElementById('toMore').onclick=()=>{openMore();document.getElementById('more')?.scrollIntoView({behavior:'smooth'});};
   // AI
   const kb=[
     {k:['кто вы','кто ты','о себе','расскажи о себе','биограф','инженер','чем занима','имя','зовут'],a:"Инженер телевизионного узла, фамилию позвольте опустить — дом у нас особый, лишнего не говорим. Делали узел вместе: ленинградский НИИ телевидения и московский ЦНИИ связи. Моя забота — чтобы картинка шла в квартиры чисто, без помех."},

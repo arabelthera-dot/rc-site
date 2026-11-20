@@ -80,8 +80,9 @@ const m3Html = m3 ? `<div class="igra-dnya" id="games" data-igra-dnya data-glb="
     <noscript><div class="noscript-box">Для 3D нужен JavaScript.</div></noscript>
   </div>
 </section></div>` : '';
-// Скрипты 2D-запаса — по порядку, как раньше на странице: игра, вторая игра, её -dop.
-const zapasSkripty = [d.igra.imya, d.igra.vtoraya, d.igra.dop && `${d.igra.imya}-dop`].filter(Boolean).map((i) => `igry/${i}.js`);
+// Скрипты 2D-запаса — по порядку, как раньше на странице: игра, вторая игра. -dop (igra.dop) — не игра, а чат, развилка
+// и «Читать дальше» статьи дня: подключается всегда, с 3D и без (внизу страницы).
+const zapasSkripty = [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => `igry/${i}.js`);
 const zapas2d = [d.igra.imya, d.igra.vtoraya].filter(Boolean).map((i) => fs.readFileSync(`src/data/igry/${d.muzei}/${i}.html`, 'utf8').replace(/\n$/, '')).join('\n');
 const igraHtml = est3d ? `${rc3dHtml}${m3Html}\n<template id="igra2d" data-skripty="${e(JSON.stringify(zapasSkripty))}">\n${zapas2d}\n</template>` : '';
 // Полоса разделов: пункт игры (#games…) — только у дня с 3D или игрой на данных и всегда на блок наверху.
@@ -302,6 +303,7 @@ const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtml
 <script is:inline src="../../assets/museum-score.js"></script>
 <script is:inline set:html={knopkiJs}></script>
 {est3d && <script is:inline src="../../assets/igra-dnya.js"></script>}{r3 && <script is:inline src="igry/rc3d-den.js"></script>}
+{d.igra.dop && <script is:inline src={`igry/${d.igra.imya}-dop.js`}></script>}
 <script is:inline set:html={quizJs(d)}></script>{vspomni && <script type="application/json" id="rc-vspomni-dannye" is:inline set:html={vspomniDannye(d)}></script>}{vspomni && <script is:inline set:html={vspomniJs}></script>}
 {d.skripty.map((s) => 'src' in s ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.js}></script>)}
 <script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
