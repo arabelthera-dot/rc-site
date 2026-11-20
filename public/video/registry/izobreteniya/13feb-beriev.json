@@ -3,8 +3,8 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/13feb-beriev/day-13feb-beriev.mp4",
-    "local": "muzei/izobreteniya/video/day-13feb-beriev.mp4",
-    "v": 2,
+    "local": "muzei/izobreteniya/video/day-13feb-beriev-v3.mp4",
+    "v": 3,
     "w": 1920,
     "h": 1080,
     "sec": 54,
@@ -12,8 +12,8 @@
   },
   "vertical": {
     "file": "izobreteniya/13feb-beriev/day-13feb-beriev-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-13feb-beriev-9x16.mp4",
-    "v": 2,
+    "local": "muzei/izobreteniya/video/day-13feb-beriev-9x16-v3.mp4",
+    "v": 3,
     "w": 1080,
     "h": 1920,
     "sec": 54,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "izobreteniya/13feb-beriev/day-13feb-beriev-poster.jpg",
     "local": "muzei/izobreteniya/video/day-13feb-beriev-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/13feb-beriev/day-13feb-beriev-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-13feb-beriev-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
