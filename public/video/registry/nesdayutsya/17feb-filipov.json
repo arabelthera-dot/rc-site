@@ -1,32 +1,32 @@
 {
-  "title": "История в 46 секунд",
+  "title": "История в 52 секунды",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/17feb-filipov/day-17feb-filipov.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-17feb-filipov.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-17feb-filipov-v5.mp4",
+    "v": 5,
     "w": 1920,
     "h": 1080,
-    "sec": 46.1,
-    "mb": 12.1
+    "sec": 51.6,
+    "mb": 13.8
   },
   "vertical": {
     "file": "nesdayutsya/17feb-filipov/day-17feb-filipov-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-17feb-filipov-9x16.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-17feb-filipov-9x16-v5.mp4",
+    "v": 5,
     "w": 1080,
     "h": 1920,
-    "sec": 46.1,
-    "mb": 11.1
+    "sec": 51.6,
+    "mb": 12.8
   },
   "poster": {
     "file": "nesdayutsya/17feb-filipov/day-17feb-filipov-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-17feb-filipov-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "nesdayutsya/17feb-filipov/day-17feb-filipov-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-17feb-filipov-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }

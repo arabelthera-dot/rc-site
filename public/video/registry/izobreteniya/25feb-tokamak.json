@@ -1,32 +1,32 @@
 {
-  "title": "История в 54 секунды",
+  "title": "История в 47 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/25feb-tokamak/day-25feb-tokamak.mp4",
-    "local": "muzei/izobreteniya/video/day-25feb-tokamak.mp4",
-    "v": 2,
+    "local": "muzei/izobreteniya/video/day-25feb-tokamak-v3.mp4",
+    "v": 3,
     "w": 1920,
     "h": 1080,
-    "sec": 54.4,
-    "mb": 14.9
+    "sec": 46.5,
+    "mb": 13.8
   },
   "vertical": {
     "file": "izobreteniya/25feb-tokamak/day-25feb-tokamak-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-25feb-tokamak-9x16.mp4",
-    "v": 2,
+    "local": "muzei/izobreteniya/video/day-25feb-tokamak-9x16-v3.mp4",
+    "v": 3,
     "w": 1080,
     "h": 1920,
-    "sec": 54.4,
-    "mb": 14.7
+    "sec": 46.5,
+    "mb": 13.2
   },
   "poster": {
     "file": "izobreteniya/25feb-tokamak/day-25feb-tokamak-poster.jpg",
     "local": "muzei/izobreteniya/video/day-25feb-tokamak-poster.jpg",
-    "v": 2
+    "v": 3
   },
   "poster_vertical": {
     "file": "izobreteniya/25feb-tokamak/day-25feb-tokamak-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-25feb-tokamak-9x16-poster.jpg",
-    "v": 2
+    "v": 3
   }
 }
