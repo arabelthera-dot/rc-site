@@ -3,30 +3,30 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin.mp4",
-    "v": 7,
+    "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-v8.mp4",
+    "v": 8,
     "w": 1920,
     "h": 1080,
-    "sec": 53.6,
-    "mb": 14.6
+    "sec": 53.9,
+    "mb": 14.8
   },
   "vertical": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-9x16.mp4",
-    "v": 7,
+    "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-9x16-v8.mp4",
+    "v": 8,
     "w": 1080,
     "h": 1920,
-    "sec": 53.6,
+    "sec": 53.9,
     "mb": 14.2
   },
   "poster": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-poster.jpg",
-    "v": 7
+    "v": 8
   },
   "poster_vertical": {
     "file": "nesdayutsya/06feb-kuzmin/day-06feb-kuzmin-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-06feb-kuzmin-9x16-poster.jpg",
-    "v": 7
+    "v": 8
   }
 }
