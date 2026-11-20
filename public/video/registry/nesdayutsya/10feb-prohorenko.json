@@ -3,8 +3,8 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-v5.mp4",
+    "v": 5,
     "w": 1920,
     "h": 1080,
     "sec": 45.3,
@@ -12,8 +12,8 @@
   },
   "vertical": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-9x16.mp4",
-    "v": 4,
+    "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-9x16-v5.mp4",
+    "v": 5,
     "w": 1080,
     "h": 1920,
     "sec": 45.3,
@@ -22,11 +22,11 @@
   "poster": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-poster.jpg",
-    "v": 4
+    "v": 5
   },
   "poster_vertical": {
     "file": "nesdayutsya/10feb-prohorenko/day-10feb-prohorenko-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-10feb-prohorenko-9x16-poster.jpg",
-    "v": 4
+    "v": 5
   }
 }
