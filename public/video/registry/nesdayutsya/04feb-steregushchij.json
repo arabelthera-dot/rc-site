@@ -1,32 +1,32 @@
 {
-  "title": "История в 49 секунд",
+  "title": "История в 50 секунд",
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/04feb-steregushchij/day-04feb-steregushchij.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-04feb-steregushchij.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-04feb-steregushchij-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
-    "sec": 49.4,
-    "mb": 13.8
+    "sec": 49.7,
+    "mb": 13.9
   },
   "vertical": {
     "file": "nesdayutsya/04feb-steregushchij/day-04feb-steregushchij-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-04feb-steregushchij-9x16.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-04feb-steregushchij-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
-    "sec": 49.4,
-    "mb": 13.6
+    "sec": 49.7,
+    "mb": 13.8
   },
   "poster": {
     "file": "nesdayutsya/04feb-steregushchij/day-04feb-steregushchij-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-04feb-steregushchij-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/04feb-steregushchij/day-04feb-steregushchij-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-04feb-steregushchij-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
