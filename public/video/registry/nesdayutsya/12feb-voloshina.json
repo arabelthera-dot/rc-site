@@ -3,8 +3,8 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-v4.mp4",
+    "v": 4,
     "w": 1920,
     "h": 1080,
     "sec": 45.4,
@@ -12,21 +12,21 @@
   },
   "vertical": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-9x16.mp4",
-    "v": 3,
+    "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-9x16-v4.mp4",
+    "v": 4,
     "w": 1080,
     "h": 1920,
     "sec": 45.4,
-    "mb": 13.3
+    "mb": 13.4
   },
   "poster": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-poster.jpg",
-    "v": 3
+    "v": 4
   },
   "poster_vertical": {
     "file": "nesdayutsya/12feb-voloshina/day-12feb-voloshina-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-12feb-voloshina-9x16-poster.jpg",
-    "v": 3
+    "v": 4
   }
 }
