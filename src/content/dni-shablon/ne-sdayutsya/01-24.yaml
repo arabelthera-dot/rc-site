@@ -45,7 +45,7 @@ etiketka_oblozhki: ["Василий Верещагин. «Скобелев по�
 slovar: ["lyudi:vasiliy-vereshchagin","lyudi:nikolay-stoletov","mesto:shipka"]
 head:
   title: Оборона Шипки — «Русские не сдаются» — Русская цивилизация
-  description: "Перевал держали в мороз — и не сошли. Переключи тумблер: Шипкинский перевал зимой 1877–1878 года на картине Верещагина и тот же перевал в январе 2006-го."
+  description: Перевал держали в мороз — и не сошли
   canonical: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-24/
   sobytie: оборона Шипки
   god: "1877"
@@ -53,14 +53,14 @@ head:
     type: article
     site_name: Русская цивилизация
     title: Оборона Шипки — «Русские не сдаются» — Русская цивилизация
-    description: "Перевал держали в мороз — и не сошли. Переключи тумблер: Шипкинский перевал зимой 1877–1878 года на картине Верещагина и тот же перевал в январе 2006-го."
+    description: Перевал держали в мороз — и не сошли
     url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-24/
     image: https://russian-civilization.ru/og/og-default.jpg
   ld:
     "@context": https://schema.org
     "@type": Article
     headline: Оборона Шипки — «Русские не сдаются»
-    description: "Перевал держали в мороз — и не сошли. Переключи тумблер: Шипкинский перевал зимой 1877–1878 года на картине Верещагина и тот же перевал в январе 2006-го."
+    description: Перевал держали в мороз — и не сошли
     url: https://russian-civilization.ru/muzei/ne-sdayutsya/den/01-24/
     image: https://russian-civilization.ru/og/og-default.jpg
     inLanguage: ru-RU
