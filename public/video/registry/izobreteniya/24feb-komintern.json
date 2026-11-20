@@ -3,30 +3,30 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern.mp4",
-    "local": "muzei/izobreteniya/video/day-24feb-komintern.mp4",
-    "v": 5,
+    "local": "muzei/izobreteniya/video/day-24feb-komintern-v6.mp4",
+    "v": 6,
     "w": 1920,
     "h": 1080,
-    "sec": 43.6,
+    "sec": 43.9,
     "mb": 10.7
   },
   "vertical": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-9x16.mp4",
-    "local": "muzei/izobreteniya/video/day-24feb-komintern-9x16.mp4",
-    "v": 5,
+    "local": "muzei/izobreteniya/video/day-24feb-komintern-9x16-v6.mp4",
+    "v": 6,
     "w": 1080,
     "h": 1920,
-    "sec": 43.6,
-    "mb": 9.7
+    "sec": 43.9,
+    "mb": 9.8
   },
   "poster": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-poster.jpg",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-poster.jpg",
-    "v": 5
+    "v": 6
   },
   "poster_vertical": {
     "file": "izobreteniya/24feb-komintern/day-24feb-komintern-9x16-poster.jpg",
     "local": "muzei/izobreteniya/video/day-24feb-komintern-9x16-poster.jpg",
-    "v": 5
+    "v": 6
   }
 }
