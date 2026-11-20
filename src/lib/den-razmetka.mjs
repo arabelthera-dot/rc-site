@@ -21,8 +21,35 @@ export const chromeJs = (d, muzeyName) => { const c = d.chrome; return c && `win
 // утверждённого февраля без игры (src/data/stroki/ru.json), карточка, обещающая игру или опыт, на вывод не влияет.
 export const itogDnya = (result, estIgra) => (estIgra ? result
   : { ...result, intro: stroka('ru', 'denResultIntroBezIgry'), note: stroka('ru', 'denResultNoteBezIgry') });
+// Реестр баллов (Р831, сверка r832): из того, что на странице правда вызывает award(), а не из рукописного
+// score.awards карточки — там q писали списком по вопросам и держали баллы игр, которых на странице нет.
+// Викторина — пара [вопросов, балл] (quizJs); игра на данных — ключ рамки «<mehanika>:pobeda» (assets/igry/ramka.js),
+// столько, сколько даст её движок; сцена rc3d — игровые ключи карточки (igry/rc3d-den.js даёт lab и причины);
+// свои скрипты и разделы дня — их award('ключ', N). 2D-запас 3D-дня и модель .glb баллов не дают — не в счёт.
+export const ballyDnya = (d) => {
+  const a = {};
+  if (d.igra?.rc3d) for (const [k, v] of Object.entries(d.score.awards)) if (k !== 'q' && typeof v === 'number') a[k] = v;
+  const pobeda = d.igra?.mehanika && d.igra.dannye?.pobeda;
+  if (pobeda) a[`${d.igra.mehanika}:pobeda`] = Number(pobeda.ochki) || 0;
+  const kod = [...(d.skripty ?? []).map((s) => s.js ?? ''), ...(d.razdely ?? []).map((r) => r.html)].join('\n');
+  for (const [, k, n] of kod.matchAll(/award\(\s*['"](\w+)['"]\s*,\s*(\d+)\s*\)/g)) a[k] = Number(n);
+  a.q = [d.quiz.voprosy.length, d.quiz.ball];
+  return a;
+};
+// Есть ли на странице баллы, кроме викторины, — от этого текст «Итога дня» (itogDnya).
+export const ballyZaIgru = (d) => Object.keys(ballyDnya(d)).some((k) => k !== 'q');
+// Звания — в шкале 0–100, которую видит посетитель (museum-score.js). Верхний порог карточки ниже 100 — лестницу
+// писали под недостижимый максимум (0 / 50): растягивается до 100. Одно звание [0, …] не меняется до 100 —
+// сверху лестница самого движка (museum-score.js, ranks по умолчанию), снизу звание карточки.
+export const zvaniyaDnya = (ranks) => {
+  const verh = Math.max(...ranks.map((r) => r[0]));
+  if (verh <= 0) return [[70, 'Знаток'], [40, 'Экскурсант'], ...ranks];
+  return verh < 100 ? ranks.map(([t, z]) => [Math.round(t * 100 / verh), z]) : ranks;
+};
+// Строка счёта до первого ответа — та же, что пишет museum-score.js render(), а не result.zvanie карточки («0 / 50»).
+export const schetNol = (d) => { const r = zvaniyaDnya(d.score.ranks); return `0 / 100 · звание: ${(r.find((x) => 0 >= x[0]) ?? r[r.length - 1])[1]}`; };
 // Ключи без кавычек — как в старых страницах: проверка счёта (scripts/staroe-pravilo.py) ищет реестр «awards:{…}».
-export const scoreJs = (d) => `window.MUSEUM_SCORE = ${json(d.score).replace(/"(\w+)":/g, '$1:')};`;
+export const scoreJs = (d) => `window.MUSEUM_SCORE = ${json({ ...d.score, awards: ballyDnya(d), ranks: zvaniyaDnya(d.score.ranks) }).replace(/"(\w+)":/g, '$1:')};`;
 // Викторина дня: вопросы — из карточки, вёрстка ответов — общая (была в одном inline-скрипте с игрой).
 // Событие rc-igra (Р286 п.3, Р289 п.1): первый ответ — «nachal», последний — исход (верно не меньше половины —
 // «vyigral»). Его ловят rc-privychka.js (кнопка «Поделиться итогом» под викториной) и выключенный счёт rc-igra-schet.js.
