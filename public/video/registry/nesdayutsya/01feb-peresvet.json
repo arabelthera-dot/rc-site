@@ -3,8 +3,8 @@
   "note": "Закадровый текст озвучен синтезом речи.",
   "horizontal": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet.mp4",
-    "v": 10,
+    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-v11.mp4",
+    "v": 11,
     "w": 1920,
     "h": 1080,
     "sec": 46.1,
@@ -12,21 +12,21 @@
   },
   "vertical": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-9x16.mp4",
-    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-9x16.mp4",
-    "v": 10,
+    "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-9x16-v11.mp4",
+    "v": 11,
     "w": 1080,
     "h": 1920,
     "sec": 46.1,
-    "mb": 12.6
+    "mb": 12.7
   },
   "poster": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-poster.jpg",
-    "v": 10
+    "v": 11
   },
   "poster_vertical": {
     "file": "nesdayutsya/01feb-peresvet/day-01feb-peresvet-9x16-poster.jpg",
     "local": "muzei/ne-sdayutsya/video/day-01feb-peresvet-9x16-poster.jpg",
-    "v": 10
+    "v": 11
   }
 }
