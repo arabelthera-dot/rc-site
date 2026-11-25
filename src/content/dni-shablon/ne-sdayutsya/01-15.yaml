@@ -104,12 +104,8 @@ stamp:
   - v: "7"
     k: лётчиков стали первыми Героями Советского Союза
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz
