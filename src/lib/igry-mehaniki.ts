@@ -197,6 +197,26 @@ const nastroyVolnuPriyomnika = z.object({
   if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
 });
 
+// nakroy-kvadrat (02-23 «Катюша»): тянешь квадрат разрывов залпа по площади и накрываешь им цель; накрыл все цели — победа.
+// Сцена — вид сверху: поле, цель (пунктирный квадрат) и квадрат разрывов (сетка точек), подписи целей — вёрсткой,
+// на холсте текста нет (Р18). x, y цели — доли поля, storona — единицы поля; цель меньше квадрата залпа.
+const nakroyKvadrat = z.object({
+  pole: z.object({ shirina: z.number().int().min(200), vysota: z.number().int().min(100) }).strict().default({ shirina: 640, vysota: 480 }),
+  zalp: z.object({ storona: z.number().positive(), ryadov: z.number().int().min(2).max(6).default(4) }).strict(),
+  celi: z.array(z.object({ x: dolya, y: dolya, storona: z.number().positive(), podpis: str, verno_ru: str }).strict()).min(2).max(5),
+  schet_ru: str.regex(/\{n\}/, 'schet_ru — с {n}').regex(/\{vsego\}/, 'schet_ru — с {vsego}'),
+  pusk_ru: str, start_ru: str, zanovo_ru: str, ne_nakryto_ru: str,
+  holst_alt: str, podpis_holsta_ru: str, bez_skripta_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+}).strict().superRefine((d, ctx) => {
+  d.celi.forEach((c, i) => {
+    if (!(c.storona < d.zalp.storona)) ctx.addIssue({ code: 'custom', path: ['celi', i, 'storona'], message: 'цель меньше квадрата залпа' });
+    if (c.x * d.pole.shirina - c.storona / 2 < 0 || c.x * d.pole.shirina + c.storona / 2 > d.pole.shirina)
+      ctx.addIssue({ code: 'custom', path: ['celi', i, 'x'], message: 'цель целиком в поле' });
+    if (c.y * d.pole.vysota - c.storona / 2 < 0 || c.y * d.pole.vysota + c.storona / 2 > d.pole.vysota)
+      ctx.addIssue({ code: 'custom', path: ['celi', i, 'y'], message: 'цель целиком в поле' });
+  });
+});
 // kto-ranshe (02-17 «Изобретений», Пироцкий): две линии времени — Петербург и Берлин. Выбираешь, кто сделал первым,
 // и ставишь на год (ползунок). Верно и то и другое — раунд засчитан. Кто раньше и год раньше движок считает сам
 // по sobytiya (более раннее событие), в данных лишнего нет; на холсте — только линии и отметки, без надписей (Р18).
@@ -291,6 +311,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   // Февраль — новые механики, общие для нескольких дней.
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
+  'nakroy-kvadrat': { slovami: 'Тянешь квадрат разрывов залпа по площади и накрываешь им цель; все цели накрыты — победа', dvizhok: true, dannye: nakroyKvadrat },
   'kto-ranshe': { slovami: 'Две линии времени — Петербург и Берлин: выбираешь, кто сделал первым, и ставишь на год', dvizhok: true, dannye: ktoRanshe },
   'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
 };

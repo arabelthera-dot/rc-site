@@ -81,5 +81,16 @@ const pravkaZv = (fn) => { const o = structuredClone(zv); fn(o.dannye); return i
 proba('76: данные к механике zvenya-pod-koleso (01-09) приняты', igraDannymi.safeParse(zv).success);
 proba('76: zvenya-pod-koleso — звеньев 1 — отказ', !pravkaZv((d) => { d.zvenev = 1; }));
 proba('76: zvenya-pod-koleso — без шага «edet» — отказ', !pravkaZv((d) => { delete d.edet; }));
+// nakroy-kvadrat (02-23): цель меньше квадрата залпа и целиком в поле; тексты в перевод, доли и числа — нет.
+const nakroy = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/nakroy-kvadrat.json', import.meta.url), 'utf8'));
+const pravkaN = (fn) => { const o = structuredClone(nakroy); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике nakroy-kvadrat приняты', igraDannymi.safeParse(nakroy).success);
+proba('76: цель не меньше квадрата залпа — отказ', !pravkaN((d) => { d.celi[0].storona = d.zalp.storona; }));
+proba('76: цель не целиком в поле — отказ', !pravkaN((d) => { d.celi[0].x = 0.01; }));
+proba('164: тексты nakroy-kvadrat в перевод, доли и числа — нет', (() => {
+  const k = Object.keys(vynutStroki(nakroy, 'izobreteniya', '02-23'));
+  return k.some((x) => x.endsWith('dannye.celi.0.podpis')) && k.some((x) => x.endsWith('dannye.pobeda.soobshchenie_ru'))
+    && !k.some((x) => /\.(x|y|storona|shirina|vysota|ryadov|ochki)$/.test(x));
+})());
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);
