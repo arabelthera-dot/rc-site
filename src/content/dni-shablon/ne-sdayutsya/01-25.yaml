@@ -103,12 +103,8 @@ stamp:
   - v: "10"
     k: лет спустя его словами Путин закончил обращение к фронту
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

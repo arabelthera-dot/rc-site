@@ -103,12 +103,8 @@ stamp:
   - v: "1943"
     k: год первой подтверждённой победы на протезах, 19 июля
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

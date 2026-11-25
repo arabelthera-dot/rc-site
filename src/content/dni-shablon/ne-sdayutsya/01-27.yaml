@@ -103,12 +103,8 @@ stamp:
   - v: 37 из 52
     k: моряков спаслись на двух шлюпках
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

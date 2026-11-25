@@ -109,12 +109,8 @@ stamp:
   - v: 4 000 / 11 000
     k: потери в боях — и больными и обмороженными
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

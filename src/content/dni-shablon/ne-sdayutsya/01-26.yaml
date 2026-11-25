@@ -103,12 +103,8 @@ stamp:
   - v: 20 мин
     k: на столько был рассчитан кислород в скафандре
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz
