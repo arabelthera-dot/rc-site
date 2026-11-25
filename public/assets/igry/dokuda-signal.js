@@ -11,7 +11,7 @@ RCIgry.dvizhok('dokuda-signal', function(ctx){
     '<canvas width="640" height="360" role="img" aria-label="' + esc(d.holst_alt) + '" style="display:block;width:100%;height:auto;border-radius:10px;background:#16202c"></canvas>' +
     '<div style="font-size:12.5px;color:#8fa5b9;margin-top:6px">' + esc(d.podpis_holsta_ru) + '</div>' +
     '<div style="display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px" data-legend></div>' +
-    '<div style="display:flex;align-items:center;gap:12px;margin-top:12px">' +
+    '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:12px">' +
       '<input type="range" min="0" max="100" value="0" class="gm-slider" style="flex:1 1 auto;min-width:140px;box-sizing:border-box;margin:0">' +
       '<button type="button" class="btn ghost" data-cool style="white-space:nowrap"></button>' +
     '</div>' +
