@@ -295,6 +295,39 @@ const uderzhiPlazmu = z.object({
   bez_skripta_ru: str,
 }).strict();
 
+// dokuda-signal (02-24 «Бонч-Бруевич»): ползунком наращиваешь мощность передатчика и смотришь на карте, докуда
+// доходит сигнал из Москвы. Без водяного охлаждения анода потолок — 6 кВт (граф Арко: мощнее ламп не бывает); с
+// охлаждением — до 12 кВт, и круги сигнала достают до дальних городов Европы. Города, предел, все тексты — из dannye;
+// на холсте только карта, мачта, круги и точки городов, без надписей (Р18). Достал ли круг город — движок считает сам,
+// по расстоянию точки от мачты (дальний город достижим только на полной мощности, а дальше предела — только с охлаждением).
+const dokudaSignal = z.object({
+  goroda: z.array(z.object({
+    kod,
+    nazvanie_ru: str,
+    x: dolya,
+    y: dolya,
+  }).strict()).min(3).max(8),
+  moshnost_max: z.number().positive().max(1000).default(12),
+  moshnost_start: z.number().min(0).default(0),
+  predel_bez_ohlazhdeniya: z.number().positive().max(1000).default(6),
+  polzunok_ru: str,
+  moshnost_ru: str.regex(/\{n\}/, 'moshnost_ru — с {n}'),
+  ohlazhdenie_ru: str,
+  ohlazhdenie_on_ru: str,
+  peregrel_ru: str,
+  dostig_ru: str.regex(/\{gorod\}/, 'dostig_ru — с {gorod}'),
+  podpis_holsta_ru: str,
+  holst_alt: str,
+  start_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const kody = d.goroda.map((g) => g.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['goroda'], message: 'коды городов повторяются' });
+  if (d.predel_bez_ohlazhdeniya >= d.moshnost_max) ctx.addIssue({ code: 'custom', path: ['predel_bez_ohlazhdeniya'], message: 'предел без охлаждения должен быть меньше максимума' });
+  if (d.moshnost_start > d.moshnost_max) ctx.addIssue({ code: 'custom', path: ['moshnost_start'], message: 'стартовая мощность больше максимума' });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -334,6 +367,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'kto-ranshe': { slovami: 'Две линии времени — Петербург и Берлин: выбираешь, кто сделал первым, и ставишь на год', dvizhok: true, dannye: ktoRanshe },
   'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
   'uderzhi-plazmu': { slovami: 'Удерживаешь плазму в магнитной бутылке, не давая ей коснуться стенок', dvizhok: true, dannye: uderzhiPlazmu },
+  'dokuda-signal': { slovami: 'Ползунком наращиваешь мощность передатчика и смотришь на карте, докуда доходит сигнал; без водяного охлаждения потолок — 6 кВт, с ним достаёшь до дальних городов Европы', dvizhok: true, dannye: dokudaSignal },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
