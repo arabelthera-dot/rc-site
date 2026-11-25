@@ -103,12 +103,8 @@ stamp:
   - v: "1946"
     k: год посмертного присвоения звания Героя Советского Союза
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

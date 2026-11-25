@@ -109,12 +109,8 @@ stamp:
   - v: 2 м
     k: высота креста над могилой в Сатино-Русском
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

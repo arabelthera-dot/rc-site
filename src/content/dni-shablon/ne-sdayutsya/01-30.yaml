@@ -99,12 +99,8 @@ stamp:
   - v: "1200"
     k: автобусов вывезли Припять меньше чем за три часа
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

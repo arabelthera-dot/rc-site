@@ -104,12 +104,8 @@ stamp:
   - v: 5.11.1944
     k: дата присвоения звания Героя Советского Союза — посмертно
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

@@ -102,12 +102,8 @@ stamp:
   - v: "5"
     k: Героев Советского Союза (посмертно, 1943)
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

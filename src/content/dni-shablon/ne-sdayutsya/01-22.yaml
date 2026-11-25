@@ -109,12 +109,8 @@ stamp:
   - v: "22"
     k: звания Героя России, из них 21 — посмертно
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

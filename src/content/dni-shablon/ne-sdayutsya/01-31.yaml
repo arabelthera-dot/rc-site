@@ -99,12 +99,8 @@ stamp:
   - v: "178"
     k: боевых групп было у подполья к апрелю 1945 года
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz

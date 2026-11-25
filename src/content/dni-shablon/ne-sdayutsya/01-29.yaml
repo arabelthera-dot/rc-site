@@ -106,12 +106,8 @@ stamp:
   - v: "83"
     k: года было Матвею Кузьмину, который повторил подвиг в 1942-м
 daynav:
-  - id: video
-    label: Видео
   - id: story
     label: Читать
-  - id: audioguide
-    label: Слушать
   - id: fakty
     label: Факты
   - id: quiz
