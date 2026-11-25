@@ -105,10 +105,6 @@ daynav:
     label: Первенство
   - id: quiz
     label: Викторина
-  - id: fork
-    label: Развилка
-  - id: chat-sec
-    label: Спросить
   - id: games
     label: Игры
   - id: audioguide
@@ -518,9 +514,6 @@ result:
   intro: "Игра «Пробей лёд», быстрый ответ и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново."
   zvanie: "0 / 100 · звание: Гость музея"
   note: Проведи ледокол через лёд, ответь на быстрые вопросы и на викторину.
-kalendar:
-  h2: Календарь изобретений
-  intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
   - src: /muzei/izobreteniya/img/01-08-goskatalog-41298564.jpg
     alt: "Фотопортрет Степана Осиповича Макарова: погрудно, в тёмном адмиральском сюртуке с погонами, с длинной окладистой бородой, на груди орден Святого Георгия"
@@ -583,36 +576,6 @@ score:
       - Экскурсант
     - - 0
       - Гость музея
-chrome:
-  share:
-    title: Первый в мире арктический ледокол «Ермак» — Музей «Что изобрели русские первыми в мире»
-    text: Первый в мире арктический ледокол «Ермак». Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-05jan-shukhov.html
-    title: 5 января · Шухов
-  next:
-    href: day-09jan-blinov.html
-    title: 9 января · Блинов
-  all:
-    href: index.html
-    label: Все изобретения
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03feb-luna9.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-15nov-buran.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-30jan-kotelnikov.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 skripty: []
 return:
   q: «Я не рублю, а вползаю на лёд, весом своим пробивая проход; купцы меня в честь покорителя Сибири назвали — угадай, кто плывёт?»
