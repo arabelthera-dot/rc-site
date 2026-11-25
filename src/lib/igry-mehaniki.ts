@@ -219,6 +219,25 @@ const triNegativa = z.object({
   bez_skripta_ru: str,
 }).strict();
 
+// uderzhi-plazmu (02-25 «Изобретений», первый в мире токамак Т-1): держишь раскалённую плазму в магнитной бутылке,
+// не давая ей коснуться стенок. Плазма сама стремится к стенкам и её толкают завихрения; магнитный держатель (мышь,
+// палец или стрелки) тянет её обратно к центру. Продержись cel_sekund секунд — победа. Сцена — круг бутылки, плазма
+// и держатель на холсте без надписей и эмодзи (Р18); все слова — вёрсткой из dannye. Размеры — доли, физика — на кадр.
+const uderzhiPlazmu = z.object({
+  cel_sekund: z.number().int().min(5).max(120).default(25),
+  butylka: z.number().min(0.3).max(0.95).default(0.8),        // радиус стенки бутылки — доля половины меньшей стороны холста
+  plazma: z.number().min(0.03).max(0.5).default(0.15),        // радиус плазмы — доля радиуса бутылки
+  derzhatel: z.number().min(0.08).max(0.9).default(0.3),      // радиус зоны захвата держателя — доля радиуса бутылки
+  sila: z.number().min(0.0005).max(0.2).default(0.01),        // ускорение, с которым держатель тянет плазму к центру (доли бутылки за кадр)
+  rastalkivanie: z.number().min(0).max(0.02).default(0.0008), // ускорение, с которым плазма сама стремится к стенкам (на кадр)
+  turbulentnost: z.number().min(0).max(0.05).default(0.004),  // сила случайных завихрений (доли бутылки за кадр)
+  schet_ru: str.regex(/\{s\}/, 'schet_ru — с {s}'),
+  derzhatel_ru: str,
+  kosnulos_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict();
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -255,6 +274,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
   'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
+  'uderzhi-plazmu': { slovami: 'Удерживаешь плазму в магнитной бутылке, не давая ей коснуться стенок', dvizhok: true, dannye: uderzhiPlazmu },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
