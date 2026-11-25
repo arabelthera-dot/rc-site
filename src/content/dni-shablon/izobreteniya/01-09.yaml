@@ -103,10 +103,6 @@ daynav:
     label: Видео
   - id: quiz
     label: Викторина
-  - id: fork
-    label: Развилка
-  - id: chat-sec
-    label: Спросить
   - id: games
     label: Игры
   - id: audioguide
@@ -540,9 +536,6 @@ result:
   intro: "Игра с возом по грязи, быстрый ответ и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново."
   zvanie: "0 / 100 · звание: Гость музея"
   note: Проведи воз по грязи, ответь на быстрые вопросы и на викторину.
-kalendar:
-  h2: Календарь изобретений
-  intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
   - src: /muzei/izobreteniya/img/day-09jan-russkiy-traktor.jpg
     width: 1454
@@ -604,36 +597,6 @@ score:
       - Экскурсант
     - - 0
       - Гость музея
-chrome:
-  share:
-    title: Первый в мире гусеничный ход — «бесконечные рельсы» — Музей «Что изобрели русские первыми в мире»
-    text: Первый в мире гусеничный ход — «бесконечные рельсы». Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-08jan-icebreaker.html
-    title: 8 января · «Ермак»
-  next:
-    href: day-10jan-britnev.html
-    title: 10 января · Ледокол «Пайлот»
-  all:
-    href: index.html
-    label: Все изобретения
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03feb-luna9.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-15nov-buran.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-30jan-kotelnikov.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 skripty:
   - src: /assets/blinov-gusenica.js
 return:
