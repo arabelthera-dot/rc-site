@@ -100,10 +100,14 @@ daynav:
     label: Факты
   - id: games
     label: Сними Кронштадт
+  - id: kadry
+    label: Кадры
   - id: pervenstvo
     label: Первенство
   - id: quiz
     label: Викторина
+  - id: sources
+    label: Источники
   - id: calendar
     label: Календарь
 video:
