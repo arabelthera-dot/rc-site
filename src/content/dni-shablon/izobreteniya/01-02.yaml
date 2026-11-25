@@ -100,10 +100,6 @@ daynav:
     label: Первенство
   - id: quiz
     label: Викторина
-  - id: fork
-    label: Развилка
-  - id: chat-sec
-    label: Спросить
 video:
   h2: История в 50 секунд
   klyuch: izobreteniya/02jan-luna1
@@ -465,48 +461,7 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
-razdely:
-  - posle: daynav
-    html: |-
-      <!-- живая сцена дня (была сверху; обложка — фото выше, Р231) -->
-      <div class="luna1-scena">
-        <canvas id="heroCvs" class="hero-particles"></canvas>
-      </div>
-      <div class="hero-caption"><div class="wrap"><div class="hero-year">1959</div></div></div>
-      <div class="scene-caption">
-        <div class="wrap"><div class="scene-cap">Анимация · дуга зонда от Земли мимо Луны к Солнцу — путь, которым «Мечта» ушла в межпланетное пространство. Не документальный кадр.</div></div>
-      </div>
-  - posle: quiz
-    html: |-
-      <section class="block" id="fork" style="background:rgba(45,140,191,.04)">
-        <div class="wrap">
-          <div class="kicker">Твой выбор</div>
-          <h2>А как поступил бы ты?</h2>
-          <p style="color:var(--muted);margin-top:0;max-width:62ch">Ночь после старта, 2 января 1959 года. Станция ушла с Байконура и впервые в истории набрала вторую космическую скорость — но телеметрия говорит: в Луну она не попадёт, пройдёт мимо примерно в шести тысячах километров. Ты — Королёв, чьё имя засекречено, и до утренних газет считаные часы. Что объявить стране?</p>
-          <div class="fork-opt"><b>Молчать до следующего пуска</b><br><span style="font-size:13px;color:var(--muted)">Мимо — значит провал. Сообщить, когда следующая станция всё-таки достанет Луну.</span></div>
-          <div class="fork-opt"><b>Сказать о промахе прямо</b><br><span style="font-size:13px;color:var(--muted)">Целились в Луну, не попали. Честно назвать неудачу и работать дальше.</span></div>
-          <div class="fork-opt"><b>Считать рекордом то, что уже сделано</b><br><span style="font-size:13px;color:var(--muted)">Вторая космическая, солнечный ветер, первый рукотворный спутник Солнца — этого нет ни у кого в мире.</span></div>
-          <div id="forkReal" style="display:none;margin-top:14px;padding:14px 16px;border-left:3px solid var(--gold);border-radius:10px;background:var(--gold-g);font-size:14.5px;line-height:1.65">
-            <b>Как было на самом деле.</b> Главным сделали не попадание, а рекорды: первый в мире разгон до второй космической скорости — 11,2 км/с, первое измерение солнечного ветра, первая искусственная планета. Станции дали имя «Мечта». Спор, была ли траектория вообще рассчитана на попадание или запас топлива для коррекции не предусматривался, историки ведут до сих пор. Через восемь месяцев «Луна-2» всё-таки достигла Луны, а американский Pioneer 4 в марте 1959-го тоже прошёл мимо — на два месяца позже нас.
-          </div>
-        </div>
-      </section>
-  - posle: quiz
-    html: |-
-      <section class="block" id="chat-sec">
-        <div class="wrap">
-          <div class="kicker">Поговори с изобретателем</div>
-          <h2>Спроси Сергея Павловича Королёва</h2>
-          <p style="color:var(--muted)">Задай вопрос — программа ответит пересказом по источникам дня.</p>
-          <div id="starters"></div>
-          <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
-          <div style="display:flex;gap:10px;margin-top:12px">
-            <input id="chatInput" type="text" placeholder="Написать вопрос..." style="flex:1;padding:12px 16px;font-size:15px">
-            <button class="btn gold" onclick="sendChat()">Отправить</button>
-          </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы — пересказ по источникам дня.</p>
-        </div>
-      </section>
+razdely: []
 igra:
   imya: luna1-trayektoriya
   dop: true
@@ -547,10 +502,6 @@ result:
   intro: ​
   zvanie: "0 / 100 · звание: Гость музея"
   note: ​
-kalendar:
-  kicker: Календарь изобретений
-  h2: Выбери любой день года
-  intro: Каждый подсвеченный день — изобретение, которое русские сделали первыми в мире.
 figures:
   - src: /muzei/izobreteniya/img/day-02jan-vympel-etiketka-1959.jpg
     width: 1280
@@ -601,36 +552,6 @@ score:
       - Экскурсант
     - - 0
       - Гость музея
-chrome:
-  share:
-    title: Первая в мире межпланетная станция «Луна-1» — Музей «Что изобрели русские первыми в мире»
-    text: Первая в мире межпланетная станция «Луна-1». Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-01jan-cabletv.html
-    title: 1 января · Кабельное ТВ
-  next:
-    href: day-04jan-pilchikov.html
-    title: 4 января · Пильчиков
-  all:
-    href: index.html
-    label: Все изобретения
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03feb-luna9.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-15nov-buran.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-30jan-kotelnikov.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 return:
   q: Чем стала «Луна-1» после того, как прошла мимо Луны?
   a: Стала первым искусственным спутником Солнца
