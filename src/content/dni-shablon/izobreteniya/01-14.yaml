@@ -111,7 +111,6 @@ daynav:
     label: Викторина
   - id: calendar
     label: Календарь
-dokument: verh
 video:
   h2: История в 59 секунд
   klyuch: izobreteniya/14jan-lira
@@ -638,44 +637,6 @@ score:
         - Мичман
     -   - 0
         - Гость дня
-chrome:
-  share:
-    title: Первые в мире серийные подлодки со скоростью 41 узел — Музей «Что изобрели русские первыми в мире»
-    text: «Лира» разгонялась до 41 узла за минуту и уходила от торпед. Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-13jan-k278.html
-    title: 13 января · К-278
-  next:
-    href: day-15jan-kovalevskaya.html
-    title: 15 января · Ковалевская
-  all:
-    href: index.html
-    label: Все изобретения
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03jan-anosov.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-06jan-orlov.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-10jan-britnev.html
-    - day-11jan-kostovich.html
-    - day-12jan-r7.html
-    - day-13jan-k278.html
-    - day-14jan-lira.html
-    - day-15jan-kovalevskaya.html
-    - day-30jan-kotelnikov.html
-    - day-03feb-luna9.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-15nov-buran.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 return:
   q: Почему «Лиру» в базе нельзя было остудить, как обычную лодку?
   a: Её реактор охлаждал расплав свинца и висмута, а он застывает при 123 °C и каменеет в трубах.
