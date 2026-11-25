@@ -617,29 +617,6 @@ score:
       - Ученик типографии
     - - 0
       - Гость дня
-chrome:
-  share:
-    title: "Орловская печать: все краски банкноты за один прогон — Музей «Что изобрели русские первыми в мире»"
-    text: Русский печатник научил машину класть все краски банкноты разом. Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-05jan-shukhov.html
-    title: 5 января · Нефтепровод Шухова
-  next:
-    href: day-08jan-icebreaker.html
-    title: 8 января · Ледокол «Ермак»
-  all:
-    href: index.html
-    label: Все изобретения
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03jan-anosov.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-06jan-orlov.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-30jan-kotelnikov.html
 return:
   q: Александр III велел выдать Орлову 7 000 рублей. Сколько лет примерно пришлось бы копить эту сумму служащему Экспедиции со средним жалованьем?
   a: "Около пятнадцати с половиной лет: служащий Экспедиции получал в среднем около 450 рублей в год."
