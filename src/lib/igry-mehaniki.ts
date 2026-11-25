@@ -151,6 +151,37 @@ const kazhdomuSvoyoMesto = z.object({
   });
 });
 
+// ostanovi-vspyshku (02-21 «Гамалея»): развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства.
+// Сцена — два силуэта с точкой укуса и пунктиром до мозга: у кого укус ближе к голове, у того болезнь дойдёт раньше — того
+// и прививаем первым (защита от прививки созревает, пока вирус ползёт к мозгу). Всё из dannye, на холсте без надписей (Р18).
+const ostanoviVspyshku = z.object({
+  razvilki: z.array(z.object({
+    kod,
+    situaciya_ru: str,
+    vopros_ru: str,
+    varianty: z.array(z.object({
+      kod,
+      tekst: str,
+      bite: z.object({ x: dolya, y: dolya }).strict(),
+      verno: z.boolean(),
+    }).strict()).length(2),
+    verno_ru: str,
+    net_ru: str,
+  }).strict()).min(2).max(4),
+  holst_alt: str,
+  podpis_holsta_ru: str,
+  progress_ru: str.regex(/\{n\}/, 'progress_ru — с {n}').regex(/\{vsego\}/, 'progress_ru — с {vsego}'),
+  start_ru: str,
+  zanovo_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(25) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => d.razvilki.forEach((r, i) => {
+  const v = r.varianty.filter((x) => x.verno).length;
+  if (v !== 1) ctx.addIssue({ code: 'custom', path: ['razvilki', i, 'varianty'], message: `в развилке «${r.kod}» верных вариантов ${v}, нужен один` });
+  const kody = r.varianty.map((x) => x.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['razvilki', i, 'varianty'], message: `коды вариантов в «${r.kod}» повторяются` });
+}));
+
 // nastroy-volnu-priyomnika (01-04): совпасть с волной приёмника komand раз; |ползунок − цель| < dopusk (шкала 1–100).
 const nastroyVolnuPriyomnika = z.object({
   komand: z.number().int().min(1).max(10).default(3),
@@ -200,6 +231,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'rezonans-i-gody': { den: '01-31', igra: 'razgoni-girotron', slovami: 'Кнопками «Поле ±» ловишь резонанс, угадываешь срок и год за годом доводишь гиротрон от 6 ватт до мегаватта' },  // ── новые механики (февраль и дальше) — ниже, по строке на игру ──
   // Февраль — новые механики, общие для нескольких дней.
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
+  'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
