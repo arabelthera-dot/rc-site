@@ -197,6 +197,43 @@ const nastroyVolnuPriyomnika = z.object({
   if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
 });
 
+// kto-ranshe (02-17 «Изобретений», Пироцкий): две линии времени — Петербург и Берлин. Выбираешь, кто сделал первым,
+// и ставишь на год (ползунок). Верно и то и другое — раунд засчитан. Кто раньше и год раньше движок считает сам
+// по sobytiya (более раннее событие), в данных лишнего нет; на холсте — только линии и отметки, без надписей (Р18).
+const ktoRanshe = z.object({
+  linii: z.array(z.object({ kod, nazvanie: str, cvet: str }).strict()).length(2),
+  pary: z.array(z.object({
+    vopros_ru: str,
+    sobytiya: z.array(z.object({ linia: kod, nazvanie: str, god: z.number().int() }).strict()).length(2),
+    stavka: z.object({
+      podpis_ru: str,
+      god_ot: z.number().int(), god_do: z.number().int(),
+      start: z.number().int(), dopusk: z.number().int().min(0),
+      god_ru: str.regex(/\{g\}/, 'god_ru — с {g}'),
+    }).strict(),
+    kto_net_ru: str, god_net_ru: str, verno_ru: str,
+  }).strict()).min(1).max(4),
+  holst_alt: str,
+  vyberi_ru: str.default('Сначала выбери, кто сделал первым.'),
+  proverit_ru: str.default('Проверить'),
+  progress_ru: str.regex(/\{n\}/, 'progress_ru — с {n}').regex(/\{vsego\}/, 'progress_ru — с {vsego}'),
+  start_ru: str, zanovo_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const liniiKody = d.linii.map((l) => l.kod);
+  if (new Set(liniiKody).size !== liniiKody.length) ctx.addIssue({ code: 'custom', path: ['linii'], message: 'коды линий повторяются' });
+  const linii = new Set(liniiKody);
+  d.pary.forEach((p, i) => {
+    if (p.sobytiya[0].linia === p.sobytiya[1].linia) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya'], message: 'события должны быть на разных линиях' });
+    p.sobytiya.forEach((s, j) => { if (!linii.has(s.linia)) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya', j, 'linia'], message: `линии «${s.linia}» нет в linii` }); });
+    if (p.sobytiya[0].god === p.sobytiya[1].god) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya'], message: 'годы событий должны различаться — иначе нет «кто раньше»' });
+    if (p.stavka.god_do <= p.stavka.god_ot) ctx.addIssue({ code: 'custom', path: ['pary', i, 'stavka', 'god_do'], message: 'god_do должно быть больше god_ot' });
+    if (!(p.stavka.god_ot <= p.stavka.start && p.stavka.start <= p.stavka.god_do)) ctx.addIssue({ code: 'custom', path: ['pary', i, 'stavka', 'start'], message: 'start — между god_ot и god_do' });
+    p.sobytiya.forEach((s, j) => { if (s.god < p.stavka.god_ot || s.god > p.stavka.god_do) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya', j, 'god'], message: `год ${s.god} вне шкалы ставки (${p.stavka.god_ot}–${p.stavka.god_do})` }); });
+  });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -232,6 +269,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   // Февраль — новые механики, общие для нескольких дней.
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
+  'kto-ranshe': { slovami: 'Две линии времени — Петербург и Берлин: выбираешь, кто сделал первым, и ставишь на год', dvizhok: true, dannye: ktoRanshe },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
