@@ -166,6 +166,35 @@ const nastroyVolnuPriyomnika = z.object({
   if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
 });
 
+// dokuda-signal (первый день — 02-24 «Коминтерн»): ползунком наращиваешь мощность передатчика и на схеме дальности
+// смотришь, докуда доходит сигнал. Каждый город-цель — на своём кольце дальности; поймай край круга сигнала на его кольцо
+// (|мощность − dalnost| < dopusk), чтобы «дошло». Город — точка на схеме по dalnost (в киловаттах) и углу ugol
+// (градусы, 0 — восток, против часовой стрелки); все слова — вёрсткой из dannye, на холсте надписей нет (Р18).
+const dokudaSignal = z.object({
+  dopusk: z.number().min(0).max(12).default(1),
+  moshchnost_min: z.number().min(0).default(0),
+  moshchnost_max: z.number().positive().default(12),
+  moshchnost_start: z.number().min(0).default(0),
+  polzunok_ru: str, knopka_ru: str,
+  moshchnost_ru: str.regex(/\{n\}/, 'moshchnost_ru — с {n}'),
+  schet_ru: str.regex(/\{n\}/, 'schet_ru — с {n}'),
+  prinyato_ru: str.regex(/\{gorod\}/, 'prinyato_ru — с {gorod}'),
+  nedoshlo_ru: str.regex(/\{gorod\}/, 'nedoshlo_ru — с {gorod}'),
+  perelet_ru: str.regex(/\{gorod\}/, 'perelet_ru — с {gorod}'),
+  goroda: z.array(z.object({
+    kod: z.string().regex(/^[a-z-]+$/),
+    nazvanie: str,
+    dalnost: z.number().min(0),
+    ugol: z.number(),
+  }).strict()).min(2).max(8),
+  celi: z.array(z.object({ kod: z.string(), zadanie_ru: str }).strict()).min(1).max(8),
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(15) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  d.celi.forEach((c, i) => { if (!d.goroda.some((g) => g.kod === c.kod)) ctx.addIssue({ code: 'custom', path: ['celi', i, 'kod'], message: `города «${c.kod}» нет в goroda` }); });
+  d.goroda.forEach((g, i) => { if (g.dalnost < d.moshchnost_min || g.dalnost > d.moshchnost_max) ctx.addIssue({ code: 'custom', path: ['goroda', i, 'dalnost'], message: `дальность «${g.kod}» вне 0…${d.moshchnost_max}` }); });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -200,6 +229,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'rezonans-i-gody': { den: '01-31', igra: 'razgoni-girotron', slovami: 'Кнопками «Поле ±» ловишь резонанс, угадываешь срок и год за годом доводишь гиротрон от 6 ватт до мегаватта' },  // ── новые механики (февраль и дальше) — ниже, по строке на игру ──
   // Февраль — новые механики, общие для нескольких дней.
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
+  'dokuda-signal': { slovami: 'Наращиваешь мощность передатчика и смотришь на карте, докуда доходит сигнал', dvizhok: true, dannye: dokudaSignal },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.

@@ -1,0 +1,29 @@
+{
+  "_": "Тексты игры izobreteniya 02-24 для перевода (п. 164). Ключи — src/data/igry/stroki-igr.mjs. Языки, кроме ru, пишет только машина перевода (Р603).",
+  "ru": {
+    "izobreteniya.02-24.igra.kicker": "Играй",
+    "izobreteniya.02-24.igra.zagolovok": "🎮 Докуда бьёт сигнал",
+    "izobreteniya.02-24.igra.pravilo_ru": "Двигай ползунок мощности и поймай край круга сигнала на кольцо города.",
+    "izobreteniya.02-24.igra.kak_igrat.zachem": "Станция имени Коминтерна — первая в мире мощная радиовещательная. Чем больше киловатт, тем дальше слышно Москву.",
+    "izobreteniya.02-24.igra.kak_igrat.shagi.0": "Смотри на схему дальности: каждый город стоит на своём кольце.",
+    "izobreteniya.02-24.igra.kak_igrat.shagi.1": "Двигай ползунок, пока край синего круга сигнала не ляжет на кольцо города.",
+    "izobreteniya.02-24.igra.kak_igrat.shagi.2": "Нажми «Передать». Не дошло — добавь мощности, проскочило — сбавь.",
+    "izobreteniya.02-24.igra.kak_igrat.nyuans": "Мощность Москвы — до 12 киловатт. Попади в допуск: до ватта точность не нужна.",
+    "izobreteniya.02-24.igra.kak_igrat.final": "Все три города на связи — +15 баллов.",
+    "izobreteniya.02-24.igra.dannye.polzunok_ru": "Ползунок мощности передатчика",
+    "izobreteniya.02-24.igra.dannye.knopka_ru": "Передать",
+    "izobreteniya.02-24.igra.dannye.moshchnost_ru": "Мощность: {n} киловатт",
+    "izobreteniya.02-24.igra.dannye.schet_ru": "Городов на связи: {n} из {vsego}",
+    "izobreteniya.02-24.igra.dannye.prinyato_ru": "Есть — сигнал дошёл до {gorod}.",
+    "izobreteniya.02-24.igra.dannye.nedoshlo_ru": "Сигнал не дошёл до {gorod} — добавь мощности.",
+    "izobreteniya.02-24.igra.dannye.perelet_ru": "Сигнал проскочил дальше {gorod} — сбавь мощность.",
+    "izobreteniya.02-24.igra.dannye.goroda.0.nazvanie": "Берлин",
+    "izobreteniya.02-24.igra.dannye.goroda.1.nazvanie": "Обдорск",
+    "izobreteniya.02-24.igra.dannye.goroda.2.nazvanie": "Ташкент",
+    "izobreteniya.02-24.igra.dannye.celi.0.zadanie_ru": "Доведи сигнал до Берлина — на западе, там, где инженеры «Телефункена» сказали «Это невозможно».",
+    "izobreteniya.02-24.igra.dannye.celi.1.zadanie_ru": "Доведи сигнал до Обдорска — на северо-востоке, оттуда в первый же день пришло восторженное письмо.",
+    "izobreteniya.02-24.igra.dannye.celi.2.zadanie_ru": "Доведи сигнал до Ташкента — на юго-востоке, оттуда письмо пришло в первый же день.",
+    "izobreteniya.02-24.igra.dannye.pobeda.soobshchenie_ru": "🏆 Сигнал дошёл до Берлина, Обдорска и Ташкента — 12 киловатт Москвы узнавали за 1600 километров, мировой рекорд.",
+    "izobreteniya.02-24.igra.dannye.bez_skripta_ru": "Игра работает с включённым JavaScript: двигаешь ползунок мощности и ловишь круг сигнала на кольцо города. Ответы: Берлин на западе, Обдорск на северо-востоке, Ташкент на юго-востоке, полная мощность Москвы — 12 киловатт."
+  }
+}
