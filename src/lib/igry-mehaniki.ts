@@ -217,6 +217,28 @@ const nastroyVolnuPriyomnika = z.object({
   if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
 });
 
+// tri-negativa (02-19 «Изобретений», цветная фотография Прокудина-Горского): камера снимает один вид трижды — через
+// красное, зелёное и синее стекло; три чёрно-белых кадра, каждый хранит свой цвет. При показе кадры совмещают, и цвета
+// складываются в цветной кадр. Здесь три цветных канала-негатива сдвинуты — посетитель тянет их на место (мышь/палец)
+// или выбирает кнопкой и двигает стрелками; канал защёлкивается, все три на месте — цветная фотография.
+// Сцена — рисунок холста без надписей и эмодзи (Р18), все слова — вёрсткой из dannye.
+const triNegativa = z.object({
+  kanaly: z.array(z.object({
+    kod: z.string().regex(/^[a-z]+$/),
+    cvet: z.tuple([z.number().int().min(0).max(255), z.number().int().min(0).max(255), z.number().int().min(0).max(255)]),
+    imya_ru: str,
+  }).strict()).length(3),
+  dopusk: z.number().positive().default(16),
+  sdvig: z.number().positive().default(70),
+  shag: z.number().positive().default(4),
+  scena: z.object({ alt: str, podpis_ru: str }).strict(),
+  vyberi_ru: str.default('Тяни цветную метку канала или выбери канал кнопкой и двигай стрелками.'),
+  status_ru: str.regex(/\{n\}/, 'status_ru — с {n}'),
+  sovpalo_ru: str.regex(/\{k\}/, 'sovpalo_ru — с {k}'),
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict();
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -253,6 +275,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
   'soberi-sloi': { slovami: 'Расставляешь слои в правильном порядке сверху вниз; верный слой загорается, все слои на месте — победа', dvizhok: true, dannye: soberiSloi },
+  'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
