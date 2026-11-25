@@ -574,9 +574,6 @@ result:
   intro: "Модель, три причины неудачи и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново."
   zvanie: "0 / 100 · звание: Гость дня"
   note: Проведи буксир через лёд, найди все три причины неудачи и ответь на вопросы.
-kalendar:
-  h2: Календарь изобретений
-  intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
   - src: /muzei/izobreteniya/img/01-10-goskatalog-8462389.jpg
     alt: М. О. Бритнев на портрете-миниатюре 1845 года, масло по металлу
@@ -638,45 +635,6 @@ score:
       - Юнга
     - - 0
       - Гость дня
-chrome:
-  museum:
-    title: Музей «Что изобрели русские первыми в мире»
-    href: index.html
-  share:
-    title: Первый в мире ледокол «Пайлот» — Музей «Что изобрели русские первыми в мире»
-    text: Кронштадтский судовладелец срезал пароходу нос под углом — и судно полезло на лёд. Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-09jan-blinov.html
-    title: 9 января · Гусеничный ход
-  next:
-    href: day-11jan-kostovich.html
-    title: 11 января · Двигатель Костовича
-  all:
-    href: index.html
-    label: Все изобретения
-  city: ../../index.html
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03jan-anosov.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-06jan-orlov.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-10jan-britnev.html
-    - day-11jan-kostovich.html
-    - day-12jan-r7.html
-    - day-30jan-kotelnikov.html
-    - day-03feb-luna9.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-15nov-buran.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 skripty: []
 return:
   q: «Пайлот» строили не в Кронштадте. В какой стране в 1862 году заказал этот буксир Михаил Бритнев?

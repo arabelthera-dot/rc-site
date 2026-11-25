@@ -581,9 +581,6 @@ result:
   intro: "Удачный пуск, две причины неудачи и викторина вместе дают 100 баллов. Прогресс не сохраняется: перезагрузка страницы начинает день заново."
   zvanie: "0 / 100 · звание: Гость дня"
   note: Собери ракету, найди обе причины неудачи и ответь на вопросы.
-kalendar:
-  h2: Календарь изобретений
-  intro: Выбери любой день — узнаешь, что русские сделали первыми в мире. Листай месяцы стрелками.
 figures:
   - src: "/muzei/izobreteniya/img/01-12-glavnye-konstruktory-1957.jpg"
     alt: "Групповой чёрно-белый снимок: пятнадцать мужчин в костюмах и военной форме, десять сидят в ряд, пятеро стоят за ними, позади деревянные домики и беседка."
@@ -646,45 +643,6 @@ score:
       - Стартовик
     - - 0
       - Гость дня
-chrome:
-  museum:
-    title: Музей «Что изобрели русские первыми в мире»
-    href: index.html
-  share:
-    title: Р-7 — первая в мире межконтинентальная ракета — Музей «Что изобрели русские первыми в мире»
-    text: "Пять ракет в одном пакете: оружие, которое вывело на орбиту первый спутник. Что Россия дала миру раньше всех — день за днём."
-  prev:
-    href: day-11jan-kostovich.html
-    title: 11 января · Двигатель Костовича
-  next:
-    href: day-13jan-k278.html
-    title: 13 января · К-278
-  all:
-    href: index.html
-    label: Все изобретения
-  city: ../../index.html
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03jan-anosov.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-06jan-orlov.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-10jan-britnev.html
-    - day-11jan-kostovich.html
-    - day-12jan-r7.html
-    - day-30jan-kotelnikov.html
-    - day-03feb-luna9.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-15nov-buran.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 skripty: []
 return:
   q: Первый удачный полёт Р-7 был 21 августа 1957 года. В какой день газеты напечатали об этом сообщение ТАСС?
