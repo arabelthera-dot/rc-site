@@ -470,36 +470,7 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
-razdely:
-  - posle: quiz
-    html: |-
-      <section class="block" id="quiz-igry">
-        <div class="wrap">
-          <div class="gm" id="gm_tm">
-            <h3>⚖️ Правда или миф</h3>
-            <p style="font-weight:600;margin:0 0 12px">«Возчики нефти угрожали разрушить первый нефтепровод»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="tmAns(this,true)">Правда</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="tmAns(this,false)">Миф</button></div>
-            <div class="gm-exp" id="tmExp">Правда. Сотни возчиков теряли заработок — трубу пришлось охранять казакам. Но экономика победила быстро: перекачка оказалась в разы дешевле бочек.</div>
-          </div>
-          <div class="gm" id="gm_vb">
-            <h3>🤔 Верю — не верю</h3>
-            <p style="font-weight:600;margin:0 0 12px">«Формулы Шухова 1878 года используются до сих пор»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="vbAns(this,true)">Верю</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="vbAns(this,false)">Не верю</button></div>
-            <div class="gm-exp" id="vbExp">Верю — и правильно. Основы гидравлического расчёта трубопроводов, выведенные Шуховым, лежат в проектировании нефте- и газопроводов по сей день.</div>
-          </div>
-          <div class="gm" id="gm_char">
-            <h3>🧩 Шарада</h3>
-            <p style="font-style:italic;line-height:1.8;margin:0 0 12px">«Я бочки с арбами прогнал,<br>трудом лошадиным не мучаясь:<br>я нефти дорогу стальную создал —<br>считал, а не пробовал наудачу».</p>
-            <button class="gm-btn" style="width:auto" id="charBtn" onclick="charShow()">Показать ответ</button>
-            <div class="gm-exp" id="charExp">Владимир Шухов и его нефтепровод.</div>
-          </div>
-          <script>
-          function tmAns(b,ok){document.querySelectorAll('#gm_tm .gm-btn').forEach(x=>x.disabled=true);b.classList.add(ok?'ok':'no');document.getElementById('tmExp').classList.add('show');if(ok&&typeof award==='function')award('tm',5);}
-          function vbAns(b,ok){document.querySelectorAll('#gm_vb .gm-btn').forEach(x=>x.disabled=true);b.classList.add(ok?'ok':'no');document.getElementById('vbExp').classList.add('show');if(ok&&typeof award==='function')award('vb',5);}
-          function charShow(){document.getElementById('charExp').classList.add('show');document.getElementById('charBtn').disabled=true;if(typeof award==='function')award('char',10);}
-          </script>
-        </div>
-      </section>
+razdely: []
 igra:
   imya: truba-shukhova
   dop: true
@@ -635,36 +606,6 @@ score:
     - - 0
       - Гость музея
   diplomaAt: 60
-chrome:
-  share:
-    title: Первый в мире расчётный нефтепровод — Музей «Что изобрели русские первыми в мире»
-    text: Первый в мире расчётный нефтепровод. Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-04jan-pilchikov.html
-    title: 4 января · Пильчиков
-  next:
-    href: day-08jan-icebreaker.html
-    title: 8 января · «Ермак»
-  all:
-    href: index.html
-    label: Все изобретения
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03feb-luna9.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-15nov-buran.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-30jan-kotelnikov.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 return:
   q: Труба Шухова давала 80 000 пудов нефти в сутки. Сколько это тонн, если в пуде 16,4 кг?
   a: "Около 1 300 тонн в сутки: 80 000 × 16,4 кг ≈ 1 312 000 кг."
