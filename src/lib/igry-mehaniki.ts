@@ -169,11 +169,8 @@ const nastroyVolnuPriyomnika = z.object({
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
-  'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины' },
-  'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне', dvizhok: true, dannye: nastroyVolnuPriyomnika },
-  'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны' },
   'tri-usloviya-bulata': { den: '01-03', igra: 'tigel-anosova', slovami: 'Перебираешь три условия плавки (добавка, охлаждение, ковка), пока не получится булат; неудачи показывают причины', dvizhok: true, dannye: triUsloviyaBulata },
-  'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне' },
+  'nastroy-volnu-priyomnika': { den: '01-04', igra: 'svoya-volna', slovami: 'Ползунком подгоняешь волну передатчика к волне приёмника и передаёшь команду; во второй игре шлёшь сигнал, когда волна в зоне', dvizhok: true, dannye: nastroyVolnuPriyomnika },
   'smeta-truboprovoda': { den: '01-05', igra: 'truba-shukhova', slovami: 'Тремя ползунками (диаметр, насосы, подогрев) подбираешь трубопровод, чтобы прокачать 80 000 пудов в сутки и уложиться в смету', dvizhok: true, dannye: smetaTruboprovoda },
   'odin-progon-orlova': { den: '01-06', igra: 'stanok-orlova', slovami: 'Печатаешь розетку старым способом в три прогона и станком Орлова в один, а потом отличаешь настоящий билет от подделки' },
   'stezhki-v-takt-serdca': { den: '01-07', igra: 'sshey-shunt', slovami: 'Пережимаешь сосуд и 8 секунд смотришь ЭКГ, затем тапаешь по золотым точкам, которые движутся в такт сердцу (8 стежков)' },
