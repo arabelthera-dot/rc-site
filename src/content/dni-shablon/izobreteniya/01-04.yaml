@@ -100,10 +100,6 @@ daynav:
     label: Видео
   - id: quiz
     label: Викторина
-  - id: fork
-    label: Развилка
-  - id: chat-sec
-    label: Спросить
   - id: games
     label: Игры
   - id: pervenstvo
@@ -445,69 +441,7 @@ fakty:
         dlya_voprosa: false
         sravnenie: "net"
         id: "f15"
-razdely:
-  - posle: daynav
-    html: |-
-      <div class="hero-scene" id="hero">
-        <canvas id="heroCvs" class="hero-particles"></canvas>
-        <div class="hero-year">1898</div>
-      </div>
-
-      <div class="scene-caption">
-        <div class="wrap">
-          <div class="scene-cap">Одесса · 1898 · публичный опыт</div>
-          <button type="button" class="scene-hint cta-pulse" id="heroHint" onclick="var c=document.getElementById('heroCvs');if(c)c.click()">⚡ тапни по сцене — отправь сигнал</button>
-        </div>
-      </div>
-  - posle: quiz
-    html: |2-
-          <div class="gm" id="gm_tm">
-            <h3>⚖️ Правда или миф</h3>
-            <p style="font-weight:600;margin:0 0 12px">«Пильчиков запатентовал радиоуправление раньше Теслы»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="tmAns(this,false)">Правда</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="tmAns(this,true)">Миф</button></div>
-            <div class="gm-exp" id="tmExp">Миф. Пильчиков вообще не оформлял патент — российские учёные тогда редко это делали. Тесла запатентовал радиоуправляемую лодку в США в 1898 году, и мировой приоритет закрепился за ним.</div>
-          </div>
-          <div class="gm" id="gm_vb">
-            <h3>🤔 Верю — не верю</h3>
-            <p style="font-weight:600;margin:0 0 12px">«Смерть Пильчикова до сих пор остаётся неразгаданной»</p>
-            <div><button class="gm-btn" style="width:auto;display:inline-block;margin-right:8px" onclick="vbAns(this,true)">Верю</button><button class="gm-btn" style="width:auto;display:inline-block" onclick="vbAns(this,false)">Не верю</button></div>
-            <div class="gm-exp" id="vbExp">Верю — и правильно. В мае 1908 года его нашли застреленным в больничной палате. Официально — самоубийство, но записи военных разработок исчезли, а дело закрыли за несколько дней. Историки спорят до сих пор.</div>
-          </div>
-          <div class="gm" id="gm_char">
-            <h3>🧩 Шарада</h3>
-            <p style="font-style:italic;line-height:1.8;margin:0 0 12px">«Я проводов не признавал —<br>командовал по воздуху волнами:<br>маяк зажёг, заряд взорвал…<br>А тайну смерти — унёс с нами».</p>
-            <button class="gm-btn" style="width:auto" id="charBtn" onclick="charShow()">Показать ответ</button>
-            <div class="gm-exp" id="charExp">Николай Пильчиков и его радиоуправление.</div>
-          </div>
-  - posle: quiz
-    html: |-
-      <section class="block" id="fork" style="background:rgba(45,140,191,.04)">
-        <div class="wrap">
-          <div class="kicker">Твой выбор</div>
-          <h2>А как поступил бы ты?</h2>
-          <p style="color:var(--muted);margin-top:0;max-width:62ch">1903 год. Твои опыты для Черноморского флота — радиовзрыватели, защита связи от помех — легли под сукно: ведомство молчит. Тесла уже запатентовал свою лодку в Америке. Ты на месте Пильчикова — что делаешь?</p>
-          <div class="fork-opt">🌍 Еду за границу и патентую — пусть мир узнает, чьё это первенство</div>
-          <div class="fork-opt">🔬 Остаюсь: продолжаю опыты, публикуюсь в русских журналах, учу студентов</div>
-          <div class="fork-opt">📐 Оставляю радио — сосредоточусь на преподавании и приборах</div>
-          <div id="forkReal" style="display:none;margin-top:14px" class="exp"><b>Как было на самом деле.</b> Пильчиков остался: преподавал, строил приборы, публиковался в журналах Русского физико-химического общества. Патент он так и не оформил — и мировой приоритет закрепился за Теслой. А его отчёты для флота исчезли после смерти в 1908-м. Приоритет мало завоевать — его надо ещё и оформить.</div>
-        </div>
-      </section>
-  - posle: quiz
-    html: |-
-      <section class="block" id="chat-sec">
-        <div class="wrap">
-          <div class="kicker">Поговори с изобретателем</div>
-          <h2>Спроси Николая Пильчикова</h2>
-          <p style="color:var(--muted)">Задай вопрос — программа ответит пересказом по источникам дня.</p>
-          <div id="starters"></div>
-          <div id="chatBox" style="margin:16px 0;min-height:80px"></div>
-          <div style="display:flex;gap:10px;margin-top:12px">
-            <input id="chatInput" type="text" placeholder="Написать вопрос..." style="flex:1;padding:12px 16px;font-size:15px">
-            <button class="btn gold" onclick="sendChat()">Отправить</button>
-          </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:8px">Ответы — пересказ по источникам дня.</p>
-        </div>
-      </section>
+razdely: []
 igra:
   imya: svoya-volna
   dop: true
@@ -549,10 +483,6 @@ result:
   intro: Читай статью, играй, отвечай в викторине и спрашивай изобретателя — за всё начисляются баллы. Собери все 100 и стань Хранителем приоритета.
   zvanie: "0 / 100 · звание: Гость музея"
   note: " "
-kalendar:
-  kicker: Календарь изобретений
-  h2: Выбери любой день года
-  intro: Каждый подсвеченный день — изобретение, которое русские сделали первыми в мире.
 figures:
   - src: /muzei/izobreteniya/img/day-04jan-harkov-universitet.jpg
     width: 800
@@ -613,36 +543,6 @@ score:
       - Экскурсант
     - - 0
       - Гость музея
-chrome:
-  share:
-    title: Первое в мире публичное радиоуправление — Музей «Что изобрели русские первыми в мире»
-    text: Первое в мире публичное радиоуправление. Что Россия дала миру раньше всех — день за днём.
-  prev:
-    href: day-02jan-luna1.html
-    title: 2 января · «Луна-1»
-  next:
-    href: day-05jan-shukhov.html
-    title: 5 января · Шухов
-  all:
-    href: index.html
-    label: Все изобретения
-  random:
-    - day-01jan-cabletv.html
-    - day-02jan-luna1.html
-    - day-03feb-luna9.html
-    - day-04jan-pilchikov.html
-    - day-05jan-shukhov.html
-    - day-15nov-buran.html
-    - day-08jan-icebreaker.html
-    - day-09jan-blinov.html
-    - day-30jan-kotelnikov.html
-    - day-18mar-leonov.html
-    - day-15may-mechnikov.html
-    - day-16jun-tereshkova.html
-    - day-26sep-pavlov.html
-    - day-25nov-pirogov.html
-    - day-01dec-lobachevsky.html
-    - day-14dec-laser.html
 return:
   q: |-
     «Я проводов не признавал —
