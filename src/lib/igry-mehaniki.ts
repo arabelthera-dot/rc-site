@@ -328,6 +328,37 @@ const dokudaSignal = z.object({
   if (d.moshnost_start > d.moshnost_max) ctx.addIssue({ code: 'custom', path: ['moshnost_start'], message: 'стартовая мощность больше максимума' });
 });
 
+// do-i-posle (02-27 «Изобретений», пересадка роговицы Филатова): шторкой «до/после» смотришь мир глазами пациента —
+// слева мир в бельме (мутном), справа — ясный. Тянешь шторку вправо и снимаешь бельмо со всех сцен, и пациент прозревает.
+// Сцена — простые фигуры (прямоугольник, круг, треугольник) на холсте без надписей и эмодзи (Р18); все слова — вёрсткой
+// из dannye. x, y — доли холста, размеры прямоугольника/треугольника — доли холста, радиусы круга — доли высоты.
+const figuraDoPosle = z.discriminatedUnion('tip', [
+  z.object({ tip: z.literal('pryamougolnik'), x: dolya, y: dolya, w: z.number().positive().max(1), h: z.number().positive().max(1), cvet: str }).strict(),
+  z.object({ tip: z.literal('krug'), x: dolya, y: dolya, rx: z.number().positive().max(1), ry: z.number().positive().max(1), cvet: str }).strict(),
+  z.object({ tip: z.literal('treugolnik'), x: dolya, y: dolya, w: z.number().positive().max(1), h: z.number().positive().max(1), cvet: str }).strict(),
+]);
+const doIPosle = z.object({
+  sceny: z.array(z.object({
+    kod,
+    nazvanie_ru: str,
+    figury: z.array(figuraDoPosle).min(2).max(16),
+  }).strict()).min(2).max(4),
+  shtorka_ru: str,
+  shtorka_start: dolya.default(0.5),
+  porog: dolya.default(0.97),
+  do_ru: str,
+  posle_ru: str,
+  tyani_ru: str,
+  prosvelo_ru: str,
+  progress_ru: str.regex(/\{n\}/, 'progress_ru — с {n}').regex(/\{vsego\}/, 'progress_ru — с {vsego}'),
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const kody = d.sceny.map((s) => s.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['sceny'], message: 'коды сцен повторяются' });
+  if (!(d.porog > d.shtorka_start)) ctx.addIssue({ code: 'custom', path: ['porog'], message: 'porog должен быть больше shtorka_start' });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -368,6 +399,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
   'uderzhi-plazmu': { slovami: 'Удерживаешь плазму в магнитной бутылке, не давая ей коснуться стенок', dvizhok: true, dannye: uderzhiPlazmu },
   'dokuda-signal': { slovami: 'Ползунком наращиваешь мощность передатчика и смотришь на карте, докуда доходит сигнал; без водяного охлаждения потолок — 6 кВт, с ним достаёшь до дальних городов Европы', dvizhok: true, dannye: dokudaSignal },
+  'do-i-posle': { slovami: 'Шторкой «до/после» смотришь мир глазами пациента до и после пересадки роговицы', dvizhok: true, dannye: doIPosle },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
