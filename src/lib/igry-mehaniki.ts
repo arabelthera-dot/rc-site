@@ -217,6 +217,63 @@ const nastroyVolnuPriyomnika = z.object({
   if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
 });
 
+// nakroy-kvadrat (02-23 «Катюша»): тянешь квадрат разрывов залпа по площади и накрываешь им цель; накрыл все цели — победа.
+// Сцена — вид сверху: поле, цель (пунктирный квадрат) и квадрат разрывов (сетка точек), подписи целей — вёрсткой,
+// на холсте текста нет (Р18). x, y цели — доли поля, storona — единицы поля; цель меньше квадрата залпа.
+const nakroyKvadrat = z.object({
+  pole: z.object({ shirina: z.number().int().min(200), vysota: z.number().int().min(100) }).strict().default({ shirina: 640, vysota: 480 }),
+  zalp: z.object({ storona: z.number().positive(), ryadov: z.number().int().min(2).max(6).default(4) }).strict(),
+  celi: z.array(z.object({ x: dolya, y: dolya, storona: z.number().positive(), podpis: str, verno_ru: str }).strict()).min(2).max(5),
+  schet_ru: str.regex(/\{n\}/, 'schet_ru — с {n}').regex(/\{vsego\}/, 'schet_ru — с {vsego}'),
+  pusk_ru: str, start_ru: str, zanovo_ru: str, ne_nakryto_ru: str,
+  holst_alt: str, podpis_holsta_ru: str, bez_skripta_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+}).strict().superRefine((d, ctx) => {
+  d.celi.forEach((c, i) => {
+    if (!(c.storona < d.zalp.storona)) ctx.addIssue({ code: 'custom', path: ['celi', i, 'storona'], message: 'цель меньше квадрата залпа' });
+    if (c.x * d.pole.shirina - c.storona / 2 < 0 || c.x * d.pole.shirina + c.storona / 2 > d.pole.shirina)
+      ctx.addIssue({ code: 'custom', path: ['celi', i, 'x'], message: 'цель целиком в поле' });
+    if (c.y * d.pole.vysota - c.storona / 2 < 0 || c.y * d.pole.vysota + c.storona / 2 > d.pole.vysota)
+      ctx.addIssue({ code: 'custom', path: ['celi', i, 'y'], message: 'цель целиком в поле' });
+  });
+});
+// kto-ranshe (02-17 «Изобретений», Пироцкий): две линии времени — Петербург и Берлин. Выбираешь, кто сделал первым,
+// и ставишь на год (ползунок). Верно и то и другое — раунд засчитан. Кто раньше и год раньше движок считает сам
+// по sobytiya (более раннее событие), в данных лишнего нет; на холсте — только линии и отметки, без надписей (Р18).
+const ktoRanshe = z.object({
+  linii: z.array(z.object({ kod, nazvanie: str, cvet: str }).strict()).length(2),
+  pary: z.array(z.object({
+    vopros_ru: str,
+    sobytiya: z.array(z.object({ linia: kod, nazvanie: str, god: z.number().int() }).strict()).length(2),
+    stavka: z.object({
+      podpis_ru: str,
+      god_ot: z.number().int(), god_do: z.number().int(),
+      start: z.number().int(), dopusk: z.number().int().min(0),
+      god_ru: str.regex(/\{g\}/, 'god_ru — с {g}'),
+    }).strict(),
+    kto_net_ru: str, god_net_ru: str, verno_ru: str,
+  }).strict()).min(1).max(4),
+  holst_alt: str,
+  vyberi_ru: str.default('Сначала выбери, кто сделал первым.'),
+  proverit_ru: str.default('Проверить'),
+  progress_ru: str.regex(/\{n\}/, 'progress_ru — с {n}').regex(/\{vsego\}/, 'progress_ru — с {vsego}'),
+  start_ru: str, zanovo_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const liniiKody = d.linii.map((l) => l.kod);
+  if (new Set(liniiKody).size !== liniiKody.length) ctx.addIssue({ code: 'custom', path: ['linii'], message: 'коды линий повторяются' });
+  const linii = new Set(liniiKody);
+  d.pary.forEach((p, i) => {
+    if (p.sobytiya[0].linia === p.sobytiya[1].linia) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya'], message: 'события должны быть на разных линиях' });
+    p.sobytiya.forEach((s, j) => { if (!linii.has(s.linia)) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya', j, 'linia'], message: `линии «${s.linia}» нет в linii` }); });
+    if (p.sobytiya[0].god === p.sobytiya[1].god) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya'], message: 'годы событий должны различаться — иначе нет «кто раньше»' });
+    if (p.stavka.god_do <= p.stavka.god_ot) ctx.addIssue({ code: 'custom', path: ['pary', i, 'stavka', 'god_do'], message: 'god_do должно быть больше god_ot' });
+    if (!(p.stavka.god_ot <= p.stavka.start && p.stavka.start <= p.stavka.god_do)) ctx.addIssue({ code: 'custom', path: ['pary', i, 'stavka', 'start'], message: 'start — между god_ot и god_do' });
+    p.sobytiya.forEach((s, j) => { if (s.god < p.stavka.god_ot || s.god > p.stavka.god_do) ctx.addIssue({ code: 'custom', path: ['pary', i, 'sobytiya', j, 'god'], message: `год ${s.god} вне шкалы ставки (${p.stavka.god_ot}–${p.stavka.god_do})` }); });
+  });
+});
+
 // tri-negativa (02-19 «Изобретений», цветная фотография Прокудина-Горского): камера снимает один вид трижды — через
 // красное, зелёное и синее стекло; три чёрно-белых кадра, каждый хранит свой цвет. При показе кадры совмещают, и цвета
 // складываются в цветной кадр. Здесь три цветных канала-негатива сдвинуты — посетитель тянет их на место (мышь/палец)
@@ -238,6 +295,86 @@ const triNegativa = z.object({
   pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
   bez_skripta_ru: str,
 }).strict();
+
+// uderzhi-plazmu (02-25 «Изобретений», первый в мире токамак Т-1): держишь раскалённую плазму в магнитной бутылке,
+// не давая ей коснуться стенок. Плазма сама стремится к стенкам и её толкают завихрения; магнитный держатель (мышь,
+// палец или стрелки) тянет её обратно к центру. Продержись cel_sekund секунд — победа. Сцена — круг бутылки, плазма
+// и держатель на холсте без надписей и эмодзи (Р18); все слова — вёрсткой из dannye. Размеры — доли, физика — на кадр.
+const uderzhiPlazmu = z.object({
+  cel_sekund: z.number().int().min(5).max(120).default(25),
+  butylka: z.number().min(0.3).max(0.95).default(0.8),        // радиус стенки бутылки — доля половины меньшей стороны холста
+  plazma: z.number().min(0.03).max(0.5).default(0.15),        // радиус плазмы — доля радиуса бутылки
+  derzhatel: z.number().min(0.08).max(0.9).default(0.3),      // радиус зоны захвата держателя — доля радиуса бутылки
+  sila: z.number().min(0.0005).max(0.2).default(0.01),        // ускорение, с которым держатель тянет плазму к центру (доли бутылки за кадр)
+  rastalkivanie: z.number().min(0).max(0.02).default(0.0008), // ускорение, с которым плазма сама стремится к стенкам (на кадр)
+  turbulentnost: z.number().min(0).max(0.05).default(0.004),  // сила случайных завихрений (доли бутылки за кадр)
+  schet_ru: str.regex(/\{s\}/, 'schet_ru — с {s}'),
+  derzhatel_ru: str,
+  kosnulos_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict();
+
+// dokuda-signal (02-24 «Бонч-Бруевич»): ползунком наращиваешь мощность передатчика и смотришь на карте, докуда
+// доходит сигнал из Москвы. Без водяного охлаждения анода потолок — 6 кВт (граф Арко: мощнее ламп не бывает); с
+// охлаждением — до 12 кВт, и круги сигнала достают до дальних городов Европы. Города, предел, все тексты — из dannye;
+// на холсте только карта, мачта, круги и точки городов, без надписей (Р18). Достал ли круг город — движок считает сам,
+// по расстоянию точки от мачты (дальний город достижим только на полной мощности, а дальше предела — только с охлаждением).
+const dokudaSignal = z.object({
+  goroda: z.array(z.object({
+    kod,
+    nazvanie_ru: str,
+    x: dolya,
+    y: dolya,
+  }).strict()).min(3).max(8),
+  moshnost_max: z.number().positive().max(1000).default(12),
+  moshnost_start: z.number().min(0).default(0),
+  predel_bez_ohlazhdeniya: z.number().positive().max(1000).default(6),
+  polzunok_ru: str,
+  moshnost_ru: str.regex(/\{n\}/, 'moshnost_ru — с {n}'),
+  ohlazhdenie_ru: str,
+  ohlazhdenie_on_ru: str,
+  peregrel_ru: str,
+  dostig_ru: str.regex(/\{gorod\}/, 'dostig_ru — с {gorod}'),
+  podpis_holsta_ru: str,
+  holst_alt: str,
+  start_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const kody = d.goroda.map((g) => g.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['goroda'], message: 'коды городов повторяются' });
+  if (d.predel_bez_ohlazhdeniya >= d.moshnost_max) ctx.addIssue({ code: 'custom', path: ['predel_bez_ohlazhdeniya'], message: 'предел без охлаждения должен быть меньше максимума' });
+  if (d.moshnost_start > d.moshnost_max) ctx.addIssue({ code: 'custom', path: ['moshnost_start'], message: 'стартовая мощность больше максимума' });
+});
+
+// poezd-po-ferme (02-28 «Журавский»): ведёшь поезд по ферме моста и видишь, какие раскосы тянутся, а какие сжимаются.
+// Сцена — боковой вид фермы: два пояса и зигзаг раскосов, по нижнему поясу ходит поезд (ползунок/стрелки). Подъехал к
+// очередному раскосу — движок показывает, что с ним происходит (тянется — зелёный, давит — золотой), и посетитель жмёт
+// «Тянет»/«Давит»; верно — раскос защёлкивается и открывается пояснение, все пройдены — победа. На холсте текста нет (Р18).
+const poezdPoFerme = z.object({
+  raskosy: z.array(z.object({
+    kod,
+    tyanet: z.boolean(),
+    poyasnenie_ru: str,
+  }).strict()).min(3).max(9),
+  polzunok_ru: str,
+  privedi_ru: str.regex(/\{n\}/, 'privedi_ru — с {n}').regex(/\{vsego\}/, 'privedi_ru — с {vsego}'),
+  vopros_ru: str,
+  knopka_tyanet_ru: str,
+  knopka_davit_ru: str,
+  verno_ru: str,
+  mimo_ru: str,
+  status_ru: str.regex(/\{n\}/, 'status_ru — с {n}').regex(/\{vsego\}/, 'status_ru — с {vsego}'),
+  holst_alt: str,
+  podpis_holsta_ru: str,
+  start_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const kody = d.raskosy.map((r) => r.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['raskosy'], message: 'коды раскосов повторяются' });
+});
 
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
@@ -274,8 +411,13 @@ export const MEHANIKI: Record<string, Mehanika> = {
   // Февраль — новые механики, общие для нескольких дней.
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
+  'nakroy-kvadrat': { slovami: 'Тянешь квадрат разрывов залпа по площади и накрываешь им цель; все цели накрыты — победа', dvizhok: true, dannye: nakroyKvadrat },
+  'kto-ranshe': { slovami: 'Две линии времени — Петербург и Берлин: выбираешь, кто сделал первым, и ставишь на год', dvizhok: true, dannye: ktoRanshe },
   'soberi-sloi': { slovami: 'Расставляешь слои в правильном порядке сверху вниз; верный слой загорается, все слои на месте — победа', dvizhok: true, dannye: soberiSloi },
   'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
+  'uderzhi-plazmu': { slovami: 'Удерживаешь плазму в магнитной бутылке, не давая ей коснуться стенок', dvizhok: true, dannye: uderzhiPlazmu },
+  'dokuda-signal': { slovami: 'Ползунком наращиваешь мощность передатчика и смотришь на карте, докуда доходит сигнал; без водяного охлаждения потолок — 6 кВт, с ним достаёшь до дальних городов Европы', dvizhok: true, dannye: dokudaSignal },
+  'poezd-po-ferme': { slovami: 'Ведёшь поезд по ферме моста и видишь, какие раскосы тянутся, а какие сжимаются', dvizhok: true, dannye: poezdPoFerme },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
