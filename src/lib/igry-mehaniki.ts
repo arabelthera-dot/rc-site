@@ -328,6 +328,34 @@ const dokudaSignal = z.object({
   if (d.moshnost_start > d.moshnost_max) ctx.addIssue({ code: 'custom', path: ['moshnost_start'], message: 'стартовая мощность больше максимума' });
 });
 
+// poezd-po-ferme (02-28 «Журавский»): ведёшь поезд по ферме моста и видишь, какие раскосы тянутся, а какие сжимаются.
+// Сцена — боковой вид фермы: два пояса и зигзаг раскосов, по нижнему поясу ходит поезд (ползунок/стрелки). Подъехал к
+// очередному раскосу — движок показывает, что с ним происходит (тянется — зелёный, давит — золотой), и посетитель жмёт
+// «Тянет»/«Давит»; верно — раскос защёлкивается и открывается пояснение, все пройдены — победа. На холсте текста нет (Р18).
+const poezdPoFerme = z.object({
+  raskosy: z.array(z.object({
+    kod,
+    tyanet: z.boolean(),
+    poyasnenie_ru: str,
+  }).strict()).min(3).max(9),
+  polzunok_ru: str,
+  privedi_ru: str.regex(/\{n\}/, 'privedi_ru — с {n}').regex(/\{vsego\}/, 'privedi_ru — с {vsego}'),
+  vopros_ru: str,
+  knopka_tyanet_ru: str,
+  knopka_davit_ru: str,
+  verno_ru: str,
+  mimo_ru: str,
+  status_ru: str.regex(/\{n\}/, 'status_ru — с {n}').regex(/\{vsego\}/, 'status_ru — с {vsego}'),
+  holst_alt: str,
+  podpis_holsta_ru: str,
+  start_ru: str,
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const kody = d.raskosy.map((r) => r.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['raskosy'], message: 'коды раскосов повторяются' });
+});
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -368,6 +396,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
   'uderzhi-plazmu': { slovami: 'Удерживаешь плазму в магнитной бутылке, не давая ей коснуться стенок', dvizhok: true, dannye: uderzhiPlazmu },
   'dokuda-signal': { slovami: 'Ползунком наращиваешь мощность передатчика и смотришь на карте, докуда доходит сигнал; без водяного охлаждения потолок — 6 кВт, с ним достаёшь до дальних городов Европы', dvizhok: true, dannye: dokudaSignal },
+  'poezd-po-ferme': { slovami: 'Ведёшь поезд по ферме моста и видишь, какие раскосы тянутся, а какие сжимаются', dvizhok: true, dannye: poezdPoFerme },
 };
 
 // Поле igra карточки дня (п. 76, 89): механика из списка, рамка — общие строки, dannye — по схеме механики.
