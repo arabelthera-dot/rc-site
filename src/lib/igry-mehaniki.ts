@@ -182,6 +182,26 @@ const ostanoviVspyshku = z.object({
   if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['razvilki', i, 'varianty'], message: `коды вариантов в «${r.kod}» повторяются` });
 }));
 
+// «Собери слои» (февраль — 02-06 «Зелинский, угольный противогаз», 02-18 «Докучаев, почвоведение»):
+// слои в sloi уже идут сверху вниз, в правильном порядке — индекс слоя и есть его место; посетитель выбирает слой
+// и ставит его на место, верный загорается своим цветом, все на месте — победа. Сцена — столбик полос-слоёв, без надписей (Р18).
+const soberiSloi = z.object({
+  sloi: z.array(z.object({
+    kod,
+    nazvanie_ru: str,
+    poyasnenie_ru: str,
+    cvet: str,
+  }).strict()).min(2).max(6),
+  vyberi_ru: str.default('Сначала выбери слой, потом место.'),
+  mimo_ru: str.default('Не сюда — попробуй другое место.'),
+  ostalos_ru: str.regex(/\{n\}/, 'ostalos_ru — с {n}').default('Осталось поставить: {n}'),
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const kody = d.sloi.map((s) => s.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['sloi'], message: 'коды слоёв повторяются' });
+});
+
 // nastroy-volnu-priyomnika (01-04): совпасть с волной приёмника komand раз; |ползунок − цель| < dopusk (шкала 1–100).
 const nastroyVolnuPriyomnika = z.object({
   komand: z.number().int().min(1).max(10).default(3),
@@ -393,6 +413,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
   'nakroy-kvadrat': { slovami: 'Тянешь квадрат разрывов залпа по площади и накрываешь им цель; все цели накрыты — победа', dvizhok: true, dannye: nakroyKvadrat },
   'kto-ranshe': { slovami: 'Две линии времени — Петербург и Берлин: выбираешь, кто сделал первым, и ставишь на год', dvizhok: true, dannye: ktoRanshe },
+  'soberi-sloi': { slovami: 'Расставляешь слои в правильном порядке сверху вниз; верный слой загорается, все слои на месте — победа', dvizhok: true, dannye: soberiSloi },
   'tri-negativa': { slovami: 'Совмещаешь красный, зелёный и синий кадры-негативы, пока не соберётся цветная фотография', dvizhok: true, dannye: triNegativa },
   'uderzhi-plazmu': { slovami: 'Удерживаешь плазму в магнитной бутылке, не давая ей коснуться стенок', dvizhok: true, dannye: uderzhiPlazmu },
   'dokuda-signal': { slovami: 'Ползунком наращиваешь мощность передатчика и смотришь на карте, докуда доходит сигнал; без водяного охлаждения потолок — 6 кВт, с ним достаёшь до дальних городов Европы', dvizhok: true, dannye: dokudaSignal },
