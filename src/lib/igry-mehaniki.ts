@@ -217,6 +217,27 @@ const nastroyVolnuPriyomnika = z.object({
   if (d.cel_do <= d.cel_ot) ctx.addIssue({ code: 'custom', path: ['cel_do'], message: 'cel_do должно быть больше cel_ot' });
 });
 
+// «Собери станцию» (02-20 «Мир»): пристыковываешь модули станции один за другим в правильном порядке.
+// Модули в dannye стоят в порядке стыковки; движок рисует каркас станции (холст без надписей, Р18) и перемешанные
+// кнопки модулей — тапаешь по очереди, верный причаливает к каркасу, неверный подсказывает. Всё из dannye.
+const soberiStanciyu = z.object({
+  scena: z.object({ alt: str, podpis_ru: str.optional() }).strict(),
+  moduli: z.array(z.object({
+    kod,
+    nazvanie: str,
+    podpis: str,
+  }).strict()).min(2).max(10),
+  vyberi_ru: str,
+  mimo_ru: str,
+  pristykovan_ru: str.regex(/\{modul\}/, 'pristykovan_ru — с {modul}').regex(/\{podpis\}/, 'pristykovan_ru — с {podpis}'),
+  ostalos_ru: str.regex(/\{n\}/, 'ostalos_ru — с {n}').default('Осталось пристыковать: {n}'),
+  pobeda: z.object({ soobshchenie_ru: str, ochki: z.number().int().min(0).default(20) }).strict(),
+  bez_skripta_ru: str,
+}).strict().superRefine((d, ctx) => {
+  const kody = d.moduli.map((m) => m.kod);
+  if (new Set(kody).size !== kody.length) ctx.addIssue({ code: 'custom', path: ['moduli'], message: 'коды модулей повторяются' });
+});
+
 // nakroy-kvadrat (02-23 «Катюша»): тянешь квадрат разрывов залпа по площади и накрываешь им цель; накрыл все цели — победа.
 // Сцена — вид сверху: поле, цель (пунктирный квадрат) и квадрат разрывов (сетка точек), подписи целей — вёрсткой,
 // на холсте текста нет (Р18). x, y цели — доли поля, storona — единицы поля; цель меньше квадрата залпа.
@@ -464,6 +485,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
   'spirt-v-rezinu': { slovami: 'Проходишь по шагам цепочку синтеза каучука из спирта', dvizhok: true, dannye: spirtVRezinu },
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
+  'soberi-stanciyu': { slovami: 'Пристыковываешь модули станции один за другим в правильном порядке, и станция растёт на глазах', dvizhok: true, dannye: soberiStanciyu },
   'nakroy-kvadrat': { slovami: 'Тянешь квадрат разрывов залпа по площади и накрываешь им цель; все цели накрыты — победа', dvizhok: true, dannye: nakroyKvadrat },
   'kto-ranshe': { slovami: 'Две линии времени — Петербург и Берлин: выбираешь, кто сделал первым, и ставишь на год', dvizhok: true, dannye: ktoRanshe },
   'soberi-sloi': { slovami: 'Расставляешь слои в правильном порядке сверху вниз; верный слой загорается, все слои на месте — победа', dvizhok: true, dannye: soberiSloi },
