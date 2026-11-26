@@ -328,6 +328,27 @@ const dokudaSignal = z.object({
   if (d.moshnost_start > d.moshnost_max) ctx.addIssue({ code: 'custom', path: ['moshnost_start'], message: 'стартовая мощность больше максимума' });
 });
 
+// spirt-v-rezinu (02-26 «Изобретений», Лебедев): посетитель по шагам проходит цепочку синтеза каучука из спирта —
+// спирт → дивинил → каучук → резина; на каждом шаге жмёт кнопку превращения, вещество на холсте течёт из колбы в колбу
+// и меняет цвет. Сцена — рисунок холста без надписей (Р18): все слова — вёрсткой из dannye.
+const spirtShag = z.object({
+  zadanie_ru: str, poyasnenie_ru: str,
+  do_ru: str, cvet_ot: str, posle_ru: str, cvet_vo: str,
+  knopka_ru: str, hod_ru: str, soobshchenie_ru: str,
+}).strict();
+const spirtVRezinu = z.object({
+  shagi: z.array(spirtShag).min(2).max(6),
+  scena: z.object({ alt: str, mesto_ru: str.optional() }).strict(),
+  status_ru: str.default('Сейчас в цепочке'),
+  final: z.object({
+    zadanie_ru: str, poyasnenie_ru: str, glavnoe_ru: str,
+    sravnenie: z.array(z.object({ chislo: str, tekst: str }).strict()).max(3).default([]),
+    lenta: z.array(z.object({ god: str, tekst: str }).strict()).max(8).default([]),
+    ochki: z.number().int().min(0).default(15),
+  }).strict(),
+  bez_skripta_ru: str,
+}).strict();
+
 export const MEHANIKI: Record<string, Mehanika> = {
   'lovi-signal-v-okno': { den: '01-01', igra: 'signal-po-kabelyu', slovami: 'Ловишь падающий с антенны сигнал и пальцем или стрелками ведёшь его к мигающему окну с поправкой на ветер, затем собираешь тракт по порядку' },
   'ugol-v-koridor-luny': { den: '01-02', igra: 'luna1-trayektoriya', slovami: 'Ползунком задаёшь угол запуска и пускаешь ракету, чтобы она прошла в коридоре возле Луны', dvizhok: true, dannye: ugolVKoridorLuny },
@@ -362,6 +383,7 @@ export const MEHANIKI: Record<string, Mehanika> = {
   'rezonans-i-gody': { den: '01-31', igra: 'razgoni-girotron', slovami: 'Кнопками «Поле ±» ловишь резонанс, угадываешь срок и год за годом доводишь гиротрон от 6 ватт до мегаватта' },  // ── новые механики (февраль и дальше) — ниже, по строке на игру ──
   // Февраль — новые механики, общие для нескольких дней.
   'kazhdomu-svoyo-mesto': { slovami: 'Выбираешь подпись и ставишь её на своё место схемы или к своей цели; верная загорается, неверная говорит почему, все на месте — победа', dvizhok: true, dannye: kazhdomuSvoyoMesto },
+  'spirt-v-rezinu': { slovami: 'Проходишь по шагам цепочку синтеза каучука из спирта', dvizhok: true, dannye: spirtVRezinu },
   'ostanovi-vspyshku': { slovami: 'Развилкой выбираешь, кого привить первым, чтобы остановить вспышку бешенства', dvizhok: true, dannye: ostanoviVspyshku },
   'nakroy-kvadrat': { slovami: 'Тянешь квадрат разрывов залпа по площади и накрываешь им цель; все цели накрыты — победа', dvizhok: true, dannye: nakroyKvadrat },
   'kto-ranshe': { slovami: 'Две линии времени — Петербург и Берлин: выбираешь, кто сделал первым, и ставишь на год', dvizhok: true, dannye: ktoRanshe },
