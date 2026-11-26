@@ -104,5 +104,17 @@ proba('164: тексты nakroy-kvadrat в перевод, доли и числ�
   return k.some((x) => x.endsWith('dannye.celi.0.podpis')) && k.some((x) => x.endsWith('dannye.pobeda.soobshchenie_ru'))
     && !k.some((x) => /\.(x|y|storona|shirina|vysota|ryadov|ochki)$/.test(x));
 })());
+// spirt-v-rezinu (02-26): цепочка синтеза по шагам; 2–6 шагов, сравнений не больше 3; цвета hex — в перевод не идут.
+const spirt = JSON.parse(fs.readFileSync(new URL('./igry-obrazcy/spirt-v-rezinu.json', import.meta.url), 'utf8'));
+const pravkaSp = (fn) => { const o = structuredClone(spirt); fn(o.dannye); return igraDannymi.safeParse(o).success; };
+proba('76: данные к механике spirt-v-rezinu приняты', igraDannymi.safeParse(spirt).success);
+proba('76: spirt-v-rezinu — один шаг — отказ', !pravkaSp((d) => { d.shagi = d.shagi.slice(0, 1); }));
+proba('76: spirt-v-rezinu — семь шагов — отказ', !pravkaSp((d) => { d.shagi = [1, 2, 3, 4, 5, 6, 7].map(() => structuredClone(d.shagi[0])); }));
+proba('76: spirt-v-rezinu — больше трёх сравнений — отказ', !pravkaSp((d) => { d.final.sravnenie = [1, 2, 3, 4].map(() => structuredClone(d.final.sravnenie[0])); }));
+proba('164: тексты spirt-v-rezinu в перевод, цвета и баллы — нет', (() => {
+  const k = Object.keys(vynutStroki(spirt, 'izobreteniya', '02-26'));
+  return k.some((x) => x.endsWith('dannye.shagi.0.zadanie_ru')) && k.some((x) => x.endsWith('dannye.final.glavnoe_ru'))
+    && !k.some((x) => /\.(cvet_ot|cvet_vo|ochki)$/.test(x));
+})());
 console.log(`${verno} из ${vsego} верно`);
 process.exit(verno === vsego ? 0 : 1);
