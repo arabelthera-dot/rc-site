@@ -1,0 +1,33 @@
+{
+  "_": "Тексты игры izobreteniya 02-28 для перевода (п. 164). Ключи — src/data/igry/stroki-igr.mjs. Языки, кроме ru, пишет только машина перевода (Р603).",
+  "ru": {
+    "izobreteniya.02-28.igra.kicker": "Играй",
+    "izobreteniya.02-28.igra.zagolovok": "🚂 Проведи поезд по ферме",
+    "izobreteniya.02-28.igra.pravilo_ru": "Веди поезд по ферме Веребьинского моста — и у каждого раскоса отвечай, что он делает: тянет или давит.",
+    "izobreteniya.02-28.igra.kak_igrat.zachem": "Ты — Журавский в 1851 году. Он первым в мире сосчитал, какой брус мостовой фермы тянет, а какой давит, и поставил ферму сразу на девять пролётов. Проверь себя на каждом раскосе.",
+    "izobreteniya.02-28.igra.kak_igrat.shagi.0": "Веди поезд по ферме ползунком и останови его у очередного раскоса.",
+    "izobreteniya.02-28.igra.kak_igrat.shagi.1": "Смотри, что делает раскос: тянется — концы расходятся, давит — выгибается вбок.",
+    "izobreteniya.02-28.igra.kak_igrat.shagi.2": "Жми «Тянет» или «Давит». Верно — раскос закрепится цветом, и откроется пояснение.",
+    "izobreteniya.02-28.igra.kak_igrat.nyuans": "Нюансы: пока поезд не подъехал к раскосу, кнопки не работают. Смотри на движение, а не на цвет — до ответа все раскосы белые. Тянет — концы разъезжаются, давит — раскос выгибается вбок.",
+    "izobreteniya.02-28.igra.kak_igrat.final": "Все раскосы разгаданы: какие брусья тянут, а какие давят — сосчитано, +20 баллов.",
+    "izobreteniya.02-28.igra.dannye.raskosy.0.poyasnenie_ru": "Тянет — концы расходятся, брус работает как натянутый канат.",
+    "izobreteniya.02-28.igra.dannye.raskosy.1.poyasnenie_ru": "Давит — брус сжимается и норовит выгнуться вбок.",
+    "izobreteniya.02-28.igra.dannye.raskosy.2.poyasnenie_ru": "Растяжение: сила растаскивает концы бруса врозь.",
+    "izobreteniya.02-28.igra.dannye.raskosy.3.poyasnenie_ru": "Сжатие: сила давит с обоих концов, брус выгибается.",
+    "izobreteniya.02-28.igra.dannye.raskosy.4.poyasnenie_ru": "Тянет: брус натягивается вдоль себя.",
+    "izobreteniya.02-28.igra.dannye.raskosy.5.poyasnenie_ru": "Давит: сила сжимает брус, ему тесно.",
+    "izobreteniya.02-28.igra.dannye.polzunok_ru": "ползунок: веди поезд по ферме",
+    "izobreteniya.02-28.igra.dannye.privedi_ru": "Веди поезд к раскосу {n} из {vsego}.",
+    "izobreteniya.02-28.igra.dannye.vopros_ru": "Что делает этот раскос: тянет или давит?",
+    "izobreteniya.02-28.igra.dannye.knopka_tyanet_ru": "Тянет",
+    "izobreteniya.02-28.igra.dannye.knopka_davit_ru": "Давит",
+    "izobreteniya.02-28.igra.dannye.verno_ru": "Верно:",
+    "izobreteniya.02-28.igra.dannye.mimo_ru": "Не угадал: присмотрись к движению раскоса ещё раз.",
+    "izobreteniya.02-28.igra.dannye.status_ru": "Разгадано: {n} из {vsego}",
+    "izobreteniya.02-28.igra.dannye.holst_alt": "Ферма моста из двух поясов и раскосов, по нижнему поясу идёт поезд.",
+    "izobreteniya.02-28.igra.dannye.podpis_holsta_ru": "Ферма — два пояса и раскосы между ними. Тянет — концы расходятся, давит — раскос выгибается вбок.",
+    "izobreteniya.02-28.igra.dannye.start_ru": "Веди поезд по ферме ползунком.",
+    "izobreteniya.02-28.igra.dannye.pobeda.soobshchenie_ru": "Ферма Журавского посчитана: ты, как и он, знаешь, какой брус тянет, а какой давит.",
+    "izobreteniya.02-28.igra.dannye.bez_skripta_ru": "Игра работает с включённым JavaScript: ведёшь поезд по ферме моста и определяешь, какой раскос тянется, а какой сжимается."
+  }
+}
