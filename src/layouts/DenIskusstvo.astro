@@ -1,0 +1,266 @@
+---
+// Страница дня Музея искусств из карточки данных (Р863): src/content/dni-shablon/iskusstvo/ММ-ДД.yaml
+// (схема — src/lib/dni-iskusstvo.mjs, общий слой — src/lib/den-obshchee.mjs). Куски разметки — общие с изобретениями
+// (src/lib/den-razmetka.mjs). Структура блоков — как у «Русских не сдаются» (DenNeSdayutsya.astro); заголовок вкладки —
+// датированный, как у изобретений (DenIzobreteniya.astro): музей датирован (calendar-meta-iskusstvo.json dated:true),
+// «к каждому дню года — событие русской живописи». Игра — «найди деталь» (2D, по имени), 3D и «первенства» нет.
+// Вид — только общие файлы: fonts.css, izobreteniya-den.css, fakty-dnya.css; своих <style> нет.
+// Порядок: обложка → hero-lead → stamp → daynav → story → факты (10 + 5) → ролик → аудиогид → игра (если есть) →
+// кадры → викторина → итог → источники → календарь → куда дальше → подвал. Дальше страницу ведёт конвейер src/integrations/full-pages.mjs.
+import fs from 'node:fs';
+import { nePerevodit } from '../lib/perevod.mjs';
+import { audiogidDnya } from '../lib/den-obshchee.mjs';
+import { q, json, chromeJs, scoreJs, itogDnya, ballyZaIgru, schetNol, quizJs, knopkiJs, udaryHtml, faktyHtml, kudaHtml, opisanieId, opisanieHtml, podpisHtml } from '../lib/den-razmetka.mjs';
+import { vspomniOn, vspomniHtml, vspomniCss, vspomniJs, vspomniDannye } from '../lib/istoriya.mjs';
+// «Вспомни» (п.503, Р745): блок над викториной и скрипт — только при флаге, выключено.
+import { titleVkladki } from '../lib/title-vkladki.mjs';
+import { bezOchkov } from '../lib/vozrast.mjs';
+import { podlinnikChitatHtml } from '../lib/podlinnik-chitat.mjs';
+import { rolikRyadom } from '../lib/rolik-ryadom.mjs';
+const { d, museum } = Astro.props;
+const vspomni = vspomniOn();
+const rolik = rolikRyadom(d.video);
+const muzeyName = museum.title_ru;
+const DEVIZ = museum.slogan_ru || museum.promise_ru;
+// Музей датирован: заголовок вкладки и og:title — «2 января 1834: <событие>» (как у изобретений, Р286 п.4).
+// День и месяц — дата события, а не день музея (Р831): у дня с data_uslovnaya — data_sobytiya, если другая и того же года.
+const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const dm = (k: string) => `${parseInt(k.slice(3))} ${MES[parseInt(k.slice(0, 2)) - 1]} `;
+const ds = d.data_sobytiya, usl = !!d.data_uslovnaya && d.data_uslovnaya !== 'net';
+const den = !usl ? dm(d.key) : ds && ds.slice(5) !== d.key && ds.startsWith(`${d.head.god}-`) ? dm(ds.slice(5)) : '';
+const sobytie = d.head.sobytie?.replace(new RegExp(`(?:,\\s*| \\()${d.head.god}(?:–\\d{4})?\\)?$`), '');
+const kogda = sobytie && `${den}${d.head.god}: ${sobytie}`;
+// заголовок вкладки ≤60 (Р560): режется служебный хвост, не название дня
+const title = kogda ? titleVkladki(kogda, muzeyName) : d.head.title;
+const ogTitle = kogda || d.head.og.title;
+// Игра «найди деталь» (2D, по имени): самодостаточный <section id="games"> из src/data/igry/iskusstvo/<imya>.html,
+// скрипт public/muzei/iskusstvo/igry/<imya>.js. Нет imya — нет блока (игра ещё не собрана).
+const g = d.igra?.imya ? { ...d.igra, html: fs.readFileSync(`src/data/igry/${d.muzei}/${d.igra.imya}.html`, 'utf8').replace(/\n$/, '') } : null;
+// «Итог дня»: игра на странице баллов пока не даёт (2D-игра без mehanika) — текст без игры (Р831).
+const itog = itogDnya(d.result, ballyZaIgru(d));
+const bez = bezOchkov(d.muzei, d.key);
+const faktyBloki = [d.fakty ?? []].flat();
+const kal = d.kalendar ?? { h2: 'Календарь галереи', intro: 'К каждому дню года — событие русской живописи. Выбери любой день. Листай месяцы стрелками.' };
+// п.41: шифры и номера из поля ne_perevodit — в translate="no" (рассказ и факты; уникальные разделы razdely — 1:1, не трогаются).
+const faktyHtmlD = (b) => nePerevodit(faktyHtml(b), d.ne_perevodit);
+const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtmlD), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
+const o = d.oblozhka;
+const chrome = chromeJs(d, muzeyName);
+// Зум картины (single-image OpenSeadragon + золотые точки): данные из d.zum, логика — ниже, разметка — в теле.
+const ZUM_JS = `(function(){var Z=window.RC_ZOOM;if(!Z)return;var AR=Z.h/Z.w;var v=OpenSeadragon({id:"viewer",prefixUrl:Z.prefix,tileSources:{type:"image",url:Z.src},showNavigationControl:true,navigationControlAnchor:OpenSeadragon.ControlAnchor.BOTTOM_RIGHT,gestureSettingsTouch:{pinchToZoom:true,flickEnabled:true},maxZoomPixelRatio:2.2,visibilityRatio:1,minZoomLevel:.8,animationTime:1.1,springStiffness:7});function show(s){var c=document.getElementById('zcard');document.getElementById('zct').textContent='✦ '+s.t;document.getElementById('zcx').textContent=s.d;c.style.display='block';var h=document.getElementById('zhint');if(h)h.style.opacity='0';v.viewport.panTo(new OpenSeadragon.Point(s.x,s.y*AR),false);if(v.viewport.getZoom()<2.2)v.viewport.zoomTo(2.6);}v.addHandler('open',function(){Z.sparks.forEach(function(s,i){var el=document.createElement('div');el.className='spark';el.textContent=i+1;new OpenSeadragon.MouseTracker({element:el,clickHandler:function(){show(s);}}).setTracking(true);v.addOverlay({element:el,location:new OpenSeadragon.Point(s.x,s.y*AR)});});});var x=document.querySelector('#zcard .x');if(x)x.addEventListener('click',function(){document.getElementById('zcard').style.display='none';});v.addHandler('canvas-press',function(){document.getElementById('zcard').style.display='none';});setTimeout(function(){var h=document.getElementById('zhint');if(h)h.style.opacity='0';},6000);})();`;
+---
+<!DOCTYPE html>
+<html lang="ru" data-museum={d.muzei} data-shablon="den-iskusstvo" data-lupa-vse>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<link rel="stylesheet" href="../../assets/rc-dizayn.css">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/izobreteniya-den.css">
+
+<meta name="description" content={d.head.description}>
+<link rel="canonical" href={d.head.canonical}>
+<meta property="og:type" content={d.head.og.type}>
+<meta property="og:site_name" content={d.head.og.site_name}>
+<meta property="og:title" content={ogTitle}>
+<meta property="og:description" content={d.head.og.description}>
+<meta property="og:url" content={d.head.og.url}>{d.head.og.image && <meta property="og:image" content={d.head.og.image}>}
+<script type="application/ld+json" is:inline set:html={json(d.head.ld)}></script>
+<link rel="stylesheet" href="../../assets/fakty-dnya.css">
+{d.zum && <link rel="stylesheet" href="../../assets/iskusstvo-zoom.css">}
+</head>
+<body>
+
+<header class="top">
+  <div class="b1">Русская цивилизация</div>
+  <div class="b2">Первый цифровой музей достижений России · Цивилизация первенств — что Россия дала миру раньше всех</div>
+  <div class="b3">{muzeyName}</div>
+  <div class="b4">{DEVIZ}</div>
+  <div class="score" id="scoreBox" title="Баллы знаний за этот день">⭐ <span id="score">0</span> / 100</div>
+</header>
+
+<nav class="crumbs" aria-label="Хлебные крошки"><div class="wrap">
+  <a href="../../index.html">Русская цивилизация</a>
+  <span class="sep">›</span>
+  <a href="index.html">{muzeyName}</a>
+  <span class="sep">›</span>
+  <span class="here">{d.kroshka}</span>
+</div></nav>
+
+{o && (<figure class="hero-fig" id="hero">
+<div class={['hero-scene', o.klass, 'fit-full'].filter(Boolean).join(' ')} data-oblozhka={o.celikom ? 'celikom' : undefined}>
+  <img class="scene" src={o.src} width={o.width} height={o.height} alt={o.alt} fetchpriority="high" decoding="async" data-source={o.data_source} data-license={o.license} aria-describedby={o.opisanie_dlinnoe ? opisanieId(o.src) : undefined}>
+</div>
+<figcaption class="scene-caption">
+  <div class="wrap">
+    <div class="scene-cap"><Fragment set:html={podpisHtml(o)} /></div>
+    <span class="scene-hint">{o.hint}</span>
+  </div>
+</figcaption>{o.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(o)} />}
+</figure>)}
+
+<header class="hero-lead">
+  <div class="wrap">
+    <div class="date-chip">{d.lead.data}</div>
+    <p class="date-origin"><Fragment set:html={d.lead.privyazka} /></p>
+    <div class="who"><Fragment set:html={d.lead.kto} /></div>
+    <div class="museum">{muzeyName}</div>
+    <h1><Fragment set:html={d.lead.h1} /></h1>
+    <p class="hook"><Fragment set:html={d.lead.hook} /></p>
+    <div class="hero-btns">
+      <button class="btn gold" id="readBtn" type="button">Читать историю ↓</button>
+      {d.audioguide && <button class="btn ghost" id="listenBtn" type="button">🎧 Слушать аудиогид</button>}
+    </div>
+  </div>
+</header>
+
+{d.zum && (<section class="block" id="zoom">
+  <div class="wrap">
+    {d.zum.kicker && <div class="kicker">{d.zum.kicker}</div>}
+    <h2>{d.zum.h2}</h2>
+    {d.zum.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.zum.intro} /></p>}
+  </div>
+</section>)}
+{d.zum && (<div id="zoomwrap" aria-label="Глубокий зум картины">
+  <div id="viewer"></div>
+  <div id="zhint">Щипок — приблизить · золотые точки — подсказки</div>
+  <div id="zcard"><span class="x">✕</span><h3 id="zct"></h3><p id="zcx"></p></div>
+</div>)}
+
+<div class="hero-under">
+  <div class="wrap">
+    <div class="stamp">
+      {d.stamp.map((s) => <div><div class="v">{s.v}</div><div class="k">{s.k}</div></div>)}
+    </div>
+  </div>
+</div>
+
+<nav class="daynav" aria-label="Разделы дня">
+  <div class="wrap">
+    {d.daynav.map((n) => <a href={`#${n.id}`}>{n.label}</a>)}
+  </div>
+</nav><Fragment set:html={posle('daynav')} />
+
+<section class="block" id="story">
+  <div class="wrap">
+    <div class="kicker">{d.story.kicker}</div>
+    <h2>{d.story.h2}</h2>
+    {d.story.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.story.intro} /></p>}
+    {d.story.udary && <Fragment set:html={nePerevodit(udaryHtml(d.story.udary), d.ne_perevodit)} />}
+    {d.story.abzacy && <Fragment set:html={d.story.abzacy.map((a) => (/^\s*</.test(a) ? a : `<p>${a}</p>`)).join('\n    ')} />}
+  </div>
+</section><Fragment set:html={posle('story')} />
+
+<Fragment set:html={faktyBloki.filter((b) => !b.posle).map(faktyHtmlD).join('\n')} /><Fragment set:html={posle('fakty')} />
+
+{d.video && (<section class="block" id="video">
+  <div class="wrap">
+    <div class="kicker">Видео дня</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">{rolik.h2}</h2><span style="background:var(--gold-g);color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 14px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif" data-rc-video-field={d.video.pole} data-rc-video-suffix={d.video.suffix}>{rolik.badge}</span></div>
+    <p style="color:var(--muted);margin-top:0"><Fragment set:html={d.lead.hook} /></p>
+    <video controls playsinline preload="none" poster={rolik.poster} data-rc-video={d.video.klyuch} data-rc-format={d.video.format} style="width:100%;aspect-ratio:16/9;background:#050c18;border-radius:14px;display:block;box-shadow:0 8px 40px rgba(0,0,0,.5)">
+      <source src={rolik.mp4} type="video/mp4">
+      {rolik.subtitry && <track kind="subtitles" src={rolik.subtitry} srclang="ru" label="Русский">}
+      Ваш браузер не поддерживает видео.
+    </video>
+    <p style="font-size:13px;color:var(--muted);margin-top:10px"><Fragment set:html={d.video.note} /></p>
+    {rolik.tekst && (<details class="deepd" style="margin-top:14px"><summary>Текст ролика</summary>{rolik.tekst.map((x) => <p>{x}</p>)}</details>)}
+  </div>
+</section>)}<Fragment set:html={posle('video')} />
+
+{d.audioguide && <section class="block" id="audioguide"></section>}<Fragment set:html={posle('audioguide')} />
+
+{g && (<section class="block" id="games" data-igra={g.imya}>
+  <div class="wrap">
+    {g.kicker && <div class="kicker">{g.kicker}</div>}
+    {g.h2 && <h2>{g.h2}</h2>}
+    {g.lead && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={g.lead} /></p>}
+    <Fragment set:html={g.html} />
+  </div>
+</section>)}<Fragment set:html={posle('igra')} />
+
+{d.figures.length > 0 && (<section class="block" id="kadry"><div class="wrap">{d.figures.map((f) => <figure class={f.klass ? `fig ${f.klass}` : 'fig'}><img src={f.src} width={f.width} height={f.height} loading="lazy" decoding="async" alt={f.alt} data-source={f.data_source} data-license={f.license} aria-describedby={f.opisanie_dlinnoe ? opisanieId(f.src) : undefined}><figcaption><Fragment set:html={podpisHtml(f)} /></figcaption>{f.opisanie_dlinnoe && <Fragment set:html={opisanieHtml(f)} />}</figure>)}</div></section>)}<Fragment set:html={posle('kadry')} />
+
+{vspomni && <Fragment set:html={`<style>${vspomniCss}</style>${vspomniHtml}`} />}<section class="block" id="quiz">
+  <div class="wrap">
+    <div class="kicker">{d.quiz.kicker}</div>
+    <h2>{d.quiz.h2}</h2>
+    <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.quiz.intro} /></p>
+    <div id="quizBox"></div>
+    <noscript><div class="noscript-box"><Fragment set:html={d.quiz.noscript} /></div></noscript>
+  </div>
+</section><Fragment set:html={posle('quiz')} />
+
+{!bez && <section class="block" id="result">
+  <div class="wrap">
+    {d.result.kicker && <div class="kicker">{d.result.kicker}</div>}
+    <h2 style="margin-bottom:6px">{d.result.h2}</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={itog.intro} /></p>
+    <div class="day-result">
+      <div class="dr-score" id="dayTxt">{schetNol(d)}</div>
+      <div class="dr-bar"><i id="dayBar" style="width:0%"></i></div>
+      <div class="dr-note"><Fragment set:html={itog.note} /></div>
+    </div>
+  </div>
+</section>}<Fragment set:html={posle('result')} />
+
+<Fragment set:html={podlinnikChitatHtml(d)} />
+<section class="block" id="sources">
+  <div class="wrap">
+    <div class="kicker">Источники</div>
+    <h2>На чём стоит страница</h2>
+    <ul class="sources">
+      {d.sources.map((s) => 'html' in s ? <li><Fragment set:html={s.html} /></li> : <li><a href={s.href} rel="noopener" target="_blank"><Fragment set:html={s.title} /></a>{s.pometka ? ` ${s.pometka}` : ''}: <Fragment set:html={s.note} /></li>)}
+    </ul>
+  </div>
+</section><Fragment set:html={posle('sources')} />
+
+<section class="block" id="calendar">
+  <div class="wrap">
+    {kal.kicker && <div class="kicker">{kal.kicker}</div>}
+    <h2 style="margin-bottom:6px">{kal.h2}</h2>
+    <p style="color:var(--muted);margin-top:0;max-width:62ch"><Fragment set:html={kal.intro} /></p>
+    <div id="calbox"></div>
+  </div>
+</section><Fragment set:html={posle('calendar')} />
+
+<section class="block kd" id="kuda-dalshe">
+  <div class="wrap">
+    <div class="kd-kicker">Куда дальше</div>
+    <h2>Музей продолжается</h2>
+    <Fragment set:html={kudaHtml(d.kuda, muzeyName, 'Все картины — по дням года.')} />
+  </div>
+</section><Fragment set:html={posle('kuda-dalshe')} />
+
+{/* Перевод строки перед <footer> — явно: compressHTML его съедает, а конвейер ставит <main> до «\n<footer» (WCAG, Б10). */}
+<Fragment set:html={'\n'} /><footer><div class="wrap">
+  <div class="slog">{DEVIZ}</div>
+  Русская цивилизация · {muzeyName}</div></footer>
+
+<script is:inline set:html={scoreJs(d)}></script>
+<script is:inline src="../../assets/museum-score.js"></script>
+<script is:inline set:html={knopkiJs}></script>
+<script is:inline set:html={quizJs(d)}></script>{vspomni && <script type="application/json" id="rc-vspomni-dannye" is:inline set:html={vspomniDannye(d)}></script>}{vspomni && <script is:inline set:html={vspomniJs}></script>}
+{d.skripty.map((s) => 'src' in s ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.js}></script>)}
+{g && <script is:inline src={`igry/${g.imya}.js`}></script>}
+<script is:inline>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
+{chrome && <script is:inline set:html={chrome}></script>}
+<script is:inline src="../../assets/museum-chrome.js"></script>
+<script is:inline set:html={`window.MUSEUM_SUPPORT={museum:${q(muzeyName)}};`}></script>
+<script is:inline src="../../assets/museum-support.js"></script>
+<script is:inline src={`calendar-${d.muzei}.js`}></script>
+<script is:inline set:html={`window.MUSEUM_CALENDAR_INITIAL='${d.key}';`}></script>
+<script is:inline src="../../assets/museum-calendar-month.js"></script>
+<script is:inline set:html={`window.MUSEUM_RETURN=${json({ riddle: d.return })};`}></script>
+<script is:inline src="../../assets/museum-return.js" data-museum={d.muzei} data-day={d.key}></script>
+<script is:inline defer src="../../assets/analytics.js"></script>
+
+{d.audioguide && <script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(audiogidDnya(d), null, 2).replace(/</g, '\\u003c')};`}></script>}
+{d.video && <script is:inline src="../../assets/museum-video.js"></script>}
+{d.audioguide && <script is:inline src="../../assets/museum-audioguide.js"></script>}
+{d.zum && <script is:inline src={`/muzei/${d.muzei}/vendor/openseadragon/openseadragon.min.js`}></script>}
+{d.zum && <script is:inline set:html={`window.RC_ZOOM=${json({src:d.zum.src,w:d.zum.width,h:d.zum.height,prefix:"/muzei/"+d.muzei+"/vendor/openseadragon/images/",sparks:d.zum.sparks||[]})};`}></script>}
+{d.zum && <script is:inline set:html={ZUM_JS}></script>}
+</body>
+</html>
