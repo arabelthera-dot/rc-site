@@ -21,7 +21,7 @@ const { d, museum } = Astro.props;
 const vspomni = vspomniOn();
 const rolik = rolikRyadom(d.video);
 const muzeyName = museum.title_ru;
-const DEVIZ = museum.slogan_ru;
+const DEVIZ = museum.slogan_ru || museum.promise_ru;
 // Музей датирован: заголовок вкладки и og:title — «2 января 1834: <событие>» (как у изобретений, Р286 п.4).
 // День и месяц — дата события, а не день музея (Р831): у дня с data_uslovnaya — data_sobytiya, если другая и того же года.
 const MES = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
