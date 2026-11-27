@@ -46,6 +46,8 @@ const faktyHtmlD = (b) => nePerevodit(faktyHtml(b), d.ne_perevodit);
 const posle = (id) => [...faktyBloki.filter((b) => b.posle === id).map(faktyHtmlD), ...d.razdely.filter((r) => r.posle === id).map((r) => r.html)].map((h) => `\n${h}`).join('');
 const o = d.oblozhka;
 const chrome = chromeJs(d, muzeyName);
+// Зум картины (single-image OpenSeadragon + золотые точки): данные из d.zum, логика — ниже, разметка — в теле.
+const ZUM_JS = `(function(){var Z=window.RC_ZOOM;if(!Z)return;var AR=Z.h/Z.w;var v=OpenSeadragon({id:"viewer",prefixUrl:Z.prefix,tileSources:{type:"image",url:Z.src},showNavigationControl:true,navigationControlAnchor:OpenSeadragon.ControlAnchor.BOTTOM_RIGHT,gestureSettingsTouch:{pinchToZoom:true,flickEnabled:true},maxZoomPixelRatio:2.2,visibilityRatio:1,minZoomLevel:.8,animationTime:1.1,springStiffness:7});function show(s){var c=document.getElementById('zcard');document.getElementById('zct').textContent='✦ '+s.t;document.getElementById('zcx').textContent=s.d;c.style.display='block';var h=document.getElementById('zhint');if(h)h.style.opacity='0';v.viewport.panTo(new OpenSeadragon.Point(s.x,s.y*AR),false);if(v.viewport.getZoom()<2.2)v.viewport.zoomTo(2.6);}v.addHandler('open',function(){Z.sparks.forEach(function(s,i){var el=document.createElement('div');el.className='spark';el.textContent=i+1;new OpenSeadragon.MouseTracker({element:el,clickHandler:function(){show(s);}}).setTracking(true);v.addOverlay({element:el,location:new OpenSeadragon.Point(s.x,s.y*AR)});});});var x=document.querySelector('#zcard .x');if(x)x.addEventListener('click',function(){document.getElementById('zcard').style.display='none';});v.addHandler('canvas-press',function(){document.getElementById('zcard').style.display='none';});setTimeout(function(){var h=document.getElementById('zhint');if(h)h.style.opacity='0';},6000);})();`;
 ---
 <!DOCTYPE html>
 <html lang="ru" data-museum={d.muzei} data-shablon="den-iskusstvo" data-lupa-vse>
@@ -66,6 +68,7 @@ const chrome = chromeJs(d, muzeyName);
 <meta property="og:url" content={d.head.og.url}>{d.head.og.image && <meta property="og:image" content={d.head.og.image}>}
 <script type="application/ld+json" is:inline set:html={json(d.head.ld)}></script>
 <link rel="stylesheet" href="../../assets/fakty-dnya.css">
+{d.zum && <link rel="stylesheet" href="../../assets/iskusstvo-zoom.css">}
 </head>
 <body>
 
@@ -111,6 +114,19 @@ const chrome = chromeJs(d, muzeyName);
     </div>
   </div>
 </header>
+
+{d.zum && (<section class="block" id="zoom">
+  <div class="wrap">
+    {d.zum.kicker && <div class="kicker">{d.zum.kicker}</div>}
+    <h2>{d.zum.h2}</h2>
+    {d.zum.intro && <p style="color:var(--muted);max-width:62ch"><Fragment set:html={d.zum.intro} /></p>}
+  </div>
+</section>)}
+{d.zum && (<div id="zoomwrap" aria-label="Глубокий зум картины">
+  <div id="viewer"></div>
+  <div id="zhint">Щипок — приблизить · золотые точки — подсказки</div>
+  <div id="zcard"><span class="x">✕</span><h3 id="zct"></h3><p id="zcx"></p></div>
+</div>)}
 
 <div class="hero-under">
   <div class="wrap">
@@ -243,5 +259,8 @@ const chrome = chromeJs(d, muzeyName);
 {d.audioguide && <script is:inline set:html={`window.MUSEUM_AUDIOGUIDE=${JSON.stringify(audiogidDnya(d), null, 2).replace(/</g, '\\u003c')};`}></script>}
 {d.video && <script is:inline src="../../assets/museum-video.js"></script>}
 {d.audioguide && <script is:inline src="../../assets/museum-audioguide.js"></script>}
+{d.zum && <script is:inline src={`/muzei/${d.muzei}/vendor/openseadragon/openseadragon.min.js`}></script>}
+{d.zum && <script is:inline set:html={`window.RC_ZOOM=${json({src:d.zum.src,w:d.zum.width,h:d.zum.height,prefix:"/muzei/"+d.muzei+"/vendor/openseadragon/images/",sparks:d.zum.sparks||[]})};`}></script>}
+{d.zum && <script is:inline set:html={ZUM_JS}></script>}
 </body>
 </html>

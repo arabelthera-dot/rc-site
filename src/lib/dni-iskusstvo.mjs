@@ -12,6 +12,7 @@ export const BLOKI_ISKUSSTVO = ['daynav', 'video', 'audioguide', 'story', 'fakty
 export const skhemaIskusstvo = z.object({
   ...obshchiePolya(BLOKI_ISKUSSTVO),
   igra: z.object({ imya: z.string().regex(/^[a-z0-9-]+$/).optional(), kicker: str.optional(), h2: str.optional(), lead: str.optional() }).optional(),
+  zum: z.object({ src: z.string(), width: z.number(), height: z.number(), kicker: str.optional(), h2: str.optional(), intro: str.optional(), sparks: z.array(z.object({ x: z.number(), y: z.number(), t: z.string(), d: z.string() })).optional() }).optional(),
 }).strict().superRefine((d, ctx) => {
   zamokObshchiy(d, ctx, {});
   if (d.igra?.imya) {
