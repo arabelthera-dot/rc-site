@@ -53,7 +53,7 @@ jobs:
       TEG: ${{ inputs.teg }}
       # Р825: хранилище роликов — те же ключ, сервер и проходы, что у шага «ролики в хранилище» deploy.yml
       MEDIA_KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
-      IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+      IZVESTNYE: 45.8.146.150 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOBnZnqTPSKo4DQgrZ1hAm7Wnr8OHZ8McCkydMGN0o5B
       MOST: ${{ vars.RU_MOST }}
       MOST2: ${{ vars.RU_MOST2 }}
       # бюджет ролика — перенесён из deploy.yml (Р536 п. 9): лимит на файл у статических хостингов, Pages 100 МБ
@@ -91,7 +91,7 @@ jobs:
             # без --delete — только докладываем; --checksum — как в deploy.yml (r790); путь упал — следующий (r833)
             kod=0; scripts/prohod-v-rossiyu.sh -- bash -c 'rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include="*/" --include="*.mp4" --exclude="*" \
               -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $SSH_MOST" \
-              "$MEDIA_VYHOD/" rcmedia@185.149.145.227: | tail -n 4; exit "${PIPESTATUS[0]}"' || kod=$?
+              "$MEDIA_VYHOD/" rcmedia@45.8.146.150: | tail -n 4; exit "${PIPESTATUS[0]}"' || kod=$?
             rm -rf "$S"; [ "$kod" = 0 ] || { echo "::error::ролики не доложены в хранилище (rsync $kod) — заявки нет"; return 1; }
             rm -rf "$MEDIA_VYHOD"
           }

@@ -1,5 +1,5 @@
 # Ролики сайта в хранилище media.russian-civilization.ru (#2364, Михаил «да» 04.11.2026, шаг 2 из 5).
-# Кладёт все mp4 из public/ в /srv/rc-media на msk-new (rcmedia@185.149.145.227, ключ ограничен rrsync -wo — только
+# Кладёт все mp4 из public/ в /srv/rc-media на msk-new (rcmedia@45.8.146.150, ключ ограничен rrsync -wo — только
 # запись, корень /srv/rc-media) тем же путём, что от корня сайта: public/muzei/x/a.mp4 → https://media.russian-civilization.ru/muzei/x/a.mp4
 # (ровно так ссылки переписывает scripts/media-base.mjs). Без --delete: в хранилище только докладываем.
 # Сверка двумя способами (поправка Михаила 1): повторный rsync -n -c -i — пустой список; каждый файл скачивается с
@@ -22,8 +22,8 @@ jobs:
     timeout-minutes: 40
     env:
       KLYUCH: ${{ secrets.MEDIA_SSH_KEY }}
-      KUDA: rcmedia@185.149.145.227
-      IZVESTNYE: 185.149.145.227 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiBNP3Z9qG62TuG7JbZftc72//MO+dQQjR9B9B3F/nh
+      KUDA: rcmedia@45.8.146.150
+      IZVESTNYE: 45.8.146.150 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOBnZnqTPSKo4DQgrZ1hAm7Wnr8OHZ8McCkydMGN0o5B
       ADRES: https://media.russian-civilization.ru
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
