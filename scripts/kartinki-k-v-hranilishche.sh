@@ -15,7 +15,7 @@ export S="${RUNNER_TEMP:-/tmp}/ssh-media-k"; (umask 077; mkdir -p "$S"; printf '
 # путь упал — следующий (r833, scripts/prohod-v-rossiyu.sh --)
 kod=0; scripts/prohod-v-rossiyu.sh -- bash -c 'rsync -rltz --checksum --delay-updates --chmod=D755,F644 --stats --include="/_k/***" --exclude="*" \
   -e "ssh -i $S/media -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$S/known_hosts -o BatchMode=yes -o ConnectTimeout=30 $SSH_MOST" \
-  dist/ rcmedia@185.149.145.227: | tail -n 4; exit "${PIPESTATUS[0]}"' || kod=$?
+  dist/ rcmedia@45.8.146.150: | tail -n 4; exit "${PIPESTATUS[0]}"' || kod=$?
 rm -rf "$S"
 [ "$kod" = 0 ] || { echo "::warning::картинки /_k/ не доложены в хранилище (rsync $kod) — из dist"; exit 0; }
 MEDIA_K_DOLOZHENY=1 node scripts/media-base.mjs --dist dist
