@@ -12,6 +12,7 @@ import Vitrina from '../components/portal/Vitrina.astro';
 import { yazyk, razobratPut, stroka } from '../lib/yazyki.mjs';
 import { ogSegodnya } from '../lib/og-segodnya';
 import { poiskOn } from '../integrations/poisk.mjs';
+import { krayOn, adresKraya } from '../lib/moy-kray.mjs';
 const base = import.meta.env.BASE_URL;
 // «Поддержать проект» — на всех страницах (Р88, 21.10.2026, заменяет Р31); выключение — PUBLIC_PODDERZHKA=0.
 const podderzhka = import.meta.env.PUBLIC_PODDERZHKA !== '0';
@@ -57,6 +58,8 @@ const poisk = poiskOn();
     <p class="p-sub">{s('portalSub')}</p>
     {/* Детский вход (Р41, Е3, 20.10) — только ссылка */}
     <p class="p-detyam"><a href={`${base}detyam/`}>Детям — сказки и истории для детей →</a></p>
+    {/* «Мой край» (п.505, Р746) — вход на карту регионов; без PUBLIC_MOY_KRAY=1 блока нет */}
+    {krayOn() && <p class="p-detyam"><a href={adresKraya(base)}>Мой край — дни музеев вашей области на карте России →</a></p>}
     <div class="p-orn p-orn-b" aria-hidden="true"><span></span><i>✦</i><span></span></div>
   </header>
 

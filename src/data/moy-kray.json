@@ -1,0 +1,796 @@
+{
+ "_opisanie": "«Мой край» (п.505, Р746): 89 субъектов России сеткой квадратов (ryad — сверху вниз, kol — с запада на восток; свой рисунок, без внешних карт). mesta — id мест словаря src/data/slovar.json (тип mesto), чьи дни показываются у области; река — у областей, по которым течёт. za_kartoy — места словаря вне областей России. Страница — src/pages/moy-kray.astro, сборка — src/lib/moy-kray.mjs.",
+ "oblasti": [
+  {
+   "kod": 51,
+   "nazvanie": "Мурманская область",
+   "kratko": "МУР",
+   "ryad": 0,
+   "kol": 3,
+   "mesta": []
+  },
+  {
+   "kod": 87,
+   "nazvanie": "Чукотский автономный округ",
+   "kratko": "ЧУК",
+   "ryad": 0,
+   "kol": 15,
+   "mesta": [
+    "mesto:chukotka"
+   ]
+  },
+  {
+   "kod": 10,
+   "nazvanie": "Республика Карелия",
+   "kratko": "КАР",
+   "ryad": 1,
+   "kol": 2,
+   "mesta": [
+    "mesto:kizhi"
+   ]
+  },
+  {
+   "kod": 29,
+   "nazvanie": "Архангельская область",
+   "kratko": "АРХ",
+   "ryad": 1,
+   "kol": 3,
+   "mesta": [
+    "mesto:novaya-zemlya"
+   ]
+  },
+  {
+   "kod": 83,
+   "nazvanie": "Ненецкий автономный округ",
+   "kratko": "НЕН",
+   "ryad": 1,
+   "kol": 4,
+   "mesta": []
+  },
+  {
+   "kod": 11,
+   "nazvanie": "Республика Коми",
+   "kratko": "КОМ",
+   "ryad": 1,
+   "kol": 5,
+   "mesta": []
+  },
+  {
+   "kod": 89,
+   "nazvanie": "Ямало-Ненецкий автономный округ",
+   "kratko": "ЯНА",
+   "ryad": 1,
+   "kol": 8,
+   "mesta": []
+  },
+  {
+   "kod": 24,
+   "nazvanie": "Красноярский край",
+   "kratko": "КРА",
+   "ryad": 1,
+   "kol": 9,
+   "mesta": [
+    "mesto:enisey",
+    "mesto:taymyr",
+    "mesto:severnaya-zemlya"
+   ]
+  },
+  {
+   "kod": 14,
+   "nazvanie": "Республика Саха (Якутия)",
+   "kratko": "ЯКУ",
+   "ryad": 1,
+   "kol": 11,
+   "mesta": [
+    "mesto:yakutsk"
+   ]
+  },
+  {
+   "kod": 49,
+   "nazvanie": "Магаданская область",
+   "kratko": "МАГ",
+   "ryad": 1,
+   "kol": 13,
+   "mesta": []
+  },
+  {
+   "kod": 41,
+   "nazvanie": "Камчатский край",
+   "kratko": "КАМ",
+   "ryad": 1,
+   "kol": 15,
+   "mesta": [
+    "mesto:kamchatka"
+   ]
+  },
+  {
+   "kod": 39,
+   "nazvanie": "Калининградская область",
+   "kratko": "КЛН",
+   "ryad": 2,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 78,
+   "nazvanie": "Санкт-Петербург",
+   "kratko": "СПБ",
+   "ryad": 2,
+   "kol": 1,
+   "mesta": [
+    "mesto:sankt-peterburg"
+   ]
+  },
+  {
+   "kod": 47,
+   "nazvanie": "Ленинградская область",
+   "kratko": "ЛЕН",
+   "ryad": 2,
+   "kol": 2,
+   "mesta": []
+  },
+  {
+   "kod": 35,
+   "nazvanie": "Вологодская область",
+   "kratko": "ВОЛ",
+   "ryad": 2,
+   "kol": 3,
+   "mesta": []
+  },
+  {
+   "kod": 43,
+   "nazvanie": "Кировская область",
+   "kratko": "КИР",
+   "ryad": 2,
+   "kol": 4,
+   "mesta": []
+  },
+  {
+   "kod": 59,
+   "nazvanie": "Пермский край",
+   "kratko": "ПЕР",
+   "ryad": 2,
+   "kol": 5,
+   "mesta": []
+  },
+  {
+   "kod": 66,
+   "nazvanie": "Свердловская область",
+   "kratko": "СВЕ",
+   "ryad": 2,
+   "kol": 6,
+   "mesta": []
+  },
+  {
+   "kod": 86,
+   "nazvanie": "Ханты-Мансийский автономный округ — Югра",
+   "kratko": "ХМА",
+   "ryad": 2,
+   "kol": 7,
+   "mesta": []
+  },
+  {
+   "kod": 72,
+   "nazvanie": "Тюменская область",
+   "kratko": "ТЮМ",
+   "ryad": 2,
+   "kol": 8,
+   "mesta": [
+    "mesto:tobolsk"
+   ]
+  },
+  {
+   "kod": 70,
+   "nazvanie": "Томская область",
+   "kratko": "ТОМ",
+   "ryad": 2,
+   "kol": 9,
+   "mesta": []
+  },
+  {
+   "kod": 38,
+   "nazvanie": "Иркутская область",
+   "kratko": "ИРК",
+   "ryad": 2,
+   "kol": 10,
+   "mesta": [
+    "mesto:irkutsk",
+    "mesto:baykal"
+   ]
+  },
+  {
+   "kod": 28,
+   "nazvanie": "Амурская область",
+   "kratko": "АМУ",
+   "ryad": 2,
+   "kol": 11,
+   "mesta": [
+    "mesto:amur"
+   ]
+  },
+  {
+   "kod": 27,
+   "nazvanie": "Хабаровский край",
+   "kratko": "ХАБ",
+   "ryad": 2,
+   "kol": 12,
+   "mesta": [
+    "mesto:amur"
+   ]
+  },
+  {
+   "kod": 65,
+   "nazvanie": "Сахалинская область",
+   "kratko": "САХ",
+   "ryad": 2,
+   "kol": 14,
+   "mesta": [
+    "mesto:sahalin",
+    "mesto:kurily"
+   ]
+  },
+  {
+   "kod": 60,
+   "nazvanie": "Псковская область",
+   "kratko": "ПСК",
+   "ryad": 3,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 53,
+   "nazvanie": "Новгородская область",
+   "kratko": "НОВ",
+   "ryad": 3,
+   "kol": 1,
+   "mesta": [
+    "mesto:velikiy-novgorod"
+   ]
+  },
+  {
+   "kod": 69,
+   "nazvanie": "Тверская область",
+   "kratko": "ТВЕ",
+   "ryad": 3,
+   "kol": 2,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 76,
+   "nazvanie": "Ярославская область",
+   "kratko": "ЯРО",
+   "ryad": 3,
+   "kol": 3,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 44,
+   "nazvanie": "Костромская область",
+   "kratko": "КОС",
+   "ryad": 3,
+   "kol": 4,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 18,
+   "nazvanie": "Удмуртская Республика",
+   "kratko": "УДМ",
+   "ryad": 3,
+   "kol": 5,
+   "mesta": []
+  },
+  {
+   "kod": 74,
+   "nazvanie": "Челябинская область",
+   "kratko": "ЧЕЛ",
+   "ryad": 3,
+   "kol": 6,
+   "mesta": []
+  },
+  {
+   "kod": 45,
+   "nazvanie": "Курганская область",
+   "kratko": "КГН",
+   "ryad": 3,
+   "kol": 7,
+   "mesta": []
+  },
+  {
+   "kod": 55,
+   "nazvanie": "Омская область",
+   "kratko": "ОМС",
+   "ryad": 3,
+   "kol": 8,
+   "mesta": []
+  },
+  {
+   "kod": 54,
+   "nazvanie": "Новосибирская область",
+   "kratko": "НСК",
+   "ryad": 3,
+   "kol": 9,
+   "mesta": []
+  },
+  {
+   "kod": 3,
+   "nazvanie": "Республика Бурятия",
+   "kratko": "БУР",
+   "ryad": 3,
+   "kol": 10,
+   "mesta": [
+    "mesto:baykal"
+   ]
+  },
+  {
+   "kod": 75,
+   "nazvanie": "Забайкальский край",
+   "kratko": "ЗАБ",
+   "ryad": 3,
+   "kol": 11,
+   "mesta": []
+  },
+  {
+   "kod": 79,
+   "nazvanie": "Еврейская автономная область",
+   "kratko": "ЕАО",
+   "ryad": 3,
+   "kol": 12,
+   "mesta": [
+    "mesto:amur"
+   ]
+  },
+  {
+   "kod": 25,
+   "nazvanie": "Приморский край",
+   "kratko": "ПРИ",
+   "ryad": 3,
+   "kol": 13,
+   "mesta": [
+    "mesto:vladivostok"
+   ]
+  },
+  {
+   "kod": 67,
+   "nazvanie": "Смоленская область",
+   "kratko": "СМО",
+   "ryad": 4,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 50,
+   "nazvanie": "Московская область",
+   "kratko": "МОБ",
+   "ryad": 4,
+   "kol": 1,
+   "mesta": []
+  },
+  {
+   "kod": 77,
+   "nazvanie": "Москва",
+   "kratko": "МСК",
+   "ryad": 4,
+   "kol": 2,
+   "mesta": [
+    "mesto:moskva"
+   ]
+  },
+  {
+   "kod": 33,
+   "nazvanie": "Владимирская область",
+   "kratko": "ВЛА",
+   "ryad": 4,
+   "kol": 3,
+   "mesta": []
+  },
+  {
+   "kod": 37,
+   "nazvanie": "Ивановская область",
+   "kratko": "ИВА",
+   "ryad": 4,
+   "kol": 4,
+   "mesta": []
+  },
+  {
+   "kod": 12,
+   "nazvanie": "Республика Марий Эл",
+   "kratko": "МАР",
+   "ryad": 4,
+   "kol": 5,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 2,
+   "nazvanie": "Республика Башкортостан",
+   "kratko": "БАШ",
+   "ryad": 4,
+   "kol": 6,
+   "mesta": []
+  },
+  {
+   "kod": 56,
+   "nazvanie": "Оренбургская область",
+   "kratko": "ОРЕ",
+   "ryad": 4,
+   "kol": 7,
+   "mesta": []
+  },
+  {
+   "kod": 22,
+   "nazvanie": "Алтайский край",
+   "kratko": "АЛК",
+   "ryad": 4,
+   "kol": 8,
+   "mesta": []
+  },
+  {
+   "kod": 42,
+   "nazvanie": "Кемеровская область — Кузбасс",
+   "kratko": "КЕМ",
+   "ryad": 4,
+   "kol": 9,
+   "mesta": []
+  },
+  {
+   "kod": 19,
+   "nazvanie": "Республика Хакасия",
+   "kratko": "ХАК",
+   "ryad": 4,
+   "kol": 10,
+   "mesta": [
+    "mesto:enisey"
+   ]
+  },
+  {
+   "kod": 32,
+   "nazvanie": "Брянская область",
+   "kratko": "БРЯ",
+   "ryad": 5,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 40,
+   "nazvanie": "Калужская область",
+   "kratko": "КЛЖ",
+   "ryad": 5,
+   "kol": 1,
+   "mesta": []
+  },
+  {
+   "kod": 71,
+   "nazvanie": "Тульская область",
+   "kratko": "ТУЛ",
+   "ryad": 5,
+   "kol": 2,
+   "mesta": [
+    "mesto:kulikovo-pole"
+   ]
+  },
+  {
+   "kod": 62,
+   "nazvanie": "Рязанская область",
+   "kratko": "РЯЗ",
+   "ryad": 5,
+   "kol": 3,
+   "mesta": []
+  },
+  {
+   "kod": 52,
+   "nazvanie": "Нижегородская область",
+   "kratko": "НИЖ",
+   "ryad": 5,
+   "kol": 4,
+   "mesta": [
+    "mesto:nizhniy-novgorod",
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 21,
+   "nazvanie": "Чувашская Республика",
+   "kratko": "ЧУВ",
+   "ryad": 5,
+   "kol": 5,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 16,
+   "nazvanie": "Республика Татарстан",
+   "kratko": "ТАТ",
+   "ryad": 5,
+   "kol": 6,
+   "mesta": [
+    "mesto:kazan",
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 4,
+   "nazvanie": "Республика Алтай",
+   "kratko": "АЛТ",
+   "ryad": 5,
+   "kol": 8,
+   "mesta": []
+  },
+  {
+   "kod": 17,
+   "nazvanie": "Республика Тыва",
+   "kratko": "ТЫВ",
+   "ryad": 5,
+   "kol": 9,
+   "mesta": [
+    "mesto:enisey"
+   ]
+  },
+  {
+   "kod": 46,
+   "nazvanie": "Курская область",
+   "kratko": "КУР",
+   "ryad": 6,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 57,
+   "nazvanie": "Орловская область",
+   "kratko": "ОРЛ",
+   "ryad": 6,
+   "kol": 1,
+   "mesta": []
+  },
+  {
+   "kod": 48,
+   "nazvanie": "Липецкая область",
+   "kratko": "ЛИП",
+   "ryad": 6,
+   "kol": 2,
+   "mesta": []
+  },
+  {
+   "kod": 68,
+   "nazvanie": "Тамбовская область",
+   "kratko": "ТАМ",
+   "ryad": 6,
+   "kol": 3,
+   "mesta": []
+  },
+  {
+   "kod": 13,
+   "nazvanie": "Республика Мордовия",
+   "kratko": "МОР",
+   "ryad": 6,
+   "kol": 4,
+   "mesta": []
+  },
+  {
+   "kod": 73,
+   "nazvanie": "Ульяновская область",
+   "kratko": "УЛЬ",
+   "ryad": 6,
+   "kol": 5,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 63,
+   "nazvanie": "Самарская область",
+   "kratko": "САМ",
+   "ryad": 6,
+   "kol": 6,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 31,
+   "nazvanie": "Белгородская область",
+   "kratko": "БЕЛ",
+   "ryad": 7,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 36,
+   "nazvanie": "Воронежская область",
+   "kratko": "ВОР",
+   "ryad": 7,
+   "kol": 1,
+   "mesta": []
+  },
+  {
+   "kod": 58,
+   "nazvanie": "Пензенская область",
+   "kratko": "ПЕН",
+   "ryad": 7,
+   "kol": 2,
+   "mesta": []
+  },
+  {
+   "kod": 64,
+   "nazvanie": "Саратовская область",
+   "kratko": "САР",
+   "ryad": 7,
+   "kol": 3,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 80,
+   "nazvanie": "Донецкая Народная Республика",
+   "kratko": "ДНР",
+   "ryad": 8,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 81,
+   "nazvanie": "Луганская Народная Республика",
+   "kratko": "ЛНР",
+   "ryad": 8,
+   "kol": 1,
+   "mesta": []
+  },
+  {
+   "kod": 61,
+   "nazvanie": "Ростовская область",
+   "kratko": "РОС",
+   "ryad": 8,
+   "kol": 2,
+   "mesta": []
+  },
+  {
+   "kod": 34,
+   "nazvanie": "Волгоградская область",
+   "kratko": "ВЛГ",
+   "ryad": 8,
+   "kol": 3,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 30,
+   "nazvanie": "Астраханская область",
+   "kratko": "АСТ",
+   "ryad": 8,
+   "kol": 4,
+   "mesta": [
+    "mesto:volga"
+   ]
+  },
+  {
+   "kod": 85,
+   "nazvanie": "Запорожская область",
+   "kratko": "ЗАП",
+   "ryad": 9,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 23,
+   "nazvanie": "Краснодарский край",
+   "kratko": "КРД",
+   "ryad": 9,
+   "kol": 1,
+   "mesta": []
+  },
+  {
+   "kod": 26,
+   "nazvanie": "Ставропольский край",
+   "kratko": "СТА",
+   "ryad": 9,
+   "kol": 2,
+   "mesta": []
+  },
+  {
+   "kod": 8,
+   "nazvanie": "Республика Калмыкия",
+   "kratko": "КЛМ",
+   "ryad": 9,
+   "kol": 3,
+   "mesta": []
+  },
+  {
+   "kod": 84,
+   "nazvanie": "Херсонская область",
+   "kratko": "ХЕР",
+   "ryad": 10,
+   "kol": 0,
+   "mesta": []
+  },
+  {
+   "kod": 1,
+   "nazvanie": "Республика Адыгея",
+   "kratko": "АДЫ",
+   "ryad": 10,
+   "kol": 1,
+   "mesta": []
+  },
+  {
+   "kod": 9,
+   "nazvanie": "Карачаево-Черкесская Республика",
+   "kratko": "КЧР",
+   "ryad": 10,
+   "kol": 2,
+   "mesta": []
+  },
+  {
+   "kod": 7,
+   "nazvanie": "Кабардино-Балкарская Республика",
+   "kratko": "КБР",
+   "ryad": 10,
+   "kol": 3,
+   "mesta": []
+  },
+  {
+   "kod": 15,
+   "nazvanie": "Республика Северная Осетия — Алания",
+   "kratko": "ОСЕ",
+   "ryad": 10,
+   "kol": 4,
+   "mesta": []
+  },
+  {
+   "kod": 20,
+   "nazvanie": "Чеченская Республика",
+   "kratko": "ЧЕЧ",
+   "ryad": 10,
+   "kol": 5,
+   "mesta": []
+  },
+  {
+   "kod": 5,
+   "nazvanie": "Республика Дагестан",
+   "kratko": "ДАГ",
+   "ryad": 10,
+   "kol": 6,
+   "mesta": []
+  },
+  {
+   "kod": 91,
+   "nazvanie": "Республика Крым",
+   "kratko": "КРЫ",
+   "ryad": 11,
+   "kol": 0,
+   "mesta": [
+    "mesto:krym"
+   ]
+  },
+  {
+   "kod": 6,
+   "nazvanie": "Республика Ингушетия",
+   "kratko": "ИНГ",
+   "ryad": 11,
+   "kol": 4,
+   "mesta": []
+  },
+  {
+   "kod": 92,
+   "nazvanie": "Севастополь",
+   "kratko": "СЕВ",
+   "ryad": 12,
+   "kol": 0,
+   "mesta": [
+    "mesto:sevastopol"
+   ]
+  }
+ ],
+ "za_kartoy": [
+  "mesto:alyaska",
+  "mesto:antarktida",
+  "mesto:severnyy-polyus"
+ ]
+}
